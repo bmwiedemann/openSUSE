@@ -208,4 +208,12 @@
     <comment>Cummulative fixes for gammaray</comment>
     <requestid>1166876</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>33ae6f07688329064c090e3b35e70905</srcmd5>
+    <version>3.1.0</version>
+    <time>1724938991</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.1.0</comment>
+    <requestid>1197007</requestid>
+  </revision>
 </revisionlist>

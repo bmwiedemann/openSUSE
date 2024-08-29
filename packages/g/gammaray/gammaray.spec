@@ -21,34 +21,22 @@
 %define qt6 1
 %define pkg_suffix -qt6
 %define qt_suffix 6
+%define qt_min_version 6.3
 %else
 %define qt5 1
 %define qt_suffix 5
+%define qt_min_version 5.15
 %endif
 %define rname gammaray
-%define short_version 3.0
-%define soversion 3_0_0
+%define short_version 3.1
+%define soversion 3_1_0
 Name:           gammaray%{?pkg_suffix}
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kdab.com/gammaray
 Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{rname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-doc-tools-detection.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         gammaray-gles.patch
-Patch2:         0001-Fix-Qt-6.6-build.patch
-Patch3:         0001-Repair-lack-of-classnames-in-Graphics-Scenes-or-Styl.patch
-Patch4:         0001-QuickSceneGraphModel-don-t-nest-row-insertion-remova.patch
-Patch5:         0001-Fix-gcc-13-warnings-about-references-to-temporaries.patch
-Patch6:         0001-Fix-3-bugs-detected-by-QAbstractItemModelTester.patch
-Patch7:         0001-Fix-two-issues-in-ObjectEnumModel-found-by-QAbstract.patch
-Patch8:         0001-2-more-QAbstractItemModelTester-fixes.patch
-Patch9:         0001-Unbreak-recursive-filtering-in-ObjectIdsFilterProxyM.patch
-Patch10:        0001-Enable-building-with-Qt-6.7.patch
-Patch11:        0001-Fix-build-on-6.7-for-after-QDeferredDeleteEvent-expo.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen
@@ -59,68 +47,76 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libdw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt%{qt_suffix}3DAnimation)
-BuildRequires:  cmake(Qt%{qt_suffix}3DExtras)
-BuildRequires:  cmake(Qt%{qt_suffix}3DInput)
-BuildRequires:  cmake(Qt%{qt_suffix}3DLogic)
-BuildRequires:  cmake(Qt%{qt_suffix}3DQuick)
-BuildRequires:  cmake(Qt%{qt_suffix}3DRender)
-BuildRequires:  cmake(Qt%{qt_suffix}Bluetooth)
-BuildRequires:  cmake(Qt%{qt_suffix}Concurrent)
-BuildRequires:  cmake(Qt%{qt_suffix}Core)
-BuildRequires:  cmake(Qt%{qt_suffix}Designer)
-BuildRequires:  cmake(Qt%{qt_suffix}Gui)
-BuildRequires:  cmake(Qt%{qt_suffix}Help)
-BuildRequires:  cmake(Qt%{qt_suffix}LinguistTools)
-BuildRequires:  cmake(Qt%{qt_suffix}Network)
-BuildRequires:  cmake(Qt%{qt_suffix}OpenGL)
-BuildRequires:  cmake(Qt%{qt_suffix}Positioning)
-BuildRequires:  cmake(Qt%{qt_suffix}Qml)
-BuildRequires:  cmake(Qt%{qt_suffix}Quick)
-BuildRequires:  cmake(Qt%{qt_suffix}QuickWidgets)
-BuildRequires:  cmake(Qt%{qt_suffix}Scxml)
-BuildRequires:  cmake(Qt%{qt_suffix}Svg)
-BuildRequires:  cmake(Qt%{qt_suffix}Test)
-BuildRequires:  cmake(Qt%{qt_suffix}WaylandCompositor)
-BuildRequires:  cmake(Qt%{qt_suffix}Widgets)
+BuildRequires:  cmake(Qt%{qt_suffix}3DAnimation) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}3DExtras) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}3DInput) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}3DLogic) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}3DQuick) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}3DRender) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Bluetooth) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Concurrent) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Core) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Designer) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Gui) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Help) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}LinguistTools) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Network) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}OpenGL) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Positioning) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Qml) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Quick) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}QuickWidgets) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Scxml) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Svg) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Test) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}WaylandCompositor) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Widgets) >= %{qt_min_version}
 BuildRequires:  pkgconfig(wayland-server)
 Requires:       %{name}-shared-plugins = %{version}
 %if 0%{?qt5}
-BuildRequires:  libQt5Core-private-headers-devel
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libQt5Widgets-private-headers-devel
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
-BuildRequires:  libqt5-qtscxml-private-headers-devel
-BuildRequires:  libqt5-qttools-doc
+BuildRequires:  libQt5Core-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libQt5Widgets-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libqt5-qtscxml-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libqt5-qttools-doc >= %{qt_min_version}
 # No Qt6 support in current release
 BuildRequires:  cmake(KDSME)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(Qt5AttributionsScannerTools)
-BuildRequires:  cmake(Qt5Location)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5ScriptTools)
+BuildRequires:  cmake(Qt5AttributionsScannerTools) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Location) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Script) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5ScriptTools) >= %{qt_min_version}
 Recommends:     gammaray-qt6-shared-plugins = %{version}
 %ifnarch ppc64 ppc64le s390 s390x
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= %{qt_min_version}
 %endif
 %endif
 %if 0%{?qt6}
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-scxml-private-devel
-BuildRequires:  qt6-widgets-private-devel
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-BuildRequires:  cmake(Qt6Location)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150600
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6SyntaxHighlighting)
 %endif
-BuildRequires:  cmake(Qt6ShaderTools)
-BuildRequires:  cmake(Qt6ToolsTools)
+BuildRequires:  qt6-core-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-qml-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick-private-devel >= %{qt_min_version}
+# Needed to build the statemachine examples
+BuildRequires:  qt6-scxml-imports >= %{qt_min_version}
+BuildRequires:  qt6-scxml-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-statemachine-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-widgets-private-devel >= %{qt_min_version}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+BuildRequires:  cmake(Qt6Location) >= %{qt_min_version}
+%endif
+BuildRequires:  cmake(Qt6ShaderTools) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6StateMachine) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6ToolsTools) >= %{qt_min_version}
 Recommends:     gammaray-shared-plugins = %{version}
 Conflicts:      gammaray
 %ifnarch %{ix86} %{arm} ppc64 ppc64le s390 s390x
-BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt_min_version}
 %endif
 %endif
 # Pull in the correct set of shared libraries (Qt5/Qt6)

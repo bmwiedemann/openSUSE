@@ -1,7 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 28 13:21:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.0
+  * Qt5 versions less than 5.15 are no longer supported
+  * Qt6 versions less that 6.3 are no longer supported
+  * Qt IVI is no longer supported
+  * Fix inspection of graphics scenes with nested items
+  * Fix QQuickWidget support for Qt6
+  * Support 3rdparty submodules for KDStateMachineEditor (with graphviz)
+  * Support inspection of QSplitter properties
+  * Support introspection of Qt PySide apps
+  * Show more font properties in the font browser, and allow searching for fonts
+  * Show all timezone name variants in the timezone browser
+  * Make probe settings configurable via AndroidManifest.xml
+- Drop patches, now upstream:
+  * 001-Fix-doc-tools-detection.patch
+  * gammaray-gles.patch
+  * 0001-Fix-Qt-6.6-build.patch
+  * 0001-Repair-lack-of-classnames-in-Graphics-Scenes-or-Styl.patch
+  * 0001-QuickSceneGraphModel-don-t-nest-row-insertion-remova.patch
+  * 0001-Fix-gcc-13-warnings-about-references-to-temporaries.patch
+  * 0001-Fix-3-bugs-detected-by-QAbstractItemModelTester.patch
+  * 0001-Fix-two-issues-in-ObjectEnumModel-found-by-QAbstract.patch
+  * 0001-2-more-QAbstractItemModelTester-fixes.patch
+  * 0001-Unbreak-recursive-filtering-in-ObjectIdsFilterProxyM.patch
+  * 0001-Enable-building-with-Qt-6.7.patch
+  * 0001-Fix-build-on-6.7-for-after-QDeferredDeleteEvent-expo.patch
+
+-------------------------------------------------------------------
 Sat Apr  6 20:20:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
+  * 0001-Fix-doc-tools-detection.patch
   * 0001-Fix-Qt-6.6-build.patch
   * 0001-Repair-lack-of-classnames-in-Graphics-Scenes-or-Styl.patch
   * 0001-QuickSceneGraphModel-don-t-nest-row-insertion-remova.patch
