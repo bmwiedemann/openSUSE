@@ -188,4 +188,15 @@
   * Add support for numpy 2.0</comment>
     <requestid>1183800</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0527229b0b08ddfc359b27fe1ec50e3f</srcmd5>
+    <version>2.35.1</version>
+    <time>1724939054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.35.1:
+  * Ensure video stream is closed when closing the pyAV plugin
+  * Rawpy plugin
+  * Remove pinned numpy regression</comment>
+    <requestid>1197392</requestid>
+  </revision>
 </revisionlist>
