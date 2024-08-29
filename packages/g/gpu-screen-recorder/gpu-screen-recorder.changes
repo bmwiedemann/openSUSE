@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Aug 20 12:13:53 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20240820:
+  * Also revert av1 quality
+  * Revert quality parameters, they were overkill
+  * Explain why portal needs access to process root file
+  * x11 cursor deinit: check if display is valid
+  * Small refactor in pipewire code, remove unused
+    extra/install_preserve_video_memory.sh script
+  * Don't install files using absolute paths
+
+-------------------------------------------------------------------
+Thu May 16 11:52:50 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package
+
