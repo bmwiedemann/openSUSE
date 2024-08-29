@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:30:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.1
+  * Fix docstring for root_locus_map by @bnavigator in #988
+  * Update documentation, processing of root_locus kvect keyword by
+    @murrayrm in #989
+  * Fix typo in ICSystem updfcn, outfcn: update_params ->
+    _update_params by @murrayrm in #990
+  * Support NumPy 2 by @bnavigator in #994
+  * Set response I/O labels from system for frequency response by
+    @murrayrm in #1000
+  * Change klist to gains kwarg for matlab.wrappers.rlocus by
+    @gdmcbain in #999
+  * Fix typo in xferfcn.py by @ansrandrieu in #1005
+  * Add place_varga in API doc by @pierre-haessig in #1004
+  * Process legacy rlocus keyword k->gains by @gdmcbain in #1003
+  * Fix numpydoc for place_varga by @bnavigator in #1007
+  * Improve acker pole placement doc by @pierre-haessig in #1006
+  * Fix nyquist plotting from FrequencyResponseData by @wueestry in
+    #996
+  * Better I/O systems support for phase plots by @murrayrm in
+    #1001
+  * Updates for NumPy 2.0 compatibility in CI tests by @murrayrm in
+    #1013
+  * Add slicing access for state-space models with tests by
+    @guptavaibhav0 in #1012
+  * Frequency plot improvements by @murrayrm in #1011
+  * Add extra information to nyquist plots by @wueestry in #997
+  * Fix bug in root_locus_plot identified by @NikolaiVChr in issue
+    #1016 by @murrayrm in #1021
+  * Fix parallel input or output interconnect bug (issue #1015) by
+    @murrayrm in #1017
+  * Time response plot improvements by @murrayrm in #1018
+  * Fix impuse response, input data only contains one input[0]==1
+    in each trace by @KybernetikJo in #1023
+  * Small improvements to nlsys, bdalg by @murrayrm in #1019
+  * Fix step_info settling time calculation by @murrayrm in #1029
+  * Update timeplot.py by @murrayrm in #1030
+  * Move ctrlplot code prior to upcoming PR by @murrayrm in #1033
+  * Add pyqt dependency for QtAgg testing by @murrayrm in #1035
+  * Improve markov function, add mimo support, change api to
+    TimeResponseData by @KybernetikJo in #1022
+  * Implement ERA, change api to TimeResponseData by @KybernetikJo
+    in #1024
+  * Change function names in modelsimp, add aliases by
+    @KybernetikJo in #1028
+  * Update OS/BLAS test matrix workflow by @murrayrm in #1036
+  * Control plot refactoring for consistent functionality by
+    @murrayrm in #1034
+  * CDS 110 and CDS 112 Jupyter notebooks by @murrayrm in #1037
+  * Documentation updates and testing by @murrayrm in #1038
+  * Update shared axes processing in plot_time_response by
+    @murrayrm in #1040
+  * Update macos gfortran version by @murrayrm in #1041
+  * Small user documentation fixes by @murrayrm in #1042
+- Drop control-pr994-numpy2.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 15:13:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to modern python on sle15

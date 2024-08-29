@@ -417,4 +417,41 @@
 - remove python-devel from BuildRequires</comment>
     <requestid>1193959</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>635ca2c87610abb2288454d0bdfc55c4</srcmd5>
+    <version>0.10.1</version>
+    <time>1724938997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1
+  * Fix docstring for root_locus_map by @bnavigator in #988
+  * Update documentation, processing of root_locus kvect keyword by
+    @murrayrm in #989
+  * Fix typo in ICSystem updfcn, outfcn: update_params -&gt;
+    _update_params by @murrayrm in #990
+  * Support NumPy 2 by @bnavigator in #994
+  * Set response I/O labels from system for frequency response by
+    @murrayrm in #1000
+  * Change klist to gains kwarg for matlab.wrappers.rlocus by
+    @gdmcbain in #999
+  * Fix typo in xferfcn.py by @ansrandrieu in #1005
+  * Add place_varga in API doc by @pierre-haessig in #1004
+  * Process legacy rlocus keyword k-&gt;gains by @gdmcbain in #1003
+  * Fix numpydoc for place_varga by @bnavigator in #1007
+  * Improve acker pole placement doc by @pierre-haessig in #1006
+  * Fix nyquist plotting from FrequencyResponseData by @wueestry in
+    #996
+  * Better I/O systems support for phase plots by @murrayrm in
+    #1001
+  * Updates for NumPy 2.0 compatibility in CI tests by @murrayrm in
+    #1013
+  * Add slicing access for state-space models with tests by
+    @guptavaibhav0 in #1012
+  * Frequency plot improvements by @murrayrm in #1011
+  * Add extra information to nyquist plots by @wueestry in #997
+  * Fix bug in root_locus_plot identified by @NikolaiVChr in issue
+    #1016 by @murrayrm in #1021
+  * Fix parallel input or output interconnect bug (issue #1015) by
+    @murrayrm in #1017</comment>
+    <requestid>1197027</requestid>
+  </revision>
 </revisionlist>
