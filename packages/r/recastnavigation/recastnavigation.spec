@@ -1,7 +1,7 @@
 #
 # spec file for package recastnavigation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %define sonum 1
 
 Name:           recastnavigation
-Version:        1.5.1+git20210305.c5cbd53
+Version:        1.6.0
 Release:        0
 Summary:        Recast & Detour
 License:        Zlib
 URL:            https://github.com/recastnavigation/recastnavigation
-# No official recent release available, https://github.com/recastnavigation/recastnavigation/issues/434
-Source0:        %{name}-%{version}.tar.xz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(glu)
@@ -116,6 +115,7 @@ This package contains the recast library of Recastnatnaviagtion.
 %{_libdir}/libRecast.so
 %{_includedir}/recastnavigation
 %{_libdir}/pkgconfig/recastnavigation.pc
+%{_libdir}/cmake/%{name}
 
 %files -n libDebugUtils%{sonum}
 %{_libdir}/libDebugUtils.so.*
