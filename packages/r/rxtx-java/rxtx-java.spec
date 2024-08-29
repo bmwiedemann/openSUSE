@@ -103,7 +103,7 @@ the specification for Sun's Java Communications API.
 export THREADS_FLAG=native
 rm acinclude.m4 config.guess config.sub install-sh ltmain.sh missing mkinstalldirs aclocal.m4 Makefile.in ltconfig stamp-h.in
 ./autogen.sh
-CFLAGS="%{optflags}" LDFLAGS=-s \
+CFLAGS="%{optflags} -Wno-implicit-function-declaration" LDFLAGS=-s \
 %configure
 
 %make_build

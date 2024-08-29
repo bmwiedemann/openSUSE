@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 28 17:38:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Disable -Wimplicit-function-declaration
+  * fixes build with gcc 14 on architectures where glibc does not
+    distribute sys/io.h
+
+-------------------------------------------------------------------
 Thu Mar  7 14:29:29 UTC 2024 - Frank Schütte <F.Schuette@t-online.de>
 
 - Added patch:
