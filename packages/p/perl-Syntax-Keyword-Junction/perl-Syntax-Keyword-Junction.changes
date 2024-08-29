@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 21 05:31:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.003009
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Junction/Changes
+
+  0.003009  2024-08-20
+    - fixed smart match warnings on perls 5.38 or greater
+    - stop enabling smart match support on perl 5.41 or greater
+    - many packaging cleanups
+    - removed direct dependency on syntax.pm
+
+-------------------------------------------------------------------
 Mon Apr 13 18:30:02 UTC 2015 - coolo@suse.com
 
 - updated to 0.003008

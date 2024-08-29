@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Syntax-Keyword-Junction
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,57 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Syntax-Keyword-Junction
-Version:        0.003008
-Release:        0
 %define cpan_name Syntax-Keyword-Junction
-Summary:        Perl6 style Junction operators in Perl5
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Syntax-Keyword-Junction/
-Source:         http://www.cpan.org/authors/id/F/FR/FREW/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Syntax-Keyword-Junction
+Version:        0.003009
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Comparisons against multiple values
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Sub::Exporter::Progressive) >= 0.001006
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Requires) >= 0.07
+BuildRequires:  perl(Test::Needs) >= 0.002006
 BuildRequires:  perl(parent)
-BuildRequires:  perl(syntax)
 Requires:       perl(Sub::Exporter::Progressive) >= 0.001006
 Requires:       perl(parent)
-Requires:       perl(syntax)
 %{perl_requires}
 
 %description
 This is a lightweight module which provides 'Junction' operators, the most
 commonly used being 'any' and 'all'.
 
-Inspired by the Perl6 design docs, the
-http://dev.perl.org/perl6/doc/design/exe/E06.html manpage.
+Inspired by the Perl 6 design docs,
+https://web.archive.org/web/20230922160729/https://raku.org/archive/doc/des
+ign/exe/E06.html#The%20Wonderful%20World%20of%20Junctions.
 
-Provides a limited subset of the functionality of the
-Quantum::Superpositions manpage, see the /"SEE ALSO" manpage for comment.
+Provides a limited subset of the functionality of Quantum::Superpositions,
+see "SEE ALSO" for comment.
 
-Notice in the the /SYNOPSIS manpage above, that if you want to match
-against a regular expression, you must use '==' or '!='. *Not* '=~' or
-'!~'. You must also use a regex object, such as 'qr/\d/', not a plain regex
-such as '/\d/'.
+Notice in the SYNOPSIS above, that if you want to match against a regular
+expression, you must use '==' or '!='. *Not* '=~' or '!~'. You must also
+use a regex object, such as 'qr/\d/', not a plain regex such as '/\d/'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -70,7 +66,7 @@ such as '/\d/'.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
