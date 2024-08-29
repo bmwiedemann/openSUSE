@@ -1,0 +1,8 @@
+<package name="gpu-screen-recorder-gtk" project="openSUSE:Factory">
+  <title>GTK frontend for GPU Screen Recorder</title>
+  <description>This is a screen recorder that has minimal impact on system performance by recording your monitor using the GPU only, similar to shadowplay on windows. This is the fastest screen recording tool for Linux.
+
+This screen recorder can be used for recording your desktop offline, for live streaming and for nvidia shadowplay-like instant replay, where only the last few minutes are saved.</description>
+  <devel project="X11:Utilities" package="gpu-screen-recorder-gtk"/>
+  <url>https://git.dec05eba.com/gpu-screen-recorder-gtk/about</url>
+</package>

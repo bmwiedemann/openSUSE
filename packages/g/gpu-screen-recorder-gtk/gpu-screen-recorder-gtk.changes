@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Aug 20 12:13:21 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20240820:
+  * Fix audio devices with space in id not working, add 10 bit
+    option for hevc and av1
+  * Clearify that it works on amd, intel and nvidia
+  * Fix possible capture lag (especially with desktop portal
+    capture)
+
+-------------------------------------------------------------------
+Mon Aug 19 06:55:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package
+
