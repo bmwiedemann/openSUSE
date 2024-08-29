@@ -18,17 +18,18 @@
 
 %define cpan_name Set-Tiny
 Name:           perl-Set-Tiny
-Version:        0.50.0
+Version:        0.60.0
 Release:        0
-# 0.05 -> normalize -> 0.50.0
-%define cpan_version 0.05
+# 0.06 -> normalize -> 0.60.0
+%define cpan_version 0.06
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple sets of strings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 0.88
 Provides:       perl(Set::Tiny) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -57,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples README README.md
+%doc Changes examples README
 %license LICENSE
 
 %changelog

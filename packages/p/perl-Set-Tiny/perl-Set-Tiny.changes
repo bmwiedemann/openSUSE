@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 05:30:59 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-Set-Tiny/Changes
+
+  0.06    2024-08-20
+    - Revised Dist::Zilla packaging
+    - Reduced minumum perl version
+    - Fixed contains method to always return a single boolean value.
+
+-------------------------------------------------------------------
 Sun Jun 23 16:47:50 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 0.50.0 (0.05)
