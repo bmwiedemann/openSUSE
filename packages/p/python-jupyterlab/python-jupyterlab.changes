@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:27:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.5
+  * Use locale name instead of display/native name to toggle
+    language #16710 (@maitreya2954)
+  * Prevent replacing code with find and replace in read-only cells
+    #16682 (@itsmevichu)
+  * Do not block shift-click mouse up handler on active cell #16647
+    (@EdsterG)
+
+-------------------------------------------------------------------
 Wed Aug 21 13:25:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.4

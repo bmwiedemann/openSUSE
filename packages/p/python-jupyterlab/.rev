@@ -806,4 +806,18 @@
     #16547 (@joaopalmeiro)</comment>
     <requestid>1195124</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>219c98f52806f55f0c40e9035893e1f5</srcmd5>
+    <version>4.2.5</version>
+    <time>1724938995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.5
+  * Use locale name instead of display/native name to toggle
+    language #16710 (@maitreya2954)
+  * Prevent replacing code with find and replace in read-only cells
+    #16682 (@itsmevichu)
+  * Do not block shift-click mouse up handler on active cell #16647
+    (@EdsterG)</comment>
+    <requestid>1197023</requestid>
+  </revision>
 </revisionlist>
