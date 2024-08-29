@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-dataclasses-json
 Version:        0.6.7
 Release:        0
