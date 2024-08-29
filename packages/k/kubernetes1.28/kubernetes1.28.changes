@@ -90,7 +90,7 @@ Thu Apr 18 11:21:45 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
   * Add envFrom to serviceaccount admission plugin
   * update debian-base to bookworm-v1.0.2
   * [go] Bump images, dependencies and versions to go 1.22.1 and distroless iptables / set-cap
-  * [CVE-2023-45288] .*: bump x/net to v0.23.0
+  * [CVE-2023-45288] .*: bump x/net to v0.23.0, bsc#1229869
   * Use the right feature gate when updating uncertain volumes
   * fix panic with SIGSEGV in kubeadm certs check-expiration
   * hack/tools: bump honnef.co/go/tools to v0.4.6
@@ -119,7 +119,7 @@ Mon Apr 08 06:23:49 UTC 2024 - priyanka.saggu@suse.com
   * remove --v arg from kubetest2-tester-ginkgo test args
   * ci: bump kind to latest for kms jobs
   * [go] Bump images, dependencies and versions to go 1.21.8 / distroless-iptables to v0.4.6
-  * [CVE-2024-24786] Bump github.com/golang/protobuf v1.5.4, google.golang.org/protobuf v1.33.0
+  * [CVE-2024-24786] Bump github.com/golang/protobuf v1.5.4, google.golang.org/protobuf v1.33.0, bsc#1229867
   * keep existing PDB conditions when updating status
   * Validate restartable init container state transition
   * Test that separation of streams work by using progress notifies
@@ -237,10 +237,10 @@ Thu Oct 26 04:55:27 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 - Update .spec file to bump go version build requirements:
   * `BuildRequires:  go >= 1.20.10`
 - Update to version 1.28.3:
-  * Register UnauthenticatedHTTP2DOSMitigation into kube components
-  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests
-  * Disable UnauthenticatedHTTP2DOSMitigation by default
-  * Prevent rapid reset http2 DOS on API server
+  * Register UnauthenticatedHTTP2DOSMitigation into kube components (CVE-2023-44487, CVE-2023-39325), bsc#1229869
+  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests (CVE-2023-44487, CVE-2023-39325), bsc#1229869
+  * Disable UnauthenticatedHTTP2DOSMitigation by default (CVE-2023-44487, CVE-2023-39325), bsc#1229869
+  * Prevent rapid reset http2 DOS on API server (CVE-2023-44487, CVE-2023-39325), bsc#1229869
   * Fix concurrent write when filling PVC labels
   * Modify test PVC to detect concurrent map write bug
   * [go] Bump images, dependencies and versions to go 1.20.10

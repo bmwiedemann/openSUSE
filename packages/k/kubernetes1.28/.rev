@@ -89,4 +89,14 @@ Followed by update to latest patch release version - 1.28.2</comment>
     <comment>Monthly Patch Release – August, 2024: Update to version 1.28.13</comment>
     <requestid>1194866</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5f6a236982264c77c76599ed07335245</srcmd5>
+    <version>1.28.13</version>
+    <time>1724939055</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog entries to mention fix for CVE-2023-44487, CVE-2023-39325, CVE-2023-45288, bsc#1229869
+
+Update changelog entries to mention fix for CVE-2024-24786, bsc#1229867</comment>
+    <requestid>1197410</requestid>
+  </revision>
 </revisionlist>
