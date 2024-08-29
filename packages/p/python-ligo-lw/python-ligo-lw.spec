@@ -27,8 +27,6 @@
 
 # Dependency ligo-segments does not build for python2
 %define         skip_python2 1
-# https://git.ligo.org/kipp/python-ligo-lw/-/issues/29
-%define         skip_python312 1
 
 %define bins ligolw_add ligolw_cut ligolw_no_ilwdchar ligolw_print ligolw_segments ligolw_sqlite ligolw_run_sqlite
 %define srcname python-ligo-lw
@@ -49,6 +47,8 @@ Patch1:         ligo-lw-disable-doctests.patch
 Patch3:         ligo-lw-disable-sqlite-test.patch
 # https://git.ligo.org/kipp.cannon/python-ligo-lw/-/commit/693cfc4d4759c1984609effa1dde810a192fe94f
 Patch4:         python-ligo-lw-no-python2.patch
+# PATCH-FIX-UPSTREAM badshah400@gmail.com -- https://git.ligo.org/kipp/python-ligo-lw/-/issues/29
+Patch5:         ligo-lw-python3.12-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

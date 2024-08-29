@@ -1,0 +1,45 @@
+---
+ ligo/lw/tokenizer.RowBuilder.c |    2 +-
+ ligo/lw/tokenizer.RowDumper.c  |    2 +-
+ ligo/lw/tokenizer.Tokenizer.c  |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: python-ligo-lw-1.8.3/ligo/lw/tokenizer.RowBuilder.c
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/tokenizer.RowBuilder.c
++++ python-ligo-lw-1.8.3/ligo/lw/tokenizer.RowBuilder.c
+@@ -228,7 +228,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject ligolw_RowBuilder_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_RowBuilder),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
+Index: python-ligo-lw-1.8.3/ligo/lw/tokenizer.RowDumper.c
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/tokenizer.RowDumper.c
++++ python-ligo-lw-1.8.3/ligo/lw/tokenizer.RowDumper.c
+@@ -280,7 +280,7 @@ static struct PyMethodDef methods[] = {
+ 
+ 
+ PyTypeObject ligolw_RowDumper_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_RowDumper),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
+Index: python-ligo-lw-1.8.3/ligo/lw/tokenizer.Tokenizer.c
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/tokenizer.Tokenizer.c
++++ python-ligo-lw-1.8.3/ligo/lw/tokenizer.Tokenizer.c
+@@ -713,7 +713,7 @@ static struct PyGetSetDef getset[] = {
+ 
+ 
+ PyTypeObject ligolw_Tokenizer_Type = {
+-	PyObject_HEAD_INIT(NULL)
++	PyVarObject_HEAD_INIT(NULL, 0)
+ 	.tp_basicsize = sizeof(ligolw_Tokenizer),
+ 	.tp_dealloc = __del__,
+ 	.tp_doc =
