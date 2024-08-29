@@ -4156,7 +4156,6 @@ unsorted:
   - fence-agents-all 
   - fence-agents-alom 
   - fence-agents-amt 
-  - fence-agents-amt-ws 
   - fence-agents-apc 
   - fence-agents-apc-snmp 
   - fence-agents-aws 
@@ -7944,6 +7943,8 @@ unsorted:
   - gpsd-qt5-devel 
   - gpt4all-chat 
   - gptfdisk-fixparts 
+  - gpu-screen-recorder 
+  - gpu-screen-recorder-gtk 
   - gputils 
   - gputils-doc 
   - gpuvis 
@@ -12323,8 +12324,8 @@ unsorted:
   - libcapstone-devel-static 
   - libcares2-32bit 
   - libcaribou0 
-  - libcasacore7 
-  - libcasacore7-openmpi4 
+  - libcasacore8 
+  - libcasacore8-openmpi4 
   - libcblas3-32bit 
   - libcbor-devel 
   - libcbor-doc 
@@ -13226,10 +13227,10 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-3_0_0 
-  - libgammaray-qt6-3_0_0 
-  - libgammaray-shared-3_0_0 
-  - libgammaray-shared-qt6-3_0_0 
+  - libgammaray-3_1_0 
+  - libgammaray-qt6-3_1_0 
+  - libgammaray-shared-3_1_0 
+  - libgammaray-shared-qt6-3_1_0 
   - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -25159,7 +25160,6 @@ unsorted:
   - python310-django-nine 
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
-  - python310-django-opentracing 
   - python310-django-parler 
   - python310-django-perf-rec 
   - python310-django-pglocks 
@@ -25213,8 +25213,6 @@ unsorted:
   - python310-doc-devhelp 
   - python310-docformatter 
   - python310-docker 
-  - python310-docker-pycreds 
-  - python310-dockerpty 
   - python310-docopt 
   - python310-docrepr 
   - python310-docstring-to-markdown 
@@ -25422,7 +25420,6 @@ unsorted:
   - python310-ged4py 
   - python310-genfire 
   - python310-genson 
-  - python310-genty 
   - python310-geographiclib 
   - python310-geoip2 
   - python310-geojson 
@@ -25437,7 +25434,6 @@ unsorted:
   - python310-gevent 
   - python310-gevent-websocket 
   - python310-geventhttpclient 
-  - python310-ggplot 
   - python310-ghp-import 
   - python310-girder-client 
   - python310-git-pw 
@@ -26100,7 +26096,6 @@ unsorted:
   - python310-ndtiff 
   - python310-neovim 
   - python310-nest-asyncio 
-  - python310-nested-lookup 
   - python310-net-snmp 
   - python310-netCDF4 
   - python310-netaddr 
@@ -26149,7 +26144,6 @@ unsorted:
   - python310-numpy_1_26_4-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
-  - python310-nxapi-plumbing 
   - python310-o2sclpy 
   - python310-oauthlib 
   - python310-objgraph 
@@ -26608,6 +26602,7 @@ unsorted:
   - python310-pypandoc 
   - python310-pyparallel 
   - python310-pyparsing 
+  - python310-pypdf 
   - python310-pyperclip 
   - python310-pyperf 
   - python310-pypet 
@@ -27403,6 +27398,7 @@ unsorted:
   - python310-typer-slim 
   - python310-types-humanfriendly 
   - python310-types-python-dateutil 
+  - python310-types-setuptools 
   - python310-typing-inspect 
   - python310-typing_extensions 
   - python310-typish 
@@ -28772,7 +28768,6 @@ unsorted:
   - python311-django-nine 
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
-  - python311-django-opentracing 
   - python311-django-parler 
   - python311-django-perf-rec 
   - python311-django-pglocks 
@@ -28825,8 +28820,6 @@ unsorted:
   - python311-doc-devhelp 
   - python311-docformatter 
   - python311-docker 
-  - python311-docker-pycreds 
-  - python311-dockerpty 
   - python311-docopt 
   - python311-docrepr 
   - python311-docstring-to-markdown 
@@ -29033,7 +29026,6 @@ unsorted:
   - python311-ged4py 
   - python311-genfire 
   - python311-genson 
-  - python311-genty 
   - python311-geographiclib 
   - python311-geoip2 
   - python311-geojson 
@@ -29047,7 +29039,6 @@ unsorted:
   - python311-getmac 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
-  - python311-ggplot 
   - python311-ghp-import 
   - python311-girder-client 
   - python311-git-pw 
@@ -29677,7 +29668,6 @@ unsorted:
   - python311-ndtiff 
   - python311-neovim 
   - python311-nest-asyncio 
-  - python311-nested-lookup 
   - python311-net-snmp 
   - python311-netCDF4 
   - python311-nethsm 
@@ -29721,7 +29711,6 @@ unsorted:
   - python311-numpy_1_26_4-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
-  - python311-nxapi-plumbing 
   - python311-o2sclpy 
   - python311-objgraph 
   - python311-objsize 
@@ -30158,6 +30147,7 @@ unsorted:
   - python311-pypandoc 
   - python311-pyparallel 
   - python311-pyparsing 
+  - python311-pypdf 
   - python311-pyperclip 
   - python311-pyperf 
   - python311-pypet 
@@ -30933,6 +30923,7 @@ unsorted:
   - python311-typer-slim 
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
+  - python311-types-setuptools 
   - python311-typing-inspect 
   - python311-typish 
   - python311-typogrify 
@@ -32336,7 +32327,6 @@ unsorted:
   - python312-django-nine 
   - python312-django-oauth-toolkit 
   - python312-django-oidc-provider 
-  - python312-django-opentracing 
   - python312-django-parler 
   - python312-django-perf-rec 
   - python312-django-pglocks 
@@ -32390,8 +32380,6 @@ unsorted:
   - python312-doc-devhelp 
   - python312-docformatter 
   - python312-docker 
-  - python312-docker-pycreds 
-  - python312-dockerpty 
   - python312-docopt 
   - python312-docrepr 
   - python312-docstring-to-markdown 
@@ -32599,7 +32587,6 @@ unsorted:
   - python312-ged4py 
   - python312-genfire 
   - python312-genson 
-  - python312-genty 
   - python312-geographiclib 
   - python312-geoip2 
   - python312-geojson 
@@ -32614,7 +32601,6 @@ unsorted:
   - python312-gevent 
   - python312-gevent-websocket 
   - python312-geventhttpclient 
-  - python312-ggplot 
   - python312-ghp-import 
   - python312-girder-client 
   - python312-git-pw 
@@ -33075,6 +33061,7 @@ unsorted:
   - python312-libwrc 
   - python312-libxml2 
   - python312-license-expression 
+  - python312-ligo-lw 
   - python312-ligo-segments 
   - python312-ligotimegps 
   - python312-limnoria 
@@ -33273,7 +33260,6 @@ unsorted:
   - python312-ndtiff 
   - python312-neovim 
   - python312-nest-asyncio 
-  - python312-nested-lookup 
   - python312-net-snmp 
   - python312-netCDF4 
   - python312-netaddr 
@@ -33323,7 +33309,6 @@ unsorted:
   - python312-numpy_1_26_4-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nwdiag 
-  - python312-nxapi-plumbing 
   - python312-o2sclpy 
   - python312-oauthlib 
   - python312-objgraph 
@@ -33779,6 +33764,7 @@ unsorted:
   - python312-pypandoc 
   - python312-pyparallel 
   - python312-pyparsing 
+  - python312-pypdf 
   - python312-pyperclip 
   - python312-pyperf 
   - python312-pypet 
@@ -34571,6 +34557,7 @@ unsorted:
   - python312-typer-slim 
   - python312-types-humanfriendly 
   - python312-types-python-dateutil 
+  - python312-types-setuptools 
   - python312-typing-inspect 
   - python312-typing_extensions 
   - python312-typish 
@@ -36091,7 +36078,6 @@ unsorted:
   - ruby3.3-rubygem-highline 
   - ruby3.3-rubygem-hitimes 
   - ruby3.3-rubygem-hoe 
-  - ruby3.3-rubygem-hpricot 
   - ruby3.3-rubygem-html2haml 
   - ruby3.3-rubygem-http-cookie 
   - ruby3.3-rubygem-http-form_data 
