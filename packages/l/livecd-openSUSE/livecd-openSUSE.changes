@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 11:24:44 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Include xf86-video-chips only on i686,x86_64: the package does
+  not exist on other arches.
+
+-------------------------------------------------------------------
 Wed Aug 14 15:48:31 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop intel/ipu firmware: the live images being used in on clowd

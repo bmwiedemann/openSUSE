@@ -2014,4 +2014,12 @@
     <comment>- Drop intel/ipu firmware: the live images being used in on clowd
   infra host is kinda useless.</comment>
   </revision>
+  <revision rev="254" vrev="254">
+    <srcmd5>9e7999f37639de1ddc10c16e0dd1e6e7</srcmd5>
+    <version>unknown</version>
+    <time>1724930751</time>
+    <user>dimstar_suse</user>
+    <comment>- Include xf86-video-chips only on i686,x86_64: the package does
+  not exist on other arches.</comment>
+  </revision>
 </revisionlist>

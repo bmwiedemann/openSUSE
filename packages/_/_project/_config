@@ -341,6 +341,7 @@ FileProvides: /usr/bin/kernel-install udev
 FileProvides: /usr/bin/kill busybox-util-linux util-linux
 FileProvides: /usr/bin/killall busybox-psmisc psmisc
 FileProvides: /usr/bin/ksh93 ksh
+FileProvides: /usr/bin/less less busybox-less
 FileProvides: /usr/bin/ln busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/locale glibc
 FileProvides: /usr/bin/localedef glibc
@@ -551,6 +552,7 @@ Prefer: -busybox-hostname
 Prefer: -busybox-iproute2
 Prefer: -busybox-iputils
 Prefer: -busybox-kmod
+Prefer: -busybox-less
 Prefer: -busybox-misc
 Prefer: -busybox-ncurses-utils
 Prefer: -busybox-procps -procps4

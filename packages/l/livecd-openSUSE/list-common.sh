@@ -273,7 +273,7 @@ install wireless-regdb
 install wpa_supplicant
 install xf86-video-ark
 install xf86-video-ati
-install xf86-video-chips
+install xf86-video-chips i686,x86_64
 install xf86-video-fbdev
 install xf86-video-i128
 install xf86-video-mga
