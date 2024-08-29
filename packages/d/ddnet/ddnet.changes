@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 21 18:52:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.4:
+  * [Client] Add team size indicator
+  * [Client] Show skin name as tooltip in ingame player list
+  * [Client] Remove Spectate label from HUD, show Following
+    {player} instead
+  * [Client] Various fixes with sound disabled
+  * [Client] Various improvements to scoreboard rendering
+  * [Client] Show help text when chaining multiple commands
+  * [Client] Consistent value selector behavior
+  * [Client] Server browser friend list: sort case insensitively
+  * [Client] Fix incorrect scoreboard size if blue team used
+    without teams flag
+  * [Client] Fix integer overflow when computing tilemap size
+  * [Client] Correct player name in copied server info
+  * [Client] Fix UI issues when switching between menus and editor
+  * [Client] Trim Strings on Search/Exclude Filter & add Tooltip
+  * [Client] Fix ingame menu buttons overlapping on team based
+    gametypes
+  * [Client] Correct arguments highlighting after removing entry
+  * [Client] Fix browser not refreshing if ui_page is changed in
+    start menu, refresh LAN tab after starting/stopping
+    local server
+  * [Client] Loading screen fixes
+  * [Editor] Add button and F1 hotkey to open Wiki page
+  * [Editor] Fix various automapper issues
+  * [Tools] Improve map_extract tool
+  * [Master] Use libloc instead of our own CSV format for GeoIP
+  * [Client&Server] Rewrite and fix line reader
+  * [Server] Add "/setjumps" practice command and "setjumps"
+    rcon command
+  * [Server] Don't check sv_max_team_size for teams in practice
+  * [Server] Fix multiple redirected clients not dropped in the
+    same tick
+  * [Server] Faster antibot API calls
+  * [Server] Fix crashes with dbg_dummies and sv_max_clients
+  * [Server] Fix server crash when starting with
+    random(_unfinished)_map
+  * [Server] Add sv_dnsbl_ban_reason, increase maximum ban
+    reason length
+
+-------------------------------------------------------------------
 Sat Jun 15 15:20:33 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.3:
