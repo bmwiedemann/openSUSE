@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Send
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Email-Send
-Version:        2.201
-Release:        0
 %define cpan_name Email-Send
+Name:           perl-Email-Send
+Version:        2.202.0
+Release:        0
+# 2.202 -> normalize -> 2.202.0
+%define cpan_version 2.202
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simply Sending Email
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Email-Send/
-Source:         http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Email::Abstract)
@@ -36,12 +36,18 @@ BuildRequires:  perl(MIME::Entity)
 BuildRequires:  perl(Mail::Internet)
 BuildRequires:  perl(Module::Pluggable) >= 2.97
 BuildRequires:  perl(Return::Value)
-BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Email::Abstract)
 Requires:       perl(Email::Address) >= 1.80
 Requires:       perl(Email::Simple) >= 1.92
 Requires:       perl(Module::Pluggable) >= 2.97
 Requires:       perl(Return::Value)
+Provides:       perl(Email::Send) = %{version}
+Provides:       perl(Email::Send::NNTP) = %{version}
+Provides:       perl(Email::Send::Qmail) = %{version}
+Provides:       perl(Email::Send::SMTP) = %{version}
+Provides:       perl(Email::Send::Sendmail) = %{version}
+Provides:       perl(Email::Send::Test) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,15 +56,16 @@ multiple Email mailers. The goal of this software is to be small and
 simple, easy to use, and easy to extend.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -66,7 +73,7 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README util
+%doc Changes README.md util
+%license LICENSE
 
 %changelog
