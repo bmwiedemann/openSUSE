@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:41:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20240827:
+  * Fix kenwood V7A and derivatives flow control
+  * uvk5: Bless 3.00.x firmware
+  * uvk5: Fix read-only download from any firmware
+  * kenwood_d7: Fix missing valid_bands
+  * tdh8, tdh3: Further revise the AM handling
+  * px777: Support newer radio revisions
+  * ic9700: Add satellite memories
+  * Add Icom IC-9700 support
+  * Fix memedit extra expansion with live radios
+
+-------------------------------------------------------------------
 Fri Aug 23 18:45:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20240820:
