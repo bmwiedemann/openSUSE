@@ -1,7 +1,7 @@
-Index: rocksdb-8.11.3/cmake/modules/Finduring.cmake
+Index: rocksdb-9.5.2/cmake/modules/Finduring.cmake
 ===================================================================
---- rocksdb-8.11.3.orig/cmake/modules/Finduring.cmake
-+++ rocksdb-8.11.3/cmake/modules/Finduring.cmake
+--- rocksdb-9.5.2.orig/cmake/modules/Finduring.cmake
++++ rocksdb-9.5.2/cmake/modules/Finduring.cmake
 @@ -7,7 +7,7 @@
  find_path(uring_INCLUDE_DIR
    NAMES liburing.h)

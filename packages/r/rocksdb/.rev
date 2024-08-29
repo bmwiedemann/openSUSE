@@ -154,4 +154,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1187316</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>14263f853663c7c99b401f41a541ace2</srcmd5>
+    <version>9.5.2</version>
+    <time>1724939050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197375</requestid>
+  </revision>
 </revisionlist>
