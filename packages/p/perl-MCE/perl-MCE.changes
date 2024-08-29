@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 22 05:29:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.898.0 (1.898)
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.898 Wed Aug 21 15:30:00 EST 2024
+
+    * Fix for MCE::Child #22, Can't call method "len" on an undefined value
+      during global destruction. Thanks, @exodist.
+
+-------------------------------------------------------------------
 Sun Jun 23 16:29:06 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 1.897.0 (1.897)

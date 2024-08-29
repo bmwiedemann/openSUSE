@@ -18,10 +18,10 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.897.0
+Version:        1.898.0
 Release:        0
-# 1.897 -> normalize -> 1.897.0
-%define cpan_version 1.897
+# 1.898 -> normalize -> 1.898.0
+%define cpan_version 1.898
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
