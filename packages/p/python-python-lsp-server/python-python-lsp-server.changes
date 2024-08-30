@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:42:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.12.0
+  * Add support for window/logMessage.
+  * Add version support to workspace/publishDiagnostics.
+  * Add extendSelect option to flake8 plugin.
+  * Allow Jedi's extra_paths to be placed in front of sys.path.
+  * Bump flake8 to 7.1
+
+-------------------------------------------------------------------
 Thu Jul 11 10:39:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Bump flake8 to 7.1 and it's pinning pycodestyle to 2.12.0

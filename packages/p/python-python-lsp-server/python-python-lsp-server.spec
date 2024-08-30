@@ -19,12 +19,12 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-python-lsp-server
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
-Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -104,10 +104,9 @@ will be enabled:
 - YAPF for code formatting (preferred over autopep8)
 
 %prep
-%autosetup -p1 -n python-lsp-server-%{version}
+%autosetup -p1 -n python_lsp_server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
-sed -i 's/"pycodestyle>=2.11.0,<2.12.0",/"pycodestyle>=2.12.0,<2.13.0",/' pyproject.toml
 
 %build
 %pyproject_wheel

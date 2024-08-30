@@ -348,4 +348,12 @@
     <comment>- Bump flake8 to 7.1 and it's pinning pycodestyle to 2.12.0 (forwarded request 1186837 from bnavigator)</comment>
     <requestid>1186838</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9a42c178c39c0a07827e218564dcdb04</srcmd5>
+    <version>1.12.0</version>
+    <time>1725017522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197468</requestid>
+  </revision>
 </revisionlist>
