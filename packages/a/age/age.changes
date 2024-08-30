@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  2 12:40:17 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 1.2.0
+  * A small release to build the release binaries with a more
+    recent Go toolchain, and to fix a couple CLI edge cases.
+  * The Go module now exposes a plugin package that provides an age
+    plugin client. That is, Recipient and Identity implementations
+    that invoke a plugin binary, allowing the use of age plugins
+    in Go programs.
+  * Finally, Recipients can now return a set of "labels"
+    by implementing RecipientWithLabels. This allows replicating
+    the special behavior of the scrypt Recipient in third-party
+    Recipients, or applying policy useful for authenticated
+    or post-quantum Recipients.
+
+-------------------------------------------------------------------
 Mon Dec 26 21:25:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.1
