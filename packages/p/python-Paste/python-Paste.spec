@@ -28,12 +28,10 @@ Patch0:         test_modified-fixup.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six > 1.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires:       python-six > 1.4.0
 Suggests:       python-flup
 Suggests:       python-python3-openid
 BuildArch:      noarch
@@ -47,7 +45,6 @@ interfaces.
 
 %prep
 %autosetup -p1 -n paste-%{version}
-sed -i '/pytest-runner/d' setup.py
 # remove test requiring internet access
 rm tests/test_proxy.py
 
