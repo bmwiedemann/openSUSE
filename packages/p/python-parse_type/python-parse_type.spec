@@ -1,7 +1,7 @@
 #
 # spec file for package python-parse_type
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,22 @@
 
 %bcond_without python2
 Name:           python-parse_type
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Extension to the parse module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jenisys/parse_type
 Source:         https://github.com/jenisys/parse_type/archive/v%{version}.tar.gz
+# to remove python 2 is the goal of 0.7.0
+# https://github.com/jenisys/parse_type/blob/main/CHANGES.txt
+# https://github.com/jenisys/parse_type/pull/24
+Patch0:         python-parse_type-remove-python2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-parse >= 1.12.0
-Requires:       python-six >= 1.11
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34
@@ -41,7 +44,6 @@ Requires:       python-enum34
 # SECTION test requirements
 BuildRequires:  %{python_module parse >= 1.12.0}
 BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module six >= 1.11}
 # /SECTION
 %python_subpackages
 
@@ -64,7 +66,8 @@ the following features:
 rm pytest.ini
 # Remove bundled parse.py
 rm parse_type/parse.py
-rm tests/test_parse.py
+sed -i 's:from parse_type import parse:import parse:' \
+  tests/*.py tests/parse_tests_with_parse_type/*.py
 
 %build
 %pyproject_wheel

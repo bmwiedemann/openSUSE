@@ -1,0 +1,656 @@
+From b0d9934405de8da0640ca7f6f1b9bd7e73ae390d Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Wed, 28 Aug 2024 13:41:35 +0200
+Subject: [PATCH] remove Python 2 support
+
+---
+ bin/make_localpi.py                                 |  3 +--
+ bin/toxcmd.py                                       |  3 +--
+ parse_type/__init__.py                              |  1 -
+ parse_type/builder.py                               |  1 -
+ parse_type/cardinality.py                           |  4 +---
+ parse_type/cardinality_field.py                     |  8 +++-----
+ parse_type/cfparse.py                               |  1 -
+ parse_type/parse.py                                 |  9 ++++-----
+ parse_type/parse_util.py                            |  8 +++-----
+ py.requirements/basic.txt                           |  5 +----
+ pyproject.toml                                      |  8 ++------
+ setup.py                                            | 10 +++-------
+ tasks/__init__.py                                   |  2 --
+ tasks/__main__.py                                   |  2 --
+ tasks/docs.py                                       |  1 -
+ tasks/invoke_dry_run.py                             |  3 +--
+ tasks/py.requirements.txt                           |  1 -
+ tasks/release.py                                    |  1 -
+ tasks/test.py                                       |  1 -
+ tests/parse_tests_with_parse_type/test_bugs.py      |  1 -
+ tests/parse_tests_with_parse_type/test_findall.py   |  1 -
+ tests/parse_tests_with_parse_type/test_parse.py     |  1 -
+ tests/parse_tests_with_parse_type/test_parsetype.py |  1 -
+ tests/parse_tests_with_parse_type/test_pattern.py   |  1 -
+ tests/parse_tests_with_parse_type/test_result.py    |  1 -
+ tests/parse_tests_with_parse_type/test_search.py    |  1 -
+ tests/parse_type_test.py                            |  6 +-----
+ tests/test_builder.py                               |  1 -
+ tests/test_cardinality.py                           |  1 -
+ tests/test_cardinality_field.py                     |  1 -
+ tests/test_cardinality_field0.py                    |  1 -
+ tests/test_cfparse.py                               |  1 -
+ tests/test_parse_decorator.py                       |  7 +++----
+ tests/test_parse_number.py                          |  1 -
+ tests/test_parse_util.py                            |  1 -
+ 35 files changed, 24 insertions(+), 75 deletions(-)
+
+diff --git a/bin/make_localpi.py b/bin/make_localpi.py
+index 7661bb6..d093e3d 100755
+--- a/bin/make_localpi.py
++++ b/bin/make_localpi.py
+@@ -38,7 +38,6 @@
+     pip install --find-links=/tmp/downloads --no-index argparse Jinja2
+ """
+ 
+-from __future__ import with_statement, print_function
+ from fnmatch import fnmatch
+ import os.path
+ import shutil
+@@ -51,7 +50,7 @@
+ __copyright__ = "(c) 2013 by Jens Engel"
+ 
+ 
+-class Package(object):
++class Package:
+     """
+     Package entity that keeps track of:
+       * one or more versions of this package
+diff --git a/bin/toxcmd.py b/bin/toxcmd.py
+index 38bb6d5..c73261f 100755
+--- a/bin/toxcmd.py
++++ b/bin/toxcmd.py
+@@ -7,7 +7,6 @@
+ 
+   * copytree
+   * copy
+-  * py2to3
+ 
+ REQUIRES:
+   * argparse
+@@ -181,7 +180,7 @@ def discover_commands():
+     return commands
+ 
+ 
+-class Command(object):
++class Command:
+     def __init__(self, name, func):
+         assert isinstance(name, basestring)
+         assert callable(func)
+diff --git a/parse_type/__init__.py b/parse_type/__init__.py
+index 8147313..551cbd0 100644
+--- a/parse_type/__init__.py
++++ b/parse_type/__init__.py
+@@ -6,7 +6,6 @@
+ parse-types from other, existing types.
+ """
+ 
+-from __future__ import absolute_import
+ from parse_type.cardinality import Cardinality
+ from parse_type.builder import TypeBuilder, build_type_dict
+ 
+diff --git a/parse_type/builder.py b/parse_type/builder.py
+index ed5cda1..5843e94 100644
+--- a/parse_type/builder.py
++++ b/parse_type/builder.py
+@@ -61,7 +61,6 @@
+ 
+ """
+ 
+-from __future__ import absolute_import
+ import inspect
+ import re
+ import enum
+diff --git a/parse_type/cardinality.py b/parse_type/cardinality.py
+index 6857767..1f3e0b0 100644
+--- a/parse_type/cardinality.py
++++ b/parse_type/cardinality.py
+@@ -4,8 +4,6 @@
+ for a data type with the specified cardinality.
+ """
+ 
+-# -- USE: enum34
+-from __future__ import absolute_import
+ from enum import Enum
+ 
+ 
+@@ -84,7 +82,7 @@ def compute_group_count(self, pattern):
+ # -----------------------------------------------------------------------------
+ # CLASS: TypeBuilder
+ # -----------------------------------------------------------------------------
+-class TypeBuilder(object):
++class TypeBuilder:
+     """Provides a utility class to build type-converters (parse_types) for parse.
+     It supports to build new type-converters for different cardinality
+     based on the type-converter for cardinality one.
+diff --git a/parse_type/cardinality_field.py b/parse_type/cardinality_field.py
+index 4e892ed..25c2215 100644
+--- a/parse_type/cardinality_field.py
++++ b/parse_type/cardinality_field.py
+@@ -8,8 +8,6 @@
+     "{persons:Person+}"  #< Cardinality: 1..* = one  or more = many
+ """
+ 
+-from __future__ import absolute_import
+-import six
+ from parse_type.cardinality import Cardinality, TypeBuilder
+ 
+ 
+@@ -19,7 +17,7 @@ class MissingTypeError(KeyError):   # pylint: disable=missing-docstring
+ # -----------------------------------------------------------------------------
+ # CLASS: Cardinality (Field Part)
+ # -----------------------------------------------------------------------------
+-class CardinalityField(object):
++class CardinalityField:
+     """Cardinality field for parse format expression, ala:
+ 
+         "{person:Person?}"   #< Cardinality: 0..1 = zero or one  = optional
+@@ -81,7 +79,7 @@ def make_type(cls, basename, cardinality):
+ # -----------------------------------------------------------------------------
+ # CLASS: CardinalityFieldTypeBuilder
+ # -----------------------------------------------------------------------------
+-class CardinalityFieldTypeBuilder(object):
++class CardinalityFieldTypeBuilder:
+     """Utility class to create type converters based on:
+ 
+       * the CardinalityField naming scheme and
+@@ -115,7 +113,7 @@ def parse_number(text):
+         :raises: ValueError, if type_name does not end with CardinalityField
+         :raises: MissingTypeError, if type_converter is missing in type_dict
+         """
+-        assert isinstance(type_name, six.string_types)
++        assert isinstance(type_name, str)
+         if not CardinalityField.matches_type(type_name):
+             message = "type_name='%s' has no CardinalityField" % type_name
+             raise ValueError(message)
+diff --git a/parse_type/cfparse.py b/parse_type/cfparse.py
+index 1032a87..29a8baf 100644
+--- a/parse_type/cfparse.py
++++ b/parse_type/cfparse.py
+@@ -4,7 +4,6 @@
+ cardinality fields in (user-defined) types.
+ """
+ 
+-from __future__ import absolute_import
+ import logging
+ import parse
+ from .cardinality_field import CardinalityField, CardinalityFieldTypeBuilder
+diff --git a/parse_type/parse.py b/parse_type/parse.py
+index fd1a01d..fcb274a 100644
+--- a/parse_type/parse.py
++++ b/parse_type/parse.py
+@@ -11,7 +11,6 @@
+ # pylint: disable=all
+ #
+ #  -- ORIGINAL-CODE STARTS-HERE ------------------------------------------------
+-from __future__ import absolute_import
+ 
+ import logging
+ import re
+@@ -414,7 +413,7 @@ def extract_format(format, extra_types):
+ PARSE_RE = re.compile(r"({{|}}|{[\w-]*(?:\.[\w-]+|\[[^]]+])*(?::[^}]+)?})")
+ 
+ 
+-class Parser(object):
++class Parser:
+     """Encapsulate a format string that may be used to parse other strings."""
+ 
+     def __init__(self, format, extra_types=None, case_sensitive=False):
+@@ -868,7 +867,7 @@ def _handle_field(self, field):
+         return s
+ 
+ 
+-class Result(object):
++class Result:
+     """The result of a parse() or search().
+ 
+     Fixed results may be looked up using `result[index]`.
+@@ -896,7 +895,7 @@ def __contains__(self, name):
+         return name in self.named
+ 
+ 
+-class Match(object):
++class Match:
+     """The result of a parse() or search() if no results are generated.
+ 
+     This class is only used to expose internal used regex match objects
+@@ -912,7 +911,7 @@ def evaluate_result(self):
+         return self.parser.evaluate_result(self.match)
+ 
+ 
+-class ResultIterator(object):
++class ResultIterator:
+     """The result of a findall() operation.
+ 
+     Each element is a Result instance.
+diff --git a/parse_type/parse_util.py b/parse_type/parse_util.py
+index 0e5ee73..64c1441 100644
+--- a/parse_type/parse_util.py
++++ b/parse_type/parse_util.py
+@@ -4,10 +4,8 @@
+ Provides generic utility classes for the :class:`parse.Parser` class.
+ """
+ 
+-from __future__ import absolute_import
+ from collections import namedtuple
+ import parse
+-import six
+ 
+ 
+ # -- HELPER-CLASS: For format part in a Field.
+@@ -21,7 +19,7 @@ def make_format_spec(type=None, width="", zero=False, align=None, fill=None,
+     return FormatSpec(type, width, zero, align, fill, precision)
+ # pylint: enable=redefined-builtin
+ 
+-class Field(object):
++class Field:
+     """
+     Provides a ValueObject for a Field in a parse expression.
+ 
+@@ -66,7 +64,7 @@ def __eq__(self, other):
+             format1 = self.format or ""
+             format2 = other.format or ""
+             return (self.name == other.name) and (format1 == format2)
+-        elif isinstance(other, six.string_types):
++        elif isinstance(other, str):
+             return str(self) == other
+         else:
+             raise ValueError(other)
+@@ -150,7 +148,7 @@ def extract_format_spec(cls, format):
+         return FormatSpec(type, width, zero, align, fill, precision)
+ 
+ 
+-class FieldParser(object):
++class FieldParser:
+     """
+     Utility class that parses/extracts fields in parse expressions.
+     """
+diff --git a/py.requirements/basic.txt b/py.requirements/basic.txt
+index b9735ab..0d72a6a 100644
+--- a/py.requirements/basic.txt
++++ b/py.requirements/basic.txt
+@@ -8,7 +8,4 @@
+ #  * http://www.pip-installer.org/
+ # ============================================================================
+ 
+-parse >= 1.18.0; python_version >= '3.0'
+-parse >= 1.13.1; python_version <= '2.7'
+-enum34; python_version < '3.4'
+-six >= 1.15
++parse >= 1.18.0
+diff --git a/pyproject.toml b/pyproject.toml
+index ba02098..1211515 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -16,7 +16,7 @@ authors = [
+ ]
+ description = "Simplifies to build parse types based on the parse module"
+ readme = "README.rst"
+-requires-python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
++requires-python = ">=3.2"
+ keywords = ["parse", "parsing"]
+ license = {text = "MIT"}
+ classifiers = [
+@@ -26,7 +26,6 @@ classifiers = [
+     "Intended Audience :: Developers",
+     "License :: OSI Approved :: MIT License",
+     "Operating System :: OS Independent",
+-    "Programming Language :: Python :: 2.7",
+     "Programming Language :: Python :: 3.2",
+     "Programming Language :: Python :: 3.3",
+     "Programming Language :: Python :: 3.4",
+@@ -43,10 +42,7 @@ classifiers = [
+     "Topic :: Software Development :: Libraries :: Python Modules",
+ ]
+ dependencies = [
+-    "parse >= 1.18.0; python_version >= '3.0'",
+-    "parse >= 1.13.1; python_version <= '2.7'",
+-    "enum34; python_version < '3.4'",
+-    "six >= 1.15",
++    "parse >= 1.18.0",
+ ]
+ # PREPARED:
+ dynamic = ["version"]
+diff --git a/setup.py b/setup.py
+index e44d7ee..650431a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -66,12 +66,9 @@ def find_packages_by_root_package(where):
+     include_package_data = True,
+ 
+     # -- REQUIREMENTS:
+-    python_requires=">=2.7, !=3.0.*, !=3.1.*",
++    python_requires=">=3.2",
+     install_requires=[
+-        "parse >= 1.18.0; python_version >= '3.0'",
+-        "parse >= 1.13.1; python_version <= '2.7'",
+-        "enum34; python_version < '3.4'",
+-        "six >= 1.15",
++        "parse >= 1.18.0",
+     ],
+     tests_require=[
+         "pytest <  5.0; python_version <  '3.0'", # >= 4.2
+@@ -88,8 +85,7 @@ def find_packages_by_root_package(where):
+             "build >= 0.5.1",
+             "twine >= 1.13.0",
+             "coverage >= 4.4",
+-            "pytest <  5.0; python_version <  '3.0'",  # >= 4.2
+-            "pytest >= 5.0; python_version >= '3.0'",
++            "pytest >= 5.0",
+             "pytest-html >= 1.19.0",
+             "pytest-cov",
+             "tox >=2.8,<4.0",
+diff --git a/tasks/__init__.py b/tasks/__init__.py
+index c96729c..b51ae64 100644
+--- a/tasks/__init__.py
++++ b/tasks/__init__.py
+@@ -12,8 +12,6 @@
+     * https://github.com/pyinvoke/invoke
+ """
+ 
+-from __future__ import absolute_import, print_function
+-
+ # -----------------------------------------------------------------------------
+ # IMPORTS:
+ # -----------------------------------------------------------------------------
+diff --git a/tasks/__main__.py b/tasks/__main__.py
+index d8d9174..110ac5b 100644
+--- a/tasks/__main__.py
++++ b/tasks/__main__.py
+@@ -18,8 +18,6 @@
+     * https://github.com/pyinvoke/invoke
+ """
+ 
+-from __future__ import absolute_import, print_function
+-
+ # -----------------------------------------------------------------------------
+ # AUTO-MAIN:
+ # -----------------------------------------------------------------------------
+diff --git a/tasks/docs.py b/tasks/docs.py
+index 3360279..e1bdd00 100644
+--- a/tasks/docs.py
++++ b/tasks/docs.py
+@@ -3,7 +3,6 @@
+ Provides tasks to build documentation with sphinx, etc.
+ """
+ 
+-from __future__ import absolute_import, print_function
+ import os
+ import sys
+ from invoke import task, Collection
+diff --git a/tasks/invoke_dry_run.py b/tasks/invoke_dry_run.py
+index 308d5fe..256a193 100644
+--- a/tasks/invoke_dry_run.py
++++ b/tasks/invoke_dry_run.py
+@@ -15,7 +15,6 @@ def destroy_something(ctx, path, dry_run=False):
+         ctx.run("rm -rf {}".format(path))
+ """
+ 
+-from __future__ import print_function
+ from contextlib import contextmanager
+ 
+ @contextmanager
+@@ -36,7 +35,7 @@ def dry_run_mode(ctx):
+     ctx.config.run.dry = initial_dry_run
+ 
+ 
+-class DryRunContext(object):
++class DryRunContext:
+     PREFIX = "DRY-RUN: "
+     SCHEMA = "{prefix}{command}"
+     SCHEMA_WITH_KWARGS = "{prefix}{command} (with kwargs={kwargs})"
+diff --git a/tasks/py.requirements.txt b/tasks/py.requirements.txt
+index 99a369f..3a30f7d 100644
+--- a/tasks/py.requirements.txt
++++ b/tasks/py.requirements.txt
+@@ -11,7 +11,6 @@
+ invoke >=1.7.0,<2.0; python_version <  '3.6'
+ invoke >=1.7.0;      python_version >= '3.6'
+ pycmd
+-six >= 1.15.0
+ 
+ # -- HINT, was RENAMED: path.py => path (for python3)
+ path    >= 13.1.0; python_version >= '3.5'
+diff --git a/tasks/release.py b/tasks/release.py
+index 6a2594c..620d94f 100644
+--- a/tasks/release.py
++++ b/tasks/release.py
+@@ -49,7 +49,6 @@
+     * https://packaging.python.org/tutorials/distributing-packages/
+ """
+ 
+-from __future__ import absolute_import, print_function
+ from invoke import Collection, task
+ from invoke_cleanup import path_glob
+ from .invoke_dry_run import DryRunContext
+diff --git a/tasks/test.py b/tasks/test.py
+index 6fe045c..f3104eb 100644
+--- a/tasks/test.py
++++ b/tasks/test.py
+@@ -3,7 +3,6 @@
+ Invoke test tasks.
+ """
+ 
+-from __future__ import print_function
+ import os.path
+ import sys
+ from invoke import task, Collection
+diff --git a/tests/parse_tests_with_parse_type/test_bugs.py b/tests/parse_tests_with_parse_type/test_bugs.py
+index 05284db..da4d053 100644
+--- a/tests/parse_tests_with_parse_type/test_bugs.py
++++ b/tests/parse_tests_with_parse_type/test_bugs.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ 
+diff --git a/tests/parse_tests_with_parse_type/test_findall.py b/tests/parse_tests_with_parse_type/test_findall.py
+index c49bdc0..000cce6 100644
+--- a/tests/parse_tests_with_parse_type/test_findall.py
++++ b/tests/parse_tests_with_parse_type/test_findall.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_tests_with_parse_type/test_parse.py b/tests/parse_tests_with_parse_type/test_parse.py
+index 5f23642..751a681 100644
+--- a/tests/parse_tests_with_parse_type/test_parse.py
++++ b/tests/parse_tests_with_parse_type/test_parse.py
+@@ -1,6 +1,5 @@
+ # coding: utf-8
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_tests_with_parse_type/test_parsetype.py b/tests/parse_tests_with_parse_type/test_parsetype.py
+index f791bd5..dddcfb5 100644
+--- a/tests/parse_tests_with_parse_type/test_parsetype.py
++++ b/tests/parse_tests_with_parse_type/test_parsetype.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_tests_with_parse_type/test_pattern.py b/tests/parse_tests_with_parse_type/test_pattern.py
+index b02a877..e144b48 100644
+--- a/tests/parse_tests_with_parse_type/test_pattern.py
++++ b/tests/parse_tests_with_parse_type/test_pattern.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_tests_with_parse_type/test_result.py b/tests/parse_tests_with_parse_type/test_result.py
+index 2ff4c68..15849cb 100644
+--- a/tests/parse_tests_with_parse_type/test_result.py
++++ b/tests/parse_tests_with_parse_type/test_result.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_tests_with_parse_type/test_search.py b/tests/parse_tests_with_parse_type/test_search.py
+index 5a4a9c4..d6108aa 100644
+--- a/tests/parse_tests_with_parse_type/test_search.py
++++ b/tests/parse_tests_with_parse_type/test_search.py
+@@ -1,5 +1,4 @@
+ # -- REPLACE: parse with parse_type.parse
+-from __future__ import absolute_import, print_function
+ from parse_type import parse
+ 
+ # -- ORIGINAL_SOURCE_STARTS_HERE:
+diff --git a/tests/parse_type_test.py b/tests/parse_type_test.py
+index e254279..f768ce8 100755
+--- a/tests/parse_type_test.py
++++ b/tests/parse_type_test.py
+@@ -1,12 +1,8 @@
+ # -*- coding: utf-8 -*-
+ 
+-from __future__ import absolute_import
+ from parse_type import TypeBuilder
+ from enum import Enum
+-try:
+-    import unittest2 as unittest
+-except ImportError:
+-    import unittest
++import unittest
+ 
+ 
+ # -----------------------------------------------------------------------------
+diff --git a/tests/test_builder.py b/tests/test_builder.py
+index bf6582a..26f3ee9 100755
+--- a/tests/test_builder.py
++++ b/tests/test_builder.py
+@@ -6,7 +6,6 @@
+ REQUIRES: parse >= 1.8.4 ('pattern' attribute support)
+ """
+ 
+-from __future__ import absolute_import
+ import re
+ import unittest
+ import parse
+diff --git a/tests/test_cardinality.py b/tests/test_cardinality.py
+index 621e2e6..4b971c4 100755
+--- a/tests/test_cardinality.py
++++ b/tests/test_cardinality.py
+@@ -4,7 +4,6 @@
+ Test suite to test the :mod:`parse_type.cardinality` module.
+ """
+ 
+-from __future__ import absolute_import
+ from .parse_type_test import ParseTypeTestCase, parse_number
+ from parse_type import Cardinality, TypeBuilder, build_type_dict
+ from parse import Parser
+diff --git a/tests/test_cardinality_field.py b/tests/test_cardinality_field.py
+index 3c59cb0..f939f30 100755
+--- a/tests/test_cardinality_field.py
++++ b/tests/test_cardinality_field.py
+@@ -16,7 +16,6 @@
+     IDEA, working prototype with patched parse module, but not accepted.
+ """
+ 
+-from __future__ import absolute_import
+ from .parse_type_test \
+     import TestCase, parse_number, unittest
+ from .test_cardinality import CardinalityTypeBuilderTest
+diff --git a/tests/test_cardinality_field0.py b/tests/test_cardinality_field0.py
+index 663a30a..aff4d66 100755
+--- a/tests/test_cardinality_field0.py
++++ b/tests/test_cardinality_field0.py
+@@ -16,7 +16,6 @@
+     IDEA, working prototype with patched parse module, but not accepted.
+ """
+ 
+-from __future__ import absolute_import
+ from .parse_type_test import ParseTypeTestCase
+ from parse_type import TypeBuilder, build_type_dict
+ import parse
+diff --git a/tests/test_cfparse.py b/tests/test_cfparse.py
+index 732234e..d269cca 100644
+--- a/tests/test_cfparse.py
++++ b/tests/test_cfparse.py
+@@ -5,7 +5,6 @@
+ Test suite to test the :mod:`parse_type.cfparse` module.
+ """
+ 
+-from __future__ import absolute_import
+ from .parse_type_test import ParseTypeTestCase, parse_number, unittest
+ from parse_type.cfparse import Parser
+ from parse_type.cardinality_field \
+diff --git a/tests/test_parse_decorator.py b/tests/test_parse_decorator.py
+index bb1972a..a302d89 100755
+--- a/tests/test_parse_decorator.py
++++ b/tests/test_parse_decorator.py
+@@ -5,7 +5,6 @@
+ Integrated into :mod:`parse` module.
+ """
+ 
+-from __future__ import absolute_import
+ import unittest
+ import parse
+ from parse_type import build_type_dict
+@@ -54,7 +53,7 @@ def parse_number(text):
+ 
+     def test_classmethod_with_pattern_decorator(self):
+         choice_pattern = r"Alice|Bob|Charly"
+-        class C(object):
++        class C:
+             @classmethod
+             @parse.with_pattern(choice_pattern)
+             def parse_choice(cls, text):
+@@ -65,7 +64,7 @@ def parse_choice(cls, text):
+ 
+     def test_staticmethod_with_pattern_decorator(self):
+         choice_pattern = r"Alice|Bob|Charly"
+-        class S(object):
++        class S:
+             @staticmethod
+             @parse.with_pattern(choice_pattern)
+             def parse_choice(text):
+@@ -98,7 +97,7 @@ def parse_number(text):
+ 
+     def test_decorated_classmethod_with_parser(self):
+         # -- SETUP:
+-        class C(object):
++        class C:
+             @classmethod
+             @parse.with_pattern(r"Alice|Bob|Charly")
+             def parse_person(cls, text):
+diff --git a/tests/test_parse_number.py b/tests/test_parse_number.py
+index 9a94df9..eb12656 100644
+--- a/tests/test_parse_number.py
++++ b/tests/test_parse_number.py
+@@ -4,7 +4,6 @@
+ Related to auto-detection of number base (base=10, 2, 8, 16).
+ """
+ 
+-from __future__ import absolute_import, print_function
+ import pytest
+ import parse
+ 
+diff --git a/tests/test_parse_util.py b/tests/test_parse_util.py
+index 5642277..f7dfbc6 100644
+--- a/tests/test_parse_util.py
++++ b/tests/test_parse_util.py
+@@ -4,7 +4,6 @@
+ Test suite to test the :mod:`parse_type.parse_util` module.
+ """
+ 
+-from __future__ import absolute_import, print_function
+ from .parse_type_test import TestCase, unittest
+ from parse_type.parse_util \
+     import Field, FieldParser, FormatSpec, make_format_spec
+
