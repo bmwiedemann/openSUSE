@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 30 07:47:04 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.3
+  * [AMD]
+    - [VMR/RPL/GNR] Voltage Curve Optimizer (VCO)
+        - Provide a specific VCO formula based on HWM_CHIPSET=AMD_VCO
+          build parameter
+        - The standard voltage formulas are restored to these architectures
+    - Zen5: Guessed a new P-State MSR bits specification to fix the
+      Coefficient Of Frequency (COF)
+
+-------------------------------------------------------------------
 Mon Aug 12 15:07:52 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.2
