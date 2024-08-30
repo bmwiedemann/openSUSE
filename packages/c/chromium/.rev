@@ -5060,4 +5060,17 @@ boo#1224178</comment>
     <comment>Chromium 128.0.6613.84 (boo#1229591)</comment>
     <requestid>1195217</requestid>
   </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>f99c824a668bc3ae86fc711852f13239</srcmd5>
+    <version>128.0.6613.113</version>
+    <time>1725017376</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 128.0.6613.113 (boo#1229897)
+  * CVE-2024-7969: Type Confusion in V8
+  * CVE-2024-8193: Heap buffer overflow in Skia
+  * CVE-2024-8194: Type Confusion in V8
+  * CVE-2024-8198: Heap buffer overflow in Skia
+</comment>
+    <requestid>1197357</requestid>
+  </revision>
 </revisionlist>

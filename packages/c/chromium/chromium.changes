@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 29 04:50:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 128.0.6613.113 (boo#1229897)
+  * CVE-2024-7969: Type Confusion in V8
+  * CVE-2024-8193: Heap buffer overflow in Skia
+  * CVE-2024-8194: Type Confusion in V8
+  * CVE-2024-8198: Heap buffer overflow in Skia
+
+-------------------------------------------------------------------
 Wed Aug 21 21:10:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 128.0.6613.84 (boo#1229591)
