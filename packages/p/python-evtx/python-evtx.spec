@@ -1,7 +1,7 @@
 #
 # spec file for package python-evtx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,9 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define commands dump dump_chunk_slack eid_record_numbers extract_record filter_records info record_structure structure templates
-%bcond_without python2
+%define commands dump dump_json dump_chunk_slack eid_record_numbers extract_record filter_records info record_structure structure templates
 Name:           python-evtx
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        Windows Event Log files parser
 License:        Apache-2.0
@@ -36,25 +34,17 @@ BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-%if %{with python2}
-BuildRequires:  python2-xml
-%endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-hexdump
 Requires:       python-lxml
-Requires:       python-six
-%ifpython2
-Requires:       python-xml
-%endif
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -69,8 +59,7 @@ inspired by the work of Andreas Schuster and his Perl implementation
 "Parse-Evtx".
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 find Evtx -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:56:38 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.8.0
+   * Remove support for Python 2.7 and specify minimum supported version is 3.8.
+     Use black/isort/ruff to ensure the consistency of the code.
+   * Fixed issue w/ Python 3 by @forensenellanebbia in #75
+   * Fix file names in README.md by @maehw in #79
+   * Add JSON dump functionality by @ajread4 in #82
+   * add missing comma to array by @snipcodeit in #83
+   * weaken the dependency rules for use with python3+Fedora by @xambroz in #84
+
+-------------------------------------------------------------------
 Mon Nov  8 11:04:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency declaration 
