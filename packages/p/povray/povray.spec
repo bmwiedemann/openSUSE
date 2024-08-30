@@ -85,7 +85,7 @@ dos2unix -k unix/scripts/*.sh
 %build
 ( cd unix && ./prebuild.sh )
 %configure \
-    COMPILED_BY=%{vendor} \
+    COMPILED_BY="%{vendor}" \
     --disable-strip \
     --disable-optimiz \
     --with-boost-libdir=%{_libdir}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 21:12:13 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Quote "%{vendor}", otherwise it can be parsed wrong when it has
+  a value like "SUSE LLC <https://www.suse.com/>".
+
+-------------------------------------------------------------------
 Thu Feb 22 07:17:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
