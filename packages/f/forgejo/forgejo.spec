@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Self-hostable forge
 License:        MIT
@@ -214,6 +214,6 @@ semodule -r %{name} 2>/dev/null || :
 %endif
 
 %files firewalld
-%config(noreplace) %{_prefix}/lib/firewalld/services/%{name}.xml
+%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %changelog

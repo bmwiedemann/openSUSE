@@ -187,4 +187,31 @@
     * language detection in the repository got additional languages (forwarded request 1193292 from rrahl0)</comment>
     <requestid>1193293</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b1c057faf71b726ca2d12d2ac0880abe</srcmd5>
+    <version>8.0.2</version>
+    <time>1725017531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.2:
+  * Overflow for images on project cards.
+  * Allow unreacting from comment popover.
+  * The scope of application tokens is not verified when writing
+    containers or Conan packages.
+  * When a Forgejo Actions workflow includes a workflow_dispatch with
+    inputs and other events (for instance push), it is silently ignored
+    because of a parsing error.
+  * Automerge on AGit pull requests is ignored.
+  * Show lock owner instead of repo owner on LFS setting page.
+  * Render plain text file if the LFS object doesn't exist.
+  * Panic of ssh public key page after deletion of an auth source.
+  * Add missing repository type filter parameters to pager.
+  * Reverted a change from Gitea which prevented allow/reject reviews on
+    merged or closed PRs. This change was not considered by the Forgejo
+    UI team and there is a consensus that it feels like a regression,
+    since it interferes with workflows known to be used by Forgejo users
+    without providing a tangible benefit.
+  * Run full PR checks on AGit push.
+  * Updated translations (forwarded request 1197494 from rrahl0)</comment>
+    <requestid>1197495</requestid>
+  </revision>
 </revisionlist>
