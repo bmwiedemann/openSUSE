@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 29 09:07:45 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't build with fcitx support. fcitx support was just added
+  because of a bug (boo#1025413) that could be fixed by building
+  with fcitx support but upstream SDL2 developers fixed it
+  in 2.0.5 when building without fcitx support too. Also fcitx
+  support has always been disabled in SLE/Leap and in Factory
+  it's built against fcitx 4.2.9.9, not the newer fcitx5 so
+  let's disable it in order to reduce dependencies.
+
+-------------------------------------------------------------------
 Fri Aug 16 08:57:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.6

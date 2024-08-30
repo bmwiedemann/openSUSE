@@ -37,9 +37,6 @@ BuildRequires:  libdecor-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(dbus-1)
-%if !0%{?sle_version}
-BuildRequires:  pkgconfig(fcitx)
-%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
@@ -117,9 +114,7 @@ perl -i -pe 's{\r\n}{\n}g' *.txt README.md
 # In this instance, we do want --with-pic because of libSDL2main.a.
 %configure --with-pic --disable-alsa-shared --disable-video-directfb \
 	--enable-video-kmsdrm --enable-video-wayland \
-%if 0%{?sle_version}
 	--disable-fcitx \
-%endif
 %ifarch ix86
 	--enable-sse2=no \
 %endif
