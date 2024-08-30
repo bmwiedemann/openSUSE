@@ -1445,7 +1445,7 @@ Prefer: -primus
 Prefer: -staging-build-key
 Prefer: -clutter-gst-devel
 
-# We have multiple versions of ffmpeg available, the preferred one is ffmpeg5, followd by 4, followed by 3
+# We have multiple versions of ffmpeg available, the preferred one is ffmpeg7
 %define ffmpeg_pref ffmpeg-7
 Prefer: %{ffmpeg_pref}-mini-libs
 Prefer: %{ffmpeg_pref}-mini-devel
