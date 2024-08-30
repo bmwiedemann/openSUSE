@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:02:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240816.00
+  * Add configuration toggle to enable/disable use
+    of OS native certificate stores (#419)
+  * Fix dependencies in stable branch #412 (#415)
+  * Update dep: golang.org/x/crypto to v0.17.0
+  * Update dep: google.golang.org/protobuf to 1.33.0
+  * Update dep: golang.org/x/net to 0.17.0
+  * Update dep: google.golang.org/grpc to v1.57.1
+- from version 20240813.00
+  * Update README with MDS MTLS docs (#418)
+- from version 20240808.01
+  * Avoid writing configuration files when they already
+    exist on wicked and NetworkManager (#410)
+- from version 20240808.00
+  * Update golang.org/x/net dependencies
+    to catch up on CVEs (#412)
+- from version 20240805.00
+  * Get rid of deperecated dependencies in
+    snapshot service generate code (#411)
+- Drop dont_overwrite_ifcfg.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon Aug  5 07:26:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240802.00
