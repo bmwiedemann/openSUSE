@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 23 10:09:20 UTC 2024 - pgajdos@suse.com
+
+- drop optional test dependency on python-commentjson
+
+-------------------------------------------------------------------
 Fri Dec  8 13:39:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
