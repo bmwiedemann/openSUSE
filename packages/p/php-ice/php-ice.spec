@@ -72,7 +72,7 @@ PHP classes.
 %endif
 
 %build
-export CFLAGS="%{optflags} -fvisibility=hidden"
+export CFLAGS="%{optflags} -fvisibility=hidden -fpermissive"
 %{__phpize}
 %configure --enable-%{pkg_name}
 %make_build
