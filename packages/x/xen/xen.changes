@@ -82,6 +82,9 @@ Tue Jul 30 05:58:34 MDT 2024 - carnold@suse.com
   6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
   6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
   xsa458.patch
+- Dropped patches no longer necessary
+  bin-python3-conversion.patch
+  migration-python3-conversion.patch
 
 -------------------------------------------------------------------
 Tue Jul 23 09:43:13 UTC 2024 - Franz Sirl <franz.sirl-obs@lauterbach.com>

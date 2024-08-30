@@ -2966,4 +2966,12 @@
     <comment>Update to Xen 4.19.0 with additional security fixes.</comment>
     <requestid>1194735</requestid>
   </revision>
+  <revision rev="349" vrev="2">
+    <srcmd5>afa8260befeeb10cc7335b8c2abf1f54</srcmd5>
+    <version>4.19.0_02</version>
+    <time>1725022636</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1197500</requestid>
+  </revision>
 </revisionlist>
