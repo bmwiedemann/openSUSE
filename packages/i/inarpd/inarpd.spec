@@ -1,7 +1,8 @@
 #
 # spec file for package inarpd
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +29,7 @@ Source:         https://kernel.org/pub/linux/utils/net/hdlc/%{name}-%{version}.c
 Source1:        https://kernel.org/pub/linux/utils/net/hdlc/%{name}-%{version}.c.sign
 Source2:        inarpd.8
 Source99:       %name.keyring
+Patch0:         inarpd-fix-gcc14.patch
 BuildRequires:  gcc
 BuildRequires:  gzip
 
@@ -37,6 +39,7 @@ Inverse ARP (InARP) daemon for Linux.
 %prep
 %setup -q -c -T
 gunzip -c %{SOURCE0} > %{name}-%{version}.c
+%patch -P0 -p1
 
 %build
 gcc %{optflags} %{name}-%{version}.c -o %{name}

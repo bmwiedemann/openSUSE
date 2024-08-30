@@ -1,0 +1,12 @@
+diff --git a/inarpd-0.17.c b/inarpd-0.17.c
+index 7ce7edb..6c14b3c 100644
+--- a/inarpd-0.17.c
++++ b/inarpd-0.17.c
+@@ -27,6 +27,7 @@
+ #include <asm/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
++#include <arpa/inet.h>
+ #include <sys/socket.h>
+ #define __const__ /* avoid compiler warnings related to __const__ returns */
+ #include <linux/in.h>
