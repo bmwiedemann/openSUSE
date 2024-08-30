@@ -287,4 +287,17 @@
 - Add Provides for the old python-daemon name</comment>
     <requestid>1133522</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8065e84ec6cf42234a0041ee2a3f2499</srcmd5>
+    <version>3.0.2</version>
+    <time>1725017564</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to 3.0.2:
+  * Migrate to use the explicitly-maintained ‘packaging’ library.
+  * Clarify copyright and grants of license.
+  * Migrate to PEP 517 simple build system for Python distribution.
+  * Remove dynamically-constructed non-standard metadata attributes.
+- Switch to pagure source URL.</comment>
+    <requestid>1197679</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 30 04:49:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upate to 3.0.2:
+  * Migrate to use the explicitly-maintained ‘packaging’ library.
+  * Clarify copyright and grants of license.
+  * Migrate to PEP 517 simple build system for Python distribution.
+  * Remove dynamically-constructed non-standard metadata attributes.
+- Switch to pagure source URL.
+
+-------------------------------------------------------------------
 Fri Dec 15 21:27:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:
