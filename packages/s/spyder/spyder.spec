@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.5.5
+Version:        5.5.6
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -48,6 +48,7 @@ Requires:       python3-chardet >= 2.0.0
 Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-flake8 >= 3.8.0
+Requires:       python3-importlib-metadata >= 4.6.0
 Requires:       python3-intervaltree
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
@@ -68,7 +69,6 @@ Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 24
 Requires:       python3-qstylizer >= 0.2.2
 Requires:       python3-qt5 >= 5.10
-Requires:       python3-qtwebengine-qt5 >= 5.10
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 49.6.0
 Requires:       python3-textdistance >= 4.2.0
@@ -82,7 +82,7 @@ Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server >= 1.11.0 with python3-python-lsp-server < 1.12)
+Requires:       (python3-python-lsp-server >= 1.12.0 with python3-python-lsp-server < 1.13)
 Requires:       (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6.0)
 Requires:       (python3-spyder-kernels >= 2.5.2 with python3-spyder-kernels < 2.6)
 Recommends:     %{name}-dicom
@@ -92,6 +92,7 @@ Recommends:     python3-Pillow
 Recommends:     python3-matplotlib >= 2.0.0
 Recommends:     python3-numpy >= 1.7
 Recommends:     python3-pandas >= 1.1.1
+Recommends:     python3-qtwebengine-qt5 >= 5.10
 Recommends:     python3-scipy >= 0.17.0
 Recommends:     python3-sympy >= 0.7.3
 Suggests:       %{name}-line-profiler
@@ -128,6 +129,7 @@ BuildRequires:  python3-cloudpickle >= 0.5.0
 BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flake8 >= 3.8.0
 BuildRequires:  python3-flaky
+BuildRequires:  python3-importlib-metadata >= 4.6.0
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
@@ -177,7 +179,7 @@ BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.11 with python3-python-lsp-server < 1.12)
+BuildRequires:  (python3-python-lsp-server >= 1.12 with python3-python-lsp-server < 1.13)
 BuildRequires:  (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6)
 BuildRequires:  (python3-spyder-kernels >= 2.5.2 with python3-spyder-kernels < 2.6)
 # /SECTION
