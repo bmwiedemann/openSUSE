@@ -155,4 +155,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
 - Update to 550.107.02 (boo#1229716)</comment>
     <requestid>1196990</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4f46aa6c3d22d69a614c819aa383554b</srcmd5>
+    <version>550.107.02</version>
+    <time>1725022636</time>
+    <user>dimstar_suse</user>
+    <comment>- added missing LICENSE file</comment>
+    <requestid>1197777</requestid>
+  </revision>
 </revisionlist>

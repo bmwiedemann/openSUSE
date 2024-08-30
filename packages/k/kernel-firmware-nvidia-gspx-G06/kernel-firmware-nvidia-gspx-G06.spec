@@ -45,6 +45,7 @@ License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 %if %{without cuda}
 Source0:        http://download.nvidia.com/XFree86/Linux-x86_64/%{version}/NVIDIA-Linux-x86_64-%{version}.run
+Source1:        LICENSE
 NoSource:       0
 %endif
 # This is defined at build, not for 'osc service run download_files` or
@@ -79,8 +80,10 @@ the OpenSource NVIDIA kernel module driver G06.
 %prep
 %if %{without cuda}
 sh %{_sourcedir}/NVIDIA-Linux-%{arch}-%{version}.run -x
+cp NVIDIA-Linux-%{arch}-%{version}/LICENSE .
 %else
 rpm2cpio %{SOURCE1} | cpio -di
+cp $RPM_SOURCE_DIR/LICENSE .
 %endif
 
 %build
@@ -108,6 +111,7 @@ install -m 644 ./lib/firmware/nvidia/%{version}/{gsp_ga10x.bin,gsp_tu10x.bin} \
 %endif
 
 %files
+%license LICENSE
 %dir %{_firmwaredir}/nvidia
 %dir %{_firmwaredir}/nvidia/%{version}
 %{_firmwaredir}/nvidia/%{version}/gsp_ga10x.bin

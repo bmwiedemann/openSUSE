@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 30 09:42:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added missing LICENSE file 
+
+-------------------------------------------------------------------
 Wed Aug 28 12:47:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - reverted CUDA update version to 560.x.y due to changes in CUDA
