@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 29 09:04:05 UTC 2024 - pgajdos@suse.com
+
+- does not require python-six for build
+
+-------------------------------------------------------------------
 Fri Dec 29 15:08:13 UTC 2023 - egotthold@suse.com
 
 - Update to version v2.1.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-to-sqlite3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  %{python_module mysql-connector-python >= 8.2.0}
 BuildRequires:  %{python_module python-slugify >= 7.0.0}
 BuildRequires:  %{python_module pytimeparse >= 1.1.8}
 BuildRequires:  %{python_module simplejson >= 3.19.0}
-BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tqdm >= 4.35.0}
 # /SECTION
