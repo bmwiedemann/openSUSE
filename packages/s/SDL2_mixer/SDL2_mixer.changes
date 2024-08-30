@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 28 05:06:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Reintroduce baselibs.conf [boo#1227467]
+
+-------------------------------------------------------------------
 Fri Feb  2 15:03:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Link to libmpg123 again
@@ -57,7 +62,7 @@ Sat Jul  9 13:14:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 - Switch from libmodplug to libxmp as backend for tracker files
 - Rename -devel subpackage based on SRPM name
 - Drop 0001-use-after-free-fluidsynth.patch (merged)
-- Drop baselibs.conf (no SDL2_ttf-dependent Tumbleweed packages
+- Drop baselibs.conf (no SDL2_mixer-dependent Tumbleweed packages
   themselves have baselibs).
 
 -------------------------------------------------------------------

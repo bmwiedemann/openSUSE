@@ -29,6 +29,7 @@ URL:            http://libsdl.org/projects/SDL_mixer/
 Source:         https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz.sig
 Source3:        %name.keyring
+Source4:        baselibs.conf
 BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config

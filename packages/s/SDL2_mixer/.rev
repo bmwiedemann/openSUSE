@@ -110,4 +110,12 @@
     <comment>- Link to libmpg123 again</comment>
     <requestid>1143672</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>4978f2ffd3ba3a85c9b4b42e383fd9c1</srcmd5>
+    <version>2.8.0</version>
+    <time>1725017557</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduce baselibs.conf [boo#1227467]</comment>
+    <requestid>1197668</requestid>
+  </revision>
 </revisionlist>
