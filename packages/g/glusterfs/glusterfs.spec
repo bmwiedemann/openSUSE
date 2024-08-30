@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -171,6 +171,17 @@ chmod -v u-s "%buildroot/%_bindir/fusermount-glusterfs"
 rm -fv "%buildroot/%_sbindir/conf.py"
 rm -f "%buildroot/etc/bash_completion.d/gluster.bash"
 %fdupes %buildroot/%_prefix
+%python3_fix_shebang
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/ganesha/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/gfevents/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/glusterfind/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/python/syncdaemon/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/gfind_missing_files/*
+%python3_fix_shebang_path %{buildroot}%{_libexecdir}/glusterfs/scripts/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/glusterfs/scripts/*
+%endif
 
 %pre
 %service_add_pre glusterd.service glustereventsd.service glusterfssharedstorage.service gluster-ta-volume.service

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 18:11:49 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang{,_path} macros, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri Dec 15 08:56:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.1

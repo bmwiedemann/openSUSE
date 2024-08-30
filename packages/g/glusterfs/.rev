@@ -321,4 +321,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1134601</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>95046ae1655d39bd0ef742bbff82bf3b</srcmd5>
+    <version>11.1</version>
+    <time>1725017369</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang{,_path} macros, [bsc#1212476]</comment>
+    <requestid>1197454</requestid>
+  </revision>
 </revisionlist>
