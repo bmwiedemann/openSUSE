@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:09:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.0
+  * Fix issue where roundtripping a masked array with no masked
+    values removes the mask [#1803]
+  * Use a custom exception AsdfSerializationError to indicate when
+    an object in the tree fails to be serialized by asdf (and by
+    yaml). This exception currently inherits from
+    yaml.representer.RepresenterError to provide backwards
+    compatibility. However this inheritance may be dropped in a
+    future asdf version. Please migrate to the new
+    AsdfSerializationError. [#1809]
+  * Drop importlib_metadata as a dependency on Python 3.12 and
+    newer [#1810]
+  * Bumped minimal requirement on attrs from 20.1.0 to 22.2.0
+    [#1815]
+- Release 3.3.0
+  * Fix __asdf_traverse__ for non-tagged objects [#1739]
+  * Deprecate asdf.testing.helpers.format_tag [#1774]
+  * Deprecate asdf.versioning.AsdfSpec [#1774]
+  * Deprecate asdf.util.filepath_to_url use pathlib.Path.to_uri
+    [#1735]
+  * Record package providing manifest for extensions used to write
+    a file and AsdfPackageVersionWarning when installed
+    extension/manifest package does not match that used to write
+    the file [#1758]
+  * Fix bug where a dictionary containing a key id caused any
+    contained references to fail to resolve [#1716]
+  * Issue a AsdfManifestURIMismatchWarning during write if a used
+    extension was created from a manifest registered with a uri
+    that does not match the id in the manifest [#1785]
+  * Allow converters to provide types as strings that can resolve
+    to public classes (even if the class is implemented in a
+    private module). [#1654]
+  * Add options to control saving the base array when saving array
+    views controlled via AsdfConfig.default_array_save_base,
+    AsdfFile.set_array_save_base and
+    SerializationContext.set_array_save_base [#1753]
+  * Deprecate ignore_implicit_conversion and "implicit conversion"
+    [#1724]
+  * Add lazy_tree option to asdf.open and asdf.config to allow lazy
+    deserialization of ASDF tagged tree nodes to custom objects.
+    [#1733]
+
+-------------------------------------------------------------------
 Fri Apr 19 20:12:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.2.0

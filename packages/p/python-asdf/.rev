@@ -300,4 +300,41 @@
     <comment></comment>
     <requestid>1169275</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a9eb5f83c831af46c6733dddf3e3e2f9</srcmd5>
+    <version>3.4.0</version>
+    <time>1725017527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0
+  * Fix issue where roundtripping a masked array with no masked
+    values removes the mask [#1803]
+  * Use a custom exception AsdfSerializationError to indicate when
+    an object in the tree fails to be serialized by asdf (and by
+    yaml). This exception currently inherits from
+    yaml.representer.RepresenterError to provide backwards
+    compatibility. However this inheritance may be dropped in a
+    future asdf version. Please migrate to the new
+    AsdfSerializationError. [#1809]
+  * Drop importlib_metadata as a dependency on Python 3.12 and
+    newer [#1810]
+  * Bumped minimal requirement on attrs from 20.1.0 to 22.2.0
+    [#1815]
+- Release 3.3.0
+  * Fix __asdf_traverse__ for non-tagged objects [#1739]
+  * Deprecate asdf.testing.helpers.format_tag [#1774]
+  * Deprecate asdf.versioning.AsdfSpec [#1774]
+  * Deprecate asdf.util.filepath_to_url use pathlib.Path.to_uri
+    [#1735]
+  * Record package providing manifest for extensions used to write
+    a file and AsdfPackageVersionWarning when installed
+    extension/manifest package does not match that used to write
+    the file [#1758]
+  * Fix bug where a dictionary containing a key id caused any
+    contained references to fail to resolve [#1716]
+  * Issue a AsdfManifestURIMismatchWarning during write if a used
+    extension was created from a manifest registered with a uri
+    that does not match the id in the manifest [#1785]
+  * Allow converters to provide types as strings that can resolve (forwarded request 1197472 from bnavigator)</comment>
+    <requestid>1197473</requestid>
+  </revision>
 </revisionlist>
