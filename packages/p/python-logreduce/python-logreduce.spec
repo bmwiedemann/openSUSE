@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Requires:       python-PyYAML
 Requires:       python-SQLAlchemy
 Requires:       python-aiohttp
 Requires:       python-alembic
-Requires:       python-gear
 Requires:       python-numpy
 Requires:       python-requests
 Requires:       python-scikit-learn
@@ -49,7 +48,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module alembic}
-BuildRequires:  %{python_module gear}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}

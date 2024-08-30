@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 23 08:30:05 UTC 2024 - pgajdos@suse.com
+
+- drop dependency on python-gear
+
+-------------------------------------------------------------------
 Wed Mar 23 10:54:11 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
