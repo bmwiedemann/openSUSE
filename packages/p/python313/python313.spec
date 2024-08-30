@@ -177,15 +177,18 @@ Patch09:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch10:        fix_configure_rst.patch
-# PATCH-FIX-UPSTREAM skip_test_abort_clients.patch gh#python/cpython#122136 mcepl@suse.com
-# Not yet fixed failing test
-Patch11:        skip_test_abort_clients.patch
 # PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
 # prevent email header injection, patch from gh#python/cpython!122608
 Patch12:        CVE-2024-6923-email-hdr-inject.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
 Patch13:        bso1227999-reproducible-builds.patch
+# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
+# avoid denial of service in zipfile
+Patch14:        CVE-2024-8088-inf-loop-zipfile_Path.patch
+# PATCH-FIX-UPSTREAM gh122136-test_asyncio-kernel-buffer-data.patch gh#python/cpython#122136 mcepl@suse.com
+# test.test_asyncio.test_server.TestServer2.test_abort_clients fails because of changes in the kernel
+Patch15:        gh122136-test_asyncio-kernel-buffer-data.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

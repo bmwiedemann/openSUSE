@@ -212,4 +212,20 @@
     <comment></comment>
     <requestid>1193120</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>687aaec9c015e729a18b5f2a27d6d68a</srcmd5>
+    <version>3.13.0~rc1</version>
+    <time>1725017520</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gh122136-test_asyncio-kernel-buffer-data.patch fixing
+  gh#python/cpython#122136 (changes in kernel provide different
+  amount of data in the socket buffers).
+- Remove skip_test_abort_clients.patch, which is not needed any
+  more.
+
+- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).</comment>
+    <requestid>1197482</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:46:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh122136-test_asyncio-kernel-buffer-data.patch fixing
+  gh#python/cpython#122136 (changes in kernel provide different
+  amount of data in the socket buffers).
+- Remove skip_test_abort_clients.patch, which is not needed any
+  more.
+
+-------------------------------------------------------------------
+Wed Aug 28 16:54:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).
+
+-------------------------------------------------------------------
 Thu Aug  8 11:04:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update list of skipped tests in qemu linux-user emulation
