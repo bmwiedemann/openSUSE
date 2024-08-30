@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 29 19:47:25 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with GCC14
+
+-------------------------------------------------------------------
 Mon Aug 19 17:44:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.8.0

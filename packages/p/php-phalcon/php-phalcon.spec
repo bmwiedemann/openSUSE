@@ -57,6 +57,7 @@ create and maintain a project like Phalcon.
 %setup -q -n %{pkg_name}-%{version}
 
 %build
+export CFLAGS="%{optflags} -fvisibility=hidden -fpermissive"
 %{__phpize}
 %configure --enable-%{pkg_name}
 %make_build
