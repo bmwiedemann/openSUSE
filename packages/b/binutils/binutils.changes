@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 13:18:28 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Update to current 2.43.1 branch [PED-10474]:
+  * PR32109 - fuzzing problem
+  * PR32083 - LTO vs overridden common symbols
+  * PR32067 - crash with LTO-plugin and --oformat=binary
+  * PR31956 - LTO vs wrapper symbols
+  * riscv - add Zimop and Zcmop extensions
+- Adjusted binutils-2.43-branch.diff.gz.
+
+-------------------------------------------------------------------
 Tue Aug  6 14:09:24 UTC 2024 - Michael Matz <matz@suse.com>
 
 - Update to version 2.43: 

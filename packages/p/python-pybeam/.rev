@@ -137,4 +137,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment></comment>
     <requestid>847904</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5ada49adb71b9cccccd4d2c2cc411d1a</srcmd5>
+    <version>0.8</version>
+    <time>1725017147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197528</requestid>
+  </revision>
 </revisionlist>

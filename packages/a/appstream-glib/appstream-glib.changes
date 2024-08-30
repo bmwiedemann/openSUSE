@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 25 14:03:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.8.3:
+  * Drop support for libstemmer
+  * Do not veto the extension if the parent cannot be found
+  * Support RFC9512 registration for application/yaml
+  * Stop trying to convert Fedora licenses into SPDX
+  * asb-plugin-font: Add glob match for .ttc files
+  * Update gl.po
+  * Update Simplified Chinese translation
+  * Make the appdata filename check match the plugin globs
+  * Remove Check for X-KDE-StartupNotify
+  * Update Russian translation
+  * Include screenshot size in "too large" errors
+  * Include screenshot height in "too small" error
+
+-------------------------------------------------------------------
 Fri Feb  9 12:56:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add asglib(swcatalog) provides: allow other packages to declare

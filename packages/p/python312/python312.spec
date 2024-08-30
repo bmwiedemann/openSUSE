@@ -186,6 +186,9 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 # PATCH-FIX-SLE docs-docutils_014-Sphinx_420.patch bsc#[0-9]+ mcepl@suse.com
 # related to gh#python/cpython#119317
 Patch41:        docs-docutils_014-Sphinx_420.patch
+# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
+# avoid denial of service in zipfile
+Patch42:        CVE-2024-8088-inf-loop-zipfile_Path.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

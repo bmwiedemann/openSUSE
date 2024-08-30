@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Regexp-Common
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,60 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Regexp-Common
-Version:        2017060201
-Release:        0
-#Upstream: SUSE-Public-Domain
 %define cpan_name Regexp-Common
+Name:           perl-Regexp-Common
+Version:        2024080801.0.0
+Release:        0
+# 2024080801 -> normalize -> 2024080801.0.0
+%define cpan_version 2024080801
+#Upstream: SUSE-Public-Domain
+License:        Artistic-1.0 OR Artistic-2.0 OR BSD-3-Clause OR MIT
 Summary:        Provide commonly requested regular expressions
-License:        Artistic-1.0 or Artistic-2.0 or BSD-3-Clause or MIT
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Regexp-Common/
-Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABIGAIL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABIGAIL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Regexp::Common) = %{version}
+Provides:       perl(Regexp::Common::CC) = %{version}
+Provides:       perl(Regexp::Common::Entry)
+Provides:       perl(Regexp::Common::SEN) = %{version}
+Provides:       perl(Regexp::Common::URI) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC1035) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC1738) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC1808) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC2384) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC2396) = %{version}
+Provides:       perl(Regexp::Common::URI::RFC2806) = %{version}
+Provides:       perl(Regexp::Common::URI::fax) = %{version}
+Provides:       perl(Regexp::Common::URI::file) = %{version}
+Provides:       perl(Regexp::Common::URI::ftp) = %{version}
+Provides:       perl(Regexp::Common::URI::gopher) = %{version}
+Provides:       perl(Regexp::Common::URI::http) = %{version}
+Provides:       perl(Regexp::Common::URI::news) = %{version}
+Provides:       perl(Regexp::Common::URI::pop) = %{version}
+Provides:       perl(Regexp::Common::URI::prospero) = %{version}
+Provides:       perl(Regexp::Common::URI::tel) = %{version}
+Provides:       perl(Regexp::Common::URI::telnet) = %{version}
+Provides:       perl(Regexp::Common::URI::tv) = %{version}
+Provides:       perl(Regexp::Common::URI::wais) = %{version}
+Provides:       perl(Regexp::Common::_support) = %{version}
+Provides:       perl(Regexp::Common::balanced) = %{version}
+Provides:       perl(Regexp::Common::comment) = %{version}
+Provides:       perl(Regexp::Common::delimited) = %{version}
+Provides:       perl(Regexp::Common::lingua) = %{version}
+Provides:       perl(Regexp::Common::list) = %{version}
+Provides:       perl(Regexp::Common::net) = %{version}
+Provides:       perl(Regexp::Common::number) = %{version}
+Provides:       perl(Regexp::Common::profanity) = %{version}
+Provides:       perl(Regexp::Common::whitespace) = %{version}
+Provides:       perl(Regexp::Common::zip) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,15 +77,16 @@ There is an alternative, subroutine-based syntax described in
 "Subroutine-based interface".
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -58,7 +94,6 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes COPYRIGHT COPYRIGHT.AL COPYRIGHT.AL2 COPYRIGHT.BSD COPYRIGHT.MIT README TODO
 %license LICENSE
 

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 29 05:55:04 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Move PR26867 kfail from kfail_factory to kfail.
+  * Merge PR28468 kfail with PR26867 kfail.
+
+-------------------------------------------------------------------
+Wed Aug 28 08:12:30 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Restore yama ptrace_scope == 1 kfails,
+    aaa_base-yama-enable-ptrace doesn't work.
+  * Enable yama ptrace_scope == 1 kfails for SLFO.
+  * Add PR32121 kfail.
+  * Drop Leap 15.3 and 15.4, add Leap 15.6.
+  * Replace ALP with SLFO.
+  * Move PR28468 kfail from kfail_factory to kfail.
+
+-------------------------------------------------------------------
+Wed Jun 19 13:11:11 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Remove python2 related PR29245 kfail.
+  * Remove PR30518 kfail.
+  * Remove yama ptrace_scope == 1 kfails.
+  * Remove PR28065 kfail.
+- Patches added (swo#32081):
+  * gdb-symtab-return-correct-reader-for-top-level-cu-in.patch
+- Add "BuildRequires: aaa_base-yama-enable-ptrace" on tumbleweed.
+- Maintenance script qa-local.sh:
+  * Add SLFO and Leap 15.6, drop Leap 15.3 and 15.4 and ALP.
+
+-------------------------------------------------------------------
 Wed Jun 19 09:46:17 UTC 2024 - Tom de Vries <tdevries@suse.com>
 
 - Mention changes in GDB 14:

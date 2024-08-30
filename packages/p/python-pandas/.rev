@@ -709,4 +709,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1187906</requestid>
   </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>98bb9267d629f35dad3ae1eee7e03d23</srcmd5>
+    <version>2.2.2</version>
+    <time>1725017155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197229</requestid>
+  </revision>
 </revisionlist>

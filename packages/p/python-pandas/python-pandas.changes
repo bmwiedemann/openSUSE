@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 28 13:53:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip overflowing tests on 32-bit
+
+-------------------------------------------------------------------
+Sun Aug 25 21:22:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pandas-pr59353-np2eval.patch
+  * gh#pandas-dev/pandas#59353
+  * gh#pandas-dev/pandas#58548
+
+-------------------------------------------------------------------
 Thu Jul 11 09:51:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pandas-pr59175-matplotlib.patch -- gh#pandas-dev/pandas#59175

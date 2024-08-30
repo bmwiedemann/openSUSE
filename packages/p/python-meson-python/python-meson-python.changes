@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 22 04:20:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.16.0:
+  * Correctly detect a wheel shipping shared libraries as being
+    platform dependent also when it does not ship compiled
+    executables or Python extension modules.
+  * Improve parsing of the $ARCHFLAGS environment variable.
+    Correctly handle repeated -arch flags.
+  * Do not break when trying to log filename containing Unicode
+    characters that cannot be encoded in the encoding used by the
+    standard output stream.
+  * Suppress all uses of ANSI terminal escapes when logging to a
+    stream that does not support them.
+  * Fix ANSI escape coloring of error messages.
+  * Respect the exclude_dirs and exclude_files arguments passed to
+    the install_subdir() Meson function in editable installs too.
+  * Make pkgutil.iter_packages() work properly for modules loaded
+    from editable installs.
+  * Add support for the custom_target() Meson function installing a
+    directory.
+  * In editable installs, when a rebuild is triggered on module
+    import, emit a message indicating that the package is being
+    rebuilt but suppress any output when there is no work to do.
+
+-------------------------------------------------------------------
 Tue Apr 16 19:27:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.15.0

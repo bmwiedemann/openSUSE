@@ -1088,4 +1088,15 @@
       socket.socketpair() fallback on platforms where AF_UNIX is</comment>
     <requestid>1192365</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e3f8091b22923d4b9ad9d1e4a1641a31</srcmd5>
+    <version>3.12.5</version>
+    <time>1725017140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).
+</comment>
+    <requestid>1197474</requestid>
+  </revision>
 </revisionlist>

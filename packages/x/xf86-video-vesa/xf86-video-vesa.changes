@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:10:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- exclude aarch64 and %{arm} architectures (inb/outb needed for this
+  driver)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:14:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

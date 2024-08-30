@@ -209,6 +209,9 @@ Patch24:        bso1227999-reproducible-builds.patch
 # PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
 # prevent email header injection, patch from gh#python/cpython!122608
 Patch25:        CVE-2024-6923-email-hdr-inject.patch
+# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
+# avoid denial of service in zipfile
+Patch26:        CVE-2024-8088-inf-loop-zipfile_Path.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -489,6 +492,7 @@ other applications.
 %patch -p1 -P 23
 %patch -p1 -P 24
 %patch -p1 -P 25
+%patch -p1 -P 26
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

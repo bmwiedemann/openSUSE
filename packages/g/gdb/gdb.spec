@@ -344,6 +344,7 @@ Patch2076:      gdb-exp-redo-cast-handling-for-indirection.patch
 
 Patch2090:      gdb-python-fix-gdb.python-py-disasm.exp-on-arm-linux.patch
 Patch2091:      gdb-testsuite-fix-gdb.fortran-array-bounds.exp-on-ar.patch
+Patch2092:      gdb-symtab-return-correct-reader-for-top-level-cu-in.patch
 
 #
 
@@ -386,6 +387,11 @@ Patch2132:      gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
 #
 
 # End of patches.
+
+%if 0%{?suse_version} >= 1600
+# Disable ptrace_scope on tumbleweed.
+BuildRequires:  aaa_base-yama-enable-ptrace
+%endif
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -821,6 +827,7 @@ find -name "*.info*"|xargs rm -f
 
 %patch -P 2090 -p1
 %patch -P 2091 -p1
+%patch -P 2092 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1

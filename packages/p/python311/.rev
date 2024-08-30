@@ -1335,4 +1335,15 @@ C API
   %{do_profiling} (bsc#1227999)</comment>
     <requestid>1192372</requestid>
   </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>eb6723628226e7c7a8fe14f2bf6e683b</srcmd5>
+    <version>3.11.9</version>
+    <time>1725017142</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).
+</comment>
+    <requestid>1197475</requestid>
+  </revision>
 </revisionlist>

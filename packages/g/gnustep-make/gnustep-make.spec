@@ -17,7 +17,6 @@
 
 
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
-%define         gs_layout        fhs-other
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 # Disable LTO for all GNUstep packages
 %define         _lto_cflags      %{nil}
@@ -43,14 +42,11 @@ was configured for the FHS file system layout, customised for SUSE.
 
 %prep
 %autosetup
-# Set correct library path.
-sed -e 's|/lib/|/%{_lib}/|' -e 's|/lib$|/%{_lib}|' \
-        FilesystemLayouts/fhs-system > FilesystemLayouts/%{gs_layout}
 
 %build
 # '--with-tar=tar' ensures we get the real tar rather than gnutar.
 # If star is installed, it sets up a duff gnutar.
-%configure --with-layout=%{gs_layout} \
+%configure --with-layout=fhs-system --with-libdir=%{_lib} \
 %if 0%{?suse_version} >= 1120
   --enable-native-objc-exceptions \
 %endif

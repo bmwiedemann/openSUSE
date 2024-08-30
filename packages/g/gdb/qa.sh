@@ -147,9 +147,6 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=25504
     "FAIL: gdb.threads/process-dies-while-detaching.exp: single-process: continue: .*: continue"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28065
-    "FAIL: gdb.threads/access-mem-running-thread-exit.exp:"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=25503
     "FAIL: gdb.threads/signal-while-stepping-over-bp-other-thread.exp: step \(pattern 3\)"
 
@@ -336,6 +333,15 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31831
     "FAIL: gdb.dap/log-message.exp: logging output \(checking body category\)"
 
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32121
+    "FAIL: gdb.arch/i386-disp-step-self-call.exp: check return address was updated correctly"
+    "FAIL: gdb.arch/amd64-disp-step-self-call.exp: check return address was updated correctly"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=26867
+    "FAIL: gdb.threads/signal-sigtrap.exp: sigtrap thread 1: signal SIGTRAP reaches handler"
+    "FAIL: gdb.threads/signal-command-handle-nopass.exp: step-over (yes|no): signal SIGUSR1"
+
 ) # kfail
 
 kfail_sle12=(
@@ -384,10 +390,6 @@ kfail_sle12=(
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into foo \(the program is no longer running\)"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into bar \(the program is no longer running\)"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into foo \(the program is no longer running\)"    
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29245
-    # Python-2 related.
-    "FAIL: gdb.python/py-mi-cmd.exp: -pycmd bk3 \(unexpected output\)"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26967
     "FAIL: gdb.base/longjmp.exp: next over call_longjmp \(2\)"
@@ -455,14 +457,8 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28551
     "FAIL: gdb.go/package.exp: going to first breakpoint \\(GDB internal error\\)"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28468
-    "FAIL: gdb.threads/signal-command-handle-nopass.exp: step-over (yes|no): signal SIGUSR1"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28477
     "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: continue to marker \(clone\)"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=26867
-    "FAIL: gdb.threads/signal-sigtrap.exp: sigtrap thread 1: signal SIGTRAP reaches handler"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28510
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: br main"
@@ -702,12 +698,6 @@ kfail_s390x=(
 
 kfail_i586=(
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=30518
-    "FAIL: gdb.python/py-disasm.exp: memory source api: disassemble test"
-    "FAIL: gdb.python/py-disasm.exp: memory source api: python analyzing_disassembler.find_replacement_candidate\(\)"
-    "FAIL: gdb.python/py-disasm.exp: memory source api: second disassembler pass"
-    "FAIL: gdb.python/py-disasm.exp: memory source api: python analyzing_disassembler.check\(\)"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30519
     "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test default value"
     "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test default value via gdb.parameter"
@@ -778,13 +768,13 @@ case $n in
 
 	    # yama ptrace_scope == 1
 	    # https://sourceware.org/pipermail/gdb-patches/2024-April/208251.html
-	    "Factory.*UNRESOLVED: gdb.base/gstack.exp: spawn gstack"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=run: inf2_how=attach: inf2: flush inferior output"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: inf1: flush inferior output"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: inf2: flush inferior output"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
-	    "Factory.*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=run: inf2_how=attach: continue"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.base/gstack.exp: spawn gstack"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=run: inf2_how=attach: inf2: flush inferior output"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: inf1: flush inferior output"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: inf2: flush inferior output"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=run: continue"
+	    "(Factory|SLFO).*UNRESOLVED: gdb.multi/multi-term-settings.exp: inf1_how=run: inf2_how=attach: continue"
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31671
 	    "SLE-11.*UNRESOLVED: gdb.objc/basicclass.exp: call an Objective-C method with no arguments"
@@ -850,10 +840,9 @@ case $n in
     4)
 	for id in SLE-12 \
 		      SLE-15 \
-		      ALP \
-		      openSUSE_Leap_15.3 \
-		      openSUSE_Leap_15.4 \
+		      SLFO \
 		      openSUSE_Leap_15.5 \
+		      openSUSE_Leap_15.6 \
 		      openSUSE_Factory; \
 	    do
 		for arch in x86_64 \
@@ -865,11 +854,11 @@ case $n in
 
 			config=$id.$arch
 			case $config in
-			    SLE-15.i586|SLE-12.i586|ALP.i586)
+			    SLE-15.i586|SLE-12.i586|SLFO.i586)
 				# No such config.
 				continue
 				;;
-			    ALP.ppc64le|openSUSE_Factory.ppc64le|*.s390x)
+			    SLFO.ppc64le|openSUSE_Factory.ppc64le|*.s390x)
 				# Not cleaned up yet.
 				continue
 				;;
@@ -901,7 +890,7 @@ case $n in
 			case $arch in
 			    x86_64)
 				case $id in
-				    SLE-12|ALP)
+				    SLE-12|SLFO)
 					sums=("$config/gdb-$arch-suse-linux-m64.-fPIE.-pie.sum"
 					      "$config/gdb-$arch-suse-linux-m64.sum"
 					      "$config/gdb-$arch-suse-linux-m32.-fPIE.-pie.sum"
@@ -921,7 +910,7 @@ case $n in
 				;;
 			    aarch64)
 				case $id in
-				    SLE-12|ALP)
+				    SLE-12|SLFO)
 					sums=("$config/gdb-$arch-suse-linux.-fPIE.-pie.sum"
 					      "$config/gdb-$arch-suse-linux.sum")
 					;;
@@ -933,7 +922,7 @@ case $n in
 				;;
 			    ppc64le|s390x)
 				case $id in
-				    SLE-12|ALP)
+				    SLE-12|SLFO)
 					sums=("$config/gdb-$arch-suse-linux-m64.-fPIE.-pie.sum"
 					      "$config/gdb-$arch-suse-linux-m64.sum")
 					;;
@@ -968,7 +957,7 @@ case $n in
 				SLE-12)
 				    kfail+=("${kfail_sle12[@]}")
 				    ;;
-				ALP|openSUSE_Factory)
+				SLFO|openSUSE_Factory)
 				    kfail+=("${kfail_factory[@]}")
 				    ;;
 				*)

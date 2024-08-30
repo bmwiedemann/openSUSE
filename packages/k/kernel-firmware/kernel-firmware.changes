@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:18:10 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240826 (git commit bec4fd18cc57):
+  * amdgpu: DMCUB updates forvarious AMDGPU ASICs
+  * rtw89: 8922a: add fw format-1 v0.35.41.0
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7925)
+  * rtl_bt: Add firmware and config files for RTL8922A
+  * rtl_bt: Add firmware file for the the RTL8723CS Bluetooth part
+  * rtl_bt: de-dupe identical config.bin files
+  * rename rtl8723bs_config-OBDA8723.bin -> rtl_bt/rtl8723bs_config.bin
+  * linux-firmware: Update AMD SEV firmware
+  * linux-firmware: update firmware for MT7996
+  * Revert "i915: Update MTL DMC v2.22"
+  * ath12k: WCN7850 hw2.0: update board-2.bin
+  * ath11k: WCN6855 hw2.0: update to WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.41
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: QCA2066 hw2.1: add to WLAN.HSP.1.1-03926.13-QCAHSPSWPL_V2_SILICONZ_CE-2.52297.3
+  * ath11k: QCA2066 hw2.1: add board-2.bin
+  * ath11k: IPQ5018 hw1.0: update to WLAN.HK.2.6.0.1-01291-QCAHKSWPL_SILICONZ-1
+  * qcom: vpu: add video firmware for sa8775p
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+
+-------------------------------------------------------------------
 Tue Aug 13 05:18:12 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240809 (git commit 36db650dae03):

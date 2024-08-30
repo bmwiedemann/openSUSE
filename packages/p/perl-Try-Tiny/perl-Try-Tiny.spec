@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Try-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Try-Tiny
 Name:           perl-Try-Tiny
-Version:        0.31
+Version:        0.320.0
 Release:        0
-Summary:        Minimal try/catch with proper preservation of $@
+# 0.32 -> normalize -> 0.320.0
+%define cpan_version 0.32
 License:        MIT
+Summary:        Minimal try/catch with proper preservation of $@
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Try::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -80,7 +84,7 @@ learned the 'try'/'finally' pattern from one of these languages, watch out
 for this.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

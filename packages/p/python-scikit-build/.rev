@@ -263,4 +263,12 @@
   * Remove test{_suite,s_require} directives.</comment>
     <requestid>1190584</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ad48a516a0c1e191134716d79037fc3</srcmd5>
+    <version>0.18.1</version>
+    <time>1725017139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197467</requestid>
+  </revision>
 </revisionlist>

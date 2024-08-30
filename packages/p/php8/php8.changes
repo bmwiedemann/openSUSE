@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Aug 30 07:19:33 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.3.11
+    Core:
+        Fixed bug GH-15020 (Memory leak in Zend/Optimizer/escape_analysis.c).
+        Fixed bug GH-15023 (Memory leak in Zend/zend_ini.c).
+        Fixed bug GH-13330 (Append -Wno-implicit-fallthrough flag conditionally).
+        Fix uninitialized memory in network.c.
+        Fixed bug GH-15108 (Segfault when destroying generator during shutdown).
+        Fixed bug GH-15275 (Crash during GC of suspended generator delegate).
+    Curl:
+        Fixed case when curl_error returns an empty string.
+    DOM:
+        Fix UAF when removing doctype and using foreach iteration.
+    FFI:
+        Fixed bug GH-14286 (ffi enum type (when enum has no name) make memory leak).
+    Hash:
+        Fix crash when converting array data for array in shm in xxh3.
+    Intl:
+        Fixed bug GH-15087 (IntlChar::foldCase()'s $option is not optional).
+    Opcache:
+        Fixed bug GH-13817 (Segmentation fault for enabled observers after pass 4).
+        Fixed bug GH-13775 (Memory leak possibly related to opcache SHM placement).
+    Output:
+        Fixed bug GH-15179 (Segmentation fault (null pointer dereference) in ext/standard/url_scanner_ex.re).
+    PDO_Firebird:
+        Fix bogus fallthrough path in firebird_handle_get_attribute().
+    PHPDBG:
+        Fixed bug GH-13199 (EOF emits redundant prompt in phpdbg local console mode with libedit/readline).
+        Fixed bug GH-15268 (heap buffer overflow in phpdbg (zend_hash_num_elements() Zend/zend_hash.h)).
+        Fixed bug GH-15210 use-after-free on watchpoint allocations.
+    Soap:
+        Fixed bug #55639 (Digest autentication dont work).
+        Fix SoapFault property destruction.
+        Fixed bug GH-15252 (SOAP XML broken since PHP 8.3.9 when using classmap constructor option).
+    Standard:
+        Fix passing non-finite timeout values in stream functions.
+        Fixed GH-14780 p(f)sockopen timeout overflow.
+    Streams:
+        Fixed bug GH-15028 (Memory leak in ext/phar/stream.c).
+        Fixed bug GH-15034 (Integer overflow on stream_notification_callback byte_max parameter with files bigger than 2GB).
+        Reverted fix for GH-14930 (Custom stream wrapper dir_readdir output truncated to 255 characters).
+    Tidy:
+        Fix memory leaks in ext/tidy basedir restriction code.
+
+-------------------------------------------------------------------
 Fri Aug 16 18:01:11 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.3.10

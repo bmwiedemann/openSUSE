@@ -908,4 +908,12 @@
     when repackaged or vendored. This enables pip and other projects to minimize their</comment>
     <requestid>1179087</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>774aecb74baa39847ae7e427cb3d698f</srcmd5>
+    <version>2.32.3</version>
+    <time>1725017169</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Requires on python-py, it should have been removed earlier.</comment>
+    <requestid>1197228</requestid>
+  </revision>
 </revisionlist>

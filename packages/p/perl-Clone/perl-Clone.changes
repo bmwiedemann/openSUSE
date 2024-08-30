@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 18 05:29:53 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.470.0 (0.47)
+   see /usr/share/doc/packages/perl-Clone/Changes
+
+  0.47 2024-08-17 12:30:00 atoomic
+    - Stop using quote as package separator
+
+-------------------------------------------------------------------
 Thu Oct 20 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.46

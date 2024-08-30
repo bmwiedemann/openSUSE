@@ -858,4 +858,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
   * 0001-Move-from-app-info-to-swcatalog-locations.patch</comment>
     <requestid>1145491</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>452b962a48932572fec5c9d64339bbc0</srcmd5>
+    <version>0.8.3</version>
+    <time>1725017171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197298</requestid>
+  </revision>
 </revisionlist>

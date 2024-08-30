@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -105,8 +105,8 @@ export LANG=en_US.UTF-8
 %python_uninstall_alternative flask
 
 %files %{python_files}
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%license LICENSE.txt
+%doc CHANGES.rst README.md
 %python_alternative %{_bindir}/flask
 %{_bindir}/flask-%{python_bin_suffix}
 %{python_sitelib}/flask

@@ -1984,4 +1984,32 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * Documentation fixes (forwarded request 1188706 from mwilck)</comment>
     <requestid>1188707</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>8e02f4d136455fd37a6fbb62e810ca92</srcmd5>
+    <version>0.10.0+103+suse.0fc97cd</version>
+    <time>1725017194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0+103+suse.0fc97cd
+- Update to upstream 0.10.0 (see also NEWS.md)
+  * The `multipathd show daemon` command now shows `(reconfigure pending)`
+  if a reconfiguration has been triggered but not finished yet.
+  * Refactored the path checker loop. Paths are now checked for each multipath
+  map in turn
+  * Renamed public functions, variables, and macros to comply with the glibc policy
+  for reserved names (gh#opensvc/multipath-tools#91)
+  * Fixed bug that caused queueing to be always disabled if flushing a map failed
+  (bug introduced in 0.9.8). (bsc#1229898)
+  * Fixed failure to remove maps even with `deferred_remove` (bug introduced in
+  0.9.9). (bsc#1229898)
+  * Fixed old mpathpersist bug leading to the error message &quot;configured reservation
+  key doesn't match: 0x0&quot; when `reservation_key` was configured in the
+  multipaths section of `multipath.conf`. (bsc#1228926, gh#opensvc/multipath-tools#92)
+  * Fixed output of `multipath -t` and `multipath -T` for the options
+  `force_sync` and `retrigger_tries`. (bsc#1229898, gh#opensvc/multipath-tools#88)
+  * Fixed adding maps by WWID in CLI (command `add map $WWID`). (bsc#1229898)
+
+  (bug introduced in 0.9.8). (bsc#1229898)
+  (bug introduced in 0.9.9). (bsc#1229898) (forwarded request 1197366 from mwilck)</comment>
+    <requestid>1197370</requestid>
+  </revision>
 </revisionlist>

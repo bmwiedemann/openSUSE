@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:57:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add Phoenix-pr2580+2591+2592-numpy2.patch
+  * gh#wxWidgets/Phoenix#2580
+  * gh#wxWidgets/Phoenix#2591
+- Update multibuild
+  * Finalize preparation for python313
+  * Drop obsolete python39
+
+-------------------------------------------------------------------
 Sun Jun 30 20:55:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - prepare for python 3.13

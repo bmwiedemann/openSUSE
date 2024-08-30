@@ -1909,4 +1909,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1190264</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>652aa0f38842e67afb7f93520e7efcfd</srcmd5>
+    <version>4.2.7</version>
+    <time>1725017326</time>
+    <user>dimstar_suse</user>
+    <comment>wireshark 4.2.7</comment>
+    <requestid>1197387</requestid>
+  </revision>
 </revisionlist>

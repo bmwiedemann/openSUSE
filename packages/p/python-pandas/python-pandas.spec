@@ -77,6 +77,8 @@ Patch1:         pandas-pr58720-xarray-dp.patch
 Patch2:         pandas-pr58484-matplotlib.patch
 # PATCH-FIX-UPSTREAM pandas-pr59175-matplotlib.patch -- gh#pandas-dev/pandas#59175
 Patch3:         https://github.com/pandas-dev/pandas/pull/59175.patch#/pandas-pr59175-matplotlib.patch
+# PATCH-FIX-UPSTREAM pandas-pr59353-np2eval.patch -- gh#pandas-dev/pandas#59144 backported to 2.2, no new tests, see gh#pandas-dev/pandas#58548, gh#pandas-dev/pandas#59353
+Patch4:         pandas-pr59353-np2eval.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -515,9 +517,11 @@ SKIP_TESTS+=" or test_self_join_date_columns"
 # expects a dirty git revision from git repo
 SKIP_TESTS+=" or test_git_version"
 %if "%{flavor}" == "test-py312"
-# https://github.com/pandas-dev/pandas/pull/57391, proposed change is not necessary the right one
+# https://github.com/pandas-dev/pandas/pull/57391, proposed change is not necessarily the right one
 SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 %endif
+# Numpy2: unexpected 'np.str_(...)' in error message
+SKIP_TESTS+=" or test_group_subplot_invalid_column_name"
 
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856
@@ -528,6 +532,9 @@ SKIP_TESTS+=" or (test_rolling_quantile_interpolation_options and data1 and line
 SKIP_TESTS+=" or test_large_string_pyarrow"
 SKIP_TESTS+=" or test_pandas_nullable_with_missing_values"
 SKIP_TESTS+=" or test_pandas_nullable_without_missing_values"
+SKIP_TESTS+=" or (test_to_datetime and TestOrigin and test_epoch)"
+SKIP_TESTS+=" or test_td_mul_numeric_ndarray_0d"
+SKIP_TESTS+=" or test_get_indexer_non_unique_wrong_dtype"
 # pyarrow read-only errors
 SKIP_TESTS+=" or test_left_join_multi_index"
 SKIP_TESTS+=" or test_join_on_single_col_dup_on_right"

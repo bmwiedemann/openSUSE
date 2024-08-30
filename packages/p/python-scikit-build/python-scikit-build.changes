@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:35:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.1
+  * Support for setuptools 74 in #1116
+  * iOS and Android support by @FeodorFitsner in #1101
+  * Fix for distutils change in #1103
+  * Remove test directives by @s-t-e-v-e-n-k in #1108
+- Drop patches
+  * support-setuptools-72-distutils.patch
+  * support-setuptools-72-test-directives.patch
+
+-------------------------------------------------------------------
 Wed Jul 31 06:14:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-setuptools-72-distutils.patch:

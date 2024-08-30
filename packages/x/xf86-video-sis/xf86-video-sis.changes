@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:15:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- exclude aarch64 and %{arm} architectures (inb/outb needed for this
+  driver)
+
+-------------------------------------------------------------------
 Fri Jan  3 15:18:53 UTC 2020 - Chocy Orange <callumjfarmer13@gmail.com>
 
 - Update to version 1.12.0

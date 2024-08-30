@@ -29,7 +29,7 @@
 %endif
 %bcond_without qt5
 Name:           wireshark
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

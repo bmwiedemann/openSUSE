@@ -415,6 +415,11 @@ Patch127:       skip-more-tests-related-to-old-openssl-algorithms.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/662
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66730
 Patch128:       make-tests-compatible-with-venv-bundle.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66743
+Patch129:       replace-use-of-pygit2-deprecated-and-removed-1.15.0-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/671
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64173
+Patch130:       join-masters-if-it-is-a-list-671.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

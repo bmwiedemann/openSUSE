@@ -120,6 +120,10 @@ Requires:       sudo
 Requires:       systemd-presets-branding-MicroOS
 Requires:       terminfo-base
 Requires:       timezone
+# tpm2 tools are required for FDE+TPM
+Requires:       tpm2-0-tss
+Requires:       libtss2-tcti-device0
+Requires:       tpm2.0-tools
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
 Requires:       yast2-logs
@@ -715,6 +719,7 @@ Requires:       apparmor-utils
 Requires:       bcache-tools
 Requires:       crda
 Requires:       cryptsetup
+Requires:       exfatprogs
 Requires:       firewalld
 Requires:       iscsiuio
 #extra items for DVD, not every install
@@ -736,10 +741,16 @@ Requires:       sdbootutil
 Requires:       sdbootutil-snapper
 Requires:       systemd-boot
 %endif
+# Needed for zRam swap support
+Requires:       systemd-zram-service
 Requires:       spice-vdagent
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 Requires:       wpa_supplicant
 Requires:       xfsprogs
+# Needed for TPM2.0 support (boo#1211835)
+Requires:       tpm2.0-abrmd
+# Needed for Secureboot
+Requires:       mokutil
 Provides:       pattern() = microos_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9900

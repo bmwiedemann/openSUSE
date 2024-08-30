@@ -176,4 +176,13 @@
     <comment></comment>
     <requestid>1151677</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>557ca3b714748e3fa681604e3d952356</srcmd5>
+    <version>2.6.0</version>
+    <time>1725017371</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude aarch64 and %{arm} architectures (inb/outb needed for this
+  driver)</comment>
+    <requestid>1197460</requestid>
+  </revision>
 </revisionlist>

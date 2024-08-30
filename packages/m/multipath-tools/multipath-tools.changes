@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 29 07:00:18 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to 0.10.0+103+suse.0fc97cd
+
+- Update to upstream 0.10.0 (see also NEWS.md)
+  * The `multipathd show daemon` command now shows `(reconfigure pending)`
+  if a reconfiguration has been triggered but not finished yet.
+  * Refactored the path checker loop. Paths are now checked for each multipath
+  map in turn
+  * Renamed public functions, variables, and macros to comply with the glibc policy
+  for reserved names (gh#opensvc/multipath-tools#91)
+  * Fixed bug that caused queueing to be always disabled if flushing a map failed
+  (bug introduced in 0.9.8). (bsc#1229898)
+  * Fixed failure to remove maps even with `deferred_remove` (bug introduced in
+  0.9.9). (bsc#1229898)
+  * Fixed old mpathpersist bug leading to the error message "configured reservation
+  key doesn't match: 0x0" when `reservation_key` was configured in the
+  multipaths section of `multipath.conf`. (bsc#1228926, gh#opensvc/multipath-tools#92)
+  * Fixed output of `multipath -t` and `multipath -T` for the options
+  `force_sync` and `retrigger_tries`. (bsc#1229898, gh#opensvc/multipath-tools#88)
+  * Fixed adding maps by WWID in CLI (command `add map $WWID`). (bsc#1229898)
+
+-------------------------------------------------------------------
 Fri Jul 19 16:01:19 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.9+161+suse.0c835ef:
@@ -6,9 +29,9 @@ Fri Jul 19 16:01:19 UTC 2024 - Martin Wilck <mwilck@suse.com>
   * Added hardware defaults for Huawei storage arrays and XSG1 vendors
   * Refactored and improved the libultipath / libdevmapper interface
   * Fixed bug that caused queueing to be always disabled if flushing a map failed
-  (bug introduced in 0.9.8).
+  (bug introduced in 0.9.8). (bsc#1229898)
   * Fixed failure to remove maps even with `deferred_remove`
-  (bug introduced in 0.9.9).
+  (bug introduced in 0.9.9). (bsc#1229898)
   * CI improvements
   * Documentation fixes
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 17 05:31:48 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.320.0 (0.32)
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.32      2024-08-16 22:23:44Z
+    - skip given, when tests on perls >= 5.41.3 which removed these constructs
+
+-------------------------------------------------------------------
 Wed Nov 24 03:09:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.31

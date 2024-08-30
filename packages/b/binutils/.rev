@@ -2314,4 +2314,18 @@ that rarely could lead to variations in optimized finaly binaries (forwarded req
   * gprofng: add event types for AMD Zen3/Zen4 and Intel Ice Lake</comment>
     <requestid>1193447</requestid>
   </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>89955e7678b37d5ad323a72cc03ade53</srcmd5>
+    <version>2.43</version>
+    <time>1725017136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current 2.43.1 branch [PED-10474]:
+  * PR32109 - fuzzing problem
+  * PR32083 - LTO vs overridden common symbols
+  * PR32067 - crash with LTO-plugin and --oformat=binary
+  * PR31956 - LTO vs wrapper symbols
+  * riscv - add Zimop and Zcmop extensions
+- Adjusted binutils-2.43-branch.diff.gz.</comment>
+    <requestid>1197005</requestid>
+  </revision>
 </revisionlist>

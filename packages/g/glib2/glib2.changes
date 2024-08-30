@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 12:00:06 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang{,_path} macros, [bsc#1212476]
+
+-------------------------------------------------------------------
 Mon Aug 26 10:45:18 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.80.5:

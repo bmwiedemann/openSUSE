@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  9 05:30:50 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2024080801.0.0 (2024080801)
+   see /usr/share/doc/packages/perl-Regexp-Common/Changes
+
+  Version 2024080801 Thu Aug  8 19:06:47 CEST 2024
+  + Eliminate 'use vars'.
+  + Update the MySQL comment pattern.
+
+-------------------------------------------------------------------
 Fri Jun  9 06:21:07 UTC 2017 - coolo@suse.com
 
 - updated to 2017060201

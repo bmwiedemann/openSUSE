@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 27 17:15:25 UTC 2024 - dfaggioli@suse.com
+
+- Fix bsc#1221812:
+  * [openSUSE] block: Reschedule query-block during qcow2 invalidation (bsc#1221812)
+- Fixup a previous patch (cure a build warning):
+  * [openSUSE] fixup patch "pc: q35: Allow 1024 cpus for old machine types"
+
+-------------------------------------------------------------------
+Tue Aug 27 16:45:36 UTC 2024 - dfaggioli@suse.com
+
+- Infra improvement:
+  * [openSUSE] Workflows for Virtualization:Staging:TDX
+
+-------------------------------------------------------------------
 Wed Jul 24 10:00:54 UTC 2024 - dfaggioli@suse.com
 
 - roms: Build ipxe with NO_WERROR=1 (bsc#1227960)

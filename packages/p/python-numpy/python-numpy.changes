@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Tue Aug 13 06:04:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove meson-python upper limit (per upstream)
+
+-------------------------------------------------------------------
+Thu Jul 11 08:29:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix numpy-config path tests, provide reason for failing meson
+  test
+- Remove mistaken pycache rpmlint filter
+
+-------------------------------------------------------------------
+Fri Jun 28 06:47:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0, changes include:
+  * Adds support for array parameter declaration in fortran...
+  * Added ``bitwise_count`` UFuncs
+  * Add binding for random pyx files
+  * Use AVX512-FP16 SVML content for float16 umath functions
+  * allow int sequences as shape arguments in numpy.memmap
+  * Add .mT attribute for arrays
+  * Create complex scalars from real and imaginary parts
+  * add copy parameter for api.reshape function
+  * make use of locals() in a comprehension fully compatible...
+  * Add array API standard v2022.12 support to numpy.array_api
+  * Change string to bool conversions to be consistent with...
+  * Allow np.info on non-hashable objects with a dtype
+  * let zeros, empty, and empty_like accept dtype classes
+  * Bump C-ABI to 2 but accept older NumPy if compiled against...
+  * Use high accuracy SVML for double precision umath functions
+  * expose PyUFunc_GiveFloatingpointErrors in the dtype API
+  * PyObject_IsTrue and PyObject_Not error handling in setflags
+  * array2string does not add signs for positive integers.
+  * Vectorize np.partition and np.argpartition using AVX-512
+  * Create helper for conversion to arrays
+  * Add size check for threaded array assignment
+  * Finalize ``fastCopyAndTranpose`` and other old C-funcs/members...
+  * assert_array_less should report max violations instead of...
+  * Introduce tracer for enabled CPU targets on each optimized...
+  * Extend np.add ufunc to work with unicode and byte dtypes
+  * Add find/rfind ufuncs for unicode and byte dtypes
+  * Make ``intp`` ``ssize_t`` and introduce characters nN
+  * Add isdigit/isspace/isdecimal/isnumeric ufuncs for string...
+  * DType API slot for descriptor finalization before array...
+  * ensure passing ``np.dtype`` to itself doesn't crash
+  * Vectorize np.sort and np.partition with AVX2
+  * Change add/isalpha ufuncs to use buffer class & general...
+  * Add strip/lstrip/rstrip ufuncs for unicode and bytes
+  * Add ``matrix_norm``, ``vector_norm``, ``vecdot`` and ``matrix_transpose``
+  * Make ``encoding=None`` the default in loadtxt
+  * Introduce ``copy`` argument for ``np.asarray``
+  * Introduce ``correction`` argument for ``np.var`` and ``np.std``...
+  * Handle ``common`` blocks with ``kind`` specifications from modules
+  * Handle ``iso_c_type`` mappings more consistently
+  * Add ``device`` and ``to_device`` to ``numpy.ndarray``
+  * Shrink MultiIterObject and make ``NPY_MAXARGS`` a runtime...
+  * enable linking of external libraries in the f2py Meson backend
+  * Don't use the _Complex extension in C++ mode
+  * Add fft optional extension submodule to numpy.array_api
+  * make arange ``start`` argument positional-only
+  * Make numpy.array_api more portable
+  * Adjust ``linalg.pinv`` and ``linalg.cholesky`` to Array...
+  * define a gufunc for vecdot (with BLAS support)
+  * Add ``rtol`` to ``matrix_rank`` and ``stable``
+  * adjust nD fft ``s`` param to array API
+  * three string ufunc bugs, one leading to segfault
+  * allow building in cython with Py_LIMITED_API
+  * support axes argument in np.linalg.tensordot
+  * Add replace ufunc to np.strings
+  * change list-of-array to tuple-of-array returns (Numba compat)
+  * Wrap string ufuncs in np.strings to allow default arguments
+  * Allow ``None`` as ``api_version`` in ``__array_namespace__``...
+  * Vectorize argsort and argselect with AVX2
+  * Use large file fallocate on 32 bit linux platforms
+  * Allow strings in logical ufuncs
+  * Allow NumPy int scalars to be divided by out-of-bound Python...
+  * correct irfft with n=1 on larger input
+  * check for overflow when converting a string to an int scalar
+  * Ensure meson updates generated umath doc correctly.
+  * support float and longdouble in FFT using C++ pocketfft...
+  * Make any and all return booleans by default
+  * Finalize future warning move in lstsq default
+  * add a pkg-config file and a ``numpy-config`` script
+  * Finalize future warning for shape=1 descriptor dropping...
+  * Add index/rindex ufuncs for unicode and bytes dtypes
+  * Add rest of unary ufuncs for unicode/bytes dtypes
+  * Create ``PyArray_DescrProto`` for legacy descriptor registration
+  * Make ``descr->f`` only accessible through ``PyDataType_GetArrFuncs``
+  * ensure that FFT routines can deal with integer and bool...
+  * ensure static_string.buf is never NULL for a non-null string
+  * Include broadcasting for ``rtol`` argument in ``matrix_rank``
+  * Add expandtabs ufunc for string & unicode dtypes
+  * implement stringdtype <-> timedelta roundtrip casts
+  * Make descr->f only accessible through ``PyDataType_GetArrFuncs``
+  * Ensure non-array logspace base does not influence dtype...
+  * Require reduce promoters to start with None to match
+  * inherit numerical dtypes from abstract ones.
+  * Infinite Loop in numpy.base_repr
+  * Ensure seed sequences are restored through pickling
+  * use PyArray_SafeCast in array_astype
+  * introduce a notion of "compatible" stringdtype instances...
+  * add support for nan-like null strings in string replace
+  * Make sure that NumPy scalars are supported by can_cast
+  * Disallow string inputs for copy keyword in np.array and...
+  * Adds asanyarray to start of linalg.cross
+  * weighted nanpercentile, nanquantile and multi-dim q
+- Remove patches, no longer required:
+  * 0001-BUG-Fix-test_impossible_feature_enable-failing-witho.patch
+  * 0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
+  * fix-meson-multiple-python-versions.patch
+  * numpy-1.9.0-remove-__declspec.patch
+
+-------------------------------------------------------------------
 Sun May 12 14:46:08 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Enable openblas for python-numpy:gnu-hpc on s390x

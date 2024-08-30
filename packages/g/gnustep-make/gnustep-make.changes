@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  9 17:33:15 UTC 2024 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Use the --with-libdir configure option introduced with 2.9.2.
+
+-------------------------------------------------------------------
 Sun Jul  7 19:57:53 UTC 2024 - Fred kiefer <fredkiefer@gmx.de>
 
 - Accecpted request to update to version 2.9.2

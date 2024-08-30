@@ -23,7 +23,7 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.80.0
+Version:        2.80.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later

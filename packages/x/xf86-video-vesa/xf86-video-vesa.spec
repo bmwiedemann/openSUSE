@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-vesa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(xproto)
 Supplements:    xorg-x11-server
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
-ExcludeArch:    s390 s390x
+ExcludeArch:    s390 s390x aarch64 %{arm}
 %{?x11_abi_videodrv_req}
 
 %description

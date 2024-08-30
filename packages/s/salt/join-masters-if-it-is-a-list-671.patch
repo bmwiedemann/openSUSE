@@ -1,0 +1,105 @@
+From 94973ee85d766d7e98d02d89f4c81e59b36cb716 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 29 Aug 2024 10:01:12 +0200
+Subject: [PATCH] Join masters if it is a list (#671)
+
+Co-authored-by: Twangboy <shane.d.lee@gmail.com>
+---
+ changelog/64170.fixed.md               |  2 +
+ salt/utils/cloud.py                    | 10 +++++
+ tests/pytests/unit/utils/test_cloud.py | 52 ++++++++++++++++++++++++++
+ 3 files changed, 64 insertions(+)
+ create mode 100644 changelog/64170.fixed.md
+
+diff --git a/changelog/64170.fixed.md b/changelog/64170.fixed.md
+new file mode 100644
+index 0000000000..1d20355bf1
+--- /dev/null
++++ b/changelog/64170.fixed.md
+@@ -0,0 +1,2 @@
++Fixed issue in salt-cloud so that multiple masters specified in the cloud
++are written to the minion config properly
+diff --git a/salt/utils/cloud.py b/salt/utils/cloud.py
+index b7208dc4a6..a084313059 100644
+--- a/salt/utils/cloud.py
++++ b/salt/utils/cloud.py
+@@ -1202,6 +1202,16 @@ def wait_for_passwd(
+             time.sleep(trysleep)
+ 
+ 
++def _format_master_param(master):
++    """
++    If the master is a list, we need to convert it to a comma delimited string
++    Otherwise, we just return master
++    """
++    if isinstance(master, list):
++        return ",".join(master)
++    return master
++
++
+ def deploy_windows(
+     host,
+     port=445,
+diff --git a/tests/pytests/unit/utils/test_cloud.py b/tests/pytests/unit/utils/test_cloud.py
+index 550b63c974..db9d258d39 100644
+--- a/tests/pytests/unit/utils/test_cloud.py
++++ b/tests/pytests/unit/utils/test_cloud.py
+@@ -605,3 +605,55 @@ def test_deploy_script_ssh_timeout():
+         ssh_kwargs = root_cmd.call_args.kwargs
+         assert "ssh_timeout" in ssh_kwargs
+         assert ssh_kwargs["ssh_timeout"] == 34
++
++
++@pytest.mark.parametrize(
++    "master,expected",
++    [
++        (None, None),
++        ("single_master", "single_master"),
++        (["master1", "master2", "master3"], "master1,master2,master3"),
++    ],
++)
++def test__format_master_param(master, expected):
++    result = cloud._format_master_param(master)
++    assert result == expected
++
++
++@pytest.mark.skip_unless_on_windows(reason="Only applicable for Windows.")
++@pytest.mark.parametrize(
++    "master,expected",
++    [
++        (None, None),
++        ("single_master", "single_master"),
++        (["master1", "master2", "master3"], "master1,master2,master3"),
++    ],
++)
++def test_deploy_windows_master(master, expected):
++    """
++    Test deploy_windows with master parameter
++    """
++    mock_true = MagicMock(return_value=True)
++    mock_tuple = MagicMock(return_value=(0, 0, 0))
++    with patch("salt.utils.smb.get_conn", MagicMock()), patch(
++        "salt.utils.smb.mkdirs", MagicMock()
++    ), patch("salt.utils.smb.put_file", MagicMock()), patch(
++        "salt.utils.smb.delete_file", MagicMock()
++    ), patch(
++        "salt.utils.smb.delete_directory", MagicMock()
++    ), patch(
++        "time.sleep", MagicMock()
++    ), patch.object(
++        cloud, "wait_for_port", mock_true
++    ), patch.object(
++        cloud, "fire_event", MagicMock()
++    ), patch.object(
++        cloud, "wait_for_psexecsvc", mock_true
++    ), patch.object(
++        cloud, "run_psexec_command", mock_tuple
++    ) as mock:
++        cloud.deploy_windows(host="test", win_installer="install.exe", master=master)
++        expected_cmd = "c:\\salttemp\\install.exe"
++        expected_args = "/S /master={} /minion-name=None".format(expected)
++        assert mock.call_args_list[0].args[0] == expected_cmd
++        assert mock.call_args_list[0].args[1] == expected_args
+-- 
+2.44.0
+

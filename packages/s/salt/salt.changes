@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 29 11:54:27 UTC 2024 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+
+- Fix cloud minion configuration for multiple masters (bsc#1229109)
+
+- Added:
+  * join-masters-if-it-is-a-list-671.patch
+
+-------------------------------------------------------------------
+Wed Aug 21 14:30:48 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Use Pygit2 id instead of deprecated oid in gitfs
+
+- Added:
+  * replace-use-of-pygit2-deprecated-and-removed-1.15.0-.patch
+
+-------------------------------------------------------------------
 Wed Aug  7 09:45:18 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix few failing tests to work with both Salt and Salt bundle

@@ -505,4 +505,19 @@
     <comment>- Remove not needed dependency python-contextvars</comment>
     <requestid>1166616</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f350339eb3efdb4665f2387f6c782776</srcmd5>
+    <version>3.0.3</version>
+    <time>1725017166</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1194157 from yeey
+
+- update to 3.0.3
+    * The default hashlib.sha1 may not be available in FIPS builds.
+      Don’t access it at import time so the developer has time to
+      change the default. :issue:`5448`
+    * Don’t initialize the cli attribute in the sansio scaffold,
+      but rather in the Flask concrete class. :issue:`5270`</comment>
+    <requestid>1197028</requestid>
+  </revision>
 </revisionlist>

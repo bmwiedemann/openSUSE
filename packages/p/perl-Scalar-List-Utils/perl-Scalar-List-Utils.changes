@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug  7 05:30:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.650.0 (1.65)
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.65 -- 2024-08-06
+  	[BUGFIXES]
+  	 * Update exotic names test to avoid single quote package separator
+  	   (GH #128)
+  	 * Don't loop forever in uniqnum.t (GH #130)
+
+  1.64 -- 2024-08-02
+  	[CHANGES]
+  	 * On Perl version 5.40 or later, various `Scalar::Util` functions are
+  	   now simply aliases to core-provided functions in `builtin::`:
+  	    + blessed(), refaddr(), reftype(), weaken(), unweaken(), isweak()
+  	 * Remember to list `head` and `tail` in `List::Util` SYNOPSIS
+  	 * Various improvements to internal CI infrastructure
+
+-------------------------------------------------------------------
 Tue Aug  9 03:10:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.63

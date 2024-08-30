@@ -2,6 +2,7 @@
 # spec file for package python-meson-python
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -34,18 +35,19 @@ BuildRequires:  fdupes
 BuildRequires:  meson >= 1.2.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
+Requires:       python-pyproject-metadata >= 0.7.1
+BuildArch:      noarch
 %if 0%{python_version_nodots} >= 312
 Requires:       meson >= 1.2.3
 %else
 Requires:       meson >= 0.63.3
 %endif
-Requires:       python-pyproject-metadata >= 0.7.1
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 1.0.0
 %endif
 # SECTION test
-BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-mock}
@@ -53,7 +55,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  patchelf
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -41,7 +41,6 @@ Requires:       python
 Requires:       python-certifi >= 2017.4.17
 Requires:       python-charset-normalizer >= 2.0.0
 Requires:       python-idna >= 2.5
-Requires:       python-py
 Requires:       python-urllib3 >= 1.21.1
 BuildArch:      noarch
 %if 0%{?_no_weakdeps}

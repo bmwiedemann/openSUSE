@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.26.4
-%define _ver 1_26_4
+%define ver 2.0.0
+%define _ver 2_0_0
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -81,18 +81,10 @@ Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{v
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
-# PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
-Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM https://github.com/numpy/numpy/pull/26151
-Patch2:         0001-BUG-Fix-test_impossible_feature_enable-failing-witho.patch
-# PATCH-FIX-UPSTREAM https://github.com/numpy/meson/pull/12
-Patch3:         0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
-# PATCH-FIX-UPSTREAM Based on gh#numpy/numpy#25839
-Patch4:         fix-meson-multiple-python-versions.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module meson-python >= 0.15 with %python-meson-python < 0.16}
+BuildRequires:  %{python_module meson-python >= 0.15}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  cmake
@@ -197,14 +189,13 @@ This package contains files for developing applications using numpy.
 %autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
 sed -i '1{/^#!/d}'\
-  numpy/{distutils,f2py,ma,matrixlib,testing}/setup.py \
   numpy/distutils/{conv_template,cpuinfo,from_template,system_info}.py \
   numpy/f2py/{__init__,cfuncs,diagnose,crackfortran,f2py2e,rules}.py \
   numpy/random/_examples/cython/extending{,_distributions}.pyx \
   numpy/testing/print_coercion_tables.py
 chmod -x \
   numpy/f2py/{crackfortran,f2py2e,rules}.py \
-  numpy/testing/{print_coercion_tables,setup}.py
+  numpy/testing/print_coercion_tables.py
 
 # force cythonization
 rm -f PKG-INFO
@@ -239,6 +230,7 @@ export CXX=g++-12
 
 %if !%{with hpc}
 %python_clone -a %{buildroot}%{_bindir}/f2py
+%python_clone -a %{buildroot}%{_bindir}/numpy-config
 %endif
 
 %if 0%{?suse_version}
@@ -251,7 +243,7 @@ export CXX=g++-12
 %{python_expand # Don't package testsuite
 python_flavor=`cat _current_flavor`
 sitesearch_path=`$python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))"`
-rm -rf %{buildroot}${sitesearch_path}/numpy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
+rm -rf %{buildroot}${sitesearch_path}/numpy/{,_core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 
@@ -292,11 +284,18 @@ EOF
 %check
 # https://numpy.org/doc/stable/dev/development_environment.html#running-tests
 %if %{without hpc}
-export PATH="%{buildroot}%{_bindir}:$PATH"
 
 mkdir -p testing
 cp pytest.ini testing/
 pushd testing
+%python_flavored_alternatives
+%if %{with libalternatives}
+%{python_expand #
+for b in f2py numpy-config; do
+  ln -s %{buildroot}%{_bindir}/$b-%{$python_bin_suffix} build/flavorbin/$b
+done
+}
+%endif
 
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
@@ -351,6 +350,8 @@ test_failok+=" or (test_umath and test_fpclass)"
 test_failok+=" or (test_numeric and TestBoolCmp and test_float)"
 test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
+# The meson command is always on the primary python and wants to import numpy from there
+test_failok+=" or test_limited_api"
 
 echo "
 import sys
@@ -377,7 +378,7 @@ popd
 %python_libalternatives_reset_alternative f2py
 
 %post
-%python_install_alternative f2py
+%python_install_alternative f2py numpy-config
 
 %postun
 %python_uninstall_alternative f2py
@@ -388,24 +389,29 @@ popd
 %license LICENSE.txt
 %if %{without hpc}
 %python_alternative %{_bindir}/f2py
+%python_alternative %{_bindir}/numpy-config
 %{python_sitearch}/numpy/
 %{python_sitearch}/numpy-%{version}.dist-info
-%exclude %{python_sitearch}/numpy/core/include/
+%exclude %{python_sitearch}/numpy/_core/include
+%exclude %{python_sitearch}/numpy/_core/lib/libnpymath.a
+%exclude %{python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
 %exclude %{python_sitearch}/numpy/distutils/mingw/*.c
 %exclude %{python_sitearch}/numpy/distutils/checks/*.c
 %exclude %{python_sitearch}/numpy/f2py/src/
-%exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
 %exclude %{python_sitearch}/numpy/random/lib/libnpyrandom.a
 %else
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{p_bindir}/f2py
+%{p_bindir}/numpy-config
 %else
 %exclude %{p_bindir}/f2py
+%exclude %{p_bindir}/numpy-config
 %endif
 %{p_python_sitearch}/numpy/
 %{p_python_sitearch}/numpy-%{version}.dist-info
-%exclude %{p_python_sitearch}/numpy/core/include/
-%exclude %{p_python_sitearch}/numpy/core/lib/libnpymath.a
+%exclude %{p_python_sitearch}/numpy/_core/include/
+%exclude %{p_python_sitearch}/numpy/_core/lib/libnpymath.a
+%exclude %{p_python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
 %exclude %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
 %exclude %{p_python_sitearch}/numpy/distutils/mingw/*.c
 %exclude %{p_python_sitearch}/numpy/distutils/checks/*.c
@@ -424,17 +430,19 @@ popd
 %files %{python_files devel}
 %license LICENSE.txt
 %if %{without hpc}
-%{python_sitearch}/numpy/core/include/
+%{python_sitearch}/numpy/_core/include/
 %if 0%{python_version_nodots} < 312
 %{python_sitearch}/numpy/distutils/mingw/*.c
 %{python_sitearch}/numpy/distutils/checks/*.c
 %endif
 %{python_sitearch}/numpy/f2py/src/
-%{python_sitearch}/numpy/core/lib/libnpymath.a
+%{python_sitearch}/numpy/_core/lib/libnpymath.a
+%{python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
 %{python_sitearch}/numpy/random/lib/libnpyrandom.a
 %else
-%{p_python_sitearch}/numpy/core/include/
-%{p_python_sitearch}/numpy/core/lib/libnpymath.a
+%{p_python_sitearch}/numpy/_core/include/
+%{p_python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
+%{p_python_sitearch}/numpy/_core/lib/libnpymath.a
 %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
 %if 0%{python_version_nodots} < 312
 %{p_python_sitearch}/numpy/distutils/mingw/*.c

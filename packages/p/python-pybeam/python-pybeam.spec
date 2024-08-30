@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-pybeam
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,24 +25,25 @@
 %bcond_with    test
 %endif
 Name:           python-pybeam%{?psuffix}
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Python module to parse Erlang BEAM files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matwey/pybeam
 Source:         https://files.pythonhosted.org/packages/source/p/pybeam/pybeam-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-construct < 2.11
 Requires:       python-construct >= 2.9
-Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module construct < 2.11}
 BuildRequires:  %{python_module construct >= 2.9}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pybeam}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -62,28 +62,29 @@ imports, exports, atoms, as well as compile info and attribute
 chunks in pretty python format.
 
 %prep
-%setup -q -n pybeam-%{version}
+%autosetup -p1 -n pybeam-%{version}
 
 %build
 %if %{without test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-%python_exec -m unittest discover
+%pytest
 %endif
 
 %if %{without test}
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pybeam
+%{python_sitelib}/pybeam-*-info
 %endif
 
 %changelog

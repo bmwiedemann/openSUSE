@@ -1298,4 +1298,12 @@ The Python versions supported in this release are 3.9-3.11.
     <comment></comment>
     <requestid>1173659</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>0cef847ffecfb238cd7f2765d8af8572</srcmd5>
+    <version>2.0.0</version>
+    <time>1725017152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194834</requestid>
+  </revision>
 </revisionlist>

@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 
 Name:           appstream-glib
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,13 +50,13 @@ BuildRequires:  pkgconfig(libgcab-1.0)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yaml-0.1)
-# Due to patch1 only swcatalog will be populated.
-# Older libs would not find any info anymore.
-Conflicts:      libappstream4 < 0.15.2
 Requires:       gcab
 # Required in order to be able to convert .svg icons
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       pngquant >= 2.8
+# Due to patch1 only swcatalog will be populated.
+# Older libs would not find any info anymore.
+Conflicts:      libappstream4 < 0.15.2
 Provides:       asglib(swcatalog)
 
 %description
@@ -136,7 +137,6 @@ for the repositories to be published
 	-Drpm=true \
 	-Dalpm=false \
 	-Dfonts=false \
-	-Dstemmer=false \
 	-Dman=true \
 	-Dgtk-doc=true \
 	-Dintrospection=true \

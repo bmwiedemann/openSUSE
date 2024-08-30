@@ -1,5 +1,4 @@
 <constraints>
-  <!-- All builds are fine with 10GB disk -->
   <overwrite>
     <conditions>
       <package>qemu</package>
@@ -7,7 +6,7 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">12</size>
+        <size unit="G">13</size>
       </disk>
     </hardware>
   </overwrite>

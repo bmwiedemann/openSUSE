@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 29 03:17:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove Requires on python-py, it should have been removed earlier. 
+
+-------------------------------------------------------------------
 Thu Jun  6 19:38:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32.3:

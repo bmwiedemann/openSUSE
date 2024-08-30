@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package edk2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -62,6 +62,8 @@ Source7:        googletest-%{googletest_version}.tar.xz
 Source10:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source11:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source12:       openssl.keyring
+# PATCH-FIX-UPSTREAM - https://github.com/tianocore/edk2/pull/5781
+Patch1:         5781.patch
 Patch999:       edk2-platforms-fix-Hikeys.patch
 #!BuildIgnore:  gcc-PIE
 %if "%{platform}" != "hikey" && "%{platform}" != "hikey960"
@@ -92,6 +94,7 @@ Firmware required to run the %{platform}
 
 %prep
 %setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7
+%patch -P 1 -p1
 pushd edk2-platforms-%{edk2_platforms_version}
 %patch -P 999 -p1
 popd

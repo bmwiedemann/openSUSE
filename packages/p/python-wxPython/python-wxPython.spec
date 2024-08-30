@@ -45,9 +45,6 @@ ExclusiveArch:  donotbuild
 # Extraneous build_flavors and skips are excluded automatically so future
 # additions can be included here early and old flavors can be removed some time
 # after the global drop in Factory.
-%if "%flavor" != "python39"
-%define skip_python39 1
-%endif
 %if "%flavor" != "python310"
 %define skip_python310 1
 %endif
@@ -117,6 +114,8 @@ Patch113:       require-numpy.patch
 Patch114:       wxwidgets-3.2.5.patch
 # PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2540
 Patch115:       drop-py2.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2580 + 2591 + 2592
+Patch116:       Phoenix-pr2580+2591+2592-numpy2.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}

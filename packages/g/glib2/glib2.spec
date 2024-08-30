@@ -443,6 +443,10 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
   mkdir -p  %{buildroot}%{_datadir}/zsh/site-functions/
   cp -T %{SOURCE8} %{buildroot}%{_datadir}/zsh/site-functions/_gsettings
   %fdupes %{buildroot}/%{_prefix}
+  %python3_fix_shebang
+  %if %{suse_version} >= 1600
+    %python3_fix_shebang_path %{buildroot}%{_libexecdir}/installed-tests/glib/*
+  %endif
 
   # Too many users complain about schemas compiled with wrong permissions
   # when in fact the system just honours their umask setting

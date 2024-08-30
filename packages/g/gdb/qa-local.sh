@@ -9,14 +9,13 @@ logs=$root/logs
 pkgs=$root/pkgs
 
 configs="
+openSUSE_Leap_15.6
 openSUSE_Leap_15.5
-openSUSE_Leap_15.4
-openSUSE_Leap_15.3
 openSUSE_Factory
 openSUSE_Factory_LegacyX86
 SLE-15
 SLE-12
-ALP
+SLFO
 "
 
 archs="x86_64 i586"
@@ -84,7 +83,7 @@ have_combo ()
 
     if [ "$arch" = "i586" ]; then
 	case " $c " in
-            " openSUSE_Factory "| " ALP ")
+            " openSUSE_Factory "|" SLFO ")
 		# Doesn't have i586.
 		return 1
 		;;
@@ -228,7 +227,7 @@ case "$n" in
 		fi
 		echo "CONFIG: $c $arch"
 		case $c in
-		    openSUSE_Factory|openSUSE_Factory_LegacyX86|ALP)
+		    openSUSE_Factory|openSUSE_Factory_LegacyX86|SLFO)
 			bash qa.sh -local -$arch -factory $pkgs/gdb-testresults.$c.$arch
 			;;
 		    SLE-12)

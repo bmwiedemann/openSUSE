@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:57:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move exfatprogs to onlyDVD
+
+-------------------------------------------------------------------
+Tue Aug 27 15:21:56 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install tpm2 tools by default for FDE
+- Remove policycoreutils-python-utils again from selinux, no
+  python in default install
+- Move systemd-zram-service to onlyDVD, as this is incompatible
+  with main MicroOS workload
+
+-------------------------------------------------------------------
+Thu Aug  1 08:00:43 UTC 2024 - Jan Fooken <dev@janvhs.com>
+
+- Remove the rest of the previously added packages from desktop
+  common, since it's basically abandoned
+
+-------------------------------------------------------------------
+Thu Aug  1 07:47:14 UTC 2024 - Jan Fooken <dev@janvhs.com>
+
+- Remove previously added packages from desktop common
+- Add TPM support and mokuil to onlyDVD pattern
+- Add zRam support to base
+- Add policycoreutils-python-utils to selinux
+
+-------------------------------------------------------------------
+Thu Aug  1 07:13:05 UTC 2024 - Jan Fooken <dev@janvhs.com>
+
+- Sync some packages which are present in Aeon
+
+-------------------------------------------------------------------
 Tue Jul  9 12:24:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop sdbootutil-scriptlets requirement, as is now supplied by

@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Simple
 Name:           perl-Test-Simple
-Version:        1.302199
+Version:        1.302201
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Basic utilities for writing tests
@@ -28,6 +28,8 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Term::Table) >= 0.013
+Requires:       perl(Term::Table) >= 0.013
 %{perl_requires}
 # MANUAL BEGIN
 Obsoletes:      perl-Test-Tester <= 0.109

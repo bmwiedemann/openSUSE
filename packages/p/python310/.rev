@@ -850,4 +850,15 @@
 - Update bluez-devel-vendor.tar.xz</comment>
     <requestid>1192675</requestid>
   </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>30cfb869088d64d4c557e86d552e9554</srcmd5>
+    <version>3.10.14</version>
+    <time>1725017362</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).
+</comment>
+    <requestid>1197437</requestid>
+  </revision>
 </revisionlist>

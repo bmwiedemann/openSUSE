@@ -320,6 +320,7 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
   src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
 
 rm -r src/3rdparty/chromium/third_party/openh264/src
+rm -r src/3rdparty/chromium/third_party/unrar
 
 %build
 %if 0%{?suse_version} < 1550

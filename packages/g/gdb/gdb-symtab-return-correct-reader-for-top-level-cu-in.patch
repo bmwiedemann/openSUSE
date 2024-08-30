@@ -1,0 +1,224 @@
+From 84b9218d98eb2ac242fe3afc81598206279f7b13 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 22 Aug 2024 10:00:27 +0200
+Subject: [PATCH] [gdb/symtab] Return correct reader for top-level CU in
+ cooked_indexer::ensure_cu_exists
+
+With the test-case included in this patch, we run into:
+...
+$ gdb -q -batch $exec
+Dwarf Error: Could not find abbrev number 3 in CU at offset 0xdb \
+  [in module $exec]
+...
+
+The debug info consists of two CUs:
+...
+  Compilation Unit @ offset 0xb2:
+   Length:        0x25 (32-bit)
+   Version:       4
+   Abbrev Offset: 0x6c
+   Pointer Size:  8
+ <0><bd>: Abbrev Number: 1 (DW_TAG_compile_unit)
+    <be>   DW_AT_language    : 2	(non-ANSI C)
+ <1><bf>: Abbrev Number: 2 (DW_TAG_subprogram)
+    <c0>   DW_AT_low_pc      : 0x4004a7
+    <c8>   DW_AT_high_pc     : 0x4004b2
+    <d0>   DW_AT_specification: <0xe8>
+ <1><d4>: Abbrev Number: 3 (DW_TAG_subprogram)
+    <d5>   DW_AT_name        : main
+ <1><da>: Abbrev Number: 0
+  Compilation Unit @ offset 0xdb:
+   Length:        0xf (32-bit)
+   Version:       4
+   Abbrev Offset: 0x86
+   Pointer Size:  8
+ <0><e6>: Abbrev Number: 1 (DW_TAG_compile_unit)
+    <e7>   DW_AT_language    : 2	(non-ANSI C)
+ <1><e8>: Abbrev Number: 2 (DW_TAG_subprogram)
+    <e9>   DW_AT_specification: <0xd4>
+ <1><ed>: Abbrev Number: 0
+...
+where:
+- DIE 0xbf in CU@0xb2 contains an inter-CU reference to
+- DIE 0xe8 in CU@0xdb, which contains an inter-CU reference to
+- DIE 0xd4 back in CU@0xb2.
+
+The dwarf error is caused by this bit of code in
+cooked_indexer::ensure_cu_exists:
+...
+  if (per_cu == m_per_cu)
+    return reader;
+...
+
+The dwarf error happens as follows:
+- a cutu_reader A is created for CU@0xb2
+- using cutu_reader A, the cooked index reader starts indexing dies, with
+  m_per_cu set to CU@0xb2
+- while indexing it scans the attributes of DIE 0xbf and encounters the
+  inter-CU reference to DIE 0xe8
+- it calls cooked_indexer::ensure_cu_exists, which creates a cutu_reader B for
+  CU@0xdb and returns it
+- using cutu_reader B, it continues scanning attributes of DIE 0xe8 and
+  encounters the inter-CU reference to DIE 0xd4
+- it calls cooked_indexer::ensure_cu_exists, the problematic bit is triggered
+  and cutu_reader B is returned
+- using cutu_reader B, it continues scanning attributes of DIE 0xd4
+- this goes wrong because:
+  - the attributes of the DIE are encoded using the abbreviation table at
+    offset 0x6c, while
+  - the decoding is done using cutu_reader B which uses the abbreviation table
+    at offset 0x86.
+
+Fix this by removing the problematic if clause.
+
+Since cutu_reader A is not preserved in m_index_storage,
+cooked_indexer::ensure_cu_exists cannot find it there and creates a duplicate
+cutu_reader C for CU@0xb2.  Fix this in process_psymtab_comp_unit by preserving
+the cutu_reader A as well in m_index_storage.
+
+Tested on x86_64-linux and aarch64-linux.
+
+PR symtab/32081
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32081
+
+Approved-By: Tom Tromey <tom@tromey.com>
+Reported-By: Andreas Schwab <schwab@linux-m68k.org>
+---
+ gdb/dwarf2/read.c                             | 35 ++++++-----
+ .../dw2-inter-cu-forth-and-back.exp           | 60 +++++++++++++++++++
+ 2 files changed, 80 insertions(+), 15 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.dwarf2/dw2-inter-cu-forth-and-back.exp
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 8f2d7a34aef..b72b5fe8c83 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -4880,28 +4880,35 @@ process_psymtab_comp_unit (dwarf2_per_cu_data *this_cu,
+ 			   dwarf2_per_objfile *per_objfile,
+ 			   cooked_index_storage *storage)
+ {
+-  cutu_reader reader (this_cu, per_objfile, nullptr, nullptr, false,
+-		      storage->get_abbrev_cache ());
++  cutu_reader *reader = storage->get_reader (this_cu);
++  if (reader == nullptr)
++    {
++      cutu_reader new_reader (this_cu, per_objfile, nullptr, nullptr, false,
++			      storage->get_abbrev_cache ());
+ 
+-  if (reader.comp_unit_die == nullptr)
+-    return;
++      if (new_reader.comp_unit_die == nullptr || new_reader.dummy_p)
++	return;
+ 
+-  if (reader.dummy_p)
+-    {
+-      /* Nothing.  */
++      std::unique_ptr<cutu_reader> copy
++	(new cutu_reader (std::move (new_reader)));
++      reader = storage->preserve (std::move (copy));
+     }
+-  else if (this_cu->is_debug_types)
+-    build_type_psymtabs_reader (&reader, storage);
+-  else if (reader.comp_unit_die->tag != DW_TAG_partial_unit)
++
++  if (reader->comp_unit_die == nullptr || reader->dummy_p)
++    return;
++
++  if (this_cu->is_debug_types)
++    build_type_psymtabs_reader (reader, storage);
++  else if (reader->comp_unit_die->tag != DW_TAG_partial_unit)
+     {
+       bool nope = false;
+       if (this_cu->scanned.compare_exchange_strong (nope, true))
+ 	{
+-	  prepare_one_comp_unit (reader.cu, reader.comp_unit_die,
++	  prepare_one_comp_unit (reader->cu, reader->comp_unit_die,
+ 				 language_minimal);
+ 	  gdb_assert (storage != nullptr);
+-	  cooked_indexer indexer (storage, this_cu, reader.cu->lang ());
+-	  indexer.make_index (&reader);
++	  cooked_indexer indexer (storage, this_cu, reader->cu->lang ());
++	  indexer.make_index (reader);
+ 	}
+     }
+ }
+@@ -16280,8 +16287,6 @@ cooked_indexer::ensure_cu_exists (cutu_reader *reader,
+       if (!per_cu->scanned.compare_exchange_strong (nope, true))
+ 	return nullptr;
+     }
+-  if (per_cu == m_per_cu)
+-    return reader;
+ 
+   cutu_reader *result = m_index_storage->get_reader (per_cu);
+   if (result == nullptr)
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-inter-cu-forth-and-back.exp b/gdb/testsuite/gdb.dwarf2/dw2-inter-cu-forth-and-back.exp
+new file mode 100644
+index 00000000000..62674bdb700
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw2-inter-cu-forth-and-back.exp
+@@ -0,0 +1,60 @@
++# Copyright 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that the cooked index reader can handle inter-CU references:
++# - DIE1@CU1 -> DIE2@CU2
++# - DIE2@CU2 -> DIE3@CU1.
++
++load_lib dwarf.exp
++
++# This test can only be run on targets which support DWARF-2 and use gas.
++require dwarf2_support
++
++standard_testfile main.c .S
++
++# Create the DWARF.
++set asm_file [standard_output_file $srcfile2]
++Dwarf::assemble $asm_file {
++    declare_labels label1 label2
++
++    cu {} {
++	compile_unit {{language @DW_LANG_C}} {
++	    subprogram {
++		{MACRO_AT_range { main }}
++		{DW_AT_specification %$label1}
++	    }
++
++	    label2: subprogram {
++		{DW_AT_name main}
++	    }
++	}
++    }
++
++    cu {} {
++	compile_unit {{language @DW_LANG_C}} {
++	    label1: subprogram {
++		{DW_AT_specification %$label2}
++	    }
++	}
++    }
++}
++
++if [prepare_for_testing "failed to prepare" $testfile \
++	[list $asm_file $srcfile] {nodebug}] {
++    return -1
++}
++
++# Regression test for PR32081.
++gdb_assert { ![regexp -nocase "error:" $gdb_file_cmd_msg] } "No Error message"
+
+base-commit: 102b31b0b7f62e6e4f685e725f325f2ab6283c2a
+-- 
+2.35.3
+

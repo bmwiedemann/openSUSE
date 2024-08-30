@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 29 12:06:21 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.8
+  * Use pyproject.toml and drop outdated Python support
+  * Drop outdated Python versions from GitHub Actions
+  * Initial support for gzip compressed BEAM files
+
+-------------------------------------------------------------------
 Thu Nov  5 15:33:34 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 0.7

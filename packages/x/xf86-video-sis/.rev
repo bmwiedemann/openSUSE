@@ -179,4 +179,13 @@ See COPYING (forwarded request 116002 from babelworx)</comment>
   U_07-xf86-video-sis-remove-the-GlxSetVisualConfigs-stub-and-friends.patch</comment>
     <requestid>760850</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a3c2ffce72f9ce4e00fb04e7e436ee93</srcmd5>
+    <version>0.12.0</version>
+    <time>1725017138</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude aarch64 and %{arm} architectures (inb/outb needed for this
+  driver)</comment>
+    <requestid>1197463</requestid>
+  </revision>
 </revisionlist>
