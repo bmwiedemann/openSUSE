@@ -27,7 +27,7 @@ URL:            https://lynx.invisible-island.net/
 Source:         https://invisible-mirror.net/archives/%{name}/tarballs/%{name}%{tarbase}.tar.bz2
 # changing default configuration
 Patch0:         lynx-charset.patch
-Patch1:         lynx-enable_xli.patch
+Patch1:         lynx-default-image-viewer.patch
 # bugs
 Patch3:         lynx-proxy-empty-string.patch
 BuildRequires:  libbz2-devel
@@ -35,7 +35,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  postfix
 BuildRequires:  zlib-devel
-Requires:       xli
+Requires:       feh
 Provides:       web_browser
 
 %description

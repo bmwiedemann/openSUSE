@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:22:59 UTC 2024 - pgajdos@suse.com
+
+- uses feh as the default image viewer
+  - lynx-enable_xli.patch moved to lynx-default-image-viewer.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 01:05:26 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - version update to 2.9.2

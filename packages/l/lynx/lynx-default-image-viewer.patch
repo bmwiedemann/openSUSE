@@ -7,7 +7,7 @@ Index: lynx2.9.0/lynx.cfg
  # If you use xli, you may want to add the -quiet flag.
  #
 -#XLOADIMAGE_COMMAND:xli %s &
-+XLOADIMAGE_COMMAND:xli %s &
++XLOADIMAGE_COMMAND:feh %s &
  
  .h2 VIEWER
  # MIME types may be assigned to external viewers using

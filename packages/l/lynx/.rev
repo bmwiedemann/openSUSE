@@ -386,4 +386,13 @@
     <comment>- version update to 2.9.2 (forwarded request 1196368 from mgorse)</comment>
     <requestid>1196418</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e82020ae8117f35122f2607e9f210486</srcmd5>
+    <version>2.9.2</version>
+    <time>1725022645</time>
+    <user>dimstar_suse</user>
+    <comment>- uses feh as the default image viewer
+  - lynx-enable_xli.patch moved to lynx-default-image-viewer.patch</comment>
+    <requestid>1197793</requestid>
+  </revision>
 </revisionlist>
