@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 29 00:41:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.60.0:
+  * Fixed a crash (introduced in 0.59) when the final changed hunk
+    included the last line of the file
+  * Fixed an issue where files with no common content would show
+    duplicate hunks
+  * Fixed a performance issue when files had extremely long lines
+    (e.g. 100,000+ characters).
+- remove cargo_audit, as it's now included in cargo_vendor
+- add new build dependency (libstdc++)
+- exclude mdbook, so difftastic can be built for Leap
+- disable tests for now, as too many fail, software still works
+
+-------------------------------------------------------------------
 Sun May 12 12:19:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.58.0:

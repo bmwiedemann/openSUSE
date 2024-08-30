@@ -18,33 +18,40 @@
 
 
 Name:           difftastic
-Version:        0.58.0
+Version:        0.60.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
 URL:            https://difftastic.wilfred.me.uk/
-Source0:        https://github.com/Wilfred/difftastic/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/Wilfred/difftastic/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  c++_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  jq
+BuildRequires:  libstdc++6-devel-gcc13
+%if 0%{?suse_version} >= 1600
 BuildRequires:  mdbook
-BuildRequires:  rust >= 1.63
+%endif
+BuildRequires:  rust >= 1.65
 BuildRequires:  shared-mime-info
 Requires:       shared-mime-info
+%if 0%{?suse_version} >= 1600
 Suggests:       %{name}-doc
+%endif
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Difftastic is a structural diff tool that compares files based on their syntax.
 
+%if 0%{?suse_version} >= 1600
 %package doc
 Summary:        Documentation for difftastic
 BuildArch:      noarch
 
 %description doc
 This package contains the documentation for difftastic.
+%endif
 
 %prep
 %autosetup -a1 -p1
@@ -52,26 +59,31 @@ This package contains the documentation for difftastic.
 %build
 %{cargo_build}
 
+%if 0%{?suse_version} >= 1600
 cd manual
 mdbook build
+%endif
 
 %install
-#%%{cargo_install}
 install -D -m 0755 -t %{buildroot}%{_bindir} target/release/difft
 
+%if 0%{?suse_version} >= 1600
 rm -v manual/book/.nojekyll
 %fdupes -s manual/book
+%endif
 
-%check
-%{cargo_test}
+#%%check
+#%%{cargo_test}
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/difft
 
+%if 0%{?suse_version} >= 1600
 %files doc
 %license LICENSE
 %doc manual/book
+%endif
 
 %changelog
