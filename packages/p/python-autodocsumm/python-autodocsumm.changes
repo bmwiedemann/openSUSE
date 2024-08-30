@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 13:21:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.13
+  * Allow Sphinx >=8.0 and fix deprecations; allow Python
+    3.12; rework test workflow by @theOehrly in (#98)
+
+-------------------------------------------------------------------
 Mon Jan  8 20:02:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.12:
