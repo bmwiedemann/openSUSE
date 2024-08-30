@@ -30,7 +30,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module requests_ntlm >= 1.1.0}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  fdupes
