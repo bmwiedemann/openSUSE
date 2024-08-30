@@ -24,7 +24,7 @@
 %bcond_without  test
 %endif
 Name:           python-apptools
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        Application tools in Python
 # Source code is under BSD but images are under different licenses

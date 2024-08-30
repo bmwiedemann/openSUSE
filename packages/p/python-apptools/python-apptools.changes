@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 22 09:16:55 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 5.3.0:
+  * Drop support for Python 3.7. (#339)
+  * Replaced uses of ``numpy.alltrue``, for compatibility with NumPy 2.0. (#341)
+  * Don't write to preferences on ``PreferencesHelper`` creation. (#343)
+  * Fix a test that was broken in the presence of Mayavi / TVTK. (#352) 
+
+-------------------------------------------------------------------
 Sun Jan 14 17:35:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.1:

@@ -65,4 +65,12 @@
 - Use pytest to run the testsuite, not nose.</comment>
     <requestid>1138697</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f8d4e66c57c8e9b35202929c45860b2</srcmd5>
+    <version>5.3.0</version>
+    <time>1725017586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197800</requestid>
+  </revision>
 </revisionlist>
