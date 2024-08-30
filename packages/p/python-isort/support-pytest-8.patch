@@ -1,0 +1,52 @@
+From 9c0b6272bfb1fd41298dd0fa9d072367bd79cc1b Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Thu, 15 Feb 2024 17:42:59 +0300
+Subject: [PATCH] Drop deprecated pytest.warns(None)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With Pytest 7:
+
+https://docs.pytest.org/en/stable/changelog.html#pytest-7-0-0rc1-2021-12-06
+
+> #8645: pytest.warns(None) is now deprecated because many people used
+  it to mean “this code does not emit warnings”, but it actually had the
+  effect of checking that the code emits at least one warning of any
+  type-like pytest.warns() or pytest.warns(Warning)
+
+With Pytest 8 it's the error.
+
+Changed according to the documentation:
+https://docs.pytest.org/en/latest/how-to/capture-warnings.html#additional-use-cases-of-warnings-in-tests
+
+Fixes: https://github.com/PyCQA/isort/issues/2234
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ tests/unit/test_ticketed_features.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/unit/test_ticketed_features.py b/tests/unit/test_ticketed_features.py
+index 32eeb709..bc847ed5 100644
+--- a/tests/unit/test_ticketed_features.py
++++ b/tests/unit/test_ticketed_features.py
+@@ -3,6 +3,7 @@
+ """
+ from functools import partial
+ from io import StringIO
++import warnings
+ 
+ import pytest
+ 
+@@ -615,9 +616,9 @@ def test_isort_should_warn_on_empty_custom_config_issue_1433(tmpdir):
+ quiet = true
+ """
+     )
+-    with pytest.warns(None) as warning:  # type: ignore
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         assert Config(settings_file=str(settings_file)).quiet
+-    assert not warning
+ 
+ 
+ def test_float_to_top_should_respect_existing_newlines_between_imports_issue_1502():

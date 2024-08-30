@@ -633,4 +633,13 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>1152081</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>91798a6fff4e2b8d8e73f164c82bfa5f</srcmd5>
+    <version>5.13.2</version>
+    <time>1725017562</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Do not use the anti-pattern of pytest.warns(None).</comment>
+    <requestid>1197676</requestid>
+  </revision>
 </revisionlist>

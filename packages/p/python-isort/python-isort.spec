@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-isort
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -40,13 +40,15 @@ License:        MIT
 URL:            https://pycqa.github.io/isort/
 # tests and example projects are not packaged for PyPI, get them from Github
 Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyCQA/isort#2235
+Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
 Recommends:     python-pip-shims >= 0.5.2
@@ -58,6 +60,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module hypothesmith}
+BuildRequires:  %{python_module isort == %{version}}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module numpy}
@@ -84,7 +87,7 @@ imports. It requires Python 3.8+ to run but supports formatting Python 2 code
 too.
 
 %prep
-%setup -q -n isort-%{version}
+%autosetup -p1 -n isort-%{version}
 chmod -x LICENSE
 
 %if %{without pylama}
