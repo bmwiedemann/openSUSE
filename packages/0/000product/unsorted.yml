@@ -3924,7 +3924,6 @@ unsorted:
   - execstack 
   - exempi-tools 
   - exfat-utils 
-  - exfatprogs 
   - exif 
   - exiftool 
   - exiftran 
@@ -25707,6 +25706,7 @@ unsorted:
   - python310-jinja2-time 
   - python310-jira 
   - python310-jirafs 
+  - python310-jiter 
   - python310-jmespath 
   - python310-joblib 
   - python310-josepy 
@@ -26457,7 +26457,6 @@ unsorted:
   - python310-pyahocorasick 
   - python310-pyalsaaudio 
   - python310-pyaml 
-  - python310-pyannotate 
   - python310-pyarrow 
   - python310-pyarrow-devel 
   - python310-pyasn1 
@@ -26772,7 +26771,6 @@ unsorted:
   - python310-python-bidi 
   - python310-python-binary-memcached 
   - python310-python-box 
-  - python310-python-consul 
   - python310-python-coveralls 
   - python310-python-crfsuite 
   - python310-python-crontab 
@@ -27398,6 +27396,7 @@ unsorted:
   - python310-typer-slim 
   - python310-types-humanfriendly 
   - python310-types-python-dateutil 
+  - python310-types-requests 
   - python310-types-setuptools 
   - python310-typing-inspect 
   - python310-typing_extensions 
@@ -27538,6 +27537,7 @@ unsorted:
   - python310-wtf-peewee 
   - python310-wurlitzer 
   - python310-wxPython 
+  - python310-wyoming 
   - python310-xapian 
   - python310-xapian-haystack 
   - python310-xapp 
@@ -27955,6 +27955,7 @@ unsorted:
   - python311-apeye 
   - python311-apeye-core 
   - python311-apfel 
+  - python311-apipkg 
   - python311-apiron 
   - python311-apns2 
   - python311-appdirs 
@@ -29220,6 +29221,7 @@ unsorted:
   - python311-ini2toml-all 
   - python311-ini2toml-full 
   - python311-ini2toml-lite 
+  - python311-iniconfig 
   - python311-inifile 
   - python311-iniparse 
   - python311-injector 
@@ -29296,6 +29298,7 @@ unsorted:
   - python311-jinja2-time 
   - python311-jira 
   - python311-jirafs 
+  - python311-jiter 
   - python311-joblib 
   - python311-josepy 
   - python311-joserfc 
@@ -29980,6 +29983,7 @@ unsorted:
   - python311-pure-protobuf 
   - python311-pure-sasl 
   - python311-purl 
+  - python311-py 
   - python311-py-build-cmake 
   - python311-py-cpuinfo 
   - python311-py-espeak-ng 
@@ -30012,7 +30016,6 @@ unsorted:
   - python311-pyahocorasick 
   - python311-pyalsaaudio 
   - python311-pyaml 
-  - python311-pyannotate 
   - python311-pyarrow 
   - python311-pyarrow-devel 
   - python311-pybars3 
@@ -30316,7 +30319,6 @@ unsorted:
   - python311-python-bidi 
   - python311-python-binary-memcached 
   - python311-python-box 
-  - python311-python-consul 
   - python311-python-coveralls 
   - python311-python-crfsuite 
   - python311-python-crontab 
@@ -30923,6 +30925,7 @@ unsorted:
   - python311-typer-slim 
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
+  - python311-types-requests 
   - python311-types-setuptools 
   - python311-typing-inspect 
   - python311-typish 
@@ -31061,6 +31064,7 @@ unsorted:
   - python311-wtf-peewee 
   - python311-wurlitzer 
   - python311-wxPython 
+  - python311-wyoming 
   - python311-xapian 
   - python311-xapian-haystack 
   - python311-xapp 
@@ -32874,6 +32878,7 @@ unsorted:
   - python312-jinja2-time 
   - python312-jira 
   - python312-jirafs 
+  - python312-jiter 
   - python312-jmespath 
   - python312-joblib 
   - python312-josepy 
@@ -33934,7 +33939,6 @@ unsorted:
   - python312-python-bidi 
   - python312-python-binary-memcached 
   - python312-python-box 
-  - python312-python-consul 
   - python312-python-coveralls 
   - python312-python-crfsuite 
   - python312-python-crontab 
@@ -34557,6 +34561,7 @@ unsorted:
   - python312-typer-slim 
   - python312-types-humanfriendly 
   - python312-types-python-dateutil 
+  - python312-types-requests 
   - python312-types-setuptools 
   - python312-typing-inspect 
   - python312-typing_extensions 
@@ -34697,6 +34702,7 @@ unsorted:
   - python312-wtf-peewee 
   - python312-wurlitzer 
   - python312-wxPython 
+  - python312-wyoming 
   - python312-x86-64-v3 
   - python312-xapian 
   - python312-xapian-haystack 

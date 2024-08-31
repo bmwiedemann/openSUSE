@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240829" schemaversion="4.1">
+<image name="OBS__openSUSE___20240830" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240829</productvar>
+      <productvar name="VERSION">20240830</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240829,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240830,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240829/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240830/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3646,7 +3646,6 @@
       <repopackage name="python3-tevent"/>
       <repopackage name="python311"/>
       <repopackage name="python311-anyio"/>
-      <repopackage name="python311-apipkg"/>
       <repopackage name="python311-argcomplete"/>
       <repopackage name="python311-argparse-manpage"/>
       <repopackage name="python311-attrs"/>
@@ -3690,7 +3689,6 @@
       <repopackage name="python311-idna"/>
       <repopackage name="python311-immutables"/>
       <repopackage name="python311-incremental"/>
-      <repopackage name="python311-iniconfig"/>
       <repopackage name="python311-ipaddr"/>
       <repopackage name="python311-Jinja2"/>
       <repopackage name="python311-jmespath"/>
@@ -3719,7 +3717,6 @@
       <repopackage name="python311-policycoreutils"/>
       <repopackage name="python311-psutil"/>
       <repopackage name="python311-ptyprocess"/>
-      <repopackage name="python311-py"/>
       <repopackage name="python311-pyasn1"/>
       <repopackage name="python311-pyasn1-modules"/>
       <repopackage name="python311-pycairo"/>
