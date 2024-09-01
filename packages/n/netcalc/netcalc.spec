@@ -1,7 +1,7 @@
 #
 # spec file for package netcalc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           netcalc
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        IP subnet calculator
 License:        BSD-3-Clause
@@ -25,6 +25,8 @@ URL:            https://github.com/troglobit/netcalc
 Source:         https://github.com/troglobit/netcalc/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # for tests
 BuildRequires:  bats
+BuildRequires:  autoconf
+BuildRequires:  automake
 
 %description
 netcalc is an IP network calculator that can calcuate host IP ranges, subnet
@@ -35,6 +37,7 @@ of ipcalc.
 %setup -q
 
 %build
+./autogen.sh
 %configure \
 	--docdir=%{_docdir}/%{name} \
 	--disable-ipcalc-symlink

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 24 01:39:12 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.1.7 
+  * Fix #25: Add missing include file for macOS
+  * Fix compiler warnings on NetBSD, possibly other BSDs
+  * Add missing include file for NetBSD, possibly other BSDs
+  * Various minor GCC 13 and Clang 18 warnings
+  * New build dependencies automake and autoconf
+
+-------------------------------------------------------------------
 Sat Apr  3 22:13:50 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Don't conflict with ipcalc: Disable installing symlink to
