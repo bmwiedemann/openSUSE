@@ -55,7 +55,7 @@ BuildArch:      i686
 #(all the widgets use Gtk unconditionally — not sure which of the changed codepaths are used in Electron)
 %bcond_with qt
 
-%ifarch aarch64 %ix86
+%ifarch %ix86
 #work around npm rebuild crashes on OBS
 %global jitless NODE_OPTIONS=--jitless
 %endif
@@ -138,6 +138,11 @@ BuildArch:      i686
 %bcond_with ffmpeg_6
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 40
+%bcond_without gcc14
+%else
+%bcond_with gcc14
+%endif
 
 
 %if 0%{?fedora}
@@ -360,6 +365,12 @@ Patch2054:      bad-font-gc11.patch
 Patch2055:      bad-font-gc1.patch
 Patch2056:      bad-font-gc2.patch
 Patch2057:      bad-font-gc3.patch
+#Work around gcc14 overly aggressive optimizer. Interestingly applying this patch produces a *different* crash on gcc13 + LTO.
+%if %{with gcc14}
+Patch2058:      v8-strict-aliasing.patch
+%else
+Source2058:     v8-strict-aliasing.patch
+%endif
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 # Fix blink nodestructor
@@ -643,6 +654,9 @@ BuildRequires:  gcc-c++ >= 13
 %else
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
+%endif
+%if %{with gcc14}
+BuildRequires:  gcc-c++ >= 14
 %endif
 %if %{with pipewire}
 BuildRequires:  pkgconfig(libpipewire-0.3)
@@ -1040,7 +1054,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=2 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"

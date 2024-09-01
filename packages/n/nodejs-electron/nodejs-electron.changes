@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 31 09:00:18 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fedora 40+, TW: add v8-strict-aliasing.patch to work around GCC14 miscompile
+- aarch64: remove -jitless from electron_rebuild macro, seems not needed anymore
+
+-------------------------------------------------------------------
 Sun Aug 18 07:39:42 UTC 2024 - thod_@gmx.de
 
 - New upstream release 30.4.0

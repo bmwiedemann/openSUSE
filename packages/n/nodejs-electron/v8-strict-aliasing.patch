@@ -1,0 +1,42 @@
+Work around numerous type confusion bugs in V8 due to GCC14 being much more aggressive about misoptimizing them
+
+Example crash (relibly happens during building electron inside mksnapshot):
+
+#0  v8::internal::compiler::CFGBuilder::CollectSuccessorBlocks () at ../../v8/src/compiler/scheduler.cc:435
+#1  v8::internal::compiler::CFGBuilder::ConnectCall () at ../../v8/src/compiler/scheduler.cc:451
+#2  v8::internal::compiler::CFGBuilder::ConnectBlocks () at ../../v8/src/compiler/scheduler.cc:402
+#3  v8::internal::compiler::CFGBuilder::ConnectBlocks (this=0x55b3d1fc26a8, node=0x55b3d1fb6508) at ../../v8/src/compiler/scheduler.cc:365
+#4  0x000055b3d0b6b05f in v8::internal::compiler::CFGBuilder::Run () at ../../v8/src/compiler/scheduler.cc:268
+#5  v8::internal::compiler::Scheduler::BuildCFG (this=0x7ffd856fb860) at ../../v8/src/compiler/scheduler.cc:633
+#6  0x000055b3d0b6f692 in v8::internal::compiler::Scheduler::ComputeSchedule (zone=0x55b3d1fa4100, graph=0x1070, flags=..., tick_counter=0x7ffd856fbfa0, profile_data=0x0) at ../../v8/src/compiler/scheduler.cc:64
+#7  0x000055b3d0b3f3fb in v8::internal::compiler::ComputeSchedulePhase::Run () at ../../v8/src/compiler/pipeline.cc:1805
+#8  v8::internal::compiler::PipelineImpl::Run<v8::internal::compiler::ComputeSchedulePhase> () at ../../v8/src/compiler/pipeline.cc:775
+#9  v8::internal::compiler::PipelineImpl::ComputeScheduledGraph (this=0x7ffd856fc3b0) at ../../v8/src/compiler/pipeline.cc:3869
+#10 0x000055b3d0b4b8e6 in v8::internal::compiler::Pipeline::GenerateCodeForCodeStub (isolate=0x55b3d1ac7700 <v8::internal::compiler::(anonymous namespace)::GetCommonOperatorGlobalCache()::object+288>, call_descriptor=0x55b3d1fb6b48, 
+    graph=0x7ffd856fbd30, jsgraph=0x7ffd856fbc88, source_positions=0x7ffd856fc090, kind=2, debug_name=0x55b3d1752b49 "V8.TFCSAOptimization", builtin=13, options=..., profile_data=0x0) at ../../v8/src/compiler/pipeline.cc:2951
+#11 0x000055b3d0a003a9 in v8::internal::compiler::CodeAssembler::GenerateCode (state=0x7ffd856fd180, options=..., profile_data=0x0) at ../../v8/src/compiler/code-assembler.cc:175
+#12 0x000055b3d0d8703d in BuildWithCodeStubAssemblerCS (isolate=0x55b3d1f19000, builtin=13, generator=0x0, interface_descriptor=3, name=0x7ffd856fd120 "\001") at ../../v8/src/builtins/setup-builtins-internal.cc:213
+#13 0x000055b3d0d87440 in v8::internal::SetupIsolateDelegate::SetupBuiltinsInternal (isolate=0x55b3d1f19000) at ../../v8/src/builtins/setup-builtins-internal.cc:373
+#14 0x000055b3d1726a05 in v8::internal::SetupIsolateDelegate::SetupBuiltins () at ../../v8/src/init/setup-isolate-full.cc:29
+#15 v8::internal::Isolate::Init(v8::internal::SnapshotData*, v8::internal::SnapshotData*, v8::internal::SnapshotData*, bool) [clone .isra.0] () at ../../v8/src/execution/isolate.cc:4857
+#16 0x000055b3d0503632 in v8::internal::Isolate::InitWithoutSnapshot () at ../../v8/src/execution/isolate.cc:4366
+#17 v8::internal::SnapshotCreatorImpl::InitInternal (this=0x55b3d1f2d660, blob=0x0) at ../../v8/src/snapshot/snapshot.cc:868
+#18 0x000055b3d009c347 in v8::internal::SnapshotCreatorImpl::SnapshotCreatorImpl () at ../../v8/src/snapshot/snapshot.cc:929
+#19 v8::SnapshotCreator::SnapshotCreator () at ../../v8/src/api/api.cc:557
+#20 main (argc=-777226496, argc@entry=14, argv=0x55b3d1fb6b48, argv@entry=0x7ffd85718da8) at ../../v8/src/snapshot/mksnapshot.cc:293
+#21 0x00007f26f162a340 in __libc_start_call_main (main=main@entry=0x55b3d009b0c0 <main(int, char**)>, argc=argc@entry=14, argv=argv@entry=0x7ffd85718da8) at ../sysdeps/nptl/libc_start_call_main.h:58
+#22 0x00007f26f162a409 in __libc_start_main_impl (main=0x55b3d009b0c0 <main(int, char**)>, argc=14, argv=0x7ffd85718da8, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7ffd85718d98)
+    at ../csu/libc-start.c:360
+#23 0x000055b3d009df75 in _start () at ../sysdeps/x86_64/start.S:115
+
+
+--- src/v8/BUILD.gn.old
++++ src/v8/BUILD.gn
+@@ -775,6 +775,7 @@ config("internal_config") {
+       libs = [ "atomic" ]
+     }
+   }
++  cflags = ["-fno-strict-aliasing"]
+ }
+ 
+ # Should be applied to all targets that write trace events.
