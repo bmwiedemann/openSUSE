@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 30 18:00:33 UTC 2024 - Zoltan Balogh <zbalogh@suse.com>
+
+- Fixing bsc#1229242 - zypper-changelog-plugin lacks package names 
+
+-------------------------------------------------------------------
 Tue Jun  4 17:16:49 UTC 2024 - Zoltan Balogh <zbalogh@suse.com>
 
 - Fixing bsc#1213929 - zypper-changelog-plugin lacks dependencies (No module named 'rpm') 

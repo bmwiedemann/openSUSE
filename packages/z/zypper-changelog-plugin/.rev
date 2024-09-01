@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1178931</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d0abf40fc5d8675bf7689a401d4e4632</srcmd5>
+    <version>0.6</version>
+    <time>1725211334</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing bsc#1229242 - zypper-changelog-plugin lacks package names</comment>
+    <requestid>1197969</requestid>
+  </revision>
 </revisionlist>
