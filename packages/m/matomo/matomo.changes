@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Sat Aug 31 14:04:49 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.1.1
+  This release contains some security fixes.
+  - Addressed a moderate security vulnerability related to an open redirect issue in the ‘logme’ mechanism.
+    This fix prevents unauthorised redirection, enhancing the security within Matomo.
+
+-------------------------------------------------------------------
+Mon Jun 10 13:14:20 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.1.0
+  This release contains some security fixes.
+  * matomo-org/matomo
+    - #22223 Ensure to correctly encode segment title for tooltips
+    - #22243 Escape hover tooltip text in SiteSelector
+    - #18360 Allow configuration of max execution time when using MariaDB
+    - #21941 [GDPR issue / feature request] CNIL configuration guide for Matomo
+      is not enough for consent exemption, and Matomo does not currently offer paliative options
+    - #22080 Update resolution in subsequent tracking requests if previously unknown
+    - #22088 Connect free trial start with marketplace account creation
+    - #22139 Allow users to request a premium feature trial
+    - #22178 Display notification about not yet processed data also when visits log is disabled
+    - #22232 Ensure to perform complex column updates only when supported
+    - #22240 Add pure CSS Matomo loader
+    - #22217 Improve opt out compatibility with older browsers
+    - #20941 Dependency jquery.dotdotdot has a non-commercial license
+    - #22023 Set autocomplete property on login form fields
+    - #22028 Segment-Creation with “Please specify a value for ‘definition’.” error
+    - #22045 [Bug] Segment creation is taking the previous segment configuration
+    - #22068 [Bug] Do not send Notification Email to anonymous user
+    - #22077 [Bug] Sending “lang” via HTTP API ignores country when upper case
+    - #22082 Fixing small bug in the formatPercent method
+    - #22101 [Bug] Matomo 5.0.2 : /core/Filechecks.php(153): Deprecated – trim():
+      Passing null to parameter #1 ($string) of type string is deprecated
+    - #22187 [Bug] Installation can be continued with missing database privileges
+    - #22188 [Bug] Improve accessibility of top menu (missing role attributes)
+    - #22236 [Bug] Charts for Conversions by Entry Pages & Page Titles Broken
+    - #22248 Missing delimiter for preg_match pattern in UrlHelper::inArrayMatchesRegex
+    - #18371 Allow to distinguish between MySQL and MariaDB (also in installation)
+    - #19736 When Visits log is disabled, and looking at today’s report,
+      the notification explaining that reports are not yet processed is not displayed
+    - #22044 Ignore anonymous user when checking for allowed domains
+    - #22055 Refactor plugin details modal using Vue
+    - #22154 Remove shop links from plugin details modal
+    - #22205 Add preview release channel
+    - #22225 Replace usage of SQL_CALC_FOUND_ROWS with separate queries
+    - #22228 Move Goal actions into single actions column
+    - #22231 Fix: skipping a Tour challenge shows an error message
+    - #22237 Update ‘Install all paid plugins at once’ functionality and remove license key mgmt from Marketplace
+    - #22244 Add tests for OptOutJS integration
+  * matomo-org/tag-manager
+    - #766 Add ‘disable campaign parameters tracking’ setting 
+    - #736 [Bug] “All Websites” still shown in website selector in the MTM screen
+    - #780 Show FAQ link for click classes to support document inheritance ]
+    - #784 Hide publish button for users with no tagmanager_use_custom_templates capability
+    - #794 Re-enabled versions view for write user to view version changes 
+  * matomo-org/matomo-php-tracker
+    - #130 fix: Check for cURL error before throwing exception in sendRequest method
+    - #131 Fix: Creation of dynamic property MatomoTracker::$currentTs is deprecated
+    - #132 Drop support of php versions < 7.2]
+    - #133 Fix: Curl Connection remaining open]
+  * matomo-org/device-detector
+    - #7598 Adds detection for Telkom, UD brands, improves detection for Hyundai,
+      Nordmende, O2, Orange and unknown brands, adds detection for QbHttp library and TV Bro browser
+    - #7600 Adds detection for Pacific Research Alliance, Panavox and TTfone brands,
+      improves detection for AOC, Bush, Cat, Daewoo, Finlux, Hitachi, Linsar, Pioneer,
+      Quantum, Ravoz, RCA Tablets, Safaricom, TAG Tech, Thomson, VEON and X-View brands,
+      adds detection for Armadillo OS and HELIX OS, improves detection for Android TV, 
+      adds detection for Basic Web Browser, EudoraWeb, Freespoke, MaxBrowser, MixerBox AI and YouBrowser
+    - #7612 Adds detection for various bots
+    - #7613 Adds detection for various apps
+    - #7622 Adds detection for various browsers and improves version detection for Ubuntu
+    - #7624 Adds detection for Liri OS, Webian operating systems, Clecko engine, 
+     Columbus Browser, Classilla, Eolie, Liri Browser, SlimBoat, Vonkeror, Webian Shell, w3m, Wyzo browsers
+    - #7625 Improves version detection for Clecko engine
+    - #7628 Improves detection for Lineage OS
+    - #7629 Improves version detection for Lineage OS
+    - #7630 Adds detection for ASPLinux, SerenityOS, improves detection for Fire OS,
+      improves version detection for Fire OS, Lineage OS and tvOS
+    - #7632 Adds probely bot
+    - #7635 Adds detection for BizBrowser, Kitt, Ladybird and SkyLeap browsers,
+      LibWeb engine, improves detection for Opera Touch, Quark, Swiftfox,
+      adds detection for httprs, Ameba, CSDN, NAVER Dictionary, BlueMail, Yahoo! Mail
+    - #7638 Adds detection for Arachne, Dark Web, Dark Web Private, Dezor, 
+      Fire Browser, Good Browser, Involta Go, Habit Browser, Keyboard Browser,
+      Lightning Browser Plus, Owl Browser, Orbitum, Photon, Proxyium, Proxynet, 
+      Stealth Browser, TalkTo, Vuhuv and Weltweitimnetz Browser browsers,
+      improves detection for APN Browser, Baidu Browser, Cliqz, hola! Browser, 
+      Mercury, Tor Browser and UC Browser
+    - #7640 Adds detection for ElectroBSD and improves detection for Amazon Linux, Android, Chrome OS, iPadOS, iOS, Lineage OS, macOS
+    - #7641 Adds detection for System76 brand and improves detection for Apple and Meta devices
+    - #7642 Detect new brand TriaPlay and Detect devices for exist brands
+    - #7643 NPR rename, better Android SDK detection, more podcasting user agents.
+    - #7645 Detect new brand AirTouch and Detect devices for exist brands
+    - #7646 Detect new brand Eyemoo and Detect devices for exist brands
+    - #7648 Detect new brands: Ajib, QWATT and Detect devices for exist brands
+    - #7649 Detect new brand HiGrace and Detect devices for exist brands
+    - #7650 Detect new brands: CCIT, PAGRAER, DIALN, AUPO and Detect devices for exist brands
+    - #7651 Detect new brands: CENTEK, Globmall, GreenLion, VANWIN and Detect devices for exist brands
+    - #7654 Adds detection for Alpine Linux, AOSC OS, Clear Linux OS, EulerOS,
+      Loongnix, Rocky Linux, Scientific Linux and improves version detection for CentOS,
+      Debian, iPadOS, macOS, Red Hat, SUSE and Windows
+    - #7656 Adds detection for various bots
+    - #7657 Improves detection for Arc
+    - #7658 Adds detection for OpenVZ, Proxmox VE and improves detection for Wear OS, Windows
+    - #7660 Detect new brands: AngelTech, Heimat and Detect devices for exist brands
+    - #7661 Adds detection for various bots
+    - #7662 Adds detection for various apps and improves detection for QQ Browser
+    - #7664 Improves detection for Android, GNU/Linux and tvOS
+    - #7665 Improves detection for mobile devices
+    - #7666 Detect new brands: MAG, S-Color and Detect devices for exist brands
+    - #7667 Detect new brands: HEC, W&O and Detect devices for exist brands
+    - #7669 Detect overlapping detections
+    - #7670 Detect new brand NoviSea and Detect devices for exist brands
+    - #7671 Detect new brands: Cidea, Cuiud, Daria, HiBy, mipo and Detect devices for exist brands
+    - #7674 Improves detection for masscan
+    - #7675 Detect new brands: Aceline, QIN, VOCAL, Wainyok, Xsmart and Detect devices for exist brands
+    - #7678 Detect new brands: CADENA, inovo, Jin Tu, MBK and Detect device for exist brands
+    - #7679 Adds detection for GeedoProductSearch and Elastic Synthetics
+    - #7681 Detect devices for new brands: EagleSoar, KENSHI, TECHNOSAT, Lville, Whoop and Detect device for exist brands
+    - #7683 Detect new brands: CEPTER, Clovertek, HOLLEBERG and Detect devices for exist brands
+    - #7684 Detect new brands: GOLDBERG, Lingbo, Padpro, SoulLink, Tuvio WS and Detect devices for exist brands
+    - #7685 Detect new brand FLYCOAY and Detect devices for exist brands
+    - #7686 Improves detection for various mobile apps
+    - #7687 Adds detection for NOOK Browser
+    - #7688 Adds detection for various bots
+    - #7689 Improves detection for tablets
+    - #7691 Detect devices for exist brands
+    - #7694 Adds detection for Red Star operating system and Naenara Browser
+    - #7696 Detect new brands: Arival, Azeyou, ExtraLink, KVADRA, Neoregent,
+      Renova, VNPT Technology, VILLAON and Detect devices for exist brands  
+
+-------------------------------------------------------------------
 Fri Mar  8 06:55:07 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.0.3
@@ -609,7 +742,7 @@ Wed Oct  5 05:15:35 UTC 2022 - ecsos <ecsos@opensuse.org>
     - #7191 Adds detection for LinkWalker bot
     - #7193 Optimise devices detection for apple
     - #7194 Detect Container-related tools
-    - #7197 Detect new browsers and apps – Tint Browser, hola!, RedReader [by @sanchezzzhak]
+    - #7197 Detect new browsers and apps – Tint Browser, hola!, RedReader
     - #7198 Adds detection for RouterOS
     - #7199 Adds detection for INETDEX-BOT and NETZZAPPEN
     - #7201 Detect devices for existing and new brands – HexaByte, CipherLab, BrandCode, Lumitel, Elevate
@@ -904,7 +1037,7 @@ Wed Mar  9 06:09:00 UTC 2022 - ecsos <ecsos@opensuse.org>
     - #7010 Adds detection for Noontec brand, improves detection for Google, PocketBook, 
       Samsung, Sony devices, Android, FreeBSD, Android Browser, Tizen Browser
     - #7011 Adds detection for Android TV, Foresight Linux, Kanotix, LindowsOS, Linspire,
-      moonOS, Pardus, Zenwalk operating systems [by @liviuconcioiu, @sanchezzzhak]
+      moonOS, Pardus, Zenwalk operating systems
     - #7012 Detect new brands China Telecom, Royole, U-Magic, DORLAND and Detect
       devices for several existing brands
     - #7014 Improves detection for Samsung devices
@@ -936,9 +1069,9 @@ Fri Dec 10 06:30:33 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.6.2
   * matomo-org/matomo
-    - #18444 Ensure UTF8mb4 conversion command always enables tracking again [by @sgiehl]
-    - #18455 Ignore segment errors in update script [by @sgiehl]
-    - #18473 Ensure update to 4.6.2 removes deleted files [by @sgiehl]
+    - #18444 Ensure UTF8mb4 conversion command always enables tracking again
+    - #18455 Ignore segment errors in update script
+    - #18473 Ensure update to 4.6.2 removes deleted files
     - #18421 Remove unneeded plugin.json from CoreVue plugin [by @diosmosis]
 
 -------------------------------------------------------------------
@@ -1752,23 +1885,23 @@ Sat Mar 28 09:06:21 UTC 2020 - ecsos@opensuse.org
   This release is rated moderate security release.
   - Fix a a possible XSS issue.
   * matomo-org/matomo
-    - #15625 ‘Remember me’ not working because cookie expire is in wrong format [by @sgiehl]
+    - #15625 ‘Remember me’ not working because cookie expire is in wrong format
     - #15598 Set samesite lax instead of None if site is not on https [by @tsteur]
-    - #15623 Mention require PHP 7.2 in admin notification [by @sgiehl]
-    - #15588 slow SQL query using MariaDB causing high CPU load [by @sgiehl]
-    - #15609 Limit max execution time of transitions feature [by @sgiehl]
+    - #15623 Mention require PHP 7.2 in admin notification
+    - #15588 slow SQL query using MariaDB causing high CPU load
+    - #15609 Limit max execution time of transitions feature
     - #15616 Review Archive invalidation code [by @diosmosis]
     - #15646 Today archive is invalidated too often [by @diosmosis]
     - #14694 Warning – ucwords() expects exactly 1 parameter, 2 given [by @katebutler, @sgiehl]
     - #14764 Page Overlay stuck on “Loading…”
     - #15589 [Geo] Unknown region metrics increased significantly after update to v3.13.1
-    - #15629 Using Opt-Out iFrame twice doesn’t work [by @sgiehl]
-    - #15637 Ecommerce Orders Conversion Rate Rounding Error [by @sgiehl]
+    - #15629 Using Opt-Out iFrame twice doesn’t work
+    - #15637 Ecommerce Orders Conversion Rate Rounding Error
     - #15550 Notice: Trying to access array offset on value of type null in 
       core/Session/SessionAuth.php on line 63 [by @diosmosis]
     - #15651 Prevent connection timed out when requesting configs.php file on IIS in web.config
     - #15672 There is no way to enable ‘secure’ for the 3rd party cookie [by @tsteur]
-    - #15580 Geolocation: automatically download latest paid DB-IP databases [by @sgiehl]
+    - #15580 Geolocation: automatically download latest paid DB-IP databases
     - #15614 Remove donation widget from dashboard [by @tsteur]
     - #15665 Convert range date to date archive if needed [by @tsteur, @sgiehl]
     - #15673 Always send a referrer-policy header [by @polarbirke, @diosmosis]
@@ -1810,7 +1943,7 @@ Sat Mar 28 09:06:21 UTC 2020 - ecsos@opensuse.org
   * matomo-org/matomo-php-tracker
     - #60 Prevent double slashes [by @tsteur, @sgiehl]
   * matomo-org/matomo-log-analytics
-    - #180 Improve regex for date and time in w3c formats [by @sgiehl]  
+    - #180 Improve regex for date and time in w3c formats  
 
 -------------------------------------------------------------------
 Mon Feb 24 23:16:59 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
@@ -1824,7 +1957,7 @@ Mon Feb 24 23:16:59 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
   #15513 Loading Page Overlay fails and logs user out [by @diosmosis]
   #15602 Fix session cookies for Matomo installed in subdirectory
    [by @sgiehl, @tsteur]
-  #15605 Fix VisitorFrequency.get API for idsites=all [by @sgiehl]
+  #15605 Fix VisitorFrequency.get API for idsites=all
   #15553 piwik_ignore cookie is blocked on macOS and Chrome 80 [by @diosmosis]
   #15561 Various fixes for Samesite handling in sessions,
    iframes [by @diosmosis, @tsteur]
@@ -1846,23 +1979,23 @@ Tue Feb 18 10:21:24 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
    an iframe has also been fixed).
   41 tickets have been closed by more than 12 contributors!
   Main (core) tickets closed:
-  #15404 Real time map dialog box does not close with x [by @sgiehl]
-  #8505 Visitor map shows info icon but no tooltip when there is no data [by @sgiehl]
+  #15404 Real time map dialog box does not close with x
+  #8505 Visitor map shows info icon but no tooltip when there is no data
   #15414 Since 3.13.1 autologin in an iframe does not work anymore [by @tsteur]
   #15422 Fix removing user capabilities [by @sgiehl, @tsteur]
   #15477 Matomo can’t track IE <9 any more [by @tsteur]
-  #15500 Undefined index: bounce_rate_new [by @sgiehl]
-  #15417 In Update pop up venster Piwik is mentioned instead of Matomo [by @sgiehl]
+  #15500 Undefined index: bounce_rate_new
+  #15417 In Update pop up venster Piwik is mentioned instead of Matomo
   #14549 update mocha
   #15469 Two YAML parser
   #15307 Visits log fails without any error [by @tsteur]
   #15420 Cannot copy a dashboard to a user when the user is not one of
-         the first 100 [by @sgiehl]
+         the first 100
   #15430 VisitorLog.php(225): Trying to access array offset on value 
-         of type null – Matomo 3.13.1 [by @sgiehl]
+         of type null – Matomo 3.13.1
   #15441 UserId.getUsers generates warnings: Warning – Illegal 
-         offset type and Notice – Undefined index: label [by @sgiehl]
-  #15452 Trying to access array offset on value of type null [by @sgiehl]
+         offset type and Notice – Undefined index: label
+  #15452 Trying to access array offset on value of type null
   #15046 Clarify how to Setup the archiving cronjob using Plesk in the user guide manual
   #15293 New visit not created after logout
   #15428 Order of implode() args, avoid E_NOTICE in PHP7.4 [by @PeterUpfold, @sgiehl]
@@ -1873,7 +2006,7 @@ Tue Feb 18 10:21:24 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
   #15457 Add event that allows plugins to disable archiving for certain
          periods/sites if they want. [by @diosmosis]
   #15462 Day range archiving issue [by @diosmosis, @tsteur]
-  #15464 Use latest davaxi/sparkline release [by @sgiehl]
+  #15464 Use latest davaxi/sparkline release
   #15481 Mention Joomla install FAQ [by @tsteur, @diosmosis]
   #15487 Sort Packages [by @limitstudios, @tsteur]
   #15489 Make sparklines work when mbstring extension is not installed
@@ -1972,11 +2105,11 @@ Thu Dec 12 07:42:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
     #14714 JS Tracker: setUserId and addEcommerceItem sku should work when User ID is a number [by @tsteur]
     #15080 Comparison feature displays segment definition instead of segment name when segmenting action based custom dimensions [by @diosmosis]
     #15103 Ensure insight reports uses the correct compare period number for periods other than day [by @sgiehl, @tsteur]
-    #15140 [automatic translation update] Updated 173 strings in 10 languages (es-ar, de, el, nl, pl, pt-br, pt, sq, zh-cn, zh-tw) [by @sgiehl]
-    #15195 [automatic translation update] Updated 160 strings in 6 languages (fr, it, ja, lt, pt-br, tr) [by @sgiehl]
+    #15140 [automatic translation update] Updated 173 strings in 10 languages (es-ar, de, el, nl, pl, pt-br, pt, sq, zh-cn, zh-tw)
+    #15195 [automatic translation update] Updated 160 strings in 6 languages (fr, it, ja, lt, pt-br, tr)
     #12816 Rename “Clicked URL” dimension to “Clicked Outlink” [by @katebutler]
     #14360 UserID no longer overwrites VisitorId [by @MichaelHeerklotz, @diosmosis]
-    #14827 German title HTML entity encoded [by @sgiehl]
+    #14827 German title HTML entity encoded
     #15026 Use thousands separator in single metric view [by @katebutler, @tsteur]
     #15032 Some overlay improvements [by @tsteur, @diosmosis]
     #15037 Prevent warning array to string conversion in console renderer [by @tsteur, @diosmosis]
@@ -2159,7 +2292,7 @@ Fri Mar 22 06:17:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
     - #14229 Notice – unserialize(): Error at offset 0 of 53988 
       bytes
     - #14226 open_basedir restriction AND Support multiple plugin 
-      paths [by @sgiehl]
+      paths
     - #14227 One-click upgrade sometimes fails with errors such as 
       “Call to undefined method 
       Piwik\Plugin\Manager::getPluginDirectory() ” 
@@ -2549,7 +2682,7 @@ Thu Aug  6 06:25:15 UTC 2015 - ecsos@opensuse.org
     piwik/config path [by @mnapoli]
   - #8431 Overlay improvements [by @sgiehl, @tsteur]
   - #8352 In Page Overlay sidebar, add icon to let me 
-    “Open segmented visitor log” [by @sgiehl]
+    “Open segmented visitor log”
   - #8403 Improve design of Trusted Piwik Hostname setting 
     [by @barbushin, @tsteur]
   - #7835 Rename “Widgets & Dashboard” selector or change the 
@@ -2565,11 +2698,11 @@ Thu Aug  6 06:25:15 UTC 2015 - ecsos@opensuse.org
   - #8432 [automatic translation update] Updated 195 strings in 
     32 languages (sk, ar, de, ja, nl, nb, sv, be, bg, ca, cs, da, 
     el, es, fa, fi, fr, hi, hu, id, it, ko, pl, pt, ro, ru, sq, sr, 
-    th, tl, uk, vi) [by @sgiehl]
+    th, tl, uk, vi)
   - #8474 [automatic translation update] Updated 254 strings in 
     37 languages (gl, nb, cs, it, sk, de, el, fr, lt, ar, bg, ca, 
     da, es, et, fa, fi, he, hi, hr, id, ja, ko, nl, nn, pl, ro, ru,
-    sl, sq, sr, sv, ta, th, tl, tr, vi) [by @sgiehl]
+    sl, sq, sr, sv, ta, th, tl, tr, vi)
 
 -------------------------------------------------------------------
 Wed Jul 29 07:22:01 UTC 2015 - ecsos@opensuse.org
@@ -2600,7 +2733,7 @@ Wed Jul 29 07:22:01 UTC 2015 - ecsos@opensuse.org
   - #8379 Travis system extraction part 1 [by @diosmosis]
   - #8374 Tweaks to .travis.yml generator [by @diosmosis]
   - #8376 [automatic translation update] Updated 661 strings in 
-    8 languages (nl, sv, de, es, ja, lt, pl, nb) [by @sgiehl]
+    8 languages (nl, sv, de, es, ja, lt, pl, nb)
 
 -------------------------------------------------------------------
 Sat Jun 13 09:20:54 UTC 2015 - ecsos@opensuse.org
