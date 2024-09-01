@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.1.2
+Version:        6.1.3
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -73,7 +73,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-astropy-iers-data >= 0.2024.4.29.0.28.48
+Requires:       python-astropy-iers-data >= 0.2024.7.29.0.32.7
 Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0.1.1

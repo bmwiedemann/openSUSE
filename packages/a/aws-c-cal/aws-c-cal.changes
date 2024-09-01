@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 26 15:14:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.4
+  * OpenSSL Runtime and Compile Time Mismatch Fix by @waahm7 in (#198)
+- from version 0.7.3
+  * Update MacOS CI to arm64 by @waahm7 in (#196)
+  * Use prebuilt aws-lc by @sfod in (#197)
+
+-------------------------------------------------------------------
 Fri Jul 19 11:02:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.2

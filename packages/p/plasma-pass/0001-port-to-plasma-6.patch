@@ -1,0 +1,906 @@
+From 74c011b634f3bdbdcd80a74b252e6499774756f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Th=C3=A9ophile=20Gilgien?= <theophile@gilgien.net>
+Date: Tue, 6 Aug 2024 08:06:49 +0000
+Subject: [PATCH] port to plasma 6
+
+---
+ .gitlab-ci.yml                               |   2 -
+ CMakeLists.txt                               |  33 ++----
+ package/contents/ui/PasswordItemDelegate.qml |  41 +++----
+ package/contents/ui/PasswordsPage.qml        |  31 +++---
+ package/contents/ui/ProviderDelegate.qml     |  20 ++--
+ package/contents/ui/main.qml                 |  42 ++++----
+ package/metadata.desktop                     | 105 ------------------
+ package/metadata.json                        | 106 +++++++++++++++++++
+ plugin/CMakeLists.txt                        |   6 +-
+ plugin/abbreviations.cpp                     |  21 ----
+ plugin/abbreviations.h                       |  15 ---
+ plugin/passwordfiltermodel.cpp               |   8 --
+ plugin/passwordfiltermodel.h                 |   7 --
+ plugin/providerbase.cpp                      |  20 ----
+ plugin/providerbase.h                        |   8 --
+ 15 files changed, 188 insertions(+), 277 deletions(-)
+ delete mode 100644 package/metadata.desktop
+ create mode 100644 package/metadata.json
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 76986c3..f6e2f69 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -4,7 +4,5 @@
+ include:
+   - project: sysadmin/ci-utilities
+     file:
+-      - /gitlab-templates/linux.yml
+       - /gitlab-templates/linux-qt6.yml
+-      - /gitlab-templates/freebsd.yml
+       - /gitlab-templates/freebsd-qt6.yml
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 326f653..d566b36 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,13 +10,13 @@ project(plasma-plasmapass VERSION ${PROJECT_VERSION})
+ 
+ set(PROJECT_VERSION_MAJOR 1)
+ 
+-set(QT_MIN_VERSION "5.15")
+-set(KF5_MIN_VERSION "5.90.0")
++set(QT_MIN_VERSION "6.6.0")
++set(KF6_MIN_VERSION "6.3.0")
+ 
+ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
++find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
+ 
+ include(KDEInstallDirs)
+@@ -34,30 +34,19 @@ set_package_properties(OATH
+     DESCRIPTION "Provides components to build one-time password authentication systems"
+     PURPOSE "Generates OTP from secret stored in password files")
+ 
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    find_package(QGpgmeQt6 ${GPGME_REQUIRED_VERSION} CONFIG REQUIRED)
+-else()
+-    find_package(QGpgme ${GPGME_REQUIRED_VERSION} CONFIG REQUIRED)
+-endif()
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    set(QT_REQUIRED_VERSION "6.4.0")
+-    set(KF_MIN_VERSION "5.240.0")
+-    set(KF_MAJOR_VERSION "6")
+-else()
+-    set(KF_MAJOR_VERSION "5")
+-endif()
+-find_package(KF${KF_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED COMPONENTS
++find_package(QGpgmeQt6 ${GPGME_REQUIRED_VERSION} CONFIG REQUIRED)
++set(QT_REQUIRED_VERSION "6.6.0")
++set(KF_MIN_VERSION "6.3.0")
++set(KF_MAJOR_VERSION "6")
++
++find_package(KF${KF_MAJOR_VERSION} ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+     I18n
+     ItemModels
+     KIO
+ )
+ 
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    find_package(Plasma REQUIRED)
+-    find_package(Plasma5Support REQUIRED)
+-else()
+-    find_package(KF5Plasma REQUIRED)
+-endif()
++find_package(Plasma REQUIRED)
++find_package(Plasma5Support REQUIRED)
+ 
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Core
+diff --git a/package/contents/ui/PasswordItemDelegate.qml b/package/contents/ui/PasswordItemDelegate.qml
+index f5117ab..4262696 100644
+--- a/package/contents/ui/PasswordItemDelegate.qml
++++ b/package/contents/ui/PasswordItemDelegate.qml
+@@ -2,17 +2,18 @@
+ //
+ // SPDX-License-Identifier: LGPL-2.1-or-later
+ 
+-import QtQuick 2.0
+-import QtQuick.Layouts 1.1
+-import QtQuick.Controls 2.0
++import QtQuick
++import QtQuick.Layouts
++import QtQuick.Controls
+ 
+-import org.kde.plasma.core 2.0 as PlasmaCore
+-import org.kde.plasma.components 2.0 as PlasmaComponents
+-import org.kde.plasma.components 3.0 as PlasmaComponents3
++import org.kde.plasma.core as PlasmaCore
++import org.kde.plasma.components as PlasmaComponents
+ 
+-import org.kde.plasma.private.plasmapass 1.0
++import org.kde.plasma.private.plasmapass
+ 
+-PlasmaComponents.ListItem {
++import org.kde.kirigami as Kirigami
++
++MouseArea {
+     id: root
+ 
+     property alias name: label.text
+@@ -29,7 +30,7 @@ PlasmaComponents.ListItem {
+ 
+     enabled: true
+ 
+-    implicitHeight: Math.max(column.height, otpButton.implicitHeight + 2 * PlasmaCore.Units.smallSpacing)
++    implicitHeight: Math.max(column.height, otpButton.implicitHeight + 2 * Kirigami.Units.smallSpacing)
+ 
+     onClicked: {
+         root.itemSelected(index);
+@@ -47,7 +48,7 @@ PlasmaComponents.ListItem {
+     Connections {
+         property bool wasValid : false
+         target: root.provider
+-        onValidChanged: {
++        function onValidChanged() {
+             if (wasValid && !target.valid) {
+                 root.provider = null;
+             } else if (!wasValid && target.valid) {
+@@ -60,25 +61,25 @@ PlasmaComponents.ListItem {
+ 
+     Timer {
+         id: hideTimer
+-        interval: PlasmaCore.Units.longDuration
++        interval: Kirigami.Units.longDuration
+         onTriggered: plasmoid.expanded = false;
+     }
+ 
+     Column {
+         id: column
+-        spacing: PlasmaCore.Units.smallSpacing
++        spacing: Kirigami.Units.smallSpacing
+         anchors {
+             left: parent.left
+             right: parent.right
+         }
+ 
+         RowLayout {
+-            spacing: PlasmaCore.Units.largeSpacing
++            spacing: Kirigami.Units.largeSpacing
+             id: row
+ 
+             width: parent.width
+ 
+-            PlasmaCore.IconItem {
++            Kirigami.Icon {
+                 id: entryTypeIcon
+                 visible: root.provider == null || root.provider.valid || root.provider.hasError
+                 source: {
+@@ -92,11 +93,11 @@ PlasmaComponents.ListItem {
+                         }
+                     }
+                 }
+-                width: PlasmaCore.Units.iconSizes.small
+-                height: PlasmaCore.Units.iconSizes.small
++                width: Kirigami.Units.iconSizes.small
++                height: Kirigami.Units.iconSizes.small
+             }
+ 
+-            PlasmaComponents3.BusyIndicator {
++            PlasmaComponents.BusyIndicator {
+                 id: busyIndicator
+                 visible: root.provider != null && !root.provider.valid && !root.provider.hasError
+ 
+@@ -105,7 +106,7 @@ PlasmaComponents.ListItem {
+                 Layout.maximumHeight: entryTypeIcon.height
+             }
+ 
+-            PlasmaComponents3.Label {
++            PlasmaComponents.Label {
+                 id: label
+ 
+                 height: undefined // unset PlasmaComponents.Label default height
+@@ -118,12 +119,12 @@ PlasmaComponents.ListItem {
+                 textFormat: Text.PlainText
+             }
+ 
+-            PlasmaComponents3.ToolButton {
++            PlasmaComponents.ToolButton {
+                 id: otpButton
+                 icon.name: 'clock'
+                 visible: entryType == PasswordsModel.PasswordEntry
+ 
+-                PlasmaComponents3.ToolTip {
++                PlasmaComponents.ToolTip {
+                     text: i18n("One-time password (OTP)")
+                 }
+ 
+diff --git a/package/contents/ui/PasswordsPage.qml b/package/contents/ui/PasswordsPage.qml
+index cb8fc48..802b125 100644
+--- a/package/contents/ui/PasswordsPage.qml
++++ b/package/contents/ui/PasswordsPage.qml
+@@ -2,17 +2,18 @@
+ //
+ // SPDX-License-Identifier: LGPL-2.1-or-later
+ 
+-import QtQuick 2.1
+-import QtQml.Models 2.1
++import QtQuick
++import QtQml.Models
+ 
+-import org.kde.plasma.extras 2.0 as PlasmaExtras
+-import org.kde.plasma.core 2.0 as PlasmaCore
+-import org.kde.plasma.components 2.0 as PlasmaComponents2 // for Highlight
+-import org.kde.plasma.components 3.0 as PlasmaComponents3
++import org.kde.plasma.extras as PlasmaExtras
++import org.kde.plasma.core as PlasmaCore
++import org.kde.plasma.components as PlasmaComponents
+ 
+-import org.kde.plasma.private.plasmapass 1.0
++import org.kde.plasma.private.plasmapass
+ 
+-PlasmaComponents3.ScrollView {
++import org.kde.kirigami as Kirigami
++
++PlasmaComponents.ScrollView {
+     id: scroll
+ 
+     signal folderSelected(var index, var name)
+@@ -36,15 +37,15 @@ PlasmaComponents3.ScrollView {
+         focus: true
+         activeFocusOnTab: true
+         highlightFollowsCurrentItem: true
+-        highlight: PlasmaComponents2.Highlight { }
++        highlight: PlasmaExtras.Highlight { }
+         highlightMoveDuration: 0
+         highlightResizeDuration: 0
+         currentIndex: -1
+-        topMargin: PlasmaCore.Units.smallSpacing * 2
+-        bottomMargin: PlasmaCore.Units.smallSpacing * 2
+-        leftMargin: PlasmaCore.Units.smallSpacing * 2
+-        rightMargin: PlasmaCore.Units.smallSpacing * 2
+-        spacing: PlasmaCore.Units.smallSpacing
++        topMargin: Kirigami.Units.smallSpacing * 2
++        bottomMargin: Kirigami.Units.smallSpacing * 2
++        leftMargin: Kirigami.Units.smallSpacing * 2
++        rightMargin: Kirigami.Units.smallSpacing * 2
++        spacing: Kirigami.Units.smallSpacing
+ 
+         onActiveFocusChanged: {
+             if (activeFocus && listView.currentIndex === -1) {
+@@ -82,7 +83,7 @@ PlasmaComponents3.ScrollView {
+                 name: model.name
+                 icon: model.type === PasswordsModel.FolderEntry ? "inode-directory" : "lock"
+                 entryType: model.type
+-                width: listView.width - PlasmaCore.Units.smallSpacing * 4
++                width: listView.width - Kirigami.Units.smallSpacing * 4
+ 
+                 passwordProvider: model.hasPassword ? model.password : null
+                 otpProvider: model.hasOTP ? model.otp : null
+diff --git a/package/contents/ui/ProviderDelegate.qml b/package/contents/ui/ProviderDelegate.qml
+index bca4092..d5b0afb 100644
+--- a/package/contents/ui/ProviderDelegate.qml
++++ b/package/contents/ui/ProviderDelegate.qml
+@@ -2,14 +2,16 @@
+ //
+ // SPDX-License-Identifier: LGPL-2.1-or-later
+ 
+-import QtQuick 2.0
+-import QtQuick.Layouts 1.1
+-import QtQuick.Controls 2.0
++import QtQuick
++import QtQuick.Layouts
++import QtQuick.Controls
+ 
+-import org.kde.plasma.core 2.0 as PlasmaCore
+-import org.kde.plasma.components 3.0 as PlasmaComponents3
++import org.kde.plasma.core as PlasmaCore
++import org.kde.plasma.components as PlasmaComponents3
+ 
+-import org.kde.plasma.private.plasmapass 1.0
++import org.kde.plasma.private.plasmapass
++
++import org.kde.kirigami as Kirigami
+ 
+ RowLayout {
+     id: root
+@@ -17,10 +19,10 @@ RowLayout {
+     property ProviderBase provider: null
+     property alias icon: providerIcon.source
+ 
+-    PlasmaCore.IconItem {
++    Kirigami.Icon {
+         id: providerIcon
+-        width: PlasmaCore.Units.iconSizes.small
+-        height: PlasmaCore.Units.iconSizes.small
++        width: Kirigami.Units.iconSizes.small
++        height: Kirigami.Units.iconSizes.small
+     }
+ 
+     ColumnLayout {
+diff --git a/package/contents/ui/main.qml b/package/contents/ui/main.qml
+index 69441e8..c674380 100644
+--- a/package/contents/ui/main.qml
++++ b/package/contents/ui/main.qml
+@@ -2,33 +2,35 @@
+ //
+ // SPDX-License-Identifier: LGPL-2.1-or-later
+ 
+-import QtQuick 2.15
+-import QtQuick.Layouts 1.1
+-import QtQuick.Controls 2.15 as QQC2 // For StackView
+-import org.kde.plasma.plasmoid 2.0
+-import org.kde.plasma.components 3.0 as PlasmaComponents3
+-import org.kde.plasma.extras 2.0 as PlasmaExtras
+-import org.kde.plasma.core 2.0 as PlasmaCore
++import QtQuick
++import QtQuick.Layouts
++import QtQuick.Controls as QQC2 // For StackView
++import org.kde.plasma.plasmoid
++import org.kde.plasma.components as PlasmaComponents
++import org.kde.plasma.extras as PlasmaExtras
++import org.kde.plasma.core as PlasmaCore
+ 
+-import org.kde.plasma.private.plasmapass 1.0
++import org.kde.plasma.private.plasmapass
+ 
+-Item {
++import org.kde.kirigami as Kirigami
++
++PlasmoidItem {
+     id: root
+ 
+-    Plasmoid.fullRepresentation: PlasmaExtras.Representation {
++    fullRepresentation: PlasmaExtras.Representation {
+         collapseMarginsHint: true
+-        Layout.minimumWidth: PlasmaCore.Units.gridUnit * 5
+-        Layout.minimumHeight: PlasmaCore.Units.gridUnit * 5
++        Layout.minimumWidth: Kirigami.Units.gridUnit * 5
++        Layout.minimumHeight: Kirigami.Units.gridUnit * 5
+ 
+         property bool expanded: false
+ 
+         Component.onCompleted: {
+             // FIXME: I'm probably doing something wrong, but I'm unable to access
+             // "plasmoid" from elsewhere
+-            expanded = Qt.binding(function() { return plasmoid.expanded; });
++            expanded = Qt.binding(function() { return root.expanded; });
+         }
+ 
+-        Keys.onPressed: {
++        Keys.onPressed: event=> {
+             if (!viewStack.filterMode && event.key === Qt.Key_Backspace) {
+                 viewStack.popPage();
+                 event.accepted = true;
+@@ -73,7 +75,7 @@ Item {
+                     PasswordsPage {
+                         stack: viewStack
+                         model: passwordsModel
+-                        onFolderSelected: {
++                        onFolderSelected: (index, name)=> {
+                             stack.pushPage(index, name);
+                         }
+                     }
+@@ -90,20 +92,20 @@ Item {
+ 
+                 RowLayout {
+                     visible: viewStack.depth > 1 && !viewStack.filterMode
+-                    PlasmaComponents3.ToolButton {
++                    PlasmaComponents.ToolButton {
+                         icon.name: LayoutMirroring.enabled ? "go-previous-symbolic-rtl" : "go-previous-symbolic"
+                         onClicked: viewStack.popPage()
+                         enabled: viewStack.depth > 1
+                     }
+ 
+-                    PlasmaComponents3.Label {
++                    PlasmaComponents.Label {
+                         id: currentPath
+ 
+                         Layout.fillWidth: true
+                         HoverHandler {
+                             id: hoverHandler
+                         }
+-                        PlasmaComponents3.ToolTip {
++                        PlasmaComponents.ToolTip {
+                             text: currentPath.text
+                             visible: hoverHandler.hovered
+                         }
+@@ -124,7 +126,7 @@ Item {
+                     }
+                 }
+ 
+-                PlasmaComponents3.TextField {
++                PlasmaComponents.TextField {
+                     id: filterField
+                     focus: true
+                     activeFocusOnTab: true
+@@ -135,7 +137,7 @@ Item {
+                     Layout.fillWidth: true
+ 
+                     Keys.priority: Keys.BeforeItem
+-                    Keys.onPressed: {
++                    Keys.onPressed: event=> {
+                         if (event.key == Qt.Key_Down) {
+                             viewStack.currentItem.focus = true;
+                             event.accepted = true;
+diff --git a/package/metadata.desktop b/package/metadata.desktop
+deleted file mode 100644
+index fd2cf7e..0000000
+--- a/package/metadata.desktop
++++ /dev/null
+@@ -1,103 +0,0 @@
+-[Desktop Entry]
+-Name=Plasma Pass
+-Name[ar]=بلازما باس
+-Name[ast]=Plasma Pass
+-Name[az]=Plasma Pass
+-Name[bg]=Пропуск на Plasma
+-Name[ca]=Plasma Pass
+-Name[ca@valencia]=Plasma Pass
+-Name[cs]=Plasma Pass
+-Name[da]=Plasma Pass
+-Name[de]=Plasma Pass
+-Name[el]=Plasma Pass
+-Name[en_GB]=Plasma Pass
+-Name[eo]=Plasma Pass
+-Name[es]=Plasma Pass
+-Name[et]=Plasma Pass
+-Name[eu]=Plasma Pass
+-Name[fi]=Plasma Pass
+-Name[fr]=Plasma Pass
+-Name[gl]=Pass para Plasma
+-Name[hi]=प्लाज़्मा पास
+-Name[hu]=Plasma Pass
+-Name[ia]=Plasma Pass
+-Name[it]=Plasma Pass
+-Name[ka]=Plasma Pass
+-Name[ko]=Plasma 패스
+-Name[lt]=Plasma Pass
+-Name[nl]=Plasma Pass
+-Name[nn]=Plasma Pass
+-Name[pa]=ਪਲਾਜ਼ਮਾ ਪਾਸ
+-Name[pl]=Plazma Hasło
+-Name[pt]=Plasma Pass
+-Name[pt_BR]=Plasma Pass
+-Name[ro]=Plasma Pass
+-Name[ru]=Plasma Pass
+-Name[sk]=Plasma Pass
+-Name[sl]=Plasma Pass
+-Name[sv]=Plasma pass
+-Name[ta]=பிளாஸ்மா பாஸ்
+-Name[tr]=Plasma Pass
+-Name[uk]=Паролі Плазми
+-Name[vi]=Pass Plasma
+-Name[x-test]=xxPlasma Passxx
+-Name[zh_CN]=Plasma 密码
+-Name[zh_TW]=Plasma Pass
+-Comment=Access passwords from the 'pass' password manager
+-Comment[ar]=الوصول إلى كلمات السر من مدير كلمات السر 'pass'
+-Comment[ast]=Accedi a les contraseñes del xestor de contraseñes pass
+-Comment[az]='pass' şifrə menecerindən şifrələrə giriş
+-Comment[bg]=Достъп до пароли от мениджъра на пароли "Пропуск"
+-Comment[ca]=Accés a les contrasenyes del gestor de contrasenyes «pass»
+-Comment[ca@valencia]=Accés a les contrasenyes del gestor de contrasenyes «pass»
+-Comment[cs]=Přistupujte k heslům ze správce hesel 'pass'
+-Comment[de]=Aus der Passwort-Verwaltung „Pass“ auf Passwörter zugreifen
+-Comment[en_GB]=Access passwords from the 'pass' password manager
+-Comment[eo]=Aliru pasvortojn de la pasvortadministrilo 'pass'
+-Comment[es]=Acceda a las contraseñas desde el gestor de contraseñas «pass»
+-Comment[eu]=«pass» pasahitz kudeatzailetik pasahitzak atzitzea
+-Comment[fi]=Plasma-sovelma salasanojen kyselemiseksi ”pass”-salasanahallinnasta
+-Comment[fr]=Accéder aux mots de passe à partir du gestionnaire de mots de passe « Pass »
+-Comment[gl]=Accede aos contrasinais do xestor de contrasinais «pass».
+-Comment[hi]='पास' कूटशब्द प्रबंधक से कूटशब्द प्राप्त करें
+-Comment[hu]=Jelszavak elérésére a „pass” jelszókezelőben
+-Comment[ia]=Contrasignos de accesso  ex le gerente de contrasigno 'pass'
+-Comment[it]=Accedi alle password dal gestore delle password «pass»
+-Comment[ka]='pass' პაროლების მმართველში შენახულ პაროლებთან წვდომა
+-Comment[ko]='패스' 암호 관리자에 저장된 암호에 접근하는 Plasma 애플릿
+-Comment[nl]=Toegang tot wachtwoorden vanuit de wachtwoordenbeheerder 'pass'
+-Comment[nn]=Få tilgang til passord frå passord­handsamaren «pass»
+-Comment[pl]=Uzyskaj dostęp do haseł z zarządzania hasłami 'pass'
+-Comment[pt]=Aceder às senhas do gestor de senhas 'pass'
+-Comment[pt_BR]=Acessar senhas do gerenciador de senhas 'pass'
+-Comment[ro]=Accesarea parolelor din gestionarul de parole „pass”
+-Comment[ru]=Получение паролей из менеджера «pass»
+-Comment[sk]=Prístup k heslám zo správcu hesiel "pass"
+-Comment[sl]=Dostopajte do gesel iz upravitelja gesla 'pass'
+-Comment[sv]=Kom åt lösenord från lösenordshanteraren 'pass'
+-Comment[ta]='pass' கடவுச்சொல் மேலாளியிலுள்ள கடவுச்சொற்களை காணுங்கள்
+-Comment[tr]=Parolalara 'pass' parola yöneticisinden erişin
+-Comment[uk]=Доступ до паролів програми для керування паролями «pass»
+-Comment[vi]=Truy cập mật khẩu trong trình quản lí mật khẩu 'pass'
+-Comment[x-test]=xxAccess passwords from the 'pass' password managerxx
+-Comment[zh_CN]=使用“pass”密码管理器访问密码的 Plasma 小程序
+-Comment[zh_TW]=存取來自「Pass」密碼管理程式的密碼
+-
+-Icon=lock
+-Type=Service
+-ServiceTypes=Plasma/Applet
+-
+-X-KDE-PluginInfo-Author=Daniel Vrátil
+-X-KDE-PluginInfo-Email=dvratil@kde.org
+-X-KDE-PluginInfo-Version=1.0
+-X-KDE-PluginInfo-Website=https://www.kde.org/plasma-desktop
+-X-KDE-PluginInfo-Category=Utilities
+-X-KDE-PluginInfo-License=LGPLv2+
+-X-KDE-PluginInfo-EnabledByDefault=true
+-X-KDE-PluginInfo-Name=org.kde.plasma.pass
+-
+-X-Plasma-NotificationArea=true
+-X-Plasma-NotificationAreaCategory=SystemServices
+-
+-X-Plasma-API=declarativeappletscript
+-X-Plasma-MainScript=ui/main.qml
+diff --git a/package/metadata.json b/package/metadata.json
+new file mode 100644
+index 0000000..0030a03
+--- /dev/null
++++ b/package/metadata.json
+@@ -0,0 +1,106 @@
++{
++    "KPlugin": {
++        "Authors": [
++            {
++                "Email": "dvratil@kde.org",
++                "Name": "Daniel Vrátil"
++            }
++        ],
++        "Category": "Utilities",
++        "Description": "Access passwords from the 'pass' password manager",
++        "Description[ar]": "الوصول إلى كلمات السر من مدير كلمات السر 'pass'",
++        "Description[ast]": "Accedi a les contraseñes del xestor de contraseñes pass",
++        "Description[az]": "'pass' şifrə menecerindən şifrələrə giriş",
++        "Description[bg]": "Достъп до пароли от мениджъра на пароли \"Пропуск\"",
++        "Description[ca@valencia]": "Accés a les contrasenyes del gestor de contrasenyes «pass»",
++        "Description[ca]": "Accés a les contrasenyes del gestor de contrasenyes «pass»",
++        "Description[cs]": "Přistupujte k heslům ze správce hesel 'pass'",
++        "Description[de]": "Aus der Passwort-Verwaltung „Pass“ auf Passwörter zugreifen",
++        "Description[en_GB]": "Access passwords from the 'pass' password manager",
++        "Description[eo]": "Aliru pasvortojn de la pasvortadministrilo 'pass'",
++        "Description[es]": "Acceda a las contraseñas desde el gestor de contraseñas «pass»",
++        "Description[eu]": "«pass» pasahitz kudeatzailetik pasahitzak atzitzea",
++        "Description[fi]": "Plasma-sovelma salasanojen kyselemiseksi ”pass”-salasanahallinnasta",
++        "Description[fr]": "Accéder aux mots de passe à partir du gestionnaire de mots de passe « Pass »",
++        "Description[gl]": "Accede aos contrasinais do xestor de contrasinais «pass».",
++        "Description[he]": "גישה לסיסמאות ממנהל הסיסמאות ‚pass’",
++        "Description[hi]": "'पास' कूटशब्द प्रबंधक से कूटशब्द प्राप्त करें",
++        "Description[hu]": "Jelszavak elérésére a „pass” jelszókezelőben",
++        "Description[ia]": "Contrasignos de accesso  ex le gerente de contrasigno 'pass'",
++        "Description[it]": "Accedi alle password dal gestore delle password «pass»",
++        "Description[ka]": "'pass' პაროლების მმართველში შენახულ პაროლებთან წვდომა",
++        "Description[ko]": "'패스' 암호 관리자에 저장된 암호에 접근하는 Plasma 애플릿",
++        "Description[nl]": "Toegang tot wachtwoorden vanuit de wachtwoordenbeheerder 'pass'",
++        "Description[nn]": "Få tilgang til passord frå passord­handsamaren «pass»",
++        "Description[pl]": "Uzyskaj dostęp do haseł z zarządzania hasłami 'pass'",
++        "Description[pt]": "Aceder às senhas do gestor de senhas 'pass'",
++        "Description[pt_BR]": "Acessar senhas do gerenciador de senhas 'pass'",
++        "Description[ro]": "Accesarea parolelor din gestionarul de parole „pass”",
++        "Description[ru]": "Получение паролей из менеджера «pass»",
++        "Description[sk]": "Prístup k heslám zo správcu hesiel \"pass\"",
++        "Description[sl]": "Dostopajte do gesel iz upravitelja gesla 'pass'",
++        "Description[sv]": "Kom åt lösenord från lösenordshanteraren 'pass'",
++        "Description[ta]": "'pass' கடவுச்சொல் மேலாளியிலுள்ள கடவுச்சொற்களை காணுங்கள்",
++        "Description[tr]": "Parolalara 'pass' parola yöneticisinden erişin",
++        "Description[uk]": "Доступ до паролів програми для керування паролями «pass»",
++        "Description[vi]": "Truy cập mật khẩu trong trình quản lí mật khẩu 'pass'",
++        "Description[x-test]": "xxAccess passwords from the 'pass' password managerxx",
++        "Description[zh_CN]": "使用“pass”密码管理器访问密码的 Plasma 小程序",
++        "Description[zh_TW]": "存取來自「Pass」密碼管理程式的密碼",
++        "EnabledByDefault": true,
++        "Icon": "lock",
++        "Id": "org.kde.plasma.pass",
++        "License": "LGPLv2+",
++        "Name": "Plasma Pass",
++        "Name[ar]": "بلازما باس",
++        "Name[ast]": "Plasma Pass",
++        "Name[az]": "Plasma Pass",
++        "Name[bg]": "Пропуск на Plasma",
++        "Name[ca@valencia]": "Plasma Pass",
++        "Name[ca]": "Plasma Pass",
++        "Name[cs]": "Plasma Pass",
++        "Name[da]": "Plasma Pass",
++        "Name[de]": "Plasma Pass",
++        "Name[el]": "Plasma Pass",
++        "Name[en_GB]": "Plasma Pass",
++        "Name[eo]": "Plasma Pass",
++        "Name[es]": "Plasma Pass",
++        "Name[et]": "Plasma Pass",
++        "Name[eu]": "Plasma Pass",
++        "Name[fi]": "Plasma Pass",
++        "Name[fr]": "Plasma Pass",
++        "Name[gl]": "Pass para Plasma",
++        "Name[he]": "פלזמה „Pass”",
++        "Name[hi]": "प्लाज़्मा पास",
++        "Name[hu]": "Plasma Pass",
++        "Name[ia]": "Plasma Pass",
++        "Name[it]": "Plasma Pass",
++        "Name[ka]": "Plasma Pass",
++        "Name[ko]": "Plasma 패스",
++        "Name[lt]": "Plasma Pass",
++        "Name[nl]": "Plasma Pass",
++        "Name[nn]": "Plasma Pass",
++        "Name[pa]": "ਪਲਾਜ਼ਮਾ ਪਾਸ",
++        "Name[pl]": "Plazma Hasło",
++        "Name[pt]": "Plasma Pass",
++        "Name[pt_BR]": "Plasma Pass",
++        "Name[ro]": "Plasma Pass",
++        "Name[ru]": "Plasma Pass",
++        "Name[sk]": "Plasma Pass",
++        "Name[sl]": "Plasma Pass",
++        "Name[sv]": "Plasma pass",
++        "Name[ta]": "பிளாஸ்மா பாஸ்",
++        "Name[tr]": "Plasma Pass",
++        "Name[uk]": "Паролі Плазми",
++        "Name[vi]": "Pass Plasma",
++        "Name[x-test]": "xxPlasma Passxx",
++        "Name[zh_CN]": "Plasma 密码",
++        "Name[zh_TW]": "Plasma Pass",
++        "KPackageStructure": "Plasma/Applet",
++        "Version": "1.0",
++        "Website": "https://www.kde.org/plasma-desktop"
++    },
++    "X-Plasma-API-Minimum-Version": "6.0",
++    "X-Plasma-NotificationArea": "true",
++    "X-Plasma-NotificationAreaCategory": "SystemServices"
++}
+diff --git a/plugin/CMakeLists.txt b/plugin/CMakeLists.txt
+index 0ae3ca1..4c11791 100644
+--- a/plugin/CMakeLists.txt
++++ b/plugin/CMakeLists.txt
+@@ -46,11 +46,7 @@ target_link_libraries(plasmapass
+     OATH::OATH
+ )
+ 
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    target_link_libraries(plasmapass QGpgmeQt6 Plasma::Plasma5Support Qt::Gui KF6::ConfigCore KF6::CoreAddons)
+-else()
+-    target_link_libraries(plasmapass QGpgme KF${KF_MAJOR_VERSION}::Plasma)
+-endif()
++target_link_libraries(plasmapass QGpgmeQt6 Plasma::Plasma5Support Qt::Gui KF6::ConfigCore KF6::CoreAddons)
+ 
+ 
+ ########### PLUGN ###########
+diff --git a/plugin/abbreviations.cpp b/plugin/abbreviations.cpp
+index 5f8650a..6562b02 100644
+--- a/plugin/abbreviations.cpp
++++ b/plugin/abbreviations.cpp
+@@ -12,14 +12,6 @@ constexpr const std::size_t offsetsSize = 32;
+ constexpr const int maxDepth = 128;
+ 
+ // Taken and adapted for kdevelop from katecompletionmodel.cpp
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-bool matchesAbbreviationHelper(const QStringRef &word,
+-                               const QStringRef &typed,
+-                               const QVarLengthArray<int, offsetsSize> &offsets,
+-                               int &depth,
+-                               int atWord = -1,
+-                               int i = 0)
+-#else
+ bool matchesAbbreviationHelper(const QStringView &word,
+                                const QStringView &typed,
+                                const QVarLengthArray<int, offsetsSize> &offsets,
+@@ -27,7 +19,6 @@ bool matchesAbbreviationHelper(const QStringView &word,
+                                int atWord = -1,
+                                int i = 0)
+ 
+-#endif
+ {
+     int atLetter = 1;
+     for (; i < typed.size(); i++) {
+@@ -73,11 +64,7 @@ bool matchesAbbreviationHelper(const QStringView &word,
+ }
+ 
+ }
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-bool PlasmaPass::matchesAbbreviation(const QStringRef &word, const QStringRef &typed)
+-#else
+ bool PlasmaPass::matchesAbbreviation(const QStringView &word, const QStringView &typed)
+-#endif
+ {
+     // A mismatch is very likely for random even for the first letter,
+     // thus this optimization makes sense.
+@@ -116,11 +103,7 @@ bool PlasmaPass::matchesAbbreviation(const QStringView &word, const QStringView
+     int depth = 0;
+     return matchesAbbreviationHelper(word, typed, offsets, depth);
+ }
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-bool PlasmaPass::matchesPath(const QStringRef &path, const QStringRef &typed)
+-#else
+ bool PlasmaPass::matchesPath(const QStringView &path, const QStringView &typed)
+-#endif
+ {
+     int consumed = 0;
+     int pos = 0;
+@@ -134,11 +117,7 @@ bool PlasmaPass::matchesPath(const QStringView &path, const QStringView &typed)
+     }
+     return consumed == typed.size();
+ }
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-int PlasmaPass::matchPathFilter(const QVector<QStringRef> &toFilter, const QVector<QStringRef> &text)
+-#else
+ int PlasmaPass::matchPathFilter(const QVector<QStringView> &toFilter, const QVector<QStringView> &text)
+-#endif
+ {
+     enum PathFilterMatchQuality {
+         NoMatch = -1,
+diff --git a/plugin/abbreviations.h b/plugin/abbreviations.h
+index c98efed..c140a54 100644
+--- a/plugin/abbreviations.h
++++ b/plugin/abbreviations.h
+@@ -7,34 +7,19 @@
+ 
+ #include <QStringList>
+ #include <QVector>
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-class QStringRef;
+-#endif
+ class QString;
+ 
+ namespace PlasmaPass
+ {
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-bool matchesAbbreviation(const QStringRef &word, const QStringRef &typed);
+-#else
+ bool matchesAbbreviation(const QStringView &word, const QStringView &typed);
+-#endif
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-bool matchesPath(const QStringRef &path, const QStringRef &typed);
+-#else
+ bool matchesPath(const QStringView &path, const QStringView &typed);
+-#endif
+ 
+ /**
+  * @brief Matches a path against a list of search fragments.
+  * @return -1 when no match is found, otherwise a positive integer, higher values mean lower quality
+  */
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-int matchPathFilter(const QVector<QStringRef> &toFilter, const QVector<QStringRef> &text);
+-#else
+ int matchPathFilter(const QVector<QStringView> &toFilter, const QVector<QStringView> &text);
+-#endif
+ }
+ 
+ #endif
+diff --git a/plugin/passwordfiltermodel.cpp b/plugin/passwordfiltermodel.cpp
+index 3872370..c64c24b 100644
+--- a/plugin/passwordfiltermodel.cpp
++++ b/plugin/passwordfiltermodel.cpp
+@@ -124,21 +124,13 @@ PasswordFilterModel::PathFilter &PasswordFilterModel::PathFilter::operator=(Path
+ 
+ void PasswordFilterModel::PathFilter::updateParts()
+ {
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-    mParts = filter.splitRef(QLatin1Char('/'), Qt::SkipEmptyParts);
+-#else
+     mParts = QStringView(filter).split(QLatin1Char('/'), Qt::SkipEmptyParts);
+-#endif
+ }
+ 
+ PasswordFilterModel::PathFilter::result_type PasswordFilterModel::PathFilter::operator()(const QModelIndex &index) const
+ {
+     const auto path = index.model()->data(index, PasswordsModel::FullNameRole).toString();
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-    const auto weight = matchPathFilter(path.splitRef(QLatin1Char('/')), mParts);
+-#else
+     const auto weight = matchPathFilter(QStringView(path).split(QLatin1Char('/')), mParts);
+-#endif
+     return std::make_pair(index, weight);
+ }
+ 
+diff --git a/plugin/passwordfiltermodel.h b/plugin/passwordfiltermodel.h
+index ef1c555..e25ae20 100644
+--- a/plugin/passwordfiltermodel.h
++++ b/plugin/passwordfiltermodel.h
+@@ -9,9 +9,6 @@
+ #include <QSortFilterProxyModel>
+ #include <QTimer>
+ #include <QVector>
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-class QStringRef;
+-#endif
+ class KDescendantsProxyModel;
+ 
+ namespace PlasmaPass
+@@ -56,11 +53,7 @@ private:
+ 
+     private:
+         void updateParts();
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-        QVector<QStringRef> mParts;
+-#else
+         QVector<QStringView> mParts;
+-#endif
+     };
+ 
+     void delayedUpdateFilter();
+diff --git a/plugin/providerbase.cpp b/plugin/providerbase.cpp
+index 31cd83d..ede4faa 100644
+--- a/plugin/providerbase.cpp
++++ b/plugin/providerbase.cpp
+@@ -15,19 +15,11 @@
+ 
+ #include <QDBusConnection>
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-#include <Plasma/DataEngine>
+-#include <Plasma/DataEngineConsumer>
+-#include <Plasma/PluginLoader>
+-#include <Plasma/Service>
+-#include <Plasma/ServiceJob>
+-#else
+ #include <Plasma5Support/DataEngine>
+ #include <Plasma5Support/DataEngineConsumer>
+ #include <Plasma5Support/PluginLoader>
+ #include <Plasma5Support/Service>
+ #include <Plasma5Support/ServiceJob>
+-#endif
+ 
+ #include <KLocalizedString>
+ 
+@@ -98,11 +90,7 @@ void ProviderBase::start()
+             return;
+         }
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-        const auto lines = data.splitRef(QLatin1Char('\n'));
+-#else
+         const auto lines = QStringView(data).split(QLatin1Char('\n'));
+-#endif
+         for (const auto &line : lines) {
+             if (handleSecret(line) == HandlingResult::Stop) {
+                 break;
+@@ -248,11 +236,7 @@ void ProviderBase::removePasswordFromClipboard(const QString &password)
+     }
+ 
+     if (!mEngineConsumer) {
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-        mEngineConsumer = std::make_unique<Plasma::DataEngineConsumer>();
+-#else
+         mEngineConsumer = std::make_unique<Plasma5Support::DataEngineConsumer>();
+-#endif
+     }
+     auto engine = mEngineConsumer->dataEngine(klipperDataEngine);
+ 
+@@ -280,11 +264,7 @@ void ProviderBase::onPlasmaServiceRemovePasswordResult(KJob *job)
+     QTimer::singleShot(0, this, [this]() {
+         mEngineConsumer.reset();
+     });
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-    auto serviceJob = qobject_cast<Plasma::ServiceJob *>(job);
+-#else
+     auto serviceJob = qobject_cast<Plasma5Support::ServiceJob *>(job);
+-#endif
+     if (serviceJob->error() != 0) {
+         qCWarning(PLASMAPASS_LOG, "ServiceJob for clipboard failed: %s", qUtf8Printable(serviceJob->errorString()));
+         clearClipboard();
+diff --git a/plugin/providerbase.h b/plugin/providerbase.h
+index 00b6ec5..4a9cc16 100644
+--- a/plugin/providerbase.h
++++ b/plugin/providerbase.h
+@@ -16,11 +16,7 @@ class QDBusPendingCallWatcher;
+ class KJob;
+ class QMimeData;
+ 
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-namespace Plasma
+-#else
+ namespace Plasma5Support
+-#endif
+ {
+ class DataEngineConsumer;
+ }
+@@ -82,11 +78,7 @@ private:
+ 
+     void removePasswordFromClipboard(const QString &password);
+     static void clearClipboard();
+-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-    std::unique_ptr<Plasma::DataEngineConsumer> mEngineConsumer;
+-#else
+     std::unique_ptr<Plasma5Support::DataEngineConsumer> mEngineConsumer;
+-#endif
+     QString mPath;
+     QString mError;
+     QString mSecret;
+-- 
+GitLab
+

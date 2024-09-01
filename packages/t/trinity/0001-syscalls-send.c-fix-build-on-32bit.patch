@@ -1,0 +1,32 @@
+From dad92016f486920c00d713606d899601a072044e Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 30 Aug 2024 09:28:46 +0200
+Subject: [PATCH] syscalls/send.c: fix build on 32bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+syscalls/send.c:33:62: error: passing argument 3 of ‘proto->gen_packet’ from incompatible pointer type
+---
+ syscalls/send.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/syscalls/send.c b/syscalls/send.c
+index 59bf689d..ee43fbac 100644
+--- a/syscalls/send.c
++++ b/syscalls/send.c
+@@ -29,8 +29,10 @@ static void sanitise_send(struct syscallrecord *rec)
+ 	proto = net_protocols[si->triplet.family].proto;
+ 	if (proto != NULL) {
+ 		if (proto->gen_packet != NULL) {
++			size_t len;
+ 			ptr = &rec->a2;
+-			proto->gen_packet(&si->triplet, ptr, &rec->a3);
++			proto->gen_packet(&si->triplet, ptr, &len);
++			rec->a3 = len;
+ //		printf("Sending to family:%d type:%d proto:%d\n",
+ //			si->triplet.family, si->triplet.type, si->triplet.protocol);
+ 			return;
+-- 
+2.46.0
+

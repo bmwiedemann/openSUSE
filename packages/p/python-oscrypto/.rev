@@ -34,4 +34,12 @@ Source URL fix</comment>
   3.12. gh#wbond/oscrypto#77</comment>
     <requestid>1166134</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ebee7e74a1142f70278698a0d5cca468</srcmd5>
+    <version>1.3.0</version>
+    <time>1725211324</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1197911</requestid>
+  </revision>
 </revisionlist>

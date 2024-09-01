@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-pass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,43 @@
 #
 
 
-%define lang_name plasma_applet_org.kde.plasma.pass
-%define kf5_min_version 5.57.0
-%define qt_min_version 5.11
+%define kf6_version 6.3.0
+%define plasma6_version 6.0.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           plasma-pass
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
-Summary:        Plasma 5 widget for the pass password manager
+Summary:        Plasma widget for the pass password manager
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz.sig
 Source2:        plasma-pass.keyring
 %endif
-# PATCH-FIX-OPENSUSE -- Decrease the minimum Qt version to allow building on 15.2/15.3
-Patch0:         0001-Fix-build-Qt-5.12.patch
-BuildRequires:  extra-cmake-modules
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-port-to-plasma-6.patch
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5I18n) >= %{kf5_min_version}
-BuildRequires:  cmake(KF5ItemModels) >= %{kf5_min_version}
-BuildRequires:  cmake(KF5Plasma) >= %{kf5_min_version}
-BuildRequires:  cmake(Qt5Concurrent) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5DBus) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Qml) >= %{qt_min_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(Plasma5Support) >= %{plasma6_version}
+BuildRequires:  cmake(QGpgmeQt6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  pkgconfig(liboath)
 Recommends:     password-store
 
 %description
-Plasma Pass is a Plasma 5 widget to access, display and copy passwords
+Plasma Pass is a Plasma widget to access, display and copy passwords
 generated and stored by the "pass" password manager.
 
 %lang_package
@@ -58,35 +61,26 @@ generated and stored by the "pass" password manager.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-%if %{with released}
- %find_lang %{lang_name} %{name}.lang
-%endif
+%kf6_install
+
+%find_lang %{name} --all-name
 
 %fdupes %{buildroot}
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc README.md
-%dir %{_kf5_plasmadir}/plasmoids
-%dir %{_kf5_qmldir}/org/kde/plasma/
-%dir %{_kf5_qmldir}/org/kde/plasma/private/
-%dir %{_kf5_qmldir}/org/kde/plasma/private/plasmapass
-%{_kf5_appstreamdir}/org.kde.plasma.pass.appdata.xml
-%{_kf5_debugdir}/plasma-pass.categories
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.pass/
-%{_kf5_qmldir}/org/kde/plasma/private/plasmapass/libplasmapassplugin.so
-%{_kf5_qmldir}/org/kde/plasma/private/plasmapass/qmldir
-%if %{pkg_vcmp cmake(KF5Plasma) < 5.84} || %{pkg_vcmp cmake(KF5Plasma) >= 5.89}
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.pass.desktop
-%endif
+%{_kf6_debugdir}/plasma-pass.categories
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.pass/
+%dir %{_kf6_qmldir}/org/kde/plasma/private
+%{_kf6_qmldir}/org/kde/plasma/private/plasmapass/
+%{_kf6_appstreamdir}/org.kde.plasma.pass.appdata.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

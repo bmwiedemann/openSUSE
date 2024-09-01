@@ -1,0 +1,153 @@
+From b2faa019f0f5aa03b03e6c54c9aa60b7f6aa4f91 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 30 Aug 2024 14:35:33 +0200
+Subject: [PATCH] Avoid crash on wrong output of systemctl version
+ (bsc#1229539)
+
+* Better handling output of systemctl --version
+
+* Add more cases to test grains.core._systemd
+---
+ salt/grains/core.py                    | 27 +++++++-
+ tests/pytests/unit/grains/test_core.py | 89 ++++++++++++++++++++++++++
+ 2 files changed, 113 insertions(+), 3 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 4454c303fe..98bbd3868e 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2432,10 +2432,31 @@ def _systemd():
+     """
+     Return the systemd grain
+     """
+-    systemd_info = __salt__["cmd.run"]("systemctl --version").splitlines()
++    systemd_version = "UNDEFINED"
++    systemd_features = ""
++    try:
++        systemd_output = __salt__["cmd.run_all"]("systemctl --version")
++    except Exception:  # pylint: disable=broad-except
++        log.error("Exception while executing `systemctl --version`", exc_info=True)
++        return {
++            "version": systemd_version,
++            "features": systemd_features,
++        }
++    if systemd_output.get("retcode") == 0:
++        systemd_info = systemd_output.get("stdout", "").splitlines()
++        try:
++            if systemd_info[0].startswith("systemd "):
++                systemd_version = systemd_info[0].split()[1]
++                systemd_features = systemd_info[1]
++        except IndexError:
++            pass
++    if systemd_version == "UNDEFINED" or systemd_features == "":
++        log.error(
++            "Unexpected output returned by `systemctl --version`: %s", systemd_output
++        )
+     return {
+-        "version": systemd_info[0].split()[1],
+-        "features": systemd_info[1],
++        "version": systemd_version,
++        "features": systemd_features,
+     }
+ 
+ 
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index 36545287b9..b64b8c4bf8 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -3593,3 +3593,92 @@ def test_virtual_set_virtual_ec2():
+ 
+         assert virtual_grains["virtual"] == "Nitro"
+         assert virtual_grains["virtual_subtype"] == "Amazon EC2"
++
++
++@pytest.mark.parametrize(
++    "systemd_data,expected",
++    (
++        (
++            {
++                "pid": 1234,
++                "retcode": 0,
++                "stdout": "systemd 254 (254.3-1)\n+PAM +AUDIT -SELINUX -APPARMOR -IMA +SMACK "
++                "+SECCOMP +GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS "
++                "+FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 "
++                "-PWQUALITY +P11KIT -QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD "
++                "+BPF_FRAMEWORK +XKBCOMMON +UTMP -SYSVINIT default-hierarchy=unified",
++                "stderr": "",
++            },
++            {
++                "version": "254",
++                "features": "+PAM +AUDIT -SELINUX -APPARMOR -IMA +SMACK +SECCOMP +GCRYPT +GNUTLS +OPENSSL "
++                "+ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP "
++                "+LIBFDISK +PCRE2 -PWQUALITY +P11KIT -QRENCODE +TPM2 +BZIP2 +LZ4 +XZ "
++                "+ZLIB +ZSTD +BPF_FRAMEWORK +XKBCOMMON +UTMP -SYSVINIT default-hierarchy=unified",
++            },
++        ),
++        (
++            {
++                "pid": 2345,
++                "retcode": 1,
++                "stdout": "",
++                "stderr": "some garbage in the output",
++            },
++            {
++                "version": "UNDEFINED",
++                "features": "",
++            },
++        ),
++        (
++            {
++                "pid": 3456,
++                "retcode": 0,
++                "stdout": "unexpected stdout\none more line",
++                "stderr": "",
++            },
++            {
++                "version": "UNDEFINED",
++                "features": "",
++            },
++        ),
++        (
++            {
++                "pid": 4567,
++                "retcode": 0,
++                "stdout": "",
++                "stderr": "",
++            },
++            {
++                "version": "UNDEFINED",
++                "features": "",
++            },
++        ),
++        (
++            Exception("Some exception on calling `systemctl --version`"),
++            {
++                "version": "UNDEFINED",
++                "features": "",
++            },
++        ),
++    ),
++)
++def test__systemd(systemd_data, expected):
++    """
++    test _systemd
++    """
++
++    def mock_run_all_systemd(_):
++        if isinstance(systemd_data, Exception):
++            raise systemd_data
++        return systemd_data
++
++    with patch.dict(
++        core.__salt__,
++        {
++            "cmd.run_all": mock_run_all_systemd,
++        },
++    ):
++        ret = core._systemd()
++        assert "version" in ret
++        assert "features" in ret
++        assert ret == expected
+-- 
+2.46.0
+

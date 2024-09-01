@@ -274,4 +274,12 @@
     <comment>- Disable tests against scipy/numpy for SLFO:Main</comment>
     <requestid>1186365</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b545a72a986a249dc797ab5c0fe1be24</srcmd5>
+    <version>3.0.0</version>
+    <time>1725211255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197794</requestid>
+  </revision>
 </revisionlist>

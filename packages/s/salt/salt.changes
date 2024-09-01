@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 30 14:42:00 UTC 2024 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Avoid crash on wrong output of systemctl version (bsc#1229539)
+- Improve error handling with different OpenSSL versions
+- Remove redundant run_func from salt.master.MWorker._handle_aes
+
+- Added:
+  * avoid-crash-on-wrong-output-of-systemctl-version-bsc.patch
+  * improve-error-handling-with-different-openssl-versio.patch
+  * remove-redundant-run_func-from-salt.master.mworker._.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 11:54:27 UTC 2024 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
 
 - Fix cloud minion configuration for multiple masters (bsc#1229109)

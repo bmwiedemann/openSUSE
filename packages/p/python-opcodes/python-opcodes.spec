@@ -1,7 +1,7 @@
 #
 # spec file for package python-opcodes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-opcodes
 Version:        0.3.14
 Release:        0
@@ -44,7 +44,6 @@ for tools development. An instruction set is represented by three files:
 
 This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 
-
 %prep
 %setup -q -n opcodes-%{version}
 
@@ -60,7 +59,7 @@ This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 
 %files %{python_files}
 %doc readme.rst
-%license license.rst 
+%license license.rst
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:53:00 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.1:
+  * Fix a 64-bit-ism in the test suite so the tests don't
+    encounter a false negative on 32-bit systems.
+  * Modify a test-harness skiptest check to work with newer
+    versions of Cryptography.
+  * Massage our import of the TripleDES cipher to support
+    Cryptography >=43; this should prevent
+    CryptographyDeprecationWarning from appearing upon import.
+- Remove patches that are not needed anymore since they've
+  been fixed upstream:
+  * support-pytest-8.patch
+  * use-64-bit-maxsize-everywhere.patch
+
+-------------------------------------------------------------------
 Tue May 14 03:27:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.patch:

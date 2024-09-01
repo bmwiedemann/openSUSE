@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sgpviz
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-sgpviz
-Version:        0.999.5
+Version:        0.999.6
 Release:        0
 Summary:        GAP: A package for semigroup visualization
 License:        GPL-2.0+

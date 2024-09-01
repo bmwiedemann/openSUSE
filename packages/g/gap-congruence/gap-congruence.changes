@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 12:29:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.7
+  * Don't try to read buildman.g (removed in 2012)
+
+-------------------------------------------------------------------
 Sat Mar 23 20:10:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.6

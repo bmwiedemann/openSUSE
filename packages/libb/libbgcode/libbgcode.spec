@@ -1,7 +1,7 @@
 #
 # spec file for package libbgcode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,20 @@
 %define soversion 0_2_0
 Name:           libbgcode
 # Use the set_version source service for adjusting the field below
-Version:        0.2.0+git20231219.7aaf717
+Version:        0.2.0+git20240829.b5c57c4
 Release:        0
 Summary:        Prusa Block & Binary G-code reader / writer / converter
 License:        AGPL-3.0-only
 URL:            https://github.com/prusa3d/libbgcode
 Source0:        libbgcode-%{version}.tar.xz
 BuildRequires:  boost-devel >= 1.78
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  heatshrink
 BuildRequires:  libboost_nowide-devel >= 1.78
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(heatshrink)
 BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
-
+BuildRequires:  cmake(heatshrink)
 
 %description
 A new G-code file format featuring the following improvements over the legacy G-code:

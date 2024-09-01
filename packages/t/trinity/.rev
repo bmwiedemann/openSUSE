@@ -803,4 +803,12 @@
   * fix memfd_create compile issue (#51)</comment>
     <requestid>1194233</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>b714d98989cc7c32365102f44f2e7609</srcmd5>
+    <version>1.9+git.20240614</version>
+    <time>1725211272</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-syscalls-send.c-fix-build-on-32bit.patch</comment>
+    <requestid>1197728</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-hecke
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-hecke
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        GAP: Hecke - Specht 2.4 ported to GAP 4
 License:        GPL-2.0-or-later

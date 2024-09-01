@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-paramiko
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
@@ -27,10 +27,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/parami
 Patch0:         paramiko-test_extend_timeout.patch
 # PATCH-FIX-OPENSUSE remove-icecream-dep.patch to do not depend on python-icecream and unvendor lexicon
 Patch1:         remove-icecream-dep.patch
-# PATCH-FIX-OPENSUSE use 64-bit value of sys.maxsize to prevent test failure on 32-bit
-Patch2:         use-64-bit-maxsize-everywhere.patch
-# PATCH-FIX-UPSTREAM gh#paramiko/paramiko#2349 Use non-deprecated setup method name to support pytest >= 8
-Patch3:         support-pytest-8.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module bcrypt >= 3.2}

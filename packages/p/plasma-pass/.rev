@@ -54,4 +54,12 @@
     <comment>- Fix installation with plasma-framework 5.89.</comment>
     <requestid>944050</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ccba4521fcd505647313a08d6ff9bd2</srcmd5>
+    <version>1.2.2</version>
+    <time>1725211308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197872</requestid>
+  </revision>
 </revisionlist>

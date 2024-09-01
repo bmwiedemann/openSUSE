@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 30 13:04:46 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+  * Generate initrd for the default snapshot (boo#1224773)
+
+-------------------------------------------------------------------
 Tue Aug 13 13:52:03 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.49:

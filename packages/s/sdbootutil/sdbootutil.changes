@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 30 13:57:35 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240830.7f696c8:
+  * Use parameter "snapshot" instead the global one
+  * Add update-entry and update-all-entries commands
+  * Generate tpm2 public key before enroll_pcroracle
+  * Fix function names for enrolling pcr-oracle
+  * Check if enroll functions worked correctly
+  * Warn when pcrlock.json or tpm2-pcr-signature.json are missing
+
+-------------------------------------------------------------------
 Thu Aug 29 17:19:24 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240829.1b5aa4d:

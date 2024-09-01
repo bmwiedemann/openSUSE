@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:10:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.27.0
+  * autocall was beeing call getitem, PR #14486
+  * Only copy files in startup dir if we just created it. PR #14497
+  * Fix some tests on Python 3.13 RC1 PR #14504
+- IPython 8.26
+  * PR #14453 bugfix for call to structured_traceback
+  * R #14466 fixed honoring custom repr for NamedTuple if assigned
+    by partialmethod
+  * PR #14451 Convert matplotlib gui name in enable_gui
+
+-------------------------------------------------------------------
 Tue Jun  4 06:55:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Reenable testing matplotlib

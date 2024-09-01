@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 30 09:27:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.29.5
+  * Fix use of "%matplotlib osx" #1237 (@ianthomas23)
+- Drop ignore-ipython-deprecationwarning.patch
+
+-------------------------------------------------------------------
 Tue May 28 06:16:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch ignore-ipython-deprecationwarning.patch:

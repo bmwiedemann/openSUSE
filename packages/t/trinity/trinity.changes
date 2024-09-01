@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 30 07:31:56 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-syscalls-send.c-fix-build-on-32bit.patch
+
+-------------------------------------------------------------------
 Fri Aug 16 06:25:53 UTC 2024 - jslaby@suse.cz
 
 - Update to version 1.9+git.20240614:

@@ -578,4 +578,14 @@
   * Ignore DeprecationWarning raised by IPython 8.24+.</comment>
     <requestid>1177273</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4a03c72623290e7b5cd98ba8e84a7210</srcmd5>
+    <version>6.29.5</version>
+    <time>1725211253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.29.5
+  * Fix use of &quot;%matplotlib osx&quot; #1237 (@ianthomas23)
+- Drop ignore-ipython-deprecationwarning.patch</comment>
+    <requestid>1197749</requestid>
+  </revision>
 </revisionlist>

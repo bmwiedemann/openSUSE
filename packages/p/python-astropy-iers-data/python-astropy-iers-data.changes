@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 30 15:14:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2024.8.27.10.28.29
+  * Tell setuptools_scm to not normalize version (fixes #17) by
+    @sergiopasra in #26
+  * Update IERS Earth rotation and leap second tables
+- Add test multibuild and use astropy testsuite
+
+-------------------------------------------------------------------
 Sun Jun 30 20:52:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2024.06.24.00.31.11:

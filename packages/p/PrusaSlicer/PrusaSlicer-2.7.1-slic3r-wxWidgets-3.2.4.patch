@@ -9,11 +9,11 @@ Subject: [PATCH] Make initializers explicit to avoid ambiguous wxArrayString
  src/slic3r/GUI/Plater.cpp                | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/slic3r/GUI/PhysicalPrinterDialog.cpp b/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-index 2364c56247..bc2c918a60 100644
---- a/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-+++ b/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-@@ -467,7 +467,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
+Index: PrusaSlicer-version_2.8.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
+===================================================================
+--- PrusaSlicer-version_2.8.0.orig/src/slic3r/GUI/PhysicalPrinterDialog.cpp
++++ PrusaSlicer-version_2.8.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
+@@ -606,7 +606,7 @@ void PhysicalPrinterDialog::build_printh
      // Always fill in the "printhost_port" combo box from the config and select it.
      {
          Choice* choice = dynamic_cast<Choice*>(m_optgroup->get_field("printhost_port"));
@@ -22,11 +22,11 @@ index 2364c56247..bc2c918a60 100644
          choice->set_selection();
      }
  
-diff --git a/src/slic3r/GUI/Plater.cpp b/src/slic3r/GUI/Plater.cpp
-index c2b8e8694f..2f540bfe9d 100644
---- a/src/slic3r/GUI/Plater.cpp
-+++ b/src/slic3r/GUI/Plater.cpp
-@@ -5390,7 +5390,7 @@ void Plater::load_project(const wxString& filename)
+Index: PrusaSlicer-version_2.8.0/src/slic3r/GUI/Plater.cpp
+===================================================================
+--- PrusaSlicer-version_2.8.0.orig/src/slic3r/GUI/Plater.cpp
++++ PrusaSlicer-version_2.8.0/src/slic3r/GUI/Plater.cpp
+@@ -4048,7 +4048,7 @@ void Plater::load_project(const wxString
  
      p->reset();
  
@@ -35,3 +35,31 @@ index c2b8e8694f..2f540bfe9d 100644
          // At least one file was loaded.
          p->set_project_filename(filename);
          // Save the names of active presets and project specific config into ProjectDirtyStateManager.
+
+===================================================================
+More of the same:
+===================================================================
+--- a/src/slic3r/GUI/PrintHostDialogs.cpp
++++ b/src/slic3r/GUI/PrintHostDialogs.cpp
+@@ -467,9 +467,7 @@
+         wxVariant nm, hst;
+         job_list->GetValue(nm, evt.job_id, COL_FILENAME);
+         job_list->GetValue(hst, evt.job_id, COL_HOST);
+-        const wchar_t * nm_str = nm.GetString();
+-        const wchar_t * hst_str = hst.GetString();
+-        wxGetApp().notification_manager()->set_upload_job_notification_percentage(evt.job_id + 1, into_u8(nm_str), into_u8(hst_str), evt.progress / 100.f);
++        wxGetApp().notification_manager()->set_upload_job_notification_percentage(evt.job_id + 1, into_u8(nm.GetString()), into_u8(hst.GetString()), evt.progress / 100.f);
+     }
+ }
+ 
+--- a/src/slic3r/Utils/PrusaConnect.cpp
++++ b/src/slic3r/Utils/PrusaConnect.cpp
+@@ -290,7 +290,7 @@
+                     if (path && (!available || *available)) {
+                         StorageInfo si;
+                         si.path = boost::nowide::widen(*path);
+-                        si.name = name ? boost::nowide::widen(*name) : wxString();
++                        si.name = name ? boost::nowide::widen(*name) : std::wstring();
+                         // If read_only is missing, assume it is NOT read only.
+                         // si.read_only = read_only ? *read_only : false; // version without "ro"
+                         si.read_only = (read_only ? *read_only : (ro ? *ro : false));

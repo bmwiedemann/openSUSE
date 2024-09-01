@@ -223,4 +223,13 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
 - Drop hdjmod_fix_hotplug.patch that has been included upstream.</comment>
     <requestid>1086131</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bd14753e77782a03b1b039a21dae8d0d</srcmd5>
+    <version>1.35</version>
+    <time>1725211270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.35
+  * Compatibility with GCC 14</comment>
+    <requestid>1197717</requestid>
+  </revision>
 </revisionlist>

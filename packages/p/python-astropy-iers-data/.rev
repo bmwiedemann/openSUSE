@@ -62,4 +62,16 @@
   * Update IERS Earth rotation and leap second tables</comment>
     <requestid>1184147</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10a48b2d5752bffc73f3ff7f78f9da36</srcmd5>
+    <version>0.2024.8.27.10.28.29</version>
+    <time>1725211323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2024.8.27.10.28.29
+  * Tell setuptools_scm to not normalize version (fixes #17) by
+    @sergiopasra in #26
+  * Update IERS Earth rotation and leap second tables
+- Add test multibuild and use astropy testsuite (forwarded request 1197896 from bnavigator)</comment>
+    <requestid>1197899</requestid>
+  </revision>
 </revisionlist>

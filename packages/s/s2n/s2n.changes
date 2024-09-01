@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 26 15:23:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.1
+  * Add performance regression tests in CI (#4701)
+  * feat: JA4 fingerprinting (#4669)
+  * Clarify s2nc/s2nd PQ output (#4702)
+  * fix: building for AL2 (#4679)
+  * ci(nix): Startup/configure apache for renegotiate test under nix (#4592)
+  * fix: Initial config influences client hello parsing (#4676)
+  * Add s2n_signature_preferences_20240521 (#4565)
+  * New s2n core member (#4707)
+  * Modify regression threshold to configurable percentage (#4698)
+  * chore: remove unused benchmarks (#4696)
+  * docs: add pq to usage guide (#4677)
+- from version 1.5.0
+  * chore: Rust bindings bump v0.3.0 (#4697)
+  * Merge commit from fork
+  * fix: upload fuzz output to s3 when test fails (#4694)
+  * fix(ci): partially revert checking out head from current clone. (#4693)
+  * Enabling differential performance benchmarking (#4667)
+  * chore: document OpenSSL-FIPS restriction on RSA key size (#4654)
+  * ci: store fuzz artifacts in s3 (#4678)
+  * feat: Changes ticket encryption scheme to be nonce-reuse resistant (#4663)
+  * chore: Bump rust bindings to 0.2.11 (#4690)
+  * fix(bindings): enforce waker contract on `poll` operations (#4688)
+  * docs: update blinding docs (#4686)
+  * fix: zip corpus files before uploading to s3 (#4685)
+  * Adopt CBMC 6.1 and cbmc-viewer 3.9 (#4661)
+  * test(cbmc): add stuffer hex proofs (#4659)
+  * fix: don't fail for 0 blinding delay (#4671)
+  * chore(bindings): release 0.2.10 (#4683)
+  * feat(bindings): Add hyper compatibility crate (#4617)
+  * refactor: switch JA3 to use stuffer hex methods (#4662)
+  * fix: SSLv3 handshake with openssl-1.0.2-fips fails (#4644)
+  * feat(bindings): add renegotiate to the rust bindings (#4668)
+  * ci: move fuzz corpus to S3 (#4665)
+  * fix: default s2nc should accept default s2nd cert (#4670)
+  * fix: add missing corpus files for s2n_deserialize_resumption_state_test (#4672)
+  * refactor: clean up other hex methods (#4664)
+  * Set up regression benchmark for scalar performance (#4649)
+  * ci(nix): Setup a head build for the cross_compatibility integ test (#4567)
+  * fix: new clippy lints (#4666)
+  * fix: allow for clock skew in resumption (#4650)
+  * fix: Refactor some s2n_resume functions (#4648)
+  * fix: pin tokio-macros version (#4658)
+  * refactor: move stuffer hex methods out of testlib (#4653)
+
+-------------------------------------------------------------------
 Fri Jul 26 11:20:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.14.18

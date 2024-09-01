@@ -16,8 +16,6 @@
 #
 
 
-# No branca
-%define skip_python39 1
 %define modname folium
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -47,7 +45,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module branca >= 0.6.0}
 BuildRequires:  %{python_module folium = %{version}}
 BuildRequires:  %{python_module geopandas}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -58,7 +56,7 @@ BuildRequires:  %{python_module xyzservices}
 %endif
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-branca >= 0.6.0
-Requires:       python-numpy < 2
+Requires:       python-numpy
 Requires:       python-requests
 Requires:       python-xyzservices
 BuildArch:      noarch
@@ -101,8 +99,8 @@ donttest="$donttest or test_choropleth_geopandas"
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}*-info/
+%{python_sitelib}/folium/
+%{python_sitelib}/folium-%{version}.dist-info/
 %endif
 
 %changelog

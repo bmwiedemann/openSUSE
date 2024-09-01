@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-atpublic
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        @public decorator for populating __all__
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Group:          Development/Languages/Python
 URL:            http://public.readthedocs.io/
 Source:         https://gitlab.com/warsaw/public/-/archive/%{version}/public-%{version}.tar.gz#/atpublic-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module hatch}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

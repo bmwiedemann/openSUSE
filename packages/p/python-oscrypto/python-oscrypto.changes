@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 13:50:49 UTC 2024 - Aline Werner <aline.werner@suse.com>
+
+- Build with sle15_python_module_pythons macro
+
+-------------------------------------------------------------------
 Mon Apr  8 09:53:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python312.patch from upstream to make it compatible with python

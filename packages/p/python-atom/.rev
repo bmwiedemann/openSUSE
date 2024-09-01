@@ -161,4 +161,12 @@
   * allow unions in TypeVar bound PR #207</comment>
     <requestid>1142763</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>08bafcf07b61177424b4e490f86b5e38</srcmd5>
+    <version>0.10.5</version>
+    <time>1725211289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197801</requestid>
+  </revision>
 </revisionlist>

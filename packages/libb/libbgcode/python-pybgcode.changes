@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 29 16:12:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.0+git20240829.b5c57c4
+  * Added filament_abrasive and nozzle_high_flow into the
+    conversion function
+  * Updated conversion of print and printer metadata to match
+    PrusaSlicer export
+  * read extruder_colour in connect metadata
+  * Added 'S' to the list of parameter for which MeatPack keeps the
+    leading space
+  * Fixed out of bound access in function MeatPack::unbinarize()
+  * cancel objects info in metadata
+  * method for getting Connect metadata at once
+  * method for reading metadata needed by oCnnect
+  * Fix messed up BlockHeader binding
+  * importing memopen to pybgcode
+  * Add memopen function to pybgcode to open byte buffers. No Win
+    support!
+  * Fixed bug in conversion from binary to ascii gcode letting 'G29
+    G' lines be translated to 'G29G', missing the space
+
+-------------------------------------------------------------------
 Mon Dec 25 21:23:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.2.0+git20231219.7aaf717

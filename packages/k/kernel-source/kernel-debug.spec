@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.10
-%define patchversion 6.10.5
-%define git_commit 30fd9643f24a166b5e5ae092fafef1e6a3e688bf
+%define patchversion 6.10.7
+%define git_commit 54e6893832111b44ab5c2491ef7c6e38ec3345f8
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,9 +37,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-debug
-Version:        6.10.5
+Version:        6.10.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g30fd964
+Release:        <RELEASE>.g54e6893
 %else
 Release:        0
 %endif

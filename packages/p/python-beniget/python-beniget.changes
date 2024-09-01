@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug 26 12:04:53 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 0.4.2:
+  * Update the way we check for locally unbound variables
+  * Do not add method name to local scope
+  * Fix scoping rule for comprehensions
+  * Rework scope handling, esp. wrt class
+  * Modernize ordered_set for Python >= 3,6 (#40)
+  * Run tests on python 3.11 (#39)
+  * Advertise version number
+  * Accept gast 0.6.0 dependency
+  * Change naming scheme of Def.name() for nodes without a name. (#100)
+  * Use .<attrname> as Def.name for Attribute nodes
+  * Issue SyntaxError upon unbound nonlocal
+  * Support the match statement
+  * Add support for TryStar from py3.11
+  * Use pytest in the tox.ini tests and update other files. (#85)
+  * Don't say it works with python2 in the readme (#88)
+  * Fix AnnAssign (#87)
+  * Drop support for Python2 (#86)
+  * Fix variable arguments analysis in lambda functions. (#80)
+  * Correctly handle aug assign of undefined global
+  * Generalize handling of global keyword
+  * Fix islive flag when there are conditional branches (#73)
+  * Fix bug in warlus operator (#71)
+  * Fix bug in assignments (#68)
+  * Fix bug in class scope + comprehension (#69)
+  * Better support for starred destructuring
+  * Fix lambda function analysis (#70)
+  * Fix dead code detection wrt. Raise statement
+  * Do not clean lookup list too early
+  * Upgrade github action
+  * Remove spurious whitespaces
+  * Make tests compatible with pytest
+  * Require setuptools in testing for py3.12-dev
+  * Get rid of RuntimeWarning: 'beniget.beniget' found in sys.modules after import of package 'beniget'...
+  * Add support for PEP 563
+  * Introduce Def.islive
+  * Add a test
+-------------------------------------------------------------------
 Fri Apr 21 12:22:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

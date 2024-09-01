@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 29 17:42:57 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.5
+
+- Update to upstream version 0.12.5
+  * Unify the width of the Rich console for help and errors.
+  * Improve assertion error message if a group is not a valid subclass.
+  * Ensure rich_markup_mode=None disables Rich formatting.
+
+-------------------------------------------------------------------
 Sat Aug 17 08:05:30 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.4
 
 - Update to upstream version 0.12.4

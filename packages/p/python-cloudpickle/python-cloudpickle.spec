@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cloudpickle
-Version:        2.2.1
+Version:        3.0.0
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
-Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/cloudpipe/cloudpickle/archive/refs/tags/v{%version}.tar.gz#/cloudpickle-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -33,6 +35,7 @@ BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module setuptools if %python-base >= 3.12}
 BuildRequires:  %{python_module tornado}
 %if 0%{?suse_version} > 1600
 BuildRequires:  %{python_module numpy >= 1.18.5}
@@ -57,10 +60,10 @@ functions and classes defined interactively in the __main__ module.
 %autosetup -p1 -n cloudpickle-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,6 +76,6 @@ export PYTHONPATH=':./tests/cloudpickle_testpkg'
 %doc README.md
 %license LICENSE
 %{python_sitelib}/cloudpickle
-%{python_sitelib}/cloudpickle-%{version}*-info
+%{python_sitelib}/cloudpickle-%{version}.dist-info
 
 %changelog

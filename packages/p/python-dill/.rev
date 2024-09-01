@@ -186,4 +186,12 @@
   * drop rtfd build to 3.8</comment>
     <requestid>1128728</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0270353e89ec1841b20e231e2fff7c0e</srcmd5>
+    <version>0.3.8</version>
+    <time>1725211293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197807</requestid>
+  </revision>
 </revisionlist>

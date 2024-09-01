@@ -34,6 +34,7 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
+Patch0:         0001-perf-trace-fix-build-on-32bit.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -131,6 +132,7 @@ the Python programming language to manipulate perf events.
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,tools,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
 chmod +x tools/perf/util/generate-cmdlist.sh
+%autopatch -p1
 
 # don't error out on deprecated definitions in gtk2.h
 sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c

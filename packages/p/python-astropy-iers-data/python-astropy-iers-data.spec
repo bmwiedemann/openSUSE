@@ -16,8 +16,17 @@
 #
 
 
-Name:           python-astropy-iers-data
-Version:        0.2024.6.24.0.31.11
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+Name:           python-astropy-iers-data%{psuffix}
+Version:        0.2024.8.27.10.28.29
 Release:        0
 Summary:        IERS Earth Rotation and Leap Second tables for the astropy core package
 License:        BSD-3-Clause
@@ -29,11 +38,14 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module astropy-iers-data = %{version}}
+BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-remotedata}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-# /SECTION
+%endif
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
@@ -46,21 +58,29 @@ Note: This package is not currently meant to be used directly by users, and only
 %prep
 %autosetup -p1 -n astropy_iers_data-%{version}
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-# No tests yet
-#%%pytest
+# See tox.ini
+%pytest -n auto -m "not hypothesis" --pyargs astropy.coordinates
+%pytest -n auto -m "not hypothesis" --pyargs astropy.time
+%pytest -n auto -m "not hypothesis" --pyargs astropy.utils.iers
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
 %{python_sitelib}/astropy_iers_data
 %{python_sitelib}/astropy_iers_data-%{version}.dist-info
+%endif
 
 %changelog

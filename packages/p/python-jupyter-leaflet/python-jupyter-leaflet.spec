@@ -16,15 +16,14 @@
 #
 
 
-%define distversion 0.19
+%define distversion 0.19.2
 Name:           python-jupyter-leaflet
-Version:        0.19.0
+Version:        0.19.2
 Release:        0
 Summary:        Leaflet extensions for JupyterLab and Jupyter Notebook
 License:        MIT
 URL:            https://github.com/jupyter-widgets/ipyleaflet
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_leaflet/jupyter_leaflet-%{version}.tar.gz
-Source1:        https://github.com/jupyter-widgets/ipyleaflet/raw/%{version}/LICENSE
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.1}
 BuildRequires:  %{python_module hatch-nodejs-version >= 0.3.2}
 BuildRequires:  %{python_module hatchling}
@@ -59,7 +58,7 @@ This package provides the extensions for jupyter notebook and jupyterlab.
 
 %prep
 %autosetup -p1 -n jupyter_leaflet-%{version}
-cp %{SOURCE1} ./
+sed -i '/\[tool.hatch.build.hooks.jupyter-builder\]/ a \   skip-if-exists = ["labextension/static"]' pyproject.toml
 
 %build
 %pyproject_wheel

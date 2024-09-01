@@ -1,5 +1,5 @@
 #
-# spec file for package python-oscrypto
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-oscrypto%{psuffix}
 Version:        1.3.0
 Release:        0

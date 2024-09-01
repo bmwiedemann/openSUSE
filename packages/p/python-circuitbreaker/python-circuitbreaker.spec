@@ -1,7 +1,7 @@
 #
 # spec file for package python-circuitbreaker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname circuitbreaker
 Name:           python-circuitbreaker
-Version:        1.3.2
+Version:        2.0.0
 Release:        0
 Summary:        Python implementation of the "Circuit Breaker" Pattern
 License:        BSD-3-Clause
 URL:            https://github.com/fabfuel/circuitbreaker
 Source:         https://files.pythonhosted.org/packages/source/c/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM use_stdlib_mock.patch bugno mcepl@suse.com
-# Don't depend on the external mock
-Patch0:         use_stdlib_mock.patch
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

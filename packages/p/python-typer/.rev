@@ -164,4 +164,16 @@
   * Fix shell_complete not working for Arguments.</comment>
     <requestid>1194595</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d6b851f0672db6f9a3f9e8d54cc8f981</srcmd5>
+    <version>0.12.5</version>
+    <time>1725211328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.12.5
+  * Unify the width of the Rich console for help and errors.
+  * Improve assertion error message if a group is not a valid subclass.
+  * Ensure rich_markup_mode=None disables Rich formatting.
+</comment>
+    <requestid>1197927</requestid>
+  </revision>
 </revisionlist>

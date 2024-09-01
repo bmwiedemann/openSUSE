@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 15:19:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.26
+  * Update CacheCredentialsProvider Refresh Time to
+    5 Minutes before Expiry by @waahm7 in (#247)
+
+-------------------------------------------------------------------
 Wed Aug  7 13:33:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.25

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 29 15:43:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+ Update to 3.0.0
+  * Officially support Python 3.12 and drop support for Python 3.6
+    and 3.7. Dropping support for older Python versions made it
+    possible to simplify the code base signficantly, hopefully
+    making it easier to contribute to and maintain the project. (PR
+    #515)
+  * Fix pickling of dataclasses and their instances. (issue #386,
+    PR #513)
+  * Any color you like as long as it's black. (PR #521)
+  * Drop setup.py and setuptools in favor of pyproject.toml and
+    flit. (PR #521)
+
+-------------------------------------------------------------------
 Tue Jul  9 10:27:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable tests against scipy/numpy for SLFO:Main

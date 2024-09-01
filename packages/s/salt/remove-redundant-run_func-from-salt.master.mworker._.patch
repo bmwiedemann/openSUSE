@@ -1,0 +1,224 @@
+From ff789d88541954e4fc1678dff728bc6a3ea7472e Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 30 Aug 2024 14:30:27 +0200
+Subject: [PATCH] Remove redundant run_func from
+ salt.master.MWorker._handle_aes
+
+* New request context
+
+* Fix docs
+
+* Remove redundant run_func from salt.master.MWorker._handle_aes
+
+* Get rid of run_func in salt.Minion._target
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@vmware.com>
+---
+ doc/topics/releases/3007.0.rst |  0
+ salt/_logging/impl.py          | 15 ++++++---
+ salt/master.py                 | 12 ++-----
+ salt/minion.py                 | 10 ++----
+ salt/utils/ctx.py              | 60 +++++++++++-----------------------
+ 5 files changed, 34 insertions(+), 63 deletions(-)
+ create mode 100644 doc/topics/releases/3007.0.rst
+
+diff --git a/doc/topics/releases/3007.0.rst b/doc/topics/releases/3007.0.rst
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/salt/_logging/impl.py b/salt/_logging/impl.py
+index 1d71cb8be8..4d1ebd2495 100644
+--- a/salt/_logging/impl.py
++++ b/salt/_logging/impl.py
+@@ -26,6 +26,8 @@ GARBAGE = logging.GARBAGE = 1
+ QUIET = logging.QUIET = 1000
+ 
+ import salt.defaults.exitcodes  # isort:skip  pylint: disable=unused-import
++import salt.utils.ctx
++
+ from salt._logging.handlers import DeferredStreamHandler  # isort:skip
+ from salt._logging.handlers import RotatingFileHandler  # isort:skip
+ from salt._logging.handlers import StreamHandler  # isort:skip
+@@ -33,7 +35,6 @@ from salt._logging.handlers import SysLogHandler  # isort:skip
+ from salt._logging.handlers import WatchedFileHandler  # isort:skip
+ from salt._logging.mixins import LoggingMixinMeta  # isort:skip
+ from salt.exceptions import LoggingRuntimeError  # isort:skip
+-from salt.utils.ctx import RequestContext  # isort:skip
+ from salt.utils.immutabletypes import freeze, ImmutableDict  # isort:skip
+ from salt.utils.textformat import TextFormat  # isort:skip
+ 
+@@ -242,10 +243,14 @@ class SaltLoggingClass(LOGGING_LOGGER_CLASS, metaclass=LoggingMixinMeta):
+         if extra is None:
+             extra = {}
+ 
+-        # pylint: disable=no-member
+-        current_jid = RequestContext.current.get("data", {}).get("jid", None)
+-        log_fmt_jid = RequestContext.current.get("opts", {}).get("log_fmt_jid", None)
+-        # pylint: enable=no-member
++        current_jid = (
++            salt.utils.ctx.get_request_context().get("data", {}).get("jid", None)
++        )
++        log_fmt_jid = (
++            salt.utils.ctx.get_request_context()
++            .get("opts", {})
++            .get("log_fmt_jid", None)
++        )
+ 
+         if current_jid is not None:
+             extra["jid"] = current_jid
+diff --git a/salt/master.py b/salt/master.py
+index d7182d10b5..49cfb68860 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -38,6 +38,7 @@ import salt.state
+ import salt.utils.args
+ import salt.utils.atomicfile
+ import salt.utils.crypt
++import salt.utils.ctx
+ import salt.utils.event
+ import salt.utils.files
+ import salt.utils.gitfs
+@@ -58,10 +59,8 @@ import salt.wheel
+ from salt.cli.batch_async import BatchAsync, batch_async_required
+ from salt.config import DEFAULT_INTERVAL
+ from salt.defaults import DEFAULT_TARGET_DELIM
+-from salt.ext.tornado.stack_context import StackContext
+ from salt.transport import TRANSPORTS
+ from salt.utils.channel import iter_transport_opts
+-from salt.utils.ctx import RequestContext
+ from salt.utils.debug import (
+     enable_sigusr1_handler,
+     enable_sigusr2_handler,
+@@ -1108,13 +1107,8 @@ class MWorker(salt.utils.process.SignalHandlingProcess):
+             start = time.time()
+             self.stats[cmd]["runs"] += 1
+ 
+-        def run_func(data):
+-            return self.aes_funcs.run_func(data["cmd"], data)
+-
+-        with StackContext(
+-            functools.partial(RequestContext, {"data": data, "opts": self.opts})
+-        ):
+-            ret = run_func(data)
++        with salt.utils.ctx.request_context({"data": data, "opts": self.opts}):
++            ret = self.aes_funcs.run_func(data["cmd"], data)
+ 
+         if self.opts["master_stats"]:
+             self._post_stats(start, cmd)
+diff --git a/salt/minion.py b/salt/minion.py
+index 2ccd0cd5a9..e21a017cfd 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -39,6 +39,7 @@ import salt.transport
+ import salt.utils.args
+ import salt.utils.context
+ import salt.utils.crypt
++import salt.utils.ctx
+ import salt.utils.data
+ import salt.utils.dictdiffer
+ import salt.utils.dictupdate
+@@ -70,7 +71,6 @@ from salt.exceptions import (
+     SaltSystemExit,
+ )
+ from salt.template import SLS_ENCODING
+-from salt.utils.ctx import RequestContext
+ from salt.utils.debug import enable_sigusr1_handler
+ from salt.utils.event import tagify
+ from salt.utils.network import parse_host_port
+@@ -1805,18 +1805,12 @@ class Minion(MinionBase):
+                 uid = salt.utils.user.get_uid(user=opts.get("user", None))
+                 minion_instance.proc_dir = get_proc_dir(opts["cachedir"], uid=uid)
+ 
+-        def run_func(minion_instance, opts, data):
++        with salt.utils.ctx.request_context({"data": data, "opts": opts}):
+             if isinstance(data["fun"], tuple) or isinstance(data["fun"], list):
+                 return Minion._thread_multi_return(minion_instance, opts, data)
+             else:
+                 return Minion._thread_return(minion_instance, opts, data)
+ 
+-        with salt.ext.tornado.stack_context.StackContext(
+-            functools.partial(RequestContext, {"data": data, "opts": opts})
+-        ):
+-            with salt.ext.tornado.stack_context.StackContext(minion_instance.ctx):
+-                run_func(minion_instance, opts, data)
+-
+     def _execute_job_function(
+         self, function_name, function_args, executors, opts, data
+     ):
+diff --git a/salt/utils/ctx.py b/salt/utils/ctx.py
+index a9c0931bd8..2f4b5b4c9b 100644
+--- a/salt/utils/ctx.py
++++ b/salt/utils/ctx.py
+@@ -1,49 +1,27 @@
+-import threading
++import contextlib
+ 
++try:
++    # Try the stdlib C extension first
++    import _contextvars as contextvars
++except ImportError:
++    # Py<3.7
++    import contextvars
+ 
+-class ClassProperty(property):
+-    """
+-    Use a classmethod as a property
+-    http://stackoverflow.com/a/1383402/1258307
+-    """
++DEFAULT_CTX_VAR = "request_ctxvar"
++request_ctxvar = contextvars.ContextVar(DEFAULT_CTX_VAR)
+ 
+-    def __get__(self, cls, owner):
+-        return self.fget.__get__(None, owner)()  # pylint: disable=no-member
+ 
+-
+-class RequestContext:
++@contextlib.contextmanager
++def request_context(data):
+     """
+-    A context manager that saves some per-thread state globally.
+-    Intended for use with Tornado's StackContext.
+-    https://gist.github.com/simon-weber/7755289
+-    Simply import this class into any module and access the current request handler by this
+-    class's class method property 'current'. If it returns None, there's no active request.
+-    .. code:: python
+-        from raas.utils.ctx import RequestContext
+-        current_request_handler = RequestContext.current
++    A context manager that sets and un-sets the loader context
+     """
++    tok = request_ctxvar.set(data)
++    try:
++        yield
++    finally:
++        request_ctxvar.reset(tok)
+ 
+-    _state = threading.local()
+-    _state.current_request = {}
+-
+-    def __init__(self, current_request):
+-        self._current_request = current_request
+-
+-    @ClassProperty
+-    @classmethod
+-    def current(cls):
+-        if not hasattr(cls._state, "current_request"):
+-            return {}
+-        return cls._state.current_request
+-
+-    def __enter__(self):
+-        self._prev_request = self.__class__.current
+-        self.__class__._state.current_request = self._current_request
+-
+-    def __exit__(self, *exc):
+-        self.__class__._state.current_request = self._prev_request
+-        del self._prev_request
+-        return False
+ 
+-    def __call__(self):
+-        return self
++def get_request_context():
++    return request_ctxvar.get({})
+-- 
+2.46.0
+

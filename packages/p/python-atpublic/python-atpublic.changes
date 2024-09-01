@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:40:10 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 5.0:
+   * @public is now properly type annotated.
+   * Adopt hatch test and hatch fmt commands. (GL#25)
+   * @public and @private now raise TypeError instead of ValueError if __all__ is not a concrete list object. (GL#26)
+   * Other minor coding improvements identified by ruff.
+   * Switch to Trusted Publishing for publishing new versions to PyPI. (GL#24)
+
+- version 4.1:
+   * Add support for Python 3.12. (GL#22)
+   * Switch to hatch, replacing pdm and tox. (GL#21)
+
+
+-------------------------------------------------------------------
 Fri Jan  5 17:15:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove obsolete pdm-pep517 dependency

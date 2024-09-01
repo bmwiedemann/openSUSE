@@ -1572,4 +1572,20 @@
 </comment>
     <requestid>1178448</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>26b9a08348fbcfde832a8ac7eb8e6fe6</srcmd5>
+    <version>8.27.0</version>
+    <time>1725211254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.27.0
+  * autocall was beeing call getitem, PR #14486
+  * Only copy files in startup dir if we just created it. PR #14497
+  * Fix some tests on Python 3.13 RC1 PR #14504
+- IPython 8.26
+  * PR #14453 bugfix for call to structured_traceback
+  * R #14466 fixed honoring custom repr for NamedTuple if assigned
+    by partialmethod
+  * PR #14451 Convert matplotlib gui name in enable_gui</comment>
+    <requestid>1197786</requestid>
+  </revision>
 </revisionlist>

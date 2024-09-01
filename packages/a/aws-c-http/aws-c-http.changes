@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 15:08:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.8
+  * Fix websocket shutdown behavior by @TingDaoK in (#483)
+- from version 0.8.7
+  * Connection shutdown with buffered data by @TingDaoK in (#482)
+
+-------------------------------------------------------------------
 Wed Aug  7 13:24:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.6

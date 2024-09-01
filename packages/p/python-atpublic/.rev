@@ -85,4 +85,12 @@
     <comment>- remove obsolete pdm-pep517 dependency</comment>
     <requestid>1137117</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b0c063dc88a22e21a9926849a1804dc</srcmd5>
+    <version>5.0</version>
+    <time>1725211290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197802</requestid>
+  </revision>
 </revisionlist>

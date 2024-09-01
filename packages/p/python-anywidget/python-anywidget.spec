@@ -16,9 +16,9 @@
 #
 
 
-%define distver 0.9.10
+%define distver 0.9.13
 Name:           python-anywidget
-Version:        0.9.10
+Version:        0.9.13
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
@@ -61,7 +61,7 @@ Custom jupyter widgets made easy
 %package     -n jupyter-anywidget
 Summary:        Custom jupyter widgets made easy
 Requires:       jupyter-ipywidgets >= 7.0.0
-Requires:       (jupyter-notebook < 7 or jupyter-nbclassic)
+Requires:       (jupyter-notebook or jupyter-nbclassic)
 Requires:       python3dist(anywidget) >= %{distver}
 Suggests:       python3-anywidget
 
@@ -76,6 +76,8 @@ This package provides the jupyter notebook extensions.
 
 %prep
 %autosetup -p1 -n anywidget-%{version}
+# Different layout in sdist than in repository
+sed -i "s|../packages/anywidget/|../anywidget/labextension/|" tests/test_widget.py
 
 %build
 %pyproject_wheel

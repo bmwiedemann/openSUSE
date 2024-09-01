@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:26:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.9.12
+  * Add support for Django 5
+  * No longer compatible with assertFormError
+  * pytest fixture now unpatch Django settings after fixture run
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Oct  2 07:19:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.11:

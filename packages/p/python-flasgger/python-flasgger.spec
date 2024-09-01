@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-flasgger
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -51,7 +51,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module flasgger = %{version}}
 BuildRequires:  %{python_module Flask >= 0.10}
 BuildRequires:  %{python_module PyYAML >= 3.0}
-BuildRequires:  %{python_module flex}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module mistune >= 3}

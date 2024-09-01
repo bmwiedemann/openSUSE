@@ -17,7 +17,7 @@
 
 
 Name:           gap-congruence
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        GAP: Congruence subgroups of SL(2,Z)
 License:        GPL-2.0-or-later

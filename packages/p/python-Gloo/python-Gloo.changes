@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 28 04:36:43 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons.
+
+-------------------------------------------------------------------
 Tue May 25 04:46:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.

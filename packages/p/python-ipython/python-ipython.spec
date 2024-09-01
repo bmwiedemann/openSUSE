@@ -31,11 +31,9 @@
 %endif
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
-# no longer supported (SPEC0)
-%define skip_python39 1
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.25.0
+Version:        8.27.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause

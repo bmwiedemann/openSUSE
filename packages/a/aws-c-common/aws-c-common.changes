@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:56:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.27
+  * Fix -Wuseless-cast compiler warnings by @graebm in (#1145)
+- from version 0.9.26
+  * Add cmake module for building dependencies
+    at configuration time by @sfod in (#1144)
+
+-------------------------------------------------------------------
 Wed Aug  7 13:29:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.25

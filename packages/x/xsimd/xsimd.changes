@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 00:37:55 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Use proper Python macros so it knows how to correctly resolve
+  the Python package dependencies based on build config.
+
+-------------------------------------------------------------------
 Thu Jul  4 20:21:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes fixing some krita issues:

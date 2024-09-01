@@ -7,4 +7,12 @@
     <comment>New package, needed for PrusaSlicer update</comment>
     <requestid>1135588</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1ac83c08f170e95c742dd4091f30349</srcmd5>
+    <version>0.2.0+git20240829.b5c57c4</version>
+    <time>1725211266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197511</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,14 @@
 
 
 Name:           trurl
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Command line tool for URL parsing and manipulation
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 #Git-Clone:     https://github.com/curl/trurl.git
 URL:            https://curl.se/trurl
-Source:         https://github.com/curl/trurl/archive/refs/tags/%{name}-%{version}.tar.gz
+Source:         https://github.com/curl/trurl/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
@@ -35,7 +35,7 @@ A CLI tool that parses and manipulates URLs, designed to help
 shell script authors everywhere.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 
 %build
 %make_build PREFIX=%{_prefix}

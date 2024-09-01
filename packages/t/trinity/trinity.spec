@@ -23,6 +23,7 @@ Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.gz
+Patch0:         0001-syscalls-send.c-fix-build-on-32bit.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls

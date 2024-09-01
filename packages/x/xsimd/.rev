@@ -79,4 +79,12 @@
   * 0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch (forwarded request 1185446 from krop)</comment>
     <requestid>1186600</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ef3cf723fb9bc30ba104c8889446edc0</srcmd5>
+    <version>13.0.0</version>
+    <time>1725211260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197894</requestid>
+  </revision>
 </revisionlist>

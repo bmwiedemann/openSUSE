@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 26 15:00:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.6
+  * Proxy fix by @bretambrose in (#647)
+  * Update submodules by @sfod in (#649)
+  * Add support for string array ep context
+    params by @DmitriyMusatkin in (#646)
+  * Fix websocket shutdown behavior
+    (submodule updates) by @graebm in (#650)
+
+-------------------------------------------------------------------
 Wed Aug  7 13:35:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.5

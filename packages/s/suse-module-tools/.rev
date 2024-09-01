@@ -826,4 +826,12 @@ source service setup which messed up my spec file.
   * Require sdbootutil if already installed (forwarded request 1193718 from mwilck)</comment>
     <requestid>1193719</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>81a3298c32403c68e13f821cc970ee73</srcmd5>
+    <version>16.0.50</version>
+    <time>1725211257</time>
+    <user>dimstar_suse</user>
+    <comment>* Generate initrd for the default snapshot (boo#1224773) (forwarded request 1197868 from mwilck)</comment>
+    <requestid>1197870</requestid>
+  </revision>
 </revisionlist>

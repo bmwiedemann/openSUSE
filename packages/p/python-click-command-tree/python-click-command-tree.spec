@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-command-tree
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-command-tree
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Plugin for click to show the command tree of your CLI
 License:        MIT
 URL:            https://github.com/whwright/click-command-tree
 # pypi tarball does not contain tests directory
 Source:         https://github.com/whwright/click-command-tree/archive/%{version}.tar.gz#/click-command-tree-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module click}

@@ -1272,4 +1272,14 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1196137</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>fe7ad60933cc480fd06f590c741a1ed6</srcmd5>
+    <version>4.8.1</version>
+    <time>1725211261</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.8.1
+  - tukit: fix --drop-if-no-change after apply [bsc#1229900]
+</comment>
+    <requestid>1197915</requestid>
+  </revision>
 </revisionlist>

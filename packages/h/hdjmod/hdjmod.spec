@@ -1,7 +1,7 @@
 #
 # spec file for package hdjmod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hdjmod
-Version:        1.34
+Version:        1.35
 Release:        0
 Summary:        Support for Hercules DJ Devices
 License:        GPL-2.0-or-later

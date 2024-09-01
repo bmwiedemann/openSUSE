@@ -1,0 +1,19 @@
+<package name="qodem" project="openSUSE:Factory">
+  <title>Terminal emulator and communications package</title>
+  <description>Qodem is an open-source re-implementation of the Qmodem(tm)
+shareware communications package, updated for more modern uses.
+Major features include:
+ * Unicode display: translation of CP437 (PC VGA), VT100 DEC
+   Special Graphics characters, VT220 National Replacement
+   Character sets, etc., to Unicode
+ * Terminal interface conveniences: scrollback buffer, capture
+   file, screen dump, dialing directory, keyboard macros, script
+   support
+ * Connection methods: serial, local shell, command line, telnet,
+   ssh, rlogin, rsh
+ * Emulations: ANSI.SYS (including &quot;ANSI music&quot;), Avatar, VT52,
+   VT100/102, VT220, Linux, and XTerm
+ * Transfer protocols: Xmodem, Ymodem, Zmodem, and Kermit</description>
+  <devel project="utilities" package="qodem"/>
+  <url>https://qodem.sourceforge.io/index.html</url>
+</package>

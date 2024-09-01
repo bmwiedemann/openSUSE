@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dill
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
-Source:         https://github.com/uqfoundation/dill/archive/dill-%{version}.tar.gz#/dill-%{version}.tar.gz
+Source:         https://github.com/uqfoundation/dill/archive/refs/tags/%{version}.tar.gz#/dill-%{version}.tar.gz
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module objgraph >= 1.7.2}
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-objgraph >= 1.7.2
 BuildArch:      noarch
 %python_subpackages
@@ -50,7 +50,7 @@ objects, `dill` provides the ability to save the state of an interpreter
 session in a single command.
 
 %prep
-%autosetup -p1 -n dill-dill-%{version}
+%autosetup -p1 -n dill-%{version}
 find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %build
@@ -67,7 +67,7 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{_builddir}/dill-dill-%{version}
+export PYTHONPATH=%{_builddir}/dill-%{version}
 # Creative; copied from tox.ini
 %python_exec dill/tests/__main__.py
 

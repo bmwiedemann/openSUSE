@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 0.19
+%define distversion 0.19.2
 Name:           python-ipyleaflet
-Version:        0.19.0
+Version:        0.19.2
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT

@@ -332,4 +332,24 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1170276</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>01e44449be954d6697a22472f0a5ba50</srcmd5>
+    <version>2.8.0</version>
+    <time>1725211312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0
+  * Prusa Connect integration
+  * seam improvements
+  * updated UI
+  * new G-code Viewer
+  * improved profile updating system
+  * many more improvements and bugfixes
+- Must move to wxGTK3: we have no wxWebView in wxWidgets. Unfortunately
+  this disables wayland support:
+  https://github.com/prusa3d/PrusaSlicer/blob/version_2.8.0/src/PrusaSlicer.cpp#L88-L93
+- Add PrusaSlicer-2.8.0-slic3r-includes.patch
+  * gh#prusa3d/PrusaSlicer#13080
+</comment>
+    <requestid>1197901</requestid>
+  </revision>
 </revisionlist>

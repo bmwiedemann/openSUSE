@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:48:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15
+ - Makefile: fix LDFLAGS order; and don't force -Werror.
+ - singleurl: fix query_is_modified.
+ - trurl: "normalize" query pairs.
+ - trurl: accept "control codes" in get output.
+ - trurl: allow "control bytes" in JSON output
+ - trurl: canonicalize the path.
+ - trurl: fix silent error in json json function.
+ - trurl: make --replace URL encode the provided data argument.
+ - trurl: make must: prefix for gets return error for missing part.
+ - trurl: on strdup() failures, exit immediately.
+ - trurl: optimize the path append loop.
+ - trurl: rename --force-replace to --replace-append.
+ - trurl: use casecompare instead of a strncasecmp define.
+
+-------------------------------------------------------------------
 Mon Jul 29 20:00:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14

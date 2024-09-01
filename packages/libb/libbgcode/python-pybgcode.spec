@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybgcode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pyversion 0.2.0
 Name:           python-pybgcode
 # Use the set_version source service for adjusting the field below
-Version:        0.2.0+git20231219.7aaf717
+Version:        0.2.0+git20240829.b5c57c4
 Release:        0
 Summary:        Python bindings for libbgcode
 License:        AGPL-3.0-only
@@ -28,15 +29,15 @@ Source1:        pyproject.opensuse.toml
 Source99:       python-pybgcode.rpmlintrc
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module py-build-cmake >= 0.1.8}
-BuildRequires:  python-rpm-macros
-BuildRequires:  git-core
-BuildRequires:  c++_compiler
-BuildRequires:  cmake(LibBGCode) = %{pyversion}
-BuildRequires:  libboost_nowide-devel >= 1.78
+BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  boost-devel >= 1.78
+BuildRequires:  c++_compiler
+BuildRequires:  git-core
+BuildRequires:  libboost_nowide-devel >= 1.78
+BuildRequires:  python-rpm-macros
+BuildRequires:  cmake(LibBGCode) = %{pyversion}
 %python_subpackages
 
 %description

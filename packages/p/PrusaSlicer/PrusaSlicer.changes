@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 29 16:20:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.8.0
+  * Prusa Connect integration
+  * seam improvements
+  * updated UI
+  * new G-code Viewer
+  * improved profile updating system
+  * many more improvements and bugfixes
+- Must move to wxGTK3: we have no wxWebView in wxWidgets. Unfortunately
+  this disables wayland support:
+  https://github.com/prusa3d/PrusaSlicer/blob/version_2.8.0/src/PrusaSlicer.cpp#L88-L93
+- Add PrusaSlicer-2.8.0-slic3r-includes.patch
+  * gh#prusa3d/PrusaSlicer#13080
+
+-------------------------------------------------------------------
 Fri Apr 26 07:16:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't include stray filesystem/convenience.hpp removed in

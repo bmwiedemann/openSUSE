@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 16:16:44 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.8.1
+  - tukit: fix --drop-if-no-change after apply [bsc#1229900]
+
+-------------------------------------------------------------------
 Mon Aug 26 22:31:13 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.8.0

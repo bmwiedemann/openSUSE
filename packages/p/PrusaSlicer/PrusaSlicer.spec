@@ -17,15 +17,18 @@
 
 
 Name:           PrusaSlicer
-Version:        2.7.4
+Version:        2.8.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
+# SourceRepository: https://github.com/prusa3d/PrusaSlicer
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.8.0-includes.patch gh#prusa3d/PrusaSlicer#13080
+Patch2:         PrusaSlicer-2.8.0-slic3r-includes.patch
 # PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
 Patch10:        up-occt-version.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
@@ -50,12 +53,14 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_log-devel
+BuildRequires:  libboost_nowide-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libquadmath-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  occt-devel
@@ -65,7 +70,7 @@ BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel >= 3.2
+BuildRequires:  wxGTK3-devel >= 3.2
 # need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
 BuildRequires:  nanosvg-devel >= 2022.12.22
 BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
@@ -97,16 +102,12 @@ sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.
 %endif
 # this is not prusaslicer specific, space mouse users install it themselves
 rm resources/udev/90-3dconnexion.rules
-# we want to use the system provided expat lib
-sed -i "/add_library(libexpat INTERFACE)/d" CMakeLists.txt
 # adjust the qhull version requirement
 sed -i "s|find_package(Qhull 7.2 REQUIRED)|find_package(Qhull 8.0.2 REQUIRED)|" src/CMakeLists.txt
 # fix qhull link with static lib issue
 sed -i 's#INTERFACE Qhull::qhullcpp#INTERFACE -lqhullcpp#' src/CMakeLists.txt
 # Disable slic3r_jobs_tests.cpp as the test fails sometimes
 sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
-# gh#prusa3d/PrusaSlicer#12652
-sed -i /convenience.hpp/d src/slic3r/GUI/RemovableDriveManager.cpp
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -120,6 +121,7 @@ export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake \
   -DCMAKE_CXX_STANDARD=17 \
   -DSLIC3R_FHS=1 \
+  -DSLIC3R_GTK=3 \
   -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
 %cmake_build
 
@@ -172,7 +174,7 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 %{_bindir}/prusa-gcodeviewer
 %{_libdir}/OCCTWrapper.so
 %dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/{icons,models,profiles,shaders,udev,data,shapes}/
+%{_datadir}/%{name}/{icons,models,profiles,shaders,udev,data,shapes,web}/
 %{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_datadir}/applications/PrusaSlicer.desktop
 %{_datadir}/applications/PrusaGcodeviewer.desktop

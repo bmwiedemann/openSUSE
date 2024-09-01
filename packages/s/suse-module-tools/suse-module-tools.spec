@@ -37,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.49
+Version:        16.0.50
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -72,6 +72,7 @@ Conflicts:      dracut < 49.1
 Conflicts:      filesystem < 16
 # Adds an ordering edge (from @mls)
 Suggests:       sdbootutil
+Requires:       (sdbootutil > 1+git20240829 if sdbootutil)
 
 %description
 This package contains helper scripts for KMP installation and

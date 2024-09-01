@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           xsimd
 Version:        13.0.0
 Release:        0
@@ -27,13 +28,13 @@ Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{versi
 # PATCH-FIX-UPSTREAM -- https://mail.kde.org/pipermail/distributions/2024-July/001511.html
 Patch0:         0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
 Patch1:         0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
+BuildRequires:  %{python_module breathe}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  python3-breathe
 BuildRequires:  cmake(GTest)
 
 %description

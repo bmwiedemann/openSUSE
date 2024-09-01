@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 30 09:47:37 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to port to Plasma 6, which fixes an issue
+  with the package being non-installable because it was half-ported
+  and qt6qmlimport(org.kde.plasma.components.2) isn't provided by
+  any package:
+  * 0001-port-to-plasma-6.patch
+
+-------------------------------------------------------------------
+Fri Mar 22 16:26:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.2
+  * Build fixes for Plasma 6
+- Drop patch, no longer needed:
+  * 0001-Fix-build-Qt-5.12.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 13:41:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix installation with plasma-framework 5.89.

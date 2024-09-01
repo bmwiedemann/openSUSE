@@ -119,4 +119,12 @@
   * Change `Map` lat&amp;lon bound type annotations from int to float</comment>
     <requestid>1186992</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c7306c8905d9bcdc6ae04b10494cdb52</srcmd5>
+    <version>0.17.0</version>
+    <time>1725211310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197878</requestid>
+  </revision>
 </revisionlist>
