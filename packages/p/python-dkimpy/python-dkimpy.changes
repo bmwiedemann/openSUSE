@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:09:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * Correctly handle verification of signatures without t=
+    (timestamp) and with x= (expiration); both are optional
+  * Fix error in validate_signature_fields which prevented
+    signature expiration from being properly evaluated
+  * Correct ARC signing for AR headers with authres-version
+    or comments before resinfo
+  * Correct line separtor after AAR header field
+  * Correct signature in ARC-Seal on LF as linesep
+
+-------------------------------------------------------------------
 Sat Apr 20 13:41:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.6:

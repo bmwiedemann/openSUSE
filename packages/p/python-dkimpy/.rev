@@ -95,4 +95,20 @@
     Python 3.12 due to invalid escape sequence</comment>
     <requestid>1169362</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cef74634c7ebdf56b9a1133e01f1f455</srcmd5>
+    <version>1.1.8</version>
+    <time>1725211358</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.8:
+  * Correctly handle verification of signatures without t=
+    (timestamp) and with x= (expiration); both are optional
+  * Fix error in validate_signature_fields which prevented
+    signature expiration from being properly evaluated
+  * Correct ARC signing for AR headers with authres-version
+    or comments before resinfo
+  * Correct line separtor after AAR header field
+  * Correct signature in ARC-Seal on LF as linesep</comment>
+    <requestid>1198093</requestid>
+  </revision>
 </revisionlist>
