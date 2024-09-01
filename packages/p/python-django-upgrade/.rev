@@ -146,4 +146,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1187535</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a04b30b397921bc752251e9285f4142</srcmd5>
+    <version>1.20.0</version>
+    <time>1725211359</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.0:
+  * Fix the admin_register fixer to avoid rewriting when there
+    are duplicate ModelAdmin classes in the file. Issue #471.</comment>
+    <requestid>1198091</requestid>
+  </revision>
 </revisionlist>

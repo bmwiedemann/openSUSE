@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:08:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Fix the admin_register fixer to avoid rewriting when there
+    are duplicate ModelAdmin classes in the file. Issue #471.
+
+-------------------------------------------------------------------
 Mon Jul  8 09:50:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.0:
