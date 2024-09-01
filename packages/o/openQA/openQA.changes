@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 30 17:04:50 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1725027179.122a2c61:
+  * Refactor git functions into git module
+  * Dependency cron 2024-08-30
+
+-------------------------------------------------------------------
 Tue Aug 27 10:58:27 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1724756295.aa42e73c:
