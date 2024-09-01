@@ -77,4 +77,15 @@
   * Fixed missing environment variable in the docs.</comment>
     <requestid>1137624</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e05b00e05ddbb865662a14f73b92bee8</srcmd5>
+    <version>0.8.0</version>
+    <time>1725211353</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Increased minimum version of Python to 3.10.0
+  * The return from drms.JsocInfoConstants is now a string, there
+    is no need to do .value on it.</comment>
+    <requestid>1198084</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 31 13:43:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Increased minimum version of Python to 3.10.0
+  * The return from drms.JsocInfoConstants is now a string, there
+    is no need to do .value on it.
+
+-------------------------------------------------------------------
 Mon Jan  8 20:00:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:

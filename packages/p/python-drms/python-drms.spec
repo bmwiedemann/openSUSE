@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drms
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-pandas
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires(post): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
