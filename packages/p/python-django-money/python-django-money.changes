@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 31 13:46:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.3:
+  * django-rest-framework: MoneyField does not work anymore with
+    custom serializer fields
+  * Django 5.1 support
+
+-------------------------------------------------------------------
 Sat Jun 29 16:39:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.2:

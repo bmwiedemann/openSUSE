@@ -117,4 +117,15 @@
   * Django 5.0 support</comment>
     <requestid>1184011</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a525e901e2ff3db9a53ed2acc6dae205</srcmd5>
+    <version>3.5.3</version>
+    <time>1725211355</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.3:
+  * django-rest-framework: MoneyField does not work anymore with
+    custom serializer fields
+  * Django 5.1 support</comment>
+    <requestid>1198087</requestid>
+  </revision>
 </revisionlist>

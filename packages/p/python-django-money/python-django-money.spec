@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-money
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Django support for using money and currency fields
 License:        BSD-3-Clause
