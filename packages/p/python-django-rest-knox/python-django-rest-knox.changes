@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Aug 31 14:50:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Fix migration: retrieve `TOKEN_MODEL` from `knox_settings`
+    instead of Django settings.
+  * Tokens created prior to this release will no longer work
+  * Fix migration reverse flow, enable migrate 0
+  * Various documentation fixes and improvements
+  * Drop `cryptography` in favor of hashlib
+  * Make custom AuthModel work
+  * Token prefix can be set in the setttings
+  * Drop support for Django 4.0
+  * Add support for Dango 4.2, 5.0 and Python 3.11 and 3.12
+  * Cleanup legacy Python 2.0 code
+  * Fix isort, flake8 usage for Python 3.10 in the test suite
+  * Update Github actions version
+  * Upgrade markdown dependency
+  * Get rid of the `six` library
+  * Add custom login / logout response support
+  * Join the jazzband organization
+  * Add pre-commit hooks
+  * Add tracking of tests code coverage
+  * Fix migrations when used in condition with a custom DB
+  * Improve typing
+  * Use `self.authenticate_header()` in `authenticate()` method
+    to get auth header prefix
+
+-------------------------------------------------------------------
 Thu Mar 21 07:53:27 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
@@ -17,7 +45,7 @@ Fri Feb 25 20:11:43 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Tue Sep 14 01:26:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-django-nose.patch:
-  * Use pytest-django to run the tests, rather than django-nose. 
+  * Use pytest-django to run the tests, rather than django-nose.
 
 -------------------------------------------------------------------
 Tue Apr 28 09:42:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

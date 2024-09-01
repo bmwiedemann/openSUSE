@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-knox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-rest-knox
-Version:        4.2.0
+Version:        5.0.1
 Release:        0
 Summary:        Authentication for Django REST framework
 License:        MIT
