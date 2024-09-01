@@ -28,8 +28,9 @@
 # too many flaky timeouts on obs servers
 %bcond_with testexamples
 
+%{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -160,7 +161,7 @@ deselectname+=" or (test_server and test_address)"
 deselectname+=" or (test_serve and printed)"
 deselectname+=" or test__ioloop_not_forcibly_stopped"
 # not json5 serializable
-deselectname+=" or test_defaults"
+deselectname+=" or test_defaults or test_bool"
 # flaky timeouts
 deselectname+=" or (test_deprecation and (test_since or test_message))"
 deselectname+=" or (test_document_lifecycle and test_document_on_session_destroyed_exceptions)"
@@ -185,7 +186,7 @@ deselectname+=" or test_contour or test_sampledata__util"
 # Needed for writing fontconfig cache dir
 export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest -v -m "not selenium" -k "not ($deselectname)" --no-js -n auto
+%pytest -v -m "not selenium" -k "not ($deselectname)" --no-js -W ignore::DeprecationWarning -n auto
 %endif
 
 %post
