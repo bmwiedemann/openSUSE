@@ -67,7 +67,7 @@
 %endif
 
 Name:           osc
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -210,7 +210,7 @@ install -Dm0644 oscrc.5 %{buildroot}%{_mandir}/man5/oscrc.5
 %python3_fix_shebang
 
 %check
-%{use_python} setup.py test
+%{use_python} -m unittest
 
 %files
 %defattr(-,root,root,-)

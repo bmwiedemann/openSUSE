@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:54:50 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.9.1
+  - Command-line:
+    - Add 'createrequest release' subcommand
+    - Change 'review list' command to omit requests with 'declined' state
+    - Fix `osc build --local-package`
+    - Fix typos
+  - Library:
+    - Fix extraction of the 'ar' archives when they don't contain header with long filenames
+    - Fix iterating through arch_list in core.get_repos_of_project()
+    - Check for None & len() of ET.Element instead of bool() in PackageBase.get_meta_value()
+  - Spec:
+    - Replace 'setup.py test' that was removed in setuptools 72 with 'python3 -m unittest'
+
+-------------------------------------------------------------------
 Mon Jul 29 07:39:42 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.9.0
