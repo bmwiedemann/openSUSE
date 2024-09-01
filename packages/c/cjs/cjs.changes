@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 26 16:10:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop cmake and libtool BuildRequires: the package uses meson to
+  build and has no need for the additional two build systems.
+
+-------------------------------------------------------------------
+Tue Aug 13 04:26:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.0:
+  * packaging: Forbid compilation if the symbols file is outdated
+  * Port to mozjs115
+- update spec file to reflect newer standards
+
+-------------------------------------------------------------------
 Fri Feb  2 08:44:35 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Use BuildRequires readline-devel for Leap15
