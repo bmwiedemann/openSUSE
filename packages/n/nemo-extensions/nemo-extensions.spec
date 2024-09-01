@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,29 @@
 #
 
 
-# Do not package nemo-extension-media-columns for now: slows Nemo down.
-# nemo-extension-terminal 'requires' two versions, confusing typelib finder.
-%define __requires_exclude typelib\\((Vte))\ =
-%define _version 6.0.0
+%define         _version 6.0.0
 Name:           nemo-extensions
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/nemo-extensions
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-hwcaps.patch bsc#1212482
-Patch6:         fix-hwcaps.patch
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-hwcaps.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  gnome-common
 BuildRequires:  intltool
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
-BuildRequires:  mbedtls-devel
 BuildRequires:  meld
 BuildRequires:  meson
 BuildRequires:  mhash-devel
-BuildRequires:  nemo-devel
-BuildRequires:  openssl-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
+BuildRequires:  python3-distutils-extra
+BuildRequires:  python3-docutils
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(cjs-1.0)
@@ -57,47 +50,35 @@ BuildRequires:  pkgconfig(evince-view-3.0)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libmusicbrainz5)
+BuildRequires:  pkgconfig(libnemo-extension)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(mbedtls)
 BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pygobject-3.0)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(xreader-document-1.5)
 BuildRequires:  pkgconfig(xreader-view-1.5)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python3-devel
-BuildRequires:  python3-distutils-extra
-BuildRequires:  python3-docutils
-BuildRequires:  python3-setuptools
-%else
-BuildRequires:  python-devel
-BuildRequires:  python-distutils-extra
-BuildRequires:  python-docutils
-BuildRequires:  python-setuptools
-%endif
 
 %description
 Set of extensions for Nemo, the Cinnamon file manager.
 
-%if 0%{?suse_version} >= 1500
 %package -n python3-nemo
-%else
-
-%package -n python-nemo
-%endif
 Summary:        Python bindings for the Nemo File manager
 License:        GPL-2.0-only
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
 # nemo-python was last used in openSUSE 13.2.
 Provides:       nemo-python = %{version}
 Obsoletes:      nemo-python < %{version}
 
-%if 0%{?suse_version} >= 1500
 Provides:       python3-nemo-devel = %{version}
 Obsoletes:      python2-nemo-devel < %{version}
 Provides:       python2-nemo = %{version}
@@ -107,27 +88,16 @@ Provides:       python-nemo = %{version}
 Obsoletes:      python-nemo < %{version}
 
 %description -n python3-nemo
-%else
 Provides:       python-nemo-devel = %{version}
-
-%description -n python-nemo
-%endif
 Includes Python bindings for the Nemo Filemanager.
 
 %package -n nemo-extension-audio-tab
 Summary:        Audio tag information for Nemo file manager
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
 Requires:       python3-mutagen
 Requires:       python3-nemo = %{version}
-%else
-Requires:       python-mutagen
-Requires:       python-nemo = %{version}
-%endif
 
 %description -n nemo-extension-audio-tab
 View audio tag information from the file manager's properties tab.
@@ -135,23 +105,15 @@ View audio tag information from the file manager's properties tab.
 %package -n nemo-extension-compare
 Summary:        Context Menu comparison extension for Nemo file manager
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 Requires:       meld
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-compare was last used in openSUSE 13.2.
 Provides:       nemo-compare = %{version}
 Obsoletes:      nemo-compare < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
 Requires:       python3-gobject
 Requires:       python3-nemo = %{version}
 Requires:       python3-pyxdg
-%else
-Requires:       python-gobject
-Requires:       python-nemo = %{version}
-Requires:       python-xdg
-%endif
 
 %description -n nemo-extension-compare
 Simple context menu file comparison extension for Nemo, inspired by
@@ -164,7 +126,6 @@ three-way and multi-compare situations.
 %package -n nemo-extension-dropbox
 Summary:        DropBox support for the Nemo Filemanager
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 Requires:       dropbox
 Requires:       nemo >= %{_version}
 Supplements:    (dropbox and nemo)
@@ -178,20 +139,13 @@ Nemo-dropbox adds DropBox support to the Nemo filemanager.
 %package -n nemo-extension-emblems
 Summary:        Change a directory or file emblem in Nemo
 License:        GPL-3.0-only
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-emblems was last used in openSUSE 13.2.
 Provides:       nemo-emblems = %{version}
 Obsoletes:      nemo-emblems < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-%else
-Requires:       python-gobject
-Requires:       python-gobject-Gdk
-%endif
 
 %description -n nemo-extension-emblems
 Change a directory or a file emblem in Nemo, the Cinnamon desktop
@@ -200,10 +154,8 @@ file manager.
 %package -n nemo-extension-fileroller
 Summary:        Fileroller support for the Nemo Filemanager
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 Requires:       file-roller
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 Supplements:    (nemo and file-roller)
 # nemo-fileroller was last used in openSUSE 13.2.
 Provides:       nemo-fileroller = %{version}
@@ -215,10 +167,8 @@ Nemo-fileroller adds File-roller support to the Nemo file manager.
 %package -n nemo-extension-image-converter
 Summary:        Nemo extension to mass resize or rotate images
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       ImageMagick
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-image-converter was last used in openSUSE 13.2.
 Provides:       nemo-image-converter = %{version}
 Obsoletes:      nemo-image-converter < %{version}
@@ -232,23 +182,14 @@ image(s) using ImageMagick's convert tool.
 %package -n nemo-extension-pastebin
 Summary:        Pastebin extension for Nemo file manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-pastebin was last used in openSUSE 13.2.
 Provides:       nemo-pastebin = %{version}
 Obsoletes:      nemo-pastebin < %{version}
 BuildArch:      noarch
-%glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-pyxdg
-%else
-Requires:       python-gobject
-Requires:       python-gobject-Gdk
-Requires:       python-xdg
-%endif
 
 %description -n nemo-extension-pastebin
 nemo-pastebin is an extension for the Nemo file manager, which
@@ -260,7 +201,6 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 Requires:       gstreamer-plugins-good
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-preview was last used in openSUSE 13.2.
 Provides:       nemo-extension-preview-devel = %{version}
 Provides:       nemo-preview = %{version}
@@ -273,9 +213,7 @@ desktop file manager.
 %package -n nemo-extension-repairer
 Summary:        Nemo extension for filename encoding repair
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 # nemo-repairer was last used in openSUSE 13.2.
 Provides:       nemo-repairer = %{version}
 Obsoletes:      nemo-repairer < %{version}
@@ -292,10 +230,8 @@ This extension also provides a decoded name for URL encoded filename.
 %package -n nemo-extension-seahorse
 Summary:        OpenPGP encryption/decryption extension for Nemo file manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       nautilus-extension-seahorse >= 3.0
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 Supplements:    (nemo and seahorse)
 # nemo-seahorse was last used in openSUSE 13.2.
 Provides:       nemo-seahorse = %{version}
@@ -308,9 +244,7 @@ and decryption of OpenPGP files using GnuPG.
 %package -n nemo-extension-share
 Summary:        Samba share extension for Nemo file manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
-Recommends:     %{name}-lang
 Recommends:     samba
 Supplements:    (nemo and samba)
 # nemo-share was last used in openSUSE 13.2.
@@ -324,21 +258,14 @@ Nemo file manager without requiring root access.
 %package -n nemo-extension-terminal
 Summary:        Nemo extension to enable an embedded terminal
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 Requires:       nemo >= %{_version}
 # nemo-terminal was last used in openSUSE 13.2.
 Provides:       nemo-terminal = %{version}
 Obsoletes:      nemo-terminal < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1500
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-nemo = %{version}
-%else
-Requires:       python-gobject
-Requires:       python-gobject-Gdk
-Requires:       python-nemo = %{version}
-%endif
 
 %description -n nemo-extension-terminal
 Nemo Terminal is an embedded terminal for Nemo, the Cinnamon file
@@ -348,8 +275,6 @@ directory in Nemo.
 
 %prep
 %autosetup -p1
-
-find -name COPYING.GPL3 -exec chmod -x '{}' \;
 
 %build
 pushd nemo-pastebin
@@ -467,12 +392,10 @@ pushd nemo-audio-tab
 %py3_install
 popd
 
-%find_lang nemo-preview
-%find_lang nemo-share
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -type f -name "*.a" -delete -print
 
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}
 chmod 744 %{buildroot}%{_datadir}/nemo-compare/utils.py
 chmod 744 %{buildroot}%{_datadir}/nemo-python/extensions/nemo-audio-tab.py
 chmod 744 %{buildroot}%{_datadir}/nemo-python/extensions/nemo-compare.py
@@ -484,52 +407,24 @@ rm -r %{buildroot}%{_datadir}/nemo-share/install-samba
 rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 
 %python_compileall
-#rm -rf %{buildroot}%{_datadir}/nemo-compare/utils.py
-#ln -sf %{python3_sitelib}/utils.py %{buildroot}%{_datadir}/nemo-compare/utils.py
 
-%if 0%{?suse_version} >= 1500
-%post -n python3-nemo -p /sbin/ldconfig
-%postun -n python3-nemo -p /sbin/ldconfig
-%else
-%post -n python-nemo -p /sbin/ldconfig
-%postun -n python-nemo -p /sbin/ldconfig
-%endif
+%ldconfig_scriptlets -n python3-nemo
 
-%post -n nemo-extension-dropbox -p /sbin/ldconfig
-%postun -n nemo-extension-dropbox -p /sbin/ldconfig
-%post -n nemo-extension-fileroller -p /sbin/ldconfig
-%postun -n nemo-extension-fileroller -p /sbin/ldconfig
-%post -n nemo-extension-image-converter -p /sbin/ldconfig
-%postun -n nemo-extension-image-converter -p /sbin/ldconfig
-%post -n nemo-extension-preview -p /sbin/ldconfig
-%postun -n nemo-extension-preview -p /sbin/ldconfig
-%post -n nemo-extension-seahorse -p /sbin/ldconfig
-%postun -n nemo-extension-seahorse -p /sbin/ldconfig
-%post -n nemo-extension-repairer -p /sbin/ldconfig
-%postun -n nemo-extension-repairer -p /sbin/ldconfig
-%post -n nemo-extension-share -p /sbin/ldconfig
-%postun -n nemo-extension-share -p /sbin/ldconfig
+%ldconfig_scriptlets -n nemo-extension-dropbox
 
-%if 0%{?suse_version} < 1500
-%post -n nemo-extension-pastebin
-%glib2_gsettings_schema_post
+%ldconfig_scriptlets -n nemo-extension-fileroller
 
-%postun -n nemo-extension-pastebin
-%glib2_gsettings_schema_postun
+%ldconfig_scriptlets -n nemo-extension-image-converter
 
-%post -n nemo-extension-terminal
-%glib2_gsettings_schema_post
+%ldconfig_scriptlets -n nemo-extension-preview
 
-%postun -n nemo-extension-terminal
-%glib2_gsettings_schema_postun
-%endif
+%ldconfig_scriptlets -n nemo-extension-seahorse
 
-%if 0%{?suse_version} >= 1500
+%ldconfig_scriptlets -n nemo-extension-repairer
+
+%ldconfig_scriptlets -n nemo-extension-share
+
 %files -n python3-nemo
-%else
-
-%files -n python-nemo
-%endif
 %license nemo-python/COPYING
 %doc nemo-python/AUTHORS nemo-python/debian/changelog
 %{_libdir}/nemo/extensions-3.0/libnemo-python.so
@@ -552,9 +447,6 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/nemo-compare/
 %{python3_sitelib}/nemo_compare-%{version}-py?.*.egg-info
 %{_datadir}/nemo-python/extensions/nemo-compare.py
-#%{python3_sitelib}/utils.py
-#%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.opt-1.pyc
-#%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.pyc
 
 %files -n nemo-extension-dropbox
 %license nemo-dropbox/COPYING
@@ -590,7 +482,7 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/glib-2.0/schemas/nemo-pastebin.gschema.xml
 %{python3_sitelib}/nemo_pastebin-%{version}-py?.*.egg-info
 
-%files -n nemo-extension-preview -f nemo-preview.lang
+%files -n nemo-extension-preview
 %license nemo-preview/COPYING
 %doc nemo-preview/AUTHORS nemo-preview/debian/changelog
 %{_bindir}/nemo-preview
@@ -612,13 +504,13 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_bindir}/nemo-seahorse-tool
 %{_libdir}/nemo/extensions-3.0/libnemo-seahorse.so
 %{_libdir}/nemo/extensions-3.0/libnemo-image-converter.so
-%{_datadir}/applications/nemo-seahorse-pgp-*.desktop
+#%%{_datadir}/applications/nemo-seahorse-pgp-*.desktop
 %{_datadir}/glib-2.0/schemas/org.nemo.plugins.seahorse.*.xml
-%{_mandir}/man1/nemo-seahorse-tool.1%{?ext_man}
+%{_mandir}/man?/nemo-seahorse-tool.?%{?ext_man}
 %dir %{_datadir}/nemo-seahorse
 %{_datadir}/nemo-seahorse/ui
 
-%files -n nemo-extension-share -f nemo-share.lang
+%files -n nemo-extension-share
 %license nemo-share/COPYING
 %doc nemo-share/AUTHORS nemo-share/debian/changelog
 %{_libdir}/nemo/extensions-3.0/libnemo-share.so
@@ -633,8 +525,5 @@ rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 %{_datadir}/nemo-python/extensions/nemo_terminal.py
 %{_datadir}/glib-2.0/schemas/org.nemo.extensions.nemo-terminal.gschema.xml
 %{python3_sitelib}/nemo_terminal-%{version}-py?.*.egg-info
-#%{python3_sitelib}/nemo_terminal.py
-#%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.opt-1.pyc
-#%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.pyc
 
 %changelog

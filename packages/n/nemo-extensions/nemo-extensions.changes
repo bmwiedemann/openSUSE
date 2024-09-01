@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:05:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.0:
+  * Update pypdf in nemo-media-columns
+  * Fix python NameError: '_' is not defined
+  * cover-art: fix compilation error
+- update to 6.0.1:
+  * nemo-media-columns.py: Fix translations for column names. 
+  * nemo-preview: remove po/ and fix gettext domain
+  * nemo-image-converter, nemo-pastebin, nemo-seahorse, nemo-emblems
+    nemo-compare, nemo-repair remove po/
+  * makepot: Remove the old potfile first.
+  * makepot: Fix scanning nemo-pastebin files in src/
+  * Fix nemo-dropbox build
+  * python-nemo: provide nemo-python pkg name
+  * nemo-share: Fix incorrect gettext domain
+- remove support for older versions of Leap < 1500
+- usage of ldconfig_scriplets
+
+-------------------------------------------------------------------
 Tue Dec 12 10:27:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update fix-hwcaps.patch, needed to work correctly with
