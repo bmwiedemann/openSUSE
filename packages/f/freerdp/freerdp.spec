@@ -37,7 +37,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -78,11 +78,13 @@ BuildRequires:  pkgconfig(libpkcs11-helper-1)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(liburiparser)
 BuildRequires:  pkgconfig(libusb-1.0)
 %{?_with_openh264:BuildRequires:  pkgconfig(openh264)}
 BuildRequires:  pkgconfig(openssl)
 %{?_with_soxr:BuildRequires:  pkgconfig(soxr)}
 BuildRequires:  xmlto
+# Upstream use SDL3, but SDL3 does not exist in Leap and SDL3_ttf does not exists in Leap and Tumbleweed.
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(wayland-client)
