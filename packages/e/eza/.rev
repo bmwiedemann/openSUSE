@@ -670,4 +670,15 @@
     not doing anything will find their output changed. For more info, see</comment>
     <requestid>1192498</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6a6aaeab4003ed8c6640a24741b74a62</srcmd5>
+    <version>0.19.1+0</version>
+    <time>1725275730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.1:
+  * FreeBSD build
+  * Typo
+  * Bump uzers from 0.12.0 to 0.12.1</comment>
+    <requestid>1198229</requestid>
+  </revision>
 </revisionlist>
