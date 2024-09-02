@@ -94,4 +94,14 @@
   + Update &quot;Upstream&quot; protocol list to wayland-protocols v1.35</comment>
     <requestid>1169493</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>511a81eb01f597089f7bad0dd8f8c81d</srcmd5>
+    <version>1.3.0</version>
+    <time>1725275688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0
+  + Add COSMIC protocols 🌌
+  + Update upstream protocol list to v1.37</comment>
+    <requestid>1198112</requestid>
+  </revision>
 </revisionlist>
