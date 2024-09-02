@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 29 15:06:57 MDT 2024 - carnold@suse.com
+
+- Update to version 1.53.6 (jsc#PED-8910)
+  * Various MacOS fixes and enhancements
+  * ocaml: INSTALL_OCAMLLIB Makefile parameter
+  * appliance/init: Don't set impossible "noop" disk scheduler
+  * Pull in some fixes from the common submodule.
+    mlcustomize: Add Inject_virtio_win.inject_blnsvr implementation
+    mlcustomize: firstboot: Use Linux path for Powershell script path
+    mlcustomize: firstboot: Use powershell.exe instead of path
+    mlcustomize: firstboot: Use Powershell -NoProfile flag
+    mlcustomize: Revert delay installation of qemu-ga MSI
+    mldrivers/linux_kernels.ml: Prefix general information with ^info:
+    mlcustomize: Use Start-Process -Wait to run qemu-ga installer
+    mlcustomize: Add Firstboot.firstboot_dir function
+    mlcustomize: Place powershell scripts into <firstboot_dir>\Temp
+    mlcustomize: Inject qemu-ga & blnsvr into <firstboot_dir>/Temp
+    mlcustomize: Write qemu-ga log file name to log.txt
+    mlcustomize: Add some comments to firstboot batch file
+    mlcustomize: Reboot Windows between each firstboot script
+
+-------------------------------------------------------------------
 Tue Jul 16 13:15:45 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.5 (jsc#PED-6305)

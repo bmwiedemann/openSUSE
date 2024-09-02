@@ -1,7 +1,7 @@
-Index: tgt-1.0.74/scripts/tgtd.service
+Index: tgt-1.0.92/scripts/tgtd.service
 ===================================================================
---- tgt-1.0.74.orig/scripts/tgtd.service
-+++ tgt-1.0.74/scripts/tgtd.service
+--- tgt-1.0.92.orig/scripts/tgtd.service
++++ tgt-1.0.92/scripts/tgtd.service
 @@ -9,6 +9,15 @@ After=network.target
  ConditionPathExists=/etc/tgt/targets.conf
  

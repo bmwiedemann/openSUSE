@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 30 14:42:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Unpin numpy 2
+
+-------------------------------------------------------------------
 Mon Jul  8 05:01:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Limit numpy to < 2. 

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Aug  8 07:30:47 UTC 2024 - chris@computersalat.de
+
+- 2024-07-20 - v2.11
+  * Wi-Fi Easy Connect
+    - add support for DPP release 3
+    - allow Configurator parameters to be provided during config
+      exchange
+  * HE/IEEE 802.11ax/Wi-Fi 6
+    - various fixes
+  * EHT/IEEE 802.11be/Wi-Fi 7
+    - add preliminary support
+  * SAE: add support for fetching the password from a RADIUS server
+  * support OpenSSL 3.0 API changes
+  * support background radar detection and CAC with some additional
+    drivers
+  * support RADIUS ACL/PSK check during 4-way handshake (wpa_psk_radius=3)
+  * EAP-SIM/AKA: support IMSI privacy
+  * improve 4-way handshake operations
+    - use Secure=1 in message 3 during PTK rekeying
+  * OCV: do not check Frequency Segment 1 Channel Number for 160 MHz cases
+    to avoid interoperability issues
+  * support new SAE AKM suites with variable length keys
+  * support new AKM for 802.1X/EAP with SHA384
+  * extend PASN support for secure ranging
+  * FT: Use SHA256 to derive PMKID for AKM 00-0F-AC:3 (FT-EAP)
+    - this is based on additional details being added in the IEEE 802.11
+    standard
+    - the new implementation is not backwards compatible
+  * improved ACS to cover additional channel types/bandwidths
+  * extended Multiple BSSID support
+  * fix beacon protection with FT protocol (incorrect BIGTK was provided)
+  * support unsynchronized service discovery (USD)
+  * add preliminary support for RADIUS/TLS
+  * add support for explicit SSID protection in 4-way handshake
+    (a mitigation for CVE-2023-52424; disabled by default for now, can be
+     enabled with ssid_protection=1)
+  * fix SAE H2E rejected groups validation to avoid downgrade attacks
+  * use stricter validation for some RADIUS messages
+  * a large number of other fixes, cleanup, and extensions
+
+-------------------------------------------------------------------
 Fri Mar 11 21:35:37 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Adjust config
@@ -96,7 +137,7 @@ Tue Sep 29 12:52:10 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 Thu Apr 23 22:14:35 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2019-16275.patch -- AP mode PMF disconnection protection bypass
-  (bsc#1150934) 
+  (bsc#1150934)
 
 -------------------------------------------------------------------
 Thu Sep  5 17:58:05 UTC 2019 - Michael Ströder <michael@stroeder.com>
@@ -654,7 +695,7 @@ ChangeLog for hostapd since 2.1:
 -------------------------------------------------------------------
 Tue May 27 19:57:16 UTC 2014 - crrodriguez@opensuse.org
 
-- Update hostapd-2.1-defconfig.patch and spec file 
+- Update hostapd-2.1-defconfig.patch and spec file
   to build with libnl3 instead of libnl1
 
 -------------------------------------------------------------------
@@ -669,7 +710,7 @@ Wed Apr 16 15:50:48 UTC 2014 - i@marguerite.su
 Wed Oct  2 15:33:43 UTC 2013 - dvaleev@suse.com
 
 - fix host_to_le32 undefined on BigEndian architectures
-  (hostapd-be-host_to_le.patch) 
+  (hostapd-be-host_to_le.patch)
 
 -------------------------------------------------------------------
 Thu Apr 18 08:05:13 UTC 2013 - aj@suse.com
@@ -697,12 +738,12 @@ Tue Apr  9 17:49:22 UTC 2013 - avm-xandry@yandex.ru
 -------------------------------------------------------------------
 Tue Nov  6 04:41:17 UTC 2012 - crrodriguez@opensuse.org
 
-- Add Native systemd units 
+- Add Native systemd units
 
 -------------------------------------------------------------------
 Tue May 15 04:55:22 UTC 2012 - glin@suse.com
 
-- update to version 1.0 
+- update to version 1.0
 - respin hostapd.dif to fit the new defconfig
 - change the file permission of the config files with passwords
   to 600 (bnc#740964)
@@ -735,7 +776,7 @@ Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Wed Jun  9 05:32:08 CEST 2010 - sndirsch@suse.de
 
-- udpated to release 0.6.10 
+- udpated to release 0.6.10
 - updated hostapd.dif
 - git-commit-eb1f744.diff:
   * Move DTIM period configuration into Beacon set operation; fixes
@@ -746,7 +787,7 @@ Wed Jun  9 05:32:08 CEST 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Sep 24 00:58:59 CEST 2008 - ro@suse.de
 
-- drop buildreq for madwifi (dropped package) 
+- drop buildreq for madwifi (dropped package)
 
 -------------------------------------------------------------------
 Tue Sep 23 01:14:12 CEST 2008 - ro@suse.de
@@ -843,7 +884,7 @@ Mon Sep 18 14:13:31 CEST 2006 - jg@suse.de
 -------------------------------------------------------------------
 Sun Feb  5 19:37:30 CET 2006 - ro@suse.de
 
-- use madwifi-devel in BuildRequires 
+- use madwifi-devel in BuildRequires
 
 -------------------------------------------------------------------
 Sun Feb  5 17:09:48 CET 2006 - aj@suse.de
@@ -936,7 +977,7 @@ Mon Aug 22 15:21:31 CEST 2005 - jg@suse.de
 -------------------------------------------------------------------
 Sun Aug  7 22:13:32 CEST 2005 - ro@suse.de
 
-- fix build with current wireless drivers 
+- fix build with current wireless drivers
 
 -------------------------------------------------------------------
 Mon Jul 11 16:34:25 CEST 2005 - jg@suse.de
@@ -1044,7 +1085,7 @@ Mon Feb  7 14:43:27 CET 2005 - jg@suse.de
     external RADIUS authentication server
 - hostap-driver: update to version 0.3.7-pre, changes:
   * improved suspend operation: disable firmware (hostap_cs) and
-    generate disconnect event to trigger wpa_supplicant to 
+    generate disconnect event to trigger wpa_supplicant to
     reassociate immediately after resume
   * added new ioctl command for hostapd to clear station specific
     accounting data when starting a new accounting session
@@ -1162,7 +1203,7 @@ Mon May 17 18:15:57 CEST 2004 - jg@suse.de
   * added new hostapd.conf variable, nas_identifier, that can be
     used to add an optional RADIUS Attribute, NAS-Identifier, into
     authentication and accounting messages
-  * added support for Accounting-On and Accounting-Off messages         
+  * added support for Accounting-On and Accounting-Off messages
 - update hostap-utils to 0.2.1:
   * hostap_rid: fixed handling of failed RID reads
   * fixed prism2_srec not to allow combination of volatile and
@@ -1180,7 +1221,7 @@ Mon May 17 18:15:57 CEST 2004 - jg@suse.de
     association status in Managed mode
   * added alternative TKIP implementation which uses Michael MIC
     implementation in CryptoAPI instead of Host AP specific
-    implementation                                                      
+    implementation
   * added support for RSN (IEEE 802.11i/WPA2)
   * dropped support for Linux 2.2.x and old Linux 2.4.x kernels
   * fixed hostap_cs unregistration when PC Card is removed while
@@ -1193,7 +1234,7 @@ Mon May 17 18:15:57 CEST 2004 - jg@suse.de
   * added crypto hooks for full MSDU encrypt/decrypt
   * fixed iwspy support with Linux wireless ext v16
   * fixed IEEE 802.11 defragmentation when using host-based WEP
-    decryption and bridging packets between two associated STAs         
+    decryption and bridging packets between two associated STAs
   * added driver support for WPA Authenticator/Supplicant
   * added minimal support for ethtool
 - fixed bug in hostap-driver Makefile which prevented hostap_cs.ko
@@ -1256,7 +1297,7 @@ Sun Feb 29 12:28:30 CET 2004 - jg@suse.de
 -------------------------------------------------------------------
 Mon Jan 26 15:01:49 CET 2004 - jg@suse.de
 
-- removed kernel-source from neededforbuild 
+- removed kernel-source from neededforbuild
 
 -------------------------------------------------------------------
 Fri Jan  9 18:44:30 CET 2004 - jg@suse.de

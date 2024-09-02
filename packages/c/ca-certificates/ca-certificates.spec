@@ -38,7 +38,7 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20240415.3fe9324%{git_version}
+Version:        2+git20240805.fd24d50%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
@@ -74,7 +74,6 @@ certificate store that is managed by p11-kit.
 rm -f certbundle.run
 %endif
 %make_install
-ln -s service %{buildroot}%{_sbindir}/rcca-certificates
 install -d -m 755 %{buildroot}%{trustdir_cfg}/{anchors,blacklist}
 install -d -m 755 %{buildroot}%{trustdir_static}/{anchors,blacklist}
 install -d -m 755 %{buildroot}%{ssletcdir}
@@ -133,7 +132,6 @@ rm -rf %{buildroot}
 %dir /var/lib/ca-certificates
 %dir /var/lib/ca-certificates/pem
 %dir /var/lib/ca-certificates/openssl
-%{_sbindir}/rcca-certificates
 %{_sbindir}/update-ca-certificates
 %{_mandir}/man8/update-ca-certificates.8*
 %{_prefix}/lib/ca-certificates/update.d/*java.run

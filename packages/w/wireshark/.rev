@@ -1917,4 +1917,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.2.7</comment>
     <requestid>1197387</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>4391350930f39e9f82266c1fa7d3bdcc</srcmd5>
+    <version>4.4.0</version>
+    <time>1725275595</time>
+    <user>dimstar_suse</user>
+    <comment>wireshark 4.4.0</comment>
+    <requestid>1198090</requestid>
+  </revision>
 </revisionlist>

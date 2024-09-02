@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 30 16:08:14 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.0 
+  * Many improvements and fixes to the graphing dialogs, including I/O Graphs,
+    Flow Graph / VoIP Calls, and TCP Stream Graphs
+  * Custom columns can be defined using any valid field expression, such as
+    display filter functions, packet slices, arithmetic calculations, logical
+    tests, raw byte addressing, and protocol layer modifiers
+  * Wireshark now supports automatic profile switching. You can associate a
+    display filter with a configuration profile, and when you open a capture
+    file that matches the filter, Wireshark will automatically switch to that
+    profile.
+  * Improved display filter support for value strings (optional string
+    representations for numeric fields).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.0.html
+- drop wireshark-0000-wsutil-implicit_declaration_memcpy.patch: included upstream
+- update wireshark-0010-dumpcap-permission-denied.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 07:09:42 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.2.7:

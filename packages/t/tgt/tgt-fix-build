@@ -12,12 +12,12 @@ Signed-off-by: Hannes Reinecke <hare@suse.de>
  usr/Makefile | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/usr/Makefile b/usr/Makefile
-index e29826c..31067e8 100644
---- a/usr/Makefile
-+++ b/usr/Makefile
-@@ -40,6 +40,9 @@ INCLUDES += -I.
- 
+Index: tgt-1.0.92/usr/Makefile
+===================================================================
+--- tgt-1.0.92.orig/usr/Makefile
++++ tgt-1.0.92/usr/Makefile
+@@ -41,6 +41,9 @@ INCLUDES += -I.
+ CFLAGS += -D_FILE_OFFSET_BITS=64
  CFLAGS += -D_GNU_SOURCE
  CFLAGS += $(INCLUDES)
 +ifneq ($(OPTFAGS),)

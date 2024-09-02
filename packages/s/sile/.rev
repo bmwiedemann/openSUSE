@@ -302,4 +302,20 @@
 - Add export LUA_INCLUDE=&quot;-I/usr/include/luajit-5_1-2.1&quot;</comment>
     <requestid>1183874</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9a9d31bfc8c28e00dd7a24fbe50d103</srcmd5>
+    <version>0.15.5</version>
+    <time>1725275614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.5:
+  * New Features
+    - packages: Support biblatex date field and improve date formatting
+  * Bug Fixes
+    - build: Fix distribution of unit tests clean up dist file list
+    - classes: Make document state available during class's post init
+    - cli: Suppress trace info in quiet for warnings but do show errors
+    - packages: Parse and split all bibtex name fields
+    - packages: Use non-breakable space in bibTeX name splitting, not tilde</comment>
+    <requestid>1197968</requestid>
+  </revision>
 </revisionlist>

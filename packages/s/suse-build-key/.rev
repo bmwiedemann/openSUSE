@@ -387,4 +387,12 @@ changelog can't be avoided.
 This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</comment>
     <requestid>1190502</requestid>
   </revision>
+  <revision rev="47" vrev="18">
+    <srcmd5>06d6ca9b5be898ccbe90c93cbdb89531</srcmd5>
+    <version>12.0</version>
+    <time>1725275620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198027</requestid>
+  </revision>
 </revisionlist>

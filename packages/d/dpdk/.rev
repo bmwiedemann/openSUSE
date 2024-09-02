@@ -640,4 +640,12 @@
   * 0001-kni-fix-build-with-Linux-6.5.patch (22.11.3)</comment>
     <requestid>1195103</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b43959e4facd2f8c6a0f78effc9f42b</srcmd5>
+    <version>22.11.6</version>
+    <time>1725275599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198106</requestid>
+  </revision>
 </revisionlist>

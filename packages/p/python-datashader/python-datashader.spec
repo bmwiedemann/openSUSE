@@ -39,7 +39,7 @@ Source0:        https://files.pythonhosted.org/packages/source/d/datashader/data
 Source100:      python-datashader-rpmlintrc
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct}
@@ -52,7 +52,7 @@ Requires:       python-colorcet
 Requires:       python-dask-dataframe
 Requires:       python-multipledispatch
 Requires:       python-numba
-Requires:       python-numpy < 2
+Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-param
 Requires:       python-pyct

@@ -1,0 +1,12 @@
+diff -ur rsync-3.3.0.old/rsync.h rsync-3.3.0/rsync.h
+--- rsync-3.3.0.old/rsync.h	2022-10-16 19:28:58.000000000 +0200
++++ rsync-3.3.0/rsync.h	2024-08-26 11:31:14.458919925 +0200
+@@ -30,7 +30,7 @@
+ /* RSYNCD_SYSCONF is now set in config.h */
+ #define RSYNCD_USERCONF "rsyncd.conf"
+ 
+-#define DEFAULT_LOCK_FILE "/var/run/rsyncd.lock"
++#define DEFAULT_LOCK_FILE "/run/rsyncd.lock"
+ #define URL_PREFIX "rsync://"
+ 
+ #define SYMLINK_PREFIX "/rsyncd-munged/"  /* This MUST have a trailing slash! */

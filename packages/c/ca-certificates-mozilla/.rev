@@ -814,4 +814,12 @@
   - Distrust: GLOBALTRUST 2020</comment>
     <requestid>1186335</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>54a821eee195f1d0b15be4135cd6969c</srcmd5>
+    <version>2.68</version>
+    <time>1725275593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198030</requestid>
+  </revision>
 </revisionlist>

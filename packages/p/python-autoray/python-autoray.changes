@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 12:46:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Unpin numpy 2
+- Clean Build Requirements
+
+-------------------------------------------------------------------
 Tue Jul  9 05:22:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Restrict numpy to < 2. 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 30 13:38:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.4
+  * Dependency: allow numpy 1.22 again
+- Release 0.7.3
+  * Improved: dealing with extremely narrow bin ranges
+  * Fixed: mypy and pytest issues
+  * Fixed: compatibility with polars 1.0
+- Release 0.7.2
+  * Improved: stats box in plots
+- Release 0.7.1
+  * Fixed: Newer polars compatibility, deal with Nones
+  * Added: .physt accessors for polars series and dataframes
+- Release 0.7.0
+  * Added: Support for pola.rs series/dataframes
+  * Moved: xarray support as a separate module in physt.compat
+  * Removed: physt.special (use physt.special_histograms instead)
+  * Added: stats_loc arg to locate stats box in plots
+  * Added: Pretty printing with rich library
+  * Changed: Moved most configuration to pyproject.toml
+  * Improved: Much more testing and edge-case bug fixes
+  * Support: Removed Python 3.7 and numpy <1.22, added 3.11
+  * Renamed: human binning => pretty binning (with deprecation
+    warning)
+- Unpin numpy 2: Add physt-pr116-np2.patch gh#janpipek/physt#116
+
+-------------------------------------------------------------------
 Mon Jul  8 04:37:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add upper bound on numpy of < 2. 

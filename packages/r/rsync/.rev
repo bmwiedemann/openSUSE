@@ -683,4 +683,41 @@
     <comment></comment>
     <requestid>1176461</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>6fc6f22ab02a0cf9f0021f40e018a75c</srcmd5>
+    <version>3.3.0</version>
+    <time>1725275594</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch rsync-run-dir.patch:
+  * Drop dependency on /var/run compat symlink, this causes problems
+    on image based systems
+
+  * rsync-patches-3.2.7.tar.gz
+  * rsync-patches-3.2.7.tar.gz.asc
+- Update to 3.3.0
+    - Fixed a bug with --sparse --inplace where a trailing gap in
+      the source file would not clear out the trailing data in the
+    - Fixed an buffer overflow in the checksum2 code if SHA1 is
+      that the extra tests don't complain about a strlcpy() limit
+      the larger value to cause an overflow).
+    - Add a backtick to the list of characters that the filename
+    - Fixed a string-comparison issue in the internal handling of
+    - Change the argv handling to work with a newer popt library
+    - Rsync now calls OpenSSL_add_all_algorithms() when compiled
+    - Fixed a problem in the daemon auth for older protocols
+      (29 and before) if the openssl library is being used to
+      nroff doesn't support these idioms, touch the file
+- New version fixes bug (boo#1203727): implicit containing directory
+  in /etc and restoring them while an RPM update.
+    the older `--protect-args` (`-s`) option but in a way that
+    current locale's decimal point character, which made rsync
+  instead of AC_CHECK_LIB(attr,getxattr) so libattr is
+- Do not depend on insserv if the system supports systemd; it's
+- Remove sysvinit support on distros that have systemd
+  not link to libattr but it picks the glibc implementation
+- Build with PIE and full RELRO
+ * Apply drop-cache patch from rsync-patches tarball, adds option
+   --drop-cache so rsync is drop the memory cache of files when</comment>
+    <requestid>1198081</requestid>
+  </revision>
 </revisionlist>

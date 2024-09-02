@@ -70,4 +70,12 @@
     <comment>- Restrict numpy to &lt; 2 for now.</comment>
     <requestid>1188072</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d67094974a2db6d224687ddc2cc1632c</srcmd5>
+    <version>1.14.0</version>
+    <time>1725275631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198013</requestid>
+  </revision>
 </revisionlist>

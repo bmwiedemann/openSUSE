@@ -31,7 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy < 2
+Requires:       python-numpy
 Requires:       python-opengl
 Requires:       python-qt5
 Recommends:     python-Pillow
@@ -42,7 +42,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module imageio}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}

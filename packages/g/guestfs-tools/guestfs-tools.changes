@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 29 15:15:13 MDT 2024 - carnold@suse.com
+
+- Update to version 1.53.3 (jsc#PED-8910)
+  * Update common submodule
+    Further refinements to Windows firstboot code.
+    mlcustomize: Add some comments to firstboot batch file
+    mlcustomize: Reboot Windows between each firstboot script
+    mlcustomize: Move virt-customize modules to mlcustomize/
+
+-------------------------------------------------------------------
 Tue Aug  6 10:26:14 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.2 (jsc#PED-6305)

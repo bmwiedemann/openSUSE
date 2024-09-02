@@ -32,15 +32,15 @@ BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numba >= 0.49}
-BuildRequires:  %{python_module numpy >= 1.17 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.19}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.49
+Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
-Requires:       (python-numpy >= 1.17 with python-numpy < 2)
 BuildArch:      noarch
 
 %python_subpackages

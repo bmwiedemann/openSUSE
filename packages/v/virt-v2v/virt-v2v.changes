@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:54:30 MDT 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.5.9 (jsc#PED-8910)
+  * convert: More robust qemu-ga installation, change paths
+    mlcustomize: Use Start-Process -Wait to run qemu-ga installer
+    mlcustomize: Add Firstboot.firstboot_dir function
+    mlcustomize: Place powershell scripts into <firstboot_dir>\Temp
+  * common: mlcustomize: Inject qemu-ga & blnsvr into
+    <firstboot_dir>/Temp
+  * Pull in a fix to make Windows firstboot more reliable.
+    mlcustomize: Add some comments to firstboot batch file
+    mlcustomize: Reboot Windows between each firstboot script
+  * convert: windows: Don't wait indefinitely for netkvm.sys
+  * convert: windows: Allow increasing verboseness of driver
+    installation
+  * convert: windows: Online all virtio disks at first boot
+  * convert: windows: Ignore sriov drivers on virtio-win disk
+
+-------------------------------------------------------------------
 Tue Aug  6 10:31:04 MDT 2024 - carnold@suse.com
 
-- Update to virt-v2v 2.5.6 (jsc#PED-6305)
+- Update to virt-v2v 2.5.6 (jsc#PED-8910)
   * -i ova: Ignore dot-underscore-files in OVA files
   * mlcustomize: firstboot: Use Linux path for Powershell script path
   * mlcustomize: firstboot: Use powershell.exe instead of path

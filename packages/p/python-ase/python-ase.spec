@@ -23,13 +23,15 @@ Summary:        Atomic Simulation Environment
 License:        LGPL-2.1-or-later
 URL:            https://wiki.fysik.dtu.dk/ase
 Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ase-mr3400-numpy2.patch https://gitlab.com/ase/ase/-/merge_requests/3400
+Patch0:         ase-mr3400-numpy2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
-BuildRequires:  %{python_module numpy >= 1.15.0 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.15.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -38,8 +40,8 @@ BuildRequires:  %{python_module tk}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-matplotlib >= 3.1.0
+Requires:       python-numpy >= 1.15.0
 Requires:       python-scipy >= 1.1.0
-Requires:       (python-numpy >= 1.15.0 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 31 21:29:58 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add clang-Fix-build-with-GCC-14-on-ARM.patch to fix build with
+  GCC 14 on aarch64. (boo#1229868, gh#llvm/llvm-project#78691)
+
+-------------------------------------------------------------------
 Tue Aug 20 21:20:37 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add minor version to Python shebangs. (boo#1212476)

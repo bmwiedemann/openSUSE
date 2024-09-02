@@ -17,7 +17,6 @@
 
 
 %bcond_without  test
-%define skip_python39 1
 Name:           python-holoviews
 Version:        1.19.1
 Release:        0
@@ -29,7 +28,7 @@ Patch0:         ignore-pandas-warning.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module numpy >= 1.21 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module panel >= 1.0}
@@ -42,11 +41,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 3.1
 Requires:       python-colorcet
+Requires:       python-numpy >= 1.21
 Requires:       python-packaging
 Requires:       python-pandas >= 1.3
 Requires:       python-panel >= 1.0
 Requires:       python-pyviz-comms >= 2.1
-Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -172,6 +171,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_implicit_nodes)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_with_node_vdims)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
+    donttest+=" or (DimensionDefaultTest and test_validate_default_against_values)"
 fi
 
 %pytest -W ignore::UserWarning -n auto holoviews -k "not ($donttest)"

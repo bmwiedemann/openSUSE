@@ -56,6 +56,7 @@ Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
 Patch2:         rsync-usr-etc.patch
+Patch3:         rsync-run-dir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler

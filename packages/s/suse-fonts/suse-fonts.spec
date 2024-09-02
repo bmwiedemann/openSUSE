@@ -17,16 +17,14 @@
 
 
 Name:           suse-fonts
-Version:        0~20240710
+Version:        1.000
 Release:        0
 Summary:        SUSE font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/SUSE/suse-font
-# Fetched from https://github.com/SUSE/suse-font/actions/runs/9857187979
-Source0:        %{name}-%{version}.zip
-Source1:        https://raw.githubusercontent.com/SUSE/suse-font/main/OFL.txt
-Source2:        https://raw.githubusercontent.com/SUSE/suse-font/main/README.md
+Source0:        https://github.com/SUSE/suse-font/releases/download/v%{version}/suse-font-v%{version}.zip
+Source1:        https://raw.githubusercontent.com/SUSE/suse-font/v%{version}/README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -40,9 +38,8 @@ family includes the following styles: Thin, ExtraLight, Light, Regular, Medium,
 SemiBold, Bold, and ExtraBold.
 
 %prep
-%setup -q -c -T -a0
+%autosetup -p1 -n suse-font-v%{version}
 cp -p %{SOURCE1} .
-cp -p %{SOURCE2} .
 
 %build
 

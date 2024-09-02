@@ -388,6 +388,8 @@ Patch3:         default-to-i586.patch
 Patch4:         clang-resourcedirs.patch
 Patch5:         llvm-remove-clang-only-flags.patch
 Patch6:         llvm-fix-find-gcc5-install.patch
+# PATCH-FIX-UPSTREAM -- Backport of commit d54dfdd1b53ff72344287d250c2b67329792c840.
+Patch7:         clang-Fix-build-with-GCC-14-on-ARM.patch
 Patch9:         link-clang-shared.patch
 Patch10:        link-clang-tools-extra-shared.patch
 # PATCH-FIX-OPENSUSE lldb-cmake.patch -- Fix ncurses include path.
@@ -849,6 +851,7 @@ pushd clang-%{_version}.src
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 6 -p1
+%patch -P 7 -p2
 %patch -P 9 -p2
 
 # We hardcode openSUSE

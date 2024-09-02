@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 31 08:57:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use embedded OFL license, drop extra copy
+- cleanup spec file (add upstream source reference, remove outdated
+  comments and sources)
+
+-------------------------------------------------------------------
+Mon Aug 26 13:46:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - v1.000
+
+- update to v1.000:
+  * Prep for Google Fonts submission
+  * Update copyright
+  * Files ready for GF
+
+-------------------------------------------------------------------
 Wed Jul 10 14:16:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package

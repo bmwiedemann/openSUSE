@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 22 17:33:47 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- Update to LTS release version v22.11.6
+  * http://doc.dpdk.org/guides-22.11/rel_notes/release_22_11.html
+
+- Drop patch (included upstream):
+  * kni-fix-build-with-Linux-6.8.patch (22.11.6)
+
+-------------------------------------------------------------------
 Sat Aug 17 13:47:42 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
 
 - Update to LTS release version v22.11.5

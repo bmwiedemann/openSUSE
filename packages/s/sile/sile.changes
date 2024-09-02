@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 31 03:13:42 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.15.5:
+  * New Features
+    - packages: Support biblatex date field and improve date formatting
+  * Bug Fixes
+    - build: Fix distribution of unit tests clean up dist file list
+    - classes: Make document state available during class's post init
+    - cli: Suppress trace info in quiet for warnings but do show errors
+    - packages: Parse and split all bibtex name fields
+    - packages: Use non-breakable space in bibTeX name splitting, not tilde
+
+-------------------------------------------------------------------
 Fri Jun 28 17:30:05 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.15.4:

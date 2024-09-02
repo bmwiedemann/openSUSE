@@ -58,6 +58,10 @@ ln -s /var/lib/ca-certificates/pem %{buildroot}/etc/ssl/certs
 ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}/etc/ssl/ca-bundle.pem
 mkdir -p %{buildroot}/usr/share/factory/var/lib
 cp -a /var/lib/ca-certificates %{buildroot}/usr/share/factory/var/lib
+cadir=%{buildroot}/usr/share/factory/var/lib/ca-certificates
+chmod 755 $cadir
+# re-create java-cacerts with SOURCE_DATE_EPOCH set for reproducible builds (boo#1229003)
+trust extract --format=java-cacerts --purpose=server-auth --filter=ca-anchors --overwrite $cadir/java-cacerts
 # need rpm needs to be able to delete the buildroot
 chmod u+w %{buildroot}/usr/share/factory/var/lib/ca-certificates{,/*}
 mkdir -p %{buildroot}%{_tmpfilesdir}

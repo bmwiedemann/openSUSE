@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python39 1
 Name:           python-hvplot
 Version:        0.10.0
 Release:        0
@@ -37,10 +36,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 1.0.0
 Requires:       python-colorcet >= 2
 Requires:       python-holoviews >= 1.11.0
+Requires:       python-numpy >= 1.15
 Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-panel >= 0.11.0
-Requires:       (python-numpy >= 1.15 with python-numpy < 2)
 Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -74,7 +73,7 @@ BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module numpy >= 1.15 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module panel >= 0.11.0}
 BuildRequires:  %{python_module param >= 1.9.0}

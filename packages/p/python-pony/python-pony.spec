@@ -19,7 +19,7 @@
 # not compatible: https://github.com/ponyorm/pony/blob/v0.7.17/setup.py#L112
 %define skip_python312 1
 Name:           python-pony
-Version:        0.7.17
+Version:        0.7.19
 Release:        0
 Summary:        Pony Object-Relational Mapper
 License:        Apache-2.0

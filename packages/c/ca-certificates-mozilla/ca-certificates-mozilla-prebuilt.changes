@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 12:16:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Re-create java-cacerts with SOURCE_DATE_EPOCH set
+  for reproducible builds (boo#1229003)
+
+-------------------------------------------------------------------
 Tue Apr 11 14:05:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also mark /usr/share/factory/var/lib/ca-certificates/ as writable

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:58:34 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 2.1.1:
+  * Add missing source files to MSVC project files.
+  * Resolve environment variables in include directive in
+    configuration file.
+  * Throw exception on nonexistent properties file, if requested by
+    fThrow flag.
+  * Generate pkgconfig file with CMake.
+  * Add locale support to ConsoleAppender.
+  * Initialize thread pool for async logging on demand.
+  * SysLogAppender: Allow non-FQDN hostname in syslog messages.
+  * Update Catch2 to v2.13.9.
+- Run tests at buildtime
+- Add source validation and update keyring
+
+-------------------------------------------------------------------
 Thu Jul 28 20:23:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.8:

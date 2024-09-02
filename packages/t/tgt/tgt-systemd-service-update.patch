@@ -5,10 +5,10 @@ Subject: [PATCH] tgt: systemd service update
 Update our systemd service file to match what we do at SUSE.
 
 ---
-Index: tgt-1.0.85/scripts/tgtd.service
+Index: tgt-1.0.92/scripts/tgtd.service
 ===================================================================
---- tgt-1.0.85.orig/scripts/tgtd.service
-+++ tgt-1.0.85/scripts/tgtd.service
+--- tgt-1.0.92.orig/scripts/tgtd.service
++++ tgt-1.0.92/scripts/tgtd.service
 @@ -20,8 +20,9 @@ RestrictRealtime=true
  # end of automatic additions 
  Type=forking

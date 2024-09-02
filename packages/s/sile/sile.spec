@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.15.4
+Version:        0.15.5
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 License:        MIT

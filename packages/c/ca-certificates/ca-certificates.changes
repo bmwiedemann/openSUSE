@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:07:55 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix source archive
+
+-------------------------------------------------------------------
+Mon Aug 05 08:54:36 UTC 2024 - kukuk@suse.com
+
+- Update to version 2+git20240805.fd24d50:
+  * Remove rc symlink [jsc#PED-266]
+
+-------------------------------------------------------------------
 Mon Apr 29 11:34:23 UTC 2024 - kukuk@suse.com
 
 - Update to version 2+git20240415.3fe9324:

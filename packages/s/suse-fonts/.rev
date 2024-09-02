@@ -7,4 +7,19 @@
     <comment>I'd like to maintain this in factory</comment>
     <requestid>1186642</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1576e51015bf7fbcfb3d5de1de11f456</srcmd5>
+    <version>1.000</version>
+    <time>1725275617</time>
+    <user>dimstar_suse</user>
+    <comment>- use embedded OFL license, drop extra copy
+- cleanup spec file (add upstream source reference, remove outdated
+  comments and sources)
+
+- update to v1.000:
+  * Prep for Google Fonts submission
+  * Update copyright
+  * Files ready for GF</comment>
+    <requestid>1198002</requestid>
+  </revision>
 </revisionlist>

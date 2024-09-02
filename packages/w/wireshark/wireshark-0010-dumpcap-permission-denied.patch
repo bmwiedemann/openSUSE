@@ -1,14 +1,17 @@
-commit acac613af7d702dae533cbdf9ef49cef803d0559
-Author: Robert Frohl <rfrohl@suse.com>
-Date:   Tue Sep 12 14:53:17 2023 +0200
+From 4eea0eafa31274294832821d7adb13f13be30564 Mon Sep 17 00:00:00 2001
+From: Robert Frohl <rfrohl@suse.com>
+Date: Fri, 30 Aug 2024 20:03:20 +0200
+Subject: [PATCH] Warn if user can't access dumpcap.
 
-    Warn if user can't access dumpcap.
+---
+ capture/capture_sync.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-Index: wireshark-4.2.0rc2/capture/capture_sync.c
-===================================================================
---- wireshark-4.2.0rc2.orig/capture/capture_sync.c
-+++ wireshark-4.2.0rc2/capture/capture_sync.c
-@@ -24,6 +24,10 @@
+diff --git a/capture/capture_sync.c b/capture/capture_sync.c
+index 2a5db8bc73..f75e82e2e2 100644
+--- a/capture/capture_sync.c
++++ b/capture/capture_sync.c
+@@ -26,6 +26,10 @@
  #include <wsutil/strtoi.h>
  #include <wsutil/ws_assert.h>
  
@@ -19,15 +22,11 @@ Index: wireshark-4.2.0rc2/capture/capture_sync.c
  #ifdef _WIN32
  #include <wsutil/unicode-utils.h>
  #include <wsutil/win32-utils.h>
-@@ -530,10 +534,21 @@ sync_pipe_open_command(char* const argv[
-             ws_close(data_pipe[PIPE_READ]);
-             ws_close(data_pipe[PIPE_WRITE]);
-         }
-+        char * grp_warning = calloc(1, 256);
-         dup2(sync_pipe[PIPE_WRITE], 2);
-         ws_close(sync_pipe[PIPE_READ]);
-         ws_close(sync_pipe[PIPE_WRITE]);
+@@ -597,6 +601,17 @@ sync_pipe_open_command(char **argv, int *data_read_fd,
+         argv = sync_pipe_add_arg(argv, &argc, sync_id);
+ #endif
          execv(argv[0], argv);
++        char * grp_warning = calloc(1, 256);
 +        if (errno == EPERM || errno == EACCES) {
 +                struct stat statbuf;
 +                struct group *grp;
@@ -38,6 +37,9 @@ Index: wireshark-4.2.0rc2/capture/capture_sync.c
 +                }
 +        }
 +        free(grp_warning);
-         sync_pipe_write_int_msg(2, SP_EXEC_FAILED, errno);
+         sync_pipe_write_int_msg(sync_pipe[PIPE_WRITE], SP_EXEC_FAILED, errno);
  
          /* Exit with "_exit()", so that we don't close the connection
+-- 
+2.46.0
+

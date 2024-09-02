@@ -12,8 +12,10 @@ Acked-by: Hannes Reinecke <hare@suse.de>
  conf/Makefile |    6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
---- a/conf/Makefile
-+++ b/conf/Makefile
+Index: tgt-1.0.92/conf/Makefile
+===================================================================
+--- tgt-1.0.92.orig/conf/Makefile
++++ tgt-1.0.92/conf/Makefile
 @@ -1,4 +1,5 @@
  sysconfdir ?= /etc
 +docdatadir ?= /usr/share/doc/packages/

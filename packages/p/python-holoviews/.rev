@@ -436,4 +436,12 @@
     + Hold rendering until a plot has been fully updated</comment>
     <requestid>1186084</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4d3159bca8167038193dc14782d2233c</srcmd5>
+    <version>1.19.1</version>
+    <time>1725275633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198014</requestid>
+  </revision>
 </revisionlist>

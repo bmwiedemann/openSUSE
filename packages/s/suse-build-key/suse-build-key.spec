@@ -17,6 +17,7 @@
 # needspubkeyforbuild
 
 
+
 %bcond_with     build_key_include_prjkey
 
 Name:           suse-build-key
@@ -31,7 +32,7 @@ Release:        0
 Source1000:     key2rpmname
 # pub  2048R/39DB7C82 2013-01-31 SuSE Package Signing Key <build@suse.de>
 # The main package signing key.
-Source0:        gpg-pubkey-39db7c82-5f68629b.asc
+Source0:        gpg-pubkey-39db7c82-66c5d91a.asc
 #pub   rsa4096/0xF74F09BC3FA1D6CE 2023-01-19 [SC] [expires: 2027-01-18]
 #      Key fingerprint = 7F00 9157 B127 B994 D5CF  BE76 F74F 09BC 3FA1 D6CE
 #uid                             SUSE Package Signing Key <build@suse.de>

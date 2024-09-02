@@ -1,42 +1,49 @@
 -------------------------------------------------------------------
+Mon Aug 26 09:41:28 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- add patch rsync-run-dir.patch:
+  * Drop dependency on /var/run compat symlink, this causes problems
+    on image based systems
+
+-------------------------------------------------------------------
 Thu May 23 11:50:19 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Correcly enable SIMD in x64: the flag was renamed from
   --enable-simd to -enable-roll-simd in 3.2.4
 
 - Remove leftovers from previous versions:
-  * rsync-patches-3.2.7.tar.gz  
-  * rsync-patches-3.2.7.tar.gz.asc 
+  * rsync-patches-3.2.7.tar.gz
+  * rsync-patches-3.2.7.tar.gz.asc
 
 -------------------------------------------------------------------
 Thu Apr 18 08:22:02 UTC 2024 - David Anes <david.anes@suse.com>
 
-- Update to 3.3.0 
+- Update to 3.3.0
   * BUG FIXES:
-    - Fixed a bug with --sparse --inplace where a trailing gap in 
-      the source file would not clear out the trailing data in the 
+    - Fixed a bug with --sparse --inplace where a trailing gap in
+      the source file would not clear out the trailing data in the
       destination file.
-    - Fixed an buffer overflow in the checksum2 code if SHA1 is 
+    - Fixed an buffer overflow in the checksum2 code if SHA1 is
       being used for the checksum2 algorithm.
     - Fixed an issue when rsync is compiled using _FORTIFY_SOURCE so
-      that the extra tests don't complain about a strlcpy() limit 
+      that the extra tests don't complain about a strlcpy() limit
       value (which was too large, even though it wasn't possible for
-      the larger value to cause an overflow). 
+      the larger value to cause an overflow).
       (fix bsc#1214616, bsc#1214249)
-    - Add a backtick to the list of characters that the filename 
+    - Add a backtick to the list of characters that the filename
       quoting needs to escape using backslashes.
-    - Fixed a string-comparison issue in the internal handling of 
+    - Fixed a string-comparison issue in the internal handling of
       --progress (a locale such as tr_TR.utf-8 needed the internal
       triggering of --info options to use upper-case flag names to
       ensure that they match).
     - Make sure that a local transfer marks the sender side as
       trusted.
-    - Change the argv handling to work with a newer popt library 
+    - Change the argv handling to work with a newer popt library
       -⁠-⁠ one that likes to free more data than it used to.
-    - Rsync now calls OpenSSL_add_all_algorithms() when compiled 
+    - Rsync now calls OpenSSL_add_all_algorithms() when compiled
       against an older openssl library.
-    - Fixed a problem in the daemon auth for older protocols 
-      (29 and before) if the openssl library is being used to 
+    - Fixed a problem in the daemon auth for older protocols
+      (29 and before) if the openssl library is being used to
       compute MD4 checksums.
     - Fixed rsync -VV on Cygwin -⁠-⁠ it needed a flush of stdout.
     - Fixed an old stats bug that counted devices as symlinks.
@@ -46,7 +53,7 @@ Thu Apr 18 08:22:02 UTC 2024 - David Anes <david.anes@suse.com>
       to ensure that existing files on your restricted but writable
       directory can't be modified.
     - Enhanced the manpages to mark links with .UR & .UE. If your
-      nroff doesn't support these idioms, touch the file 
+      nroff doesn't support these idioms, touch the file
       .md2man-force in the source directory so that md-convert gets
       called with the --force-link-text option, and that should
       ensure that your manpages are still readable even with the
@@ -113,7 +120,7 @@ Thu Apr  6 11:03:52 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Fri Oct 21 07:52:48 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
-- New version fixes bug (boo#1203727): implicit containing directory 
+- New version fixes bug (boo#1203727): implicit containing directory
   sometimes rejected as unrequested
 
 - update to 3.2.7
@@ -224,7 +231,7 @@ Fri Sep  9 08:32:28 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 Thu Sep  1 13:11:01 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
-  in /etc and restoring them while an RPM update. 
+  in /etc and restoring them while an RPM update.
 
 -------------------------------------------------------------------
 Tue Aug 16 08:19:20 UTC 2022 - David Anes <david.anes@suse.com>
@@ -296,10 +303,10 @@ Tue Apr 19 06:38:55 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 3.2.4
   * A new form of arg protection was added that works similarly to
-    the older `--protect-args` (`-s`) option but in a way that 
+    the older `--protect-args` (`-s`) option but in a way that
     avoids breaking things like rrsync.
   * A long-standing bug was preventing rsync from figuring out the
-    current locale's decimal point character, which made rsync 
+    current locale's decimal point character, which made rsync
     always output numbers using the "C" locale.
   * Too many changes to list, see included NEWS.md file.
 - Drop rsync-CVE-2020-14387.patch, already included upstream.
@@ -532,7 +539,7 @@ Tue Aug 11 09:40:36 UTC 2015 - vcizek@suse.com
 Wed Feb 25 02:23:49 UTC 2015 - crrodriguez@opensuse.org
 
 - rsync-no-libattr.patch: Use AC_SEARCH_LIBS([getxattr], [attr])
-  instead of AC_CHECK_LIB(attr,getxattr) so libattr is 
+  instead of AC_CHECK_LIB(attr,getxattr) so libattr is
   not injected as a dependency when glibc is enough since
   several years to use getxattr.
 
@@ -554,7 +561,7 @@ Fri Nov 14 09:19:05 UTC 2014 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Sun Oct 19 13:38:21 UTC 2014 - p.drouand@gmail.com
 
-- Do not depend on insserv if the system supports systemd; it's 
+- Do not depend on insserv if the system supports systemd; it's
   useless
 
 -------------------------------------------------------------------
@@ -568,9 +575,9 @@ Thu Jul 10 15:28:03 UTC 2014 - kruber@zib.de
 -------------------------------------------------------------------
 Fri Jun 20 21:11:04 UTC 2014 - crrodriguez@opensuse.org
 
-- Remove sysvinit support on distros that have systemd 
+- Remove sysvinit support on distros that have systemd
 - Remove libattr-devel from buildRequires, application does
-  not link to libattr but it picks the glibc implementation 
+  not link to libattr but it picks the glibc implementation
   instead.
 
 -------------------------------------------------------------------
@@ -615,7 +622,7 @@ Thu Jul 26 20:46:02 UTC 2012 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Sun Feb  5 23:25:26 UTC 2012 - crrodriguez@opensuse.org
 
-- Build with PIE and full RELRO 
+- Build with PIE and full RELRO
 
 -------------------------------------------------------------------
 Wed Dec 21 10:42:30 UTC 2011 - coolo@suse.com
@@ -632,8 +639,8 @@ Fri Nov 25 01:38:07 UTC 2011 - crrodriguez@opensuse.org
 Wed Oct 12 03:40:40 UTC 2011 - crrodriguez@opensuse.org
 
 - Update to version 3.0.9
- * Apply drop-cache patch from rsync-patches tarball, adds option 
-   --drop-cache so rsync is drop the memory cache of files when 
+ * Apply drop-cache patch from rsync-patches tarball, adds option
+   --drop-cache so rsync is drop the memory cache of files when
    finished (aka. stop trashing the system)
  * Fix a crash bug in checksum scanning when --inplace is used.
  *  Fix a memory leak in the xattr code.
@@ -648,26 +655,26 @@ Thu May 12 13:08:59 UTC 2011 - chris@computersalat.de
 -------------------------------------------------------------------
 Thu May  5 14:43:40 UTC 2011 - puzel@novell.com
 
-- updated summary (bnc#691944) and description 
+- updated summary (bnc#691944) and description
 
 -------------------------------------------------------------------
 Tue Mar 29 13:53:04 UTC 2011 - puzel@novell.com
 
-- update to rsync-3.0.8 
+- update to rsync-3.0.8
  - Notable changes:
   - Fixed two buffer-overflow issues.
   - Fixed a data-corruption issue when preserving hard-links
     without preserving file ownership, and doing deletions either
-    before or during the transfer (CVE-2011-1097).  
+    before or during the transfer (CVE-2011-1097).
   - Fixed a potential crash when an rsync daemon has a
     filter/exclude list and the transfer is using ACLs or xattrs.
   - Fixed a hang if a really large file is being processed by an
-    rsync that can't handle 64-bit numbers.  
+    rsync that can't handle 64-bit numbers.
   - For devices and special files, we now avoid gathering useless
     ACL and/or xattr information for files that aren't being
-    copied.  
+    copied.
   - Properly handle requesting remote filenames that start with a
-    dash.  
+    dash.
   - Fixed a bug in the comparing of upper-case letters in file
     suffixes for --skip-compress.
   - If an rsync daemon has a module configured without a path
@@ -703,7 +710,7 @@ Sun Sep 19 10:55:59 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Jan  4 14:21:21 UTC 2010 - puzel@novell.com
 
-- update to rsync-3.0.7 
+- update to rsync-3.0.7
   - Fixed a bogus free when using --xattrs with --backup.
   - Avoid an error when --dry-run  was trying to stat a prior hard-link
 	file that hasn't really been created.
@@ -745,7 +752,7 @@ Fri Aug 21 11:09:20 UTC 2009 - chris@computersalat.de
 - spec mods
   o sorted TAGS
   o added missing clean section
-- rpmlint 
+- rpmlint
   o non-conffile-in-etc /etc/sysconfig/SuSEfirewall2.d/services/rsync-server
 
 -------------------------------------------------------------------
@@ -757,7 +764,7 @@ Wed Aug  5 11:24:00 CEST 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Tue May  5 15:29:12 CEST 2009 - puzel@suse.cz
 
-- add rsync-allow-slp-disable.patch (FATE#306331) 
+- add rsync-allow-slp-disable.patch (FATE#306331)
 
 -------------------------------------------------------------------
 Thu Apr 16 12:16:41 CEST 2009 - puzel@suse.cz
@@ -873,7 +880,7 @@ Thu Sep  4 12:29:19 CEST 2008 - puzel@suse.cz
 -------------------------------------------------------------------
 Tue Aug 12 10:10:06 CEST 2008 - puzel@suse.cz
 
-- rsyncd.rc: use Should-Start instead of X-UnitedLinux-Should-Start 
+- rsyncd.rc: use Should-Start instead of X-UnitedLinux-Should-Start
 - specfile fixes:
   * added Should-Stop
   * 'make test' moved to %check
@@ -918,7 +925,7 @@ Tue Mar 11 01:23:13 CET 2008 - ro@suse.de
   - rsync-overlong.patch (upstream code cleaned up)
   - lutimes-hack.diff (should not be needed any more)
   - rsync-fix_fuzzy.patch (fixed upstream)
-  - rsync-hlink_crash.patch (upstream cleaned up) 
+  - rsync-hlink_crash.patch (upstream cleaned up)
   - munge-symlinks-2.6.9.diff (integrated upstream)
 
 -------------------------------------------------------------------
@@ -930,7 +937,7 @@ Tue Dec  4 18:07:36 CET 2007 - ro@suse.de
 Thu Nov  8 16:45:30 CET 2007 - ro@suse.de
 
 - fix uninitialized struct sx in hlink.c:hard_link_cluster
-  to prevent crash when using acls (#338358) 
+  to prevent crash when using acls (#338358)
 
 -------------------------------------------------------------------
 Fri Sep 14 15:03:17 CEST 2007 - ro@suse.de
@@ -945,13 +952,13 @@ Fri Sep 14 15:03:17 CEST 2007 - ro@suse.de
 Wed Sep 12 15:51:20 CEST 2007 - dmueller@suse.de
 
 - build parallel
-- fix hardlinks accross partition 
+- fix hardlinks accross partition
 
 -------------------------------------------------------------------
 Mon Sep 10 17:30:57 CEST 2007 - ro@suse.de
 
 - fix abort in rsync when acls and fuzzy are used together
-  (#306263) 
+  (#306263)
 
 -------------------------------------------------------------------
 Fri Aug 17 15:03:44 CEST 2007 - cthiel@suse.de
@@ -990,7 +997,7 @@ Wed Apr 18 22:25:38 CEST 2007 - aj@suse.de
 -------------------------------------------------------------------
 Tue Sep 12 15:42:00 CEST 2006 - ro@suse.de
 
-- apply fix for xattr.diff from rsync mailing list 
+- apply fix for xattr.diff from rsync mailing list
 
 -------------------------------------------------------------------
 Tue Aug 22 14:41:11 CEST 2006 - ro@suse.de
@@ -1007,7 +1014,7 @@ Thu Aug 10 13:38:33 CEST 2006 - dmueller@suse.de
 Wed Jun 21 11:56:38 CEST 2006 - ro@suse.de
 
 - added tag-3 patch from cvs (will be in 2.6.9)
-  to avoid aborts with "unexpected tag 3" 
+  to avoid aborts with "unexpected tag 3"
 
 -------------------------------------------------------------------
 Mon Jun 12 01:55:55 CEST 2006 - ro@suse.de
@@ -1038,7 +1045,7 @@ Thu Jan 19 00:04:48 CET 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Oct 14 12:19:33 CEST 2005 - ro@suse.de
 
-- fix problem in configure to re-enable ACLs (#128323) 
+- fix problem in configure to re-enable ACLs (#128323)
 
 -------------------------------------------------------------------
 Tue Aug  2 12:25:35 CEST 2005 - ro@suse.de
@@ -1048,13 +1055,13 @@ Tue Aug  2 12:25:35 CEST 2005 - ro@suse.de
 -------------------------------------------------------------------
 Fri Jul 29 02:09:54 CEST 2005 - ro@suse.de
 
-- update to 2.6.6 
+- update to 2.6.6
 
 -------------------------------------------------------------------
 Mon Jun  6 16:49:10 CEST 2005 - ro@suse.de
 
 - update to 2.6.5
-- use acl patch as shipped in rsync/patches directory 
+- use acl patch as shipped in rsync/patches directory
 
 -------------------------------------------------------------------
 Fri Feb 18 12:46:36 CET 2005 - mmj@suse.de
@@ -1070,13 +1077,13 @@ Thu Feb 10 02:40:51 CET 2005 - ro@suse.de
 -------------------------------------------------------------------
 Wed Dec  1 17:26:45 CET 2004 - ro@suse.de
 
-- re-register before SLP really times out 
+- re-register before SLP really times out
 
 -------------------------------------------------------------------
 Wed Dec  1 15:27:06 CET 2004 - ro@suse.de
 
 - re-worked slp.diff
-  do not use a timer but hook into central select call 
+  do not use a timer but hook into central select call
 
 -------------------------------------------------------------------
 Thu Nov 11 17:39:50 CET 2004 - ro@suse.de
@@ -1116,12 +1123,12 @@ Tue Mar 16 12:44:20 CET 2004 - ro@suse.de
 -------------------------------------------------------------------
 Tue Jan 13 16:56:54 CET 2004 - ro@suse.de
 
-- update to version 2.6.0 
+- update to version 2.6.0
 
 -------------------------------------------------------------------
 Thu Dec  4 12:22:05 CET 2003 - ro@suse.de
 
-- update to real 2.5.7 
+- update to real 2.5.7
 
 -------------------------------------------------------------------
 Thu Dec  4 10:36:27 CET 2003 - okir@suse.de
@@ -1142,27 +1149,27 @@ Thu Nov  6 17:03:34 CET 2003 - schwab@suse.de
 Fri Oct 24 12:13:59 CEST 2003 - ro@suse.de
 
 - added make test
-- added acl patch, build with acl support 
+- added acl patch, build with acl support
 
 -------------------------------------------------------------------
 Fri Oct 17 11:51:23 CEST 2003 - ro@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Mon Aug 18 17:57:59 CEST 2003 - ro@suse.de
 
-- added stop_on_removal and restart_on_update macro calls 
+- added stop_on_removal and restart_on_update macro calls
 
 -------------------------------------------------------------------
 Tue May 13 00:25:51 CEST 2003 - ro@suse.de
 
-- use defattr 
+- use defattr
 
 -------------------------------------------------------------------
 Wed Mar  5 14:57:57 CET 2003 - ro@suse.de
 
-- add xinetd-config to filelist 
+- add xinetd-config to filelist
 
 -------------------------------------------------------------------
 Tue Jan 28 12:05:30 CET 2003 - ro@suse.de
@@ -1176,17 +1183,17 @@ Tue Jan 28 12:05:30 CET 2003 - ro@suse.de
 -------------------------------------------------------------------
 Fri Jan 24 11:48:54 CET 2003 - ro@suse.de
 
-- added xinetd-config snippet 
+- added xinetd-config snippet
 
 -------------------------------------------------------------------
 Wed Jan 15 12:51:34 CET 2003 - ro@suse.de
 
-- added logrotate config 
+- added logrotate config
 
 -------------------------------------------------------------------
 Tue Oct  8 14:01:34 CEST 2002 - ro@suse.de
 
-- fix recursive hangup in server process on broken pipe 
+- fix recursive hangup in server process on broken pipe
 
 -------------------------------------------------------------------
 Wed Aug 14 11:15:11 CEST 2002 - poeml@suse.de
@@ -1197,7 +1204,7 @@ Wed Aug 14 11:15:11 CEST 2002 - poeml@suse.de
 Thu Aug  1 17:33:29 CEST 2002 - ro@suse.de
 
 - use BuildRoot
-- added PreReqs 
+- added PreReqs
 
 -------------------------------------------------------------------
 Mon Jul 22 10:03:29 CEST 2002 - kukuk@suse.de
@@ -1225,12 +1232,12 @@ Fri Feb  8 11:00:00 CET 2002 - okir@suse.de
 -------------------------------------------------------------------
 Wed Feb  6 14:21:19 CET 2002 - ro@suse.de
 
-- make rsyncd a hardlink (#13041) 
+- make rsyncd a hardlink (#13041)
 
 -------------------------------------------------------------------
 Fri Feb  1 11:55:30 CET 2002 - ro@suse.de
 
-- added patch for segmentation fault 
+- added patch for segmentation fault
 
 -------------------------------------------------------------------
 Mon Jan 21 17:09:58 MET 2002 - draht@suse.de
@@ -1240,17 +1247,17 @@ Mon Jan 21 17:09:58 MET 2002 - draht@suse.de
 -------------------------------------------------------------------
 Mon Jan 21 00:08:25 CET 2002 - ro@suse.de
 
-- applied security patch for various signed/unsigned fixes 
+- applied security patch for various signed/unsigned fixes
 
 -------------------------------------------------------------------
 Fri Dec 14 01:33:54 CET 2001 - ro@suse.de
 
-- removed START_RSYNCD 
+- removed START_RSYNCD
 
 -------------------------------------------------------------------
 Tue Aug 28 15:01:10 CEST 2001 - ro@suse.de
 
-- on uninstall, call insserv to cleanup 
+- on uninstall, call insserv to cleanup
 
 -------------------------------------------------------------------
 Tue Aug 28 13:02:35 CEST 2001 - ro@suse.de
@@ -1261,7 +1268,7 @@ Tue Aug 28 13:02:35 CEST 2001 - ro@suse.de
 -------------------------------------------------------------------
 Mon Sep 25 15:31:45 CEST 2000 - ro@suse.de
 
-- sorted 
+- sorted
 
 -------------------------------------------------------------------
 Wed Sep 13 13:51:34 CEST 2000 - aj@suse.de
@@ -1271,12 +1278,12 @@ Wed Sep 13 13:51:34 CEST 2000 - aj@suse.de
 -------------------------------------------------------------------
 Mon Sep 11 14:24:35 CEST 2000 - ro@suse.de
 
-- update to 2.4.6 
+- update to 2.4.6
 
 -------------------------------------------------------------------
 Fri Aug 18 01:59:08 CEST 2000 - ro@suse.de
 
-- update to 2.4.4 
+- update to 2.4.4
 
 -------------------------------------------------------------------
 Thu Jan 20 14:28:39 CET 2000 - aj@suse.de

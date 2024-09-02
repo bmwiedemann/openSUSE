@@ -25,10 +25,9 @@ URL:            https://github.com/jcmgray/autoray
 Source:         https://files.pythonhosted.org/packages/source/a/autoray/autoray-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opt-einsum}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
