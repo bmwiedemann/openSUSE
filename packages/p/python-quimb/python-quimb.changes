@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Aug 31 11:54:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.4:
+  * support for numpy v2.0 and scipy v1.14
+  * add MPS sampling: `MatrixProductState.sample_configuration`
+    and `MatrixProductState.sample` (generating multiple samples)
+    and use these for `CircuitMPS.sample` and
+    `CircuitPermMPS.sample`.
+  * add basic `.plot()` method for SimpleUpdate classes
+  * add `edges_1d_chain` for generating 1D chain edges
+  * operatorbuilder: better coefficient placement for long range
+    MPO building
+  * `TNOptimizer` can now accept an arbitrary pytree (nested
+    combination of dicts, lists, tuples, etc. with
+    `TensorNetwork`, `Tensor` or raw `array_like` objects as the
+    leaves) as the target object to optimize.
+  * `TNOptimizer` can now directly optimize `Circuit` objects,
+    returning a new optimized circuit with updated parameters.
+  * `Circuit`: add `.copy()`, `.get_params()` and `.set_params()`
+    interface methods.
+  * Update generic TN optimizer docs.
+  * add `tn.gen_inds_loops` for generating all loops of indices
+    in a TN.
+  * add `tn.gen_inds_connected` for generating all connected sets
+    of indices in a TN.
+  * make SVD fallback error catching more generic ({pull}`#238`)
+  * fix some windows + numba CI issues.
+  * `approx_spectral_function` add plotting and tracking
+  * add dispatching to various tensor primitives to allow
+    overriding
+  * `CircuitMPS` now supports multi qubit gates, including
+    arbitrary multi-controls (which are treated in a low-rank
+    manner), and faster simulation via better orthogonality
+    center tracking.
+  * add `CircuitPermMPS`
+  * add `MatrixProductState.gate_nonlocal` for applying a gate,
+    supplied as a raw matrix, to a non-local and arbitrary number
+    of sites. The kwarg `contract="nonlocal"` can be used to
+    force this method, or the new option `"auto-mps"` will select
+    this method if the gate is non-local ({issue}`230`)
+  * add `MatrixProductState.gate_with_mpo` for applying an MPO to
+    an MPS, and immediately compressing back to MPS form using
+    `tensor_network_1d_compress`
+  * add `MatrixProductState.gate_with_submpo` for applying an MPO
+    acting only of a subset of sites to an MPS
+  * add `MatrixProductOperator.from_dense` for constructing MPOs
+    from dense matrices, including an only subset of sites
+  * add `MatrixProductOperator.fill_empty_sites` for 'completing'
+    an MPO which only has tensors on a subset of sites with (by
+    default) identities
+  *  `MatrixProductState` and `MatrixProductOperator`, now
+    support the ``sites`` kwarg in common constructors, enabling
+    the TN to act on a subset of the full ``L`` sites.
+  * add `TensorNetwork.drape_bond_between` for 'draping' an
+    existing bond between two tensors through a third
+  * add `Tensor.new_ind_pair_with_identity`
+  * TN2D, TN3D and arbitrary geom classical partition function
+    builders (`TN_classical_partition_function_from_edges`) now
+    all support `outputs=` kwarg specifying non-marginalized
+    variables
+  * add simple dense 1-norm belief propagation algorithm `D1BP`
+  * add `qtn.enforce_1d_like` for checking whether a tensor
+    network is 1D-like, including automatically adding strings of
+    identities between non-local bonds, expanding applicability
+    of `tensor_network_1d_compress`
+  * add `MatrixProductState.canonicalize` as (by default *non-
+    inplace*) version of `canonize`, to follow the pattern of
+    other tensor network methods. `canonize` is now an alias for
+    `canonicalize_` [note trailing underscore].
+  * add `MatrixProductState.left_canonicalize` as (by default
+    *non-inplace*) version of `left_canonize`, to follow the
+    pattern of other tensor network methods. `left_canonize` is
+    now an alias for `left_canonicalize_` [note trailing
+    underscore].
+  * add `MatrixProductState.right_canonicalize` as (by default
+    *non-inplace*) version of `right_canonize`, to follow the
+    pattern of other tensor network methods. `right_canonize` is
+    now an alias for `right_canonicalize_` [note trailing
+    underscore].
+  * add `quimb.tensor.tensor_1d_compress.py` with functions for
+    compressing generic
+  * fix scipy sparse monkey patch for scipy>=1.13 ({issue}`222`)
+  * fix autoblock bug where connected sectors were not being
+    merged ({issue}`223`)
+
+-------------------------------------------------------------------
 Tue Feb 27 20:12:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.3
@@ -184,7 +270,7 @@ Tue Feb 27 20:12:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Jun  1 07:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Numba now exists for Python 3.11, stop skipping it. 
+- Numba now exists for Python 3.11, stop skipping it.
 
 -------------------------------------------------------------------
 Thu Mar 23 06:51:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -262,7 +348,7 @@ Tue Jan 19 09:36:08 UTC 2021 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Sat Aug 22 07:04:12 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Clean up spec file. 
+- Clean up spec file.
 
 -------------------------------------------------------------------
 Wed Aug 19 13:39:27 UTC 2020 - andy great <andythe_great@pm.me>
@@ -273,7 +359,7 @@ Wed Aug 19 13:39:27 UTC 2020 - andy great <andythe_great@pm.me>
 Wed Aug 19 07:07:33 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Disable build for 32-bit arch because numba and parallel does not
-  support 32-bit arch. Tried to export variable 
+  support 32-bit arch. Tried to export variable
   "export QUIMB_NUMBA_PARALLEL=off" does not solve the issue.
 
 -------------------------------------------------------------------

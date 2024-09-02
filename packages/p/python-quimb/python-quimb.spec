@@ -17,7 +17,7 @@
 
 
 Name:           python-quimb
-Version:        1.7.3
+Version:        1.8.4
 Release:        0
 Summary:        Python library for quantum information and many-body calculations
 License:        Apache-2.0

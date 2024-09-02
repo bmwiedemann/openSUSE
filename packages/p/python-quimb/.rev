@@ -95,4 +95,41 @@
     * tensor_compress_bond: add reduced=&quot;left&quot; and reduced=&quot;right&quot;</comment>
     <requestid>1153130</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f44c49c5798d815fcd7b648402d741f4</srcmd5>
+    <version>1.8.4</version>
+    <time>1725275675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.4:
+  * support for numpy v2.0 and scipy v1.14
+  * add MPS sampling: `MatrixProductState.sample_configuration`
+    and `MatrixProductState.sample` (generating multiple samples)
+    and use these for `CircuitMPS.sample` and
+    `CircuitPermMPS.sample`.
+  * add basic `.plot()` method for SimpleUpdate classes
+  * add `edges_1d_chain` for generating 1D chain edges
+  * operatorbuilder: better coefficient placement for long range
+    MPO building
+  * `TNOptimizer` can now accept an arbitrary pytree (nested
+    combination of dicts, lists, tuples, etc. with
+    `TensorNetwork`, `Tensor` or raw `array_like` objects as the
+    leaves) as the target object to optimize.
+  * `TNOptimizer` can now directly optimize `Circuit` objects,
+    returning a new optimized circuit with updated parameters.
+  * `Circuit`: add `.copy()`, `.get_params()` and `.set_params()`
+    interface methods.
+  * Update generic TN optimizer docs.
+  * add `tn.gen_inds_loops` for generating all loops of indices
+    in a TN.
+  * add `tn.gen_inds_connected` for generating all connected sets
+    of indices in a TN.
+  * make SVD fallback error catching more generic ({pull}`#238`)
+  * fix some windows + numba CI issues.
+  * `approx_spectral_function` add plotting and tracking
+  * add dispatching to various tensor primitives to allow
+    overriding
+  * `CircuitMPS` now supports multi qubit gates, including
+    arbitrary multi-controls (which are treated in a low-rank</comment>
+    <requestid>1198064</requestid>
+  </revision>
 </revisionlist>
