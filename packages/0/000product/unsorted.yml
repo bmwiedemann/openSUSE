@@ -14296,7 +14296,7 @@ unsorted:
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
-  - liblog4cplus-2_0-3 
+  - liblog4cplus-2_1-9 
   - liblog4cpp5 
   - liblog4cxx-devel 
   - liblog4cxx15 
@@ -16670,7 +16670,6 @@ unsorted:
   - liburfkill-glib0 
   - liburing-devel 
   - liburing-ffi2 
-  - liburiparser1 
   - libusb-0_1-4-32bit 
   - libusb-1_0-0-32bit 
   - libusb-1_0-devel 
@@ -16938,8 +16937,8 @@ unsorted:
   - libwim15 
   - libwind0 
   - libwinpr2-2 
-  - libwireshark17 
-  - libwiretap14 
+  - libwireshark18 
+  - libwiretap15 
   - libwlroots-0_18 
   - libwlroots11 
   - libwlroots12 
@@ -16979,7 +16978,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil15 
+  - libwsutil16 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -24888,6 +24887,7 @@ unsorted:
   - python310-certifi 
   - python310-certipy 
   - python310-certstream 
+  - python310-certvalidator 
   - python310-cffi 
   - python310-cfgdiff 
   - python310-cfgv 
@@ -26726,6 +26726,7 @@ unsorted:
   - python310-pytest-pretty 
   - python310-pytest-profiling 
   - python310-pytest-pycodestyle 
+  - python310-pytest-pylint 
   - python310-pytest-pyramid-server 
   - python310-pytest-qt 
   - python310-pytest-randomly 
@@ -28512,6 +28513,7 @@ unsorted:
   - python311-certbot-nginx 
   - python311-certipy 
   - python311-certstream 
+  - python311-certvalidator 
   - python311-cfgdiff 
   - python311-cfgv 
   - python311-cfn-lint 
@@ -30274,6 +30276,7 @@ unsorted:
   - python311-pytest-pretty 
   - python311-pytest-profiling 
   - python311-pytest-pycodestyle 
+  - python311-pytest-pylint 
   - python311-pytest-pyramid-server 
   - python311-pytest-qt 
   - python311-pytest-randomly 
@@ -32060,6 +32063,7 @@ unsorted:
   - python312-certifi 
   - python312-certipy 
   - python312-certstream 
+  - python312-certvalidator 
   - python312-cffi 
   - python312-cfgdiff 
   - python312-cfgv 
@@ -33894,6 +33898,7 @@ unsorted:
   - python312-pytest-pretty 
   - python312-pytest-profiling 
   - python312-pytest-pycodestyle 
+  - python312-pytest-pylint 
   - python312-pytest-pyramid-server 
   - python312-pytest-qt 
   - python312-pytest-randomly 
@@ -37104,6 +37109,7 @@ unsorted:
   - ssh-import-id 
   - ssh-pairing 
   - ssh-tools 
+  - sshamble 
   - sshguard 
   - sshpass 
   - sshping 
