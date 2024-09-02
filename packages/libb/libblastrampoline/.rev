@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>1188500</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d61fc9cd00f8dd06f24a2aa368f92b3f</srcmd5>
+    <version>5.11.0</version>
+    <time>1725275682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.11.0:
+  * Improve error messages by including symbol index in
+    trampolines
+  * Be defensive in our indexing when un-smuggling name index
+  * Test on `ppc64le` and `armv7l` as well
+  * Add fallback search for extra-underscore-suffixed symbols
+  * Wrappers for MKL threading using Domains
+- update to 5.10.1:
+  * We accidentally flipped the meaning of
+    `LBT_USE_RTLD_DEEPBIND`</comment>
+    <requestid>1198101</requestid>
+  </revision>
 </revisionlist>

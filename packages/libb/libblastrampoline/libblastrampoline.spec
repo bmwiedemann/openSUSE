@@ -19,7 +19,7 @@
 %global somajor 5
 %global libname libblastrampoline%{somajor}
 Name:           libblastrampoline
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        BLAS/LAPACK demuxer library using PLT trampolines
 License:        MIT

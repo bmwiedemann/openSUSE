@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:48:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.11.0:
+  * Improve error messages by including symbol index in
+    trampolines
+  * Be defensive in our indexing when un-smuggling name index
+  * Test on `ppc64le` and `armv7l` as well
+  * Add fallback search for extra-underscore-suffixed symbols
+  * Wrappers for MKL threading using Domains
+- update to 5.10.1:
+  * We accidentally flipped the meaning of
+    `LBT_USE_RTLD_DEEPBIND`
+
+-------------------------------------------------------------------
 Thu Jul 18 15:55:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.10.0:
