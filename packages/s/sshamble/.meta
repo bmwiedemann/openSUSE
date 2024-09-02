@@ -1,0 +1,15 @@
+<package name="sshamble" project="openSUSE:Factory">
+  <title>Security testing toolset for SSH</title>
+  <description>SSHamble simulates potential attack scenarios, including
+unauthorized remote access due to unexpected state transitions,
+remote command execution in post-session login implementations
+and information leakage through unlimited high-speed authentication
+requests.
+
+The SSHamble interactive shell provides raw access to SSH requests in
+the post-session (but pre-execution) environment, allowing for simple
+esting of environment controls, signal processing, port forwarding,
+and more.</description>
+  <devel project="network:utilities" package="sshamble"/>
+  <url>https://SSHamble.com/</url>
+</package>

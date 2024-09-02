@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Aug 30 19:39:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.3
+  * Identify compromised hostkeys using the badkeys project data.
+
+-------------------------------------------------------------------
+Sat Aug 24 19:03:29 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for sshamble, version 0.0.1
