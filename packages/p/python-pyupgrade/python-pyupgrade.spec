@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyupgrade
-Version:        3.16.0
+Version:        3.17.0
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/asottile/pyupgrade
-# pypi tarball does not include tests, use github instead. PR for inclusion was denied https://github.com/asottile/pyupgrade/pull/326
 Source:         https://github.com/asottile/pyupgrade/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Source:         https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-%%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -49,10 +49,10 @@ programming language.
 %setup -q -n pyupgrade-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pyupgrade
 
@@ -69,6 +69,7 @@ programming language.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pyupgrade
-%{python_sitelib}/*
+%{python_sitelib}/pyupgrade
+%{python_sitelib}/pyupgrade-%{version}.dist-info
 
 %changelog

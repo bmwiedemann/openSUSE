@@ -532,4 +532,15 @@
   * CI updates</comment>
     <requestid>1183038</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>342a9db937f2cceab14e24ff6079bb4b</srcmd5>
+    <version>3.17.0</version>
+    <time>1725275666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.17.0:
+  * remove python 3.8 support
+  * rewrite TypeVar defaults for Generator / AsyncGenerator
+  * run pyupgrade on itself</comment>
+    <requestid>1198060</requestid>
+  </revision>
 </revisionlist>
