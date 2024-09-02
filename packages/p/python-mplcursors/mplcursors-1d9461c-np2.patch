@@ -1,0 +1,33 @@
+From 1d9461cfc563809911e4bf71141f87fed4cc3e36 Mon Sep 17 00:00:00 2001
+From: Antony Lee <anntzer.lee@gmail.com>
+Date: Tue, 20 Aug 2024 10:40:34 +0200
+Subject: [PATCH] Fix quiver/barbs annotation text on numpy 2.
+
+diff --git a/src/mplcursors/_pick_info.py b/src/mplcursors/_pick_info.py
+index 938273a..de95b8c 100644
+--- a/src/mplcursors/_pick_info.py
++++ b/src/mplcursors/_pick_info.py
+@@ -567,9 +567,9 @@ def _(sel):
+ @_call_with_selection
+ def _(sel):
+     artist = sel.artist
+-    text = "{}\n{}".format(
++    text = "{}\n({!s}, {!s})".format(
+         _format_coord_unspaced(artist.axes, sel.target),
+-        (artist.u[sel.index], artist.v[sel.index]))
++        artist.u[sel.index], artist.v[sel.index])
+     return text
+ 
+ 
+@@ -577,9 +577,9 @@ def _(sel):
+ @_call_with_selection
+ def _(sel):
+     artist = sel.artist
+-    text = "{}\n{}".format(
++    text = "{}\n({!s}, {!s})".format(
+         _format_coord_unspaced(artist.axes, sel.target),
+-        (artist.U[sel.index], artist.V[sel.index]))
++        artist.U[sel.index], artist.V[sel.index])
+     return text
+ 
+ 

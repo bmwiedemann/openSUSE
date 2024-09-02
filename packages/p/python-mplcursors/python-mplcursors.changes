@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 18:29:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Make fit for new versions of Numpy, Matplotlib and Pytest
+  * Add mplcursors-1d9461c-np2.patch
+  * Add mplcursors-10b553e-mpl3.9-pytest8.patch
+
+-------------------------------------------------------------------
 Sun Feb  4 13:49:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.3

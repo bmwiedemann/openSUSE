@@ -23,6 +23,10 @@ Summary:        Interactive data selection cursors for Matplotlib
 License:        Zlib
 URL:            https://github.com/anntzer/mplcursors
 Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplcursors-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mplcursors-10b553e-mpl3.9-pytest8.patch https://github.com/anntzer/mplcursors/commit/10b553e
+Patch0:         mplcursors-10b553e-mpl3.9-pytest8.patch
+# PATCH-FIX-UPSTREAM mplcursors-1d9461c-np2.patch https://github.com/anntzer/mplcursors/commit/1d9461c
+Patch1:         mplcursors-1d9461c-np2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
