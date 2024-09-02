@@ -3,6 +3,7 @@
   <service name="cargo_vendor" mode="manual">
      <param name="srctar">difftastic-*.tar.gz</param>
      <param name="compression">xz</param>
-     <param name="update">true</param>
+     <param name="update">false</param>
+     <param name="filter">true</param>
   </service>
 </services>

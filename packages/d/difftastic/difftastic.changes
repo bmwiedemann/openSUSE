@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 31 07:29:20 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Packaging changes:
+  * Disable cargo vendor service update to avoid breaking
+    dependency changes and reenable tests.
+  * Add cargo vendor filter to reduce vendor tarball size
+    significantly.
+
+-------------------------------------------------------------------
 Thu Aug 29 00:41:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.60.0:

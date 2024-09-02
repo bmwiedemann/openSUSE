@@ -72,8 +72,8 @@ rm -v manual/book/.nojekyll
 %fdupes -s manual/book
 %endif
 
-#%%check
-#%%{cargo_test}
+%check
+%{cargo_test}
 
 %files
 %license LICENSE
