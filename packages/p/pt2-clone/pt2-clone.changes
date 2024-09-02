@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  1 07:23:35 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 1.70
+  * You can now hold down the shift key while pressing the COPY
+    button in the sample editor screen to clone the sample into the
+    first free sample slot. If you have marked some portion of the
+    sample data, then this slice will be copied instead of the
+    whole sample.
+  * Added a new config entry (RESTRICTED_PATT_EDIT_CLICK) for changing
+    the behavior when clicking on the song pattern to change the
+    current pattern to edit. This is to avoid annoying accidents.
+    Check out the new protracker.ini for more information about
+    this setting.
+  * Windows/macOS: Updated SDL to v2.30.6
+
+-------------------------------------------------------------------
 Mon Apr 22 19:09:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.69
