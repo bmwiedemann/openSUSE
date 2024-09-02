@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Aug 26 22:15:02 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.32~git20240827:
+  * Vk/Gl/Overlays: Do not blend the alpha channel when rendering overlays
+  * RSX: Fix RSX Captures
+  
+-------------------------------------------------------------------
+Mon Aug 26 17:52:40 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.32~git20240826:
+  * Qt: check microphone permissions
+  * Qt: ask for camera permissions
+  * Qt: sync gui settings by default after setting or removing values
+  * Fix crash in JIT when compiling LLVM blocks
+  * macos - Fix crash when running native arm64 LLVM
+  * Use sysctlbyname
+  * Implement basic system info detection on macos using sysctl
+  * SPU: Remove condition from GETLLAR spin detection
+  * Handle WSAENETRESET error
+  * macos - Fix crash executing resolver
+  * aarch64 - Support for apple exceptions
+  * Add proper transform pass management
+  * Minor fixes
+  * Fix v3dv workaround
+  * Fix aarch64 compilation on macOS
+  * aarch64 - Decode CPU brand information
+  * Debugger: Pointer comparison bugfix
+  * vk: Only allow unsupported textureCompressionBC for v3dv
+  * vk: Add driver vendor V3DV (Broadcom on Mesa)
+  * vk: Support v3dv, allow creating device without textureCompressionBC
+  * spu: Workaround GCC 14.1 compiler bug
+  * config: Set minimum allowed resolution scale to 25%
+  * cmake: fix EGL and add USE_SYSTEM_CURL
+  * Formatting
+  * Rework aarch64 signal handling
+  * Debugger/SPU: Implement SPU Disassembler
+  * SPU: Improve some logging
+  * Improve "write" instruction detection.
+  * Fix hang when compiling leaf blocks
+  * Fix compiler warnings about unused args for aarch64
+  * Use return-oriented trap approach
+  * Move to a assembler wrapper for injected asm to better handle dependencies
+  * Refactor aarch64 JIT code
+  * Qt/input: Don't report two direction trigger values unless actually requested
+  * Input: Abbreviate some variable names and add min output interval
+  * input: log send_output_report hid error
+  * SPU: Reduce some logging
+  * Implement thread_ctrl::wait_until()
+  * Qt: fix pad settings latency
+  * SPU: Disable transfer locking for RSX addresses
+  * SPU: Unlock RSX list transfers
+  * Debugger/PPU: Minor bugfix in CR register dump
+  * Qt/patches: don't allow duplicate app versions
+  * Qt/patches: fix multi app version entry in patch creator
+  * Qt/patches: check if app version is 5 characters long and like 01.00
+  * Qt/patches: check if serial is 9 characters long and alphanumeric
+  * patches: use more std::move
+  * Qt/patches: Use YAML emitter to escape characters
+  * Qt/patches: allow to select text with the mouse
+  * evdev: don't warn on disabled motion device
+  * Qt: vfs tool dialog
+  * Update 7zip to 24.08
+  * Qt/patches: delete message boxes on close
+  * patches: improve error logging: add file paths to all errors
+  * Qt/patches: use show instead of exec
+  * Qt/patches: improve value validation
+  * Qt/patches: uze const ref for YAML::Node params
+  * sceNp: Silence a few functions
+  * CELL: Remove performance hack for reservation
+  * CELL: New reservation notifications mechanism
+  * Fix sys_io thread deadlock
+  * keyboard: only map single buttons
+  * Remove unused using declaration
+  * xinput: allow to map triggers as positive or negative
+  * rsx: Fix crash when CPU blit is enabled
+  * aarch64/llvm: Handle processing of leaf nodes
+  * Fix vm::reservation_update
+  * SPU: Fix "SPU Accurate Reservations" off
+  * Qt/input: add shortcut for toggling emulated mouse and keyboard
+  * Fix overflow warning
+  * Qt: refactor pad preview updates to reduce duplicate code
+  * Fix OpenGL behavior under wayland-egl
+  * Enable users to reject friend requests
+  * SPU LLVM: Enable PUTLLC16 if accurate reservations is off
+  * Do not add usage stats for unused SPU programs
+  * SPU: Fix bug in GETLLAR
+
+-------------------------------------------------------------------
 Sun Aug 11 05:51:49 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.32~git20240810:
