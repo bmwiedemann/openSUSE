@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:24:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.7.0:
+  * cli.vspacing: add optional "s" flag for oneline_split=True
+  * vspacing: keep long all-oneliner blocks together by default,
+    unless oneline_split is specified
+
+-------------------------------------------------------------------
 Sun Apr 21 08:43:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.4.0:
