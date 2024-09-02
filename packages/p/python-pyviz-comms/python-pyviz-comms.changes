@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:23:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * Reformat `package.json` to 2-space indent #128 (@krassowski)
+  * Fix panel preview rendering on JupyterHub 4.1+ #125
+
+-------------------------------------------------------------------
 Tue May  7 07:49:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Bring back package %build from source, removing binary .whl

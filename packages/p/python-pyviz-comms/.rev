@@ -75,4 +75,14 @@
 </comment>
     <requestid>1172347</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2393b1a1c61df974afb22ec9316cac5f</srcmd5>
+    <version>3.0.3</version>
+    <time>1725275676</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.3:
+  * Reformat `package.json` to 2-space indent #128 (@krassowski)
+  * Fix panel preview rendering on JupyterHub 4.1+ #125</comment>
+    <requestid>1198066</requestid>
+  </revision>
 </revisionlist>
