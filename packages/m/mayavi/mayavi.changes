@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 30 17:30:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.8.2
+  * This is a bugfix release to work correctly with traitsui-8,
+    Python-3.12, VTK-9.3 and above, and PyQt6. 18 PRs were merged.
+  * Port changes from upstream QVTKRenderWindowInteractor.
+  * ENH: Add support for PyQt6
+  * Fix bug with latest VTK
+  * Improve compatibility with traitsui 8
+  * Fix issue with `mlab.process_ui_events`
+  * ENH: Add support for Python 3.11
+  * Just exclude the zip file so the sdist does not ship it. This
+    way the file on pypi is much smaller.
+- Unpin numpy 2
+  * add mayavi-pr1303-cython-np2.patch gh#enthought/mayavi#1303
+  * add mayavi-pr1315-np2tests.patch gh#enthought/mayavi#1315
+- Drop patches merged upstream
+  * mayavi-pr1290-vtk-9.3.patch
+  * python-311-support.patch
+
+-------------------------------------------------------------------
 Sat Apr 20 14:20:07 UTC 2024 - Benjamin Greiner <code@bnavigator.de>
 
 - Pin to numpy < 2: gh#enthought/mayavi#1294

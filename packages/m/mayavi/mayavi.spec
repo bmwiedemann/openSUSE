@@ -19,7 +19,7 @@
 # vtk only for python3 flavor
 %define         pythons python3
 Name:           mayavi
-Version:        4.8.1
+Version:        4.8.2
 Release:        0
 Summary:        3D visualization of scientific data in Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.0-or-later AND LGPL-3.0-or-later
@@ -28,19 +28,18 @@ URL:            https://github.com/enthought/mayavi
 Source0:        https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-%{version}.tar.gz
 Source1:        mayavi.desktop
 Source2:        tvtk_doc.desktop
-# PATCH-FIX-UPSTREAM Based on gh#enthought/mayavi#1199
-Patch0:         python-311-support.patch
-# PATCH-FIX-UPSTREAM mayavi-pr1290-vtk-9.3.patch gh#enthought/mayavi#1290
-Patch1:         mayavi-pr1290-vtk-9.3.patch
+# PATCH-FIX-UPSTREAM mayavi-pr1303-cython-np2.patch gh#enthought/mayavi#1303
+Patch0:         mayavi-pr1303-cython-np2.patch
+# PATCH-FIX-UPSTREAM mayavi-pr1315-np2tests.patch gh#enthought/mayavi#1315
+Patch1:         mayavi-pr1315-np2tests.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-apptools
-BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  python3-envisage
-# fails to build for 4.8.1, unpin on next release : gh#enthought/mayavi#1294
-BuildRequires:  python3-numpy-devel < 2
+BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-packaging
 BuildRequires:  python3-pip
 BuildRequires:  python3-pyface >= 6.1.1
@@ -56,8 +55,7 @@ BuildRequires:  vtk-devel
 Requires:       python3-Pygments
 Requires:       python3-apptools
 Requires:       python3-envisage
-# keep in sync with numpy-devel above
-Requires:       python3-numpy < 2
+Requires:       python3-numpy
 Requires:       python3-packaging
 Requires:       python3-pyface >= 6.1.1
 Requires:       python3-traits >= 6.0.0
@@ -115,11 +113,12 @@ chmod -x mayavi/tests/data/cellsnd.ascii.inp
 sed -i -e '/^#!\//, 1d' integrationtests/mayavi/*.py
 sed -i -e '/^#!\//, 1d' mayavi/tests/*.py
 sed -i -e '/^#!\//, 1d' mayavi/scripts/*.py
-sed -i -e '/^#!\//, 1d' tvtk/setup.py
+sed -i -e '/^#!\//, 1d' tvtk/_setup.py
 
 # env-script-interpreter
 find . -name \*py -exec \
     sed -i -e '1s@#!\s*%{_bindir}/env\s*python@#!%{__python3}@' '{}' \;
+sed -i -e '1s@#!\s*%{_bindir}/env\s*python@#!%{__python3}@' mayavi/scripts/mayavi2
 
 %build
 export CFLAGS="%{optflags}"
@@ -135,6 +134,8 @@ install -p -m 644 ./docs/source/mayavi/images/mayavi2-48x48.png \
    %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/mayavi2.png
 install -p -m 644 ./docs/source/mayavi/images/mayavi2-48x48.png \
    %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/tvtk_doc.png
+rm -r %{buildroot}%{python3_sitearch}/tvtk/src
+sed -i '/tvtk\/src/d' %{buildroot}%{python3_sitearch}/mayavi-%{version}.dist-info/RECORD
 
 %suse_update_desktop_file -i mayavi
 %suse_update_desktop_file -i tvtk_doc
@@ -163,7 +164,7 @@ donttest="$donttest or test_volume_works_with_probe"
 %{_datadir}/applications/tvtk_doc.desktop
 %{_datadir}/icons/hicolor/
 %{python3_sitearch}/mayavi/
-%{python3_sitearch}/mayavi-%{version}*-info
+%{python3_sitearch}/mayavi-%{version}.dist-info
 %{python3_sitearch}/tvtk/
 
 %files jupyter
