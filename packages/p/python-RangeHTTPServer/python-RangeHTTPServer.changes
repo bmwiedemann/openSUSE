@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:06:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Fix tests
+  * Add option `-b/--bind`
+
+-------------------------------------------------------------------
 Fri Dec 15 16:44:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

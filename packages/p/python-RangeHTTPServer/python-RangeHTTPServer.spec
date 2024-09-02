@@ -1,7 +1,7 @@
 #
-# spec file for package python-rangehttpserver
+# spec file for package python-RangeHTTPServer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define modname RangeHTTPServer
 Name:           python-%{modname}
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        SimpleHTTPServer with support for Range requests
 License:        Apache-2.0
 URL:            https://github.com/danvk/RangeHTTPServer/
 # PyPI tarball does not contain tests
 Source:         https://github.com/danvk/RangeHTTPServer/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # Section test
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}

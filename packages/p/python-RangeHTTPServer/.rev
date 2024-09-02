@@ -7,4 +7,14 @@
     <comment>SimpleHTTPServer with support for Range requests, needed for python-uproot update.</comment>
     <requestid>1134089</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6b5e8530b50475d9af9356f70deee05</srcmd5>
+    <version>1.4.0</version>
+    <time>1725275653</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Fix tests
+  * Add option `-b/--bind`</comment>
+    <requestid>1198054</requestid>
+  </revision>
 </revisionlist>
