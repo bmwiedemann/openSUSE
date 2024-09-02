@@ -107,4 +107,29 @@ Add missing BuildRequires</comment>
 - Switch to pyproject macros.</comment>
     <requestid>1147686</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2613892835cb7020cf4dac3981ab9865</srcmd5>
+    <version>12.0.0</version>
+    <time>1725275670</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.0.0:
+  * Remove deprecated imports:
+   `pyee.BaseEventEmitter`
+   `pyee.AsyncIOEventEmitter`
+   `pyee.TwistedEventEmitter`
+   `pyee.ExecutorEventEmitter`
+   `pyee.TrioEventEmitter`
+  * Add `PyeeError` which inherits from `PyeeException`, and use
+    throughout
+  * Deprecate direct use of `PyeeException`
+  * Add project URLs to pyproject.toml and PyPI
+  * Use ActionLint v2
+  * Fix GitHub release action
+
+  Refactor developer setup to use a local virtualenv
+  * Fix Python 2.7 in tox
+- Fix LICENSE url
+- Initial release of python-pyee 3.0.3</comment>
+    <requestid>1198063</requestid>
+  </revision>
 </revisionlist>

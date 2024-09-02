@@ -17,7 +17,7 @@
 
 
 Name:           python-pyee
-Version:        11.1.0
+Version:        12.0.0
 Release:        0
 Summary:        A port of node.js's EventEmitter to python
 License:        MIT
