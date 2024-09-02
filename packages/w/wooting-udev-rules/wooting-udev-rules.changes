@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:40:32 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.0.4
+  Use the simplified rules file from upstream.
+
+-------------------------------------------------------------------
+Fri Aug 30 19:58:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.0.3
+  - The filename needs to start with an ID below 73 to work.
+  - drop xpad driver subpackage
+
+-------------------------------------------------------------------
+Wed Aug 21 21:24:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.0.2 
+  Add newer Wooting 60 HE
+
+-------------------------------------------------------------------
 Fri Jul 26 14:25:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - initial package

@@ -15,7 +15,7 @@
 
 
 Name:           wooting-udev-rules
-Version:        0.0.1
+Version:        0.0.4
 Release:        0
 Summary:        Udev rules to use Wooting from normal users
 License:        MIT
@@ -25,9 +25,7 @@ URL:            https://wooting.io
 # plus the generic rule from
 # https://help.wooting.io/article/147-configuring-device-access-for-wootility-under-linux-udev-rules
 #
-Source1:        80-wooting.rules
-Source2:        80-wooting-xpad.rules
-Source3:        wooting-xinput@.service
+Source1:        70-wooting.rules
 #
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(systemd)
@@ -36,47 +34,14 @@ BuildArch:      noarch
 %description
 udev rules to use Wooting tools from normal users.
 
-%if %{with gamepad}
-%package gamepad
-Summary:        Additional files for the gamepad support
-URL:            https://help.wooting.io/article/93-configuring-xinput-support-for-linux
-%description gamepad
-udev rules to use Wooting tools from normal users.
-
-This package adds the required files for gamepad support.
-%endif
-
 %prep
 
 %build
 
 %install
-install -D -m 0644 -t %{buildroot}%{_udevrulesdir} ${RPM_SOURCE_DIR}/80-wooting.rules
-
-%if %{with gamepad}
-install -D -m 0644 -t %{buildroot}%{_udevrulesdir} ${RPM_SOURCE_DIR}/80-wooting-xpad.rules
-install -D -m 0644 -t %{buildroot}%{_unitdir}      ${RPM_SOURCE_DIR}/*.service
-%endif
+install -D -m 0644 -t %{buildroot}%{_udevrulesdir} ${RPM_SOURCE_DIR}/70-wooting.rules
 
 %files
-%{_udevrulesdir}/80-wooting.rules
-
-%if %{with gamepad}
-%pre gamepad
-%service_add_pre wooting-xinput@.service
-
-%preun gamepad
-%service_del_preun wooting-xinput@.service
-
-%post gamepad
-%service_add_post wooting-xinput@.service
-
-%postun gamepad
-%service_del_postun wooting-xinput@.service
-
-%files gamepad
-%{_udevrulesdir}/80-wooting-xpad.rules
-%{_unitdir}/wooting-xinput@.service
-%endif
+%{_udevrulesdir}/70-wooting.rules
 
 %changelog

@@ -7,4 +7,22 @@
     <comment>make it easier to use the wooting devices on TW</comment>
     <requestid>1190504</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57f382c20f8a14ad9775c8bc7ea42d3e</srcmd5>
+    <version>0.0.4</version>
+    <time>1725275684</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1198097 from darix
+
+- Update to 0.0.4
+  Use the simplified rules file from upstream.
+
+- Update to 0.0.3
+  - The filename needs to start with an ID below 73 to work.
+  - drop xpad driver subpackage
+
+- Update to 0.0.2 
+  Add newer Wooting 60 HE</comment>
+    <requestid>1198098</requestid>
+  </revision>
 </revisionlist>
