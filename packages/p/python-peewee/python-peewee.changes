@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:12:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.6:
+  * Fix bug in recursive `model.delete_instance()` when a table
+    contains foreign-keys at multiple depths of the graph
+  * Fix regression in pool behavior on systems where
+    `time.time()` returns identical values for two connections.
+    This adds a no-op comparable sentinel to the heap to prevent
+    any recurrence of this problem.
+  * Ensure that subqueries inside `CASE` statements generate
+    correct SQL.
+  * Fix regression that broke server-side cursors with Postgres
+  * Fix to ensure compatibility with psycopg3 - the libpq
+    TransactionStatus constants are no longer available on the
+    `Connection` instance.
+  * Fix quoting issue in pwiz that could generate invalid python
+    code for double-quoted string literals used as column defaults.
+
+-------------------------------------------------------------------
 Thu Jun  6 20:17:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.5:
