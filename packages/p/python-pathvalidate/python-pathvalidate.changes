@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:18:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Test Python 3.12 in CIs
+  * Fix coverage report
+  * Fix `sanitize_filename` truncation
+  * Fix validation functions of filepaths
+  * If `platform` argument is `windows` or `universal`, filepaths
+    ending with a space or a period should be detected as an
+    error
+  * Fix POSIX-style absolute paths were not detected as errors
+    with `platform="windows"` or `platform="universal"` on Python
+    3.12 and below
+  * Add support for Python 3.13
+  * Improve type annotations
+  * Add a build and publish workflow
+  * Add Sigstore signatures to release assets
+
+-------------------------------------------------------------------
 Sat Dec  9 10:06:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

@@ -86,4 +86,26 @@
   * Drop support for Python 3.6</comment>
     <requestid>1132221</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>779b6e0e141b03464b61f0640ac9b359</srcmd5>
+    <version>3.2.1</version>
+    <time>1725275668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Test Python 3.12 in CIs
+  * Fix coverage report
+  * Fix `sanitize_filename` truncation
+  * Fix validation functions of filepaths
+  * If `platform` argument is `windows` or `universal`, filepaths
+    ending with a space or a period should be detected as an
+    error
+  * Fix POSIX-style absolute paths were not detected as errors
+    with `platform=&quot;windows&quot;` or `platform=&quot;universal&quot;` on Python
+    3.12 and below
+  * Add support for Python 3.13
+  * Improve type annotations
+  * Add a build and publish workflow
+  * Add Sigstore signatures to release assets</comment>
+    <requestid>1198062</requestid>
+  </revision>
 </revisionlist>
