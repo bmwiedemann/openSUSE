@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 20 16:41:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.1:
+  * fix: logging for remote network calls (#3140)
+  * chore(deps): update CPE dictionary index (#3135)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#3137)
+  * chore(deps): update tools to latest versions (#3121)
+  * chore(deps): bump github.com/docker/docker (#3123)
+  * chore(deps): bump anchore/sbom-action from 0.17.0 to 0.17.1
+    (#3124)
+  * chore(deps): bump github/codeql-action from 3.26.0 to 3.26.2
+    (#3129)
+  * fix: add nil check to CycloneDX toBomProperties (#3119)
+  * fix: read CycloneDX BOM components from metadata (#3092)
+  * fix: improve groupid extraction for Jenkins plugins (#2815)
+  * chore(deps): update CPE dictionary index (#3116)
+  * support .kar files (#3113)
+  * chore: fix some comments (#3114)
+  * chore: fix failing python relationship test (#3117)
+  * update-slack-to-discourse (#3111)
+
+-------------------------------------------------------------------
 Fri Aug 09 18:12:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.11.0:
