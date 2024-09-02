@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 30 13:09:44 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.96.3:
+  * Fix potential infinite loop when playing sounds with loop start >= end 
+    (e.g. misc/forcefield.wav from Madfox's kaptlog.zip)
+  * Fix possible overflow when resampling very big sounds 
+    (e.g. gram1.wav from the 'A day like no other' mod.)
+  * Change Sky_ClipPoly to allocate on the heap in if MAX_CLIP_VERTS limit 
+    is reached (e.g. with lim_daviddg from Liminal Spaces Jam)
+  * Minor code cleanups. Updates to third party code.
+
+-------------------------------------------------------------------
 Thu Jun 13 14:58:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.96.2:
