@@ -2022,4 +2022,12 @@
     <comment>- Include xf86-video-chips only on i686,x86_64: the package does
   not exist on other arches.</comment>
   </revision>
+  <revision rev="255" vrev="255">
+    <srcmd5>92b64a46bfae160320cf2bec1ddddb2f</srcmd5>
+    <version>unknown</version>
+    <time>1725275735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198258</requestid>
+  </revision>
 </revisionlist>

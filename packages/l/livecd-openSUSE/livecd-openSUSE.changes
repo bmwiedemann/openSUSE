@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  2 07:29:49 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Include xf86-video-sis and xf86-video-vesa only on i686,x86_64:
+  the packages do not exist on other arches anymore.
+
+-------------------------------------------------------------------
 Thu Aug 29 11:24:44 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Include xf86-video-chips only on i686,x86_64: the package does

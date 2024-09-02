@@ -284,11 +284,11 @@ install xf86-video-qxl
 install xf86-video-r128
 install xf86-video-savage
 install xf86-video-siliconmotion i686,x86_64
-install xf86-video-sis
+install xf86-video-sis i686,x86_64
 install xf86-video-sisusb
 install xf86-video-tdfx
 install xf86-video-v4l
-install xf86-video-vesa
+install xf86-video-vesa i686,x86_64
 #install xf86-video-voodoo
 install xz
 install zd1211-firmware

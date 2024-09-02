@@ -405,11 +405,11 @@
     <package name="xf86-video-r128"/>
     <package name="xf86-video-savage"/>
     <package name="xf86-video-siliconmotion" arch="i686,x86_64"/>
-    <package name="xf86-video-sis"/>
+    <package name="xf86-video-sis" arch="i686,x86_64"/>
     <package name="xf86-video-sisusb"/>
     <package name="xf86-video-tdfx"/>
     <package name="xf86-video-v4l"/>
-    <package name="xf86-video-vesa"/>
+    <package name="xf86-video-vesa" arch="i686,x86_64"/>
     <package name="xz"/>
     <package name="zd1211-firmware"/>
     <package name="zip"/>
