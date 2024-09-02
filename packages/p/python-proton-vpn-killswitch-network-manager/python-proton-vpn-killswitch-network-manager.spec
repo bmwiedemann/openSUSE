@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-killswitch-network-manager
-Version:        0.5.0
+Version:        0.5.4
 Release:        0
 Summary:        Proton VPN kill switch interface using NetworkManager
 License:        GPL-3.0-or-later
