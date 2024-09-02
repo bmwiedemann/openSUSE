@@ -16,9 +16,9 @@
 #
 
 
-%define sigil_doc_version 2022.05.17
+%define sigil_doc_version 2024.08.15
 Name:           sigil
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -47,7 +47,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-devel >= 6.2.0
+BuildRequires:  qt6-base-devel >= 6.4.0
 # not need for build, only check for exists
 # upstream use for python3-Pillow 7.1.2
 BuildRequires:  python3-Pillow >= 5.0.0
