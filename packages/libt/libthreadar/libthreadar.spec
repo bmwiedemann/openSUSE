@@ -1,6 +1,7 @@
 #
 # spec file for package libthreadar
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define sover 1000
 Name:           libthreadar
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        C++ library proposing a set of high level classes for threads management
 License:        LGPL-3.0-or-later

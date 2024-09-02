@@ -7,4 +7,22 @@
     <comment>for parallel dar - boo#1216790</comment>
     <requestid>1121715</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98a43bcf905023efb710f15fc17132bd</srcmd5>
+    <version>1.5.0</version>
+    <time>1725275681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * added class thread_signal
+  * added method thread::cancel as replacement of thread::kill
+  * deprecated thread::kill method
+  * removed protected methods
+    thread::suspend_cancellation_requests()
+    and thread::resume_cancellation_requests()
+  * added as replacement the thread::cancellation_checkpoint()
+    protected method to let the inherited class define where
+    cancellation can occur and those when it should not occur.
+  * configure.ac and makefile.am adaptation to autoconf 2.71</comment>
+    <requestid>1198100</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:47:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * added class thread_signal
+  * added method thread::cancel as replacement of thread::kill
+  * deprecated thread::kill method
+  * removed protected methods
+    thread::suspend_cancellation_requests()
+    and thread::resume_cancellation_requests()
+  * added as replacement the thread::cancellation_checkpoint()
+    protected method to let the inherited class define where
+    cancellation can occur and those when it should not occur.
+  * configure.ac and makefile.am adaptation to autoconf 2.71
+
+-------------------------------------------------------------------
 Wed Nov  1 20:55:53 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial package, for parallel dar (boo#1216790)
