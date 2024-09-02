@@ -140,4 +140,18 @@
   * Several typing fixes.</comment>
     <requestid>1179071</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ac76f24210de4b85cfe05db37c0a09a2</srcmd5>
+    <version>3.0.29</version>
+    <time>1725275653</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.29:
+  * Further improve performance of dictionary completions.
+  * Custom 'exit' function to return from REPL that
+  * doesn't terminate `sys.stdin` when `exit` is called
+    (important for `embed()`).
+  * doesn't require to be called with parentheses.
+  * Clean up signatures on control-c.</comment>
+    <requestid>1198055</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:08:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.29:
+  * Further improve performance of dictionary completions.
+  * Custom 'exit' function to return from REPL that
+  * doesn't terminate `sys.stdin` when `exit` is called
+    (important for `embed()`).
+  * doesn't require to be called with parentheses.
+  * Clean up signatures on control-c.
+
+-------------------------------------------------------------------
 Thu Jun  6 19:39:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.27:
