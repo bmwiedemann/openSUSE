@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package xfce4-notes-plugin
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -28,6 +28,9 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-notes-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.10/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
+%if 0%{?suse_version} >= 1699
+BuildRequires:  gcc13
+%endif
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -73,6 +76,9 @@ Provides translations for the "%{name}" package.
 %autosetup
 
 %build
+%if 0%{?suse_version} >= 1699
+export CC=gcc-13
+%endif
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
