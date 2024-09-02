@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 31 11:24:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.6
+  * Fix compatibility with NumPy 2.1.0 (#2099).
+- Release 2.0.5
+  * Fix Point x/y/z attributes to return Python floats (#2074).
+
+-------------------------------------------------------------------
 Tue Jul  9 03:00:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on Cython, Cython 3 is supported. 

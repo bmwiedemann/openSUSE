@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Shapely
-Version:        2.0.4
+Version:        2.0.6
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/s/shapely/shapely-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix incompatible pointer type passed to GEOSPolygonize_r
+# PATCH-FIX-UPSTREAM Fix incompatible pointer type passed to GEOSPolygonize_r gh#shapely/shapely#1945
 Patch:          https://github.com/shapely/shapely/pull/1945.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
