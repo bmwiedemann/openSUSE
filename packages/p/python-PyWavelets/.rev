@@ -123,4 +123,13 @@
 - first package</comment>
     <requestid>1172523</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f27751efd17afe9627e50374abc054b6</srcmd5>
+    <version>1.7.0</version>
+    <time>1725275649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Python 3.13 support</comment>
+    <requestid>1198041</requestid>
+  </revision>
 </revisionlist>

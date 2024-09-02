@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyWavelets
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
