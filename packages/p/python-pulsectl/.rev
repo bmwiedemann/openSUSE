@@ -90,4 +90,13 @@
     around server_info #81</comment>
     <requestid>1169476</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d5b146800b8aad7a555afbb918eee63</srcmd5>
+    <version>24.8.0</version>
+    <time>1725275647</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.8.0:
+  * docstring fix</comment>
+    <requestid>1198042</requestid>
+  </revision>
 </revisionlist>
