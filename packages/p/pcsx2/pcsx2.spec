@@ -17,13 +17,14 @@
 
 
 Name:           pcsx2
-Version:        1.7.5656~git20240329
+Version:        2.1.120~git20240831
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only
 URL:            http://pcsx2.net/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        https://github.com/PCSX2/pcsx2_patches/releases/download/latest/patches.zip
+Patch1:         fix-shaderc.patch
 ExclusiveArch:  x86_64
 BuildRequires:  clang
 BuildRequires:  cmake
@@ -32,11 +33,13 @@ BuildRequires:  fast_float-devel
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libaio-devel
+BuildRequires:  libbacktrace-devel
 BuildRequires:  libpcap-devel-static
 BuildRequires:  libzip-tools
 BuildRequires:  libzstd-devel-static
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  sndio-devel
+BuildRequires:  unzip
 BuildRequires:  cmake(glslang)
 BuildRequires:  cmake(ryml)
 BuildRequires:  pkgconfig(Qt6Concurrent)
@@ -59,6 +62,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng16)
@@ -73,15 +77,13 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(zlib)
-
-# Xbox One/Series controller wireless driver
-Recommends:     xpadneo
 
 %description
 Sony PlayStation 2 emulator. Requires a BIOS image in %{_libdir}/%{name}/bios
@@ -90,7 +92,8 @@ PCSX2). Check http://www.pcsx2.net/guide.php#Bios for details on which files
 you need and how to obtain them.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 1
+sed -i 's/"Unknown"/"%{version}"/g' cmake/Pcsx2Utils.cmake
 
 %build
 # -DDISABLE_ADVANCE_SIMD=ON: the name of this option is misleading. it actually
@@ -139,7 +142,7 @@ cp .github/workflows/scripts/linux/pcsx2-qt.metainfo.xml.in %{buildroot}%{_datad
 
 %files
 %doc README.md
-%license COPYING.LGPLv3 COPYING.GPLv3
+%license COPYING.GPLv3
 %{_bindir}/%{name}-qt
 %{_libdir}/%{name}
 %{_datadir}/applications/net.pcsx2.PCSX2.desktop

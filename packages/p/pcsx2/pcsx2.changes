@@ -1,4 +1,794 @@
 -------------------------------------------------------------------
+Sun Sep 01 01:22:31 UTC 2024 - i@guoyunhe.me
+
+- Add fix-shaderc.patch
+- Update to version 2.1.120~git20240831:
+  * USB: Add passthrough support to DenshaCon
+  * Settings: Add DenshaCon bindings UI
+  * USB: Add support for Ryojouhen DenshaCon
+  * USB: Add support for Shinkansen DenshaCon
+  * USB: Add support for Type 2 DenshaCon
+  * UI: Enable "System" and toolbar savestate options in OSDSYS
+  * DebugTools: Fix some compiler warnings
+  * Misc: Minor text and settings changes (#11751)
+  * Qt: Update Base Translation
+  * DebugTools: Fix iterator invalidation bug in IopBios.cpp
+  * GS/HW: Add afix to alphas log.
+  * Debugger: Add symbol tree widgets for functions and variables
+  * Debugger: Add GNU demangler
+  * Debugger: Replace SymbolMap class with new SymbolGuardian class
+  * 3rdparty: Add CCC v2.1
+  * Debugger: Remove the Avast demangler
+  * GS/HW: Further expand blend multipass.
+  * Big Picture: Remove ability to make per-game controls
+  * PAD: Update to latest controller database.
+  * Qt: Set focus to Game Library for improved keyboard navigation (#11719)
+  * USB: Fix CaptureEye corruption on dark images
+  * Qt: Fix a couple of instances of inconsistent sorting
+  *  Qt: Center type icon in game list
+  *  Qt: Fix incorrect sort indicator on loading
+  * Qt: Ensure fullscreen UI is stopped on exiting
+  * ImGuiManager: Fix stutter when multiple OSD messages lapse
+  * ImGuiFullscreen: Fix incorrect notification width
+  * FileSystem: Correctly use lstat() on Linux
+  * GSTextureVK: Fix download inside render pass
+  * Qt: Work around theme switching bug
+  * Image: Fix crash loading corrupted/invalid JPEG files
+  * Vk: Don't try to transition present source during present
+  * GameDB: Add multiple fixes
+  * GS/HW: Implement PABE(Per pixel alpha blending) on accumulation blend and add optimizations.
+  * GameDB: Correct two Phoenix Games title names
+  * Config: Allow specifying portable directory relative path in portable.txt
+  * DiscordRPC: Add game icon support.
+  * Qt: Update Base Translation
+  * USB: Rename singstar to usb_mic
+  * USB: Konami ON-SAY microphone emulation
+  * USB: Audio support for EyeToy
+  * USB: Merge Singstar and Logitech mics in a single device with 2 subtypes
+  * Qt: Update Base Translation
+  * Misc: Minor cleanup. (#11717)
+  *  Qt: Fix a couple of theme switching glitches
+  * Qt: Slightly increase game list title size
+  *  ImGuiFullscreen: Display checkmark on right of choice dialog
+  * ImGuiFullscreen: Fix choice popup selected drawing over border
+  *  FullscreenUI: Fix popup close resetting window scroll
+  * USB: Store unique disk images for MSD and PictureParadise
+  * USB: Fix Konami Capture Eye assert
+  * 3rdparty/imgui: Disable the nav menu
+  * 3rdparty/imgui: General cleanup
+  * Qt: Update Base Translation
+  * GS/DX11: Fix feedback write 1 null pointer crash.
+  * GS/HW: Rename blend second pass to blend multi pass.
+  * Qt: Update Base Translation
+  * Config: Use directory containing bundle as AppRoot on macOS.
+  * PAD: Update to latest controller database.
+  * USB: Set actual_length value for Get HID descriptor
+  * Qt: Update Trilinear Filtering Description
+  * CMake: Added PACKAGE_MODE option Set paths, add check in SetResourcesDir
+  * Qt: Update Base Translation
+  * GameDB: add missing serial
+  * GameDB: ATV Offroad Fury 2 Fixes
+  * GSTextureCache: Extend Bilinear Upscale to dirty depth
+  * GS: Match data types in shaders to be the same when doing bitwise operations.
+  * Qt: Update Texture Filtering Description
+  * iR5900: fix heap-buffer-overflow in recompileNextInstruction
+  * GameDB: Various fixes
+  * Build: Copy resources when building for ARM64 with MSBuild
+  * gitignore: Fix ignore of bin-arm64
+  * Build: Set Page/Cache line sizes on Windows ARM
+  * Core: Replace 'Mac' with 'system' in page size error message
+  * 3rdparty/imgui: Update to v1.91.0
+  * GameDB : fix  Test Drive Unlimited CRC for patch
+  * GameDB: Snow White and the 7 clever boys fixes
+  * CI/Appimage: Drop gcc13 workaround
+  * CI/Appimage: Use fuse3 compatible appimagetool
+  * workflows: Update sdl controller db script.
+  * Qt: Update Base Translation
+  * Debugger: Track remaining buffer size for snprintf to prevent fortify fail
+  * 3rdparty/rcheevos: Bump to v11.5.0
+  * Code: Formatting
+  * OSD: Add InputRec/VideoCapture OSD Toggle
+  * OSD: Icon Tweaks
+  * OSD: More Translatable Strings
+  * FSUI: Base Translation Update
+  * GS/TC:  Adjust how we handle merging targets in PreloadTarget.
+  * GameDB: SMT Nocturne Fixes
+  * 3rdparty/soundtouch: Bump to v2.3.3
+  * Add memcardFilter for SLES-51953 and SLES-52022
+  * USB: Remove unused HID data
+  * USB: Merge generic HID Keyboard and Konami Beatmania
+  * Deps: Update to SDL 2.30.6
+  * GS/Vulkan: Restore VK_EXT_attachment_feedback_loop_layout
+  * PAD: Update to latest controller database.
+  * Qt: Update Base Translation
+  * Build: Add ENABLE_GSRUNNER option to build GSRunner via CMake
+  *  GSRunner: Correct CMake typo
+  * USB: Sony MSAC-US1/PictureParadise emulation
+  * USB: Add new SCSI commands used by Zip100
+  * USB: Convert the generic Mass Storage Device to Zip100
+  * OSD: Add hardware info statistics
+  * Qt: Add Override word to FMV Aspect Ratio
+  * Translations: Fix typo + frame-time
+  * Qt: FMV Aspect Ratio
+  * Pad: Add Jogcon and Negcon images from @kamfretoz / MBee
+  * Pad: Jogcon and Negcon emulation
+  * Docs: Update FAQ
+  * GameDB: Fix game names
+  * OSD: Allow independent left- and right-align for OSD
+  * ci: temporarily override release version check
+  * Qt: Add new icon for gametrak and realplay
+  * FSUI: Update Base Translation
+  * Translation: Make game type string translatable
+  * Translation: Make "Version" string translatable
+  * ci: use fromJson to propely compare flatpack and pcsx2 release versions
+  * ci: Possibly fix flatpack release vs pcsx2 release version compare
+  * headers: relicense to GPL-3.0+
+  * GameDB: Fix the Test Drive Unlimited COP2 patch
+  * GameDB: Various fixes
+  * USB: Implement trance vibrator and buzz savestate freezing
+  * Qt: Use serials by default for cover filenames with downloader
+  * CI: Move appdata generation into flatpak manifest
+  * PAD: Update to latest controller database.
+  * GameDB: Add another COP2 patch for Test Drive Unlimited
+  * GameDB: Add COP2 patch for Test Drive Unlimited
+  * translations: Syncing Crowdin translations (#11640)
+  * USB: Move Buzz device to dedicated files and create custom UI
+  * Qt: Update Base Translation
+  * USB: ASCII Trance Vib emulation
+  * FSUI: Update Base Translation
+  * DiscordRPC: More translatable strings.
+  * OSD: Move hardcore notification from toast to OSD
+  * USB: Gametrak/RealPlay emulation
+  * GameList: Make compat strings translatable
+  * input-rec: Directly use recorded values for pressure sensitive buttons
+  * Qt: Update Base Translation
+  * Qt: Add prompt to missing ffmpeg warning
+  * Qt: Add Video Capture button to toolbar
+  * Qt: Simplify compat line in GameSummaryWidget
+  * gitignore: Ignore bin*
+  * Deps: Remove hardcoded version for zstd
+  * Deps: Update Windows ARM64 dependencies
+  * 3rdparty/cpuinfo: Fix ARM64 project
+  * Qt: Add per-game link to PCSX2 Wiki pages on right-click
+  * Qt: Update Base Translation
+  * PAD: Update to latest controller database.
+  * GS Capture: Allow selecting the pixel format based on the current codec
+  * GS Capture: Set ffmpeg channel layout
+  * GS:Capture: VAAPI support
+  * Qt: Update Base Translation
+  * Debugger: Cleanup warnings and casts.
+  * GS/HW: Use enum for blend_hw shader bit everywhere.
+  * OSD: Add PCSX2 Version toggle
+  * Qt: Disable Single Frame GS Dump tool when not playing a game
+  * qt/MainWindow: for disable hide window if render to main is enabled
+  * GameDB: TC SOLA fixes
+  * linux/cmake: Allow libbacktrace to be disabled
+  * Qt: Update Base Translation
+  * DEV9: Use const in ICMP session
+  * DEV9: FreeBSD/Mac Fixes for ICMP session
+  * DEV9: Use std::unique_ptr for tracking active pings
+  * DEV9: Use vector for ICMP temp buffer
+  * DEV9: Fix handling of ICMP timeout
+  * DEV9: Fix IP_PayloadPtr::WriteBytes()
+  * DEV9: Use non-blocking sockets for ICMP Sessions on Unix
+  * DEV9: Correct ICMP log messages
+  * DEV9: Amend ICMP_Session comments
+  * DEV9: Eliminate c-style casts from ICMP_Session
+  * DEV9: Correct spelling in ICMP session
+  * Bios: add support for Rom2 up to 4Mb
+  * Qt: Update Base Translation
+  * Common: Fix FreeBSD build
+  * Qt: Add Emerald theme and fix palette var names
+  * Debugger: change how the nullbyte (0x00) are displayed in the memoryview widget.
+  * Debugger: Implement little endian memory view support
+  * GameDB: Ensure NativeScaling doesn't nag users at native res
+  * github:  mention to verify games if making an issue
+  * Covers: Use serial for cover image names when selected individually
+  * GameDB: Fix up ATV ORF 3 fixes
+  * ReadMe: Fix BIOS dump link. (#11552)
+  * PAD: Update to latest controller database.
+  * InputManager: Release settings lock before shutting down the input source
+  * UI: Fix updater to ignore installer version
+  * UI: Update glyphs
+  * translations: Syncing Crowdin translations (#11541)
+  * GameDB: Various fixes
+  * Debugger: Fix Open Debugger option to not toggle
+  * Qt: Update Base Translation
+  * Qt: Clarify Pressure Modifier String
+  * Qt: Update Base Translation
+  * Debugger: Use std::string for bp conditions. Implement memory bp conditions
+  * GS/HW: Adjust point sampler behavior.
+  * UI: Update Glyph Ranges
+  * Qt: Update Base Translation
+  * UI: fix broken link in setup
+  * Qt: Update Base Translation
+  * GameDB: Add native scaling to Scaler
+  * GS/HW: Improve scale detection and allow non-bilinear downscales
+  * GS/HW: Make sure both bitwise values are unsigned for ps_convert_float32_float24 depth.
+  * GS/HW: Check for full cover in more situations when we disable blending.
+  * GameDB: Various fixes
+  * GS/Metal: Add FLOAT32_TO_FLOAT24 case to DepthStencil texture format for shader convert.
+  * GS: Fix Wsign-compare warning.
+  * GameDB: Some fixes for NTSC-J titles. (#11508)
+  * GS: Fix half pixel offset normal upscaling above 8x.
+  * Debugger Expressions: Add FPU registers to breakpoint conditionals.
+  * Qt: Update Base Translation
+  * Bring ControllerBindingWidget .cpp and .h files in line with others/.ui file
+  * GameDB: Various fixes
+  * GS: Clear draw queue when using the null renderer
+  * Deps: Update to SDL 2.30.5
+  * USB: Fix period key not working
+  * GameDB: Add eeClampMode fix to SLPM-66644 (#11505)
+  * UI: Add text to upscaling multipliers and remove two fractional
+  * GameDB: Destroy All Humans! 2 PAL Title
+  * Qt: Update Base Translation
+  * Qt: Make more precache strings translatable
+  * Clang Format: cache.cpp and vtlb.cpp
+  * EE Cache: Invalid physical address caching and line locking
+  * EE Cache: Fix PageMask reg usage when checking TLB entry cache mode
+  * UI: Fix per game internal resolution dropdown
+  * GS: Uncap upscale multiplier subject to GPU limits
+  * Config: Don't copy global WS/NI to game settings
+  * Qt: Fix use-after-free in settings reopen()
+  * DEV9: Fix function parameter should be passed by const reference warnings.
+  * GS/HW: Get rid of GetAFAIL duplicates.
+  * GS: Remove unused enum
+  * GS/HW: Fix downscales on target regions
+  * GS: Clean up usage of PrimitiveCoversWithoutGaps
+  * GS: Remove std::optional from gaps variable.
+  * GS/HW: Improve texture coverage detection
+  * GS/HW: Optimize area of downscale algorithm to reduce processing
+  * Deps: Avoid -1 return in rc_runtime_progress_size()
+  * Deps: Set RC_NO_THREADS
+  * GS/HW: Prefer already-RTA-target over SW blend for no-overlap
+  * GS/HW: Prefer SW blend over HDR for colclip without overlap
+  * GameDB: Shadow of Rome revert to HPO Special
+  * GS/DX11: Fix downsample uniform unpack
+  * GameDB: Add fixes to Harry Potter Quidditch World Cup
+  * GS/HW: Allow conversion from 32bit to 24bit depth
+  * GS/HW: Always update preloaded dirty areas
+  * GS/HW: Ignore any preload outside of the valid area
+  * GameDB: Revert an wrong game title
+  * GS/HW: Use box filtering for source downsampling
+  * GS/HW: Fix upscale draw detection check
+  * GS/HW: Clear instead of invalidating upscaled targets
+  * GameDB: GOW 2 revert to HPO Special
+  * translations: Syncing Crowdin translations (#11462)
+  * DEV9: Return sender IP alongside payload
+  * DEV9: Use std::move in SimpleQueue
+  * COP0 TLB: Fix mapping ScratchpadRam Entries
+  * GameDB: RE Outbreak disable FBMask patch
+  * GameDB: Various fixes
+  * VMManager: Don't use achievements when playing GS dumps
+  * Achievements: Fix async HC mode disable running on wrong thread
+  * ImGuiManager: Avoid invalid scale update on surfaceless
+  * Achievements: Eliminate intermediate malloc on state save
+  * 3rdparty/rcheevos: Hash functions are not needed
+  * 3rdparty/rcheevos: Bump to d54cf8f
+  * PAD: Update to latest controller database.
+  * GS/HW: Add missing blend optimization check
+  * GS: Avoid pointlessly trying to map more pages in memory than the GS has
+  * GS/HW: Optimize blends in some zero scenarios
+  * Qt: Fix duplicate log window when theme switching
+  * Qt: Work around theme swap bug with Classic Windows
+  * GS/Vulkan: Release swap chain images on acquire fail
+  * GS/HW: Ensure mipmaps aren't generated on hash cache textures
+  * GS/HW: Better eliminate redundant clamps with mipmapped draws
+  * GS/HW: Allow use of trilinear with shader sampling
+  * GS/HW: Improve scale preservation check
+  * GameDB: Street Fighter EX3 - Fix the post processing at high resolution
+  * Deps: Update to Qt 6.7.2
+  * Deps: Update to SDL 2.30.4
+  * GS/HW: Correct rect checks in textureminmax
+  * GS: Make sure min/max for texture is at least 1 pixel
+  * GS/HW: Fix up Burnout CRC so NS properly detects downscale.
+  * GS/HW: Reduce misdetections for downscaling
+  * GS/HW: Restrict maximum direct copy size
+  * GameDB: Fix shadows alignment on Crash Twinsanity
+  * GS/HW: When detecting target overlap, offset copy from base
+  * GS/HW: Fix line width factor when upscaling.
+  * ci: bump `ws` dependency in announce workflow
+  * Qt: Update Base Translation
+  * GameDB: Add round sprite half to Valkyrie Profile 2
+  * GS/HW: Keep real rect before draw to avoid bad valid rect update
+  * GS/HW: Don't scale up downscaled targets when copying directly
+  * GS/HW: Add new Opaque check + use components for scaling discard check
+  * GS/HW: Improve detection of upscaling and downscaling
+  * GS/HW: Avoid downscaling as much as possible to increase quality
+  * GS/HW: Correct some scaling behaviour
+  * UI: Add new UI upscaling fix for Native Scaling
+  * GS: Split out sprite gap check for downscale gap checking
+  * GS/HW: Add detection for upscales
+  * GS/HW: Don't downscale if draw is the same or larger than final output
+  * GS/HW: First pass having downscaled post processing
+  * GS/HW: Allow offset channel shuffles on sources.
+  * PAD: Update to latest controller database.
+  * Resources: Compress the PNGs
+  * FSUI: Icon Tweaks
+  * FSUI: Add new Game List icon
+  * UI: fix invert settings being incorrectly set in big picture mode
+  * GameDB: Make sure hw renderer is running for hw renderer OSD messages.
+  * VMManager: Make sure hw renderer is running for hw renderer OSD messages.
+  * GS/HW: Additional texture shuffle dimension check
+  * CI/AppImage: Explicitly remove libwayland-*
+  * VMManager: Refactor Affinity Control to Thread Pinning
+  * GS/HW: Fix up Tekken 5 CRC to get rid of boxes when upscaling
+  * CDVD: Remove leftover debug log
+  * CDVD: Fix -Wsign-compare warnings.
+  * GzippedFileReader: Don't write OOB in last chunk
+  * GS/HW: Include block offsets on invalidation by page
+  * GS/HW: Don't kill old targets unless completely dirty or targets overlap
+  * MSBuild: RecStubs.cpp should be excluded
+  * CDVD: Actually fix NVRAM open mode
+  * CDVD: Correct NVM file saving to be in write mode
+  * UI: Rename Wild Arms hack
+  * UI: Increase draw dumping start/count limit
+  * GS: Correct depth trace for sprites + optimize HW depth selection
+  * DEV9: Handle adapters that provide FCS in capture
+  * DEV9: Always require MAC address with pcap
+  * DEV9: More strictly enforce MTU in pcap
+  * GS/HW: Use enum for blend_hw shader bit.
+  * GS/HW: Extend blend second pass to more blend formulas v2.
+  * DarwinMisc: Use template sysctlbyname
+  * Qt: Cleanup Internal label names
+  * Qt: Hide Video Recording Directory option per-game
+  * Qt: Hide texture directory option per-game
+  * arm64: Add stubs for EE/VU/IOP recs
+  * arm64: Add VIF dynarec
+  * GS: ARM64 compatibility
+  * Core: ARM64 compatibility
+  * IPU: ARM64 compatibility
+  * Common: ARM64 compatibility
+  * Build: Add ARM64 configurations
+  * VTLB: Fix unmapping all pages with 16K host
+  * TextureDecompress: Re-add non-SSE code paths
+  * 3rdparty/winpixeventruntime: Fix build with ARM64 clang-cl
+  * 3rdparty/cubeb: Fix build for ARM64
+  * 3rdparty/cpuinfo: Fix build for ARM64
+  * 3rdparty/lzma: Fix ARM64 build with clang-cl
+  * 3rdparty/soundtouch: Enable NEON on ARM64
+  * CI: Add required files for Windows ARM64 build
+  * CI: Add script for building universal Mac dependencies
+  * GS: Tidy up shifts in GSVector4i
+  * GS: Fix a couple of non-immediate constant shifts
+  * GS: Remove unordered runion()
+  * GSRunner: Enable the crash dump writer
+  * GS/SW: Zero out texture cache buffers
+  * Debugger: Disable pseudo ops
+  * Achievements: Fix incorrect data source for mastery points
+  * Qt: Update Base Translation
+  * FullscreenUI: Fix incorrect padding calculation in pause menu
+  * CDVD: Add precaching option
+  * FileSystem: Add ReadFileWithProgress()
+  * 3rdparty/libchdr: Allow cancelling precache
+  * CI: Disable repository submodule cloning
+  * GS/Vulkan: Disable unused-function warning for vk_mem_alloc
+  * 3rdparty/fmt: Work around RTTI being disabled
+  * MemoryCardFolder: Fix rapidyaml deprecation warnings
+  * 3rdparty: Move WIL v1.0.240122.1 in-tree
+  * 3rdparty: Move rapidyaml v0.6.0 in-tree
+  * 3rdparty: Move Vulkan-Headers v1.3.287 in-tree
+  * 3rdparty: Move googletest v1.14.0 in-tree
+  * 3rdparty: Move fmt v10.2.1 in-tree
+  * DEV9: Add missing RedtapeWindows.h include
+  * PAD: Update to latest controller database.
+  * Qt: Use 64-bit comparison for VC runtime check
+  * 3rdparty: Update CPUInfo to latest
+  * CDVD: Force initialized flag on NVRAM reads
+  * CDVD: Tidy up NVRAM read helpers
+  * CDVD: Cache mechacon version
+  * CDVD: Read NVRAM on startup, cache, and save on shutdown
+  * Updater: Add VC Runtime check
+  * GS: Swap to cpuinfo for checking CPU features
+  * Qt: Add very-early VC++ runtime version check
+  * input-rec: Display message when we fail to create/open file
+  * input-rec: Use toNativeSeparators() when opening recording
+  * GS:MTL: Fix handling of tex is depth fb
+  * GS/HW: Correct TEXA behaviour on shuffles
+  * GameDB: Some NTSC-K fixes
+  * 3rdparty: Update xbyak to 7.06
+  * CI/Windows: Disable Qt's PCRE2 JIT
+  * CI/Windows: Uninstall system LLVM package
+  * GS/HW: Take render target end block for channel shuffles if bigger
+  * CI: Tempfix windows clang builds
+  * GameDB: Add Texture inside RT to Mobile Suit Gundam - One Year War
+  * GS: Don't be inclusive of textures edges in all cases
+  * input-rec: Use toNativeSeparators() when opening recording
+  * PAD: Update to latest controller database.
+  * GameDB: Tokyo Xtreme Racer Drift/Kaido Racer - Upscaling fixes
+  * GS:MTL: Add Intel HD 4000 to the list of GPUs to use PixelFormatView on
+  * GameDB: Various bodges
+  * GS/HW: Improve some tex in rt handling
+  * GS/HW: Improve handling of channel shuffles on new targets
+  * GS/HW: Update the target width to match source in channel shuffle Also kill an annoying assert
+  * GS/HW: Favour newer draw on source overlap + improve target overwrite
+  * GS/HW: Compensate for edges in complex clamps to reduce upscale garbage
+  * CI/AppImage: QtNetwork is no longer needed
+  * Common: Tidy up signal handlers
+  * GS: Remove MSVC macro hack
+
+-------------------------------------------------------------------
+Thu May 30 15:04:09 UTC 2024 - i@guoyunhe.me
+
+- Update to version 1.7.5853~git20240530:
+  * Qt: Update Base Translation
+  * DEV9: Prefer C++ string comparison in AdapterUtils
+  * DEV9: Use const in AdapterUtils
+  * DEV9: Shuffle code in Linux GetAdapter
+  * DEV9: Use helper method to get the sockaddr address family
+  * DEV9: Eliminate c-style casts in AdapterUtils
+  * DEV9: Use correct buffer type in Win32 GetAdapter
+  * DEV9: Unify GetAdapter code
+  * DEV9: Add general notes regarding sockaddr casting
+  * GS/CRC: Improve Street Fighter 3 EX CRC to remove shimmer (and some potential input lag)
+  * 3rdparty: Update to VK memory allocator 3.1
+  * Common: Use Mach VM routines for memory mapping
+  * 3rdparty/vixl: Import @ 8eca2b7
+  * GS:MTL: Fix inverted UseMipmapFiltering check
+  * CMake:macOS: Sign with --deep
+  * GS/HW: Use valid rect over size in CopyRGBFromDepthToColor()
+  * GS/HW: Fix unscaled rect in CopyRGBFromDepthToColor()
+  * GS/Vulkan: Purge threaded presentation
+  * GS: Add option to disable mailbox presentation
+  * GS/DX11: Don't spin on CPU when GPU results aren't available
+  * InputManager: Fix exit menu button forwarding to game
+  * UI: Fix dithering description + make it so 4 lines of description fits
+  * GS/Vulkan: Work around validation layer semaphore error
+  * GS: Improve vsync mode selection
+  * ImGuiOverlays: Display vsync queue size in OSD
+  * GS/HW: Allow forcing Dither to 32bit for 16bit draws
+  * GS/Vulkan: Prefer mailbox presentation for vsync-on
+  * GS/Vulkan: Log any image acquire error
+  * Common: Provide a MAP_FIXED_NOREPLACE define for FreeBSD
+  * AutoUpdater: Correct type on stub processUpdate()
+  * GS/HW: Cleanup RendererHW.
+  * GS/HW: Restrict CPU Sprite abort to non-opaque draws
+  * Common: Missed MAP_FIXED -> MAP_FIXED_NOREPLACE
+  * Common: Fix Mac build
+  * GS/HW: Ignore alpha on double half clear if not used
+  * Common: Don't use MAP_FIXED on Linux
+  * GS: Increase sensitivity of texflush but avoid some situations
+  * Docs : update  configuration guide
+  * Config: Change hw mipmap from enum to bool.
+  * VMManager: Remove osd message for hw mipmap.
+  * Overlays: Update hw mipmap code.
+  * Misc: Update hw mipmap code hotkey.
+  * FullscreenUI: Change hw mipmap to a toggle button.
+  * Qt: Change hw mipmap to a toggle button.
+  * GameDB: Update db accordingly.
+  * GameDB: Adjust mipmap and trilinear behavior.
+  * GS/HW: Enable Full mipmap with ps2 trilinear always y default.
+  * CI/Flatpak: libaio is no longer needed
+  * Deps: Bump to shaderc 2024.1
+  * Deps: Switch to sourceforge mirror for FreeType
+  * Deps: Apply qtbase commit 7b01862
+  * Deps: Bump Qt to 6.7.1
+  * Misc: Fix building with gcc14 (#11278)
+  * PAD: Update to latest controller database.
+  * GS/HW: Adjust conditions for CPU sprite renderer
+  * GS/HW: Improve texture shuffle double direction with future draw
+  * Qt: Fix default tab of Graphics Settings
+  * Qt: Update base translation
+  * Qt: update_base_translation.sh should be executable
+  * FSUI: Gate HW Download mode behind per-game settings
+  * Qt: Tidy up texture replacement settings
+  * GameDB: fix tearing like issues on KH2 when upscaled
+  * CI/Flatpak: Temporarily disable repo/appstream validation
+  * GzippedFileReader: Don't clamp chunkID on read
+  * CsoFileReader: Fix devbuild assertion
+  * Revert "CI/AppImage: Don't bundle libssl/libcrypto"
+  * CDVD: Simplify ISO opening
+  * CDVD: Purge AsyncFileReader interface
+  * CDVD: Use ThreadedFileReader for gzip ISOs
+  * CDVD: Use ThreadedFileReader for uncompressed ISOs
+  * CDVD: Use ThreadedFileReader for block dumps
+  * CDVD: Fix error propagation from ThreadedFileReader
+  * CDVD: Purge MultpartFileReader
+  * Qt: Update base translation
+  * Qt: Rename Load Profile to Apply Profile
+  * CI/AppImage: Don't bundle libssl/libcrypto
+  * VMManager: Rewrite input profile hotkey priority logic
+  * USB-Eyetoy: Fix unused comprLen warning
+  * FullscreenUI: Warning fix
+  * AudioStream: Vectorize volume application
+  * InputManager: Add push to toggle for macros
+  * Misc: Pass most string_views by value instead of reference
+  * GS: Make VSync a boolean toggle
+  * Config: Remove redundant GS setting macros
+  * MTGS: Eliminate redundant SynchronousMTGS checks in Release build
+  * Error: Strip trailing whitespace from Windows errors
+  * Host: Add plural translation support
+  * SettingsInterface: Fix TinyString helper
+  * GS/Vulkan: Simplify loader using DynamicLibrary
+  * 3rdparty/cubeb: Only include connected devices when enumerating wasapi
+  * 3rdparty/cubeb: Sync to 19fcbef
+  * Qt: Add option to pause when controller is disconnected
+  * FullscreenUI: Use native file selector on Flatpak
+  * FullscreenUI: Add horizontal padding to menu windows
+  * FullscreenUI: Fix minimal output latency toggle
+  * FullscreenUI: Fix gaps between some UI elements
+  * R3000: Serialize IOP->EE ticks carry
+  * Qt: Rename "Enable" to "Apply" for WS/NI patches (#11236)
+  * IOP: Adjust cycle counts slightly more accurately in some situations
+  * GS/SW: Don't use fast reciprocal stq calculation, it's too inaccurate
+  * Audio: Clamp final output to avoid cracking at high volumes
+  * Core: Refactor a lot of timer work and fix a couple of bugs EE/IOP Timers: improve clock sync, disable v/h sync when SINT enabled.
+  * FullscreenUI: Fix deadlock/abort in Graphics Settings
+  * Qt/SaveState: Simplify warning message.
+  * FSUI: Automatically hide advanced graphics settings
+  * PAD: Update to latest controller database.
+  * Qt: Fix copy paste fail
+  * 3rdparty: Update LZMA/7zipSDK to 23.01
+  * USB: Add d-pad controls to RBDrumKitDevice
+  * GS/DX12: Fix incorrect resource state of ImGui font
+  * GS/HW: Avoid barriers on second alpha pass when only writing to Z
+  * GS/Vulkan: Always issue first barrier on RDNA3
+  * GS: Fix use-after-free on lost device
+  * GS/HW: Fix invalid self copy from move in DX renderers
+  * GS/HW: Fix possible texture leak on skipped draw
+  * GS/HW: Fix incorrect StretchRect() in double buffer copy
+  * GS/HW: Rename alpha_one to alpha_eq_one pxAssert.
+  * GS/HW: Better name get alpha values for blend.
+  * GS/HW: Optimize sw/hdr colclip on some blend formulas.
+  * Achievements: Fix function parameter should be passed by const reference warnings.
+  * Gif: Fix the scope of the variable can be reduced warnings.
+  * IopBios: Fix function parameter should be passed by const reference warnings.
+  * R5900: Fix the scope of the variable can be reduced warnings.
+  * Mdec: Cleanup file.
+  * Mdec: Clang format.
+  * VMManager: Clear protected pages before changing extra memory mode
+  * EE: Correct update of EE cycles on low cycle counts when overclocking
+  * DEV9: Add DHCP logger
+  * DEV9: Fix incorrect cmake entry
+  * CDVD: Improve handling of host: paths in cdvdLoadElf
+  * DEV9: Better error handling on UDP_FixedPort creation
+  * DEV9: Slightly simplify UDP socket closing
+  * DEV9: Improve support for sending multicast packets
+  * DEV9: Adjust comments in UDP_Session
+  * DEV9: Correct capitalisation on UDP log messages
+  * DEV9: Eliminate some c-style casts in UDP_Session
+  * SaveState: Reset VM when save state fails to load
+  * Misc: Remove unused ps macros from Memory.h
+  * [SAVEVERSION+] EE: Expose advanced option for extra memory
+  * gitignore: Add deps-build path
+  * Qt: Fix remove game directory button being enabled w/o selection
+  * Error: Fix negative formatting of HRESULT
+  * CrashHandler: Use SetUnhandledExceptionFilter() and terminate on crash
+  * HostSys: Simplify page fault handler installation
+  * CI/Flatpak: Update to SDL2 2.30.3
+  * PAD: Update to latest controller database.
+  * Qt: Add label next to audio buffer size
+  * DEV9: Inherit from QStyledItemDelegate for address fields in hosts table
+  * Mark %d ms for translation
+  * Qt: Fix incorrectly labeled Reset Volume button
+  * 3rdparty: Update simpleini to v4.22
+  * HeapArray: Add missing field swap
+  * Config: Remove unused FrameLimitEnable field
+  * Qt: Clean and remove empty game settings
+  * Qt: Fix volume reset button in game properties
+  * Deps: Update to SDL 2.30.3
+  * GS/SW: Remove redundant code generator classes
+  * CI:mac: Disable libpng framework build
+  * CI:mac: Use -dead_strip in dependency builds
+  * CI:mac: Build x86_64 only MoltenVK
+  * Qt: Update Base Translation
+  * SPU2: Use AudioStream for output
+  * Host: Add AudioStream
+  * 3rdparty: Add FreeSurround
+  * Qt: Handle sliders in per-game settings
+  * SettingsWrapper: Add SmallString overloads
+  * Console: Add log macros
+  * DEV9: Defer deletion of socket sessions
+  * Qt: Add Classic Windows as theme option
+  * GS/HW: Fix blend_mix regression
+  * GameDB: patches for NHL 2K9 and  Major League Baseball 2K9
+  * SPU: Only fire IRQ for Reverb reads when FxEnable
+  * CI/Linux: Remove invalid download links
+  * GameDB: CMR 2005 Timer fix
+  * Timers: Fix up some timer behaviour
+  * CMake: Unbreak finding base translations
+  * GameDB: Code Lyoko QFI fixes
+  * GS/HW: Implement dithering on blend second pass on some formulas.
+  * GS/HW: Make sure when a draw is rta scaled for blend second pass.
+  * GS/HW: Ger rid of clr_blend1_2 condition.
+  * GameDB: Add missing GT fixes
+  * EE/JIT: Increase size of jump for FPU MUL
+  * CMake: Don't assume all qt utils are in the same place
+  * GS: Predivide ST by Q on large equal-Q triangles
+  * GS: Use insertps/blendps instead of shuffles
+  * DEV9: Fix MacOS crash upon receiving an ICMP reply
+  * GameDB: God of War 2 mipmapping fixes
+  * GameDB: Crash Nitro Kart fixes
+  * EE/IOP Timers: Rewrote most of the gate handling to be better. [SAVEVERSION+]
+  * EE/Timer: Don't reset count on setting gate
+  * PAD: Update to latest controller database.
+  * GameDB: Various fixes
+  * DEV9: Add const to variables in TCP session
+  * DEV9: Fix incorrect error check on TCP send
+  * DEV9: Format comments in TCP session
+  * DEV9: Correct capitalisation on log messages
+  * DEV9: Use reinterpret_cast for sockaddr
+  * DEV9: Eliminate some c-style casts in TCP_Session
+  * GS/HW: Rename RTCorrect/Decorrect to ScaleAlpha
+  * GS/HW: Allow transition to RTA on full cover draw
+  * GS/HW: Round alpha values for indexed sample of RTA
+  * GS: Round coordinates in PrimitiveCoversWithoutGaps()
+  * GS/HW: Remove shuffle misdetection hack
+  * GS/HW: Detect shuffles using quads
+  * DEV9: Improve logic for getting MacAddress (#10937)
+  * GameDB: Jak 1 and CMR 2005 fixes
+  * GS/HW: Ensure valid alpha doesn't get cleared on 24-bit targets
+  * Misc: Add gstreamer fallback to aplay
+  * GH: Clarify lack of support for third-party Linux builds
+  * GS: Improve Autoflush detection with channel masks
+  * GS: Improve STQ loggin in draw dumps
+  * GS/HW: Improve depth deswizzle
+  * CI: Simplify Linux build
+  * GS/HW: Check for format combinations that make sense for CSBW
+  * GS/HW: Stretch double buffered targets when scale changes
+  * MSBuild: Use AVX/AVX2 for 3rdparty as well
+  * INISettingsInterface: Fix file descriptor leak on Linux
+  * Docs: Initial overhaul for stable 2024 (GameIndex)
+  * HeapArray: Avoid writing out of bounds in internal_resize
+  * GameDB: LOTR Twin Towers fixes
+  * Qt: Update Base Translation
+  * GS/HW: Optimize medium blend on dx.
+  * CDVD/BIOS: On creating NVM, force setup on next full boot
+  * BIOS/HLE: Improve handling of OSD params when fast booting
+  * GameDB: Various fixes
+  * GameDB: Various Fixes
+  * GS/HW: Allow preload if FBW = 0 on small draw
+  * Qt: Fix rare crash during update download
+  * DEV9: Also defer loading until ethernet is enabled
+  * DEV9: Lazy load adapter list in settings UI
+  * DEV9: Use a signal blocker instead of disconnecting signal
+  * DEV9: Properly disable/enable the DHCP label
+  * DEV9: Fixup Settings Layout
+  * DEV9: Properly disable/enable the LBA48 checkbox
+  * GSLzma: Fix a file handle leak in GSDumpLzma
+  * FullscreenUI: Add Save State Backup toggle to BPM
+  * Updater: Clarify updater error message to point to official site
+  * FullscreenUI: Clean up speed limiter toggle leftover
+  * GS/HW: Clear dirty list on target clear
+  * GS/Vulkan: Drop feedback loop extension
+  * GS/HW: Extend blend second pass to more blend formulas.
+  * GS/HW: Cleanup date and rt alpha min max function.
+  * GS: Fix crash and file leak during dump
+  * GS/HW: Minor shader optimization.
+  * VMManager: Add warning for texture dumping
+  * RedumpDatabase: Update hash database
+  * GSHwHack: Purge The Getaway CRC
+  * GameDB: Various fixes
+  * DEV9: Correct type used to store GetDelta result
+  * DEV9: Improve validation of received sequence numbers
+  * CI/Flatpak: Bump to KDE 6.7 container
+  * Debugger: Disable the debugger toolbar ctx menu
+  * GS/HW: Re-sort the pre-source shuffle check.
+  * GS/HW: Improve depth updating on source target match
+  * GS/HW: Fix some small errors updating depth in RT targets
+  * GS:Capture: ffmpeg 7 support
+  * CI:mac: Add option to not build ffmpeg to dependency build script
+  * Achievements: Fix fullscreen window height
+  * Achievements: Fix HC mode activating on reset of non-cheevo game
+  * ImGuiOverlays: Fix possible crash in save state selector
+  * FullscreenUI: Get rid of extra scrollbar in save state selector
+  * DEV9: Adjustments to HDD logs
+  * BPM: Small icon tweaks
+  * BPM: Make open in file browser exit fullscreen when clicked
+  * Qt: Add Grey Matter theme
+  * GS/HW: Cross-reference RT alpha with CLUT for P8H
+  * GS: Fix error and OOB access in GSGetRGBA8AlphaMinMax()
+  * Config/FullscreenUI: Properly disable GPU Palette Conversion.
+  * VMManager: Log entry point in hexadecimal
+  * GS/HW: Ensure tex shuffles, masking are render target draws.
+  * GS/HW: Try to keep old targets around without overlap or dirty areas
+  * PAD: Update to latest controller database.
+  * FullscreenUI: Fix images in DX11/GL
+  * Qt: Shrink settings window by ~30 pixels
+  * GS/HW: Fix RTACorrect/Decorrect debug log
+  * GS/HW: Allow creation of known targets via move with offset
+  * GS/Vulkan: Add env var for non-semantic debug info
+  * Qt: Update Base Translation
+  * ImGuiFullscreen: Use popup background for all popups
+  * FullscreenUI: Redo landing page and add help bar
+  * ImGuiManager: Fix double press to activate menu items
+  * ImGuiManager: Increase key repeat delay
+  * FullscreenUI: Avoid per-frame memory allocations with SmallString
+  * SettingsInterface: Add SmallString overloads
+  * 3rdparty/imgui: Use face up for menu
+  * SmallString: Add missing methods
+  * Image: Don't pass FILE across CRT boundary
+  * Qt: Change stateChanged() to checkStateChanged()
+  * Qt: Fix 6.7.0 deprecation warnings
+  * CI/Flatpak: Bump to KDE 6.7 SDK
+  * CI/Flatpak: Swap to CMake for building SDL2
+  * GS/Vulkan: Gate non semantic debug info behind extension
+  * CI: Add non semantic debug option to shaderc
+  * GS/Vulkan: Fix depth not clearing with first colclip draw
+  * BPM: Light Mode color scheme update
+  * BPM: Fixes swapped arrow key glyphs
+  * Debugger/CPUWidget: Make "Go to in Memory View" open the Memory View
+  * Debugger: Untangle the breakpoints data flow to resolve races
+  * DebugTools: Properly Mark Addresses < 0xBFC00000 as Invalid
+  * Debugger: Prompt for HC restart on Boot and Debug
+  * Debugger: Unbind the BP UpdateHandler on destructing DebuggerWindow
+  * Qt: Update Base Translation
+  * GameDB:Bigger blob of various fixes
+  * Core: Work around GCC bug
+  * Common: Don't forceinline vararg functions
+  * DEV9: Increase allowed number of to be ACKed tcp packets
+  * DEV9: Improve tracking of acknowledged data
+  * DEV9: Move and fix GetDelta Function
+  * DEV9: Correct Console Logs
+  * DEV9: Increase number of tracked sent SEQ number
+  * PAD: Update to latest controller database.
+  * GS/HW: Cleanup EmulateBlending a bit more.
+  * GS/HW: Rearrange color on shuffle if SW Blend or TFX
+  * GS/HW: Add support for blend second pass.
+  * Qt: Use window modality for message boxes
+  * Qt: Fix native message boxes on MacOS
+  * Qt: Translatification
+  * Qt: Change 'N/A' to 'No Image' in status bar
+  * Docs: Add shaderc to third-party licenses
+  * 3rdparty/imgui: Update to v1.90.4
+  * 3rdparty: Remove glslang
+  * GS/Vulkan: Swap out glslang for shaderc
+  * CI: Build shaderc as part of deps
+  * GSRunner: Fix build on Windows
+  * GS/OpenGL: Use EGL 1.5 platform interface
+  * Common: Sync DynamicLibrary with DuckStation
+  * Docs: Update third-party notices
+  * 3rdparty: Remove jpgd
+  * USB: Swap jpge for libjpeg
+  * GS: Support saving WebP screenshots
+  * Image: Use libjpeg and support WebP saving
+  * 3rdparty: Remove unused in-tree libs
+  * Build: Unify shared libraries across platforms
+  * Qt: Fix crash on shutdown settings save
+  * Updater: Fix incorrect CoInitializeEx() call
+  * GH: Bug report clarification
+  * GameDB: Various fixes
+  * CMake: Skip deploying dxcompiler on Windows
+  * Updater: Use IFileOperation for cleanup
+  * Qt: Fix a couple more missing native separator calls
+  * Qt: Fix BIOS list
+  * Deps: Update to Qt 6.7.0 and SDL 2.30.2
+  * Qt: Ensure settings are writable before running setup wizard
+  * SettingsInterface: Add Error to Save()
+  * FileSystem: Add Error to CreateDirectory()/RenamePath()
+  * Error: Add prefix methods
+  * FileSystem: Handle paths longer than MAX_PATH on Windows
+  * GS/HW: Fix operator precedence warning
+  * GS/TC: Read indexed texture from GS memory if complete dirty overlap
+  * GS/HW: Prioritize loading required replacement textures over precache
+  * GS/HW: Further fix up RTA handling
+  * GS/HW: Fix up some RTA behaviour and reduce copies
+  * GS/TC: When preloading new targets, include the preloaded size as valid
+  * GS/HW: Stop 24bit targets from RT Alpha correcting
+  * GameDB: Various fixes
+  * PAD: Update to latest controller database.
+  * GS/HW: Fix loading replacement textures
+  * GameDB: Various fixes
+  * GS: Move PrimitiveWithoutGaps function to GSState
+  * GS: Improve optimizing scissoring texture when REPEAT sampling
+  * Docs: Remove XZ Utils from thirdpartynotices (#11016)
+  * GS/HW: Compute source alpha min/max based on texture instead of CLUT
+  * GS/TextureCache: Remove redundant parameter to RTA{De,C}orrect
+  * GS/TextureCache: Fix incorrect alpha min/max read on block offsets
+  * Qt: Fix vanishing status bar renderer info
+  * Qt: Fix crash on shutdown with BP mode open
+  * GS/HW: Avoid deleting depth targets on shuffles
+  * GS/Vulkan: Fix incorrect clear colour for fast colclip
+  * GS/HW: Improve handing of some texture shuffles
+  * GS/HW: Round source lookup rect to block boundary and improve overlap check. - also clean up formatting in GSTextureCache.cpp
+  * GS/DX12: Fix FXAA compilation
+  * CI: Remove xz/liblzma from build scripts
+  * 3rdparty: Remove xz
+  * GS: Replace xz/liblzma with 7zip LZMA SDK
+  * Common: Update FixedArray.h from DuckStation
+  * GS/DX11: Re-enable FL10 support with a warning
+
+-------------------------------------------------------------------
 Fri Mar 29 13:14:41 UTC 2024 - i@guoyunhe.me
 
 - Update to version 1.7.5656~git20240329:
