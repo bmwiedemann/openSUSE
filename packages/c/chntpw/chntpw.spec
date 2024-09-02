@@ -24,8 +24,10 @@ Summary:        Offline NT Password and Registry Editor
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            http://pogostick.net/~pnh/ntpasswd/
 Source:         http://pogostick.net/~pnh/ntpasswd/chntpw-source-%{dateversion}.zip
-# PATCH-FIX-UPSTREAM chntpw_1.0-1.diff.gz -- use all patches from debian, fixes build and runtime bugs
-Patch0:         http://http.debian.net/debian/pool/main/c/chntpw/chntpw_%{version}-1.1.diff.gz
+# PATCH-FIX-UPSTREAM chntpw_1.0-1.diff.gz -- use all patches from debian, fixes build and runtime bugs, from http://http.debian.net/debian/pool/main/c/chntpw/chntpw_1.0-1.1.diff.gz
+Patch0:         chntpw_1.0-1.1.diff
+# PATCH-FIX-UPSTREAM libsam_hexdump_type.patch -- add explicit type conversion for the hexdump character array, which failed by default with -Wincompatible-pointer-types
+Patch1:         libsam_hexdump_type.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  unzip
 
@@ -40,10 +42,6 @@ There is also a registry editor and other registry utilities that works under li
 %prep
 %autosetup -p1 -n %{name}-%{dateversion}
 
-while read line; do
-    [ "${line#\#}"x = "${line}x" ] && echo "Applying patch $line" && /usr/bin/patch --no-backup-if-mismatch -p1 --fuzz=0 < "debian/patches/$line"
-done < debian/patches/series
-
 %build
 make %{?_smp_mflags} CFLAGS="-DUSELIBGCRYPT $(shell libgcrypt-config --cflags) -g -I. -Wall $(EXTRA_CFLAGS) %{optflags}" chntpw cpnt reged samusrgrp sampasswd
 
@@ -55,6 +53,9 @@ install -m 755 sampasswd %{buildroot}%{_bindir}/
 install -m 755 samusrgrp %{buildroot}%{_bindir}/
 
 install -Dm 644 debian/%{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
+
+%check
+%{buildroot}%{_bindir}/chntpw -h
 
 %files
 %doc README.txt HISTORY.txt

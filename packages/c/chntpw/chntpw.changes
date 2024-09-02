@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  1 08:18:08 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- add libsam_hexdump_type.patch to fix type conversion, fixing build on tumbleweed
+- extract chntpw_1.0-1.1.diff.gz to chntpw_1.0-1.1.diff, remove the hacky patch application
+
+-------------------------------------------------------------------
 Mon Feb 26 11:37:08 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Fix URL to debian diff file
@@ -15,7 +21,7 @@ Thu Oct 17 15:43:33 UTC 2019 - Richard Brown <rbrown@suse.com>
 - Remove obsolete Groups tag (fate#326485)
 
 -------------------------------------------------------------------
-Sun Dec 31 09:44:57 UTC 2017 - sebix+novell.com@sebix.at
+Sun Dec 31 09:44:57 UTC 2017 - sebix@sebix.at
 
 - initial package for version 140201
 - add chntpw_1.0-1.diff.gz all patches from debian, fixes build and runtime bugs

@@ -22,4 +22,20 @@
 </comment>
     <requestid>1151243</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7f3201258fd22cb380b18548be0c74b3</srcmd5>
+    <version>1.0</version>
+    <time>1725275698</time>
+    <user>dimstar_suse</user>
+    <comment>- add libsam_hexdump_type.patch to fix type conversion, fixing build on tumbleweed
+- extract chntpw_1.0-1.1.diff.gz to chntpw_1.0-1.1.diff, remove the hacky patch application
+- Fix URL to debian diff file
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+- Remove obsolete Groups tag (fate#326485)
+- initial package for version 140201
+- add chntpw_1.0-1.diff.gz all patches from debian, fixes build and runtime bugs
+</comment>
+    <requestid>1198152</requestid>
+  </revision>
 </revisionlist>

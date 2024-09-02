@@ -1,0 +1,3079 @@
+--- chntpw-1.0.orig/Makefile
++++ chntpw-1.0/Makefile
+@@ -2,28 +2,14 @@
+ # Makefile for the Offline NT Password Editor
+ #
+ #
+-# Change here to point to the needed OpenSSL libraries & .h files
+-# See INSTALL for more info.
+-#
+-
+-#SSLPATH=/usr/local/ssl
+-OSSLPATH=/usr
+-OSSLINC=$(OSSLPATH)/include
+ 
+ CC=gcc
+ 
+ # Force 32 bit
+-CFLAGS= -DUSEOPENSSL -g -I. -I$(OSSLINC) -Wall -m32 
++CFLAGS= -DUSELIBGCRYPT -I. $(shell libgcrypt-config --cflags) -Wall -m32
+ OSSLLIB=$(OSSLPATH)/lib
+ 
+-# 64 bit if default for compiler setup
+-#CFLAGS= -DUSEOPENSSL -g -I. -I$(OSSLINC) -Wall
+-#OSSLLIB=$(OSSLPATH)/lib64
+-
+-
+-# This is to link with whatever we have, SSL crypto lib we put in static
+-#LIBS=-L$(OSSLLIB) $(OSSLLIB)/libcrypto.a
+-LIBS=-L$(OSSLLIB)
++LIBS=$(shell libgcrypt-config --libs)
+ 
+ 
+ all: chntpw chntpw.static cpnt reged reged.static samusrgrp samusrgrp.static sampasswd sampasswd.static
+--- chntpw-1.0.orig/debian/README.source
++++ chntpw-1.0/debian/README.source
+@@ -0,0 +1,6 @@
++
++    This package uses quilt to manage all modifications to the upstream source.
++    Changes are stored in the source package as diffs in debian/patches and
++    applied during the build.
++
++    See /usr/share/doc/quilt/README.source for a detailed explanation.
+--- chntpw-1.0.orig/debian/changelog
++++ chntpw-1.0/debian/changelog
+@@ -0,0 +1,221 @@
++chntpw (1.0-1.1) unstable; urgency=low
++
++  * Non-maintainer upload.
++  * B-d on libgcrypt20-dev instead of (dummy transition package)
++    libgcrypt11-dev. Closes: #864097
++
++ -- Andreas Metzler <ametzler@debian.org>  Sat, 27 Oct 2018 09:09:58 +0200
++
++chntpw (1.0-1) unstable; urgency=low
++
++  * Update to latest upstream release, published in 2014-02-01
++  * debian/rules: Provide also the other binaries built in the sources:
++    reged (Simple Registry Edit Utility for Windows registry hives),
++    sampasswd (SAM database, add or remove user in a group),
++    samusrgrp (SAM database, add or remove user in a group)
++  * debian/samusrgrp.8 debian/reged.8 debian/sampasswd.8: Write manpages
++    for all of the other programs built and included now in the package
++  * debian/chntpw.8: Update the manpage contents based on the program's
++     current -h output.
++  * debian/patches/01_port_to_gcrypt.patch: 
++        Update patch since in this release upstream author uses a new define
++        (DOCRYPTO) that enables cryptographic code.  This code, that enabled
++        users to change the password, is not enabled by default anymore since
++        it does not work with Windows XP (and later) systems.
++  * debian/patches/11_improve_documentation:
++        Add a new patch to improve the English (by a non-native speaker
++        oh! the irony!) of the HISTORY.txt and MANUAL.txt files, fixing
++        grammar and spelling mistakes, as well as some typos.
++  * debian/changelog: Fix typo and add reference to Ubuntu closed bug
++  * debian/control:
++      - Require debhelp version 5, as per debian/compat
++  * debian/rules: 
++      - Update definitions to adapt to this version and upstream's numbering
++        (140201)
++  * Lintian fixes:
++      - Remove statically compiled files from sources (Fixes: source-is-missing)
++      - debian/copyright: point to the versioned license files, not the
++        symlinks since the source does not allow the use of later GPL
++        versions (Fixes: copyright-refers-to-versionless-license-file)
++      - debian/chntpw.8: Fix manpage error (Fixes:
++        manpage-has-errors-from-man)
++      - debian/rules: 
++            + Added missing targets build-indep and build-arch (fixes:
++            debian-rules-missing-recommended-target)
++            + Include buildflags.mk provided by dpkg-dev (fixes:
++            hardening-no-relro)
++      - debian/control: 
++          + Added  ${misc:Depends} (fixes: debhelper-but-no-misc-depends)
++          + Use UTF-8 version of maintainer's second surname (i.e. 'ñ' instead
++          of 'n~') this prevents tools from thinking the uploads are a NMU
++          when they are not (fixes: changelog-should-mention-nmu)
++          + Update Standards Version to 3.9.5, no changes needed (fixes:
++          ancient-standards-version)
++      - debian/docs: Remove HISTORY.txt, it is included as a changelog already
++        (fixes: duplicate-changelog-files)
++
++ -- Javier Fernández-Sanguino Peña <jfs@debian.org>  Wed, 06 Aug 2014 22:23:44 +0200
++
++chntpw (0.99.6.110511-1) unstable; urgency=medium
++
++  * Update to latest upstream release, published in 2011-05-09 (Closes: #615965) (LP: #637623)
++  * Change Build-Dep to use 'libgcrypt11-dev | libgcrypt-dev' instead of
++    'libgcrypt11-dev | libssl-dev' (Closes: #639350)
++  * debian/patches:
++    - Refreshed patches
++    - Remove patches that do not apply anymore, some of these
++      were incorporated upstream.
++    - Fix 09_improve_robustness, the length of the input call was
++      not being properly calculated, resulting in chntpwd not clearing
++      the password properly. This was fixed in Fedora's patches see:
++      http://pkgs.fedoraproject.org/cgit/chntpw.git/commit/?id=13bf89e14642a0da681384de5b6360178c3f8d57
++      (Closes: #705292)
++
++ -- Javier Fernández-Sanguino Peña <jfs@debian.org>  Wed, 29 Jan 2014 19:47:17 +0100
++
++chntpw (0.99.6-2) unstable; urgency=low
++
++  * Add patches provided by Fedora to fix regex -x crahses, see 
++      https://bugzilla.redhat.com/show_bug.cgi?id=504580
++      http://cvs.fedoraproject.org/viewvc/devel/chntpw/
++    The patches included are:
++    chntpw-080526-correct-test-for-failing-open-syscall.patch
++    chntpw-080526-detect-failure-to-write-key.patch
++    chntpw-080526-get_abs_path.patch
++    chntpw-080526-keyname-overflow.patch
++    chntpw-080526-no-value.patch
++    chntpw-080526-port-to-gcrypt-debian.patch
++    chntpw-080526-reged-no-deref-null.patch
++    chntpw-080526-robustness.patch
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@debian.org>  Sat, 13 Mar 2010 12:14:05 +0100
++
++chntpw (0.99.6-1) unstable; urgency=low
++
++  * New upstream release (Closes: #503908)
++     - Fixes bug in 64-bit architectures (Closes: #539227) (LP: #293809)
++  * Create debian/README.source to describe the usage of quilt
++  * Update FAQ contents with latest upstream version (updated 080526)
++  * Move the "improve documentation" patch to quilt, it is currently
++    disabled until we get an answer from upstream
++  * Definition of optimisation for the compiler is now done in debian/rules
++    and not in the Makefile
++  * Update homepage location and upstream's email in debian/copyright
++  * Update homepage location in the manpage
++  [ Changes by Philippe Coval <rzr@gna.org> ]package
++  * Merged Tanguy Ortolo's manpage patch that updates
++    the debian/chntpwd.8 manpage with additional information such as the
++    SAM database location (Closes: #569943)
++  * Refresh debian/patches (Closes: #538574)
++  * Add debian/watch
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@debian.org>  Sat, 13 Mar 2010 11:18:14 +0100
++
++chntpw (0.99.5-0+nmu1) unstable; urgency=low
++
++  * Non-maintainer upload with the maintainers permission.
++  * New upstream release
++    - This release is GPLed, move to main
++    - It links to OpenSSL without the exception, port to libgcrypt
++    - It contains a binary statically linked to OpenSSL, remove it
++      in the get-orig-source target to create a clean orig.tar.gz
++    - The combination of these things closes: #419821
++  * Drop faq.html, bootdisk.html and syskey.txt, we don't necessarily
++    have permission from upstream to distribute them.
++  * Move the homepage to the new source field
++  * Bump Standards-Version (no changes needed) to version 3.8.4
++  * Switch to debhelper compatibility level 5
++  * Add ${misc:Depends} to the dependencies
++  * Fix a couple of manual page lintian warnings
++  * Don't make clean when there is no Makefile
++  * Clean up the debian/rules file a bit
++  * Distribute HISTORY.txt as the upstream changelog
++
++ -- Paul Wise <pabs@debian.org>  Mon, 19 May 2008 16:11:01 +0800
++
++chntpw (0.99.4-1) unstable; urgency=low
++
++  * New upstream release (Closes: #419821)
++     - new version is GPLd (chntpwd) and LGPLd (ntreg library), move to main
++  * Add a Homepage to debian/control
++  * Change the maintainer's email address at debian/control
++  * Repackage the sources removing the chntpwd.static program
++  * Update the HTML files (faq, bootdisk, etc)
++  * Added author's email address to the copyright
++  * Cleanup the debian/rules file
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@debian.org>  Sat, 25 Aug 2007 17:19:23 +0200
++
++chntpw (0.99.3-1) unstable; urgency=low
++
++  * New upstream release (Closes: #390025)
++  * Added a space in front of the Homepage in debian/control as requested by
++    the Developer's Reference
++  * Update (from the developer's website) the FAQ and assorted documentation.
++  * Use debhelper compatibility version 4
++  * Update Standards-Version (no changes needed)
++  * Remove non-ASCII chars from manpage to prevent encoding issues.
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Mon, 27 Nov 2006 01:19:02 +0100
++
++chntpw (0.99.2-4) unstable; urgency=low
++
++  * Fixed FTFBFS errors when compiling with gcc-4 (in amd64) with
++    patch from Andreas Jochens (Closes: #297271)
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Thu,  7 Apr 2005 00:24:26 +0200
++
++chntpw (0.99.2-3) unstable; urgency=low
++
++  * Compile using -O2 (Closes: #255140)
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Fri, 27 Aug 2004 18:12:16 +0200
++
++chntpw (0.99.2-2) unstable; urgency=low
++
++  * Actually add the build-depends on sharutils (Closes: #254706) 
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Sun, 27 Jun 2004 12:51:34 +0200
++
++chntpw (0.99.2-1) unstable; urgency=low
++
++  * New upstream release.
++  * Updated html pages and added an 'update' target in debian/rules
++  * Added the Build-Depends dependancies to sharutils spotted by
++    Frederik Schueler (Closes: #254706)
++  * Removed WinReg.txt since it is not credited and no longer available
++    in the sources.
++  * Fixed typo in debian/rules which did not remove faq.gif and made
++    the package unbuildable (on a second round)
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Wed, 16 Jun 2004 20:17:51 +0200
++
++chntpw (0.99.1-030126-2) unstable; urgency=low
++
++  * Added faq.html and bootdisk.html taken from the website.
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Sun, 12 Oct 2003 00:13:01 +0200
++
++chntpw (0.99.1-030126-1) unstable; urgency=low
++
++  * New upstream release (Closes: #193898)
++  * Mofided chntpw.c and Makefile (OPENSSL_DES_LIBDES_COMPATIBILITY)
++    in order to be able to compile it with (sid provides 0.97b).
++    Note: This might not work for OpenSSL 1.0, refer to 
++     /usr/include/openssl/des_old.h
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Sun, 25 May 2003 21:13:52 +0200
++
++chntpw (0.98.2-010107-2) unstable; urgency=low
++
++  * Fixed lintian warning 
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Tue, 22 Apr 2003 01:17:29 +0200
++
++chntpw (0.98.2-010107-1) unstable; urgency=low
++
++  * Initial Release.
++
++ -- Javier Fernandez-Sanguino Pen~a <jfs@computer.org>  Thu, 30 May 2002 00:27:47 +0200
++
++
+--- chntpw-1.0.orig/debian/chntpw.8
++++ chntpw-1.0/debian/chntpw.8
+@@ -0,0 +1,157 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH CHNTPW 8  "13th March 2010"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++chntpw \- utility to overwrite passwords of Windows systems
++.SH SYNOPSIS
++.B chntpw
++.RI [ options ]
++.RI < samfile > 
++.RI [ systemfile ]
++.RI [ securityfile ]
++.RI [ otherreghive ] 
++.RI [...]
++.br
++.SH DESCRIPTION
++This manual page documents briefly the
++.B chntpw
++command.
++This manual page was written for the Debian distribution
++because the original program does not have a manual page.
++.PP
++.B chntpw
++is a utility to view some information and reset user passwords 
++in a Windows NT/2000 SAM userdatabase file used by Microsoft Windows
++Operating System (in NT3.x and later versions). This file is usually located at
++\\WINDOWS\\system32\\config\\SAM on the Windows file system. It is not necessary to
++know the previous passwords to reset them.  In addition it contains a simple
++registry editor and  ahex-editor with which the information contained in a
++registry file can be browsed and modified.
++
++This program should be able to handle both 32 and 64 bit Microsoft Windows and
++all versions from NT3.x up to Win8.1.
++
++
++.SH OPTIONS
++.TP
++.B \-h
++Show a summary of options.
++.TP
++.B \-u username
++Username or username ID (RID) to change. The default is 'Administrator'.
++.TP
++.B \-l
++List all users in the SAM database and exit.
++.TP
++.B \-i
++Interactive Menu system: list all users (as per \-l option) and then ask for the 
++user to change.
++.TP
++.B \-e
++Registry editor with limited capabilities (but it does include write support). For a 
++slightly more powerful editor see 
++.B reged
++
++.TP
++.B \-d
++Use buffer debugger instead (hex editor)
++
++.B \-L
++Log all changed filenames to /tmp/changed. When this option is set the
++program automatically saves the changes in the hive files without prompting the
++user.
++
++Be careful when using the \fB-L\fR option as a root user in a multiuser system.
++The filename is fixed and this can be used by malicious users (dropping a
++symlink with the same name) to overwrite system files.
++
++.TP
++.B \-N
++Do not allocate more information, only allow the editing of existing values
++with same size.
++.TP
++.B \-E
++Do not expand the hive file (safe mode).
++.TP
++.B \-v
++Print verbose information and debug messages.
++
++
++
++
++
++.SH EXAMPLES
++.TP
++.B ntfs-3g /dev/sda1 /media/win ; cd /media/win/WINDOWS/system32/config/
++Mount the Windows file system and enters the directory
++.B \\\\WINDOWS\\\\system32\\\\config
++where Windows stores the SAM database.
++.TP
++.B chntpw SAM system
++Opens registry hives 
++.B SAM
++and 
++.B system
++and change administrator account. This will work even if the name
++has been changed or it has been localized (since different language
++versions of NT use different administrator names).
++.TP
++.B chntpw -l SAM
++Lists the users defined in the 
++.B SAM
++registry file.
++.TP
++.B chntpw -u jabbathehutt SAM
++Prompts for password for 
++.B jabbathehutt
++and changes it in the 
++.B SAM
++registry file, if found (otherwise do nothing).
++
++.SH KNOWN BUGS
++
++This program uses undocumented structures in the SAM database. Use with
++caution (i.e. make sure you make a backup of the file before any changes
++are done).
++
++Password changing is only possible if the program has been specifically
++compiled with some cryptographic functions. This feature, however, only
++works properly in Windows NT and Windows 2000 systems. It might not
++work properly in Windows XP, Vista, Win7, Win8 and later systems.
++
++In the Debian distribution this feature is not enabled.
++
++.SH SEE ALSO
++.B reged, samusrgrp, sampasswd
++
++If you are looking for an automated procedure for password 
++recovery, you might want to check the bootdisks (can be used in CD
++and USB drives) provided by the upstream author at
++.BR http://pogostick.net/~pnh/ntpasswd/
++
++.br
++You will find more information available on how this program works, including
++in-depth details on how the registry works, in the text files
++.IR /usr/share/doc/chntpw/README.txt
++and
++.IR /usr/share/doc/chntpw/MANUAL.txt
++
++.SH AUTHOR
++This program was written by Petter N Hagen.
++
++This manual page was written by Javier Fernandez-Sanguino <jfs@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).
+--- chntpw-1.0.orig/debian/compat
++++ chntpw-1.0/debian/compat
+@@ -0,0 +1 @@
++5
+--- chntpw-1.0.orig/debian/control
++++ chntpw-1.0/debian/control
+@@ -0,0 +1,22 @@
++Source: chntpw
++Section: admin
++Priority: optional
++Maintainer: Javier Fernandez-Sanguino Peña <jfs@debian.org>
++Build-Depends: debhelper (>= 5), libgcrypt20-dev | libgcrypt-dev, sharutils, quilt, dpkg-dev ( >= 1.16.1~)
++Standards-Version: 3.9.5
++Homepage: http://pogostick.net/~pnh/ntpasswd/
++
++Package: chntpw
++Architecture: any
++Depends: ${shlibs:Depends}, ${misc:Depends}
++Description: NT SAM password recovery utility
++ This little program provides a way to view information and
++ change user passwords in a Windows NT/2000 user database file.
++ Old passwords need not be known since they are overwritten.
++ In addition it also contains a simple registry editor 
++ (same size data writes) and an hex-editor which enables you to
++ fiddle around with bits and bytes in the file as you wish.
++ .
++ If you want GNU/Linux bootdisks for offline password recovery
++ you can add this utility to custom image disks or use those provided
++ at the tools homepage.
+--- chntpw-1.0.orig/debian/copyright
++++ chntpw-1.0/debian/copyright
+@@ -0,0 +1,60 @@
++This package was debianized by 
++Javier Fernandez-Sanguino Pen~a <jfs@debian.org> on
++Thu, 30 May 2002 00:27:47 +0200.
++
++It was downloaded from http://pogostick.net/~pnh/ntpasswd/
++(previously at http://home.eunet.no/~pnordahl/ntpasswd/)
++
++Author: 
++
++Petter Nordahl-Hagen <pnh@pogostick.net>
++
++Copyright: 
++
++  Copyright 1997-2008 Petter Nordahl-Hagen
++
++License:
++
++The Offline NT Password & Registry Editor
++
++  This package is free software; you can redistribute it and/or modify
++  it under the terms of the GNU General Public License as published by
++  the Free Software Foundation; either version 2 of the License.
++
++  This package is distributed in the hope that it will be useful,
++  but WITHOUT ANY WARRANTY; without even the implied warranty of
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++  GNU General Public License for more details.
++
++The  NT Registry Hive access library (ntreg.{c,h} and sam.h) holds the
++following license:
++
++ This library is free software; you can redistribute it and/or
++ modify it under the terms of the GNU Lesser General Public
++ License as published by the Free Software Foundation;
++ version 2.1 of the License.
++
++ This library is distributed in the hope that it will be useful,
++ but WITHOUT ANY WARRANTY; without even the implied warranty of
++ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ Lesser General Public License for more details.
++
++On Debian systems, the complete text of the GNU General
++Public License can be found in `/usr/share/common-licenses/GPL-2'.  and the
++complete text of the GNU Lesser General Public License can be found in
++`/usr/share/common-licenses/LGPL-2.1'.
++
++--------------------------------------------------------------------------------
++
++This software uses some routines & links with routines
++by the following people/organizations:
++
++ * As of 2001, it now uses OpenSSL for MD4 & DES.
++ * Thanks to Denis Ducamp for patches to make it work with OpenSSL.
++ * 
++ * Part of some routines, information and ideas taken from
++ * pwdump by Jeremy Allison.
++ *
++ * Some stuff (like proto.h) from NTCrack by Jonathan Wilkins.
++
++--------------------------------------------------------------------------------
+--- chntpw-1.0.orig/debian/dirs
++++ chntpw-1.0/debian/dirs
+@@ -0,0 +1 @@
++usr/sbin
+--- chntpw-1.0.orig/debian/docs
++++ chntpw-1.0/debian/docs
+@@ -0,0 +1,2 @@
++README.txt
++regedit.txt
+--- chntpw-1.0.orig/debian/patches/01_port_to_gcrypt.patch
++++ chntpw-1.0/debian/patches/01_port_to_gcrypt.patch
+@@ -0,0 +1,162 @@
++01_port_to_gcrypt.patch
++Paul Wise <pabs@debian.org>
++Placed in the public domain
++Port to libgcrypt to avoid GPL/OpenSSL incompatibility
++Forwarded to Petter Nordahl-Hagen <pnordahl@eunet.no>
++Updated by Philippe Coval <rzr@gna.org> for debian
++
++--- a/chntpw.c
+++++ b/chntpw.c
++@@ -16,6 +16,7 @@
++  * 2010-jun: Syskey not visible in menu, but is selectable (2)
++  * 2010-apr: Interactive menu adapts to show most relevant
++  *           selections based on what is loaded
+++ * 2008-may: port to libgcrypt to avoid GPL/OpenSSL incompatibility [Debian]
++  * 2008-mar: Minor other tweaks
++  * 2008-mar: Interactive reg ed moved out of this file, into edlib.c
++  * 2008-mar: 64 bit compatible patch by Mike Doty, via Alon Bar-Lev
++@@ -79,8 +80,14 @@
++  */
++ 
++ #ifdef DOCRYPTO
+++#if defined(USEOPENSSL)
++ #include <openssl/des.h>
++ #include <openssl/md4.h>
+++#elif defined(USELIBGCRYPT)
+++  #include <gcrypt.h>
+++#else
+++  #error No DES encryption and MD4 hashing library found
+++#endif
++ #endif
++ 
++ #define uchar u_char
++@@ -155,7 +162,9 @@
++ 	for (i=0;i<8;i++) {
++ 		key[i] = (key[i]<<1);
++ 	}
+++#if defined(USEOPENSSL)
++ 	DES_set_odd_parity((des_cblock *)key);
+++#endif
++ }
++ 
++ /*
++@@ -200,6 +209,7 @@
++ 
++ void E1(uchar *k, uchar *d, uchar *out)
++ {
+++#if defined(USEOPENSSL)
++   des_key_schedule ks;
++   des_cblock deskey;
++ 
++@@ -210,6 +220,15 @@
++   des_set_key((des_cblock *)deskey,ks);
++ #endif /* __FreeBsd__ */
++   des_ecb_encrypt((des_cblock *)d,(des_cblock *)out, ks, DES_ENCRYPT);
+++#elif defined(USELIBGCRYPT)
+++  gcry_cipher_hd_t ks;
+++  uchar deskey[8];
+++  str_to_key(k,deskey);
+++  gcry_cipher_open(&ks, GCRY_CIPHER_DES, GCRY_CIPHER_MODE_ECB, 0);
+++  gcry_cipher_setkey(ks, deskey, 8);
+++  gcry_cipher_encrypt(ks, out, 8, d, 8);
+++  gcry_cipher_close(ks);
+++#endif
++ }
++ 
++ #endif   /* DOCRYPTO */
++@@ -343,9 +362,16 @@
++    int i;
++    char md4[32],lanman[32];
++    char newunipw[34], despw[20], newlanpw[16], newlandes[20];
+++#ifdef USEOPENSSL
++    des_key_schedule ks1, ks2;
++    des_cblock deskey1, deskey2;
++    MD4_CTX context;
+++#elif defined(USELIBGCRYPT)
+++   gcry_cipher_hd_t ks1, ks2;
+++   uchar deskey1[8], deskey2[8];
+++   unsigned char *p;
+++   gcry_md_hd_t context;
+++#endif
++    unsigned char digest[16];
++    uchar x1[] = {0x4B,0x47,0x53,0x21,0x40,0x23,0x24,0x25};
++ #endif
++@@ -460,6 +486,7 @@
++    }
++ 
++ #ifdef DOCRYPTO
+++#if defined(USEOPENSSL)
++    /* Get the two decrpt keys. */
++    sid_to_key1(rid,(unsigned char *)deskey1);
++    des_set_key((des_cblock *)deskey1,ks1);
++@@ -477,6 +504,25 @@
++ 		   (des_cblock *)lanman, ks1, DES_DECRYPT);
++    des_ecb_encrypt((des_cblock *)(vp+lmpw_offs + 8),
++ 		   (des_cblock *)&lanman[8], ks2, DES_DECRYPT);
+++#elif defined(USELIBGCRYPT)
+++   /* Start the keys */
+++   gcry_cipher_open(&ks1, GCRY_CIPHER_DES, GCRY_CIPHER_MODE_ECB, 0);
+++   gcry_cipher_open(&ks2, GCRY_CIPHER_DES, GCRY_CIPHER_MODE_ECB, 0);
+++
+++   /* Get the two decrpt keys. */
+++   sid_to_key1(rid,deskey1);
+++   gcry_cipher_setkey(ks1, deskey1, 8);
+++   sid_to_key2(rid,deskey2);
+++   gcry_cipher_setkey(ks2, deskey2, 8);
+++
+++   /* Decrypt the NT md4 password hash as two 8 byte blocks. */
+++   gcry_cipher_decrypt(ks1, md4, 8, vp+ntpw_offs, 8);
+++   gcry_cipher_decrypt(ks2, &md4[8], 8, vp+ntpw_offs+8, 8);
+++
+++   /* Decrypt the lanman password hash as two 8 byte blocks. */
+++   gcry_cipher_decrypt(ks1, lanman, 8, vp+lmpw_offs, 8);
+++   gcry_cipher_decrypt(ks2, &lanman[8], 8, vp+lmpw_offs+8, 8);
+++#endif
++       
++    if (gverbose) {
++      hexprnt("MD4 hash     : ",(unsigned char *)md4,16);
++@@ -544,9 +590,17 @@
++ 
++      /*   printf("Ucase Lanman: %s\n",newlanpw); */
++    
+++#if defined(USEOPENSSL)
++      MD4Init (&context);
++      MD4Update (&context, newunipw, pl<<1);
++      MD4Final (digest, &context);
+++#elif defined(USELIBGCRYPT)
+++     gcry_md_open(&context, GCRY_MD_MD4, 0);
+++     gcry_md_write(context, newunipw, pl<<1);
+++     p = gcry_md_read(context, GCRY_MD_MD4);
+++     if(p) memcpy(digest, p, gcry_md_get_algo_dlen(GCRY_MD_MD4));
+++     gcry_md_close(context);
+++#endif
++      
++      if (gverbose) hexprnt("\nNEW MD4 hash    : ",digest,16);
++      
++@@ -555,6 +609,7 @@
++      
++      if (gverbose) hexprnt("NEW LANMAN hash : ",(unsigned char *)lanman,16);
++      
+++#if defined(USEOPENSSL)
++      /* Encrypt the NT md4 password hash as two 8 byte blocks. */
++      des_ecb_encrypt((des_cblock *)digest,
++ 		     (des_cblock *)despw, ks1, DES_ENCRYPT);
++@@ -565,6 +620,18 @@
++ 		     (des_cblock *)newlandes, ks1, DES_ENCRYPT);
++      des_ecb_encrypt((des_cblock *)(lanman+8),
++ 		     (des_cblock *)&newlandes[8], ks2, DES_ENCRYPT);
+++#elif defined(USELIBGCRYPT)
+++     /* Encrypt the NT md4 password hash as two 8 byte blocks. */
+++     gcry_cipher_encrypt(ks1, despw, 8, digest, 8);
+++     gcry_cipher_encrypt(ks2, &despw[8], 8, digest+8, 8);
+++
+++     gcry_cipher_encrypt(ks1, newlandes, 8, lanman, 8);
+++     gcry_cipher_encrypt(ks2, &newlandes[8], 8, lanman+8, 8);
+++
+++     /* Close keys, not needed after this */
+++     gcry_cipher_close(ks1);
+++     gcry_cipher_close(ks2);
+++#endif
++      
++      if (gverbose) {
++        hexprnt("NEW DES crypt   : ",(unsigned char *)despw,16);
+--- chntpw-1.0.orig/debian/patches/02_upstream_documents
++++ chntpw-1.0/debian/patches/02_upstream_documents
+@@ -0,0 +1,1153 @@
++Add upstream documentation
++--- /dev/null
+++++ b/bootdisk.html
++@@ -0,0 +1,548 @@
+++<HTML>
+++<HEAD>
+++<TITLE>Offline NT pw & reg-editor, bootdisk</TITLE>
+++</HEAD>
+++<BODY link="#00687F" vlink="#00687F" alink="#00687F" bgcolor="#C0C0C0">
+++<H2>Offline NT Password & Registry Editor, Bootdisk / CD</H2>
+++<hr>
+++<p>
+++I've put together a single floppy or CD which contains
+++things needed to edit the passwords on most systems.
+++<br>
+++<p>
+++The bootdisk should support most of the more usual disk controllers.
+++You most likely have to select "d" to auto-load the drivers, it should
+++then detect PCI based hardware. For ISA hardware, you have to load manually.
+++Both PS/2 and USB keyboard supported.
+++<p>
+++Tested on: NT 3.51, NT 4 (all versions and SPs), Windows 2000 (all
+++versions & SPs), Windows XP (all versions, also SP2),
+++Windows Server 2003 (all SPs), Vindows Vista 32 and 64 bit.
+++<p>
+++<STRONG>DANGER WILL ROBINSON!<br>
+++If used on users that have EFS encrypted files, and the system is XP
+++or Vista, all encrypted files for that user will be UNREADABLE!
+++and cannot be recovered unless you remember the old
+++password again</strong><small> If you don't know if you have encrypted files
+++or not, you most likely don't have them. (except maybe on corporate systems)
+++</small>
+++<p>
+++<b>Please see the <A HREF="faq.html">Frequently Asked Questions</A>
+++and the version history below before emailing questions to me. Thanks!</b>
+++<p>
+++Also take a look at <A HREF="http://www.cgsecurity.org/" TARGET="_top">Grenier's DOS port</A>
+++<p>
+++<A HREF="http://www.jms1.net/nt-unlock.html" TARGET="_top">
+++How to fix it</a> if you lost your admin password for your
+++ActiveDirectory. Thanks to John Simpson.
+++<p>
+++Other ways to recover lost password etc at
+++<a href="http://www.petri.co.il/forgot_administrator_password.htm" target="_top">MCSE World</a>
+++<p>
+++<hr>
+++<H2>How to use?</H2>
+++<small>Yes, long text. Please read it all and the <A
+++HREF="faq.html">FAQ</A> before mailing me questions</small>
+++<p>
+++If you have the CD, all drivers are included. If you use the floppy,
+++and you need the SCSI-drivers set, either prepare a floppy with
+++the scsi-drivers .zip file unzipped (in \scsi), or put a selection
+++of the drivers you need in the \scsi folder on the main floppy,
+++there should be enough space for maybe a couple of drivers. In the latter
+++case you don't need to carry around and swap floppies.
+++<p>
+++<H3>Overview</H3>
+++<OL>
+++  <LI>Disk select, tell which disk contains the Windows system.
+++      Optionally you will have to load drivers.
+++  <LI>PATH select, where on the disk is the system?
+++  <LI>File select, which parts of registry to load, based on what you
+++  want to do.
+++  <LI>Password reset or other registry edit.
+++  <LI>Write back to disk (you will be asked)
+++</OL>
+++<B>DON'T PANIC!! - Most questions can usually be answered with the
+++default answer which is given in [brackets]. Just press enter/return
+++to accept the default answer.</b>
+++<p>
+++
+++<H3>1. DISK SELECT</H3>
+++Which disk contains your Windows system?
+++<p>
+++<pre>
+++=========================================================
+++. Step ONE: Select disk where the Windows installation is
+++=========================================================
+++Disks:
+++Disk /dev/sda: 2147 MB, 2147483648 bytes
+++NT partitions found:
+++ 1 :   /dev/sda1    2043MB  Boot
+++
+++Please select partition by number or
+++a = show all partitions, d = automatically load new disk drivers
+++m = manually load new disk drivers
+++l = relist NTFS/FAT partitions, q = quit
+++Select: [1] 
+++</pre>
+++<UL>
+++<li>For most machines only one disk and parition is listed, if so,
+++    just go with selection 1 (default)
+++<li>Otherwise select partition
+++<li>Note: When booting from USB drive, the USB drive itself may often
+++show up as number 1 instead of the machines buildt in drives.
+++<li>If no disks or not all disks are shown, you may need to load disk
+++drivers, for SCSI-controllers (or some IDE-raid controllers). Select
+++<b>d</b> to go to the driver select menu for auto-probe (based what's
+++found on the PCI bus)
+++<li>If auto-probe won't work, you may have to load something manually,
+++select <b>m</b> to do that (like the old system)
+++</Ul>
+++
+++<H3>2. HOW TO MANUALLY LOAD DRIVERS</H3>
+++Try auto-probe (d) first, only do this if you have to manually
+++try to load some or all drivers.
+++<pre>
+++Select: [1] m
+++==== DISK DRIVER / SCSI DRIVER select ====
+++You may now insert or swap to the SCSI-drivers floppy
+++Press enter when done: 
+++Found 1 floppy drives
+++Found only one floppy, using it..
+++Selected floppy #0
+++Mounting it..
+++Floppy selection done..
+++SCSI-drivers found on floppy:
+++
+++1 BusLogic.o.gz
+++2 aic7xxx.o.gz
+++3 sym53c8xx.o.gz
+++[ ... ]
+++
+++SCSI driver selection:
+++  a - autoprobe for the driver (try all)
+++  s - swap driver floppy
+++  q - do not load more drivers
+++  or enter the number of the desired driver
+++
+++SCSI driver select: [q] 
+++</pre>
+++<UL>
+++<li>Select <b>a</b> for auto-probe, it will try to load all drivers,
+++and stop when one loads properly. Some drivers may need more driver
+++modules, so you may have to redo the auto-probe several times.
+++<li>Or if you know what you want, just enter it's number or name.
+++</ul>
+++
+++<pre>
+++SCSI driver select: [q] a
+++[ BusLogic.o.gz ]
+++Using /tmp/scsi/BusLogic.o
+++PCI: Found IRQ 11 for device 00:10.0
+++
+++[.... lots of driver / card info ...]
+++
+++scsi0: *** BusLogic BT-958 Initialized Successfully ***
+++scsi0 : BusLogic BT-958
+++  Vendor: FooInc   Model: MegaDiskFoo  Rev: 1.0 
+++  Type:   Direct-Access                      ANSI SCSI revision: 02
+++
+++[ ... ]
+++
+++Attached scsi disk sda at scsi0, channel 0, id 0, lun 0
+++SCSI device sda: 8388608 512-byte hdwr sectors (4295 MB)
+++Partition check:
+++ /dev/scsi/host0/bus0/target0/lun0: p1
+++Driver BusLogic.o.gz loaded and initialized.
+++
+++</pre>
+++<ul>
+++<li>You may then quit the selection with <b>q</b> or try for more drivers.
+++<li>When you quit, you will get back to the disk select (see above)
+++and hopefully see more disks.
+++</ul>
+++<p>
+++
+++<H3>3. PATH AND FILE SELECT</H3>
+++Where's the Windows system located?
+++<p>
+++On the selected partition/disk, the main files for windows can
+++theoretically be anywhere. And we must find the registry files
+++to be able to edit them. There are however some usual places:
+++<ul>
+++<li>winnt35/system32/config - Windows NT 3.51
+++<li>winnt/system32/config - Windows NT 4 and Windows 2000
+++<li>windows/system32/config - Windows XP/2003 and often Windows 2000
+++upgraded from Windows 98 or earlier.
+++</ul>
+++These usual paths will be checked, and if found, they will
+++be suggested as the default.
+++<p>
+++<pre>
+++Selected 1
+++Mounting on /dev/ide/host0/bus0/target0/lun0/part1
+++NTFS volume version 3.1.
+++Filesystem is: NTFS
+++
+++=========================================================
+++. Step TWO: Select PATH and registry files
+++=========================================================
+++What is the path to the registry directory? (relative to windows disk)
+++[windows/system32/config] : 
+++-r--------    1 0        0          262144 Jan 12 18:01 SAM
+++-r--------    1 0        0          262144 Jan 12 18:01 SECURITY
+++-r--------    1 0        0          262144 Jan 12 18:01 default
+++-r--------    1 0        0         8912896 Jan 12 18:01 software
+++-r--------    1 0        0         2359296 Jan 12 18:01 system
+++dr-x------    1 0        0            4096 Sep  8 11:37 systemprofile
+++-r--------    1 0        0          262144 Sep  8 11:53 userdiff
+++
+++Select which part of registry to load, use predefined choices
+++or list the files with space as delimiter
+++1 - Password reset [sam system security]
+++2 - RecoveryConsole parameters [software]
+++q - quit - return to previous
+++[1] : 
+++</pre>
+++<ul>
+++<li>If the directory is correct, something like the above will be
+++listed (it may vary a bit..)
+++<li>You may then choose some canned answers based on what you want to
+++do.
+++<li>Password reset is the default, and most used.
+++<li>Option 2, RecoveryConsole is for setting 2 parameters that the
+++Windows 2000 and newer RecoveryConsole (boot from CD, select Recovery
+++and console mode) uses. One of the parameters allows RecoveryConsole
+++to be run without it prompting for the admin password. If you do not
+++know what RecoveryConsole is, don't bother. Or go search the net..
+++<li>Or if you want to do manual edit of registry, select your hives to
+++load. Enter all names on one line with space between.
+++</ul>
+++<p>
+++We select 1 to edit passwords..
+++<p>
+++<H3>4. PASSWORD RESET</H3>
+++Everything is set and ready, let's roll!
+++<p>
+++
+++<pre>
+++=========================================================
+++. Step THREE: Password or registry edit
+++=========================================================
+++chntpw version 0.99.2 040105, (c) Petter N Hagen
+++
+++[.. some file info here ..]
+++
+++* SAM policy limits:
+++Failed logins before lockout is: 0
+++Minimum password length        : 0
+++Password history count         : 0
+++
+++&lt;&gt;========&lt;&gt; chntpw Main Interactive Menu &lt;&gt;========&lt;&gt;
+++
+++Loaded hives: &lt;sam&gt; &lt;system&gt; &lt;security&gt;
+++
+++  1 - Edit user data and passwords
+++  2 - Syskey status & change
+++  3 - RecoveryConsole settings
+++      - - -
+++  9 - Registry editor, now with full write support!
+++  q - Quit (you will be asked if there is something to save)
+++
+++
+++What to do? [1] -&gt; 1
+++
+++===== chntpw Edit User Info & Passwords ====
+++
+++RID: 01f4, Username: &lt;Administrator&gt;
+++RID: 01f5, Username: &lt;Guest&gt;, *disabled or locked*
+++RID: 03e8, Username: &lt;HelpAssistant&gt;, *disabled or locked*
+++RID: 03eb, Username: &lt;pnh&gt;, *disabled or locked*
+++RID: 03ea, Username: &lt;SUPPORT_388945a0&gt;, *disabled or locked*
+++
+++Select: ! - quit, . - list users, 0x&lt;RID&gt; - User with RID (hex)
+++or simply enter the username to change: [Administrator] 
+++</pre>
+++<p>
+++Here you can enter the username you want to reset the password for.
+++NOTE: It is case-sensitive, write it exact as listed (without the &lt;
+++and &gt; of course)
+++<p>
+++Or if the name uses some characters that cannot be displayed, enter
+++it's ID number (RID), like this: 0x1f4 would select administrator.
+++<p>
+++We select the default, which is administrator.
+++<p>
+++<pre>
+++
+++RID     : 0500 [01f4]
+++Username: Administrator
+++fullname: 
+++comment : Built-in account for administering the computer/domain
+++homedir : 
+++
+++Account bits: 0x0210 =
+++[ ] Disabled        | [ ] Homedir req.    | [ ] Passwd not req. | 
+++[ ] Temp. duplicate | [X] Normal account  | [ ] NMS account     | 
+++[ ] Domain trust ac | [ ] Wks trust act.  | [ ] Srv trust act   | 
+++[X] Pwd don't expir | [ ] Auto lockout    | [ ] (unknown 0x08)  | 
+++[ ] (unknown 0x10)  | [ ] (unknown 0x20)  | [ ] (unknown 0x40)  | 
+++
+++Failed login count: 0, while max tries is: 0
+++Total  login count: 3
+++
+++* = blank the password (This may work better than setting a new password!)
+++Enter nothing to leave it unchanged
+++Please enter new password: *
+++</pre>
+++<p>
+++Some information is displayed. Also, if the account is locked, you
+++will be asked if you wish to unlock it (not shown here)
+++<p>
+++<b>We go for the blank password option (*) WHICH IS HIGLY RECOMMENDED
+++over setting a new one.</b>
+++<p>
+++<pre>
+++Please enter new password: *
+++Blanking password!
+++
+++Do you really wish to change it? (y/n) [n] y
+++Changed!
+++
+++
+++Select: ! - quit, . - list users, 0x<RID> - User with RID (hex)
+++or simply enter the username to change: [Administrator] !
+++</pre>
+++<p>
+++! brings us back to the main menu here.
+++<p>
+++<pre>
+++
+++<>========<> chntpw Main Interactive Menu <>========<>
+++
+++Loaded hives: <sam> <system> <security>
+++
+++  1 - Edit user data and passwords
+++  2 - Syskey status & change
+++  3 - RecoveryConsole settings
+++      - - -
+++  9 - Registry editor, now with full write support!
+++  q - Quit (you will be asked if there is something to save)
+++
+++
+++What to do? [1] -> q
+++</pre>
+++<p>
+++<H3>5. WRITING OUT THE CHANGES</H3>
+++Everything has been done, time to commit the changes.
+++<p>
+++<pre>
+++
+++Hives that have changed:
+++ #  Name
+++ 0  <sam> - OK
+++
+++=========================================================
+++. Step FOUR: Writing back changes
+++=========================================================
+++About to write file(s) back! Do it? [n] : y
+++</pre>
+++<p>
+++<b>THIS IS YOUR LAST CHANCE! If you answer y here there will be a
+++write to disk!</b>
+++<p>
+++<pre>
+++Writing  sam
+++
+++***** EDIT COMPLETE *****
+++
+++You can try again if it somehow failed, or you selected wrong
+++New run? [n] : n
+++
+++</pre>
+++<p>
+++That was all.
+++<p>
+++Please answer n here and then reboot, CTRL-ALT-DEL. Remember to remove
+++the floppy or CD.
+++<p>
+++<p>
+++
+++<H2>What can go wrong?</H2>
+++Lots of things can go wrong, but most faults won't damage your system.
+++<P>
+++The most critical moment is when writing back the registry files to
+++NTFS. 
+++<p>
+++The most common problem is that the computer was not cleanly shut
+++down, and my disk won't write correctly back. (it says: read only
+++filesystem). If so, boot into Windows Safe Mode (F8 before windows
+++logo appears) and shut down from the login window.
+++<p>
+++Also, see the <A HREF="faq.html">FAQ</A> for help with other common problems.
+++<p>
+++For linux-knowledged people, you may do things manually if the scripts fail,
+++you have shells on tty1-tty4 (ALT F1 - ALT F4).
+++<hr>
+++<p>
+++<H2>Bootdisk history</H2>
+++<p>
+++<strong>2007-04-09</strong>
+++<ul>
+++<li>Now with Vista support!
+++<li>Newer drivers, better probe/loader. Should be able to auto-load
+++all relevant drivers for PCI based disk hardware.
+++<li>Better manual selection of drivers (if you need to load ISA
+++drivers for example)
+++<li>CD only release at this time. If anyone need me to continue floppy
+++releases, please mail me.
+++<li>USB drive can be made out of the files on the CD, see readme.txt
+++on the CD.
+++</ul>
+++<p>
+++<strong>2005-03-03</strong>
+++<ul>
+++<li>New CD release (sorry, when yet again rewiring the driver stuff, I did
+++    not have time to make floppy stuff work)
+++<li>Contains disk driver updates (SATA maybe more working now)?
+++<li>New driver auto-probe and load. Better now?
+++<li>NTFS updates, writes should be more safe, I hope, working more often.
+++<li>No changes to the password routines themselves.
+++</ul>
+++<p>
+++<strong>2005-03-03</strong>
+++<ul>
+++<li>Driver update only, with a few fixes to the autoprobe, too.
+++<li>Some popular drivers like aacraid, megaraid and some SATA-drivers
+++    were problematic or missing, now hopefully here.
+++<li>Note that most SATA-drivers also need the libata.ko.gz file,
+++autprobe loads it if needed.
+++<li>The driver archive are too big to include all drivers on a floppy
+++    so remove some you're sure you don't need. Remember to always
+++    keep pcitable.gz and moddep.gz if you want autoprobe to work.
+++<li>The CD of course includes all drivers.
+++<li>The manual try-all-drivers load is buggy, and won't try to load all
+++drivers, it will stop after each that has not been tried before. But
+++specifying a single driver directly still works.
+++<li>No changes to password edit routines
+++</ul>
+++<p>
+++(earlier history removed)<br>
+++<STRONG>9705xx</STRONG>
+++<UL>
+++<LI>First public release.
+++</UL>
+++<HR>
+++<H2>Download</H2>
+++<p>
+++<small>Note: Some links may be offsite.</small>
+++<p>
+++<UL>
+++<LI><A HREF="cd070409.zip">cd070409.zip</A> (~3MB) - Bootable CD image.
+++<small>(md5sum: ffb92d9ffafaa6ed06e9b98fc14f707d )</small>
+++<p>
+++Bootable USB drive may be made from the files on the CD. See readme.txt on the CD.
+++<p>
+++<small>Last floppy release (it is old). WARNING: WILL CORRUPT WINDOWS VISTA!
+++<LI><A HREF="bd050303.zip">bd050303.zip</A> (~1.1MB) - Bootdisk image,
+++date 050303 <small>(md5sum: 4c85bc15286e69f9fd347e07711636eb)</small>
+++<LI><A HREF="sc050303.zip">sc050303.zip</A> (~1.4MB) - SCSI-drivers
+++(050303) (only use newest drivers with newest bootdisk, this one works
+++with bd050303) <small>(md5sum: 745a1889b6580bc8f1bfb565e73666d3)</small>
+++</UL>
+++</small>
+++<p>
+++Previous versions may sometimes be found <A HREF="http://ntpass.blaa.net/">here</a> (also my site)
+++<p>
+++<p>
+++<B>NOTE THAT THE BOOTDISK CONTAINS CRYPTHOGRAPHIC CODE, and that it may be
+++ILLEGAL to RE-EXPORT it from your country.</B>
+++<p>
+++
+++<H3>How to make the CD</H3>
+++<p>
+++Unzipped, there should be an ISO image file (cd??????.iso). This can
+++be burned to CD using whatever burner program you like, most support
+++writing ISO-images. Often double-clikcing on it in explorer will pop
+++up the program offering to write the image to CD. Once written the CD
+++should only contain some files like "initrd.gz", "vmlinuz" and some
+++others. If it contains the image file "cd??????.iso" you didn't burn
+++the image but instead added the file to a CD. I cannot help with this,
+++please consult you CD-software manual or friends.
+++<p>
+++The CD will boot with most BIOSes, see your manual on how to set it
+++to boot from CD. Some will auto-boot when a CD is in the drive,
+++some others will show a boot-menu when you press ESC or F10/F12 when
+++it probes the disks, some may need to have the boot order adjusted
+++in setup.
+++<p>
+++
+++<H3>How to make the floppy</H3>
+++<p>
+++The unzipped image (bdxxxxxx.bin) is a block-to-block representation
+++of the actual floppy, and the file cannot simply be copied to
+++the floppy. Special tools must be used to write it block by block.
+++<p>
+++<ul>
+++<li>Unzip the bd zip file to a folder of your choice.
+++<li>There should be 3 files: bdxxxxxx.bin (the floppy image) and
+++    rawrite2.exe (the image writing program), and <b>install.bat</b> 
+++    which uses rawrite2 to write the .bin file to floppy.
+++<li>Insert a floppy in drive A: <b>NOTE: It will lose all previous data!</b>
+++<li>Run (doubleclick) <b>install.bat</b> and follow the on-screen
+++instructions.
+++<li>Thanks to Christopher Geoghegan for the install.bat file (some of
+++it ripped from memtest86 however)
+++</ul>
+++<p>Or from unix:<p>
+++<CODE>dd if=bd??????.bin of=/dev/fd0 bs=18k</CODE>
+++<p>
+++<H3>How to make and use the drivers floppy</H3>
+++<p>
+++<b>NOTE: Not all files will fit on a floppy, so leave out what you
+++think you do not need!</b>
+++<ul>
+++<li>Format (or delete all contents) on a floppy
+++<li>Unzip the drivers you think you may need to it
+++<li>Files with names ending in <code>.ko.gz</code> should end up in a
+++directory called <code>scsi</code>
+++<li>Be sure to also include the files <code>moddep.gz</code> and
+++<code>pcitable.gz</code>, they are the dependency list, and pci
+++mappings.
+++<li>To use, at the disk select menu, select 'd' to auto-load, and you
+++will be asked to swap to the drivers floppy when needed.
+++</ul>
+++<p>
+++<HR>
+++<p>
+++<H1>Bootdisk credits and license</H1>
+++<p>
+++Most of the stuff on the bootdisk is either GPL, BSD or similar
+++license, you can basically do whatever you want with all of it,
+++the sourcecode and licenses can be found at their sites, I did not change/patch
+++anything.
+++<p>
+++The "chntpw" program (password changer, registry editor) is licensed
+++under GNU GPL v2. <A HREF="GPL.txt">COPYING.txt</A>
+++<p>
+++Stuff I used, big thanks:
+++<UL>
+++<li><a href="http://kernel.org" target="_top">Linux kernel</a>
+++<li><a href="http://linux-ntfs.sourceforge.net/index.html"
+++target="_top">NTFS for linux project</a>
+++<li><a href="http://www.busybox.net" target="_top">BusyBox</a> - Lots of commands
+++in one binary :)
+++<li><a href="http://www.uclibc.org" target="_top">uClibc</a> - A
+++reduced size / embedded libc.
+++<li>Some bootdisk ideas and layout from <a
+++href="http://www.zelow.no/floppyfw/" target="_top">floppyfw</a>
+++thanks to ThomasEZ for that (and his great firewall..)
+++</UL>
+++<p>
+++<HR>
+++<p>
+++<img src="/cgi-bin/wc?u=pnordahl_2;w=9">
+++<p>
+++<a href="editor.html"><img border="0" src="images/back.gif" width="98" height="20"></a><hr>
+++<ADDRESS>070410, pnordahl@eunet.no</ADDRESS>
+++</BODY>
+++</HTML>
++--- /dev/null
+++++ b/faq.gif.uu
++@@ -0,0 +1,125 @@
+++begin 644 faq.gif
+++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
+++3ON_\WN\Y=N\`C^\.S%WL$`0`.P``
+++`
+++end
++--- /dev/null
+++++ b/faq.html
++@@ -0,0 +1,343 @@
+++<HTML>
+++<HEAD>
+++<TITLE>Offline NT pw & reg-editor, FAQ</TITLE>
+++</HEAD>
+++<BODY link="#00687F" vlink="#00687F" alink="#00687F" bgcolor="#C0C0C0">
+++<H2 align="center"><img border="0" src="images/faq.gif" width="460" height="65"></H2>
+++<hr>
+++
+++Last update: 080526
+++
+++<p>
+++<h3>
+++The changes does not take effect.<br>
+++I get some errors like "read-only filesystem" and such.
+++</h3>
+++<ul>
+++<li>The current version does not like to write to the NTFS filesystem if
+++windows was not shut down cleanly.
+++<li>Shut down windows from the login page, or from the start menu.
+++<li>If there is no way to shutdown from the login-page, try this:
+++<ol>
+++  <li>Boot windows into Safe Mode (press a lot on F8 before the
+++  windows logo screen appears)
+++  <li>The login screen in safe mode should usually have a shutdown
+++  option, so shut it down!
+++  <li>You may have to do this TWICE! quite often..
+++</ol>
+++</ul>
+++<p>
+++<h3>
+++Why can't I access my encrypted (EFS) files after resetting the password?
+++</h3>
+++<ul>
+++<li>Because in XP and possibly later service packs in win2k the
+++password itself is used to encrypt the keys needed for EFS.
+++<li>Sorry, there is no way to recover the files once the
+++password has been reset.
+++</ul>
+++<p>
+++<h3>
+++The .bin-file inside the .zip won't fit on a floppy.
+++</h3>
+++<ul>
+++<li>You didn't read the bottom of the <A HREF="bootdisk.html">bootdisk
+++download page</A>
+++<li>Click on the <b>install.bat</b> after extracting the .zip file,
+++and follow the on screen prompts.
+++</ul>
+++
+++<p>
+++
+++<h3>
+++The keyboard does not work! I can't answer the questions!!
+++</h3>
+++<ul>
+++<li>If you have a USB keyboard either your USB controller or your
+++keyboard is not supported with the rather generic drivers I use.
+++Nothing I can do at the moment, sorry! Try a PS/2 keyboard if possible.
+++<li>If the keyboard is PS/2 and won't work, I do not have a
+++solution. Sorry.
+++</ul>
+++<p>
+++
+++<h3>
+++When loading the floppy it stops with "boot failed."
+++</h3>
+++<ul>
+++<li>Bad floppy. Or bad bootloader (some versions are known to give up
+++easy)
+++<li>Use another floppy or a new version of the ldlinux.sys file (go
+++allthewebbing for it for instance. grab one from a linux distros
+++bootdisks. I did.)
+++<li>Or get the CD image from the <A HREF="bootdisk.html">download</A> page.
+++</ul>
+++
+++<p>
+++<h3>
+++  I have the CD in my CD drive, but it starts on the haddrive.
+++</h3>
+++<ul>
+++<li>Check your BIOS manual on how to boot from CD, or if the CD-ROM is
+++on a SCSI-card, check the cards manual.
+++<li>For those of you without manuals: Try hitting ESC or F10 or F12
+++for bootmenu right after the RAM-count.
+++<li>Or enter BIOS setup and change the boot order. Either you can
+++figure that one out from the menus, or you really need the manual.
+++<li>I don't remember when BIOS-folks started implementing the CD boot
+++(El Torito) standard, but it was around 1995? Older computers won't CD boot.
+++<li>But BIOS-programmers never actually READ the bloody standard, so
+++you may have a buggy one that only boots some CDs.
+++<li>If it boots (first banner page), the same problems as for the
+++floppy may show, please read on..
+++</ul>
+++
+++<p>
+++<h3>
+++The floppy stuff crashes with "VFS: Unable to mount root.." and panic etc.
+++</h3>
+++<ul>
+++<li>The are several ways of getting the size of the memory out of the
+++BIOS at boot.
+++<li>It probably selected the wrong one, and 16MB is a bit too little.
+++<li>Strangely, this most often happens on big brand machines, like
+++Compaq and DELL.
+++<li>At boot, hold down LEFT SHIFT key until "Boot: " prompt appears.
+++<li>Then enter:
+++  <ul>
+++  <li><code>boot mem=128M</code>
+++  </ul>
+++<li>but substitute with how much memory you have (or a bit less to be safe)
+++<li>If this doesn't help, there is probably not support for your
+++motherboard, CPU or BIOS.
+++</ul>
+++
+++<p>
+++<h3>
+++It cannot find any NT disks or paritions.
+++</h3>
+++<ul>
+++<li>Some controllers require more than one driver. Usually the
+++auto-load should take care of dependencies, but it does not hurt to
+++try auto-load (d) again.
+++<li>It's either caused by unsupported controller or filesystem driver problems.
+++<li>See next questions..
+++<li>Please don't ask about inclusion of new drivers. I'm often short
+++on time, get lot's of mail, and it's difficult to put in things I
+++cannot test.
+++<li>If you really insist on asking for new drivers, you must at least
+++provide me with correct info on controller card or chip brandname,
+++type, model etc, and a link to website(s) with drivers for linux.
+++If there also are docs for using it on linux, I need that, too.
+++However, as I get a lot of mail, I cannot guarantee an answer or that
+++your needed driver will be included.
+++<li>There are however several other things to try:
+++  <ul>
+++  <li>Try to build <A HREF="http://www.cgsecurity.org/" TARGET="_top">Grenier's DOS floppies</A>
+++  <li>Move harddisk to another machine as secondary, then try
+++  <A HREF="http://www.cgsecurity.org/" TARGET="_top">Grenier's chntpw.exe</A>
+++  <li>Install new NT/2k/XP in another dir than \winnt etc, then login
+++  with new install to access the old ones sam file. Either rename it
+++  (will leave admin with blank pass) or use chntpw.exe on it.
+++  </ul>
+++  <li>You could boot a live linux CD
+++  (like <A href="http://www.ubuntu.com/" TARGET="_top">Ubuntu</A> or others), it
+++  will allow access to the windows disk. Then run the "chntpw.static"
+++  program included in the source zip file on the source <a href="editor.html">download page</a>
+++<li>Or why not look at
+++<a href="http://www.petri.co.il/forgot_administrator_password.htm"
+++target="_top">The password recovery page at MCSE World</a>
+++</ul>
+++
+++<p>
+++<h3>
+++How to load a 3rd party driver
+++</h3>
+++<ul>
+++<li>There is a menu selection for it. Put file(s) drivers*.zip
+++  on a floppy or on a USB stick (may be a different one from the one
+++  you boot from). The zips should contain *.ko files. The files will be automatically unzipped and ready
+++  for auto-load or manual menu selection.
+++<li>I do not know how easy or difficult it will be to actually get the
+++  drivers to load into my kernel. There may be versions incompatibilities.
+++</ul>
+++<p>
+++
+++<h3>
+++It hangs when mounting the windows disk
+++</h3>
+++<ul>
+++<li>Hangs when it says something like "NTFS volume version 3.xx"
+++<li>If there is disk activity, just wait. Took more than 10 minutes in
+++  one of my tests once.
+++<li>If there is no disc activity, what a few minutes, then reset and
+++  try again.
+++<li>If it still hangs, try to boot windows into safe mode first, then
+++  shut down etc. See other faq entries about that.
+++</ul>
+++<p>
+++
+++<h3>
+++It seems to change the password, but NT won't agree.
+++</h3>
+++<ul>
+++<li>The NTFS code wasn't that great after all (probably didn't write
+++things properly)
+++<li>My code wasn't that great after all. (it didn't change or changed
+++in the wrong place. The V struct is still marked "here be dragons..")
+++<li>Try blanking the password instead (menu selection 1), this
+++may straighten things out. In fact, reports indicate: BLANKING RECOMMENDED!
+++<li>If it still won't work, see the previous solution.
+++<li>Blanking will probably be the only option in newer releases.
+++</ul>
+++<p>
+++
+++<p>
+++<h3>
+++I'm told that the account is locked, even if I know it is not.
+++</h3>
+++<ul>
+++<li>Ok, then the code to identify lockout is not good enough. Sorry
+++for that.
+++<li>Happens sometimes when there are failed logins on a user, even if
+++it is not in fact locked out.
+++<li>Just ignore it, you may still clear the password if you wish.
+++</ul>
+++<p>
+++
+++<p>
+++<h3>
+++I'm not told that the account is locked out, even Windows says it
+++is. How can I reset it?
+++</h3>
+++<ul>
+++<li>Oops, probably more to the lockout stuff than I know about.
+++<li>You can try resetting it (selection 4 from the user menu), but it
+++may not help.
+++<li>May have something to do with Security / Group policies, which
+++editing of is not supported yet.
+++<li>Unless you'd like to play with the registry editor yourself and
+++figure it out. I cannot give lessons in registry edit.
+++</ul>
+++
+++<p>
+++<h3>
+++The user promotion (putting user into admin group) did not work: I
+++cannot log in!
+++</h3>
+++<ul>
+++<li>Some users (like Guest often) are prevented from login by
+++"Security policies". Does it say something like that when trying?
+++<li>Sorry, but my program cannot change policy settings. (yet?)
+++<li>It does not even know how to check them.
+++<li>Sorry, nothing to do..
+++</ul>
+++
+++<p>
+++<h3>
+++The user promotion (putting user into admin group) worked, but I
+++cannot put user back into other groups in windows!
+++</h3>
+++<ul>
+++<li>This is known to happen sometimes.
+++<li>Try the local user part of "computer management" in
+++"administrative tools", it is more detailed than the stupid control
+++panel applet.
+++<li>But that may not work, either.
+++<li>Sorry, have no other known workarond. I told you it was experimental!
+++</ul>
+++
+++<p>
+++<p>
+++<h3>
+++I tried it on Win2k/2003/2008 PDC (Active Directory), and it didn't change the password.
+++</h3>
+++<ul>
+++<li>ActiveDirectory (AD) is a completely different database.
+++<li>There is no support for directly changing passwords in AD.
+++<li>To clear things up: The Active Directory SERVER itself is not
+++directly supported, but workstations (w2kprof) and servers (w2k server) that is
+++just MEMBERS of the domain can have their LOCAL passwords changed by
+++the utility.
+++<li>But..
+++<li>John Simpson has made <a href="http://www.jms1.net/nt-unlock.html"
+++target="_top">
+++instructions</a> on how to reset that pesky lost administrator password in AD.
+++<li>Many thanks goes to John for this!
+++<li>And I may as well in a future relase make a frontend for the
+++screensaver trick he uses, so it will be even easier.
+++</ul>
+++<p>
+++<p>
+++<h3>
+++What is the 'Can't access tty...' error message when I quit the
+++floppy/cd procedure?
+++</h3>
+++<ul>
+++<li>It's from the shell, and has nothing whatsoever to do with the
+++password edit.
+++<li>My scripts don't allocate the terminal correctly.
+++<li>Only thing it means is that ctrl-c to break etc won't work on
+++console 1. Should work on console 2-4 (ALT-F2 and so on)
+++<li>Please don't ask about this in mail AGAIN!
+++</ul>
+++<p>
+++<h3>
+++My language uses characters in the usernames that are not readable
+++with the floppy, and i cannot enter/search for them, thus not edit.
+++</h3>
+++<ul>
+++<li>There is no support for the full unicode character set. Perhaps
+++never will.
+++<li>Select user with the RID (user ID) instead.
+++<li>At the username prompt, enter the RID in hex, just as it is listed
+++in the user listing. 0xfa0 for instance.
+++</ul>
+++<p>
+++
+++<p>
+++<h3>
+++What about support? and I just paid $$ for it on eBay!
+++</h3>
+++<ul>
+++<li>Yes, some people sell it on eBay.
+++<li>Most of them didn't bother to ask me, but I haven't cared too much
+++about it, at least not yet.
+++<li>If the price is reasonably low (for media, shipping etc), they offer some kind of help and
+++support if customers need it, that's good, and no problem for me.
+++<li>Please do not blaim me if eBay sellers can't deliver or it doesn't
+++work, or you feel ripped off. Leave feedback on eBay instead.
+++<li><b>I DO NOT ENDORSE ANY SPECIFIC SELLER ON eBAY!</b>
+++<li>I give my tool away for free here, because I do not have the time
+++for real support.
+++<li>Usually I go through my mail 1 or 2 times a week, and I usually
+++end up replying about 40-50% of it.
+++<li>What I answer depends on my mood that day, what the problems
+++are, and how they are presented.
+++<li>Mails with questions for which an answer can be found here in the
+++FAQ or on the other webpages will not be answered.
+++<li>Questions for drivers will almost never be answered. They take too
+++much time to figure out. Sorry.
+++<li>And.. I understand English, Norwegian, Swedish and Danish.
+++<li>My answers are either in English or Norwegian. (as appropriate :-)
+++<li><b>Thank you all for a lot of positive feedback or small tips for
+++improvement, I appreciate it :-) </b> even if I often don't reply to you. :-(
+++</ul>
+++
+++<p>
+++<h3>
+++Can I donate money?
+++</h3>
+++<ul>
+++<li>Not a the moment, I have closed the donations. There are several
+++reasons I will not talk about.
+++<li>But a big thank you to all that have donated, especially to some I
+++guess I have missed a personal reply to!
+++</ul>
+++<p>
+++<hr>
+++<p>
+++<a href="main.html"><img border="0" src="images/back.gif" width="98" height="20"></a><hr>
+++<ADDRESS>091201, pnh@pogostick.net</ADDRESS>
+++</BODY>
+++</HTML>
++--- /dev/null
+++++ b/syskey.txt
++@@ -0,0 +1,124 @@
+++The Offline NT Password Editor
+++
+++(c) 1997-2002 Petter Nordahl-Hagen
+++
+++Update: 08 dec 2002
+++
+++What happens when syskey is installed, and how to get rid of it
+++---------------------------------------------------------------
+++
+++Background:
+++-----------
+++
+++Syskey was added to NT with Service Pack 3 as a way to prevent easy
+++access to the actual password hashes in the SAM (Security Accounts Manager)
+++The original methods of making and storing the hashes makes it
+++rather easy to bruteforce or dictionary-attack it to find the plaintext
+++passwords. (mostly caused by a somewhat flawed implementation & use
+++of the cryptoalgorithms involved, but that's discussed elsewhere)
+++Enabling syskey is optional, the administrator must run syskey.exe and
+++answer some dialog-boxes to turn it on. On Windows 2000 it's not optional
+++anymore, it's enabled by default at installation time.
+++
+++When syskey is active, the hashes are encrypted/obfuscated yet
+++another time before being stored in the SAM registry.
+++However, they're stored in the old form in memory after boot
+++(pwdump2 demonstrates this),
+++since the old form is needed for NTLM authentication on the network etc.
+++
+++The key that obfuscates the hashes, or rather it looks like something
+++that decrypts the key, can be stored on floppy, generated from a
+++passphrase to be entered at boot, or stored (obfuscated again) in
+++the registry.
+++
+++There's no official supported method to switch off syskey
+++once activated, except restoring the registry from a rescuefloppy
+++made before activation of syskey.
+++
+++So.. what's this got to do with my utility?
+++-------------------------------------------
+++
+++My utility doesn't try to crack passwords, it puts new hashes into
+++the SAM, thus changing a users password. And it does this offline.
+++Syskey was a showstopper for this.
+++As far as I can see, there's 2 ways to solve this:
+++
+++1) Find the key in registry, get user to enter it, or get hold of floppy
+++   then use the syskey on the new password too. However, it's not documented
+++   and I haven't found any reverse engineering of it anyplace.
+++
+++2) Try to turn it off. This has one drawback, and one good side:
+++   Bad: all passwords must be reset, since the old hashes will be invalid.
+++   VeryBAD: SWITHCHING OFF IN WINDOWS 2000 AND XP NOT PERFECT,
+++            WILL CAUSE TROUBLE, but you can access the computer
+++            afterwards. Domain relationships & syskey may be
+++            impossible to change after this, requiring a reinstall
+++            (or possibly only an upgrade)
+++   Good: There's no need for the key (which may be lost).
+++
+++3) (NEW 2000-04-01, no, not a joke) Insert old styles password-hashes
+++   into the SAM, will be converted to syskey-hashes on next boot.
+++   This is how syskey is enabled on NT4, the hashes won't be touched
+++   until the first reboot after turning on syskey.
+++
+++I've found out how to do #2 and #3.
+++
+++What happens when syskey is turned on, and how to turn it off again:
+++--------------------------------------------------------------------
+++
+++- 1 -
+++Serveral new keys are added to HKLM\System\CurrentControlSet\Control\Lsa,
+++it seems that most of the keys/values is used for the obfuscation of the key
+++they change when syskey is updated.
+++However the value named 'SecureBoot' holds the mode of syskey:
+++  1 - Key in registry
+++  2 - Enter passphrase
+++  3 - Key on floppy
+++
+++But removing this key (or setting it to 0) isn't enough to disable
+++syskey. There's more..
+++
+++- 2 -
+++HKLM\SAM\Domains\Account\F is a binary structure usually containing the computer
+++SID and some other stuff related to that.
+++When syskey is installed it's expanded (about twice the size), with something
+++I guess is the key heavily encrypted + some flags and other values.
+++One of these other flag/values also contains the same mode as SecureBoot above.
+++
+++So.. resetting this mode flag and SecureBoot to 0 is all that's needed
+++to switch off syskey in NT4 (up to SP6 at time of writing). Changing only one of them
+++results in a warning about inconsistencies between the SAM and system settings
+++on completed boot, and syskey is re-invoked.
+++
+++- 3 -
+++On Windows 2000 there's yet another place info about syskey is stored:
+++
+++HKLM\security\Policy\PolSecretEncryptionKey\<default>
+++which also is a binary structure, but also there the mode is stored.
+++Reset this to 0, and syskey is gone on win2k.
+++(if there's a mismatch between the three, it silently resets them
+++ to the most likely value on boot)
+++
+++- 4 -
+++Then there's the password hashes.
+++The usual (old) hashlength is 16 bytes, but all hashes are expanded to 20 bytes
+++with syskey, the first 4 bytes looks like some kind of counter. (maybe
+++history-counter?).
+++Strangely, they're not updated at once when syskey is turned on,
+++update of the hashes happens during next reboot after syskey has been turned on.
+++And when the key is later updated, the hashes are also updated?
+++NO!! Strangely it SEEMS like the password hashes REMAINS THE SAME!
+++(however, the binaries in the 3 keys noted above changes..)
+++I'll try to dig more into this. Help wanted :)
+++
+++When syskey has been switched off, all passwords must be reset.
+++My utility will write and adjust hash-lengths of the users (usually
+++administrator) that you reset the password for.
+++NT itself will fix the rest of the hashes when you set new passwords
+++from NT.
+++
+++And yes, it's possible to re-enable syskey after turning it off.
+++(not on win2k, yet!)
+++
+++So, anybody reverse engineered the whole syskeystuff?
+++(yes, I know something's on it's way..)
+--- chntpw-1.0.orig/debian/patches/03_keyname-overflow
++++ chntpw-1.0/debian/patches/03_keyname-overflow
+@@ -0,0 +1,21 @@
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -2607,7 +2607,6 @@
++     int count = 0;
++     int countri = 0;
++     int len, byte;
++-    char keyname[128];
++     char path[1024];
++     char *value;
++     struct nk_key *key;
++@@ -2626,10 +2625,6 @@
++ 
++     // get the key
++     key = (struct nk_key *)(hdesc->buffer + nkofs);
++-    strncpy(keyname, key->keyname, key->len_name);
++-    keyname[key->len_name] = '\0';
++-    printf("Exporting key '%s' with %d subkeys and %d values...\n",
++-            keyname, key->no_subkeys, key->no_values);
++ 
++     *path = 0;
++     get_abs_path(hdesc, nkofs, path, 1024);
+--- chntpw-1.0.orig/debian/patches/04_get_abs_path
++++ chntpw-1.0/debian/patches/04_get_abs_path
+@@ -0,0 +1,10 @@
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -1511,6 +1511,7 @@
++   }
++ 
++   strncpy(tmp,path,ABSPATHLEN-1);
+++  tmp[ABSPATHLEN-1] = '\0';
++ 
++   if (key->type & 0x20)
++     keyname = mem_str(key->keyname, key->len_name);
+--- chntpw-1.0.orig/debian/patches/05_control_empty_values
++++ chntpw-1.0/debian/patches/05_control_empty_values
+@@ -0,0 +1,40 @@
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -2667,21 +2667,23 @@
++ 	      value = (char *)get_val_data(hdesc, nkofs, vex.name, vex.type, TPF_VK_EXACT);
++ 	      len = get_val_len(hdesc, nkofs, vex.name, TPF_VK_EXACT);
++ 
++-	      if (vex.type == REG_BINARY) {
++-		fprintf(file, "\"%s\"=hex:", vex.name);
++-	      } else {
++-		fprintf(file, "\"%s\"=hex(%x):", vex.name, vex.type);
++-	      }
++-	      byte = 0;
++-	      while (byte < len) { /* go byte by byte.. probably slow.. */
++-		fprintf(file, "%02x,", (unsigned char)value[byte]);
++-		byte++;
++-		if (!(byte % 20)) fprintf(file, "\\\r\n  ");
++-	      }
++-	      fprintf(file, "%02x\r\n", (unsigned char)value[byte]);
++-            }
+++	      if (value && len >= 0) {
+++		if (vex.type == REG_BINARY) {
+++		  fprintf(file, "\"%s\"=hex:", vex.name);
+++		} else {
+++		  fprintf(file, "\"%s\"=hex(%x):", vex.name, vex.type);
+++		}
+++		byte = 0;
+++		while (byte < len) { /* go byte by byte.. probably slow.. */
+++		  fprintf(file, "%02x,", (unsigned char)value[byte]);
+++		  byte++;
+++		  if (!(byte % 20)) fprintf(file, "\\\r\n  ");
+++		}
+++		fprintf(file, "%02x\r\n", (unsigned char)value[byte]);
++ 
++-            FREE(vex.name);
+++		FREE(vex.name);
+++	      }
+++	    }
++         }
++     }
++ 
+--- chntpw-1.0.orig/debian/patches/06_correct_test_open_syscall
++++ chntpw-1.0/debian/patches/06_correct_test_open_syscall
+@@ -0,0 +1,16 @@
++Fix code that probably is never run since the existing code is totally bogus.
++The condition, !open(...), will almost always be true.
++(sole exception is when starting a program with stdin
++initially closed)
++
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -4133,7 +4133,7 @@
++   if ( !(hdesc->state & HMODE_DIRTY)) return(0);
++ 
++   if ( !(hdesc->state & HMODE_OPEN)) { /* File has been closed */
++-    if (!(hdesc->filedesc = open(hdesc->filename,O_RDWR))) {
+++    if ((hdesc->filedesc = open(hdesc->filename,O_RDWR)) < 0) {
++       fprintf(stderr,"writeHive: open(%s) failed: %s, FILE NOT WRITTEN!\n",hdesc->filename,strerror(errno));
++       return(1);
++     }
+--- chntpw-1.0.orig/debian/patches/07_detect_failure_to_write_key
++++ chntpw-1.0/debian/patches/07_detect_failure_to_write_key
+@@ -0,0 +1,19 @@
++Detect stream write failure.
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -3493,7 +3493,14 @@
++ 
++     fprintf(file,"\r\n"); /* Must end file with an empty line, windows does that */
++ 
++-    fclose(file);
+++    if (ferror (file)) {
+++	printf("failed to write file '%s'\n", filename);
+++	fclose (file);
+++	return;
+++    }
+++    if (fclose(file))
+++      printf("failed to write file '%s': %s\n", filename,
+++	     strerror(errno));
++ }
++ 
++ /* ================================================================ */
+--- chntpw-1.0.orig/debian/patches/08_no_deref_null
++++ chntpw-1.0/debian/patches/08_no_deref_null
+@@ -0,0 +1,15 @@
++Diagnose a missing hive file name with -e.
++--- a/reged.c
+++++ b/reged.c
++@@ -167,6 +167,11 @@
++ 
++   if (edit) {  /* Call editor. Rest of arguments are considered hives to load */
++     hivename = argv[optind+no_hives];
+++    if (!hivename) {
+++      fprintf(stderr,"with -e you must specify at least one hive file name\n");
+++      usage();
+++      exit(1);
+++    }
++     do {
++       if (!(hive[no_hives] = openHive(hivename,
++ 				      HMODE_RW|mode))) {
+--- chntpw-1.0.orig/debian/patches/09_improve_robustness
++++ chntpw-1.0/debian/patches/09_improve_robustness
+@@ -0,0 +1,51 @@
++
++The first two were spotted via inspection by Fedora team,
++the third one was added to address an error found using valgrind:
++   $ : > j && valgrind ./reged -e j
++       ~/w/co/chntpw: 
++  ==16084==    by 0x4011E3: main (reged.c:103)
++     get_abs_path: Not a 'nk' node!
++
++* ntreg.c (fmyinput): Don't clobber ibuf[-1] upon NUL input.
++* ntreg.c (convert_string): Don't segfault upon low memory.
++* ntreg.c (openHive): Don't read uninitialized when file is too small.
++--- a/ntreg.c
+++++ b/ntreg.c
++@@ -227,14 +227,18 @@
++ 
++ int fmyinput(char *prmpt, char *ibuf, int maxlen)
++ {
++-   
+++   int len;
++    printf("%s",prmpt);
++    
++    fgets(ibuf,maxlen+1,stdin);
+++   len = strlen(ibuf);
++    
++-   ibuf[strlen(ibuf)-1] = 0;
++-   
++-   return(strlen(ibuf));
+++   if (len) {
+++      ibuf[len-1] = 0;
+++      --len;
+++    }
+++
+++   return len;
++ }
++ 
++ /* Print len number of hexbytes */
++@@ -4250,6 +4254,14 @@
++     closeHive(hdesc);
++     return(NULL);
++   }
+++
+++  if (r < sizeof (*hdesc)) {
+++    fprintf(stderr,
+++	    "file is too small; got %d bytes while expecting %d or more\n",
+++	    r, sizeof (*hdesc));
+++    closeHive(hdesc);
+++    return(NULL);
+++  }
++ 
++   /* Now run through file, tallying all pages */
++   /* NOTE/KLUDGE: Assume first page starts at offset 0x1000 */
+--- chntpw-1.0.orig/debian/patches/10_remove_static
++++ chntpw-1.0/debian/patches/10_remove_static
+@@ -0,0 +1,23 @@
++10_remove_static
++Do not build static files in the Makefile, they are not used in Debian.
++Created by Javier Fernandez-Sanguino <jfs@debian.org> for Debian
++Not forwarded, this patch is Debian-specific
++
++--- a/Makefile
+++++ b/Makefile
++@@ -12,7 +12,7 @@
++ LIBS=$(shell libgcrypt-config --libs)
++ 
++ 
++-all: chntpw chntpw.static cpnt reged reged.static samusrgrp samusrgrp.static sampasswd sampasswd.static
+++all: chntpw cpnt reged samusrgrp sampasswd
++ 
++ chntpw: chntpw.o ntreg.o edlib.o libsam.o
++ 	$(CC) $(CFLAGS) -o chntpw chntpw.o ntreg.o edlib.o libsam.o $(LIBS)
++@@ -52,5 +52,5 @@
++ 	$(CC) -c $(CFLAGS) $<
++ 
++ clean:
++-	rm -f *.o chntpw chntpw.static cpnt reged reged.static samusrgrp samusrgrp.static sampasswd sampasswd.static *~
+++	-rm -f *.o chntpw chntpw.static cpnt reged reged.static samusrgrp samusrgrp.static sampasswd sampasswd.static *~
++ 
+--- chntpw-1.0.orig/debian/patches/11_improve_documentation
++++ chntpw-1.0/debian/patches/11_improve_documentation
+@@ -0,0 +1,501 @@
++
++Description: Fix spelling and grammar mistakes in documentation
++Author: Javier Fernandez-Sanguino <jfs@debian.org>
++Forwarded: NOT yet
++Last-Update: 2014-08-07
++Copyright: This file is distributed with the same license as the chntpwd sources
++
++This patch is the result of reviewing (by a non-foreign speaker, oh! the
++irony!) the documentation provided by the upstream author in
++the sources (text files).
++
++It tries to fix some grammar and spelling mistake, while trying not
++to add any new ones.
++
++
++--- a/MANUAL.txt
+++++ b/MANUAL.txt
++@@ -15,14 +15,14 @@
++ SOFTWARE - HKEY_LOCAL_MACHINE\SOFTARE: Config and info of installed
++            software and a lot of higher level windows config
++ 
++-Note that these programs (and the registry library they use) does not
++-join all these files in the same tree like windows does.
+++Note that these programs (and the registry library they use) do not
+++join all these files in the same tree like Windows does.
++ For example, a path like
++ HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control
++ is not valid, it is instead just
++ ControSet001\Control
++ (after selecting the hive if more than one is loaded)
++-But except if you use the registry edit or export/import functions you
+++But, unless you use the registry edit or export/import functions, you
++ do not need think about this as for other things the tools handle
++ this.
++ 
++@@ -49,65 +49,65 @@
++ 
++ 
++ 
++- -u <user>   Username or RID (0x3e9 for example) to interactively edit
+++ -u <user>   Username or RID (0x3e9 for example) to edit interactively
++ 
++-Invoke the interactive edit menu on specified user.
++-Specifying a user name will most likely fail if user has international
++-character, so better to use user ID (RID), for example
+++Invoke the interactive edit menu on the specified user.
+++Specifying a user name will most likely fail if the username has international
+++characters, so itis better to use the user's ID (RID), for example
++  chnptw -u 0x3e9 SAM
++-to edit user with hexadecimal RID 3e9
+++to edit the user with hexadecimal RID 3e9
++ 
++ 
++- -l          list all users in SAM file and exit
+++ -l          list all users in the SAM file and exit
++ 
++-Just that, list users in human readable form, with some info about if
++-user is admin and if password is set.
+++Just that, list all the users in human readable form, with some information
+++about the user, such as if the user is an administrator user and if the password is set.
++ 
++  -i          Interactive Menu system
++ 
++ Invokes the menu system. Menu items will vary a bit depending on what
++ registry hives are loaded.
++ 
++- -f          Interactively edit first admin user
+++ -f          Interactively edit the first admin user
++ 
++-Select first admin user for edit. This is user with lowest RID that
++-also is member of administators group, or built-in user 0x1f4 if not
++-others possible.
+++Select the first admin user for edit. This is the user with the lowest RID that
+++also is member of the administrators group, or the built-in user 0x1f4 if no
+++other users are found.
++ 
++  -e          Registry editor. Now with full write support!
++ 
++-Enter the registry editor. It is a small command system. ? for help
++-there. See other documentation for more on regedits.
+++Enter the registry editor. It is a small command system. Press '?' for help
+++there. See other documentation for more information on regedits.
++ 
++- -d          Enter buffer debugger instead (hex editor), 
+++ -d          Enter the buffer debugger instead (hex editor), 
++ 
++-Command line type hex editor, mostly for debugging purposes. ? for help.
+++Command line type hex editor, mostly used for debugging purposes. ? for help.
++ 
++- -v          Be a little more verbose (for debuging)
+++ -v          Be a little more verbose (for debugging)
++ 
++ Lots of debug output during most operations (especially hive loading)
++ 
++  -L          For scripts, write names of changed files to /tmp/changed
++ 
++ If any of the other functions changes the registry, the changed files
++-are listed here. Can be used by wrapper scripts to know what to save.
+++are listed here. This option can be used by wrapper scripts to know what to save.
++ My boot CD uses it.
++ 
++  -N          No allocation mode. Only same length overwrites possible (very safe mode)
++ 
++-Safe mode. Will only allow changes in registry that overwrites old
++-values with same length data. Password reset only changes 2 bytes, and
++-does not change value lenght, so password reset will still work in
+++Safe mode. This option will only allow changes in the registry that overwrite old
+++values with the same length data. Password reset only changes 2 bytes, and
+++does not change value length, so password resets will still work in
++ this safe mode. If something tries to violate this safe mode, a lot of
++-error messages (some of the rather obscure) may occur.
+++error messages (some of them rather obscure) may be shown.
++ 
++  -E          No expand mode, do not expand hive file (safe mode)
++ 
++ Safe mode. Does not allow expanding the size of the file, but will
++-allow adding keys/values as long as there is free space in the file
+++allow adding keys/values as long as there is enough free space in the file
++ already. (most files contains some free space)
++ If expansion is needed but not allowed by this option,
++-a lot of obscure error messages may occur, and file should not be saved.
+++a lot of obscure error messages may be show, and the file should not be saved.
++ 
++ -------------------------------------------------------------------------
++ 
++@@ -155,10 +155,10 @@
++ 
++   reged -x system HKEY_LOCAL_MACHINE\\SYSTEM ControlSet001 output.reg
++ 
++-should export everything below ControlSet001 key from registry hive
++-file named system into .reg file named output.reg, using
+++should export everything below ControlSet001 key from the registry hive
+++file named 'system' into the .reg file named 'output.reg', using
++ HKEY_LOCAL_MACHINE\SYSTEM in front of every key name in the .reg file.
++-(in most shells \\ is needed to ignore the meaning \ has to the shell)
+++(in most shells \\ is needed to ignore the meaning '\' has to the shell)
++ 
++   reged -x system HKEY_LOCAL_MACHINE\\SYSTEM ControlSet001\\Enum output.reg
++ 
++@@ -166,7 +166,7 @@
++ 
++   reged -x system HKEY_LOCAL_MACHINE\\SYSTEM \\ output.reg
++ 
++-export everything in the system file
+++exports everything in the system file
++ 
++ 
++ 
++@@ -174,12 +174,12 @@
++      Import from .reg file. Where <prefixstring> for example is HKEY_LOCAL_MACHINE\SOFTWARE
++      Only one .reg and one hive file supported at the same time
++ 
++-Reverse of -x, this reads from a .reg file and puts it into the hive
++-file, just like regedit.exe foobar.reg will do in windows.
++-The <prefixstring> is removed from the start of each key name, if you
+++This option is the opposite of -x: it reads from a .reg file and puts it into the hive
+++file, just like 'regedit.exe foobar.reg' will do in Windows.
+++The <prefixstring> is removed from the beginning of each key name, if you
++ specify this wrong, the result may not be what you expected.
++ KNOWN PROBLEM: This routine is slow, very slow indeed on binary values (has
++-hex numbers in .reg file). May take over 5 minutes to import a file
+++hex numbers in .reg file). It may take over 5 minutes to import a file
++ the size of a normal XP software-hive .reg export.
++ Problems / unusual things in the .reg file may cause crash or
++ unexpected data or some times even an error messsage! :)
++@@ -190,10 +190,10 @@
++   -e <registryhive> ...
++      Interactive edit one or more of registry files
++ 
++-Enter the registry editor. It is a small command system. ? for help
+++Enter the registry editor. This is a small command system. Press '?' for help
++ there. See other documentation for more on regedits.
++-If both -I and -e given, editor will be entered after import, but
++-before save, so you can check things if you need.
+++If both -I and -e given, editor will be entered after importing, but
+++before saving, so you can check things if you need.
++ 
++ 
++  Options:
++@@ -292,12 +292,12 @@
++ 
++ samusrgrp
++ is a command line tool to add users to groups or remove users from
++-groups. Users and groups must be local (cannot be domain / AD).
+++groups. Users and groups must be local (i.e. they cannot be domain / AD).
++ It can also list the groups with their members in several forms, the
++-output can be used in scripts of course.
+++output can be used in scripts as it is provided in machine readable format.
++ 
++ Listing groups will also list domain users that are members of the
++-group (if any), but it will not be able to look up the name, so it
+++group (if any), but it will not be able to look up the name, so they
++ will be listed as a SID only.
++ 
++   samusrgrp version 0.2 130501, (c) Petter N Hagen
++@@ -310,7 +310,7 @@
++      -L = list groups and also their members
++      -s = Print machine SID
++ 
++-For add or remove, you must also specify a bit more info:
+++To add or remove a user, you must also specify some more information:
++ 
++   Parameters:
++      <user> can be given as a username or a RID in hex with 0x in front
++@@ -356,9 +356,9 @@
++ Members name (if available, else SID)
++ Members SID
++ 
++-So in this example, the Guests group have 2 members: Administrator and
+++So in this example, the Guests group has 2 members: Administrator and
++ Guest.
++-At the time of writing this, it WILL NOT LIST EMPTY GROUPS (no
+++At the time of writing this, it WILL NOT LIST EMPTY GROUPS (groups with no
++ members). I plan to change this, empty groups on one line with -1 in
++ member number field, and rest of user fields empty.
++ 
++@@ -429,7 +429,7 @@
++ 
++ User RID (hex)
++ User name
++-Is user admin? (1 = yes, 0 = no) (member of group ID 0x220)
+++Is the user an administrator? (1 = yes, 0 = no) (member of group ID 0x220)
++ Account flags, ACB (hex). See sam.h file.
++ Password hash length. 14 = normal password. 0 or 4 = probably blank.
++ 
++@@ -441,58 +441,61 @@
++ Reset user :01f4:Administrator
++ Reset user :03e9:pnh
++ 
++-which of course is :RID:username
+++which of course is in the format :RID:username
++ 
++ 
++ Explanation on this:
++      -r -f -> Reset password of admin user with lowest RID
++               not counting built-in admin (0x1f4) unless it is the only admin
++ 
++-All windows from NT3.1 up has a system created administrator account
+++All Windows systems, from version NT3.1 up, include a predefined administrator account
++ with RID (user ID) 0x1f4 (500 decimal)
++ 
++-Before Windows XP the installer asked for a password for this account,
++-and then it was used to login first after installation.
++-(Built-in guest account was also created by the installer, but it has
+++Before Windows XP, the installer asked for a password for this account,
+++and then it was used to login right after installation.
+++(The built-in 'Guest' account was also created by the installer, but it has
++ always been disabled by default)
++ 
++-On Windows XP and newer systems, the installer also creates this
++-account, but locks it down, it generally cannot be logged in. It is
++-also not shown on the welcome screen (unless all other users are
+++On Windows XP and newer Windows systems, the installer also creates this
+++account, but it is locked down. It cannot be used to log in. It is
+++also not shown on the 'Welcome' screen (unless all other users are
++ deleted or disabled)
++-The installer instead asks for a user to create during install. That
+++
+++Instead, the installer asks for a new user to create during the installation. That
++ user is a normal non-hardwired user (RID > 0x3e8, 1000 decimal),
++-and it is added to the built-in administrators group (group # 0x220). 
+++and it is added to the built-in Administrators' group (group # 0x220). 
++ 
++-It is users in the built-in group 0x220 that generally has full
+++The users in the built-in group 0x220 ('Administrators') generally have full
++ administrator rights to the machine.
++ 
++-(XP installer can create several users, but only first gets group
+++(Note: XP installer can create several users, but only the first user gets group
++ 0x220)
++ 
++-More users can of course be added from the control panel, and they can
++-be put into the 0x220 group if neccessary. From the "simplified"
++-control panel dialog this is what happens if user is selected to be able to
++-have full (or admin) access to the machine. If user is set to "normal"
++-or something like that, it is not in the 0x220 group.
+++More users can of course be added from the Control Panel, and they can
+++be added to the 0x220 group if neccessary. From the "simplified"
+++Control Panel dialog this is what happens if a user is selected and is configured to
+++have full (or admin) access to the machine. If a user is set to "normal"
+++or something like that, it will not be included in the 0x220 group.
++ 
++ From the "Users and Groups" part of the administrative tools (not
++-available on some home versions of windows) the group assignments and
+++available on some Windows Home versions) the group assignments and
++ other user info can be changed in more detail of course.
+++
++ From there, users in a domain (if machine is in domain) can also be
++-added to the local 0x220 group, the domain user full access to that
++-local machine even if the user is nothing special in the domain.
+++added to the local 0x220 group. A domain user will have full access to that
+++local machine even if the user is not included in any Domain Administrators'
+++group.
++ 
++ Anyway..
++-On XP and newer, it is therefore not the hardwired 0x1f4 account that is
++-used for admim. On home machines it is most often the first regular one (since
++-most people do not change any user stuff after the installer) or it
++-could be any other user in the list.
+++On XP and newer Windows version, the hardwired 0x1f4 account is not used
+++for administrative purposes. On home machines it is most often the first
+++regular user (since most people do not change any user stuff after the
+++installation) or it could be any other user in the list.
++ 
++-So this reset function picks the first it finds over 0x3e8 (1000)
+++So this reset function picks the first user it finds over 0x3e8 (1000)
++ that is also in the 0x220 group. It will most likely work for 98% of
++-home user machines :) Unless there are no users in the 0x220 group,
++-then it picks the 0x1f4 hard-wired user (since it may be Windows
+++home user machines :) If there are no users in the 0x220 group,
+++then it will pick the 0x1f4 hard-wired user (since the system may be Windows
++ 2000??????).
++ 
++ This may of course be wrong if someone managed to remove all accounts
++@@ -502,7 +505,7 @@
++ 
++ Explanation on -a -r:
++ 
++-The -r -a option will reset all users in the 0x220 group. Also user
+++The -r -a option will reset all users in the 0x220 group. This includes user
++ 0x1f4, which maybe is bad.. will consider changing this...
++ 
++ 
++--- a/README.txt
+++++ b/README.txt
++@@ -7,17 +7,17 @@
++ 
++ "ntreg" (the registry library) and
++ "libsam" (SAM manipulation library, user, groups etc)
++-is licensed under the GNU Lesser Public License. See LGPL.txt.
+++are licensed under the GNU Lesser Public License. See LGPL.txt.
++ 
++ "chntpw" (the password reset / registry editor frontend)
++ "reged" (registry editor, export and import tool)
++ "sampasswd" (password reset command line program)
++ "samusrgrp" (user and group command line program)
++-is licensed under the GNU General Public License, see GPL.txt.
+++are licensed under the GNU General Public License, see GPL.txt.
++ 
++ 
++-For manual to the different commands, see MANUAL.txt
++-Also, all have some help built in, just use the -h option.
+++For a manual of the different commands, plese see MANUAL.txt
+++Also, all programs have some built-in help, just use the -h option.
++ 
++ See INSTALL.txt for compile instructions.
++ 
++@@ -29,16 +29,23 @@
++ 
++ At that site there's a floppy and a bootable CD that use chntpw to
++ access the NT/2k/XP/Vista/Win7/Win8 system it is booted on to edit password etc.
++-The instructions below are for the standalone program itself, not the floppy.
+++The instructions below are for the standalone program itself, not for the floppy.
++ 
++ What does chntpw do?
++ --------------------
++ 
++ This little program will enable you to view some information and
++-change user passwords, change user/group memberships
++-in a Windows (NT/XP/Vista/win7/win8) etc SAM userdatabase file.
++-You do not need to know the old passwords.
++-However, you need to get at the registry files some way or another yourself.
+++change user's passwords, change user/group's memberships
+++in a Windows (NT, XP, Vista, Win7, Win8, etc.) SAM userdatabase file.
+++You do not need to know the previous passwords.
+++However, you need to access at the registry files some way or another yourself.
+++
+++For example, you can run this utility from a Live CD in a Windows computer
+++and, after booting, mount the NTFS filesystem. Or remove the hard drive
+++from the system and install it (e.g. using a USB hard-disk case) in a
+++Linux system where you have this tool installed.
+++
+++
++ In addition it contains a simple registry editor with full write support,
++ and hex-editor which enables you to
++ fiddle around with bits&bytes in the file as you wish yourself.
++@@ -46,9 +53,9 @@
++ Also have registry import or export
++ -----------------------------------
++ 
++-"reged" is a program that can do import and export of .reg files into
++-the registry hive (binary) files. Also has an editor, but still
++-rudimentary text based command line type thing.
+++"reged" is a program that can import and export .reg files into
+++the registry hive (binary) files. It also has an editor, but it is still
+++a rudimentary text based command-line type of thing.
++ 
++ And by popular request
++ Even have programs that can be used in scripts!
++@@ -65,41 +72,42 @@
++ 
++ I often forget passwords. Especially on test installations (that
++ I just _must_ have some stuff out of half a year later..)
++-On most unix-based boxes you just boot the thingy off some kind
+++On most Unix-based boxes you just boot the thingy off some kind
++ of rescue bootmedia (cd/floppy etc), and simply edit the
++ password file.
++ On Windows however, as far as I know, there is no way except reinstalling
++ the userdatabase, losing all users except admin.
++ (ok, some companies let you pay lotsa $$$$$ for some rescue service..)
++ (ok, from Windows Vista or something you can make a password reset
++-file, but you have to remember to do that BEFORE you forget your password...)
+++CD or USB, but you have to remember to do that BEFORE you forget your password...)
++ 
++ How?
++ ----
++ 
++-Currently, this thing only runs under linux, but it may just happen
+++Currently, this thing only runs under Linux, but it may just happen
++ to compile on other platforms, too.
++ 
++-So, to set a new adminpassword on your Windows installation you either:
+++So, to set a new administrator's password on your Windows installation you either:
++ 
++-1) Take the harddrive and mount it on a linux-box
+++1) Take the harddrive and mount it on a Linux box
++ 
++ or
++ 
++-2) Boot a "live" linux CD with full GUI (many available: Ubuntu,
+++2) Boot a "live" Linux CD with full GUI (there are many available: Ubuntu,
++    Knoppix and more. Search for them)
++ 
++-In both those cases, use the "chntpw.static" program found in the
+++In both those cases, you can use the "chntpw.static" program found in the
++ "static" zip file on my website.
+++
++ or
++ 
++-3) Use my linux boot CD (or USB) at: http://pogostick.net/~pnh/ntpasswd/
+++3) Use my Linux boot CD (or USB) avialable at: http://pogostick.net/~pnh/ntpasswd/
++ 
++ Usage:
++ ------
++ 
++-For manual to the different commands, see MANUAL.txt
++-Also, all have some help built in, just use the -h option.
+++You will find a manual to the different commands in the  MANUAL.txt file.
+++Also, all programs have some help built in, just use the -h option.
++ 
++ Some old tech babble on how the password is stored
++ --------------------------------------------------
++@@ -108,21 +116,21 @@
++ 
++ A struct, called the V value of a key in the NT registry
++ was suddenly somewhat documented through the pwdump utility
++-included in the unix Samba distribution.
+++included in the Unix Samba distribution.
++ This struct contains some info on a user of the NT machine,
++ along with 2 crypted versions of the password associated
++ with the account.
++ 
++ One password is the NT console login password,
++-the other the LANMAN network share password
+++the other is the LANMAN network share password
++ (which essentially is the first one in uppercase only,
++- and no unicode)
+++ and no Unicode)
++ 
++ This is how NT encrypts the passwords:
++ 
++ The logon cleartext password a user enters is:
++-1) Converted to unicode
++-2) A MD4 hash is made out of the unicode string
+++1) Converted to Unicode
+++2) A MD4 hash is made out of the Unicode string
++ 3) Then the hash is crypted with DES, using the RID (lower
++    part of the SID, userid) as the crypt key.
++    This is the so called "obfuscation" step, so
++@@ -134,7 +142,7 @@
++ 1) Uppercased (and illegal characters probably removed)
++    14 bytes max, if less the remaining bytes are zeroed.
++ 2) A known (constant) string is DES-encrypted
++-   using 7 first characters of the password as the key.
+++   using the 7 first characters of the password as the key.
++    Another constant is encrypted using the last 7 chars
++    as the key.
++    The result of these two crypts are simply appended,
++@@ -142,13 +150,13 @@
++ 3) The same obfuscation DES stage as 3 above.
++ 4) 16 bytes result put into the V struct.
++ 
++-Since the number of possible combinations in the lanman
+++Since the number of possible combinations in the LANMAN
++ password is relatively low compared to the other one,
++ and it's easy to see if it's shorter than 8 chars or not
++ it's used first in brute-force-crackers.
++ 
++-This program, however, don't care at all what the old
++-one is, it just overwrites it with the new one.
+++This program, however, does not care at all what the old
+++passowrd is, it just overwrites it with the new one.
++ 
++ Ok. So, how do we find and identify the V struct?
++ Yeah.. that was the hard part.. The files structure
++@@ -204,4 +212,4 @@
++ 0x0035a8    80  REG_BINARY       <F>
++ 0x003228   508  REG_BINARY       <V>
++ 
++-For more techincal info, look it up in the source code.
+++For more technical info, look it up in the source code.
+--- chntpw-1.0.orig/debian/patches/series
++++ chntpw-1.0/debian/patches/series
+@@ -0,0 +1,11 @@
++01_port_to_gcrypt.patch
++#02_upstream_documents
++#03_keyname-overflow
++04_get_abs_path
++#05_control_empty_values
++06_correct_test_open_syscall
++07_detect_failure_to_write_key
++08_no_deref_null
++09_improve_robustness
++10_remove_static
++11_improve_documentation
+--- chntpw-1.0.orig/debian/reged.8
++++ chntpw-1.0/debian/reged.8
+@@ -0,0 +1,120 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH REGED 8  "6th August 2014"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++reged \- utility to export/import and edit a Windows registry hives
++.SH SYNOPSIS
++.B reged
++.RI [ options ]
++.RI -x <registryhivefile> <prefixstring> <key> <output.reg>
++
++.B reged
++.RI [ options ]
++.RI -I <registryhivefile> <prefixstring> <input.reg>
++
++.B reged
++.RI [ options ]
++.RI -e  <registryhivefile>
++
++
++.br
++.SH DESCRIPTION
++This manual page documents briefly the
++.B reged
++command.
++This manual page was written for the Debian distribution
++because the original program does not have a manual page.
++
++.PP
++.B reged
++is the an interactive command line utility that can be used to
++export, import or edit a Microsoft Windows registry hive.
++
++.SH OPTIONS
++.TP
++.B \-h
++Show summary of options.
++.TP
++.B \-x <registryhivefile> <prefixstring> <key> <output.reg>
++Export parts of a hive file to a text registry (.reg)  file.
++Prefixstring indicates the part of the registry hive to dump (for example
++HKEY_LOCAL_MACHINE\\SOFTWARE). The <key> parameter defines the key to dump
++(recursively). You can use \\ or \\\\ to list all the keys in the hive file.
++
++Only one hive file and one .reg file can be defined.
++
++.TP
++.B \-I <registryhivefile> <prefixstring> <input.reg>
++Import the content of the input.reg file into the registry file.  The value
++<prefixstring> can be any valid prefix, for example is
++HKEY_LOCAL_MACHINE\\SOFTWARE.
++
++Only one .reg and one hive file supported at the same time
++
++.TP
++.B \-e <registryhive> ...
++Interactive edit one or more registry files.
++
++.TP
++.B \-L
++Log all changed filenames to /tmp/changed. When this option is set the
++program automatically saves the changes in the hive files without prompting the
++user.
++
++Be careful when using the \fB-L\fR option as a root user in a multiuser system. 
++The filename is fixed and this can be used by malicious users (dropping a
++symlink with the same name) to overwrite system files.
++
++
++.TP
++.B \-C
++Automatically save all changes. Do not prompt the user.
++
++.TP
++.B \-N
++Do not allocate more information, only allow the editing of existing values with same size.
++
++.TP
++.B \-E
++Do not expand the hive file (safe mode).
++
++.TP
++.B \-t
++Print debug information of allocated blocks.
++
++.TP
++.B \-v
++Print verbose information and debug messages.
++
++.SH KNOWN BUGS
++
++There are many \fBunknown\fR bugs. If you find bugs please report them to the author.
++
++.SH SEE ALSO
++.B chntpwd, samusrgrp, sampasswd
++.br
++You will find  more information available on how this program works, in the 
++text files
++.IR /usr/share/doc/chntpw/README.txt
++and 
++.IR /usr/share/doc/chntpw/MANUAL.txt
++
++.SH AUTHOR
++This program was written by Petter N Hagen.
++
++This manual page was written by Javier Fernandez-Sanguino <jfs@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).
+--- chntpw-1.0.orig/debian/rules
++++ chntpw-1.0/debian/rules
+@@ -0,0 +1,106 @@
++#!/usr/bin/make -f
++# Sample debian/rules that uses debhelper.
++# GNU copyright 1997 to 1999 by Joey Hess.
++
++# Uncomment this to turn on verbose mode.
++#export DH_VERBOSE=1
++
++# This is the debhelper compatibility version to use.
++# export DH_COMPAT=5
++
++DPKG_EXPORT_BUILDFLAGS = 1
++include /usr/share/dpkg/buildflags.mk
++include /usr/share/quilt/quilt.make
++
++CFLAGS = -DUSELIBGCRYPT -Wall
++
++ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
++	CFLAGS += -g
++endif
++ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
++	INSTALL_PROGRAM += -s
++endif
++ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
++        CFLAGS += -O0
++else
++		CFLAGS += -O2
++endif
++
++build: build-arch build-indep
++build-arch: build-stamp
++build-indep: build-stamp
++build-stamp: $(QUILT_STAMPFN)
++	dh_testdir
++	$(MAKE) CFLAGS="$(CFLAGS)"
++	touch build-stamp
++
++clean: unpatch
++	dh_testdir
++	dh_testroot
++	[ ! -f Makefile ] || $(MAKE) clean
++	-rm -f *.gif
++	rm -f build-stamp 
++	dh_clean
++
++install: build
++	dh_testdir
++	dh_testroot
++	dh_prep
++	dh_installdirs
++	install -m 755 chntpw $(CURDIR)/debian/chntpw/usr/sbin/
++	install -m 755 reged $(CURDIR)/debian/chntpw/usr/sbin/
++	install -m 755 sampasswd $(CURDIR)/debian/chntpw/usr/sbin/
++	install -m 755 samusrgrp $(CURDIR)/debian/chntpw/usr/sbin/
++
++
++binary-indep: build-indep install
++# We have nothing to do here
++
++binary-arch: build-arch install
++	dh_testdir
++	dh_testroot
++	# Do not install the documentation until available
++	[ ! -f faq.uu ] || for i in *.uu; do uudecode  $$i; done
++	[ ! -f faq.html ] || dh_installdocs faq.html bootdisk.html *.gif
++	dh_installdocs
++	dh_installexamples
++	dh_installman debian/chntpw.8 debian/samusrgrp.8 debian/reged.8 debian/sampasswd.8
++	dh_installchangelogs HISTORY.txt
++	dh_link
++	dh_strip
++	dh_compress
++	dh_fixperms
++	dh_installdeb
++	dh_shlibdeps
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++
++
++UPSTREAM_VER=140201
++UPSTREAM_URL=http://pogostick.net/~pnh/ntpasswd
++UPSTREAM_FILE=chntpw-source-$(UPSTREAM_VER).zip
++PACKNAME=chntpw
++DEBIAN_VER=1.0
++UNPACK_DIR=$(PACKNAME)-$(DEBIAN_VER).orig
++EXTRACT_DIR=/tmp
++
++update-docs:
++	for file in faq.html bootdisk.html syskey.txt regedit.txt ; do \
++		wget -q -O $$file $(UPSTREAM_URL)/$$file; \
++	done
++
++get-orig-source:
++	wget -O $(UPSTREAM_FILE) $(UPSTREAM_URL)/$(UPSTREAM_FILE)
++	-rm -rf chntpw-$(UPSTREAM_VER) $(UNPACK_DIR)
++	unzip $(UPSTREAM_FILE)
++	mv chntpw-$(UPSTREAM_VER) $(UNPACK_DIR)
++	# Some binary files are statically linked with OpenSSL, therefore not distributable
++	# Upstream has been notified, no response yet
++	rm -f $(UNPACK_DIR)/*.static
++	tar zcf $(PACKNAME)_$(DEBIAN_VER).orig.tar.gz $(UNPACK_DIR)
++	rm -rf $(UNPACK_DIR) $(UPSTREAM_FILE)
++
++
++binary: binary-indep binary-arch
++.PHONY: build clean binary-indep binary-arch binary install configure
+--- chntpw-1.0.orig/debian/sampasswd.8
++++ chntpw-1.0/debian/sampasswd.8
+@@ -0,0 +1,120 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH SAMPASSWD 8  "6th August 2014"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++sampasswd \- reset passwords of users in the SAM user database
++.SH SYNOPSIS
++.B sampasswd
++.RI [ options ]
++.RI -u user
++.RI < samfile > 
++.br
++.SH DESCRIPTION
++This manual page documents briefly the
++.B sampasswd
++command.
++This manual page was written for the Debian distribution
++because the original program does not have a manual page.
++
++.PP
++.B sampasswd
++is a non-interactive command line utility that can reset a user's
++password and/or the user's account bits from the SAM user database file of a
++Microsoft Windows system (Windows NT, 2000, XP, Vista, 7, 8.1, etc.).
++This file is usually located at
++\\WINDOWS\\system32\\config\\SAM on the file system of a Microsoft Windows 
++Operating System
++
++On success, the program does not output any informatin and the exit code is 0.
++
++.SH OPTIONS
++.TP
++.B \-h
++Show summary of options.
++.TP
++.B \-r
++Reset the user's password.
++.TP
++.B \-a
++Reset all the users. If this option is used there is no need to specify the next option.
++.TP
++.B \-u <user>
++User to change. The user value can be provided as a username, or a RID number in
++hexadecimal (if the username is preceded with '0x'). Usernames including
++international characters will probably not work.
++.TP
++.B \-l
++Lists the users in the SAM database.
++.TP
++.B \-H
++Output human readable output. The program by default will print a parsable table unless
++this option is used.
++.TP
++.B \-N
++Do not allocate more information, only allow the editing of existing values with same size.
++.TP
++.B \-E
++Do not expand the hive file (safe mode).
++.TP
++.B \-t
++Print debug information of allocated blocks.
++.TP
++.B \-v
++Print verbose information and debug messages.
++
++.SH EXAMPLES
++.TP
++.B sampasswd -r -u theboss
++Reset the password of a user named 'theboss', if found.
++
++.TP
++.B sampasswd -r -u 0x3ea
++Reset the password of the user with RID '0x3a'.
++
++.TP
++.B samusrgrp -r -a
++Reset the password of all the users in the Administrator's group (0x220)
++
++.TP
++.B samusrgrp -r -f
++Reset the password of the administrative users with the lowest RID number.
++This does not include the built-in administrator (0x1f4) unless no other
++administrative user can be found in the database file.
++
++
++.SH KNOWN BUGS
++
++If the username includes international (non-ASCII) characters the program
++will not (usually) find it. Use the RID number instead.
++
++.SH SEE ALSO
++.B chntpwd, reged, samusrgrp
++.br
++You will find  more information available on how this program works, in the
++text files
++.IR /usr/share/doc/chntpw/README.txt
++and
++.IR /usr/share/doc/chntpw/MANUAL.txt
++
++More documentation is available at the upstream's author site:
++.BR http://pogostick.net/~pnh/ntpasswd/
++
++.SH AUTHOR
++This program was written by Petter N Hagen.
++
++This manual page was written by Javier Fernandez-Sanguino <jfs@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).
+--- chntpw-1.0.orig/debian/samusrgrp.8
++++ chntpw-1.0/debian/samusrgrp.8
+@@ -0,0 +1,130 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH SAMUSRGRP 8  "6th August 2014"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++samusrgrp \- add or remove users from groups in SAM database files
++.SH SYNOPSIS
++.B samusrgrp
++.RI [ options ]
++.RI < samfile > 
++.br
++.SH DESCRIPTION
++This manual page documents briefly the
++.B samusrgrp
++command.
++This manual page was written for the Debian distribution
++because the original program does not have a manual page.
++.PP
++.B samusrgrp
++is a non-interactive command line utility that can add or remove
++a user from a local group that exists in the SAM user database of a
++Microsoft Windows system (Windows NT, 2000, XP, Vista, 7, 8.1, etc.).
++This file is usually located at
++\\WINDOWS\\system32\\config\\SAM on the file system of a Microsoft Windows
++Operating System
++
++On success, the program does not output any informatin and the exit code is 0.
++
++The binary program supports multiple names. If it is called named
++.B samusrtogrp
++it will assume \fB-a\fR mode (add user). If it is called named
++.B samusrfromgrp
++it will assume \fB-r\fR mode (remove user).
++
++.SH OPTIONS
++.TP
++.B \-h
++Show summary of options.
++.TP
++.B \-a
++The user is added to the group.  This option has to be followed
++by \-u and \-g .
++.TP
++.B \-r
++The user is removed from the group.  This option has to be followed
++by \-u and \-g .
++.TP
++.B \-u <user>
++User to change. The user value can be provided as a username, or a RID number in
++hexadecimal (if the username is preceded with '0x'). Usernames including
++international characters will probably not work.
++.TP
++.B \-g <group>
++Group to change. The group can only be given as a group number, in hexadecimal, preceded with 
++with '0x'.
++.TP
++.B \-l
++Lists the groups in the SAM database.
++.TP
++.B \-L
++Lists the groups in the SAM database as well as their members.
++.TP
++.B \-s
++Print the machine SID.
++.TP
++.B \-H
++Output human readable output. The program by default will print a parsable table unless
++this option is used.
++.TP
++.B \-N
++Do not allocate more information, only allow the editing of existing values
++with same size.
++.TP
++.B \-E
++Do not expand the hive file (safe mode).
++.TP
++.B \-t
++Print debug information of allocated blocks.
++.TP
++.B \-v
++Print verbose information and debug messages.
++
++.SH EXAMPLES
++.TP
++.B samusrgrp -a -u theboss -g 0x220 SAMFILE
++Adds a user named 'theboss' to the group 0x220 (Administrators)
++
++.TP
++.B samusrgrp -a -u 0x3ea -g 0x221 SAMFILE
++Adds a user with the id '0x3aa' to the group 0x221 (Users)
++
++.TP
++.B samusrgrp -r -u 0x3ff -g 0x221 SAMFILE
++Remove a user with the id '0x3ff' from the group 0x221 (Users)
++
++.SH KNOWN BUGS
++
++If the username includes international (non-ASCII) characters the program
++will not (usually) find it. Use the RID number instead.
++
++.SH SEE ALSO
++.B chntpwd, reged, sampasswd
++.br
++You will find  more information available on how this program works, in the 
++text files
++.IR /usr/share/doc/chntpw/README.txt
++and 
++.IR /usr/share/doc/chntpw/MANUAL.txt
++
++More documentation is available at the upstream's author site:
++.BR http://pogostick.net/~pnh/ntpasswd/
++
++.SH AUTHOR
++This program was written by Petter N Hagen.
++
++This manual page was written by Javier Fernandez-Sanguino <jfs@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).
+--- chntpw-1.0.orig/debian/watch
++++ chntpw-1.0/debian/watch
+@@ -0,0 +1,3 @@
++version=3
++http://pogostick.net/~pnh/ntpasswd/editor.html \
++ chntpw-source-(.*)\.zip
