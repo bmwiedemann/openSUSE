@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  1 06:13:20 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.15.0
+  * New check suspiciousFloatingPointCast flags unnecessary floating
+    point casts that cause loss of precision
+  * Added command-line option --cpp-header-probe (and
+    --no-cpp-header-probe) to probe headers and extension-less
+    files for Emacs marker
+  * Add support for 'CLICOLOR_FORCE'/'NO_COLOR' environment
+    variables to force/disable ANSI color output for diagnostics.
+  * Add "remark comments" that can be used to generate reports with
+    justifications for warnings
+  * The whole program analysis is now being executed when
+    "--project" is being used.
+
+-------------------------------------------------------------------
 Sat Jun 22 14:37:43 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 2.14.2
