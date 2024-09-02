@@ -1,7 +1,7 @@
 #
 # spec file for package xfmpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://goodies.xfce.org/projects/applications/xfmpc
 Source:         https://archive.xfce.org/src/apps/xfmpc/0.3/%{name}-%{version}.tar.bz2
 Source1:        xfmpc.png
+%if 0%{?suse_version} >= 1699
+BuildRequires:  gcc13
+%endif
 BuildRequires:  intltool
 BuildRequires:  sed
 BuildRequires:  update-desktop-files
@@ -49,6 +52,9 @@ Xfce desktop environment.
 sed -i 's/Icon=stock_volume/Icon=xfmpc/' xfmpc.desktop.in
 
 %build
+%if 0%{?suse_version} >= 1699
+export CC=gcc-13
+%endif
 %configure
 %make_build
 

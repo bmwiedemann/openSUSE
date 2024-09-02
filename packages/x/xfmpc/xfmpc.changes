@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:31:18 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Vala does not properly work with gcc-14; lets stick with gcc-13
+  for now on Tumbleweed/Slowroll.
+
+-------------------------------------------------------------------
 Sun Apr 23 07:22:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - update to 0.3.1
