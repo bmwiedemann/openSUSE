@@ -1,0 +1,13 @@
+index f966a5e..ec1dcbb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -28,7 +28,7 @@ setup(
+         "pylint>=2.15.0",
+         "tomli>=1.1.0; python_version < '3.11'",
+     ],
+-    setup_requires=["pytest-runner"],
++    setup_requires=[""],
+     tests_require=["coverage", "flake8", "black", "isort"],
+     classifiers=[
+         "Development Status :: 5 - Production/Stable",
+
