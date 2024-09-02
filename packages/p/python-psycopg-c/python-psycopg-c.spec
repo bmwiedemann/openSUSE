@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-psycopg-c
 # This needs to upgraded in lockstep with python-psycopg
-Version:        3.1.19
+Version:        3.2.1
 Release:        0
 Summary:        PostgreSQL database adapter for Python -- C optimisation distribution
 License:        LGPL-3.0-only
