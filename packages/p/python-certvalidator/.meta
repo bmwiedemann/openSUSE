@@ -1,0 +1,6 @@
+<package name="python-certvalidator" project="openSUSE:Factory">
+  <title>python-certvalidator</title>
+  <description>A Python library for validating X.509 certificates or paths. Supports various options, including: validation at a specific moment in time, whitelisting and revocation checks.</description>
+  <devel project="devel:languages:python" package="python-certvalidator"/>
+  <url>https://github.com/wbond/certvalidator</url>
+</package>
