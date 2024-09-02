@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:11:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Added `is_nan()` and `is_not_nan()`
+  * Drop Python 3.7
+  * Add testing for Python 3.12
+  * Add tox-uv to tox.ini and main.yml
+
+-------------------------------------------------------------------
 Thu Feb  1 20:54:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:

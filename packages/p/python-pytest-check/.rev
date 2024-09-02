@@ -97,4 +97,16 @@
   * Summaries from 2.2.3 are cool, but don't work with xdist</comment>
     <requestid>1143496</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd364d38eba78a890fde205007310831</srcmd5>
+    <version>2.4.1</version>
+    <time>1725275658</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Added `is_nan()` and `is_not_nan()`
+  * Drop Python 3.7
+  * Add testing for Python 3.12
+  * Add tox-uv to tox.ini and main.yml</comment>
+    <requestid>1198057</requestid>
+  </revision>
 </revisionlist>

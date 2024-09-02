@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-check
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        A pytest plugin that allows multiple failures per test
 License:        MIT
