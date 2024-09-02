@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:07:24 UTC 2024 - pirateclip@protonmail.com
+
+- Update to version 0.4.2:
+  * bump version to 0.4.2
+  * update CHANGELOG
+  * only cancel completion popup if scrolled vertically
+  * bump floem to fix panic
+  * bump to latest floem
+  * some style changes
+  * add "Reveal in File Explorer" to right_click of editor (#3437)
+  * By default, open the parent directory. (#3439)
+  * reveal file in explorer centered
+  * Implement a selection visual effect in the File Explorer. (#3434)
+  * A few style tweaks
+  * scroll style fix
+  * make file explorer horizontal scrollable
+  * update CHANGELOG
+  * change some panel icons
+  * implement document symbol (#3425)
+  * Implement 'Go To Location' functionality in the Diff editor. (#3426)
+  * Filter out code-len without commands. (#3427)
+  * implement on screen find
+  * update changelog
+  * Fix pointer down on window message
+
+-------------------------------------------------------------------
 Fri Aug 09 18:01:57 UTC 2024 - pirateclip@protonmail.com
 
 - They also removed the all-languages feature from lapce-app

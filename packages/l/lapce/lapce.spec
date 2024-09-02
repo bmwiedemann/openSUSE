@@ -31,7 +31,7 @@
 %endif
 
 Name:           lapce
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
