@@ -71,4 +71,13 @@
 - Fix dependencies (bsc#1223181).</comment>
     <requestid>1169638</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35895a37e858c337284a69531469e739</srcmd5>
+    <version>2.5.1</version>
+    <time>1725275655</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+  * Fix socks5 reply reading</comment>
+    <requestid>1198056</requestid>
+  </revision>
 </revisionlist>
