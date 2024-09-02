@@ -907,4 +907,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1195025</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>9203e454e95d46ce1ec93460ad8c989d</srcmd5>
+    <version>12.96</version>
+    <time>1725275732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198241</requestid>
+  </revision>
 </revisionlist>

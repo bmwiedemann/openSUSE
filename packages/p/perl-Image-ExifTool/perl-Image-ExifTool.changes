@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep  2 06:07:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.96:
+  * More improvements to handling of trailers on video files (and
+    add ability to write videos which have an unknown trailer)
+  * Fixed problem geotagging from some newer Google Takeout files
+
+-------------------------------------------------------------------
+Mon Sep  2 06:06:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.95:
+  * Added a couple of new CanonModelID values
+  * Decode ColorData for a couple of new Canon models
+  * Fixed problem writing video files which have some known trailer types
+
+-------------------------------------------------------------------
+Mon Sep  2 06:06:20 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.94:
+  * Added ability to geotag from new-format Google Takeout JSON files
+  * Added a few new Android and Xiaomi QuickTime Keys tags
+  * Added ability to read C2PA JUMBF metadata from TTF/OTF files
+  * Internal changes to code for creating new directories
+  * Changed Windows packages to have the application help text file
+    in the exiftool_files folder instead of writing it to a temporary directory
+  * Removed new QuickTime Keys tags added in 12.93 because these aren't
+    used in top-level metadata (written to the video track by Apple devices)
+  * Fixed the group names for synthesized default-language QuickTime
+    tags and added a verbose message when generating these tags
+  * Fixed warning in Geolocation.t self test
+
+-------------------------------------------------------------------
 Wed Aug 21 06:01:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.93:
