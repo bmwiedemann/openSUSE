@@ -5,12 +5,12 @@
 PKG_DIR="$(pwd)"
 PKG_PATH=pydata-sphinx-theme
 PKG_NAME=python-pydata-sphinx-theme
-PKG_VERSION=0.14.0
+PKG_VERSION=0.15.4
 
 cleanup_tmpdir() {
     popd 2>/dev/null
     rm -rf /tmp/yarn--*
-    rm /tmp/core-js-banners
+    rm -rf /tmp/core-js-banners
 }
 trap cleanup_tmpdir SIGINT
 

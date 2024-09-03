@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-sphinx-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-pydata-sphinx-theme
-Version:        0.14.0
+Version:        0.15.4
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause
@@ -35,10 +35,15 @@ BuildRequires:  %{python_module sphinx-theme-builder}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Babel
 Requires:       python-Sphinx
+Requires:       python-accessible-pygments
 Requires:       python-beautifulsoup4
 Requires:       python-docutils
+Requires:       python-packaging
+Requires:       python-pygments
 Requires:       python-sphinx-theme-builder
+Requires:       python-typing_extensions
 Suggests:       python-beautifulsoup4
 Suggests:       python-codecov
 Suggests:       python-docutils
@@ -52,10 +57,13 @@ Suggests:       python-Sphinx
 Suggests:       python-xarray
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module accessible-pygments}
+BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module accessible-pygments}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions}
@@ -94,10 +102,13 @@ python3 -m nodeenv --node=system --prebuilt --clean-src $PWD/.nodeenv
 
 %install
 %pyproject_install
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/pydata_sphinx_theme/theme/pydata_sphinx_theme/static/.gitignore
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v
+# No python-playwrite optional dependency gh#pydata/pydata-sphinx-theme#1541
+donttest="test_pygments_fallbacks"
+%pytest -k "not $donttest"
 
 %files %{python_files}
 %doc README.md

@@ -772,4 +772,41 @@
     <comment></comment>
     <requestid>1112220</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc5df0e20b2bfd7539750cb539c34d87</srcmd5>
+    <version>0.15.4</version>
+    <time>1725363510</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate vendored js libraries (bsc#1229866).
+- Update to version 0.15.4:
+  * bump: 0.15.4rc0 → 0.15.4
+  * ENH - Update copyright.html to not include the html tags. (#1874)
+  * Fix url shortening for gitlab, and more test for github (#1888)
+  * MAINT: Bump treosh/lighthouse-ci-action from 11 to 12 (#1899)
+  * docs: update note formatting (#1893)
+  * docs: update badge link (#1892)
+  * Instruction to install alpha, beta, rc and nightly (#1891)
+  * bump: 0.15.3 → 0.15.4rc0
+  * MAINT: simpleify _generate_header_nav_before_dropdown (#1883)
+  * A11Y - Add visual indicator for tabs hover (#1884)
+  * Fix hit area icon links buttons (#1866)
+  * Build(deps-dev): Bump braces from 3.0.2 to 3.0.3 and fill-range 7.0.1 to 7.1.1 (#1881)
+  * bump sphinxcontrib-youtube (#1877)
+  * fix config var names in docs (#1878)
+  * BUG - Ensure coverage comment is triggered (#1879)
+  * guard a couple (possibly null) querySelector results (#1860)
+  * Updates for italian translation (#1862)
+  * Do not apply table colors to all tables, only css=.table (#1864)
+  * MAINT: Upload nightly wheels and run packaging on PRs and pushes (#1867)
+  * Use navbar-nav class on text links only (#1846)
+  * Updates for file src/pydata_sphinx_theme/locale/en/LC_MESSAGES/sphinx.po in ca (#1858)
+  * MAINT: Reenable parallel write safety (#1859)
+  * Expose logo_link in theme.conf (#1850)
+  * DOCS: Add navbar_persistent to overview layout (#1849)
+  * CI - Remove lint from CI (#1856)
+  * [pre-commit.ci] pre-commit autoupdate hooks (#1848)
+  * Updates for file src/pydata_sphinx_theme/locale/en/LC_MESSAGES/sphinx.po in es (#1845)
+  * Add documentation for the back_to_top_button config option (#1843)</comment>
+    <requestid>1198323</requestid>
+  </revision>
 </revisionlist>
