@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 24 12:31:28 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update psqueues to version 0.2.8.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Oct 27 15:51:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update psqueues to version 0.2.8.0.
