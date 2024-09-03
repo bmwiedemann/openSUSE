@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  2 12:18:07 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.17
+  * abort_on_empty_updateinfo option added
+  * allow to drop directory tree after iso generation
+  * allow to enable iso generation by flavor
+
+-------------------------------------------------------------------
 Mon Jul 22 11:48:03 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.16
