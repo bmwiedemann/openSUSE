@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,13 +39,13 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.6.5+git.1724254291.33351c16
+Version:        2.6.5+git.1724746409.a23057e1
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
 Source1:        sysconfig.hawk
-Source2:        js-routes-1.4.1.gem
 Source100:      hawk-rpmlintrc
+Patch1:         make-sle16-compatible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       ha-cluster-webui
 Obsoletes:      hawk <= 1.1.0
@@ -66,7 +66,7 @@ BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 # declare the user/group we create in the preinstall script
 Provides:       user(%{uname})
-Provides:       greoup(%{gname})
+Provides:       group(%{gname})
 
 BuildRequires:  distribution-release
 BuildRequires:  timezone
@@ -82,6 +82,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:sass-rails:5)
 Requires:       rubygem(%{rb_default_ruby_abi}:sass-rails:5)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:virtus) >= 1.0.1
 Requires:       rubygem(%{rb_default_ruby_abi}:virtus) >= 1.0.1
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:js-routes) >= 2.0.0
+Requires:       rubygem(%{rb_default_ruby_abi}:js-routes) >= 2.0.0
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:fast_gettext) >= 1.4
 Requires:       rubygem(%{rb_default_ruby_abi}:fast_gettext) >= 1.4
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:gettext_i18n_rails) >= 1.8
@@ -119,14 +121,10 @@ High-Availability cluster resource manager.
 
 %prep
 %setup
+%patch1 -p1
+
 
 %build
-
-mkdir -p hawk/vendor/cache
-install -D -m0644 %{S:2} hawk/vendor/cache
-export GEM_HOME=$PWD/hawk/vendor
-gem install hawk/vendor/cache/*.gem
-
 sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/rails
 sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/rake
 sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/bundle
@@ -198,17 +196,12 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 %service_add_post hawk.service hawk-backend.service
 %{fillup_only -n hawk}
 
-# A workaround. Hawk fails with the newer js-routes-2.x.y
-# And we don't want to submit the js-routes-1.4.1 to the factory
-# So let's attach js-routes-1.4.1 and
-# update it to the version 2 later (TODO!)
-gem install --local %{www_base}/hawk/vendor/cache/js-routes-1.4.1.gem
-
 %preun
 %service_del_preun hawk.service hawk-backend.service
 
 %postun
 %service_del_postun hawk.service hawk-backend.service
+
 
 %files -f hawk.lang
 %defattr(644,root,root,755)
