@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 21 09:33:46 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update typed-process to version 0.2.12.0.
+  ## 0.2.12.0
+
+  * Add `getPid`, `exitCodeExceptionWithOutput`,
+    `exitCodeExceptionNoOutput`,
+
+  * Re-export `System.Process.Pid`
+
+  * Thanks to Rebecca Turner @9999years
+
+-------------------------------------------------------------------
 Sun Oct  8 09:01:29 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update typed-process to version 0.2.11.1.
