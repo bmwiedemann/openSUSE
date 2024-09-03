@@ -1,4 +1,4 @@
-From a6a78b8e9bd90131ac0f5228b8dac87f5252348e Mon Sep 17 00:00:00 2001
+From 7cd5a8695a21c828cf36c7993bc84c2b06371516 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Thu, 21 Oct 2021 09:55:50 +0200
 Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc

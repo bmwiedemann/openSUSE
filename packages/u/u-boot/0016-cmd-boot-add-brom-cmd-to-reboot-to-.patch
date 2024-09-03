@@ -1,4 +1,4 @@
-From cceebda5bf2920d53faf610219ffaf404e28cf25 Mon Sep 17 00:00:00 2001
+From 3568a62d39a708fbad43c7c1bb2f3a81947820e3 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -36,7 +36,7 @@ index 768c6572d6..86f4b1a103 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index fe89aec6b9..5b532701df 100644
+index ddf9414b08..644963d867 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
 @@ -1116,6 +1116,22 @@ source "board/sunxi/Kconfig"
@@ -63,7 +63,7 @@ index fe89aec6b9..5b532701df 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index f4dbb2a740..2586fd801d 100644
+index 0140b07d32..d043c4d3a8 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
 @@ -314,7 +314,30 @@ uint32_t sunxi_get_boot_device(void)
@@ -104,7 +104,7 @@ index f4dbb2a740..2586fd801d 100644
 +	check_rtc_fel_flag();
  	sunxi_sram_init();
  
- #if defined CONFIG_MACH_SUN6I || defined CONFIG_MACH_SUN8I_H3
+ 	/* Enable non-secure access to some peripherals */
 diff --git a/cmd/boot.c b/cmd/boot.c
 index d7c7db449c..111c9d9409 100644
 --- a/cmd/boot.c

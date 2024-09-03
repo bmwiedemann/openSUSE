@@ -186,7 +186,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2024.04
+%define archive_version 2024.07
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -216,7 +216,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2024.04
+Version:        2024.07
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
