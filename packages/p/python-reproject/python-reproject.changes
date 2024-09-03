@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Sep  2 16:48:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  ## Bug Fixes
+  * Support readonly arrays in adaptive by @svank in #452
+  * Fix bug with artifacts in reproject_to_healpix by @astrofrog in
+    #459
+  ## New Features
+  * Fix multi-threaded reprojection when using Astropy WCS by
+    @astrofrog in #434
+  * Generalize reproject_and_coadd for N-dimensional data, and add
+    option to specify blank pixel value and progress bar by
+    @keflavich in #351
+  * Improve performance for large datasets and switch to
+    multi-threading by default by @astrofrog in #443
+  ## Other Changes
+  * Don't use --pre on Python 3.12 by @astrofrog in #445
+  * Bump minimum required version of astropy-healpix by @astrofrog
+    in #446
+  * Improvements to performance when using dask.distributed by
+    @astrofrog in #447
+  * Add logging calls and fix a couple of dask-related issues by
+    @astrofrog in #450
+  * Add a script to regenerate the aia asdf file and do so by
+    @Cadair in #439
+  * Performance improvements for interpolation with map_coordinates
+    by @astrofrog in #448
+- Release v0.13.1
+  ## Bug Fixes
+  * Ensure reproject_and_coadd handles bg-matching with one input
+    image by @svank in #412
+  * Fixes for mosaic output pixels not covered by inputs by @svank
+    in #413
+  ## Documentation
+  * Updated docstrings for output_projection and shape_out to
+    indicate that any APE-14 WCS is acceptable by @astrofrog in
+    #407
+  ## Other Changes
+  * Add tests for full range of inputs/outputs in healpix functions
+    by @astrofrog in #408
+  * Fix Cython warnings by @svank in #418
+  * Build against Numpy 2.0.0rc1 or later by @astrofrog in #436
+- Release v0.13.0
+  ## Bug Fixes
+  * Fix TestReprojectAndCoAdd failure on i386 by @olebole in #386
+  * Fixed a bug that caused reprojected dask arrays to not be
+    computable due to a temporary directory being removed by
+    @astrofrog in #390
+  ## New Features
+  * Add ability to specify output array and footprint in
+    reproject_and_coadd by @astrofrog in #387
+  * Added ability to set block_size='auto' and fix missing
+    parameters in docstrings by @astrofrog in #392
+  * Compute footprint in healpix_to_image by @lpsinger in #400
+  ## Other Changes
+  * Fix compatibility with Cython 3.0.2 and update version in
+    pyproject.toml by @astrofrog in #391
+- Release 0.12.0
+  ## Bug Fixes
+  * Fix support for NDData objects with dask .data attributes by
+    @astrofrog in #365
+  * Fix docs mosaic page rendering by @jdavies-st in #381
+  ## New Features
+  * Add despike_jacobian option for adaptive resampling by @svank
+    in #366
+  * Refactor blocked/parallel reprojection by @astrofrog in #374
+  * Add 'first' and 'last' moasicking modes to reproject_and_coadd
+    by @svank in #383
+  * Add modes for nan and inf handling to adaptive algo by @svank
+    in #380
+  * Added new combine function to compute the minimum and maximum
+    by @fjankowsk in #369
+  ## Other Changes
+  * Dask support improvements by @astrofrog in #367
+  * Fix --remote-data tests by @astrofrog in #375
+  * Update docstring for adaptive defaults by @svank in #378
+  * Use more points to find image bounds in moasics by @svank in
+    #382
+- Release v0.11.0
+  ## Bug Fixes
+  * Fix for HighLevelWCS attribute error by @keflavich in #349
+  * Fixes for solar frames and non-degree units by @astrofrog in
+    #360
+  * If shape_out is specified, use this over the array_shape
+    attribute of a WCS object by @astrofrog in #361
+  ## New Features
+  * Allow single inputs to find_optimal_celestial_wcs and add
+    ability to specify HDU by @astrofrog in #344
+  * Add support for specifying output projection as APE 14 WCS with
+    array_shape defined by @astrofrog in #345
+  * Started adding support for allowing dask arrays as input by
+    @astrofrog in #352
+  ## Other Changes
+  * Mark tests that use remote data by @smaret in #339
+  * Simplify blocked reprojection implementation by using dask and
+    improve efficiency of parallel reprojection by @astrofrog in
+    #314
+  * Remove code that was required for astropy<4 by @astrofrog in
+    #346
+  * Add a new 'all' extras for shapely by @astrofrog in #363
+- Release v0.10.0
+  ## Bugs Fixed
+  * Close FITS files after loading by @svank in #330
+  ## New Features
+  * Add support for blocked and parallel reprojection in
+    reproject_interp by @AlistairSymonds in #214
+  * Add support for efficiently reprojecting multiple images with
+    the same wcs by @svank in #332
+  * Add support for APE 14 WCSes in find_optimal_celestial_wcs by
+    @astrofrog in #334
+  ## Other Changes
+  * Changed default filter kernel and boundary mode in
+    reproject_adaptive, and removed order argument. by @svank in
+    #291
+  * Use pixel_to_pixel from astropy.wcs.utils by @astrofrog in #315
+  * Speed up test_blocked_against_single by increasing smallest
+    block size by @astrofrog in #319
+
+-------------------------------------------------------------------
 Mon Nov  7 18:46:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.9.1

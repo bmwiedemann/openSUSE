@@ -1,7 +1,7 @@
 #
 # spec file for package python-reproject
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,16 @@
 #
 
 
-Name:           python-reproject
-Version:        0.9.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-reproject%{psuffix}
+Version:        0.14.0
 Release:        0
 Summary:        Reproject astronomical images
 License:        BSD-3-Clause
@@ -34,22 +42,27 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 4
-Requires:       python-astropy-healpix >= 0.6
-Requires:       python-numpy >= 1.17
-Requires:       python-scipy >= 1.3
-# SECTION test requirements
-BuildRequires:  %{python_module astropy >= 4}
-BuildRequires:  %{python_module Shapely}
+Requires:       python-astropy >= 5
+Requires:       python-astropy-healpix >= 1
+Requires:       python-cloudpickle
+Requires:       python-dask-array >= 2021.8
+Requires:       python-fsspec
+Requires:       python-numpy >= 1.23
+Requires:       python-scipy >= 1.9
+Requires:       python-zarr
+%if %{with test}
+BuildRequires:  %{python_module Shapely >= 2.0.2}
 BuildRequires:  %{python_module asdf}
-BuildRequires:  %{python_module astropy-healpix >= 0.6}
 BuildRequires:  %{python_module gwcs}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest-arraydiff >= 0.5}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.3}
-# /SECTION
+BuildRequires:  %{python_module pyvo}
+BuildRequires:  %{python_module reproject = %{version}}
+%endif
 %python_subpackages
 
 %description
@@ -59,27 +72,35 @@ Reproject astronomical images
 %setup -q -n reproject-%{version}
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags}"
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %{python_expand #
 rm -r %{buildroot}%{$python_sitearch}/reproject/spherical_intersect/*.h
 %fdupes %{buildroot}%{$python_sitearch}
 }
+%endif
 
+%if %{with test}
 %check
-mkdir cleantestdir
-cp setup.cfg cleantestdir
-cd cleantestdir
-%pytest_arch --pyargs reproject
+mv reproject reproject.src
+# cannot edit FITS file in system
+donttest='test_reproject_order[block_size1]'
+%pytest_arch -n auto --pyargs reproject -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES.md README.rst
 %license LICENSE
 %{python_sitearch}/reproject
-%{python_sitearch}/reproject-%{version}*-info
+%{python_sitearch}/reproject-%{version}.dist-info
+%endif
 
 %changelog

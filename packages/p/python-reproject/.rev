@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>1034356</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b064968b7bc8e5f3b7151a575ecf5f0f</srcmd5>
+    <version>0.14.0</version>
+    <time>1725363528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0
+  ## Bug Fixes
+  * Support readonly arrays in adaptive by @svank in #452
+  * Fix bug with artifacts in reproject_to_healpix by @astrofrog in
+    #459
+  ## New Features
+  * Fix multi-threaded reprojection when using Astropy WCS by
+    @astrofrog in #434
+  * Generalize reproject_and_coadd for N-dimensional data, and add
+    option to specify blank pixel value and progress bar by
+    @keflavich in #351
+  * Improve performance for large datasets and switch to
+    multi-threading by default by @astrofrog in #443
+  ## Other Changes
+  * Don't use --pre on Python 3.12 by @astrofrog in #445
+  * Bump minimum required version of astropy-healpix by @astrofrog
+    in #446
+  * Improvements to performance when using dask.distributed by
+    @astrofrog in #447
+  * Add logging calls and fix a couple of dask-related issues by
+    @astrofrog in #450
+  * Add a script to regenerate the aia asdf file and do so by
+    @Cadair in #439
+  * Performance improvements for interpolation with map_coordinates
+    by @astrofrog in #448
+- Release v0.13.1
+  ## Bug Fixes
+  * Ensure reproject_and_coadd handles bg-matching with one input
+    image by @svank in #412
+  * Fixes for mosaic output pixels not covered by inputs by @svank (forwarded request 1198371 from bnavigator)</comment>
+    <requestid>1198372</requestid>
+  </revision>
 </revisionlist>
