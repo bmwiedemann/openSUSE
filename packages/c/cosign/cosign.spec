@@ -80,7 +80,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 CLI_PKG=sigs.k8s.io/release-utils/version
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
 
-CGO_ENABLED=0 go build -mod=vendor -buildmode=pie -trimpath -ldflags "${CLI_LDFLAGS}" -o cosign ./cmd/cosign
+CGO_ENABLED=1 go build -mod=vendor -buildmode=pie -trimpath -ldflags "${CLI_LDFLAGS}" -o cosign ./cmd/cosign
 
 %check
 ./cosign version

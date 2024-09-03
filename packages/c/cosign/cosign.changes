@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 20 19:14:06 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Set CGO_ENABLED=1 for fixing s390x failed build 
+
+-------------------------------------------------------------------
 Wed Jul 24 15:22:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - update to 2.3.0 (jsc#SLE-23879)

@@ -569,4 +569,12 @@
     - Document ImportKeyPair and LoadPrivateKey functions in pkg/cosign (#3776) (forwarded request 1189438 from msmeissn)</comment>
     <requestid>1189439</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ef31634e1a56e1fcd8a2ef551f62fa47</srcmd5>
+    <version>2.3.0</version>
+    <time>1725363547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198420</requestid>
+  </revision>
 </revisionlist>
