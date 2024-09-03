@@ -1,0 +1,5 @@
+<package name="virt-sidecar-shim-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="virt-sidecar-shim-container"/>
+</package>
