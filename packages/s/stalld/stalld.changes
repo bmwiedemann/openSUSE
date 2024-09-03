@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Aug 27 07:56:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- use source url, some spec cleanups
+- use common set of systemd macros
+
+-------------------------------------------------------------------
+Tue Aug 27 07:54:27 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- initial package

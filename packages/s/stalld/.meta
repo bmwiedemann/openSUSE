@@ -1,0 +1,6 @@
+<package name="stalld" project="openSUSE:Factory">
+  <title>stalld</title>
+  <description>The stalld program monitors the set of system threads, looking for threads that are ready-to-run but have not been given processor time for some threshold period. When a starving thread is found, it is given a temporary boost using the SCHED_DEADLINE policy.</description>
+  <devel project="Base:System" package="stalld"/>
+  <url>https://gitlab.com/rt-linux-tools/stalld</url>
+</package>
