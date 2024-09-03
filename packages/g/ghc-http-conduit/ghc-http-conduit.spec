@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.8.3
+Version:        2.3.9
 Release:        0
 Summary:        HTTP client package with conduit interface and HTTPS support
 License:        BSD-2-Clause

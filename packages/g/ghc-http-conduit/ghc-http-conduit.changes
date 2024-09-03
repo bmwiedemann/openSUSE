@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:31:09 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update http-conduit to version 2.3.9.
+  ## 2.3.9
+
+  * Fix space leaks when closing responses [#539](https://github.com/snoyberg/http-client/pull/539)
+
+-------------------------------------------------------------------
 Fri May  3 13:55:03 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Forgot to update copyright header in spec file after last change.
