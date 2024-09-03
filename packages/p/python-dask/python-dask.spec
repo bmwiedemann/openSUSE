@@ -16,44 +16,48 @@
 #
 
 
-%define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python310 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py312"
-%define psuffix -test-py312
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
+%{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
+%define psuffix %{nil}
 %bcond_with test
 %else
-# globally stop testing this one
-%define skip_python39 1
+%bcond_without test
+%define psuffix -%{flavor}
+%if 0%{suse_version} >= 1599
+%if "%{flavor}" != "test-py310"
+%define skip_python310 1
 %endif
-
-%{?sle15_python_module_pythons}
+%if "%{flavor}" != "test-py311"
+%define skip_python311 1
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
+%else
+%if "%{pythons}" == "python311" && "%{flavor}" != "test-py311"
+# Hardcoded assumption: SLE15 pythons module has python311
+%define pythons %{nil}
+%endif
+%endif
+%endif
+%if "%{shrink:%pythons}" == ""
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%endif
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.6.2
+Version:        2024.8.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 # SourceRepository: https://github.com/dask/dask
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -63,10 +67,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 8.1
-Requires:       python-cloudpickle >= 1.5
+Requires:       python-cloudpickle >= 3.0
 Requires:       python-fsspec >= 2021.9
 Requires:       python-packaging >= 20.0
-Requires:       python-partd >= 1.2.0
+Requires:       python-partd >= 1.4.0
 Requires:       python-toolz >= 0.10.0
 Requires:       (python-importlib-metadata >= 4.13.0 if python-base < 3.12)
 Requires(post): update-alternatives
@@ -208,7 +212,7 @@ Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
 # This is an extra package
 Requires:       (python-dask-expr >= 1.1 with python-dask-expr < 1.2)
-Requires:       python-pandas >= 1.3
+Requires:       python-pandas >= 2
 
 %description dataframe
 A flexible library for parallel computing in Python.
