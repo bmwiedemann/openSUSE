@@ -1,0 +1,6 @@
+<package name="python-endesive" project="openSUSE:Factory">
+  <title>python-endesive</title>
+  <description>Library for digital signing and verification of digital signatures in mail, PDF and XML documents.</description>
+  <devel project="devel:languages:python" package="python-endesive"/>
+  <url>https://github.com/m32/endesive</url>
+</package>
