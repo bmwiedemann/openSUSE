@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 18:26:53 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.10
+  * pop3login.c (login_pop3): Fix a problem when proxying UTF8 POP3
+    connections.
+
+-------------------------------------------------------------------
 Thu Aug  8 19:25:27 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.9
