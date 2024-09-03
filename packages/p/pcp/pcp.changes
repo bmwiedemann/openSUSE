@@ -60,6 +60,11 @@ Tue May 14 20:25:32 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
     docs: updated donations page with new fiscal sponsor details
 
 -------------------------------------------------------------------
+Tue May 14 15:36:47 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Enable custom pcp-selinux module (bsc#1223260) 
+
+-------------------------------------------------------------------
 Mon Apr 15 10:51:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - move pmlogger_daily into main package (bsc#1222815)
