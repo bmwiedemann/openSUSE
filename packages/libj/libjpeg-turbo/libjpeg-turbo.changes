@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:37:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * The x86-64 SIMD extensions now include support for Intel
+    Control-flow Enforcement Technology (CET), which is enabled
+    automatically if CET is enabled in the C compiler.
+  * Fixed a regression introduced by 3.0 beta2[6] that made it
+    impossible for calling applications to supply custom Huffman
+    tables when generating 12-bit-per-component lossy JPEG images
+    using the libjpeg API.
+  * Fixed a segfault that occurred when attempting to use the
+    jpegtran `-drop` option with a specially-crafted malformed
+    input image or drop image (specifically an image in which all
+    of the scans contain fewer components than the number of
+    components specified in the Start Of Frame segment.)
+
+-------------------------------------------------------------------
 Mon Feb  5 19:40:36 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.2

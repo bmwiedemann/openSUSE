@@ -23,7 +23,6 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver 3.0.2
 %if "%{flavor}" == "libjpeg-turbo"
 %define major    8
 %define minor    3
@@ -40,7 +39,7 @@
 %endif
 %define libver   %{major}.%{minor}.%{micro}
 Name:           %{flavor}
-Version:        %{srcver}
+Version:        3.0.3
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
@@ -123,7 +122,7 @@ necessary for compiling and linking programs which will manipulate JPEG
 files using the libjpeg library.
 
 %prep
-%autosetup -p1 -n libjpeg-turbo-%{srcver}
+%autosetup -p1 -n libjpeg-turbo-%{VERSION}
 
 %build
 MYLDFLAGS="-Wl,-z,relro,-z,now"

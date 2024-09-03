@@ -1155,4 +1155,24 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     JPEG image without an Adobe APP14 marker. The decompressor (forwarded request 1144368 from mnhauke)</comment>
     <requestid>1146098</requestid>
   </revision>
+  <revision rev="73" vrev="80">
+    <srcmd5>ac669d8ea3672e88fba6b7d470a82b52</srcmd5>
+    <version>unknown</version>
+    <time>1725363467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.3:
+  * The x86-64 SIMD extensions now include support for Intel
+    Control-flow Enforcement Technology (CET), which is enabled
+    automatically if CET is enabled in the C compiler.
+  * Fixed a regression introduced by 3.0 beta2[6] that made it
+    impossible for calling applications to supply custom Huffman
+    tables when generating 12-bit-per-component lossy JPEG images
+    using the libjpeg API.
+  * Fixed a segfault that occurred when attempting to use the
+    jpegtran `-drop` option with a specially-crafted malformed
+    input image or drop image (specifically an image in which all
+    of the scans contain fewer components than the number of
+    components specified in the Start Of Frame segment.) (forwarded request 1198096 from dirkmueller)</comment>
+    <requestid>1198276</requestid>
+  </revision>
 </revisionlist>
