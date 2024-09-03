@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 31 23:06:10 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20240831:
+  * Disable vaapi info debug log
+  * Faster startup (faster video codec query), fix some video codec
+    callback logic
+  * Add --version command
+  * Improve quality again
+
+-------------------------------------------------------------------
 Tue Aug 20 12:13:53 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20240820:
