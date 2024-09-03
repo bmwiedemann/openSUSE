@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 03 07:57:18 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240903:
+  * allow sshd_t and sshd_net_t access to ssh vsockets (bsc#1228831)
+
+-------------------------------------------------------------------
+Mon Sep 02 08:30:34 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240902:
+  * Allow xen to use qemu as dom0 disk backend (bsc#1228540)
+  * Label /var/lib/xen/xenstore as xenstored_var_lib_t (bsc#1228540)
+  * Allow xl to access hypercall interfaces to xen hypervisor (bsc#1228540)
+
+-------------------------------------------------------------------
 Fri Aug 30 11:45:10 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240830:

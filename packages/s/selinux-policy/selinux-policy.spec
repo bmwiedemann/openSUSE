@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20240830
+Version:        20240903
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
