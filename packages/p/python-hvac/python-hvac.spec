@@ -30,18 +30,17 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pyhcl >= 0.3.10}
+BuildRequires:  %{python_module poetry-core >= 1}
+BuildRequires:  %{python_module pyhcl >= 0.4.4}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyhcl >= 0.3.10
-Requires:       python-requests >= 2.21.0
+Requires:       python-requests >= 2.27.1
+Recommends:     python-pyhcl >= 0.4.4
 BuildArch:      noarch
 %python_subpackages
 

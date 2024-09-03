@@ -256,4 +256,12 @@
   * add support for Vault Raft auto-snapshot endpoints. (GH-1169)</comment>
     <requestid>1181700</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f1f4c6c0cee78e07366182634b6ce601</srcmd5>
+    <version>2.3.0</version>
+    <time>1725363495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198290</requestid>
+  </revision>
 </revisionlist>
