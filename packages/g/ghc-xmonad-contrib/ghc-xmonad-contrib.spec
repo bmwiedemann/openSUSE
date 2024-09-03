@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Community-maintained extensions for xmonad
 License:        BSD-3-Clause
@@ -52,6 +52,8 @@ BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-utf8-string-devel
