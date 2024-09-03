@@ -21,7 +21,7 @@
 %define lib_x509   libmbedx509-1
 %define _rname     mbedtls
 Name:           mbedtls-2
-Version:        2.28.8
+Version:        2.28.9
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -29,6 +29,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
 Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz#/%{_rname}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM: https://github.com/Mbed-TLS/mbedtls/pull/9529
+Patch0:         fix_calloc-transposed-args.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
