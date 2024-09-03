@@ -4,11 +4,12 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch: -p1 PATCH-FIX-OPENSUSE https://bugzilla.suse.com/show_bug.cgi?id=1228762
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+  BuildRequires:  ca-certificates-mozilla
+  Requires:       ca-certificates-mozilla
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 

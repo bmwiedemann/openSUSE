@@ -18,16 +18,18 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20240313.0.0
+Version:        20240730.0.0
 Release:        0
-# 20240313 -> normalize -> 20240313.0.0
-%define cpan_version 20240313
+# 20240730 -> normalize -> 20240730.0.0
+%define cpan_version 20240730
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LW/LWP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-OPENSUSE https://bugzilla.suse.com/show_bug.cgi?id=1228762
+Patch0:         Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -35,6 +37,10 @@ BuildRequires:  perl(Test::More) >= 0.94
 Provides:       perl(Mozilla::CA) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  ca-certificates-mozilla
+Requires:       ca-certificates-mozilla
+# MANUAL END
 
 %description
 Mozilla::CA provides a copy of Mozilla's bundle of Certificate Authority
@@ -48,7 +54,7 @@ The module provide a single function:
 Returns the absolute path to the Mozilla's CA cert bundle PEM file.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

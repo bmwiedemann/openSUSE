@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  2 13:38:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Add ca-certificates-mozilla to runtime Requires as well
+  boo#1228762
+
+-------------------------------------------------------------------
+Mon Aug 26 20:29:40 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Add Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch,
+  https://bugzilla.suse.com/show_bug.cgi?id=1228762
+  boo#1228762
+
+-------------------------------------------------------------------
+Wed Jul 31 05:28:27 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20240730.0.0 (20240730)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20240730
+    - Update from Mozilla repository to 2024-07-30
+    - Added certificates:
+      - FIRMAPROFESIONAL CA ROOT-A WEB
+        sha256: bef256daf26e9c69bdec1602359798f3caf71821a03e018257c53c65617f3d4a
+    - Removed certificates:
+      - GLOBALTRUST 2020
+        sha256: 9a296a5182d1d451a2e37f439b74daafa267523329f90f9a0d2007c334e23c9a
+
+-------------------------------------------------------------------
 Fri Mar 22 16:19:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20240313
