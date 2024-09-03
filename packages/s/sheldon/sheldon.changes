@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  2 09:19:16 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.0
+ * Remove deprecated config key and template filters
+ * Remove deprecated directory support
+ * Stop defaulting to Zsh and allow unspecified shell.
+    This change stops the shell defaulting to Zsh when unspecified
+    and allows you to use Sheldon without specifying a particular shell.
+ * Remove experimental Fish shell support. Sheldon is shell agnostic
+     enough that you can still get support for Fish by overriding
+     the default match, apply, and templates values in the config file.
+ * Support all clap complete shells. The sheldon completions command
+     now supports all shells that clap supports, regardless of whether
+     they are supported by Sheldon.
+
+-------------------------------------------------------------------
 Mon Nov 20 10:51:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.4

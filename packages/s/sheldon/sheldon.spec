@@ -1,7 +1,7 @@
 #
 # spec file for package sheldon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sheldon
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        Fast, configurable, shell plugin manager
 License:        MIT OR Apache-2.0 AND MIT AND Zlib AND LGPL-2.1-or-later AND CC-BY-SA-4.0 AND Apache-2.0 WITH LLVM-exception AND BSD-4-clause AND OpenSSL AND Unicode AND SUSE-GPL-2.0-with-linking-exception
@@ -28,8 +28,6 @@ BuildRequires:  cargo-packaging
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
-# Disable this line if you wish to support all platforms.
-# In most situations, you will likely only target tier1 arches for user facing components.
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -70,6 +68,7 @@ ZSH command line completion support for %{name}.
 export OPENSSL_NO_VENDOR=1
 export LIBSSH_NO_VENDOR=1
 export LIBCURL_NO_VENDOR=1
+
 %{cargo_build}
 
 %install
