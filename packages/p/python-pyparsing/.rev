@@ -1467,4 +1467,41 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     interpolation and `str.format()` converted to f-strings.</comment>
     <requestid>1158443</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>74b5d74efbb398f98af337abcd4bfcf2</srcmd5>
+    <version>3.1.4</version>
+    <time>1725363425</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4:
+  * Fix to type annotation that referenced `re.Pattern`. Since
+    this type was introduced in Python 3.7, using this type
+    definition broke Python 3.6 installs of pyparsing.
+  * Added new `Tag` ParserElement, for inserting metadata into
+    the parsed results.
+    This allows a parser to add metadata or annotations to the
+    parsed tokens.
+  * The `Tag` element also accepts an optional `value`
+    parameter, defaulting to `True`.
+    See the new `tag_metadata.py` example in the `examples`
+    directory.
+  * Fixed issue where PEP8 compatibility names for
+    `ParserElement` static methods were
+    not themselves defined as `staticmethods`. When called
+    using a `ParserElement` instance, this resulted  in a
+   `TypeError` exception.
+  * To address a compatibility issue in RDFLib, added a property
+    setter for the `ParserElement.name` property, to call
+    `ParserElement.set_name`.
+  * Modified `ParserElement.set_name()` to accept a None value,
+    to clear the defined name and corresponding error message for
+    a `ParserElement`.
+  * Updated railroad diagram generation for `ZeroOrMore` and
+    `OneOrMore` expressions with `stop_on` expressions, while
+    investigating #558
+  * Added exception type to `trace_parse_action` exception
+    output, while investigating SO question posted by medihack.
+  * Added `set_name` calls to internal expressions generated in
+    `infix_notation`, for improved railroad diagramming.</comment>
+    <requestid>1198050</requestid>
+  </revision>
 </revisionlist>

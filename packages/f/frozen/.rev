@@ -7,4 +7,12 @@
     <comment>new package needed for libreoffice build</comment>
     <requestid>1102673</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dec3b811c90e7cf79ce1f82ec3c568c5</srcmd5>
+    <version>1.2.0</version>
+    <time>1725363457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198198</requestid>
+  </revision>
 </revisionlist>

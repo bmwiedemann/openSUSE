@@ -195,4 +195,23 @@
           to :meth:`~django.db.models.Model.save` the instance.</comment>
     <requestid>1125175</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7e505e8e9d8d7028e8bfceaac164e00c</srcmd5>
+    <version>3.3.1</version>
+    <time>1725363427</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1:
+  * Add support for Django 4.2
+  * Add support for Django 5.1
+  * Add support for Python 3.12
+  * Stop advertising and verifying support for Django 3.2, 4.0,
+    4.1
+
+    - :issue:`366`: Add :class:`factory.django.Password` to generate Django
+      + If the :meth:`~django.db.models.Model.save` call is not needed after :class:`~factory.PostGeneration`, set
+- Drop tests-skip-django-py36.patch because new version need
+- skip testing with Django on SLE15
+- BuildRequires on %{pythons} as setuptools no longer drags it in.</comment>
+    <requestid>1198077</requestid>
+  </revision>
 </revisionlist>

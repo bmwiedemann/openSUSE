@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  2 04:46:53 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.2.41:
+  * (xmlsec-mscng,xmlsec-mscrypto) Improved certificates verification.
+  * (xmlsec-gnutls) Added support for self-signed certificates.
+  * (xmlsec-core) Fix deprecated functions in LibXML2 2.13.1
+                  including disabling HTTP support by default
+                  (use '--enable-http' option to re-enable it). 
+
+-------------------------------------------------------------------
 Fri Jul 12 06:09:16 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 1.2.40 

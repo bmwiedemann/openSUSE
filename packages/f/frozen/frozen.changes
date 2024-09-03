@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Sep  2 05:00:01 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.2.0. 
+  * Fixing "'macro' is not defined" warning, when using clang-tidy
+  * Drop a note in the README about the stability of frozen
+  * Upgrade catch to v2.13.10
+  * Update github action versions
+  * Add tests for gcc 13 and clang 15
+  * Use ARCH_INDEPENDENT when available
+  * Disable testing on compilers no longer part of ubuntu-latest image
+  * Support transparent hashing through elsa *and* anna
+  * Remove non-standard API that uses custom hasher / comparator
+  * Widen the checked compiler version ranges on Linux
+  * Split Travis validation across platforms
+  * Get rid of travis validation
+  * Get rid of appveyor validation
+  * Use CMAKE_INSTALL_* dirs from GNUInstallDirs
+  * feat: mark map keys as const to meet associative container requirements
+  * feat: make frozen::string bidirectionally comparable
+  * refactor: allow sorting containers other than bits::carray
+  * refactor: change sorting algorithm to use iter_swap to support proxy iterators
+  * fix: ensure const bits::cvector can be iterated over
+  * refactor: move const and reverse iterator conversion out of storage classes
+  * fix: forward const_iterator from underlying container instead of redefining it
+  * refactor: initialize carray to content we want
+  * fix: include 'defines.h' in elsa_std.h which relies on some of its macros
+  * fix: match associative container requirements for comparison predicates
+  * improvement: allow empty key comparison and hash functors to occupy no space
+  * refactor: use freshly constructed state vars instead of resetting each time
+  * fix: allow building tests when the compiler doesn't support C++17
+  * improvement: make unused slots in the hash tables equal items' end iterator
+  * refactor: use this->find() as replacement for this->lookup()
+  * use consistent integer types
+  * Fix closure types not being literal types and thus not constexpr-compatible
+  * Add c++20 contains to the associative containers
+  * Workaround gcc 11 limitation
+  * Add test cases suggested by @adamshapiro0
+  * Standard implementation for lower_bound/upper_bound/equal_range
+  * Suggested changes for nicer checks.
+  * Fix boyer-moore going over string iterator end
+  * Add more tests for edge cases that would make search go over string iterator end
+
+-------------------------------------------------------------------
 Mon Aug  7 09:51:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 13:28:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Add patch numpy-2.1-support.patch, numpy-2.1-interval.patch:
+  * Fix test suite failure with numpy 2.1
+- prepare for python 3.13
+
+-------------------------------------------------------------------
 Wed Jul 31 04:32:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-gast-0.6.patch:

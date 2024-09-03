@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  1 19:14:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add python313.patch:
+  * skip known testfailure with 3.13
+- modernize spec file
+
+-------------------------------------------------------------------
 Sat Mar 16 08:32:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.1:
@@ -103,7 +110,7 @@ Wed Apr 19 16:16:46 UTC 2017 - toddrme2178@gmail.com
     (via the new ``output`` argument) as an alternative to a filename.
   * Made internal helper methods private. This includes :func:`find_chain`,
     :func:`show_graph`, :func:`obj_node_id`, :func:`obj_label`, :func:`quote`,
-    :func:`long_typename`, :func:`safe_repr`, :func:`short_repr`, 
+    :func:`long_typename`, :func:`safe_repr`, :func:`short_repr`,
     :func:`gradient`, :func:`edge_label`, and :func:`_program_in_path`.
   * Correctly determine the name of old-style classes in :func:`count`,
     :func:`by_type`, and graph drawing functions.

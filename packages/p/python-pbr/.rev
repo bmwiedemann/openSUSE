@@ -775,4 +775,23 @@
     <comment>- Use stestr rather than pytest to run the testsuite.</comment>
     <requestid>1173551</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1479b7d98847ccd0b73f5bf0ecd78a3a</srcmd5>
+    <version>6.1.0</version>
+    <time>1725363423</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * Add openstack-tox-py312 as non-voting job
+  * Add SetupTools to our functional testing venvs
+  * Use SetupTools' vendored distutils in tests
+  * Also run coverage tests serially
+  * Omnibus PBR CI fixups
+  * Serialize tests
+  * Fix tempest-full job
+  * Use summary for the package summary
+  * Test on py310 and py311
+
+- Use stestr rather than pytest to run the testsuite.</comment>
+    <requestid>1198044</requestid>
+  </revision>
 </revisionlist>

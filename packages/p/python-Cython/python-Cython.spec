@@ -19,13 +19,13 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        3.0.10
+Version:        3.0.11
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
 URL:            https://cython.org/
 # SourceRepository: https://github.com/cython/cython
-Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/C/Cython/cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -53,7 +53,7 @@ functions and declaring C types on variables and class attributes. This
 allows the compiler to generate very efficient C code from Cython code.
 
 %prep
-%setup -q -n Cython-%{version}
+%setup -q -n cython-%{version}
 # Fix non-executable scripts
 sed -i "s|^#!.*||" Cython/Debugger/{libpython,Cygdb}.py cython.py
 

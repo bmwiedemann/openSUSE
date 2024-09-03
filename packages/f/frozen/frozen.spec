@@ -1,7 +1,7 @@
 #
 # spec file for package frozen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           frozen
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        A header only, constexpr alternative to gperf for C++14 users
 License:        Apache-2.0
 URL:            https://github.com/serge-sans-paille/%{name}
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
 Patch0:         frozen-cmake.patch
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 
 %description
 Header-only library that provides 0 cost initialization for immutable

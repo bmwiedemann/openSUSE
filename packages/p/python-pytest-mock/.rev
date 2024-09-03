@@ -322,4 +322,12 @@
 - drop fix-tests-python3117.patch (upstream)</comment>
     <requestid>1186141</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0a5f68aada970abfdd938e2317725cb2</srcmd5>
+    <version>3.14.0</version>
+    <time>1725363454</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop python-py requirement, no longer required.</comment>
+    <requestid>1198186</requestid>
+  </revision>
 </revisionlist>

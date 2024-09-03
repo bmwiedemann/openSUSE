@@ -28,13 +28,11 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-py
 Requires:       python-pytest
 BuildArch:      noarch
 %python_subpackages

@@ -34,6 +34,9 @@
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
 # Skip empty buildsets, last one is for sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -54,6 +57,8 @@ Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%
 Source99:       python-pythran-rpmlintrc
 # PATCH-FIX-UPSTREAM gh#serge-sans-paille/pythran#840a0e706ec39963aec6bcd1f118bf33177c20b4
 Patch0:         support-gast-0.6.patch
+Patch1:         https://github.com/serge-sans-paille/pythran/pull/2231/commits/9261d30aa9618cb2a5a698d39752263b076f2d4b.patch#/numpy-2.1-support.patch
+Patch2:         https://github.com/serge-sans-paille/pythran/commit/6b61e8a6b3dddab13b88e51309cbdf2f28247960.patch#/numpy-2.1-interval.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

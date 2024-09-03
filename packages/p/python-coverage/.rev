@@ -762,4 +762,41 @@ update to latest version</comment>
     fuzzing, thanks to Liam DeVoe. Closes issue 1787.</comment>
     <requestid>1178912</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>737b24bb16eb327e68b6b2663f6ac938</srcmd5>
+    <version>7.6.1</version>
+    <time>1725363430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.6.1:
+  * Fix: coverage used to fail when measuring code using
+    :func:`runpy.run_path &lt;python:runpy.run_path&gt;` with a
+    :class:`Path &lt;python:pathlib.Path&gt;` argument. This is now
+    fixed, thanks to Ask Hjorth Larsen.
+  * Fix: backslashes preceding a multi-line backslashed string
+    could confuse the HTML report.  This is now fixed, thanks to
+    LiuYinCarl.
+  * Now we publish wheels for Python 3.13, both regular and free-
+    threaded.
+  * Exclusion patterns can now be multi-line, thanks to Daniel
+    Diniz.  This enables many interesting exclusion use-cases,
+    including those requested in issues 118 (entire files), 996
+    (multiple lines only when appearing together), 1741
+    (remainder of a function), and 1803 (arbitrary sequence of
+    marked lines).  See the :ref:`multi_line_exclude` section of
+    the docs for more details and examples.
+  * The JSON report now includes per-function and per-class
+    coverage information. Thanks to Daniel Diniz for getting the
+    work started. This closes issue 1793 and issue 1532.
+  * Fixed an incorrect calculation of &quot;(no class)&quot; lines in the
+    HTML classes report.
+  * Python 3.13.0b3 is supported.
+  * If you attempt to combine statement coverage data with branch
+    coverage data, coverage.py used to fail with the message
+    &quot;Can't combine arc data with line data&quot; or its reverse,
+    &quot;Can't combine line data with arc data.&quot;  These messages used
+    internal terminology, making it hard for people to understand
+    the problem.  They are now changed to mention &quot;branch
+    coverage data&quot; and &quot;statement coverage data.&quot;</comment>
+    <requestid>1198085</requestid>
+  </revision>
 </revisionlist>

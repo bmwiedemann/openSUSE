@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyftpdlib
-Version:        1.5.9
+Version:        1.5.10
 Release:        0
 Summary:        Asynchronous FTP server library for Python
 License:        MIT

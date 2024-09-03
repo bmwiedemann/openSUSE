@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-aiohappyeyeballs
 Version:        2.3.7
 Release:        0

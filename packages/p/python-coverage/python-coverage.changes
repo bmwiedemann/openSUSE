@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Aug 31 13:44:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.6.1:
+  * Fix: coverage used to fail when measuring code using
+    :func:`runpy.run_path <python:runpy.run_path>` with a
+    :class:`Path <python:pathlib.Path>` argument. This is now
+    fixed, thanks to Ask Hjorth Larsen.
+  * Fix: backslashes preceding a multi-line backslashed string
+    could confuse the HTML report.  This is now fixed, thanks to
+    LiuYinCarl.
+  * Now we publish wheels for Python 3.13, both regular and free-
+    threaded.
+  * Exclusion patterns can now be multi-line, thanks to Daniel
+    Diniz.  This enables many interesting exclusion use-cases,
+    including those requested in issues 118 (entire files), 996
+    (multiple lines only when appearing together), 1741
+    (remainder of a function), and 1803 (arbitrary sequence of
+    marked lines).  See the :ref:`multi_line_exclude` section of
+    the docs for more details and examples.
+  * The JSON report now includes per-function and per-class
+    coverage information. Thanks to Daniel Diniz for getting the
+    work started. This closes issue 1793 and issue 1532.
+  * Fixed an incorrect calculation of "(no class)" lines in the
+    HTML classes report.
+  * Python 3.13.0b3 is supported.
+  * If you attempt to combine statement coverage data with branch
+    coverage data, coverage.py used to fail with the message
+    "Can't combine arc data with line data" or its reverse,
+    "Can't combine line data with arc data."  These messages used
+    internal terminology, making it hard for people to understand
+    the problem.  They are now changed to mention "branch
+    coverage data" and "statement coverage data."
+  * Fixed a minor branch coverage problem with wildcard
+    match/case cases using names or guard clauses.
+  * Started testing on 3.13 free-threading (nogil) builds of
+    Python.  I'm not claiming full support yet.  Closes issue
+    1799.
+
+-------------------------------------------------------------------
 Thu Jun  6 07:29:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.5.3:

@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-alembic
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sqlalchemy/alembic/commit/6bdb9043868d4bd04ebe3fe8a4991735d5f87ed3 use SQLAlchemy's xdist methods
-Patch:          pytest8.patch
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.0}
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
@@ -67,7 +65,6 @@ offers the following functionality:
 
 %prep
 %setup -q -n alembic-%{version}
-%autopatch -p1
 
 %build
 %pyproject_wheel

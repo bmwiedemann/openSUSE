@@ -572,6 +572,9 @@ Prefer: -docker
 Ignore: glib2-stage1-devel:this-is-only-for-build-envs
 Prefer: -glib2-stage1-devel
 
+# unresolvable: have choice for kmod(zram.ko) needed by systemd-zram-service: kernel-debug kernel-default kernel-longterm kernel-vanilla
+Prefer: -kernel-vanilla -kernel-longterm -kernel-debug 
+
 # have choice for (netavark or cni) needed by podman: cni netavark
 Prefer: -cni-plugins -cni
 

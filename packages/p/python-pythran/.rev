@@ -199,4 +199,14 @@ now with fixed empty debuginfo extraction</comment>
   * Support gast 0.6.0 changes, change Requires appropriately.</comment>
     <requestid>1190557</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>4612059825bbdd3ed6980b06965738dc</srcmd5>
+    <version>0.16.1</version>
+    <time>1725363451</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch numpy-2.1-support.patch, numpy-2.1-interval.patch:
+  * Fix test suite failure with numpy 2.1
+- prepare for python 3.13</comment>
+    <requestid>1198174</requestid>
+  </revision>
 </revisionlist>

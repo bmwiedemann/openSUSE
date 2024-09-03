@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:41:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Add support for Django 4.2
+  * Add support for Django 5.1
+  * Add support for Python 3.12
+  * Stop advertising and verifying support for Django 3.2, 4.0,
+    4.1
+
+-------------------------------------------------------------------
 Thu Nov  9 11:32:25 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.0
   * New:
-    - :issue:`366`: Add :class:`factory.django.Password` to generate Django 
+    - :issue:`366`: Add :class:`factory.django.Password` to generate Django
       :class:`~django.contrib.auth.models.User` passwords.
     - :issue:`304`: Add :attr:`~factory.alchemy.SQLAlchemyOptions.sqlalchemy_session_factory`
       to dynamically create sessions for use by the :class:`~factory.alchemy.SQLAlchemyModelFactory`.
@@ -23,7 +33,7 @@ Thu Nov  9 11:32:25 UTC 2023 - ecsos <ecsos@opensuse.org>
     - To help with the transition, :class:`factory.django.DjangoModelFactory._after_postgeneration`
       raises a :class:`DeprecationWarning` when calling :meth:`~django.db.models.Model.save`.
       Inspect your :class:`~factory.django.DjangoModelFactory` subclasses:
-      + If the :meth:`~django.db.models.Model.save` call is not needed after :class:`~factory.PostGeneration`, set   
+      + If the :meth:`~django.db.models.Model.save` call is not needed after :class:`~factory.PostGeneration`, set
         :attr:`factory.django.DjangoOptions.skip_postgeneration_save` to True in the factory meta.
       + Otherwise, the instance has been modified by :class:`~factory.PostGeneration`
         hooks and needs to be :meth:`~django.db.models.Model.save`d. Either:
@@ -38,7 +48,7 @@ Thu Nov  9 11:32:25 UTC 2023 - ecsos <ecsos@opensuse.org>
     - Drop support for Python 3.6
     - Drop support for Python 3.7
 
-- Drop tests-skip-django-py36.patch because new version need 
+- Drop tests-skip-django-py36.patch because new version need
   python >= 3.7.
 
 -------------------------------------------------------------------
@@ -49,7 +59,7 @@ Fri Apr 21 12:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Feb  1 20:48:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- skip testing with Django on SLE15 
+- skip testing with Django on SLE15
 
 -------------------------------------------------------------------
 Sat Jan 15 16:04:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -149,7 +159,7 @@ Mon Mar 16 10:31:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Mon Nov 18 00:57:55 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
-- BuildRequires on %{pythons} as setuptools no longer drags it in. 
+- BuildRequires on %{pythons} as setuptools no longer drags it in.
 
 -------------------------------------------------------------------
 Fri Jun  7 11:54:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  1 19:25:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- prepare for python 3.13 testin
+
+-------------------------------------------------------------------
 Mon Jul 29 05:03:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.3.patch:

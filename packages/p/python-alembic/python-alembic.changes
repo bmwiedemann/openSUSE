@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 13 23:30:46 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- update to 1.31.2:
+  * Improve computed column compare function to support multi-line
+    expressions. Pull request courtesy of Georg Wicke-Arndt.
+  * Fixed bug in alembic command stdout where long messages were
+    not properly wrapping at the terminal width. Pull request
+    courtesy Saif Hakim.
+  * Fixed internal issue where Alembic would call
+    connection.execute() sending an empty tuple to indicate
+    “no params”. In SQLAlchemy 2.1 this case will be deprecated as
+    “empty sequence” is ambiguous as to its intent.
+  * Fixes to support pytest 8.1 for the test suite.
+  * Fixed the detection of serial column in autogenerate with
+    tables not under default schema on PostgreSQL.
+- Drop pytest8.patch as it has merged upstream and included
+  in the 1.31.2 release.
+  
+
+-------------------------------------------------------------------
 Fri May 17 13:09:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add pytest8.patch to fix the tests with the new pytest

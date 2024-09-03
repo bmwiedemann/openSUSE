@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:04:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.10:
+  * use black formatter.
+  * use argparse instead of deprecated optparse.
+  * use pytest instead of unittest.
+  * add ability to run tests in parallel with make test-
+    parallel.
+  * PermissionError may occur on Windows when binding ports
+    from a pre-configured PASV range.
+
+-------------------------------------------------------------------
 Mon Mar 25 14:21:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.9:

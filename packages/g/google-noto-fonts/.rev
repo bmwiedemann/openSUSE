@@ -300,4 +300,13 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
  * Nastaliq Urdu has most of its issues fixed</comment>
     <requestid>1191247</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>88ee21f81119f2106fb5089ac0e98f58</srcmd5>
+    <version>20240901</version>
+    <time>1725363430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20240901
+ * Various updates to fonts</comment>
+    <requestid>1198121</requestid>
+  </revision>
 </revisionlist>

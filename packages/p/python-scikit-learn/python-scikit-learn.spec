@@ -33,6 +33,9 @@
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
 # Skip empty buildsets, last one is for sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild

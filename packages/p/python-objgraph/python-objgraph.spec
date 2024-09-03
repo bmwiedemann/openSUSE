@@ -25,8 +25,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://mg.pov.lt/objgraph/
 Source:         https://files.pythonhosted.org/packages/source/o/objgraph/objgraph-%{version}.tar.gz
+# see https://github.com/mgedmin/objgraph/issues/80
+Patch1:         python313.patch
 BuildRequires:  %{python_module graphviz}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
@@ -44,13 +48,13 @@ graphviz is needed if pretty graphs are desired.
 xdot can be used for interactive use.
 
 %prep
-%setup -q -n objgraph-%{version}
+%autosetup -p1 -n objgraph-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +63,8 @@ xdot can be used for interactive use.
 %files %{python_files}
 %doc README.rst CHANGES.rst HACKING.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/objgraph.py
+%pycache_only %{python_sitelib}/__pycache__/objgraph*
+%{python_sitelib}/objgraph-%{version}.dist-info
 
 %changelog

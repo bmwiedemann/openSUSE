@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 31 11:49:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Add openstack-tox-py312 as non-voting job
+  * Add SetupTools to our functional testing venvs
+  * Use SetupTools' vendored distutils in tests
+  * Also run coverage tests serially
+  * Omnibus PBR CI fixups
+  * Serialize tests
+  * Fix tempest-full job
+  * Use summary for the package summary
+  * Test on py310 and py311
+
+-------------------------------------------------------------------
 Mon May 13 05:17:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use stestr rather than pytest to run the testsuite. 
+- Use stestr rather than pytest to run the testsuite.
 
 -------------------------------------------------------------------
 Tue Jan  2 22:34:18 UTC 2024 - Dirk Müller <dmueller@suse.com>

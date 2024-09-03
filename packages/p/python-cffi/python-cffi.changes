@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 31 12:39:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * Add support for Python 3.13.
+  * In API mode, when you get a function from a C library by writing
+    `fn = lib.myfunc`, you get an object of a special type for
+    performance reasons, instead of a `<cdata 'C-function-type'>`.
+    Before version 1.17 you could only call such objects.
+    You could write `ffi.addressof(lib, "myfunc")` in order to get
+    a real `<cdata>` object, based on the idea that in these cases
+    in C you'd usually write `&myfunc` instead of `myfunc`.  In
+    version 1.17, the special object `lib.myfunc` can now be passed
+    in many places where CFFI expects
+    a regular `<cdata>` object.  For example, you can now pass
+    it as a callback to a C function call, or write it inside a C
+    structure field of the correct pointer-to-function type, or use
+    `ffi.cast()` or `ffi.typeof()` on it.
+- drop py313-compat.patch, py313-use-format-unraisable.patch,
+  py313-use-hashpointer.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Jun 30 21:26:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-compat.patch
