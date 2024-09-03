@@ -18,14 +18,14 @@
 
 %define min_libpcap_version 1.10.0
 Name:           tcpdump
-Version:        4.99.4
+Version:        4.99.5
 Release:        0
 Summary:        A Packet Sniffer
 License:        BSD-3-Clause
 URL:            https://www.tcpdump.org/
-Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
+Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.xz
 Source1:        tcpdump-qeth
-Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
+Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.xz.sig
 Source3:        https://www.tcpdump.org/release/signing-key-RSA-E089DEF1D9C15D0D.asc#/%{name}.keyring
 BuildRequires:  libpcap-devel >= %{min_libpcap_version}
 BuildRequires:  libsmi-devel
