@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  1 15:22:44 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.4.
+  * Fix element type when reading OpPtrDiff (SPIR-V -> LLVM).
+  * Transform floating-point atomic_compare_exchange into integer
+    operation (OpenCL -> SPIR-V).
+
+-------------------------------------------------------------------
 Sat Aug  3 13:09:48 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.3.
