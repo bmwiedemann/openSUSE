@@ -1,7 +1,7 @@
 #
 # spec file for package clisp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,20 @@
 #
 
 
+%bcond_with     debug
+%global commit  f5acef38
+%global vdate   20240704
+
 Name:           clisp
-Version:        2.49.92
+Version:        2.49.93
 Release:        0
 Summary:        A Common Lisp Interpreter
 # Included gllib is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Languages/Other
 URL:            https://gitlab.com/gnu-clisp/clisp
-Source:         %name-%version.tar.bz2
+Source:         %{name}-%{version}+git%{vdate}.%{commit}.tar.xz
+Source2:        clhs.el
 Source3:        clisp-rpmlintrc
 Source4:        README.SUSE
 # PATCH-EXTEND-OPENSUSE Set the process execution domain
@@ -39,14 +44,12 @@ Patch5:         clisp-2.49-gctoken.dif
 Patch6:         clisp-2.49-clx_demos.dif
 # PATCH-EXTEND-OPENSUSE Enable postgresql SSL feature
 Patch7:         clisp-2.49-postgresql.dif
-# PATCH-FIX-OPENSUSE Do not use rpath but rpath-link
-Patch8:         clisp-2.49-rpath.dif
 # PATCH-FIX-OPENSUSE Correct path for header for System V IPC system calls
 Patch12:        clisp-linux.patch
+Patch13:        clisp-gcc14.patch
 Patch14:        clisp-link.dif
 Patch16:        clisp-db6.diff
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global vimdir  %{_datadir}/vim/site/after/syntax
 BuildRequires:  FastCGI-devel
 BuildRequires:  db-devel
@@ -58,13 +61,18 @@ BuildRequires:  ffcall
 #%endif
 BuildRequires:  gdbm-devel
 BuildRequires:  glib2-devel
+BuildRequires:  groff
 BuildRequires:  gtk2-devel
 BuildRequires:  libglade2-devel
 BuildRequires:  libsigsegv-devel
+BuildRequires:  libsvm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel
+BuildRequires:  pari-devel
+BuildRequires:  pari-gp
 BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  screen
@@ -79,11 +87,17 @@ BuildRequires:  pkgconfig(zlib)
 #   gcc-c++
 # to BuildRequires
 #
-%define debug   no
-%define _lto_cflags %{nil}
+%global ldflags %{nil}
+%ifarch %arm ppc ppc64 ppc64le s390 s390x %ix86
+%global _lto_cflags %{nil}
+%else
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 %global rlver   %(rpm -q --qf '%%{VERSION}' readline-devel | sed 's/\\.//g')
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
+%define add_ldflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global ldflags %{ldflags} %{**}
 Requires(pre):  vim
 Requires(pre):  vim-data
 Requires:       ffcall
@@ -128,28 +142,34 @@ with the file README. The subdirectory
 contains two nice applications.
 
 %prep
-%setup -qT -b0
+%setup -qT -b0 -n %{name}-%{version}+git%{vdate}.%{commit}
 %patch -P 1  -p1 -b .sel
 %patch -P 2  -p1 -b .wooh
 %patch -P 4  -p1 -b .conf
 %patch -P 5  -p1 -b .gc
 %patch -P 6  -p1 -b .demos
 %patch -P 7  -p1 -b .psql
-%patch -P 8  -p1 -b .rpath
 %patch -P 12 -p1 -b .p12
+%patch -P 13 -p0 -b .p13
 %patch -P 14 -p0 -b .p14
 %patch -P 16 -p1 -b .p16
 
 %build
-%add_optflags -g3 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
+%add_optflags -g3 -D_GNU_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
+%add_optflags -fno-strict-aliasing -fPIC -pipe -Wa,--noexecstack
+%add_optflags -Wno-unused -Wno-uninitialized -Wno-implicit-fallthrough -Wno-volatile-register-var -Wno-address
+%add_optflags -Wno-clobbered -Wno-dangling-pointer -Wno-unused-result -Wno-missing-declarations -Wno-cast-function-type
+%{expand:%%global optflags %(echo "%{optflags}"|sed -r -e s/-fstack-protector-strong// -e s/-fstack-clash-protection//)}
+%{expand:%%global optflags %%optflags %(getconf LFS_CFLAGS)}
+%add_ldflags -Wl,--as-needed -Wl,-z,relro -Wl,-z,noexecstack
 #
 # Overwrite stack size limit (hopefully a soft limit only)
 #
 ulimit -Ss unlimited || true
 ulimit -Hs unlimited || true
 unset LC_CTYPE
-LANG=POSIX
-LC_ALL=POSIX
+LANG=C.UTF-8
+LC_ALL=C.UTF-8
 export LANG LC_ALL
 #
 # Current system
@@ -158,46 +178,52 @@ SYSTEM=${RPM_ARCH}-suse-linux
 export PATH="$PATH:."
 #
 # Set gcc command line but do not use CFLAGS
-#
-if test %debug = yes ; then
-    CC="g++"
-else
-    CC="gcc"
-fi
-%ifarch s390x
-##RPM_OPT_FLAGS="$(echo %{optflags}|sed -r 's/-fstack-protector-strong ?//g;s/-f(stack-clash-protection)/-fno-\1/') -fno-stack-limit"
+%if %{with debug}
+    export CC="g++"
+    DEBUG=--with-debug
+%add_optflags -g3 -DDEBUG_GCSAFETY
+%else
+    DEBUG=
+    export CC="gcc"
 %endif
-CC="${CC} -g %{optflags} -fno-strict-aliasing -fPIC -pipe"
-case "$(uname -m)" in
-    i[0-9]86)
-	    CC="${CC} -ffloat-store"  ;;
-    arm*)   CC="${CC}"				;;
-    aarch64)CC="${CC}"				;;
-    ppc)    CC="${CC}"				;;
-    s390)   CC="${CC}"				;;
-    x86_64) CC="${CC} -fno-gcse"		;;
-    sparc*) CC="${CC} -mcpu=v9 -fno-gcse"	;;
-    ppc64)  CC="${CC} -fno-gcse -mpowerpc64"	;;
-    ppc64le)CC="${CC} -fno-gcse"		;;
-    s390x)  CC="${CC} -fno-gcse -fno-schedule-insns";;
-    ia64)   CC="${CC} -fno-gcse"		;;
-    axp|alpha)
-	    CC="${CC}"				;;
-esac
+export MYCFLAGS=""
+%ifarch s390x ppc64 ppc64le
+%{expand:%%global optflags %(echo "%{optflags}"|sed -r -e s/-fstack-protector-strong// -e s/-fstack-clash-protection//)}
+%add_optflags -fno-pie -fno-PIE
+%add_ldflags -no-pie
+MYCFLAGS=-O
+%endif
+%ifarch %arm
+%{expand:%%global optflags %(echo "%{optflags}"|sed -r -e s/-O[0-9]/-O/g)}
+MYCFLAGS=-O
+%endif
+%ifarch aarch64
+%endif
+%ifarch ppc
+%endif
+%ifarch s390
+%endif
+%ifarch alpha
+%endif
+%ifarch %ix86
+%add_optflags -ffloat-store
+MYCFLAGS=-O
+%endif
+%ifarch x86_64 sparc sparc64 ia64 s390x ppc64 ppc64le
+%add_optflags -fno-gcse
+%endif
+%ifarch ia64 s390x ppc64 ppc64le
+%{expand:%%global optflags %(echo "%{optflags}"|sed -r -e s/-O[0-9]/-O/g)}
+MYCFLAGS=-O
+%endif
+%ifarch sparc sparc64
+%add_optflags -mcpu=v9
+%endif
 #
 # FastCGI-devel seems a bit broken
 #
-CC="${CC} -I%{_includedir}/fastcgi"
+%add_optflags -I%{_includedir}/fastcgi
 
-safety='-O'
-MYCFLAGS="$(getconf LFS_CFLAGS)"
-if grep -q _DEFAULT_SOURCE /usr/include/features.h
-then
-    MYCFLAGS="${MYCFLAGS} -D_GNU_SOURCE -D_DEFAULT_SOURCE"
-else
-    MYCFLAGS="${MYCFLAGS} -D_GNU_SOURCE"
-fi
-MYCFLAGS="${MYCFLAGS} -Wno-unused -Wno-uninitialized -Wno-implicit-fallthrough -Wno-volatile-register-var"
 # From src/makemake.in
 # <cite>
 # Do NOT enable -DSAFETY=3 here, because -DSAFETY=3 not only disables some
@@ -208,31 +234,12 @@ port=''
 %ifarch s390x
 ##port='--enable-portability'
 %endif
-case "$(uname -m)" in
-    i[0-9]86)
-            MYCFLAGS="${MYCFLAGS}"				;;
-    arm*)   MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    aarch64)MYCFLAGS="${MYCFLAGS}"				;;
-    ppc)    MYCFLAGS="${MYCFLAGS}"				;;
-    s390)   MYCFLAGS="${MYCFLAGS}"				;;
-    x86_64) MYCFLAGS="${MYCFLAGS}"				;;
-    sparc*) MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    ppc64)  MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    ppc64le)MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    s390x)  MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    ia64)   MYCFLAGS="${MYCFLAGS} ${safety}"			;;
-    axp|alpha)
-	    MYCFLAGS="${MYCFLAGS}"				;;
-esac
-export CC
-export MYCFLAGS
-unset noexec nommap safety
 
 #
 # Report final architectures
 #
 echo $(uname -i -m -p) %_build_arch %_arch
-echo | $CC $MYCFLAGS -v -E - 2>&1 | grep /cc1
+echo | $CC %{optflags} -v -E - 2>&1 | grep /cc1
 #
 # Environment for the case of missing terminal
 #
@@ -255,19 +262,16 @@ cat > $SCREENRC<<-EOF
 	silence on
 	utf8 on
 	EOF
-#
-# Build the current system
-#
-if test %debug = yes ; then
-    DEBUG=--with-debug
-    MYCFLAGS="${MYCFLAGS} -g3 -DDEBUG_GCSAFETY"
-else
-    DEBUG=""
-    MYCFLAGS="${MYCFLAGS}"
-fi
 
 find -name configure | xargs -r \
     sed -ri "/ac_precious_vars='build_alias\$/ {N; s/build_alias\\n//; }"
+# Runtime linker choose system libraries
+sed -ri 's/(\$\{wl\})-rpath (\$\{wl\})/\1-rpath-link \2/g' src/build-aux/config.rpath
+# Link libraries if really needed
+sed -ri "s/CC='\\$\{CC\}'/CC='\\$\{CC\} -Wl,--as-needed'/g" src/makemake.in
+#Default browser
+sed -ri 's/;; (\(setq \*browser\* .*\))/\1/' src/cfgunix.lisp
+
 #
 # The modules i18n, syscalls, regexp
 # are part of the base clisp system.
@@ -283,6 +287,7 @@ tail -q -s 0.5 -f $SCREENLOG & pid=$!
     --fsstnd=suse		\
     --with-readline		\
     --with-dynamic-modules      \
+    --with-ffcall		\
     --with-gettext		\
     --with-module=asdf		\
     --with-module=dbus		\
@@ -291,13 +296,19 @@ tail -q -s 0.5 -f $SCREENLOG & pid=$!
     --with-module=queens	\
     --with-module=gdbm		\
     --with-module=gtk2		\
+    --with-module=pari		\
     --with-module=pcre		\
     --with-module=rawsock	\
     --with-module=zlib		\
+    --with-module=libsvm	\
     --with-module=bindings/glibc\
     --with-module=clx/new-clx	\
     --with-module=berkeley-db	\
-    --with-module=postgresql
+    --with-module=postgresql	\
+    --config			\
+    CC="${CC}"			\
+    CFLAGS="%{optflags}"	\
+    LDFLAGS="%{ldflags}"
 
 %_make -C build lispbibl.h
 grep TYPECODES build/lispbibl.h || :
@@ -339,11 +350,12 @@ find modules/clx/ -name '*.demos' | xargs --no-run-if-empty rm -vf
 #
 # Current system
 #
+. ./version.sh
 SYSTEM=${RPM_ARCH}-suse-linux
 LSPDOC=%{_docdir}/clisp
 DOCDOC=${LSPDOC}/doc
 CLXDOC=${LSPDOC}/clx
-LSPLIB=%{_libdir}/clisp-%{version}
+LSPLIB=%{_libdir}/clisp-${VERSION_NUMBER}
 CLXLIB=${LSPLIB}/full
 #
 # Install the current system
@@ -384,6 +396,7 @@ find   %{buildroot}${LSPLIB}/ -name '*.run' | xargs -r chmod 0755
 rm -rf %{buildroot}${LSPLIB}/new-clx/demos/
 find   %{buildroot} -type f | xargs -r chmod u+w
 chmod a+x %{buildroot}${LSPLIB}/build-aux/{config,depcomp}*
+install -c -m 644 %{S:2} %{buildroot}%{_datadir}/emacs/site-lisp/clhs.el
 %fdupes %{buildroot}${LSPLIB}/
 %find_lang clisp
 %find_lang clisplow clisp.lang
@@ -392,7 +405,7 @@ chmod a+x %{buildroot}${LSPLIB}/build-aux/{config,depcomp}*
 %defattr(-,root,root,755)
 %{_bindir}/clisp
 %{_bindir}/clisp-link
-%{_libdir}/clisp-%{version}/
+%{_libdir}/clisp-%{version}*/
 %{_datadir}/aclocal/clisp.m4
 %{_datadir}/emacs/site-lisp/
 %doc %{_datadir}/man/man1/clisp*.1.gz

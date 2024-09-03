@@ -16,7 +16,7 @@
            cp ${f} ${absdestdir}/${DYNMOD}/
 --- src/lispbibl.d
 +++ src/lispbibl.d	2018-02-19 09:30:11.552748021 +0000
-@@ -1631,6 +1631,8 @@ typedef SLONG   sint32;  /* signed 32 bi
+@@ -1610,6 +1610,8 @@ typedef SLONG   sint32;  /* signed 32 bi
    /* Emulate 64-Bit-numbers using two 32-Bit-numbers. */
    typedef struct { sintL hi; uintL lo; } sintL2; /* signed 64 Bit integer */
    typedef struct { uintL hi; uintL lo; } uintL2; /* unsigned 64 Bit integer */
@@ -25,7 +25,7 @@
  #endif
  /* Use 'uintX' and 'sintX' for Integers with approximately given width
   and a minumum of storage space. */
-@@ -14397,7 +14399,7 @@ re-enters the corresponding top-level lo
+@@ -14188,7 +14190,7 @@ re-enters the corresponding top-level lo
  #define pushSTACK(obj)  (STACK_(-1) = (obj), STACK skipSTACKop -1)
    /* Almost equivalent with *--STACK = obj  resp.  *STACK++ = obj  , but
     Careful: first enter the object into STACK_(-1), THEN modify the STACK! */

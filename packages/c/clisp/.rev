@@ -402,4 +402,30 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
     <comment>Prepare for RPM 4.20 (forwarded request 1151082 from dimstar)</comment>
     <requestid>1156872</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>eaa9d1593ccfab979bdd24d1f373a0d1</srcmd5>
+    <version>2.49.93</version>
+    <time>1725363543</time>
+    <user>dimstar_suse</user>
+    <comment>- Choose lto settings depending on architecture as otherwise
+  we might see crashing clisp 
+
+- Refresh clisp.spec and make it build on s390x as well by avoiding
+  Position Independent Executables at compile and link time.
+
+- Update to latest commit f5acef38 of devel version 2.49.93+ from 20240704
+- Add modules libsvm and pari as well as feature ffcall
+- Add source clhs.el as upstream has skipped this
+- Drop patch
+  * clisp-2.49-rpath.dif
+  * clisp-2.49.92.tar.bz2
+- Port patches
+  * clisp-2.49-configure.dif
+  * clisp-2.49-gctoken.dif
+  * clisp-gcc14.patch
+  * clisp-link.dif
+
+- Add patch clisp-gcc14.patch to make it build again</comment>
+    <requestid>1198416</requestid>
+  </revision>
 </revisionlist>

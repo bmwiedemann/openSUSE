@@ -1,0 +1,130 @@
+---
+ modules/berkeley-db/bdb.c |   11 ++++++-----
+ modules/berkeley-db/configure                                |    2 +-
+ modules/berkeley-db/configure.in                             |    2 +-
+ src/foreign.d                                                |    2 +-
+ src/lispbibl.d                                               |    2 +-
+ src/spvw_fault.d                                             |    2 +-
+ src/spvw_language.d                                          |    2 +-
+ src/spvw_sigsegv.d                                           |    2 +-
+ 8 files changed, 13 insertions(+), 12 deletions(-)
+
+--- modules/berkeley-db/bdb.c
++++ modules/berkeley-db/bdb.c	2024-08-29 11:45:09.133249570 +0000
+@@ -364,7 +364,7 @@ DEFUN(BDB:DBE-CREATE,&key PASSWORD ENCRY
+     dbe_set_encryption(dbe,&STACK_0,&STACK_1);
+   skipSTACK(2);
+   /* set error & message callbacks */
+-  begin_system_call(); dbe->set_errcall(dbe,&error_callback);
++  begin_system_call(); dbe->set_errcall(dbe,(void (*)(const DB_ENV *,const char *,const char *))&error_callback);
+ #if defined(HAVE_DB_ENV_SET_MSGCALL)
+   dbe->set_msgcall(dbe,&message_callback);
+ #endif
+@@ -1212,7 +1212,7 @@ DEFUN(BDB:DB-CREATE, dbe)
+   SYSCALL(db_create,(&db,dbe,0));
+   if (!dbe) {                   /* set error callback */
+     begin_system_call();
+-    db->set_errcall(db,&error_callback);
++    db->set_errcall(db,(void (*)(const DB_ENV *,const char *,const char *))&error_callback);
+     end_system_call();
+   }
+   wrap_finalize(db,STACK_0,`BDB::MKDB`,``BDB::DB-CLOSE``);
+@@ -1514,9 +1514,9 @@ DEFUN(BDB:DB-STAT, db &key FAST-STAT TRA
+ { /* Return database statistics */
+   DB_TXN *txn = (DB_TXN*)bdb_handle(popSTACK(),`BDB::TXN`,BH_NIL_IS_NULL);
+ #if defined(HAVE_DB_STAT_ACCEPT_TXN)
+-# define DB_STAT(s)   SYSCALL(db->stat,(db,txn,&s,flags));
++# define DB_STAT(s)   SYSCALL(db->stat,(db,txn,(void*)&s,flags));
+ #else
+-# define DB_STAT(s)   SYSCALL(db->stat,(db,&s,flags));
++# define DB_STAT(s)   SYSCALL(db->stat,(db,(void*)&s,flags));
+ #endif
+   u_int32_t flags = missingp(STACK_0) ? 0 : DB_FAST_STAT;
+   DB *db = (DB*)bdb_handle(STACK_1,`BDB::DB`,BH_VALID);
+@@ -2752,7 +2752,8 @@ DEFUN(BDB:TXN-RECOVER, dbe &key FIRST :N
+   DB_ENV *dbe = (DB_ENV*)bdb_handle(popSTACK(),`BDB::DBE`,BH_VALID);
+   u_int32_t tx_max;
+   DB_PREPLIST *preplist;
+-  int status, ii;
++  int status;
++  long ii;
+   u_int32_t retnum;
+   SYSCALL(dbe->get_tx_max,(dbe,&tx_max));
+   preplist = (DB_PREPLIST*)clisp_malloc(tx_max * sizeof(DB_PREPLIST));
+--- modules/berkeley-db/configure.in
++++ modules/berkeley-db/configure.in	2024-08-29 07:17:20.463971573 +0000
+@@ -38,7 +38,7 @@ AC_CHECK_SIZEOF(db_recno_t,,[#include <s
+ dnl <http://www.sleepycat.com/docs/ref/upgrade.4.3/stat.html>
+ AC_CACHE_CHECK([whether DB->stat() accepts TXNid],ac_cv_db_stat_accept_txn,[
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <db.h>],
+-[[DB db; db.stat(&db,NULL,0,NULL);]])],
++[[DB db; db.stat(&db,NULL,NULL,0);]])],
+ ac_cv_db_stat_accept_txn=yes,ac_cv_db_stat_accept_txn=no)])
+ if test "$ac_cv_db_stat_accept_txn" = "yes"; then
+ AC_DEFINE(HAVE_DB_STAT_ACCEPT_TXN,1,[Define to 1 if DB->stat() accepts TXNid])
+--- modules/berkeley-db/configure
++++ modules/berkeley-db/configure	2024-08-29 07:17:20.463971573 +0000
+@@ -6241,7 +6241,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_
+ int
+ main (void)
+ {
+-DB db; db.stat(&db,NULL,0,NULL);
++DB db; db.stat(&db,NULL,NULL,0);
+   ;
+   return 0;
+ }
+--- src/foreign.d
++++ src/foreign.d	2024-08-29 07:24:17.508412215 +0000
+@@ -2417,7 +2417,7 @@ local void count_walk_post (object fvd,
+ {
+   unused(fvd); unused(obj); unused(walk);
+ }
+-local maygc void convert_to_foreign_needs (object fvd, object obj,
++local maygc __attribute__((noinline)) void convert_to_foreign_needs (object fvd, object obj,
+                                            struct foreign_layout *sas)
+ {
+   struct walk_lisp walk
+--- src/lispbibl.d
++++ src/lispbibl.d	2024-08-29 07:25:56.826610237 +0000
+@@ -11641,7 +11641,7 @@ All other long words on the LISP-Stack a
+     #define FAST_SP
+   #endif
+ #elif defined(GNU) && defined(SP_register)
+-  register __volatile__ aint __SP __asm__(SP_register);
++  register aint __SP __asm__(SP_register);
+   #ifdef SPARC64
+     #define SP()  (__SP+2048)
+   #else
+--- src/spvw_fault.d
++++ src/spvw_fault.d	2024-08-29 07:20:02.297039630 +0000
+@@ -289,7 +289,7 @@ modexp bool handle_fault_range (int prot
+ 
+ local void xmprotect (aint addr, uintM len, int prot) {
+   if (mprotect((void*)addr,len,prot) < 0) {
+-    fprintf(stderr,GETTEXTL("mprotect(0x%lx,%d,%d) failed."),addr,len,prot);
++    fprintf(stderr,GETTEXTL("mprotect(0x%lx,%lu,%d) failed."),addr,(unsigned long)len,prot);
+     errno_out(OS_errno);
+     abort();
+   }
+--- src/spvw_language.d
++++ src/spvw_language.d	2024-08-29 07:20:29.048554790 +0000
+@@ -172,7 +172,7 @@ global void init_language
+     { /* Invalidate the gettext internal caches. */
+       char *td = textdomain(NULL);
+       if (NULL == td) {
+-        ANSIC_ERROR("textdomain",NULL);
++        ANSIC_ERROR("textdomain","");
+       }
+       if (NULL == textdomain(td)) {
+         ANSIC_ERROR("textdomain",td);
+--- src/spvw_sigsegv.d
++++ src/spvw_sigsegv.d	2024-08-29 07:21:09.115828518 +0000
+@@ -62,7 +62,7 @@ local void print_mem_stats (void) {
+ /* Put a breakpoint here if you want to catch CLISP just before it dies. */
+ global void sigsegv_handler_failed (void* address) {
+   fprint(stderr,"\n");
+-  fprintf(stderr,GETTEXTL("SIGSEGV cannot be cured. Fault address = 0x%lx."),
++  fprintf(stderr,GETTEXTL("SIGSEGV cannot be cured. Fault address = 0x%p."),
+           address);
+   fprint(stderr,"\n");
+   print_mem_stats();
