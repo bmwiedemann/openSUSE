@@ -26,20 +26,20 @@
 %bcond_with test
 %endif
 Name:           python-dask-expr%{psuffix}
-Version:        1.1.6
+Version:        1.1.11
 Release:        0
 Summary:        High Level Expressions for Dask
 License:        BSD-3-Clause
 URL:            https://github.com/dask/dask-expr
 Source0:        https://github.com/dask/dask-expr/archive/refs/tags/v%{version}.tar.gz#/dask_expr-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 62.6}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dask = 2024.6.2
+Requires:       python-dask = 2024.8.1
 Requires:       python-pandas >= 2
 Requires:       python-pyarrow >= 7.0.0
 Provides:       python-dask_expr = %{version}-%{release}
@@ -76,6 +76,14 @@ sed -i 's/--color=yes//' pyproject.toml
 %check
 # https://github.com/dask/dask-expr/issues/789 (?)
 donttest="test_groupby_index_array"
+# wrong types expected
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  donttest="$donttest or test_memory_usage"
+  donttest="$donttest or test_repartition_partition_size"
+  donttest="$donttest or test_scalar_repr"
+  donttest="$donttest or test_timeseries_gaph_size"
+  donttest="$donttest or test_join_gives_proper_divisions"
+fi
 %pytest -k "not ($donttest)"
 %endif
 

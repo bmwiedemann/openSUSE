@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:55:19 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip some tests on 32-bit
+
+-------------------------------------------------------------------
+Thu Aug 29 14:38:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.11
+  * Make split_out for categorical default smarter #1124 Patrick
+    Hoefler
+  * Avoid calling `array`` attribute on ``cudf.Series`` #1122
+    `Richard (Rick) Zamora
+  * Introduce ToBackend` expression #1115 `Richard (Rick) Zamora
+  * Fix result index of merge #1121 Patrick Hoefler
+  * Fix projection for Index class in read_parquet #1120 Patrick
+    Hoefler
+  * Register read_parquet` and `read_csv` as "dispatchable" #1114
+    `Richard (Rick) Zamora
+  * Fix merging when index name in meta missmatches actual name
+    #1119 Patrick Hoefler
+  * Fix tuples as on argument in merge #1117 Patrick Hoefler
+  * Drop support for Python 3.9 #1109 Patrick Hoefler
+- Release 1.1.10
+  * Fixup remaining upstream failures #1111 Patrick Hoefler
+  * Fix some things for pandas 3 #1110 Patrick Hoefler
+- Release 1.1.9
+  * Patch release for Dask 2024.7.0
+- Release 1.1.8
+  * Fix shuffle blowing up the task graph #1108 Patrick Hoefler
+  * Link fix in readme #1107 Ben
+  * Fix from_pandas with chunksize and empty df #1106 Patrick
+    Hoefler
+  * Fix deepcopying FromPandas class #1105 Patrick Hoefler
+  * Skip test if optional xarray cannot be imported #1104 Sandro
+- Release 1.1.7
+  * Patch release for Dask 2024.7.0
+
+-------------------------------------------------------------------
 Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.6: 

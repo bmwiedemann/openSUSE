@@ -40,4 +40,12 @@
   * Fix bug in Series reductions</comment>
     <requestid>1186063</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3539c0e73d71c3a6b2095f3c1d56ace5</srcmd5>
+    <version>1.1.11</version>
+    <time>1725363480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1197827</requestid>
+  </revision>
 </revisionlist>
