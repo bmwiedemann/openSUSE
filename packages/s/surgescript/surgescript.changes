@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 31 19:35:47 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.6.1:
+  * Introduced switch statements
+  * Made optional the expressions in for loops
+  * Added an optional message to assertions
+  * Bugfix in continue statements
+  * Updated docs
+  * General improvements
+- Use gcc12-c++ for Leap
+
+-------------------------------------------------------------------
 Sun May 19 10:52:52 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.6.0:

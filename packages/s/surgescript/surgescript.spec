@@ -17,9 +17,9 @@
 #
 
 
-%define _sover  0_6_0
+%define _sover  0_6_1
 Name:           surgescript
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A scripting language for games
 License:        Apache-2.0
@@ -27,9 +27,9 @@ URL:            https://opensurge2d.org
 Source0:        https://github.com/alemart/surgescript/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -76,9 +76,9 @@ developing applications using %{name}.
 %setup -q
 
 %build
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-11"
-export CXX="g++-11"
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-12"
+export CXX="g++-12"
 %endif
 
 %cmake \
@@ -108,7 +108,7 @@ export CXX="g++-11"
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{_sover}
-%{_libdir}/lib%{name}.so.0.6.0
+%{_libdir}/lib%{name}.so.0.6.1
 %{_libdir}/lib%{name}.so.%{version}
 
 %changelog
