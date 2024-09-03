@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Sep  2 19:24:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.114.0
+  This release enables support for MSC4186 — Simplified Sliding
+  Sync. This allows using the upcoming releases of the Element X
+  mobile apps without having to run a Sliding Sync P
+
+  - Features
+    - Enable native sliding sync support (MSC3575 and MSC4186) by
+      default. (#17648)
+    - Improve cross-signing upload when using MSC3861 to use a
+      custom UIA flow stage, with web fallback support. (#17509)
+    - Make hash_password accept password input from stdin. (#17608)
+    - Add a flag to /versions, org.matrix.simplified_msc3575, to
+      indicate whether experimental sliding sync support has been
+      enabled. (#17571)
+    - Handle changes in timeline_limit in experimental sliding
+      sync. (#17579)
+    - Correctly track read receipts that should be sent down in
+      experimental sliding sync. (#17575, #17589, #17592)
+  - Bugfixes
+    - Fix regression in v1.114.0rc2 that caused workers to fail to
+      start. (#17626)
+    - Fix hierarchy returning 403 when room is accessible through
+      federation. Contributed by Krishan (@kfiven). (#17194)
+    - Fix content-length on federation /thumbnail responses.
+      (#17532)
+    - Fix authenticated media responses using a wrong limit when
+      following redirects over federation. (#17543)
+    - Start handlers for new media endpoints when media resource
+      configured. (#17483)
+    - Fix timeline ordering (using stream_ordering instead of
+      topological ordering) in experimental MSC3575 Sliding Sync
+      /sync endpoint. (#17510)
+    - Fix experimental sliding sync implementation to remember any
+      updates in rooms that were not sent down immediately.
+      (#17535)
+    - Better exclude partially stated rooms if we must await full
+      state in experimental MSC3575 Sliding Sync /sync endpoint.
+      (#17538)
+    - Handle lower-case http headers in _Mulitpart_Parser_Protocol.
+      (#17545)
+    - Fix fetching federation signing keys from servers that omit
+      old_verify_keys. Contributed by @tulir @ Beeper. (#17568)
+    - Fix bug where we would respond with an error when a remote
+      server asked for media that had a length of 0, using the new
+      multipart federation media endpoint. (#17570)
+  - Improved Documentation
+    - Clarify default behaviour of the
+    - auto_accept_invites.worker_to_run_on
+    - option. (#17515)
+    - Improve docstrings for profile methods. (#17559)
+  - Internal Changes
+    - MSC3861: load the issuer and account management URLs from
+      OIDC discovery. (#17407)
+    - Refactor sliding sync class into multiple files. (#17595)
+    - Store sliding sync per-connection state in the database.
+      (#17599)
+    - Make the sliding sync PerConnectionState class immutable.
+      (#17600)
+    - Add support to @tag_args for standalone functions. (#17604)
+    - Speed up incremental syncs in sliding sync by adding some
+      more caching. (#17606)
+    - Always return the user's own read receipts in sliding sync.
+      (#17617)
+    - Replace isort and black with ruff. (#17620)
+    - Refactor sliding sync code to move room list logic out into a
+      separate class. (#17622)
+    - Add more tracing to experimental MSC3575 Sliding Sync /sync
+      endpoint. (#17514)
+    - Fixup comment in sliding sync implementation. (#17531)
+    - Replace override of deprecated method
+      HTTPAdapter.get_connection with
+      get_connection_with_tls_context. (#17536)
+    - Fix performance of device lists in /key/changes and sliding
+      sync. (#17537, #17548)
+    - Bump setuptools from 67.6.0 to 72.1.0. (#17542)
+    - Add a utility function for generating random event IDs.
+      (#17557)
+    - Speed up responding to media requests. (#17558, #17561,
+      #17564, #17566, #17567, #17569)
+    - Test github token before running release script steps.
+      (#17562)
+    - Reduce log spam of multipart files. (#17563)
+    - Refactor per-connection state in experimental sliding sync
+      handler. (#17574)
+    - Add histogram metrics for sliding sync processing time.
+      (#17593)
+
+-------------------------------------------------------------------
 Wed Aug 21 09:48:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.113.0
