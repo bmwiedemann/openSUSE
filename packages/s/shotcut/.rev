@@ -619,4 +619,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1184308</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8939cfc06ca8f0f9610bc7e4f09f4756</srcmd5>
+    <version>24.08.29</version>
+    <time>1725363526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.08.29</comment>
+    <requestid>1198351</requestid>
+  </revision>
 </revisionlist>
