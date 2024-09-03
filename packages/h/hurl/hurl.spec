@@ -17,7 +17,7 @@
 
 
 Name:           hurl
-Version:        4.2.0+0
+Version:        5.0.1+0
 Release:        0
 Summary:        Run and test HTTP requests with plain text
 License:        Apache-2.0

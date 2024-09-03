@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Sep  2 06:05:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.1:
+  * Fix regression in --output when output file doesn't exist #3195
+
+-------------------------------------------------------------------
+Mon Sep  2 06:04:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.0:
+  Breaking Changes:
+  * Encode oneline string only with one backtick #3113
+  Enhancements:
+  * Create intermediary directories if necessary when producing TAP report #2860
+  * Expose request comments in --out json (hurlfmt) #2850
+  * Create intermediary directories if necessary when producing JUnit report #2842
+  * Add global requests count in test summary #2832
+  * Replace output warnings by errors #2815
+  * Fix inconsistent case for fields queryString and httpVersion in --json #2804
+  * Run tests in parallel #2753
+  * Add support for importing curl url option in hurlfmt #2750
+  * Add JSON report #2738
+  * Add repeat option to repeat a sequence of Hurl file #2680
+  * Add repeat option per request #2680
+  * Add optional duration unit #2653
+  * Apply delay only once per entry, no matter how many retry #1973
+  * Add toFloat filter #1732
+  * Accept directory as Hurl arguments for processing file #1446
+  Bugs Fixed:
+  * Get SSL certificates info on reused connections, from a cache #3031
+  * Fix max-redirs: -1 in [Options] section #3023
+  * Fix error displayed in double with bad option #2920
+  * Fix hurlfmt exit code with lint error #2919
+  * Truncate file then append it when dumping response with --output. #2886
+  * Fix crash with --json option when capturing 'HttpOnly' and 'Secure' cookie attribute #2871
+  * Fix crash when capturing 'Expires' cookie attribute #2870
+  * Fix empty JSON key parsing #2836
+  * Do not filter 'Authorization' header if host doesn't change while following redirect #2823
+  * Fix sending 'Authorization' header from --user when following redirect #2812
+  * Fix URL when following redirect for certain 'Location' header #2783
+  * Fix powershell completion file #2729
+
+-------------------------------------------------------------------
+Tue Apr 23 19:21:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  Enhancements:
+  * Support --user option per request #2585
+  * Add isNumber predicate #2538
+  * Create intermediate directory when using --report-html #2531
+  * Use '-' to read Hurl file from standard input #2523
+  * Add --from-entry option to execute a file from a given entry #2500
+  * Add isIsoDate predicate (take a string, checks YYYY-MM-DDTHH:mm:sssZ) #2427
+  * Add completion files in Linux/MacOS packages #2401
+  * Fix tarball layout to Linux filesystem #2401
+  * Add --max-filesize option to limit HTTP response #2353
+  * Display source request when there are asserts/runtime errors #2351
+  * Using explicit stdout output #2312
+  * Prevent raw binary response to be displayed on standard output #2306
+  * Add --netrc, --netrc-file and --netrc-optional options #2094
+  * Generate bash completion for hurl/hurlfmt #1864
+  * Generate powershell completion for hurl/hurlfmt #1864
+  * Generate fish completion for hurl/hurlfmt #1864
+  * Generate zsh completion for hurl/hurlfmt #1864
+  * Add experimental --parallel / --jobs options #88 #87
+  Bugs Fixed:
+  * Export begin_call, end_call timings fields to RFC3339 (microseconds) #2699
+  * Fix standalone css for regex #2693
+  * Fix charset parsing logic of Content-Type header #2540
+  * Fix filename templatization bug under certain conditions #2533
+  * Fix empty glob not always returning an error #2517
+  * Fix hurlfmt query certificate for hurl output format #2511
+  * Fix --test progress bar not displayed when verbose is used #2506
+  * Per request output takes file-root into account for path resolving #2445
+  * Fix silent error when verbose option use unset variable #2444
+  * Fix Content-type header override when used in lowercase #2416
+  Security Issues Fixed:
+  * Prevent script injection in HTML report #2719
+
+-------------------------------------------------------------------
 Sat Jan 13 14:41:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.0:
