@@ -10596,6 +10596,7 @@ unsorted:
   - kubevirt-container-disk 
   - kubevirt-manifests 
   - kubevirt-pr-helper-conf 
+  - kubevirt-sidecar-shim 
   - kubevirt-tests 
   - kubevirt-virt-api 
   - kubevirt-virt-controller 
@@ -16355,7 +16356,7 @@ unsorted:
   - libsuperlu6 
   - libsuperlu6-32bit 
   - libsuperlu_6_0_1-gnu-hpc 
-  - libsurgescript0_6_0 
+  - libsurgescript0_6_1 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -21105,6 +21106,7 @@ unsorted:
   - pcp-pmda-weblog 
   - pcp-pmda-zimbra 
   - pcp-pmda-zswap 
+  - pcp-selinux 
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
@@ -24954,7 +24956,6 @@ unsorted:
   - python310-colour 
   - python310-columnize 
   - python310-comm 
-  - python310-commentjson 
   - python310-compat-patcher-core 
   - python310-compileall2 
   - python310-compizconfig 
@@ -25272,6 +25273,7 @@ unsorted:
   - python310-empy 
   - python310-enaml 
   - python310-encore 
+  - python310-endesive 
   - python310-enrich 
   - python310-entrypoint2 
   - python310-entrypoints 
@@ -28576,7 +28578,6 @@ unsorted:
   - python311-colour 
   - python311-columnize 
   - python311-comm 
-  - python311-commentjson 
   - python311-compat-patcher-core 
   - python311-compileall2 
   - python311-compizconfig 
@@ -28883,6 +28884,7 @@ unsorted:
   - python311-empy 
   - python311-enaml 
   - python311-encore 
+  - python311-endesive 
   - python311-enrich 
   - python311-entrypoint2 
   - python311-entrypoints 
@@ -32130,7 +32132,6 @@ unsorted:
   - python312-colour 
   - python312-columnize 
   - python312-comm 
-  - python312-commentjson 
   - python312-compat-patcher-core 
   - python312-compileall2 
   - python312-compizconfig 
@@ -32448,6 +32449,7 @@ unsorted:
   - python312-empy 
   - python312-enaml 
   - python312-encore 
+  - python312-endesive 
   - python312-enrich 
   - python312-entrypoint2 
   - python312-entrypoints 
@@ -37128,6 +37130,7 @@ unsorted:
   - sssd-winbind-idmap 
   - st 
   - staging-build-key 
+  - stalld 
   - stalonetray 
   - stan 
   - starboard 
