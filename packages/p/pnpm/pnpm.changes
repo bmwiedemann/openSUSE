@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Sep  2 11:54:31 UTC 2024 - Virinas-code <Virinas-code@opensuse.org>
+
+- update to version 9.9.0:
+  * https://github.com/pnpm/pnpm/compare/v9.8.0...v9.9.0
+  * Minor breaking change. We had to optimize how we resolve peer
+    dependencies in order to fix some infinite loops and
+    out-of-memory errors during peer dependencies resolution.
+  * pnpm deploy should write the node_modules/.modules.yaml to the
+    node_modules directory within the deploy directory #7731
+  * Don't override a symlink in node_modules if it already points
+    to the right location pnpm/symlink-dir#54
+- changes from 9.8.0:
+  * https://github.com/pnpm/pnpm/compare/v9.7.1...v9.8.0
+  * Added a new command for upgrading pnpm itself when it isn't
+    managed by Corepack: pnpm self-update. This command will work,
+    when pnpm was installed via the standalone script from the pnpm
+    installation page #8424
+  * CLI tools installed in the root of the workspace should be
+    added to the PATH, when running scripts and use-node-version is
+    set
+  * pnpm setup should never switch to another version of pnpm
+  * Ignore non-string value in the os, cpu, libc fields, which
+    checking optional dependencies #8431
+  * Remember the state of edit dir, allow running pnpm patch-commit
+    the second time without having to re-run pnpm patch
+- changes from 9.7.1:
+  * https://github.com/pnpm/pnpm/compare/v9.7.0...v9.7.1
+  * Fixed passing public-hoist-pattern and hoist-pattern via env
+    variables #8339
+  * pnpm setup no longer creates Batch/Powershell scripts on Linux
+    and macOS #8418
+  * When dlx uses cache, use the real directory path not the
+    symlink to the cache #8421
+  * pnpm exec now supports executionEnv #8356
+  * Remove warnings for non-root pnpm field, add warnings for
+    non-root pnpm subfields that aren't executionEnv #8143
+  * Replace semver in "peerDependency" with workspace protocol
+    #8355
+  * Fix a bug in patch-commit in which relative path is rejected
+    #8405
+  * Update Node.js in @pnpm/exe to v20
+- changes from 9.7.0:
+  * https://github.com/pnpm/pnpm/compare/v9.6.0...v9.7.0
+  * Added pnpm version management. If the
+    manage-package-manager-versions setting is set to true, pnpm
+    will switch to the version specified in the packageManager
+    field of package.json #8363
+  * Added the ability to apply patch to all versions #8337
+  * Change the default edit dir location when running pnpm patch
+    from a temporary directory to
+    node_modules/.pnpm_patches/pkg[@version] to allow the code
+    editor to open the edit dir in the same file tree as the main
+    project #8379.
+  * Substitute environment variables in config keys #6679
+  * pnpm install should run node-gyp rebuild if the project has a
+    binding.gyp file even if the project doesn't have an install
+    script #8293
+  * Print warnings to stderr #8342
+  * Peer dependencies of optional peer dependencies should be
+    automatically installed #8323
+
+-------------------------------------------------------------------
 Thu Jul 25 20:35:23 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.6.0:
