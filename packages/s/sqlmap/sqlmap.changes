@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  2 15:16:10 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8.8:
+  * fixed #5727 SQLAlchemy connection issue
+  * fixed #5725 Arbitrary Injection Point Not Working
+  * implements #5728 More error-based payloads
+  * fixed #5738 probing web services on non-standard ports
+  * fixed #5731 python 3.13 compatibility
+  * fixed #4613 Single column enumeration (-C) broken for Firebird backend
+  * fixed #5755, #5759 Unhandled exception
+
+-------------------------------------------------------------------
 Sat May 25 15:10:26 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.5:

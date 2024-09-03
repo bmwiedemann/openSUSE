@@ -17,11 +17,11 @@
 
 
 Name:           sqlmap
-Version:        1.8.5
+Version:        1.8.8
 Release:        0
 Summary:        Automatic SQL injection and database takeover tool
 License:        GPL-2.0-or-later
-URL:            https://github.com/sqlmapproject/sqlmap
+URL:            https://sqlmap.org/
 Source:         https://github.com/sqlmapproject/sqlmap/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix_shebang.patch
 BuildRequires:  %{python_module setuptools}
