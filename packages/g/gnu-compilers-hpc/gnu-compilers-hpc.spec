@@ -63,6 +63,10 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 13
 %endif
 
+%if "%flavor" == "gnu14-hpc"
+%define c_f_ver 14
+%endif
+
 # For Factory only build the default
 %if 0%{?suse_version} > 1600
 # Only build gnu-hpc flavour but not on 32b systems

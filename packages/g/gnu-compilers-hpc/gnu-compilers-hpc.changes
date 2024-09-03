@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 31 10:01:58 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- added gcc14 flavor (bsc#1229986)
+
+-------------------------------------------------------------------
 Tue Jun 25 12:35:03 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Do not build 32b versions of the gnu-hpc flavour.
