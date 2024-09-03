@@ -131,6 +131,14 @@ Group:          System/Packages
 The pr-helper-conf package provides configuration files for persistent
 reservation helper
 
+%package        sidecar-shim
+Summary:        Entrypoint for the sidecar-shim container
+Group:          System/Packages
+
+%description    sidecar-shim
+The package provides sidecar-shim binary than will call the respective
+hooks with the proper command-line arguments.
+
 %package        manifests
 Summary:        YAML manifests used to install kubevirt
 Group:          System/Packages
@@ -238,6 +246,7 @@ KUBEVIRT_GIT_VERSION='v%{version}' \
 KUBEVIRT_GIT_TREE_STATE="clean" \
 build_tests="true" \
 ./hack/build-go.sh install \
+    cmd/sidecars \
     cmd/virt-api \
     cmd/virt-chroot \
     cmd/virt-controller \
@@ -259,6 +268,7 @@ env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=t
 mkdir -p %{buildroot}%{_bindir}
 
 install -p -m 0755 _out/cmd/container-disk-v2alpha/container-disk %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/sidecars/sidecars %{buildroot}%{_bindir}/sidecar-shim
 install -p -m 0755 _out/cmd/virtctl/virtctl %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-api/virt-api %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-controller/virt-controller %{buildroot}%{_bindir}/
@@ -372,6 +382,11 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %dir %{_datadir}/kube-virt
 %dir %{_datadir}/kube-virt/pr-helper
 %{_datadir}/kube-virt/pr-helper
+
+%files sidecar-shim
+%license LICENSE
+%doc cmd/sidecars/README.md
+%{_bindir}/sidecar-shim
 
 %files manifests
 %license LICENSE
