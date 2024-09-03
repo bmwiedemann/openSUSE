@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  2 10:52:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.28.2
+  * Fix MSVC most vexing parse by @sbiscigl in (#659)
+  * Add wrappers around readsome and peek methods in
+    std istream by @SergeyRyabinin in (#658)
+- from version 0.28.1
+  * Fix typo in variant by @sbiscigl in (#653)
+  * Fix OpenSSL Compile and Runtime Version Mismatch by @waahm7 in (#656)
+- from version 0.28.0
+  * Expose socket options from Mqtt5ClientBuilder by @xiazhvera in (#652)
+
+-------------------------------------------------------------------
 Mon Aug 26 15:00:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.6
