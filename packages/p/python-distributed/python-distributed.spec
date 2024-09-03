@@ -16,39 +16,45 @@
 #
 
 
-%define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python311 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python310 1
-%define skip_python312 1
-%bcond_without test
-%endif
-%if "%{flavor}" == "test-py312"
-%define psuffix -test-py312
-%define skip_python310 1
-%define skip_python311 1
-%bcond_without test
-%endif
+%{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
+%define psuffix %{nil}
 %bcond_with test
 %else
-# globally stop testing this one
-%define skip_python39 1
+%bcond_without test
+%define psuffix -%{flavor}
+%if 0%{suse_version} >= 1599
+%if "%{flavor}" != "test-py310"
+%define skip_python310 1
 %endif
+%if "%{flavor}" != "test-py311"
+%define skip_python311 1
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
+%else
+%if "%{pythons}" == "python311" && "%{flavor}" != "test-py311"
+# Hardcoded assumption: SLE15 pythons module has python311
+%define pythons %{nil}
+%endif
+%endif
+%endif
+%if "%{shrink:%pythons}" == ""
+ExclusiveArch:  donotbuild
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
+%endif
+
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
-%{?sle15_python_module_pythons}
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.6.2
+Version:        2024.8.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -62,7 +68,7 @@ Patch3:         distributed-ignore-offline.patch
 Patch4:         distributed-ignore-thread-leaks.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-rerun.patch -- extend ignore pytest array, mimi.vx@gmail.com
 Patch5:         distributed-ignore-rerun.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer-toml >= 0.29}
@@ -70,19 +76,19 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.3
-Requires:       python-PyYAML >= 5.3.1
+Requires:       python-PyYAML >= 5.4.1
 Requires:       python-click >= 8.0
-Requires:       python-cloudpickle >= 1.5.0
+Requires:       python-cloudpickle >= 2.0.0
 Requires:       python-dask = %{version}
 Requires:       python-locket >= 1.0.0
-Requires:       python-msgpack >= 1.0.0
+Requires:       python-msgpack >= 1.0.2
 Requires:       python-packaging >= 20.0
-Requires:       python-psutil >= 5.7.0
+Requires:       python-psutil >= 5.8.0
 Requires:       python-sortedcontainers >= 2.0.5
 Requires:       python-tblib >= 1.6.0
-Requires:       python-toolz >= 0.10.0
-Requires:       python-tornado >= 6.0.4
-Requires:       python-urllib3 >= 1.24.3
+Requires:       python-toolz >= 0.11.2
+Requires:       python-tornado >= 6.2.0
+Requires:       python-urllib3 >= 1.26.5
 Requires:       python-zict >= 2.2.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

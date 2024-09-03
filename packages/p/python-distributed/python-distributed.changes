@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 29 14:52:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.8.1
+  * Improve output chunksizes for reshaping Dask Arrays
+  * Improve scheduling efficiency for Xarray Rechunk-GroupBy-Reduce
+    patterns
+  * Drop support for Python 3.9
+- Release 2025.8.0
+  * Improve efficiency and performance of slicing with positional
+    indexers
+  * Improve scheduling efficiency for Xarray GroupBy-Reduce
+    patterns
+- Release 2025.7.1
+  * More resilient distributed lock
+- Release 2025.7.0
+  * Drop support for pandas 1.x
+  * Publish-subscribe APIs deprecated
+- Overhaul multibuild setup: Prepare for python313
+
+-------------------------------------------------------------------
 Wed Aug 14 14:50:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15
