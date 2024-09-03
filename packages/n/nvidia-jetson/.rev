@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdd5e100d3c431a0810e85a600a294cf</srcmd5>
+    <version>36.3.1_20240516220919</version>
+    <time>1725363489</time>
+    <user>dimstar_suse</user>
+    <comment>This is just to get a legal review of this package by
+Christopher De Nicolo . I will remove this SR
+afterwards. See boo#1222604, comment#77
+Supersedes SR #1190973</comment>
+    <requestid>1198157</requestid>
+  </revision>
+</revisionlist>

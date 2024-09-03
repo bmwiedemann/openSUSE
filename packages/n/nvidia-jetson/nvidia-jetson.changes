@@ -1,0 +1,773 @@
+-------------------------------------------------------------------
+Thu Aug 29 14:43:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed spec and chnanges file to nvidia-jetson; adjusted specfile
+  to new name 
+
+-------------------------------------------------------------------
+Thu Aug 29 11:53:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of huge jetson_linux_r36.3.1_aarch64.tbz2 tarball; instead
+  pre-generate the appropriate firmware tarball
+  nvidia-l4t-firmware_*_arm64.tbz2
+
+-------------------------------------------------------------------
+Thu Aug  1 11:55:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- use official RPM patch macro to apply nv_repackager-no-sudo-use-bzip2.patch 
+
+-------------------------------------------------------------------
+Thu Jul 25 12:01:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- improved package descriptions and summaries (bsc#1222604, comment#67) 
+
+-------------------------------------------------------------------
+Wed Jul 24 09:28:25 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modules-load.d snippet: modprobe nvidia instead of nvidia-modeset
+  modprobe.d snippet: modprobe nvidia-modeset after modprobing nvidia
+  * this fixes the regression on AGX after previous change, that
+    you needed to unload and load again tegra-drm to get DRI device
+  * also it apparently doesn't break things on IGX again ...
+
+-------------------------------------------------------------------
+Tue Jul 23 10:38:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- make sure to add nvidia modules and tegra-drm module to initrd; 
+  removing them all simply didn't work, which then resulted in 
+  unresolved symbols when they were tried to be loaded already in
+  initrd; due to this desktop could not be started in the end of
+  boot process; things are working now if all these modules are
+  in initrd
+
+-------------------------------------------------------------------
+Tue Jul  2 18:09:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- rename KMPs from nvidia-open-driver-jetson{,-extra} to 
+  nvidia-jetson{,-extra} and mark huge tarball which contains
+  firmware as NoSource in order to save space in source rpm
+  (bsc#1222604, comment#60)
+
+-------------------------------------------------------------------
+Mon Jul  1 13:01:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- df9e50c.diff
+  * supposed to fix an issue in rtcpu probe of tegra-ivc-bus
+
+-------------------------------------------------------------------
+Wed Jun 19 15:04:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post-extra.sh/kmp-postun-extra.sh
+  * moved additional kernel command line options and patching the
+    firmware to -extra KMP, since these changes are also needed
+    when iGPU gfx driver package is replaced by dGPU driver package
+    on Orin IGX machine
+
+-------------------------------------------------------------------
+Fri Jun  7 11:19:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- let main KMP provide/obsolete nvidia-open-driver-G06-signed-sidecar-kmp
+  due to the re-organization
+
+-------------------------------------------------------------------
+Fri Jun  7 11:14:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed KMPs to nvidia-open-driver-jetson/nvidia-open-driver-jetson-extra
+- use the main KMP for nvidia{-drm,-modeset,} modules and the -extra KMP
+  for the remaining modules
+- let the main KMP require the -extra KMP, but let the main KMP conflict with
+  nvidia's dGPU driver KMP, so -extra KMP can remain installed for other features
+  like camera, etc.
+
+-------------------------------------------------------------------
+Thu Jun  6 12:38:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- trying to create a -extra KMP subpackage ... 
+
+-------------------------------------------------------------------
+Mon Jun  3 01:33:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag l4t-l4t-r36.3.1_eng_2024-05-29
+  (official r36.3.1 Release)
+  * nvidia-oot
+    + Revert "rtl8822ce: Remove pr_debug redefinition"
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + Revert "concord: add display hdcp property"
+- updated firmware to r36.3.1
+
+-------------------------------------------------------------------
+Mon Jun  3 01:09:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer mark modprobe.d snippet as %config 
+- require kernel-<flavor>
+- firmware package
+  * added service symlink /usr/sbin/rcnvwifibt
+
+-------------------------------------------------------------------
+Wed May 29 09:41:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- make use of %fdupes to get rid of duplicates 
+
+-------------------------------------------------------------------
+Tue May 28 11:02:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Requires to kernel-firmware-nvidia-jetson subpackage needs to be
+  done in preamble file instead of specfile!
+
+-------------------------------------------------------------------
+Mon May 27 20:48:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- move /etc files from firmware package to /usr 
+
+-------------------------------------------------------------------
+Mon May 27 14:30:44 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added kernel-firmware-nvidia-jetson subpackage with required
+  firmware files 
+
+-------------------------------------------------------------------
+Fri May 24 13:38:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved modules-load.d snippet from /etc/modules-load.d/ to
+  /usr/lib/modules-load.d/
+
+-------------------------------------------------------------------
+Fri May 24 12:25:18 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- revert previous change, which didn't help on SLE Micro 6.0; 
+  instead add a new line to modprobe.d snippet, which should make
+  sure tegra_drm is loaded first, then nvidia ...
+
+-------------------------------------------------------------------
+Fri May 24 10:49:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- /etc/modules-load.d/nvidia-load-${flavor}.conf
+  * tegra-drm needs to be loaded before nvidia-modeset/nvidia; I
+    just noticed this on SLE Micro 6.0; and I verified that things
+    are still working also on SLE15-SP6 ...
+
+-------------------------------------------------------------------
+Thu May 23 09:50:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated Module.supported to current sources 
+
+-------------------------------------------------------------------
+Wed May 22 21:23:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- corrected filename of Module.supported 
+
+-------------------------------------------------------------------
+Wed May 22 21:18:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- mark all kernel modules as supported ("external") (bsc#1222604) 
+
+-------------------------------------------------------------------
+Wed May 22 15:13:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted specfile for patch renaming ... 
+
+-------------------------------------------------------------------
+Wed May 22 15:09:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- reimplement v4l2_match_dv_timings instead of breaking camera
+  module; rename patch from break-camera.patch to
+  reimplement-v4l2_match_dv_timings.patch
+
+-------------------------------------------------------------------
+Wed May 22 14:10:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer disable build of camera module; instead no longer call
+  "v4l2_match_dv_timings (...)"; rename patch from disable-camera.patch
+  to break-camera.patch ;-) (bsc#1224925)
+
+-------------------------------------------------------------------
+Wed May 22 13:43:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disable-camera.patch
+  * disable camera for now due to dependancies to currently
+    unsupported v4l2-dv-timings module (bsc#1224925)
+
+-------------------------------------------------------------------
+Wed May 15 13:21:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install no longer needed; remove it completely
+- appropriate cleanup in specfile
+
+-------------------------------------------------------------------
+Mon May 13 02:31:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh/kmp-postun.sh
+  * set preempt=full to prevent fatal "watchdog: BUG: soft lockup"
+    issue, which made it necessary to reboot the machine ...
+
+-------------------------------------------------------------------
+Wed May  8 13:32:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- on ALP kernel modules are installed below /usr/lib, not /lib ...
+
+-------------------------------------------------------------------
+Mon May  6 11:43:28 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh/kmp-postun.sh
+  * we need plymouth.enable=0 not to hang serial console if no 
+    monitor is connected
+
+-------------------------------------------------------------------
+Sun May  5 11:15:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag jetson_36.3 (official JetPack
+  6 GA Release) 
+  * nvdisplay
+    + Updating prebuilts and/or headers
+
+-------------------------------------------------------------------
+Fri May  3 13:39:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- cleanup: remove nv_iommu_map_has_gfp_arg.patch 
+
+-------------------------------------------------------------------
+Fri May  3 12:22:04 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- simplified "omit_drivers+=" lines in dracut.conf.d snippet
+
+-------------------------------------------------------------------
+Fri May  3 10:45:31 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- /etc/modules-load.d/nvidia-load-<flavor>.conf
+  * force load of "nvidia-modeset" kernel module during boot
+- modprobe.d
+  * install script for "nvidia" kernel module no longer needed; just
+    use an options line for setting the appropriate driver options
+- dracut.conf.d
+  * don't include *any* modules in initrd, so add omit_drivers
+    lines for every kernel module
+
+-------------------------------------------------------------------
+Thu May  2 11:52:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- apply micro6-kernel.patch only on ALP 
+
+-------------------------------------------------------------------
+Thu May  2 11:26:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- micro6-kernel.patch
+  * fixes build against Micro 6.0 Kernel
+
+-------------------------------------------------------------------
+Sun Apr 28 11:13:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- raised version number to 36.3.20240424 (forgot to do in previous
+  change) 
+
+-------------------------------------------------------------------
+Sun Apr 28 11:00:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag l4t-l4t-r36.3_eng_2024-04-24
+  (Jetpack 6.0 GA, release candidate build PRC1)
+  * nvidia-oot
+    + rtl8822ce: Remove pr_debug redefinition
+    + rtl8822ce: Add Nvidia changes on v5.14.0.4-217
+    + rtl8822ce: Fix TLP/EAPOL/TXFIFO issues
+    + drivers: pva: change kmalloc for kvmalloc for elf
+    + ASoC: tegra: Drop 'oot' suffix for upstream drivers
+  * nvgpu
+    + gpu: nvgpu: header update for ENGINE_DELAY_BEFORE
+    + gpu: nvgpu: init elcg idle filters just before gr init
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + dts: optee: Update fTPM nodes according to v1.8 design
+    + nv-public: enable hot surface alert for safety IGX
+
+-------------------------------------------------------------------
+Thu Apr 25 13:57:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- nv_iommu_map_has_gfp_arg.patch
+  * fixes build against upcoming SLE Micro 6 kernel hopefully
+    and won't break build against sle15-sp6 (untested!)
+
+-------------------------------------------------------------------
+Thu Apr 18 14:46:03 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh
+  * disable hand-off of the frame-buffer from simple-drm to the
+    NVIDIA display driver via sysfs
+
+-------------------------------------------------------------------
+Fri Apr 12 13:22:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build of nvethernet driver 
+
+-------------------------------------------------------------------
+Fri Apr 12 12:02:38 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enable build of nvethernet driver, but blacklist it via
+  modprobe.d for now, since it currently doesn't work; we may need
+  to fix the issue later in our kernel ...
+
+-------------------------------------------------------------------
+Thu Apr 11 12:55:28 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag rel-36_eng_2024-04-04
+  * nvidia-oot
+    + drivers: pva: use kvzalloc instead of kcalloc
+    + nvpps: Add missing header of.h
+    + nvidia-oot: nvpps: Replace dev_info with dev_dbg.
+    + nv_hawk_owl:Fix 3rd Hawk streaming fail.
+    + rtl8822ce: Move continuous prints to log INFO
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + nv-public:overlay: Change P3762/P3783 sensor badge.
+    + nv-platform: UARTA and UARTE for Orin NX and Nano
+    + concord: add display hdcp property
+    + t23x: overlay: enable IMX219 autodetection
+    + t23x: nv-public: move taylor dts to nv-platform
+- kmp-postun.sh: 
+  * remove Workaround from kernel command line needed to disable
+    ast driver broken on aarch64
+
+-------------------------------------------------------------------
+Thu Apr 11 12:28:04 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag rel-36_eng_2024-03-14
+  * nvidia-oot
+    + nvpps: Add support for AGX Orin.
+    + Documentation: update nvpps device tree bindings.
+    + net: Use conftest to determime NAPI interface
+    + nvethernet: Create pool per Rx DMA channel
+    + bmi088: Add build dependency on HTE
+    + rtl8822ce: Add Nvidia changes
+    + rtl8822ce: Add driver with roaming support
+  * nvgpu
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + nv-platform: Enable nvpps driver on AGX Orin
+    + t23x: overlay: update bmi088 with HTE info
+
+-------------------------------------------------------------------
+Fri Mar 22 12:36:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh: create and handle again /dev/nvidiactl and 
+  /dev/nvidia0, since I noticed thease are still used
+
+-------------------------------------------------------------------
+Fri Mar 22 09:39:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build of -64kb flavor and re-enabled it; before I forgot
+  to set KERNEL_HEADERS and KERNEL_OUTPUT also in %install section
+
+-------------------------------------------------------------------
+Fri Mar 22 00:47:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled build of 64kb flavor again, since it's utterly broken
+
+-------------------------------------------------------------------
+Thu Mar 21 13:33:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install
+  unload tegra-drm before loading it; needed on IGX platform
+  (apparently it's implicitely loaded too early)
+- 'console=ttyTCU0' kernel boot param no longer needed; instead
+  use 'modprobe.blacklist=ast', which is needed on IGX platform
+
+-------------------------------------------------------------------
+Wed Mar 20 15:40:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enable build of 64kb flavor (apparently needed for btrfs on
+  aarch64)
+
+-------------------------------------------------------------------
+Fri Mar 15 14:27:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove nvidia's NVreg_PreserveVideoMemoryAllocations=1 option,
+  which is only needed for Wayland, which doesn't work without KMS
+  support anyway ...
+
+-------------------------------------------------------------------
+Fri Mar 15 11:56:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer load nvidia_drm module, which apparently is not
+  needed at all; instead load nvidia-modeset (which was implicitely
+  loaded by nvidia_drm module before); remove sleeps between loading
+  and unloading modules (seems no longer necessary with that change)
+- /dev/nvidiactl and /dev/nvidiaX isn't used at all; so get rid
+  of creating and handling it; keep handling /dev/nvidia-modeset,
+  which is created automatically when nvidia-modeset module is being
+  loaded 
+
+-------------------------------------------------------------------
+Thu Mar 14 13:05:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install
+  * adding sleeps after loading nvidia_drm, unloading and loading
+    tegra_drm
+
+-------------------------------------------------------------------
+Thu Mar 14 12:16:39 UTC 2024 - https://www.suse.com/
+
+- modprobe.nvidia.install
+  * removed and loaded tegra_drm again after loading nvidia_drm
+
+-------------------------------------------------------------------
+Wed Mar 13 16:12:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed sed command in %post to generated correct GID ...
+
+-------------------------------------------------------------------
+Wed Mar 13 15:27:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.d
+  * generate GID for video group in /lib/modprobe.d/50-nvidia-default.conf 
+    during installation, so it's also available in initrd
+  * simpledrm no longer needs to be tried to be removed apparently, so get
+    rid of this weird construct in modprobe.d snippet
+- dracut.conf.d
+  * put all nvidia modules (nvidia, nvidia-drm, nvidia-modeset) and
+    tegra-drm in initrd, so everything can already be loaded in initrd
+
+-------------------------------------------------------------------
+Mon Mar 11 18:03:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag rel-36_eng_2024-03-06
+  * nvidia-oot
+    + nvidia-oot: remove gte driver
+    + nvidia-oot: nvpps: Use HTE driver
+    + nvidia-oot: bmi088: Use HTE driver
+    + nvidia-oot: imx318: fix probe failure
+    + net: nvethernet: Prevent VM interrupts being balanced
+    + media:i2c: fix imx477 partial frame output
+    + PCI: EPF: tvnet: fixed the fence memory issue
+    + vi5_fops: fix mem leak
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + t23x: nv-public: Add high low sku kernel dts
+    + overlay: camera: fix E3333 argus issue
+    + overlay: camera: IMX477: Fix half preview issue
+    + nv-public: fix mttcan1 prod settings
+    + t23x: nv-public: Reorder ethernet@6800000 regs
+
+-------------------------------------------------------------------
+Thu Mar  7 14:35:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install: 
+  * load tegra-drm right before loading nvidia driver
+
+-------------------------------------------------------------------
+Thu Mar  7 14:04:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted previous change; mini cleanup in specfile
+
+-------------------------------------------------------------------
+Thu Mar  7 13:38:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-filelist
+  * removed camera modules since these require symbol
+    'v4l2_match_dv_timings' symbol from kernel-extra package
+
+-------------------------------------------------------------------
+Mon Mar  4 13:22:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- now remove 0001-Don-t-override-INSTALL_MOD_DIR.patch for real 
+
+-------------------------------------------------------------------
+Mon Mar  4 11:57:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to git tag from 2024-02-27
+  * nvidia-oot
+    + media:i2c: fix ar1335 control command
+    + nvidia-oot: Update OOT driver path
+    + drivers: Drop '-next' from driver names
+    + net: ethernet: sync link status before removing
+    + PCI: EPF: tvnet: porting the PCIe EP tvnet driver
+    + PCI: EPF: Add lpci_epc_map_addr for pre-v5.15 Linux kernels
+    + PCI: EPF: tvnet: porting the PCIe tvnet driver
+    + camera: fix the kernel freeze after driver unbind
+    + drm/tegra: Don't print error on probe defer
+    + media: i2c: update ar0234 EEPROM data structure
+    + i2c:nv_hawk_owl: Reduced sensor stream on time.
+    + media: i2c: ar0234: Fix dual hawk corruption
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + t23x: nv-public: add host1x handle in PCIe EP
+    + t23x: nv-public: Remove duplicated MGBE properties
+    + UPSTREAM: arm64: tegra: Fix Tegra234 MGBE power-domains
+    + UPSTREAM: arm64: tegra: Add AXI configuration for Tegra234 MGBE
+    + UPSTREAM: arm64: tegra: Set the correct PHY mode for MGBE
+    + t23x: nv-public: Remove unused clock and reset names
+    + t23x: nv-public: Fix serial aliases
+    + UPSTREAM: arm64: tegra: Remove duplicate nodes on Jetson Orin NX
+- supersedes 0001-Don-t-override-INSTALL_MOD_DIR.patch
+- specfile: 
+  * INSTALL_MOD_DIR no longer needs to be set; updates subdir is
+    the default now
+  * no longer blacklist tegra_drm, host1x; the oot -next modules have
+    been renamed to to original names and should be preferred via
+    updates/ subdir
+- kmp-post.sh/kmp-postun.sh
+  * no longer try to disable simpledrm via kernel command line;
+    instead use 'console=ttyTCU0' workaround to get console working
+- modprobe.nvidia.install
+  * no longer force to load tegra-drm-next; it has been renamed to
+    tegra-drm and should be preferred via updates/ subdir and should
+    be loaded automatically
+
+-------------------------------------------------------------------
+Tue Feb 27 13:37:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install: unload simpledrm driver by devicetree
+  magic (as suggested by Jon) first
+
+-------------------------------------------------------------------
+Tue Feb 27 12:01:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install: manually load tegra-drm-next before 
+  nvidia module (workaround; should happen automatically)
+
+-------------------------------------------------------------------
+Mon Feb 19 17:56:01 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- diabled modeset option for nvidia_drm module; X is only
+  supported by "nvidia" X driver; Wayland is apparently not
+  supported at all ...
+
+-------------------------------------------------------------------
+Fri Feb 16 13:55:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- %post/%postun: adjust kernel command line
+  * add "initcall_blacklist=simpledrm_platform_driver_init" to
+    disable simpledrm to prevent CPU from soft lockups; remove
+    again in %postun ...
+  * no longer set iommu.passthrough=0; it's not longer needed and
+    also has been removed from SP6 kernel anyway
+
+-------------------------------------------------------------------
+Mon Feb 12 15:22:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated source tarballs to 2024-02-05
+  * nvidia-oot
+    + t23x:P3762: Fix failed to read 2nd Hawk EEPROM serial number.
+    + nvhost: Remove legacy NVHOST support
+    + video: tegra: Remove nvhost and host1x headers
+    + video: tegra: Don't use nvhost_get_private_data
+    + media: camera: Remove of_pwm_n_cells usage
+    + video: tegra: remove icc request in system resume
+    + drivers: Fix missing headers for Linux v6.8
+    + misc: mods: Fix headers for Linux v6.8
+    + drivers: Don't use strlcpy()
+  * nvgpu
+    + gpu: nvgpu: Don't use strlcpy()
+    + gpu: nvgpu: Fix missing headers for Linux v6.8
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    + t23x:P3762: Fix failed to read 2nd Hawk EEPROM serial number.
+    + UPSTREAM: arm64: tegra: Use consistent SD/MMC aliases on Tegra234
+- set version to 36.3.20240205
+
+-------------------------------------------------------------------
+Thu Feb  1 12:47:45 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- replaced main Makefile with the latest one from NVIDIA
+  bugtracking system (ticket#4460318)
+- supersedes buildfix.patch
+
+-------------------------------------------------------------------
+Thu Feb  1 11:46:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update nvidia-oot tarball from 36.3.2024-01-03 to 36.3.2024-01-24 
+- supersedes 0001-media-i2c-Fix-build-for-GCC-6-7.patch
+
+-------------------------------------------------------------------
+Wed Jan 31 16:02:01 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- source tarballs now generated from git (36.3.2024-01-24)
+- setting CONFIG_TEGRA_GPIO_LEGACY_DISABLE=y \
+          CONFIG_TEGRA_IVC_LEGACY_DISABLE=y 
+  no longer needed with latest sources
+
+-------------------------------------------------------------------
+Fri Jan 26 12:28:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer blacklist upstream 'dwmac_tegra' ethernet driver
+- disable-nvethernet.patch
+  * disable not-working 'nvethernet' driver; rely on upstream
+    driver (see above)
+
+-------------------------------------------------------------------
+Fri Jan 19 14:06:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix.patch: now use main Makefile from nVidiaa
+  --> https://partners.nvidia.com/bug/viewbug/4460318
+
+-------------------------------------------------------------------
+Tue Jan 16 12:22:14 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of Makefile.inc magic ... 
+
+-------------------------------------------------------------------
+Tue Jan 16 02:41:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 36.3
+
+-------------------------------------------------------------------
+Mon Jan 15 17:56:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-media-i2c-Fix-build-for-GCC-6-7.patch
+  * fixes build of media and video/tegra driver
+- buildfix.patch 
+  * reenabled build of media driver
+  * reenabled build of host/nvcsi/, host/vi/, host/isp/ drivers
+    in video/tegra
+
+-------------------------------------------------------------------
+Mon Jan 15 14:41:28 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build (assuming for now) by exporting KERNEL_HEADERS and
+  KERNEL_OUTPUT env. variables
+
+-------------------------------------------------------------------
+Mon Jan 15 14:04:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 36.2_v2; not build-tested yet!
+- adjusted 0001-Don-t-override-INSTALL_MOD_DIR.patch,
+  persistent-nvidia-id-string.patch
+- removed buildfix-kernel-6.4.patch,
+  buildfix-sle15-sp5.patch,
+  buildfix-sle15-sp6.patch,
+  enable-ethernet.patch
+- added buildfix.patch
+
+-------------------------------------------------------------------
+Tue Oct 17 12:04:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of  get_user_pages(...) redefinitions in the hope to get
+  the build fixed 
+
+-------------------------------------------------------------------
+Tue Oct 17 11:34:07 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted previous change 
+
+-------------------------------------------------------------------
+Tue Oct 17 11:11:19 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp6.patch
+  * detect the correct params for get_user_pages(...) in display
+    driver
+
+-------------------------------------------------------------------
+Tue Oct 17 10:29:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted enable-ethernet.patch 
+
+-------------------------------------------------------------------
+Tue Oct 17 09:50:26 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp5.patch
+  * disabled mc-hwpm.o to avoid build errors
+
+-------------------------------------------------------------------
+Tue Oct 17 09:43:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp6.patch
+  * use correct number of params for get_user_pages(...) 
+
+-------------------------------------------------------------------
+Tue Oct 17 09:05:45 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp5.patch
+  * disabled tty and hwpm modules to avoid build errors 
+
+-------------------------------------------------------------------
+Mon Oct 16 15:59:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp5.patch
+  * disabled build of gte_test module to avoid build errors
+
+-------------------------------------------------------------------
+Mon Oct 16 15:53:54 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-kernel-6.4.patch: 
+  * fixed build of nvpps module 
+
+-------------------------------------------------------------------
+Mon Oct 16 15:34:17 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled realtek network driver to avoid build errors 
+
+-------------------------------------------------------------------
+Mon Oct 16 15:21:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated to version 36.0.0
+- supersedes buildfix-kernel-6.3.patch
+- adjusted patches 
+  * buildfix-kernel-6.4.patch
+  * buildfix-sle15-sp5.patch
+  * buildfix-sle15-sp6.patch
+  * enable-ethernet.patch
+  * persistent-nvidia-id-string.patch
+
+-------------------------------------------------------------------
+Tue Sep 19 11:07:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- apply patch right below for sp6 using our sle_version macro, 
+  since it claims to be a 6.4.0 kernel although it's a 6.4.15
+  kernel ...
+
+-------------------------------------------------------------------
+Tue Sep 12 13:40:48 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-sle15-sp6.patch
+  * added another buildfix for current sle15-sp6 6.4.15 kernel
+
+-------------------------------------------------------------------
+Mon Sep 11 12:59:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-kernel-6.4.patch
+  * added another buildfix against kernel 6.4 
+
+-------------------------------------------------------------------
+Mon Sep 11 12:31:35 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-kernel-6.4.patch
+  * fixes build against kernel 6.4
+
+-------------------------------------------------------------------
+Thu Jul 13 08:14:45 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- check kernel version for applying buildfix-kernel-6.3.patch
+  instead of %suse_version
+
+-------------------------------------------------------------------
+Thu Jul 13 08:02:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- (hopefully) fixed enable-ethernet.patch 
+
+-------------------------------------------------------------------
+Thu Jul 13 00:19:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixing build of sidecard ethernet driver 
+
+-------------------------------------------------------------------
+Wed Jul 12 12:59:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable-ethernet.patch
+  * enable build of sidecar ethernet driver
+- blacklist upstream 'dwmac_tegra' ethernet driver
+
+-------------------------------------------------------------------
+Mon Jul 10 12:58:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildfix-kernel-6.3.patch
+  * fixes build against Tumbleweed 6.3 kernel
+
+-------------------------------------------------------------------
+Thu Jun 29 12:20:45 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package 
