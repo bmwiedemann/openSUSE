@@ -1106,4 +1106,41 @@
  * big list of changes: https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md</comment>
     <requestid>1194751</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1cdae53ff29c13ae177c19fd87450ea3</srcmd5>
+    <version>0.6.3</version>
+    <time>1725363462</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.3:
+ * Preview features
+   * [flake8-simplify] Extend open-file-with-context-handler to work with other standard-library IO modules (SIM115) 
+   * [ruff] Avoid unused-async for functions with FastAPI route decorator (RUF029) 
+   * [ruff] Ignore fstring-missing-syntax (RUF027) for fastAPI paths 
+   * [ruff] Implement check for Decimal called with a float literal (RUF032) 
+   * [flake8-simplify] Extend open-file-with-context-handler to work with dbm.sqlite3 (SIM115) 
+   * [pycodestyle] Disable E741 in stub files (.pyi) 
+   * [pydoclint] Avoid DOC201 on explicit returns in functions that only return None 
+ * Rule changes
+   * [flake8-bugbear] Update diagnostic message when expression is at the end of function (B015) 
+   * [flake8-pyi] Skip type annotations in string-or-bytes-too-long (PYI053) 
+   * [flake8-type-checking] Always recognise relative imports as first-party 
+   * [flake8-unused-arguments] Ignore unused arguments on stub functions (ARG001) 
+   * [pylint] Ignore augmented assignment for self-cls-assignment (PLW0642) 
+   * [flake8-async] Disable check for asyncio before Python 3.11 (ASYNC109) 
+ * Bug fixes
+   * [pep8-naming] Don't flag from imports following conventional import names (N817) 
+   * [pylint] - Allow __new__ methods to have cls as their first argument even if decorated with @staticmethod for bad-staticmethod-argument (PLW0211) 
+   * [FastAPI] Avoid introducing invalid syntax in fix for fast-api-non-annotated-dependency (FAST002) 
+   * [flake8-implicit-str-concat] Normalize octals before merging concatenated strings in single-line-implicit-string-concatenation (ISC001) 
+   * [flake8-pytest-style] Improve help message for pytest-incorrect-mark-parentheses-style (PT023) 
+   * [pylint] Avoid autofix for calls that aren't min or max as starred expression (PLW3301) 
+   * [ruff] Add datetime.time, datetime.tzinfo, and datetime.timezone as immutable function calls (RUF009) 
+   * [ruff] Extend comment deletion for RUF100 to include trailing text from noqa directives while preserving any following comments on the same line, if any 
+   * Fix dark theme on initial page load for the Ruff playground 
+ * Server
+   * Show full context in error log messages 
+ * Documentation
+   * Add hyperfine installation instructions; update hyperfine code samples</comment>
+    <requestid>1198261</requestid>
+  </revision>
 </revisionlist>
