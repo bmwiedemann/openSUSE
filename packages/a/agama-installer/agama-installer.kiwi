@@ -95,7 +95,7 @@
         <package name="avahi"/>
         <package name="bind-utils"/>
         <package name="systemd"/>
-        <package name="procps4"/>
+        <package name="procps"/>
         <package name="iputils"/>
         <package name="vim"/>
         <package name="vim-data"/>
@@ -167,6 +167,7 @@
         <package name="ruby3.3-rubygem-agama-yast"/>
         <package name="ruby3.3-rubygem-byebug"/>
         <package name="staging-build-key"/>
+        <package name="openSUSE-build-key"/>
     </packages>
     <!-- additional packages for the SLE distributions -->
     <packages type="image" profiles="SLE">
