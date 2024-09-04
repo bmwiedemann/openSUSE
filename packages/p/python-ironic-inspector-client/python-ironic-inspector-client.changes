@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:13:01 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - reno: Update master for unmaintained/zed
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/wallaby
+  - Deprecate the project
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/victoria
+  - Remove old excludes
+
+-------------------------------------------------------------------
 Sun Mar 24 20:06:53 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.1.0

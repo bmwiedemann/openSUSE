@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 03 17:55:21 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.40.2:
+  * Version 1.40.2.
+  * tests/dummy-vddk.c: Stop the background thread in dummy _Exit function
+  * vddk: Check create-size is aligned to VIXDISKLIB_SECTOR_SIZE
+  * vddk: Detect possible VDDK crash and warn
+  * docs: Refresh nbdkit-service(1) page
+- Enable bzip2 filter
+
+-------------------------------------------------------------------
 Mon Aug 05 17:34:23 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.40.1:

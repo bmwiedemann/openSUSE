@@ -1,0 +1,46 @@
+From 79e7c3c3262374de778145946b612135fb7cd581 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 28 Mar 2024 13:15:54 +0100
+Subject: [PATCH] feature module: Fix handling of multiple conflicts per
+ attribute
+
+- Attributes without match were never actually added to the list
+- Only the last conflict actually had an effect, earlier results were
+  discarded
+---
+ vendored-meson/meson/mesonbuild/modules/features/module.py | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/vendored-meson/meson/mesonbuild/modules/features/module.py b/vendored-meson/meson/mesonbuild/modules/features/module.py
+index 0be6af06c..a6f357b3f 100644
+--- a/vendored-meson/meson/mesonbuild/modules/features/module.py
++++ b/vendored-meson/meson/mesonbuild/modules/features/module.py
+@@ -371,15 +371,12 @@ class Module(NewExtensionModule):
+                 values: List[ConflictAttr] = getattr(fet, attr)
+                 accumulate_values = test_result[attr]  # type: ignore
+                 for conflict in values:
+-                    if not conflict.match:
+-                        accumulate_values.append(conflict.val)
+-                        continue
+                     conflict_vals: List[str] = []
+                     # select the acc items based on the match
+                     new_acc: List[str] = []
+                     for acc in accumulate_values:
+                         # not affected by the match so we keep it
+-                        if not conflict.match.match(acc):
++                        if not (conflict.match and conflict.match.match(acc)):
+                             new_acc.append(acc)
+                             continue
+                         # no filter so we totaly escape it
+@@ -396,7 +393,7 @@ class Module(NewExtensionModule):
+                             continue
+                         conflict_vals.append(conflict.mjoin.join(filter_val))
+                     new_acc.append(conflict.val + conflict.mjoin.join(conflict_vals))
+-                    test_result[attr] = new_acc  # type: ignore
++                    accumulate_values = test_result[attr] = new_acc  # type: ignore
+ 
+         test_args = compiler.has_multi_arguments
+         args = test_result['args']
+-- 
+2.44.0
+

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:54:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable zstd [boo#1229961]
+
+-------------------------------------------------------------------
 Fri Aug  9 21:49:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8

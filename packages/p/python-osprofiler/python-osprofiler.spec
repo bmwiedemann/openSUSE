@@ -17,15 +17,14 @@
 
 
 Name:           python-osprofiler
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-4.1.0.tar.gz
-# https://review.opendev.org/c/openstack/osprofiler/+/860412
-Patch0:         0001-Add-default-port-to-Elasticsearch-connection-url.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-4.2.0.tar.gz
+Patch0:         new-elasticsearch.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -86,7 +85,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-4.1.0
+%autosetup -p1 -n osprofiler-4.2.0
 %py_req_cleanup
 
 %build
@@ -101,7 +100,8 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-rm osprofiler/tests/unit/drivers/test_jaeger.py  # causes import error, --exclude-regex in the next line isn't enough
+# otherwise causes import error
+rm osprofiler/tests/unit/drivers/test_jaeger.py
 %{openstack_stestr_run} --exclude-regex '(^osprofiler.tests.unit.drivers.test_jaeger.JaegerTestCase.*$)'
 
 %files -n python3-osprofiler

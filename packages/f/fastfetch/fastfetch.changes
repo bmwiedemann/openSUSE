@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep  3 15:08:59 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Make completion packages Require the main package
+
+- update to 2.23.0
+  Features:
+    * Support unity version detection (DE, Linux)
+    * Print model name in Battery keys if available (Battery)
+    * Add module Zpool
+    * Improve performance (Shell / Terminal, Linux)
+    * Support syntax of padded strings in --<module>-format. {variable<padlength} and {variable>padlength} are supported.
+        If pad length is greater than the length of the variable, the variable will be padded with spaces.
+            fastfetch -l none -s command --command-text 'echo 12345' --command-format 'output({1<20})' prints Command: output(12345               )
+            fastfetch -l none -s command --command-text 'echo 12345' --command-format 'output({1>20})' prints Command: output(               12345)
+        If pad length is less than the length of the variable, the variable will be truncated.
+  Bugfixes:
+    * Fix broken --list-presets
+    * Update zsh completion script
+    * Don't print * if defaultRouteOnly is set (NetIO)
+    * Fix Camera module incorrectly disabled on FreeBSD (Camera, FreeBSD)
+    * Fix hanging on screen 5.0 (Terminal)
+
+-------------------------------------------------------------------
+Mon Aug 26 07:03:48 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.22.0
+  Features:
+    * Small performance improvements (Terminal, Editor)
+    * Improve arm32 and loongarch support (CPU, Linux)
+    * Ignore the parent process if env $FFTS_IGNORE_PARENT is set to 1 (Shell)
+    * Add code name of Apple M4 (CPU, Linux)
+    * Add ethernet speed rate detection support (LocalIP)
+    * Add zsh completion script
+    * Add Linglong package manager detection support (Packages, Linux)
+  Bugfixes:
+    * Fix tmux in linux TTY (Colors)
+    * Fix hang in WSL when custom format is used (Disk, Linux)
+    * Fix /proc/loadavg parsing (Loadavg, Linux)
+    * Disable use of LC_NUMERIC locale settings to fix parsing of decimal numbers
+    * Fix possible segfault (DiskIO, Linux)
+    * Honor preciseRefreshRate in custom format (Display)
+
+-------------------------------------------------------------------
 Thu Aug 15 17:15:17 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - update to 2.21.3

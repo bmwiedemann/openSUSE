@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 14:42:04 CEST 2024 - ro@suse.de
+
+- Chromium 128.0.6613.119 (released 2024-09-02) (boo#1230108)
+  * CVE-2024-8362: Use after free in WebAudio
+  * CVE-2024-7970: Out of bounds write in V8
+
+-------------------------------------------------------------------
 Thu Aug 29 04:50:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 128.0.6613.113 (boo#1229897)

@@ -360,4 +360,15 @@
   - Fix wrong stacklevel</comment>
     <requestid>1161172</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd924c49406fa1476a590491a1461855</srcmd5>
+    <version>6.1.0</version>
+    <time>1725448972</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.1.0
+  - Update master for stable/2024.1
+  - Remove old excludes
+  - reno: Update master for unmaintained/victoria</comment>
+    <requestid>1198368</requestid>
+  </revision>
 </revisionlist>

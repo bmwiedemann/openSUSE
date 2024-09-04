@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:13:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * In avif.h, change "AVIF_API AVIF_NODISCARD" back to
+    "AVIF_NODISCARD AVIF_API" to fix clang-cl and MSVC compilation
+    errors in the shared library build on Windows.
+  * Fix -DAVIF_GTEST=SYSTEM
+  * Fix infe_type and codec_config_type wrongly read as byte-
+    aligned fields in the
+  * experimental feature AVIF_ENABLE_EXPERIMENTAL_METAV1.
+  * When building aom as a local dependency, runtime CPU
+    detection (`CONFIG_RUNTIME_CPU_DETECT`) is now always `ON`;
+  * Fix CMake config shared library leaks
+  * Update gain map metadata to current ISO 21496-1 draft.
+  * cmake: Only search for ASM_NASM language on x86_64 platforms.
+  * Fix "No known features for CXX compiler" CMake error.
+  * Fix aom link flags so that transitive library link flags are
+    included when aom is a static library
+  * Fix out-of-order 'dimg' grid associations
+  * Report files with an item used in multiple 'dimg' boxes with
+  * AVIF_RESULT_NOT_IMPLEMENTED instead of
+    AVIF_RESULT_INVALID_IMAGE_GRID.
+  * Add experimental API for reading and writing gain maps in
+    AVIF files.
+  * If enabled at compile time, add `gainMap` field to
+    `avifImage`,
+  * add `qualityGainMap` field to `avifEncoder`, add
+    `gainMapPresent`, `enableDecodingGainMap`,
+    `enableParsingGainMapMetadata` and `ignoreColorAndAlpha` to
+    `avifDecoder`.
+  * Utility functions for working with gain maps are also added.
+  * Gain maps allow readers that support them to display HDR
+    images that look good on both HDR and SDR displays.
+  * Add experimental support for converting jpeg files with gain
+    maps to AVIF files with gain maps. Requires libxml2, and the
+    AVIF_ENABLE_EXPERIMENTAL_GAIN_MAP compilation flag.
+  * Add a --qgain-map flag to control the gain map quality in
+    avifenc.
+  * Add the headerFormat member of new type avifHeaderFormat to
+    avifEncoder.
+  * Add experimental API for reading and writing "mif3"-branded
+    AVIF files behind the compilation flag
+    AVIF_ENABLE_EXPERIMENTAL_METAV1.
+  * Implement avifImageScale() fallback when libyuv is not
+    available.
+  * Partial import of libyuv to third_party/libyuv (new LICENSE).
+  * Add avifenc flag suffixes ":update" and ":u". Quality-
+    relative, tiling-relative and codec-specific flags can now be
+    positional, relative to input files.
+  * Add experimental support for layered AVIF encoding in
+    avifenc.
+  * Use the --layered flag to enable layered AVIF encoding.
+  * Layered AVIF has multiple layers, which works like frame of
+    animated AVIF, and layers can be rendered in progressive
+    manner on supported viewers
+  * Only aom supports layered AVIF encoding at the time of
+    writing.
+  * Add --scaling-mode flag to set scaling mode of each layer.
+  * This part of AV1 encoder is not as thoroughly tested, so
+    there are higher possibility encoder may crash when given certain
+    configuration or input.
+  * Add imageSequenceTrackPresent flag to the avifDecoder struct.
+  * avifImageScale() function was made part of the public ABI.
+  * Add avif_cxx.h as a C++ header with basic functionality.
+  * Add enum aliases AVIF_COLOR_PRIMARIES_SRGB,
+    AVIF_COLOR_PRIMARIES_BT2100,
+  * AVIF_COLOR_PRIMARIES_DCI_P3,
+    AVIF_TRANSFER_CHARACTERISTICS_PQ.
+  * Add avifResult enum entry AVIF_RESULT_INTERNAL_ERROR.
+  * Require libyuv by default (but it can still be disabled with
+  * -DAVIF_LIBYUV=OFF).
+  * Add avifdec --icc flag to override the output color profile.
+  * Add experimental API for reading and writing 16-bit AVIF
+    files behind the
+  * compilation flag AVIF_ENABLE_EXPERIMENTAL_SAMPLE_TRANSFORM.
+  * Add AVIF_CHROMA_SAMPLE_POSITION_RESERVED to
+    avifChromaSamplePosition enum.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:23:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:

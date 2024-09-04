@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pyfuse3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pname   pyfuse3
 %{?sle15_python_module_pythons}
 Name:           python-%{pname}
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later

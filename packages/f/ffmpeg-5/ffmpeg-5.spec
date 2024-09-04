@@ -113,6 +113,8 @@ Patch14:        0001-avfilter-avf_showspectrum-fix-off-by-1-error.patch
 Patch15:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
 Patch17:        0001-avfilter-af_stereowiden-Check-length.patch
+Patch18:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch19:        0001-avutil-hwcontext_vaapi-use-the-correct-type-for-VASu.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
@@ -852,6 +854,8 @@ Patch14:        0001-avfilter-avf_showspectrum-fix-off-by-1-error.patch
 Patch15:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch16:        0001-avfilter-f_reverse-Apply-PTS-compensation-only-when-.patch
 Patch17:        0001-avfilter-af_stereowiden-Check-length.patch
+Patch18:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch19:        0001-avutil-hwcontext_vaapi-use-the-correct-type-for-VASu.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff

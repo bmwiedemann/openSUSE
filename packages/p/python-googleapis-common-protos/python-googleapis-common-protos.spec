@@ -16,17 +16,15 @@
 #
 
 
-%define modname googleapis-common-protos
-%define pkgname %{lua:pname,_ = string.gsub(rpm.expand('%modname'), '-' , '_');print(pname)}
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.63.2
+Version:        1.65.0
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/python-api-common-protos
-Source:         https://files.pythonhosted.org/packages/source/g/googleapis-common-protos/googleapis-common-protos-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/googleapis_common_protos/googleapis_common_protos-%{version}.tar.gz
 Source1:        test_google_api_error_reason.py
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
@@ -47,7 +45,7 @@ googleapis-common-protos contains the python classes generated from the common
 protos in the googleapis_ repository.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n googleapis_common_protos-%{version}
 
 install -p -D -t tests/unit %{SOURCE1}
 
@@ -72,6 +70,6 @@ install -p -D -t tests/unit %{SOURCE1}
 %{python_sitelib}/google/api
 %{python_sitelib}/google/gapic
 %{python_sitelib}/google/cloud
-%{python_sitelib}/%{pkgname}-%{version}*-info
+%{python_sitelib}/googleapis_common_protos-%{version}*-info
 
 %changelog

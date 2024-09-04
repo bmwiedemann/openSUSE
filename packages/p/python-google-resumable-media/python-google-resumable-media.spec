@@ -19,13 +19,13 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-resumable-media
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-resumable-media-python
-Source:         https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_resumable_media/google_resumable_media-%{version}.tar.gz
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module google-crc32c}
 BuildRequires:  %{python_module pip}
@@ -48,7 +48,7 @@ Obsoletes:      python3-google-resumable-media < %{version}
 Utilities for Google Media Downloads and Resumable Uploads
 
 %prep
-%setup -q -n google-resumable-media-%{version}
+%setup -q -n google_resumable_media-%{version}
 
 %build
 %pyproject_wheel

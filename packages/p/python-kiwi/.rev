@@ -2544,4 +2544,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1194146</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>785e795c579f39edecd82eee8fdbb913</srcmd5>
+    <version>10.1.4</version>
+    <time>1725448937</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.1.3 → 10.1.4
+
+- Add note about guestOS values for vmware ovftools.
+
+- Add note about guestOS values for vmware platform.
+
+- Fixed resize of dos table type on s390
+  On s390, parted is used to detect the partition table type.
+  In contrast to blkid the name for DOS tables is reported
+  as 'msdos' and not 'dos' which impacts several conditions
+  in the kiwi initrd code which checks for 'dos'. This commit
+  fixes the get_partition_table_type() method to return a
+  consistent table name for DOS tables. This Fixes bsc#1228729
+
+- Revert &quot;remove dependency on /usr/bin/python&quot;
+  This reverts commit 15b450188483b567ca10bb459bf50ed90e905bb7.
+  The change provided here entirely broke kiwi in OBS. With this
+  patch applied every image build in OBS fails with the following
+  message: 'line 1: /usr/sbin/kiwi: No such file or directory'
+
+- Bump version: 10.1.2 → 10.1.3
+
+- Fix bundle extension for archive types
+  When bundling result files that uses an archive type like
+  tbz or docker, kiwi creates them with the extension tar.xz/tar.gz
+  The bundler code only uses the extension from the last tuple
+  in a &quot;.&quot; split which is wrong for &quot;tar.&quot; filenames. This commit
+  adds an exception to the prefix rule for this output filenames
+  and Fixes #2628</comment>
+    <requestid>1198422</requestid>
+  </revision>
 </revisionlist>

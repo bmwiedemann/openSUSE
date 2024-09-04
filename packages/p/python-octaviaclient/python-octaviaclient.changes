@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:17:18 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.8.0
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/xena
+  - Support filtering amphora list by image ID
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/zed
+  - Update master for stable/2024.1
+  - Add SR-IOV support for members
+
+-------------------------------------------------------------------
 Sun Mar 24 20:12:09 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.7.0

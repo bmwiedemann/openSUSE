@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:10:35 UTC 2024 - cloud-devel@suse.de
+
+- update to version 9.6.0
+  - reno: Update master for unmaintained/zed
+  - Update CI for Dalmatian
+  - reno: Update master for victoria Unmaintained status
+  - Fix: transfer-delete command
+  - reno: Update master for xena Unmaintained status
+  - Update master for stable/2024.1
+  - reno: Update master for wallaby Unmaintained status
+  - Fix cinder command execution issue with a token
+
+-------------------------------------------------------------------
 Thu May  2 16:03:34 UTC 2024 - cloud-devel@suse.de
 
 - update to version 9.5.0

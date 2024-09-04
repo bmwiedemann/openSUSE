@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 04 01:43:42 UTC 2024 - william.brown@suse.com
+
+- bsc#1229948 - CVE-2024-43806 - rustix::fs::Dir iterator with the linux_raw backend can cause memory explosion
+- Update to version 3.1.1~git13.a9c7ff9:
+  * Issue 2472 - Add a CI test (#6314)
+  * Issue 6276 - Schema lib389 object is not keeping custom schema data upon editing (#6279)
+  * Issue 3555 - UI - Fix audit issue with npm - micromatch (#6310)
+  * Issue 5843 - Fix size formatting in dscreate output and enhance tests (#6309)
+  *  Issue 6301 - Fix long delay when setting replication agreement with dsconf (#6303)
+  * Issue 6280 - Changelog trims updates from a given RID even if a consumer has not received any of them (#6281)
+  * Issue 6296 - basic_test.py::test_conn_limits fails in main branch (#6300)
+  * Issue 6295 - test_password_modify_non_utf8 should set default password storage scheme
+  * Issue 6294 - Nightly copr builds are failing
+  * Issue 6288 - dsidm crash with account policy when alt-state-attr is disabled (#6292)
+  * Issue 2324 - Add a CI test (#6289)
+  * Issue 6284 - BUG - freelist ordering causes high wtime (#6285)
+  * Issue 6282 - BUG - out of tree build fails (#6283)
+
+-------------------------------------------------------------------
 Fri Aug  2 06:03:49 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - dirsrv-user.conf: Remove explicit dirsrv group definition, it's

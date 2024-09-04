@@ -374,4 +374,33 @@
   - Imported Translations from Zanata</comment>
     <requestid>1130300</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb9645cceba43bb7a9024b2486fc2a79</srcmd5>
+    <version>6.2.0</version>
+    <time>1725448963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.2.0
+  - reno: Update master for unmaintained/xena
+  - Remove old excludes
+  - reno: Update master for unmaintained/zed
+  - Make ConfigInvalid generic
+  - reno: Update master for unmaintained/victoria
+  - Update master for stable/2024.1
+  - pre-commit: Bump versions
+  - reno: Update master for unmaintained/wallaby
+  - pre-commit: Integrate bandit
+  - Add a enabled by files healthcheck plugin
+
+- update to version 6.1.0
+  - healthcheck: Ignore proxied requests
+  - Bump hacking
+  - Imported Translations from Zanata
+  - Update python classifier in setup.cfg
+  - healthcheck: Limit source IP range
+  - reno: Update master for unmaintained/yoga
+  - Remove oslo namespace package (again)
+  - Remove deprecated SSLMiddleware
+  - Update master for stable/2023.2</comment>
+    <requestid>1198361</requestid>
+  </revision>
 </revisionlist>

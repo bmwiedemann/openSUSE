@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.46.0.1
-%global amalgamation_version 3460000
+%global version 3.46.1.0
+%global amalgamation_version 3460100
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}

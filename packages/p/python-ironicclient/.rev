@@ -528,4 +528,21 @@
   - Replace appdirs by platformdirs</comment>
     <requestid>1178608</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8bbea672f1170be4283a35aa24f2d263</srcmd5>
+    <version>5.8.0</version>
+    <time>1725449020</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.8.0
+  - Support traits configuration on baremetal create CLI
+  - Fixes the description filter
+  - Fix functional test run
+  - Remove use of distutils
+  - Fix port create ignores the name field
+  - support passing disable_ramdisk for clean and service state
+  - Add CLI support for runbooks
+  - Add test for driver raid property list
+  - Client support port name</comment>
+    <requestid>1198507</requestid>
+  </revision>
 </revisionlist>

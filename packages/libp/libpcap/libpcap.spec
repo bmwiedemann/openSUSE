@@ -1,7 +1,7 @@
 #
 # spec file for package libpcap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           libpcap
-Version:        1.10.4
+Version:        1.10.5
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.tcpdump.org/
-Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
+Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
-Source4:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
+Source4:        https://www.tcpdump.org/release/%{name}-%{version}.tar.xz.sig
 Patch2:         libpcap-1.0.0-ppp.patch
 Patch3:         libpcap-1.0.0-s390.patch
 BuildRequires:  autoconf >= 2.69

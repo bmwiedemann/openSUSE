@@ -63,8 +63,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%ifarch %ix86 %arm32
-# precision errors on 32bit
+%ifarch %ix86 %arm32 aarch64 riscv64 s390x
+# precision errors
 %define donttest -k "not TestTSNECorrectnessUsingPrecomputedDistanceMatrix"
 %endif
 %pytest_arch --import-mode append %{?donttest}

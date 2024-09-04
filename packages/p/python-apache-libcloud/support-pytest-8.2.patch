@@ -1,25 +1,39 @@
-From 0b69d0bf23b6c2edb1e2002f47ff2df0080e96d9 Mon Sep 17 00:00:00 2001
+From 44e923662205f2a2413fadb23715dc2934bff625 Mon Sep 17 00:00:00 2001
 From: Steve Kowalik <steven@wedontsleep.org>
-Date: Thu, 6 Jun 2024 12:25:15 +1000
-Subject: [PATCH] Mark MockHttp as not for collection by pytest
+Date: Tue, 3 Sep 2024 14:30:51 +1000
+Subject: [PATCH] Only call super() during MockHttp if required
 
-pytest 8.2.0 contains a regression that will collect non-test classes,
-so as to be explicit about it, mark MockHttp (and therefore all of its
-children classes) as not to be collected.
+With pytest 8.2 and above, any class that contains classes is collected,
+which means they are instantiated, which MockHttp's superclasses do not
+accept, since they require keyword arguments. To work around this, only
+call the superclass's __init__ method if we are passed kwargs.
 ---
- libcloud/test/__init__.py | 2 ++
- 1 file changed, 2 insertions(+)
+ libcloud/test/__init__.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/libcloud/test/__init__.py b/libcloud/test/__init__.py
-index d45c82c84d..d0da40c74a 100644
+index d45c82c84d..1cc595f685 100644
 --- a/libcloud/test/__init__.py
 +++ b/libcloud/test/__init__.py
-@@ -97,6 +97,8 @@ class MockHttp(LibcloudConnection):
+@@ -87,7 +87,7 @@ def read(self, chunk_size=None):
+         return StringIO.read(self)
  
-         (int status, str body, dict headers, str reason)
+ 
+-class MockHttp(LibcloudConnection):
++class MockHttp(LibcloudConnection, unittest.TestCase):
      """
-+    # pytest may collect this class, and we don't need or want that
-+    __test__ = False
+     A mock HTTP client/server suitable for testing purposes. This replaces
+     `HTTPConnection` by implementing its API and returning a mock response.
+@@ -108,7 +108,11 @@ def __init__(self, *args, **kwargs):
+         # within a response
+         if isinstance(self, unittest.TestCase):
+             unittest.TestCase.__init__(self, "__init__")
+-        super().__init__(*args, **kwargs)
++        # When this class is collected, it is instantiated with no arguments,
++        # which breaks any superclasses that expect arguments, so only
++        # do so if we were passed any keyword arguments.
++        if kwargs:
++            super().__init__(*args, **kwargs)
  
-     type = None
-     use_param = None  # will use this param to namespace the request function
+     def _get_request(self, method, url, body=None, headers=None):
+         # Find a method we can use for this request

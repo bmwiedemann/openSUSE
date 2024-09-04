@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:51:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not require libquadmath-devel on aarch64 since it does not
+  exist on this arch
+
+-------------------------------------------------------------------
 Thu Aug 29 16:20:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.8.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 04 00:24:50 UTC 2024 - william.brown@suse.com
+
+- Update to version 20240904:
+  * Make small readability improvements in RUSTSEC-2023-0064 (#2064)
+  * Add global GHSA reference for RUSTSEC-2024-0367 (config scopes) (#2063)
+  * Assigned RUSTSEC-2024-0368 to olm-sys (#2062)
+  * Add advisory for olm-sys (unmaintained, crypto failure) (#2060)
+  * Add CVE number for RUSTSEC-2024-0367 (config scopes) (#2061)
+  * Assigned RUSTSEC-2024-0367 to gix-path (#2058)
+  * Advisory for GHSA-v26r-4c9c-h3j6 (config scopes) in gix-path (#2055)
+  * Assigned RUSTSEC-2024-0366 to cosmwasm-vm (#2053)
+  * Add cosmwasm-vm advisory CWA-2023-004 (#2052)
+  * update resolution for RUSTSEC-2024-0363 (sqlx) (#2050)
+
+-------------------------------------------------------------------
 Tue Jul 30 02:41:17 UTC 2024 - william.brown@suse.com
 
 - Update to version 20240730:

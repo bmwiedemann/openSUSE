@@ -643,4 +643,17 @@
   - Fix incorrect desc of rabbit_stream_fanout option</comment>
     <requestid>1178603</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e636806654862a6da3fa74323e66d75b</srcmd5>
+    <version>14.9.0</version>
+    <time>1725448965</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 14.9.0
+  - Deprecate the option heartbeat_in_pthread.
+  - Handle NotFound exception when declaring a queue
+  - Add RPC incoming and reply log
+  - Reduce log level to DEBUG for new messages
+  - rabbit: Make PreconditionFailed warning log more informative</comment>
+    <requestid>1198363</requestid>
+  </revision>
 </revisionlist>

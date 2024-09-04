@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  2 09:59:06 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.6.2
+  https://github.com/linux-integrity/ima-evm-utils/blob/v1.6.2/NEWS
+- Remove LicenseRef-GPL-2.0-with-openssl-exception (no need due relicensing of
+  OpenSSL 3 or later to the Apache 2 license
+  https://github.com/linux-integrity/ima-evm-utils/commit/4a4c762c8e3cbbff5f41c682deb026d22440454d )
+- Upstream added COPYING (again) and COPYING.LGPL (new), add them to %license.
+
+-------------------------------------------------------------------
 Fri Jul 12 18:22:32 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Update project source URL.

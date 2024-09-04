@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 18:40:39 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.11
+  * Other issues:
+    #9629: Housekeeping: chmod -x non-executable files
+
+-------------------------------------------------------------------
 Tue Aug  6 08:22:39 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.10

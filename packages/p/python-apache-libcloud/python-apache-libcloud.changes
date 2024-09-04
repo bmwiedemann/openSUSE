@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  3 04:49:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace support-pytest-8.2.patch:
+  * The existing patch unintentionally skips a lot of the testsuite.
+
+-------------------------------------------------------------------
 Thu Jun  6 02:51:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros.

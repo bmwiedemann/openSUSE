@@ -1,7 +1,7 @@
 #
 # spec file for package vectorscan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define so_suffix -vectorscan
 
 Name:           vectorscan
-Version:        5.4.10.1
+Version:        5.4.11
 Release:        0
 Summary:        Regular expression matching library
 License:        BSD-3-Clause
@@ -100,16 +100,15 @@ export CC=gcc-9
 export CXX=g++-9
 %endif
 %cmake \
+%ifarch aarch64 x86_64
   -DFAT_RUNTIME=ON \
+%endif
   -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
 %ifarch %{ix86} x86_64
+  -DBUILD_AVX2=ON \
   -DBUILD_AVX512=ON \
 %endif
-  -DCMAKE_SKIP_RPATH=ON \
-%ifarch aarch64
-  -DBUILD_STATIC_LIBS:BOOL=ON \
-  -DBUILD_STATIC_AND_SHARED=ON \
-%endif
+  -DCMAKE_SKIP_RPATH=ON
 
 %cmake_build
 

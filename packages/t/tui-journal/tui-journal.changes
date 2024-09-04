@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  3 08:30:58 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.0:
+  - Breaking Changes: Keybinding for fuzzy find has been moved from
+    u to a and <Shift-f> to free up the key u which is used for
+    undo & redo actions.
+  - History Management: Provide Undo & Redo Functionalities.
+
+-------------------------------------------------------------------
 Fri Apr  5 10:27:26 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

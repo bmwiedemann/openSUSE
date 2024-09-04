@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:13:21 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.8.0
+  - Support traits configuration on baremetal create CLI
+  - Fixes the description filter
+  - Fix functional test run
+  - Remove use of distutils
+  - Fix port create ignores the name field
+  - support passing disable_ramdisk for clean and service state
+  - Add CLI support for runbooks
+  - Add test for driver raid property list
+  - Client support port name
+
+-------------------------------------------------------------------
 Tue Jun  4 20:06:05 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.6.0

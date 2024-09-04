@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 30 09:42:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.48b0
+  * Implementation of Events API (#4054)
+  * Make log sdk add `exception.message` to logRecord for exceptions
+    whose argument is an exception not a string message (#4122)
+  * Fix use of `link.attributes.dropped`, which may not exist (#4119)
+  * Running mypy on SDK resources (#4053)
+  * Added py.typed file to top-level module (#4084)
+  * Drop Final annotation from Enum in semantic conventions (#4085)
+  * Update log export example to not use root logger (#4090)
+  * sdk: Add OS resource detector (#3992)
+  * sdk: Accept non URL-encoded headers in `OTEL_EXPORTER_OTLP_*HEADERS`
+    to match other languages SDKs (#4103)
+  * Update semantic conventions to version 1.27.0 (#4104)
+  * Add support to type bytes for OTLP AnyValue (#4128)
+  * Export ExponentialHistogram and ExponentialHistogramDataPoint (#4134)
+  * Implement Client Key and Certificate File Support for All OTLP Exporters (#4116)
+  * Remove `_start_time_unix_nano` attribute from `_ViewInstrumentMatch` in favor
+    of using `time_ns()` at the moment when the aggregation object is created (#4137)
+- for changes between 0.44b0 and 0.48b0 see upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Mar 23 21:39:05 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - update to 0.44b0:

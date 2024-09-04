@@ -31,7 +31,7 @@ Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
 # PATCH-FIX-UPSTREAM gh#apache/libcloud#1994
 Patch3:         support-pytest-8.patch
-# PATCH-FIX-UPSTREAM gh#apache/libcloud#2014
+# PATCH-FIX-UPSTREAM gh#apache/libcloud#2033
 Patch4:         support-pytest-8.2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fasteners}

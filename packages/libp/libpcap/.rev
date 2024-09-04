@@ -936,4 +936,41 @@
     <comment></comment>
     <requestid>1154033</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>d906c045c6a2130fb16c3229dc329186</srcmd5>
+    <version>1.10.5</version>
+    <time>1725448920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.5:
+  * Security fixes:
+    - [bsc#1230020, CVE-2023-7256] double free via addrinfo in sock_initaddress()
+    - [bsc#1230034, CVE-2024-8006] null pointer derefence in pcap_findalldevs_ex()
+  * Thread safety: Make some static variables thread-local
+  * Packet filtering:
+    - Return an error from pcap_compile() if the scanner fails to initialize.
+    - Optimizer fix from Archit Shah to recompute dominators after moving
+      code; (although the resulting filter isn't empty).
+    - Optimizer fix from Archit Shah to mark value as unknown when store
+      of that value is deleted.
+  * Linux:
+    - Don't use DLT_LINUX_SLL2 for anything other than the &quot;any&quot; device.
+    - Avoid 32-bit unsigned integer overflow in USB captures.
+    - Fix a file descriptor leak.
+    - Fix DLT_CAN_SOCKETCAN handling of CAN FD.
+    - Add CAN XL support to DLT_CAN_SOCKETCAN.
+    - Clean up the code that sets the &quot;real&quot; (&quot;original&quot;) length for
+      isochronous USB transfers.
+    - Avoid unnecessary blocking on recvmsg() in the Bluetooth monitor and
+      Bluetoth modules.
+  * Haiku:
+    - Report non-existent devices correctly.
+    - Fix handling of packet statistics.
+    - Fix packet timestamping.
+    - Fix packet filtering with low snaplen.
+    - Improve connection status reporting.
+    - Add support for promiscuous mode.
+    - Detect DLTs and loopback capture support at run time.
+    - Report IEEE 802.11 as PCAP_IF_WIRELESS. (forwarded request 1198278 from pmonrealgonzalez)</comment>
+    <requestid>1198327</requestid>
+  </revision>
 </revisionlist>

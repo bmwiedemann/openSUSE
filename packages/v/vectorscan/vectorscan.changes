@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  3 11:58:05 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5.4.11:
+  * Fix clang 15,16 compilation errors on all platforms, refactor 
+    CMake build system by @markos in #181
+  * Fix version getting out of sync #175 by @markos in #185
+  * Ubuntu 20.04 gcc does not define HWCAP2_SVE2 #180 by @markos in #186
+  * make pkgconfig a requirement by @markos in #188
+  * Correct set_source_files_properties usage by @mlmitch in #189
+  * Move VERM16 enums to the end of the list by @markos in #191
+  * Merge with master by @markos in #192
+  * prepare for 5.4.11 release by @markos in #196
+  * release 5.4.11 by @markos in #197
+  * Fix missing hs_version.h header (closes #198) by @gliwka in #199
+  * fix missing installation of static libs by @markos in #200
+  * Fix installation problems by @markos in #201
+
+-------------------------------------------------------------------
 Tue Sep 12 12:00:44 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 5.4.10.1:

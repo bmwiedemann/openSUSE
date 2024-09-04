@@ -263,4 +263,19 @@
     <comment></comment>
     <requestid>1167538</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8f406abc5d64a35114264da0e0983050</srcmd5>
+    <version>4.2.0</version>
+    <time>1725448960</time>
+    <user>dimstar_suse</user>
+    <comment>- added new-elasticsearch.patch
+- removed 0001-Add-default-port-to-Elasticsearch-connection-url.patch
+- update to version 4.2.0
+  - List up extra requirements for drivers
+  - reno: Update master for unmaintained/victoria
+  - Update python classifier in setup.cfg
+  - Move oslo.config to normal requirements
+  - Declare Python 3.10 support</comment>
+    <requestid>1198357</requestid>
+  </revision>
 </revisionlist>

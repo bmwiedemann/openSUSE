@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:28:50 UTC 2024 - cloud-devel@suse.de
+
+- added new-elasticsearch.patch
+- removed 0001-Add-default-port-to-Elasticsearch-connection-url.patch
+- update to version 4.2.0
+  - List up extra requirements for drivers
+  - reno: Update master for unmaintained/victoria
+  - Update python classifier in setup.cfg
+  - Move oslo.config to normal requirements
+  - Declare Python 3.10 support
+
+-------------------------------------------------------------------
 Mon Apr  1 17:37:16 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - %check: delete test_jaeger.py (already excluded via

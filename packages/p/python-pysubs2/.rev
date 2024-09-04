@@ -7,4 +7,14 @@
     <comment>Required by subliminal 2.2.x</comment>
     <requestid>1185760</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3065ca4bf10e8694ff10b45ea8c8a627</srcmd5>
+    <version>1.7.3</version>
+    <time>1725448949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.3:
+ * Fixed problem with ``multiprocessing.Pool`` crashing due to
+   ``FormatAutodetectionError``</comment>
+    <requestid>1198045</requestid>
+  </revision>
 </revisionlist>

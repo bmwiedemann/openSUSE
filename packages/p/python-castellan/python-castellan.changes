@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:05:24 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.1.1
+  - reno: Update master for unmaintained/xena
+  - Remove unused test hook scripts
+  - reno: Update master for unmaintained/victoria
+  - vault: Hide values used for authentication
+  - reno: Update master for unmaintained/wallaby
+  - Use upper-constraint in doc generation
+  - pre-commit: Bump versions
+  - reno: Update master for unmaintained/zed
+  - Fix vault key managed fixed broken by a typo
+  - vault: Add timeout option
+  - Remove old excludes
+  - Update master for stable/2024.1
+  - pre-commit: Integrate bandit
+  - Drop wrong documented choices for barbican_endpoint_type
+
+-------------------------------------------------------------------
 Tue Jun  4 20:01:04 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.0.0

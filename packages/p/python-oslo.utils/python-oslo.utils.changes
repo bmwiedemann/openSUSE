@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:30:12 UTC 2024 - cloud-devel@suse.de
+
+- update to version 7.3.0
+  - Make imageutils a directory
+  - reno: Update master for unmaintained/wallaby
+  - Import format_inspector from nova
+  - Fix qcow2 feature flag checks (for the future)
+  - Add stream-based detection
+  - Update master for stable/2024.1
+  - Fix coverage target
+  - Test cover target in CI
+  - Add a function to trim scope out of ipv6 addr
+  - Reinstate VMDK safety check coverage
+  - Support VMDK sparse with footer
+  - Add GPT/MBR inspector
+  - Refactor some things for oslo
+  - netutils: Explicitly require INET_ATON
+  - Add release note for format_inspector
+  - Make VMDKInspector support non-sparse formats
+  - Imported Translations from Zanata
+  - Remove old excludes
+  - Make FileInspector an ABC
+  - Add region-complete signaling for inspectors
+  - Modularize image safety checks
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/xena
+
+-------------------------------------------------------------------
 Thu May  2 22:10:56 UTC 2024 - cloud-devel@suse.de
 
 - update to version 7.1.0
@@ -75,7 +104,7 @@ Thu Aug 11 08:25:23 UTC 2022 - cloud-devel@suse.de
 -------------------------------------------------------------------
 Tue May 24 20:46:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- remove mock dependency 
+- remove mock dependency
 
 -------------------------------------------------------------------
 Tue May 10 16:03:36 UTC 2022 - cloud-devel@suse.de
@@ -680,7 +709,7 @@ Tue Feb 24 12:42:50 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Wed Jan 14 08:48:43 UTC 2015 - dmueller@suse.com
 
-- fix requires 
+- fix requires
 
 -------------------------------------------------------------------
 Mon Jan 12 10:35:53 UTC 2015 - dmueller@suse.com

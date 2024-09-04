@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 15:01:33 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Remove old excludes
+  - reno: Update master for unmaintained/xena
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - Update sslutils.wrap for newer Pythons
+  - Make signal handling order predictable
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/zed
+
+-------------------------------------------------------------------
 Sun Mar 24 20:03:54 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.4.0

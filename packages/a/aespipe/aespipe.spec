@@ -17,7 +17,7 @@
 
 
 Name:           aespipe
-Version:        2.4g
+Version:        2.4h
 Release:        0
 Summary:        AES Encrypting/Decrypting Pipe
 License:        GPL-2.0-only
@@ -25,9 +25,11 @@ URL:            https://loop-aes.sourceforge.net/
 Source0:        https://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 Source1:        https://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2.sign#/%{name}-%{version}.tar.bz2.sign
 Source2:        %{name}.keyring
+Patch1:         0001-Fix-Build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gpg2
+BuildRequires:  libbpf1
 Requires:       gpg2
 
 %description
@@ -39,6 +41,9 @@ compatible encrypted disk images.
 %prep
 %setup -q -n %{name}-v%{version}
 patch  < aes-GPL.diff
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
+%autopatch -p1
+%endif
 
 %build
 autoreconf -fiv

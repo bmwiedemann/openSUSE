@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  3 17:39:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 18.4
+  * Initial support for C++26 has been added, specifically =
+    delete("reason") is now supported.
+  * Support placemarkers for empty macro argument.
+
+-------------------------------------------------------------------
 Thu Aug 15 17:44:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 18.3

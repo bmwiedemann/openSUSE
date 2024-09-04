@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch300:       fail2ban-opensuse-service-sfw.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
+# PATCH-FIX-OPENSUSE fail2ban-fix-openssh98.patch meissner@suse.com -- support openssh9.8 bsc#1230101
+Patch302:       fail2ban-fix-openssh98.patch
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  python-rpm-macros
@@ -140,6 +142,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %patch -P 300 -p1
 %endif
 %patch -P 301 -p1
+%patch -P 302 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \

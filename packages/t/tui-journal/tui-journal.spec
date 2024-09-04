@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           tui-journal
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Write and manage journals/notes from the terminal
 License:        MIT

@@ -587,4 +587,39 @@
   - Bump hacking</comment>
     <requestid>1171465</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ac3b0182ce15043be256f62ae5f84113</srcmd5>
+    <version>7.3.0</version>
+    <time>1725448991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.3.0
+  - Make imageutils a directory
+  - reno: Update master for unmaintained/wallaby
+  - Import format_inspector from nova
+  - Fix qcow2 feature flag checks (for the future)
+  - Add stream-based detection
+  - Update master for stable/2024.1
+  - Fix coverage target
+  - Test cover target in CI
+  - Add a function to trim scope out of ipv6 addr
+  - Reinstate VMDK safety check coverage
+  - Support VMDK sparse with footer
+  - Add GPT/MBR inspector
+  - Refactor some things for oslo
+  - netutils: Explicitly require INET_ATON
+  - Add release note for format_inspector
+  - Make VMDKInspector support non-sparse formats
+  - Imported Translations from Zanata
+  - Remove old excludes
+  - Make FileInspector an ABC
+  - Add region-complete signaling for inspectors
+  - Modularize image safety checks
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/xena
+
+- remove mock dependency
+- fix requires</comment>
+    <requestid>1198460</requestid>
+  </revision>
 </revisionlist>

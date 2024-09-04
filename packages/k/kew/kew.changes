@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:48:16 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.7.2
+  * Add capability to remove the currently playing song from the
+    playlist. Press space bar to play the next song in the list.
+  * Scrolling now stops immediately after the key is released.
+  * Better reset of the terminal at program exit.
+  * MPRIS widgets are now updated when switching songs while paused
+  * When pressing update library ("u"), it now remembers which
+    files are enqueued.
+  * No more ugly scroll back buffer in the terminal.
+
+-------------------------------------------------------------------
 Mon Aug 26 01:27:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.7.0

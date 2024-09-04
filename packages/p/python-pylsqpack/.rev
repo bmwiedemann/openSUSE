@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1096920</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a64ea65ef653dd5a5dd1c05b9ed96336</srcmd5>
+    <version>0.3.18</version>
+    <time>1725448950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.18:
+  * add python 3.11 and 3.12 support
+  * Fix error message from Decoder_resume_header
+  * Fix Decoder.feed_header and .resume_header docs
+
+  * [vendor] update ls-qpack to version 1.0.3</comment>
+    <requestid>1198046</requestid>
+  </revision>
 </revisionlist>

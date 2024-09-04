@@ -17,7 +17,7 @@
 
 
 Name:           gap-patternclass
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        GAP: Permutation pattern class
 License:        GPL-2.0-or-later
@@ -43,7 +43,7 @@ passing networks. Both ways will build the same language, i.e. the
 same automaton.
 
 %prep
-%autosetup -n PatternClass-%version
+%autosetup -n PatternClass-v%version
 
 %build
 

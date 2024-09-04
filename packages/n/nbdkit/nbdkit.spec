@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.40.1
+Version:        1.40.2
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -49,7 +49,7 @@ BuildRequires:  xorriso
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(ext2fs)
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
@@ -105,7 +105,6 @@ This package contains the %{name} server with no plugins or filters.
 
 %package basic-plugins
 Summary:        Basic plugins for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-data-plugin = %{version}-%{release}
 Provides:       %{name}-eval-plugin = %{version}-%{release}
@@ -145,8 +144,6 @@ nbdkit-info-plugin          Serves client and server information.
 
 nbdkit-memory-plugin        A virtual memory plugin.
 
-nbdkit-null-plugin          A null (bitbucket) plugin.
-
 nbdkit-ondemand-plugin      Creates filesystems on demand.
 
 nbdkit-ones-plugin          Fill disk with repeated 0xff or other bytes.
@@ -167,20 +164,10 @@ nbdkit-zero-plugin          Zero-length plugin for testing.
 
 %package example-plugins
 Summary:        Example plugins for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description example-plugins
 This package contains example plugins for %{name}.
-
-
-
-
-
-
-
-
-
 
 
 
@@ -189,7 +176,6 @@ This package contains example plugins for %{name}.
 
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       jq
 Requires:       podman
@@ -199,11 +185,11 @@ This package contains Containerized Data Import support for %{name}.
 
 %package curl-plugin
 Summary:        HTTP/FTP (cURL) plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
+
 
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
@@ -221,7 +207,6 @@ using %{name}.
 
 %package guestfs-plugin
 Summary:        libguestfs plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description guestfs-plugin
@@ -229,7 +214,6 @@ This package is a libguestfs plugin for %{name}.
 
 %package linuxdisk-plugin
 Summary:        Virtual Linux disk plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 # for mke2fs
 Requires:       e2fsprogs
@@ -237,17 +221,8 @@ Requires:       e2fsprogs
 %description linuxdisk-plugin
 This package is a virtual Linux disk plugin for %{name}.
 
-%package gzip-plugin
-Summary:        GZip plugin for %{name}
-
-Requires:       %{name}-server = %{version}-%{release}
-
-%description gzip-plugin
-This package is a gzip plugin for %{name}.
-
 %package nbd-plugin
 Summary:        NBD proxy / forward plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description nbd-plugin
@@ -256,7 +231,6 @@ to another NBD server.
 
 %package python-plugin
 Summary:        Python 3 plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description python-plugin
@@ -264,7 +238,6 @@ This package lets you write Python 3 plugins for %{name}.
 
 %package ssh-plugin
 Summary:        SSH plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description ssh-plugin
@@ -272,7 +245,6 @@ This package contains SSH support for %{name}.
 
 %package tmpdisk-plugin
 Summary:        Remote temporary filesystem disk plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 # For mkfs and mke2fs (defaults).
 Requires:       e2fsprogs
@@ -285,7 +257,6 @@ This package is a remote temporary filesystem disk plugin for %{name}.
 
 %package vddk-plugin
 Summary:        VMware VDDK plugin for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description vddk-plugin
@@ -294,7 +265,6 @@ VMware VDDK for accessing VMware disks and servers.
 
 %package basic-filters
 Summary:        Basic filters for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-blocksize-filter = %{version}-%{release}
 Provides:       %{name}-blocksize-policy-filter = %{version}-%{release}
@@ -336,8 +306,8 @@ Provides:       %{name}-truncate-filter = %{version}-%{release}
 
 %description basic-filters
 This package contains filters for %{name} which only depend on simple
-C libraries: glibc, gnutls.  Other filters for nbdkit with more
-complex dependencies are packaged separately.
+C libraries: glibc, gnutls, zlib, and zstd.  Other filters for nbdkit
+with more complex dependencies are packaged separately.
 
 nbdkit-blocksize-filter     Adjusts block size of requests sent to plugins.
 
@@ -368,6 +338,8 @@ nbdkit-exportname-filter    Adjusts export names between client and plugin.
 nbdkit-extentlist-filter    Places extent list over a plugin.
 
 nbdkit-fua-filter           Modifies flush behaviour in plugins.
+
+nbdkit-gzip-filter          Decompress a .gz file.
 
 nbdkit-ip-filter            Filters clients by IP address.
 
@@ -413,25 +385,28 @@ nbdkit-scan-filter          Prefetch data ahead of sequential reads.
 
 nbdkit-spinning-filter     Add seek delays to simulate a spinning hard disk.
 
-nbdkit-stats-filter         Displays statistics about operations.
-
 nbdkit-swab-filter          Filter for swapping byte order.
 
 nbdkit-tls-fallback-filter  TLS protection filter.
 
 nbdkit-truncate-filter      Truncates, expands, rounds up or rounds down size.
 
-%package gzip-filter
-Summary:        GZip filter for %{name}
-
+%package bzip2-filter
+Summary:        BZip2 filter for %{name}
 Requires:       %{name}-server = %{version}-%{release}
 
-%description gzip-filter
-This package is a gzip filter for %{name}.
+%description bzip2-filter
+This package is a bzip2 filter for %{name}.
+
+%package stats-filter
+Summary:        Statistics filter for %{name}
+Requires:       %{name}-server = %{version}-%{release}
+
+%description stats-filter
+Display statistics about operations.
 
 %package tar-filter
 Summary:        Tar archive filter for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       tar
 
@@ -440,7 +415,6 @@ This package is a tar archive filter for %{name}.
 
 %package xz-filter
 Summary:        XZ filter for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 
 %description xz-filter
@@ -448,7 +422,6 @@ This package is the xz filter for %{name}.
 
 %package devel
 Summary:        Development files and documentation for %{name}
-
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       pkgconfig
 
@@ -678,6 +651,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-exportname-filter.so
 %{_libdir}/%{name}/filters/nbdkit-extentlist-filter.so
 %{_libdir}/%{name}/filters/nbdkit-fua-filter.so
+%{_libdir}/%{name}/filters/nbdkit-gzip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-ip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-log-filter.so
@@ -700,7 +674,6 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-rotational-filter.so
 %{_libdir}/%{name}/filters/nbdkit-scan-filter.so
 %{_libdir}/%{name}/filters/nbdkit-spinning-filter.so
-%{_libdir}/%{name}/filters/nbdkit-stats-filter.so
 %{_libdir}/%{name}/filters/nbdkit-swab-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
 %{_libdir}/%{name}/filters/nbdkit-truncate-filter.so
@@ -719,6 +692,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-exportname-filter.1*
 %{_mandir}/man1/nbdkit-extentlist-filter.1*
 %{_mandir}/man1/nbdkit-fua-filter.1*
+%{_mandir}/man1/nbdkit-gzip-filter.1*
 %{_mandir}/man1/nbdkit-ip-filter.1*
 %{_mandir}/man1/nbdkit-limit-filter.1*
 %{_mandir}/man1/nbdkit-log-filter.1*
@@ -741,14 +715,17 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-rotational-filter.1*
 %{_mandir}/man1/nbdkit-scan-filter.1*
 %{_mandir}/man1/nbdkit-spinning-filter.1*
-%{_mandir}/man1/nbdkit-stats-filter.1*
 %{_mandir}/man1/nbdkit-swab-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
 %{_mandir}/man1/nbdkit-truncate-filter.1*
 
-%files gzip-filter
-%{_libdir}/%{name}/filters/nbdkit-gzip-filter.so
-%{_mandir}/man1/nbdkit-gzip-filter.1*
+%files bzip2-filter
+%{_libdir}/%{name}/filters/nbdkit-bzip2-filter.so
+%{_mandir}/man1/nbdkit-bzip2-filter.1*
+
+%files stats-filter
+%{_libdir}/%{name}/filters/nbdkit-stats-filter.so
+%{_mandir}/man1/nbdkit-stats-filter.1*
 
 %files tar-filter
 %{_libdir}/%{name}/filters/nbdkit-tar-filter.so

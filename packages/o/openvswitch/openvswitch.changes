@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 28 05:18:36 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Update openvswitch to 3.3.1. For a list of changes, check
+  https://github.com/openvswitch/ovs/blob/v3.3.1/NEWS
+- Update OVN to 24.03.3. For a list of changes, check
+  https://github.com/ovn-org/ovn/blob/v24.03.3/NEWS
+- Drop upstream fixed patches,
+    * CVE-2023-1668.patch
+    * CVE-2023-3152.patch
+    * CVE-2023-5366.patch
+    * openvswitch-2.17.8-gcc14-build-fix.patch
+    * openvswitch-CVE-2023-3966.patch
+- Updated the patch for version v3.3.1
+    * install-ovsdb-tools.patch 
+
+-------------------------------------------------------------------
 Tue Jul 30 13:50:21 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

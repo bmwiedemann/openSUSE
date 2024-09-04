@@ -17,14 +17,14 @@
 
 
 Name:           python-pymssql
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        A simple database interface to MS-SQL for Python
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://pymssql.org
 Source:         https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3.0.7}
+BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}

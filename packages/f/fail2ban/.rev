@@ -676,4 +676,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
     <comment></comment>
     <requestid>1151115</requestid>
   </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>db34a56a25dda572534fd4eaa1fbe2d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1725449252</time>
+    <user>dimstar_suse</user>
+    <comment>- fail2ban-fix-openssh98.patch: fix to work with openssh 9.8 (bsc#1230101) (forwarded request 1198656 from msmeissn)</comment>
+    <requestid>1198657</requestid>
+  </revision>
 </revisionlist>

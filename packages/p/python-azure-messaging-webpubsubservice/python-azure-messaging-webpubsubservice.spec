@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-messaging-webpubsubservice
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Microsoft Azure WebPubSub Service Client Library for Python
 License:        MIT

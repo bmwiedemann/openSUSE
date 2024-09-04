@@ -1,0 +1,58 @@
+From 1a820f5eacd76a03dada036e94a5457d08aaf501 Mon Sep 17 00:00:00 2001
+From: Apprentice-Alchemist
+ <53486764+Apprentice-Alchemist@users.noreply.github.com>
+Date: Tue, 21 May 2024 22:27:45 +0200
+Subject: [PATCH] [mysql] Fix compilation.
+References: gh#HaxeFoundation/hashlink#686
+
+---
+ libs/mysql/my_api.c  | 1 +
+ libs/mysql/socket.c  | 2 +-
+ libs/sqlite/sqlite.c | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libs/mysql/my_api.c b/libs/mysql/my_api.c
+index d606438bb..cb70e5519 100644
+--- a/libs/mysql/my_api.c
++++ b/libs/mysql/my_api.c
+@@ -20,6 +20,7 @@
+  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  * DEALINGS IN THE SOFTWARE.
+  */
++#define _GNU_SOURCE
+ #include <stdlib.h>
+ #include <memory.h>
+ #include <stdio.h>
+diff --git a/libs/mysql/socket.c b/libs/mysql/socket.c
+index 51ab16579..17daa7ac0 100644
+--- a/libs/mysql/socket.c
++++ b/libs/mysql/socket.c
+@@ -19,6 +19,7 @@
+  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  * DEALINGS IN THE SOFTWARE.
+  */
++#define _GNU_SOURCE
+ #include "socket.h"
+ #include <string.h>
+ 
+@@ -29,7 +30,6 @@
+ #	define HANDLE_EINTR(x)
+ 
+ #else
+-#	define _GNU_SOURCE
+ #	include <sys/types.h>
+ #	include <sys/socket.h>
+ #	include <sys/time.h>
+diff --git a/libs/sqlite/sqlite.c b/libs/sqlite/sqlite.c
+index 587465819..c40f96b4b 100644
+--- a/libs/sqlite/sqlite.c
++++ b/libs/sqlite/sqlite.c
+@@ -117,7 +117,7 @@ HL_PRIM sqlite_result *HL_NAME(request)(sqlite_database *db, vbyte *sql ) {
+ 	r->finalize = HL_NAME(finalize_result);
+ 	r->db = NULL;
+ 
+-	if( sqlite3_prepare16_v2(db->db, sql, -1, &r->r, &tl) != SQLITE_OK ) {
++	if( sqlite3_prepare16_v2(db->db, sql, -1, &r->r, (const void**)&tl) != SQLITE_OK ) {
+ 		HL_NAME(error)(db->db, false);
+ 	}
+ 

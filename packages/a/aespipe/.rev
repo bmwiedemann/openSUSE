@@ -154,4 +154,12 @@
     <comment></comment>
     <requestid>1141665</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b2b35da648cb43fdfef0ee402a735bd8</srcmd5>
+    <version>2.4h</version>
+    <time>1725448977</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.4h (forwarded request 1198272 from simonlm)</comment>
+    <requestid>1198377</requestid>
+  </revision>
 </revisionlist>

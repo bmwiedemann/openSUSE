@@ -33,6 +33,8 @@ Patch03:        0001-cmake-Don-t-build-the-interpreter-on-ARM.patch
 Patch04:        0001-cmake-Don-t-run-the-version-test-if-the-interpreter-.patch
 # PATCH-FIX-OPENSUSE
 Patch05:        0001-fix-rpath.patch
+# PATCH-FIX-UPSTREAM https://github.com/HaxeFoundation/hashlink/pull/686
+Patch06:        fix_incompatible-pointer-types.patch
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  mbedtls-devel < 3

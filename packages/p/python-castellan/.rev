@@ -314,4 +314,26 @@
   - Raise ManagedObjectNotFoundError in MockKeyManager</comment>
     <requestid>1178601</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0a398d39418f7d55307a670cb6affb39</srcmd5>
+    <version>5.1.1</version>
+    <time>1725449009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.1
+  - reno: Update master for unmaintained/xena
+  - Remove unused test hook scripts
+  - reno: Update master for unmaintained/victoria
+  - vault: Hide values used for authentication
+  - reno: Update master for unmaintained/wallaby
+  - Use upper-constraint in doc generation
+  - pre-commit: Bump versions
+  - reno: Update master for unmaintained/zed
+  - Fix vault key managed fixed broken by a typo
+  - vault: Add timeout option
+  - Remove old excludes
+  - Update master for stable/2024.1
+  - pre-commit: Integrate bandit
+  - Drop wrong documented choices for barbican_endpoint_type</comment>
+    <requestid>1198494</requestid>
+  </revision>
 </revisionlist>

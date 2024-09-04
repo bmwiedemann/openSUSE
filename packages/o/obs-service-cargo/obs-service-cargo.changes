@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  3 14:26:47 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update vendored deps to resolve boo#1230083
+
+-------------------------------------------------------------------
 Mon Jul 29 00:00:00 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Bump constraints, zsystems still keeps failing due to OOM

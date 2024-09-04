@@ -264,4 +264,41 @@
   - Add grouping support in etcd to compatibility matrix.</comment>
     <requestid>1136722</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4c8299f0ccc2bf6c5c6363402932b2d8</srcmd5>
+    <version>6.3.0</version>
+    <time>1725448959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.3.0
+  - Define characteristics of etcd/etcd3gw driver
+  - fix: correctly pass ssl_ca_certs to sentinel when enabled
+  - Remove old excludes
+  - Add requirements check job
+  - Loose lower bound of packaging library version
+  - Replace use of testtools.testcase.TestSkipped
+  - Remove use of distutils
+  - pre-commit: Bump version, add doc8
+  - reno: Update master for unmaintained/victoria
+  - Remove unnecessary dependencies
+  - reno: Update master for unmaintained/wallaby
+
+- update to version 6.1.0
+  - redis: support healthcheck interval
+  - Replace en-dash with ASCII minus in a docstring
+  - Update python classifier in setup.cfg
+  - Move driver tests to drivers directory
+  - Redis: Fix missing ssl/auth options for sentinel
+  - Bump hacking
+  - Prevent potential ReDoS attack
+  - Make authentication/SSL for redis sentinel optional
+  - tox: Bump python runtime versions in the default envlist
+  - redis: Fix wrong type used to parse socket_keepalive
+  - Change StrictRedis usage to Redis
+  - Remove etcd3 drvier
+  - Redis: Allow customizing ssl ca certificates path
+  - Fix handling of timeout and blocking
+  - redis: Fix parsing of sentinel fallbacks containing IPv6 address
+  - Cleanup py27 support</comment>
+    <requestid>1198356</requestid>
+  </revision>
 </revisionlist>

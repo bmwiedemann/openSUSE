@@ -17,7 +17,7 @@
 
 
 Name:           gap-forms
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        GAP: Sesquilinear and quadratic forms
 License:        GPL-2.0-or-later

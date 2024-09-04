@@ -305,4 +305,19 @@
   - Bump hacking</comment>
     <requestid>1161173</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b6650275baf51f646c08af8a951e8842</srcmd5>
+    <version>5.6.0</version>
+    <time>1725448969</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.6.0
+  - pre-commit: Remove outdated comment
+  - reno: Update master for unmaintained/xena
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - Remove old excludes
+  - reno: Update master for unmaintained/wallaby</comment>
+    <requestid>1198366</requestid>
+  </revision>
 </revisionlist>

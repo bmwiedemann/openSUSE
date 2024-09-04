@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.21.3
+Version:        2.23.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -74,6 +74,7 @@ MacOS and Windows 7+ are supported.
 %package        fish-completion
 Summary:        Fish Completion for %{name}
 Supplements:    (%{name} and fish)
+Requires:       fastfetch
 Requires:       fish
 BuildArch:      noarch
 
@@ -84,10 +85,21 @@ Fish command-line completion support for %{name}.
 Summary:        Bash Completion for %{name}
 Supplements:    (%{name} and bash-completion)
 Requires:       bash-completion
+Requires:       fastfetch
 BuildArch:      noarch
 
 %description    bash-completion
 Bash command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Supplements:    (%{name} and zsh)
+Requires:       fastfetch
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup
@@ -116,5 +128,10 @@ Bash command-line completion support for %{name}.
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/fastfetch.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_fastfetch
 
 %changelog

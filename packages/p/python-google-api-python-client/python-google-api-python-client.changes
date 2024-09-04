@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Sep  3 11:22:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.143.0
+  * **accessapproval:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **batch:** Update the api
+  * **chat:** Update the api
+  * **cloudasset:** Update the api
+  * **cloudkms:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **customsearch:** Update the api
+  * **dataflow:** Update the api
+  * **dataplex:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **firebasedynamiclinks:** Update the api
+  * **firebaseml:** Update the api
+  * **gkeonprem:** Update the api
+  * **looker:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **redis:** Update the api
+  * **searchads360:** Update the api
+  * **servicenetworking:** Update the api
+  * **solar:** Update the api
+  * **sqladmin:** Update the api
+  * **storage:** Update the api
+  * **translate:** Update the api
+  * **workflowexecutions:** Update the api
+  * **workflows:** Update the api
+  * **workstations:** Update the api
+- from version 2.142.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidpublisher:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **datamigration:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dlp:** Update the api
+  * **documentai:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **integrations:** Update the api
+  * **manufacturers:** Update the api
+  * **migrationcenter:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkmanagement:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **redis:** Update the api
+  * **run:** Update the api
+  * **searchads360:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceusage:** Update the api
+  * **spanner:** Update the api
+  * **vmmigration:** Update the api
+  * **youtube:** Update the api
+- from version 2.141.0
+  * **aiplatform:** Update the api
+  * **androidmanagement:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquerydatapolicy:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **bigquery:** Update the api
+  * **certificatemanager:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudcontrolspartner:** Update the api
+  * **clouddeploy:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **domains:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **notebooks:** Update the api
+  * **realtimebidding:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **servicecontrol:** Update the api
+  * **spanner:** Update the api
+  * **storage:** Update the api
+  * **vault:** Update the api
+  * **walletobjects:** Update the api
+  * **workstations:** Update the api
+  * **cloudkms:** Update the api
+  * **pubsub:** Update the api
+  * **secretmanager:** Update the api
+- from version 2.140.0
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudfunctions:** Update the api
+  * **compute:** Update the api
+  * **containeranalysis:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **firebaseml:** Update the api
+  * **healthcare:** Update the api
+  * **merchantapi:** Update the api
+  * **networkservices:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **sqladmin:** Update the api
+  * **cloudkms:** Update the api
+
+-------------------------------------------------------------------
 Wed Jul 31 10:12:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.139.0

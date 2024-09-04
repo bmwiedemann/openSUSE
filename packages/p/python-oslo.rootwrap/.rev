@@ -241,4 +241,16 @@
   - Drop Beta development status</comment>
     <requestid>1161179</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a87ab32cb2e356fe3cdd78aecf7fb39</srcmd5>
+    <version>7.3.0</version>
+    <time>1725448958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.3.0
+  - Update master for stable/2024.1
+  - Remove old excludes
+  - reno: Update master for unmaintained/victoria
+  - Remove unused reno from test requirements</comment>
+    <requestid>1198355</requestid>
+  </revision>
 </revisionlist>

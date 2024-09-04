@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:26:58 UTC 2024 - cloud-devel@suse.de
+
+- update to version 7.3.0
+  - Update master for stable/2024.1
+  - Remove old excludes
+  - reno: Update master for unmaintained/victoria
+  - Remove unused reno from test requirements
+
+-------------------------------------------------------------------
 Sun Mar 24 20:03:33 UTC 2024 - cloud-devel@suse.de
 
 - update to version 7.2.0

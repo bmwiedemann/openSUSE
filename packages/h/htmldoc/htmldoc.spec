@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
+# CVE-2024-45508 [bsc#1230022], HTMLDOC before 1.9.19 has an out-of-bounds write in parse_paragraph in ps-pdf.cxx because of an attempt to strip leading whitespace from a whitespace-only node.
+Patch0:          htmldoc-CVE-2024-45508.patch
 BuildRequires:  cups-devel
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++

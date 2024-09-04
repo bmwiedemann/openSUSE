@@ -341,4 +341,15 @@
   - Bump hacking</comment>
     <requestid>1161174</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b0c98e3c8ef8acb2cf1705bd49d36713</srcmd5>
+    <version>6.4.0</version>
+    <time>1725448967</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.4.0
+  - reno: Update master for unmaintained/victoria
+  - Remove old excludes
+  - Update master for stable/2024.1</comment>
+    <requestid>1198365</requestid>
+  </revision>
 </revisionlist>

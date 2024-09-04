@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pysubs2
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Python library for editing subtitle files
 License:        MIT

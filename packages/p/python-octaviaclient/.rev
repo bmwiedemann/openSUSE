@@ -182,4 +182,19 @@
   - Update python classifier in setup.cfg</comment>
     <requestid>1161194</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>28c5a1211c55f79d2c9679d736eb8436</srcmd5>
+    <version>3.8.0</version>
+    <time>1725449029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.8.0
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/xena
+  - Support filtering amphora list by image ID
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/zed
+  - Update master for stable/2024.1
+  - Add SR-IOV support for members</comment>
+    <requestid>1198514</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  4 06:54:31 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to 1.6.9
+  This is the next service release to update the stable version 1.6.
+  It provides two regression fixes that were introduced in from the previous release. See the full changelog below.
+  * Fix regression where printing/scaling/rotating image attachments was broken (#9571)
+  * Fix regression where HTML messages were displayed unstyled (#9586)
+
+-------------------------------------------------------------------
 Tue Aug  6 15:14:35 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
 
 - update to 1.6.8

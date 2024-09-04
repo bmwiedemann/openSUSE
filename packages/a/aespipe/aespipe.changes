@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  2 09:26:31 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2.4h:
+  * Added assembler implementations of AES for 32-bit arm and 64-bit arm64
+
+  0001-Fix-Build.patch: fix the build failure of Leap 15.5 and 15.6 on OBS
+
+-------------------------------------------------------------------
 Fri Jan 26 03:02:12 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.4g:

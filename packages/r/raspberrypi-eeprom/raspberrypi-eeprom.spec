@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-eeprom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        2023.10.30
+Version:        2024.06.05
 Release:        0
 Summary:        Raspberry Pi 4 and Pi 5 EEPROM firmware
 License:        SUSE-Firmware
@@ -57,6 +57,9 @@ First stage bootloader fimware blobs for Raspberry Pi 4 and Pi 5
 
 %prep
 %autosetup -p1
+
+# 'strings' not needed - https://github.com/raspberrypi/rpi-eeprom/commit/ef0cfffced1bbee8ae6755ddf58e478c3d8c8f05
+sed -i 's/die "strings not found./#die "strings not found./' rpi-eeprom-update
 
 %build
 

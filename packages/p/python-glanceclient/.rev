@@ -705,4 +705,14 @@ update to version 2.3.0
   - Tests: Fix original_only wrapper</comment>
     <requestid>1178607</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eafa8330723a60efac826bd5604bf6e0</srcmd5>
+    <version>4.7.0</version>
+    <time>1725449017</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.7.0
+  - Add support for new location APIs
+  - Python3.12: do not use ssl.wrap_socket</comment>
+    <requestid>1198501</requestid>
+  </revision>
 </revisionlist>

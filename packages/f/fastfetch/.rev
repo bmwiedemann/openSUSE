@@ -737,4 +737,42 @@ Bugfixes:
     <comment></comment>
     <requestid>1194194</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5c4c85b0b2c566ada7f5bda39ed744de</srcmd5>
+    <version>2.23.0</version>
+    <time>1725449193</time>
+    <user>dimstar_suse</user>
+    <comment>- Make completion packages Require the main package
+- update to 2.23.0
+  Features:
+    * Support unity version detection (DE, Linux)
+    * Print model name in Battery keys if available (Battery)
+    * Add module Zpool
+    * Improve performance (Shell / Terminal, Linux)
+    * Support syntax of padded strings in --&lt;module&gt;-format. {variable&lt;padlength} and {variable&gt;padlength} are supported.
+        If pad length is greater than the length of the variable, the variable will be padded with spaces.
+            fastfetch -l none -s command --command-text 'echo 12345' --command-format 'output({1&lt;20})' prints Command: output(12345               )
+            fastfetch -l none -s command --command-text 'echo 12345' --command-format 'output({1&gt;20})' prints Command: output(               12345)
+        If pad length is less than the length of the variable, the variable will be truncated.
+  Bugfixes:
+    * Fix broken --list-presets
+    * Update zsh completion script
+    * Don't print * if defaultRouteOnly is set (NetIO)
+    * Fix Camera module incorrectly disabled on FreeBSD (Camera, FreeBSD)
+    * Fix hanging on screen 5.0 (Terminal)
+
+- update to 2.22.0
+  Features:
+    * Small performance improvements (Terminal, Editor)
+    * Improve arm32 and loongarch support (CPU, Linux)
+    * Ignore the parent process if env $FFTS_IGNORE_PARENT is set to 1 (Shell)
+    * Add code name of Apple M4 (CPU, Linux)
+    * Add ethernet speed rate detection support (LocalIP)
+    * Add zsh completion script
+    * Add Linglong package manager detection support (Packages, Linux)
+  Bugfixes:
+    * Fix tmux in linux TTY (Colors)
+    * Fix hang in WSL when custom format is used (Disk, Linux)</comment>
+    <requestid>1198549</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 01:42:06 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1229955 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API
+
+-------------------------------------------------------------------
 Fri May 31 02:41:29 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.8.1~2:

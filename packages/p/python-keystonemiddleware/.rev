@@ -333,4 +333,29 @@ update to version 4.9.0
   - External OAuth2.0 Authorization Server Support</comment>
     <requestid>1171417</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>05b2e75a36920ba1d9866019e445bc7b</srcmd5>
+    <version>10.7.1</version>
+    <time>1725449010</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 10.7.1
+  - reno: Update master for unmaintained/zed
+  - Remove old excludes
+
+- update to version 10.7.0
+  - Imported Translations from Zanata
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/wallaby
+  - Update master for stable/2024.1
+  - Remove six again
+  - reno: Update master for unmaintained/victoria
+
+- update to version 10.6.0
+  - Update master for stable/zed
+  - reno: Update master for unmaintained/yoga
+  - Update master for stable/2023.2
+  - Update python classifier in setup.cfg
+  - Python 3.12: do not use utcnow()</comment>
+    <requestid>1198495</requestid>
+  </revision>
 </revisionlist>

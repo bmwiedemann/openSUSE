@@ -19,10 +19,10 @@
 %define sover 5
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.6
+Version:        1.6.2
 Release:        0
 Summary:        IMA/EVM control utility
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
 Source0:        https://github.com/linux-integrity/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
@@ -106,6 +106,8 @@ make %{?_smp_mflags} check
 %files -n %{libname}
 %doc README NEWS AUTHORS
 %license LICENSES.txt
+%license COPYING
+%license COPYING.LGPL
 %{_libdir}/libimaevm.so.%{sover}*
 
 %files -n evmctl

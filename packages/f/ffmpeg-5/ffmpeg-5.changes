@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  1 18:04:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+  [boo#1229338]
+- Add 0001-avutil-hwcontext_vaapi-use-the-correct-type-for-VASu.patch
+  (resolve FTBFS on i586)
+
+-------------------------------------------------------------------
 Sun Aug 18 01:42:12 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-5-CVE-2024-7272.patch:

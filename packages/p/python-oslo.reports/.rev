@@ -218,4 +218,17 @@
   - Make greenlet optional</comment>
     <requestid>1171467</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>45c1ce3f274692ab833c846d9293afd4</srcmd5>
+    <version>3.4.0</version>
+    <time>1725448976</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Handle-shell_completion-option-in-test-suite.patch
+
+- update to version 3.4.0
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - Remove old excludes</comment>
+    <requestid>1198557</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:03:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.2
+  * Correctly calculate starting offset for retries of ranged reads (#450)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Mon Jun 24 11:55:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.1

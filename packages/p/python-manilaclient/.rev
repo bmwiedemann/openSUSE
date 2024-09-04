@@ -519,4 +519,22 @@ update to version 1.10.0
   - Remove --nova-net-id option</comment>
     <requestid>1178610</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>003d5b2222646967fde6d797d5cb2d11</srcmd5>
+    <version>5.0.0</version>
+    <time>1725449026</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Remove old excludes
+  - Replace OS_TENANT_NAME
+  - Handle empty metadata properly in filter/list
+  - Add new filter options for share server list
+  - Remove support for Identity v2 API
+  - Remove unused simplejson
+  - Add &quot;--wait&quot; option for creating/promoting/deleting a share replicas
+  - Fix show info about share network
+  - Added &quot;--wait&quot; option for creating/deleting a share group snapshot
+  - Don't set availability_zone for 2.32 version of api</comment>
+    <requestid>1198511</requestid>
+  </revision>
 </revisionlist>

@@ -149,4 +149,12 @@ near future.</comment>
     <comment>nbdkit update to version 1.40.1</comment>
     <requestid>1191767</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1923840b365e167315e3b146fc5e5842</srcmd5>
+    <version>1.40.2</version>
+    <time>1725449206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198586</requestid>
+  </revision>
 </revisionlist>

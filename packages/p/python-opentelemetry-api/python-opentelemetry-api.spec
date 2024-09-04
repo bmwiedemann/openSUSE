@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-opentelemetry-api
-Version:        1.25.0
+Name:           python-opentelemetry-api%{?psuffix}
+Version:        1.27.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
@@ -40,9 +49,11 @@ Requires:       python-importlib-metadata
 %if %{python_version_nodots} < 37
 Requires:       python-aiocontextvars
 %endif
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module opentelemetry-api = %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils == 0.48b0}
 BuildRequires:  %{python_module pytest}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -51,22 +62,26 @@ OpenTelemetry Python API
 %prep
 %setup -q -n opentelemetry_api-%{version}
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-# ignore some tests because we don't have opentelemetry.test module
-# gh#open-telemetry/opentelemetry-python#2263
-%pytest --ignore tests/util/test_once.py --ignore tests/logs/test_logger_provider.py --ignore tests/logs/test_proxy.py --ignore tests/metrics/test_meter_provider.py --ignore tests/trace/test_globals.py --ignore tests/trace/test_proxy.py
+%pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/opentelemetry
 %{python_sitelib}/opentelemetry_api-%{version}*-info
+%endif
 
 %changelog

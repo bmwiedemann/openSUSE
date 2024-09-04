@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package zlib-ng
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,7 +30,7 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.1.6
+Version:        2.2.1
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib

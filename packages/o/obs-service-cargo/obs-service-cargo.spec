@@ -21,10 +21,10 @@ Summary:        OBS Source Service and utilities for Rust software packaging
 License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
-URL:            https://github.com/Firstyear/%{name}
+URL:            https://github.com/openSUSE-Rust/%{name}
 Version:        1.3.6
 Release:        0
-Source0:        https://github.com/Firstyear/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/openSUSE-Rust/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging

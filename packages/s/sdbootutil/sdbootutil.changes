@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 03 12:12:06 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240903.81f1f40:
+  * Generate new predictions for update_all_entries
+  * Use raw option in jq update all entries
+
+-------------------------------------------------------------------
 Fri Aug 30 13:57:35 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240830.7f696c8:

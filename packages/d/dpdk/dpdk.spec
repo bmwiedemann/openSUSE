@@ -1,5 +1,5 @@
 #
-# spec file for package dpdk
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,25 +18,24 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%define aarch64_machine armv8a
+%define aarch64_machine armv8-a
 %define exclusive_arch aarch64 x86_64 ppc64le
 %define name_tag %{nil}
 %define summary_tag %{nil}
 %if "%{flavor}" == "thunderx"
 %define name_tag -thunderx
 %define summary_tag (thunderx)
-%define aarch64_machine thunderx
 %define exclusive_arch aarch64
 %endif
 # http://doc.dpdk.org/guides-22.11/linux_gsg/build_dpdk.html#adjusting-build-options
 %define platform generic
 %define machine  auto
 %ifarch aarch64
-%define machine %{aarch64_machine2}
+%define machine %{aarch64_machine}
 %endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
-%define maj 23
+%define maj 24
 %define min 0
 #%%define lname libdpdk-%%{maj}_%%{min}
 %define lname libdpdk-%{maj}
@@ -46,18 +45,15 @@
 %bcond_without tools
 #
 Name:           dpdk%{name_tag}
-Version:        22.11.6
+Version:        23.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Libraries
 URL:            https://www.dpdk.org/
 Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
-Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-fix-cpu-compatibility.patch
-Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
-Patch100:       kni-fix-build-with-Linux-6.10.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -160,15 +156,6 @@ Example applications utilizing the Data Plane Development Kit, such
 as L2 and L3 forwarding.
 %endif
 
-%package kmp
-Summary:        DPDK KNI kernel module %{summary_tag}
-Group:          System/Kernel
-BuildRequires:  %{kernel_module_package_buildreqs}
-%suse_kernel_module_package -p %{_sourcedir}/preamble pae 64kb
-
-%description kmp
-The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the Linux* control plane.
-
 %define sdkdir  %{_datadir}/dpdk
 %define docdir  %{_docdir}/dpdk
 %define incdir %{_includedir}/dpdk
@@ -232,16 +219,12 @@ for flavor in %{flavors_to_build}; do
     examples=""
 done
 
-# Fix Kernel modules on Factory (/usr merge)
-%if 0%{?suse_version} > 1550
-mkdir -p %{buildroot}%{_prefix}/lib
-mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
-%endif
-
 # Fix documentation
 mkdir -p %{buildroot}%docdir
 mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
 rm -r %{buildroot}/%docdir/dpdk/html/.doctrees
+# Fix man directory
+rm -r %{buildroot}%{_mandir}/man3/*
 
 # driver .so files often depend upon the bus drivers for their connect bus,
 # e.g. ixgbe depends on librte_bus_pci. This means that the bus drivers need
@@ -285,6 +268,7 @@ rm -v "%{buildroot}%{_libdir}/librte_*.so*"
 %{_bindir}/dpdk-pdump
 %{_bindir}/dpdk-proc-info
 %{_bindir}/dpdk-test*
+%{_bindir}/dpdk-graph*
 
 %files -n %{lname}
 %license license/gpl-2.0.txt license/lgpl-2.1.txt license/bsd-3-clause.txt

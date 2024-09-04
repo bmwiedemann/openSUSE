@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 02 11:53:27 UTC 2024 - aplanas@suse.com
+
+- Update vendored crates (bsc#1229952, bsc#1230029)
+  * rustix 0.37.25
+  * rustix 0.38.34
+  * shlex  1.3.0
+
+- Update to version 0.2.6+13:
+  * Enable test functional/iak-idevid-persisted-and-protected
+  * build(deps): bump uuid from 1.7.0 to 1.10.0
+  * build(deps): bump openssl from 0.10.64 to 0.10.66
+  * keylime-agent/src/revocation: Fix comment indentation
+  * keylime/crypto: Fix indentation of documentation comment
+  * build(deps): bump thiserror from 1.0.59 to 1.0.63
+  * build(deps): bump serde_json from 1.0.116 to 1.0.120
+  * dependabot: Extend to also monitor workflow actions
+  * ci: Disable Packit CI on CentOS Stream 9
+  * ci: use CODECOV_TOKEN when submitting coverage data
+  * revocation: Use into() for unfallible transformation
+  * secure_mount: Fix possible infinite loop
+  * error: Rename enum variants to avoid clippy warning
+
+-------------------------------------------------------------------
 Fri Jun 14 07:39:29 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.2.6~0:

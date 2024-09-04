@@ -279,4 +279,13 @@
   - Fix functional tests</comment>
     <requestid>1178605</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>54fe80c12d94a4ec965095246098dd78</srcmd5>
+    <version>7.0.0</version>
+    <time>1725449014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.0.0
+  - Remove support for certificate order</comment>
+    <requestid>1198499</requestid>
+  </revision>
 </revisionlist>

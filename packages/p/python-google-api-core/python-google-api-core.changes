@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 11:00:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.19.2
+  * Fail gracefully if could not import `rpc_status` module (#680)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Sat Jun 29 19:31:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.1:

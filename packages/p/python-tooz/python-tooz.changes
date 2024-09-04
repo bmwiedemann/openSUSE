@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:28:25 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.3.0
+  - Define characteristics of etcd/etcd3gw driver
+  - fix: correctly pass ssl_ca_certs to sentinel when enabled
+  - Remove old excludes
+  - Add requirements check job
+  - Loose lower bound of packaging library version
+  - Replace use of testtools.testcase.TestSkipped
+  - Remove use of distutils
+  - pre-commit: Bump version, add doc8
+  - reno: Update master for unmaintained/victoria
+  - Remove unnecessary dependencies
+  - reno: Update master for unmaintained/wallaby
+
+-------------------------------------------------------------------
+Fri May 10 08:42:07 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.1.0
+  - redis: support healthcheck interval
+  - Replace en-dash with ASCII minus in a docstring
+  - Update python classifier in setup.cfg
+  - Move driver tests to drivers directory
+  - Redis: Fix missing ssl/auth options for sentinel
+  - Bump hacking
+  - Prevent potential ReDoS attack
+  - Make authentication/SSL for redis sentinel optional
+  - tox: Bump python runtime versions in the default envlist
+  - redis: Fix wrong type used to parse socket_keepalive
+  - Change StrictRedis usage to Redis
+  - Remove etcd3 drvier
+  - Redis: Allow customizing ssl ca certificates path
+  - Fix handling of timeout and blocking
+  - redis: Fix parsing of sentinel fallbacks containing IPv6 address
+  - Cleanup py27 support
+  - Fix broken redis sentinel support
+  - redis: Add username
+  - Fix bindep for Debian 12
+  - Ignore .eggs directory
+  - Show coverage report
+  - Update the default etcd3gw endpoint to v3
+  - Add missing % in diagnostic_lines.append call
+  - redis: Make socket_connect_timeout configurable
+  - Accept float values for socket_timeout
+  - etcd3gw: Discover API version automatically
+  - Deprecate zake driver because of unmaintained library
+  - Fix sentinel tests not running
+
+-------------------------------------------------------------------
 Thu Jan  4 09:04:25 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.2.0

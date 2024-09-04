@@ -1,7 +1,8 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/keylime/rust-keylime.git</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <!-- <param name="versionformat">@PARENT_TAG@</param> -->
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <param name="revision">v0.2.6</param>
     <param name="revision">master</param>

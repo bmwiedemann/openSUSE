@@ -27,7 +27,7 @@
 %bcond_with yuv
 %endif
 Name:           libavif
-Version:        1.0.4
+Version:        1.1.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -112,8 +112,14 @@ This package holds the development files for libavif.
 
 %build
 %cmake \
- -DAVIF_CODEC_RAV1E:BOOL=ON \
- -DAVIF_CODEC_DAV1D:BOOL=ON \
+ -DAVIF_CODEC_AOM=SYSTEM \
+ -DAVIF_CODEC_DAV1D=SYSTEM \
+ -DAVIF_CODEC_RAV1E=SYSTEM \
+ -DAVIF_GTEST=SYSTEM \
+ -DAVIF_JPEG=SYSTEM \
+ -DAVIF_LIBXML2=SYSTEM \
+ -DAVIF_LIBYUV=SYSTEM \
+ -DAVIF_ZLIBPNG=SYSTEM \
  %if %{with aom}
  -DAVIF_CODEC_AOM:BOOL=ON \
  %endif

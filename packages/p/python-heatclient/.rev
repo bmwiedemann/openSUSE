@@ -678,4 +678,20 @@
   - Update master for stable/2023.1</comment>
     <requestid>1161185</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cff42d6fbd0ec8ac81ccbca876d219ce</srcmd5>
+    <version>4.0.0</version>
+    <time>1725449018</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.0
+  - Remove Python 3.8 support
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/victoria
+  - Fix storyboard links
+  - reno: Update master for unmaintained/zed
+  - Remove old excludes
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/wallaby</comment>
+    <requestid>1198504</requestid>
+  </revision>
 </revisionlist>

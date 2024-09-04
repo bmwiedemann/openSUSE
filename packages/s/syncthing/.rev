@@ -1474,4 +1474,12 @@
     <comment>v1.27.10</comment>
     <requestid>1192322</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>fcbc7bf849d50da2da97d3fe8d0c11f8</srcmd5>
+    <version>1.27.11</version>
+    <time>1725449202</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.27.11</comment>
+    <requestid>1198576</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 diff --git a/ovsdb/automake.mk b/ovsdb/automake.mk
-index eba713bb6..f1c40d019 100644
+index d484fe9de..c38a936ea 100644
 --- a/ovsdb/automake.mk
 +++ b/ovsdb/automake.mk
 @@ -88,8 +88,9 @@ CLEANFILES += ovsdb/ovsdb-server.1
@@ -13,7 +13,7 @@ index eba713bb6..f1c40d019 100644
  MAN_ROOTS += ovsdb/ovsdb-idlc.1
  CLEANFILES += ovsdb/ovsdb-idlc
  SUFFIXES += .ovsidl .ovsschema
-@@ -112,14 +113,18 @@ CLEANFILES += $(OVSIDL_BUILT)
+@@ -112,7 +113,11 @@ CLEANFILES += $(OVSIDL_BUILT)
  # at least for now.
  $(OVSIDL_BUILT): ovsdb/ovsdb-idlc.in python/ovs/dirs.py
  
@@ -23,11 +23,12 @@ index eba713bb6..f1c40d019 100644
  # ovsdb-doc
 +ovsdb_SCRIPTS += ovsdb/ovsdb-doc
  EXTRA_DIST += ovsdb/ovsdb-doc
+ FLAKE8_PYFILES += ovsdb/ovsdb-doc
  OVSDB_DOC = $(run_python) $(srcdir)/ovsdb/ovsdb-doc
- ovsdb/ovsdb-doc: python/ovs/dirs.py
- 
+@@ -121,7 +126,7 @@ ovsdb/ovsdb-doc: python/ovs/dirs.py
  # ovsdb-dot
  EXTRA_DIST += ovsdb/ovsdb-dot.in ovsdb/dot2pic
+ FLAKE8_PYFILES += ovsdb/ovsdb-dot.in ovsdb/dot2pic
 -noinst_SCRIPTS += ovsdb/ovsdb-dot
 +ovsdb_SCRIPTS += ovsdb/ovsdb-dot
  CLEANFILES += ovsdb/ovsdb-dot

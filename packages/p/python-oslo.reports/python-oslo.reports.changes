@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 16:43:45 UTC 2024 - cloud-devel@suse.de
+
+- added 0001-Handle-shell_completion-option-in-test-suite.patch
+
+-------------------------------------------------------------------
+Mon Sep  2 17:31:16 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - Remove old excludes
+
+-------------------------------------------------------------------
 Thu May  2 22:12:15 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.3.0

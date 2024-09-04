@@ -54,4 +54,16 @@
     <comment></comment>
     <requestid>1166108</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62215b056b811dff7a64f5bf6836bce3</srcmd5>
+    <version>2.3.1</version>
+    <time>1725448952</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Fix SP returning NULL (closes #441).
+  * Update FreeTDS to 1.4.22 (closes #895).
+  * Require Cython&gt;3.0.10.
+  * Add python 3.13 Linux wheels (closes #900).</comment>
+    <requestid>1198047</requestid>
+  </revision>
 </revisionlist>

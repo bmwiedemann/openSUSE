@@ -1,7 +1,7 @@
 #
 # spec file for package gap-grape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gap-grape
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        GAP: GRaph Algorithms using PErmutation groups
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/grape/
 #Git-Clone:     https://github.com/gap-packages/grape
-Source:         https://github.com/gap-packages/grape/releases/download/v%{version}/grape-%{version}.tar.gz
+Source:         https://github.com/gap-packages/grape/releases/download/v%version/grape-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz

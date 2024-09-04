@@ -103,4 +103,12 @@
     <comment>- Update to release 1.8</comment>
     <requestid>1193067</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>82b8d334b9c4ba04ef318e77bc12cc08</srcmd5>
+    <version>1.8</version>
+    <time>1725449192</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable zstd [boo#1229961]</comment>
+    <requestid>1198545</requestid>
+  </revision>
 </revisionlist>

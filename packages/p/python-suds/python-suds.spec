@@ -1,7 +1,7 @@
 #
 # spec file for package python-suds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-suds
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Lightweight SOAP client
 License:        LGPL-3.0-or-later
@@ -52,15 +51,13 @@ that fork that is releasing packages under the main suds package name
 package).
 
 %prep
-%setup -q -n suds-%{version}
+%autosetup -p1 -n suds-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
-# remove tests/ dir from global site-packages
-%python_expand rm -rf %{buildroot}/%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}/suds*
 
 %check

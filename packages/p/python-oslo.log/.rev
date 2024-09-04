@@ -479,4 +479,18 @@
   - Remove implementation for watch_log_file</comment>
     <requestid>1178602</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>10f3fe302158e81241404a8ec116e657</srcmd5>
+    <version>6.1.2</version>
+    <time>1725448966</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.1.2
+  - add a missing link to the release note
+  - Replace deprecated logging.warn() calls with logging.warning()
+  - Remove the usage of the Eventlet debug feature from oslo.log.
+  - Mock time.time_ns in test_rfc5424_isotime_format_no_microseconds for py3.13
+  - Add option to disable color
+  - Revert &quot;Remove the usage of the Eventlet debug feature from oslo.log.&quot;</comment>
+    <requestid>1198364</requestid>
+  </revision>
 </revisionlist>

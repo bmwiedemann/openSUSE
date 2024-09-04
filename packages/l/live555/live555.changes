@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 31 16:01:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024-08-01:
+  * Updated "ServerMediaSession::generateSDPDescription()" to
+    treat "time_t" as (long long).
+
+-------------------------------------------------------------------
 Thu Jul 18 14:19:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024-06-26:

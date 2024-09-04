@@ -17,13 +17,13 @@
 
 
 Name:           python-neutronclient
-Version:        11.2.0
+Version:        11.3.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-neutronclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-11.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-11.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 3.4.0
 BuildRequires:  python3-fixtures
@@ -58,7 +58,6 @@ Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-keystoneauth1 >= 3.8.0
 Requires:       python3-keystoneclient >= 3.8.0
 Requires:       python3-netaddr >= 0.7.18
-Requires:       python3-os-client-config >= 1.28.0
 Requires:       python3-osc-lib >= 1.12.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
@@ -95,8 +94,8 @@ Neutron's API.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=11.2.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=11.2.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=11.3.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=11.3.1 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

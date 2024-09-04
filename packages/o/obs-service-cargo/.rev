@@ -218,4 +218,13 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1191617</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>81b2a470b243f82f0a8ec905376ef695</srcmd5>
+    <version>1.3.6</version>
+    <time>1725449038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored deps to resolve boo#1230083
+</comment>
+    <requestid>1198553</requestid>
+  </revision>
 </revisionlist>

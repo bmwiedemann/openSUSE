@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri Feb 14 03:15:33 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Sys-Mmap/Changes
+
+  Todd Rinaldo, Feb 13 2020 v0.20
+  * Add use warnings to improve kwalitee
+  * Spelling error in manpage
+  * Add MAP_POPULATE support, which has been available since Linux Kernel 2.5
+
+-------------------------------------------------------------------
+Fri Mar  3 07:31:52 UTC 2017 - coolo@suse.com
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-Sys-Mmap/Changes
+
+  Scott Walters, Mar 1 2017 v0.19
+  * Update the FSF's mailing address in their license;
+    thanks to knnniggett
+    This also gets the CPAN and github versions in sync
+  
+  Scott Walters, Mar 1 2017 v0.18
+  * MAP_HUGETLB MAP_HUGE_2MB MAP_HUGE_1GB, MAP_NORESERVE
+    thanks to CowboyTim
+
+-------------------------------------------------------------------
+Sat Feb 25 07:32:19 UTC 2017 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Sys-Mmap/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 18:22:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Sys-Mmap/Changes
+
+  Todd Rinaldo August 23 2014 v0.17
+  * No changes - version bump for stable release.
+  
+  Todd Rinaldo August 22 2014 v0.17_01
+  * Track fixes in github now all issues are cleared from RT
+    https://github.com/toddr/Sys-Mmap/issues
+  * Turn off homepage in META since there really isn't one.
+  * Minor fix to COW patch related to XS spacing.
+  
+  Scott Walters, August 21 2014, v0.17_01
+  * RT 91483 - croak("variable is not a string") was hitting because it was being
+    too selective with SV type for modern perls.
+  * RT 96043 - Updates to fix perl 5.20 COW issues
+  * RT 96043 - Add MAP_LOCKED flag
+  * Update contributors docs.
+
+-------------------------------------------------------------------
+Sun Sep 04 10:07:02 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.16)
+

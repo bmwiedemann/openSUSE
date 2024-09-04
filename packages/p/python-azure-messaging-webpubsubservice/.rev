@@ -82,4 +82,15 @@
     <comment></comment>
     <requestid>1196006</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69c6813530911e70c5c65745185e3e09</srcmd5>
+    <version>1.2.1</version>
+    <time>1725448997</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1198284 from glaubitz)</comment>
+    <requestid>1198464</requestid>
+  </revision>
 </revisionlist>

@@ -169,4 +169,12 @@ is ready when we switch the default compiler.  Thanks! (forwarded request 118982
     <comment></comment>
     <requestid>1196428</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>862611052b3de273d30594fb63b35ff8</srcmd5>
+    <version>1.36</version>
+    <time>1725448976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.36 (bsc#1229277)</comment>
+    <requestid>1198551</requestid>
+  </revision>
 </revisionlist>

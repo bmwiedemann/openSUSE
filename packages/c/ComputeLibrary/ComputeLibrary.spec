@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 37
+%define so_ver 40
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        24.05
+Version:        24.08
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT

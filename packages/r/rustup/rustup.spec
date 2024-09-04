@@ -29,7 +29,7 @@ Obsoletes:      %{1}1.52%{?2:-%{2}} < %{rust_version} \
 Obsoletes:      %{1}1.51%{?2:-%{2}} < %{rust_version}
 
 Name:           rustup
-Version:        1.27.0~0
+Version:        1.27.1~0
 Release:        0
 Summary:        A tool for managing user Rust toolchains
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
@@ -37,9 +37,9 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/rust-lang/rustup
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 Source3:        %{name}-rpmlintrc
 BuildRequires:  cargo-packaging
+BuildRequires:  rust+cargo >= 1.79
 BuildRequires:  pkgconfig(openssl)
 # For system linker
 Requires:       gcc
@@ -72,7 +72,6 @@ managing multiple parallel toolchains in their environment.
 %prep
 %setup -q
 %setup -qa1
-cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking. Uncomment only if required.
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 

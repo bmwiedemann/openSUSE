@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-semantic-conventions
-Version:        0.44b0
+Version:        0.48b0
 Release:        0
 Summary:        OpenTelemetry Semantic Conventions
 License:        Apache-2.0
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Deprecated >= 1.2.6
+Requires:       python-opentelemetry-api >= 1.27.0
 BuildArch:      noarch
 %python_subpackages
 

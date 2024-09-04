@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:32:50 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.1.2
+  - add a missing link to the release note
+  - Replace deprecated logging.warn() calls with logging.warning()
+  - Remove the usage of the Eventlet debug feature from oslo.log.
+  - Mock time.time_ns in test_rfc5424_isotime_format_no_microseconds for py3.13
+  - Add option to disable color
+  - Revert "Remove the usage of the Eventlet debug feature from oslo.log."
+
+-------------------------------------------------------------------
 Tue Jun  4 20:02:08 UTC 2024 - cloud-devel@suse.de
 
 - update to version 6.0.0

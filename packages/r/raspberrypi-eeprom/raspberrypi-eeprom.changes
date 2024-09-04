@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:12:53 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2024.06.05
+- Skipped: 
+  * v2024.04.20-2712
+  * v2024.02.17-2712
+  * v2024.02.16-2712
+  * v.2024.01.05-2712
+  * v2023.12.06-2712
+- Refresh patch:
+  * rpi-eeprom-update-Use-tr-instead-of-strings.patch
+
+-------------------------------------------------------------------
 Thu Nov 23 10:12:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v2023.10.30:

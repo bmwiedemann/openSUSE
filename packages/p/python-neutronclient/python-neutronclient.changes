@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:16:15 UTC 2024 - cloud-devel@suse.de
+
+- update to version 11.3.1
+  - reno: Update master for unmaintained/victoria
+  - Fix insert and remove rule from firewall policy
+  - reno: Update master for unmaintained/xena
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/wallaby
+  - BGPVPN: Fix resource comparison
+
+-------------------------------------------------------------------
 Sun Mar 24 20:11:18 UTC 2024 - cloud-devel@suse.de
 
 - update to version 11.2.0

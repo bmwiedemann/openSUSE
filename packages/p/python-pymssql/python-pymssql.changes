@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 31 11:42:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Fix SP returning NULL (closes #441).
+  * Update FreeTDS to 1.4.22 (closes #895).
+  * Require Cython>3.0.10.
+  * Add python 3.13 Linux wheels (closes #900).
+
+-------------------------------------------------------------------
 Sun Apr  7 16:23:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0

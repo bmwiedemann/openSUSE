@@ -18,14 +18,14 @@
 
 
 %define skip_python2 1
-%define ovs_lname libopenvswitch-3_1-0
-%define ovn_lname libovn-23_03-0
-%define ovs_version 3.1.0
-%define ovn_version 23.03.0
+%define ovs_lname libopenvswitch-3_3-0
+%define ovn_lname libovn-24_03-0
+%define ovs_version 3.3.1
+%define ovn_version 24.03.3
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
-%define _dpdkv 22.11.1
+%define _dpdkv 23.11.1
 %define name_tag ${nil}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -77,20 +77,9 @@ Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
 Patch3:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 # PATCH-FEATURE-UPSTREAM install-ovsdb-tools.patch -- Install some tools required for building OVN
 Patch4:         install-ovsdb-tools.patch
-# PATCH-FIX-UPSTREAM CVE-2023-1668.patch
-Patch5:         CVE-2023-1668.patch
-# PATCH-FIX-UPSTREAM CVE-2023-5366.patch
-Patch6:         CVE-2023-5366.patch
-# Fix CVE-2023-3966 [bsc#1219465] -- Invalid memory access in Geneve with HW offload
-Patch7:         openvswitch-CVE-2023-3966.patch
-# boo#1225906: Restore build with gcc14
-Patch8:         openvswitch-2.17.8-gcc14-build-fix.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
-# PATCH-FIX-UPSTREAM CVE-2023-3152 [bsc#1212125] -- service monitor MAC flow is not rate limited
-Patch21:        CVE-2023-3152.patch
-# CVE-2021-36980 [bsc#1188524], use-after-free in decode_NXAST_RAW_ENCAP
 BuildRequires:  autoconf
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
@@ -183,7 +172,7 @@ License:        Apache-2.0
 Group:          System/Libraries
 %if %{with dpdk}
 Requires:       dpdk >= %{_dpdkv}
-Requires:       libdpdk-23 >= %{_dpdkv}
+Requires:       libdpdk-24 >= %{_dpdkv}
 %endif
 
 %description -n %{ovs_lname}
@@ -424,15 +413,10 @@ Devel libraries and headers for Open Virtual Network.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
 # remove python/ovs/dirs.py - this is generated from template to have proper paths
 rm python/ovs/dirs.py
 cd %{ovn_dir}
 %patch -P 20 -p1
-%patch -P 21 -p1
 
 %build
 mkdir %ovs_dir
@@ -1285,6 +1269,7 @@ fi
 %{_bindir}/ovn-appctl
 %{_bindir}/ovn-ic-nbctl
 %{_bindir}/ovn-ic-sbctl
+%{_bindir}/ovn-debug
 %dir %{_datadir}/ovn
 %dir %{_datadir}/ovn/scripts
 %{_datadir}/ovn/scripts/ovn-ctl
@@ -1307,6 +1292,7 @@ fi
 %{_mandir}/man8/ovn-nbctl.8%{?ext_man}
 %{_mandir}/man8/ovn-trace.8%{?ext_man}
 %{_mandir}/man8/ovn-sbctl.8%{?ext_man}
+%{_mandir}/man8/ovn-debug.8%{?ext_man}
 %config(noreplace) %{_sysconfdir}/logrotate.d/ovn
 %doc %ovn_dir/AUTHORS.rst %ovn_dir/CONTRIBUTING.rst %ovn_dir/NEWS %ovn_dir/README.rst
 %license %ovn_dir/LICENSE %ovn_dir/NOTICE

@@ -338,4 +338,14 @@
   * Ignore unknown fields in rest streaming.</comment>
     <requestid>1184029</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d6b3b2ed06608443b8c4b10aef052c09</srcmd5>
+    <version>2.19.2</version>
+    <time>1725449001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.19.2
+  * Fail gracefully if could not import `rpc_status` module (#680)
+- Adjust upstream source name in spec file (forwarded request 1198451 from glaubitz)</comment>
+    <requestid>1198474</requestid>
+  </revision>
 </revisionlist>

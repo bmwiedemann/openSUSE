@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue Sep 03 08:31:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.3 → 10.1.4
+
+-------------------------------------------------------------------
+Mon Sep 02 16:08:51 CEST 2024 - kastakhov <16296930+kastakhov@users.noreply.github.com>
+
+- Add note about guestOS values for vmware ovftools.
+
+-------------------------------------------------------------------
+Mon Sep 02 16:04:15 CEST 2024 - kastakhov <16296930+kastakhov@users.noreply.github.com>
+
+- Add note about guestOS values for vmware platform.
+
+-------------------------------------------------------------------
+Mon Sep 02 11:45:10 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed resize of dos table type on s390
+
+  On s390, parted is used to detect the partition table type.
+  In contrast to blkid the name for DOS tables is reported
+  as 'msdos' and not 'dos' which impacts several conditions
+  in the kiwi initrd code which checks for 'dos'. This commit
+  fixes the get_partition_table_type() method to return a
+  consistent table name for DOS tables. This Fixes bsc#1228729
+
+-------------------------------------------------------------------
+Mon Sep 02 09:08:05 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "remove dependency on /usr/bin/python"
+
+  This reverts commit 15b450188483b567ca10bb459bf50ed90e905bb7.
+  The change provided here entirely broke kiwi in OBS. With this
+  patch applied every image build in OBS fails with the following
+  message: 'line 1: /usr/sbin/kiwi: No such file or directory'
+
+-------------------------------------------------------------------
+Mon Sep 02 07:45:26 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.2 → 10.1.3
+
+-------------------------------------------------------------------
+Sun Sep 01 16:26:29 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bundle extension for archive types
+
+  When bundling result files that uses an archive type like
+  tbz or docker, kiwi creates them with the extension tar.xz/tar.gz
+  The bundler code only uses the extension from the last tuple
+  in a "." split which is wrong for "tar." filenames. This commit
+  adds an exception to the prefix rule for this output filenames
+  and Fixes #2628
+
+-------------------------------------------------------------------
+Sun Sep 01 15:53:29 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix ImageSystem mount procedure
+
+  The mount() method did not take custom partitions into account.
+  This commit fixes it. This Fixes #2619
+
+-------------------------------------------------------------------
+Tue Aug 27 11:35:17 CEST 2024 - Petr Gajdos <pgajdos@suse.cz>
+
+- remove dependency on /usr/bin/python
+
+-------------------------------------------------------------------
+Sun Aug 25 01:26:45 CEST 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Add support for isomd5sum for tagging iso files
+
+  The isomd5sum tool suite is used and available on all supported
+  distributions except SUSE distributions, and is necessary to produce
+  conformant ISOs for most Linux distributions.
+
+  This change adds support for isomd5sum tool suite for kiwi, though
+  it does not extend the kiwi-live dracut module to use it. The upstream
+  dracut dmsquash-live module must be used instead.
+
+  Co-authored-by: Dan Čermák <dcermak@suse.com>
+
+-------------------------------------------------------------------
+Sat Aug 24 13:13:18 CEST 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- kiwi/builder/live: Log the correct value for Application ID
+
+  Since it is now possible to set a custom application ID, we want
+  to see this when it is being used for the image.
+
+-------------------------------------------------------------------
+Sat Aug 24 13:05:52 CEST 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- kiwi/builder/live: Clean up leftover dracut configuration file
+
+  The existence of this file breaks installers on live media that
+  sync the full filesystem to disk and are not aware of this configuration
+  before generating the target system initramfs.
+
+-------------------------------------------------------------------
+Fri Aug 23 15:51:17 CEST 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Allow string versions and test "word" versions
+
+  There are descriptions out in the wild that use "non-numeric" versions
+  in their descriptions, particularly without separators for splitting.
+
+  This change switches all of this to strings rather than assuming
+  numbers and gracefully handles the single word case.
+
+-------------------------------------------------------------------
+Sat Aug 17 21:13:08 CEST 2024 - Holden R. Fried <holdenrf2021@gmail.com>
+
+- Add documentation for boxbuild tweaks
+
+-------------------------------------------------------------------
+Fri Aug 16 12:32:32 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed wrong log level on --logfile
+
+  When using --logfile, the log generated there matches the
+  stdout log (which without --debug, does not include any debug info).
+  This is in contrast to the automatically generated one in the
+  output directory, which always does and also not following the
+  way how it is documented. This Fixes #2503
+
+-------------------------------------------------------------------
+Mon Aug 12 09:23:06 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed arch flag for namedCollection
+
+  The arch flag in a namedCollection was not taken into account.
+  This commit fixes this and also makes sure the result information
+  is sorted and unique like we have it for the package lists.
+  This Fixes #2600
+
+-------------------------------------------------------------------
+Fri Aug 09 12:07:48 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix handling of zipl.conf in plain zipl bootloader
+
+  When using the plain zipl bootloader kiwi created a /etc/zipl.conf
+  file. However, this file was only useful during image build as it
+  points to a loop target device and geometry but does not represent
+  a proper config file to be used in the running system. In addition
+  the different distributors provides their own version and layout
+  of the zipl.conf to be used inside of the system and with their
+  respective tools. Thus this commit changes the way how kiwi operates
+  in a way that the zipl.conf used in the initial image only exists
+  during the image build process. An eventual present /etc/zipl.conf
+  will not be touched by kiwi. This Fixes #2597
+
+-------------------------------------------------------------------
 Thu Aug 08 15:55:18 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.1 → 10.1.2
@@ -50,6 +202,24 @@ Wed Aug 07 18:19:41 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   a certain LVM volume setup. The test has been updated
   to use the btrfs filesystem because it has the most strict
   size requirements.
+
+-------------------------------------------------------------------
+Tue Aug 06 23:41:06 CEST 2024 - Dan Čermák <dcermak@suse.com>
+
+- Use shutil.which for Path.which
+
+-------------------------------------------------------------------
+Tue Aug 06 23:38:44 CEST 2024 - Dan Čermák <dcermak@suse.com>
+
+- Drop Path.remove & Path.rename
+
+  Both methods were only used in one place each and it makes much more sense to
+  use the pathlib builtin methods instead
+
+-------------------------------------------------------------------
+Tue Aug 06 23:37:17 CEST 2024 - Dan Čermák <dcermak@suse.com>
+
+- Replace Path.create implementation with pathlib builtin
 
 -------------------------------------------------------------------
 Tue Aug 06 12:07:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

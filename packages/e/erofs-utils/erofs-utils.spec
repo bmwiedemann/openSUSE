@@ -33,6 +33,9 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma)
+%if 0%{?suse_version} >= 150600
+BuildRequires:  pkgconfig(libzstd) >= 5.3.2
+%endif
 BuildRequires:  pkgconfig(zlib)
 Supplements:    filesystem(erofs)
 

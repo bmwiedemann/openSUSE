@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:21:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.65.0
+  * Add field `experimental_features` to message `PythonSettings` (#249)
+- from version 1.64.0
+  * Add FieldInfo.referenced_types for generics (2ba3577)
+  * Un-deprecate Endpoint.aliases field (2ba3577)
+  * Fix formatting in http.proto comments (2ba3577)
+  * Improve MethodSettings selector examples (2ba3577)
+  * Reformat comments in context proto (2ba3577)
+  * Update ResourceDescriptor.plural docs with AIP-122
+    nested collections guidance (2ba3577)
+- Adjust upstream source name in spec file
+- Remove unnecessary %{modname} and %{pkgname} variables
+
+-------------------------------------------------------------------
 Thu Jul  4 09:00:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.63.2

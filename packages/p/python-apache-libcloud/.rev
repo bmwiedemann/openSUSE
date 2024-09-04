@@ -558,4 +558,13 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
   * Support running under pytest 8.2.x.</comment>
     <requestid>1178871</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>750fdc0dd0ab8058d312c43960f672ed</srcmd5>
+    <version>3.8.0</version>
+    <time>1725448928</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace support-pytest-8.2.patch:
+  * The existing patch unintentionally skips a lot of the testsuite.</comment>
+    <requestid>1198394</requestid>
+  </revision>
 </revisionlist>

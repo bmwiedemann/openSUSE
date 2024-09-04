@@ -17,13 +17,13 @@
 
 
 Name:           python-ironic-inspector-client
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Python client and CLI tool for Ironic Inspector
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-ironic-inspector-client
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-5.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironic-inspector-client/python-ironic-inspector-client-5.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -67,7 +67,7 @@ This package contains Python client and command line tool for Ironic Inspector.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n python-ironic-inspector-client-5.1.0
+%autosetup -p1 -n python-ironic-inspector-client-5.2.0
 sed -i -e 's,hacking.*,,' test-requirements.txt
 sed -i -e 's,coverage.*,,' test-requirements.txt
 sed -i -e 's,doc8.*,,' test-requirements.txt

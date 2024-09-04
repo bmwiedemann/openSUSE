@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 07:54:06 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- fail2ban-fix-openssh98.patch: fix to work with openssh 9.8 (bsc#1230101)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:17:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

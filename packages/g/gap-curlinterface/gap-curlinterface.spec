@@ -1,7 +1,7 @@
 #
 # spec file for package gap-curlinterface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-curlinterface
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        GAP: Web Access via curl
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source:         https://github.com/gap-packages/curlInterface/releases/download/
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildRequires:  pkgconfig(libcurl)
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.5
 
 %description

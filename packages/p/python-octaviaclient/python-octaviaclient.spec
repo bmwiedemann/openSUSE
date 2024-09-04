@@ -17,13 +17,13 @@
 
 
 Name:           python-octaviaclient
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Octavia Plugin for the OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-octaviaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-3.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-octaviaclient/python-octaviaclient-3.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-openstackclient >= 3.12.0
 BuildRequires:  python3-oslotest
@@ -69,13 +69,13 @@ the OpenStack Load Balancing service.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-octaviaclient-3.7.0
+%autosetup -p1 -n python-octaviaclient-3.8.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=3.7.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.8.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

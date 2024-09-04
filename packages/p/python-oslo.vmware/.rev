@@ -435,4 +435,17 @@
   - Update python classifier in setup.cfg</comment>
     <requestid>1171464</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8d493986270a1a449d058c0f733b7254</srcmd5>
+    <version>4.5.0</version>
+    <time>1725448961</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.0
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena</comment>
+    <requestid>1198358</requestid>
+  </revision>
 </revisionlist>

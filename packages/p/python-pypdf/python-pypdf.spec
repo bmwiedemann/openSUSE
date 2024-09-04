@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pypdf
 Version:        4.2.0
 Release:        0
@@ -28,8 +29,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildArch:      noarch
-Provides:       python3-PyPDF2 = %version-%release 
-Obsoletes:      python3-PyPDF2 < %version-%release 
+Provides:       python3-PyPDF2 = %version-%release
+Obsoletes:      python3-PyPDF2 < %version-%release
 
 %python_subpackages
 

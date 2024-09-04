@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:09:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.70:
+  * Update for modern Debian/Ubuntu build
+  * Add FAPM meters for better quality power data
+  * Remove unused test-requirements
+  * Handle out of order setting instances
+
+-------------------------------------------------------------------
 Fri May 10 08:40:56 UTC 2024 - cloud-devel@suse.de
 
 - update to version 1.5.68

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  2 12:48:22 UTC 2024 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2024-45508 [bsc#1230022], HTMLDOC before 1.9.19 has an out-of-bounds write in parse_paragraph in ps-pdf.cxx because of an attempt to strip leading whitespace from a whitespace-only node.
+  + htmldoc-CVE-2024-45508.patch
+
+-------------------------------------------------------------------
 Thu Feb 15 08:06:02 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.9.18

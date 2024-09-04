@@ -415,4 +415,16 @@
     <comment>- update to version 1.5.68</comment>
     <requestid>1173071</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>310d3a4564651b7794948e4704c89820</srcmd5>
+    <version>1.5.70</version>
+    <time>1725449014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.70:
+  * Update for modern Debian/Ubuntu build
+  * Add FAPM meters for better quality power data
+  * Remove unused test-requirements
+  * Handle out of order setting instances</comment>
+    <requestid>1198498</requestid>
+  </revision>
 </revisionlist>

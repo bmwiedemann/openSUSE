@@ -599,4 +599,41 @@
   - Add support for provider_id for volume objects</comment>
     <requestid>1171473</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7ce44d2779a1dd15fea3420d62f4702a</srcmd5>
+    <version>3.3.0</version>
+    <time>1725448974</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.0
+  - baremetal: Decode 'config_drive' argument to 'set_provision_state'
+  - cloud: Trivial fixes
+  - Add Tap Mirrors to SDK
+  - Allow project switching for Designate API
+  - tox: Don't install package in pep8
+  - image: Pass correct stores argument
+  - compute: Add Server.clear_password action
+  - Remove retired project Senlin job
+  - Allow tags to be passed through to compute.create_server
+  - docs: Add missing identity v3 proxy API docs
+  - compute, block storage: Minor fixes to limits
+  - compute: Add additional options to Server.rebuild
+  - compute: Correct base path for default, detailed quotas
+  - reno: Update master for unmaintained/zed
+  - compute: Add additional server create parameters
+  - compute, block storage: Add support for quota class sets
+  - compute, volume: Improve 'update_quota_set'
+  - pre-commit: Add pyupgrade hook
+  - Fix multiple image_id query mappings
+  - Combine 3 auto_allocated_topology tests into one test
+  - compute: Add support for legacy 'onSharedStorage' param
+  - Adding SDK support for ``glance md-namespace-objects-delete``
+  - baremetal: Adds list node firmware support
+  - Add support for federation service providers
+  - Fix AttributeError in delete_limit method
+  - volume: Allow passing a volume type object to retype_volume
+  - cloud: Remove use of OpenStackCloudCreateException
+  - Run auto_allocated_topology functional tests in the own project
+  - Use mypy syntax compatible with older pythons.</comment>
+    <requestid>1198370</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  3 18:08:48 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add fix_incompatible-pointer-types.patch to fix build with more recent version of gcc
+
+-------------------------------------------------------------------
 Thu Jan 11 22:55:58 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 1.14

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  3 14:25:26 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.16 (bsc#1229823, bsc#1229824)
+  * CVE-2024-45230: Potential denial-of-service vulnerability in 
+    django.utils.html.urlize()
+  * CVE-2024-45231: Potential user email enumeration via response 
+    status on password reset
+
+-------------------------------------------------------------------
 Wed Aug  7 06:15:53 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.15 (bsc#1228629, bsc#1228630, bsc#1228631, bsc#1228632)

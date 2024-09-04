@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:32:27 UTC 2024 - cloud-devel@suse.de
+
+- update to version 14.9.0
+  - Deprecate the option heartbeat_in_pthread.
+  - Handle NotFound exception when declaring a queue
+  - Add RPC incoming and reply log
+  - Reduce log level to DEBUG for new messages
+  - rabbit: Make PreconditionFailed warning log more informative
+
+-------------------------------------------------------------------
 Tue Jun  4 20:02:49 UTC 2024 - cloud-devel@suse.de
 
 - update to version 14.8.0

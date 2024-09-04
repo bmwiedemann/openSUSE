@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spotipy
 Version:        2.24.0
 Release:        0
@@ -32,13 +31,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-redis >= 3.5.3
 Requires:       python-requests >= 2.25.0
-Requires:       python-six >= 1.15.0
 Requires:       python-urllib3 >= 1.26.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
-BuildRequires:  %{python_module six >= 1.10.0}
 # /SECTION
 %python_subpackages
 
@@ -66,6 +63,7 @@ https://spotipy.readthedocs.io/
 %files %{python_files}
 %license LICENSE.md
 %doc CHANGELOG.md
-%{python_sitelib}/*
+%{python_sitelib}/spotipy
+%{python_sitelib}/spotipy-*-info
 
 %changelog

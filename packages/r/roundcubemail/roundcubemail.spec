@@ -20,7 +20,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 
 Name:           roundcubemail
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later
@@ -71,9 +71,7 @@ Suggests:       php-sqlite
 Conflicts:      roundcube-framework
 Provides:       roundcube_framework = %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1100
 BuildRequires:  fdupes
-%endif
 
 %description
 Roundcube Webmail is a browser-based multilingual IMAP client with an
@@ -206,10 +204,8 @@ mkdir %{buildroot}%{roundcubepath}/migrated
 mkdir %{buildroot}%{roundcubepath}/migration
 
 # fdupes
-%if 0%{?suse_version} >= 1100
 %fdupes %{buildroot}%{roundcubepath}
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}
-%endif
 
 %pre
 # backup logs, temp and config for migration

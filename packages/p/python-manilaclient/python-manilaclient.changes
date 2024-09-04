@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:15:25 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - Remove old excludes
+  - Replace OS_TENANT_NAME
+  - Handle empty metadata properly in filter/list
+  - Add new filter options for share server list
+  - Remove support for Identity v2 API
+  - Remove unused simplejson
+  - Add "--wait" option for creating/promoting/deleting a share replicas
+  - Fix show info about share network
+  - Added "--wait" option for creating/deleting a share group snapshot
+  - Don't set availability_zone for 2.32 version of api
+
+-------------------------------------------------------------------
 Tue Jun  4 20:07:23 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.9.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:15:05 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.7.0
+  - Update Python runtime for 2024.2
+  - Refactor TLS cert fetching for config
+  - Update VerifiedHTTPSConnection for Python >= 3.12
+  - Remove extraneous quote in non-TLS kubeconfig
+  - Add insecure_registry to osc part of the client
+
+-------------------------------------------------------------------
 Tue Jun  4 20:06:44 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.5.0

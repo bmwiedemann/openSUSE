@@ -65,7 +65,7 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 24
-%define version_minor 05
+%define version_minor 08
 %define version_lib 33
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
@@ -87,7 +87,7 @@ Patch203:       0009-command-line-options-for-video-port-selection.patch
 Patch204:       0010-armnnexamples-update-for-19.08-modifications.patch
 Patch205:       armnn-fix_find_opencv.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
-BuildRequires:  cmake >= 3.0.2
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros

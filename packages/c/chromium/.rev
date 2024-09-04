@@ -5073,4 +5073,14 @@ boo#1224178</comment>
 </comment>
     <requestid>1197357</requestid>
   </revision>
+  <revision rev="429" vrev="1">
+    <srcmd5>bbfce7f12c05f927e8ed7dda195043f0</srcmd5>
+    <version>128.0.6613.119</version>
+    <time>1725449045</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 128.0.6613.119 (released 2024-09-02) (boo#1230108)
+  * CVE-2024-8362: Use after free in WebAudio
+  * CVE-2024-7970: Out of bounds write in V8</comment>
+    <requestid>1198542</requestid>
+  </revision>
 </revisionlist>

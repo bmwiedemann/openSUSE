@@ -26,12 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-api-core
-Version:        2.19.1
+Version:        2.19.2
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-api-core
-Source:         https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_api_core/google_api_core-%{version}.tar.gz
 # https://github.com/googleapis/python-api-core/issues/377
 Patch0:         python-google-api-core-no-mock.patch
 BuildRequires:  %{python_module google-auth >= 2.14.1}
@@ -74,7 +74,7 @@ BuildArch:      noarch
 Core Library for Google Client Libraries.
 
 %prep
-%autosetup -p1 -n google-api-core-%{version}
+%autosetup -p1 -n google_api_core-%{version}
 
 %build
 %pyproject_wheel

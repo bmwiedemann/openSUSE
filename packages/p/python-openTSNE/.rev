@@ -53,4 +53,12 @@
   * Given the longtime stability of openTSNE, it is only fitting</comment>
     <requestid>1160837</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>962a7b0dc99db95377ca60abb677ec35</srcmd5>
+    <version>1.0.1</version>
+    <time>1725449247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198639</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:31:43 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.2.0
+  - reno: Update master for unmaintained/xena
+  - Remove old excludes
+  - reno: Update master for unmaintained/zed
+  - Make ConfigInvalid generic
+  - reno: Update master for unmaintained/victoria
+  - Update master for stable/2024.1
+  - pre-commit: Bump versions
+  - reno: Update master for unmaintained/wallaby
+  - pre-commit: Integrate bandit
+  - Add a enabled by files healthcheck plugin
+
+-------------------------------------------------------------------
+Thu May  2 22:13:06 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.1.0
+  - healthcheck: Ignore proxied requests
+  - Bump hacking
+  - Imported Translations from Zanata
+  - Update python classifier in setup.cfg
+  - healthcheck: Limit source IP range
+  - reno: Update master for unmaintained/yoga
+  - Remove oslo namespace package (again)
+  - Remove deprecated SSLMiddleware
+  - Update master for stable/2023.2
+
+-------------------------------------------------------------------
 Fri Dec  1 16:27:03 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.2.0

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:17:09 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to bf12222 (2024-08-30):
+  * firmware: arm_dt: Delay power property handling
+  * firmware: AI Camera Support
+  * firmware: video_encode: Add colourspace support
+    See: #1885
+  * firmware: arm_loader: SET_POWER_STATE should only consider bit 0
+    See: #1905
+  * firmware: filesystem: Prevent any sdcard modifications
+    See: #1893
+  * firmware: filesystem: Accept 0xf (W95 Ext) as an extended partition type
+  * firmware: arm_dt: Support HAT EEPROM dtparams
+  * firmware: arm_display: Add support for changing the pixel order via the mailbox
+    See: #1320
+  * firmware: di_fast: Avoid green line at bottom of image
+    See: https://forum.libreelec.tv/thread/28367-green-pulsing-line-rpi4
+  * firmware: arm_dt: On 2711, force otg_mode=1 if xhci is enabled
+    See: raspberrypi/linux#6062
+  * firmware: arm_dt: Improve power HAT+ support
+  * firmware: arm_loader: Add user otp read and write functions
+    See: raspberrypi/linux#6014
+  * firmware: dtoverlay: Use %u when converting u32s to strings
+    See: raspberrypi/linux#6039
+  * firmware: video_decode: CONFIGCHANGED not wanted with lack of aspect ratio in new frame
+    See: https://forum.libreelec.tv/thread/28391-cvideoplayeraudio-process-stream-stalled/?postID=190597#post190597
+
+-------------------------------------------------------------------
 Fri Apr  5 08:24:33 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to a43358b (2024-03-27):

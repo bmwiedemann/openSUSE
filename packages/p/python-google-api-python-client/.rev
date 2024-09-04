@@ -1186,4 +1186,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1190660</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>67de8b325b1a551abce06584986d0486</srcmd5>
+    <version>2.143.0</version>
+    <time>1725448996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.143.0
+  * **accessapproval:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **batch:** Update the api
+  * **chat:** Update the api
+  * **cloudasset:** Update the api
+  * **cloudkms:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **customsearch:** Update the api
+  * **dataflow:** Update the api
+  * **dataplex:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **firebasedynamiclinks:** Update the api
+  * **firebaseml:** Update the api
+  * **gkeonprem:** Update the api
+  * **looker:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **redis:** Update the api (forwarded request 1198454 from glaubitz)</comment>
+    <requestid>1198462</requestid>
+  </revision>
 </revisionlist>

@@ -235,4 +235,12 @@
   * Regenerate pb2 files for compatibility with protobuf 5.x (c77c0dc) (forwarded request 1185360 from glaubitz)</comment>
     <requestid>1185375</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1fff042e71099b285dc136bb5ea1e004</srcmd5>
+    <version>1.65.0</version>
+    <time>1725449241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1198636</requestid>
+  </revision>
 </revisionlist>

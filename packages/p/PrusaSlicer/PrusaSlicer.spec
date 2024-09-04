@@ -60,7 +60,9 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
+%ifnarch aarch64
 BuildRequires:  libquadmath-devel
+%endif
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  occt-devel

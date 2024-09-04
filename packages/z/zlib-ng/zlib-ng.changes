@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:04:19 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.2.1:
+  * Changelog at https://github.com/zlib-ng/zlib-ng/releases/tag/2.2.1
+
+-------------------------------------------------------------------
 Fri Aug 23 12:00:29 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Also perform abicheck with the help of libabigail(-tools) 

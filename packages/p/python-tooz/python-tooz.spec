@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-tooz
-Version:        4.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/tooz/latest/
-Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/tooz/tooz-6.3.0.tar.gz
 BuildRequires:  memcached
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fasteners >= 0.7
@@ -34,7 +34,7 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-futurist >= 1.2.0
 BuildRequires:  python3-oslo.serialization >= 1.10.0
 BuildRequires:  python3-oslo.utils >= 4.7.0
-BuildRequires:  python3-pbr >= 1.6
+BuildRequires:  python3-pbr
 BuildRequires:  python3-pymemcache
 BuildRequires:  python3-stevedore >= 1.16.0
 BuildRequires:  python3-tenacity >= 5.0.0
@@ -82,7 +82,7 @@ a coordination API helping developers to build distributed applications.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n tooz-4.2.0
+%autosetup -p1 -n tooz-6.3.0
 %py_req_cleanup
 
 %build

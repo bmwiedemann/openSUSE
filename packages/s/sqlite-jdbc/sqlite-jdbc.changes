@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  1 16:12:07 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.46.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.46.1 (be3bf30)
+  * Fixes
+    ~ native-image
+      + support strict image heap (029a35f)
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-gpg-plugin (17dffe9)
+    ~ unscoped
+      + add GraalVM for JDK 22 to native test suite (e40e5a3)
+
+-------------------------------------------------------------------
 Wed Aug 28 17:09:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

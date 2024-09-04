@@ -18,15 +18,13 @@
 
 %define with_tests 1
 Name:           python-ovsdbapp
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        A library for creating OVSDB applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/ovsdbapp
-Source0:        https://files.pythonhosted.org/packages/source/o/ovsdbapp/ovsdbapp-2.7.1.tar.gz
-# https://review.opendev.org/c/openstack/ovsdbapp/+/918970
-Patch1:         0001-Improve-compatibility-with-netaddr-1.x.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/ovsdbapp/ovsdbapp-2.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures >= 3.0.0
 BuildRequires:  python3-netaddr >= 0.10.0
@@ -72,7 +70,7 @@ Documentation for the ovsdbap library.
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=2.7.1 PYTHONPATH=. \
+PBR_VERSION=2.8.0 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

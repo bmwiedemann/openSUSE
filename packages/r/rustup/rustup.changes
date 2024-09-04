@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Sep 04 01:15:21 UTC 2024 - william.brown@suse.com
+
+- bsc#1230032 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API
+- Update to version 1.27.1~0:
+  * chore(dist): update commit shasum in `rustup-init.sh`, take 2
+  * fix(ci/linux): don't use `pip3` to install `awscli`
+  * fix(ci/macos): don't use `pip3` to install `awscli`
+  * chore(dist): update commit shasum in `rustup-init.sh`
+  * docs: update CHANGELOG for v1.27.1
+  * feat(dist): improve `changelog_helper` script
+  * dist: bump `rustup` version to `1.27.1`
+  * chore: fix some typos in comments
+  * Remove TryFrom<PartialTargetTriple> for TargetTriple
+  * Add tests for add/remove components by name with target triple
+  * Replace Component::new_with_target by Component::try_new
+  * chore(deps): lock file maintenance
+  * refactor(self-update)!: remove confusing `get_path()` impl on Unix
+  * test(self-update): ensure the resolution of #3739
+  * feat(self-update): add `with_saved_reg_value()`
+  * refactor(self-update): extract `(get|restore)_reg_value()`
+  * refactor(self-update): extract `with_saved_global_state()`
+  * refactor(self-update): use `std::io`
+  * fix(self-update): replace some `#[cfg(not(unix))]` usages with `#[cfg(windows)]`
+  * feat(self-update): improve error messages on Windows
+  * fix(self-update): run `do_update_programs_display_version()` on `run_update()`
+  * refactor(self-update): extract `get_and_parse_new_rustup_version()`
+  * refactor(self-update): extract `do_update_programs_display_version()`
+  * ci: don't test for FreeBSD on PRs
+  * docs(user-guide): update `environment-variables`
+  * refactor(self-update): eliminate needless clone
+  * feat(self-update): log `RUSTUP_DIST_*` if it's set
+  * feat(self-update): log `RUSTUP_UPDATE_ROOT` if it's set
+  * refactor(self-update): rename `UPDATE_ROOT` to `DEFAULT_UPDATE_ROOT`
+  * refactor(self-update): extract `update_root()`
+  * once_cell only used with reqwest in download crate, so gate it
+  * tracing unsed only from otel feature, so move it to optional
+  * chore(deps): lock file maintenance
+  * Add loongarch64-unknown-linux-gnu to installation docs
+  * Add loongarch64-unknown-linux-gnu to cloudfront invalidations
+  * Use pattern matching to make Debug impl for Cfg more robust
+  * Use std IsTerminal interface
+  * Rename temp::Cfg to Context
+  * temp: keep definitions and impls together
+  * Remove derivative dependency in favor of manual implementation
+  * docs(dev-guide): move all mentions of `cargo clippy` to `linting.md`
+  * docs(dev-guide): mention that we need to keep mdBook links stable
+  * Update semver-compatible dependencies
+  * refactor(utils)!: rename `delete_dir_contents()` to `delete_dir_contents_following_links()`
+  * fix(utils): resolve input path in `delete_dir_contents()` if it's a link
+  * test(cli): ensure the resolution of #3344
+  * Revert "fix(utils): unlink input path in `delete_dir_contents()` if it's a link"
+  * Revert "refactor(utils)!: rename `delete_dir_contents()` to `delete_dir_contents_or_unlink()`"
+  * Revert "test(cli): ensure the resolution of #3344"
+  * test(cli): ensure the resolution of #3344
+  * refactor(utils)!: rename `delete_dir_contents()` to `delete_dir_contents_or_unlink()`
+  * fix(utils): unlink input path in `delete_dir_contents()` if it's a link
+  * test(cli): ensure the resolution of #3737
+  * refactor(util)!: rename `open_dir()` to `open_dir_following_links()`
+  * fix(utils): don't use `O_NOFOLLOW` in `open_dir()`
+  * chore: fix typo in `CHANGELOG`
+  * chore(meta): update `bug_report` issue template
+  * Add hr to Windows instructions
+  * fix(doc): don't show the opening message when --path is used
+  * chore: remove repetitive words
+  * fix(deps): update rust crate opener to 0.7.0
+  * fix(config): remove unnecessary debug print
+  * fix(ci): fix file paths in CI-generated `*.sha256` files on *nix
+  * chore(deps): lock file maintenance
+  * fix(ci): correct error message after bumping reqwest
+  * fix(deps): update rust crate reqwest to 0.12
+  * doc(dev-guide): Fix test Lint and add explanation
+  * Fix "component add" error message
+  * ci: use `stable` Rust for all clippy lints
+  * style: apply clippy suggestions from Rust 1.78.0
+  * fix(ci/windows): disable `cargo clippy` on `*-windows-gnu`
+  * fix(shell): create parent dir before appending to rcfiles
+  * fix(fish): fix definition of `Fish::update_rcs`
+  * docs(dev-guide): update `release-process.md` to match the new workflow based on GitHub Merge Queue
+  * ci(macos): add `MACOSX_DEPLOYMENT_TARGET` and friends
+  * Replaced `.` with `source` in fish shell's `source_string`
+  * Deny clippy warnings in CI
+  * Apply clippy suggestions
+  * Rely on implicit conversion to OperationResult
+  * Extract closure from match scrutinee
+  * fix(cli): fix incorrect color state after `ColorableTerminal::reset`
+  * docs: Add note about stability of llvm-tools.
+  * Change default for RUSTUP_WINDOWS_PATH_ADD_BIN
+  * ci: remove direct `renovate/*` tests
+  * chore(deps): lock file maintenance
+  * Fix dead_code and unused_imports warnings
+
+-------------------------------------------------------------------
 Fri Mar 15 00:44:20 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.27.0~0:

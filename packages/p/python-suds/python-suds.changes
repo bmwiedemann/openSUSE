@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  3 10:38:51 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.2.0
+  * Remove support from before Python 3.7
+  * asdict functionality to optionally recursively give suds object
+  * Support process SOAP 1.2 reply
+
+-------------------------------------------------------------------
 Tue Oct 11 15:36:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.1.2 
