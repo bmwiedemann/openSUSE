@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 11:25:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Work around gh#pyFFTW/pyFFTW#378 for GCC14
+
+-------------------------------------------------------------------
 Mon Jul 22 22:27:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.0

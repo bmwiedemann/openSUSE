@@ -16,8 +16,6 @@
 #
 
 
-# NEP29: python36-numpy and python36-scipy are not available for TW any longer
-%define skip_python36 1
 %ifarch %{ix86} x86_64
 %bcond_without  test
 %else
@@ -72,7 +70,8 @@ sed -i -e '/^#!\//, 1d' pyfftw/*.py
 sed -i -e '/^#!\//, 1d' pyfftw/*/*.py
 
 %build
-export CFLAGS="%{optflags}"
+# Work around gh#pyFFTW/pyFFTW#378
+export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
 %pyproject_wheel
 
 %install
