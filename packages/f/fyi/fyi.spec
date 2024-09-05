@@ -17,7 +17,7 @@
 
 
 Name:           fyi
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        notify-send alternative
 License:        MIT

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  5 08:18:12 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update package to 1.0.4:
+  * Leading space added to the "body" string
+- Update package to 1.0.3:
+  * Missing include, causing compilation errors.
+  * Missing fish completions for --image-data and --image-size
+
+-------------------------------------------------------------------
 Sat Aug  3 10:06:04 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Initial package at 1.0.2
