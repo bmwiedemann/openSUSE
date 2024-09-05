@@ -3462,7 +3462,6 @@ unsorted:
   - dpdk-devel-static 
   - dpdk-doc 
   - dpdk-examples 
-  - dpdk-kmp-default 
   - dpdk-tools 
   - dpic 
   - dpic-doc 
@@ -4001,6 +4000,7 @@ unsorted:
   - fastfetch 
   - fastfetch-bash-completion 
   - fastfetch-fish-completion 
+  - fastfetch-zsh-completion 
   - fastjar 
   - fastjet-contrib-devel 
   - fastjet-contrib-devel-static 
@@ -11824,8 +11824,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute37 
-  - libarm_compute_graph37 
+  - libarm_compute40 
+  - libarm_compute_graph40 
   - libarmadillo14 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -12746,7 +12746,7 @@ unsorted:
   - libdouble-conversion3-32bit 
   - libdovi-devel 
   - libdovi3-32bit 
-  - libdpdk-23 
+  - libdpdk-24 
   - libdqlite0 
   - libdraco9 
   - libdrm-devel 
@@ -15007,7 +15007,7 @@ unsorted:
   - libopenvino_pytorch_frontend2430 
   - libopenvino_tensorflow_frontend2430 
   - libopenvino_tensorflow_lite_frontend2430 
-  - libopenvswitch-3_1-0 
+  - libopenvswitch-3_3-0 
   - liboping-devel 
   - liboping0 
   - libopts25 
@@ -15117,7 +15117,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit 
   - libovf-glib-devel 
-  - libovn-23_03-0 
+  - libovn-24_03-0 
   - libowfat-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -19501,11 +19501,12 @@ unsorted:
   - nauty-devel 
   - nbdfuse 
   - nbdkit-bash-completion 
+  - nbdkit-bzip2-filter 
   - nbdkit-devel 
   - nbdkit-example-plugins 
   - nbdkit-gcs-plugin 
-  - nbdkit-gzip-filter 
   - nbdkit-linuxdisk-plugin 
+  - nbdkit-stats-filter 
   - nbdkit-tar-filter 
   - nbdkit-tmpdisk-plugin 
   - nbdkit-xz-filter 
@@ -22218,6 +22219,7 @@ unsorted:
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
+  - perl-Sys-Mmap 
   - perl-Sys-SigAction 
   - perl-Sys-Virt 
   - perl-Sysadm-Install 
@@ -24139,6 +24141,7 @@ unsorted:
   - python310-PyOpenAL 
   - python310-PyPDF2 
   - python310-PyPDF3 
+  - python310-PyPika 
   - python310-PyPrind 
   - python310-PyQRCode 
   - python310-PyQt6 
@@ -25369,7 +25372,6 @@ unsorted:
   - python310-flatbuffers 
   - python310-flatdict 
   - python310-fleming 
-  - python310-flex 
   - python310-flexcache 
   - python310-flexmock 
   - python310-flexparser 
@@ -26142,8 +26144,12 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
+  - python310-numpy1 
+  - python310-numpy1-devel 
   - python310-numpy_1_26_4-gnu-hpc 
   - python310-numpy_1_26_4-gnu-hpc-devel 
+  - python310-numpy_2_0_0-gnu-hpc 
+  - python310-numpy_2_0_0-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-o2sclpy 
@@ -26683,6 +26689,7 @@ unsorted:
   - python310-pytest-describe 
   - python310-pytest-django 
   - python310-pytest-djangoapp 
+  - python310-pytest-docker 
   - python310-pytest-doctestplus 
   - python310-pytest-dotenv 
   - python310-pytest-echo 
@@ -27036,7 +27043,6 @@ unsorted:
   - python310-sanlock 
   - python310-sarge 
   - python310-sarif-om 
-  - python310-sas7bdat 
   - python310-sasl 
   - python310-sat-search 
   - python310-sat-stac 
@@ -27536,7 +27542,6 @@ unsorted:
   - python310-wsaccel 
   - python310-wsgi_intercept 
   - python310-wsproto 
-  - python310-wstools 
   - python310-wtf-peewee 
   - python310-wurlitzer 
   - python310-wxPython 
@@ -27781,6 +27786,7 @@ unsorted:
   - python311-PyOpenAL 
   - python311-PyPDF2 
   - python311-PyPDF3 
+  - python311-PyPika 
   - python311-PyPrind 
   - python311-PyQRCode 
   - python311-PyQt6 
@@ -28979,7 +28985,6 @@ unsorted:
   - python311-flatbuffers 
   - python311-flatdict 
   - python311-fleming 
-  - python311-flex 
   - python311-flexcache 
   - python311-flexmock 
   - python311-flexparser 
@@ -29714,8 +29719,12 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
+  - python311-numpy1 
+  - python311-numpy1-devel 
   - python311-numpy_1_26_4-gnu-hpc 
   - python311-numpy_1_26_4-gnu-hpc-devel 
+  - python311-numpy_2_0_0-gnu-hpc 
+  - python311-numpy_2_0_0-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-o2sclpy 
@@ -30233,6 +30242,7 @@ unsorted:
   - python311-pytest-describe 
   - python311-pytest-django 
   - python311-pytest-djangoapp 
+  - python311-pytest-docker 
   - python311-pytest-doctestplus 
   - python311-pytest-dotenv 
   - python311-pytest-echo 
@@ -30576,7 +30586,6 @@ unsorted:
   - python311-sanlock 
   - python311-sarge 
   - python311-sarif-om 
-  - python311-sas7bdat 
   - python311-sasl 
   - python311-sat-search 
   - python311-sat-stac 
@@ -31065,7 +31074,6 @@ unsorted:
   - python311-wsaccel 
   - python311-wsgi_intercept 
   - python311-wsproto 
-  - python311-wstools 
   - python311-wtf-peewee 
   - python311-wurlitzer 
   - python311-wxPython 
@@ -31316,6 +31324,7 @@ unsorted:
   - python312-PyOpenAL 
   - python312-PyPDF2 
   - python312-PyPDF3 
+  - python312-PyPika 
   - python312-PyPrind 
   - python312-PyQRCode 
   - python312-PyQt6 
@@ -32545,7 +32554,6 @@ unsorted:
   - python312-flatbuffers 
   - python312-flatdict 
   - python312-fleming 
-  - python312-flex 
   - python312-flexcache 
   - python312-flexmock 
   - python312-flexparser 
@@ -33316,8 +33324,12 @@ unsorted:
   - python312-numpy-devel 
   - python312-numpy-gnu-hpc 
   - python312-numpy-gnu-hpc-devel 
+  - python312-numpy1 
+  - python312-numpy1-devel 
   - python312-numpy_1_26_4-gnu-hpc 
   - python312-numpy_1_26_4-gnu-hpc-devel 
+  - python312-numpy_2_0_0-gnu-hpc 
+  - python312-numpy_2_0_0-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nwdiag 
   - python312-o2sclpy 
@@ -33855,6 +33867,7 @@ unsorted:
   - python312-pytest-describe 
   - python312-pytest-django 
   - python312-pytest-djangoapp 
+  - python312-pytest-docker 
   - python312-pytest-doctestplus 
   - python312-pytest-dotenv 
   - python312-pytest-echo 
@@ -34208,7 +34221,6 @@ unsorted:
   - python312-sanlock 
   - python312-sarge 
   - python312-sarif-om 
-  - python312-sas7bdat 
   - python312-sasl 
   - python312-schedule 
   - python312-schema 
@@ -34705,7 +34717,6 @@ unsorted:
   - python312-wsaccel 
   - python312-wsgi_intercept 
   - python312-wsproto 
-  - python312-wstools 
   - python312-wtf-peewee 
   - python312-wurlitzer 
   - python312-wxPython 
