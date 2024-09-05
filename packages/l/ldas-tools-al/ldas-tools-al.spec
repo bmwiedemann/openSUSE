@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-al
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib libldastoolsal7
 Name:           ldas-tools-al
-Version:        2.6.4
+Version:        2.6.7
 Release:        0
 Summary:        LDAS (LIGO Data Analysis System) tools abstraction toolkit
 License:        GPL-2.0-or-later

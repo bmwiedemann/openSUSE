@@ -7,4 +7,12 @@
     <comment>LDAS (LIGO Data Analysis System) is a collection of libraries and executables to aid in the processing of gravitation wave data sets. This pkg provides the tools abstraction toolkit for LDAS.</comment>
     <requestid>843533</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53d411aca1ffd61790990354e4a3f12a</srcmd5>
+    <version>2.6.7</version>
+    <time>1725544034</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198812</requestid>
+  </revision>
 </revisionlist>
