@@ -43,7 +43,7 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules used in HPC
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.7.37
+Version:        8.7.48
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
