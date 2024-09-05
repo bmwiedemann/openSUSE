@@ -1,7 +1,7 @@
 #
 # spec file for package python-habanero
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           python-habanero
-Version:        1.2.3
+Version:        1.2.6
 Release:        0
 Summary:        Low Level Client for Crossref Search API
 License:        MIT
 URL:            https://github.com/sckott/habanero
 Source:         https://files.pythonhosted.org/packages/source/h/habanero/habanero-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mark-vcr-tests.patch gh#sckott/habanero#114 mcepl@suse.com
-# mark two more tests as vcr (to skip network access)
-Patch0:         mark-vcr-tests.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

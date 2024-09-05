@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  4 12:15:50 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- removed mark-vcr-tests.patch, no longer needed. 
+
+-------------------------------------------------------------------
+Tue Sep  3 12:48:59 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 1.2.6:
+  * mark two more tests for vcr to create cassettes for (both content_negotation tests) - no user facing changes (#114)
+  * habanero now conditionally uses bibtexparser to roundtrip bibtex to attempt to fix any bibtex that's not formatted correctly (#144) (#153)
+  * generalize handling of field queries like query.publisher-name to allow all field queries, and any in the future (#150) (#152)
+  * improved error handling (#123)
+  * ids now a required param in the Crossref.prefixes method; improved crossef API error parsing (#116)
+
+
+-------------------------------------------------------------------
 Sat Feb  4 22:37:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for habanero 1.2.3.
