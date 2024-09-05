@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 28 19:05:19 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.6.3.
+  ## 2.14.6.3
+
+  * [#1544](https://github.com/yesodweb/persistent/pull/1544)
+      * Fix type error message when no unique keys are defined on a model and you
+        use a function with constraint `AtLeastOneUniqueKey`.
+
+-------------------------------------------------------------------
 Fri Jul 19 00:45:58 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.14.6.2.
