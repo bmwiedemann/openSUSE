@@ -1,7 +1,7 @@
 #
 # spec file for package nqptp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,24 @@
 
 
 Name:           nqptp
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Summary:        Not Quite PTP
 License:        GPL-2.0-only
 URL:            https://github.com/mikebrady/nqptp
 Source0:        https://github.com/mikebrady/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        nqptp-user.conf
+# Backported from 1.2.5-dev:
+Patch0:         backport-050a8c2de9f3e1f4859abf9b36d2f18afd4c34d7.patch
+# Backported from 1.2.5-dev:
+Patch1:         backport-b5321a88d21b854aaa461dc0f6c226d650309b91.patch
+Patch2:         disable-user-group-generation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 %{?systemd_ordering}
+%sysusers_requires
 
 %description
 nqptp is a daemon that monitors timing data from any PTP clocks – up to 64 – it
@@ -37,18 +45,20 @@ It is a companion application to Shairport Sync and provides timing information
 for AirPlay 2 operation.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -i -f
 %configure --with-systemd-startup
 %make_build
+%sysusers_generate_pre %{SOURCE1} nqptp nqptp-user.conf
 
 %install
 %make_install
 mkdir -p %{buildroot}%{_unitdir}
 mv %{buildroot}%{_libdir}/systemd/system/%{name}.service \
    %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/nqptp.conf
 
 %pre
 %service_add_pre %{name}.service
@@ -67,5 +77,6 @@ mv %{buildroot}%{_libdir}/systemd/system/%{name}.service \
 %doc README.md RELEASE_NOTES.md
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/nqptp.conf
 
 %changelog

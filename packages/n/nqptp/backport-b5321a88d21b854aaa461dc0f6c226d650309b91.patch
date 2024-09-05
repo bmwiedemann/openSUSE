@@ -1,0 +1,68 @@
+From b5321a88d21b854aaa461dc0f6c226d650309b91 Mon Sep 17 00:00:00 2001
+From: Mike Brady <4265913+mikebrady@users.noreply.github.com>
+Date: Tue, 19 Sep 2023 11:08:27 +0100
+Subject: [PATCH] Improve some of the error messages. Remove the setcap command
+ from Makefile.am, since we are now using an AmbientCapabilities setting in
+ the systemd service file.
+
+---
+ Makefile.am       |  5 +++--
+ configure.ac      |  2 +-
+ nqptp-utilities.c | 14 +++++---------
+ nqptp.c           |  2 +-
+ 4 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 78f36d7..d2b3992 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,8 +19,9 @@ endif
+ 
+ install-exec-hook:
+ if BUILD_FOR_LINUX
+-# NQPTP runs as user/group nqptp/nqptp on Linux and uses setcap to access ports 319 and 320
+-	setcap 'cap_net_bind_service=+ep' $(bindir)/nqptp
++# Note: NQPTP runs as user/group nqptp/nqptp on Linux.
++# Access is given via AmbientCapabilities in the service file.
++# If you want to run it from the command line, e.g. for debugging, run it as root user.
+ # no installer for System V
+ if INSTALL_SYSTEMD_STARTUP
+ 	getent group nqptp &>/dev/null || groupadd -r nqptp &>/dev/null
+diff --git a/nqptp-utilities.c b/nqptp-utilities.c
+index 9d6a95d..9964b22 100644
+--- a/nqptp-utilities.c
++++ b/nqptp-utilities.c
+@@ -105,15 +105,11 @@ void open_sockets_at_port(const char *node, uint16_t port,
+   }
+   freeaddrinfo(info);
+   if (sockets_opened == 0) {
+-    if (port < 1024)
+-      die("unable to listen on port %d. The error is: \"%s\". NQPTP must run as root to access "
+-          "this port. Or is another PTP daemon -- possibly another instance on NQPTP -- running "
+-          "already?",
+-          port, strerror(errno));
+-    else
+-      die("unable to listen on port %d. The error is: \"%s\". "
+-          "Is another instance on NQPTP running already?",
+-          port, strerror(errno));
++    if (errno == EACCES) {
++      die("nqptp does not have permission to access port %u. It must (a) [Linux only] have been given CAP_NET_BIND_SERVICE capabilities using e.g. setcap or systemd's AmbientCapabilities, or (b) run as root.", port);
++    } else {
++      die("nqptp is unable to listen on port %u. The error is: %d, \"%s\".", port, errno, strerror(errno));
++    }
+   }
+ }
+ 
+diff --git a/nqptp.c b/nqptp.c
+index e5f2988..a1a3c76 100644
+--- a/nqptp.c
++++ b/nqptp.c
+@@ -198,7 +198,7 @@ int main(int argc, char **argv) {
+   mode_t oldumask = umask(0);
+   shm_fd = shm_open(NQPTP_INTERFACE_NAME, O_RDWR | O_CREAT, 0644);
+   if (shm_fd == -1) {
+-    die("cannot open shared memory \"%s\".", NQPTP_INTERFACE_NAME);
++    die("nqptp cannot open the shared memory \"%s\" for writing. Is another copy of nqptp (e.g. an nqptp daemon) running already?", NQPTP_INTERFACE_NAME);
+   }
+   (void)umask(oldumask);
+ 

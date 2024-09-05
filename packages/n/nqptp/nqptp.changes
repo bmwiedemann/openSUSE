@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  3 09:06:57 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Backports from 1.2.5-dev
+  - Add backport-b5321a88d21b854aaa461dc0f6c226d650309b91.patch
+    Remove setcap call.
+  - Add backport-050a8c2de9f3e1f4859abf9b36d2f18afd4c34d7.patch
+    Set capability in the systemd unit instead.
+
+- Add disable-user-group-generation.patch
+  Disable user/group generation in the Makefile.
+  Let systemd-sysusers handle this instead.
+
+- Update to 1.2.4
+  - Further changes are introduced to make the communication path between NQPTP
+    and Shairport Sync resistant to outside interference. These changes have
+    necessitated changing the SMI interface. The SMI interface is now at
+    version 10, and Shairport Sync must also be updated to be compatible with
+    it.
+
+- Update to 1.2.3
+  - Fix CVE-2023-43771: nqptp: NULL pointer dereference caused by invalid
+    control port message (boo#1213060)
+
+-------------------------------------------------------------------
 Mon Jun 26 09:48:09 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Small spec file adjustements 

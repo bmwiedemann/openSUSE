@@ -1,0 +1,13 @@
+Index: nqptp-1.2.4/Makefile.am
+===================================================================
+--- nqptp-1.2.4.orig/Makefile.am
++++ nqptp-1.2.4/Makefile.am
+@@ -24,8 +24,6 @@ if BUILD_FOR_LINUX
+ # If you want to run it from the command line, e.g. for debugging, run it as root user.
+ # no installer for System V
+ if INSTALL_SYSTEMD_STARTUP
+-	getent group nqptp &>/dev/null || groupadd -r nqptp &>/dev/null
+-	getent passwd nqptp &> /dev/null || useradd -r -M -g nqptp -s /usr/sbin/nologin nqptp &>/dev/null
+ 	[ -e $(DESTDIR)$(libdir)/systemd/system ] || mkdir -p $(DESTDIR)$(libdir)/systemd/system
+ # don't replace a service file if it already exists...
+ 	[ -e $(DESTDIR)$(libdir)/systemd/system/nqptp.service ] || cp nqptp.service $(DESTDIR)$(libdir)/systemd/system
