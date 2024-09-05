@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:17:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32
+  * mysql_adaptor: re-speedup queries that came to ran without an
+    index
+  * mbop: make the "clear-profile" operation do clear g-web
+    settings again
+  * zcore: workaround potential hang during shutdown
+  * emsmdb, zcore: allow "Empty Folder" operations in public stores
+  * exmdb: increased verbosity during shutdown phase so it does
+    not appear like a hang
+
+-------------------------------------------------------------------
 Wed Aug 14 07:50:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.31
