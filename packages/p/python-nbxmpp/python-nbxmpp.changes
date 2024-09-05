@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 31 15:12:38 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 5.0.3:
+  * Delay: Consider MUC and own server.
+
+-------------------------------------------------------------------
+Sun Jul 21 19:07:12 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 5.0.2:
+  * Delay: Better discover server delays.
+
+-------------------------------------------------------------------
 Sun Jun 30 07:15:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:
