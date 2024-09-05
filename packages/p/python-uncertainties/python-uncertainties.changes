@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:45:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.2.2
+  * fix support for Numpy 2.0 (#245). Note: uncertainties.unumpy
+    still provides umatrix based on numpy.matrix. With numpy.matrix
+    discouraged, umatrix is too, and will be dropped in a future
+    release.
+  * use setuptools-scm for setting version number from git tag
+    (#247)
+
+-------------------------------------------------------------------
 Thu Jul  4 03:47:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.1:

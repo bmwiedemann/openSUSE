@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uncertainties
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Uncertainties on the Quantities Involved (aka "Error Propagation")
 License:        BSD-3-Clause
@@ -28,7 +28,8 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module tools}
 BuildRequires:  %{python_module wheel}
