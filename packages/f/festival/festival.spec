@@ -59,6 +59,8 @@ Patch17:        speech_tools-no-LD_LIBRARY_PATH-extension.patch
 Patch18:        speech_tools-remove-errneous-decl.patch
 Patch19:        speech_tools-null-fragile.patch
 Patch20:        festival-null-fragile.patch
+# PATCH-FIX-OPENSUSE festival-configure-c99.patch -- fix prototype in configure tests.
+Patch21:        festival-configure-c99.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -105,6 +107,7 @@ cd ../speech_tools
 %patch -P 19 -p1
 cd ../festival
 %patch -P 20 -p1
+%patch -P 21 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
