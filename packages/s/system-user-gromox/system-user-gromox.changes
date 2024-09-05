@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  4 19:28:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9
+  * Switch to sysusers mechanism on Debian as well
+
+-------------------------------------------------------------------
+Tue Jun  4 08:06:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7
+  * Added the "gromoxcf" group. Updated package descriptions.
+
+-------------------------------------------------------------------
 Thu Mar 14 21:30:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6

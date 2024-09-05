@@ -1,3 +1,11 @@
 #!/usr/bin/make -f
 %:
 	dh $@ --parallel
+sudir = usr/lib/sysusers.d
+sufile = ${sudir}/system-user-gromox.conf
+override_dh_auto_install:
+	mkdir -p ${sudir}
+	echo 'g gromox -' >${sufile}
+	echo 'g gromoxcf -' >>${sufile}
+	echo 'u gromox - "Gromox services"' >>${sufile}
+	echo 'm gromox gromoxcf' >>${sufile}

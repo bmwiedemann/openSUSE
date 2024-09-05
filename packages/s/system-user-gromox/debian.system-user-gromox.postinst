@@ -1,6 +1,14 @@
 #!/bin/sh
-getent group gromox >/dev/null || addgroup --system gromox
-getent group gromoxcf >/dev/null || addgroup --system gromoxcf
-getent passwd gromox >/dev/null || \
-	adduser --system gromox --home /var/lib/gromox --no-create-home --disabled-password --ingroup gromox
-usermod gromox -aG gromoxcf
+case "$1" in
+configure|reconfigure)
+	if [ -x /usr/bin/systemd-sysusers ]; then
+		/usr/bin/systemd-sysusers system-user-gromox.conf
+	else
+		getent group gromox >/dev/null || addgroup --system gromox
+		getent group gromoxcf >/dev/null || addgroup --system gromoxcf
+		getent passwd gromox >/dev/null || \
+			adduser --system gromox --home /var/lib/gromox --no-create-home --disabled-password --ingroup gromox
+		usermod gromox -aG gromoxcf
+	fi
+	;;
+esac

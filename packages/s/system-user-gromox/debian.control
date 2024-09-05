@@ -7,7 +7,14 @@ Standards-Version: 4.5.0
 Package: system-user-gromox
 Architecture: all
 Pre-Depends: ${misc:Pre-Depends}
+Provides: system-group-gromox, system-group-gromoxcf
 Depends: adduser, ${misc:Depends}
 Description: System user and group gromox
  .
- This package provides the gromox account.
+ This package provides:
+ * the "gromox" user identity for running Gromox services as
+ * the "gromox" group identity for marking data to be consumed by Gromox
+   services but possibly created by AAPI, e.g. mailbox contents
+ * the "gromoxcf" group identity for marking (possibly sensitive)
+   configuration, to be consumed by Gromox services and select
+   services (like saslauthd/keycloak dlopening pam_gromox.so)
