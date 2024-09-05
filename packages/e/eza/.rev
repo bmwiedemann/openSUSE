@@ -681,4 +681,41 @@
   * Bump uzers from 0.12.0 to 0.12.1</comment>
     <requestid>1198229</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e40e323fd134a06d6cda4c3eaa2273db</srcmd5>
+    <version>0.19.2+0</version>
+    <time>1725544043</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.2:
+  Bug Fixes:
+  * Remove unnecessary map and make clippy happy
+  * Adjust grid details for CI tests
+  * Imports and merge conflicts
+  * Rustfmt issues
+  * Clippy issues
+  * Revise UiStyles::plain to have no style at all
+  * Pr reviews fixes for theme file
+  * Selectively filter files when recursing #1101[3]
+  * Fix typo in FromOverride impl
+  * Add serde(default) to StyleOverride.foreground/background fields
+  Documentation:
+  * Add Flox to INSTALL.md
+  * Add ic for icon color to colors man page
+  * Add further documentation about theme file
+  Features:
+  * Add c++ module interfaces as source file types
+  * Add icon field to UiStyles
+  * Add ic key for UiStyles icon in set_exa
+  * Add None as icon value in UiStyles.default_theme
+  * Add icon function to FileNameColours trait
+  * Implement FileNameColours.icon for Theme
+  * Adjust FileName.paint to consider possible icon color
+  * Begin implementation of config file
+  * Allow writing default theme.yml file for eventual config file implementation
+  * Theme file configuration base
+  * Add IconOverrides struct and UiStyles.icon_overrides
+  * Add icon_override function to FileNameColours trait
+  * Implement FileNameColours.icon_override for Theme</comment>
+    <requestid>1198866</requestid>
+  </revision>
 </revisionlist>
