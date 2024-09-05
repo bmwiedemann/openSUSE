@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:18:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin numpy < 2 in testing, due to numba
+
+-------------------------------------------------------------------
 Sat Mar  2 09:36:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no xarray anymore

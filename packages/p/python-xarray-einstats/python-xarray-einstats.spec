@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python39 1
 Name:           python-xarray-einstats
 Version:        0.7.0
 Release:        0
@@ -26,23 +25,24 @@ License:        Apache-2.0
 URL:            https://github.com/arviz-devs/xarray-einstats
 Source:         https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v%{version}.tar.gz#/xarray-einstats-%{version}-gh.tar.gz
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 1.6}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xarray >= 2022.9.0}
-BuildRequires:  python-rpm-macros
-# SECTION Test requires
-BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pytest}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-numpy >= 1.20
 Requires:       python-scipy >= 1.6
 Requires:       python-xarray >= 2022.9.0
+# SECTION Test requires
+BuildRequires:  %{python_module numba}
+# Numba requires numpy < 2, numba is optional, don't pin numpy in runtime requirements!
+BuildRequires:  %{python_module numpy >= 1.20 with %python-numpy < 2}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module xarray >= 2022.9.0}
+# /SECTION
 %python_subpackages
 
 %description
