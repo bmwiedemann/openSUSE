@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  4 12:12:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 4.10.0:
+  * Remove shebang from filesize.py (#188) 
+  * Fix test failures on systems with 32-bit time_t (#177) 
+  * Fix handling of negative time deltas (#173) 
+  * Fix naturaldelta sub second precision (#169) 
+  * Reword the French translation of very small amount of time (#162) 
+  * Fix Arabic localization (#160) 
+  * metric: Fix precision format (#159)  
+
+-------------------------------------------------------------------
 Mon Nov 27 19:01:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.9.0:

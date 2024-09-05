@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-humanize/humanize
 Source:         https://files.pythonhosted.org/packages/source/h/humanize/humanize-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
