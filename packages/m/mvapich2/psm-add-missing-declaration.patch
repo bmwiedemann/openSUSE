@@ -1,0 +1,20 @@
+commit 54cb73337039c22aed5b2b4ee7b19aeb8df33b2c
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 10:11:46 2024 +0200
+
+    psm: add missing declaration
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git src/mpid/ch3/channels/psm/src/psm_entry.c src/mpid/ch3/channels/psm/src/psm_entry.c
+index 125194750a0f..4ff539b65635 100755
+--- src/mpid/ch3/channels/psm/src/psm_entry.c
++++ src/mpid/ch3/channels/psm/src/psm_entry.c
+@@ -21,6 +21,7 @@
+ #include <upmi.h>
+ #include "coll_shmem.h"
+ extern int g_mv2_num_cpus;
++extern int MPIDI_Get_num_nodes();
+ 
+ volatile unsigned int MPIDI_CH3I_progress_completion_count = 0; //ODOT: what is this ?
+ volatile int MPIDI_CH3I_progress_blocked = FALSE;

@@ -1,0 +1,20 @@
+commit e0028839a9bee6996816ae5be43f8a1a7faa6580
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 10:00:12 2024 +0200
+
+    util: add missing include
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git src/util/mem/mpit.c src/util/mem/mpit.c
+index 19c2caf27cb3..17f6e6115291 100644
+--- src/util/mem/mpit.c
++++ src/util/mem/mpit.c
+@@ -18,6 +18,7 @@
+ #include <stdio.h>
+ #include <search.h>
+ #include <stdint.h>
++#include <sys/shm.h>
+ 
+ #ifdef USE_MEMORY_TRACING
+ #   define mpit_malloc(a, line, file)           \

@@ -216,6 +216,10 @@ Patch4:         reproducible.patch
 Patch5:         pass-correct-size-to-snprintf.patch
 Patch6:         mvapich2-allow-building-with-external-hwloc.patch
 Patch7:         mvapich2-openpa-add-memory-barriers.patch
+Patch8:         mrail-fix-incompatible-pointer-issues.patch
+Patch9:         util-add-missing-include.patch
+Patch10:        psm-add-missing-declaration.patch
+
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch50:        0001-Drop-real128.patch
@@ -347,18 +351,11 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 
 %{?with_hpc:%hpc_debug}
 %setup -q -n mvapich2-%{version}%{?rc_ver}
-%patch -P 0
-%patch -P 2
-%patch -P 3
-%patch -P 4
-%patch -P 5 -p1
-%patch -P 6
-%patch -P 7
+%autopatch -M 49 -p0
 
 # Only apply these patches on Armv7
 %ifarch armv7hl
-%patch -P 50 -p1
-%patch -P 51
+%autopatch -m 50 -p0
 %endif
 cp /usr/share/automake*/config.* .
 

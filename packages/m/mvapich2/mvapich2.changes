@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 07:24:42 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add patches to fix compilation errors with GCC >= 14:
+  - mrail-fix-incompatible-pointer-issues.patch
+  - util-add-missing-include.patch
+  - psm-add-missing-declaration.patch
+- Refresh 0001-Drop-real128.patch to work with patch -p0
+- Switch to autopatch
+
+-------------------------------------------------------------------
 Tue Jun 25 13:22:53 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable 32b builds of hpc flavours.
