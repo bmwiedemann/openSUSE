@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:42:18 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on armv7
+
+-------------------------------------------------------------------
 Thu Aug 15 08:59:14 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add hostname binary to be able to create certificates [bsc#1229161]
