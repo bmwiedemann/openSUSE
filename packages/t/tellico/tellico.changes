@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep  4 17:40:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0
+  * https://tellico-project.org/blog/
+  * Building with Qt6 is enabled by default
+  * Book and video collections can be imported from file
+    metadata (kde#214606)
+  * All entry templates were updated to include any loan
+    information (kde#411903)
+  * Creating and viewing the internal log file is supported
+    through the --log and --logfile command-line options (kde#426624)
+  * The DBUS interface can output to stdout using -- as the file name
+  * Choice fields are now allowed to have multiple values (kde#483831)
+  * The iTunes, Discogs, and MusicBrainz sources now separate
+    multi-disc albums (kde#479503)
+  * A configurable locale was added to the IMDb data source
+  * The Allocine and AnimeNFO data sources were removed
+- Drop patch, merged upstream:
+  * 0001-Remove-Allocine-data-source.patch
+
+-------------------------------------------------------------------
 Tue Jun 25 07:05:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.5.5

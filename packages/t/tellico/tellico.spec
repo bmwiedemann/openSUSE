@@ -16,66 +16,62 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.4.0
+
 Name:           tellico
-Version:        3.5.5
+Version:        4.0
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Remove-Allocine-data-source.patch
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  libcsv-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  libcsv-devel >= 3.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5GuiAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Sane)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Charts)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(KCddb6)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KSaneWidgets6)
+BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  pkgconfig(poppler-qt6)
 BuildRequires:  pkgconfig(taglib)
-BuildRequires:  pkgconfig(yaz)
-# Needed to install/uninstall knewstuff downloads
-Requires:       /usr/bin/dbus-send
-# QWebEngine is not available on ppc
-%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-%else
-BuildRequires:  cmake(KF5KHtml)
-%endif
+BuildRequires:  pkgconfig(yaz) >= 2.0
+# Needs QtWebEngine
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Tellico is an application for organizing your collections. It provides
@@ -92,39 +88,34 @@ sed -i 's#env perl$#perl#' src/config/*-update.pl
 sed -i 's#env python$#python3#' src/fetch/scripts/*.py
 
 %build
-%cmake_kf5 "-DENABLE_WEBCAM=true" -d build
+%cmake_kf6 -DENABLE_WEBCAM:BOOL=TRUE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name}
-
-%{kf5_find_htmldocs}
-
-%{kf5_post_install}
+%find_lang tellico tellico.lang --with-html
 
 %fdupes %{buildroot}
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md
-%config %{_kf5_configdir}/tellicorc
-%dir %{_kf5_appsdir}/kconf_update
-%doc %lang(en) %{_kf5_htmldir}/en/tellico/
-%{_datadir}/mime/packages/tellico.xml
-%{_kf5_applicationsdir}/org.kde.tellico.desktop
-%{_kf5_appsdir}/kconf_update/tellico*
-%{_kf5_appsdir}/tellico/
-%{_kf5_appstreamdir}/org.kde.tellico.appdata.xml
-%{_kf5_bindir}/tellico
-%{_kf5_configkcfgdir}/tellico_config.kcfg
-%{_kf5_iconsdir}/hicolor/*/apps/tellico.png
-%{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-tellico.png
-%{_kf5_knsrcfilesdir}/tellico*
-%{_kf5_kxmlguidir}/tellico/
+%doc %lang(en) %{_kf6_htmldir}/en/tellico/
+%config %{_kf6_configdir}/tellico*
+%{_kf6_applicationsdir}/org.kde.tellico.desktop
+%{_kf6_appstreamdir}/org.kde.tellico.appdata.xml
+%{_kf6_bindir}/tellico
+%{_kf6_configkcfgdir}/tellico_config.kcfg
+%{_kf6_iconsdir}/hicolor/*/apps/tellico.png
+%{_kf6_iconsdir}/hicolor/*/mimetypes/application-x-tellico.png
+%{_kf6_knsrcfilesdir}/tellico-template.knsrc
+%{_kf6_sharedir}/kconf_update/tellico*
+%{_kf6_sharedir}/mime/packages/tellico.xml
+%{_kf6_sharedir}/tellico/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/tellico/
 
 %changelog
