@@ -109,4 +109,14 @@ Required by python-ipyleaflet and python-folium</comment>
   * Drop Py3.7, add Py3.12</comment>
     <requestid>1170448</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df05cf9d2ec4771f9215c9114ec31876</srcmd5>
+    <version>0.8.0</version>
+    <time>1725544046</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * ColorMap text color
+  * Add type hints</comment>
+    <requestid>1198884</requestid>
+  </revision>
 </revisionlist>

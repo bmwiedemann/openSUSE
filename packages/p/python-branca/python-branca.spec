@@ -20,7 +20,7 @@
 # no ipython
 %global skip_python39 1
 Name:           python-branca
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
