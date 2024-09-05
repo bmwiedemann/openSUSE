@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.73
+Version:        0.1.74
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -202,6 +202,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DSSG_PRODUCT_CHROMIUM=OFF \
 	 -DSSG_PRODUCT_ALINUX2=OFF \
 	 -DSSG_PRODUCT_ALINUX3=OFF \
+	 -DSSG_PRODUCT_AL2023=OFF \
 	 -DSSG_PRODUCT_DEBIAN9=ON \
 	 -DSSG_PRODUCT_DEBIAN10=ON \
 	 -DSSG_PRODUCT_DEFAULT=ON \
@@ -221,6 +222,8 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_RHEL7=ON \
 	 -DSSG_PRODUCT_RHEL8=ON \
 	 -DSSG_PRODUCT_RHEL9=ON \
+	 -DSSG_PRODUCT_RHEL10=ON \
+	 -DSSG_PRODUCT_CS10=ON \
 	 -DSSG_PRODUCT_RHOSP10=ON \
 	 -DSSG_PRODUCT_RHOSP13=ON \
 	 -DSSG_PRODUCT_RHV4=ON \
@@ -254,9 +257,11 @@ make install DESTDIR=%buildroot
 %{_datadir}/doc/scap-security-guide/LICENSE
 %dir %{_datadir}/doc/scap-security-guide/guides/
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-sle*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-slmicro*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-opensuse*
 %dir %{_datadir}/doc/scap-security-guide/tables/
 %doc %{_datadir}/doc/scap-security-guide/tables/table-sle*
+%doc %{_datadir}/doc/scap-security-guide/tables/table-slmicro*
 %doc %{_mandir}/man8/scap-security-guide.8.gz
 %dir %{_datadir}/scap-security-guide/
 %dir %{_datadir}/scap-security-guide/ansible/
@@ -264,10 +269,12 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/scap-security-guide/kickstart/
 %{_datadir}/scap-security-guide/*/opensuse*
 %{_datadir}/scap-security-guide/*/sle*
+%{_datadir}/scap-security-guide/*/slmicro*
 %dir %{_datadir}/xml/scap/
 %dir %{_datadir}/xml/scap/ssg/
 %dir %{_datadir}/xml/scap/ssg/content/
 %{_datadir}/xml/scap/ssg/content/*-sle*
+%{_datadir}/xml/scap/ssg/content/*-slmicro*
 %{_datadir}/xml/scap/ssg/content/*-opensuse*
 
 %files redhat
@@ -277,11 +284,11 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/doc/scap-security-guide/guides/
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-centos*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs9*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs10*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-fedora*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-ol*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-openeuler*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-rh*
-%doc %{_datadir}/doc/scap-security-guide/guides/ssg-sl7*
 %dir %{_datadir}/doc/scap-security-guide/tables/
 %doc %{_datadir}/doc/scap-security-guide/tables/table-ol*
 %doc %{_datadir}/doc/scap-security-guide/tables/table-rh*
@@ -293,21 +300,21 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/scap-security-guide/kickstart/
 %{_datadir}/scap-security-guide/*/*centos*
 %{_datadir}/scap-security-guide/*/*cs9*
+%{_datadir}/scap-security-guide/*/*cs10*
 %{_datadir}/scap-security-guide/*/*fedora*
 %{_datadir}/scap-security-guide/*/*ol*
 %{_datadir}/scap-security-guide/*/*openeuler*
 %{_datadir}/scap-security-guide/*/*rh*
-%{_datadir}/scap-security-guide/*/*sl7*
 %dir %{_datadir}/xml/scap/
 %dir %{_datadir}/xml/scap/ssg/
 %dir %{_datadir}/xml/scap/ssg/content/
 %{_datadir}/xml/scap/ssg/content/*-centos*
 %{_datadir}/xml/scap/ssg/content/*-cs9*
+%{_datadir}/xml/scap/ssg/content/*-cs10*
 %{_datadir}/xml/scap/ssg/content/*-fedora*
 %{_datadir}/xml/scap/ssg/content/*-ol*
 %{_datadir}/xml/scap/ssg/content/*-openeuler*
 %{_datadir}/xml/scap/ssg/content/*-rh*
-%{_datadir}/xml/scap/ssg/content/*-sl7*
 
 %files debian
 %if "%{_vendor}" != "debbuild"

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  2 13:58:50 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updated to 0.1.74 (jsc#ECO-3319)
+  - Add Amazon Linux 2023 product (#12006)
+  - Introduce new remediation type Kickstart (#12144)
+  - Make PAM macros more flexible to variables (#12133)
+  - Remove Debian 10 Product (#12205)
+  - Remove Red Hat Enterprise Linux 7 product (#12093)
+  - Update CIS RHEL9 control file to v2.0.0 (#12067)
+ 
+-------------------------------------------------------------------
 Fri May 31 07:52:33 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
 
 - updated to 0.1.73 (jsc#ECO-3319)

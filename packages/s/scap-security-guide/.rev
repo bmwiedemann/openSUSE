@@ -409,4 +409,18 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   - Initial implementation of STIG V1R1 profile for Ubuntu 22.04 LTS (#11820)</comment>
     <requestid>1178138</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ee60bdf7383faa7be0226cc109827549</srcmd5>
+    <version>0.1.74</version>
+    <time>1725544047</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.74 (jsc#ECO-3319)
+  - Add Amazon Linux 2023 product (#12006)
+  - Introduce new remediation type Kickstart (#12144)
+  - Make PAM macros more flexible to variables (#12133)
+  - Remove Debian 10 Product (#12205)
+  - Remove Red Hat Enterprise Linux 7 product (#12093)
+  - Update CIS RHEL9 control file to v2.0.0 (#12067)</comment>
+    <requestid>1198901</requestid>
+  </revision>
 </revisionlist>
