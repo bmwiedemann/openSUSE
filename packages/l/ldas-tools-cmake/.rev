@@ -7,4 +7,12 @@
     <comment>A collection of cmake functions used by LDAS (LIGO Data Analysis System)</comment>
     <requestid>825823</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>769625bd25af8b51ab5cbe66d17e6c5d</srcmd5>
+    <version>1.3.0</version>
+    <time>1725544034</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198809</requestid>
+  </revision>
 </revisionlist>

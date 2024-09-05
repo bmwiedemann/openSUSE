@@ -1,7 +1,7 @@
 #
 # spec file for package ldas-tools-cmake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ldas-tools-cmake
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        A collection of CMake functions used by LDAS (LIGO Data Analysis System) Tools
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
-URL:            http://software.ligo.org
-Source:         http://software.ligo.org/lscsoft/source/%{name}-%{version}.tar.gz
+URL:            https://software.ligo.org
+Source0:        https://software.ligo.org/lscsoft/source/%{name}-%{version}.tar.gz
+# Upstream missed COPYING file in tarball
+Source1:        https://git.ligo.org/computing/ldastools/igwn-cmake/-/raw/igwn-cmake-macros-1.5.0/COPYING
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(igwncmake)
+Requires:       pkgconfig(igwncmake)
 BuildArch:      noarch
 
 %description
@@ -34,6 +40,7 @@ a collection of cmake functions used by LDAS.
 
 %prep
 %autosetup -p1
+cp %{SOURCE1} ./
 
 %build
 %cmake
@@ -43,8 +50,8 @@ a collection of cmake functions used by LDAS.
 %cmake_install
 
 %files
-%doc NEWS
+%license COPYING
 %{_datadir}/ldas-tools/
 %{_datadir}/pkgconfig/*.pc
- 
+
 %changelog
