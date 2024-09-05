@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 06:11:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded BuildRequires on pylib. 
+
+-------------------------------------------------------------------
 Fri May  3 07:35:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:

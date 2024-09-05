@@ -26,7 +26,6 @@ URL:            https://github.com/sehmaschine/django-grappelli
 Source:         https://github.com/sehmaschine/django-grappelli/archive/%{version}.tar.gz#/django-grappelli-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module py >= 1.8}
 BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module pytest-django >= 3.6}
 BuildRequires:  %{python_module setuptools}
@@ -65,6 +64,6 @@ export DJANGO_SETTINGS_MODULE=test_project.settings
 %license LICENSE
 %doc AUTHORS README.rst
 %{python_sitelib}/grappelli
-%{python_sitelib}/django_grappelli-%{version}*-info
+%{python_sitelib}/django_grappelli-%{version}.dist-info
 
 %changelog

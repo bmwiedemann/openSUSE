@@ -285,4 +285,12 @@
   * Fixed: Trigger change event in dismissRelatedLookupPopup.</comment>
     <requestid>1171539</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>eb17353b92207fc639abf62849afa40c</srcmd5>
+    <version>4.0.1</version>
+    <time>1725544045</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded BuildRequires on pylib.</comment>
+    <requestid>1198873</requestid>
+  </revision>
 </revisionlist>
