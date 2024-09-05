@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:41:24 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- update to 1.27.0:
+  * Implementation of Events API
+  * Make log sdk add exception.message to logRecord for exceptions whose argument is an exception not a string message
+  * Fix use of link.attributes.dropped, which may not exist
+  * Running mypy on SDK resources
+  * Added py.typed file to top-level module
+  * Drop Final annotation from Enum in semantic conventions
+  * Update log export example to not use root logger
+  * Update semantic conventions to version 1.27.0
+  * Add support to type bytes for OTLP AnyValue
+  * Export ExponentialHistogram and ExponentialHistogramDataPoint
+  * Implement Client Key and Certificate File Support for All OTLP Exporters
+  * Remove _start_time_unix_nano attribute from _ViewInstrumentMatch in favor of using time_ns() at the moment when the aggregation object is created 
+
+-------------------------------------------------------------------
 Mon Jun 17 11:39:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.25.0:
