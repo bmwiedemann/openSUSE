@@ -17,14 +17,14 @@
 
 
 Name:           supermin
-Version:        5.3.4
+Version:        5.3.5
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
-Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.4.tar.gz
-Source1:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.4.tar.gz.sig
+Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.5.tar.gz
+Source1:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.5.tar.gz.sig
 Source9:        supermin.keyring
 Patch30:        suse_release.patch
 Patch31:        supermin-kernel_version_compressed.patch

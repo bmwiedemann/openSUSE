@@ -199,4 +199,12 @@
     <comment>Fix for bsc#1228373 - supermin regression causes virt-inspector to fail</comment>
     <requestid>1190315</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>20f659ba08ccf4d780c440085deb2a46</srcmd5>
+    <version>5.3.5</version>
+    <time>1725544031</time>
+    <user>anag+factory</user>
+    <comment>Update supermin to version 5.3.5</comment>
+    <requestid>1198828</requestid>
+  </revision>
 </revisionlist>
