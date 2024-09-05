@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        4.3.2
+Version:        4.3.4
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
@@ -26,9 +26,6 @@ URL:            https://github.com/mikebrady/shairport-sync
 Source0:        https://github.com/mikebrady/shairport-sync/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        airplay-server.xml
 Source2:        README.SUSE
-# PATCH-FIX-OPENSUSE drop-user-config.patch hillwood@opensuse.org -- Move configuring user account to rpm spec.
-# Move configuring user account to rpm spec.
-Patch0:         drop-user-config.patch
 Patch1:         harden_shairport-sync.service.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -53,6 +50,7 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
+Requires:       avahi
 Requires:       firewalld
 Requires:       nqptp
 Requires(pre):  shadow
@@ -89,7 +87,8 @@ autoreconf -i -f
            --with-metadata \
            --with-configfiles \
            --with-convolution \
-           --with-airplay-2
+           --with-airplay-2 \
+           --without-create-user-group
 %make_build
 
 %install
@@ -126,7 +125,7 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd --system -c "%{name} Use
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/airplay-server.xml
-%{_mandir}/man7/shairport-sync.7%{?ext_man}
+%{_mandir}/man1/shairport-sync.1%{?ext_man}
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 

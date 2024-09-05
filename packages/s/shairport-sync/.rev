@@ -230,4 +230,41 @@
   of bug fixes. (forwarded request 1160372 from hillwood)</comment>
     <requestid>1160373</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aa18c5f7db1a79ddab5622ccf878ac04</srcmd5>
+    <version>4.3.4</version>
+    <time>1725544019</time>
+    <user>anag+factory</user>
+    <comment>- Added missing runtime dependency: avahi
+- Removed: drop-user-config.patch
+  This is now configurable in the build system.
+- Update version to 4.3.4
+  * https://github.com/mikebrady/shairport-sync/releases/tag/4.3.4
+  * ALSA: better support for HDMI ports
+  * Enabled termination of a disconnected session in AirPlay 2 operation after
+    a timeout -- it had been disabled by default.
+  * Fixed a bug that prevented Shairport Sync from terminating cleanly when a
+    fatal error occurred while directly accessing the alsa output device.
+  * Fixed a bug that prevented Shairport Sync from recovering cleanly if a
+    player disconnected without warning.
+  * Avoided using TCP_KEEPINTVL and TCP_KEEPCNT if they are not defined.
+  * Fixed a race condition with the metadata queues.
+- Update version to 4.3.3
+  * https://github.com/mikebrady/shairport-sync/releases/tag/4.3.3
+  * The man entry for Shairport Sync has moved from Section 7 (Miscellaneous
+    information) to where it should be: Section 1 (General commands (tools and
+    utilities)).
+  * Bug fix: Use pthread_rwlock_wrlock instead of pthread_rdlock_wrlock when
+    tearing down a connection.
+  * Add support for the mbedtls3 library.
+  * If a network interface is specified in the configuration file, limit
+    addresses used for PTP to that network interface only.
+  * Make Shairport Sync terminate if the configuration file exists but can not
+    be opened. 
+  * Look for DACP-ID and Active-Remote in the GET /info request, where it
+    sometimes appears in an AirPlay 2 session originating from an Intel Mac.
+  * Do not print the password in debug logs.
+- Add missing runtime dependency: avahi (boo#1213521) (forwarded request 1198479 from wfrisch)</comment>
+    <requestid>1198759</requestid>
+  </revision>
 </revisionlist>
