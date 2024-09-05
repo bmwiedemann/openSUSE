@@ -210,4 +210,124 @@
   * various toplevel domain updates</comment>
     <requestid>1169470</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f625f6d18a9c5e3d2a32a761f17d9bd7</srcmd5>
+    <version>1.0.2.20240903</version>
+    <time>1725544026</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.0.2:
+ - Use @typing.overload to indicate str-to-str domain input/output. #32.
+ - Address deprecation of ByteString in python 3.14.
+- update to version 1.0.1:
+ - Fix internal logic where domain name passed as a tuple of bytes, that contains
+   UTF-8 encoded non-ascii chars, unintentionally matched PSL. Fixes #31.
+- update to version 1.0.0:
+ - This version drops support for Python 2.x and 3.4.
+ - The internal logic has been slightly changed to address conflicting evaluation
+   rules between the PSL wiki and the test data.
+   As with versions before 1.0.0, this module assumes that wildcards have
+   implicit public declarations on the wildcard root.
+ - With the minimum Python version changed to 3.5, type annotations have
+  been added to exposed API methods to clarify expected input types.
+  For example, psl.publicsuffix() now accepts `str` or `Tuple[bytes, ...]`.
+ - Add tuple of bytes style input
+ - Add keep_case keyword argument
+ - Accept trailing dot
+ - Migrate CI to GitHub Actions
+- update to 0.10.0.20240420:
+  * various toplevel domain updates
+- update to 0.10.0.20240412:
+  * various toplevel domain updates
+- update to 0.10.0.20240312:
+  * various toplevel domain updates
+- Update to  0.10.0.20240214:
+  * various toplevel domain updates
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- update to 0.10.0.20240108:
+  * various toplevel domain updates
+- update to 0.10.0.20231214:
+  * various toplevel domain updates
+- Update to version 0.10.0.20231109:
+  * switch to automatically generated and uploaded to PyPI
+  release.
+- Update to version 0.9.1
+  * Use underscore in setup.cfg format
+- Update to version to 0.9.0
+  * Update PSL
+  * Add tests for accept_unknown as method argument
+  * Fix using a non-default accept_unknown in privatesuffix()
+- Update to version to 0.8.0
+  * Update PSL
+  * Ensure privateparts returns lowercase labels
+  * Fix is_public for upper case input
+  * Fix lowercase for TLD only suffix
+  * Update PSL
+  * Update PSL
+  * Update PSL
+  * Increment version
+  * Update PSL
+  * Add testcase for wildcard match
+  * Update test data and readme link
+  * Update PSL
+  * Update PSL
+  * Migrate CI to travis-ci.com
+  * Update PSL
+  * Update PSL
+  * Update PSL
+  * Update PSL
+- Update to version 0.7.11:
+ - Add testcase for wildcard match.
+ - Update test data and readme link.
+   - Fixes issue #19
+ - Update PSL.
+- Update to version 0.7.10:
+ - Update PSL.
+- Update to version 0.7.9:
+ - Update PSL.
+- update to version 0.7.8:
+ - Update PSL
+- version update to 0.7.7
+  * PSL updates
+- Remove tests from runtime package
+- Update to v0.7.3-5
+  * PSL updates
+- Update to version 0.7.2:
+ * Fix PSL file timestamp offset caused by TZ.
+- Update to version 0.7.1:
+ * Update PSL.
+- Update to version 0.7.0:
+ * Drop Python 2.5 support.
+ * Use file context managers.
+- Update to version to 0.6.15:
+ * Update PSL.
+- Update to version 0.6.14:
+ * Use privatesuffix instead of its alias.
+ * Fix typo.
+- Update to 0.6.13
+  * no changelog found
+- Update to 0.6.11:
+  * no upstream changelog
+- Update to 0.6.9:
+  * no upstream changelog
+- version update to 0.6.7
+  * no upstream changelog
+- Update to version 0.6.5:
+ * No changes
+- Update to version 0.6.4:
+ * No changes
+- Update to version 0.6.3:
+ * No changes
+- Update to version 0.6.2:
+ * No changes
+- Remove superfluous devel dependency for noarch package
+- update to version 0.6.1:
+ - cleanup pypi descriptors
+- update to version 0.6.0:
+ - support for icann-only suffixes
+- add change_psl_location.patch to use list from publicsuffix package.
+- initial package for version 0.5.0
+</comment>
+    <requestid>1198779</requestid>
+  </revision>
 </revisionlist>
