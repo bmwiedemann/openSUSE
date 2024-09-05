@@ -480,7 +480,6 @@ unsorted:
   - agama-auto 
   - agama-cli 
   - agama-integration-tests 
-  - agama-products-opensuse 
   - agama-web-ui 
   - age 
   - agenda 
@@ -9655,12 +9654,9 @@ unsorted:
   - jupyter-collaboration 
   - jupyter-dash 
   - jupyter-doc 
-  - jupyter-ipydatawidgets 
-  - jupyter-ipydatawidgets-jupyterlab 
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyparallel 
-  - jupyter-ipyscales 
   - jupyter-ipysheet 
   - jupyter-ipytablewidgets 
   - jupyter-ipytablewidgets-jupyterlab 
@@ -9670,7 +9666,6 @@ unsorted:
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyterlab 
   - jupyter-jupyterlab-filesystem 
-  - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-ipyvue 
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
@@ -13119,14 +13114,15 @@ unsorted:
   - libfprint-doc 
   - libfprint-tod-devel 
   - libframe6 
-  - libframecpp12 
-  - libframecpp3-6 
-  - libframecpp4-8 
-  - libframecpp6-8 
-  - libframecpp7-4 
-  - libframecpp8-7 
-  - libframecppc3 
-  - libframecppcmn11 
+  - libframecpp16 
+  - libframecpp3-8 
+  - libframecpp4-10 
+  - libframecpp6-10 
+  - libframecpp7-6 
+  - libframecpp8-11 
+  - libframecpp9-0 
+  - libframecppc4 
+  - libframecppcmn12 
   - libframel8 
   - libfreebl3-32bit 
   - libfreefare-devel 
@@ -14580,6 +14576,7 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-102-0 
+  - libmozjs-128-0 
   - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
@@ -14717,6 +14714,7 @@ unsorted:
   - libnetcdf_c++4-1 
   - libnetcdf_c++4-devel 
   - libnetcontrol-devel 
+  - libnetcontrol0 
   - libnetfilter_acct-devel 
   - libnetfilter_acct1 
   - libnetfilter_conntrack-devel 
@@ -18988,6 +18986,8 @@ unsorted:
   - mozjs102-devel 
   - mozjs115 
   - mozjs115-devel 
+  - mozjs128 
+  - mozjs128-devel 
   - mozjs78 
   - mozjs78-devel 
   - mozldap-devel 
@@ -25581,6 +25581,7 @@ unsorted:
   - python310-httptools 
   - python310-httpx 
   - python310-httpx-socks 
+  - python310-httpx-ws 
   - python310-humanfriendly 
   - python310-humanhash3 
   - python310-humanize 
@@ -25648,14 +25649,12 @@ unsorted:
   - python310-ipdb 
   - python310-iptables 
   - python310-ipy 
-  - python310-ipydatawidgets 
   - python310-ipyevents 
   - python310-ipyfilechooser 
   - python310-ipykernel 
   - python310-ipyleaflet 
   - python310-ipympl 
   - python310-ipyparallel 
-  - python310-ipyscales 
   - python310-ipysheet 
   - python310-ipytablewidgets 
   - python310-ipython 
@@ -25811,6 +25810,7 @@ unsorted:
   - python310-lalpulsar 
   - python310-lalsimulation 
   - python310-lancet-ioam 
+  - python310-langchain-chroma 
   - python310-langdetect 
   - python310-langtable 
   - python310-lark 
@@ -26887,6 +26887,7 @@ unsorted:
   - python310-pywlroots 
   - python310-pyxattr 
   - python310-pyxdg 
+  - python310-pyxlsb 
   - python310-pyyaml_env_tag 
   - python310-pyzmq 
   - python310-pyzmq-devel 
@@ -29183,6 +29184,7 @@ unsorted:
   - python311-httpsig_cffi 
   - python311-httptools 
   - python311-httpx-socks 
+  - python311-httpx-ws 
   - python311-humanfriendly 
   - python311-humanhash3 
   - python311-humanize 
@@ -29245,14 +29247,12 @@ unsorted:
   - python311-ipdb 
   - python311-iptables 
   - python311-ipy 
-  - python311-ipydatawidgets 
   - python311-ipyevents 
   - python311-ipyfilechooser 
   - python311-ipykernel 
   - python311-ipyleaflet 
   - python311-ipympl 
   - python311-ipyparallel 
-  - python311-ipyscales 
   - python311-ipysheet 
   - python311-ipytablewidgets 
   - python311-ipython 
@@ -29402,6 +29402,7 @@ unsorted:
   - python311-lalpulsar 
   - python311-lalsimulation 
   - python311-lancet-ioam 
+  - python311-langchain-chroma 
   - python311-langdetect 
   - python311-langtable 
   - python311-latexcodec 
@@ -30436,6 +30437,7 @@ unsorted:
   - python311-pywlroots 
   - python311-pyxattr 
   - python311-pyxdg 
+  - python311-pyxlsb 
   - python311-pyyaml_env_tag 
   - python311-pyzmq-devel 
   - python311-pyzo 
@@ -32763,6 +32765,7 @@ unsorted:
   - python312-httptools 
   - python312-httpx 
   - python312-httpx-socks 
+  - python312-httpx-ws 
   - python312-humanfriendly 
   - python312-humanhash3 
   - python312-humanize 
@@ -32830,14 +32833,12 @@ unsorted:
   - python312-ipdb 
   - python312-iptables 
   - python312-ipy 
-  - python312-ipydatawidgets 
   - python312-ipyevents 
   - python312-ipyfilechooser 
   - python312-ipykernel 
   - python312-ipyleaflet 
   - python312-ipympl 
   - python312-ipyparallel 
-  - python312-ipyscales 
   - python312-ipysheet 
   - python312-ipytablewidgets 
   - python312-ipython 
@@ -32991,6 +32992,7 @@ unsorted:
   - python312-lalpulsar 
   - python312-lalsimulation 
   - python312-lancet-ioam 
+  - python312-langchain-chroma 
   - python312-langdetect 
   - python312-langtable 
   - python312-lark 
@@ -34064,6 +34066,7 @@ unsorted:
   - python312-pywlroots 
   - python312-pyxattr 
   - python312-pyxdg 
+  - python312-pyxlsb 
   - python312-pyyaml_env_tag 
   - python312-pyzmq 
   - python312-pyzmq-devel 
@@ -36656,7 +36659,6 @@ unsorted:
   - selinux-policy-devel 
   - selinux-policy-doc 
   - selinux-policy-minimum 
-  - selinux-policy-mls 
   - selinux-policy-sandbox 
   - selinux-targeted-setup 
   - semantik 
