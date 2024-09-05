@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:48:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2024.11:
+  + Added:
+    - New configuration options
+      + Right aligning nicks in buffers.
+      + Right aligning nicks in nicklist.
+      + Hiding chghost messages.
+      + Overwrite nicklist width in channels.
+      + Show/hide user access levels in buffer and nicklist.
+      + buffer_focused_action added to sidebar to enable actions a
+        focused buffer.
+      + Notification for direct messages.
+    - Enable support for IRCv3 Monitor and extended-monitor
+  + Fixed:
+    - Expanded recognized login notifications (used to join
+      channels that report themselves as requiring registration
+      after logging in)
+    - Messages with multiple targets are correctly recorded into
+      multiple buffers (and/or multiple times into the same buffer)
+      client-side.
+    - Messages sent with a STATUSMSG prefix are recorded and
+      indicated in the corresponding channel.
+    - Ability to position the sidebar at the top, bottom, right, or
+      left.
+    - /mode requires too many parameters for certain commands.
+  + Changed:
+    - Reworked themes to add better customization possibilities
+      + NOTE Old theme files are not compatibile with the new
+        format. However all the themes in the theme community has
+        been updated to the new format.
+    - Unread indicator has changed from a boolean value to a enum.
+    - Renamed sidebar.default_action to sidebar.buffer_action.
+    - Auto-completing (with tab) a nickname at the beginning of
+      the input line will append ': ' (colon space). Otherwise, a
+      space is appended to the completion.
+  + Removed:
+    - Removed hex configuration option for server messages and
+      nicknames.
+      + hex was previously used to overwrite a color value. This is
+        now done through the new theme format.
+  + Notes:
+    - In backlog you might see two text markers (∙). This is
+      because we didn't want to update the entire history, when we
+      updated the way we construct text components. New history
+      from this release wont have multiple markers.
+    - Your old themes are broke since we updated to a new format.
+      Find themes in the new format here: theme community.
+
+-------------------------------------------------------------------
 Sun Aug  4 21:11:52 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2024.10:
