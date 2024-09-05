@@ -36,7 +36,7 @@ Example crash (relibly happens during building electron inside mksnapshot):
        libs = [ "atomic" ]
      }
    }
-+  cflags = ["-fno-strict-aliasing"]
++  cflags = ["-fno-ipa-strict-aliasing"]
  }
  
  # Should be applied to all targets that write trace events.

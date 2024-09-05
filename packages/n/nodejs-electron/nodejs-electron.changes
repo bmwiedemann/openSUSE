@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 04:59:15 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- v8-strict-aliasing.patch: only use -fno-ipa-strict-aliasing, it's sufficient
+- aarch64 Tumbleweed: disable LTO and use mold linker due to OOM
+- change vendor string in process.versions to match what VSCode expects
+
+-------------------------------------------------------------------
 Sat Aug 31 09:00:18 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fedora 40+, TW: add v8-strict-aliasing.patch to work around GCC14 miscompile

@@ -91,11 +91,21 @@ BuildArch:      i686
 %endif
 
 %ifarch aarch64
-%if 0%{?fedora} >= 40
+%if 0%{?suse_version} || 0%{?fedora} >= 40
 %bcond_with lto
 %else
 %bcond_without lto
 %endif
+%endif
+
+%ifarch aarch64
+%if 0%{?suse_version}
+%bcond_without mold
+%else
+%bcond_with mold
+%endif
+%else
+%bcond_with mold
 %endif
 
 
@@ -443,6 +453,9 @@ BuildRequires:  llhttp-devel >= 8
 BuildRequires:  llvm-devel >= 16
 %endif
 BuildRequires:  memory-constraints
+%if %{with mold}
+BuildRequires: mold
+%endif
 %ifarch %ix86 x86_64 %x86_64
 %if %{without system_aom} || %{without system_vpx}
 BuildRequires:  nasm
@@ -1014,6 +1027,9 @@ export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 #Re-add these parameters from build/config/compiler/BUILD.gn.
 export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
 
+# mold does not respect it otherwise
+export LDFLAGS="$LDFLAGS -Wl,--as-needed"
+
 
 
 %ifarch %ix86 %arm
@@ -1061,6 +1077,10 @@ export LDFLAGS="$LDFLAGS -flto=auto"
 %endif
 %endif
 
+%if %{with mold}
+export LDFLAGS="$LDFLAGS -fuse-ld=mold"
+%endif
+
 # Ccache is truncated to 5GB which is not enough for Electron, leading to slower rebuilds
 export CCACHE_COMPRESS=1
 ccache -o max_size=0 || true
@@ -1069,7 +1089,9 @@ ccache -o max_size=0 || true
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
 myconf_gn+=' override_electron_version="%{tag_version}"'
-myconf_gn+=' electron_vendor_version="suse:Electron for openSUSE"'
+# The only known consumer of process.versions.<custom string> is VSCode:
+# https://github.com/microsoft/vscode/blob/main/src/vs/workbench/electron-sandbox/parts/dialogs/dialogHandler.ts
+myconf_gn+=' electron_vendor_version="microsoft-build:Electron for openSUSE"'
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
