@@ -18,8 +18,8 @@
 #!BuildTag: opensuse/bci/kiwi:10-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:10.1
 #!BuildTag: opensuse/bci/kiwi:10.1-%RELEASE%
-#!BuildTag: opensuse/bci/kiwi:10.1.2
-#!BuildTag: opensuse/bci/kiwi:10.1.2-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10.1.4
+#!BuildTag: opensuse/bci/kiwi:10.1.4-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:latest
 
 FROM opensuse/tumbleweed:latest
@@ -31,7 +31,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends checkmedia dracut-kiwi-oem-r
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder (kiwi)"
 LABEL org.opencontainers.image.description="KIWI Appliance Builder (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
-LABEL org.opencontainers.image.version="10.1.2"
+LABEL org.opencontainers.image.version="10.1.4"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
