@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 01:43:07 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1229959 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API
+
+-------------------------------------------------------------------
 Mon Apr 22 12:15:24 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

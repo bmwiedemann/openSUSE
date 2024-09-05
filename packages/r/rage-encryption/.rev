@@ -138,4 +138,12 @@
     <comment></comment>
     <requestid>1170229</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>70893d2d304394b2d7edb59dc15a45b0</srcmd5>
+    <version>0.10.0+0</version>
+    <time>1725544027</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1229959 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API</comment>
+    <requestid>1198787</requestid>
+  </revision>
 </revisionlist>

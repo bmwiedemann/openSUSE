@@ -37,6 +37,7 @@ BuildRequires:  cargo-packaging
 %endif
 # Requires >1.59 for thread::available_parallelism
 BuildRequires:  cargo >= 1.59
+BuildRequires:  libzstd-devel
 BuildRequires:  vendored_licenses_packager
 # for feature mount
 BuildRequires:  fuse-devel
