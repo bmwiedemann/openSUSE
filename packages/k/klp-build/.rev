@@ -129,4 +129,27 @@
   * config.py: Show error code when quilt fails</comment>
     <requestid>1194034</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75aab6ff88355cde747c4e7295b98c7d</srcmd5>
+    <version>0~20240902.c95cc9e</version>
+    <time>1725544014</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240902.c95cc9e:
+  * patches: Update klp-convert patches
+  * config: Decompress lzma (xz) files
+  * setup: Remove the -default from uname
+  * Remove test.sh: clearly tracking it here was a mistake...
+  * test.sh: Add test for CVE-2024-35817
+  * Add test for CVE-2024-36921
+  * ibs: Use osc-tiny API to push files to IBS
+  * test.sh: Update expected output LoC
+  * templ: Fix problem with ## macro concatenation macro in C
+  * Revert &quot;templ: Skip Mako usage for C files&quot;
+  * patches: Remove compiletime_error kernel patch
+  * templ: Skip Mako usage for C files
+  * test.sh: Add CVE-2024-0775
+  * ksrc: Don't ignore patches without &quot;.patch&quot; suffix
+  * test.sh: Adjust LoC of bpf_link_free</comment>
+    <requestid>1198749</requestid>
+  </revision>
 </revisionlist>
