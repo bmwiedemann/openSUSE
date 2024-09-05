@@ -147,6 +147,10 @@ donttest="$donttest or test_build_distributions"
 donttest="$donttest or test_show_self_package"
 donttest="$donttest or test_publish_and_build_in_one_run"
 donttest="$donttest or test_expand_project_root_in_url"
+donttest="$donttest or test_init_validate_python_requires"
+donttest="$donttest or test_init_command"
+donttest="$donttest or test_init_command_library"
+donttest="$donttest or test_use_command"
 
 %pytest -v -k "not ($donttest)"
 %endif
