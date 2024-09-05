@@ -17,14 +17,14 @@
 
 
 Name:           python-lmfit
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        BSD-3-Clause AND MIT
 URL:            https://lmfit.github.io/lmfit-py/
 Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#lmfit/lmfit-py#959
-Patch0:         support-numpy-2.patch
+# PATCH-FIX-UPSTREAM lmfit-pr965-asteval.patch gh#lmfit/lmfit-py#965
+Patch0:         https://github.com/lmfit/lmfit-py/pull/965.patch#/lmfit-pr965-asteval.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -32,24 +32,23 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asteval >= 0.9.28
+Requires:       python-asteval >= 1
 Requires:       python-dill >= 0.3.4
-Requires:       python-numpy >= 1.23
-Requires:       python-scipy >= 1.8
-Requires:       python-uncertainties >= 3.1.4
+Requires:       python-numpy >= 1.19
+Requires:       python-scipy >= 1.6
+Requires:       python-uncertainties >= 3.2.2
 Recommends:     python-emcee
 Recommends:     python-matplotlib
 Recommends:     python-pandas
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module asteval >= 0.9.28}
+BuildRequires:  %{python_module asteval >= 1}
 BuildRequires:  %{python_module dill >= 0.3.4}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module numpy >= 1.23}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.8}
-BuildRequires:  %{python_module uncertainties >= 3.1.4}
+BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module uncertainties >= 3.2.2}
 # /SECTION
 %python_subpackages
 
@@ -75,6 +74,7 @@ questionable.
 %prep
 %autosetup -p1 -n lmfit-%{version}
 sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
+sed -i 's/--cov=lmfit --cov-report html//' pyproject.toml
 
 %build
 %pyproject_wheel
