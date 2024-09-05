@@ -17,7 +17,7 @@
 
 
 Name:           clang-extract
-Version:        0~20240814.272ac2e
+Version:        0~20240902.0a13816
 Release:        0
 Summary:        A tool to extract code content from source files
 License:        Apache-2.0 WITH LLVM-exception AND NCSA

@@ -168,4 +168,27 @@
   * ElfCXX: Make decompress methods access ElfFd directly</comment>
     <requestid>1194033</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2c0e37fb236d7db2b7f26f9ecc23349e</srcmd5>
+    <version>0~20240902.0a13816</version>
+    <time>1725544013</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240902.0a13816:
+  * libcextract: Passes: Adjust KLP_RELOC_SYMBOL_POS format
+  * testsuite: inline: inlined-into-1: Fix noinline and implicit-int
+  * Add option to pass two debuginfos
+  * Fix symbol visibility
+  * Disable const propagation on externalized vars
+  * libcextract: ArgvParser: Use basename instead of std::filename
+  * Fix Late Externalization when variable is declared as macro expansion
+  * Dump includetree together with passes dump
+  * libcextract: ExpansionPolicy: Check for abs and rel path differences
+  * Remove redundant decls
+  * Workaround ';' being output at incorrect location when decl ends with #endif
+  * Fix CompleteDefinition of struct being dragged into output because of union field
+  * libcextract: ArgvParser: Disable Wduplicate-decl-specifier error
+  * Disable Precompiled Headers
+  * libcextract: Add support for Weak symbols for kernel mode</comment>
+    <requestid>1198748</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 04 14:23:57 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240902.0a13816:
+  * libcextract: Passes: Adjust KLP_RELOC_SYMBOL_POS format
+  * testsuite: inline: inlined-into-1: Fix noinline and implicit-int
+  * Add option to pass two debuginfos
+  * Fix symbol visibility
+  * Disable const propagation on externalized vars
+  * libcextract: ArgvParser: Use basename instead of std::filename
+  * Fix Late Externalization when variable is declared as macro expansion
+  * Dump includetree together with passes dump
+  * libcextract: ExpansionPolicy: Check for abs and rel path differences
+  * Remove redundant decls
+  * Workaround ';' being output at incorrect location when decl ends with #endif
+  * Fix CompleteDefinition of struct being dragged into output because of union field
+  * libcextract: ArgvParser: Disable Wduplicate-decl-specifier error
+  * Disable Precompiled Headers
+  * libcextract: Add support for Weak symbols for kernel mode
+
+-------------------------------------------------------------------
 Thu Aug 15 04:21:56 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240814.272ac2e:
