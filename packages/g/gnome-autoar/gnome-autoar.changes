@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 30 18:11:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.5:
+  + mime-types: Add tar variant of bzip2
+  + extractor: Fix source string leak
+
+-------------------------------------------------------------------
 Fri Mar 17 11:58:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.4:

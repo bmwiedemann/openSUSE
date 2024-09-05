@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 21 14:21:04 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
+
+- Update to 1.4.0 & fix libwebp.changes header from previous commit:
+  * further security related hardening in libwebp & examples
+  * some minor optimizations in the lossless encoder
+  * added WEBP_NODISCARD to report unused result warnings; enable with
+    -DWEBP_ENABLE_NODISCARD=1
+  * improvements and corrections in webp-container-spec.txt and
+    webp-lossless-bitstream-spec.txt (#611)
+  * miscellaneous warning, bug & build fixes
+- Remove 0001-Fix-invalid-incremental-decoding-check.patch
+
+-------------------------------------------------------------------
 Wed Sep 27 20:37:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add 0001-Fix-invalid-incremental-decoding-check.patch

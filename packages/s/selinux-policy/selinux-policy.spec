@@ -24,7 +24,10 @@
 %define monolithic n
 %define BUILD_TARGETED 1
 %define BUILD_MINIMUM 1
-%define BUILD_MLS 1
+# At the moment we don't build the MLS policy. We didn't do any testing for this and have no
+# confidence that it works. Feel free to branch the package and enable it, but be aware that
+# you're on your own
+%define BUILD_MLS 0
 
 %define POLICYCOREUTILSVER %(rpm -q --qf %%{version} policycoreutils)
 %define CHECKPOLICYVER %POLICYCOREUTILSVER

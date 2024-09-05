@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fuse
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Python bindings for FUSE
 License:        LGPL-2.1-only
 URL:            https://github.com/libfuse/python-fuse
 Source:         https://github.com/libfuse/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#libfuse/python-fuse#58
-Patch0:         no-more-distutils.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

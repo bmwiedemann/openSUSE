@@ -60,7 +60,11 @@ if [ -z "${_policytype}" ]; then \
 fi \
 if [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
   %{_sbindir}/semodule -n -s ${_policytype} -X %{!-p:200}%{-p*} -i %* || : \
-  %{_sbindir}/selinuxenabled && %{_sbindir}/load_policy || : \
+  if %{_sbindir}/selinuxenabled; then \
+    if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
+      %{_sbindir}/load_policy || : \
+    fi \
+  fi \
 fi \
 %{nil}
 
@@ -76,7 +80,11 @@ fi \
 if [ $1 -eq 0 ]; then \
   if [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
     %{_sbindir}/semodule -n -X %{!-p:200}%{-p*} -s ${_policytype} -r %* &> /dev/null || : \
-    %{_sbindir}/selinuxenabled && %{_sbindir}/load_policy || : \
+    if %{_sbindir}/selinuxenabled; then \
+      if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
+        %{_sbindir}/load_policy || : \
+      fi \
+    fi \
   fi \
 fi \
 %{nil}

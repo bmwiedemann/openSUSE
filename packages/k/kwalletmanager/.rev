@@ -31,4 +31,13 @@
     <comment>KDE Release gear 24.08.0 (forwarded request 1194683 from krop)</comment>
     <requestid>1195486</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ab2b20afecc4437370f1743441324af3</srcmd5>
+    <version>24.08.0</version>
+    <time>1725543973</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fix (kde#492138):
+  * 0001-Fix-service-file-name.patch</comment>
+    <requestid>1198648</requestid>
+  </revision>
 </revisionlist>

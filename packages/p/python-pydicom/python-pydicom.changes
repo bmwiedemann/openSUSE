@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 07:18:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pydicom-pr2076-np2.patch backport of gh#pydicom/pydicom#2076
+
+-------------------------------------------------------------------
 Mon Feb 19 10:16:16 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Skip TestPillowHandler_JPEG2K also on riscv64

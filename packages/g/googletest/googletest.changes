@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  3 12:52:16 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.15.2
+  * C++ Language Support
+  * GoogleTest requires at least C++14 and follows Google's 
+    Foundational C++ Support Policy.
+  * Bzlmod is now officially supported
+  * Many bug fixes
+
+-------------------------------------------------------------------
 Mon Jul 29 08:33:13 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - avoid extra '--' which newer ctests don't like anymore

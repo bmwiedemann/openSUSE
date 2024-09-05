@@ -2974,4 +2974,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1197500</requestid>
   </revision>
+  <revision rev="350" vrev="3">
+    <srcmd5>9481c390a448e12e4babcc657014219f</srcmd5>
+    <version>4.19.0_02</version>
+    <time>1725543967</time>
+    <user>anag+factory</user>
+    <comment>Fix build on aarch64 with gcc14 (bsc#1225953)</comment>
+    <requestid>1198569</requestid>
+  </revision>
 </revisionlist>

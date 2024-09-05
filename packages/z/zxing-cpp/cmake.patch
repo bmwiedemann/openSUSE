@@ -1,13 +1,14 @@
-diff -ru orig/CMakeLists.txt mod/CMakeLists.txt
---- orig/CMakeLists.txt	2023-07-05 18:25:57.000000000 +0200
-+++ mod/CMakeLists.txt	2023-10-06 08:29:27.429624816 +0200
+Index: zxing-cpp-2.2.1/CMakeLists.txt
+===================================================================
+--- zxing-cpp-2.2.1.orig/CMakeLists.txt
++++ zxing-cpp-2.2.1/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.15)
 +cmake_minimum_required(VERSION 3.5)
  
  project(ZXing)
  
-@@ -37,9 +37,6 @@
+@@ -37,9 +37,6 @@ if (BUILD_SHARED_LIBS)
      set (CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
  endif()
  
@@ -17,16 +18,17 @@ diff -ru orig/CMakeLists.txt mod/CMakeLists.txt
  if (NOT CMAKE_CXX_EXTENSIONS)
      set (CMAKE_CXX_EXTENSIONS OFF)
  endif()
-diff -ru orig/core/CMakeLists.txt mod/core/CMakeLists.txt
---- orig/core/CMakeLists.txt	2023-07-05 18:25:57.000000000 +0200
-+++ mod/core/CMakeLists.txt	2023-10-06 08:29:35.169666650 +0200
+Index: zxing-cpp-2.2.1/core/CMakeLists.txt
+===================================================================
+--- zxing-cpp-2.2.1.orig/core/CMakeLists.txt
++++ zxing-cpp-2.2.1/core/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.15)
 +cmake_minimum_required(VERSION 3.5)
  
- project (ZXing VERSION "2.1.0")
+ project (ZXing VERSION "2.2.1")
  set (ZXING_SONAME 3) # see https://github.com/zxing-cpp/zxing-cpp/issues/333
-@@ -459,8 +459,6 @@
+@@ -464,8 +464,6 @@ if (COMPILER_NEEDS_FLOAT_STORE)
      )
  endif()
  

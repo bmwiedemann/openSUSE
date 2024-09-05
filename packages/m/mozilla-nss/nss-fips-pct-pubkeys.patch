@@ -5,7 +5,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -5020,6 +5020,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
+@@ -5132,6 +5132,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
      return crv;
  }
  
@@ -94,7 +94,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -5370,6 +5452,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5484,6 +5566,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

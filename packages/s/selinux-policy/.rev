@@ -891,4 +891,20 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1198426</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>a7208ad058f099f3e0c6867df55ebe49</srcmd5>
+    <version>20240903</version>
+    <time>1725543983</time>
+    <user>anag+factory</user>
+    <comment>- Fix macros.selinux-policy (bsc#1229132)
+  - %selinux_modules_install and %selinux_modules_uninstall will
+    now only execute load_policy if $TRANSACTIONAL_UPDATE is not set
+    (aka only if they are not in a transactional system)
+  - $TRANSACTIONAL_UPDATE is set here:
+    https://github.com/openSUSE/transactional-update/blob/bd524d3ddfcd9aeebb7b90d3e0e8eed09b796a86/lib/Transaction.cpp#L428
+- Disable build of the MLS policy. We currently don't know if it works
+  and don't want to encourage users to apply it
+</comment>
+    <requestid>1198764</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  5 11:01:38 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Changed dependency.patch for rexml 3.3 support.
+
+-------------------------------------------------------------------
+Wed Sep  4 17:41:58 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Combined dependency patches into a common dependency.patch:
+  * 0005-do-not-depend-on-wdm.patch
+  * 0010-Remove-dependency-on-grpc-tools.patch
+  * 0011-Remove-vagrant-ssl-extension.patch
+  * 0012-Bump-rgl-dependency-to-0.6.6.patch
+  * 0013-Bump-webrick-dependency-to-1.8.0.patch
+  * 0014-Bump-vagrant_cloud_dependency.patch
+  * childprocess-5.0.patch
+
+-------------------------------------------------------------------
 Mon Jun 24 14:52:38 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Changed rubygem-builder requirement to 3.3.

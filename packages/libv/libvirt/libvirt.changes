@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  3 17:23:41 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.7.0
+  - CVE-2024-8235, bsc#1230024
+  - Unconditionally disable building the interface driver
+  - Remove SysV rc* compatibility symlinks
+  - jsc#PED-8909
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-7-0-2024-09-02
+
+-------------------------------------------------------------------
 Mon Aug  5 22:02:12 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.6.0

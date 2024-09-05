@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:16:03 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 1.0.8:
+  * Add README.cups.md
+  * Do not unilaterally import distutils in setup.py 
+  * Add support for objects that support buffer protocol for "read" calls
+  * Remove trailing space on files
+  * CI: Add workflow to build Python wheels
+  * Fix setup.py uninitialized variables issue
+  * Build sdist in CI
+  * Add cp310 wheel to CI
+  * CI: Add workaround for broken py 3.5 in GitHub Actions.
+- dropped patch: no-more-distutils.patch - no longer needed.
+
+-------------------------------------------------------------------
 Tue Jan 16 04:58:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-more-distutils.patch:

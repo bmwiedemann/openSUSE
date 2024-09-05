@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 30 07:32:58 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with gcc14 (bsc#1225953)
+  66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 14:10:47 MDT 2024 - carnold@suse.com
 
 - bsc#1228574 - VUL-0: CVE-2024-31145: xen: error handling in x86

@@ -99,4 +99,12 @@
     <comment>- Fix ftbfs with gcc14:</comment>
     <requestid>1172038</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>85733a876ba23049650c95a9ba2ef1ad</srcmd5>
+    <version>0.8.2</version>
+    <time>1725543960</time>
+    <user>anag+factory</user>
+    <comment>- Add inline.patch to resolve FTBFS on gcc-14 + -Og.</comment>
+    <requestid>1198762</requestid>
+  </revision>
 </revisionlist>

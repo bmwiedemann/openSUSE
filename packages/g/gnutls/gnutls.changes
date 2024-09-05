@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  2 10:09:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.7:
+  * libgnutls: New configure option to compile out DSA support
+    The --disable-dsa configure option has been added to completely
+    disable DSA algorithm support.
+  * libgnutls: Experimental support for X25519Kyber768Draft00 key
+    exchange in TLS. For testing purposes, the hybrid post-quantum
+    key exchange defined in draft-tls-westerbaan-xyber768d00 has been
+    implemented using liboqs. Since the algorithm is still not finalized,
+    the support of this key exchange is disabled by default and can be
+    enabled with the --with-liboqs configure option.
+  * Rebase patches:
+    - gnutls-FIPS-140-3-references.patch
+    - gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 08:51:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.6:

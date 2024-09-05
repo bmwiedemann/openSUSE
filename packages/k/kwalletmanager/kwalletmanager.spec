@@ -33,6 +33,8 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE -- boo#1217190 don't require password to save settings
 Patch0:         0001-Don-t-require-password-when-changing-settings.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-service-file-name.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -90,7 +92,7 @@ This application allows you to manage your KDE password wallet.
 %{_kf6_debugdir}/kwalletmanager.categories
 %{_kf6_iconsdir}/hicolor/*/*/*.*
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kwallet5.so
-%{_kf6_sharedir}/dbus-1/services/org.kde.kwalletmanager5.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.kwalletmanager.service
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/*/

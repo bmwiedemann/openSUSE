@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  2 21:46:34 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.2.1. Changes:
+  * Fix ABI breakage from 2.2.0.
+- Changes from 2.2.0: 
+  * Rename DecodeHints to ReaderOptions. The old name is still available for
+    backward API compatibility but deprecated. Since the C-API and the Qt
+    wrapper code are not officially part of the library, they changed without
+    backward compatibility.
+  * WASM: bytes in ReadResult.
+  * DataMatrix: use charset for encoding.
+  * QRCode: Support QR Code Model1.
+  * rMQR Code: Support Rectangular Micro QR Code.
+- Refresh patch:
+  * cmake.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 14:32:19 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add back %{optflags} in c++ flags

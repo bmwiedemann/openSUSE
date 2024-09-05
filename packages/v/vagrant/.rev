@@ -481,4 +481,20 @@ To Staging:F with rubygem-vagrant_cloud</comment>
     <comment>- Changed rubygem-builder requirement to 3.3.</comment>
     <requestid>1183032</requestid>
   </revision>
+  <revision rev="59" vrev="8">
+    <srcmd5>1ef7a77ba8780edc3cccb9d482b554f4</srcmd5>
+    <version>2.3.7</version>
+    <time>1725543962</time>
+    <user>anag+factory</user>
+    <comment>- Changed dependency.patch for rexml 3.3 support.
+- Combined dependency patches into a common dependency.patch:
+  * 0005-do-not-depend-on-wdm.patch
+  * 0010-Remove-dependency-on-grpc-tools.patch
+  * 0011-Remove-vagrant-ssl-extension.patch
+  * 0012-Bump-rgl-dependency-to-0.6.6.patch
+  * 0013-Bump-webrick-dependency-to-1.8.0.patch
+  * 0014-Bump-vagrant_cloud_dependency.patch
+  * childprocess-5.0.patch</comment>
+    <requestid>1198961</requestid>
+  </revision>
 </revisionlist>

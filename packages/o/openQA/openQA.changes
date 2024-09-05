@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 04 09:04:47 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1725368178.01cdac6f:
+  * Require GruTask in database before running a minion job
+  * Only update clean git checkouts
+  * Bump datatables.net-bs5 from 2.1.4 to 2.1.5
+  * Bump ace-builds from 1.36.1 to 1.36.2
+
+-------------------------------------------------------------------
 Mon Sep 02 01:04:45 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1725224262.f755652b:

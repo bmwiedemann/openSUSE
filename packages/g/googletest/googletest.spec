@@ -24,7 +24,7 @@
 
 %define _name   googlemock
 Name:           googletest
-Version:        1.14.0
+Version:        1.15.2
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause

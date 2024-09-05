@@ -138,4 +138,12 @@
     <comment>New stable release (forwarded request 1072622 from iznogood)</comment>
     <requestid>1073161</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e9143a871de1869f771976d1c6bda291</srcmd5>
+    <version>0.4.5</version>
+    <time>1725543976</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198683</requestid>
+  </revision>
 </revisionlist>

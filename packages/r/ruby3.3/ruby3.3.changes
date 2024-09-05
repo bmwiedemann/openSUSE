@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:35:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added 7939.diff
+  Cleanup binstub lock files
+  https://github.com/rubygems/rubygems/issues/7997
+  https://github.com/rubygems/rubygems/pull/7939
+
+-------------------------------------------------------------------
+Tue Sep  3 09:45:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.5
+  This is a routine update that includes minor bug fixes.
+  We recommend upgrading your Ruby version at your earliest
+  convenience.
+
+  https://github.com/ruby/ruby/releases/tag/v3_3_5
+
+-------------------------------------------------------------------
 Tue Jul  9 09:35:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.4

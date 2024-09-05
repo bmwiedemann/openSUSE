@@ -165,6 +165,8 @@ Patch68:        openssl-FIPS-enforce-security-checks-during-initialization.patch
 Patch69:        openssl-3-FIPS-PCT_rsa_keygen.patch
 # PATCH-FIX-FEDORA bsc#1221365 FIPS: Deny SHA-1 signature verification in FIPS provider
 Patch70:        openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+# PATCH-FIX-UPSTREAM bsc#1229465 CVE-2024-6119: possible denial of service in X.509 name checks
+Patch71:        openssl-CVE-2024-6119.patch
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  ulp-macros

@@ -540,4 +540,12 @@
     <comment>- Don't build with fcitx support</comment>
     <requestid>1197426</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>494005dd843af38022fe0f6d102c441d</srcmd5>
+    <version>2.30.7</version>
+    <time>1725543971</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.30.7</comment>
+    <requestid>1198600</requestid>
+  </revision>
 </revisionlist>

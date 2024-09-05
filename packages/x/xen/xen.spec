@@ -162,6 +162,7 @@ Source99:       baselibs.conf
 Patch1:         66a8b8ac-bunzip2-rare-failure.patch
 Patch2:         66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
 Patch3:         66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
+Patch4:         66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

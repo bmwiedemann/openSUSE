@@ -38,7 +38,11 @@
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
 %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:0}
 %define with_apparmor      0%{!?_without_apparmor:1}
-%define with_interface     0%{!?_without_interface:1}
+# The udev interface backend is the only one that works across SUSE distros.
+# It supports just a handful of read-only operations, has a history of
+# instability, and is insufficiently maintained. Completely disable the
+# interface driver.
+%define with_interface     0%{!?_without_interface:0}
 
 # Optional bits on by default
 %define with_sanlock       0%{!?_without_sanlock:1}
@@ -145,7 +149,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.6.0
+Version:        10.7.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -1149,33 +1153,6 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 
 rm -f %{buildroot}/%{_sysusersdir}/libvirt-qemu.conf
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
-# Provide rc symlink backward compatibility
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtproxyd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlogd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlockd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnetworkd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnodedevd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnwfilterd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtsecretd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtstoraged
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirt-guests
-
-%if %{with_interface}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtinterfaced
-%endif
-%if %{with_qemu}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtqemud
-%endif
-%if %{with_lxc}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlxcd
-%endif
-%if %{with_libxl}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtxend
-%endif
-%if %{with_vbox}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
-%endif
 
 # Install firewall services for migration ports
 mkdir -p %{buildroot}/%{_fwdefdir}
@@ -1470,7 +1447,6 @@ fi
 %{_unitdir}/libvirtd-admin.socket
 %{_unitdir}/libvirtd-tcp.socket
 %{_unitdir}/libvirtd-tls.socket
-%{_sbindir}/rclibvirtd
 %config(noreplace) %{_sysconfdir}/%{name}/libvirtd.conf
 %if %{with_apparmor}
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.libvirtd
@@ -1489,7 +1465,6 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_unitdir}/libvirt-guests.service
 %{_unitdir}/virt-guest-shutdown.target
-%{_sbindir}/rclibvirt-guests
 %{_bindir}/virt-admin
 %{_bindir}/virt-host-validate
 %dir %{_sysconfdir}/sasl2/
@@ -1536,7 +1511,6 @@ fi
 %{_unitdir}/virtlockd.service
 %{_unitdir}/virtlockd.socket
 %{_unitdir}/virtlockd-admin.socket
-%{_sbindir}/rcvirtlockd
 %config(noreplace) %{_sysconfdir}/%{name}/virtlockd.conf
 %{_datadir}/augeas/lenses/virtlockd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlockd.aug
@@ -1553,7 +1527,6 @@ fi
 %{_unitdir}/virtlogd.service
 %{_unitdir}/virtlogd.socket
 %{_unitdir}/virtlogd-admin.socket
-%{_sbindir}/rcvirtlogd
 %config(noreplace) %{_sysconfdir}/%{name}/virtlogd.conf
 %{_datadir}/augeas/lenses/virtlogd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlogd.aug
@@ -1567,7 +1540,6 @@ fi
 %{_unitdir}/virtproxyd-admin.socket
 %{_unitdir}/virtproxyd-tcp.socket
 %{_unitdir}/virtproxyd-tls.socket
-%{_sbindir}/rcvirtproxyd
 %config(noreplace) %{_sysconfdir}/%{name}/virtproxyd.conf
 %{_datadir}/augeas/lenses/virtproxyd.aug
 %{_datadir}/augeas/lenses/tests/test_virtproxyd.aug
@@ -1594,7 +1566,6 @@ fi
 %{_unitdir}/virtinterfaced-ro.socket
 %{_unitdir}/virtinterfaced-admin.socket
 %{_sbindir}/virtinterfaced
-%{_sbindir}/rcvirtinterfaced
 %dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
 %doc %{_mandir}/man8/virtinterfaced.8*
@@ -1612,7 +1583,6 @@ fi
 %{_unitdir}/virtnetworkd-ro.socket
 %{_unitdir}/virtnetworkd-admin.socket
 %{_sbindir}/virtnetworkd
-%{_sbindir}/rcvirtnetworkd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/autostart/
@@ -1641,7 +1611,6 @@ fi
 %{_unitdir}/virtnodedevd-ro.socket
 %{_unitdir}/virtnodedevd-admin.socket
 %{_sbindir}/virtnodedevd
-%{_sbindir}/rcvirtnodedevd
 %dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nodedev.so
 %doc %{_mandir}/man8/virtnodedevd.8*
@@ -1655,7 +1624,6 @@ fi
 %{_unitdir}/virtnwfilterd-ro.socket
 %{_unitdir}/virtnwfilterd-admin.socket
 %{_sbindir}/virtnwfilterd
-%{_sbindir}/rcvirtnwfilterd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
 %dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nwfilter.so
@@ -1670,7 +1638,6 @@ fi
 %{_unitdir}/virtsecretd-ro.socket
 %{_unitdir}/virtsecretd-admin.socket
 %{_sbindir}/virtsecretd
-%{_sbindir}/rcvirtsecretd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/secrets/
 %dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
@@ -1687,7 +1654,6 @@ fi
 %{_unitdir}/virtstoraged-ro.socket
 %{_unitdir}/virtstoraged-admin.socket
 %{_sbindir}/virtstoraged
-%{_sbindir}/rcvirtstoraged
 %attr(0755, root, root) %{_libexecdir}/libvirt_parthelper
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/autostart/
@@ -1747,7 +1713,6 @@ fi
 %{_unitdir}/virtqemud-ro.socket
 %{_unitdir}/virtqemud-admin.socket
 %{_sbindir}/virtqemud
-%{_sbindir}/rcvirtqemud
 %config(noreplace) %{_sysconfdir}/%{name}/qemu.conf
 %config(noreplace) %{_sysconfdir}/%{name}/qemu-lockd.conf
 %{logrotate_prefix} %{logrotate_dir}/libvirtd.qemu
@@ -1779,7 +1744,6 @@ fi
 %{_unitdir}/virtlxcd-ro.socket
 %{_unitdir}/virtlxcd-admin.socket
 %{_sbindir}/virtlxcd
-%{_sbindir}/rcvirtlxcd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/autostart/
 %config(noreplace) %{_sysconfdir}/%{name}/lxc.conf
@@ -1810,7 +1774,6 @@ fi
 %{_unitdir}/virtxend-ro.socket
 %{_unitdir}/virtxend-admin.socket
 %{_sbindir}/virtxend
-%{_sbindir}/rcvirtxend
 %config(noreplace) %{_sysconfdir}/%{name}/libxl.conf
 %{logrotate_prefix} %{logrotate_dir}/libvirtd.libxl
 %config(noreplace) %{_sysconfdir}/%{name}/libxl-lockd.conf
@@ -1838,7 +1801,6 @@ fi
 %{_unitdir}/virtvboxd-ro.socket
 %{_unitdir}/virtvboxd-admin.socket
 %{_sbindir}/virtvboxd
-%{_sbindir}/rcvirtvboxd
 %{_libdir}/%{name}/connection-driver/libvirt_driver_vbox.so
 %doc %{_mandir}/man8/virtvboxd.8*
 %endif

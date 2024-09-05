@@ -157,4 +157,14 @@ Leap 15.5
     <comment>- Update to release 0.10.3</comment>
     <requestid>1183951</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>862cb3b68979a7983a6dc01a2b187ef1</srcmd5>
+    <version>0.10.3</version>
+    <time>1725543973</time>
+    <user>anag+factory</user>
+    <comment>- Update libjxl.spec:
+  Add compiler condition to fix SLE-15-SP7 ppc64le build env.
+  (bsc#1229831)</comment>
+    <requestid>1198660</requestid>
+  </revision>
 </revisionlist>

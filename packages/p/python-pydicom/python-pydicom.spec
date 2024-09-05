@@ -26,6 +26,8 @@ URL:            https://github.com/darcymason/pydicom
 Source:         https://github.com/pydicom/pydicom/archive/refs/tags/v%{version}.tar.gz#/pydicom-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM pydicom-pr1908-fixpillow.patch gh#pydicom/pydicom#1908 fixes gh#pydicom/pydicom#1907
 Patch0:         pydicom-pr1908-fixpillow.patch
+# PATCH-FIX-UPSTREAM pydicom-pr2076-np2.patch gh#pydicom/pydicom#2076
+Patch1:         pydicom-pr2076-np2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
@@ -44,7 +46,7 @@ BuildRequires:  python3-gdcm
 # /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description

@@ -1,0 +1,44 @@
+From 5567f2bd51d66b7797c986cf64f79f71ca57eb63 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 4 Sep 2024 13:10:44 +0200
+Subject: [PATCH] Fix test_system flaky setup_teardown fn
+
+---
+ tests/pytests/functional/modules/test_system.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/tests/pytests/functional/modules/test_system.py b/tests/pytests/functional/modules/test_system.py
+index 2cd03a3a3e4..270aafbe2cd 100644
+--- a/tests/pytests/functional/modules/test_system.py
++++ b/tests/pytests/functional/modules/test_system.py
+@@ -4,10 +4,12 @@ import os
+ import signal
+ import subprocess
+ import textwrap
++import time
+ 
+ import pytest
+ 
+ import salt.utils.files
++from salt.exceptions import CommandExecutionError
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+ 
+@@ -80,7 +82,13 @@ def setup_teardown_vars(file, service, system):
+             file.remove("/etc/machine-info")
+ 
+         if _systemd_timesyncd_available_:
+-            res = service.start("systemd-timesyncd")
++            try:
++                res = service.start("systemd-timesyncd")
++            except CommandExecutionError:
++                # We possibly did too many restarts in too short time
++                # Wait 10s (default systemd timeout) and try again
++                time.sleep(10)
++                res = service.start("systemd-timesyncd")
+             assert res
+ 
+ 
+-- 
+2.46.0
+

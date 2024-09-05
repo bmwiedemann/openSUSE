@@ -1405,4 +1405,12 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>Typo in changelog fixed</comment>
     <requestid>1191089</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>c166606ef52a86cd40058afc2b62fca3</srcmd5>
+    <version>4.0.4</version>
+    <time>1725543975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198682</requestid>
+  </revision>
 </revisionlist>

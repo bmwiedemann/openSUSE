@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 31 15:45:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Fix a double free in process_op()
+  * Do not return a local stack pointer in get_field_str()
+  * prevent a memory leak in tep_plugin_add_option()
+  * Prevent a memory leak in process_fields()
+  * Close shared object in the error path of load_plugin()
+  * Avoid a simple asprintf case
+  * Fix event-parse memory leak in process_cond
+  * Have single quotes represent characters
+  * Fix tests running on big endian arch
+
+-------------------------------------------------------------------
 Mon Jun 17 12:55:41 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to 1.8.2
@@ -67,7 +81,7 @@ Thu Apr 27 22:15:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fix some missing commas in big endian blocks
   * Rename "ok" to "token_has_paren" in process_sizeof()
   * No need for testing ok in else if (!ok) in process_sizeof()
-  * Fix double free in parsing sizeof() 
+  * Fix double free in parsing sizeof()
 
 -------------------------------------------------------------------
 Sat Feb 11 09:53:05 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
@@ -162,7 +176,7 @@ Wed Jan 19 13:04:19 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 -------------------------------------------------------------------
 Fri May 14 18:23:17 UTC 2021 - Tony Jones <tonyj@suse.com>
 
-- Update rpmlintrc to suppress warnings about plugins 
+- Update rpmlintrc to suppress warnings about plugins
 
 -------------------------------------------------------------------
 Fri May 14 14:48:42 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
@@ -197,4 +211,4 @@ Tue Dec 22 19:35:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Oct 20 15:05:45 UTC 2020 - Tony Jones <tonyj@suse.com>
 
-- Initial checkin of libtraceevent. 
+- Initial checkin of libtraceevent.

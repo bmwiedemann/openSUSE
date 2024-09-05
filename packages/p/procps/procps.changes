@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 08:18:44 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- procps-ng-4.0.4-idletime-no-tty.patch: don't print idle time without tty
+- procps-ng-4.0.4-w-array-bounds.patch: fix array bounds violation
+
+-------------------------------------------------------------------
 Tue Jul 30 07:14:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Switch to procps 4 branch, absorbing the former procps4 package:

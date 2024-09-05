@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  3 06:20:18 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.22:
+  * power-profiles-daemon is now battery-level aware:
+    some drivers use this value for better optimizations
+  * AMD p-state improvements:
+    + supports core performance boost when not in power-saver mode
+    + uses minimum frequency to lowest non-linear frequency
+    + more impervious to faulty firmware and kernel bugs
+  * support for changing DPM clocks on amdgpu:
+    explicitly set the DPM clocks down to "low" when in
+    power-saver mode
+  * powerprofilesctl can disable logind and upower integration
+  * fix handling of turbo_pct, now assumed as not present
+    by default
+  * power-profiles-daemon.service further lockdown restrictions
+  * start power-profiles-daemon.service after
+    multi-user.target AND display-manager.target
+    to avoid conflicts with module loading
+
+-------------------------------------------------------------------
 Wed Apr 17 10:01:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires on python-pylint by disabling pylint option

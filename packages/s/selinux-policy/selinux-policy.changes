@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  4 13:07:52 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix macros.selinux-policy (bsc#1229132)
+  - %selinux_modules_install and %selinux_modules_uninstall will
+    now only execute load_policy if $TRANSACTIONAL_UPDATE is not set
+    (aka only if they are not in a transactional system)
+  - $TRANSACTIONAL_UPDATE is set here:
+    https://github.com/openSUSE/transactional-update/blob/bd524d3ddfcd9aeebb7b90d3e0e8eed09b796a86/lib/Transaction.cpp#L428
+
+-------------------------------------------------------------------
+Tue Sep  3 09:45:12 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Disable build of the MLS policy. We currently don't know if it works
+  and don't want to encourage users to apply it
+
+-------------------------------------------------------------------
 Tue Sep 03 07:57:18 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240903:

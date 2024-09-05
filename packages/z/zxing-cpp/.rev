@@ -194,4 +194,24 @@ zxing-cpp toprocess and parse barcodes from PDFs.</comment>
     <comment></comment>
     <requestid>1130018</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b7add146b6859ca00763023dcfde091</srcmd5>
+    <version>2.2.1</version>
+    <time>1725543965</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.1. Changes:
+  * Fix ABI breakage from 2.2.0.
+- Changes from 2.2.0: 
+  * Rename DecodeHints to ReaderOptions. The old name is still available for
+    backward API compatibility but deprecated. Since the C-API and the Qt
+    wrapper code are not officially part of the library, they changed without
+    backward compatibility.
+  * WASM: bytes in ReadResult.
+  * DataMatrix: use charset for encoding.
+  * QRCode: Support QR Code Model1.
+  * rMQR Code: Support Rectangular Micro QR Code.
+- Refresh patch:
+  * cmake.patch (forwarded request 1198389 from mschreiner)</comment>
+    <requestid>1198546</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.9.0
+Version:        6.10.1
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ Source4:        dracut-fsck-help.txt
 Patch0:         xfsprogs-docdir.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libinih-devel
@@ -211,6 +212,10 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %{_unitdir}/xfs_scrub_all.service
 %{_unitdir}/xfs_scrub_all.timer
 %{_unitdir}/xfs_scrub_fail@.service
+%{_unitdir}/xfs_scrub_all_fail.service
+%{_unitdir}/xfs_scrub_media@.service
+%{_unitdir}/xfs_scrub_media_fail@.service
+%{_unitdir}/system-xfs_scrub.slice
 %endif
 
 %changelog

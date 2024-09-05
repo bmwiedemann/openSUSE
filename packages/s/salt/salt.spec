@@ -427,6 +427,13 @@ Patch131:       remove-redundant-run_func-from-salt.master.mworker._.patch
 Patch132:       improve-error-handling-with-different-openssl-versio.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66856
 Patch133:       avoid-crash-on-wrong-output-of-systemctl-version-bsc.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66861
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/675
+Patch134:       fix-test_system-flaky-setup_teardown-fn.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/676
+Patch135:       fix-test_debian-to-work-in-our-infrastructure-676.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/677
+Patch136:       fix-deprecated-code-677.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -545,6 +552,7 @@ BuildRequires:  python3-requests >= 1.0.0
 BuildRequires:  python3-distro
 BuildRequires:  python3-looseversion
 BuildRequires:  python3-packaging
+BuildRequires:  python3-contextvars
 
 # requirements/zeromq.txt
 %if %{with test}

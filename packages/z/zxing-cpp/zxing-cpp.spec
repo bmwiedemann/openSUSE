@@ -1,7 +1,7 @@
 #
 # spec file for package zxing-cpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           zxing-cpp
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1

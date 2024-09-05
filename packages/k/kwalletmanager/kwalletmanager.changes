@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 07:41:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#492138):
+  * 0001-Fix-service-file-name.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 09:42:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

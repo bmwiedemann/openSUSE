@@ -68,7 +68,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2744,6 +2744,38 @@ nsc_EDDSASignStub(void *ctx, void *sigBu
+@@ -2848,6 +2848,38 @@ nsc_EDDSASignStub(void *ctx, unsigned ch
      return rv;
  }
  
@@ -107,8 +107,8 @@ Index: nss/lib/softoken/pkcs11c.c
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3647,6 +3679,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
-         info->hashOid = SEC_OID_##mmm;                    \
+@@ -3755,6 +3787,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
+         info->hashOid = SEC_OID_##mmm;        \
          goto finish_rsa;
  
 +#define INIT_DSA_VFY_MECH(mmm)                            \
@@ -130,7 +130,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -4905,6 +4953,73 @@ loser:
+@@ -5017,6 +5065,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -204,7 +204,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -4958,8 +5073,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5071,8 +5186,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -213,7 +213,7 @@ Index: nss/lib/softoken/pkcs11c.c
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -5113,80 +5226,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5226,80 +5339,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

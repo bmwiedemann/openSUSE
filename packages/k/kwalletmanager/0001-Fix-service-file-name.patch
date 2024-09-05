@@ -1,0 +1,29 @@
+From e42afee809f8df056d0d882cc01586f80bcf1786 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gy=C3=B6rgy=20Ball=C3=B3?= <ballogyor@gmail.com>
+Date: Tue, 27 Aug 2024 06:21:50 +0000
+Subject: [PATCH] Fix service file name
+
+The D-Bus service name should match with the desktop file name to make D-Bus activation work, otherwise the application cannot be launched. The desktop file name was changed in commit 3478852e6600cbea7e87a32e5d11ca859fa59e1f.
+
+
+BUG: 492138
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cd6a321b..a286aefc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,7 @@ add_subdirectory( src )
+ install( PROGRAMS org.kde.kwalletmanager.desktop kwalletmanager5-kwalletd.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+ install(FILES org.kde.kwalletmanager5.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+ ecm_generate_dbus_service_file(
+-    NAME org.kde.kwalletmanager5
++    NAME org.kde.kwalletmanager
+     EXECUTABLE ${KDE_INSTALL_FULL_BINDIR}/kwalletmanager5
+     DESTINATION ${KDE_INSTALL_DBUSSERVICEDIR}
+ )
+-- 
+2.46.0
+

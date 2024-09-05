@@ -584,6 +584,9 @@ install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %if "%{name}" == "u-boot-starfivevisionfive2"
 install -D -m 0644 spl/u-boot-spl.bin.normal.out %{buildroot}%{uboot_dir}/u-boot-spl.bin.normal.out
 %endif
+%if "%{name}" == "u-boot-milkvduo"
+install -D -m 0644 u-boot-dtb.bin %{buildroot}%{uboot_dir}/u-boot-dtb.bin
+%endif
 
 %if 0%{?is_rpi}
 %post

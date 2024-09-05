@@ -743,7 +743,7 @@
         <package name="patterns-base-bootloader"/>
         <package name="uefi_mbr" arch="x86_64"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>
-        <package name="grub2-arm-efi" arch="aarch64"/>
+        <package name="grub2-arm64-efi" arch="aarch64"/>
     </packages>
     <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64">
         <package name="patterns-microos-hardware"/>

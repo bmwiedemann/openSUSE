@@ -1,0 +1,25 @@
+From a6d27a6f50bbbea539ec64bf96a5b9755e32bf69 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 4 Sep 2024 13:11:05 +0200
+Subject: [PATCH] Fix test_debian to work in our infrastructure (#676)
+
+---
+ tests/pytests/functional/states/pkgrepo/test_debian.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/pytests/functional/states/pkgrepo/test_debian.py b/tests/pytests/functional/states/pkgrepo/test_debian.py
+index 87716706d5e..7bda100b634 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_debian.py
++++ b/tests/pytests/functional/states/pkgrepo/test_debian.py
+@@ -205,7 +205,7 @@ def ubuntu_state_tree(system_aptsources, state_tree, grains):
+         - dist: {{ codename }}
+         - file: /etc/apt/sources.list.d/firefox-beta.list
+         - keyid: CE49EC21
+-        - keyserver: keyserver.ubuntu.com
++        - keyserver: hkp://keyserver.ubuntu.com:80
+     {%- endif %}
+ 
+     {%- if backports %}{%- do ubuntu_repos.append('kubuntu-ppa') %}
+-- 
+2.46.0
+

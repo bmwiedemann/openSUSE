@@ -1260,4 +1260,36 @@
     <comment></comment>
     <requestid>1192955</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>05973ac4cad73c688535d97aa42f9ebf</srcmd5>
+    <version>5.1.1</version>
+    <time>1725543977</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1.1 (bsc#1229823, bsc#1229824)
+  * CVE-2024-45230: Potential denial-of-service vulnerability in
+    django.utils.html.urlize()
+  * CVE-2024-45231: Potential user email enumeration via response
+    status on password reset
+  * Fixed a regression in Django 5.1 that caused a crash of Window()
+    when passing an empty sequence to the order_by parameter, and a
+    crash of Prefetch() for a sliced queryset without ordering
+  * Fixed a regression in Django 5.1 where a new usable_password field
+    was included in BaseUserCreationForm (and children). A new
+    AdminUserCreationForm including this field was added, isolating
+    the feature to the admin where it was intended
+  * Adjusted the deprecation warning stacklevel in Model.save() and
+    Model.asave() to correctly point to the offending call site
+  * Adjusted the deprecation warning stacklevel when using
+    OS_OPEN_FLAGS in FileSystemStorage to correctly point to the
+    offending call site
+  * Adjusted the deprecation warning stacklevel in
+    FieldCacheMixin.get_cache_name() to correctly point to the
+    offending call site
+  * Restored, following a regression in Django 5.1, the ability to
+    override the timezone and role setting behavior used within the
+    init_connection_state method of the PostgreSQL backend
+  * Fixed a bug in Django 5.1 where variable lookup errors were logged
+    when rendering admin fieldsets</comment>
+    <requestid>1198700</requestid>
+  </revision>
 </revisionlist>

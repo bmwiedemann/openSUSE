@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Sep  4 11:33:31 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.10.1
+  - fix C++ compilation errors in xfs_fs.h
+
+ -------------------------------------------------------------------
+Mon Aug 26 10:13:27 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.10.0
+  - debian: enable xfs_scrub_all systemd timer services by default
+  - mkfs: set autofsck filesystem property
+  - xfs_scrub: use the autofsck fsproperty to select mode
+  - xfs_scrub: allow sysadmin to control background scrubs
+  - xfs_property: add a new tool to administer fs properties
+  - xfs_db: add a command to list xattrs
+  - xfs_db: improve getting and setting extended attributes
+  - xfs_io: edit filesystem properties
+  - xfs_scrub: defer phase5 file scans if dirloop fails
+  - xfs_repair: wipe ondisk parent pointers when there are none
+  - xfs_scrub: detect and repair directory tree corruptions
+  - xfs_repair: update ondisk parent pointer records
+  - xfs_spaceman: report directory tree corruption in the health information
+  - xfsprogs: support vectored scrub
+  - man: document vectored scrub mode
+  - man2: update ioctl_xfs_scrub_metadata.2 for parent pointers
+  - mkfs: enable formatting with parent pointers
+  - mkfs: Add parent pointers during protofile creation
+  - xfs_repair: check parent pointers
+  - xfs_db: compute hashes of parent pointers
+  - xfs_db: add link and unlink expert commands
+  - xfs_repair: build a parent pointer index
+  - xfs_db: add a parents command to list the parents of a file
+  - xfs_db: obfuscate dirent and parent pointer names consistently
+  - xfs_db: report parent pointers embedded in xattrs
+  - xfs_db: report parent bit on xattrs
+  - xfs_db: report parent pointers in version command
+  - xfs_scrub: use parent pointers to report lost file data
+  - xfs_scrub: use parent pointers when possible to report file operations
+  - xfs_logprint: decode parent pointers in ATTRI items fully
+  - xfs_io: Add i, n and f flags to parent command
+  - xfs_io: adapt parent command to new parent pointer ioctls
+  - libfrog: report parent pointers to userspace
+  - libfrog: add parent pointer support code
+  - man: document the XFS_IOC_GETPARENTS ioctl
+  - xfs_logprint: dump new attr log item fields
+  - xfs_scrub_all: failure reporting for the xfs_scrub_all job
+  - xfs_repair: check free space requirements before allowing upgrades
+  - xfs_scrub_all: convert systemctl calls to dbus
+  - xfs_scrub_all: trigger automatic media scans once per month
+  - xfs_scrub: add an optimization-only mode
+  - xfs_scrub_all: add CLI option for easier debugging
+  - xfs_scrub_all: enable periodic file data scrubs automatically
+  - xfs_scrub: automatic downgrades to dry-run mode in service mode
+  - xfs_scrub_all: support metadata+media scans of all filesystems
+  - xfs_scrub_all: fail fast on masked units
+  - xfs_scrub_all: remove journalctl background process
+  - xfs_scrub_all: only use the xfs_scrub@ systemd services in service mode
+  - xfs_scrub: tune fstrim minlen parameter based on free space histograms
+  - xfs_scrub: improve responsiveness while trimming the filesystem
+  - xfs_scrub: tighten up the security on the background systemd service
+  - xfs_scrub: don't call FITRIM after runtime errors
+  - xfs_scrub: use dynamic users when running as a systemd service
+  - xfs_scrub: report FITRIM errors properly
+  - xfs_scrub.service: reduce background CPU usage to less than one core if possible
+  - xfs_scrub: don't close stdout when closing the progress bar
+  - xfs_scrub: fix the work estimation for phase 8
+  - libfrog: print cdf of free space buckets
+  - libfrog: print wider columns for free space histogram
+  - xfs_scrub: ignore phase 8 if the user disabled fstrim
+  - xfs_scrub: move FITRIM to phase 8
+  - xfs_scrub: improve thread scheduling repair items during phase 4
+  - xfs_scrub: avoid potential UAF after freeing a duplicate name entry
+  - xfs_scrub: enable users to bump information messages to warnings
+  - xfs_scrub: retry incomplete repairs
+  - xfs_scrub: warn about difficult repairs to rt and quota metadata
+  - xfs_scrub: any inconsistency in metadata should trigger difficulty warnings
+  - mkfs: add a formatting option for exchange-range
+  - xfs_repair: add exchange-range to file systems
+  - xfs_scrub: fix missing scrub coverage for broken inodes
+  - xfs_scrub: log when a repair was unnecessary
+  - libfrog: advertise exchange-range support
+  - xfs_io: create exchangerange command to test file range exchange ioctl
+  - xfs_fsr: skip the xattr/forkoff levering with the newer swapext implementations
+  - xfs_fsr: convert to bulkstat v5 ioctls
+  - xfs_logprint: support dumping exchmaps log items
+  - xfs_db: advertise exchange-range in the version command
+  - libfrog: add support for exchange range ioctl family
+  - libhandle: add support for bulkstat v5
+  - man: document XFS_FSOP_GEOM_FLAGS_EXCHRANGE
+  - man: document the exchange-range ioctl
+  - xfs_repair: don't crash on -vv
+  - xfsprogs: Remove support for split-/usr installs
+  - libxfs: kernel sync
+
+ -------------------------------------------------------------------
 Mon Jul 22 10:54:50 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.9.0

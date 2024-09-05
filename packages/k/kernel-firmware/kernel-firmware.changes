@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 04 06:41:30 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240903 (git commit 96af55bd3d0b):
+  * amdgpu: Revert sienna cichlid dmcub firmware update (bsc#1230007)
+  * iwlwifi: add Bz FW for core89-58 release
+  * rtl_nic: add firmware rtl8126a-3
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+
+-------------------------------------------------------------------
+Tue Sep 03 11:07:28 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240830 (git commit d6c600d46981):
+  * amdgpu: update DMCUB to v0.0.232.0 for DCN314 and DCN351
+  * qcom: vpu: restore compatibility with kernels before 6.6
+
+-------------------------------------------------------------------
 Wed Aug 28 12:18:10 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240826 (git commit bec4fd18cc57):

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  3 06:42:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.47
+  * Now distributed as wheel package
+  * Added VT_VECTOR support for properties
+  * Added get_userdefined_properties
+  * Fixed bugs in isOleFile and write_sect
+  * Improved file closure
+- Drop README.html from %doc section
+- Drop README.rst from %doc section
+- Drop support for older Python versions
+- Limit Python files matched in %files section
+- Remove obsolete sed invocation to fix line endings
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

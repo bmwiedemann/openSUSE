@@ -1,7 +1,7 @@
 #
 # spec file for package python-olefile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-olefile
-Version:        0.46
+Version:        0.47
 Release:        0
 Summary:        Python package to read and write Microsoft OLE2 files
 License:        BSD-2-Clause AND HPND
 URL:            https://github.com/decalage2/olefile
 Source:         https://files.pythonhosted.org/packages/source/o/olefile/olefile-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-OleFileIO_PL = %{version}
-Obsoletes:      %{oldpython}-OleFileIO_PL <= 0.26
-%endif
 %python_subpackages
 
 %description
@@ -48,21 +44,22 @@ formats, McAfee antivirus quarantine files, etc.
 %prep
 %setup -q -n olefile-%{version}
 # Fix wrong-file-end-of-line-encoding
-sed -i 's/\r$//' doc/License.rst README.rst
+sed -i 's/\r$//' README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
 
 %files %{python_files}
-%doc CONTRIBUTORS.txt README.md README.rst README.html
+%doc CONTRIBUTORS.txt README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/olefile
+%{python_sitelib}/olefile-*.dist-info
 
 %changelog

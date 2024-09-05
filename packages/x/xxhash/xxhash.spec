@@ -24,9 +24,11 @@ License:        BSD-2-Clause AND GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
 Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
-Patch0:         test-tools-do-not-override-cflags.patch
+Patch1:         test-tools-do-not-override-cflags.patch
+Patch2:         inline.patch
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
+%{?suse_build_hwcaps_libs}
 
 %description
 xxHash is a hash algorithm. It completes the SMHasher test suite which
@@ -34,38 +36,41 @@ evaluates collision, dispersion and randomness qualities of hash functions.
 Hashes are identical on all platforms.
 
 %package -n libxxhash0
-Summary:        Shared library for xxHash - a non-cryptographic hash algorithm
+Summary:        Non-cryptographic hash algorithm
 License:        BSD-2-Clause
 Group:          System/Libraries
 
 %description -n libxxhash0
-Shared library for xxHash - a hash algorithm. It completes the SMHasher test
-suite which evaluates collision, dispersion and randomness qualities of hash
-functions. Hashes are identical on all platforms.
+xxHash is a hash algorithm. It completes the SMHasher test suite which
+evaluates collision, dispersion and randomness qualities of hash functions.
+Hashes are identical on all platforms.
 
 %package devel
-Summary:        Development files for xxHash - a non-cryptographic hash algorithm
+Summary:        Headers for xxHash, a non-cryptographic hash algorithm
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libxxhash0 = %{version}
 
 %description devel
-Development files for xxHash - a hash algorithm. It completes the SMHasher test
-suite which evaluates collision, dispersion and randomness qualities of hash
-functions. Hashes are identical on all platforms.
+Headers and other development files for xxHash.
 
 %prep
 %autosetup -p1 -n xxHash-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+# ALLOW_AVX just means "we guarantee we policed our %%optflags".
+export CFLAGS="%{optflags} -DXXH_X86DISPATCH_ALLOW_AVX=1"
+export CXXFLAGS="$CFLAGS"
 export LDFLAGS="%{?build_ldflags}"
+# DISPATCH=1 if you want AVX2/AVX512. But it does not seem to perform any
+# better than the lowest-denomimation code on at least the 1135G7 and 5950X
+# CPUs, and for both LP64 as well as ILP32 — it seems to be all within margin
+# of error.
 %make_build prefix=%{_prefix} libdir=%{_libdir}
 
 %install
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -DXXH_X86DISPATCH_ALLOW_AVX=1"
 export CXXFLAGS="%{optflags}"
 export LDFLAGS="%{?build_ldflags}"
 %make_install prefix=%{_prefix} libdir=%{_libdir}

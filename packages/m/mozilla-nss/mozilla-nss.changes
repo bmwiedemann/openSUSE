@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 13 07:08:55 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.103
+  * bmo#1908623 - move list size check after lock acquisition in sftk_PutObjectToList.
+  * bmo#1899542: Add fuzzing support for SSL_ENABLE_POST_HANDSHAKE_AUTH,
+  * bmo#1909638 - Follow-up to fix test for presence of file nspr.patch.
+  * bmo#1903783: Adjust libFuzzer size limits
+  * bmo#1899542: Add fuzzing support for SSL_SetCertificateCompressionAlgorithm, SSL_SetClientEchConfigs, SSL_VersionRangeSet and SSL_AddExternalPsk
+  * bmo#1899542: Add fuzzing support for SSL_ENABLE_GREASE and SSL_ENABLE_CH_EXTENSION_PERMUTATION
+- Add nss-reproducible-builds.patch to make the rpms reproducible, 
+  by using a hardcoded, static key to generate the checksums (*.chk-files)
+- Updated nss-fips-approved-crypto-non-ec.patch to enforce
+  approved curves with the CKK_EC_MONTGOMERY key type (bsc#1224113).
+
+-------------------------------------------------------------------
 Fri Aug  2 08:04:51 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.102.1

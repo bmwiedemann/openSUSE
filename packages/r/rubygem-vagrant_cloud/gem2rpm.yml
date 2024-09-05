@@ -31,10 +31,13 @@
 # - bar.desktop
 # :gem_install_args: '....'
 # ## used by gem2rpm
-# :pre_install: |-
-#   %if 0%{?use_system_libev}
-#   export USE_VENDORED_LIBEV="no"
-#   %endif
+:pre_install: |-
+  %gem_unpack
+  sed -i 's|\(.*<rexml>.freeze, \)\["~> 3.2.5"|\1\["~> 3.3.0"|' %{mod_full_name}.gemspec
+  find -type f -print0 | xargs -0 touch -r %{S:0}
+  %gem_build
+  # HACK: %%gem_install uses the gem from %%{_sourcedir} by default, so we *must* put it back there
+  mv %{mod_full_name}.gem %{_sourcedir}/
 # ## used by gem2rpm
 # :post_install: |-
 #   # delete custom files here or do other fancy stuff

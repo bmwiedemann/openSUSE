@@ -89,4 +89,21 @@
   https://github.com/ruby/ruby/releases/tag/v3_3_4</comment>
     <requestid>1186347</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6cb295b892b06f540cf3f040120ba7f</srcmd5>
+    <version>3.3.5</version>
+    <time>1725543961</time>
+    <user>anag+factory</user>
+    <comment>- Added 7939.diff
+  Cleanup binstub lock files
+  https://github.com/rubygems/rubygems/issues/7997
+  https://github.com/rubygems/rubygems/pull/7939
+
+- Update to 3.3.5
+  This is a routine update that includes minor bug fixes.
+  We recommend upgrading your Ruby version at your earliest
+  convenience.
+  https://github.com/ruby/ruby/releases/tag/v3_3_5</comment>
+    <requestid>1198533</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libwebp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -28,9 +28,6 @@ Source:         https://storage.googleapis.com/downloads.webmproject.org/release
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-
-# PATCH-FIX-UPSTREAM 0001-Fix-invalid-incremental-decoding-check.patch boo#1215231 CVE-2023-4863 xwang@suse.com -- Fix invalid incremental decoding check
-Patch2:         0001-Fix-invalid-incremental-decoding-check.patch
 
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig

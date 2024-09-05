@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ruby3.3
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby3.3%{psuffix}
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -97,6 +97,7 @@ Source5:        vendor.tar.xz
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch0:         use-pie.patch
+Patch1:         7939.diff
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang

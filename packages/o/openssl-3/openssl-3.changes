@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 15:18:03 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
+
+- Security fix: [bsc#1229465, CVE-2024-6119]
+  * possible denial of service in X.509 name checks
+  * openssl-CVE-2024-6119.patch
+
+-------------------------------------------------------------------
 Mon Jul 22 16:42:52 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Build with no-afalgeng [bsc#1226463]

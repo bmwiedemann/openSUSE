@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:48:44 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Grub package is grub2-arm64-efi, not grub2-arm-efi
+
+-------------------------------------------------------------------
 Wed Jul 31 13:38:18 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Fix LOADER_TYPE population

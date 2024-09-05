@@ -1,5 +1,5 @@
 #
-# spec file for package libjxl
+# spec file for package libjxl-gtk
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -53,6 +53,9 @@ BuildRequires:  pkgconfig(libhwy) >= 1.0.7
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
+%if 0%{?sle_version} == 150700
+BuildRequires:  gcc10-c++
+%endif
 %{?suse_build_hwcaps_libs}
 %if %{with gtk}
 Provides:       bundled(skcms) = 0
@@ -117,6 +120,11 @@ for example, on file-browsers.
 mv skcms third_party/
 
 %build
+%if 0%{?sle_version} == 150700
+export CC=gcc-10
+export CXX=g++-10
+%endif
+
 %cmake -DJPEGXL_FORCE_SYSTEM_HWY=ON -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
 	-DJPEGXL_FORCE_SYSTEM_LCMS2=OFF -DBUILD_TESTING=OFF \
 %if %{with gtk}

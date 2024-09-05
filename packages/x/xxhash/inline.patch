@@ -1,0 +1,32 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-09-04 17:08:46.573623857 +0200
+References: https://github.com/Cyan4973/xxHash/issues/943
+
+Ditch forced inlining, gcc-14 does not like it when combined with -Og.
+(gcc-13 was fine.) And I want everyone to be able to use -Og.
+
+In function 'void XXH3_hashLong_internal_loop(xxh_u64*, const xxh_u8*, size_t, const xxh_u8*, size_t, XXH3_f_accumulate, XXH3_f_scrambleAcc)',
+    inlined from 'XXH_NAMESPACEXXH128_hash_t XXH3_hashLong_128b_internal(const void*, size_t, const xxh_u8*, size_t, XXH3_f_accumulate, XXH3_f_scrambleAcc)' at /usr/include/xxhash.h:6416:32,
+    inlined from 'XXH_NAMESPACEXXH128_hash_t XXH3_hashLong_128b_default(const void*, size_t, XXH64_hash_t, const void*, size_t)' at /usr/include/xxhash.h:6442:39:
+/usr/include/xxhash.h:5364:18: error: inlining failed in call to 'always_inline' 'void XXH3_accumulate_scalar(xxh_u64*, const xxh_u8*, const xxh_u8*, size_t)': function not considered for inlining
+ 5364 | XXH_FORCE_INLINE XXH3_ACCUMULATE_TEMPLATE(scalar)
+/usr/include/xxhash.h:5544:14: note: called from here
+ 5544 |         f_acc(acc, input + n*block_len, secret, nbStripesPerBlock);
+
+---
+ xxhash.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: xxHash-0.8.2/xxhash.h
+===================================================================
+--- xxHash-0.8.2.orig/xxhash.h
++++ xxHash-0.8.2/xxhash.h
+@@ -2107,7 +2107,7 @@ static void* XXH_memcpy(void* dest, cons
+ #  define XXH_NO_INLINE static
+ /* enable inlining hints */
+ #elif defined(__GNUC__) || defined(__clang__)
+-#  define XXH_FORCE_INLINE static __inline__ __attribute__((always_inline, unused))
++#  define XXH_FORCE_INLINE static __inline__ __attribute__((unused))
+ #  define XXH_NO_INLINE static __attribute__((noinline))
+ #elif defined(_MSC_VER)  /* Visual Studio */
+ #  define XXH_FORCE_INLINE static __forceinline

@@ -98,4 +98,16 @@ _NOTE_: This release includes breaking changes and is not backwards compatible
     <comment>update to 3.1.1</comment>
     <requestid>1145696</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0186e31f922943c2e71a665be8dd6495</srcmd5>
+    <version>3.1.1</version>
+    <time>1725543963</time>
+    <user>anag+factory</user>
+    <comment>- Bumped rexml to 3.3 instead 3.3.0.
+- Bump rexml dependency
+  This is effectively https://github.com/hashicorp/vagrant_cloud/pull/87, but
+  since we cannot patch the gemspec directly, we have to resort to this ugly
+  hack and modify the gem metadata directly</comment>
+    <requestid>1198980</requestid>
+  </revision>
 </revisionlist>

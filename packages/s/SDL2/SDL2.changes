@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 23:59:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.7
+  * Added support for the Retro-bit Controller in PS3 mode
+  * Fixed the cursor becoming visible when using relative mode
+    under XWayland
+  * Fixed Direct Rendering Manager initialization failure on some
+    Linux systems
+  * Fixed a crash when the current mouse capture window is
+    destroyed
+
+-------------------------------------------------------------------
 Thu Aug 29 09:07:45 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Don't build with fcitx support. fcitx support was just added

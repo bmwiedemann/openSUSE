@@ -63,9 +63,9 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1942,6 +1942,9 @@ extern SECStatus ED_VerifyMessage(ECPubl
-  */
- extern SECStatus ED_DerivePublicKey(const SECItem *privateKey, SECItem *publicKey);
+@@ -1944,6 +1944,9 @@ extern SECStatus ED_DerivePublicKey(cons
+ 
+ extern SECStatus X25519_DerivePublicKey(SECItem *privateKey, SECItem *publicKey);
  
 +/* Unconditionally run the integrity check. */
 +extern void BL_FIPSRepeatIntegrityCheck(void);
@@ -910,7 +910,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -927,6 +927,9 @@ struct FREEBLVectorStr {
+@@ -930,6 +930,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -1541,10 +1541,10 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -443,6 +443,9 @@ static const struct FREEBLVectorStr vect
-     ED_VerifyMessage,
-     ED_DerivePublicKey,
-     /* End of version 3.028 */
+@@ -446,6 +446,9 @@ static const struct FREEBLVectorStr vect
+ 
+     X25519_DerivePublicKey,
+     /* End of version 3.029 */
 +
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck

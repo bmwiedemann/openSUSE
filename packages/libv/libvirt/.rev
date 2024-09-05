@@ -4642,4 +4642,18 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-6-0-2024-08-05</comment>
     <requestid>1191768</requestid>
   </revision>
+  <revision rev="402" vrev="1">
+    <srcmd5>0c8374358f9863df24651386a64afb5b</srcmd5>
+    <version>10.7.0</version>
+    <time>1725543997</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.7.0
+  - CVE-2024-8235, bsc#1230024
+  - Unconditionally disable building the interface driver
+  - Remove SysV rc* compatibility symlinks
+  - jsc#PED-8909
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-7-0-2024-09-02</comment>
+    <requestid>1198829</requestid>
+  </revision>
 </revisionlist>

@@ -64,6 +64,8 @@ Patch37:        procps-ng-4.0.0-floats.dif
 Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
 # PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
 Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
+Patch40:        procps-ng-4.0.4-idletime-no-tty.patch
+Patch41:        procps-ng-4.0.4-w-array-bounds.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -152,6 +154,8 @@ the process information pseudo-file system.
 %patch -P37
 %patch -P38
 %patch -P39
+%patch -P40 -p1
+%patch -P41 -p1
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

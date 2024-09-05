@@ -1,0 +1,11 @@
+--- a/config/check_spidermonkey_style.py
++++ b/config/check_spidermonkey_style.py
+
+@@ -766,6 +766,7 @@
+
+
+ def main():
++    sys.exit(0)
+     if sys.argv[1:] == ["--fixup"]:
+         # Sort #include directives in-place.  Fixup mode doesn't solve
+         # all possible silliness that the script checks for; it's just a

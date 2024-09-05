@@ -600,4 +600,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1187605</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>8546e3de3745ca5a9aebce5053459283</srcmd5>
+    <version>20240701</version>
+    <time>1725543995</time>
+    <user>anag+factory</user>
+    <comment>Add support of openSUSE Leap 15.7 and SLE-15-SP7</comment>
+    <requestid>1198777</requestid>
+  </revision>
 </revisionlist>

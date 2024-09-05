@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  5 12:10:14 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Bumped rexml to 3.3 instead 3.3.0.
+
+-------------------------------------------------------------------
+Thu Sep  5 07:00:12 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Bump rexml dependency
+
+  This is effectively https://github.com/hashicorp/vagrant_cloud/pull/87, but
+  since we cannot patch the gemspec directly, we have to resort to this ugly
+  hack and modify the gem metadata directly
+
+-------------------------------------------------------------------
 Sat Feb 10 11:35:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.1.1:
@@ -97,4 +111,3 @@ Tue Nov 20 09:19:44 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 Sat Nov 17 11:33:43 UTC 2018 - Johannes Kastl <kastl@b1-systems.de>
 
 - initial release, created via gem2rpm
-

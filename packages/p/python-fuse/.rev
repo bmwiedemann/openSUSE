@@ -123,4 +123,12 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
 - Be more clear about files in %files.</comment>
     <requestid>1139060</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b518b9510cd1c2571c2212781b1bf8cc</srcmd5>
+    <version>1.0.8</version>
+    <time>1725544009</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198699</requestid>
+  </revision>
 </revisionlist>

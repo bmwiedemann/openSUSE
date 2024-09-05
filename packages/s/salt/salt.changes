@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  4 12:23:53 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Set contextvars as a build requirement for package
+
+-------------------------------------------------------------------
+Wed Sep  4 11:38:07 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Increase warn_until_date date for code we still support
+- The test_debian test now uses port 80 for ubuntu keyserver
+- Fix too frequent systemd service restart in test_system test
+
+- Added:
+  * fix-test_debian-to-work-in-our-infrastructure-676.patch
+  * fix-test_system-flaky-setup_teardown-fn.patch
+  * fix-deprecated-code-677.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 14:42:00 UTC 2024 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Avoid crash on wrong output of systemctl version (bsc#1229539)
