@@ -251,4 +251,12 @@
   * fix: Avoid overwriting local contexts with retry decorator</comment>
     <requestid>1183916</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b98cd94ef58955440b0f4912a6ea68a5</srcmd5>
+    <version>8.4.2</version>
+    <time>1725544055</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on Leap 15.6</comment>
+    <requestid>1198922</requestid>
+  </revision>
 </revisionlist>

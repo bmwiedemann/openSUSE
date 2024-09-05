@@ -29,13 +29,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module tornado6 >= 6.4.1}
 BuildRequires:  %{python_module typeguard}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-tornado
+Recommends:     python-tornado6
 BuildArch:      noarch
 %python_subpackages
 
