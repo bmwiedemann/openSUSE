@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Aug 31 15:12:38 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.9.3:
+  * DebugConsole: Dynamically add stanza presets and add XEP-0092
+    query.
+  * Make Chatlist and Groupchat Roster style consistent.
+  * Send read marker when receiving a message in a chat that has
+    the focus.
+  * AccountWizard: Avoid crash on destroy by moving attribute
+    declaration to top.
+  * MessageRowActions: Fix issue with row hover in conjunction with
+    switching chats.
+  * Messages: Treat type=normal messages as chat messages.
+  * SearchView: Fix search when changing scope for the same search
+    string.
+
+-------------------------------------------------------------------
+Sun Jul 21 19:07:12 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.9.2:
+  * Optionally unregister from group chats on close.
+  * Make HTTP links clickable in room descriptions.
+  * Show participant avatar in MUC notifications.
+  * ChatCommands: Improve styling and add hint for double slash
+    usage.
+  * Proxies: Add option to ignore system proxies.
+  * MessageRowActons: Hide quick reactions on narrow screens.
+  * MessageRowActions: Adjust floating offset for merged messages.
+  * AboutDialog: Add package information.
+  * Dataforms: Improv display of simple forms.
+  * Remove gajim-url theme parameter.
+  * MessageRowActions: Fix memory leak.
+  * OMEMO: Don’t delete signed pre keys before catchup.
+  * SearchView: Prevent burst of db queries when holding enter.
+  * ChatListRow: Indicate received file for encrypted messages.
+  * Fix nickname completion in group chats.
+  * RosterItemExchange: Display optional message in the chat.
+  * GroupchatRoster: Fix menu not pointing to cursor.
+  * SynchronizeAccounts: Fix dialogue for starting with unavailable
+    account.
+  * MessageRowActions: Fix widget margin in RTL mode.
+  * Remove unnecessary space between quotes.
+  * MessageRowActions: Make on_hover method more robust.
+  * Corrections: Load correct message.
+
+-------------------------------------------------------------------
 Sun Jun 30 07:11:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:
