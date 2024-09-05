@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 06:20:09 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.11
+
+- Update 2.4.11
+  - Add /usr/etc/pyenv.d to hooks path by @tomschr in #3039
+  - Add miniconda3-24.7.1-0 by @binbjz in #3040
+  - Add PyPy v7.3.17 by @jsirois in #3045
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.10...v2.4.11
+
+-------------------------------------------------------------------
 Mon Aug 12 07:40:58 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.10
 
 - Update 2.4.10
