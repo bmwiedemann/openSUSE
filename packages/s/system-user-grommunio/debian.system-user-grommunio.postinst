@@ -1,7 +1,16 @@
 #!/bin/sh
-getent group grommunio >/dev/null || addgroup --system grommunio
-getent passwd grommunio >/dev/null || \
-	adduser --system grommunio --home / --no-create-home --disabled-password --ingroup grommunio
-getent group groweb >/dev/null || addgroup --system groweb
-getent passwd groweb >/dev/null || \
-	adduser --system groweb --home / --no-create-home --disabled-password --ingroup groweb
+case "$1" in
+configure|reconfigure)
+	if [ -x /usr/bin/systemd-sysusers ]; then
+		/usr/bin/systemd-sysusers system-user-grommunio.conf
+	else
+		for i in grommunio groweb groindex; do
+			getent group "$i" >/dev/null || addgroup --system "$i"
+			getent passwd "$i" >/dev/null || \
+				adduser --system "$i" --home / --no-create-home --disabled-password --ingroup "$i"
+		done
+		usermod grommunio -aG gromoxcf
+		usermod groindex -aG gromoxcf
+	fi
+	;;
+esac

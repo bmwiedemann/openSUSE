@@ -6,11 +6,24 @@ Standards-Version: 4.5.0
 
 Package: system-user-grommunio
 Architecture: all
-Pre-Depends: ${misc:Pre-Depends}
-Depends: adduser, ${misc:Depends}
-Provides: system-user-groweb
+Pre-Depends: adduser, passwd, ${misc:Pre-Depends}
+Depends: ${misc:Depends}
+Provides: system-group-groindex, system-group-grommunio,
+ system-group-groweb, system-group-gromoxcf,
+ system-user-grommunio, system-user-groindex, system-user-groweb
+# gromoxcf provided by more than one package -- intentional
 Replaces: system-user-groweb
-Conflicts: system-user-groweb
-Description: System user and group grommunio
+Breaks: system-user-groweb
+Description: General grommunio system user identities
  .
- This package provides the grommunio account.
+ This package provides identities related to the Grommunio groupware suite:
+ * the "grommunio" user identity for running the Administration API
+   (usually an uwsgi process instance); AAPI needs to read
+   mysql_adaptor.cfg and ldap_adaptor.cfg, so is added to group
+   gromoxcf
+ * the "groweb" user identity for running PHP-FPM workers
+ * the "groweb" group identity for marking data to be consumed by the
+   groweb identity but also created by grommunio-index, e.g. groweb
+   search indexes
+ * the "groindex" user identity for running the indexer service; this
+   needs to read mysql_adaptor.cfg so is added to group gromoxcf

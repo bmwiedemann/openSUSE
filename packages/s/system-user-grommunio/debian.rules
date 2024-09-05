@@ -1,3 +1,13 @@
 #!/usr/bin/make -f
+sudir = usr/lib/sysusers.d
+sufile = ${sudir}/system-user-grommunio.conf
 %:
 	dh $@ --parallel
+override_dh_auto_install:
+	mkdir -p ${sudir}
+	echo 'u grommunio - "user for grommunio administration"' >${sufile}
+	echo 'u groweb - "user for grommunio-web"' >>${sufile}
+	echo 'u groindex - "user for grommunio-index"' >>${sufile}
+	echo 'm grommunio gromoxcf' >>${sufile}
+	echo 'm groindex groweb' >>${sufile}
+	echo 'm groindex gromoxcf' >>${sufile}

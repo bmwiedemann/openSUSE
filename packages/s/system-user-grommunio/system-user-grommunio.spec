@@ -1,7 +1,7 @@
 #
 # spec file for package system-user-grommunio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           system-user-grommunio
-Version:        3
+Version:        10
 Release:        0
-Summary:        System users and groups for grommunio
+Summary:        General grommunio system user identities
 License:        MIT
 Group:          System/Fhs
 URL:            https://grommunio.com/
-Source:         dummy_for_debtransform.tgz
+Source:         system-user-grommunio.conf
+Source2:        dummy_for_debtransform.tgz
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 Obsoletes:      system-user-groweb < %version-%release
@@ -32,39 +33,37 @@ Provides:       system-user-groweb = %version-%release
 BuildRequires:  sysuser-tools
 %sysusers_requires
 %else
-Provides:       group(grommunio)
-Provides:       group(groweb)
-Provides:       user(grommunio)
-Provides:       user(groweb)
 Requires(pre):  /usr/sbin/useradd
 Requires(pre):  /usr/sbin/groupadd
 %endif
 
 %description
-This package provides the system accounts for grommunio.
+This package provides identities related to the Grommunio groupware suite:
+* the "grommunio" user identity for running the Administration API
+  (usually an uwsgi process instance); AAPI needs to read
+  mysql_adaptor.cfg and ldap_adaptor.cfg, so is added to group
+  gromoxcf
+* the "groweb" user identity for running PHP-FPM workers
+* the "groweb" group identity for marking data to be consumed by the
+  groweb identity but also created by grommunio-index, e.g. groweb
+  search indexes
+* the "groindex" user identity for running the indexer service; this
+  needs to read mysql_adaptor.cfg so is added to group gromoxcf
 
 %prep
 
 %build
-echo 'u grommunio - "user for grommunio administration"' >u.conf
-echo 'u groweb - "user for grommunio-web"' >>u.conf
-%if 0%{?suse_version}
-%sysusers_generate_pre u.conf user system-user-grommunio.conf
-%else
 >user.pre
+%if 0%{?suse_version}
+%sysusers_generate_pre %_sourcedir/system-user-grommunio.conf user system-user-grommunio.conf
 %endif
 
 %install
-install -Dpm0644 u.conf "%buildroot/%_sysusersdir/system-user-grommunio.conf"
+install -Dpm0644 %_sourcedir/system-user-grommunio.conf "%buildroot/%_sysusersdir/system-user-grommunio.conf"
 
 %pre -f user.pre
-%if !0%{?suse_version}
-getent group grommunio >/dev/null || %_sbindir/groupadd -r grommunio
-getent passwd grommunio >/dev/null || %_sbindir/useradd -g grommunio -s /sbin/nologin \
-	-r -c "user for grommunio administration" -d / grommunio
-getent group groweb >/dev/null || %_sbindir/groupadd -r groweb
-getent passwd groweb >/dev/null || %_sbindir/useradd -g groweb -s /sbin/nologin \
-	-r -c "user for grommunio-web" -d / groweb
+%if 0%{?rhel} || 0%{?fedora_version}
+%sysusers_create_compat %_sourcedir/system-user-grommunio.conf
 %endif
 
 %files

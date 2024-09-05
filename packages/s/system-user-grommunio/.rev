@@ -15,4 +15,12 @@
     <comment>- Add groweb user for grommunio-web, grommunio-index</comment>
     <requestid>1059291</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98de9369fce2491e701480f847b19b60</srcmd5>
+    <version>10</version>
+    <time>1725545049</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 10</comment>
+    <requestid>1198843</requestid>
+  </revision>
 </revisionlist>
