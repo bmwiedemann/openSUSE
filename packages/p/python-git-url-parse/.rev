@@ -27,4 +27,13 @@
     <comment></comment>
     <requestid>688061</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f0ca5b6677687a57c194eefe68912770</srcmd5>
+    <version>1.2.2</version>
+    <time>1725635931</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and pytest macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1199103</requestid>
+  </revision>
 </revisionlist>
