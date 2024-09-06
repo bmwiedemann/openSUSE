@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.16
+Version:        1.4.17
 Release:        0
 Summary:        Composable, streaming, and efficient left folds
 License:        BSD-3-Clause
