@@ -37,4 +37,15 @@
 - initial commit</comment>
     <requestid>1130714</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e26b9b89a4f05fae496abb649edaa90</srcmd5>
+    <version>0.2.3</version>
+    <time>1725635928</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.3:
+  * Adjust import path for Sphinx v8
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1199098</requestid>
+  </revision>
 </revisionlist>
