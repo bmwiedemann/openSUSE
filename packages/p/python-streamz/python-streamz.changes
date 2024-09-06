@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 20:23:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix test collection with new pytest
+
+-------------------------------------------------------------------
 Fri Mar 15 20:57:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with ipywidgets on python39: no longer supported

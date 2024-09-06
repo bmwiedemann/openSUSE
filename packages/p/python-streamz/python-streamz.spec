@@ -57,7 +57,7 @@ BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -94,7 +94,12 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 fi
 # flaky: some tests are very fragile when run server-side
 donttest+=" or test_tcp"
-%pytest -m "not network" --asyncio-mode=auto --force-flaky --max-runs=10 --no-success-flaky-report -rsfE ${$python_flags} --ignore streamz/tests/test_graph.py -k "not ($donttest)"
+%{pytest -m "not network" \
+    --pyargs streamz \
+    --asyncio-mode auto \
+    --force-flaky --max-runs=10 --no-success-flaky-report \
+    -rsfE --ignore streamz/tests/test_graph.py -k "not ($donttest)"
+}
 
 %files %{python_files}
 %doc README.rst
