@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:30:40 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Enable zstd compression support again.
+
+-------------------------------------------------------------------
 Fri Aug 23 21:41:32 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Split off clang shared runtime libraries into libclang_rtX, so

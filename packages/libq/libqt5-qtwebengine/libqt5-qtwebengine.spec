@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch %{arm}
+%define _lto_cflags %{nil}
+%endif
 
 %bcond_without system_ffmpeg
 %bcond_without system_minizip

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:34:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.2
+  * This release includes fixes for malloc failures and a double
+    alignment issue on some machines. XFreeDeviceInfo can now be
+    called with NULL and XGetFeedbackControl is more robust in
+    the face of a malicious X server sending random data. Plus a
+    typo fix in the man page.
+
+-------------------------------------------------------------------
 Thu May  4 09:51:35 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8.1

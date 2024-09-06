@@ -1,7 +1,7 @@
 #
 # spec file for package moditect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           moditect
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Tooling for the Java Module System
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/%{name}/%{name}
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.Final.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.beust:jcommander)
 BuildRequires:  mvn(com.github.javaparser:javaparser-core)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
@@ -60,20 +62,25 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.Final
 
 %pom_remove_parent parent
+
 %pom_xpath_inject pom:project '<groupId>org.moditect</groupId>' parent
 
 %pom_remove_plugin com.mycila:license-maven-plugin parent
 
 %pom_disable_module integrationtest
 
+%pom_change_dep org.jcommander:jcommander com.beust: core
+
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- \
+	-Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE.txt

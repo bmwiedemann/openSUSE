@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Sep  4 19:22:02 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.2.2
+  * Changelog
+    = 04bb13a Releasing version 1.2.2.Final
+    = af42936 Only use inner class heuristic with class names
+    = e06db30 Next version 1.3.0-SNAPSHOT
+    = e070303 Releasing version 1.2.1.Final
+- Update to v1.2.1
+  * Changelog
+    = 8c6acb9 Releasing version 1.2.1.Final
+    = 774e118 #244 Use temporary working file when adding
+      module-info
+    = 80c1c1d Fix indentation to 4 spaces
+    = 8dbf0f4 Fix missing character in licenses
+    = 27c1bd6 remove parent path and packaging since their value
+      was the default one
+    = 24031e4 Update Hibernate validator to Jakarta EE 10
+      compatibility and fix the build
+    = cdbffd6 Update last files without right license
+    = 77e196e includes reviewer remark on opening all the module:
+      changed it to an exports directive
+    = 7c19d07 Change in plugin configuration and order of declared
+      modules to obtain a fonctionning jlink image
+    = 9bc4156 Add --ignore-missing-deps to Vertx pom to prevent
+      modules error from optional dependencies
+    = 25ef0e4 Correct License text indentation
+    = 87b5463 Update various dependencies and plugins version to
+      last stable non-breaking version
+    = 0e9c9c4 Update license
+    = fd47eaa update embedded maven version to 3.9.6, version
+      before 3.9.0 had cause starnge dependecies issues while
+      resolving module-path
+    = da10098 Next version 1.3.0-SNAPSHOT
+    = 92841ed Releasing version 1.2.0.Final
+- Update to v1.2.0
+  * Changelog
+    = 0f9da83 Releasing version 1.2.0.Final
+    = 30fe752 Update project timestamp to git expression after
+      release
+    = e66d794 #95 Marking Maven plug-in goals with @threadsafe
+    = e096f8e Update release configuration
+    = a793af4 #216 create-runtime-image: Error message on missing
+      artifact, closes #216
+    = 4c39711 #213 Support additional values for compress when
+      creating a runtime image, closes #123
+    = 5d63f7b #222 Use ZipFile API to set timestamps, closes #222
+    = be7d707 [#226] update to asm 9.6 for Java 22 support, closes
+      #226
+    = 7733129 [CHORE] update parent
+    = 915bcec [#223] don't use directory plugin, closes #223
+    = f32d851 Next version 1.2.0-SNAPSHOT
+    = 8fa9fbb Releasing version 1.1.0
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Sat Dec 23 12:32:10 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.1.0
@@ -70,7 +126,7 @@ Sun Apr  2 20:01:22 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
         module-info.java
     = Dependencies
       ~ Bump slfj4 to 1.7.36
-      ~ Bump jcommaned to 1.82
+      ~ Bump jcommander to 1.82
       ~ Bump plexus to 3.5.0
       ~ Bump maven-plugin-annotations to 3.8.1
       ~ Bump several plugins defined by moditect-parent

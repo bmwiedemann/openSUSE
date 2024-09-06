@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 04 15:52:38 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.12.2:
+  * Release v1.12.2
+  * Update release notes for 1.12.2
+  * coredns: work on tcp requests concurrently
+  * tcp: add timeout to connection (fixes bsc#1230153 / CVE-2024-8418)
+  * cirrus: update branch names
+
+-------------------------------------------------------------------
 Wed Aug 07 06:36:52 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.12.1:

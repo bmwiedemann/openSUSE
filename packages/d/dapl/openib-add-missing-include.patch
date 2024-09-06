@@ -1,0 +1,25 @@
+commit 374032b1777f85cde146fad8c3e557d8d71654de
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:30:20 2024 +0200
+
+    openib: add missing include
+    
+    Add include to fix compilation with GCC >= 14:
+    dapl/openib_scm/cm.c: In function 'dapli_socket_connected':
+    dapl/openib_scm/cm.c:576:23: error: implicit declaration of function 'writev'; did you mean 'write'? [-Wimplicit-function-declaration]
+      576 |                 len = writev(cm_ptr->socket, iov, 2);
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git dapl/openib_scm/cm.c dapl/openib_scm/cm.c
+index 29b45dff75dc..167f6fa7a5ab 100644
+--- dapl/openib_scm/cm.c
++++ dapl/openib_scm/cm.c
+@@ -51,6 +51,7 @@
+ #define DAPL_FD_SETSIZE FD_SETSIZE
+ #endif
+ 
++#include <sys/uio.h>
+ #include "dapl.h"
+ #include "dapl_adapter_util.h"
+ #include "dapl_evd_util.h"

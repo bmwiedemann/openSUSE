@@ -210,4 +210,17 @@
   * Initialize a few stack vars to zero</comment>
     <requestid>1084584</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5aab5092e43846a6ad1ef766b5e2c9a8</srcmd5>
+    <version>1.8.2</version>
+    <time>1725635879</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.8.2
+  * This release includes fixes for malloc failures and a double
+    alignment issue on some machines. XFreeDeviceInfo can now be
+    called with NULL and XGetFeedbackControl is more robust in
+    the face of a malicious X server sending random data. Plus a
+    typo fix in the man page.</comment>
+    <requestid>1198927</requestid>
+  </revision>
 </revisionlist>

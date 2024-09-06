@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:47:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.39.0:
+- Drop upstream patch merge in 1.34.0:
+  * riscv64-default-target.patch
+
+-------------------------------------------------------------------
 Wed Dec  6 10:18:55 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - riscv64-default-target.patch: Default to rv64gc for hosted riscv64

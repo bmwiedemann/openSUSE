@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-home
 Version:        0.5.1
 Release:        0
@@ -23,11 +24,11 @@ Summary:        Home directory fixtures
 License:        MIT
 URL:            https://github.com/jaraco/pytest-home
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-home/pytest-home-0.5.1.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git

@@ -608,4 +608,12 @@
     <comment>Add support of openSUSE Leap 15.7 and SLE-15-SP7</comment>
     <requestid>1198777</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>f2200f504632676e0eea5f53bed52103</srcmd5>
+    <version>20240701</version>
+    <time>1725635891</time>
+    <user>anag+factory</user>
+    <comment>Add support of openSUSE Leap 15.7 and SLE-15-SP7 - just an update to the changelog</comment>
+    <requestid>1199012</requestid>
+  </revision>
 </revisionlist>

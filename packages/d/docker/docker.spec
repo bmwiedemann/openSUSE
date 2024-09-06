@@ -397,6 +397,11 @@ grep -q '^dockremap:' /etc/subgid || \
 %{_mandir}/man5/Dockerfile.5%{ext_man}
 %{_mandir}/man8/dockerd.8%{ext_man}
 
+%files rootless-extras
+%defattr(-,root,root)
+%{_bindir}/dockerd-rootless.sh
+%{_bindir}/dockerd-rootless-setuptool.sh
+
 %files bash-completion
 %defattr(-,root,root)
 %{_datarootdir}/bash-completion/completions/%{name}
@@ -408,10 +413,5 @@ grep -q '^dockremap:' /etc/subgid || \
 %files fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/%{name}.fish
-
-%files rootless-extras
-%defattr(-,root,root)
-%{_bindir}/dockerd-rootless.sh
-%{_bindir}/dockerd-rootless-setuptool.sh
 
 %changelog

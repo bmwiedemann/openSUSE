@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 30 06:06:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.56.0:
+  * [Reader] Fixed display of long strip images
+  * [Servers] Improved webview CAPTCHAs detection
+  * [Servers] Improved webview Cloudflare challenges detection
+  * [Servers] Atikrost (TR): Update
+  * [Servers] Local: Improved cover generation
+  * [Servers] Manga Demon (EN): Update
+  * [Servers] MangaHere (EN): Update
+  * [Servers] Night scans (EN): Update
+  * [Servers] Read Comic Online (EN): Update
+  * [Servers] SushiScan (FR): Update
+  * [Servers] VF Scan (FR): Update
+  * [Servers] Xoxocomics (EN): Update
+  * [L10n] Updated Croatian and Russian translations
+
+-------------------------------------------------------------------
 Sun Aug 18 08:16:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.55.0:

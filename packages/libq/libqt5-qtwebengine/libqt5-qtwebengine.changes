@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  4 14:27:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on %{arm} to fix build
+
+-------------------------------------------------------------------
 Thu Aug 29 14:32:28 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove the unrar sources from the third_party directory in %prep

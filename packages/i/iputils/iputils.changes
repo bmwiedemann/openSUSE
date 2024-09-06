@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 10:47:27 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20240905 (mostly ping fixes release)
+  https://github.com/iputils/iputils/releases/tag/20240905
+- Fix tarball url
+
+-------------------------------------------------------------------
 Wed Jan 17 11:13:09 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 20240117 (ping bugfix release)

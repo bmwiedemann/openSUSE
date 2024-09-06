@@ -174,4 +174,13 @@
 </comment>
     <requestid>1195858</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6052e1c090da5a0dfae3f4848f470581</srcmd5>
+    <version>18.1.8</version>
+    <time>1725635852</time>
+    <user>anag+factory</user>
+    <comment>- Enable zstd compression support again.
+</comment>
+    <requestid>1199059</requestid>
+  </revision>
 </revisionlist>

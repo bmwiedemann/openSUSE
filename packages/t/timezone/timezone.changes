@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  2 14:03:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Split tzselect script into a subpackage to prevent awk getting into minimal
+  containers and recommend tzselect by the main package
+  Fixes bsc#1230054
+
+-------------------------------------------------------------------
 Thu Mar 21 18:16:35 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Unify SLE-15-SP6 and Factory packages (PED#8158).

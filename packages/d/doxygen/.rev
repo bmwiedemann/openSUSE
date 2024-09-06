@@ -1206,4 +1206,12 @@
     <comment></comment>
     <requestid>1193832</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>44269f9a398643c62c0aa4cacc4131d2</srcmd5>
+    <version>1.12.0</version>
+    <time>1725635881</time>
+    <user>anag+factory</user>
+    <comment>- update licensing information (IBS sr#343838)</comment>
+    <requestid>1198935</requestid>
+  </revision>
 </revisionlist>

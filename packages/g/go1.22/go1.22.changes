@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:20:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.7 (released 2024-09-05) includes security fixes to the
+  encoding/gob, go/build/constraint, and go/parser packages, as
+  well as bug fixes to the fix command and the runtime.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2024-34155 CVE-2024-34156 CVE-2024-34158
+  - go#69142 go#69138 boo#1230252 security: fix CVE-2024-34155 go/parser: stack exhaustion in all Parse* functions (CVE-2024-34155)
+  - go#69144 go#69139 boo#1230253 security: fix CVE-2024-34156 encoding/gob: stack exhaustion in Decoder.Decode (CVE-2024-34156)
+  - go#69148 go#69141 boo#1230254 security: fix CVE-2024-34158 go/build/constraint: stack exhaustion in Parse (CVE-2024-34158)
+  - go#68811 os: TestChtimes failures
+  - go#68825 cmd/fix: fails to run on modules whose go directive value is in "1.n.m" format introduced in Go 1.21.0
+  - go#68972 cmd/cgo: aix c-archive corrupting stack
+
+-------------------------------------------------------------------
 Tue Aug  6 17:39:11 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.6 (released 2024-08-06) includes fixes to the go command,

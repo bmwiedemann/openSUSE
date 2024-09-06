@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:21:17 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Update to 2.6.3: 
+  * Security fixes:
+    - CVE-2024-45490, bsc#1229930 -- Calling function XML_ParseBuffer with
+      len < 0 without noticing and then calling XML_GetBuffer
+      will have XML_ParseBuffer fail to recognize the problem
+      and XML_GetBuffer corrupt memory.
+      With the fix, XML_ParseBuffer now complains with error
+      XML_ERROR_INVALID_ARGUMENT just like sibling XML_Parse
+      has been doing since Expat 2.2.1, and now documented.
+      Impact is denial of service to potentially artitrary code
+      execution.
+    - CVE-2024-45491, bsc#1229931 -- Internal function dtdCopy can have an
+      integer overflow for nDefaultAtts on 32-bit platforms
+      (where UINT_MAX equals SIZE_MAX).
+      Impact is denial of service to potentially artitrary code
+      execution.
+    - CVE-2024-45492, bsc#1229932 -- Internal function nextScaffoldPart can
+      have an integer overflow for m_groupSize on 32-bit
+      platforms (where UINT_MAX equals SIZE_MAX).
+      Impact is denial of service to potentially artitrary code
+      execution.
+
+  * Other changes:
+    - Autotools: Sync CMake templates with CMake 3.28
+    - Autotools: Always provide path to find(1) for portability
+    - Autotools: Ensure that the m4 directory always exists.
+    - Autotools: Simplify handling of SIZEOF_VOID_P
+    - Autotools: Support non-GNU sed
+    - Autotools|CMake: Fix main() to main(void)
+    - Autotools|CMake: Fix compile tests for HAVE_SYSCALL_GETRANDOM
+    - Autotools|CMake: Stop requiring dos2unix
+    - CMake: Fix check for symbols size_t and off_t
+    - docs|tests: Convert README to Markdown and update
+    - Windows: Drop support for Visual Studio <=15.0/2017
+    - Drop needless XML_DTD guards around is_param access
+    - Fix typo in a code comment
+    - Version info bumped from 10:2:9 (libexpat*.so.1.9.2)
+      to 10:3:9 (libexpat*.so.1.9.3); see https://verbump.de/
+      for what these numbers do  
+
+-------------------------------------------------------------------
 Wed Mar 13 22:23:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.6.2:

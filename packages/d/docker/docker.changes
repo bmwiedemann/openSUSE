@@ -3,7 +3,10 @@ Wed Jul 31 05:28:09 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 26.1.5-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/26.1/#2615>
-- This update includes a fix for CVE-2024-41110. bsc#1228324
+- This update includes fixes for:
+  * CVE-2024-41110. bsc#1228324
+  * CVE-2023-47108. bsc#1217070
+  * CVE-2023-45142. bsc#1228553
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
@@ -21,7 +24,10 @@ Wed Jul 31 04:58:15 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 25.0.6-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/25.0/#2506>
-- This update includes a fix for CVE-2024-41110. bsc#1228324
+- This update includes fixes for:
+  * CVE-2024-41110. bsc#1228324
+  * CVE-2023-47108. bsc#1217070
+  * CVE-2023-45142. bsc#1228553
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch

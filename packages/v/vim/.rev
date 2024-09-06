@@ -7714,4 +7714,12 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1190542</requestid>
   </revision>
+  <revision rev="373" vrev="1">
+    <srcmd5>f6e0e8a13b3acd7023d41edad61607f5</srcmd5>
+    <version>9.1.0718</version>
+    <time>1725635891</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199027</requestid>
+  </revision>
 </revisionlist>

@@ -3,7 +3,7 @@
 
 " ----------------------------------------------------------------------
 "    Copyright (c) 2005 Novell, Inc. All Rights Reserved.
-"    Copyright (c) 2006-2012 Christian Boltz. All Rights Reserved.
+"    Copyright (c) 2006-2023 Christian Boltz. All Rights Reserved.
 "
 "    This program is free software; you can redistribute it and/or
 "    modify it under the terms of version 2 of the GNU General Public
@@ -17,14 +17,9 @@
 "    You should have received a copy of the GNU General Public License
 "    along with this program; if not, contact Novell, Inc.
 "
-"    To contact Novell about this file by physical or electronic mail,
-"    you may find current contact information at www.novell.com.
-"
-"    To contact Christian Boltz about this file by physical or electronic
-"    mail, you may find current contact information at www.cboltz.de/en/kontakt.
-"
-"    If you want to report a bug via bugzilla.novell.com, please assign it
-"    to suse-beta[AT]cboltz.de (replace [AT] with @).
+"    If you want to report a bug for apparmor.vim, please do so at
+"    - https://gitlab.com/apparmor/apparmor/ or
+"    - https://bugzilla.opensuse.org (assign it to suse-beta[AT]cboltz.de)
 " ----------------------------------------------------------------------
 "
 " stick this file into ~/.vim/syntax/ and add these commands into your .vimrc
@@ -52,6 +47,7 @@ syntax case match
 "	hi sdComment2 ctermfg=darkblue
 	hi sdGlob       ctermfg=darkmagenta
 	hi sdAlias      ctermfg=darkmagenta
+	hi sdAll        ctermfg=darkred ctermbg=yellow
 	hi sdEntryWriteExec     ctermfg=black ctermbg=yellow
 	hi sdEntryUX     ctermfg=darkred cterm=underline
 	hi sdEntryUXe     ctermfg=darkred
@@ -67,6 +63,7 @@ syntax case match
 	hi sdCapKey	cterm=underline ctermfg=lightblue
 	hi sdCapDanger ctermfg=darkred
 	hi sdRLimit ctermfg=lightblue
+	hi sdUserns ctermfg=darkred
 	hi def link sdEntryR Normal
 	hi def link sdEntryK Normal
 	hi def link sdFlags Normal
@@ -112,7 +109,7 @@ syn match sdError /^.*$/ contains=sdComment "highlight all non-valid lines as er
 
 " TODO: the sdGlob pattern is not anchored with ^ and $, so it matches all lines matching ^@{...}.*
 " This allows incorrect lines also and should be checked better.
-" This also (accidently ;-) includes variable definitions (@{FOO}=/bar)
+" This also (accidentally ;-) includes variable definitions (@{FOO}=/bar)
 " TODO: make a separate pattern for variable definitions, then mark sdGlob as contained
 syn match sdGlob /\v\?|\*|\{.*,.*\}|[[^\]]\+\]|\@\{[a-zA-Z][a-zA-Z0-9_]*\}/
 
@@ -120,11 +117,18 @@ syn match sdAlias /\v^\s*alias\s+(\/|\@\{\S*\})\S*\s+-\>\s+(\/|\@\{\S*\})\S*\s*,
 
 " syn match sdComment /#.*/
 
-syn cluster sdEntry contains=sdEntryWriteExec,sdEntryR,sdEntryW,sdEntryIX,sdEntryPX,sdEntryPXe,sdEntryUX,sdEntryUXe,sdEntryM,sdCap,sdSetCap,sdExtHat,sdRLimit,sdNetwork,sdNetworkDanger,sdEntryChangeProfile
+" List of all (supported) rules inside a profile.
+" XXX When adding support for a new rule type, also add it here. XXX
+" XXX Otherwise it will be highlighted as an error.              XXX
+syn cluster sdEntry contains=sdAll,sdEntryWriteExec,sdEntryR,sdEntryW,sdEntryIX,sdEntryPX,sdEntryPXe,sdEntryUX,sdEntryUXe,sdEntryM,sdCap,sdSetCap,sdExtHat,sdRLimit,sdNetwork,sdNetworkDanger,sdEntryChangeProfile,sdUserns
 
 
 " TODO: support audit and deny keywords for all rules (not only for files)
-" TODO: higlight audit and deny keywords everywhere
+" TODO: highlight audit and deny keywords everywhere
+
+" 'all' rule
+syn match  sdAll /\v^\s*(audit\s+)?(deny\s+|allow\s+)?all\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+
 
 " Capability line
 
@@ -166,6 +170,9 @@ syn match sdRLimit /\v^\s*set\s+rlimit\s+cpu\s+\<\=\s+[0-9]+(seconds|minutes|hou
 syn match sdRLimit /\v^\s*set\s+rlimit\s+rttime\s+\<\=\s+[0-9]+(ms|seconds|minutes)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 syn match sdRLimit /\v^\s*set\s+rlimit\s+(cpu|rttime|nofile|nproc|rtprio|locks|sigpending|fsize|data|stack|core|rss|as|memlock|msgqueue|nice)\s+\<\=\s+infinity\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 
+" userns
+syn match sdUserns /\v^\s*(audit\s+)?(deny\s+|allow\s+)?userns(\s+create)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+
 " link rules
 syn match sdEntryW /\v^\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?link\s+(subset\s+)?(\/|\@\{\S*\})\S*\s+-\>\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment
 
@@ -175,14 +182,14 @@ syn match sdExtHat  /\v^\s+(\^|hat\s+|profile\s+)\S+\s*,(\s*$|(\s*#.*$)\@=)/ con
 
 
 
-syn match sdProfileName /\v^((profile\s+)?\/\S+|profile\s+([a-zA-Z0-9]\S*\s)?\S+)\s+((flags\s*\=\s*)?\(\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ contains=sdProfileStart,sdHatName,sdFlags,sdComment,sdGlob
+syn match sdProfileName /\v^((profile\s+)?\/\S+|profile\s+([a-zA-Z0-9]\S*\s)?\S+)\s+((flags\s*\=\s*)?\(\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ contains=sdProfileStart,sdHatName,sdFlags,sdComment,sdGlob
 syn match sdProfileStart /{/ contained
 syn match sdProfileEnd /^}\s*(#.*)?$/ contained " TODO: syn region does not (yet?) allow usage of comment in end=
                                                 " TODO: Removing the $ mark from end= will allow non-comments also :-(
-syn match sdHatName /\v^\s+(\^|hat\s+|profile\s+)\S+\s+((flags\s*\=\s*)?\(\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ contains=sdProfileStart,sdFlags,sdComment
+syn match sdHatName /\v^\s+(\^|hat\s+|profile\s+)\S+\s+((flags\s*\=\s*)?\(\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ contains=sdProfileStart,sdFlags,sdComment
 syn match sdHatStart /{/ contained
 syn match sdHatEnd /}/ contained " TODO: allow comments + [same as for syn match sdProfileEnd]
-syn match sdFlags /\v((flags\s*\=\s*)?\(\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)/ contained contains=sdFlagKey
+syn match sdFlags /\v((flags\s*\=\s*)?\(\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)/ contained contains=sdFlagKey
 
 syn match sdComment /\s*#.*$/
 " NOTE: contains=sdComment changes #include highlighting to comment color.
@@ -196,8 +203,8 @@ syn match sdInclude /\s*abi\s<\S*>\s*,/ contains=sdComment  " TODO: doesn't chec
 
 " basic profile block...
 " \s+ does not work in end=, therefore using \s\s*
-syn region Normal start=/\v^(profile\s+)?\S+\s+((flags\s*\=\s*)?\(\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ matchgroup=sdProfileEnd end=/^}\s*$/ contains=sdProfileName,Hat,@sdEntry,sdComment,sdError,sdInclude
-syn region Hat start=/\v^\s+(\^|hat\s+|profile\s+)\S+\s+((flags\s*\=\s*)?\(\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ matchgroup=sdHatEnd end=/^\s\s*}\s*$/ contains=sdHatName,@sdEntry,sdComment,sdError,sdInclude
+syn region Normal start=/\v^(profile\s+)?\S+\s+((flags\s*\=\s*)?\(\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ matchgroup=sdProfileEnd end=/^}\s*$/ contains=sdProfileName,Hat,@sdEntry,sdComment,sdError,sdInclude
+syn region Hat start=/\v^\s+(\^|hat\s+|profile\s+)\S+\s+((flags\s*\=\s*)?\(\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted)(\s*,\s*(complain|unconfined|audit|attach_disconnected|no_attach_disconnected|chroot_attach|chroot_no_attach|chroot_relative|namespace_relative|mediate_deleted|delegate_deleted))*\s*\)\s+)=\{/ matchgroup=sdHatEnd end=/^\s\s*}\s*$/ contains=sdHatName,@sdEntry,sdComment,sdError,sdInclude
 
 " file permissions
 

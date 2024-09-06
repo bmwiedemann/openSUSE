@@ -31,6 +31,7 @@ Patch1:         Remove-date-time-info-from-build.patch
 Patch4:         Fix-gcc7-and-gcc8.patch
 Patch5:         fix-race-condition-during-install.patch
 Patch6:         PIE.patch
+Patch7:         mflash-add-missing-stlib-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibverbs-devel

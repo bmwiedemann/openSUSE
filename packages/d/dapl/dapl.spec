@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,15 +31,16 @@ Release:        0
 Source0:        https://www.openfabrics.org/downloads/dapl/dapl-%version.tar.gz
 Source1:        dapl-rpmlintrc
 Source2:        baselibs.conf
+
 Patch1:         dapl-2.0.30-dat-ia-open-hang.patch
-Patch5:         dapl-define_NULL.patch
-Patch6:         dapl-man_page_fixes.patch
-Patch7:         dapl-fsf_address.patch
-Patch12:        dapl-s390.patch
-Patch13:        dapl-add-arm-platform-support.patch
-Patch14:        ucm-mcm-fix-backlog-parameter-for-socket.patch
-# PATCH-FIX-UPSTREAM http://git.openfabrics.org/?p=~ardavis/dapl.git;a=commitdiff;h=f1e05b7adcee629ee7c1d4d86ea55344d9309232
-Patch15:        reproducible.patch
+Patch2:         dapl-define_NULL.patch
+Patch3:         dapl-man_page_fixes.patch
+Patch4:         dapl-fsf_address.patch
+Patch5:         dapl-s390.patch
+Patch6:         dapl-add-arm-platform-support.patch
+Patch7:         ucm-mcm-fix-backlog-parameter-for-socket.patch
+Patch8:         reproducible.patch
+Patch9:         openib-add-missing-include.patch
 URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf

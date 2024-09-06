@@ -440,6 +440,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -780,6 +781,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
@@ -1019,7 +1021,6 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_BUILD_UTILS:BOOL=OFF \
     -DLLVM_BUILD_EXAMPLES:BOOL=OFF \
     -DLLVM_BUILD_RUNTIME:BOOL=OFF \
-    -DLLVM_ENABLE_ZSTD:BOOL=OFF \
     -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
@@ -1113,7 +1114,6 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
     -DPython3_EXECUTABLE=%{_bindir}/python3 \
-    -DLLVM_ENABLE_ZSTD:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
     -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=%{llvm_experimental_targets} \
     -DLLVM_TOOL_LLVM_EXEGESIS_BUILD:BOOL=OFF \

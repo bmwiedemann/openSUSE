@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 24 19:41:08 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- _constraints: increase RAM on s390x to fix the build
+
+-------------------------------------------------------------------
 Fri Aug 16 09:30:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 129.0.1

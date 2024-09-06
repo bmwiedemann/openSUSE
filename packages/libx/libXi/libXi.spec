@@ -1,7 +1,7 @@
 #
 # spec file for package libXi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXi
 %define lname   libXi6
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        X Input Extension library
 License:        MIT

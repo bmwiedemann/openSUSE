@@ -36,10 +36,21 @@ Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 Patch5:         fat.patch
+Recommends:     tzselect
 
 %description
 These are configuration files that describe available time zones. You
 can select an appropriate time zone for your system with YaST.
+
+%package -n     tzselect
+Requires:       awk
+Requires:       %{name} = %{version}
+Summary:        Helper script to select the timezone
+BuildArch:      noarch
+Provides:       %{name}:/usr/bin/tzselect
+
+%description -n tzselect
+This package contains a helper script to select the timezone.
 
 %prep
 %autosetup -p1 -c -a1
@@ -85,8 +96,11 @@ install -m 644 -t %{buildroot}%{_datadir}/zoneinfo/ leapseconds leapseconds.awk 
 %license LICENSE
 %verify(not link md5 size mtime) %config(missingok,noreplace) %{_sysconfdir}/localtime
 %{_datadir}/zoneinfo
-%{_bindir}/tzselect
 %{_sbindir}/zdump
 %{_sbindir}/zic
+
+%files -n tzselect
+%license LICENSE
+%{_bindir}/tzselect
 
 %changelog

@@ -213,4 +213,22 @@ the go metapackage to version 1.22.</comment>
   * go#68198 cmd/link: issues with Xcode 16 beta (forwarded request 1192312 from jfkw)</comment>
     <requestid>1192314</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c5a1edbf4f6eda8488e666998c024e86</srcmd5>
+    <version>1.22.7</version>
+    <time>1725635856</time>
+    <user>anag+factory</user>
+    <comment>- go1.22.7 (released 2024-09-05) includes security fixes to the
+  encoding/gob, go/build/constraint, and go/parser packages, as
+  well as bug fixes to the fix command and the runtime.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2024-34155 CVE-2024-34156 CVE-2024-34158
+  - go#69142 go#69138 boo#1230252 security: fix CVE-2024-34155 go/parser: stack exhaustion in all Parse* functions (CVE-2024-34155)
+  - go#69144 go#69139 boo#1230253 security: fix CVE-2024-34156 encoding/gob: stack exhaustion in Decoder.Decode (CVE-2024-34156)
+  - go#69148 go#69141 boo#1230254 security: fix CVE-2024-34158 go/build/constraint: stack exhaustion in Parse (CVE-2024-34158)
+  - go#68811 os: TestChtimes failures
+  - go#68825 cmd/fix: fails to run on modules whose go directive value is in &quot;1.n.m&quot; format introduced in Go 1.21.0
+  - go#68972 cmd/cgo: aix c-archive corrupting stack (forwarded request 1199061 from jfkw)</comment>
+    <requestid>1199062</requestid>
+  </revision>
 </revisionlist>

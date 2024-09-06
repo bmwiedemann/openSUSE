@@ -23,7 +23,7 @@
 %endif
 
 Name:           crun
-Version:        1.15
+Version:        1.16.1
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
@@ -86,10 +86,7 @@ export WASMEDGE="--with-wasmedge"
 %install
 %make_install
 rm -rf %{buildroot}/%{_libdir}/lib*
-%ifarch x86_64 aarch64
-# allow easy krun usage with podman
-ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
-%endif
+
 %if %with_wasmedge
 # platform 'wasi/wasm' requires crun-wasm
 ln -s %{_bindir}/crun %{buildroot}%{_bindir}/crun-wasm

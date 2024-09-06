@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 12:43:04 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Backport upstream patch to fix compilation GCC >= 14
+  - Fix-compilation-with-GCC-14.patch
+- Refresh harden_vma.service.patch to use patch -p0 format
+
+-------------------------------------------------------------------
 Fri Mar  1 10:22:45 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 06:58:41 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add test-datatype-partial.c-fix-compiler-warnings.patch to fix
+  testuite compilation with GCC >= 14
+
+-------------------------------------------------------------------
 Mon Jul 29 16:40:16 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add openmpi4-C99.diff to fix the most egregious type violations that

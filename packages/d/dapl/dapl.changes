@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 12:32:44 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add openib-add-missing-include.patch to fix compilation
+  with GCC >= 14.
+
+-------------------------------------------------------------------
 Mon Feb 26 07:43:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

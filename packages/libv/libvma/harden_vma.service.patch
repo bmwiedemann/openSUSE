@@ -1,7 +1,13 @@
-Index: libvma-9.3.1.0.47396f1a5eaa/contrib/scripts/vma.service.in
-===================================================================
---- libvma-9.3.1.0.47396f1a5eaa.orig/contrib/scripts/vma.service.in
-+++ libvma-9.3.1.0.47396f1a5eaa/contrib/scripts/vma.service.in
+commit efdb35ba76077c15054efa3c170c13ce303f284d
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:40:33 2024 +0200
+
+    harden vma.service
+
+diff --git contrib/scripts/vma.service.in contrib/scripts/vma.service.in
+index e6f5a25b7e00..86d40487ab24 100644
+--- contrib/scripts/vma.service.in
++++ contrib/scripts/vma.service.in
 @@ -3,6 +3,19 @@ Description=VMA Daemon
  After=network.target
  

@@ -89,4 +89,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1193336</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3024530592ee5581c9069c67c8da5f8a</srcmd5>
+    <version>1.12.2</version>
+    <time>1725635850</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198864</requestid>
+  </revision>
 </revisionlist>

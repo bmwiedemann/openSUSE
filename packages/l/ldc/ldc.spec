@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        102
+%define so_ver        109
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -50,24 +50,16 @@
 %bcond_with ldc_tests
 
 # Dynamic compiling is not supported with LLVM >= 12
-%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-# We force llvm15 on TW
+# https://github.com/ldc-developers/ldc/issues/3747
 %global jit_support 0
-%else
-%if %{pkg_vcmp llvm-devel >= 12}
-%global jit_support 0
-%else
-%global jit_support 1
-%endif
-%endif
 
 # LLVM LTO is too much for 32bit ARM
-%ifarch %arm
+%ifarch %{arm}
 %define _lto_cflags %nil
 %endif
 
 Name:           ldc
-Version:        1.32.2
+Version:        1.39.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
@@ -76,19 +68,17 @@ URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         ldc-1.9.0-fix_arm_build.patch
-Patch1:         riscv64-default-target.patch
 BuildRequires:  cmake
 BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-# Cannot build with llvm16, so stick with llvm15 for now
-BuildRequires:  clang15
-BuildRequires:  llvm15-devel
+BuildRequires:  llvm-clang >= 15.0
+BuildRequires:  llvm-devel >= 15.0
 %else
-BuildRequires:  llvm-clang >= 9.0
-BuildRequires:  llvm-devel >= 9.0
+BuildRequires:  llvm-clang >= 15.0
+BuildRequires:  llvm-devel >= 15.0
 %endif
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
@@ -204,8 +194,8 @@ touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang-15" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-15" \
+    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
 %else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
@@ -229,8 +219,8 @@ touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang-15" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-15" \
+    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
 %else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
@@ -300,7 +290,7 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %dir %{ldcincludedir}
 %{ldcincludedir}/core
 %{ldcincludedir}/ldc
-%{ldcincludedir}/__builtins.di
+%{ldcincludedir}/__importc_builtins.di
 %{ldcincludedir}/importc.h
 %{ldcincludedir}/object.d
 

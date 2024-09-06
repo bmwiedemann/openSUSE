@@ -1,4 +1,209 @@
 -------------------------------------------------------------------
+Thu Sep  5 16:41:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.0718:
+  * v9.1.0718: hard to know the users personal Vim Runtime Directory
+  * v9.1.0717: Unnecessary nextcmd NULL checks in parse_command_modifiers()
+    Maintainers: fix typo in author name
+  * v9.1.0716: resetting setcellwidth( doesn't update the screen
+    runtime(hcl,terraform): Add runtime files for HCL and Terraform
+    runtime(tmux): Update syntax script
+  * v9.1.0715: Not correctly parsing color names (after v9.1.0709)
+  * v9.1.0714: GuiEnter_Turkish test may fail
+  * v9.1.0713: Newline causes E749 in Ex mode
+  * v9.1.0712: missing dependency of Test_gettext_makefile
+  * v9.1.0711: test_xxd may file when using different xxd
+  * v9.1.0710: popup window may hide part of Command line
+    runtime(vim): Update syntax, improve user-command matching
+  * v9.1.0709: GUIEnter event not found in Turkish locale
+    runtime(sudoers): improve recognized Runas_Spec and Tag_Spec items
+  * v9.1.0708: Recursive window update does not account for reset skipcol
+    runtime(nu): include filetype plugin
+  * v9.1.0707: invalid cursor position may cause a crash
+  * v9.1.0706: test_gettext fails when using shadow dir
+    CI: Install locales-all package
+  * v9.1.0705: Sorting of fuzzy filename completion is not stable
+    translation(pt): update Portuguese/Brazilian menu translation
+    runtime(vim): Update base-syntax, match bracket mark ranges
+    runtime(doc): Update :help :command-complete list
+  * v9.1.0704: inserting with a count is inefficient
+    runtime(doc): use mkdir -p to save a command
+  * v9.1.0703: crash with 2byte encoding and glob2regpat()
+    runtime(hollywood): update syn highlight for If-Then statements
+    and For-In-Loops
+  * v9.1.0702: Patch 9.1.0700 broke CI
+  * v9.1.0701: crash with NFA regex engine when searching for
+    composing chars
+  * v9.1.0700: crash with 2byte encoding and glob2regpat()
+  * v9.1.0699: "dvgo" is not always an inclusive motion
+    runtime(java): Provide support for syntax preview features
+  * v9.1.0698: "Untitled" file not removed when running Test_crash1_3
+    alone
+  * v9.1.0697: heap-buffer-overflow in ins_typebuf
+  * v9.1.0696: installing runtime files fails when using SHADOWDIR
+    runtime(doc): fix typo
+  * v9.1.0695: test_crash leaves Untitled file around
+    translation(br): Update Brazilian translation
+    translation(pt): Update menu_pt_br
+  * v9.1.0694: matchparen is slow on a long line
+  * v9.1.0693: Configure doesn't show result when not using python3
+    stable abi
+  * v9.1.0692: Wrong patlen value in ex_substitute()
+  * v9.1.0691: stable-abi may cause segfault on Python 3.11
+    runtime(vim): Update base-syntax, match :loadkeymap after colon and bar
+    runtime(mane): Improve <Plug>ManBS mapping
+  * v9.1.0690: cannot set special highlight kind in popupmenu
+    translation(pt): Revert and fix wrong Portuguese menu translation
+    files
+    translation(pt): revert Portuguese menu translation
+    translation(br): Update Brazilian translations
+    runtime(vim): Update base-syntax, improve :let-heredoc highlighting
+  * v9.1.0689: buffer-overflow in do_search( with 'rightleft'
+    runtime(vim): Improve heredoc handling for all embedded scripts
+  * v9.1.0688: dereferences NULL pointer in check_type_is_value()
+  * v9.1.0687: Makefile may not install desktop files
+    runtime(man): Fix <Plug>ManBS
+    runtime(java): Make the bundled &foldtext function optional
+    runtime(netrw): Change line on `mx` if command output exists
+    runtime(netrw): Fix `mf`-selected entry highlighting
+    runtime(htmlangular): add html syntax highlighting
+    translation(it): Fix filemode of Italian manpages
+    runtime(doc): Update outdated man.vim plugin information
+    runtime(zip): simplify condition to detect MS-Windows
+  * v9.1.0686: zip-plugin has problems with special characters
+    runtime(pandoc): escape quotes in &errorformat for pandoc
+    translation(it): updated Italian manpage
+  * v9.1.0685: too many strlen( calls in usercmd.c
+    runtime(doc): fix grammar in :h :keeppatterns
+    runtime(pandoc): refine pandoc compiler settings
+  * v9.1.0684: completion is inserted on Enter with "noselect"
+    translation(ru): update man pages
+  * v9.1.0683: mode( returns wrong value with <Cmd> mapping
+    runtime(doc): remove trailing whitespace in cmdline.txt
+  * v9.1.0682: Segfault with uninitialized funcref
+  * v9.1.0681: Analyzing failed screendumps is hard
+    runtime(doc): more clarification for the :keeppatterns needed
+  * v9.1.0680: VMS does not have defined uintptr_t
+    runtime(doc): improve typedchar documentation for KeyInputPre autocmd
+    runtime(dist): verify that executable is in $PATH
+    translation(it): update Italian manpages
+    runtime(doc): clarify the effect of :keeppatterns after * v9.1.0677
+    runtime(doc): update Makefile and make it portable between GNU and BSD
+  * v9.1.0679: Rename from w_closing to w_locked is incomplete
+    runtime(colors): update colorschemes
+    runtime(vim): Update base-syntax, improve :let-heredoc highlighting
+    runtime(doc): Updating the examples in the xxd manpage
+    translation(ru): Updated uganda.rux
+    runtime(yaml): do not re-indent when commenting out lines
+  * v9.1.0678: use-after-free in alist_add()
+  * v9.1.0677 :keepp does not retain the substitute pattern
+    translation(ja): Update Japanese translations to latest release
+    runtime(netrw): Drop committed trace lines
+    runtime(netrw): Error popup not always used
+    runtime(netrw): ErrorMsg( may throw E121
+    runtime(tutor): update Makefile and make it portable between GNU and BSD
+    translation: improve the po/cleanup.vim script
+    runtime(lang): update Makefile and make it portable between GNU and BSD
+  * v9.1.0676: style issues with man pages
+  * v9.1.0675: Patch v9.1.0674 causes problems
+    runtime(dosbatch): Show %%i as an argument in syntax file
+    runtime(dosbatch): Add syn-sync to syntax file
+    runtime(sql, mysql): fix E169: Command too recursive with
+    sql_type_default = "mysql"
+  * v9.1.0674: compiling abstract method fails because of missing return
+    runtime(javascript): fix a few issues with syntax higlighting
+    runtime(mediawiki): fix typo in doc, test for b:did_ftplugin var
+    runtime(termdebug): Fix wrong test for balloon feature
+    runtime(doc): Remove mentioning of the voting feature
+    runtime(doc): add help tags for json + markdown global variables
+  * v9.1.0673: too recursive func calls when calling super-class method
+    runtime(syntax-tests): Facilitate the viewing of rendered screendumps
+    runtime(doc): fix a few style issues
+  * v9.1.0672: marker folds may get corrupted on undo
+  * v9.1.0671 Problem:  crash with WinNewPre autocommand
+  * v9.1.0670: po file encoding fails on *BSD during make
+    translation(it): Update Italian translation
+    translation: Stop using msgconv
+  * v9.1.0669: stable python ABI not used by default
+    Update .gitignore and .hgignore files
+  * v9.1.0668: build-error with python3.12 and stable ABI
+    translations: Update generated po files
+  * v9.1.0667: Some other options reset curswant unnecessarily when set
+  * v9.1.0666: assert_equal( doesn't show multibyte string correctly
+    runtime(doc): clarify directory of Vim's executable vs CWD
+  * v9.1.0665 :for loop
+    runtime(proto): Add indent script for protobuf filetype
+  * v9.1.0664: console vim did not switch back to main screen on exit
+    runtime(zip): zip plugin does not work with Vim 9.0
+  * v9.1.0663: zip test still resets 'shellslash' option
+    runtime(zip): use defer to restore old settings
+    runtime(zip): add a generic Message function
+    runtime(zip): increment base version of zip plugin
+    runtime(zip): raise minimum Vim version to * v9.0
+    runtime(zip): refactor save and restore of options
+    runtime(zip): remove test for fnameescape
+    runtime(zip): use :echomsg instead of :echo
+    runtime(zip): clean up and remove comments
+  * v9.1.0662: filecopy( may return wrong value when readlink( fails
+  * v9.1.0661: the zip plugin is not tested.
+    runtime(zip): Fix for FreeBSD's unzip command
+    runtime(doc): capitalize correctly
+  * v9.1.0660: Shift-Insert does work on old conhost
+    translation(it): update Italian manpage
+    runtime(lua): add/subtract a 'shiftwidth' after '('/')' in indentexpr
+    runtime(zip): escape '[' on Unix as well
+  * v9.1.0659: MSVC Makefile is a bit hard to read
+    runtime(doc): fix typo in syntax.txt
+    runtime(doc): -x is only available when compiled with crypt feature
+  * v9.1.0658: Coverity warns about dereferencing NULL pointer.
+    runtime(colors): update Todo highlight in habamax colorscheme
+  * v9.1.0657: MSVC build time can be optimized
+  * v9.1.0656: MSVC Makefile CPU handling can be improved
+  * v9.1.0655: goaccess config file not recognized
+    CI: update clang compiler to version 20
+    runtime(netrw): honor `g:netrw_alt{o,v}` for `:{S,H,V}explore`
+  * v9.1.0654: completion does not respect completeslash with fuzzy
+  * v9.1.0653: Patch v9.1.0648 not completely right
+  * v9.1.0652: too many strlen( calls in syntax.c
+  * v9.1.0651 :append
+  * v9.1.0650: Coverity warning in cstrncmp()
+  * v9.1.0649: Wrong comment for "len" argument of call_simple_func()
+  * v9.1.0648: [security] double-free in dialog_changed()
+  * v9.1.0647: [security] use-after-free in tagstack_clear_entry
+    runtime(doc): re-format tag example lines, mention ctags --list-kinds
+  * v9.1.0646: imported function may not be found
+    runtime(java): Document "g:java_space_errors" and "g:java_comment_strings"
+    runtime(java): Cluster optional group definitions and their group links
+    runtime(java): Tidy up the syntax file
+    runtime(java): Tidy up the documentation for "ft-java-syntax"
+    runtime(colors): update habamax scheme - tweak diff/search/todo colors
+    runtime(nohlsearch): add missing loaded_hlsearch guard
+    runtime(kivy): Updated maintainer info for syntax script
+    Maintainers: Add maintainer for ondir ftplugin + syntax files
+    runtime(netrw): removing trailing slash when copying files in same
+    directory
+  * v9.1.0645: wrong match when searching multi-byte char case-insensitive
+    runtime(html): update syntax script to sync by 250 minlines by default
+  * v9.1.0644: Unnecessary STRLEN( when applying mapping
+    runtime(zip): Opening a remote zipfile don't work
+    runtime(cuda): source c and cpp ftplugins
+  * v9.1.0643: cursor may end up on invalid position
+  * v9.1.0642: Check that mapping rhs starts with lhs fails if not
+    simplified
+  * v9.1.0641: OLE enabled in console version
+    runtime(thrift): add ftplugin, indent and syntax scripts
+  * v9.1.0640: Makefile can be improved
+  * v9.1.0639: channel timeout may wrap around
+  * v9.1.0638: E1510 may happen when formatting a message for smsg()
+  * v9.1.0637: Style issues in MSVC Makefile
+
+-------------------------------------------------------------------
+Wed Jul 31 11:37:07 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update apparmor.vim to latest version (from AppArmor 4.0.2)
+  - add support for "all" and "userns" rules, and new profile flags
+
+-------------------------------------------------------------------
 Tue Jul 30 21:23:33 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 9.1.0636:
