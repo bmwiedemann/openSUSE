@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Sep  5 18:02:34 UTC 2024 - Meera Belur <mbelur@suse.com>
+
+- Replace %{python_module numpy} with python-numpy to avoid expansion to all python versions 
+
+-------------------------------------------------------------------
+Wed Sep  4 15:18:42 UTC 2024 - Meera Belur <mbelur@suse.com>
+
+- Rename github source tarball 
+
+-------------------------------------------------------------------
+Fri Aug 30 16:33:36 UTC 2024 - Meera Belur <mbelur@suse.com>
+
+- Initial Package 
