@@ -104,4 +104,13 @@
   + Update upstream protocol list to v1.37</comment>
     <requestid>1198112</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f0b4597e196de3bb8b7bf543bc77a12d</srcmd5>
+    <version>1.3.1</version>
+    <time>1725635927</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.1
+  + Fix detection of COSMIC protocols</comment>
+    <requestid>1199089</requestid>
+  </revision>
 </revisionlist>
