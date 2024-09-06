@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 05 21:05:13 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.36:
+  * Phase 2 of the big CPU upgrade a few years back is now done,
+    I'd left one part inadequate in terms of the data structures,
+    mainly because I did not have data samples to test, but also
+    because no corner cases that required a more robust data
+    structure for die > cluster > core counts showed up during the
+    initial development phase. This led to somewhat predictable
+    issues and bug reports when someone had a CPU that did require
+    that structure to show correct core/die type data.
+
+-------------------------------------------------------------------
 Wed Jun 19 02:11:30 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 3.3.35:
