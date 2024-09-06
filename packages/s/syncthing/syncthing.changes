@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:41:28 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.12
+  * Bugfixes:
+    #9677: Syncthing v1.27.11 on desktop claims there are Local
+    Additions for all folders from Android v1.27.10
+
+-------------------------------------------------------------------
 Tue Sep  3 18:40:39 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.11
