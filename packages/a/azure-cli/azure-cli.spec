@@ -39,7 +39,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.63.0
+Version:        2.64.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -82,7 +82,7 @@ Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       %{pythons}-azure-mgmt-compute >= 31.0.0
+Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 31.0.0
@@ -115,8 +115,8 @@ Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b16
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
-Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.4.0
-Requires:       %{pythons}-azure-mgmt-redis >= 14.3.0
+Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
+Requires:       %{pythons}-azure-mgmt-redis >= 14.4.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-resource >= 23.1.1
 Requires:       %{pythons}-azure-mgmt-search >= 9.0
@@ -133,7 +133,7 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-multiapi-storage >= 1.2.0
+Requires:       %{pythons}-azure-multiapi-storage >= 1.3.0
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
