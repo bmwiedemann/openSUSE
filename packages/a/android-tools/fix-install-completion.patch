@@ -1,8 +1,8 @@
 diff -ruN a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -11,8 +11,7 @@
- option(ANDROID_TOOLS_PATCH_VENDOR "Patch vendor projects using patches directory" ON)
+@@ -14,8 +14,7 @@
+ option(ANDROID_TOOLS_LIBUSB_ENABLE_UDEV "Enable udev for device enumeration and hotplug support" OFF)
  
  # Install bash/zsh completion files.
 -set(COMPLETION_COMMON_DIR "${CMAKE_INSTALL_FULL_DATADIR}/android-tools/completions")

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Aug 29 19:00:08 UTC 2024 - munix9@googlemail.com
+
+- Fix build on i586.
+
+-------------------------------------------------------------------
+Thu Aug 29 18:03:03 UTC 2024 - munix9@googlemail.com
+
+- Update to version 35.0.2
+  * adb
+    - Fix openscreen mDNS backend bug bringing down server on
+      truncated query issue #294120933.
+    - Make openscreen mDNS backend work on macOS.
+    - Make openscreen mDNS backend default on all platforms.
+    - Support to detect USB SuperSpeed+ (current and negotiated
+      speeds) for diagnostic purposes.
+    - Graceful shutdown: Release all USB interfaces on shutdown
+      (all OSes).
+
+  * CMake: Add option to link libusb with libudev
+  * patches/adb: Combine similar patch to workaround nullability
+    specifier
+  * CMake: Add option to use bundled libusb library
+  * CMake: Add option to use system fmt library
+  * vendor: Don't use absolute dir for mkbootimg symlink
+  * vendor: mkbootimg: Use builtin ${CMAKE_INSTALL_BINDIR} instead
+    of relative bin
+  * vendor: Remove unused native submodule
+  * vendor: Remove unused incremental_delivery submodule
+  * CMake: Remove leftovers after base submodule removal
+  * Remove unused patch for libandroidfw
+  * Remove libandroidfw: it was never used
+  * CMake: Install adb man page
+  * boringssl: Workaround compiler error with gcc-14 and _Generic
+
+- Remove man-pages.tar.gz, use upstream man pages
+
+-------------------------------------------------------------------
 Sat Aug 17 12:27:32 UTC 2024 - munix9@googlemail.com
 
 - Fix for Factory/TW: Add 'BuildRequires: pkgconfig(zlib)'

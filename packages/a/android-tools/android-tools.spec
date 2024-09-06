@@ -24,21 +24,22 @@
 %define _pyver 310
 %endif
 
+%if 0%{?suse_version} < 1600
+%define use_bundled_libfmt 1
+%endif
+# currently libusb with support for SuperSpeed+ is required,
+# which is not yet released, so the one bundled is used.
+%define use_bundled_libusb 1
+
 Name:           android-tools
-Version:        35.0.1
+Version:        35.0.2
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
 URL:            https://developer.android.com/studio/releases/platform-tools
 Source0:        https://github.com/nmeum/android-tools/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-%if 0%{?suse_version} < 1600
-BuildRequires:  clang15
-%else
-BuildRequires:  clang
-%endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  llvm-gold
@@ -50,7 +51,6 @@ BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libunwind-generic)
-BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
@@ -60,8 +60,19 @@ Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
 ExcludeArch:    s390x
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} < 1600
+BuildRequires:  clang15
 BuildRequires:  gcc11-c++
+%else
+BuildRequires:  clang
+%endif
+%if %{undefined use_bundled_libfmt}
+BuildRequires:  pkgconfig(fmt) >= 10.2.0
+%endif
+%if %{undefined use_bundled_libusb}
+BuildRequires:  pkgconfig(libusb-1.0)
+%else
+BuildRequires:  pkgconfig(libudev)
 %endif
 
 %description
@@ -94,26 +105,45 @@ BuildArch:      noarch
 Bash command line completion support for android-tools.
 
 %prep
-%autosetup -a2 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
-CMAKE_C_COMPILER=clang
-CMAKE_CXX_COMPILER=clang++
 %if 0%{?suse_version} < 1600
 CMAKE_C_COMPILER=clang-15
 CMAKE_CXX_COMPILER=clang++-15
+%else
+CMAKE_C_COMPILER=clang
+CMAKE_CXX_COMPILER=clang++
 %endif
+
 %cmake \
-	-DBUILD_SHARED_LIBS=OFF		\
-	-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}	\
-	-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+	-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} \
+	-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} \
+%if %{defined use_bundled_libfmt}
+	-DANDROID_TOOLS_USE_BUNDLED_FMT=ON \
+%endif
+%if %{defined use_bundled_libusb}
+	-DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
+	-DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
+%endif
+%ifarch %{ix86}
+	-DOPENSSL_NO_ASM=ON \
+%endif
+	-DBUILD_SHARED_LIBS=OFF
+
 %cmake_build
 
 %install
 %cmake_install
+
+# fix link
+ln -sf %{_datadir}/%{name}/mkbootimg/mkbootimg.py %{buildroot}%{_bindir}/mkbootimg
+
+# fix non-executable-script
+chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
 # fix env-script-interpreter (Leap requires special handling)
 %if 0%{?suse_version} < 1600
@@ -127,17 +157,12 @@ done
 %python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/mkbootimg/*
 %python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/*
 
-# fix non-executable-script
-chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
-
-# man pages
-install -d -m 0755 %{buildroot}%{_mandir}
-cp -a man/man1 %{buildroot}%{_mandir}
-
 %check
-# call some tools to test python3 compatibility
+# call some tools, e.g. to test python3 compatibility
 export PATH=%{buildroot}%{_bindir}:$PATH
 export PYTHONDONTWRITEBYTECODE=1
+adb --version
+fastboot --version
 avbtool version
 mkbootimg --help
 
@@ -156,14 +181,11 @@ mkbootimg --help
 %{_bindir}/simg2img
 %{_bindir}/sload_f2fs
 %{_mandir}/man1/adb.1%{?ext_man}
-%{_mandir}/man1/avbtool.1%{?ext_man}
-%{_mandir}/man1/fastboot.1%{?ext_man}
 
 %files mkbootimg
 %license LICENSE
 %{_bindir}/{mk,repack_,unpack_}bootimg
 %{_bindir}/mkdtboimg
-%{_mandir}/man1/{mk,repack_,unpack_}bootimg.1%{?ext_man}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/mkbootimg
 
@@ -171,7 +193,6 @@ mkbootimg --help
 %license LICENSE
 %doc vendor/extras/partition_tools/README.md
 %{_bindir}/lp{add,dump,flash,make,unpack}
-%{_mandir}/man1/lp{add,dump,flash,make,unpack}.1%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/adb
