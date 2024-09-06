@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Sep  5 20:51:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.5
+  * This version fixes an issue rebuilding if you have a build-dir
+    set and are using isolated build environments. The cache is now
+    correctly cleared if this occurs. An issue with a certain style
+    of gitignore was also fixed.
+- Version 0.10.4
+  * This version fixes the logic for handling the sysconfig
+    variables on Windows for the values that used to be only
+    provided on UNIX. This mostly affects targeting the Stable ABI
+    on Python 3.13. Editable install rebuilds now work if you have
+    a wheel.install-dir set, too.
+- Version 0.10.3
+  * This release fixes an issue on Windows systems with non-utf-8
+    default encodings for Python <3.14 when reading gitignores with
+    special characters.
+- Version 0.10.2
+  * This release fixes a regression with 0.10 where a manually
+    included file in an sdist would get included twice, affecting
+    some tools (like uv).
+- Version 0.10.1
+  * Fix crash when building inside a submodule by @ausbin in #854
+  * cmake.minimum-version logic issue by @henryiii in #853
+- Version 0.10.0
+  * This version adds auto CMake version discovery, opt-in auto
+    minimum-version, rebuild on failure support, quite a few new
+    override options greatly expanding the static config options
+    for builds, more powerful regexs, and more.
+  ## New features:
+  * Auto CMake version by @henryiii in #804
+  * Auto minimum-version by @henryiii in #798
+  * Add fail setting to instant-fail build by @henryiii in #824
+  * Add messages config for failure/success by @henryiii in #825
+  * New color system for message config by @henryiii in #842
+  * Add if.abi-flags (for free-threaded) by @henryiii in #819
+  * Adding if.system-cmake and if.cmake-wheel by @henryiii in #826
+  * Add if.from-sdist for overrides by @henryiii in #812
+  * Add if.failed (retry) by @henryiii in #820
+  * Add if.scikit-build-version by @henryiii in #851
+  * Packages can also be specified via a table by @henryiii in #841
+  * Move cmake.targets and cmake.verbose to build.targets and
+    build.verbose by @henryiii in #793
+  * Support multipart regex using result= by @henryiii in #818
+  * Add remove= postprocess to regex by @henryiii in #828
+  ## Fixes:
+  * Warn if cmake/ninja in build system requirements by @henryiii
+    in #803
+  * Detect manual generator setting for get_requires_* by @henryiii
+    in #840
+  * Support nested and local gitignores by @henryiii in #827
+- Version 0.9.8
+  * This version ships a few more small fixes. Multi-target builds
+    were missing build arguments due to an exhausted generator. And
+    some packages seem to hard-code ${CMAKE_INSTALL_PREFIX} in the
+    install() call, which is an anti-pattern, but we can set that
+    variable too. More tests now run on Python 3.7.
+  ## Fixes:
+  * Empty build arguments for some targets in multi-target build by
+    @junrushao in #784
+  * Support packages that hardcode CMAKE_INSTALL_PREFIX in their
+    install commands by @henryiii in #786
+  * Logger shouldn't warn for missing lib on UNIX by @henryiii in
+  * #787
+  ## Tests:
+  * Use ZipFile instead of zipfile.Path to enable more tests on
+    Python 3.7 by @henryiii in #785
+- Version 0.9.7
+  * Set CC and CXX from sysconfig if not set by @henryiii in #782
+  * musllinux tag incorrect by @henryiii in #773
+  * Logger unconditionally set to DEBUG in non-PEP 517 usage by
+    @henryiii in #779
+- Version 0.9.6
+  * Improve error message when metadata.version.provider not set by
+    @thewtex in #762
+  * Only inject logic if cmake_* keywords present by @kiwifb in
+    #768
+  * Only replace color tags if the color is defined by @bnavigator
+    in #764
+- Drop scikit-build-core-pr764-printversion.patch
+
+-------------------------------------------------------------------
 Sun Jun  9 18:50:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.5
