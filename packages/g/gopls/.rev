@@ -163,4 +163,18 @@
   * gopls/internal/golang/completion: fix package clause completion suffix (forwarded request 1184921 from jfkw)</comment>
     <requestid>1184922</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e1f42b695a7228cd83433059f87a9c6b</srcmd5>
+    <version>0.16.2</version>
+    <time>1725635916</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.2:
+  * gopls: update go.mod for v0.16.2-pre.2
+  * gopls: update x/telemetry dependency
+  * gopls: increment the telemetryprompt acceptance counter for each session
+  * gopls: add x/tools replace directive
+  * gopls: update go.mod for v0.16.2-pre.1
+  * gopls: update x/telemetry dependency (forwarded request 1199066 from jfkw)</comment>
+    <requestid>1199067</requestid>
+  </revision>
 </revisionlist>

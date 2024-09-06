@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 05 17:31:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.16.2:
+  * gopls: update go.mod for v0.16.2-pre.2
+  * gopls: update x/telemetry dependency
+  * gopls: increment the telemetryprompt acceptance counter for each session
+  * gopls: add x/tools replace directive
+  * gopls: update go.mod for v0.16.2-pre.1
+  * gopls: update x/telemetry dependency
+
+-------------------------------------------------------------------
 Tue Jul 02 18:15:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.16.1:
