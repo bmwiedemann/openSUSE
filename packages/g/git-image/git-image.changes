@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:22:49 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Use the major-minor version as the main tag
+
+-------------------------------------------------------------------
 Thu Aug  8 19:28:10 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - add oci.image.ref.name

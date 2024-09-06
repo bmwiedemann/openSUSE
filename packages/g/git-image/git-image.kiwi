@@ -14,7 +14,7 @@ https://github.com/SUSE/BCI-dockerfile-generator
 Please submit bugfixes or comments via https://bugs.opensuse.org/
 You can contact the BCI team via https://github.com/SUSE/bci/discussions
 -->
-<!-- OBS-AddTag: opensuse/git:%%git_version%% opensuse/git:%%git_version%%-%RELEASE% opensuse/git:latest -->
+<!-- OBS-AddTag: opensuse/git:%%git_minor_version%% opensuse/git:%%git_minor_version%%-%RELEASE% opensuse/git:%%git_major_version%% opensuse/git:%%git_major_version%%-%RELEASE% opensuse/git:%%git_version%% opensuse/git:%%git_version%%-%RELEASE% opensuse/git:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
 <image schemaversion="7.4" name="git-image" xmlns:suse_label_helper="com.suse.label_helper">
@@ -27,8 +27,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <type image="docker" derived_from="obsrepositories:/opensuse/bci/bci-micro#latest">
       <containerconfig
           name="opensuse/git"
-          tag="%%git_version%%"
-          additionaltags="%%git_version%%-%RELEASE%,latest">
+          tag="%%git_minor_version%%"
+          additionaltags="%%git_minor_version%%-%RELEASE%,%%git_major_version%%,%%git_major_version%%-%RELEASE%,%%git_version%%,%%git_version%%-%RELEASE%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.git">
             <label name="org.opencontainers.image.authors" value="openSUSE (https://www.opensuse.org/)"/>
@@ -39,8 +39,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
-            <label name="org.opencontainers.image.ref.name" value="%%git_version%%-%RELEASE%"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/git:%%git_version%%-%RELEASE%"/>
+            <label name="org.opencontainers.image.ref.name" value="%%git_minor_version%%-%RELEASE%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/git:%%git_minor_version%%-%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
             <label name="org.opensuse.release-stage" value="released"/>
             <label name="org.opensuse.lifecycle-url" value="https://en.opensuse.org/Lifetime#openSUSE_BCI"/>
