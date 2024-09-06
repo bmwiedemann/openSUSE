@@ -1,0 +1,2 @@
+# required and provided from the full python package, hence not in the python metadata
+addFilter("python-leftover-require python.*-sqlite3")
