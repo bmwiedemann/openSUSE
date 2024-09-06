@@ -17,7 +17,7 @@
 
 
 Name:           gap-io
-Version:        4.8.3
+Version:        4.9.0
 Release:        0
 Summary:        GAP: Bindings for low level C library IO
 License:        GPL-3.0-or-later
@@ -26,10 +26,10 @@ URL:            https://gap-packages.github.io/io/
 #Git-Clone:     https://github.com/gap-packages/io
 Source:       	https://github.com/gap-packages/io/releases/download/v%version/io-%version.tar.bz2
 BuildRequires:  fdupes
-BuildRequires:  gap-devel >= 4.11
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
-Requires:       gap-core >= 4.11
+Requires:       gap-core >= 4.12
 
 %description
 The IO package provides bindings for GAP to the lower levels of
