@@ -905,4 +905,12 @@ Version 1.11.66
   * Allow Chrome page translator to translate messages in rooms (https://github.com/matrix-org/matrix-react-sdk/pull/11113). Contributed by @lukaszpolowczyk.</comment>
     <requestid>1196036</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>e7a66d7103c4ff8d20040b181fd19daa</srcmd5>
+    <version>1.11.76</version>
+    <time>1725635939</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1199160</requestid>
+  </revision>
 </revisionlist>
