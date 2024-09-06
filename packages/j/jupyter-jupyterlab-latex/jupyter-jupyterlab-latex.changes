@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  5 17:39:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.1
+  * Migrate to updated JupyterLab extension template #230
+    (@akisaini)
+  * Fix a bug of synctex edit command #231 (@naoh16)
+  * Minor JS changes
+
+-------------------------------------------------------------------
 Thu May  9 07:43:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source not whl, using obs-service-node_modules to get the

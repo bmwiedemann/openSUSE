@@ -95,4 +95,16 @@
 </comment>
     <requestid>1172896</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>589cecfbe9ba50720031394cab7dd5f0</srcmd5>
+    <version>4.1.1</version>
+    <time>1725635908</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.1
+  * Migrate to updated JupyterLab extension template #230
+    (@akisaini)
+  * Fix a bug of synctex edit command #231 (@naoh16)
+  * Minor JS changes</comment>
+    <requestid>1199035</requestid>
+  </revision>
 </revisionlist>
