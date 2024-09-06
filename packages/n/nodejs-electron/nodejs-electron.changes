@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 06:16:32 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 30.5.0
+  * Node 20.16.0
+
+-------------------------------------------------------------------
 Thu Sep  5 04:59:15 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - v8-strict-aliasing.patch: only use -fno-ipa-strict-aliasing, it's sufficient
