@@ -27,7 +27,7 @@
 %define du_min_ver 2.7.3
 %define pk_min_ver 1.1.0
 Name:           Radicale
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -42,12 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-defusedxml
-BuildRequires:  python3-passlib
-BuildRequires:  python3-pika >= %{pk_min_ver}
-BuildRequires:  python3-python-dateutil >= %{du_min_ver}
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-vobject >= %{vo_min_ver}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(python3) >= %{py_min_ver}
