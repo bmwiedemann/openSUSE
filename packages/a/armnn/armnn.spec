@@ -79,6 +79,8 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/786
+Patch1:         armnn-fix-armv7.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -372,6 +374,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
+%patch -P 1 -p1
 %if %{with armnn_extra_tests}
 %patch -P 200 -p1
 %patch -P 201 -p1

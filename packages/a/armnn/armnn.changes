@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 13:29:47 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on armv7:
+  * armnn-fix-armv7.patch
+
+-------------------------------------------------------------------
 Tue Sep  3 09:59:35 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 24.08:
