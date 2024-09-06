@@ -17,7 +17,7 @@
 
 
 Name:           opensurge
-Version:        0.6.1.1
+Version:        0.6.1.2
 Release:        0
 Summary:        Game based on Sonic the Hedgehog Universe
 License:        Apache-2.0 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-3.0 AND OFL-1.1 AND MIT
@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(allegro_primitives-5)
 BuildRequires:  pkgconfig(allegro_physfs-5)
 BuildRequires:  pkgconfig(allegro_ttf-5)
 BuildRequires:  pkgconfig(physfs)
-BuildRequires:  pkgconfig(surgescript) >= 0.5.6
+BuildRequires:  pkgconfig(surgescript) >= 0.6.1
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -60,8 +60,8 @@ world from the evil Gimacian the Dark.
 
 %build
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC=gcc-11
-export CXX=g++-11
+export CC=gcc-12
+export CXX=g++-12
 %endif
 
 %cmake \
