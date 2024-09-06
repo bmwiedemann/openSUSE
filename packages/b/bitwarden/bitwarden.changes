@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 20:08:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.8.2
+  * Disable cipher key encryption due to problems (gh#bitwarden/clients#10621)
+
+-------------------------------------------------------------------
 Wed Aug 28 09:26:31 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.8.1

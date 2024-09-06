@@ -21,7 +21,7 @@
 %bcond_with test_rust
 
 Name:       bitwarden
-Version:    2024.8.1
+Version:    2024.8.2
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
