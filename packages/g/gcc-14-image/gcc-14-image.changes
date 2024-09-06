@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  6 05:46:48 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- main gcc is 14; switch linking/packages
+
+-------------------------------------------------------------------
 Fri Aug 23 10:27:45 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add missing distro name in the README
