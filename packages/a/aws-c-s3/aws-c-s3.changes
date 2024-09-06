@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  5 07:46:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.5
+  * Update MacOS to arm64 by @waahm7 in (#448)
+  * Rewrite some checksum related code by @TingDaoK in (#443)
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#450)
+  * S3 receive filepath by @TingDaoK in (#449)
+
+-------------------------------------------------------------------
 Mon Jul 15 10:47:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.4
