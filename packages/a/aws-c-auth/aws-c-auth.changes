@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 07:35:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.27
+  * Add content-sha256 header for presign when the signed_body_value
+    is set to UNSIGNED-PAYLOAD by @TingDaoK in (#248)
+
+-------------------------------------------------------------------
 Mon Aug 26 15:19:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.26
