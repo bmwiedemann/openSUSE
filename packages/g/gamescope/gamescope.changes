@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:27:32 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.15.3:
+  * BufferMemo: Add debug logging to buffer memos
+  * DRMBackend: Fix VRR capable check
+
+-------------------------------------------------------------------
 Wed Aug 21 14:21:17 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.15.0:
