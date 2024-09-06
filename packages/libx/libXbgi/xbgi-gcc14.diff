@@ -1,0 +1,48 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-09-05 17:32:55.590866847 +0200
+
+gcc-14 does not like not having a matching prototype.
+
+---
+ src/graphics.h        |    1 +
+ src/rotated.h         |    2 +-
+ src/setusercharsize.c |    1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+Index: xbgi-365/src/graphics.h
+===================================================================
+--- xbgi-365.orig/src/graphics.h
++++ xbgi-365/src/graphics.h
+@@ -300,6 +300,7 @@ typedef struct {
+ 		void fillellipse PROTO((int, int, int, int));
+ 		void fillpoly PROTO((int, int *));
+ 		void floodfill PROTO((int, int, int));
++		void _floodfill PROTO((int, int));
+ 		void getarccoords PROTO((struct arccoordstype *));
+ 		void getaspectratio PROTO((int *, int *));
+ 		int getbkcolor PROTO((void));
+Index: xbgi-365/src/rotated.h
+===================================================================
+--- xbgi-365.orig/src/rotated.h
++++ xbgi-365/src/rotated.h
+@@ -43,7 +43,7 @@
+ 
+ extern "C" {
+ float   XRotVersion(char*, int);
+-void    XRotSetMagnification(float);
++void    XRotSetMagnification(float, float);
+ void    XRotSetBoundingBoxPad(int);
+ int     XRotDrawString(Display*, XFontStruct*, float,
+                        Drawable, GC, int, int, char*);
+Index: xbgi-365/src/setusercharsize.c
+===================================================================
+--- xbgi-365.orig/src/setusercharsize.c
++++ xbgi-365/src/setusercharsize.c
+@@ -8,6 +8,7 @@
+  *
+  */
+ #include "graphics.h"
++#include "rotated.h"
+ 
+ void setusercharsize(int multx, int divx, int multy, int divy)
+ {

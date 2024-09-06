@@ -42,7 +42,7 @@ Index: xbgi-364/configure.ac
 --- /dev/null
 +++ xbgi-364/configure.ac
 @@ -0,0 +1,9 @@
-+AC_INIT([xbgi], [364])
++AC_INIT([xbgi], [365])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
 +AC_PROG_CC

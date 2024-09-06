@@ -15,4 +15,12 @@
     <comment>- Update to release 365</comment>
     <requestid>808422</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>76ee8f06f63a18b109e7a3da9d99f15f</srcmd5>
+    <version>365</version>
+    <time>1725635907</time>
+    <user>anag+factory</user>
+    <comment>- Add xbgi-gcc14.diff</comment>
+    <requestid>1199028</requestid>
+  </revision>
 </revisionlist>

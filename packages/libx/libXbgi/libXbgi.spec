@@ -1,7 +1,7 @@
 #
 # spec file for package libXbgi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           libXbgi
 Version:        365
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with X11 backend
-License:        MIT AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://libXbgi.sf.net/
 
@@ -31,6 +31,7 @@ Patch1:         xbgi-automake.diff
 Patch2:         xbgi-getpixel.diff
 Patch3:         xbgi-sequence.diff
 Patch4:         xbgi-grapherrormsg.diff
+Patch5:         xbgi-gcc14.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
