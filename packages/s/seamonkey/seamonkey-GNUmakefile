@@ -51,7 +51,8 @@ ifeq (,$(wildcard .mozconfig))
 $(error Cannot find .mozconfig file in the current directory)
 endif
 
-MACH_CMD = ./mach --log-no-times
+MACH_CMD = env MACH_USE_SYSTEM_PYTHON=1 ./mach --log-no-times
+export MACH_USE_SYSTEM_PYTHON = 1
 
 OBJDIR := $(shell $(MACH_CMD) environment --format=json | sed -e 's/.*"topobjdir": "//' -e 's/".*//')
 

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep 04 20:04:01 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.19
+  * Cancel button in SeaMonkey bookmarking star ui not working bug
+    1872623.
+  * Remove OfflineAppCacheHelper.jsm copy from SeaMonkey and use the
+    one in toolkit bug 1896292.
+  * Remove obsolete registerFactoryLocation calls from cZ bug 1870930.
+  * Remove needless implements='nsIDOMEventListener' and QI bug
+    1611010.
+  * Replace use of nsIStandardURL::Init bug 1864355.
+  * Switch SeaMonkey website from hg.mozilla.org to heptapod. bug
+    1870934.
+  * Allow view-image to open a data: URI by setting a flag on the
+    loadinfo bug 1877001.
+  * Save-link-as feature should use the loading principal and context
+    menu using nsIContentPolicy.TYPE_SAVE_AS_DOWNLOAD bug 1879726.
+  * Use punycode in SeaMonkey JS bug 1864287.
+  * Font lists in preferences are no longer grouped by font type, port
+    asynchronous handling like Bug 1399206 bug 1437393.
+  * SeaMonkey broken tab after undo closed tab with invalid protocol
+    bug 1885748.
+  * SeaMonkey session restore is missing the checkboxes in the Classic
+    theme bug 1896174.
+  * Implement about:credits on seamonkey-project.org website bug
+    1898467.
+  * Fix for the 0.0.0.0 day vulnerability oligo summary.
+  * Link in update notification does not open Browser bug 1888364.
+  * Update ReadExtensionPrefs in Preferences.cpp bug 1890196.
+  * Add about:seamonkey page to SeaMonkey bug 1897801.
+  * SeaMonkey 2.53.19 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.19 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.14
+    and Thunderbird 115.14 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- Adapt seamonkey-man-page.patch for SeaMonkey 2.53.19
+- Adapt seamonkey-GNUmakefile to create mach environment
+- Build with GCC 13 on Tumbleweed due to build failures with GCC 14:
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1916827
+
+-------------------------------------------------------------------
 Thu Jun 07 00:42:26 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - add patch mozilla-bmo1896958.patch adapted from

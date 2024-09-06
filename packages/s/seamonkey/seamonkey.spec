@@ -26,7 +26,13 @@ BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
+# Use GCC 13 on Tumbleweed because builds fail with GCC 14:
+# <https://bugzilla.mozilla.org/show_bug.cgi?id=1916827>
+%if 0%{?suse_version} > 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hunspell-devel
 # Using system AV1 decoder depends on pending patch from
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
@@ -71,9 +77,9 @@ BuildRequires:  clang-devel >= 5
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.18.2
+Version:        2.53.19
 Release:        0
-%define releasedate 20240328000000
+%define releasedate 20240904000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -235,6 +241,10 @@ cp %{SOURCE12} GNUmakefile
 %if 0%{?suse_version} > 1600
 %patch -P 7 -p1
 %endif
+# Fix Rust builds on openSUSE 15.6; see https://bugzilla.mozilla.org/show_bug.cgi?id=1896958
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%patch -P 7 -p1
+%endif
 
 # Fix --system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
 %if 0%{?suse_version} > 1600
@@ -340,8 +350,15 @@ export BUILD_OFFICIAL=1
 
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %if 0%{?clang_build} == 0
+# Use GCC 13 on Tumbleweed because builds fail with GCC 14:
+# <https://bugzilla.mozilla.org/show_bug.cgi?id=1916827>
+%if 0%{?suse_version} > 1600
+export CC=gcc-13
+export CXX=g++-13
+%else
 export CC=gcc
 export CXX=g++
+%endif
 %if 0%{?gcc_version:%{gcc_version}} >= 12
 export CFLAGS="$CFLAGS -fimplicit-constexpr"
 %endif
