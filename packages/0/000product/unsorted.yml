@@ -8974,7 +8974,6 @@ unsorted:
   - int10h-oldschoolpc-fonts 
   - int10h-oldschoolpc-fonts-stretched 
   - int10h-olympiad-fonts 
-  - intel-SINIT 
   - intel-cmt-cat 
   - intel-gpu-tools 
   - intel-gpu-tools-devel 
@@ -12764,7 +12763,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc102 
+  - libdruntime-ldc109 
   - libdrvproxy2 
   - libdspy-1-1 
   - libdtkcore5 
@@ -15225,7 +15224,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_109 
-  - libphobos2-ldc102 
+  - libphobos2-ldc109 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -24181,6 +24180,7 @@ unsorted:
   - python310-QtAwesome 
   - python310-QtPy 
   - python310-QtPy-test 
+  - python310-RTFDE 
   - python310-RangeHTTPServer 
   - python310-RegexOrder 
   - python310-Routes 
@@ -24820,7 +24820,6 @@ unsorted:
   - python310-blurb 
   - python310-bmap-tools 
   - python310-bobo 
-  - python310-bobodoctestumentation 
   - python310-bokcolmaps 
   - python310-bokeh 
   - python310-boltons 
@@ -25310,6 +25309,7 @@ unsorted:
   - python310-expiringdict 
   - python310-exrex 
   - python310-extension-helpers 
+  - python310-extract-msg 
   - python310-extras 
   - python310-extratools 
   - python310-eyed3 
@@ -26638,6 +26638,7 @@ unsorted:
   - python310-pyramid-debugtoolbar 
   - python310-pyramid-mako 
   - python310-pyreadstat 
+  - python310-pyright 
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
@@ -26932,6 +26933,7 @@ unsorted:
   - python310-radon 
   - python310-railroad-diagrams 
   - python310-random2 
+  - python310-rank-bm25 
   - python310-rapidfuzz 
   - python310-rarfile 
   - python310-rarfile-doc 
@@ -27223,6 +27225,7 @@ unsorted:
   - python310-spyder-kernels 
   - python310-sqlalchemy-migrate 
   - python310-sqlglot 
+  - python310-sqlite-anyio 
   - python310-sqlite-fts4 
   - python310-sqlite-utils 
   - python310-sqlite3-to-mysql 
@@ -27389,9 +27392,6 @@ unsorted:
   - python310-tweepy 
   - python310-twine 
   - python310-twitter 
-  - python310-twitter.common.finagle-thrift 
-  - python310-twitter.common.lang 
-  - python310-twitter.common.rpc 
   - python310-twython 
   - python310-txWS 
   - python310-txZMQ 
@@ -27824,6 +27824,7 @@ unsorted:
   - python311-QtAwesome 
   - python311-QtPy 
   - python311-QtPy-test 
+  - python311-RTFDE 
   - python311-RangeHTTPServer 
   - python311-RegexOrder 
   - python311-Routes 
@@ -28452,7 +28453,6 @@ unsorted:
   - python311-blurb 
   - python311-bmap-tools 
   - python311-bobo 
-  - python311-bobodoctestumentation 
   - python311-bokcolmaps 
   - python311-bokeh 
   - python311-boltons 
@@ -28925,6 +28925,7 @@ unsorted:
   - python311-expiringdict 
   - python311-exrex 
   - python311-extension-helpers 
+  - python311-extract-msg 
   - python311-extratools 
   - python311-eyed3 
   - python311-ez_setup 
@@ -30193,6 +30194,7 @@ unsorted:
   - python311-pyramid-debugtoolbar 
   - python311-pyramid-mako 
   - python311-pyreadstat 
+  - python311-pyright 
   - python311-pyroma 
   - python311-pyroomacoustics 
   - python311-pyroute2 
@@ -30481,6 +30483,7 @@ unsorted:
   - python311-radon 
   - python311-railroad-diagrams 
   - python311-random2 
+  - python311-rank-bm25 
   - python311-rapidfuzz 
   - python311-rarfile 
   - python311-rarfile-doc 
@@ -30760,6 +30763,7 @@ unsorted:
   - python311-spyder-kernels 
   - python311-sqlalchemy-migrate 
   - python311-sqlglot 
+  - python311-sqlite-anyio 
   - python311-sqlite-fts4 
   - python311-sqlite-utils 
   - python311-sqlite3-to-mysql 
@@ -30924,9 +30928,6 @@ unsorted:
   - python311-tweepy 
   - python311-twine 
   - python311-twitter 
-  - python311-twitter.common.finagle-thrift 
-  - python311-twitter.common.lang 
-  - python311-twitter.common.rpc 
   - python311-twython 
   - python311-txWS 
   - python311-txZMQ 
@@ -31366,6 +31367,7 @@ unsorted:
   - python312-QtAwesome 
   - python312-QtPy 
   - python312-QtPy-test 
+  - python312-RTFDE 
   - python312-RangeHTTPServer 
   - python312-RegexOrder 
   - python312-Routes 
@@ -32006,7 +32008,6 @@ unsorted:
   - python312-blurb 
   - python312-bmap-tools 
   - python312-bobo 
-  - python312-bobodoctestumentation 
   - python312-bokcolmaps 
   - python312-bokeh 
   - python312-boltons 
@@ -32494,6 +32495,7 @@ unsorted:
   - python312-expiringdict 
   - python312-exrex 
   - python312-extension-helpers 
+  - python312-extract-msg 
   - python312-extras 
   - python312-extratools 
   - python312-eyed3 
@@ -33818,6 +33820,7 @@ unsorted:
   - python312-pyramid-debugtoolbar 
   - python312-pyramid-mako 
   - python312-pyreadstat 
+  - python312-pyright 
   - python312-pyroma 
   - python312-pyroomacoustics 
   - python312-pyroute2 
@@ -34111,6 +34114,7 @@ unsorted:
   - python312-radon 
   - python312-railroad-diagrams 
   - python312-random2 
+  - python312-rank-bm25 
   - python312-rapidfuzz 
   - python312-rarfile 
   - python312-rarfile-doc 
@@ -34400,6 +34404,7 @@ unsorted:
   - python312-spyder-kernels 
   - python312-sqlalchemy-migrate 
   - python312-sqlglot 
+  - python312-sqlite-anyio 
   - python312-sqlite-fts4 
   - python312-sqlite-utils 
   - python312-sqlite3-to-mysql 
@@ -34566,9 +34571,6 @@ unsorted:
   - python312-tweepy 
   - python312-twine 
   - python312-twitter 
-  - python312-twitter.common.finagle-thrift 
-  - python312-twitter.common.lang 
-  - python312-twitter.common.rpc 
   - python312-twython 
   - python312-txWS 
   - python312-txZMQ 

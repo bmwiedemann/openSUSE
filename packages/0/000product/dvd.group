@@ -4142,6 +4142,7 @@
     <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Xdp-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Xfconf-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="tzselect" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="udev-configure-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="udftools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
