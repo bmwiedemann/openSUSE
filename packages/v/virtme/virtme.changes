@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep  6 06:06:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.28:
+  * setup.py: include dependencies parsing requirements.txt
+  * virtme-ng: fix typo in command help
+  * virtme-configkernel: disable nvram support
+  * configkernel: config comment cosmetics
+  * configkernel: act more like kernel's make O=outdir
+  * vng-run: get kdir from O=outdir
+  * vng: propagate --verbose to configkernel
+  * vng: alias --custom to --config
+  * run.py: add a --qemu-opts='...' option bundling hint to help
+  * init: Always create /run/tmp folder
+  * Don't require ".git" to be a directory
+  * Specify "refs/heads/__virtme__" in git push
+- Add BuildRequires for python-argparse-manpage and install man
+  page if we are on TW. Older versions don't have the dep yet
+
+-------------------------------------------------------------------
 Wed Jul 31 06:37:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.27:

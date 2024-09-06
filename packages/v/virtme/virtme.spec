@@ -22,7 +22,7 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.27
+Version:        1.28
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
@@ -30,6 +30,9 @@ Group:          Development/Tools/Other
 URL:            https://github.com/arighi/virtme-ng
 Source0:        %{name}-ng-%{version}.tar.xz
 BuildRequires:  %{pythons}-argcomplete
+%if 0%{?suse_version} > 1600
+BuildRequires:  %{pythons}-argparse-manpage
+%endif
 BuildRequires:  %{pythons}-requests
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  python-rpm-macros
@@ -68,6 +71,9 @@ export PYTHONDONTWRITEBYTECODE=1 %python_install
 %{_bindir}/virtme-prep-kdir-mods
 %{_bindir}/virtme-run
 %{_bindir}/vng
+%if 0%{?suse_version} > 1600
+%{_mandir}/man1/vng.1%{?ext_man}
+%endif
 %{python_sitelib}/%{name}
 %{python_sitelib}/%{name}_ng
 %{python_sitelib}/%{name}_ng-%{version}-py*.egg-info
