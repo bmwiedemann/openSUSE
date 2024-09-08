@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:09:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde3, rebased upstream:
+  * Fix overly generic header include guard name
+  * Bump version to 5.15.15
+
+-------------------------------------------------------------------
 Wed May 29 06:50:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde3, rebased upstream:
