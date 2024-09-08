@@ -16,8 +16,12 @@
 
 #!BuildTag: opensuse/bci/nodejs:22
 #!BuildTag: opensuse/bci/nodejs:22-%RELEASE%
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/node:22
 #!BuildTag: opensuse/bci/node:22-%RELEASE%
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -28,7 +32,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends nodejs22 npm22 update-altern
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Node.js 22 development"
 LABEL org.opencontainers.image.description="Node.js 22 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="22"
+LABEL org.opencontainers.image.version="%%nodejs_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
