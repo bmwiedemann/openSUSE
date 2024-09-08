@@ -55,6 +55,7 @@ Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.t
 Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
+Patch1:         rsync-gcc14.patch
 Patch2:         rsync-usr-etc.patch
 Patch3:         rsync-run-dir.patch
 BuildRequires:  autoconf
