@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Sep  6 12:45:21 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Fix build on Leap 15.6
+- Add x86_64 and aarch64 to ExclusiveArch
+
+-------------------------------------------------------------------
+Thu Sep 05 09:54:21 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 0.13.3:
+  * Release 0.13.3 (#2713)
+  * fix: use pre-defined font weights only if user does not specify one (#2710)
+  * Release 0.13.2 (#2697)
+  * feat: update deployment scripts for macOS .dmg creation (#2700)
+  * Unset ARGV0 to fix AppImage launch (#2691)
+  * fix: Fix the remote clipboard support (#2696)
+  * Ensure that the mouse position is positive (#2690)
+  * fix: A smal tweak to how the baseline offset and underline position is calculated (#2687)
+  * fix: update the ui command to use tabs based on settings (#2692)
+  * fix: Ensure windows settings are initialized when the window is created (#2619)
+
+-------------------------------------------------------------------
+Thu Sep  5 01:30:05 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
+
+- New package neovide

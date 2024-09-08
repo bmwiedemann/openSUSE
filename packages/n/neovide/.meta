@@ -1,0 +1,5 @@
+<package name="neovide" project="openSUSE:Factory">
+  <title>Simple graphical user interface for Neovim</title>
+  <description>No Nonsense Neovim Client in Rust</description>
+  <devel project="editors" package="neovide"/>
+</package>
