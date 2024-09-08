@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 20 17:00:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.5.2:
+    https://mariadb.com/kb/en/mariadb-11-5-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-5-2-changelog/
+- Update list of skipped tests
+
+-------------------------------------------------------------------
 Sun Jul 14 13:28:44 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove func_math_tests_MDEV-26645.diff as patch for s390x/ppc64le

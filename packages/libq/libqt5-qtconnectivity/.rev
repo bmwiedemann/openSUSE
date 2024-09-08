@@ -337,4 +337,12 @@
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177541</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f2c4db084ec22065224faba632da84c8</srcmd5>
+    <version>5.15.15+kde3</version>
+    <time>1725789551</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199188</requestid>
+  </revision>
 </revisionlist>

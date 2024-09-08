@@ -1,0 +1,32 @@
+From a351bb62c81223c8e4727484ae54766ca8a6926f Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <Guillaume.Gardet@arm.com>
+Date: Thu, 29 Aug 2024 16:33:19 +0200
+Subject: [PATCH] examples/vm_power_manager: add missing header
+
+strtol is defined in stdlib.h
+
+Bugzilla ID: 1530
+
+Signed-off-by: Guillaume Gardet <guillaume.gardet@arm.com>
+
+EDIT: drop .mailmap part for backport
+---
+ .mailmap                                                 | 1 +
+ examples/vm_power_manager/guest_cli/vm_power_cli_guest.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/examples/vm_power_manager/guest_cli/vm_power_cli_guest.c b/examples/vm_power_manager/guest_cli/vm_power_cli_guest.c
+index 5eddb47847..c153a1f8e0 100644
+--- a/examples/vm_power_manager/guest_cli/vm_power_cli_guest.c
++++ b/examples/vm_power_manager/guest_cli/vm_power_cli_guest.c
+@@ -6,6 +6,7 @@
+ #include <stdint.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <termios.h>
+ 
+ #include <cmdline_rdline.h>
+-- 
+2.46.0
+

@@ -1,0 +1,67 @@
+From 87cc54644e40fccc0651b7fedc137b3dd02b4514 Mon Sep 17 00:00:00 2001
+From: Matthew Fernandez <matthew.fernandez@gmail.com>
+Date: Mon, 21 Mar 2022 08:09:55 -0700
+Subject: [PATCH] smyrna Init: squash -Wincompatible-pointer-types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+OpenGL has an unorthodox API wherein the `gluTessCallback` function’s prototype
+indicates it takes a `void(*)(void)`, but its docs¹ explain that the type
+actually varies depending on the second argument. As a result, the compiler
+(correctly) warns that some of these `gluTessCallback` calls are passing
+function pointers that do not have the same ABI. Presumably this works out
+because at the end of the day a function pointer is just some bits in C and the
+OpenGL implementation branches on the `which` argument and invokes the pointer
+correctly. But if OpenGL really wanted to discard type safety this way, it is
+not clear to me why they did not make the function pointer argument a `void*`.
+Anyway, this commit squashes the compiler warnings which emerge when enabling
+this in the CMake build system, failing the build.
+
+Gitlab: related to #1836
+
+¹ This is not the authoritative source, but Microsoft’s docs for their
+  implementation provide a good explanation.
+  https://docs.microsoft.com/en-us/windows/win32/opengl/glutess
+---
+ cmd/smyrna/polytess.c |   25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+--- cmd/smyrna/polytess.c
++++ cmd/smyrna/polytess.c	2024-09-06 09:04:16.790734526 +0000
+@@ -39,15 +39,30 @@ static void CALLBACK vertexCallback(GLvo
+ 
+ }
+ 
+-static GLUtesselator* Init()
++// OpenGL’s `gluTessCallback` function has a prototype indicating it takes a
++// `void(*)(void)`. But its documentation describes passing in various function
++// pointers with differing calling conventions. To use this API while also
++// pacifying all the various build environments, we need this rather silly
++// wrapper.
++#ifdef _MSC_VER
++// MSVC is of the (correct) opinion that casting between function pointers of
++// incompatible calling conventions is unacceptable behavior…
++#define MAKE_GLU_CALLBACK(f) f
++#else
++// …nevertheless other compilers insist we cast or they believe we have made a
++// typo
++#define MAKE_GLU_CALLBACK(f) ((void (*)(void))(f))
++#endif
++
++static GLUtesselator* Init(void)
+ {
+     // Create a new tessellation object 
+     GLUtesselator* tobj = gluNewTess(); 
+     // Set callback functions
+-    gluTessCallback(tobj, GLU_TESS_VERTEX, &vertexCallback);
+-    gluTessCallback(tobj, GLU_TESS_BEGIN, &glBegin);
+-    gluTessCallback(tobj, GLU_TESS_END, &glEnd);
+-    gluTessCallback(tobj, GLU_TESS_COMBINE,&combineCallback);
++    gluTessCallback(tobj, GLU_TESS_VERTEX, MAKE_GLU_CALLBACK(vertexCallback));
++    gluTessCallback(tobj, GLU_TESS_BEGIN, MAKE_GLU_CALLBACK(glBegin));
++    gluTessCallback(tobj, GLU_TESS_END, MAKE_GLU_CALLBACK(glEnd));
++    gluTessCallback(tobj, GLU_TESS_COMBINE, MAKE_GLU_CALLBACK(combineCallback));
+     return tobj;
+ }
+ 

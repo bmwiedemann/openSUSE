@@ -1,0 +1,27 @@
+From cfcb34ea5c61d71c77529cbf2400738473e25bac Mon Sep 17 00:00:00 2001
+From: Michael Howitz <icemac@gmx.net>
+Date: Fri, 9 Aug 2024 18:29:08 +0200
+Subject: Add support for Python 3.12.  - Drop support for Python 3.7
+
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -36,7 +36,7 @@
+ templates_path = ['_templates']
+ 
+ # The suffix of source filenames.
+-source_suffix = '.rst'
++source_suffix = {'.rst': 'restructuredtext'}
+ 
+ # The encoding of source files.
+ #source_encoding = 'utf-8'
+@@ -203,9 +203,7 @@
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {
+-    'https://docs.python.org/': None
+-}
++intersphinx_mapping = {'python': ('https://docs.python.org/', None)}
+ 
+ autodoc_default_flags = ['members', 'show-inheritance']
+ autodoc_member_order = 'bysource'

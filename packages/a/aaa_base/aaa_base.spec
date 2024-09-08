@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240821.fbabe1d%{git_version}
+Version:        84.87+git20240906.742565b%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -192,6 +192,22 @@ fi
 
 %postun extras
 %service_del_postun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
+
+%post yama-enable-ptrace
+# check if yama is active
+if [ -f /proc/sys/kernel/yama/ptrace_scope ]; then
+  # automatically disable ptrace protection upon install if systemd is not
+  # available. Usually system will automatically apply the setting
+  if ! type -p systemd-notify > /dev/null || ! systemd-notify --booted; then
+    # don't do it on transactional systems to avoid altering the state of the
+    # system before reboot
+    if [ -z "${TRANSACTIONAL_UPDATE}" ]; then
+      # can't use sysctl since that would cause us to require procps, which is
+      # bad for container size
+      echo 0 > /proc/sys/kernel/yama/ptrace_scope || :
+    fi
+  fi
+fi
 
 %files
 %license COPYING

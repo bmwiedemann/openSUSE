@@ -22,4 +22,12 @@
 - Initial package: looseversion 1.1.2</comment>
     <requestid>1131738</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6465418d74ce1c6120e82330cca96563</srcmd5>
+    <version>1.3.0</version>
+    <time>1725789546</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1199165</requestid>
+  </revision>
 </revisionlist>

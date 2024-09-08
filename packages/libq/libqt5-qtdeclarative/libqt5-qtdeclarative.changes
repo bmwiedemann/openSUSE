@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:02:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde25, rebased upstream:
+  * QV4::ArrayData: Fix offset calculation for sort()
+  * Fix pointer delivery to child items of items with clip:true
+  * doc: Remove Calendar Example link
+  * PointerHandler: cancel all grabs when item changes scene
+  * qintrusivelvist_p.h: Silence nullpointer subtraction warning
+  * Doc: Fix mislabelled diagram for Context2D.arc()
+  * Bump version to 5.15.15
+
+-------------------------------------------------------------------
 Wed May 29 06:40:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde28, rebased upstream:

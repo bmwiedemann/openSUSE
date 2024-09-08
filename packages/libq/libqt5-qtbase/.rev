@@ -2649,4 +2649,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * a11y atspi: Add null checks in table iface methods (forwarded request 1189041 from favogt)</comment>
     <requestid>1189048</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>708d7b619ea33a587ce8dd5928ff6410</srcmd5>
+    <version>5.15.15+kde127</version>
+    <time>1725789550</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199186</requestid>
+  </revision>
 </revisionlist>

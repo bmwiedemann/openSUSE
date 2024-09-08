@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:02:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde0, rebased upstream:
+  * Audio example: Provide valid Info.plist dictionary
+  * Audio example: Provide valid Info.plist dictionary
+  * Bump version to 5.15.15
+
+-------------------------------------------------------------------
 Wed May 29 06:25:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde0, rebased upstream:

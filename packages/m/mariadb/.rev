@@ -1936,4 +1936,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1188198</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>a0944b2edfcd2efe1842ab0ba65ae704</srcmd5>
+    <version>11.5.2</version>
+    <time>1725789549</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1199184</requestid>
+  </revision>
 </revisionlist>

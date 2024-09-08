@@ -840,4 +840,16 @@
     <comment></comment>
     <requestid>1188847</requestid>
   </revision>
+  <revision rev="103" vrev="11">
+    <srcmd5>cb2d4bc79a3c97626ccaef86fd7a5fc1</srcmd5>
+    <version>2.49.3</version>
+    <time>1725789544</time>
+    <user>anag+factory</user>
+    <comment>- For bug boo#1225776 add patches
+  * graphviz-2.49.3-boo1225776-gcc14.patch silent warning/error
+    on incompatible pointer type
+  * graphviz-87cc546.patch
+    also fix incompatible pointer type</comment>
+    <requestid>1199143</requestid>
+  </revision>
 </revisionlist>

@@ -173,4 +173,12 @@
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1109515</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>212a9e9b7f43fc8a0d91923c74736d83</srcmd5>
+    <version>5.0</version>
+    <time>1725789545</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199148</requestid>
+  </revision>
 </revisionlist>

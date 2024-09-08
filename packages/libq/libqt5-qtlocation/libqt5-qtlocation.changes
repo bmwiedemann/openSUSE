@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:07:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde7, rebased upstream:
+  * Bump version to 5.15.15
+  * CoreLocation plugin: introduce RequestAlwaysPermission parameter
+
+-------------------------------------------------------------------
 Wed May 29 06:45:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde7, rebased upstream:

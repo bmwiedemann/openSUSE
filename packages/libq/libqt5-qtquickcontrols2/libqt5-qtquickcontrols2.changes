@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:08:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde5, rebased upstream:
+  * Bump version to 5.15.15
+  * RangeSlider: Don't update position only if mouse/touch is grabbed
+
+-------------------------------------------------------------------
 Wed May 29 06:48:05 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde5, rebased upstream:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  6 09:08:28 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- For bug boo#1225776 add patches
+  * graphviz-2.49.3-boo1225776-gcc14.patch silent warning/error
+    on incompatible pointer type
+  * graphviz-87cc546.patch
+    also fix incompatible pointer type
+
+-------------------------------------------------------------------
 Tue Jul  9 13:46:12 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to optflags when compiling the addons flavor in

@@ -1,0 +1,18 @@
+Silent warning:
+>> tbl.c:173:15: warning: assignment to ‘char *’ from incompatible pointer type ‘char (*)[1]’ [-Wincompatible-pointer-types]
+
+---
+ cmd/lefty/tbl.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- cmd/lefty/tbl.c
++++ cmd/lefty/tbl.c	2024-09-06 08:48:48.059367033 +0000
+@@ -170,7 +170,7 @@ Tobj Tcode (Code_t *cp, int ci, int cl)
+             cp2[i] = cp[i];
+             if (cp2[i].next != C_NULL)
+                 cp2[i].next -= ci;
+-            s = &cp[i].u.s;
++            s = &cp[i].u.s[0];      // gcc14
+             while (*s)
+                 s++;
+             cn = (long) (s - (char *) &cp[i]) / sizeof (Code_t);

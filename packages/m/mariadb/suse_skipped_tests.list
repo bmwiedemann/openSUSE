@@ -45,3 +45,7 @@ mariabackup.encrypted_page_corruption            : since 11.2.3 - s390x
 
 main.ssl_autoverify                              : since 11.4.2 - all
 binlog.max_binlog_total_size                     : since 11.4.2 - all
+
+main.mysqld--help-aria                           : since 11.5.2 - all
+plugins.feedback_plugin_load                     : since 11.5.2 - all
+

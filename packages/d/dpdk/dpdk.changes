@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 11:40:32 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with gcc14:
+  * 0001-examples-vm_power_manager-add-missing-header.patch
+
+-------------------------------------------------------------------
 Mon Sep  2 06:15:32 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Update to LTS version 23.11. Some are the fixes are below,

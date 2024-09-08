@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 06 09:04:40 UTC 2024 - dmueller@suse.com
+
+- Update to version 84.87+git20240906.742565b:
+  * yama-enable-ptrace: enforce changed behavior upon installation (bsc#1221763)
+  * Avoid unnecessary /bin/bash dependency
+  * sysctl: Fixup of not setting kernel.pid_max on 32b archs (bsc#1227117)
+
+-------------------------------------------------------------------
 Wed Aug 21 08:51:24 UTC 2024 - kukuk@suse.com
 
 - Update to version 84.87+git20240821.fbabe1d:

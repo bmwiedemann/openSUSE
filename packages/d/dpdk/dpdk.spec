@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package dpdk
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -54,6 +54,8 @@ URL:            https://www.dpdk.org/
 Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-fix-cpu-compatibility.patch
+# PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
+Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes

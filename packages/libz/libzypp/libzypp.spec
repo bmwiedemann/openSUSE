@@ -57,7 +57,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.35.9
+Version:        17.35.10
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -72,6 +72,8 @@ Obsoletes:      yast2-packagemanager
 # bsc#1227793:  python zypp-plugin < 0.6.4 rejects stomp headers including a '-'
 Conflicts:      python2-zypp-plugin < 0.6.4
 Conflicts:      python3-zypp-plugin < 0.6.4
+# API refactoring. Prevent zypper from using (now) private symbols
+Conflicts:      zypper <= 1.14.76
 
 # Features we provide (update doc/autoinclude/FeatureTest.doc):
 Provides:       libzypp(plugin) = 0.1

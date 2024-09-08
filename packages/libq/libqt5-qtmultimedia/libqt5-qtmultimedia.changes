@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:08:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde2, rebased upstream:
+  * Bump version to 5.15.15
+  * Blacklist tst_qmediaplayerbackend::playlistobjects on openSUSE 15.4
+  * Blacklist tst_QAudioDeviceInfo::codecs on openSUSE 15.4
+
+-------------------------------------------------------------------
 Wed May 29 06:45:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde2, rebased upstream:

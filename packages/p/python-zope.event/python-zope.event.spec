@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Very basic event publishing system
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/z/zope.event/%{modname}-%{version}.tar.gz
+# fix upstream, compatible with recent Sphinx
+Patch1:         intersphinx.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,6 +49,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%autopatch -p1
 
 %build
 %python_build

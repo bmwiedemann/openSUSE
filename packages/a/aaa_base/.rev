@@ -4210,4 +4210,15 @@
   * Add helper service for soft-reboot (forwarded request 1195034 from kukuk)</comment>
     <requestid>1195035</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>625e721b2b469f04942cdf6e1cc47150</srcmd5>
+    <version>84.87+git20240906.742565b</version>
+    <time>1725789538</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240906.742565b:
+  * yama-enable-ptrace: enforce changed behavior upon installation (bsc#1221763)
+  * Avoid unnecessary /bin/bash dependency
+  * sysctl: Fixup of not setting kernel.pid_max on 32b archs (bsc#1227117)</comment>
+    <requestid>1199142</requestid>
+  </revision>
 </revisionlist>

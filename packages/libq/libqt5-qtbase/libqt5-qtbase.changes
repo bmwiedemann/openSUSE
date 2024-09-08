@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:01:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde127, rebased upstream:
+  * Add LGPL header to qcalendar.cpp
+  * Move some flaky text tests into Lancelot
+  * Update Harfbuzz to 7.2.0
+  * doc: Make docs for ElideNone a bit more precise
+  * tst_QImageReader: fix missing checks for "newly"-added ImageOptions
+  * tst_QMainWindow: for UB (use of reserved names)
+  * Update bundled libjpeg-turbo to version 3.0.0
+  * Update to Freetype 2.13.1
+  * [docs] Link from QtConcurent::run() to QThreadPool::start(Callable&&)
+  * Docs: State that OpenSSL3 is available from 5.15.1
+  * Simplify (and fix) initialization of a list of time-zones
+  * ODBC/MySQL: fix compilation with MySQL < 5.7.9
+  * SQLite: Update SQLite to v3.42.0
+  * tst_QHostInfo: fix mem-leaks in threadSafetyAsynchronousAPI()
+  * tst_QSortFilterProxyModel: fix mem-leaks II: sortStable()
+  * tst_QNetworkDiskCache: fix mem-leak
+  * tst_QAbstractItemModelTester: fix mem-leak
+  * tst_QSortFilterProxyModel: fix mem-leaks
+  * Fix screens not always updating if order changes
+  * Update the list of CLDR-based files
+  * Return TZ time-zone backend's tranCache() as a const reference
+  * tst_QTcpSocket: fix mem-leak
+  * tst_QNetworkCookieJar: fix memleak
+  * tst_QParallelAnimationGroup: fix memleak
+  * tst_QXmlStream::tokenErrorHandling() - register test directory in CMake
+  * Fix transparency in 16 bit and 24 bit ico files
+  * QVariant: always compare floating point with double precision
+  * Doc: Document QMAKE_APPLE_DEVICE_ARCHS
+  * Update bundled libpng to version 1.6.40
+  * fbconvenience: use smart pointer for QFbCursor
+  * Doc: Clarify that the rich text engine has limited support for HTML tags
+  * autotest: Blacklist tst_QTableView::columnViewportPosition for winrt
+  * autotest: Blacklist QTimeLine::interpolation for winrt
+  * QFuture: mention the work-stealing algorithm in the docs
+  * QtDoc Global: Add macros for Qt Design Studio in qtdoc
+  * Fix specific overflow in qtextlayout
+  * Remove QEglFSCursor's inheritance of QOpenGLFunctions
+  * tst_QPixmapCache: QVERIFY a failed replace()
+  * tst_QPixmapCache: check insert() reports failure
+  * QPixmapCache: add a comment on how failed insert() invalidates cacheKey
+  * tst_QPixmapCache: rewrite QVERIFY(x != 0) to QVERIFY(x)
+  * QVariant: remove outdated docs about reimplementing clear()
+  * Bump version to 5.15.15
+  * Update The-Qt-Company-Commercial
+  * Fix crash on QLocale::monthName().simplified()
+  * Android: fix QDir::entryInfoList() with content URIs
+  * Android: fix content url handling of filenames with spaces
+- Commits dropped by the rebase:
+  * tst_QXmlStream: remove unneeded _ba UDLs
+  * Fix specific overflow in qtextlayout (CVE-2023-32763)
+
+-------------------------------------------------------------------
 Mon Jul 22 12:11:38 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.14+kde143:

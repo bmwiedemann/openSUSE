@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -78,6 +78,10 @@ Patch6:         graphviz-no_php_extra_libs.patch
 Patch7:         swig-4.1.0.patch
 #PATCH-FIX-UPSTREAM gvc: detect plugin installation failure and display an error
 Patch8:         gvc-detect-plugin-installation-failure-and-display-an-error.patch
+#PATCH-FIX-OPENSUSE Bug 1225776 - Flavor addons of package graphviz does not build with gcc14
+Patch9:         graphviz-2.49.3-boo1225776-gcc14.patch
+#PATCH-FIX-UPSTREAM
+Patch10:        graphviz-87cc546.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -409,6 +413,8 @@ programs that use the graphviz libraries including man3 pages.
 %patch -P 6
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9
+%patch -P 10
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
