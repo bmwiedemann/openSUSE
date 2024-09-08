@@ -4924,4 +4924,13 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1192824</requestid>
   </revision>
+  <revision rev="483" vrev="1">
+    <srcmd5>d5a24011c2b97134b620bc0d10bc0b4b</srcmd5>
+    <version>2.6.1+git20240903.3c1fddf</version>
+    <time>1725789567</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20240903.3c1fddf:
+  * configs/openSUSE/users-groups.toml: add nqptp (boo#1213060) (forwarded request 1198452 from wfrisch)</comment>
+    <requestid>1199225</requestid>
+  </revision>
 </revisionlist>
