@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep  6 14:11:41 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.36.2:
+  * Linux: Fix a regression in 0.36.0 that caused font features defined via
+    fontconfig to be ignored (#7773)
+  * goto_tab: Allow numbers less than -1 to go to the Nth previously active tab
+  * Wayland: Fix for upcoming explicit sync changes in Wayland compositors
+    breaking kitty (#7767)
+  * Remote control: When listening on a UNIX domain socket only allow
+    connections from processes having the same user id (#7777)
+  * kitten @: Fix a regression connecting to TCP sockets using plain IP
+    addresses rather than hostnames (#7794)
+  * diff kitten: Fix a regression that broke diffing against remote
+    files (#7797)
+
+-------------------------------------------------------------------
 Sun Aug 25 18:01:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.36.1:

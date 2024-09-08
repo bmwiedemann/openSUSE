@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.36.1
+Version:        0.36.2
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -35,7 +35,6 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 ### Avoiding any 'have choice for go' issues ...
-#BuildRequires:  go1.22
 BuildRequires:  go >= 1.23
 #####
 ### Temporarily disabled until go1.23 is default
