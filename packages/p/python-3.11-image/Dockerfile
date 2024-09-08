@@ -18,6 +18,8 @@
 #!BuildTag: opensuse/bci/python:3.11-%RELEASE%
 #!BuildTag: opensuse/bci/python:3
 #!BuildTag: opensuse/bci/python:3-%RELEASE%
+#!BuildTag: opensuse/bci/python:%%py311_ver%%
+#!BuildTag: opensuse/bci/python:%%py311_ver%%-%RELEASE%
 #!BuildTag: opensuse/bci/python:latest
 
 FROM opensuse/tumbleweed:latest
@@ -29,7 +31,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends python311-devel python311 py
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Python 3.11 development"
 LABEL org.opencontainers.image.description="Python 3.11 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="3.11"
+LABEL org.opencontainers.image.version="%%py311_ver%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
