@@ -31,7 +31,6 @@ RUN zypper -n install \
            nbdkit \
            nbdkit-basic-filters \
            nbdkit-curl-plugin \
-           nbdkit-gzip-filter \
            nbdkit-xz-filter \
            qemu-img \
            shadow \
