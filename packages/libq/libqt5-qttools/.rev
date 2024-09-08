@@ -542,4 +542,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177564</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>4e70be03442a48365ddaa6a2d49fe726</srcmd5>
+    <version>5.15.15+kde3</version>
+    <time>1725789559</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199210</requestid>
+  </revision>
 </revisionlist>
