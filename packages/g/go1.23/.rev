@@ -23,4 +23,32 @@
   Refs boo#1229122 go1.23 release tracking (forwarded request 1193774 from jfkw)</comment>
     <requestid>1193775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99b39d30724c485f7a6efad6ba03d9d5</srcmd5>
+    <version>1.23.1</version>
+    <time>1725789569</time>
+    <user>anag+factory</user>
+    <comment>- go1.23.1 (released 2024-09-05) includes security fixes to the
+  encoding/gob, go/build/constraint, and go/parser packages, as
+  well as bug fixes to the compiler, the go command, the runtime,
+  and the database/sql, go/types, os, runtime/trace, and unique
+  packages.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2024-34155 CVE-2024-34156 CVE-2024-34158
+  - go#69143 go#69138 boo#1230252 security: fix CVE-2024-34155 go/parser: stack exhaustion in all Parse* functions
+  - go#69145 go#69139 boo#1230253 security: fix CVE-2024-34156 encoding/gob: stack exhaustion in Decoder.Decode
+  - go#69149 go#69141 boo#1230254 security: fix CVE-2024-34158 go/build/constraint: stack exhaustion in Parse
+  - go#68812 os: TestChtimes failures
+  - go#68894 go/types: 'under' panics on Alias type
+  - go#68905 cmd/compile: error in Go 1.23.0 with generics, type aliases and indexing
+  - go#68907 os: CopyFS overwrites existing file in destination.
+  - go#68973 cmd/cgo: aix c-archive corrupting stack
+  - go#68992 unique: panic when calling unique.Make with string casted as any
+  - go#68994 cmd/go: any invocation creates read-only telemetry configuration file under GOMODCACHE
+  - go#68995 cmd/go: multi-arch build via qemu fails to exec go binary
+  - go#69041 database/sql: panic in database/sql.(*connRequestSet).deleteIndex
+  - go#69087 runtime/trace: crash during traceAdvance when collecting call stack for cgo-calling goroutine
+  - go#69094 cmd/go: breaking change in 1.23rc2 with version constraints in GOPATH mode (forwarded request 1199060 from jfkw)</comment>
+    <requestid>1199063</requestid>
+  </revision>
 </revisionlist>
