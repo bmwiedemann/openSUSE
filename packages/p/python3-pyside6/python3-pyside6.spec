@@ -181,6 +181,9 @@ sed -i 's#purelib#platlib#' sources/shiboken6/cmake/ShibokenHelpers.cmake
 
 pushd sources/%{pyside_flavor}
 
+# numpy changed the include path on 2.0
+numpyinc=$(%{__mypython} -c 'import numpy; print(numpy.get_include())')
+
 # NOTE:The compiler and linker flags shall not be defined
 %cmake_qt6 \
   -DBUILD_TESTS:BOOL=ON \
@@ -189,7 +192,7 @@ pushd sources/%{pyside_flavor}
   -DCMAKE_CXX_FLAGS:STRING="" \
   -DCMAKE_EXE_LINKER_FLAGS:STRING="" \
   -DPython_EXECUTABLE:STRING=%{__mypython} \
-  -DNUMPY_INCLUDE_DIR:STRING=%{mypython_sitearch}/numpy/core/include \
+  -DNUMPY_INCLUDE_DIR:STRING=${numpyinc} \
   -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON \
 %if "%{pyside_flavor}" == "shiboken6"
   -DCMAKE_SKIP_RPATH:BOOL=ON \

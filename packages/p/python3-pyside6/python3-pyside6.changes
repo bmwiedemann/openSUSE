@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  5 19:17:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Tumbleweed now has numpy2: Fix include path
+
+-------------------------------------------------------------------
 Wed Jun 19 07:48:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.2. Check the installed changes-6.7.2 file for the
