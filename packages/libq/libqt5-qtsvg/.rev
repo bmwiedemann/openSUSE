@@ -502,4 +502,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177563</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cc51e76b59072a9ac5d33b8bbe6a6901</srcmd5>
+    <version>5.15.15+kde5</version>
+    <time>1725789558</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199209</requestid>
+  </revision>
 </revisionlist>
