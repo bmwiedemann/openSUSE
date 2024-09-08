@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 30 15:27:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop "go clean" from the upstream build script: since we build in
+  clean environments, we don't have caches. Additionally, the way
+  it is used does not even work and reports:
+    go: clean -cache cannot be used with package arguments
+  The error was masked until GO 1.23, as the test wether go
+  supported caching was checking for go 1.23 formatted output.
+
+-------------------------------------------------------------------
 Mon Jul 29 12:01:10 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Fix order of previous change - *first* remount rw, *then* create

@@ -94,6 +94,7 @@ cp %{SOURCE12} dracut/30ignition/ignition-kargs-helper.sh
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
+sed -i -e '/go clean/d' build
 VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' ./build
 
 %check
