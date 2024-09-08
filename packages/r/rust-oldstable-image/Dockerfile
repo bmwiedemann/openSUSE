@@ -18,6 +18,8 @@
 #!BuildTag: opensuse/bci/rust:oldstable-2.%RELEASE%
 #!BuildTag: opensuse/bci/rust:1.79
 #!BuildTag: opensuse/bci/rust:1.79-2.%RELEASE%
+#!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
+#!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-2.%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -28,7 +30,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends rust1.79 cargo1.79; zypper -
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.79"
 LABEL org.opencontainers.image.description="Rust 1.79 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.79"
+LABEL org.opencontainers.image.version="%%RUST_VERSION%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
