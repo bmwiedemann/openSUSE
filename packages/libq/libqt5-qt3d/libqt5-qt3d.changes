@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:01:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde0, rebased upstream:
+  * Fix UB (signed char passed to <cctype> function)
+  * Bump version to 5.15.15
+  * Blacklist tst_GraphicsHelperGL4::bindFrameBufferAttachment for openSUSE
+
+-------------------------------------------------------------------
 Mon Jul 22 12:07:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Use system assimp unconditionally (boo#1228204)

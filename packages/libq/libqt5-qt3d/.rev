@@ -406,4 +406,12 @@
     <comment>boo#1228199 / boo#1228204 (forwarded request 1189032 from krop)</comment>
     <requestid>1189211</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d0cd5b5caf40d896b1cb430680bb3b45</srcmd5>
+    <version>5.15.15+kde0</version>
+    <time>1725789571</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199185</requestid>
+  </revision>
 </revisionlist>
