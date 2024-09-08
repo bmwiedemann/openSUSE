@@ -1,0 +1,36 @@
+diff -Nru posthog-3.6.0/posthog/test/test_client.py posthog-3.6.0-no-mock/posthog/test/test_client.py
+--- posthog-3.6.0/posthog/test/test_client.py	2024-08-28 06:00:44.000000000 +0000
++++ posthog-3.6.0-no-mock/posthog/test/test_client.py	2024-09-05 16:30:31.956000000 +0000
+@@ -3,7 +3,7 @@
+ from datetime import datetime
+ from uuid import uuid4
+ 
+-import mock
++from unittest import mock
+ import six
+ 
+ from posthog.client import Client
+diff -Nru posthog-3.6.0/posthog/test/test_consumer.py posthog-3.6.0-no-mock/posthog/test/test_consumer.py
+--- posthog-3.6.0/posthog/test/test_consumer.py	2024-08-28 06:00:44.000000000 +0000
++++ posthog-3.6.0-no-mock/posthog/test/test_consumer.py	2024-09-05 16:30:03.976000000 +0000
+@@ -2,7 +2,7 @@
+ import time
+ import unittest
+ 
+-import mock
++from unittest import mock
+ 
+ try:
+     from queue import Queue
+diff -Nru posthog-3.6.0/posthog/test/test_feature_flags.py posthog-3.6.0-no-mock/posthog/test/test_feature_flags.py
+--- posthog-3.6.0/posthog/test/test_feature_flags.py	2024-08-28 06:00:44.000000000 +0000
++++ posthog-3.6.0-no-mock/posthog/test/test_feature_flags.py	2024-09-05 16:30:19.288000000 +0000
+@@ -1,7 +1,7 @@
+ import datetime
+ import unittest
+ 
+-import mock
++from unittest import mock
+ from dateutil import parser, tz
+ from freezegun import freeze_time
+ 

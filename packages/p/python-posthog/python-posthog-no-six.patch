@@ -1,0 +1,158 @@
+diff -Nru posthog-3.6.0-no-mock/posthog/client.py posthog-3.6.0-no-six/posthog/client.py
+--- posthog-3.6.0-no-mock/posthog/client.py	2024-09-05 16:29:03.332000000 +0000
++++ posthog-3.6.0-no-six/posthog/client.py	2024-09-05 16:42:49.764000000 +0000
+@@ -5,7 +5,6 @@
+ from uuid import UUID
+ 
+ from dateutil.tz import tzutc
+-from six import string_types
+ 
+ from posthog.consumer import Consumer
+ from posthog.exception_capture import ExceptionCapture
+@@ -21,7 +20,7 @@
+     import Queue as queue
+ 
+ 
+-ID_TYPES = (numbers.Number, string_types, UUID)
++ID_TYPES = (numbers.Number, str, UUID)
+ MAX_DICT_SIZE = 50_000
+ 
+ 
+@@ -59,7 +58,7 @@
+         # api_key: This should be the Team API Key (token), public
+         self.api_key = project_api_key or api_key
+ 
+-        require("api_key", self.api_key, string_types)
++        require("api_key", self.api_key, str)
+ 
+         self.on_error = on_error
+         self.debug = debug
+@@ -192,7 +191,7 @@
+         context = context or {}
+         require("distinct_id", distinct_id, ID_TYPES)
+         require("properties", properties, dict)
+-        require("event", event, string_types)
++        require("event", event, str)
+ 
+         msg = {
+             "properties": properties,
+@@ -326,7 +325,7 @@
+         require("distinct_id", distinct_id, ID_TYPES)
+         require("properties", properties, dict)
+ 
+-        require("url", url, string_types)
++        require("url", url, str)
+         properties["$current_url"] = url
+ 
+         msg = {
+@@ -567,7 +566,7 @@
+         send_feature_flag_events=True,
+         disable_geoip=None,
+     ):
+-        require("key", key, string_types)
++        require("key", key, str)
+         require("distinct_id", distinct_id, ID_TYPES)
+         require("groups", groups, dict)
+ 
+@@ -814,6 +813,6 @@
+ def stringify_id(val):
+     if val is None:
+         return None
+-    if isinstance(val, string_types):
++    if isinstance(val, str):
+         return val
+     return str(val)
+diff -Nru posthog-3.6.0-no-mock/posthog/test/test_client.py posthog-3.6.0-no-six/posthog/test/test_client.py
+--- posthog-3.6.0-no-mock/posthog/test/test_client.py	2024-09-05 16:30:31.956000000 +0000
++++ posthog-3.6.0-no-six/posthog/test/test_client.py	2024-09-05 16:35:59.800000000 +0000
+@@ -4,7 +4,6 @@
+ from uuid import uuid4
+ 
+ from unittest import mock
+-import six
+ 
+ from posthog.client import Client
+ from posthog.test.test_utils import FAKE_TEST_API_KEY
+@@ -655,7 +654,7 @@
+         self.assertFalse(success)
+ 
+     def test_unicode(self):
+-        Client(six.u("unicode_key"))
++        Client("unicode_key")
+ 
+     def test_numeric_distinct_id(self):
+         self.client.capture(1234, "python event")
+diff -Nru posthog-3.6.0-no-mock/posthog/test/test_utils.py posthog-3.6.0-no-six/posthog/test/test_utils.py
+--- posthog-3.6.0-no-mock/posthog/test/test_utils.py	2024-09-05 16:29:03.336000000 +0000
++++ posthog-3.6.0-no-six/posthog/test/test_utils.py	2024-09-05 16:36:51.084000000 +0000
+@@ -3,7 +3,6 @@
+ from decimal import Decimal
+ from uuid import UUID
+ 
+-import six
+ from dateutil.tz import tzutc
+ 
+ from posthog import utils
+@@ -28,7 +27,7 @@
+     def test_clean(self):
+         simple = {
+             "decimal": Decimal("0.142857"),
+-            "unicode": six.u("woo"),
++            "unicode": "woo",
+             "date": datetime.now(),
+             "long": 200000000,
+             "integer": 1,
+@@ -63,11 +62,7 @@
+         self.assertEqual(dict_with_dates, utils.clean(dict_with_dates))
+ 
+     def test_bytes(self):
+-        if six.PY3:
+-            item = bytes(10)
+-        else:
+-            item = bytearray(10)
+-
++        item = bytes(10)
+         utils.clean(item)
+ 
+     def test_clean_fn(self):
+diff -Nru posthog-3.6.0-no-mock/posthog/utils.py posthog-3.6.0-no-six/posthog/utils.py
+--- posthog-3.6.0-no-mock/posthog/utils.py	2024-09-05 16:29:03.336000000 +0000
++++ posthog-3.6.0-no-six/posthog/utils.py	2024-09-05 16:38:19.876000000 +0000
+@@ -6,7 +6,6 @@
+ from decimal import Decimal
+ from uuid import UUID
+ 
+-import six
+ from dateutil.tz import tzlocal, tzutc
+ 
+ log = logging.getLogger("posthog")
+@@ -51,7 +50,7 @@
+         return float(item)
+     if isinstance(item, UUID):
+         return str(item)
+-    elif isinstance(item, (six.string_types, bool, numbers.Number, datetime, date, type(None))):
++    elif isinstance(item, (str, bool, numbers.Number, datetime, date, type(None))):
+         return item
+     elif isinstance(item, (set, list, tuple)):
+         return _clean_list(item)
+@@ -67,7 +66,7 @@
+ 
+ def _clean_dict(dict_):
+     data = {}
+-    for k, v in six.iteritems(dict_):
++    for k, v in dict_.items():
+         try:
+             data[k] = clean(v)
+         except TypeError:
+diff -Nru posthog-3.6.0-no-mock/setup.py posthog-3.6.0-no-six/setup.py
+--- posthog-3.6.0-no-mock/setup.py	2024-09-05 16:29:03.336000000 +0000
++++ posthog-3.6.0-no-six/setup.py	2024-09-05 16:38:48.628000000 +0000
+@@ -14,7 +14,7 @@
+ PostHog is developer-friendly, self-hosted product analytics. posthog-python is the python package.
+ """
+ 
+-install_requires = ["requests>=2.7,<3.0", "six>=1.5", "monotonic>=1.5", "backoff>=1.10.0", "python-dateutil>2.1"]
++install_requires = ["requests>=2.7,<3.0", "monotonic>=1.5", "backoff>=1.10.0", "python-dateutil>2.1"]
+ 
+ extras_require = {
+     "dev": [
