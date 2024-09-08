@@ -18,11 +18,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.14
-%define so_version 5.15.14
+%define real_version 5.15.15
+%define so_version 5.15.15
 %define tar_version qtquick3d-everywhere-src-%{version}
 Name:           libqt5-qtquick3d
-Version:        5.15.14+kde1
+Version:        5.15.15+kde1
 Release:        0
 Summary:        Qt 5 Quick 3D Module
 License:        GPL-3.0-or-later
@@ -32,11 +32,11 @@ Source:         %{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         qt5-quick3d-assimp-5.1.patch
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(assimp) >= 5.0.0
 BuildRequires:  libQt5Core-private-headers-devel >= 5.12
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+BuildRequires:  pkgconfig(assimp) >= 5.0.0
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl

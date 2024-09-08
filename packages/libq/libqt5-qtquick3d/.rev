@@ -145,4 +145,12 @@
     <comment>boo#1228199 / boo#1228204 (forwarded request 1189032 from krop)</comment>
     <requestid>1189212</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b25e248b9eb8d886824d4cc94281e43e</srcmd5>
+    <version>5.15.15+kde1</version>
+    <time>1725789575</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
+    <requestid>1199199</requestid>
+  </revision>
 </revisionlist>
