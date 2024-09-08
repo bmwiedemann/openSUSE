@@ -18,6 +18,8 @@
 #!BuildTag: opensuse/bci/python:3.10-%RELEASE%
 #!BuildTag: opensuse/bci/python:3
 #!BuildTag: opensuse/bci/python:3-%RELEASE%
+#!BuildTag: opensuse/bci/python:%%py310_ver%%
+#!BuildTag: opensuse/bci/python:%%py310_ver%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -28,7 +30,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends python310-devel python310 py
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Python 3.10 development"
 LABEL org.opencontainers.image.description="Python 3.10 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="3.10"
+LABEL org.opencontainers.image.version="%%py310_ver%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
