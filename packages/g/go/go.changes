@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 28 22:11:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.23
+  Refs boo#1229122 go1.23 release tracking
+
+-------------------------------------------------------------------
 Mon Jan  8 19:21:12 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to current stable go1.22
