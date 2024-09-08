@@ -18,6 +18,8 @@
 #!BuildTag: opensuse/bci/golang:stable-1.%RELEASE%
 #!BuildTag: opensuse/bci/golang:1.23
 #!BuildTag: opensuse/bci/golang:1.23-1.%RELEASE%
+#!BuildTag: opensuse/bci/golang:%%golang_version%%
+#!BuildTag: opensuse/bci/golang:%%golang_version%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/golang:latest
 
 FROM opensuse/tumbleweed:latest
@@ -29,7 +31,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends go1.23 go1.23-doc make curl 
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.23 development"
 LABEL org.opencontainers.image.description="Go 1.23 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.23"
+LABEL org.opencontainers.image.version="%%golang_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
