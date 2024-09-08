@@ -16,9 +16,13 @@
 
 #!BuildTag: opensuse/bci/nodejs:20
 #!BuildTag: opensuse/bci/nodejs:20-%RELEASE%
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/nodejs:latest
 #!BuildTag: opensuse/bci/node:20
 #!BuildTag: opensuse/bci/node:20-%RELEASE%
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/node:latest
 
 FROM opensuse/tumbleweed:latest
@@ -30,7 +34,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends nodejs20 npm20 update-altern
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Node.js 20 development"
 LABEL org.opencontainers.image.description="Node.js 20 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="20"
+LABEL org.opencontainers.image.version="%%nodejs_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
