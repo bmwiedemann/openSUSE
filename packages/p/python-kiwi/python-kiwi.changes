@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Sep 06 10:41:00 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.5 → 10.1.6
+
+-------------------------------------------------------------------
+Thu Sep 05 15:50:42 CEST 2024 - Kostiantyn Astakhov <16296930+kastakhov@users.noreply.github.com>
+
+- add allowExtraConfig and exportFlags to ovftool options
+
+  Add allowExtraConfig and exportFlags to ovftool options
+
+-------------------------------------------------------------------
+Thu Sep 05 14:42:30 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.4 → 10.1.5
+
+-------------------------------------------------------------------
+Wed Sep 04 16:54:55 CEST 2024 - Steffen Winterfeldt <wfeldt@opensuse.org>
+
+- create EFI/BOOT only if UEFI boot is intended
+
+-------------------------------------------------------------------
+Wed Sep 04 16:52:21 CEST 2024 - Steffen Winterfeldt <wfeldt@opensuse.org>
+
+- Fix boot support for ISO media on ppc64
+
+  add CHRP boot support for ppc64 and add xorriso option to avoid
+  file name reduction to MS-DOS compatible 8.3 format
+
+-------------------------------------------------------------------
+Tue Sep 03 10:11:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix initrd permissions
+
+  kiwi stored the initrd for ISO images as 600 which might
+  be too restrictive. This commit makes sure the initrd is
+  stored as 644 and Fixes bsc#1229257
+
+-------------------------------------------------------------------
+Tue Sep 03 09:08:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed ramdisk size setup
+
+  For setting up the brd rd_size option kiwi creates
+  99-brd.conf used at load time of the kernel brd driver.
+  The location for the conf file is set to /etc/modprobe.d/
+  However, in newer versions the location has changed to
+  /usr/lib/modprobe.d/ and /etc/modprobe.d is no longer
+  expected to exist. This commit makes sure /etc/modprobe.d
+  is created if not present.
+
+-------------------------------------------------------------------
 Tue Sep 03 08:31:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.3 → 10.1.4

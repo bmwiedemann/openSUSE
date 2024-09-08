@@ -2580,4 +2580,37 @@
   and Fixes #2628</comment>
     <requestid>1198422</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>7a116bb8dd4f88a34c948496ff7677c8</srcmd5>
+    <version>10.1.6</version>
+    <time>1725789563</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.1.5 → 10.1.6
+
+- add allowExtraConfig and exportFlags to ovftool options
+  Add allowExtraConfig and exportFlags to ovftool options
+
+- Bump version: 10.1.4 → 10.1.5
+
+- create EFI/BOOT only if UEFI boot is intended
+
+- Fix boot support for ISO media on ppc64
+  add CHRP boot support for ppc64 and add xorriso option to avoid
+  file name reduction to MS-DOS compatible 8.3 format
+
+- Fix initrd permissions
+  kiwi stored the initrd for ISO images as 600 which might
+  be too restrictive. This commit makes sure the initrd is
+  stored as 644 and Fixes bsc#1229257
+
+- Fixed ramdisk size setup
+  For setting up the brd rd_size option kiwi creates
+  99-brd.conf used at load time of the kernel brd driver.
+  The location for the conf file is set to /etc/modprobe.d/
+  However, in newer versions the location has changed to
+  /usr/lib/modprobe.d/ and /etc/modprobe.d is no longer
+  expected to exist. This commit makes sure /etc/modprobe.d
+  is created if not present.</comment>
+    <requestid>1199243</requestid>
+  </revision>
 </revisionlist>
