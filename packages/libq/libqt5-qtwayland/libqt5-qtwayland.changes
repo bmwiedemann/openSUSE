@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:09:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.15+kde59, rebased upstream:
+  * Revert "Client: Send release button event on pointer leave"
+  * Fix race condition in drag and drop
+  * client: don't cache one type in QWaylandMimeData
+  * DefaultCompositor: use explcit lambda captures
+  * Fix C++20 deprecated capture of *this in [=]
+  * compositor: Unbind display on close in linux-dmabuf and eglstream
+  * Client: Send release button event on pointer leave
+  * Bump version to 5.15.15
+
+-------------------------------------------------------------------
 Wed May 29 06:50:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde57, rebased upstream:
