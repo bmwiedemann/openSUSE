@@ -664,4 +664,12 @@
   to fix build on i586 with 6.11+</comment>
     <requestid>1197790</requestid>
   </revision>
+  <revision rev="77" vrev="86">
+    <srcmd5>3c738eda38090ea4eed254732db618b9</srcmd5>
+    <version>MACRO</version>
+    <time>1725885894</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1199539</requestid>
+  </revision>
 </revisionlist>

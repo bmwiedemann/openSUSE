@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  2 05:43:09 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- Replace 0001-perf-trace-fix-build-on-32bit.patch by a proposed fix:
+  perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 10:31:38 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-perf-trace-fix-build-on-32bit.patch
