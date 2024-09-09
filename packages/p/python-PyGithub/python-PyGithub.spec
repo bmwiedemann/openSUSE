@@ -18,43 +18,55 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyGithub
-Version:        1.57
+Version:        2.4.0
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
 URL:            https://github.com/PyGithub/PyGithub
-Source:         https://github.com/PyGithub/PyGithub/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pygithub/pygithub-%{version}.tar.gz
+Source99:       python-PyGithub.rpmlintrc
 BuildRequires:  %{python_module Deprecated}
-BuildRequires:  %{python_module PyJWT}
+BuildRequires:  %{python_module PyJWT >= 2.4.0}
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
-BuildRequires:  %{python_module httpretty >= 0.9.6}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module cryptography >= 3.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.14.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.0.0}
+BuildRequires:  %{python_module urllib3 >= 1.26.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated
-Requires:       python-PyJWT
+Requires:       python-PyJWT >= 2.4.0
 Requires:       python-PyNaCl >= 1.4.0
+Requires:       python-cryptography >= 3.4
 Requires:       python-requests >= 2.14.0
-Recommends:     python-cryptography
+Requires:       python-typing-extensions >= 4.0.0
+Requires:       python-urllib3 >= 1.26.0
+Provides:       python-pygithub = %{version}-%{release}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module httpretty}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
 %description
-PyGithub is a Python 3 library to use the Github API v3.
-Github resources (repositories, user profiles, organizations,
-etc.) can be managed with this.
+PyGitHub is a Python library to access the GitHub REST API.
+This library enables you to manage [GitHub] resources such as repositories,
+user profiles, and organizations in your Python applications.
 
 %prep
-%setup -q -n PyGithub-%{version}
-%autopatch -p1
+%autosetup -p1 -n pygithub-%{version}
+sed -i s/--color=yes// pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +75,7 @@ etc.) can be managed with this.
 %files %{python_files}
 %license COPYING COPYING.LESSER
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/github
+%{python_sitelib}/PyGithub-%{version}.dist-info
 
 %changelog

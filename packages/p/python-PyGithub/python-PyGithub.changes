@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep  8 12:25:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.0
+  ## New features
+  * Allow custom authentication @kliem (#2987)
+  ## Improvements
+  * Add has_discussions to AuthenticatedUser and Repository classes
+    @cwlls (#3020)
+  * Update more SecurityAndAnalysis attributes @squatched (#3025)
+  * Implement support for re-running only failed workflow jobs.
+    @chrisgavin (#2983)
+  * Add possibility to mark a thread/notification as done @m42e
+    (#2985)
+  * Add "pull_request_review_id" to PullRequestComment object
+    @stroebs (#3000)
+  * Add minimize and unminimize functions for IssueComment class
+    @arash77 (#3005)
+  * Support Organization/Repository custom properties @jackylamhk
+    (#2968)
+  * Add dict type to add_attribute script @jackylamhk (#2977)
+  * Allow for deleting and restoring branch associated with PR
+    @austinsasko (#1784)
+  * Add "archived_at" to Organization object. @billnapier (#2974)
+  * Adds Security & Analysis To Repository @squatched (#2960)
+  * Add added_by and last_used attributes to RepositoryKey @ramiro
+    (#2952)
+  * Add make_latest to GitRelease.update_release @treee111 (#2888)
+  * Make Commit.files return PaginatedList @iarspider (#2939)
+  ## Bug Fixes
+  * Fix GraphQL Queries with Variables @kgal-pan (#3002)
+- Many more new features improvements and bug fixes since 1.57
+  * Check https://github.com/PyGithub/PyGithub/releases
+- Modernize specfile
+- Provide lowercase PyPI name
+
+-------------------------------------------------------------------
 Wed Mar  6 15:01:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
