@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/pypa/pipx</param>
+    <param name="revision">1.7.1</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

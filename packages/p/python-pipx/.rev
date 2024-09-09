@@ -158,4 +158,35 @@
   https://github.com/pypa/pipx/releases/tag/1.4.2</comment>
     <requestid>1184143</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4426a2c4cb9d5bf73bdbb9668f1ca31b</srcmd5>
+    <version>1.7.1</version>
+    <time>1725885933</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.1:
+  * 1.7.1: Use minimum supported Python to build zipapp (#1515)
+
+- Update to 1.7.0:
+  * Add help messages for pipx pin and pipx unpin commands
+  * Add quotes to title and fix tag name in release action
+  * Add a --prepend option to the pipx ensurepath command
+  * ci: clean up auto changelog on releases
+  * Introduce a new env variable to allow spaces in home path
+  * Use multiple machine suffixes for standalone python
+  * Fix install all example typo
+  * Fix passing constraints file path into pipx install operation
+    via --pip-args
+  * Apply preview ruff/Pylint rule PLC0206
+  * Apply ruff/pycodestyle rule E721
+  * Enforce new ruff rules
+  * Moved documentation to docs directory
+  * Fix #1475 (--global installs to ~/.local)
+  * Fix #1492: Add PIPX_GLOBAL_(HOME|BIN_DIR|MAN_DIR) documentation
+    and list them in pipx environment
+  * Assorted repo-review suggestions
+  * Fixes #1509 short-circuit of installing packages when already 
+    installed
+- Use obs-service-tar_scm instead of GitHub releases</comment>
+    <requestid>1199618</requestid>
+  </revision>
 </revisionlist>
