@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/mariadb-client:11.4
-#!BuildTag: opensuse/mariadb-client:11.4-%RELEASE%
+#!BuildTag: opensuse/mariadb-client:11.5
+#!BuildTag: opensuse/mariadb-client:11.5-%RELEASE%
 #!BuildTag: opensuse/mariadb-client:latest
 
 FROM opensuse/tumbleweed:latest
@@ -27,13 +27,13 @@ RUN set -euo pipefail; zypper -n in --no-recommends mariadb-client; zypper -n cl
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Client"
 LABEL org.opencontainers.image.description="MariaDB Client container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="11.4"
+LABEL org.opencontainers.image.version="11.5"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="11.4-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb-client:11.4-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="11.5-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb-client:11.5-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
@@ -41,4 +41,4 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/mariadb-client-image/README.md"
 CMD ["mariadb"]
 # sanity check that the version from the tag is equal to the version of mariadb-client that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.4" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.5" ]
