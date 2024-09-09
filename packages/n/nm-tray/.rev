@@ -104,4 +104,17 @@
 - Remove nm-tray-0.4.3-nmmodel-include.patch: upstreamed</comment>
     <requestid>967034</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a794ea69da74b957b693d8e6a8f22431</srcmd5>
+    <version>0.5.1</version>
+    <time>1725885897</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1:
+  * Add/update translations (Czech, Danish, Chinese (Simplified),
+    Portuguese, German, Persian, Russian, Romanian, Italian, Hindi,
+    Portuguese (Brazil))
+  * Port to Qt6 &amp; KF6
+  * Use RAII (avoid naked delete)</comment>
+    <requestid>1199542</requestid>
+  </revision>
 </revisionlist>

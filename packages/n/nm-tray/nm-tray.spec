@@ -1,7 +1,7 @@
 #
 # spec file for package nm-tray
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nm-tray
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        NetworkManager Tray applet
 License:        GPL-2.0-only
@@ -26,12 +26,13 @@ URL:            https://github.com/palinek/nm-tray
 Source:         https://github.com/palinek/nm-tray/archive/%{version}.tar.gz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.4.0
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  xdg-user-dirs
+BuildRequires:  cmake(KF6NetworkManagerQt)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
 Requires:       NetworkManager
 Recommends:     %{name}-lang
 
@@ -74,9 +75,6 @@ EOF
 %doc README.md
 %{_bindir}/%{name}
 %{_sysconfdir}/xdg/autostart/%{name}.desktop
-%dir %{_prefix}%{_sysconfdir}
-%dir %{_prefix}%{_sysconfdir}/xdg
-%dir %{_prefix}%{_sysconfdir}/xdg/autostart
 %{_prefix}%{_sysconfdir}/xdg/autostart/nm-tray-autostart.desktop
 %{_datadir}/nm-tray/nm-tray.conf
 

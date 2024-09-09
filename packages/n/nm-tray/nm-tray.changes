@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:16:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Add/update translations (Czech, Danish, Chinese (Simplified),
+    Portuguese, German, Persian, Russian, Romanian, Italian, Hindi,
+    Portuguese (Brazil))
+  * Port to Qt6 & KF6
+  * Use RAII (avoid naked delete)
+
+-------------------------------------------------------------------
 Tue Apr  5 14:37:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
