@@ -164,6 +164,9 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
 Patch35:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
+# Make the test suite work with libexpat < 2.6.0
+Patch36:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
@@ -184,9 +187,6 @@ Patch41:        downport-Sphinx-features.patch
 # indicate the parsing error (old API), from gh#python/cpython!105127
 # Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
 Patch42:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM old-libexpat.patch gh#python/cpython#117187 mcepl@suse.com
-# Make the test suite work with libexpat < 2.6.0
-Patch43:        old-libexpat.patch
 # PATCH-FIX-UPSTREAM CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch bsc#1226447 mcepl@suse.com
 # removes memory race condition in ssl.SSLContext certificate store methods
 Patch44:        CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
@@ -205,6 +205,12 @@ Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
 # PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
 # avoid denial of service in zipfile
 Patch49:        CVE-2024-8088-inf-loop-zipfile_Path.patch
+# PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
+# Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
+Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6232-cookies-quad-complex.patch bsc#1229596 mcepl@suse.com
+# avoid quadratic complexity in parsing "-quoted cookie values with backslashes
+Patch51:        CVE-2024-6232-cookies-quad-complex.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -460,6 +466,7 @@ other applications.
 %patch -P 05 -p1
 %endif
 %patch -P 35 -p1
+%patch -P 36 -p1
 %patch -P 37 -p1
 %patch -P 38 -p1
 %patch -P 39 -p1
@@ -468,13 +475,14 @@ other applications.
 %patch -p1 -P 41
 %endif
 %patch -p1 -P 42
-%patch -p1 -P 43
 %patch -p1 -P 44
 %patch -p1 -P 45
 %patch -p1 -P 46
 %patch -p1 -P 47
 %patch -p1 -P 48
 %patch -p1 -P 49
+%patch -p1 -P 50
+%patch -p1 -P 51
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

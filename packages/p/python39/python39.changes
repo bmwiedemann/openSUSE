@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:44:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-6232-cookies-quad-complex.patch to avoid quadratic
+  complexity in parsing "-quoted cookie values with backslashes
+  (bsc#1229596, CVE-2024-6232).
+
+-------------------------------------------------------------------
+Thu Sep  5 08:11:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with
+  patched libexpat below 2.6.0 that doesn't update the version number,
+  just in SLE.
+- Remove old-libexpat.patch, of course.
+
+-------------------------------------------------------------------
+Mon Sep  2 09:44:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh120226-fix-sendfile-test-kernel-610.patch to avoid
+  failing test_sendfile_close_peer_in_the_middle_of_receiving
+  tests on Linux >= 6.10 (GH-120227).
+
+-------------------------------------------------------------------
 Wed Aug 28 16:54:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
