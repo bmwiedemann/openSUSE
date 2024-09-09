@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Sep 09 05:42:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240909.1d497d0c:
+  * Fix: ui_corosync: should raise LinkArgumentParser.SyntaxException when fails to validate linknumber (#1546)
+  * Fix: corosync: should validate linknumber (#1546)
+  * Fix: doc: fix broken links in crm.8.adoc (#1546)
+
+-------------------------------------------------------------------
+Fri Sep 06 10:35:55 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20240906.af151668:
+  * Dev: ui_corosync: use corosync-cfgtool instead of corosync-cmaptool to retreive link status (jsc#PED-8083)
+  * Dev: ui_corosync: reject to remove a link if removing it breaks the cluster (jsc#PED-8083)
+  * Dev: corosync: allow linknumber not to start with 0
+  * Dev: ui_corosync: refine the error messages for missing or duplicated nodes (jsc#PED-8083)
+  * Dev: ui_corosync: sync and reload corosync.conf after changes (jsc#PED-8083)
+  * Dev: ui_corosync: refactor to reuse configuration loading and saving code
+  * Dev: bootstrap: refactor to reuse KNET_LINK_NUM_LIMIT from corosync module
+  * Dev: corosync: add the list of updatable options in the error message when an not updatable option is specified
+  * Fix: ui_corosync: should not allow empty option values when adding new links
+  * Dev: docs: add documents for `crm corosync link`
+  * Dev: behave: add funtional tests for 'crm corosync link ...'
+  * Fix: corosync: does not detect last link correctly
+  * Dev: corosync_config_format: sort keys to put `ringX_addr`s together (jsc#PED-8083)
+  * Dev: ui_corosync: print a message when running link update without any arguement
+  * Fix: ui_corosync: should detect unconfigured addresses when adding/updating links
+  * Fix: corosync: show detect duplicated addresses when adding/updating links
+  * Dev: ui_corosync: add subcommand 'crm corosync link add' (jsc#PED-8083)
+  * Dev: corosync: implement adding links (jsc#PED-8083)
+  * Dev: corosync: implement removing links (jsc#PED-8083)
+  * Dev: corosync: implement updating node addresses (jsc#ped-8083)
+  * unused code removal
+  * Dev: ui_corosync: add subcommand 'crm corosync link update' (jsc#PED-8083)
+  * minor code cleanup
+  * Dev: corosync: implement updating link options (jsc#PED-8083)
+  * minor code cleanup
+  * Dev: ui_corosync: add subcommand 'crm corosync link show' (jsc#PED-8083)
+  * Dev: corosync: implement collecting link info from config (jsc#PED-8083)
+  * Dev: corosync: refactor COROSYNC_KNOWN_SEC_NAMES_WITH_LIST
+
+-------------------------------------------------------------------
+Fri Sep 06 07:24:58 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240906.6f44c708:
+  * Refactor: help: rename HelpEntry.long to HelEntry.long_help
+  * Dev: help: capture error messages when `--help` fails rather
+  * Fix: help: should retrieve help for intermediate levels from _COMMAND_TREE
+  * Fix: help: append subcommand list to long descriptions
+  * Dev: help: add support for subcommand aliases
+  * Dev: help: multilevel subcommand tree rendering in help_overview()
+  * Dev: command: adapt annotation `command.help` to multilevel help
+  * Dev: help: use tree struture to store the help of subcommands
+  * Dev: help: replace seperator '_' in anchors with '.'
+  * Dev: help: refactor HelpEntry to put lazy loading implementation to a separated subclass
+  * Dev: ui_node: Improve command 'clearstate <node>'
+
+-------------------------------------------------------------------
+Wed Sep 04 03:53:01 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240904.9aed74c9:
+  * Dev: Rename variables to make them look like boolean type
+  * Dev: run-functional-tests: Add 'fa_advised_op_values = yes' option for origin functional tests
+  * Dev: Rename the option 'add_advised_op_values' to 'ra_advised_op_values'
+  * Dev: Add a new internal flag to control auto add time units on operation
+  * Fix: Add a new option 'fa_advised_op_values' (bsc#1228858)
+
+-------------------------------------------------------------------
+Tue Sep 03 13:09:59 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240903.6c0ffe2a:
+  * Dev: behave: Add functional test for previous commit
+  * Dev: utils: Load CIB_file env before some readonly commands
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: utils: Stop providing the detailed and precise sudoer rules to "hack" the privilege (bsc#1229093)
+
+-------------------------------------------------------------------
+Mon Sep 02 03:51:22 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240902.62399591:
+  * Dev: behave: Add functional test for ssh blocking case
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: report: When 'core.no_ssh' set to 'yes', crm report works in local mode (bsc#1228899)
+  * Fix: upgradeutil: Immdiately return if config.core.no_ssh is set (bsc#1228899)
+  * Fix: ui_cluster: Handle 'crm cluster start --all' command (bsc#1228899)
+  * Fix: ui_cluster: Handle 'crm cluster stop --all' command (bsc#1228899)
+  * Fix: utils: Define utils.NoSSHError exception and ssh wrapper function (bsc#1228899)
+  * Fix: config: Add 'core.no_ssh' option (bsc#1228899)
+
+-------------------------------------------------------------------
+Fri Aug 30 07:42:34 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240830.951595de:
+  * Fix: bootstrap: drop environ SSH_AUTH_SOCK before checking passwordless ssh when it is not enabled (bsc#1228950)
+  * Fix: bootstrap: should check if sudo is available when running `cluster join -c` with a non-root destination user (bsc#1228950)
+  * Fix: bootstrap: should check if sudo is available when running `cluster init -N` with a non-root destination user (bsc#1228950)
+
+-------------------------------------------------------------------
+Thu Aug 29 09:03:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240829.d528f3b2:
+  * Dev: behave: update functional tests for previous changes
+  * Fix: completers: deferring calls to crm_mon until envsetup() is called (bsc#1228271)
+  * Fix: utils: allow haclient group to use cluster level commands (bsc#1228271)
+  * Fix: scripts: call commands as current user when running as hacluster (bsc#1228271)
+  * Fix: prun: allow pcopy_to_remote to use intercept (bsc#1228271)
+
+-------------------------------------------------------------------
 Thu Aug 29 08:04:11 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240829.9e723030:
