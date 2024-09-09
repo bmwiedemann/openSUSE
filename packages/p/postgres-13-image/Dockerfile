@@ -16,8 +16,10 @@
 
 #!BuildTag: opensuse/postgres:13
 #!BuildTag: opensuse/postgres:13-%RELEASE%
-#!BuildTag: opensuse/postgres:%%pg_version%%
-#!BuildTag: opensuse/postgres:%%pg_version%%-%RELEASE%
+#!BuildTag: opensuse/postgres:%%pg_minor_version%%
+#!BuildTag: opensuse/postgres:%%pg_minor_version%%-%RELEASE%
+#!BuildTag: opensuse/postgres:%%pg_patch_version%%
+#!BuildTag: opensuse/postgres:%%pg_patch_version%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -28,7 +30,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends postgresql13-server findutil
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed PostgreSQL 13"
 LABEL org.opencontainers.image.description="PostgreSQL 13 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="13"
+LABEL org.opencontainers.image.version="%%pg_patch_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
@@ -42,7 +44,7 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/postgres-13-image/README.md"
 ENV LANG="en_US.utf8"
 ENV PG_MAJOR="13"
-ENV PG_VERSION="%%pg_version%%"
+ENV PG_VERSION="%%pg_minor_version%%"
 ENV PGDATA="/var/lib/pgsql/data"
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
