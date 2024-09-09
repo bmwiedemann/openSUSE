@@ -550,4 +550,23 @@
   * test: add test for transformation indentation e0bfaf2</comment>
     <requestid>1196017</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dcbb6ba9f04bdf860ab526ea33bd279d</srcmd5>
+    <version>0.27.1+0</version>
+    <time>1725885904</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.27.1:
+  * fix: create .gitkeep file in new dirs #1273
+  * fix: fix unwrap error for unfound dir #1456
+  * fix(deps): update dependency @swc/core to v1.7.23 5fd4101
+  * chore(deps): update dependency @types/node to v20.16.5 294e402
+  * fix: improve error message d46df6a
+
+- Update to 0.27.0:
+  * feat: support YAML language #1436
+  * fix(deps): update dependency @swc/core to v1.7.22 c577761
+  * fix(deps): update dependency @swc/core to v1.7.21 4b0e594
+  * feat: add rule config potential kind test def5b21</comment>
+    <requestid>1199549</requestid>
+  </revision>
 </revisionlist>

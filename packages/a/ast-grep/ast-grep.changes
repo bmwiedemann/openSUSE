@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:24:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.1:
+  * fix: create .gitkeep file in new dirs #1273
+  * fix: fix unwrap error for unfound dir #1456
+  * fix(deps): update dependency @swc/core to v1.7.23 5fd4101
+  * chore(deps): update dependency @types/node to v20.16.5 294e402
+  * fix: improve error message d46df6a
+
+-------------------------------------------------------------------
+Mon Sep  9 06:24:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.0:
+  * feat: support YAML language #1436
+  * fix(deps): update dependency @swc/core to v1.7.22 c577761
+  * fix(deps): update dependency @swc/core to v1.7.21 4b0e594
+  * feat: add rule config potential kind test def5b21
+
+-------------------------------------------------------------------
 Mon Aug 26 07:06:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.3:
