@@ -179,4 +179,12 @@
   * Added commands tdom::fsnewNode and tdom::fsinsertNode.</comment>
     <requestid>1096954</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>384ac691e95cc1b4bb379e39a66d4d1c</srcmd5>
+    <version>0.9.4</version>
+    <time>1725885947</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199677</requestid>
+  </revision>
 </revisionlist>

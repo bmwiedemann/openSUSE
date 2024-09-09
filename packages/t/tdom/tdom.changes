@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:45:00 UTC 2024 - Danilo Chang <ray2501@gmail.com>
+
+- Update to 0.9.4
+  * Added the isHTML5CustomName method to the dom command. The
+    simple HTML reader now accept HTML5 custom element names.
+  * Enhanced the set of recognised entities to HTML 5.
+  * Added an optional replacement string argument to the -replace option of
+    the dom command method clearString.
+  * Added the -list option to the selectNodes method (cascading
+    XPath expressions).
+  * Made tDOM work with Tcl 9.
+  * The XPath functions floor, ceiling and round now return an
+    integer (up to size long). Up to now they appended a .0. It's
+    the right thing but it is a user visible change.
+  * Added the option -replace to the dom command method clearString.
+  * Added the node command method getByteIndex.
+  * Added the submethod byteIndex to the info method of the schema commands.
+  * Added the method asCanonicalXML to the domDoc and domNode commands.  
+  * Added the options -escapeCR and -escapeTab to the method asXML of
+    the domDoc and domNode commands.
+
+-------------------------------------------------------------------
 Fri Jun 30 11:50:17 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 0.9.3
@@ -128,3 +150,4 @@ Mon Oct  9 18:34:57 CEST 2006 - max@suse.de
 - New package: tdom
 - A XML/DOM/XPath/XSLT Implementation for Tcl, based on expat.
 - Patched to use the libexpat instead of included copy.
+
