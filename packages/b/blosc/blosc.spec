@@ -1,7 +1,7 @@
 #
 # spec file for package blosc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.21.5
+Version:        1.21.6
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
