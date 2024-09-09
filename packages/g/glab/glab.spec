@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           glab
-Version:        1.45.0
+Version:        1.46.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -29,9 +29,9 @@ URL:            https://gitlab.com/gitlab-org/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
-BuildRequires:  golang >= 1.22.5
+BuildRequires:  golang >= 1.23.0
 %else
-BuildRequires:  go1.22 >= 1.22.5
+BuildRequires:  go1.23 >= 1.23.0
 BuildRequires:  golang-packaging
 %endif
 Suggests:       glab-doc

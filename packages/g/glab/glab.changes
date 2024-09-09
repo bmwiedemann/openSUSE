@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep 09 11:12:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.46.0:
+  * fix: fix example command for stack sync
+  * refactor: Add a more secure way to generate a random string
+  * chore(deps): update dependency axios to ^1.7.7
+  * fix(api): ensure stable sorting of MRs by descending CreatedAt
+  * feat(variable get): allow scope for group vars
+  * chore(deps): update dependency @commitlint/lint to ^19.4.1
+  * chore: add GitLab Advanced SAST to CI/CD config
+  * style: Removing `exportloopref` since we're using go 1.22
+  * fix(api): enable group MR listing with reviewer and assignee
+    filters
+  * chore(deps): update dependency axios to ^1.7.5
+  * chore: remove space before colons
+  * chore: update code intelligence component to v0.0.2
+  * feat(stack): stack save/amend use $EDITOR
+  * chore(deps): upgrade to go 1.23
+  * feat: repo list include/exclude subgroups and archived support
+  * fix(snippet create): allow for stdin
+  * chore: switch to code intel CI/CD Component
+  * chore(deps): update module golang.org/x/text to v0.17.0
+  * chore(deps): update module golang.org/x/crypto to v0.26.0
+  * chore(deps): update dependency axios to ^1.7.4
+  * fix: restrict zip decompression
+  * chore(deps): update module k8s.io/client-go to v0.31.0
+  * chore: update axios for commit lint
+  * chore(deps): update module golang.org/x/sync to v0.8.0
+  * chore(deps): update module github.com/spf13/cast to v1.7.0
+  * Gitignore gitlab reports
+  * chore(deps): update module golang.org/x/term to v0.23.0
+  * chore(deps): update module github.com/charmbracelet/glamour to
+    v0.8.0
+  * docs(installation): Add ASDF section in the
+    installation_options TOC
+  * fix(release upload): fix asset URL format for uploads in GitLab
+    17.2
+  * chore(deps): update dependency axios to ^1.7.3
+  * chore(deps): update module github.com/xanzy/go-gitlab to
+    v0.107.0
+  * chore: Merge security fixes
+  * docs: Adding snapcraft info
+  * chore: Downcase 'personal access token' (CLI)
+  * chore: catch up security fork
+  * chore: merge security branch
+  * test(duo ask): integration test for duo ask
+
+-------------------------------------------------------------------
 Thu Aug 01 10:43:33 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.45.0:
