@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-grpc
 Version:        0.8.0
 Release:        0
@@ -23,11 +24,12 @@ Summary:        pytest plugin for grpc
 License:        MIT
 URL:            https://github.com/open-telemetry/opentelemetry-python
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-grpc/pytest-grpc-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module grpcio}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  ca-certificates-mozilla
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.6.0}
 # /SECTION
