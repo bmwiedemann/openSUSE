@@ -407,4 +407,22 @@
   * Fix erroneous base64 encoding of final byte in some circumstances</comment>
     <requestid>1189703</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6a683edb4976885fc918eb399b5d68a6</srcmd5>
+    <version>1.14.3</version>
+    <time>1725885901</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.3:
+  * Sixel transparency has been reenabled for still frames. Animations
+    will be pre-composited on an opaque background to prevent flicker/glitchiness (#211)
+  * Now supports the Ghostty terminal, defaulting to the Kitty graphics protocol there.
+  * Bug fixes:
+    #185 Chafa version 1.14 breaks image preview on lf.
+    #210 Crash with -f sixels.
+    #211 Sixels are too small in Windows Terminal.
+    #212 Aspect-preserving calculations are off in some cases.
+    [unfiled] Inconsistent fraction parsing in CLI arguments.
+    [unfiled] A few small memory leaks in the JPEG XL loader.</comment>
+    <requestid>1199545</requestid>
+  </revision>
 </revisionlist>

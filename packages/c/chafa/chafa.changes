@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:19:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.3:
+  * Sixel transparency has been reenabled for still frames. Animations
+    will be pre-composited on an opaque background to prevent flicker/glitchiness (#211)
+  * Now supports the Ghostty terminal, defaulting to the Kitty graphics protocol there.
+  * Bug fixes:
+    #185 Chafa version 1.14 breaks image preview on lf.
+    #210 Crash with -f sixels.
+    #211 Sixels are too small in Windows Terminal.
+    #212 Aspect-preserving calculations are off in some cases.
+    [unfiled] Inconsistent fraction parsing in CLI arguments.
+    [unfiled] A few small memory leaks in the JPEG XL loader.
+
+-------------------------------------------------------------------
 Fri Jul 26 05:54:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.2:
