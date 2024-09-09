@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  8 11:28:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * Speed up debugger execution.
+  * Notify Spyder when Matplotlib backend changes.
+  * Use control channel for comms instead of a special one.
+  * Update variable explorer from the kernel.
+  * Simplify kernel configuration from Spyder.
+  * Add a comm_handler decorator.
+  * Transform runfile, debugfile and runcell commands to IPython
+    magics.
+  * Add comm handlers to interrupt executions and enter the
+    debugger after that.
+  * Publish Pdb stack frames to Spyder.
+  * Drop support for Python 2 and support Python 3.8+
+- Drop spyder-kernels-pr453.patch
+
+-------------------------------------------------------------------
 Sat Jun 29 06:04:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.2:

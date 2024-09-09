@@ -657,4 +657,12 @@
   - [PR 21](https://github.com/spyder-ide/spyder-kernels/pull/21) - PR: Add AUTHORS.txt in MANIFEST.in to include in package</comment>
     <requestid>1183942</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>21336c24cc8884f0f2ba74d64e3fcf44</srcmd5>
+    <version>3.0.0</version>
+    <time>1725885928</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199484</requestid>
+  </revision>
 </revisionlist>

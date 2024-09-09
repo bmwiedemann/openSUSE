@@ -18,10 +18,8 @@
 
 # flaky for obs, only test locally
 %bcond_with dasktest
-# no ipykernel anymore
-%define skip_python39 1
 Name:           python-spyder-kernels
-Version:        2.5.2
+Version:        3.0.0
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -30,10 +28,8 @@ URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source0:        https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/spyder-kernels-%{version}-gh.tar.gz
 # for Patch0
-Source1:        https://github.com/spyder-ide/spyder-kernels/raw/d14e5c982bfb75d6553a49667e3501648579e964/spyder_kernels/utils/tests/data.dcm
-# PATCH-FIX-UPSTREAM spyder-kernels-pr453.patch gh#spyder-ide/spyder-kernels#453
-Patch0:         spyder-kernels-pr453.patch
-BuildRequires:  %{python_module base >= 3.9}
+Source1:        https://github.com/spyder-ide/spyder-kernels/raw/v%{version}/spyder_kernels/utils/tests/data.dcm
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +48,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydicom}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyxdg >= 0.26}
 BuildRequires:  %{python_module pyzmq >= 24}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
@@ -61,11 +58,17 @@ BuildRequires:  %{python_module dask-distributed}
 %endif
 # /SECTION
 Requires:       python-cloudpickle
+Requires:       python-pyxdg >= 0.26
 Requires:       python-pyzmq >= 24
 Requires:       python-wurlitzer >= 1.0.3
 Requires:       (python-ipykernel >= 6.29.3 with python-ipykernel < 7)
 Requires:       (python-ipython >= 8.13 with python-ipython < 9)
 Requires:       (python-jupyter_client >= 7.4.9 with python-jupyter_client < 9)
+# gh#spyder-ide/spyder#20789
+Provides:       spyder-dicom = 6+%{version}-%{release}
+Provides:       spyder-hdf5 = 6+%{version}-%{release}
+Obsoletes:      spyder-dicom < 6
+Obsoletes:      spyder-hdf5 < 6
 BuildArch:      noarch
 
 %python_subpackages
