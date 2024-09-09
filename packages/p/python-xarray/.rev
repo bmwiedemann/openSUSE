@@ -1578,4 +1578,41 @@
     <comment></comment>
     <requestid>1179055</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>980667b6f39bbfb638d7b630f2cf845d</srcmd5>
+    <version>2024.7.0</version>
+    <time>1725885945</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2024.7.0
+  * Add test for rechunking to a size string by @dcherian in #9117
+  * Update docstring in api.py for open_mfdataset(), clarifying
+    &quot;chunks&quot; argument by @arthur-e in #9121
+  * Grouper refactor by @dcherian in #9122
+  * adjust repr tests to account for different platforms (#9127) by
+    @mgorny in #9128
+  * Support duplicate dimensions in .chunk by @mraspaud in #9099
+  * Update zendoo badge link by @max-sixty in #9133
+  * Split out distributed writes in zarr docs by @max-sixty in
+    #9132
+  * Improve to_zarr docs by @max-sixty in #9139
+  * groupby: remove some internal use of IndexVariable by @dcherian
+    in #9123
+  * Improve zarr chunks docs by @max-sixty in #9140
+  * Include numbagg in type checks by @max-sixty in #9159
+  * Remove mypy exclusions for a couple more libraries by
+    @max-sixty in #9160
+  * Add test for #9155 by @max-sixty in #9161
+  * switch to datetime unit &quot;D&quot; by @keewis in #9170
+  * Slightly improve DataTree repr by @shoyer in #9064
+  * Fix example code formatting for CachingFileManager by @djhoese
+    in #9178
+  * Change np.core.defchararray to np.char (#9165) by @pont-us in
+    #9166
+  * temporarily remove pydap from CI by @keewis in #9183
+  * also pin numpy in the all-but-dask CI by @keewis in #9184
+  * promote floating-point numeric datetimes to 64-bit before
+    decoding by @keewis in #9182
+  * &quot;source&quot; encoding for datasets opened from fsspec objects by</comment>
+    <requestid>1199626</requestid>
+  </revision>
 </revisionlist>

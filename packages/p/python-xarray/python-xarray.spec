@@ -25,11 +25,11 @@
 %define psuffix %{nil}
 %endif
 
-%define ghversion 2024.05.0
+%define ghversion 2024.07.0
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2024.5.0
+Version:        2024.7.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -38,10 +38,12 @@ Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{ghversion}
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM xarray-pr8854-np2.patch gh#pydata/xarray#8854
-Patch1:         xarray-pr8854-np2.patch
-# PATCH-FIX-UPSTREAM xarray-pr9305-cftime.patch gh#pydata/xarray#9305
-Patch2:         xarray-pr9305-cftime.patch
+# PATCH-FIX-UPSTREAM xarray-pr9321-dasktests.patch gh#pydata/xarray#9321
+Patch1:         xarray-pr9321-dasktests.patch
+# PATCH-FIX-UPSTREAM xarray-pr9356-dasktests.patch gh#pydata/xarray#9356
+Patch2:         xarray-pr9356-dasktests.patch
+# PATCH-FIX-UPSTREAM xarray-pr9403-np2.1-scalar.patch gh#pydata/xarray#9403
+Patch3:         xarray-pr9403-np2.1-scalar.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -72,12 +74,12 @@ The dataset is an in-memory representation of a netCDF file.
 %package accel
 # for minimum versions, check ci/requirements/min-all-deps.yml
 Summary:        The python xarray[accel] extra
-Requires:       python-Bottleneck >= 1.3
+Requires:       python-Bottleneck
 Requires:       python-opt-einsum
 Requires:       python-scipy
 Requires:       python-xarray = %{version}
 # not available yet
-Recommends:     python-flox >= 0.7
+Recommends:     python-flox
 Recommends:     python-numbagg
 
 %description accel
@@ -117,21 +119,21 @@ Except pre-commit, Use `pip-%{python_bin_suffix} --user install pre-commit` to i
 
 %package io
 Summary:        The python xarray[io] extra
-Requires:       python-cftime >= 1.6
+Requires:       python-cftime
 Requires:       python-fsspec
-Requires:       python-h5netcdf >= 1.1
-Requires:       python-netCDF4 >= 1.6
+Requires:       python-h5netcdf
+Requires:       python-netCDF4
 Requires:       python-pooch
-Requires:       python-scipy >= 1.10
+Requires:       python-scipy
 Requires:       python-xarray = %{version}
-Requires:       python-zarr >= 2.13
+Requires:       python-zarr
 
 %description io
 The [io] extra for xarray, N-D labeled arrays and datasets in Python
 
 %package parallel
 Summary:        The python xarray[parallel] extra
-Requires:       python-dask-complete >= 2022.12
+Requires:       python-dask-complete
 Requires:       python-xarray = %{version}
 
 %description parallel
@@ -139,8 +141,8 @@ The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
 
 %package viz
 Summary:        The python xarray[viz] extra
-Requires:       python-matplotlib >= 3.6
-Requires:       python-seaborn >= 0.12
+Requires:       python-matplotlib
+Requires:       python-seaborn
 Requires:       python-xarray = %{version}
 # Not available yet
 Recommends:     python-nc-time-axis
