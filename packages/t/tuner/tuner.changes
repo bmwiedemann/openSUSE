@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  1 16:33:33 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.5.2:
+Tuner is back! After more than 2 years of pause, development of Tuner started again.
+In this first maintenance release, the following issues have been fixed:
+
+  * Upgrade to libsoup-3.0
+  * Fix issues with endpoints not working
+  * Removed geo location services (they never really worked)
+  * Increase default size of Window
+
+-------------------------------------------------------------------
 Sun Feb 20 16:04:58 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.5.1:

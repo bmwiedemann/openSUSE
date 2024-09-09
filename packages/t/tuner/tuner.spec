@@ -1,7 +1,7 @@
 #
 # spec file for package tuner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tuner
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Minimalist radio station player
 License:        GPL-3.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good
