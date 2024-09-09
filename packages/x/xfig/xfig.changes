@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:00:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches based on upstream commits
+  * f3466c.patch
+  * a038d6.patch
+  * 042708.patch
+  * 7e0157.patch
+  https://sourceforge.net/p/mcj/tickets/179/ aka bug boo#1230298
+  User defined text brakes Dimension Lines
+
+-------------------------------------------------------------------
 Wed Aug 28 07:01:39 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xfig-3.2.9-gcc14.patch to make it build again 

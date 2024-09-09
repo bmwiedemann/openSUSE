@@ -46,6 +46,11 @@ Patch8:         Sanitize-a-call-to-realloc-ticket-165.patch
 Patch9:         Fix-exporting-only-active-layers-ticket-163.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        xfig-3.2.9-gcc14.patch
+# PATCH-FIX-UPSTREAM for boo#1230298 / upstream bug report #179
+Patch11:        042708.patch
+Patch12:        7e0157.patch
+Patch13:        a038d6.patch
+Patch14:        f3466c.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -112,6 +117,10 @@ set -x
 %patch -P8 -p1
 %patch -P9 -p1
 %patch -P10
+%patch -P11
+%patch -P12
+%patch -P13
+%patch -P14
 cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 
