@@ -61,26 +61,6 @@ Requires:       (python-python-lsp-jsonrpc >= 1.1.0 with python-python-lsp-jsonr
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib_metadata >= 4.8.3
 %endif
-Suggests:       python-autopep8 >= 2.0.4
-Conflicts:      python-autopep8 >= 2.1.0
-Suggests:       python-pydocstyle >= 6.3.0
-Conflicts:      python-pydocstyle >= 6.4.0
-Suggests:       python-pylint >= 3.1
-Conflicts:      python-pylint >= 4
-Suggests:       python-rope >= 1.2.0
-Suggests:       python-yapf >= 0.33
-Suggests:       python-whatthepatch >= 1.0.2
-Conflicts:      python-whatthepatch >= 2
-# SECTION flake8 pins
-Suggests:       python-flake8 >= 7.1
-Conflicts:      python-flake8 >= 8
-Suggests:       python-mccabe >= 0.7.0
-Conflicts:      python-mccabe >= 0.8.0
-Suggests:       python-pycodestyle >= 2.12.0
-Conflicts:      python-pycodestyle >= 2.13.0
-Suggests:       python-pyflakes >= 3.2.0
-Conflicts:      python-pyflakes >= 3.3.0
-# /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -102,6 +82,26 @@ will be enabled:
 - pydocstyle linter for docstring style checking (disabled by default)
 - autopep8 for code formatting
 - YAPF for code formatting (preferred over autopep8)
+
+%package all
+Summary:        The python-lsp-server[all] extra
+# Note: check flake8 pins as well
+Requires:       python-rope >= 1.2.0
+Requires:       python-yapf >= 0.33
+Requires:       (python-autopep8 >= 2.0.4 with python-autopep8 < 2.1.0)
+Requires:       (python-flake8 >= 7.1 with python-flake8 < 8)
+Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
+Requires:       (python-pycodestyle >= 2.12.0 with python-pycodestyle < 2.13.0)
+Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
+Requires:       (python-pyflakes >= 3.2.0 with python-pyflakes < 3.3.0)
+Requires:       (python-pylint >= 3.1 with python-pylint < 4)
+Requires:       (python-whatthepatch >= 1.0.2 with python-whatthepatch < 2)
+
+%description all
+Python Language Server for the Language Server Protocol
+
+This package provides the dependencies for the pip
+python-lsp-server[all] extra requirement
 
 %prep
 %autosetup -p1 -n python_lsp_server-%{version}
@@ -131,5 +131,9 @@ sed -i '/addopts/d' pyproject.toml
 %python_alternative %{_bindir}/pylsp
 %{python_sitelib}/pylsp
 %{python_sitelib}/python_lsp_server-%{version}.dist-info
+
+%files %{python_files all}
+%doc README.md
+%license LICENSE
 
 %changelog
