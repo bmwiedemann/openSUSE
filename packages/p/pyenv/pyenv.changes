@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:38:10 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.12
+
+- Update 2.4.12
+  - Add CPython 3.13.0rc2 by @edgarrmondragon in #3049
+  - Add CPython 3.8.20, 3.9.20, 3.10.15, 3.11.10 and 3.12.6 by @edgarrmondragon in #3050
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.11...v2.4.12
+
+-------------------------------------------------------------------
 Thu Sep  5 06:20:09 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.11
 
 - Update 2.4.11
