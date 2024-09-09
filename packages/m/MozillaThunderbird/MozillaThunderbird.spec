@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.14.0
-%define orig_version   115.14.0
+%define mainver        %major.15.0
+%define orig_version   115.15.0
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -90,11 +90,16 @@ BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
+%if 0%{?suse_version} >= 1699
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
+%endif
 %endif
 BuildRequires:  cargo1.72
 BuildRequires:  rust1.72
@@ -327,15 +332,20 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
+%if 0%{?suse_version} >= 1699
+export CC=gcc-13
+export CXX=g++-13
+%else
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
 %if 0%{?gcc_version:%{gcc_version}} >= 12
 export CFLAGS="\$CFLAGS -fimplicit-constexpr"
+%endif
 %endif
 %endif
 %endif

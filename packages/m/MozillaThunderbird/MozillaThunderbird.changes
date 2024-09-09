@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep  6 08:55:26 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.15.0
+  MFSA 2024-44 (bsc#1229821)
+  * CVE-2024-8381 (bmo#1912715)
+    Type confusion when looking up a property name in a "with"
+    block
+  * CVE-2024-8382 (bmo#1906744)
+    Internal event interfaces were exposed to web content when
+    browser EventHandler listener callbacks ran
+  * CVE-2024-8384 (bmo#1911288)
+    Garbage collection could mis-color cross-compartment objects
+    in OOM conditions
+
+-------------------------------------------------------------------
+Thu Aug 29 06:26:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use gcc13 on Tumbleweed and where it is available.
+- Don't use gcc14 as sources don't compile.
+
+-------------------------------------------------------------------
 Fri Aug  2 07:08:03 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.14.0
