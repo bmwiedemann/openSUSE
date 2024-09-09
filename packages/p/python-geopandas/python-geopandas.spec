@@ -25,14 +25,15 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        0.14.4
+Version:        1.0.1
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://geopandas.org
 # SourceRepository: https://github.com/geopandas/geopandas
-Source:         https://files.pythonhosted.org/packages/source/g/geopandas/geopandas-%{version}.tar.gz
+# Use Repository for test data
+Source0:        https://github.com/geopandas/geopandas/archive/refs/tags/v{%version}.tar.gz#/geopandas-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
@@ -40,18 +41,19 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       proj
-Requires:       python-Fiona >= 1.8.21
 Requires:       python-numpy >= 1.22
 Requires:       python-packaging
 Requires:       python-pandas >= 1.4.0
-Requires:       python-pyproj >= 3.3.0
-Requires:       python-shapely >= 1.8.0
+Requires:       python-pyogrio >= 0.7.2
+Requires:       python-pyproj
+Requires:       python-shapely >= 2
 Recommends:     python-geopy
 Recommends:     python-matplotlib
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Fiona}
 BuildRequires:  %{python_module Rtree}
-BuildRequires:  %{python_module folium if %python-base >= 3.10}
+BuildRequires:  %{python_module folium}
 BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
