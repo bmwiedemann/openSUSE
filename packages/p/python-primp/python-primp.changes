@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Sep  9 08:44:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * Use Exception to raise error
+  * CI: [linux] [x_86_64] - use `zig` to build for manylinux_2_17
+  * params data, json: replace clone() with as_unbound()
+  * recode headers
+  * Remove PyException
+  * README: update precompiled wheels compatibility info
+
+-------------------------------------------------------------------
+Fri Aug 23 23:12:23 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Version v0.6.0
+  * CI: bugfix after dependencies update by @deedy5
+  * Use anyhow for error handling by @deedy5
+  * Improve response code by @deedy5
+  * [Client]: add ca_cert_file parameter by @deedy5
+  * [Utils] Recode fn json_dumps, json_loads, url_encode by @deedy5
+  * [html2text] Response object: 1) add attribute text_rich
+  * [logging]: send Rust log messages to Python
+  * small code improvements
