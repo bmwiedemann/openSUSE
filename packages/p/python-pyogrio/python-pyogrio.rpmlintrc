@@ -1,0 +1,2 @@
+# provided by the full python standard library, required here
+addFilter("python-leftover-require python3.*-sqlite3")
