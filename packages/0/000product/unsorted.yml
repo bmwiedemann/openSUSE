@@ -3609,6 +3609,8 @@ unsorted:
   - ecl-devel 
   - eclipse-anyedit 
   - eclipse-anyedit-javadoc 
+  - eclipse-collections 
+  - eclipse-collections-javadoc 
   - eclipse-contributor-tools 
   - eclipse-ecf-core 
   - eclipse-ecf-core-bootstrap 
@@ -7142,6 +7144,7 @@ unsorted:
   - gitk 
   - gitleaks 
   - gitolite 
+  - gitopper 
   - gitoxide 
   - gitsign 
   - gitslave 
@@ -8556,6 +8559,7 @@ unsorted:
   - herbstluftwm-examples 
   - herbstluftwm-fish-completion 
   - herbstluftwm-zsh-completion 
+  - hetzner-flatcar 
   - hevea 
   - hex 
   - hex2bin 
@@ -9173,8 +9177,10 @@ unsorted:
   - jackson-dataformats-binary-javadoc 
   - jackson-dataformats-text 
   - jackson-dataformats-text-javadoc 
+  - jackson-datatype-eclipse-collections 
   - jackson-datatype-guava 
   - jackson-datatype-hppc 
+  - jackson-datatype-pcollections 
   - jackson-datatypes-collections 
   - jackson-datatypes-collections-javadoc 
   - jackson-jaxrs-cbor-provider 
@@ -12518,7 +12524,7 @@ unsorted:
   - libcppunit_subunit0-devel 
   - libcpuid-devel 
   - libcpuid-tools 
-  - libcpuid16 
+  - libcpuid17 
   - libcpuinfo0 
   - libcpuset-devel 
   - libcpuset1 
@@ -15454,6 +15460,7 @@ unsorted:
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0 
   - libpython3_13-1_0-x86-64-v3 
+  - libpython3_13t-1_0 
   - libpython3_8-1_0 
   - libpython3_9-1_0 
   - libqaccessibilityclient-qt5 
@@ -21026,6 +21033,8 @@ unsorted:
   - pcmanfm-qt 
   - pcmanfm-qt-lang 
   - pcmanx-gtk2 
+  - pcollections 
+  - pcollections-javadoc 
   - pcp 
   - pcp-conf 
   - pcp-devel 
@@ -25727,6 +25736,7 @@ unsorted:
   - python310-jsonlines 
   - python310-jsonpatch 
   - python310-jsonpath-ng 
+  - python310-jsonpath-python 
   - python310-jsonpath-rw 
   - python310-jsonpickle 
   - python310-jsonpointer 
@@ -25813,6 +25823,7 @@ unsorted:
   - python310-lancet-ioam 
   - python310-langchain-chroma 
   - python310-langdetect 
+  - python310-langfuse 
   - python310-langtable 
   - python310-lark 
   - python310-latexcodec 
@@ -26387,6 +26398,7 @@ unsorted:
   - python310-prestring 
   - python310-pretend 
   - python310-prettytable 
+  - python310-primp 
   - python310-priority 
   - python310-process-tests 
   - python310-proglog 
@@ -26604,6 +26616,7 @@ unsorted:
   - python310-pyo 
   - python310-pyocr 
   - python310-pyodbc 
+  - python310-pyogrio 
   - python310-pyosf 
   - python310-pyotp 
   - python310-pyowm 
@@ -26814,6 +26827,7 @@ unsorted:
   - python310-python-lsp-black 
   - python310-python-lsp-jsonrpc 
   - python310-python-lsp-server 
+  - python310-python-lsp-server-all 
   - python310-python-lzo 
   - python310-python-magic 
   - python310-python-memcached 
@@ -27263,6 +27277,7 @@ unsorted:
   - python310-suds 
   - python310-sunpy 
   - python310-suntime 
+  - python310-superqt 
   - python310-sure 
   - python310-surer 
   - python310-svglib 
@@ -29325,6 +29340,7 @@ unsorted:
   - python311-jsonformatter 
   - python311-jsonlines 
   - python311-jsonpath-ng 
+  - python311-jsonpath-python 
   - python311-jsonpath-rw 
   - python311-jsonpickle 
   - python311-jsonref 
@@ -29407,6 +29423,7 @@ unsorted:
   - python311-lancet-ioam 
   - python311-langchain-chroma 
   - python311-langdetect 
+  - python311-langfuse 
   - python311-langtable 
   - python311-latexcodec 
   - python311-launchpadlib 
@@ -29956,6 +29973,7 @@ unsorted:
   - python311-prestring 
   - python311-pretend 
   - python311-prettytable 
+  - python311-primp 
   - python311-priority 
   - python311-process-tests 
   - python311-proglog 
@@ -30161,6 +30179,7 @@ unsorted:
   - python311-pyo 
   - python311-pyocr 
   - python311-pyodbc 
+  - python311-pyogrio 
   - python311-pyosf 
   - python311-pyotp 
   - python311-pyowm 
@@ -30369,6 +30388,7 @@ unsorted:
   - python311-python-lsp-black 
   - python311-python-lsp-jsonrpc 
   - python311-python-lsp-server 
+  - python311-python-lsp-server-all 
   - python311-python-lzo 
   - python311-python-magic 
   - python311-python-memcached 
@@ -30802,6 +30822,7 @@ unsorted:
   - python311-suds 
   - python311-sunpy 
   - python311-suntime 
+  - python311-superqt 
   - python311-sure 
   - python311-surer 
   - python311-svglib 
@@ -32915,6 +32936,7 @@ unsorted:
   - python312-jsonlines 
   - python312-jsonpatch 
   - python312-jsonpath-ng 
+  - python312-jsonpath-python 
   - python312-jsonpath-rw 
   - python312-jsonpickle 
   - python312-jsonpointer 
@@ -32999,6 +33021,7 @@ unsorted:
   - python312-lancet-ioam 
   - python312-langchain-chroma 
   - python312-langdetect 
+  - python312-langfuse 
   - python312-langtable 
   - python312-lark 
   - python312-latexcodec 
@@ -33569,6 +33592,7 @@ unsorted:
   - python312-prestring 
   - python312-pretend 
   - python312-prettytable 
+  - python312-primp 
   - python312-priority 
   - python312-process-tests 
   - python312-proglog 
@@ -33788,6 +33812,7 @@ unsorted:
   - python312-pyo 
   - python312-pyocr 
   - python312-pyodbc 
+  - python312-pyogrio 
   - python312-pyosf 
   - python312-pyotp 
   - python312-pyowm 
@@ -33998,6 +34023,7 @@ unsorted:
   - python312-python-lsp-black 
   - python312-python-lsp-jsonrpc 
   - python312-python-lsp-server 
+  - python312-python-lsp-server-all 
   - python312-python-lzo 
   - python312-python-magic 
   - python312-python-memcached 
@@ -34444,6 +34470,7 @@ unsorted:
   - python312-suds 
   - python312-sunpy 
   - python312-suntime 
+  - python312-superqt 
   - python312-sure 
   - python312-surer 
   - python312-svglib 
@@ -34837,6 +34864,15 @@ unsorted:
   - python313-doc 
   - python313-doc-devhelp 
   - python313-idle 
+  - python313-nogil 
+  - python313-nogil-base 
+  - python313-nogil-curses 
+  - python313-nogil-dbm 
+  - python313-nogil-devel 
+  - python313-nogil-idle 
+  - python313-nogil-testsuite 
+  - python313-nogil-tk 
+  - python313-nogil-tools 
   - python313-testsuite 
   - python313-tk 
   - python313-tools 
@@ -35657,6 +35693,10 @@ unsorted:
   - reflectasm 
   - reflectasm-javadoc 
   - reg 
+  - regclient 
+  - regclient-bash-completion 
+  - regclient-fish-completion 
+  - regclient-zsh-completion 
   - regexp 
   - regexploit 
   - registries-conf-suse 
@@ -36842,6 +36882,7 @@ unsorted:
   - skopeo-zsh-completion 
   - skrooge 
   - skrooge-lang 
+  - skupper 
   - sl 
   - slade 
   - slang-devel 
@@ -37083,8 +37124,6 @@ unsorted:
   - spotify-qt 
   - spread-sheet-widget-devel 
   - spyder 
-  - spyder-dicom 
-  - spyder-hdf5 
   - spyder-lang 
   - sql-parser-devel 
   - sqlcipher 
@@ -48115,6 +48154,7 @@ unsorted:
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
+  - wcurl 
   - wdiff 
   - wdiff-lang 
   - wdisplays 
