@@ -1,4 +1,272 @@
 -------------------------------------------------------------------
+Sun Sep 08 22:35:33 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.68.0:
+  * Version v1.68.0
+  * gofile: fix failed downloads on newly uploaded objects
+  * gofile: fix Move a file
+  * test_all: mark linkbox fs/sync test TestSyncOverlapWithFilter as ignore
+  * jottacloud: fix setting of metadata on server side move - fixes #7900
+  * docs: group the different options affecting lsjson output
+  * fichier: fix server side move - fixes #7856
+  * fichier: Fix detection of Flood Detected error
+  * rc: add vfs/queue-set-expiry to adjust expiry of items in the VFS queue
+  * rc: add vfs/queue to show the status of the upload queue
+  * vfs: keep a record of the file size in the writeback queue
+  * build: fix gocritic change missed in merge
+  * Add Oleg Kunitsyn to contributors
+  * Add fsantagostinobietti to contributors
+  * Add Mathieu Moreau to contributors
+  * lib/sd-activation: wrap coreos/go-systemd
+  * sftp: support listening on passed FDs
+  * http: fix addr CLI arg help text
+  * http: support listening on passed FDs
+  * build: fix build after update
+  * build: update logging statements to make json log work - fixes #6038
+  * build: update custom linting rule for log to suggest new non-format functions
+  * fs: add non-format variants of log functions to avoid non-constant format string warnings
+  * fs: add log Printf, Fatalf and Panicf
+  * fs: refactor base log method name for improved consistency
+  * fs: refactor log statements to use common helper
+  * build: enable custom linting rules with ruleguard via gocritic
+  * rcserver: implement prometheus metrics on a dedicated port - fixes #7940
+  * swift: add total/free space info in about command.
+  * docs: filtering: added Byte unit for min/max-size parameters.
+  * config encryption: set, remove and check to manage config file encryption #7859
+  * config: use --password-command to set config file password if supplied
+  * config: factor --password-command code into its own function #7859
+  * Add yuval-cloudinary to contributors
+  * Add nipil to contributors
+  * documentation: add cheatsheet for configuration encryption
+  * docs: more secure two-step signature and hash validation
+  * serve nfs: unify the nfs library logging with rclone's logging better
+  * serve nfs: fix incorrect user id and group id exported to NFS #7973
+  * zoho: fix inefficiencies uploading with new API to avoid throttling
+  * Add crystalstall to contributors
+  * docs: fix some function names in comments
+  * lib/file: use builtin MkdirAll with go1.22 instead of our own custom version for windows
+  * docs: document that paths using volume guids are supported
+  * s3: fix accounting for mulpart transfers after migration to SDKv2 #4989
+  * yandex: implement custom user agent to help with upload speeds
+  * operations: copy: generate stable partial suffix
+  * docs: add missing sftp providers to README and main docs page - fixes #8038
+  * nfsmount: fix stale handle problem after converting options to new style
+  * docs: mark flags.md as auto generated so contributors don't edit it
+  * Add Pawel Palucha to contributors
+  * Add John Oxley to contributors
+  * Add Georg Welzel to contributors
+  * Add Péter Bozsó to contributors
+  * Add Sam Harrison to contributors
+  * s3: allow restoring from intelligent-tiering storage class
+  * bisync: don't convert modtime precision in listings - fixes #8025
+  * build: rename Unknwon/goconfig to unknwon/goconfig
+  * backend: pcloud: Implement OpenWriterAt feature
+  * backend: pcloud: implement SetModTime - Fixes #7896
+  * filescom: don't make an extra fetch call on each item in a list response
+  * local: fix incorrect conversion between integer types
+  * local: fix incorrect conversion between integer types
+  * docs: make tardigrade page auto redirect to storj page
+  * docs: update backend config samples
+  * config: fix size computation for allocation may overflow
+  * lib: fix incorrect conversion between integer types
+  * serve docker: fix incorrect conversion between integer types
+  * local: fix incorrect conversion between integer types
+  * s3: fix incorrect conversion between integer types
+  * s3: fix potentially unsafe quoting issue
+  * dropbox: fix potentially unsafe quoting issue
+  * refactor: replace min/max helpers with built-in min/max
+  * go.mod: update storj.io/uplink to latest release
+  * docs: update ssh tunnel example
+  * docs: update rclone authorize section
+  * docs: fix command highlight
+  * docs: fix alignment of some of the icons in the storage system dropdown
+  * docs: mark filescom as supporting link sharing
+  * build: enable gocritic linter
+  * build: ignore remaining gocritic lint issues
+  * build: fix gocritic lint issue unlambda
+  * build: fix gocritic lint issue dupbranchbody
+  * build: fix gocritic lint issue sloppylen
+  * build: fix gocritic lint issue wrapperfunc
+  * build: fix gocritic lint issue elseif
+  * build: fix gocritic lint issue underef
+  * build: fix gocritic lint issue valswap
+  * build: fix gocritic lint issue assignop
+  * build: fix gocritic lint issue unslice
+  * dlna: document external subtitle feature
+  * dlna: set more correct mime type
+  * dlna: don't swallow video.{idx,sub}
+  * dlna: add cds_test.go
+  * dlna: also look at "Subs" subdirectory
+  * chore: add childish-sambino as filescom maintainer
+  * Make filtering rules for help and listremotes more lenient
+  * help: cleanup template syntax (consistent whitespace)
+  * help: avoid empty additional help topics header
+  * help: make help command output less distracting
+  * docs: consistent newline of first line in command output
+  * filescom: add Files.com backend
+  * fstests: attempt to fix flaky serve s3 test
+  * docs: move the link to global flags page to the main options header
+  * docs: make command group options subsections of main options
+  * docs: stop shouting the SEE ALSO header
+  * docs: fix the rclone root command header levels
+  * docs: make the see also section header consistent and listed in toc of command pages
+  * local: --local-no-clone flag to disable cloning for server-side copies
+  * local: support setting custom --metadata during server-side Copy
+  * local: add server-side copy with xattrs on macOS (part-fix #1710)
+  * docs: add automatic alias redirects for command pages
+  * cmd/rc: add --unix-socket option
+  * webdav: add --webdav-unix-socket-path to connect to a unix socket
+  * serve nfs: implement on disk cache for file handles
+  * serve nfs: factor caching to its own file
+  * serve nfs: update github.com/willscott/go-nfs to latest
+  * serve nfs: store billy FS in the Handler
+  * serve nfs: mask unimplemented error from chmod
+  * serve nfs: add tracing to filesystem calls
+  * serve nfs: rename types and methods which should be internal
+  * nfsmount: require --vfs-cache-mode writes or above in tests
+  * nfsmount: allow tests to run on any unix where sudo mount/umount works
+  * nfsmount: make the --sudo flag work for umount as well as mount
+  * nfsmount: add tcp option to NFS mount options to fix mounting under Linux
+  * build: install NFS client libraries to allow nfsmount tests to run
+  * vfstest: fix crash if open failed
+  * Implement Gofile backend - fixes #4632
+  * lib/encoder: add Exclamation mark encoding
+  * chunkedreader: add --vfs-read-chunk-streams to parallel read chunks
+  * accounting: fix race detected by the race detector
+  * pool: Add ability to wait for a write to RW
+  * pool: Make RW thread safe so can read and write at the same time
+  * multipart: make pool buffer size public
+  * Add Fornax to contributors
+  * build: use go1.23 for the linter
+  * build: fix govet lint errors with golangci-lint v1.60.1
+  * build: bisync: fix govet lint errors with golangci-lint v1.60.1
+  * build: fix staticcheck lint errors with golangci-lint v1.60.1
+  * build: fix gosimple lint errors with golangci-lint v1.60.1
+  * drive: fix copying Google Docs to a backend which only supports SHA1
+  * drive: update docs on creating admin service accounts
+  * Add pixeldrain backend
+  * docs: add comment how to reduce rclone binary size (#8000)
+  * Make listremotes long output backwards compatible - fixes #7995
+  * test_backend_sizes.py calculates space in the binary each backend uses #7998
+  * listremotes: added options for filtering, ordering and json output
+  * config: make getting config values more consistent
+  * config: make listing of remotes more consistent
+  * config: avoid remote with empty name from environment
+  * help: global flags help command extended filtering
+  * help: global flags help command now takes glob filter
+  * filter: add options for glob to regexp without anchors and special path rules
+  * docs: remove old genautocomplete command docs and add as alias from the newer completion command
+  * docs: replace references to genautocomplete with the new name completion
+  * serve s3: update to AWS SDKv2 by updating github.com/rclone/gofakes3
+  * s3: fix SSE-C after SDKv2 change
+  *  pikpak: update to using AWS SDK v2 #4989
+  * s3: fix Cloudflare R2 integration tests after SDKv2 update #4989
+  * s3: add --s3-sdk-log-mode to control SDK debugging
+  * s3: fix GCS provider after SDKv2 update #4989
+  * s3: update to using AWS SDK v2 - fixes #4989
+  * fstest: implement method to skip ChunkedCopy tests
+  * build: disable wasm/js build due to go bug
+  * Add @dmcardle as gitannex maintainer
+  * docs: s3: add section on using too much memory #7974
+  * docs: link the workaround for big directory syncs in the FAQ #7974
+  * Add David Seifert to contributors
+  * Add Will Miles to contributors
+  * Add Ernie Hershey to contributors
+  * docs: rc: fix correct _path to _root in on the fly backend docs
+  * fs/http: reload client certificates on expiry
+  * docs: clarify hasher operation
+  * docs: fix typo in batcher docs for dropbox and googlephotos
+  * b2: update versions documentation - fixes #7878
+  * s3: document need to set force_path_style for buckets with invalid DNS names
+  * ncdu: document that excludes are not shown - fixes #6087
+  * sftp: clarify the docs for key_pem - fixes #7921
+  * serve ftp: fix failed startup due to config changes
+  * docs: add Route4Me as a sponsor
+  * pikpak: correct file transfer progress for uploads by hash
+  * fs: fix --use-json-log and -vv after config reorganization
+  * Add Tobias Markus to contributors
+  * ulozto: fix upload of > 2GB files on 32 bit platforms - fixes #7960
+  * lib/mmap: fix lint error on deprecated reflect.SliceHeader
+  * lib/http: fix tests after go1.23 update
+  * rc: fix tests after go1.23 upgrade
+  * build: use go1.22 for the linter to fix excess memory usage
+  * build: update all dependencies
+  * build: update to go1.23rc1 and make go1.21 the minimum required version
+  * Add AThePeanut4 to contributors
+  * systemd: prevent unmount rc command from sending a STOPPING=1 sd-notify message
+  * azureblob: allow anonymous access for public resources
+  * Add Ke Wang to contributors
+  * Add itsHenry to contributors
+  * Add Tomasz Melcer to contributors
+  * Add Paul Collins to contributors
+  * Add Russ Bubley to contributors
+  * serve s3: implement `--auth-proxy`
+  * fs: Allow semicolons as well as spaces in --bwlimit timetable parsing - fixes #7595
+  * pikpak: optimize upload by pre-fetching gcid from API
+  * rc: add option blocks parameter to options/get and options/info
+  * chore(deps): update github.com/rclone/gofakes3
+  * fstest: fix compile after merge
+  * local: fix encoding of root path fix #7824 Statements like rclone copy <somewhere> . will spontaneously miss if . expands to a path with a Full Width replacement character. This is due to the incorrect order in which relative paths and decoding were handled in the original implementation.
+  * vfs: fix cache encoding with special characters - #7760
+  * docs: correct description of encoding None and add Raw.
+  * lib/encoder: add EncodeRaw
+  * pikpak: non-buffered hash calculation for local source files
+  * b2: Include custom upload headers in large file info - fixes #7744
+  * chore(deps): update github.com/rclone/gofakes3
+  * fs/test: fix erratic test
+  * fs: make sure we load the options defaults to start with
+  * fs: fix the defaults overriding the actual config
+  * rc: add options/info call to enumerate options
+  * fs: convert main options to new config system
+  * accounting: fix creating of global stats ignoring the config
+  * filter: convert options to new style
+  * filter: rename Opt to Options for consistency
+  * rc: convert options to new style
+  * lib/http: convert options to new style
+  * log: convert options to new style
+  * serve sftp: convert options to new style
+  * serve nfs: convert options to new style
+  * serve ftp: convert options to new style
+  * serve dlna: convert options to new style
+  * cmd/mountlib: convert mount options to new style
+  * vfs: convert vfs options to new style
+  * vfs: convert time.Duration option to fs.Duration
+  * cmd/mountlib: convert time.Duration option to fs.Duration
+  * configstruct: skip items with `config:"-"`
+  * configstruct: allow parsing of []string encoded as JSON
+  * configstruct: make nested config structs work
+  * configstruct: fix parsing of invalid booleans in the config
+  * fs: check the names and types of the options blocks are correct
+  * fs: make Flagger and FlaggerNP interfaces public so we can test flags elsewhere
+  * fs: add Options registry and rework rc to use it
+  * fs: allow []string to work in Options
+  * flags: factor AddFlagsFromOptions from cmd
+  * fs: add Groups and FieldName to Option
+  * fs: refactor fs.ConfigMap to take a prefix and Options rather than an fs.RegInfo
+  * sftp: ignore errors when closing the connection pool
+  * sftp: use uint32 for mtime
+  * pikpak: optimize file move by removing unnecessary `readMetaData()` call
+  * pikpak: fix error with `copyto` command
+  * swift: add workarounds for bad listings in Ceph RGW
+  * sftp: fix docs on connections not to refer to concurrency
+  * docs: remove warp as silver sponsor
+  * onedrive: fix nil pointer error when uploading small files
+  * vfs: fix fatal error: sync: unlock of unlocked mutex in panics
+  * Add Filipe Herculano to contributors
+  * Add Thearas to contributors
+  * pikpak: implement custom hash to replace wrong sha1
+  * pikpak: improves data consistency by ensuring async tasks complete
+  * build(deps): bump docker/build-push-action from 5 to 6
+  * s3: fix incorrect region for Magalu provider
+  * docs: recommend `no_check_bucket = true` for Alibaba - fixes #7889
+  * docs: tidy .gitignore for docs
+  * docs: fix hugo warning: found no layout file for "html" for kind "term"
+  * docs: remove slug and url from command pages since they are no longer needed
+  * docs: fix hugo warning: found no layout file for "html" for kind "section"
+  * serve dlna: fix panic: invalid argument to Int63n
+  * Start v1.68.0-DEV development
+
+-------------------------------------------------------------------
 Fri Jun 14 20:51:39 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.67.0:
