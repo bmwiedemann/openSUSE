@@ -154,4 +154,16 @@
     markers in git diff output.</comment>
     <requestid>1175436</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b6ac07c999be4895a44eb7c64b4e3a8e</srcmd5>
+    <version>3.2.1~0</version>
+    <time>1725885902</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.1:
+  * Before this release, file names were rendered in all bold.
+    Starting with this release though, the paths are rendered
+    in normal intensity, but the actual file names are kept bold.
+    The goal of this is to improve readability of the output.</comment>
+    <requestid>1199547</requestid>
+  </revision>
 </revisionlist>
