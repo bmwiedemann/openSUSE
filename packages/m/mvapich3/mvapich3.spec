@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -191,6 +191,7 @@ Patch2:         mpl-warnings-missing-return.patch
 Patch3:         mpi-coll-missing-return.patch
 Patch4:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 Patch5:         config-replace-AC_TRY_-COMPILE-LINK-RUN.patch
+Patch6:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 
 URL:            http://mvapich.cse.ohio-state.edu
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -211,10 +212,10 @@ BuildRequires:  hwloc-devel >= 2.0
 %ifnarch s390 s390x %{arm}
 BuildRequires:  libnuma-devel
 %endif
+BuildRequires:  libjson-c-devel
 BuildRequires:  libtool
-BuildRequires:  libtool
-BuildRequires:  sysfsutils
 BuildRequires:  python3
+BuildRequires:  sysfsutils
 %if %{without hpc}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -318,7 +319,6 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 
 cp /usr/share/automake*/config.* .
 
-
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
@@ -327,7 +327,7 @@ cp /usr/share/automake*/config.* .
 export FFLAGS="-fallow-argument-mismatch $FFLAGS"
 %endif
 
-./autogen.sh --without-ucx --without-ofi
+./autogen.sh --without-ucx --without-ofi --without-json
 %if %{with hpc}
 %{hpc_setup}
 %{hpc_configure} \

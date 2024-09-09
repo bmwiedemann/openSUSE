@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-socketio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-socketio
-Version:        5.7.2
+Version:        5.11.4
 Release:        0
 Summary:        SocketIO server
 License:        MIT
 URL:            http://github.com/miguelgrinberg/python-socketio/
-Source:         https://github.com/miguelgrinberg/python-socketio/archive/v%{version}.tar.gz#/python-socketio-%{version}.tar.gz
+Source:         https://github.com/miguelgrinberg/python-socketio/archive/v%{version}.tar.gz#/python_socketio-%{version}.tar.gz
 BuildRequires:  %{python_module bidict >= 0.21.0}
-BuildRequires:  %{python_module python-engineio >= 4.1.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-engineio >= 4.8.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-#Tests:
-BuildRequires:  %{python_module msgpack}
 Requires:       python-bidict >= 0.21.0
-Requires:       python-python-engineio >= 4.1.0
+Requires:       python-python-engineio >= 4.8.0
 Suggests:       python-aiohttp >= 3.4
 Suggests:       python-requests >= 2.21.0
 Suggests:       python-websocket-client >= 0.54.0
-Suggests:       python-websockets >= 7.0
-BuildArch:      noarch
+#Tests:
+BuildRequires:  %{python_module aiohttp >= 3.4}
+BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.21.0}
+BuildRequires:  %{python_module simple-websocket}
+BuildRequires:  %{python_module uvicorn}
+BuildRequires:  %{python_module websocket-client >= 0.54.0}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -48,14 +55,14 @@ Python implementation of the Socket.IO realtime server.
 %setup -q -n python-socketio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs -k 'not test_logger'
+%pytest -rs -k 'not test_logger' --timeout=60
 
 %files %{python_files}
 %doc README.md

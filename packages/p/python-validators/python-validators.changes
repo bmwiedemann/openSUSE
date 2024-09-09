@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:19:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.0:
+  * > No breaking changes were introduced in this version.
+  * feat: cache IANA TLDs for faster lookups
+  * chore: update dependencies
+  * docs: adds configuration info
+
+-------------------------------------------------------------------
 Mon Jul 15 04:45:05 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.33.0
@@ -139,7 +148,7 @@ Thu Jul 16 21:30:59 UTC 2020 - Mia Herkt <mia@0x0.st>
 -------------------------------------------------------------------
 Sat Jul 11 11:00:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- remove isort build requirement. It is not called. 
+- remove isort build requirement. It is not called.
 
 -------------------------------------------------------------------
 Fri May  8 08:28:01 UTC 2020 - Mia Herkt <mia@0x0.st>
@@ -200,7 +209,7 @@ Fri Mar 29 10:01:10 UTC 2019 - pgajdos@suse.com
   * Remove py33 support
   * Fixed IPv4 formatted IP address returning True on ipv6
   * Fixed IPv6 address parsing
-  * Fixed domain validator for international domains and certain 
+  * Fixed domain validator for international domains and certain
     edge cases
 
 -------------------------------------------------------------------

@@ -204,3 +204,4 @@ fi
 $action d3d9
 $action d3d10core
 $action d3d11
+$action d3d8

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sun Aug 18 12:57:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.3:
+  * update for 1.7.3
+  * update for 1.7.2
+  * Include labels from site spec on new secret
+  * Configure oauth-proxy with random cookie secret
+  * update for 1.7.1
+  * update packages (#1480)
+  * Update for 1.7.0
+  * Fix the early parsing of platform flag in init() (#1451)
+  * Default ingress to route on openshift
+  * Sk1765 fix flow protocol race (#1460)
+
+-------------------------------------------------------------------
+Sun Aug 18 12:54:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package skupper: Virtual Application Network, enabling rich
+  hybrid cloud communication

@@ -1827,4 +1827,27 @@
     <comment></comment>
     <requestid>1197828</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>26d2172406bebcc85302446eeb0b5fde</srcmd5>
+    <version>2024.8.2</version>
+    <time>1725885870</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.8.2:
+  * Avoid capturing code of xdist @fjetter
+  * Reduce memory footprint of culling P2P rechunking
+  * Add tests for choosing default rechunking method
+  * Increase visibility of GPU CI updates @charlesbluca
+  * Bump test\_pause\_while\_idle timeout @fjetter
+  * Concatenate small input chunks before P2P rechunking
+  * Remove dump cluster from gen\_cluster @fjetter
+  * Bump `numpy&gt;=1.24` and `pyarrow&gt;=14.0.1` minimum versions
+  * Fix PipInstall plugin on Worker @hendrikmakait
+  * Remove more Python 3.10 compatibility code @jrbourbeau
+  * Use task-based rechunking to prechunk along partial
+    boundaries @hendrikmakait
+  * Ensure client\_desires\_keys does not corrupt Scheduler state
+    @fjetter
+  * Bump minimum ``cloudpickle`` to 3 @jrbourbeau</comment>
+    <requestid>1199615</requestid>
+  </revision>
 </revisionlist>

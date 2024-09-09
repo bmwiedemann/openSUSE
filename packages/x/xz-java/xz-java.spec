@@ -1,7 +1,7 @@
 #
 # spec file for package xz-java
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Peter Conrad
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,17 @@
 
 
 Name:           xz-java
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Pure Java implementation of XZ compression
-License:        SUSE-Public-Domain
+License:        0BSD
 Group:          Development/Libraries/Java
 URL:            https://tukaani.org/xz/java.html
-Source:         http://tukaani.org/xz/xz-java-%{version}.zip
+Source:         https://tukaani.org/xz/xz-java-%{version}.zip
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 Provides:       java-xz
 Obsoletes:      java-xz
@@ -50,9 +50,7 @@ This package contains the API documentation of xz-java.
 %setup -q -c -n %{name}
 
 %build
-sed -i 's/linkoffline="[^"]*"//;/extdoc_/d' build.xml
-sed -i 's/sourcever = 7/sourcever = 8/g' build.properties
-ant -Dant.build.javac.{source,target}=8 clean jar doc maven
+%{ant} -Dant.build.javac.{source,target}=8 clean jar doc maven
 
 %install
 # jar
@@ -61,7 +59,7 @@ install -pm 0644 build/maven/xz-%{version}.jar  %{buildroot}%{_javadir}/%{name}.
 (cd %{buildroot}%{_javadir} && ln -s %{name}.jar xz.jar)
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 build/maven/xz-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} build/maven/xz-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
@@ -70,7 +68,7 @@ cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license COPYING
-%doc NEWS README THANKS
+%doc {NEWS,README,THANKS}.md
 %{_javadir}/xz.jar
 
 %files javadoc

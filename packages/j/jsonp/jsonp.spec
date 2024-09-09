@@ -1,7 +1,7 @@
 #
 # spec file for package jsonp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,25 @@
 #
 
 
+%define __requires_exclude java-headless
 Name:           jsonp
-Version:        1.0.4
+Version:        1.1.4
 Release:        0
 Summary:        JSR 353 (JSON Processing) RI
 License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://github.com/javaee/%{name}
-Source0:        https://github.com/javaee/%{name}/archive/%{name}-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/javaee/%{name}/master/LICENSE.txt
+Source0:        https://github.com/javaee/%{name}/archive/refs/tags/%{version}-RELEASE.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
+BuildRequires:  mvn(javax.ws.rs:jsr311-api)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.glassfish.build:spec-version-maven-plugin)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -43,10 +47,8 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-cp %{SOURCE1} .
-find . -name '*.jar' -delete
-find . -name '*.class' -delete
+%setup -q -n %{name}-%{version}-RELEASE/
+
 # Unwanted old apis
 %pom_disable_module bundles
 %pom_disable_module demos
@@ -55,6 +57,7 @@ find . -name '*.class' -delete
 
 %pom_remove_dep javax:javaee-web-api
 
+%pom_remove_plugin :maven-javadoc-plugin jaxrs-1x
 %pom_remove_plugin org.glassfish.copyright:glassfish-copyright-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:wagon-maven-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-dependency-plugin impl
@@ -71,7 +74,7 @@ find . -name '*.class' -delete
 sed -i '/check-module/d' api/pom.xml impl/pom.xml
 
 # disable apis copy
-%pom_xpath_remove "pom:build/pom:plugins/pom:plugin[pom:artifactId ='maven-bundle-plugin']/pom:configuration/pom:instructions/pom:Export-Package"  impl
+%pom_xpath_remove "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-bundle-plugin']//pom:configuration/pom:instructions/pom:Export-Package"  impl
 # Make the api dependency non-optional
 %pom_xpath_remove "pom:dependency/pom:optional" impl
 
@@ -88,9 +91,6 @@ sed -i '/check-module/d' api/pom.xml impl/pom.xml
 
 %{mvn_build} -f -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
     -Dsource=8
 
 %install

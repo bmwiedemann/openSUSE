@@ -17,7 +17,7 @@
 
 
 Name:           python-rstcheck
-Version:        6.2.1
+Version:        6.2.4
 Release:        0
 Summary:        Python module to check syntax of reStructuredText
 License:        MIT

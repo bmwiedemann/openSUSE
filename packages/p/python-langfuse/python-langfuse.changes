@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Aug 21 20:09:26 UTC 2024 - Aline Werner <aline.werner@suse.com>
+
+- Fix executable file conflict for Tumbleweed build, change description and add missing URL. 
+
+-------------------------------------------------------------------
+Fri Aug  9 17:59:18 UTC 2024 - Aline Werner <aline.werner@suse.com>
+
+- Initial package creation for python-langfuse version 2.43.1 

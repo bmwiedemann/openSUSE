@@ -1,4 +1,502 @@
 -------------------------------------------------------------------
+Sat Sep 07 12:00:00 UTC 2024 - cunix@mail.de
+
+- Update to version 3.6.1:
+  * Move some ChangeLog entries to a different section
+  * Add CVE IDs to security ChangeLog
+  * Update BRANCHES.md
+  * Add generated files
+  * Finalise ChangeLog
+  * Bump version to 3.6.1
+  * Assemble ChangeLog
+  * Don't clean test_keys.h and test_certs.h
+  * Fix typos in make clean target for Windows
+  * Fix/Improve documentation
+  * Rename some "new_session_tickets" symbols
+  * Fix change log
+  * Improve documentation
+  * Move session tickets getter functions to ssl_misc.h
+  * Add change logs
+  * Improve debug logs
+  * Move MBEDTLS_ERR_SSL_RECEIVED_NEW_SESSION_TICKET doc
+  * Do not add a new field in the SSL config
+  * ssl_client2: Fix new_session_tickets option parsing
+  * Document NewSessionTicket handling being disabled by default
+  * Improve MBEDTLS_ERR_SSL_RECEIVED_NEW_SESSION_TICKET documentation
+  * Document MBEDTLS_ERR_SSL_RECEIVED_NEW_SESSION_TICKET.
+  * Enable TLS 1.3 ticket handling in resumption tests
+  * TLS 1.3: Ignore tickets if disabled at runtime
+  * Add mbedtls_ssl_conf_enable_new_session_tickets() API
+  * TLS 1.3 server: move crypto_init after protocol negotiation
+  * Changelog entry for psa_crypto_init potentially being called from TLS
+  * Clarify "negotiating"
+  * Error translation and init are needed in PSK-only builds as well
+  * Call psa_crypto_init in the library when required for TLS 1.3
+  * Don't call psa_crypto_init in test programs when not required for TLS 1.3
+  * Don't call psa_crypto_init in unit tests when not required for TLS 1.3
+  * Call psa_crypto_init in the library when required for TLS 1.3: doc
+  * Fix the capitalisation in the changelog entry
+  * Reduce the wording in changelog entry
+  * Improve the changelog entry for fixing legacy compression issue
+  * Add chanelog entry for fixing legacy comprssion methods issue
+  * Remove redundant legacy compression test
+  * Improve legacy compression regression testing
+  * Add regression testing to handling Legacy_compression_methods
+  * Improve comments explaining legacy_methods_compression handling
+  * Correct a small typo in ssl_tls13_parse_client_hello()
+  * Improve handling of legacy_compression_methods in ssl_tls13_parse_client_hello()
+  * Fix issue in handling legacy_compression_methods in ssl_tls13_parse_client_hello()
+  * Fix Changelog formatting
+  * Add header for mbedtls_mpi_exp_mod_unsafe()
+  * Improve ChangeLog
+  * Make mbedtls_mpi_exp_mod_unsafe internal
+  * Add changelog
+  * Tiny fix in ChangeLog pt 2
+  * Tiny fix in ChangeLog
+  * Changelog entry for the RSA memory leak
+  * Simplify and explain the overflow check for maximum slice length
+  * Add overflow check for maximum key slot length
+  * Tweak macro check to allow 3 extra key slices
+  * Fix incorrect comments on slice numbering
+  * Add a ChangeLog entry
+  * Fix guards around function now used by 1.3 as well
+  * Fix typos in comments
+  * Fix two dependency declarations in ssl-opt
+  * Improve some comments
+  * Merge 1.2 and 1.3 certificate verification
+  * Minor refactoring of generic SSL certificate verif
+  * Add support for context f_vrfy callback in 1.3
+  * Improve a variable's name
+  * Restrict the scope of a few variables
+  * ssl-opt.sh: Test trusted certificate callback in TLS 1.3
+  * tls13: Add support for trusted certificate callback
+  * ssl-opt.sh: Fix test case titles
+  * Allow no authentication of the server in 1.3
+  * Reorder some tests in ssl-opt.sh
+  * Allow optional authentication of the server in 1.3
+  * Add comments about 1.3 server sending no cert
+  * Rm translation code for unused flag
+  * Simplify certificate curve check for 1.2
+  * Make mbedtls_ssl_check_cert_usage() work for 1.3
+  * Clean up mbedtls_ssl_check_cert_usage()
+  * Test cert alert REVOKED -> CERT_REVOKED
+  * Test cert alert NOT_TRUSTED -> UNKNOWN_CA
+  * Fix ordering of a test case in ssl-opt.sh
+  * Add test forcing TLS 1.2 for clearer coverage
+  * Fix memory corruption in exp_mod tests
+  * Edit ChangeLog entry
+  * Clean up initialization in _core_exp_mod()
+  * Disable optionally safe test hook in threading builds
+  * Fix optionally safe hooks declarations
+  * Update ChangeLog
+  * Free allocated memory where methods were returning without freeing
+  * Add test cases for extKeyUsage
+  * Optimise public RSA operations
+  * Fix mpi_core_exp_mod documentation
+  * Rationalize extKeyUsage tests
+  * Fix Mbed-TLS build when WIN32_LEAN_AND_MEAN macro is defined globally
+  * The fully static key store will miss the 3.6.1 release
+  * Mention the option name for the dynamic key store
+  * Add tests for optionally unsafe code paths
+  * Update framework to the head of the main branch
+  * Add tests for optionally safe codepaths
+  * Use actual exponent size for window calculation
+  * Move _public parameters next to their target
+  * Make MBEDTLS_MPI_IS_PUBLIC thumb friendly
+  * Move MBEDTLS_MPI_IS_* macros to bignum_core.h
+  * Move mixed security code to small local functions
+  * Make _optionally_safe functions internal
+  * Improve documentation of MBEDTLS_MPI_IS_PUBLIC
+  * PSA PAKE wasn't in 2.28
+  * entropy.h is also going away
+  * Use P_CLI when O_CLI's status is not reliable
+  * Mention interfaces replaced by PSA drivers
+  * Update the submodule to the head of PR in the framework repository
+  * Changelog entry
+  * Remove MBEDTLS_PSA_UTIL_HAVE_ECDSA so that functions are only enabled when PSA enabled
+  * Clarify some internal documentation
+  * Make integer downsizing explicit
+  * Changelog entry for MBEDTLS_PSA_KEY_STORE_DYNAMIC
+  * Add test components with the PSA static key store
+  * Dynamic key store: make full-key-store tests work effectively
+  * Microoptimizations when MBEDTLS_PSA_KEY_STORE_DYNAMIC is disabled
+  * Dynamic key store: implementation
+  * psa_key_slot_t: different fields in free vs occupied slots
+  * Dynamic key store: disable full-key-store tests
+  * Dynamic key store: preparatory refactoring
+  * Dynamic key store: new compilation option
+  * Improve documentation in some tests
+  * Revised presentation of cipher suites
+  * More relevant characterisation of PSA being from before 3.0
+  * Improve mechanism grouping
+  * Fix missing bits in crypto mechanisms
+  * Rationalize keyUsage testing, round 2
+  * Always print detailed cert errors in test programs
+  * Fix 1.3 failure to update flags for (ext)KeyUsage
+  * Rationalize ssl-opt tests for keyUsage
+  * Test cert alert KEY_USAGE -> UNSUPPORTED_CERT
+  * Mention the PSA transition guide
+  * Announce the main removals planned for 4.0
+  * PSA_DONE: account for MBEDTLS_TEST_PSA_INTERNAL_KEYS
+  * Fix inverted assertion message
+  * Call in_mbedtls_repo
+  * Move some proj detection code inside pre_check_environment
+  * Match spacing in pointer types in documentation with the code style
+  * Rename one more deprecated identifier
+  * Documentation improvements
+  * Rename internal function psa_key_production_parameters_are_default
+  * key_custom: update analyze_outcomes.py
+  * Test cpp_dummy_build in pedantic mode
+  * Changelog entry for the move from key_ext to key_custom functions
+  * Remove some tests of psa_generate_key_ext
+  * Document the key_ext functions as deprecated
+  * Documentation: point to key_custom instead of key_ext
+  * Update PSA wrappers
+  * Implement psa_generate_key_custom
+  * Fix missing-prototype error for the print_buf functions in sample programs
+  * Revert commit 33af72df in order to not depend on test code
+  * Fix format-pedantic error in programs/test/metatest.c
+  * Use correct conditionals in programs/ssl (fix unused-function errors)
+  * Add missing include in tests/src/psa_memory_poisoning_wrappers.c to fix missing-prototype error
+  * Fix Uncrustify errors in modified tests/suites to satisfy check_code_style test
+  * Use correct test case conditionals for helper functions in tests/suites
+  * Fix tests build with MBEDTLS_PSA_CRYPTO_BUILTIN_KEYS enabled
+  * Move the -Wmissing-prototypes option from library/CMakeLists.txt to the top-level CMakeLists.txt for GCC & Clang
+  * Adjust spacing in tests/suites function sources
+  * Fix missing-prototype errors in tests/suites
+  * Fix unused-function error for ecjpake_operation_setup in test_suite_psa_crypto.function
+  * Adjust spacing in sample programs
+  * Fix missing-prototype errors in sample programs
+  * Fix missing-prototype error in programs/fuzz by moving LLVMFuzzerTestOneInput prototype to common.h
+  * Move print_buf into mbedtls_test_print_buf helper function in sample programs
+  * Add missing include in tests/src/asn1_helpers.c
+  * Add -Wmissing-prototypes to component_build_no_ssl_srv and component_build_no_ssl_cli in all.sh
+  * Fix build of v3.6 with unset MBEDTLS_DHM_C but MBEDTLS_USE_PSA_CRYPTO set (fixes #9188)
+  * Fix server mode only build of v3.6 with MBEDTLS_SSL_CLI_C unset (fixes #9186)
+  * all.sh/components: Removed components.sh
+  * all.sh/components: Moved build_aes_via_padlock to platform component.
+  * all.sh/components: Moved driver components to configuration crypto.
+  * all.sh/components: Moved more components to configuration crypto.
+  * all.sh/components: Fixed a typo in configuration-tls.
+  * all.sh/components: Moved more components to configuration tls.
+  * Extract sanitizer components into a separate file.
+  * Extract platform components into a separate file.
+  * Extract configuration components into a separate file.
+  * Extract configuration-x509 components into a separate file.
+  * Extract configuration-platform components into a separate file.
+  * Extract configuration-crypto-components into a separate file.
+  * Extract compliance-components into a separate file.
+  * Extract compiler-components into a separate file.
+  * Extract build-components into a separate file.
+  * Extract basic-components into a separate file.
+  * Separate all.sh from components.
+  * Applied consistent style.
+  * Created placeholder component files.
+  * Update framework
+  * Add functions to detect project
+  * Introduce project_name.txt
+  * Miscellaneous clarifications
+  * Expand on performance
+  * Discuss why we have so many variants
+  * Link to issue about freeing empty slices
+  * Improve and fix explanation of next_free
+  * Update macro name about the static key store
+  * Typos and minor clarifications
+  * Improve description of who is affected
+  * More diversified sizes in tests
+  * Fix stack buffer overflow in ECDSA signature format conversions
+  * Force MBEDTLS_PSA_HMAC_DRBG_MD_TYPE based on CTR_DRBG
+  * Document that MBEDTLS_PSA_HMAC_DRBG_MD_TYPE does not force HMAC
+  * Update auto-generated psa_test_wrappers.
+  * Update the framework submodule to the merge of PR38
+  * Update framework as in PR 9394
+  * programs: fuzz: Fix comment
+  * tests: CMake: Align/fix config test suite generation
+  * CMake: Include CMakePrintHelpers
+  * Fix copypasta
+  * Keep track of PSA keys used interally
+  * Fix spurious test case failure with accelerated AES
+  * Improve full-key-store tests
+  * Improve the documentation of MBEDTLS_PSA_KEY_SLOT_COUNT
+  * Update invalid key id in a test case
+  * Fix overlap between volatile keys and built-in keys
+  * Assert that the key ID range for volatile keys is large enough
+  * Assert that key ID ranges don't overlap
+  * Add a test for the built-in key range
+  * Prevent mbedtls_psa_register_se_key with volatile keys
+  * Reorder blocks to avoid double negations
+  * Make it possible to enable CTR_DRBG/PSA without a PSA AES driver
+  * MBEDTLS_STATIC_ASSERT: make it work outside of a function
+  * Add TLS: password protected... to ignored_tests list
+  * Reverted requires_cipher_enabled AES
+  * Changed some tests to use requires_cipher_enabled
+  * Added support for MD5 in `requires_hash_alg`
+  * Upgrade python dependencies in requirements file
+  * tests/ssl_helpers: Check that message queue is popped
+  * psa: fix parameters' names of psa_key_derivation_verify_bytes()
+  * Fix some typo for include folder
+  * Fix typo in platform_util.c
+  * Update framework submodule
+  * Update the framework submodule to the merge of PR18
+  * Update framework submodule
+  * Update generated tls13 testcase script
+  * Move variable into generated bash
+  * Simplify path in audit-validity-dates.py
+  * Simplify data_files path in compat test generation
+  * Use variable for data_files path in ssl-opt.sh
+  * Replace data_files path with variable in compat.sh
+  * Correct redundant framework/../framework paths
+  * Fix line-too-long in generate_tls13_compat_tests.py
+  * Update directory-climbing path in context-info.sh
+  * Update paths pointing to tests/data_files
+  * Move some files to framework repository
+  * psa_cipher_decrypt CCM*: fix rejection of messages shorter than 3 bytes
+  * Update framework after merge of #28
+  * psa_open_key does not lock the key in memory
+  * Document the key store design
+  * changelog: add changelog
+  * config_psa: do not update legacy symbols in client-only PSA build
+  * Update generate_config_tests.py
+  * Add some missing handling for generated test_suite_config.*.data
+  * Anchor relative paths
+  * Driver vs referenee: ignore relevant configuration differences
+  * Generate config test cases for single options
+  * New test suite to report configuration options
+  * Clean up generated files enumeration
+  * Recognize that a double-inclusion guard is not a config setting
+  * Update framework submodule to the merge of PR22
+  * test_when_no_ciphersuites_have_mac: Fix logs
+  * tests: src: Fix PSA test wrappers for PAKE
+  * Add optionally unsafe variant of exp_mod for perf
+  * Update framework
+  * Changelog Fix
+  * Add ChangeLog
+  * Add and update some .gitignore files
+  * all.sh: Fix clean-up of Makefiles generated by CMake
+  * Code style fix
+  * Fix compiler warnings in test_suite_pk.function
+  * Use CMAKE_C_SIMULATE_ID when available to determine compiler
+  * Silence gcc 12.2.0 warning
+  * Fix incorrect array length in function prototype
+  * Set psk to NULL in ssl_psk_remove -backpor to 3.6
+  * Extend python checks to framework scripts
+  * Remove multi-type variable
+  * Allow code_style.py to work from a git hook
+  * Use unsigned long rather than size_t for format string readability
+  * Fix uint32_t printed as unsigned int
+  * Update framework to latest
+  * crypto.h: fix documentation for some functions
+  * changelog: add changelog for PSA CMAC fix
+  * adjust_legacy_crypto: enable CIPHER_C when PSA CMAC is builtin
+  * Update framework submodule
+  * Update file paths for moved files
+  * Move some test generation files to framework
+  * Make abi_check.py look in both locations
+  * Guard configuration-specific code
+  * ssl-opt.sh, compat.sh: Error out if not executing any tests
+  * Do not use --recurse-submodules
+  * Extend C code style check to framework files
+  * Extend basic checks of files to framework files
+  * Error on unexpectedly defined symbols
+  * Tweak wording
+  * Update framework submodule to the merge of #15
+  * fix typo
+  * Document that there is now an error for dangerous inclusions
+  * Warn if mbedtls_config.h is included manually
+  * Error out if *adjust* headers are included manually
+  * Macros to indicate the finalization level of the configuration
+  * Belated changelog entry for not including check_config.h
+  * Document check-config.h and *adjust*.h as internal headers
+  * Pacify pylint
+  * Generate test data before coverage analysis
+  * Improve test-ref-configs.pl
+  * Fix crypto_adjust_config_dependencies.h documentation
+  * Fix PBKDF2_AES_CMAC_PRF_128 dependencies
+  * Fix the resolution of dependencies on HMAC
+  * Fix "maybe-uninitialized" warning with GCC 11.3
+  * Resolve PBKDF2_AES_CMAC_PRF_128 dependencies
+  * Resolve some HMAC dependencies automatically
+  * test-ref-configs.pl: Detect automatically test with USE_PSA enabled
+  * Fix compat.sh filters
+  * config-symmetric-only.h: Add SHA3
+  * config-symmetric-only.h: Remove obsolete comment
+  * Add missing dependency that isn't autodetected
+  * Remove redundant RSA dependency
+  * Explicitly use TLS 1.2 on <=1.2-specific keyUsage/extKeyusage tests
+  * Fix PSK invocation: GnuTLS PSK length (more)
+  * Driver-only FFDH is not good enough for DHE support in TLS 1.2
+  * Add seme missing dependencies on renegotiation support
+  * Default NEXT versions to be the base executables
+  * Force some test cases to use TLS 1.2
+  * Add some missing dependencies on crypto features
+  * Fix PSK invocation: GnuTLS PSK length
+  * Fix PSK invocation: GnuTLS prompting
+  * Fix PSK invocation: OpenSSL client
+  * Require RSA when using server1* key or certificate
+  * Fix a compilation warning in pk.c when PSA is enabled and RSA is disabled
+  * Fix skipped tests in configurations without RSA
+  * Add invalid `padding_len` check in `get_pkcs_padding`
+  * Rename framework_path to framework_scripts_path
+  * Update framework submodule to tip of branch
+  * Add mbedtls_framework to mypy checks
+  * Add framework_path module
+  * Update references to mbedtls_dev
+  * Add framework/scripts to scripts_path.py
+  * Move some files to framework repository
+  * gitignore: ignore .vscode folder in main repo
+  * gitignore: ignore test_keys.h and test_certs.h
+  * Add note explaining component purpose
+  * Add all.sh component for programs without tests
+  * Move test generated files to main CMakeLists.txt
+  * generate_test_keys: move code for arrays and LUT generation to a separate function
+  * check-generated-files: move check for generate_test_cert_macros.py
+  * generate_test_[keys/cert_macros]: minor fixes
+  * generate_test_keys: move output file writing to a separate function
+  * generate_test_keys: sort keys before processing them
+  * check-generated-files: add test_certs.h file to the list of checked items
+  * generate_test_cert_macros: minor fixes
+  * generated_test_keys: minor fixes
+  * generate_test_keys: remove left-over variable
+  * tests/CMakeLists: fix indentation
+  * generate_test_keys: do not quit script if output file already exists
+  * generate_test_keys: add missing flush at the end of script
+  * test_suite_pk: use explicit key bit size instead of RSA_KEY_SIZE
+  * generate_test_keys: use build_tree to guess the MbedTLS root path
+  * generate_test_cert_macros: minor fixes
+  * cmake: relocate custom commands for test_certs.h and test_keys.h generation
+  * generate_test_cert_macros: embed input args
+  * tests/Makefile: minor fix: specify Python binary to be used
+  * fix "make generated_files" for test_keys.h and test_certs.h
+  * generate_test_keys: add default output file option
+  * tests: remove test_certs.h and test_keys.h as they are auto-generated
+  * test: automatically generate test_certs.h and test_keys.h
+  * tests: update Makefile to generate tests/src/test_keys.h
+  * Fix Changelog formatting
+  * md: fix guards for mbedtls_md_error_from_psa()
+  * ChangeLog: Add missing reference to CVE in security entry
+  * Fixed issue of redefinition warning messages for _GNU_SOURCE
+  * Add changelog
+  * Clarify psa_get_and_lock_key_slot return behaviour
+  * Explicitly document return behaviour
+  * Fix potential non-NULL slot return on failure
+  * ssl_mail_client: Fix code style issue
+  * ssl_mail_client: Check return value of mbedtls_snprintf
+  * ssl_mail_client: Replace snprintf with mbedtls_snprintf
+  * ssl_mail_client: Fix unbounded write of sprintf()
+  * Rewrite changelog
+  * Add changelog
+  * Fix error handling for secure element keys in `psa_start_key_creation`
+  * Add Changelog entry
+  * Add early exit if zero length AEAD AD passed in.
+  * Convert recent RSA key files in PEM format from PKCS8 to PKCS1
+  * Fix rsa_pkcs1_*_clear.der to actually be PKCS#1 files
+  * Use large enough keys when testing parsing of non-word-aligned RSA sizes
+  * Add some test RSA keys of sizes 768 and up
+  * Cleartext RSA keys: also make DER formats available
+  * Fix misspelled dependency: there is no MBEDTLS_PEM_C
+  * Allow PSA to not support RSA keys with non-byte-aligned sizes
+  * Remove redundant dependency
+  * Fix full invocation of ssl-opt.sh
+  * generate_test_keys: split group_id and key bitsize in the generated structure
+  * test_suite_pk: fix some descriptions in data file
+  * generate_test_keys: minor improvements
+  * changelog: fix text
+  * add changelog
+  * adjust_legacy_crypto: enable ASN1_[PARSE|WRITE]_C when RSA_C
+  * Simplify full invocation of compat.sh
+  * test_suite_pk: fix guards for pk_psa_setup()
+  * test_suite_pk: remove PK_PARSE_C unnecessary dependencies
+  * test_suite_pk: remove RSA key generation/size dependencies
+  * test_suite_pk: enhance pk_psa_setup() to support all key types
+  * test_suite_pk: use pk_setup() instead of mbedtls_rsa_gen_key() in pk_psa_wrap_sign_ext()
+  * test_suite_pk: use predefined RSA keys in pk_setup_for_type()
+  * test_suite_pk: rename pk_genkey() and pk_psa_genkey()
+  * test_suite_pk: fix get_predefined_key_data() return value
+  * generate_test_keys: generate also look-up table in script
+  * generate_test_keys: generate arrays for all keys in asymmetric_key_data.py
+  * generate_test_keys: generate also RSA public key arrays
+  * generate_test_keys: minor improvements
+  * asymmetric_key_data: fix public RSA-2048 key
+  * generate_test_keys: fix mypy issue for imported path
+  * generate_test_keys: use keys from asymmetric_key_data.py
+  * test_suite_pk: minor code fixes and comments improvements
+  * generate_test_keys.py: minor improvements
+  * test_suite_pk: fix guards
+  * pk: fix unused variable in copy_from_psa()
+  * test_suite_pk: add python script to generate predefined keys
+  * test_suite_pk: simplify pk_psa_genkey()
+  * test_suite_pk: simplify pk_genkey()
+  * test_suite_pk: fix key_id initialization value
+  * test_suite_pk: use look-up table instead of file for the predefined keys
+  * test_suite_pk: remove PSA_WANT_KEY_TYPE_[ECC/RSA]_KEY_PAIR_GENERATE dependencies
+  * test_suite_pk: modify pk_psa_genkey() in order to use predefined keys
+  * test_suite_pk: use a single helper function to generate PSA keys
+  * test_suite_pk: modify pk_genkey() in order to use predefined keys
+  * test-data: add predefined RSA and EC keys
+  * ssl-opt.sh: Fix some test dependencies
+  * Use latest installed OpenSSL 3 as OPENSSL_NEXT
+  * ssl-opt.sh: Adapt tests to OpenSSL 3
+  * Add RSA key certificates
+  * compat.sh: properly skip unsupported DTLS 1.2
+  * compat.sh: properly report skipped tests
+  * Add change log
+  * tls13: Do not initiate at all resumption if tickets not supported
+  * tls13: Fix doc of mbedtls_ssl_session_set() - 2
+  * tls13: Fix doc of mbedtls_ssl_session_set() - 1
+  * tls13: Fix doc of mbedtls_ssl_session_get() - 2
+  * tls13: Fix doc of mbedtls_ssl_session_get() - 1
+  * tls: Fix doc of mbedtls_ssl_session_save()
+  * ssl_msg.c: Rename _check_new_session_ticket to _is_new_session_ticket
+  * all.sh: Use full instead of default as the base for the new component
+  * tests: ssl: Fix dependencies of SRV TLS 1.3 session serialization tests
+  * ssl-opt.sh: Add tests where tickets are ignored
+  * tls13: cli: Ignore tickets if not supported
+  * ssl-opt.sh: Add missing MBEDTLS_SSL_SESSION_TICKETS dependencies
+  * all.sh: Add component testing default minus session tickets
+  * tests: ssl: Fix dependencies of TLS 1.3 session serialization tests
+  * tests: ssl: Add hostname checks in session serialization tests
+  * tests: ssl: Remove redundant test
+  * tests: ssl: Fix session field guards
+  * Constify parameter of ssl_tls13_session_load
+  * Enable ssl_tls13_get_ciphersuite_hash_alg only if macro is active
+  * Unconditionally define session variable
+  * tls13: srv: Fix guards of _is_psk_(ephemeral_)available
+  * Guard ticket specific TLS 1.3 function with macro
+  * Fix closing comment to match opening guard
+  * Fix style of preprocessor expression
+  * Fix failures in psa_cryto_driver_wrappers suite
+  * Add missing dependency of fallback test in driver wrappers suite
+  * Add missing definition of AT_LEAST_ONE_BUILTIN_KDF
+  * Fix wrong dependency in psa_crypto_driver_wrappers suite
+  * Fix wrong dependency in psa_crypto_pake suite
+  * Fix typo in ssl test suite
+  * Correct dependancy on `MBEDTLS_X509_INFO` for x509parse
+  * We now have two LTS branches to backport to.
+  * pk: fix documentation of mbedtls_pk_setup_opaque()
+  * pk: fix typos in description of mbedtls_pk_setup_opaque()
+  * pk: add check_pair info to mbedtls_pk_setup_opaque() documentation
+  * test_suite_pk: add failing check for sign_ext() in pk_psa_wrap_sign_ext()
+  * pk: simplify mbedtls_pk_sign_ext()
+  * pk: fix description of mbedtls_pk_setup_opaque for sign_ext()
+  * pk: fix indentation in description of mbedtls_pk_setup_opaque()
+  * pk: fix description of mbedtls_pk_setup_opaque()
+  * pk: update documentation of mbedtls_pk_setup_opaque() based on #8951
+  * pk: fix documentation for mbedtls_pk_setup_opaque()
+  * pk: improve documentation of mbedtls_pk_setup_opaque()
+  * pk: fix documentation for mbedtls_pk_setup_opaque()
+  * test_suite_pk: test check_pair() also with opaque RSA keys
+  * Fix NULL handling in mbedtls_ssl_config.free() function
+  * Fix compilation of ssl_tls13_generic.c when memcpy() is a function-like macro
+  * Revert "Autogenerated files for 3.6.0"
+  * Fix NULL argument handling in mbedtls_xxx_free() functions
+  * ssl-opt.sh: Improve version selection test titles
+  * test_suite_pk: simplify pk_copy_from_psa_success()
+  * Check C/C++ compilers separately for AppleClang ranlib
+  * Fix compilation on macOS without apple-clang
+  * Remove the workarround for G->m dtls12 tests
+  * Align the case listing with case running in compat.sh
+
+-------------------------------------------------------------------
 Thu Apr  4 14:35:21 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update baselibs.conf

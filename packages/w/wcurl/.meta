@@ -1,0 +1,27 @@
+<package name="wcurl" project="openSUSE:Factory">
+  <title>A simple wrapper around curl to easily download files</title>
+  <description>A simple curl wrapper which lets you use curl to download files
+without having to remember any parameters.
+Simply call wcurl with a list of URLs you want to download and
+wcurl will pick sane defaults.
+
+If you need anything more complex, you can provide any of curl's
+supported parameters via the --curl-options option. Just beware
+that you likely should be using curl directly if your use case is
+not covered.
+
+By default, wcurl will:
+ * Encode whitespaces in URLs.
+ * Download multiple URLs in parallel if the installed curl's
+   version is &gt;= 7.66.0
+ * Follow redirects.
+ * Automatically choose a filename as output
+ * Avoid overwriting files if the installed curl's version
+   is &gt;= 7.83.0 (--no-clobber).
+ * Perform retries.
+ * Set the downloaded file timestamp to the value provided by the
+   server, if available.
+ * Disable curl's URL globbing parser so {} and [] characters in
+   URLs are not treated specially.</description>
+  <devel project="network:utilities" package="wcurl"/>
+</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-inflect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inflect
-Version:        7.0.0
+Version:        7.3.1
 Release:        0
 Summary:        Methods for working on numbers and nouns
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/inflect
 Source0:        https://files.pythonhosted.org/packages/source/i/inflect/inflect-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM typing_extensions-version.patch bsc#[0-9]+ mcepl@suse.com
+# Correct handling of the potential missing Annotated type
+Patch0:         typing_extensions-version.patch
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module more-itertools >= 8.5.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic >= 1.9.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module typeguard}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pydantic >= 1.9.1
-Requires:       python-toml
+Requires:       %{python_module typeguard}
+Requires:       python-more-itertools >= 8.5.0
 BuildArch:      noarch
 %python_subpackages
 

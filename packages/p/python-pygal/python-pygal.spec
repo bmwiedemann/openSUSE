@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygal
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A python svg graph plotting library
 License:        LGPL-3.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-CairoSVG
 BuildArch:      noarch
 # SECTION test requirements

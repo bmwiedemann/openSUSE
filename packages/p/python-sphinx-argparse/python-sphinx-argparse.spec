@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-argparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-argparse
-Version:        0.4.0
+Version:        0.5.2
 Release:        0
 Summary:        Sphinx extension to document argparse commands and options
 License:        MIT
 URL:            https://github.com/ashb/sphinx-argparse
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx_argparse-%{version}.tar.gz
 BuildRequires:  %{python_module CommonMark}
-BuildRequires:  %{python_module Sphinx >= 1.2.0}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,19 +43,18 @@ Sphinx extension that automatically documents argparse commands and options.
 %autosetup -p1 -n sphinx_argparse-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Remove test files, they are in a seperate 'test' module.
-%python_expand rm -r %{buildroot}%{$python_sitelib}/test
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%license LICENSE
-%{python_sitelib}/*
+%license LICENCE.rst
+%{python_sitelib}/sphinxarg
+%{python_sitelib}/sphinx_argparse-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:10:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.4:
+  * Add note on how to disable pretty exception output
+  * Fix typer dependency by removing the `[standard]` extra which
+    is only used on typer-slim.
+  * Typer by default has the extras included.
+  * Bump min. version of typer and fix dependency group name
+  * Update configs for dev tooling
+  * Bump default python version to 3.12
+
+-------------------------------------------------------------------
 Sat Apr  6 12:24:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.1:

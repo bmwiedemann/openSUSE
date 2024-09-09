@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           vegeta
-Version:        12.11.3
+Version:        12.12.0
 Release:        0
 Summary:        HTTP load testing tool and library
 License:        MIT

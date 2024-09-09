@@ -55,4 +55,13 @@
     <comment>KDE Frameworks 6.5.0 (forwarded request 1191717 from krop)</comment>
     <requestid>1192883</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b7c8722abc4e82e96f55e2f600c27458</srcmd5>
+    <version>6.5.0</version>
+    <time>1725885798</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change (kde#488326, boo#1228876):
+  * 0001-Disable-cachegen.patch</comment>
+    <requestid>1199325</requestid>
+  </revision>
 </revisionlist>

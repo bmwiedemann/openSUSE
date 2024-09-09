@@ -149,4 +149,15 @@
     <comment></comment>
     <requestid>1151161</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f241ef24437ac4f59fc19f3785b2dd7f</srcmd5>
+    <version>2.4</version>
+    <time>1725885835</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4
+- Change _service file mode from deprecated &quot;disabled&quot; mode to new &quot;manual&quot; mode to make it work again.
+
+If you have any suggestions for improvement, please let me know! (forwarded request 1195902 from DarkWav)</comment>
+    <requestid>1199323</requestid>
+  </revision>
 </revisionlist>

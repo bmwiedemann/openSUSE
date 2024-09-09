@@ -16,9 +16,10 @@
 #
 
 
-%global tzversion tzdata2018i
+%global spec_version 2.12
+%global tzversion tzdata2024a
 Name:           joda-time
-Version:        2.10.1
+Version:        %{spec_version}.7
 Release:        0
 Summary:        Java date and time API
 License:        Apache-2.0
@@ -27,7 +28,6 @@ URL:            https://www.joda.org/joda-time/
 Source0:        https://github.com/JodaOrg/%{name}/archive/v%{version}.tar.gz
 Source1:        ftp://ftp.iana.org/tz/releases/%{tzversion}.tar.gz
 Source100:      %{name}-build.xml
-Patch0:         joda-time-fix-tests.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -54,7 +54,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch -P 0 -p1
+
 dos2unix LICENSE.txt NOTICE.txt RELEASE-NOTES.txt
 cp %{SOURCE100} build.xml
 
@@ -67,21 +67,23 @@ tar -xzf %{SOURCE1} -C src/main/java/org/joda/time/tz/src/
 
 %build
 %{ant} \
+  -Dproject.version=%{version} \
+  -Dproject.spec.version=%{spec_version} \
   -Djoda-convert.jar=%{_javadir}/joda-convert.jar \
   clean jar javadoc
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
+install -dm0755 %{buildroot}%{_javadir}
 # Don't install a versioned jar and symlink to it, instead install
 # the unversioned jar as per Java Packaging Guidelines
-install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # poms
-install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -dm0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
-install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+install -dm0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 

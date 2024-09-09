@@ -1,7 +1,7 @@
-Index: xca-2.6.0/misc/xca.desktop
+Index: xca-2.7.0/misc/xca.desktop
 ===================================================================
---- xca-2.6.0.orig/misc/xca.desktop
-+++ xca-2.6.0/misc/xca.desktop
+--- xca-2.7.0.orig/misc/xca.desktop
++++ xca-2.7.0/misc/xca.desktop
 @@ -15,5 +15,5 @@ Comment[it]=Interfaccia grafica per gene
  Exec=xca %F
  Icon=de.hohnstaedt.xca

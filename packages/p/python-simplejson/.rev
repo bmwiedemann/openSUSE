@@ -491,4 +491,15 @@
   * New item_sort_key option for encoder to allow fine grained</comment>
     <requestid>1129213</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>47d46fd5c31550b2e6b59d5cef3dde98</srcmd5>
+    <version>3.19.3</version>
+    <time>1725885804</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.3:
+  * Updated test &amp; build matrix to include Python 3.13.
+  * Dropped wheel support for Python 2.7 on macOS.
+  * https://github.com/simplejson/simplejson/pull/326</comment>
+    <requestid>1199460</requestid>
+  </revision>
 </revisionlist>

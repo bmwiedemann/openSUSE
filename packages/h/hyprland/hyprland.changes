@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Sun Sep  8 23:12:21 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.43.0:
+  + A new, big update brought to you by Yours Truly.
+    Many bugfixes, and new features, as always.
+  + New features:
+    - IPC: Add config descriptions (#7377)
+    - animations: add workspace in/out configs
+    - config: Add a variable to prevent groups from merging after
+      being dragged (#7650)
+    - config: Add a window rule to render while unfocused (#7582)
+    - config: Added default button mapping for xf86 keys (#7672)
+    - config: add exec-shutdown for running commands on shutdown
+      (#7683)
+    - core: add option to control which window to focus on close
+      (#7368)
+    - cursormgr: add a new setting to sync gsettings (#7253)
+    - env: Add HYPRLAND_NO_SD_VARS env condition (#7358)
+    - hyprctl: add active and all to switchxkblayout
+    - logs: Add file path to asset ERR log (#7336)
+    - windowrules: add fullscreenstate field (#7466)
+    - xwayland: add option to enable/disable xwayland (#7633)
+  + Fixes:
+    - Fix crash reports having execute permission
+    - Fix missing include needed by clang
+    - build: Fix NO_XWAYLAND compilation (#7538)
+    - config: add missing header for libc++ after 92744b5 (#7403)
+    - config: fix explicit sync option warning (#7293)
+    - config: fix uninitialized values with mode parsing
+    - core: fix crash on monitor removed with gammaControl (#7601)
+    - core: fix data race and a unsigned int rollover (#7278)
+    - cursormgr: fix cursor gsettings on session change (#7295)
+    - data-device: Fix selection mismatch when wlr resets primary
+      selection (#7598)
+    - decorations: fix manual resize not recalculating decos (#7323)
+    - example/config: fix typo in default config (#7446)
+    - gamma-control: fix crash on monitor disconnect (#7353)
+    - helpers: fix: revert to signed arithmetic for cycling through
+      workspaces (#7339)
+    - hyprpm: Fix checking dependencies (#7504)
+    - input: Fix disabling tap-to-click (#7304)
+    - input: Fix modifier keys getting stuck if depressed during
+      config reload (#7486)
+    - install: Prepend ${DESTDIR} when creating hyprland symbolic
+      link (fixes #7280). (#7281)
+    - keybinds: Fix fullscreenState toggling behaviour (#7288)
+    - keybinds: Fix syncFullscreen inconsistent with state when set
+      by fullscreenState (#7343)
+    - keybinds: fixup misused kb state
+    - misc: fix some minor typos (#7530)
+    - pointermgr: fix initial cursorwarp (#7286)
+    - presentation-feedback: minor fixups
+    - protocol: fix logm template checks
+    - render: fixup format mismatch after leaving DS
+    - renderer: minor direct scanout fixes (#7594)
+    - screencopy: fix 10b format r/b flip
+    - screencopy: fixup 10-bit sharing via shm on nvidia
+    - sessionLock: fix misc:allow_session_lock_restore (#7511)
+    - textinput: fix ime activation in some edge cases (#7660)
+    - workspacerules: fix on-created-empty window focus (#7657)
+  + Other:
+    - README: Change image sources from vaxerski/Hyprland to
+      hyprwm/Hyprland (#7315)
+    - Revert "syncobj: wait for deadline instead of available"
+    - compositor: update suspendstate on window move (#7396)
+    - core: Include cstring whenever strncpy is used (#7267)
+    - core: Move to C++26 and use native_handle to CLOEXEC the debug
+      fd (#7219)
+    - core: Preserve existing XDG_CURRENT_DESKTOP (#7347)
+    - core: make most for loops use const references (#7527)
+    - cursor: make inactive_timeout setting a float (#7268)
+    - data-device: send dndFinished when dnd offer is destroyed while
+      unfinished
+    - eventloop: don't dispatch in enterLoop
+    - examples: more systemd examples (#7409)
+    - headers: set correct paths to header files (#7245)
+    - hyprctl: avoid parsing string::npos on invalid cmd (#7544)
+    - hyprpm, hyprctl: update shell completions
+    - hyprpm, hyprctl: remove Makefiles
+    - input: don't emit idle activity when calling
+      simulateMouseMovement (#7649)
+    - input: kb focus mouse focused window if unset (#7666)
+    - input: move idle notify to input handlers (#7659)
+    - input: try to refocus a focusable window when seat grabs are
+      reset (#7669)
+    - internal: introduce new types to avoid unsigned int rollover
+      and signed int overflow (#7216)
+    - internal: removed Herobrine
+    - keybinds: refactor dispatchers to be better (#7331)
+    - keybinds: release mods after sendshortcut (#7581)
+    - layersurface: don't unref from monitor until dtor
+    - layersurface: dont rollover on size_t (#7451)
+    - layersurface: remove layer on destroy from monitor (#7457)
+    - linux-dmabuf: allow on split-node systems
+    - logs: don't get timezone every time logging (#7550)
+    - meson: explicitly specify path for find(1) (#7590)
+    - misc: Rename all instances of "emtpy" to "empty" (#7522)
+    - misc: constify the remaining for loops (#7534)
+    - monitor: avoid dangling references to old monitors being
+      undestroyed
+    - monitors: avoid crash on wayland output removal
+    - output: dont cast enum out of range (#7448)
+    - protocols: avoid crashing in drmlease (#7290)
+    - protocols: destroy new xdgDialog protocol at right time (#7600)
+    - protocols: refactor protocol logging to a macro (#7324)
+    - renderbuffer: ensure framebuffer gets deleted (#7363)
+    - renderer: better lockscreen dead behavior (#7574)
+    - renderer: fade out windows on silent moves
+    - renderer: pass custom modelines to aq
+    - screencopy: nuke unused stuff
+    - sessionLock: ensure sls focus in some edge cases (#7647)
+    - shm: align size to stride (#7383)
+    - syncobj: wait for deadline instead of available
+    - textinput: don't deactivate ime if another ti is focused
+      (#7617)
+    - textinput: send deactivate to ime on destory ti (#7614)
+    - window/xwayland: minor property cleanup
+    - window: don't focus on activate if window isn't mapped yet
+    - windows: support size with pseudo tiled
+    - xcursor: handle file errors when loading xcursor themes (#7326)
+    - xcursormgr: dont apply scale on gsettings (#7316)
+    - xdg-dialog: implement new protocol
+    - xwayland: deactivate xwayland focus if wayland is focused
+      (#7458)
+    - xwayland: update overrideRedirect on map and configure (#7575)
+    - xwaylandmgr: minor refactor to activateSurface
+    - xwm: don't mark selection events as succeeded
+    - xwm: read atom name from xcb (#7546)
+
+-------------------------------------------------------------------
 Thu Aug  8 07:43:20 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.42.0:

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Sep  8 12:43:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.56:
+  * Refactor Lao New Year holidays
+  * Add 1991-2022 Russian substituted holidays
+  * Add Dominica holidays
+  * Add Haiti holidays
+  * Change "St." to "Saint" in holidays names
+  * Update Brunei Darussalam islamic holidays for 2024
+  * Update Cambodian holidays for 2024
+  * Update Dominican Republic holidays: fix Restoration Day
+  * Update HU: add 2025 substituted holidays
+  * Update Philippines holidays
+  * Update SBOM artifact path
+  * Update Snapshot for 0.55 changes
+  * Update `numpy` test requirement
+  * Update pyproject.toml: remove `target-version` from tool.ruff
+  * Add Easter Tuesday to Christian holidays group
+  * Add New Zealand Subdivision Aliases (`EN`, `MI`, HASC)
+  * Add PR labeler
+  * Add Python 3.13 (beta) to CI/CD
+  * Add automatic snapshots update workflow
+  * Migrate deprecated Bosnia-Herzegovina subdivisions to
+    subdivision aliases
+  * Migrate deprecated Italy subdivisions to subdivision aliases
+  * Migrate deprecated United Kingdom subdivisions to subdivision
+    aliases
+  * Restore Malaysia's 3-letter code as subdivisions aliases
+  * Standardize snapshot names
+  * Add Samoa holidays
+  * Fix misleading France subdivision
+  * Update CI/CD: add CodeQL workflow
+  * Update CI/CD: simplify gh release upload
+  * Update Github release upload process
+  * Update SG: add 2025 official holidays
+  * Update UA: move martial law holidays to WORKDAY category
+  * Update utils.py
+  * Add special weekends format for certain countries
+    @PPsyrius, @arkid15r)
+  * Implement simple CycloneDX SBOM generation
+  * Add Mauritania holidays
+  * Fix Malawi tests
+  * Update CI/CD pip caching
+  * Update FI: add unofficial holidays
+  * Update Finland holidays l10n
+  * Update PR template
+  * Update RU: add 2025 substituted holidays
+  * Update docs requirements: revert sphinx to v7.4.7
+  * Add documentation build test to CI/CD
+  * Don't run tests on Github readonly queue push events
+  * Drop PyPy support
+
+-------------------------------------------------------------------
 Mon Jul 22 08:59:26 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to 0.53:

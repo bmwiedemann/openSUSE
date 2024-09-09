@@ -1,12 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:29:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Update python classifier in setup.cfg
+  * Remove six usage
+  * Drop python3.6/3.7 support in testing runtime
+  * Update CI to use unversioned jobs template
+  * Use py3 as the default runtime for tox
+  * Move flake8 as a pre-commit local target
+  * Migrate from testr to stestr
+  * Use TOX\_CONSTRAINTS\_FILE
+  * Adding pre-commit
+
+-------------------------------------------------------------------
 Tue Jun 20 00:36:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing BuildRequires on six. 
+- Add missing BuildRequires on six.
 
 -------------------------------------------------------------------
 Fri Feb 12 13:43:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- replace oslotest with more correct fixtures dependency 
+- replace oslotest with more correct fixtures dependency
 
 -------------------------------------------------------------------
 Fri Sep 18 12:04:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>

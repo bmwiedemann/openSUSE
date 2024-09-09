@@ -17,9 +17,9 @@
 
 
 Name:           dxvk
-Version:        2.3
+Version:        2.4
 Release:        0
-Summary:        Vulkan-based D3D11 implementation for Linux / Wine
+Summary:        Vulkan-based Direct3D 8/9/10/11 implementation for Linux / Wine
 License:        zlib-acknowledgement
 Group:          System/Emulators/PC
 URL:            https://github.com/doitsujin/dxvk
@@ -53,7 +53,7 @@ BuildRequires:  mingw32-headers
 ExclusiveArch:  %{ix86} x86_64
 
 %description
-Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine
+A Vulkan-based translation layer for Direct3D 8/9/10/11 which allows running 3D applications on Linux using Wine.
 
 %prep
 %setup -q

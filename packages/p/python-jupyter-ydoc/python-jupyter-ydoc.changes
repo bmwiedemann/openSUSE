@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 30 11:06:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.1
+  * Fix dict type for python 3.8 #252 (@davidbrochart)
+  * Add undo_manager to Y documents (#248) #251 (@davidbrochart)
+
+-------------------------------------------------------------------
 Mon Jan 22 18:57:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1

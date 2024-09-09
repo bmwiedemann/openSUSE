@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 12:47:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8:
+  * Fix regression where IDNAError exception was not being
+    produced for certain inputs.
+  * Add support for Python 3.13, drop support for Python 3.5 as
+    it is no longer testable.
+  * Documentation improvements
+  * Updates to package testing using Github actions
+
+-------------------------------------------------------------------
 Thu Apr 18 07:30:37 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 3.7 (bsc#1222842, CVE-2024-3651):

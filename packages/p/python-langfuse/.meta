@@ -1,0 +1,6 @@
+<package name="python-langfuse" project="openSUSE:Factory">
+  <title>python-langfuse</title>
+  <description>A client library for accessing langfuse, an open-source LLM engineering platform that helps teams collaboratively debug, analyze, and iterate on their LLM applications.</description>
+  <devel project="devel:languages:python" package="python-langfuse"/>
+  <url>https://github.com/langfuse/langfuse</url>
+</package>

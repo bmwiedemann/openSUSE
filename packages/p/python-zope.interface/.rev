@@ -348,4 +348,21 @@
   * Build windows wheels on GHA.</comment>
     <requestid>1179654</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9ce7ba466c44d27bf2b78c92339c89ff</srcmd5>
+    <version>7.0.3</version>
+    <time>1725885804</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.3:
+  * Fix Assertion 'memb-&gt;type == T_PYSSIZET' failed. for Python &lt;
+    3.12.
+  * Fix reference-counting bug in C module initialization (broken
+    in 7.0).
+  * Fix subclassability of ObjectSpecificationDescriptor (broken
+    in 7.0).
+  * Enable heap-based types (PEP 384) for Python &gt;= 3.11.
+  * Adopt multi-phase module initialization (PEP 489).
+  * Drop support for Python 3.7.</comment>
+    <requestid>1199456</requestid>
+  </revision>
 </revisionlist>

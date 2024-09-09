@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:32:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.3:
+  * Updated test & build matrix to include Python 3.13.
+  * Dropped wheel support for Python 2.7 on macOS.
+  * https://github.com/simplejson/simplejson/pull/326
+
+-------------------------------------------------------------------
 Mon Nov 27 18:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.2:

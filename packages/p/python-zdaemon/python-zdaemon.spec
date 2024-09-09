@@ -19,13 +19,12 @@
 %{?sle15_python_module_pythons}
 %define modname zdaemon
 Name:           python-%{modname}
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Daemon process control library and tools
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zdaemon
 Source:         https://files.pythonhosted.org/packages/source/z/zdaemon/%{modname}-%{version}.tar.gz
-Patch0:         obs-timeout.patch
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module manuel}

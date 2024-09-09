@@ -7,4 +7,41 @@
     <comment>- Initial release of 0.16.0</comment>
     <requestid>1175422</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92ff956dcad7bdec8f95dd1c524f71e0</srcmd5>
+    <version>0.17.1</version>
+    <time>1725885883</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.1:
+  * FIX: Fix stability of stored compiled regex #1369 (larsoner)
+  * ENH: Improve _sanitize_rst #1366 (timhoffm)
+  * Obey prefer_full_module setting when finding backreferences
+    #1364 (QuLogic)
+  * Fix linking to class attributes with prefer_full_module #1363
+    (QuLogic)
+  * Improve minigallery directive path input resolution #1360
+    (lucyleeow)
+  * FIX Allow str path minigallery entries when backreferences
+    off #1355 (lucyleeow)
+  * FIX generate zipfiles when index passed by user #1353
+    (lucyleeow)
+  * DOC Improve doc about joblib warnings #1367 (lucyleeow)
+  * DOC add note on filtering joblib warnings #1362 (lucyleeow)
+  * DOC Minor update to minigallery directive doc #1358
+    (lucyleeow)
+  * MNT Change mark and fixture names for adding files #1365
+    (lucyleeow)
+  * MNT Add warning when ‘examples_dirs’ and ‘gallery_dirs’
+    unequal lengths #1361 (lucyleeow)
+  * Update pyvista in doc CI #1352 (lucyleeow)
+  * MNT Bump version #1350 (lucyleeow)
+  * Introduction tooltip corresponds to the first paragraph #1344
+    (fgmacedo)
+  * FIX Jupyterlite in CircleCI artifact #1336 (lesteve)
+  * MNT: Rename README.rst to GALLERY_HEADER.rst #1321 (timhoffm)
+  * [ENH] Add custom thumbnails for failing examples #1313
+    (tsbinns)
+  * ENH integrate download/launcher links into pydata-sphinx-</comment>
+    <requestid>1199494</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:08:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.1:
+  * addressed an installation bug caused by a duplicate entry script (#142)
+  * pecan no longer has a dependency on six (#144)
+  * pecan now supports SQLAlchemy 2.0 (#143)
+  * pecan no longer supports SQLAlchemy 1.3
+- Drop patches pecan-no-kajiki.patch, sqlalchemy2.patch:
+  * No longer required.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon May 22 11:27:36 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - add sqlalchemy2.patch to support SQLAlchemy 2.0

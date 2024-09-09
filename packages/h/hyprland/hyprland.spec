@@ -22,7 +22,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.rpmlintrc
 Patch100:       opensuse-hyprpm-use-hyprland-devel-subpkg.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++ >= 11
+BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
 BuildRequires:  glslang-devel
 BuildRequires:  meson
@@ -173,6 +173,8 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %{_bindir}/hyprpm
 %dir %{_datadir}/%{shortname}
 %{_datadir}/%{shortname}/hyprland.conf
+%{_datadir}/%{shortname}/lockdead.png
+%{_datadir}/%{shortname}/lockdead2.png
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop
 %dir %{_datadir}/xdg-desktop-portal

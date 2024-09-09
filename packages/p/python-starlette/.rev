@@ -333,4 +333,21 @@ https://build.opensuse.org/request/show/1126958
   * Add proper synchronization to WebSocketTestSession #2597.</comment>
     <requestid>1193696</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>79b299683902f19dd7e4ea70d382a444</srcmd5>
+    <version>0.38.5</version>
+    <time>1725885805</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.38.5:
+  * Schedule `BackgroundTasks` from within `BaseHTTPMiddleware`
+    #2688.
+- update to 0.38.4:
+  * Ensure accurate `root_path` removal in `get_route_path`
+    function #2600
+- update to 0.38.3:
+  * Support for Python 3.13 #2662.
+  * Don't poll for disconnects in `BaseHTTPMiddleware` via
+    `StreamingResponse` #2620.</comment>
+    <requestid>1199466</requestid>
+  </revision>
 </revisionlist>

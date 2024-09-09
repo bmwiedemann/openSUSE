@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep  5 18:12:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop texmaker-rpmlintrc file and use `-DCMAKE_SKIP_RPATH=ON`
+  when configuring to prevent rpaths in binary.
+- Downgrade to GCC 8 (minimum version with full <filesystem>
+  support) for Leap 15.x.
+- Drop erroneous %check section.
+- Drop redundant %suse_update_desktop_file usage.
+- Update License tag: GPL-2.0-or-later instead of GPL-2.0-only.
+
+-------------------------------------------------------------------
+Thu Sep  5 09:32:37 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Added rpmlintrc for build package  
+
+-------------------------------------------------------------------
+Wed Aug 28 20:16:14 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 6.0.0:
+  * Texmaker 6.x versions are designed for Qt6 (Qt5 support is 
+    deprecated and will no more be tested)
+  * reorganization of the source files 
+  * switch to cmake for build system (a qmake .pro file is still 
+    available in the qmake_deprecated subdirectory but should no 
+    more work in the future) 
+  * macosx packages are now built for arm64 architecture (Mx 
+    chipsets) 
+  * a critical bug that happens on windows with large files has 
+    been fixed (limitation of calling a recursive function with 
+    msvc) 
+  * a bug related to the bad detection of % !TEX root = has been 
+    fixed 
+  * the obsolete "svn helper" has been replaced by "git helper" 
+  * texmaker now tries to use the devicePixelRatio of the screen 
+    corresponding to the window of the pdf document instead of 
+    qApp-devicePixelRatio() (in case of use of a second screen for
+    the pdf viewer) 
+  * on gtk based desktop, texmaker now tries first to detect the 
+    gtk4 theme and see if the corresponding theme is available for 
+    Qt 
+  * key pressed detection in presentation wiew for the pdf has been
+    completed
+- Use cmake+Qt6 for builds.
+- For Leap 15.x, use GCC 13 for compilation.
+
+-------------------------------------------------------------------
 Sat Jun 10 09:50:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.4:

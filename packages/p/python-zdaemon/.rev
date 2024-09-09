@@ -211,4 +211,16 @@ Sorry I didn't realize it had a pending request until now. (forwarded request 22
     than just running. When starting a program, the start command doesn't</comment>
     <requestid>1166582</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f7cb32ec1eab1b5b2816c883fcde5b2f</srcmd5>
+    <version>5.1</version>
+    <time>1725885886</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1:
+  * Add support for Python 3.12.
+  * Fix SIGCHLD/wait raise condition associated with the start-
+    test-program option. For details see #33.
+- drop obs-timeout.patch (obsolete)</comment>
+    <requestid>1199499</requestid>
+  </revision>
 </revisionlist>

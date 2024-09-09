@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  7 11:12:27 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add autogen-only-deal-with-json-yaksa-if-enabled.patch to use
+  system version of libjson-c.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:54:55 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v3.0 GA

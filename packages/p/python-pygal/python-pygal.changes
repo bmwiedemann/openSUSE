@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 31 11:57:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.5:
+  * Get rid of the u() helper function
+  * Get rid of the to_unicode() helper function
+  * Get rid of the to_str() helper function
+  * Get rid of _ellipsis and base
+  * Always import Iterable from collections.abc
+
+-------------------------------------------------------------------
 Thu Dec 14 21:24:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:

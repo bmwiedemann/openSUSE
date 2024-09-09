@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  2 16:35:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.2:
+  + The malloc-stats code has been removed from the tests directory
+    the canonical location for it is:
+    https://github.com/behdad/malloc-stats
+  + Cairo now requires a version of pixman equal to, or newer than,
+    0.40.
+  + There have been multiple build fixes for newer versions of GCC
+    for MSVC; for Solaris; and on macOS 10.7.
+  + PNG errors caused by loading malformed data are correctly
+    propagated to callers, so they can handle the case.
+  + Both stroke and fill colors are now set when showing glyphs on
+    a PDF surface.
+  + All the font options are copied when creating a fallback font
+    object.
+  + When drawing text on macOS, Cairo now tries harder to select
+    the appropriate font name.
+  + Cairo now prefers the COLRv1 table inside a font, if one is
+    available.
+  + Cairo requires a C11 toolchain when building.
+
+-------------------------------------------------------------------
 Sat Sep 23 17:18:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.0:

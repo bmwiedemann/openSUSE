@@ -39,4 +39,12 @@
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112744</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fb25540999191a8da5be71fa01be862</srcmd5>
+    <version>1.10</version>
+    <time>1725885797</time>
+    <user>anag+factory</user>
+    <comment>1.10</comment>
+    <requestid>1199279</requestid>
+  </revision>
 </revisionlist>

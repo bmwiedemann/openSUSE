@@ -1,7 +1,7 @@
 #
 # spec file for package texmaker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,34 @@
 #
 
 
+%if %{?is_opensuse} && 0%{?suse_version} <= 1650
+%define gcc_ver 8
+%endif
 Name:           texmaker
-Version:        5.1.4
+Version:        6.0.0
 Release:        0
 Summary:        LaTeX editor
-License:        BSD-3-Clause AND GPL-2.0-only
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.xm1math.net/texmaker/
 Source:         http://www.xm1math.net/texmaker/texmaker-%{version}.tar.bz2
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.7
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-private-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6WebEngineCore)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 Requires:       hunspell
 Requires:       texlive-collection-latexrecommended
 Requires:       web_browser
@@ -50,34 +58,29 @@ code folding and a built-in PDF viewer with synctex support and
 continuous view mode.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-QTDIR=%{_libdir}/qt5
-PATH=$QTDIR/bin:$PATH
-LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
-DYLD_LIBRARY_PATH=$QTDIR/lib:$DYLD_LIBRARY_PATH
-export QTDIR PATH LD_LIBRARY_PATH DYLD_LIBRARY_PATH
-PREFIX=%{_prefix}
-
-find ./ -name ".qmake.stash" -delete -print
-%qmake5 METAINFODIR="%{_datadir}/metainfo" -unix texmaker.pro
-%make_jobs
+%cmake \
+  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_SKIP_RPATH=ON \
+	%{nil}
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 %fdupes %{buildroot}%{_datadir}/%{name}/
-
 # REMOVE DOC FILES PACKAGED ANYWAY USING %%doc
 rm %{buildroot}%{_datadir}/%{name}/{AUTHORS,COPYING,CHANGELOG.txt}
 
 %files
-%doc utilities/AUTHORS utilities/CHANGELOG.txt
-%license utilities/COPYING
-%{_bindir}/texmaker
-%{_datadir}/applications/texmaker.desktop
-%{_datadir}/pixmaps/texmaker.png
-%{_datadir}/texmaker/
+%license COPYING 3rdparty/pdfium/LICENSE
+%doc datas/CHANGELOG.txt AUTHORS 3rdparty/pdfium/AUTHORS
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/%{name}/
 %{_datadir}/metainfo/%{name}.metainfo.xml
 
 %changelog

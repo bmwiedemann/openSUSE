@@ -315,4 +315,20 @@
     <comment></comment>
     <requestid>1088348</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b34e4a679746043ace6f7d0939931394</srcmd5>
+    <version>1.5.1</version>
+    <time>1725885807</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1:
+  * addressed an installation bug caused by a duplicate entry script (#142)
+  * pecan no longer has a dependency on six (#144)
+  * pecan now supports SQLAlchemy 2.0 (#143)
+  * pecan no longer supports SQLAlchemy 1.3
+- Drop patches pecan-no-kajiki.patch, sqlalchemy2.patch:
+  * No longer required.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1199558</requestid>
+  </revision>
 </revisionlist>

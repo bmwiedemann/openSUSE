@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,13 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pecan
-Version:        1.4.2
+Version:        1.5.1
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
-Patch0:         pecan-no-kajiki.patch
-#PATCH-FIX-UPSTREAM https://github.com/pecan/pecan/pull/145  remove six as a requirement, add support for SQLAlchemy 2.0, drop support for SQLAlchemy 1.3
-Patch1:         sqlalchemy2.patch
 BuildRequires:  %{python_module Genshi >= 0.7}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Mako >= 0.4.0}
@@ -42,8 +37,10 @@ BuildRequires:  %{python_module WebOb >= 1.8}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module logutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  uwsgi
 # we need sqlite module
 BuildRequires:  %{pythons}
@@ -60,7 +57,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %if 0%{?suse_version}
@@ -79,10 +76,10 @@ sed -ie "/^uwsgi$/d" test-requirements.txt
 sed -ie "/^pep8$/d" test-requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pecan
 %python_clone -a %{buildroot}%{_bindir}/gunicorn_pecan
@@ -108,6 +105,7 @@ sed -ie "/^pep8$/d" test-requirements.txt
 %doc README.rst
 %python_alternative %{_bindir}/pecan
 %python_alternative %{_bindir}/gunicorn_pecan
-%{python_sitelib}/*
+%{python_sitelib}/pecan
+%{python_sitelib}/pecan-%{version}.dist-info
 
 %changelog

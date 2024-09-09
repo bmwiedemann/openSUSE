@@ -1,17 +1,17 @@
-commit 168e28672992f4c725046b91fda0ffada6ccf842
-Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
-Date:   Mon Oct 17 09:59:01 2022 +0200
+commit 21d336356fcf152e832a17dfe4204699faf39013
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:58:58 2024 +0200
 
-    pc_lookup: replace PTR with void*
+    pc_lookup: replace PTR with void
     
-    PTR is not available in newer glibc versions
+    Fixes compilation issues with newer glibc
     
-    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
 
-diff --git a/pc_lookup.c b/pc_lookup.c
+diff --git pc_lookup.c pc_lookup.c
 index 4c595645813a..4c2a1a30e693 100644
---- a/pc_lookup.c
-+++ b/pc_lookup.c
+--- pc_lookup.c
++++ pc_lookup.c
 @@ -115,7 +115,7 @@ static void
  find_address_in_section (abfd, section, data)
       bfd *abfd;

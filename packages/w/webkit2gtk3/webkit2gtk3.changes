@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  1 16:30:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add revert-271175.patch: This reverts commit 279c9d7, it broke
+  wasm.
+
+-------------------------------------------------------------------
 Tue Aug 13 16:48:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.44.3 (boo#1228696 boo#1228697 boo#1228698):

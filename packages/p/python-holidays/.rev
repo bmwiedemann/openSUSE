@@ -305,4 +305,41 @@
     <comment></comment>
     <requestid>1189027</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb13c0aa96d264890b84819e96ea2b16</srcmd5>
+    <version>0.56</version>
+    <time>1725885862</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.56:
+  * Refactor Lao New Year holidays
+  * Add 1991-2022 Russian substituted holidays
+  * Add Dominica holidays
+  * Add Haiti holidays
+  * Change &quot;St.&quot; to &quot;Saint&quot; in holidays names
+  * Update Brunei Darussalam islamic holidays for 2024
+  * Update Cambodian holidays for 2024
+  * Update Dominican Republic holidays: fix Restoration Day
+  * Update HU: add 2025 substituted holidays
+  * Update Philippines holidays
+  * Update SBOM artifact path
+  * Update Snapshot for 0.55 changes
+  * Update `numpy` test requirement
+  * Update pyproject.toml: remove `target-version` from tool.ruff
+  * Add Easter Tuesday to Christian holidays group
+  * Add New Zealand Subdivision Aliases (`EN`, `MI`, HASC)
+  * Add PR labeler
+  * Add Python 3.13 (beta) to CI/CD
+  * Add automatic snapshots update workflow
+  * Migrate deprecated Bosnia-Herzegovina subdivisions to
+    subdivision aliases
+  * Migrate deprecated Italy subdivisions to subdivision aliases
+  * Migrate deprecated United Kingdom subdivisions to subdivision
+    aliases
+  * Restore Malaysia's 3-letter code as subdivisions aliases
+  * Standardize snapshot names
+  * Add Samoa holidays
+  * Fix misleading France subdivision
+  * Update CI/CD: add CodeQL workflow</comment>
+    <requestid>1199442</requestid>
+  </revision>
 </revisionlist>

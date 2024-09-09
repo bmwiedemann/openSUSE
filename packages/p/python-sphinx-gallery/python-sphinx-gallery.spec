@@ -17,7 +17,7 @@
 
 
 Name:           python-sphinx-gallery
-Version:        0.16.0
+Version:        0.17.1
 Release:        0
 Summary:        Sphinx extension that builds an HTML gallery of examples
 License:        BSD-3-Clause

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-grimoirelab-toolkit
-Version:        1.0.1
+Version:        1.0.4
 Release:        0
 Summary:        Toolkit of common functions used across GrimoireLab
 License:        GPL-3.0-or-later

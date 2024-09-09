@@ -72,4 +72,17 @@
     <comment></comment>
     <requestid>1136190</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5da7341251fb19aa5645dfd9f2152ca7</srcmd5>
+    <version>0.6.3</version>
+    <time>1725885863</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.3:
+  * Compatibility with Flask 3 and Werkzeug 3. #813
+- drop 0001-fix-avoid-Deprecated-werkzeug.urls.url_decode.patch
+  (upstream)
+
+    + Use init_app instead of setup_app</comment>
+    <requestid>1199443</requestid>
+  </revision>
 </revisionlist>

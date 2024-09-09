@@ -186,6 +186,8 @@ Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%
 Patch1:         mpip.unwinder.patch
 Patch2:         Add-return-value-to-non-void-function.patch
 Patch3:         pc_lookup-replace-PTR-with-void.patch
+Patch4:         configure-fix-compilation-error-for-GCC-14.patch
+Patch5:         arch-add-generic-arch-using-GCC-builtins.patch
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  binutils-devel
@@ -246,7 +248,7 @@ This contains the documentation.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%autopatch -p1
+%autopatch -p0
 sed -i -e "/-shared -o \$@/s#\(\${LDFLAGS}\)#\1 -Wl,-soname,\$@#" Makefile.in
 
 %build

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:20:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Drop 3.9 support
+  * Add 3.13 support
+- update to 2.3.0:
+  * Add module name rewrite configuration option
+- update to 2.2.3:
+  * Fix mypy errors due to unneeded type ignores
+  * Fix rendering when docstring starst with a directive
+
+-------------------------------------------------------------------
 Sat Jun 29 05:37:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:

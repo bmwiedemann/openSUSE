@@ -8,7 +8,11 @@
 
   <property file="build.properties"/>
 
-  <property name="build.finalName" value="joda-time-2.10.1"/>
+  <property name="project.version" value="[UNKNOWN]"/>
+  <property name="project.spec.version" value="[UNKNOWN]"/>
+  <property name="project.groupId" value="joda-time"/>
+  <property name="project.artifactId" value="joda-time"/>
+  <property name="build.finalName" value="${ant.project.name}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir.0" value="src/main/java"/>
@@ -104,10 +108,12 @@
       <arg value="europe"/>
       <arg value="northamerica"/>
       <arg value="southamerica"/>
-      <arg value="pacificnew"/>
+      <!--arg value="pacificnew"/-->
       <arg value="etcetera"/>
+      <arg value="factory"/>
       <arg value="backward"/>
-      <arg value="systemv"/>
+      <arg value="backzone"/>
+      <!--arg value="systemv"/-->
     </java>
   </target>
   
@@ -135,8 +141,8 @@
              serialwarn="false" 
              linksource="false" 
              breakiterator="false">
-      <group title="User packages"/>
-      <group title="Implementation packages"/>
+      <!--group title="User packages"/>
+      <group title="Implementation packages"/-->
       <classpath refid="build.classpath"/>
     </javadoc>
   </target>
@@ -153,6 +159,26 @@
 		 manifest="src/conf/MANIFEST.MF"
          excludes="**/package.html">
       <manifest>
+		<attribute name="Implementation-Title" value="org.joda.time"/>
+		<attribute name="Automatic-Module-Name" value="org.joda.time"/>
+		<attribute name="Bundle-License" value="Apache 2.0"/>
+		<attribute name="Package" value="org.joda..time"/>
+		<attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
+		<attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Specification-Vendor" value="Joda.org"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Specification-Title" value="Joda-Time"/>
+		<attribute name="Implementation-Vendor-Id" value="org.joda"/>
+		<attribute name="Bundle-Vendor" value="Joda.org"/>
+		<attribute name="Bundle-DocURL" value="https://www.joda.org/joda-time/"/>
+		<attribute name="Time-Zone-Database-Version" value="2024agtz"/>
+		<attribute name="Implementation-Vendor" value="Joda.org"/>
+		<attribute name="Export-Package"
+			value="org.joda.time;version=${project.version},org.joda.time.base;version=${project.version},org.joda.time.chrono;version=${project.version},org.joda.time.convert;version=${project.version},org.joda.time.field;version=${project.version},org.joda.time.format;version=${project.version},org.joda.time.tz;version=${project.version}"/>
+		<attribute name="Bundle-Name" value="Joda-Time"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Extension-Name" value="joda-time"/>
+		<attribute name="Specification-Version" value="${project.spec.version}"/>
       </manifest>
     </jar>
   </target>

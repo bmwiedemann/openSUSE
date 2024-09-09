@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:34:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.133.0:
+  * Improve performance of ip address caching
+  * Enable building of arm64 macOS builds
+  * Add classifier for python 3.13
+  * Python 3.13 support
+
+-------------------------------------------------------------------
 Wed May  8 10:56:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.132.2:

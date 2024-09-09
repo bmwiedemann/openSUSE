@@ -53,4 +53,14 @@
   * Add basic %check to run packaged executable binary --help (forwarded request 1100664 from jfkw)</comment>
     <requestid>1100665</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e01b2c088b65449e364a579b5e5be532</srcmd5>
+    <version>0.3.28</version>
+    <time>1725885857</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.28:
+  * Fix process command crash when provided with no args
+  * bump build deps (forwarded request 1199386 from amanzini)</comment>
+    <requestid>1199407</requestid>
+  </revision>
 </revisionlist>

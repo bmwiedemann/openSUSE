@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  8 15:44:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * When parsing with correction flag, u,i,v should not be
+    considered as invalid
+  * Fix possible prediction duplicate
+  * Refactor pinyin map generatation with meaningful enum
+  * Allow un -> vn for jqxy
+
+-------------------------------------------------------------------
 Wed May 22 08:45:17 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 1.1.7:

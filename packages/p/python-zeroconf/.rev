@@ -447,4 +447,16 @@
   * Performance regression with ServiceInfo IPv6Addresses</comment>
     <requestid>1172726</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d56027519bba673617a7bdbacf7d7261</srcmd5>
+    <version>0.133.0</version>
+    <time>1725885887</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.133.0:
+  * Improve performance of ip address caching
+  * Enable building of arm64 macOS builds
+  * Add classifier for python 3.13
+  * Python 3.13 support</comment>
+    <requestid>1199500</requestid>
+  </revision>
 </revisionlist>

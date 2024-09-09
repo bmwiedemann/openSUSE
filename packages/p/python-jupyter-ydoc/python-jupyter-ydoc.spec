@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -36,13 +36,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
-Requires:       (python-pycrdt >= 0.8.1 with python-pycrdt < 0.9)
+Requires:       (python-pycrdt >= 0.9 with python-pycrdt < 0.10)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
-BuildRequires:  %{python_module pycrdt >= 0.8.1 with %python-pycrdt < 0.9}
-BuildRequires:  %{python_module pycrdt-websocket >= 0.12.6 with %python-pycrdt-websocket < 0.13}
+BuildRequires:  %{python_module pycrdt >= 0.9 with %python-pycrdt < 0.10}
+BuildRequires:  %{python_module pycrdt-websocket >= 0.14.1 with %python-pycrdt-websocket < 0.15}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module websockets >= 10.0}

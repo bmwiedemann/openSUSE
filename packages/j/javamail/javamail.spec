@@ -16,9 +16,9 @@
 #
 
 
-%global git_tag JAVAMAIL-1_5_2
+%global git_tag JAVAMAIL-1_6_2
 Name:           javamail
-Version:        1.5.2
+Version:        1.6.2
 Release:        0
 Summary:        Java Mail API
 License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0

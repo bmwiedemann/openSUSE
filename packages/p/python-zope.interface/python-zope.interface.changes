@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:11:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.3:
+  * Fix Assertion 'memb->type == T_PYSSIZET' failed. for Python <
+    3.12.
+  * Fix reference-counting bug in C module initialization (broken
+    in 7.0).
+  * Fix subclassability of ObjectSpecificationDescriptor (broken
+    in 7.0).
+  * Enable heap-based types (PEP 384) for Python >= 3.11.
+  * Adopt multi-phase module initialization (PEP 489).
+  * Drop support for Python 3.7.
+
+-------------------------------------------------------------------
 Mon Jun 10 08:29:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.post2:

@@ -109,4 +109,14 @@
   * Avoid exception in PortAudioError.__str__()</comment>
     <requestid>1179664</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2cde8bddb4149cd065239aa2421a9184</srcmd5>
+    <version>0.5.0</version>
+    <time>1725885873</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Remove ASIO support from bundled DLLs (DLLs with ASIO can be
+    manually selected)</comment>
+    <requestid>1199457</requestid>
+  </revision>
 </revisionlist>

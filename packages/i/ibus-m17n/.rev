@@ -339,4 +339,13 @@
   * Add Sinhala translations</comment>
     <requestid>1188832</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>aa22cf5f71d6524cd215d1d59650effc</srcmd5>
+    <version>1.4.32</version>
+    <time>1725885879</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.31
+  * Add Czech and Greek translations</comment>
+    <requestid>1199498</requestid>
+  </revision>
 </revisionlist>

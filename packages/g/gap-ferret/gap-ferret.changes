@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  8 07:35:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.14
+  * Stop using gap-io for tests
+
+-------------------------------------------------------------------
 Tue Sep  3 12:49:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.13

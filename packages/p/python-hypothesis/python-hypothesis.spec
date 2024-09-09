@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.98.9
+Version:        6.112.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -158,6 +158,8 @@ fi
 # https://github.com/HypothesisWorks/hypothesis/issues/3704
 donttest+=" or (test_make_full_patch and covering)"
 donttest+=" or test_overflowing_integers_are_deprecated"
+# suddenly does not raise InvalidArgument with Numpy 2
+donttest+=" or test_unrepresentable_elements_are_deprecated"
 # we're disabling the healthcheck below, obs is too flaky with it
 donttest+=" or fails_health_check or slow_tests or on_healthcheck or a_health_check"
 donttest+=" or test_statistics_with_events_and_target"

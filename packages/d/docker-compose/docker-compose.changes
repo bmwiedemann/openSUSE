@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 20:47:40 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Build with go 1.22 to avoid issues when processing go.mod per
+  https://github.com/golang/go/issues/62278#issuecomment-1698829945
+
+-------------------------------------------------------------------
 Tue Aug 13 17:59:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.2:

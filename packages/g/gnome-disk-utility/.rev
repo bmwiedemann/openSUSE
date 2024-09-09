@@ -692,4 +692,12 @@
     <comment>GNOME 46 - rebased (forwarded request 1158023 from dimstar)</comment>
     <requestid>1159437</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>26d52d923d7007bf7a12ecc5ae3ed4e9</srcmd5>
+    <version>46.1</version>
+    <time>1725885791</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199437</requestid>
+  </revision>
 </revisionlist>

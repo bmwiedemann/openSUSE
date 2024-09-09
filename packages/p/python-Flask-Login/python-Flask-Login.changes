@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  8 12:45:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.3:
+  * Compatibility with Flask 3 and Werkzeug 3. #813
+- drop 0001-fix-avoid-Deprecated-werkzeug.urls.url_decode.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Fri Dec 29 12:13:52 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %{?sle15_python_module_pythons}
@@ -22,7 +30,7 @@ Fri Sep 30 04:41:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     + Use request_loader instead of header_loader.
     + Use user_loaded_from_request instead of user_loaded_from_header.
     + Use app.config["LOGIN_DISABLED"] instead of _login_disabled.
-    + Use init_app instead of setup_app 
+    + Use init_app instead of setup_app
 
 -------------------------------------------------------------------
 Sun Jun  5 04:37:42 UTC 2022 - Arun Persaud <arun@gmx.de>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autobuild
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,31 @@
 
 
 Name:           python-sphinx-autobuild
-Version:        2021.3.14
+Version:        2024.9.3
 Release:        0
 Summary:        Rebuild Sphinx documentation on changes, with live-reload in the browser
 License:        MIT
 URL:            https://github.com/executablebooks/sphinx-autobuild
-Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autobuild/sphinx-autobuild-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autobuild/sphinx_autobuild-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module livereload}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module starlette}
+BuildRequires:  %{python_module uvicorn}
+BuildRequires:  %{python_module watchfiles}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-colorama
-Requires:       python-livereload
 Requires:       python-Sphinx
+Requires:       python-colorama
+Requires:       python-watchfiles
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,18 +49,18 @@ BuildArch:      noarch
 Rebuild Sphinx documentation on changes, with live-reload in the browser.
 
 %prep
-%setup -q -n sphinx-autobuild-%{version}
+%setup -q -n sphinx_autobuild-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/sphinx-autobuild
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_application'
 
 %post
 %python_install_alternative sphinx-autobuild
@@ -64,10 +69,10 @@ Rebuild Sphinx documentation on changes, with live-reload in the browser.
 %python_uninstall_alternative sphinx-autobuild
 
 %files %{python_files}
-%doc AUTHORS NEWS.rst README.md
-%license LICENSE
+%doc AUTHORS.rst NEWS.rst README.rst
+%license LICENSE.rst
 %python_alternative %{_bindir}/sphinx-autobuild
 %{python_sitelib}/sphinx_autobuild
-%{python_sitelib}/sphinx_autobuild-%{version}*-info
+%{python_sitelib}/sphinx_autobuild-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep  7 00:08:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+- Add typing_extensions-version.patch cleaning up problematic
+  handling with Annotated type on different versions of Pythons.
+
+-------------------------------------------------------------------
+Wed Sep  4 12:42:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 7.3.1:
+  * Set minimum version of more-itertools to 8.5 (#215)
+- version 7.3.0:
+  * Restricted typing_extensions to Python 3.8. (#211)
+- version 7.2.1:
+  * Refactored number_to_words toward reduced complexity.
+- version 7.2.0:
+  * Replace pydantic with typeguard (#195)
+- version 7.1.0:
+  * Now handle 'pair of x' in pl_sb_uninflected_complete (#188)
+
+-------------------------------------------------------------------
 Tue Nov  7 14:57:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

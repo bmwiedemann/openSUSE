@@ -499,4 +499,18 @@
   * Update master for stable/2023.2</comment>
     <requestid>1157894</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>299cbc2e1f6462f325bfd630f6422889</srcmd5>
+    <version>5.3.0</version>
+    <time>1725885867</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.0:
+  * reno: Update master for unmaintained/zed
+  * Remove old excludes
+  * Update master for stable/2024.1
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria</comment>
+    <requestid>1199452</requestid>
+  </revision>
 </revisionlist>

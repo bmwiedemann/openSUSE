@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tenacity
-Version:        8.4.2
+Version:        9.0.0
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0

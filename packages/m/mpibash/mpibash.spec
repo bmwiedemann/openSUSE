@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/lanl/MPI-Bash
 Source0:        https://github.com/lanl/MPI-Bash/releases/download/v%{version}/mpibash-%{version}.tar.gz
 Patch0:         Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
+Patch1:         Cast-function-pointer-types-so-they-can-be-compared-without-warnings.patch
 BuildRequires:  bash-devel >= 4.4
 BuildRequires:  libcircle-devel
 BuildRequires:  openmpi-macros-devel
@@ -55,6 +56,11 @@ This package contains example scripts for mpibash.
 
 %build
 %setup_openmpi
+# This is to avoid an issue with execute_shell_function which is declared in
+# /usr/include/bash/execute_cmd.h but it does not exists for "older" bash
+# versions. Once updatig to v1.4 (which will require this header), this flag should
+# be dropped
+export CFLAGS="-Wno-implicit-function-declaration"
 %configure --docdir=%{_docdir}/%{name} --with-plugindir=%{_libdir}/%{name}/ CC=mpicc
 %make_build
 

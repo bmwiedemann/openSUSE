@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt
-Version:        0.8.17
+Version:        0.9.11
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
@@ -29,11 +29,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       (python-anyio >= 4.4 with python-anyio < 5)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 7.4.2}
-#BuildRequires: %%{python_module pydantic >= 2.5.2 with %%python-pydantic < 3}
-BuildRequires:  %{python_module y-py >= 0.7.0~a1}
-BuildRequires:  %{python_module objsize}
+BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
+BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
+BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.26}
 # /SECTION
 %python_subpackages
 

@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        2.2.2
+Version:        2.4.0
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT

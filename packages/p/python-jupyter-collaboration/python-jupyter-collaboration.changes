@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 30 10:41:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.2
+  * Start ystore in a task #302 (@davidbrochart)
+  * adding await ystore start method in prepare method #299
+    (@jzhang20133)
+  * Backport 'handle exception when websocket server start room
+    failed' #289 #298 (@jzhang20133)
+  * Backport 'Log (instead of raise) exceptions when running as a
+    server extension' #295 #297 (@Zsailer)
+
+-------------------------------------------------------------------
 Fri Mar 29 18:12:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.11

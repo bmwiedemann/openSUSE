@@ -39,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -54,6 +54,7 @@ Its features include segmenting a sound file before each of its attacks, perform
 
 %build
 %python_build
+find . -name test_cvec.py -delete -print
 
 %install
 %python_install

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  1 15:16:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.4:
+  + Fix deprecation warnings
+  + Fix introspection annotation for async functions
+  + Plug some memory leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 21 08:17:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.4.2:

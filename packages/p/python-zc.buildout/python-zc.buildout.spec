@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.buildout
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch

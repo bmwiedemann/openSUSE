@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:11:08 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 2.2.3
+  * Changes of version 2.2.3:
+    + Support classes that define `@FromString` but not
+      `@ToString`. This can be used to leniently parse classes
+      where the format used to be a Joda-Convert class.
+    + Switch LGTM to CodeQL.
+  * Changes of version 2.2.2:
+    + Fix deserialization of array classes. Fixes #30
+	+ Switch master to main.
+  * Changes of version 2.2.1:
+    + Ensure `ZoneRegion` is correctly converted.
+  * Changes of version 2.2.0:
+    + Avoid circular loops in dynamic registration of converters.
+	+ Optimise dynamic registration of converters.
+    + Add Tidelift commercial support and security policy.
+  * Changes of version 2.1.2:
+    + Fix `Renamed.ini` to avoid NPE during loading. A null
+      `RenameHandler.INSTANCE` could be observed if `Renamed.ini`
+      referred to a class with a static initializer that referred
+      back to `RenameHandler`.
+	+ Fix build to work on Java 11.
+  * Changes of version 2.1.1:
+    + Log startup issues when using renames by configuration.
+  * Changes of version 2.1:
+    + Register renames by configuration. Add `Renamed.ini` to
+      configure renames more cleanly. Fixes #26.
+  * Changes of version 2.0.2:
+    + Enhance speed of numeric array parsing. Previous version used
+      regex patterns, which were slower.
+  * Changes of version 2.0.1:
+    + Add "classic" variant for systems that can't handle
+      module-info.class.
+  * Changes of version 2.0:
+    + Add module-info for Java 9. Fixes #21.
+    + Update and redesign build to support Java 9.
+    + Remove direct dependency on Guava by copying code into
+      Joda-Convert. The code previously used reflection
+      setAccessible() which would not work on Java 9. The best
+      alternative was to copy (shaded) the relevant part of Guava
+      (same license). This also allowed the converter for `Type` to
+      work without Guava. Given all this, Joda-Convert no longer
+      has an optional dependency on Guava. It will still adapt and
+      setup a converter for `TypeToken` if Guava is present. This
+      adaptation will also work on Java 9, provided the modules are
+      loaded in the same layer. Fixes #20, #22.
+    + Enable build to work on Java 9.
+    + Dynamic Java 8 code must not extend Guava code. Incorrect
+      setup of reflection-based converters. Fixes #19.
+    + Avoid bridge and synthetic methods in reflection. If an
+      annotation is copied to the bridge/synthetic method it causes
+      trouble. Fixes #23.
+
+-------------------------------------------------------------------
 Tue Mar 22 17:10:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

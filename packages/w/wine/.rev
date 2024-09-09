@@ -5290,4 +5290,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - 6256.patch: upstream</comment>
     <requestid>1195842</requestid>
   </revision>
+  <revision rev="449" vrev="1">
+    <srcmd5>6339a899fb6c3af97d975d62ebaa17b7</srcmd5>
+    <version>9.17</version>
+    <time>1725885834</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.17 release
+  - Window surface scaling on High DPI displays.
+  - Bundled vkd3d upgraded to version 1.13.
+  - Mono engine updated to version 9.3.0
+  - Improved CPU detection on ARM64.
+  - Various bug fixes.
+- update staging to 9.17 release
+- updated bundle versions provides</comment>
+    <requestid>1199324</requestid>
+  </revision>
 </revisionlist>

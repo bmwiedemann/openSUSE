@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  9 05:56:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.8
+  * Allow GC_size() argument to be null
+  * Fix 'un-mprotect vdb failed' abort with out-of-memory reason
+    on Linux
+  * Fix GC_is_visible for case of arg pointing exactly to object
+    upper bound
+  * Fix double lock in GC_malloc called from backtrace()
+  * Fix heap blocks size computation by GC_get_memory_use
+  * Fix infinite resend lost signals if a thread is restarted by
+    SIGQUIT
+  * Fix null pointer dereference in GC_is_visible if type_descr
+    is null
+  * Fix potential address overflow in GC_add_to_heap
+  * Fix potential buffer overrun during read in GC_text_mapping
+  * Use atomic store to set GC_first_nonempty in
+    GC_do_parallel_mark
+
+-------------------------------------------------------------------
 Sun Feb  4 09:20:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.6

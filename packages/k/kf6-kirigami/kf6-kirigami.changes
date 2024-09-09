@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  7 08:46:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#488326, boo#1228876):
+  * 0001-Disable-cachegen.patch
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

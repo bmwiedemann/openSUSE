@@ -226,4 +226,19 @@
     bars</comment>
     <requestid>1183919</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9233184dd15ec21c23042251a46dd5a8</srcmd5>
+    <version>2.4.0</version>
+    <time>1725885874</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * Drop 3.9 support
+  * Add 3.13 support
+- update to 2.3.0:
+  * Add module name rewrite configuration option
+- update to 2.2.3:
+  * Fix mypy errors due to unneeded type ignores
+  * Fix rendering when docstring starst with a directive</comment>
+    <requestid>1199458</requestid>
+  </revision>
 </revisionlist>

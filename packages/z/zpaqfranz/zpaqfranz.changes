@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Sep  7 15:23:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 60.6:
+  * Better -stdin management
+    Now files added with -stdin should be deduplicated as well as
+    those added manually (up to the previous version the
+    deduplicator was less efficient, for a whole series of
+    reasons long to explain)
+  * New comparehex command
+    This command performs an operation that happens very
+    frequently, namely comparing two lines (typically HASH codes)
+    present in two files. If the codes are the same it exits with
+    OK. You can also impose the expected length of the hash.
+  * Counts within more than one file the occurrences of a certain
+    string, and returns OK if the number is the expected one In
+    essence, within a log file, it counts how many positive
+    results there are.
+  * If you don't select a string to search for, it will use the
+    default one for OKs with the -big switch
+  * During program termination with Control-C press, a better
+    management of the deletion of files created with -chunk is
+    performed.
+  * It might also perform rollback of .zpaq files, maybe in the
+    future.
+  * Apparently it should work in a portable way across various
+    platforms, or at least I hope so.
+  * The problem of terminating a multithreaded system based on a
+    condition is not trivial, even from a performance
+    perspective. I used "dirty tricks", we'll see in the future.
+  * Improvement in the creation of temporary files, for the use
+    of multiple zpaqfranz processes simultaneously
+  * Temporary files are created inside different subfolders
+    (marked with mtime) in order to reduce the risk of
+    "collision" if multiple zpaqfranz are launched simultaneously.
+  * Used to automate many convenient functions for backup logs.
+  * Use -find/replace to fix path (if needed); -ssd for M/T
+  * The t command (without a path) do NOT read something from
+    filesystem
+  * You have to use the t command WITH a path (or use the -verify
+    switch)
+  * The brand new -crc32 switch is makes a triple CRC-32
+    comparing, READING from the filesystem.
+  * In this case, the -find and -replace switches can be useful
+    to transform the stored paths into physical paths (if they
+    are different)
+  * New -csv and -csvhf switches for l (list)
+  * -external in add
+  * hashdeep format
+    But it's still using zpaqfranz: any bugs could still affect
+    its reliability
+  * For delicate situations we use an external program, which
+    therefore doesn't have the possible bugs of zpaqfranz, such
+    as hashdeep (in the Windows version hashdeep64 is faster)
+
+-------------------------------------------------------------------
 Wed Jun 19 20:53:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 59.8:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  7 06:32:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 9.3.10:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&from=9.3.8&to=9.3.10
+  and upstream still doesn’t provide any abbreviated version.
+
+-------------------------------------------------------------------
 Mon Jul 22 10:08:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing dependency … python3-devel.

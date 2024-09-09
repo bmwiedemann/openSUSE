@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-dask-expr%{psuffix}
-Version:        1.1.11
+Version:        1.1.13
 Release:        0
 Summary:        High Level Expressions for Dask
 License:        BSD-3-Clause
@@ -39,9 +39,9 @@ BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dask = 2024.8.1
+Requires:       python-dask = 2024.8.2
 Requires:       python-pandas >= 2
-Requires:       python-pyarrow >= 7.0.0
+Requires:       python-pyarrow >= 14.0.1
 Provides:       python-dask_expr = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
@@ -49,7 +49,7 @@ BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask-expr = %{version}}
 BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module pandas >= 2}
-BuildRequires:  %{python_module pyarrow >= 7.0.0}
+BuildRequires:  %{python_module pyarrow >= 14.0.1}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages

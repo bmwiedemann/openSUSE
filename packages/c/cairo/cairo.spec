@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define build_xcb_backend 1
 
 Name:           cairo
-Version:        1.18.0
+Version:        1.18.2
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1

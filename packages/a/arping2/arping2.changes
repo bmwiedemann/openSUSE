@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  6 14:51:47 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 2.25
+  * seccomp (default disabled): Allow some more syscalls
+  * seccomp (default disabled): Move some checks from build time to runtime
+  * Sane output and exit code when sending ARP replies
+  * Work around libpcap bug when linking with musl
+
+-------------------------------------------------------------------
 Tue Jan  2 13:43:30 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.24

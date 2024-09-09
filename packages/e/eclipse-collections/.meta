@@ -1,0 +1,16 @@
+<package name="eclipse-collections" project="openSUSE:Factory">
+  <title>Collections framework for Java</title>
+  <description>Eclipse Collections is a comprehensive collections library for Java. The
+library enables productivity and performance by delivering an expressive and
+efficient set of APIs and types. The iteration protocol was inspired by the
+Smalltalk collection framework, and the collections are compatible with the
+Java Collection Framework types.
+
+Eclipse Collections is compatible with Java 8+. Eclipse Collections is a part
+of the OpenJDK Quality Outreach program, and it is validated for different
+versions of the OpenJDK.
+
+</description>
+  <devel project="Java:packages" package="eclipse-collections"/>
+  <url>https://www.eclipse.org/collections</url>
+</package>

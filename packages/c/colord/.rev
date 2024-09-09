@@ -756,4 +756,12 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment></comment>
     <requestid>1190081</requestid>
   </revision>
+  <revision rev="92" vrev="7">
+    <srcmd5>b61b3c88e0381c3ba4a33a347697628a</srcmd5>
+    <version>1.4.6</version>
+    <time>1725885790</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199436</requestid>
+  </revision>
 </revisionlist>

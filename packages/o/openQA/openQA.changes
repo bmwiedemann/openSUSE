@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 06 17:05:35 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1725637127.f5fba44a:
+  * Avoid escaping backslashes in regex for QEMU binary
+  * Improve unit tests for check whether QEMU is running
+  * Bump debug from 4.3.6 to 4.3.7
+  * t: Move git gru tasks into an extra test file
+  * Tell user the reason for a failure
+
+-------------------------------------------------------------------
 Wed Sep 04 09:04:47 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1725368178.01cdac6f:

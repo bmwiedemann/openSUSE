@@ -1453,4 +1453,35 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1187364</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>fe42e6bb84e5b0b4bdc0a45b7d1636ee</srcmd5>
+    <version>87.0</version>
+    <time>1725885845</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 87.0
+  New features and enhancements:
+  * mkvmerge: chapters: added support for specifying MPLS files
+    with `--chapters`, too, not just as regular source files.
+    The documentation stated this was possible already, but that
+    wasn't actually the case.
+  * MKVToolNix GUI: multiplexer: added a progress dialog that is
+    shown during file identification.
+  * MKVToolNix GUI: jobs: the status bar now differentiates
+    between numbers of warnings/errors that occurred in the
+    current session and those that occurred before the current
+    session.
+  Bug fixes:
+  * mkvmerge: AAC parser: LOAS/LATM streams: if the first
+    `AudioSpecificConfig`
+    element is not found within the first LOAS/LATM frame,
+    `mkvmerge` will no longer discard the frames before it but
+    defer parsing them until after it has found the
+    `AudioSpecificConfig` element.
+  * MKVToolNix GUI: job queue: fixed the GUI crashing when
+    re-ordering the jobs in the job queue.
+  Build system changes:
+  * The bundled `fmt` library was updated to v10.2.1.
+</comment>
+    <requestid>1199655</requestid>
+  </revision>
 </revisionlist>

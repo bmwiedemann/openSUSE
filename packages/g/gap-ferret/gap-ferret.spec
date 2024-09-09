@@ -17,7 +17,7 @@
 
 
 Name:           gap-ferret
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        GAP: Backtrack Search in Permutation Groups
 License:        MPL-2.0

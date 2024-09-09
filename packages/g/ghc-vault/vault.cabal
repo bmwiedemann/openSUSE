@@ -1,6 +1,6 @@
 Name:               vault
 Version:            0.3.1.5
-x-revision: 7
+x-revision: 8
 Synopsis:           a persistent store for values of arbitrary types
 Description:
   A /vault/ is a persistent store for values of arbitrary types.
@@ -22,10 +22,7 @@ Copyright:          (c) Heinrich Apfelmus 2011-2013
 
 build-type:         Simple
 cabal-version:      >= 1.10
-Tested-With:         GHC == 7.6.3
-                    ,GHC == 7.8.4
-                    ,GHC == 7.10.3
-                    ,GHC == 8.0.2
+Tested-With:         GHC == 8.0.2
                     ,GHC == 8.2.2
                     ,GHC == 8.4.4
                     ,GHC == 8.6.5
@@ -34,7 +31,7 @@ Tested-With:         GHC == 7.6.3
                     ,GHC == 9.0.2
                     ,GHC == 9.2.8
                     ,GHC == 9.4.8
-                    ,GHC == 9.6.5
+                    ,GHC == 9.6.6
                     ,GHC == 9.8.2
                     ,GHC == 9.10.1
 
@@ -58,7 +55,7 @@ Library
     build-depends:      base >= 4.5 && < 4.21,
                         containers >= 0.4 && < 0.8,
                         unordered-containers >= 0.2.3.0 && < 0.3,
-                        hashable >= 1.1.2.5 && < 1.5
+                        hashable >= 1.1.2.5 && < 1.6
 
     if impl(ghc < 8.0)
         build-depends:  semigroups >= 0.1 && < 1.0

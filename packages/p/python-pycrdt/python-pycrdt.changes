@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep  6 17:56:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.11
+  * Add Doc.new_transaction() sync and async context managers by
+    @davidbrochart in #154
+
+-------------------------------------------------------------------
+Fri Aug 30 10:27:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.8
+  * Add update API by @Wh1isper in #148
+- Changes from 0.8.17 to 0.9.8
+  * Check origin in nested transactions by @davidbrochart in #146
+  * Move global origin registry to document by @davidbrochart in
+    #145
+  * Fix origin by @davidbrochart in #144
+  * Support transaction origin by @davidbrochart in #142
+  * Bump pyo3 v0.22.2 by @davidbrochart in #143
+  * Bump yrs v0.19.2 by @davidbrochart in #140
+  * Allow multithreading by @davidbrochart in #137
+  * Support undo manager expand_scope by @davidbrochart in #128
+  * Export more from sync by @davidbrochart in #127
+  * Add sync protocol (v1) by @davidbrochart in #124
+  * Add undo manager by @davidbrochart in #119
+  * Raise ValueError on Doc.get_update() error by @davidbrochart in
+    #118
+  * Ignore empty updates by @davidbrochart in #107, #111
+  * really drop python<=support by @kloczek in #96
+  * Shared Types Popped from Shared Map are Empty by @jbdyn in #94
+
+-------------------------------------------------------------------
 Fri Jun 28 00:36:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on pytest. 

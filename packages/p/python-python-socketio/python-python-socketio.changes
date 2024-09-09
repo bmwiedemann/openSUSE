@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep  6 06:24:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 5.11.4
+  * Prevent crash when client sends empty event
+  * Add missing `to` argument in manager's `emit()` method (#1374)
+  * Reorganization of server documentation (#1350)
+  * Update documentation note about Sanic issues (#1365)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
+Tue Sep  3 04:58:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not use python_module in Requires/Suggests. 
+
+-------------------------------------------------------------------
+Wed Aug 14 17:15:24 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Update to 5.11.3
+  * New shutdown() method added to the client #1333 (commit)
+  * Ignore catch-all namespace in client connections #1351 (commit)
+  * Accept 0 as a callback id #1329 (commit) (thanks Ruslan Bel'kov!)
+  * Minor updates to the server and client documentation (commit)
+  * Remove outdated information in intro section of documentation #1337 (commit)
+  * Fixed typos in server documentation #1331 (commit) (thanks John Sigg!)
+
+-------------------------------------------------------------------
 Fri Dec  1 16:43:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}

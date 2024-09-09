@@ -18,7 +18,7 @@
 
 %define pver a869962f051504dd2c1dedeb3bc3d266c17070c1
 Name:           nomacs
-Version:        3.19.0
+Version:        3.19.1
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later

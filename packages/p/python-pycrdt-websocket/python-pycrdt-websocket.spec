@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt-websocket
-Version:        0.12.7
+Version:        0.14.2
 Release:        0
 Summary:        WebSocket connector for pycrdt
 License:        MIT
@@ -29,19 +29,20 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aiosqlite >= 0.18.0
 Requires:       python-anyio >= 3.6.2
-Requires:       python-pycrdt >= 0.8.7
+Requires:       (python-pycrdt >= 0.9 with python-pycrdt < 0.10)
+Requires:       (python-sqlite-anyio >= 0.2.3 with python-sqlite-anyio < 0.3.0)
 Provides:       python-pycrdt_websocket = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aiosqlite >= 0.18.0}
+BuildRequires:  %{python_module sqlite-anyio >= 0.2.3 with %python-sqlite-anyio < 0.3.0}
 BuildRequires:  %{python_module anyio >= 3.6.2}
-BuildRequires:  %{python_module pycrdt >= 0.8.7}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module httpx-ws >= 0.5.2}
+BuildRequires:  %{python_module hypercorn if %python-base >= 3.11}
+BuildRequires:  %{python_module pycrdt >= 0.9 with %python-pycrdt < 0.10}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module uvicorn}
-BuildRequires:  %{python_module websockets >= 10.0}
+BuildRequires:  %{python_module trio}
 BuildRequires:  nodejs
 # /SECTION
 %python_subpackages
@@ -62,7 +63,9 @@ It can be used to create collaborative web applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# switch off testing for python310: no hypercorn
+python310_args=-V
+%pytest ${$python_args}
 
 %files %{python_files}
 %{python_sitelib}/pycrdt_websocket

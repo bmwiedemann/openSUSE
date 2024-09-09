@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/docker/compose
 Source:         compose-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.22
 Requires:       docker
 Requires:       docker-compose-switch
 

@@ -211,9 +211,9 @@ index 6988547..036c705 100644
 +    if (!WIFEXITED(status) || WEXITSTATUS(status) != 0)
 +        return false;
 +
-     std::vector<std::string> deps = {"meson", "cpio", "cmake"};
-     for (auto& d : deps) {
-         if (!execAndGet("which " + d + " 2>&1").contains("/"))
+     std::vector<std::string> deps = {"meson", "cpio", "cmake", "pkg-config"};
+     for (auto const& d : deps) {
+         if (!execAndGet("command -v " + d).contains("/"))
 -- 
 2.45.2
 

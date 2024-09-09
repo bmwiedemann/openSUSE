@@ -94,4 +94,24 @@
     <comment>- Add missing BuildRequires on six.</comment>
     <requestid>1093846</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31a15452977b43eaaf131073c5b6f0e7</srcmd5>
+    <version>2.0.0</version>
+    <time>1725885882</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * Update python classifier in setup.cfg
+  * Remove six usage
+  * Drop python3.6/3.7 support in testing runtime
+  * Update CI to use unversioned jobs template
+  * Use py3 as the default runtime for tox
+  * Move flake8 as a pre-commit local target
+  * Migrate from testr to stestr
+  * Use TOX\_CONSTRAINTS\_FILE
+  * Adding pre-commit
+
+- Add missing BuildRequires on six.
+- replace oslotest with more correct fixtures dependency</comment>
+    <requestid>1199493</requestid>
+  </revision>
 </revisionlist>

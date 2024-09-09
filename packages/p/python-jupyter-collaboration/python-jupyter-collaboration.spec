@@ -20,15 +20,14 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
-%define python3distversion 2.0.11
+%define python3distversion 2.1.2
 Name:           python-jupyter-collaboration%{psuffix}
-Version:        2.0.11
+Version:        2.1.2
 Release:        0
 Summary:        Jupyter Server Extension Providing Y Documents
 License:        BSD-3-Clause
@@ -46,10 +45,11 @@ BuildRequires:  python-rpm-macros
 Requires:       jupyter-collaboration = %{version}
 Requires:       python-jsonschema >= 4.18.0
 Requires:       python-jupyter_events >= 0.10.0
+Requires:       python-pycrdt
 Requires:       (python-jupyter_server >= 2.0.0 with python-jupyter_server < 3.0.0)
 Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
 Requires:       (python-jupyter_ydoc >= 2.0.0 with  python-jupyter_ydoc < 3.0.0)
-Requires:       (python-pycrdt-websocket >= 0.12.5 with python-pycrdt-websocket < 0.13.0)
+Requires:       (python-pycrdt-websocket >= 0.14 with python-pycrdt-websocket < 0.15)
 Provides:       python-jupyter_collaboration = %{version}-%{release}
 Obsoletes:      python-jupyter-server-ydoc < 1
 Obsoletes:      python-jupyter_server_ydoc < 1

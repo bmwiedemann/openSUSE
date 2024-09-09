@@ -108,4 +108,25 @@
   * Fix capitalization issues in processes where more than one word</comment>
     <requestid>1124031</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c128d2c8732f22823d5c06f3d29a0886</srcmd5>
+    <version>7.3.1</version>
+    <time>1725885798</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Add typing_extensions-version.patch cleaning up problematic
+  handling with Annotated type on different versions of Pythons.
+
+- update to 7.3.1:
+  * Set minimum version of more-itertools to 8.5 (#215)
+- version 7.3.0:
+  * Restricted typing_extensions to Python 3.8. (#211)
+- version 7.2.1:
+  * Refactored number_to_words toward reduced complexity.
+- version 7.2.0:
+  * Replace pydantic with typeguard (#195)
+- version 7.1.0:
+  * Now handle 'pair of x' in pl_sb_uninflected_complete (#188)</comment>
+    <requestid>1199303</requestid>
+  </revision>
 </revisionlist>

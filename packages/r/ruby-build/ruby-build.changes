@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  6 14:02:03 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240903.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240903
+  * Added 3.3.5
+  * Clear LC_ALL for tr call by @headius in #2429
+  * Auto update Ruby definition with Ruby releases by @hsbt in #2430
+
+-------------------------------------------------------------------
 Sat Jul 27 16:59:05 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240727.

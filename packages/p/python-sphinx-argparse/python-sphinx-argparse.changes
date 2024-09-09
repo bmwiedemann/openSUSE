@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:18:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.2:
+  * Fix formatting of empty-string default values.
+    Turner.
+  * Fix autodoc_mock_imports support.
+  * Properly declare supported Sphinx and Docutils versions.
+  * Fix tests and ensure tests run in CI.
+  * Add HTML tests to avoid regressions.
+  * Escape reStructuredText special characters in the default
+    value.
+  * Fix the options formatter for manpages.
+  * Handle None return from :py:func:`shutil.which`.
+  * Drop support for Python 3.7, 3.8, and 3.9.
+  * Adopt Flit for packaging.
+  * Make argument and option section IDs more unique.
+  * Fix cases where a suppressed default was visible.
+  * Support autodoc_mock_imports.
+
+-------------------------------------------------------------------
 Sun May 14 18:40:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.0:

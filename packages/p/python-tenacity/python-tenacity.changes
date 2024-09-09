@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:40:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Respects `min` argument for `wait_random_exponential`
+  * Bump major version to warn API breakage on statistics
+    attribute
+- update to 8.5.0:
+  * fix: Restore contents of retry attribute for wrapped
+    functions
+
+-------------------------------------------------------------------
 Thu Sep  5 09:19:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix build on Leap 15.6

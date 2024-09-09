@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:31:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.1:
+  * FIX: Fix stability of stored compiled regex #1369 (larsoner)
+  * ENH: Improve _sanitize_rst #1366 (timhoffm)
+  * Obey prefer_full_module setting when finding backreferences
+    #1364 (QuLogic)
+  * Fix linking to class attributes with prefer_full_module #1363
+    (QuLogic)
+  * Improve minigallery directive path input resolution #1360
+    (lucyleeow)
+  * FIX Allow str path minigallery entries when backreferences
+    off #1355 (lucyleeow)
+  * FIX generate zipfiles when index passed by user #1353
+    (lucyleeow)
+  * DOC Improve doc about joblib warnings #1367 (lucyleeow)
+  * DOC add note on filtering joblib warnings #1362 (lucyleeow)
+  * DOC Minor update to minigallery directive doc #1358
+    (lucyleeow)
+  * MNT Change mark and fixture names for adding files #1365
+    (lucyleeow)
+  * MNT Add warning when ‘examples_dirs’ and ‘gallery_dirs’
+    unequal lengths #1361 (lucyleeow)
+  * Update pyvista in doc CI #1352 (lucyleeow)
+  * MNT Bump version #1350 (lucyleeow)
+  * Introduction tooltip corresponds to the first paragraph #1344
+    (fgmacedo)
+  * FIX Jupyterlite in CircleCI artifact #1336 (lesteve)
+  * MNT: Rename README.rst to GALLERY_HEADER.rst #1321 (timhoffm)
+  * [ENH] Add custom thumbnails for failing examples #1313
+    (tsbinns)
+  * ENH integrate download/launcher links into pydata-sphinx-
+    theme secondary sidebar #1312 (Charlie-XIAO)
+  * add option for zip downloads #1299 (jamiecook)
+  * Allow setting animation format from gallery config #1243
+    (QuLogic)
+  * Fix handling of multi-module intersphinx registries #1320
+    (QuLogic)
+  * BUG: Fix bug with traceback with SyntaxError #1301 (larsoner)
+  * DOC Add napari to users #1346 (lucyleeow)
+  * DOC Fix nested_sections #1339 (lucyleeow)
+  * DOC Improve nested_sections #1326 (lucyleeow)
+  * DOC: Remove definition lists from contribution guide #1318
+    (QuLogic)
+  * MNT: fixed documentation links in the readme #1310 (story645)
+  * MNT: Fix gallery_conf changes do not need to be returned
+    #1347 (lucyleeow)
+  * MNT: Sort imports and add to pre commit #1337 (lucyleeow)
+  * MNT: Refactor generate_file_rst #1335 (lucyleeow)
+  * MNT: Refactor _fill_gallery_conf_defaults #1334 (lucyleeow)
+  * MNT Use os.sep everywhere #1333 (lucyleeow)
+  * MNT: Refactor generate_dir_rst and generate_gallery_rst #1332
+    (lucyleeow)
+  * MNT: Add ipython to dev dependencies #1329 (lucyleeow)
+  * Fix make file clean in tinybuild #1327 (lucyleeow)
+  * Bump the actions group with 5 updates #1325 (dependabot[bot])
+  * Include dev dependencies in pyproject.toml and update docs on
+    requirements #1317 (AlexSzatmary)
+  * MNT: Turn the block tuple into a namedtuple #1303 (timhoffm)
+  * lint: define codespell in pyproject.toml #1298 (Borda)
+  * MAINT Bump version 0.17 #1297 (lucyleeow)
+
+-------------------------------------------------------------------
 Tue May 21 04:24:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.16.0 
+- Initial release of 0.16.0

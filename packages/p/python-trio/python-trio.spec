@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-trio%{psuffix}
-Version:        0.25.1
+Version:        0.26.2
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT

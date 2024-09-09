@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        A family of combinators for defining webservices APIs
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
@@ -34,8 +33,6 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bifunctors-devel
@@ -46,6 +43,8 @@ BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-constraints-devel
 BuildRequires:  ghc-constraints-prof
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-http-api-data-devel
@@ -65,10 +64,6 @@ BuildRequires:  ghc-singleton-bool-devel
 BuildRequires:  ghc-singleton-bool-prof
 BuildRequires:  ghc-sop-core-devel
 BuildRequires:  ghc-sop-core-prof
-BuildRequires:  ghc-string-conversions-devel
-BuildRequires:  ghc-string-conversions-prof
-BuildRequires:  ghc-tagged-devel
-BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-transformers-devel
@@ -84,11 +79,9 @@ BuildRequires:  ghc-quickcheck-instances-prof
 %endif
 
 %description
-A family of combinators for defining webservices APIs and serving them
-
+A family of combinators for defining webservices APIs and serving them .
 You can learn about the basics in the
-<http://docs.servant.dev/en/stable/tutorial/index.html tutorial>.
-
+<http://docs.servant.dev/en/stable/tutorial/index.html tutorial>. .
 <https://github.com/haskell-servant/servant/blob/master/servant/CHANGELOG.md
 CHANGELOG>.
 
@@ -120,7 +113,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

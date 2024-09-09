@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  5 09:04:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- version update to 2.7.0
+  * Database Schema changed and is not backwards-compatible. Backup your database.
+  * Drivers for SQL Servers must be installed separately since 2.5.0
+  * full changelog at https://hohnstaedt.de/xca-doc/html/changelog.html#xca-2-7-0-tue-aug-27-2024
+
+- switched to QT6
+- added fdupes to handle duplicate files during package build
+
+-------------------------------------------------------------------
 Thu Apr  4 13:18:04 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.

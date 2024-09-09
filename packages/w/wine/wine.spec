@@ -41,8 +41,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.16
-Version:        9.16
+%define realver 9.17
+Version:        9.17
 Release:        0
 
 %if "%{flavor}" != ""
@@ -196,7 +196,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.16
+%define staging_version 9.17
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -205,21 +205,21 @@ BuildRequires:  python3
 %endif
 # wine bundles multiple unix libraries to be able to build PE files without dependencies
 # current versions are from 7.22 (update this if you update the versions below):
-Provides:       bundled(FAudio) = 23.12.0
-Provides:       bundled(fluidsynth) = 2.3.3
-Provides:       bundled(jpeg) = 9e
+Provides:       bundled(FAudio) = 24.06
+Provides:       bundled(fluidsynth) = 2.3.5
+Provides:       bundled(jpeg) = 9f
 Provides:       bundled(libgsm) = 1.10.19
 Provides:       bundled(libjxr) = 1.1
-Provides:       bundled(liblcms2) = 2.15
-Provides:       bundled(libpng) = 1.6.40
-Provides:       bundled(libxml2) = 2.11.5
-Provides:       bundled(libxslt) = 1.1.38
-Provides:       bundled(mpg123) = 1.32.2
+Provides:       bundled(liblcms2) = 2.16
+Provides:       bundled(libpng) = 1.6.43
+Provides:       bundled(libxml2) = 2.11.7
+Provides:       bundled(libxslt) = 1.1.39
+Provides:       bundled(mpg123) = 1.32.5
 Provides:       bundled(musl) = 1.2.3
-Provides:       bundled(openldap2) = 2.5.16
+Provides:       bundled(openldap2) = 2.5.17
 Provides:       bundled(tiff) = 4.6.0
-Provides:       bundled(vkd3d) = 1.10
-Provides:       bundled(zlib) = 1.3
+Provides:       bundled(vkd3d) = 1.13
+Provides:       bundled(zlib) = 1.3.1
 
 %description
 Wine is a compatibility layer capable of running Windows

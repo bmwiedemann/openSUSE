@@ -1,8 +1,8 @@
---- fd-10.1.0/Cargo.toml	2024-05-08 08:40:02.000000000 +0200
-+++ fd-10.1.0/Cargo.toml	2024-05-09 08:45:17.441968003 +0200
+--- fd/Cargo.toml	2024-08-23 12:17:03.367543852 +0200
++++ fd/Cargo.toml.1	2024-08-23 12:47:12.534236221 +0200
 @@ -18,7 +18,7 @@
  repository = "https://github.com/sharkdp/fd"
- version = "10.1.0"
+ version = "10.2.0"
  edition= "2021"
 -rust-version = "1.77.2"
 +rust-version = "1.77.0"

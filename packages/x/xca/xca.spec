@@ -18,7 +18,7 @@
 
 
 Name:           xca
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
@@ -28,22 +28,24 @@ URL:            https://www.hohnstaedt.de/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-desktop.patch
 %if 0%{?suse_version} <= 1600
-BuildRequires: gcc12
-BuildRequires: gcc12-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
-BuildRequires: gcc
-BuildRequires: gcc-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %endif
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Help)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(openssl)
 #Requires:       libQt5Sql5-sqlite
 
@@ -97,6 +99,7 @@ export CXX=g++-12
 %install
 %cmake_install
 %suse_update_desktop_file -i %{name} DesktopUtility
+%fdupes %{buildroot}
 
 %files
 %doc AUTHORS changelog VERSION.txt

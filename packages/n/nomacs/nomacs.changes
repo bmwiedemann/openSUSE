@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 30 18:48:14 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.19.1
+  * fix non-maximized window at startup on GNOME
+  * Give default focus to central widget
+  * Fix incorrect positioning when sorted by metadata
+  * add logging for moveToTrash
+  * save selection on directory change
+  * Fix navigation loss after file deletion
+
+-------------------------------------------------------------------
 Tue Jul 16 18:32:24 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.19.0

@@ -11,7 +11,7 @@
   <property name="project.name" value="Joda-Convert"/>
   <property name="project.artifactId" value="joda-convert"/>
   <property name="project.groupId" value="org.joda"/>
-  <property name="project.version" value="1.9.2"/>
+  <property name="project.version" value="[UNKNOWN]"/>
   <property name="project.description" value="Library to convert Objects to and from String"/>
   <property name="project.url" value="http://www.joda.org/joda-convert/"/>
   <property name="project.organization.name" value="Joda.org"/>
@@ -21,23 +21,23 @@
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
-  <property name="build.srcDir.0" value="src/main/java"/>
-  <property name="build.resourceDir.0" value="src/main/resources"/>
-  <property name="build.resourceDir.1" value="."/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="."/>
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
   
-  <property name="guava.jar" value="lib/guava.jar"/>
-
   <!-- ====================================================================== -->
   <!-- Defining classpaths                                                    -->
   <!-- ====================================================================== -->
 
   <path id="build.classpath">
-    <pathelement location="${guava.jar}"/>
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
   </path>
 
   <!-- ====================================================================== -->
@@ -59,18 +59,36 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
+           verbose="false" 
+           fork="false" 
+           release="9"
+           includes="**/module-info.java"
+           >
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           release="${compiler.release}" 
            target="${compiler.target}" 
            verbose="false" 
            fork="false" 
-           source="${compiler.source}">
+           source="${compiler.source}"
+           excludes="**/module-info.java"
+           >
       <src>
-        <pathelement location="${build.srcDir.0}"/>
+        <pathelement location="${build.srcDir}"/>
       </src>
       <classpath refid="build.classpath"/>
     </javac>
     <mkdir dir="${build.outputDir}/META-INF"/>
     <copy todir="${build.outputDir}/META-INF">
-      <fileset dir="${build.resourceDir.1}">
+      <fileset dir="${build.resourceDir}">
         <include name="LICENSE.txt"/>
         <include name="NOTICE.txt"/>
       </fileset>
@@ -82,7 +100,7 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir.0}" 
+    <javadoc sourcepath="${build.srcDir}" 
              packagenames="*" 
              destdir="${reporting.outputDirectory}/apidocs" 
              access="protected" 
@@ -116,28 +134,28 @@
          basedir="${build.outputDir}" 
          excludes="**/package.html">
       <manifest>
-		<attribute name="Bundle-Description" value="${project.description}"/>
-		<attribute name="Bundle-DocURL" value="${project.url}"/>
-		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-		<attribute name="Bundle-ManifestVersion" value="2"/>
-		<attribute name="Bundle-Name" value="%{project.name}"/>
-		<attribute name="Bundle-SymbolicName" value="org.joda.convert"/>
-		<attribute name="Bundle-Vendor" value="${project.organization.name}"/>
-		<attribute name="Bundle-Version" value="${project.version}"/>
-		<attribute name="Export-Package" value="org.joda.convert;version=&quot;${project.version}&quot;,org.joda.convert.factory;uses:=&quot;org.joda.convert&quot;;version=&quot;${project.version}&quot;"/>
-		<attribute name="Implementation-Title" value="${project.name}"/>
-		<attribute name="Implementation-URL" value="${project.url}"/>
-		<attribute name="Implementation-Vendor" value="${project.organization.name}"/>
-		<attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
-		<attribute name="Implementation-Version" value="${project.version}"/>
-		<attribute name="Import-Package" value="com.google.common.collect;version=&quot;[20.0,21)&quot;;resolution:=optional,com.google.common.reflect;version=&quot;[20.0,21)&quot;;resolution:=optional,org.joda.convert,org.joda.convert.factory"/>
-		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
-		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
-		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
-		<attribute name="Specification-Title" value="${project.name}"/>
-		<attribute name="Specification-Vendor" value="${project.organization.name}"/>
-		<attribute name="Specification-Version" value="${spec.version}"/>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-DocURL" value="${project.url}"/>
+        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="%{project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="org.joda.convert"/>
+        <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="org.joda.convert;version=&quot;${project.version}&quot;,org.joda.convert.factory;uses:=&quot;org.joda.convert&quot;;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-URL" value="${project.url}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="com.google.common.collect;version=&quot;[20.0,21)&quot;;resolution:=optional,com.google.common.reflect;version=&quot;[20.0,21)&quot;;resolution:=optional,org.joda.convert,org.joda.convert.factory"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
       </manifest>
     </jar>
   </target>

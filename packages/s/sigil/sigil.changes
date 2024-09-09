@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  7 14:43:25 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.3.1
+  * Bug Fixes
+    - fix to prevent double epub load warnings
+    - fix to prevent load warnings without details from causing a crash
+    - fix to prevent rename templates from using characters forbidden in file names and paths
+    - fix to better restoreState when MainWindow is Maximized of FullScreen
+    - fix lost External Editor Preference when browse cancelled (BeckyEbook)
+    - fix for crashes related to serious epub load exceptions
+    - better handle epubs with missing NCX files
+
+-------------------------------------------------------------------
 Sun Sep  1 10:37:09 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.3.0

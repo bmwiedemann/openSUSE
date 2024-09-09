@@ -259,4 +259,18 @@
     <comment>- Fix build on Leap 15.6</comment>
     <requestid>1198922</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>327d7ab58762f2d6222154d5f673a73c</srcmd5>
+    <version>9.0.0</version>
+    <time>1725885874</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.0:
+  * Respects `min` argument for `wait_random_exponential`
+  * Bump major version to warn API breakage on statistics
+    attribute
+- update to 8.5.0:
+  * fix: Restore contents of retry attribute for wrapped
+    functions</comment>
+    <requestid>1199461</requestid>
+  </revision>
 </revisionlist>

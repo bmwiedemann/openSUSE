@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 07 16:04:42 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 0.3.28:
+  * Fix process command crash when provided with no args
+  * bump build deps
+
+-------------------------------------------------------------------
 Tue Jul 25 15:00:21 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

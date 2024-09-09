@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 02:48:35 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Remove script in %pre to change ownership of /var/lib/colord
+  (bsc#1208056).
+
+-------------------------------------------------------------------
 Thu Jul 25 12:16:44 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Build -D_FILE_OFFSET_BITS=64 and -D_TIME_BITS=64 in order to avoid

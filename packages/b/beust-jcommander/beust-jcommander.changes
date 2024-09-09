@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Sep  5 17:12:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.85
+  * Changes of 1.84
+    + Changed the method processing to only ignore bridge and 
+      synthetic methods which are not duplicate of other normal 
+      methods.
+    + Renamed BuilderExample to BridgeMethodsExample.
+    + Exclude methods which are bridge or synthetic when parsing
+    + Added public IMainParameter interface to fix 
+      cbeust/jcommander#559
+    + Fixed: A default fulfils requirement, but does not count as 
+      assignment.
+    + Expand dynamic arg expands non dynamic args
+    + Order parameters with the same order by name in usage()
+    + Asserting that double quotes are not removed.
+    + Replace arrayOf with array literals in Kotlin sample
+    + Keep original exception thrown by the parameter setter method
+    + Fixes #557: Now validates BEFORE conversion
+    + Fixed: Broken link to TestNG example
+    + Allow acceptUnknownOption with variableArity
+    + Fixed: Default value of primitive type must not satisfy 
+      required = true
+    + Simplified code: No need for public class
+    + No ParameterException if a default value assigned for 
+      required params
+    + Fixed documentation: Contributor fixed inidex.html instead of 
+      index.adoc
+    + Example for @Parameter on setter method
+    + Fixed docs formatting
+    + Mentioning Charset converter in docs
+    + Improved ByteOrderConverterTest: Removing unused Exception
+    + Adds a CharsetConverter.
+    + Mentioning ByteOrder converter in docs
+    + Improved ByteOrderConverterTest: Proofs that parameter may be 
+      in mixed case
+    + Adds a ByteOrderConverter.
+    + Improved VariableArityTest: Proofs that unknown options are 
+      safely passed through
+    + Test for dontShowNullForMissingCommandDescription
+    + Fix usage() for missing description on commands
+    + Moved description of defaultValueDescription to usage chapter
+    + Fixed backwards compatiblity fail: 
+      ParameterDescription.getDefault() must not produce different 
+      result as existing code relies on current behavior
+    + Fixed test fail: NullPointerException in ParameterDescription
+    + Fixed #471 @Param(default = )
+    + Clarification: List and Set can be comma-separated
+    + Modify convertValue() to fix issue 509 and add a test
+    + Performance: String.isEmpty() is faster than .equals()
+    + Return an empty list when parsing an empty string
+    + Using secret GPG_PASSPHRASE for improved security
+    + Fixed: Deprecation Warning about new Integer(int)
+    + Ignore default value for required parameter
+  * Changes of 1.85
+    + Fixed: Compilation fails due to Java 11 API used on Java 8 
+      target
+    + Cleanup configFile after enabledAtSignExpansionTest
+    + Simplified AtSignExpansion code
+    + Improved testing of AtSignExpansion
+    + Fix: enable parameter values to start with @
+    + Simplified Strings::startsWith
+    + Simplified Strings::join(String, List<Object>)
+    + Simplified Strings::join(String, List<String>)
+- Modified patch:
+  * 0001-ParseValues-NullPointerException-patch.patch
+    + rebase
+
+-------------------------------------------------------------------
 Mon May 20 16:56:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 1.83

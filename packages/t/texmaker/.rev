@@ -417,4 +417,14 @@
     <comment></comment>
     <requestid>1091886</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7c0bc06ddee4df8d79336c905d3a2ec5</srcmd5>
+    <version>6.0.0</version>
+    <time>1725885847</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.0.0
+- Use cmake+Qt6 for builds.
+</comment>
+    <requestid>1199366</requestid>
+  </revision>
 </revisionlist>

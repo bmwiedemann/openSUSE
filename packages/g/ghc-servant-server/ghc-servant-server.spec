@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.20
+Version:        0.20.2
 Release:        0
 Summary:        A family of combinators for defining webservices APIs and serving them
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -59,8 +58,6 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
-BuildRequires:  ghc-network-uri-devel
-BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
@@ -68,8 +65,6 @@ BuildRequires:  ghc-servant-devel
 BuildRequires:  ghc-servant-prof
 BuildRequires:  ghc-sop-core-devel
 BuildRequires:  ghc-sop-core-prof
-BuildRequires:  ghc-string-conversions-devel
-BuildRequires:  ghc-string-conversions-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-text-devel
@@ -88,8 +83,6 @@ BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-word8-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-hspec-devel
@@ -102,22 +95,17 @@ BuildRequires:  ghc-should-not-typecheck-devel
 BuildRequires:  ghc-should-not-typecheck-prof
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-wai-extra-prof
 %endif
 
 %description
-A family of combinators for defining webservices APIs and serving them
-
+A family of combinators for defining webservices APIs and serving them .
 You can learn about the basics in the
-<http://docs.servant.dev/en/stable/tutorial/index.html tutorial>.
-
+<http://docs.servant.dev/en/stable/tutorial/index.html tutorial>. .
 <https://github.com/haskell-servant/servant/blob/master/servant-server/example/greet.hs
 Here> is a runnable example, with comments, that defines a dummy API and
-implements a webserver that serves this API, using this package.
-
+implements a webserver that serves this API, using this package. .
 <https://github.com/haskell-servant/servant/blob/master/servant-server/CHANGELOG.md
 CHANGELOG>.
 
@@ -149,7 +137,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

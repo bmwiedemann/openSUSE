@@ -1,7 +1,7 @@
 #
 # spec file for package gops
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           gops
-Version:        0.3.27
+Version:        0.3.28
 Release:        0
 Summary:        A tool to list and diagnose Go processes currently running on your system
 License:        BSD-3-Clause-Clear

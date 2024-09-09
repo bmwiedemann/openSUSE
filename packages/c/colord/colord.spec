@@ -193,8 +193,6 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
-# Fix ownership of /var/lib/colord from first packages (in 12.1)
-test ! -d %{_localstatedir}/lib/colord || chown -R colord:colord %{_localstatedir}/lib/colord
 
 %preun
 %service_del_preun %{name}.service

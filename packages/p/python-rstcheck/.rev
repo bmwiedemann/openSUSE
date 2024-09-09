@@ -88,4 +88,19 @@
     python -m rstcheck</comment>
     <requestid>1165817</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29f27f41d888cfbfef980f765ad38208</srcmd5>
+    <version>6.2.4</version>
+    <time>1725885868</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2.4:
+  * Add note on how to disable pretty exception output
+  * Fix typer dependency by removing the `[standard]` extra which
+    is only used on typer-slim.
+  * Typer by default has the extras included.
+  * Bump min. version of typer and fix dependency group name
+  * Update configs for dev tooling
+  * Bump default python version to 3.12</comment>
+    <requestid>1199453</requestid>
+  </revision>
 </revisionlist>

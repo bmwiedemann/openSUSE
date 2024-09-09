@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:41:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1:
+  * Add support for Python 3.12.
+  * Fix SIGCHLD/wait raise condition associated with the start-
+    test-program option. For details see #33.
+- drop obs-timeout.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Apr 10 07:27:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python on sle15

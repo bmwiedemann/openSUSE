@@ -203,4 +203,18 @@ update to version v2.5
     exceptionally long amount of time to process. [CVE-2024-3651]</comment>
     <requestid>1168783</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>291d36173b3e786b275f767323de55a2</srcmd5>
+    <version>3.8</version>
+    <time>1725885802</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8:
+  * Fix regression where IDNAError exception was not being
+    produced for certain inputs.
+  * Add support for Python 3.13, drop support for Python 3.5 as
+    it is no longer testable.
+  * Documentation improvements
+  * Updates to package testing using Github actions</comment>
+    <requestid>1199444</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Sep  5 14:12:43 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 2.12.7
+  * Update time zone data to 2024agtz
+- Upgrade to version 2.12.6
+  * Enhance DateTimeZone.forID() to better match java.time. Fixes
+    #733, #717.
+  * Better error message in DateTimeFormat. Fixes #731.
+  * DateTimeZone data updated to version 2023dgtz.
+- Upgrade to version 2.12.5
+  * DateTimeZone data updated to version 2023cgtz.
+- Upgrade to version 2.12.4
+  * DateTimeZone data updated to version 2023bgtz.
+- Upgrade to version 2.12.3
+  * DateTimeZone data updated to version 2023agtz.
+- Upgrade to version 2.12.2
+  * DateTimeZone data updated to version 2022ggtz.
+- Upgrade to version 2.12.1
+  * Add/fix translations for iw, sq.
+  * DateTimeZone data updated to version 2022fgtz.
+- Upgrade to version 2.12.0
+  * Add translations for ca, el, eu, fi, hi, hu, in, iw, ms, nn,
+    ro, sk, sv, zh.
+  * DateTimeZone data updated to version 2022egtz.
+- Upgrade to version 2.11.2
+  * DateTimeZone data updated to version 2022dgtz.
+  * Switch LGTM to CodeQL.
+- Upgrade to version 2.11.1
+  * Update build scripts and fix static analysis warnings.
+  * Switch master to main.
+  * DateTimeZone data updated to version 2022cgtz.
+- Upgrade to version 2.11.0
+  * Change DateTimeZone to use
+    'org.joda.time.DateTimeZone.Timezone' instead of
+    'user.timezone'. This change causes Joda-Time to query
+    'TimeZone.getDefault()' in most cases. In most cases this
+    change will have no effect on application code, as
+    'user.timezone' will be picked up by 'TimeZone.getDefault()'
+    instead. If you specifically need to stop Joda-Time calling
+    'TimeZone.getDefault()' then you will need to change to use the
+    new system property 'org.joda.time.DateTimeZone.Timezone'.
+    Fixes #587.
+  * Avoid using == on objects. Fixes #581.
+  * DateTimeZone data updated to version 2022bgtz. This uses the
+    new global-tz project that reinstates all the data removed by
+    IANA's TZDB. See
+    https://github.com/JodaOrg/joda-time/issues/566
+- Upgrade to version 2.10.14
+  * DateTimeZone data updated to version 2022agtz. This uses the
+    new global-tz project that reinstates all the data removed by
+    IANA's TZDB. See
+    https://github.com/JodaOrg/joda-time/issues/566
+- Upgrade to version 2.10.13
+  * DateTimeZone data updated to version 2021efork. See
+    https://github.com/JodaOrg/joda-time/issues/566
+- Upgrade to version 2.10.12
+  * DateTimeZone data updated to version 2021bfork3. See
+    https://github.com/JodaOrg/joda-time/issues/566
+- Upgrade to version 2.10.11
+  * Defend against possible release of hugely damaging timezone
+    data. See https://github.com/JodaOrg/joda-time/issues/566
+- Upgrade to version 2.10.10
+  * DateTimeZone data updated to version 2021a.
+- Upgrade to version 2.10.9
+  * DateTimeZone data updated to version 2020e. Fix to time-zone
+    compiler.
+- Upgrade to version 2.10.8
+  * DateTimeZone data updated to version 2020d. Remove systemv and
+    pacificnew time zones as per TZDB changes.
+- Upgrade to version 2.10.7
+  * DateTimeZone data updated to version 2020c. Remove systemv and
+    pacificnew time zones as per TZDB changes.
+  * Better error message for year-month-day. Fixes #540.
+  * Fix localization for Russia. Fixes #533.
+- Upgrade to version 2.10.6
+  * DateTimeZone data updated to version 2020a.
+  * Add localization for Ukraine. Fixes #523.
+- Upgrade to version 2.10.5
+  * Updated Joda-Convert version.
+- Upgrade to version 2.10.4
+  * DateTimeZone data updated to version 2019c.
+- Upgrade to version 2.10.3
+  * DateTimeZone data updated to version 2019b.
+- Remove patch:
+  * joda-time-fix-tests.patch
+    + not needed anymore
+- Add JPMS and OSGI metadata to the manifest
+
+-------------------------------------------------------------------
 Wed Feb 21 13:51:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

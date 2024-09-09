@@ -1,0 +1,6 @@
+<package name="regclient" project="openSUSE:Factory">
+  <title>Docker and OCI Registry Client in Go and tooling using those libraries</title>
+  <description>Client interface for the registry API. This includes regctl for a command line interface to manage registries.</description>
+  <devel project="Virtualization:containers" package="regclient"/>
+  <url>https://github.com/regclient/regclient</url>
+</package>

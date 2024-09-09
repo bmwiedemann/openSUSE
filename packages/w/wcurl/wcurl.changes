@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Sep  5 21:18:13 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- make tests dependent on shunit2 >= 2.1.8 
+
+-------------------------------------------------------------------
+Thu Aug 29 14:10:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- siplify and cleanup specfile
+
+-------------------------------------------------------------------
+Wed Aug 14 22:50:20 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- wcurl has a new home: https://github.com/curl/wcurl 
+
+-------------------------------------------------------------------
+Fri Jul 12 10:14:00 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- initial OBS packaging

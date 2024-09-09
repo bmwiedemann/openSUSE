@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:29:03 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add Cast-function-pointer-types-so-they-can-be-compared-without-warnings.patch
+  to fix compilation issues with GCC >= 14
+- Add workaround a missing bash function definition
+-------------------------------------------------------------------
 Fri Feb 23 07:42:42 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:10:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * reno: Update master for unmaintained/zed
+  * Remove old excludes
+  * Update master for stable/2024.1
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+
+-------------------------------------------------------------------
 Thu Mar 14 08:58:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

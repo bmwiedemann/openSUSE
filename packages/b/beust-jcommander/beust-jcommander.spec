@@ -19,7 +19,7 @@
 %define __requires_exclude java-headless
 %global short_name jcommander
 Name:           beust-%{short_name}
-Version:        1.83
+Version:        1.85
 Release:        0
 Summary:        Java framework for parsing command line parameters
 License:        Apache-2.0

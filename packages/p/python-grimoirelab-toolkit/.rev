@@ -51,4 +51,13 @@
   * Update Poetry's package dependencies</comment>
     <requestid>1173181</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab1670fe5c2a7d0242cfa4602a0e07f4</srcmd5>
+    <version>1.0.4</version>
+    <time>1725885866</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.4:
+  * Update Poetry's package dependencies</comment>
+    <requestid>1199451</requestid>
+  </revision>
 </revisionlist>

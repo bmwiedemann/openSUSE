@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sun Aug 04 07:24:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.1:
+  * Release v0.7.1
+  * Version bump
+  * Fix: Validate the digest of the ref when provided
+  * Version bump
+  * Option to output config with regctl artifact get
+  * Add funding.yml
+  * Tar file should use forward slashes
+  * Add WithDockerCredsFile() RegClient Opt
+  * Fix: Mod tracking of changed manifests
+  * Fix platform detection
+  * Remove docker build caching to GHA
+
+-------------------------------------------------------------------
+Fri Jul 12 19:26:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.0:
+  * Release v0.7.0
+  * Support pushing tagged manifests with different digest
+    algorithms
+  * Version bump
+  * Support changing digest algorithm
+  * Include a contributor list in the readme
+  * Enable docker caching of GHA builds
+  * Remove rwfs internal package
+  * Allow well known architectures as a platform
+  * Cleanup Dockerfile linter warnings
+  * Refactor pulling a platform specific manifest
+  * Add an experimental regctl ref command
+  * feat: allow ~ (tilde) in reference paths
+  * Fix: Enable deletion on olareg tests
+  * Feat: Return non-zero on a failed registry ping
+  * Handle nil blob reader
+
+-------------------------------------------------------------------
+Thu Jul 11 11:00:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package regclient: Docker and OCI Registry Client in Go and
+  tooling using those libraries

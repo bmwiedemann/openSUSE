@@ -17,7 +17,7 @@
 
 
 Name:           libgweather4
-Version:        4.4.2
+Version:        4.4.4
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later

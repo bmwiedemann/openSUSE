@@ -1,7 +1,7 @@
 #
 # spec file for package joda-convert
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           joda-convert
-Version:        1.9.2
+Version:        2.2.3
 Release:        0
 Summary:        Java library for conversion to and from standard string formats
 License:        Apache-2.0
@@ -29,7 +29,7 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  guava
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -53,8 +53,10 @@ dos2unix *.txt
 %pom_remove_plugin :maven-javadoc-plugin
 
 %build
+mkdir -p lib
+build-jar-repository -s lib guava
 %{ant} \
-  -Dguava.jar=%{_javadir}/guava/guava.jar \
+  -Dproject.version=%{version} \
   clean jar javadoc
 
 %install

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  8 12:49:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Add tests replicating the issue
+  * Fix for wrong plurals with multiple domains
+  * Linting and other CI/build fixes
+
+-------------------------------------------------------------------
 Wed Feb 21 16:38:46 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 4.0.0:

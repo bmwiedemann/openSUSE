@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  8 16:31:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1:
+  * Allow calling methods of type <class 'builtin_method'> by
+    default. In particular, Python 3.12 refactored the io module
+    in such a way as to slightly change the types of some
+    methods, causing zope.security to no longer consider them
+    callable. See zope.file#13.
+
+-------------------------------------------------------------------
 Mon Jun 10 08:53:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0:

@@ -528,4 +528,34 @@
 </comment>
     <requestid>1184115</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cd9026dd4a59029880e462f5233aad25</srcmd5>
+    <version>8.20.0</version>
+    <time>1725885851</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.20.0. The most impactful changes are:
+  * A mechanism to add user-defined rewrite rules to Coq's reduction
+    mechanisms; see chapter &quot;User-defined rewrite rules&quot;.
+  * Support for primitive strings in terms.
+  * Reduction of the bytecode segment size, which in turn means
+    that `.vo` files might now be considerably smaller.
+- Notable breaking changes:
+  * Syntactic global references passed through the `using` clauses
+    of `auto`-like tactics are now handled as plain references
+    rather than interpreted terms. In particular, their typeclass
+    arguments will not be inferred. In general, the previous
+    behaviour can be emulated by replacing `auto using foo` with
+    `pose proof foo; auto`.
+  * Argument order for the Ltac2 combinators `List.fold_left2` and
+    `List.fold_right2` changed to be the same as in OCaml.
+  * Importing a module containing a mutable Ltac2 definition does
+    not undo its mutations. Replace `Ltac2 mutable foo :=
+    some_expr.` with `Ltac2 mutable foo := some_expr. Ltac2 Set foo
+    := some_expr.` to recover the previous behaviour.
+  * Some renaming in the standard library. Deprecations are
+    provided for a smooth transition.
+- For more details, see the change log in coq-doc.
+</comment>
+    <requestid>1199381</requestid>
+  </revision>
 </revisionlist>

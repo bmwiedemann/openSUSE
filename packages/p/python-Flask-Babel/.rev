@@ -84,4 +84,15 @@
     <comment></comment>
     <requestid>1148812</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9f6cd38a182eb4963a6dc6a49e9e32e</srcmd5>
+    <version>4.1.0</version>
+    <time>1725885864</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Add tests replicating the issue
+  * Fix for wrong plurals with multiple domains
+  * Linting and other CI/build fixes</comment>
+    <requestid>1199445</requestid>
+  </revision>
 </revisionlist>

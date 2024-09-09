@@ -49,4 +49,32 @@
   * Improve COPY performance on macOS</comment>
     <requestid>1175328</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d36df9f7eb290a03e576f1fb59a485e4</srcmd5>
+    <version>3.2.1</version>
+    <time>1725885809</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.1:
+  * Fix packaging metadata breaking [c], [binary] dependencies
+  * Add support for integer, floating point, boolean NumPy scalar
+    types (ticket #332).
+  * Add timeout and stop_after parameters to Connection.notifies()
+  * Allow dumpers to return None, to be converted to NULL (ticket
+  * Add Raw query cursors to execute queries using placeholders in
+    PostgreSQL format ($1, $2…) (tickets #560, #839).
+  * Add capabilities object to inspect the libpq capabilities
+  * Add scalar_row to return scalar values from a query
+  * Add cancel_safe() for encrypted and non-blocking cancellation when
+    using libpq v17. Use such method internally to implement
+    KeyboardInterrupt and copy termination
+  * The context parameter of sql objects as_string() and as_bytes()
+    methods is now optional
+  * Add set_autocommit() on sync connections, and similar transaction
+    control methods available on the async connections.
+  * Add a size parameter to stream() to enable results retrieval in
+    chunks instead of row-by-row
+- drop fix-pool-import.patch (upstream)
+</comment>
+    <requestid>1198910</requestid>
+  </revision>
 </revisionlist>

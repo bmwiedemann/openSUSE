@@ -26,7 +26,7 @@
 %endif
 
 Name:           coq
-Version:        8.19.2
+Version:        8.20.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -44,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
-BuildRequires:  ocaml-dune >= 2.9
+BuildRequires:  ocaml-dune >= 3.6.1
 BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(zarith)
@@ -222,7 +222,6 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_bindir}/coqtimelog2html
 %{_bindir}/coqtop
 %{_bindir}/coqtop.byte
-%{_bindir}/coqtop.opt
 %{_bindir}/coqwc
 %{_bindir}/coqworker.opt
 %{_bindir}/coqworkmgr
@@ -241,7 +240,6 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_mandir}/man1/coqdoc.1%{ext_man}
 %{_mandir}/man1/coqnative.1%{ext_man}
 %{_mandir}/man1/coqtop.1%{ext_man}
-%{_mandir}/man1/coqtop.opt.1%{ext_man}
 %{_mandir}/man1/coqwc.1%{ext_man}
 
 %dir %{_datadir}/texmf
@@ -265,6 +263,7 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 
 %files devel -f dir.list -f devel.list
 %{_libdir}/coq-core/revision
+%{_libdir}/coq-core/dev/ml_toplevel
 %{_libdir}/{%{dune_packages}}/{META,dune-package,opam}
 %{_libdir}/coq-core/tools/CoqMakefile.in
 

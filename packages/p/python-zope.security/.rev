@@ -149,4 +149,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181266</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b4526cf762de769ee8312051e2f0da4a</srcmd5>
+    <version>7.1</version>
+    <time>1725885884</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.1:
+  * Allow calling methods of type &lt;class 'builtin_method'&gt; by
+    default. In particular, Python 3.12 refactored the io module
+    in such a way as to slightly change the types of some
+    methods, causing zope.security to no longer consider them
+    callable. See zope.file#13.</comment>
+    <requestid>1199495</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  5 13:11:56 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Refresh patched to git format
+  - mpip.unwinder.patch
+  - Add-return-value-to-non-void-function.patch
+  - pc_lookup-replace-PTR-with-void.patch
+- Add configure-fix-compilation-error-for-GCC-14.patch to
+  fix compilation with GCC >= 14
+- Add arch-add-generic-arch-using-GCC-builtins.patch to fix compilation
+  on s390.
+
+-------------------------------------------------------------------
 Tue Jun 25 13:17:50 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Do not build on 32b platforms

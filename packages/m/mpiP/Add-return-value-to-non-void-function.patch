@@ -1,18 +1,13 @@
-From: Egbert Eich <eich@suse.com>
-Date: Sun Nov 29 20:38:47 2020 +0100
-Subject: Add return value to non-void function
-Patch-mainline: Not yet
-Git-commit: 98cc1a7453a2f55dfe2477d62e8ce3f049e0ed1f
-References: 
+commit 6130c8260cce49846feafc490f84e9ccf299ac15
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:58:20 2024 +0200
 
-Signed-off-by: Egbert Eich <eich@suse.com>
----
- testing/mt/mt_common.c | 1 +
- 1 file changed, 1 insertion(+)
-diff --git a/testing/mt/mt_common.c b/testing/mt/mt_common.c
-index ff92d9e..bda59c3 100644
---- a/testing/mt/mt_common.c
-+++ b/testing/mt/mt_common.c
+    Add return value to non void function
+
+diff --git testing/mt/mt_common.c testing/mt/mt_common.c
+index ff92d9ef8100..bda59c3aab73 100644
+--- testing/mt/mt_common.c
++++ testing/mt/mt_common.c
 @@ -310,6 +310,7 @@ void* _mt_common_proxy_thread(void *id_ptr)
  {
    test_thr_data_t *tdata = (test_thr_data_t*)id_ptr;

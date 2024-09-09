@@ -17,7 +17,7 @@
 
 
 Name:           gc
-Version:        8.2.6
+Version:        8.2.8
 Release:        0
 Summary:        A garbage collector for C and C++
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            http://www.hboehm.info/gc/
 #Git-Clone:	https://github.com/ivmai/bdwgc
 Source:         https://github.com/ivmai/bdwgc/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  autoconf >= 2.64
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(atomic_ops)
@@ -81,13 +81,9 @@ autoreconf -fi
 # see bugzilla.redhat.com/689877
 export CPPFLAGS="-DUSE_GET_STACKBASE_FOR_MAIN"
 export CXXFLAGS="%optflags"
-%configure --disable-static --docdir="%_docdir/%name" \
-    --with-gnu-ld	    \
-    --enable-cplusplus	    \
-    --enable-large-config   \
-    --enable-threads=posix  \
-    --enable-parallel-mark \
-    --with-libatomic-ops=yes
+%configure --disable-static --docdir="%_docdir/%name" --with-gnu-ld \
+	--enable-cplusplus --enable-large-config --enable-threads=posix \
+	--enable-parallel-mark --with-libatomic-ops=yes
 # --with-libatomic-ops=yes means to use the system library
 
 %make_build
@@ -104,8 +100,7 @@ done
 make check -j1
 %endif
 
-%post -n libgc1 -p /sbin/ldconfig
-%postun -n libgc1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgc1
 
 %files -n libgc1
 %_libdir/libcord.so.1*
@@ -115,10 +110,8 @@ make check -j1
 %_docdir/%name/
 %_libdir/libcord.so
 %_libdir/libgc*.so
-%_libdir/pkgconfig/bdw-gc.pc
+%_libdir/pkgconfig/*.pc
 %_mandir/man3/gc.3*
-%_includedir/gc.h
-%_includedir/gc_cpp.h
-%_includedir/gc/
+%_includedir/gc*
 
 %changelog

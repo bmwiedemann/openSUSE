@@ -1,4 +1,4 @@
-commit 28ffffe90896cbd655466b870b74d8304736a316
+commit 70e243c8a6685a03d5faa65e706d318196ad712b
 Author: Nicolas Morey <nmorey@suse.com>
 Date:   Wed Jun 26 17:36:58 2024 +0200
 
@@ -278,7 +278,7 @@ index 000000000000..ce48ff1ff451
 +#endif
 diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
 new file mode 100644
-index 000000000000..033f58f7c047
+index 000000000000..0aee278010d2
 --- /dev/null
 +++ src/ucs/arch/s390x/cpu.h
 @@ -0,0 +1,84 @@
@@ -308,7 +308,7 @@ index 000000000000..033f58f7c047
 +#define ucs_memory_bus_fence()        asm volatile (""::: "memory")
 +#define ucs_memory_bus_store_fence()  ucs_memory_bus_fence()
 +#define ucs_memory_bus_load_fence()   ucs_memory_bus_fence()
-+#define ucs_memory_bus_wc_flush()     ucs_memory_bus_fence()
++#define ucs_memory_bus_cacheline_wc_flush()     ucs_memory_bus_fence()
 +#define ucs_memory_cpu_fence()        ucs_memory_bus_fence()
 +#define ucs_memory_cpu_store_fence()  ucs_memory_bus_fence()
 +#define ucs_memory_cpu_load_fence()   ucs_memory_bus_fence()

@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Sat Sep  7 15:36:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0~rc2:
+  - Tools/Demos
+    - gh-123418: Update GitHub CI workflows to use OpenSSL 3.0.15
+      and multissltests to use 3.0.15, 3.1.7, and 3.2.3.
+  - Tests
+    - gh-119727: Add --single-process command line option to
+      Python test runner (regrtest). Patch by Victor Stinner.
+    - gh-101525: Skip test_gdb if the binary is relocated by
+      BOLT. Patch by Donghee Na.
+  - Security
+    - gh-123678: Upgrade libexpat to 2.6.3
+    - gh-121285: Remove backtracking from tarfile header parsing
+      for hdrcharset, PAX, and GNU sparse headers (bsc#1230227,
+      CVE-2024-6232).
+  - Library
+    - gh-123448: Fixed memory leak of typing.NoDefault by moving
+      it to the static types array.
+    - gh-123409: Fix ipaddress.IPv6Address.reverse_pointer output
+      according to RFC 3596, §2.5. Patch by Bénédikt Tran.
+    - gh-123270: Applied a more surgical fix for malformed
+      payloads in zipfile.Path causing infinite loops (gh-122905)
+      without breaking contents using legitimate characters
+      (bsc#1229704, CVE-2024-8088).
+    - gh-123228: Fix return type for
+      _pyrepl.readline._ReadlineWrapper.get_line_buffer() to be
+      str(). Patch by Sergey B Kirpichev.
+    - gh-123240: Raise audit events for the input() in the new
+      REPL.
+    - gh-123243: Fix memory leak in _decimal.
+    - gh-122546: Consistently use same file name for different
+      exceptions in the new repl. Patch by Sergey B Kirpichev.
+    - gh-123213: xml.etree.ElementTree.Element.extend() and
+      Element assignment no longer hide the internal exception if
+      an erronous generator is passed. Patch by Bar Harel.
+    - gh-85110: Preserve relative path in URL without netloc in
+      urllib.parse.urlunsplit() and urllib.parse.urlunparse().
+    - gh-123067: Fix quadratic complexity in parsing "-quoted
+      cookie values with backslashes by http.cookies
+      (bsc#1229596, CVE-2024-7592)
+    - gh-122981: Fix inspect.getsource() for generated classes
+      with Python base classes (e.g. enums).
+    - gh-122903: zipfile.Path.glob now correctly matches
+      directories instead of silently omitting them.
+    - gh-122905: zipfile.Path objects now sanitize names from the
+      zipfile.
+    - gh-122695: Fixed double-free when using gc.get_referents()
+      with a freed asyncio.Future iterator.
+    - gh-116263: logging.handlers.RotatingFileHandler no longer
+      rolls over empty log files.
+    - gh-105376: Restore the deprecated logging warn() method. It
+      was removed in Python 3.13 alpha 1. Keep the deprecated
+      warn() method in Python 3.13. Patch by Victor Stinner.
+    - gh-122744: Bump the version of pip bundled in ensurepip to
+      version 24.2.
+    - gh-118814: Fix the typing.TypeVar constructor when name is
+      passed by keyword.
+    - gh-122478: Remove internal frames from tracebacks
+      shown in code.InteractiveInterpreter with non-default
+      sys.excepthook(). Save correct tracebacks in
+      sys.last_traceback and update __traceback__ attribute of
+      sys.last_value and sys.last_exc.
+    - gh-116622: On Android, the FICLONE and FICLONERANGE
+      constants are no longer exposed by fcntl, as these ioctls
+      are blocked by SELinux.
+    - gh-82378: Make sure that the new REPL interprets
+      sys.tracebacklimit in the same way that the classic REPL
+      did.
+    - gh-122334: Fix crash when importing ssl after the main
+      interpreter restarts.
+    - gh-87320: In code.InteractiveInterpreter, handle exceptions
+      caused by calling a non-default sys.excepthook(). Before,
+      the exception bubbled up to the caller, ending the REPL.
+    - gh-121650: email headers with embedded newlines
+      are now quoted on output. The generator will
+      now refuse to serialize (write) headers
+      that are unsafely folded or delimited; see
+      verify_generated_headers. (Contributed by Bas Bloemsaat and
+      Petr Viktorin in gh-121650.; CVE-2024-6923, bsc#1228780)
+    - gh-121723: Make logging.config.dictConfig() accept any
+      object implementing the Queue public API. See the queue
+      configuration section for details. Patch by Bénédikt Tran.
+    - gh-122081: Fix a crash in the decimal.IEEEContext()
+      optional function available via the EXTRA_FUNCTIONALITY
+      configuration flag.
+    - gh-121804: Correctly show error locations, when SyntaxError
+      raised in new repl. Patch by Sergey B Kirpichev.
+    - gh-121151: Fix wrapping of long usage text of arguments
+      inside a mutually exclusive group in argparse.
+    - gh-108172: webbrowser honors OS preferred browser on Linux
+      when its desktop entry name contains the text of a known
+      browser name.
+    - gh-109109: You can now get the raw TLS                    .
+    Cocertificate chains from TLS connections                   .
+    Covia ssl.SSLSocket.get_verified_chain() and                .
+    Cossl.SSLSocket.get_unverified_chain() methods ntributed by .
+    CoMateusz Nowak                                             .
+  - IDLE
+    - gh-120083: Add explicit black IDLE Hovertip foreground
+      color needed for recent macOS. Fixes Sonoma showing
+      unreadable white on pale yellow. Patch by John Riggles.
+  - Core and Builtins
+    - gh-123572: Fix key mappings for various F-keys in Windows
+      for the new REPL. Patch by devdanzin
+    - gh-123484: Fix _Py_DebugOffsets for long objects to be
+      relative to the start of the object rather than the start
+      of a subobject.
+    - gh-123344: Add AST optimizations for type parameter
+      defaults.
+    - gh-123321: Prevent Parser/myreadline race condition from
+      segfaulting on multi-threaded use. Patch by Bar Harel and
+      Amit Wienner.
+    - gh-123177: Fix a bug causing stray prompts to appear in the
+      middle of wrapped lines in the new REPL.
+    - gh-122982: Extend the deprecation period for bool inversion
+      (~) by two years.
+    - gh-123177: Deactivate line wrap in the Apple Terminal via a
+      ANSI escape code. Patch by Pablo Galindo
+    - gh-123229: Fix valgrind warning by initializing the
+      f-string buffers to 0 in the tokenizer. Patch by Pablo
+      Galindo
+    - gh-122298: Restore printout of GC stats when
+      gc.set_debug(gc.DEBUG_STATS) is called. This featue was
+      accidentally removed when implementing incremental GC.
+    - gh-121804: Correctly show error locations when a
+      SyntaxError is raised in the basic REPL. Patch by Sergey B
+      Kirpichev.
+    - gh-123142: Fix too-wide source location in exception
+      tracebacks coming from broken iterables in comprehensions.
+    - gh-123048: Fix a bug where pattern matching code could emit
+      a JUMP_FORWARD with no source location.
+    - gh-123123: Fix displaying SyntaxError exceptions covering
+      multiple lines. Patch by Pablo Galindo
+    - gh-123083: Fix a potential use-after-free in
+      STORE_ATTR_WITH_HINT.
+    - gh-123022: Fix crash in free-threaded build when calling
+      Py_Initialize() from a non-main thread.
+    - gh-122888: Fix crash on certain calls to str() with
+      positional arguments of the wrong type. Patch by Jelle
+      Zijlstra.
+    - gh-116622: Fix Android stdout and stderr messages being
+      truncated or lost.
+    - gh-122527: Fix a crash that occurred when a
+      PyStructSequence was deallocated after its type’s
+      dictionary was cleared by the GC. The type’s tp_basicsize
+      now accounts for non-sequence fields that aren’t included
+      in the Py_SIZE of the sequence.
+    - gh-122445: Add only fields which are modified via self.* to
+      __static_attributes__.
+    - gh-98442: Fix too wide source locations of the cleanup
+      instructions of a with statement.
+    - gh-93691: Fix source locations of instructions generated
+      for with statements.
+    - gh-120097: FrameLocalsProxy now subclasses
+      collections.abc.Mapping and can be matched as a mapping in
+      match statements
+  - C API
+    - gh-122728: Fix PyEval_GetLocals() to avoid SystemError
+      (“bad argument to internal function”). Patch by Victor
+      Stinner.
+  - Build
+    - gh-123297: Propagate the value of LDFLAGS to LDCXXSHARED in
+      sysconfig. Patch by Pablo Galindo
+    - gh-116622: Rename build variable MODULE_LDFLAGS back
+      to LIBPYTHON, as it’s used by package build systems
+      (e.g. Meson).
+    - gh-118943: Fix an issue where the experimental JIT could be
+      built several times by the make regen-all target, leading
+      to possible race conditions on heavily parallelized builds.
+    - gh-118943: Fix a possible race condition affecting parallel
+      builds configured with --enable-experimental-jit, in which
+      FileNotFoundError could be caused by another process
+      already moving jit_stencils.h.new to jit_stencils.h.
+- Remove upstreamed patches:
+  - bso1227999-reproducible-builds.patch
+  - CVE-2024-8088-inf-loop-zipfile_Path.patch
+  - gh120226-fix-sendfile-test-kernel-610.patch
+  - gh122136-test_asyncio-kernel-buffer-data.patch
+  - fix_configure_rst.patch
+  - CVE-2024-6923-email-hdr-inject.patch
+
+-------------------------------------------------------------------
+Mon Sep  2 09:44:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh120226-fix-sendfile-test-kernel-610.patch to avoid
+  failing test_sendfile_close_peer_in_the_middle_of_receiving
+  tests on Linux >= 6.10 (GH-120227).
+
+-------------------------------------------------------------------
 Thu Aug 29 14:46:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add gh122136-test_asyncio-kernel-buffer-data.patch fixing
@@ -444,6 +634,12 @@ Fri Jun 28 06:12:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
   - fix_configure_rst.patch
   - python-3.3.0b1-fix_date_time_compiler.patch
   - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 11:48:20 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build experimental package python313-base-nogil with
+  --disable-gil option.
 
 -------------------------------------------------------------------
 Thu Jun  6 09:59:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
@@ -1328,8 +1524,9 @@ Thu May  9 08:18:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
         ipaddress.IPv4Address.is_global
         ipaddress.IPv6Address.is_private
         ipaddress.IPv6Address.is_global
-    - Also in the corresponding ipaddress.IPv4Network and
-      ipaddress.IPv6Network attributes.
+        - Also in the corresponding ipaddress.IPv4Network and
+          ipaddress.IPv6Network attributes.
+        - Fixes bsc#1226448 (CVE-2024-4032).
     - gh-63283: In encodings.idna, any capitalization of the the ACE
       prefix (xn--) is now acceptable. Patch by Pepijn de Vos and
       Zackery Spytz.
@@ -2617,7 +2814,7 @@ Thu Feb  8 08:10:09 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
       behavior, accept malformed inputs. getattr(email.utils,
       'supports_strict_parsing', False) can be use to check if the
       strict paramater is available. Patch by Thomas Dwyer and Victor
-      Stinner to improve the CVE-2023-27043 fix.
+      Stinner to improve the CVE-2023-27043 fix (bsc#1210638).
     - gh-52161: cmd.Cmd.do_help() now cleans docstrings with
       inspect.cleandoc() before writing them. Patch by Filip
       Łapkiewicz.
@@ -6096,7 +6293,8 @@ Thu Jul 16 21:45:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Spec file fixes
 - Re-added subprocess-raise-timeout.patch: now compatible
-- Removed bpo34022-stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch: contained in upstream
+- Removed bpo34022-stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch:
+  contained in upstream
 
 -------------------------------------------------------------------
 Wed Jul 15 09:10:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

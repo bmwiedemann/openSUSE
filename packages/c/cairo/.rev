@@ -747,4 +747,12 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
     <comment> (forwarded request 1113272 from iznogood)</comment>
     <requestid>1113452</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>e4521ae00f46a3b494d698874e106f3b</srcmd5>
+    <version>1.18.2</version>
+    <time>1725885788</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199435</requestid>
+  </revision>
 </revisionlist>

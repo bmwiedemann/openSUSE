@@ -1,0 +1,83 @@
+commit fc27164f950ff572b9b86cd6c9df701e08a363ad
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:54:19 2024 +0200
+
+    configure: fix compilation error for GCC >= 14
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git configure configure
+index 240487dae777..25352125f048 100755
+--- configure
++++ configure
+@@ -6210,28 +6210,28 @@ $as_echo "Failed to compile fortran test object. Example error follows:" >&6; }
+ $as_echo "$as_me: $F77_OBJ_OUT" >&6;}
+     as_fn_error $? "giving up" "$LINENO" 5
+   fi
+-  echo "main(){ FF(); return 0; }" > flink.c
+-  if $CC -o flink -DFF=f_fun flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  echo "int main(){ FF(); return 0; }" > flink.c
++  if $CC -o flink -DFF=f_fun -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: same as C" >&5
+ $as_echo "same as C" >&6; }
+     F77_SYMBOLS=symbol
+-  elif $CC -o flink -DFF=f_fun_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=f_fun_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: lowercase with underscore" >&5
+ $as_echo "lowercase with underscore" >&6; }
+     F77_SYMBOLS=symbol_
+-  elif $CC -o flink -DFF=f_fun__ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=f_fun__ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: lowercase with 2 underscores" >&5
+ $as_echo "lowercase with 2 underscores" >&6; }
+     F77_SYMBOLS=symbol__
+-  elif $CC -o flink -DFF=F_FUN flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: uppercase" >&5
+ $as_echo "uppercase" >&6; }
+     F77_SYMBOLS=SYMBOL
+-  elif $CC -o flink -DFF=F_FUN_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: uppercase with underscore" >&5
+ $as_echo "uppercase with underscore" >&6; }
+     F77_SYMBOLS=SYMBOL_
+-  elif $CC -o flink -DFF=F_FUN_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: uppercase with 2 underscores" >&5
+ $as_echo "uppercase with 2 underscores" >&6; }
+     F77_SYMBOLS=SYMBOL__
+diff --git configure.ac configure.ac
+index 359b31a119d4..ed6cdbb3c18e 100644
+--- configure.ac
++++ configure.ac
+@@ -702,23 +702,23 @@ if test -n "$F77" -a "$F77" != no ; then
+     AC_MSG_NOTICE($F77_OBJ_OUT)
+     AC_MSG_ERROR([giving up])
+   fi
+-  echo "main(){ FF(); return 0; }" > flink.c
+-  if $CC -o flink -DFF=f_fun flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  echo "int main(){ FF(); return 0; }" > flink.c
++  if $CC -o flink -DFF=f_fun -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(same as C)
+     F77_SYMBOLS=symbol
+-  elif $CC -o flink -DFF=f_fun_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=f_fun_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(lowercase with underscore)
+     F77_SYMBOLS=symbol_
+-  elif $CC -o flink -DFF=f_fun__ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=f_fun__ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(lowercase with 2 underscores)
+     F77_SYMBOLS=symbol__
+-  elif $CC -o flink -DFF=F_FUN flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(uppercase)
+     F77_SYMBOLS=SYMBOL
+-  elif $CC -o flink -DFF=F_FUN_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(uppercase with underscore)
+     F77_SYMBOLS=SYMBOL_
+-  elif $CC -o flink -DFF=F_FUN_ flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
++  elif $CC -o flink -DFF=F_FUN_ -Wno-implicit-function-declaration flink.c ffunc.o $LDFLAGS $LIBS 1>/dev/null 2>/dev/null; then
+     AC_MSG_RESULT(uppercase with 2 underscores)
+     F77_SYMBOLS=SYMBOL__
+   else

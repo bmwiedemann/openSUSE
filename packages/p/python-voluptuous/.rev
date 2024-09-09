@@ -148,4 +148,13 @@
   * #514: Remove python 3.8 support</comment>
     <requestid>1184038</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efb607abd1d2c79dacd2f45b764ea08e</srcmd5>
+    <version>0.15.2</version>
+    <time>1725885886</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.2:
+  * 522 Fix regression with ALLOW_EXTRA and `Any` validator</comment>
+    <requestid>1199497</requestid>
+  </revision>
 </revisionlist>

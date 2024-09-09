@@ -1,3 +1,11 @@
+gpxsee (13.24) stable; urgency=low
+
+  * Added support for FIT laps.
+  * Various minor GUI fixes and enhancements.
+  * Various minor map rendering (IMG & Mapsforge) fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 08 Sep 2024 22:31:26 +0200
+
 gpxsee (13.23) stable; urgency=low
 
   * Improved ENC maps rendering.

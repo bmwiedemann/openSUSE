@@ -21,8 +21,8 @@ Version:        2.17.2
 Release:        0
 Summary:        Jackson datatypes: collections
 License:        Apache-2.0
-URL:            https://github.com/FasterXML/jackson-datatypes-collections
-Source0:        https://github.com/FasterXML/jackson-datatypes-collections/archive/%{name}-%{version}.tar.gz
+URL:            https://github.com/FasterXML/%{name}
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -33,6 +33,8 @@ BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.16
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.eclipse.collections:eclipse-collections)
+BuildRequires:  mvn(org.pcollections:pcollections)
 BuildArch:      noarch
 
 %description
@@ -59,6 +61,20 @@ Jackson data-type module to support JSON serialization and
 deserialization of High-Performance Primitive Collections
 data-types.
 
+%package -n jackson-datatype-eclipse-collections
+Summary:        Add-on module for Jackson to support Eclipse Collections data-types
+
+%description -n jackson-datatype-eclipse-collections
+Jackson data-type module to support JSON serialization and deserialization of
+Eclipse Collections data types.
+
+%package -n jackson-datatype-pcollections
+Summary:        Add-on module for Jackson to support PCollections data-types
+
+%description -n jackson-datatype-pcollections
+Jackson data-type module to support JSON serialization and deserialization of
+PCollections data types.
+
 %package javadoc
 Summary:        Javadoc for %{name}
 
@@ -70,10 +86,6 @@ This package contains API documentation for %{name}.
 
 sed -i 's/\r//' hppc/src/main/resources/META-INF/LICENSE
 cp -p hppc/src/main/resources/META-INF/LICENSE .
-
-# Deps are missing for these modules:
-%pom_disable_module eclipse-collections
-%pom_disable_module pcollections
 
 %pom_remove_plugin -r :moditect-maven-plugin
 %pom_remove_plugin -r :gradle-module-metadata-maven-plugin
@@ -100,6 +112,14 @@ cp -p hppc/src/main/resources/META-INF/LICENSE .
 
 %files -n jackson-datatype-hppc -f .mfiles-jackson-datatype-hppc
 %doc hppc/README.md hppc/release-notes
+%license LICENSE
+
+%files -n jackson-datatype-eclipse-collections -f .mfiles-jackson-datatype-eclipse-collections
+%doc eclipse-collections/README.md
+%license LICENSE
+
+%files -n jackson-datatype-pcollections -f .mfiles-jackson-datatype-pcollections
+%doc pcollections/README.md pcollections/release-notes
 %license LICENSE
 
 %files javadoc -f .mfiles-javadoc

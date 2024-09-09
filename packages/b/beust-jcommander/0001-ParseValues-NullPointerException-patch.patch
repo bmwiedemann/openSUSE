@@ -1,26 +1,26 @@
-From 2b813829d02b89206493520eb86075a43b145db9 Mon Sep 17 00:00:00 2001
+From 4409f9ac0d8d1f64cfd00e91b91cf822d328d526 Mon Sep 17 00:00:00 2001
 From: Roman Vais <rvais@redhat.com>
 Date: Tue, 13 Jun 2017 13:24:24 +0200
 Subject: [PATCH] ParseValues-NullPointerException-patch
 
 ---
- .../java/com/beust/jcommander/Parameterized.java   | 27 ++++++++++++++++++++--
+ .../com/beust/jcommander/Parameterized.java   | 27 +++++++++++++++++--
  1 file changed, 25 insertions(+), 2 deletions(-)
 
 diff --git a/src/main/java/com/beust/jcommander/Parameterized.java b/src/main/java/com/beust/jcommander/Parameterized.java
-index 3264008..e937a66 100644
+index ba92301..eb24ce7 100644
 --- a/src/main/java/com/beust/jcommander/Parameterized.java
 +++ b/src/main/java/com/beust/jcommander/Parameterized.java
-@@ -13,6 +13,8 @@ import java.lang.reflect.Type;
- import java.util.Collections;
- import java.util.List;
- import java.util.Set;
+@@ -6,6 +6,8 @@ import com.beust.jcommander.internal.Sets;
+ import java.lang.annotation.Annotation;
+ import java.lang.reflect.*;
+ import java.util.*;
 +import java.util.logging.Level;
 +import java.util.logging.Logger;
+ import java.util.stream.Collectors;
  
  /**
-  * Encapsulate a field or a method annotated with @Parameter or @DynamicParameter
-@@ -180,12 +182,33 @@ public class Parameterized {
+@@ -208,12 +210,33 @@ public class Parameterized {
        String fieldName = Character.toLowerCase(name.charAt(3)) + name.substring(4);
        Object result = null;
        try {
@@ -57,5 +57,5 @@ index 3264008..e937a66 100644
        }
        return result;
 -- 
-2.7.4
+2.46.0
 

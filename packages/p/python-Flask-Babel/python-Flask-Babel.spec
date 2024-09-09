@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Babel
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause

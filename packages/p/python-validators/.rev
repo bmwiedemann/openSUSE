@@ -290,4 +290,19 @@ Features:
     gh#python-validators/validators#389</comment>
     <requestid>1187432</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dd5b3d222ec10848506b683dced9de39</srcmd5>
+    <version>0.34.0</version>
+    <time>1725885803</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34.0:
+  * &gt; No breaking changes were introduced in this version.
+  * feat: cache IANA TLDs for faster lookups
+  * chore: update dependencies
+  * docs: adds configuration info
+
+- remove isort build requirement. It is not called.
+  * Fixed domain validator for international domains and certain</comment>
+    <requestid>1199455</requestid>
+  </revision>
 </revisionlist>

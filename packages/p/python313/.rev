@@ -228,4 +228,41 @@
   (bsc#1229704, CVE-2024-8088).</comment>
     <requestid>1197482</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1a9d2af25d3d53ae9c1cd6ac666c4e60</srcmd5>
+    <version>3.13.0~rc2</version>
+    <time>1725885829</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.13.0~rc2:
+  - Tools/Demos
+    - gh-123418: Update GitHub CI workflows to use OpenSSL 3.0.15
+      and multissltests to use 3.0.15, 3.1.7, and 3.2.3.
+  - Tests
+    - gh-119727: Add --single-process command line option to
+      Python test runner (regrtest). Patch by Victor Stinner.
+    - gh-101525: Skip test_gdb if the binary is relocated by
+      BOLT. Patch by Donghee Na.
+  - Security
+    - gh-123678: Upgrade libexpat to 2.6.3
+    - gh-121285: Remove backtracking from tarfile header parsing
+      for hdrcharset, PAX, and GNU sparse headers (bsc#1230227,
+      CVE-2024-6232).
+  - Library
+    - gh-123448: Fixed memory leak of typing.NoDefault by moving
+      it to the static types array.
+    - gh-123409: Fix ipaddress.IPv6Address.reverse_pointer output
+      according to RFC 3596, §2.5. Patch by Bénédikt Tran.
+    - gh-123270: Applied a more surgical fix for malformed
+      payloads in zipfile.Path causing infinite loops (gh-122905)
+      without breaking contents using legitimate characters
+      (bsc#1229704, CVE-2024-8088).
+    - gh-123228: Fix return type for
+      _pyrepl.readline._ReadlineWrapper.get_line_buffer() to be
+      str(). Patch by Sergey B Kirpichev.
+    - gh-123240: Raise audit events for the input() in the new
+      REPL.
+    - gh-123243: Fix memory leak in _decimal.
+    - gh-122546: Consistently use same file name for different</comment>
+    <requestid>1199398</requestid>
+  </revision>
 </revisionlist>

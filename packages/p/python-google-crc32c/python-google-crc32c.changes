@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:05:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Add support for python 3.12
+  * Build using Visual Studio 17 2022 instead of Visual Studio 16
+    2019
+  * Drop support for python 3.7 and 3.8
+  * Drop support for Windows 32bit which is not supported in
+    Visual Studio 17 2022
+  * Remove manylinux1 which is no longer supported by PyPA
+
+-------------------------------------------------------------------
 Mon Feb 26 20:33:31 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Include in SLE 15 SP4 and later (jsc#PED-6697)

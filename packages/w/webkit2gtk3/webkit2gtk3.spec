@@ -91,6 +91,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
+# PATCH-FIX-UPSTREAM revert-271175.patch -- This reverts commit 279c9d7, it broke wasm.
+Patch3:         revert-271175.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Sep  1 07:41:50 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- _service: use manual instead of disabled as suggested by osc
+
+-------------------------------------------------------------------
+Fri Aug 23 10:17:04 UTC 2024 - sebix@sebix.at
+
+- Update to version 10.2.0:
+  * Bump dependencies
+  * Prepare for 10.2.0 release
+  * docs: documentation link of regular expressions to the latest version
+  * build(deps): bump clap from 4.5.8 to 4.5.13
+  * build(deps): bump clap_complete from 4.5.7 to 4.5.8
+  * build(deps): bump nu-ansi-term from 0.50.0 to 0.50.1
+  * build(deps): bump version_check from 0.9.4 to 0.9.5
+  * Fix unused config struct field on Windows
+  * Fix unused OnceLock import lint on Windows
+  * Fix Conflicts syntax
+  * Create fdfind symlinks in deb package
+  * Refactor creating deb package into separate script
+  * Note executable name in release debs
+  * build(deps): bump clap_complete from 4.5.2 to 4.5.7
+  * build(deps): bump regex from 1.10.4 to 1.10.5
+  * build(deps): bump regex-syntax from 0.8.3 to 0.8.4
+  * build(deps): bump clap from 4.5.4 to 4.5.8
+  * build(deps): bump lscolors from 0.17.0 to 0.18.0
+  * Fix percent encoding
+  * docs: Add flox install
+  * Continue supporting windows 7 with builds
+  * Update OS versions for github actions
+  * Change --hyperlink to be an option instead of a flag
+  * Fix test on windows
+  * Fix unicode encoding of hyperlinks
+  * Add hyperlink support to fd
+  * build(deps): bump libc from 0.2.154 to 0.2.155
+  * build(deps): bump crossbeam-channel from 0.5.12 to 0.5.13
+  * build(deps): bump nix from 0.28.0 to 0.29.0
+  * build(deps): bump anyhow from 1.0.82 to 1.0.86
+  * Update sponsors.md
+  * Remove sponsorship message
+
+-------------------------------------------------------------------
 Wed May  8 17:44:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 10.1.0:
@@ -137,7 +179,7 @@ Sat Jan 14 17:09:47 UTC 2023 - andrea.manzini@suse.com
   * Fix build error if completions feature is disabled
   * Fix --owner, --threads/j option value parsing
 -------------------------------------------------------------------
-Wed Nov 02 07:05:31 UTC 2022 - sebix+novell.com@sebix.at
+Wed Nov 02 07:05:31 UTC 2022 - sebix@sebix.at
 
 - Update to version 8.5.0:
  - Features
@@ -167,7 +209,7 @@ Wed Nov 02 07:05:31 UTC 2022 - sebix+novell.com@sebix.at
   - Major update in how fd handles command line options internally, see #1067
 
 -------------------------------------------------------------------
-Wed Jun 08 08:57:36 UTC 2022 - sebix+novell.com@sebix.at
+Wed Jun 08 08:57:36 UTC 2022 - sebix@sebix.at
 
 - Update to version 8.4.0:
   * Update documentation of --batch-size feature
@@ -206,7 +248,7 @@ Tue Apr  5 05:36:59 UTC 2022 - William Brown <william.brown@suse.com>
 - Correct _service to use the obs_scm generated tar
 
 -------------------------------------------------------------------
-Sat Jan 29 16:58:24 UTC 2022 - sebix+novell.com@sebix.at
+Sat Jan 29 16:58:24 UTC 2022 - sebix@sebix.at
 
 - Update to version 8.3.2:
   * Add temporary version of logo
@@ -225,7 +267,7 @@ Fri Jan  7 16:09:29 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
 - remove service files
 
 -------------------------------------------------------------------
-Thu Jan 06 14:33:13 UTC 2022 - sebix+novell.com@sebix.at
+Thu Jan 06 14:33:13 UTC 2022 - sebix@sebix.at
 
 - Update to version 8.3.1:
  - Bugfixes
@@ -239,7 +281,7 @@ Thu Jan 06 14:33:13 UTC 2022 - sebix+novell.com@sebix.at
   - Updated zsh completions, see #932 (@tmccombs)
 
 -------------------------------------------------------------------
-Mon Nov 29 08:09:38 UTC 2021 - sebix+novell.com@sebix.at
+Mon Nov 29 08:09:38 UTC 2021 - sebix@sebix.at
 
 - Update to version 8.3.0:
   * Update usage section

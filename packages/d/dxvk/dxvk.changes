@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Aug 25 11:40:13 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.4:
+  * Fixed various issues with D3D9 fixed-function texture
+    coordinate processing
+  * Fixed pipeline layout compatibility issues when using graphics
+    pipeline libraries, which would cause crashes or rendering
+    issues on AMD's official drivers with pipeline libraries
+    enabled
+  * If supported, VK_NV_descriptor_pool_overallocation will now be
+    used to potentially save small quantities of descriptor memory
+  * Improved descriptor pool management in general to save memory
+    in case a game renders without ever presenting to the screen
+  * Improved video processor blit functionality
+  * Improved compatibility to third-party mods hooking various
+    DXGI entry points
+  * Battlefield 2, 2142: Work around hang on alt+tab
+  * Dead Space 2: Work around issues caused by the game's Vsync
+    implementation
+  * Dragonshard: Work around performance issues
+  * Fallout 4: Work around an issue with the game locking itself
+    to 45 FPS on Steam Deck OLED
+  * Fallout New Vegas: Fix rendering issues when using certain
+    mods
+  * Ghostbusters Remastered: Work around flickering character
+    faces
+  * Gothic 3: Fix shadow rendering issues caused by incorrectly
+    reported format support
+  * Guild Wars 2: Work around a flickering issue
+  * Prototype: Work around broken shadow rendering if the game
+    detects an AMD or Intel GPU
+  * Star Citizen: Work around an issue with the game's UMD version
+    check
+  * The Sims 2: Work around low CPU-bound performance in some
+    situations
+  * Tomb Raider Legend: Work around flickering character issues
+  * Red Faction Guerrila Remastered: Work around sky box rendering
+    issues
+  * Rise of Nations: Work around crash on alt+tab
+  * Watch Dogs, Watch Dogs 2: Work around flickering character
+    issues
+  * WRC 4: Enable 60 FPS limit to work around audio issues
+- Change _service file mode from deprecated "disabled" mode to new
+  "manual" mode to make it work again.
+
+-------------------------------------------------------------------
 Fri Feb 23 08:32:22 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 2.3:

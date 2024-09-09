@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  8 14:24:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.13
+  * Use task-based rechunking as default (#1131) Hendrik Makait
+  * Improve performance of DelayedsExpr through caching (#1132)
+    Hendrik Makait
+- Release 1.1.12
+  * Fix concat axis 1 bug in divisions (#1128) Patrick Hoefler
+  * Bump pyarrow>=14.0.1 minimum versions (#1127) James
+    Bourbeau
+  * Fix scalar detection of columns coming from sql (#1125)
+    Patrick Hoefler
+
+-------------------------------------------------------------------
 Fri Aug 30 10:55:19 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip some tests on 32-bit

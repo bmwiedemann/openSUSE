@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  8 15:05:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.5:
+  * Schedule `BackgroundTasks` from within `BaseHTTPMiddleware`
+    #2688.
+- update to 0.38.4:
+  * Ensure accurate `root_path` removal in `get_route_path`
+    function #2600
+- update to 0.38.3:
+  * Support for Python 3.13 #2662.
+  * Don't poll for disconnects in `BaseHTTPMiddleware` via
+    `StreamingResponse` #2620.
+
+-------------------------------------------------------------------
 Tue Aug 13 09:41:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.38.2:

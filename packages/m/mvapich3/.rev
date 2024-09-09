@@ -7,4 +7,12 @@
     <comment>Add mvapich3 to Factory</comment>
     <requestid>1148292</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c02e7cbc31cd18e60608412f005f261e</srcmd5>
+    <version>3.0</version>
+    <time>1725885843</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199357</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,16 @@
-diff -ruN mpiP-3.4.1.old/Defs.mak.in mpiP-3.4.1/Defs.mak.in
---- mpiP-3.4.1.old/Defs.mak.in	2014-03-13 19:46:07.000000000 +0000
-+++ mpiP-3.4.1/Defs.mak.in	2017-01-10 07:51:53.771837043 +0000
-@@ -63,6 +63,9 @@
+commit ca14b75af545536ca04cc5a1fb19b77b3e213fe4
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Sep 5 14:57:46 2024 +0200
+
+    mpip.unwinder
+    
+    Aarch64 support
+
+diff --git Defs.mak.in Defs.mak.in
+index 7406eb610d7f..c3b231798d5f 100644
+--- Defs.mak.in
++++ Defs.mak.in
+@@ -64,6 +64,9 @@ ifeq ($(OS),OSF1)
  endif
  
  ifeq ($(OS),Linux)
@@ -11,10 +20,11 @@ diff -ruN mpiP-3.4.1.old/Defs.mak.in mpiP-3.4.1/Defs.mak.in
    ifeq ($(ARCH),i686)
      CPPFLAGS += -DIA32
    endif
-diff -ruN mpiP-3.4.1.old/mpiPi.h.in mpiP-3.4.1/mpiPi.h.in
---- mpiP-3.4.1.old/mpiPi.h	2014-03-13 19:46:07.000000000 +0000
-+++ mpiP-3.4.1/mpiPi.h	2017-01-10 07:52:48.783447707 +0000
-@@ -276,6 +276,12 @@
+diff --git mpiPi.h mpiPi.h
+index 56ce5bd338eb..0b602e31c813 100644
+--- mpiPi.h
++++ mpiPi.h
+@@ -231,6 +231,12 @@ extern void *MPIR_ToPointer (int idx);
  #define FramePC(fp) ((void *) *(long *) (((long) fp) + (2 * sizeof (void *))))
  #define NextFP(fp) ((void *) *(long *) fp)
  

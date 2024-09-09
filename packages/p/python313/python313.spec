@@ -22,18 +22,36 @@
 %bcond_without doc
 %bcond_with base
 %bcond_with general
+%bcond_without GIL
 %endif
 %if "%{flavor}" == "base"
 %define psuffix -core
 %bcond_with doc
 %bcond_without base
 %bcond_with general
+%bcond_without GIL
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with doc
 %bcond_with base
 %bcond_without general
+%bcond_without GIL
+%endif
+
+%if "%{flavor}" == "nogil"
+%define psuffix %{nil}
+%bcond_with doc
+%bcond_with base
+%bcond_without general
+%bcond_with GIL
+%endif
+%if "%{flavor}" == "nogil-base"
+%define psuffix -nogil-core
+%bcond_with doc
+%bcond_without base
+%bcond_with general
+%bcond_with GIL
 %endif
 
 %if 0%{?do_profiling}
@@ -51,6 +69,11 @@
 %endif
 
 %define         python_pkg_name python313
+%if %{without GIL}
+%define         python_pkg_name python313-nogil
+%define         base_pkg_name python313
+%endif
+
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
 %else
@@ -87,6 +110,10 @@
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
 %define         abi_kind   %{nil}
+%if %{without GIL}
+%define         abi_kind   t
+%define         sitedir %{_libdir}/python%{python_version}%{abi_kind}
+%endif
 # python ABI version - used in some file names
 %define         python_abi %{python_version}%{abi_kind}
 # soname ABI tag defined in PEP 3149
@@ -117,8 +144,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.0~rc1
-%define         tarversion 3.13.0rc1
+Version:        3.13.0~rc2
+%define         tarversion 3.13.0rc2
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -174,21 +201,6 @@ Patch08:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch09:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
-# remove duplicate link targets and make documentation with old Sphinx in SLE
-Patch10:        fix_configure_rst.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
-# prevent email header injection, patch from gh#python/cpython!122608
-Patch12:        CVE-2024-6923-email-hdr-inject.patch
-# PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
-# reproducibility patches
-Patch13:        bso1227999-reproducible-builds.patch
-# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
-# avoid denial of service in zipfile
-Patch14:        CVE-2024-8088-inf-loop-zipfile_Path.patch
-# PATCH-FIX-UPSTREAM gh122136-test_asyncio-kernel-buffer-data.patch gh#python/cpython#122136 mcepl@suse.com
-# test.test_asyncio.test_server.TestServer2.test_abort_clients fails because of changes in the kernel
-Patch15:        gh122136-test_asyncio-kernel-buffer-data.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -225,6 +237,10 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 # needed for experimental_jit
 BuildRequires:  clang => 18
 BuildRequires:  llvm => 18
+
+%if %{without GIL}
+ExcludeArch:    aarch64
+%endif
 
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)
@@ -444,7 +460,7 @@ This package contains libpython3.2 shared library for embedding in
 other applications.
 
 %prep
-%autosetup -p1 -N -n %{tarname}
+%setup -q -n %{tarname}
 %autopatch -p1 -M 07
 
 %if 0%{?suse_version} <= 1500
@@ -478,7 +494,7 @@ sed -i -e '/Breakpoint 3 at ...pdb.py:97/s/97/96/' Lib/test/test_pdb.py
 %endif
 
 # Cannot remove it because of gh#python/cpython#92875
-# rm -r Modules/expat
+rm -r Modules/expat
 
 # drop duplicate README from site-packages
 rm Lib/site-packages/README.txt
@@ -536,6 +552,9 @@ export CFLAGS="%{optflags} -IVendor/"
 %endif
 %if %{with experimental_jit}
     --enable-experimental-jit=yes-off \
+%endif
+%if %{without GIL}
+    --disable-gil \
 %endif
     --enable-loadable-sqlite-extensions
 
@@ -680,12 +699,12 @@ done
 
 # Idle is not packaged in base due to the appstream-glib dependency
 # move idle config into /etc
-install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_version}
+install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_abi}
 (
     cd %{buildroot}/%{sitedir}/idlelib/
     for file in *.def ; do
-        mv $file %{buildroot}%{_sysconfdir}/idle%{python_version}/
-        ln -sf %{_sysconfdir}/idle%{python_version}/$file  %{buildroot}/%{sitedir}/idlelib/
+        mv $file %{buildroot}%{_sysconfdir}/idle%{python_abi}/
+        ln -sf %{_sysconfdir}/idle%{python_abi}/$file  %{buildroot}/%{sitedir}/idlelib/
     done
 )
 
@@ -693,23 +712,28 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_version}
 ls -l %{buildroot}%{_bindir}/
 rm %{buildroot}%{_bindir}/idle3
 
+# mve idle binary to idle3.13t to avoid conflict
+%if %{without GIL}
+mv %{buildroot}%{_bindir}/idle%{python_version} %{buildroot}%{_bindir}/idle%{python_abi}
+%endif
+
 # install idle icons
 for size in 16 32 48 ; do
     install -m 644 -D Lib/idlelib/Icons/idle_${size}.png \
-    %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/idle%{python_version}.png
+    %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/idle%{python_abi}.png
 done
 
 # install idle desktop file
-cp %{SOURCE19} idle%{python_version}.desktop
-sed -i -e 's:idle3:idle%{python_version}:g' idle%{python_version}.desktop
-install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
+cp %{SOURCE19} idle%{python_abi}.desktop
+sed -i -e 's:idle3:idle%{python_abi}:g' idle%{python_abi}.desktop
+install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_abi}.desktop
 
-cp %{SOURCE20} idle%{python_version}.appdata.xml
-sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
-install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_version}.appdata.xml
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_version}.appdata.xml
+cp %{SOURCE20} idle%{python_abi}.appdata.xml
+sed -i -e 's:idle3.desktop:idle%{python_abi}.desktop:g' idle%{python_abi}.appdata.xml
+install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_abi}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_abi}.appdata.xml
 
-%fdupes %{buildroot}/%{_libdir}/python%{python_version}
+%fdupes %{buildroot}/%{_libdir}/python%{python_abi}
 %endif
 %if %{with base}
 %make_install
@@ -721,7 +745,7 @@ find %{buildroot} -name "*.a" -delete
 install -d -m 755 %{buildroot}%{sitedir}/site-packages
 install -d -m 755 %{buildroot}%{sitedir}/site-packages/__pycache__
 # and their 32bit counterparts explicitly
-mkdir -p %{buildroot}%{_prefix}/lib/python%{python_version}/site-packages/__pycache__
+mkdir -p %{buildroot}%{_prefix}/lib/python%{python_abi}/site-packages/__pycache__
 
 # cleanup parts that don't belong
 for dir in curses dbm sqlite3 tkinter idlelib; do
@@ -749,7 +773,7 @@ sed -e 's,__PYTHONPREFIX__,%{python_pkg_name},' -e 's,__PYTHON__,python%{python_
 %endif
 
 # link shared library instead of static library that tools expect
-ln -s ../../libpython%{python_abi}.so %{buildroot}%{_libdir}/python%{python_version}/config-%{python_abi}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}/libpython%{python_abi}.so
+ln -s ../../libpython%{python_abi}.so %{buildroot}%{_libdir}/python%{python_abi}/config-%{python_abi}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}/libpython%{python_abi}.so
 
 # delete idle3, which has to many packaging dependencies for base
 rm %{buildroot}%{_bindir}/idle3*
@@ -805,6 +829,17 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
     done < %{SOURCE9}
 )
 echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-import-failed-hooks.pth
+
+# not packaged without GIL
+%if %{without GIL}
+rm -rf %{buildroot}%{_libdir}/pkgconfig/python-%{python_version}.pc
+rm -rf %{buildroot}%{_libdir}/pkgconfig/python-%{python_version}-embed.pc
+rm %{buildroot}%{_bindir}/python%{python_version}
+rm %{buildroot}%{_bindir}/pydoc%{python_version}
+rm %{buildroot}%{_bindir}/python%{python_version}-config
+rm %{buildroot}%{_mandir}/man1/python%{python_version}.1*
+%endif
+
 %endif
 
 %if %{with general}
@@ -831,21 +866,22 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 
 %files -n %{python_pkg_name}-idle
 %{sitedir}/idlelib
-%dir %{_sysconfdir}/idle%{python_version}
-%config %{_sysconfdir}/idle%{python_version}/*
+%dir %{_sysconfdir}/idle%{python_abi}
+%config %{_sysconfdir}/idle%{python_abi}/*
 %doc Lib/idlelib/README.txt
 %doc Lib/idlelib/TODO.txt
 %doc Lib/idlelib/extend.txt
 %doc Lib/idlelib/ChangeLog
-%{_bindir}/idle%{python_version}
-%{_datadir}/applications/idle%{python_version}.desktop
-%{_datadir}/metainfo/idle%{python_version}.appdata.xml
-%{_datadir}/icons/hicolor/*/apps/idle%{python_version}.png
+%{_bindir}/idle%{python_abi}
+%{_datadir}/applications/idle%{python_abi}.desktop
+%{_datadir}/metainfo/idle%{python_abi}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/idle%{python_abi}.png
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/16x16
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/*/apps
+
 # endif for if general
 %endif
 
@@ -920,7 +956,11 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %if %{primary_interpreter}
 %{_mandir}/man1/python3.1%{?ext_man}
 %endif
+
+%if %{with GIL}
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
+%endif
+
 %if %{suse_version} > 1550
 # PEP-0668
 %{sitedir}/EXTERNALLY-MANAGED
@@ -931,8 +971,10 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %if %{primary_interpreter}
 %{_rpmconfigdir}/macros.d/macros.python3
 %endif
+
 # binary parts
 %dir %{sitedir}/lib-dynload
+
 %{dynlib array}
 %{dynlib _asyncio}
 %{dynlib binascii}
@@ -993,11 +1035,13 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{dynlib _sha1}
 %{dynlib _sha2}
 %{dynlib _sha3}
-# python parts
-%dir %{_prefix}/lib/python%{python_version}
-%dir %{_prefix}/lib/python%{python_version}/site-packages
-%dir %{_prefix}/lib/python%{python_version}/site-packages/__pycache__
+
 %dir %{sitedir}
+# python parts
+%dir %{_prefix}/lib/python%{python_abi}
+%dir %{_prefix}/lib/python%{python_abi}/site-packages
+%dir %{_prefix}/lib/python%{python_abi}/site-packages/__pycache__
+
 %dir %{sitedir}/site-packages
 %dir %{sitedir}/site-packages/__pycache__
 # %%exclude %%{sitedir}/*/test
@@ -1041,9 +1085,11 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_bindir}/pydoc3
 %endif
 # executables
+%if %{with GIL}
 %attr(755, root, root) %{_bindir}/pydoc%{python_version}
-# %%attr(755, root, root) %%{_bindir}/python%%{python_abi}
-%attr(755, root, root) %{_bindir}/python%{python_version}
+%endif
+%attr(755, root, root) %{_bindir}/python%{python_abi}
+
 # endif for if base
 %endif
 
