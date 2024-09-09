@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  2 11:53:23 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade x3270 to version 4.3.ga9 ( bsc#1230046(CVE-2024-45490), 
+                                     bsc#1230047(CVE-2024-45491), 
+                                     bsc#1230048(CVE-2024-45492) )
+- Release Notes/suite3270/4.3ga9
+  * https://x3270.miraheze.org/wiki/Release_Notes/suite3270/4.3ga9 
+- Requires expat version 2.6.3
+
+-------------------------------------------------------------------
 Mon Feb 26 12:03:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
