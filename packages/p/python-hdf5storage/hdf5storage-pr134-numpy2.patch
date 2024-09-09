@@ -1,0 +1,226 @@
+From 9814bc28874a56757e16479186523b2b77d5c553 Mon Sep 17 00:00:00 2001
+From: Jesse R Codling <codling@umich.edu>
+Date: Wed, 14 Aug 2024 12:34:47 -0400
+Subject: [PATCH 2/3] Numpy 2.0: Remove all np.unicode_ for np.str_
+
+---
+ doc/source/storage_format.rst           |  6 ++--
+ pyproject.toml                          |  2 +-
+ hdf5storage/Marshallers.py          | 20 +++++++------
+ hdf5storage/__init__.py             |  6 ++--
+ hdf5storage/utilities.py            | 40 ++++++++++++-------------
+ tests/asserts.py                        | 14 ++++-----
+ tests/make_randoms.py                   |  4 +--
+ tests/test_dict_like_storage_methods.py |  6 ++--
+ tests/test_str_conv_utils.py            |  8 ++---
+ tests/test_string_utf16_conversion.py   |  4 +--
+ tests/test_write_readback.py            |  6 ++--
+ 11 files changed, 59 insertions(+), 57 deletions(-)
+
+Index: hdf5storage-0.1.19/tests/make_randoms.py
+===================================================================
+--- hdf5storage-0.1.19.orig/tests/make_randoms.py
++++ hdf5storage-0.1.19/tests/make_randoms.py
+@@ -156,7 +156,7 @@ def random_numpy(shape, dtype, allow_nan
+                 chars = random_str_some_unicode(length)
+             else:
+                 chars = random_str_ascii(length)
+-            data[index] = np.unicode_(chars)
++            data[index] = np.str_(chars)
+         return data
+     elif dtype == 'object':
+         data = np.zeros(shape=shape, dtype='object')
+Index: hdf5storage-0.1.19/tests/test_string_utf16_conversion.py
+===================================================================
+--- hdf5storage-0.1.19.orig/tests/test_string_utf16_conversion.py
++++ hdf5storage-0.1.19/tests/test_string_utf16_conversion.py
+@@ -44,12 +44,12 @@ import pytest
+ # convert_numpy_str_to_utf16 option is set.
+ #
+ # * str
+-# * numpy.unicode_ scalars
++# * numpy.str_ scalars
+ 
+ if sys.hexversion < 0x3000000:
+-    tps_tuple = (unicode, np.unicode_)
++    tps_tuple = (unicode, np.str_)
+ else:
+-    tps_tuple = (str, np.unicode_)
++    tps_tuple = (str, np.str_)
+ 
+ 
+ @pytest.mark.parametrize("tp", tps_tuple)
+Index: hdf5storage-0.1.19/hdf5storage/Marshallers.py
+===================================================================
+--- hdf5storage-0.1.19.orig/hdf5storage/Marshallers.py
++++ hdf5storage-0.1.19/hdf5storage/Marshallers.py
+@@ -480,7 +480,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                                       'MATLAB_int_decode',
+                                       'MATLAB_fields'])
+         # As np.str_ is the unicode type string in Python 3 and the bare
+-        # bytes string in Python 2, we have to use np.unicode_ which is
++        # bytes string in Python 2, we have to use np.str_ which is
+         # or points to the unicode one in both versions.
+         self.types = [np.ndarray, np.matrix,
+                       np.chararray, np.core.records.recarray,
+@@ -489,7 +489,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                       np.int8, np.int16, np.int32, np.int64,
+                       np.float32, np.float64,
+                       np.complex64, np.complex128,
+-                      np.bytes_, np.unicode_, np.object_]
++                      np.bytes_, np.str_, np.object_]
+         self._numpy_types = list(self.types)
+         # Using Python 3 type strings.
+         self.python_type_strings = ['numpy.ndarray', 'numpy.matrix',
+@@ -525,7 +525,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                                  np.complex64: 'single',
+                                  np.complex128: 'double',
+                                  np.bytes_: 'char',
+-                                 np.unicode_: 'char',
++                                 np.str_: 'char',
+                                  np.object_: 'cell'}
+ 
+         # Make a dict to look up the opposite direction (given a matlab
+@@ -542,7 +542,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                                          'int64': np.int64,
+                                          'single': np.float32,
+                                          'double': np.float64,
+-                                         'char': np.unicode_,
++                                         'char': np.str_,
+                                          'cell': np.object_,
+                                          'canonical empty': np.float64,
+                                          'struct': np.object_}
+@@ -601,18 +601,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                     raise NotImplementedError( \
+                         'Can''t write non-ASCII numpy.bytes_.')
+ 
+-        # As of 2013-12-13, h5py cannot write numpy.str_ (UTF-32
+-        # encoding) types (its numpy.unicode_ in Python 2, which is an
+-        # alias for it in Python 3). If the option is set to try to
+-        # convert them to UTF-16, then an attempt at the conversion is
+-        # made. If no conversion is to be done, the conversion throws an
+-        # exception (a UTF-32 character had no UTF-16 equivalent), or a
+-        # UTF-32 character gets turned into a UTF-16 doublet (the
+-        # increase in the number of columns will be by a factor more
+-        # than the length of the strings); then it will be simply
+-        # converted to uint32's byte for byte instead.
+-
+-        if data.dtype.type == np.unicode_:
++        if data.dtype.type == np.str_:
+             new_data = None
+             if options.convert_numpy_str_to_utf16:
+                 try:
+@@ -620,7 +609,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                         data_to_store)
+                 except:
+                     pass
+-            if new_data is None or (type(data_to_store) == np.unicode_ \
++            if new_data is None or (type(data_to_store) == np.str_ \
+                     and len(data_to_store) != len(new_data)) \
+                     or (isinstance(data_to_store, np.ndarray) \
+                     and new_data.shape[-1] != data_to_store.shape[-1] \
+@@ -1049,7 +1038,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                 str_attrs[attr_name] = value
+             elif isinstance(value, bytes):
+                 str_attrs[attr_name] = value.decode()
+-            elif isinstance(value, np.unicode_):
++            elif isinstance(value, np.str_):
+                 str_attrs[attr_name] = str(value)
+             elif isinstance(value, np.bytes_):
+                 str_attrs[attr_name] = value.decode()
+@@ -1313,7 +1302,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+             elif underlying_type.startswith('str') \
+                     or matlab_class == 'char':
+                 if underlying_type == 'str':
+-                    data = np.unicode_('')
++                    data = np.str_('')
+                 elif underlying_type.startswith('str'):
+                     data = convert_to_numpy_str(data, \
+                         length=int(underlying_type[3:])//32)
+@@ -1344,7 +1333,7 @@ class NumpyScalarArrayMarshaller(TypeMar
+                         data = data.flatten()[0]
+                 elif underlying_type.startswith('str'):
+                     if python_empty == 1:
+-                        data = np.unicode_('')
++                        data = np.str_('')
+                     elif isinstance(data, np.ndarray):
+                         data = data.flatten()[0]
+                 else:
+@@ -1511,7 +1500,7 @@ class PythonStringMarshaller(NumpyScalar
+         if (sys.hexversion >= 0x03000000 and isinstance(data, str)) \
+                 or (sys.hexversion < 0x03000000 \
+                 and isinstance(data, unicode)):
+-            cdata = np.unicode_(data)
++            cdata = np.str_(data)
+         else:
+             cdata = np.bytes_(data)
+ 
+Index: hdf5storage-0.1.19/hdf5storage/utilities.py
+===================================================================
+--- hdf5storage-0.1.19.orig/hdf5storage/utilities.py
++++ hdf5storage-0.1.19/hdf5storage/utilities.py
+@@ -408,7 +408,7 @@ def convert_to_str(data):
+     # assuming it is in UTF-8. Otherwise, data has to be returned as is.
+ 
+     if isinstance(data, (np.ndarray, np.uint8, np.uint16, np.uint32,
+-                  np.bytes_, np.unicode_)):
++                  np.bytes_, np.str_)):
+         if data.dtype.name == 'uint8':
+             return numpy_to_bytes(data.flatten()).decode('UTF-8')
+         elif data.dtype.name == 'uint16':
+@@ -477,7 +477,7 @@ def convert_to_numpy_str(data, length=No
+ 
+     """
+     # The method of conversion depends on its type.
+-    if isinstance(data, np.unicode_) or (isinstance(data, np.ndarray) \
++    if isinstance(data, np.str_) or (isinstance(data, np.ndarray) \
+             and data.dtype.char == 'U'):
+         # It is already an np.str_ or array of them, so nothing needs to
+         # be done.
+@@ -486,16 +486,16 @@ def convert_to_numpy_str(data, length=No
+            or (sys.hexversion < 0x03000000 \
+            and isinstance(data, unicode)):
+         # Easily converted through constructor.
+-        return np.unicode_(data)
++        return np.str_(data)
+     elif isinstance(data, (bytes, bytearray, np.bytes_)):
+         # All of them can be decoded and then passed through the
+         # constructor.
+-        return np.unicode_(data.decode('UTF-8'))
++        return np.str_(data.decode('UTF-8'))
+     elif isinstance(data, (np.uint8, np.uint16)):
+         # They are single UTF-8 or UTF-16 scalars, and are easily
+         # converted to a UTF-8 string and then passed through the
+         # constructor.
+-        return np.unicode_(convert_to_str(data))
++        return np.str_(convert_to_str(data))
+     elif isinstance(data, np.uint32):
+         # It is just the uint32 version of the character, so it just
+         # needs to be have the dtype essentially changed by having its
+@@ -507,7 +507,7 @@ def convert_to_numpy_str(data, length=No
+         new_data = np.zeros(shape=data.shape,
+                             dtype='U' + str(data.dtype.itemsize))
+         for index, x in np.ndenumerate(data):
+-            new_data[index] = np.unicode_(x.decode('UTF-8'))
++            new_data[index] = np.str_(x.decode('UTF-8'))
+         return new_data
+     elif isinstance(data, np.ndarray) \
+             and data.dtype.name in ('uint8', 'uint16', 'uint32'):
+@@ -559,7 +559,7 @@ def convert_to_numpy_str(data, length=No
+                     dtype=new_data.dtype,
+                     buffer=numpy_to_bytes(chunk))[()]
+             else:
+-                new_data[i] = np.unicode_(convert_to_str(chunk))
++                new_data[i] = np.str_(convert_to_str(chunk))
+ 
+         # Only thing is left is to reshape it.
+         return new_data.reshape(tuple(new_shape))
+@@ -896,7 +896,7 @@ def get_attribute_string(target, name):
+         return value
+     elif isinstance(value, bytes):
+         return value.decode()
+-    elif isinstance(value, np.unicode_):
++    elif isinstance(value, np.str_):
+         return str(value)
+     elif isinstance(value, np.bytes_):
+         return value.decode()

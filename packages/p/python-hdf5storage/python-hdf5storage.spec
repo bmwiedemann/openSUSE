@@ -1,7 +1,7 @@
 #
 # spec file for package python-hdf5storage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,15 @@ Summary:        Utilities to read/write HDF5 files, including MATLAB v7.3 MAT fi
 License:        BSD-3-Clause
 URL:            https://github.com/frejanordsiek/hdf5storage
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5storage/hdf5storage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nose-to-pytest.patch gh#frejanordsiek/hdf5storage#96 mcepl@suse.com
-# uses pytest instead of nose
+# PATCH-FIX-UPSTREAM nose-to-pytest.patch gh#frejanordsiek/hdf5storage#96 mcepl@suse.com, uses pytest instead of nose
 Patch0:         nose-to-pytest.patch
+# PATCH-FIX-UPSTREAM hdf5storage-pr134-numpy2.patch gh#frejanordsiek/hdf5storage#135 (backport to 0.1)
+Patch1:         hdf5storage-pr134-numpy2.patch
 BuildRequires:  %{python_module h5py >= 3.3}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -38,11 +41,9 @@ BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module scipy}
 # /SECTION
 Requires:       python-h5py >= 3.3
-Requires:       python-numpy < 2
+Requires:       python-numpy
 Recommends:     python-scipy
-# This pure python package uses ctypes only suited for 64-bit. The tests segfault on 32-bit in libc memmove
-# gh#frejanordsiek/hdf5storage#109
-ExcludeArch:    %ix86 %arm
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,10 +59,10 @@ extra meta-data.
 sed -i 's/\r$//' COPYING.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +72,6 @@ sed -i 's/\r$//' COPYING.txt
 %doc README.rst
 %license COPYING.txt
 %{python_sitelib}/hdf5storage/
-%{python_sitelib}/hdf5storage-%{version}-py*.egg-info
+%{python_sitelib}/hdf5storage-%{version}.dist-info
 
 %changelog

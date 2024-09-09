@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 30 13:11:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Unpin numpy 2
+  * Add hdf5storage-pr134-numpy2.patch
+  * gh#frejanordsiek/hdf5storage#134 (backported)
+- Make it noarch again
+
+-------------------------------------------------------------------
 Sun Jul  7 12:31:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Limit to numpy <2: Not compatible
