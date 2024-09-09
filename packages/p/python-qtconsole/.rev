@@ -295,4 +295,18 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment></comment>
     <requestid>1187193</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>30585be018c1eab3172b11e3d9691c61</srcmd5>
+    <version>5.6.0</version>
+    <time>1725885930</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.6.0
+  * Use selected syntax highlighting style for tracebacks and
+    improve ANSI color codes support.
+  * Remove syntax highlighting support for Python 2.
+  * Fix handling of carriage return.
+  * Fix showing bold face characters in output when using ANSI
+    codes. (forwarded request 1199486 from bnavigator)</comment>
+    <requestid>1199487</requestid>
+  </revision>
 </revisionlist>

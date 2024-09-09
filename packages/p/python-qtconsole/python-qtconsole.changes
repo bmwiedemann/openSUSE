@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 11:32:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.6.0
+  * Use selected syntax highlighting style for tracebacks and
+    improve ANSI color codes support.
+  * Remove syntax highlighting support for Python 2.
+  * Fix handling of carriage return.
+  * Fix showing bold face characters in output when using ANSI
+    codes.
+
+-------------------------------------------------------------------
 Fri Jul 12 15:07:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.5.2

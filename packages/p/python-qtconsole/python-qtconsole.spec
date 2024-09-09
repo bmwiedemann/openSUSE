@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.5.2
+Version:        5.6.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -49,7 +49,6 @@ Requires:       python-ipykernel >= 4.1
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-packaging
-Requires:       python-pyzmq >= 17.1
 Requires:       python-traitlets
 Conflicts:      python-traitlets = 5.2.1
 Conflicts:      python-traitlets = 5.2.2
@@ -77,7 +76,6 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq >= 17.1}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module traitlets}
 # /SECTION
