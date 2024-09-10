@@ -42,4 +42,12 @@
   * Initialize messageCounter to 2 instead of verifying later (forwarded request 1179135 from rrahl0)</comment>
     <requestid>1179136</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9b16a7cfc4766ddd30d85ced4ad7425</srcmd5>
+    <version>1.9.4</version>
+    <time>1725995671</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199852</requestid>
+  </revision>
 </revisionlist>

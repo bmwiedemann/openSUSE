@@ -17,7 +17,7 @@
 
 
 Name:           nebula
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        A scalable overlay networking tool
 License:        MIT
@@ -25,7 +25,6 @@ URL:            https://github.com/slackhq/nebula
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}.service
-Patch0:         enable-pie.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
@@ -44,14 +43,15 @@ Summary:        Seperate %{name}-cert package
 This package only includes the %{name}-cert binary.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a1
 
 %build
-%make_build
+go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o %{name} ./cmd/%{name}
+go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o %{name}-cert ./cmd/%{name}-cert
 
 %install
-install -Dm0755 -t %{buildroot}%{_sbindir} nebula
-install -Dm0755 -t %{buildroot}%{_bindir} nebula-cert
+install -Dm0755 -t %{buildroot}%{_sbindir} %{name}
+install -Dm0755 -t %{buildroot}%{_bindir} %{name}-cert
 install -Dm0644 -t %{buildroot}%{_unitdir} %{SOURCE2}
 install -d %{buildroot}%{_sysconfdir}/%{name}
 

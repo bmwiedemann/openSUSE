@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:26:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.9.4:
+  * Support UDP dialing with gVisor
+  * Make some Nebula state programmatically available via control object
+  * Switch internal representation of IPs to netip, to prepare for IPv6 support
+  * Various dependency updates
+  * Fix a bug on big endian hosts, like mips
+  * Fix a rare panic if a local index collision happens
+  * Fix integer wraparound in the calculation of handshake timeouts on 32-bit
+- build the binaries non statically
+- remove enable-pie.patch as it's not needed anymore, since we build the binaries
+  manually, not using the Makefile anymore
+
+-------------------------------------------------------------------
 Fri Jun  7 06:10:38 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 1.9.3:
