@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -33,14 +33,13 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.11_build_10.tar.xz
+Source3:        vst3sdk-3.7.12_build_20.tar.xz
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
 Patch3:         lib64-plugins-default-path.patch
-
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 %if 0%{?suse_version} <= 1600
@@ -55,6 +54,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
 BuildRequires:  portmidi-devel
 BuildRequires:  wxWidgets-3_2-nostl-devel
+BuildRequires:  xz
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
@@ -97,7 +97,6 @@ BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xkbcommon-x11)
-BuildRequires:  pkgconfig(zlib)
 # WARNING lilv-0 >= 0.24.6;lv2 >= 1.16.0;serd-0 >= 0.30.2;sord-0 >= 0.16.4;sratom-0 >= 0.6.4;suil-0 >= 0.10.6
 # check these versions after every update otherwise audacity builds libsuil itself.
 

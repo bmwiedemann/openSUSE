@@ -1204,4 +1204,12 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>1190768</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>6f333e206b649657b0ac524a7c6a67b0</srcmd5>
+    <version>3.6.3</version>
+    <time>1725995641</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199822</requestid>
+  </revision>
 </revisionlist>
