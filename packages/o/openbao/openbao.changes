@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:54:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.1:
+  * This release does not ship with the UI enabled. The UI will be
+    available in the future. #129
+  * OpenBao does not provide support for Vault Enterprise features.
+    If there is an enterprise feature you would like to see added
+    to the project, please open a feature request.
+  * OpenBao is fully API compatible with Vault 1.14.9, and seal
+    compatible with the plugins the project supports. Plugin
+    support for OpenBao can be found
+    [here](https://github.com/orgs/openbao/discussions/64).
+  * Changelog
+    - Disable UI tests (#479) (@cipherboy)
+    - Fix Ed25519 Pointer in PKI Existing handling (#461)
+      (@cipherboy)
+    - Fix api, sdk modules with v2.0.1 (#425) (@cipherboy)
+    - Fix bao cli login success message (#452) (@sadikkuzu)
+    - Fix broken zlint test (#458) (@cipherboy)
+    - Pass BAO_ADDR to the token helper (#348) (@ruuda)
+    - Update Docker dependency (#505) (@cipherboy)
+    - Update to Go 1.22.6 toolchain for v2.0.1 (#504) (@cipherboy)
+    - fix: variable name collision in docker-entrypoint (#446)
+      (@jackhodgkiss)
+    - labels use openbao as prefix instead of vault (#416)
+      (@finkandreas)
+    - release: v2.0.1 (@JanMa)
+- build using CGO_ENABLED=0 on i586, s390x and armv7l
+
+-------------------------------------------------------------------
 Thu Jul 18 12:47:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.0.0:

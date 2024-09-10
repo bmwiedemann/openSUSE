@@ -1,7 +1,7 @@
 #
 # spec file for package openbao
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define statedir_name openbao
 
 Name:           openbao
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
@@ -137,6 +137,13 @@ OpenBao database plugin for PostgreSQL
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
+%ifarch i586 armv7hl-suse-linux s390x armv7hl armv7l armv7l:armv6l:armv5tel
+CGO_ENABLED=1
+%else
+CGO_ENABLED=0
+%endif
+
 go build \
    -mod=vendor \
    -buildmode=pie \
@@ -149,27 +156,27 @@ go build \
 # database plugins
 #
 
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/mysql-database-plugin ./plugins/database/mysql/mysql-database-plugin
 
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/mysql-legacy-database-plugin ./plugins/database/mysql/mysql-legacy-database-plugin
 
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/cassandra-database-plugin ./plugins/database/cassandra/cassandra-database-plugin
 
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/influxdb-database-plugin ./plugins/database/influxdb/influxdb-database-plugin
 
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -o bin/postgresql-database-plugin ./plugins/database/postgresql/postgresql-database-plugin

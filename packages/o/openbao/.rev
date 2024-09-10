@@ -7,4 +7,12 @@
     <comment>new package openbao: provide a software solution to manage, store, and distribute sensitive data including secrets, certificates, and keys (open source fork of Hashicorp Vault)</comment>
     <requestid>1188853</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de7e2fec9d1202b5e82397a797411743</srcmd5>
+    <version>2.0.1</version>
+    <time>1725995677</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199864</requestid>
+  </revision>
 </revisionlist>
