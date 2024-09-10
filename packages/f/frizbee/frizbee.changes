@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:37:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.2:
+  * Add cert string to goreleaser configuration (#198)
+  * Bump anchore/sbom-action from 0.17.1 to 0.17.2 (#197)
+  * Output certificate as part of frizbee release
+
+-------------------------------------------------------------------
+Tue Sep 10 08:31:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.1:
+  * Bump github.com/moby/buildkit from 0.15.1 to 0.15.2
+  * Bump anchore/sbom-action from 0.17.0 to 0.17.1
+  * Bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+  * Bump actions/upload-artifact from 4.3.5 to 4.3.6
+  * Bump github.com/google/go-containerregistry from 0.20.1 to
+    0.20.2
+  * Bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * Bump actions/upload-artifact from 4.3.4 to 4.3.5
+  * Bump github.com/moby/buildkit from 0.15.0 to 0.15.1
+  * Bump golangci/golangci-lint-action from 6.0.1 to 6.1.0
+  * Use unmaintained version tag in tests
+
+-------------------------------------------------------------------
+Tue Sep 10 08:30:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.0:
+  * Fix the default configuration note in README
+  * Only ignore main and master, not all branches when pinning
+    actions
+  * Bump github.com/google/go-containerregistry from 0.20.0 to
+    0.20.1
+  * Bump slsa-framework/slsa-verifier from 2.5.1 to 2.6.0
+  * Bump anchore/sbom-action from 0.16.1 to 0.17.0
+  * chore: improve release binary
+  * docs: update to use core tap
+  * Bump github.com/moby/buildkit from 0.14.1 to 0.15.0 (#174)
+  * Bump actions/setup-go from 5.0.1 to 5.0.2
+  * Bump aquasecurity/trivy-action from 0.23.0 to 0.24.0
+  * Bump anchore/sbom-action from 0.16.0 to 0.16.1
+  * Bump github.com/google/go-containerregistry from 0.19.2 to
+    0.20.0 (#170)
+  * Bump actions/upload-artifact from 4.3.3 to 4.3.4
+  * Bump actions/download-artifact from 4.1.7 to 4.1.8
+  * Update Contributing & Community section in README.md
+  * Update Contributor License Agreement link in CONTRIBUTING.md
+  * Bump buf hashes again
+  * Add readme entry pointing to the github action
+  * Bump github.com/moby/buildkit from 0.14.0 to 0.14.1
+
+-------------------------------------------------------------------
+Tue Sep 10 08:26:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.20:
+  * Always ignore scratch even with an empty config
+  * Bump aquasecurity/trivy-action from 0.22.0 to 0.23.0
+  * Make DefaultConfig public
+  * Update documentation
+  * Default to skipping actions referenced by a tag
+  * Handle images with AS and platform, use excludes
+  * Add a configuration to exclude images
+  * Fix unit test hash reference and bump cobra and
+    go-containerregistry
+  * Bump actions/checkout from 4.1.6 to 4.1.7
+
+-------------------------------------------------------------------
+Tue Sep 10 08:23:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.19 (no releases between 0.0.16 and this
+  one):
+  * Fix missing ldflags while releasing
+  * Rename folder to directory field
+  * Update goreleaser config to v2
+  * Update releaser.yml to use v2
+  * Fix version variable path in goreleaser config
+  * Bump aquasecurity/trivy-action from 0.21.0 to 0.22.0
+  * Bump goreleaser/goreleaser-action from 5.1.0 to 6.0.0
+
+-------------------------------------------------------------------
 Mon Jun 10 07:02:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package frizbee: tool to replace image tags with shasums in

@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           frizbee
-Version:        0.0.16
+Version:        0.1.2
 Release:        0
 Summary:        Throw a tag at and it comes back with a checksum
 License:        Apache-2.0
@@ -75,7 +75,6 @@ COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
-
 
 # output of 'frizbee version' still partially broken/missing
 # https://github.com/stacklok/frizbee/issues/148
