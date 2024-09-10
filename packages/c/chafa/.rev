@@ -425,4 +425,14 @@
     [unfiled] A few small memory leaks in the JPEG XL loader.</comment>
     <requestid>1199545</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>41b64e1e123e310731cbd979bf896017</srcmd5>
+    <version>1.14.4</version>
+    <time>1725995627</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.4:
+  * Bug fixes:
+    #216 Dither intensity does not work properly</comment>
+    <requestid>1199786</requestid>
+  </revision>
 </revisionlist>
