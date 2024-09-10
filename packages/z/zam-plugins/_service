@@ -3,7 +3,7 @@
     <param name="url">https://github.com/zamaudio/zam-plugins.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">4.2</param>
+    <param name="revision">4.3</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>

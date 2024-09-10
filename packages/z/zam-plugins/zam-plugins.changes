@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep 08 00:25:27 UTC 2024 - jgwang@suse.com
+
+- Update to version 4.3:
+  * Version 4.3
+  * AU: Enable new plugin type
+  * dpf: Update submodule to latest main
+  * ZamEQ2: Adjust ranges on controls to be similar to SSL 9000 strip
+  * ZamNoise: Try again
+  * ZamNoise: Try again
+  * ZamNoise: Try to fix leak detected by valgrind
+  * ZamNoise: Add missing fftw_cleanup()
+  * ZamNoise: Fix uninitialised values
+  * ZamNoise: Ship new plugin and update UI with new control
+  * ZamNoise: Add reduction amount control
+  * ZamNoise: Clean up unused code paths
+  * ZamNoise: Increase amount of noise reduction without compromising sound
+  * ZamNoise: Stronger noise reduction using windowed noise
+  * ZamNoise: Use EM algorithm variation with smaller FFT
+  * ZaMaximX2: Fix threshold and change ceiling to gain
+
+-------------------------------------------------------------------
 Tue Feb 20 12:06:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

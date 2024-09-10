@@ -3,7 +3,7 @@ diff --git a/dpf/Makefile.base.mk b/dpf/Makefile.base.mk
 index b2565601..0ec0adef 100644
 --- a/dpf/Makefile.base.mk
 +++ b/dpf/Makefile.base.mk
-@@ -36,7 +36,7 @@ DPF_MAKEFILE_BASE_INCLUDED = true
+@@ -57,7 +57,7 @@
  # Auto-detect target compiler if not defined
  
  ifneq ($(shell echo -e escaped-by-default | grep -- '-e escaped-by-default'),-e escaped-by-default)
