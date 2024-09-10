@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -38,14 +38,26 @@ BuildRequires:  zstd
 ExcludeArch:    s390x
 
 %description
-Jujutsu is a Git-compatible DVCS. It combines features from Git (data model, speed), Mercurial (anonymous branching, simple CLI free from "the index", revsets, powerful history-rewriting), and Pijul/Darcs (first-class conflicts), with features not found in most of them (working-copy-as-a-commit, undo functionality, automatic rebase, safe replication via rsync, Dropbox, or distributed file system).
+Jujutsu is a Git-compatible DVCS. It combines features from Git (data model,
+speed), Mercurial (anonymous branching, simple CLI free from "the index",
+revsets, powerful history-rewriting), and Pijul/Darcs (first-class conflicts),
+with features not found in most of them (working-copy-as-a-commit, undo
+functionality, automatic rebase, safe replication via rsync, Dropbox, or
+distributed file system).
 
-The command-line tool is called jj for now because it's easy to type and easy to replace (rare in English). The project is called "Jujutsu" because it matches "jj".
+The command-line tool is called jj for now because it's easy to type and easy
+to replace (rare in English). The project is called "Jujutsu" because it
+matches "jj".
 
-Jujutsu is relatively young, with lots of work to still be done. If you have any questions, or want to talk about future plans, please join us on Discord Discord or start a GitHub Discussion; the developers monitor both channels.
+Jujutsu is relatively young, with lots of work to still be done. If you have
+any questions, or want to talk about future plans, please join us on Discord
+Discord or start a GitHub Discussion; the developers monitor both channels.
 
 Important
-Jujutsu is an experimental version control system. While Git compatibility is stable, and most developers use it daily for all their needs, there may still be work-in-progress features, suboptimal UX, and workflow gaps that make it unusable for your particular use.
+Jujutsu is an experimental version control system. While Git compatibility is
+stable, and most developers use it daily for all their needs, there may still
+be work-in-progress features, suboptimal UX, and workflow gaps that make it
+unusable for your particular use.
 
 %prep
 %autosetup -p 1 -a 1 -n jj-%{version}
