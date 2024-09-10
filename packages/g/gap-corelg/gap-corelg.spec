@@ -1,7 +1,7 @@
 #
 # spec file for package gap-corelg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-corelg
-Version:        1.56
+Version:        1.57
 Release:        0
 Summary:        GAP: computation with real Lie groups
 License:        GPL-2.0+
@@ -26,9 +26,8 @@ URL:            http://users.monash.edu/~heikod/corelg/README
 Source:         https://github.com/gap-packages/corelg/releases/download/v%version/corelg-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.4
-Requires:       gap-sla >= 0.14
-Suggests:       gap-gapdoc >= 1.0
+Requires:       gap-core >= 4.8
+Requires:       gap-sla >= 1.5
 
 %description
 The CoReLG package contains functionality for working with real
