@@ -112,4 +112,27 @@
   * Allow using :only in import without quoting.</comment>
     <requestid>1183130</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d2915b8f73fe3711c461c3dd02e29ee0</srcmd5>
+    <version>1.36.0</version>
+    <time>1725995689</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.36.0:
+  * Improve error messages in bundle/add* functions.
+  * Add CI testing and verify tests pass on the s390x architecture.
+  * Save :source-form in environment entries when *debug* is set.
+  * Add experimental filewatch/ module for listening to file system changes on Linux and Windows.
+  * Add bundle/who-is to query which bundle a file on disk was installed by.
+  * Add geomean function
+  * Add :R and :W flags to os/pipe to create blocking pipes on Posix and Windows systems. These streams cannot be directly read to and written from, but can be passed to subprocesses.
+  * Add array/join
+  * Add tuple/join
+  * Add bundle/add-bin to make installing scripts easier. This also establishes a packaging convention for it.
+  * Fix marshalling weak tables and weak arrays.
+  * Fix bug in ev/ module that could accidentally close sockets on accident.
+  * Expose C functions for constructing weak tables in janet.h
+  * Let range take non-integer values.
+</comment>
+    <requestid>1199895</requestid>
+  </revision>
 </revisionlist>
