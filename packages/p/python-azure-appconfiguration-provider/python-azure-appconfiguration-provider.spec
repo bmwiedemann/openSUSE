@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration-provider
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Microsoft App Configuration Provider Library for Python
 License:        MIT
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk
-Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration-provider/azure-appconfiguration-provider-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_appconfiguration_provider/azure_appconfiguration_provider-%{version}.tar.gz
 BuildRequires:  %{python_module azure-core >= 1.28.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-dnspython >= 2.6.1
 Requires:       (python-azure-appconfiguration >= 1.4.0 with python-azure-appconfiguration < 2.0.0)
 Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
 Requires:       (python-azure-keyvault-secrets >= 4.3.0 with python-azure-keyvault-secrets < 5.0.0)
@@ -52,7 +53,7 @@ Using the provider enables loading sets of configurations from an Azure App
 Configuration store in a managed way.
 
 %prep
-%setup -q -n azure-appconfiguration-provider-%{version}
+%setup -q -n azure_appconfiguration_provider-%{version}
 
 %build
 %pyproject_wheel

@@ -36,4 +36,17 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1177694 from glaubitz)</comment>
     <requestid>1177725</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>258a9eabce9047be2bda57faad505634</srcmd5>
+    <version>1.3.0</version>
+    <time>1725995681</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1199830 from glaubitz)</comment>
+    <requestid>1199868</requestid>
+  </revision>
 </revisionlist>
