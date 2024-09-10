@@ -1296,4 +1296,47 @@
   * Support for kebab case and dot notation in permission generation tool (#3222) (forwarded request 1194642 from ph03nix)</comment>
     <requestid>1194715</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>96228fb5c35316210488a3c5fb04074c</srcmd5>
+    <version>3.81.10</version>
+    <time>1725995646</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.81.10:
+  * GitHub source logger clean up (#3269)
+  * fix(deps): update module github.com/felixge/fgprof to v0.9.5 (#3277)
+  * fix(deps): update golang.org/x/exp digest to e7e105d (#3202)
+  * [chore] Skip analyzer tests in CI (#3270)
+  * [analyze] Add Analyzer for Postgres (#3192)
+  * [analyze] Add Analyzer for SourceGraph (#3173)
+  * [analyze] Add Analyzer for Asana (#3139)
+  * [analyze] Add Analyzer for Slack (#3207)
+  * [analyze] Improve SquareUp analyzer and Implemented test (#3231)
+  * [analyze] Add Analyze interface for Mailchimp (#3225)
+  * [analyze] Add analyze interface for Bitbucket (#3224)
+  * [analyze] Add Analyzer for Sendgrid (#3174)
+  * [analyze] Add Analyzer for Opsgenie (#3181)
+  * [analyze] Add analyzer for Postman (#3180)
+  * Add Sentry protobufs (#3263)
+  * Make worker multipliers configurable (#3267)
+  * add rotation links (#3257)
+  * Reduce high freq keywords (#3265)
+  * Add central feature flags (#3264)
+  * Add huggingface tui config (#3060)
+  * Add Robinhood Crypto detector (#3254)
+  * Update buffer (#3255)
+  * Download files when reverifying (#3252)
+  * update rotation guide link for teams (#3248)
+  * Th 899 postman panic issue (#3245)
+  * Strip leading +/- from github target diffs (#3244)
+  * Skip filtration for targeted scans #3243
+  * Customize results cleaning (using smuggled interface) (#3235)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.14.0 (#3240)
+  * fix(deps): update testcontainers-go monorepo to v0.33.0 (#3239)
+  * fix(deps): update module google.golang.org/api to v0.193.0 (#3238)
+  * fix(deps): update module google.golang.org/api to v0.192.0 (#3237)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.20.1 (#3236)
+  * chore(deps): update golang docker tag to v1.23 (#3228)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to v0.27.0 (#3229) (forwarded request 1199824 from ph03nix)</comment>
+    <requestid>1199826</requestid>
+  </revision>
 </revisionlist>
