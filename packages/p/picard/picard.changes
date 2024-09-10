@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:46:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update 2.12.3:
+  * PICARD-2958 - Hovering over unmatched files shows a tooltip with
+    the PO translation file header for the active locale
+  * PICARD-2960 - Replacement for directory separators can itself be
+    set to a directory separator
+
+-------------------------------------------------------------------
+Mon Sep  9 06:46:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.2:
+  * PICARD-2953 - Windows: Incorrect sort order in list views and
+    search result
+
+-------------------------------------------------------------------
+Mon Sep  9 06:46:28 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.1:
+  * PICARD-2914 - macOS: Crash when opening options with Spanish UI
+  * PICARD-2939 - Crash when loading release with genre filters resulting
+    in empty genre list
+  * PICARD-2940 - Possible bug with locking in Metadata.__iter__
+  * PICARD-2946 - Fix display length value in AppStream metadata
+
+-------------------------------------------------------------------
+Mon Sep  2 14:10:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Drop 0001-Fix-exception-when-genre-filtering-results-in.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 15:25:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix a segfault when filtering genres

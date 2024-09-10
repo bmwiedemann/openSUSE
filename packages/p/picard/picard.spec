@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.12
+Version:        2.12.3
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
 # PATCH-FIX-SUSE picard-requirements.patch, code@bnavigator.de -- clean python requirements metadata
 Patch0:         picard-requirements.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-exception-when-genre-filtering-results-in.patch alarrosa@suse.com -- Fix segfault when genre filtering results in empty list
-Patch1:         0001-Fix-exception-when-genre-filtering-results-in.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
