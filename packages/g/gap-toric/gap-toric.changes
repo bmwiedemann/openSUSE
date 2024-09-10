@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:57:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.6
+  * Don't try to read non-existing file
+
+-------------------------------------------------------------------
 Fri Oct 14 17:23:15 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to new upstream release 1.9.5
