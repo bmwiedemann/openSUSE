@@ -1,0 +1,5 @@
+<package name="python-huggingface-hub" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-huggingface-hub"/>
+</package>

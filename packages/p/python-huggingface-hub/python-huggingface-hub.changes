@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Aug 30 05:11:39 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Drop suggests from package
+- Use %{?sle15_python_module_pythons} rather then 
+  %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+- set name to huggingface-hub to match pypi
+
+-------------------------------------------------------------------
+Wed Jul  3 09:55:20 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- initial commit of huggingface_hub
