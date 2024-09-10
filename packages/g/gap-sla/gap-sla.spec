@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sla
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-sla
-Version:        1.5.3
+Version:        1.6.2
 Release:        0
 Summary:        GAP: Computations with simple Lie algebras
 License:        GPL-2.0+
@@ -28,7 +28,7 @@ Source:         https://github.com/gap-packages/sla/releases/download/v%version/
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.12
 Requires:       gap-quagroup >= 1.8
 
 %description
