@@ -1,7 +1,7 @@
 #
 # spec file for package reproc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define lib_name libreproc14
 %define libpp_name libreproc++14
 Name:           reproc
-Version:        14.2.4
+Version:        14.2.5
 Release:        0
 Summary:        A cross-platform (C99/C++11) process library
 License:        MIT
 URL:            https://github.com/DaanDeMeyer/reproc
 Source:         https://github.com/DaanDeMeyer/reproc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/DaanDeMeyer/reproc/commit/0b23d88894ccedde04537fa23ea55cb2f8365342.patch
-Patch1:         gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

@@ -23,4 +23,16 @@
     <comment>- gcc13.patch: refresh with the patch that landed upstream</comment>
     <requestid>1087902</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>540beb292d6f98096f2c485d5db0b138</srcmd5>
+    <version>14.2.5</version>
+    <time>1725995686</time>
+    <user>anag+factory</user>
+    <comment>- update to 14.2.5:
+  * reproc_strerror: avoid undefined behaviour for error == INT_MIN
+- drop gcc13.patch (upstream)
+
+- update to 14.1.0</comment>
+    <requestid>1199890</requestid>
+  </revision>
 </revisionlist>

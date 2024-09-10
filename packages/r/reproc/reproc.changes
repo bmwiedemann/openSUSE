@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:26:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.2.5:
+  * reproc_strerror: avoid undefined behaviour for error == INT_MIN
+- drop gcc13.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May 19 08:08:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - gcc13.patch: refresh with the patch that landed upstream
@@ -38,7 +45,7 @@ Fri Feb 24 08:58:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Aug 31 15:00:45 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 14.1.0 
+- update to 14.1.0
 
 -------------------------------------------------------------------
 Fri Jul 31 00:32:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
