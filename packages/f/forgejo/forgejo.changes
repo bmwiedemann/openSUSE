@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:49:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.3:
+  * replace v-html with v-text in branch search inputbox for XSS protection
+  * mitigate CVE-2024-43788 (upgrade webpack)
+  * Translation updates
+
+-------------------------------------------------------------------
 Thu Aug 29 16:06:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.2:
