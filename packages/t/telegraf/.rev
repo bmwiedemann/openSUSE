@@ -338,4 +338,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.31.3: (forwarded request 1193492 from darix)</comment>
     <requestid>1193531</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>43e3b5bf0bb104812dd203654980b4a2</srcmd5>
+    <version>1.32.0</version>
+    <time>1725995620</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.32.0: (forwarded request 1199759 from darix)</comment>
+    <requestid>1199760</requestid>
+  </revision>
 </revisionlist>
