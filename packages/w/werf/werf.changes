@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:12:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.5:
+  * chore: release 2.10.5
+  * fix(compose): correctly handle multiple compose files with
+    -f/--file option
+  * chore(release): 2 alpha,beta,ea
+
+-------------------------------------------------------------------
+Tue Sep 10 08:09:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.4:
+  * chore: release 2.10.4
+  * fix(build/stages): Add RWMutex to ImagesTree
+  * chore(release): 1.2 beta,stable 2 beta,ea,stable
+  * chore(channels): bump alpha 1.2, 2
+
+-------------------------------------------------------------------
 Fri Aug 16 18:10:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.3:
