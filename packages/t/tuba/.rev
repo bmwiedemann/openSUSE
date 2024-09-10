@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>1196108</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>caf172d85e1bdf40663a7bd9abd0e94d</srcmd5>
+    <version>0.8.4</version>
+    <time>1725995691</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.4:
+  * Segfault when closing the mediaviewer before the spinner timeout finishes (forwarded request 1199904 from rrahl0)</comment>
+    <requestid>1199905</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define         appname dev.geopjr.Tuba
 Name:           tuba
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only
