@@ -17,10 +17,10 @@
 
 
 Name:           pastel
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        CLI to generate, analyze, convert and manipulate colors
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/sharkdp/pastel
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -48,10 +48,11 @@ This package provides the documentation for pastel.
 %build
 %{cargo_build}
 
+%check
+%{cargo_test}
+
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
-
-%check
 
 %files
 %license LICENSE-MIT LICENSE-APACHE
@@ -61,4 +62,3 @@ install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 %doc README* doc
 
 %changelog
-

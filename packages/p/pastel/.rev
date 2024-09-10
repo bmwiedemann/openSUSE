@@ -7,4 +7,31 @@
     <comment>Initial package</comment>
     <requestid>1165768</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22eb2c7b827fa482a14381f007acd2ff</srcmd5>
+    <version>0.10.0</version>
+    <time>1725995622</time>
+    <user>anag+factory</user>
+    <comment>- Enable tests
+- Update to version 0.10.0:
+  + Features
+    - Added alpha property to set command
+    - Add support for HSV
+    - Added support for parsing LCh colors
+    - Added hyprpicker as --color-picker
+    - Implement Color::from_u32 for the rgba
+  + Bugfixes
+    - pastel pick does not display all colors in some terminals
+    - Fix lines in kitty terminal with text_fg_override_threshold
+      set
+  + Changes
+    - Use PASTEL_COLOR_MODE in ansi::Brush::from_environment
+    - Unhide colorcheck command
+  + Other
+    - Optimization for eliminating redundant memory operations
+    - Add colour as an alias for the colour command
+    - Suggest to use pastel pick --help instead of -h
+</comment>
+    <requestid>1199762</requestid>
+  </revision>
 </revisionlist>
