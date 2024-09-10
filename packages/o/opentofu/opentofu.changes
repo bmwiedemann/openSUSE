@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:43:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.2:
+  * Update version and changelog to 1.8.2 (#1968)
+  * Backport bump go version to v1.8 (#1966)
+  * Better handling of key_provider references (#1921) (#1965)
+  * fix inconsistent sidebar title of functions on v1.8 branch
+    (#1907)
+  * Fix Docusaurus "broken link" warnings on 1.8 branch of docs
+    (#1884) (#1898)
+
+-------------------------------------------------------------------
 Wed Aug 07 15:26:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:
