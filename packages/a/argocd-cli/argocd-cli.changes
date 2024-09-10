@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 10 05:53:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.3:
+  * Bump version to 2.12.3 (#19694)
+  * fix(AnyNameSpaceRegex): Additional Functions Glob to Regexexp
+    (#19516) (#19665)
+  * feat(sourceNamespace): Regex Support (#19016) (#19017) (#19664)
+
+-------------------------------------------------------------------
+Tue Sep 10 05:45:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.2:
+  * Bump version to 2.12.2 (#19657)
+  * fix(appset): remove cache references (#19652)
+  * fix(appset): informer is not a kubernetes informer (#18905)
+    (#19618) (#19636)
+  * fix: Floating title content incorrect for multi-sources
+    (#17274) (#19623) (#19627)
+  * fix: Parse hostname correctly from repoURL to fetch correct CA
+    cert (#19488) (#19602)
+
+-------------------------------------------------------------------
 Fri Aug 16 18:34:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.1:
