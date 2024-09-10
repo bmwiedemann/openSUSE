@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 01:46:00 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20240906:
+  * Portal: fix external texture
+  * Allow prime run with desktop portal
+  * Explicit glFlush/glFinish before and after render operations to
+    fix tearing and stutter on amd
+  * Fix systemd service file
+
+-------------------------------------------------------------------
 Sat Aug 31 23:06:10 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20240831:
