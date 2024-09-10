@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mimeparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-python-mimeparse
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        Basic functions for parsing and matching mime-type names
 License:        MIT
 URL:            https://github.com/dbtsai/python-mimeparse
-Source:         https://files.pythonhosted.org/packages/source/p/python-mimeparse/python-mimeparse-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-mimeparse/python_mimeparse-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-mimeparse < 0.1.4
-Provides:       %{oldpython}-mimeparse = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -42,13 +38,13 @@ matching mime-types against a list of media-ranges. See section 14.1 of
 the HTTP specification [RFC 2616] for a complete explanation.
 
 %prep
-%setup -q -n python-mimeparse-%{version}
+%autosetup -p1 -n python_mimeparse-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +55,6 @@ the HTTP specification [RFC 2616] for a complete explanation.
 %doc README.rst
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/mimeparse.py*
-%{python_sitelib}/python_mimeparse-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/python_mimeparse-%{version}.dist-info
 
 %changelog

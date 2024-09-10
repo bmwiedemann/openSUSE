@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:29:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * `python-mimeparse` brings support for CPython 3.13 (by
+    addressing the removal of the `cgi` module), and drops
+    support for Python 3.7. Also included are packaging, tooling,
+    and CI improvements. `python-mimeparse` is otherwise a stable
+    and mature project that hopefully does not need much active
+    development.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -65,7 +76,7 @@ Mon Apr 29 12:35:22 UTC 2013 - dmueller@suse.com
 
 - update to 0.1.4:
   * no changelog available
-- rename to proper package name 
+- rename to proper package name
 
 -------------------------------------------------------------------
 Wed Mar 21 22:17:52 UTC 2012 - saschpe@gmx.de

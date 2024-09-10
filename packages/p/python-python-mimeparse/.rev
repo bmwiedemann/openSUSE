@@ -69,4 +69,20 @@
     <comment></comment>
     <requestid>1081583</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e5c42289f6f322e58e8d33ef302ac14</srcmd5>
+    <version>2.0.0</version>
+    <time>1725995685</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * `python-mimeparse` brings support for CPython 3.13 (by
+    addressing the removal of the `cgi` module), and drops
+    support for Python 3.7. Also included are packaging, tooling,
+    and CI improvements. `python-mimeparse` is otherwise a stable
+    and mature project that hopefully does not need much active
+    development.
+
+- rename to proper package name</comment>
+    <requestid>1199891</requestid>
+  </revision>
 </revisionlist>
