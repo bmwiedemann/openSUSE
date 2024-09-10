@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Sep  9 07:24:33 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 1.11.0:
+  - Added:
+    * Nanosvg updated to 93ce879dc4c04a3ef1758428ec80083c38610b1f
+    * New options `--x-margin` `--y-margin` which place the launcher some
+      distance away from the anchor point, in pixels. Default to 0
+      ([#344][344]).
+    * Support for the `StartupNotify` key in `.desktop` files.
+    * Log output now respects the [`NO_COLOR`](http://no-color.org/)
+      environment variable.
+    * Rounded corners without cairo. With this, the **only** time cairo is
+      needed is when you want to use the librsvg SVG backend. For nanosvg
+      builds, there is no longer any need to link against cairo.
+    * Support for linking against a system provided nanosvg library. See
+      the new `-Dsystem-nanosvg` meson option. Default's to `disabled`
+      (i.e. use the bundled version).
+    * Mouse support. Left click selects/launches, right click quits
+      fuzzel, wheel scrolls (a page at at time). This is, for the time
+      being, not configurable ([#131][131])
+    * `--cache=PATH` command line option, and `cache` option to
+      `fuzzel.ini`, allowing a custom cache location to be used
+      ([#189][189], [#219][219]).
+    * `expunge` key binding, to remove an entry from the cache. Mapped to
+      shift+delete by default.
+    * `--prompt-color` and `colors.prompt`, controlling the
+      text/foreground color of the prompt ([#365][365]).
+    * `--input-color` and `colors.input`, controlling the text/foreground
+      color of the input string ([#365][365]).
+    * Much improved performance with large amounts of input ([#305][305]).
+    * Improved rendering performance, by using threads. See the new
+      `--render-workers` command line option, and the new `render-workers`
+      option in `fuzzel.ini`.
+    * dmenu mode: `--prompt-only=PROMPT` command line option
+      ([#276][276]).
+    * dmenu mode: start rendering input before STDIN has been closed.
+    * `--match-workers` command line option and the new `match-workers`
+      option in `fuzzel.ini`.
+    * `delayed-filter-ms`, `delayed-filter-limit` options to `fuzzel.ini`,
+      and `--delayed-filter-ms` and `--delayed-filter-limit` command line
+      options.
+    * Match count can now printed at the right-hand side of the input
+      prompt. It is disabled by default, and can be enabled with either
+      the `--counter` command line option, or the `match-counter` setting
+      in `fuzzel.ini`.
+    * `--counter-color` and `colors.counter`, controlling the color of the
+      match count. The default value is `93a1a1ff` (_base1_ in the
+      solarized palette).
+    * The currently selected entry may now be rendered with a bold
+      font. It is disabled by default, and can be enabled either via the
+      new `--use-bold` command line option, or by setting `use-bold=yes`,
+      in `fuzzel.ini`.
+    * `sort-result` option to `fuzzel.ini`, and `--no-sort` command line
+      option.
+    * Placeholder text (for the input box), controlled by the new
+      `--placeholder`, `--placeholder-color` command line options, and the
+      `placeholder` and `colors.placeholder` options in `fuzzel.ini`
+      ([#188][188]).
+    * `--search=TEXT` command line option, allowing you to "pre-filter"
+      the result ([#][274][274]).
+    * Support for pasting text into fuzzel. Both the regular clipboard,
+      and the primary clipboard are supported. See the new
+      `clipboard-paste` and `primary-paste` key bindings ([#200][200]).
+  - Changed:
+    * The cache now stores desktop file **IDs** instead of the application
+      titles. This way, we do not store multiple cache entries with the
+      same value (title) ([#339][339]).
+    * Always fallback on the icon theme `hicolor`.
+    * Quitting without executing an entry in dmenu mode now exits with
+      code 2 instead of 1 ([#353][353]).
+    * The default `layer` is now `overlay` instead of `top`. This means
+      fuzzel now renders on top of fullscreen windows by default
+      ([#81][81]).
+    * `--no-fuzzy` option has been replaced with `--match-mode`.
+      Default match mode is `fzf`. Other options are `fuzzy` and `exact`. See
+      `man fuzzel.ini` for details.
+      ([#305][305]).
+    * Default text color of the prompt and the selected entry to
+      `586e75ff` (_base01_ in the solarized palette).
+    * Initial application sorting is now done case insensitive.
+    * Background is no longer transparent by default. You can change this
+      by setting `colors.background`.
+    * Search string is now font shaped, improving support for e.g Arabic
+      ([#398][398]).
+  - Fixed:
+    * PNG images being way too dark.
+    * Crash when the cache contains strings that are not valid in the
+      current locale ([#337][337]).
+    * Crash when `tabs` (in `fuzzel.ini`) is set to `0` ([#348][348]).
+    * Crash while loading the cache, when `--list-executables-in-path` is
+      used ([#356][356])
+    * Rounding of window size when fractional scaling is used.
+    * Dmenu mode failing with _"failed to read from stdin: Resource
+      temporarily unavailable"_.
+    * First frame flickers when fractional scaling is used.
+    * Borders, padding etc not updated on scale changes when
+      `dpi-aware=yes`. This mostly affected setups using fractional
+      scaling, but all setups were affected in one way or another.
+    * Mouse selection not working correctly (wrong item selected) when
+      `dpi-aware=yes` and desktop scaling was enabled.
+
+-------------------------------------------------------------------
 Mon Apr 22 21:58:46 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add keyring and signature for package.
