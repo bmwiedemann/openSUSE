@@ -20,7 +20,7 @@
 %define Okteta_sover 3
 %bcond_without released
 Name:           okteta
-Version:        0.26.16
+Version:        0.26.17
 Release:        0
 Summary:        Hex Editor
 License:        GFDL-1.2-only AND GPL-2.0-only
@@ -121,7 +121,8 @@ Contains the development files for the Okteta Hex Editor.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DBUILD_TERMINALTOOL:BOOL=FALSE
+
 %cmake_build
 
 %install
