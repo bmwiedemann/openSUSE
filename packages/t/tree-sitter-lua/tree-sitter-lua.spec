@@ -18,7 +18,7 @@
 
 %define         _name lua
 Name:           tree-sitter-%{_name}
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Lua grammar for tree-sitter
 License:        MIT
