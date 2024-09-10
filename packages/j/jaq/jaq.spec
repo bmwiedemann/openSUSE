@@ -17,7 +17,7 @@
 
 
 Name:           jaq
-Version:        1.3.0
+Version:        1.6.0
 Summary:        jq clone in Rust
 License:        MIT
 Release:        0

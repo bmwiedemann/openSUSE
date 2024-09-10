@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep  7 16:39:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.6.0
+  * This version includes a completely rewritten parser which massively 
+    increases speed and decreases build time, see #196.
+    Furthermore, it allows using keywords as object keys (e.g. {if: 1}.if).
+
+- Update to 1.5.1
+  * jaq now respects the NO_COLOR environment variable (#189).
+
+- Update to 1.5.0
+  * This release corrects escaping of special characters in strings; 
+    in particular, newlines tabs, and quotes (") were not correctly escaped.
+  * fixed compilation by replacing library ariadne with codesnake 
+  * This release finishes the work started in jaq 1.4 towards making jaq being
+     able to process non-JSON values.
+
+- Update to 1.4.0
+  * This release brings an exciting new addition: the jaq playground! Unlike 
+    the jq playground, the jaq playground runs jq filters on your computer 
+    and does not send data to a server to process it there. 
+  * The other big change is that when jaq is used as a library, you can now use
+    it to process custom types of values. That makes it possible to adapt jaq 
+    to process non-JSON data, similarly to fq
+  * New command-line options: --indent and --tab by @chutz #153
+  * New filters: indices, index, and rindex by @kklingenberg #158 #165
+  * Division of strings (string splitting) #167
+  * Subtraction of arrays #164
+
+
+-------------------------------------------------------------------
 Tue Mar 19 08:17:44 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial package for jaq 1.3.0

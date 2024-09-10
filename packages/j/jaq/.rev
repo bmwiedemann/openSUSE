@@ -7,4 +7,12 @@
     <comment>I want to add jaq to openSUSE:Factory</comment>
     <requestid>1160480</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1159f50b8449b691fa0223b651c43a6a</srcmd5>
+    <version>1.6.0</version>
+    <time>1725995683</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199885</requestid>
+  </revision>
 </revisionlist>
