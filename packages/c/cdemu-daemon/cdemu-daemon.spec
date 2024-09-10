@@ -22,7 +22,7 @@
 %endif
 
 Name:           cdemu-daemon
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later

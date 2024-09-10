@@ -238,4 +238,12 @@
     <comment>- Add an explanation to the use of static_node</comment>
     <requestid>1158084</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4e2e7e6effe819fb2484293f20acc956</srcmd5>
+    <version>3.2.7</version>
+    <time>1725995639</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.7</comment>
+    <requestid>1199825</requestid>
+  </revision>
 </revisionlist>
