@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep  7 19:36:07 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.33:
+  * viewer: ignore exposure time feature representation
+
+- Update to 0.8.32:
+  * viewer: workaround for Blackfly Mono16 pixel endianness issue
+  * gst: disconnect camera in stop method
+  * gst: stream object accessor
+  * gst: camera change signal
+  * gst: stream change signal
+  * gst: allow software trigger
+  * gvsp: fix chunk detection
+  * gv_device: crach fix on finalization
+  * Fix device_write_memory rust binding
+  * introspection: add generic feature value accessors
+  * chore: fix libxml2 deprecation warnings
+  * chore: appstream fixes
+
+-------------------------------------------------------------------
 Wed Mar 13 17:19:16 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.8.31:
