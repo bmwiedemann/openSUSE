@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+override_dh_auto_install:
+	ls -al
+	echo autoinst
+	make install DESTDIR=$$PWD/debian/grommunio-error-pages

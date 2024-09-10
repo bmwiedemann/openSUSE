@@ -1,0 +1,5 @@
+<package name="grommunio-error-pages" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail" package="grommunio-error-pages"/>
+</package>

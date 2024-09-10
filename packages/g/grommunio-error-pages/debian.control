@@ -1,0 +1,10 @@
+Source: grommunio-error-pages
+Priority: optional
+Section: mail
+Maintainer: grommunio <support@grommunio.com>
+Standards-Version: 4.5.0
+
+Package: grommunio-error-pages
+Architecture: all
+Pre-Depends: ${misc:Pre-Depends}
+Description: Grommunio-branded error pages for webservers
