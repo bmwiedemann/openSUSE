@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:17:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.10:
+  * Removed a few unused variables which gcc reported during
+    building with -Wall compiler option. A notable case was in
+    function decode_wv_datetime where a memory allocation
+    failure was ignored
+  * Added workaround for buggy FindEXPAT in cmake 3.27-3.29.
+  * Enabled --output-on-failure in GitHub runner config of ctest.
+  * Removed proprietary Testing.cmake.
+  * Updated the cmake package information by replacing the find
+    module with proper cmake config and version files.
+  * Removed all cmake find modules of third party dependencies.
+  * Replaced proprietary FindCheck.cmake with standard usage of
+    PkgConfig.
+  * Removed assert in function wbxml_tree_clb_xml_end_element of
+    wbxml_tree_clb_xml.c. The function had already the
+    correct error handling implemented. The library no longer
+    crashes but returns an error.
+  * Fixed SIGSEGV during parsing of malformed WV document in
+    wbxml_parser.c.
+  * Fixed the handling of a wrong Unicode character in the
+    function parse_entity of wbxml_parser.c. The library no longer
+    crashes but returns an error. Therefore, a new error was
+    defined in wbxml_errors.h. The usage of assert.h was removed
+    from wbxml_parser.c.
+  * Added missing NULL pointer check in function
+    decode_opaque_content of wbxml_parser.c
+  * Added a directory for and with fuzz tests which crash(ed) the
+    library.
+  * Modify wbxml_getopt return opt type to int
+  * Check for normalize_xml.pl failures in the tests (pull
+    request #84).
+
+-------------------------------------------------------------------
 Tue Dec  6 14:42:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.8:
@@ -32,7 +67,7 @@ Sat Apr 13 13:55:16 UTC 2019 - bosim@opensuse.org
 
 - updated to version 0.11.6
   * Fixed/changed the encoding of element Content in CodePage
-    AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft 
+    AirSyncBase (0x11) to WBXML_BINARY_OPTION for Microsoft
     ActiveSync.
     This element is used when the clients send a request to save a
     draft email.
@@ -56,11 +91,11 @@ Wed Mar 15 12:22:18 UTC 2017 - jengelh@inai.de
 Sun Feb 19 14:27:59 UTC 2017 - bosim@opensuse.org
 
 - updated to version 0.11.5
-  * Fixed ActiveSync element data of code pages ResolveRecipients and 
+  * Fixed ActiveSync element data of code pages ResolveRecipients and
     GAL (issue #52 from Thomas Führer, fixed in pull request #53).
   * Added definitions of ActiveSync protocoll v16.0 (pull request #32 from Gil Hartmann).
-  * Added support to build a static library (issue #22 and pull requests #23, #24, #25, 
-    #26 and #27 from Gaurav Gupta). 
+  * Added support to build a static library (issue #22 and pull requests #23, #24, #25,
+    #26 and #27 from Gaurav Gupta).
   * Added support for MacOS X to Travis CI environment.
   * Added support for ccache (pull request #44 from Gaurav Gupta).
   * Fixed some memory leaks (pull requests #43 and #45 from Renu Tyagi).
@@ -265,13 +300,13 @@ Sat Jan 12 22:32:26 CET 2008 - crrodriguez@suse.de
 
 - remove wrong hardcoded require on libexpat0 >= 1.95.4
 - fix -devel package dependencies.
-- pkgconfig script wrongly injected uneeded dependencies.  
+- pkgconfig script wrongly injected uneeded dependencies.
 - fix library-without-ldconfig-* errors
 
 -------------------------------------------------------------------
 Thu May  3 13:46:30 CEST 2007 - dgollub@suse.de
 
-- splitted wbxml2 to libwxbml2-0, libwbxml2-devel and wbxml2-tools 
+- splitted wbxml2 to libwxbml2-0, libwbxml2-devel and wbxml2-tools
 - updated to 0.9.2_SVN48:
     * several SyncML fixes
 - removed .*a files
@@ -296,17 +331,17 @@ Fri Apr 27 18:57:02 CEST 2007 - aj@suse.de
 Sat Jan 20 18:55:28 CET 2007 - dgollub@suse.de
 
 - updated to wbxml2 0.9.2:
-    * Added SyncML 1.2 support 
+    * Added SyncML 1.2 support
     * Added Microsoft AirSync support
     * Some more cleanup and bug fixes
-- added patch for Makefile template to handle CFLAGS 
-- bumped up version to 0.9.2 in configure template 
+- added patch for Makefile template to handle CFLAGS
+- bumped up version to 0.9.2 in configure template
 
 -------------------------------------------------------------------
 Sat Nov 11 12:01:04 CET 2006 - ro@suse.de
 
 - cleanup specfile
-- fix docu permissions 
+- fix docu permissions
 
 -------------------------------------------------------------------
 Wed Oct  4 19:48:32 CEST 2006 - dgollub@suse.de
@@ -332,16 +367,16 @@ Mon Dec 19 16:47:15 CET 2005 - dgollub@suse.de
 -------------------------------------------------------------------
 Thu Oct 28 10:49:04 CEST 2004 - behlert@suse.de
 
-- added patch from multisync-developers needed to handle syncml 
+- added patch from multisync-developers needed to handle syncml
   correct (Nokia 6600 bug) [#447779]
 
 -------------------------------------------------------------------
 Thu May  6 10:21:56 CEST 2004 - behlert@suse.de
 
-- updated to v0.9, which is now under GPL instead of LGPL 
+- updated to v0.9, which is now under GPL instead of LGPL
 
 -------------------------------------------------------------------
 Mon Mar  8 14:32:27 CET 2004 - behlert@suse.de
 
-- initial version 
+- initial version
 

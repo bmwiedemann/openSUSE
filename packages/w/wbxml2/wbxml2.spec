@@ -1,7 +1,7 @@
 #
 # spec file for package wbxml2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # set libname
 %define libname libwbxml2-1
 Name:           wbxml2
-Version:        0.11.8
+Version:        0.11.10
 Release:        0
 Summary:        WBXML parser and compiler library
 License:        LGPL-2.1-or-later
@@ -84,25 +84,11 @@ ecode and handle WBXML documents.
 %setup -q -n libwbxml-libwbxml-%{version}
 
 %build
-mkdir build
-pushd build
-CFLAGS="%{optflags}" \
-CXXFLAGS="%{optflags}" \
-cmake \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-        -DENABLE_INSTALL_DOC:BOOL=OFF \
-%if "%{_lib}" == "lib64"
-        -DLIB_SUFFIX=64 \
-%endif
-         %{_builddir}/libwbxml-libwbxml-%{version}
-%make_build
-popd
+%cmake -DENABLE_INSTALL_DOC:BOOL=OFF
+%cmake_build
 
 %install
-pushd build
-%make_install
-popd
+%cmake_install
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -113,7 +99,7 @@ popd
 %{_libdir}/libwbxml2.so.1*
 
 %files -n libwbxml2-devel
-%{_datadir}/cmake/Modules/FindLibWbxml2.cmake
+%{_libdir}/cmake/libwbxml2/
 %{_libdir}/pkgconfig/libwbxml2.pc
 %{_libdir}/libwbxml2.so
 %{_includedir}/libwbxml*

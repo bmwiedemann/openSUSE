@@ -245,4 +245,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1059438</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4c7e392fbf9a3305f3b05ba92af8c5fe</srcmd5>
+    <version>0.11.10</version>
+    <time>1725995688</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.10:
+  * Removed a few unused variables which gcc reported during
+    building with -Wall compiler option. A notable case was in
+    function decode_wv_datetime where a memory allocation
+    failure was ignored
+  * Added workaround for buggy FindEXPAT in cmake 3.27-3.29.
+  * Enabled --output-on-failure in GitHub runner config of ctest.
+  * Removed proprietary Testing.cmake.
+  * Updated the cmake package information by replacing the find
+    module with proper cmake config and version files.
+  * Removed all cmake find modules of third party dependencies.
+  * Replaced proprietary FindCheck.cmake with standard usage of
+    PkgConfig.
+  * Removed assert in function wbxml_tree_clb_xml_end_element of
+    wbxml_tree_clb_xml.c. The function had already the
+    correct error handling implemented. The library no longer
+    crashes but returns an error.
+  * Fixed SIGSEGV during parsing of malformed WV document in
+    wbxml_parser.c.
+  * Fixed the handling of a wrong Unicode character in the
+    function parse_entity of wbxml_parser.c. The library no longer
+    crashes but returns an error. Therefore, a new error was
+    defined in wbxml_errors.h. The usage of assert.h was removed
+    from wbxml_parser.c.
+  * Added missing NULL pointer check in function
+    decode_opaque_content of wbxml_parser.c
+  * Added a directory for and with fuzz tests which crash(ed) the
+    library.
+  * Modify wbxml_getopt return opt type to int
+  * Check for normalize_xml.pl failures in the tests (pull</comment>
+    <requestid>1199889</requestid>
+  </revision>
 </revisionlist>
