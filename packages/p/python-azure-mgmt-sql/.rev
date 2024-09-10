@@ -347,4 +347,19 @@
     CHANGELOG.md file provided with this package (forwarded request 1187771 from glaubitz)</comment>
     <requestid>1187891</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f00835d58b658ba334a1df775203bfe9</srcmd5>
+    <version>4.0.0b19</version>
+    <time>1725995681</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0b19
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1199829 from glaubitz)</comment>
+    <requestid>1199869</requestid>
+  </revision>
 </revisionlist>
