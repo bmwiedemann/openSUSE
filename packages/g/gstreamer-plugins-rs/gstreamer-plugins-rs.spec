@@ -19,8 +19,6 @@
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %define _name gst-plugins-rs
 %define gst_branch 1.0
-# Disable csound for now, bring issue upstream
-#%%global __requires_exclude pkgconfig\\(csound\\)
 
 %ifarch s390 s390x ppc ppc64
 %bcond_with aws
@@ -28,39 +26,30 @@
 %bcond_without aws
 %endif
 
-%if %{?pkg_vcmp:%{pkg_vcmp dav1d-devel >= 1.3.0}}%{!?pkg_vcmp:0}
-%define has_dav1d_1_3_0 1
-%endif
-
 Name:           gstreamer-plugins-rs
-Version:        0.12.2
+Version:        0.13.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
-Source:         %{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
-Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml
-Source5:        vendor-for-dav1d-1.3.0.tar.zst
-Source99:       README.SUSE
 
 BuildRequires:  cargo-c >= 0.9.21
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  clang
-# Disable csound for now, bring issue upstream
-#BuildRequires:  csound-devel
-BuildRequires:  llvm
 BuildRequires:  git
+BuildRequires:  llvm
 BuildRequires:  meson >= 0.60
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-tomli
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
-BuildRequires:  pkgconfig(dav1d)
+BuildRequires:  pkgconfig(dav1d) >= 1.3.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
@@ -73,7 +62,7 @@ BuildRequires:  pkgconfig(pango)
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
-ExcludeArch:    ppc ppc64 ppc64le s390 %ix86 %arm
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -89,7 +78,6 @@ This package provides various plugins written in Rust.
 Summary:        GStreamer Streaming-Media Framework Plug-Ins development files
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
-#Requires:       csound-devel
 
 %description devel
 GStreamer is a streaming media framework based on graphs of filters
@@ -103,32 +91,9 @@ This package contains the pkgconfig development files for the rust
 plugins.
 
 %prep
-%if 0%{?has_dav1d_1_3_0}
-%autosetup -n %{_name}-%{version} -a5 -p1
-
-sed -ie 's/^dav1d = "[0-9\.]*"/dav1d = "0.10"/' video/dav1d/Cargo.toml
-sed -i -e "s/'extra-deps': {'dav1d': \['>=1.0', '<1.3'\]}/'extra-deps': {'dav1d': ['>=1.3']}/" meson.build
-%else
 %autosetup -n %{_name}-%{version} -a2 -p1
-%endif
-
-%if %{?suse_version} < 1600
-sed -ie "s/meson_version : '>= 1.1'/meson_version : '>= 0.61.4'/" meson.build
-sed -ie "s/\.enable_if.*//" meson.build
-sed -ie "s/find_program('cargo-cbuild', version:'>=0.9.21'/find_program('cargo-cbuild', version:'>=0.9.15'/" meson.build
-%endif
-
-mkdir -p .cargo
-cp %{SOURCE3} .cargo/config
-
-sed -i -e 's/version = "8"/version = "9"/' vendor/livekit-api/Cargo.toml
-sed -i -e "s/ab6a42a4752e822c794421fa4b939e7e9690e85541c5e0ae28a34f17fe8fd170/2c69748813bcb4e4f3d06343e05fb9f43a8ae623fbdbb340847fd536f1974aa9/" vendor/livekit-api/.cargo-checksum.json
 
 %build
-# Disable csound for now, bring issue upstream
-#export CSOUND_LIB_DIR=%%{_libdir}
-export RUSTFLAGS="%{build_rustflags}"
-
 %meson \
 	--default-library=shared \
 	-Ddoc=disabled \
@@ -142,7 +107,6 @@ export RUSTFLAGS="%{build_rustflags}"
 %meson_build
 
 %install
-export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 mkdir -p %{buildroot}%{_datadir}/appdata
 cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
@@ -163,6 +127,7 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgif.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstgopbuffer.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgtk4.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthsv.so
@@ -170,7 +135,10 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlivesync.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmp4.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstmpegtslive.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstndi.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstoriginalbuffer.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstquinn.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstraptorq.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstregex.so
