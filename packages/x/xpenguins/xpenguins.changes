@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:55:35 UTC 2024 - pgajdos@suse.com
+
+- version update to 3.2.3
+  *  configure.ac: AM_CONFIG_HEADER -> AC_CONFIG_HEADERS
+                   and some othe minor issues
+                   enable cross compiling
+  *  src/Makefile.am: make --selfrep working
+  *  addcopyright.sh: adapt sed usage to freebsd's sed
+  *  implement --changelog
+  *  implement --selfrep
+
+-------------------------------------------------------------------
 Mon Dec  6 10:49:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.2.1

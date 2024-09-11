@@ -1,7 +1,7 @@
 #
 # spec file for package xpenguins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xpenguins
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 Summary:        Cute little penguins that walk along the tops of your windows
 License:        GPL-2.0-or-later
