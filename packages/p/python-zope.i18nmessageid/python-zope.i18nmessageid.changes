@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 11 05:10:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-intersphinx-mapping.patch:
+  * Fix the intersphinx mapping.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jan  2 21:42:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

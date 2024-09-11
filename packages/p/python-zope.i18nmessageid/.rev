@@ -151,4 +151,14 @@ New dependecy of python-Pyramid</comment>
   * Fix a regression copying Message objects in the Python</comment>
     <requestid>1136297</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>377d9a93203b29904fbbb2bb57bbc232</srcmd5>
+    <version>6.1.0</version>
+    <time>1726066551</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-intersphinx-mapping.patch:
+  * Fix the intersphinx mapping.
+- Switch to autosetup macro.</comment>
+    <requestid>1199944</requestid>
+  </revision>
 </revisionlist>
