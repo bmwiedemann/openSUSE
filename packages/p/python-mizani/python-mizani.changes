@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:07:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.12.2
+  * mizani now requires python 3.9 and above
+  * Renamed "husl" color palette type to "hsluv". "husl" is the old 
+    name but we still work although not part of the API.
+  * Fixed squish and squish_infinite to work for non writeable 
+    pandas series. This is broken for numpy 2.1.0.
+
+-------------------------------------------------------------------
 Thu Jun  6 15:13:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.4:
