@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-overrides
 Version:        7.7.0
 Release:        0

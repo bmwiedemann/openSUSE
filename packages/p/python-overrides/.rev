@@ -43,4 +43,12 @@
   * Fixing https://github.com/mkorpela/overrides/issues/121</comment>
     <requestid>1142842</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7acfa1592ceadc2b003a9b61f61a188c</srcmd5>
+    <version>7.7.0</version>
+    <time>1726066554</time>
+    <user>anag+factory</user>
+    <comment>- Added macro to fix build error on Leap 15.6</comment>
+    <requestid>1199967</requestid>
+  </revision>
 </revisionlist>
