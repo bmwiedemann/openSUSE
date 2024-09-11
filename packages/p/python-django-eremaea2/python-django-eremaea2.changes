@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 15:26:43 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 2.0.21
+  - Fix build
+
+-------------------------------------------------------------------
+Mon Sep  9 08:20:12 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 2.0.19
+  - Drop Python 3.6 support
+
+-------------------------------------------------------------------
 Wed Jul 12 15:35:58 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix Requires for python-python-magic:

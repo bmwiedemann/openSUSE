@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-eremaea2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 %define skip_python2 1
+%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-eremaea2
-Version:        2.0.18
+Version:        2.0.21
 Release:        0
 Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
 URL:            https://github.com/matwey/django-eremaea2
-Source:         https://files.pythonhosted.org/packages/source/d/django-eremaea2/django-eremaea2-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-eremaea2/django_eremaea2-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module cmdln}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module django-dj-inmemorystorage}
 BuildRequires:  %{python_module djangorestframework >= 3.7.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 # https://github.com/matwey/django-eremaea2/issues/15
 BuildRequires:  %{python_module python-magic}
@@ -42,7 +44,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       eremaea = %{version}
-Requires:       python-Django >= 1.10
 Requires:       python-cmdln
 Requires:       python-djangorestframework >= 3.7.0
 Requires:       python-python-magic
@@ -66,28 +67,25 @@ Requires:       /usr/bin/eremaeactl
 This package contains the systemd unit files for python-django-eremaea2.
 
 %prep
-%autosetup -p1 -n django-eremaea2-%{version}
+%autosetup -p1 -n django_eremaea2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/eremaeactl
 
-for p in eremaeactl ; do
-    %python_clone -a %{buildroot}%{_bindir}/$p
-done
-
-for u in eremaea-purge@.timer eremaea-purge@.service eremaea-pull@.service eremaea.target ; do
-    install -D -m 0644 $u %{buildroot}%{_unitdir}/$u
-done
+install -D -m 0644 eremaea-purge@.timer   %{buildroot}%{_unitdir}/eremaea-purge@.timer
+install -D -m 0644 eremaea-purge@.service %{buildroot}%{_unitdir}/eremaea-purge@.service
+install -D -m 0644 eremaea-pull@.service  %{buildroot}%{_unitdir}/eremaea-pull@.service
+install -D -m 0644 eremaea.target         %{buildroot}%{_unitdir}/eremaea.target
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rceremaea
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export DJANGO_SETTINGS_MODULE=tests.test_settings
 export PYTHONPATH=$(pwd)
 %pytest
 
