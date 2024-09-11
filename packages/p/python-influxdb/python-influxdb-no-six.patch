@@ -1,7 +1,7 @@
-Index: influxdb-5.3.1/influxdb.egg-info/requires.txt
+Index: influxdb-5.3.2/influxdb.egg-info/requires.txt
 ===================================================================
---- influxdb-5.3.1.orig/influxdb.egg-info/requires.txt
-+++ influxdb-5.3.1/influxdb.egg-info/requires.txt
+--- influxdb-5.3.2.orig/influxdb.egg-info/requires.txt
++++ influxdb-5.3.2/influxdb.egg-info/requires.txt
 @@ -1,7 +1,6 @@
  python-dateutil>=2.6.0
  pytz
@@ -10,23 +10,23 @@ Index: influxdb-5.3.1/influxdb.egg-info/requires.txt
  msgpack
  
  [test]
-Index: influxdb-5.3.1/influxdb/client.py
+Index: influxdb-5.3.2/influxdb/client.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/client.py
-+++ influxdb-5.3.1/influxdb/client.py
-@@ -20,7 +20,7 @@ from itertools import chain, islice
- import msgpack
+--- influxdb-5.3.2.orig/influxdb/client.py
++++ influxdb-5.3.2/influxdb/client.py
+@@ -21,7 +21,7 @@ import msgpack
  import requests
  import requests.exceptions
+ from requests.adapters import HTTPAdapter
 -from six.moves.urllib.parse import urlparse
 +from urllib.parse import urlparse
  
  from influxdb.line_protocol import make_lines, quote_ident, quote_literal
  from influxdb.resultset import ResultSet
-Index: influxdb-5.3.1/influxdb/helper.py
+Index: influxdb-5.3.2/influxdb/helper.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/helper.py
-+++ influxdb-5.3.1/influxdb/helper.py
+--- influxdb-5.3.2.orig/influxdb/helper.py
++++ influxdb-5.3.2/influxdb/helper.py
 @@ -10,8 +10,6 @@ from collections import namedtuple, defa
  from datetime import datetime
  from warnings import warn
@@ -45,10 +45,10 @@ Index: influxdb-5.3.1/influxdb/helper.py
              for point in data:
                  json_point = {
                      "measurement": series_name,
-Index: influxdb-5.3.1/influxdb/influxdb08/client.py
+Index: influxdb-5.3.2/influxdb/influxdb08/client.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/influxdb08/client.py
-+++ influxdb-5.3.1/influxdb/influxdb08/client.py
+--- influxdb-5.3.2.orig/influxdb/influxdb08/client.py
++++ influxdb-5.3.2/influxdb/influxdb08/client.py
 @@ -7,8 +7,7 @@ import json
  import socket
  import requests
@@ -68,10 +68,10 @@ Index: influxdb-5.3.1/influxdb/influxdb08/client.py
                  yield data_list[i:i + n]
  
          batch_size = kwargs.get('batch_size')
-Index: influxdb-5.3.1/influxdb/line_protocol.py
+Index: influxdb-5.3.2/influxdb/line_protocol.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/line_protocol.py
-+++ influxdb-5.3.1/influxdb/line_protocol.py
+--- influxdb-5.3.2.orig/influxdb/line_protocol.py
++++ influxdb-5.3.2/influxdb/line_protocol.py
 @@ -11,7 +11,6 @@ from numbers import Integral
  
  from pytz import UTC
@@ -119,20 +119,20 @@ Index: influxdb-5.3.1/influxdb/line_protocol.py
          return str(data)
  
      return data
-Index: influxdb-5.3.1/requirements.txt
+Index: influxdb-5.3.2/requirements.txt
 ===================================================================
---- influxdb-5.3.1.orig/requirements.txt
-+++ influxdb-5.3.1/requirements.txt
+--- influxdb-5.3.2.orig/requirements.txt
++++ influxdb-5.3.2/requirements.txt
 @@ -1,5 +1,4 @@
  python-dateutil>=2.6.0
  pytz
  requests>=2.17.0
 -six>=1.10.0
  msgpack
-Index: influxdb-5.3.1/influxdb/influxdb08/helper.py
+Index: influxdb-5.3.2/influxdb/influxdb08/helper.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/influxdb08/helper.py
-+++ influxdb-5.3.1/influxdb/influxdb08/helper.py
+--- influxdb-5.3.2.orig/influxdb/influxdb08/helper.py
++++ influxdb-5.3.2/influxdb/influxdb08/helper.py
 @@ -9,8 +9,6 @@ from __future__ import unicode_literals
  from collections import namedtuple, defaultdict
  from warnings import warn

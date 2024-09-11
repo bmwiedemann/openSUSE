@@ -1,7 +1,7 @@
-Index: influxdb-5.3.1/influxdb/tests/dataframe_client_test.py
+Index: influxdb-5.3.2/influxdb/tests/dataframe_client_test.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/tests/dataframe_client_test.py
-+++ influxdb-5.3.1/influxdb/tests/dataframe_client_test.py
+--- influxdb-5.3.2.orig/influxdb/tests/dataframe_client_test.py
++++ influxdb-5.3.2/influxdb/tests/dataframe_client_test.py
 @@ -19,7 +19,10 @@ from .client_test import _mocked_session
  
  if not using_pypy:
@@ -41,10 +41,10 @@ Index: influxdb-5.3.1/influxdb/tests/dataframe_client_test.py
  
          if pd1_dropna.index.tzinfo is None:
              pd1_dropna.index = pd1_dropna.index.tz_localize('UTC')
-Index: influxdb-5.3.1/influxdb/tests/influxdb08/dataframe_client_test.py
+Index: influxdb-5.3.2/influxdb/tests/influxdb08/dataframe_client_test.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/tests/influxdb08/dataframe_client_test.py
-+++ influxdb-5.3.1/influxdb/tests/influxdb08/dataframe_client_test.py
+--- influxdb-5.3.2.orig/influxdb/tests/influxdb08/dataframe_client_test.py
++++ influxdb-5.3.2/influxdb/tests/influxdb08/dataframe_client_test.py
 @@ -16,7 +16,10 @@ from .client_test import _mocked_session
  
  if not using_pypy:
@@ -57,10 +57,10 @@ Index: influxdb-5.3.1/influxdb/tests/influxdb08/dataframe_client_test.py
      from influxdb.influxdb08 import DataFrameClient
  
  
-Index: influxdb-5.3.1/influxdb/tests/server_tests/client_test_with_server.py
+Index: influxdb-5.3.2/influxdb/tests/server_tests/client_test_with_server.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/tests/server_tests/client_test_with_server.py
-+++ influxdb-5.3.1/influxdb/tests/server_tests/client_test_with_server.py
+--- influxdb-5.3.2.orig/influxdb/tests/server_tests/client_test_with_server.py
++++ influxdb-5.3.2/influxdb/tests/server_tests/client_test_with_server.py
 @@ -34,7 +34,10 @@ warnings.simplefilter('error', FutureWar
  
  if not using_pypy:
@@ -73,10 +73,10 @@ Index: influxdb-5.3.1/influxdb/tests/server_tests/client_test_with_server.py
  
  
  THIS_DIR = os.path.abspath(os.path.dirname(__file__))
-Index: influxdb-5.3.1/influxdb/_dataframe_client.py
+Index: influxdb-5.3.2/influxdb/_dataframe_client.py
 ===================================================================
---- influxdb-5.3.1.orig/influxdb/_dataframe_client.py
-+++ influxdb-5.3.1/influxdb/_dataframe_client.py
+--- influxdb-5.3.2.orig/influxdb/_dataframe_client.py
++++ influxdb-5.3.2/influxdb/_dataframe_client.py
 @@ -219,7 +219,7 @@ class DataFrameClient(InfluxDBClient):
              else:
                  key = (name, tuple(sorted(tags.items())))

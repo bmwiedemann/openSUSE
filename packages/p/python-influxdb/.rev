@@ -165,4 +165,14 @@
 - Update python-influxdb-new-pandas.patch once more</comment>
     <requestid>1157038</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c4014e8e2f936855c5b587a7834a2b09</srcmd5>
+    <version>5.3.2</version>
+    <time>1726066610</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.2:
+  * Correctly serialize nanosecond dataframe timestamps (#926)
+- Refresh all patches and skip broken test with numpy &gt;= 2</comment>
+    <requestid>1200102</requestid>
+  </revision>
 </revisionlist>

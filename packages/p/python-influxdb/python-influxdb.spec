@@ -19,7 +19,7 @@
 # Legacy package not compatible with Python 3.12. Move your consuming library to a more modern version!
 %define skip_python312 1
 Name:           python-influxdb
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        InfluxDB client
 License:        MIT
@@ -82,6 +82,8 @@ sed -e 's/^import mock/from unittest import mock/' \
     -i influxdb/tests/*.py influxdb/tests/*/*.py
 # https://github.com/influxdata/influxdb-python/issues/884
 donttest="test_write_points_from_dataframe_with_nan_json or test_write_points_from_dataframe_with_tags_and_nan_json"
+# don't work with numpy 2
+donttest+=" or test_multiquery_into_dataframe_dropna"
 %pytest influxdb -k "not ($donttest)"
 
 %files %{python_files}

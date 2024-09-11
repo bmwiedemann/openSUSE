@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 11 10:54:28 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 5.3.2:
+  * Correctly serialize nanosecond dataframe timestamps (#926)
+- Refresh all patches and skip broken test with numpy >= 2
+
+-------------------------------------------------------------------
 Fri Mar  8 15:47:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update python-influxdb-new-pandas.patch once more
