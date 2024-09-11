@@ -11243,7 +11243,7 @@ unsorted:
   - libOsi1 
   - libOsiCbc3 
   - libOsiClp1 
-  - libPDAL17 
+  - libPDAL18 
   - libPocoActiveRecord101 
   - libPocoCppParser101 
   - libPocoCrypto101 
@@ -11929,6 +11929,7 @@ unsorted:
   - libavcodec58_134-32bit 
   - libavcodec59 
   - libavcodec59-32bit 
+  - libavcodec60 
   - libavcodec60-32bit 
   - libavcodec61-32bit 
   - libavdevice58_13 
@@ -11944,10 +11945,12 @@ unsorted:
   - libavfilter7_110-32bit 
   - libavfilter8 
   - libavfilter8-32bit 
+  - libavfilter9 
   - libavfilter9-32bit 
   - libavformat58_76-32bit 
   - libavformat59 
   - libavformat59-32bit 
+  - libavformat60 
   - libavformat60-32bit 
   - libavformat61-32bit 
   - libavfs0 
@@ -11961,6 +11964,7 @@ unsorted:
   - libavutil56_70-32bit 
   - libavutil57 
   - libavutil57-32bit 
+  - libavutil58 
   - libavutil58-32bit 
   - libavutil59-32bit 
   - libaws-c-auth1_0_0 
@@ -15341,6 +15345,7 @@ unsorted:
   - libpostproc55_9-32bit 
   - libpostproc56 
   - libpostproc56-32bit 
+  - libpostproc57 
   - libpostproc57-32bit 
   - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
@@ -16376,6 +16381,7 @@ unsorted:
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
+  - libswresample4 
   - libswresample4-32bit 
   - libswresample4_ff5 
   - libswresample4_ff5-32bit 
@@ -16383,6 +16389,7 @@ unsorted:
   - libswscale5_9-32bit 
   - libswscale6 
   - libswscale6-32bit 
+  - libswscale7 
   - libswscale7-32bit 
   - libswscale8-32bit 
   - libsybdb5 
@@ -25081,6 +25088,7 @@ unsorted:
   - python310-dbus_fast 
   - python310-dbus_next 
   - python310-ddg3 
+  - python310-ddsketch 
   - python310-ddt 
   - python310-deap 
   - python310-debugpy 
@@ -26217,6 +26225,7 @@ unsorted:
   - python310-opentelemetry-exporter-otlp-proto-common 
   - python310-opentelemetry-exporter-otlp-proto-grpc 
   - python310-opentelemetry-exporter-otlp-proto-http 
+  - python310-opentelemetry-instrumentation 
   - python310-opentelemetry-proto 
   - python310-opentelemetry-sdk 
   - python310-opentelemetry-semantic-conventions 
@@ -28710,6 +28719,7 @@ unsorted:
   - python311-dbus_fast 
   - python311-dbus_next 
   - python311-ddg3 
+  - python311-ddsketch 
   - python311-ddt 
   - python311-deap 
   - python311-debugpy 
@@ -29802,6 +29812,7 @@ unsorted:
   - python311-opentelemetry-exporter-otlp-proto-common 
   - python311-opentelemetry-exporter-otlp-proto-grpc 
   - python311-opentelemetry-exporter-otlp-proto-http 
+  - python311-opentelemetry-instrumentation 
   - python311-opentelemetry-proto 
   - python311-opentelemetry-sdk 
   - python311-opentelemetry-semantic-conventions 
@@ -32287,6 +32298,7 @@ unsorted:
   - python312-dbus_fast 
   - python312-dbus_next 
   - python312-ddg3 
+  - python312-ddsketch 
   - python312-ddt 
   - python312-deap 
   - python312-debugpy 
@@ -33420,6 +33432,7 @@ unsorted:
   - python312-opentelemetry-exporter-otlp-proto-common 
   - python312-opentelemetry-exporter-otlp-proto-grpc 
   - python312-opentelemetry-exporter-otlp-proto-http 
+  - python312-opentelemetry-instrumentation 
   - python312-opentelemetry-proto 
   - python312-opentelemetry-sdk 
   - python312-opentelemetry-semantic-conventions 
@@ -47120,6 +47133,7 @@ unsorted:
   - transconnect 
   - transfig 
   - transifex-client 
+  - translate-suse-desktop 
   - translate-toolkit-devel-doc 
   - translate-toolkit-doc 
   - translation-update-upstream 

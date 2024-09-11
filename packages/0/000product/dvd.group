@@ -1719,17 +1719,13 @@
     <package name="libavahi-ui-gtk3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavcodec58_134" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libavcodec60" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavcodec61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavfilter10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libavfilter9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavformat58_76" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libavformat60" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavformat61" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavif16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavutil59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libayatana-appindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libayatana-ido3-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2577,7 +2573,6 @@
     <package name="libportal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpostproc55_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpostproc57" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
@@ -2778,10 +2773,8 @@
     <package name="libsvn_auth_kwallet-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libswresample5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libswscale5_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libswscale7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libswscale8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
