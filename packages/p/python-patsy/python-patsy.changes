@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:12:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with numpy 2
+
+-------------------------------------------------------------------
 Wed Mar 27 14:11:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 
 - Add Python 3.11 build.

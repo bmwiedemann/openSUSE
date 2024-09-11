@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-patsy
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -75,7 +75,8 @@ mini-language used in `R <http://www.r-project.org/>`_ and
 
 %if %{with test}
 %check
-%pytest
+# skip 6 tests, fail with Numpy 2 - https://github.com/pydata/patsy/issues/210
+%pytest -k "not ((test_highlevel and (test_formula_likes or test_builtins or test_incremental)) or (test_state and (test_Center or test_stateful_transform_wrapper)) or (util and test_asarray_or_pandas))"
 %endif
 
 %if !%{with test}

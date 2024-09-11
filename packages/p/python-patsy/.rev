@@ -101,4 +101,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>1163267</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>213797cf8cd0b59f7ac2da3c6356f38a</srcmd5>
+    <version>0.5.6</version>
+    <time>1726066578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200055</requestid>
+  </revision>
 </revisionlist>
