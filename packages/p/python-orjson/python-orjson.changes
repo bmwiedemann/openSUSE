@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:29:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.7
+  * Improve performance of stable Rust amd64 builds.
+- from version 3.10.6
+  * Improve performance.
+- from version 3.10.5
+  * Improve performance.
+- from version 3.10.4
+  * Improve performance.
+- from version 3.10.3
+  * `manylinux` amd64 builds include runtime-detected AVX-512 `str`
+    implementation.
+  * Tests now compatible with numpy v2.
+- from version 3.10.2
+  * Fix crash serializing `str` introduced in 3.10.1.
+  * Improve performance.
+  * Drop support for arm7.
+- from version 3.10.1
+  * Serializing `numpy.ndarray` with non-native endianness raises
+    `orjson.JSONEncodeError`.
+  * Improve performance of serializing.
+- from version 3.10.0
+  * Support serializing `numpy.float16` (`numpy.half`).
+  * sdist uses metadata 2.3 instead of 2.1.
+  * Improve Windows PyPI builds.
+
+-------------------------------------------------------------------
 Thu Feb 29 06:46:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.9.15 (bsc#1220489, CVE-2024-27454):

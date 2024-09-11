@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:36:48 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- stow 2.4.1:
+  * Fix precedence warning with Perl 5.40 (bsc#1227622)
+  * `--dotfiles` option now works correctly with ignore lists
+  * Use shell-like parsing for `.stowrc` arguments
+  * Make dependency on LaTeX optional
+  * Fix Docker builds
+  * Various maintainer tweaks
+- Remove avoid_precedence_warning.patch (fixed by upstream)
+
+-------------------------------------------------------------------
 Thu Jul 11 08:04:30 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Add avoid_precedence_warning.patch:

@@ -71,8 +71,6 @@ URL:            https://pandas.pydata.org/
 Source0:        pandas-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pandas-pr58269-pyarrow16xpass.patch -- gh#pandas-dev/pandas#58269
 Patch0:         pandas-pr58269-pyarrow16xpass.patch
-# PATCH-FIX-UPSTREAM pandas-pr58720-xarray-dp.patch -- gh#pandas-dev/pandas#58720 mcepl@suse.com, make pandas compatible with the modern xarray
-Patch1:         pandas-pr58720-xarray-dp.patch
 # PATCH-FIX-UPSTREAM pandas-pr58484-matplotlib.patch -- gh#pandas-dev/pandas#58484 mcepl@suse.com, make pandas compatible with the modern matplotlib
 Patch2:         pandas-pr58484-matplotlib.patch
 # PATCH-FIX-UPSTREAM pandas-pr59175-matplotlib.patch -- gh#pandas-dev/pandas#59175
@@ -547,6 +545,8 @@ SKIP_TESTS+=" or numba"
 %ifarch %{ix86}
 # overflows on i586
 SKIP_TESTS+=" or test_encode_non_c_locale"
+# intp != int32 (still numpy 1)?
+SKIP_TESTS+=" or test_ensure_platform_int"
 # fails on i586 (was gcc10-skip-one-test.patch)
 SKIP_TESTS+=" or test_merge_on_ints_floats_warning"
 %endif

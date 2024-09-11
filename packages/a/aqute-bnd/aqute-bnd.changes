@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:48:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to aqute-bnd 6.4.1
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.4.0
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.4.1-classic
+- Modified patches:
+  * 0001-Disable-removed-commands.patch
+  * 0002-Port-to-OSGI-7.0.0.patch
+  * 0003-Remove-unmet-dependencies.patch
+  * reproducible-timestamps.patch ->
+    0004-reproducible-timestamps.patch
+  * reproducible-packages-list.patch ->
+    0005-reproducible-packages-list.patch
+    + rebase
+
+-------------------------------------------------------------------
 Tue Feb 20 13:31:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -93,6 +109,12 @@ Wed Apr  1 08:09:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 Wed Jun 26 15:29:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Add aliases for the aqute-bnd artifact
+
+-------------------------------------------------------------------
+Wed Apr  3 09:33:04 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of the bnd-maven-plugin distributed as a part
+  of aqute-bnd 3.5.0
 
 -------------------------------------------------------------------
 Thu Mar 14 10:43:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>

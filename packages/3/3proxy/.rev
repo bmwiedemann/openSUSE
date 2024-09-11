@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76b2dffe8730da033808d5a22d89ea4c</srcmd5>
+    <version>0.9.4+git20240718</version>
+    <time>1725995579</time>
+    <user>anag+factory</user>
+    <comment>- Added files: 3proxy.service, 3proxy-socks.firewalld and 3proxy.cfg.
+- Added user and group proxy for secure work via systemd service.
+- Added /var/log/3proxy directory with correct permissions.
+- Removed file system-pcre.patch.
+- Updated to 0.9.4+git20240718
+  * Added socket options, interface binding.
+  * Added connection limiting / connection rate limiting.
+  * Added RADIUS support.
+  * Added zero copy (splice) support for Linux.
+  * Added possibility to limit user to single IP (via authentication cache).
+  * Fixed socket may be closed before all data received/sent.
+  * Fixed bandlimin non-working.
+  * Fixed few race conditions.
+  * Added deb/rpm build, systemd support.
+  * Fixed bandwidth limiters (once again).
+  * Fixed data filtering plugins (PCREPlugin, SSLPlugin).
+    SSLPlugin use on Linux requires to disable splice (-s0).
+  * FIxed standalone proxies do not react on HUP (Ctrl+C) in Linux/Unix.
+  * Added arm support.
+  * Added openssl 1.1 support for SSLPlugin.
+  * Fixed systemd description file (proxy may fail to start after reboot).
+  * Fixed countall/nocounall do not work in some configurations.
+  * Fixed counters do not work if counter file is not specified.
+  * Fixed counters without rotation (type N) are incorrectly shown in web admin interface.
+  * Fixed %n may be incomplete or missed in long log records.
+  * Fixed connect back functionality does not work.
+  * Added docker builds.
+  * Fixed invalid handling of '-' character in ACL hostname.
+  * Added parentretry command (defaults to 2) to retry connections to parent proxies.
+  * Removed icqpr related code (OSCAR proxy).
+  * Fixed build with gcc14.</comment>
+    <requestid>1197480</requestid>
+  </revision>
+</revisionlist>

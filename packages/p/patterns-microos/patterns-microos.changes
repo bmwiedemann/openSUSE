@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 10:39:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Include mokutil only on x86_64 aarch64 ppc64le ppc64, which
+  matches the architectures mocutils.spec specifies as supported.
+
+-------------------------------------------------------------------
 Wed Aug 28 11:57:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move exfatprogs to onlyDVD

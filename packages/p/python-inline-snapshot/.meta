@@ -1,0 +1,5 @@
+<package name="python-inline-snapshot" project="openSUSE:Factory">
+  <title>python-inline-snapshot</title>
+  <description>Create and update inline snapshots in your Python code.</description>
+  <devel project="devel:languages:python" package="python-inline-snapshot"/>
+</package>

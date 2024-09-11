@@ -841,4 +841,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1190354</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>32ebfea6ce47dc28538325e3c2ae4d26</srcmd5>
+    <version>1.81.0</version>
+    <time>1725995565</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.81.0 - for details see the rust1.81 package</comment>
+    <requestid>1199790</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:39:59 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Use gcc-12 for Leap 15.6
+- Update to 5.0
+
+  * Port to Qt6. The code now builds only with Qt6, and Qt5 is no
+    longer supported
+
+  * Add mechanism to ignore plugins on subsequent runs if they fail to
+    load, and to review ignored plugins from the preferences dialog
+
+  * Add Mel scale to the options for vertical spectrogram scale
+  
+  * Add an opaque toggle to the spectrogram; switching it off gives
+    spectrograms some transparency, so they can be overlaid over other
+    layers, including other spectrograms
+  
+  * Update opaque toggle in colour 3d layers so that it works like the
+    new one in the spectrogram. Previously colour 3d plot layers could
+    be translucent at low resolutions but not at higher ones; now the
+    setting affects all resolutions. Correspondingly make it default to
+    off, as in the spectrogram
+
+  * Add smoothing toggle directly to spectrogram parameters, like the
+    one already found in colour 3d plot layers. Previously spectrogram
+    smoothing could be toggled only from the preferences
+
+  * Stop snapping spectrogram frequency range to bin frequencies. This
+    already-confusing feature caused problems with the new support for
+    translucent spectrograms, which permits overlaying spectrograms of
+    differing bin counts that would be too hard to line up properly if
+    the frequency extents were always snapped to the nearest bin
+
+  * Clarify keyboard and mouse shortcut descriptions in the Key And
+    Mouse Reference window, especially for the platform-specific
+    descriptions used on the Mac, and add a few more alternative
+    shortcuts including more standard zoom in/out shortcuts
+
+  * Fix disappearing peaks in peak-bin display mode in the spectrogram,
+    caused by overzealous smoothing
+
+  * Fix jumps in spectrogram when changing zoom level between certain
+    values in hi-dpi pixel-doubled situations, caused by a failure of
+    cache invalidation
+
+  * Fix some very slow spectrogram painting
+
+  * Fix disappearance of right-button Transforms menu after file load
+
+  * Fix inconsistent default vs set threshold values in spectrogram
+
+  * Fix crash on painting very low-resolution dense 3d plots
+
+-------------------------------------------------------------------
 Mon Feb 26 13:42:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

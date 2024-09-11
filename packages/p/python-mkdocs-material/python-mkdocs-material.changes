@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  9 11:53:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.34:
+  * Updated Mermaid.js to version 11 (latest)
+
+-------------------------------------------------------------------
+Mon Sep  9 11:52:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.33:
+  * Fixed #7453: Incorrect position of tooltip when sorting table
+
+-------------------------------------------------------------------
 Mon Aug 19 13:30:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.32:
@@ -19,7 +31,7 @@ Wed Jul 24 17:50:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * Fixed #7380 <https://github.com/squidfunk/mkdocs-material/issues/7380>:
     Navigation icons disappearing on hover in Safari
   * Fixed #7367 <https://github.com/squidfunk/mkdocs-material/issues/7367>:
-    Blog readtime computation includes SVG text content 
+    Blog readtime computation includes SVG text content
 
 -------------------------------------------------------------------
 Sun Jul 14 15:17:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>

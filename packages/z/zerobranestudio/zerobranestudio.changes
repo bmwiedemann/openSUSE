@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Sep  7 15:26:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.01:
+  * Fixed crash on macOS Sonoma (fixes #1163).
+  * Allowed using SelectAll/Ctrl-A in search/replace boxes
+    (closes #1165).
+  * Upgraded libwx on macOS (wxwidgets 3.2.1, wxlua 3.2.0.2) to
+    fix crash on Sonoma (fixes #1163).
+  * Upgraded Mobdebug (0.805) to fix Love2d livecoding (fixes
+    #1164 and #992).
+  * Updated icon generation to work with wxwidgets 3.2+.
+  * Updated Windows, macOS and Linux binaries for Lua 5.4.
+  * Updated luasocket to 3.1.0 though it reports as 3.0.0.
+  * Upgraded lfs to 1.8.0.
+  * Added luasec for Lua 5.4 for Windows (#1075).
+  * Added Lua 5.4, luasocket and lpeg for Windows (#1075).
+  * Added reset of luacheck cache on project change (#1151).
+  * Added Moonscript highlighting for Yuescript (#1134).
+  * Added shortcut reference to the `Show tooltip` suggestion
+    (#1135).
+  * Added support for font weight suffix in font editor (closes
+    #1082).
+  * Added handling of fractional font sizes in editor styles.
+  * Added returning empty string for non-existing properties for
+    scintillua lexers.
+  * Disabled showing edge line in printed output by default.
+  * Improved auto-complete for local assignments (closes #1148).
+  * Improved handling of comments with mixed end-of-line markers.
+  * Replaced assertion with explicit check in luainspect (fixes
+    #1120).
+  * Skip binary check for known extensions during search in files
+    (closes #1046).
+  * Updated macOS binaries and build script for Lua 5.4,
+    luasocket, and lfs (#1075).
+  * Updated Linux binaries and build script for Lua 5.4 (#1075).
+  * Updated showing tooltip to also check mouse location (closes
+    #1135).
+  * Updated to clarify why ReplaceSelection may fail on hidden
+    text (#1125).
+  * Updated config handling to improve robustness against wrong
+    `styles` values.
+  * Updated luasocket components that use default `receive()`
+    method to work with Lua 5.4.3.
+  * Updated list of window classes to hide (used in some wxlua
+    apps).
+  * Updated LexLPeg lexers to support extended lexer syntax.
+  * Updated default tab size in the output panel (closes #1065).
+  * Updated corona API to 2020.3606; thanks to @b-and-p.
+  * Upgraded Mobdebug (0.803) to fix showing multiple values in
+    Console (fixes #1149).
+  * Upgraded Mobdebug (0.802) to improve openresty debugging.
+  * Upgraded Mobdebug (0.801) to improve Lua 5.4 support.
+
+-------------------------------------------------------------------
 Tue Feb 20 20:48:16 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up SPEC file.

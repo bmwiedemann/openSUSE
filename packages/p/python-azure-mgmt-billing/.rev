@@ -119,4 +119,22 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164739 from glaubitz)</comment>
     <requestid>1165138</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>81b0b42f6ed02ac584c5624c2dcf61fe</srcmd5>
+    <version>7.0.0</version>
+    <time>1725995589</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1199161 from glaubitz)</comment>
+    <requestid>1199675</requestid>
+  </revision>
 </revisionlist>

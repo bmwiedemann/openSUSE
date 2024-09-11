@@ -62,13 +62,13 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch

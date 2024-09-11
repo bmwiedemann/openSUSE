@@ -1,5 +1,5 @@
 #
-# spec file for package python-mocket
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.12.8
+Version:        3.12.9
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
-Requires:       python-httptools
+Requires:       python-h11
 Requires:       python-python-magic >= 0.4.5
 Requires:       python-urllib3 >= 1.25.3
 Suggests:       python-pook >= 0.2.1
@@ -72,8 +72,7 @@ included, with gevent/asyncio/SSL support.
 
 %prep
 %autosetup -p1 -n mocket-%{version}
-#sed -i '/cov/ d' setup.cfg
-#sed -i '/pipenv/ d' setup.py
+sed -i 's/--cov[^ ]*//g' pyproject.toml
 
 %build
 %if !%{with test}
@@ -110,8 +109,8 @@ donttest="test_asyncio_record_replay or test_truesendall_with_dump_from_recordin
 donttest="$donttest or test_truesendall_with_dump_from_recording"
 %endif
 # these fail after the python 3.11 patches
-#donttest="$donttest or test_http_session or test_https_session or test_httprettish_session"
-%pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore}
+#donttest="$donttest or test_http_session or test_https_session or test_httprettish_session or test_truesendall or test_wrongpath_truesendall or test_real_request_session or test_multiple_socket_connections or test_intermittent_strict_mode or test_strict_mode_exceptions or test_err or test_get or test_hm or test_incr or test_lrange or test_select_db or test_set or test_shutdown or test_hgetall or test_raise_exception"
+%pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore} tests
 %endif
 
 %if !%{with test}

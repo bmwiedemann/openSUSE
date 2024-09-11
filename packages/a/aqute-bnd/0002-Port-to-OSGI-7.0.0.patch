@@ -1,14 +1,14 @@
-From 64a36cbc8d7c8234dfa2af8670c2e1ea4a5c3909 Mon Sep 17 00:00:00 2001
+From cc7ef245b7d3f7e59753941c3486a305efaf1e2b Mon Sep 17 00:00:00 2001
 From: Marian Koncek <mkoncek@redhat.com>
 Date: Thu, 11 Jul 2019 14:29:26 +0200
-Subject: [PATCH] Port to OSGI 7.0.0
+Subject: [PATCH 2/5] Port to OSGI 7.0.0
 
 ---
  .../src/aQute/bnd/junit/ConsoleLogger.java    | 62 +++++++++++++++++++
  1 file changed, 62 insertions(+)
 
 diff --git a/biz.aQute.bndlib/src/aQute/bnd/junit/ConsoleLogger.java b/biz.aQute.bndlib/src/aQute/bnd/junit/ConsoleLogger.java
-index 9c2591f..569b20e 100644
+index 9c2591f36..569b20ed3 100644
 --- a/biz.aQute.bndlib/src/aQute/bnd/junit/ConsoleLogger.java
 +++ b/biz.aQute.bndlib/src/aQute/bnd/junit/ConsoleLogger.java
 @@ -15,9 +15,11 @@ import org.osgi.framework.ServiceFactory;
@@ -98,5 +98,5 @@ index 9c2591f..569b20e 100644
  
  	public ConsoleLogger(BundleContext context) {
 -- 
-2.20.1
+2.46.0
 

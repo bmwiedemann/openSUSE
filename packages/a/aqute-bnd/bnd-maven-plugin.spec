@@ -17,7 +17,7 @@
 
 
 Name:           bnd-maven-plugin
-Version:        6.3.1
+Version:        6.4.1
 Release:        0
 Summary:        BND Maven plugin
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -28,8 +28,8 @@ Source0:        bnd-%{version}.tar.xz
 Patch1:         0001-Disable-removed-commands.patch
 Patch2:         0002-Port-to-OSGI-7.0.0.patch
 Patch3:         0003-Remove-unmet-dependencies.patch
-Patch4:         reproducible-timestamps.patch
-Patch5:         reproducible-packages-list.patch
+Patch4:         0004-reproducible-timestamps.patch
+Patch5:         0005-reproducible-packages-list.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib) >= %{version}
@@ -65,6 +65,7 @@ pushd maven
 %pom_disable_module bnd-indexer-maven-plugin
 # Requires unbuilt parts of bnd
 %pom_disable_module bnd-export-maven-plugin
+%pom_disable_module bnd-generate-maven-plugin
 %pom_disable_module bnd-reporter-maven-plugin
 %pom_disable_module bnd-resolver-maven-plugin
 %pom_disable_module bnd-run-maven-plugin

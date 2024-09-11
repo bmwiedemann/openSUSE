@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  5 15:50:04 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons. 
+
+-------------------------------------------------------------------
+Wed Aug 21 04:07:02 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- update to 1.40.8
+  * types: define FilePurpose enum (#1653) (3c2eeae)
+
+-------------------------------------------------------------------
 Sat Mar 23 12:06:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.2:

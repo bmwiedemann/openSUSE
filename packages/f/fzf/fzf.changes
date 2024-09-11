@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  9 19:25:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.55.0:
+  * Added exact-boundary-match type to the search syntax. When a
+    search term is single-quoted, fzf will search for the exact
+    occurrences of the string with both ends at word boundaries.
+  * [bash] Fuzzy path completion is enabled for all commands:
+    a. If the default completion is not already set
+    b. And if the current bash supports complete -D option
+  * Comments are now allowed in $FZF_DEFAULT_OPTS and
+    $FZF_DEFAULT_OPTS_FILE, e.g.
+    --info=inline-right # Show info on the right of prompt line
+  * Hyperlinks (OSC 8) are now supported in the preview window
+    and in the main window
+  * The default --ellipsis is now ·· instead of ...
+  * [vim] A spec can have exit callback that is called with the
+    exit status of fzf
+  * This can be used to clean up temporary resources or restore the
+    original state when fzf is closed without a selection
+  * Fixed --tmux bottom when the status line is not at the bottom
+  * Fixed extra scroll offset in multi-line mode (--read0 or
+    --wrap)
+
+-------------------------------------------------------------------
 Wed Jul 31 14:07:56 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.54.3:

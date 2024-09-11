@@ -44,4 +44,12 @@
     <comment></comment>
     <requestid>1199272</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a97b343e48d0e1800981911a4f93f426</srcmd5>
+    <version>0.9.11</version>
+    <time>1725995600</time>
+    <user>anag+factory</user>
+    <comment>- Bump upper limit of trio gh#jupyter-server/pycrdt#160</comment>
+    <requestid>1199728</requestid>
+  </revision>
 </revisionlist>

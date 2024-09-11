@@ -1,0 +1,53 @@
+From 057827a1473330389aa0756caa7d38f47f4a8366 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 9 Sep 2024 09:46:11 +0200
+Subject: [PATCH 4/5] reproducible timestamps
+
+---
+ biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java   | 2 +-
+ biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java | 9 +++++++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
+index 10ec3fd0f..7dd754187 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Jar.java
+@@ -114,7 +114,7 @@ public class Jar implements Closeable {
+ 	private String												lastModifiedReason;
+ 	private boolean												doNotTouchManifest;
+ 	private boolean												nomanifest;
+-	private boolean												reproducible;
++	private boolean												reproducible = true;
+ 	private Compression											compression				= Compression.DEFLATE;
+ 	private boolean												closed;
+ 	private String[]											algorithms;
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
+index 197f18016..8eabdf962 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Macro.java
+@@ -904,6 +904,10 @@ public class Macro {
+ 			reporter.warning("Too many arguments for tstamp: %s", Arrays.toString(args));
+ 		}
+ 
++		if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++			now = 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++		}
++
+ 		SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
+ 		sdf.setTimeZone(tz);
+ 		return sdf.format(new Date(now));
+@@ -922,6 +926,11 @@ public class Macro {
+ 		} else {
+ 			now = System.currentTimeMillis();
+ 		}
++
++		if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++			now = 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++		}
++
+ 		return now;
+ 	}
+ 
+-- 
+2.46.0
+

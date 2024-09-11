@@ -37,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tblib/tblib-%{v
 Patch0:         vendore-reraise-from-six.patch
 # PATCH-FIX-UPSTREAM https://github.com/ionelmc/python-tblib/issues/74 More aggressive location stripping. Ref #74.
 Patch1:         more-aggressive-location-stripping.patch
+# PATCH-FIX-FEDORA https://src.fedoraproject.org/rpms/python-tblib/blob/rawhide/f/0001-test_pickle_exception-even-harder-location-stripping.patch
+Patch2:         test_pickle_exception-even-harder-location-stripping.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

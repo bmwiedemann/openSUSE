@@ -182,4 +182,14 @@
   * https://github.com/formencode/formencode/commit/98e9e97e</comment>
     <requestid>1168357</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>35ff4a7643073dec747b4a7959e02b71</srcmd5>
+    <version>2.1.0</version>
+    <time>1725995564</time>
+    <user>anag+factory</user>
+    <comment>- Add patch do-not-always-use-cgi-module.patch:
+  * Support Python 3.13 by making use of cgi optional.
+- Switch to autosetup macro.</comment>
+    <requestid>1199779</requestid>
+  </revision>
 </revisionlist>

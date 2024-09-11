@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 18:50:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip test failing with Python 3.12.6 gh#python-poetry/poetry#9678
+
+-------------------------------------------------------------------
 Tue Mar 19 15:29:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.9.0 (bsc#1221705):

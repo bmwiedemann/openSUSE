@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:41:02 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Completely delete strings command check. Fixes (bsc#1230279)
+
+-------------------------------------------------------------------
 Tue Sep  3 12:12:53 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2024.06.05

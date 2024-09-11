@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:00:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix backing up to and restoring from WebDAV servers.
+  + Fix a "I/O socket timeout" error when connecting to Google
+    Drive and Microsoft OneDrive servers (or at least, reduce its
+    frequency).
+  + Add a warning dialog if GVfs FUSE is not installed.
+- Changes from version 46.0:
+  + Use modern Adwaita dialogs.
+  + Show storage location on the main overview page.
+  + Show a nice warning if we can't connect to a secrets service or
+    gvfs.
+  + Stop showing an error when your cache dir has a CACHEDIR.TAG
+    file.
+  + Handle a wider variety of odd gvfs mount options during
+    backups.
+  + Rename "Resume Later" to "Pause" during backups to reduce
+    confusion.
+  + Show a "Reset All Folders" button in the include/exclude
+    preferences.
+  + Give feedback when include/exclude/storage folders are invalid
+    in some way (either remote URLs for includes or folders inside
+    the flatpak).
+  + Fix rare crash if an unknown gsetting value is encountered.
+  + Fix OAuth token parsing on some newer versions of libsoup/glib.
+  + Stop double-mounting fstab entries.
+  + Exclude Electron cache dirs by default.
+  + Duplicity: Use rclone to connect to Microsoft OneDrive and
+    Google Drive and FUSE to connect to remote locations, for
+    better reliability.
+  + Duplicity: Fix an error about "old signatures and incremental
+    specified".
+  + Duplicity: Save memory by not keeping a record of every file
+    changed.
+  + Duplicity: Work around a bug in 2.2.0+ that sometimes chops off
+    a command line argument when resuming a backup.
+  + Restic: Fix OAuth token refreshing.
+  + Restic: Delete old snapshots as needed, to make space.
+  + Restic: Ignore restic environment variables we didn't set.
+  + Restic: Handle a changed HOME dir during restores.
+  + Restic: Handle nested includes/excludes correctly.
+  + Restic: Allow restoring from other hostnames or non-Deja-Dup
+    snapshots.
+  + Updated translations.
+- Add xdg-user-dirs BuildRequires: new dependency used in tests.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:31:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext-runtime: allow OBS

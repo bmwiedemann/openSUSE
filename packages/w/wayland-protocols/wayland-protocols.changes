@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  1 17:36:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.37:
+  + This release contains three new protocols:
+    - xdg-toplevel-icon: Associate an icon with a toplevel window.
+    - ext-image-capture-source
+    - ext-image-copy-capture: A set of protocols that together
+      allow capturing the pixel content of outputs and toplevels.
+  + Apart from this, it includes the usual protocol documentation
+    improvements and fixes, as well as clarification of existing
+    protocol review practices.
+
+-------------------------------------------------------------------
 Sat May  4 23:02:59 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 1.36:

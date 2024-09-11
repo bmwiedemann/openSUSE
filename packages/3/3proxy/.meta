@@ -1,0 +1,10 @@
+<package name="3proxy" project="openSUSE:Factory">
+  <title>Tiny proxy servers set</title>
+  <description>
+Universal proxy server with HTTP, HTTPS, SOCKS v5, FTP,PO P3, UDP and TCP
+portmapping, access control, bandwith control, traffic limitation and accounting
+based on username, client IP, target IP, day time, day of week, etc.
+  </description>
+  <devel project="server:proxy" package="3proxy"/>
+  <url>https://3proxy.ru</url>
+</package>

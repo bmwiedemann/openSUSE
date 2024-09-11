@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-apprise
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
@@ -34,8 +34,6 @@ License:        BSD-2-Clause
 URL:            https://github.com/caronc/apprise
 Source0:        https://files.pythonhosted.org/packages/source/a/apprise/apprise-%{version}.tar.gz
 Source99:       %{name}.rpmlintrc
-# PATCH-FIX-OPENSUSE fix-test_plugin_glib.patch -- import missing dbus
-Patch0:         fix-test_plugin_glib.patch
 %if 0%{?suse_version} <= 1500
 BuildRequires:  %{python_module dataclasses}
 Requires:       python-dataclasses

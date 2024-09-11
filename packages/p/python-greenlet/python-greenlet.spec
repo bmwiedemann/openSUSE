@@ -30,6 +30,8 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
+# PATCH-FIX-UPSTREAM gh/python-greenlet/greenlet#396 - Port to Python 3.13
+Patch0:         https://github.com/python-greenlet/greenlet/pull/396.patch#/port-to-python313.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}

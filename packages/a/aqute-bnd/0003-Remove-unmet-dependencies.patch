@@ -1,16 +1,16 @@
-From d1702cae9e19a8b9dc2ad538777e51a0680cc605 Mon Sep 17 00:00:00 2001
+From eb69b1fbbbac79a99456648c655e17ffd9743dca Mon Sep 17 00:00:00 2001
 From: Marian Koncek <mkoncek@redhat.com>
 Date: Fri, 24 Jun 2022 14:55:51 +0200
-Subject: [PATCH] Remove unmet dependencies
+Subject: [PATCH 3/5] Remove unmet dependencies
 
 ---
  .../src/aQute/lib/bundles/BundleIdentity.java |  65 --
- .../startlevel/StartLevelRuntimeHandler.java  | 305 ---------
+ .../startlevel/StartLevelRuntimeHandler.java  | 325 ---------
  aQute.libg/src/aQute/libg/dtos/DTOMap.java    | 143 ----
  aQute.libg/src/aQute/libg/dtos/DTOs.java      | 211 ------
  aQute.libg/src/aQute/libg/dtos/DTOsImpl.java  | 615 ------------------
  .../src/aQute/bnd/build/ProjectLauncher.java  |   1 -
- 6 files changed, 1340 deletions(-)
+ 6 files changed, 1360 deletions(-)
  delete mode 100644 aQute.libg/src/aQute/lib/bundles/BundleIdentity.java
  delete mode 100644 aQute.libg/src/aQute/lib/startlevel/StartLevelRuntimeHandler.java
  delete mode 100644 aQute.libg/src/aQute/libg/dtos/DTOMap.java
@@ -19,7 +19,7 @@ Subject: [PATCH] Remove unmet dependencies
 
 diff --git a/aQute.libg/src/aQute/lib/bundles/BundleIdentity.java b/aQute.libg/src/aQute/lib/bundles/BundleIdentity.java
 deleted file mode 100644
-index dfd4b6a..0000000
+index dfd4b6af1..000000000
 --- a/aQute.libg/src/aQute/lib/bundles/BundleIdentity.java
 +++ /dev/null
 @@ -1,65 +0,0 @@
@@ -90,10 +90,10 @@ index dfd4b6a..0000000
 -}
 diff --git a/aQute.libg/src/aQute/lib/startlevel/StartLevelRuntimeHandler.java b/aQute.libg/src/aQute/lib/startlevel/StartLevelRuntimeHandler.java
 deleted file mode 100644
-index e32c255..0000000
+index 94dfc350b..000000000
 --- a/aQute.libg/src/aQute/lib/startlevel/StartLevelRuntimeHandler.java
 +++ /dev/null
-@@ -1,305 +0,0 @@
+@@ -1,325 +0,0 @@
 -package aQute.lib.startlevel;
 -
 -import java.io.Closeable;
@@ -254,15 +254,33 @@ index e32c255..0000000
 -
 -		String defaultStartlevelString = outerConfiguration.get(LAUNCH_STARTLEVEL_DEFAULT);
 -		if (defaultStartlevelString == null) {
--			logger.trace("startlevel: not handled");
+-			logger.trace("startlevel: not handled because %s not set", LAUNCH_STARTLEVEL_DEFAULT);
 -			return absent();
 -		}
 -
--		int defaultStartlevel = toInt(defaultStartlevelString, 1);
+-		int tmp = toInt(defaultStartlevelString, 1);
+-		if (tmp == 0) {
+-			logger.trace("startlevel: disabled because property %s==%s", LAUNCH_STARTLEVEL_DEFAULT,
+-				defaultStartlevelString);
+-			return absent();
+-		}
+-
+-
+-		int defaultStartlevel;
+-		boolean manageAll;
+-		if (tmp > 0) {
+-			manageAll = !Boolean.getBoolean("biz.aQute.launcher.scoped");
+-			defaultStartlevel = tmp;
+-		} else {
+-			manageAll = false;
+-			defaultStartlevel = -tmp;
+-		}
+-
 -		int beginningStartlevel = toInt(outerConfiguration.get(Constants.FRAMEWORK_BEGINNING_STARTLEVEL), 1);
 -		outerConfiguration.put(Constants.FRAMEWORK_BEGINNING_STARTLEVEL, "1");
 -
--		logger.trace("startlevel: handled begin=%s default=%s", beginningStartlevel, defaultStartlevel);
+-		logger.trace("startlevel: handled begin=%s default=%s managed=%s", beginningStartlevel, defaultStartlevel,
+-			manageAll ? "all" : "narrow");
 -
 -		//
 -		// We need to remove it otherwise the framework reacts to it
@@ -281,15 +299,8 @@ index e32c255..0000000
 -
 -				this.systemBundle = systemBundle;
 -
--				for (Bundle bundle : systemBundle.getBundleContext()
--					.getBundles()) {
--					if (bundle.getBundleId() == 0) {
--						continue;
--					}
--					if (bundle.getSymbolicName() == null) {
--						continue;
--					}
--					installed.put(bundle, new BundleIdentity(bundle));
+-				if (manageAll) {
+-					manageAll(systemBundle);
 -				}
 -
 -				updateConfiguration(outerConfiguration);
@@ -316,6 +327,15 @@ index e32c255..0000000
 -					});
 -				logger.trace("startlevel: default=%s, beginning=%s", defaultStartlevel, beginningStartlevel);
 -
+-			}
+-
+-			private void manageAll(Framework systemBundle) {
+-				for (Bundle bundle : systemBundle.getBundleContext()
+-					.getBundles()) {
+-					if (bundle.getBundleId() != 0 && bundle.getSymbolicName() != null) {
+-						installed.put(bundle, new BundleIdentity(bundle));
+-					}
+-				}
 -			}
 -
 -			@Override
@@ -401,7 +421,7 @@ index e32c255..0000000
 -}
 diff --git a/aQute.libg/src/aQute/libg/dtos/DTOMap.java b/aQute.libg/src/aQute/libg/dtos/DTOMap.java
 deleted file mode 100644
-index f927de5..0000000
+index f927de5f7..000000000
 --- a/aQute.libg/src/aQute/libg/dtos/DTOMap.java
 +++ /dev/null
 @@ -1,143 +0,0 @@
@@ -550,7 +570,7 @@ index f927de5..0000000
 -}
 diff --git a/aQute.libg/src/aQute/libg/dtos/DTOs.java b/aQute.libg/src/aQute/libg/dtos/DTOs.java
 deleted file mode 100644
-index a8abdb1..0000000
+index a8abdb148..000000000
 --- a/aQute.libg/src/aQute/libg/dtos/DTOs.java
 +++ /dev/null
 @@ -1,211 +0,0 @@
@@ -767,7 +787,7 @@ index a8abdb1..0000000
 -}
 diff --git a/aQute.libg/src/aQute/libg/dtos/DTOsImpl.java b/aQute.libg/src/aQute/libg/dtos/DTOsImpl.java
 deleted file mode 100644
-index 6de46b6..0000000
+index 6de46b60d..000000000
 --- a/aQute.libg/src/aQute/libg/dtos/DTOsImpl.java
 +++ /dev/null
 @@ -1,615 +0,0 @@
@@ -1387,7 +1407,7 @@ index 6de46b6..0000000
 -
 -}
 diff --git a/biz.aQute.bndlib/src/aQute/bnd/build/ProjectLauncher.java b/biz.aQute.bndlib/src/aQute/bnd/build/ProjectLauncher.java
-index e1ce42f..c1a3d87 100644
+index e1ce42ffc..c1a3d87d5 100644
 --- a/biz.aQute.bndlib/src/aQute/bnd/build/ProjectLauncher.java
 +++ b/biz.aQute.bndlib/src/aQute/bnd/build/ProjectLauncher.java
 @@ -43,7 +43,6 @@ import aQute.bnd.osgi.Processor;
@@ -1399,5 +1419,5 @@ index e1ce42f..c1a3d87 100644
  import aQute.lib.watcher.FileWatcher;
  import aQute.lib.watcher.FileWatcher.Builder;
 -- 
-2.37.2
+2.46.0
 

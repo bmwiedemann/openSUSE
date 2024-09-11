@@ -16,9 +16,8 @@
 #
 
 
-%define dotted_version 0.12.9.post1
 Name:           python-Glymur
-Version:        0.12.9post1
+Version:        0.13.6
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
@@ -35,7 +34,7 @@ Requires:       python-lxml
 Requires:       python-numpy
 Requires:       python-packaging
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
@@ -79,6 +78,6 @@ donttest+="test_config_dir_on_windows"
 %python_alternative %{_bindir}/jp2dump
 %python_alternative %{_bindir}/tiff2jp2
 %{python_sitelib}/glymur
-%{python_sitelib}/Glymur-%{dotted_version}.dist-info
+%{python_sitelib}/Glymur-%{version}.dist-info
 
 %changelog

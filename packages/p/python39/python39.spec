@@ -99,7 +99,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.19
+Version:        3.9.20
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -182,35 +182,16 @@ Patch40:        99366-patch.dict-can-decorate-async.patch
 # PATCH-FIX-OPENSUSE downport-Sphinx-features.patch mcepl@suse.com
 # Make documentation build with older Sphinx
 Patch41:        downport-Sphinx-features.patch
-# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API), from gh#python/cpython!105127
-# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
-Patch42:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch bsc#1226447 mcepl@suse.com
-# removes memory race condition in ssl.SSLContext certificate store methods
-Patch44:        CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
-# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
-# rearrange definition of private v global IP addresses
-Patch45:        CVE-2024-4032-private-IP-addrs.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
 Patch46:        bso1227999-reproducible-builds.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
-# prevent email header injection, patch from gh#python/cpython!122608
-Patch47:        CVE-2024-6923-email-hdr-inject.patch
 # PATCH-FIX-UPSTREAM CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch bsc#1227233 mcepl@suse.com
 # Remove for support for anything but OpenSSL 1.1.1 or newer
 Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
-# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
-# avoid denial of service in zipfile
-Patch49:        CVE-2024-8088-inf-loop-zipfile_Path.patch
 # PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
 # Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
 Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6232-cookies-quad-complex.patch bsc#1229596 mcepl@suse.com
-# avoid quadratic complexity in parsing "-quoted cookie values with backslashes
-Patch51:        CVE-2024-6232-cookies-quad-complex.patch
+
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -474,15 +455,9 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 %patch -p1 -P 41
 %endif
-%patch -p1 -P 42
-%patch -p1 -P 44
-%patch -p1 -P 45
 %patch -p1 -P 46
-%patch -p1 -P 47
 %patch -p1 -P 48
-%patch -p1 -P 49
 %patch -p1 -P 50
-%patch -p1 -P 51
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

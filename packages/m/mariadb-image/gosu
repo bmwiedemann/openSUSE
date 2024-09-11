@@ -8,4 +8,4 @@ if ! id -u "$u" > /dev/null 2>&1; then
     exit 1
 fi
 
-exec setpriv --reuid="$u" --regid="$u" --clear-groups -- "$@"
+exec setpriv --pdeathsig=keep --reuid="$u" --regid="$u" --clear-groups -- "$@"

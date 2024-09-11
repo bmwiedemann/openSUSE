@@ -22,9 +22,11 @@ Version:        2.1.0
 Release:        0
 Summary:        HTML form validation, generation, and conversion package
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://formencode.org
 Source:         https://files.pythonhosted.org/packages/source/F/FormEncode/FormEncode-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#formencode/formencode#176
+Patch0:         do-not-always-use-cgi-module.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycountry}
@@ -43,7 +45,7 @@ a declarative form of defining the validation, and decoupled processes
 for filling and generating forms.
 
 %prep
-%setup -q -n FormEncode-%{version}
+%autosetup -p1 -n FormEncode-%{version}
 
 %build
 %pyproject_wheel
@@ -71,6 +73,6 @@ python2_flags="--version"
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/formencode
-%{python_sitelib}/FormEncode-%{version}*-info
+%{python_sitelib}/FormEncode-%{version}.dist-info
 
 %changelog

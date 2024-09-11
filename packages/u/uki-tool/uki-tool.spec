@@ -20,9 +20,9 @@
 %define bin_name uki-tool
 
 Name:           uki-tool
-Version:        1.3.0+0.g23696fa
+Version:        1.4.0+0.g50e5885
 Release:        0
-Summary:        Tool for the UKI project
+Summary:        Tool for the UKI and static-initrd project
 License:        MIT
 URL:            https://github.com/keentux/unified-kernel-image-tool.git
 Source:         %{archive_name}-%{version}.tar.xz
@@ -44,8 +44,8 @@ Requires:       dracut
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Tool that regroup useful command dealing with the Unified Kernel Image (UKI)
-project. Write in Shell script, and adapted for the packaging.
+Tool that regroups useful command dealing with the Unified Kernel Image (UKI)
+and static-initrd project. Write in Shell script, and adapted for the packaging.
 
 %package doc
 Summary:        Documentation for the package uki-tool

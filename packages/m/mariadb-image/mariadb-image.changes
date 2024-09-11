@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:54:45 UTC 2024 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- add zstd for the upgrade scenario and fix signal handling
+
+-------------------------------------------------------------------
 Mon Sep  9 06:51:05 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - Bump main package version

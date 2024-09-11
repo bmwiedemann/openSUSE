@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 05 14:12:24 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 20240905:
+  * Allow coreos-installer-generator manage mdadm_conf_t files
+  * Allow setsebool_t relabel selinux data files
+  * Allow virtqemud relabelfrom virtqemud_var_run_t dirs
+  * Use better escape method for "interface"
+  * Allow init and systemd-logind to inherit fds from sshd
+  * Allow systemd-ssh-generator read sysctl files
+  * Sync modules.conf with Fedora targeted modules
+  * Allow virtqemud relabel user tmp files and socket files
+  * Add missing sys_chroot capability to groupadd policy
+  * Label /run/libvirt/qemu/channel with virtqemud_var_run_t
+  * Allow virtqemud relabelfrom also for file and sock_file
+  * Add virt_create_log() and virt_write_log() interfaces
+
+  - Sync modules-targeted-contrib.conf with Fedora targeted modules.conf
+
+-------------------------------------------------------------------
 Wed Sep  4 13:07:52 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix macros.selinux-policy (bsc#1229132)

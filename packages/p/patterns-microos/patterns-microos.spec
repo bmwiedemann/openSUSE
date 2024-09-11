@@ -749,8 +749,10 @@ Requires:       wpa_supplicant
 Requires:       xfsprogs
 # Needed for TPM2.0 support (boo#1211835)
 Requires:       tpm2.0-abrmd
+%ifarch x86_64 aarch64 ppc64le ppc64
 # Needed for Secureboot
 Requires:       mokutil
+%endif
 Provides:       pattern() = microos_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9900

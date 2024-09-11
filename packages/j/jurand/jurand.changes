@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:07:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.3.3
+  * Changes:
+    + Add suffix to manpage source files
+    + Fix install script
+    + Rename size to content_size
+    + Fix use after free bug
+    + Update GH Action checkout to v4
+    + Add tests for package-info.java
+
+-------------------------------------------------------------------
 Wed Apr 10 06:01:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify a bit the g++ BuildRequires

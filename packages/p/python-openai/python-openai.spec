@@ -16,16 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        1.14.2
+Version:        1.40.8
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/openai/openai-python
 Source:         https://github.com/openai/openai-python/archive/refs/tags/v%{version}.tar.gz#/openai-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.5.0
@@ -38,16 +41,23 @@ Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION test-requirements
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module dirty-equals}
-BuildRequires:  %{python_module distro}
-BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module dirty-equals >= 0.6.0}
+BuildRequires:  %{python_module distro >= 1.7.0}
+BuildRequires:  %{python_module httpx >= 0.23.0}
+BuildRequires:  %{python_module importlib-metadata >= 6.7.0}
+BuildRequires:  %{python_module inline-snapshot >= 0.7.0}
+BuildRequires:  %{python_module jiter}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module pytest-asyncio < 0.23}
+BuildRequires:  %{python_module pyright >= 1.1.359}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module respx}
-BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module rich >= 13.7.1}
+BuildRequires:  %{python_module time-machine}
+BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module trio >= 0.22.2}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildArch:      noarch
@@ -65,7 +75,7 @@ You can find usage examples for the OpenAI Python library in
  https://github.com/openai/openai-cookbook/.
 
 %prep
-%autosetup -p1 -n openai-python-%{version}
+%autosetup -p1 -n openai-%{version}
 
 %build
 %pyproject_wheel
@@ -79,7 +89,11 @@ You can find usage examples for the OpenAI Python library in
 # most of tests/api_resources need registered API key
 # test_streaming_response needs network connection
 # test_copy_build_request needs "warmed up" machinery and OBS starts always fresh
-%pytest --ignore "tests/api_resources" -k "not (test_streaming_response or test_copy_build_request)"
+# test_basic_attribute_access_works needs network connection
+# NOTE: Also, "tests/lib/chat/test_completions_streaming.py" required static snapshot
+# files (./.inline_snapshop/external) which are *not included* in the tarball so we need to deselect those tests.
+# NOTE: disable tests with the "asyncio" marker because they required pluggy version 1.3.0 or older
+%pytest --ignore "tests/api_resources" --ignore "tests/lib/chat/test_completions_streaming.py" -m "not asyncio" -k "not (test_streaming_response or test_copy_build_request or test_basic_attribute_access_works)"
 
 %post
 %python_install_alternative openai

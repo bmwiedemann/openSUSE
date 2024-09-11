@@ -59,7 +59,7 @@ First stage bootloader fimware blobs for Raspberry Pi 4 and Pi 5
 %autosetup -p1
 
 # 'strings' not needed - https://github.com/raspberrypi/rpi-eeprom/commit/ef0cfffced1bbee8ae6755ddf58e478c3d8c8f05
-sed -i 's/die "strings not found./#die "strings not found./' rpi-eeprom-update
+sed -i '/if ! command -v strings/, /fi/d' rpi-eeprom-update
 
 %build
 

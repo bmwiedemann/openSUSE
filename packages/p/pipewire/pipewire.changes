@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Aug 27 14:55:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.3:
+  + Highlights:
+    - Implement freewheeling support in the FFADO driver. Also
+      improve buffersize and samplerate handling.
+    - Improve some locking on spa_loop. Remove a possible deadlock
+      when the queue was full.
+    - Allocate more space for the libcamera devices string to
+      properly deduplicate libcamera and v4l2 devices.
+    - Some more bugfixes and improvements.
+  + PipeWire:
+    - Improve activation state changes and xrun detection some more
+    - Avoid a memory leak when a link in error is destroyed.
+  + Modules:
+    - Improve samplerate and buffersize handling in FFADO driver so
+      that it is possible to force a rate and buffer size.
+    - Implement freewheeling support in the ffado driver.
+    - Always set the server side clock.quantum-limit on nodes. This
+      fixes a buffer size problem in Midi-bridge.
+  + SPA:
+    - Improve some locking on spa_loop. Remove a possible deadlock
+      when the queue was full.
+    - Allocate more space for the libcamera devices string to
+      properly deduplicate libcamera and v4l2 devices.
+    - Fix a potential race when enumerating v4l2 udev devices.
+  + Bluetooth: Improve compatibility with some devices (Soundcore
+    Motion 300).
+  + Tools:
+    - pw-cli can now handle arbitrarily large input and params.
+    - Avoid some compiler warnings in pw-top.
+
+-------------------------------------------------------------------
 Thu Aug  8 08:31:49 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.2.2:

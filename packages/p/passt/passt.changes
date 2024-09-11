@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 09 06:57:41 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240906.6b38f07:
+  * apparmor: Allow read access to /proc/sys/net/ipv4/ip_local_port_range
+  * selinux: Allow read access to /proc/sys/net/ipv4/ip_local_port_range
+  * tap: Don't risk truncating frames on full buffer in tap_pasta_input()
+  * tap: Restructure in tap_pasta_input()
+  * tap: Improve handling of EINTR in tap_passt_input()
+  * tap: Split out handling of EPOLLIN events
+  * util: Fix order of operands and carry of one second in timespec_diff_us()
+  * cppcheck: Work around some cppcheck 2.15.0 redundantInitialization warnings
+  * tcp: Use EPOLLET for any state of not established connections
+  * udp: Handle more error conditions in udp_sock_errs()
+  * udp: Treat errors getting errors as unrecoverable
+  * udp: Split socket error handling out from udp_sock_recv()
+  * flow: Helpers to log details of a flow
+  * udp: Allow UDP flows to be prematurely closed
+  * flow: Fix incorrect hash probe in flowside_lookup()
+  * log: Don't prefix log file messages with time and severity if they're continuations
+  * Makefile: Enable _FORTIFY_SOURCE iff needed
+  * fwd, conf: Probe host's ephemeral ports
+  * conf, fwd: Don't attempt to forward port 0
+  * conf, fwd: Make ephemeral port logic more flexible
+  * seccomp.sh: Try to account for terminal width while formatting list of system calls
+  * udp: Use dual stack sockets for port forwarding when possible
+  * udp: Remove unnnecessary local from udp_sock_init()
+  * udp: Merge udp[46]_mh_recv arrays
+  * test: Look for possible sshd-session paths (if it's there at all) in mbuto's profile
+
+-------------------------------------------------------------------
 Thu Aug 22 08:15:06 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240821.1d6142f:

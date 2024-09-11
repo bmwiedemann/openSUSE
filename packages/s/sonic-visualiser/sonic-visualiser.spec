@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -22,7 +22,7 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        4.5.2
+Version:        5.0
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
@@ -36,10 +36,14 @@ Patch0:         sonic-visualiser-system-dataquay.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ladspa
-BuildRequires:  libqt5-qtbase-devel >= 5.2
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  perl
@@ -47,7 +51,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Platform)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(capnp)
@@ -136,6 +144,9 @@ sed -e 's|/usr/lib/|/usr/%{_lib}/|g;s|/usr/local/lib/|/usr/local/%{_lib}/|g' \
 
 %build
 export LC_ALL=en_US.UTF-8
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1600
+export CC=gcc-12 CXX=g++-12
+%endif
 %meson
 %meson_build
 

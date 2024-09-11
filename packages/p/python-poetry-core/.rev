@@ -327,4 +327,12 @@
 </comment>
     <requestid>1159613</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>051a31ce0ae4542c4c9e206b70df781e</srcmd5>
+    <version>1.9.0</version>
+    <time>1725995561</time>
+    <user>anag+factory</user>
+    <comment>- Skip test failing with Python 3.12.6 gh#python-poetry/poetry#9678</comment>
+    <requestid>1199731</requestid>
+  </revision>
 </revisionlist>

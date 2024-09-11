@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:29:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to add support for Python 3.13
+  * port-to-python313.patch
+
+-------------------------------------------------------------------
 Wed Jan 10 22:14:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.3

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  8 10:02:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Drop pandas-pr58720-xarray-dp.patch: It does no longer xfail
+
+-------------------------------------------------------------------
 Wed Aug 28 13:53:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip overflowing tests on 32-bit

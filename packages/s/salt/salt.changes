@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:51:43 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix the SELinux context for Salt Minion service (bsc#1219041)
+
+- Added:
+  * fix-the-selinux-context-for-salt-minion-service-bsc-.patch
+
+-------------------------------------------------------------------
 Wed Sep  4 12:23:53 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Set contextvars as a build requirement for package

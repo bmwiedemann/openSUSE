@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Sep  5 16:19:43 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons. 
+
+-------------------------------------------------------------------
+Fri Aug 16 23:25:30 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- version 0.12.1
+  * add license to project metadata and some other fixes in pyproject.toml (#104) 

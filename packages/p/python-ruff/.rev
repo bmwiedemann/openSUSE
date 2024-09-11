@@ -1143,4 +1143,41 @@
    * Add hyperfine installation instructions; update hyperfine code samples</comment>
     <requestid>1198261</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f5f7e472db3741fca1114656a1076ed0</srcmd5>
+    <version>0.6.4</version>
+    <time>1725995538</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.4:
+  * \[`flake8-builtins`\] Use dynamic builtins list based on
+    Python version
+  * \[`pydoclint`\] Permit yielding `None` in `DOC402` and
+    `DOC403`
+  * \[`pylint`\] Update diagnostic message for `PLW3201`
+  * \[`ruff`\] Implement `post-init-default` (`RUF033`)
+  * \[`ruff`\] Implement useless if-else (`RUF034`)
+  * \[`flake8-pyi`\] Respect `pep8_naming.classmethod-decorators`
+    settings when determining if a method is a classmethod in
+    `custom-type-var-return-type` (`PYI019`)
+  * \[`flake8-pyi`\] Teach various rules that annotations might
+    be stringized
+  * \[`pylint`\] Avoid `no-self-use` for `attrs`-style validators
+  * \[`pylint`\] Recurse into subscript subexpressions when
+    searching for list/dict lookups (`PLR1733`, `PLR1736`)
+  * \[`pyupgrade`\] Detect `aiofiles.open` calls in `UP015`
+  * \[`pyupgrade`\] Mark `sys.version_info[0] &lt; 3` and similar
+    comparisons as outdated (`UP036`)
+
+   * [flake8-simplify] Extend open-file-with-context-handler to work with other standard-library IO modules (SIM115)
+   * [ruff] Avoid unused-async for functions with FastAPI route decorator (RUF029)
+   * [ruff] Ignore fstring-missing-syntax (RUF027) for fastAPI paths
+   * [ruff] Implement check for Decimal called with a float literal (RUF032)
+   * [flake8-simplify] Extend open-file-with-context-handler to work with dbm.sqlite3 (SIM115)
+   * [pycodestyle] Disable E741 in stub files (.pyi)
+   * [pydoclint] Avoid DOC201 on explicit returns in functions that only return None
+   * [flake8-bugbear] Update diagnostic message when expression is at the end of function (B015)
+   * [flake8-pyi] Skip type annotations in string-or-bytes-too-long (PYI053)
+   * [flake8-type-checking] Always recognise relative imports as first-party</comment>
+    <requestid>1199612</requestid>
+  </revision>
 </revisionlist>

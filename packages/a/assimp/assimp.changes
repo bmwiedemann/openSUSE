@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:32:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.4.3
+  * Ply-Importer: Fix vulnerability
+  * Update ccpp.yml
+  * `build`: Add ccache support
+  * Update glTF2AssetWriter.inl
+  * Update PyAssimp structs with Skeleton & SkeletonBone members
+  * FBX: add metadata as properties
+  * Fix casting typo in D3MFExporter::writeBaseMaterials (color
+    channels < 1.0f were zeroed out)
+  * Fix to judge 'multi-configuration' correctly
+  * Fix potential memory leak in SceneCombiner for LWS/IRR/MD3
+    loader
+  * Fix copying private data when source pointer is NULL
+  * Bump softprops/action-gh-release from 1 to 2
+  * Bump actions/upload-artifact from 1 to 4
+  * Bump actions/download-artifact from 1 to 4
+  * fix GetShortFilename function
+  * Added more Maya materials
+  * Sparky kitty studios master
+  * Expose aiGetEmbeddedTexture to C-API
+  * Fix leak in loader
+  * Fix MSVC build error
+  * Revert variable name (fix broken build on android)
+  * Fixes possible out-of-bound read in findDegenerate
+  * Remove recursive include
+  * include Exceptional.h in 3DSExporter.cpp
+  * Use DRACO_GLTF_BITSTREAM
+  * Fix MSVC PDBs and permit them to be disabled if required
+  * Added AND condition in poly2tri dll_symbol.h
+  * fixing static build
+  * FBX exporter - handle multiple vertex color channels
+  * Update DefaultIOSystem.cpp
+  * Make coord transfor for hs1 files optional
+  * Return false instead of crash
+  * A fuzzed stride could cause the max count to become negative
+    and hence wrap around uint
+  * CalcTangents: zero vector is invalid for tangent/bitangent
+  * Mosfet80 updatedpoli2tri
+  * Fix a fuzz test heap buffer overflow in mdl material loader
+  * Introduce interpolation mode to vectro and quaternion keys
+  * Update Python structs with missing fields
+  * Introduce interpolation mode to vectro and quaternion keys
+  * Kimkulling/fix double precision tests
+  * [USD] Integrate "tinyusdz" project
+  * Update Readme.md
+  * Allow empty slots in mTextureCoords
+  * Fix compile warning
+  * Replace raw pointers by std::string
+  * Fix potential heapbuffer overflow in md5 parsing
+
+-------------------------------------------------------------------
 Thu Jul 11 15:28:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix check failure on s390x (bsc#1218474)
@@ -161,7 +214,7 @@ Tue Jul  9 12:08:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
   * Fixes some uninit bool loads
   * Fix names of enum values in docstring of aiProcess_FindDegenerates
   * Fix: StackAllocator Undefined Reference fix
-  * Plx: Fix out of bound access
+  * Plx: Fix out of bound access (CVE-2024-40724, boo#1228142)
 
 -------------------------------------------------------------------
 Tue May 21 13:11:09 UTC 2024 - Christophe Marin <christophe@krop.fr>

@@ -80,4 +80,12 @@ see https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:73
 </comment>
     <requestid>1177999</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dc7b9ae034f31f4828c18c7c9ae91363</srcmd5>
+    <version>3.0.0</version>
+    <time>1725995562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199747</requestid>
+  </revision>
 </revisionlist>

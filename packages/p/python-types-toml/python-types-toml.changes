@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Sep  5 17:08:44 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Release v0.10.8.20240310
+  * Bump mypy to 1.9, add to json.encoder, small fixups 

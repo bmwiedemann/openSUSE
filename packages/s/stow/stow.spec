@@ -17,7 +17,7 @@
 
 
 Name:           stow
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Manage the installation of software packages from source
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=stow&download=1#/%name.keyring
 Source3:        stow-rpmlintrc
-Patch0:         avoid_precedence_warning.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Scalar)
@@ -73,11 +72,13 @@ Documentation for GNU Stow %{version} in HTML and PDF format.
 %configure \
     --with-pmdir=%{perl_vendorlib} \
     --docdir=%{_defaultdocdir}/%{name}
+make pdf
 
 %install
 %make_install
 rm %{buildroot}%{_docdir}/stow/version.texi
 rm %{buildroot}%{_docdir}/%{name}/INSTALL.md
+install -m 644 doc/manual.pdf %{buildroot}/%{_docdir}/stow/manual.pdf
 
 %check
 %make_build test

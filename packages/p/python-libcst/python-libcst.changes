@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 11:38:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add pyo3-022.patch bumping the dependency of pyo3 to 0.22
+  (gh#Instagram/LibCST!1180).
+
+-------------------------------------------------------------------
 Mon Jul 22 10:24:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Upgrade to 1.4.0:

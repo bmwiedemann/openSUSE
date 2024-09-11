@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  3 10:25:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Provides for binaries in poppler-tools package
+
+-------------------------------------------------------------------
 Tue Jul  2 20:54:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use correct version for freetype BuildRequires.

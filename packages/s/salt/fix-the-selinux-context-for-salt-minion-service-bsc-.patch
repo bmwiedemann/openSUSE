@@ -1,0 +1,83 @@
+From d933c8f0795fdada84a01a2cc754586fa720993d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 10 Sep 2024 13:46:09 +0100
+Subject: [PATCH] Fix the SELinux context for Salt Minion service
+ (bsc#1219041) (#670)
+
+Currently there are no SELinux policies for Salt.
+
+By default, the Salt Minion service runs as 'unconfined_service_t' when
+SELinux is enabled. This works fine in most cases but generates a problem
+then trying to transition to an 'unconfined_t', i.a. when running
+"cmd.run .... runas=nobody". Then we see this denied in audit logs:
+
+type=AVC msg=audit(1722870119.142:718): avc:  denied  { transition } for  pid=3421 comm="su" path="/usr/bin/bash" dev="vda3" ino=28565 scontext=system_u:system_r:unconfined_service_t:s0 tcontext=unconfined_u:unconfined_r:unconfined_t:s0 tclass=process permissive=0
+
+(This happens for cmd.run at the time of trying to invoke a shell as a
+different user to gather the environment variables from this particular
+user)
+
+Fixing the SELinuxContext for the Salt Minion systemd service to a
+general 'unconfined_t' workarounds this situation.
+
+SELinuxContext attribute was added on systemd version 209.
+---
+ pkg/common/salt-minion.service         | 1 +
+ pkg/old/deb/salt-minion.service        | 1 +
+ pkg/old/suse/salt-minion.service       | 1 +
+ pkg/old/suse/salt-minion.service.rhel7 | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/pkg/common/salt-minion.service b/pkg/common/salt-minion.service
+index 69aff18c583..696d0263c39 100644
+--- a/pkg/common/salt-minion.service
++++ b/pkg/common/salt-minion.service
+@@ -9,6 +9,7 @@ Type=notify
+ NotifyAccess=all
+ LimitNOFILE=8192
+ ExecStart=/usr/bin/salt-minion
++SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/deb/salt-minion.service b/pkg/old/deb/salt-minion.service
+index 7e6cf146549..b0ad82c1334 100644
+--- a/pkg/old/deb/salt-minion.service
++++ b/pkg/old/deb/salt-minion.service
+@@ -8,6 +8,7 @@ KillMode=process
+ NotifyAccess=all
+ LimitNOFILE=8192
+ ExecStart=/usr/bin/salt-minion
++SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/suse/salt-minion.service b/pkg/old/suse/salt-minion.service
+index 12f28314cb1..b99ef063522 100644
+--- a/pkg/old/suse/salt-minion.service
++++ b/pkg/old/suse/salt-minion.service
+@@ -10,6 +10,7 @@ ExecStart=/usr/bin/salt-minion
+ KillMode=process
+ Restart=on-failure
+ RestartSec=15
++SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/suse/salt-minion.service.rhel7 b/pkg/old/suse/salt-minion.service.rhel7
+index 69172677140..92cc66d32f4 100644
+--- a/pkg/old/suse/salt-minion.service.rhel7
++++ b/pkg/old/suse/salt-minion.service.rhel7
+@@ -9,6 +9,7 @@ ExecStart=/usr/bin/salt-minion
+ KillMode=process
+ Restart=on-failure
+ RestartSec=15
++SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.46.0
+
+

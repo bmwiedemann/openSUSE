@@ -258,4 +258,12 @@ https://www.knot-dns.cz/</comment>
   https://www.knot-dns.cz/2024-07-22-version-338.html</comment>
     <requestid>1189571</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a413651b37d7c524d63420f867d5c0d7</srcmd5>
+    <version>3.4.0</version>
+    <time>1725995605</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1199739</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %define lua_version_nodots %{nil}
 %endif
 Name:           zerobranestudio
-Version:        1.90
+Version:        2.01
 Release:        0
 Summary:        Lightweight Lua IDE
 License:        MIT

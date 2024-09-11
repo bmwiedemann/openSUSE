@@ -177,4 +177,12 @@ This is a dual license so the operator is ^or^ not ^and^ (forwarded request 1579
     <comment>rpm 4.20 compat</comment>
     <requestid>1148491</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1e44ff188d343758319262391f434f38</srcmd5>
+    <version>3.30.2</version>
+    <time>1725995559</time>
+    <user>anag+factory</user>
+    <comment>3.30.2</comment>
+    <requestid>1199717</requestid>
+  </revision>
 </revisionlist>

@@ -67,7 +67,10 @@ cp -p src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.L
 %check
 # gh#python-poetry/poetry#1645
 git init
-%pytest
+#https://github.com/python-poetry/poetry/issues/9678
+donttest="obsdummyprefix"
+python312_donttest=" or (test_invalid_requirement and :.-invalid)"
+%pytest -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %doc README.md

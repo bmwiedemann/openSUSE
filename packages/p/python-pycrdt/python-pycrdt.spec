@@ -34,7 +34,7 @@ Requires:       (python-anyio >= 4.4 with python-anyio < 5)
 BuildRequires:  %{python_module pytest >= 7.4.2}
 BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
 BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
-BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.26}
+BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.27}
 # /SECTION
 %python_subpackages
 
@@ -49,6 +49,8 @@ all data replicas eventually converge to the same state.
 
 %prep
 %autosetup -p1 -n pycrdt-%{version} -a1
+# gh#jupyter-server/pycrdt#160
+sed -i '/trio/ s/<0.26/<0.27/' pyproject.toml
 
 %build
 %pyproject_wheel

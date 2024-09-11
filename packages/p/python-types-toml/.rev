@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f311aa60c83eadb3d38cc3927349b8be</srcmd5>
+    <version>0.10.8.20240310</version>
+    <time>1725995585</time>
+    <user>anag+factory</user>
+    <comment>required by python-openai and python-inline-snapshot</comment>
+    <requestid>1199692</requestid>
+  </revision>
+</revisionlist>

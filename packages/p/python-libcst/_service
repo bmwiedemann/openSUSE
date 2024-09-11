@@ -4,5 +4,4 @@
      <param name="cargotoml">native/Cargo.toml</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>

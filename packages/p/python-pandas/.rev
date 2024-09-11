@@ -717,4 +717,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1197229</requestid>
   </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>710b57c9a9d1dca0efb3bec0c2b13dd1</srcmd5>
+    <version>2.2.2</version>
+    <time>1725995537</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199479</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           deja-dup
-Version:        45.2
+Version:        46.1
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  libgpg-error-devel
 BuildRequires:  meson >= 0.64
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.16.0
+BuildRequires:  xdg-user-dirs
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.70
 BuildRequires:  pkgconfig(gio-unix-2.0)

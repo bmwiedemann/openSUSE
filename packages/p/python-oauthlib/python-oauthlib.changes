@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 10:18:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to make UtilsTests.test_filter_params Python 3.13+ compatible
+  * Make-UtilsTests.test_filter_params-Python-3.13-compatible.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 08:42:35 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip failing test with jwt 2.9.0

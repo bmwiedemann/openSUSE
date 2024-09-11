@@ -17,9 +17,9 @@
 #
 
 
-%define tar_version rel_3_29_2_ga
+%define tar_version rel_3_30_2_ga
 Name:           javassist
-Version:        3.29.2
+Version:        3.30.2
 Release:        0
 Summary:        Java Programming Assistant: bytecode manipulation
 License:        LGPL-2.1-or-later OR MPL-1.1
@@ -31,7 +31,7 @@ Patch1:         javassist-osgi.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description

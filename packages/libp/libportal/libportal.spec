@@ -1,7 +1,7 @@
 #
 # spec file for package libportal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libportal
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
@@ -29,12 +29,17 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.46.0
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -73,6 +78,13 @@ This package contains the shared library of %{name}.
 Summary:        Qt5 integration for libportal
 
 %description -n %{name}-qt5-%{sover}
+A GIO-style async API for most Flatpak portals.
+This package contains the shared library of %{name}.
+
+%package     -n %{name}-qt6-%{sover}
+Summary:        Qt6 integration for libportal
+
+%description -n %{name}-qt6-%{sover}
 A GIO-style async API for most Flatpak portals.
 This package contains the shared library of %{name}.
 
@@ -132,6 +144,14 @@ Requires:       %{name}-qt5-%{sover} = %{version}
 The %{name}-qt5-devel package contains libraries, build data, and
 header files for developing applications that use %{name}.
 
+%package qt6-devel
+Summary:        Headers for libportal Qt6 integration library
+Requires:       %{name}-qt6-%{sover} = %{version}
+
+%description qt6-devel
+The %{name}-qt6-devel package contains libraries, build data, and
+header files for developing applications that use %{name}.
+
 %prep
 %autosetup -p1
 
@@ -147,6 +167,7 @@ header files for developing applications that use %{name}.
 %ldconfig_scriptlets -n %{name}-gtk3-%{sover}
 %ldconfig_scriptlets -n %{name}-gtk4-%{sover}
 %ldconfig_scriptlets -n %{name}-qt5-%{sover}
+%ldconfig_scriptlets -n %{name}-qt6-%{sover}
 
 %files -n %{name}%{sover}
 %license COPYING
@@ -160,6 +181,9 @@ header files for developing applications that use %{name}.
 
 %files -n %{name}-qt5-%{sover}
 %{_libdir}/libportal-qt5.so.%{sover}*
+
+%files -n %{name}-qt6-%{sover}
+%{_libdir}/libportal-qt6.so.%{sover}*
 
 %files -n typelib-1_0-Xdp-1_0
 %{_libdir}/girepository-1.0/Xdp-1.0.typelib
@@ -203,5 +227,10 @@ header files for developing applications that use %{name}.
 %{_includedir}/libportal-qt5
 %{_libdir}/libportal-qt5.so
 %{_libdir}/pkgconfig/libportal-qt5.pc
+
+%files qt6-devel
+%{_includedir}/libportal-qt6
+%{_libdir}/libportal-qt6.so
+%{_libdir}/pkgconfig/libportal-qt6.pc
 
 %changelog

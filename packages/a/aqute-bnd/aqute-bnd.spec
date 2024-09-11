@@ -17,7 +17,7 @@
 
 
 Name:           aqute-bnd
-Version:        6.3.1
+Version:        6.4.1
 Release:        0
 Summary:        BND Tool
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -36,8 +36,8 @@ Source8:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.util/
 Patch1:         0001-Disable-removed-commands.patch
 Patch2:         0002-Port-to-OSGI-7.0.0.patch
 Patch3:         0003-Remove-unmet-dependencies.patch
-Patch4:         reproducible-timestamps.patch
-Patch5:         reproducible-packages-list.patch
+Patch4:         0004-reproducible-timestamps.patch
+Patch5:         0005-reproducible-packages-list.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6

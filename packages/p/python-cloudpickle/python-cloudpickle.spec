@@ -24,6 +24,8 @@ Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://github.com/cloudpipe/cloudpickle/archive/refs/tags/v{%version}.tar.gz#/cloudpickle-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh/cloudpipe/cloudpickle#534 - Fix test_extract_class_dict for Python 3.13 beta 1
+Patch:          Fix-test_extract_class_dict-for-Python-313.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

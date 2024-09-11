@@ -159,6 +159,19 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 Summary:        PDF Rendering Library Tools
 Group:          Productivity/Publishing/PDF
 Requires:       libpoppler%{poppler_sover} >= %{version}
+Provides:       pdfattach = %{version}
+Provides:       pdfdetach = %{version}
+Provides:       pdffonts = %{version}
+Provides:       pdfimages = %{version}
+Provides:       pdfinfo = %{version}
+Provides:       pdfseparate = %{version}
+Provides:       pdfsig = %{version}
+Provides:       pdftocairo = %{version}
+Provides:       pdftohtml = %{version}
+Provides:       pdftoppm = %{version}
+Provides:       pdftops = %{version}
+Provides:       pdftotext = %{version}
+Provides:       pdfunite = %{version}
 
 %description    tools
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer

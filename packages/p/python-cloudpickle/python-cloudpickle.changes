@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:43:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick proposed patch from Fedora to fix testsuite with Python 3.13
+  * Fix-test_extract_class_dict-for-Python-313.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 15:43:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
  Update to 3.0.0

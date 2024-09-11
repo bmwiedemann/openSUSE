@@ -351,4 +351,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178339</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>577343b12b30ce95c4b31d0057e791df</srcmd5>
+    <version>1.37</version>
+    <time>1725995543</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.37:
+  + This release contains three new protocols:
+    - xdg-toplevel-icon: Associate an icon with a toplevel window.
+    - ext-image-capture-source
+    - ext-image-copy-capture: A set of protocols that together
+      allow capturing the pixel content of outputs and toplevels.
+  + Apart from this, it includes the usual protocol documentation
+    improvements and fixes, as well as clarification of existing
+    protocol review practices. (forwarded request 1198173 from iznogood)</comment>
+    <requestid>1199646</requestid>
+  </revision>
 </revisionlist>

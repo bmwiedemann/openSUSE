@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT

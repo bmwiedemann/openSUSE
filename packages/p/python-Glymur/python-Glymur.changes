@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  9 12:43:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.13.6
+  * Refactor Jp2k class into Jp2k, Jp2kr
+  * Remove python 3.8 anachronisms
+  * Change parsing of precinct sizes due to numpy 2.0
+  * End official support for OpenJPEG 2.3.x
+  * Fix tiff2jp2 when tile coverage not square
+
+-------------------------------------------------------------------
 Fri Jan 12 04:57:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.9post1:

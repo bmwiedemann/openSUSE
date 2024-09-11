@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-epub-thumbnailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-epub-thumbnailer
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Thumbnailer for EPub books
 License:        GPL-2.0-or-later

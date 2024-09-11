@@ -1,8 +1,17 @@
+From 07018362979d754c0f169fab529b3dffef8a5846 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 9 Sep 2024 09:45:16 +0200
+Subject: [PATCH 1/5] Disable removed commands
+
+---
+ biz.aQute.bnd/src/aQute/bnd/main/bnd.java | 76 -----------------------
+ 1 file changed, 76 deletions(-)
+
 diff --git a/biz.aQute.bnd/src/aQute/bnd/main/bnd.java b/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
-index a787c32..fc241a2 100644
+index 17530921d..513aed5a3 100644
 --- a/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
 +++ b/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
-@@ -110,7 +110,6 @@ import aQute.bnd.osgi.Resource;
+@@ -108,7 +108,6 @@ import aQute.bnd.osgi.Resource;
  import aQute.bnd.osgi.Verifier;
  import aQute.bnd.osgi.eclipse.EclipseClasspath;
  import aQute.bnd.print.JarPrinter;
@@ -10,7 +19,7 @@ index a787c32..fc241a2 100644
  import aQute.bnd.result.Result;
  import aQute.bnd.service.Actionable;
  import aQute.bnd.service.RepositoryPlugin;
-@@ -3921,54 +3920,6 @@ public class bnd extends Processor {
+@@ -3909,54 +3908,6 @@ public class bnd extends Processor {
  		getInfo(profiles);
  	}
  
@@ -65,7 +74,7 @@ index a787c32..fc241a2 100644
  	/**
  	 * Export a bndrun file
  	 */
-@@ -4424,15 +4375,6 @@ public class bnd extends Processor {
+@@ -4412,15 +4363,6 @@ public class bnd extends Processor {
  		}
  	}
  
@@ -81,7 +90,7 @@ index a787c32..fc241a2 100644
  	public Workspace getWorkspace() {
  		return workspace;
  	}
-@@ -4479,24 +4421,6 @@ public class bnd extends Processor {
+@@ -4467,24 +4409,6 @@ public class bnd extends Processor {
  
  	}
  
@@ -106,3 +115,6 @@ index a787c32..fc241a2 100644
  	@Description("Shows the differences between two XML resource repositories")
  	public void _xmlrepodiff(XmlRepoDiffOptions options) throws Exception {
  		try (XmlRepoDiffCommand cmd = new XmlRepoDiffCommand(this)) {
+-- 
+2.46.0
+

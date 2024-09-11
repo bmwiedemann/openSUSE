@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  9 12:30:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick patch from Fedora to fix testsuite with Python 3.13
+  * test_pickle_exception-even-harder-location-stripping.patch
+
+-------------------------------------------------------------------
 Fri May 31 22:34:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up SPEC file.

@@ -129,4 +129,14 @@
   * Update syn to v2</comment>
     <requestid>1189034</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>36a4adaf11a02ae0c5ba1646e907ad4d</srcmd5>
+    <version>1.4.0</version>
+    <time>1725995548</time>
+    <user>anag+factory</user>
+    <comment>- Add pyo3-022.patch bumping the dependency of pyo3 to 0.22
+  (gh#Instagram/LibCST!1180).
+</comment>
+    <requestid>1199686</requestid>
+  </revision>
 </revisionlist>

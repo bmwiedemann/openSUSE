@@ -925,4 +925,12 @@ New upstream release</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1229162</comment>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>20061e615522627180343372b5dcb0ec</srcmd5>
+    <version>4.16.0</version>
+    <time>1725995550</time>
+    <user>anag+factory</user>
+    <comment>New stable (forwarded request 1199394 from iznogood)</comment>
+    <requestid>1199693</requestid>
+  </revision>
 </revisionlist>

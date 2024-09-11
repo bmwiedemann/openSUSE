@@ -907,4 +907,26 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1198764</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>27b10e4eaf521c0d97e984e3fe0b6729</srcmd5>
+    <version>20240905</version>
+    <time>1725995541</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240905:
+  * Allow coreos-installer-generator manage mdadm_conf_t files
+  * Allow setsebool_t relabel selinux data files
+  * Allow virtqemud relabelfrom virtqemud_var_run_t dirs
+  * Use better escape method for &quot;interface&quot;
+  * Allow init and systemd-logind to inherit fds from sshd
+  * Allow systemd-ssh-generator read sysctl files
+  * Sync modules.conf with Fedora targeted modules
+  * Allow virtqemud relabel user tmp files and socket files
+  * Add missing sys_chroot capability to groupadd policy
+  * Label /run/libvirt/qemu/channel with virtqemud_var_run_t
+  * Allow virtqemud relabelfrom also for file and sock_file
+  * Add virt_create_log() and virt_write_log() interfaces
+  - Sync modules-targeted-contrib.conf with Fedora targeted modules.conf
+</comment>
+    <requestid>1199629</requestid>
+  </revision>
 </revisionlist>

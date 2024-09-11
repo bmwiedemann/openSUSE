@@ -17,7 +17,7 @@
 
 
 %define libdnssec   libdnssec9
-%define libknot     libknot14
+%define libknot     libknot15
 %define libzscanner libzscanner4
 %define pkg_name knot
 %bcond_without  dnstap
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.3.8
+Version:        3.4.0
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later

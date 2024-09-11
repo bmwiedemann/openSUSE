@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  9 18:54:06 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add respect-dpm-manual.patch:
+  Don't override user settings for dpm if set to manual
+  (glfo#upower/power-profiles-daemon#163)
+
+-------------------------------------------------------------------
 Tue Sep  3 06:20:18 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 0.22:

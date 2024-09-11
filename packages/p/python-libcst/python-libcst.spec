@@ -34,6 +34,9 @@ License:        MIT
 URL:            https://github.com/Instagram/LibCST
 Source0:        https://files.pythonhosted.org/packages/source/l/libcst/%{modname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM pyo3-022.patch gh#Instagram/LibCST!1180 mcepl@suse.com
+# updgrade pyo3 to 0.22 version
+Patch0:         pyo3-022.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools_scm}
@@ -72,26 +75,23 @@ A concrete syntax tree with AST-like properties for Python 3.5+ programs.
 #   libcst/metadata/tests/test_full_repo_manager.py \
 #   libcst/tests/test_pyre_integration.py
 
-%if %{without test}
 %build
 export CARGO_NET_OFFLINE=true PROFILE=release
 %pyproject_wheel
-%endif
 
 %install
-%if %{without test}
 export CARGO_NET_OFFLINE=true PROFILE=release
 %pyproject_install
 # gh#Instagram/LibCST#818
 %{python_expand rm -rf %{buildroot}%{$python_sitearch}/libcst/tests
 %fdupes %{buildroot}%{$python_sitearch}
 }
-%endif
 
 %clean
 
 %if %{with test}
 %check
+%python_expand find %{buildroot}%{$python_sitearch} -name \*.so\*
 %pyunittest_arch discover -v libcst/tests
 %endif
 

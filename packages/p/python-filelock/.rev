@@ -211,4 +211,23 @@
     instance</comment>
     <requestid>1181236</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>553fe2e787ef571eff51a2d288ad7116</srcmd5>
+    <version>3.16.0</version>
+    <time>1725995543</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.16.0:
+  * Test Python 3.13
+  * Add 3.13 to CI
+- update to 3.15.4:
+  * Pass `file_lock` as positional argument
+- update to 3.15.3:
+  * Add test for virtualenv stability
+  * Fix `TypeError: _CountedFileLock.__init__() got an unexpected
+    keyword argument 'timeout'`
+- update to 3.15.2:
+  * Use a metaclass to implement the singleton pattern
+- split into test multibuild to avoid cycle over virtualenv</comment>
+    <requestid>1199632</requestid>
+  </revision>
 </revisionlist>

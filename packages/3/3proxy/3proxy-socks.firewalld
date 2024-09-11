@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+	<short>socks proxy</short>
+	<description>socks port for 3proxy</description>
+	<port port="1080" protocol="tcp"/>
+</service>

@@ -25,6 +25,8 @@ URL:            https://gitlab.freedesktop.org/upower/power-profiles-daemon
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE hold-profile-hardening.patch boo#1189900 -- Hardening of HoldProfile D-Bus method
 Patch0:         hold-profile-hardening.patch
+# PATCH-FIX-UPSTREAM respect-dpm-manual.patch -- based on commit 21b58819 glfo#upower/power-profiles-daemon#163 : Don't override user settings for dpm if set to manual
+Patch1:         https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/commit/21b58819edcbbd87fc161474d1501debfd9b84b7.patch#/respect-dpm-manual.patch
 BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  gtk-doc

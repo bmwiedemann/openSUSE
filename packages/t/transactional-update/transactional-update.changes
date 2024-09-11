@@ -10,7 +10,7 @@ Mon Aug 26 22:31:13 UTC 2024 - Ignaz Forster <iforster@suse.com>
 - Version 4.8.0
   - Add sd-boot (systemd-boot) support for most commands
   - Add support for specifying migration arguments
-    [gh#openSUSE/transactional-update#127]
+    [gh#openSUSE/transactional-update#127] [jsc#PED-10375]
   - Support kdump setup on platforms without kdump high/low
     settings (e.g. S/390 or PPC64le [bsc#1229138]
   - Preserve current working directory if possible when entering

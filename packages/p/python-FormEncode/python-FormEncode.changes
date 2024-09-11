@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 10 04:11:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-always-use-cgi-module.patch:
+  * Support Python 3.13 by making use of cgi optional.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Tue Apr 16 13:25:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Remove unneeded dependency on six

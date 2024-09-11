@@ -1,46 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep  9 08:14:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.4:
+  * \[`flake8-builtins`\] Use dynamic builtins list based on
+    Python version
+  * \[`pydoclint`\] Permit yielding `None` in `DOC402` and
+    `DOC403`
+  * \[`pylint`\] Update diagnostic message for `PLW3201`
+  * \[`ruff`\] Implement `post-init-default` (`RUF033`)
+  * \[`ruff`\] Implement useless if-else (`RUF034`)
+  * \[`flake8-pyi`\] Respect `pep8_naming.classmethod-decorators`
+    settings when determining if a method is a classmethod in
+    `custom-type-var-return-type` (`PYI019`)
+  * \[`flake8-pyi`\] Teach various rules that annotations might
+    be stringized
+  * \[`pylint`\] Avoid `no-self-use` for `attrs`-style validators
+  * \[`pylint`\] Recurse into subscript subexpressions when
+    searching for list/dict lookups (`PLR1733`, `PLR1736`)
+  * \[`pyupgrade`\] Detect `aiofiles.open` calls in `UP015`
+  * \[`pyupgrade`\] Mark `sys.version_info[0] < 3` and similar
+    comparisons as outdated (`UP036`)
+
+-------------------------------------------------------------------
 Mon Sep  2 09:01:34 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.6.3:
  * Preview features
-   * [flake8-simplify] Extend open-file-with-context-handler to work with other standard-library IO modules (SIM115) 
-   * [ruff] Avoid unused-async for functions with FastAPI route decorator (RUF029) 
-   * [ruff] Ignore fstring-missing-syntax (RUF027) for fastAPI paths 
-   * [ruff] Implement check for Decimal called with a float literal (RUF032) 
-   * [flake8-simplify] Extend open-file-with-context-handler to work with dbm.sqlite3 (SIM115) 
-   * [pycodestyle] Disable E741 in stub files (.pyi) 
-   * [pydoclint] Avoid DOC201 on explicit returns in functions that only return None 
+   * [flake8-simplify] Extend open-file-with-context-handler to work with other standard-library IO modules (SIM115)
+   * [ruff] Avoid unused-async for functions with FastAPI route decorator (RUF029)
+   * [ruff] Ignore fstring-missing-syntax (RUF027) for fastAPI paths
+   * [ruff] Implement check for Decimal called with a float literal (RUF032)
+   * [flake8-simplify] Extend open-file-with-context-handler to work with dbm.sqlite3 (SIM115)
+   * [pycodestyle] Disable E741 in stub files (.pyi)
+   * [pydoclint] Avoid DOC201 on explicit returns in functions that only return None
  * Rule changes
-   * [flake8-bugbear] Update diagnostic message when expression is at the end of function (B015) 
-   * [flake8-pyi] Skip type annotations in string-or-bytes-too-long (PYI053) 
-   * [flake8-type-checking] Always recognise relative imports as first-party 
-   * [flake8-unused-arguments] Ignore unused arguments on stub functions (ARG001) 
-   * [pylint] Ignore augmented assignment for self-cls-assignment (PLW0642) 
-   * [flake8-async] Disable check for asyncio before Python 3.11 (ASYNC109) 
+   * [flake8-bugbear] Update diagnostic message when expression is at the end of function (B015)
+   * [flake8-pyi] Skip type annotations in string-or-bytes-too-long (PYI053)
+   * [flake8-type-checking] Always recognise relative imports as first-party
+   * [flake8-unused-arguments] Ignore unused arguments on stub functions (ARG001)
+   * [pylint] Ignore augmented assignment for self-cls-assignment (PLW0642)
+   * [flake8-async] Disable check for asyncio before Python 3.11 (ASYNC109)
  * Bug fixes
-   * [pep8-naming] Don't flag from imports following conventional import names (N817) 
-   * [pylint] - Allow __new__ methods to have cls as their first argument even if decorated with @staticmethod for bad-staticmethod-argument (PLW0211) 
-   * [FastAPI] Avoid introducing invalid syntax in fix for fast-api-non-annotated-dependency (FAST002) 
-   * [flake8-implicit-str-concat] Normalize octals before merging concatenated strings in single-line-implicit-string-concatenation (ISC001) 
-   * [flake8-pytest-style] Improve help message for pytest-incorrect-mark-parentheses-style (PT023) 
-   * [pylint] Avoid autofix for calls that aren't min or max as starred expression (PLW3301) 
-   * [ruff] Add datetime.time, datetime.tzinfo, and datetime.timezone as immutable function calls (RUF009) 
-   * [ruff] Extend comment deletion for RUF100 to include trailing text from noqa directives while preserving any following comments on the same line, if any 
-   * Fix dark theme on initial page load for the Ruff playground 
+   * [pep8-naming] Don't flag from imports following conventional import names (N817)
+   * [pylint] - Allow __new__ methods to have cls as their first argument even if decorated with @staticmethod for bad-staticmethod-argument (PLW0211)
+   * [FastAPI] Avoid introducing invalid syntax in fix for fast-api-non-annotated-dependency (FAST002)
+   * [flake8-implicit-str-concat] Normalize octals before merging concatenated strings in single-line-implicit-string-concatenation (ISC001)
+   * [flake8-pytest-style] Improve help message for pytest-incorrect-mark-parentheses-style (PT023)
+   * [pylint] Avoid autofix for calls that aren't min or max as starred expression (PLW3301)
+   * [ruff] Add datetime.time, datetime.tzinfo, and datetime.timezone as immutable function calls (RUF009)
+   * [ruff] Extend comment deletion for RUF100 to include trailing text from noqa directives while preserving any following comments on the same line, if any
+   * Fix dark theme on initial page load for the Ruff playground
  * Server
-   * Show full context in error log messages 
+   * Show full context in error log messages
  * Documentation
-   * Add hyperfine installation instructions; update hyperfine code samples 
-   * Expand note to use Ruff with other language server in Kate 
-   * Update example for PT001 as per the new default behavior 
-   * [perflint] Improve docs for try-except-in-loop (PERF203) 
-   * [pydocstyle] Add reference to lint.pydocstyle.ignore-decorators setting to rule docs 
+   * Add hyperfine installation instructions; update hyperfine code samples
+   * Expand note to use Ruff with other language server in Kate
+   * Update example for PT001 as per the new default behavior
+   * [perflint] Improve docs for try-except-in-loop (PERF203)
+   * [pydocstyle] Add reference to lint.pydocstyle.ignore-decorators setting to rule docs
 
 -------------------------------------------------------------------
 Mon Aug 19 17:40:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.6.1:
- * Detect imports in src layouts by default for isort rules 
+ * Detect imports in src layouts by default for isort rules
  * The pytest rules PT001 and PT023 now default to omitting the decorator parentheses when there are no arguments .
  * Lint and format Jupyter Notebook by default .
  * big list of changes: https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md

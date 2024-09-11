@@ -1,0 +1,41 @@
+From 2b2d6e760e70dba6157b9296147d29d05dc590b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 9 Sep 2024 09:46:40 +0200
+Subject: [PATCH 5/5] reproducible packages list
+
+---
+ biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
+index b127fc682..679a10514 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Packages.java
+@@ -1,9 +1,9 @@
+ package aQute.bnd.osgi;
+ 
+ import java.util.Collection;
+-import java.util.LinkedHashMap;
+ import java.util.Map;
+ import java.util.Set;
++import java.util.TreeMap;
+ 
+ import aQute.bnd.header.Attrs;
+ import aQute.bnd.osgi.Descriptors.PackageRef;
+@@ -21,11 +21,11 @@ public class Packages implements Map<PackageRef, Attrs> {
+ 	}
+ 
+ 	public Packages(Packages other) {
+-		map = new LinkedHashMap<>(other.map);
++		map = new TreeMap<>(other.map);
+ 	}
+ 
+ 	public Packages() {
+-		map = new LinkedHashMap<>();
++		map = new TreeMap<>();
+ 	}
+ 
+ 	@Override
+-- 
+2.46.0
+

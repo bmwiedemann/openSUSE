@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Thu Aug 29 14:56:04 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Added files: 3proxy.service, 3proxy-socks.firewalld and 3proxy.cfg.
+- Added user and group proxy for secure work via systemd service.
+- Added /var/log/3proxy directory with correct permissions.
+- Removed file system-pcre.patch.
+- Updated to 0.9.4+git20240718
+  * Added socket options, interface binding.
+  * Added connection limiting / connection rate limiting.
+  * Added RADIUS support.
+  * Added zero copy (splice) support for Linux.
+  * Added possibility to limit user to single IP (via authentication cache).
+  * Fixed socket may be closed before all data received/sent.
+  * Fixed bandlimin non-working.
+  * Fixed few race conditions.
+  * Added deb/rpm build, systemd support.
+  * Fixed bandwidth limiters (once again).
+  * Fixed data filtering plugins (PCREPlugin, SSLPlugin).
+    SSLPlugin use on Linux requires to disable splice (-s0).
+  * FIxed standalone proxies do not react on HUP (Ctrl+C) in Linux/Unix.
+  * Added arm support.
+  * Added openssl 1.1 support for SSLPlugin.
+  * Fixed systemd description file (proxy may fail to start after reboot).
+  * Fixed countall/nocounall do not work in some configurations.
+  * Fixed counters do not work if counter file is not specified.
+  * Fixed counters without rotation (type N) are incorrectly shown in web admin interface.
+  * Fixed %n may be incomplete or missed in long log records.
+  * Fixed connect back functionality does not work.
+  * Added docker builds.
+  * Fixed invalid handling of '-' character in ACL hostname.
+  * Added parentretry command (defaults to 2) to retry connections to parent proxies.
+  * Removed icqpr related code (OSCAR proxy).
+  * Fixed build with gcc14.
+
+-------------------------------------------------------------------
+Wed Dec  4 04:24:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add system-pcre.patch to use system pcre static lib
+- Expand list of permissible licenses
+- Tidy spec
+- Update to v0.8.13
+  * Fixed out-of-bound write and few minor bugs on configuration
+    saving in admin
+  * $ is not correctly handled in the beginning of quoted line on
+    configuration parsing
+
+-------------------------------------------------------------------
+Thu Sep 20 15:21:47 UTC 2018 - dmacvicar@suse.de
+
+- update to 0.8.12
+
+-------------------------------------------------------------------
+Fri Jan 23 13:36:50 UTC 2015 - dmacvicar@suse.de
+
+- initial package for 0.7.1.1

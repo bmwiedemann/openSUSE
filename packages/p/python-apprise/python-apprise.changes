@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  9 20:11:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove fix-test_plugin_glib.patch -- Fixed upstream
+- Update to version 1.9.0:
+  Features:
+  * Added WxPusher Support
+  * Persistent Storage added. This feature is very big and better documented here.
+    https://github.com/caronc/apprise/wiki/persistent_storage
+    Long overdue, plugins can now safely cache some of the query
+    results returned from upstream endpoints to disk. This saves
+    the need to make future extra web requests later (overall
+    causing a performance boost to Apprise). It's a cache engine
+    done right; content is contained, and those using the CLI can
+    clean/reset it. You can also easily turn it off.
+  * mqtt:// support for publishing retain flag
+  * SendGrid Attachment Support Added
+  * Refactored base64 attachment handling
+  Fixes:
+  * Fix typo in readme
+  * Fix Telegram Thread/Topic handling
+  * Fixed mattermost channel handling
+  * Escape unsupported Telegram MarkdownV2 characters
+    Telegram MarkdownV2 has turned out to be a VERY different style
+    of markdown. For consistency, the default telegram mode is
+    version 1. Simply add ?format=markdown&mdv=v2 to your URL to
+    change this.
+
+-------------------------------------------------------------------
 Fri Jul 26 17:22:58 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove apprise-pytest-session_mocker-removal.patch -- Fixed upstream

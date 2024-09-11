@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep  4 15:31:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.1:
+  + Fix a regression in the Remote Desktop where it wouldn't work
+    with the ScreenCast portal correctly.
+  + Use non-deprecated functions in the GTK4 code.
+  + Run tests in CI so we catch regressions earlier.
+  + Make Qt tests use QTEST_GUILESS_MAIN.
+  + Fix an Input Capture test.
+- Changes from version 0.8.0:
+  + Add API to allow for persistence on RemoteDesktop sessions.
+  + Implement support for the Input Capture portal.
+  + Add support for Qt 6.
+  + Support xdg-foreign with Qt 6.
+  + Fix screencasting on wlroots-based compositors.
+- Build the new Qt 6 support:
+  + Add qt6-gui-private-devel, pkgconfig(Qt6Core), pkgconfig(Qt6Gui),
+    pkgconfig(Qt6Test) and pkgconfig(Qt6Widgets) BuildRequires.
+  + Add new sub-packages: libportal-qt6-1 and libportal-qt6-devel.
+  + Use ldconfig_scriptlets macro for post(un) handling of the new
+    shared library.
+
+-------------------------------------------------------------------
 Wed Nov 22 00:17:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace copypasted summaries by something more concrete
