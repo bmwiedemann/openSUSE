@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:39:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch numpy2.patch to fix build with the new numpy
+
+-------------------------------------------------------------------
 Thu Apr 22 06:21:32 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

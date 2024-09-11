@@ -1,7 +1,7 @@
 #
 # spec file for package python-mrcz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-mrcz
 Version:        0.5.6
 Release:        0
@@ -26,14 +24,17 @@ Summary:        MRCZ meta-compressed image file-format library
 License:        BSD-3-Clause
 URL:            https://github.com/em-MRCZ/python-mrcz
 Source:         https://github.com/em-MRCZ/python-mrcz/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/em-MRCZ/python-mrcz/pull/15 Numpy 2.0 and deprecation fixes
+Patch:          numpy2.patch
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-blosc
 Requires:       python-numpy
+Recommends:     python-blosc
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34
@@ -53,7 +54,8 @@ file input/output for the era of "Big Data" in electron and optical
 microscopy.
 
 %prep
-%setup -q
+%autosetup -p1
+dos2unix README.rst
 
 %build
 %python_build

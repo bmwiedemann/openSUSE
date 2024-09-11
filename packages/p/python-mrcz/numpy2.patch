@@ -1,0 +1,331 @@
+From f28e1a2b90c04ac47c586fa7398d1e694029174a Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 22 Jun 2024 20:02:09 +0100
+Subject: [PATCH 1/5] Replace `np.product` with `np.prod` since it has been
+ removed in numpy 2
+
+---
+ mrcz/ioMRC.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/mrcz/ioMRC.py b/mrcz/ioMRC.py
+index b1184bb..998de75 100644
+--- a/mrcz/ioMRC.py
++++ b/mrcz/ioMRC.py
+@@ -318,7 +318,7 @@ def readMRC(MRCfilename, idx=None, endian='le',
+                 header['dimensions'][0] = n
+ 
+                 # This offset will be applied to f.seek():
+-                offset = idx * np.product(header['dimensions'][1:])*np.dtype(header['dtype']).itemsize
++                offset = idx * np.prod(header['dimensions'][1:])*np.dtype(header['dtype']).itemsize
+ 
+         else:
+             offset = 0
+@@ -331,7 +331,7 @@ def readMRC(MRCfilename, idx=None, endian='le',
+         else: # Load entire file into memory
+             dims = header['dimensions']
+             if slices > 0: # List of NumPy 2D-arrays
+-                frame_size = slices * np.product(dims[1:])
++                frame_size = slices * np.prod(dims[1:])
+                 n_frames = dims[0] // slices
+                 dtype = header['dtype']
+ 
+@@ -343,12 +343,12 @@ def readMRC(MRCfilename, idx=None, endian='le',
+                     image.append(buffer)
+                
+             else: # monolithic NumPy ndarray
+-                image = np.fromfile(f, dtype=header['dtype'], count=np.product(dims))
++                image = np.fromfile(f, dtype=header['dtype'], count=np.prod(dims))
+ 
+                 if header['MRCtype'] == 101:
+                     # Seems the 4-bit is interlaced ...
+                     interlaced_image = image
+-                    image = np.empty(np.product(dims), dtype=header['dtype'])
++                    image = np.empty(np.prod(dims), dtype=header['dtype'])
+                     image[0::2] = np.left_shift(interlaced_image,4) / 15
+                     image[1::2] = np.right_shift(interlaced_image,4)
+ 
+@@ -429,7 +429,7 @@ def __MRCZImport(f, header, slices, endian='le', fileConvention='ccpem',
+             raise NotImplementedError('MRC type 101 (uint4) not supported with return as `list`')
+         interlaced_image = image
+             
+-        image = np.empty(np.product(header['dimensions']), dtype=dtype)
++        image = np.empty(np.prod(header['dimensions']), dtype=dtype)
+         # Bit-shift and Bit-and to seperate decimated pixels
+         image[0::2] = np.left_shift(interlaced_image, 4) / 15
+         image[1::2] = np.right_shift(interlaced_image, 4)
+@@ -872,7 +872,7 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+             header['dimensions'] = np.array([idx + input_image.shape[0], header['dimensions'][1], header['dimensions'][2]])
+ 
+         # This offset will be applied to f.seek():
+-        offset = idx * np.product(header['dimensions'][1:]) * np.dtype(header['dtype']).itemsize
++        offset = idx * np.prod(header['dimensions'][1:]) * np.dtype(header['dtype']).itemsize
+ 
+     else:
+         offset = 0
+
+From 07c01ce360fd3bad884f2a3c03c5f33c0f8348cf Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 22 Jun 2024 20:05:46 +0100
+Subject: [PATCH 2/5] Replace `==/!=` with `is`/`is not` when comparing to
+ `None`
+
+---
+ mrcz/ReliablePy.py |  8 ++++----
+ mrcz/ioMRC.py      | 20 ++++++++++----------
+ mrcz/test_mrcz.py  |  2 +-
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/mrcz/ReliablePy.py b/mrcz/ReliablePy.py
+index 64e3274..db0dc6e 100644
+--- a/mrcz/ReliablePy.py
++++ b/mrcz/ReliablePy.py
+@@ -398,7 +398,7 @@ def pruneParticlesNearImageEdge( self, box = None, shapeImage = [3838,3710] ):
+         Image size is not stored anywhere obvious in Relion, so it must be passed in in terms of 
+         it's shape in [y,x]
+         """
+-        if box == None:
++        if box is None:
+             try: 
+                 box = self.star[b'data_model_general'][b'OriginalImageSize']
+             except:
+@@ -570,7 +570,7 @@ def saveDataStar( self, outputName, particleKey = b"data_" ):
+         Outputs a relion ..._data.star file that has been pruned, regrouped, etc. to outputName
+         """
+         
+-        if outputName == None:
++        if outputName is None:
+             # Need to store input star names, and figure out which was the last loaded particles.star file.
+             # [outFront, outExt] = os.path.splitext()
+             raise IOError( "Default filenames for saveDataStar not implemented yet" )
+@@ -652,11 +652,11 @@ def saveDataAsPar( self, outputPrefix, N_classes = 1, mag = None, pixelsize=None
+         # kept track of in Relion with Magnification and DetectorPixelSize (which
+         # defaults to 14.0)
+         
+-        if pixelsize == None:
++        if pixelsize is None:
+             # Detector pixel size in um, we need pixelsize in Angstrom
+             pixelsize = self.star[b'data_'][b'DetectorPixelSize'][0]*1E4 / self.star[b'data_'][b'Magnification'][0]
+             print( "Found pixelsize of %0.f" % pixelsize )
+-        if mag == None:
++        if mag is None:
+             print( "Using Relion magnification of %.f and DSTEP=%.1f" % ( self.star[b'data_'][b'Magnification'][0], self.star[b'data_'][b'DetectorPixelSize'][0]) )
+             print( "For a K2 (DSTEP=5.0) the appropriate magnification would be %0.f" % 50000/pixelsize )
+         else:
+diff --git a/mrcz/ioMRC.py b/mrcz/ioMRC.py
+index 998de75..c5b234b 100644
+--- a/mrcz/ioMRC.py
++++ b/mrcz/ioMRC.py
+@@ -282,16 +282,16 @@ def readMRC(MRCfilename, idx=None, endian='le',
+         
+         if ( (header['compressor'] in REVERSE_COMPRESSOR_ENUM) 
+             and (REVERSE_COMPRESSOR_ENUM[header['compressor']] > 0) 
+-            and idx == None ):
++            and idx is None ):
+             return __MRCZImport(f, header, slices, endian=endian, fileConvention=fileConvention, 
+                                 n_threads=n_threads)
+         # Else load as uncompressed MRC file
+ 
+-        if idx != None:
++        if idx is not None:
+         # If specific images were requested:
+         # TO DO: add support to read all images within a range at once
+ 
+-            if header['compressor'] != None:
++            if header['compressor'] is not None:
+                 raise RuntimeError('Reading from arbitrary positions not supported for compressed files. Compressor = %s'%header['compressor'])
+             if np.isscalar( idx ):
+                 indices = np.array([idx, idx], dtype='int')
+@@ -370,7 +370,7 @@ def __MRCZImport(f, header, slices, endian='le', fileConvention='ccpem',
+     if not BLOSC_PRESENT:
+         raise ImportError( '`blosc` is not installed, cannot decompress file.' )
+         
+-    if n_threads == None:
++    if n_threads is None:
+         blosc.nthreads = DEFAULT_N_THREADS
+     else:
+         blosc.nthreads = n_threads
+@@ -751,7 +751,7 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+     # the file exists, but idx is 'None', it will be replaced by a new file 
+     # with new header anyway:
+     if os.path.isfile(MRCfilename):
+-        if idx == None:
++        if idx is None:
+             idxnewfile = True
+         else:
+             idxnewfile = False
+@@ -760,11 +760,11 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+ 
+     
+     if idxnewfile:
+-        if dtype == 'uint4' and compressor != None:
++        if dtype == 'uint4' and compressor is not None:
+             raise TypeError('uint4 packing is not compatible with compression, use int8 datatype.')
+             
+         header = {'meta': meta}
+-        if dtype == None:
++        if dtype is None:
+             if slices > 0:
+                 header['dtype'] = endchar + input_image[0].dtype.descr[0][1].strip('<>|')
+             else:
+@@ -816,7 +816,7 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+         
+         header['compressor'] = compressor
+         header['clevel'] = clevel
+-        if n_threads == None and BLOSC_PRESENT:
++        if n_threads is None and BLOSC_PRESENT:
+             n_threads = DEFAULT_N_THREADS
+         header['n_threads'] = n_threads
+         
+@@ -848,8 +848,8 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+             header['meta'] = meta
+ 
+     # Now that we have a proper header, we go into the details of writing to a specific position:
+-    if idx != None:
+-        if header['compressor'] != None:
++    if idx is not None:
++        if header['compressor'] is not None:
+             raise RuntimeError('Writing at arbitrary positions not supported for compressed files. Compressor = %s' % header['compressor'])
+ 
+         idx = int(idx)
+diff --git a/mrcz/test_mrcz.py b/mrcz/test_mrcz.py
+index d76f5fa..9701cdc 100644
+--- a/mrcz/test_mrcz.py
++++ b/mrcz/test_mrcz.py
+@@ -23,7 +23,7 @@ def which(program):
+         program_ext = os.path.splitext(program)[1]
+         if program_ext == '':
+             prog_exe = which(program + '.exe')
+-            if prog_exe != None:
++            if prog_exe is not None:
+                 return prog_exe
+             return which(program + '.com')
+             
+
+From 92e1b2397e2024c25b61d9eef1ed700c5bc00a4e Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 22 Jun 2024 20:18:25 +0100
+Subject: [PATCH 3/5] Replace deprecated `disutils.version.StrictVersion` with
+ `packaging.version.Version`
+
+---
+ mrcz/ioMRC.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mrcz/ioMRC.py b/mrcz/ioMRC.py
+index c5b234b..115044e 100644
+--- a/mrcz/ioMRC.py
++++ b/mrcz/ioMRC.py
+@@ -27,7 +27,7 @@
+         raise ImportError('Get the backport for `concurrent.futures` for Py2.7 as `pip install futures`')
+     raise e
+ from mrcz.__version__ import __version__
+-from distutils.version import StrictVersion
++from packaging.version import Version
+ 
+ import logging
+ logger = logging.getLogger('MRCZ')
+@@ -195,7 +195,7 @@ def _getMRCZVersion(label):
+ 
+     Returns
+     -------
+-    version: Optional[distutils.version.StrictVersion]
++    version: Optional[packaging.version.Version]
+         areturns ``None`` if `label` cannot be parsed.
+     """
+     if isinstance(label, bytes):
+@@ -207,7 +207,7 @@ def _getMRCZVersion(label):
+ 
+     label = label[4:]
+     try:
+-        version = StrictVersion(label)
++        version = Version(label)
+         return version
+     except ValueError:
+         return None
+@@ -537,7 +537,7 @@ def readMRCHeader(MRCfilename, slices=None, endian='le', fileConvention = 'ccpem
+             # is essentially unknown (and wrong). So we have this version 
+             # check where we force slices to be 1 (i.e. we assume it is a 
+             # stack of 2D images).
+-            if mrcz_version is not None and mrcz_version < StrictVersion('0.5.0'):
++            if mrcz_version is not None and mrcz_version < Version('0.5.0'):
+                 logger.warning('MRCZ version < 0.5.0 for file {}, assuming slices == 1.'.format(MRCfilename))
+                 slices = 1
+             else:
+
+From 1c367b3c3a5bfbffbebf36e2bf6a1eab9a668252 Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 22 Jun 2024 20:20:13 +0100
+Subject: [PATCH 4/5] Replace deprecated `warn` method with `warning`
+
+---
+ mrcz/ioMRC.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mrcz/ioMRC.py b/mrcz/ioMRC.py
+index 115044e..872ee2e 100644
+--- a/mrcz/ioMRC.py
++++ b/mrcz/ioMRC.py
+@@ -711,12 +711,12 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+ 
+             if z_slice.dtype == np.float64 or z_slice.dtype == float:
+                 if not WARNED_ABOUT_CASTING_F64:
+-                    logger.warn('Casting {} to `numpy.float32`, further warnings will be suppressed.'.format(MRCfilename))
++                    logger.warning('Casting {} to `numpy.float32`, further warnings will be suppressed.'.format(MRCfilename))
+                     WARNED_ABOUT_CASTING_F64 = True
+                 input_image[J] = z_slice.astype(np.float32)
+             elif z_slice.dtype == np.complex128:
+                 if not WARNED_ABOUT_CASTING_C128:
+-                    logger.warn('Casting {} to `numpy.complex64`, further warnings will be suppressed.'.format(MRCfilename))
++                    logger.warning('Casting {} to `numpy.complex64`, further warnings will be suppressed.'.format(MRCfilename))
+                     WARNED_ABOUT_CASTING_C128 = True
+                 input_image[J] = z_slice.astype(np.complex64)
+             else:
+@@ -732,12 +732,12 @@ def writeMRC(input_image, MRCfilename, meta=None, endian='le', dtype=None,
+         # Cast float64 -> float32, and complex128 -> complex64
+         if input_image.dtype == np.float64 or input_image.dtype == float:
+             if not WARNED_ABOUT_CASTING_F64:
+-                logger.warn('Casting {} to `numpy.float64`'.format(MRCfilename))
++                logger.warning('Casting {} to `numpy.float64`'.format(MRCfilename))
+                 WARNED_ABOUT_CASTING_F64 = True
+             input_image = input_image.astype(np.float32)
+         elif input_image.dtype == np.complex128:
+             if not WARNED_ABOUT_CASTING_C128:
+-                logger.warn('Casting {} to `numpy.complex64`'.format(MRCfilename))
++                logger.warning('Casting {} to `numpy.complex64`'.format(MRCfilename))
+                 WARNED_ABOUT_CASTING_C128 = True
+             input_image = input_image.astype(np.complex64)
+ 
+
+From 97644c4a957946deb1c510d83dba3d3e2fa155ba Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sat, 22 Jun 2024 20:23:15 +0100
+Subject: [PATCH 5/5] Fix numpy deprecation warning on conversion of an array
+ with ndim > 0 to a scalar
+
+---
+ mrcz/ioMRC.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mrcz/ioMRC.py b/mrcz/ioMRC.py
+index 872ee2e..7a61b16 100644
+--- a/mrcz/ioMRC.py
++++ b/mrcz/ioMRC.py
+@@ -542,7 +542,7 @@ def readMRCHeader(MRCfilename, slices=None, endian='le', fileConvention = 'ccpem
+                 slices = 1
+             else:
+                 f.seek(36)
+-                slices = int(np.fromfile(f, dtype=dtype_i4, count=1))
++                slices = int(np.fromfile(f, dtype=dtype_i4, count=1)[0])
+ 
+         # Read in pixelsize
+         f.seek(40)
+@@ -572,7 +572,7 @@ def readMRCHeader(MRCfilename, slices=None, endian='le', fileConvention = 'ccpem
+ 
+         # Size of meta-data
+         f.seek(92)
+-        header['extendedBytes'] = int(np.fromfile(f, dtype=dtype_i4, count=1))
++        header['extendedBytes'] = int(np.fromfile(f, dtype=dtype_i4, count=1)[0])
+         if header['extendedBytes'] > 0:
+             f.seek(104)
+             header['metaId'] = f.read(4)
