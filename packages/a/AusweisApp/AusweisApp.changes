@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 11 10:20:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.2.1
+    - Visual adjustments and optimization of the graphical user interface.
+    - Optimization of accessibility and keyboard usability.
+    - Prevention of the display of external content in
+      the graphical user interface.
+    - Support for smartphones with Android 15 where
+      optimized memory management has been activated.
+    - Support for 16 KB page sizes on Android.
+    - Stabilization of the iOS SDK during fast restarts.
+    - Correction of the behavior when using Qt 6.6.3.
+    - Avoidance of a log file within the container in the container SDK.
+    - Update of the Android NDK to r27b (27.1.12297006).
+    - Update of the Android SDK Platform to Android 15 (API level 35).
+    - Update of OpenSSL to version 3.3.2.
+- Drop patches for issues fixed upstream
+  + 0001-fix-qml-error-with-qt6.6.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 11:44:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing libQt6Svg6 runtime dependency to Requires
