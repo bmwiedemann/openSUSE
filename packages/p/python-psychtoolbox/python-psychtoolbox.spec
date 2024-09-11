@@ -17,10 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-psychtoolbox
-Version:        3.0.19.11
+Version:        3.0.19.14
 Release:        0
 # Note: the license text mentions non-FOSS code, but that is not included in this source archive
 License:        AML AND BSD-2-Clause AND MIT AND X11 AND GPL-2.0-or-later AND LGPL-2.1-or-later

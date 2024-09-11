@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:19:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 3.0.19.14
+  * Some small fixups for improved Ubuntu 24.04-LTS and Matlab R2024a compatibility.
+  * Screen('DrawDots'): Only apply a margin to non-square dot types. Only round dots get 
+    trimmed in the fragment shader, and so dot_type=4 was left with too much padding from 
+    the vertex shader. Bug fix contributed by Alex Forrence @aforren1
+  * Python extensions built from this release onwards should also work with NumPy 2.x in 
+    addition to NumPy 1.x. Changes contributed by Eric Larson.
+
+-------------------------------------------------------------------
 Wed May 29 12:03:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 3.0.19.0
+- Update to version 3.0.19.11
   * Merge pull request #839 from Psychtoolbox-3/master
   * Merge pull request #838 from kleinerm/master
   * GitHub/CI: Print version() of Matlab or Octave used for build.
