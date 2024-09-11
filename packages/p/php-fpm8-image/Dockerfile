@@ -16,6 +16,8 @@
 
 #!BuildTag: opensuse/bci/php-fpm:8
 #!BuildTag: opensuse/bci/php-fpm:8-%RELEASE%
+#!BuildTag: opensuse/bci/php-fpm:%%php_version%%
+#!BuildTag: opensuse/bci/php-fpm:%%php_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/php-fpm:latest
 
 FROM opensuse/tumbleweed:latest
@@ -27,7 +29,7 @@ RUN set -euo pipefail; zypper -n in php8 php8-cli php-composer2 php8-curl php8-z
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI PHP-FPM 8"
 LABEL org.opencontainers.image.description="PHP-FPM 8 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="8"
+LABEL org.opencontainers.image.version="%%php_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
