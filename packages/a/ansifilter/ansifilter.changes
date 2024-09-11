@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:41:55 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2.21:
+  * removed `using namespace std;` in header files
+  * src/makefile: added `-std=c++17` to enable modern C++ features
+  * added cmake build script
+  * fix open span tag with CR as opening sequence
+    (https://gitlab.com/saalen/ansifilter/-/issues/43)
+  * adapted TCL extension for C++17 compilation
+    (https://gitlab.com/saalen/ansifilter/-/issues/42)
+- Remove the judgment line about GUI from the spec file
+
+-------------------------------------------------------------------
 Sat Jun 17 18:38:15 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 2.20:

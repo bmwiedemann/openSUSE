@@ -1,7 +1,7 @@
 #
 # spec file for package ansifilter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without gui
 Name:           ansifilter
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
@@ -81,17 +81,11 @@ This package provides Zsh command-line completion support for %{name}.
 
 %prep
 %setup -q
-%if %{with gui}
-# Remove generated files which may cause errors when building with
-# a version of Qt different from the one used to generate the files.
-rm -v src/qt-gui/moc_*.cpp
-rm -v src/qt-gui/ui_ansifilter.h
-%endif
 
 %build
 make \
   CFLAGS="%{optflags} -fPIC" \
-  CXXFLAGS="%{optflags} -std=c++11 -fPIC" \
+  CXXFLAGS="%{optflags} -std=c++17 -fPIC" \
   QMAKE="qmake-qt5" \
   all \
 %if %{with gui}
