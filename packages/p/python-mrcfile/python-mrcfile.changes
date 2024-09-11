@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  9 13:31:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.5.3
+  * Add support for numpy 2.0
+  * Fix opening of large files in numpy 2.0
+  * Validate header statistics only if they are set
+
+-------------------------------------------------------------------
 Mon Jan 22 22:30:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

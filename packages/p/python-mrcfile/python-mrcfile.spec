@@ -17,7 +17,7 @@
 
 
 Name:           python-mrcfile
-Version:        1.5.0
+Version:        1.5.3
 Release:        0
 Summary:        MRC file I/O library
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 Requires:       python-numpy >= 1.16.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

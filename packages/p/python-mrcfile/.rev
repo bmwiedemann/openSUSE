@@ -26,4 +26,12 @@
   * Add support for numpy 1.24, 1.25 and 1.26 and Python 3.12</comment>
     <requestid>1140734</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>412ff87334a63ec384705070a4f9ab04</srcmd5>
+    <version>1.5.3</version>
+    <time>1726066556</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199982</requestid>
+  </revision>
 </revisionlist>
