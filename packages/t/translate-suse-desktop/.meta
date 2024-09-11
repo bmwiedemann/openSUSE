@@ -1,0 +1,5 @@
+<package name="translate-suse-desktop" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="translate-suse-desktop"/>
+</package>

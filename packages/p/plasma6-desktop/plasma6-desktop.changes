@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:54:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.5
+- Changes since 6.1.4:
+  * update version for new release
+  * containments/desktop: Use show-background icon (kde#472863)
+  * kcms/keyboard: fix nonexistent header in dev build
+  * appiumtests: downgrade test windows to GTK3
+  * kcms/access: Set selected state on delegate when appropriate
+  * Hide empty categories (kde#478472)
+  * kcms/libkwindevices: use function value instead of function (kde#491506)
+  * applets/kickoff: Fix keyboard navigation getting stuck inside gridviews (kde#489867)
+  * applets/taskmanager: fix task list RTL alignment (kde#491211)
+  * WidgetExplorer.qml: work around QML transition bug with animations off (kde#483962)
+  * appiumtests: run emojiertest on X11
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Aug  6 13:27:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.4:

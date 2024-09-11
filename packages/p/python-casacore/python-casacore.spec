@@ -1,7 +1,7 @@
 #
 # spec file for package python-casacore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,22 @@
 %define pythons python3
 %global modname casacore
 Name:           python-casacore
-Version:        3.5.2
+Version:        3.6.1
 Release:        0
 Summary:        A wrapper around CASACORE, the radio astronomy library
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/casacore/python-casacore
-Source:         https://github.com/casacore/python-casacore/archive/refs/tags/v%{version}.tar.gz#/python-casacore-%{version}-gh.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python_casacore/python_casacore-3.6.1.tar.gz
+# https://github.com/casacore/python-casacore/commit/afb5cbf88eb6e78dd2aefe53d5ddf5179e1f8110
+Patch0:         python-casacore-no-six.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-build-core}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  casacore-devel
 BuildRequires:  fdupes
@@ -43,7 +46,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       python-numpy
-Requires:       python-six
 ExcludeArch:    %ix86
 %python_subpackages
 
@@ -51,7 +53,7 @@ ExcludeArch:    %ix86
 A python wrapper around CASACORE, the radio astronomy library
 
 %prep
-%setup -q -n python-casacore-%{version}
+%autosetup -p1 -n python_casacore-%{version}
 # empty file masking the module directory
 rm pyrap/images.py
 

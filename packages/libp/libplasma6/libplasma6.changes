@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:54:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.5
+- Changes since 6.1.4:
+  * update version for new release
+  * plasmaquick/appletpopup: don't resize in response to min/max size with invalid sizes (kde#490732)
+  * Spinbox: use more appropriate icons for decrease and increase buttons (kde#491312)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Aug  6 13:27:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.4:

@@ -416,4 +416,29 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
     <comment>- libgdbm_compat4: Fix libgdbm version of Conflicts [bsc#1217727] (forwarded request 1131394 from kukuk)</comment>
     <requestid>1131626</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>74dc15908cf40ee7cb10b255ec977589</srcmd5>
+    <version>1.24</version>
+    <time>1726066481</time>
+    <user>anag+factory</user>
+    <comment>- version update to 1.24
+  * New gdbm_load option: --update
+  * Fix semantics of gdbm_load -r
+  * Use getline in gdbmtool shell.
+  * New function: gdbm_load_from_file_ext
+  * Bugfixes
+  ** Fix binary dump format for key and/or data of zero size.
+     (see https://puszcza.gnu.org.ua/bugs/?565)
+  ** Fix location tracking and recover command in gdbtool.
+     (see https://puszcza.gnu.org.ua/bugs/?566)
+  ** Fix possible buffer underflow in gdbmload.
+  ** Ensure any padding bytes in avail_elem structure are filled with 0.
+     (fixes https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1031276)
+  ** Improve the documentation.
+- modified patches
+  % gdbm-no-build-date.patch (refreshed)
+- deleted patches
+  - bsc1209583.patch (upstreamed)</comment>
+    <requestid>1199838</requestid>
+  </revision>
 </revisionlist>

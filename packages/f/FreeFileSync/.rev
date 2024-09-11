@@ -302,4 +302,12 @@ It would be nice to have this application available in the default repos. </comm
     <comment></comment>
     <requestid>1185084</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2dbf282ea45d10edb8934c3bc6e3820d</srcmd5>
+    <version>13.7</version>
+    <time>1726066538</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1199926</requestid>
+  </revision>
 </revisionlist>

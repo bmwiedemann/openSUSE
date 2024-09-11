@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:14:57 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 2.8.0 and use sha256 instead of md5
+  * See PDAL changelog at https://github.com/PDAL/PDAL/releases/tag/2.8.0
+  * For detailed changes betwwen 2.7.2 and 2.8.0, see 
+    https://github.com/PDAL/PDAL/compare/2.7.2...2.8.0 
+
+-------------------------------------------------------------------
 Fri Jul 12 17:44:23 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 2.7.2

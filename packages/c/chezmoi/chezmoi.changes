@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 17:08:37 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.52.2:
+  - Features
+    * feat: Support YubiKeys in KeePassXC open mode
+  - Documentation updates
+    * docs: Add FAQ entry on using delta as the diff tool
+    * docs: Add FAQ entry on running scripts periodically
+    * docs: Add FAQ entry on running a script when a git-repo external changes
+    * docs: Add FAQ entry on literal {{ and }} in templates
+    * docs: Add warning on using externals for large files or archives
+    * docs: Add how to use VSCode as the diff and merge tool
+
+-------------------------------------------------------------------
 Tue Aug 27 16:57:37 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.52.1:

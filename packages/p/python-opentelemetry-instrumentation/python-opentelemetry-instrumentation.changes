@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Aug 30 10:00:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.48b0
+  * `opentelemetry-instrumentation-kafka-python` Instrument temporary fork,
+    kafka-python-ng inside kafka-python's instrumentation (#2537)
+  * `opentelemetry-bootstrap` Remove `opentelemetry-instrumentation-aws-lambda`
+    from the defaults instrumentations (#2786)
+  * `opentelemetry-instrumentation-httpx` fix handling of async hooks (#2823)
+  * `opentelemetry-instrumentation-system-metrics` fix `process.runtime.cpu.utilization`
+    values to be shown in range of 0 to 1 (#2812)
+  * `opentelemetry-instrumentation-fastapi` fix `fastapi` auto-instrumentation by removing
+    `fastapi-slim` support, `fastapi-slim` itself is discontinued from maintainers (#2783)
+  * `opentelemetry-instrumentation-aws-lambda` Avoid exception when a handler is not present. (#2750)
+  * `opentelemetry-instrumentation-django` Fix regression * `http.target`
+    re-added back to old semconv duration metrics (#2746)
+  * `opentelemetry-instrumentation-asgi` do not set `url.full` attribute for server spans (#2735)
+  * `opentelemetry-instrumentation-grpc` Fixes the issue with the gRPC instrumentation
+    not working with the 1.63.0 and higher version of gRPC (#2483)
+  * `opentelemetry-instrumentation-aws-lambda` Fixing w3c baggage support (#2589)
+  * `opentelemetry-instrumentation-celery` propagates baggage (#2385)
+  * `opentelemetry-instrumentation-asyncio` Fixes async generator
+    coroutines not being awaited (#2792)
+  * `opentelemetry-instrumentation-tornado` Handle http client exception
+    and record exception info into span (#2563)
+  * `opentelemetry-instrumentation` fix `http.host` new http semantic
+    convention mapping to depend on `kind` of span (#2814)
+- for changes between 0.25b2 and 0.48b0 see upstream CHANGELOG.md
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Limit Python files matched in %files section
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
+Fri Nov  5 08:26:23 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.25b2

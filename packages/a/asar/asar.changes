@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 11 08:00:37 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 3.2.13
+  * Export a `default` property (gh#electron/asar#325)
+
+-------------------------------------------------------------------
+Tue Sep 10 20:20:43 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 3.2.11
+  * complete rewrite of the program in Typescript
+  * ensure symlinks do not write unexpectedly (gh#electron/asar#322)
+- Run test suite in %check
+
+-------------------------------------------------------------------
 Sun May  5 15:36:24 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 3.2.10

@@ -17,4 +17,13 @@
 - drop drop-m2r-dependency.patch (upstream)</comment>
     <requestid>1084221</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8f8b80a914948d09d3343a9725d64bf1</srcmd5>
+    <version>0.31.2</version>
+    <time>1726066550</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and pytest macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1199943</requestid>
+  </revision>
 </revisionlist>

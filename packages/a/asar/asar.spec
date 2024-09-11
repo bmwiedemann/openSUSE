@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.10
+Version:        3.2.13
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -38,6 +38,7 @@ BuildRequires:  nodejs-npm
 %else
 BuildRequires:  npm
 %endif
+BuildRequires:  typescript
 BuildRequires:  zstd
 
 %global __requires_exclude ^npm(.*)$
@@ -50,9 +51,16 @@ having random access support.
 
 %prep
 %autosetup -p1 -a 1
+# Use system typescript for building
+rm -rf node_modules/typescript
+rm -v node_modules/.bin/ts{c,server}
 
 %build
+export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 npm rebuild --verbose --foreground-scripts
+# tsc may return a non-zero exit code due to type warnings despite actually succesfully compiling the code.
+# If it fails to compile, it will be catched anyway in #check.
+tsc --removeComments --sourceMap false || true
 
 %install
 mkdir -pv %{buildroot}%{nodejs_sitelib}/@electron
@@ -67,7 +75,15 @@ cd %{buildroot}%{nodejs_sitelib}/asar
 
 # Correct bogus version in package.json
 jq -cj '.version="%{version}"' package.json > new
-mv new package.json
+
+#remove devdependencies
+jq -cj 'del(.devDependencies)' package.json > tmp
+mv -v tmp package.json
+npm prune --omit=dev --verbose --ignore-scripts
+
+mv -v new package.json
+
+
 #Remove development garbage
 find -name example -print0 |xargs -r0 -- rm -rvf
 find -name test -print0 |xargs -r0 -- rm -rvf
@@ -84,17 +100,27 @@ find -name 'snapcraft*' -type f -print -delete
 find -name '.git*' -type f -print -delete
 find -name yarn.lock -type f -print -delete
 find -name '.yarn*' -type f -print -delete
+find -name '*package-lock.json' -type f -print -delete
+find -name '.prettierrc*' -type f -print -delete
 find -name '.releaserc*' -type f -print -delete
+find -name tsconfig.json -type f -print -delete
 
+# Remove empty directories
+find . -type d -empty -print -delete
 
 %fdupes %{buildroot}
 
 %check
+pushd %{buildroot}%{nodejs_sitelib}/asar
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/Node.js/#_build_testing_in_check
 %{__nodejs} -e 'require("./")'
 
+#check that the executable starts
+./bin/asar.js -h
+popd
 
-#We can't run tests, we don't have mocha available.
+#the actual test suite 
+npx mocha -- --reporter spec --timeout 10000
 
 %files
 %defattr(-,root,root)

@@ -40,7 +40,7 @@ pushd "$ASAR_PATH" || cleanup_and_exit 1
 
 
 echo ">>>>>> Install npm modules"
-yarn install --frozen-lockfile --ignore-engines --ignore-platform  --ignore-scripts --production --link-duplicates
+yarn install --frozen-lockfile --ignore-engines --ignore-platform  --ignore-scripts --link-duplicates
 ret=$?
 if [ $ret -ne 0 ]; then
     echo "ERROR: yarn install failed"
@@ -65,7 +65,8 @@ echo '>>>>>> Remove vendored binaries'
 find . -type f| sponge |\
     xargs -P"$(nproc)" -- sh -c 'file "$@" | grep -v '\'': .*script'\'' | grep '\'': .*executable'\'' | tee /dev/stderr | sed '\''s/: .*//'\'' | xargs rm -fv'
 
-
+echo ">>>>>> Remove empty directories"
+find . -type d -empty -print -delete
 
 echo ">>>>>> Package vendor files"
 rm -f "${ASAR_PKGDIR}/vendor.tar.zst"

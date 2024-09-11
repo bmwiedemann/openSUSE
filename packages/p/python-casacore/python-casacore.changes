@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  6 11:35:23 UTC 2024 - pgajdos@suse.com
+
+- version update to 3.6.1
+  * The build system has seen a major upgrade.
+  * Wheel related changes.
+- do not require six
+- added patches
+  fix https://github.com/casacore/python-casacore/commit/afb5cbf88eb6e78dd2aefe53d5ddf5179e1f8110
+  + python-casacore-no-six.patch
+
+-------------------------------------------------------------------
 Mon Sep  4 05:52:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded {Build,}Requires on future and configparse.

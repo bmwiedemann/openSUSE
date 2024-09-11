@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat Sep 07 01:46:14 UTC 2024 - opensuse-packaging@opensuse.org
+
+- Update to version 0.20240907.481ec87:
+  * First import of translations from a newly created project.
+
+-------------------------------------------------------------------
+Fri Sep  6 19:01:26 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- New package that supports translation of SUSE specific desktop
+  files. (boo#1158957)
+

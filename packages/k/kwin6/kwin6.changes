@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:52:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.5
+- Changes since 6.1.4:
+  * update version for new release
+  * Don't process pad button events from a device that has been removed
+  * workspace: don't rearrange immediately when a window with struts gets removed
+  * input.cpp: initialize m_touchpadsEnabled in addInputDevice (kde#486763)
+  * scene: Add an assert to debug crash in BlurEffect::prePaintWindow()
+  * plugins/synchronizeskipswitcher: Fix Window::skipTaskbarChanged handler (kde#465600)
+  * Fix null dereference in Workspace::workspaceEvent()
+  * window: make setQuickTileMode more sane
+  * effect: Refuse starting quick effect if keyboard cannot be grabbed
+  * decorations: Show tooltip at current cursor position (kde#491143)
+  * opengl/gltexture: Fix format for 565 textures
+  * Fix a crash in computeLayer() (kde#491618)
+  * Make Workspace::removeUnmanaged() keep the window in the stack
+  * colorblindesscorrection: fix incorrect variable name in shader program
+  * opengl: Fix a typo in GLTexture::upload()
+  * backends/drm: allow triple buffering on NVidia if KWIN_DRM_DISABLE_TRIPLE_BUFFERING=0 is set
+  * wayland: Fix a potential null dereference when sending current output device mode
+  * platformsupport/scene/opengl: do test imports for external_only formats properly
+  * opengl/egldisplay: add the invalid modifier to the correct list
+  * scene: Fix SurfaceItemWayland::freeze()
+  * placeholderinputeventfilter: don't block media keys (kde#491531)
+  * plugins/trackmouse: listen to mouse events when active (kde#487820)
+  * screenedge: allow activating clients in drag and drop (kde#450579)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Aug  6 13:25:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.4:

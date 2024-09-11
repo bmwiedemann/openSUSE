@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:55:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.5
+- Changes since 6.1.4:
+  * update version for new release
+  * ScreenPool: add fake screens initially (kde#484687)
+  * dataengines/weather/dwd: Fix searching places with umlauts
+  * Fixes for touchscreen interaction
+  * applets/systemtray: stop overriding delegates' tooltip locations (kde#470650,kde#490555)
+  * klipper: fix copying cells when images are ignored (kde#491488)
+  * [dataengines/hotplug] Don't crash when there is no default file manager
+  * xembedsniproxy: Guard against crash when xcb_query_tree_reply is null (kde#491509)
+  * Fix svg images (kde#491369)
+  * kcm_regionandlang: always run localectl (kde#479213)
+  * Make X-KDE-Init-Phase a proper number in JSON and remove obsolete X-KDE-Init-Symbol values
+  * libkmpris: refresh player when track list changes (kde#490569)
+  * applets/mediacontroller: use Play/Pause to control players
+  * shell/panelview: restart unhide timer on drag leave
+  * appiumtests: disable clipboardtest
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Aug  6 13:28:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.4:

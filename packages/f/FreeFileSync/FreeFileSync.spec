@@ -50,6 +50,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel >= 3.1.6
 BuildRequires:  zlib-devel
 
+# base/db_file.cpp does  static_assert(std::endian::native == std::endian::little);  - but s390x is big endian
+ExcludeArch:    s390x
+
 %description
 FreeFileSync is a software that helps synchronizing files
 and folders. It runs backup jobs while having visual

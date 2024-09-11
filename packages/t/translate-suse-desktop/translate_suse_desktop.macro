@@ -1,0 +1,6 @@
+# macro: %translate_suse_desktop
+#     Used to add easily a category to .desktop files according to XDG
+#     standard.
+%translate_suse_desktop() \
+   /usr/lib/rpm/translate_suse_desktop.sh %{**} \
+  %nil

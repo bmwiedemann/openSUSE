@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  3 18:40:37 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- disable build for s390x - base/db_file.cpp asserts little endian
+  byteorder, but s390x uses big endian
+
+-------------------------------------------------------------------
 Wed Jul  3 08:22:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 13.7

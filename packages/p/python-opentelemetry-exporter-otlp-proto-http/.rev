@@ -63,4 +63,41 @@
 </comment>
     <requestid>1181694</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f85290d6bbc5840eb4c25008205863d</srcmd5>
+    <version>1.27.0</version>
+    <time>1726066540</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.27.0:
+  * Implementation of Events API
+  * Make log sdk add `exception.message` to logRecord for
+    exceptions whose argument is an exception not a string
+    message
+  * Fix use of `link.attributes.dropped`, which may not exist
+  * Running mypy on SDK resources
+  * Added py.typed file to top-level module
+  * Drop Final annotation from Enum in semantic conventions
+  * Update log export example to not use root logger
+  * sdk: Add OS resource detector
+  * sdk: Accept non URL-encoded headers in
+    `OTEL_EXPORTER_OTLP_*HEADERS` to match other languages SDKs
+  * Update semantic conventions to version 1.27.0
+  * Add support to type bytes for OTLP AnyValue
+  * Export ExponentialHistogram and ExponentialHistogramDataPoint
+  * Implement Client Key and Certificate File Support for All
+    OTLP Exporters
+  * Remove `_start_time_unix_nano` attribute from
+    `_ViewInstrumentMatch` in favor of using `time_ns()` at the
+    moment when the aggregation object is created
+- update to 1.26.0:
+  * Standardizing timeout calculation in measurement consumer
+    collect to nanoseconds
+  * optional scope attributes for logger creation
+  * optional scope attribute for tracer creation
+  * OTLP exporter is encoding invalid span/trace IDs in the logs
+    fix
+  * Update sdk process resource detector `process.command_args`
+    attribute to also include the executable itself</comment>
+    <requestid>1200067</requestid>
+  </revision>
 </revisionlist>

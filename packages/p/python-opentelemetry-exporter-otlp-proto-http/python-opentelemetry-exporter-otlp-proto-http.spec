@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-http
-Version:        1.25.0
+Version:        1.27.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 License:        Apache-2.0

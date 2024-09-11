@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:55:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.5
+- Changes since 6.1.4:
+  * Fix needssave state management (kde#490937)
+  * update version for new release
+- Rebase 0001-Support-default.session-symlink.patch
+
+-------------------------------------------------------------------
 Tue Aug  6 13:29:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.4:

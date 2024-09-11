@@ -17,11 +17,11 @@
 #
 
 
-%define soname 17
-%define sovers 17.1.0
+%define soname 18
+%define sovers 18.0.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -33,7 +33,7 @@ License:        Apache-2.0 AND BSD-3-Clause AND MIT AND BSL-1.0
 Group:          Productivity/Graphics/CAD
 URL:            https://www.pdal.io/
 Source0:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2
-Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2.md5
+Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2.sha256sum
 # Unbundle some bundled libraries inspired by Fedora work at
 # https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
 Patch0:         PDAL_unbundle.patch

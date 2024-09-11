@@ -534,4 +534,22 @@
 </comment>
     <requestid>1196333</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4b548ebf4f6d3188f7ca76c67aa35c7c</srcmd5>
+    <version>2.52.2</version>
+    <time>1726066534</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.52.2:
+  - Features
+    * feat: Support YubiKeys in KeePassXC open mode
+  - Documentation updates
+    * docs: Add FAQ entry on using delta as the diff tool
+    * docs: Add FAQ entry on running scripts periodically
+    * docs: Add FAQ entry on running a script when a git-repo external changes
+    * docs: Add FAQ entry on literal {{ and }} in templates
+    * docs: Add warning on using externals for large files or archives
+    * docs: Add how to use VSCode as the diff and merge tool
+</comment>
+    <requestid>1199921</requestid>
+  </revision>
 </revisionlist>

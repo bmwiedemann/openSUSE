@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>1172007</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>237b8a7a368a4257457e2b78e7e9f1c4</srcmd5>
+    <version>3.2.13</version>
+    <time>1726066545</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 3.2.13
+  * Export a `default` property (gh#electron/asar#325)
+- New upstream release 3.2.11
+  * complete rewrite of the program in Typescript
+  * ensure symlinks do not write unexpectedly (gh#electron/asar#322)
+- Run test suite in %check
+</comment>
+    <requestid>1200054</requestid>
+  </revision>
 </revisionlist>
