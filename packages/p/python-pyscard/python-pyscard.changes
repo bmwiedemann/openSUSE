@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  9 20:40:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  * Fix a regression introduced in 2.1.0
+- Update to version 2.1.0
+  * PCSCCardRequest: fix active polling (was a 0.1 sec loop)
+  * Fix use of undefined variable 'hresult' in exceptions
+  * Fix print() use in pyscard user’s guide
+  * Fix deprecation warnings
+  * Minor changes
+  * some more pylint-detected fixes.
+
+-------------------------------------------------------------------
 Mon Jun  3 17:20:29 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.10
