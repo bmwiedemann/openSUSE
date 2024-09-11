@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 09 15:46:32 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1725896784.e007c26:
+  * Fix pod for backend_get_wait_still_screen_on_here_doc_input
+  * Virsh VMware images shell snippet debugging added
+  * Use more compact syntax to add features to virsh config
+  * Avoid configuring ACPI on s390x for compat with newer libvirt/qemu
+  * ci: Add OBS helper workflow
+
+-------------------------------------------------------------------
 Wed Aug 28 08:17:47 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1724833060.63a0bfd:
