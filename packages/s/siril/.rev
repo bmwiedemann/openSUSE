@@ -214,4 +214,26 @@
 </comment>
     <requestid>1183114</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>448a4c6fc3638c0b7cc3170bcafc37c1</srcmd5>
+    <version>1.2.4</version>
+    <time>1726066560</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.4:
+  * Fixed CFA statistics (#1342)
+  * Fixed calibration command bug disabling cosmetic correction (#1348)
+  * Fixed calibration GUI not parsing correcting flat when using path parsing (#1348)
+  * Fixed non-deterministic parallel subsky RBF (#1352)
+  * Fixed incorrect deconvolution command arg setting (issue raised on pixls.us)
+  * Fixed GHT and HT not reverting previews from other dialogs (#1356)
+  * Fixed crash when saving image (#1353)
+  * Fixed execute button in wavelets not reverting preview (#1362)
+  * Fixed CLAHE crash on mono image (#1354)
+  * Fixed crash while extracting Green channel on CFA FITSEQ (#1305)
+  * Fixed inverted sequences on exporting to SER (#1361)
+  * Fixed a bug with histogram hi / mid / lo entry callback behavior (!735)
+  * Fixed free space disk computation on macOS (#1368)
+</comment>
+    <requestid>1199986</requestid>
+  </revision>
 </revisionlist>
