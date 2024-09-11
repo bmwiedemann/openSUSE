@@ -1,0 +1,162 @@
+diff -ruN ddsketch-3.0.1/ddsketch/mapping.py /tmp/ddsketch-3.0.1/ddsketch/mapping.py
+--- ddsketch-3.0.1/ddsketch/mapping.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/ddsketch/mapping.py	2024-09-09 16:19:19.118396342 -0500
+@@ -24,10 +24,9 @@
+ import math
+ import sys
+ 
+-import six
+ 
+ 
+-class KeyMapping(six.with_metaclass(ABCMeta)):
++class KeyMapping(metaclass=ABCMeta):
+     """
+     Args:
+         relative_accuracy (float): the accuracy guarantee; referred to as alpha
+diff -ruN ddsketch-3.0.1/ddsketch/store.py /tmp/ddsketch-3.0.1/ddsketch/store.py
+--- ddsketch-3.0.1/ddsketch/store.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/ddsketch/store.py	2024-09-09 16:14:36.625472240 -0500
+@@ -21,7 +21,6 @@
+     from typing import List  # noqa: F401
+     from typing import Optional  # noqa: F401
+ 
+-import six
+ 
+ 
+ CHUNK_SIZE = 128
+@@ -55,7 +54,7 @@
+ _pos_infinity = _PositiveIntInfinity()
+ 
+ 
+-class Store(six.with_metaclass(abc.ABCMeta)):
++class Store(abc.ABC):
+     """The basic specification of a store
+ 
+     Attributes:
+diff -ruN ddsketch-3.0.1/ddsketch.egg-info/requires.txt /tmp/ddsketch-3.0.1/ddsketch.egg-info/requires.txt
+--- ddsketch-3.0.1/ddsketch.egg-info/requires.txt	2024-04-01 08:11:01.000000000 -0500
++++ ddsketch-3.0.1/ddsketch.egg-info/requires.txt	2024-09-09 16:13:39.641285654 -0500
+@@ -1,4 +1,2 @@
+-six
+-
+ [serialization]
+ protobuf>=3.0.0
+diff -ruN ddsketch-3.0.1/riotfile.py /tmp/ddsketch-3.0.1/riotfile.py
+--- ddsketch-3.0.1/riotfile.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/riotfile.py	2024-09-09 16:13:51.333323942 -0500
+@@ -80,7 +80,6 @@
+                 "mypy": latest,
+                 "types-protobuf": latest,
+                 "types-setuptools": latest,
+-                "types-six": latest,
+             },
+         ),
+     ],
+diff -ruN ddsketch-3.0.1/setup.py /tmp/ddsketch-3.0.1/setup.py
+--- ddsketch-3.0.1/setup.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/setup.py	2024-09-09 16:13:20.729223701 -0500
+@@ -19,9 +19,6 @@
+         "License :: OSI Approved :: Apache Software License",
+     ],
+     keywords=["ddsketch", "quantile", "sketch"],
+-    install_requires=[
+-        "six",
+-    ],
+     extras_require={"serialization": ["protobuf>=3.0.0"]},
+     python_requires=">=3.7",
+     download_url="https://github.com/DataDog/sketches-py/archive/v1.0.tar.gz",
+diff -ruN ddsketch-3.0.1/tests/datasets.py /tmp/ddsketch-3.0.1/tests/datasets.py
+--- ddsketch-3.0.1/tests/datasets.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/tests/datasets.py	2024-09-09 16:19:00.266334708 -0500
+@@ -6,10 +6,9 @@
+ import abc
+ 
+ import numpy as np
+-import six
+ 
+ 
+-class Dataset(six.with_metaclass(abc.ABCMeta)):
++class Dataset(abc.ABC):
+     def __init__(self, size):
+         self.size = int(size)
+         self.data = self.populate()
+diff -ruN ddsketch-3.0.1/tests/test_ddsketch.py /tmp/ddsketch-3.0.1/tests/test_ddsketch.py
+--- ddsketch-3.0.1/tests/test_ddsketch.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/tests/test_ddsketch.py	2024-09-09 16:18:35.806254734 -0500
+@@ -11,7 +11,6 @@
+ 
+ import numpy as np
+ import pytest
+-import six
+ 
+ import ddsketch
+ from ddsketch.ddsketch import DDSketch
+@@ -65,7 +64,7 @@
+ TEST_BIN_LIMIT = 1024
+ 
+ 
+-class BaseTestDDSketches(six.with_metaclass(abc.ABCMeta)):
++class BaseTestDDSketches(abc.ABC):
+     """AbstractBaseClass for testing DDSketch implementations"""
+ 
+     @staticmethod
+diff -ruN ddsketch-3.0.1/tests/test_mapping.py /tmp/ddsketch-3.0.1/tests/test_mapping.py
+--- ddsketch-3.0.1/tests/test_mapping.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/tests/test_mapping.py	2024-09-09 16:18:08.458165307 -0500
+@@ -11,7 +11,6 @@
+ 
+ import numpy
+ import pytest
+-import six
+ 
+ from ddsketch.mapping import CubicallyInterpolatedMapping
+ from ddsketch.mapping import LinearlyInterpolatedMapping
+@@ -55,7 +54,7 @@
+     return max_relative_acc
+ 
+ 
+-class BaseTestKeyMapping(six.with_metaclass(abc.ABCMeta)):
++class BaseTestKeyMapping(abc.ABC):
+     """Abstract class for testing KeyMapping classes"""
+ 
+     offsets = [0, 1, -12.23, 7768.3]
+diff -ruN ddsketch-3.0.1/tests/test_proto.py /tmp/ddsketch-3.0.1/tests/test_proto.py
+--- ddsketch-3.0.1/tests/test_proto.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/tests/test_proto.py	2024-09-09 16:17:42.958081916 -0500
+@@ -2,7 +2,6 @@
+ from unittest import TestCase
+ 
+ import pytest
+-import six
+ 
+ from ddsketch.mapping import CubicallyInterpolatedMapping
+ from ddsketch.mapping import LinearlyInterpolatedMapping
+@@ -15,7 +14,7 @@
+ from tests.test_store import TestDenseStore
+ 
+ 
+-class BaseTestKeyMappingProto(six.with_metaclass(abc.ABCMeta)):
++class BaseTestKeyMappingProto(abc.ABC):
+     offsets = [0, 1, -12.23, 7768.3]
+ 
+     def test_round_trip(self):
+diff -ruN ddsketch-3.0.1/tests/test_store.py /tmp/ddsketch-3.0.1/tests/test_store.py
+--- ddsketch-3.0.1/tests/test_store.py	2024-04-01 08:10:58.000000000 -0500
++++ ddsketch-3.0.1/tests/test_store.py	2024-09-09 16:17:38.722068059 -0500
+@@ -10,7 +10,6 @@
+ import sys
+ from unittest import TestCase
+ 
+-import six
+ 
+ from ddsketch.store import CollapsingHighestDenseStore
+ from ddsketch.store import CollapsingLowestDenseStore
+@@ -22,7 +21,7 @@
+ EXTREME_MIN = -sys.maxsize - 1
+ 
+ 
+-class BaseTestStore(six.with_metaclass(abc.ABCMeta)):
++class BaseTestStore(abc.ABC):
+     """Base class for testing Store classes"""
+ 
+     @abc.abstractmethod
