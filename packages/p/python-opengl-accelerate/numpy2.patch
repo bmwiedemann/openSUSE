@@ -1,0 +1,22 @@
+From f897b0ed75c00d4c524be4689683a334832217ac Mon Sep 17 00:00:00 2001
+From: "Mike C. Fletcher" <mcfletch@vrplumber.com>
+Date: Mon, 1 Jul 2024 11:33:37 -0400
+Subject: [PATCH] BUGFIX Numpy intp type for latest numpy
+
+---
+ accelerate/src/numpy_formathandler.pyx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accelerate/src/numpy_formathandler.pyx b/accelerate/src/numpy_formathandler.pyx
+index 47ed919b..ae5c7bfa 100644
+--- a/accelerate/src/numpy_formathandler.pyx
++++ b/accelerate/src/numpy_formathandler.pyx
+@@ -20,7 +20,7 @@ cdef extern from "numpy/arrayobject.h":
+     int NPY_ARRAY_FORCECAST
+     int PyArray_ISCARRAY( np.ndarray instance )
+     int PyArray_ISCARRAY_RO( np.ndarray instance )
+-    cdef np.ndarray PyArray_Zeros(int nd, np.Py_intptr_t* dims, np.dtype, int fortran)
++    cdef np.ndarray PyArray_Zeros(int nd, np.npy_intp* dims, np.dtype, int fortran)
+     cdef np.ndarray PyArray_EnsureArray(object)
+     cdef int PyArray_FillWithScalar(np.ndarray, object)
+     cdef void* PyArray_DATA( np.ndarray )

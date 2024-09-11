@@ -29,6 +29,8 @@ URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
 # PATCH-FIX-UPSTREAM - accelerate: Fix C type errors for GCC 14/Clang compatibility
 Patch0:         https://github.com/mcfletch/pyopengl/pull/112.patch
+# PATCH-FIX-UPSTREAM https://github.com/mcfletch/pyopengl/commit/f897b0ed75c00d4c524be4689683a334832217ac BUGFIX Numpy intp type for latest numpy
+Patch1:         numpy2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}

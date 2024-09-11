@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 12:33:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch numpy2.patch to fix compatibility with Numpy 2
+  * https://github.com/mcfletch/pyopengl/commit/f897b0ed75c00d4c524be4689683a334832217ac
+
+-------------------------------------------------------------------
 Wed Jun  5 14:28:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14
