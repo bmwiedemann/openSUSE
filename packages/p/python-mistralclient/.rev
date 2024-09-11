@@ -294,4 +294,19 @@
   - Fix tox4 error and use python &gt;=3.8</comment>
     <requestid>1138705</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>187acbde9ed7881c6bbf729accdf0e12</srcmd5>
+    <version>5.3.0</version>
+    <time>1726066594</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.3.0
+  - Update master for stable/2024.1
+
+- update to version 5.2.0
+  - Fix tox4 error and use python &gt;=3.8
+  - Update master for stable/zed
+
+- add osc-lib dependency</comment>
+    <requestid>1200063</requestid>
+  </revision>
 </revisionlist>
