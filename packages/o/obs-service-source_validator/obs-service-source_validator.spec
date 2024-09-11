@@ -36,10 +36,13 @@ BuildRequires:  zstd
 Requires:       %{_bindir}/cpio
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
+Requires:       bzip2
 Requires:       diffutils
 Requires:       patch
 Requires:       perl-TimeDate
 Requires:       unzip
+Requires:       xz
+Requires:       zstd
 Provides:       osc-source_validator = %{version}
 Obsoletes:      osc-source_validator <= 0.1
 BuildArch:      noarch

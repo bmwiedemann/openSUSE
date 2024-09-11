@@ -777,4 +777,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * Fix 20-files-present-and-referenced against osc 1.9.0 (osclib_version 2.0)</comment>
     <requestid>1197300</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>97d1e19421c95cca214db7d42b9525ae</srcmd5>
+    <version>0.38</version>
+    <time>1726066598</time>
+    <user>anag+factory</user>
+    <comment>- require bzip2,xz and zstd which are used in gpg verification</comment>
+    <requestid>1200075</requestid>
+  </revision>
 </revisionlist>
