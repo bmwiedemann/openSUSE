@@ -68,7 +68,7 @@ RUN docker-php-ext-install gd intl
 can be used as an alternative source to obtain PHP extensions, but without any
 guarantee of interoperability with this image and without any official support.
 
-PECL extensions can be installed as follows:
+Install PECL extensions as follows:
 
 ```Dockerfile
 FROM registry.opensuse.org/opensuse/bci/php-apache:8
@@ -78,16 +78,16 @@ RUN set -euo pipefail; \
     pecl install APCu-5.1.21;
 ```
 
-**Note:** Building an extension may require installing additional dependencies.
+**Note:** Building an extension may require installing its dependencies first.
 
 
 ## Compatibility with the DockerHub Image
 
 The following scripts ship with the image to keep it compatible with the
 DockerHub image: `docker-php-source`, `docker-php-ext-configure`,
-`docker-php-ext-enable`, and `docker-php-ext-install`. Note that only
-`docker-php-ext-install` performs an actual job. None of the other scripts
-require to be executed in the image.
+`docker-php-ext-enable`, and `docker-php-ext-install`.
+The script `docker-php-ext-install` performs an actual job, all others are
+just no-operation scripts for interoperability.
 
 ## Licensing
 
