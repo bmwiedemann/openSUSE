@@ -38,17 +38,21 @@
 %bcond_without systemd
 
 Name:           keepalived
-Version:        2.3.1
+Version:        2.3.1+git59.b6681f98
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://www.keepalived.org/
-Source:         https://www.keepalived.org/software/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source2:        keepalive-rpmlintrc
 Patch0:         keepalive-init.patch
 Patch1:         harden_keepalived.service.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  file-devel
+BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snmp-mibs
@@ -96,13 +100,14 @@ Keepalived frameworks can be used independently or all together to provide
 resilient infrastructures.
 
 %prep
-%autosetup -p1
+%autosetup -p1  -n %{name}-%{version}
 chmod 644 doc/samples/*
 
 %build
 export STRIP=true
 export CPPFLAGS="$(pkg-config --cflags libnfnetlink libiptc libipset xtables)"
 export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
+./autogen.sh
 #  --enable-dbus-create-instance \
 %configure \
   --disable-silent-rules \

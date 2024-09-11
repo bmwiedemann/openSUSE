@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 11 07:57:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update service file to use manual mode as disabled is deprecated
+- switch to TAG_OFFSET for a more readable version
+
+-------------------------------------------------------------------
+Wed Sep 11 07:56:20 UTC 2024 - mrueckert@suse.de
+
+- Update to version 2.3.1+git59.b6681f98:
+  * all: update how pidfile handled after reload with new configuration
+  * Revert "all: ensure pidfile is created if a reload causes child to start"
+  * Revert "all: update how pidfile handled after reload with new configuration"
+  * all: update how pidfile handled after reload with new configuration
+  * all: ensure pidfile is created if a reload causes child to start
+
+-------------------------------------------------------------------
+Wed Aug 14 10:23:05 UTC 2024 - varkoly@suse.com
+
+- Update to version 2.3.1+git.1723301895.df93f341:
+  * all: Ensure pid file exists when respawning child process
+  * vrrp: check ifindex != 0 before using the interface
+  * vrrp: Duplicate/drop MLDv1 listener reports on VMACs
+  * core: ensure only one instance of keepalived can run per config_id
+  * configure: add --enable-(cflags,cppflags,ldflags) options
+  * configure: add --enable-sanitize-(undefined,leak,memory,scudo,hwaddress) options
+  * vrrp: change vrrp_in_chk_vips to return bool rather than int
+  * core: cosmetic code layout change
+  * core: remove some duplicate include files
+  * vrrp: stop memory leak when error in configuring vrrp_iptables
+    (bsc#1228123) VUL-0: CVE-2024-41184: keepalived: integer overflow in vrrp_ipsets_handler
+
+-------------------------------------------------------------------
 Fri Jul 19 21:36:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.3.1
