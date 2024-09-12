@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- set useobsrepositories explicitly
+
+-------------------------------------------------------------------
 Fri Aug 23 10:27:45 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add missing distro name in the README
