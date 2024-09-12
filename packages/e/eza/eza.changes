@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 12 05:46:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.3:
+  Bug Fixes:
+  * Convert empty space to %20 when render hyperlinks
+  * Split commit workflows and run no-merge-commits only on PRs
+  * Correct naming of commit related workflows
+  Documentation:
+  * Better version bump commit summary
+  Features:
+  * Add no-merge-commits job to commits workflow
+
+-------------------------------------------------------------------
 Thu Sep  5 05:45:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.2:

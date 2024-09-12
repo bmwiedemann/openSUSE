@@ -718,4 +718,20 @@
   * Implement FileNameColours.icon_override for Theme</comment>
     <requestid>1198866</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3b886b1634732034d0cb2b5e25c06fb7</srcmd5>
+    <version>0.19.3+0</version>
+    <time>1726153035</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.3:
+  Bug Fixes:
+  * Convert empty space to %20 when render hyperlinks
+  * Split commit workflows and run no-merge-commits only on PRs
+  * Correct naming of commit related workflows
+  Documentation:
+  * Better version bump commit summary
+  Features:
+  * Add no-merge-commits job to commits workflow</comment>
+    <requestid>1200238</requestid>
+  </revision>
 </revisionlist>
