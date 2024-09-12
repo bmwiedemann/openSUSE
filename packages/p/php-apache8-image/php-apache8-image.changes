@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- set useobsrepositories explicitly
+
+-------------------------------------------------------------------
 Wed Sep 11 08:07:25 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - use full version in php container labels
