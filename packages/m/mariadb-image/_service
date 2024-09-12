@@ -7,4 +7,9 @@
     <param name="package">mariadb</param>
     <param name="parse-version">patch</param>
   </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%mariadb_version%%</param>
+    <param name="package">mariadb</param>
+  </service>
 </services>

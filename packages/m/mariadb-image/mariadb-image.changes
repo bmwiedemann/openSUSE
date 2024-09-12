@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 06:35:48 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- set full version in labels of mariadb* container
+
+-------------------------------------------------------------------
 Mon Sep  9 13:54:45 UTC 2024 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - add zstd for the upgrade scenario and fix signal handling
