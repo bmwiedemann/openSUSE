@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 11 08:15:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove rpmlintrc as using fdupes works as intended
+- remove README-suse-maint.md as the packaging changed so much that
+  the readme is not needed anymore
+- put the binary in the bindir, create a symlink for people who still
+  want to use the full name for the binary
+
+-------------------------------------------------------------------
 Sun Jul 14 17:24:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add MSRV to specfile
