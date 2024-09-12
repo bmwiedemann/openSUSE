@@ -13,6 +13,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
+#!UseOBSRepositories
 
 #!BuildTag: opensuse/bci/bci-gitea-runner:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-gitea-runner:%OS_VERSION_ID_SP%.%RELEASE%
