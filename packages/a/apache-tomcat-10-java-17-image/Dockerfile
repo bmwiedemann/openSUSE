@@ -13,6 +13,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
+#!UseOBSRepositories
 
 #!BuildTag: opensuse/apache-tomcat:10-jre17
 #!BuildTag: opensuse/apache-tomcat:10-jre17-%RELEASE%
