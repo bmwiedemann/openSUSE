@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 06:35:48 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- set full version in labels of mariadb* container
+
+-------------------------------------------------------------------
 Mon Sep  9 06:51:05 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - Bump main package version
