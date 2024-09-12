@@ -175,4 +175,21 @@
   + prctl-gcc14.patch</comment>
     <requestid>1172888</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1d2063ad3952054726006cd6206741f1</srcmd5>
+    <version>1.7</version>
+    <time>1726152839</time>
+    <user>anag+factory</user>
+    <comment>- version update to 1.7
+   * Added missing defines to Makefile.in
+   * Replace pre-generated configure with configure.ac 
+   * Added missing function types in prctl.c
+- deleted patches
+  - prctl-1.5-Makefile.patch (partially, upstreamed, the rest in)
+  - prctl-1.5-warnings.patch (upstreamed)
+  - prctl-gcc14.patch (upstreamed)
+- added patches
+  + prctl-destdir.patch</comment>
+    <requestid>1199987</requestid>
+  </revision>
 </revisionlist>

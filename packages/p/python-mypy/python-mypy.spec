@@ -21,7 +21,7 @@
 %define types_psutil_version 5.9.5.17
 %define types_setuptools_version 68.2.0.0
 Name:           python-mypy
-Version:        1.10.0
+Version:        1.11.2
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typing_extensions >= 4.1.0}
+BuildRequires:  %{python_module typing_extensions >= 4.6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

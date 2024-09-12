@@ -1,7 +1,7 @@
 #
 # spec file for package gap-liepring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-liepring
-Version:        2.8
+Version:        2.9.1
 Release:        0
 Summary:        GAP: Database and algorithms for Lie p-rings
 License:        GPL-2.0-only
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.8
 Requires:       gap-liering >= 2.1
-Requires:       gap-singular >= 10
+Suggests:       gap-singular >= 10
 
 %description
 LiePRing is a GAP4 package for access to the nilpotent Lie rings of

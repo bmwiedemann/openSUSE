@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 11 08:58:49 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.22. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.22>
+- Bump minimum Go version to 1.22.
+- Rebase patches:
+  * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 14:03:03 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.21. Upstream release notes:

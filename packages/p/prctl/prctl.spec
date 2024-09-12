@@ -17,18 +17,16 @@
 
 
 Name:           prctl
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        A utility to perform process operations
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://sourceforge.net/projects/prctl
-Source0:        http://downloads.sourceforge.net/project/prctl/prctl/%{version}/prctl-%{version}.tar.gz
+URL:            https://github.com/hikerockies/prctl/
+Source0:        https://github.com/hikerockies/prctl/archive/refs/tags/v%{version}.tar.gz#/prctl-%{version}.tar.gz
 Source1:        COPYING
-Patch0:         prctl-1.5-Makefile.patch
-Patch1:         prctl-1.5-warnings.patch
-# work with gcc14
-Patch2:         prctl-gcc14.patch
+BuildRequires:  automake
+Patch0:         prctl-destdir.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -40,11 +38,13 @@ the runtime environment.
 cp %{SOURCE1} .
 
 %build
+autoreconf -fiv
 %configure
 make
 
 %install
-make DESTDIR=%{buildroot} install
+export man1dir="%{_mandir}/man1"
+%make_install
 
 %files
 %defattr(-, root, root)

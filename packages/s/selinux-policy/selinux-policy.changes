@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 12 07:34:20 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240912:
+  * Allow systemd_ibft_rule_generator_t to create udev_rules_t dirs (bsc#1230011)
+  * Allow systemd_udev_trigger_generator_t list and read sysctls (bsc#1230315)
+  * Initial policy for udev-trigger-generator (bsc#1230315)
+
+-------------------------------------------------------------------
+Tue Sep 10 13:33:53 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240910:
+  * Allow init_t mount syslog socket (bsc#1230134)
+  * Allow init_t create syslog files (bsc#1230134)
+  * Introduce initial policy for btrfs-soft-reboot-generator (bsc#1230134)
+
+-------------------------------------------------------------------
 Thu Sep 05 14:12:24 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 20240905:

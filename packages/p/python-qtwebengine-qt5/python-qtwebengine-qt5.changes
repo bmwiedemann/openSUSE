@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 14:30:34 UTC 2024 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Disable building on all s390 and ppc platforms as Qt5WebEngine
+  itself is not built on those archs.
+
+-------------------------------------------------------------------
 Thu Jan 25 20:02:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module

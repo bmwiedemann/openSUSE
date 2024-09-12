@@ -1,16 +1,16 @@
-Index: etckeeper-1.18.8/etckeeper.conf
+Index: etckeeper-1.18.21/etckeeper.conf
 ===================================================================
---- etckeeper-1.18.8.orig/etckeeper.conf
-+++ etckeeper-1.18.8/etckeeper.conf
+--- etckeeper-1.18.21.orig/etckeeper.conf
++++ etckeeper-1.18.21/etckeeper.conf
 @@ -33,11 +33,11 @@ DARCS_COMMIT_OPTIONS="-a"
  
  # The high-level package manager that's being used.
- # (apt, pacman, pacman-g2, yum, dnf, zypper, apk, xbps etc)
+ # (apt, pacman, pacman-g2, yum, dnf, zypper, apk, xbps, emerge, cave, etc)
 -HIGHLEVEL_PACKAGE_MANAGER=apt
 +HIGHLEVEL_PACKAGE_MANAGER=zypper
  
  # The low-level package manager that's being used.
- # (dpkg, rpm, pacman, pacmatic, pacman-g2, apk, xbps etc)
+ # (dpkg, rpm, pacman, pacmatic, pacman-g2, apk, xbps, cave, qlist, etc)
 -LOWLEVEL_PACKAGE_MANAGER=dpkg
 +LOWLEVEL_PACKAGE_MANAGER=rpm
  

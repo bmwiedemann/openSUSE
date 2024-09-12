@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 11 19:01:36 UTC 2024 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- Fix numpy.patch
+
+-------------------------------------------------------------------
+Wed Sep 11 18:36:23 UTC 2024 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- Add numpy.patch to improve NumPy 2.0 compatibility (gh#espressomd/espresso#4992)
+- Add cmake.patch to address CMake warnings (gh#espressomd/espresso#4992)
+
+-------------------------------------------------------------------
 Wed May 22 16:08:22 UTC 2024 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
 
 - Exclude 32bit architectures

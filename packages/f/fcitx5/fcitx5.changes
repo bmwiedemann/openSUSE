@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 02:20:28 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 5.1.10
+  * New candidate action API, planned to be used for mac/android port.
+  * There was an issue between fcitx 5.1.9 and the wayland compositor that
+    uses zwp_input_method_v2. For now the relevant change in fcitx5
+    was reverted.
+  * There is also a crash due to a bug on fcitx's wayland frontend. The
+    crash may be triggered when the system is slow.
+  * There is a design flaw in StandardPath::multiOpen API that may open
+    too many files and exhaust the fd that it can open. Alternative API is
+    implemented and engines are adapted to the new API in this release.
+
+-------------------------------------------------------------------
 Wed May 22 07:44:16 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.9

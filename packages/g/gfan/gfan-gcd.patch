@@ -1,0 +1,14 @@
+--- gfan0.7/src/gfanlib_q.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_q.h	2024-08-16 10:13:16.625990374 -0600
+@@ -179,6 +179,11 @@ public:
+     assert(0 && "gcd for Rational not defined");
+     return a;
+   }
++  static Rational gcd(Rational const &a, Rational const &b)
++  {
++    assert(0 && "gcd for Rational not defined");
++    return a;
++  }
+   /**
+    * Assigns the value to q. q must have been initialized as a gmp variable.
+    */

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:09:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 17:
+  * Improved engine lines
+    This release introduces principal variations (PVs) that are more
+    informative for mate and decisive table base (TB) scores. In both
+    cases, the PV will contain all moves up to checkmate. For mate scores,
+    the PV shown is the best variation known to the engine at that point,
+    while for table base wins, it follows, based on the TB, a sequence of
+    moves that preserves the game outcome to checkmate.
+  * NUMA performance optimization
+    For high-end computers with multiple CPUs (typically a dual-socket
+    architecture with 100+ cores), this release automatically improves
+    performance with a NumaPolicy setting that optimizes non-uniform memory
+    access (NUMA). Although typical consumer hardware will not benefit,
+    speedups of up to 2.8x have been measured.
+- Update date.pach, stockfish-remove-net.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 12:09:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 16.1:

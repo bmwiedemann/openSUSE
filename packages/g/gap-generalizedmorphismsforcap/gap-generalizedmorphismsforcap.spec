@@ -17,8 +17,8 @@
 
 
 Name:           gap-generalizedmorphismsforcap
-Version:        2024.01.01
-%define sillyver 2024.01-01
+Version:        2024.09.02
+%define sillyver 2024.09-02
 Release:        0
 Summary:        GAP: Implementations of generalized morphisms for the CAP project
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP
 #Git-Clone:     https://github.com/homalg-project/CAP_project
 Source:         https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-%sillyver/GeneralizedMorphismsForCAP-%sillyver.tar.gz
-BuildRequires:  gap-devel >= 4.12.1
+BuildRequires:  gap-devel >= 4.13.0
 BuildRequires:  gap-rpm-devel
 Requires:       gap-cap >= 2021.05.01
 Requires:       gap-core >= 4.12.1

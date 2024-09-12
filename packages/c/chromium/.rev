@@ -5083,4 +5083,16 @@ boo#1224178</comment>
   * CVE-2024-7970: Out of bounds write in V8</comment>
     <requestid>1198542</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>0689157f461f2acad72ca3826fad4131</srcmd5>
+    <version>128.0.6613.137</version>
+    <time>1726152848</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 128.0.6613.137 (released 2024-09-10) (boo#1230391)
+  * CVE-2024-8636: Heap buffer overflow in Skia
+  * CVE-2024-8637: Use after free in Media Router
+  * CVE-2024-8638: Type Confusion in V8
+  * CVE-2024-8639: Use after free in Autofill (forwarded request 1200104 from oertel)</comment>
+    <requestid>1200106</requestid>
+  </revision>
 </revisionlist>

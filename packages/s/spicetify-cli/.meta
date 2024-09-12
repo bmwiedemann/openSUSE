@@ -1,0 +1,6 @@
+<package name="spicetify-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>Command-line tool to customize Spotify client</description>
+  <devel project="multimedia:apps" package="spicetify-cli"/>
+  <url>https://spicetify.app/</url>
+</package>

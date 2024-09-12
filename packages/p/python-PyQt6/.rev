@@ -179,4 +179,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment>Update to 6.7.0</comment>
     <requestid>1169543</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>46a968f4467f5fc6630ad68b9e78650c</srcmd5>
+    <version>6.7.0</version>
+    <time>1726152833</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199909</requestid>
+  </revision>
 </revisionlist>

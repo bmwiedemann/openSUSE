@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:40:49 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use sources from pypi. They're what we were using and upstream
+  doesn't seem to release sources from their homepage anymore.
+
+-------------------------------------------------------------------
 Sun Apr 21 13:32:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.7.0

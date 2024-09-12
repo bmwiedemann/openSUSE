@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.25.2
+Version:        0.26.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -28,12 +28,12 @@ Source:         https://github.com/gnome-pomodoro/gnome-pomodoro/archive/refs/ta
 Source99:       gnome-pomodoro-rpmlintrc
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
-BuildRequires:  gettext >= 0.19.6
+BuildRequires:  gettext-devel >= 0.19.6
 BuildRequires:  gnome-common
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
-BuildRequires:  (gnome-shell >= 46 with gnome-shell < 47)
+BuildRequires:  (gnome-shell >= 46 with gnome-shell < 48)
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0

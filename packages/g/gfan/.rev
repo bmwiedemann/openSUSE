@@ -85,4 +85,12 @@
   causing segfaults in the respective programs with LTO enabled.</comment>
     <requestid>906357</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9936c7b6ab240b0a7f417a8e9ee63144</srcmd5>
+    <version>0.7</version>
+    <time>1726152992</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.7</comment>
+    <requestid>1200170</requestid>
+  </revision>
 </revisionlist>

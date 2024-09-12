@@ -1,6 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  5 10:01:04 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.51:
+  * Improve handling of /boot/vmlinuz and /boot/initrd symlinks
+    (boo#1207703)
+  * Add preliminary support for mkosi-initrd
+  * spec file: remove redundant dependency on sdbootutil
+
+-------------------------------------------------------------------
 Fri Aug 30 13:04:46 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
+- Update to version 16.0.50:
   * Generate initrd for the default snapshot (boo#1224773)
 
 -------------------------------------------------------------------

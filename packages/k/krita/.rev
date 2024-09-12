@@ -785,4 +785,12 @@
     <comment>Update to 5.2.3</comment>
     <requestid>1183871</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>c92efcc30dc73819f3d1cde2469ff485</srcmd5>
+    <version>5.2.3</version>
+    <time>1726153003</time>
+    <user>anag+factory</user>
+    <comment>- Use gcc 13 to compile krita on Tumbleweed</comment>
+    <requestid>1200201</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx%{psuffix}
-Version:        0.27.0
+Version:        0.27.2
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
@@ -69,6 +69,7 @@ BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module trustme}
 # uvicorn 0.18 fixed an issue in the test suite where http-headers wer not all lowercase as expected
 BuildRequires:  %{python_module uvicorn >= 0.18}
+BuildRequires:  %{python_module zstandard}
 %endif
 # /SECTION
 %python_subpackages

@@ -1,0 +1,398 @@
+--- gfan0.7/src/lp_soplexcdd.cpp.orig	2024-08-12 13:34:07.043619886 -0600
++++ gfan0.7/src/lp_soplexcdd.cpp	2024-08-12 13:42:14.382953300 -0600
+@@ -1,37 +1,11 @@
+ #include "lp_soplexcdd.h"
+ 
+-#include "printer.h"
+-
+-#include "spxdefines.h"
+-#include "spxsolver.h"
+-
+-#include "timer.h"
+-#include "spxpricer.h"
+-//#include "spxdefaultpr.h"
+-#include "spxparmultpr.h"
+-#include "spxdevexpr.h"
+-#include "spxhybridpr.h"
+-#include "spxsteeppr.h"
+-#include "spxweightpr.h"
+-#include "spxratiotester.h"
+-#include "spxharrisrt.h"
+-#include "spxdefaultrt.h"
+-#include "spxfastrt.h"
+-#include "spxsimplifier.h"
+-//#include "spxaggregatesm.h"
+-//#include "spxredundantsm.h"
+-//#include "spxrem1sm.h"
+-//#include "spxgeneralsm.h"
+-#include "spxscaler.h"
+-#include "spxequilisc.h"
+-#include "spxsumst.h"
+-#include "spxweightst.h"
+-#include "spxvectorst.h"
+-#include "slufactor.h"
+-#include "soplex.h"
++#include <soplex/spxdefines.h>
++#include <soplex.h>
+ #include "continuedfractions.h"
+ #include "matrix.h"
+ #include "linalg.h"
++#include "printer.h"
+ 
+ #include "log.h"
+ using namespace soplex;
+@@ -42,81 +16,45 @@ using namespace soplex;
+ class MySoPlex : public SoPlex
+ {
+ private:
+-   SLUFactor m_slu;
++   SLUFactor<Real> m_slu;
+ 
+ public:
+    /// default constructor
+-   MySoPlex(SPxSolver::Type p_type = SPxSolver::LEAVE, SPxSolver::Representation p_rep = SPxSolver::COLUMN)
+-      : SoPlex(p_type, p_rep)
++   MySoPlex() : SoPlexBase<Real>()
+    {
++      NameSet                rownames;
++      NameSet                colnames;
++      SPxOut::Verbosity      verbose        = SPxOut::Verbosity::ERROR;
++      SLUFactor<Real>::UpdateType update    = SLUFactor<Real>::FOREST_TOMLIN;
++      Real                   timelimit      = 1.0;
+ 
++      spxout.setVerbosity(verbose);
+ 
++      //options -p4 -t2 -g1 -s0 -c0
++      setUtype(update);
+ 
+-   bool                   print_solution = false;
+-   bool                   print_quality  = false;
+-   NameSet                rownames;
+-   NameSet                colnames;
+-   SPxStarter*            starter        = 0;
+-   SPxSolver::Type           type           = SPxSolver::LEAVE;
+-   SPxSolver::Representation representation = SPxSolver::COLUMN;
+-   int                    precision;
+-   Real                   delta          = DEFAULT_BND_VIOL;
+-   Real                   epsilon        = DEFAULT_EPS_ZERO;
+-   int                    verbose        = 0;
+-   SLUFactor::UpdateType  update         = SLUFactor::FOREST_TOMLIN;
+-   Real                   timelimit      = 1.0;-1.0;
+-   SPxPricer*             pricer         = 0;
+-   SPxRatioTester*        ratiotester    = 0;
+-   SPxScaler*             scaler         = 0;
+-   SPxSimplifier*         simplifier     = 0;
+-
+-   precision = int(-log10(delta)) + 1;
+-
+-   Param::setEpsilon(epsilon);
+-   Param::setVerbose(verbose);
+-
+-
+-
+-   //options -p4 -t2 -g1 -s0 -c0
+-   setUtype(update);
+-   setTerminationTime(timelimit);
+-   setDelta(delta);
+-
+-   assert(isConsistent());
+-
+-   pricer = new SPxSteepPR;
+-   setPricer(pricer);
+-   assert(isConsistent());
++      setRealParam(TIMELIMIT, timelimit);
++      assert(isConsistent());
+ 
+-   ratiotester = new SPxFastRT;
+-   setTester(ratiotester);
+-   assert(isConsistent());
++      setIntParam(PRICER, PRICER_STEEP); 
++      assert(isConsistent());
+ 
+-   /*   scaler = new SPxEquili(representation == SoPlex::COLUMN, true);
+-   setScaler(scaler);
+-   assert(isConsistent());
+-   */
+-   setSimplifier(simplifier);
+-   assert(isConsistent());
++      setIntParam(RATIOTESTER, RATIOTESTER_FAST);
++      assert(isConsistent());
+ 
+-   setStarter(starter);
+-   assert(isConsistent());
+-   }
++      setIntParam(SIMPLIFIER, SIMPLIFIER_OFF);
++      assert(isConsistent());
+ 
+-   virtual bool terminate()
+-   {
+-      /*      if (iteration() % 100 == 0)
+-         std::cout << iteration() << ":\t" << value() << std::endl;
+-      */
+-     return SoPlex::terminate();
++      setIntParam(STARTER, STARTER_OFF);
++      assert(isConsistent());
+    }
+ 
+-   void setUtype(SLUFactor::UpdateType tp)
++   void setUtype(SLUFactor<Real>::UpdateType tp)
+    {
+       m_slu.setUtype(tp);
+    }
+ 
+-  void build(const IntegerVectorList &g, IntegerVectorList::const_iterator i)
++   void build(const IntegerVectorList &g, IntegerVectorList::const_iterator i)
+    {
+      int width=g.size()-1;
+      int height=i->v.size();
+@@ -141,22 +79,23 @@ public:
+ 	     cols.add(obj,lower,c1,upper);
+ 	   }
+        }
+-     
++ 
+      LPRowSet rows(height,width*height);
+      DSVector r1(width);
+-     
++ 
+      //Change Rows
+      for(int t=0;t<height;t++)
+        rows.add(i->v[t],r1,i->v[t]);
+-     
+-     addRows(rows);
+-     addCols(cols);
+-     
+-     changeSense(SPxLP::MINIMIZE);
+-     
++ 
++     addRowsReal(rows);
++     addColsReal(cols);
++ 
++     setIntParam(OBJSENSE, OBJSENSE_MINIMIZE);
++
+      assert(isConsistent());
+    }
+-  void buildType2(int n, const IntegerVectorList &inequalities, const IntegerVectorList &equations)
++
++   void buildType2(int n, const IntegerVectorList &inequalities, const IntegerVectorList &equations)
+    {
+      int width=n;
+      int nInequalities=inequalities.size();
+@@ -192,27 +131,29 @@ public:
+      
+      LPRowSet rows(height,width*height);
+      DSVector r1(width);
+-     
++
+      //Change Rows
+      for(int t=0;t<nInequalities;t++)
+        rows.add(0,r1,infinity);
+      for(int t=nInequalities;t<height;t++)
+        rows.add(0,r1,0);
+-     
+-     addRows(rows);
+-     addCols(cols);
+-     
+-     changeSense(SPxLP::MINIMIZE);
+-     
++
++     addRowsReal(rows);
++     addColsReal(cols);
++
++     setIntParam(OBJSENSE, OBJSENSE_MINIMIZE);
++
+      assert(isConsistent());
+    }
+ };
+ 
+ static int toint(float r)
+ {
+-   return *((int*)&r);
++   int *theInt = reinterpret_cast<int *>(&r);
++   return *theInt;
+ }
+ 
++#if 0
+ static void printLP(SPxLP &w)
+ {
+       std::cout << "LP has " 
+@@ -272,10 +213,9 @@ static void printLP(SPxLP &w)
+             std::cout<<toint(R.lhs())<<" "<<toint(R.rhs())<<" "<<R.type()<<std::endl;
+          }
+ }
++#endif
+ 
+-
+-MySoPlex work(SPxSolver::LEAVE, SPxSolver::COLUMN);
+-
++static MySoPlex work;
+ 
+ static bool isFeasibleSolution(IntegerVector const &solution, int denominator, IntegerVectorList const &g, IntegerVectorList::const_iterator i)
+ {
+@@ -308,7 +248,7 @@ static bool isInfeasibilityCertificate(I
+ /*	     for(IntegerVectorList::const_iterator j=g.begin();j!=g.end();j++)
+ 	       {*/
+ 		 /*		 double prod=0;
+-		 for(int i=0;i<work.nRows();i++)
++		 for(int i=0;i<work.numRows();i++)
+ 		   {prod+=(*j)[i]*certificate[i];
+ 		     //		 fprintf(stderr,"%f \n",prod);
+ 		   }
+@@ -357,17 +297,13 @@ static bool isInfeasibilityCertificateTy
+ 
+ bool LpSolverSoPlexCddGmp::isFacet(const IntegerVectorList &g, IntegerVectorList::const_iterator I)
+ {
+-   SPxSolver::Type           type           = SPxSolver::LEAVE;
+-   SPxSolver::Representation representation = SPxSolver::COLUMN;
+-
+    int lp_status=0;
+ 
+-   work.clear();
++   work.clearLPReal();
++   work.clearBasis();
+ 
+    work.build(g,I);
+ 
+- retry:
+-
+    //   std::cerr<< work;
+    work.solve();
+ 
+@@ -377,19 +313,19 @@ bool LpSolverSoPlexCddGmp::isFacet(const
+      {
+      case SPxSolver::OPTIMAL:
+        {
+-         DVector objx(work.nCols());
++         DVector objx(work.numCols());
+          
+-         if( work.getPrimal(objx) != SPxSolver::ERROR )
++         if( work.getPrimal(objx) )
+ 	   {
+-	     vector<double> solution(work.nCols());
+-	     for(int i=0;i<work.nCols();i++)
++	     vector<double> solution(work.numCols());
++	     for(int i=0;i<work.numCols();i++)
+ 	       solution[i]=objx[i];
+ 	     
+ 	     vector<int> solutionNum;
+ 	     int denominator;
+ 	     doubleVectorToFractions(solution,solutionNum,denominator);
+ 	     IntegerVector s(solution.size());
+-	     for(int i=0;i<s.size();i++)s[i]=solutionNum[i];
++	     for(size_t i=0;i<s.size();i++)s[i]=solutionNum[i];
+ 	     
+ 	     if(isFeasibleSolution(s,denominator,g,I))
+ 	       {
+@@ -407,19 +343,19 @@ bool LpSolverSoPlexCddGmp::isFacet(const
+        break;
+      case SPxSolver::INFEASIBLE:
+        {
+-	 DVector farkasx(work.nRows());
++	 DVector farkasx(work.numRows());
+ 	 
+-	 if( work.getDualfarkas(farkasx) != SPxSolver::ERROR )
++	 if( work.getDualFarkas(farkasx) )
+ 	   {
+-	     vector<double> certificate(work.nRows());
+-	     for(int i=0;i<work.nRows();i++)
++	     vector<double> certificate(work.numRows());
++	     for(int i=0;i<work.numRows();i++)
+ 	       certificate[i]=farkasx[i];
+ 	     
+ 	     vector<int> certificateNum;
+ 	     int denominator;
+ 	     doubleVectorToFractions(certificate,certificateNum,denominator);
+ 	     IntegerVector c(certificate.size());
+-	     for(int i=0;i<c.size();i++)c[i]=certificateNum[i];
++	     for(size_t i=0;i<c.size();i++)c[i]=certificateNum[i];
+ 	     
+ 	     if(isInfeasibilityCertificate(c,g,I))
+ 	       {
+@@ -462,17 +398,13 @@ bool LpSolverSoPlexCddGmp::isFacet(const
+ 
+ bool LpSolverSoPlexCddGmp::hasHomogeneousSolution(int n, const IntegerVectorList &inequalities, const IntegerVectorList &equations)
+ {
+-   SPxSolver::Type           type           = SPxSolver::LEAVE;
+-   SPxSolver::Representation representation = SPxSolver::COLUMN;
+-
+    int lp_status=0;
+ 
+-   work.clear();
++   work.clearLPReal();
++   work.clearBasis();
+ 
+    work.buildType2(n,inequalities,equations);
+ 
+- retry:
+-
+    //   std::cerr<< work;
+ 
+    //   assert(0);
+@@ -484,19 +416,19 @@ bool LpSolverSoPlexCddGmp::hasHomogeneou
+      {
+      case SPxSolver::OPTIMAL:
+        {
+-         DVector objx(work.nCols());
++         DVector objx(work.numCols());
+          
+-         if( work.getPrimal(objx) != SPxSolver::ERROR )
++         if( work.getPrimal(objx) )
+ 	   {
+-	     vector<double> solution(work.nCols());
+-	     for(int i=0;i<work.nCols();i++)
++	     vector<double> solution(work.numCols());
++	     for(int i=0;i<work.numCols();i++)
+ 	       solution[i]=objx[i];
+ 	     
+ 	     vector<int> solutionNum;
+ 	     int denominator;
+ 	     doubleVectorToFractions(solution,solutionNum,denominator);
+ 	     IntegerVector s(solution.size());
+-	     for(int i=0;i<s.size();i++)s[i]=solutionNum[i];
++	     for(size_t i=0;i<s.size();i++)s[i]=solutionNum[i];
+ 	     
+ 	     //  AsciiPrinter(Stderr).printVector(s);
+ 	     if(isFeasibleSolutionType2(s,inequalities,equations))
+@@ -512,7 +444,7 @@ if(0)	     {
+ 	         {
+ 	           double S=0;
+ 	           assert(i->size()==solution.size());
+-	           for(int j=0;j<i->size();j++)S+=solution[j]*(*i)[j];
++	           for(size_t j=0;j<i->size();j++)S+=solution[j]*(*i)[j];
+ 	           if(S>-0.000001 && S<0.000001)A.push_back(*i);
+ 	         }
+                FieldMatrix temp=integerMatrixToFieldMatrix(rowsToIntegerMatrix(A,solution.size()),Q);
+@@ -538,7 +470,7 @@ if(0)	     {
+ */
+ 	     log2 fprintf(Stderr,"Solution failed (Type2).\n");
+ 
+-	     /*	     for(int i=0;i<work.nCols();i++)
++	     /*	     for(int i=0;i<work.numCols();i++)
+ 	       {
+ 		 std::cerr<<solution[i]<<',';
+ 	       }
+@@ -558,19 +490,19 @@ if(0)	     {
+        break;
+      case SPxSolver::INFEASIBLE:
+        {
+-	 DVector farkasx(work.nRows());
++	 DVector farkasx(work.numRows());
+ 	 
+-	 if( work.getDualfarkas(farkasx) != SPxSolver::ERROR )
++	 if( work.getDualFarkas(farkasx) )
+ 	   {
+-	     vector<double> certificate(work.nRows());
+-	     for(int i=0;i<work.nRows();i++)
++	     vector<double> certificate(work.numRows());
++	     for(int i=0;i<work.numRows();i++)
+ 	       certificate[i]=farkasx[i];
+ 	     
+ 	     vector<int> certificateNum;
+ 	     int denominator;
+ 	     doubleVectorToFractions(certificate,certificateNum,denominator);
+ 	     IntegerVector c(certificate.size());
+-	     for(int i=0;i<c.size();i++)c[i]=certificateNum[i];
++	     for(size_t i=0;i<c.size();i++)c[i]=certificateNum[i];
+ 	     
+ 	     if(isInfeasibilityCertificateType2(c,n,inequalities,equations))
+ 	       {

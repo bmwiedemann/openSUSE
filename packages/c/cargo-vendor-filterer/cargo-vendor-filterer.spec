@@ -25,6 +25,7 @@ Version:        0.5.14
 Release:        0
 Source0:        https://github.com/coreos/cargo-vendor-filterer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)

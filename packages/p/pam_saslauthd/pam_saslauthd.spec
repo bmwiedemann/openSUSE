@@ -1,7 +1,7 @@
 #
 # spec file for package pam_saslauthd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ URL:            https://github.com/Firstyear/pam_saslauthd
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pam-devel
 # Because tar doesn't req zstd even though it's a valid and auto-impled compression.

@@ -27,9 +27,7 @@ Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-# boo#1222514
-#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%%{version}.tar.gz
-Source:         https://riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory

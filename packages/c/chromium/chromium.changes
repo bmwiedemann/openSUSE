@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 11 12:07:53 CEST 2024 - ro@suse.de
+
+- Chromium 128.0.6613.137 (released 2024-09-10) (boo#1230391)
+  * CVE-2024-8636: Heap buffer overflow in Skia
+  * CVE-2024-8637: Use after free in Media Router
+  * CVE-2024-8638: Type Confusion in V8
+  * CVE-2024-8639: Use after free in Autofill
+
+-------------------------------------------------------------------
 Tue Sep  3 14:42:04 CEST 2024 - ro@suse.de
 
 - Chromium 128.0.6613.119 (released 2024-09-02) (boo#1230108)

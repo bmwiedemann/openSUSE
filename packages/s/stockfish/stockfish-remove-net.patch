@@ -1,8 +1,8 @@
-Index: Stockfish-sf_16.1/src/Makefile
+Index: Stockfish-sf_17/src/Makefile
 ===================================================================
---- Stockfish-sf_16.1.orig/src/Makefile
-+++ Stockfish-sf_16.1/src/Makefile
-@@ -806,7 +806,6 @@ help:
+--- Stockfish-sf_17.orig/src/Makefile
++++ Stockfish-sf_17/src/Makefile
+@@ -801,7 +801,6 @@ help:
  	@echo "help                    > Display architecture details"
  	@echo "profile-build           > standard build with profile-guided optimization"
  	@echo "build                   > skip profile-guided optimization"
@@ -10,7 +10,7 @@ Index: Stockfish-sf_16.1/src/Makefile
  	@echo "strip                   > Strip executable"
  	@echo "install                 > Install executable"
  	@echo "clean                   > Clean up"
-@@ -867,20 +866,20 @@ ifneq ($(SUPPORTED_ARCH), true)
+@@ -862,20 +861,20 @@ ifneq ($(SUPPORTED_ARCH), true)
  endif
  
  
@@ -35,7 +35,7 @@ Index: Stockfish-sf_16.1/src/Makefile
  	@echo ""
  	@echo "Step 1/4. Building instrumented executable ..."
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) $(profile_make)
-@@ -922,44 +921,6 @@ profileclean:
+@@ -917,44 +916,6 @@ profileclean:
  	@rm -f stockfish.res
  	@rm -f ./-lstdc++.res
  
@@ -80,7 +80,7 @@ Index: Stockfish-sf_16.1/src/Makefile
  # set up shell variables for the net stuff
  define netvariables
  $(eval nnuenet := $(shell grep $(1) evaluate.h | grep define | sed 's/.*\(nn-[a-z0-9]\{12\}.nnue\).*/\1/'))
-@@ -989,7 +950,7 @@ default:
+@@ -984,7 +945,7 @@ default:
  
  all: $(EXE) .depend
  
@@ -89,7 +89,7 @@ Index: Stockfish-sf_16.1/src/Makefile
  	@echo ""
  	@echo "Config:"
  	@echo "debug: '$(debug)'"
-@@ -1098,6 +1059,6 @@ icx-profile-use:
+@@ -1093,6 +1054,6 @@ icx-profile-use:
  .depend: $(SRCS)
  	-@$(CXX) $(DEPENDFLAGS) -MM $(SRCS) > $@ 2> /dev/null
  

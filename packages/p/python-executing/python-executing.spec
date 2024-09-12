@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-executing
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Get the currently executing AST node of a frame, and other information
 License:        MIT
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#alexmojaki/executing#83
-Patch0:         support-new-python-3.12.patch
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module littleutils}

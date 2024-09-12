@@ -90,4 +90,12 @@
   * Support Python 3.13 (and backported to 3.12.5) AST changes for For.</comment>
     <requestid>1195976</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0426fb39e2a5bdef9a166f36bdc7dd02</srcmd5>
+    <version>2.1.0</version>
+    <time>1726152836</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1199964</requestid>
+  </revision>
 </revisionlist>

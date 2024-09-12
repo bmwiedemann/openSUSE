@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:05:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.2:
+  * Reintroduced supposedly-private `URLTypes` shortcut.
+  * Support for `zstd` content decoding using the python
+    `zstandard` package is added. Installable using
+    `httpx[zstd]`.
+  * Improved error messaging for `InvalidURL` exceptions.
+  * Fix `app` type signature in `ASGITransport`.
+
+-------------------------------------------------------------------
 Fri Mar 22 09:57:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.27.0
-  * The app=... shortcut has been deprecated. Use the explicit style of 
+  * The app=... shortcut has been deprecated. Use the explicit style of
     transport=httpx.WSGITransport() or transport=httpx.ASGITransport() instead.
   * Respect the http1 argument while configuring proxy transports. (#3023)
   * Fix RFC 2069 mode digest authentication. (#3045)

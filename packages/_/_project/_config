@@ -584,6 +584,10 @@ Prefer: -sdbootutil-rpm-scriptlets
 # have choice for ansible-core >= 2.16.8 needed by ansible: ansible-core ansible-core-2.16
 Prefer: -ansible-core-2.16
 
+# have choice for (gdm-xdm-integration or gdm-systemd) needed by gdm: gdm-systemd gdm-xdm-integration
+# gdm-systems is the standalong systemd service, but for now we stick to the xdm integration
+Prefer: -gdm-systemd
+
 # have choice for python3-numpy-devel: python311-numpy-devel python311-numpy1-devel
 Prefer: -python310-numpy1-devel -python311-numpy1-devel -python312-numpy1-devel -python311-numpy1 -python310-numpy1 python312-numpy1
 

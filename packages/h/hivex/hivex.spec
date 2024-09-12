@@ -1,7 +1,7 @@
 #
 # spec file for package hivex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
 Name:           hivex
-Version:        1.3.23
+Version:        1.3.24
 Release:        0
 Summary:        Windows "Registry Hive" extraction library
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -113,12 +113,12 @@ for hivex. Hivex is a Windows Registry Hive extraction library.
 %lang_package
 
 %prep
-%setup -q
-
-sed -i 's:%{_bindir}/env perl:%{_bindir}/perl:' regedit/hivexregedit
+%autosetup -p1
 
 %build
-if type python3-config >/dev/null
+sed -i 's:%{_bindir}/env perl:%{_bindir}/perl:' regedit/hivexregedit
+
+if command -v python3-config >/dev/null
 then
 	export PYTHON="python3"
 	export PYTHON_LIBS=$(python3-config --libs)
@@ -150,7 +150,6 @@ touch %{name}.lang
 %postun -n libhivex0 -p /sbin/ldconfig
 
 %files
-%doc
 %{_bindir}/*
 %{_mandir}/*/*
 
@@ -178,7 +177,6 @@ touch %{name}.lang
 
 %if %{with ocaml_bindings}
 %files -n ocaml-hivex
-%license LICENSE
 
 %files -n ocaml-hivex-devel
 %{_libdir}/ocaml/hivex

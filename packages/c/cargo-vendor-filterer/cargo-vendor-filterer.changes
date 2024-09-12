@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 23:58:35 UTC 2024 - William Brown <william.brown@suse.com>
+
+- explicitly depend on cargo to pull in latest compiler revision
+
+-------------------------------------------------------------------
 Wed May  8 09:50:40 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to 0.5.14:

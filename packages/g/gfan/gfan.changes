@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:05:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7
+  * Introduction of ``_tropicalprevariety`` which is much faster
+    than the old ``_tropicalintersection``.
+- Add gfan-c++20.patch, gfan-gcd.patch, gfan-multiplicities.patch,
+  gfan-soplex.patch, gfan-warning.patch
+- Delete gfan-warnings.diff & cddlib.patch
+  (replaced by gfan-warning.patch), delete gfan-odr.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Jul 13 09:09:06 UTC 2021 - Alois Wohlschlager <alois1@gmx-topmail.de>
 
 - Add gfan-odr.patch: A patch to fix ODR violations, which were

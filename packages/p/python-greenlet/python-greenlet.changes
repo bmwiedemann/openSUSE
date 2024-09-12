@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 20:44:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.0
+  * Adds support for Python 3.13.
+  * Greatly reduce the chances for crashes during interpreter shutdown.
+  * Support for the following platforms was contributed by the community.
+    Note that they are untested by this project's continuous integration
+    services.
+    + Hitachi's SuperH CPU
+    + NetBSD on PowerPC
+    + RISC-V with -fno-omit-frame-pointer
+- Drop port-to-python313.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Sep  9 09:29:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to add support for Python 3.13

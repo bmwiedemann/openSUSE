@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 11 07:18:57 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.7
+   * Added missing defines to Makefile.in
+   * Replace pre-generated configure with configure.ac 
+   * Added missing function types in prctl.c
+- deleted patches
+  - prctl-1.5-Makefile.patch (partially, upstreamed, the rest in)
+  - prctl-1.5-warnings.patch (upstreamed)
+  - prctl-gcc14.patch (upstreamed)
+- added patches
+  + prctl-destdir.patch
+
+-------------------------------------------------------------------
 Thu May  9 07:41:50 UTC 2024 - pgajdos@suse.com
 
 - fix build with gcc14

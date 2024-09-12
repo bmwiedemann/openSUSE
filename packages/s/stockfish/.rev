@@ -156,4 +156,12 @@
 - Use %autosetup macro. Allows to eliminate the usage of deprecated PatchN.</comment>
     <requestid>1151318</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>30b9ae9f9499ce2c11bbcf6ba08d9ddb</srcmd5>
+    <version>17</version>
+    <time>1726152976</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200136</requestid>
+  </revision>
 </revisionlist>

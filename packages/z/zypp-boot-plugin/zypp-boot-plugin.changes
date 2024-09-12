@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 09:50:31 UTC 2024 - schubi@suse.com
+
+- Update to version 0.0.12:
+  * Added selinux-policy and systemd-boot to hard reboot list.
+
+-------------------------------------------------------------------
 Thu Jul 11 09:32:43 UTC 2024 - schubi@suse.com
 
 - Update to version 0.0.11:

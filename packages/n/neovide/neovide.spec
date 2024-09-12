@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define skia_version m126-0.74.2
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
@@ -32,20 +33,21 @@ BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  gcc-c++
 BuildRequires:  gn
-BuildRequires:  ninja
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  ninja
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 # clang++ needs gcc13 c++ headers to compile skia on Leap 15.6
 BuildRequires:  libstdc++6-devel-gcc13
 %endif
+Requires:       neovim >= 0.10.0
 
 ExclusiveArch:  x86_64 aarch64
 
@@ -58,7 +60,7 @@ mkdir -p skia-%{skia_version}/third_party/externals/
 mv wuffs-mirror-release-c-%{wuffs_commit} skia-%{skia_version}/third_party/externals/wuffs
 
 %build
-# Don't build neovide here, otherwise it will be rebuild during install and fail to build. 
+# Don't build neovide here, otherwise it will be rebuild during install and fail to build.
 
 %install
 export SKIA_SOURCE_DIR=${PWD}/skia-%{skia_version}

@@ -34,7 +34,7 @@
 %define make_args systemddir=%{_unitdir} PYTHON=%{python_versioned} %{python_args}
 
 Name:           etckeeper
-Version:        1.18.18
+Version:        1.18.21
 Release:        0
 Summary:        Store /etc under Version Control
 License:        GPL-2.0-or-later

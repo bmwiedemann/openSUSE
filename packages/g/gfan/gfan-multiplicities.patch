@@ -1,0 +1,19 @@
+---
+ src/gfanlib_zfan.cpp |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: gfan0.7/src/gfanlib_zfan.cpp
+===================================================================
+--- gfan0.7.orig/src/gfanlib_zfan.cpp
++++ gfan0.7/src/gfanlib_zfan.cpp
+@@ -37,7 +37,9 @@ namespace gfan
+   {
+     IntVector indices=getConeIndices(dimension,index,orbit,maximal);
+     ZCone ret=this->complex->makeZCone(indices);
+-    if(maximal)ret.setMultiplicity(((orbit)?multiplicitiesOrbits:multiplicities)[dimension][index]);
++    const std::vector<std::vector<Integer> >&mult = orbit ? multiplicitiesOrbits : multiplicities;
++    if(maximal && mult.size() > dimension && mult[dimension].size() > index)
++      ret.setMultiplicity(mult[dimension][index]);
+     return ret;
+   }
+   IntVector ZFan::getConeIndices(int dimension, int index, bool orbit, bool maximal)const

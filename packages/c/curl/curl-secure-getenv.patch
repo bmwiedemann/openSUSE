@@ -1,7 +1,7 @@
-Index: curl-8.5.0/lib/getenv.c
+Index: curl-8.10.0/lib/getenv.c
 ===================================================================
---- curl-8.5.0.orig/lib/getenv.c
-+++ curl-8.5.0/lib/getenv.c
+--- curl-8.10.0.orig/lib/getenv.c
++++ curl-8.10.0/lib/getenv.c
 @@ -29,6 +29,14 @@
  
  #include "memdebug.h"
@@ -26,16 +26,16 @@ Index: curl-8.5.0/lib/getenv.c
    return (env && env[0])?strdup(env):NULL;
  #endif
  }
-Index: curl-8.5.0/configure.ac
+Index: curl-8.10.0/configure.ac
 ===================================================================
---- curl-8.5.0.orig/configure.ac
-+++ curl-8.5.0/configure.ac
-@@ -4767,6 +4767,8 @@ if test "x$want_curldebug_assumed" = "xy
+--- curl-8.10.0.orig/configure.ac
++++ curl-8.10.0/configure.ac
+@@ -5213,6 +5213,8 @@ if test "x$want_curldebug_assumed" = "xy
    ac_configure_args="$ac_configure_args --enable-curldebug"
  fi
  
 +AC_CHECK_FUNCS([__secure_getenv secure_getenv])
 +
- AC_CONFIG_FILES([Makefile \
-            docs/Makefile \
-            docs/examples/Makefile \
+ AC_CONFIG_FILES([\
+   Makefile \
+   docs/Makefile \

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 12 05:00:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.80.1:
+  * chore(deps): bump github.com/anchore/syft from 1.11.1 to 1.12.2
+    (#2108)
+  * fix: Update gitmodule url (#2106)
+  * chore(deps): bump gorm.io/gorm from 1.25.11 to 1.25.12 (#2103)
+  * chore(deps): bump github.com/dave/jennifer from 1.7.0 to 1.7.1
+    (#2105)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.13 to
+    1.1.14 (#2098)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.0 to
+    7.0.1 (#2099)
+  * chore(deps): bump github.com/anchore/stereoscope (#2074)
+  * chore(deps): bump github.com/docker/docker (#2086)
+  * chore(deps): bump github/codeql-action from 3.26.4 to 3.26.6
+    (#2089)
+  * chore(sec): update Golang and runc to latest releases (#2091)
+    CVE-2024-3154
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#2092)
+  * chore(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3 to
+    3.3.0 (#2093)
+  * test: update quality gate db to latest version (#2094)
+  * chore(deps): bump actions/upload-artifact from 4.3.6 to 4.4.0
+    (#2096)
+  * chore(deps): bump peter-evans/create-pull-request from 6.1.0 to
+    7.0.0 (#2097)
+  * chore(deps): update tools to latest versions (#2082)
+  * docs(templates): escape description in junit.tmpl (#2088)
+  * chore(deps): update tools to latest versions (#2080)
+  * chore(deps): bump github/codeql-action from 3.26.3 to 3.26.4
+    (#2078)
+  * chore(deps): bump anchore/sbom-action from 0.17.1 to 0.17.2
+    (#2079)
+  * chore(deps): update tools to latest versions (#2072)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#2073)
+  * chore: bump quality gate vuln match labels data (#2069)
+
+-------------------------------------------------------------------
 Wed Aug 21 06:33:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.80.0:

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Sep 11 06:36:42 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 8.10.0:
+  * Security fixes:
+    - [bsc#1230093, CVE-2024-8096] curl: OCSP stapling bypass with GnuTLS
+  * Changes:
+    - curl: make --rate accept "number of units"
+    - curl: make --show-headers the same as --include
+    - curl: support --dump-header % to direct to stderr
+    - curl: support embedding a CA bundle and --dump-ca-embed
+    - curl: support repeated use of the verbose option; -vv etc
+    - curl: use libuv for parallel transfers with --test-event
+    - vtls: stop offering alpn http/1.1 for http2-prior-knowledge
+  * Bugfixes:
+    - curl: allow 500MB data URL encode strings
+    - curl: warn on unsupported SSL options
+    - Curl_rand_bytes to control env override
+    - curl_sha512_256: fix symbol collisions with nettle library
+    - dist: fix reproducible build from release tarball
+    - http2: fix GOAWAY message sent to server
+    - http2: improve rate limiting of downloads
+    - INSTALL.md: MultiSSL and QUIC are mutually exclusive
+    - lib: add eos flag to send methods
+    - lib: make SSPI global symbols use Curl_ prefix
+    - lib: prefer `CURL_SHA256_DIGEST_LENGTH` over the unprefixed name
+    - lib: remove the final strncpy() calls
+    - lib: remove use of RANDOM_FILE
+    - Makefile.mk: fixup enabling libidn2
+    - max-filesize.md: mention zero disables the limit
+    - mime: avoid inifite loop in client reader
+    - ngtcp2: use NGHTTP3 prefix instead of NGTCP2 for errors in h3 callbacks
+    - openssl quic: fix memory leak
+    - openssl: certinfo errors now fail correctly
+    - openssl: fix the data race when sharing an SSL session between threads
+    - openssl: improve shutdown handling
+    - POP3: fix multi-line responses
+    - pop3: use the protocol handler ->write_resp
+    - progress: ratelimit/progress tweaks
+    - rand: only provide weak random when needed
+    - sectransp: fix setting tls version
+    - setopt: make CURLOPT_TFTP_BLKSIZE accept bad values
+    - sha256: fix symbol collision between nettle (GnuTLS) and OpenSSL
+    - sigpipe: init the struct so that first apply ignores
+    - smb: convert superflous assign into assert
+    - smtp: add tracing feature
+    - spnego_gssapi: implement TLS channel bindings for openssl
+    - src: delete `curlx_m*printf()` aliases
+    - ssh: deduplicate SSH backend includes (and fix libssh cmake unity build)
+    - tool_operhlp: fix "potentially uninitialized local variable 'pc' used"
+    - tool_paramhlp: bump maximum post data size in memory to 16GB
+    - transfer: skip EOS read when download done
+    - url: fix connection reuse for HTTP/2 upgrades
+    - urlapi: verify URL *decoded* hostname when set
+    - urldata: introduce `data->mid`, a unique identifier inside a multi
+    - vtls: add SSLSUPP_CIPHER_LIST
+    - vtls: fix static function name collisions between TLS backends
+    - vtls: init ssl peer only once
+    - websocket: introduce blocking sends
+    - ws: flags to opcodes should ignore CURLWS_CONT flag
+    - x509asn1: raise size limit for x509 certification information
+  * Remove curl-sigpipe.patch upstream
+  * Rebase curl-secure-getenv.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 08:41:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix regression introduced in version 8.9.1:

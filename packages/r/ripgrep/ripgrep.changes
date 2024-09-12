@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:27:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 14.1.1:
+  * BUG #2884:
+    Fix bug where ripgrep could miss some matches that it should report.
+  * MISC #2748:
+    Remove ripgrep's simd-accel feature because it was frequently broken.
+
+-------------------------------------------------------------------
 Sat Mar 30 04:59:13 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Change xz to zst for better compression ratios

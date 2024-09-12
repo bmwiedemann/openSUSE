@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 11 05:22:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.0:
+  + Support for GNOME Shell 47
+  + Allow to dismiss screen overlay by gesture when a video is playing
+  + Add Georgian translation
+  + Adjusted translations in appdata
+
+-------------------------------------------------------------------
+Mon Aug 19 11:31:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Mon Jun  3 06:13:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.2:

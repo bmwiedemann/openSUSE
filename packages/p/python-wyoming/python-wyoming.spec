@@ -1,7 +1,7 @@
 #
 # spec file for package python-wyoming
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -25,11 +26,11 @@ Release:        0
 License:        MIT
 Summary:        Peer-to-peer protocol for voice assistants
 Group:          Development/Languages/Python
-Url:            https://github.com/rhasspy/wyoming
+URL:            https://github.com/rhasspy/wyoming
 #Source:         https://files.pythonhosted.org/packages/source/w/wyoming/wyoming-%{version}.tar.gz
 Source:         wyoming-%{version}.tar.xz
-BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,7 +45,7 @@ Peer-to-peer protocol for voice assistants
 
 %build
 %pyproject_wheel
-               
+
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

@@ -17,10 +17,10 @@
 
 
 # See evaluate.h > EvalFileDefaultName
-%define nnuenetS nn-baff1ede1f90.nnue
-%define nnuenetB nn-b1a57edbea57.nnue
+%define nnuenetS nn-37f18f62d772.nnue
+%define nnuenetB nn-1111cefa1111.nnue
 Name:           stockfish
-Version:        16.1
+Version:        17
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later

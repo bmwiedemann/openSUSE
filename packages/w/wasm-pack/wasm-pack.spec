@@ -25,6 +25,7 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/rustwasm/wasm-pack
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  cmake

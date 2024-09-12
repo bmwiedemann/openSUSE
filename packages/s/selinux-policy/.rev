@@ -929,4 +929,20 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1199629</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f1e669ca8ccb8bc85207a7e4e6c97885</srcmd5>
+    <version>20240912</version>
+    <time>1726152846</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240912:
+  * Allow systemd_ibft_rule_generator_t to create udev_rules_t dirs (bsc#1230011)
+  * Allow systemd_udev_trigger_generator_t list and read sysctls (bsc#1230315)
+  * Initial policy for udev-trigger-generator (bsc#1230315)
+- Update to version 20240910:
+  * Allow init_t mount syslog socket (bsc#1230134)
+  * Allow init_t create syslog files (bsc#1230134)
+  * Introduce initial policy for btrfs-soft-reboot-generator (bsc#1230134)
+</comment>
+    <requestid>1200261</requestid>
+  </revision>
 </revisionlist>

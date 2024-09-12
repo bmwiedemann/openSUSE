@@ -1,4 +1,4 @@
-From 876958fd21984b77e0a70d6ac5763e757ca976ef Mon Sep 17 00:00:00 2001
+From 0d0424334da85c9192a29a4e108094f7c28bbab5 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 22 May 2024 12:58:32 -0700
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of

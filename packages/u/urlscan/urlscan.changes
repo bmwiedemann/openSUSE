@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 28 15:04:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.0.3:
+  * Feature suggestion: Jump directly to next/previous URL (#151)
+  * Add fallback-version to pyproject.toml
+  * Fix flake python version
+
+-------------------------------------------------------------------
 Wed May  1 16:56:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.0.2:

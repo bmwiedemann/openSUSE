@@ -1,15 +1,16 @@
-Index: Stockfish-sf_16.1/src/misc.cpp
+Index: Stockfish-sf_17/src/misc.cpp
 ===================================================================
---- Stockfish-sf_16.1.orig/src/misc.cpp
-+++ Stockfish-sf_16.1/src/misc.cpp
-@@ -166,14 +166,6 @@ std::string engine_info(bool to_uci) {
+--- Stockfish-sf_17.orig/src/misc.cpp
++++ Stockfish-sf_17/src/misc.cpp
+@@ -131,15 +131,6 @@ std::string engine_info(bool to_uci) {
          ss << "-";
  #ifdef GIT_DATE
          ss << stringify(GIT_DATE);
 -#else
 -        constexpr std::string_view months("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec");
--        std::string                month, day, year;
--        std::stringstream          date(__DATE__);  // From compiler, format is "Sep 21 2008"
+-
+-        std::string       month, day, year;
+-        std::stringstream date(__DATE__);  // From compiler, format is "Sep 21 2008"
 -
 -        date >> month >> day >> year;
 -        ss << year << std::setw(2) << std::setfill('0') << (1 + months.find(month) / 4)

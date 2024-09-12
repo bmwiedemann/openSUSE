@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Wed Sep 11 06:18:10 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.38.3:
+  * feat(topbar): cross-version classname support (#3162)
+  * feat(wrapper): relay on webpack's `OnChunksLoadedRuntimeModule`
+
+-------------------------------------------------------------------
+Mon Sep 09 08:22:35 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.38.2:
+  * fix(block-updates): block update folder on `macOS`
+  * fix(preprocess/contextmenu): fallback when regex doesn't find candicates
+  * fix(block-updates): go back one folder
+
+-------------------------------------------------------------------
+Sun Sep 08 23:25:58 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.38.0:
+  * fix(homeConfig): check if `uri` exists too
+  * feat(preprocess/contextmenu): simplify matches
+  * fix(apply): remove 4th submatch since it's unnecessary
+  * fix(navlinks): add support for `1.2.46`'s global navbar
+  * feat(apply): add ability to call multiple functions to one file
+  * fix(home-config): support up to 1.2.45 (#3161)
+  * feat(sidebarConfig): disable functionality when Global navbar is used
+  * fix(apply): move expFeatures regex to the `insertExpFeatures`
+  * chore(preprocess): remove console log
+  * fix(preprocess/contextmenu): adapt regex for `1.2.46`
+  * chore(wrapper): change check for `os_name` to `osx`
+  * fix(InitPaths): check for `Apps` folder
+  * fix(reddit/tabBar): showing context menu in `More`
+  * fix(new-releases): use `PlatformAPI` to fetch podcasts
+  * fix(sidebarConfig): remove remaining legacy stuff
+  * feat(sidebarConfig): remove support for pre-Library X
+  * feat: remove support for pre-Library X UI
+  * feat: rename `block-updates` to `spotify-updates`
+  * feat(wrapper): set buttons heigh for 1.2.45 and older for Library X
+  * feat(cmd): add `block-updates` cmd to block spotify updates
+  * revert: check for spotify.exe existence instead of app folder
+  * chore(deps): bump golang.org/x/net from 0.28.0 to 0.29.0 (#3156)
+  * fix(css-map): just fixing a typo (#3152)
+
+-------------------------------------------------------------------
+Thu Aug 29 07:54:55 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.37.7:
+  * fix(wrapper): sanitize text content to remove all strings
+  * fix(wrapper): ignore chunks in strings
+  * fix(wrapper): fire `platformLoaded` event later
+  * feat(css-map): map `search-searchCategory-carouselButtonVisible` (#3146)
+  * feat(popupLyrics): add lrclib provider (#3133)
+
+-------------------------------------------------------------------
+Sun Aug 25 19:05:07 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.37.4:
+  * fix(wrapper/webpack): do not return while webpack is loading
+  * fix(wrapper): wait until all modules loaded (#3143)
+  * fix(preprocess): match more special characters for `_platform`
+  * fix(workflows): only run build & linter on main branches (#3137)
+  * fix(wrapper): replace find string for `Slider` component (#3134)
+  * fix(preprocess): adapt `_platform` regex for `1.2.44`
+  * style(lyrics-plus): adjust lyric animation in `karaoke` mode (#3130)
+  * chore(deps): bump golang.org/x/net from 0.27.0 to 0.28.0 (#3129)
+  * fix(lyrics-plus/genius): remove `encodeURIComponent` (#3131)
+  * fix(new-releases): use `50000` as a limit
+
+-------------------------------------------------------------------
+Sun Aug 18 16:34:07 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Initial package, version 2.37.1

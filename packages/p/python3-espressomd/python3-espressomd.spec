@@ -28,6 +28,10 @@ Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numpy.patch gh#espressomd/espresso#4992
+Patch0:         numpy.patch
+# PATCH-FIX-UPSTREAM cmake.patch gh#espressomd/espresso#4992
+Patch1:         cmake.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86} armv7l
 BuildRequires:  cmake
@@ -43,7 +47,7 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_mpi-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  python3-Cython < 3
+BuildRequires:  python3-Cython < 3.0.10
 BuildRequires:  python3-devel
 BuildRequires:  python3-h5py
 BuildRequires:  python3-numpy-devel

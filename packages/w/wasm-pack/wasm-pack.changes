@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 10 23:59:07 UTC 2024 - William Brown <william.brown@suse.com>
+
+- explicitly depend on cargo to pull in latest compiler revision
+
+-------------------------------------------------------------------
 Tue Jul 02 01:42:06 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.13.0~0:

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 11 09:49:48 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.77
+  ## ✨ Features
+
+  * Add docs for widget container height option (https://github.com/element-hq/element-web/pull/27922). Contributed by @dbkr.
+  * Allow user to set timezone (https://github.com/matrix-org/matrix-react-sdk/pull/12775). Contributed by @Timshel.
+  * Implement download\_file in widget driver (https://github.com/matrix-org/matrix-react-sdk/pull/12931). Contributed by @weeman1337.
+  * Sort the pinning message list in the same order than the banner. By timeline order. (https://github.com/matrix-org/matrix-react-sdk/pull/12937). Contributed by @florianduros.
+  * Display pinned messages on a banner at the top of a room (https://github.com/matrix-org/matrix-react-sdk/pull/12917). Contributed by @florianduros.
+  * Add a config option to control the default widget container height (https://github.com/matrix-org/matrix-react-sdk/pull/12893). Contributed by @dbkr.
+  * RTE drafts (https://github.com/matrix-org/matrix-react-sdk/pull/12674). Contributed by @langleyd.
+  * Add thread information in pinned message list (https://github.com/matrix-org/matrix-react-sdk/pull/12902). Contributed by @florianduros.
+  * Add Pin/Unpin action in quick access of the message action bar (https://github.com/matrix-org/matrix-react-sdk/pull/12897). Contributed by @florianduros.
+
+  ## 🐛 Bug Fixes
+
+  * Fix read receipt animation (https://github.com/matrix-org/matrix-react-sdk/pull/12923). Contributed by @dbkr.
+  * Display the indicator even with one message in pinned message banner (https://github.com/matrix-org/matrix-react-sdk/pull/12946). Contributed by @florianduros.
+  * Always display last pinned message on the banner (https://github.com/matrix-org/matrix-react-sdk/pull/12945). Contributed by @florianduros.
+  * The pinned message banner or list are triggering  🎉 effect. (https://github.com/matrix-org/matrix-react-sdk/pull/12944). Contributed by @florianduros.
+  * Fix reply message truncation on 2 lines (https://github.com/matrix-org/matrix-react-sdk/pull/12929). Contributed by @florianduros.
+  * Fix pin/unpin slowness and non refresh from the message action bar (https://github.com/matrix-org/matrix-react-sdk/pull/12934). Contributed by @florianduros.
+  * Ignore desktop for minimum browser support. (https://github.com/matrix-org/matrix-react-sdk/pull/12928). Contributed by @florianduros.
+
+-------------------------------------------------------------------
 Fri Aug 30 08:40:45 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.76

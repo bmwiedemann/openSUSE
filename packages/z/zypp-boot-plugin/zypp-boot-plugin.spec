@@ -17,7 +17,7 @@
 
 
 Name:           zypp-boot-plugin
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
 Summary:        Zypp plugin for checking if a reboot is needed
 License:        AGPL-3.0-or-later

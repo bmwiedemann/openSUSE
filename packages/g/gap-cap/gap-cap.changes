@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 11 15:30:19 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.09.08
+  * the opposite category constructor now respects the enrichment of the input category
+  * Restore the previous behavior of only_primitive_operations for Opposite
+  * Attach a ring instance to the data types of rings and their elements
+  * Allow to specify weights of operations in CategoryConstructor
+  * Require additional filters to be dense lists of the expected length
+
+-------------------------------------------------------------------
 Sat Mar 23 21:24:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.03.02

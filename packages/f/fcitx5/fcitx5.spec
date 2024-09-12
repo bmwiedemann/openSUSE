@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.9
+Version:        5.1.10
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later

@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 472731909fa34bd7bc9c087e4c27943f9835f111
-%define git_short   472731909fa3
+%define git_version 7f7fdf5fed64eb6a7caf99b3e12efcf9d60e311c
+%define git_short   7f7fdf5fed64
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.7.21
+Version:        1.7.22
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -43,7 +43,7 @@ Source2:        %{name}.service
 Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.22
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  libbtrfs-devel >= 3.8

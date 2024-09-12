@@ -37,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.50
+Version:        16.0.51
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -52,7 +52,6 @@ Requires:       /usr/bin/sed
 Requires:       coreutils
 Requires:       findutils
 Requires:       systemd-rpm-macros
-Requires:       (sdbootutil if sdbootutil)
 Requires:       rpm
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
@@ -120,6 +119,8 @@ install -pm 644 "depmod-00-system.conf" "%{buildroot}%{depmod_dir}/00-system.con
 install -d -m 755 "%{buildroot}/usr/lib/module-init-tools"
 install -pm 755 -t "%{buildroot}/usr/lib/module-init-tools/" \
 	weak-modules2 driver-check.sh unblacklist lsinitrd-quick get_dracut_drivers
+install -pm 755 "dracut-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
+install -pm 755 "mkosi-initrd-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
 install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
 install -d -m 755 "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
 install -pm 755 "kernel-scriptlets/cert-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
@@ -249,6 +250,8 @@ exit 0
 #
 %files scriptlets
 /usr/lib/module-init-tools/kernel-scriptlets
+/usr/lib/module-init-tools/dracut-posttrans
+/usr/lib/module-init-tools/mkosi-initrd-posttrans
 /usr/lib/module-init-tools/regenerate-initrd-posttrans
 
 %changelog

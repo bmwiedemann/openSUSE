@@ -248,4 +248,20 @@
     * Fix RFC 2069 mode digest authentication. (#3045)</comment>
     <requestid>1160630</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fb70144100b7252d5c3e1de432b3c138</srcmd5>
+    <version>0.27.2</version>
+    <time>1726152841</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.27.2:
+  * Reintroduced supposedly-private `URLTypes` shortcut.
+  * Support for `zstd` content decoding using the python
+    `zstandard` package is added. Installable using
+    `httpx[zstd]`.
+  * Improved error messaging for `InvalidURL` exceptions.
+  * Fix `app` type signature in `ASGITransport`.
+
+  * The app=... shortcut has been deprecated. Use the explicit style of</comment>
+    <requestid>1200062</requestid>
+  </revision>
 </revisionlist>

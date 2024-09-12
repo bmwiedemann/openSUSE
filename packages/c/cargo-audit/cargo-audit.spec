@@ -30,6 +30,7 @@ Source0:        %{workspace_name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}

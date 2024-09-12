@@ -17,18 +17,20 @@
 
 
 Name:           gfan
-Version:        0.6.2
+Version:        0.7
 Release:        0
 Summary:        Calculation of Gröbner fans
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
-URL:            http://home.imf.au.dk/jensen/software/gfan/gfan.html
-
-Source:         http://home.imf.au.dk/jensen/software/gfan/%name%version.tar.gz
+URL:            https://math.au.dk/~jensen/software/gfan/gfan.html
+Source:         https://math.au.dk/~jensen/software/gfan/%name%version.tar.gz
 Patch1:         gfan-automake.diff
-Patch2:         gfan-warnings.diff
-Patch3:         cddlib.patch
-Patch4:         gfan-odr.patch
+# From fedora
+Patch2:         gfan-warning.patch
+Patch3:         gfan-soplex.patch
+Patch4:         gfan-c++20.patch
+Patch5:         gfan-gcd.patch
+Patch6:         gfan-multiplicities.patch
 BuildRequires:  automake
 BuildRequires:  cddlib-devel
 BuildRequires:  gcc-c++
@@ -48,6 +50,8 @@ BuildRequires:  tex(english.ldf)
 %endif
 %endif
 %endif
+# Software requires the presence of __int128; possibly relevant for armv7l too
+ExcludeArch:    %ix86
 
 %description
 Gfan is a software package for computing Gröbner fans and tropical
@@ -58,11 +62,10 @@ varieties. These are polyhedral fans associated to polynomial ideals.
 
 %build
 autoreconf -fi
-export CXXFLAGS="%optflags -Wno-sign-compare -Wno-reorder -Wno-unused -Wno-comment -Wno-misleading-indentation -std=gnu++11"
 %configure
-make %{?_smp_mflags} V=1
+%make_build V=1
 %if 0%{?with_pdf}
-make -C doc %{?_smp_mflags}
+%make_build -C doc
 %endif
 
 %install

@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Sep 10 15:01:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.11.2
+  * Support Python 3.12 Syntax for Generics (PEP 695)
+  * Support for `functools.partial`
+  * Stricter Checks for Untyped Overrides
+  * Type Inference Improvements
+  * Improvements to Detection of Overlapping Overloads
+  * Better Support for Type Hints in Expressions
+  * Mypyc Improvements
+    + Support Python 3.12 syntax for generic functions and classes
+    + Support Python 3.12 type alias syntax
+    + Fix ParamSpec
+    + Inline fast paths of integer unboxing operations
+    + Inline tagged integer arithmetic and bitwise operations
+    + Allow specifying primitives as pure
+  * Changes to Stubtest
+    + Ignore `_ios_support`
+    + Improve support for Python 3.13
+  * Changes to Stubgen
+    + Gracefully handle invalid `Optional` and recognize aliases to PEP 604 unions
+    + Fix for Python 3.13
+    + Preserve enum value initialisers
+  * Miscellaneous New Features
+    + Add error format support and JSON output option via `--output json`
+    + Support `enum.member` in Python 3.11+
+    + Support `enum.nonmember` in Python 3.11+
+    + Support `namedtuple.__replace__` in Python 3.13
+    + Support `rename=True` in collections.namedtuple
+    + Add support for `__spec__`
+  * Changes to Error Reporting
+    + Mention `--enable-incomplete-feature=NewGenericSyntax` in messages
+    + Do not report plugin-generated methods with `explicit-override`
+    + Use and display namespaces for function type variables
+    + Fix false positive for Final local scope variable in Protocol
+    + Use Never in more messages, use ambiguous in join
+    + Log full path to config file in verbose output
+    + Added `[prop-decorator]` code for unsupported property decorators (#14461)
+    + Suppress second error message with `:=` and `[truthy-bool]`
+    + Generate error for assignment of functional Enum to variable of different name
+    + Fix error reporting on cached run after uninstallation of third party library
+  * Fixes for Crashes
+    + Fix daemon crash on invalid type in TypedDict
+    + Fix crash and bugs related to `partial()`
+    + Fix crash when overriding with unpacked TypedDict
+    + Fix crash on TypedDict unpacking for ParamSpec
+    + Fix crash involving recursive union of tuples
+    + Fix crash on invalid callable property override
+    + Fix crash on unpacking self in NamedTuple
+    + Fix crash on recursive alias with an optional type
+    + Fix crash on type comment inside generic definitions
+  * Changes to Documentation
+    + Use inline config in documentation for optional error codes
+    + Use lower-case generics in documentation
+    + Add documentation for show-error-code-links
+    + Update CONTRIBUTING.md to include commands for Windows
+  * Other Notable Improvements and Fixes
+    + Fix ParamSpec inference against TypeVarTuple
+    + Fix explicit type for `partial`
+    + Always allow lambda calls
+    + Fix isinstance checks with PEP 604 unions containing None
+    + Fix self-referential upper bound in new-style type variables
+    + Consider overlap between instances and callables
+    + Allow new-style self-types in classmethods
+    + Fix isinstance with type aliases to PEP 604 unions
+    + Properly handle unpacks in overlap checks
+    + Fix type application for classes with generic constructors
+    + Update `typing_extensions` to >=4.6.0 to fix Python 3.12 error
+    + Avoid "does not return" error in lambda
+    + Fix bug with descriptors in non-strict-optional mode
+    + Don’t leak unreachability from lambda body to surrounding scope
+    + Fix issues with non-ASCII characters on Windows
+    + Fix for type narrowing of negative integer literals
+    + Fix confusion between .py and .pyi files in mypy daemon
+    + Fix type of `tuple[X, Y]` expression
+    + Don't forget that a `TypedDict` was wrapped in `Unpack`
+      after a `name-defined` error occurred
+    + Mark annotated argument as having an explicit, not inferred type
+    + Don't consider Enum private attributes as enum members
+    + Fix Literal strings containing pipe characters
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Mon Jun 17 05:39:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.10.0:

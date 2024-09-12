@@ -1,0 +1,813 @@
+--- gfan0.7/src/app_librarytest.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/app_librarytest.cpp	2024-08-12 11:05:45.720320231 -0600
+@@ -12,8 +12,8 @@
+ #include "setoper.h"
+ #include "cdd.h"
+ #else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
++#include "cddlib/setoper.h"
++#include "cddlib/cdd.h"
+ #endif
+ #include <iostream>
+ #include <fstream>
+--- gfan0.7/src/application.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/application.cpp	2024-08-12 11:05:45.720320231 -0600
+@@ -3,6 +3,8 @@
+ #include <assert.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <limits.h>
++#include <unistd.h>
+ #include <string>
+ #include <list>
+ #include <vector>
+@@ -566,11 +568,11 @@ void Application::makeSymbolicLinks(cons
+       if(all || p->includeInDefaultInstallation())
+ 	if(strlen(p->name())>0)
+ 	  {
+-	    char c[1024];
+-	    sprintf(c,"ln -s %s%s %s%s%s\n",path,name,path,name,p->name());
+-	    fprintf(stderr,"%s",c);
+-	    int err=system(c);
+-	    assert(err==0);
++	    char c[PATH_MAX], d[PATH_MAX];
++	    snprintf(c,PATH_MAX,"%s%s",path,name);
++	    snprintf(d,PATH_MAX,"%s%s%s",path,name,p->name());
++	    fprintf(stderr,"ln -s %s %s\n",c,d);
++	    symlink(c,d);
+ 	  }
+       p=p->next;
+     }
+--- gfan0.7/src/app_test.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/app_test.cpp	2024-08-13 10:46:14.680617406 -0600
+@@ -1,5 +1,8 @@
+ #include <iostream>
+ #include <stdlib.h>
++#include <dirent.h>
++#include <errno.h>
++#include <unistd.h>
+ #include "parser.h"
+ #include "printer.h"
+ #include "polynomial.h"
+@@ -813,7 +816,7 @@ int testGfanLib()
+ 		int largest=10+2;
+ 		vector<int> halfOpenConesStatistics(largest+1);
+ 		vector<int> nonEmptyIntersectionsStatistics(largest+1);
+-		for(int k=2/*largest/*2*/;k<=largest;k++)
++		for(int k=2/*largest/2*/;k<=largest;k++)
+ 		{
+ 			vector<HalfOpenCone<CircuitTableInt32> > f;
+ 			vector<gfan::Matrix<CircuitTableInt32> > configurations=convertMatrixVectorT(MixedVolumeExamples::cyclic(k));
+@@ -1333,11 +1336,7 @@ if(0)			{
+ 		  {
+ 			  outputName=outputName+"New";
+ 		  }
+-		  int err=0;
+-		  {
+-			  string t="rm -f "+outputName;
+-			  err|=system(t.c_str());
+-		  }
++		  int err=(unlink(outputName.c_str()) == 0 || errno == ENOENT) ? 0 : 1;
+ 		  string command3="cat <"+input+"|"+string(command2)+">"+outputName;
+ 		  cerr<<"Running command:\""<<command3<<"\""<<endl;
+ 		  err|=system(command3.c_str());
+@@ -1351,24 +1350,17 @@ if(0)			{
+ 
+   list<string> subFolderNames()
+   {
+-#define tempName "GfAnTeMpTeStS"
+-	  char command[256];
+-	  int err=system("rm " tempName);
+-	  err=0;//Having err!=0 above is probably not at mistake. Rather the file did not exist.
+-	  sprintf(command,"ls %s>" tempName ,testSuiteFolderOption.getValue());
+-	  err|=system(command);
+-	  assert(err==0);
+-
+ 	  list<string> ret;
+-	  FILE *f=fopen(tempName,"r");
+-	  assert(f);
+-	  char name[256];
+-	  while(fgets(name,255,f))
++	  DIR *dir = opendir(testSuiteFolderOption.getValue());
++	  struct dirent *dirent;
++
++	  assert(dir);
++	  for (struct dirent *ent = readdir(dir); ent; ent = readdir(dir))
+ 	  {
+-		  for(int i=0;i<255 && name[i];i++)if(name[i]=='\n'){name[i]=0;}
+-		  if(name[0]>='0' && name[0]<='9')ret.push_back(string(testSuiteFolderOption.getValue())+"/"+string(name));
++		  if (ent->d_name[0]>='0' && ent->d_name[0]<='9')
++			  ret.push_back(string(testSuiteFolderOption.getValue())+"/"+string(ent->d_name));
+ 	  }
+-	  fclose(f);
++	  closedir(dir);
+ 	  return ret;
+   }
+ 
+@@ -1379,7 +1371,7 @@ if(0)			{
+ //		  gfan::Matrix<CircuitTableInteger>::readMatrix(cin,4);
+ 	  }
+ 
+-	  if(developerTestOption.getValue()!="testsuite")
++	  if(strcmp(developerTestOption.getValue(),"testsuite") != 0)
+ 	  {
+ //    lpRationalFunctionTest();
+ //    testRationalFunctionField();
+--- gfan0.7/src/bergman.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/bergman.cpp	2024-08-12 11:05:45.721320218 -0600
+@@ -327,7 +327,7 @@ log0 AsciiPrinter(Stderr).printPolynomia
+       if(doesPermutationFixCone(*j))numFixed++;
+     
+     //  fprintf(Stderr,"groupSize = %i, numFixed = %i\n",groupSize,numFixed);
+-    return groupSize/numFixed;
++    return (numFixed>0) ? groupSize/numFixed : 0;
+   }
+ 
+   void markFacet(IntegerVector const &relIntRidgeVector)
+--- gfan0.7/src/breadthfirstsearch.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/breadthfirstsearch.cpp	2024-08-12 11:05:45.722320204 -0600
+@@ -260,7 +260,7 @@ public:
+       }
+ 
+     log2 fprintf(Stderr,"numFixed = %i\n",numFixed);
+-    return groupSize/numFixed;
++    return (numFixed>0) ? groupSize/numFixed : 0;
+   }
+ };
+ 
+--- gfan0.7/src/bsptree.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/bsptree.cpp	2024-08-12 11:05:45.722320204 -0600
+@@ -131,7 +131,8 @@ public:
+               p=&(i->first);
+             }
+         }
+-      normal=*p;
++      if (p)
++        normal=*p;
+     }
+     return normal;
+     }
+--- gfan0.7/src/enumeration.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/enumeration.h	2024-08-12 11:05:45.722320204 -0600
+@@ -36,7 +36,7 @@ class EnumerationFilePrinter: public Enu
+   FILE *file;
+  public:
+   EnumerationFilePrinter();
+-  ~EnumerationFilePrinter();
++  virtual ~EnumerationFilePrinter();
+ 
+   void open(std::string filename);
+   void open(FILE *file);
+@@ -61,6 +61,7 @@ class EnumerationAlgorithm
+   bool targetBasis(const PolynomialSet &groebnerBasis){bool ret=true;if(target)ret=target->basis(groebnerBasis);printProgress();return ret;}
+  public:
+   EnumerationAlgorithm(){target=0;progressCounter=0;}
++  virtual ~EnumerationAlgorithm(){}
+   void setEnumerationTarget(EnumerationTarget *target){this->target=target;}
+   virtual void enumerate(const PolynomialSet &groebnerBasis){}
+ };
+--- gfan0.7/src/field.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/field.h	2024-08-13 10:48:41.438830878 -0600
+@@ -207,7 +207,7 @@ class FieldElementImplementation
+   virtual int getIntegerRepresentation()const
+   {
+ 	  fprintf(stderr,"*this is not in Z/pZ.\n");
+-	  assert(0);
++	  abort();
+   }
+   virtual bool isInteger()const
+   {
+@@ -222,7 +222,7 @@ class FieldElementImplementation
+ 
+   Field& operator=(const Field& a)
+     {
+-      assert(0);
++      abort();
+     }//assignment
+ };
+ 
+@@ -270,7 +270,7 @@ class FieldImplementation
+   virtual FieldElement zHomomorphism(int n)=0;
+   virtual FieldElement random()
+   {
+-	  assert(0);
++	  abort();
+   }
+     virtual int getCharacteristic()const=0;
+     virtual const char *name()=0;
+--- gfan0.7/src/field_rationalfunctions2.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/field_rationalfunctions2.cpp	2024-08-13 10:49:15.909411259 -0600
+@@ -509,7 +509,7 @@ class FieldElementRationalFunction2 : pu
+ 
+   static string LaTeXTranslator(const string &s)
+   {
+-	  assert(0);//not supported yet
++	  abort();//not supported yet
+ /*    int startIndex=0;
+     string sign;
+     if(s[0]=='-')
+--- gfan0.7/src/field_rationals.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/field_rationals.cpp	2024-08-12 13:56:15.163561256 -0600
+@@ -397,7 +397,7 @@ const char *FieldRationalsImplementation
+ 
+ /*FieldRationals::FieldRationals():
+   Field(new FieldRationalsImplementation())
+-{
++{*/
+   /*  fprintf(Stderr,"Adding field rationals\n");
+   next=list;
+   list=this;
+--- gfan0.7/src/gfanlib_matrix.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_matrix.h	2024-08-12 13:31:35.566692074 -0600
+@@ -45,7 +45,7 @@ template <class T>
+ class HasMemberType_##Type
+ {
+ private:
+-/*	using Yes=char[2];
++	using Yes=char[2];
+ 	using No=char[1];
+ 	struct Fallback {struct Type{};};
+ 	struct Derived:T,Fallback{};
+--- gfan0.7/src/gfanlib_memoryresource.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_memoryresource.h	2024-08-12 13:31:08.231066021 -0600
+@@ -34,7 +34,7 @@ void test() {
+ 	//				 t.a=0;
+ 				 for(int i=0;i<100000;i++)
+ 					 {
+-						 std::experimental::pmr::vector<MyInt> A(100000,t/*	,&stackResource/);
++						 std::experimental::pmr::vector<MyInt> A(100000,t,&stackResource);
+ 						 //A.resize(100000,MyInt{});
+ 					 }
+ 			 }
+--- gfan0.7/src/gfanlib_symmetry.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_symmetry.cpp	2024-08-12 11:05:45.722320204 -0600
+@@ -423,7 +423,7 @@ int SymmetryGroup::orbitSize(ZVector con
+           if(doesFix)numFixed++;
+         }
+     }
+-  return groupSize/numFixed;
++  return (numFixed>0) ? groupSize/numFixed : 0;
+ }
+ 
+ 
+--- gfan0.7/src/gfanlib_tableau.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_tableau.h	2024-08-13 10:59:21.016045143 -0600
+@@ -845,7 +845,7 @@ template <class mvtyp> class Tableau{
+ 					return true;//break; //If this is reached we are ok
+ 				}
+ 			}
+-			assert(0);
++			abort();
+ 		}
+ 		void checkInLexTriangulation()
+ 		{
+@@ -3059,7 +3059,7 @@ static bool isSubsetOf(vector<int> const
+ //		    polymakeFile.writeCardinalProperty("DIM",getMaxDim());
+ 		    polymakeFile.writeCardinalProperty("LINEALITY_DIM",linealitySpace.getHeight());
+ //		    if(flags&&FPF_boundedInfo)polymakeFile.writeMatrixProperty("RAYS",toZMatrix(vertices),true);//??????
+-		    if(flags&&FPF_rays)polymakeFile.writeMatrixProperty("RAYS",toZMatrix(vertices),true);
++		    if(flags&FPF_rays)polymakeFile.writeMatrixProperty("RAYS",toZMatrix(vertices),true);
+ 		    polymakeFile.writeCardinalProperty("N_RAYS",vertices.getHeight());
+ 
+ 		    polymakeFile.writeMatrixProperty("LINEALITY_SPACE",toZMatrix(linealitySpace),ambientDimension);
+--- gfan0.7/src/gfanlib_zcone.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_zcone.cpp	2024-08-12 11:05:45.723320190 -0600
+@@ -16,8 +16,8 @@
+ #include "setoper.h"
+ #include "cdd.h"
+ #else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
++#include "cddlib/setoper.h"
++#include "cddlib/cdd.h"
+ #endif
+ //}
+ 
+@@ -52,8 +52,8 @@ namespace gfan{
+ 				  "dd_free_global_constants()\n"
+ 				  "in your deinitialisation code (only available for cddlib version>=094d).\n"
+ 				  "This requires the header includes:\n"
+-				  "#include \"cdd/setoper.h\"\n"
+-				  "#include \"cdd/cdd.h\"\n"
++				  "#include \"cddlib/setoper.h\"\n"
++				  "#include \"cddlib/cdd.h\"\n"
+ 				  "\n"
+ 				  "Alternatively, you may call gfan:initializeCddlibIfRequired() and deinitializeCddlibIfRequired()\n"
+ 				  "if gfanlib is the only code using cddlib. If at some point cddlib is no longer required by gfanlib\n"
+--- gfan0.7/src/gfanlib_z.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/gfanlib_z.h	2024-08-12 13:53:41.429631248 -0600
+@@ -218,17 +218,17 @@ namespace gfan{
+   {
+ 	  return !(((long int)(value->_mp_d))&1);
+   }
+-  void initSetInt32(std::int32_t v)//should only be used in constructor or after mpz_clear has been called
++  void initSetInt32(int32_t v)//should only be used in constructor or after mpz_clear has been called
+   {
+ 	  value->_mp_alloc=v;
+-	  *((long int*)&(value->_mp_d))=1;
++	  value->_mp_d=reinterpret_cast<mp_limb_t *>(1);
+   }
+-  void setInt32(std::int32_t v)
++  void setInt32(int32_t v)
+   {
+ 	  assert(!hasLimbs());
+ 	  value->_mp_alloc=v;
+   }
+-  std::int32_t getInt32()const
++  int32_t getInt32()const
+   {
+ 	  assert(!hasLimbs());
+ 	  return int32_t(value[0]._mp_alloc);
+--- gfan0.7/src/lp_cdd.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/lp_cdd.cpp	2024-08-12 11:05:45.724320177 -0600
+@@ -5,9 +5,9 @@
+ #include "cdd.h"
+ #include "cdd_f.h"
+ #else
+-#include "cdd/setoper.h"
+-#include "cdd/cdd.h"
+-#include "cdd/cdd_f.h"
++#include "cddlib/setoper.h"
++#include "cddlib/cdd.h"
++#include "cddlib/cdd_f.h"
+ #endif
+ //}
+ #include "termorder.h"
+--- gfan0.7/src/lp.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/lp.cpp	2024-08-13 10:49:50.357991909 -0600
+@@ -58,7 +58,7 @@ bool LpSolver::interiorPoint(const Integ
+ bool LpSolver::hasInteriorPoint(const IntegerVectorList &g, bool strictlyPositive, IntegerVector const *equalitySet)
+ {
+   fprintf(stderr,"hasInteriorPoint method not supported in \"%s\" LP class\n",name());
+-  assert(0);
++  abort();
+ }
+ 
+ 
+@@ -118,7 +118,7 @@ void LpSolver::dual(int n, const Integer
+ bool LpSolver::hasHomogeneousSolution(int n, const IntegerVectorList &inequalities, const IntegerVectorList &equations)
+ {
+   fprintf(stderr,"hasHomogeneousSolution method not supported in \"%s\" LP class\n",name());
+-  assert(0);
++  abort();
+ }
+ 
+ static LpSolver *soplex,*soplexCddGmp,*huber,*cdd,*cddgmp,*default_;
+--- gfan0.7/src/lp_soplexcdd.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/lp_soplexcdd.cpp	2024-08-12 13:34:07.043619886 -0600
+@@ -306,7 +306,7 @@ static bool isInfeasibilityCertificate(I
+   return true;
+ }
+ /*	     for(IntegerVectorList::const_iterator j=g.begin();j!=g.end();j++)
+-	       {
++	       {*/
+ 		 /*		 double prod=0;
+ 		 for(int i=0;i<work.nRows();i++)
+ 		   {prod+=(*j)[i]*certificate[i];
+--- gfan0.7/src/monomial.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/monomial.cpp	2024-08-12 13:41:31.558539133 -0600
+@@ -5,7 +5,7 @@
+ 
+ Monomial::Monomial(PolynomialRing const &r,const IntegerVector &v):exponent(v),theRing(r)
+ {
+-  if(v.size()!=r.getNumberOfVariables())
++  if((int)v.size()!=r.getNumberOfVariables())
+     {
+       AsciiPrinter(Stderr).printPolynomialRing(r);
+       AsciiPrinter(Stderr).printVector(v); 
+@@ -24,7 +24,7 @@ string Monomial::toString(bool alwaysWri
+   const int sign=1;
+ 
+   bool variablePrinted=false;
+-  for(int i=0;i<exponent.size();i++)if(exponent[i]*sign>0)
++  for(int i=0;(size_t)i<exponent.size();i++)if(exponent[i]*sign>0)
+     {
+       s << getRing().getVariableName(i);
+       if(int(exponent[i]*sign)!=1)
+--- gfan0.7/src/nbody.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/nbody.cpp	2024-08-13 10:50:08.557770361 -0600
+@@ -16,7 +16,7 @@ static int rIndex(int i, int j, int N, b
+ 	if((I==i)&&(J==j))return r;
+ 	r++;
+       }
+-  assert(0);
++  abort();
+ }
+ 
+ static int sIndex(int i, int j, int N, bool withMasses)
+--- gfan0.7/src/packedmonomial.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/packedmonomial.cpp	2024-08-13 10:50:25.380565573 -0600
+@@ -18,7 +18,7 @@ vector<MonomialType> minimized(vector<Mo
+ {
+ 	vector<MonomialType> temp(generators);
+ 
+-	assert(0);
++	abort();
+ //	sort(temp.begin(),temp.end());
+ /*	g->sort(polynomialOrder(LexicographicTermOrder()));
+ 
+--- gfan0.7/src/parser.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/parser.cpp	2024-08-13 10:50:41.716366715 -0600
+@@ -637,7 +637,7 @@ Field CharacterBasedParser::parseField()
+     }
+ 
+   parserError("field",c);
+-  assert(0);
++  abort();
+ }
+ 
+ 
+--- gfan0.7/src/polyhedralfan.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/polyhedralfan.cpp	2024-08-13 10:51:08.061046009 -0600
+@@ -1671,7 +1671,7 @@ PolyhedralCone PolyhedralFan::coneContai
+   for(PolyhedralConeList::const_iterator i=cones.begin();i!=cones.end();i++)
+     if(i->contains(v))return i->faceContaining(v);
+   debug<<"Vector "<<v<<" not contained in support of fan\n";
+-  assert(0);
++  abort();
+ }
+ 
+ 
+--- gfan0.7/src/polymakefile.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/polymakefile.cpp	2024-08-13 10:51:47.299568351 -0600
+@@ -328,7 +328,7 @@ void PolymakeFile::writeMatrixProperty(c
+ 
+ IntegerMatrix PolymakeFile::readArrayArrayIntProperty(const char *p, int width)
+ {
+-  assert(0);//Not implemented yet.
++  abort();//Not implemented yet.
+ }
+ 
+ 
+@@ -371,7 +371,7 @@ static list<int> readIntList(istream &s)
+ {
+   list<int> ret;
+   int c=s.peek();
+-  while((c>='0') && (c<='9')|| (c==' '))
++  while((c>='0' && c<='9')|| c==' ')
+     {
+       //      fprintf(Stderr,"?\n");
+       int r;
+--- gfan0.7/src/symmetry.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/symmetry.cpp	2024-08-12 11:05:45.724320177 -0600
+@@ -580,7 +580,7 @@ int SymmetryGroup::orbitSize(IntegerVect
+           if(doesFix)numFixed++;
+         }
+     }
+-  return groupSize/numFixed;
++  return (numFixed>0) ? groupSize/numFixed : 0;
+ }
+ 
+ 
+--- gfan0.7/src/vektor.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/vektor.cpp	2024-08-12 13:37:34.017788560 -0600
+@@ -96,17 +96,17 @@ int gcdGFAN(int r, int s)
+ int gcdOfVector(IntegerVector const &v)
+ {
+   int ret=0;
+-  for(int i=0;i<v.size();i++)if(ret=v[i])break;
++  for(size_t i=0;i<v.size();i++)if((ret=v[i]))break;
+   if(ret<0)ret=-ret;
+   assert(ret!=0);
+-  for(int i=0;i<v.size();i++)ret=gcdGFAN(ret,v[i]);
++  for(size_t i=0;i<v.size();i++)ret=gcdGFAN(ret,v[i]);
+ 
+   return ret;
+ }
+ 
+ int gcdOfVectorCandidate(IntegerVector const &v, int ret)
+ {
+-  for(int i=0;i<v.size();i++)
++  for(size_t i=0;i<v.size();i++)
+ 	  {
+ 	  ret=gcdGFAN(ret,v[i]);
+ 	  if(ret==1)break;
+--- gfan0.7/src/vektor.h.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/vektor.h	2024-08-12 14:56:31.328176502 -0600
+@@ -1,6 +1,7 @@
+ #ifndef VEKTOR_H_INCLUDED
+ #define VEKTOR_H_INCLUDED
+ 
++#include <iostream>
+ #include <vector>
+ #include <list>
+ #include <assert.h>
+@@ -14,8 +15,6 @@ using namespace std;
+ //typedef signed long int int64;
+ typedef int64_t int64;
+ 
+-void outOfRange(int i, int n);
+-
+ /*
+  * TODO: in the process of making gfan a library to be used by POLYMAKE etc.
+  * we need to:
+@@ -80,7 +79,7 @@ public:
+   template<class T> explicit Vektor(const Vektor<T>& c)
+ 	  :v(c.size())
+ 	{
+-	  for(int i=0;i<size();i++)v[i]=typ(c[i]);
++	  for(size_t i=0;i<size();i++)v[i]=typ(c[i]);
+ 	}
+ 
+   //--------
+@@ -88,10 +87,13 @@ public:
+   //--------
+   typ& operator[](int n)
+     {
+-      if(!(n>=0 && n<v.size()))outOfRange(n,v.size());
++      if(!(n>=0 && (size_t)n<v.size())) {
++        std::cerr<<"Index out of range. i="<<n<<" n="<<v.size()<<std::endl;
++        assert(0);
++      }
+       return (v[n]);
+     }
+-  const typ& operator[](int n)const{assert(n>=0 && n<v.size());return (v[n]);}
++  const typ& operator[](int n)const{assert(n>=0 && (size_t)n<v.size());return (v[n]);}
+   const typ& UNCHECKEDACCESS(int n)const{return (v[n]);}
+   typ& UNCHECKEDACCESS(int n){return (v[n]);}
+ 
+@@ -100,7 +102,7 @@ public:
+   //-------------
+   unsigned int size()const{return v.size();};
+   void resize(int n){v.resize(n,0);};
+-  void grow(int i){if(size()<i)resize(i);}
++  void grow(int i){if(size()<(size_t)i)resize(i);}
+   void push_back(typ a)
+   {
+     v.push_back(a);
+@@ -117,7 +119,7 @@ public:
+     {
+       if(size()<b.size())return true;
+       if(size()>b.size())return false;
+-      for(int i=0;i<size();i++)
++      for(size_t i=0;i<size();i++)
+ 	{
+ 	  if(v[i]<b[i])return true;
+ 	  if(b[i]<v[i])return false;
+@@ -128,10 +130,10 @@ public:
+   //-----------------
+   // Arithmetic fast
+   //-----------------
+-  typ sum()const{typ f=0;for(int i=0;i<size();i++)f+=v[i];return f;};
+-  Vektor& operator+=(const Vektor& q){assert(size()==q.size());for(int i=0;i<size();i++)v[i]+=q.v[i];return *this;}
+-  Vektor& operator-=(const Vektor& q){assert(size()==q.size());for(int i=0;i<size();i++)v[i]-=q.v[i];return *this;}
+-  inline friend typ dot(const Vektor& p, const Vektor& q){assert(p.size()==q.size());typ s=0;for(int i=0;i<p.size();i++)s+=p[i]*q[i];return s;}
++  typ sum()const{typ f=0;for(size_t i=0;i<size();i++)f+=v[i];return f;};
++  Vektor& operator+=(const Vektor& q){assert(size()==q.size());for(size_t i=0;i<size();i++)v[i]+=q.v[i];return *this;}
++  Vektor& operator-=(const Vektor& q){assert(size()==q.size());for(size_t i=0;i<size();i++)v[i]-=q.v[i];return *this;}
++  inline friend typ dot(const Vektor& p, const Vektor& q){assert(p.size()==q.size());typ s=0;for(size_t i=0;i<p.size();i++)s+=p[i]*q[i];return s;}
+  // inline friend int64 dotLong(const Vektor& p, const Vektor& q){assert(p.size()==q.size());int64 s=0;for(int i=0;i<p.size();i++)s+=(int64)p[i]*(int64)q[i];return s;}
+   inline friend int64 dotLong(const Vektor& p, const Vektor& q)
+   {
+@@ -186,50 +188,50 @@ public:
+       dest[*p]=*s;
+   }
+ 
+-  bool operator==(const Vektor & q)const{if(size()!=q.size())return false;for(int i=0;i<size();i++)if(v[i]!=q[i])return false;return true;}
++  bool operator==(const Vektor & q)const{if(size()!=q.size())return false;for(size_t i=0;i<size();i++)if(v[i]!=q[i])return false;return true;}
+   bool operator!=(const Vektor & q)const {return !(operator==(q));}
+   bool isZero() const
+     {
+-      int n=v.size();
+-      for(int i=0;i<n;i++)if(v[i]!=0)return 0;
++      size_t n=v.size();
++      for(size_t i=0;i<n;i++)if(v[i]!=0)return 0;
+       return 1;
+     }
+   bool isPositive() const
+     {
+-      int n=v.size();
+-      for(int i=0;i<n;i++)if(v[i]<=0)return 0;
++      size_t n=v.size();
++      for(size_t i=0;i<n;i++)if(v[i]<=0)return 0;
+       return 1;
+     }
+   bool isNonNegative() const
+     {
+-      int n=v.size();
+-      for(int i=0;i<n;i++)if(v[i]<0)return 0;
++      size_t n=v.size();
++      for(size_t i=0;i<n;i++)if(v[i]<0)return 0;
+       return 1;
+     }
+   int max()const
+   {
+     int ret=-0x7fffffff; //not completely correct, but kind of works for 64bit
+-    for(int i=0;i<v.size();i++)if(ret<v[i])ret=v[i];
++    for(size_t i=0;i<v.size();i++)if(ret<v[i])ret=v[i];
+     return ret;
+   }
+   int argMax()const
+   {
+ 	  int iret=-1;
+ 	  int ret=-0x7fffffff; //not completely correct, but kind of works for 64bit
+-	  for(int i=0;i<v.size();i++)if(ret<v[i]){ret=v[i];iret=i;}
++	  for(size_t i=0;i<v.size();i++)if(ret<v[i]){ret=v[i];iret=i;}
+ 	  return iret;
+   }
+   int min()const
+   {
+     int ret=0x7fffffff;
+-    for(int i=0;i<v.size();i++)if(ret>v[i])ret=v[i];
++    for(size_t i=0;i<v.size();i++)if(ret>v[i])ret=v[i];
+     return ret;
+   }
+   typ infinityNorm()const
+   {
+ 	  typ a=0;
+ 	  typ b=0;
+-	  for(int i=0;i<v.size();i++)
++	  for(size_t i=0;i<v.size();i++)
+ 		  {
+ 			  if(a<v[i])a=v[i];
+ 			  if(b>v[i])b=v[i];
+@@ -242,7 +244,7 @@ public:
+ 	  bool aOK=true;
+ 	  bool bOK=true;
+ 
+-	  for(int i=0;i<v.size();i++)
++	  for(size_t i=0;i<v.size();i++)
+ 		  {
+ 			  aOK&=(v[i]<k);
+ 			  bOK&=(v[i]>-k);
+@@ -257,9 +259,9 @@ public:
+       typ pq=dot(p,q);
+       return pq*pq==pp*qq;
+ */
+-	  int n=p.size();
++	  size_t n=p.size();
+ 	  assert(n==q.size());
+-	  int i;
++	  size_t i;
+ 	  for(i=0;i<n;i++)
+ 	  {
+ 		  if(p.v[i])break;
+@@ -268,7 +270,7 @@ public:
+ 	  if(q.v[i]==0)return q.isZero();
+ 	  int64 a=p.v[i];
+ 	  int64 b=q.v[i];
+-	  for(int j=0;j<n;j++)
++	  for(size_t j=0;j<n;j++)
+ 		  if(a*q.v[j]!=b*p.v[j])return false;
+ 	  return true;
+     }
+@@ -277,15 +279,15 @@ public:
+   // Arithmetic slow
+   //-----------------
+   inline friend Vektor operator-(const Vektor& q){return -1*q;};
+-  inline friend Vektor operator*(typ s, const Vektor& q){Vektor p=q;for(int i=0;i<q.size();i++)p[i]*=s;return p;}
+-  inline friend Vektor operator/(const Vektor& q, typ s){Vektor p=q;for(int i=0;i<q.size();i++)p[i]/=s;return p;}
+-  inline friend Vektor operator*(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(int i=0;i<p.size();i++)p1.v[i]*=q.v[i];return p1;}
++  inline friend Vektor operator*(typ s, const Vektor& q){Vektor p=q;for(size_t i=0;i<q.size();i++)p[i]*=s;return p;}
++  inline friend Vektor operator/(const Vektor& q, typ s){Vektor p=q;for(size_t i=0;i<q.size();i++)p[i]/=s;return p;}
++  inline friend Vektor operator*(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(size_t i=0;i<p.size();i++)p1.v[i]*=q.v[i];return p1;}
+ //  inline friend Vektor operator+(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(int i=0;i<p.size();i++)p1[i]+=q[i];return p1;}
+-  inline friend Vektor operator+(const Vektor& p, const Vektor& q){if(p.size()!=q.size()){fprintf(stderr,"%i %i\n",p.size(),q.size());assert(p.size()==q.size());};Vektor p1=p;for(int i=0;i<p.size();i++)p1[i]+=q[i];return p1;}
+-  inline friend Vektor operator-(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(int i=0;i<p.size();i++)p1[i]-=q[i];return p1;}
+-  friend Vektor max(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(int i=0;i<p.size();i++)if(p1[i]<q[i])p1[i]=q[i];return p1;}
+-  friend Vektor min(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(int i=0;i<p.size();i++)if(p1[i]>q[i])p1[i]=q[i];return p1;}
+-  friend Vektor coordinatewiseProduct(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1(q.size());for(int i=0;i<p.size();i++)p1[i]=p[i]*q[i];return p1;}
++  inline friend Vektor operator+(const Vektor& p, const Vektor& q){if(p.size()!=q.size()){fprintf(stderr,"%i %i\n",p.size(),q.size());assert(p.size()==q.size());};Vektor p1=p;for(size_t i=0;i<p.size();i++)p1[i]+=q[i];return p1;}
++  inline friend Vektor operator-(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(size_t i=0;i<p.size();i++)p1[i]-=q[i];return p1;}
++  friend Vektor max(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(size_t i=0;i<p.size();i++)if(p1[i]<q[i])p1[i]=q[i];return p1;}
++  friend Vektor min(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1=p;for(size_t i=0;i<p.size();i++)if(p1[i]>q[i])p1[i]=q[i];return p1;}
++  friend Vektor coordinatewiseProduct(const Vektor& p, const Vektor& q){assert(p.size()==q.size());Vektor p1(q.size());for(size_t i=0;i<p.size();i++)p1[i]=p[i]*q[i];return p1;}
+ 
+   //------------------
+   // Monomial related
+@@ -293,8 +295,8 @@ public:
+   int divides(const Vektor& q) const
+     {
+       assert(size()==q.size());
+-      int n=v.size();
+-      for(int i=0;i<n;i++)
++      size_t n=v.size();
++      for(size_t i=0;i<n;i++)
+         {
+           if(v[i]>0)if(q.v[i]<v[i])return 0;
+         }
+@@ -303,14 +305,14 @@ public:
+   inline friend bool relativelyPrime(const Vektor& p, const Vektor& q)
+     {
+       assert(p.size()==q.size());
+-      int n=p.size();
+-      for(int t=0;t<n;t++)if((p[t]>0)&&(q[t]>0)) return false;
++      size_t n=p.size();
++      for(size_t t=0;t<n;t++)if((p[t]>0)&&(q[t]>0)) return false;
+       return true;
+     }
+   Vektor supportVector()const
+     {
+       Vektor r(v.size());
+-      for(int i=0;i<size();i++)
++      for(size_t i=0;i<size();i++)
+ 	r[i]=(v[i]!=0);
+       return r;
+     }
+@@ -321,7 +323,7 @@ public:
+   Vektor subvector(int begin, int end)const
+     {
+       assert(begin>=0);
+-      assert(end<=size());
++      assert((size_t)end<=size());
+       assert(end>=begin);
+       Vektor ret(end-begin);
+       for(int i=0;i<end-begin;i++)
+@@ -339,36 +341,36 @@ public:
+   {
+ 	  Vektor ret(subset.sum());
+ 	  int i=0;
+-	  for(int j=0;j<v.size();j++)if(subset[j])ret[i++]=v[j];
++	  for(size_t j=0;j<v.size();j++)if(subset[j])ret[i++]=v[j];
+ 	  return ret;
+   }
+   Vektor expandedBoolean(Vektor<int> const &subset)const // Inverse of the above, except that unknown entries are set to zero.
+   {
+ 	 Vektor ret(subset.size());
+-	 int i=0;
+-	 for(int j=0;j<subset.size();j++)
++	 size_t i=0;
++	 for(size_t j=0;j<subset.size();j++)
+ 		 if(subset[j])ret[j]=v[i++];
+ 	 return ret;
+   }
+   friend Vektor concatenation(Vektor const &a, Vektor const &b)
+   {
+     Vektor ret(a.size()+b.size());
+-    for(int i=0;i<a.size();i++)ret[i]=a[i];
+-    for(int i=0;i<b.size();i++)ret[i+a.size()]=b[i];
++    for(size_t i=0;i<a.size();i++)ret[i]=a[i];
++    for(size_t i=0;i<b.size();i++)ret[i+a.size()]=b[i];
+     return ret;
+   }
+   Vektor expanded(int newSize, vector<int> const &positions)
+   {
+ 	  Vektor ret(newSize);
+ 	  assert(positions.size()==size());
+-	  for(int i=0;i<size();i++)ret[positions[i]]=v[i];
++	  for(size_t i=0;i<size();i++)ret[positions[i]]=v[i];
+ 	  return ret;
+   }
+   Vektor withIthCoordinateRemoved(int i)const
+   {
+ 	  Vektor ret(size()-1);
+ 	  for(int j=0;j<i;j++)ret[j]=v[j];
+-	  for(int j=i+1;j<size();j++)ret[j-1]=v[j];
++	  for(int j=i+1;(size_t)j<size();j++)ret[j-1]=v[j];
+ 	  return ret;
+   }
+   Vektor withIthCoordinateInserted(int i, const typ &a)const
+@@ -376,7 +378,7 @@ public:
+ 	  Vektor ret(size()+1);
+ 	  for(int j=0;j<i;j++)ret[j]=v[j];
+ 	  ret[i]=a;
+-	  for(int j=i;j<size();j++)ret[j+1]=v[j];
++	  for(int j=i;(size_t)j<size();j++)ret[j+1]=v[j];
+ 	  return ret;
+   }
+ 
+@@ -386,7 +388,7 @@ public:
+   int indexOfLargestNonzeroEntry()const
+   {
+     int ret=-1;
+-    for(int i=0;i<v.size();i++)
++    for(int i=0;(size_t)i<v.size();i++)
+       {
+ 	if(v[i])ret=i;
+       }
+@@ -395,20 +397,20 @@ public:
+   Vektor supportIndices()const
+   {
+     Vektor ret(0);
+-    for(int i=0;i<v.size();i++)
++    for(int i=0;(size_t)i<v.size();i++)
+       if(v[i]!=0)ret.push_back(i);
+     return ret;
+   }
+   Vektor supportAsZeroOneVector()const
+   {
+     Vektor ret(v.size());
+-    for(int i=0;i<v.size();i++)ret[i]=bool(v[i]);
++    for(size_t i=0;i<v.size();i++)ret[i]=bool(v[i]);
+     return ret;
+   }
+   void calcsupport(void)
+     {
+       support=0;
+-      for(int i=0;i<v.size();i++)support=(support<<1)|(((v[i]>0)==true)&1);
++      for(size_t i=0;i<v.size();i++)support=(support<<1)|(((v[i]>0)==true)&1);
+     }
+ };
+ 
+--- gfan0.7/src/wallideal.cpp.orig	2024-08-12 10:00:15.000000000 -0600
++++ gfan0.7/src/wallideal.cpp	2024-08-12 13:30:10.087861417 -0600
+@@ -951,7 +951,7 @@ bool fastIsFacet(IntegerVectorList const
+ 	}
+ 
+ 
+-
++*/
+       /*      IntegerVector maxAttained(n);
+       IntegerVector minAttained(n);
+       for(IntegerVectorList::const_iterator k=tempNormals.begin();k!=tempNormals.end();k++)

@@ -214,4 +214,12 @@
     <comment>- Add support-Qt-5_15_14.patch (forwarded request 1179228 from hillwood)</comment>
     <requestid>1179229</requestid>
   </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>e3e87d8abb7823c7abd9ba940598e984</srcmd5>
+    <version>5.6.12</version>
+    <time>1726152971</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200142</requestid>
+  </revision>
 </revisionlist>

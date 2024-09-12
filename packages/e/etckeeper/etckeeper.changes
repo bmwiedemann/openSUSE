@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  8 11:16:35 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.18.21
+  - Consistently use mktemp if available, falling back to tempfile
+     otherwise.
+- Changes from 1.18.20
+  - Fix a reversion in etckeeper init in version 1.18.19.
+- Changes from 1.18.19
+  - Added support for Gentoo (emerge, qlist, and cave)
+  - Skip running pre-commit hook inside linked worktrees,
+    to avoid it updating .etckeeper with the permissions of
+    files not in /etc.
+  - commit: Run bzr with --quiet, since it outputs non-errors to
+    stderr. Closes: #1018874
+- Rebase etckeeper-set-package-manager.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 15:42:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -350,4 +367,3 @@ Wed Aug 21 16:59:59 UTC 2013 - dvaleev@suse.com
 Sat Aug 10 10:33:54 CET 2013 - pascal.bleser@opensuse.org
 
 - initial version (1.7)
-

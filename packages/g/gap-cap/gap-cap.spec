@@ -17,8 +17,8 @@
 
 
 Name:           gap-cap
-Version:        2024.03.02
-%define sillyver 2024.03-02
+Version:        2024.09.08
+%define sillyver 2024.09-08
 Release:        0
 Summary:        GAP: Categories, Algorithms and Programming
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ BuildArch:      noarch
 Requires:       gap-core >= 4.12.1
 Requires:       gap-io
 Requires:       gap-toolsforhomalg >= 2023.11.01
-Suggests:       gap-browse
+Suggests:       gap-browse >= 1.5
 Suggests:       gap-compilerforcap >= 2021.12.05
 
 %description

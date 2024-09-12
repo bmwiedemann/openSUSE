@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:06:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.0
+  * Add many_calls tests to EXECUTING_SLOW_TESTS (#78)
+  * fix: backward compatibility fix for changed source positions in 3.12.5 (#82) (#83)
+  * fix(3.13): show_caches is deprecated
+  * fix(3.13): added new rules to the verification
+  * build(3.13): added 3.13 to ci workflow
+  * fix(3.13): fixed typing errors
+  * fix(3.13): handle STORE_FAST_STORE_FAST and similar instructions as known issues
+  * fix(3.13): loading of __class__ is mapped to the last element of the class
+  * fix(3.13): handle CALL_KW like method calls which are only located by the end position
+  * fix(3.13): a lambda can also have nonlocal variables
+  * fix(3.13): a async function can also have nonlocal variables
+  * fix(3.13): COMPARE_OP maps always to ast.Compare
+  * fix(3.13): a type variable can also have nonlocal variables
+  * test(3.13): handle optimization of `not not x`
+  * test: fixed tests for 3.13.0b1
+  * fix: allow to LOAD_FAST variables for TypeVars
+  * fix: skip files with raise an recursion error in 3.13,
+    because the recursion limit has no effect
+  * test(3.13): added sample_results
+  * test: skip module tests for now
+  * refactor: review changes
+  * fix: handle __firstlineno__
+  * fix: removed unused verification
+  * doc: review changes
+  * Catch exception if node is in unexpected statement (#84)
+  * test: optimized test preformance by moving deadcode check to the end (#89)
+  * add 3.13 to setup.cfg classifiers
+- Drop support-new-python-3.12.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Aug 26 02:31:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup macro.

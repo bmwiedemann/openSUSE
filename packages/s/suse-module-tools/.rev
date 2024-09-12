@@ -834,4 +834,18 @@ source service setup which messed up my spec file.
     <comment>* Generate initrd for the default snapshot (boo#1224773) (forwarded request 1197868 from mwilck)</comment>
     <requestid>1197870</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>f42608ea1e70621d3186fd68ecd4ae85</srcmd5>
+    <version>16.0.51</version>
+    <time>1726152842</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.51:
+  * Improve handling of /boot/vmlinuz and /boot/initrd symlinks
+    (boo#1207703)
+  * Add preliminary support for mkosi-initrd
+  * spec file: remove redundant dependency on sdbootutil
+
+- Update to version 16.0.50: (forwarded request 1198937 from mwilck)</comment>
+    <requestid>1200081</requestid>
+  </revision>
 </revisionlist>
