@@ -27,6 +27,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{version}.tar.gz#/sherpa-test-data-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/2069 Allow the tests to pass with NumPy 2.0
+Patch:          numpy2.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}

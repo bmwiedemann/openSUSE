@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 06:18:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add numpy2.patch to fix build with the new numpy
+
+-------------------------------------------------------------------
 Wed May 29 12:53:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.16.1:
