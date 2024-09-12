@@ -13,6 +13,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
+#!UseOBSRepositories
 
 #!BuildTag: opensuse/pcp:6.2.1
 #!BuildTag: opensuse/pcp:6.2.1-%RELEASE%
