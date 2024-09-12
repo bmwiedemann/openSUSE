@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        1.1.4+1
+Version:        1.1.4+18
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -35,7 +35,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
-BuildRequires:  pkgconfig(gtksourceviewmm-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRequires:  pkgconfig(spdlog) >= 1.5

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:59:13 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 1.1.4+18:
+  * added support for new language Slovak
+  * fixed msys2_prepare_standalone.sh for new libgtksourceview4;
+  * dropped unmantained and outdated libgtksourceviewmm3 for
+    libgtksourceview4
+  * Fix formatting issues with fmt 11
+  * removed fmt custom formatter for Glib::ustring
+  * starting work on collapsable headers
+  * changed default keyboard shortcut to open codebox properties
+    dialog to Shift+Alt+U as the previous shortcut was causing
+    problems to german layout keyboards
+  * default keyboard shortcut to Ctrl+Shift+G for new quick-select
+    node dialog
+  * (feat): Adding new quick-select dialog
+  * link to outstanding third party android project SourCherry
+  * fix fonts stretch property not supported
+  * fix italic fonts not supported
+  * fix bold fonts not supported
+- Replace pkgconfig(gtksourceviewmm-3.0) BuildRequies with
+  pkgconfig(gtksourcevie-4.0): follow upstream.
+
+-------------------------------------------------------------------
 Mon Jul 01 12:44:06 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 1.1.4+1:
