@@ -13,6 +13,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
+#!UseOBSRepositories
 
 #!BuildTag: opensuse/alertmanager:%%alertmanager_patch_version%%
 #!BuildTag: opensuse/alertmanager:%%alertmanager_patch_version%%-%RELEASE%
