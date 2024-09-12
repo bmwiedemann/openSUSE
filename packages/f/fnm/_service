@@ -1,0 +1,10 @@
+<services>
+  <service mode="manual" name="download_files" />
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">fnm*.tar.gz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+</services>
+
