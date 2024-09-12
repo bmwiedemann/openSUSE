@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 07 14:29:21 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.5+git.1725719218.8945dc86:
+  * Fix: decode the resource type from URI
+  * Fix: use ocf:heartbeat:Dummy instead of ocf:heartbeat:anything
+
+-------------------------------------------------------------------
 Mon Sep 02 12:38:35 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.5+git.1724746409.a23057e1:

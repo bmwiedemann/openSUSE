@@ -39,7 +39,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.6.5+git.1724746409.a23057e1
+Version:        2.6.5+git.1725719218.8945dc86
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -120,8 +120,7 @@ A web-based GUI for managing and monitoring the Pacemaker
 High-Availability cluster resource manager.
 
 %prep
-%setup
-%patch1 -p1
+%autosetup -p1
 
 
 %build
