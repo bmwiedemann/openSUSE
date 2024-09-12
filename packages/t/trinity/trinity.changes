@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 04 06:23:07 UTC 2024 - jslaby@suse.cz
+
+- Update to version 1.9+git.20240830:
+  * Remove all the ->gen_packet stuff.
+- remove 0001-syscalls-send.c-fix-build-on-32bit.patch
+  Different fix already in upstream.
+
+-------------------------------------------------------------------
 Fri Aug 30 07:31:56 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-syscalls-send.c-fix-build-on-32bit.patch

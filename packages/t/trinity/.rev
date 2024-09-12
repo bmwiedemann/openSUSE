@@ -811,4 +811,12 @@
     <comment>- add 0001-syscalls-send.c-fix-build-on-32bit.patch</comment>
     <requestid>1197728</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>60d94d60924f6da9dd761ab00c173b86</srcmd5>
+    <version>1.9+git.20240830</version>
+    <time>1726153043</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1200266</requestid>
+  </revision>
 </revisionlist>
