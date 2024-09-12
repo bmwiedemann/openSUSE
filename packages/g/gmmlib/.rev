@@ -293,4 +293,20 @@
     <comment></comment>
     <requestid>1181302</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b8874c2298ec951ba95ee02b2551bfc3</srcmd5>
+    <version>22.5.2</version>
+    <time>1726153115</time>
+    <user>anag+factory</user>
+    <comment>- update to 22.5.2 - changes since 22.3.20 (jira#PED-10205)
+  * Introduce LunarLake Support (#188)
+  * Remove media compressed formats (#202)
+  * Introduce Battlemage basic enabling support (#203)
+  * Introduce Battlemage full support (#205)
+  * Update README with new platform support info (#208)
+  * Fix Debug build type(#210)
+  * Check if BaseWidth and BaseHeight is zero (#213)
+  * Xe2 Caching demotion for L3XD|L4WT|NC request (#212)</comment>
+    <requestid>1200641</requestid>
+  </revision>
 </revisionlist>

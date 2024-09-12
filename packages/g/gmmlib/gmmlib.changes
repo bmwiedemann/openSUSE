@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 12 09:54:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 22.5.2 - changes since 22.3.20 (jira#PED-10205)
+  * Introduce LunarLake Support (#188)
+  * Remove media compressed formats (#202)
+  * Introduce Battlemage basic enabling support (#203)
+  * Introduce Battlemage full support (#205)
+  * Update README with new platform support info (#208)
+  * Fix Debug build type(#210)
+  * Check if BaseWidth and BaseHeight is zero (#213)
+  * Xe2 Caching demotion for L3XD|L4WT|NC request (#212)
+
+-------------------------------------------------------------------
 Mon Jun 17 10:48:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.20:
