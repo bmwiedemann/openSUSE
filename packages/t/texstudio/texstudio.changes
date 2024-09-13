@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:57:59 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.2
+  * fix background colors for AI chat interface in dark mode
+  * configuration is directly saved after accepting changes
+  * allow custom url for chatgpt server
+
+-------------------------------------------------------------------
 Thu Jul 11 14:11:16 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.1
