@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 13 04:47:49 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.18.0
+  * New Features
+    - E-book viewer: Read aloud: A new Text-to-Speech engine
+      (Piper) that uses a neural network for realistic sounding
+      voices
+    - New experimental engine to convert PDF files with support for
+      automatic header/footer removal
+    - Content server: Viewer: Read Aloud: Implement word-by-word
+      tracking when reading aloud if the browser and voice used
+      support it, for example, Chromium on Windows, Firefox on
+      Android and Safari on macOS
+    - Image popup: Add a context menu with an option to reset the
+      current zoom
+    - Edit metadata dialog: Show the number of data files on the
+      data files button
+  * Bug Fixes
+    - Fix a regression in the previous release that broke using
+      Tab key to move around the book list while editing cells
+    - E-book viewer: Fix scrollbar position not updating during
+      continuous scroll
+    - E-book viewer: Fix a harmless error when the book contains
+      page list references whose targets do not exist
+    - Linux binary build: Fix missing libdeflate dependency
+- Use mspack from calibre upstream again and not from system, 
+  because it rise up build error in Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Aug 23 09:11:34 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.17.0
