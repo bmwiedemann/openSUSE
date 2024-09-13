@@ -188,4 +188,16 @@ Prefer: -waybar-branding-openSUSE
 </comment>
     <requestid>1166493</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6e11b13b336befc36ddeba2b9a994b3d</srcmd5>
+    <version>0.16.3</version>
+    <time>1726230878</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.3:
+  * Add presentations for past conferences
+  * Add presentation for oSC24
+  * Fix waybar zypper widget
+</comment>
+    <requestid>1200797</requestid>
+  </revision>
 </revisionlist>
