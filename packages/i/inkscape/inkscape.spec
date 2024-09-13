@@ -42,6 +42,8 @@ Patch2:         inkscape-poppler-c++20.patch
 Patch3:         inkscape-poppler-24.05.0.patch
 # https://gitlab.com/inkscape/inkscape/-/commit/877fc26483f74f951eab516f1b57b136780a8c78
 Patch4:         inkscape-poppler-c++20-2.patch
+# https://gitlab.com/inkscape/extensions/-/issues/553
+Patch5:         inkscape_1.3.2_fix_tiff.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

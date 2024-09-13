@@ -59,4 +59,15 @@
     expect a directed acyclic graph (DAG) of dependencies.</comment>
     <requestid>1138558</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c3e2b85ac614d5a9d120fee2721062ed</srcmd5>
+    <version>2.0.0</version>
+    <time>1726230353</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * Adopt Ruff
+  * Tighten MyPy settings
+  * Update GitHub actions versions</comment>
+    <requestid>1199454</requestid>
+  </revision>
 </revisionlist>

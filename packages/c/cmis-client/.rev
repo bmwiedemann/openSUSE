@@ -211,4 +211,12 @@ which all stuff is needed to be reverted for 4.1 to still build.
     <comment></comment>
     <requestid>1164317</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c9a5347e54982c139181d64cd356c410</srcmd5>
+    <version>0.6.2</version>
+    <time>1726230328</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200283</requestid>
+  </revision>
 </revisionlist>

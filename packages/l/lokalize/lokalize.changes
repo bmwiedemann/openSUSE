@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Call updateHeader with UTF-8 to reduce noise by Scripty
+  * Remove new lines at EOF
+  * Fix Translation Memory import job not finishing (kde#451461)
+  * Fix QLocale language loop QLocale::Akoose is not the last language anymore
+  * Be specific in which file is not being indexed
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.85.0
-%define _ver 1_85_0
-%define package_version 1_85_0
+%define ver 1.86.0
+%define _ver 1_86_0
+%define package_version 1_86_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -213,9 +213,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.85.0
+Version:        1.86.0
 Release:        0
-%define library_version 1_85_0
+%define library_version 1_86_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -240,12 +240,11 @@ Patch15:        boost-1.57.0-python-abi_letters.patch
 Patch16:        boost-1.55.0-python-test-PyImport_AppendInittab.patch
 Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
+Patch19:        boost-compute-uuid.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
-Patch22:        boost-process.patch
-Patch23:        boost-charconv-quadmath.patch
 # PATCH-FIX-UPSTREAM boost-1.85.0-python-numpy-2.patch -- gh#boostorg/python/pull/432
-Patch24:        boost-1.85.0-python-numpy-2.patch   
+Patch24:        boost-1.85.0-python-numpy-2.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -844,7 +843,7 @@ Group:          System/Libraries
 Requires:       boost-license%{library_version}
 
 %description -n libboost_test%{library_version}
-This package contains the BoosttTest runtime library.
+This package contains the Boost.Test runtime library.
 
 %package     -n libboost_test%{library_version}-devel
 Summary:        Development headers for Boost.Test library
@@ -860,6 +859,27 @@ Provides:       libboost_test-devel-impl = %{version}
 Development headers for Boost.Test library. Boost.Test supports for
 simple program testing, full unit testing, and for program execution
 monitoring.
+
+%package     -n libboost_process%{library_version}
+Summary:        Boost.Process runtime library
+Group:          System/Libraries/C and C++
+Requires:       boost-license%{library_version}
+
+%description -n libboost_process%{library_version}
+This package contains the Boost.Process runtime library.
+
+%package     -n libboost_process%{library_version}-devel
+Summary:        Development headers for Boost.Process library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_process%{library_version} = %{version}
+Conflicts:      boost-devel < 1.86
+Conflicts:      libboost_process-devel-impl
+Provides:       libboost_process-devel-impl = %{version}
+
+%description -n libboost_process%{library_version}-devel
+This package contains development headers for Boost.Process
+library.
 
 %package     -n libboost_program_options%{library_version}
 Summary:        Boost.ProgramOptions runtime library
@@ -1269,10 +1289,9 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
+%patch -P 19 -p1
 %patch -P 20 -p1
 %patch -P 21 -p1
-%patch -P 22 -p2
-%patch -P 23 -p1
 %patch -P 24 -p1
 
 %build
@@ -1376,6 +1395,7 @@ EOF
 
 ./b2 -d+2 -q --user-config=./user-config-py3.jam \
     --debug-configuration \
+    boost.stacktrace.from_exception=off \
     --build-type=minimal --build-dir=./python3-build \
     --python-buildid=py3 \
     --stagedir=./python3-stage %{?_smp_mflags} \
@@ -1406,6 +1426,7 @@ echo 'using mpi ;' >> ./user-config.jam
 # This is run for both mini and non-mini build
 ./b2 -d+2 -q --user-config=./user-config.jam \
     --debug-configuration \
+    boost.stacktrace.from_exception=off \
     --build-type=minimal --build-dir=./build \
     --stagedir=./stage %{?_smp_mflags} \
     $LIBRARIES_FLAGS \
@@ -1453,6 +1474,7 @@ module load gnu %mpi_flavor
 %if %{with python3}
 ./b2 -d+2 -q --user-config=./user-config-py3.jam \
     --debug-configuration \
+    boost.stacktrace.from_exception=off \
     --build-type=minimal --build-dir=./python3-build \
     --python-buildid=py3 \
     --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
@@ -1467,6 +1489,7 @@ module load gnu %mpi_flavor
 # Generic install
 ./b2 -d+2 -q \
      --debug-configuration \
+     boost.stacktrace.from_exception=off \
      --build-type=minimal --build-dir=./build --stagedir=./stage \
      --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
      --libdir=%{buildroot}%{package_libdir} --includedir=%{buildroot}%{package_includedir} \
@@ -1617,6 +1640,7 @@ EOF
 %post -n libboost_iostreams%{library_version} -p /sbin/ldconfig
 %post -n libboost_log%{library_version} -p /sbin/ldconfig
 %post -n libboost_test%{library_version} -p /sbin/ldconfig
+%post -n libboost_process%{library_version} -p /sbin/ldconfig
 %post -n libboost_program_options%{library_version} -p /sbin/ldconfig
 %post -n libboost_regex%{library_version} -p /sbin/ldconfig
 %post -n libboost_serialization%{library_version} -p /sbin/ldconfig
@@ -1670,6 +1694,7 @@ EOF
 %postun -n libboost_iostreams%{library_version} -p /sbin/ldconfig
 %postun -n libboost_log%{library_version} -p /sbin/ldconfig
 %postun -n libboost_test%{library_version} -p /sbin/ldconfig
+%postun -n libboost_process%{library_version} -p /sbin/ldconfig
 %postun -n libboost_program_options%{library_version} -p /sbin/ldconfig
 %postun -n libboost_regex%{library_version} -p /sbin/ldconfig
 %postun -n libboost_serialization%{library_version} -p /sbin/ldconfig
@@ -1888,6 +1913,14 @@ EOF
 %{package_libdir}/libboost_prg_exec_monitor.so
 %{package_libdir}/libboost_test_exec_monitor.so
 %{package_libdir}/libboost_unit_test_framework.so
+
+%files -n libboost_process%{library_version}
+%{package_libdir}/libboost_process.so.%{version}
+
+%files -n libboost_process%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_process-%{version}
+%{package_libdir}/cmake/boost_process-%{version}/*
+%{package_libdir}/libboost_process.so
 
 %files -n libboost_program_options%{library_version}
 %{package_libdir}/libboost_program_options.so.%{version}

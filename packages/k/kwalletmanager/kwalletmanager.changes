@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Fix service file name (kde#492138)
+- Drop patch, merged upstream:
+  * 0001-Fix-service-file-name.patch
+
+-------------------------------------------------------------------
 Wed Sep  4 07:41:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#492138):

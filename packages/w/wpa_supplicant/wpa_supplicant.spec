@@ -17,7 +17,7 @@
 
 
 Name:           wpa_supplicant
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        WPA supplicant implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -38,8 +38,6 @@ Patch1:         wpa_supplicant-flush-debug-output.patch
 Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
-Patch6:         dbus-Fix-property-DebugShowKeys-and-DebugTimestamp.patch
-Patch7:         CVE-2023-52160.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros

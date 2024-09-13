@@ -624,6 +624,7 @@ fi
 %license LICENSE COPYING
 %doc README.md
 %if 0%{?suse_version} > 1500
+%dir %{_pam_secdistconfdir}/limits.d
 %{_pam_secdistconfdir}/limits.d/25-pw-rlimits.conf
 %else
 %config(noreplace) %{_sysconfdir}/security/limits.d/25-pw-rlimits.conf

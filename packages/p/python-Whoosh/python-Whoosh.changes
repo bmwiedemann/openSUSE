@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  4 15:42:36 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Fix intersphinx mapping by adding
+  docs-Update-intersphinx_mapping.patch
+
+-------------------------------------------------------------------
 Wed May  3 10:41:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix line endings

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 02 12:53:15 CEST 2024 - aschnell@suse.com
+
+- fix compilation of compute module (gh#boostorg/uuid#166)
+- boost-compute-uuid.patch: added
+
+-------------------------------------------------------------------
+Fri Aug 30 10:41:54 CEST 2024 - aschnell@suse.com
+
+- update to 1.86.0
+  * process turned into compile library
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_86_0.html
+- boost-aarch64-flags.patch: updated
+- boost-1.57.0-python-abi_letters.patch: updated
+- boost-process.patch: removed (included upstream)
+- boost-charconv-quadmath.patch: removed (improved upstream)
+
+-------------------------------------------------------------------
 Sat Jun 29 09:13:57 CEST 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - add patch boost-1.85.0-python-numpy-2.patch from upstream

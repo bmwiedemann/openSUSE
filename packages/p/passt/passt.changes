@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:08:38 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix passt-selinux to use selinux macros instead of calling semodule
+  by hand, which leads to unwanted policy reload on Micro (bsc#1229132)
+
+-------------------------------------------------------------------
 Mon Sep 09 06:57:41 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240906.6b38f07:

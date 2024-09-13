@@ -833,4 +833,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment></comment>
     <requestid>1189952</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>90d01a09747daeb781fcd8bb9d64b52d</srcmd5>
+    <version>4.10.2</version>
+    <time>1726230581</time>
+    <user>anag+factory</user>
+    <comment>- use unversioned gcc also for SLE16</comment>
+    <requestid>1200662</requestid>
+  </revision>
 </revisionlist>

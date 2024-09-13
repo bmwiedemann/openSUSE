@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Make tests more robust for long journald readings
+  * Rework, simplify and add fallbacks for cursor seeking
+  * Provide more debug output for cursor test failure
+  * Always convert back to UTF8
+  * Enforce that data/time is always interpret as UTC
+  * Use UTC for test value setup to be independent of local time
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

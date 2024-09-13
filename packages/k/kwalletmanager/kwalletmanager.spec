@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kwalletmanager
-Version:        24.08.0
+Version:        24.08.1
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE -- boo#1217190 don't require password to save settings
 Patch0:         0001-Don-t-require-password-when-changing-settings.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-service-file-name.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}

@@ -617,4 +617,14 @@
   * Fix the last missing declaration of put_msg() (boo#1225947</comment>
     <requestid>1184778</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>350113393c7173758811a0954b51782b</srcmd5>
+    <version>3.2.9</version>
+    <time>1726230457</time>
+    <user>anag+factory</user>
+    <comment>- Add patch transfig-gs10.03.patch
+  * Avoid warnings about ignored WriteObjStms and WriteXRefStm
+    directives with PDF 1.4 (boo#1230427)</comment>
+    <requestid>1200547</requestid>
+  </revision>
 </revisionlist>

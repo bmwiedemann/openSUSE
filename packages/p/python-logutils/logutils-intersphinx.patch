@@ -1,0 +1,20 @@
+From 28565675eea39b1b1def8cd6706b0a9556f7e505 Mon Sep 17 00:00:00 2001
+From: Vinay Sajip <vinay_sajip@yahoo.co.uk>
+Date: Thu, 15 Jun 2023 16:13:41 +0100
+Subject: [PATCH] Add Read The Docs configuration.
+
+---
+diff --git a/doc/conf.py b/doc/conf.py
+index afdd641..04e02eb 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -194,6 +194,4 @@ latex_documents = [
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {
+-    'http://docs.python.org/dev': None,
+-}
++intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
+-- 
+2.46.0

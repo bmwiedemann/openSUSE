@@ -132,6 +132,8 @@ Patch108:       openssh-9.6p1-crypto-policies-man.patch
 Patch109:       fix-memleak-in-process_server_config_line_depth.patch
 # PATCH-FIX-UPSTREAM alarrosa@suse.com -- https://github.com/openssh/openssh-portable/pull/516
 Patch110:       fix-audit-fail-attempt.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
+Patch111:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
 %if 0%{with allow_root_password_login_by_default}
 Patch1000:      openssh-7.7p1-allow_root_password_login.patch
 %endif
@@ -447,9 +449,6 @@ install -D -m 0755 %{SOURCE9} %{buildroot}%{_sbindir}/sshd-gen-keys-start
 # Install sysusers.d config for sshd user
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
-
-rm %{buildroot}%{_libexecdir}/ssh/ssh-keycat
-#rm -r %{buildroot}/usr/lib/debug/.build-id
 
 # the hmac hashes - taken from openssl
 #

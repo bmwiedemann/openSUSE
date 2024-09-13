@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Fix reassigning timecode to project clip (kde#492697)
+  * Fix possible crash on undo/redo single selection move
+  * Fix dragging transitions to a clip cut to create a mix
+  * Fix multiple selection broken
+  * Fix clip offset not appearing on selection in timeline
+  * Ensure bin clips with effects disabled keep their effects disabled when added to a new sequence
+  * Fix keyframe at last frame prevents resizing clip on high zoom
+  * Fix effects/compositions list size (kde#492586)
+  * Fix compositions cannot be easily selected in timeline
+  * Replace : and ? chars in guides names for rendering
+  * Don't trigger timeline scroll when mouse exits timeline on a clip drag, it caused incorrect droppings and ghost clips.
+  * Fix scolling timeline with rubberband or when dragging from file manager can move last selected clip in timeline (kde#492635)
+  * Fix adding marker from project notes always adds it at 00:00 (kde#492697)
+  * fix blurry widgets on high DPI displays
+  * Fix keyframe param not correctly enabled on first keyframe click
+  * Fix curveeditor crash on empty track
+  * Ensure rendering with separate file for each audio track keeps the correct audio tag in the file name
+  * Fix render project folder sometimes lost, add proper enums instead of unreadable ints
+  * Fix MLT lumas not correctly recognized by archive feature (kde#492435)
+  * Fix configure toolbars messing UI layout
+  * Effects List: ensure deprecated category is always listed last
+  * Fix tabulations in Titler (requires latest MLT git)
+  * Titler: ensure only plain text can be pasted, prepare support for tabulations (needs MLT patch)
+  * Don't accept empty whisper device
+  * Fix ffmpeg path for Whisper on Mac
+  * Fix archive doesn't save the video assets when run multiple times
+  * Fix document notes timecode links may be broken after project reload
+  * Fix broken qml font on AppImage
+  * Remove incorrect taskmanager unlock
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

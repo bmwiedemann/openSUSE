@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Remove filters to hide title, artist, and album from Now Playing view (kde#468644)
+  * Android: add missing icon
+  * Fix mismatched toolbar heights
+  * HeaderBar: unmaximize when track information clicked
+  * SimplePlayListView: remove hardcoded text color
+  * SimplePlayListView: disable animations
+  * HeaderBar: set background image background (kde#464865)
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

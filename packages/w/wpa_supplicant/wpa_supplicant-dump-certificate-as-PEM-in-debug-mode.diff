@@ -4,16 +4,14 @@ Date: Fri, 16 Sep 2011 11:41:16 +0200
 Subject: [PATCH] dump certificate as PEM in debug mode
 
 ---
- src/crypto/tls_openssl.c | 13 +++++++++++++
- src/utils/wpa_debug.c    |  5 +++++
- src/utils/wpa_debug.h    |  8 ++++++++
+ src/crypto/tls_openssl.c |   13 +++++++++++++
+ src/utils/wpa_debug.c    |    5 +++++
+ src/utils/wpa_debug.h    |    8 ++++++++
  3 files changed, 26 insertions(+)
 
-Index: wpa_supplicant-2.10/src/crypto/tls_openssl.c
-===================================================================
---- wpa_supplicant-2.10.orig/src/crypto/tls_openssl.c
-+++ wpa_supplicant-2.10/src/crypto/tls_openssl.c
-@@ -2361,6 +2361,19 @@ static int tls_verify_cb(int preverify_o
+--- a/src/crypto/tls_openssl.c
++++ b/src/crypto/tls_openssl.c
+@@ -2515,6 +2515,19 @@
  	debug_print_cert(err_cert, buf);
  	X509_NAME_oneline(X509_get_subject_name(err_cert), buf, sizeof(buf));
  
@@ -33,11 +31,9 @@ Index: wpa_supplicant-2.10/src/crypto/tls_openssl.c
  	conn = SSL_get_app_data(ssl);
  	if (conn == NULL)
  		return 0;
-Index: wpa_supplicant-2.10/src/utils/wpa_debug.c
-===================================================================
---- wpa_supplicant-2.10.orig/src/utils/wpa_debug.c
-+++ wpa_supplicant-2.10/src/utils/wpa_debug.c
-@@ -66,6 +66,11 @@ static int wpa_to_android_level(int leve
+--- a/src/utils/wpa_debug.c
++++ b/src/utils/wpa_debug.c
+@@ -66,6 +66,11 @@
  #endif /* CONFIG_DEBUG_FILE */
  
  
@@ -49,11 +45,9 @@ Index: wpa_supplicant-2.10/src/utils/wpa_debug.c
  void wpa_debug_print_timestamp(void)
  {
  #ifndef CONFIG_ANDROID_LOG
-Index: wpa_supplicant-2.10/src/utils/wpa_debug.h
-===================================================================
---- wpa_supplicant-2.10.orig/src/utils/wpa_debug.h
-+++ wpa_supplicant-2.10/src/utils/wpa_debug.h
-@@ -25,6 +25,7 @@ enum {
+--- a/src/utils/wpa_debug.h
++++ b/src/utils/wpa_debug.h
+@@ -25,6 +25,7 @@
  
  #ifdef CONFIG_NO_STDOUT_DEBUG
  
@@ -61,8 +55,8 @@ Index: wpa_supplicant-2.10/src/utils/wpa_debug.h
  #define wpa_debug_print_timestamp() do { } while (0)
  #define wpa_printf(args...) do { } while (0)
  #define wpa_hexdump(l,t,b,le) do { } while (0)
-@@ -51,6 +52,13 @@ void wpa_debug_close_file(void);
- void wpa_debug_setup_stdout(void);
+@@ -52,6 +53,13 @@
+ void wpa_debug_stop_log(void);
  
  /**
 + * wpa_debug_enabled: check whether given debug level is enabled

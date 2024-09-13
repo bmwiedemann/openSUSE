@@ -3579,4 +3579,22 @@ Petr</comment>
     <comment>24.8.0</comment>
     <requestid>1195632</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>49e12447ecc4374f9fce22af65b47b7c</srcmd5>
+    <version>24.8.1.2</version>
+    <time>1726230329</time>
+    <user>anag+factory</user>
+    <comment>- Use system cmis where feasible, as our RPM version of cmis-devel has been
+  patched to work with Boost 1.86, which LibreOffice also uses.
+- Update to 24.8.1.2 (jsc#PED-10362):
+  * This release already includes the fix for CVE-2024-5261 (bsc#1226975)
+    upstream.
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/24.8.1/RC1
+    https://wiki.documentfoundation.org/Releases/24.8.1/RC2
+- Update bundled dependencies:
+  * curl 8.9.0 -&gt; 8.9.1
+  * poppler 24.06.0 -&gt; 24.08.0</comment>
+    <requestid>1200688</requestid>
+  </revision>
 </revisionlist>

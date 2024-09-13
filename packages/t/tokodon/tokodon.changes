@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Stop opening the sidebar on startup (kde#492030)
+  * Fix registration not working
+  * Fix erroneous if check that was using the wrong arguments list
+  * Add KCrash
+  * mention everyone in replies
+  * Do not reload accounts when initially setting the application proxy (kde#492383)
+  * Only emit reload accounts signal if they actually were
+  * Fix creating new account on mobile (kde#491928)
+  * flatpak: Update LuaJIT to a snapshot
+  * Close modal sidebar when clicking on an entry (kde#491929)
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

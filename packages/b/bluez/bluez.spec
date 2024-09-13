@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.77
+Version:        5.78
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -422,6 +422,7 @@ done
 %{_mandir}/man1/bluetoothctl-player.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-scan.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-transport.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-assistant.1%{?ext_man}
 %{_mandir}/man1/btmgmt.1%{?ext_man}
 %{_mandir}/man5/org.bluez.*.5%{?ext_man}
 %{_datadir}/dbus-1/system.d/bluetooth.conf
@@ -437,9 +438,9 @@ done
 %{_datadir}/dbus-1/system-services/org.bluez.service
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service
-%{_sysconfdir}/bluetooth/input.conf
-%{_sysconfdir}/bluetooth/mesh-main.conf
-%{_sysconfdir}/bluetooth/network.conf
+%config(noreplace) %{_sysconfdir}/bluetooth/input.conf
+%config(noreplace) %{_sysconfdir}/bluetooth/mesh-main.conf
+%config(noreplace) %{_sysconfdir}/bluetooth/network.conf
 
 %files obexd
 %{_libexecdir}/bluetooth/obexd

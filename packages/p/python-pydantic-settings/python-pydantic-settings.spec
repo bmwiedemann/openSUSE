@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-pydantic-settings
-Version:        2.3.4
+Name:           python-pydantic-settings%{psuffix}
+Version:        2.4.0
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
@@ -30,11 +38,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pydantic >= 2.3.0}
+%if %{with test}
+BuildRequires:  %{python_module azure-identity >= 1.16}
+BuildRequires:  %{python_module pydantic-settings == %{version}}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dotenv >= 0.21.0}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pydantic >= 2.3.0
@@ -54,16 +64,22 @@ Settings management using Pydantic, this is the new official home of Pydantic's 
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pydantic_settings
 %{python_sitelib}/pydantic_settings-%{version}.dist-info
+%endif
 
 %changelog

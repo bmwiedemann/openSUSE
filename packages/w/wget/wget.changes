@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 17:22:46 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update wget.keyring: use release-team keyring
+- Don't reference source URL when the linked sources change over time
+
+-------------------------------------------------------------------
 Tue Jun 18 07:54:22 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix mishandled semicolons in the userinfo subcomponent could lead to an

@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,7 @@ This package includes files needed for development with Xerces-c
 %build
 find . -type d -name .svn -exec rm -Rf "{}" "+"
 %configure \
+    --enable-transcoder-gnuiconv \
     --enable-netaccessor-curl \
     --disable-static \
     --disable-silent-rules

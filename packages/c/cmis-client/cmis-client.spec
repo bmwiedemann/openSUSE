@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/tdf/libcmis
 Source0:        https://github.com/tdf/%{_name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Fux build against boost 1.86
+Patch0:         https://patch-diff.githubusercontent.com/raw/tdf/libcmis/pull/68.patch
 BuildRequires:  docbook2X
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -85,7 +87,7 @@ Development files for libcmis-c. libcmis-c is a C client library for
 the CMIS interface.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 autoreconf -fvi

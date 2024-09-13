@@ -53,4 +53,24 @@
     <comment></comment>
     <requestid>1196438</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bfcfb8b8ac0660556d762f47a5f1c3fe</srcmd5>
+    <version>9.devel814</version>
+    <time>1726230637</time>
+    <user>anag+factory</user>
+    <comment>- Relax REXML version (gh#openSUSE/agama#1595) to build with Ruby
+  3.3.
+
+- Storage: add support for reusing file systems in the storage
+  config (gh#openSUSE/agama#1575).
+
+- Show product logo in product selector (gh#openSUSE/agama#1415).
+
+- Storage: add support for deleting partitions in the storage
+  config (gh#openSUSE/agama#1572).
+
+- Storage: add support for searching by device in the storage
+  config (gh#openSUSE/agama#1560).</comment>
+    <requestid>1200782</requestid>
+  </revision>
 </revisionlist>

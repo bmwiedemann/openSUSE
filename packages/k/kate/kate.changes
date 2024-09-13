@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * snapcraft: Fix typo..
+  * snapcraft: Actually add the neon packages.
+  * snapcraft: Use neon packages to simplify build and runtime.
+  * snapcraft: New upstream release. Refresh prime cleanup.
+  * back to normal konsole
+  * Remove unneeded search result expanding limit (kde#491890)
+  * KateBuildView: Remove close button entirely
+  * Formatter: add formatting for Odin language
+  * Change the default LSP client for GLSL language to glsl_analyzer
+  * Fix tooltip hides on scrolling using scrollbar (kde#492092)
+  * Tooltip: Only highlight blocks that are marked BlockCodeLanguage (kde#492076)
+  * Dont insert line breaks in tooltip (kde#492062)
+  * Fix crash on window close
+  * Build release branch.
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

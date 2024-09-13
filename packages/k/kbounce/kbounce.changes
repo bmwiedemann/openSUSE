@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * snapcraft: Build release branch.
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

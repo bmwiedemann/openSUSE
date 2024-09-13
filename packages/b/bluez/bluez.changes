@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:46:33 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Mark the configuration files as 'noreplace'. 
+
+-------------------------------------------------------------------
+Thu Sep 12 04:40:31 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 5.78:
+  * Fix issue with handling notification of scanned BISes to BASS
+  * Fix issue with handling checking BIS caps against peer caps.
+  * Fix issue with handling MGMT Set Device Flags overwrites.
+  * Fix issue with handling ASE notification order.
+  * Fix issue with handling BIG Info report events.
+  * Fix issue with handling PACS Server role.
+  * Fix issue with registering UHID_START multiple times.
+  * Fix issue with pairing method not setting auto-connect.
+- Fix 3 rpmlint warnings, some configuration files were not marked as so.
+
+-------------------------------------------------------------------
 Thu Aug 15 06:51:24 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add bluez-no-cups-devel-buildreq.patch to avoid cups-devel

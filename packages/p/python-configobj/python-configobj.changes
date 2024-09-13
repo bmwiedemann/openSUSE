@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 11 12:08:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Refresh CVE-2023-26112.patch according to the last state of
+  gh#DiffSK/configobj!236.
+
+-------------------------------------------------------------------
 Wed Jan  3 16:47:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove six from the rpm requirements. Why would we have

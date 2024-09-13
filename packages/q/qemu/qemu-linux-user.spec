@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -88,7 +88,6 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-mipsel
 %_bindir/qemu-mipsn32
 %_bindir/qemu-mipsn32el
-%_bindir/qemu-nios2
 %_bindir/qemu-or1k
 %_bindir/qemu-ppc
 %_bindir/qemu-ppc64
@@ -137,7 +136,6 @@ cd %blddir
 # for them.
 
 # TODO: Check whether we want to enable the followings:
-# * avx512f
 # * debug-info
 # * fuse
 # * malloc-trim
@@ -167,142 +165,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--prefix=%_prefix \
 	--sysconfdir=%_sysconfdir \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
-	--disable-af-xdp \
-	--disable-alsa \
-	--disable-attr \
-	--disable-auth-pam \
-	--disable-avx2 \
-	--disable-avx512f \
-	--disable-block-drv-whitelist-in-tools \
-	--disable-bochs \
-	--disable-bpf \
-	--disable-brlapi \
-	--disable-bsd-user \
-	--disable-bzip2 \
-	--disable-cap-ng \
-	--disable-capstone \
-	--disable-cfi \
-	--disable-cfi-debug \
-	--disable-cloop \
-	--disable-cocoa \
-	--disable-coreaudio \
-	--disable-coroutine-pool \
-	--disable-crypto-afalg \
-	--disable-curl \
-	--disable-curses \
-	--disable-dbus-display \
-	--disable-debug-info \
-	--disable-debug-mutex \
-	--disable-debug-tcg \
-	--disable-dmg \
-	--disable-docs \
-	--disable-download \
-	--disable-dsound \
-	--disable-fdt \
-	--disable-fuse \
-	--disable-fuse-lseek \
-	--disable-gcrypt \
-	--disable-gettext \
-	--disable-gio \
-	--disable-glusterfs \
-	--disable-gnutls \
-	--disable-gtk \
-	--disable-guest-agent \
-	--disable-guest-agent-msi \
-	--disable-hv-balloon \
-	--disable-hvf \
-	--disable-iconv \
-	--disable-jack \
-	--disable-kvm \
-	--disable-l2tpv3 \
-	--disable-libdaxctl \
-	--disable-libiscsi \
-	--disable-libkeyutils \
-	--disable-libnfs \
-	--disable-libpmem \
-	--disable-libssh \
-	--disable-libudev \
-	--disable-libusb \
-	--disable-linux-aio \
-	--disable-linux-io-uring \
-	--disable-linux-user \
-	--disable-live-block-migration \
-	--disable-lto \
-	--disable-lzfse \
-	--disable-lzo \
-	--disable-malloc-trim \
-	--disable-membarrier \
-	--disable-module-upgrades \
-	--disable-modules \
-	--disable-mpath \
-	--disable-multiprocess \
-	--disable-netmap \
-	--disable-nettle \
-	--disable-numa \
-	--disable-nvmm \
-	--disable-opengl \
-	--disable-oss \
-	--disable-pa \
-	--disable-parallels \
-	--disable-pie \
-	--disable-pipewire \
-	--disable-pixman \
-	--disable-plugins \
-	--disable-png \
-	--disable-pvrdma \
-	--disable-qcow1 \
-	--disable-qed \
-	--disable-qom-cast-debug \
-	--disable-rbd \
-	--disable-rdma \
-	--disable-relocatable \
-	--disable-replication \
-	--disable-rng-none \
-	--disable-rutabaga-gfx \
-	--disable-safe-stack \
-	--disable-sanitizers \
-	--disable-sdl \
-	--disable-sdl-image \
-	--disable-seccomp \
-	--disable-selinux \
-	--disable-slirp \
-	--disable-slirp-smbd \
-	--disable-smartcard \
-	--disable-snappy \
-	--disable-sparse \
-	--disable-spice \
-	--disable-spice-protocol \
-	--disable-strip \
-	--disable-system \
-	--disable-tcg \
-	--disable-tcg-interpreter \
-	--disable-tools \
-	--disable-tpm \
-	--disable-u2f \
-	--disable-usb-redir \
-	--disable-user \
-	--disable-vde \
-	--disable-vdi \
-	--disable-vhost-crypto \
-	--disable-vhost-kernel \
-	--disable-vhost-net \
-	--disable-vhost-user \
-	--disable-vhost-user-blk-server \
-	--disable-vhost-vdpa \
-	--disable-virglrenderer \
-	--disable-virtfs \
-	--disable-vnc \
-	--disable-vnc-jpeg \
-	--disable-vnc-sasl \
-	--disable-vte \
-	--disable-vvfat \
-	--disable-werror \
-	--disable-whpx \
-	--disable-xen \
-	--disable-xen-pci-passthrough \
-	--disable-xkbcommon \
-	--disable-zstd \
-	--without-default-devices \
+	%{disable_everything} \
 %if %{with system_membarrier}
 	--enable-membarrier \
 %endif

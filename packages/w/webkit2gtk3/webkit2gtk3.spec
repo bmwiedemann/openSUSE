@@ -73,10 +73,13 @@ ExclusiveArch:  do-not-build
 %define _with_backtrace 1
 %endif
 
+# Disable LTO on select targets
+%ifarch %{ix86} ppc64le
+%global _lto_cflags %{nil}
+%endif
+
 Name:           webkit2%{_gtknamesuffix}
-### FIXME ### Drop the disabling of LTO on next release/versionbump
-%define _lto_cflags %{nil}
-Version:        2.44.3
+Version:        2.44.4
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -91,8 +94,6 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
-# PATCH-FIX-UPSTREAM revert-271175.patch -- This reverts commit 279c9d7, it broke wasm.
-Patch3:         revert-271175.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

@@ -15,4 +15,12 @@
     <comment>- Add version to 'Requires' and 'Obsoletes'</comment>
     <requestid>1196206</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fdb7b1067074359f8d73be52eb47329f</srcmd5>
+    <version>24.08.1</version>
+    <time>1726230703</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.08.1 (forwarded request 1199910 from krop)</comment>
+    <requestid>1200386</requestid>
+  </revision>
 </revisionlist>

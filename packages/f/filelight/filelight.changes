@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * always reset the filemodel when the tree changes (kde#492155)
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

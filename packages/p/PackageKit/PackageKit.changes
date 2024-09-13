@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 07:53:31 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-install-updateCandidateObj.patch:
+  zypp: Mark the correct packages to-be-installed (bsc#1227389,
+  gh#PackageKit/PackageKit/commit/209aa6295).
+
+-------------------------------------------------------------------
 Tue Aug 13 09:17:52 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add PackageKit-mark-as-compulsory.patch: Prevent PackageKit from

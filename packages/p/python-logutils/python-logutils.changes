@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 10 03:08:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-logging-lock-directly.patch:
+  * Use logging._lock as a context manager.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
+Thu Sep  5 18:08:30 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Add patch logutils-intersphinx.patch to fix compatibility
+  with recent Sphinx
+
+-------------------------------------------------------------------
 Thu Jan 18 19:39:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add logutils-pr1-fix-testasserts-py3.12.patch

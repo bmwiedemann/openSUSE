@@ -1,7 +1,7 @@
 #
 # spec file for package python-Whoosh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,9 @@ Patch1:         py2encoding.patch
 # PATCH-FIX-UPSTREAM NullMatcherClass-hashable.patch gh#whoosh-community/whoosh#570 mcepl@suse.com
 # NullMatcherClass needs __hash__ method as well for Sphinx4 compatiblity.
 Patch2:         NullMatcherClass-hashable.patch
+# PATCH-FIX-UPSTREAM docs-Update-intersphinx_mapping.patch gh#whoosh-community/whoosh#582
+# fix intersphinx_mapping
+Patch3:         docs-Update-intersphinx_mapping.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

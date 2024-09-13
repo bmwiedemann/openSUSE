@@ -52,5 +52,5 @@ index 3aee984..0cf4806 100644
      def test_config5_ok(self):
          self.test_config1_ok(config=self.config5)
 -- 
-2.42.0
+2.46.0
 

@@ -2,15 +2,15 @@ Index: boost_1_80_0/tools/build/src/tools/python.jam
 ===================================================================
 --- boost_1_80_0.orig/tools/build/src/tools/python.jam
 +++ boost_1_80_0/tools/build/src/tools/python.jam
-@@ -102,7 +102,7 @@ py3-version = ;
+@@ -102,7 +102,7 @@
  #   using python : 2.3 : /usr/local/bin/python ;
  #
  rule init ( version ? : cmd-or-prefix ? : includes * : libraries ?
 -    : condition * : extension-suffix ? )
 +    : condition * : extension-suffix ? : abi-letters ? )
  {
-     project.push-current $(.project) ;
- 
+     if ! $(.initialized)
+     {
 @@ -115,7 +115,7 @@ rule init ( version ? : cmd-or-prefix ?
          }
      }

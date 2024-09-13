@@ -1,4 +1,378 @@
 -------------------------------------------------------------------
+Mon Sep  9 05:45:53 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Update to edk2-stable202405
+    - Features (https://github.com/tianocore/edk2/releases):
+        MAT Logic Incorrectly Reports Runtime Images
+        SecurityPkg:Add EFI Device Authentication Signature Database and SPDM
+        CryptoPkg:add additional RSAES-OAEP crypto functions
+        OvmfPkg:Add 5-level paging support
+        OvmfPkg:SEV-SNP Support for running under an SVSM
+        OvmfPkg:RBP register shall be cleared in TDVMCALL
+        OvmfPkg:Harden #VC instruction emulation (CVE-2024-25742)
+        Add SPI bus driver stack
+        NetworkPkg: Predictable TCP ISNs
+        NetworkPkg: Use of a Weak PseudoRandom Number Generator
+        UefiCpuPkg: Add new SmmRelocationLib library
+    - Patches (git log --oneline --date-order edk2-stable202402..edk2-stable202405):
+        3e722403cd ArmVirtPkg/ArmVirtQemu: Add RngDxe driver
+        66c69871e7 ArmVirtPkg: Reverse inclusion order of MdeLibs.inc and ArmVirt.dsc.inc
+        c98f7f7550 ArmVirtPkg: Use dynamic PCD to set the SMCCC conduit
+        865229bcc8 ArmVirtPkg/ArmVirtQemu: Permit the use of dynamic PCDs in PEI
+        4ddf2448ed MdePkg/BaseRngLib AARCH64: Remove overzealous ASSERT()
+        9440986d4e ArmVirtPkg: Move PcdMonitorConduitHvc
+        32460bb5b1 ArmPkg: Allow SMC/HVC monitor conduit to be specified at runtime
+        207b6d68a0 NetworkPkg: Update the PxeBcDhcp6GoogleTest due to underlying changes
+        dff3d3811f MdePkg: Add MockHash2 Protocol for testing
+        4afb939531 MdePkg: Adds Protocol for MockRng
+        72a9ef1c8a MdePkg: Add MockUefiBootServicesTableLib
+        1904a64bcc NetworkPkg TcpDxe: SECURITY PATCH CVE-2023-45236
+        4c4ceb2ceb NetworkPkg: SECURITY PATCH CVE-2023-45237
+        a85336531c SecurityPkg RngDxe: Remove incorrect limitation on GetRng
+        e10d83234c ArmVirtPkg: Add Hash2DxeCrypto to ArmVirtPkg
+        677204f941 ArmVirtPkg PlatformCI: Support virtio-rng-pci
+        cb9d711891 OvmfPkg: Add Hash2DxeCrypto to OvmfPkg
+        4f58e0cf99 OvmfPkg PlatformCI: Support virtio-rng-pci
+        024a291b3e EmulatorPkg: Add Hash2DxeCrypto to EmulatorPkg
+        319bb7223a EmulatorPkg: Add RngDxe to EmulatorPkg
+        7142e64841 CodeQL: Update from 2.16.1 to 2.17.3
+        284dbac43d MdeModulePkg: Potential UINT32 overflow in S3 ResumeCount
+        558a25366d MdePkg/BaseLib: Fix AARCH64 compilation error
+        4b6ee06a09 MdePkg: Add MmUnblockMemoryLib to MdeLibs.dsc
+        3c0b84420f DynamicTablesPkg: Adds integer to the AML package node
+        25996a3441 MdePkg: Updated SpcrTable structure for Revision_4
+        b82c9631da OvmfPkg: Use newly defined Unaccepted Memory Type
+        f3b0ee0cee MdePkg: Update Delayed Dispatch PPI as per PI 1.8 Spec
+        09340de246 MdeModulePkg: Use newly defined Unaccepted Memory Type
+        6fd2d58d5d MdePkg: Define Unaccepted Memory Type
+        b538d6a1b1 MdePkg: Add new Resource Attributes defined in PI 1.8 Spec
+        b04e11b4c4 MdePkg: Add definition for NVMe Over Fabric Device Path
+        5cbfb93abe UefiCpuPkg/Library: Support to get processor extended info
+        952b5cf94c MdeModulePkg: Adding SpiHc Drivers
+        82b0358e3f MdeModulePkg: SpiHc: SpiHc Drivers
+        5590cefe93 MdeModulePkg:BaseSpiHcPlatformLib: Adding NULL lib instance
+        916f495e77 MdeModulePkg: Adding SpiBus Drivers
+        efc7ccf906 MdeModulePkg/Bus/Spi/SpiBus: Adding SpiBus Drivers
+        fa7fdb89a3 MdePkg/SpiConfiguration: Correct the definition spelling
+        2727231b0a UefiCpuPkg/PiSmmCpuDxeSmm: Remove SmBases relocation logic
+        23ed7f209c UefiPayloadPkg/UefiPayloadPkg.dsc: Include SmmRelocationLib
+        6b3a89a9fd OvmfPkg/PlatformPei: Relocate SmBases in PEI phase
+        4a6400b084 OvmfPkg/SmmCpuFeaturesLib: Check Smbase Relocation is done or not
+        04c36d5a1b OvmfPkg: Refine SmmAccess implementation
+        6a468a8b55 OvmfPkg/PlatformInitLib: Create gEfiSmmSmramMemoryGuid
+        3dfd64305b OvmfPkg/SmmRelocationLib: Add library instance for OVMF
+        47f212295f UefiCpuPkg/SmmRelocationLib: Add library instance for AMD
+        c56ea95b28 UefiCpuPkg/SmmRelocationLib: Remove unnecessary CpuIndex
+        9783dc01cc UefiCpuPkg/SmmRelocationLib: Remove unnecessary global variable
+        7421094136 UefiCpuPkg/SmmRelocationLib: Avoid unnecessary memory allocation
+        42e8fa84f7 UefiCpuPkg/SmmRelocationLib: Rename global variables
+        51fcd2023b UefiCpuPkg/SmmRelocationLib: Add SmmRelocationLib library instance
+        af9b851732 UefiCpuPkg: Add SmmRelocationLib class
+        987bea6525 UefiCpuPkg/PiSmmCpuDxeSmm: Handle the NULL gMpInformation2HobGuid
+        1c0d4ae2c0 MdeModulePkg/XhciDxe: Add PCD for the delay of HCRST
+        c12bbc1490 MdeModulePkg/XhciDxe: Reset endpoint while USB Transaction error
+        17f333f2a4 OvmfPkg: Add sp800155Event3 support
+        7097c97bde SecurityPkg: Recognize sp800155Event3 event
+        370c55b2ba MdePkg: Add TcgSp800155Event3 type info
+        24fa360857 RedfishPkg: Rename x-uefi-redfish to x-UEFI-redfish
+        248aa153f6 IntelFsp2Pkg/PatchFv.py: FIX for GCC 32BIT build error
+        fecf55a66a OvmfPkg/CcExitLib: Drop special handling for Encrypted MMIO to APIC
+        f0ed194236 OvmfPkg: Don't make APIC MMIO accesses with encryption bit set
+        fd290ab862 OvmfPkg/ResetVector: Clear SEV encryption bit for non-leaf PTEs
+        5f783827bb Maintainers.txt: Update my email address
+        5d4c5253e8 Maintainers.txt: Update StandaloneMmPkg and UefiCpuPkg Reviewer
+        ec6e59aefe OvmfPkg: Remove QemuFwCfgLibMmio.inf
+        1699845c5f OvmfPkg/RiscVVirt: Enable QemuFwCfgMmioDxeLib.inf
+        3a4efc98b0 ArmVirtPkg: Enable QemuFwCfgMmioDxeLib.inf
+        3d87214a20 OvmfPkg: Copy the same new INF as QemuFwCfgLibMmio.inf
+        fcce7f77e6 OvmfPkg: Add the QemuFwCfgMmioLib PEI stage version
+        748d57d40f OvmfPkg: Add the way of HOBs in QemuFwCfgLibMmio
+        5e31c5666d OvmfPkg: Separate QemuFwCfgLibMmio.c into two files
+        e942b85a21 OvmfPkg: Add a GUID for QemuFwCfgLib
+        0c74aa2073 UefiCpuPkg/Library: Cleanup debug message in LmceSupport
+        88781ccd74 ReadMe.rst: Add libspdm submodule license
+        54a4fd9b35 SecurityPkg: Add libspdm submodule
+        9bc2725198 .gitmodule: Add libspdm submodule for EDKII
+        cf3b34c0b8 .pytool/CISettings.py: add libspdm submodule.
+        750d763623 SecurityPkg: add DeviceSecurity support
+        c3f615a1bd SecurityPkg: Add TCG PFP 1.06 support.
+        d8e4c4b000 MdeModulePkg/Variable: Add TCG SPDM device measurement update
+        74db2ed3e5 MdePkg: Add devAuthBoot GlobalVariable
+        5f391c6606 MdePkg: Add TCG PFP 1.06 support.
+        338fd26b8f MdePkg: Add SPDM1.2 support.
+        094727264f MdePkg: Add Cxl30.h into IndustryStandard
+        c0dfe3ec1f BaseTools/GetUtcDateTime.py: Python 3.12 support
+        66c24219ad OvmfPkg/VirtHstiDxe: do not load driver in confidential guests
+        90b6725562 Update to CodeQL 2.16.1
+        d97f964f7c BaseTools/Fmmt.py: Python 3.12 support
+        e3fa6986ae OvmfPkg: Harden #VC instruction emulation somewhat (CVE-2024-25742)
+        86c8d69146 IntelFsp2Pkg/PatchFv.py: Python 3.12 support
+        680030a6ec IntelFsp2Pkg/GenCfgOpt.py: Python 3.12 support
+        7dd7b89058 ArmVirtPkg/ArmVirtQemu: always build XIP code with strict alignment
+        f29160a896 OvmfPkg/VirtHstiDxe: add README.md
+        506740982b OvmfPkg/VirtHstiDxe: add code flash check
+        ddc43e7a41 OvmfPkg/VirtHstiDxe: add varstore flash check
+        538b8944c1 OvmfPkg: Add VirtHstiDxe to OVMF firmware build
+        d0906f602b OvmfPkg: Add VirtHstiDxe driver
+        be92e09206 OvmfPkg/IntelTdx: Update TDVF README
+        6780b3aba0 Maintainers: AMD as SPI driver stack maintainer
+        1dc752d903 MdeModulePkg: Add SPI NOR FLash SFDP drivers to DSC
+        8b02ecc5f0 MdeModulePkg/SpiNorFlashJedecSfdp: SPI NOR Flash JEDEC SFDP
+        6dc09fda04 MdeModulePkg: Add definitions in DEC for SPI NOR Flash SFDP driver
+        390b10b548 MdePkg/Include: Add SPI NOR Flash JEDEC SFDP header file
+        7dec566775 MdePkg/Include: Update definitions of SPI related header files
+        0afb874349 OvmfPkg/BaseMemEncryptLib: Check for presence of an SVSM when not at VMPL0
+        47001ab989 Ovmfpkg/CcExitLib: Provide SVSM discovery support
+        a010681f74 UefiCpuPkg/MpInitLib: AP creation support under an SVSM
+        28fecae8a3 OvmfPkg/AmdSvsmLib: Add support for the SVSM create/delete vCPU calls
+        18fdffe825 OvmfPkg/BaseMemEncryptSevLib: Maximize Page State Change efficiency
+        b505f11f39 OvmfPkg/AmdSvsmLib: Add support for the SVSM_CORE_PVALIDATE call
+        5a67a2efa7 OvmfPkg: Create a calling area used to communicate with the SVSM
+        f6bf37c171 OvmfPkg/BaseMemEncryptSevLib: Use AmdSvsmSnpPvalidate() to validate pages
+        ee89b59430 UefiCpuPkg/MpInitLib: Use AmdSvsmSnpVmsaRmpAdjust() to set/clear VMSA
+        6ced1e91ef Ovmfpkg/AmdSvsmLib: Create AmdSvsmLib to handle SVSM related services
+        789727ccf3 Ovmfpkg: Prepare OvmfPkg to use the AmdSvsmLib library
+        d2b18e6bc2 UefiPayloadPkg: Prepare UefiPayloadPkg to use the AmdSvsmLib library
+        30d274e354 UefiCpuPkg/AmdSvsmLib: Create the AmdSvsmLib library to support an SVSM
+        c0bf953fe8 MdePkg/BaseLib: Add a new VMGEXIT instruction invocation for SVSM
+        8ccbf075f0 MdePkg/Register/Amd: Define the SVSM related information
+        069f9911a3 OvmfPkg/BaseMemEncryptSevLib: Maximize Page State Change efficiency
+        2b330b57db OvmfPkg/BaseMemEncryptSevLib: Re-organize page state change support
+        f40c1f2a30 MdePkg: Avoid hardcoded value for number of Page State Change entries
+        5fe9db0f82 OvmfPkg/BaseMemEncryptSevLib: Calculate memory size for Page State Change
+        6b14ef6b28 OvmfPkg/BaseMemEncryptSevLib: Fix uncrustify errors
+        4bd3b5ab13 OvmfPkg/PlatformPei: Retrieve APIC IDs from the hypervisor
+        5bdb091133 UefiCpuPkg/MpInitLib: Always use AP Create if GhcbApicIds HOB is present
+        8a6471819b MdePkg: GHCB APIC ID retrieval support definitions
+        c212fec9cf OvmfPkg/BaseMemEncryptLib: Fix error check from AsmRmpAdjust()
+        61185f1d50 SecurityPkg: Delete TdTcg2Dxe and HashLibTdx in SecurityPkg
+        93fac4fd7b OvmfPkg: Update TdTcg2Dxe path in OvmfPkgX64 and IntelTdxX64.dsc
+        c98fbda328 OvmfPkg/TdTcg2Dxe: Add TdTcg2Dxe
+        93ff80a218 OmvfPkg/HashLibTdx: Add HashLibTdx
+        71aaf7a308 Security/SecTpmMeasurementLibTdx: Delete unused SecTpmMeasurementLibTdx
+        fcfdbe2987 NetworkPkg/WifiConnectionManagerDxe: Update UI according to UEFI spec
+        b6cd5ddce9 SecurityPkg/OpalPasswordDxe: Force reparsing IFR binary when RETRIEVE
+        32e2968a1e SecurityPkg/OpalPasswordDxe: Change callback action to meet UEFI spec
+        7ea05d8fe9 ShellPkg/SmbiosView: Support New ProcessorUpgrade for SMBIOS Type4
+        bfcf2d66c7 MdePkg/SmBios.h: Add New ProcessorUpgrade definitions for SMBIOS Type4
+        6363872629 UefiCpuPkg/UefiCpuPkg.dsc: Add CpuMmio2Dxe.inf to LoongArch64 field
+        0b2f97c00a UefiCpuPkg: Add CpuDxe driver for LoongArch64
+        abaf405ed9 UefiCpuPkg: Add multiprocessor library for LoongArch64
+        392a368533 UefiCpuPkg: Add a new GUID to store the processors resource
+        032830e968 UefiCpuPkg: Add CpuMmuLib to UefiCpuPkg
+        c5fb47ddab UefiCpuPkg: Added a new PCD named PcdLoongArchExceptionVectorBaseAddress
+        78e5019071 UefiCpuPkg: Add CpuMmuLib.h to UefiCpuPkg
+        7750468c37 UefiCpuPkg: Add CPU exception library for LoongArch
+        439030bc37 UefiCpuPkg: Add LoongArch64 CPU Timer instance
+        cc63e04afc UefiCpuPkg/CpuDxe: Reorder the INF file alphabetically
+        022ddb8f84 UefiCpuPkg/MpInitLib: Reorder the INF files alphabetically
+        fecca982e3 UefiCpuPkg/CpuExceptionHandlerLib: Reorder the INF files alphabetically
+        18ad6485a9 UefiCpuPkg/CpuTimerLib: Reorder the INF file alphabetically
+        70892b13b2 StandaloneMmPkg: Support to unregister MMI handler in MMI handlers
+        74f6ce6734 MdeModulePkg/SMM: Support to unregister SMI handler in SMI handlers
+        da7858117f Revert ae1079b386a597108a8070652bf7cdaa4ec3dda3
+        b594fba4ec Revert 17b28722008eab745ce186b72cd325944cbe6bf0
+        de95e919be Revert 049ff6c39c73edd3709c05bd0e46184320471358
+        31cd5ee8c0 Revert 2ec8f0c6407f062441b205b900038933865c7b3c
+        5ba3602e45 BaseTools: Use Stronger Matching for NULL Linked Libraries
+        d77efa2ebe BaseTools: Don't Recurse NULL Includes Not Linked to Module
+        0707d9296d SecurityPkg/Tcg2Config: Hide BIOS unsupported hash algorithm from UI
+        e25808f501 MdePkg: Update the comments of GetInformation function
+        98f150a954 MdeModulePkg/AcpiTableDxe: Prefer xDSDT over DSDT when installing tables
+        963671d380 ShellPkg: Update smbiosview type 4 with SMBIOS 3.6 fields
+        665789b61b IntelFsp2WrapperPkg: Fsp T UPD Structure Bug Fix
+        013006e4ef IntelFsp2WrapperPkg: Fsp T new ARCH UPD Support
+        543add1d41 IntelFsp2Pkg: Fsp T new ARCH UPD Support
+        932db9df0c MdeModulePkg/AcpiTableDxe: PCD switch to avoid using ACPI reclaim memory
+        b7f8779fe1 OvmfPkg/RiscVVirt: Disable Svpbmt extension
+        3d5352d934 UefiCpuPkg: RISC-V: MMU: Support Svpbmt extension
+        6ddfbeb0d6 UefiCpuPkg: RISC-V: MMU: Explictly use UINT64 instead of UINTN
+        f1203a4099 MdePkg.dec: RISC-V: Define override bit for Svpbmt extension
+        c98c14576f CryptoPkg/BaseCryptLibUnitTest: add unit test functions
+        503344cdbd CryptoPkg/Driver: add additional RSAES-OAEP crypto functions
+        89ff5da9f9 CryptoPkg/BaseCryptLib: add additional RSAES-OAEP crypto functions
+        ee28bea4c0 SecurityPkg/SecureBootConfigDxe: Update UI according to UEFI spec
+        8707f835ae ArmPkg: Remove ArmCortexA9.h
+        ee249efe8c ArmPkg: Remove ArmCortexA5x.h
+        6fb3cc05dc RedfishPkg/RedfishPlatformConfigDxe: support menu path report
+        79d4d8a81c EmulatorPkg/Redfish: Use edk2 Redfish debug PCDs
+        2e4e41d012 RedfishPkg/RedfishPlatformConfigDxe: HII string is deleted unexpectedly
+        c8f56800fd RedfishPkg/RedfishPlatformConfigDxe:Add RefishDebugLib support
+        b0be42516e RedfishPkg/RedfishDebugLib: Introduce Redfish DEBUG macro
+        29114fc574 RedfishPkg/RedfishPlatformConfigDxe: Config language searching optimization
+        b387114113 EmulatorPkg: Update the comments of ReadKeyStroke and ReadKeyStrokeEx
+        7cc2010f46 EmbeddedPkg: Update the comments of ReadKeyStroke and ReadKeyStrokeEx
+        b79a64d26e ShellPkg: Update the comments of ReadKeyStroke and ReadKeyStrokeEx
+        e043e3e3bf MdeModulePkg: Update the comments of ReadKeyStroke and ReadKeyStrokeEx
+        8f698f0a64 CryptoPkg: Remove interdependence for RsaPssVerify
+        d402de2222 CryptoPkg: Update Md5/Sha1/Sha2 by using new mbedtls api
+        278250045b CryptoPkg: Update OPTIONAL location for BaseCryptLibMbedTls
+        37f63deeef MdeModulePkg: MemoryProtection: Use ImageRecordPropertiesLib
+        596f856c13 MdeModulePkg: ImagePropertiesRecordLib: Consolidate Usage
+        1fb6462c67 MdeModulePkg: ImagePropertiesRecordLib: Use SectionAlignment for CodeSize
+        7fde22823d MdePkg: Add gEfiDeviceSignatureDatabaseGuid to dec
+        e4e1f6229c MdePkg: Add UEFI 2.10 DeviceAuthentication
+        cf58f47623 ShellPkg/Acpiview: Adds ACPI WSMT Table parse
+        4b9312de05 ShellPkg/Acpiview: Adds HPET parser
+        7f1ffba5de MdeModulePkg/Xhci: Skip another size round up for TRB address
+        35f6a2780e OvmfPkg/TdxDxe: Clear the registers before tdcall
+        a1a6da80aa OvmfPkg/CcExitLib: Update TDVMCALL_EXPOSE_REGS_MASK
+        07c49d5d40 MdePkg/BaseLib: Update TDVMCALL_EXPOSE_REGS_MASK
+        3840c35e34 IntelFsp2WrapperPkg: Error handling of FspmWrapperInit()
+        ccbbc2a5c8 IntelFsp2WrapperPkg: Error handling of TpmMeasureAndLogDataWithFlags()
+        e7486b5064 MdeModulePkg: DxeCore: Do Not Apply Guards to Unsupported Types
+        68461c2c37 MdeModulePkg: DxeCore: Correct Runtime Granularity Memory Type
+        bf8f16f771 MdeModulePkg: DxeCore: Fix CodeQL Error in FreePages
+        019feb42a1 MdeModulePkg: Remove ArmPkg Dependency
+        5572b43c67 BaseTools/GenFds: Apply OEM_CAPSULE_FLAGS during Capsule generation.
+        308e6e0936 DynamicTablesPkg/SSDT: Require Package node in hierarchy
+        6b3a512149 SecurityPkg: Update ReceiveData and SendData function description
+        6f67ed45e0 MdeModulePkg: Update ReceiveData and SendData function description
+        a8b80149e1 MdePkg: Update ReceiveData and SendData function description
+        ddaf39263a EmbeddedPkg/NonCoherentIoMmuDxe: Make SetAttributes always succeed
+        ccf91b518f Maintainers.txt: remove Laszlo's entries
+        1c0db23151 UefiPayloadPkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        18fc96c9a9 UefiCpuPkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        1e603ac0d8 IntelFsp2Pkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        063a831c66 EmulatorPkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        f71a76ee01 ArmVirtPkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        91460083f1 ArmPlatformPkg: auto-generate SEC ProcessLibraryConstructorList() decl
+        524feaa32f OvmfPkg/RiscVVirt/Sec: clean up ProcessLibraryConstructorList() decl
+        9f9bf82209 OvmfPkg/IntelTdx: auto-gen & fix SEC ProcessLibraryConstructorList() decl
+        1fbc121cfe OvmfPkg: auto-generate (and fix) SEC ProcessLibraryConstructorList() decl
+        da4aa451ba pip-requirements.txt: require edk2-basetools version 0.1.51
+        e60529df58 UefiPayloadPkg: Make Dsc accomodative of other archs
+        2a0d4a2641 OvmfPkg/SmbiosPlatformDxe: tweak fallback release date again
+        918288ab5a .github/workflows/codeql.yml: Update actions being deprecated
+        bff9815b61 BaseTools/GenFds: Resolve absolute workspace INF paths
+        1ae5bee967 DynamicTablesPkg/SsdtSerialPortFixupLib: Add Interrupt node for SPIs only
+        855f528199 ArmPkg/ArmGicArchLib: Add macros for SPI and extended SPI ranges
+        970aacd191 UefiPayloadPkg: UPL arch backward support ELF
+        3775122ede ShellPkg/SmbiosView: Support New ProcessorFamily for SMBIOS Type4
+        47723854fd MdePkg/SmBios.h: Add New ProcessorFamily definitions for SMBIOS Type4
+        275d0a39c4 OvmfPkg/ResetVector: wire up 5-level paging for TDX
+        318b0d714a OvmfPkg/ResetVector: print post codes for 4/5 level paging
+        49b7faba1d OvmfPkg/ResetVector: add 5-level paging support
+        e3bd782373 OvmfPkg/ResetVector: split SEV and non-CoCo workflows
+        b7a97bfac5 OvmfPkg/ResetVector: split TDX BSP workflow
+        4329b5b0cd OvmfPkg/ResetVector: add CreatePageTables4Level macro
+        52e44713d2 OvmfPkg/ResetVector: add ClearOvmfPageTables macro
+        fded08e744 OvmfPkg/ResetVector: improve page table flag names
+        371940932d MdeModulePkg/Core/Pei: Improve the copy performance
+        2ec8f0c640 StandaloneMmPkg: Disallow unregister MMI handler in other MMI handler
+        049ff6c39c StandaloneMmPkg: Support to unregister MMI handler inside MMI handler
+        17b2872200 MdeModulePkg/SMM: Disallow unregister SMI handler in other SMI handler
+        ae1079b386 MdeModulePkg/SMM: Support to unregister SMI handler inside SMI handler
+        dcffad2491 UefiCpuPkg/CpuPageTableLib: qualify page table accesses as volatile
+        d159e22913 UefiCpuPkg/CpuPageTableLib: Fix IN OUT parameters marked as IN
+        dc7cfa9bab UefiCpuPkg/MpInitLib: add struct MP_HAND_OFF_CONFIG
+        bac9c74080 BaseTools/AutoGen: declare ProcessLibraryConstructorList() for SEC modules
+        adebfe121c OvmfPkg/PlatformInitLib: add 5-level paging support
+        13fbc16556 MdeModulePkg/DxeIplPeim: rename variable
+        73ac735be8 MdeModulePkg/DxeIplPeim: fix PcdUse5LevelPageTable assert
+        d9a6e7b0b8 RedfishPkg/RedfishCrtLib: fix unresolved external symbol issue
+        d4c76fa17d RedfishPkg/RedfishDebugLib: use RedfishHttpLib
+        422dfaab31 RedfishPkg/RedfishLib: include RedfishServiceData.h
+        9da786c16f RedfishPkg: introduce RedfishHttpLib
+        0ce2012c6c RedfishPkg: implement Redfish HTTP protocol
+        1988f2df29 RedfishPkg: introduce Redfish HTTP protocol
+        3e91e42136 BaseTools: Syntax warning invalid escape sequence \C
+        6d571c0070 BaseTools/Scripts/PatchCheck: Error if commit modifies multiple packages
+        0bbec15b54 BaseTools/Scripts/PatchCheck: Error if no Cc tags are present
+        45ad13bb64 BaseTools/Scripts/PatchCheck: Return CommitMessageCheck errors
+        dae8c29dab BaseTools/Scripts/PatchCheck: Update Author checks
+        e59a40b92c EmbeddedPkg/Scripts/LauterbachT32: Fix EfiLoadDxe.cmm
+        aceb3490a2 OvmfPkg/PlatformPei: log pei memory cap details
+        3ad1d7eb7b OvmfPkg/PlatformPei: rewrite page table calculation
+        8757e648d1 OvmfPkg/PlatformPei: consider AP stacks for pei memory cap
+        9d32a02a72 OvmfPkg/PlatformPei: log a warning when memory is tight
+        ba9c3ceaf8 StandaloneMmPkg: Arm: Update to use the new StandaloneMmCpu driver
+        e7a7169446 StandaloneMmPkg: Make StandaloneMmCpu driver architecture independent
+        74b5309da9 RedfishPkg/RestJsonStructureDxe: Refine REST JSON C Structure DXE driver
+        33c81c25bb MdeModulePkg/TraceHubDebugSysTLib: Use wider type for loop comparisons
+        d25421d0d8 UefiCpuPkg/MpInitLib: return early in GetBspNumber()
+        5e09b5d6d7 UefiCpuPkg/MpInitLib: Add support for multiple HOBs to SaveCpuMpData()
+        c8e77454b5 UefiCpuPkg/MpInitLib: Add support for multiple HOBs to MpInitLibInitialize
+        e2c9d8eba4 UefiCpuPkg/MpInitLib: Add support for multiple HOBs to SwitchApContext()
+        b485230462 UefiCpuPkg/MpInitLib: Add support for multiple HOBs to GetBspNumber()
+        a3ee1eea96 UefiCpuPkg/MpInitLib: Add support for multiple HOBs to GetMpHandOffHob
+        1f161a7915 MdeModulePkg/Bus/Usb/UsbNetwork: Check array index range before access
+        68238d4f94 MdePkg Updated the comments of EFI_SYSTEM_TABLE and ReadKeyStroke
+        44fdc4f398 BaseTools: Update keybaord map based on UEFI spec 2.10
+        d0c0e1960a MdePkg: Update keybaord map based on UEFI spec 2.10
+        ba96acd963 ArmVirtPkg/XenAcpiPlatformDxe: Install FACS table from DT
+        f881b4d129 OvmfPkg: only add shell to FV in case secure boot is disabled
+        bc982869dd OvmfPkg/CI: copy shell to virtual drive
+        8d7c48e0e7 OvmfPkg: switch MicrovmX64 to new shell include files
+        6bb39cfd00 OvmfPkg: switch IntelTdxX64 to new shell include files
+        a7a0443751 OvmfPkg: switch AmdSevX64 to new shell include files
+        796e1b82df OvmfPkg: switch OvmfPkgIa32X64 to new shell include files
+        65200edb3a OvmfPkg: switch OvmfPkgIa32 to new shell include files
+        bda5b4a6cf OvmfPkg: ShellDxe.fdf.inc: add VariablePolicyDynamicCommand to FV
+        7f17a15564 OvmfPkg: Shell*.inc: allow building without network support
+        b25f84d7b3 OvmfPkg: add ShellDxe.fdf.inc
+        efca2c6cfc OvmfPkg: add ShellLibs.dsc.inc
+        2cb466cc2c OvmfPkg: add ShellComponents.dsc.inc
+        7fa4a984c4 UefiPayloadPkg/Gop: Clean up unused protocol and Guid
+        11ad164bce UefiPayloadPkg: Make UPL build script arch agnostic
+        8ccd63d14d UefiCpuPkg: Fix issue that IsModified is wrongly set in PageTableMap
+        c10e5703fe UefiCpuPkg/CpuMpPei: Don't write CR3 in ConvertMemoryPageToNotPresent
+        2f4b07b668 UefiCpuPkg/CpuPageTableLib: Enhance function header for PageTableMap()
+        2ca8d55974 UefiCpuPkg/PiSmmCpuDxeSmm: Check BspIndex first before lock cmpxchg
+        d698bcfe4f UefiCpuPkg/PiSmmCpuDxeSmm: Avoid BspIndex typecasting
+    - Removed patches which are merged to edk2-stable202405:
+        - ovmf-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
+            9aa057b29834 OvmfPkg/SmbiosPlatformDxe: tweak fallback release date again
+    - Add brotli as new submodule
+        - brotli-f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz
+            - https://github.com/google/brotli/archive/f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz
+        - https://github.com/google/brotli
+        - edk2 commit ids:
+            1193aa2dfbbd MdeModulePkg: update brotli submodule
+            42af706dfba7 BaseTools: Update brotli submodule
+        - Updated ovmf.spec
+            - unpacked brotli-f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz to
+              BaseTools/Source/C/BrotliCompress/brotli and
+              MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
+        - We add brotli back to ovmf.spec as a submodule to align with edk2 mainline.
+          Then we can remove ovmf-disable-brotli.patch to reduce the number of downstream patches.
+        - removed ovmf-disable-brotli.patch
+    - Add libspdm as new submodule
+        - libspdm-50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz
+            - https://github.com/DMTF/libspdm/archive/50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz 
+        - https://github.com/DMTF/libspdm.git
+        - edk2 commit ids:
+            79655e276860 SecurityPkg: Update libspdm submodule to use GitLab cmocka repo
+            54a4fd9b35ca SecurityPkg: Add libspdm submodule
+            9bc272519868 .gitmodule: Add libspdm submodule for EDKII
+        - Updated ovmf.spec
+            - unpacked libspdm-50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz to SecurityPkg/DeviceSecurity/SpdmLib/libspdm
+    - Changed the approach for creating the edk2 source code tarball:
+        - Original approach for getting the edk2 source code tarball is
+          directly downloading edk2-edk2-stable%{version}.tar.gz from 
+          https://github.com/tianocore/edk2.
+        - New approach is that we download edk2-edk2-stable%{version}.tar.gz
+          from https://github.com/tianocore/edk2. Then we repackage the tarball
+          for renaming the build root folder from edk2-edk2-stable%{version}/ to
+          edk2/. This approach can reduce the size of FV image against
+          FD_SIZE_2MB config.
+          (I believe that the reason is "gcc -g" produced bigger image when the
+           name of build root folder has longer name)
+        - A advantage by using edk2/ as the build root folder name is that it
+          aligns with the edk2 git project name. In development stage, developer
+          should find that the FV image size is too big for FD_SIZE_2MB config.
+          So we use the same name of build root folder with development stage.
+        - Another approach for getting the source tarball is using git in local
+          edk2 git repo:
+              git archive --format=tar.gz -o ./edk2-edk2-stable%{version}.tar.gz --prefix=edk2/ edk2-stable%{version}
+          For example:
+              git archive --format=tar.gz -o ./edk2-edk2-stable202405.tar.gz --prefix=edk2/ edk2-stable202405
+        - Against this change, we modified the setup command in %prep section in
+          ovmf.spec:
+            old: %setup -q -n edk2-edk2-stable%{version} 
+            new: %setup -q -n edk2
+
+-------------------------------------------------------------------
 Tue Aug 20 04:57:28 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Removed -code/-vars files of AMD SEV flavor because SEV ovmf only

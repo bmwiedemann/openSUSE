@@ -53,7 +53,7 @@
 
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64 riscv64
 %define kvm_available 1
-%define with_uring 1
+%bcond_without uring
 %define liburing_min_version 1.0
 %endif
 
@@ -62,11 +62,11 @@
 %endif
 
 %ifarch x86_64 aarch64 ppc64le s390x
-%define with_rbd 1
+%bcond_without rbd
 %endif
 
 %ifarch x86_64 ppc64le
-%define with_daxctl 1
+%bcond_without daxctl
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -127,20 +127,20 @@ BuildRequires:  libnuma-devel
 %if 0%{with canokey}
 BuildRequires:  canokey-qemu-devel
 %endif
-%if 0%{?with_daxctl}
+%if 0%{with daxctl}
 BuildRequires:  pkgconfig(libndctl)
 %endif
 %if %{kvm_available}
 BuildRequires:  pkgconfig(udev)
 %endif
-%if 0%{?with_rbd}
+%if 0%{with rbd}
 BuildRequires:  librbd-devel
 %endif
 %if 0%{with spice}
 BuildRequires:  pkgconfig(spice-protocol) >= 0.12.3
 BuildRequires:  pkgconfig(spice-server) >= 0.12.5
 %endif
-%if 0%{?with_uring}
+%if 0%{with uring}
 BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
 %if 0%{with xdp}
@@ -252,7 +252,7 @@ Recommends:     qemu-ksm = %{version}
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 ## Packages we will SUGGEST
-%if 0%{?with_rbd}
+%if 0%{with rbd}
 Suggests:       qemu-block-rbd
 %endif
 Suggests:       qemu-accel-qtest
@@ -490,8 +490,8 @@ sed -i '/^\ \ \ about\/index.*/i \ \ \ supported.rst' docs/index.rst
 # from a git branch. We, therefore, assumed that the following commands
 # have been run, and the result committed to the repository (with seabios
 # and skiboot at the proper commit/tag/...):
-#  git -C roms/seabios describe --tags --long --dirty > rpm/seabios_version
-#  (cd roms/skiboot && ./make_version.sh > ../../rpm/skiboot_version)
+#  (pushd roms/seabios && git describe --tags --long --dirty > ../../rpm/seabios_version ; popd)
+#  (pushd roms/skiboot && ./make_version.sh > ../../rpm/skiboot_version ; popd)
 cp %{rpmfilesdir}/seabios_version roms/seabios/.version
 cp %{rpmfilesdir}/skiboot_version roms/skiboot/.version
 find . -iname ".git" -exec rm -rf {} +
@@ -507,7 +507,6 @@ export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 # for them.
 
 # TODO: Check whether we want to enable the followings:
-# * avx512f
 # * debug-info
 # * fuse
 # * malloc-trim
@@ -536,143 +535,8 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
 	--sysconfdir=%_sysconfdir \
-	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
-	--disable-af-xdp \
-	--disable-alsa \
-	--disable-attr \
-	--disable-auth-pam \
-	--disable-avx2 \
-	--disable-avx512f \
-	--disable-block-drv-whitelist-in-tools \
-	--disable-bochs \
-	--disable-bpf \
-	--disable-brlapi \
-	--disable-bsd-user \
-	--disable-bzip2 \
-	--disable-cap-ng \
-	--disable-capstone \
-	--disable-cfi \
-	--disable-cfi-debug \
-	--disable-cloop \
-	--disable-cocoa \
-	--disable-coreaudio \
-	--disable-coroutine-pool \
-	--disable-crypto-afalg \
-	--disable-curl \
-	--disable-curses \
-	--disable-dbus-display \
-	--disable-debug-info \
-	--disable-debug-mutex \
-	--disable-debug-tcg \
-	--disable-dmg \
-	--disable-docs \
-	--disable-download \
-	--disable-dsound \
-	--disable-fdt \
-	--disable-fuse \
-	--disable-fuse-lseek \
-	--disable-gcrypt \
-	--disable-gettext \
-	--disable-gio \
-	--disable-glusterfs \
-	--disable-gnutls \
-	--disable-gtk \
-	--disable-guest-agent \
-	--disable-guest-agent-msi \
-	--disable-hv-balloon \
-	--disable-hvf \
-	--disable-iconv \
-	--disable-jack \
-	--disable-kvm \
-	--disable-l2tpv3 \
-	--disable-libdaxctl \
-	--disable-libiscsi \
-	--disable-libkeyutils \
-	--disable-libnfs \
-	--disable-libpmem \
-	--disable-libssh \
-	--disable-libudev \
-	--disable-libusb \
-	--disable-linux-aio \
-	--disable-linux-io-uring \
-	--disable-linux-user \
-	--disable-live-block-migration \
-	--disable-lto \
-	--disable-lzfse \
-	--disable-lzo \
-	--disable-malloc-trim \
-	--disable-membarrier \
-	--disable-module-upgrades \
-	--disable-modules \
-	--disable-mpath \
-	--disable-multiprocess \
-	--disable-netmap \
-	--disable-nettle \
-	--disable-numa \
-	--disable-nvmm \
-	--disable-opengl \
-	--disable-oss \
-	--disable-pa \
-	--disable-parallels \
-	--disable-pie \
-	--disable-pipewire \
-	--disable-pixman \
-	--disable-plugins \
-	--disable-png \
-	--disable-pvrdma \
-	--disable-qcow1 \
-	--disable-qed \
-	--disable-qom-cast-debug \
-	--disable-rbd \
-	--disable-rdma \
-	--disable-relocatable \
-	--disable-replication \
-	--disable-rng-none \
-	--disable-rutabaga-gfx \
-	--disable-safe-stack \
-	--disable-sanitizers \
-	--disable-sdl \
-	--disable-sdl-image \
-	--disable-seccomp \
-	--disable-selinux \
-	--disable-slirp \
-	--disable-slirp-smbd \
-	--disable-smartcard \
-	--disable-snappy \
-	--disable-sparse \
-	--disable-spice \
-	--disable-spice-protocol \
-	--disable-strip \
-	--disable-system \
-	--disable-tcg \
-	--disable-tcg-interpreter \
-	--disable-tools \
-	--disable-tpm \
-	--disable-u2f \
-	--disable-usb-redir \
-	--disable-user \
-	--disable-vde \
-	--disable-vdi \
-	--disable-vhost-crypto \
-	--disable-vhost-kernel \
-	--disable-vhost-net \
-	--disable-vhost-user \
-	--disable-vhost-user-blk-server \
-	--disable-vhost-vdpa \
-	--disable-virglrenderer \
-	--disable-virtfs \
-	--disable-vnc \
-	--disable-vnc-jpeg \
-	--disable-vnc-sasl \
-	--disable-vte \
-	--disable-vvfat \
-	--disable-werror \
-	--disable-whpx \
-	--disable-xen \
-	--disable-xen-pci-passthrough \
-	--disable-xkbcommon \
-	--disable-zstd \
-	--without-default-devices \
+	--with-pkgversion="$(echo '%{distro}' | sed 's/ (.*)//')" \
+	%{disable_everything} \
 %if 0%{?suse_version} >= 1600
 	--audio-drv-list=pipewire,pa,alsa,jack,oss \
 %else
@@ -692,31 +556,31 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %if 0%{with canokey}
 	--enable-canokey \
 %endif
-%if %{kvm_available}
+%if 0%{kvm_available}
 	--enable-kvm \
 %endif
-%if 0%{?with_daxctl}
+%if 0%{with daxctl}
 	--enable-libdaxctl \
 %endif
-%if 0%{?with_uring}
+%if 0%{with uring}
         --enable-linux-io-uring \
 %endif
 %if "%{_lto_cflags}" != "%{nil}"
 	--enable-lto \
 %endif
-%if %{with malloc_trim}
+%if 0%{with malloc_trim}
 	--enable-malloc-trim \
 %endif
-%if %{with system_membarrier}
+%if 0%{with system_membarrier}
 	--enable-membarrier \
 %endif
 %ifnarch %arm s390x
 	--enable-numa \
 %endif
-%if 0%{?with_rbd}
+%if 0%{with rbd}
 	--enable-rbd \
 %endif
-%if %{has_rutabaga_gfx}
+%if 0%{has_rutabaga_gfx}
 	--enable-rutabaga-gfx \
 %endif
 	--enable-alsa \
@@ -754,7 +618,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-libudev \
 	--enable-libusb \
 	--enable-linux-aio \
-	--enable-live-block-migration \
 	--enable-lzfse \
 	--enable-lzo \
 	--enable-modules \
@@ -767,7 +630,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-pipewire \
 	--enable-pixman \
 	--enable-png \
-	--enable-pvrdma \
 	--enable-qcow1 \
 	--enable-qed \
 	--enable-rdma \
@@ -790,6 +652,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-usb-redir \
 	--enable-vde \
 	--enable-vdi \
+	--enable-vhdx \
 	--enable-vhost-crypto \
 	--enable-vhost-kernel \
 	--enable-vhost-net \
@@ -801,6 +664,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-vnc \
 	--enable-vnc-jpeg \
 	--enable-vnc-sasl \
+	--enable-vpc \
 	--enable-vte \
 	--enable-vvfat \
 	--enable-werror \
@@ -978,6 +842,8 @@ unlink %{buildroot}%_datadir/%name/edk2-i386-secure-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-i386-vars.fd
 unlink %{buildroot}%_datadir/%name/edk2-x86_64-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-riscv-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-riscv-vars.fd
 
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
@@ -1020,6 +886,21 @@ done
 # End of "if build_x86_firmware"
 %endif
 
+# Upstream provides services for qemu-pr-helper. So far, we've not needed
+# them, so let's continue not to ship them for now. If that changes, just
+# uncomment these lines (and the ones in the %file pr-helper section)
+#install -m 0644 contrib/systemd/qemu-pr-helper.service %{buildroot}%{_unitdir}
+#install -m 0644 contrib/systemd/qemu-pr-helper.socket %{buildroot}%{_unitdir}
+
+%if 0%{with vmsr_helper}
+echo ""
+# Upstream provides services for qemu-vmsr-helper. So far, we've not needed
+# them, so let's continue not to ship them for now. If that changes, just
+# uncomment these lines (and the ones in the %file vmsr-helper section)
+#install -m 0644 contrib/systemd/qemu-vmsr-helper.service %{buildroot}%{_unitdir}
+#install -m 0644 contrib/systemd/qemu-vmsr-helper.socket %{buildroot}%{_unitdir}
+%endif
+
 %suse_update_desktop_file qemu
 
 # Common install steps for qemu and qemu-linux-user
@@ -1033,11 +914,11 @@ cd %blddir
 # do that in the patch itself. Instead, we keep a copy of the binary in the
 # package sources, and put it in place now, before the tests themselves.
 # If that patch is removed, the following line needs to go as well.
-cp %{rpmfilesdir}/DSDT.pcie %{srcdir}/tests/data/acpi/microvm/
+cp %{rpmfilesdir}/DSDT.pcie %{srcdir}/tests/data/acpi/x86/microvm/
 
 # Patch 'tests/acpi: update tables for new core count test' requires some new
 # binaries to be introcuded too. Let's copy them in place as well
-cp %{rpmfilesdir}/APIC.core-count2 %{rpmfilesdir}/DSDT.core-count2 %{rpmfilesdir}/FACP.core-count2 %{srcdir}/tests/data/acpi/q35/
+cp %{rpmfilesdir}/APIC.core-count2 %{rpmfilesdir}/DSDT.core-count2 %{rpmfilesdir}/FACP.core-count2 %{srcdir}/tests/data/acpi/x86/q35/
 
 %if 0%{?qemu_user_space_build}
 # Seccomp is not supported by linux-user emulation
@@ -1306,7 +1187,6 @@ popular QEMU packages which are dedicated to a single architecture.)
 %_bindir/qemu-system-mipsel
 %_bindir/qemu-system-mips64
 %_bindir/qemu-system-mips64el
-%_bindir/qemu-system-nios2
 %_bindir/qemu-system-or1k
 %_bindir/qemu-system-riscv32
 %_bindir/qemu-system-riscv64
@@ -1699,7 +1579,23 @@ This package provides a helper utility for SCSI persistent reservations.
 
 %files pr-helper
 %_bindir/qemu-pr-helper
+#%{_unitdir}/qemu-pr-helper.service
+#%{_unitdir}/qemu-pr-helper.socket
 %_mandir/man8/qemu-pr-helper.8.gz
+
+%if 0%{with vmsr_helper}
+%package vmsr-helper
+Summary:        QEMU virtual RAPL MSR helper
+Group:          System/Emulators/PC
+
+%description vmsr-helper
+This package provides a helper utility for letting VMs access the RAPL (Running Average Power Limit) MSR.
+
+%files vmsr-helper
+%_bindir/qemu-vmsr-helper
+#%{_unitdir}/qemu-vmsr-helper.service
+#%{_unitdir}/qemu-vmsr-helper.socket
+%endif
 
 %package tools
 Summary:        Tools for QEMU
@@ -1708,12 +1604,15 @@ Requires(pre):  permissions
 Requires:       qemu-img
 Requires:       qemu-pr-helper
 Requires:       group(kvm)
+%if 0%{with vmsr_helper}
+Requires:       qemu-vmsr-helper
+%endif
 %if %{has_virtiofsd}
 Requires:       virtiofsd
 %endif
 Recommends:     multipath-tools
 Recommends:     qemu-block-curl
-%if 0%{?with_rbd}
+%if 0%{with rbd}
 Recommends:     qemu-block-rbd
 %endif
 
@@ -1869,7 +1768,6 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-mips64.so
 %_libdir/%name/accel-qtest-mips64el.so
 %_libdir/%name/accel-qtest-mipsel.so
-%_libdir/%name/accel-qtest-nios2.so
 %_libdir/%name/accel-qtest-or1k.so
 %_libdir/%name/accel-qtest-ppc.so
 %_libdir/%name/accel-qtest-ppc64.so
@@ -1886,7 +1784,7 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-xtensa.so
 %_libdir/%name/accel-qtest-xtensaeb.so
 
-%if 0%{?with_rbd}
+%if 0%{with rbd}
 %package block-rbd
 Summary:        Rados Block Device (Ceph) support for QEMU
 Group:          System/Emulators/PC
@@ -1964,7 +1862,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.0.2%{sbver}
+Version:        9.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1985,7 +1883,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.0.2%{sbver}
+Version:        9.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2011,7 +1909,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

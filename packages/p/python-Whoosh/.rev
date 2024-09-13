@@ -88,4 +88,12 @@
     <comment>- Update in SLE-15 (bsc#1197830)</comment>
     <requestid>1109333</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>d2be44b4ae3d94b42d9dbbd6cd88ada9</srcmd5>
+    <version>2.7.4</version>
+    <time>1726230352</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198902</requestid>
+  </revision>
 </revisionlist>

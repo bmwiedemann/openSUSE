@@ -43,6 +43,7 @@
 %endif
 %endif
 
+%global selinuxtype targeted
 Name:           passt
 Version:        20240906.6b38f07
 Release:        0
@@ -135,13 +136,21 @@ popd
 %endif
 
 %if %{with selinux}
-%post selinux
-semodule -i %{_datadir}/selinux/packages/%{name}/passt.pp 2>/dev/null || :
-semodule -i %{_datadir}/selinux/packages/%{name}/pasta.pp 2>/dev/null || :
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
 
-%preun selinux
-semodule -r passt 2>/dev/null || :
-semodule -r pasta 2>/dev/null || :
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/passt.pp
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/pasta.pp
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+	%selinux_modules_uninstall -s %{selinuxtype} passt
+	%selinux_modules_uninstall -s %{selinuxtype} pasta
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
 %endif
 
 %files

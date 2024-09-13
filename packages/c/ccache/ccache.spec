@@ -34,7 +34,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  fmt-devel
-%if %{?suse_version} > 1600
+%if %{?suse_version} > 1500
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 # SLE requires gcc11 for std::filesystem

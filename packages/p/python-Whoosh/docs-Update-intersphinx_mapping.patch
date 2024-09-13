@@ -1,0 +1,25 @@
+From 46b1be3b6fff90d854f234e83aba849201e15d0e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Wed, 4 Sep 2024 17:29:05 +0200
+Subject: [PATCH] docs: Update intersphinx_mapping
+
+---
+ docs/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/source/conf.py b/docs/source/conf.py
+index e106a33..9d76ec5 100644
+--- a/docs/source/conf.py
++++ b/docs/source/conf.py
+@@ -192,7 +192,7 @@ latex_documents = [
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'http://docs.python.org/': None}
++intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+ 
+ # Autodoc config
+ autoclass_content = "both"
+-- 
+2.46.0
+

@@ -1,3 +1,19 @@
+-------------------------------------------------------------------
+Thu Sep 12 12:53:09 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Use system cmis where feasible, as our RPM version of cmis-devel has been
+  patched to work with Boost 1.86, which LibreOffice also uses.
+- Update to 24.8.1.2 (jsc#PED-10362):
+  * This release already includes the fix for CVE-2024-5261 (bsc#1226975)
+    upstream.
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/24.8.1/RC1
+    https://wiki.documentfoundation.org/Releases/24.8.1/RC2
+- Update bundled dependencies:
+  * curl 8.9.0 -> 8.9.1
+  * poppler 24.06.0 -> 24.08.0
+
+-------------------------------------------------------------------
 Thu Aug 22 15:14:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Make the libassuan requirement more generic (bsc#1229103)

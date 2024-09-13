@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Add United Airlines reservations parser
+  * sunnycars: Extract drop-off location, if available
+  * Handle MAV ticket barcodes without a trip block
+  * Fix latitude/longitude mixup
+  * Add extractor script for (new?) Italo PDF tickets
+  * Support French date/time format in BlablaBus tickets
+  * Fix extraction of multi-page BlablaBus PDF tickets
+  * Handle more Eurostar PDF layout variants
+  * Add extractor script for Reisnordland ferries (kde#492096)
+  * Unify the two DB ical extractor methods a bit
+  * Add Reservix extractor
+  * Try harder to decode names in VDV tickets
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

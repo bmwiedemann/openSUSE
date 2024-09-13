@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202402
+Version:        202405
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -51,12 +51,15 @@ Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
 Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 # mbedtls: https://github.com/Mbed-TLS/mbedtls
 Source10:       mbedtls-3.3.0.tar.gz
+# brotli: https://github.com/google/brotli
+Source11:       brotli-f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz
+# libspdm: https://github.com/DMTF/libspdm.git
+Source12:       libspdm-50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
-Patch5:         %{name}-disable-brotli.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
 # Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
 Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
@@ -64,10 +67,8 @@ Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
-# Bug 1219024 - SVVP test Check SMBIOS Table Specific Requirements fails
-Patch11:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
-Patch12:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
+Patch10:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -185,7 +186,12 @@ virt board.
 %endif
 
 %prep
-%setup -q -n edk2-edk2-stable%{version}
+# We download the edk2-edk2-stable%{version}.tar.gz from
+# https://github.com/tianocore/edk2. Then we repackage the tarball for
+# renaming the root build folder from edk2-edk2-stable%{version}/ to edk2/
+# . This approach can reduce the size of FV image against FD_SIZE_2MB config.
+# Please check ovmf.change rpm changelog for more detail.
+%setup -q -n edk2
 
 # bsc#973038 Remove the packages we don't need to avoid any potential
 # license issue.
@@ -220,6 +226,19 @@ popd
 # add mbedtls
 pushd CryptoPkg/Library/MbedTlsLib/mbedtls
 tar -xf %{SOURCE10} --strip 1
+popd
+
+# add brotli
+pushd BaseTools/Source/C/BrotliCompress/brotli
+tar -xf %{SOURCE11} --strip 1
+popd
+pushd MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
+tar -xf %{SOURCE11} --strip 1
+popd
+
+# add libspdm
+pushd SecurityPkg/DeviceSecurity/SpdmLib/libspdm
+tar -xf %{SOURCE12} --strip 1
 popd
 
 %build

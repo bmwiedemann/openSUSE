@@ -193,4 +193,14 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment></comment>
     <requestid>1136641</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>3cfcdc18b75bdf6413e63ca2a24d5906</srcmd5>
+    <version>5.0.8</version>
+    <time>1726230356</time>
+    <user>anag+factory</user>
+    <comment>- Refresh CVE-2023-26112.patch according to the last state of
+  gh#DiffSK/configobj!236.
+</comment>
+    <requestid>1200122</requestid>
+  </revision>
 </revisionlist>

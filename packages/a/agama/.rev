@@ -55,4 +55,29 @@
     - env_logger added to dev-dependencies</comment>
     <requestid>1194877</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>20688ea884a2288f41377165a6398af6</srcmd5>
+    <version>0</version>
+    <time>1726230628</time>
+    <user>anag+factory</user>
+    <comment>- Implement 802.1x (EAP) in network settings (gh#openSUSE/agama#1597).
+
+- For CLI, use HTTP clients instead of D-Bus clients,
+  for Product (name and registration) (gh#openSUSE/agama#1548)
+  - added ProductHTTPClient
+
+- Show product logo in product selector (gh#openSUSE/agama#1415).
+
+- Expose the DASD D-Bus API through HTTP (gh#openSUSE/agama#1532).
+
+- Schema definition for basic storage settings
+  (gh#openSUSE/agama#1455).
+
+- For CLI, use HTTP clients instead of D-Bus clients,
+  for Software (gh#openSUSE/agama#1548)
+  - added SoftwareHTTPClient
+
+    (/etc/agama.d/ssl) is checked for a certificate</comment>
+    <requestid>1200781</requestid>
+  </revision>
 </revisionlist>

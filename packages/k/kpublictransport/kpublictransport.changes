@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Update Hafas feature code mapping for codes observed at BLS
+  * Add Hafas vehicle feature codes used by NASA
+  * Downgrade coverage quality for France for ÖBB
+  * Add more Hafas feature codes observed in Switzerland
+  * Update ZVV API key
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

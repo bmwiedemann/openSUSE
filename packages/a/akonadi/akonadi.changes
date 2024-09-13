@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:09:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Fix loading/saving resource config file in config dialog when
+    using Akonadi Instances
+  * Fix crash when query is evicted from QueryCache (kde#492547)
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

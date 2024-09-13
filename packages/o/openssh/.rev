@@ -1883,4 +1883,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     requires on average 6-8 hours of continuous connections up to</comment>
     <requestid>1196434</requestid>
   </revision>
+  <revision rev="184" vrev="3">
+    <srcmd5>a5e03d2eb4e68f10300b55cae95d139a</srcmd5>
+    <version>9.8p1</version>
+    <time>1726230368</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200282</requestid>
+  </revision>
 </revisionlist>

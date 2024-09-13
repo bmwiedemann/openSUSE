@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Fix building png images from svg files caused by broken attribute 'xlink:href="#(null)"' (kde#492246)
+  * cmake: fix building svg2png with Qt5
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

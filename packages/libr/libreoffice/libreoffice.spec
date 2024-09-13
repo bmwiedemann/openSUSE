@@ -78,7 +78,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.8.0.3
+Version:        24.8.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -112,8 +112,6 @@ Source2008:     %{external_url}/pdfium-6425.tar.bz2
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz
-Source2012:     %{external_url}/libcmis-0.6.2.tar.xz
-Provides:       bundled(libcmis) = 0.6.2
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -154,8 +152,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.9.0.tar.xz
-Provides:       bundled(curl) = 8.9.0
+Source2013:     %{external_url}/curl-8.9.1.tar.xz
+Provides:       bundled(curl) = 8.9.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -303,18 +301,21 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_85_0.tar.xz
-Source2023:     %{external_url}/poppler-24.06.0.tar.xz
+Source2023:     %{external_url}/poppler-24.08.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
 Source2030:     %{external_url}/tiff-4.6.0t.tar.xz
 Provides:       bundled(boost) = 1.85.0
-Provides:       bundled(poppler) = 24.06.0
+Provides:       bundled(poppler) = 24.08.0
 Provides:       bundled(poppler-data) = 0.4.12
+Source2031:     %{external_url}/libcmis-0.6.2.tar.xz
+Provides:       bundled(libcmis) = 0.6.2
 %else
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  libcmis-devel
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.10
 BuildRequires:  pkgconfig(poppler) >= 21.01.0
 BuildRequires:  pkgconfig(poppler-cpp)
@@ -1190,7 +1191,6 @@ export NOCONFIGURE=yes
         --with-system-libpng \
         --with-system-dragonbox \
         --with-system-libfixmath \
-        --without-system-libcmis \
         --with-vendor=SUSE \
         --with-lang=ALL \
         --disable-fetch-external \
@@ -1249,6 +1249,7 @@ export NOCONFIGURE=yes
         --without-system-boost \
         --without-system-poppler \
         --without-system-libtiff \
+        --without-system-libcmis \
 %endif
 %if 0%{?suse_version} < 1500
         --without-system-argon2 \

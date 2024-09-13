@@ -23,4 +23,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186240</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3015a43eb1948ee51e2db22fb625e446</srcmd5>
+    <version>2.4.0</version>
+    <time>1726230367</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.0:
+  * Fix regex flags accidentally passed as count
+  * Deprecate read_env_file and move it to DotEnvSettingsSource
+  * Fix a bug when loading empty yaml file
+  * feat: Enable access to the current state in settings sources
+  * Add support for short options
+  * Add Azure Key Vault settings source
+  * Add cli_exit_on_error config option
+- Add in multibuild.</comment>
+    <requestid>1200237</requestid>
+  </revision>
 </revisionlist>

@@ -46,6 +46,12 @@
 %bcond_with xdp
 %endif
 
+%ifarch %ix86 x86_64
+%bcond_without vmsr_helper
+%else
+%define vmsr_helper 0
+%endif
+
 # Make it possible to build without spice (for SLE/Leap Micro)
 %bcond_without spice
 
@@ -100,3 +106,152 @@ Many options are available for defining the emulated environment, including\
 traditional devices, direct host device access, and interfaces specific to\
 virtualization.
 
+%define disable_everything	\\\
+ --audio-drv-list=		\\\
+ --disable-af-xdp		\\\
+ --disable-alsa			\\\
+ --disable-attr			\\\
+ --disable-auth-pam		\\\
+ --disable-avx2			\\\
+ --disable-avx512bw		\\\
+ --disable-blkio		\\\
+ --disable-block-drv-whitelist-in-tools	\\\
+ --disable-bochs		\\\
+ --disable-bpf			\\\
+ --disable-brlapi		\\\
+ --disable-bsd-user		\\\
+ --disable-bzip2		\\\
+ --disable-cap-ng		\\\
+ --disable-capstone		\\\
+ --disable-cfi			\\\
+ --disable-cfi-debug		\\\
+ --disable-cloop		\\\
+ --disable-cocoa		\\\
+ --disable-colo-proxy		\\\
+ --disable-coreaudio		\\\
+ --disable-coroutine-pool	\\\
+ --disable-crypto-afalg		\\\
+ --disable-curl			\\\
+ --disable-curses		\\\
+ --disable-dbus-display		\\\
+ --disable-debug-graph-lock	\\\
+ --disable-debug-info		\\\
+ --disable-debug-mutex		\\\
+ --disable-debug-remap		\\\
+ --disable-debug-tcg		\\\
+ --disable-dmg			\\\
+ --disable-docs			\\\
+ --disable-download		\\\
+ --disable-dsound		\\\
+ --disable-fdt			\\\
+ --disable-fuse			\\\
+ --disable-fuse-lseek		\\\
+ --disable-gcrypt		\\\
+ --disable-gettext		\\\
+ --disable-gio			\\\
+ --disable-glusterfs		\\\
+ --disable-gnutls		\\\
+ --disable-gtk			\\\
+ --disable-gtk-clipboard	\\\
+ --disable-guest-agent		\\\
+ --disable-guest-agent-msi	\\\
+ --disable-hv-balloon		\\\
+ --disable-hvf			\\\
+ --disable-iconv		\\\
+ --disable-jack			\\\
+ --disable-kvm			\\\
+ --disable-l2tpv3		\\\
+ --disable-libdaxctl		\\\
+ --disable-libdw		\\\
+ --disable-libiscsi		\\\
+ --disable-libkeyutils		\\\
+ --disable-libkeyutils 		\\\
+ --disable-libnfs 		\\\
+ --disable-libpmem 		\\\
+ --disable-libssh 		\\\
+ --disable-libudev 		\\\
+ --disable-libusb 		\\\
+ --disable-linux-aio 		\\\
+ --disable-linux-io-uring 	\\\
+ --disable-linux-user 		\\\
+ --disable-lto 			\\\
+ --disable-lzfse 		\\\
+ --disable-lzo 			\\\
+ --disable-malloc-trim 		\\\
+ --disable-membarrier 		\\\
+ --disable-module-upgrades 	\\\
+ --disable-modules 		\\\
+ --disable-mpath 		\\\
+ --disable-multiprocess 	\\\
+ --disable-netmap 		\\\
+ --disable-nettle 		\\\
+ --disable-numa 		\\\
+ --disable-nvmm 		\\\
+ --disable-opengl 		\\\
+ --disable-oss 			\\\
+ --disable-pa 			\\\
+ --disable-parallels 		\\\
+ --disable-pie 			\\\
+ --disable-pipewire 		\\\
+ --disable-pixman		\\\
+ --disable-plugins		\\\
+ --disable-png			\\\
+ --disable-qcow1		\\\
+ --disable-qed			\\\
+ --disable-qom-cast-debug	\\\
+ --disable-qpl			\\\
+ --disable-rbd			\\\
+ --disable-rdma			\\\
+ --disable-relocatable		\\\
+ --disable-replication		\\\
+ --disable-rng-none		\\\
+ --disable-rutabaga-gfx		\\\
+ --disable-safe-stack		\\\
+ --disable-sanitizers		\\\
+ --disable-sdl			\\\
+ --disable-sdl-image		\\\
+ --disable-seccomp		\\\
+ --disable-selinux		\\\
+ --disable-slirp		\\\
+ --disable-slirp-smbd		\\\
+ --disable-smartcard		\\\
+ --disable-snappy		\\\
+ --disable-sndio		\\\
+ --disable-sparse		\\\
+ --disable-spice		\\\
+ --disable-spice-protocol	\\\
+ --disable-strip		\\\
+ --disable-system		\\\
+ --disable-tcg			\\\
+ --disable-tcg-interpreter	\\\
+ --disable-tools		\\\
+ --disable-tpm			\\\
+ --disable-tsan			\\\
+ --disable-u2f			\\\
+ --disable-uadk			\\\
+ --disable-usb-redir		\\\
+ --disable-user			\\\
+ --disable-vde			\\\
+ --disable-vdi			\\\
+ --disable-vhdx			\\\
+ --disable-vhost-crypto		\\\
+ --disable-vhost-kernel		\\\
+ --disable-vhost-net		\\\
+ --disable-vhost-user		\\\
+ --disable-vhost-user-blk-server \\\
+ --disable-vhost-vdpa		\\\
+ --disable-virglrenderer	\\\
+ --disable-virtfs 		\\\
+ --disable-vnc			\\\
+ --disable-vnc-jpeg 		\\\
+ --disable-vnc-sasl		\\\
+ --disable-vpc			\\\
+ --disable-vte 			\\\
+ --disable-vvfat		\\\
+ --disable-werror		\\\
+ --disable-whpx			\\\
+ --disable-xen			\\\
+ --disable-xen-pci-passthrough	\\\
+ --disable-xkbcommon		\\\
+ --disable-zstd			\\\
+ --without-default-devices

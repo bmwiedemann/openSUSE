@@ -69,4 +69,17 @@
     <comment></comment>
     <requestid>1139872</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>797a41326c51e5ed28dd42634af20d46</srcmd5>
+    <version>0.3.5</version>
+    <time>1726230354</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-logging-lock-directly.patch:
+  * Use logging._lock as a context manager.
+- Switch to autosetup macro.
+
+- Add patch logutils-intersphinx.patch to fix compatibility
+  with recent Sphinx</comment>
+    <requestid>1199774</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,8 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.gnu.org/software/wget/
 Source:         https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=90497#/%{name}.keyring
+# From https://savannah.gnu.org/project/release-gpgkeys.php?group=wget&download=1
+Source2:        %{name}.keyring
 Patch0:         wgetrc.patch
 Patch6:         wget-1.14-no-ssl-comp.patch
 # PATCH-FIX-OPENSUSE fix pod syntax for perl 5.18 coolo@suse.de

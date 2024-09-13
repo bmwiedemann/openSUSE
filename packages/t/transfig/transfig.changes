@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:00:53 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch transfig-gs10.03.patch
+  * Avoid warnings about ignored WriteObjStms and WriteXRefStm
+    directives with PDF 1.4 (boo#1230427)
+
+-------------------------------------------------------------------
 Tue Jul  2 06:10:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch transfig-gcc14.patch

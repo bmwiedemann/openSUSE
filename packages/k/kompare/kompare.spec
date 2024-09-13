@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kompare
-Version:        24.08.0
+Version:        24.08.1
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-or-later

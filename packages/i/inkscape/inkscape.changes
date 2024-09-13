@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:01:00 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix tiff output error ignored by upstream: inkscape_1.3.2_fix_tiff.patch
+
+-------------------------------------------------------------------
 Tue Jul  2 15:12:33 UTC 2024 - pgajdos@suse.com
 
 - added patches

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-applehelp
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-applehelp%{psuffix}
-Version:        1.0.8
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx extension which outputs Apple help books
 License:        BSD-2-Clause
@@ -70,8 +69,8 @@ sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst CHANGES
-%license LICENSE
+%doc README.rst CHANGES.rst
+%license LICENCE.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/applehelp
 %{python_sitelib}/sphinxcontrib_applehelp-%{version}*-info

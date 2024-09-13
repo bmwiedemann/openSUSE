@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 12 07:43:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Drop most of openssh-6.6p1-keycat.patch (actually, it was just
+  commented out). The keycat binary isn't really installed nor
+  supported, so we can drop it, except for the code that is used
+  by other SELinux patches, which is what I kept from that patch
+  (boo#1229072).
+- Add patch submitted to upstream to fix RFC4256 implementation
+  so that keyboard-interactive authentication method can send
+  instructions and sshd shows them to users even before a prompt
+  is requested. This fixes MFA push notifications (boo#1229010).
+  * 0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+
+-------------------------------------------------------------------
 Fri Aug 23 12:10:00 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix sshd not logging in the audit failed login

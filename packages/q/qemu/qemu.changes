@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Sep 11 17:42:03 UTC 2024 - dfaggioli@suse.com
+
+- Re-enable vhdx support in qemu-img:
+  * [openSUSE][RPM] explicitly enable qemu-img support for vhdx and vpc
+
+-------------------------------------------------------------------
+Thu Sep 05 16:22:44 UTC 2024 - dfaggioli@suse.com
+
+- Spec file fixing (for properly building 9.1) and improvements:
+  * [openSUSE][RPM] Consolidate disabling all features during 'configure' in a macro
+  * [openSUSE][RPM] Consolidate handling of conditional features
+  * [openSUSE][RPM] (commented out) services for qemu-pr-helper
+  * [openSUSE][RPM] package qemu-vmsr-helper
+  * [openSUSE][RPM] configure: Fix with-pkgversion option
+  * [openSUSE][RPM] Exclude riscv edk2 files
+  * [openSUSE][RPM] Remove nios2
+  * [openSUSE][RPM] Update tests acpi path
+  * [openSUSE][RPM] configure: remove options for removed features
+
+-------------------------------------------------------------------
+Thu Sep 05 15:16:09 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 9.1.0:
+  Full changelog here: https://wiki.qemu.org/ChangeLog/9.1
+  Some of the most notable features:
+   * migration: compression offload support via Intel In-Memory Analytics
+     Accelerator (IAA) or User Space Accelerator Development Kit (UADK),
+     along with enhanced support for postcopy failure recovery
+   * virtio: support for VIRTIO_F_NOTIFICATION_DATA, allowing guest
+     drivers to provide additional data as part of sending device notifications
+     for performance/debug purposes
+   * guest-agent: support for guest-network-get-route command on linux,
+     guest-ssh-* commands on Windows, and enhanced CLI support for
+     configuring allowed/blocked commands
+   * block: security fixes for QEMU NBD server and NBD TLS encryption
+   * ARM: emulation support for FEAT_NMI, FEAT_CSV2_3, FEAT_ETS2,
+     FEAT_Spec_FPACC, FEAT_WFxT, FEAT_Debugv8p8 architecture features
+   * ARM: nested/two-stage page table support for emulated SMMUv3
+   * ARM: xilinx_zynq board support for cache controller and multiple
+     CPUs, and B-L475E-IOT01A board support for a DM163 display
+   * LoongArch: support for directly booting an ELF kernel and for running
+     up to 256 vCPUs via extioi virt extension
+   * LoongArch: enhanced debug/GDB support
+   * RISC-V: support for version 1.13 of privileged architecture specification
+   * RISC-V: support for Zve32x, Zve64x, Zimop, Zcmop, Zama16b, Zabha,
+     Zawrs, and Smcntrpmf extensions
+   * RISC-V: enhanced debug/GDB support and general fixes
+   * SPARC: emulation support for FMAF, IMA, VIS3, and VIS4 architecture
+     features
+   * x86: KVM support for running AMD SEV-SNP guests
+   * x86: CPU emulation support for Icelake-Server-v7, SapphireRapids-v3,
+     and SierraForest
+
+-------------------------------------------------------------------
 Tue Aug 27 17:15:25 UTC 2024 - dfaggioli@suse.com
 
 - Fix bsc#1221812:

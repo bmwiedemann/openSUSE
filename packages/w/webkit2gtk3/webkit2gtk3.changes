@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  9 20:12:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.4:
+  + Add quirk to allow totale.rosettastone.com to load properly.
+  + Fix webkit_web_resource_get_data() not working properly in some
+    sites.
+  + Fix not being able to jump-to-source in Web Inspector canvas
+    traces.
+  + Fix not being able to scroll list of WebGL shader programs in
+    the Web Inspector.
+  + Fix linker relocation errors on Debug/RelWithDebInfo builds.
+  + Fix crashes when built with Clang with Link-Time Optimization
+    (LTO).
+  + Fix several crashes and rendering issues.
+- Drop revert-271175.patch: Fixed upstream.
+- Enable LTO again, pass define _lto_cflags for only select targets
+
+-------------------------------------------------------------------
 Sun Sep  1 16:30:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add revert-271175.patch: This reverts commit 279c9d7, it broke

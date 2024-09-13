@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:07:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use unversioned gcc also for SLE16
+
+-------------------------------------------------------------------
 Fri Jul 26 15:10:37 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 4.10.2:

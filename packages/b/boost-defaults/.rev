@@ -138,4 +138,12 @@
     <comment></comment>
     <requestid>1169879</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>415e72a40e092dbf94ab418b6de28ffd</srcmd5>
+    <version>1.86.0</version>
+    <time>1726230328</time>
+    <user>anag+factory</user>
+    <comment>- Update for Boost 1.86.0</comment>
+    <requestid>1198437</requestid>
+  </revision>
 </revisionlist>

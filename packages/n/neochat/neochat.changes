@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Web Shortcuts: kcmshell5 does not exist anymore on Plasma 6
+  * LocationHelper: Move clamp from zoomToFit to QML
+  * AuthorDelegate: Don't make empty space clickable
+  * AuthorDelegate: Add pointing hand cursor to indicate you can tap
+  * Make the SectionDelegate look just a little bit better
+  * Fix pending indicator
+  * Use plaintext for reply author component
+  * Don't run QtKeychain job in a nested event loop
+  * Adapt to libQuotient API change
+  * Ensure that room list does not show rooms without title during startup
+  * Include missing ECMQmlModule
+  * Re-add pending event indicator (kde#491277)
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

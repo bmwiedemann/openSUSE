@@ -2,11 +2,9 @@
  wpa_supplicant/wpa_supplicant.c |   18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
 
-Index: wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant.c
-===================================================================
---- wpa_supplicant-2.10.orig/wpa_supplicant/wpa_supplicant.c
-+++ wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant.c
-@@ -121,6 +121,22 @@ const char *const wpa_supplicant_full_li
+--- a/wpa_supplicant/wpa_supplicant.c
++++ b/wpa_supplicant/wpa_supplicant.c
+@@ -123,6 +123,22 @@
  "\n";
  #endif /* CONFIG_NO_STDOUT_DEBUG */
  
@@ -28,8 +26,8 @@ Index: wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant.c
 +}
  
  static void wpa_bss_tmp_disallow_timeout(void *eloop_ctx, void *timeout_ctx);
- #if defined(CONFIG_FILS) && defined(IEEE8021X_EAPOL)
-@@ -7474,6 +7490,8 @@ int wpa_supplicant_run(struct wpa_global
+ static void wpas_verify_ssid_beacon(void *eloop_ctx, void *timeout_ctx);
+@@ -8189,6 +8205,8 @@
  	eloop_register_signal_terminate(wpa_supplicant_terminate, global);
  	eloop_register_signal_reconfig(wpa_supplicant_reconfig, global);
  

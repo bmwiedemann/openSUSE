@@ -4041,4 +4041,13 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1197378</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>7660971c91498691c7ef2e80dd77e500</srcmd5>
+    <version>9.1.0</version>
+    <time>1726230458</time>
+    <user>anag+factory</user>
+    <comment>- Re-enable vhdx support in qemu-img:
+  * [openSUSE][RPM] explicitly enable qemu-img support for vhdx and vpc</comment>
+    <requestid>1200648</requestid>
+  </revision>
 </revisionlist>

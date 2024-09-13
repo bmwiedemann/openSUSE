@@ -287,4 +287,12 @@
   * Delay the recursive expansion of includes until the document fragment has been placed in the final location (XERCESC-1918).</comment>
     <requestid>1135297</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>3ce0f333548e2511cacd14120f9926df</srcmd5>
+    <version>3.2.5</version>
+    <time>1726230366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200182</requestid>
+  </revision>
 </revisionlist>

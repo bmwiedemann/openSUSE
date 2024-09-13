@@ -552,4 +552,12 @@
     <comment>fix mishandled semicolons in the userinfo subcomponent, bsc#1226419, CVE-2024-38428</comment>
     <requestid>1181529</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>4f274914dbde84a6f6c1f01f712cc0eb</srcmd5>
+    <version>1.24.5</version>
+    <time>1726230364</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200169</requestid>
+  </revision>
 </revisionlist>
