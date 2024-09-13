@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 13 09:00:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * bar: fix setVisible#3459
+  * Walk up Symlink Chain#3462
+  * Fix #3414
+  * group: fix revealer hover regression#3500
+  * flake.lock: Update#3493
+  * Handle offline CPUs and CPU hotplug#3499
+  * Fix #3490
+  * Accept "default-node-changed" signals from wireplumber, even
+    if only the node ID is changed #3511
+  * fix crash caused#3531
+  * fix: check format-source before use#3534
+  * hyprland/backend: drop unnecessary getaddrinfo call#3527
+  * taskbar: Send minimize geometry hints#3506
+  * chore: update power_profiles_daemon.cpp#3585
+  * flake.lock: Update#3555
+  * fix/upower: upower module selection with multiple devices#3554
+  * feat: hidpi support for image module#3565
+  * Add niri/workspaces, niri/window, niri/language#3551
+
+-------------------------------------------------------------------
 Thu Jul 18 00:50:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.10.4

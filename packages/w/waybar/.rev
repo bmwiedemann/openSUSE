@@ -1018,4 +1018,30 @@
     <comment></comment>
     <requestid>1188284</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>407b1a530cfc58a768f76ac6674960ff</srcmd5>
+    <version>0.11.0</version>
+    <time>1726230876</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0:
+  * bar: fix setVisible#3459
+  * Walk up Symlink Chain#3462
+  * Fix #3414
+  * group: fix revealer hover regression#3500
+  * flake.lock: Update#3493
+  * Handle offline CPUs and CPU hotplug#3499
+  * Fix #3490
+  * Accept &quot;default-node-changed&quot; signals from wireplumber, even
+    if only the node ID is changed #3511
+  * fix crash caused#3531
+  * fix: check format-source before use#3534
+  * hyprland/backend: drop unnecessary getaddrinfo call#3527
+  * taskbar: Send minimize geometry hints#3506
+  * chore: update power_profiles_daemon.cpp#3585
+  * flake.lock: Update#3555
+  * fix/upower: upower module selection with multiple devices#3554
+  * feat: hidpi support for image module#3565
+  * Add niri/workspaces, niri/window, niri/language#3551</comment>
+    <requestid>1200774</requestid>
+  </revision>
 </revisionlist>
