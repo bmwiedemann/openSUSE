@@ -1,0 +1,12 @@
+Index: xsession-1.1/xsession.c
+===================================================================
+--- xsession-1.1.orig/xsession.c
++++ xsession-1.1/xsession.c
+@@ -52,6 +52,7 @@
+ #include <signal.h>
+ #include "xsession.h"
+ #include "resources.h"
++#include <sys/socket.h>
+ 
+ #ifdef SOUNDS
+ #include <rplay.h>

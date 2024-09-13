@@ -105,4 +105,13 @@
     <comment>1</comment>
     <requestid>254145</requestid>
   </revision>
+  <revision rev="17" vrev="1248">
+    <srcmd5>873a63fcf41233a71568d42fe1be6c7b</srcmd5>
+    <version>1.1</version>
+    <time>1726230815</time>
+    <user>anag+factory</user>
+    <comment>- Add xsession-implicit-shutdown.patch: Fix build with GCC 14:
+  xsession.c:212:5: error: implicit declaration of function ‘shutdown’ (forwarded request 1200639 from dimstar)</comment>
+    <requestid>1200647</requestid>
+  </revision>
 </revisionlist>

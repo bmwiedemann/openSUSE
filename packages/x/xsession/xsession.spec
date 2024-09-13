@@ -1,7 +1,7 @@
 #
 # spec file for package xsession
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,6 +29,7 @@ Summary:        A session manager
 License:        MIT
 Group:          System/X11/Utilities
 Source:         xsession-1.1.tar.gz
+Patch0:         xsession-implicit-shutdown.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
 %if "%_exec_prefix" == "/usr/X11R6"
@@ -50,15 +51,8 @@ applications from the xsession menus.
 
 Examples may be found under /usr/share/doc/packages/xsession/examples.
 
-
-
-Authors:
---------
-    Alain Nissen <nissen@montefiore.ulg.ac.be>
-    Raphael Quinet <quinet@stud.montefiore.ulg.ac.be>
-
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 xmkmf -a

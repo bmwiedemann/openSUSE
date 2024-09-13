@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:20:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add xsession-implicit-shutdown.patch: Fix build with GCC 14:
+  xsession.c:212:5: error: implicit declaration of function ‘shutdown’
+
+-------------------------------------------------------------------
 Wed Oct  1 23:21:28 UTC 2014 - crrodriguez@opensuse.org
 
 - Do not use xorg-x11-devel 
