@@ -1,0 +1,844 @@
+-------------------------------------------------------------------
+Thu Sep 12 16:43:58 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.9.0:
+  * see https://github.com/biomejs/biome/releases/tag/cli%2Fv1.9.0
+
+-------------------------------------------------------------------
+Fri Jun 28 20:11:37 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.8.3:
+  * "Fix #3104 by suppressing node warnings when using biome
+    migrate.
+  * Force colors to be off when using the GitHub reporter to
+    properly create annotations in GitHub actions (#3148)
+  * Implement CSS unicode range.
+  * Fix #3184 CSS formatter converts custom identifiers to lowercase.
+  * Fix #3256 constant crashes when editing css files #3256.
+  * Add nursery/useDeprecatedReason rule.
+  * Add nursery/noExportedImports.
+  * useConsistentArrayType and useShorthandArrayType now ignore
+    Array in the extends and implements clauses. Fix #3247.
+  * Fixes #3066 by taking into account the dependencies declared in the package.json.
+  * The code action of the useArrowFunction rule now preserves a
+    trailing comma when there is only a single type parameter in
+    the arrow function and JSX is enabled. Fixes #3292.
+  * Enhance tailwind sorting lint rule #1274 with variant support.
+  * Every preconfigured variant is assigned a weight that concurs
+    on establishing the output sorting order.
+  * Since nesting variants on the same utility class is possible,
+    the resulting weight is the Bitwise XOR of all the variants
+    weight for that class.
+  * Dynamic variants (e.g. has-[.custom-class], group-[:checked])
+    are also supported and they take the weight of their base
+    variant name the custom value attached (e.g. has-[.custom-
+    class] takes has weight).
+  * Arbitrary variants (e.g. [&nth-child(2)]) don't have a weight
+    assigned and they are placed after every known variant.
+  * Classes with the same amount of arbitrary variants follow
+    lexicographical order. The class that has the highest number
+    of nested arbitrary variants is placed last.
+  * Screen variants (e.g. sm:, max-md:, min-lg:) are not supported yet.
+  * feat(workspace): adds GraphQL parsing capabilities via feature #3238
+  * feat(editorconfig): expand unknown globs into known globs #3218
+  * chore(core): implement pull_diagnostics for graphql #3248
+  * chore(linter): add a rule source of noUnknownProperty #3252
+  * feat: tailwind variant sorting #3208
+  * test(parse/json): add test for bug where overrides
+    erroneously override special parsing options #3260
+  * docs(analyzer): improve contributing guide for rules with multiple signals #3245
+  * chore(lint): initialise biome_graphql_analyze #3276
+  * chore(deps): update @biomejs packages #3266
+  * docs(useNamingConvention): add examples and improve explanations #3277
+  * refactor(parse/json): change fields in JsonParserSettings to Option #3272
+  * feat(search-output-formatter): initialize search output formatter #3258
+  * chore(grit): implement node-like compilers + fixes #3253
+  * feat: enable linting for graphql #3295
+  * refactor(parse/css): change fields in CssParserSettings to Option #3273
+  * refactor: add variables to format strings directly #3299
+  * chore: update codegen to include GraphQL #3301
+
+-------------------------------------------------------------------
+Wed Jun 26 19:47:31 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.8.2:
+- Fix #3201 by correctly injecting the source code of the file
+  when printing the diagnostics.
+- Fix #3179 where comma separators are not correctly removed
+  after running biome migrate and thus choke the parser.
+- Fix #3232 by correctly using the colors set by the user.
+- Reword the reporter message "No fixes needed" to "No fixes applied"
+- Don't conceal previous overrides (#3176). The rule is now
+  correctly enabled for the index.js file.
+- Fix #3103 by correctly resolving CSS formatter options.
+- Fix #3192 don't add an extra whitespace within :has.
+- Fix a regression introduced by the release of v1.8.0
+- Add nursery/useValidAutocomplete.
+- Add nursery/noShorthandPropertyOverrides. #2958
+- Fix [#3084] false positive by correctly recognize parenthesized
+  return statement.
+- useImportExtensions now suggests a correct fix for import '.'
+  and import './.'.
+- Fix useDateNow false positive when new Date object has
+  arguments new Date(0).getTime().
+- The noUnmatchableAnbSelector rule is now able to catch
+  unmatchable an+b selectors like 0n+0 or -0n+0.
+- The useHookAtTopLevel rule now recognizes properties named as hooks like foo.useFoo().
+- Fix #3092, prevent warning for Custom properties (--*).
+- Fix a false positive in the useLiteralKeys rule. (#3160)
+- The noUnknownProperty rule now ignores the composes property
+  often used in css modules. #3000
+- Fix false positives of the useExhaustiveDependencies rule.
+- Fix missing withDefaults macro in vue files for globals variables.
+- Fix CSS modules settings mapping.
+- chore(ci): improve rules_check task
+- chore: change js code blocks containing JSX elements to jsx
+- feat(biome_js_analyzer): noSubstr
+- chore(deps): update rust crate tokio to 1.38.0
+- chore(grit): implement Grit snippet bindings
+- chore(deps): update @biomejs packages
+- feat(analyzer): useSortedKeys for JSON objects
+- docs(useImportType): add docs about TypeScript settings
+- docs(noUndeclaredDependencies,useImportExtensions): add note about LSP configs
+- docs(no_undeclared_dependencies): follow up fix of #3173
+- chore(ci): try enable --compact flag for pkg.pr.new
+- chore(ci): remove --compact flag
+- fix(formatter): escape double quotes when printing formatter IR
+- fix: remove unnecessary example
+- chore: move maintainers to past maintainers
+- chore: removes old files
+- chore: move Sec-ant to core contributor
+- chore: add minht11 to the maintainers team
+- chore: add chansuke to maintainers list
+- chore: rust 1.79.0
+- chore(deps): update github-actions
+- chore(deps): update @biomejs packages
+- chore(grit): improve snippet compiler
+- refactor(analyzer): use enumflags2
+- feat(biome_css_analyzer): implement function-linear-gradient-no-nonstandard-direction
+- chore(deps): update dependency eslint to v9.5.0
+
+-------------------------------------------------------------------
+Mon Jun 10 20:44:48 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.8.1:
+  * Fix #3069, prevent overwriting paths when using --staged or --changed options.
+  * Fix a case where the file link inside a diagnostic wasn't
+    correctly displayed inside a terminal run by VSCode.
+  * Fix #3067, by assigning the correct default value to indentWidth.
+  * Fix the bug where whitespace after the & character in CSS
+    nesting was incorrectly trimmed, ensuring proper targeting of
+    child classes #3061.
+  * Fix #3068 where the CSS formatter was inadvertently
+    converting variable declarations and function calls to lowercase.
+  * Fix the formatting of CSS grid layout properties.
+  * The noEmptyBlock css lint rule now treats empty blocks
+    containing comments as valid ones useLiteralKeys no longer
+    reports quoted member names (#3085)
+  * noEmptyInterface now ignores empty interfaces in ambient modules (#3110)
+  * noUnusedVariables and noUnusedFunctionParameters no longer
+    report the parameters of a constructor type (#3135)
+  * noStringCaseMismatch now ignores escape sequences (#3134)
+  * Implemented CSS Unknown At-Rule parsing, allowing the parser
+    to gracefully handle unsupported or unrecognized CSS at-rules.
+  * Fix #3055 CSS: Layout using named grid lines is now correctly parsed.
+  * Fix #3091. Allows the parser to handle nested style rules and
+    at-rules properly, enhancing the parser's compatibility with the
+    CSS Nesting Module.
+
+-------------------------------------------------------------------
+Mon Jun 10 01:40:00 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.8.0:
+  * see https://github.com/biomejs/biome/releases/tag/cli%2Fv1.8.0
+
+-------------------------------------------------------------------
+Mon May  6 19:56:48 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.7.3:
+  * The stdin-file-path option now works correctly for Astro/
+    Svelte/Vue files (#2686)
+  * Add nursery/useExplicitLengthCheck.
+  * noBlankTarget no longer hangs when applying a code fix (#2675)
+  * noRedeclare no longer panics on conditional type (#2659)
+  * noUnusedLabels and noConfusingLabels now ignore svelte
+    reactive statements (#2571)
+  * useExportType no longer removes leading comments (#2685)
+  * useJsxKeyInIterable no longer reports false positive when
+    iterating on non-jsx items (#2590)
+  * Fix typo by renaming useConsistentBuiltinInstatiation to
+    useConsistentBuiltinInstantiation
+  * feat(biome_graphql_parser): parse schema definition #2557
+  * chore(ci): renovate pin GA to semver #2670
+  * build(deps): update #2669
+  * build(deps): upgrade indexmap crate #2673
+  * feat(biome_css_analyzer): implement noDuplicateAtImportRules #2658
+  * feat(biome_css_analyzer): noUnknownSelectorPseudoElement #2655
+  * feat(biome_graphql_parser): implement NthAt for GraphqlLexer #2677
+  * feat(biome_graphql_parser): parse scalar type definition #2663
+  * chore: add Grit node compilers #2689
+  * chore: upgrade to rust 1.78 #2691
+  * feat: parse object type definition #2690
+  * chore(deps): upgrade oxc_resolver #2694
+  * chore: implement Grit node bindings #2697
+  * docs: better explanation of the directive "use strict" #2699
+  * docs: add small note about process.exit #2700
+  * fix(lint/noDuplicateAtImportRules): correctly handle both
+    single- and double quotes #2707
+  * feat(biome_graphql_parser): parse interface type definition #2703
+  * feat(linter): implement NoUnmatchableAnbSelector #2706
+  * chore(deps): update rust crate tracing to 0.1.40 #2554
+  * fix(lint/useJsxKeyInIterable): handle ternaries properly #2701
+  * fix(useExplicitLengthCheck): docs #2735
+  * chore(deps): update rust crate serde to 1.0.200 #2737
+  * chore(deps): update github-actions #2740
+  * chore(deps): update dependency prettier to v3.2.5 #2739
+  * chore(deps): update pnpm to v8.15.8 #2733
+  * chore(deps): update @biomejs packages #2732
+  * chore(deps): update dependency eslint to v9.2.0 #2738
+
+-------------------------------------------------------------------
+Fri May  3 20:15:48 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.7.2:
+  * Import sorting now ignores side effect imports (#817)
+  * Import sorting now adds spaces where needed (#1665)
+  * biome migrate eslint now handles cyclic references.
+  * Correctly handle placement of comments inside named import clauses. #2566
+  * add nusery/noReactSpecificProps.
+  * add noUselessUndefinedInitialization.
+  * add nusery/useArrayLiterals.
+  * add nusery/useConsistentBuiltinInstatiation.
+  * add nusery/useDefaultSwitchClause.
+  * noDuplicateJsonKeys no longer crashes when a JSON file
+    contains an unterminated string (#2357)
+  * noRedeclare now reports redeclarations of parameters in a functions body (#2394)
+  * noRedeclare no longer reports overloads in object types (#2608)
+  * noRedeclare now merge default function export declarations
+    and types (#2372)
+  * noUndeclaredVariables no longer reports variable-only and type-only exports (#2637)
+  * [noUnusedVariables] no longer crash Biome when encountering a
+    malformed conditional type (#1695)
+  * useConst now ignores a variable that is read before its assignment.
+  * useShorthandFunctionType now suggests correct code fixes when parentheses are required (#2595)
+  * useTemplate now correctly escapes strings (#2580)
+  * noMisplacedAssertion now allow various expect.* calls
+  * The language parsers no longer panic on unterminated strings
+    followed by a newline and a space (#2606, #2410)
+  * build(xstask): remove deps fs_extra and filetime #2562
+  * docs: Add more useImportType examples to docs #2307
+  * chore: update schema definition #2567
+  * fix(configuration_schema): rename some fields to camelCase in
+    the configuration_schema.json #2568
+  * fix: rename some fileds to camelCase in the configuration_schema #2569
+  * feat(biome_css_analyzer): noUnknownUnit #2535
+  * chore: fix some typos in comments #2579
+  * refactor: foundations for LSP workspaces support #2589
+  * fix(lint/noRedundantAlt): rule source #2609
+  * feat(linter): Implement useGenericFontNames #2573
+  * chore: remove some website leftovers #2617
+  * refactor(deserialize): don't handle Option specifically #2630
+  * refactor: use TriviaPiece factory functions in more places #2632
+  * feat(biome_css_analyzer): noUnknownFunction #2570
+  * fix(snippet): should emit only one diagnostic #2650
+  * chore: add infrastructure for Grit engine #2586
+  * docs: fix typos in biome_rowan batch mutation #2653
+  * chore: upgrade prettier and update snapshots #2502
+  * build(deps): update #2657
+- includes 1.7.1:
+  * Fix #2403 by printing the errors in the client console.
+  * Add parentheses for the return expression that has leading multiline comments. #2504
+  * Correctly format dangling comments of continue statements. #2555
+  * Fix case where jsxRuntime wasn't being respected by useImportType rule (#2473)
+  * Fix #2460, where the rule noUselessFragments was crashing the linter in some cases.
+  * Fix #2366, where noDuplicateJsonKeys incorrectly computed the kes to highlight.
+  * The rule noMisplacedAssertions now considers valid calling expect inside waitFor
+  * fix(lint/noBarrelFile): rule source #2464
+  * refactor(bench): update import statement and module handling in run.js #2471
+  * docs: fix missing punctuation and typo #2477
+  * fix: missing "--apply" option in the command example #2479
+  * chore: tidy up dependencies #2480
+  * chore(ci): add repository dispatch workflow #2442
+  * chore: fix some typos in comments #2486
+  * feat: start working on yaml support #2428
+  * chore: prepare knope #2484
+  * ci: trigger prepare release #2489
+  * ci: trigger prepare release #2490
+  * chore: remove variables from workflows #2491
+  * chore: speed up wasm-pack profiling build #2494
+  * fix: reverts hashbrown, which causes issues when compiling to WASM #2496
+  * fix(linter): name of typescript-eslint #2503
+  * Handle operation parsing error GraphQL #2434
+  * chore: remove website from monorepo #2505
+  * ci: add a workflow for linting pr titles #2497
+  * feat(rule/solidjs): add no-react-specific-props #2427
+  * refactor(js_syntax): remove TsNameWithTypeArguments #2510
+  * fix(linter): add missing fix kind for solid rule #2519
+  * feat(biome_css_analyzer): noCssEmptyBlock #2513
+  * chore: added how to create new css lint rule #2522
+  * refactor(css_formatter): implement FormatCssBlockLike #2531
+  * feat(biome_css_analyze): noDuplicateSelectorsKeyframeBlock #2534
+  * docs: fixed path to crates, updated link to translating doc #2538
+  * fix(biome_css_analyzer): update lint error messages #2545
+  * feat(biome_css_analyze): noImportantInKeyframe #2542
+  * chore(deps): update rust crate serde_json to 1.0.116 #2553
+  * chore(deps): update rust crate proc-macro2 to 1.0.81 #2551
+  * chore(deps): update github-actions #2549
+  * chore: add a new bronze sponsor #2556
+  * chore(deps): update rust:1.77.2 docker digest to 6052afe #2550
+  * chore(deps): update rust crate serde to 1.0.198 #2552
+  * feat(biome_graphql_parser): parse fragment definition #2506
+  * refactor(ci): add more valid PR title types #2559
+  * docs: fix typo in biome analyze contribution document #2560
+  * build(deps): remove 'case' dependency #2561
+
+-------------------------------------------------------------------
+Wed Apr 17 20:40:26 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.7.0:
+  * 235 commits, see https://github.com/biomejs/biome/compare/cli/v1.6.1...cli/v1.7.0
+
+-------------------------------------------------------------------
+Thu Mar 14 17:29:36 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.6.1:
+  * 242 commits, see https://github.com/biomejs/biome/compare/cli/v1.5.3...cli/v1.6.1
+
+-------------------------------------------------------------------
+Fri Feb  9 05:05:37 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.5.3:
+  * 566 commits, see https://github.com/biomejs/biome/compare/cli/v1.3.3...cli/v1.5.3
+
+-------------------------------------------------------------------
+Mon Nov  6 00:19:08 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.3.3:
+  * Fix #604 which made noConfusingVoidType report false
+    positives when the void type is used in a generic type parameter.
+  * Fix how overrides behave. Now ignore and include apply or not
+    the override pattern, so they override each other. Now the
+    options inside overrides override the top-level options.
+  * Bootstrap the logger only when needed.
+  * Fix #592, by changing binary resolution in the IntelliJ plugin.
+  * Apply the correct layout when the right hand of an assignment
+    expression is a await expression or a yield expression.
+  * Fix #303, where nested arrow functions didn't break.
+  * Fix #175 which made noRedeclare report index signatures using
+    the name of a variable in the parent scope
+  * Fix #557 which made noUnusedImports report imported types
+    used in typeof expression.
+  * Fix #576 by removing some erroneous logic in noSelfAssign.
+  * Fix #595 by updating unsafe-apply logic to avoid unexpected
+    errors in noUselessFragments.
+  * Fix #591 which made noRedeclare report type parameters with
+    identical names but in different method signatures.
+  * Support more a11y roles and fix some methods for a11y lint rules
+  * Fix useExhaustiveDependencies, by removing useContext, useId
+    and useSyncExternalStore from the known hooks.
+  * Support RegExp v flag.
+  * Improve error messages.
+
+-------------------------------------------------------------------
+Thu Oct 19 21:43:01 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- project renamed from "rome" to "biome"
+- continue from cli version 1.3.1
+
+-------------------------------------------------------------------
+Sun Jun  4 02:49:06 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 12.1.3:
+  * chore: Bump pnpm/action-setup and jetli/wasm-pack-action to latest #4506
+  * chore: update snapshot #4509
+  * feat: Add noUselessTypeConstraint #4484
+  * chore: Resolve set-output deprecations #4507
+  * fix(rome_service): treat nursery rules differently #4511
+  * chore: upgrade bpaf #4522
+  * Dockerised benchmark tool #4494
+  * Workspace internal deps #4525
+  * fix(website): update codemirror packages #4537
+  * Revert "feat(rome_js_parser, rome_js_formatter): import
+    attribute (#4359)" #4496
+  * release: 12.1.3 #4544
+
+-------------------------------------------------------------------
+Thu May 18 20:53:28 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 12.1.2:
+  * fix(rome_js_analyze): allow nested func declarations in esm #4500
+  * fix(rome_js_analyze): noInvalidConstructorSuper recognize
+    extends mod… #4501
+  * fix(rome_service): rules to disable and enable #4503
+  * release: 12.1.2 #4508
+- includes 12.1.1:
+  * perf: improve rome benchmark performance in formatting by removing di… #4475
+  * fix: benchmark tooling failing calling node modules bin dir directly #4474
+  * fix(rome_js_analyze): Files with fn(() => (aborted = true));
+    cause -entered unreachable code - when --apply-unsafe #4464  #4473
+  * perf: improve clone speed of benchmark tool with sparse-checkout #4476
+  * fix(rome_js_semantic): correct the export determination when
+    a variable and an interface had the same name #4468
+  * fix(rome_cli): fix regression for rome lsp-proxy command #4491
+  * fix(rome_service): correctly load recommended rules #4490
+  * release: v12.1.1 #4497
+- includes 12.1.0:
+  * fix(rome_js_analyze): useSimpleNumberKeys #4457 handle
+    shortand/spread object props  #4459
+  * ci: fix error on pull-request #4465
+  * fix(rome_service): correctly send file source to workspace #4466
+  * fix(rome_js_analyze): fix false positive diagnostics that
+    useHookAtTopLevel caused to as or satisfies expressions #4467
+  * release: 12.1.0 #4344
+
+-------------------------------------------------------------------
+Tue Mar 28 22:17:44 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 12.0.0:
+  * Replace unsafe rome_diagnostics::Error implementation with double-Box
+  * fix(rome_formatter): format range for sub tree #4149 (#4241)
+  * fix: accessor must appear after abstract and override (#4242)
+  * feat(rome_js_analyzer): implement rule noRedeclaration, no-redeclare
+  * fix: mis-formatting of comments in closing JSX element (#4244)
+  * feat(rome_js_analyzer): promote nursery rules (#4239)
+  * fix(rome_js_formatter): Incorrect formatting of interfaces declared
+  * fix(rome_js_semantic): add TsTypeParameterName to bindings (#4259)
+  * fix(rome_js_formatter): Parity with prettier for many function arg
+  * feat(rome_service): add all configuration to linter (#4258)
+  * docs(rome_js_analyze): improve noDuplicateParameters docs (#4257)
+  * docs(rome_js_analyze): improve noCatchAssign docs (#4262)
+  * Fix Linux executable's path in the standalone docs (#4251)
+  * fix(rome_fs): Allow to ignore patterns to symbolic links (symlinks)
+  * fix(rome_cli): don't add newline when formatting from std (#4263)
+  * feat(rome_js_analyzer): read globals from analyzer options (#4261)
+  * feat(rome_js_analyze): noParameterAssign (#4264)
+  * docs(rome_js_analyze): noParameterAssign in release 12.0.0 (#4271)
+  * feat(rome_js_parser): Support optional variance annotation (#4250)
+  * feat(rome_js_analyze): useNamespaceKeyword (#4266)
+  * chore: update dependencies (#4277)
+  * docs(rome_js_analyze): improve CONTRIBUTING and code gen (#4278)
+  * refactor(rome_js_analyze): rename noSelfAssignment to noSelfAssign
+  * docs(rome_js_analyze): improve CONTRIBUTING (#4280)
+  * fix(rome_cli): prevent exploration of ignored directories (#4276)
+  * docs: Changing the yarn command (#4273)
+  * refactor(rome_js_analyze): noDelete (#4272)
+  * fix(rome_cli): exit with error code while applying fixes (#4270)
+  * fix(rome_service): correctly parse enums (#4286)
+  * ci: add automatic labels on PRs
+  * feat(rome_js_analyze): noNamespace (#4283)
+  * feat(rome_lsp): pull diagnostics for rome.json (#4296)
+  * chore: add missing license to generated packages (#4301)
+  * chore: update website info (#4303)
+  * fix(rome_js_analyze): noRedeclaration declaration merging (#4288)
+  * fix(rome_formatter): fix format range (#4295)
+  * feat(rome_js_parser): Support const modifier in type parameters (#4275)
+  * fix(xtask): just new-lintrule document generation error (#4306)
+  * fix(rome_ci): apply import sorting (#4305)
+  * chore(rome_deserialize): use correct category
+  * fix(rome_lsp): utf encoding (#4308)
+  * fix: keep quotes in the case of keys that are octal literals (#4309)
+  * fix(rome_js_analyze): keep comments noUnnecessaryContinue (#4315)
+  * refactor(rome_js_analyze): rename noRedeclarations to noRedeclare (#4319)
+  * test(rome_js_analyze): every rule has its folder (#4318)
+  * fix(rome_lsp): handle untitled files (#4327)
+  * release: 12.0.0 (#4002)
+
+-------------------------------------------------------------------
+Mon Feb 27 00:18:33 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 979d302e9d0360c1108f56c5ff6ccd2d3b9ef3d6
+  * fix(rome_js_formatter): mapped type formatting (#4226)
+  * feat(rome_js_parser): support property init in ambient context (new node) (#4225)
+  * feat(rome_service): traverse upwards the fs to discover the config file (#4224)
+  * chore: Update fs_extra to fix future incompatibility warning (#4232)
+  * fix(website): Associate labels with the right controls (#4233)
+  * feat(rome_js_parser): TS 5.0 export type * (#4228)
+  * Remove unsafe from rome_diagnostics::display::frame (#4235)
+  * chore: toolchain upgrade (#4237)
+  * ci: fix clippy
+  * feat(rome_js_analyze): noSvgWithoutTitle (#4220)
+  * Fix more nightly Clippy lints (#4238)
+  * feat(rome_js_analyze): noUselessCatch (#4236)
+
+-------------------------------------------------------------------
+Tue Feb 21 01:40:05 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 71400238d22e2b7eae10d89769d81a4ee5314219
+  * chore: correctly bump extension version (#3997)
+  * chore: add import sorting
+  * fix(rome_js_analyzer): correctly delegate unresolved references to it
+  * docs: Add default for indentSize (#4000)
+  * fix(ci): fix the release workflow for the JS API (#4009)
+  * feat(rome_js_analyze): implement noRedundantAlt rule (#3964)
+  * fix(rome_js_analyze): use exhaustive deps considering external const
+  * chore: release version 0.2.0 of the JS API
+  * feat(rome_service): internal errors as diagnostics (#3921)
+  * fix(rome_js_analyze): fix useConst suggestion when some bindings cann
+  * docs(noConstructorReturn): fix rule description (#4015)
+  * feat(playground): Add JSON support (#3968)
+  * fix(rome_js_analyze): fix ts const assertion on noUndeclaredVariables (
+  * feat(rome_js_analyze): lint rule to check if react hooks are at top l
+  * feat(rome_js_analyze): noAssignInExpressions (#3928)
+  * feat(rome_cli): Add JS runtime and package manager information to `ra
+  * feat(rome_js_analyze): noUselessSwitchCase (#3912)
+  * fix(vscode): ignore incompatible versions of the binary and improve t
+  * feat(editors/vscode): Add requiresConfiguration option
+  * Revert "feat(editors/vscode): Add requiresConfiguration option"
+  * feat(rome_js_analyze): complete useAriaPropTypes rule (#3959)
+  * docs: fix typo in configuration.mdx (#4034)
+  * feat(rome_js_analyze): add module and classes support for noRedundant
+  * chore(xtask): update the coverage submodules (#4041)
+  * feat(rome_js_analyzer): add noWith rule (#4025)
+  * chore: update contribution guidelines (#3996)
+  * refactor(rome_lsp): refactor the initialization and configuration loa
+  * fix(rome_lsp): improve the pattern matching logic for ignored files (#
+  * fix(rome_lsp): fix the merge conflict of #4042 and #4044 (#4051)
+  * feat: Support Auto Accessors (#3956)
+  * feat(rome_json_formatter): JSON Formatting object #2570 (#4040)
+  * feat(rome_js_analyze): noCommaOperator (#4019)
+  * chore(codegen): fix codegen for new lint rule (#4057)
+  * refactor(rome_formatter): Extract shared separated logic (#4056)
+  * feat(rome_js_analyze): noSelfCompare rule (#4031)
+  * feat(rome_js_analyze): noClassAssign rule (#4033)
+  * fix(rome_js_analyze): should handle read-only arrays (#3954)
+  * feat(rome_json_formatter): Fallback to Verbatim for nodes with syntax
+  * feat(rome_js_analyzer): rule useValidLang (#4045)
+  * feat(rome_js_analyzer): noExtraSemicolons, noExtraSemi (#4061)
+  * feat(rome_js_parser): instantiation expressions #3147 (#4035)
+  * feat(rome_js_analyze): noDuplicateCase, no-duplicate-case #3969 (#4039)
+  * chore(rome_analyze): add groups
+  * chore(rome_js_analyze): simplify comparison operator check (#4076)
+  * feat(rome_js_analyze): useIsNan rule (#4059)
+  * feat(rome_js_analyze): useMediaCaption rule (#4032)
+  * refactor(rome_analyze): refactor how Visitors, Queryables and QueryMa
+  * feat(rome_js_analyzer): rule useAriaProps (#4048)
+  * feat(rome_js_analyze): useIframeTitle (#4067)
+  * feat(rome_js_analyze): implement the noUnreachableSuper rule (#4017)
+  * feat(rome_js_analyzer): partial implementation for rule `noNoninterac
+  * feat(rome_cli): termination as diagnostic (#4058)
+  * feat(rome_js_analyzer): rule useHtmlLang (#4052)
+  * fix(rome_js_semantic): semantic model considering static init block a
+  * feat(rome_cli): rename --apply-suggested to --apply-unsafe (#4078)
+  * feat(rome_json_formatter): implement JSON array formatting (#4064)
+  * fix(rome_js_analyze): noPrecisionLoss correctly handle 1 digit ints (
+  * docs(noExplicitAny): add a diagnostic note and info in docs (#4089)
+  * docs(rome_analyze): complete custom visitor example (#4098)
+  * chore(.github): add feature request link
+  * refactor(rome_js_anallyze): noConstEnum better trivia handling (#4085)
+  * feat(rome_js_analyze): noInnerDeclarations (#4079)
+  * feat(rome_json_formatter): JSON Formatting number #2570 (#4090)
+  * feat(editors/vscode): Add requiresConfiguration option (#4023)
+  * fix(rome_js_formatter): Union in mapped type (#4100)
+  * feat(rome_json_formatter): JSON Formatting string #2570 (#4105)
+  * test(rome_js_formatter): update prettier tests (#4104)
+  * feat(rome_js_analyzer): no duplicate jsx props rule (#4095)
+  * fix(rome_js_parser): parse "async" as class member property correctly (
+  * chore: Upgrade to Rust 1.66.0 (#4120)
+  * feat: Support extends constraints on infer type (#4018)
+  * docs(rome_analyze): fix typos and improve docs (#4122)
+  * chore(rome_js_analyze): fix typo in no-const-enum rule (#4127)
+  * feat(rome_lsp): add link to LSP diagnostic (#4099)
+  * feat(rome_service): parse configuration via JSON parser (#4043)
+  * refactor(rome_js_parser): Inroduce TypeContext (#4123)
+  * feat(rome_js_analyze): noUnusedLabels (#4096)
+  * feat(rome_lsp): add a replace_range method to Document (#4135)
+  * feat(rome_js_analyze): useYield rule (#4037)
+  * chore: remove FileId from the codebase (#4134)
+  * docs(useIsNan): promote Number.isNaN instead of isNaN (#4088)
+  * feat(rome_js_analyze): noGlobalObjectCalls, no-obj-calls #3977 (#4103)
+  * feat(rome_js_analyze): noPrototypeBuiltins (#4101)
+  * docs(linter): minor fixes and improvements (#4128)
+  * feat(rome_cli): Enable JSON formatting (#4133)
+  * feat(vscode): enable JSON formatting (#4146)
+  * chore: Add root rome script for development (#4147)
+  * chore: Remove unnecessary .nojekyll file (#4148)
+  * feat(rome_service): deserialize configuration using internal parser (#
+  * refactor(js_ungram): normalize BigInt to Bigint (#4139)
+  * chore: update rust and dependencies (#4152)
+  * feat(rome_js_analyze): noDuplicateClassMembers (#4137)
+  * chore: remove stale bot
+  * feat(rome_js_analyze): noExtraLabels (#4126)
+  * feat(rome_js_analyze): noUselessRename (#4116)
+  * feat(rome_js_analyze): noConfusingLabels (#4114)
+  * feat(rome_service): recycle the node cache across parsing sessions (#
+  * fix: remove macro
+  * feat(rome_js_analyze): noInferrableTypes (#4083)
+  * docs(linter): fix the linter cli options (#4204)
+  * feat(rome_cli): Add a new option --config-path to set the path to rom
+  * feat(rome_js_analyze): noSwitchDeclarations (#3917)
+  * feat(rome_js_analyze): noParameterProperties (#3874)
+  * chore: remove CODEOWNERS
+  * feat(rome_js_analyzer): noSelfAssignment rule (#4091)
+  * ci: fix redact snapshot (#4207)
+  * feat(rome_js_analyze): noDuplicatePrivateClassMembers (#4144)
+  * fix(js_semantic):handle exported modules and their members (#4205)
+  * fix(syntax): add missing assignment operator /= (#4213)
+  * fix: identify any declaration of type parameter (#4211)
+  * fix(noVar): suggest fixes for re-assigned var (#4212)
+  * chore: Update dependencies (#4121)
+  * fix(rome_js_analyze): handle default clause in `useSingleCaseStetemen
+  * fix(noUnusedVariables): ignore TypeScript property parameters (#4214)
+  * ci: fix redact snapshot (#4209)
+  * feat(rome_js_analyze): noUnsafeOptionalChain, no-unsafe-optional-chai
+  * fix(useOptionalChain): ignore expr ending with a bin expr (#4217)
+  * feat(rome_cli): enable organize imports via CLI/configuration (#4191)
+
+-------------------------------------------------------------------
+Sun Jan 29 05:03:02 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 11.0
+  * 573 commits, see https://github.com/rome/tools/compare/cli/v0.8.0-next.ff4153b...cli/v11.0.0
+- remove unneeded _service file
+
+-------------------------------------------------------------------
+Sun Aug 21 20:24:41 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.0
+  * for changes, see https://github.com/rome/tools/compare/cli/v0.6.1-next...cli/v0.8.0-next.ff4153b
+
+-------------------------------------------------------------------
+Mon Jun 20 22:12:36 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.6.1
+  * Fixes a regression introduced in the rome format command (#2670)
+  * chore: Reformat JS files with Rome 0.6.0 by @MichaReiser in #2669
+  * chore(coverage): better panic log for coverage by @xunilrj in #2668
+  * fix(rome_cli): do not print lint warnings for the format command by @leops in #2680
+  * fix(rome_analyze): fix the find_diff_range function by @leops in #2679
+  * refactor(formatter): Rename FormatError::MissingRequiredChild to
+    SyntaxError by @MichaReiser in #2681
+  * chore(rome_formatter): remove unused FormatError variants by
+    @MichaReiser in #2684
+  * chore(coverage): Disable coverage tests for formatter/linter changes
+    by @MichaReiser in #2682
+  * fix(rome_js_parser): remove use strict check by @NicholasLYang in #2677
+  * fix(rome_formatter): measure first variant of BestFitting in flat
+    mode by @yassere in #2675
+- includes 0.6.0
+  * BREAKING CHANGES: the command rome format --ci has been removed,
+    use rome ci instead.
+  * chore: update readme by @ematipico in #2523
+  * fix(ci): Deploy playground only on main Rome repo by @NicholasLYang in #2522
+  * fix(rome_js_formatter): break computed expressions like prettier by @ematipico in #2517
+  * fix(playground): Update pnpm requirement to 7.0.0. by @cpojer in #2528
+  * refactor: Split out JsFormatter by @MichaReiser in #2526
+  * feat(rome_js_parser): quick cast methods for nodes by @xunilrj in #2535
+  * fix(rome_js_formatter): number with trailing whitespace by @mrkldshv in #2519
+  * fix(rome_js_formatter): elide quotes inside members by @ematipico in #2502
+  * Fix(rome_js_formatter): guitar Switch-case block body placement
+    by @IWANABETHATGUY in #2514
+  * fix(playground): update lock file by @ematipico in #2539
+  * Revert "fix(rome_js_formatter): elide quotes inside members" by @ematipico in #2544
+  * chore: Fix deploy playground on main by @MichaReiser in #2545
+  * fix(rome_js_formatter): Put closing curly on new line for empty
+    blocks. by @IWANABETHATGUY in #2540
+  * fix(formatter): Stack overflow in formatting computed member expressions
+    by @MichaReiser in #2548
+  * feat(rome_js_formatter): JSXFragment by @ematipico in #2484
+  * feature(formatter): Clean JSX Text by @NicholasLYang in #2527
+  * feature: AST Serialization by @NicholasLYang in #2509
+  * fix(cargo.toml): bug fix repo link by @IWANABETHATGUY in #2551
+  * chore(website): Added careers link by @NicholasLYang in #2560
+  * fix(rome_js_formatter): bug wrap some string expression stmt by @IWANABETHATGUY in #2547
+  * feat(rome_js_parser): check for missing children in parser tests by @leops in #2176
+  * refactor(rome_analyze): syntax mutation and factories API by @leops in #2491
+  * feature(playground): Prettier IR tab by @NicholasLYang in #2543
+  * refactor(Formatter): formatted Macro by @MichaReiser in #2557
+  * Fix(rome_js_formatter):bug fix parenthesis expression bad case
+    by @IWANABETHATGUY in #2564
+  * fix: Countme overflow in tests by @MichaReiser in #2575
+  * format(rome_*): format rust doc comments by @IWANABETHATGUY in #2573
+  * feat(lsp): improve the user experience of the analyzer in the editor by @leops in #2576
+  * refactor(Formatter): Move Format, Formatter, to rome_formatter by @MichaReiser in #2559
+  * feature(website): Toggle Tree Style by @NicholasLYang in #2563
+  * feat(rome_js_formatter): bulb Prettier Compatibility Metric by @IWANABETHATGUY in #2574
+  * feat(rome_diagnostic): refactor diagnostics to use markup by @leops in #2580
+  * fix(formatter): Tighten has_line_breaks method by @MichaReiser in #2581
+  * fix(formatter): Stable member chain printing by @MichaReiser in #2582
+  * ci: ferris_wheel fix broken ci by @IWANABETHATGUY in #2584
+  * refactor(formatter): Extract language specific options by @MichaReiser in #2578
+  * feat(rome_cli): implement the check and ci CLI commands by @leops in #2583
+  * refactor(formatter): Refactor try_print_flat to fits_on_line by @MichaReiser in #2589
+  * feature(formatter): LineSuffixBoundary and ExpandParent IR by @MichaReiser in #2590
+  * chore(playground): Display cleaned prettier IR by @MichaReiser in #2592
+  * fix(rome_rowan): fix the next_token and prev_token methods on SyntaxToken
+    by @leops in #2595
+  * fix(playground): state not persisting properly in url by @NicholasLYang in #2594
+  * chore: Upgrade to Rust 1.61.0 by @Boshen in #2599
+  * feature(formatter): Add BestFitting IR element by @MichaReiser in #2591
+  * (website): robot remove package lock json by @IWANABETHATGUY in #2596
+  * fix(repo): Update .gitignore. by @cpojer in #2605
+  * feat(rome_js_formatter): Hard line breaks in object expressions. by @cpojer in #2458
+  * refactor: Stabilize formatter by @MichaReiser in #2597
+  * refactor: Printer "fits" definition by @MichaReiser in #2598
+  * feat(rome_rowan): cast and parent to help SyntaxNode and AstNode
+    navigation by @xunilrj in #2601
+  * fix(rome_js_formatter): empty statements in if/else and do/while by @ematipico in #2549
+  * fix(rome_js_formatter): correctly format sequence expressions by @ematipico in #2541
+  * fix(rome_formatter): improve the compatibility of range formatting
+    with Prettier by @leops in #2602
+  * refactor: move SourceType inside rome_js_syntax by @ematipico in #2608
+  * (npm/rome): remove node: prefix for builtin module by @IWANABETHATGUY in #2607
+  * feat(rome_service): introduce a cross-language Workspace abstraction by @leops in #2593
+  * perf(rowan): Speedup next_token and prev_token implementations by @MichaReiser in #2612
+  * fix(playground): JSX and TypeScript not persisted in URL by @NicholasLYang in #2610
+  * feat(rome_cli): disable markup formatting when unsupported by @leops in #2613
+  * feature(rome_js_parser): coverage test suite for ts symbols file by @xunilrj in #2588
+  * feat(playground): add a button to copy rome_ir to clipboard by @IWANABETHATGUY in #2604
+  * fix(parser): Fix JSX parser dropping content by @MichaReiser in #2630
+  * feat(rome_formatter): make formatter language aware by @ematipico in #2629
+  * fix(rome_js_formatter): choose preferred quotes and reduce escaping
+    by @ematipico in #2624
+  * chore(rome_js_formatter): apply alias by @ematipico in #2633
+  * feature(rome_js_parser): Extraction of variable declarations by @xunilrj in #2628
+  * docs(formatter): fix some mistakes in doc comments by @yassere in #2637
+  * perf(formatter): Remove prev_token traversal from format leading
+    trivia by @MichaReiser in #2638
+  * feature(formatter): Fill separators by @NicholasLYang in #2609
+  * refactor(rome_js_formatter): format static member expressions using
+    loop by @ematipico in #2635
+  * feature(rome_js_semantic): Extraction of scope (simple cases) by @xunilrj in #2639
+  * feat(rome_js_formatter): elide quotes in object/class members by @ematipico in #2536
+  * fix(rome_formatter): handle groups correctly when measuring fit by @yassere in #2645
+  * feat(rome_js_formatter): Break long object literal members over
+    two lines #2425 by @Dominionys in #2627
+  * refactor(formatter): Introduce write, format, and format_args macros
+    by @MichaReiser in #2634
+  * refactor(formatter): Member chain: left to right formatting by @MichaReiser in #2641
+  * Fix(rome_js_formatter): named import by @IWANABETHATGUY in #2498
+  * fix(rome_js_formatter): prevent some unnecessary trailing commas by @yassere in #2663
+  * refactor(formatter): Change binary like expression to format left
+    to right by @MichaReiser in #2640
+  * fix(syntax): Remove quotes from tokens in JsSyntaxKind::to_string by @MichaReiser in #2665
+  * release: 0.6.0 by @ematipico in #2662
+- includes 0.5.0
+  * BREAKING CHANGES: the format command doesn't write on disk by
+    default. Now the command prints to stdout. Now users should
+    call `rome format --write` to  use the old behavior
+  * Added a new option called --quote-style to the formatter. This
+    option is also available on VSCode.
+  * Update README.md by @darrow-olykos in #2348
+  * chore(rome_cli): move ending message after diagnostics by @ematipico in #2349
+  * feat(rome_diagnostics): print diagnostics as markup by @leops in #2346
+  * chore(website): Getting Started copy by @NicholasLYang in #2343
+  * chore: use npm 8 across projects by @ematipico in #2352
+  * feat(rome_playground): add support for source type by @ematipico in #2353
+  * fix(website): added illustrator credit and alt text by @NicholasLYang in #2355
+  * fix(rome_js_parser): Fix TS Decorator with arrow param parsing by @MichaReiser in #2364
+  * chore: Move playground to website directory by @MichaReiser in #2335
+  * chore: Fix playground build by @MichaReiser in #2365
+  * feat(rome_cli): CLI Improvements by @leops in #2361
+  * refactor(rome_diagnostics): refactoring / cleanup of diagnostics by @leops in #2354
+  * docs(website): update pnpm commands by @sachinraja in #2367
+  * fix(playground): Prettier TS formatting by @MichaReiser in #2368
+  * feat(rome_css_syntax): codegen for CSS grammar by @ematipico in #2363
+  * fix(rome_css_syntax): updated nodes by @ematipico in #2371
+  * fix(playground): checkbox bug by @NicholasLYang in #2366
+  * chore: Upgrade to Rust 1.60.0 by @Boshen in #2373
+  * refactor: Move AST types to rome_rowan by @MichaReiser in #2372
+  * feature(playground): Deploy every commit to subdomain by @NicholasLYang in #2357
+  * perf(build): improve compile times by @leops in #2374
+  * fix: Outdated path crates/rome_playground -> website/playground
+    by @NicholasLYang in #2377
+  * refactor(rome_js_formatter): Support arbitrarily deep binary expressions
+    by @MichaReiser in #2376
+  * fix(rome_js_parser): Assignment error recovery by @MichaReiser in #2382
+  * perf(rome_rowan): SyntaxTriviaPiece.text() by @MichaReiser in #2381
+  * fix(rome_js_parser): Assignment in decorator by @MichaReiser in #2386
+  * feature(rome_js_formatter): Add support for printing single quotes by @cpojer in #2380
+  * chore: Document binary like expression formatting by @MichaReiser in #2388
+  * feat(rome_console): redact Unicode control characters by @leops in #2384
+  * fix(rome_js_formatter): Insert Space after type for import equals
+    declaration by @MichaReiser in #2391
+  * feature: Added formatting for self-closing JSX element by @NicholasLYang in #2273
+  * chore: Switch to pnpm. by @cpojer in #2387
+  * fix(rome_js_parser): Parsing of parenthesized in expression in
+    for initializer by @MichaReiser in #2396
+  * chore: update submodules by @MichaReiser in #2399
+  * chore: Fix syntax error in deploy playground workflow by @MichaReiser in #2401
+  * fix(rome_js_formatter): Use semicolons instead of commas for separating
+    keys in a type member list by @cpojer in #2412
+  * ci(website): fix deploy playground workflow by @NicholasLYang in #2392
+  * feature(rome_js_formatter): JSX Attributes by @NicholasLYang in #2393
+  * fix(rome_js_parser): Rewind at EOF by @MichaReiser in #2435
+  * feat(playground): align options horizontally by @jer3m01 in #2434
+  * chore: Fix the expected Prettier output of the binarish test by @MichaReiser in #2422
+  * feat(xtask): Check for sub unions overlap by @loginn in #2385
+  * ci(playground): Trying, yet again, to fix deploy_playground workflow
+    trigger by @NicholasLYang in #2433
+  * fix(playground): base url not propagated to vite by @NicholasLYang in #2452
+  * docs: fix contributing link by @jer3m01 in #2457
+  * chore: Print lines exceeding line widths by @MichaReiser in #2429
+  * Update GitHub Actions version by @Gumichocopengin8 in #2461
+  * fix(rome_js_parser): fix lexer panicking on unterminated unicode
+    escape at EOF by @Boshen in #2438
+  * feature(playground): Mobile playground by @NicholasLYang in #2432
+  * Feat(json): finish json ungram by @IWANABETHATGUY in #2466
+  * chore(ci): add conditions to workflow runs by @jer3m01 in #2459
+  * fix(rome_js_parser): consume ... in import expression by @Boshen in #2468
+  * refactor(rome_rowan): Use associated types for Ast* traits by @MichaReiser in #2463
+  * fix(rome_js_formatter): Fix stackoverflow on Windows for nested
+    seque… by @MichaReiser in #2469
+  * fix(rome_json_syntax): Update JSON AST Facade by @MichaReiser in #2470
+  * feat(rome_rowan): add has_comments API by @ematipico in #2464
+  * perf(rome_js_formatter): Reduce FormatElement size by @MichaReiser in #2456
+  * perf(rome_js_formatter): Reduce the String allocations for Tokens
+    by @MichaReiser in #2462
+  * normalize big int literals by @xunilrj in #2467
+  * docs: use dark and light logo by @jer3m01 in #2472
+  * fix(rome_rowan): fix syntaxtokentext display infinite recursion by @xunilrj in #2477
+  * refactor(rome_js_formatter): Move node formatting into its own
+    trait by @MichaReiser in #2476
+  * Update github actions version to v3 by @Gumichocopengin8 in #2480
+  * refactor(rome_js_formatter): Remove format_root from Formatter by @MichaReiser in #2478
+  * refactor(rome_js_formatter): Track token offsets instead of tokens
+    by @MichaReiser in #2481
+  * chore(rome_lsp): migration to tower_lsp crate by @IWANABETHATGUY in #2485
+  * feature(rome_js_parser): better handle of unicode for string literals,
+    templates and regex by @xunilrj in #2378
+  * chore(xtask): choose language when generating grammar by @IWANABETHATGUY in #2473
+  * feat: add rome_flags crate for feature flags by @yassere in #2487
+  * chore(xtask): robot fix typo by @IWANABETHATGUY in #2496
+  * fix(rome_js_formatter): bug preserve new-lines after directives
+    by @IWANABETHATGUY in #2500
+  * chore(ci): split the release workflow between the vscode extension
+    and CLI package by @leops in #2495
+
+-------------------------------------------------------------------
+Tue Apr  5 17:06:14 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.4.2:
+  * fix(rome_js_parser): Fix directive parsing #2323
+  * feat(vscode): add Show syntax tree command for supported documents #2309
+  * docs(website): add 'Getting Started' section #2320
+  * docs: add diff and migration against other formatters #2312
+  * docs: enhancements, add documentation for playground #2319
+  * docs(website): add link to binaries #2326
+  * chore(website): Grammar and style fixes #2329
+  * refactor(rome_rowan): Split API/Cursor files #2330
+  * feat(rome_console): Display trait and diff printing #2328
+  * fix(rome_playground): Unicode Support #2332
+  * fix(rome_formatter): add empty line after interpreter #2336
+  * feat(npm): add a postinstall script to the cli package #2333
+  * refactor(rome_js_parser): Streamline parser events #2327
+  * chore: rename rome_formatter to rome_js_formatter #2334
+  * feat(rome_cli): integrate the new diff printing with CI mode #2337
+  * chore: add CHANGELOG.md and README.md to npm #2340
+  * refactor(rome_js_formatter): move language agnostic code into
+    rome_formatter #2342
+  * feat(rome_console): add a Codespan utility struct to display annotated
+    code fragments #2341
+  * chore(ci): enable changelog generation and bump the version numbers
+    for the extension and CLI by @leops in #2345
+  * fix(rome_js_parser): correctly parse regex with unicode chars #2344
+  * fix(vscode): update the format of the npm lockfile in #2347
+
+-------------------------------------------------------------------
+Tue Mar 29 20:45:59 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump version to v0.4.0
+
+-------------------------------------------------------------------
+Sun Mar 27 21:43:27 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- initialize @rev 76bf61e5f8c4a279c1bb7fb640710b521aac1b10
