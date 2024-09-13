@@ -104,4 +104,12 @@
   * 0001-Add-missing-GENERATE_PLUGIN_SOURCE-to-merkuro_contac.patch</comment>
     <requestid>1196419</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90ace1847da5cb06e25183bf9d1edc45</srcmd5>
+    <version>24.08.1</version>
+    <time>1726230808</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.08.1</comment>
+    <requestid>1200632</requestid>
+  </revision>
 </revisionlist>

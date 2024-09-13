@@ -1,5 +1,5 @@
 #
-# spec file for package kalendar
+# spec file for package merkuro
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -20,12 +20,12 @@
 
 %define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.0
+%define kpim6_version 6.2.1
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           merkuro
-Version:        24.08.0
+Version:        24.08.1
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -35,8 +35,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-GENERATE_PLUGIN_SOURCE-to-merkuro_contac.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
@@ -114,9 +112,10 @@ This package provides a Plasma widget to view address book contacts.
 
 %find_lang %{name} --all-name
 
+%ldconfig_scriptlets
+
 %files
 %license LICENSES/*
-
 %{_kf6_applicationsdir}/org.kde.merkuro.calendar.desktop
 %{_kf6_applicationsdir}/org.kde.merkuro.contact.desktop
 %{_kf6_applicationsdir}/org.kde.merkuro.mail.desktop
@@ -133,11 +132,10 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.merkuro.*.png
 %{_kf6_qmldir}/org/kde/akonadi/
 %{_kf6_qmldir}/org/kde/merkuro/
-# FIXME: Having these here is kind of broken
-%{_kf6_libdir}/libmerkuro_contact_plugin.so.*
-%{_kf6_libdir}/libmerkuro_contact_plugin.so
 %{_kf6_libdir}/libMerkuroComponents.so.*
 %{_kf6_libdir}/libMerkuroComponents.so
+%{_kf6_libdir}/libmerkuro_contact.so.*
+%{_kf6_libdir}/libmerkuro_contact.so
 %{_kf6_notificationsdir}/merkuro.mail.notifyrc
 
 %files plasmoid

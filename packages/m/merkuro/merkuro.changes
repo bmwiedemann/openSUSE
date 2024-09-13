@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:11:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Don't register contactconfig manually
+  * Compile contacts plugin metadata in the actual QML plugin, not in the shared library. (kde#491808)
+  * Add missing GENERATE_PLUGIN_SOURCE to merkuro_contact_plugin
+- Drop patch, merged upstream:
+  * 0001-Add-missing-GENERATE_PLUGIN_SOURCE-to-merkuro_contac.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 08:22:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (boo#1229847):
