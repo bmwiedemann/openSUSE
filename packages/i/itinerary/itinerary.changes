@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 10 14:10:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.1/
+- Changes since 24.08.0:
+  * Adjust to Craft Boost blueprint changes
+  * Add 24.08.1 release notes
+  * Add diagnostic information about language settings
+  * Fix icon recoloring for the transfer icon
+  * Only search for KF::ColorScheme on Android
+  * Enable automatic dark mode handling on Android
+  * Add 24.08.0 release notes
+
+-------------------------------------------------------------------
 Mon Aug 19 07:13:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

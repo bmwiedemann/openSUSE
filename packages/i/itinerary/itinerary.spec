@@ -18,11 +18,11 @@
 
 %define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.0
+%define kpim6_version 6.2.1
 
 %bcond_without released
 Name:           itinerary
-Version:        24.08.0
+Version:        24.08.1
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
