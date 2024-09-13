@@ -454,4 +454,15 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1181303</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6034a53231a47646f1ea7b70aaaad94d</srcmd5>
+    <version>24.3.3</version>
+    <time>1726230812</time>
+    <user>anag+factory</user>
+    <comment>- update to intel-media-24.3.3 - changes since 24.1.5 (jira#PED-10348)
+  * Add Lunar Lake platform support
+  * bugfixes
+- updated supplements</comment>
+    <requestid>1200642</requestid>
+  </revision>
 </revisionlist>

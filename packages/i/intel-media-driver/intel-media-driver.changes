@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:43:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to intel-media-24.3.3 - changes since 24.1.5 (jira#PED-10348)
+  * Add Lunar Lake platform support
+  * bugfixes
+- updated supplements
+
+-------------------------------------------------------------------
 Mon Jun 17 10:46:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to intel-media-24.1.5:
