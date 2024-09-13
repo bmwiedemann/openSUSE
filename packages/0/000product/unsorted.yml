@@ -1415,6 +1415,7 @@ unsorted:
   - binutils-devel-32bit 
   - binutils-gold 
   - binwalk 
+  - biome 
   - bird 
   - bird-doc 
   - bison 
@@ -1533,21 +1534,21 @@ unsorted:
   - boost-gnu-openmpi4-hpc-devel 
   - boost-gnu-openmpi4-hpc-python3 
   - boost-jam 
-  - boost1_85_0-doc-html 
-  - boost1_85_0-doc-pdf 
-  - boost1_85_0-jam 
-  - boost1_85_0-quickbook 
-  - boost_1_85_0-gnu-hpc 
-  - boost_1_85_0-gnu-hpc-devel 
-  - boost_1_85_0-gnu-mpich-hpc 
-  - boost_1_85_0-gnu-mpich-hpc-devel 
-  - boost_1_85_0-gnu-mpich-hpc-python3 
-  - boost_1_85_0-gnu-mvapich2-hpc 
-  - boost_1_85_0-gnu-mvapich2-hpc-devel 
-  - boost_1_85_0-gnu-mvapich2-hpc-python3 
-  - boost_1_85_0-gnu-openmpi4-hpc 
-  - boost_1_85_0-gnu-openmpi4-hpc-devel 
-  - boost_1_85_0-gnu-openmpi4-hpc-python3 
+  - boost1_86_0-doc-html 
+  - boost1_86_0-doc-pdf 
+  - boost1_86_0-jam 
+  - boost1_86_0-quickbook 
+  - boost_1_86_0-gnu-hpc 
+  - boost_1_86_0-gnu-hpc-devel 
+  - boost_1_86_0-gnu-mpich-hpc 
+  - boost_1_86_0-gnu-mpich-hpc-devel 
+  - boost_1_86_0-gnu-mpich-hpc-python3 
+  - boost_1_86_0-gnu-mvapich2-hpc 
+  - boost_1_86_0-gnu-mvapich2-hpc-devel 
+  - boost_1_86_0-gnu-mvapich2-hpc-python3 
+  - boost_1_86_0-gnu-openmpi4-hpc 
+  - boost_1_86_0-gnu-openmpi4-hpc-devel 
+  - boost_1_86_0-gnu-openmpi4-hpc-python3 
   - booth 
   - booth-test 
   - bootiso 
@@ -12092,147 +12093,151 @@ unsorted:
   - libbobcat6 
   - libboinc8 
   - libboost_atomic-devel 
-  - libboost_atomic1_85_0 
-  - libboost_atomic1_85_0-32bit 
-  - libboost_atomic1_85_0-devel 
-  - libboost_atomic1_85_0-x86-64-v3 
-  - libboost_charconv1_85_0 
-  - libboost_charconv1_85_0-32bit 
-  - libboost_charconv1_85_0-devel 
-  - libboost_charconv1_85_0-x86-64-v3 
+  - libboost_atomic1_86_0 
+  - libboost_atomic1_86_0-32bit 
+  - libboost_atomic1_86_0-devel 
+  - libboost_atomic1_86_0-x86-64-v3 
+  - libboost_charconv1_86_0 
+  - libboost_charconv1_86_0-32bit 
+  - libboost_charconv1_86_0-devel 
+  - libboost_charconv1_86_0-x86-64-v3 
   - libboost_chrono-devel 
-  - libboost_chrono1_85_0 
-  - libboost_chrono1_85_0-devel 
+  - libboost_chrono1_86_0 
+  - libboost_chrono1_86_0-devel 
   - libboost_container-devel 
-  - libboost_container1_85_0 
-  - libboost_container1_85_0-32bit 
-  - libboost_container1_85_0-devel 
-  - libboost_container1_85_0-x86-64-v3 
+  - libboost_container1_86_0 
+  - libboost_container1_86_0-32bit 
+  - libboost_container1_86_0-devel 
+  - libboost_container1_86_0-x86-64-v3 
   - libboost_context-devel 
-  - libboost_context1_85_0 
-  - libboost_context1_85_0-32bit 
-  - libboost_context1_85_0-devel 
+  - libboost_context1_86_0 
+  - libboost_context1_86_0-32bit 
+  - libboost_context1_86_0-devel 
   - libboost_contract-devel 
-  - libboost_contract1_85_0 
-  - libboost_contract1_85_0-devel 
+  - libboost_contract1_86_0 
+  - libboost_contract1_86_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_85_0 
-  - libboost_coroutine1_85_0-32bit 
-  - libboost_coroutine1_85_0-devel 
+  - libboost_coroutine1_86_0 
+  - libboost_coroutine1_86_0-32bit 
+  - libboost_coroutine1_86_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_85_0 
-  - libboost_date_time1_85_0-32bit 
-  - libboost_date_time1_85_0-devel 
-  - libboost_date_time1_85_0-x86-64-v3 
+  - libboost_date_time1_86_0 
+  - libboost_date_time1_86_0-32bit 
+  - libboost_date_time1_86_0-devel 
+  - libboost_date_time1_86_0-x86-64-v3 
   - libboost_fiber-devel 
-  - libboost_fiber1_85_0 
-  - libboost_fiber1_85_0-32bit 
-  - libboost_fiber1_85_0-devel 
+  - libboost_fiber1_86_0 
+  - libboost_fiber1_86_0-32bit 
+  - libboost_fiber1_86_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_85_0-32bit 
-  - libboost_filesystem1_85_0-devel 
+  - libboost_filesystem1_86_0-32bit 
+  - libboost_filesystem1_86_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_85_0 
-  - libboost_graph1_85_0-32bit 
-  - libboost_graph1_85_0-devel 
-  - libboost_graph1_85_0-x86-64-v3 
+  - libboost_graph1_86_0 
+  - libboost_graph1_86_0-32bit 
+  - libboost_graph1_86_0-devel 
+  - libboost_graph1_86_0-x86-64-v3 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_85_0 
-  - libboost_graph_parallel1_85_0-32bit 
-  - libboost_graph_parallel1_85_0-devel 
-  - libboost_graph_parallel1_85_0-x86-64-v3 
+  - libboost_graph_parallel1_86_0 
+  - libboost_graph_parallel1_86_0-32bit 
+  - libboost_graph_parallel1_86_0-devel 
+  - libboost_graph_parallel1_86_0-x86-64-v3 
   - libboost_headers-devel 
-  - libboost_headers1_85_0-devel 
+  - libboost_headers1_86_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_85_0-32bit 
-  - libboost_iostreams1_85_0-devel 
-  - libboost_json1_85_0 
-  - libboost_json1_85_0-32bit 
-  - libboost_json1_85_0-devel 
-  - libboost_json1_85_0-x86-64-v3 
+  - libboost_iostreams1_86_0-32bit 
+  - libboost_iostreams1_86_0-devel 
+  - libboost_json1_86_0 
+  - libboost_json1_86_0-32bit 
+  - libboost_json1_86_0-devel 
+  - libboost_json1_86_0-x86-64-v3 
   - libboost_locale-devel 
-  - libboost_locale1_85_0-32bit 
-  - libboost_locale1_85_0-devel 
+  - libboost_locale1_86_0-32bit 
+  - libboost_locale1_86_0-devel 
   - libboost_log-devel 
-  - libboost_log1_85_0 
-  - libboost_log1_85_0-devel 
+  - libboost_log1_86_0 
+  - libboost_log1_86_0-devel 
   - libboost_math-devel 
-  - libboost_math1_85_0 
-  - libboost_math1_85_0-32bit 
-  - libboost_math1_85_0-devel 
-  - libboost_math1_85_0-x86-64-v3 
+  - libboost_math1_86_0 
+  - libboost_math1_86_0-32bit 
+  - libboost_math1_86_0-devel 
+  - libboost_math1_86_0-x86-64-v3 
   - libboost_mpi-devel 
-  - libboost_mpi1_85_0 
-  - libboost_mpi1_85_0-32bit 
-  - libboost_mpi1_85_0-devel 
-  - libboost_mpi1_85_0-x86-64-v3 
-  - libboost_mpi_python-py3-1_85_0 
-  - libboost_mpi_python-py3-1_85_0-devel 
+  - libboost_mpi1_86_0 
+  - libboost_mpi1_86_0-32bit 
+  - libboost_mpi1_86_0-devel 
+  - libboost_mpi1_86_0-x86-64-v3 
+  - libboost_mpi_python-py3-1_86_0 
+  - libboost_mpi_python-py3-1_86_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_85_0 
-  - libboost_nowide1_85_0-32bit 
-  - libboost_nowide1_85_0-devel 
-  - libboost_nowide1_85_0-x86-64-v3 
-  - libboost_numpy-py3-1_85_0 
-  - libboost_numpy-py3-1_85_0-devel 
+  - libboost_nowide1_86_0 
+  - libboost_nowide1_86_0-32bit 
+  - libboost_nowide1_86_0-devel 
+  - libboost_nowide1_86_0-x86-64-v3 
+  - libboost_numpy-py3-1_86_0 
+  - libboost_numpy-py3-1_86_0-devel 
   - libboost_numpy3-devel 
+  - libboost_process1_86_0 
+  - libboost_process1_86_0-32bit 
+  - libboost_process1_86_0-devel 
+  - libboost_process1_86_0-x86-64-v3 
   - libboost_program_options-devel 
-  - libboost_program_options1_85_0-32bit 
-  - libboost_program_options1_85_0-devel 
-  - libboost_python-py3-1_85_0-32bit 
-  - libboost_python-py3-1_85_0-devel 
+  - libboost_program_options1_86_0-32bit 
+  - libboost_program_options1_86_0-devel 
+  - libboost_python-py3-1_86_0-32bit 
+  - libboost_python-py3-1_86_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_85_0 
-  - libboost_random1_85_0-32bit 
-  - libboost_random1_85_0-devel 
-  - libboost_random1_85_0-x86-64-v3 
+  - libboost_random1_86_0 
+  - libboost_random1_86_0-32bit 
+  - libboost_random1_86_0-devel 
+  - libboost_random1_86_0-x86-64-v3 
   - libboost_regex-devel 
-  - libboost_regex1_85_0 
-  - libboost_regex1_85_0-32bit 
-  - libboost_regex1_85_0-devel 
-  - libboost_regex1_85_0-x86-64-v3 
+  - libboost_regex1_86_0 
+  - libboost_regex1_86_0-32bit 
+  - libboost_regex1_86_0-devel 
+  - libboost_regex1_86_0-x86-64-v3 
   - libboost_serialization-devel 
-  - libboost_serialization1_85_0 
-  - libboost_serialization1_85_0-32bit 
-  - libboost_serialization1_85_0-devel 
-  - libboost_serialization1_85_0-x86-64-v3 
+  - libboost_serialization1_86_0 
+  - libboost_serialization1_86_0-32bit 
+  - libboost_serialization1_86_0-devel 
+  - libboost_serialization1_86_0-x86-64-v3 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_85_0 
-  - libboost_stacktrace1_85_0-32bit 
-  - libboost_stacktrace1_85_0-devel 
-  - libboost_stacktrace1_85_0-x86-64-v3 
+  - libboost_stacktrace1_86_0 
+  - libboost_stacktrace1_86_0-32bit 
+  - libboost_stacktrace1_86_0-devel 
+  - libboost_stacktrace1_86_0-x86-64-v3 
   - libboost_system-devel 
-  - libboost_system1_85_0 
-  - libboost_system1_85_0-32bit 
-  - libboost_system1_85_0-devel 
-  - libboost_system1_85_0-x86-64-v3 
+  - libboost_system1_86_0 
+  - libboost_system1_86_0-32bit 
+  - libboost_system1_86_0-devel 
+  - libboost_system1_86_0-x86-64-v3 
   - libboost_test-devel 
-  - libboost_test1_85_0 
-  - libboost_test1_85_0-32bit 
-  - libboost_test1_85_0-devel 
-  - libboost_test1_85_0-x86-64-v3 
+  - libboost_test1_86_0 
+  - libboost_test1_86_0-32bit 
+  - libboost_test1_86_0-devel 
+  - libboost_test1_86_0-x86-64-v3 
   - libboost_thread-devel 
-  - libboost_thread1_85_0-32bit 
-  - libboost_thread1_85_0-devel 
+  - libboost_thread1_86_0-32bit 
+  - libboost_thread1_86_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_85_0 
-  - libboost_timer1_85_0-devel 
+  - libboost_timer1_86_0 
+  - libboost_timer1_86_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_85_0 
-  - libboost_type_erasure1_85_0-32bit 
-  - libboost_type_erasure1_85_0-devel 
-  - libboost_type_erasure1_85_0-x86-64-v3 
-  - libboost_url1_85_0 
-  - libboost_url1_85_0-32bit 
-  - libboost_url1_85_0-devel 
-  - libboost_url1_85_0-x86-64-v3 
+  - libboost_type_erasure1_86_0 
+  - libboost_type_erasure1_86_0-32bit 
+  - libboost_type_erasure1_86_0-devel 
+  - libboost_type_erasure1_86_0-x86-64-v3 
+  - libboost_url1_86_0 
+  - libboost_url1_86_0-32bit 
+  - libboost_url1_86_0-devel 
+  - libboost_url1_86_0-x86-64-v3 
   - libboost_wave-devel 
-  - libboost_wave1_85_0 
-  - libboost_wave1_85_0-32bit 
-  - libboost_wave1_85_0-devel 
-  - libboost_wave1_85_0-x86-64-v3 
+  - libboost_wave1_86_0 
+  - libboost_wave1_86_0-32bit 
+  - libboost_wave1_86_0-devel 
+  - libboost_wave1_86_0-x86-64-v3 
   - libboringssl1 
   - libbotan-3-5 
   - libbotan-devel 
@@ -12463,7 +12468,6 @@ unsorted:
   - libclzma-suse1-x86-64-v3 
   - libcm1 
   - libcmh0 
-  - libcmis-0_6-6 
   - libcmis-c-0_6-6 
   - libcmis-c-devel 
   - libcmis-devel 
@@ -14202,7 +14206,7 @@ unsorted:
   - liblalinspiral18 
   - liblalmetaio11 
   - liblalpulsar29 
-  - liblalsimulation32 
+  - liblalsimulation37 
   - liblalsupport14 
   - liblammps0 
   - liblangtag-devel 
@@ -23750,7 +23754,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_85_0 
+  - python3-boost_parallel_mpi1_86_0 
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
@@ -24235,7 +24239,6 @@ unsorted:
   - python310-Tempita 
   - python310-TermRecord 
   - python310-Transplant 
-  - python310-Trolly 
   - python310-Trololio 
   - python310-Twisted 
   - python310-Twisted-all_non_platform 
@@ -25270,6 +25273,7 @@ unsorted:
   - python310-dsinternals 
   - python310-dtaidistance 
   - python310-dtfabric 
+  - python310-duckduckgo-search 
   - python310-duckduckgo2 
   - python310-duet 
   - python310-dukpy 
@@ -27890,7 +27894,6 @@ unsorted:
   - python311-Tempita 
   - python311-TermRecord 
   - python311-Transplant 
-  - python311-Trolly 
   - python311-Trololio 
   - python311-Twisted-all_non_platform 
   - python311-Twisted-conch 
@@ -28898,6 +28901,7 @@ unsorted:
   - python311-dsinternals 
   - python311-dtaidistance 
   - python311-dtfabric 
+  - python311-duckduckgo-search 
   - python311-duckduckgo2 
   - python311-duet 
   - python311-dukpy 
@@ -31446,7 +31450,6 @@ unsorted:
   - python312-Tempita 
   - python312-TermRecord 
   - python312-Transplant 
-  - python312-Trolly 
   - python312-Trololio 
   - python312-Twisted 
   - python312-Twisted-all_non_platform 
@@ -32480,6 +32483,7 @@ unsorted:
   - python312-dsinternals 
   - python312-dtaidistance 
   - python312-dtfabric 
+  - python312-duckduckgo-search 
   - python312-duckduckgo2 
   - python312-duet 
   - python312-dukpy 
