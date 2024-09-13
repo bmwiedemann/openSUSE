@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 15:15:22 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not include source files in the package for RHEL 9
+
+-------------------------------------------------------------------
 Mon Aug 26 11:18:03 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require Go 1.20 when building for RedHat derivatives

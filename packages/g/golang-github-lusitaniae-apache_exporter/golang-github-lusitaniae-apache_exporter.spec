@@ -18,7 +18,7 @@
 
 
 %if 0%{?rhel}
-%if 0%{?rhel} >= 8
+%if 0%{?rhel} == 8
 # Found compressed .debug_abbrev section, not attempting dwz compression
 # DWARF version 0 unhandled
 %global debug_package %{nil}
