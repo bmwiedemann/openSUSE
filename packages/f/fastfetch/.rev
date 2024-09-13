@@ -775,4 +775,30 @@ Bugfixes:
     * Fix hang in WSL when custom format is used (Disk, Linux)</comment>
     <requestid>1198549</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>73a66cff03507b1953e012a154996879</srcmd5>
+    <version>2.24.0</version>
+    <time>1726230820</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.24.0
+  Changes:
+    * Support of --lib-XXX is removed
+     - If fastfetch fails to load some .so .dylib libraries,
+       LD_LIBRARY_PATH should be used.
+  Features:
+    * Detect more ARM microarchitectures and SOC names (CPU, Linux)
+    * Support board name detection for Asahi Linux (Board, Linux)
+    * Add new option --command-param to customize the parameters when running shell
+    * Support syntax of sub string in --&lt;module&gt;-format: {variable~startIndex,endIndex}
+     - See fastfetch -h format for detail
+  Bugfixes:
+    * Fix tests building when system yyjson is used
+    * Fix dinit detection; support dinit version detection (InitSystem, Linux)
+    * Fix signal quality, refresh rate and maybe others in custom format
+    * Fix boot time calculation (Uptime, Linux)
+    * Fix custom format for boolean values
+     - `{?false-value}This should not print{?}{?true-value}This should print{?}`
+       will print `This should print`</comment>
+    <requestid>1200672</requestid>
+  </revision>
 </revisionlist>
