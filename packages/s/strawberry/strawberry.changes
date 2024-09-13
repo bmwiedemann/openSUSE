@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 12 20:09:26 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.1.2
+
+  + Bugfixes:
+   + Fixed Tidal Open API cover provider to only login when needed instead of on startup.
+   + Fixed KDE added keyboard accelerator characters (ampersands) appearing in sidebar (#1400, #1389, #1476).
+   + Fixed KDE added keyboard accelerator characters (ampersands) appearing when editing playlist name (#1499).
+   + Fixed collection "Search for this" adding prefix without value (#1510).
+   + Fixed play (-p) command line option not working on startup (#1465).
+   + Fixed scan transaction being started when "Update the collection when Strawberry starts" option is unchecked (#1469)
+   + Fixed Spotify bitrate being limited 128kbit/s.
+   + Fixed Spotify returning too many artists and albums.
+   + Fixed manually switching Spotify songs blocking UI.
+   + Fixed analyzer not being set.
+   + Fixed context top text being updated causing selected text to be unselected.
+   + Fixed filter search to use filename for songs with empty title.
+   + Fixed missing developer in Appstream appdata file.
+   + Fixed MPRIS2 DesktopEntry to return desktop file entry without ".desktop" (#1516)
+   + Fixed WavPack .wvc accepted as valid audio files (#1525).
+   + Fixed dynamic playlist controls not following system colors (#1483).
+   + Fixed freeze on playlist right click (#1478).
+   + Fixed copying songs to a iPod device keeping too many files open (#1527).
+   + Fixed MBIDs from MP4 being parsed incorrectly causing ListenBrainz errors (#1531).
+   + Fixed playlist sorting after filename (#1538).
+
+  + Enhancements:
+   + Improved volume adjustment and track seeking using touchpad (#1498).
+   + Use own thread for lyrics parsing.
+   + Added url and filename columns to collection and playlist filter search. 
+
+-------------------------------------------------------------------
 Mon Jul 22 23:09:50 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.1.1
