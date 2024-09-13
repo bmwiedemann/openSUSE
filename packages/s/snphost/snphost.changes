@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 13 03:25:36 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
+
+- Update to version 0.5.0:
+  * Update to 0.5.0
+  * workflows: Update rust toolchain version to 1.80
+  * Update clippy workflow toolchain to use 1.74
+  * Update Rust version to 1.7.4
+  * Upgrade sev to 4.0.0
+  * Remove strict semvar for clap dependency
+  * Adding cert fetch support for Turin
+  * Update to 0.4.0
+  * Update sev to 3.2.0
+  * build(deps): bump anyhow from 1.0.82 to 1.0.83 (#51)
+  * fix: remove subcommand trait on ok/commit (#53)
+  * build(deps): bump libc from 0.2.153 to 0.2.154
+  * clap-migration: Moving from StructOpt to Clap (#48)
+  * build(deps): bump anyhow from 1.0.81 to 1.0.82 (#47)
+  * build(deps): bump anyhow from 1.0.80 to 1.0.81
+  * Fixing release to 0.3.0, not ready for 1.0.0
+  * Bumping rust minimum version to 1.70
+  * modifying docs
+  * Added DER and VLEK support
+  * Changing commands for new 6.6 kernel IOCTL structure
+  * Adding tests to snphostok (#39)
+  * Modify workflow to match SEV and use rust 1.70 (#41)
+  * Fetch: Adding Bergamo and Siena Support (#31)
+  * Adding DCO and auto-assign
+  * In vcek url use reported_tcb_version (#29)
+  * Add lockfile
+  * build(deps): update env_logger requirement from 0.9.0 to 0.10.1
+
+-------------------------------------------------------------------
 Mon Jan 22 16:04:54 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
 
 - Update to version 0.2.0~0:

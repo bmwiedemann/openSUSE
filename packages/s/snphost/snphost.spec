@@ -18,7 +18,7 @@
 
 
 Name:           snphost
-Version:        0.2.0~0
+Version:        0.5.0
 Release:        0
 Summary:        A Rust command-line tool for interacting with the AMD Secure Processor
 License:        Apache-2.0
@@ -26,7 +26,6 @@ Group:          Productivity/Security
 URL:            https://github.com/virtee/snphost
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  openssl-devel
 BuildRequires:  rubygem(asciidoctor)
@@ -39,7 +38,6 @@ snphost is a command line utility for interacting with the AMD Secure Encrypted 
 # The number passed to -a (a stands for "after") should be equivalent to the Source tag number
 # of the vendor tarball, 1 in this case (from Source1).
 %autosetup -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

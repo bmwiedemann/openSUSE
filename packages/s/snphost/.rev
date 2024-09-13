@@ -25,4 +25,12 @@
 - spec: Use rubygem() macro to resolve asciidoctor versions</comment>
     <requestid>1141067</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa56f3228b13be3c3be6f46a25c00c13</srcmd5>
+    <version>0.5.0</version>
+    <time>1726230845</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200734</requestid>
+  </revision>
 </revisionlist>
