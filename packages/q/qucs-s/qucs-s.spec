@@ -1,7 +1,7 @@
 #
 # spec file for package qucs-s
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qucs-s
-Version:        1.0.2
+Version:        24.2.1
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
@@ -25,8 +25,12 @@ Group:          Productivity/Scientific/Electronics
 URL:            https://ra3xdh.github.io/
 Source:         https://github.com/ra3xdh/qucs_s/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        qucs-s.rpmlintrc
+BuildRequires:  bison
 BuildRequires:  cmake
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  flex
+BuildRequires:  gperf
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5PrintSupport)
@@ -53,6 +57,8 @@ Qucs-S is a spin-off of the Qucs cross-platform circuit simulator. "S" letter in
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/
 %{_datadir}/applications/%{name}.desktop
-%doc %{_datadir}/man/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/qucsator_rf.1.gz
+%{_mandir}/man1/qucsconv_rf.1.gz
 
 %changelog

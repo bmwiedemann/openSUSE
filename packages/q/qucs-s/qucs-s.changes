@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Wed Aug 21 19:28:56 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 24.2.1:
+  General improvements
+  + Fixed zero output on DC bias simulation (F8) #667
+  + Fixed build failure of the Fedora RPM because of RPATH in
+    qucsator_rf
+
+-------------------------------------------------------------------
+Sun Jul  7 11:09:05 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 24.2.0:
+  New features
+  * QucsatorRF is now a part of the package; No need to compile and
+    install qucsator manually #370
+  * Qucs-RFLayout tool could be launched from Tools menu #465; this
+    tool must be installed separately: https://github.com/thomaslepoix/Qucs-RFlayout
+  * Redesign of the Qucsconv GUI #647
+  * Improved matching tool backported from Qucs-0.0.20 #401
+  * Added RF devices group; backported different RF devices for
+    Qucsator #607
+  General imporvements and fixes
+  * Fixed parameter sweep step issues #186 @ivandi69
+  * Fixed SPICE devices bounding box #590 #637
+  * Fixed netlist export from CLI #639
+  * Fixed parameter sweep simulation with Xyce #624
+  * Revert explicit WITH_QT6 compile flag because of cmake bug #592
+  * Fixed tuner issues for German locale #416
+  * Refactoring in schematic editor #626 #618 @wawuwo
+  Localization
+  * Russian translation update
+- Update to 24.1.0:
+  Important notes
+  * Versioning switched to CalVer. The first digit means year, the
+    second digit means the release number, the third digit means
+    patch number #328
+  * Qucs-S is now on Telegram. Join https://t.me/qucs_s to ask
+    questions and get news
+  New features
+  * Added 3-pin RCD devices #349 to improve support of
+    microelectronics PDKs
+  * Improvements of Ngspice support; allowed multiple simulation of
+    the same type #463 by @ivandi69
+  * Automatic extraction of THD from FOURIER simulation #525 @ivandi69
+  * Nutmeg equations improvements; implemented simulation selection
+    from drop-down list #463 #519
+  * Improvements of Nutmeg script simulation type; implemented custom
+    prefixes for plots #476 #435 @ivandi69
+  * Export DC OP simulation data to dataset #463 #140 @ivandi69
+  * Implemented zoom by selection on the rectangular plots #305
+  * Implemeted potentiometer device #122
+  * Switched digital simulation from FreeHDL to GHDL #395 @iwbnwif
+  * Status bar improvements #493
+  RF simulation features
+  * Added RCLG device support for SPICE #564
+  * Added YLIN device support for XYCE #451
+  * Fixed touchstone simulation issues for Ngspice #392
+  * Added BiasT device support for SPICE #374
+  * Added option to disable transient model for RF port #410
+  Libraries
+  * Fixed different issues related to creating libraries #432
+  * Added audio IC library
+  * Added loudspeaker library #421
+  * Added comparators library #436
+  * Modified voltage regulators library #433
+  * Added voltage references library #439
+  * Added thermistor library #538
+  * Fixed ideal library #258 #428
+  * Fixed transformers library #362
+  * Added new devices in SpiceOpamp library #501
+  General improvements
+  * Fixed different tuner issues
+  * Schematic zooming improvements #502
+  * Different improvements on schematic look and control
+  * Added schematic pan mode with the middle mouse button #488
+  * Many HiDPI support improvements including grid rendering
+  * Fixed schematic glitches using Wayland #227
+  * Added text document zoom and font setting #534
+  Documentation
+  * Added new examples
+  * Added Ngspice templates #441
+  * The readthdocs documentantion is a candidate for deprecation #554
+  Localization
+  * Added Chinese translation #453 by @hvwyl
+- Update to 2.1.0:
+  New features
+  * Added tuner simulation mode #123 (used implementation by
+    @tipofthesowrd)
+  * Added support for touchstone s2p file devices for Ngspice #233
+    (implementation by @transmitterdan)
+  * Redesign of the simulation window #309
+  * Diagrams are placed on schematic and *.dpl files are
+    disabled by default #309
+  * Backport of the active Legendre filter synthesis from
+    Qucs-0.0.20rc2 #318
+  * Added SPICE entry for MUT and MUT2 devices
+  * Backported circular waveguide and tapered line symbols
+    from Qucs-0.0.20rc2
+  * Added zoom to selection mode #327
+  * Toolbar icons replaced by SVG; improved look for HiDPI
+    #323 #304
+  * Implemented automatic generation of high resolution device
+    icons #334 #304
+  General improvements
+  * Added Tstart option for Spectrum simulaiton #336
+  * Added low voltage for VRect source #310
+  * Russian translation update #292 #324
+  * Added SPICE group for project tree
+  Bugfixes
+  * Fixed simulation of the files with double extension #311
+  * Fixed simulation of the files containing unicode symbols #312
+  * Fixed display of the Xanalogue.lib library #308
+  * Fixed show checker errors for Xyce
+  * Fixed load symbol for Verilog-A device #321
+  * Fixed component rotation with right mouse button
+  Library
+  * Added thyristor library #212
+  * Added optocoupler library #213
+  * Added photovoltaic relays library #222
+  Documentation
+  * Added subcircuit symbol templates to share/qucs_s/examples/symbols
+    (by @tomhajjar)
+  * Added sections on tuner mode and RF simulation to the Qucs-S
+    tutorial
+- Update to 2.0.0:
+  Important notes
+  * The simulator switching system was redesigned since this
+    release. It allows now to switch simulation kernel without
+    restart of the application. But it is required to reconfigure
+    simulator paths even if it was configured for the previous
+    installation. A Simulator settings dialog window will appear
+    on the first application start after the update. Please
+    check the simulator settings and correct if necessary to
+    continue work.
+  New features
+  * Implemented quick switch of the simulator without
+    application restart #274 (thanks @zergud)
+  Component library
+  * Fixed issues in Transformers library #228 and #231
+  General improvements
+  * Finished Qt6 porting #190
+  * Show warning if the directory protected by Windows UAC #282
+  * Fixed PDF print on Windows #285
+  * Added option to export grayscale image #288
+  * Fixed setting initial conditions in wire labels #291
+  * Fixed missing ground warning
+- Update to 1.1.0:
+  New features
+  * Qucs-S supports digital simulation mode using IcarusVerilog
+    or FreeHDL backends #97
+  * Added analog model for digital source #265
+  * Qucs-S runs DC bias simulation mode if schematic contains DC
+    simulation only #271
+  * Selection rectangle update #276
+  Deprecated features
+  * XSPICE CodeModel synthesizer has been deprecated since v1.1.0.
+    The precompiled CM libraries are still supported using
+    spiceinit virtual device. See #204
+  Known issues of digital simulation
+  * Digital buses are not supported;
+  * Digital simulation represents its state as of Qucs-0.0.20-RC1;
+    No new features added
+
+-------------------------------------------------------------------
 Sun May 14 09:40:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
