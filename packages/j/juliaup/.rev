@@ -460,4 +460,45 @@
 </comment>
     <requestid>1147527</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ea0841e61c31f172c98f328a76755ea</srcmd5>
+    <version>1.17.4</version>
+    <time>1726230843</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.17.4:
+  - Try a different PublisherDisplayName for store publication
+  - Only check existing file permissions
+  - Check file permissions before installing
+  - Be more careful about existing installs
+  - Fix package identity
+  - Fix a bug
+  - Package portable windows on win runner
+  - Fix signing of windows portables
+  - Sign more things
+  - Update branding
+  - Update deps
+  - Error handling for `juliaup self update` (non-Windows)
+  - add tests
+  - add docs
+  - support pr channels
+  - use strongly typed Shell type for completions subcommand argument
+  - Update version db
+  - Update deps
+  - Experiment with win package identity
+  - Fix typo in README.md
+  - Update deps
+  - Update versiondb to include FreeBSD
+  - Include FreeBSD when generating versiondb
+  - Only modify shell scripts if that is selected
+  - Delete old win shell script
+  - Revert &quot;adds some information on which channel is updating.&quot;
+  - Fix a mistake
+- Update to version 1.14.8
+  * Dependencies update
+- Update to version 1.14.7
+  * CHANGES ARE WINDOWS SPECIFIC
+- Update vendored dependencies
+</comment>
+    <requestid>1200728</requestid>
+  </revision>
 </revisionlist>
