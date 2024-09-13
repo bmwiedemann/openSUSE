@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1198080</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cbe67924a291f22b2378710a89cd143b</srcmd5>
+    <version>4.2.0</version>
+    <time>1726230854</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires on typing_extensions for Python 3.10.
+- Correct fdupes macro call.
+- Add an empty %check section to silence rpmlint.</comment>
+    <requestid>1200738</requestid>
+  </revision>
 </revisionlist>

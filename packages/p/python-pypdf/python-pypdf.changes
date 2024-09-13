@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 13 05:35:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on typing_extensions for Python 3.10.
+- Correct fdupes macro call.
+- Add an empty %check section to silence rpmlint.
+
+-------------------------------------------------------------------
 Fri Aug 30 19:52:14 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
 - Add %{?sle15_python_module_pythons} macro. 

@@ -28,9 +28,12 @@ BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildArch:      noarch
+%if 0%{python_version_nodots} < 311
+Requires:       python-typing_extensions
+%endif
 Provides:       python3-PyPDF2 = %version-%release
 Obsoletes:      python3-PyPDF2 < %version-%release
+BuildArch:      noarch
 
 %python_subpackages
 
@@ -57,14 +60,16 @@ It is therefore a useful tool for websites that manage or manipulate PDFs.
 
 %install
 %pyproject_install
-%fdupes %{buildroot}%{python_sitelib}/pypdf
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # no checks possible as large pdf downloaded from the internet are necessary
+%check
+exit 0
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md
 %{python_sitelib}/pypdf
-%{python_sitelib}/pypdf-%{version}*-info
+%{python_sitelib}/pypdf-%{version}.dist-info
 
 %changelog
