@@ -21,11 +21,11 @@
 # Py2 support dropped upstream
 %define skip_python2 1
 
-%define shlib liblalsimulation32
+%define shlib liblalsimulation37
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        5.4.0
+Version:        6.0.0
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
@@ -111,7 +111,8 @@ export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
-export CFLAGS="%{optflags} -Wno-error=enum-int-mismatch"
+# strict-prototypes: https://github.com/numpy/numpy/pull/26771 (remove for numpy >= 2.0.1)
+export CFLAGS="%{optflags} -Wno-error=enum-int-mismatch -Wno-error=strict-prototypes"
 export CXXFLAGS=$CFLAGS
 %configure \
   %{?with_octave:--enable-swig-octave} \

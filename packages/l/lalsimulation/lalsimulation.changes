@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 11 17:26:10 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.0:
+  * No release notes.
+- Pass -Wno-error=strict-prototypes to avoid triggering a numpy
+  2.0.0 issue (gh#numpy/numpy#26771).
+- Update shared lib name in keeping with upstream shared object
+  versioning update from 32 -> 37.
+
+-------------------------------------------------------------------
 Sat Jul 20 03:01:48 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.4.0:
