@@ -4420,6 +4420,10 @@ unsorted:
   - fmt-10-devel 
   - fmt-9-devel 
   - fmt-devel 
+  - fnm 
+  - fnm-bash-completion 
+  - fnm-fish-completion 
+  - fnm-zsh-completion 
   - fnotifystat 
   - fnotifystat-bash-completion 
   - fnott 
@@ -37139,6 +37143,7 @@ unsorted:
   - spice-up 
   - spice-up-lang 
   - spice-webdavd 
+  - spicetify-cli 
   - spiel 
   - spiel-devel 
   - spindle 
