@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Sep 13 02:48:37 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
+
+- Update to version 0.7.1:
+  * Fixing clippy version bug
+  * Fixing case sensitivity bug
+  * Reflect 0.7.0 update in Cargo.lock
+  * Update to 0.7.0
+  * README: Clarify fetch ca documentation
+  * Upgrade MSRV to 1.80
+  * Upgrade MSRV to 1.74
+  * Remove strict versioning on clap dependency
+  * Update the README.md: fix the uncomplete description of the fetch ca command.
+  * Added build dependencies for openSUSE (#64)
+
+-------------------------------------------------------------------
+Mon Aug 12 20:54:48 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
+
+- Service: Remove deprecated cargo_config and cargo_audit services, both
+    are now handled by the cargo_vendor service
+- Spec: Remove pre-release tag from version string
+- Fix build failure after update to Rust 1.80 (bsc#1228972)
+- Update to version 0.6.0:
+  * bumping version
+  * Adding preattestation functionality to snpguest (#63)
+  * rust: Patching for latest rust update
+  * Update to 0.5.1
+  * Update to 0.5.0
+  * fix: remove subcommand trait on ok command
+  * clap-migration: Moving from StructOpt to Clap
+  * Fix the context message for failing to open SEV firmware.
+  * Adding SNPHOST workflows to SNPGUEST
+  * Additional Features
+  * Adding snpguest ok
+  * vlek: Missing some logic during verify for vlek.
+  * Bump mio from 0.8.10 to 0.8.11
+  * URL: Fixing URL breakage
+  * Fix typo in verify_attestation() function
+  * Bumping required Rust version to 1.70
+  * VLEK: Adding ASVK Support
+  * hyperv: Missing closure for boolean state.
+  * Fetch: Adding status check to HTTP response
+  * VLEK: Adding VLEK support to tooling
+  * fetch: Adding Siena and Bergamo support
+  * Adding DCO and auto-assign
+  * Update README.md
+  * Dependencies: Updating Cargo.toml
+  * Update Readme
+  * CI test1- Create rust.yml
+  * cert: Fixing minor bug with certificates
+  * Updating README.md
+  * Adding Extended and Regular Attestation Flowcharts
+  * Fixing report request serialization
+  * hyperv: Adding feature flag for hyperv
+  * VCEK: Patching for x509 error
+  * 9: Adding Cargo.lock for dependency tracking
+  * 9: Adding Rust Minimum Version
+  * Auto Assign: Adding yml files
+
+-------------------------------------------------------------------
 Mon Jan 22 15:29:35 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
 
 - Update to version 0.3.2~0:
