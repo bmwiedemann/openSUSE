@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:39:24 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix exe path in mozilla manifest (bsc#1230388)
+  * add main-getPath-exe.patch
+- Remove bogus libdesktop_napi.so provide
+
+-------------------------------------------------------------------
 Thu Sep  5 20:08:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.8.2

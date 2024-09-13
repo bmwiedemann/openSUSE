@@ -20,6 +20,7 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
+
 Name:       bitwarden
 Version:    2024.8.2
 Release:    0
@@ -59,6 +60,7 @@ Patch4:    desktop_native-rust-arch.patch
 Patch5:    remove-argon2-browser.patch
 Patch7:    bug-reporting-url.patch
 Patch8:    no-sourcemaps.patch
+Patch9:    main-getPath-exe.patch
 
 
 #patches to use system libs
@@ -115,7 +117,7 @@ Requires: (google-opensans-fonts or open-sans-fonts)
 Requires: nodejs-electron%{_isa}
 
 %global __requires_exclude ^npm(.*)|^nodejs(.*)
-%global __provides_exclude ^npm(.*)|^nodejs(.*)
+%global __provides_exclude ^npm(.*)|^nodejs(.*)|^lib.*\\.so.*$
 
 
 
