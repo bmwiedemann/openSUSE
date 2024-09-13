@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:35:21 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.17.8
+ * Update Unihan_Variants.txt and regenerate engine/chinese_variants.py
+   for Unicode 16.0.0 release
+ * Update translations for Greek
+
+-------------------------------------------------------------------
 Sun Aug 25 20:48:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.17.7

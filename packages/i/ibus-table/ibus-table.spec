@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table
-Version:        1.17.7
+Version:        1.17.8
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later

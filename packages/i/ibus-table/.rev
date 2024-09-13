@@ -456,4 +456,15 @@ feat: use _service files to automate fetching sources</comment>
  * French and Russian weblate translations</comment>
     <requestid>1195954</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>719950123fe1dff4a4934d70c7f58f79</srcmd5>
+    <version>1.17.8</version>
+    <time>1726230819</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.17.8
+ * Update Unihan_Variants.txt and regenerate engine/chinese_variants.py
+   for Unicode 16.0.0 release
+ * Update translations for Greek</comment>
+    <requestid>1200671</requestid>
+  </revision>
 </revisionlist>
