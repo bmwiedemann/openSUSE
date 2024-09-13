@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Sun Sep  8 15:51:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.5:
+  * Fix specification for constraint items and annotations in
+    FlatZinc JSON.
+  * Fix flattening of negated let expressions with constraints.
+  * Fix crash when equating identifiers to tuples/records in if-
+    then-else expressions.
+  * Fix string_length function to return the number of Unicode
+    code points rather than the number of bytes (i.e., to
+    interpret the string as UTF-8).
+  * Emit type error for opt tuples and records created through
+    type aliases.
+  * Fix evaluation of par partial functions returning arrays.
+  * Fix type inference for if-then-else expressions with
+    different tuple or record types in the branches.
+  * Fix evaluation error caused by removal of fixed FlatZinc
+    variables without fixing them in the output model.
+  * Fix computed type when flattening cv comprehensions
+    containing tuple or record types.
+  * Fix unsatisfiability caused by reification in negated boolean
+    context (:bugref:`813`).
+  * Fix bug in computation of common type of incompatible record
+    types.
+  * Fix crash when type checking nested arrays of tuples or
+    records.
+  * Fix incorrect unification of flattened tuple/record fields
+    with paths enabled.
+  * Add string_split function that splits a string into an array
+    of strings based on a separator.
+  * Add json_section annotation to mark an output item as a JSON
+    section (:bugref:`816`).
+  * Add -w and --disable-warnings flags that will suppress all
+    warnings emitted by the flattening process.
+  * Add option for solver libraries to set
+    mzn_opt_annotate_computed_domains such that the compiler will
+    signal domains that are enforced by separate constraints
+    using a computed_domain annotation.
+  * Always output multidimensional arrays as nested arrays when
+    using showJSON for consistency.
+  * Add missing implementation for default for sets expressions.
+  * Add missing optional versions of unary mathematical
+    functions/operators.
+  * Improve special-case handling of boolean <-> and xor
+    operators.
+  * Fix bundled OpenSSL libraries on Windows.
+  * Allow MOOC submission window to be scrolled.
+  * Increase hard process termination timeout to 1s.
+  * Fix crash when using records inside solution checker modules.
+  * Fix pretty printing of record literals and types with unicode
+    field names.
+  * Fix creation of par versions functions containing var
+    binary/unary operators (:bugref:`792`).
+  * Fix potential crash when printing of output model involving
+    records.
+  * Fix computation of supertype of tuples/records involving <>
+    fields.
+  * Fix a bug where the compiler would incorrectly set variable
+    domains as computed when processing linear constraints.
+  * Fix invalid JSON produced by MIP interfaces due to infinite
+    values for statistics.
+  * Fix possible crash during type specialisation involving array
+    [_] of $$T types.
+  * Fix output of structured types containing arrays of enums
+    (:bugref:`793`).
+  * Fix justified formatting to work with arrays of enums.
+  * Fix incorrect unification of arrays of reverse mapped
+    variables with paths enabled.
+  * Fix problem where incorrect type errors would occur when
+    merging records or tuples types in an array declaration.
+  * Fix bug where unused reverse-mapped variables were removed
+    from the output model while still being marked as output in
+    the FlatZinc.
+  * Fix decomposition of set variables with empty domains when
+    using nosets.mzn.
+  * Fix a problem where the reduced range syntax in combination
+    with enums would produce an error when the resulting range
+    was empty.
+  * Fix incorrect unification of tuple/record fields in array
+    accesses with paths enabled (:bugref:`802`).
+  * Fix crash when using tuples/records in par arrays or calls
+    containing var expressions.
+  * Fix bug where variables could be removed from the FlatZinc
+    but not the output model when optimising bool2int
+    (:bugref:`803`).
+  * Add missing coercions for comprehension where clauses and
+    assignment generators (:bugref:`807`).
+  * Fix bug in handling of domains for structured types during
+    type specialisation.
+  * Fix handling of search annotations when reading FlatZinc
+    files.
+  * Fix bug during optimisation which could cause the compiler to
+    hang due to not updating hashes of identifiers
+    (:bugref:`805`).
+  * Fix incorrect definition of all_different in the
+    gecode_presolver library where it was not enforced that fixed
+    values be all different (:bugref:`798`).
+  * Fix crash when resolving type aliases for function parameters
+    with $T array dimensions (:bugref:`806`).
+  * Fix default operator for par opt set parameters
+    (:bugref:`809`).
+  * Fix output of par opt set enumerated types.
+  * Fix pretty printing of records when using the document
+    printer.
+  * Fix internal error when binding numeric literals to
+    declarations with existing right-hand sides.
+  * Fix contexts of arguments of double-negated integer
+    comparisons (:bugref:`810`).
+  * Fix context of indices in array access expressions
+    (:bugref:`719`).
+  * Fix problem where specialised flattening for some forms of
+    binary operators would not correctly forward the partiality
+    of its arguments (:bugref:`766`).
+  * Remove internal duplicate functionality that could sometimes
+    cause problems when assigning variables in constraints
+    (:bugref:`769`).
+  * Do not try to check right hand side of parameter variable
+    declarations that are par because of singular domains
+    (:bugref:`771`).
+  * Fix a problem in the parser where anonymous enumerated types
+    could not be used in DZN files (:bugref:`776`).
+  * Fix identifier lookup bug in internal Chuffed interface
+    (:bugref:`782`).
+  * Fix some minor inconsistencies in the FlatZinc JSON schema
+    and generation.
+  * Fix crash involving var comprehensions with set types by
+    rejecting unsupported type (:bugref:`779`).
+  * Fix internal error during evaluation of par opt set
+    expressions.
+  * Fix invalid FlatZinc produced when search annotations are
+    passed non-1-based arrays (:bugref:`768`).
+  * Fix bug in evaluation of annotations causing invalid FlatZinc
+    to be produced (:bugref:`768`, :bugref:`788`).
+  * Fix substitution of fixed objective variable value into solve
+    item (:bugref:`773`).
+  * Fix check for presence of set2iter redefinition
+    (:bugref:`778`).
+  * Fix incorrect removal of constraint due to use of
+    redefinition of bool_clause_reif when constraint is not
+    reified (:bugref:`785`).
+  * Remove documentation of strictly_increasing (and decreasing)
+    for bool types, and change definition from a solver redefined
+    global, to a simple library definition with user warning
+    (:bugref:`784`).
+  * Add version of strictly_increasing (and decreasing) for
+    float, opt float, and set of int types.
+  * Automatically detect SCIP 8.1.0 and potential future versions
+    on Windows.
+  * Fix crash when using type aliases with -O2 (:bugref:`783`).
+  * Automatically detect Gurobi 11.0 and potential future
+    versions.
+  * Allow array literals with all <> members (:bugref:`747`).
+  * Increase maximum number of threads from default Qt limit
+    (:idebugref:`196`).
+
+-------------------------------------------------------------------
 Sat Dec 30 05:08:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.8.2:
