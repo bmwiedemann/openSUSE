@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:05:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 24.3.3 - changes since 24.1.5 (related: jira#PED-10348)
+  * Added VVC decode API
+  * Enhanced DPB management for AV1 decoding
+  * Supported dynamic resolution change for HEVC/AVC/AV1 decoding in
+    VPL memory 2.0
+  * Restored AV1 filmgrain decoding
+  * Enabled API trace for remaining API methods (Reset, GetVideoParam,
+    GetEncodeStat)
+  * Fixed bitstream corruption when adding HDR header for AV1 encoding
+    with ffmpeg
+  * Refined reference frame structure for video conference to improve
+    quality
+  * Enabled buffer caching's control for GPU accelerated copying when
+    CM copy is used
+  * bugfixes
+
+-------------------------------------------------------------------
 Sat Jun 29 20:55:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 24.1.5

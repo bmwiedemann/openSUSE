@@ -19,7 +19,7 @@
 %global sover 1_2
 Name:           libmfx-gen
 %define lname   libmfx-gen%{sover}
-Version:        24.1.5
+Version:        24.3.3
 Release:        0
 Summary:        Intel oneVPL GPU Runtime
 License:        MIT
