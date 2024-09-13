@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Sep 13 06:52:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.168.0:
+  * chore: enhance TopKeys function & adding test cases for malformed
+    lines scenario in TopKeys func by @zhaque44 in #1654
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0 by
+    @dependabot in #1655
+  * feat: add isDir template function by @simonsystem in #1657
+  * build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0 by
+    @dependabot in #1658
+  * build(deps): bump github.com/docker/docker from 27.1.0+incompatible
+    to 27.1.1+incompatible by @dependabot in #1662
+  * build(deps): update Helm version to v3.15.4 by @yxxhero in #1668
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.5 to
+    1.7.6 by @dependabot in #1666
+  * build(deps): bump k8s.io/apimachinery from 0.30.3 to 0.31.0 by
+    @dependabot in #1665
+  * fix: CI linting issues with dockerfiles by @zhaque44 in #1671
+  * chore: update dockerfile based on CI warnings by @zhaque44 in #1675
+  * fix: _*.tpl files add whitespace to empty Namespace by
+    @chrisdoherty4 in #1674
+  * Add RightCapital to USERS.md by @yinheli in #1676
+  * feat: update kustomize version by @zhaque44 in #1677
+  * build(deps): bump github.com/hashicorp/hcl/v2 from 2.21.0 to
+    2.22.0 by @dependabot in #1679
+  * feat: adding ability for for charts to be pulled with plain HTTP
+    by @ennekein in #1672
+  * feat: skip chart prep for local by @zhaque44 in #1681
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.2.1 to
+    3.3.0 by @dependabot in #1683
+  * build(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3 to
+    3.3.0 by @dependabot in #1684
+  * feat: upgrade to k8s version to a supported version for security
+    compliance by @zhaque44 in #1686
+  * feat: upgrade helm-diff plugin version to 3.9.10 by @yxxhero
+    in #1688
+  * feat: fix password registry leak of credentials by @zhaque44
+    in #1687
+  * fix verify stage for helmfile when use oci as chart by @yxxhero
+    in #1661
+  * feat: update golang minor version based on security vulnerability
+    by @zhaque44 in #1690
+  * build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0 by
+    @dependabot in #1689
+  * feat: bump chartify versions by @yxxhero in #1693
+  * optimize code by @Peoplelike in #1694
+  * chore: Update Ubuntu image to LTS version 24.04 by @pathob
+    in #1696
+  * Fixed typo in configuration section by @vedrankolka in #1698
+  * build(deps): bump github.com/helmfile/vals from 0.37.3 to 0.37.5
+    by @dependabot in #1700
+  * chore: add table driven tests for clarity by @zhaque44 in #1702
+  * fix: two releases using the same chart in different version
+    fails by @yxxhero in #1685
+
+-------------------------------------------------------------------
 Sun Aug  4 06:42:45 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.167.1:
