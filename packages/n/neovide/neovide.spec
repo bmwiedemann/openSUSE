@@ -30,6 +30,7 @@ Source1:        vendor.tar.zst
 Source2:        https://github.com/rust-skia/skia/archive/m126-0.74.2/skia-%{skia_version}.tar.gz
 Source3:        https://github.com/google/wuffs-mirror-release-c/archive/%{wuffs_commit}/wuffs-%{wuffs_commit}.tar.gz
 BuildRequires:  cargo-packaging
+BuildRequires:  cargo >= 1.80
 BuildRequires:  clang
 BuildRequires:  gcc-c++
 BuildRequires:  gn
@@ -60,14 +61,14 @@ mkdir -p skia-%{skia_version}/third_party/externals/
 mv wuffs-mirror-release-c-%{wuffs_commit} skia-%{skia_version}/third_party/externals/wuffs
 
 %build
-# Don't build neovide here, otherwise it will be rebuild during install and fail to build.
-
-%install
 export SKIA_SOURCE_DIR=${PWD}/skia-%{skia_version}
 export SKIA_USE_SYSTEM_LIBRARIES=true
 export SKIA_NINJA_COMMAND=ninja
 export SKIA_GN_COMMAND=gn
-%{cargo_install}
+%{cargo_build}
+
+%install
+install -Dm755 target/release/neovide %{buildroot}%{_bindir}/neovide
 install -Dm644 assets/neovide.desktop %{buildroot}%{_datadir}/applications/neovide.desktop
 install -Dm644 assets/neovide.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/neovide.svg
 
