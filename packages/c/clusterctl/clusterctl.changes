@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:50:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.3:
+  * Make KCP pre-terminate hook more robust
+  * Bump to Go 1.22.7
+  * Add more documentation about the KCP pre-terminate hook
+  * test/e2e: increase concurrency
+
+-------------------------------------------------------------------
+Sat Sep 14 10:44:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.2:
+  * [release-1.8] 🐛 KCP: remove etcd member in pre-terminate hook
+    (#11136)
+  * book: document how to use Lima on macOS for development
+  * 📖 Move Control Plane contracts doc to right chapter
+  * re-add /finalizers subresource RBAC
+  * test: Bump autoscaler to v1.31.0
+  * 📖 Fix CAPZ redirection links in quick-start page
+  * sorted labels and annotations in alphabatical order
+  * [release-1.8] 🌱 test: improve autoscale tests for to/from zero
+    and running autoscaler in bootstrap cluster (#11093)
+  * update cert-manager to 1.15.3
+  * Always declare try-or-die-command function in
+    kubeadm-bootstrap-script.sh
+  * Bump envtest in Makefile to v1.31.0
+  * Bump kind to v0.24.0
+  * docs: fix broken link
+  * Update clusterctl version to v1.8.x in quick start
+  * Set 1.6 EOL date
+
+-------------------------------------------------------------------
 Wed Aug 14 16:54:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:
