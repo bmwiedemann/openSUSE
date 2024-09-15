@@ -21,7 +21,7 @@
 %define kubectl_plugin_name kubectl-cert_manager
 
 Name:           cmctl
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
