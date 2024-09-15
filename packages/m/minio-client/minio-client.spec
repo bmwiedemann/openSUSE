@@ -18,16 +18,13 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define archive_name mc
-%define binary_name minio-client
-
 Name:           minio-client
-Version:        20240817T113350Z
+Version:        20240909T075310Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
 URL:            https://github.com/minio/mc
-Source:         %{archive_name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go1.22
 
@@ -39,24 +36,26 @@ Please note: In contrast to upstream this package provides the executable as
 `minio-client`.
 
 %prep
-%autosetup -p1 -a1 -n %{archive_name}-%{version}
+%autosetup -p 1 -a 1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
    -trimpath -tags kqueue \
-   -ldflags="-s -w -X github.com/minio/mc/cmd.Version=%{version} \
-	-X github.com/minio/mc/cmd.ReleaseTag=%{version}" \
-   -o bin/%{binary_name}
+   -ldflags="-X github.com/minio/mc/cmd.Version=%{version} \
+	-X github.com/minio/mc/cmd.ReleaseTag=${COMMIT_HASH}" \
+   -o bin/%{name}
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{binary_name} "%{buildroot}/%{_bindir}/%{binary_name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/%{binary_name}
+%{_bindir}/%{name}
 
 %changelog

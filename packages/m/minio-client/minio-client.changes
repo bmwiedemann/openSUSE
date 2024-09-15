@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:34:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240909T075310Z:
+  * Fix regression (#5034)
+  * scanner-status: Support both old & new scanner metrics (#4683)
+  * tier: Add hidden --force to remove tiering command (#5031)
+  * Update to print skipped entities during IAM import (#5032)
+  * Add `edit`, `enable`, and `disable` to `mc idp ldap accesskey`
+    (#5033)
+  * mirror: Print errors in --json format when --skip-errs is
+    provided (#5030)
+  * fix: docker buildx warnings
+
+-------------------------------------------------------------------
+Sat Sep 14 15:30:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240826T104958Z:
+  * upgrade pkg/v3, minio-go/v7 deps (#5027)
+  * heal: Do not show heal ETA when there is a retry attempt
+    (#5025)
+  * allow cat to take part by part numbers (#5026)
+  * Add commands for managing Bucket CORS (#5019)
+  * heal: Adapt the status based on a new Finished flag (#5017)
+  * fix:  Use TLS for STS endpoint when STS endpoint uses https
+    scheme. (#5022)
+
+-------------------------------------------------------------------
 Sat Aug 17 14:16:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240817T113350Z:
