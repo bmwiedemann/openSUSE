@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.2:
+  * Release v0.57.2
+  * Fix viper cve
+  * Add support for injecting tolerations to sonobuoy pod (#1976)
+  * Bump google.golang.org/protobuf from 1.28.1 to 1.33.0 (#1963)
+  * Bump golang.org/x/net from 0.17.0 to 0.23.0 (#1971)
+
+-------------------------------------------------------------------
 Fri Nov 17 06:06:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.57.1:
