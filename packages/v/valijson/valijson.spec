@@ -17,17 +17,17 @@
 
 
 Name:           valijson
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Header-only C++ library for JSON Schema validation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/tristanpenman/valijson
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 Valijson is a header-only JSON Schema validation library for C++11.

@@ -7,4 +7,12 @@
     <comment>new package valijson: Header-only C++ library for JSON Schema validation, with support for many popular parsers</comment>
     <requestid>1178359</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e1ce0931a116948f61b7e241c194871e</srcmd5>
+    <version>1.0.3</version>
+    <time>1726396611</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200955</requestid>
+  </revision>
 </revisionlist>

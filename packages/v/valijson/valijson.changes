@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.3:
+  * Fix bug in difference() for rapidjson
+  * Tidy up regex changes
+  * Ability to customize regular expression engine
+  * Compatibility with boost-1.85.0
+  * README.md: Fix un-escaped underscore characters and typo.
+  * updated examples/valijson_nlohmann_bundled.hpp
+  * Various fixes, reducing compiler warnings.
+  * Implemented Schema and Subschema move constructor and
+    assignment operators. Default implementations were not
+    sufficient, since raw pointers are not actually moved correctly
+    automatically, resulting in segmentation faults.
+  * Added explicit default move constructor/operator to Schema and
+    Subschema to enable move semantics for these classes
+
+-------------------------------------------------------------------
 Thu May 23 19:57:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- new package valijson: Header-only C++ library for JSON Schema validation, with support for many popular parsers
+- new package valijson: Header-only C++ library for JSON Schema
+  validation, with support for many popular parsers
