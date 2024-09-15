@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:01:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.3:
+  * show sync files only in debug level
+  * chore(watch): Add changed files path/count to log
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * bump compose-go to version v2.2.0
+  * Restore compose v1 behavior to recreate containers when ran
+    with -V
+  * fix linting issues with golangci-lint 1.60.2
+  * bump golang to version 1.22.7
+  * bump dependencies versions, engine and cli v27.2.1 containerd
+    v1.7.22 buildx v0.17.0 buildkit v0.16.0
+  * build(deps): bump golang.org/x/sys from 0.22.0 to 0.25.0
+  * Fix typos
+  * Use logrus instead of direct output to stderr.
+  * attach: close streams when done
+  * Fix typo in pull.go
+  * Allow combination of bind mounts and 'rebuild' watches
+  * service hash must exlude depends_on
+  * prefer mount API over bind
+  * docs: duplicate documentation for root cmd
+  * docs(wait): Fix wait command description
+  * allow to add empty line in the logs when nav menu activated
+  * upgrade docker versions
+
+-------------------------------------------------------------------
 Wed Sep  4 20:47:40 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
 
 - Build with go 1.22 to avoid issues when processing go.mod per

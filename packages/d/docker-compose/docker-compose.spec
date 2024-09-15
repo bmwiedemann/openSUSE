@@ -19,27 +19,38 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           docker-compose
-Version:        2.29.2
+Version:        2.29.3
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
 URL:            https://github.com/docker/compose
-Source:         compose-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) = 1.22
 Requires:       docker
 Requires:       docker-compose-switch
 
 %description
-Docker Compose is a tool for running multi-container applications on Docker defined using the Compose file format. A Compose file is used to define how the one or more containers that make up your application are configured. Once you have a Compose file, you can create and start your application with a single command: docker compose up.
+Docker Compose is a tool for running multi-container applications on Docker
+defined using the Compose file format. A Compose file is used to define how the
+one or more containers that make up your application are configured. Once you
+have a Compose file, you can create and start your application with a single
+command: docker compose up.
+
 About update and backward compatibility
 
-Docker Compose V2 is a major version bump release of Docker Compose. It has been completely rewritten from scratch in Golang (V1 was in Python). The installation instructions for Compose V2 differ from V1. V2 is not a standalone binary anymore, and installation scripts will have to be adjusted. Some commands are different.
+Docker Compose V2 is a major version bump release of Docker Compose. It has
+been completely rewritten from scratch in Golang (V1 was in Python). The
+installation instructions for Compose V2 differ from V1. V2 is not a standalone
+binary anymore, and installation scripts will have to be adjusted. Some
+commands are different.
 
-For a smooth transition from legacy docker-compose 1.xx, please consider installing compose-switch to translate docker-compose ... commands into Compose V2's docker compose .... . Also check V2's --compatibility flag.
+For a smooth transition from legacy docker-compose 1.xx, please consider
+installing compose-switch to translate docker-compose ... commands into Compose
+V2's docker compose .... . Also check V2's --compatibility flag.
 
 %prep
-%setup -q -a 1 -n compose-%{version}
+%autosetup -p 1 -a 1
 
 %build
 go build \
