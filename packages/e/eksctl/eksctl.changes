@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:06:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.190.0:
+  * Add release notes for v0.190.0
+  * Bump jinja2 from 3.1.3 to 3.1.4 in /userdocs
+  * Bump github.com/docker/docker
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Mon Aug 19 13:30:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.189.0:
