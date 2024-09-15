@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Unify format string usage
+  * Avoid double assignment
+  * Remove unnecessary escape
+  * COLS_IN_ALPHA_INDEX has been deprecated
+  * footer.html correct URL for trademark_kde_gear_black_logo.png
+  * Update version to 6.6.0
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0
