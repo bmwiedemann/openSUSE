@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:05:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.1:
+  * version 2.9.1
+  * use base-2 logs to retrieve binary prefixes
+  * add free_percent column to tests
+
+-------------------------------------------------------------------
 Tue Jun 04 04:41:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.0:
