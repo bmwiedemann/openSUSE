@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:35:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- BuildRequire go1.23 to fix builds on Leap 16.0
+
+-------------------------------------------------------------------
+Sat Sep 14 10:19:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * build(deps): bump k8s.io/apimachinery from 0.31.0 to 0.31.1
+    (#1302)
+  * build(deps): bump github/codeql-action from 3.26.6 to 3.26.7
+    (#1304)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.4 to 0.8.5
+    (#1300)
+  * Keep standalone DiscoverKeys function (#1303)
+
+-------------------------------------------------------------------
+Sat Sep 14 10:11:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * build(deps): bump google.golang.org/api from 0.196.0 to 0.197.0
+    (#1298)
+  * build(deps): bump go.opentelemetry.io/otel from 1.29.0 to
+    1.30.0 (#1297)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.29.0 to
+    1.30.0 (#1299)
+  * build(deps): bump go.step.sm/crypto from 0.51.2 to 0.52.0
+    (#1296)
+  * build(deps): bump step-security/harden-runner from 2.9.1 to
+    2.10.1 (#1295)
+  * rsa256 (#1256)
+  * build(deps): bump go.step.sm/crypto from 0.51.1 to 0.51.2
+    (#1292)
+  * Add LoongArch architecture definition (#1275)
+  * build(deps): bump google.golang.org/api from 0.195.0 to 0.196.0
+    (#1293)
+  * build(deps): bump golang.org/x/sys from 0.24.0 to 0.25.0
+    (#1294)
+  * build(deps): bump github/codeql-action from 3.26.5 to 3.26.6
+    (#1291)
+  * auth: attempt CG auth if envs are configured (#1279)
+  * build(deps): bump chainguard.dev/sdk from 0.1.23 to 0.1.24
+    (#1289)
+  * build(deps): bump google.golang.org/api from 0.194.0 to 0.195.0
+    (#1290)
+  * upgrade to golang 1.23 (#1278)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.28.0 to
+    1.29.0 (#1286)
+  * build(deps): bump github/codeql-action from 3.26.4 to 3.26.5
+    (#1288)
+  * build(deps): bump google.golang.org/api from 0.193.0 to 0.194.0
+    (#1285)
+  * codeql needs security-events: write (#1281)
+  * build(deps): bump google.golang.org/api from 0.192.0 to 0.193.0
+    (#1282)
+  * build(deps): bump github/codeql-action from 3.26.3 to 3.26.4
+    (#1283)
+  * new command: `install-keys` (#1227)
+  * build(deps): bump github/codeql-action from 3.26.2 to 3.26.3
+    (#1280)
+  * Wire up chainctl stderr to os.Stderr (#1274)
+  * Expose DiscoverKeys (#1273)
+  * build(deps): bump github/codeql-action from 3.26.1 to 3.26.2
+    (#1271)
+  * Expose type of DefaultAuthenticators (#1272)
+  * build(deps): bump github/codeql-action from 3.26.0 to 3.26.1
+    (#1266)
+  * build(deps): bump k8s.io/apimachinery from 0.30.3 to 0.31.0
+    (#1267)
+  * build(deps): bump google.golang.org/api from 0.191.0 to 0.192.0
+    (#1268)
+  * Revert "drop dependency on go.lsp.dev/uri" (#1262)
+  * drop dependency on go.lsp.dev/uri (#1259)
+  * remove custom log package, charm supports it now (#1257)
+  * drop dependency on heredoc (#1258)
+  * Bust global caches by default in index tests (#1255)
+  * build(deps): bump github.com/chainguard-dev/clog from 1.4.0 to
+    1.5.0 (#1254)
+  * build(deps): bump chainguard.dev/sdk from 0.1.22 to 0.1.23
+    (#1251)
+  * build(deps): bump golang.org/x/sys from 0.23.0 to 0.24.0
+    (#1252)
+  * build(deps): bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+    (#1250)
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.3.0 to
+    2.4.0 (#1245)
+  * build(deps): bump github.com/docker/docker from
+    26.1.4+incompatible to 26.1.5+incompatible in the go_modules
+    group (#1253)
+  * build(deps): bump google.golang.org/api from 0.190.0 to 0.191.0
+    (#1249)
+  * build(deps): bump github/codeql-action from 3.25.15 to 3.26.0
+    (#1247)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.1 to 0.20.2 (#1246)
+  * auth: Set username to "user" (#1244)
+  * build(deps): bump step-security/harden-runner from 2.9.0 to
+    2.9.1 (#1243)
+  * set basic chainguard auth (#1242)
+  * build(deps): bump golang.org/x/time from 0.5.0 to 0.6.0 (#1239)
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0 (#1240)
+  * auth: Wrap errors (#1241)
+  * build(deps): bump golang.org/x/sys from 0.22.0 to 0.23.0
+    (#1238)
+  * build(deps): bump google.golang.org/api from 0.189.0 to 0.190.0
+    (#1237)
+  * build(deps): bump google.golang.org/api from 0.188.0 to 0.189.0
+    (#1235)
+  * build(deps): bump chainguard.dev/sdk from 0.1.21 to 0.1.22
+    (#1236)
+  * allow APK auth using assumable identity (#1230)
+  * build(deps): bump golangci/golangci-lint-action from 6.0.1 to
+    6.1.0 (#1233)
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.3 to
+    4.0.4 (#1229)
+  * build(deps): bump github.com/docker/docker from
+    24.0.9+incompatible to 26.1.4+incompatible in the go_modules
+    group (#1232)
+  * Canonicalize the architecture. (#1231)
+  * use retryable http client by default (#1228)
+  * Fix replacing symlinks (#1225)
+  * Merge architectures (#1226)
+  * Migrate the configuration locking to `apko`. (#1222)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.3 to 0.8.4
+    (#1220)
+  * build(deps): bump github/codeql-action from 3.25.13 to 3.25.15
+    (#1221)
+  * Create a command similar to `build-minirootfs` for CPIO (#1177)
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.2 to
+    4.0.3 (#1217)
+
+-------------------------------------------------------------------
 Thu Jul 25 05:01:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.0:
