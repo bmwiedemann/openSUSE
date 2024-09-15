@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:50:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.4:
+  * Added handling of TERRAGRUNT_TEMP_QUOTE_NULL (#3395)
+  * Updated download test to fetch changes from main (#3386)
+  * TG-251 Test fixtures organisation  (#3380)
+
+-------------------------------------------------------------------
+Fri Sep 13 18:46:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.3:
+  * fix: Reverting changes in #3383 (#3385)
+
+-------------------------------------------------------------------
+Fri Sep 13 18:40:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.2:
+  * 3364 - Update Remote State Encryption When Configurations Are
+    Updated (#3383)
+  * Migration from master to main (#3379)
+  * build(deps-dev): bump rexml from 3.3.3 to 3.3.6 in /docs (#3359)
+  * Tests simplification (#3365)
+
+-------------------------------------------------------------------
+Fri Sep 13 18:32:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.1:
+  * Dependencies upgrade (#3374)
+
+-------------------------------------------------------------------
+Fri Sep 13 18:25:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.0:
+  * Log improvements (#3338)
+  * Locals doc: Fix/improve 'Reading from other HCL files' (#3361)
+  * feat: Adding `thelpher` and `wastedassign` lints (#3352)
+  * feat: Split out unessential jobs (#3357)
+  * feat: Adding strict lint (#3348)
+  * Engine documentation update (#3355)
+  * feat: Adding `wsl` lint (#3351)
+
+-------------------------------------------------------------------
 Tue Aug 20 16:40:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.9:
