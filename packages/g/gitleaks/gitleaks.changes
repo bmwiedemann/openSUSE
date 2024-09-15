@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:43:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.19.1:
+  * fix flag access (#1506)
+
+-------------------------------------------------------------------
+Sat Sep 14 10:38:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.19.0:
+  * Deprecate `detect` and `protect`. Add `git`, `dir`, `stdin`
+    (#1504)
+  * Update Harness rules to add _ and - in the account ID part.
+    (#1503)
+  * chore: fix gl workflow error (#1487)
+  * Make config generation utils public (#1480)
+  * Update Hashicorp Vault token pattern (#1483)
+  * feat(config): update rule validation (#1466)
+  * Update .gitleaksignore
+  * fix(detect): handle EOF with bytes (#1472)
+  * Added poetry.lock to default allowlist paths (#1474)
+  * refactor(sarif): remove |name| and change |shortDescription|
+    (#1473)
+  * Use rule id for config validation error (#1463)
+  * Use first non-empty group if `secretGroup` isn't set (#1459)
+  * chore: remove unnecessary capture groups (#1460)
+  * Return non-0 exit code  from `DetectGit` (#1461)
+  * add gradle verification-metadata.xml to global allowlist
+    (#1446)
+  * feat(openshift): add user token (#1449)
+  * (feat): Adding secret detection rule for Kubernetes secrets
+    (#1454)
+  * add version to default
+  * Add go.work and go.work.sum to global allowlist (#1353)
+  * Add harness PAT and SAT rules (#1406)
+  * Update README.md
+
+-------------------------------------------------------------------
 Fri Jun 14 18:14:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.18.4:
