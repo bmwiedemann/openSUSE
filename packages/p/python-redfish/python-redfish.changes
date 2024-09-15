@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 14 07:03:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.5
+  * Added new 'check_connectivity' option when creating the
+    client object.
+
+-------------------------------------------------------------------
 Sun Aug 18 17:21:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.4:
