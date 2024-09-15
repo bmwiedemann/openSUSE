@@ -111,4 +111,12 @@
     <comment>- Enable zstd [boo#1229961]</comment>
     <requestid>1198545</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b3cb3cce4a795f0ee0ce0be1e1b539f4</srcmd5>
+    <version>1.8.1</version>
+    <time>1726396595</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.8.1</comment>
+    <requestid>1200907</requestid>
+  </revision>
 </revisionlist>

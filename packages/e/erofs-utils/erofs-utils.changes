@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 13 20:27:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.1
+  * lib: fix heap-buffer-overflow on read
+  * fuse: fix partial decompression for libdeflate
+  * lib: fix truncated uncompressed files
+
+-------------------------------------------------------------------
 Tue Sep  3 13:54:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable zstd [boo#1229961]
