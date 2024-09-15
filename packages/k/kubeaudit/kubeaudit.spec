@@ -1,7 +1,7 @@
 #
 # spec file for package kubeaudit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubeaudit
-Version:        0.22.1
+Version:        0.22.2
 Release:        0
 Summary:        Audit your Kubernetes clusters against common security controls
 License:        MIT
