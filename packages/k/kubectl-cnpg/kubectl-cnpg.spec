@@ -21,7 +21,7 @@
 %define directory_name cloudnative-pg
 
 Name:           kubectl-cnpg
-Version:        1.23.3
+Version:        1.24.0
 Release:        0
 Summary:        Manage PostgreSQL clusters built using CloudNativePG
 License:        Apache-2.0
