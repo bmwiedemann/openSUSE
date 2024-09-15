@@ -18,7 +18,7 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception

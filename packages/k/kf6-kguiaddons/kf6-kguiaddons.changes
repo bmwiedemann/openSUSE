@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * Port towards QNativeInterface
+  * Fail at CMake configure time if xcb Qt feature is not enabled
+  * waylandclipboard: Dont explicitly clear when transfering sources
+  * [kjobwidgets] Store window in a QPointer
+  * ci: add Alpine/musl job
+  * KOverlayIconEngine: Adjust to API change in Qt 6.8 in scaled pixmap hook
+  * Generate wayland code with PRIVATE_CODE
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

@@ -369,4 +369,19 @@
   * Updated vendored packaging to 24.0</comment>
     <requestid>1158497</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b8a050198999aef20e5c4db74ef52aa1</srcmd5>
+    <version>0.44.0</version>
+    <time>1726396367</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.44.0:
+  * Canonicalized requirements in METADATA file
+  * Deprecated the bdist_wheel module, as the code was migrated
+    to setuptools itself
+
+- Update to version 0.38.3
+- Resync the upstream tarball
+- actually, _really_ test this module:</comment>
+    <requestid>1199462</requestid>
+  </revision>
 </revisionlist>

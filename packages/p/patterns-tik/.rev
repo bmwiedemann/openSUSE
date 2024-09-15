@@ -52,4 +52,12 @@
 </comment>
     <requestid>1189809</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ecd5e85d0cf717327737b287108dbec6</srcmd5>
+    <version>1.0</version>
+    <time>1726396550</time>
+    <user>anag+factory</user>
+    <comment>- Lower tik installer footprint, removing health-checker</comment>
+    <requestid>1200821</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * exportUrlsToPortal: check for dbus error
+  * KDirWatch: don't try inotify again if it has already failed
+  * Relicense some files from lgpl2-only to lgpl2.1-or-later
+  * ci: add Alpine/musl job
+  * KPluginMetaData: Avoid reading metadata from plugin loader twice
+  * kcoreaddons_add_plugin: Fix typo in error message
+  * Fix configuring error when QtQml is not around
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

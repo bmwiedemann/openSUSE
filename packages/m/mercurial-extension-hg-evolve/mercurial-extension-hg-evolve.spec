@@ -18,21 +18,12 @@
 
 %if 0%{?suse_version} > 1600
 # Tumbleweed
-%define pythons                     python3
-%define mercurial_python            python3
-%define mercurial_python_executable python3
+%define pythons python3
 %else
 %if 0%{?sle_version} >= 150600
 %{?sle15_python_module_pythons}
-# Leap 15.6
-%if %pythons == "python311"
-%define mercurial_python            python311
-%define mercurial_python_executable python3.11
-%endif
 %else
-%define pythons                     python3
-%define mercurial_python            python3
-%define mercurial_python_executable python3
+%define pythons python3
 %endif
 %endif
 
@@ -45,13 +36,13 @@ Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/doc/evolution/
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-%{version}.tar.gz
 Source90:       tests.blacklist
-BuildRequires:  %{mercurial_python}
+BuildRequires:  %{pythons}
 # python311-flake8 is not available on Leap 15.6.
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} < 150600
-BuildRequires:  %{mercurial_python}-flake8
+BuildRequires:  %{python_module flake8}
 %endif
-BuildRequires:  %{mercurial_python}-pyflakes
-BuildRequires:  %{mercurial_python}-setuptools
+BuildRequires:  %{python_module pyflakes}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  mercurial
 BuildRequires:  mercurial-tests
@@ -80,7 +71,7 @@ rm %{buildroot}%{python_sitelib}/hgext3rd/__pycache__/__init__*.pyc
 
 %check
 cd tests
-%{mercurial_python_executable} %{_datadir}/mercurial/tests/run-tests.py --with-hg=%{_bindir}/hg --blacklist=%{SOURCE90}
+%python_exec %{_datadir}/mercurial/tests/run-tests.py --with-hg=%{_bindir}/hg --blacklist=%{SOURCE90}
 
 %files
 %doc CHANGELOG README.rst

@@ -16,8 +16,9 @@
 #
 
 
+%define         appid com.vysp3r.ProtonPlus
 Name:           ProtonPlus
-Version:        0.4.15
+Version:        0.4.16
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only
@@ -26,18 +27,17 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  git
-BuildRequires:  json-glib-devel
-BuildRequires:  libgee-devel
-BuildRequires:  libjson-glib-1_0-0
-BuildRequires:  libsoup-devel
+BuildRequires:  git-core
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libsoup-3.0)
 
 %description
 ProtonPlus is a Proton version manager for installing and managing Proton
@@ -56,17 +56,17 @@ uses GTK4.
 %install
 %meson_install
 
-%find_lang com.vysp3r.ProtonPlus
+%find_lang %{appid}
 
 %fdupes %{buildroot}
 
 %files
-%{_bindir}/com.vysp3r.ProtonPlus
-%{_datadir}/metainfo/com.vysp3r.ProtonPlus.metainfo.xml
-%{_datadir}/applications/com.vysp3r.ProtonPlus.desktop
-%{_datadir}/glib-2.0/schemas/com.vysp3r.ProtonPlus.gschema.xml
+%{_bindir}/%{appid}
+%{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/*
 
-%files lang -f com.vysp3r.ProtonPlus.lang
+%files lang -f %{appid}.lang
 
 %changelog

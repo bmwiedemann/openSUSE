@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:53:37 CEST 2024 - mls@suse.de
+
+- update to deltarpm-3.6.5
+  * support for archive files bigger than 2GByte [bnc#1230547]
+
+-------------------------------------------------------------------
+Wed Aug  7 13:58:05 CEST 2024 - mls@suse.de
+
+- update to deltarpm-3.6.4
+  * support for threaded zstd
+  * use a tmp file instead of memory to hold the incore data
+    [bsc#1228948]
+- dropped patches:
+  * deltarpm-b7987f6aa4211df3df03dcfc55a00b2ce7472e0a.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 16:25:58 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - deltarpm-b7987f6aa4211df3df03dcfc55a00b2ce7472e0a.patch: fixed 

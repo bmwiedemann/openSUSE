@@ -99,8 +99,8 @@ Requires:       Aeon-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
 Suggests:       busybox-gzip
-Requires:       health-checker
-Requires:       health-checker-plugins-MicroOS
+#AEON:Requires:       health-checker
+#AEON:Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
 %ifnarch %{arm}
 Requires:       kdump

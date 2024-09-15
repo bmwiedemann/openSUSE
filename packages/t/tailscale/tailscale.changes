@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:48:17 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.74.0
+  * AuthKey system policy can be used to authenticate a device with Tailscale using an MDM solution.
+  * tailscale dns CLI command is added for accessing Tailscale DNS settings and status.
+  * Tailnet Lock long rotation signatures are truncated automatically to avoid excessive growth.
+  * Log In option in the client works as expected.
+  * TCP generic receive offload (GRO) support is added for improved userspace mode throughput.
+  * TCP generic segmentation offload (GSO) is re-introduced for supporting improved userspace mode throughput.
+    This was initially introduced in Tailscale v1.72.0 and then rolled back in v1.72.1.
+  * Device posture integration with CrowdStrike Falcon can now use MAC addresses to match devices that lack serial numbers.
+    When Falcon integration is configured, Device Identity Collection will automatically collect MAC addresses.
+
+-------------------------------------------------------------------
 Thu Aug 22 22:08:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.72.1:

@@ -5876,4 +5876,20 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   (credits go to Takashi Iwai!)</comment>
     <requestid>1195891</requestid>
   </revision>
+  <revision rev="519" vrev="391">
+    <srcmd5>87728280b0e810618004e0833d1877be</srcmd5>
+    <version>unknown</version>
+    <time>1726396400</time>
+    <user>anag+factory</user>
+    <comment>- U_egl-x11-sw-fix-partial-image-uploads.patch
+  * culprit for the regression in 24.1.4; reverse apply this for
+    now (boo#1228164)
+
+- Update to bugfix release 24.1.7
+  --&gt; https://docs.mesa3d.org/relnotes/24.1.7
+- Supersedes the following patch:
+  * U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
+- Rebase patches with quilt.</comment>
+    <requestid>1200878</requestid>
+  </revision>
 </revisionlist>

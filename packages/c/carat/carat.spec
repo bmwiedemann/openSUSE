@@ -1,7 +1,7 @@
 #
-# spec file for package pari
+# spec file for package carat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           carat
-Version:        2.1b1+g132
+Version:        2.1b1+g132.21bfdb5
 Release:        0
 Summary:        Programs for solving certain tasks in mathematical crystallography
 License:        GPL-2.0-only
@@ -34,8 +34,9 @@ construction, recognition and comparison problems for
 crystallographic groups up to dimension 6. The name CARAT itself
 is an acronym for Crystallographic AlgoRithms And Tables.
 
-# Utilies invoked from e.g. gap-caratinterface
 
+
+# Utilies invoked from e.g. gap-caratinterface
 %prep
 %autosetup
 

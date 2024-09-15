@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 12 13:19:28 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.20.4
+  * Updated rustls to v0.23 with ring backend
+  * local-redir, server: Better approach to check current platform IP stack
+    capabilities like Go (IPv4, IPv6, IPv4-mapped-IPv6 supports)
+  * Explicitly enable dual-stack if listen addresses (server, local_address)
+    are IPv4-mapped-IPv6, by setting IPV6_V6ONLY=0
+  * PingBalancer check Firefox portal allowing 200 HTTP status
+  * Ping Balancer scores replaced standard deviation with median absolute
+    deviation, which should help focusing less on outlying observations in
+    latency samples
+  * local: Allow configuring SOCKS5 UDP_ASSOCIATE address
+  * ProxyServerStream::from_stream made public
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sun Jun 16 09:07:43 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.20.0

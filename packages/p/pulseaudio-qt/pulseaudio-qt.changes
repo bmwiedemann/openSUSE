@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 12 17:49:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.6.0:
+  * context: model states & auto-(re)connect
+  * context: refine autoconnect behavior
+  * verbosity--
+  * server: detect if wireplumber is running
+  * Add since version to new API
+  * Bump version to 1.6.0
+
+-------------------------------------------------------------------
 Sat May 25 11:52:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.5.0:

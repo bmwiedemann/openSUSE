@@ -48,4 +48,12 @@
     <comment>Update to 1.5.0</comment>
     <requestid>1177093</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb9af0faafd30112b84c35b06307b1b2</srcmd5>
+    <version>1.6.0</version>
+    <time>1726396396</time>
+    <user>anag+factory</user>
+    <comment>1.6.0 (forwarded request 1200839 from krop)</comment>
+    <requestid>1200840</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           shadowsocks-rust
-Version:        1.20.0
+Version:        1.20.4
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT

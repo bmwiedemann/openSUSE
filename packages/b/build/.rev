@@ -1806,4 +1806,32 @@ Changes:
 - minor improvements</comment>
     <requestid>1189210</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>be2e8ae429a42fa727b28b3052837703</srcmd5>
+    <version>20240913</version>
+    <time>1726396375</time>
+    <user>anag+factory</user>
+    <comment>- SBOM generation:
+  - Adding golang introspection support
+  - Adding rust binary introspection support
+  - Keep track of unknwon licenses and add a &quot;hasExtractedLicensingInfos&quot;
+    section
+  - Also normalize licenses for cyclonedx
+  - Make generate_sbom errors fatal
+  - general improvements
+- Fix noprep building not working because the buildir is removed
+- kiwi image: also detect a debian build if /var/lib/dpkg/status is present
+- Do not use the Encode module to convert a code point to utf8
+- Fix personality syscall number for riscv
+- add more required recommendations for KVM builds
+- set PACKAGER field in build-recipe-arch
+- fix writing _modulemd.yaml
+- pbuild: support --release and --baselibs option
+- container:
+  - copy base container information from the annotation into the
+    containerinfo
+  - track base containers over multiple stages
+  - always put the base container last in the dependencies</comment>
+    <requestid>1200773</requestid>
+  </revision>
 </revisionlist>

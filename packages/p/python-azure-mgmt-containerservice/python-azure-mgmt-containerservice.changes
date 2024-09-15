@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 13 09:01:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 32.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Mon Jul 22 06:30:27 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

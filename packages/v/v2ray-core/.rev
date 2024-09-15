@@ -385,4 +385,28 @@
   * Add Keep-Alive to removed headers (forwarded request 1181096 from hillwood)</comment>
     <requestid>1181097</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c5e7f2cd9fd9d3e4ab8d321e0ce312e5</srcmd5>
+    <version>5.18.0</version>
+    <time>1726396552</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 5.18.0
+  * Add timeout for http request roundtripper
+  * Fix ss2022 auth reader size overflow
+  * Add pie build mode to all binary builds
+  * Support &quot;services&quot; root config in cfgv4
+  * packet_encoding for config v4
+  * add MPTCP support
+  * Add (Experimental) Meyka Building Blocks to request Transport
+  * Add timeout for http request roundtripper
+  * Hysteria2: Add Hysteria2 Protocol
+  * Add AllowInsecureIfPinnedPeerCertificate option to tls security
+  * Add tls certChainHash command
+  * add support for socket activation
+  * Add pprof flag for debugging
+  * Fix bugs
+
+ - Update version to 5.15.1 (forwarded request 1200822 from hillwood)</comment>
+    <requestid>1200823</requestid>
+  </revision>
 </revisionlist>

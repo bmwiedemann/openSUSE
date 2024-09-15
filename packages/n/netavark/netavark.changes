@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 10 15:51:16 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.12.2:
+  * Release v1.12.2
+  * Release notes for 1.12.2
+  * fix new rust 1.80 lint issues
+  * silence new rust 1.80 warnings
+  * aardvark: on start failure delete entries again
+  * iptables: make dns rules cover tcp as well
+  * nftables: make dns rules cover tcp as well
+
+-------------------------------------------------------------------
 Wed Aug 07 06:36:53 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.12.1:

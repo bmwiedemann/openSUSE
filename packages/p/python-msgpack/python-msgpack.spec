@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msgpack
-Version:        1.0.8
+Version:        1.1.0
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0

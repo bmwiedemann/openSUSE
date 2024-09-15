@@ -1815,4 +1815,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
   * `win32mbcs` extension: fix an encoding issue (forwarded request 1191868 from develop7)</comment>
     <requestid>1191869</requestid>
   </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>8d798dbbb153f9c6a4dc6206a301f2db</srcmd5>
+    <version>6.8.1</version>
+    <time>1726396391</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200801</requestid>
+  </revision>
 </revisionlist>

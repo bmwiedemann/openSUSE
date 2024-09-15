@@ -234,4 +234,3 @@ mkdir -p /home/tik/.config/gtk-3.0
 echo "file:///ignition" >> /home/tik/.config/gtk-3.0/bookmarks
 
 sed -i 's/DISPLAYMANAGER_AUTOLOGIN=""/DISPLAYMANAGER_AUTOLOGIN="tik"/' /etc/sysconfig/displaymanager
-

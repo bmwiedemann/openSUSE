@@ -19,13 +19,6 @@
 # Also update baselibs.conf if you bump the version
 %global lib_soversion 16
 %global lib_name libavif%{lib_soversion}
-%if 0%{?suse_version} >= 1550
-%bcond_without aom
-%bcond_without yuv
-%else
-%bcond_with aom
-%bcond_with yuv
-%endif
 Name:           libavif
 Version:        1.1.1
 Release:        0
@@ -39,19 +32,15 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(aom) >= 2.0.0
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libpng) >= 1.6.32
 BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(rav1e) >= 0.5.0
-%if %{with aom}
-BuildRequires:  pkgconfig(aom) >= 2.0.0
-%endif
-%if %{with yuv}
 BuildRequires:  pkgconfig(libyuv)
-%endif
+BuildRequires:  pkgconfig(rav1e) >= 0.5.0
 
 %description
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -120,9 +109,6 @@ This package holds the development files for libavif.
  -DAVIF_LIBXML2=SYSTEM \
  -DAVIF_LIBYUV=SYSTEM \
  -DAVIF_ZLIBPNG=SYSTEM \
- %if %{with aom}
- -DAVIF_CODEC_AOM:BOOL=ON \
- %endif
  -DAVIF_BUILD_APPS:BOOL=ON \
  -DAVIF_BUILD_EXAMPLES:BOOL=ON \
  -DAVIF_BUILD_GDK_PIXBUF=ON

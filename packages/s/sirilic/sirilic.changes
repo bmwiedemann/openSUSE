@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:01:42 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.12:
+  * add composition HOO and SOO (duoband only)
+  * add composition SHO
+  * add composition HOO
+  * fix register of duoband mode
+  * fix subsky of duoband mode (multi-session)
+  * fix CopyLib
+  * fix RGBequa
+  * add Duo Band SII / OIII
+  * fix wildcard replacement in file with '[...]'
+
+-------------------------------------------------------------------
 Mon Oct  9 14:32:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.8:

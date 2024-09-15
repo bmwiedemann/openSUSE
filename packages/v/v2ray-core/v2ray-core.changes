@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:02:49 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.18.0
+  * Add timeout for http request roundtripper
+  * Fix ss2022 auth reader size overflow
+  * Add pie build mode to all binary builds
+  * Support "services" root config in cfgv4
+  * packet_encoding for config v4
+  * add MPTCP support
+  * Add (Experimental) Meyka Building Blocks to request Transport
+  * Add timeout for http request roundtripper
+  * Hysteria2: Add Hysteria2 Protocol
+  * Add AllowInsecureIfPinnedPeerCertificate option to tls security
+  * Add tls certChainHash command
+  * add support for socket activation
+  * Add pprof flag for debugging
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sun Jun 16 08:21:52 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.16.1
@@ -7,7 +26,7 @@ Sun Jun 16 08:21:52 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 -------------------------------------------------------------------
 Sun Apr 14 13:08:52 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
- - Update version tp 5.15.1
+ - Update version to 5.15.1
    * feat: RandomStrategy AliveOnly
    * Improve container image tags and timestamp
    * Add delay_auth_write to Socks5 Client Advanced Config

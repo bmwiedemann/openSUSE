@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 12 18:42:18 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Use existing python RPM macros instead of custom ones.
+- Remove mercurial-docutils-compat.diff.
+- Remove checks for obsolete SUSE version.
+
+-------------------------------------------------------------------
 Tue Aug  6 12:47:13 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.8.1

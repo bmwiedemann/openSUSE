@@ -7,4 +7,12 @@
     <comment>linktobranch needed</comment>
     <requestid>1095074</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e703a85598001c6519b09f9e77527b41</srcmd5>
+    <version>2.1b1+g132.21bfdb5</version>
+    <time>1726396545</time>
+    <user>anag+factory</user>
+    <comment>- Switch _service to an explicit revision hash to facilitate tarball verification.</comment>
+    <requestid>1200814</requestid>
+  </revision>
 </revisionlist>

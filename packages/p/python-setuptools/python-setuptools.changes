@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 04:01:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires on wheel, it has been adopted since 71.1.
+- Sort out test suite changes.
+
+-------------------------------------------------------------------
 Tue Jul 30 02:22:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 72.1.0:

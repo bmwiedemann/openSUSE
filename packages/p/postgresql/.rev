@@ -591,4 +591,15 @@
     <comment>- bsc#1219340: Require fillup.</comment>
     <requestid>1145267</requestid>
   </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>6b53383538f5ee92c1a1f66f28e28bc7</srcmd5>
+    <version>16</version>
+    <time>1726396372</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1230423: Relax the dependency of extensions on the server
+  version from exact major.minor to greater or equal, after Tom
+  Lane confirmed on the PostgreSQL packagers list that ABI
+  stability is being taken care of between minor releases.</comment>
+    <requestid>1200762</requestid>
+  </revision>
 </revisionlist>

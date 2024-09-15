@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 13 05:36:08 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.1.0
+  * Avoid using floating points during timestamp-datetime conversions in #591
+  * use ruff instead of black in #598
+  * update Cython and setuptools in #599
+  * Add experimental support for Python 3.13 in #600
+  * update README in #561
+  * update cibuildwheel to 2.17 in #601
+  * implement buffer protocol in #602
+  * Remove unused code in #603
+  * packer: add buf_size option in #604
+  * update readme in #605
+  * cython: better exception handling in #606
+  * better error checks in #607
+  * Cleanup code and pyproject in #608
+  * Release v1.1.0rc1 in #609
+  * do not install cython as build dependency in #610
+  * update Cython to 3.0.11 in #617
+  * update cibuildwheel to 2.20.0 in #618
+  * Release v1.1.0rc2 in #619
+  * MNT: use PyLong_* instead of PyInt_* in #620
+  * release v1.1.0 in #622
+
+-------------------------------------------------------------------
 Mon Jul 22 10:57:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.8

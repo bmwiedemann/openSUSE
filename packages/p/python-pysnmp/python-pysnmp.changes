@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 12 17:46:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.1
+  * Reimplemented walkCmd and bulkWalkCmd.
+- Update to version 7.1.0
+  * Removed pyasn1.compat dependency.
+  * Switched to async DNS resolver.
+- Update to version 7.0.3
+  * The high-level API (hlapi) extended to cover lightweight SNMP
+    v1arch in hope to ease the use of packet-level SNMP API.
+  * The signature of the hlapi .sendNotification() call has changed
+    to accept *varBinds instead of a sequence of varBinds.
+- Update to version 7.0.2
+  * Fixed a duplicate item issue in bulkWalkCmd.
+- Update to version 7.0.1
+  * Many really old backward-compatibility code snippets removed.
+    Most importantly, everything related to (non-standard) UNIX
+    domain socket transport are gone.
+  * The MIB instrumentation API overhauled in backward incompatible
+    way:
+    + MIB instrumentation methods signatures simplified to accept
+      just var-binds (as var-arg), the rest of the parameters
+      packed into opaque kwargs
+    + CommandResponder application passes snmpEngine and optionally
+      user-supplied cbCtx object throughout the MIB instrumentation
+      methods. The goal is to let MIB objects access/modify whatever
+      custom Python objects they need while being called back.
+  * Cherry-picked many minor fixes from etingof/master branch.
+- Update to version 7.0.0
+  * Applied PEP8 recommended names.
+    This breaks backward compatibility.
+- Update to version 6.2.6
+  * Removed pyasn1.compat dependency.
+- Update to version 6.2.5
+  * Improved OrderedDict performance.
+  * User credentials changes are now reflected in the LCD.
+  * Other cleanup.
+
+-------------------------------------------------------------------
 Mon Jul 29 08:33:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 6.2.4

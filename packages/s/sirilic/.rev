@@ -22,4 +22,22 @@
 </comment>
     <requestid>1117111</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a88d88fcbc9751f855b69b0424028c4</srcmd5>
+    <version>1.15.12</version>
+    <time>1726396566</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.15.12:
+  * add composition HOO and SOO (duoband only)
+  * add composition SHO
+  * add composition HOO
+  * fix register of duoband mode
+  * fix subsky of duoband mode (multi-session)
+  * fix CopyLib
+  * fix RGBequa
+  * add Duo Band SII / OIII
+  * fix wildcard replacement in file with '[...]'
+</comment>
+    <requestid>1200848</requestid>
+  </revision>
 </revisionlist>

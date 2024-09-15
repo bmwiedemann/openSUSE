@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1725896784.e007c26
+Version:        4.6.1726244934.3203a88
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -30,6 +30,14 @@ Source0:        %{name}-%{version}.tar.xz
 %define opencv_require pkgconfig(opencv4)
 %else
 %define opencv_require pkgconfig(opencv)
+%endif
+# exclude additional sub packages that would pull in a lot of extra dependencies on SLE
+%if 0%{?sle_version} && !0%{?is_opensuse}
+%bcond_with devel_package
+%bcond_with deps_package
+%else
+%bcond_without devel_package
+%bcond_without deps_package
 %endif
 # The following line is generated from dependencies.yaml
 %define build_base_requires %opencv_require gcc-c++ perl(Pod::Html) pkg-config pkgconfig(fftw3) pkgconfig(libpng) pkgconfig(sndfile) pkgconfig(theoraenc)
@@ -150,6 +158,7 @@ automated testing frameworks. However, it can just as well be used
 to test firefox and openoffice operation on top of a newly
 installed OS.
 
+%if %{with devel_package}
 %package devel
 Summary:        Development package pulling in all build+test dependencies
 Group:          Development/Tools/Other
@@ -157,6 +166,7 @@ Requires:       %devel_requires
 
 %description devel
 Development package pulling in all build+test dependencies.
+%endif
 
 %package openvswitch
 Summary:        Openvswitch support for os-autoinst
@@ -199,6 +209,7 @@ Requires:       swtpm
 %description swtpm
 Convenience package providing os-autoinst and swtpm dependencies.
 
+%if %{with deps_package}
 %package s390-deps
 Summary:        Convenience package providing os-autoinst + s390 worker jumphost deps
 Group:          Development/Tools/Other
@@ -216,6 +227,7 @@ Requires:       os-autoinst
 
 %description ipmi-deps
 Convenience package providing os-autoinst + ipmi worker jumphost dependencies.
+%endif
 
 %prep
 %setup -q
@@ -337,7 +349,9 @@ fi
 %config /etc/dbus-1/system.d/org.opensuse.os_autoinst.switch.conf
 %{_sbindir}/rcos-autoinst-openvswitch
 
+%if %{with devel_package}
 %files devel
+%endif
 %ifarch x86_64
 %files qemu-kvm
 
@@ -345,9 +359,10 @@ fi
 %endif
 
 %files swtpm
-
+%if %{with deps_package}
 %files s390-deps
 
 %files ipmi-deps
+%endif
 
 %changelog

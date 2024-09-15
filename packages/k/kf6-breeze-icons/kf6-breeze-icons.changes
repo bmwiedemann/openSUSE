@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * Remove 48px draw-freehand symlink (kde#491887)
+  * Add info(-symbolic) icon symlinks
+  * Add new 64px dialog icons
+  * Add icon for Apple Wallet passes bundle
+  * Add battery icons with power profile emblems
+  * Add remaining symbolic icons required for Discover
+  * Update accessibility icons
+  * ci: add Alpine/musl job
+  * Add system-reboot-update and system-shutdown-update icons
+  * Add a couple of missing monochrome category icons
+  * don't generate symlinks for app icons if we not install the icons
+  * Fix issues with zoom-map icons
+  * Add Spinbox-specific decrease and increase icons
+  * Make list-remove look like a red X
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

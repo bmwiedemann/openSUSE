@@ -1,7 +1,7 @@
-Index: lalpulsar-5.0.0/bin/HeterodyneSearch/Makefile.am
+Index: lalpulsar-7.0.0/bin/HeterodyneSearch/Makefile.am
 ===================================================================
---- lalpulsar-5.0.0.orig/bin/HeterodyneSearch/Makefile.am
-+++ lalpulsar-5.0.0/bin/HeterodyneSearch/Makefile.am
+--- lalpulsar-7.0.0.orig/bin/HeterodyneSearch/Makefile.am
++++ lalpulsar-7.0.0/bin/HeterodyneSearch/Makefile.am
 @@ -98,7 +98,7 @@ endif
  test_scripts += test_frequency_evolution.sh
  if HAVE_PYTHON
@@ -11,11 +11,11 @@ Index: lalpulsar-5.0.0/bin/HeterodyneSearch/Makefile.am
  test_scripts += test_flat_prior.py
  endif
  
-Index: lalpulsar-5.0.0/bin/check_execs_are_tested
+Index: lalpulsar-7.0.0/bin/check_execs_are_tested.sh
 ===================================================================
---- lalpulsar-5.0.0.orig/bin/check_execs_are_tested
-+++ lalpulsar-5.0.0/bin/check_execs_are_tested
-@@ -41,7 +41,7 @@ not_tested=`awk '
+--- lalpulsar-7.0.0.orig/bin/check_execs_are_tested.sh
++++ lalpulsar-7.0.0/bin/check_execs_are_tested.sh
+@@ -39,7 +39,7 @@ not_tested=`awk '
              print "NONE"
          }
      }
@@ -23,3 +23,4 @@ Index: lalpulsar-5.0.0/bin/check_execs_are_tested
 +' ${tested_logfiles} /dev/null | sed "s|bin/HeterodyneSearch/lalpulsar_ssbtodetector||" | sort`
  
  if test "X${not_tested}" = XNONE; then
+ 

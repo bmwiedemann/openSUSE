@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.3
+%define _version 24.1.7
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -145,7 +145,7 @@
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
-Version:        24.1.3
+Version:        24.1.7
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -183,8 +183,8 @@ Patch15:        u_fix_rust_bindgen.patch
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
-Patch101:       U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
 Patch400:       n_stop-iris-flicker.patch
+Patch500:       U_egl-x11-sw-fix-partial-image-uploads.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -839,8 +839,8 @@ cp %{SOURCE6} subprojects/packagecache/
 %endif
 %patch -P 58 -p1
 %patch -P 100 -p1
-%patch -P 101 -p1
 %patch -P 400 -p1
+%patch -P 500 -p1 -R
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

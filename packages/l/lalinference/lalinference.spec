@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lalinference
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -32,7 +32,7 @@
 %bcond_with octave
 
 Name:           %{pname}%{?psuffix}
-Version:        4.1.6
+Version:        4.1.7
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
@@ -41,10 +41,6 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
-# PATCH-FIX-UPSTREAM 0001-Replace-SafeConfigParser-with-ConfigParser.patch sent to duncan.macleod@ligo.org by code@bnavigator.de
-Patch1:         0001-Replace-SafeConfigParser-with-ConfigParser.patch
-# PATCH-FIX-UPSTREAM lalinference-scipy-1_14-compat.patch badshah400@gmail.com -- Account for name changes of trapezoidal functions in scipy.integrate for scipy >= 1.14
-Patch3:         lalinference-scipy-1_14-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes

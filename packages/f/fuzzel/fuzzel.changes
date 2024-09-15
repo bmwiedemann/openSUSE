@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:08:10 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 1.11.1:
+  - Added:
+    * New option --hide-before-typing for application launcher mode
+      hides the list until the first character is typed
+  - Changed:
+    * Logging no longer reports "aborted" if dmenu mode is called with
+      no input
+  - Fixed:
+    * Crash when the border size is larger than the border radius
+    * Regression: cursor not centered when using a custom line height
+    * Regression: selected background not rendered on top of the
+      regular background
+    * Regression: Supporting XDG_CONFIG_HOME as absolute path but not
+      relative should be supported
+
+-------------------------------------------------------------------
 Mon Sep  9 07:24:33 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update to 1.11.0:

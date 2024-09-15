@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * Disable cachegen (kde#488326)
+  * PlaceholderMessage: Remove the icon opacity if the message is actionable
+  * ToolBarLayout: Add test for dynamic actions
+  * Read willShowOnActive value as Variant and convert to Bool
+  * PrivateActionToolButton: Replace onVisibleChanged with Connections
+  * Fix registration name for WheelEvent
+  * [icon] Only reload icon from theme if the theme has that icon (kde#491806)
+  * PrivateActionToolButton: Hide menu if button is hidden (kde#486107)
+  * Allow recoloring of Android icon theme
+  * ci: add Alpine/musl job
+  * [icon] Fix icon colors when using Plasma platformtheme and QIcon source (kde#491274)
+  * ShadowedImage: Expose Image.status via a readonly alias
+  * PromptDialog: fix buttons overflow
+  * Relicense Chip to LGPL
+  * Relicense LoadingPlaceholder to LGPL
+- Drop patch, merged upstream:
+  * 0001-Disable-cachegen.patch
+
+-------------------------------------------------------------------
 Sat Sep  7 08:46:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (kde#488326, boo#1228876):

@@ -1,8 +1,8 @@
-Index: lalburst-2.0.1/python/lalburst/cs_gamma.c
+Index: lalburst-2.0.5/python/lalburst/cs_gamma.c
 ===================================================================
---- lalburst-2.0.1.orig/python/lalburst/cs_gamma.c
-+++ lalburst-2.0.1/python/lalburst/cs_gamma.c
-@@ -224,7 +224,7 @@ static double nu(double Gmu, double Gamm
+--- lalburst-2.0.5.orig/python/lalburst/cs_gamma.c
++++ lalburst-2.0.5/python/lalburst/cs_gamma.c
+@@ -225,7 +225,7 @@ static double nu(double Gmu, double Gamm
  	double cuspdist;
  	double teq=8.122570474611143e+11;
  	double crateR, crateRadStragglers, crateM;

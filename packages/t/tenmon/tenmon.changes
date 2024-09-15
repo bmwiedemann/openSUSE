@@ -1,9 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:54:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240816:
+  * Remember auto stretch on load
+  * Add support for FLOAT16 image downscale
+  * Fix output path browse dialog path
+  * Fix fromPlanaerSSE
+  * Debayer fix on OpenGL ES
+  * Use lcms2 for color profiles
+
+-------------------------------------------------------------------
 Wed Jul  3 09:06:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20240617:
   * Add scripts
   * Small fixes
+  * Fix some bugs in scripting
+  * Fix text color in log
+  * Batchprocessing improvments
+  * Add FITSRecordModify for XISF files
+  * Add modifing FITS records
+  * Add compression parameters
+  * Add convert function to script
+  * Fix bug when saving color FITS/XISF files
+- Add fix-libxisf-include.patch.
+
+-------------------------------------------------------------------
+Wed Jun 12 05:37:19 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240610:
   * Fix some bugs in scripting
   * Fix text color in log
   * Batchprocessing improvments

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:42:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch _service to an explicit revision hash to facilitate
+  tarball verification.
+
+-------------------------------------------------------------------
 Sat Jun 24 13:47:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 2.1b1+g132 (21bfdb5)

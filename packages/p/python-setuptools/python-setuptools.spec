@@ -39,8 +39,6 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Patch0:         sort-for-reproducibility.patch
 # Bootstrap: Don't BuildRequire pip here!
 BuildRequires:  %{python_module base >= 3.9}
-# The rpm python-wheel build is bootstrap friendly since 0.42
-BuildRequires:  %{python_module wheel >= 0.42}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -120,16 +118,18 @@ cp %{$python_sitelib}/../wheels/setuptools-%{version}-py3-none-any.whl $PWD/dist
 }
 export PRE_BUILT_SETUPTOOLS_WHEEL=$PWD/dist/setuptools-%{version}-py3-none-any.whl
 export LANG=en_US.UTF-8
+export PIP_FIND_LINKS=$PWD/dist
 # tests need imports from local source dir
 export PYTHONPATH=$(pwd)
 # no online comparisons in obs
 donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
 # test_pbr_integration tries to install pbr from network using pip
 donttest+=" or test_pbr_integration"
-# test_example_file_in_sdist wants wheel.whl
-donttest+=" or test_example_file_in_sdist"
 # looks for .exe files that we do not ship
 donttest+=" or test_wheel_includes_cli_scripts"
+# ignores environment variables
+donttest+=" or test_setup_requires_with_distutils_command_dep"
+donttest+=" or test_setup_requires_with_transitive_extra_dependency"
 %pytest -rfE -n auto -k "not ($donttest)"
 %endif
 

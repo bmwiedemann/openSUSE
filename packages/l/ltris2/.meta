@@ -1,0 +1,9 @@
+<package name="ltris2" project="openSUSE:Factory">
+  <title>Tetris Clone with Multiplayer and CPU Opponents</title>
+  <description>LTris2 is a highly configurable, polished, HD-screen ready Tetris clone. It
+offers the well-known Classic game, a funny game type Figures (a new figure
+each level, suddenly appearing tiles and lines), and multiplayer against up
+to two CPU players or human versus human.</description>
+  <devel project="games" package="ltris2"/>
+  <url>https://github.com/kulkanie/ltris2</url>
+</package>

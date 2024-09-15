@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Too many changes since 6.5.0, only listing bugfixes:
+  * PHP: add \{ in double quote string as a Backslash Code (kde#486372)
+  * Bash: fix escaped line in brace condition (kde#487978)
+  * Nix: fix string in attribute access (kde#491436)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:48:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:04:01 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Create ignition directory on ignition partiton, reduces steps
+  needed to be done by users to use ignition/combustion configs 
+
+-------------------------------------------------------------------
 Wed Aug 7 17:12:23 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Force relabeling of /etc as part of fstab.script

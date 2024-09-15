@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 13 17:21:31 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1726244934.3203a88:
+  * video_stream: fix setting EDID when using ffmpeg and explicit FPS
+  * Exclude sub packages with many additional dependencies on SLE
+  * Replace single quotes with double of URLs in the log strings
+  * Fix pod for backend_get_wait_still_screen_on_here_doc_input
+  * Virsh VMware images shell snippet debugging added
+
+-------------------------------------------------------------------
 Mon Sep 09 15:46:32 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1725896784.e007c26:

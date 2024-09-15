@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * Make tests a bit faster
+  * Fix clashing and missing keyboard accelerators
+  * Add help texts for new editing commands
+  * Move sort implementation to C++ (kde#478250)
+  * Move natsort to C++ and implement it using QCollator
+  * Move the sortuniq, uniq implementation to C++ (kde#478250)
+  * read and write font features to config
+  * Fix doc.text() when first block is empty
+  * Fix block splitting
+  * try to make test more robust
+  * Restore previous indentation test mode based on individual files
+  * Store startlines in the buffer instead of block
+  * doc: Fix code example for plugin hosting
+  * no 10 second timeouts, the CI is not that consistent fast
+  * try to make test more stable
+  * improve encoding detection (kde#487594)
+  * fix grouping on config dialog page (kde#490617)
+  * Optimize cursorToOffset
+  * Dont indent on tab when in block selection mode (kde#448695)
+  * Fix selection printing (kde#415570)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

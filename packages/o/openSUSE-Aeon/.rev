@@ -67,4 +67,13 @@
 </comment>
     <requestid>1192346</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>ceb36e30c8cccd651f36532562bd53a8</srcmd5>
+    <version>0.1.0</version>
+    <time>1726396552</time>
+    <user>anag+factory</user>
+    <comment>- Create ignition directory on ignition partiton, reduces steps
+  needed to be done by users to use ignition/combustion configs</comment>
+    <requestid>1200820</requestid>
+  </revision>
 </revisionlist>

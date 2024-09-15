@@ -39,7 +39,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.13.1
+Version:        3.13.7
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -57,8 +57,8 @@ BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 25.0
 BuildRequires:  erlang-src
-BuildRequires:  hostname
 BuildRequires:  fdupes
+BuildRequires:  hostname
 # BuildRequires:  libxslt
 BuildRequires:  python3
 BuildRequires:  rsync

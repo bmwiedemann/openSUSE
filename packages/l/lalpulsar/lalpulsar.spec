@@ -27,7 +27,7 @@
 
 %define pname lalpulsar
 
-%define shlib lib%{name}29
+%define shlib lib%{name}30
 # octave >= 6 is not supported
 %bcond_with octave
 
@@ -37,7 +37,7 @@
 %define skip_python2 1
 
 Name:           %{pname}%{?psuffix}
-Version:        6.1.0
+Version:        7.0.0
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
@@ -48,8 +48,6 @@ Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{ver
 Patch1:         lalpulsar-disable-test_ssbtodetector.patch
 # PATCH-FIX-UPSTREAM lalpulsar-fix-uninitialized-var.patch badshah400@gmail.com -- Fix an uninitialised variable
 Patch2:         lalpulsar-fix-uninitialized-var.patch
-# PATCH-FIX-UPSTREAM lalpulsar-scipy-1_14-compat.patch badshah400@gmail.com -- Account for name changes of trapezoidal functions in scipy.integrate for scipy >= 1.14
-Patch3:         lalpulsar-scipy-1_14-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.1.0}
 BuildRequires:  %{python_module numpy-devel >= 1.7}

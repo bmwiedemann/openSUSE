@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-collectd-rest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-django-collectd-rest
-Version:        0.2.4
+Version:        0.2.6
 Release:        0
 Summary:        A simple Django application to demonstrate RRD plots
 License:        BSD-2-Clause
 URL:            https://github.com/matwey/django-collectd-rest
-Source:         https://files.pythonhosted.org/packages/source/d/django-collectd-rest/django-collectd-rest-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.10}
+Source:         https://files.pythonhosted.org/packages/source/d/django-collectd-rest/django_collectd_rest-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module djangorestframework >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-build-core}
 # sqlite3 from standard library is requires for tests
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
 BuildRequires:  rrdtool-devel
-Requires:       python-Django >= 1.10
 Requires:       python-djangorestframework >= 3.7
 Requires:       rrdtool
 %python_subpackages
@@ -47,24 +47,22 @@ django-collectd-rest is a simple Django application to demonstrate RRD plots gen
 The application is built on top of django-rest-framework and provides REST API to access the plots.
 
 %prep
-%setup -q -n django-collectd-rest-%{version}
+%setup -q -n django_collectd_rest-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mv collectd_rest{,_hide}
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python runtests.py}
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/collectd_rest
+%{python_sitearch}/django_collectd_rest-%{version}.dist-info
 
 %changelog

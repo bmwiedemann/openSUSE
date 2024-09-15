@@ -1,7 +1,7 @@
 #
 # spec file for package deltarpm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,13 @@
 # we need to build against recent rpm, so avoid the new payload
 %define _binary_payload w9.bzdio
 Name:           deltarpm
-Version:        3.6.3
+Version:        3.6.5
 Release:        0
 Summary:        Tools to Create and Apply deltarpms
 License:        BSD-3-Clause
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/deltarpm/
-Source:         deltarpm-3.6.3.tar.gz
-# is in upstream git
-Patch0:         deltarpm-b7987f6aa4211df3df03dcfc55a00b2ce7472e0a.patch
+Source:         deltarpm-3.6.5.tar.gz
 BuildRequires:  libbz2-devel
 %if %{with python2}
 BuildRequires:  python2-devel
@@ -47,7 +45,6 @@ contains the difference between an old and a new version of an RPM,
 which makes it possible to recreate the new RPM from the deltarpm and
 the old one. You do not need to have a copy of the old RPM, because
 deltarpms can also work with installed RPMs.
-
 
 %package -n python2-deltarpm
 Summary:        Tools to Create and Apply deltarpms

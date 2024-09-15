@@ -41,7 +41,7 @@ Obsoletes:      %{pg_name}-%{ext_name}-llvmjit < %{version}-%{release} \
 %nil
 
 %pg_server_requires                  \
-%{requires_eq    %{pg_name}-server}  \
+%{requires_ge    %{pg_name}-server}  \
 %if %{postgresql_has_llvm}           \
 Recommends:     %{pg_name}-llvmjit   \
 %pg_obsolete_llvm_subpackage         \

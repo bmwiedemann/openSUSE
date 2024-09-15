@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * KStandardAction: Use windowIcon for AboutApp icon again
+  * Fix macro documentation
+  * ci: add Alpine/musl job
+  * Fix warning from staterc migration when there's no "old" file to migrate
+  * Update KF6 TODO comments to KF7 given that they weren't addressed in KF6
+  * Update version to 6.6.0
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

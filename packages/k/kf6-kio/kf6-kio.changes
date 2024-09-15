@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Too many changes since 6.5.0, only listing bugfixes:
+  * [trash] Fix restoring entries with absolute paths in disk-local trash (kde#463751)
+  * Accept service menus that use ServiceTypes to specify their types (kde#478030)
+  * Ignore application/x-kde-onlyReplaceEmpty in paste dialog (kde#492006)
+  * Correctly escape unit names (kde#488854)
+  * gui/kprocessrunner: normalize working directory (kde#490966)
+  * Don't show "Move" item in drop menu for source files accessed using http (kde#389600)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

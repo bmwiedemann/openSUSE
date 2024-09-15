@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20240723
+Version:        20240913
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -72,10 +72,12 @@ BuildRequires:  perl(YAML::LibYAML)
 # None of them are actually required for core features.
 # Perl helper scripts use them.
 Recommends:     perl(Archive::Tar)
-Recommends:     /sbin/mkfs.ext3
+Recommends:     /sbin/mkfs.ext4
 Recommends:     /usr/bin/qemu-kvm
 Recommends:     bsdtar
+Recommends:     hostname
 Recommends:     qemu-linux-user
+Recommends:     xfsprogs
 Recommends:     zstd
 Recommends:     perl(Config::IniFiles)
 Recommends:     perl(Date::Language)

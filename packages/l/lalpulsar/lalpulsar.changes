@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 11 19:39:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.0 (no release notes).
+- Drop lalpulsar-scipy-1_14-compat.patch: upstreamed.
+- Update shared lib package name in keeping with upstream's so
+  versioning (29 -> 30).
+
+-------------------------------------------------------------------
 Sat Jul 20 03:46:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package sirilic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sirilic
-Version:        1.15.8
+Version:        1.15.12
 Release:        0
 Summary:        Software that uses SiriL for preparing acquisition files for processing
 License:        LGPL-3.0-or-later

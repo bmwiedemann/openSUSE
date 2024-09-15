@@ -376,3 +376,9 @@ b5a35f9d feat(zfcp_rules): remove zfcp handling consolidated in s390-tools
 61ab3386 feat(crypt): force the inclusion of crypttab entries with x-initrd.attach
 6611c6e4 fix(dracut-functions.sh): only return block devices from get_persistent_dev
 6c99c073 feat(systemd*): include systemd config files from /usr/lib/systemd
+e0b87682 fix(dracut): ldd output borked with `--sysroot`
+d0c82322 fix(dracut): do not add all lib subdirs to `LD_LIBRARY_PATH` with `--sysroot`
+921792f2 feat(systemd): always install libsystemd libraries
+54cd6479 fix(nvmf): move /etc/nvme/host{nqn,id} requirement to hostonly
+41332702 fix(nvmf): require NVMeoF modules
+3748ed4d fix(nvmf): install (only) required nvmf modules

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:27:57 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.648.g91732c01:
+
+  Fixes for NVMeoF boot (bsc#1230468):
+  * fix(nvmf): install (only) required nvmf modules
+  * fix(nvmf): require NVMeoF modules
+  * fix(nvmf): move /etc/nvme/host{nqn,id} requirement to hostonly
+
+  Fixes for bsc#1230354:
+  * feat(systemd): always install libsystemd libraries
+  * fix(dracut): do not add all lib subdirs to `LD_LIBRARY_PATH` with `--sysroot`
+
+-------------------------------------------------------------------
 Fri Aug 23 06:58:17 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.639.g49307b2a:

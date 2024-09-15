@@ -17,7 +17,7 @@
 
 
 Name:           fuzzel
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT

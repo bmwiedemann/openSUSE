@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * ECMQueryQt: don't cache QUERY_EXECUTABLE
+  * Add fallback value for SASL_PATH
+  * Add SASL_PATH to prefix.sh so that libkdexoauth2.so is found
+  * Allow qml target to be actually optional
+  * Fix FindLibExiv2 version detection from header
+  * ci: add Alpine/musl job
+  * ECMEnableSanitizers: fix greedy linker parameter replacment
+  * Add private code option to ecm_add_qtwayland_(client/server)_protocol
+  * Update version to 6.6.0
+  * Add a PRIVATE_CODE option to ecm_add_wayland_server_protocol
+  * Add [PRIVATE_CODE] also to the second signature of ecm_add_wayland_server_protocol
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

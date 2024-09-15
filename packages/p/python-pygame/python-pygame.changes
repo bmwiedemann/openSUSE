@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 11 08:45:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.6.0
+  * Inline _PyArg_NoKeywords from Python 3.13 in case it is missing
+  * Support collide_mask as collided argument in spritecollide
+  * Add display argument to pygame.display.list_modes() and pygame.display.mode_ok()
+  * Fix numpy.alltrue imports to import all instead
+  * Added generics to abstract group for IDE completion
+  * Polygon large coordinate test cases for issue#3989
+  * Fix go_over_there example bug in Python 3.12
+  * Fix wrong ifdef placement for unix/macos
+- Drop merged patches:
+  * pygame-pr4236-gcc14.patch
+  * pygame-pr4169-videodummytests.patch
+
+-------------------------------------------------------------------
 Wed May 29 07:56:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14

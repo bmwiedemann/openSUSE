@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:59:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.16:
+  * Added support for Steam Tinker Launch
+  * Made Ctrl-Q quit the application
+  * The window now remembers the last-used size
+  * Improved UI polish and consistency
+  * Made it easier to translate the application
+  * Added developer scripts
+  * Add swedish translation
+
+-------------------------------------------------------------------
 Thu Jul 18 05:50:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.15:

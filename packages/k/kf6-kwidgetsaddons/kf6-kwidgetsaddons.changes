@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  7 09:03:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * Update version to 6.6.0
+  * Hide toolbar when not need (e.g. in tabbed view)
+  * FontChoose: Allow setting font features when selecting font (kde#479686)
+  * Expand tabbar in KPageView
+  * [kjobwidgets] Store window in a QPointer (kde#491637)
+  * Support page headers in KPageView
+
+-------------------------------------------------------------------
 Mon Aug  5 10:47:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

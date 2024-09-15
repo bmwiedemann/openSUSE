@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 12 17:46:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.14.0:
+  * add a protocol for externally controlled display brightness
+  * output device: add support for brightness in SDR mode
+  * plasma-window: add client geometry + bump to v18
+  * Add warnings discouraging third party clients using internal desktop
+    environment protocol
+
+-------------------------------------------------------------------
 Sat May 25 11:56:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.13.0:

@@ -74,4 +74,77 @@
 </comment>
     <requestid>1185729</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b5c660bf88ea5f77102aab2edbc3f01b</srcmd5>
+    <version>20240816</version>
+    <time>1726396563</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20240816:
+  * Remember auto stretch on load
+  * Add support for FLOAT16 image downscale
+  * Fix output path browse dialog path
+  * Fix fromPlanaerSSE
+  * Debayer fix on OpenGL ES
+  * Use lcms2 for color profiles
+- Update to 20240617:
+  * Add scripts
+  * Small fixes
+  * Fix some bugs in scripting
+  * Fix text color in log
+  * Batchprocessing improvments
+  * Add FITSRecordModify for XISF files
+  * Add modifing FITS records
+  * Add compression parameters
+  * Add convert function to script
+  * Fix bug when saving color FITS/XISF files
+- Add fix-libxisf-include.patch.
+- Update to 20240610:
+  * Fix some bugs in scripting
+  * Fix text color in log
+  * Batchprocessing improvments
+  * Add FITSRecordModify for XISF files
+  * Add modifing FITS records
+  * Add compression parameters
+  * Add convert function to script
+  * Fix bug when saving color FITS/XISF files
+- Add fix-libxisf-include.patch.
+- Update to 20240201:
+  * Fix metainfo
+  * Add thumbnail quality to settings
+  * Only degress should show negative sign
+  * Limit image info to 1024 characters
+  * Flip image according to ROWORDER
+  * Fix some edge cases when stretch
+  * Small optimization in resample
+  * Add box resize algorithm
+- Update to 20240108:
+  * Migrate to Qt6
+  * Add nearest and bicubic filtering
+  * Add slideshow
+  * Don't skip images before they load
+  * Add bayer mask selection
+  * Additional work on batch processing
+  * Increase number max preload images to 32
+- Update to 20231116:
+  * Add scaling for float images that are out of 0.0-1.0 range
+  * Optimize calculating stast for debayer
+  * Better stretch non full range images like CR2
+  * Made unlinked stretch white balancing
+  * Make STF slider wider
+  * Add tooltip with filenames
+  * Support for unlinked stretch
+  * Sum all channels histograms
+  * Improve histogram for 8 bit images
+  * Add histogram
+  * Fix loading RAW files
+  * Show stats for each channel
+  * Update translations and help
+- Update to 20230419:
+  * Fix assert lo &lt; hi in std::clamp
+  * Update metainfo
+- Initial OBS release.
+- Add use_system_libxisf.patch.
+</comment>
+    <requestid>1200846</requestid>
+  </revision>
 </revisionlist>

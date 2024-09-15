@@ -226,4 +226,12 @@
     <comment></comment>
     <requestid>970774</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>44a1c8441c343b549da76c27804ed3f0</srcmd5>
+    <version>3.6.5</version>
+    <time>1726396393</time>
+    <user>anag+factory</user>
+    <comment>- update to deltarpm-3.6.5</comment>
+    <requestid>1200825</requestid>
+  </revision>
 </revisionlist>

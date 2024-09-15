@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:22:21 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2024.9.1
+  * TUN-8546: Fix final artifacts paths
+  * TUN-8583: change final directory of artifacts
+  * TUN-8585: Avoid creating GH client when dry-run is true
+  * TUN-8591 login command without extra text
+  * TUN-8592: Use metadata from the edge to determine if request body is
+    empty for QUIC transport
+  * TUN-8484: Print response when QuickTunnel can't be unmarshalled
+  * TUN-8621: Prevent QUIC connection from closing before grace period after
+    unregistering
+  * PPIP-2310: Update quick tunnel disclaimer
+
+-------------------------------------------------------------------
 Mon Aug  5 08:39:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2024.7.3

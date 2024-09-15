@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
@@ -121,6 +121,8 @@ builddir=../`basename ${PYTHON}`_build
 mkdir ${builddir}
 cp -pr ./ ${builddir}
 pushd ${builddir}
+# strict-prototypes: https://github.com/numpy/numpy/pull/26771 (remove for numpy >= 2.0.1)
+export CFLAGS="%{optflags} -Wno-error=strict-prototypes"
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}

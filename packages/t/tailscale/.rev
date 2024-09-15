@@ -96,4 +96,12 @@
   * DNS over TCP failures when querying the Tailscale-internal resolver are fixed. (forwarded request 1195618 from rrahl0)</comment>
     <requestid>1195619</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>35c90f96b828e21c786b999d00933cf1</srcmd5>
+    <version>1.74.0</version>
+    <time>1726396541</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1200808</requestid>
+  </revision>
 </revisionlist>

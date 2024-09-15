@@ -64,4 +64,12 @@
   * 0001-Disable-cachegen.patch</comment>
     <requestid>1199325</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e783c40327d43eb61538a3d200770d0e</srcmd5>
+    <version>6.6.0</version>
+    <time>1726396464</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.6.0 (forwarded request 1199844 from krop)</comment>
+    <requestid>1201023</requestid>
+  </revision>
 </revisionlist>

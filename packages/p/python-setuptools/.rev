@@ -1283,4 +1283,13 @@
       (bsc#1228105, CVE-2024-6345)</comment>
     <requestid>1190360</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>aae8d7c46c0f2d7f5d3c5fee9a9ac02c</srcmd5>
+    <version>72.1.0</version>
+    <time>1726396369</time>
+    <user>anag+factory</user>
+    <comment>- Remove BuildRequires on wheel, it has been adopted since 71.1.
+- Sort out test suite changes.</comment>
+    <requestid>1200735</requestid>
+  </revision>
 </revisionlist>

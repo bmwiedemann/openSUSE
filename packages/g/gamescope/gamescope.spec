@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.15.3
+Version:        3.15.9
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -30,6 +30,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+# for git describe
+BuildRequires:  git
 BuildRequires:  stb-devel
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xmu)

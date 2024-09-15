@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygame
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND libpng-2.0
 URL:            https://github.com/pygame/pygame
 Source0:        %{url}/archive/%{version}.tar.gz#/pygame-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pygame-pr4169-videodummytests.patch gh#pygame/pygame#4169
-Patch0:         pygame-pr4169-videodummytests.patch
-# PATCH-FIX-UPSTREAM pygame-pr4236-gcc14.patch gh#pygame/pygame#4236
-Patch1:         pygame-pr4236-gcc14.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
@@ -131,6 +127,7 @@ rm %{buildroot}%{_docdir}/%{name}-doc/examples/.editorconfig
 export SDL_VIDEODRIVER=dummy
 export SDL_AUDIODRIVER=disk
 export LANG=en_US.UTF-8
+export PYGAME_MSYS2=1
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -m pygame.tests.__main__ -v --exclude opengl --time_out 300
 }

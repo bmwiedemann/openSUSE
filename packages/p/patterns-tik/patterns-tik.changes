@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 13 08:04:42 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Lower tik installer footprint, removing health-checker 
+
+-------------------------------------------------------------------
 Tue Jul 23 09:02:43 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Restore tpm2.0-abrmd, needed by tpm2_getcap 

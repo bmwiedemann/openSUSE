@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 12 18:05:51 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Use existing python RPM macros instead of defining custom ones.
+
+-------------------------------------------------------------------
 Thu Jul 11 18:30:16 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 11.1.4.

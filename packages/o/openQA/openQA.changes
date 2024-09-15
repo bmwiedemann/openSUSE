@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 13 17:05:07 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1726234723.b54d8ce9:
+  * Slightly simplify OpenQA::Git
+  * Add missing flash message box to /tests page
+  * Use double quotes for quoting links
+  * Fix linkify to only link to proper URLs
+  * Slightly simplify Schema::Result::ScheduledProducts
+  * Avoid incomplete jobs if Open vSwitch related service is not running
+
+-------------------------------------------------------------------
 Wed Sep 11 09:04:53 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1725890782.54de77b9:

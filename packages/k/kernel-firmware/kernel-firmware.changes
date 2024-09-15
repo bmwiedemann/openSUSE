@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:44:25 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240912 (git commit 47c72fee8fe3):
+  * amdgpu: Add VPE 6.1.3 microcode
+  * amdgpu: add SDMA 6.1.2 microcode
+  * amdgpu: Add support for PSP 14.0.4
+  * amdgpu: add GC 11.5.2 microcode
+  * qcom: qcm6490: add ADSP and CDSP firmware
+  * linux-firmware: Update firmware file for Intel Bluetooth Magnetor core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Bluetooth Solar core
+- Temporary fix for the missing symlink installations:
+  copy-firmware-fix-symlink-without-compress.patch
+
+-------------------------------------------------------------------
+Wed Sep 11 15:10:39 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240911 (git commit 59def907425d):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x0447_9301 (bsc#1229272)
+
+-------------------------------------------------------------------
+Tue Sep 10 12:14:01 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240910 (git commit 2a7b69a3fa30):
+  * realtek: rt1320: Add patch firmware of MCU
+  * i915: Update MTL DMC v2.23
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L54 for some HP laptops
+
+-------------------------------------------------------------------
 Wed Sep 04 06:41:30 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240903 (git commit 96af55bd3d0b):

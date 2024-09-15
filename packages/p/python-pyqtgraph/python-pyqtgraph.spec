@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqtgraph
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %bcond_without  test
 Name:           python-pyqtgraph
-Version:        0.13.3
+Version:        0.13.7
 Release:        0
 Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
@@ -31,10 +29,6 @@ Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgra
 # PATCH-FIX-OPENSUSE - Borrowed from Fedora - https://src.fedoraproject.org/rpms/python-pyqtgraph/tree/
 # Upstream issue: https://github.com/pyqtgraph/pyqtgraph/issues/2644
 Patch1:         no-sphinx-qt-doc.patch
-# https://github.com/pyqtgraph/pyqtgraph/issues/2645
-Patch2:         2748.patch
-# https://github.com/pyqtgraph/pyqtgraph/pull/2760
-Patch3:         py3114.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pydata-sphinx-theme}
@@ -43,6 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-qt-documentation
 Requires:       python-numpy >= 1.17
 Recommends:     python-colorcet
