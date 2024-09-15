@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.1:
+  * chore(deps): Bump actions/upload-artifact in the actions group
+  * fix(auth/basic): bind pflags to viper only when required
+  * chore(deps): Bump the actions group across 1 directory with 3
+    updates
+  * chore(deps): Bump the actions group with 3 updates
+
+-------------------------------------------------------------------
 Thu Aug 01 10:54:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.0:
