@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 14 09:16:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.3:
+  * fix(gitcliff): Add fix for git cliff
+  * feat(actions): Fix github actions for creating release notes
+  * fix(cliff): Add docker image back
+  * feat(k8s1.32): Add rego for v1.32 deprecations
+  * dep(bump): Bump lots of deps
+  * fix: warn and fix invalid namespace
+  * fix: Script install.sh in dumb TERM
+
+-------------------------------------------------------------------
 Wed Mar 13 06:50:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version v0.7.1:

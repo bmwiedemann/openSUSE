@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kube-no-trouble
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Easily check your cluster for use of deprecated APIs
 License:        MIT
