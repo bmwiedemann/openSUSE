@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sun Sep 15 05:07:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.2.10:
+  * chore: comment out WIP scoring and prepare release #patch
+
+-------------------------------------------------------------------
+Sat Sep 14 16:24:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.2.9:
+  * ci: use bump_version.sh
+  * chore: remove debugging
+  * chore: remove unused values
+  * chore: remove unused parameter from determinePodCoverage
+  * fix: ensure pods are only added to lists once
+  * ci: update release workflow
+  * feat: update calculate score test
+  * feat: add description of scan when running cilium namespaced
+    scans
+  * feat: update top score
+  * feat: update scoring logic
+
+-------------------------------------------------------------------
+Mon Jun 24 05:20:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.2.8 (no releases between 5.2.5 and this one):
+  * docs: edit cobra command for netfetch #patch
+  * ci: set goreleaser version to 2
+  * ci: add manual trigger to workflow
+  * ci: remove unknown flag from goreleaser worklflow
+  * docs: added comments in code for fix #107 #patch
+  * fix: update cilium scanners to only check running pods
+  * fix: update native scanner to check for running pods only
+  * chore: add gitignore so test binary wont be pushed
+  * chore: update brew shasums
+
+-------------------------------------------------------------------
+Wed Jun 12 11:16:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package netfetch: Kubernetes tool for scanning clusters for
+  network policies and identifying unprotected workloads
