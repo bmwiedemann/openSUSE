@@ -20,20 +20,17 @@
 
 %define rname kimageformats
 
-%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
-%define with_jxl 1
-%endif
 # Fails on Leap 15 with '/usr/include/OpenEXR/ImathVec.h:228:34: error: ISO C++17 does not allow dynamic exception specification'
 %if 0%{?suse_version} > 1500
 %define with_exr 1
 %endif
-# Full KF6 version (e.g. 6.5.0)
+# Full KF6 version (e.g. 6.6.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.5.0
+Version:        6.6.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -54,10 +51,8 @@ BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(libavif) >= 0.8.2
 BuildRequires:  cmake(libheif) >= 1.10.0
-%if 0%{?with_jxl}
-BuildRequires:  pkgconfig(libjxl) >= 0.6.1
-BuildRequires:  pkgconfig(libjxl_threads) >= 0.6.1
-%endif
+BuildRequires:  pkgconfig(libjxl) >= 0.7.0
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.7.0
 BuildRequires:  pkgconfig(libraw) >= 0.20.2
 BuildRequires:  pkgconfig(libraw_r) >= 0.20.2
 %requires_eq    libQt6Gui6
@@ -102,9 +97,7 @@ environments.
 %endif
 %{_kf6_plugindir}/imageformats/kimg_hdr.so
 %{_kf6_plugindir}/imageformats/kimg_heif.so
-%if 0%{?with_jxl}
 %{_kf6_plugindir}/imageformats/kimg_jxl.so
-%endif
 %{_kf6_plugindir}/imageformats/kimg_kra.so
 %{_kf6_plugindir}/imageformats/kimg_ora.so
 %{_kf6_plugindir}/imageformats/kimg_pcx.so
