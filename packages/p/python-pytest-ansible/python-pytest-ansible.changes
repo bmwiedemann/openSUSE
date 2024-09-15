@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:49:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.9.0:
+  * Bump the dependencies group in /.config with 7 updates (#388)
+  * Bump the dependencies group across 1 directory with 31 updates
+    (#387)
+  * chore: pre-commit autoupdate (#384)
+  * Community comms (#383)
+  * Bump cryptography from 43.0.0 to 43.0.1 in /.config (#385)
+
+-------------------------------------------------------------------
 Sat Aug 17 07:34:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.8.0:
