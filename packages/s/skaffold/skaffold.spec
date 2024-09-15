@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           skaffold
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -77,7 +77,7 @@ go build \
    -buildmode=pie \
    -ldflags=" \
    -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} \
-   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=$BUILD_DATE" \
+   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=${BUILD_DATE}" \
    -o bin/%{name} ./cmd/%{name}
 
 %install
@@ -111,7 +111,6 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/zsh_completion.d/_%{name}
 

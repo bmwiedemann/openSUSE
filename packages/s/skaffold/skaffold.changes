@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:47:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.2:
+  * fix: keep the original template if template expansion fails
+    (#9503) (#9504)
+
+-------------------------------------------------------------------
 Wed Jul 24 17:43:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.1:
