@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:09:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.24:
+  * amend kubetrim to access compressed binaries
+  * Bump golang.org/x/mod from 0.20.0 to 0.21.0
+
+-------------------------------------------------------------------
+Sat Sep 14 10:08:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.23:
+  * feat: add keploy to arkade
+
+-------------------------------------------------------------------
+Sat Sep 14 10:06:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.22:
+  * Fix faulty tests merged via #1104 for keploy
+  * feat: add keploy to arkade
+
+-------------------------------------------------------------------
+Sat Sep 14 10:04:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.21:
+  * Update tool defintion for viddy
+
+-------------------------------------------------------------------
 Mon Aug 19 13:32:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.20:
