@@ -1,0 +1,5 @@
+<package name="python-nvim-remote" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors" package="python-nvim-remote"/>
+</package>
