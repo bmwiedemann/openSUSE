@@ -9736,6 +9736,7 @@ unsorted:
   - k3b 
   - k3b-devel 
   - k3b-lang 
+  - k3kcli 
   - k3s-install 
   - k3s-selinux 
   - k3sup 
@@ -14205,7 +14206,7 @@ unsorted:
   - liblalinference23 
   - liblalinspiral18 
   - liblalmetaio11 
-  - liblalpulsar29 
+  - liblalpulsar30 
   - liblalsimulation37 
   - liblalsupport14 
   - liblammps0 
@@ -17692,6 +17693,8 @@ unsorted:
   - lsyncd 
   - ltrace 
   - ltris 
+  - ltris2 
+  - ltris2-lang 
   - lttng-tools 
   - lttng-tools-devel 
   - lttng-ust-devel 
@@ -19679,6 +19682,10 @@ unsorted:
   - netdiscover 
   - netease-cloud-music-gtk 
   - netease-cloud-music-gtk-lang 
+  - netfetch 
+  - netfetch-bash-completion 
+  - netfetch-fish-completion 
+  - netfetch-zsh-completion 
   - netgen 
   - netgen-devel 
   - netgen-examples 
@@ -26190,6 +26197,7 @@ unsorted:
   - python310-numpy_2_0_0-gnu-hpc 
   - python310-numpy_2_0_0-gnu-hpc-devel 
   - python310-numpydoc 
+  - python310-nvim-remote 
   - python310-nwdiag 
   - python310-o2sclpy 
   - python310-oauthlib 
@@ -29779,6 +29787,7 @@ unsorted:
   - python311-numpy_2_0_0-gnu-hpc 
   - python311-numpy_2_0_0-gnu-hpc-devel 
   - python311-numpydoc 
+  - python311-nvim-remote 
   - python311-nwdiag 
   - python311-o2sclpy 
   - python311-objgraph 
@@ -33398,6 +33407,7 @@ unsorted:
   - python312-numpy_2_0_0-gnu-hpc 
   - python312-numpy_2_0_0-gnu-hpc-devel 
   - python312-numpydoc 
+  - python312-nvim-remote 
   - python312-nwdiag 
   - python312-o2sclpy 
   - python312-oauthlib 
