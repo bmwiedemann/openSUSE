@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:42:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.0:
+  * Upgrade to new hash-agnostic APIs for sign and verify
+  * Upgrade to apko v0.18.0
+  * index: stop writing APKINDEX.json
+  * update to go1.23.1
+  * build(deps): bump google.golang.org/api from 0.195.0 to 0.196.0
+  * build(deps): bump golang.org/x/crypto from 0.26.0 to 0.27.0
+  * build(deps): bump the gomod group with 2 updates
+  * pipelines/ruby: remove signing_key by default
+  * config: Whack more moles for string replacement
+  * install go
+  * lint
+  * upgrade to golang 1.23
+
+-------------------------------------------------------------------
+Sat Sep 14 15:36:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.6:
+  * adds git checkout fetch,update,test and yams the melange
+    apkbuild yamls
+
+-------------------------------------------------------------------
+Sat Sep 14 15:33:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.5:
+  * fix(split pipelines): Don't split lib64 libraries
+
+-------------------------------------------------------------------
+Sat Sep 14 15:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.4:
+  * fix(split pipelines): Check package was defined, not package
+    directory
+  * fix(split/dev): Support for /usr/local
+  * fix(split pipelines): Add support for lib64
+  * fix(split pipelines): Use package name instead of package dir,
+    use exact paths
+  * Update dev.yaml
+  * feat(pipelines/split): Support overriding source package
+    directory
+  * build(deps): bump dagger.io/dagger in the gomod group
+  * build(deps): bump actions/upload-artifact in the actions group
+
+-------------------------------------------------------------------
+Sat Sep 14 15:18:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.3:
+  (0.11.2 is the same commit hash as 0.11.1):
+  * fix(sca): Correctly check for existing Ruby runtime dependency
+    by @EyeCantCU in #1387
+  * build(deps): bump actions/setup-go from 5.0.1 to 5.0.2 in the
+    actions group by @dependabot in #1378
+  * build(deps): bump google.golang.org/api from 0.187.0 to 0.188.0
+    by @dependabot in #1382
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.19.2 to 0.20.1 by @dependabot in #1392
+  * build(deps): bump step-security/harden-runner from 2.8.1 to
+    2.9.0 in the actions group by @dependabot in #1391
+  * build(deps): bump the gomod group across 1 directory with 2
+    updates by @dependabot in #1390
+  * build(deps): bump dagger.io/dagger from 0.11.9 to 0.12.1 by
+    @dependabot in #1389
+  * build(deps): bump github.com/docker/cli from
+    27.0.3+incompatible to 27.1.0+incompatible by @dependabot in
+    #1397
+  * Expose ignoreSignatures functionality by @Kevin-Molina in #1375
+  * build(deps): bump github.com/docker/docker from
+    27.0.3+incompatible to 27.1.0+incompatible by @dependabot in
+    #1396
+  * build(deps): bump docker/login-action from 3.2.0 to 3.3.0 in
+    the actions group by @dependabot in #1398
+  * build(deps): bump google.golang.org/api from 0.188.0 to 0.189.0
+    by @dependabot in #1401
+  * fix: ignore resource requests for the docker runner by
+    @imjasonh in #1403
+  * build(deps): bump dagger.io/dagger from 0.12.1 to 0.12.2 in the
+    gomod group by @dependabot in #1400
+  * Bump apko dependency by @mattmoor in #1404
+  * fix ruby sca by @xnox in #1410
+  * Add HOME=/root to default test environment. by @smoser in #1408
+  * build(deps): bump the gomod group with 4 updates by @dependabot
+    in #1405
+  * update config: provide configuration to describe polling and
+    schedules by @rawlingsj in #1412
+  * build(deps): bump the gomod group with 2 updates by @dependabot
+    in #1416
+  * build(deps): bump google.golang.org/api from 0.189.0 to 0.190.0
+    by @dependabot in #1419
+  * build(deps): bump the actions group with 2 updates by
+    @dependabot in #1415
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0 by
+    @dependabot in #1418
+  * build(deps): bump golang.org/x/time from 0.5.0 to 0.6.0 by
+    @dependabot in #1417
+  * build(deps): bump golang.org/x/sys from 0.22.0 to 0.23.0 by
+    @dependabot in #1420
+  * update config: replace recently added polling with git struct
+    by @rawlingsj in #1421
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.1 to 0.20.2 in the gomod group by @dependabot in #1423
+  * build(deps): bump golang.org/x/text from 0.16.0 to 0.17.0 by
+    @dependabot in #1424
+  * build(deps): bump google.golang.org/api from 0.190.0 to 0.191.0
+    by @dependabot in #1426
+  * build(deps): bump golang.org/x/sys from 0.23.0 to 0.24.0 by
+    @dependabot in #1428
+  * move 'adding package %q for pipeline %q' to debug logging by
+    @imjasonh in #1429
+  * don't depend on apko's custom log package by @imjasonh in #1430
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.13 to
+    0.1.0 by @dependabot in #1431
+  * Feat/qemu runners by @89luca89 in #1386
+  * Attempt to fix qemu ci by @jonjohnsonjr in #1434
+  * build(deps): bump the actions group with 3 updates by
+    @dependabot in #1432
+  * Centralize sca options handling by @jonjohnsonjr in #1433
+  * Add test to catch duplicate package names by @jonjohnsonjr in
+    #1439
+  * build(deps): bump the gomod group with 4 updates by @dependabot
+    in #1437
+  * build(deps): bump google.golang.org/api from 0.191.0 to 0.192.0
+    by @dependabot in #1438
+  * move 'found pipeline' log message to debug by @imjasonh in
+    #1440
+  * melange convert python: use normalized names by @pnasrat in
+    #1441
+  * Bump apko to get chainctl auth error log by @jonjohnsonjr in
+    #1442
+  * Replace "needs" in range pipelines by @jonjohnsonjr in #1445
+  * docs: Add information on the repository used with the git
+    update configuration option by @philroche in #1447
+  * Refactor parts of the ParseConfiguration by @jonjohnsonjr in
+    #1446
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace from
+    1.28.0 to 1.29.0 by @dependabot in #1455
+  * build(deps): bump google.golang.org/api from 0.192.0 to 0.194.0
+    by @dependabot in #1452
+  * config: Replace pipelines at top level by @jonjohnsonjr in
+    #1456
+  * refactor(sbom): cleanup, simplify, and document code by
+    @luhring in #1458
+  * More SBOM logic improvements by @luhring in #1459
+  * build(deps): bump github.com/docker/cli from
+    27.1.2+incompatible to 27.2.0+incompatible by @dependabot in
+    #1461
+  * build(deps): bump google.golang.org/api from 0.194.0 to 0.195.0
+    by @dependabot in #1463
+  * build(deps): bump github.com/docker/docker from
+    27.1.2+incompatible to 27.2.0+incompatible by @dependabot in
+    #1462
+  * build(deps): bump dagger.io/dagger from 0.12.5 to 0.12.6 in the
+    gomod group by @dependabot in #1465
+  * chore(cargo/build): Allow changing install dir, add busybox by
+    @EyeCantCU in #1466
+  * sca: add support for more go fips toolchains by @xnox in #1471
+  * sca: make pc: provides/vendored use full package version by
+    @xnox in #1467
+
+-------------------------------------------------------------------
 Fri Jul 19 05:38:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.1:

@@ -19,24 +19,29 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           melange
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0
 URL:            https://github.com/chainguard-dev/melange
 Source:         melange-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 
 %description
 Build apk packages using declarative pipelines.
 
-Commonly used to provide custom packages for container images built with apko. The majority of apks are built for use with either the Wolfi or Alpine Linux ecosystems.
+Commonly used to provide custom packages for container images built with apko.
+The majority of apks are built for use with either the Wolfi or Alpine Linux
+ecosystems.
 
 Key features:
 
-* Pipeline-oriented builds. Every step of the build pipeline is defined and controlled by you, unlike traditional package managers which have distinct phases.
-* Multi-architecture by default. QEMU is used to emulate various architectures, avoiding the need for cross-compilation steps.
+* Pipeline-oriented builds. Every step of the build pipeline is defined and
+  controlled by you, unlike traditional package managers which have distinct
+  phases.
+* Multi-architecture by default. QEMU is used to emulate various architectures,
+  avoiding the need for cross-compilation steps.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
