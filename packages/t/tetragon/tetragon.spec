@@ -22,17 +22,18 @@
 %define cli_package_name tetragon-cli
 
 Name:           tetragon
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        eBPF-based Security Observability and Runtime Enforcement
 License:        Apache-2.0
 URL:            https://github.com/cilium/tetragon
 Source:         tetragon-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  clang
+BuildRequires:  clang >= 15
 BuildRequires:  go >= 1.22
 BuildRequires:  llvm
 BuildRequires:  make
+ExcludeArch:    i586 ppc64le s390x armv7l armv7hl
 
 %description
 Cilium’s new Tetragon component enables powerful real-time, eBPF-based Security
@@ -94,7 +95,7 @@ zsh command line completion support for %{cli_package_name}.
 #
 # tetragon
 #
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X github.com/cilium/tetragon/pkg/version.Version=%{version}" \
@@ -108,7 +109,7 @@ make -C ./bpf BPF_TARGET_ARCH=x86 %{?_smp_mflags}
 #
 # tetra cli
 #
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X github.com/cilium/tetragon/pkg/version.Version=%{version}" \

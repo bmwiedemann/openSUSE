@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:27:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.0:
+  Full changelog see
+  https://github.com/cilium/tetragon/releases/tag/v1.2.0
+  * Major Changes
+    - feat: Username for process_exec events (#2369) by @anfedotoff
+    - tetragon: Allow persistent enforcement during tetragon
+      restart (#2600) by @olsajiri
+    - LSM sensor (#2566) by @anfedotoff
+  * Bugfixes
+    - bpf: use CORE for execve hook (#2399) by @kkourt
+    - Don't create PodInfo if the pod is being deleted (#2431) by
+      @michi-covalent
+    - tetragon: allow namespaced and non-namespaced policies to
+      have the same name (#2337) by @joshuajorel
+    - operator: Don't start metrics server if Helm value
+      tetragonOperator.prometheus.enabled is set to false. (#2484)
+      by @yukinakanaka
+    - enforcer: fix issue when using multiple calls with fmod_ret
+      (#2524) by @kkourt
+    - Reduce the kernel memory footprint (accounted by the cgroup
+      memory controller) of the stack trace feature when unused.
+      (#2546) by @mtardy
+    - Reduce the kernel memory footprint (accounted by the cgroup
+      memory controller) of the ratelimit feature when unused
+      (around ~10MB per kprobe). (#2551) by @mtardy
+    - Reduce the kernel memory footprint (accounted by the cgroup
+      memory controller) of the fdinstall feature when unused
+      (around ~11MB per kprobe). (#2563) by @mtardy
+    - Do not increase the reference count when we cannot find a
+      parent in kthreads. (#2620) by @tpapagian
+    - Reduce the kernel memory footprint (accounted by the cgroup
+      v2 memory controller) of the override feature when unused
+      (around ~3MB per kprobe). (#2692) by @mtardy
+    - Fix a bug related to the matchBinaries Prefix operator by
+      increasing the buffer size used by our dentry walk. Now the
+      matchBinaries Prefix operator can correctly trigger a match
+      on any path above 255 chars. (#2764) by @mtardy
+    - Fix a bug where the tetra getevents command would timeout
+      even if the connection was successful. (#2765) by @mtardy
+    - Fix missing cases in the compact encoder for tetra. (#2819)
+      by @willfindlay
+    - add support for pod association via cgroup id (#2776) by
+      @kkourt
+    - Allow disabling gRPC either by selecting 'enabled:false' in
+      the helm chart or by passing an empty address to the agent
+      (#2826) by @kkourt
+    - Fix tetragon_process_cache_size metric (#2827) by @lambdanis
+
+-------------------------------------------------------------------
+Mon Jul 29 18:36:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- exclude architectures that fail to build due to
+  'pkg/syscallinfo/syscallinfo.go:39:34: undefined: syscallNames'
+  errors
+
+-------------------------------------------------------------------
 Wed Jun 12 16:18:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.2:
