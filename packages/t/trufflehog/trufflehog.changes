@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 13 12:30:43 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.82.1:
+  * [analyze] Add analyzer interface for Shopify (#3226)
+  * [analyze] Add Analyzer for Mailgun (#3206)
+  * [analyze] Add Analyzer for MySQL (#3193)
+  * Instrument GitHub source with a UnitReporter (#3284)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.20.3 (#3279)
+  * adding pypi v1 support (#3289)
+  * adding pypi detector (#3287)
+  * feature flag additional refs (#3282)
+  * Clarify "no decoder found for chunk" log message (#3001)
+  * update aha keyword (#3281)
+  * [chore] - remove unused method and function (#3089)
+  * Jira Email fix (#3061)
+  * fix(git): config normalization for git sources (#3278)
+  * Add detector for Nvidia NGC Personal Keys (#3280)
+
+-------------------------------------------------------------------
 Tue Sep 10 07:48:42 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.81.10:

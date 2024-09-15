@@ -1339,4 +1339,26 @@
   * fix(deps): update module github.com/charmbracelet/bubbletea to v0.27.0 (#3229) (forwarded request 1199824 from ph03nix)</comment>
     <requestid>1199826</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1b6d9b45d0adebfff2911a2ebf9e3e03</srcmd5>
+    <version>3.82.1</version>
+    <time>1726396591</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.82.1:
+  * [analyze] Add analyzer interface for Shopify (#3226)
+  * [analyze] Add Analyzer for Mailgun (#3206)
+  * [analyze] Add Analyzer for MySQL (#3193)
+  * Instrument GitHub source with a UnitReporter (#3284)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.20.3 (#3279)
+  * adding pypi v1 support (#3289)
+  * adding pypi detector (#3287)
+  * feature flag additional refs (#3282)
+  * Clarify &quot;no decoder found for chunk&quot; log message (#3001)
+  * update aha keyword (#3281)
+  * [chore] - remove unused method and function (#3089)
+  * Jira Email fix (#3061)
+  * fix(git): config normalization for git sources (#3278)
+  * Add detector for Nvidia NGC Personal Keys (#3280) (forwarded request 1200895 from ph03nix)</comment>
+    <requestid>1200896</requestid>
+  </revision>
 </revisionlist>
