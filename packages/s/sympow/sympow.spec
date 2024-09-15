@@ -1,7 +1,7 @@
 #
 # spec file for package sympow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sympow
-Version:        2.023.6
+Version:        2.023.7
 Release:        0
 Summary:        Program to compute symmetric power elliptic curve L-functions
 License:        BSD-2-Clause
