@@ -76,7 +76,11 @@ BuildArch:      i686
 %bcond_with v4l2
 %bcond_with vaapi
 
-
+%ifarch %arm aarch64 riscv64
+%bcond_with gdbjit
+%else
+%bcond_without gdbjit
+%endif
 
 %ifnarch %ix86 %arm aarch64
 %if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora})
@@ -229,7 +233,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        30.5.0
+Version:        30.5.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -1364,6 +1368,11 @@ myconf_gn+=" use_gold=false"
 %if %{with lto}
 myconf_gn+=" gcc_lto=true"
 # endif with lto
+%endif
+
+%if %{with gdbjit}
+#Enable GDB protocol (--js-flags=--gdbjit_full). It's disabled by default in Chromium but very useful for Node/Electron
+myconf_gn+=' v8_enable_gdbjit=true'
 %endif
 
 

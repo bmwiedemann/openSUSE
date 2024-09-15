@@ -323,7 +323,9 @@ if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 # Now remove additional bundled/duplicate libraries in node/deps
-rm -rf third_party/electron_node/deps/{googletest/{include,src},icu-small} #292MB and vendored
+rm -rf third_party/electron_node/deps/{googletest/{include,src},icu-small,corepack} #292MB and vendored
+#rm -rf third_party/electron_node/tools/gyp 15.6 has too old gyp, not unbundling for now.
+rm -rf third_party/electron_node/tools/inspector_protocol/jinja2
 find third_party/electron_node/deps/brotli -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/cares -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
