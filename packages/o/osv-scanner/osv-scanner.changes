@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:51:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.5:
+  * chore(release): changelog for v1.8.5 (#1237)
+  * fix: make Alpine ecosystem fallback to latest release version
+    (#1236)
+  * feat(internal): marshal self-closing tags in XML (#1225)
+  * chore: update Go to version 1.22.7 (#1233)
+  * feat: support composite-based package overrides (#1214)
+  * chore: update test snapshots (#1232)
+  * fix: govulncheck calls on C code (#1228)
+  * refactor: use forked xml package for writing (#1223)
+  * chore: update test snapshots (#1222)
+  * feat(internal): add Maven native dependency client (#1207)
+  * fix(guided remediation): Add special handling for specific
+    Maven packages (#1219)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to
+    v1 (#1217)
+  * fix(internal): encode XML tokens without escaping (#1216)
+  * chore: update test snapshots (#1218)
+  * chore: axe `.go-version` file (#1212)
+  * feat(guided remediation): Add `FIXED-VULN-IDS` to
+    non-interactive output (#1210)
+  * perf: ignored packages should be filtered out before scanning
+    (#1206)
+  * feat: support fetching snapshot versions from a Maven registry
+    (#1160)
+  * fix: stop finding more parent pom if the path is empty (#1194)
+  * chore: add missed test ignore vuln (#1209)
+  * chore: add `osv-scanner.toml` files to make Scorecard ignore
+    vulnerabilities in our test fixtures (#1202)
+  * chore(deps): update workflows (#1186)
+  * fix(deps): update osv-scanner minor (#1187)
+  * fix: correct for breaking change in glamour v0.8.0 (#1201)
+  * chore(deps): update dependency github-pages to v232 (#1189)
+  * chore(deps): update golang docker tag to v1.23.0 (#1188)
+
+-------------------------------------------------------------------
+Sat Sep 14 10:49:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.4:
+  * chore(release): release v1.8.4 (#1200)
+  * refactor: move Maven utility to a separate package (#1193)
+  * docs: link to the Scorecard Report (#1197)
+  * fix: unescape tabs before writing to pom.xml (#1190)
+  * feat(guided remediation): add `--upgrade-config` flag (#1191)
+  * chore: add PR title check to follow Git commit convention
+    (#1178)
+  * chore: add new vulnerability aliases to test snapshots (#1192)
+  * feat: write Maven updates to parent pom.xml if possible (#1182)
+  * chore: use the latest version of `golangci-lint` (#1185)
+  * fix(guided remediation): error on `--data-source=native` for
+    Maven (#1180)
+  * ci(workflow): address address github.com/rhysd/actionlint
+    findings (#1176)
+  * fix(workflow): correct permission name (#1175)
+  * chore(deps): update workflows (#1173)
+  * fix(deps): update osv-scanner minor (#1174)
+  * fix: only trim XML elements with no inner elements (#1168)
+  * fix(workflow): Add explicit permissions (#1171)
+  * docs: add conventional commits requirement (#1172)
+  * Package tracing PoC (#1049)
+  * Update go policy and use stable go version for builds (#1156)
+  * chore(deps): update dependency wdm to "~> 0.2.0" (#1163)
+  * fix(deps): update osv-scanner minor (#1162)
+  * chore(deps): update workflows (#1161)
+  * Add changelog for v1.8.3 (#1150)
+
+-------------------------------------------------------------------
 Wed Aug 07 07:04:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.3:
