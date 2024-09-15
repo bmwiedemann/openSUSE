@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 11 21:14:09 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Added patch JPype1-numpy2compat.patch to update the test code
+  to be numpy 2+ compatible.
+- Add a BuildRequires for ca-certificates-mozilla to resolve
+  a certificates validation error during wheel creation for
+  Tumbleweed builds.
+
+-------------------------------------------------------------------
+Thu Aug 22 14:52:07 UTC 2024 - Aline Werner <aline.werner@suse.com>
+
+- Switch to modern python on sle15. 
+
+-------------------------------------------------------------------
 Tue Feb 27 01:50:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros. 

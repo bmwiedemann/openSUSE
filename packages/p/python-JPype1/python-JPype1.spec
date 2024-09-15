@@ -19,6 +19,7 @@
 %bcond_without  test
 # https://build.opensuse.org/package/show/Java:packages/h2database is not in Factory
 %bcond_with     test_jdbc
+%{?sle15_python_module_pythons}
 Name:           python-JPype1
 Version:        1.5.0
 Release:        0
@@ -27,11 +28,13 @@ License:        Apache-2.0
 URL:            https://github.com/jpype-project/jpype
 Source:         https://files.pythonhosted.org/packages/source/J/JPype1/JPype1-%{version}.tar.gz
 Patch0:         JPype1-java8compat.patch
+Patch1:         JPype1-numpy2compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ant
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 9

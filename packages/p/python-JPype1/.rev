@@ -80,4 +80,12 @@
     <comment>- Switch to pyproject and autosetup macros.</comment>
     <requestid>1151988</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>612d407ce7d97a238cde0fb271ad11e5</srcmd5>
+    <version>1.5.0</version>
+    <time>1726396702</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201186</requestid>
+  </revision>
 </revisionlist>
