@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:09:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.1.3:
+  * Upgrade sidecars to latest (#946)
+  * fix: do not allow removing/changing the reserved labels (#944)
+  * Add csi-external-health-monitor-controller sidecar build (#940)
+  * Add info messages in sidecar release scripts (#939)
+  * install: initialize admin and legacy client to avoid crash for
+    dry-run mode (#937)
+  * admin: add missing response fields in resume APIs (#936)
+  * Add sidecar release scripts (#934)
+  * admin: return additional info in admin API responses (#935)
+
+-------------------------------------------------------------------
+Sat Sep 14 10:08:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.1.2:
+  * Fix size probe for invalid devices (#931)
+  * docs: fix piped sh usage (#929)
+  * fix regression assigning AuditWriter in installer args (#926)
+  * Upgrade sidecar images (#920)
+  * Remove unsupported PodSecurityPolicy (#918)
+  * Add drive repair support (#880)
+  * upgrade dependencies (#917)
+  * Export DirectPV client and admin API package (#889)
+  * upgrade dependencies (#914)
+  * Upgrade UBI 8.10 and dependencies (#911)
+
+-------------------------------------------------------------------
+Sat Sep 14 09:20:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.1.1:
+  * docs: fix piped sh usage (#929)
+  * fix regression assigning AuditWriter in installer args (#926)
+
+-------------------------------------------------------------------
 Tue Aug 13 18:08:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.1.0:

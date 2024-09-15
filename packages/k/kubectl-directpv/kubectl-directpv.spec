@@ -19,12 +19,12 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-directpv
-Version:        4.1.0
+Version:        4.1.3
 Release:        0
 Summary:        Kubectl plugin for the MinIO CSI driver for Direct Attached Storage
 License:        Apache-2.0
 URL:            https://github.com/minio/directpv
-Source:         directpv-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go1.22
 
@@ -37,10 +37,10 @@ across servers.
 This package contains the Kubectl plugin to manage the DirectPV CSI driver.
 
 %prep
-%autosetup -a 1 -p 1 -n directpv-%{version}
+%autosetup -a 1 -p 1
 
 %build
-CGO_ENABLED=0 go build \
+go build \
    -mod=vendor \
    -buildmode=pie \
    -tags "osusergo netgo" \
