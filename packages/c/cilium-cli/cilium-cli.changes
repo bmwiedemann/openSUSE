@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 14 07:29:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.17:
+  * Prepare for v0.16.17 release
+  * chore(deps): update docker.io/library/golang:1.23.1-alpine3.19
+    docker digest to e0ea2a1
+  * chore(deps): update docker/dockerfile docker tag to v1.10
+  * chore(deps): update golang:1.23.1-alpine3.19 docker digest to
+    e0ea2a1
+  * vendor: Pick up github.com/cilium/cilium v1.17.0-pre.0
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.61.0
+  * chore(deps): update golang docker tag to v1.23.1
+  * chore(deps): update go to v1.23.1
+  * chore(deps): update actions/upload-artifact action to v4.4.0
+  * github: Remove "Push to Loki" workflow
+  * make: set set latest stable version based on stable.txt
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.60.3
+  * chore(deps): update google-github-actions/auth action to v2.1.5
+  * build: fix CLIVersion ldflag ref
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.60.2
+  * chore(deps): update go to v1.23.0
+  * CODEOWNERS: Assign vendor/ to cilium-cli-maintainers
+
+-------------------------------------------------------------------
 Tue Aug 20 11:08:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.16:

@@ -17,7 +17,7 @@
 
 
 Name:           xlockmore
-Version:        5.78
+Version:        5.79
 Release:        0
 Summary:        Screen Saver and Locker for the X Window System
 License:        MIT
@@ -34,11 +34,11 @@ Patch1:         %{name}-bitmaps.patch
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch3:         xlockmore-ttf_dir.patch
 # end of X.org related patches
-Patch7:         xlockmore-strict-aliasing.patch
 # PATCH-FIX-UPSTREAM xlockmore-extend-freetype-include-search.patch -- search only for freetype.h, not the half path. Also,
 # extended list of directories where could freetype be found
 Patch9:         xlockmore-extend-freetype-include-search.patch
 Patch10:        xlockmore-nose_mode_crash.patch
+Patch11:        xlockmore-cast-function-pointers.patch
 BuildRequires:  ImageMagick-devel
 BuildRequires:  automake
 BuildRequires:  bc
@@ -76,9 +76,9 @@ saver until a password is entered.
 chmod -x README docs/Revisions
 %patch -P 1
 %patch -P 3
-%patch -P 7
 %patch -P 9 -p1
 %patch -P 10 -p1
+%patch -P 11 -p1
 
 %build
 aclocal

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 11:31:12 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- fixed bug/pull request references in frr.changes file
+
+-------------------------------------------------------------------
 Thu Aug 22 13:02:19 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for crash in bgp_attr_encap that were missing
@@ -96,11 +101,11 @@ Mon Dec  4 09:11:46 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for a crash on malformed BGP UPDATE message
   with an EOR, because the presence of EOR does not lead to a
-  treat-as-withdraw outcome (CVE-2023-47235,1216896,https://github.com/FRRouting/frr/pull/14716/commits/6814f2e0138a6ea5e1f83bdd9085d9a77999900b)
+  treat-as-withdraw outcome (CVE-2023-47235,bsc#1216896,https://github.com/FRRouting/frr/pull/14716/commits/6814f2e0138a6ea5e1f83bdd9085d9a77999900b)
   [+ 0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch]
 - Apply upstream fix for a crash on crafted BGP UPDATE message with
   a MP_UNREACH_NLRI attribute and additional NLRI data (CVE-2023-47234,
-  bsc#1216897,ttps://github.com/FRRouting/frr/pull/14716/commits/c37119df45bbf4ef713bc10475af2ee06e12f3bf)
+  bsc#1216897,https://github.com/FRRouting/frr/pull/14716/commits/c37119df45bbf4ef713bc10475af2ee06e12f3bf)
   [+ 0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch]
 - Apply upstream fix for attempts to read beyond the end of the
   stream during labeled unicast parsing (CVE-2023-38407,bsc#1216899,https://github.com/FRRouting/frr/pull/12956/commits/ab362eae68edec12c175d9bc488bcc3f8b73d36f)

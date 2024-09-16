@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>582e21710dba8703dce06b5fc1e3ece0</srcmd5>
+    <version>0.4.9</version>
+    <time>1726501343</time>
+    <user>anag+factory</user>
+    <comment>I want to add this to openSUSE:Factory. This will replace `uv` based on naming scheme and as well that it's a hybrid python+rust package.
+
+</comment>
+    <requestid>1201235</requestid>
+  </revision>
+</revisionlist>

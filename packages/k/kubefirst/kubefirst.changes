@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Sep 14 16:44:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.1:
+  * set next macro chart for kubefirst - 2.6.1
+
+-------------------------------------------------------------------
+Sat Sep 14 16:39:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.0:
+  * set next macro chart for kubefirst - 2.6.0
+  * Add missing formatted file.
+  * Change version on CI too
+  * Remove unused functions. Bump to Go 1.23. Run `gofmt` on all
+    files.
+  * fix: devel (#2276)
+
+-------------------------------------------------------------------
+Sat Sep 14 16:38:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.11:
+  * set next macro chart for kubefirst - 2.5.11
+
+-------------------------------------------------------------------
+Sat Sep 14 16:36:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.10:
+  * set next macro chart for kubefirst - 2.5.10
+
+-------------------------------------------------------------------
+Sat Sep 14 16:35:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.9 (no releases between 2.5.3 and this one):
+  * set next macro chart for kubefirst - 2.5.9
+  * remove v so regex matches again (#2275)
+  * fix bad chart ref from kubefirst and emails (#2274)
+
+-------------------------------------------------------------------
+Sat Sep 14 16:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.3 (no release 2.5.2):
+  * set next macro chart for kubefirst - 2.5.3
+
+-------------------------------------------------------------------
+Sat Sep 14 16:31:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.1:
+  * set next macro chart for kubefirst - 2.5.1
+
+-------------------------------------------------------------------
+Sat Sep 14 16:30:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.0:
+  * use generated release notes for gitops-template (#2271)
+  * replace kubefirst refs with konstructio (#2270)
+  * removed duplicate
+  * set next macro chart for kubefirst - 2.5.0
+  * Fix linting messages.
+  * Add conditions based on the situation.
+  * refer latest kubefirst-api
+  * add restart function for argo
+  * reference to konstruct
+  * fix:description
+  * fix: akamai pro feature flag
+
+-------------------------------------------------------------------
 Fri Aug 16 18:12:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.17:

@@ -1,0 +1,35 @@
+From 561646763d994288d771b0efaa9b2a3e45e810fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A9ven=20Car?= <meven@kde.org>
+Date: Sat, 14 Sep 2024 14:02:26 +0200
+Subject: [PATCH] libtaskmanager/waylandtasksmodel: disconnect from
+ parentWindowChanged in dtor
+
+As windows destruction might happen in any order, destruction of parent window of
+of transient ones will trigger their parentWindowChanged event.
+
+BUG: 488653
+---
+ libtaskmanager/waylandtasksmodel.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/libtaskmanager/waylandtasksmodel.cpp b/libtaskmanager/waylandtasksmodel.cpp
+index 4081b16edf..85778bc6d5 100644
+--- a/libtaskmanager/waylandtasksmodel.cpp
++++ b/libtaskmanager/waylandtasksmodel.cpp
+@@ -845,7 +845,12 @@ WaylandTasksModel::WaylandTasksModel(QObject *parent)
+     d->init();
+ }
+ 
+-WaylandTasksModel::~WaylandTasksModel() = default;
++WaylandTasksModel::~WaylandTasksModel()
++{
++    for (auto &window : d->windows) {
++        QObject::disconnect(window.get(), &PlasmaWindow::parentWindowChanged, this, nullptr);
++    }
++}
+ 
+ QVariant WaylandTasksModel::data(const QModelIndex &index, int role) const
+ {
+-- 
+2.46.0
+

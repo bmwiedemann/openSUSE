@@ -273,4 +273,14 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1163581</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0af05a26f34280381e71a36e9cddfe00</srcmd5>
+    <version>5.10.4</version>
+    <time>1726501214</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.10.4
+  * Set all min deps #399 (@blink1073)
+</comment>
+    <requestid>1201279</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,46 @@
+From 8cf58e67c8a77a81bb8392886468e12c0f96d9ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 16 Sep 2024 10:21:42 +0200
+Subject: [PATCH] Fix build with boost < 1.66 and simplify a bit
+
+---
+ src/libcmis/xml-utils.cxx | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/src/libcmis/xml-utils.cxx b/src/libcmis/xml-utils.cxx
+index 3568ec6..20c671e 100644
+--- a/src/libcmis/xml-utils.cxx
++++ b/src/libcmis/xml-utils.cxx
+@@ -531,9 +531,14 @@ namespace libcmis
+         boost::uuids::detail::sha1 sha1;
+         sha1.process_bytes( str.c_str(), str.size() );
+ 
+-        // on boost <  1.86.0, digest_type is typedef'd as unsigned int[5]
++        // on boost <  1.66.0, digest_type is typedef'd as reference to unsigned int[5]
++        // on boost >= 1.66.0 and < 1.86.0, digest_type is typedef'd as unsigned int[5]
+         // on boost >= 1.86.0, digest_type is typedef'd as unsigned char[20]
++#if BOOST_VERSION < 106600
++        unsigned int digest[5];
++#else
+         boost::uuids::detail::sha1::digest_type digest;
++#endif
+         sha1.get_digest( digest );
+ 
+         stringstream out;
+@@ -541,14 +546,8 @@ namespace libcmis
+         // hexadecimal digits, including possible leading 0s, or we get
+         // less than 40 digits as result.
+         out << hex << setfill('0') << right;
+-#if BOOST_VERSION < 108600
+-        for ( int i = 0; i < 5; ++i )
+-            out << setw(8) << digest[i];
+-#else
+-        const unsigned char* ptr = reinterpret_cast<const unsigned char*>( digest );
+-        for ( size_t i = 0; i < sizeof( digest ); ++ptr, ++i )
+-            out << setw(2) << static_cast<int>( *ptr );
+-#endif
++        for ( size_t i = 0; i < sizeof( digest ) / sizeof( digest[0] ); ++i )
++            out << setw(2 * sizeof( digest[0] )) << static_cast<int>( digest[i] );
+         return out.str();
+     }
+ 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:53:22 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.79:
+  * pyraminx and oct mode extended to size 6 also some hardcoding of size
+    removed and fixed some drawing errors.
+- Fix builds
+  * Remove xlockmore-strict-aliasing.patch
+  * Add xlockmore-cast-function-pointers.patch
+
+-------------------------------------------------------------------
 Tue Jun 11 18:37:11 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.78:

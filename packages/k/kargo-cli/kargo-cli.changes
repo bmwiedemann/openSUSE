@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Sat Sep 14 14:13:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.7:
+  * feat: support kustomize image newName override (#2471)
+
+-------------------------------------------------------------------
+Sat Sep 14 14:10:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.6:
+  * chore(backport release-0.8): fix(promotion): wait for open pull
+    request (#2452)
+
+-------------------------------------------------------------------
+Sat Aug 17 07:36:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.5:
+  * chore(backport release-0.8): fix(promotion): patch Application
+    w/ Unstructured (#2443)
+  * chore(backport release-0.8): fix(controller): improve logic to
+    determine when syncing an argo cd app is required (#2442)
+  * chore(backport release-0.8): fix: webhook server and controller
+    permissions (#2436)
+  * chore(backport release-0.8): feat(api): grant API to manage
+    ConfigMap (#2434)
+  * chore(backport release-0.8): fix(controller): account for
+    differences in kargo, argo cd, and helm before searching for
+    oci helm charts (#2412)
+
+-------------------------------------------------------------------
+Fri Aug 09 17:01:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.4:
+  * chore(backport release-0.8): fix(promotion): sync ArgoCD
+    Application without updates (#2408)
+
+-------------------------------------------------------------------
+Wed Aug 07 05:20:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.3:
+  * chore(backport release-0.8): fix(promotion): always hard
+    refresh ArgoCD App (#2398)
+
+-------------------------------------------------------------------
+Sat Aug 03 07:53:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.2:
+  * chore(backport release-0.8): fix(ui): infinite redirect loop
+    when renewing OIDC token (#2375)
+  * chore(backport release-0.8): fix(controller): fix panic when
+    last promotion has no freight collection (#2366)
+
+-------------------------------------------------------------------
+Fri Jul 26 04:44:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.1:
+  * fix(ui): update colors hook (#2347)
+  * chore(backport release-0.8): fix(ui): stop relying on
+    deprecated field in images table (#2345)
+  * chore(backport release-0.8): fix(ui): hide promotion button for
+    control flow stages (#2343)
+  * chore(backport release-0.8): fix(ui): properly display stage
+    indicators in timeline after migration (#2337)
+  * chore(backport release-0.8): fix(ui): incorrect DAG rendering
+    for singular forward connection to node with multiple backward
+    connections (#2335)
+  * chore(backport release-0.8): docs: Update README.md (#2332)
+  * chore(backport release-0.8): fix(ui): crash in stage details
+    popover (#2331)
+
+-------------------------------------------------------------------
+Sat Jul 20 09:32:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  Big update with breaking changes (for Kargo itself, not the CLI)
+  Please check the release notes:
+  https://github.com/akuity/kargo/releases/tag/v0.8.0
+  No apparent CLI-related changes
+
+-------------------------------------------------------------------
+Sat Jun 15 16:15:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.1:
+  https://github.com/akuity/kargo/releases/tag/v0.7.1
+  No apparent CLI-related changes
+
+-------------------------------------------------------------------
+Fri Jun 07 20:15:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.0:
+  https://github.com/akuity/kargo/releases/tag/v0.7.0
+  No apparent CLI-related changes
+
+-------------------------------------------------------------------
+Wed May 08 11:07:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.0:
+  The Kargo team is thrilled to announce the release of v0.6.0,
+  packed with stability improvements, enhancements, and new
+  features. While the list of improvements and additions is
+  extensive, we have highlighted some features you can look forward
+  to exploring.
+  If you are looking for a more complete list, please do consult
+  the full changelog
+  https://github.com/akuity/kargo/compare/v0.5.2...v0.6.0
+  * Notes on Upgrading
+    There is a single breaking change: the "well-known"
+    kargo-secret-manager ClusterRole has been renamed to
+    kargo-project-admin. However, this release includes a built-in
+    upgrade reconciler to ensure a seamless upgrade process by
+    automatically changing any project-level bindings referencing
+    the old name to reference the new one.
+    Please note that if you are upgrading from a version older than
+    v0.5.0, you first need to upgrade to v0.5.x before upgrading to
+    v0.6.0. This is due to breaking changes introduced in v0.5.0,
+    for which no upgrade aid exists in this release.
+  * Role Management
+    Kargo will now create two roles in every Project: kargo-admin
+    and kargo-viewer.
+    The Kargo UI and CLI further allow creating and managing
+    additional roles to provide scoped access to Kargo resources in
+    a Project, which can be mapped to OIDC emails, subjects, and
+    groups.
+  * Warehouse Filters
+    In v0.5.0, Warehouse subscription filters using regular
+    expressions were introduced. Making it possible to, for
+    instance, subscribe to a monorepo, but trigger the production
+    of new Freight only when changes to relevant paths are
+    detected.
+    In this release, this feature has been further enhanced to
+    support glob patterns (using a glob: prefix) and exact paths to
+    files or directories. Additionally, the filters now apply to
+    all commit selection strategies (and not just
+    NewestFromBranch).
+    For more detailed information, please take a look at the Kargo
+    documentation.
+  * Kubernetes Events
+    Kargo will now emit Kubernetes Events for noteworthy changes.
+    For example, when a new Promotion is created or the
+    verification of Freight in a Stage succeeded. These events can
+    also be viewed in the newly introduced events tab in the
+    Project dashboard of the Kargo UI.
+  * GitLab Merge Requests
+    In v0.3.0, support for opening a GitHub pull request was added
+    to Git-based promotion mechanisms. With the help of
+    @PhilippParis, this has now been expanded to support GitLab
+    merge requests.
+  * UI Improvements
+    - Project settings and AnalysisTemplate resources can now be
+      managed through the UI.
+    - Variety of bug fixes and other stability improvements.
+  * Other Notable Features
+    - Credentials can now include descriptions, which are displayed
+      in the UI for informational purposes. We plan to expand this
+      feature to more Kargo resource types in the future.
+    - kargo get commands now support a --no-headers flag, which
+      will avoid printing the column headers when provided.
+    - kargo promote can now wait for a Promotion to finish using
+      --wait.
+    - Kargo can now be configured (via the chart configuration) to
+      sign commits with a GPG key.
+    - Arbitrary volumes can be mounted to the optional Dex server
+      (via the chart configuration) to support more complex
+      connector configurations. This can for example be useful to
+      configure Dex's google connector to get additional Google
+      Groups information from your users, allowing you to assign
+      permissions to members of a Google Group.
+
+-------------------------------------------------------------------
+Sat Apr 20 11:36:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.2:
+  * fix: backport #1854 git url normalization logic to release-0.5
+    (#1864)
+  * fix: pass version info to UI during build -- release-0.5
+    edition (#1803)
+
+-------------------------------------------------------------------
+Tue Apr 09 06:27:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.1:
+  * chore: backport recent prs to release-0.5 (#1801)
+  * fix(ui): backport protobuf fixes from `main` to `release-0.5`
+    (#1800)
+  * feat: backport analysistemplate and analysisrun views to
+    release-0.5 (#1782)
+
+-------------------------------------------------------------------
+Fri Apr 05 06:05:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.0:
+  Big update with breaking changes, see release notes at
+  https://github.com/akuity/kargo/releases/tag/v0.5.0
+  * All New CLI
+    Breaking Change
+    - The CLI has been virtually rewritten from the ground up. Up
+      until now it wasn't an area of the project that had received
+      the attention it deserved and we knew its UX needed quite a
+      bit of work. All that has changed with this release!
+    - The updated CLI should feel more intuitive across the board,
+      behavior and help text should be more consistent from one
+      command to the next, and we've added quite a bit of new
+      functionality as well. Especially notable is that credentials
+      can now be managed and verification processes re-run or even
+      aborted via CLI.
+    - If you upgrade Kargo's cluster-side components, you must also
+      upgrade the CLI (if you use it).
+
+-------------------------------------------------------------------
+Sat Mar 30 10:17:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.5:
+  * fix(cli): restore ability to read manifests from stdin -- 0.4
+    edition (#1716)
+
+-------------------------------------------------------------------
+Sat Mar 16 17:37:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.4:
+  * chore(chart): be more careful about undefined values -- 0.4.x
+    edition (#1603)
+
+-------------------------------------------------------------------
+Sat Mar 16 17:31:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.3:
+  * fix(chart): warnings in chart install/upgrade (#1558)
+
+-------------------------------------------------------------------
+Sat Feb 24 09:16:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.2:
+  * fix(cli): don't involve kubeconfig in reading bytes from files
+    (#1528)
+
+-------------------------------------------------------------------
+Sat Feb 24 09:12:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.1:
+  * fix(crds): stage validation issue with kargo render promo mechs
+    (#1519)
+
+-------------------------------------------------------------------
+Thu Feb 22 12:41:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kargo-cli: CLI for the Kargo Application lifecycle
+  orchestration platform

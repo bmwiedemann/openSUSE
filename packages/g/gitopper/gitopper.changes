@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 14 14:23:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.20:
+  * Enable unit after mounting. (#81)
+
+-------------------------------------------------------------------
+Sat Sep 14 14:22:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.19:
+  * The `Action` set might be `reload` and that would not start the
+    unit. (#80)
+
+-------------------------------------------------------------------
+Sat Sep 14 14:20:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.18:
+  * There is a bug with paths longer than 80 characters. When
+    running `git pull --stat` for changes with these long paths.
+    You get a truncated path: (#79)
+
+-------------------------------------------------------------------
+Sat Sep 14 14:15:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.17:
+  * Clear errors (#78)
+  * Use tabwriter from the standard library to print aligned text.
+    (#77)
+  * Remount files (#76)
+  * ci doesnt compile; remove
+
+-------------------------------------------------------------------
 Mon Aug 12 05:47:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package gitopper: Gitops for non-Kubernetes folks

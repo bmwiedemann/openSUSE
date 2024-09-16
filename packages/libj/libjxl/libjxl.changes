@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:48:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.11.0
+  * Added Gain Map API: ``JxlGainMapBundle`` struct and API
+    functions to read and write gain map
+    ``bundlesJxlGainMapWriteBundle`` and ``JxlGainMapReadBundle``
+    as well as handling compressed ICC profiles:
+    ``JxlICCProfileEncode`` and ``JxlICCProfileDecode``.
+  * Decoder API: added ``JXL_DEC_BOX_COMPLETE`` event to signal
+    that the output buffer for the current box has received all
+    contents.
+
+-------------------------------------------------------------------
 Fri Aug 30 11:16:35 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update libjxl.spec:

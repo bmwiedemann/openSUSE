@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 11 05:41:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.4:
+  * community_steering_committee.rst: fix collection requirements
+    link (#1828) (#1840)
+  * ci: refresh dev dependencies (#1832)
+  * ci: refresh dev dependencies (#1824)
+  * steering_committee_membership: clarify guidelines about team
+    representatives (#1806) (#1817)
+  * Clarify any_errors_fatal behavior change in 2.17 porting guide
+    (#1815) (#1816)
+  * steering_committee_membership: fix rst link syntax error
+    (#1805) (#1813)
+  * nox: support nox uv backend (#1757) (#1810)
+  * [Needs SC vote before merging] Steering Committee: team
+    membership (#1237) (#1811)
+  * Bump antsibull-docs and antsibull-docs-parser versions (#1799)
+    (#1802)
+  * [stable-2.17] ci: refresh dev dependencies (#1795)
+  * tests: update pydantic version in lockfile (#1788)
+  * Fix broken list markup in the "Installing collections"
+    documentation. (#1798) (#1800)
+  * Fix links in collection requirements. (#1785) (#1787)
+  * ci: ensure ansible-core files exist before running docs build
+    (#1756) (#1780)
+  * fix indents network documents (#1776) (#1779)
+  * add note about arguments in shebang in modules (#1718) (#1773)
+  * ci: refresh dev dependencies (#1768)
+  * ci: refresh dev dependencies (#1753)
+  * [Needs SC vote before merging] Collection requirements: add
+    Forum-related reqs (#1703) (#1761)
+  * Add porting guide for Ansible 10.3.0. (#1746) (#1750)
+  * Add porting guide for Ansible 9.9.0. (#1745) (#1749)
+  * Added 'direct' to general precedence (#1740) (#1743)
+
+-------------------------------------------------------------------
 Tue Aug 13 17:47:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.3:

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Sep 14 15:05:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * Bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0
+    (#555)
+  * Bump sigs.k8s.io/controller-tools in the kubernetes group
+    (#554)
+  * Bump github.com/docker/docker (#556)
+  * feat: add user impersonation to all commands  (#549)
+  * Bump github.com/docker/docker (#551)
+  * Bump the kubernetes group with 8 updates (#550)
+  * Make is possible to build with Go 1.23. (#548)
+  * Bump github.com/docker/docker (#545)
+  * Bump the kubernetes group with 5 updates (#544)
+
+-------------------------------------------------------------------
+Thu Jul 11 07:52:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kuttl: KUbernetes Test TooL

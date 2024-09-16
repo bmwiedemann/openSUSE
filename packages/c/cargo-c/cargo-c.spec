@@ -17,10 +17,8 @@
 #
 
 
-%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
-
 Name:           cargo-c
-Version:        0.9.32~git0.56dfe34
+Version:        0.10.3~git0.ee7d7ef
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
@@ -29,11 +27,10 @@ Group:          Development/Languages/Rust
 URL:            https://crates.io/crates/cargo-c
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
-
 Source1000:     README.suse-maint
-BuildRequires:  cargo
+BuildRequires:  cargo >= 0.80.0
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  cargo-packaging
 
 %description
 The is a cargo applet to build and install C-ABI compatibile dynamic and static
@@ -46,20 +43,14 @@ software.
 %prep
 %autosetup -a1 -p1
 
-install -d -m 0755 .cargo
-cp %{SOURCE2} .cargo/config
-
 %build
-export RUSTFLAGS="%{rustflags}"
-cargo build --offline --release
+%{cargo_build}
 
 %install
-export RUSTFLAGS="%{rustflags}"
-cargo install --offline --root=%{buildroot}%{_prefix} --path .
+%{cargo_install}
 
 find %{buildroot} -name .crates2.json -delete
 rm -rf %{buildroot}%{_datadir}/cargo/registry
-rm %{buildroot}%{_prefix}/.crates.toml
 
 %files
 %license LICENSE

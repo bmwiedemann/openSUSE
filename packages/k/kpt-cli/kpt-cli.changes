@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Sep 14 08:57:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.0~beta.55:
+  * chore: upgraded docker/protobuf dependencies (#4172)
+  * build(deps): bump github.com/docker/docker
+  * Propagate ResourceGroup labels and annotations (#4165)
+
+-------------------------------------------------------------------
+Fri Aug 16 04:44:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kpt-cli: CLI for kpt, the package-centric toolchain
+  that enables a WYSIWYG configuration authoring, automation, and
+  delivery experience for Kubernetes

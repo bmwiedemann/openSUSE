@@ -52,4 +52,12 @@
   * The support for Python 3.7 has been dropped.</comment>
     <requestid>1159265</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5a8bca97d2421830aa1d7fac97bc2cf</srcmd5>
+    <version>24.8.0</version>
+    <time>1726501346</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1201244</requestid>
+  </revision>
 </revisionlist>

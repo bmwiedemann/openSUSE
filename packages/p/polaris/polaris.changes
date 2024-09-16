@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 14 08:16:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.3.0:
+  * INSIGHTS-8 Polaris: Harden admission against rogue pods (#1064)
+  * docs: update documentation from template (#1063)
+
+-------------------------------------------------------------------
 Thu Jul 18 18:56:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.2.1:

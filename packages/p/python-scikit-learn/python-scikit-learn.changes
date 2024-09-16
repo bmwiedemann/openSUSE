@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  8 13:26:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * small number of regression fixes, see
+    https://scikit-learn.org/stable/whats_new/v1.5.html#version-1-5-1
+
+-------------------------------------------------------------------
 Sun Sep  1 19:25:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - prepare for python 3.13 testin

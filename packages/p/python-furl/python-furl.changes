@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:56:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove-six.patch (gh#gruns/furl#175) removing the
+  dependency on six.
+- Add fix-test_odd_urls.patch fixing the failure of
+  tests/test_furl.py::TestFurl::test_odd_urls test with the
+  recent Python interpreters (gh#gruns/furl#176).
+
+-------------------------------------------------------------------
 Tue Jul  2 20:29:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add netloc-tests.patch to skip failing test with python 3.12

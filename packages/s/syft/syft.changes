@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Sep 12 04:56:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.2 (no releases between 1.11.1 and this
+  one):
+  * chore: make ci-check.sh an executable file (#3220)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.12 to
+    1.1.14 (#3219)
+  * chore: restore ci-check.sh script (#3218)
+  * Add haskell binaries cataloger (#3078)
+  * chore(deps): update CPE dictionary index (#3206)
+  * chore(deps): bump golang.org/x/net from 0.28.0 to 0.29.0
+    (#3203)
+  * Add the Ocaml ecosystem (#3112)
+  * chore(deps): bump github.com/charmbracelet/bubbles from 0.19.0
+    to 0.20.0 (#3209)
+  * chore(deps): bump modernc.org/sqlite from 1.32.0 to 1.33.0
+    (#3210)
+  * chore(deps): bump github.com/docker/docker (#3211)
+  * chore(deps): bump github.com/dave/jennifer from 1.7.0 to 1.7.1
+    (#3212)
+  * dont cleanup cache in forks (#3214)
+  * less verbose java logging when non-fatal issues arise (#3208)
+  * Slim down docker cache size (#3190)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.0 to
+    7.0.1 (#3196)
+  * chore(deps): bump golang.org/x/mod from 0.20.0 to 0.21.0
+    (#3197)
+  * fix: haproxy classifier for versions with -dev suffix (#3180)
+  * chore(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3 to
+    3.3.0 (#3177)
+  * chore(deps): update CPE dictionary index (#3183)
+  * chore(deps): bump actions/upload-artifact from 4.3.6 to 4.4.0
+    (#3184)
+  * chore(deps): bump peter-evans/create-pull-request from 6.1.0 to
+    7.0.0 (#3187)
+  * fix: properly decode SPDX license expressions in CycloneDX
+    format (#3175)
+  * chore(deps): bump github.com/docker/docker (#3168)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#3171)
+  * chore(deps): bump github/codeql-action from 3.26.5 to 3.26.6
+    (#3173)
+  * fix: cycles resolving relative path parent poms with
+    parent-defined variables (#3170)
+  * fix: improve generated cpes for binaries with existing
+    classifiers (#3169)
+  * fix: add log time of task (#3105)
+  * fix: improve known CPEs and set NVD as source for all current
+    binary classifiers (#3167)
+  * respond to authoratative CPEs from catalogers (#3166)
+  * set cataloger names within package cataloger task (#3165)
+  * fix: use official CPE for curl binary cataloger (#3164)
+  * chore(deps): update tools to latest versions (#3160)
+  * chore(deps): update CPE dictionary index (#3161)
+  * chore(deps): bump github/codeql-action from 3.26.4 to 3.26.5
+    (#3162)
+  * fix ELF package correlations (#3151)
+  * chore(deps): update tools to latest versions (#3144)
+  * feat: detect curl binaries (#3146)
+  * chore(deps): bump anchore/sbom-action from 0.17.1 to 0.17.2
+    (#3155)
+  * chore(deps): bump github/codeql-action from 3.26.3 to 3.26.4
+    (#3154)
+  * chore(deps): update stereoscope to
+    e6d086e8bef5fab4fcfbd60c9a759c4cb229decf (#3152)
+  * chore(deps): bump github.com/charmbracelet/bubbles from 0.18.0
+    to 0.19.0 (#3148)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#3147)
+  * chore(deps): bump github.com/anchore/stereoscope (#3153)
+  * fix: mysql 8.0.3x binary detection (#3142)
+  * chore(deps): bump github/codeql-action from 3.26.2 to 3.26.3
+    (#3139)
+
+-------------------------------------------------------------------
 Tue Aug 20 16:41:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.11.1:

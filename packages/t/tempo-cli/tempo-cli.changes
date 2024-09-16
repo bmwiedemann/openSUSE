@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 14 14:25:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.0:
+  https://github.com/grafana/tempo/releases/tag/v2.6.0
+  CLI-related changes:
+  * [ENHANCEMENT] Added a Tempo CLI command to drop traces by id by
+    rewriting blocks. #3856 (@joe-elliott)
+  * [ENHANCEMENT] Add vParquet4 support to the tempo-cli analyse
+    blocks command #3868 (@stoewer)
+  * [ENHANCEMENT] Expose availability-zone as a cli flag in
+    ingester #3881
+
+-------------------------------------------------------------------
 Sat Jun 01 09:13:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.0:

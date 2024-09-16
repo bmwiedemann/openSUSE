@@ -30,17 +30,21 @@ Source:         https://files.pythonhosted.org/packages/source/f/furl/furl-%{ver
 # use ipaddress to parse IP addresses
 Patch0:         165-use-ipaddress-library.patch
 Patch1:         netloc-tests.patch
+# PATCH-FEATURE-UPSTREAM remove-six.patch gh#gruns/furl#175 mcepl@suse.com
+# remove the need of using six
+Patch2:         remove-six.patch
+# PATCH-FIX-UPSTREAM fix-test_odd_urls.patch gh#gruns/furl#176 mcepl@suse.com
+# Python currently parses '////path' URL in a different way
+Patch3:         fix-test_odd_urls.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-orderedmultidict >= 1.0.1
-Requires:       python-six >= 1.8.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module orderedmultidict >= 1.0.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.8.0}
 # /SECTION
 %python_subpackages
 

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 12 08:08:09 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.6.2
+    * New features
+        * Theme support
+            * Ability to change palette colours and fonts
+            * Includes dark mode theme
+            * Option to save to layouts on export
+    * Improvements
+        * Filters: Enable library viewer playlist by default
+        * Scripting: Make variable calls case-insensitive
+        * Settings: Add page to toggle and adjust order of decoders/tag readers
+        * VolumeControl: Support enabling both icon and slider
+    * Fixes
+        * Controls: Fix volume slider resizing splitter
+        * Engine: Fix crash when reading short archive entries
+        * ExpandedTreeView: Fix setting uniform row heights
+        * Playlist
+            * Fix crash when switching to single-column mode
+            * Fix track repeating with shuffle + repeat playlist enabled
+            * Fix some rare instances of duplicate tracks
+            * Fix auto-naming of new playlists for tracks with limited metadata
+        * Search: Fix sorting by column
+- Release notes for interim release 0.6.1 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.6.1
+- Release notes for interim release 0.6.0 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.6.0 
+
+-------------------------------------------------------------------
 Mon Jul  8 15:00:54 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to upstream 0.5.3

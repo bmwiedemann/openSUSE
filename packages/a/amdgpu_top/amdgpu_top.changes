@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Tue Sep  3 13:35:32 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.9.1:
+  * Rework libamdgpu_top and SMI mode, JSON mode to launch from
+    suspended devices without waking them up.
+  * Revert "json: update OutputJson for GpuMetrics"
+    for output as raw values as possible
+  * Do not scroll fdinfo list if proc len is less than 8
+
+-------------------------------------------------------------------
+Wed Jul 24 15:32:20 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.9.0:
+  * Too many changes to list
+  * See https://github.com/Umio-Yasuno/amdgpu_top/compare/v0.2.1...v0.9.0
+- Drop %cargo_install usage
+
+-------------------------------------------------------------------
+Sun Oct 22 12:19:52 UTC 2023 - Erefd X <zzndb001@gmail.com>
+
+- Install docs and desktop files
+
+-------------------------------------------------------------------
+Sun Oct 22 11:14:19 UTC 2023 - zzndb001@gmail.com
+
+- Update to version 0.2.1:
+  * v0.2.1
+  * add "-V" and "--version" options
+  * update mail address
+  * add git commit id to title for debug
+  * gui: update dependencies
+  * tui: clippy
+  * gui: clippy
+  * update libdrm_amdgpu_sys to v0.2.1
+  * gui: add Power Profiles info to Device Info panel
+  * Power Profiles
+  * json: update Sensors::json
+  * tui, gui: support GpuMetrics::V2_4 (for VanGogh APU & Linux Kernel 6.6-rcX)
+  * update to libdrm_amdgpu_sys v0.2.0
+  * gui: remove duplicate PCIe Link Speed
+  * docs: add sample.json
+  * json: add PCIe Link to json_info
+  * json: fix JsonApp::run, usage calculation requires previous results
+  * lib: if MediaEngine usage in GpuActivity is `None` or `Some(0)`, use sum of fdinfo
+  * update README.md
+  * update help msg
+  * lib, smi, tui, json: use spawn_update_index_thread
+  * json: add amdgpu_top_version to output
+  * lib, tui, gui, json: cleanup the code for vcn_unified
+  * lib: update GpuActivity
+  * lib: use ASIC_NAME for gpu_activity
+  * json: full update
+  * lib: update gpu_activity for GPUs not supporting `average_{gfx,umc,mm}_activity`
+  * Revert "json, dump: add power_avg"
+  * json: add version to JSON mode
+  * json: add info to JSON mode
+  * add `--apu, --select-apu` option
+  * json: re-add `-s` option for JSON mode
+  * json, dump: add power_avg
+  * Added Solus install instructions
+  * json: use map_or
+  * update README.md
+  * dump info in JSON format
+  * update README.md
+  * gui: fix typo ("mw" -> "mv")
+  * add Example of using JSON mode to README.md
+  * add " (debug build)" to TITLE if debug build
+  * lib, smi: cleanup
+  * tui: update PerfCounterView and VramUsageView for multi-layers
+  * update README.md
+  * update README.md for about i18n
+
+-------------------------------------------------------------------
+Fri Oct  6 23:04:58 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Initial release

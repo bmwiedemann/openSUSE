@@ -32,7 +32,7 @@
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.13.3
+Version:        3.13.4
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later

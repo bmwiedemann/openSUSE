@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 14 08:28:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.20.2:
+  * fix(release): update goreleaser to 2.2.0 (#550)
+
+-------------------------------------------------------------------
 Wed Aug 21 06:34:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.20.1:

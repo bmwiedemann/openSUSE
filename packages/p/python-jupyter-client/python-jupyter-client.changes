@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 15 15:59:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.6.2
+  * Use non-blocking zmq Poller #1023 (@fcollonval)
+
+-------------------------------------------------------------------
 Fri Mar 29 18:08:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.6.1

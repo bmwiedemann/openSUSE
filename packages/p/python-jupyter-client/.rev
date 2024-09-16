@@ -395,4 +395,13 @@ Update to 5.3.4</comment>
   * Update Release Scripts #1016 (@blink1073)</comment>
     <requestid>1163569</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ef3a1f11bb10a8a99aa3da75c801ade7</srcmd5>
+    <version>8.6.2</version>
+    <time>1726501212</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.6.2
+  * Use non-blocking zmq Poller #1023 (@fcollonval)</comment>
+    <requestid>1201257</requestid>
+  </revision>
 </revisionlist>

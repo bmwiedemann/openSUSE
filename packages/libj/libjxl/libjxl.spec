@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libjxl0_10
+%define lname   libjxl0_11
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.10.3
+Version:        0.11.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause

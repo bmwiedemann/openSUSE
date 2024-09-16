@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bc651fde54876995b0db1991fcc6893</srcmd5>
+    <version>1.0.0~beta.55</version>
+    <time>1726501293</time>
+    <user>anag+factory</user>
+    <comment>new package kpt-cli: CLI for kpt, the package-centric toolchain that enables a WYSIWYG configuration authoring, automation, and delivery experience for Kubernetes</comment>
+    <requestid>1201079</requestid>
+  </revision>
+</revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:21:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add 71.patch: fix comment and harmonise the version branches
+
+-------------------------------------------------------------------
+Mon Sep 16 08:27:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add 70.patch: fix build with Boost < 1.66
+
+-------------------------------------------------------------------
+Fri Sep 13 15:12:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add 69.patch: fix regression building against Boost < 1.86
+
+-------------------------------------------------------------------
 Wed Sep  4 14:53:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 68.patch: fix build against Boost 1.86.

@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitopper
-Version:        0.0.16
+Version:        0.0.20
 Release:        0
 Summary:        Gitops for non-Kubernetes folks
 License:        Apache-2.0

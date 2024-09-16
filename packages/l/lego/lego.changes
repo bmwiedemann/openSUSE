@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 14 16:44:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.18.0:
+  * Prepare release v4.18.0
+  * Add DNS provider for Mittwald (#2200)
+  * Add DNS provider for Lima-City (#2248)
+  * Add DNS provider for mijn.host (#2252)
+  * fix(ari): avoid Int63n panic in ShouldRenewAt() (#2246)
+  * chore: update go version inside go.mod (#2241)
+  * docs: fix favicon
+  * chore: update linter
+  * docs: update theme (#2240)
+  * cloudflare: update documentation to specify the unit of
+    time-based options (#2239)
+  * feat: add LEGO_ISSUER_CERT_PATH to run hook (#2234)
+  * chore: bump to github.com/vultr/govultr/v3 (#2235)
+  * directadmin: update documentation
+  * chore: homogenous zone name env var management (#2232)
+  * Add DNS provider for DirectAdmin (#2225)
+  * bluecat: skip deploy (#2230)
+  * designate: allow manually overwriting DNS zone (#2204)
+  * fix: restore Solaris (#2217)
+  * ovh: allow to use ovh.conf file (#2216)
+  * docs: add note about snap (#2201)
+  * feat: expose certificates pool creation (#2210)
+  * feat: add option to handle the overall request limit (#2209)
+  * chore: improve issue templates
+  * chore: fix changelog
+  * Detach v4.17.4
+
+-------------------------------------------------------------------
 Thu Jun 13 05:24:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.17.4:

@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sat Sep 14 13:58:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.0:
+  In this release, we focused on improving our documentation to
+  ease people using and writing their own gadgets.
+  We also added a new gadget to trace the calls to inotify() and
+  fanotify().
+  * General Improvements
+    - tools: Remove check-readme. by @eiffel-fl in #3299
+    - container-collection: Add OwnerKind and OwnerName to
+      K8sEnrichment by @burak-ok in #3319
+    - Post-release: update gadgets version to v0.31.0 by @alban in
+      #3339
+    - columns: add support for displaying event data in Hex format
+      by @Snehil-Shah in #3307
+    - example/Dockerfile: Use JSON args to prevent unintended
+      behavior related to OS signals by @burak-ok in #3346
+    - image build: allow alternative tinygo by @alban in #3348
+    - datasource: Fix order for K8S.NODE by @mqasimsarfraz in #3323
+    - gadgetctl/kubectl-gadget: Ensure sorting after combining data
+      from all targets by @blanquicet in #3326
+    - ig: Add optional further K8s enrichment (Ownertype and
+      Ownername in this PR) by @burak-ok in #3360
+    - New gadget: fsnotify by @alban in #3218
+    - Add mechanism to disable pulling image-based gadgets by
+      @eiffel-fl in #3369
+    - pkg/operators/cli: Improve log level for errors and avoid
+      blocking other ds when one fails by @blanquicet in #3413
+    - pkg/datasource/columns: Default MaxWith attribute based on
+      field type (For int and bool) by @blanquicet in #3414
+  * Bug Fixes
+    - pkg/gadgets: Fix tree output for snapshot process. by
+      @eiffel-fl in #3315
+    - image/build: Fix wasm compilation by @mauriciovasquezbernal
+      in #3341
+    - pkg/datasource: Hide enriched timestamp column by default by
+      @blanquicet in #3378
+    - cmd: Handle --apparmor-profile to work better on k8s 1.30 and
+      higher. by @eiffel-fl in #3377
+    - Switch to gopacket/gopacket by @mauriciovasquezbernal in
+      #3386
+    - charts: Fix config map volume by @mauriciovasquezbernal in
+      #3389
+    - columns template: add max size on some fields by @alban in
+      #3401
+    - pkg/operators: Add limiter by @blanquicet in #3327
+  * Documentation Improvements
+    - docs/gadget-devel/metadata: Improve description of
+      datasources by @blanquicet in #3316
+    - Document security related options for ig daemon by @eiffel-fl
+      in #3322
+    - Add link to v0.31.0 post in README by @blixtra in #3328
+    - gadgets/top_tcp: fix typo in date by @alban in #3337
+    - docs: Fix broken links by @mauriciovasquezbernal in #3300
+    - docs: Fix more broken links by @mauriciovasquezbernal in
+      #3340
+    - docs/legacy: Update the sort_by list by @burak-ok in #3345
+    - docs: Rename CONTRIBUTING.md by @mqasimsarfraz in #3349
+    - treewide: Bump golang to 1.22.5. by @eiffel-fl in #3317
+    - docs: Use GitHub instead of elixir by @mauriciovasquezbernal
+      in #3359
+  * Testing and Continue Integration
+    - feat(test): added test for gadgets/trace_tcpconnect by
+      @mastersans in #3258
+    - snapshot_process: Sleep before starting the gadget by
+      @burak-ok in #3338
+    - gha: Remove unneeded strategy on workflow file by
+      @andoriyaprashant in #3302
+    - feat(test): added test for gadgets/trace_tcpretrans by
+      @mastersans in #3294
+    - ci: Automatically update website on push by
+      @mauriciovasquezbernal in #3342
+    - ci: Add check for gadget guides by @mqasimsarfraz in #3367
+    - gadgets/readmes: update all gadgets documentation by @alban
+      in #3358
+    - docs: Add missing symlink to render gadget documentation by
+      @mauriciovasquezbernal in #3364
+    - docs/op: Add UidGidResolver documentation by @burak-ok in
+      #3324
+    - gadgets: update sourceURL and documentationURL by @alban in
+      #3376
+    - docs: add diagrams for running modes by @alban in #3219
+    - docs: Add missing columns.hex annotation by
+      @mauriciovasquezbernal in #3384
+    - docs: Add Detailed Guide for Filtering in User Space by
+      @andoriyaprashant in #3402
+    - dependabot: Fix groups by @mauriciovasquezbernal in #3415
+    - docs/spec/oci: Fix broken link by @blanquicet in #3422
+    - docs: Add some links by @mauriciovasquezbernal in #3420
+    - docs: fsnotify: replace handmade diagram by mermaid diagram
+      by @alban in #3421
+    - added change in docs by @836hardik-agrawal in #3425
+
+-------------------------------------------------------------------
 Tue Aug 06 05:39:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.0:

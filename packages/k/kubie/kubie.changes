@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:03:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.0:
+  * Version 0.24.0
+  * add partial namespace matching (#245)
+  * Bump the all group across 1 directory with 4 updates (#266)
+  * feature #263: add default editor settings (#264)
+  * Bump the all group across 1 directory with 6 updates (#262)
+  * order contexts alphabetically in kubie exec (#246)
+
+-------------------------------------------------------------------
 Wed Jul 03 15:13:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.1:

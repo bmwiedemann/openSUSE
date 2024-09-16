@@ -19,18 +19,22 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           istioctl
-Version:        1.23.0
+Version:        1.23.1
 Release:        0
 Summary:        CLI for the istio servic mesh in Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/istio/istio
-Source:         istio-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.22
 
 %description
-The istioctl tool is a configuration command line utility that allows service operators to debug and diagnose their Istio service mesh deployments. The Istio project also includes two helpful scripts for istioctl that enable auto-completion for Bash and ZSH. Both of these scripts provide support for the currently available istioctl commands.
+The istioctl tool is a configuration command line utility that allows service
+operators to debug and diagnose their Istio service mesh deployments. The Istio
+project also includes two helpful scripts for istioctl that enable
+auto-completion for Bash and ZSH. Both of these scripts provide support for the
+currently available istioctl commands.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -54,8 +58,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q -n istio-%{version}
-%setup -q -T -D -a1 -n istio-%{version}
+%autosetup -p 1 -a 1
 
 %build
 go build \

@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           zoxide
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        A smarter cd command
 License:        MIT
@@ -27,7 +27,6 @@ Group:          System/Console
 URL:            https://github.com/ajeetdsouza/zoxide
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.31
 
@@ -38,9 +37,6 @@ just a few keystrokes.
 
 %prep
 %autosetup -p1 -a1
-
-install -d -m 0755 .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}

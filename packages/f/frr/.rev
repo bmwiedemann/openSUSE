@@ -306,4 +306,15 @@
     <comment></comment>
     <requestid>1195727</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>5b3c208878f2ff58ba7d0accc5f28e6f</srcmd5>
+    <version>10.0.1</version>
+    <time>1726501302</time>
+    <user>anag+factory</user>
+    <comment>- fixed bug/pull request references in frr.changes file
+
+  treat-as-withdraw outcome (CVE-2023-47235,bsc#1216896,https://github.com/FRRouting/frr/pull/14716/commits/6814f2e0138a6ea5e1f83bdd9085d9a77999900b)
+  bsc#1216897,https://github.com/FRRouting/frr/pull/14716/commits/c37119df45bbf4ef713bc10475af2ee06e12f3bf)</comment>
+    <requestid>1201405</requestid>
+  </revision>
 </revisionlist>

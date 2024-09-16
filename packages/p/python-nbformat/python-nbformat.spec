@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-nbformat
-Version:        5.10.3
+Version:        5.10.4
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -38,10 +38,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-fastjsonschema
+Requires:       python-fastjsonschema >= 2.15
 Requires:       python-jsonschema > 2.6
-Requires:       python-jupyter_core
 Requires:       python-traitlets >= 5.1
+Requires:       (python-jupyter_core >= 4.12 with (python-jupyter_core < 5 or python-jupyter_core >= 5.1))
 Provides:       python-jupyter_nbformat = %{version}-%{release}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
@@ -53,13 +53,13 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module fastjsonschema}
+BuildRequires:  %{python_module fastjsonschema >= 2.15}
 BuildRequires:  %{python_module jsonschema > 2.6}
-BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module traitlets >= 5.1}
 BuildRequires:  %{pythons}
+BuildRequires:  %{python_module jupyter_core >= 4.12 with (%python-jupyter_core < 5 or %python-jupyter_core >= 5.1)}
 # /SECTION
 %python_subpackages
 

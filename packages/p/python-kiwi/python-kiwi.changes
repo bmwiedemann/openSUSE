@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:33:19 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.10 → 10.1.11
+
+-------------------------------------------------------------------
+Fri Sep 13 10:42:38 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- doc: Add login information test build test images
+
+-------------------------------------------------------------------
+Fri Sep 13 10:23:39 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.9 → 10.1.10
+
+-------------------------------------------------------------------
+Thu Sep 12 18:53:52 CEST 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- bootloader: Fix up ppc64 bootinfo again
+
+  To make the code look pretty extra newline is inserted at the start of
+  bootinfo file. This appears to break boot on Power9 PowerVM LPARs.
+
+-------------------------------------------------------------------
+Thu Sep 12 17:29:29 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for erofs
+
+  erofs is an alternative readonly filesystem that can be
+  used as alternative to squashfs. This Fixes #2633
+
+-------------------------------------------------------------------
+Thu Sep 12 10:57:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed enclave integration test
+
+  The SELinux policy of Fedora Rawhide when running completely in
+  an initrd is not suitable to let the system boot up. Thus the
+  current solution is to boot in permissive mode. A better solution
+  for the future would probably be a selinux policy for enclaves
+
+-------------------------------------------------------------------
+Wed Sep 11 14:15:07 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- limit eif_build requires to fedora >= 42
+
+-------------------------------------------------------------------
+Wed Sep 11 13:07:29 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.8 → 10.1.9
+
+-------------------------------------------------------------------
+Wed Sep 11 12:48:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added sshd to nitro-enclave integration test
+
+-------------------------------------------------------------------
+Wed Sep 11 12:21:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed container sync options
+
+  Do not exclude/filter any security/xattr capabilities.
+
+-------------------------------------------------------------------
+Wed Sep 11 12:20:34 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update container integration test
+
+  Add getcap to check on filesystem capabilities
+
+-------------------------------------------------------------------
+Wed Sep 11 11:01:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new build type provides for enclave
+
+  Add a provides tag (read by the open buildservice) for the new
+  enclave builder. Also add a recommends to eif_builder in
+  the systemdeps-core meta package
+
+-------------------------------------------------------------------
+Tue Sep 10 15:51:58 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update enclave documentation
+
+  Fixup repo setup in the build documentation
+
+-------------------------------------------------------------------
+Tue Sep 10 15:35:15 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.7 → 10.1.8
+
+-------------------------------------------------------------------
+Tue Sep 10 15:31:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed enclave documentation
+
+  Path to the build test was not correct
+
+-------------------------------------------------------------------
+Tue Sep 10 15:14:10 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-nitro-enclave package list
+
+  Fixup package list to match Fedora rawhide
+
+-------------------------------------------------------------------
+Tue Sep 10 15:06:32 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move test-image-nitro-enclave to rawhide
+
+-------------------------------------------------------------------
+Tue Sep 10 10:20:10 CEST 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix ppc64 chrp bootinfo generation
+
+-------------------------------------------------------------------
+Mon Sep 09 16:05:28 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed documentation header
+
+  Fixed double H1 headers from the boxbuild tweaks chapter.
+
+-------------------------------------------------------------------
+Mon Sep 09 15:32:14 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.6 → 10.1.7
+
+-------------------------------------------------------------------
+Mon Sep 09 15:26:15 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move EXEC log message to the right place
+
+  The log information of the command execution was not printed
+  directly before the actual command invocation. There are other
+  actions after the log information (e.g Path.which) which itself
+  produce log information prior the real subprocess execution.
+  This is very misleading when reading the log file and fixed
+  in this commit.
+
+-------------------------------------------------------------------
+Mon Sep 09 10:43:09 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for architectures in deb source file
+
+  When apt resolves packages on a multiarch repo it can happen
+  that dependencies for packages from other architectures are
+  pulled into the solver process but are not provided by any
+  repository. To overcome this behavior the repository can
+  be setup to serve packages only for a specified architecture
+  or list of architectures. This is related to
+  OSInside/kiwi-descriptions#102
+
+-------------------------------------------------------------------
 Fri Sep 06 10:41:00 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.5 → 10.1.6
@@ -563,6 +715,15 @@ Tue Jul 09 09:40:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 Mon Jul 08 09:17:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Supplements are not understood by Debian/Ubuntu
+
+-------------------------------------------------------------------
+Fri Jul 05 12:59:22 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new builder for enclaves
+
+  Add new EnclaveBuilder class which allows to build initrd-only
+  image types. The first enclave implementation covers aws-nitro
+  images produced via the eif_build tooling.
 
 -------------------------------------------------------------------
 Thu Jul 04 16:16:44 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

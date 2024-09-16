@@ -2613,4 +2613,41 @@
   is created if not present.</comment>
     <requestid>1199243</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>020df686e75417710a7fb8dec24f6304</srcmd5>
+    <version>10.1.11</version>
+    <time>1726501231</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.1.10 → 10.1.11
+
+- doc: Add login information test build test images
+
+- Bump version: 10.1.9 → 10.1.10
+
+- bootloader: Fix up ppc64 bootinfo again
+  To make the code look pretty extra newline is inserted at the start of
+  bootinfo file. This appears to break boot on Power9 PowerVM LPARs.
+
+- Add support for erofs
+  erofs is an alternative readonly filesystem that can be
+  used as alternative to squashfs. This Fixes #2633
+
+- Fixed enclave integration test
+  The SELinux policy of Fedora Rawhide when running completely in
+  an initrd is not suitable to let the system boot up. Thus the
+  current solution is to boot in permissive mode. A better solution
+  for the future would probably be a selinux policy for enclaves
+
+- limit eif_build requires to fedora &gt;= 42
+
+- Bump version: 10.1.8 → 10.1.9
+
+- Added sshd to nitro-enclave integration test
+
+- Fixed container sync options
+  Do not exclude/filter any security/xattr capabilities.
+
+- Update container integration test</comment>
+    <requestid>1200859</requestid>
+  </revision>
 </revisionlist>

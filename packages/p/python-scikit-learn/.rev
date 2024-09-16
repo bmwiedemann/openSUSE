@@ -720,4 +720,12 @@
     <comment>- prepare for python 3.13 testin</comment>
     <requestid>1198177</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6c1e390abc47d1e4930c5aa142dbdaf3</srcmd5>
+    <version>1.5.1</version>
+    <time>1726501210</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1201245</requestid>
+  </revision>
 </revisionlist>

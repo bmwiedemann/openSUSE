@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 14 13:59:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * Fix links in README (#764)
+  * Bump golang.org/x/text from 0.17.0 to 0.18.0 (#761)
+  * Lint
+  * Reinstall already installed k0s to reconfigure installFlags
+  * Use the correct field in custom binary version check (#759)
+  * Bump github.com/k0sproject/rig from 0.18.6 to 0.18.7 (#757)
+  * Relax version checking when using a custom K0sBinaryPath (#745)
+  * Bump github.com/creasty/defaults from 1.7.0 to 1.8.0 (#754)
+  * Bump k8s.io/client-go from 0.30.3 to 0.31.0 (#753)
+  * Bump github.com/urfave/cli/v2 from 2.27.3 to 2.27.4 (#751)
+  * Bump github.com/adrg/xdg from 0.4.0 to 0.5.0 (#738)
+  * Bump github.com/k0sproject/rig from 0.18.4 to 0.18.6 (#750)
+  * Use amd64 instead of x64 in binary filenames (#746)
+  * Bump github.com/urfave/cli/v2 from 2.27.2 to 2.27.3
+  * Bump k8s.io/client-go from 0.30.2 to 0.30.3
+
+-------------------------------------------------------------------
 Wed Jul 03 16:17:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.1:

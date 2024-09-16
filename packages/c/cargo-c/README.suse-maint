@@ -2,24 +2,16 @@
 
 ## Prerequisites:
 You need the download_files and cargo_vendor obs services installed:
-  zypper in obs-service-download_files obs-service-cargo_vendor
+  zypper in obs-service-obs_scm obs-service-cargo_vendor
 
 ## Updating to a new version from upstream
 
-Edit the spec file and update the version variable.
+Edit the _service file and update the revision parameter.
 
 Download the new source file by running:
-  osc service ra download_files
-
-Uncompress the cargo-c-%{version}.tar.gz file:
-  tar xvfz cargo-c-%{version}.tar.gz
-
-This will create a cargo-c-%{version} directory
-
-Edit the _service file and set the srcdir param
-to the extracted directory.
+  osc service mr obs_scm
 
 Run the cargo_vendor service with:
-  osc service disabledrun
+  osc service mr cargo_vendor
 
 Update the changelog file with the upstream release notes.

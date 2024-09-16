@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-towncrier
-Version:        23.11.0
+Version:        24.8.0
 Release:        0
 Summary:        Building newsfiles for your project
 License:        MIT

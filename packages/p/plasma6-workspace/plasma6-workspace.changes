@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 15 10:15:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix certain crashes on wayland (kde#488653, boo#1227204):
+  * 0001-libtaskmanager-waylandtasksmodel-disconnect-from-par.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

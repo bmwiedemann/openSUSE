@@ -19,14 +19,17 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           tempo-cli
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        CLI for the Grafana Tempo tracing backend
 License:        Apache-2.0
 URL:            https://github.com/grafana/tempo
-Source:         tempo-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+
+# fails to build with go1.23
+# https://github.com/grafana/tempo/issues/4086
+BuildRequires:  go1.22
 
 %description
 Tempo CLI is a separate executable that contains utility functions related to
@@ -34,11 +37,11 @@ the Tempo software. Although it is not required for a working installation,
 Tempo CLI can be helpful for deeper analysis or for troubleshooting.
 
 %prep
-%autosetup -p 1 -a 1 -n tempo-%{version}
+%autosetup -p 1 -a 1
 
 %build
 # hash will be shortended by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/tempo.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
 go build \
    -mod=vendor \

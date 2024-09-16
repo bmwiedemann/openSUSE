@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 14 18:22:51 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.9:
+  * Add new IPC functionality.
+  * Transactional updates.
+  * Add on-demand variable refresh rate as a window rule.
+  * Fix NVIDIA flickering.
+  * Small UX improvements.
+  * Changes height distribution.
+- Add pkgconfig(libdisplay-info) BuildRequires: needed for v0.1.9
+
+-------------------------------------------------------------------
 Sat Aug 10 18:57:10 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.8

@@ -1,0 +1,37 @@
+From 34e02902beec2d985dd66ee25c37b0b1bd1498a4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 16 Sep 2024 10:59:19 +0200
+Subject: [PATCH] Fix comment and sync the #if BOOST_VERSION to avoid including
+ a redirecting header
+
+---
+ src/libcmis/xml-utils.cxx | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/libcmis/xml-utils.cxx b/src/libcmis/xml-utils.cxx
+index 20c671e..38e01ec 100644
+--- a/src/libcmis/xml-utils.cxx
++++ b/src/libcmis/xml-utils.cxx
+@@ -36,10 +36,10 @@
+ #include <boost/algorithm/string.hpp>
+ #include <boost/version.hpp>
+ 
+-#if BOOST_VERSION >= 106800
+-#include <boost/uuid/detail/sha1.hpp>
+-#else
++#if BOOST_VERSION < 106600
+ #include <boost/uuid/sha1.hpp>
++#else
++#include <boost/uuid/detail/sha1.hpp>
+ #endif
+ #include <curl/curl.h>
+ 
+@@ -542,7 +542,7 @@ namespace libcmis
+         sha1.get_digest( digest );
+ 
+         stringstream out;
+-        // Setup writing mode. Every number must produce two
++        // Setup writing mode. Every byte must produce two
+         // hexadecimal digits, including possible leading 0s, or we get
+         // less than 40 digits as result.
+         out << hex << setfill('0') << right;

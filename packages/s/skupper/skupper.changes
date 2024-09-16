@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Sep 14 08:21:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * update for 1.8.1
+  * Mark the test as failed, if bad URL from token
+  * Assorted fixes on -use-cluster tests (#1391)
+
+-------------------------------------------------------------------
+Sat Sep 14 08:14:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * update for 1.8.1
+  * Avoid hiding the cursor when displaying a spinner (#1616)
+  * Update the collector to stop errant DNS Lookups (#1606)
+  * Sets site-server processes as bound/exposed. (#1578)
+  * pin router version to 2.6.1 for V1 (#1602)
+  * Fix image-pull test when not using :main tag (#1592)
+  * Adding flag: drop tcp connections (#1564)
+  * keep original port assignments within a service
+  * Ensure original target ports annotation is not overwritten once
+    set
+  * Remove confusing error message from configSyc log
+  * Added Skupper token status command
+  * Include labels from site spec on new secret
+  * Configure oauth-proxy with random cookie secret
+  * Incorrect podman version recommendation (#1450)
+  * do not overwrite unrecognised fields in router config entities
+  * TestBasic: address flaky test, improves debuggability (#1467)
+  * Display only locally exposed services in status and service
+    status commands for k8s and podman platforms (#1478)
+  * update packages (#1480)
+  * Removed unused attribute to keep it compatible with podman v5
+    (#1483)
+  * skupper init fixes for rootful podman (#1469)
+  * Add expiry time to token.  When token is being used to create
+    link verify the token hasn't expired.  If it has log a warning,
+    but continue trying to bring up link.
+  * skupper init for rootful podman should try
+    /run/podman/podman.sock (#1464)
+  * Updated format transformation to schema 2 (#1461)
+  * Proper handling of job removal on TestGateway subtests (#1462)
+
+-------------------------------------------------------------------
 Sun Aug 18 12:57:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.3:

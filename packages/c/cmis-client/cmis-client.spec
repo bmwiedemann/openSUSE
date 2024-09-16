@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define sover 0_6-6
 %define incname 0.6
 %define _name  libcmis
@@ -29,6 +30,9 @@ URL:            https://github.com/tdf/libcmis
 Source0:        https://github.com/tdf/%{_name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- Fux build against boost 1.86
 Patch0:         https://patch-diff.githubusercontent.com/raw/tdf/libcmis/pull/68.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/tdf/libcmis/pull/69.patch
+Patch2:         https://patch-diff.githubusercontent.com/raw/tdf/libcmis/pull/70.patch
+Patch3:         https://patch-diff.githubusercontent.com/raw/tdf/libcmis/pull/71.patch
 BuildRequires:  docbook2X
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -97,7 +101,7 @@ export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
     --disable-silent-rules \
     --disable-static \
     --disable-werror
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -106,9 +110,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 # bypass bug 955832
 %ifarch ppc64le
-make -k check %{?_smp_mflags} || echo "ignore check error"
+%make_build -k check || echo "ignore check error"
 %else
-make check %{?_smp_mflags}
+%make_build check
 %endif
 
 %post -n %{_name}-%{sover} -p /sbin/ldconfig

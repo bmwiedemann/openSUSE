@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 14 08:55:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.31.0:
+  * bump customize (#4443) (#4444)
+  * Fixed typo in a feature flag to enable dev branch tracking on
+    okteto up (#4440) (#4441)
+  * DEV-624: Added scan for okteto/bin image, and update okteto/bin
+    dependency to 1.6.1 (#4438) (#4439)
+  * fix: syncthing restarts with relay enabled (#4429)
+  * Add EC encryption to `okteto up` (#4435)
+  * Add executionEnv to deploy, destroy and test (#4434)
+  * fix smartbuild nested scenario (#4432)
+  * remove unused func getRepoNameFromGitURL in pkg/deps (#4431)
+  * fix: cve for helm (#4430)
+  * Prevent logs to be written from registry credential (#4423)
+  * DEV-575: Fix UpdateEnvs function to allow variable values with
+    '=' (#4426)
+  * Update README.md to make the difference of CLIs clearer (#4420)
+  * Update windows executors to pinned version (#4418)
+  * feat: add last okteto up branch on cmap (#4415)
+  * account for groups in repo urls in dependencies (#4416)
+
+-------------------------------------------------------------------
+Sat Sep 14 08:42:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.2:
+  * [Backport release-2.30] fix smartbuild nested scenario (#4433)
+
+-------------------------------------------------------------------
 Tue Aug 13 18:02:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.30.1:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 16 08:11:39 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add "which" to the list of dependencies
+  (gh#yast/yast-devtools#176).
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:33:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.43.0:
+  * chore: Update version.go for v0.43.0
+  * api: Fault helpers
+  * vcsim: Support PlaceVm with relocate placement type
+  * Update library state info to content library API
+  * vcsim: Support PlaceVm with reconfigure placement type
+  * build(deps): bump golang.org/x/text from 0.17.0 to 0.18.0
+  * chore: sync generated govc/USAGE.md
+  * govc: add disk.create '-profile' flag
+  * govc: add vm.disk.create '-profile' flag
+  * govc: add vm.disk.attach '-profile' flag
+  * chore: govc: add common StorageProfileFlag
+  * api: add VirtualMachine.AddDeviceWithProfile method
+  * vcsim: add VirtualMachine AttachDisk and DetachDisk methods
+  * fix: vcsim: avoid possible race when encoding PropertyCollector
+    response
+  * build(deps): bump peter-evans/create-pull-request from 6 to 7
+  * vcsim: Support VM crypto spec in vC Sim
+  * Add BackingDiskPath to BackingObjectDetails
+  * govc: Add '-size' flag to datastore.create
+  * govc add disk.attach and disk.detach commands
+  * api: VirtualMachine.AttachDisk unitNumber param is optional
+  * api: ToString for vim types
+  * vcsim: add namespace/registervm implementation
+  * govc: add namespace.registervm command
+  * api: add namespace.RegisterVM binding
+  * api: Fix panic when encoding nil iface ptrs to JSON
+  * govc: Support thick/eager disk opts on vm.create
+  * fix: use complete InventoryPath in Datacenter.Folders
+
+-------------------------------------------------------------------
 Sat Aug 17 08:03:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.42.0:

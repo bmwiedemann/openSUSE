@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Sep 15 05:40:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.5:
+  * bump release
+  * fix typo
+  * ClusterRole: add aggregationRule support
+  * Bump github.com/aws/aws-sdk-go from 1.35.21 to 1.55.5
+  * Bump actions/setup-go from 4.1.0 to 5.0.2
+  * Bump alpine from 3.19.1 to 3.20.3
+  * Bump golang.org/x/text from 0.16.0 to 0.18.0
+  * Bump github.com/fvbommel/sortorder from 1.0.1 to 1.1.0
+  * Bump github.com/rs/zerolog from 1.18.0 to 1.33.0
+  * Bump github.com/prometheus/common from 0.48.0 to 0.59.1
+  * Bump golang from 1.21-alpine3.19 to 1.23-alpine3.19
+  * Bump golangci/golangci-lint-action
+  * Bump actions/checkout from 4.1.1 to 4.1.7
+  * rel notes
+  * fix #316
+  * fix #314
+  * update deps
+  * add error codes link
+  * by cluster/namespace
+  * add avg by cluster
+  * dashboard update
+  * deps: bump prometheus common dep and use new syntax
+  * Update README.md
+  * feat(ci): Activate dependabot
+  * Fix #302
+  * bump alpine version to 3.19.1
+  * cross-platform support
+
+-------------------------------------------------------------------
 Fri Mar 29 19:37:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.21.3:

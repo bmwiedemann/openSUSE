@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 14 16:25:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.40.0:
+  * feat(deps): bump github.com/Masterminds/semver/v3 from 3.2.1 to
+    3.3.0 (#852)
+  * chore(deps): bump anchore/sbom-action from 0.17.1 to 0.17.2
+    (#851)
+  * feat(deps): bump dario.cat/mergo from 1.0.0 to 1.0.1 (#850)
+  * feat(deb): set license field (#849)
+  * docs: update cmd docs
+
+-------------------------------------------------------------------
 Fri Aug 16 18:11:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.39.0:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 27 09:20:15 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.10.3~git0.ee7d7ef:
+  * Wire in the heuristics 
+  * Implement heuristics for target-specific install paths
+  * Fix the generated header fingerprinting logic
+  * Make notice about missing windows debug files verbose-only
+  * Update dependencies
+  * Require cargo 0.80.0
+- Use macros from cargo-packaging
+- Remove cargo_config: contained in vendor.tar
+- Remove cargo_audit service: now part of cargo_vendor
+- Remove custom rustflags and let the macros set them instead
+
+-------------------------------------------------------------------
 Tue Jun 04 19:59:22 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.9.32~git0.56dfe34:

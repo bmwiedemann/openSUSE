@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Sep 14 11:32:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.1:
+  * [v0.17] update docker/cli to 48a2cdff97
+  * ci: fix golvulncheck job permissions
+  * builder: do not set network.host entitlement flag if already
+    set in buildkitd conf
+  * bake: fix missing omitempty and optional tags for network field
+
+-------------------------------------------------------------------
+Sat Sep 14 11:09:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * vendor: update buildkit to v0.16.0
+  * vendor: update buildkit to v0.16.0-rc2
+  * update mermaid diagram to avoid GH mermaid issues
+  * build(deps): bump peter-evans/create-pull-request from 7.0.0 to
+    7.0.1
+  * docs: update run mount secrets examples using env
+  * chore: update AUTHORS and mailmap
+  * hack(authors): bump to alpine 3.20
+  * fix lint.PrintLintViolations signature change
+  * docs: add docs for bake network mode config
+  * docs: add docs for bake entitlements config
+  * vendor: update buildkit to v0.16.0-rc1
+  * bake: allow setting networkmode in HCL/JSON
+  * build(deps): bump peter-evans/create-pull-request from 6.1.0 to
+    7.0.0
+  * bake: read original command name from the env for prompt
+  * docs: update links to moved manuals pages
+  * bake: enable support for entitlements
+  * print out the number of warnings after completing a rule check
+  * docs: add project processing guide
+  * build: avoid possible panic when reading git info
+  * commands: add debug as persistent flag
+  * docs: use gh alert syntax for callouts
+  * metrics: add mutex to the metric writer
+  * build: allow builds from stdin for multi-node builders
+  * chore: rename PrintFunc to CallFunc
+  * build: when building multiple targets include name in error
+  * bake: add basename, dirname and sanitize functions
+  * build: skip build ref and provenance metadata for subrequests
+  * build: update since session signature has changed
+  * vendor: update buildkit to 664c2b469f19
+  * hack: ensure SARIF output has results field defined for
+    govulncheck
+  * metrics: add metrics for bake command
+  * vendor: update compose-go to v2.1.6
+  * support metadata file with call flag for build and bake
+    commands
+  * builder: move kube config handling to k8s driver package
+  * metricwriter: compile regular expressions only on first use
+  * Dockerfile: update to docker 27.1.1
+  * docs: fix metadata section for build command
+  * ci: sync labels when files are reverted or no longer changed
+    with labeler
+  * govulncheck to report known vulnerabilities
+  * vendor: update buildkit to v0.15.1
+  * ci: skip scout job on forked repo
+  * ci: checkout step for scout job
+  * bake: use shared session for local sources for multiple targets
+  * bake: fix printer handling
+  * Bump compose-go v2.1.5
+  * ci: scan bin image with docker scout
+  * tests: build multiplatform
+  * build(deps): bump softprops/action-gh-release from 2.0.6 to
+    2.0.8
+  * chore: update dependabot labels
+  * test: bake print
+  * bake: check printer before printing warnings
+  * clarify the appropriate place to use the debug flag when
+    viewing warnings
+  * bump compose-go to v2.1.4
+  * build: refactor setting git info to local mounts
+  * driver: refactor GetDriver func to take init config
+  * remote: avoid signal names map on init
+  * remoteutil: fix pkg remove unnecessary map initialization
+  * hclparser: avoid unnecessary allocations in init
+  * update errors handling allocations and comparison
+  * build: don't force default configuration
+  * vendor: google.golang.org/appengine v1.6.8
+  * vendor: github.com/gorilla/mux v1.8.1
+  * fix issues in .golangci.yml and add validation check
+  * vendor: update docker/distribution to v2.8.3
+
+-------------------------------------------------------------------
 Thu Jul 25 17:38:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.2:

@@ -1598,4 +1598,21 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1191464</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>5fe1e685da31c91141149f6c2d4999bb</srcmd5>
+    <version>6.11</version>
+    <time>1726501214</time>
+    <user>anag+factory</user>
+    <comment>- Update to strace 6.11
+  * Implemented decoding of uretprobe syscall.
+  * Implemented decoding of WDIOC_GETSUPPORT and WDIOC_SETOPTIONS ioctl
+    commands.
+  * Enhanced decoding of unknown ioctl commands in non-abbreviated mode
+    by printing the contents of the ioctl argument buffer in hexadecimal format.
+  * Updated decoding of listmount, statmount, and statx syscalls.
+  * Updated lists of ETHTOOL_*, IORING_*, IPPROTO_*, RWF_*, STATX_*, and V4L2_*
+    constants.
+  * Updated lists of ioctl commands from Linux 6.11. (forwarded request 1201294 from AndreasSchwab)</comment>
+    <requestid>1201295</requestid>
+  </revision>
 </revisionlist>

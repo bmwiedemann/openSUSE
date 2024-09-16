@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:50:13 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.5:
+  * iter: fix recursive attribute loading
+  * fix building on FreeBSD 14.0 (amd64)
+  * Remove p11-kit-d938f4a8a3a2.patch upstream
+
+-------------------------------------------------------------------
+Fri Sep 13 07:47:42 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.4:
+  * rpc: add support for recursive attributes
+  * p11-kit: add function to check run-time version of the library
+  * p11-kit: expose version information through macros
+  * p11-kit: add option to specify CKA_ID in generate-keypair and
+    import-object commands
+  * p11-kit: add --provider option to specify PKCS#11 module when
+    using p11-kit commands
+  * p11-kit: fix a bug where eddsa mechanism isn't recognized in
+    generate-keypair
+  * p11-kit: fallback to C_GetFunctionList when C_GetInterface
+    returns CKR_FUNCTION_NOT_SUPPORTED
+  * bug and build fixes
+
+-------------------------------------------------------------------
 Fri Jul 26 15:15:20 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added a backport of an upstream commit in p11-kit-d938f4a8a3a2.patch

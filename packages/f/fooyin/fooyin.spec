@@ -17,7 +17,7 @@
 
 
 Name:           fooyin
-Version:        0.5.3
+Version:        0.6.2
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
@@ -40,6 +40,10 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -53,7 +57,7 @@ use of FooScript to offer an even deeper level of control.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DBUILD_LIBVGM=OFF
 %cmake_build
 
 %install

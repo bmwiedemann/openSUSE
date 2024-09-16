@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        10.3.0
+Version:        10.4.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -54,11 +54,14 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.17.3
+BuildRequires:  ansible-core >= 2.17.4
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       ansible-core >= 2.17.3
+Requires:       ansible-core >= 2.17.4
+
+# Conflicts with ansible 9 or lower
+Conflicts:      ansible < 10
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$

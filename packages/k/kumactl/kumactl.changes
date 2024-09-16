@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sat Sep 14 15:04:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.3:
+  no CLI-related changes mentioned in changelog
+
+-------------------------------------------------------------------
+Thu Aug 08 05:51:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.2:
+  * chore(deps): upgrade envoy with DNS fix (#10934)
+  * test(framework): request less resources for otel collector
+    (backport of #10681) (#10710)
+  * chore(deps): update go to 1.22.5 (backport of #10096) (#10856)
+  * chore(transparent-proxy): enhance test configuration and
+    logging (backport of #10847) (#10849)
+  * chore(transparent-proxy): increase tproxy tests timeout in CI
+    (backport of #10831) (#10836)
+  * test(transparent-proxy): refactor InstallFlagsToTest to use a
+    map (backport of #10810) (#10816)
+  * refactor(transparent-proxy): put default ports in consts
+    package (backport of #10801) (#10805)
+  * ci(gha): enable self hosted runners for arm64 e2e tasks
+    (backport of #10642) (#10787)
+  * refactor(transparent-proxy): move executables to config
+    (backport of #10619) (#10779)
+
+-------------------------------------------------------------------
+Thu Aug  8 05:50:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kumactl: CLI for the Kuma service mesh

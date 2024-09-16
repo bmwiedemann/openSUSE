@@ -1,0 +1,7 @@
+<package name="amdgpu_top" project="openSUSE:Factory">
+  <title>amdgpu_top</title>
+  <description>Tool that displays AMD GPU utilization.
+The tool displays information gathered from performance counters (GRBM, GRBM2), sensors, fdinfo, and AMDGPU driver.</description>
+  <devel project="hardware" package="amdgpu_top"/>
+  <url>https://github.com/Umio-Yasuno/amdgpu_top</url>
+</package>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 14 05:24:42 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.13.4:
+
+  * Fix release kind detection (gh#nextcloud/desktop#7034)
+  * docs: conf file option moveToTrash is no longer Linux specific 
+    (gh#nextcloud/desktop#7047)
+  * only add Encrypt context menu entry for top folder in settings 
+    dialog (gh#nextcloud/desktop#7063)
+  * add missing exception handling (gh#nextcloud/desktop#7081)
+  * do not ignore paths containing 2 "#" characters 
+    (gh#nextcloud/desktop#7087)
+  * Narrow down ReadWrite folder permission to owner 
+    (gh#nextcloud/desktop#7092)
+  * Bugfix/delete read only remnants folders (
+    gh#nextcloud/desktop#7107)
+  * Bugfix/fix one rename issue (gh#nextcloud/desktop#7111)
+
+-------------------------------------------------------------------
 Mon Aug 26 19:22:30 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.13.3:

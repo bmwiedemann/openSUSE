@@ -1,0 +1,210 @@
+---
+ furl.egg-info/requires.txt |    1 -
+ furl/furl.py               |   34 ++++++++++++++--------------------
+ setup.py                   |    2 --
+ tests/test_furl.py         |    7 ++-----
+ tests/test_omdict1D.py     |    7 +++----
+ 5 files changed, 19 insertions(+), 32 deletions(-)
+
+--- a/furl.egg-info/requires.txt
++++ b/furl.egg-info/requires.txt
+@@ -1,2 +1 @@
+-six>=1.8.0
+ orderedmultidict>=1.0.1
+--- a/furl/furl.py
++++ b/furl/furl.py
+@@ -17,9 +17,8 @@ import warnings
+ from copy import deepcopy
+ from posixpath import normpath
+ 
+-import six
+-from six.moves import urllib
+-from six.moves.urllib.parse import quote, unquote
++import urllib
++from urllib.parse import quote, unquote
+ try:
+     from icecream import ic
+ except ImportError:  # Graceful fallback if IceCream isn't installed.
+@@ -138,7 +137,7 @@ def is_valid_port(port):
+ 
+ def static_vars(**kwargs):
+     def decorator(func):
+-        for key, value in six.iteritems(kwargs):
++        for key, value in kwargs.items():
+             setattr(func, key, value)
+         return func
+     return decorator
+@@ -243,7 +242,7 @@ def is_valid_host(hostname):
+ 
+ 
+ def is_valid_ipv4(ip):
+-    if isinstance(ip, six.binary_type):
++    if isinstance(ip, bytes):
+         ip = ip.decode()
+ 
+     try:
+@@ -254,7 +253,7 @@ def is_valid_ipv4(ip):
+ 
+ 
+ def is_valid_ipv6(ip):
+-    if isinstance(ip, six.binary_type):
++    if isinstance(ip, bytes):
+         ip = ip.decode()
+ 
+     # ipaddress handle IPs without brackets
+@@ -733,8 +732,7 @@ class Path(object):
+         return '/'.join(segments)
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class PathCompositionInterface(object):
++class PathCompositionInterface(object, metaclass=abc.ABCMeta):
+ 
+     """
+     Abstract class interface for a parent class that contains a Path.
+@@ -784,8 +782,7 @@ class PathCompositionInterface(object):
+         return False
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class URLPathCompositionInterface(PathCompositionInterface):
++class URLPathCompositionInterface(PathCompositionInterface, metaclass=abc.ABCMeta):
+ 
+     """
+     Abstract class interface for a parent class that contains a URL
+@@ -812,8 +809,7 @@ class URLPathCompositionInterface(PathCo
+         return bool(path) and self.netloc
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class FragmentPathCompositionInterface(PathCompositionInterface):
++class FragmentPathCompositionInterface(PathCompositionInterface, metaclass=abc.ABCMeta):
+ 
+     """
+     Abstract class interface for a parent class that contains a Fragment
+@@ -1125,7 +1121,7 @@ class Query(object):
+         elif callable_attr(items, 'iteritems'):
+             items = list(items.iteritems())
+         # Encoded query string. e.g. 'a=1&b=2&c=3'
+-        elif isinstance(items, six.string_types):
++        elif isinstance(items, str):
+             items = self._extract_items_from_querystr(items)
+         # Default to list of key:value items interface. e.g. [('a','1'),
+         # ('b','2')]
+@@ -1141,7 +1137,7 @@ class Query(object):
+         pairs = [item.split('=', 1) for item in pairstrs]
+         pairs = [(p[0], lget(p, 1, '')) for p in pairs]  # Pad with value ''.
+ 
+-        for pairstr, (key, value) in six.moves.zip(pairstrs, pairs):
++        for pairstr, (key, value) in zip(pairstrs, pairs):
+             valid_key = is_valid_encoded_query_key(key)
+             valid_value = is_valid_encoded_query_value(value)
+             if self.strict and (not valid_key or not valid_value):
+@@ -1163,8 +1159,7 @@ class Query(object):
+         return items
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class QueryCompositionInterface(object):
++class QueryCompositionInterface(object, metaclass=abc.ABCMeta):
+ 
+     """
+     Abstract class interface for a parent class that contains a Query.
+@@ -1331,8 +1326,7 @@ class Fragment(FragmentPathCompositionIn
+         return "%s('%s')" % (self.__class__.__name__, str(self))
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class FragmentCompositionInterface(object):
++class FragmentCompositionInterface(object, metaclass=abc.ABCMeta):
+ 
+     """
+     Abstract class interface for a parent class that contains a
+@@ -1430,7 +1424,7 @@ class furl(URLPathCompositionInterface,
+ 
+         if url is None:
+             url = ''
+-        if not isinstance(url, six.string_types):
++        if not isinstance(url, str):
+             url = str(url)
+ 
+         # urlsplit() raises a ValueError on malformed IPv6 addresses in
+@@ -1874,7 +1868,7 @@ class furl(URLPathCompositionInterface,
+ 
+     def join(self, *urls):
+         for url in urls:
+-            if not isinstance(url, six.string_types):
++            if not isinstance(url, str):
+                 url = str(url)
+             newurl = urljoin(self.url, url)
+             self.load(newurl)
+--- a/setup.py
++++ b/setup.py
+@@ -104,10 +104,8 @@ setup(
+     ],
+     tests_require=[
+         'flake8',
+-        'six>=1.8.0',
+     ],
+     install_requires=[
+-        'six>=1.8.0',
+         'orderedmultidict>=1.0.1',
+         'ipaddress>=1.0.23; python_version < "3.3"',
+     ],
+--- a/tests/test_furl.py
++++ b/tests/test_furl.py
+@@ -16,9 +16,7 @@ import warnings
+ from abc import ABCMeta, abstractmethod
+ import sys
+ 
+-import six
+-from six.moves import zip
+-from six.moves.urllib.parse import (
++from urllib.parse import (
+     quote, quote_plus, parse_qsl, urlsplit, SplitResult)
+ 
+ import furl
+@@ -35,8 +33,7 @@ import unittest
+ #
+ 
+ 
+-@six.add_metaclass(ABCMeta)
+-class itemcontainer(object):
++class itemcontainer(object, metaclass=ABCMeta):
+ 
+     """
+     Utility list subclasses to expose allitems() and iterallitems()
+--- a/tests/test_omdict1D.py
++++ b/tests/test_omdict1D.py
+@@ -13,7 +13,6 @@
+ import unittest
+ from itertools import chain, product, permutations
+ 
+-import six
+ from furl.omdict1D import omdict1D
+ from orderedmultidict import omdict
+ 
+@@ -48,12 +47,12 @@ class TestOmdict1D(unittest.TestCase):
+                 data.update(update)
+                 omd1.update(update)
+                 omd2.updateall(update)
+-                for key in six.iterkeys(omd1):
++                for key in omd1.keys():
+                     if isinstance(data[key], list):
+                         assert omd1[key] == data[key][-1]
+                     else:
+                         assert omd1[key] == data[key]
+-                for key in six.iterkeys(omd2):
++                for key in omd2.keys():
+                     data_values_unpacked = []
+                     for value in data.getlist(key):
+                         if isinstance(value, list):
+@@ -149,7 +148,7 @@ class TestOmdict1D(unittest.TestCase):
+ 
+     def test_setitem(self):
+         omd = omdict1D()
+-        for value, valuelist in six.moves.zip(self.values, self.valuelists):
++        for value, valuelist in zip(self.values, self.valuelists):
+             if valuelist:
+                 omd[self.key] = valuelist
+                 assert omd[self.key] == omd.get(self.key) == valuelist[0]
