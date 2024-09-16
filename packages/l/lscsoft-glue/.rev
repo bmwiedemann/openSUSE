@@ -68,4 +68,20 @@
     <comment></comment>
     <requestid>1139726</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0e26885b96a5b14b262ccef1ba97f3a</srcmd5>
+    <version>4.0.0</version>
+    <time>1726501396</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0.0:
+- Drop lscsoft-glue-data package: no longer applicable.
+- Make package noarch.
+- Switch to %pyproject_* based builds; add BuildRequires:
+  python-pip and python-wheel.
+- New Requires: python-six and python-pyOpenSSL; drop no longer
+  needed python-pyRXP.
+- Add setup.cfg snippet to allow building for openSUSE Leap 15.x.
+</comment>
+    <requestid>1201303</requestid>
+  </revision>
 </revisionlist>

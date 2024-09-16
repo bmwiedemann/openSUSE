@@ -31,26 +31,29 @@ ExcludeArch:    %{ix86}
 # Support dropped for python2 by upstream
 %define skip_python2 1
 
-%define ligocommands ligolw_combine_segments ligolw_diff ligolw_dq_active ligolw_dq_active_cats ligolw_inspiral2mon ligolw_print_tables
-
 %define modname glue
 Name:           lscsoft-glue%{psuffix}
-Version:        3.0.2
+Version:        4.0.0
 Release:        0
 Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
 URL:            http://software.ligo.org/lscsoft
 Source:         https://files.pythonhosted.org/packages/source/l/lscsoft-glue/%{pname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{pname}-data = %{version}
 Requires:       python-ligo-segments
 Requires:       python-numpy
-Requires:       python-pyRXP
+Requires:       python-pyOpenSSL
+Requires:       python-six
+Provides:       lscsoft-glue-data = %{version}
+Obsoletes:      lscsoft-glue-data < %{version}
 Provides:       python-glue = %{version}-%{release}
 Obsoletes:      python-glue < %{version}-%{release}
+BuildArch:      noarch
 %define oldpython python
 Provides:       %{oldpython}-glue = %{version}-%{release}
 Obsoletes:      %{oldpython}-glue < %{version}-%{release}
@@ -60,7 +63,6 @@ BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module lscsoft-glue = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pyRXP}
 BuildRequires:  %{python_module pytest}
 %endif
 Requires(post): update-alternatives
@@ -86,53 +88,55 @@ This package provides a common set of data files for %{name}.
 
 %prep
 %autosetup -p1 -n %{pname}-%{version}
+# Taken from bundled specfile template
+%if 0%{?suse_version} < 1650
+cat > setup.cfg <<EOF
+[metadata]
+name = %{pname}
+version = %{version}
+description = %{summary}
+license = %{license}
+license_files = LICENSE
+url = %{url}
+[options]
+packages = find:
+python_requires = >=3.6
+install_requires =
+	ligo-segments
+	pyOpenSSL
+	six
+EOF
+%endif
 
 %build
 %if ! %{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 
 # SECTION Remove non-library config/php files
 rm -fr %{buildroot}%{_prefix}%{_sysconfdir}
 rm -fr %{buildroot}%{_prefix}%{_localstatedir}
 # /SECTION
 
-%{lua: for c in string.gmatch(rpm.expand("%ligocommands"), "%S+") do
-  print(rpm.expand("%python_clone -a %{buildroot}%{_bindir}/" .. c .. "\n"))
-end}
-
-%python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
 # test_ldbd.py requires network; disable
-%pytest_arch -k 'not test_ldbd'
+%pytest -k 'not test_ldbd'
 %endif
 
 %if ! %{with test}
-%post
-%python_install_alternative %ligocommands
-
-%postun
-# arguments after the master item are ignored
-%python_uninstall_alternative %ligocommands
-
-%files -n %{pname}-data
-%{_datadir}/%{name}/
-
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{lua: for c in string.gmatch(rpm.expand("%ligocommands"), "%S+") do
-  print(rpm.expand("%python_alternative %{_bindir}/" .. c .. "\n"))
-end}
-%{python_sitearch}/glue
-%{python_sitearch}/lscsoft_glue-%{version}*-info
+%{python_sitelib}/glue/
+%{python_sitelib}/lscsoft_glue-%{version}*-info
 %endif
 
 %changelog
