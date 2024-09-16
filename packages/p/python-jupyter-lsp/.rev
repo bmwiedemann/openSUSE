@@ -56,4 +56,14 @@
   * support latest version of typescript-language-server (#1064)</comment>
     <requestid>1155897</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>273f7aaf29883770b22c490b72a9928a</srcmd5>
+    <version>2.2.5</version>
+    <time>1726501360</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.5
+  * fix for environment variables leaking into the parent
+    environment (#1078)</comment>
+    <requestid>1201259</requestid>
+  </revision>
 </revisionlist>

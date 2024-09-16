@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:00:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.5
+  * fix for environment variables leaking into the parent
+    environment (#1078)
+
+-------------------------------------------------------------------
 Thu Mar  7 12:48:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.4
