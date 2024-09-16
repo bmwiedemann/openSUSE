@@ -16,4 +16,18 @@
 - Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149592</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed25dc6f04ae71504fd89a5b0fdeec9d</srcmd5>
+    <version>2024.08.09</version>
+    <time>1726501381</time>
+    <user>anag+factory</user>
+    <comment>- Version 2024.08.09
+  * Add a quick&amp;dirty way to get callback errors
+  * Clamp the warp and jump commands
+  * fix voice path scenario 51
+  * fix voice path scenario 48
+  * Fix the wiggle console with just 1 text line
+</comment>
+    <requestid>1201280</requestid>
+  </revision>
 </revisionlist>

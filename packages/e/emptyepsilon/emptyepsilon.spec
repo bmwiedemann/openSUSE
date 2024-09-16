@@ -17,7 +17,7 @@
 
 
 Name:           emptyepsilon
-Version:        2023.06.17
+Version:        2024.08.09
 Release:        0
 Summary:        Open source spaceship bridge simulator
 License:        GPL-2.0-only
