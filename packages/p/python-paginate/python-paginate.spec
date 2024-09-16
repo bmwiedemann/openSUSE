@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-paginate
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Divides large result sets into pages for easier browsing
 License:        MIT
-URL:            https://github.com/Signum/paginate
+URL:            https://github.com/Pylons/paginate
 # PyPI tarball does not include tests...
-Source:         https://github.com/Signum/paginate/archive/%{version}.tar.gz#/paginate-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE python312.patch gh#Pylons/paginate#19
-Patch0:         python312.patch
+Source:         https://github.com/Pylons/paginate/archive/%{version}.tar.gz#/paginate-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

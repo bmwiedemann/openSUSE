@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:51:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.5.7:
+  * Fixed metadata for pypi
+  * Added a wheel release
+  * Fixed tests for python 3.12
+- drop patch python312.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 06:42:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python312.patch and build for python 3.12
