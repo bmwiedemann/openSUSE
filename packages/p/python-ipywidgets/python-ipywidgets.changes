@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep 15 15:49:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.13
+  * More Phosphor backward compatibility by @martinRenou in #3942
+  ## New features
+  * Allow interact to use basic type hint annotations by
+    @corranwebster in #3908
+  * Support horizontal orientation of radio buttons by
+    @DonJayamanne in #3620
+  ## Maintenance and bug fixes
+  * Fix compatibility with pytest 8 by @frenzymadness in #3903
+  * HTMLManager: Support both ipywidgets 7 and 8 models by
+    @martinRenou in #3932
+  * Make tests compatible with Python 3.13 by @frenzymadness in
+    #3924
+  * fix: get_metadata deprecated since traitlets 4.1 by
+    @ManonMarchand in #3894
+  * Phosphor widget backward compatibility fixes by @martinRenou in
+    #3933
+  * Remove confusing error message by @martinRenou in #3936
+  * Fix wrong tag index in TagsInput when updated via python by
+    @s-weigand in #3862
+- Drop ipywidgets-pr3903-pytest.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 15:35:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.3
