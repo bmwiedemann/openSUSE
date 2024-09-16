@@ -17,14 +17,15 @@
 
 
 %{?sle15_python_module_pythons}
+%define srcname awkward_cpp
 Name:           python-awkward-cpp
-Version:        34
+Version:        38
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
 URL:            https://awkward-array.org/
 # SourceRepository:  https://github.com/scikit-hep/awkward/awkward-cpp
-Source0:        https://files.pythonhosted.org/packages/source/a/awkward-cpp/awkward-cpp-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/awkward-cpp/%{srcname}-%{version}.tar.gz
 Source99:       awkward-cpp.rpmlintrc
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
@@ -66,7 +67,7 @@ This package provides the header files needed to compile C/C++ codes with
 awkward.
 
 %prep
-%setup -q -n awkward-cpp-%{version}
+%setup -q -n %{srcname}-%{version}
 
 %build
 %pyproject_wheel
