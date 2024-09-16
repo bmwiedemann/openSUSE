@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 16 06:40:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.1:
+  * Final fix to conversion from shorthand quadratic to cubic bézier.
+  * Add support for ex units (assuming for em/2).
+  * Add support for image/jpg embedded images (in addition to image/jpeg).
+  * Avoid crash on @import rules in stylesheets. The rules are simply
+    ignored.
+  * Fix conversion from shorthand quadratic to cubic bézier.
+  * Include tests/samples/others/*.svg in source distribution.
+  * Render leading and trailing text content in text nodes.
+  * Better integration with cssselect2 to support a wider range of CSS
+    selectors.
+  * Support mmult import from reportlab < 3.5.61.
+  * Make zero-length Line, PolyLine and Polygon appear in PDFs when their
+    stroke value is non-zero.
+  * <symbol> nodes now only appears in documents when they are referenced,
+    not on their initial appearance.
+  * If only rx or ry is defined on a <rect>, the value is used for both.
+  * Support non-prefixed href attribute added in SVG 2.
+  * Fixed parsing of empty SVG style nodes.
+  * Handle content of multiple SVG style nodes.
+  * Better font caching for some font names.
+  * Revert to scripts usage instead of console_scripts during setup.
+  * dropped support for Python 3.6 and added official support for Python
+    3.10.
+  * improved support for scientific notation in paths
+  * if some path has a color with alpha value, it also sets the default fill
+    or stroke opacity of the resulting object.
+  * matrix transforms on groups are combined with other transforms instead
+    of replacing them.
+- Switch to pyproject macros.
+- No more globs in %files.
+
+-------------------------------------------------------------------
 Tue Feb 22 17:25:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add missing runtime requires 
