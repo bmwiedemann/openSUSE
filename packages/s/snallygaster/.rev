@@ -63,4 +63,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953062</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cc1faf777647de52b26077c683a88c42</srcmd5>
+    <version>0.0.12</version>
+    <time>1726501404</time>
+    <user>anag+factory</user>
+    <comment>- run tests with pytest, as setuptools lost its test command
+
+The block &quot;update to version 0.0.11&quot; was duplicated and therefore removed for clarity</comment>
+    <requestid>1201366</requestid>
+  </revision>
 </revisionlist>

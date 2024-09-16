@@ -1,7 +1,7 @@
 #
 # spec file for package snallygaster
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://github.com/hannob/snallygaster-testdata/archive/refs/hea
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
+BuildRequires:  python3-pytest
 BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-dnspython
 BuildRequires:  python3-flake8
@@ -67,12 +68,14 @@ fdupes %{buildroot}%{python_sitelib}
 %check
 # remove tests irrelevant for us
 rm tests/test_codingstyle.py tests/test_docs.py
-TESTDATA_REPOSITORY=$(pwd)/snallygaster-testdata-master/ RUN_ONLINETESTS=1 python3 setup.py test
+export TESTDATA_REPOSITORY=$(pwd)/snallygaster-testdata-master/
+export RUN_ONLINETESTS=1
+PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%BUILDROOT%{python3_sitelib}/snallygaster/ PYTHONDONTWRITEBYTECODE=1 pytest -v tests/
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/snallygaster
-%{python3_sitelib}/*
+%{python3_sitelib}/snallygaster-%{version}*-info
 
 %changelog
