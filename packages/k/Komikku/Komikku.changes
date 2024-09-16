@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 16 11:28:37 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.58.0:
+  * Fixed display of covers in animated GIF format
+  * Fixed memory leaks
+  * [Servers] Added Manga Mana (FR)
+  * [Servers] Tecno Scan (ES): Reenable
+  * [Servers] Anteiku Scans (FR): Update
+  * [Servers] ComicExtra (EN): Update
+  * [Servers] ED Scanlation (FR): Update
+  * [Servers] EZmanga (EN): Update
+  * [Servers] Kewn Scans (EN): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] MangaWeebs (EN): Update
+  * [Servers] Reaper Scans (EN): Update
+  * [Servers] Scylla Comics (EN): Update
+  * [Servers] Starbound Scans (FR): Update
+  * [L10n] Update Portuguese (Brazil) translation
+- update to 1.57.0:
+  * [Reader] RTL/LTR/Vertical pager: Fixed <Ctrl+mouse wheel> zooming
+  * [Servers] Argos Comics (PT): Update
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] MangaHere (EN): Update
+  * [Servers] Read Comic Online (EN): Update
+
+-------------------------------------------------------------------
 Fri Aug 30 06:06:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.56.0:
