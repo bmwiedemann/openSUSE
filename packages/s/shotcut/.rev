@@ -627,4 +627,12 @@ Update to release 19.04.30.</comment>
     <comment>- Update to 24.08.29</comment>
     <requestid>1198351</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0219f5bbf8502c9b8cceaa4219f4c59c</srcmd5>
+    <version>24.09.13</version>
+    <time>1726501549</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201397</requestid>
+  </revision>
 </revisionlist>
