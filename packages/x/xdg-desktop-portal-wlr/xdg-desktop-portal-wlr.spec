@@ -56,6 +56,7 @@ to one of the UseIn values in wlr.portal
 
 %install
 %meson_install
+install -D -pv -m644 contrib/wlroots-portals.conf %{buildroot}%{_datadir}/xdg-desktop-portal/wlroots-portals.conf
 
 %files
 %license LICENSE
@@ -66,6 +67,7 @@ to one of the UseIn values in wlr.portal
 %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/wlr.portal
+%{_datadir}/xdg-desktop-portal/wlroots-portals.conf
 %{_mandir}/man5/%{name}.5.gz
 
 %changelog
