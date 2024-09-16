@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 16 12:16:16 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1726480610.b2c7833e:
+  * Ensure `tidyall` is available in CI after 28c5dd11f
+  * Apply tidy after 61be7039
+  * Ensure the error responsible for API failures is always added
+  * Exclude sub packages with many additional dependencies on SLE
+
+-------------------------------------------------------------------
 Fri Sep 13 17:05:07 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1726234723.b54d8ce9:
