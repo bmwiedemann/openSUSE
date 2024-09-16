@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep 15 22:37:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.9:
+  * [gh#gwpy/gwpy#1616] Support parsing multiple FFL files for a
+    single dataset
+  * [gh#gwpy/gwpy#1637] Remove redundant usetex test function
+  * [gh#gwpy/gwpy#1641] Add tests for gwpy.timeseries.io.cache
+  * [gh#gwpy/gwpy#1747] Fix argument reuse bug in gwpy.cli
+  * [gh#gwpy/gwpy#1749] Add Virgo 'HoftOnline' as a preferred
+    frametype
+  * [gh#gwpy/gwpy#1753] Fix usage of Hann window for Scipy 1.13.0
+  * [gh#gwpy/gwpy#1755] Fix test failure with Zenodo rate limit
+  * [gh#gwpy/gwpy#1760] Fix array copy compatibility with numpy 2
+  * [gh#gwpy/gwpy#1762] Fix usage of Scipy firwin
+  * [gh#gwpy/gwpy#1763] Fix usage of Scipy trapezoid in gwpy.astro
+  * [gh#gwpy/gwpy#1764] Improve error handling when reading GWF
+    with LALFrame
+  * [gh#gwpy/gwpy#1765] Add extra unit alias for 's'
+- Add gwpy-numpy-2.0-types.patch for compatibility with numpy 2.0
+  float types <https://gitlab.com/gwpy/gwpy/-/merge_requests/1782>
+
+-------------------------------------------------------------------
 Mon Jan 15 08:52:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.8:

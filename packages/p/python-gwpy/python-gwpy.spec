@@ -17,12 +17,14 @@
 
 
 Name:           python-gwpy
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only
 URL:            https://gwpy.github.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwpy/gwpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://gitlab.com/gwpy/gwpy/-/merge_requests/1782
+Patch0:         gwpy-numpy-2.0-types.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -78,7 +80,7 @@ BuildRequires:  %{python_module ligo-lw}
 # Unsupported archs by upstream
 ExcludeArch:    %{ix86}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
