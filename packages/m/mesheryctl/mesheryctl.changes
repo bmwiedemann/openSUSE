@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:18:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.100:
+  * General
+    - fix broken schema w/signoff @Jougan-0 (#11983)
+  * Meshery CLI
+    - no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sun Sep 15 12:22:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.99 (no releases between 0.7.95 and this):
+  * General
+    - Chore: Upgrade golang package dependencies @leecalcote
+      (#11968)
+    - Revert "Chore: update golang dependencies" @leecalcote
+      (#11966)
+    - Chore: update golang dependencies @leecalcote (#11964)
+  * Meshery CLI
+    - no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sun Sep 15 11:13:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.95:
+  * General
+    - Bump path-to-regexp and express in
+      /install/docker-extension/ui @dependabot (#11954)
+  * Meshery CLI
+    - Update meshery simple line icons @Jougan-0 (#11956)
+
+-------------------------------------------------------------------
+Sun Sep 15 09:08:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.94:
+  * General
+    - [Relationships] Remove container relationship @MUzairS15
+      (#11946)
+    - [Relationships] Remove relationships between internal K8s
+      resources. @MUzairS15 (#11935)
+    - [Model] Simple Line Icons: Add styling capabilities to Doc,
+      Folder, and ArrowUp components @leecalcote (#11927)
+    - [Models] Add meshery-simple-line-icons model @leecalcote
+      (#11926)
+    - [Fix]: build and release docker extension @jerensl (#11924)
+  * Meshery CLI
+    - update component w/signoff @Jougan-0 (#11923)
+  * Documentation
+    - Change mesheyctl to mesheryctl @Alero-Awani (#11948)
+    - [docs] Update the dead link in Contribute to Models page
+      @Vijaykv5 (#11931)
+
+-------------------------------------------------------------------
+Sun Sep 15 08:16:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.93:
+  * General
+    - deprecated version property fix @Raghav1783 (#11903)
+    - chore(deps): bump webpack from 5.76.1 to 5.94.0 in
+      /install/docker-extension/ui @dependabot (#11815)
+    - Fix handling of connection API response from remote provider
+      @MUzairS15 (#11909)
+    - ensure comp schema is not added and id is based on time of
+      eval @MUzairS15 (#11901)
+  * Meshery CLI
+    - [mesheryctl] Return trimmed response for latest mesheryctl
+      version @MUzairS15 (#11912)
+    - [meshreyctl] Use central function to determine latest
+      version. @MUzairS15 (#11891)
+
+-------------------------------------------------------------------
+Sun Sep 15 07:03:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.92:
+  no CLI-related changes
+
+-------------------------------------------------------------------
+Sun Sep 15 06:30:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.91:
+  * General
+    - [chore] update schemas package to v0.7.31 and meshkit to
+      v0.7.73 @MUzairS15 (#11894)
+    - update hierarchical parent relationship @MUzairS15 (#11893)
+    - Support addition of nodes during evaluation based on
+      relationship definition @MUzairS15 (#11832)
+    - [Models] [Relationships] AWS RDS Controller @Jougan-0
+      (#11703)
+    - Add external Link Interceptor for Docker Extension
+      @sudhanshutech (#11858)
+    - [Server] Include updated relationships in the design file
+      diff. @MUzairS15 (#11856)
+    - Add rule for evaluating deny selectors. @MUzairS15 (#11848)
+    - fix handling of capabilities @MUzairS15 (#11855)
+    - Remove unneeded test design files. @MUzairS15 (#11831)
+    - Corrected the port number of Nighthawk in README.md
+      @KunyueXing (#11824)
+    - fix: flowchart component missing attributes
+      @rishabhsharma1997 (#11822)
+    - [Server] Fix design drawer not updating with latest design
+      @MUzairS15 (#11819)
+    - Change GetK8sContext according to new API response change
+      @shubham251972 (#11818)
+    - bump schemas @codeSafari10 (#11803)
+    - [Docs] Readme language regarding star @marblom007 (#11798)
+    - track relationships that are updated by evaluator as trace
+      @MUzairS15 (#11796)
+    - Add fallback when mapping model related details for meshery
+      curated models @MUzairS15 (#11793)
+    - Update edge-firewall.json @Jougan-0 (#11789)
+    - bump meshkit w/signoff @Jougan-0 (#11786)
+    - bump meshkit w/signoff @Jougan-0 (#11780)
+    - add missing transitions w/signoff @Jougan-0 (#11779)
+    - [Relationships] ACK S3 @Jougan-0 (#11706)
+    - Bump micromatch from 4.0.4 to 4.0.8 in
+      /install/docker-extension/ui @dependabot (#11767)
+    - chore: Update github.com/meshery/schemas to v0.7.25
+      @leecalcote (#11772)
+  * Meshery CLI
+    - [mesheryctl] Chore: point new release version message to
+      docs.meshery.io @leecalcote (#11889)
+    - Update command and fix minor bug w/signoff @Jougan-0 (#11791)
+    - Update logs to be right @Jougan-0 (#11770)
+  * Documentation
+    - docs: update docs on installing minikube out of clusters
+      @jerensl (#11890)
+    - [CI][Docs] Identity prereleases @leecalcote (#11888)
+    - [docs]: Document Catalog Publishing Workflow in Meshery
+      @Kevin222004 (#11680)
+    - Fix [Docs] Sistent Page Bugs - Text and Link errors #11553
+      @kaushiktak19 (#11842)
+    - Fix Duplicated Kubernetes Subheading in home/guides/tutorials
+      of Docs @devbird007 (#11809)
+    - [Docs] Enhance Error Codes reference page with links to
+      Troubleshooting Guides @leecalcote (#11570)
+    - docs: Fix extra spacing in architecture.md @ChinoUkaegbu
+      (#11790)
+    - remove older docs version from exclude @vishalvivekm (#11785)
+    - [Docs]:Edge shape documentation added @SAHU-01 (#11701)
+
+-------------------------------------------------------------------
+Sun Sep 15 06:00:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.90:
+  * General
+    - add Style w/signoff @Jougan-0 (#11769)
+    - Fix config update policy failing to update/resolve refs for
+      some relationships. @MUzairS15 (#11768)
+    - Default capability @MUzairS15 (#11765)
+    - Fix aggressive matchlabels rels @MUzairS15 (#11757)
+    - [Server] Fix design save error for clone operation @MUzairS15
+      (#11748)
+    - Remove%sfromevent log @Jougan-0 (#11733)
+  * Meshery CLI
+    - update styles with styleoverides w/signoff @Jougan-0 (#11751)
+    - fix: missing metadata error w/signoff @Jougan-0 (#11734)
+  * Documentation
+    - Fixed broken links in "Meshery Operator, MeshSync, Broker
+      Troubleshooting Guide" @khabdrick (#11754)
+    - Update providers.md @a-singh02 (#11746)
+    - Update playground.md @a-singh02 (#11747)
+
+-------------------------------------------------------------------
+Sun Sep 15 05:07:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.89:
+  * General
+    - add source_uri for models whose components have the data
+      w/signoff @Jougan-0 (#11730)
+    - remove extra isNamespace w/signoff @Jougan-0 (#11732)
+    - add left components w/signoff @Jougan-0 (#11731)
+    - Add is namespace @Jougan-0 (#11723)
+    - use latest kubernetes model version from registry for helm
+      dry run. @MUzairS15 (#11720)
+    - [Server] Format the eval results correctly. @MUzairS15
+      (#11719)
+    - [Server] Fix download API returning design in string format.
+      @MUzairS15 (#11718)
+    - [chore] update meshkit package to v0.7.66 @MUzairS15 (#11711)
+    - bump meshkit w/signoff @Jougan-0 (#11699)
+    - [Server] Send componentsUpdated as part of evaluation in the
+      trace. @MUzairS15 (#11695)
+    - update rels to contain subType and refractor to lowercase
+      w/signoff @Jougan-0 (#11678)
+    - upgrade models and comp @MUzairS15 (#11677)
+    - build(deps): bump axios from 1.6.0 to 1.7.4 in
+      /install/docker-extension/ui @dependabot (#11634)
+    - Refactor: Add proper event description for design handler
+      @singh1203 (#11548)
+    - [Docker Extension] Make Catalog Items Clickable @humblenginr
+      (#11599)
+    - Update the design file in OCI package to design.yml
+      @ctcarrier (#11595)
+  * Meshery CLI
+    - remove prerun for subcommands w/signoff @Jougan-0 (#11713)
+    - Assign source_uri to model metadata. @MUzairS15 (#11709)
+    - [UI] Fix Tab Navigation Issue on Create Modal
+      @UtkarshAhuja2003 (#11578)
+    - [Server] Supporting v1beta1 constructs. @MUzairS15 (#11583)
+    - [mesheryctl] Rename mesh command to adapter @lekaf974
+      (#11507)
+  * Documentation
+    - chore: add reusable include for extension guides
+      @vishalvivekm (#11707)
+    - [Docs] Build and Release notes on mesheryctl @leecalcote
+      (#11608)
+    - [Docs] Deploying WordPress And MySql With Persistent Volumes
+      with Meshery tutorial @Alero-Awani (#11100)
+    - [Docs] Adding generic legends @SAHU-01 (#11508)
+    - [mesheryctl] Rename mesh command to adapter @lekaf974
+      (#11507)
+    - chore(docs): remove duplicaiton off components command
+      @lekaf974 (#11623)
+    - [Docs] Fix broken hyperlink in "Contributing to Model
+      Relationships" section @rohitsrma (#11614)
+    - [Docs] Fix Getting Started Broken Link @rohitsrma (#11582)
+    - added new secrets to the docs @rishabhsharma1997 (#11602)
+    - Fix: Close sidebar nav when clicking outside @shreyasinghX
+      (#11594)
+
+-------------------------------------------------------------------
 Fri Aug  9 17:22:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.88:

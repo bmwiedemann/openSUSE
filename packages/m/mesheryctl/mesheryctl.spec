@@ -19,21 +19,28 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           mesheryctl
-Version:        0.7.88
+Version:        0.7.100
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
 URL:            https://github.com/meshery/meshery
-Source:         meshery-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go1.22
 
 %description
-Meshery manages the provisioning, configuration and operation of your Kubernetes clusters, workloads, and service meshes. While supporting hundreds of different types of cloud native infrastructure integrations.
+Meshery manages the provisioning, configuration and operation of your
+Kubernetes clusters, workloads, and service meshes. While supporting hundreds
+of different types of cloud native infrastructure integrations.
 
-Meshery also offers a catalog of curated design templates filled with configuration best practices.
+Meshery also offers a catalog of curated design templates filled with
+configuration best practices.
 
-Using a GitOps-centric approach, visually and collaboratively design and manage your infrastructure and microservices. Use Meshery to interoperate your various cloud native systems. With both REST and GraphQL APIs, integrating with Meshery as an extensible platform is facilitated through NATS, CloudEvents, gRPC, Service Mesh Interface (SMI), and Service Mesh Performance (SMP).
+Using a GitOps-centric approach, visually and collaboratively design and manage
+your infrastructure and microservices. Use Meshery to interoperate your various
+cloud native systems. With both REST and GraphQL APIs, integrating with Meshery
+as an extensible platform is facilitated through NATS, CloudEvents, gRPC,
+Service Mesh Interface (SMI), and Service Mesh Performance (SMP).
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -67,7 +74,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a 1 -n meshery-%{version}
+%autosetup -p1 -a 1
 
 %build
 go build \
@@ -80,7 +87,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
