@@ -30,6 +30,7 @@ URL:            http://qtile.org
 Source0:        https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source3:        %{name}-portals.conf
+Patch1:         https://github.com/qtile/qtile/pull/4991.patch#/workaround-new-cairocffi-api.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gdk-pixbuf-loader-rsvg

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:30:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add ./workaround-new-cairocffi-api.patch from https://github.com/qtile/qtile/pull/4991
+
+-------------------------------------------------------------------
 Thu Aug 15 13:45:50 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.28.1:
