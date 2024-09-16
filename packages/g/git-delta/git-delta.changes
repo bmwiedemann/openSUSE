@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Sep 11 13:24:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.2:
+  * Move AmbiguousDiffMinusCounter to hunk_header #1825
+  * Fix Catppuccin Latte name in LIGHT_SYNTAX_THEMES list #1823
+  * Handle quoted file paths in hunk headers #1840
+  * Fix clippy warnings #1851
+  * Allow --dark to override dark/light detected from syntax theme #1843
+  * Upgrade and pin unicode-width to v0.1.12 #1858
+
+-------------------------------------------------------------------
+Mon Aug 26 07:04:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  * This patch release fixes an issue with delta --version that
+    was causing problems downstream (#1818)
+  * Add hyperlinks section to manual #1816
+  * Added platypus theme #1819
+  * Don't use pager for --version #1824
+
+-------------------------------------------------------------------
+Mon Aug 19 05:57:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Link to Repository from Manual #1657
+  * Stop highlighting unchanged whitespace #1659
+  * Add .gitattributes rules for rust files #1245
+  * Repair --default-language, and highlight using full filename #1549
+  * tests: prevent parallel env var access #1681
+  * CI: fix macOS build #1696
+  * Only use nosort in bash <4.4 #1683
+  * Don't read git files when --no-gitconfig is given + unused variables #1728
+  * tests: add insta for snapshot testing #1739
+  * tests: set terminal width to 43 #1741
+  * Fix panic when blame-palette is empty #1737
+  * Make relative-paths work with binary files #1740
+  * Fix github links from master to main #1709
+  * Update terminal-colorsaurus #1699
+  * Make less version >= 633 behave like previous versions wrt. Nerd Fonts #1762
+  * Update catppuccin-latte casing in LIGHT_SYNTAX_THEMES list #1745
+  * deps: bump libc from 0.2.153 to 0.2.155 #1715
+  * Add missing --file-*-label option to --navigate docs #1744
+  * Fix copy-paste typo #1767
+  * Update syntect to 5.2.0 #1672
+  * Disable light mode detection in tests #1765
+  * Add --max-syntax-highlighting-length, set to 400 #1746
+  * chore: cleanup brew formula file in favor of core tap #1773
+  * wrap --help output, fix rust 1.80 build #1440
+  * Fix delta-toggle shell script #1794
+  * Do not wrap short help (-h) output #1800
+  * Implement --diff-args #1697
+  * Handle ambiguous diff header, '--- ' can also be present in a minus hunk #1787
+  * cd: build binaries targeting GNU libc on ubuntu-20.04, not latest #1805
+
+-------------------------------------------------------------------
 Mon Mar 18 08:08:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
