@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:52:14 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.0
+  * Bump windows-curses from 2.3.2 to 2.3.3
+  * Use textwrap to get description lines
+  * Fixed long title wrapping
+  * Added ability to quit early
+  * Bump version 2.4.0b1
+  * Excluded indexes
+  * Bump version 2.4.0
+
+-------------------------------------------------------------------
 Wed May  1 07:41:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
