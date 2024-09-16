@@ -16,9 +16,10 @@
 #
 
 
-%define skip_python39 1
+# truncate trailing .0
+%define distversion 0.36
 Name:           python-octave-kernel
-Version:        0.35.1
+Version:        0.36.0
 Release:        0
 Summary:        A Jupyter kernel for Octave
 License:        BSD-3-Clause
@@ -39,6 +40,7 @@ BuildRequires:  octave
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       jupyter-octave-kernel = %{version}
+Requires:       octave
 Requires:       python-ipykernel
 Requires:       python-jupyter-client >= 4.3.0
 Requires:       python-metakernel >= 0.24.0
@@ -56,7 +58,8 @@ This package provides the python interface.
 Summary:        Interactive plotting package for the Jupyter notebook
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
-Requires:       python3-octave-kernel = %{version}
+Requires:       python3dist(octave-kernel) = %{distversion}
+Suggests:       python3-octave-kernel = %{version}
 Conflicts:      python3-jupyter_octave_kernel < 0.29.0
 Provides:       jupyter-octave_kernel = %{version}-%{release}
 Obsoletes:      jupyter-octave_kernel < %{version}-%{release}

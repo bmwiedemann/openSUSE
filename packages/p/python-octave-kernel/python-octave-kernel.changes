@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:35:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.36.0
+  ## Enhancements made
+  * Prefer octave-cli if available #236 (@blink1073)
+  ## Maintenance and upkeep improvements
+  * Switch to hatch custom build #238 (@blink1073)
+  * Update Release Scripts #237 (@blink1073)
+  ## Other merged PRs
+  * Clarify use environment variable wording #229 (@goyalyashpal)
+
+-------------------------------------------------------------------
 Fri Mar  8 13:33:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (via
