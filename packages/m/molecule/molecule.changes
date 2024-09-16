@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:55:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.0:
+  * Enhancements
+    - dynamically get the nodeport host (#4158) @yahoon
+    - Community comms (#4281) @oraNod
+  * Bugfixes
+    - Fix: Incorrect pip install documentation (#4279)
+      @madalynbartman
+
+-------------------------------------------------------------------
 Sat Aug 17 07:36:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.8.0:
