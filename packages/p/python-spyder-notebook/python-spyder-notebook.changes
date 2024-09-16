@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 15 15:28:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Opening Spyder's preferences no longer leads to an error (Issue
+    470, PR 471)
+- Release 0.6.0
+  * Make plugin compatible with Spyder 6 (Issue 446, Issue 456, PR
+    457, PR 469)
+  * Include Jupyter Notebook version 7.2.1 (Issue 464, PR 462)
+- Test with PyQt6: Avoid Qt5 segfaults (?)
+
+-------------------------------------------------------------------
 Wed Sep 27 09:34:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix tests: Use xvfb and missing test notebook

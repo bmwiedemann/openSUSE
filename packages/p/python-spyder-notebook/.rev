@@ -7,4 +7,19 @@
     <comment>Resurrecting a package which has been removed some months ago but is back with a new version</comment>
     <requestid>1116215</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>438d191800cbb424bbcd6a66ab258efc</srcmd5>
+    <version>0.6.1</version>
+    <time>1726501394</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.1
+  * Opening Spyder's preferences no longer leads to an error (Issue
+    470, PR 471)
+- Release 0.6.0
+  * Make plugin compatible with Spyder 6 (Issue 446, Issue 456, PR
+    457, PR 469)
+  * Include Jupyter Notebook version 7.2.1 (Issue 464, PR 462)
+- Test with PyQt6: Avoid Qt5 segfaults (?) (forwarded request 1201289 from bnavigator)</comment>
+    <requestid>1201290</requestid>
+  </revision>
 </revisionlist>
