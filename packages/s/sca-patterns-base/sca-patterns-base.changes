@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 31 23:10:38 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.6.1
+  + fixed set_supportconfig_path (bsc#1219421)
+
+-------------------------------------------------------------------
 Tue Jan  9 18:50:41 UTC 2024 - jason.record@suse.com
 
 - Minor spec file formatting changes.

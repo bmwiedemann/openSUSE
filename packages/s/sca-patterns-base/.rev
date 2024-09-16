@@ -95,4 +95,12 @@
     <comment>Minor spec file formatting (forwarded request 1137788 from jrecord)</comment>
     <requestid>1137789</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f50f5df6a8f110e7d655aa5d072d543c</srcmd5>
+    <version>1.6.1</version>
+    <time>1726501584</time>
+    <user>anag+factory</user>
+    <comment>bsc#1219421 (forwarded request 1201447 from jrecord)</comment>
+    <requestid>1201448</requestid>
+  </revision>
 </revisionlist>
