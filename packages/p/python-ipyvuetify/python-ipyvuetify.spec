@@ -16,19 +16,18 @@
 #
 
 
-%define skip_python39 1
+%define distversion 1.10
 Name:           python-ipyvuetify
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
 URL:            https://github.com/mariobuikhuizen/ipyvuetify
 Source0:        https://files.pythonhosted.org/packages/source/i/ipyvuetify/ipyvuetify-%{version}.tar.gz
 Source1:        https://github.com/widgetti/ipyvuetify/raw/v%{version}/examples/Examples.ipynb
-# PATCH-FIX-OPENSUSE avoid-npm.patch code@bnavigator.de
-Patch0:         avoidnpm.patch
-BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
-BuildRequires:  %{python_module jupyterlab >= 3}
+# TODO: Use local-npm-registry  https://github.com/openSUSE/obs-service-node_modules
+# This would first require the generate_source step, then the npm build step
+BuildRequires:  %{python_module jupyterlab >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -53,7 +52,7 @@ Jupyter widgets based on vuetify UI components
 Summary:        Jupyter widgets based on vuetify UI components - nbextension
 Requires:       jupyter-notebook
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(ipyvuetify) = %{version}
+Requires:       python3dist(ipyvuetify) = %{distversion}
 Suggests:       python3-ipyvuetify
 
 %description -n jupyter-ipyvuetify-nbextension
@@ -65,7 +64,7 @@ This package provides the jupyter notebook extension.
 Summary:        Jupyter widgets based on vuetify UI components - labextension
 Requires:       jupyter-jupyterlab
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(ipyvuetify) = %{version}
+Requires:       python3dist(ipyvuetify) = %{distversion}
 Suggests:       python3-ipyvuetify
 
 %description -n jupyter-jupyterlab-ipyvuetify

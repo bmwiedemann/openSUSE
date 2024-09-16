@@ -73,4 +73,15 @@
 - Add avoidnpm.patch</comment>
     <requestid>1163563</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bb0aa16800cc68b2d0bd318ecf03c93</srcmd5>
+    <version>1.10.0</version>
+    <time>1726501388</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.0
+  * Jupyter Lab 4 support
+- Drop avoidnpm.patch
+</comment>
+    <requestid>1201286</requestid>
+  </revision>
 </revisionlist>
