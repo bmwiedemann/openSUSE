@@ -155,6 +155,8 @@ Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch914:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 Patch915:       s390-tools-2.34-Fix-Rust-compilation-errors.patch
+Patch916:       s390-tools-01-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+Patch917:       s390-tools-02-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
 ###
 
 BuildRequires:  curl-devel

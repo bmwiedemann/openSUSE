@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 16 12:49:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+* Applied patches (bsc#1230345)
+  - zipl/src: add basic support for multiple target base disks
+  - s390-tools-01-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+  - s390-tools-02-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+
+-------------------------------------------------------------------
 Mon Aug 26 09:17:17 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 * Applied a patch to fix Rust compilation errors (bsc#1229461)

@@ -1,0 +1,15 @@
+--- a/zipl/src/job.c	2024-09-16 14:20:09.321762661 +0200
++++ b/zipl/src/job.c	2024-09-16 14:29:28.601846724 +0200
+@@ -373,8 +373,11 @@
+ static void
+ free_target_data(struct job_target_data* data)
+ {
++	int i;
++
+ 	free(data->bootmap_dir);
+-	free(data->targetbase);
++	for (i = 0; i < data->nr_targets; i++)
++                free(get_targetbase(data, i));
+ }
+ 
+ static void

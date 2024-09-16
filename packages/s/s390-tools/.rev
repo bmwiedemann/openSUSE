@@ -977,4 +977,16 @@ Build succeeded on IBS (in a home project).</comment>
 </comment>
     <requestid>1196040</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>1c4ee4d7f5b093b2dad981ba5e90a74e</srcmd5>
+    <version>2.34.0</version>
+    <time>1726501566</time>
+    <user>anag+factory</user>
+    <comment>* Applied patches (bsc#1230345)
+  - zipl/src: add basic support for multiple target base disks
+  - s390-tools-01-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+  - s390-tools-02-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+</comment>
+    <requestid>1201422</requestid>
+  </revision>
 </revisionlist>
