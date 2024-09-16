@@ -18,18 +18,20 @@
 
 %define dirbase ardour8
 Name:           ardour
-Version:        8.6.0
+Version:        8.7.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
 #  licensed files (BSD, WTFPL). Use GPL-3.0-only for the compiled package.
 License:        GPL-3.0-only
 URL:            https://ardour.org/
-Source0:        https://community.ardour.org/download/release/574#/Ardour-%{version}.tar.bz2
+Source0:        https://community.ardour.org/download/release/580#/Ardour-%{version}.tar.bz2
 Source99:       ardour-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         ardour-boost-1.85.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  boost-devel >= 1.56.0
+BuildRequires:  boost-devel >= 1.68.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
@@ -138,7 +140,8 @@ modern digital mixers.
 %autosetup -p1 -n Ardour-%{version}
 
 chmod -x doc/canvas.svg
-chmod -x doc/mainpage.txt
+chmod -x doc/mainpage.md
+
 # don't use python2
 find . -name wscript -o -name waf -o -name '*.py' \
   | xargs sed -i -e '1{s|^#!.*python$|#!/usr/bin/python3|}'

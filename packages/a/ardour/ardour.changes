@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 14 10:39:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.7.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  New features:
+  * Track dragging
+  * Ruler changes
+  * Midi scene markers
+  * Parallel disk I/O
+- Add patch:
+  * ardour-boost-1.85.patch
+
+-------------------------------------------------------------------
 Mon Apr 15 11:46:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.6.0.
