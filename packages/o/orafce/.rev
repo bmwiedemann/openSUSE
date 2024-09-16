@@ -158,4 +158,12 @@
     <comment></comment>
     <requestid>1196440</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>fb1c953c9b9dba3e07d3b716332b5dc0</srcmd5>
+    <version>4.11.0+git0.72e1417</version>
+    <time>1726501526</time>
+    <user>anag+factory</user>
+    <comment>- disable pg11 builds as we will remove the EOL package soon</comment>
+    <requestid>1201373</requestid>
+  </revision>
 </revisionlist>
