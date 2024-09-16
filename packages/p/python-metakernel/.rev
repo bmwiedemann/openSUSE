@@ -184,4 +184,14 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155326</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ee1476eab45fb384b5478234fd2c7c3f</srcmd5>
+    <version>0.30.2</version>
+    <time>1726501364</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30.2
+  * Pin upper version of ipykernel #276 (@blink1073)
+  * Fix installation code blocks in readme #274 (@Phoenix616)</comment>
+    <requestid>1201269</requestid>
+  </revision>
 </revisionlist>

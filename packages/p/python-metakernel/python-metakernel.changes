@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:15:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.30.2
+  * Pin upper version of ipykernel #276 (@blink1073)
+  * Fix installation code blocks in readme #274 (@Phoenix616)
+
+-------------------------------------------------------------------
 Tue Mar  5 18:33:19 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19
