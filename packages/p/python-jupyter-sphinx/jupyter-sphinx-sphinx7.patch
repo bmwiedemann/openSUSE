@@ -1,0 +1,11 @@
+diff -ur jupyter-sphinx-0.5.3.orig/tests/test_execute.py jupyter-sphinx-0.5.3/tests/test_execute.py
+--- jupyter-sphinx-0.5.3.orig/tests/test_execute.py	2024-09-15 20:14:34.086132369 +0200
++++ jupyter-sphinx-0.5.3/tests/test_execute.py	2024-09-15 20:15:06.323782290 +0200
+@@ -52,6 +52,7 @@
+         source_trees.append(src_dir)
+ 
+         conf_contents = "extensions = ['%s']" % entrypoint
++        conf_contents += "\nproject = 'python'"
+         if config is not None:
+             conf_contents += "\n" + config
+         (src_dir / "conf.py").write_text(conf_contents, encoding="utf8")

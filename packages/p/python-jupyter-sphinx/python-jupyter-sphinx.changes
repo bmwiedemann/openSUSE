@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 15 17:45:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip failing tests due to missing bash-kernel
+- Add jupyter-sphinx-sphinx7.patch gh#jupyter/jupyter-sphinx#280
+
+-------------------------------------------------------------------
 Tue Mar  5 18:32:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

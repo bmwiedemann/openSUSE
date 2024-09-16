@@ -96,4 +96,13 @@
 </comment>
     <requestid>1156383</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>49ebae4cd4b1142778d845a83e0d32a2</srcmd5>
+    <version>0.5.3</version>
+    <time>1726501389</time>
+    <user>anag+factory</user>
+    <comment>- Skip failing tests due to missing bash-kernel
+- Add jupyter-sphinx-sphinx7.patch gh#jupyter/jupyter-sphinx#280</comment>
+    <requestid>1201287</requestid>
+  </revision>
 </revisionlist>

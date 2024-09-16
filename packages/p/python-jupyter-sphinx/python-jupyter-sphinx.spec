@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python39 1
 Name:           python-jupyter-sphinx
 Version:        0.5.3
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Jupyter Sphinx Extensions
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/jupyter-sphinx
 Source:         https://github.com/jupyter/jupyter-sphinx/archive/v%{version}.tar.gz#/jupyter-sphinx-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM jupyter-sphinx-sphinx7.patch gh#jupyter/jupyter-sphinx#280
+Patch0:         jupyter-sphinx-sphinx7.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
@@ -69,7 +70,7 @@ sed -i 's/"--color=yes", //' pyproject.toml
 
 %check
 export JUPYTER_PLATFORM_DIRS=1
-%pytest
+%pytest -k "not test_bash_kernel"
 
 %files %{python_files}
 %doc README.md
