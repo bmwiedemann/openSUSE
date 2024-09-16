@@ -22,11 +22,11 @@
 %bcond_with libalternatives
 %endif
 
-%define pyver 4.0.1
-%define labver 3.0.1
-%define jupver  7.0.1
+%define pyver 4.0.2
+%define labver 3.0.2
+%define jupver  7.0.2
 # always cut trailing .0
-%define pyverdist 4.0.1
+%define pyverdist 4.0.2
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
 %define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
 %define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb
@@ -36,7 +36,13 @@ Release:        0
 Summary:        Tools for diffing and merging Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbdime
-Source:         https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%{pyver}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%{pyver}.tar.gz
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source1:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source2:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module GitPython >= 2.1.6}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pygments}
@@ -52,6 +58,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jupyter-server-test if %python-base >= 3.10}
@@ -179,6 +186,7 @@ This package provides mercurial integration.
 
 %prep
 %autosetup -p1 -n nbdime-%{pyver}
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
 find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
 find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
 find ./nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  5 17:52:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.0.2
+  * Allow unauthenticated access to jupyter server #761
+    (@krassowski)
+- Use our own node modules
+
+-------------------------------------------------------------------
 Thu Mar  7 15:06:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.0.1

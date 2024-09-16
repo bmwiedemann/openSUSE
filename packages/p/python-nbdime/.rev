@@ -180,4 +180,15 @@
 - Don't test on python39: No python39-notebook anymore</comment>
     <requestid>1156048</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>0ffcf4a8fd2debf0f9d9d243ba734fb9</srcmd5>
+    <version>unknown</version>
+    <time>1726501391</time>
+    <user>anag+factory</user>
+    <comment>- Update to v4.0.2
+  * Allow unauthenticated access to jupyter server #761
+    (@krassowski)
+- Use our own node modules</comment>
+    <requestid>1201288</requestid>
+  </revision>
 </revisionlist>
