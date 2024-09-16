@@ -83,4 +83,13 @@
   * fix: watch didn't work for Vue-only vars</comment>
     <requestid>1163564</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3af1b92eb27b9cfc5b609f17dcc65c69</srcmd5>
+    <version>1.11.1</version>
+    <time>1726501373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.1
+  * allow v_model to be set after first render</comment>
+    <requestid>1201275</requestid>
+  </revision>
 </revisionlist>

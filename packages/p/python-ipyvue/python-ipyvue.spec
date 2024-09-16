@@ -17,10 +17,9 @@
 
 
 # This is important for versions ending in .0
-%define python3dist_version 1.10.2
-%define skip_python39 1
+%define python3dist_version 1.11.1
 Name:           python-ipyvue
-Version:        1.10.2
+Version:        1.11.1
 Release:        0
 Summary:        Jupyter widgets base for Vue libraries
 License:        MIT
