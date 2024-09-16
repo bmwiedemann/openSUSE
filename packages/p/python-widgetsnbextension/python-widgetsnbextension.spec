@@ -16,9 +16,9 @@
 #
 
 
-%define jupver 8.0.11
+%define jupver 8.0.13
 Name:           python-widgetsnbextension
-Version:        4.0.11
+Version:        4.0.13
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause AND MIT

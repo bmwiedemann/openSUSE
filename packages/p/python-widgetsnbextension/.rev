@@ -163,4 +163,32 @@
     <comment></comment>
     <requestid>1187197</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8a9dbf3bda36cced1a562b6546fd928e</srcmd5>
+    <version>4.0.13</version>
+    <time>1726501357</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.13
+  # release notes from ipywidgets 8.1.4 and 8.1.3
+  * More Phosphor backward compatibility by @martinRenou in #3942
+  ## New features
+  * Allow interact to use basic type hint annotations by
+    @corranwebster in #3908
+  * Support horizontal orientation of radio buttons by
+    @DonJayamanne in #3620
+  ## Maintenance and bug fixes
+  * Fix compatibility with pytest 8 by @frenzymadness in #3903
+  * HTMLManager: Support both ipywidgets 7 and 8 models by
+    @martinRenou in #3932
+  * Make tests compatible with Python 3.13 by @frenzymadness in
+    #3924
+  * fix: get_metadata deprecated since traitlets 4.1 by
+    @ManonMarchand in #3894
+  * Phosphor widget backward compatibility fixes by @martinRenou in
+    #3933
+  * Remove confusing error message by @martinRenou in #3936
+  * Fix wrong tag index in TagsInput when updated via python by
+    @s-weigand in #3862</comment>
+    <requestid>1201255</requestid>
+  </revision>
 </revisionlist>
