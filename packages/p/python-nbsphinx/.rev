@@ -188,4 +188,15 @@ too small
     <comment></comment>
     <requestid>1106239</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5c2bcaa1d1b82318b43632eb5c083463</srcmd5>
+    <version>0.9.5</version>
+    <time>1726501370</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.5
+  * Miscellaneous fixes
+  * Require docutils &gt;= 0.18.1
+  * Minor fixes, documentation and CI updates</comment>
+    <requestid>1201271</requestid>
+  </revision>
 </revisionlist>

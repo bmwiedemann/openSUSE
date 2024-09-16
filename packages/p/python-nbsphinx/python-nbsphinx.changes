@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:30:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.5
+  * Miscellaneous fixes
+  * Require docutils >= 0.18.1
+  * Minor fixes, documentation and CI updates
+
+-------------------------------------------------------------------
 Sun Aug 27 21:08:10 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.9.3:

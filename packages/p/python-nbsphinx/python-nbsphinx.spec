@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsphinx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-nbsphinx
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
@@ -26,8 +26,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/nbsphinx/nbsphi
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Sphinx >= 1.8}
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module docutils >= 0.18.1}
+BuildRequires:  %{python_module nbconvert >= 5.5}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-Sphinx >= 1.8
 Requires:       python-docutils
-Requires:       python-nbconvert
+Requires:       python-nbconvert >= 5.5
 Requires:       python-nbformat
 Requires:       python-traitlets >= 5
 Recommends:     mathjax
