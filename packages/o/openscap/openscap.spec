@@ -75,7 +75,6 @@ BuildRequires:  procps
 BuildRequires:  procps-devel
 BuildRequires:  python3-devel
 BuildRequires:  rpm-devel
-BuildRequires:  sendmail
 BuildRequires:  swig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unixODBC-devel
@@ -88,12 +87,7 @@ BuildRequires:  pkgconfig(systemd)
 # remove extra packages from version 1.2.9 and older
 Obsoletes:      openscap-engine-sce < %{version}
 Obsoletes:      openscap-extra-probes < %{version}
-# Next few lines are needed for unit tests, they expect /etc/os-release to exist
-%if !0%{?is_opensuse} && 0%{?sle_version} < 130000
-BuildRequires:  sles-release
-%else
 BuildRequires:  distribution-release
-%endif
 
 %description
 OpenSCAP is a set of open source libraries providing an easier path for

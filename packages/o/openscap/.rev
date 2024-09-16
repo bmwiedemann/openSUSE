@@ -1252,4 +1252,13 @@
     <comment></comment>
     <requestid>1172088</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>40146bd45416b7e2f251b95bad72118f</srcmd5>
+    <version>1.3.10</version>
+    <time>1726501554</time>
+    <user>anag+factory</user>
+    <comment>- disable sendmail buildrequires (seems unused)
+- only use distribution-release to make work everywhere (forwarded request 1201407 from msmeissn)</comment>
+    <requestid>1201408</requestid>
+  </revision>
 </revisionlist>
