@@ -1,0 +1,18 @@
+---
+ pycbc/conversions.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: pycbc-2.5.1/pycbc/conversions.py
+===================================================================
+--- pycbc-2.5.1.orig/pycbc/conversions.py
++++ pycbc-2.5.1/pycbc/conversions.py
+@@ -77,7 +77,8 @@ def ensurearray(*args):
+         inputs was an array.
+     """
+     input_is_array = any(isinstance(arg, numpy.ndarray) for arg in args)
+-    args = numpy.broadcast_arrays(*args)
++    # For numpy >= 2, broadcast_arrays returns tuple instead of list
++    args = list(numpy.broadcast_arrays(*args))
+     args.append(input_is_array)
+     return args
+ 

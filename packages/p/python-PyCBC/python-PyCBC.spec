@@ -36,6 +36,8 @@ Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 URL:            http://www.pycbc.org/
 Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-PyCBC-tests-numpy-2.0-compat.patch badshah400@gmail.com -- Fix appending to numpy.broadcast_arrays output for numpy >= 2.0
+Patch1:         python-PyCBC-tests-numpy-2.0-compat.patch
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
