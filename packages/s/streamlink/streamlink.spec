@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global         flavor @BUILD_FLAVOR@%nil
 %if "%{flavor}" == "test"
 %define         psuffix -test
@@ -24,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           streamlink%{psuffix}
-Version:        6.9.0
+Version:        6.10.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause

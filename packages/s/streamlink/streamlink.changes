@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:00:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.10.0:
+  * Added: official support for Python 3.13
+  * Added: --logformat and --logdateformat
+  * Added: --ffmpeg-loglevel
+  * Fixed: continuous logging errors when stdout stream was closed on the reading end
+  * Fixed: HTTP proxy config being used when getting webbrowser API's websocket IPC address
+  * Updated plugins:
+    - booyah: removed plugin
+    - douyin: fixed validation schema
+    - galatasaraytv: removed plugin
+    - idf1: removed plugin
+    - linelive: removed plugin
+    - pandalive: fixed missing HTTP headers
+    - tiktok: fixed schema of inaccessible streams
+    - youtube: disabled VODs, as they are currently non-functional
+  * Docs: bumped sphinx-design >=0.5.0,<=0.6.1, enabling sphinx >=8.0.0
+  * Tests: fixed pytest-asyncio warnings
+- remove last bits of supporting leap (as dependencies are missing anyway)
+
+-------------------------------------------------------------------
 Mon Aug 12 23:05:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
-- updatet o 6.9.0:
+- update to 6.9.0:
   * Added: streamlink.plugin.api.webbrowser subpackage with the aws_waf module
   * Added: max_buffer_size kwarg to CDPClient.session()
   * Added: webbrowser User-Agent header override in headless mode
