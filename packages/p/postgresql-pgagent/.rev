@@ -71,4 +71,14 @@
 - enable pg 15</comment>
     <requestid>1080338</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>973b82da5adc8d4e54442a58412ca6df</srcmd5>
+    <version>4.2.2</version>
+    <time>1726501530</time>
+    <user>anag+factory</user>
+    <comment>- disable pg11 builds as we will remove the EOL package soon
+
+- enable pg 16</comment>
+    <requestid>1201375</requestid>
+  </revision>
 </revisionlist>

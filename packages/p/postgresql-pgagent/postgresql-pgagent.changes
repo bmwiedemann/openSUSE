@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  9 02:01:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable pg11 builds as we will remove the EOL package soon
+
+-------------------------------------------------------------------
+Thu Sep 28 21:07:09 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 16
+
+-------------------------------------------------------------------
 Wed Apr 19 13:53:52 UTC 2023 - Reinhard Max <max@suse.com>
 
 - PostgreSQL 10 and older are EOL.
