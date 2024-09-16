@@ -30,7 +30,7 @@ RUN set -euo pipefail; zypper -n in spack bison cmake-full flex libtool makeinfo
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Spack development"
 LABEL org.opencontainers.image.description="Spack development container for building containerized HPC solution stacks, based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="0.22"
+LABEL org.opencontainers.image.version="0.22.1"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
