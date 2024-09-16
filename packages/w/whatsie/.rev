@@ -60,4 +60,14 @@
   * udapte CHANGELOG (5940b6e)</comment>
     <requestid>1191098</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>127ebc0dc70f724592ea532e3919512f</srcmd5>
+    <version>4.15.5</version>
+    <time>1726501536</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.15.5:
+  * bump version and update metadata (3ad375a)
+  * update screenshot (93b98cb)</comment>
+    <requestid>1201387</requestid>
+  </revision>
 </revisionlist>
