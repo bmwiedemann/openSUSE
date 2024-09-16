@@ -679,4 +679,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158241</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fbb1aefa922b731dbd32186ddb1c218c</srcmd5>
+    <version>2.14.2</version>
+    <time>1726501362</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.14.2
+  * Pass session_id during Websocket connect #1440 (@gogasca)
+  * Do not log environment variables passed to kernels #1437
+    (@krassowski)
+- Release 2.14.1
+  ## Enhancements made
+  * Removing excessive logging from reading local files #1420
+    (@lresende)
+  ## Security Fix
+  * Filefind: avoid handling absolute paths
+- Release 2.14.0
+  ## Enhancements made
+  * Do not include token in dashboard link, when available #1406
+    (@minrk)
+  ## Bugs fixed
+  * Ignore zero-length page_config.json, restore previous behavior
+    of crashing for invalid JSON #1405 (@holzman)
+  * Don't crash on invalid JSON in page_config (#1403) #1404
+    (@holzman)</comment>
+    <requestid>1201265</requestid>
+  </revision>
 </revisionlist>

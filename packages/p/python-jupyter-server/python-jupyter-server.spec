@@ -19,7 +19,6 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-%define skip_python39 1
 %bcond_without test
 %else
 %define psuffix %{nil}
@@ -33,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.13.0
+Version:        2.14.2
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -50,23 +49,23 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python >= 3.8
-Requires:       python-Jinja2
+Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-Send2Trash >= 1.8.2
 Requires:       python-anyio >= 3.1.0
-Requires:       python-argon2-cffi
+Requires:       python-argon2-cffi >= 21.1
 Requires:       python-jupyter-client >= 7.4.4
 Requires:       python-jupyter_events >= 0.9.0
-Requires:       python-jupyter_server_terminals
+Requires:       python-jupyter_server_terminals >= 0.4.4
 Requires:       python-nbconvert >= 6.4.4
 Requires:       python-nbformat >= 5.3.0
-Requires:       python-overrides
-Requires:       python-packaging
-Requires:       python-prometheus_client
+Requires:       python-overrides >= 5.0
+Requires:       python-packaging >= 22
+Requires:       python-prometheus_client >= 0.9
 Requires:       python-pyzmq >= 24
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.2
 Requires:       python-traitlets >= 5.6
-Requires:       python-websocket-client
+Requires:       python-websocket-client >= 1.7
 Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or python-jupyter-core >= 5.1)
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
