@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package pg_cron
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        1.5.2
+Version:        1.6.4
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL
