@@ -1,0 +1,12 @@
+diff -rub cosmic-player/Cargo.toml cosmic-player-patched/Cargo.toml
+--- cosmic-player/Cargo.toml	2024-09-16 13:50:59.801481433 +0200
++++ cosmic-player-patched/Cargo.toml	2024-09-16 14:36:29.042729336 +0200
+@@ -5,7 +5,7 @@
+ 
+ [dependencies]
+ cpal = "0.15"
+-ffmpeg-next = "6"
++ffmpeg-next = "7"
+ lazy_static = "1"
+ paste = "1"
+ serde = { version = "1", features = ["serde_derive"] }

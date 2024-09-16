@@ -25,6 +25,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-player
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         ffmpeg-next.patch
+Patch1:         ffmpeg-7.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  just
@@ -41,7 +43,11 @@ BuildRequires:  pkgconfig(xkbcommon)
 %{summary}.
 
 %prep
-%autosetup -a1
+%autosetup -N -a1
+%patch -P0 -p1
+%if 0%{?suse_version} >= 1600
+%patch -P1 -p1
+%endif
 
 %build
 just build-release

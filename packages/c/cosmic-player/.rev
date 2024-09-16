@@ -18,4 +18,12 @@
   added</comment>
     <requestid>1192473</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e854bb62743cf7b1532734b4f62326dd</srcmd5>
+    <version>0.1.0+git20240702.52b9439</version>
+    <time>1726501570</time>
+    <user>anag+factory</user>
+    <comment>- fix Tumbleweed by using ffmpeg-next.patch and ffmpeg-7.patch (forwarded request 1201423 from rrahl0)</comment>
+    <requestid>1201424</requestid>
+  </revision>
 </revisionlist>
