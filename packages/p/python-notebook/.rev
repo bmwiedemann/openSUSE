@@ -379,4 +379,13 @@
     <comment></comment>
     <requestid>1187200</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1098f653be5b3e539d26d811edcceb7f</srcmd5>
+    <version>7.2.2</version>
+    <time>1726501371</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.2.2
+  * Upgrade JupyterLab dependencies to v4.2.5 #7447 (@krassowski)</comment>
+    <requestid>1201273</requestid>
+  </revision>
 </revisionlist>

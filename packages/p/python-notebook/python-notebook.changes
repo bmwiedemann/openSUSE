@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:32:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.2
+  * Upgrade JupyterLab dependencies to v4.2.5 #7447 (@krassowski)
+
+-------------------------------------------------------------------
 Fri Jul 12 15:30:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.1
