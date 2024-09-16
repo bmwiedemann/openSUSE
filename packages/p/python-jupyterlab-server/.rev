@@ -147,4 +147,16 @@
     <comment>- Remove upper bound on pytest.</comment>
     <requestid>1183267</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c0da2fb032c3403c0ece9a279bfb522</srcmd5>
+    <version>2.27.3</version>
+    <time>1726501363</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.27.3
+  * Fix handling language packs for pseudo language #456
+    (@fcollonval)
+  * Load overrides once, rather than in each settings handler #452
+    (@krassowski)</comment>
+    <requestid>1201268</requestid>
+  </revision>
 </revisionlist>

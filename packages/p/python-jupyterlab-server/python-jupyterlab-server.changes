@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:12:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.27.3
+  * Fix handling language packs for pseudo language #456
+    (@fcollonval)
+  * Load overrides once, rather than in each settings handler #452
+    (@krassowski)
+
+-------------------------------------------------------------------
 Wed Jun 26 02:33:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on pytest. 

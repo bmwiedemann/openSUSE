@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.27.1
+Version:        2.27.3
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
