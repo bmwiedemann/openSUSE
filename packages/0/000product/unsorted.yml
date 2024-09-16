@@ -579,6 +579,7 @@ unsorted:
   - amazon-ssm-agent 
   - amber-cli 
   - amdctl 
+  - amdgpu_top 
   - amfora 
   - aml-devel 
   - amsynth 
@@ -7439,8 +7440,6 @@ unsorted:
   - gnome-shell-theme-matcha 
   - gnome-shell-theme-yaru 
   - gnome-software-devel 
-  - gnome-sound-recorder 
-  - gnome-sound-recorder-lang 
   - gnome-subtitles 
   - gnome-subtitles-lang 
   - gnome-taquin 
@@ -9809,6 +9808,10 @@ unsorted:
   - kapman 
   - kapman-lang 
   - karchive-devel 
+  - kargo-cli 
+  - kargo-cli-bash-completion 
+  - kargo-cli-fish-completion 
+  - kargo-cli-zsh-completion 
   - kasts 
   - kasts-lang 
   - kasumi 
@@ -10363,6 +10366,10 @@ unsorted:
   - kproperty 
   - kproperty-devel 
   - kproperty-lang 
+  - kpt-cli 
+  - kpt-cli-bash-completion 
+  - kpt-cli-fish-completion 
+  - kpt-cli-zsh-completion 
   - kpty-devel 
   - kpublictransport 
   - kpublictransport-devel 
@@ -10626,6 +10633,10 @@ unsorted:
   - kubrick 
   - kubrick-lang 
   - kucero 
+  - kumactl 
+  - kumactl-bash-completion 
+  - kumactl-fish-completion 
+  - kumactl-zsh-completion 
   - kunitconversion-devel 
   - kup-backup 
   - kup-backup-lang 
@@ -10641,6 +10652,10 @@ unsorted:
   - kustomize-bash-completion 
   - kustomize-fish-completion 
   - kustomize-zsh-completion 
+  - kuttl 
+  - kuttl-bash-completion 
+  - kuttl-fish-completion 
+  - kuttl-zsh-completion 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -14063,7 +14078,7 @@ unsorted:
   - libjulia1_10 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_10-32bit 
+  - libjxl0_11-32bit 
   - libjxrglue0 
   - libkColorPicker-Qt5-0 
   - libkImageAnnotator-Qt5-0 
@@ -16970,7 +16985,6 @@ unsorted:
   - libwireshark18 
   - libwiretap15 
   - libwlroots-0_18 
-  - libwlroots11 
   - libwlroots12 
   - libwmf-0_2-7-32bit 
   - libwmf-devel 
@@ -17676,7 +17690,6 @@ unsorted:
   - lrslib 
   - lrslib-devel 
   - lsb 
-  - lscsoft-glue-data 
   - lsd 
   - lsdvd 
   - lshw 
@@ -23111,9 +23124,6 @@ unsorted:
   - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
-  - postgresql11-orafce 
-  - postgresql11-pg_cron 
-  - postgresql11-pgagent 
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-plperl 
   - postgresql11-plpython 
@@ -23218,6 +23228,8 @@ unsorted:
   - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
+  - postgresql16-pg_cron 
+  - postgresql16-pgagent 
   - postgresql16-pgaudit 
   - postgresql16-plperl 
   - postgresql16-plpython 
@@ -27508,6 +27520,10 @@ unsorted:
   - python310-user_agent 
   - python310-userpath 
   - python310-usfm2osis 
+  - python310-uv 
+  - python310-uv-bash-completion 
+  - python310-uv-fish-completion 
+  - python310-uv-zsh-completion 
   - python310-uvicorn 
   - python310-uvloop 
   - python310-uwsgi-python3 
@@ -31055,6 +31071,10 @@ unsorted:
   - python311-user_agent 
   - python311-userpath 
   - python311-usfm2osis 
+  - python311-uv 
+  - python311-uv-bash-completion 
+  - python311-uv-fish-completion 
+  - python311-uv-zsh-completion 
   - python311-uvicorn 
   - python311-uvloop 
   - python311-uwsgi-python3 
@@ -34713,6 +34733,10 @@ unsorted:
   - python312-user_agent 
   - python312-userpath 
   - python312-usfm2osis 
+  - python312-uv 
+  - python312-uv-bash-completion 
+  - python312-uv-fish-completion 
+  - python312-uv-zsh-completion 
   - python312-uvicorn 
   - python312-uvloop 
   - python312-uwsgi-python3 
@@ -35913,6 +35937,7 @@ unsorted:
   - rke2-1.27 
   - rke2-1.28 
   - rke2-1.29 
+  - rke2-1.30 
   - rke2-selinux 
   - rkhunter 
   - rkward 
@@ -36876,6 +36901,7 @@ unsorted:
   - sile-bash-completion 
   - sile-fish-completion 
   - sile-zsh-completion 
+  - silver-surfer 
   - simde-devel 
   - simh 
   - simple-ccsm 
@@ -48339,7 +48365,6 @@ unsorted:
   - wlr-randr 
   - wlr-sunclock 
   - wlrctl 
-  - wlroots-0_16-devel 
   - wlroots-0_17-devel 
   - wlroots-devel 
   - wlsunset 
