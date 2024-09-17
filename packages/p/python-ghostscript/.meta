@@ -1,0 +1,6 @@
+<package name="python-ghostscript" project="openSUSE:Factory">
+  <title></title>
+  <description>Python interface to the Ghostscript C-API, both high and low-level, based on ctypes.</description>
+  <devel project="devel:languages:python" package="python-ghostscript"/>
+  <url>https://gitlab.com/pdftools/python-ghostscript</url>
+</package>
