@@ -1,0 +1,6 @@
+<package name="python-camelot-py" project="openSUSE:Factory">
+  <title>python-camelot-py</title>
+  <description>Camelot is a Python library that can help you extract tables from PDFs!</description>
+  <devel project="devel:languages:python" package="python-camelot-py"/>
+  <url>https://github.com/camelot-dev/camelot</url>
+</package>
