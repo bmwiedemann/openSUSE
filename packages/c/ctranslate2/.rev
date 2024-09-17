@@ -7,4 +7,25 @@
     <comment>Another attempt with fixed deps</comment>
     <requestid>1190392</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>795f533d81db2186fc6a3068db457eb9</srcmd5>
+    <version>4.4.0</version>
+    <time>1726589941</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.4.0
+  **Removed**: Flash Attention support in the Python package due to
+               significant package size increase with minimal
+               performance gain.  
+  ### New features
+  * Support Llama3
+  * Support Gemma2
+  * Add log probs for all tokens in vocab
+  * Grouped conv1d
+  
+  ### Fixes and improvements
+  * Some improvements in flash attention
+  * Fix crash when using return_alternative on CUDA
+  * Quantization AWQ GEMM + GEMV</comment>
+    <requestid>1201559</requestid>
+  </revision>
 </revisionlist>

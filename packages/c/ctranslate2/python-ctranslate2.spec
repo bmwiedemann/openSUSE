@@ -1,5 +1,5 @@
 #
-# spec file for package ctranslate2
+# spec file for package python-ctranslate2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -19,26 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-ctranslate2
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
-Summary:      Library for efficient inference with Transformer models
+Summary:        Library for efficient inference with Transformer models
 License:        MIT
 URL:            https://github.com/OpenNMT/CTranslate2
 Source:         CTranslate2-%version.tar.xz
-BuildRequires:  ctranslate2-devel
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
-BuildRequires:  openblas-devel
+BuildRequires:  cmake
+BuildRequires:  ctranslate2-devel
 BuildRequires:  nlohmann_json-devel
+BuildRequires:  openblas-devel
 
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 
-ExcludeArch: %ix86 %arm
+ExcludeArch:    %ix86 %arm
 
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -49,7 +49,6 @@ Requires(postun): update-alternatives
 CTranslate2 is a C++ and Python library for efficient inference with Transformer models.
 
 NOTE: hardware accelaration is currently disabled in this package for license reasons
-
 
 %prep
 %autosetup -p1 -n CTranslate2-%version
@@ -88,4 +87,3 @@ done
 %{python_sitearch}//ctranslate2*
 
 %changelog
-

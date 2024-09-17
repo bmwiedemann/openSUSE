@@ -17,22 +17,22 @@
 
 
 Name:           ctranslate2
-Version:        4.3.1
+Version:        4.4.0
 %define lname libctranslate2-4
 Release:        0
-Summary:      Library for efficient inference with Transformer models
+Summary:        Library for efficient inference with Transformer models
 License:        MIT
 URL:            https://github.com/OpenNMT/CTranslate2
 Source:         CTranslate2-%version.tar.xz
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  openblas-devel
 #BuildRequires:  libgmock-devel
 BuildRequires:  nlohmann_json-devel
+BuildRequires:  cpuinfo-devel
 BuildRequires:  gmock
 BuildRequires:  gtest
-BuildRequires:  cpuinfo-devel
-ExcludeArch: %ix86 %arm
+ExcludeArch:    %ix86 %arm
 
 %description
 CTranslate2 is a C++ and Python library for efficient inference with Transformer models.
@@ -40,14 +40,14 @@ CTranslate2 is a C++ and Python library for efficient inference with Transformer
 NOTE: hardware accelaration is currently disabled in this package for license reasons
 
 %package devel
-Summary: Development files for libctranslate2
-Requires: %lname
+Summary:        Development files for libctranslate2
+Requires:       %lname
 
 %description devel
 Development files for libctranslate2 like cmake and header files.
 
 %package -n %lname
-Summary: The ctranslate2 library
+Summary:        The ctranslate2 library
 
 %description -n %lname
 The ctranslate2 library
@@ -93,4 +93,3 @@ cd build
 %_libdir/libctranslate2.so.*
 
 %changelog
-
