@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pelican
-Version:        4.9.1
+Version:        4.10.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -53,7 +53,7 @@ Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-rich >= 13.6.0
 Requires:       python-watchfiles >= 0.21.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     make
 Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.5.1
