@@ -1,7 +1,7 @@
 #
 # spec file for package python-databases
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-databases
-Version:        0.7.0
+Version:        0.9.0
 Release:        0
 Summary:        Async database support for Python
 License:        BSD-3-Clause
 URL:            https://github.com/encode/databases
 Source:         https://github.com/encode/databases/archive/%{version}.tar.gz#/databases-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-sqlalchemy >= 1.4 with python-sqlalchemy < 2)
+Requires:       python-sqlalchemy >= 2.0.7
 Suggests:       python-aiomysql
 Suggests:       python-aiopg
 Suggests:       python-aiosqlite
@@ -38,7 +41,7 @@ BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sqlalchemy >= 1.4 with %python-sqlalchemy < 2}
+BuildRequires:  %{python_module sqlalchemy >= 2.0.7}
 # /SECTION
 %python_subpackages
 
@@ -55,10 +58,10 @@ rm tests/test_integration.py
 sed -Ei 's/from .*(aiopg|mysql|asyncmy).* import .*/pass/' tests/test_connection_options.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +73,6 @@ export PYTHONPATH=${PWD}
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/databases
-%{python_sitelib}/databases-%{version}*-info
+%{python_sitelib}/databases-%{version}.dist-info
 
 %changelog

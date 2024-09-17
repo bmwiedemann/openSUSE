@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:26:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.0:
+  * Added
+    + Allow SQLite query parameters and support cached databases
+    + Support for unix socket for aiomysql and asyncmy
+  * Changed
+    + Drop support for Python 3.7 and add support for Python 3.12
+    + Add support for SQLAlchemy 2+
+    + Allow SSL string parameters in PostgresSQL URL
+    + Change isolation connections and transactions during concurrent usage
+    + Bump up asyncmy version to fix No module named 'asyncmy.connection'
+  * Fixed
+    + Fix the type-hints using more standard mode
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jul  4 13:09:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
