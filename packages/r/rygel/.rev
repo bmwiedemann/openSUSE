@@ -800,4 +800,12 @@ New stable rel</comment>
     <comment> (forwarded request 1184130 from iznogood)</comment>
     <requestid>1184260</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>5622eb995292d255b4de594f153e629b</srcmd5>
+    <version>0.44.0</version>
+    <time>1726589922</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201518</requestid>
+  </revision>
 </revisionlist>
