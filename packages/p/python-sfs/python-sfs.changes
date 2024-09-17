@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:54:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch mpl39.patch to fix build with the new matplotlib
+
+-------------------------------------------------------------------
 Thu Sep  7 11:53:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch numpy125.patch

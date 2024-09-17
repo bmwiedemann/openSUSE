@@ -1,7 +1,7 @@
 #
 # spec file for package python-sfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/sfstoolbox/
 Source:         https://files.pythonhosted.org/packages/source/s/sfs/sfs-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/163 Replace inner1d bei einsum
 Patch:          numpy125.patch
+# PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/179 Update to changes in matplotlib 3.9.0
+Patch:          mpl39.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
