@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:40:51 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.0.3.0.1
+  Bindings
+  * Added support for vSAN Health APIs
+  * Updated bindings with support for the new vSphere 8.0U3 APIs.
+  * New features of vSphere 8.0U3 based on REST APIs are available
+    via the vSphere Automation SDK for Python
+  Type Hints
+  * Added type stubs for vSAN APIs.
+  * All type stubs are refactored.
+  Added
+  * Python 3.12 compatibility
+  * Stub adapters allow the usage of an existing session.
+  * Added pyVmomi version in the user-agent request header
+  * Added certFile and certKeyFile attributes to SoapStubAdapter.
+  * Added project wide variables to hold the current pyVmomi version,
+    version_info and version_info_str
+  * Added functions to VmomiSupport to list all types
+    ListManagedTypes(), ListDataTypes(), ListEnumTypes().
+  Changes
+  * Doc: Non-remote ManagedObject and DataObject methods are
+    documented.
+  * The support statement now reflects the Broadcom support policy.
+  * Copyright switch from VMware to Broadcom.
+  Breaking changes
+  * sso.SsoAuthenticator.get_bearer_saml_assertion_gss_api() is
+    removed.
+  * SSLTunnelConnection is trimmed down to handle only tunnel
+    connections. The code that handles remote proxy doubles the
+    HTTPProxyConnection logic and therefore is removed.
+  Deprecated
+  * 'publicVersions' and 'dottedVersions' aliases are deprecated.
+  * pyVmomiSettings.py and related settings are deprecated
+    allowGetSet, allowCapitalizedNames, binaryIsBytearray,
+    legacyThumbprintException.
+  * Features.py and all pyVmomi feature states logic is deprecated
+  * pyVmomi.VmomiSupport.VmomiJSONEncoder is deprecated.
+    Use pyVmomi.VmomiJSONEncoder.VmomiJSONEncoder
+  * pyVmomi.VmomiSupport.templateOf() is deprecated.
+    Use pyVmomi.VmomiJSONEncoder.templateOf()
+  * pyVmomi.SoapAdapter.ThumbprintMismatchException is deprecated.
+    Use pyVmomi.Security.ThumbprintMismatchException
+- Update to version 8.0.2.0.1
+  Maintenance Patch 1 for 8.0U2 - 2023-11-17
+  Changes
+  * Fixed: #978 and #1053 - Fix SmartConnect()'s handling of IPv6
+    address with square brackets
+  * Added PyPI classifiers for Python 3.10 and Python 3.11.
+    Support for both versions is verified.
+- Update to version 8.0.2.0
+  Bindings
+  * Updated bindings and type hints with support for vSphere 8.0U2.
+    Includes updates to VIM, PBM, EAM, SMS and VSLM namespaces.
+  * New features of vSphere 8.0U2 based on REST APIs are available
+    via the vSphere Automation SDK for Python
+    https://github.com/vmware/vsphere-automation-sdk-python
+- Update to version 8.0.1.0.2
+  Bindings
+  * Added bindings and type hints for Virtual Storage Lifecycle
+    Management for vSphere 8.0U1 - VSLM namespace.
+  Changes
+  * Fixed: #1021 - Switch to static imports for type info modules.
+  * Fixed: #1022 - Support proxy authentication.
+  * Add custom HTTP headers support to connect.SmartStubAdapter().
+  * Missing filters are no longer treated as task failures.
+  * Various small fixes for docstrings and linter checks.
+  Type Hints Fixes
+  * Fixed: #1026 - Use the "from Y import X as X" format to
+    re-export submodules.
+  * Fixed: #1030 - Use a fully qualified name when the type is from
+    another namespace/package
+  Tests
+  * vcrpy dependency is updated to the latest version with Python 2
+    support.
+  * testtools dependency is removed.
+  * Travis CI is no longer used.
+  * Various test updates and fixes. All tests are enabled.
+- Update to version 8.0.1.0.1
+  Type Hints Fixes
+  * Added missing VMODL1 classes to the type hints
+  * Enum values now match the letter case of the values from
+    typeinfo files.
+  * Fixed: #1115 - Syntax error in vim/__init__pyi.
+  * Fixed: #1117 - Type stubs: Writable properties are marked as
+    read-only.
+  * Fixed: #1118 - Type stubs: Missing vim.fault.* and
+    vmodl.fault.* types
+  * Fixed: #1119 - Type stubs: Enum fields should also accept
+    Literal[] str type.
+  * Fixed: #1120 - Type stubs: Exception types must inherit from
+    (Base)Exception.
+- Update to version 8.0.1.0
+  Bindings
+  * Updated bindings with support for vSphere 8.0U1. Includes
+    updates to VIM, PBM, EAM and SMS namespaces.
+  * New features of vSphere 8.0U1 based on REST APIs are available
+    via the vSphere Automation SDK for Python.
+  Changes
+  * Added support for type hints.
+  * #892 - Allow passing ssl_context when login in with a token.
+  * Fixed: #750 - Bumped vcrpy tests dependency to 2.1.
+  * Fixed: #812 - Fix exception leaks.
+  * Fixed: #1004 - Fix SmartConnect()'s SOAP and OAuth token login.
+- Update to version 8.0.0.1.1
+  Changes
+  * Fixed: #993 - WaitForTask broken on version >8.0.0.
+  * Fixed: #994 - Pyvomi module failing in connect method.
+  * Replace publicVersions with ltsVersions.
+  * Updated VIM namespace for the next vSphere 8.0 patch release.
+- Update to version 8.0.0.1
+  Bindings
+  * Updated bindings with support for vSphere 8.0. Includes updates
+  * New features of vSphere 8.0 based on REST APIs are available
+    via the vSphere Automation SDK for Python.
+  Breaking changes
+  * Minimum Python 2 requirement is 2.7.9.
+  * DynamicTypeManagerHelper.py is removed.
+  * ManagedMethodExecutorHelper.py is removed.
+  * connect.ConnectNoSSL() and connect.SmartConnectNoSSL() are
+    removed. Use connect.Connect(disableSslCertValidation=True)
+    and connect.SmartConnect(disableSslCertValidation=True)
+  * VmomiSupport.UncallableManagedMethod is renamed to
+    VmomiSupport.UnknownManagedMethod.
+  New modules
+  * Security.py A new module is added to handle thumbprint
+    verification. There is a predefined set of available crypto
+    functions to verify the certificate thumbprints. Its possible
+    to configure during runtime which of the available crypto
+    functions are allowed.
+  * Feature.py A new module related to pyVmomi development within
+    VMware.
+  * VmomiJSONEncoder.py The VmomiJSONEncoder is moved into a
+    dedicated module.
+  More changes
+  * A new 'binaryIsBytearray' setting is added to select the base
+    type for the binary type. By default, the binary type is 'str'
+    for Python 2 and 'bytes' for Python 3. If binaryIsBytearray is
+    True, the binary type for Python 2 is set to 'bytearray'.
+    Required for VmomiJSONEncoder to work properly.
+  * The license note is removed from the Python files. LICENSE.txt
+    holds the Apache 2 license note.
+  * pyVmomi now uses relative imports
+  * Dependency on "requests" is removed
+  * Added support for SAML token authentication
+  * Added timeout for HTTP requests
+  * Added option to set the maximum amount of time a task is
+    allowed to run. On timeout, an exception is generated if
+    raiseOnError is True.
+  * Add option to get all updates for the task.
+  * Add option to use a logger instead of the standard output.
+  * Various bug fixes
+  * Code style improvements
+  Deprecated
+  * connect.OpenUrlWithBasicAuth()
+  * connect.OpenPathWithStub()
+- Add patch
+  * 0001-pyVmomi-pinned-certificates-support.patch
+- Reenable python3.12 builds
+
+-------------------------------------------------------------------
 Mon Apr  8 05:55:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add sle15 macro; disable python3.12 builds
