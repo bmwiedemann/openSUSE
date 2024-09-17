@@ -15,10 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover   2
 
+%define sover   3
+%define _description %{expand:
+Aquamarine is a very light linux rendering backend library. It
+provides basic abstractions for an application to render on a Wayland
+session (in a window) or a native DRM session.}
 Name:           aquamarine
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        Rendering backend library
 License:        BSD-3-Clause
@@ -26,25 +30,21 @@ URL:            https://github.com/hyprwm/aquamarine
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(hyprwayland-scanner) >= 0.4.0
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(libseat) >= 0.8.0
+BuildRequires:  pkgconfig(hwdata)
+BuildRequires:  pkgconfig(hyprutils) >= 0.1.5
+BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput) >= 1.26.0
+BuildRequires:  pkgconfig(libseat) >= 0.8.0
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(hyprutils) >= 0.1.5
-BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libdisplay-info)
-BuildRequires:  pkgconfig(hwdata)
-
-%define _description %{expand:
-Aquamarine is a very light linux rendering backend library. It
-provides basic abstractions for an application to render on a Wayland
-session (in a window) or a native DRM session.}
 
 %description %{_description}
 

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 17 07:37:29 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Update to aquamarine-0.4.1
+  * drm: fix crash on null crtc setCursor
+  * gbm: improve trace logging around allocs
+  * drm: reconfigure swapchain props after creating
+  * output: avoid crashing on no crtc
+  * GBM: fixup good() return value
+  * drm: verify output format in commit
+  * drm: request page flip events after commit
+  * drm: add missing destructor
+  * drm: fix typo in schedule
+  * backend: dont overflow on 32bit builds
+  * wayland: fix possible out-of-range crash in setCursor
+  * drm: recheck crtcs before connecting on udev event
+  * misc: make for loops const reference
+  * gbm: improve automatic format selection
+  * drm: don't connect before crtcs are guaranteed
+  * output: always emit a destroy event in ~dtor
+  * gbm/drm: conform to different scanout requirements for different planes
+  * wayland: send 1280x720 if w/h is 0 in configure
+  * gbm: override gbm_bo_get_modifier results for modifier-based allocation
+  * drm: allow disabling commit, even if pageFlipPending
+  * drm: add AQ_NO_MODIFIERS to try to mitigate hardware limitations
+  * gbm: don't select opaque pixel formats for cursor 
+- Run spec-cleaner over the specfile
+
+-------------------------------------------------------------------
 Thu Aug  8 07:10:47 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of aquamarine-0.3.0
