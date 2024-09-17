@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 17 08:12:26 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.7
+  Bug fixes:
+  * The updater will launch the link to the build variant you're
+    currently using
+  Web UI:
+  * RSS: The list of feeds wouldn't load for Apply Rule
+  * Focus on Download button if torrent link retrieved from the
+    clipboard
+
+-------------------------------------------------------------------
 Mon Aug 19 19:59:01 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.6
