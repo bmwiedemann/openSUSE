@@ -603,4 +603,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
   * Don’t show Navigation when we print a page. (forwarded request 1170669 from jaimeMF)</comment>
     <requestid>1170720</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5fed53aabdcc9e9411e909359d970d32</srcmd5>
+    <version>5.2.3</version>
+    <time>1726589966</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201587</requestid>
+  </revision>
 </revisionlist>
