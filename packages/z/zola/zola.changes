@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 13:01:34 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.19.2:
+  * Fix shortcode/continue-reading parsing with inline HTML (smaller version)
+  * fix: zola panic if no static dir
+  * Add config option to ignore code blocks for word count
+  * chore(components/config): cleanup code
+  * fix(taxonomies): fix error messages
+  * fix: handle another fs event to fix change monitoring on Windows 10
+  * Add fields to disable sitemap.xml and robots.txt generation
+  * Add documentation on deploying to Codeberg Pages
+  * Ensure file exists when receiving events for zola serve
+
+-------------------------------------------------------------------
 Sat Jun 29 10:38:37 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Make sure rust version is higher than 1.77

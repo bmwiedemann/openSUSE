@@ -17,7 +17,7 @@
 
 
 Name:           zola
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        Fast static site generator
 License:        MIT
