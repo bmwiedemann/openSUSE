@@ -7,4 +7,12 @@
     <comment>now with the new dynamic shlib requirement. required for spyder 5.0.3</comment>
     <requestid>894343</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>acd9e4233e480b32e4dba168d76152c2</srcmd5>
+    <version>1.3.0</version>
+    <time>1726590000</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201610</requestid>
+  </revision>
 </revisionlist>

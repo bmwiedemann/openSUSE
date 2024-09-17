@@ -1,7 +1,7 @@
 #
 # spec file for package python-Rtree
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-Rtree
-Version:        0.9.7
+Version:        1.3.0
 Release:        0
 Summary:        R-Tree spatial index for Python GIS
 License:        MIT
 URL:            https://github.com/Toblerity/rtree
-Source:         https://files.pythonhosted.org/packages/source/R/Rtree/Rtree-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/R/Rtree/rtree-%{version}.tar.gz
 Source99:       python-Rtree-rpmlintrc
 # PATCH-FIX-OPENSUSE Rtree-opensuse-noarch.patch -- we don't put spatialindex into a wheel so the module is kept pure. <code@bnavigator.de>
 Patch0:         Rtree-opensuse-noarch.patch
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 # only for the shlib requirement, no headers needed
 BuildRequires:  spatialindex-devel
@@ -55,7 +56,7 @@ spatial indexing features for the spatially curious Python user.
   for example)
 
 %prep
-%autosetup -p1 -n Rtree-%{version}
+%autosetup -p1 -n rtree-%{version}
 
 %build
 %python_build

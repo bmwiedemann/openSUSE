@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:34:46 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.3.0
+  * Upgrade binary wheels with libspatialindex-2.0.0 (#316)
+  * Fix binary wheels for musllinux (#316)
+  * Update code style, replace isort and black with ruff, modern numpy rng (#319)
+  * Remove libsidx version testing (#313)
+
+-------------------------------------------------------------------
 Wed May 19 10:29:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Use a more sophisticated approach in order to find the correct
