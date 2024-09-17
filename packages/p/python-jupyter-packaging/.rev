@@ -113,4 +113,14 @@
   * Fixes deprecation warnings through new setuptools</comment>
     <requestid>1076679</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>33260cf5666800a8712fc1907c8bcb2a</srcmd5>
+    <version>0.12.3</version>
+    <time>1726589890</time>
+    <user>anag+factory</user>
+    <comment>- Add jupyter-packaging-pr186-bdist_wheel.patch
+  * gh#jupyter/jupyter-packaging#186
+  * gh#jupyter/jupyter-packaging#185 (forwarded request 1201472 from bnavigator)</comment>
+    <requestid>1201473</requestid>
+  </revision>
 </revisionlist>

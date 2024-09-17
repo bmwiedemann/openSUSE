@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-packaging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_packaging/jupyter_packaging-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM jupyter-packaging-pr178-ignoredeprecations.patch gh#jupyter/jupyter-packaging#178
 Patch0:         https://github.com/jupyter/jupyter-packaging/pull/178.patch#/jupyter-packaging-pr178-ignoredeprecations.patch
+# PATCH-FIX-UPSTREAM jupyter-packaging-pr186-bdist_wheel.patch gh#jupyter/jupyter-packaging#186
+Patch1:         jupyter-packaging-pr186-bdist_wheel.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module hatchling}
@@ -59,6 +61,7 @@ with and without accompanying JavaScript packages
 %autosetup -p1 -n jupyter_packaging-%{version}
 sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -81,6 +84,6 @@ donttest+=" or test_run"
 %doc README.md
 %license LICENSE
 %{python_sitelib}/jupyter_packaging
-%{python_sitelib}/jupyter_packaging-%{version}*-info
+%{python_sitelib}/jupyter_packaging-%{version}.dist-info
 
 %changelog
