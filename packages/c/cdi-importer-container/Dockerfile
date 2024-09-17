@@ -28,7 +28,7 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-importer:%%PKG_VERS
 RUN zypper -n install \
            containerized-data-importer-importer \
            curl \
-           nbdkit \
+           nbdkit-server \
            nbdkit-basic-filters \
            nbdkit-curl-plugin \
            nbdkit-xz-filter \

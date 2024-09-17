@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:25:57 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install nbdkit-server to avoid pulling unneeded dependencies
+
+-------------------------------------------------------------------
 Fri Sep  6 07:58:17 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop package nbdkit-gzip-filter: it is now part of the basic filters
