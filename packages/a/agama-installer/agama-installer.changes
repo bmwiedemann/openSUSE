@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep  9 15:55:16 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Firefox: set browser.startup.homepage_override.mstone to ignore
+  (gh#openSUSE/agama#1593) 
+
+-------------------------------------------------------------------
+Sun Sep  8 06:28:35 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use tty2 instead of tty7 (gh#openSUSE/agama#1582)
+  This matches openQA tty expectations for >SLES12
+
+-------------------------------------------------------------------
+Wed Sep  4 07:08:30 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Install Firefox on all architectures, install
+  MozillaFirefox-branding-SLE in the SLE image
+  (gh#openSUSE/agama#1574)
+
+-------------------------------------------------------------------
+Tue Sep  3 14:50:58 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Firefox: disable the initial configuration workflow
+  (gh#openSUSE/agama#1573)
+
+-------------------------------------------------------------------
+Fri Aug 30 13:05:53 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
+
+- remove memcheck workaround in images.sh (bsc#1228621)
+
+-------------------------------------------------------------------
 Mon Aug 26 10:05:01 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Include the procps instead of the procps4 package
