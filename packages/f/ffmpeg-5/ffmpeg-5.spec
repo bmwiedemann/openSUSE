@@ -127,6 +127,7 @@ Patch99:        ffmpeg-CVE-2023-50009.patch
 Patch100:       ffmpeg-CVE-2023-50010.patch
 Patch102:       ffmpeg-5-CVE-2024-32230.patch
 Patch103:       ffmpeg-5-CVE-2024-7272.patch
+Patch104:       ffmpeg-5-CVE-2024-7055.patch
 #
 # preamble is present twice, watch out
 #

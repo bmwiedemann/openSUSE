@@ -275,4 +275,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
   (resolve FTBFS on i586)</comment>
     <requestid>1198597</requestid>
   </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>c8b57775b0a8eb087752d3645b786ecc</srcmd5>
+    <version>5.1.4</version>
+    <time>1726589931</time>
+    <user>anag+factory</user>
+    <comment>- Add ffmpeg-5-CVE-2024-7055.patch:</comment>
+    <requestid>1201543</requestid>
+  </revision>
 </revisionlist>
