@@ -17,13 +17,14 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.14.2
+Version:        6.14.3
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://www.claudiokuenzler.com/nagios-plugins/check_smart.php
-Source0:        check_smart-%{version}.tar.xz
+#Git-Clone:     https://github.com/Napsty/check_smart.git
+Source0:        https://github.com/Napsty/check_smart/archive/refs/tags/%{version}.tar.gz#/check_smart-%{version}.tar.gz
 Source1:        usr.lib.nagios.plugins.check_smart
 Source3:        monitoring-plugins-smart-README.SUSE
 Source4:        monitoring-plugins-smart-rpmlintrc
@@ -35,13 +36,12 @@ Requires:       sudo
 Requires:       perl(File::Basename)
 Requires:       perl(FindBin)
 Requires:       perl(Getopt::Long)
-%if 0%{?suse_version}
-Recommends:     apparmor-parser
-%endif
 Provides:       nagios-plugins-smart = %{version}-%{release}
 Obsoletes:      nagios-plugins-smart < 1.02
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version}
+Recommends:     apparmor-parser
+%endif
 
 %description
 This plugin does SMART monitoring both ATA and SCSI disks, has an easy usage
