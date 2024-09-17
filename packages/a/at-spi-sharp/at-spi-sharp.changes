@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:31:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Run autoreconf in build section: the tarball was bootstrapped
+  with automake 1.16, which resultes in symlinks that no longer
+  work with automake 1.17. The autoconf script in turn is too
+  agressive in trying to download things from the internet.
+
+-------------------------------------------------------------------
 Tue Aug 30 03:41:58 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - work around a Makefile parallelism issue

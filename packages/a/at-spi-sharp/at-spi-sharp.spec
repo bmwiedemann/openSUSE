@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi-sharp
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,7 @@ Development package that contains the pkgconfig file for at-spi-sharp.
 #NOCONFIGURE=1 ./autogen.sh
 
 %build
+autoreconf -fiv
 %configure --disable-tests --libdir=%{_prefix}/lib
 mkdir -p at-spi/bin # work around Makefile parallelism issue
 %make_build

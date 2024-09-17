@@ -103,4 +103,15 @@
     <comment></comment>
     <requestid>1042907</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>254fbf97be2b1338ad51aeba89ca14c1</srcmd5>
+    <version>1.1.1</version>
+    <time>1726589963</time>
+    <user>anag+factory</user>
+    <comment>- Run autoreconf in build section: the tarball was bootstrapped
+  with automake 1.16, which resultes in symlinks that no longer
+  work with automake 1.17. The autoconf script in turn is too
+  agressive in trying to download things from the internet. (forwarded request 1200107 from dimstar)</comment>
+    <requestid>1201584</requestid>
+  </revision>
 </revisionlist>
