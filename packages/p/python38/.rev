@@ -924,4 +924,12 @@ Core and Builtins
   (bsc#1229704, CVE-2024-8088).</comment>
     <requestid>1197121</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a49361e2e42ecc4a0679a3f95ec8d582</srcmd5>
+    <version>3.8.20</version>
+    <time>1726589892</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1201476</requestid>
+  </revision>
 </revisionlist>
