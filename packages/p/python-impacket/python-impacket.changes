@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep 17 08:55:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.0
+  Library improvements
+  * Fixed broken hRSetServiceObjectSecurity method.
+  * Removed dsinternals dependency.
+  * Fixed srvs.hNetrShareEnum returning erronous shares.
+  * Fixed lmhash computing to support non standard characters in
+    the password.
+  * Assorted fixes when processing Unicode data.
+  * Added [MS-GKDI] Group Key Distribution Protocol implementation.
+  * Fixed incorrect padding in
+    SMBSessionSetupAndX_Extended_ResponseData.
+  * Upgraded dependency pyreadline -> pyreadline3.
+  * SMB Server:
+    + Added query information level 0x0109 for smb1
+      "SMB_QUERY_FILE_STREAM_INFO".
+    + Fixed filename encoding in queryPathInformation.
+    + Fixed NextEntryOffset for large directory listings.
+    + Fixed server returning an empty folder when cutting and
+      pasting recursive directories.
+  * DHCP: Fixed encoding issues.
+  Example Improvements
+  * multiple improvements, see
+    https://github.com/fortra/impacket/releases/tag/impacket_0_12_0
+  New Examples
+  * describeTicket.py: Ticket describer and decrypter.
+  * GetADComputers.py: Query's DC via LDAP and returns the COMPUTER
+    objects and the useful attributes such as full dns name,
+    operating system name and version.
+  * GetLAPSPassword.py: Extract LAPS passwords from LDAP.
+  * dacledit.py: This script can be used to read, write, remove,
+    backup, restore ACEs (Access Control Entries) in an object
+    DACL (Discretionary Access Control List).
+  * owneredit.py: Added this script to abuse WriteOwner
+    (ADS_RIGHT_WRITE_OWNER) access rights. This allows to take
+    ownership of another object, and then edit that object's DACL.
+- Remove patch:
+  * remove-future-requirement.patch (was merged upstream)
+
+-------------------------------------------------------------------
 Thu Nov 23 20:28:09 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add python-dsinternals to BuildRequires
