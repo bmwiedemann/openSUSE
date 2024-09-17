@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:38:00 UTC 2024 - heming zhao <heming.zhao@suse.com>
+
+- drbdadm down fails to remove sysfs holder file (boo#1230635)
+  * add patch
+    + boo1230635_01-compat-fix-nla_nest_start_noflag-test.patch
+    + boo1230635_02-drbd-port-block-device-access-to-file.patch
+  * update patch
+    + bsc1226510-fix-build-err-against-6.9.3.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 07:37:42 UTC 2024 - heming zhao <heming.zhao@suse.com>
 
 - drbd: fix build error against kernel v6.10.3 (boo#1229062)

@@ -62,6 +62,9 @@ Patch0023:   0023-compat-genetlink-remove-userhdr-from-struct-genl_inf.patch
 Patch0024:   0024-compat-fixup-FMODE_READ-FMODE_WRITE-usage.patch
 Patch0025:   0025-compat-drdb-Convert-to-use-bdev_open_by_path.patch
 Patch0026:   0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
+Patch0027:   boo1230635_01-compat-fix-nla_nest_start_noflag-test.patch
+Patch0028:   boo1230635_02-drbd-port-block-device-access-to-file.patch
+
 # suse special patch
 Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:   suse-coccinelle.patch
