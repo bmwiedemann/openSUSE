@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Sep 10 18:21:26 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 11.5.1:
+  Changes since 11.0.1
+  * add mode sdwan-control-vedge-count for Cisco Viptela devices.
+  * update changelog, add files for a proper commit, fix cisco
+    sdwan load unit.
+  * add mode security-status for Palo Alto (checks age of the last
+    sw update).
+  * fix mem/cpu/hw modes for Cisco SDWAN (IOS) which do hot have
+    the Viptela-Mib.
+  * bugfix in CheckPoint FW1 where R81.20 showed invalid cpu metrics
+  * bugfix in UCD-MIB Load, external thresholds override the
+    internal error status.
+  * implement --servertype generic_fritzbox.
+  * add SkyHigh Secure Web Gateway (and INTEL-SERVER-BASEBOARD7-MIB)
+  * fix the list-arp-cache json output.
+  * fix the Arista tweak.
+  * finalize Juniper.
+  * tweak ARISTA-ENTITY-SENSOR-MIB.
+  * add juniper temperature perfdata.
+  * improve Juniper-Mib, add more models.
+  * add mode ha-status for Palo Alto.
+  * bugfix in IFMIB and etherstats (uninizialized values).
+  * add json-output for list-arp-cache.
+  * add perfdata for the mode interface-nat-rejects.
+  * fix Makefile.am and git add the cisco and arista pm files which
+    i had forgotten.
+  * add mode interface-errdisabled (Cisco and Arista only).
+  * require, not use Net::Ping for F5 checks.
+  * drecksmacoctetbinaerschlonz.
+  * add mode list-arp-cache.
+  * detect Ivanti devices (formerly identifying themselves as Pulse
+    Secure).
+  * show vlans only on demand, --report short+vlan.
+  * more runtime reduction for huawei, cpu and mem.
+  * suppress output of empty vlans.
+  * cache huawei entities to avoid hitting the device's snmp rate
+    limit.
+  * cache vlan configs.
+  * show vlans with interface-status.
+  * C9800 fix.
+  * typo in --lookup vs. --lookback.
+
+-------------------------------------------------------------------
 Sun Aug 27 13:41:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 11.0.1

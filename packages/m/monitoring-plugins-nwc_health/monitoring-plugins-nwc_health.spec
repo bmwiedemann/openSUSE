@@ -1,8 +1,8 @@
 #
 # spec file for package monitoring-plugins-nwc_health
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2014-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2014-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,18 @@
 
 %define         realname check_nwc_health
 Name:           monitoring-plugins-nwc_health
-Version:        11.0.1
+Version:        11.5.1
 Release:        0
 Summary:        This plugin checks the health of network components and interfaces
-# https://github.com/lausser/check_nwc_health
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://labs.consol.de/nagios/check_nwc_health/
-Source:         https://labs.consol.de/assets/downloads/nagios/%{realname}-%{version}.tar.gz
+#Git-Clone      https://github.com/lausser/check_nwc_health.git
+Source:         %{realname}-%{version}.tar.gz
 # https://raw.githubusercontent.com/lausser/check_nwc_health/master/check_nwc_health.php
 Source1:        check_nwc_health.php
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  make
 BuildRequires:  nagios-rpm-macros
 Provides:       nagios-plugins-nwc_health = %{version}-%{release}
@@ -38,7 +40,6 @@ Requires:       perl-Net-SNMP
 Requires:       perl(File::Slurp)
 Requires:       perl(JSON)
 Requires:       perl(JSON::XS)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -49,6 +50,7 @@ network components like switches and routers.
 %setup -q -n %{realname}-%{version}
 
 %build
+autoreconf -fiv
 %configure \
 	--libexecdir=%{nagios_plugindir} \
 	--with-nagios-user=%{nagios_user} \
