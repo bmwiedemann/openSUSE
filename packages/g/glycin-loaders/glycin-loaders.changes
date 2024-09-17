@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep 16 11:08:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Glycin failed to detect the SVGZ format since the files were
+    just detected as gzip files via the magic bytes.
+- Bump maximum version of pkgconfig(libjxl) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Sep 13 15:28:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + Fixed: tests: Update to test image which uses an explicit font
+    name in SVG, not depending on the correct default font setting
+    on the system for the test to pass.
+  + Changed: glycin-utils: Don't use regex feature of env-logger to
+    save almost 1 MB binary size in each loader.
+- Changes from version 1.1.beta:
+  + Add tests for animations
+  + Automatically detect if glycin is used inside a Flatpak
+    development environment and disable sandbox in that case.
+    Otherwise, flatpak-spawn wouldn't use the loaders from the
+    right Flatpak or might not find a installed Flatpak at all.
+  + Capture the stderr and stdout from loaders and editors and
+    included it in the new ErrorCtx type that the API now returns.
+  + Also include free swap as free memory in the calculation of how
+    much memory a loader can use.
+  + If the fontconfig cache was not up-to-date, rendering SVGs with
+    text would fail. There is now a loader config option to enable
+    passing a writable fontconfig cache dir into the loader
+    sandbox. This fixes the issue. The cache is per loader binary.
+  + Sealing memfds sometimes fails. Is is solved via retrying the
+    seal until it works. In the past this was limited to very short
+    time of retries. The interval is now much longer and properly
+    async.
+  + There was an error in the hardcoded limit for the texture size.
+    The limit is now fixed and 8GB as intended.
+- Changes from version 1.1.alpha:
+  + A specific error if no loaders are configured instead of giving
+    an unknown format error.
+  + Bindings for C and other languages via GObject Introspection
+    under the name libglycin and libglycin-gtk4.
+  + Loaders are now accompanied by editors that can return an image
+    with image operations applied.
+  + Option to use tokio throughout instead of async-io.
+  + glycin: List of mime types `glycin::DEFAULT_MIME_TYPES` that
+    the default loaders support.
+  + glycin: New loader option to apply transformations like
+    rotate/mirror from metadata by default.
+  + loaders: Use specific OutOfMemory error type.
+  + glycin: Use a specific error type when no loaders are
+    configured.
+  + jxl: Libjxl version 0.10 is now required.
+  + svg: Use C bindings in SVG loader to reduce binary size.
+- Stop exporting rustflags, no longer needed.
+- Add pkgconfig(librsvg-2.0), pkgconfig(lcms2), pkgconfig(lcms2),
+  pkgconfig(gobject-introspection-1.0) and pkgconfig(vapigen)
+  BuildRequires: New dependencies.
+- Add new sub-packages and needed macros and Requires for them:
+  + libglycin-1-0
+  + libglycin-gtk4-1-0
+  + typelib-1_0-Gly_1
+  + typelib-1_0-GlyGtk4_1
+  + glycin-loaders-devel
+
+-------------------------------------------------------------------
 Thu Apr  4 08:02:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.1:
