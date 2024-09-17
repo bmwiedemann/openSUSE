@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 12 16:51:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.4:
+  + Revert key event handling changes due to problems with
+    non-Latin keyboard layouts
+  + Fix icon URL used for install web application dialog
+  + Remove tab overview shortcut in web apps
+  + Fix crashes in tab overview mode with no open tabs
+
+-------------------------------------------------------------------
 Sun Aug 11 13:04:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.3:

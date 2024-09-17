@@ -1752,4 +1752,17 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1193422</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>0c3e63fea35358aea2a86606ec575432</srcmd5>
+    <version>46.4</version>
+    <time>1726589969</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.4:
+  + Revert key event handling changes due to problems with
+    non-Latin keyboard layouts
+  + Fix icon URL used for install web application dialog
+  + Remove tab overview shortcut in web apps
+  + Fix crashes in tab overview mode with no open tabs (forwarded request 1200695 from iznogood)</comment>
+    <requestid>1201591</requestid>
+  </revision>
 </revisionlist>
