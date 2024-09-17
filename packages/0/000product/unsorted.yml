@@ -2137,7 +2137,6 @@ unsorted:
   - chmlib-examples 
   - chntpw 
   - chocolate-doom 
-  - chocolate-doom-bash-completion 
   - choose 
   - chromaprint-fpcalc 
   - chrome-uget-integrator 
@@ -7309,6 +7308,7 @@ unsorted:
   - glusterfs 
   - glusterfs-devel 
   - glycin-loaders 
+  - glycin-loaders-devel 
   - glyr-devel 
   - glyrc 
   - gmic 
@@ -11841,7 +11841,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine2 
+  - libaquamarine3 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -13420,6 +13420,8 @@ unsorted:
   - libglvnd-32bit 
   - libglvnd-devel 
   - libglvnd-devel-32bit 
+  - libglycin-1-0 
+  - libglycin-gtk4-1-0 
   - libgme-devel 
   - libgme0-32bit 
   - libgmic-devel 
@@ -24413,7 +24415,6 @@ unsorted:
   - python310-asgiref 
   - python310-asn1crypto 
   - python310-aspectlib 
-  - python310-aspy.yaml 
   - python310-ast-decompiler 
   - python310-asteval 
   - python310-astor 
@@ -24910,6 +24911,7 @@ unsorted:
   - python310-calmjs.parse 
   - python310-calmjs.types 
   - python310-calver 
+  - python310-camelot-py 
   - python310-cangjie 
   - python310-canonicaljson 
   - python310-capturer 
@@ -24942,6 +24944,7 @@ unsorted:
   - python310-certbot-nginx 
   - python310-certifi 
   - python310-certipy 
+  - python310-certomancer 
   - python310-certstream 
   - python310-certvalidator 
   - python310-cffi 
@@ -25269,6 +25272,7 @@ unsorted:
   - python310-docformatter 
   - python310-docker 
   - python310-docopt 
+  - python310-docopt-ng 
   - python310-docrepr 
   - python310-docstring-to-markdown 
   - python310-docutils 
@@ -25491,6 +25495,7 @@ unsorted:
   - python310-gevent 
   - python310-gevent-websocket 
   - python310-geventhttpclient 
+  - python310-ghostscript 
   - python310-ghp-import 
   - python310-girder-client 
   - python310-git-pw 
@@ -26206,8 +26211,8 @@ unsorted:
   - python310-numpy1-devel 
   - python310-numpy_1_26_4-gnu-hpc 
   - python310-numpy_1_26_4-gnu-hpc-devel 
-  - python310-numpy_2_0_0-gnu-hpc 
-  - python310-numpy_2_0_0-gnu-hpc-devel 
+  - python310-numpy_2_1_1-gnu-hpc 
+  - python310-numpy_2_1_1-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nvim-remote 
   - python310-nwdiag 
@@ -26512,6 +26517,7 @@ unsorted:
   - python310-py7zr 
   - python310-pyDOE2 
   - python310-pyFFTW 
+  - python310-pyHanko 
   - python310-pyLibravatar 
   - python310-pyModis 
   - python310-pyOCD 
@@ -26608,6 +26614,7 @@ unsorted:
   - python310-pygments-style-railscasts 
   - python310-pygn 
   - python310-pygraphviz 
+  - python310-pyhanko-certvalidator 
   - python310-pyhcl 
   - python310-pyhibp 
   - python310-pyicumessageformat 
@@ -28067,7 +28074,6 @@ unsorted:
   - python311-asgiref 
   - python311-asn1crypto 
   - python311-aspectlib 
-  - python311-aspy.yaml 
   - python311-ast-decompiler 
   - python311-asteval 
   - python311-astor 
@@ -28559,6 +28565,7 @@ unsorted:
   - python311-calmjs.parse 
   - python311-calmjs.types 
   - python311-calver 
+  - python311-camelot-py 
   - python311-cangjie 
   - python311-canonicaljson 
   - python311-capturer 
@@ -28590,6 +28597,7 @@ unsorted:
   - python311-certbot-dns-route53 
   - python311-certbot-nginx 
   - python311-certipy 
+  - python311-certomancer 
   - python311-certstream 
   - python311-certvalidator 
   - python311-cfgdiff 
@@ -28902,6 +28910,7 @@ unsorted:
   - python311-docformatter 
   - python311-docker 
   - python311-docopt 
+  - python311-docopt-ng 
   - python311-docrepr 
   - python311-docstring-to-markdown 
   - python311-docutils 
@@ -29122,6 +29131,7 @@ unsorted:
   - python311-getmac 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
+  - python311-ghostscript 
   - python311-ghp-import 
   - python311-girder-client 
   - python311-git-pw 
@@ -29800,8 +29810,8 @@ unsorted:
   - python311-numpy1-devel 
   - python311-numpy_1_26_4-gnu-hpc 
   - python311-numpy_1_26_4-gnu-hpc-devel 
-  - python311-numpy_2_0_0-gnu-hpc 
-  - python311-numpy_2_0_0-gnu-hpc-devel 
+  - python311-numpy_2_1_1-gnu-hpc 
+  - python311-numpy_2_1_1-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nvim-remote 
   - python311-nwdiag 
@@ -30096,6 +30106,7 @@ unsorted:
   - python311-py7zr 
   - python311-pyDOE2 
   - python311-pyFFTW 
+  - python311-pyHanko 
   - python311-pyLibravatar 
   - python311-pyModis 
   - python311-pyOCD 
@@ -30182,6 +30193,7 @@ unsorted:
   - python311-pygments-style-railscasts 
   - python311-pygn 
   - python311-pygraphviz 
+  - python311-pyhanko-certvalidator 
   - python311-pyhcl 
   - python311-pyhibp 
   - python311-pyicumessageformat 
@@ -31634,7 +31646,6 @@ unsorted:
   - python312-asgiref 
   - python312-asn1crypto 
   - python312-aspectlib 
-  - python312-aspy.yaml 
   - python312-ast-decompiler 
   - python312-asteval 
   - python312-astor 
@@ -32131,6 +32142,7 @@ unsorted:
   - python312-calmjs.parse 
   - python312-calmjs.types 
   - python312-calver 
+  - python312-camelot-py 
   - python312-cangjie 
   - python312-canonicaljson 
   - python312-capturer 
@@ -32162,6 +32174,7 @@ unsorted:
   - python312-certbot-nginx 
   - python312-certifi 
   - python312-certipy 
+  - python312-certomancer 
   - python312-certstream 
   - python312-certvalidator 
   - python312-cffi 
@@ -32489,6 +32502,7 @@ unsorted:
   - python312-docformatter 
   - python312-docker 
   - python312-docopt 
+  - python312-docopt-ng 
   - python312-docrepr 
   - python312-docstring-to-markdown 
   - python312-docutils 
@@ -32711,6 +32725,7 @@ unsorted:
   - python312-gevent 
   - python312-gevent-websocket 
   - python312-geventhttpclient 
+  - python312-ghostscript 
   - python312-ghp-import 
   - python312-girder-client 
   - python312-git-pw 
@@ -33424,8 +33439,8 @@ unsorted:
   - python312-numpy1-devel 
   - python312-numpy_1_26_4-gnu-hpc 
   - python312-numpy_1_26_4-gnu-hpc-devel 
-  - python312-numpy_2_0_0-gnu-hpc 
-  - python312-numpy_2_0_0-gnu-hpc-devel 
+  - python312-numpy_2_1_1-gnu-hpc 
+  - python312-numpy_2_1_1-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nvim-remote 
   - python312-nwdiag 
@@ -33727,6 +33742,7 @@ unsorted:
   - python312-py7zr 
   - python312-pyDOE2 
   - python312-pyFFTW 
+  - python312-pyHanko 
   - python312-pyLibravatar 
   - python312-pyModis 
   - python312-pyOCD 
@@ -33824,6 +33840,7 @@ unsorted:
   - python312-pygments-style-railscasts 
   - python312-pygn 
   - python312-pygraphviz 
+  - python312-pyhanko-certvalidator 
   - python312-pyhcl 
   - python312-pyhibp 
   - python312-pyicumessageformat 
@@ -34157,6 +34174,7 @@ unsorted:
   - python312-pyvdr 
   - python312-pyvips 
   - python312-pyviz-comms 
+  - python312-pyvmomi 
   - python312-pyvo 
   - python312-pywal 
   - python312-pywayland 
@@ -47287,6 +47305,7 @@ unsorted:
   - ttyd 
   - ttynvt 
   - ttyper 
+  - ttyplot 
   - tuba 
   - tuba-lang 
   - tudu 
@@ -47469,6 +47488,8 @@ unsorted:
   - typelib-1_0-GitgExt-1_0 
   - typelib-1_0-Gkbd-3_0 
   - typelib-1_0-Gladeui-2_0 
+  - typelib-1_0-GlyGtk4_1 
+  - typelib-1_0-Gly_1 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
   - typelib-1_0-GnomeBluetooth-1_0 
