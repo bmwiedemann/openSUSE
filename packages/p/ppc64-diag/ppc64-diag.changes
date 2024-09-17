@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 17 14:28:38 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Version 2.6.10 (jsc#PED-9918).
+  * Add support for multiple platform dumps
+  * Add support for light path diagnostics for rtas events
+  * Enable correct display of model and system-id for IPS Power systems
+  * Fix call home feature for nvmf devices
+  * Fix crash in rtas_errd due to invalid -f option values
+  * Fix build warnings with GCC-15
+- Remove upstreamed patches
+  * rtas_errd-Handle-multiple-platform-dumps.patch
+  * 0001-ppc64-diag-Move-trim_trail_space-function-to-common-.patch
+  * 0002-ppc64-diag-lp_diag-Utilize-trim_trail_space-function.patch
+  * 0003-ppc64-diag-lp_diag-Enable-light-path-diagnostics-for.patch
+  * nvme_call_home-remove-d-and-f-as-visible-options.patch
+  * nvme_call_home-remove-d-and-f-from-usage-message.patch
+  * diag_nvme-improvements-to-status-and-err-messages.patch
+  * diags-diag_nvme-call_home-command-fails-on-nvmf-driv.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 14:22:42 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix NVMe diagnostics support with nvmf drive (bsc#1220345 ltc#205706).

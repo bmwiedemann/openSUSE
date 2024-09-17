@@ -17,7 +17,7 @@
 
 
 Name:           ppc64-diag
-Version:        2.7.9
+Version:        2.7.10
 Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
@@ -30,16 +30,6 @@ Source3:        ppc64-diag-nvme.service
 Source4:        ppc64-diag-nvme.timer
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
-#PATCH-FIX-UPSTREAM - rtas_errd-Handle-multiple-platform-dumps.patch - store multiple dumps
-Patch2:         rtas_errd-Handle-multiple-platform-dumps.patch
-#PATCH-FIX-UPSTREAM - Enclosure fault LED support
-Patch3:         0001-ppc64-diag-Move-trim_trail_space-function-to-common-.patch
-Patch4:         0002-ppc64-diag-lp_diag-Utilize-trim_trail_space-function.patch
-Patch5:         0003-ppc64-diag-lp_diag-Enable-light-path-diagnostics-for.patch
-Patch6:         nvme_call_home-remove-d-and-f-as-visible-options.patch
-Patch7:         nvme_call_home-remove-d-and-f-from-usage-message.patch
-Patch8:         diag_nvme-improvements-to-status-and-err-messages.patch
-Patch9:         diags-diag_nvme-call_home-command-fails-on-nvmf-driv.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
