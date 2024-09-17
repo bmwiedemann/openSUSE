@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-radio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           gnome-radio
-Version:        64.0
+Version:        128
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
-URL:            http://www.gnomeradio.org
-Source:         https://download.gnome.org/sources/gnome-radio/64/%{name}-%{version}.tar.xz
+URL:            https://www.gnomeradio.org
+Source:         %{name}-%{version}.tar.zst
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(champlain-gtk-0.12)
 BuildRequires:  pkgconfig(geoclue-2.0)
-BuildRequires:  pkgconfig(geocode-glib-1.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -64,20 +64,18 @@ for playback.  Enjoy Free Internet Radio.
 
 %install
 %make_install
-%find_lang %{name}
+%find_lang gtk-internet-radio-locator
 
 %files
 %license COPYING
 %doc ChangeLog README
-%{_bindir}/gnome-internet-radio-locator
-%{_bindir}/gnome-radio
-%{_bindir}/org.gnome.Radio
-%{_mandir}/man1/gnome-radio.1%{?ext_man}
-%{_datadir}/metainfo/gnome-radio.appdata.xml
-%{_datadir}/%{name}/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_bindir}/gtk-internet-radio-locator
+%{_datadir}/icons/hicolor/*/apps/gtk-internet-radio-locator.*
+%{_datadir}/appdata/gtk-internet-radio-locator.appdata.xml
+%{_datadir}/applications/gtk-internet-radio-locator.desktop
+%{_datadir}/gtk-internet-radio-locator/
+%{_mandir}/man1/gtk-internet-radio-locator.1%{?ext_man}
 
-%files lang -f %{name}.lang
+%files lang -f gtk-internet-radio-locator.lang
 
 %changelog

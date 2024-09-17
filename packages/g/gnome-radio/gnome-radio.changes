@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:46:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 128
+  + internet-radio-locator.xml: Add Radio Haifa.
+- Replace pkgconfig(geocode-glib-1.0) BuildRequires with
+  pkgconfig(geocode-glib-2.0): follow upstream changes.
+
+-------------------------------------------------------------------
 Fri Mar 31 14:08:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 64.0:
