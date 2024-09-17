@@ -54,10 +54,13 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
   < suse_macros.in > suse_macros
 
 %if 0%{?is_opensuse}
+# use latest build date of BuildRequires as reference and go to January 1st three years back - the + 6 * 3600 is to match exactly the previous value of 2020-01-01 00:00 as leap-years cause some hours of offset
+trimdate=$(rpm -qa --qf %{BUILDTIME}\\n |sort -n|tail -1)
+trimdate=$(( (trimdate / 31557600 - 3) * 31557600 + 6 * 3600 ))
 cat <<EOF > macros.d/macros.opensuse
 # trim binary changelogs to include roughly 3 years
 # maxnum,cuttime,minnum
-%%_binarychangelogtrim 0,$(date -d "Jan 1 UTC 3 years ago" +%s),10
+%%_binarychangelogtrim 0,$trimdate,10
 EOF
 %endif
 

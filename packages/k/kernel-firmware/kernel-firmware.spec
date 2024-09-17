@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240912
+%define version_unconverted 20240913
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240912
+Version:        20240913
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -70,9 +70,10 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# temporary revert for ath12k firmware (bsc#1230596)
+Source1200:     board-2.bin.gfb04a7f
 # workarounds
 Patch1:         copy-file-ignore-README.patch
-Patch2:         copy-firmware-fix-symlink-without-compress.patch
 # for compatibility with SLE15-SP4 kernel (bsc#1209681)
 Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
@@ -6722,7 +6723,6 @@ various USB WiFi / Ethernet drivers.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch -P 1 -p1
-%patch -P 2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -6743,6 +6743,8 @@ cp %{SOURCE209} .
 cp %{SOURCE210} .
 cp %{SOURCE211} .
 %endif
+# temporary revert for ath12k firmware (bsc#1230596)
+cp %{SOURCE1200} ath12k/WCN7850/hw2.0/board-2.bin
 
 %build
 # nothing to do

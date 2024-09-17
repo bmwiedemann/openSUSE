@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 16 16:12:34 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.8.2
+  - Allow specifying only low value with setup-kdump [bsc#1230537]
+
+-------------------------------------------------------------------
 Fri Aug 30 16:16:44 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.8.1
@@ -11,6 +17,7 @@ Mon Aug 26 22:31:13 UTC 2024 - Ignaz Forster <iforster@suse.com>
   - Add sd-boot (systemd-boot) support for most commands
   - Add support for specifying migration arguments
     [gh#openSUSE/transactional-update#127] [jsc#PED-10375]
+    [jsc#PED-9786]
   - Support kdump setup on platforms without kdump high/low
     settings (e.g. S/390 or PPC64le [bsc#1229138]
   - Preserve current working directory if possible when entering

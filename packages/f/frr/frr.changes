@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 16:36:31 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- add release notes url to 10.0.1 update
+
+-------------------------------------------------------------------
 Mon Sep 16 11:31:12 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - fixed bug/pull request references in frr.changes file
@@ -24,9 +29,10 @@ Fri Aug  9 14:14:10 UTC 2024 - Erico Mendonca <erico.mendonca@suse.com>
 - Fixing Source URL/archive name.
 
 -------------------------------------------------------------------
-Sun Jul 28 20:21:43 UTC 2024 - Erico Mendonca <erico.mendonca@suse.com> - 10.0.1
+Sun Jul 28 20:21:43 UTC 2024 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Update to version 10.0.1 from official sources.
+  See https://frrouting.org/release/10.0.1/
 - Clean slate: removing all previous patches.
 - The following patches were obsoleted:
   - 0001-disable-zmq-test.patch

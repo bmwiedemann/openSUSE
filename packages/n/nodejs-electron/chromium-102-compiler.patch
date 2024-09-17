@@ -25,7 +25,7 @@ diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
 index d40843b..b92f03b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -322,9 +322,7 @@ config("compiler") {
+@@ -305,9 +305,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -35,7 +35,7 @@ index d40843b..b92f03b 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -353,7 +351,12 @@ config("compiler") {
+@@ -337,7 +335,12 @@ config("compiler") {
    if (!is_win) {
      # Common POSIX compiler flags setup.
      # --------------------------------
@@ -49,7 +49,7 @@ index d40843b..b92f03b 100644
  
      # Stack protection. ShadowCallStack and Stack protector address the same
      # problems. Therefore, we only enable one or the other. Clang advertises SCS as
-@@ -494,10 +497,6 @@ config("compiler") {
+@@ -478,10 +481,6 @@ config("compiler") {
    # Linux/Android/Fuchsia common flags setup.
    # ---------------------------------
    if (is_linux || is_chromeos || is_android || is_fuchsia) {
@@ -60,7 +60,7 @@ index d40843b..b92f03b 100644
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
-@@ -590,55 +589,6 @@ config("compiler") {
+@@ -545,55 +544,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -87,9 +87,9 @@ index d40843b..b92f03b 100644
 -      }
 -    }
 -
--    # TODO(crbug.com/1488374): This causes binary size growth and potentially
+-    # TODO(crbug.com/40283598): This causes binary size growth and potentially
 -    # other problems.
--    # TODO(crbug.com/1491036): This isn't supported by Cronet's mainline llvm version.
+-    # TODO(crbug.com/40284925): This isn't supported by Cronet's mainline llvm version.
 -    if (default_toolchain != "//build/toolchain/cros:target" &&
 -        !llvm_android_mainline) {
 -      cflags += [
@@ -105,7 +105,7 @@ index d40843b..b92f03b 100644
 -      }
 -    }
 -
--    # TODO(crbug.com/1235145): Investigate why/if this should be needed.
+-    # TODO(crbug.com/40192287): Investigate why/if this should be needed.
 -    if (is_win) {
 -      cflags += [ "/clang:-ffp-contract=off" ]
 -    } else {
@@ -116,7 +116,7 @@ index d40843b..b92f03b 100644
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1070,11 +1020,6 @@ config("compiler") {
+@@ -1063,11 +1013,6 @@ config("compiler") {
      defines += [ "_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_NONE" ]
    }
  
@@ -128,7 +128,7 @@ index d40843b..b92f03b 100644
  }
  
  # The BUILDCONFIG file sets this config on targets by default, which means when
-@@ -1140,7 +1085,8 @@ config("thinlto_optimize_max") {
+@@ -1133,7 +1078,8 @@ config("thinlto_optimize_max") {
  # without using everything that "compiler" brings in.  Options that
  # tweak code generation for a particular CPU do not belong here!
  # See "compiler_codegen", below.
@@ -138,7 +138,7 @@ index d40843b..b92f03b 100644
    cflags = []
    ldflags = []
    defines = []
-@@ -1523,46 +1469,6 @@ config("compiler_deterministic") {
+@@ -1516,46 +1462,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -184,8 +184,8 @@ index d40843b..b92f03b 100644
 -
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
-   # really need it and it can mess up the goma cache entries.
-@@ -1739,7 +1645,8 @@ config("treat_warnings_as_errors") {
+   # really need it and it can mess up the RBE cache entries.
+@@ -1732,7 +1638,8 @@ config("treat_warnings_as_errors") {
  # Collects all warning flags that are used by default.  This is used as a
  # subconfig of both chromium_code and no_chromium_code.  This way these
  # flags are guaranteed to appear on the compile command line after -Wall.
@@ -195,7 +195,7 @@ index d40843b..b92f03b 100644
    cflags = []
    cflags_c = []
    cflags_cc = []
-@@ -1983,11 +1890,7 @@ config("chromium_code") {
+@@ -1982,11 +1889,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -208,7 +208,7 @@ index d40843b..b92f03b 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1996,24 +1899,6 @@ config("chromium_code") {
+@@ -1995,24 +1898,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -233,15 +233,15 @@ index d40843b..b92f03b 100644
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2159,7 +2044,6 @@ config("no_rtti") {
+@@ -2158,7 +2043,6 @@ config("no_rtti") {
  config("export_dynamic") {
-   # TODO(crbug.com/1052397): Revisit after target_os flip is completed.
+   # TODO(crbug.com/40118868): Revisit after target_os flip is completed.
    if (is_linux || is_chromeos_lacros || export_libcxxabi_from_executables) {
 -    ldflags = [ "-rdynamic" ]
    }
  }
  
-@@ -2247,7 +2131,8 @@ config("wexit_time_destructors") {
+@@ -2246,7 +2130,8 @@ config("wexit_time_destructors") {
  # gcc 4.9 and earlier had no way of suppressing this warning without
  # suppressing the rest of them.  Here we centralize the identification of
  # the gcc 4.9 toolchains.
@@ -251,7 +251,7 @@ index d40843b..b92f03b 100644
    cflags = []
    if (is_clang) {
      cflags += [ "-Wno-incompatible-pointer-types" ]
-@@ -2362,7 +2247,8 @@ if (is_win) {
+@@ -2364,7 +2249,8 @@ if (is_win) {
    common_optimize_on_cflags += [ "-fno-math-errno" ]
  }
  
@@ -261,17 +261,17 @@ index d40843b..b92f03b 100644
    if (!is_win) {
      if (enable_frame_pointers) {
        cflags = [ "-fno-omit-frame-pointer" ]
-@@ -2389,7 +2275,8 @@ config("default_stack_frames") {
- }
- 
- # Default "optimization on" config.
+@@ -2405,7 +2291,8 @@ config("default_stack_frames") {
+ # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
+ # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
+ # [2]: https://crrev.com/c/5447532
 -config("optimize") {
 +config("optimize") { }
 +config("xoptimize") {
    if (is_win) {
      cflags = [ "/O2" ] + common_optimize_on_cflags
  
-@@ -2430,7 +2317,8 @@ config("optimize") {
+@@ -2446,7 +2333,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -281,19 +281,19 @@ index d40843b..b92f03b 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2470,7 +2358,8 @@ config("no_optimize") {
- # Turns up the optimization level. On Windows, this implies whole program
- # optimization and link-time code generation which is very expensive and should
- # be used sparingly.
+@@ -2486,7 +2374,8 @@ config("no_optimize") {
+ # Turns up the optimization level. Used to explicitly enable -O2 instead of
+ # -Os for select targets on platforms that use optimize_for_size. No-op
+ # elsewhere.
 -config("optimize_max") {
 +config("optimize_max") { }
 +config("xoptimize_max") {
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2503,7 +2392,8 @@ config("optimize_max") {
+@@ -2519,7 +2408,8 @@ config("optimize_max") {
  #
- # TODO(crbug.com/621335) - rework how all of these configs are related
+ # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
 -config("optimize_speed") {
 +config("optimize_speed") { }
@@ -301,7 +301,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2529,7 +2419,8 @@ config("optimize_speed") {
+@@ -2548,7 +2438,8 @@ config("optimize_speed") {
    }
  }
  
@@ -311,7 +311,7 @@ index d40843b..b92f03b 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2662,7 +2553,8 @@ config("win_pdbaltpath") {
+@@ -2681,7 +2572,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -321,7 +321,7 @@ index d40843b..b92f03b 100644
    rustflags = []
    if (is_win) {
      if (is_clang) {
-@@ -2811,7 +2703,8 @@ config("symbols") {
+@@ -2831,7 +2723,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -331,7 +331,7 @@ index d40843b..b92f03b 100644
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -2896,7 +2789,8 @@ config("minimal_symbols") {
+@@ -2916,7 +2809,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

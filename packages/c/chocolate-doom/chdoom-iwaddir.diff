@@ -12,11 +12,11 @@ IWADs, and so should chocolate-doom.
  src/d_iwad.c |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: chocolate-doom-3.0.0/src/d_iwad.c
+Index: chocolate-doom-chocolate-doom-3.1.0/src/d_iwad.c
 ===================================================================
---- chocolate-doom-3.0.0.orig/src/d_iwad.c
-+++ chocolate-doom-3.0.0/src/d_iwad.c
-@@ -664,6 +664,10 @@ static void AddXdgDirs(void)
+--- chocolate-doom-chocolate-doom-3.1.0.orig/src/d_iwad.c
++++ chocolate-doom-chocolate-doom-3.1.0/src/d_iwad.c
+@@ -690,6 +690,10 @@ static void AddXdgDirs(void)
      // Edition into this directory, under which includes the Doom
      // Classic WADs.
      AddIWADPath(env, "/games/doom3bfg/base/wads");
@@ -25,5 +25,5 @@ Index: chocolate-doom-3.0.0/src/d_iwad.c
 +    AddIWADPath(env, "/games/doom");
 +    AddIWADPath(env, "/doom");
  }
- #endif
  
+ #ifndef __MACOSX__

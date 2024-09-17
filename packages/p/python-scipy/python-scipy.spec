@@ -93,7 +93,7 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -101,13 +101,15 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-# PATCH-FIX-UPSTREAM - MAINT: gcc-14 test_region5 tol bump
-Patch:          https://github.com/scipy/scipy/pull/21063.patch
+# PATCH-FIX-UPSTREAM scipy-pr21063-gcc14.patch gh#scipy/scipy#21063 - MAINT: gcc-14 test_region5 tol bump
+Patch0:         https://github.com/scipy/scipy/pull/21063.patch#/scipy-pr21063-gcc14.patch
+# PATCH-FIX-UPSTREAM scipy-pybind11-2.13.patch gh#scipy/scipy#21199 -- commit 1ea9f1dc0ac4e871b7a54a8f3b12a01ac7d5f3d7
+Patch1:         scipy-pybind11-2.13.patch
 BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.18}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel >= 2.12 with %python-pybind11-devel < 2.13}
+BuildRequires:  %{python_module pybind11-devel >= 2.13.1 with %python-pybind11-devel < 2.14}
 # Upstream's pre-emptive pin to < 0.16 is not necessary
 BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.17}
 BuildRequires:  fdupes

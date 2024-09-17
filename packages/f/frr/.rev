@@ -317,4 +317,14 @@
   bsc#1216897,https://github.com/FRRouting/frr/pull/14716/commits/c37119df45bbf4ef713bc10475af2ee06e12f3bf)</comment>
     <requestid>1201405</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>1f1dd955a33e91de5ac46966381a2ae8</srcmd5>
+    <version>10.0.1</version>
+    <time>1726589873</time>
+    <user>anag+factory</user>
+    <comment>- add release notes url to 10.0.1 update
+
+  See https://frrouting.org/release/10.0.1/</comment>
+    <requestid>1201459</requestid>
+  </revision>
 </revisionlist>

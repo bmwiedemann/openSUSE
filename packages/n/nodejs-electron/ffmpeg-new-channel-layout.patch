@@ -176,33 +176,6 @@ index 5f257bdfaa6..e1be5aa9a5b 100644
    if (frame->sample_rate != sample_rate_ || channels != channels_ ||
        frame->format != av_sample_format_) {
      DLOG(ERROR) << "Unsupported midstream configuration change!"
-diff --git a/media/filters/audio_file_reader_unittest.cc b/media/filters/audio_file_reader_unittest.cc
-index 2aba7927a31..1f45a50cace 100644
---- a/media/filters/audio_file_reader_unittest.cc
-+++ b/media/filters/audio_file_reader_unittest.cc
-@@ -121,11 +121,11 @@ class AudioFileReaderTest : public testing::Test {
-     EXPECT_FALSE(reader_->Open());
-   }
- 
--  void RunTestFailingDecode(const char* fn) {
-+  void RunTestFailingDecode(const char* fn, int expect_read = 0) {
-     Initialize(fn);
-     EXPECT_TRUE(reader_->Open());
-     std::vector<std::unique_ptr<AudioBus>> decoded_audio_packets;
--    EXPECT_EQ(reader_->Read(&decoded_audio_packets), 0);
-+    EXPECT_EQ(reader_->Read(&decoded_audio_packets), expect_read);
-   }
- 
-   void RunTestPartialDecode(const char* fn) {
-@@ -219,7 +219,7 @@ TEST_F(AudioFileReaderTest, AAC_ADTS) {
- }
- 
- TEST_F(AudioFileReaderTest, MidStreamConfigChangesFail) {
--  RunTestFailingDecode("midstream_config_change.mp3");
-+  RunTestFailingDecode("midstream_config_change.mp3", 42624);
- }
- #endif
- 
 diff --git a/media/filters/audio_video_metadata_extractor.cc b/media/filters/audio_video_metadata_extractor.cc
 index 185819eb936..69ff508c221 100644
 --- a/media/filters/audio_video_metadata_extractor.cc

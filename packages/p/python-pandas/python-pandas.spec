@@ -77,6 +77,14 @@ Patch2:         pandas-pr58484-matplotlib.patch
 Patch3:         https://github.com/pandas-dev/pandas/pull/59175.patch#/pandas-pr59175-matplotlib.patch
 # PATCH-FIX-UPSTREAM pandas-pr59353-np2eval.patch -- gh#pandas-dev/pandas#59144 backported to 2.2, no new tests, see gh#pandas-dev/pandas#58548, gh#pandas-dev/pandas#59353
 Patch4:         pandas-pr59353-np2eval.patch
+# PATCH-FIX-UPSTREAM gh#pandas-dev/pandas#2536d3a7
+Patch5:         tests-npdev.patch
+# PATCH-FIX-UPSTREAM gh#pandas-dev/pandas#d0cb2056
+Patch6:         tests-timedelta.patch
+# PATCH-FIX-UPSTREAM gh#pandas-dev/pandas#1044cf44
+Patch7:         tests-nomkl.patch
+# PATCH-FIX-UPSTREAM tiny part of gh#pandas-dev/pandas#4f743f98
+Patch8:         tests-wasm.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -520,6 +528,8 @@ SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 %endif
 # Numpy2: unexpected 'np.str_(...)' in error message
 SKIP_TESTS+=" or test_group_subplot_invalid_column_name"
+# https://github.com/pandas-dev/pandas/pull/55901, not gonna merge this huge patch to fix one test failing with new timezone, will be included in new release
+SKIP_TESTS+=" or test_array_inference[data7-expected7]"
 
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856

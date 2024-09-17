@@ -1,6 +1,8 @@
---- a/CMakeLists.txt.old	2022-06-17 19:46:18.000000000 +0200
-+++ b/CMakeLists.txt	2022-08-30 12:58:06.276718500 +0200
-@@ -457,11 +457,14 @@
+Index: libaom-3.8.1/CMakeLists.txt
+===================================================================
+--- libaom-3.8.1.orig/CMakeLists.txt
++++ libaom-3.8.1/CMakeLists.txt
+@@ -451,11 +451,14 @@ if(CONFIG_AV1_DECODER AND ENABLE_EXAMPLE
  endif()
  
  if(CONFIG_LIBYUV OR CONFIG_TUNE_BUTTERAUGLI)
@@ -20,7 +22,7 @@
  endif()
  
  if(CONFIG_AV1_ENCODER)
-@@ -579,10 +583,10 @@
+@@ -577,10 +580,10 @@ if(CONFIG_AV1_ENCODER)
        set_target_properties(aom_static PROPERTIES LINKER_LANGUAGE CXX)
      endif()
  
@@ -34,7 +36,7 @@
      endif()
    endif()
  
-@@ -732,7 +736,7 @@
+@@ -730,7 +733,7 @@ if(ENABLE_EXAMPLES OR ENABLE_TESTS OR EN
    if(CONFIG_LIBYUV)
      # Add to existing targets.
      foreach(aom_app ${AOM_APP_TARGETS})
@@ -43,20 +45,11 @@
        set_property(TARGET ${aom_app} PROPERTY LINKER_LANGUAGE CXX)
      endforeach()
    endif()
---- a/test/test.cmake
-+++ b/test/test.cmake
-@@ -458,7 +458,7 @@
-   target_link_libraries(test_libaom ${AOM_LIB_LINK_TYPE} aom aom_gtest)
-
-   if(CONFIG_LIBYUV)
--    target_sources(test_libaom PRIVATE $<TARGET_OBJECTS:yuv>)
-+    target_link_libraries(test_libaom PRIVATE system_libyuv)
-   endif()
-   if(CONFIG_WEBM_IO)
-     target_sources(test_libaom PRIVATE $<TARGET_OBJECTS:webm>)
---- a/apps/aomdec.c
-+++ b/apps/aomdec.c
-@@ -44,7 +44,7 @@
+Index: libaom-3.8.1/apps/aomdec.c
+===================================================================
+--- libaom-3.8.1.orig/apps/aomdec.c
++++ libaom-3.8.1/apps/aomdec.c
+@@ -43,7 +43,7 @@
  #include "common/y4menc.h"
  
  #if CONFIG_LIBYUV
@@ -65,8 +58,10 @@
  #endif
  
  static const char *exec_name;
---- a/apps/aomenc.c
-+++ b/apps/aomenc.c
+Index: libaom-3.8.1/apps/aomenc.c
+===================================================================
+--- libaom-3.8.1.orig/apps/aomenc.c
++++ libaom-3.8.1/apps/aomenc.c
 @@ -47,7 +47,7 @@
  #include "stats/rate_hist.h"
  

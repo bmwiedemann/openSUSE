@@ -1,0 +1,23 @@
+Electron does not actually use sharpyuv. This enables buillding it on Leap which has old webp
+
+--- src/build/linux/unbundle/libwebp.gn.orig	2024-07-24 12:50:43.685795800 +0200
++++ src/build/linux/unbundle/libwebp.gn	2024-08-04 21:34:09.357750400 +0200
+@@ -13,10 +13,6 @@ pkg_config("system_libwebp") {
+   ]
+ }
+ 
+-pkg_config("system_libsharpyuv") {
+-  packages = [ "libsharpyuv" ]
+-}
+-
+ shim_headers("libwebp_shim") {
+   root_path = "src/src"
+   headers = [
+@@ -44,7 +40,6 @@ source_set("libwebp_webp") {
+ 
+ source_set("libwebp_sharpyuv") {
+   deps = [ ":libsharpyuv_shim" ]
+-  public_configs = [ ":system_libsharpyuv" ]
+ }
+ 
+ group("libwebp") {

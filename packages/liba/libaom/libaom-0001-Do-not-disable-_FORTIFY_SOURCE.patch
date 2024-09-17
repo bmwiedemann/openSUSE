@@ -1,8 +1,8 @@
-diff --git a/build/cmake/aom_configure.cmake b/build/cmake/aom_configure.cmake
-index 43d60ae3d..175339178 100644
---- a/build/cmake/aom_configure.cmake
-+++ b/build/cmake/aom_configure.cmake
-@@ -321,9 +321,6 @@ else()
+Index: libaom-3.9.1/build/cmake/aom_configure.cmake
+===================================================================
+--- libaom-3.9.1.orig/build/cmake/aom_configure.cmake
++++ libaom-3.9.1/build/cmake/aom_configure.cmake
+@@ -392,9 +392,6 @@ else()
      add_compiler_flag_if_supported("-Werror")
    endif()
  
@@ -11,4 +11,4 @@ index 43d60ae3d..175339178 100644
 -  endif()
    add_compiler_flag_if_supported("-D_LARGEFILE_SOURCE")
    add_compiler_flag_if_supported("-D_FILE_OFFSET_BITS=64")
- endif()
+ 

@@ -8,7 +8,7 @@ The `-w` parameter to gen_share_targets_proto.py and several other scripts remov
 @@ -156,7 +156,8 @@
    def Run(self):
      parser = optparse.OptionParser()
-     # TODO(crbug.com/614082): Remove this once the bug is fixed.
+     # TODO(crbug.com/41255210): Remove this once the bug is fixed.
 -    parser.add_option('-w', '--wrap', action="store_true", default=False,
 +    parser.add_option('-w', '--fake-option', action="store_true", default=False)
 +    parser.add_option('--wrap', action="store_true", default=False,

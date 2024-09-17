@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:13:24 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.0
+  * WAD file autoloading was added
+  * Music pack configuration was simplified. Copy .flac/.ogg
+    music files into a directory and they will be automatically
+    detected by filename and so used.
+  * Music packs can now be used with OPL as a fallback, and music
+    pack config files can have any name ending in `.cfg`.
+  * MP3 music packs are now supported.
+  * Network synchronization now uses a PID controller by default,
+    which makes games more smooth and more stable, especially for
+    Internet play.
+  * UDP hole punching is now used to make servers behind NAT
+    gateways automatically accessible to the Internet.
+  * Allow simultaneous PC speaker emulation and OPL emulation.
+  * The 0 and 5 keys on the number pad can now be bound
+    independently of any other keyboard key.
+  * With aspect ratio correction disabled, the game can scale to
+    any arbitrary size and remove all black borders in full
+    screen mode.
+  * It is now possible to use -response to load response files.
+  * Mouse movement is no longer read when the game window is
+    inactive.
+  * The Freedoom single-player IWAD files are now officially
+    supported, as recent versions changed all levels to be
+    vanilla compatible.
+  * Add native support for the FluidSynth MIDI synthesizer.
+  * Add improved gamepad support via the SDL_GameController
+    interface. This includes support for analog triggers, modern
+    dual-stick default bindings, descriptive button names for
+    common controller types, and configurable dead zones for
+    stick axes.
+  * The -display parameter was added to specify the display
+    number on which to show the screen.
+- Delete 0001-build-use-python3-exclusively.patch (merged)
+
+-------------------------------------------------------------------
 Wed Mar 29 16:33:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch from packageand() to modern rpm conditionals

@@ -92,17 +92,17 @@ Date:   Tue Feb 20 18:35:11 2024 +0000
  
 --- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc
 +++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc
-@@ -167,7 +167,8 @@ static hb_bool_t HarfBuzzGetGlyphVertica
+@@ -202,7 +202,8 @@
                                                  void* user_data) {
    HarfBuzzFontData* hb_font_data =
        reinterpret_cast<HarfBuzzFontData*>(font_data);
 -  OpenTypeVerticalData* vertical_data = hb_font_data->VerticalData();
 +  scoped_refptr<OpenTypeVerticalData> vertical_data =
-+      hb_font_data->VerticalData();
-   if (!vertical_data)
++	  hb_font_data->VerticalData();
+   if (!vertical_data) {
      return false;
- 
-@@ -186,7 +187,8 @@ static hb_position_t HarfBuzzGetGlyphVer
+   }
+@@ -223,7 +223,8 @@ static hb_position_t HarfBuzzGetGlyphVer
                                                       void* user_data) {
    HarfBuzzFontData* hb_font_data =
        reinterpret_cast<HarfBuzzFontData*>(font_data);

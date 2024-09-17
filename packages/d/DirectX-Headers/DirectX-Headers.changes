@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  9 18:42:23 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing version-fixup.diff as it was fixed upstream
+- Update to 1.614.1:
+  * Several warning fixes and a DML update on top of v1.614.0. Importantly,
+    the CMake/meson build systems actually report a v1.614 version number.
+    That change was missed from the previous release. No new D3D APIs are
+    present relative to v1.614.0.
+
+-------------------------------------------------------------------
 Fri May 17 01:03:37 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding version-fixup.diff to account for leftover 1.613.1 references

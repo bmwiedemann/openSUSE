@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Sep 16 17:40:09 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 31.6.0
+  * ABI break: NODE_MODULE_VERSION is now 125
+  * Chromium 126.0.6478.234
+  * Node 20.17.0
+  * V8 12.6
+  * Breaking change: Remove WebSQL support
+  * Breaking change: nativeImage.toDataURL will preserve PNG colorspace
+  * Added options parameter to Session.clearData API.
+  * Extended webContents.setWindowOpenHandler to support manual creation of BrowserWindow.
+  * clearData method added to Session
+  * Extended WebContentsView to accept pre-existing webContents object.
+  * see https://www.electronjs.org/blog/electron-31-0 and https://github.com/electron/electron/releases/tag/v31.0.0 for more
+- Drop no longer needed patches
+  * electron-13-fix-use-thin-lto.patch
+  * remove-openscreen.patch
+  * system-yuv.patch
+  * chromium-122-abseil-shims.patch
+  * electron-16-std-vector-non-const.patch
+  * fake_ssl_socket_client-Wlto-type-mismatch.patch
+  * angle-FramebufferVk-powf.patch
+  * span_reader-missing-optional.patch
+  * bitset-missing-uint8_t-memcpy.patch
+  * temporal_scalability_id_extractor-missing-bitset.patch
+  * gpu_adapter_info-missing-optional.patch
+  * first_party_sets_handler_database_helper-missing-optional.patch
+  * async_iterable-forwarding.patch
+  * script_streamer-atomic-include.patch
+- Add patches to fix build
+  * fix-build-without-safebrowsing.patch
+  * fix-build-without-supervised-users.patch
+  * Cr126-abseil-shims.patch
+  * absl-base-dynamic_annotations.patch
+  * webp-no-sharpyuv.patch
+  * http_auth_ntlm_mechanism-could-not-convert-to-base-span.patch
+  * angle-State-constexpr.patch
+  * color_provider-incomplete-ColorProviderInternal.patch
+  * run_segmenter-missing-optional.patch
+  * page_popup_controller-missing-optional.patch
+  * native_css_paint_definition-expected-unqualified-id.patch
+  * text_decoder-missing-optional.patch
+  * real_time_reporting_bindings-forward-declaration.patch
+  * blink-platform-INSIDE_BLINK-Wodr.patch
+  * quiche-QuicIntervalDeque-no-match-for-operator-mm.patch
+  * ConsumeRadii-linker-error.patch
+- Conditionally revert upstreamed ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch on old ffmpeg
+- Revert upstream changes to build with system abseil (quiche-absl-HexStringToBytes.patch)
+- Refresh bad-font-gc patches from Debian
+- aarch64: disable LTO also on Fedora 39 due to OOM
+
+-------------------------------------------------------------------
 Sat Sep 14 08:13:25 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 30.5.1

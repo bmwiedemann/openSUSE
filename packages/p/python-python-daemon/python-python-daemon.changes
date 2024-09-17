@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 16 14:17:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Revert to 3.0.1. Version 3.0.2 was yanked from pypi because it
+  breaks setuptools
+  (https://pagure.io/python-daemon/issue/94, https://pypi.org/project/python-daemon/3.0.2/)
+- Add patch explicit-packaging.patch to fix issue with current
+  setuptools: https://pagure.io/python-daemon/issue/73
+
+-------------------------------------------------------------------
 Fri Aug 30 04:49:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Upate to 3.0.2:

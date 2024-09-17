@@ -22,7 +22,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 123
+%define abi_version 125
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -95,11 +95,7 @@ BuildArch:      i686
 %endif
 
 %ifarch aarch64
-%if 0%{?suse_version} || 0%{?fedora} >= 40
 %bcond_with lto
-%else
-%bcond_without lto
-%endif
 %endif
 
 %ifarch aarch64
@@ -233,7 +229,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        30.5.1
+Version:        31.6.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -250,11 +246,15 @@ Source11:       Electron.desktop
 Source400:      ffmpeg-new-channel-layout.patch
 Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 Source402:      Cr122-ffmpeg-new-channel-layout.patch
+Source403:      ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch
 # and against harfbuzz 4
 Source415:      harfbuzz-replace-chromium-scoped-type.patch
 Source416:      harfbuzz-replace-HbScopedPointer.patch
 # and wayland 1.31
 Source450:      wayland-proto-31-cursor-shape.patch
+# and abseil 2401
+Source460:      quiche-absl-HexStringToBytes.patch
+
 
 
 # PATCHES for openSUSE-specific things (compiler flags, paths, etc.)
@@ -263,8 +263,6 @@ Patch1:         fpic.patch
 Patch2:         common.gypi-compiler.patch
 Patch3:         gcc-enable-lto.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
-# Always disable use_thin_lto which is an lld feature
-Patch21:        electron-13-fix-use-thin-lto.patch
 # Fix common.gypi to include /usr/include/electron
 Patch25:        electron-16-system-node-headers.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/debianization/support-i386.patch/
@@ -295,10 +293,11 @@ Patch581:       disable-tests.patch
 Patch583:       remove-rust.patch
 Patch585:       remove-dawn.patch
 Patch586:       aom-vpx-no-thread-wrapper.patch
-Patch587:       remove-openscreen.patch
 Patch588:       remove-password-manager-and-policy.patch
 Patch589:       remove-puffin.patch
 Patch590:       remove-sync.patch
+Patch591:       fix-build-without-safebrowsing.patch
+Patch592:       fix-build-without-supervised-users.patch
 
 
 
@@ -328,9 +327,10 @@ Patch1076:      crashpad-use-system-abseil.patch
 Patch1077:      system-wayland.patch
 Patch1078:      system-simdutf.patch
 Patch1079:      system-libm.patch
-Patch1080:      system-yuv.patch
-Patch1081:      chromium-122-abseil-shims.patch
 Patch1082:      chromium-124-shims.patch
+Patch1083:      Cr126-abseil-shims.patch
+Patch1084:      absl-base-dynamic_annotations.patch
+Patch1085:      webp-no-sharpyuv.patch
 
 
 # PATCHES to fix interaction with third-party software
@@ -348,7 +348,7 @@ Patch2012:      chromium-94-ffmpeg-roll.patch
 # See https://reviews.llvm.org/D92800
 Patch2022:      electron-13-fix-base-check-nomerge.patch
 # Fix electron patched code
-Patch2024:      electron-16-std-vector-non-const.patch
+#Patch2024:      electron-16-std-vector-non-const.patch
 Patch2029:      electron-16-webpack-fix-openssl-3.patch
 Patch2031:      partition_alloc-no-lto.patch
 Patch2032:      seccomp_bpf-no-lto.patch
@@ -402,19 +402,20 @@ Patch3138:      distributed_point_functions-aes_128_fixed_key_hash-missing-StrCa
 Patch3144:      mt21_util-flax-vector-conversions.patch
 Patch3149:      boringssl-internal-addc-cxx.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
-Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch
-Patch3153:      angle-FramebufferVk-powf.patch
 Patch3154:      licenses.py-FileNotFoundError.patch
-Patch3155:      span_reader-missing-optional.patch
-Patch3156:      bitset-missing-uint8_t-memcpy.patch
-Patch3157:      temporal_scalability_id_extractor-missing-bitset.patch
-Patch3158:      gpu_adapter_info-missing-optional.patch
-Patch3159:      first_party_sets_handler_database_helper-missing-optional.patch
-Patch3160:      async_iterable-forwarding.patch
 Patch3161:      preview_cancel_reason-missing-string.patch
-Patch3162:      script_streamer-atomic-include.patch
 Patch3163:      DesktopNativeWidgetAura-HandleActivationChanged-crash.patch
-Patch3164:      ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch
+Patch3165:      http_auth_ntlm_mechanism-could-not-convert-to-base-span.patch
+Patch3166:      angle-State-constexpr.patch
+Patch3167:      color_provider-incomplete-ColorProviderInternal.patch
+Patch3168:      run_segmenter-missing-optional.patch
+Patch3169:      page_popup_controller-missing-optional.patch
+Patch3170:      native_css_paint_definition-expected-unqualified-id.patch
+Patch3171:      text_decoder-missing-optional.patch
+Patch3172:      real_time_reporting_bindings-forward-declaration.patch
+Patch3173:      blink-platform-INSIDE_BLINK-Wodr.patch
+Patch3174:      quiche-QuicIntervalDeque-no-match-for-operator-mm.patch
+Patch3175:      ConsumeRadii-linker-error.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -762,7 +763,6 @@ providing better integration with desktop environments such as KDE.
 
 
 
-
 # Sanity check if macro corresponds to the actual ABI
 test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') = %abi_version
 
@@ -774,7 +774,7 @@ patch -R -p1 < %PATCH1076
 %if %{with ffmpeg_6}
 patch -R -p1 < %PATCH2012
 %else
-patch -R -p1 < %PATCH3164
+patch -R -p1 < %SOURCE403
 patch -R -p1 < %SOURCE402
 patch -R -p1 < %SOURCE400
 patch -R -p1 < %SOURCE401
@@ -794,6 +794,9 @@ patch -R -p1 < %SOURCE450
 
 
 
+
+# This one depends on an abseil nightly, reverting unconditionally.
+patch -R -p1 < %SOURCE460
 
 # Link system wayland-protocols-devel into where chrome expects them
 mkdir -p third_party/wayland/src
@@ -1039,7 +1042,7 @@ export LDFLAGS="$LDFLAGS -Wl,--as-needed"
 %ifarch %ix86 %arm
 #try to reduce memory
 
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
+export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif #ifarch ix86 arm
 
 
@@ -1174,9 +1177,7 @@ myconf_gn+=" enable_pdf=false"
 myconf_gn+=" enable_pdf_viewer=false"
 myconf_gn+=" enable_print_preview=false"
 myconf_gn+=" enable_printing=false"
-myconf_gn+=" enable_basic_printing=false"
 myconf_gn+=' use_cups=false'
-myconf_gn+=' enable_print_content_analysis=false'
 #we don't build PDF support, so disabling the below:
 #myconf_gn+=" use_system_lcms2=true"
 #myconf_gn+=" use_system_libopenjpeg2=true"
@@ -1269,21 +1270,23 @@ myconf_gn+=' enable_supervised_users=false'
 myconf_gn+=' enable_compose=false'
 myconf_gn+=' enterprise_cloud_content_analysis=false'
 myconf_gn+=' enterprise_local_content_analysis=false'
-myconf_gn+=' enterprise_data_controls=false'
 myconf_gn+=' enterprise_watermark=false'
-myconf_gn+=' enterprise_content_analysis=false'
+myconf_gn+=' enterprise_content_analysis=true'
 myconf_gn+=' enable_video_effects=false'
 myconf_gn+=' use_fake_screen_ai=true'
 myconf_gn+=' webnn_use_tflite=false'
+myconf_gn+=' structured_metrics_enabled=false'
+myconf_gn+=' structured_metrics_debug_enabled=false'
 
 
 #FIXME: possibly enable this when skia gets built with rust code by default.
 #Need to patch in optflags and possibly FFI LTO hacks (see signal-desktop package for how it's done)
 myconf_gn+=' enable_rust=false'
 myconf_gn+=' enable_chromium_prelude=false'
-
+myconf_gn+=' enable_cxx=false'
 
 myconf_gn+=' chrome_certificate_policies_supported=false'
+myconf_gn+=' chrome_root_store_cert_management_ui=false'
 myconf_gn+=' use_kerberos=false'
 
 myconf_gn+=' disable_histogram_support=true'

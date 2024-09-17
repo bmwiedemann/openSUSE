@@ -1290,4 +1290,13 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199702</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>2d9d22ba157f1202a3186673e0bfa427</srcmd5>
+    <version>4.8.2</version>
+    <time>1726589819</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.8.2
+  - Allow specifying only low value with setup-kdump [bsc#1230537]</comment>
+    <requestid>1201457</requestid>
+  </revision>
 </revisionlist>

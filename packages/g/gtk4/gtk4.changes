@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 13 14:39:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.16.1:
+  + GtkFileChooser: Plug a memory leak
+  + GtkCalendar: Avoid ending up with invalid dates
+  + Printing: Fix initial printer selection in the print dialog
+  + Gsk:
+    - Fix shadows for opaque textures
+    - Fix a crash in a corner case
+  + Css: Make relative paths work again in theme files
+  + Accessibility: Fix detection of the Flatpak portal
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep  7 08:00:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.0:

@@ -166,7 +166,6 @@ echo ">>>>>> Remove bundled libs"
 keeplibs=(
     base/third_party/cityhash #Derived code, not vendored dependency.
     base/third_party/cityhash_v103 #Derived code, not vendored dep
-    base/third_party/dynamic_annotations #Derived code, not vendored dependency.
     base/third_party/icu #Derived code, not vendored dependency.
     base/third_party/superfasthash #Not a shared library.
     base/third_party/symbolize #Derived code, not vendored dependency.
@@ -336,6 +335,8 @@ rm -rvf third_party/electron_node/deps/v8/tools
 ln -srv v8/tools -t third_party/electron_node/deps/v8/
 find third_party/electron_node/deps/zlib -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 
+# vendored system headers
+rm -rf build/linux/debian*sysroot
 
 #Some more chonkers
 rm -rf components/test/data #21MB

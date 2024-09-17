@@ -26,7 +26,7 @@ diff --git a/chromium/content/browser/BUILD.gn b/chromium/content/browser/BUILD.
 index 19b45dc1268..67dcd7752d0 100644
 --- a/content/browser/BUILD.gn
 +++ b/content/browser/BUILD.gn
-@@ -1909,11 +1909,6 @@ source_set("browser") {
+@@ -1909,13 +1909,6 @@ source_set("browser") {
      "sms/user_consent_handler.h",
      "sms/webotp_service.cc",
      "sms/webotp_service.h",
@@ -34,6 +34,8 @@ index 19b45dc1268..67dcd7752d0 100644
 -    "speech/speech_recognition_dispatcher_host.h",
 -    "speech/speech_recognition_manager_impl.cc",
 -    "speech/speech_recognition_manager_impl.h",
+-    "speech/speech_recognition_session.cc",
+-    "speech/speech_recognition_session.h",
 -    "speech/speech_recognizer.h",
      "speech/speech_synthesis_impl.cc",
      "speech/speech_synthesis_impl.h",
@@ -58,14 +60,17 @@ index 19b45dc1268..67dcd7752d0 100644
        "tracing/tracing_ui.cc",
        "tracing/tracing_ui.h",
  
-@@ -2995,7 +2975,6 @@ source_set("browser") {
-     ]
- 
-     deps += [
+@@ -2995,10 +2975,8 @@ source_set("browser") {
+       "//components/soda:constants",
+       "//components/soda:soda",
+       "//components/soda:utils",
 -      "//components/speech:speech",
        "//components/vector_icons",
        "//components/webauthn/json",
+-      "//media/mojo/mojom:speech_recognition",
+       "//ui/base",
      ]
+   }
 @@ -3108,6 +3083,37 @@ source_set("browser") {
      deps += [ "//ui/compositor" ]
    }

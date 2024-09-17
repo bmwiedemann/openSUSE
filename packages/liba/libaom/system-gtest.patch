@@ -1,6 +1,8 @@
---- a/test/test.cmake	2022-06-17 19:46:18.000000000 +0200
-+++ b/test/test.cmake	2022-08-30 12:26:32.563379100 +0200
-@@ -14,6 +14,7 @@
+Index: libaom-3.9.1/test/test.cmake
+===================================================================
+--- libaom-3.9.1.orig/test/test.cmake
++++ libaom-3.9.1/test/test.cmake
+@@ -14,6 +14,7 @@ endif() # AOM_TEST_TEST_CMAKE_
  set(AOM_TEST_TEST_CMAKE_ 1)
  
  include(ProcessorCount)
@@ -8,7 +10,7 @@
  
  include("${AOM_ROOT}/test/test_data_util.cmake")
  
-@@ -362,34 +363,21 @@
+@@ -402,34 +403,21 @@ if(ENABLE_TESTS)
      set(CMAKE_MACOSX_RPATH 1)
    endif()
  

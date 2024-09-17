@@ -2,9 +2,9 @@ Partially revert https://github.com/chromium/chromium/commit/c1dc375391403442935
 and disable dependent code. This removes `brs` from Accept-Encoding list.
 This feature does not build with brotli < 1.1
 
---- src/net/filter/brotli_source_stream.cc.orig	2023-10-12 17:25:42.094020700 +0200
-+++ src/net/filter/brotli_source_stream.cc	2023-10-12 22:43:53.790708700 +0200
-@@ -13,7 +11,6 @@
+--- src/net/filter/brotli_source_stream.cc.orig	2024-07-24 12:50:53.542464800 +0200
++++ src/net/filter/brotli_source_stream.cc	2024-08-04 21:07:52.674333900 +0200
+@@ -12,7 +12,6 @@
  #include "base/metrics/histogram_macros.h"
  #include "net/base/io_buffer.h"
  #include "third_party/brotli/include/brotli/decode.h"
@@ -12,7 +12,7 @@ This feature does not build with brotli < 1.1
  
  namespace net {
  
-@@ -25,21 +22,11 @@ const char kBrotli[] = "BROTLI";
+@@ -24,21 +23,11 @@ const char kBrotli[] = "BROTLI";
  // Brotli format specification: http://www.ietf.org/id/draft-alakuijala-brotli.
  class BrotliSourceStream : public FilterSourceStream {
   public:
@@ -36,17 +36,17 @@ This feature does not build with brotli < 1.1
    }
  
    BrotliSourceStream(const BrotliSourceStream&) = delete;
-@@ -176,9 +163,6 @@ class BrotliSourceStream : public Filter
+@@ -174,9 +163,6 @@ class BrotliSourceStream : public Filter
      free(&array[-1]);
    }
  
 -  const scoped_refptr<IOBuffer> dictionary_;
 -  const size_t dictionary_size_;
 -
-   raw_ptr<BrotliDecoderState, DanglingUntriaged> brotli_state_;
+   raw_ptr<BrotliDecoderState> brotli_state_;
  
    DecodingStatus decoding_status_ = DecodingStatus::DECODING_IN_PROGRESS;
-@@ -200,8 +184,7 @@ std::unique_ptr<FilterSourceStream> Crea
+@@ -198,8 +184,7 @@ std::unique_ptr<FilterSourceStream> Crea
      std::unique_ptr<SourceStream> previous,
      scoped_refptr<IOBuffer> dictionary,
      size_t dictionary_size) {

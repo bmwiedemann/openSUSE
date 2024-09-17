@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 2.0.0
-%define _ver 2_0_0
+%define ver 2.1.1
+%define _ver 2_1_1
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -82,7 +82,7 @@ Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
 BuildRequires:  %{python_module Cython >= 3.0}
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module meson-python >= 0.15}
 BuildRequires:  %{python_module pip}

@@ -46,8 +46,8 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  
  #if BUILDFLAG(GOOGLE_CHROME_BRANDING) && BUILDFLAG(IS_CHROMEOS)
    services.Add(RunShapeDetectionService);
---- src/content/utility/utility_main.cc.old	2024-04-02 09:53:16.050958400 +0000
-+++ src/content/utility/utility_main.cc	2024-04-07 17:41:04.823696600 +0000
+--- src/content/utility/utility_main.cc.orig	2024-07-24 12:50:51.439131000 +0200
++++ src/content/utility/utility_main.cc	2024-08-03 00:11:18.255682100 +0200
 @@ -32,7 +32,6 @@
  #include "sandbox/policy/mojom/sandbox.mojom.h"
  #include "sandbox/policy/sandbox.h"
@@ -56,18 +56,17 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  #include "services/screen_ai/buildflags/buildflags.h"
  #include "services/tracing/public/cpp/trace_startup.h"
  #include "third_party/icu/source/common/unicode/unistr.h"
-@@ -202,10 +201,6 @@ int UtilityMain(MainFunctionParams param
-           ? base::MessagePumpType::UI
-           : base::MessagePumpType::DEFAULT;
+@@ -246,9 +245,6 @@ int UtilityMain(MainFunctionParams param
+     }
+   }
  
--  if (parameters.command_line->GetSwitchValueASCII(switches::kUtilitySubType) ==
--      on_device_model::mojom::OnDeviceModelService::Name_) {
+-  if (utility_sub_type == on_device_model::mojom::OnDeviceModelService::Name_) {
 -    CHECK(on_device_model::OnDeviceModelService::PreSandboxInit());
 -  }
  
- #if BUILDFLAG(IS_MAC)
-   auto sandbox_type =
-@@ -283,11 +278,6 @@ int UtilityMain(MainFunctionParams param
+ #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+   // Thread type delegate of the process should be registered before first
+@@ -283,11 +279,6 @@ int UtilityMain(MainFunctionParams param
      case sandbox::mojom::Sandbox::kAudio:
        pre_sandbox_hook = base::BindOnce(&audio::AudioPreSandboxHook);
        break;
@@ -79,3 +78,13 @@ Remove this unused component which brings a huge dependency on //third_party/daw
      case sandbox::mojom::Sandbox::kSpeechRecognition:
        pre_sandbox_hook =
            base::BindOnce(&speech::SpeechRecognitionPreSandboxHook);
+@@ -437,9 +428,6 @@ int UtilityMain(MainFunctionParams param
+ 
+   run_loop.Run();
+ 
+-  if (utility_sub_type == on_device_model::mojom::OnDeviceModelService::Name_) {
+-    CHECK(on_device_model::OnDeviceModelService::Shutdown());
+-  }
+ 
+ #if defined(LEAK_SANITIZER)
+   // Invoke LeakSanitizer before shutting down the utility thread, to avoid

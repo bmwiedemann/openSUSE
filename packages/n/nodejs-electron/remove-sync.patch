@@ -180,38 +180,51 @@ Inspired by:
    bool is_loaded_;
 --- src/device/fido/BUILD.gn.orig
 +++ src/device/fido/BUILD.gn
-@@ -148,20 +148,6 @@ component("fido") {
-       "device_operation.h",
-       "device_response_converter.cc",
-       "device_response_converter.h",
--      "enclave/constants.cc",
--      "enclave/constants.h",
--      "enclave/enclave_authenticator.cc",
--      "enclave/enclave_authenticator.h",
--      "enclave/enclave_discovery.cc",
--      "enclave/enclave_discovery.h",
--      "enclave/enclave_protocol_utils.cc",
--      "enclave/enclave_protocol_utils.h",
--      "enclave/enclave_websocket_client.cc",
--      "enclave/enclave_websocket_client.h",
--      "enclave/transact.cc",
--      "enclave/transact.h",
--      "enclave/types.cc",
--      "enclave/types.h",
-       "fido_authenticator.cc",
-       "fido_authenticator.h",
-       "fido_device.cc",
-@@ -229,7 +215,6 @@ component("fido") {
-     ]
+@@ -163,33 +163,6 @@ component("fido") {
+         "device_operation.h",
+         "device_response_converter.cc",
+         "device_response_converter.h",
+-        "enclave/constants.cc",
+-        "enclave/constants.h",
+-        "enclave/enclave_authenticator.cc",
+-        "enclave/enclave_authenticator.h",
+-        "enclave/enclave_discovery.cc",
+-        "enclave/enclave_discovery.h",
+-        "enclave/enclave_protocol_utils.cc",
+-        "enclave/enclave_protocol_utils.h",
+-        "enclave/enclave_websocket_client.cc",
+-        "enclave/enclave_websocket_client.h",
+-        "enclave/metrics.cc",
+-        "enclave/metrics.h",
+-        "enclave/transact.cc",
+-        "enclave/transact.h",
+-        "enclave/types.cc",
+-        "enclave/types.h",
+-        "enclave/verify/claim.cc",
+-        "enclave/verify/claim.h",
+-        "enclave/verify/endorsement.cc",
+-        "enclave/verify/endorsement.h",
+-        "enclave/verify/hash.cc",
+-        "enclave/verify/hash.h",
+-        "enclave/verify/rekor.cc",
+-        "enclave/verify/rekor.h",
+-        "enclave/verify/utils.cc",
+-        "enclave/verify/utils.h",
+-        "enclave/verify/verify.h",
+         "fido_authenticator.cc",
+         "fido_authenticator.h",
+         "fido_device.cc",
+@@ -256,7 +229,6 @@ component("fido") {
+       ]
  
-     deps += [
--      "//components/sync/protocol:protocol",
-       "//services/device/public/cpp/hid",
-       "//services/device/public/cpp/usb",
-       "//services/device/public/mojom",
+       deps += [
+-        "//components/sync/protocol:protocol",
+         "//services/device/public/cpp/hid",
+         "//services/device/public/cpp/usb",
+         "//services/device/public/mojom",
 --- src/device/fido/fido_discovery_factory.cc.orig
 +++ src/device/fido/fido_discovery_factory.cc
-@@ -37,7 +37,7 @@
+@@ -38,7 +38,7 @@
  #include "device/fido/cros/discovery.h"
  #endif  // BUILDFLAG(IS_CHROMEOS)
  
@@ -220,38 +233,15 @@ Inspired by:
  #include "device/fido/enclave/enclave_discovery.h"
  #endif
  
-@@ -108,7 +108,7 @@ std::vector<std::unique_ptr<FidoDiscover
- #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_CHROMEOS)
-       discoveries = MaybeCreatePlatformDiscovery();
- #endif
--#if !BUILDFLAG(IS_CHROMEOS)
-+#if 0
-       MaybeCreateEnclaveDiscovery(discoveries);
- #endif
-       return discoveries;
-@@ -183,11 +183,13 @@ void FidoDiscoveryFactory::set_hid_ignor
-   hid_ignore_list_ = std::move(hid_ignore_list);
- }
+@@ -127,7 +127,7 @@ std::vector<std::unique_ptr<FidoDiscover
  
+ std::optional<std::unique_ptr<FidoDiscoveryBase>>
+ FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery() {
+-#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX)
 +#if 0
- void FidoDiscoveryFactory::set_enclave_passkey_creation_callback(
-     base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
-         callback) {
-   enclave_passkey_creation_callback_ = callback;
- }
-+#endif
- 
- void FidoDiscoveryFactory::set_enclave_ui_request_stream(
-     std::unique_ptr<FidoDiscoveryBase::EventStream<
-@@ -266,7 +268,7 @@ void FidoDiscoveryFactory::
- }
- #endif
- 
--#if !BUILDFLAG(IS_CHROMEOS)
-+#if 0
- void FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery(
-     std::vector<std::unique_ptr<FidoDiscoveryBase>>& discoveries) {
    if (!base::FeatureList::IsEnabled(kWebAuthnEnclaveAuthenticator) ||
+       !enclave_ui_request_stream_ || !network_context_factory_) {
+     return std::nullopt;
 --- src/device/fido/fido_discovery_factory.h.orig
 +++ src/device/fido/fido_discovery_factory.h
 @@ -15,7 +15,6 @@
@@ -262,22 +252,3 @@ Inspired by:
  #include "device/fido/cable/cable_discovery_data.h"
  #include "device/fido/cable/v2_constants.h"
  #include "device/fido/ctap_get_assertion_request.h"
-@@ -99,9 +98,6 @@ class COMPONENT_EXPORT(DEVICE_FIDO) Fido
- 
-   // Provides a callback that will be called when a passkey is created with
-   // the enclave authenticator in order to save the new passkey to sync data.
--  void set_enclave_passkey_creation_callback(
--      base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
--          callback);
- 
-   void set_enclave_ui_request_stream(
-       std::unique_ptr<FidoDiscoveryBase::EventStream<
-@@ -192,8 +188,6 @@ class COMPONENT_EXPORT(DEVICE_FIDO) Fido
-       get_assertion_request_for_legacy_credential_check_;
- #endif  // BUILDFLAG(IS_CHROMEOS)
-   base::flat_set<VidPid> hid_ignore_list_;
--  base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
--      enclave_passkey_creation_callback_;
-   std::unique_ptr<FidoDiscoveryBase::EventStream<
-       std::unique_ptr<enclave::CredentialRequest>>>
-       enclave_ui_request_stream_;

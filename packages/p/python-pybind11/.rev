@@ -268,4 +268,84 @@
     two new features without creating additional</comment>
     <requestid>1165773</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a744abdf50b3be6dc160610a7921d8e5</srcmd5>
+    <version>2.13.6</version>
+    <time>1726589851</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.6:
+  * A new self._pybind11_conduit_v1_() method is automatically
+    added to all py::class_-wrapped types, to enable type-safe
+    interoperability between different independent Python/C++
+    bindings systems, including pybind11 versions with different
+    PYBIND11_INTERNALS_VERSION's. Supported on pybind11 2.11.2,
+    2.12.1, and 2.13.6+. #5296
+  * Using __cpp_nontype_template_args instead of
+    __cpp_nontype_template_parameter_class. #5330
+  * Properly translate C++ exception to Python exception when
+    creating Python buffer from wrapped object. #5324
+  * Adds an answer (FAQ) for &quot;What is a highly conclusive and
+    simple way to find memory leaks?&quot;. #5340
+- update to 2.13.5:
+  * Fix includes when using Windows long paths (\?\ prefix).
+  * Support -Wpedantic in C++20 mode. #5322
+  * Fix and test &lt;ranges&gt; support for py::tuple and py::list.
+  * Fix paths with spaces, including on Windows. (Replaces
+    regression from #5302) #4874
+  * Remove repetitive words. #5308
+  * Quote paths from pybind11-config #5302
+  * Fix typo in Emscripten support when in config mode (CMake)
+    #5301
+  * A pybind11::detail::type_caster_std_function_specializations
+    feature was added, to support specializations for
+    std::function's with return types that require custom to-
+    Python conversion behavior (to primary use case is to catch
+    and convert exceptions). #4597
+  * Use PyMutex instead of std::mutex for internal locking in the
+    free-threaded build. #5219
+  * Add a special type annotation for C++ empty tuple. #5214
+  * When compiling for WebAssembly, add the required exception
+    flags (CMake 3.13+). #5298
+  * Make gil_safe_call_once_and_store thread-safe in free-
+    threaded CPython. #5246
+  * A missing #include &lt;algorithm&gt; in pybind11/typing.h was added
+    to fix build errors (in case user code does not already
+    depend on that include). #5208
+  * Fix regression introduced in #5201 for GCC&lt;10.3 in C++20
+    mode. #5205
+  * Remove extra = when assigning flto value in the case for
+    Clang in CMake. #5207
+  * Add support for Typing.Callable[..., T]. #5202
+  * Avoid aligned allocation in free-threaded build in order to
+    support macOS versions before 10.14. #5200
+  * Support free-threaded CPython (3.13t). Add
+    py::mod_gil_not_used() tag to indicate if a module supports
+    running with the GIL disabled. #5148
+  * Support for Python 3.6 was removed. (Official end-of-life:
+    2021-12-23). #5177
+  * py::list gained a .clear() method. #5153
+  * Support for Union, Optional, type[T], typing.TypeGuard,
+    typing.TypeIs, typing.Never, typing.NoReturn and
+    typing.Literal was added to pybind11/typing.h. #5166 #5165
+    #5194 #5193 #5192
+  * In CMake, if PYBIND11_USE_CROSSCOMPILING is enabled, then
+    CMAKE_CROSSCOMPILING will be respected and will keep pybind11
+    from accessing the interpreter during configuration. Several
+    CMake variables will be required in this case, but can be
+    deduced from the environment variable SETUPTOOLS_EXT_SUFFIX.
+    The default (currently OFF) may be changed in the future.
+    #5083
+  * A refcount bug (leading to heap-use-after-free) involving
+    trampoline functions with PyObject * return type was fixed.
+    #5156
+  * Return py::ssize_t from .ref_count() instead of int. #5139
+  * A subtle bug involving C++ types with unusual operator&amp;
+    overrides was fixed. #5189
+  * Support Python 3.13 with minor fix, add to CI. #5127
+  * Fix mistake affecting old cmake and old boost. #5149
+  * Build docs updated to feature scikit-build-core and meson-
+    python, and updated setuptools instructions. #5168
+</comment>
+    <requestid>1201569</requestid>
+  </revision>
 </revisionlist>

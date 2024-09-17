@@ -166,9 +166,9 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//components/vector_icons",
        "//components/webauthn/json",
 -      "//content/browser/tracing:resources",
+       "//media/mojo/mojom:speech_recognition",
+       "//ui/base",
      ]
-   }
- 
 --- a/chrome/chrome_paks.gni
 +++ b/chrome/chrome_paks.gni
 @@ -190,8 +190,6 @@ template("chrome_extra_paks") {
@@ -181,7 +181,7 @@ author: Michael Gilbert <mgilbert@debian.org>
        deps += [
          "//chrome/browser/resources:component_extension_resources",
 @@ -199,7 +197,6 @@ template("chrome_extra_paks") {
-         "//chrome/browser/resources/lens/overlay:resources",
+         "//chrome/browser/resources/lens/overlay/search_bubble:resources",
          "//chrome/browser/resources/search_engine_choice:resources",
          "//content/browser/devtools:devtools_resources",
 -        "//content/browser/tracing:resources",

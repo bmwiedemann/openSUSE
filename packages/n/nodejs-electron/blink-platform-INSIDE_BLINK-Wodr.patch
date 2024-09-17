@@ -1,0 +1,45 @@
+--- src/third_party/blink/public/platform/web_crypto_algorithm.h.orig	2024-07-24 12:50:54.735798500 +0200
++++ src/third_party/blink/public/platform/web_crypto_algorithm.h	2024-08-04 16:11:13.938867200 +0200
+@@ -74,18 +74,14 @@ enum WebCryptoAlgorithmId {
+   kWebCryptoAlgorithmIdPbkdf2,
+   kWebCryptoAlgorithmIdEd25519,
+   kWebCryptoAlgorithmIdX25519,
+-#if INSIDE_BLINK
+   kWebCryptoAlgorithmIdLast = kWebCryptoAlgorithmIdX25519,
+-#endif
+ };
+ 
+ enum WebCryptoNamedCurve {
+   kWebCryptoNamedCurveP256,
+   kWebCryptoNamedCurveP384,
+   kWebCryptoNamedCurveP521,
+-#if INSIDE_BLINK
+   kWebCryptoNamedCurveLast = kWebCryptoNamedCurveP521,
+-#endif
+ };
+ 
+ enum WebCryptoAlgorithmParamsType {
+@@ -153,11 +149,9 @@ class WebCryptoAlgorithmPrivate;
+ // methods on it (other than destruction, assignment, or IsNull()).
+ class BLINK_PLATFORM_EXPORT WebCryptoAlgorithm {
+  public:
+-#if INSIDE_BLINK
+   WebCryptoAlgorithm() = default;
+   WebCryptoAlgorithm(WebCryptoAlgorithmId,
+                      std::unique_ptr<WebCryptoAlgorithmParams>);
+-#endif
+ 
+   static WebCryptoAlgorithm CreateNull();
+   static WebCryptoAlgorithm AdoptParamsAndCreate(WebCryptoAlgorithmId,
+--- src/third_party/blink/public/platform/web_crypto_key.h.orig	2024-07-24 12:50:54.735798500 +0200
++++ src/third_party/blink/public/platform/web_crypto_key.h	2024-08-04 16:11:34.638017900 +0200
+@@ -51,9 +51,7 @@ enum WebCryptoKeyUsage {
+   kWebCryptoKeyUsageWrapKey = 1 << 5,
+   kWebCryptoKeyUsageUnwrapKey = 1 << 6,
+   kWebCryptoKeyUsageDeriveBits = 1 << 7,
+-#if INSIDE_BLINK
+   kEndOfWebCryptoKeyUsage,
+-#endif
+ };
+ 
+ // A bitfield of WebCryptoKeyUsage

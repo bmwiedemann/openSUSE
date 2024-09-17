@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:46:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.1:
+  * This release includes new codec interfaces, compression
+    efficiency and perceptual improvements, speedup for RTC for both
+    video and screen content, and many bug fixes.
+- Please see https://aomedia.googlesource.com/aom/+/refs/tags/v3.9.1/CHANGELOG
+  for detailed changes since version 3.7.2
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Sun Aug 25 17:43:03 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Exclude third_party from obscpio

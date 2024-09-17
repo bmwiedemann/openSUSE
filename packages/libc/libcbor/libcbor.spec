@@ -23,8 +23,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %if "%{flavor}" == "doc"
-# in 15sp4/sp5, the doc fails to build with an assert in sphinx
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 150500
+# in 15sp4/sp5/sp6, the doc fails to build with an assert in sphinx
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 150600
 %define build_man 0
 %else
 %define build_man 1

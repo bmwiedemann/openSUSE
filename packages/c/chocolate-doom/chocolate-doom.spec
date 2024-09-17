@@ -1,7 +1,7 @@
 #
 # spec file for package chocolate-doom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chocolate-doom
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Conservative DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later
@@ -25,11 +25,9 @@ Group:          Amusements/Games/3D/Shoot
 URL:            http://chocolate-doom.org/
 
 #Git-Web:	https://github.com/fragglet/chocolate-doom
-Source:         http://www.chocolate-doom.org/downloads/%version/%name-%version.tar.gz
-Source2:        http://www.chocolate-doom.org/downloads/%version/%name-%version.tar.gz.asc
+Source:         https://github.com/chocolate-doom/chocolate-doom/archive/refs/tags/%name-%version.tar.gz
 Source3:        %name.keyring
 Patch1:         chdoom-iwaddir.diff
-Patch2:         0001-build-use-python3-exclusively.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -44,6 +42,8 @@ BuildRequires:  pkgconfig(libpng) >= 1.6.10
 %endif
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.1
+Obsoletes:      %name-bash-completion < %version-%release
+Provides:       %name-bash-completion = %version-%release
 Provides:       chocolate-heretic = %version
 Provides:       chocolate-hexen = %version
 Provides:       chocolate-strife = %version
@@ -56,17 +56,8 @@ resolution rendering, and goes as far as to duplicate or recreate
 bugs and crashes found in the DOS executable that were fixed before
 the initial open-sourcing of the Doom engine.
 
-%package bash-completion
-Summary:        Chocolate Doom command line completion support for bash
-Group:          System/Shells
-BuildArch:      noarch
-Supplements:    (%name and bash-completion)
-
-%description bash-completion
-Additions for bash-completion to support chocolate-doom.
-
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-%name-%version
 
 %build
 autoreconf -fi
@@ -81,9 +72,9 @@ mkdir -p "$b/%_bindir"
 rm -f "$b/%_docdir/%name/INSTALL"
 rm -f "$b/%_datadir/applications/chocolate-setup.desktop" # has wrong paths
 pushd "$b/%_mandir/man5"
-for i in default heretic hexen strife; do
-	mv "$i.cfg.5" "chocolate-doom-$i.cfg.5"
-done
+#for i in default heretic hexen strife; do
+#	mv "$i.cfg.5" "chocolate-doom-$i.cfg.5"
+#done
 %fdupes %buildroot/%_prefix
 
 %post
@@ -92,12 +83,10 @@ echo "INFO: %name: The global IWAD directory is %_datadir/doom."
 %files
 %_bindir/chocolate-*
 %_mandir/man*/*
-%_datadir/appdata/
 %_datadir/applications/*
+%_datadir/metainfo/*
 %_datadir/icons/*
 %_docdir/chocolate-*/
-
-%files bash-completion
 %_datadir/bash-completion/
 
 %changelog

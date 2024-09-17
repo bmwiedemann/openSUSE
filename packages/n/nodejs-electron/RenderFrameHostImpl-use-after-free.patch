@@ -6,8 +6,8 @@
  #include <memory>
 +#include <new>
  #include <optional>
+ #include <string_view>
  #include <tuple>
- #include <unordered_map>
 @@ -1818,7 +1819,12 @@ RenderFrameHostImpl::~RenderFrameHostImp
    // `DocumentService` and `RenderFrameHostUserData` subclasses are still valid
    // when their destructors run.

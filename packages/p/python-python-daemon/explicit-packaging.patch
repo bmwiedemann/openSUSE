@@ -1,0 +1,76 @@
+Index: python-daemon-3.0.1/pyproject.toml
+===================================================================
+--- python-daemon-3.0.1.orig/pyproject.toml
++++ python-daemon-3.0.1/pyproject.toml
+@@ -10,7 +10,9 @@
+ # Minimum requirements for the build system.
+ requires = [
+     "setuptools >=62.4.0",
+-    "docutils"]
++    "packaging",
++    "docutils",
++    ]
+ 
+ # Path to the Python object to perform the build.
+ build-backend = "setuptools.build_meta"
+Index: python-daemon-3.0.1/setup.py
+===================================================================
+--- python-daemon-3.0.1.orig/setup.py
++++ python-daemon-3.0.1/setup.py
+@@ -60,10 +60,13 @@ setup_kwargs = dict(
+         zip_safe=False,
+         setup_requires=[
+             "docutils",
++            "setuptools",
++            "packaging",
+             ],
+         install_requires=[
+             "setuptools >=62.4.0",
+             "lockfile >=0.10",
++            "packaging",
+             ],
+         python_requires=">=3",
+         extras_require={
+Index: python-daemon-3.0.1/test_version.py
+===================================================================
+--- python-daemon-3.0.1.orig/test_version.py
++++ python-daemon-3.0.1/test_version.py
+@@ -20,10 +20,10 @@ import unittest.mock
+ import docutils
+ import docutils.nodes
+ import docutils.writers
++from packaging.version import InvalidVersion
+ import setuptools
+ import setuptools.command
+ import setuptools.dist
+-from setuptools.extern.packaging.version import InvalidVersion
+ import testscenarios
+ import testtools
+ 
+Index: python-daemon-3.0.1/version.py
+===================================================================
+--- python-daemon-3.0.1.orig/version.py
++++ python-daemon-3.0.1/version.py
+@@ -31,12 +31,12 @@ import re
+ import sys
+ import textwrap
+ 
++import packaging.version
+ import setuptools
+ import setuptools.command.build
+ import setuptools.command.build_py
+ import setuptools.command.egg_info
+ import setuptools.dist
+-import setuptools.extern.packaging.version
+ 
+ 
+ def ensure_class_bases_begin_with(namespace, class_name, base_class):
+@@ -186,7 +186,7 @@ class ChangeLogEntry:
+             # A valid non-version value.
+             return None
+ 
+-        valid_version = setuptools.extern.packaging.version.Version(value)
++        valid_version = packaging.version.Version(value)
+ 
+     @classmethod
+     def validate_maintainer(cls, value):

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 19:39:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add bunch of patches to fix the testsuite with NumPy 2.1
+  * tests-wasm.patch
+  * tests-nomkl.patch
+  * tests-timedelta.patch
+  * tests-npdev.patch
+- Skip one test failing with new timezone, the patch would be too big
+
+-------------------------------------------------------------------
 Sun Sep  8 10:02:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Drop pandas-pr58720-xarray-dp.patch: It does no longer xfail

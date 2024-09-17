@@ -300,4 +300,16 @@
 - Switch to pagure source URL.</comment>
     <requestid>1197679</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f4c322168b7dff97e341dd868ea63024</srcmd5>
+    <version>3.0.1</version>
+    <time>1726589862</time>
+    <user>anag+factory</user>
+    <comment>- Revert to 3.0.1. Version 3.0.2 was yanked from pypi because it
+  breaks setuptools
+  (https://pagure.io/python-daemon/issue/94, https://pypi.org/project/python-daemon/3.0.2/)
+- Add patch explicit-packaging.patch to fix issue with current
+  setuptools: https://pagure.io/python-daemon/issue/73</comment>
+    <requestid>1201440</requestid>
+  </revision>
 </revisionlist>

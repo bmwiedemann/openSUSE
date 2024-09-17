@@ -1,0 +1,55 @@
+From d0cb2056d0b27080b2f5cc0b88db8d263f684230 Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Wed, 7 Aug 2024 10:49:25 -1000
+Subject: [PATCH] COMPAT: Fix numpy 2.1 timedelta * DateOffset (#59441)
+
+---
+ pandas/core/arrays/timedeltas.py            | 8 ++++++++
+ pandas/tests/arithmetic/test_timedelta64.py | 8 +++++++-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/pandas/core/arrays/timedeltas.py b/pandas/core/arrays/timedeltas.py
+index 15bfe442ca87f..83cc2871f5459 100644
+--- a/pandas/core/arrays/timedeltas.py
++++ b/pandas/core/arrays/timedeltas.py
+@@ -467,6 +467,10 @@ def __mul__(self, other) -> Self:
+         if is_scalar(other):
+             # numpy will accept float and int, raise TypeError for others
+             result = self._ndarray * other
++            if result.dtype.kind != "m":
++                # numpy >= 2.1 may not raise a TypeError
++                # and seems to dispatch to others.__rmul__?
++                raise TypeError(f"Cannot multiply with {type(other).__name__}")
+             freq = None
+             if self.freq is not None and not isna(other):
+                 freq = self.freq * other
+@@ -494,6 +498,10 @@ def __mul__(self, other) -> Self:
+ 
+         # numpy will accept float or int dtype, raise TypeError for others
+         result = self._ndarray * other
++        if result.dtype.kind != "m":
++            # numpy >= 2.1 may not raise a TypeError
++            # and seems to dispatch to others.__rmul__?
++            raise TypeError(f"Cannot multiply with {type(other).__name__}")
+         return type(self)._simple_new(result, dtype=result.dtype)
+ 
+     __rmul__ = __mul__
+diff --git a/pandas/tests/arithmetic/test_timedelta64.py b/pandas/tests/arithmetic/test_timedelta64.py
+index 4583155502374..87e085fb22878 100644
+--- a/pandas/tests/arithmetic/test_timedelta64.py
++++ b/pandas/tests/arithmetic/test_timedelta64.py
+@@ -1460,7 +1460,13 @@ def test_td64arr_mul_int(self, box_with_array):
+     def test_td64arr_mul_tdlike_scalar_raises(self, two_hours, box_with_array):
+         rng = timedelta_range("1 days", "10 days", name="foo")
+         rng = tm.box_expected(rng, box_with_array)
+-        msg = "argument must be an integer|cannot use operands with types dtype"
++        msg = "|".join(
++            [
++                "argument must be an integer",
++                "cannot use operands with types dtype",
++                "Cannot multiply with",
++            ]
++        )
+         with pytest.raises(TypeError, match=msg):
+             rng * two_hours
+ 

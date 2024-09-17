@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 05 10:58:24 UTC 2024 - dcermak@suse.com
+
+- Update to version 2.3.1:
+  * v2.3.1
+  * CI: attest-build-provenance: fix a subject-path issue (461)
+  * v2.3.0+dev
+  * v2.3.0
+  * Enable actions/attest-build-provenance
+  * CI: update Docker (27.1.2)
+  * CI: update pasta (2024_08_14.61c0b0d)
+  * go.mod: golang.org/x/net v0.28.0
+  * go.mod: github.com/insomniacslk/dhcp v0.0.0-20240812123929-b105c29bd1b5
+  * Deprecate rootlesskit-docker-proxy (no longer needed since Docker v28)
+  * child, pasta: Allow drivers to configure their own interface, let pasta do that
+  * pasta: Let it run in background, and wait until it forks
+  * CI: update Go to 1.23
+  * Build(deps): Bump github.com/urfave/cli/v2 from 2.27.3 to 2.27.4
+  * Build(deps): Bump golang.org/x/sys from 0.22.0 to 0.24.0
+  * Build(deps): Bump github.com/urfave/cli/v2 from 2.27.2 to 2.27.3
+  * Build(deps): Bump github.com/gofrs/flock from 0.12.0 to 0.12.1
+  * Build(deps): Bump github.com/moby/sys/mountinfo from 0.7.1 to 0.7.2
+  * v2.2.0+dev
+
+-------------------------------------------------------------------
 Wed Jul 17 05:36:39 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 2.2.0:

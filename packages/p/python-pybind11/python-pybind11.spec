@@ -31,11 +31,10 @@
 %bcond_with libalternatives
 %endif
 
-%define skip_python2 1
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        2.12.0
+Version:        2.13.6
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause

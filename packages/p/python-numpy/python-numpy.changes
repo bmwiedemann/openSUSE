@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Sep  6 18:35:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.1
+  * #27259: BUG: revert unintended change in the return value of
+    set_printoptions
+  * #27266: BUG: fix reference counting bug in __array_interface__
+    implementation...
+  * #27267: TST: Add regression test for missing descr in
+    array-interface
+  * #27276: BUG: Fix #27256 and #27257
+  * #27278: BUG: Fix array_equal for numeric and non-numeric scalar
+    types
+  * #27304: BUG: f2py: better handle filtering of public/private
+    subroutines
+
+-------------------------------------------------------------------
+Sat Aug 31 09:36:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0
+  * Support for Python 3.13.
+  * Preliminary support for free threaded Python 3.13.
+  * Support for the array-api 2023.12 standard.
+  ## New functions
+  * A new function np.unstack(array, axis=...) was added, which
+    splits an array into a tuple of arrays along an axis. It serves
+    as the inverse of numpy.stack. (gh-26579)
+  ## Deprecations
+  * The fix_imports keyword argument in numpy.save is deprecated.
+    Since NumPy 1.17, numpy.save uses a pickle protocol that no
+    longer supports Python 2, and ignored fix_imports keyword. This
+    keyword is kept only for backward compatibility. It is now
+    deprecated. (gh-26452)
+  * Passing non-integer inputs as the first argument of bincount is
+    now deprecated, because such inputs are silently cast to
+    integers with no warning about loss of precision. (gh-27076)
+  ## Expired deprecations
+  * Scalars and 0D arrays are disallowed for numpy.nonzero and
+    numpy.ndarray.nonzero. (gh-26268)
+  * set_string_function internal function was removed and
+    PyArray_SetStringFunction was stubbed out. (gh-26611)
+  ## C API changes
+  * API symbols now hidden but customizable
+  * Many shims removed from npy_3kcompat.h
+  * New PyUFuncObject field process_core_dims_func
+  ## New Features
+  * Preliminary Support for Free-Threaded CPython 3.13
+  * f2py can generate freethreading-compatible C extensions
+  ## Improvements
+  * histogram auto-binning now returns bin sizes >=1 for integer
+    input data
+  * ndarray shape-type parameter is now covariant and bound to
+    tuple[int, ...]
+  * np.quantile with method closest_observation chooses nearest
+    even order statistic
+  * lapack_lite is now thread safe
+  * The numpy.printoptions context manager is now thread and
+    async-safe
+  * Type hinting numpy.polynomial
+  * Improved numpy.dtypes type hints
+  ## Performance improvements and changes
+  * ma.cov and ma.corrcoef are now significantly faster
+  ## Changes
+  * ma.corrcoef may return a slightly different result
+  * Cast-safety fixes in copyto and full
+- Release 2.0.1
+  ## Improvements
+  * np.quantile with method closest_observation chooses nearest
+    even order statistic
+
+-------------------------------------------------------------------
 Tue Aug 13 06:04:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove meson-python upper limit (per upstream)

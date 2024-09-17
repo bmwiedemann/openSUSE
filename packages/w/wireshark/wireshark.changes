@@ -30,7 +30,7 @@ Thu Aug 29 07:09:42 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 Wed Jul 10 20:06:41 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.2.6 (jsc#PED-8517):
-  * SPRT dissector crash.
+  * CVE-2024-8645: SPRT dissector crash (boo#1230372).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.2.6.html
 

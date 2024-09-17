@@ -15,7 +15,7 @@ Remove this dead code which brings a dependency on rustc
 @@ -1972,7 +1972,6 @@ static_library("browser") {
      "//chrome/browser/profiling_host",
  
-     # TODO(crbug.com/1335199): break this dep when favicon is in its own target
+     # TODO(crbug.com/40228447): break this dep when favicon is in its own target
 -    "//chrome/browser/share",
      "//chrome/browser/ui",
      "//chrome/browser/storage_access_api",
@@ -35,7 +35,7 @@ Remove this dead code which brings a dependency on rustc
 -      "//chrome/browser/share/proto:proto",
        "//chrome/browser/smart_card",
        "//chrome/browser/support_tool:support_tool_proto",
-       "//chrome/browser/ui/actions:actions_headers",
+       "//chrome/browser/themes",
 @@ -8407,7 +8404,6 @@ static_library("test_support") {
      "//build:chromeos_buildflags",
      "//chrome/app/theme:theme_resources",
@@ -52,8 +52,8 @@ Remove this dead code which brings a dependency on rustc
      "//chrome/browser/safe_browsing",
 -    "//chrome/browser/share",
      "//chrome/browser/storage_access_api",
+     "//chrome/browser/themes",
      "//chrome/browser/ui/side_panel:side_panel_enums",
-     "//chrome/browser/ui/webui/location_internals:mojo_bindings",
 @@ -591,7 +590,6 @@ static_library("ui") {
      "//components/privacy_sandbox:tracking_protection_settings",
      "//components/profile_metrics",
@@ -62,9 +62,20 @@ Remove this dead code which brings a dependency on rustc
      "//components/query_parser",
      "//components/reading_list/core",
      "//components/reading_list/features:flags",
+--- src/build/rust/rust_target.gni.orig
++++ src/build/rust/rust_target.gni
+@@ -7,7 +7,7 @@ import("//build/rust/rust_unit_test.gni"
+ 
+ # The //build directory is re-used for non-Chromium products. We do not support
+ # cxx bindings in such contexts, because //third_party may be missing.
+-if (build_with_chromium) {
++if (false) {
+   import("//third_party/rust/cxx/chromium_integration/rust_cxx.gni")
+ }
+ 
 --- src/chrome/test/BUILD.gn.orig
 +++ src/chrome/test/BUILD.gn
-@@ -1923,7 +1923,6 @@ if (!is_android) {
+@@ -1942,7 +1942,6 @@ if (!is_android) {
        "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
        "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
        "//components/proxy_config",
@@ -72,15 +83,23 @@ Remove this dead code which brings a dependency on rustc
        "//components/reading_list/core",
        "//components/reading_list/features:flags",
        "//components/resources",
-@@ -6774,7 +6773,6 @@ test("unit_tests") {
+@@ -5593,7 +5592,6 @@ if (!is_android) {
+     if (!is_chromeos) {
+       sources += [ "../browser/webauthn/enclave_authenticator_browsertest.cc" ]
+       deps += [
+-        "//chrome/browser/webauthn:test_support",
+         "//components/os_crypt/sync:test_support",
+       ]
+     }
+@@ -6867,7 +6865,6 @@ test("unit_tests") {
      "//chrome/browser/safe_browsing:metrics_collector",
      "//chrome/browser/safe_browsing:verdict_cache_manager_factory",
      "//chrome/browser/segmentation_platform:test_utils",
 -    "//chrome/browser/share",
      "//chrome/browser/sharing/proto",
      "//chrome/browser/storage_access_api",
-     "//chrome/browser/sync_file_system/drive_backend:sync_file_system_drive_proto",
-@@ -6927,7 +6925,6 @@ test("unit_tests") {
+     "//chrome/browser/supervised_user:test_support",
+@@ -7028,7 +7025,6 @@ test("unit_tests") {
      "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
      "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
      "//components/proxy_config",
@@ -88,15 +107,20 @@ Remove this dead code which brings a dependency on rustc
      "//components/query_parser",
      "//components/query_tiles:unit_tests",
      "//components/reading_list/core",
-@@ -8360,11 +8357,6 @@ test("unit_tests") {
- 
-     data += [ "//ash/components/arc/test/data/icons/" ]
- 
--    data_deps += [
--      # enclave_manager_unittest.cc runs this binary as part of its testing
--      # process.
--      "//third_party/cloud_authenticator/test/local_service:cloud_authenticator_test_service",
--    ]
- 
-     if (include_js2gtest_tests && is_chromeos_ash) {
-       data += js2gtest_js_libraries
+@@ -7193,7 +7189,6 @@ test("unit_tests") {
+     "//third_party/metrics_proto",
+     "//third_party/microsoft_webauthn",
+     "//third_party/re2",
+-    "//third_party/rust/fend_core/v1/wrapper:unit_tests",
+     "//third_party/webrtc_overrides:webrtc_component",
+     "//third_party/widevine/cdm:headers",
+     "//third_party/zlib/google:compression_utils",
+@@ -8443,8 +8438,6 @@ test("unit_tests") {
+       "//chrome/browser/ui/webui/side_panel/performance_controls:mojo_bindings",
+       "//chrome/browser/ui/webui/side_panel/user_notes:mojo_bindings",
+       "//chrome/browser/web_applications:web_applications_test_support",
+-      "//chrome/browser/webauthn:test_support",
+-      "//chrome/browser/webauthn/proto",
+       "//chrome/common/accessibility:mojo_bindings",
+       "//components/app_constants",
+       "//components/color",

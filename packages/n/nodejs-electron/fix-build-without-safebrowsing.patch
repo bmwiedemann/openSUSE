@@ -1,0 +1,31 @@
+--- src/chrome/browser/ui/exclusive_access/fullscreen_controller.cc.orig	2024-07-24 13:00:13.565994500 +0200
++++ src/chrome/browser/ui/exclusive_access/fullscreen_controller.cc	2024-08-03 23:06:56.231653700 +0200
+@@ -19,7 +19,6 @@
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/history/history_service_factory.h"
+ #include "chrome/browser/profiles/profile.h"
+-#include "chrome/browser/safe_browsing/safe_browsing_service.h"
+ #if 0
+ #include "chrome/browser/ui/blocked_content/popunder_preventer.h"
+ #endif
+@@ -116,20 +115,6 @@ void RecordWebsiteStateAtApiRequest(hist
+ void CheckUrlForAllowlistAndRecordMetric(
+     const GURL& url,
+     history::HistoryLastVisitResult result) {
+-  if (!g_browser_process->safe_browsing_service() ||
+-      !g_browser_process->safe_browsing_service()->database_manager()) {
+-    RecordWebsiteStateAtApiRequest(result, std::nullopt);
+-    return;
+-  }
+-  g_browser_process->safe_browsing_service()
+-      ->database_manager()
+-      ->CheckUrlForHighConfidenceAllowlist(
+-          url, "RT" /*realtime*/,
+-          base::BindOnce(
+-              [](history::HistoryLastVisitResult result, bool on_allowlist) {
+-                RecordWebsiteStateAtApiRequest(result, on_allowlist);
+-              },
+-              result));
+ }
+ 
+ }  // namespace

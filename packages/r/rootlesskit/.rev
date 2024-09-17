@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1188119</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85f1fee4d1bc62702392908696050847</srcmd5>
+    <version>2.3.1</version>
+    <time>1726589822</time>
+    <user>anag+factory</user>
+    <comment>new upstream release 2.3.1 (forwarded request 1198959 from dancermak)</comment>
+    <requestid>1201510</requestid>
+  </revision>
 </revisionlist>

@@ -143,4 +143,12 @@
 - Avoid conflict with crispy-doom manpages</comment>
     <requestid>1075330</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b818ad9316fe7cc9b2759be2f6c1a819</srcmd5>
+    <version>3.1.0</version>
+    <time>1726589858</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.1.0</comment>
+    <requestid>1199837</requestid>
+  </revision>
 </revisionlist>

@@ -18,16 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-daemon
-Version:        3.0.2
+Version:        3.0.1
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
 URL:            https://pagure.io/python-daemon/
-Source:         https://releases.pagure.org/python-daemon/python_daemon-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/python-daemon-%{version}.tar.gz
+# Available since 3.0.2, that was yanked because of https://pagure.io/python-daemon/issue/94
+# Source:         https://releases.pagure.org/python-daemon/python_daemon-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM explicit-packaging.patch https://pagure.io/python-daemon/c/d7bac6e
+Patch0:         explicit-packaging.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module lockfile >= 0.10}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
@@ -49,7 +54,7 @@ holds the behaviour and configured process environment for the program; use the
 instance as a context manager to enter a daemon state.
 
 %prep
-%autosetup -p1 -n python_daemon-%{version}
+%autosetup -p1 -n python-daemon-%{version}
 
 sed -i '/docutils/d' setup.py
 
@@ -64,9 +69,9 @@ sed -i '/docutils/d' setup.py
 %pyunittest discover -v
 
 %files %{python_files}
-%license LICENSE.ASF-2 LICENSE.GPL-3 COPYING
-%doc README ChangeLog
+%license LICENSE.ASF-2 LICENSE.GPL-3
+%doc README ChangeLog doc/*
 %{python_sitelib}/daemon
-%{python_sitelib}/python_daemon-%{version}.dist-info
+%{python_sitelib}/python_daemon-%{version}*-info
 
 %changelog

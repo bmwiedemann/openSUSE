@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  6 18:26:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add scipy-pybind11-2.13.patch gh#scipy/scipy#21199
+- Rename 21063.patch to scipy-pr21063-gcc14.patch
+
+-------------------------------------------------------------------
+Sat Aug 31 08:54:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to SciPy 1.14.1
+  * Add support for Python 3.13
+  * Bug-fix release with no new features compared to 1.14.0.
+
+-------------------------------------------------------------------
 Thu Jul 11 17:55:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix hpc build: Provide f2py with correct shebang for build-time

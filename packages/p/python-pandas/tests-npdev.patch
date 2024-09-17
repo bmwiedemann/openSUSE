@@ -1,0 +1,75 @@
+From 2536d3a736eea96b9da8b774e671516eb8f25f4a Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Wed, 24 Apr 2024 07:26:56 -1000
+Subject: [PATCH] CI: Fix npdev failures (#58389)
+
+* CI: Fix npdev failures
+
+* Use unique index, make array writable
+
+* Update pandas/_libs/hashtable_class_helper.pxi.in
+
+* Update pandas/tests/arrays/test_datetimelike.py
+
+* Update pandas/tests/arrays/test_datetimelike.py
+---
+ pandas/tests/arrays/test_datetimelike.py | 8 ++++++--
+ pandas/tests/extension/base/missing.py   | 2 ++
+ pandas/tests/indexes/test_base.py        | 4 ++--
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/pandas/tests/arrays/test_datetimelike.py b/pandas/tests/arrays/test_datetimelike.py
+index 22c63af59a47c..3d8f8d791b763 100644
+--- a/pandas/tests/arrays/test_datetimelike.py
++++ b/pandas/tests/arrays/test_datetimelike.py
+@@ -661,7 +661,9 @@ def test_array_interface(self, datetime_index):
+         assert result is expected
+         tm.assert_numpy_array_equal(result, expected)
+         result = np.array(arr, dtype="datetime64[ns]")
+-        assert result is not expected
++        if not np_version_gt2:
++            # TODO: GH 57739
++            assert result is not expected
+         tm.assert_numpy_array_equal(result, expected)
+ 
+         # to object dtype
+@@ -976,7 +978,9 @@ def test_array_interface(self, timedelta_index):
+         assert result is expected
+         tm.assert_numpy_array_equal(result, expected)
+         result = np.array(arr, dtype="timedelta64[ns]")
+-        assert result is not expected
++        if not np_version_gt2:
++            # TODO: GH 57739
++            assert result is not expected
+         tm.assert_numpy_array_equal(result, expected)
+ 
+         # to object dtype
+diff --git a/pandas/tests/extension/base/missing.py b/pandas/tests/extension/base/missing.py
+index 4b9234a9904a2..cee565d4f7c1e 100644
+--- a/pandas/tests/extension/base/missing.py
++++ b/pandas/tests/extension/base/missing.py
+@@ -27,7 +27,9 @@ def test_isna_returns_copy(self, data_missing, na_func):
+         expected = result.copy()
+         mask = getattr(result, na_func)()
+         if isinstance(mask.dtype, pd.SparseDtype):
++            # TODO: GH 57739
+             mask = np.array(mask)
++            mask.flags.writeable = True
+ 
+         mask[:] = True
+         tm.assert_series_equal(result, expected)
+diff --git a/pandas/tests/indexes/test_base.py b/pandas/tests/indexes/test_base.py
+index 04858643d97b1..2e94961b673f8 100644
+--- a/pandas/tests/indexes/test_base.py
++++ b/pandas/tests/indexes/test_base.py
+@@ -71,8 +71,8 @@ def test_constructor_casting(self, index):
+         tm.assert_contains_all(arr, new_index)
+         tm.assert_index_equal(index, new_index)
+ 
+-    @pytest.mark.parametrize("index", ["string"], indirect=True)
+-    def test_constructor_copy(self, index, using_infer_string):
++    def test_constructor_copy(self, using_infer_string):
++        index = Index(list("abc"), name="name")
+         arr = np.array(index)
+         new_index = Index(arr, copy=True, name="name")
+         assert isinstance(new_index, Index)
