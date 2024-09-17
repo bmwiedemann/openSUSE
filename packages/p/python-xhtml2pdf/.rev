@@ -59,4 +59,39 @@
     <comment></comment>
     <requestid>1011215</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>19bcd9ee4f676a1abb2720e8d1cc0a38</srcmd5>
+    <version>0.2.16</version>
+    <time>1726589904</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.16:
+  * New
+    + OL tag allow start counter
+    + Div, P, And Body allows dir attribute (rtl and ltr) to provide text
+      direction
+    + Add encryption and password protection
+    + New WaterMark management system with new options
+    + Add Graphic builder
+    + Add signing pdfs (simple and pades)
+  * Improvements
+    + Page counter and Page number are now available as simple text inside
+      paragraphs
+    + New regex for strip up to curly bracket
+    + Change pyPDF3 to pypdf.
+  * Bug-Fixes
+    + Add compatibility for reportlab &gt;= 4.1
+    + Make pyCairo dependency optional
+    + Fix image rendering with link_callback
+    + Fix TypeError on column widths specified as percentages
+    + Fix TypeError when formatting width in debug logging
+    + Fix page number &amp; page count
+    + Fix ZeroDivisionError on broken image files
+    + Fix CSSParseError for minified @font-face definitions
+    + Remove import cycle between utils and default
+    + Fixed link_callback construction of path
+    + Fixed path when is relative to current path
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1201491</requestid>
+  </revision>
 </revisionlist>

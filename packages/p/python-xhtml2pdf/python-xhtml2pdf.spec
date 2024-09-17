@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,42 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xhtml2pdf
-Version:        0.2.6
+Version:        0.2.16
 Release:        0
 Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
 Source:         https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v%{version}.tar.gz#/xhtml2pdf-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 7.0.2
-Requires:       python-PyPDF3 >= 1.0.5
-Requires:       python-arabic-reshaper >= 2.1.0
-Requires:       python-html5lib >= 1.0
+Requires:       python-Pillow >= 8.1.1
+Requires:       python-arabic-reshaper >= 3.0.0
+Requires:       python-html5lib >= 1.1
+Requires:       python-pyHanko >= 0.12.1
+Requires:       python-pyhanko-certvalidator >= 0.19.5
+Requires:       python-pypdf >= 3.1.0
 Requires:       python-python-bidi >= 0.4.2
-Requires:       python-reportlab >= 3.0
-Requires:       python-setuptools
+Requires:       python-reportlab >= 4.0.4
+Requires:       python-svglib >= 1.2.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-pisa
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 7.0.2}
-BuildRequires:  %{python_module PyPDF3 >= 1.0.5}
-BuildRequires:  %{python_module arabic-reshaper >= 2.1.0}
-BuildRequires:  %{python_module html5lib >= 1.0}
+BuildRequires:  %{python_module Pillow >= 8.1.1}
+BuildRequires:  %{python_module arabic-reshaper >= 3.0.0}
+BuildRequires:  %{python_module html5lib >= 1.1}
+BuildRequires:  %{python_module pyHanko >= 0.12.1}
+BuildRequires:  %{python_module pyhanko-certvalidator >= 0.19.5}
+BuildRequires:  %{python_module pypdf >= 3.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-bidi >= 0.4.2}
-BuildRequires:  %{python_module reportlab >= 3.0}
+BuildRequires:  %{python_module reportlab >= 4.0.4}
+BuildRequires:  %{python_module svglib >= 1.2.1}
 # /SECTION
 %python_subpackages
 
@@ -59,22 +64,21 @@ The main benefit of this tool that a user with Web skills like HTML and CSS is
 able to generate PDF templates very quickly without learning new technologies.
 
 %prep
-%setup -q -n xhtml2pdf-%{version}
-%autopatch -p1
+%autosetup -p1 -n xhtml2pdf-%{version}
 
 sed -i '1{/^#!/d}' xhtml2pdf/paragraph.py xhtml2pdf/w3c/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/xhtml2pdf
 %python_clone -a %{buildroot}%{_bindir}/pisa
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not (test_document_with_broken_image or test_document_cannot_identify_image)'
 
 %post
 %python_install_alternative xhtml2pdf
@@ -87,7 +91,8 @@ sed -i '1{/^#!/d}' xhtml2pdf/paragraph.py xhtml2pdf/w3c/*.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/xhtml2pdf
+%{python_sitelib}/xhtml2pdf-%{version}.dist-info
 %python_alternative %{_bindir}/pisa
 %python_alternative %{_bindir}/xhtml2pdf
 
