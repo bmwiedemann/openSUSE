@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 14 13:23:27 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Replace obsolete udp() example in configuration with a dual stack network() one
+
+-------------------------------------------------------------------
 Fri Jul 26 07:21:32 UTC 2024 - peter czanik <peter@czanik.hu>
 
 - update to version 4.8.0

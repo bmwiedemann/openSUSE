@@ -37,7 +37,7 @@ source src {
 	#
 	# uncomment to process log messages from network:
 	#
-	#udp(ip("0.0.0.0") port(514));
+	#network(ip("::") ip-protocol(6) port(514) transport("udp"));
 };
 
 @include "ADDITIONAL_SOCKETS"
