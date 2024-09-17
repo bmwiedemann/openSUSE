@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 10 04:52:02 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.56.0:
+  * Check for nil values to prevent nil dereference panic
+  * build(deps): bump actions/attest-build-provenance from 1.4.2 to 1.4.3
+  * Update linux install to point to GPG troubleshoot
+  * Revert "Remove note explaining 2 year old GPG ID change"
+  * Remove note explaining 2 year old GPG ID change
+  * Rename ProtobufBundle to Bundle
+  * Upgrade to sigstore-go v0.6.1
+  * `gh attestation verify` handles empty JSONL files (#9541)
+  * verify 2nd artifact without swapping order (#9532)
+  * chore: fix some function names
+  * Improve the help message for -F (#9525)
+  * build(deps): bump actions/attest-build-provenance from 1.4.1 to 1.4.2 (#9518)
+  * "offline" verification using the bundle of attestations without any additional handling of the file (#9523)
+  * Drop surplus trailing space char in flag names in web
+  * Remove `Internal` from `gh repo create` prompt when owner is not an org (#9465)
+  * Fix doc typo for `repo sync`
+  * Quote repo names consistently in `gh repo sync` stdout (#9491)
+  * fixed the test
+  * update error message
+  * rename flag to bundle-from-oci
+  * fix the trimming of log filenames for `gh run view`
+  * Check http scheme as well
+  * Fix tests
+  * Always print URL scheme to stdout
+  * udpate the options
+  * addded more test
+  * minor fixed
+  * minor fixed
+  * added test
+  * clean naming
+  * add contain check
+  * refactor the logic and logging
+  * tmp
+
+-------------------------------------------------------------------
 Wed Aug 21 07:11:46 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.55.0:
