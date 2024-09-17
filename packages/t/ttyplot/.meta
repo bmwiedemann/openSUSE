@@ -1,0 +1,11 @@
+<package name="ttyplot" project="openSUSE:Factory">
+  <title>Realtime plotting utility for terminals</title>
+  <description>A realtime plotting utility for terminals. It takes data from stdin, and
+plots on a terminal or console.
+It supports rate calculation for counters, and up to two plots on a single
+display using reverse video for the second line.
+
+</description>
+  <devel project="utilities" package="ttyplot"/>
+  <url>https://github.com/tenox7/ttyplot</url>
+</package>

@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Aug  3 18:04:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * Add color support for plot line.
+  * Add support for negative values.
+  * Major stability improvements and bug fixes.
+  * Window resize.
+  * Async / signal handling.
+  * General input handling issues.
+  * Time resolution for rate calculation.
+  * Wide/multibyte character support.
+  * Introduces independent window refresh.
+
+-------------------------------------------------------------------
+Fri Jun  9 11:53:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.4+git20230417
