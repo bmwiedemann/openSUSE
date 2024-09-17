@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%define skip_python2 1
-
+%{?sle15_python_module_pythons}
 Name:           python-ldap
 Version:        3.4.4
 Release:        0
@@ -69,6 +66,13 @@ PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin %pyunittest_arch discover -v -
 %files %{python_files}
 %license LICENCE
 %doc README Demo CHANGES TODO
-%{python_sitearch}/*
+%{python_sitearch}/ldap
+%{python_sitearch}/python_ldap-%{version}*info
+%{python_sitearch}/slapdtest
+%{python_sitearch}/ldapurl.py
+%{python_sitearch}/ldif.py
+%{python_sitearch}/_ldap*
+%pycache_only %{python_sitearch}/__pycache__/ldapurl*
+%pycache_only %{python_sitearch}/__pycache__/ldif*
 
 %changelog

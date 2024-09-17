@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 29 07:22:28 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Enable sle15_python_module_pythons (boo#1229549)
+
+-------------------------------------------------------------------
 Thu Dec 14 21:14:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.4:

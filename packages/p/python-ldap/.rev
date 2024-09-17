@@ -812,4 +812,12 @@ Tests/
 - fixed neededforbuild (added ldaplib)</comment>
     <requestid>1133198</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>5c2a4775b6dd3c731646bfd1cc26da53</srcmd5>
+    <version>3.4.4</version>
+    <time>1726589986</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201623</requestid>
+  </revision>
 </revisionlist>
