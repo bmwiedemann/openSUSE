@@ -16,29 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# No numpy for python 3.6 on TW
-%define skip_python36 1
-# py2 not supported
-%define skip_python2 1
-%define modname boost_histogram
+%{?sle15_python_module_pythons}
 Name:           python-boost-histogram
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        The Boost::Histogram Python wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/boost-histogram
 Source:         https://files.pythonhosted.org/packages/source/b/boost-histogram/boost_histogram-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pybind11-devel >= 2.13.3}
+BuildRequires:  %{python_module scikit-build-core >= 0.10}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} < 1550
-BuildRequires:  python3-dataclasses
-%endif
 # SECTION test requirements
+BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module hypothesis >= 6.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
@@ -57,22 +53,17 @@ full histogram object.
 %build
 export CFLAGS="%{optflags}"
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# On i586 this test fails for unknown reason, see https://github.com/scikit-hep/boost-histogram/issues/598
-%ifarch %ix86
-%pytest_arch -k 'not test_log_transform'
-%else
-%pytest_arch
-%endif
+%pytest_arch --benchmark-disable
 
 %files %{python_files}
-%{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/boost_histogram/
+%{python_sitearch}/boost_histogram-%{version}.dist-info/
 
 %changelog
