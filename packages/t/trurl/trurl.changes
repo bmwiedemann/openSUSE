@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 14 07:48:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.1
+  * manpage: fix 0.15 mistakes.
+  * Makefile: check for trurl.1 before installing.
+  * trurl: fix misbehavior on empty query param.
+  * trurl: fix handling of query pair with blank left side by.
+
+-------------------------------------------------------------------
 Wed Aug 28 11:48:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.15
