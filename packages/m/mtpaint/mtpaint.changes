@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:22:04 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- Added mtpaint-3.50-gcc-14.patch to fix building with gcc 14.
+
+-------------------------------------------------------------------
 Wed Oct 11 12:52:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace freetype-devel BuildRequires with freetype2: this is

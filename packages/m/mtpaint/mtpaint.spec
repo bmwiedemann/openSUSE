@@ -1,7 +1,7 @@
 #
 # spec file for package mtpaint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,8 +30,10 @@ Source1:        http://downloads.sourceforge.net/%{name}/%{name}_handbook-%{vers
 Patch0:         mtpaint-3.50-xdg-open.patch
 # PATCH-FIX-OPENSUSE mtpaint-3.50-strip.patch rh#787462 -- don't strip binary
 Patch1:         mtpaint-3.50-strip.patch
-# PATCH-FIX-UPSTREAM https://github.com/wjaguar/mtPaint/issues/60 -- fix gcc version parsing
+# PATCH-FIX-UPSTREAM mtpaint-3.50-fix-gcc-version-parsing.patch -- fix gcc version parsing https://github.com/wjaguar/mtPaint/issues/60
 Patch2:         mtpaint-3.50-fix-gcc-version-parsing.patch
+# PATCH-FIX-UPSTREAM mtpaint-3.50-gcc-14.patch -- fix feature detection under gcc-14 https://github.com/wjaguar/mtPaint/issues/78
+Patch3:         mtpaint-3.50-gcc-14.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel

@@ -1,0 +1,13 @@
+Index: mtpaint-3.50/configure
+===================================================================
+--- mtpaint-3.50.orig/configure
++++ mtpaint-3.50/configure
+@@ -360,7 +360,7 @@ else
+ 		"$PKG_CONFIG" "$@"
+ 	}
+ 	MT_TESTLINK="$CCLD $LDFLAGS"
+-	MT_TESTCOMP="$CC -fno-builtin $CPPFLAGS $LDFLAGS"
++	MT_TESTCOMP="$CC -fno-builtin -fpermissive $CPPFLAGS $LDFLAGS"
+ fi
+ 
+ if [ "$OS" != "${OS%/MSYS}" ]
