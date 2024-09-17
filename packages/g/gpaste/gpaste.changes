@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:17:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.1+14:
+  + Support GNOME 47
+  + Updated translations.
+- Add 446.patch: Fix build on i586 when using GCC 14.
+
+-------------------------------------------------------------------
 Wed Apr  3 12:22:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45+12 (identifies as 45.1, but no git tag

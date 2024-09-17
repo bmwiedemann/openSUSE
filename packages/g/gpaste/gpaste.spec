@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        45+12
+Version:        45.1+14
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -30,6 +30,8 @@ URL:            https://github.com/Keruspe/GPaste
 # Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
 Source0:        %{alt_name}-%{version}.tar.zst
 Source99:       gpaste-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         https://patch-diff.githubusercontent.com/raw/Keruspe/GPaste/pull/446.patch
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
