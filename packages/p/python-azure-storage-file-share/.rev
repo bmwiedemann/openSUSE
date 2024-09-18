@@ -272,4 +272,17 @@
 - Update Requires from setup.py (forwarded request 1188568 from glaubitz)</comment>
     <requestid>1188601</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>31720e57b1f4800ae46b6e58ac22dc03</srcmd5>
+    <version>12.18.0</version>
+    <time>1726666096</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1201727 from glaubitz)</comment>
+    <requestid>1201768</requestid>
+  </revision>
 </revisionlist>
