@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 13 18:24:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.1:
+  * change log for 1.14.1
+  * Bump base image and golang version to fix CVEs.
+  * Add changelog file.
+  * Avoid wrapping failed PVB status with empty message.
+  * Expose PVPatchMaximumDuration timeout for custom configuration
+  * update changelog filename
+  * fix linter check error (#8014)
+  * Reuse existing plugin manager for get/put volume info
+  * Skip PV patch step in Restoe workflow for WaitForFirstConsumer
+    VolumeBindingMode Pending state PVCs (#7953)
+  * Reset VolumeSnapshotRef in Backup Sync Flow (#8004)
+  * Check whether the namespaces specified in namespace filter
+    exist.
+  * Check whether the volume's source is PVC before fetching its
+    PV.
+  * Expose the VolumeHelper to third-party plugins.
+  * issue 7904:and limitation clarification for change PVC
+    selected-node feature
+  * Don't consider unschedulable pods unrecoverable
+
+-------------------------------------------------------------------
 Fri Jul 12 10:02:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix version output: use actual hash and prefix version with a 'v'
