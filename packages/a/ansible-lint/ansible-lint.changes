@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 12 05:55:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.0:
+  * Enhancements
+    - Community comms (#4309) @oraNod
+    - feat: add requirements_file input to GitHub action (#4253)
+      @dbrennand
+  * Bugfixes
+    - fix: Adding missing EE option skip_pip_install (#4299)
+      @sscheib
+    - Fix upload-artifact action to work with v4.4 and newer
+      (#4314) @alisonlhart
+    - fix: Add reset-failed state in executable_options (#4301)
+      @tanwigeetika1618
+    - Enable --offline to affect checking version online (#4283)
+      @cavcrosby
+    - Fix long lines being wrapped with a trailing space (#4288)
+      @cavcrosby
+    - Make galaxy[version-incorrect] rule opt-in (#4247) @cavcrosby
+    - Fix error for imported playbooks w/invalid syntax (#4289)
+      @cavcrosby
+    - Fix indentation change to comments when using --fix (#4273)
+      @cavcrosby
+    - Fix list of non-strings in args rule (#4279) @johnbyrneio
+    - Improve --version behavior to handle remote disconnect
+      (#4276) @cavcrosby
+    - Ignore var-naming[pattern] to foreign role vars (#4230)
+      @cavcrosby
+    - Remove leftover Sphinx command directives (#4243) @cavcrosby
+    - Fix custom-rules documentation examples (#4264) @Tompage1994
+
+-------------------------------------------------------------------
 Thu Jul 11 18:51:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.7.0:
