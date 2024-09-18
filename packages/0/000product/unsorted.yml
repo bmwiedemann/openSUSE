@@ -9313,6 +9313,13 @@ unsorted:
   - java-22-openjdk-javadoc 
   - java-22-openjdk-jmods 
   - java-22-openjdk-src 
+  - java-23-openjdk 
+  - java-23-openjdk-demo 
+  - java-23-openjdk-devel 
+  - java-23-openjdk-headless 
+  - java-23-openjdk-javadoc 
+  - java-23-openjdk-jmods 
+  - java-23-openjdk-src 
   - java-atk-wrapper 
   - java-binfmt-misc 
   - java-cup 
@@ -9958,7 +9965,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
-  - kernel-firmware-nvidia-gspx-G06-cuda 
+  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -19913,8 +19920,8 @@ unsorted:
   - nv-prefer-signed-open-driver 
   - nvdock 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
-  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -20845,7 +20852,6 @@ unsorted:
   - pam-devel 
   - pam-devel-32bit 
   - pam-doc 
-  - pam-extra 
   - pam-fscrypt 
   - pam-himmelblau 
   - pam-test 
@@ -24194,7 +24200,6 @@ unsorted:
   - python310-PyOgg 
   - python310-PyOpenAL 
   - python310-PyPDF2 
-  - python310-PyPDF3 
   - python310-PyPika 
   - python310-PyPrind 
   - python310-PyQRCode 
@@ -24960,6 +24965,7 @@ unsorted:
   - python310-checkdmarc 
   - python310-cheroot 
   - python310-chest 
+  - python310-chroma-hnswlib 
   - python310-cinemagoer 
   - python310-circuitbreaker 
   - python310-ciscoconfparse 
@@ -26077,6 +26083,7 @@ unsorted:
   - python310-mkdocs-get-deps 
   - python310-mkdocs-material 
   - python310-mkdocs-material-extensions 
+  - python310-mmh3 
   - python310-moban 
   - python310-moban-ansible 
   - python310-mobi 
@@ -27229,6 +27236,7 @@ unsorted:
   - python310-sortedcollections 
   - python310-sortedcontainers 
   - python310-sortinghat 
+  - python310-soundcloud-v2 
   - python310-sounddevice 
   - python310-soupsieve 
   - python310-sox 
@@ -27301,6 +27309,7 @@ unsorted:
   - python310-sqlite-utils 
   - python310-sqlite3-to-mysql 
   - python310-sqlitedict 
+  - python310-sqlmodel 
   - python310-sqlparse 
   - python310-srcinfo 
   - python310-srt 
@@ -27353,6 +27362,7 @@ unsorted:
   - python310-tableprint 
   - python310-tables 
   - python310-tablib 
+  - python310-tabula-py 
   - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
@@ -27863,7 +27873,6 @@ unsorted:
   - python311-PyOgg 
   - python311-PyOpenAL 
   - python311-PyPDF2 
-  - python311-PyPDF3 
   - python311-PyPika 
   - python311-PyPrind 
   - python311-PyQRCode 
@@ -28611,6 +28620,7 @@ unsorted:
   - python311-checkdmarc 
   - python311-cheroot 
   - python311-chest 
+  - python311-chroma-hnswlib 
   - python311-cinemagoer 
   - python311-circuitbreaker 
   - python311-ciscoconfparse 
@@ -29683,6 +29693,7 @@ unsorted:
   - python311-mkdocs-get-deps 
   - python311-mkdocs-material 
   - python311-mkdocs-material-extensions 
+  - python311-mmh3 
   - python311-moban 
   - python311-moban-ansible 
   - python311-mobi 
@@ -30789,6 +30800,7 @@ unsorted:
   - python311-sortedcollections 
   - python311-sortedcontainers 
   - python311-sortinghat 
+  - python311-soundcloud-v2 
   - python311-sounddevice 
   - python311-soupsieve 
   - python311-sox 
@@ -30861,6 +30873,7 @@ unsorted:
   - python311-sqlite-utils 
   - python311-sqlite3-to-mysql 
   - python311-sqlitedict 
+  - python311-sqlmodel 
   - python311-sqlparse 
   - python311-srcinfo 
   - python311-srt 
@@ -30914,6 +30927,7 @@ unsorted:
   - python311-tableprint 
   - python311-tables 
   - python311-tablib 
+  - python311-tabula-py 
   - python311-tabulate 
   - python311-tap.py 
   - python311-targetcli-fb 
@@ -31425,7 +31439,6 @@ unsorted:
   - python312-PyOgg 
   - python312-PyOpenAL 
   - python312-PyPDF2 
-  - python312-PyPDF3 
   - python312-PyPika 
   - python312-PyPrind 
   - python312-PyQRCode 
@@ -32190,6 +32203,7 @@ unsorted:
   - python312-checkdmarc 
   - python312-cheroot 
   - python312-chest 
+  - python312-chroma-hnswlib 
   - python312-cinemagoer 
   - python312-circuitbreaker 
   - python312-ciscoconfparse 
@@ -33305,6 +33319,7 @@ unsorted:
   - python312-mkdocs-get-deps 
   - python312-mkdocs-material 
   - python312-mkdocs-material-extensions 
+  - python312-mmh3 
   - python312-moban 
   - python312-moban-ansible 
   - python312-mobi 
@@ -34453,6 +34468,7 @@ unsorted:
   - python312-sortedcollections 
   - python312-sortedcontainers 
   - python312-sortinghat 
+  - python312-soundcloud-v2 
   - python312-sounddevice 
   - python312-soupsieve 
   - python312-sox 
@@ -34525,6 +34541,7 @@ unsorted:
   - python312-sqlite-utils 
   - python312-sqlite3-to-mysql 
   - python312-sqlitedict 
+  - python312-sqlmodel 
   - python312-sqlparse 
   - python312-srcinfo 
   - python312-srt 
@@ -34577,6 +34594,7 @@ unsorted:
   - python312-tableprint 
   - python312-tables 
   - python312-tablib 
+  - python312-tabula-py 
   - python312-tabulate 
   - python312-tap.py 
   - python312-targetcli-fb 
@@ -47061,6 +47079,7 @@ unsorted:
   - tiny 
   - tinyfecvpn 
   - tinygettext-devel 
+  - tinygo 
   - tinyobjloader-devel 
   - tinyproxy 
   - tinyssh 

@@ -89,6 +89,7 @@
     <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="pam-extra" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permctl" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
