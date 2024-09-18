@@ -1,0 +1,6 @@
+<package name="python-tabula-py" project="openSUSE:Factory">
+  <title></title>
+  <description>tabula-py is a simple Python wrapper of tabula-java, which can read tables in a PDF. You can read tables from a PDF and convert them into a pandas DataFrame. tabula-py also enables you to convert a PDF file into a CSV, a TSV or a JSON file.</description>
+  <devel project="devel:languages:python" package="python-tabula-py"/>
+  <url>https://github.com/chezou/tabula-py</url>
+</package>
