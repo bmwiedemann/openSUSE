@@ -7,4 +7,15 @@
     <comment>mysql-xml-to-csv converts MySQL XML query results (when given the --xml flag) into a CSV file.</comment>
     <requestid>933163</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ec485520b13edc20baafa77e4849a31</srcmd5>
+    <version>1.0.1</version>
+    <time>1726666032</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.1.
+  + Added &quot;-s&quot; flag to specify alternate column separator
+  + Added &quot;-E&quot; flag to specify output if there are zero rows
+  + Added &quot;-n&quot; flag to specify alternate value for NULL columns</comment>
+    <requestid>1201663</requestid>
+  </revision>
 </revisionlist>

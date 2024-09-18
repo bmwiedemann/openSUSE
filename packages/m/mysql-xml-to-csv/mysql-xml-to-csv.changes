@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 17 17:05:18 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to release 1.0.1.
+  + Added "-s" flag to specify alternate column separator
+  + Added "-E" flag to specify output if there are zero rows
+  + Added "-n" flag to specify alternate value for NULL columns
+
+-------------------------------------------------------------------
 Mon Nov 22 20:45:27 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Update _service file as instructed by robot
