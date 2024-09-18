@@ -19,9 +19,9 @@
 %bcond_without testsuite
 
 # keep in sync with setup.py
-%global django_mailman3_min_version 1.3.10
-%global django_min_version 3.2
-%global django_max_version 4.3
+%global django_mailman3_min_version 1.3.13
+%global django_min_version 4.2
+%global django_max_version 5.1
 %global mailmanclient_min_version 3.3.3
 
 %global webapps_dir /srv/www/webapps
@@ -49,14 +49,16 @@
 %global __mypython %{expand:%%{__%{mypython}}}
 
 Name:           python-postorius
-Version:        1.3.10
+Version:        1.3.12
 Release:        0
 Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/postorius
 #
-Source0:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz
-Source1:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz.asc
+Source0:        https://gitlab.com/mailman/postorius/-/archive/v1.3.12/postorius-v1.3.12.tar.gz
+# The release links give 404 for this release :-(
+#Source0:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz
+#Source1:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz.asc
 Source2:        python-postorius.keyring
 Source3:        python-postorius-rpmlintrc
 #
@@ -68,6 +70,7 @@ Source20:       README.SUSE.md
 Patch0:         postorius-settings.patch
 #
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  acl
@@ -83,7 +86,7 @@ BuildRequires:  python3-packaging
 %endif
 # SECTION test requirements
 BuildRequires:  mailman3 >= 3.3.5
-BuildRequires:  %{python_module Django >= %{django_min_version}}
+BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module cmarkgfm}
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
@@ -156,7 +159,7 @@ BuildRequires:  sysuser-tools
 System user for HyperKitty.
 
 %prep
-%setup -q -n postorius-%{version}
+%setup -q -n postorius-v%{version}
 cp %{SOURCE20} .
 touch settings_local.py
 
@@ -205,8 +208,11 @@ rsync -a build_static_files/static %{buildroot}%{postorius_basedir}
 rsync -a example_project/* %{buildroot}%{postorius_basedir}
 chmod -x %{buildroot}%{postorius_basedir}/wsgi.py
 
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/example_project
+
 rm -f %{buildroot}%{postorius_basedir}/README.rst
 rm -f %{buildroot}%{postorius_basedir}/mailman.cfg
+rm -f %{buildroot}%{postorius_basedir}/logs/.keep
 
 # Create an empty settings_local.py. This will be filled with a SECRET_KEY in post
 install -m 0644 settings_local.py %{buildroot}%{postorius_etcdir}/settings_local.py
