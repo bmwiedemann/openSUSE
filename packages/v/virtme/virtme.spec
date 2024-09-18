@@ -63,6 +63,8 @@ find . -name __pycache__ -type d -exec rm -fr {} +
 
 %install
 export PYTHONDONTWRITEBYTECODE=1 %python_install
+# This is a buildtime requirement, not runtime requirement
+sed -i -e /argparse-manpage/d $(find %{buildroot} -name requires.txt)
 
 %files
 %{_bindir}/virtme-configkernel
