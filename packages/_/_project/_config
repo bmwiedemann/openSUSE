@@ -395,14 +395,14 @@ FileProvides: /usr/bin/pathchk coreutils coreutils-single
 FileProvides: /usr/bin/perl perl-base
 FileProvides: /usr/bin/php php8-cli
 FileProvides: /usr/bin/php8 php8-cli
-FileProvides: /usr/bin/pidof busybox-procps procps procps4
+FileProvides: /usr/bin/pidof busybox-procps procps
 FileProvides: /usr/bin/pkexec pkexec
 FileProvides: /usr/bin/pkg-config pkgconf-pkg-config
 FileProvides: /usr/bin/pmpython pcp
 FileProvides: /usr/bin/podman podman
 FileProvides: /usr/bin/pr coreutils coreutils-single
 FileProvides: /usr/bin/printf busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/ps busybox-procps procps procps4
+FileProvides: /usr/bin/ps busybox-procps procps
 FileProvides: /usr/bin/pwd busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/pwscore libpwquality-tools
 FileProvides: /usr/bin/python python-base
@@ -474,7 +474,7 @@ FileProvides: /usr/bin/uniq busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/unzip busybox-unzip unzip unzip-rcc
 FileProvides: /usr/bin/updmap texlive-scripts-bin
 FileProvides: /usr/bin/virsh libvirt-client
-FileProvides: /usr/bin/vmstat procps procps4
+FileProvides: /usr/bin/vmstat procps
 FileProvides: /usr/bin/vulkaninfo vulkan-tools
 FileProvides: /usr/bin/wayland-info wayland-utils
 FileProvides: /usr/bin/wc busybox-coreutils coreutils coreutils-single
@@ -555,7 +555,7 @@ Prefer: -busybox-kmod
 Prefer: -busybox-less
 Prefer: -busybox-misc
 Prefer: -busybox-ncurses-utils
-Prefer: -busybox-procps -procps4
+Prefer: -busybox-procps
 Prefer: -busybox-psmisc
 Prefer: -busybox-sed
 Prefer: -busybox-tar
@@ -577,9 +577,6 @@ Prefer: -kernel-vanilla -kernel-longterm -kernel-debug -kernel-64kb -kernel-kvms
 
 # have choice for (netavark or cni) needed by podman: cni netavark
 Prefer: -cni-plugins -cni
-
-# have choice for suse-kernel-rpm-scriptlets: sdbootutil-rpm-scriptlets suse-module-tools-scriptlets
-Prefer: -sdbootutil-rpm-scriptlets
 
 # have choice for ansible-core >= 2.16.8 needed by ansible: ansible-core ansible-core-2.16
 Prefer: -ansible-core-2.16
@@ -960,8 +957,6 @@ Prefer: -python310-Cython0 -python311-Cython0 -python312-Cython0
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
 
-Prefer: -procps4 -procps4-devel
-
 # have choice for python-sqlalchemy >= 1.4: python-SQLAlchemy python-SQLAlchemy1
 Prefer: -python310-SQLAlchemy1 -python311-SQLAlchemy1 -python312-SQLAlchemy1
 
@@ -983,9 +978,6 @@ Prefer: -libpxbackend-1_0
 
 # have choice for command-not-found: cnf cnf-rs scout-command-not-found
 Prefer: -scout-command-not-found
-
-# have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
-Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 
 # have choice for cmake(KWinDBusInterface) >= MACRO: deepin-kwin-devel kwin5-devel
 Prefer: -deepin-kwin-devel
@@ -1075,9 +1067,6 @@ Prefer: libpulse0-32bit libsane1-32bit pipewire-pulseaudio
 Prefer: vtk-java
 Prefer: eclipse-swt
 
-# have choice for mvn(org.codehaus.mojo:build-helper-maven-plugin): build-helper-maven-plugin maven-plugin-build-helper
-Prefer: -maven-plugin-build-helper
-
 # have choice for distribution-release: Aeon-release Kalpa-release openSUSE-release
 Prefer: -Aeon-release -Kalpa-release
 
@@ -1086,9 +1075,6 @@ Prefer: -libplacebo5-devel
 
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
-
-# have choice for pkgconfig(wlroots) >= 0.15.0: wlroots-0_16-devel wlroots-devel
-Prefer: -wlroots-0_16-devel
 
 # have choice for virtualbox-kmp = 7.0.18 needed by virtualbox-guest-tools: virtualbox-kmp-default virtualbox-kmp-longterm
 Prefer: -virtualbox-kmp-longterm
@@ -1738,7 +1724,6 @@ BuildFlags: onlybuild:apache-rpm-macros-control
 BuildFlags: onlybuild:apache2
 BuildFlags: onlybuild:apache2:devel
 BuildFlags: onlybuild:apache2:prefork
-#BuildFlags: onlybuild:apitrace
 BuildFlags: onlybuild:apparmor
 BuildFlags: onlybuild:apparmor-rpm-macros
 BuildFlags: onlybuild:apparmor:libapparmor
@@ -3014,15 +2999,12 @@ BuildFlags: onlybuild:ruby-common
 BuildFlags: onlybuild:ruby3.3
 BuildFlags: onlybuild:rubygem-asciidoctor
 BuildFlags: onlybuild:rubygem-gem2rpm
-BuildFlags: onlybuild:rubygem-hpricot
 BuildFlags: onlybuild:rubygem-kramdown
 BuildFlags: onlybuild:rubygem-kramdown-parser-gfm
 BuildFlags: onlybuild:rubygem-mustache
 BuildFlags: onlybuild:rubygem-mini_portile2
 BuildFlags: onlybuild:rubygem-nokogiri
 BuildFlags: onlybuild:rubygem-pkg-config
-BuildFlags: onlybuild:rubygem-rdiscount
-BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rubygem-ronn-ng
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
@@ -3435,6 +3417,8 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
+Prefer: java-23-openjdk-devel java-23-openjdk java-23-openjdk-headless java-23-openjdk-javadoc
+Prefer: java-22-openjdk-devel java-22-openjdk java-22-openjdk-headless java-22-openjdk-javadoc
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
