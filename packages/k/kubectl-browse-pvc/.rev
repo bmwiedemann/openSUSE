@@ -7,4 +7,12 @@
     <comment>new package kubectl-browse-pvc: Kubectl plugin for browsing PVCs on the command line</comment>
     <requestid>1189491</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ba5a3b47b2815f16969c490836b3474</srcmd5>
+    <version>1.0.7</version>
+    <time>1726666047</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201704</requestid>
+  </revision>
 </revisionlist>

@@ -47,7 +47,12 @@ cleans up the pod when you disconnect.
 %autosetup -a 1 -p 1
 
 %build
-CGO_ENABLED=0 go build \
+%ifarch s390x i586 
+CGO_ENABLED=1 \
+%else
+CGO_ENABLED=0 \
+%endif
+go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.Version=v%{version}" \
