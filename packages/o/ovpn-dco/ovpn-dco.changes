@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:39:32 UTC 2024 - jeffm@suse.com
+
+- Update to version 0.2.20240712~git0.d22d04e:
+  * ovpn-dco: drop ending year from copyright lines
+  * ovpn-dco: add missing include for MODULE_ALIAS_GENL_FAMILY
+  * ovpn-dco: fix gso.h compat code for RHEL 9.4
+  * ovpn-dco: add net/gso.h existance check for RedHat 9.4
+  * ovpn-dco: add compatibility for SUSE Linux Enterprise and openSUSE Leap
+- Removed: 0001-ovpn-dco-add-compatibility-for-SUSE-Linux-Enterprise.patch
+
+-------------------------------------------------------------------
 Fri Apr 12 16:19:12 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
 
 - Added ovpn-dco-preamble as a Source file.

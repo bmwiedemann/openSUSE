@@ -17,14 +17,13 @@
 
 
 Name:           ovpn-dco
-Version:        0.2.20240320~git0.2aa7f93
+Version:        0.2.20240712~git0.d22d04e
 Release:        0
 Summary:        OpenVPN Data Channel Offload in the Linux kernel
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            https://github.com/OpenVPN/ovpn-dco
 Source:         ovpn-dco-%{version}.tar.gz
 Source1:        ovpn-dco-preamble
-Patch1:         0001-ovpn-dco-add-compatibility-for-SUSE-Linux-Enterprise.patch
 BuildRequires:  %kernel_module_package_buildreqs
 
 # Releases prior to 15.2 don't have a new enough kernel
@@ -49,7 +48,7 @@ LIMITATIONS
 
 %package KMP
 Summary:        OpenVPN Data Channel Offload in the Linux kernel
-Group:  Productivity/Networking/Security
+Group:          Productivity/Networking/Security
 
 %description KMP
 This package contains a linux kernel module implementing the data channel of
@@ -63,7 +62,6 @@ user space.
 LIMITATIONS
 * Only AEAD mode and 'none' (with no auth) supported
 * Only AES-GCM and CHACHA20POLY1305 ciphers supported
-
 
 %prep
 echo %flavors_to_build
