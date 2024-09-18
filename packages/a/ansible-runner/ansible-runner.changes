@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:30:34 UTC 2024 - pgajdos@suse.com
+
+- does not require six anymore (a51c8b2)
+
+-------------------------------------------------------------------
 Tue Aug 13 11:21:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore test_get_role_list test

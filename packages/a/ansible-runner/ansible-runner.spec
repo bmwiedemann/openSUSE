@@ -51,7 +51,6 @@ BuildRequires:  %{ansible_python}-packaging
 BuildRequires:  %{ansible_python}-pexpect >= 4.5
 BuildRequires:  %{ansible_python}-python-daemon
 BuildRequires:  %{ansible_python}-PyYAML
-BuildRequires:  %{ansible_python}-six
 # https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L38
 # importlib-metadata not required, as we are using python3.10 or higher
 # SECTION test requirements
