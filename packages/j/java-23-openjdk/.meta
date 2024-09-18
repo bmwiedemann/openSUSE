@@ -1,0 +1,5 @@
+<package name="java-23-openjdk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:Factory" package="java-23-openjdk"/>
+</package>

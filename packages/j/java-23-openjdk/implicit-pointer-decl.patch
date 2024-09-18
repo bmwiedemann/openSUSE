@@ -1,0 +1,10 @@
+--- a/src/java.instrument/share/native/libinstrument/JarFacade.c
++++ b/src/java.instrument/share/native/libinstrument/JarFacade.c
+@@ -23,6 +23,7 @@
+  * questions.
+  */
+ 
++#include <ctype.h>
+ #include <string.h>
+ #include <stdlib.h>
+ 
