@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d72c40f5c181515bfa79baad24b69e4</srcmd5>
+    <version>0.33.0</version>
+    <time>1726666031</time>
+    <user>anag+factory</user>
+    <comment>New package tinygo version 0.33 is a Go compiler intended for use in small places such as microcontrollers, WebAssembly (wasm/wasi), and command-line tools.
+
+It reuses libraries used by the Go language tools alongside LLVM to provide an alternative way to compile programs written in the Go programming language.</comment>
+    <requestid>1201677</requestid>
+  </revision>
+</revisionlist>

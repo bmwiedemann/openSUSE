@@ -1,0 +1,1121 @@
+-------------------------------------------------------------------
+Tue Sep 17 19:31:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add _constraints for worker disk space 5G needed to build on
+    openSUSE_Factory_PowerPC ppc64le
+
+-------------------------------------------------------------------
+Tue Sep 17 09:49:00 UTC 2024 - meissner@suse.com
+
+- Update to version 0.33.0:
+  * all: version 0.33.0
+  * ci: update apt repo for sizediff toolchain
+  * targets: remove import-memory flag from wasm-unknown target to fix #4319
+  * ci: use Go 1.23
+  * darwin: work around a linker error for the mime/quotedprintable tests
+  * compiler: add support for Go 1.23 range-over-func
+  * syscall: add all MacOS errno values
+  * sync: add Map.Clear()
+  * reflect: implement Type.Overflow* functions
+  * runtime: implement timers for Go 1.23
+  * internal/abi: implement initial version of this package
+  * unique: implement custom version of unique package
+  * internal/bytealg: add CompareString
+  * sync/atomic: add And* and Or* compiler intrinsics needed for Go 1.23
+  * compiler: fixup Sprintf uses
+  * builder: os.SEEK_CUR -> io.SeekCurrent
+  * os/user: use stdlib version of this package
+  * make spellfix: fix top level files, too.
+  * misspell.csv: add another misspelling.  Fix by hand, since spellfix is too timid to fix in non-whitespace context?
+  * Fix 'numer of', since 'NUMER' by itself is valid abbrev for numerator.
+  * misspell.csv: add new misspellings; also check in result of 'make spellfix'.
+  * unix: print a message when a fatal signal happens
+  * machine/usb/descriptor: Reset joystick physical
+  * machine/usb/descriptor: Drop second joystick hat
+  * machine/usb/hid/joystick: Allow more hat switches
+  * machine/usb/descriptor: Add more HID... functions
+  * machine/usb/descriptor: Fix encoding of values
+  * arm: support softfloat in GOARM environment variable
+  * linux: use -musleabi* instead of -gnueabi* (or nothing)
+  * make spell: add a few missing misspellings, fix format of .csv file, also fix *.md
+  * circleci: our version of misspell is no longer supported with go < 1.21, so disable lint in go 1.19 ci job
+  * GNUmakefile: add spellfix target, use it. (#4387)
+  * GNUmakefile: add "help" target (#4390)
+  * reflect, runtime: remove *UnsafePointer wrappers for functions
+  * mips: add GOMIPS=softfloat support
+  * compileopts: refactor defaultTarget function
+  * add os.Truncate(name, size) (see #4209)
+  * builder: interpret linker error messages
+  * cgo: add support for printf
+  * wasm: call __stdio_exit on exit
+  * builtins: add GENERIC_TF_SOURCES
+  * feat: add node: specifier
+  * compileopts: add CanonicalArchName to centralize arch detection
+  * main: show runtime panic addresses for `tinygo run`
+  * ci: don't include prebuilt libraries in the release
+  * os: add file.Truncate
+  * runtime: Simplify slice growing/appending code (#4287)
+  * reflect: return correct name for unsafe.Pointer type
+  * transform: use thinlto-pre-link passes
+  * Revert "Getting DeepEqual to work with maps whose key is an interface (#4360)"
+  * Getting DeepEqual to work with maps whose key is an interface (#4360)
+  * Add missing T.Deadline
+  * add Fork and Exec libc hooks
+  * all: add linux/mipsle support
+  * build: add package ID to compiler and optimization error messages
+  * os/Chown (#4213)
+  * net: update to latest net package
+  * Add enough tls.ConnectionState and tls.CipherSuiteName() to compile fortio/log (#4345)
+  * rewrite Reply() to fix sending long replies in I2C Target Mode
+  * Allows compilation of code using debug.BuildInfo and show correct tinygo version (#4343)
+  * diagnostics: sort package diagnostics by position
+  * diagnostics: move diagnostic printing to a new package
+  * main: add test for error coming from the optimizer
+  * main: add error tests for the compiler
+  * main: add interp tests
+  * main: refactor error messages to use FileCheck-like patterns
+  * fix: set ubuntu version to 24.04 to try to address #4347
+  * syscall: remove some dead code
+  * all: simplify wasm-tools-go dependency
+  * add chromeos 9p support
+  * Do not stop compilation on compiler warnings
+  * loader: handle `go list` errors inside TinyGo
+  * libclang: do not make error locations relative
+  * all: add testing for compiler error messages
+  * builder: remove workaround for generics race condition
+  * cgo: support preprocessor macros passed on the command line
+  * fix: remove message after test binary built
+  * main_test: Diff expected and actual results when tests fail (#4288)
+  * gc_leaking: Don't zero out new allocations in some targets (#4302)
+  * internal/wasi: update to wasm-tools-go@v0.1.2 (#4326)
+  * runtime: implement dummy getAuxv to satisfy golang.org/x/sys/cpu (#4325)
+  * transform: fix incorrect alignment of heap-to-stack transform
+  * compiler: add 'align' attribute to runtime.alloc calls
+  * wasi preview 2 support (#4027)
+  * test: support GOOS/GOARCH pairs in the -target flag
+  * add support for unix.{RawSyscall,RawSyscallNoError}
+  * add support for unix.Syscall* invocations
+  * wasm-unknown: make sure the os package can be imported
+  * version: update to 0.33.0-dev
+  * compiler: remove old atomics workaround for AVR
+  * machine: use new internal/binary package
+  * all: use latest version of x/tools
+  * remove unused registers for x86_64 linux syscalls
+  * Release 0.32.0
+  * add SetReadDeadline stub
+  * Add smoke tests for machine package
+  * compiler: fix race condition by applying a proposed patch
+  * all: drop support for Go 1.18
+  * targets: add cyw43439 tag to badger2040-w and also add new pico-w target for wireless support
+  * transform/rtcalls: Bail fast if can't convert pointer
+  * cgo: implement shift operations in preprocessor macros
+  * update fpm ci, fixup import
+  * Add process.Release for unix
+  * add FindProcess for posix
+  * Add signal stubs (#4270)
+  * builder: make sure wasm-opt command line is printed if asked
+  * builder: keep un-wasm-opt'd .wasm if -work was passed
+  * src/reflect: uncomment more tests that pass
+  * cgo: do a basic test that math functions work
+  * os/user: add stubs for `Lookup{,Group}` and `Group`
+  * compiler,reflect: fix NumMethods for Interface type
+  * LLVM 18 support
+  * main: add -serial=rtt flag as possible option
+  * fix fpm ci installion
+  * add aes generic aliases
+  * reflect: use int in StringHeader and SliceHeader on non-AVR platforms (#4156)
+  * Support UF2 drives with space in their name on Linux
+  * Add I2C support for esp32 (#4259)
+  * targets: add support for Badger2040 W
+  * Revert "flake.nix: explicitly add libcxx as dependency"
+  * Adding a comment
+  * Checking for methodset existance
+  * targets: add support for m5paper
+  * machine: add TxFifoFreeLevel() for CAN
+  * machine/stm32: add i2c Frequency and SetBaudRate() function for boards that were missing implementation
+  * Makefile: add lld to list of build targets for wasm-ld
+  * build: update llvm cache to use tagged LLVM source version
+  * Add 'make spell' target, fix what it finds.  In .go files, only checks comments.
+  * make: use release esp-17.0.1_20240419 tag for source from espressif LLVM fork for reproducible builds
+  * simulator: add support for GetRNG
+  * simulator: fix I2C support
+  * mksnanov3: limit programming speed to 1800 kHz
+  * compileopts: fix race condition
+  * runtime: skip negative sleep durations in sleepTicks
+  * rp2040: fix timeUnit type
+  * machine/thingplus_rp2040, machine/waveshare-rp2040-zero:add WS2812 definition
+  * Lint: lint and fix src/{os,reflect} (#4228)
+  * chore: fix function names in comment
+  * add stm32 nucleol476rg support
+  * Run Nick G's spellchecker github.com/client9/misspell, carefuly fix what it found (#4235)
+  * compileopts: apply OpenOCD commands after target configuration
+  * add os.Link
+  * lint: add "make lint" target, run it from ci
+  * machine: add __tinygo_spi_tx function to simulator
+  * rp2040: make all RP2040 boards available for simulation
+  * rp2040: move UART0 and UART1 to common file
+  * fix square alias for ed25519
+  * nix: fix wasi-libc include headers
+  * all: change references of 'wasi' to 'wasip1'; test hygiene
+  * targets: add wasi.json that inherits wasip1.json
+  * os, testing: just check runtime.GOOS == "wasip1"
+  * syscall: use libc_getpagesize instead of hard-coded constant
+  * all: replace target=wasi with target=wasip1
+  * Map the rest of the pinout
+  * Begin implementing support for Adafruit ESP32 Feather V2
+  * builder: add check for error on creating needed directory as suggested by @b0ch3nski
+  * wasm-unknown: add math and memory builtins that LLVM needs
+  * ci: don't add --recursive when updating submodules
+  * Add smoke test for pca10059-s140v7
+  * Add pca10059-s140v7 as a target
+  * Makefile: allow overriding the packages to test in `make test`
+  * feather-nrf52840-sense doesn't use LFXO
+  * goenv: put back @sago35 update to new v0.32.0 development version
+  * wasm: fix symbol table index for archives
+  * all: move -panic=trap support to the compiler/runtime
+  * docs: update CHANGELOG for 0.31.2 patch release
+  * goenv: update to v0.31.2 for patch release
+  * net: update to net package with Buffers implementation
+  * goenv: update to new v0.32.0 development version
+  * runtime: add Frame.Entry field
+  * syscall: add wasm_unknown to some additional files so it can compile more code
+  * all: update for 0.31.1
+  * net: update to latest main
+  * build: only use GHA cache for docker dev builds, ignore the previous saved build-context
+  * interp: make getelementptr offsets signed
+  * interp: return a proper error message when indexing out of range
+  * docker: update final build stage to go1.22
+  * ci: fix binaryen build
+  * all: version 0.31.0
+  * Stub CallSlice for Value
+  * targets: add support for Thumby
+  * main: make `ports` subcommand more verbose
+  * main: change `monitor -info` to `ports`
+  * ci: switch to Go 1.22
+  * Dockerfile: reduce size of resulting image
+  * compileopts: remove workaround for LLVM 16
+  * interp: do not register runtime timers during interp
+  * device: update SVD files
+  * compileopts: always enable CGo
+  * all: make TinyGo code usable with "big Go" CGo
+  * targets/wasm_unknown: remove _start to _initialize to match WASI
+  * builder: add 'wasm-unknown' to list of targets for clang features verification
+  * targets/wasm_unknown: use proper defaults for GC
+  * make: add smoketest for wasm-unknown target
+  * examples: add example for use with wasm-unknown target
+  * target/wasm_unknown: remove bulk memory and use imported memory for extreme tinyness
+  * runtime, targets: some WIP on wasm unknown in part from PR #3072
+  * nrf52840: generic board support (#4121)
+  * machine/rp2040: set XOSC startup delay multiplier
+  * compileopts: set 'purego' build tag by default
+  * ci: update from Node.js 16 to Node.js 18
+  * esp32: switch over to the official SVD file
+  * build: remove more files from host on Docker build to avoid running out of disk space
+  * gi: add macOS ARM64 builder
+  * Allow larger systems to have a larger max stack alloc
+  * flake.nix: explicitly add libcxx as dependency
+  * reflect: move indirect values into interface when setting interfaces
+  * Remove unused value
+  * rp2040: add definition for machine.PinToggle
+  * esp32c3: update linker script to support binary blobs
+  * esp32c3: add more ROM functions
+  * sync: implement trylock
+  * targets: add motor control pin definitions for MKS Nano V3x boards
+  * targets: add support for the MKS Robin Nano V3.x
+  * fix typo
+  * all: switch to LLVM 17 by default
+  * ci: fix sizediff error when changing the LLVM version
+  * reflect: update to Go 1.22 semantics
+  * loader: make sure Go version is plumbed through
+  * all: support Go 1.22
+  * runtime: add runtime.rand function
+  * reflect: add TypeFor[T]
+  * loader: enforce Go language version in the type checker
+  * cgo: add file AST for fake C file locations
+  * compiler: update golang.org/x/tools/go/ssa package
+  * bytealg: update to Go 1.22
+  * machine/samd51: add UART hardware flow control support
+  * targets: add ninafw tag to Arduino mkrwifi1010 and Adafruit Matrix Portal M4 for drivers netlink support
+  * targets: add ninafw pins and settings to Adafruit PyBadge board with AirLift Featherwing
+  * targets: add ninafw pins and settings to Adafruit Metro M4 Airlift board
+  * build: use llvm-17 base image correctly for faster docker dev builds
+  * cgo: fix calling CGo callback inside generic function
+  * Adding additional build tag for boards with ninafw
+  * machine/pyportal: add needed values to board file for ninafw BLE support
+  * build: add step to build LLVM 17 base image
+  * all: statically link to LLVM 17 instead of LLVM 16
+  * machine, targets: ninafw support for arduino-nano33 and nano-rp2040 boards
+  * machine/samd21: add hardware flow control for UART
+  * targets: add ninafw tag to nano-rp2040 for ninafw BLE support
+  * expose UART4 on wioterminal board
+  * os/user: add bare-bones implementation of the os/user package
+  * nix: upgrade to NixOS 23.11
+  * main: add -serial=rtt support
+  * machine/nano-rp2040: add UART1 and correct mappings for NINA via UART.
+  * machine/serial, rp2040: add support for hardware flow control
+  * net: update to latest main branch with accept fix
+  * build: another try to handle python unlink/link due to homebrew
+  * build: fix for macos homebrew as discussed in https://github.com/Homebrew/brew/issues/15621
+  * stub out more types/funcs to compile against golang.org/x/net/internal/socket (#4037)
+  * net: update to latest main branch with TCPListener
+  * modules: update net submodule to latest commit with http Client Transport interface
+  * builder/picolib: add needed file for compiling math functions with error support. Thanks to @aykevl for actually finding and providing this fix, I really just reported the problem and tested the fix.
+  * runtime: stub out Breakpoint() function
+  * lib/cmsis-svd: change to new repo location for the SVD files
+  * modules: switch to main branch of net submodule
+  * move syscall constants for networking into net space to avoid windows build issue
+  * move IPPROTO_TLS to netdev to avoid src/syscall dependency
+  * Add network device driver model, netdev
+  * modules: add tinygo net package as submodule
+  * src/net: remove existing files to replace with submodule
+  * machine/atmega: uart double speed mode Less errors and higher throughput. Example: default / slow mode is problematic for 115200 on 16Mhz CPU.
+  * sizediff: cleanup before checkout of branche to allow for new/removed files to be able to still run thru size tests
+  * machine/esp32c3: implement RNG
+  * machine/esp32c3: move i2c implementation into separate file to skip m5stamp-c3 since it does not appear to expose those pins
+  * build: can only build boards with board files for pin mapping
+  * machine/esp32c3: corrected implementation for error handling and when to expect NACK
+  * machine/esp32c3: handle defaults for I2C configuration
+  * machine/esp32c3: implement i2c for esp32-c3
+  * tools/sizediff: cleanup and calculate ram
+  * machine/atmega: bufferSize = 32 to save memory on 2k ram targets also updates sizediff tool to show ram differences
+  * machine/atmega328pb: refactor to enable extra uart
+  * builds: update all GH action workflows to use latest versions
+  * m5stamp-c3: change settings to explicitly use UART
+  * targets: add Adafruit qtpy-esp32c3 board support
+  * machine/esp32c3: implement USB_SERIAL for USBCDC communication
+  * builds: free space before doing docker build job
+  * docker: makefile was renamed but did not show error util cache was busted
+  * docker: remove lists after update to reduce image size
+  * lib/cmsis-svd: switch to new location and latest version of shared SVD repository
+  * make/gen-device-esp: change order of generating ESP32 device wrappers to avoid community ESP32 being overwritten by the official one
+  * refactor: reuse OptLevel() to get the opt level
+  * Bump default stack size for target pico to 8kb from 2kb
+  * compiler: fix crash on type assert on interfaces with no methods
+  * machine/usb: add support for ISERIAL descriptor
+  * Bump wasi-libc to SDK 20
+  * Point wasi-libc submodule to new location.
+  * reflect: stub FuncOf()
+  * compileopts, targets, main: support Wasmtime v14 (#3972)
+  * doc: fix a typo in the rtcinterrupt example (#3981)
+  * main, compileopts: move GetTargetSpecs() to compileopts package
+  * main: add -info option to tinygo monitor
+  * machine/stm32: implement DeviceID() with unique ID per processor
+  * nrf,sam,rp2040: add machine.HardwareID function
+  * compileopts: add cflag '-isystem' for resource directory search since needed for Xtensa
+  * build: pin wasmtime version used for testing to v13.0.0
+  * ci: work-around for broken links in github runners
+  * machine/spi: use interface to ensure uniformity for all machine implementations
+  * Binaryen116 (#3958)
+  * docs: add Nix badge for builds to README
+  * nix: fix md5sum on MacOS
+  * nix: support `make wasi-libc` on MacOS
+  * builder: generalize build ID fallback to darwin
+  * all: fix a small incompatibility with Nix
+  * refactor: rm io/ioutil funcs
+  * goenv: re-add support for Clang headers on darwin
+  * nix: improve docs and add support for wasi-libc
+  * machine/i2c: add interface check and implementation where missing for SetBaudRate() (#3406)
+  * all: add Nix flake file
+  * builder: refactor clang include headers
+  * Fix bitstring order in precise GC docs (#3947)
+  * goenv: update to new v0.31.0 development version
+  * all: add initial LLVM 17 support
+  * avr: don't compile large parts of picolibc (math, stdio)
+  * targets: increase default stack size to 64k for wasi/wasm targets
+  * build: avoid sharing GlobalValues between build instances
+  * all: refactor goenv.Version to add the git sha1 if needed
+  * ci: use matrix instead of duplicating the Linux cross job
+  * all: use the new LLVM pass manager
+  * all: remove LLVM 14 support
+  * bulid: Rename Makefile to GNUmakefile
+  * build: use $(MAKE) to represent make executable
+  * docs: Update BUILDING.md
+  * cgo: add C._Bool type
+  * transform: fix bug in StringToBytes optimization pass
+  * interp: print LLVM instruction in traceback
+  * ci: redo LLVM build on Windows
+  * all: release 0.30.0
+  * interp: improve unknown opcode handling
+  * build: #3893 do not return LLVM structs from Build
+  * build: build Go SSA serially [issue 3895]
+  * compiler: don't use types in the global context
+  * all: default to LLVM 16
+  * all: switch to LLVM 16
+  * targets: increase default stack size to 32k for wasi/wasm targets
+  * atsamd21, atsamd51: add support for USB INTERRUPT OUT
+  * machine/rp2040: always use the USB device enum fix, even in chips that supposedly have the HW fix.
+  * Board support for Adafruit Gemma M0 (#3903)
+  * Update golang.org/x/tools to v0.12.0
+  * Update tools to 0.9.0
+  * compiler: Handle nil array and struct constants
+  * targets: add GoBadge target as alias for PyBadge :)
+  * compiler,reflect: add support for [...]T -> []T in reflect
+  * interp: don't copy unknown values in runtime.sliceCopy
+  * goenv: update to new v0.30.0 development version
+  * machine/usb/adc/midi: improve implementation to include several new messages such as program changes and pitch bend. Also add error handling for invalid parameter values such as MIDI channel. This however makes a somewhat breaking change to the current implementation, in that we now use the typical MIDI user system of counting MIDI channels from 1-16 instead of from 0-15 as the lower level USB-MIDI API itself expects.
+  * runtime: refactor markGlobals to findGlobals
+  * docs: update CHANGELOG for release 0.29
+  * all: update version for 0.29 release
+  * nRF52: set SPI TX/RX lengths even data is empty. Fixes #3868 (#3877)
+  * make: add task to check NodeJS version before running tests
+  * adding new uf2 target for PCA10056 (#3765)
+  * wasm: add support for GOOS=wasip1
+  * samd51,rp2040,nrf528xx,stm32: implement watchdog
+  * loader: merge go.env file which is now required starting in Go 1.21 to correctly get required packages
+  * main: add target JSON file in `tinygo info` output
+  * rp2040: move flash related functions into separate file from C imports for correct LSP. Fixes #3852
+  * modules: update to go-serial package v1.6.0
+  * docker: use Go 1.21 for Docker dev container build
+  * build: switch GH actions builds to use Go 1.21 final release
+  * builder: update message for max supported Go version
+  * Add support for HID Keyboard LEDs
+  * all: use https for renesas submodule #3856
+  * board: add AKIZUKI DENSHI AE-RP2040
+  * compiler: improve panic message when a runtime call is unavailable
+  * compiler: implement clear builtin for maps
+  * compiler: implement clear builtin for slices
+  * compiler: add min and max builtin support
+  * all: Go 1.21 support
+  * testing: add Testing function
+  * machine/usb/hid: rename Handler() to TxHandler()
+  * machine/usb/hid: add RxHandler interface
+  * machine/usb: refactor endpoint configuration
+  * machine/usb: allow USB Endpoint settings to be changed externally
+  * machine/usb: remove usbDescriptorConfig
+  * compiler: add compiler-rt to wasm.json
+  * compiler: add compiler-rt and wasm symbols to table
+  * wasm: fix functions exported through //export
+  * avr: pin change interrupt
+  * sync: add implementation from upstream Go for OnceFunc, OnceValue, and OnceValues
+  * rp2040:add NoPin support
+  * nrf: add I2C timeout
+  * machine.UART refactor (#3832)
+  * machine/rp2040: wait for 1000 us after flash reset to avoid issues with busy USB bus
+  * reflect: add SetZero
+  * main: use `go env` instead of doing all detection manually
+  * wasi: allow zero inodes when reading directories
+  * reflect: implement Value.Grow
+  * machine/samd51: fix i2cTimeout was decreasing due to cache activation
+  * make: add make task to generate Renesas device wrappers
+  * tools/gen-device-svd: small changes needed for Renesas MCUs
+  * modules: add submodule for Renesas SVD file mirror repo
+  * main: improve detection of filesystems
+  * machine/macropad_rp2040: add machine.BUTTON
+  * rp2040: add missing suffix to CMD_READ_STATUS
+  * example: adjust time offset
+  * compiler: update .ll test output
+  * compiler,reflect: NumMethods reports exported methods only
+  * reflect: fix iterating over maps with interface{} keys
+  * docker: update clang to version 15
+  * reflect: Add FieldByNameFunc
+  * reflect: remove unecessary heap allocations
+  * machine/usb/hid,joystick: fix hidreport (3) (#3802)
+  * nrf: wait for stop condition after reading from the I2C bus
+  * example: simplify pininterrupt
+  * wasm: remove i64 workaround, use BigInt instead
+  * ci: update Node.js from version 14 to version 16
+  * reflect: use .key() instead of a type assert
+  * os: define ErrNoDeadline
+  * ci: rename release-double-zipped to something more useful
+  * goenv: update to new v0.29.0 development version
+  * rp2040: add spi busy waits on read and read/write transactions
+  * goenv: fix version number to 0.28.1 (without -dev)
+  * all: release 0.28.0
+  * compiler: limit level of pointer-to-pointer-to-... types
+  * compiler,transform: fix for pointer-to-pointer type switches from @aykevl
+  * compiler,reflect: add tagged pointers for **T etc
+  * Add smoke test for target m5stick-c
+  * Support for the M5STACK M5StickC ESP32-PICO device
+  * compiler: update testdata
+  * compiler,reflect: use two bits of the meta byte for comparable/isBinary
+  * build: only make comment on sizediff job when run from the main repo, take 2
+  * main: add -internal-nodwarf flag
+  * main: rename some flags to make them explicitly internal
+  * tools: use geomean for sizediff
+  * machine/rp2040: fix i2c crash when getting abort while waiting for stop condition
+  * fix bug in rp2040 SetPeriod implementation
+  * Add bluemicro840 board
+  * build: only make comment on sizediff job when run from the main repo
+  * fix go:noinlines in volatile package
+  * samd21: fix issue with WS2812 driver
+  * build: explicitly pass the github token to GH action
+  * attiny1616: implement Pin.Get()
+  * interp: add support for reading a pointer tag
+  * interp: fix subtle bug in pointer xor
+  * interp: move some often-repeated code into a function
+  * avr: add attiny1616 support
+  * avr: update gen-device-avr tool to support newer AVRs
+  * avr: fix interrupt names for newer attiny chips
+  * add Settings to debug.BuildInfo
+  * build: add issues write permission to sizediff job
+  * compiler: disallow most types in //go:wasmimport
+  * compiler: add tests for error messages
+  * compiler: only calculate functionInfo once
+  * build: update GH actions-comment-pull-request to v2.3.1
+  * compileopts: don't filter build tags, use specific build tags instead
+  * windows: re-enable parallelism
+  * machine: add DefaultUART to xiao
+  * src/reflect: remove overflow checks from uvarint32
+  * runtime: fix structField.data comment
+  * builder: bump sizes_test
+  * compiler,reflect: make field offsets varints
+  * build: add write permission to sizediff GH actions job to always be able to add comments
+  * reflect: optimize Zero() a little bit
+  * ci: add comment with binary size difference
+  * machine/usb/hid: fix hidreport (2)
+  * machine/flash: remove FlashBuffer, modify flash example to use BlockDevice interface
+  * builder: implement Nordic DFU file writer in Go
+  * nrf: add ADC oversampling support
+  * nrf: add sample time to ADC
+  * nrf: add ability to set the reference voltage
+  * nrf: refactor ADC code a little bit
+  * pinetime: update the target file
+  * machine/usb/hid: fix hidreport
+  * machine/rp2040: correct write block size for flash
+  * machine/rp2040: correct param for number of bytes to be erased by flash
+  * machine/atsam*, nrf, rp2040, stm32: correct error flashBlockDevice pad() function
+  * Add dummy package for `runtime/metrics` to that modules that depend upon it (e.g. [Prometheus Go client library](https://github.com/prometheus/client_golang/blob/main/prometheus/internal/go_runtime_metrics.go)) will compile.
+  * os: implement os.(*File).WriteAt (#3697)
+  * machine/usb/descriptor: further refactor HID report creation
+  * machine/usb/descriptor: rename and export Append() to make it easier to create new descriptors in user code
+  * machine/usb/descriptor: refactor HID report creation
+  * tools: add sizediff tool
+  * cgo: allow LDFLAGS: --export=...
+  * os: implement os.(*File).ReadDir for -target=wasi
+  * implement Sync on stdioFileHandle
+  * os: add os.(*File).Sync
+  * syscall: add fsync using libc
+  * examples/usb-midi: remove serial communication from MIDI example
+  * machine/usb: move MIDI under usb/adc (Audio Device Class) package
+  * machine/usb/hid/mouse: add support for mouse back and forward
+  * machine/usb/hid/joystick: handle case where we cannot find the correct HID descriptor
+  * machine/usb: refactoring descriptors into subpackage for modularity
+  * builder: bump sizes test values
+  * add struct size and field offsets to reflect data
+  * docs: update README for brevity and to add further info about webassembly       also, add links to guides about OS-specific development on website       for macOS and Windows.
+  * docs: update LICENSE year
+  * builder: add link to compatibility matrix
+  * cortexm: fix stack size offset
+  * cortexm: add "gdb" as a debugger
+  * runtime: improve panic message when heap allocating in an interrupt
+  * main: print source location when a panic happens in -monitor
+  * runtime: print the address where a panic happened
+  * Add machine.CPUReset() (#3595)
+  * Revert "all: better errors when multiple mcus share VID/PID"
+  * Revert "all: honour port for `-monitor` flash flag"
+  * machine/gba: rename display and make pointer receivers
+  * all: honour port for `-monitor` flash flag
+  * all: better errors when multiple mcus share VID/PID
+  * device/gba: additional IO mapping for sound, DMA, SIO, and sprites
+  * builder: print the status of the job that just completed
+  * fix some comments
+  * samd51: fix ADC multisampling
+  * targets: make msd-volume-name an array
+  * examples: replace fmt with encoding/hex in usb-midi example
+  * main: don't print `ok` for a successful compile-only
+  * Switch interp tests to opaque pointers
+  * testing: add -test.shuffle to order randomize test and benchmark order
+  * testdata: add test for else/defer bug
+  * compiler: update test outputs
+  * compiler: ensure all defers have been seen before creating rundefers
+  * testing: move runtime.GC() call to runN to match upstream
+  * testing: fix benchmark logging output
+  * machine/atsamd51: remove extra BK0RDY clear
+  * rp2040: use DMA for send-only SPI transfers
+  * i2c: implement target mode for rp2040 and nrf
+  * nrf: new peripheral type for nrf528xx chips
+  * nrf: move nrf52 family code to correct file name
+  * machine: make gosched available to machine package
+  * samd51: use correct SPI frequency
+  * machine/usb/hid/joystick: allow joystick settings override
+  * machine/usb/hid/joystick: move joystick under HID as it belongs and also remove duplicate code
+  * rp2040: use 4MHz as default frequency for SPI
+  * reflect: uncomment a another test the fails and doc some that don't
+  * reflect; uncomment SetZero (but comment out the parts that fail)
+  * reflect: uncomment TestAppend and fix a bug it found
+  * reflect: handle Convert'ing between identical underlying types
+  * rp2040: remove SPI deadline
+  * testing: remove unused variable left over from `count` prototyping
+  * main: fix typos in flag usage messages
+  * testing: add test.skip
+  * testing: import new version of match.go
+  * main: set WASMTIME_BACKTRACE_DETAILS when running in wasmtime.
+  * Makefile: compress/lzw seems to work on wasi now.
+  * main: make sure all testing output goes to the same place
+  * main: fix tests with default TestConfig.Count=0 doesn't skip all tests
+  * testing: make test output unbuffered when verbose
+  * main: stuff test runner options into their own struct
+  * testing: support -test.count
+  * reflect: another obscure RO bug
+  * reflect: uncomment another test and fix RO logic issues it uncovered
+  * rp2040: unify all linker scripts using LDFLAGS
+  * reflect: add more RO checks
+  * reflect: add valueFlagRO
+  * reflect: add sipmlified strconv.Quote() implementation for struct tags
+  * reflect: Fix Kind(-1).String() and enable test
+  * reflect: implement and test Value.Comparable
+  * reflect: TestAliasNames passes
+  * reflect: fix TestCanSetField
+  * reflect: add CanInt() and friends and uncomments tests that pass
+  * reflect: uncomment Type.String() tests that pass
+  * reflect: print struct tags in Type.String() (with a caveat)
+  * reflect: stub channel select routines/types
+  * compiler,reflect: support channel directions
+  * build: add GH workflow to build LLVM image when needed
+  * runtime: use unsafe.Add() in hashmap code
+  * runtime: take max hash size into account when preallocating with size hint
+  * runtime: factor duplicate hashmap snippts to functions
+  * runtime: zero map key/value on deletion to so GC doesn't see them
+  * runtime: preallocate maps to size hint actually works
+  * compiler: implement most math/bits functions
+  * rp2040: remove SPI DataBits property
+  * build: test net on linux & mac only (random CI fails on windows)
+  * machine/lorae5: correct mapping for I2C bus, add pin mapping to enable power
+  * fix resource leak in os.(*File).Close
+  * compiler: only support //go:wasmimport on declared functions
+  * reflect: use direct calls to runtime string functions
+  * reflect: fix bug found by Convert() tests on wasi
+  * reflect: add missing Uintptr type and some numerical tests
+  * reflect: fix indirect issues with makeInt/makeUint/makeFloat
+  * reflect: typo in uint test
+  * reflect: document which Convert() cases are still unimplemented
+  * reflect: Convert(): add Float() conversions
+  * reflect: add Convert() for string -> []byte and []byte -> string
+  * reflect: Convert() for integer and float types
+  * Update task_stack_cortexm.c
+  * Refactor SystemStack function for arm targets.
+  * reflect: add test for map[interface{}]T
+  * reflect: fix key type logic for maps
+  * reflect: Value.Set: fix direction of assignment check
+  * reflect: convert non-interface to interface in Set()
+  * reflect: convert map elements to an interface, if needed
+  * reflect: SetMapIndex: use AssignableTo() instead of type equality
+  * reflect: unpack interfaces in MapKeys() if needed
+  * reflect: tweak v.typecode.Key().(*rawType) -> v.typecode.key()
+  * reflect: fix typo in unit test
+  * reflect: add tests for map interface lookup fixes
+  * compiler: for interface maps, use the original named type if available
+  * reflect: handle map-keys-as-interfaces for MapIter()
+  * reflect: uncomment all(?) the tests that pass
+  * reflect: rename tests in value_test to avoid conflicts upstream tests
+  * reflct: reenable DeepEqual tests
+  * reflect: comment out all tests but keep imports
+  * reflect: replace all_test with copy from upstream
+  * feat: fix typos
+  * Added Gopher Badge support
+  * wasm: implement the //go:wasmimport directive
+  * examples: use hid-keyboard example to show how to to override default USB VID, PID, manufacturer name, and product name
+  * machine/usb: add ability to override default VID, PID, manufacturer name, and product name
+  * compiler: add alloc attributes to runtime.alloc
+  * nrf: fix memory issue in ADC read
+  * compiler: correctly generate code for local named types
+  * reflect; SetLen() requires an addressable value
+  * reflect: fix some vet issues
+  * reflect: tweak Type.String() for interfaces to make encoding/xml happy
+  * reflect: fix isBinary() for float types
+  * reflect: tweak Type.String() to match what encoding/json expects for empty structs
+  * reflect: stub MapOf()
+  * builder: bump sizes tests
+  * transform: fix OptimizeReflectImplements pass for new named elem offset
+  * reflect: make sure pointerTo() works for named types
+  * compiler,reflect: sort out pkg path vs pkg name for named types
+  * compiler,reflect: adjust struct layout for type info
+  * compiler: only define the package path once
+  * reflect: add test for Type.NumMethod()
+  * refect: Type.String() should use a shortened package name
+  * compiler,reflect: add reflect.Type.NumMethods()
+  * docker: correct path for GHCR dev container build
+  * compiler: support all kinds of recursive types
+  * machine/stm32: correct Flash implementation
+  * transform: update wasm-abi to use opaque pointers
+  * transform: update stringtobytes test to opaque pointers
+  * transform: update stringequal test to opaque pointers
+  * transform: update stacksize test to opaque pointers
+  * transform: update panic test to opaque pointers
+  * transform: update maps test to opaque pointers
+  * transform: update interrupt test to opaque pointers
+  * transform: update interface test to opaque pointers
+  * transform: update gc-stackslots test to opaque pointers
+  * transform: update allocs test to opaque pointers
+  * transform: update reflect-implements test to opaque pointers
+  * machine, runtime/interrupt: switch to use register definitions from device/gba
+  * device/gba: add mostly complete hand-written register definitions
+  * builder: fix binary size rodata value
+  * compiler,reflect: fix pkgpath for struct fields
+  * reflect: set PkgPath in StructField
+  * compiler, reflect: properly handle embedded structs
+  * reflect: disable visiblefields test for FieldByIndexErr
+  * reflect: import visiblefields code and tests from upstream
+  * reflect: add FieldByName(), and FieldByIndex()
+  * reflect: fix Type.Name to return empty string for non-named types
+  * reflect: loosen unaddressable array rules for Copy()
+  * Update src/reflect/value.go
+  * reflect: add SetBytes()
+  * reflect: fix IsNil() for interfaces
+  * reflect: MapIter.Next() needs to allocate new keys/values every time
+  * reflect: add UnsafePointer() for Func types
+  * reflect: move StructField.Anonymous field to match upstream location
+  * reflect: TypeOf(nil) should be nil
+  * reflect: call decomposeInterface() directly in TypeOf()
+  * reflect: add type check to Value.Field()
+  * reflect: fix off-by-one in Zero sizing
+  * reflect: Type.AssignableTo(): you can assign anything to interface{}
+  * reflect: set Index field in Field()
+  * debug: stub SetGCPercent()
+  * reflect: add stub for StructOf()
+  * reflect: add stubs for Method(), CanConvert(), ArrayOf()
+  * reflect: add UnsafeAddr()
+  * reflect: fix Addr() indirect value/flags and add tests.
+  * builder: add test to check for changes in binary size
+  * machine/rp2040: correct Flash implementation
+  * machine/flash: refactor to keep use of pure offset relative to start
+  * machine/rp2040: implement Flash interface
+  * arm: enable functions in RAM for go & cgo
+  * machine/rp2040: change uart to allow for a single pin
+  * wioterminal: fix pin definition of BCM13
+  * reflect: add support for remaining map types
+  * syscall: remove misleading comment about Stat_t fields
+  * syscall: add Timespec.Unix() for wasi.
+  * os,syscall: Stat_t timespec fields are Atimespec on darwin
+  * Added missing TCPAddr and UDPAddr implementations to the net package
+  * machine/samd51: disable/restore Flash cache on write/erase
+  * machine/samd51: implement Flash interface
+  * compiler, reflect: replace package and name length with null-byte termination
+  * compiler, reflect: add Type.PkgPath
+  * targets: bump cortex-m-qemu default stack size
+  * reflect: improve Value.String()
+  * reflect: add Type.String()
+  * compiler, reflect: add support for named types
+  * machine/atsamd51: remove extra BK0RDY clear
+  * transform: add debug information to internal/task.stackSize
+  * compiler: account for alignment with -size=full
+  * compiler: emit correct alignment in debug info for global variables
+  * builder: improve reading of DWARF variables
+  * builder: sizes: list interrupt vector as a pseudo-package for -size=full
+  * builder: detect compiler-rt size usage
+  * machine/samd21: implement Flash interface (#3496)
+  * ci: build LLVM with thread support on Windows
+  * machine/rp2040: correct issue with spi pin validation
+  * build/linux: switch to ubuntu-20.04 for arm builds since ubuntu-18.04 is deprecated for GH actions runner
+  * windows: disable parallelism on Windows
+  * compiler: fix a race condition
+  * compiler: try harder to find source locations for constants
+  * compiler: add debug location to string values
+  * compiler; add position information to createConstant
+  * os: add IsTimeout function
+  * testdata: add brandondube/pctl to corpus
+  * Refactor EnableInterrupts and DisableInterrupts
+  * compiler: add debug information to []embed.file slice global
+  * compiler: add debug information to //go:embed slice data
+  * compiler: add debug info to []embed.files backing array
+  * reflect: ensure all ValueError panics have Kind fields
+  * reflect: add OverflowFloat(), OverflowInt(), OverflowUint()
+  * reflect: add Addr()
+  * reflect: add Zero()
+  * reflect: add SetLen()
+  * reflect: allow nil rawType to call Kind()
+  * reflect: add pointerTo()
+  * compiler: remove unsafe.Pointer(uintptr(v) + idx) optimization
+  * all: use unsafe.Add instead of unsafe.Pointer(uintptr(...) + ...)
+  * reflect: add Bytes()
+  * reflect: add Copy()
+  * reflect: add Slice3()
+  * reflect: add Slice()
+  * reflect: add MakeSlice()
+  * reflect: add Append()
+  * runtime: add sliceGrow function for reflect
+  * transform: fix non-determinism in the interface lowering pass
+  * reflect: uncomment some DeepEqual tests that now pass
+  * reflect: add MapKeys()
+  * reflect: add MakeMap()
+  * reflect: add SetMapIndex()
+  * reflect: add MapRange/MapIter
+  * reflect: add MapIndex()
+  * runtime: add unsafe.pointer reflect wrappers for hashmap calls
+  * reflect: add Type.Elem() and Type.Key() for Maps
+  * compiler, reflect: add map key and element type info
+  * Fail earlier if Go is not available
+  * compiler: add llvm.ident metadata
+  * runtime/atsamd51: enable CMCC cache for greatly improved performance on SAMD51
+  * machine/stm32, nrf: flash API (#3472)
+  * internal/task: disallow blocking inside an interrupt
+  * builder: remove non-ThinLTO build mode
+  * ci: add AVR timers test
+  * compiler: zero struct padding during map operations
+  * runtime: properly turn pointer into empty interface when hashing
+  * Rearrange switch case for get pin cfg
+  * Pins D4 & D5 are I2C1. Use pins D2 & D3 for I2C0.
+  * machine/rp2040: correct issue with spi pin validation
+  * machine/rp2040: correct issue with i2c pin validation
+  * rp2040: provide better errors for invalid pins on i2c and spi (#3443)
+  * rp2040: rtc delayed interrupt
+  * machine/lorae5: add needed definition for UART2
+  * ci: don't pass -v to `go test`
+  * arm64: fix register save/restore to include vector registers
+  * runtime: check for heap allocations inside interrupts
+  * machine/rp2040: change calling order for device enumeration fix to do first
+  * main: support qemu-user debugging
+  * fix bad qt py pin assignment
+  * build/docker: use build context from pre-saved LLVM container to avoid rebuilding
+  * docker: ignore changes to CI itself to avoid breaking cache on images
+  * build/linux: install wasmtime directly from github release
+  * build/docker: trigger all builds in tinygo ecosystem repos using GH actions
+  * runtime: implement KeepAlive using inline assembly
+  * Better handling of sub-clusters in SVD (#3335)
+  * machine/usb/hid: add MediaKey support (#3436)
+  * all: refactor reflect package
+  * reflect: make sure null bytes are supported in tags
+  * build: always cache LLVM source/build even if the tests fail to avoid extra rebuilds (#3453)
+  * runtime: allow custom-gc SetFinalizer and clarify KeepAlive
+  * Filter target build-tags if user specified an overriding option (#3357)
+  * goenv: update to new v0.28.0 development version
+  * Makefile: more stdlib tests for CI
+  * ci: don't link with libzstd in release builds
+  * ci: switch to actions/checkout@v3
+  * all: update x/tools/go/ssa to include slice-to-array bugfix
+  * all: update to version 0.27.0
+  * ci: switch to Go 1.20
+  * syscall: add more stubs as needed for Go 1.20 support
+  * windows: add support for syscall.runtimeSetenv
+  * runtime: implement internal/godebug.setUpdate
+  * Add custom-gc stub for ReadMemStats
+  * windows: add ARM64 support
+  * Support for the Espressif ESP32-C3-DevKit-RUST-1 development board
+  * Add -gc=custom option (#3302)
+  * runtime/debug: stubs PrintStack
+  * runtime/stm32wlx: change order for init so clock speeds are set before peripheral start
+  * Support for Makerfabs ESP32C3SPI35 TFT Touchscreen board
+  * wasm: support ThinLTO
+  * Target MCU was not properly defined for LGT92 target Change openocd interface from stlink-v2 to stlink (interface/stlink-v2.cfg is deprecated)
+  * stm32wl: Fix incomplete RNG initialisation
+  * Allows the emulator to expand {tmpDir}
+  * compiler,runtime: make keySize and valueSize uintptr
+  * compiler,runtime: allow map values >256 bytes
+  * wasm: avoid miscompile with ThinLTO
+  * compiler: move some llvmutil code into the compiler
+  * all: remove remaining +build lines
+  * runtime: implement precise GC
+  * all: store data layout as little endian value
+  * runtime: zero freed memory
+  * runtime: move GC code around to prepare for precise GC
+  * riscv: use 16-byte alignment everywhere
+  * xtensa: use 8-byte alignment
+  * runtime: arm actually has 8-byte alignment
+  * runtime: arm64 actually has 16-byte alignment like amd64
+  * Add PDM support for circuitplay-bluefruit (#3359)
+  * builder: add support for Go 1.20
+  * syscall: implement setenv/unsetenv in the runtime
+  * runtime: implement internal/godebug.setUpdate as a stub
+  * runtime: implement math/rand.fastrand64 to fix linker error
+  * compiler: add support for new unsafe slice/string functions
+  * testing: implement t.Setenv
+  * test: print package name when compilation failed
+  * compiler: update golang.org/x/tools/ssa
+  * add a stub for os.Chtimes
+  * cgo: add support for bitwise operators
+  * docs: update README with missing boards
+  * Support for Adafruit Feather M0 Express board
+  * add comment about where src/os/file.go came from
+  * Add SPI support for for the ESP32-C3 device.
+  * src/runtime: add xorshift-based fastrand64
+  * machine/usb: change to not send before endpoint initialization
+  * Add USB HID joystick support (#3366)
+  * Use renamed EXTRA_CFLAGS when building wasi-libc
+  * machine/usb: improve buffer size definition
+  * compiler: fix stack overflow when creating recursive pointer types
+  * board: Adafruit KB2040 (https://www.adafruit.com/product/5302)
+  * wasi: makes wasmtime "run" explicit
+  * Add basic atmega32u support (#3337)
+  * rp2040: drop deprecated build tags
+  * rp2040: add version check for RP2040-E5
+  * rp2040: fix usb device enumeration (RP2040-E5)
+  * build: drop deprecated build tags
+  * build: generate files with go:build tags
+  * Adding support for waveshare rp2040-zero (#3321)
+  * compileopts: replace 'retries' with more correct 'timeout' param
+  * rp2040: fix interrupt issue (2)
+  * rp2040: fix interrupt issue
+  * Revert "Bump CMSIS to 5.9.0"
+  * Bump CMSIS to 5.9.0
+  * builder: always run wasm-opt for wasm32 binaries
+  * runtime: move KeepAlive/SetFinalizer to common code
+  * usbhid: change usage-maximum to 0xFF
+  * reflect: track flags when size changes from fits-in-pointer to not
+  * atsame5x: reduce heap allocation
+  * windows: update mingw-w64 version
+  * machine/nrf51: add ADC implementation
+  * atsame5x: fix extendedID handling
+  * all: re-enable AVR tests
+  * avr: add channel test
+  * xiao-rp2040: add pin definitions
+  * Fix panic when size 0 passed to malloc
+  * reflect: Add Value.IsZero() method
+  * Fix xiao rp2040 pin variable assignment
+  * build: update docker GH action to use latest docker action versions
+  * machine/stm32f1, stm32f4: fix ADC by clearing the correct bit for rank after each read
+  * machine/stm32: always set ADC pins to pullups floating
+  * transform: remove duplicate if in gc transform
+  * avr: support ThinLTO
+  * compiler: refactor some code for the next commit
+  * wasm: fix scanning of the stack
+  * Revert "Enable wasm pointer tracking for gc=none."
+  * Stubbed Setuid and friends. Stubbed Exec (#3290)
+  * corpus: add buger/jsonparser
+  * Enable wasm pointer tracking for gc=none.
+  * avr: fix .data initialization for binaries over 64kB
+  * compileopts: add 'retries' flag to allow setting the number of times to retry locating the MSD volume when flashing
+  * builder: print compiler commands while building a library
+  * main: fix -work flag
+  * avr: drop GNU toolchain dependency
+  * all: update picolibc to v1.7.9
+  * darwin: fix error with `tinygo lldb`
+  * esp: use ThinLTO for Xtensa
+  * Update docs
+  * sync: implement simple pooling in sync.Pool
+  * esp: use LLVM Xtensa linker instead of Espressif toolchain
+  * wasm: remove -wasm-abi= flag
+  * testdata: clearly correct values for timing test with a little more time to spare on CI machines
+  * cgo: support anonymous enums included in multiple Go files
+  * Allow custom wasm malloc implementation (#3245)
+  * Upgrade GitHub actions packages from v2 to v3
+  * Implements calloc.
+  * all: remove libffi warning on macos
+  * all: use DWARF version 4
+  * Add basic GPIO support for rp2040 PIO
+  * avoid allocating clock on heap
+  * fix printing of benchmark output
+  * Stub out reflect.Type FieldByIndex
+  * main: fix outputting .ll files
+  * Look for LLVM 15 in makefile
+  * ci: add support for LLVM 15
+  * interp: add support for constant icmp instructions
+  * riscv: add "target-abi" metadata flag
+  * transform: fix memory corruption issues
+  * all: remove pointer ElementType calls
+  * interp: change object.llvmType to the initializer type
+  * all: replace llvm.Const* calls with builder.Create* calls
+  * all: add type parameter to *GEP calls
+  * all: add type parameter to CreateLoad
+  * all: add type parameter to CreateCall
+  * compiler: return a FunctionType (not a PointerType) in getRawFuncType
+  * wasm: fix GC scanning of allocas
+  * runtime: switch some panic() calls in the gc to runtimePanic() for consistency
+  * Print PASS on pass when running standalone test binaries (#3229)
+  * corpus: remove 'noasm' from some tests
+  * corpus: remove golang.org/x/crypto/internal/subtle
+  * net: implement Pipe
+  * machine/usb: add back New() with deprecation comment to use Port() instead
+  * machine/usb: rename 'New()' to 'Port()' to have the API better match the singleton that is actually being returned
+  * main: fix error message when a serial port can't be accessed
+  * main: fix USB vid/pid lookup
+  * linux: include musl 'getpagesize' function in release
+  * builder: refactor Build function to not use a callback
+  * targets: remove "acm:"` prefix for USB vid/pid pair
+  * build/windows: use GH actions parallel execution to cut build time in half.
+  * targets: do not set stack size per board
+  * Makefile: add ASAN=1 flag to build with AddressSanitizer enabled
+  * usb: remove allocs in ISR
+  * darwin: fix syscall.Open on darwin/arm64
+  * main: print ldflags including ThinLTO flags with -x
+  * cgo: add support for C.float and C.double
+  * all: update musl
+  * goenv: update to new v0.27.0 development version
+  * rp2040: remove mem allocation in GPIO ISR
+  * all: update to version 0.26.0
+  * testdata: increase timings used for timers test to try to avoid race condition errors on macOS CI
+  * builder: do not ignore debug info on baremetal targets
+  * compileopts: silently succeed when there's no debug info to strip
+  * machine: use NoPin constant where appropriate
+  * cgo: fixes panic when FuncType.Results is nil (#3136)
+  * runtime: make gc and scheduler asserts settable with build tags
+  * machine: do not expose RESET_MAGIC_VALUE
+  * build: set circleci resource class to large for CI build
+  * machine: remove level triggered pin interrupts
+  * main: allow setting the baud rate for serial monitors (#3190)
+  * ci: build TinyGo using Go 1.19
+  * build: makes CI choose latest Go 1.18.x (#3143)
+  * esp32c3: remove unused UARTStopBits constants
+  * nrf: add ReadTemperature method
+  * rp2040: add machine.ReadTemperature
+  * machine: move SPI Tx function into separate file
+  * main: restore support for flashing Espressif chips
+  * machine: add KHz, MHz, GHz constants, deprecate TWI_FREQ_* constants
+  * machine: rename PinInputPullUp/PinInputPullDown
+  * go mod tidy
+  * nrf52840: do not export DFU_MAGIC_* constants
+  * machine: improve UARTParity slightly
+  * src/runtime: add a few more docs about the garbage collector
+  * targets: remove usbpid of bootloader
+  * xiao-ble: fix usbpid
+  * nrf: make GetRNG available to all chips
+  * wioterminal: remove serial-port setting of bootloader
+  * rp2040: do not use GetRNG in crypto/rand
+  * cgo: implement support for static functions
+  * runtime: ensure some headroom for the GC to run
+  * main: add serial port monitoring functionality
+  * wasm: documents memory constants
+  * interp: fix reading from external global
+  * all: add flag for setting the goroutine stack size
+  * go mod tidy
+  * wasm,wasi: make sure buffers returned by malloc are not freed until f… (#3148)
+  * wasi: adds more details about why wasmtime flags are added
+  * ci: use the Go Alpine image for building the release binary
+  * main: add support for stlink-dap programmer
+  * machine/nrf52840: implement RNG peripheral operation
+  * machine/rp2040: implement semi-random RNG based on ROSC based on pico-sdk
+  * build: uses setup-go@v3 to simplify cache config
+  * Remove unconnected simple LED pin from qtpy-rp2040
+  * Set default-stack-size to 4096, and remove NEOPIXELS pluralization for qtpy-rp2040
+  * build: updates to actions/cache@v3
+  * wasm: do not allow undefined symbols
+  * examples: adds summary of wasm examples and fixes callback bug
+  * machine: add PWM peripheral comments to pins
+  * add github.com/soypat/mu8 to corpus.yaml
+  * Update compileopts/target.go
+  * Update compileopts/target.go
+  * smoketest: add test to run `tinygo targets`
+  * main: improve error handling when loading target/*.json
+  * targets: fix build tag duplicates and add missing targets to smoke test
+  * windows: run more tests where supported
+  * windows: save and restore xmm registers when switching goroutines
+  * targets: remove hifive1-qemu target
+  * Add qtpy-rp2040 to TinyGo v0.25.0
+  * sync: implement map.LoadAndDelete
+  * runtime/pprof, runtime/trace: stub some additional functions
+  * reflect: implement CanInterface and fix string Index()
+  * wioterminal: add UART3 for RTL8720DN
+  * compileopts: fix windows/arm target triple
+  * main: remove GOARM from `tinygo info`
+  * flash: update serial package to v1.3.5 for latest bugfixes
+  * loader,crypto: fix link error for crypto/internal/boring/sig.StandardCrypto
+  * compiler: fix unsafe.Sizeof for chan and map values
+  * compiler: replace math aliases with intrinsics
+  * compiler: replace some math operation bodies with fast intrinsics
+  * all: drop support for Go 1.16 and Go 1.17
+  * p1am-100: remove duplicate build tags
+  * targets: fail fast on duplicate values in target field slices
+  * compiler: use the LLVM builtins everywhere
+  * machine: Add support for Adafruit QT2040 board.
+  * boards: Add XIAO ESP32C3 board
+  * runtime: implement resetTimer
+  * main: ignore ports with VID/PID if not candidates
+  * Add Pimoroni's Tufty2040 board
+  * runtime: improve reliability of timers test in CI
+  * runtime: add support for time.NewTimer and time.NewTicker
+  * testdata: add russross/blackfriday markdown parser to corpus
+  * compiler: fix incorrect DWARF type in some generic parameters
+  * src/testing: add support for -benchmem
+  * runtime: add MemStats.Mallocs and Frees
+  * runtime: add MemStats.TotalAlloc
+  * runtime: make MemStats available to leaking collector
+  * build: pin public_suffix Ruby gem to version 4.0.7
+  * make interp timeout configurable from command line
+  * Add aliases for edwards25519/field.feMul and field.feSquare
+  * runtime/pprof: add WriteHeapProfile
+  * goenv: support GOOS=android
+  * Fix skip message for missing emulators
+  * Fix for builds of tinygo using an Android host
+  * Fix tinygo-test with Go 1.19
+  * Add ErrProcessDone error
+  * nrf52: cleanup s140v7 uf2 targets
+  * nrf52: cleanup s140v6 uf2 targets
+  * all: update _test.go files for os.IsFoo changes
+  * all: update _test.go files for ioutil changes
+  * compileopts: use backticks for regexp to avoid extra escapes
+  * all: move from os.IsFoo to errors.Is(err, ErrFoo)
+  * all: remove calls to deprecated ioutil package
+  * syscall/darwin: add ENOTCONN
+  * os: add SyscallError.Timeout
+  * syscall: add WASI `{D,R}SYNC`, `NONBLOCK` FD flags
+  * syscall: group WASI consts by purpose
+  * net: sync net.go with Go 1.18 stdlib
+  * syscall: ensure correct C prototype WASI function signature
+  * ci: add check that TinyGo can be built using Homebrew LLVM
+  * all: rename assembly files to .S extension
+  * all: remove support for LLVM 13
+  * examples/wasm: improve Makefile
+  * all: format code according to Go 1.19 rules
+  * main: use tags parser from buildutil
+  * all: update version for next development iteration
+  * all: update to version 0.25.0
+  * Set internal linkage and keeping default visibility for anonymous functions
+  * wasm,wasi: stub runtime.buffered, runtime.getchar
+  * compiler: implement unsafe.Alignof and unsafe.Sizeof for generic code
+  * compiler: fix type names for generic named structs
+  * compiler: do not try to build generic functions
+  * compiler: add generics test case
+  * compiler: fix issue with methods on generic structs
+  * rp2040: make picoprobe default openocd interface
+  * machine/rp2040: turn off pullup/down when not input type not specified
+  * esp32: optimize SPI transmit
+  * usb/midi: add definition of MIDI note number
+  * build/linux/arm: pin dotenv Ruby gem to version 2.7.6
+  * esp32: fix WDT reset on the MCH2022 badge
+  * darwin: don't clobber X18 and FP registers
+  * target: add gopherbot and gopherbot2 aliases to simplify for newer users
+  * rp2040: usb: reset device address on bus reset
+  * rp2040: add resetBlock for USBCTRL
+  * main: change to ignore PortReset failures
+  * samd51: improve TRNG
+  * machine/usb/midi: add NoteOn, NoteOff, and SendCC methods for more complete API
+  * xiao-ble: add support for flash-1200-bps-reset
+  * usb: adjust buffer alignment (samd21, samd51, nrf52840)
+  * samd51: add support for DAC1
+  * boards: Add MCH2022 badge
+  * archFamily(): arm64 is aarch64, not arm; fixes #2985
+  * runtime: rename printuint to printuintptr
+  * machine: reorder pin definitions to improve pin list on tinygo.org
+  * esp32c3: provide hardware pin constants
+  * esp32: provide hardware pin constants
+  * esp8266: provide hardware pin constants like GPIO2
+  * clue: remove pins D21..D28
+  * avr: fix some apparent mistake in atmega1280/atmega2560 pin constants
+  * nrf51: define and use P0_xx constants
+  * rp2040: reduced allocations
+  * rp2040: add support for EnterBootloader()
+  * rp2040: change volatile access to dpsram
+  * machine/usb/midi: correct reference to handler function
+  * rp2040: change default for serial to usb
+  * machine/usb: refactorings to move functionality under machine/usb package
+  * Add support for printing slices via print/println
+  * usb: rename callback to handler to keep consistent
+  * usb: add support for midi
+  * build: run tests on drivers and bluetooth repos after successful docker dev build
+  * usb: add DTR and RTS to serialer interface
+  * rp2040: add support for usb (#2973)
+  * samd21,samd51,nrf52840: move usbcdc to machine/usb/cdc (#2972)
+  * ci: build Linux binary in Alpine container
+  * boards: add Challenger RP2040 LoRa
+  * all: git ignore smoketest output
+  * update list of boards supported to add Badger2040
+  * atsamd21,atsamd51,nrf52840: improve usb-device initialization
+  * samd21,samd51,nrf52840: refactor handleStandardSetup and initEndpoint (#2968)
+  * samd21,samd51,nrf52840: change usbSetup and sendZlp to public
+  * Initial support for XIAO RP2040
+  * samd21,samd51,nrf52840: refactor usb initialization
+  * samd21,samd51,nrf52840: unify bootloader entry process
+  * serial: use common initialization for serial
+  * feather-rp2040,macropad-rp2040: fix qspi-flash settings
+  * samd21, samd51: move USB-CDC code
+  * tests/runtime: add benchmarks for runtime memhash
+  * cgo: add a check that we don't use different LLVM versions
+  * cgo: fix default LLVM version to LLVM 14
+  * rp2040: add usb settings
+  * targets: make leveldb runtime hash default for wasi
+  * all: update version for next development iteration
+
+-------------------------------------------------------------------
+Wed Jul 27 16:35:49 UTC 2022 - jkowalczyk@suse.com
+
+- Initial package version 0.24.0:
+  * ci: use bash shell for making release artifacts
+  * ci: disable ccache on Windows
+  * all: update to version 0.24.0
+  * makefile: add badger2040, thingplus-rp2040 to smoketest
+  * all: use LLVM 14 by default
+  * rp2040: fix gpio interrupts
+  * darwin: print full size information for -size=full
+  * compiler: drop support for macos syscalls via inline assembly
+  * compiler: really define runtime.mem* as LLVM intrinsic wrappers
+  * compiler: really define runtime/volatile.* functions

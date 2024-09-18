@@ -1,0 +1,16 @@
+Index: tinygo-0.33.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
+===================================================================
+--- tinygo-0.33.0.orig/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
++++ tinygo-0.33.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
+@@ -2,9 +2,9 @@
+ 
+ package llvm
+ 
+-// #cgo CPPFLAGS: -I/usr/include/llvm-18 -I/usr/include/llvm-c-18 -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
++// #cgo CPPFLAGS: -I/usr/include/llvm -I/usr/include/llvm-c -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ // #cgo CXXFLAGS: -std=c++17
+-// #cgo LDFLAGS: -L/usr/lib/llvm-18/lib  -lLLVM-18
++// #cgo LDFLAGS: -L/usr/lib64 -lLLVM
+ import "C"
+ 
+ type run_build_sh int
