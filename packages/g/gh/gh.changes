@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep 18 06:15:39 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.57.0:
+  * Update go-gh to use api subdomains
+  * Use api subdomains for commands using ghinstance package
+  * Add test for extension install fallback to amd64 on darwin
+  * Stub hasRosetta for tests
+  * Refactor conditions
+  * suppress att verify output when no tty
+  * add att verify test for custom OIDC issuer
+  * build(deps): bump github.com/sigstore/sigstore-go from 0.6.1 to 0.6.2
+  * Suggest installing Rosetta when extension installation fails due to missing `darwin-arm64` binary, but a `darwin-amd64` binary is available
+  * This commit introduces tenancy aware attestation policy building.
+  * use sigstore-go v0.6.2
+  * check specific err
+  * check err in GetLocalAttestations
+  * go mod tidy
+  * check for sigstore-go validation errs
+  * get latest sigstore-go commit
+  * handle os.PathError in GetLocalAttestations
+  * Move non-integration test to different test file
+  * print verify err
+  * check for os.PathError
+  * dont print err content
+  * update bundle file parsing err messages
+  * Expand active test cases
+  * Added `--active` flag to the `gh auth status` command
+
+-------------------------------------------------------------------
 Tue Sep 10 04:52:02 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.56.0:
