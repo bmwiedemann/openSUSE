@@ -1,7 +1,7 @@
 #
 # spec file for package paps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 Name:           paps
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        A text to postscript converter through pango
 License:        LGPL-2.0-only
 Group:          System/Base
 URL:            https://github.com/dov/%{name}
 Source:         https://github.com/dov/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch1:         paps-cpi_scale_calculation.patch
-Patch2:         paps-manpage_units.patch
-Patch3:         paps-manpage_fixes.patch
-Patch4:         paps-gutter-width.patch
-Patch5:         paps-page_setup.patch
-Patch6:         paps-layout.patch
-Patch7:         paps-glib.patch
-Patch8:         paps-header_features.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch0:         paps-header_features.patch
+Patch1:         71.patch
+BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
+BuildRequires:  rpm_macro(meson)
 Requires:       glibc-locale
 
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
@@ -48,43 +44,23 @@ paps is a command line program for converting Unicode text encoded in UTF-8 to p
 
 %prep
 %setup -qT -b0 -n %{name}-%{version}
-%patch -P 1 -p0 -b .p1
-%patch -P 2 -p0 -b .p2
-%patch -P 3 -p0 -b .p3
-%patch -P 4 -p0 -b .p4
-%patch -P 5 -p0 -b .p5
-%patch -P 6 -p0 -b .p6
-%patch -P 7 -p0 -b .p7
-%patch -P 8 -p0 -b .p8
-mkdir -p config m4
-for c in /usr/share/aclocal*/{codeset,gettext,glibc21,iconv,isc-posix,lcmessage}.m4
-do
-    test -e $c || continue
-    cp -p $c m4/
-done
-for c in /usr/share/automake*/config.{guess,sub}
-do
-    test -e $c || continue
-    cp -p $c .
-done
-unset c
+%patch -P 0 -p0 -b .p0
+%patch -P 1 -p1 -b .p1
 
 %build
 %add_optflags -D_XOPEN_SOURCE
-echo "no" | glib-gettextize --force --copy
-intltoolize --copy --force --automake
-autoreconf --force --install -I config -I m4
-automake --copy --force-missing --add-missing
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
+%meson_install
 
 %files
 %defattr(-,root,root)
 %license COPYING.LIB
 %{_bindir}/*
 %{_mandir}/*/*
+%dir %{_datadir}/%{name}/
+%{_datadir}/%{name}/pango_markup.outlang
 
 %changelog

@@ -54,4 +54,33 @@
     <comment></comment>
     <requestid>1153339</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b00fa3555aad3aad7da65064ce63649</srcmd5>
+    <version>0.8.0</version>
+    <time>1726666073</time>
+    <user>anag+factory</user>
+    <comment>- Update to paps 0.8.0
+  * Fixed minor bugs from 0.7.9
+  * Fixed bug when using markup with char mapping and visible wrap marker.
+  * Added src-to-paps preprocessor scripts for conversion of source code
+    to paps through GNU Highlight.
+  * Switch to C++17
+  * The header and footers are now modifiable by a syntax borrowed from
+    python and the fmt library. E.g. the following command line shows
+    what is possible:
+     paps --header-left=&quot;{now:%Y-%m-%d %H:%M}&quot; --header-center=&quot;{path}&quot; \
+     --header-right=&quot;Page {page_idx:02d}/{num_pages:02d}&quot; --header -o hello.pdf paps.cc
+  * Add separation line option
+- Remove patches now upstream
+  * paps-cpi_scale_calculation.patch
+  * paps-glib.patch
+  * paps-gutter-width.patch
+  * paps-layout.patch
+  * paps-manpage_fixes.patch
+  * paps-manpage_units.patch
+  * paps-page_setup.patch
+- Port patch paps-header_features.patch
+- Add 71.patch to fix build with glib 2.82</comment>
+    <requestid>1201744</requestid>
+  </revision>
 </revisionlist>

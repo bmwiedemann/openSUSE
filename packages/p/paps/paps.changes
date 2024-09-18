@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:59:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to paps 0.8.0
+  * Fixed minor bugs from 0.7.9
+  * Fixed bug when using markup with char mapping and visible wrap marker.
+
+  * Added src-to-paps preprocessor scripts for conversion of source code
+    to paps through GNU Highlight.
+  * Switch to C++17
+  * The header and footers are now modifiable by a syntax borrowed from
+    python and the fmt library. E.g. the following command line shows
+    what is possible:
+     paps --header-left="{now:%Y-%m-%d %H:%M}" --header-center="{path}" \
+     --header-right="Page {page_idx:02d}/{num_pages:02d}" --header -o hello.pdf paps.cc
+  * Add separation line option
+- Remove patches now upstream
+  * paps-cpi_scale_calculation.patch
+  * paps-glib.patch
+  * paps-gutter-width.patch
+  * paps-layout.patch
+  * paps-manpage_fixes.patch
+  * paps-manpage_units.patch
+  * paps-page_setup.patch
+- Port patch paps-header_features.patch
+- Add 71.patch to fix build with glib 2.82
+
+-------------------------------------------------------------------
 Thu Feb 29 14:54:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
