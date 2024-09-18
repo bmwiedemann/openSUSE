@@ -211,4 +211,36 @@
     <comment></comment>
     <requestid>1191046</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8551e7671c907a91690c26c69e58edcf</srcmd5>
+    <version>0.17.1</version>
+    <time>1726666082</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1199079 from darix
+
+- Update to version 0.17.1
+  - Fix #2004: Correctly handle volume names in backup command on
+    Windows
+  - Fix #4945: Include missing backup error text with --json
+  - Fix #4953: Correctly handle long paths on older Windows
+    versions
+  - Fix #4957: Fix delayed cancellation of certain commands
+  - Fix #4958: Don't ignore metadata-setting errors during restore
+  - Fix #4969: Correctly restore timestamp for files with resource
+    forks on macOS
+  - Fix #4975: Prevent backup --stdin-from-command from panicking
+  - Fix #4980: Skip extended attribute processing on unsupported
+    Windows volumes
+  - Fix #5004: Fix spurious &quot;A Required Privilege Is Not Held by
+    the Client&quot; error
+  - Fix #5005: Fix rare failures to retry locking a repository
+  - Fix #5018: Improve HTTP/2 support for REST backend
+  - Chg #4953: Also back up files with incomplete metadata
+  - Enh #4795: Display progress bar for restore --verify
+  - Enh #4934: Automatically clear removed snapshots from cache
+  - Enh #4944: Print JSON-formatted errors during restore --json
+  - Enh #4959: Return exit code 12 for &quot;bad password&quot; errors
+  - Enh #4970: Make timeout for stuck requests customizable</comment>
+    <requestid>1201755</requestid>
+  </revision>
 </revisionlist>
