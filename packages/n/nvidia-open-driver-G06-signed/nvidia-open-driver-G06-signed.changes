@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:15:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- CUDA build: removed entries from pci_ids-555.42.06 since this is
+  doing more harm than benefit (bsc#1230368)
+
+-------------------------------------------------------------------
+Mon Sep  9 17:55:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- For CUDA (preamble file):
+  * added: Provides: nvidia-open-driver-G06-signed-cuda-kmp-$flavor = %version
+    which is needed for 'zypper install <package> = <version>'
+  * added: Provides/Conflicts: nvidia-open-driver-G06-signed-kmp-$flavor = %version
+    useful for containers
+
+-------------------------------------------------------------------
 Wed Aug 28 11:02:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - reverted CUDA update version to 560.x.y due to changes in CUDA
