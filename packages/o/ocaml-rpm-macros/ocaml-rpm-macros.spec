@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20231101
+Version:        20240909
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -328,6 +328,14 @@ tee %buildroot%_rpmmacrodir/macros.%name <<'_EOF_'
 	}\
 	# Some Coq files\
 	/\\/[^/]+\\.v$/{\
+		files_devel($0)\
+	}\
+	# Some Coq files\
+	/\\/[^/]+\\.vo$/{\
+		files_devel($0)\
+	}\
+	# Some Coq files\
+	/\\/[^/]+\\.glob$/{\
 		files_devel($0)\
 	}\
 	#\

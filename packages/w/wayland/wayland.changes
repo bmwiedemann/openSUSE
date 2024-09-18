@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 17 00:53:52 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to release 1.23.1:
+  * meson: Fix use of install_data() without specifying install_dir
+  * Put WL_DEPRECATED in front of the function declarations
+  * client: Handle proxies with no queue
+  * scanner: extract validator function emission to helper function
+  * scanner: fix validator for bitfields
+  * tests: add enum bitfield test
+
+-------------------------------------------------------------------
 Thu Jun 20 15:11:57 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Update to release 1.23.0

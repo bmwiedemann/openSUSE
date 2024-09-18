@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 18 05:56:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.4.2
+  * Extended ModelVisitor to make it usable as an helper class for 
+    generating content
+  * Fix failing URL normalization tests
+  * Disable protocols checking with elementpath v4.5.0
+  * Avoid the use of sys.version_info for checking results, better 
+    to extend the check to more values.
+- Drop support-new-python-3.12.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon Aug 26 02:42:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-python-3.12.patch:

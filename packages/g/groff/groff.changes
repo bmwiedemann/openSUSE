@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 13 15:15:09 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add groff-restore-hyphen-minus.patch (bsc#1226153)
+
+-------------------------------------------------------------------
 Wed Oct  4 23:01:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Define ext_man="%{?ext_man}%{!?ext_man:.gz}" shell variable in

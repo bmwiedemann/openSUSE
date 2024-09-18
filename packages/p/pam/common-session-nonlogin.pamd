@@ -8,7 +8,6 @@
 # non-interactive), but not if they don't create a new login session
 # (e.g. like cron, chfn, chsh, ...)
 #
-session	required	pam_limits.so
 session	required	pam_unix.so	try_first_pass
 session optional	pam_umask.so
 session optional	pam_env.so

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 17 07:34:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.34.0
+  * **auth:** Update get_client_ssl_credentials to support X.509 workload certs (#1558)
+  * Retry token request on retryable status code (#1563)
+- from version 2.33.0
+  * Implement async `StaticCredentials` using access tokens (#1559)
+  * Implement base classes for credentials and request sessions (#1551)
+  * **metadata:** Enhance retry logic for metadata server access in _metadata.py (#1545)
+  * Update argument for Credentials initialization (#1557)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Wed Jul 10 08:17:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.32.0

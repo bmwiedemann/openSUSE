@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 18 09:07:27 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20240918.9e0efea:
+  * dbus-services: gdm: temporarily whitelist old version (bsc#1230466)
+  * dbus-services: sssd: temporarily whitelist old version (bsc#1230051)
+  * sysctl-whitelist: traefik: increase socket buffers (bsc#1230555)
+
+-------------------------------------------------------------------
+Thu Sep 12 16:00:23 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20240912.cce07f4:
+  * dbus-services: gdm update (bsc#1230466)
+  * pam-modules: pam_limits.so moved from `pam` to `pam-extra` (bsc#1230447)
+  * polkit-rules: add whitelisting for sssd smartcard access (bsc#1230051)
+  * dbus-services: adjust digests for sssd (bsc#1230051)
+
+-------------------------------------------------------------------
 Tue Sep 03 11:16:39 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.6.1+git20240903.3c1fddf:

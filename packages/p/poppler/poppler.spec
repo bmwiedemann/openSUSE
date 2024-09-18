@@ -104,6 +104,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %package -n     libpoppler%{poppler_sover}
 Summary:        PDF Rendering Library
 Group:          System/Libraries
+Recommends:     ghostscript-fonts-std
 Recommends:     poppler-data >= %{poppler_data_version}
 
 %description -n libpoppler%{poppler_sover}

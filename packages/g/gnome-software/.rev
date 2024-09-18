@@ -1190,4 +1190,14 @@ New stable release</comment>
     <comment></comment>
     <requestid>1193418</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>2488a505faaa3139ab9759f9623b7dca</srcmd5>
+    <version>46.5</version>
+    <time>1726665993</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.5:
+  + Reduce power usage when the main window is closed.
+  + Updated translations. (forwarded request 1201266 from iznogood)</comment>
+    <requestid>1201598</requestid>
+  </revision>
 </revisionlist>

@@ -2373,4 +2373,22 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   Upstream now does this. (forwarded request 1193496 from mgorse)</comment>
     <requestid>1193509</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>0114d355b886bb17b5007c408d2f2b39</srcmd5>
+    <version>46.5</version>
+    <time>1726665989</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.5:
+  + Fix smartcard logins
+  + Fix glitch when quick settings menu animation is interrupted
+  + Fix new wifi connections for restricted users
+  + Do not disable required animations
+  + Fix showing pending PAM messages on login screen
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop gnome-shell-private-connection.patch: Should not be needed
+  anymore after changes upstream. (forwarded request 1201264 from iznogood)</comment>
+    <requestid>1201597</requestid>
+  </revision>
 </revisionlist>

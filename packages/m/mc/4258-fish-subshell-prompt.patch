@@ -1,10 +1,10 @@
 ---
- src/subshell/common.c |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ src/subshell/common.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 --- a/src/subshell/common.c
 +++ b/src/subshell/common.c
-@@ -713,7 +713,7 @@ parse_subshell_prompt_string (const char
+@@ -715,7 +715,7 @@ parse_subshell_prompt_string (const char
  
      /* Extract the prompt from the shell output */
      for (i = 0; i < bytes; i++)

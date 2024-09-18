@@ -2035,4 +2035,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   use gcc13 here</comment>
     <requestid>1196456</requestid>
   </revision>
+  <revision rev="193" vrev="8">
+    <srcmd5>35050c3d8cd6be8883b2db7c5a459c17</srcmd5>
+    <version>29.4</version>
+    <time>1726666008</time>
+    <user>anag+factory</user>
+    <comment>- Add patch emacs-gcc14.patch to make flymake-tests work even with
+  gcc14 (backport from upstream master)</comment>
+    <requestid>1201403</requestid>
+  </revision>
 </revisionlist>

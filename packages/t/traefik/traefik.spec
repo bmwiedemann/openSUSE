@@ -36,6 +36,7 @@ Source1:        vendor.tar.gz
 Source2:        %{name}.service
 Source3:        %{name}.yml
 Source4:        %{name}-user.conf
+Source5:        90-%{name}.conf
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -94,6 +95,13 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.yml
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/conf.d
 
+# install configuration to increase UDP buffer sizes
+install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_prefix}/lib/sysctl.d/90-%{name}.conf
+
+# acme storage
+install -d -m 0700 %{buildroot}%{_localstatedir}/lib/%{name}
+touch  %{buildroot}%{_localstatedir}/lib/%{name}/acme.json
+
 # logging
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 
@@ -105,6 +113,30 @@ mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 %{fillup_only -n %{name}}
 # fix ownership for config and logging directory
 chown -R traefik: %{_sysconfdir}/%{name} %{_localstatedir}/log/%{name}
+
+# try to move acme.json file from old directory to new
+if [ -e "%{_sysconfdir}/%{name}/acme.json" ] ; then
+	if [ -s "%{_sysconfdir}/%{name}/acme.json" ] ; then
+		if [ -s "%{_localstatedir}/lib/%{name}/acme.json" ] ; then
+			# if not-empty acme.json files exists on old and new location, write warning
+			echo "A non-empty acme.json file exists in:" 1>&2
+			echo "%{_sysconfdir}/%{name} and %{_localstatedir}/lib/%{name}" 1>&2
+			echo "Please clean up this situation and place the correct file in %{_localstatedir}/lib/%{name}" 1>&2
+		else
+			# if not-empty acme.json exists on old location and no file or empty file exists on new location
+			# move it to the new location
+			mv "%{_sysconfdir}/%{name}/acme.json" "%{_localstatedir}/lib/%{name}/acme.json"
+			sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
+		fi
+	else
+		# remove empty acme.json file from old location
+		rm "%{_sysconfdir}/%{name}/acme.json"
+		sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
+	fi
+fi
+
+# fix ownership for acme file
+chown -R traefik: %{_localstatedir}/lib/%{name}/*
 
 %preun
 %service_del_preun %{name}.service
@@ -121,10 +153,14 @@ chown -R traefik: %{_sysconfdir}/%{name} %{_localstatedir}/log/%{name}
 
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
+%{_prefix}/lib/sysctl.d/90-%{name}.conf
 
-%defattr(0660, traefik, traefik, 0750)
+%defattr(0600, traefik, traefik, 0700)
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/conf.d
+
+%dir %{_localstatedir}/lib/%{name}
+%config(noreplace) %{_localstatedir}/lib/%{name}/acme.json
 
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
 %dir %{_localstatedir}/log/%{name}

@@ -772,4 +772,14 @@
     <comment></comment>
     <requestid>1191743</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>23e9babfaeb441bf095716358dd04d8f</srcmd5>
+    <version>3.50.5</version>
+    <time>1726665995</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.50.5:
+  + goaimapsmtpprovider: quick fix for yahoo auto-detect
+  + Updated translations. (forwarded request 1201267 from iznogood)</comment>
+    <requestid>1201599</requestid>
+  </revision>
 </revisionlist>

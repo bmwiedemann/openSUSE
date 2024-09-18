@@ -1,0 +1,42 @@
+Index: b/tmac/man.local
+===================================================================
+--- a/tmac/man.local
++++ b/tmac/man.local
+@@ -2,6 +2,16 @@
+ .\"
+ .\" Put local modifications to groff_man(7)'s behavior here.
+ .\"
++.\" With groff 1.23.0 some characters are mapped to non-Basic Latin code points
++.\" in output. Restore old behavior in order to keep character search and copy-paste
++.\" working.
++.if '\*[.T]'utf8' \{\
++.  char ' \[aq]
++.  char - \-
++.  char ^ \[ha]
++.  char ` \[ga]
++.  char ~ \[ti]
++.\}
+ .\" Change "0" to "1" to enable OSC 8 links on SGR-capable grotty(1)
+ .\" output devices.
+ .if !'\*[.T]'html' \
+Index: b/tmac/mdoc.local
+===================================================================
+--- a/tmac/mdoc.local
++++ b/tmac/mdoc.local
+@@ -2,6 +2,16 @@
+ .\"
+ .\" Put local modifications to groff_mdoc(7)'s behavior here.
+ .\"
++.\" With groff 1.23.0 some characters are mapped to non-Basic Latin code points
++.\" in output. Restore old behavior in order to keep character search and copy-paste
++.\" working.
++.if '\*[.T]'utf8' \{\
++.  char ' \[aq]
++.  char - \-
++.  char ^ \[ha]
++.  char ` \[ga]
++.  char ~ \[ti]
++.\}
+ .\" "CW" is not a portable font name, but some man pages use it anyway.
+ .\" Uncomment this to suppress warnings produced by such pages.  This
+ .\" test remaps the font to roman ("R") on nroff (terminal) devices. You

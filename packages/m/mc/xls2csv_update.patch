@@ -2,10 +2,12 @@ Author: Adam Majer
 Upstream: http://midnight-commander.org/ticket/3912
 Bugzilla: 1087708
 
-Index: mc-4.8.26/misc/ext.d/doc.sh.in
-===================================================================
---- mc-4.8.26.orig/misc/ext.d/doc.sh.in
-+++ mc-4.8.26/misc/ext.d/doc.sh.in
+---
+ misc/ext.d/doc.sh.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/misc/ext.d/doc.sh.in
++++ b/misc/ext.d/doc.sh.in
 @@ -74,7 +74,7 @@ do_view_action() {
              elinks -dump "$tmp/page.html"
              rm -rf "$tmp"

@@ -1284,4 +1284,20 @@
     <comment></comment>
     <requestid>1192585</requestid>
   </revision>
+  <revision rev="141" vrev="4">
+    <srcmd5>3aa22d920a49810355cdce1226139670</srcmd5>
+    <version>1.6.1</version>
+    <time>1726665961</time>
+    <user>anag+factory</user>
+    <comment>- baselibs.conf: add pam-userdb
+
+- pam_limits-systemd.patch: update to final PR
+
+- Add systemd-logind support to pam_limits (pam_limits-systemd.patch)
+- Remove /usr/etc/pam.d, everything should be migrated
+- Remove pam_limits from default common-sessions* files. pam_limits
+  is now part of pam-extra and not in our default generated config.
+- pam_issue-systemd.patch: only count class user sessions</comment>
+    <requestid>1200265</requestid>
+  </revision>
 </revisionlist>

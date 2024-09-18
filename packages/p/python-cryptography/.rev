@@ -1141,4 +1141,12 @@
 - Remove unneeded use-offline-build.patch</comment>
     <requestid>1193532</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>c3ca03218ab607395f863bc76ea1437c</srcmd5>
+    <version>43.0.0</version>
+    <time>1726666007</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201401</requestid>
+  </revision>
 </revisionlist>

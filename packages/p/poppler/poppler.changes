@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:55:59 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Poppler can load ghostscript fonts (n022003l.pfb and the like)
+  so the package now recommends the ghostscript-fonts-std package
+  (boo#1230636).
+
+-------------------------------------------------------------------
 Sat Aug  3 10:25:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add Provides for binaries in poppler-tools package

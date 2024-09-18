@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} > 1500
 %bcond_without js
 %else
@@ -50,7 +51,11 @@ BuildRequires:  pkg-config
 BuildRequires:  ruby-devel
 BuildRequires:  tre-devel
 BuildRequires:  zlib-devel
+%ifarch ppc64le
+BuildRequires:  pkgconfig(lua)
+%else
 BuildRequires:  pkgconfig(luajit)
+%endif
 Provides:       web_browser
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %perl_requires
@@ -102,7 +107,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --without-guile \
     --with-perl \
     --without-python \
+%ifarch ppc64le
+    --with-luapkg=lua \
+%else
     --with-luapkg=luajit \
+%endif
     --with-ruby \
     --without-gnutls \
     --without-x

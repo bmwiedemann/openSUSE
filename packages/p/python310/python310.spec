@@ -108,7 +108,7 @@ Obsoletes:      python39%{?1:-%{1}}
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.14
+Version:        3.10.15
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -178,11 +178,6 @@ Patch18:        bpo-37596-make-set-marshalling.patch
 # PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
 # marshal: Stabilize FLAG_REF usage
 Patch19:        gh-78214-marshal_stabilize_FLAG_REF.patch
-# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API), from gh#python/cpython!105127
-# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
-Patch20:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM fix-sphinx-72.patch gh#python/cpython#97950
 # This is a patch with a lot of PR combined to make the doc work with
 # sphinx 7.2
@@ -200,18 +195,15 @@ Patch21:        fix-sphinx-72.patch
 # PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
 Patch22:        CVE-2023-52425-libexpat-2.6.0-backport.patch
-# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
-# rearrange definition of private v global IP addresses
-Patch23:        CVE-2024-4032-private-IP-addrs.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
 Patch24:        bso1227999-reproducible-builds.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
-# prevent email header injection, patch from gh#python/cpython!122608
-Patch25:        CVE-2024-6923-email-hdr-inject.patch
-# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
-# avoid denial of service in zipfile
-Patch26:        CVE-2024-8088-inf-loop-zipfile_Path.patch
+# PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
+# Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
+Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
+# PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
+# status_iterator method moved between the Sphinx versions
+Patch28:        sphinx-802.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -486,13 +478,11 @@ other applications.
 %patch -p1 -P 17
 %patch -p1 -P 18
 %patch -p1 -P 19
-%patch -p1 -P 20
 %patch -p1 -P 21
 %patch -p1 -P 22
-%patch -p1 -P 23
 %patch -p1 -P 24
-%patch -p1 -P 25
-%patch -p1 -P 26
+%patch -p1 -P 27
+%patch -p1 -P 28
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

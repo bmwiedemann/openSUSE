@@ -4933,4 +4933,21 @@ oddjob-gpupdate isn't blocked)</comment>
   * configs/openSUSE/users-groups.toml: add nqptp (boo#1213060) (forwarded request 1198452 from wfrisch)</comment>
     <requestid>1199225</requestid>
   </revision>
+  <revision rev="484" vrev="1">
+    <srcmd5>2493124f6fc2d1d2b8331d9bb1c1a75b</srcmd5>
+    <version>2.6.1+git20240918.9e0efea</version>
+    <time>1726665962</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20240918.9e0efea:
+  * dbus-services: gdm: temporarily whitelist old version (bsc#1230466)
+  * dbus-services: sssd: temporarily whitelist old version (bsc#1230051)
+  * sysctl-whitelist: traefik: increase socket buffers (bsc#1230555)
+- Update to version 2.6.1+git20240912.cce07f4:
+  * dbus-services: gdm update (bsc#1230466)
+  * pam-modules: pam_limits.so moved from `pam` to `pam-extra` (bsc#1230447)
+  * polkit-rules: add whitelisting for sssd smartcard access (bsc#1230051)
+  * dbus-services: adjust digests for sssd (bsc#1230051)
+</comment>
+    <requestid>1201752</requestid>
+  </revision>
 </revisionlist>

@@ -845,4 +845,16 @@
   * Move pam_limits before pam_systemd</comment>
     <requestid>1199133</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>71abd7dad6009e494a2b00cb6713499d</srcmd5>
+    <version>2.11+git.20240911</version>
+    <time>1726665960</time>
+    <user>anag+factory</user>
+    <comment>- Add PreRequires for pam-extra, several other packages depend on
+  that pam_limits is installed and enabled by default
+
+- Update to version 2.11+git.20240911:
+  * Only add pam_limits if available</comment>
+    <requestid>1200145</requestid>
+  </revision>
 </revisionlist>

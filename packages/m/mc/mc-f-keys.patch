@@ -1,8 +1,10 @@
-Index: lib/tty/key.c
-===================================================================
---- lib/tty/key.c.orig	2010-07-05 21:12:51.000000000 +0200
-+++ lib/tty/key.c	2010-07-07 11:35:25.871011522 +0200
-@@ -300,6 +300,11 @@ static key_define_t xterm_key_defines[]
+---
+ lib/tty/key.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/lib/tty/key.c
++++ b/lib/tty/key.c
+@@ -304,6 +304,11 @@ static key_define_t xterm_key_defines[]
      {KEY_F (9), ESC_STR "[20~", MCKEY_NOACTION},
      {KEY_F (10), ESC_STR "[21~", MCKEY_NOACTION},
  

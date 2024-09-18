@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:09:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.5:
+  + Fix smartcard logins
+  + Fix glitch when quick settings menu animation is interrupted
+  + Fix new wifi connections for restricted users
+  + Do not disable required animations
+  + Fix showing pending PAM messages on login screen
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop gnome-shell-private-connection.patch: Should not be needed
+  anymore after changes upstream.
+
+-------------------------------------------------------------------
 Mon Aug 12 17:28:18 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Drop gs-fate318433-prevent-same-account-multi-logins.patch.

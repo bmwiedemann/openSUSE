@@ -1,8 +1,10 @@
-Index: m4.include/mc-with-screen-ncurses.m4
-===================================================================
---- m4.include/mc-with-screen-ncurses.m4.orig	2010-07-05 21:12:51.000000000 +0200
-+++ m4.include/mc-with-screen-ncurses.m4	2010-07-07 17:20:37.294701000 +0200
-@@ -9,7 +9,14 @@ AC_DEFUN([MC_CHECK_NCURSES_BY_PATH], [
+---
+ m4.include/mc-with-screen-ncurses.m4 |   12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+--- a/m4.include/mc-with-screen-ncurses.m4
++++ b/m4.include/mc-with-screen-ncurses.m4
+@@ -9,7 +9,14 @@ AC_DEFUN([mc_CHECK_NCURSES_BY_PATH], [
      fi
  
      if test x"$ac_ncurses_lib_path" != x; then
@@ -18,7 +20,7 @@ Index: m4.include/mc-with-screen-ncurses.m4
      fi
  
      saved_CPPFLAGS="$CPPFLAGS"
-@@ -32,9 +39,6 @@ AC_DEFUN([MC_CHECK_NCURSES_BY_PATH], [
+@@ -32,9 +39,6 @@ AC_DEFUN([mc_CHECK_NCURSES_BY_PATH], [
              if test x"$ac_ncurses_inc_path" = x; then
                  ac_ncurses_inc_path="-I/usr/include"
              fi

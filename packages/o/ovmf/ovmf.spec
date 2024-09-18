@@ -69,6 +69,8 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
 Patch10:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
+# Bug 1230587 - OVMF 202405 hangs due to missing fix
+Patch11:        %{name}-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}

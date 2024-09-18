@@ -1327,4 +1327,12 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     default choices of icons now used in admonition titles in PDF</comment>
     <requestid>1188421</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>c2a32e4ddb769b2d612de92696287690</srcmd5>
+    <version>8.0.2</version>
+    <time>1726665964</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1198296</requestid>
+  </revision>
 </revisionlist>

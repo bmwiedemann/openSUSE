@@ -98,6 +98,10 @@ Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
 # https://github.com/linux-pam/linux-pam/pull/816
 Patch2:         pam-bsc1194818-cursor-escape.patch
+# https://github.com/linux-pam/linux-pam/pull/826
+Patch3:         pam_limits-systemd.patch
+# https://github.com/linux-pam/linux-pam/pull/825
+Patch4:         pam_issue-systemd.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -150,6 +154,7 @@ Group:          System/Libraries
 BuildRequires:  systemd-devel >= 254
 BuildRequires:  pam-devel
 Provides:	pam:%{_sbindir}/pam_timestamp_check
+Provides:       pam:%{_pam_moduledir}/pam_limits.so
 
 %description -n pam-extra
 PAM (Pluggable Authentication Modules) is a system security tool that
@@ -335,12 +340,13 @@ echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 %endif
 
 %if !%{build_main}
-rm -rf %{buildroot}{%{_sysconfdir},%{_distconfdir},%{_sbindir}/{f*,m*,pam_n*,pw*,u*},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
+rm -rf %{buildroot}{%{_distconfdir}/environment,%{_pam_secdistconfdir}/{a,f,g,n,p,s,t}*}
+rm -rf %{buildroot}{%{_sysconfdir},%{_sbindir}/{f*,m*,pam_n*,pw*,u*},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
 rm -rf %{buildroot}{%{_includedir},%{_libdir}/{libpam*,pkgconfig},%{_pam_vendordir},%{_rpmmacrodir},%{_tmpfilesdir},%{_unitdir}/pam_namespace.service}
-rm -rf %{buildroot}%{_pam_moduledir}/pam_{a,b,c,d,e,f,g,h,j,k,l,m,n,o,p,q,r,s,v,w,x,y,z,time.,tt,um,un,usertype}*
+rm -rf %{buildroot}%{_pam_moduledir}/pam_{a,b,c,d,e,f,g,h,j,k,la,lis,lo,m,n,o,p,q,r,s,v,w,x,y,z,time.,tt,um,un,usertype}*
 %else
 # Delete files for extra package
-rm -rf  %{buildroot}{%{_pam_moduledir}/pam_issue.so,%{_pam_moduledir}/pam_timestamp.so,%{_sbindir}/pam_timestamp_check}
+rm -rf  %{buildroot}{%{_pam_moduledir}/pam_limits.so,%{_pam_secdistconfdir}/limits.conf,%{_pam_moduledir}/pam_issue.so,%{_pam_moduledir}/pam_timestamp.so,%{_sbindir}/pam_timestamp_check}
 
 # Create filelist with translations
 %find_lang Linux-PAM
@@ -382,9 +388,6 @@ done
 %dir %{_pam_vendordir}
 %dir %{_pam_secconfdir}
 %dir %{_pam_secdistconfdir}
-%dir %{_pam_secdistconfdir}/limits.d
-# /usr/etc/pam.d is for compat reasons
-%dir %{_distconfdir}/pam.d
 %dir %{_prefix}/lib/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_pam_confdir}/other
@@ -398,7 +401,6 @@ done
 %{_pam_secdistconfdir}/access.conf
 %{_pam_secdistconfdir}/group.conf
 %{_pam_secdistconfdir}/faillock.conf
-%{_pam_secdistconfdir}/limits.conf
 %{_pam_secdistconfdir}/pam_env.conf
 %if %{with selinux}
 %{_pam_secdistconfdir}/sepermit.conf
@@ -430,7 +432,6 @@ done
 %{_pam_moduledir}/pam_ftp.so
 %{_pam_moduledir}/pam_group.so
 %{_pam_moduledir}/pam_keyinit.so
-%{_pam_moduledir}/pam_limits.so
 %{_pam_moduledir}/pam_listfile.so
 %{_pam_moduledir}/pam_localuser.so
 %{_pam_moduledir}/pam_loginuid.so
@@ -491,6 +492,10 @@ done
 %if %{build_extra}
 %files -n pam-extra
 %defattr(-,root,root,755)
+%dir %{_pam_secdistconfdir}
+%dir %{_pam_secdistconfdir}/limits.d
+%{_pam_secdistconfdir}/limits.conf
+%{_pam_moduledir}/pam_limits.so
 %{_pam_moduledir}/pam_issue.so
 %{_pam_moduledir}/pam_timestamp.so
 %{_sbindir}/pam_timestamp_check

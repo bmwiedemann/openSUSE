@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 16 06:56:21 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to apply the missing fix for openSUSE Leap
+  (bsc#1210382)
+  * 86b73d1 Fix that bootx64.efi is not updated on Leap
+- Update shim-install to use the 'removable' way for SL-Micro
+  (bsc#1230316)
+  * 433cc4e Always use the removable way for SL-Micro
+
+-------------------------------------------------------------------
 Tue Jun 25 04:12:39 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 - Update asc files of shim-15.8 after being signed back from 

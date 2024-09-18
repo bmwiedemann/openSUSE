@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.31
+Version:        4.8.32
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -38,9 +38,6 @@ Patch21:        mc-extfs-helpers-deb.patch
 # add patch. bnc#856501
 # http://www.midnight-commander.org/ticket/3128
 Patch22:        mc-vfs-fish-deleted_source_file.patch
-# changed mc-extfs-iso9660-xorriso.patch
-# to reflect upstream fix
-Patch23:        mc-extfs-iso9660-xorriso.patch
 #Debian fixes
 Patch32:        20_wrong_path_to_wrappers.patch
 # PATCH-FIX-UPSTREAM mc-multi-press-f-keys.patch mc287 sbrabec@suse.cz - Fixed Esc + Numeral F-key emulation.
@@ -94,25 +91,7 @@ isoinfo (from mkisofs) or xorriso for the iso:// extension.
 
 %prep
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOURCE0}" | sha256sum -c
-%setup -q
-%patch -P 0
-%patch -P 61
-%patch -P 62
-%patch -P 63
-%patch -P 64
-%patch -P 69
-%patch -P 71 -p1
-%patch -P 12 -p1
-%patch -P 16
-%patch -P 20
-%patch -P 21
-%patch -P 22 -p1
-%patch -P 23
-%patch -P 32
-%patch -P 41 -p1
-%patch -P 42 -p1
-%patch -P 52 -p1
-%patch -P 100 -p1
+%autosetup -p1
 
 %build
 %{?!make_build:%define make_build make -O %_smp_mflags V=1 VERBOSE=1}

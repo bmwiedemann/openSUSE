@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:47:37 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-gcc14.patch to make flymake-tests work even with
+  gcc14 (backport from upstream master) 
+
+-------------------------------------------------------------------
 Wed Aug 28 11:03:31 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - flymake-tests fails with gcc14 on 32bit architectures ... therefore

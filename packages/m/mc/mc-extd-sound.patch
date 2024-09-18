@@ -1,7 +1,9 @@
-Index: misc/ext.d/sound.sh
-===================================================================
---- misc/ext.d/sound.sh.orig
-+++ misc/ext.d/sound.sh
+---
+ misc/ext.d/sound.sh |   34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
+
+--- a/misc/ext.d/sound.sh
++++ b/misc/ext.d/sound.sh
 @@ -6,22 +6,40 @@
  action=$1
  filetype=$2

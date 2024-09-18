@@ -861,4 +861,41 @@
 </comment>
     <requestid>1197437</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>637cd5f0f1164273e6a44cbd4517c406</srcmd5>
+    <version>3.10.15</version>
+    <time>1726665965</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.10.15:
+  - Tests
+    - gh-112769: The tests now correctly compare zlib version
+      when :const:`zlib.ZLIB_RUNTIME_VERSION` contains
+      non-integer suffixes. For example zlib-ng defines the
+      version as ``1.3.0.zlib-ng``.
+    - gh-117187: Fix XML tests for vanilla Expat &lt;2.6.0.
+    - gh-100454: Fix SSL tests CI for OpenSSL 3.1+
+  - Security
+    - gh-123678: Upgrade libexpat to 2.6.3
+    - gh-121957: Fixed missing audit events around interactive
+      use of Python, now also properly firing for ``python -i``,
+      as well as for ``python -m asyncio``. The event in question
+      is ``cpython.run_stdin``.
+    - gh-122133: Authenticate the socket connection for the
+      ``socket.socketpair()`` fallback on platforms where
+      ``AF_UNIX`` is not available like Windows. Patch by
+      Gregory P. Smith &lt;greg@krypto.org&gt; and Seth Larson
+      &lt;seth@python.org&gt;. Reported by Ellie &lt;el@horse64.org&gt;
+    - gh-121285: Remove backtracking from tarfile header
+      parsing for ``hdrcharset``, PAX, and GNU sparse headers
+      (bsc#1230227, CVE-2024-6232).
+    - gh-118486: :func:`os.mkdir` on Windows now accepts
+      *mode* of ``0o700`` to restrict the new directory to
+      the current user. This fixes CVE-2024-4030 affecting
+      :func:`tempfile.mkdtemp` in scenarios where the base
+      temporary directory is more permissive than the default.
+    - gh-116741: Update bundled libexpat to 2.6.2
+  - Library
+    - gh-123693: Use platform-agnostic behavior when computing</comment>
+    <requestid>1199711</requestid>
+  </revision>
 </revisionlist>

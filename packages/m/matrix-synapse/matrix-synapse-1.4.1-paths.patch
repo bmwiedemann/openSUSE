@@ -15,7 +15,7 @@ Index: synapse/synapse/config/key.py
 ===================================================================
 --- synapse.orig/synapse/config/key.py
 +++ synapse/synapse/config/key.py
-@@ -110,7 +110,7 @@ class KeyConfig(Config):
+@@ -117,7 +117,7 @@ class KeyConfig(Config):
              signing_key_path = config.get("signing_key_path")
              if signing_key_path is None:
                  signing_key_path = os.path.join(
@@ -24,7 +24,7 @@ Index: synapse/synapse/config/key.py
                  )
  
              self.signing_key = self.read_signing_keys(signing_key_path, "signing_key")
-@@ -183,7 +183,7 @@ class KeyConfig(Config):
+@@ -190,7 +190,7 @@ class KeyConfig(Config):
          generate_secrets: bool = False,
          **kwargs: Any,
      ) -> str:
@@ -37,20 +37,20 @@ Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -149,7 +149,7 @@ class LoggingConfig(Config):
+@@ -156,7 +156,7 @@ class LoggingConfig(Config):
      def generate_config_section(
          self, config_dir_path: str, server_name: str, **kwargs: Any
      ) -> str:
 -        log_config = os.path.join(config_dir_path, server_name + ".log.config")
 +        log_config = os.path.join('/etc/matrix-synapse/', server_name + ".log.config")
-         return (
-             """\
+         return """\
          log_config: "%(log_config)s"
+         """ % locals()
 Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -793,7 +793,7 @@ class ServerConfig(Config):
+@@ -799,7 +799,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  

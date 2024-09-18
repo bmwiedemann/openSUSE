@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  9 09:09:09 UTC 2024 - ohering@suse.de
+
+- Package also *.vo and *.glob, for Coq
+
+-------------------------------------------------------------------
 Tue Oct 31 21:44:55 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Increase stack size limit for riscv64 like for ppc64(le).

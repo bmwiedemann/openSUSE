@@ -331,4 +331,19 @@
     <comment></comment>
     <requestid>1193414</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a7d943e7ac73339dd34f8642e50cdaaf</srcmd5>
+    <version>1.5.4</version>
+    <time>1726665982</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.4:
+  + AdwAboutDialog/Window: Support non-deprecated GPL-2/3.0-only
+    SPDX IDs
+  + AdwHeaderBar: Fix back button menu picking up phantom pages in
+    some situations
+  + AdwTabBar/Overview: Fix 2 crashes with drag-n-drop
+  + Stylesheet: Fix scroll undershoot in dropdowns and emoji picker
+  + Updated translations. (forwarded request 1200871 from iznogood)</comment>
+    <requestid>1201593</requestid>
+  </revision>
 </revisionlist>

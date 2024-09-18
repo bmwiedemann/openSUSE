@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 13 13:13:13 UTC 2024 - olaf@aepfle.de
+
+- To create rckexec-reload, the service binary is required at
+  build time. This binary is provided by aaa_base. Make sure this
+  package is available during build.
+
+-------------------------------------------------------------------
 Mon Aug 12 11:15:32 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - update to 2.0.29:

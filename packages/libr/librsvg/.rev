@@ -1181,4 +1181,13 @@
     <comment></comment>
     <requestid>1194672</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>ed8338ffb5d74a1ee7bfbb618cafc712</srcmd5>
+    <version>2.58.4</version>
+    <time>1726665979</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.58.4:
+  + Fix regression when using an SVG inside a feImage element. (forwarded request 1200697 from iznogood)</comment>
+    <requestid>1201592</requestid>
+  </revision>
 </revisionlist>

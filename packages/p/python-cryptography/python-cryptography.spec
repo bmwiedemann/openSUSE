@@ -1,5 +1,5 @@
 #
-# spec file for package python-cryptography
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -95,6 +95,8 @@ functions.
 export CARGO_NET_OFFLINE=true
 export CARGO_PROFILE_RELEASE_DEBUG=true
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
+# https://pyo3.rs/main/building-and-distribution#configuring-the-python-version
+%python_expand export PYO3_PYTHON="%{_bindir}/$python"
 cd src/rust
 tar xfv %{S:2}
 rm -v Cargo.lock

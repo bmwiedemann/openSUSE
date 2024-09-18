@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 12 07:50:55 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- baselibs.conf: add pam-userdb
+
+-------------------------------------------------------------------
+Tue Sep 10 08:22:02 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam_limits-systemd.patch: update to final PR
+
+-------------------------------------------------------------------
+Fri Sep  6 08:13:22 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add systemd-logind support to pam_limits (pam_limits-systemd.patch)
+- Remove /usr/etc/pam.d, everything should be migrated
+- Remove pam_limits from default common-sessions* files. pam_limits
+  is now part of pam-extra and not in our default generated config.
+- pam_issue-systemd.patch: only count class user sessions
+
+-------------------------------------------------------------------
 Wed Aug  7 14:44:56 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Prevent cursor escape from the login prompt [bsc#1194818]

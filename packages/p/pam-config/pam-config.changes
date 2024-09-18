@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 11 13:54:08 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add PreRequires for pam-extra, several other packages depend on
+  that pam_limits is installed and enabled by default
+
+-------------------------------------------------------------------
+Wed Sep 11 07:58:07 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.11+git.20240911:
+  * Only add pam_limits if available
+
+-------------------------------------------------------------------
 Fri Sep 06 08:20:00 UTC 2024 - kukuk@suse.com
 
 - Update to version 2.11+git.20240906:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 09:27:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Use the %lang_package macro for kwallet-tools-lang (boo#1230570)
+
+-------------------------------------------------------------------
 Mon May  6 11:33:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0

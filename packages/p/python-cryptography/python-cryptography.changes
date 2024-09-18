@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 15 08:51:52 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building on SLE based distributions
+
+-------------------------------------------------------------------
 Mon Aug 12 20:36:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix building optimized binaries with debuginfo.

@@ -1,8 +1,10 @@
-Index: mc-4.8.31/src/filemanager/file.c
-===================================================================
---- mc-4.8.31.orig/src/filemanager/file.c
-+++ mc-4.8.31/src/filemanager/file.c
-@@ -2744,6 +2744,8 @@ copy_file_file (file_op_total_context_t
+---
+ src/filemanager/file.c |   12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+--- a/src/filemanager/file.c
++++ b/src/filemanager/file.c
+@@ -2802,6 +2802,8 @@ copy_file_file (file_op_total_context_t
              continue;
          if (temp_status == FILE_ABORT)
              return_status = temp_status;
@@ -11,7 +13,7 @@ Index: mc-4.8.31/src/filemanager/file.c
          if (temp_status == FILE_SKIPALL)
              ctx->skip_all = TRUE;
          break;
-@@ -2754,6 +2756,8 @@ copy_file_file (file_op_total_context_t
+@@ -2812,6 +2814,8 @@ copy_file_file (file_op_total_context_t
          temp_status = file_error (TRUE, _("Cannot close target file \"%s\"\n%s"), dst_path);
          if (temp_status == FILE_RETRY)
              continue;
@@ -20,7 +22,7 @@ Index: mc-4.8.31/src/filemanager/file.c
          if (temp_status == FILE_SKIPALL)
              ctx->skip_all = TRUE;
          return_status = temp_status;
-@@ -2785,10 +2789,10 @@ copy_file_file (file_op_total_context_t
+@@ -2843,10 +2847,10 @@ copy_file_file (file_op_total_context_t
              if (temp_status == FILE_SKIPALL)
              {
                  ctx->skip_all = TRUE;
@@ -33,7 +35,7 @@ Index: mc-4.8.31/src/filemanager/file.c
              break;
          }
  
-@@ -2801,10 +2805,10 @@ copy_file_file (file_op_total_context_t
+@@ -2859,10 +2863,10 @@ copy_file_file (file_op_total_context_t
              if (temp_status == FILE_SKIPALL)
              {
                  ctx->skip_all = TRUE;

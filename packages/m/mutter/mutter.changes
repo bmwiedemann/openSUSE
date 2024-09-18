@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:06:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.5:
+  + Fix drag and drop between X11 and wayland clients
+  + Fix drag and drop from grabbing popups
+  + Fix EGLDevice support
+  + Fix frozen cursor on some hybrid machines
+  + Fix touch window dragging with pointer lock enabled
+  + Fix propagating tablet device removals to clients
+  + Fix tablet input in maximized windows
+  + Reduce damage on window movement
+  + Fix frozen cursor after suspend
+  + Fix using modifiers on multi-GPU setups
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug  9 18:19:48 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Fix build if sle_version is defined: Patch3 no longer exists, and

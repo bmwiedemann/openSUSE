@@ -1,7 +1,9 @@
-Index: mc-4.8.31/misc/mc.ext.ini.in
-===================================================================
---- mc-4.8.31.orig/misc/mc.ext.ini.in
-+++ mc-4.8.31/misc/mc.ext.ini.in
+---
+ misc/mc.ext.ini.in |   13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+--- a/misc/mc.ext.ini.in
++++ b/misc/mc.ext.ini.in
 @@ -591,23 +591,26 @@ Open=@EXTHELPERSDIR@/image.sh open avif
  [sound]
  Regex=\\.(wav|snd|voc|au|smp|aiff|snd|m4a|ape|aac|wv|spx|flac)$

@@ -2629,7 +2629,7 @@ Mon Aug 26 17:55:17 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Thu Jun 20 11:38:16 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Fix executable permission
+- Fix executable permission boo#1140423
 - Update to version 1.48.0
   * New commands
     - serve sftp: Serve an rclone remote over SFTP (Nick Craig-Wood)

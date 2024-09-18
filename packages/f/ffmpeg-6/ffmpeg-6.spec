@@ -124,6 +124,7 @@ Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
 Patch96:        ffmpeg-6-CVE-2024-32230.patch
 Patch97:        ffmpeg-c99.patch
+Patch98:        ffmpeg-6-CVE-2024-7055.patch
 #
 # preamble is present twice, watch out
 #

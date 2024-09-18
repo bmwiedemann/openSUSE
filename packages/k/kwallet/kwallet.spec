@@ -93,13 +93,6 @@ This framework contains two main components:
 * Interface to KWallet, the safe desktop-wide storage for passwords on KDE workspaces.
 * The kwalletd used to safely store the passwords on KDE work spaces.
 
-%package tools-lang
-Summary:        Safe desktop-wide storage for passwords
-Requires:       %{name}-tools = %{version}
-
-%description tools-lang
-Provides translations to the package %{name}-tools-lang
-
 %package devel
 Summary:        Safe desktop-wide storage for passwords
 Requires:       %{lname} = %{version}
@@ -114,6 +107,8 @@ This framework contains two main components:
 * Interface to KWallet, the safe desktop-wide storage for passwords on KDE workspaces.
 * The kwalletd used to safely store the passwords on KDE work spaces.
 Development files.
+
+%lang_package -n kwallet-tools
 
 %lang_package -n kwalletd5
 

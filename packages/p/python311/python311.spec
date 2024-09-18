@@ -100,7 +100,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.9
+Version:        3.11.10
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -164,10 +164,6 @@ Patch11:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM skip_if_buildbot-extend.patch gh#python/cpython#103053 mcepl@suse.com
 # Skip test_freeze_simple_script
 Patch13:        skip_if_buildbot-extend.patch
-# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API)
-Patch14:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM bsc1221260-test_asyncio-ResourceWarning.patch bsc#1221260 mcepl@suse.com
 # prevent ResourceWarning in test_asyncio tests
 Patch15:        bsc1221260-test_asyncio-ResourceWarning.patch
@@ -177,18 +173,12 @@ Patch15:        bsc1221260-test_asyncio-ResourceWarning.patch
 # by SUSE
 Patch16:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 Patch17:        CVE-2023-52425-remove-reparse_deferral-tests.patch
-# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
-# rearrange definition of private v global IP addresses
-Patch18:        CVE-2024-4032-private-IP-addrs.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
 Patch19:        bso1227999-reproducible-builds.patch
-# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
-# prevent email header injection, patch from gh#python/cpython!122608
-Patch20:        CVE-2024-6923-email-hdr-inject.patch
-# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
-# avoid denial of service in zipfile
-Patch21:        CVE-2024-8088-inf-loop-zipfile_Path.patch
+# PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
+# Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
+Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -446,14 +436,11 @@ other applications.
 %patch -p1 -P 10
 %patch -p1 -P 11
 %patch -p1 -P 13
-%patch -p1 -P 14
 %patch -p1 -P 15
 %patch -p1 -P 16
 %patch -p1 -P 17
-%patch -p1 -P 18
 %patch -p1 -P 19
-%patch -p1 -P 20
-%patch -p1 -P 21
+%patch -p1 -P 22
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

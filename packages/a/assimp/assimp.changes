@@ -50,6 +50,7 @@ Tue Sep 10 07:32:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
   * Fix compile warning
   * Replace raw pointers by std::string
   * Fix potential heapbuffer overflow in md5 parsing
+  * Fixes bsc#1230679, CVE-2024-45679.
 
 -------------------------------------------------------------------
 Thu Jul 11 15:28:24 UTC 2024 - Dirk Müller <dmueller@suse.com>

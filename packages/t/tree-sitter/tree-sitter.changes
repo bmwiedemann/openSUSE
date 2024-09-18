@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 26 16:33:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.0:
+  * test: modernize scanner files
+  * fix: always reset to the first language when iterating over language
+  * feat(zig): update outdated path syntax
+  * feat(bindings): add query constants to python
+  * style(bindings): fix indent & line endings
+  * feat(dsl)!: support other JS runtimes
+  * feat(bindings): add node, python, swift tests 
+  * introduce tree-sitter-language crate for grammar crates to depend on
+  * refactor: remove ansi_term dependency
+  * refactor: remove difference dependency
+  * feat: add fuzz subcommand
+  * fix(wasm): update test
+  * feat(lib): add ts_query_end_byte_for_pattern
+  * fix(rust): fix new clippy warnings
+  * feat(lib): support no_std
+  * Reset language when resetting wasm store
+  * docs: clean up binding & parser lists
+  * clone wasm store engine
+  * fix(cli): dedup preceding_auxiliary_symbols
+- use of ldconfig_scriptlets, and removal of the duplicate setting of buildflags
+
+-------------------------------------------------------------------
 Fri Jun 21 20:32:46 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 0.22.6:

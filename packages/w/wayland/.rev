@@ -436,4 +436,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
   * A wl_shm.release request for proper cleanup of this global (forwarded request 1181984 from jtorres)</comment>
     <requestid>1181996</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f5d5b6f6e4498f87933ed48ee2fa7814</srcmd5>
+    <version>1.23.1</version>
+    <time>1726665974</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.23.1:</comment>
+    <requestid>1201530</requestid>
+  </revision>
 </revisionlist>

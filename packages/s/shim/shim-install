@@ -60,6 +60,7 @@ fi
 if [ x"${GRUB_DISTRIBUTOR}" = x ] && [ -f "${sysconfdir}/os-release" ] ; then
     . "${sysconfdir}/os-release"
     GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
+    OS_ID="${ID}"
 fi
 
 bootloader_id="$(echo "$GRUB_DISTRIBUTOR" | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
@@ -77,6 +78,16 @@ case "$bootloader_id" in
         ca_string='openSUSE Secure Boot CA1';;
     *) ca_string="";;
 esac
+
+case "$OS_ID" in
+    "opensuse-leap")
+        ca_string='SUSE Linux Enterprise Secure Boot CA1';;
+esac
+
+# bsc#1230316 For SL-Micro, always install shim/grub2 with the "removable" way
+if test "$GRUB_DISTRIBUTOR" = "SL Micro"; then
+    removable=yes
+fi
 
 is_azure () {
     local bios_vendor;
@@ -465,32 +476,36 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
         $efibootmgr -b "$bootnum" -B
     done
 
-    efidir_drive="$("$grub_probe" --target=drive --device-map= "$efidir")"
-    efidir_disk="$("$grub_probe" --target=disk --device-map= "$efidir")"
-    if test -z "$efidir_drive" || test -z "$efidir_disk"; then
-        echo "Can't find GRUB drive for $efidir; unable to create EFI Boot Manager entry." >&2
-    # bsc#1119762 If the MD device is partitioned, we just need to create one
-    # boot entry since the partitions are nested partitions and the mirrored
-    # partitions share the same UUID.
-    elif [[ "$efidir_drive" == \(mduuid/* && "$efidir_drive" != \(mduuid/*,* ]]; then
-        eval $(mdadm --detail --export "$efidir_disk" |
-          perl -ne 'print if m{^MD_LEVEL=}; push( @D, $1) if (m{^MD_DEVICE_\S+_DEV=(\S+)$});
-                    sub END() {print "MD_DEVS=\"", join( " ", @D), "\"\n";};')
-        if [ "$MD_LEVEL" != "raid1" ]; then
-            echo "GRUB drive for $efidir not on RAID1; unable to create EFI Boot Manager entry." >&2
-        fi
-        for mddev in $MD_DEVS; do
-            efidir_drive="$("$grub_probe" --target=drive --device-map= -d "$mddev")"
-            efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
+    # bsc#1230316 Skip the creation of the boot option for SL-Micro to make
+    # the system always boot from HDD
+    if test "$GRUB_DISTRIBUTOR" != "SL Micro"; then
+        efidir_drive="$("$grub_probe" --target=drive --device-map= "$efidir")"
+        efidir_disk="$("$grub_probe" --target=disk --device-map= "$efidir")"
+        if test -z "$efidir_drive" || test -z "$efidir_disk"; then
+            echo "Can't find GRUB drive for $efidir; unable to create EFI Boot Manager entry." >&2
+        # bsc#1119762 If the MD device is partitioned, we just need to create one
+        # boot entry since the partitions are nested partitions and the mirrored
+        # partitions share the same UUID.
+        elif [[ "$efidir_drive" == \(mduuid/* && "$efidir_drive" != \(mduuid/*,* ]]; then
+            eval $(mdadm --detail --export "$efidir_disk" |
+              perl -ne 'print if m{^MD_LEVEL=}; push( @D, $1) if (m{^MD_DEVICE_\S+_DEV=(\S+)$});
+                        sub END() {print "MD_DEVS=\"", join( " ", @D), "\"\n";};')
+            if [ "$MD_LEVEL" != "raid1" ]; then
+                echo "GRUB drive for $efidir not on RAID1; unable to create EFI Boot Manager entry." >&2
+            fi
+            for mddev in $MD_DEVS; do
+                efidir_drive="$("$grub_probe" --target=drive --device-map= -d "$mddev")"
+                efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
+                efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
+                efidir_d=${mddev#/dev/}
+                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+                  -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
+            done
+        else
             efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
-            efidir_d=${mddev#/dev/}
             $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-              -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
-        done
-    else
-        efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
-        $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-    	-L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
+              -L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
+        fi
     fi
 fi
 

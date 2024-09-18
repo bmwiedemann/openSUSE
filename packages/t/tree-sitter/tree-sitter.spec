@@ -16,15 +16,14 @@
 #
 
 
-%define somajor 0
-%define libdirname tree_sitter
+%define         somajor 0_23
 Name:           tree-sitter
-Version:        0.22.6
+Version:        0.23.0
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT
 URL:            https://tree-sitter.github.io/
-Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source11:       baselibs.conf
 Source20:       tree-sitter-target.py
@@ -35,7 +34,7 @@ Source24:       compile-macros.sh
 Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
-BuildRequires:  rust > 1.40
+BuildRequires:  rust > 1.74.1
 Requires:       lib%{name}%{somajor} = %{version}
 Requires:       nodejs
 %{?suse_build_hwcaps_libs}
@@ -55,6 +54,7 @@ edited. Tree-sitter aims to be:
 
 %package     -n lib%{name}%{somajor}
 Summary:        Asychronous I/O support library
+Obsoletes:      lib%{name}0 < %{version}
 
 %description -n lib%{name}%{somajor}
 Tree-sitter is a parser generator tool and an incremental parsing
@@ -85,19 +85,14 @@ sed -i -e '/^VERSION/s/:= .*$/:= %{version}/' Makefile
 
 %build
 %{cargo_build}
-export CFLAGS='%{optflags}'
-export PREFIX='%{_prefix}' LIBDIR='%{_libdir}'
-%make_build
+%make_build PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
 
 sh %{SOURCE24}
 
 %install
-export PREFIX='%{_prefix}' LIBDIR='%{_libdir}' INCLUDEDIR='%{_includedir}'
-%make_install
-install -p -m 0755 -D %{_builddir}/%{name}-%{version}/target/release/tree-sitter \
-    %{buildroot}%{_bindir}/tree-sitter
-
-find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
+%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
+install -p -m 0755 -D %{_builddir}/%{name}-%{version}/target/release/%{name} \
+    %{buildroot}%{_bindir}/%{name}
 
 install -Dm644 macros.treesitter %{buildroot}%{_rpmmacrodir}/macros.treesitter
 install -Dm755 %{SOURCE20} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE20})
@@ -105,28 +100,32 @@ install -Dm755 %{SOURCE20} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE20})
 install -Dm644 %{SOURCE25} %{buildroot}%{_fileattrsdir}/$(basename %{SOURCE25})
 install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
 
-%post -n lib%{name}%{somajor} -p /sbin/ldconfig
+#remove .a/.la files
+find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
-%postun -n lib%{name}%{somajor} -p /sbin/ldconfig
+# stupid workaround for "integrating" the grammars into neovim
+install -d %{buildroot}%{_libdir}/tree_sitter
+
+%ldconfig_scriptlets -n lib%{name}%{somajor}
 
 %files
 %license LICENSE
 %doc README.md CONTRIBUTING.md
-%{_bindir}/tree-sitter
-%{_rpmconfigdir}/tree-sitter-target.py
+%{_bindir}/%{name}
+%{_rpmconfigdir}/%{name}-target.py
 %{_rpmmacrodir}/macros.treesitter
 %{_rpmconfigdir}/treesitter_grammar.req
 %{_fileattrsdir}/treesitter_grammar.attr
 
 %files -n lib%{name}%{somajor}
 %license LICENSE
-%{_libdir}/*.so.*
+%{_libdir}/lib%{name}.so.*
+%dir %{_libdir}/tree_sitter
 
 %files devel
 %doc docs/
-%dir %{_includedir}/%{libdirname}/
-%{_includedir}/%{libdirname}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_includedir}/tree_sitter
+%{_libdir}/lib%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

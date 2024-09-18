@@ -915,7 +915,7 @@
  
     Open a new pseudo-terminal pair. Return a pair of file descriptors
     ``(master, slave)`` for the pty and the tty, respectively. The new file
-@@ -2637,7 +2637,7 @@ features:
+@@ -2644,7 +2644,7 @@ features:
     possible and call :func:`lstat` on the result. This does not apply to
     dangling symlinks or junction points, which will raise the usual exceptions.
  

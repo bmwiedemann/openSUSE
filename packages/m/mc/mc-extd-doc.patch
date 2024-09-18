@@ -1,7 +1,9 @@
-Index: misc/ext.d/doc.sh.in
-===================================================================
---- misc/ext.d/doc.sh.in.orig
-+++ misc/ext.d/doc.sh.in
+---
+ misc/ext.d/doc.sh.in |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/misc/ext.d/doc.sh.in
++++ b/misc/ext.d/doc.sh.in
 @@ -52,7 +52,7 @@ do_view_action() {
          fi
          ;;

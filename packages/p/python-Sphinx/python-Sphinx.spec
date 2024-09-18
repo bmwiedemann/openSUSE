@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        7.4.5
+Version:        8.0.2
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause

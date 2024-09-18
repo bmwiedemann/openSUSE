@@ -4,11 +4,9 @@ http://www.midnight-commander.org/ticket/287
  lib/tty/tty-slang.h |    1 +
  2 files changed, 16 insertions(+), 2 deletions(-)
 
-Index: mc-4.8.23/lib/tty/key.c
-===================================================================
---- mc-4.8.23.orig/lib/tty/key.c
-+++ mc-4.8.23/lib/tty/key.c
-@@ -1050,10 +1050,13 @@ correct_key_code (int code)
+--- a/lib/tty/key.c
++++ b/lib/tty/key.c
+@@ -1060,10 +1060,13 @@ correct_key_code (int code)
          mod = KEY_M_SHIFT;
      }
  
@@ -23,7 +21,7 @@ Index: mc-4.8.23/lib/tty/key.c
      /*
       * We are not interested if Ctrl was pressed when entering control
       * characters, so assume that it was.  When checking for such keys,
-@@ -1126,6 +1129,16 @@ correct_key_code (int code)
+@@ -1136,6 +1139,16 @@ correct_key_code (int code)
      if (c >= KEY_F (1) && c <= KEY_F (20))
          mod &= ~KEY_M_SHIFT;
  
@@ -40,7 +38,7 @@ Index: mc-4.8.23/lib/tty/key.c
      if (!mc_global.tty.alternate_plus_minus)
          switch (c)
          {
-@@ -1909,7 +1922,7 @@ get_key_code (int no_delay)
+@@ -1889,7 +1902,7 @@ get_key_code (int no_delay)
          {
              /* Convert escape-digits to F-keys */
              if (g_ascii_isdigit (c))
@@ -49,11 +47,9 @@ Index: mc-4.8.23/lib/tty/key.c
              else if (c == ' ')
                  c = ESC_CHAR;
              else
-Index: mc-4.8.23/lib/tty/tty-slang.h
-===================================================================
---- mc-4.8.23.orig/lib/tty/tty-slang.h
-+++ mc-4.8.23/lib/tty/tty-slang.h
-@@ -11,6 +11,7 @@
+--- a/lib/tty/tty-slang.h
++++ b/lib/tty/tty-slang.h
+@@ -7,6 +7,7 @@
  /*** typedefs(not structures) and defined constants **********************************************/
  
  #define KEY_F(x) (1000 + x)

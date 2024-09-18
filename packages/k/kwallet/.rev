@@ -1044,4 +1044,12 @@
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175171</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>4c6fb6c4a726d0c10bcf61ead728cd4a</srcmd5>
+    <version>5.116.0</version>
+    <time>1726666004</time>
+    <user>anag+factory</user>
+    <comment>- Use the %lang_package macro for kwallet-tools-lang (boo#1230570)</comment>
+    <requestid>1201389</requestid>
+  </revision>
 </revisionlist>

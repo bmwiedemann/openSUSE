@@ -354,4 +354,12 @@
   * Support pickle exception changes in Python 3.12.5 and later.</comment>
     <requestid>1195977</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>657ace2e873f6734d029c474c9439dfb</srcmd5>
+    <version>3.4.2</version>
+    <time>1726665973</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201708</requestid>
+  </revision>
 </revisionlist>

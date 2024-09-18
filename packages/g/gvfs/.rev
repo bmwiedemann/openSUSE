@@ -1536,4 +1536,17 @@ New stable rel</comment>
   at least for now. (forwarded request 1183898 from iznogood)</comment>
     <requestid>1184247</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>dc72d4a919674be7931649d1a33a01f7</srcmd5>
+    <version>1.54.3</version>
+    <time>1726665984</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.54.3:
+  + onedrive:
+    - Set name of drive root
+    - Handle multiple drives with same IDs
+    - Guess mime type locally if not set by the server
+  + Updated translations. (forwarded request 1200875 from iznogood)</comment>
+    <requestid>1201594</requestid>
+  </revision>
 </revisionlist>

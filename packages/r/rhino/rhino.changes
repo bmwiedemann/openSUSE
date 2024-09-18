@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 16 13:46:09 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 1.7.15
+  * Basic support for "rest parameters"
+  * Improvements in Unicode support
+  * "Symbol.species" implemented in many places
+  * More correct property ordering in many places
+  * Miscellaneous improvements and bug fixes
+- Update pom files for 1.7.15
+  * rhino-1.7.14.pom --> rhino-1.7.15.pom
+  * rhino-engine-1.7.14.pom --> rhino-engine-1.7.15.pom
+  * rhino-runtime-1.7.14.pom --> rhino-runtime-1.7.15.pom
+
+-------------------------------------------------------------------
 Sun Mar 13 15:42:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.7.14

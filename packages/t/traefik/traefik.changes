@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 12 14:50:28 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Moved /etc/traefik/acme.json to /var/lib/traefik/acme.json to allow traefik
+  running with "ProtectSystem=full" write access to the certificate store.
+
+  The acme.json file will be automatically moved and the configuration will be
+  updated accordingly.
+
+- Added /usr/lib/sysctl.d/90-itraefik.conf to increase UDP Buffer sizes as explained
+   at https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes
+
+-------------------------------------------------------------------
 Wed Aug  7 08:03:10 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fixed service-file: set working directory, so that the /etc/traefik/acme.json

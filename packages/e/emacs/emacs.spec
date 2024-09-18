@@ -55,14 +55,6 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  fonts-config
 BuildRequires:  freetype2-devel
-%if 0%{?suse_version} >= 1550
-%ifarch %ix86 %arm
-BuildRequires:  gcc13
-BuildRequires:  gcc13-PIE
-#!BuildIgnore:  gcc14
-#!BuildIgnore:  gcc14-PIE
-%endif
-%endif
 BuildRequires:  gettext-devel
 BuildRequires:  giflib-devel
 BuildRequires:  git
@@ -143,13 +135,7 @@ BuildRequires:  pkgconfig(libacl)
 BuildRequires:  libacl-devel
 %endif
 %if %{with nativecomp}
-%ifarch %ix86 %arm
-BuildRequires:  gcc13
-BuildRequires:  libgccjit0-devel-gcc13
-BuildRequires:  libgccjit0-gcc13
-%else
 BuildRequires:  libgccjit-devel
-%endif
 %endif
 BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(jansson)
@@ -213,6 +199,7 @@ Source9:        macros.emacs
 Patch0:         emacs-29.1.dif
 # Currently disabled
 Patch2:         emacs-24.4-glibc.patch
+Patch3:         emacs-gcc14.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
 Patch7:         emacs-24.1-ps-mule.patch
@@ -336,7 +323,7 @@ Summary:        Info files for GNU Emacs
 Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %endif
 BuildArch:      noarch
 
@@ -364,7 +351,7 @@ group called "games".
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 Requires(post): coreutils update-alternatives
-Requires(preun): coreutils update-alternatives
+Requires(preun):coreutils update-alternatives
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags
@@ -377,6 +364,7 @@ and most assembler-like syntaxes.
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
 %endif
+%patch -P3  -p0 -b .gcc14
 %patch -P4  -p0 -b .print
 %patch -P5  -p0 -b .psbdf
 %patch -P7  -p0 -b .psmu
@@ -424,14 +412,6 @@ fi
 %else
 autoreconf -fiv -I $PWD -I $PWD/m4
 %endif
-%if 0%{?suse_version} >= 1550
-%ifarch %ix86 %arm
-  export CC=gcc-13
-  export AR=gcc-ar-13
-  export RANLIB=gcc-ranlib-13
-%endif
-%endif
-
   cflags ()
   {
       local flag=$1; shift

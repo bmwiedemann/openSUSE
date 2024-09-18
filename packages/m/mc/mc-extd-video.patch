@@ -1,7 +1,9 @@
-Index: misc/ext.d/video.sh
-===================================================================
---- misc/ext.d/video.sh.orig
-+++ misc/ext.d/video.sh
+---
+ misc/ext.d/video.sh |   17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+--- a/misc/ext.d/video.sh
++++ b/misc/ext.d/video.sh
 @@ -6,14 +6,27 @@
  action=$1
  filetype=$2

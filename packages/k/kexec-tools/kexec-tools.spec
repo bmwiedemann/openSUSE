@@ -35,6 +35,7 @@ Patch4:         %{name}-vmcoreinfo-in-xen.patch
 Patch5:         %{name}-riscv64.patch
 Patch10:        %{name}-SYS_getrandom.patch
 Patch11:        %{name}-riscv-hotplug.patch
+BuildRequires:  aaa_base
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros

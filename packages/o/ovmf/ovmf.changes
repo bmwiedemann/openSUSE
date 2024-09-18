@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 18 04:37:14 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch
+  NetworkPkg TcpDxe: Fixed system stuck on PXE boot flow in
+  (bsc#1230587)
+
+-------------------------------------------------------------------
 Mon Sep  9 05:45:53 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Update to edk2-stable202405

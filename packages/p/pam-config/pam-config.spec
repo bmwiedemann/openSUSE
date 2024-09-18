@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.11+git.20240906
+Version:        2.11+git.20240911
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 PreReq:         pam >= 1.3.0
+PreReq:         pam-extra
 Recommends:     pam_pwquality
 
 %description
