@@ -1,3 +1,10 @@
+gpxsee (13.25) stable; urgency=low
+
+  * Fixed map artifacts in PNG exports under Qt6.
+  * Improved IMG marine charts rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 17 Sep 2024 21:54:50 +0200
+
 gpxsee (13.24) stable; urgency=low
 
   * Added support for FIT laps.
