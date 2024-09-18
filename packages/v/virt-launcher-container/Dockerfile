@@ -29,7 +29,6 @@ RUN zypper -n install \
               curl \
               ethtool \
               gawk \
-              iptables \
               kubevirt-container-disk \
               kubevirt-virt-launcher \
               libcap-progs \
@@ -43,7 +42,6 @@ RUN zypper -n install \
               qemu-hw-usb-host \
               qemu-hw-usb-redirect \
               qemu-img \
-              socat \
               tar \
               timezone \
               vim-small \
