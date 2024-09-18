@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-file-datalake
-Version:        12.16.0
+Version:        12.17.0
 Release:        0
 Summary:        Azure DataLake service client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-file-datalake/azure-storage-file-datalake-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_file_datalake/azure_storage_file_datalake-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,8 +35,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.1
-Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
-Requires:       (python-azure-storage-blob >= 12.21.0 with python-azure-storage-blob < 13.0.0)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-storage-blob >= 12.23.0 with python-azure-storage-blob < 13.0.0)
 Requires:       (python-typing_extensions >= 4.6.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
@@ -58,7 +58,7 @@ This includes:
    (HNS) accounts.
 
 %prep
-%setup -q -n azure-storage-file-datalake-%{version}
+%setup -q -n azure_storage_file_datalake-%{version}
 
 %build
 %pyproject_wheel
