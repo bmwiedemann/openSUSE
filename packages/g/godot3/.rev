@@ -51,4 +51,12 @@
 - Pin mbedtls-devel version to be lower than 3 for Leap builds, too.</comment>
     <requestid>1152489</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4408e6da6240f2303ca957a971a6dfb</srcmd5>
+    <version>3.6</version>
+    <time>1726666029</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.6</comment>
+    <requestid>1201654</requestid>
+  </revision>
 </revisionlist>

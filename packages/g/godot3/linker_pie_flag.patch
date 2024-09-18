@@ -8,6 +8,7 @@ Upstream:   seems to do the opposite
 Rebased:    2021-04-22
 Rebased:    2021-11-08
 Rebased:    2022-08-06
+Rebased:    2024-09-11
 
 Linker flag "-no-pie" is added by upstream.
 rpmlint complains this violates project policy.
@@ -18,7 +19,7 @@ Patch replaces flag "-no-pie" with "-pie".
 diff -r -U 5 a/platform/x11/detect.py b/platform/x11/detect.py
 --- a/platform/x11/detect.py
 +++ b/platform/x11/detect.py
-@@ -236,11 +236,11 @@
+@@ -244,11 +244,11 @@
      # Check for gcc version >= 6 before adding -no-pie
      version = get_compiler_version(env) or [-1, -1]
      if using_gcc(env):

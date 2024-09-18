@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 11 12:00:00 UTC 2024 - cunix@mail.de
+
+- Update to 3.6
+
+  Added:
+  * 2D physics interpolation
+  * 2D hierarchical culling
+  * 3D Tighter shadow culling
+  * 3D Mesh merging
+  * 3D Discrete level of detail
+  * 3D Add rotation ability to material editor preview
+  * Text-to-speech support
+  * Boot splash minimum display time setting
+  * Support for documenting most editor settings in the class reference
+  * Multiline strings in buttons
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.6/Godot_v3.6-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" rebased
+- deleted improve_linker_detection.patch
+  upstream changed the way exported projects are embedded
+  => does not need linker detection anymore
+
+-------------------------------------------------------------------
 Tue Feb 27 11:14:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

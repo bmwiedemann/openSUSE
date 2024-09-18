@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package godot
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
@@ -30,7 +30,7 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.5.3
+Version:        3.6
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -44,8 +44,6 @@ Patch0:         linker_pie_flag.patch
 Patch1:         certs_fallback.patch
 # branch specific seperate config files and so on
 Patch2:         rename_to_godot3.patch
-# better linker version detection for pck embedding with runner
-Patch3:         improve_linker_detection.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -65,6 +63,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(speech-dispatcher)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(theoradec)
 BuildRequires:  pkgconfig(vorbis)
@@ -128,12 +127,12 @@ Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.2.13
+Provides:       bundled(minizip) = 1.3.1
 
 Provides:       bundled(FastLZ)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
-Provides:       bundled(brotli)
+Provides:       bundled(brotli) = 1.1.1
 Provides:       bundled(cvtt)
 Provides:       bundled(etc2comp)
 Provides:       bundled(glad)
@@ -153,13 +152,13 @@ Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
 Provides:       bundled(stb)
-Provides:       bundled(tinyexr) = 1.0.5
+Provides:       bundled(tinyexr) = 1.0.8
 Provides:       bundled(vhacd)
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
 Provides:       bundled(nanosvg)
-Provides:       bundled(recastnavigation)
+Provides:       bundled(recastnavigation) = 1.6.0
 Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
@@ -168,23 +167,23 @@ Provides:       bundled(xatlas)
 # Currently build fails with Distro (unbundled) embree on Tumbleweed although
 # the required version is available.
 # Perhaps because it is build with special flags (static) for blender.
-Provides:       bundled(embree) = 3.13.0
+Provides:       bundled(embree) = 3.13.5
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 3.24
+Provides:       bundled(bullet) = 3.25
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2)
-Provides:       bundled(libpng) = 1.6.38
-Provides:       bundled(libzstd)
-Provides:       bundled(zlib)
+Provides:       bundled(libpng) = 1.6.43
+Provides:       bundled(libzstd) = 1.5.5
+Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.4
+Provides:       bundled(mbedtls) = 2.28.8
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc)
+Provides:       bundled(miniupnpc) = 2.2.7
 %endif
 %endif
 
@@ -337,13 +336,13 @@ mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
 %define build_args_common %{?_smp_mflags} \\\
-        progress=no verbose=yes udev=yes use_lto=1 \\\
+        progress=no verbose=yes udev=yes lto=auto \\\
         use_static_cpp=no CCFLAGS='%{optflags}' \\\
         system_certs_path=%{ca_bundle} $system_libs
 
 %ifarch aarch64 %arm
 # Disable unsupported features - https://github.com/godotengine/godot/issues/48297#issuecomment-829165296
-%define build_args %{build_args_common} module_denoise_enabled=no
+%define build_args %{build_args_common} module_denoise_enabled=no module_lightmapper_cpu_enabled=no module_raycast_enabled=no
 %else
 %define build_args %{build_args_common}
 %endif
