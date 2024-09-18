@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 18 10:11:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.1:
+  * Added ability to customize the alphabet used by the recognition
+    model.
+  * Updated rten to v0.13.1. This enables running custom models in
+    the V2 rten model format
+
+-------------------------------------------------------------------
 Wed Jun  5 07:53:14 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.0
