@@ -1,0 +1,6 @@
+<package name="python-sqlmodel" project="openSUSE:Factory">
+  <title>python-sqlmodel</title>
+  <description>SQLModel is a library for interacting with SQL databases from Python code,  with Python objects. It is designed to be intuitive, easy to use, highly compatible, and robust. SQLModel is based on Python type annotations, and powered by Pydantic and SQLAlchemy.</description>
+  <devel project="devel:languages:python" package="python-sqlmodel"/>
+  <url>https://github.com/fastapi/sqlmodel</url>
+</package>
