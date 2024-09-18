@@ -28,10 +28,8 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-handler:%%PKG_VERS
 RUN zypper -n install \
               curl \
               iproute2 \
-              iptables \
               kubevirt-container-disk \
               kubevirt-virt-handler \
-              lsscsi \
               nftables \
               qemu-img \
               system-user-qemu \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 18 06:49:55 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop packages: iptables and lsscsi
+
+-------------------------------------------------------------------
 Wed May 22 08:12:59 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add LABEL with source URL
