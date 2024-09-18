@@ -253,4 +253,14 @@
   * Improved handling of perl sendxmpp config files.</comment>
     <requestid>1186988</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a5c1a9eee45d340c42aebb959d63253e</srcmd5>
+    <version>0.11.2</version>
+    <time>1726666042</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.2:
+  * Add Gopenpgp and Xmppsrv version to --version output.
+  * Improve selection between StartTLS and DirectTLS.</comment>
+    <requestid>1201691</requestid>
+  </revision>
 </revisionlist>

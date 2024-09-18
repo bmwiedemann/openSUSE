@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 18 05:38:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.2:
+  * Add Gopenpgp and Xmppsrv version to --version output.
+  * Improve selection between StartTLS and DirectTLS.
+
+-------------------------------------------------------------------
 Fri Jul 12 02:44:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.1:
