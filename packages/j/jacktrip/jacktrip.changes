@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 18 07:40:22 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.0:
+  * Fix for linux download zip missing files 
+  * Detect and warn against using speakers 
+  * Decoupling QJackTrip/classic and Virtual Studio GUIs 
+  * Ignore devices that look like iPhone microphone 
+  * Adding a confirmation dialog when connecting with audio warnings 
+  * Updating edit profile links to point to new user interface 
+  * Skip create studio button if you are member of 0 studios 
+  * Getting rid of the 5-second studio refresh timer 
+  * Only enable ASIO for Windows in JackTrip Labs builds
+  * Fix broken installer on mac due to path change
+  * Use new create studio flow
+  * VS Mode improved error handling for login screen
+  * Add www to create studio url
+  * PLC auto headroom tweaks to improve audio quality
+  * add 100ms sleep to Patcher::registerClient to fix timing race with JACK
+  * Adding support for Windows qWave (network traffic QoS)
+  * Replacing buffer strategy with new PLC settings in VS mode
+  * Slightly different take on advanced settings for latency
+
+-------------------------------------------------------------------
 Sun Jul 28 08:43:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.3.1:

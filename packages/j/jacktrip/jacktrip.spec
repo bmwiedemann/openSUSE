@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
