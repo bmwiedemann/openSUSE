@@ -1,0 +1,5 @@
+<package name="python-chroma-hnswlib" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-chroma-hnswlib"/>
+</package>
