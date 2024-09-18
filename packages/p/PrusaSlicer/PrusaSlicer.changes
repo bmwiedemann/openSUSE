@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 19:22:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove quadmath workaround for gcc14 with boost error:
+  fixed by boost 1.86 (see boo#1225861)
+
+-------------------------------------------------------------------
 Tue Sep  3 12:51:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not require libquadmath-devel on aarch64 since it does not
