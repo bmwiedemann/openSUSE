@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 15 15:26:32 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Revert to use default gcc on Tumbleweed
+  * issue between boost and gcc14 has been fixed
+
+-------------------------------------------------------------------
 Wed Sep 11 20:54:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Use gcc 13 to compile krita on Tumbleweed

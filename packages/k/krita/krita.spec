@@ -47,11 +47,6 @@ BuildRequires:  %{pyver}-sip-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
-# gcc 14 became the default compiler despite knowing it was causing boost issue. Stick to gcc 13 for the moment
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc13-c++
-BuildRequires:  gcc13-PIE
-%endif
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
 %if 0%{?suse_version} > 1500
@@ -146,9 +141,6 @@ Development headers and libraries for Krita.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} > 1500
-export CC=gcc-13 CXX=g++-13
-%endif
 %cmake_kf5 -d build -- -DKRITA_ENABLE_PCH:BOOL=OFF
 
 %cmake_build

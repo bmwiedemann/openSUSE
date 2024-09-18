@@ -793,4 +793,12 @@
     <comment>- Use gcc 13 to compile krita on Tumbleweed</comment>
     <requestid>1200201</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>09a84f088f820e01d4a4b5f936d7a4e9</srcmd5>
+    <version>5.2.3</version>
+    <time>1726666064</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201737</requestid>
+  </revision>
 </revisionlist>
