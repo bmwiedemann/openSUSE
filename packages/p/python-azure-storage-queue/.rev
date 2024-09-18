@@ -274,4 +274,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1188572 from glaubitz)</comment>
     <requestid>1188600</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c15216457261d1bf1fe0fc750ee86d98</srcmd5>
+    <version>12.12.0</version>
+    <time>1726666097</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.12.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1201729 from glaubitz)</comment>
+    <requestid>1201769</requestid>
+  </revision>
 </revisionlist>
