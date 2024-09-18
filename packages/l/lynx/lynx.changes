@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 18 10:18:27 UTC 2024 - junknot@gmail.com
+
+- Change `Requires: feh` to `Suggests: feh`
+
+-------------------------------------------------------------------
 Fri Aug 30 10:22:59 UTC 2024 - pgajdos@suse.com
 
 - uses feh as the default image viewer

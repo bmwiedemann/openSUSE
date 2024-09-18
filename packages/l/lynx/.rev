@@ -395,4 +395,12 @@
   - lynx-enable_xli.patch moved to lynx-default-image-viewer.patch</comment>
     <requestid>1197793</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>14f1454b4f43848e54dda958ab1321af</srcmd5>
+    <version>2.9.2</version>
+    <time>1726666091</time>
+    <user>anag+factory</user>
+    <comment>- Change `Requires: feh` to `Suggests: feh`</comment>
+    <requestid>1201765</requestid>
+  </revision>
 </revisionlist>

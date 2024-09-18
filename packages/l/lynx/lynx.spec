@@ -35,8 +35,8 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  postfix
 BuildRequires:  zlib-devel
-Requires:       feh
 Provides:       web_browser
+Suggests:       feh
 
 %description
 Lynx is an easy-to-use browser for HTML documents and other Internet
