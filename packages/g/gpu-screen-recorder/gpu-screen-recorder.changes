@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 17 23:01:14 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20240917:
+  * Improve video capture sync, making the video smoother. The
+    video is smoother on X11 than Wayland.
+  * Improve video recording performance on AMD when the system
+    usage is 100%
+- Remove pkgconfig(xi) BuildRequires: unneeded anymore on v4.1.8
+
+-------------------------------------------------------------------
 Tue Sep 10 01:46:00 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20240906:
