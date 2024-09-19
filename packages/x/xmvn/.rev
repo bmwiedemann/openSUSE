@@ -167,4 +167,12 @@
     <comment>Reproducible javadoc timestamps in xmvn-mojo</comment>
     <requestid>1188393</requestid>
   </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>9328b846d9074ec664b80f3182d5d508</srcmd5>
+    <version>4.2.0</version>
+    <time>1726773461</time>
+    <user>anag+factory</user>
+    <comment>preserve manifest modification time</comment>
+    <requestid>1201943</requestid>
+  </revision>
 </revisionlist>

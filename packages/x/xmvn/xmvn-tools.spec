@@ -30,6 +30,7 @@ Source1:        %{parent}-build.tar.xz
 Patch0:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
 Patch1:         0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
 Patch2:         0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
+Patch3:         0004-Reproducible-manifest-modification-time.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
@@ -37,7 +38,7 @@ BuildRequires:  atinject
 BuildRequires:  beust-jcommander >= 1.82
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
@@ -157,19 +158,6 @@ find -name ResolverIntegrationTest.java -delete
 rm -f xmvn-core/src/test/java/org/fedoraproject/xmvn/resolver/JavaHomeResolverTest.java
 %endif
 
-for i in api core; do
-  %pom_xpath_inject "pom:project" "
-     <groupId>org.fedoraproject.xmvn</groupId>
-     <version>%{version}</version>" %{parent}-${i}
-  %pom_remove_parent %{parent}-${i}
-done
-for i in install resolve subst; do
-  %pom_xpath_inject "pom:project" "
-     <groupId>org.fedoraproject.xmvn</groupId>
-     <version>%{version}</version>" %{parent}-tools/%{parent}-${i}
-  %pom_remove_parent %{parent}-tools/%{parent}-${i}
-done
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -196,11 +184,11 @@ done
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{parent}
 for i in api core; do
-  install -pm 0644 %{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
+  %{mvn_install_pom} %{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
   %add_maven_depmap %{parent}/%{parent}-${i}.pom %{parent}/%{parent}-${i}.jar -f ${i}
 done
 for i in install resolve subst; do
-  install -pm 0644 %{parent}-tools/%{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
+  %{mvn_install_pom} %{parent}-tools/%{parent}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{parent}/%{parent}-${i}.pom
   %add_maven_depmap %{parent}/%{parent}-${i}.pom %{parent}/%{parent}-${i}.jar -f ${i}
 done
 

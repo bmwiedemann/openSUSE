@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 18 16:33:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Reproducible-manifest-modification-time.patch
+    + preserve manifest modification time when injecting additional
+      attributes
+
+-------------------------------------------------------------------
 Thu Jul 18 11:07:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

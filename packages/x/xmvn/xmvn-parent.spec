@@ -29,6 +29,7 @@ Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{ver
 Patch0:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
 Patch1:         0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
 Patch2:         0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
+Patch3:         0004-Reproducible-manifest-modification-time.patch
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
