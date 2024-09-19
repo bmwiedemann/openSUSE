@@ -445,4 +445,16 @@ Upgrade to version 12.6:
 - Remove constraints file because improved memory usage for s390x</comment>
     <requestid>1172964</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8c270cb741d7a11d826d458446b4cdea</srcmd5>
+    <version>12.20</version>
+    <time>1726773474</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 12.20 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/docs/release/12.20/</comment>
+    <requestid>1201983</requestid>
+  </revision>
 </revisionlist>
