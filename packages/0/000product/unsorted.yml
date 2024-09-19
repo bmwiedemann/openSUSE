@@ -14377,6 +14377,7 @@ unsorted:
   - liblua5_1-5-32bit 
   - liblua5_4-5-32bit 
   - libluabind0_9_1 
+  - libluajit-5_1-2-32bit 
   - libluajit2-5_1-2 
   - liblucene++0 
   - libluksde-devel 
@@ -20852,10 +20853,12 @@ unsorted:
   - pam-devel 
   - pam-devel-32bit 
   - pam-doc 
+  - pam-extra-32bit 
   - pam-fscrypt 
   - pam-himmelblau 
   - pam-test 
   - pam-userdb 
+  - pam-userdb-32bit 
   - pam_apparmor 
   - pam_apparmor-32bit 
   - pam_ccreds 
