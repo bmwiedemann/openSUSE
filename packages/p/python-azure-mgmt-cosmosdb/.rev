@@ -321,4 +321,19 @@
     CHANGELOG.md file provided with this package (forwarded request 1182472 from glaubitz)</comment>
     <requestid>1182502</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cb6cd568e621e7538887c7fdc9998d7c</srcmd5>
+    <version>9.6.0</version>
+    <time>1726773479</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1201974 from glaubitz)</comment>
+    <requestid>1201990</requestid>
+  </revision>
 </revisionlist>
