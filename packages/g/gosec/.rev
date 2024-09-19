@@ -425,4 +425,16 @@
   * chore(deps): update module github.com/onsi/ginkgo/v2 to v2.17.3 (forwarded request 1199812 from ph03nix)</comment>
     <requestid>1199817</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b0273aa7e035faee23ae87b34274afa8</srcmd5>
+    <version>2.21.3</version>
+    <time>1726773447</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21.3:
+  * Update gosec version to v2.21.3 in github action (#1227)
+  * Populate the fixes only when autofix is not empty (#1226)
+  * chore(deps): update all dependencies (#1223)
+  * G115 Struct Attribute Checks (#1221) (forwarded request 1201848 from ph03nix)</comment>
+    <requestid>1201897</requestid>
+  </revision>
 </revisionlist>
