@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -167,9 +167,6 @@ rm -rf lib/jsoncpp lib/lua lib/gmp
 %install
 %cmake_install
 
-mkdir -p %{buildroot}%{_datadir}/minetest/irr/media
-cp -r irr/media/Shaders %{buildroot}%{_datadir}/minetest/irr/media
-
 # Install the wrapper.
 ln -s opengl-game-wrapper.sh %{buildroot}%{_bindir}/%{name}-wrapper
 sed -i 's/^Exec=.*$/Exec=%{name}-wrapper/' \
@@ -240,6 +237,12 @@ getent passwd %{name} > /dev/null || \
 %config %{_sysconfdir}/%{name}/%{name}.env.example
 
 %{_unitdir}/%{name}@.service
+
+# script to remove symlink from file system before installing new folder
+%pretrans data
+if [ -L "/usr/share/minetest/client/shaders/Irrlicht" ]; then
+rm /usr/share/minetest/client/shaders/Irrlicht
+fi
 
 %files data
 %license LICENSE.txt
