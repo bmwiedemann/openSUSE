@@ -71,4 +71,12 @@
     <comment>Upgrading the scala stack</comment>
     <requestid>1117472</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b86438f67bdc1a03b74a3270356f7dbc</srcmd5>
+    <version>2.8.5</version>
+    <time>1726773460</time>
+    <user>anag+factory</user>
+    <comment>Specify jar timestamp for reproducible builds</comment>
+    <requestid>1201960</requestid>
+  </revision>
 </revisionlist>

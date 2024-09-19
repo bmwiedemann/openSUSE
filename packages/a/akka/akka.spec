@@ -1,7 +1,7 @@
 #
 # spec file for package akka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,12 @@ scalac -nobootcp -d target/classes -cp $(build-classpath scala typesafe-config) 
 javac -d target/classes -cp $(build-classpath scala typesafe-config):target/classes \
     -source 8 -target 8 -encoding utf-8 \
     $(find src/main -name \*.java | xargs)
-jar -cf target/%{name}-actor.jar -C target/classes . -C src/main/resources .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=target/%{name}-actor.jar -C target/classes . -C src/main/resources .
+
 mkdir -p target/apidocs
 scaladoc -nobootcp -d target/apidocs -cp $(build-classpath scala typesafe-config) -target:8 \
     $(find src/main -name \*.scala -o -name \*.java | xargs)
