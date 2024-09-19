@@ -383,4 +383,16 @@
   * https://www.postgresql.org/docs/release/13.14/</comment>
     <requestid>1172963</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d7a1d81433250c6a2ea1a26155967587</srcmd5>
+    <version>13.16</version>
+    <time>1726773475</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 13.16 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/docs/release/13.16/</comment>
+    <requestid>1201984</requestid>
+  </revision>
 </revisionlist>
