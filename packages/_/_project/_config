@@ -1717,8 +1717,12 @@ BuildFlags: onlybuild:alsa-plugins
 BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
+BuildFlags: onlybuild:ant:ant-junit
 BuildFlags: onlybuild:antlr:antlr-bootstrap
+BuildFlags: onlybuild:apache-commons-io
+BuildFlags: onlybuild:apache-commons-logging
 BuildFlags: onlybuild:apache-commons-lang3
+BuildFlags: onlybuild:apache-pdfbox
 BuildFlags: onlybuild:apache-rpm-macros
 BuildFlags: onlybuild:apache-rpm-macros-control
 BuildFlags: onlybuild:apache2
@@ -1759,6 +1763,7 @@ BuildFlags: onlybuild:bluez
 BuildFlags: onlybuild:boost-defaults
 BuildFlags: onlybuild:boost:base
 BuildFlags: onlybuild:boost:extra
+BuildFlags: onlybuild:bouncycastle
 BuildFlags: onlybuild:bpftool
 BuildFlags: onlybuild:branding-openSUSE
 BuildFlags: onlybuild:brltty
@@ -1768,6 +1773,7 @@ BuildFlags: onlybuild:bubblewrap
 BuildFlags: onlybuild:build
 BuildFlags: onlybuild:build-compare
 BuildFlags: onlybuild:busybox
+BuildFlags: onlybuild:byaccj
 BuildFlags: onlybuild:bzip2
 BuildFlags: onlybuild:c-ares
 BuildFlags: onlybuild:ca-certificates
@@ -1863,6 +1869,7 @@ BuildFlags: onlybuild:eglexternalplatform
 BuildFlags: onlybuild:eigen3
 BuildFlags: onlybuild:elfutils
 BuildFlags: onlybuild:elfutils:elfutils-debuginfod
+BuildFlags: onlybuild:elinks
 BuildFlags: onlybuild:ell
 BuildFlags: onlybuild:enca
 BuildFlags: onlybuild:enchant
@@ -1922,6 +1929,7 @@ BuildFlags: onlybuild:gdb
 BuildFlags: onlybuild:gdbm
 BuildFlags: onlybuild:gdk-pixbuf
 BuildFlags: onlybuild:geany
+BuildFlags: onlybuild:geronimo-specs
 BuildFlags: onlybuild:gettext-runtime
 BuildFlags: onlybuild:gettext-runtime:gettext-runtime-mini
 BuildFlags: onlybuild:gfxboot
@@ -1930,6 +1938,10 @@ BuildFlags: onlybuild:ghostscript-fonts
 BuildFlags: onlybuild:ghostscript:mini
 BuildFlags: onlybuild:giflib
 BuildFlags: onlybuild:git
+BuildFlags: onlybuild:glassfish-annotation-api
+BuildFlags: onlybuild:glassfish-servlet-api
+BuildFlags: onlybuild:glassfish-activation
+BuildFlags: onlybuild:glassfish-jaxb-api
 BuildFlags: onlybuild:glew
 BuildFlags: onlybuild:glfw
 BuildFlags: onlybuild:glib-networking
@@ -2018,13 +2030,17 @@ BuildFlags: onlybuild:iso-codes
 BuildFlags: onlybuild:iso_ent
 BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
+BuildFlags: onlybuild:jakarta-activation
+BuildFlags: onlybuild:jakarta-mail
 BuildFlags: onlybuild:jasper
 BuildFlags: onlybuild:java-21-openjdk
 BuildFlags: onlybuild:java-cup:java-cup-bootstrap
+BuildFlags: onlybuild:javamail
 BuildFlags: onlybuild:javapackages-tools
 BuildFlags: onlybuild:javapackages-tools:extras
 BuildFlags: onlybuild:jbigkit
 BuildFlags: onlybuild:jemalloc
+BuildFlags: onlybuild:jflex:jflex-bootstrap
 BuildFlags: onlybuild:jitterentropy
 BuildFlags: onlybuild:jlex
 BuildFlags: onlybuild:jq
@@ -2127,6 +2143,7 @@ BuildFlags: onlybuild:libclc
 BuildFlags: onlybuild:libcloudproviders
 BuildFlags: onlybuild:libconfig
 BuildFlags: onlybuild:libconfuse
+BuildFlags: onlybuild:libcss
 BuildFlags: onlybuild:libcuefile
 BuildFlags: onlybuild:libdaemon
 BuildFlags: onlybuild:libdatrie
@@ -2140,6 +2157,7 @@ BuildFlags: onlybuild:libdc1394
 BuildFlags: onlybuild:libdca
 BuildFlags: onlybuild:libdecor
 BuildFlags: onlybuild:libdeflate
+BuildFlags: onlybuild:libdom
 BuildFlags: onlybuild:libdovi
 BuildFlags: onlybuild:libdrm
 BuildFlags: onlybuild:libdv
@@ -2169,6 +2187,7 @@ BuildFlags: onlybuild:libgsm
 BuildFlags: onlybuild:libgudev
 BuildFlags: onlybuild:libgusb
 BuildFlags: onlybuild:libheif
+BuildFlags: onlybuild:libhubbub
 BuildFlags: onlybuild:libical
 BuildFlags: onlybuild:libid3tag
 BuildFlags: onlybuild:libidn2
@@ -2213,6 +2232,7 @@ BuildFlags: onlybuild:libnvidia-egl-wayland
 BuildFlags: onlybuild:libogg
 BuildFlags: onlybuild:libopenmpt
 BuildFlags: onlybuild:libpaper
+BuildFlags: onlybuild:libparserutils
 BuildFlags: onlybuild:libpcap
 BuildFlags: onlybuild:libpciaccess
 BuildFlags: onlybuild:libpfm
@@ -2300,6 +2320,7 @@ BuildFlags: onlybuild:libvoikko
 BuildFlags: onlybuild:libvorbis
 BuildFlags: onlybuild:libvpx
 BuildFlags: onlybuild:libwacom
+BuildFlags: onlybuild:libwapcaplet
 BuildFlags: onlybuild:libwebp
 BuildFlags: onlybuild:libwmf
 BuildFlags: onlybuild:libwpe
@@ -2308,6 +2329,7 @@ BuildFlags: onlybuild:libxcrypt
 BuildFlags: onlybuild:libxcvt
 BuildFlags: onlybuild:libxkbcommon
 BuildFlags: onlybuild:libxkbfile
+BuildFlags: onlybuild:libxml++
 BuildFlags: onlybuild:libxml++30
 BuildFlags: onlybuild:libxml2
 BuildFlags: onlybuild:libxml2:python
@@ -2335,6 +2357,7 @@ BuildFlags: onlybuild:lttng-ust
 BuildFlags: onlybuild:lua-macros
 BuildFlags: onlybuild:lua51
 BuildFlags: onlybuild:lua54
+BuildFlags: onlybuild:luajit
 BuildFlags: onlybuild:lv2
 BuildFlags: onlybuild:lvm2
 BuildFlags: onlybuild:lvm2:devicemapper
@@ -2380,6 +2403,7 @@ BuildFlags: onlybuild:mpg123
 BuildFlags: onlybuild:mpi-selector
 BuildFlags: onlybuild:mtdev
 BuildFlags: onlybuild:mtools
+BuildFlags: onlybuild:mujs
 BuildFlags: onlybuild:multipath-tools
 BuildFlags: onlybuild:munin
 BuildFlags: onlybuild:musepack
@@ -2392,6 +2416,7 @@ BuildFlags: onlybuild:net-tools
 BuildFlags: onlybuild:netcat-openbsd
 BuildFlags: onlybuild:netcfg
 BuildFlags: onlybuild:netpbm
+BuildFlags: onlybuild:netsurf-buildsystem
 BuildFlags: onlybuild:newt
 BuildFlags: onlybuild:nfs-utils
 BuildFlags: onlybuild:nftables
@@ -2440,6 +2465,7 @@ BuildFlags: onlybuild:orc
 BuildFlags: onlybuild:oxygen-gtk2
 BuildFlags: onlybuild:p11-kit
 BuildFlags: onlybuild:pam
+BuildFlags: onlybuild:pam:full
 BuildFlags: onlybuild:pam_kwallet6
 BuildFlags: onlybuild:pam-config
 BuildFlags: onlybuild:pango
@@ -2625,6 +2651,7 @@ BuildFlags: onlybuild:perl-Sub-Install
 BuildFlags: onlybuild:perl-Sub-Override
 BuildFlags: onlybuild:perl-Sub-Quote
 BuildFlags: onlybuild:perl-Sub-Uplevel
+BuildFlags: onlybuild:perl-Switch
 BuildFlags: onlybuild:perl-Syntax-Keyword-Try
 BuildFlags: onlybuild:perl-Term-ReadKey
 BuildFlags: onlybuild:perl-Test-Base
@@ -2958,6 +2985,7 @@ BuildFlags: onlybuild:python311:base
 BuildFlags: onlybuild:python312
 BuildFlags: onlybuild:python312:base
 BuildFlags: onlybuild:qca:qt5
+BuildFlags: onlybuild:qdox
 BuildFlags: onlybuild:qemu
 BuildFlags: onlybuild:qml-autoreqprov
 BuildFlags: onlybuild:qmlpluginexports:qt5
@@ -2981,7 +3009,9 @@ BuildFlags: onlybuild:rdma-core
 BuildFlags: onlybuild:re2c
 BuildFlags: onlybuild:readline
 BuildFlags: onlybuild:regexp
+BuildFlags: onlybuild:reload4j
 BuildFlags: onlybuild:rhash
+BuildFlags: onlybuild:rhino
 BuildFlags: onlybuild:rp-pppoe
 BuildFlags: onlybuild:rpcbind
 BuildFlags: onlybuild:rpcsvc-proto
@@ -3144,6 +3174,7 @@ BuildFlags: onlybuild:tpm2-0-tss
 BuildFlags: onlybuild:tracker
 BuildFlags: onlybuild:transfig
 BuildFlags: onlybuild:translation-update-upstream
+BuildFlags: onlybuild:tre
 BuildFlags: onlybuild:tree
 BuildFlags: onlybuild:tslib
 BuildFlags: onlybuild:ttf-converter
@@ -3233,6 +3264,9 @@ BuildFlags: onlybuild:xml-commons-apis
 BuildFlags: onlybuild:xml-commons-apis-bootstrap
 BuildFlags: onlybuild:xml-commons-resolver
 BuildFlags: onlybuild:xmlcharent
+BuildFlags: onlybuild:xmlgraphics-batik
+BuildFlags: onlybuild:xmlgraphics-commons
+BuildFlags: onlybuild:xmlgraphics-fop
 BuildFlags: onlybuild:xmlrpc-c
 BuildFlags: onlybuild:xmlstarlet
 BuildFlags: onlybuild:xmlto
