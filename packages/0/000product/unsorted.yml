@@ -12088,6 +12088,9 @@ unsorted:
   - libblacs2-openmpi4 
   - libblacs2-openmpi4-devel 
   - libblacs2-openmpi4-devel-static 
+  - libblacs2-openmpi5 
+  - libblacs2-openmpi5-devel 
+  - libblacs2-openmpi5-devel-static 
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit 
@@ -16051,21 +16054,29 @@ unsorted:
   - libscalapack2-gnu-mvapich2-hpc-devel 
   - libscalapack2-gnu-openmpi4-hpc 
   - libscalapack2-gnu-openmpi4-hpc-devel 
+  - libscalapack2-gnu-openmpi5-hpc 
+  - libscalapack2-gnu-openmpi5-hpc-devel 
   - libscalapack2-mvapich2 
   - libscalapack2-mvapich2-devel 
   - libscalapack2-mvapich2-devel-static 
   - libscalapack2-openmpi4 
   - libscalapack2-openmpi4-devel 
   - libscalapack2-openmpi4-devel-static 
-  - libscalapack2_2_1_0-gnu-mpich-hpc 
-  - libscalapack2_2_1_0-gnu-mpich-hpc-devel 
-  - libscalapack2_2_1_0-gnu-mpich-hpc-devel-static 
-  - libscalapack2_2_1_0-gnu-mvapich2-hpc 
-  - libscalapack2_2_1_0-gnu-mvapich2-hpc-devel 
-  - libscalapack2_2_1_0-gnu-mvapich2-hpc-devel-static 
-  - libscalapack2_2_1_0-gnu-openmpi4-hpc 
-  - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
-  - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
+  - libscalapack2-openmpi5 
+  - libscalapack2-openmpi5-devel 
+  - libscalapack2-openmpi5-devel-static 
+  - libscalapack2_2_2_0-gnu-mpich-hpc 
+  - libscalapack2_2_2_0-gnu-mpich-hpc-devel 
+  - libscalapack2_2_2_0-gnu-mpich-hpc-devel-static 
+  - libscalapack2_2_2_0-gnu-mvapich2-hpc 
+  - libscalapack2_2_2_0-gnu-mvapich2-hpc-devel 
+  - libscalapack2_2_2_0-gnu-mvapich2-hpc-devel-static 
+  - libscalapack2_2_2_0-gnu-openmpi4-hpc 
+  - libscalapack2_2_2_0-gnu-openmpi4-hpc-devel 
+  - libscalapack2_2_2_0-gnu-openmpi4-hpc-devel-static 
+  - libscalapack2_2_2_0-gnu-openmpi5-hpc 
+  - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel 
+  - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel-static 
   - libscamperctrl-devel 
   - libscamperctrl2 
   - libscamperfile-devel 
@@ -16140,7 +16151,7 @@ unsorted:
   - libshout-devel 
   - libshout3-32bit 
   - libshp-devel 
-  - libshp2 
+  - libshp4 
   - libshumate-devel 
   - libsidplayfp-devel 
   - libsidplayfp6 
@@ -23135,7 +23146,6 @@ unsorted:
   - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
-  - postgresql11-pgsql-ogr-fdw 
   - postgresql11-plperl 
   - postgresql11-plpython 
   - postgresql11-pltcl 
@@ -23242,6 +23252,7 @@ unsorted:
   - postgresql16-pg_cron 
   - postgresql16-pgagent 
   - postgresql16-pgaudit 
+  - postgresql16-pgsql-ogr-fdw 
   - postgresql16-plperl 
   - postgresql16-plpython 
   - postgresql16-plr 
@@ -25346,6 +25357,7 @@ unsorted:
   - python310-enrich 
   - python310-entrypoint2 
   - python310-entrypoints 
+  - python310-envier 
   - python310-environ-config 
   - python310-environmental-override 
   - python310-envisage 
@@ -25461,6 +25473,7 @@ unsorted:
   - python310-fontPens 
   - python310-forbiddenfruit 
   - python310-formats 
+  - python310-fpdf2 
   - python310-fqdn 
   - python310-framel 
   - python310-freeipa 
@@ -25523,6 +25536,7 @@ unsorted:
   - python310-gobject-Gdk 
   - python310-gobject-cairo 
   - python310-gobject-devel 
+  - python310-google-ai-generativelanguage 
   - python310-google-api-core 
   - python310-google-api-python-client 
   - python310-google-auth 
@@ -27913,6 +27927,7 @@ unsorted:
   - python311-QtAwesome 
   - python311-QtPy 
   - python311-QtPy-test 
+  - python311-Quart 
   - python311-RTFDE 
   - python311-RangeHTTPServer 
   - python311-RegexOrder 
@@ -28988,6 +29003,7 @@ unsorted:
   - python311-enrich 
   - python311-entrypoint2 
   - python311-entrypoints 
+  - python311-envier 
   - python311-environ-config 
   - python311-environmental-override 
   - python311-envisage 
@@ -29102,6 +29118,7 @@ unsorted:
   - python311-fontPens 
   - python311-forbiddenfruit 
   - python311-formats 
+  - python311-fpdf2 
   - python311-fqdn 
   - python311-framel 
   - python311-freeipa 
@@ -29161,6 +29178,7 @@ unsorted:
   - python311-gmpy2 
   - python311-gns3fy 
   - python311-gobject-devel 
+  - python311-google-ai-generativelanguage 
   - python311-google-api-core 
   - python311-google-api-python-client 
   - python311-google-auth 
@@ -30583,6 +30601,7 @@ unsorted:
   - python311-qtwebengine-qt5 
   - python311-qtwebengine-qt5-devel 
   - python311-quantities 
+  - python311-quart-trio 
   - python311-queuelib 
   - python311-quicktions 
   - python311-quimb 
@@ -31482,6 +31501,7 @@ unsorted:
   - python312-QtAwesome 
   - python312-QtPy 
   - python312-QtPy-test 
+  - python312-Quart 
   - python312-RTFDE 
   - python312-RangeHTTPServer 
   - python312-RegexOrder 
@@ -32584,6 +32604,7 @@ unsorted:
   - python312-enrich 
   - python312-entrypoint2 
   - python312-entrypoints 
+  - python312-envier 
   - python312-environ-config 
   - python312-environmental-override 
   - python312-envisage 
@@ -32699,6 +32720,7 @@ unsorted:
   - python312-fontPens 
   - python312-forbiddenfruit 
   - python312-formats 
+  - python312-fpdf2 
   - python312-fqdn 
   - python312-framel 
   - python312-freeipa 
@@ -32761,6 +32783,7 @@ unsorted:
   - python312-gobject-Gdk 
   - python312-gobject-cairo 
   - python312-gobject-devel 
+  - python312-google-ai-generativelanguage 
   - python312-google-api-core 
   - python312-google-api-python-client 
   - python312-google-auth 
@@ -34241,6 +34264,7 @@ unsorted:
   - python312-qtwebengine-qt5 
   - python312-qtwebengine-qt5-devel 
   - python312-quantities 
+  - python312-quart-trio 
   - python312-queuelib 
   - python312-quicktions 
   - python312-quimb 
@@ -36677,12 +36701,15 @@ unsorted:
   - scala-stm-javadoc 
   - scalapack-mvapich2-test 
   - scalapack-openmpi4-test 
-  - scalapack_2_1_0-gnu-mpich-hpc-module 
-  - scalapack_2_1_0-gnu-mpich-hpc-test 
-  - scalapack_2_1_0-gnu-mvapich2-hpc-module 
-  - scalapack_2_1_0-gnu-mvapich2-hpc-test 
-  - scalapack_2_1_0-gnu-openmpi4-hpc-module 
-  - scalapack_2_1_0-gnu-openmpi4-hpc-test 
+  - scalapack-openmpi5-test 
+  - scalapack_2_2_0-gnu-mpich-hpc-module 
+  - scalapack_2_2_0-gnu-mpich-hpc-test 
+  - scalapack_2_2_0-gnu-mvapich2-hpc-module 
+  - scalapack_2_2_0-gnu-mvapich2-hpc-test 
+  - scalapack_2_2_0-gnu-openmpi4-hpc-module 
+  - scalapack_2_2_0-gnu-openmpi4-hpc-test 
+  - scalapack_2_2_0-gnu-openmpi5-hpc-module 
+  - scalapack_2_2_0-gnu-openmpi5-hpc-test 
   - scalpel 
   - scamper 
   - scanmem 
