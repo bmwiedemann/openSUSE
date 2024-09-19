@@ -740,4 +740,12 @@ This is exactly like request 221664, just Source URI was fixed and ENABLE_IPMI w
     <comment></comment>
     <requestid>1166465</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>63ae6d987d9dcec35d013720bd1bfa78</srcmd5>
+    <version>2.8.2</version>
+    <time>1726773505</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202014</requestid>
+  </revision>
 </revisionlist>

@@ -61,8 +61,8 @@ Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
 Group:          Hardware/UPS
 URL:            https://www.networkupstools.org/
-Source0:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+# Repack with upstream PR #2623 patched in due to files with proprietary license
+Source0:        %{name}-%{version}-repack.tar.gz
 Source2:        README.SUSE
 Source3:        nut.rpmlintrc
 Source4:        nut.keyring
@@ -71,9 +71,9 @@ Patch0:         nut-preconfig.patch
 Patch1:         nut-notifyflag.patch
 # PATCH-FEATURE-OPENSUSE nut-doc-fixed-date.patch sbrabec@suse.cz -- Make doc builds reproducible.
 Patch2:         nut-doc-fixed-date.patch
-Patch10:        harden_nut-driver.service.patch
-Patch11:        harden_nut-monitor.service.patch
-Patch12:        harden_nut-server.service.patch
+Patch3:         harden_nut-driver.service.patch
+Patch4:         harden_nut-monitor.service.patch
+Patch5:         harden_nut-server.service.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -392,7 +392,7 @@ rm -f %{buildroot}%{_docdir}/%{name}/cables/*.txt-prepped
 %if 0%{?suse_version} < 1330
 getent passwd %{NUT_USER} >/dev/null || useradd -r -g %{NUT_GROUP} -s /bin/false -c "UPS daemon" -d /sbin %{NUT_USER} 2>/dev/null
 %endif
-%service_add_pre nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
+%service_add_pre nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
 
 %post
 # Generate initial passwords.
@@ -417,14 +417,14 @@ if grep "powersave -U" %{_sysconfdir}/ups/upsmon.conf ; then
 fi
 # And finally trigger udev to set permissions according to newly installed rules files.
 udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
-%service_add_post nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
+%service_add_post nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}-common-tmpfiles.conf
 
 %preun
-%service_del_preun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
+%service_del_preun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
 
 %postun
-%service_del_postun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
+%service_del_postun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target nut-driver-enumerator-daemon-activator.path nut-driver-enumerator-daemon-activator.service nut-driver-enumerator-daemon.service
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %ldconfig_scriptlets -n libnutclient2

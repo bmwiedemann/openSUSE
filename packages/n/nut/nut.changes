@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 12 13:43:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Eaton scripts were mistakenly shipped by upstream with a proprietary
+  license. Repack with upstream re-licensing patch (gh#2623).
+  * nut-2.8.2-repack.tar.gz
+- Add missing %service_* calls
+
+-------------------------------------------------------------------
 Sat Apr  6 20:59:56 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 2.8.2
