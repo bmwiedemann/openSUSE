@@ -15,21 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# std=c++20 now required, use GCC 10 for Leap
+# std=c++20 now required, use GCC 12 for Leap
 %if 0%{?suse_version} < 1650
-%define gcc_ver 10
+%define gcc_ver 12
 %endif
 
 %define lib_suffix %{nil}
 %ifarch x86_64
   %define lib_suffix 64
 %endif
-%define title_version 0.4.6
+%define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.4.6
-%define openmusic_version 1.5
+%define objects_version 1.4.7
+%define openmusic_version 1.6
 %define opensound_version 1.0.5
-%define openrct2_version 0.4.12
+%define openrct2_version 0.4.14
 
 Name:           openrct2
 Version:        %{openrct2_version}
