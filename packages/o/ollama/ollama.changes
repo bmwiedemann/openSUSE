@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:48:34 UTC 2024 - adrian@suse.de
+
+- Update to version 0.3.10:
+  * openai: align chat temperature and frequency_penalty options with completion (#6688)
+  * docs: improve linux install documentation (#6683)
+  * openai: don't scale temperature or frequency_penalty (#6514)
+  * readme: add Archyve to community integrations (#6680)
+  * readme: add Plasmoid Ollama Control to community integrations (#6681)
+  * Improve logging on GPU too small (#6666)
+  * openai: fix "presence_penalty" typo and add test (#6665)
+  * Fix gemma2 2b conversion (#6645)
+  * Document uninstall on windows (#6663)
+  * Revert "Detect running in a container (#6495)" (#6662)
+  * llm: make load time stall duration configurable via OLLAMA_LOAD_TIMEOUT
+  * Introduce GPU Overhead env var (#5922)
+  * Detect running in a container (#6495)
+  * readme: add AiLama to the list of community integrations (#4957)
+  * Update gpu.md: Add RTX 3050 Ti and RTX 3050 Ti (#5888)
+  * server: fix blob download when receiving a 200 response  (#6656)
+  * readme: add Gentoo package manager entry to community integrations (#5714)
+  * Update install.sh：Replace "command -v" with encapsulated functionality (#6035)
+  * readme: include Enchanted for Apple Vision Pro (#4949)
+  * readme: add lsp-ai to community integrations (#5063)
+  * readme: add ollama-php library to community integrations (#6361)
+  * readme: add vnc-lm discord bot community integration (#6644)
+  * llm: use json.hpp from common (#6642)
+  * readme: add confichat to community integrations (#6378)
+  * docs: add group to manual Linux isntructions and verify service is running (#6430)
+  * readme: add gollm to the list of community libraries (#6099)
+  * readme: add Cherry Studio to community integrations (#6633)
+  * readme: add Go fun package (#6421)
+  * docs: fix spelling error (#6391)
+  * install.sh: update instructions to use WSL2 (#6450)
+  * readme: add claude-dev to community integrations (#6630)
+  * readme: add PyOllaMx project (#6624)
+  * llm: update llama.cpp commit to 8962422 (#6618)
+  * Use cuda v11 for driver 525 and older (#6620)
+  * Log system memory at info (#6617)
+  * readme: add Painting Droid community integration (#5514)
+  * readme: update Ollama4j link and add link to Ollama4j Web UI (#6608)
+  * Fix sprintf to snprintf (#5664)
+  * readme: add PartCAD tool to readme for generating 3D CAD models using Ollama (#6605)
+  * Reduce docker image size (#5847)
+  * readme: add OllamaFarm project (#6508)
+  * readme: add go-crew and Ollamaclient projects (#6583)
+  * docs: update faq.md for OLLAMA_MODELS env var permissions (#6587)
+  * fix(cmd): show info may have nil ModelInfo (#6579)
+  * docs: update GGUF examples and references (#6577)
+  * Add findutils to base images (#6581)
+  * remove any unneeded build artifacts
+  * doc: Add Nix and Flox to package manager listing (#6074)
+  * update the openai docs to explain how to set the context size (#6548)
+  * fix(test): do not clobber models directory
+  * add llama3.1 chat template (#6545)
+  * update deprecated warnings
+  * validate model path
+  * throw an error when encountering unsupport tensor sizes (#6538)
+  * Move ollama executable out of bin dir (#6535)
+  * update templates to use messages
+  * more tokenizer tests
+  * add safetensors to the modelfile docs (#6532)
+  * Fix import image width (#6528)
+  * Update manual instructions with discrete ROCm bundle (#6445)
+  * llm: fix typo in comment (#6530)
+  * adjust image sizes
+  * clean up convert tokenizer
+  * detect chat template from configs that contain lists
+  * update the import docs (#6104)
+  * server: clean up route names for consistency (#6524)
+  * Only enable numa on CPUs (#6484)
+  * gpu: Group GPU Library sets by variant (#6483)
+  * update faq
+  * passthrough OLLAMA_HOST path to client
+  * convert safetensor adapters into GGUF (#6327)
+  * gpu: Ensure driver version set before variant (#6480)
+  * llm: Align cmake define for cuda no peer copy (#6455)
+  * Fix embeddings memory corruption (#6467)
+  * llama3.1
+  * convert gemma2
+  * create bert models from cli
+  * bert
+  * Split rocm back out of bundle (#6432)
+  * CI: remove directories from dist dir before upload step (#6429)
+  * CI: handle directories during checksum (#6427)
+  * Fix overlapping artifact name on CI
+  * Review comments
+  * Adjust layout to bin+lib/ollama
+  * Remove Jetpack
+  * Add windows cuda v12 + v11 support
+  * Enable cuda v12 flags
+  * Add cuda v12 variant and selection logic
+  * Report GPU variant in log
+  * Add Jetson cuda variants for arm
+  * Wire up ccache and pigz in the docker based build
+  * Refactor linux packaging
+  * server: limit upload parts to 16 (#6411)
+  * Fix white space.
+  * Reset NumCtx.
+  * Override numParallel only if unset.
+  * fix: chmod new layer to 0o644 when creating it
+  * fix: Add tooltip to system tray icon
+  * only skip invalid json manifests
+  * skip invalid manifest files
+  * fix noprune
+  * add `CONTRIBUTING.md` (#6349)
+  * Fix typo and improve readability (#5964)
+  * server: reduce max connections used in download (#6347)
+  * update chatml template format to latest in docs (#6344)
+  * lint
+  * Update openai.md to remove extra checkbox (#6345)
+  * llama3.1 memory
+
+-------------------------------------------------------------------
 Thu Aug 15 18:59:48 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.3.6:

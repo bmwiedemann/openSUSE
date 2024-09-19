@@ -1,28 +1,20 @@
-diff --git a/llm/generate/gen_linux.sh b/llm/generate/gen_linux.sh
-index db2c6c3..8194cd9 100755
---- a/llm/generate/gen_linux.sh
-+++ b/llm/generate/gen_linux.sh
-@@ -52,6 +52,7 @@ if [ -z "${CUDACXX}" ]; then
+--- a/llm/generate/gen_linux.sh.orig	2024-09-17 12:52:41.511508050 +0200
++++ b/llm/generate/gen_linux.sh	2024-09-17 13:01:55.316347171 +0200
+@@ -52,7 +52,7 @@
+         export CUDACXX=$(command -v nvcc)
      fi
  fi
- COMMON_CMAKE_DEFS="-DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_AVX=on -DGGML_AVX2=off -DGGML_AVX512=off -DGGML_FMA=off -DGGML_F16C=off -DGGML_OPENMP=off"
-+COMMON_CMAKE_DEFS="${COMMON_CMAKE_DEFS} -DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
+-COMMON_CMAKE_DEFS="-DCMAKE_SKIP_RPATH=on -DBUILD_SHARED_LIBS=on -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_AVX=on -DGGML_AVX2=off -DGGML_AVX512=off -DGGML_FMA=off -DGGML_F16C=off -DGGML_OPENMP=off"
++COMMON_CMAKE_DEFS="-DCMAKE_SKIP_RPATH=on -DBUILD_SHARED_LIBS=on -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_AVX=on -DGGML_AVX2=off -DGGML_AVX512=off -DGGML_FMA=off -DGGML_F16C=off -DGGML_OPENMP=off -DGGML_LTO=on"
  source $(dirname $0)/gen_common.sh
  init_vars
  git_module_setup
-@@ -78,6 +79,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
-         init_vars
-         echo "OLLAMA_CUSTOM_CPU_DEFS=\"${OLLAMA_CUSTOM_CPU_DEFS}\""
-         CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
-+        CMAKE_DEFS="${CMAKE_DEFS} -DGGML_LTO=on"
-         BUILD_DIR="../build/linux/${ARCH}/cpu"
-         echo "Building custom CPU"
-         build
-@@ -94,6 +96,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
+@@ -95,7 +95,7 @@
+         # -DGGML_AVX512_VBMI -- 2018 Intel Cannon Lake
          # -DGGML_AVX512_VNNI -- 2021 Intel Alder Lake
  
-         COMMON_CPU_DEFS="-DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_OPENMP=off"
-+        COMMON_CPU_DEFS="${COMMON_CPU_DEFS} -DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
+-        COMMON_CPU_DEFS="-DBUILD_SHARED_LIBS=on -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_OPENMP=off"
++        COMMON_CPU_DEFS="-DBUILD_SHARED_LIBS=on -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_OPENMP=off -DGGML_LTO=on"
          if [ -z "${OLLAMA_CPU_TARGET}" -o "${OLLAMA_CPU_TARGET}" = "cpu" ]; then
              #
              # CPU first for the default library, set up as lowest common denominator for maximum compatibility (including Rosetta)
