@@ -1,0 +1,20 @@
+diff -ruN envier-0.5.2-source1.orig/tests/test_types.py envier-0.5.2-source1.new/tests/test_types.py
+--- envier-0.5.2-source1/tests/test_types.py	2024-07-05 05:32:42.000000000 -0500
++++ envier-0.5.2-source1/tests/test_types.py	2024-09-10 19:39:24.092484956 -0500
+@@ -20,12 +20,12 @@
+         out.decode()
+         == """tests/types_test.py:43: error: Incompatible types in assignment (expression has type "int", variable has type "str")  [assignment]
+ tests/types_test.py:44: error: Incompatible types in assignment (expression has type "str", variable has type "CustomObject")  [assignment]
+-tests/types_test.py:45: error: Incompatible types in assignment (expression has type "bool", variable has type "Optional[str]")  [assignment]
+-tests/types_test.py:46: error: Incompatible types in assignment (expression has type "bytes", variable has type "Optional[CustomObject]")  [assignment]
++tests/types_test.py:45: error: Incompatible types in assignment (expression has type "bool", variable has type "str | None")  [assignment]
++tests/types_test.py:46: error: Incompatible types in assignment (expression has type "bytes", variable has type "CustomObject | None")  [assignment]
+ tests/types_test.py:48: error: Incompatible types in assignment (expression has type "int", variable has type "str")  [assignment]
+ tests/types_test.py:49: error: Incompatible types in assignment (expression has type "str", variable has type "CustomObject")  [assignment]
+-tests/types_test.py:50: error: Incompatible types in assignment (expression has type "bool", variable has type "Optional[str]")  [assignment]
+-tests/types_test.py:51: error: Incompatible types in assignment (expression has type "bytes", variable has type "Optional[CustomObject]")  [assignment]
++tests/types_test.py:50: error: Incompatible types in assignment (expression has type "bool", variable has type "str | None")  [assignment]
++tests/types_test.py:51: error: Incompatible types in assignment (expression has type "bytes", variable has type "CustomObject | None")  [assignment]
+ Found 8 errors in 1 file (checked 1 source file)
+ """
+     )
