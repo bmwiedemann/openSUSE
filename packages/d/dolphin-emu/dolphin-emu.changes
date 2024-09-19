@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 03:32:07 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2409
+  * Upstream doesn't provide a ChangeLog.
+
+-------------------------------------------------------------------
 Wed Jul 24 15:53:40 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Limited build to fmt = 10.2.1 (temporary fix for Tumbleweed).
