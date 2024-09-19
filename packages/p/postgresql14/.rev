@@ -247,4 +247,16 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Remove constraints file because improved memory usage for s390x</comment>
     <requestid>1172962</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b7da7a6a1214409c43816ef57974dba3</srcmd5>
+    <version>14.13</version>
+    <time>1726773476</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 14.13 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/docs/release/14.13/</comment>
+    <requestid>1201985</requestid>
+  </revision>
 </revisionlist>

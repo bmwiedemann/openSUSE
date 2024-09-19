@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 14.12
+%define pgversion 14.13
 %define pgmajor 14
 %define buildlibs 0
 %define tarversion %{pgversion}
@@ -60,7 +60,7 @@ Name:           %pgname
 %endif
 
 %if %pgmajor >= 17
-%bcond_with dreived
+%bcond_with derived
 %else
 %bcond_without derived
 %endif
