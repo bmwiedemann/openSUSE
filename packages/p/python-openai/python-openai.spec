@@ -34,6 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.5.0
 Requires:       python-distro >= 1.7.0
 Requires:       python-httpx >= 0.23.0
+Requires:       python-jiter >= 0.4.0
 Requires:       python-pydantic >= 1.9.0
 Requires:       python-sniffio
 Requires:       python-tqdm > 4
