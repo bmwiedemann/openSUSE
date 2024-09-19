@@ -18,8 +18,8 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.11.1
-Release:        5a52707
+Version:        1.11.3
+Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
 Group:          Productivity/Networking/DNS/Servers
@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
@@ -65,12 +65,13 @@ mkdir -pv $HOME/go/src/%{project}
 find . -mindepth 1 -maxdepth 1 -exec cp -r {} $HOME/go/src/%{project} \;
 
 cd $HOME/go/src/%{project}
+go generate coredns.go
 go build -mod=vendor -v -buildmode=pie -o coredns
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
-go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme"
+go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1"
 
 %install
 cd $HOME/go/src/%{project}

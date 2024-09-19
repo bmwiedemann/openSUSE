@@ -3,7 +3,7 @@
     <param name="url">https://github.com/coredns/coredns</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">5a52707c1962c915caea8a7c8e600cbe76836c98</param>
+    <param name="revision">a6338e924e29d318e7a1e971b5bde23f36d083af</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

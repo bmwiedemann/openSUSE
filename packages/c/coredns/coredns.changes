@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 19 09:14:06 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.11.3:
+  * optimize the performance for high qps (#6767)
+  * bump deps
+  * Fix zone parser error handling (#6680)
+  * Add alternate option to forward plugin (#6681)
+  * fix: plugin/file: return error when parsing the file fails (#6699)
+  * [fix:documentation] Clarify autopath README (#6750)
+  * Fix outdated test (#6747)
+  * Bump go version from 1.21.8 to 1.21.11 (#6755)
+  * Generate zplugin.go correctly with third-party plugins (#6692)
+  * dnstap: uses pointer receiver for small response writer (#6644)
+  * chore: fix function name in comment (#6608)
+  * [plugin/forward] Strip local zone from IPV6 nameservers (#6635)
+
+-------------------------------------------------------------------
 Tue Apr 09 08:06:46 UTC 2024 - andrea.manzini@suse.com
 
 - Update to upstream head (git commit #5a52707):
