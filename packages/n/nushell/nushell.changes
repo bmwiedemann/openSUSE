@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 19 03:55:07 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.98.0:
+  * Additions:
+    - `metadata access`.
+    - `split cell-path`.
+    - `split column --numbered`.
+    - `encode base32, decode base32`.
+    - `encode base32hex, decode base32hex`.
+    - `encode new-base64, decode new-base64`.
+  * Breaking changes:
+    - `into record`.
+    - `clear`.
+    - `path exists`.
+    - `scope commands` and `help commands`
+    - `tee`.
+    - `polars concatenate` renamed to `polars str-join`.
+  * Deprecations:
+    - `encode base64`.
+  * Removals:
+    - str deunicode.
+    - $env.config.use_grid_icons.
+  * Bug fixes and other changes:
+    - `find`.
+    - `encode hex`.
+    - Various Polars commands now support expressions.
+    - Improved script help output.
+    - Bit operations and commands.
+    - `detect columns`.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-09-17-nushell_0_98_0.html.
+
+-------------------------------------------------------------------
 Wed Aug 21 04:09:45 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.97.1:
