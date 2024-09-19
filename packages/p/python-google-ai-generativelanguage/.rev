@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a7c5fde90bfc414cafc341d3bb23041</srcmd5>
+    <version>0.6.6</version>
+    <time>1726773447</time>
+    <user>anag+factory</user>
+    <comment>-------------------------------------------------------------------
+Wed Sep  4 17:15:45 UTC 2024 - Fergal Mc Carthy &lt;fmccarthy@suse.com&gt;
+
+- Include the pytest-asyncio module as a BuildRequires.- 
+
+-------------------------------------------------------------------
+Tue Aug 27 22:57:08 UTC 2024 - Guang Yee &lt;gyee@suse.com&gt;
+
+- Release 0.6.6
+  * [google-ai-generativelanguage] Add code execution (#12843)</comment>
+    <requestid>1201882</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Sep  4 17:15:45 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Include the pytest-asyncio module as a BuildRequires.- 
+
+-------------------------------------------------------------------
+Tue Aug 27 22:57:08 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Release 0.6.6
+  * [google-ai-generativelanguage] Add code execution (#12843)
