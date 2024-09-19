@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 13 05:15:59 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 4.5.3
+  * General:
+    * Change: Give experience when squishing a scavenger
+    * Fix: Various potential crashes
+  * Graphics:
+    * Fix: Reset object animation state in a few places
+    * Fix: Additional graphics backend fallback options
+      for macOS and Linux
+  * Campaign:
+    * Fix: Visibility of units restored during limbo missions
+    * Fix: Reset structure functionality references to objects
+      when going offworld
+    * Fix: Fill VTOLs when going offworld
+    * Fix: Update Remastered balance
+    * Fix: Update Reclamation addon campaign
+    * Fix: Update Fractured Kingdom addon campaign
+  * Translations:
+    * Change: Numerous translation updates
+
+-------------------------------------------------------------------
 Tue Aug 13 17:37:05 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 4.5.2
