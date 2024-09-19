@@ -17,7 +17,7 @@
 
 
 Name:           plexus-archiver
-Version:        4.9.2
+Version:        4.10.0
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
@@ -60,7 +60,7 @@ Javadoc for %{name}.
 cp %{SOURCE1} build.xml
 
 %patch -P 0 -p1
-%pom_remove_dep org.iq80.snappy:snappy
+%pom_remove_dep io.airlift:aircompressor
 rm -rf src/main/java/org/codehaus/plexus/archiver/snappy
 rm -rf src/test/java/org/codehaus/plexus/archiver/snappy
 rm -f src/main/java/org/codehaus/plexus/archiver/tar/SnappyTarFile.java

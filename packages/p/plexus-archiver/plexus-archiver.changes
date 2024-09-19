@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 19 05:40:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstrem version 4.10.0
+  * New features and improvements
+    + Change Snappy compressor to io.airlift:aircompressor
+    + Fix modular jar final permissions
+- Modified patch:
+  * 0001-Remove-support-for-snappy.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Thu Jun 13 16:12:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.9.2
