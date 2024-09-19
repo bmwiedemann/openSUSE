@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Sep 16 18:00:54 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.5.1:
+  * [Client] Support connecting to Teeworlds 0.7 servers
+  * [Client] Color speed in hud based on increase or decrease
+  * [Client] ARM64 Windows support
+  * [Client] Add a popup for picking a map for background
+    entities setting
+  * [Client] Support composite binds with + commands, fix handling
+    of composite binds with F1-F24 keys
+  * [Server] Spawn confetti when connecting on your DDNet birthday
+  * [Server] Add support for directories with add_map_votes
+  * [Server] Add support for triggering map sounds
+  * [Editor&Server] Add hot_reload command to reload map while
+    preserving state
+  * [Client] Show server info in password popup
+  * [Client] Spectator clans in scoreboard
+  * [Client] New lock indicator
+  * [Client] Improve cl_show_ids
+  * [Client] Improve dummy connecting button and error handling
+  * [Client] Fix 'auto' GPU identification on hybrid GPU systems
+  * [Client] Check API version before adding GPU to GPU list
+  * [Client] Use text containers to render movement information
+  * [Client] Work on improving Android support
+  * [Client] Remove multi-line chat
+  * [Client] 128 player support in scoreboard and spectator UI
+  * [Client] Also trim scoreboard search strings in highlights
+  * [Client] Use same Red/Blue team colors for score HUD as
+    for scoreboard
+  * [Client] Fix CSV header being written multiple times to
+    ddnet-saves.txt
+  * [Client] Fix memory leak of non-RGBA image data, clear all
+    image info
+  * [Client] Smoother menu checker background scrolling on
+    loading screens
+  * [Client] Fix invalid team count in scoreboard for split teams
+  * [Client] Only activate double-clicks with left mouse
+    button again
+  * [Client] Show warning when connect address cannot be resolved
+  * [Client] Show game menu buttons again, even in 5:4, when not
+    on a red/blue-team server
+  * [Client] Fix debug HUD units
+  * [Client] Improve bans rcon command pagination
+  * [Client] Increase max command length in console
+  * [Client] Scale target position when spectating
+  * [Client] Fix save code not being censored in streamer mode
+  * [Client] Don't allow input in console while it is
+    opening/closing
+  * [Client] Allow reloading current background entities map
+  * [Client] Speed demo up with mouse scroll only if menu
+    is active
+  * [Editor] Add button to collapse/expand all groups
+  * [Editor] Transfer server settings while using append
+  * [Editor] Fix editor properties not being clamped on + and
+    - button click
+  * [Client&Server] Fix UDP socket creation/cleanup if opening
+    IPv6 socket fails
+  * [Server] Add /whispers to disable whipers (similar to /dnd)
+  * [Server] Disallow moving authed players to spec
+  * [Server] Fix practice finish time
+  * [Server] Add error message when trying to /swap on forced
+    solo server
+  * [Server] Savegame fixes
+  * [Server] Disallow saving with draggers active
+  * [Server] Only apply DNSBL bans once when player joins
+  * [Server] Don't show "you've been banned" for VPN bans
+  * [Server] Handle dnsbl and other non-critical stuff only on
+    new ticks
+  * [Server] Don't keep state of teammate in team0mode after
+    death
+  * [Tooling] Validate language files for … and non-matching
+    formatters in CI
+
+-------------------------------------------------------------------
 Mon Sep  9 18:01:04 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.5:
