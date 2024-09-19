@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 19 04:17:15 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.25.0
+  Features:
+   * Moore Threads GPU add support to query number of cores (GPU)
+   * Cache detection result based on last modification time (Packages)
+   * Add cmake options to disable certain package managers at compile time
+   * Add new option --show-localip-{speed,mtu} (LocalIP)
+   * Add new module Btrfs, which prints all mounted Btrfs volumes, like Zpool module (Linux)
+  Bugfixes:
+   * Fix compiling with old linux headers (Camera, Linux)
+
+-------------------------------------------------------------------
 Thu Sep 12 14:37:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.24.0

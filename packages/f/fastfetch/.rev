@@ -801,4 +801,20 @@ Bugfixes:
        will print `This should print`</comment>
     <requestid>1200672</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d7f0e87b826cdead714dce80b470c79a</srcmd5>
+    <version>2.25.0</version>
+    <time>1726773455</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.25.0
+  Features:
+   * Moore Threads GPU add support to query number of cores (GPU)
+   * Cache detection result based on last modification time (Packages)
+   * Add cmake options to disable certain package managers at compile time
+   * Add new option --show-localip-{speed,mtu} (LocalIP)
+   * Add new module Btrfs, which prints all mounted Btrfs volumes, like Zpool module (Linux)
+  Bugfixes:
+   * Fix compiling with old linux headers (Camera, Linux)</comment>
+    <requestid>1201910</requestid>
+  </revision>
 </revisionlist>
