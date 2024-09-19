@@ -16,16 +16,13 @@
 #
 
 
-%bcond_with openmw-cs
-
 # older boost versions (<= 1.66) available on openSUSE <= 15.5 break
 # compilation because openmw uses -std=c++20 and these older boost versions
 # are not compatible with it
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
-
 Name:           openmw
-Version:        0.48.0+git20240202
+Version:        0.48.0+git20240913
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
@@ -42,12 +39,14 @@ BuildRequires:  libboost_iostreams-devel >= %{min_boost_version}
 BuildRequires:  libboost_program_options-devel >= %{min_boost_version}
 BuildRequires:  libboost_regex-devel >= %{min_boost_version}
 BuildRequires:  libboost_system-devel >= %{min_boost_version}
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bullet) >= 2.83.0
 BuildRequires:  pkgconfig(icu-i18n)
@@ -62,19 +61,20 @@ BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openscenegraph) >= 3.2
 BuildRequires:  pkgconfig(openthreads) >= 3.2
-BuildRequires:  pkgconfig(recastnavigation)
+BuildRequires:  pkgconfig(recastnavigation) >= 1.6.0
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(yaml-cpp)
+Requires:       OpenSceneGraph-plugin-collada
 Requires:       OpenSceneGraph-plugins
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
 
 %description
 OpenMW is a new and modern engine based on the one that runs the 2002 open-world RPG Morrowind. The engine (OpenMW) will come with its own editor (OpenCS) which will allow the user to edit or create their own games. Both OpenCS and OpenMW are written from scratch and aren’t made to support any third party programs the original Morrowind engine uses to improve its functionality.
@@ -127,12 +127,6 @@ export CXX="g++-11"
 %endif
 # -DBT_USE_DOUBLE_PRECISION should be discovered by cmake from bullet config, but it's not.
 
-%if %{with openmw-cs}
-%define build_open_cs "ON"
-%else
-%define build_open_cs "OFF"
-%endif
-
 %cmake \
        -DCMAKE_C_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
        -DCMAKE_CXX_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
@@ -145,8 +139,7 @@ export CXX="g++-11"
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
        -DCMAKE_VISIBILITY_INLINES_HIDDEN=1 \
        -DOPENMW_USE_SYSTEM_RECASTNAVIGATION="ON" \
-       -DOPENMW_USE_SYSTEM_ICU="ON" \
-       -DBUILD_OPENCS=%{build_open_cs}
+       -DOPENMW_USE_SYSTEM_ICU="ON"
 
 %make_build
 
@@ -170,9 +163,7 @@ mv %{buildroot}/%{_datadir}/metainfo/* %{buildroot}/%{_datadir}/appdata/
 rm -Rf %{buildroot}/%{_datadir}/metainfo
 
 %suse_update_desktop_file org.openmw.launcher
-%if %{with openmw-cs}
-%suse_update_desktop_file org.openmw-cs.launcher
-%endif
+%suse_update_desktop_file org.openmw.cs
 %fdupes %{buildroot}%{_datadir}
 
 %post
@@ -189,11 +180,9 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %doc CHANGELOG.md
 %doc AUTHORS.md
 
-%if %{with openmw-cs}
 %doc manual/opencs/*
 %config %{_sysconfdir}/%{name}/defaults-cs.bin
-#%{_bindir}/%{name}-cs
-%endif
+%{_bindir}/%{name}-cs
 
 %dir %{_datadir}/%{name}
 %dir %{_sysconfdir}/%{name}

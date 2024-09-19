@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:32:27 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to git version as of Sept 13th 2024. Fixes compilation issue
+  with internal component osg-ffmpeg-videoplayer
+- Re-enabled compilation of openmw-cs  
+
+-------------------------------------------------------------------
 Fri Feb  2 13:49:24 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to git version as of Feb 2th 2024. This is needed for openmw
