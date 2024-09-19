@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 12:32:30 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- pam-extra needs to be present for upgraders, as pam_limits.so
+  moved from pam to pam-extra. Ensure it's added to the DVD.
+
+-------------------------------------------------------------------
 Sat Aug 17 15:21:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure autofs is on the DVD: it is tested by openQA in staging.

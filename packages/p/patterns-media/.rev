@@ -433,4 +433,12 @@
     <comment>- Ensure autofs is on the DVD: it is tested by openQA in staging. (forwarded request 1194475 from dimstar)</comment>
     <requestid>1194476</requestid>
   </revision>
+  <revision rev="52" vrev="52">
+    <srcmd5>be01ee3187a82255117d5307f9b822f2</srcmd5>
+    <version>20170319</version>
+    <time>1726749174</time>
+    <user>dimstar_suse</user>
+    <comment>- pam-extra needs to be present for upgraders, as pam_limits.so
+  moved from pam to pam-extra. Ensure it's added to the DVD.</comment>
+  </revision>
 </revisionlist>

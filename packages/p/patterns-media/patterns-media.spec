@@ -420,6 +420,8 @@ Recommends:     omnibook-kmp-desktop
 # #391434
 Recommends:     open-vm-tools
 Recommends:     openslp-server
+# pam-extra needs to be present for upgraders, as pam_limits.so moved from pam to pam-extra
+Recommends:     pam-extra
 # qemu rocks
 Recommends:     qemu
 # #390825
