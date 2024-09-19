@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  2 08:07:02 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+- Update shim version for aarch64 to shim-15.8-lp155.8.8.aarch64.rpm
+  coming from openSUSE secure-boot 15.5
+  + To avoid failure check by robot, SOURCEs in spec file are redefined.
+  + Version: 15.8, "Jan 23 2024"
+  + Include the bug fixes for bsc#1215099,bsc#1215098,bsc#1215100,bsc#1215101,
+    bsc#1215102, and bsc#1215103.
+
+-------------------------------------------------------------------
 Tue Jul 23 03:27:56 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 - Update to shim to 15.8-shim-15.8-lp155.8.2.x86_64.rpm from 

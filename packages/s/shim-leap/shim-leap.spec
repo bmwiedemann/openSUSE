@@ -30,13 +30,14 @@ Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-15.8-lp155.8.2.x86_64.rpm
-Source1:        README
-Source2:        shim-install
+Source0:        shim-15.8-lp155.8.2.x86_64.rpm
+Source1:        shim-15.8-lp155.8.8.aarch64.rpm
+Source2:        README
+Source3:        shim-install
 BuildRequires:  fde-tpm-helper-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 does not exist
@@ -54,14 +55,18 @@ shim is a trivial EFI application that, when run, attempts to open and
 execute another application.
 
 %prep
+%ifarch         x86_64
 rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-time --make-directories
+%else
+rpm2cpio %{SOURCE1} | cpio --extract --unconditional --preserve-modification-time --make-directories
+%endif
 
 %build
 
 %install
 # purely repackaged
 cp -a * %{buildroot}
-cp %{S:1} .
+cp %{S:2} .
 
 # Override shim-install
 install -m 755 %{S:2} %{buildroot}/%{_sbindir}/shim-install
