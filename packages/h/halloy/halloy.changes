@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 18 21:59:47 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2024.12:
+  + Added:
+    - Multi-window support: Pop out panes into separate windows.
+    - In-app theme editor with ability to with share it via a
+      halloy:// URL.
+    - Clickable users and channels in buffers.
+    - New configuration options
+      + Ability to include or exclude channels for server
+        messages (join, part, etc.).
+      + Ability to color nicknames within channel messages.
+      + Ability to define a shell command for loading a server
+        password.
+    - Enable support for IRCv3 msgid
+  + Fixed:
+    - Regression where messages sent to ZNC virtual users were
+      routed to the wrong buffer (e.g. *status routed to status).
+    - Timeouts that could occur while Halloy was running in the
+      background.
+  + Changed:
+    - Default Ghost sequence changed to REGAIN.
+
+-------------------------------------------------------------------
 Wed Sep  4 20:48:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2024.11:
