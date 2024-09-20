@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 19 22:51:18 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 5.0.4:
+  * Bookmarks: Store password.
+  * Hats: Make struct compareable.
+  * Pubsub: Don’t process pubsub events from full jids.
+
+-------------------------------------------------------------------
 Sun Aug 31 15:12:38 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 5.0.3:
