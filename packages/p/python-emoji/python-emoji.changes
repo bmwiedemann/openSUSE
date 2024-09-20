@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Mon May 20 20:49:52 UTC 2024 - Matthias Bach <marix@marix.org> - 2.21.1
+Thu Sep 19 19:54:48 UTC 2024 - Matthias Bach <marix@marix.org> - 2.13.0
+
+- Update to 2.13.0
+  * Use JSON files to store the database of emoji
+  * Load a language into emoji.EMOJI_DATA with
+    emoji.config.load_language("zh")
+
+-------------------------------------------------------------------
+Mon May 20 20:49:52 UTC 2024 - Matthias Bach <marix@marix.org> - 2.12.1
 
 - Update to 2.12.1
   * Require version 4.7.0+ of typing-extensions
