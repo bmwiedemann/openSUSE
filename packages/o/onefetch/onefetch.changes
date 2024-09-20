@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 20 06:32:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.22.0:
+  New Features:
+  * Add support for nerd font glyphs in languages info #1395
+  * [onefetch.dev] Add nerdfont iconts to the preview #1411
+  * Automate publishing crates to crates.io #1364
+  Bug Fixes:
+  * Show future commit dates without panicking #1389
+  Chores:
+  * Re-generate the man page with --no-info #1376
+  * Drop unused shebangs from repo test fixture scripts #1375
+- bsc#1230686 (CVE-2024-45405):
+  Bump git-path to 0.10.11
+
+-------------------------------------------------------------------
 Mon May 13 06:29:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.21.0:

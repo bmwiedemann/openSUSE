@@ -424,4 +424,23 @@
   * Refactor --no-bots CLI option #1340</comment>
     <requestid>1173572</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>96d2d02096342ae9a3f9a8b9c4def39b</srcmd5>
+    <version>2.22.0</version>
+    <time>1726845119</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.22.0:
+  New Features:
+  * Add support for nerd font glyphs in languages info #1395
+  * [onefetch.dev] Add nerdfont iconts to the preview #1411
+  * Automate publishing crates to crates.io #1364
+  Bug Fixes:
+  * Show future commit dates without panicking #1389
+  Chores:
+  * Re-generate the man page with --no-info #1376
+  * Drop unused shebangs from repo test fixture scripts #1375
+- bsc#1230686 (CVE-2024-45405):
+  Bump git-path to 0.10.11</comment>
+    <requestid>1202097</requestid>
+  </revision>
 </revisionlist>
