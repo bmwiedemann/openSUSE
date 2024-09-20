@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 17 16:12:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- build optional doxygen docs (add no-timestamp.patch, so __DATE__ and __TIME__ are not embedded)
+- enable argon2
+- be more explicit about which buildflags are enabled
+- seperate out systemd file (we don't need harden_znc.service.patch anymore)
+- add a source to the gpg key
+
+-------------------------------------------------------------------
 Fri Jul  5 06:21:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.1 (boo#1227393, CVE-2024-39844)

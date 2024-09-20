@@ -1,0 +1,12 @@
+diff -rub znc-1.9.1/Doxyfile znc-1.9.1-patched/Doxyfile
+--- znc-1.9.1/Doxyfile	2024-07-03 12:20:11.000000000 +0200
++++ znc-1.9.1-patched/Doxyfile	2024-09-18 21:57:39.902716622 +0200
+@@ -939,7 +939,7 @@
+ # page will contain the date and time when the page was generated. Setting
+ # this to NO can help when comparing the output of multiple runs.
+ 
+-HTML_TIMESTAMP         = YES
++HTML_TIMESTAMP         = NO
+ 
+ # If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
+ # documentation will contain sections that can be hidden and shown after the
