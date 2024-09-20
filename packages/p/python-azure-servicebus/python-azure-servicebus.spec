@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-servicebus
-Version:        7.12.2
+Version:        7.12.3
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-servicebus/azure-servicebus-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_servicebus/azure_servicebus-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -53,10 +52,9 @@ middleware technologies including reliable message queuing and durable
 publish/subscribe messaging.
 
 %prep
-%setup -q -n azure-servicebus-%{version}
+%setup -q -n azure_servicebus-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-servicebus-%{version}
 %pyproject_wheel
 
 %install
@@ -69,7 +67,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/servicebus
 %{python_sitelib}/azure_servicebus-*.dist-info
 

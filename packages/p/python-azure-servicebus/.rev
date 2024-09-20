@@ -379,4 +379,18 @@
 - Update Requires from setup.py (forwarded request 1173586 from glaubitz)</comment>
     <requestid>1173765</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7ef0b6b7f087127a64597ad389e28dcd</srcmd5>
+    <version>7.12.3</version>
+    <time>1726845148</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.12.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1202091 from glaubitz)</comment>
+    <requestid>1202172</requestid>
+  </revision>
 </revisionlist>
