@@ -1,4 +1,9 @@
 <services>
   <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%java_version%%</param>
+    <param name="package">java-22-openjdk-devel</param>
+  </service>
 </services>
