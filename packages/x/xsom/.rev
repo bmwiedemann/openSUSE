@@ -39,4 +39,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148644</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4ff0c3c345d2657a6ade38a076ee66ec</srcmd5>
+    <version>0~20140925</version>
+    <time>1726845087</time>
+    <user>anag+factory</user>
+    <comment>Bit-reproducible build</comment>
+    <requestid>1202040</requestid>
+  </revision>
 </revisionlist>
