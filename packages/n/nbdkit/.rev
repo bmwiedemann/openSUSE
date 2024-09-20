@@ -157,4 +157,22 @@ near future.</comment>
     <comment></comment>
     <requestid>1198586</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a91affda620e310196aaa5a0f0dadea2</srcmd5>
+    <version>1.40.3</version>
+    <time>1726845092</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.40.3:
+  * Version 1.40.3.
+  * ip: Do late filtering in list_exports as well as open
+  * docs/nbdkit_shutdown.pod: Minor copyediting
+  * docs/nbdkit_error.pod: Typo 'thre' -&gt; 'there'
+  * podwrapper: Check cross-references to C API pages
+  * docs: Fix cross-reference to nbdkit_stdio_safe(3)
+  * ocaml: Use thread-local key to register &amp; unregister the thread
+  * ocaml: Reinitialize the OCaml runtime after fork
+  * tests: Refactor ocaml errorcodes plugin used in testing
+- Move nbdkit-null-plugin to the nbdkit-server package</comment>
+    <requestid>1202045</requestid>
+  </revision>
 </revisionlist>

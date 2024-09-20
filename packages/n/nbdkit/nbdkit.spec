@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.40.2
+Version:        1.40.3
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -101,7 +101,10 @@ reading the nbdkit(1) and nbdkit-plugin(3) manual pages.
 Summary:        Network Block Device server
 
 %description server
-This package contains the %{name} server with no plugins or filters.
+This package contains the %{name} server with  only the null plugin
+and no filters.  To install a basic set of plugins and filters you
+need to install "nbdkit-basic-plugins", "nbdkit-basic-filters" or
+the metapackage "nbdkit".
 
 %package basic-plugins
 Summary:        Basic plugins for %{name}
@@ -113,7 +116,6 @@ Provides:       %{name}-floppy-plugin = %{version}-%{release}
 Provides:       %{name}-full-plugin = %{version}-%{release}
 Provides:       %{name}-info-plugin = %{version}-%{release}
 Provides:       %{name}-memory-plugin = %{version}-%{release}
-Provides:       %{name}-null-plugin = %{version}-%{release}
 Provides:       %{name}-ondemand-plugin = %{version}-%{release}
 Provides:       %{name}-ones-plugin = %{version}-%{release}
 Provides:       %{name}-partitioning-plugin = %{version}-%{release}
@@ -171,9 +173,9 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
-
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 Requires:       %{name}-server = %{version}-%{release}
@@ -191,9 +193,9 @@ Requires:       %{name}-server = %{version}-%{release}
 This package contains cURL (HTTP/FTP) support for %{name}.
 
 
+
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
-
 %package gcs-plugin
 Summary:        Gooogle Cloud Storage plugin %{name}
 Requires:       %{name}-python-plugin = %{version}-%{release}
@@ -542,11 +544,13 @@ export PATH=/usr/sbin:$PATH
 %{_sbindir}/nbdkit
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
+%{_libdir}/%{name}/plugins/nbdkit-null-plugin.so
 %dir %{_libdir}/%{name}/filters
 %{_mandir}/man1/nbdkit.1*
 %{_mandir}/man1/nbdkit-captive.1*
 %{_mandir}/man1/nbdkit-client.1*
 %{_mandir}/man1/nbdkit-loop.1*
+%{_mandir}/man1/nbdkit-null-plugin.1*
 %{_mandir}/man1/nbdkit-probing.1*
 %{_mandir}/man1/nbdkit-protocol.1*
 %{_mandir}/man1/nbdkit-service.1*
@@ -563,7 +567,6 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/plugins/nbdkit-full-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-info-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-memory-plugin.so
-%{_libdir}/%{name}/plugins/nbdkit-null-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-ondemand-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-ones-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-partitioning-plugin.so
@@ -580,7 +583,6 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-full-plugin.1*
 %{_mandir}/man1/nbdkit-info-plugin.1*
 %{_mandir}/man1/nbdkit-memory-plugin.1*
-%{_mandir}/man1/nbdkit-null-plugin.1*
 %{_mandir}/man1/nbdkit-ondemand-plugin.1*
 %{_mandir}/man1/nbdkit-ones-plugin.1*
 %{_mandir}/man1/nbdkit-partitioning-plugin.1*
