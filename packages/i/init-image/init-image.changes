@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 15:50:17 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install openSUSE-release package to avoid have-choice errors
+
+-------------------------------------------------------------------
 Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set useobsrepositories explicitly
