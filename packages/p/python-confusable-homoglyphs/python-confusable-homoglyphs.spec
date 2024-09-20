@@ -22,8 +22,7 @@ Version:        3.3.1
 Release:        0
 Summary:        Detector for confusable use of Unicode homoglyphs
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/vhf/confusable_homoglyphs
+URL:            https://sr.ht/~valhalla/confusable_homoglyphs/
 Source:         https://files.pythonhosted.org/packages/source/c/confusable_homoglyphs/confusable_homoglyphs-%{version}.tar.gz
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pip}
@@ -67,7 +66,7 @@ CAPITAL LETTER A ('A') vs. U+0391 GREEK CAPITAL LETTER ALPHA, 'Α'.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/confusable_homoglyphs
-%{python_sitelib}/confusable_homoglyphs-%{version}*-info
+%{python_sitelib}/confusable_homoglyphs-%{version}.dist-info
 %python_alternative %{_bindir}/confusable_homoglyphs
 
 %changelog
