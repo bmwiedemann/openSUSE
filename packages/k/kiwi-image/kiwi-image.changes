@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 15:50:17 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install openSUSE-release package to avoid have-choice errors
+
+-------------------------------------------------------------------
 Wed Sep 18 16:34:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to new version
