@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:55:00 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.15.0+git.1724675137.ca9ae93a:
+  * Mid: fence_mpath: Allow reservation_key in multipath.conf to be the same as reservation_key in pcmk_host_map. (#592)
+- Drop support for amt as amtterm is not available on SLES16
+
+-------------------------------------------------------------------
 Thu Aug 29 07:48:56 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Remove 0001-Use-Python-3-for-all-scripts-bsc-1065966.patch use

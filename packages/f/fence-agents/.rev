@@ -1134,4 +1134,14 @@
 - Remove amt-ws support as openwsman is not available on SLES16</comment>
     <requestid>1197446</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>13019d7d79f3575523e5aaccaf99eaec</srcmd5>
+    <version>4.15.0+git.1724675137.ca9ae93a</version>
+    <time>1726845131</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.15.0+git.1724675137.ca9ae93a:
+  * Mid: fence_mpath: Allow reservation_key in multipath.conf to be the same as reservation_key in pcmk_host_map. (#592)
+- Drop support for amt as amtterm is not available on SLES16</comment>
+    <requestid>1202129</requestid>
+  </revision>
 </revisionlist>

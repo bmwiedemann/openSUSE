@@ -16,10 +16,10 @@
 #
 
 
-%define agent_list aliyun alom amt apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
+%define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.15.0+git.1719822011.7a2c0a7f
+Version:        4.15.0+git.1724675137.ca9ae93a
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
@@ -33,7 +33,6 @@ Source0:        %{name}-%{version}.tar.xz
 # fence-agents-azure-arm has special requirements
 %global allfenceagents %(cat <<EOF
 fence-agents-alom \\
-fence-agents-amt \\
 fence-agents-apc \\
 fence-agents-apc-snmp \\
 fence-agents-aws \\
@@ -85,6 +84,7 @@ EOF)
 
 #Agents not in sles
 #fence-agents-amt-ws \\
+#fence-agents-amt \\
 #fence-agents-cdu \\
 #fence-agents-cyberpower-ssh \\
 #fence-agents-ecloud \\
@@ -333,22 +333,6 @@ Fence agent for SUN ALOM.
 %files alom
 %{_sbindir}/fence_alom
 %{_mandir}/man8/fence_alom.8*
-
-%package amt
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for Intel AMT devices
-Requires:       amtterm
-Requires:       fence-agents-common = %{version}-%{release}
-Conflicts:      %{name} < %{version}-%{release}
-BuildArch:      noarch
-
-%description amt
-Fence agent for AMT compatibile devices that are accessed via
-3rd party software.
-
-%files amt
-%{_sbindir}/fence_amt
-%{_mandir}/man8/fence_amt.8*
 
 %package apc
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
