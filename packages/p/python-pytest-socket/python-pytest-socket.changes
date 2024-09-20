@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 20 05:50:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Enhancements:
+    + Force enable socket CLI flag #186
+    + Use getaddrinfo() instead of gethostbyname() #209
+    + Allow both Hosts via IP and Name #275
+  * Changes:
+    + Removed support for Python 3.7 and older.
+    + Dependency updates
+    + Development updates
+    + Testing updates
+    + Emit license and readme for source distribution #233
+- Update description and summary.
+- Switch to pyproject macros.
+- Run a small part of the test suite to check basic functionality.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue May  9 21:18:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:

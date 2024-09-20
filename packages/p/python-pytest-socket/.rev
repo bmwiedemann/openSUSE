@@ -69,4 +69,26 @@
   * docs: add details on fixture scope</comment>
     <requestid>1085839</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2a9e18269916c84f513e585059d2785</srcmd5>
+    <version>0.7.0</version>
+    <time>1726845116</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Enhancements:
+    + Force enable socket CLI flag #186
+    + Use getaddrinfo() instead of gethostbyname() #209
+    + Allow both Hosts via IP and Name #275
+  * Changes:
+    + Removed support for Python 3.7 and older.
+    + Dependency updates
+    + Development updates
+    + Testing updates
+    + Emit license and readme for source distribution #233
+- Update description and summary.
+- Switch to pyproject macros.
+- Run a small part of the test suite to check basic functionality.
+- No more greedy globs in %files.</comment>
+    <requestid>1202077</requestid>
+  </revision>
 </revisionlist>
