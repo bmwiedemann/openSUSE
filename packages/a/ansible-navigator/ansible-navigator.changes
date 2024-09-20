@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 12 06:27:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.0:
+  * Enhancements
+    - Community comms (#1843) @oraNod
+  * Bugfixes
+    - Fix upload-artifact action to work with v4.4 and newer
+      (#1846) @alisonlhart
+
+-------------------------------------------------------------------
 Tue Aug 13 18:18:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.8.0:

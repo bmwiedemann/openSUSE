@@ -25,7 +25,11 @@ URL:            https://github.com/ramonhagenaars/typish
 Source:         https://github.com/ramonhagenaars/typish/archive/refs/tags/v%{version}.tar.gz#/typish-%{version}-gh.tar.gz
 BuildRequires:  %{python_module nptyping >= 1.3.0}
 # Tests
+%if 0%{?suse_version} > 1600
+BuildRequires:  %{python_module numpy1}
+%else
 BuildRequires:  %{python_module numpy}
+%endif
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

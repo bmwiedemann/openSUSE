@@ -243,4 +243,12 @@
 - Prepare support for openmpi5</comment>
     <requestid>1119879</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>701a4d7fe3925e0105f6abdfbdea1324</srcmd5>
+    <version>2.2.0</version>
+    <time>1726773435</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1201857</requestid>
+  </revision>
 </revisionlist>

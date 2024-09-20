@@ -734,4 +734,16 @@
   * Add no-merge-commits job to commits workflow</comment>
     <requestid>1200238</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>84119964abf01e90a6496455ad0749dd</srcmd5>
+    <version>0.19.4</version>
+    <time>1726773431</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.4:
+  Bug Fixes:
+  * Remove non_alpha from percent encoding to fix hyprlinks
+  Features:
+  * Pass from serde_yaml to serde_norway</comment>
+    <requestid>1201854</requestid>
+  </revision>
 </revisionlist>

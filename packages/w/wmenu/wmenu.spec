@@ -17,13 +17,13 @@
 
 
 Name:           wmenu
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        A dynamic menu for Sway and wlroots-based Wayland compositors
 License:        MIT
 Group:          System/X11/Utilities
-URL:            https://sr.ht/~adnano/wmenu
-Source:         https://git.sr.ht/~adnano/wmenu/archive/%{version}.tar.gz
+URL:            https://codeberg.org/adnano/wmenu
+Source:         https://codeberg.org/adnano/wmenu/archive/%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -33,15 +33,13 @@ BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
-# wmenu wants dmenu_run
-Recommends:     dmenu
 
 %description
 An dynamic menu for Sway and wlroots based Wayland compositors (requires
 wlr_layer_shell_v1 support).
 
 %prep
-%autosetup
+%autosetup -n wmenu
 
 %build
 export CFLAGS="%{optflags}"

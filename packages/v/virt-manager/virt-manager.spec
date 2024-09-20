@@ -131,6 +131,8 @@ Patch90:        090-db1b2fbc-Use-GtkFileChooserNative.patch
 Patch91:        091-uitests-Fix-with-GtkFileChooserNative.patch
 Patch92:        092-cli-Use-regex-for-grep-and-nogrep-args.patch
 Patch93:        093-cli-Fix-with-latest-libvirt.patch
+Patch94:        094-uitests-handle-newer-libvirt-test-driver-UpdateDevice-support.patch
+Patch95:        095-uitests-force-internal-snapshots-in-test_snapshot.py.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch

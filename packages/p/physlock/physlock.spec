@@ -1,7 +1,7 @@
 #
 # spec file for package physlock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 SUSE Software Solutions Germany GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,9 @@ Source0:        https://github.com/muennich/%{name}/archive/v%{version}.tar.gz#/
 Source1:        %{name}-rpmlintrc
 Patch0:         %{name}-%{version}.dif
 Patch1:         nofreeze.patch
+Patch2:         allow_cmd_before_and_after.patch
+Patch3:         resume_hybernate.patch
+Patch4:         set_PAM_TTY.patch
 BuildRequires:  glibc-devel
 BuildRequires:  pam-devel
 BuildRequires:  permissions-config

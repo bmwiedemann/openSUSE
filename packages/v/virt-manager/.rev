@@ -2070,4 +2070,12 @@
     <comment>Upstream fixes for virt-manager to run it's tests correctly against the newest libvirt 10.6.0</comment>
     <requestid>1192345</requestid>
   </revision>
+  <revision rev="262" vrev="28">
+    <srcmd5>616940ca9a8e5f57d43552f69907f662</srcmd5>
+    <version>4.1.0</version>
+    <time>1726773410</time>
+    <user>anag+factory</user>
+    <comment>Fix SL Micro detection. Fix --dry-run usage. Fix a couple tests.</comment>
+    <requestid>1201813</requestid>
+  </revision>
 </revisionlist>

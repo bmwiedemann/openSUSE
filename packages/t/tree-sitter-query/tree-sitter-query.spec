@@ -40,9 +40,16 @@ A tree-sitter parser for tree-sitter query files (scheme-like).
 %install
 %treesitter_install
 
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+
 %files
 %license LICENSE
 %doc README.md
 %{treesitter_files}
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
 
 %changelog

@@ -8,4 +8,13 @@
 </comment>
     <requestid>1186329</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f498721476f42f491eb06ac559ddcff</srcmd5>
+    <version>1.9.3</version>
+    <time>1726773421</time>
+    <user>anag+factory</user>
+    <comment>- Because of nptyping, this package is not compatible with NumPy 2.*
+</comment>
+    <requestid>1201805</requestid>
+  </revision>
 </revisionlist>

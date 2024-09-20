@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Sep 18 19:41:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.0:
+  * Code reorganisation, a lot of code has moved
+  * Change the structure of database configuration, see config-example.yaml
+    - Old structure has been remove and the configuration must be converted
+    - Adds additional configuration for PostgreSQL for setting max open,
+      idle connection and idle connection lifetime
+  * API: Machine is now Node
+  * Remove support for older Tailscale clients (supported >=1.42)
+  * Headscale checks that at least one DERP is defined at start
+  * Embedded DERP server requires a private key
+  * Prefixes are now defined per v4 and v6 range
+  * MagicDNS domains no longer contain usernames
+  * YAML files are no longer supported for headscale policy (use HuJSON)
+  * DNS configuration has been restructured
+  * Use versioned migrations
+  * Make the OIDC callback page better
+  * SSH support
+  * State management has been improved
+  * Use error group handling to ensure tests actually pass
+  * Fix hang on SIGTERM
+  * Send logs to stderr by default
+  * Fix TS-2023-006 security UPnP issue
+  * Turn off gRPC logging
+  * Added the possibility to manually create a DERP-map entry
+  * Add support for deleting api keys
+  * Add command to backfill IP addresses for nodes missing IPs from configured prefixes
+  * Log available update as warning
+  * Add autogroup:internet to Policy
+  * Restore foreign keys and add constraints
+  * Make registration page easier to use on mobile devices
+  * Make write-ahead-log default on and configurable for SQLite
+  * Add APIs for managing headscale policy
+  * Fix for registering nodes using preauthkeys when running
+    on a postgres database in a non-UTC timezone
+  * Make sure integration tests cover postgres for all scenarios
+  * CLI commands (all except serve) only requires minimal configuration
+  * CLI results are now concistently sent to stdout and errors to stderr
+  * Fix issue where shutting down headscale would hang
+  * add shutdown that asserts if headscale had panics
+
+-------------------------------------------------------------------
 Thu Apr 18 14:04:09 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - remove CAP_CHOWN from systemd unit file, as it's unneeded

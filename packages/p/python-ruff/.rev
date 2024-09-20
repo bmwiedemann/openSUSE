@@ -1180,4 +1180,29 @@
    * [flake8-type-checking] Always recognise relative imports as first-party</comment>
     <requestid>1199612</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5b70c092e77c2285c974a121efceb48d</srcmd5>
+    <version>0.6.5</version>
+    <time>1726773409</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.5:
+ * Preview features
+   * [pydoclint] Ignore DOC201 when function name is &quot;new&quot; 
+   * [refurb] Implement slice-to-remove-prefix-or-suffix (FURB188) 
+ * Rule changes
+   * [eradicate] Ignore script-comments with multiple end-tags (ERA001) 
+   * [pyflakes] Improve error message for UndefinedName when a builtin
+       was added in a newer version than specified in Ruff config (F821) 
+ * Server
+   * Add support for extensionless Python files for server 
+   * Fix configuration inheritance for configurations specified in the LSP settings 
+ * Bug fixes
+   * [ruff] Handle unary operators in decimal-from-float-literal (RUF032) 
+ * CLI
+   * Only include rules with diagnostics in SARIF metadata 
+ * Playground
+   * Add &quot;Copy as pyproject.toml/ruff.toml&quot; and &quot;Paste from TOML&quot; 
+   * Fix errors not shown for restored snippet on page load</comment>
+    <requestid>1201802</requestid>
+  </revision>
 </revisionlist>

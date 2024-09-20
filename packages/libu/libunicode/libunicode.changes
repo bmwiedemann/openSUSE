@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 16 20:42:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.5.0
+  * Fetch dependencies if OS is not supported
+  * Make usage of SIMD (SSE2) extension optional
+  * fix catch2 error when using system catch2
+  * Add benchmark and std::simd
+  * Add CMakePresets to conveniently build and work with the
+    sources
+  * tablegen: Improve performance for names
+  * minor build and .clang-format improvements
+  * add gc and runs sub command to introspect grapheme clusters and
+  * runs
+  * Change width()'s return type from int to unsigned
+  * Tiny fix to benchmark plus minor naming changes
+  * Adds missing include to convert.h 
+- remove libunicode-fix-catch-in-cmake.patch: fix upstream
+
+-------------------------------------------------------------------
 Fri Aug  9 09:42:03 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add conditional build for leap with force gcc version

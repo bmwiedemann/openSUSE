@@ -1,0 +1,487 @@
+From 185a63267380d87728031674a68b8b80247ae3a9 Mon Sep 17 00:00:00 2001
+From: Christoph Ruegge <mail@cxcs.de>
+Date: Fri, 25 Oct 2019 08:22:57 +0200
+Subject: [PATCH 02/11] Call pam_setcred after successful authentication
+
+---
+ main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- main.c
++++ main.c
+@@ -197,6 +197,7 @@ int main(int argc, char **argv) {
+ 		u->pam_status = pam_authenticate(u->pamh, 0);
+ 		switch (u->pam_status) {
+ 		case PAM_SUCCESS:
++			pam_setcred(u->pamh, PAM_REFRESH_CRED);
+ 			locked = 0;
+ 			break;
+ 		case PAM_AUTH_ERR:
+
+From 2eb17b1111d2839ba24a0ac764a50c29a03c8355 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bert=20M=C3=BCnnich?= <ber.t@posteo.de>
+Date: Mon, 16 Dec 2019 09:36:36 +0100
+Subject: [PATCH 03/11] Fix for systemd mechanism never used
+
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- Makefile
++++ Makefile
+@@ -10,7 +10,8 @@ MANPREFIX = $(PREFIX)/share/man
+ HAVE_SYSTEMD = 1
+ 
+ cflags = -Wall -pedantic $(CFLAGS)
+-cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=500
++cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=500 \
++  -DHAVE_SYSTEMD=$(HAVE_SYSTEMD)
+ 
+ lib_systemd_0 =
+ lib_systemd_1 = -lsystemd
+
+From 3d5c3b599a2fe3f50032c1066ee46d0e047c002c Mon Sep 17 00:00:00 2001
+From: travankor <travankor@tuta.io>
+Date: Fri, 13 Dec 2019 13:54:19 -0700
+Subject: [PATCH 04/11] Rename systemd function to logind.
+
+---
+ main.c     | 2 +-
+ physlock.h | 2 +-
+ session.c  | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+--- main.c
++++ main.c
+@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
+ 		return 0;
+ 	}
+ 
+-	if (get_user_systemd(&user, oldvt) == -1 && get_user_utmp(&user, oldvt) == -1)
++	if (get_user_logind(&user, oldvt) == -1 && get_user_utmp(&user, oldvt) == -1)
+ 		get_user_by_id(&user, owner);
+ 	get_user_by_id(&root, 0);
+ 	if (strcmp(user.name, root.name) != 0)
+--- physlock.h
++++ physlock.h
+@@ -64,7 +64,7 @@ void parse_options(int, char**);
+ 
+ /* session.c */
+ 
+-int get_user_systemd(userinfo_t*, int);
++int get_user_logind(userinfo_t*, int);
+ int get_user_utmp(userinfo_t*, int);
+ 
+ 
+--- session.c
++++ session.c
+@@ -11,7 +11,7 @@
+ #if HAVE_SYSTEMD
+ #include <systemd/sd-login.h>
+ 
+-int get_user_systemd(userinfo_t *uinfo, int vt) {
++int get_user_logind(userinfo_t *uinfo, int vt) {
+ 	int ret = -1, i, n;
+ 	char **sessions = NULL;
+ 	unsigned int sess_vt;
+@@ -40,7 +40,7 @@ int get_user_systemd(userinfo_t *uinfo, int vt) {
+ 
+ #else
+ 
+-int get_user_systemd(userinfo_t *uinfo, int vt) {
++int get_user_logind(userinfo_t *uinfo, int vt) {
+ 	(void)uinfo;
+ 	(void)vt;
+ 	return -1;
+
+From 454122212049f48edfc3c6d80d4c0436ea33160b Mon Sep 17 00:00:00 2001
+From: travankor <travankor@tuta.io>
+Date: Fri, 13 Dec 2019 14:23:48 -0700
+Subject: [PATCH 05/11] Add option to use elogind.
+
+Fixes issue #85.
+---
+ Makefile  | 10 +++++++---
+ README.md |  3 ++-
+ session.c |  5 +++++
+ 3 files changed, 14 insertions(+), 4 deletions(-)
+
+--- Makefile
++++ Makefile
+@@ -6,16 +6,20 @@ VPATH = $(srcdir)
+ PREFIX = /usr/local
+ MANPREFIX = $(PREFIX)/share/man
+ 
+-# enable user detection using libsystemd
++# enable user detection using libsystemd or libelogind
+ HAVE_SYSTEMD = 1
++HAVE_ELOGIND = 0
+ 
+ cflags = -Wall -pedantic $(CFLAGS)
+ cppflags = -I. $(CPPFLAGS) -D_XOPEN_SOURCE=500 \
+-  -DHAVE_SYSTEMD=$(HAVE_SYSTEMD)
++  -DHAVE_SYSTEMD=$(HAVE_SYSTEMD) -DHAVE_ELOGIND=$(HAVE_ELOGIND)
+ 
+ lib_systemd_0 =
+ lib_systemd_1 = -lsystemd
+-ldlibs = $(LDLIBS) -lpam -lpam_misc $(lib_systemd_$(HAVE_SYSTEMD))
++lib_elogind_0 =
++lib_elogind_1 = -lelogind
++ldlibs = $(LDLIBS) -lpam -lpam_misc \
++  $(lib_systemd_$(HAVE_SYSTEMD)) $(lib_elogind_$(HAVE_ELOGIND))
+ 
+ objs = main.o options.o session.o util.o vt.o
+ 
+--- README.md
++++ README.md
+@@ -7,7 +7,8 @@ PAM for authentication.
+ 
+ physlock uses 3 mechanisms to detect the user of the active session:
+ 
+-1. Querying systemd-logind(1) if not compiled with `HAVE_SYSTEMD=0`
++1. Querying systemd-logind(1) or elogind(8) if compiled with either
++   `HAVE_SYSTEMD=1` or `HAVE_ELOGIND=1`
+ 2. Searching the utmp file for an entry whose `ut_line` field is the base name
+    of the active tty device file
+ 3. Using the owner of the active tty device file typically set by login(1)
+--- session.c
++++ session.c
+@@ -10,6 +10,11 @@
+ 
+ #if HAVE_SYSTEMD
+ #include <systemd/sd-login.h>
++#elif HAVE_ELOGIND
++#include <elogind/sd-login.h>
++#endif
++
++#if HAVE_SYSTEMD || HAVE_ELOGIND
+ 
+ int get_user_logind(userinfo_t *uinfo, int vt) {
+ 	int ret = -1, i, n;
+
+From 2d8113990c1e8153e8e8ee4612ecd534b555a0f5 Mon Sep 17 00:00:00 2001
+From: dexterlb <dexterlb@qtrp.org>
+Date: Sun, 2 Jun 2019 18:27:03 +0300
+Subject: [PATCH 07/11] implement -a, -b and -n
+
+---
+ main.c     | 31 +++++++++++++++++++++++++++----
+ options.c  | 14 ++++++++++++--
+ physlock.h |  3 +++
+ 3 files changed, 42 insertions(+), 6 deletions(-)
+
+--- main.c
++++ main.c
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <pwd.h>
+ #include <signal.h>
++#include <sys/wait.h>
+ #include <security/pam_misc.h>
+ 
+ static int oldvt;
+@@ -33,6 +34,7 @@ static vt_t vt;
+ static int oldsysrq;
+ static int oldprintk;
+ static pid_t chpid;
++static int cmdpid;
+ static int locked;
+ static userinfo_t root, user;
+ 
+@@ -67,8 +69,8 @@ CLEANUP void free_user(userinfo_t *uinfo) {
+ }
+ 
+ void cleanup() {
+-	if (options->detach && chpid > 0)
+-		/* No cleanup in parent after successful fork */
++	if ((options->detach && chpid > 0) || cmdpid == 0)
++		/* No cleanup in parent after successful fork or in failed forked command */
+ 		return;
+ 	free_user(&user);
+ 	free_user(&root);
+@@ -98,17 +100,30 @@ void setup_signal(int signum, void (*handler)(int)) {
+ 	sigact.sa_flags = 0;
+ 	sigact.sa_handler = handler;
+ 	sigemptyset(&sigact.sa_mask);
+-	
++
+ 	if (sigaction(signum, &sigact, NULL) < 0)
+ 		error(0, errno, "signal %d", signum);
+ }
+ 
++void run_command(const char* cmd) {
++    cmdpid = fork();
++    if (cmdpid < 0) {
++        error(EXIT_FAILURE, errno, "fork");
++    } else if (cmdpid > 0) {
++        wait(NULL);
++    } else {
++        execlp("sh", "sh", "-c", cmd, NULL);
++        error(EXIT_FAILURE, errno, "exec");
++    }
++}
++
+ int main(int argc, char **argv) {
+ 	int try = 0, root_user = 1;
+ 	uid_t owner;
+ 	userinfo_t *u = &user;
+ 
+ 	oldvt = oldsysrq = oldprintk = vt.nr = vt.fd = -1;
++	cmdpid = -1;
+ 	vt.ios = NULL;
+ 
+ 	error_init(2);
+@@ -180,11 +195,15 @@ int main(int argc, char **argv) {
+ 	dup2(vt.fd, 1);
+ 	dup2(vt.fd, 2);
+ 
++	if (options->command_before != NULL && options->command_before[0] != '\0') {
++	    run_command(options->command_before);
++	}
++
+ 	if (options->prompt != NULL && options->prompt[0] != '\0') {
+ 		fprintf(vt.ios, "%s\n\n", options->prompt);
+ 	}
+ 
+-	locked = 1;
++	locked = !options->no_auth;
+ 
+ 	while (locked) {
+ 		if (!root_user && try >= (u == &root ? 1 : 3)) {
+@@ -218,6 +237,10 @@ int main(int argc, char **argv) {
+ 		}
+ 	}
+ 
++	if (options->command_after != NULL && options->command_after[0] != '\0') {
++	    run_command(options->command_after);
++	}
++
+ 	return 0;
+ }
+ 
+--- options.c
++++ options.c
+@@ -37,7 +37,7 @@ void print_version() {
+ 
+ void parse_options(int argc, char **argv) {
+ 	int opt;
+-	
++
+ 	progname = strrchr(argv[0], '/');
+ 	progname = progname != NULL ? progname + 1 : argv[0];
+ 
+@@ -45,8 +45,9 @@ void parse_options(int argc, char **argv) {
+ 	_options.disable_sysrq = 0;
+ 	_options.lock_switch = -1;
+ 	_options.mute_kernel_messages = 0;
++	_options.no_auth = 0;
+ 
+-	while ((opt = getopt(argc, argv, "dhLlmp:sv")) != -1) {
++	while ((opt = getopt(argc, argv, "dhLlmnp:svb:a:")) != -1) {
+ 		switch (opt) {
+ 			case '?':
+ 				print_usage();
+@@ -66,9 +67,18 @@ void parse_options(int argc, char **argv) {
+ 			case 'm':
+ 				_options.mute_kernel_messages = 1;
+ 				break;
++			case 'n':
++				_options.no_auth = 1;
++				break;
+ 			case 'p':
+ 				_options.prompt = optarg;
+ 				break;
++			case 'b':
++				_options.command_before = optarg;
++				break;
++			case 'a':
++				_options.command_after = optarg;
++				break;
+ 			case 's':
+ 				_options.disable_sysrq = 1;
+ 				break;
+--- physlock.h
++++ physlock.h
+@@ -54,7 +54,10 @@ typedef struct options_s {
+ 	int disable_sysrq;
+ 	int lock_switch;
+ 	int mute_kernel_messages;
++	int no_auth;
+ 	const char *prompt;
++	const char *command_before;
++	const char *command_after;
+ } options_t;
+ 
+ extern const options_t *options;
+
+From 46ad54bf65fa00c3fb1fb89c64972c0ea0fca3b7 Mon Sep 17 00:00:00 2001
+From: dexterlb <dexterlb@qtrp.org>
+Date: Sun, 2 Jun 2019 18:37:24 +0300
+Subject: [PATCH 08/11] document extra options
+
+---
+ README.md  |  3 +++
+ physlock.1 | 15 ++++++++++++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+--- README.md
++++ README.md
+@@ -58,6 +58,9 @@ The following command-line arguments are supported:
+     -l       only lock console switching
+     -L       only enable console switching
+     -m       mute kernel messages on console while physlock is running
++    -b CMD   execute CMD before the password prompt
++    -a CMD   execute CMD after successfully authenticating
++    -n       don't actually authenticate: just execute commands
+     -p MSG   Display MSG before the password prompt
+     -s       disable sysrq key while physlock is running
+     -v       print version information and exit
+--- physlock.1
++++ physlock.1
+@@ -3,9 +3,13 @@
+ physlock \- lock all consoles / virtual terminals
+ .SH SYNOPSIS
+ .B physlock
+-.RB [ \-dhLlmsv ]
++.RB [ \-dhLlmnsv ]
+ .RB [ \-p
+ .IR MSG ]
++.RB [ \-b
++.IR CMD ]
++.RB [ \-a
++.IR CMD ]
+ .SH DESCRIPTION
+ physlock is an alternative to vlock, it is equivalent to `vlock \-an'. It is
+ written because vlock blocks some linux kernel mechanisms like hibernate and
+@@ -39,6 +43,15 @@ locked.
+ .B \-m
+ Mute kernel messages on console while physlock is running.
+ .TP
++.B "\-b " CMD
++Execute CMD before asking for password
++.TP
++.B "\-a " CMD
++Execute CMD after asking for password
++.TP
++.B \-n
++Don't ask for authentication: just execute commands
++.TP
+ .BI "\-p " MSG
+ Display
+ .I MSG
+
+From a9f968d9e331127a2ae0d548c3020874a1358689 Mon Sep 17 00:00:00 2001
+From: dexterlb <dexterlb@qtrp.org>
+Date: Mon, 17 Jun 2019 17:36:23 +0300
+Subject: [PATCH 09/11] add extra options to print_usage()
+
+---
+ options.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- options.c
++++ options.c
+@@ -28,7 +28,7 @@ static options_t _options;
+ const options_t *options = (const options_t*) &_options;
+ 
+ void print_usage() {
+-	printf("usage: physlock [-dhLlmsv] [-p MSG]\n");
++	printf("usage: physlock [-dhLlmsbanv] [-p MSG]\n");
+ }
+ 
+ void print_version() {
+
+From 7200a418b58b9608141c421875919798382cd504 Mon Sep 17 00:00:00 2001
+From: dexterlb <dexterlb@qtrp.org>
+Date: Tue, 1 Oct 2019 11:55:11 +0300
+Subject: [PATCH 10/11] use hardcoded /bin/sh as a shell instead of relying on
+ PATH
+
+---
+ main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- main.c
++++ main.c
+@@ -112,7 +112,7 @@ void run_command(const char* cmd) {
+     } else if (cmdpid > 0) {
+         wait(NULL);
+     } else {
+-        execlp("sh", "sh", "-c", cmd, NULL);
++        execl("/bin/sh", "sh", "-c", cmd, NULL);
+         error(EXIT_FAILURE, errno, "exec");
+     }
+ }
+
+From fc47a51029ea32bd575962248e11cca5fd9b550d Mon Sep 17 00:00:00 2001
+From: dexterlb <dexterlb@qtrp.org>
+Date: Tue, 1 Oct 2019 12:14:04 +0300
+Subject: [PATCH 11/11] don't run external commands as root
+
+---
+ main.c | 40 ++++++++++++++++++++++++++++------------
+ 1 file changed, 28 insertions(+), 12 deletions(-)
+
+--- main.c
++++ main.c
+@@ -105,16 +105,32 @@ void setup_signal(int signum, void (*handler)(int)) {
+ 		error(0, errno, "signal %d", signum);
+ }
+ 
+-void run_command(const char* cmd) {
+-    cmdpid = fork();
+-    if (cmdpid < 0) {
+-        error(EXIT_FAILURE, errno, "fork");
+-    } else if (cmdpid > 0) {
+-        wait(NULL);
+-    } else {
+-        execl("/bin/sh", "sh", "-c", cmd, NULL);
+-        error(EXIT_FAILURE, errno, "exec");
+-    }
++void drop_privileges(userinfo_t* user) {
++	struct passwd *p = getpwnam(user->name);
++	if (p == NULL) {
++		error(EXIT_FAILURE, errno, "get user passwd data");
++	}
++
++	if (setgid(p->pw_gid) != 0) {
++		error(EXIT_FAILURE, errno, "setgid");
++	}
++
++	if (setuid(p->pw_uid) != 0) {
++		error(EXIT_FAILURE, errno, "setuid");
++	}
++}
++
++void run_command(const char* cmd, userinfo_t* user) {
++	cmdpid = fork();
++	if (cmdpid < 0) {
++		error(EXIT_FAILURE, errno, "fork");
++	} else if (cmdpid > 0) {
++		wait(NULL);
++	} else {
++		drop_privileges(user);
++		execl("/bin/sh", "sh", "-c", cmd, NULL);
++		error(EXIT_FAILURE, errno, "exec");
++	}
+ }
+ 
+ int main(int argc, char **argv) {
+@@ -196,7 +212,7 @@ int main(int argc, char **argv) {
+ 	dup2(vt.fd, 2);
+ 
+ 	if (options->command_before != NULL && options->command_before[0] != '\0') {
+-	    run_command(options->command_before);
++		run_command(options->command_before, &user);
+ 	}
+ 
+ 	if (options->prompt != NULL && options->prompt[0] != '\0') {
+@@ -238,7 +254,7 @@ int main(int argc, char **argv) {
+ 	}
+ 
+ 	if (options->command_after != NULL && options->command_after[0] != '\0') {
+-	    run_command(options->command_after);
++		run_command(options->command_after, &user);
+ 	}
+ 
+ 	return 0;

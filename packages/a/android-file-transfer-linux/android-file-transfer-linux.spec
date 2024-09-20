@@ -1,7 +1,7 @@
 #
 # spec file for package android-file-transfer-linux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
-Name:              android-file-transfer-linux
-Summary:           Android file fransfer for Linux
-Version:           4.3.0~git.20221105T214638.9967dec
-Release:           0
-URL:               https://github.com/whoozle/android-file-transfer-linux
-Source0:           %{name}-%{version}.tar.gz
-Patch0:            fix-missing-include.patch
-License:           LGPL-2.1
-BuildRequires:     cmake
-BuildRequires:     hicolor-icon-theme
-BuildRequires:     readline-devel
-BuildRequires:     update-desktop-files
-BuildRequires:     cmake(Qt5LinguistTools)
-BuildRequires:     cmake(Qt5NetworkAuth)
-BuildRequires:     pkgconfig(fuse)
-BuildRequires:     pkgconfig(libcrypto) 
-BuildRequires:     pkgconfig(Qt5Core)
-BuildRequires:     pkgconfig(Qt5Gui)
-BuildRequires:     pkgconfig(Qt5Widgets)
+Name:           android-file-transfer-linux
+Summary:        Android file fransfer for Linux
+Version:        4.3.0~git.20240730T195303.cf7036c7f7df
+Release:        0
+URL:            https://github.com/whoozle/android-file-transfer-linux
+Source0:        %{name}-%{version}.tar.gz
+License:        LGPL-2.1-only
+BuildRequires:  cmake
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  readline-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5NetworkAuth)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(libcrypto)
 
 %description
 Android File Transfer for Linux — a MTP client with minimalist UI
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake

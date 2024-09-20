@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 11 11:41:20 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches found as pull requests on archived project
+  * allow_cmd_before_and_after.patch
+    Implements user command execution before and after locking
+  * resume_hybernate.patch
+    Allow to be waken via SIGUSR1 after hybernating
+    https://github.com/xyb3rt/physlock/issues/97
+  * set_PAM_TTY.patch
+    Avoid pam_securetty message "cannot determine user's tty"
+    https://github.com/xyb3rt/physlock/issues/110
+
+-------------------------------------------------------------------
 Tue Aug  9 12:02:13 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir

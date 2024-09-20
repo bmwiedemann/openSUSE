@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modname weblate-language-data
-%define skip_python2 1
+%{?sle15_python_module_pythons}
+%define modname weblate_language_data
 Name:           python-weblate-language-data
-Version:        2024.3
+Version:        2024.6
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT

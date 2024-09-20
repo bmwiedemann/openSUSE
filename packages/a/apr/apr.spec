@@ -1,7 +1,7 @@
 #
 # spec file for package apr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         installbuilddir %{_libdir}/apr-%{aprver}/build
 %define         includedir %{_includedir}/apr-%{aprver}
 Name:           apr
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Apache Portable Runtime (APR) Library
 License:        Apache-2.0

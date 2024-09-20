@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 15 20:04:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- change spec file, so neovim autodetects the grammar
+
+-------------------------------------------------------------------
 Wed Jul 24 12:51:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix set_version service, as it was set to buildtime

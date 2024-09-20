@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Sep 11 12:37:19 UTC 2024 - Roger Oberholtzer <roger.oberholtzer@gmail.com>
+
+- Patch c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff is no longer needed.
+- Patch rpmlint-errors.patch is no longer needed.
+
+-------------------------------------------------------------------
+Wed Sep  4 09:08:19 UTC 2024 - Roger Oberholtzer <roger.oberholtzer@gmail.com>
+
+- Update to version 1.6.1
+
+Changes since 1.6.0:
+
+    * DBFIsValueNULL(): accept empty string as NULL Date (OSGeo/gdal#10405)
+    * DBFIsValueNULL(): Accept string containing of width times "0" as NULL Date
+    * Only test for _WIN32 for Windows detection
+    * Windows: Fix UTF8 hook functions
+    * Various compiler warning fixes
+    * contrib/csv2shp.c: fix resource leaks (#86)
+    * Detect byte order at compile time
+    * shapefil.h: various const-correctness improvements
+    * shapefil.h: Remove SHPTreeRemoveShapeId not being implemented
+    * shapefil.h: Fix API call of SHPSearchDiskTreeEx
+    * Add API functions for read/write of date attributes: DBFReadDateAttribute/DBFWriteDateAttribute
+    * DBFWriteAttribute/DBFWriteLogicalAttribute: no longer silently accpets invalid input, but returns false
+    * DBFCloneEmpty: consider the SAHooks
+    * Move endian defines to shapefil_private.h (#99)
+    * Fix test execution by complete refactoring.
+    * Add C++ unit testing (#113)
+    * SBNOpenDiskTree(): make it work with node descriptors with non-increasing nBinStart
+    * Fixes #106 / OSGeo/gdal#9430
+    * sbnsearch.c: avoid potential integer overflows on corrupted files
+    * dbfdump: dump date and logical fields
+    * dbfinfo: print date and logical fields
+    * dbfcat: various fixes
+    * Fix -Werror=calloc-transposed-args with gcc 14
+    * SHPOpenLL(): avoid GDAL specific error message when .shx is missing (#129)
+    * CMake: generate pkg-config file (#135)
+    * CMake: Fix install interface include dir (#134)
+    * CMake: Make building executables optional with CMake (set BUILD_APPS to OFF) (#78)
+    * CMake: Remove duplicated shapefil.h installation in include_dir/shapelib (#80)
+    * CMake: Remove INSTALL_NAME_DIR from target (#49)
+    * CMake: Fix contrib.cmake
+    * CMake: (>= 3.21) Fix ctest paths for shared libs (MSVC and CygWin)
+    * CMake: Add GoogleTestAdapter (GTA) Run Settings
+
+-------------------------------------------------------------------
+Wed Sep  4 08:01:46 UTC 2024 - Roger Oberholtzer <roger.oberholtzer@gmail.com>
+
+- Update to version 1.6.0
+
+Changes since v1.5.0:
+
+    * shapefil.h: add SHAPELIB_VERSION_MAJOR/MINOR/MICRO, SHAPELIB_VERSION_NUMBER, and SHAPELIB_AT_LEAST macros
+    * Compiler warning fixes and various code cleanups
+    * SAHooks: add a void *pvUserData member. ABI change
+    * SAHooks.FOpen and FClose callbacks: add a void *pvUserData parameter. API and ABI change
+    * SAHooks.FWrite: make first parameter a const void*. API change
+    * Distribute LICENSE-LGPL and LICENSE-MIT files instead of COPYING file. Do not distribute INSTALL file
+    * Use standard integer data types
+    * Changes to allow building with cmake -DCMAKE_UNITY_BUILD=ON
+    * Polygon writing: avoid considering rings slightly overlapping as inner-outer rings of others (refs OSGeo/gdal#5315)
+    * Polygon writing: consider rings at non-constant Z as outer rings (fixes OSGeo/gdal#5315) As noted in code comments, this is an approximation of more complicated tests we'd likely have to do, that would take into account real co-planar testing, to allow detecting inner rings of outer rings in an oblique plane.
+    * shpopen.c: Communicate why the file size cannot be reached when appending features (OSGeo/gdal#4140) Clearly state why the file size cannot be reached. This is important in order to correctly inform the user and prevent him/her from looking for other reasons. Related to qgis/QGIS#44202
+    * SHPWriteObject(): prevent potential overflows on 64-bit platforms on huge geometries
+    * SHPRestoreSHX: update SHX content length even if error occurred
+    * In creation, uses w+b file opening mode instead of wb followed by r+b, to support network file systems having sequential write only and when using CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE=YES (fixes OSGeo/gdal#7801)
+    * Fix adding features in a .dbf without columns (fixes qgis/QGIS#51247)
+    * Have matching SOVERSION for CMake and autotools
+    * Code reformatting
+    * Enable contrib/csv2shp build with MSVC
+    * Build contributed utilities via CMake
+    * Use the the standard BUILD_TESTING CMake variable
+    * Remove double free() in contrib/shpsrt (CVE-2022-0699)
+    * SHPRestoreSHX: fix for (64 bit) big endian
+    * Add config-style support for find_package(shapefile)
+    * Prevent no-op FSeeks writing dbf & shp records for network filesystem performance
+
+-------------------------------------------------------------------
 Mon Feb 26 13:16:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

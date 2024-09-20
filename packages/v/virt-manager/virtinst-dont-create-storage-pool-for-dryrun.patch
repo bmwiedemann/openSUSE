@@ -5,38 +5,32 @@ Index: virt-manager-4.1.0/virtinst/cli.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/cli.py
 +++ virt-manager-4.1.0/virtinst/cli.py
-@@ -69,6 +69,14 @@ def _reset_global_state():
-     _globalstate = _GlobalState()
+@@ -1330,6 +1330,7 @@ class VirtCLIParser(metaclass=_InitClass
+     _virtargs = []
+     aliases = {}
+     supports_clearxml = True
++    dryrun = False
  
- 
-+_dryrun = False
-+
-+def get_dryrun():
-+    return _dryrun
-+def set_dryrun(val):
-+    global _dryrun
-+    _dryrun = val
-+
- VIRT_PARSERS = []
- 
- 
-@@ -646,6 +654,7 @@ def add_misc_options(grp, prompt=False,
-                 help=argparse.SUPPRESS)
- 
-     if dryrun:
-+        set_dryrun(True)
-         grp.add_argument("--dry-run", action="store_true", dest="dry",
-                        help=_("Run through install process, but do not "
-                               "create devices or define the guest."))
-@@ -3615,7 +3624,7 @@ class ParserDisk(VirtCLIParser):
+     @classmethod
+     def add_arg(cls, cliname, propname, *args, **kwargs):
+@@ -3615,7 +3616,7 @@ class ParserDisk(VirtCLIParser):
      ###################
  
      def set_path_cb(self, inst, val, virtarg):
 -        inst.set_source_path(val)
-+        inst.set_source_path(val, get_dryrun())
++        inst.set_source_path(val, self.dryrun)
      def path_lookup_cb(self, inst, val, virtarg):
          return inst.get_source_path() == val
  
+@@ -4834,6 +4835,8 @@ def run_parser(options, guest, parsercla
+     ret = []
+     optstr_list = xmlutil.listify(getattr(options, parserclass.cli_arg_name))
+ 
++    if hasattr(options, "dry"):
++        parserclass.dryrun = options.dry
+     for optstr in optstr_list:
+         parserobj = parserclass(optstr, guest=guest, editing=bool(editinst))
+         parseret = parserobj.parse(editinst)
 Index: virt-manager-4.1.0/virtinst/devices/disk.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/devices/disk.py

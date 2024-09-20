@@ -17,7 +17,7 @@
 
 
 Name:           micropython
-Version:        1.22.2
+Version:        1.23.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT

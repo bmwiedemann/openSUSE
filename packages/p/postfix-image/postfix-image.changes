@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 18 16:36:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use released containers as buildtarget in multistage
+
+-------------------------------------------------------------------
 Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set useobsrepositories explicitly

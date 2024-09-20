@@ -35,4 +35,18 @@
 </comment>
     <requestid>1173535</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c88b9462ea2004d2b38b7a65f629978b</srcmd5>
+    <version>0.1.9</version>
+    <time>1726773429</time>
+    <user>anag+factory</user>
+    <comment>- Update to new upstream host
+- Update to version 0.1.9:
+  * Revert &quot;Remove wmenu -P flag&quot;
+  * Don't ignore stdin in password mode
+  * Make wmenu-run behave like dmenu_run
+  * Streamline menu callbacks
+</comment>
+    <requestid>1201841</requestid>
+  </revision>
 </revisionlist>

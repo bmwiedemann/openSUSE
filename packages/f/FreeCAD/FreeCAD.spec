@@ -58,6 +58,8 @@ Patch12:        https://github.com/FreeCAD/FreeCAD/commit/aa54ba73df4d42878130c9
 Patch13:        https://github.com/FreeCAD/FreeCAD/commit/91457bbdee2422c7f0372688cf72d021cf222073.patch#/freecad-copy_options-2.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
+# PATCH-FIX-UPSTREAM - patch from master, modified for 0.21.1 - https://github.com/FreeCAD/FreeCAD/commit/98888241920ad04fa3c2f56bdf196debf8cfb39c.patch
+Patch15:        boost_1_86_fixes.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 18 20:41:52 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1726600250.e88bdd3c:
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Dependency cron 2024-09-17
+  * Improve and simplify test for filtering on tests overview page
+  * Avoid sporadic failures of `t/ui/10-tests_overview.t`
+  * Bump @eslint-community/regexpp from 4.11.0 to 4.11.1
+
+-------------------------------------------------------------------
 Mon Sep 16 12:16:16 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1726480610.b2c7833e:

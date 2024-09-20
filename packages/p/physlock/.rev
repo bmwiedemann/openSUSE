@@ -15,4 +15,12 @@
     <comment>- Use %_pam_vendordir (forwarded request 994128 from kukuk)</comment>
     <requestid>994129</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8ba1d1c0fa95f136ee3240b169bf5ad1</srcmd5>
+    <version>13</version>
+    <time>1726773416</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1201782</requestid>
+  </revision>
 </revisionlist>

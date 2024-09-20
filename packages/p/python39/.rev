@@ -1244,4 +1244,13 @@
 </comment>
     <requestid>1199746</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>0d67697c23cabc8df99d015299e46334</srcmd5>
+    <version>3.9.20</version>
+    <time>1726773436</time>
+    <user>anag+factory</user>
+    <comment>      with backslashes by :mod:`http.cookies` (bsc#1229596, CVE-2024-7592).
+  complexity in parsing tarfile headers (bsc#1230227, CVE-2024-6232).</comment>
+    <requestid>1202002</requestid>
+  </revision>
 </revisionlist>

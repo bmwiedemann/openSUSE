@@ -21,7 +21,7 @@ Index: virt-manager-4.1.0/virtinst/install/urldetect.py
                  sle_version = self.product_name.strip().rsplit(' ')[6]
              else:
 -                sle_version = self.product_name.strip().rsplit(' ')[4]
-+                if "SUSE Linux Micro" in self.product_name:
++                if "SUSE SL Micro" in self.product_name:
 +                    sle_version = self.product_name.strip().rsplit(' ')[3]
 +                else:
 +                    sle_version = self.product_name.strip().rsplit(' ')[4]
@@ -33,7 +33,7 @@ Index: virt-manager-4.1.0/virtinst/install/urldetect.py
      matching_distros = ["slem"]
      _variant_prefix = "slem"
 -    _suse_regex = [".*SUSE Linux Enterprise Micro*", ".*SUSE Micro*"]
-+    _suse_regex = [".*SUSE Linux Enterprise Micro*", ".*SUSE Linux Micro*", ".*SUSE Micro*"]
++    _suse_regex = [".*SUSE Linux Enterprise Micro*", ".*SUSE Linux Micro*", ".*SUSE Micro*", ".*SUSE SL Micro*"]
      famregex = ".*SUSE Linux Enterprise Micro.*"
  
  

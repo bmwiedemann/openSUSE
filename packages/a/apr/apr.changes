@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 17 12:25:38 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.7.5 [bsc#1229783] CVE-2023-49582
+  *) Unix: Implement apr_shm_perms_set() for the "POSIX shm_open()"
+     and "classic mmap" shared memory implementations.  [Joe Orton,
+     Ruediger Pluem]
+  *) Fix missing ';' for XML/HTML hex entities from apr_escape_entity().
+     [Yann Ylavic]
+  *) Fix crash in apr_pool_create() with --enable-pool-debug=all|owner.
+     [Yann Ylavic]
+  *) Improve platform detection by updating config.guess and config.sub.
+     [Rainer Jung]
+  *) CMake: Add support for CMAKE_WARNING_AS_ERROR. [Ivan Zhakov]
+  *) CMake: Enable support for MSVC runtime library selection by abstraction.
+     [Ivan Zhakov]
+  *) CMake: Export installed targets (libapr-1, apr-1, libaprapp-1, aprapp-1)
+     to apr:: namespace. [Ivan Zhakov]
+- modified patches
+  % apr-visibility.patch (refreshed)
+  % reproducible.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Dec 18 13:12:00 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build host name (boo#1084909)

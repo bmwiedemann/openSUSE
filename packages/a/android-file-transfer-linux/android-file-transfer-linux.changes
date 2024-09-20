@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 18 18:43:53 UTC 2024 - llyyr@yukari.in
+
+- fix-missing-include.patch: remove patch, fixed upstream
+- Update to version 4.3.0~git.20240730T195303.cf7036c7f7df:
+  * add get-id command to cli
+  * check that GetDevicePropValue is supported before calling it
+  * drop old ${VERSION} variable, use base version from readme and annotate with git if it's possible.
+  * update checkout action to v4
+  * use execute_process instead of exec_program
+  * update pybind cmake files
+  * fix macOS spelling
+  * remove long version string
+  * remove CFBundleGetInfoString
+  * fix GH actions
+  * fix empty version used for plist generation
+  * brew cask install -> brew install --cask
+  * add SetSize and set both st_size and st_blocks
+  * Fix non-empty directory removal, return ENOTEMPTY
+  * bump version to 4.4
+  * check ref_type and build release artefacts
+  * bump ubuntu version to 20.04
+  * do not proceed if -h/--help passed on the command line
+  * provide uid/gid for stat structure
+  * fix vendor/product filtering
+  * bump minimal cmake version to 3.5
+  * fix no MPT device found message box
+  * do not compile python wrapper for macosx
+  * add help about -D
+  * rework option parser a bit
+  * rename fuse_ll to fuse
+  * Fix build with GCC 13 (#330)
+
+-------------------------------------------------------------------
 Fri Mar 31 07:53:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-missing-include.patch: Fix missing include exposed by gcc

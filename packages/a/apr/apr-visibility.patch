@@ -1,8 +1,8 @@
-Index: apr-1.7.0/include/apr.h.in
+Index: apr-1.7.5/include/apr.h.in
 ===================================================================
---- apr-1.7.0.orig/include/apr.h.in
-+++ apr-1.7.0/include/apr.h.in
-@@ -495,7 +495,7 @@ typedef  apr_uint32_t            apr_uin
+--- apr-1.7.5.orig/include/apr.h.in
++++ apr-1.7.5/include/apr.h.in
+@@ -504,7 +504,7 @@ typedef  apr_uint32_t            apr_uin
   * headers, without defining APR_DECLARE_STATIC, will prepare the code to be
   * linked to the dynamic library.
   */
@@ -11,7 +11,7 @@ Index: apr-1.7.0/include/apr.h.in
  
  /**
   * The public APR functions using variable arguments are declared with 
-@@ -508,7 +508,7 @@ typedef  apr_uint32_t            apr_uin
+@@ -517,7 +517,7 @@ typedef  apr_uint32_t            apr_uin
   *
   * </PRE>
   */
@@ -20,7 +20,7 @@ Index: apr-1.7.0/include/apr.h.in
  
  /**
   * The public APR variables are declared with AP_MODULE_DECLARE_DATA.
-@@ -524,7 +524,7 @@ typedef  apr_uint32_t            apr_uin
+@@ -533,7 +533,7 @@ typedef  apr_uint32_t            apr_uin
   *
   * </PRE>
   */
@@ -29,10 +29,10 @@ Index: apr-1.7.0/include/apr.h.in
  
  #elif defined(APR_DECLARE_STATIC)
  #define APR_DECLARE(type)            type __stdcall
-Index: apr-1.6.3/include/apr_support.h
+Index: apr-1.7.5/include/apr_support.h
 ===================================================================
---- apr-1.7.0.orig/include/apr_support.h
-+++ apr-1.7.0/include/apr_support.h
+--- apr-1.7.5.orig/include/apr_support.h
++++ apr-1.7.5/include/apr_support.h
 @@ -45,7 +45,7 @@ extern "C" {
   *        otherwise wait for data to be able to be written. 
   * @return APR_TIMEUP if we run out of time.

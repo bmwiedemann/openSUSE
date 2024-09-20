@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 18 18:29:56 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to new upstream host
+- Update to version 0.1.9:
+  * Revert "Remove wmenu -P flag"
+  * Don't ignore stdin in password mode
+  * Make wmenu-run behave like dmenu_run
+  * Streamline menu callbacks
+
+-------------------------------------------------------------------
 Sun May 12 21:46:02 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update to version 0.1.8:

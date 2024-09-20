@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
@@ -96,7 +96,7 @@ and /etc.
 %{_includedir}/*.h
 %{_libdir}/libeconf.so
 %{_libdir}/pkgconfig/libeconf.pc
-%{_mandir}/man3/libeconf.3%{?ext_man}
+%{_mandir}/man3/*.3%{?ext_man}
 
 %files utils
 %{_bindir}/econftool

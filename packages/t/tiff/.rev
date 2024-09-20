@@ -958,4 +958,41 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2024-7006.patch</comment>
     <requestid>1194640</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>afa17592801fbbca18ad768626114db7</srcmd5>
+    <version>4.7.0</version>
+    <time>1726773404</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.7.0:
+  * This version restores in the default build the availability of
+    the tools that had been dropped in v4.6.0
+    See https://libtiff.gitlab.io/libtiff/rfcs/rfc2_restoring_needed_tools.html#rfc2-restoring-needed-tools
+  * Software configuration changes:
+    + autoconf build: configure.ac: avoid -Werror passed to CFLAGS to interfere with feature detection
+    + autoconf build: fix error when running make clean (fixes issue #630)
+    + autoconf build: back off the minimum required automake version to 1.11
+    + autoconf.ac: fix detection of windows.h for mingw (fixes issue #605)
+    + libtiff-4.pc: Fix Requires.private missing Lerc. It provides a .pc file
+      starting from version 4 (in autoconf builds, we assume that liblerc is at least version 4)
+    + CMake: Fix TIFF_INCLUDE_DIRS
+    + CMake: MinGW compilers don't need a .def file for shared library
+    + CMake: move libdeflate and Lerc to Requires.private
+    + CMake: enable resource compilation on all Windows.
+  * Library changes:
+    + Add TIFFOpenOptionsSetMaxCumulatedMemAlloc(). This function complements
+      TIFFOpenOptionsSetMaxSingleMemAlloc() to define the maximum cumulated memory
+      allocations in byte, for a given TIFF handle, that libtiff internal memory
+      allocation functions are allowed. 
+    + TIFFWriteDirectory(): Avoid overwriting following data if an IFD is enlarged.
+    + TIFFXYZToRGB: avoid integer overflow (fixes issue #644)
+    + uv_decode() and uv_encode(): avoid potential out-of-bounds array index (fixes issue #645)
+    + Fix cases where tif_curdir is set incorrectly. Fix cases where the current directory number (tif_curdir)
+      is set inconsistently or incorrectly, depending on the previous history.
+    + TIFFRead[Scanline/EncodedStrip/EncodeTile]: 0-initialize output buffer if setupdecode fails ;
+      most codecs: zero-initialize (not-yet-written parts of) output buffer if failure (fixes issue #375)
+    + OJPEG: reset subsampling_convert_state=0 in OJPEGPreDecode (fixes issue #183)
+    + ThunderRLE: fix failure when decoding last run. Bug seen with GhostPDL
+    + LERC codec: deal with issues with multi-band PlanarConfig=Contig and NaN values</comment>
+    <requestid>1201738</requestid>
+  </revision>
 </revisionlist>

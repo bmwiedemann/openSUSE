@@ -1,0 +1,5 @@
+<package name="python-fpdf2" project="openSUSE:Factory">
+  <title>python-fpdf2</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-fpdf2"/>
+</package>

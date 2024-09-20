@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 18 13:03:38 UTC 2024 - jeos-internal@suse.de
+
+- Update to version 1.5.2:
+  * otp: Use the system nodename as issuer in the QR code
+  * otp: Use more obvious dd | base32 instead of tr | head
+
+-------------------------------------------------------------------
 Wed Aug 07 15:04:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5.0:

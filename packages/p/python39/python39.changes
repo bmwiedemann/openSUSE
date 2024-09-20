@@ -34,7 +34,7 @@ Mon Sep  9 18:02:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       :class:`zipfile.Path` causing infinite loops (gh-122905) without breaking
       contents using legitimate characters (bsc#1229704, CVE-2024-8088).
     - gh-123067: Fix quadratic complexity in parsing ``"``-quoted cookie values
-      with backslashes by :mod:`http.cookies`.
+      with backslashes by :mod:`http.cookies` (bsc#1229596, CVE-2024-7592).
     - gh-121650: :mod:`email` headers with embedded newlines are now quoted on
       output. The :mod:`~email.generator` will now refuse to serialize (write)
       headers that are unsafely folded or delimited; see
@@ -76,8 +76,7 @@ Mon Sep  9 18:02:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 Thu Sep  5 13:44:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-6232-cookies-quad-complex.patch to avoid quadratic
-  complexity in parsing "-quoted cookie values with backslashes
-  (bsc#1229596, CVE-2024-6232).
+  complexity in parsing tarfile headers (bsc#1230227, CVE-2024-6232).
 
 -------------------------------------------------------------------
 Thu Sep  5 08:11:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>

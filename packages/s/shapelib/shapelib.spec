@@ -1,7 +1,7 @@
 #
 # spec file for package shapelib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or  comments via https://bugs.opensuse.org/
 #
 
 
-%define so_ver 2
+%define so_ver  4
 Name:           shapelib
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        Library for ESRI Shapefile Handling
 License:        GPL-2.0-or-later AND (LGPL-2.0-or-later OR MIT) AND SUSE-Public-Domain
 Group:          Productivity/Graphics/Other
 URL:            http://shapelib.maptools.org/
 Source0:        http://download.osgeo.org/shapelib/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM rpmlint-errors.patch -- Fix some of the rpmlint errors
-# to get package acceptable to Factory
-Patch0:         rpmlint-errors.patch
-# PATCH-Fix-UPSTREAM double free, CVE-2022-0699, https://github.com/OSGeo/shapelib/issues/39
-Patch1:         https://github.com/OSGeo/shapelib/commit/c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -68,7 +64,7 @@ associated attribute file (.dbf).
 This package contains the dynamic link library for shapelib project.
 
 %prep
-%autosetup -p1
+# %autosetup -p1
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' contrib/doc/shpsort.txt
@@ -93,10 +89,11 @@ make %{?_smp_mflags} check ||:
 %postun -n libshp%{so_ver} -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSE-LGPL
 %doc ChangeLog
 %doc contrib/doc/ web/
 %{_bindir}/Shape_PointInPoly
+%{_bindir}/csv2shp
 %{_bindir}/dbfadd
 %{_bindir}/dbfcat
 %{_bindir}/dbfcreate

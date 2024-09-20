@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/whoozle/android-file-transfer-linux</param>
-    <param name="revision">9967dec8ad76e8385eb9a06aeb2e4bef5fead4db</param>
+    <param name="revision">cf7036c7f7dff99be19c2c15e6051c4704287574</param>
     <param name="versionprefix">4.3.0~git</param>
     <param name="versionformat">%ci.%h</param>
     <param name="changesgenerate">enable</param>

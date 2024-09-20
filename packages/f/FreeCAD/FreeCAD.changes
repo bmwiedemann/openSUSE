@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 09:35:46 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add patch for Boost 1.86 compatibility (upstream with changes):
+  * boost_1_86_fixes.patch
+
+-------------------------------------------------------------------
 Sat May  4 17:46:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add freecad-boost185.patch

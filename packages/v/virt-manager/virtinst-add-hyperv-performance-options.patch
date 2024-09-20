@@ -4,8 +4,10 @@ vpindex makes sense in conjunction with synic and stimer
 synic requires vpindex
 stimer requires vpindex and synic
 
---- virt-manager-4.1.0/virtinst/domain/features.py.orig	2024-07-23 14:08:31.059017630 -0600
-+++ virt-manager-4.1.0/virtinst/domain/features.py	2024-07-23 14:09:33.071019107 -0600
+Index: virt-manager-4.1.0/virtinst/domain/features.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/domain/features.py
++++ virt-manager-4.1.0/virtinst/domain/features.py
 @@ -32,7 +32,9 @@ class DomainFeatures(XMLBuilder):
      hyperv_spinlocks = XMLProperty("./hyperv/spinlocks/@state", is_onoff=True)
      hyperv_spinlocks_retries = XMLProperty("./hyperv/spinlocks/@retries",
@@ -26,8 +28,10 @@ stimer requires vpindex and synic
 +                self.hyperv_synic = True
 +            if self.hyperv_stimer is None:
 +                self.hyperv_stimer = True
---- virt-manager-4.1.0/virtinst/cli.py.orig	2024-07-23 13:37:39.086973500 -0600
-+++ virt-manager-4.1.0/virtinst/cli.py	2024-07-23 13:38:28.030974666 -0600
+Index: virt-manager-4.1.0/virtinst/cli.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/cli.py
++++ virt-manager-4.1.0/virtinst/cli.py
 @@ -2989,7 +2989,9 @@ class ParserFeatures(VirtCLIParser):
          "hyperv.relaxed.state": "hyperv_relaxed",
          "hyperv.spinlocks.state": "hyperv_spinlocks",
@@ -48,9 +52,11 @@ stimer requires vpindex and synic
  
          cls.add_arg("vmport.state", "vmport", is_onoff=True)
          cls.add_arg("kvm.hidden.state", "kvm_hidden", is_onoff=True)
---- virt-manager-4.1.0/tests/test_cli.py.orig	2024-07-23 14:37:19.511058816 -0600
-+++ virt-manager-4.1.0/tests/test_cli.py	2024-07-23 14:38:46.819060897 -0600
-@@ -554,7 +554,7 @@ memorytune0.vcpus=0-3,memorytune0.node0.
+Index: virt-manager-4.1.0/tests/test_cli.py
+===================================================================
+--- virt-manager-4.1.0.orig/tests/test_cli.py
++++ virt-manager-4.1.0/tests/test_cli.py
+@@ -555,7 +555,7 @@ memorytune0.vcpus=0-3,memorytune0.node0.
  --metadata title=my-title,description=my-description,uuid=00000000-1111-2222-3333-444444444444,genid=e9392370-2917-565e-692b-d057f46512d6,genid_enable=yes
  
  
@@ -59,8 +65,10 @@ stimer requires vpindex and synic
  
  
  --clock offset=utc,hpet_present=no,rtc_tickpolicy=merge,timer2.name=hypervclock,timer3.name=pit,timer1.present=yes,timer3.tickpolicy=delay,timer2.present=no,timer4.name=rtc,timer5.name=tsc,timer6.name=tsc,timer4.track=wall,timer5.frequency=10,timer6.mode=emulate,timer7.name=rtc,timer7.tickpolicy=catchup,timer7.catchup.threshold=123,timer7.catchup.slew=120,timer7.catchup.limit=10000,rtc_present=no,pit_present=yes,pit_tickpolicy=catchup,tsc_present=no,platform_present=no,hypervclock_present=no,platform_tickpolicy=foo,hpet_tickpolicy=bar,tsc_tickpolicy=wibble,kvmclock_tickpolicy=wobble,hypervclock_tickpolicy=woo
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-many-devices.xml.orig	2024-07-23 14:45:20.019070266 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-many-devices.xml	2024-07-23 14:45:41.667070782 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-many-devices.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-many-devices.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-many-devices.xml
 @@ -138,7 +138,9 @@
        <vapic state="on"/>
        <relaxed state="off"/>
@@ -71,8 +79,10 @@ stimer requires vpindex and synic
      </hyperv>
      <vmport state="off"/>
      <kvm>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml.orig	2024-07-23 15:09:45.803105194 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml	2024-07-23 15:11:30.679107693 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-win7-uefi.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml
 @@ -23,6 +23,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -93,8 +103,10 @@ stimer requires vpindex and synic
      </hyperv>
      <vmport state="off"/>
    </features>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml.orig	2024-07-23 15:09:30.155104821 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml	2024-07-23 15:10:20.443106019 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-win10.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml
 @@ -21,6 +21,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -115,8 +127,10 @@ stimer requires vpindex and synic
      </hyperv>
      <vmport state="off"/>
    </features>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml.orig	2024-07-23 15:12:52.567109644 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml	2024-07-23 15:12:13.607108716 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
 @@ -19,6 +19,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -137,8 +151,10 @@ stimer requires vpindex and synic
      </hyperv>
    </features>
    <clock offset="localtime"/>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml.orig	2024-07-23 15:09:35.051104938 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml	2024-07-23 15:10:40.211106490 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
 @@ -21,6 +21,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -159,8 +175,10 @@ stimer requires vpindex and synic
      </hyperv>
      <vmport state="off"/>
    </features>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml.orig	2024-07-23 15:22:42.151123693 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml	2024-07-23 15:23:37.299125007 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
 @@ -20,6 +20,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -181,8 +199,10 @@ stimer requires vpindex and synic
      </hyperv>
    </features>
    <cpu>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml.orig	2024-07-23 15:23:07.827124305 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml	2024-07-23 15:24:16.387125939 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
 @@ -19,6 +19,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>
@@ -203,8 +223,10 @@ stimer requires vpindex and synic
      </hyperv>
    </features>
    <clock offset="localtime"/>
---- virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml.orig	2024-07-23 15:22:54.103123978 -0600
-+++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml	2024-07-23 15:23:56.535125466 -0600
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
 @@ -20,6 +20,9 @@
        <relaxed state="on"/>
        <vapic state="on"/>

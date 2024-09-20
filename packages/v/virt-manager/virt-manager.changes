@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 17 14:30:56 MDT 2024 - carnold@suse.com
+
+- Fix SUSE SL Micro detection
+  virtinst-add-slem60-detection-support.patch
+
+-------------------------------------------------------------------
+Mon Aug 26 15:11:42 MDT 2024 - carnold@suse.com
+
+- Solve bsc#1228384 --dry-run creating pools in a different way
+  virtinst-dont-create-storage-pool-for-dryrun.patch
+
+-------------------------------------------------------------------
+Thu Aug 22 10:44:23 MDT 2024 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942) (jsc#PED-8910)
+  094-uitests-handle-newer-libvirt-test-driver-UpdateDevice-support.patch
+  095-uitests-force-internal-snapshots-in-test_snapshot.py.patch
+
+-------------------------------------------------------------------
 Tue Aug  6 10:13:04 MDT 2024 - carnold@suse.com
 
 - Fix test failure with libvirt version 10.6.0

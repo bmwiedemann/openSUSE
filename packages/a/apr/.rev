@@ -168,4 +168,29 @@
     <comment></comment>
     <requestid>1134005</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>da56a5717e07507b60aebfdc189f1f6f</srcmd5>
+    <version>1.7.5</version>
+    <time>1726773405</time>
+    <user>anag+factory</user>
+    <comment>- version update to 1.7.5 [bsc#1229783] CVE-2023-49582
+  *) Unix: Implement apr_shm_perms_set() for the &quot;POSIX shm_open()&quot;
+     and &quot;classic mmap&quot; shared memory implementations.  [Joe Orton,
+     Ruediger Pluem]
+  *) Fix missing ';' for XML/HTML hex entities from apr_escape_entity().
+     [Yann Ylavic]
+  *) Fix crash in apr_pool_create() with --enable-pool-debug=all|owner.
+     [Yann Ylavic]
+  *) Improve platform detection by updating config.guess and config.sub.
+     [Rainer Jung]
+  *) CMake: Add support for CMAKE_WARNING_AS_ERROR. [Ivan Zhakov]
+  *) CMake: Enable support for MSVC runtime library selection by abstraction.
+     [Ivan Zhakov]
+  *) CMake: Export installed targets (libapr-1, apr-1, libaprapp-1, aprapp-1)
+     to apr:: namespace. [Ivan Zhakov]
+- modified patches
+  % apr-visibility.patch (refreshed)
+  % reproducible.patch (refreshed) (forwarded request 1201617 from pgajdos)</comment>
+    <requestid>1201764</requestid>
+  </revision>
 </revisionlist>

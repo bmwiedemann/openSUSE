@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-navigator
-Version:        24.8.0
+Version:        24.9.0
 Release:        0
 Summary:        A text-based user interface (TUI) for Ansible
 License:        Apache-2.0
@@ -47,8 +47,11 @@ Source:         ansible-navigator-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-pip
-BuildRequires:  %{ansible_python}-setuptools
-BuildRequires:  %{ansible_python}-setuptools_scm
+BuildRequires:  %{ansible_python}-pip-wheel
+# https://github.com/ansible/ansible-navigator/blob/main/.config/requirements.in#L8
+BuildRequires:  %{ansible_python}-setuptools >= 63.1.0
+BuildRequires:  %{ansible_python}-setuptools_scm >= 7.0
+BuildRequires:  %{ansible_python}-tzdata
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
 # Use Requires also as BuildRequires

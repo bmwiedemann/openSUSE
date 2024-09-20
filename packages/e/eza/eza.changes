@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 18 19:37:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.4:
+  Bug Fixes:
+  * Remove non_alpha from percent encoding to fix hyprlinks
+  Features:
+  * Pass from serde_yaml to serde_norway
+
+-------------------------------------------------------------------
 Thu Sep 12 05:46:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.3:

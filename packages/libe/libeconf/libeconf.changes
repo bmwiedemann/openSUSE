@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:16:34 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.3:
+  * Groups handled in an own list (#218)
+  * Add econftool as dependency of its tests
+  * Simplify snprintf call
+  * Remove unused functions and reduce variable visibility (#213)
+  * Fix typos (#212)
+
+-------------------------------------------------------------------
 Fri Jun 14 07:26:15 UTC 2024 - schubi@suse.com
 
 - Update to version 0.7.2:

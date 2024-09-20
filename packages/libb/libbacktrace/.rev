@@ -69,4 +69,15 @@
   * libbacktrace: don't assume compressed section is aligned</comment>
     <requestid>1188963</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>01361599fad57794999b7353b123ff4d</srcmd5>
+    <version>1.0+git20240805</version>
+    <time>1726773406</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0+git20240805:
+  * libbacktrace: update xcoff.c for base_address changes
+  * libbacktrace: avoid -Wpointer-arith errors
+  * libbacktrace: fix syntax of Windows registration functions</comment>
+    <requestid>1201777</requestid>
+  </revision>
 </revisionlist>

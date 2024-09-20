@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package scalapack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname scalapack
-%define vers 2.1.0
+%define vers 2.2.0
 %define _vers %(echo %{vers} | tr . _)
 %define so_ver  2
 %define openblas_vers 0.3.6
@@ -256,7 +256,7 @@ ExcludeArch:    %ix86
 %endif
 
 Name:           %{package_name}
-Version:        %vers
+Version:        %{vers}
 Release:        0
 Summary:        A subset of LAPACK routines redesigned for heterogenous computing
 # This is freely distributable without any restrictions.
@@ -472,7 +472,8 @@ EOF
 module load openblas
 %endif
 
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -std=legacy"
+# implicit-function-declaration: https://github.com/Reference-ScaLAPACK/scalapack/issues/81
+RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error=implicit-function-declaration -fno-strict-aliasing -std=legacy"
 %if %{without hpc}
 echo $PATH | grep -q %{mpi_flavor}%{?mpi_ext} || \
     PATH=/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin:$PATH

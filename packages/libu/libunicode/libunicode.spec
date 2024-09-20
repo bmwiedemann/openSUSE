@@ -22,13 +22,12 @@
 %define sover   %{ver}.%{mayor}
 %define force_gcc_version 13
 Name:           libunicode
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Modern C++17 Unicode library
 License:        Apache-2.0
 URL:            https://github.com/contour-terminal/libunicode
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         libunicode-fix-catch-in-cmake.patch 
 BuildRequires:  ccache
 BuildRequires:  cmake
 BuildRequires:  fmt-devel

@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
@@ -31,8 +31,6 @@ Source2:        README.SUSE
 Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
-Patch1:         tiff-CVE-2023-52356.patch
-Patch2:         tiff-CVE-2024-7006.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -76,6 +74,7 @@ CFLAGS="%{optflags} -fPIE"
 %if %{debug_build}
 CFLAGS="$CFLAGS -O0"
 %endif
+# tools are not enabled for now due to test failure `FAIL: tiffcp-32bpp-None-jpeg.sh`
 %configure --disable-static
 %if %{asan_build}
 find -name Makefile | xargs sed -i 's/\(^CFLAGS.*\)/\1 -fsanitize=address/'

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 18 13:41:33 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.5:
+ * Preview features
+   * [pydoclint] Ignore DOC201 when function name is "new" 
+   * [refurb] Implement slice-to-remove-prefix-or-suffix (FURB188) 
+ * Rule changes
+   * [eradicate] Ignore script-comments with multiple end-tags (ERA001) 
+   * [pyflakes] Improve error message for UndefinedName when a builtin
+       was added in a newer version than specified in Ruff config (F821) 
+ * Server
+   * Add support for extensionless Python files for server 
+   * Fix configuration inheritance for configurations specified in the LSP settings 
+ * Bug fixes
+   * [ruff] Handle unary operators in decimal-from-float-literal (RUF032) 
+ * CLI
+   * Only include rules with diagnostics in SARIF metadata 
+ * Playground
+   * Add "Copy as pyproject.toml/ruff.toml" and "Paste from TOML" 
+   * Fix errors not shown for restored snippet on page load 
+
+-------------------------------------------------------------------
 Mon Sep  9 08:14:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.4:

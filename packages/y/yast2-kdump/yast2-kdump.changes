@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 17 14:24:44 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't write empty  fadump=""  kernel parameter (bsc#1230359)
+- 5.0.2
+
+-------------------------------------------------------------------
 Wed Jun 19 15:36:03 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Do not suggest Kdump if Systemd-Boot is used. Kdump is not stable

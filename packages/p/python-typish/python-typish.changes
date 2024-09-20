@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 18 13:50:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Because of nptyping, this package is not compatible with NumPy 2.*
+
+-------------------------------------------------------------------
 Thu Jun 20 09:50:02 UTC 2024 - Andreas Färber <afaerber@suse.de>
 
 - Initial (v1.9.3)

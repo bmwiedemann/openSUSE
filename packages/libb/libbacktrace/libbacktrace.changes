@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 18 11:37:52 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20240805:
+  * libbacktrace: update xcoff.c for base_address changes
+  * libbacktrace: avoid -Wpointer-arith errors
+  * libbacktrace: fix syntax of Windows registration functions
+
+-------------------------------------------------------------------
 Mon Jul 22 08:52:38 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20240718:

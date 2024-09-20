@@ -318,4 +318,12 @@
     - packages: Use non-breakable space in bibTeX name splitting, not tilde</comment>
     <requestid>1197968</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>59cd8f6f762563a18bab2dd45d3cc5b4</srcmd5>
+    <version>0.15.5</version>
+    <time>1726773422</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored deps to resolve boo#1230690</comment>
+    <requestid>1201811</requestid>
+  </revision>
 </revisionlist>
