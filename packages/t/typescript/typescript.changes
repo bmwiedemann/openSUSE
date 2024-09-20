@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 15 15:14:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.6.2
+  * fixed parseCommandLine fails with --build and --force
+  * fixed Watch cannot handle large amount of file changes 
+  * fixed tsc crash with Error: start < 0 in a specific config
+  * allow use export = in .cts when module is esnext
+  * fixed verbatimModuleSyntax + import of ambient const enum missing error
+  * fixed Can't augment function overload is function is exported via export {}
+  * fixed Crash when using a combination of a switch statement, optional 
+    chaining, an implicit any array, and ts strict settings.
+  * fixed Declaration emit change in 5.5 with exactOptionalPropertyTypes
+  * fixed Duplicate exports.* = assignments in CommonJS output in some cases
+  * fixed LiteralPropertyName should allow BigInt
+  * fixed Ghost errors and inconsistencies in destructuring patterns
+ 
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/
+
+-------------------------------------------------------------------
 Tue Jul 23 09:43:12 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.4
