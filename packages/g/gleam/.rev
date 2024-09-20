@@ -74,4 +74,13 @@
  * Gleam now requires Rust 1.79 to build</comment>
     <requestid>1191253</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fffc4bfd5a2f2ea00b0652097f296339</srcmd5>
+    <version>1.5.0</version>
+    <time>1726845095</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0:
+ * Changelog: https://gleam.run/news/convenient-code-actions/</comment>
+    <requestid>1202051</requestid>
+  </revision>
 </revisionlist>
