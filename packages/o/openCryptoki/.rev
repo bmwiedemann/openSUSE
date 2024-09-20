@@ -791,4 +791,12 @@
     <comment>Removed 'Requires(pre):  %{_sbindir}/getent' and '%{_sbindir}/getent' from the commands in the .spec file</comment>
     <requestid>1188413</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>78767f89cd5b589a8465401f9c99b12e</srcmd5>
+    <version>3.24.0</version>
+    <time>1726845146</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202163</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.23.0
+Version:        3.24.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -39,7 +39,7 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.23-remove-make-install-chgrp.patch
+Patch000:       ocki-3.24-remove-make-install-chgrp.patch
 #
 #
 BuildRequires:  bison
@@ -136,7 +136,7 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 
 %prep
 # setup -q -n %{oc_cvs_tag}-%{version}
-%autosetup -p 0 -n %{oc_cvs_tag}-%{version}
+%autosetup -p 1 -n %{oc_cvs_tag}-%{version}
 
 cp %{SOURCE2} .
 
@@ -250,8 +250,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%config %attr(640,root,%{pkcs_group}) %{_sysconfdir}/opencryptoki/strength.conf
-%config %attr(640,root,%{pkcs_group}) %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
@@ -272,6 +270,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_sbindir}/pkcsicsf
 %{_sbindir}/pkcsstats
 %{_sbindir}/pkcstok_migrate
+%{_sbindir}/pkcstok_admin
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
