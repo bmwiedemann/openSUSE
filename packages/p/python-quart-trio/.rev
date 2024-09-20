@@ -7,4 +7,12 @@
     <comment>- Initial release of 0.11.1.</comment>
     <requestid>1201919</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39ec3e3b635cf78ce59406160f842ede</srcmd5>
+    <version>0.11.1</version>
+    <time>1726845110</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires on python-exceptiongroup.</comment>
+    <requestid>1202067</requestid>
+  </revision>
 </revisionlist>

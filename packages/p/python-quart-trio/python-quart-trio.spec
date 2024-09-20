@@ -35,6 +35,7 @@ BuildRequires:  %{python_module trio >= 0.19}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Quart >= 0.19
+Requires:       python-exceptiongroup
 Requires:       python-hypercorn >= 0.12
 Requires:       python-trio >= 0.19
 Recommends:     python-python-dotenv
