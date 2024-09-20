@@ -69,7 +69,7 @@ cp -a * %{buildroot}
 cp %{S:2} .
 
 # Override shim-install
-install -m 755 %{S:2} %{buildroot}/%{_sbindir}/shim-install
+install -m 755 %{S:3} %{buildroot}/%{_sbindir}/shim-install
 
 %if %{undefined shim_lib64_share_compat}
 # Remove the sym-links in /usr/lib64/efi

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 05:14:22 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- RelEng emergency fix: fux source number to install shim-install.
+
+-------------------------------------------------------------------
 Mon Sep  2 08:07:02 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 - Update shim version for aarch64 to shim-15.8-lp155.8.8.aarch64.rpm
