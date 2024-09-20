@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 20 07:31:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.12:
+  * fix(squash): preserve consensus author
+  * chore: update changelog for 2.4.12
+  * feat(push): revert overzealous modified status
+  * chore: update windows-sys to 0.59.0
+  * chore: update syn to 2.0.77
+  * chore: update cc to 1.1.18
+  * chore: update filetime to 0.2.25
+  * chore: update schannel to 0.1.24
+  * chore: update gix-path to 0.10.11
+  * chore: update serde_json to 1.0.128
+- Switch to _service for fetching sources
+- Adresses boo#1230691 CVE-2024-45405
+
+-------------------------------------------------------------------
 Fri Jan 26 09:43:01 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Move completions and plugins to subpackages

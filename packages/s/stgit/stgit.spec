@@ -17,12 +17,12 @@
 
 
 Name:           stgit
-Version:        2.4.2
+Version:        2.4.12
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later
 URL:            https://stacked-git.github.io
-Source0:        https://github.com/ctmarinas/stgit/releases/download/v%{version}/stgit-%{version}.tar.gz
+Source0:        stgit-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  asciidoc
 BuildRequires:  cargo-packaging

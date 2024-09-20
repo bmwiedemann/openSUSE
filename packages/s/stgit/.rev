@@ -231,4 +231,24 @@ thank you for your patience (forwarded request 202534 from dbahi)</comment>
 - Drop no longer needed stgbashprompt-noexec.patch</comment>
     <requestid>1141754</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4415ed900ced9022b97bc46d7ccdc169</srcmd5>
+    <version>2.4.12</version>
+    <time>1726845125</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.12:
+  * fix(squash): preserve consensus author
+  * chore: update changelog for 2.4.12
+  * feat(push): revert overzealous modified status
+  * chore: update windows-sys to 0.59.0
+  * chore: update syn to 2.0.77
+  * chore: update cc to 1.1.18
+  * chore: update filetime to 0.2.25
+  * chore: update schannel to 0.1.24
+  * chore: update gix-path to 0.10.11
+  * chore: update serde_json to 1.0.128
+- Switch to _service for fetching sources
+- Adresses boo#1230691 CVE-2024-45405</comment>
+    <requestid>1202120</requestid>
+  </revision>
 </revisionlist>
