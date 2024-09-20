@@ -356,4 +356,41 @@ Bugfixes
     <comment></comment>
     <requestid>1166662</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d0bb5a2e1d9f656b90a27a5844ae1d0a</srcmd5>
+    <version>2.4.16.3</version>
+    <time>1726845144</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.4.16.3
+  09/06/2024
+  - allow overriding globally set OIDCCacheType back to shm in vhosts
+  - correct typo in child initialization routines when using multiple vhosts; closes #1208; thanks @studersi
+    this fixes possible segmentation faults when using Redis and Metrics settings in vhosts
+  09/05/2024
+  - fix OIDCCacheShmMax min/max settings; see #1260; thanks @bbartke
+  08/29/2024
+  - fix setting OIDCPKCEMethod none; closes #1256; thanks @eoliphan
+  08/28/2024
+  - re-introduce OIDCSessionMaxDuration 0; see #1252
+  - add some resilience when both Forwarded and X-Forwarded-* are configured
+  - fix disabled OIDCStateCookiePrefix command; closes #1254; thanks @damisanet
+  - remove support for OIDCHTMLErrorTemplate, deprecated since 2.4.14
+  08/26/2024
+  - fix parsing OIDCXForwardedHeaders; closes #1250; thanks @maltesmann
+  07/03/2024
+  - cfg/provider: use oidc_jwk_list_copy when merging client_keys
+  06/18/2024
+  - memcache: correct dead server check on APR_NOTFOUND; see #1230; thanks @rpluem-vf
+  06/08/2024
+  - support DPoP nonces to the userinfo endpoint
+  06/06/2024
+  - add OIDCDPoPMode [off|optional|required] primitive
+  - store the token_type in the session
+  06/05/2024
+  - add &quot;nbf&quot; claim in the Request Object as per https://openid.net/specs/openid-financial-api-part-2-1_0-final.html#rfc.section.5.2.2
+  06/04/2024
+  - add (client) support for RFC 9449 OAuth 2.0 Demonstrating Proof of Possession (DPoP)
+  - replace multi-provider .conf &quot;issuer_specific_redirect_uri&quot; boolean with &quot;response_require_iss&quot; boolean (forwarded request 1201556 from pgajdos)</comment>
+    <requestid>1202153</requestid>
+  </revision>
 </revisionlist>
