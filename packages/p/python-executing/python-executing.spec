@@ -24,6 +24,8 @@ Summary:        Get the currently executing AST node of a frame, and other infor
 License:        MIT
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/alexmojaki/executing/pull/86 fix: backward compatibility fix for changed source positions in 3.12.6
+Patch0:         new-python-312.patch
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module littleutils}

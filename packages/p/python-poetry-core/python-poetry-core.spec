@@ -22,10 +22,11 @@ Version:        1.9.0
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#python-poetry/poetry-core#758
+Patch0:         support-newer-pythons.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -48,7 +49,7 @@ intended to be a light weight, fully compliant, self-contained package allowing
 PEP 517 compatible build frontends to build Poetry managed projects.
 
 %prep
-%setup -q -n poetry-core-%{version}
+%autosetup -p1 -n poetry-core-%{version}
 mkdir vendoredlicenses
 cp -p src/poetry/core/_vendor/lark/LICENSE              vendoredlicenses/lark.LICENSE
 cp -p src/poetry/core/_vendor/fastjsonschema/LICENSE    vendoredlicenses/fastjsonschema.LICENSE
@@ -69,8 +70,7 @@ cp -p src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.L
 git init
 #https://github.com/python-poetry/poetry/issues/9678
 donttest="obsdummyprefix"
-python312_donttest=" or (test_invalid_requirement and :.-invalid)"
-%pytest -k "not ($donttest ${$python_donttest})"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

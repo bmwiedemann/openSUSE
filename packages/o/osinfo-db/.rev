@@ -616,4 +616,12 @@
     <comment>Add support of openSUSE Leap 15.7 and SLE-15-SP7 - just an update to the changelog</comment>
     <requestid>1199012</requestid>
   </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>06f0080ee53fe10a55a1e17d44c27bd3</srcmd5>
+    <version>20240701</version>
+    <time>1726844934</time>
+    <user>anag+factory</user>
+    <comment>Add support for SUSE SL Micro 6.1. Drop non-existent Leap 15.7 support</comment>
+    <requestid>1201849</requestid>
+  </revision>
 </revisionlist>

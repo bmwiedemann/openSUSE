@@ -39,4 +39,12 @@
     <comment>fix build with gcc 14</comment>
     <requestid>1197122</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a9b60e3094bcc6d976d9d8b2ca490cdf</srcmd5>
+    <version>17.0.11.0</version>
+    <time>1726845083</time>
+    <user>anag+factory</user>
+    <comment>Bit-reproducible build</comment>
+    <requestid>1202037</requestid>
+  </revision>
 </revisionlist>

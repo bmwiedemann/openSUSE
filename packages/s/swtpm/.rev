@@ -246,4 +246,18 @@
     <comment></comment>
     <requestid>1191034</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8d3b816a1af5eb1a092b2ffe05e7e2cc</srcmd5>
+    <version>0.9.0</version>
+    <time>1726844941</time>
+    <user>anag+factory</user>
+    <comment>- Fix swtpm custom module (bsc#1229131)
+  - Add patch: 1229131-fix-swtpm-selinux-policy-mismatch.patch
+  - this can be removed once swtpm upstream sorts out their custom selinux module.
+    see: https://github.com/stefanberger/swtpm/issues/885
+    there were a couple changes in the selinux-policy libvirt handling
+    which causes the logfile in /var/log/swtpm/libvirt/qemu/*.log to be labeled
+    virt_log_t instead of var_log_t. this patch allows swtpm_t to open the virt_log_t (forwarded request 1202015 from cahu)</comment>
+    <requestid>1202016</requestid>
+  </revision>
 </revisionlist>

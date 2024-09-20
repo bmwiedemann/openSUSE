@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 17 15:42:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * reproducible-jar-mtime.patch
+    + try different approach to get bit-reproducible builds
+
+-------------------------------------------------------------------
 Tue Aug 13 14:43:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patches:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 18 17:29:16 CEST 2024 - ro@suse.de
+
+- Chromium 129.0.6668.58 (stable released 2024-09-17)
+  (boo#1230678)
+  * CVE-2024-8904: Type Confusion in V8
+  * CVE-2024-8905: Inappropriate implementation in V8
+  * CVE-2024-8906: Incorrect security UI in Downloads
+  * CVE-2024-8907: Insufficient data validation in Omnibox
+  * CVE-2024-8908: Inappropriate implementation in Autofill
+  * CVE-2024-8909: Inappropriate implementation in UI
+- modified patches:
+  * chromium-prop-codecs.patch update context
+- add to keeplibs:
+  third_party/rapidhash
+- drop from keeplibs:
+  third_party/libudev dropped upstream
+  third_party/catapult/third_party/html5lib-python dropped upstream
+- add patches:
+  chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
+  (not in our ffmpeg yet)
+
+-------------------------------------------------------------------
 Wed Sep 11 12:07:53 CEST 2024 - ro@suse.de
 
 - Chromium 128.0.6613.137 (released 2024-09-10) (boo#1230391)

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep 19 07:17:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.54:
+  * Fixed regression from 1.3 where the column key used for a hybrid property
+    might be populated with that of the underlying column that it returns.
+  * The pin for ``setuptools<69.3`` in ``pyproject.toml`` has been removed.
+  * Set up full Python 3.13 support to the extent currently possible, repairing
+    issues within internal language helpers as well as the serializer extension
+    module.
+  * Adjustments to the C extensions, which are specific to the SQLAlchemy 1.x
+    series, to work under Python 3.13.
+  * Fixed regression going back to 1.4 where accessing a collection using the
+    "dynamic" strategy on a transient object and attempting to query would
+    raise an internal error. 
+  * Fixed bug where ORM :func:`_orm.with_loader_criteria` would not apply
+    itself to a :meth:`_sql.Select.join` where the ON clause were given as a
+    plain SQL comparison, rather than as a relationship target or similar.
+  * Fixed regression introduced by the fix when using pool pre-ping with
+    PyMySQL version older than 1.0.
+  * Fixed critical issue in asyncio version of the connection pool where
+    calling :meth:`_asyncio.AsyncEngine.dispose` would produce a new connection
+    pool that did not fully re-establish the use of asyncio-compatible mutexes
+  * Fixed fundamental issue which prevented some forms of ORM "annotations"
+    from taking place for subqueries which made use of :meth:`_sql.Select.join`
+    against a relationship target
+  * Repaired a new incompatibility in the MySQL "pre-ping" routine where the
+    ``False`` argument passed to ``connection.ping()``, which is intended to
+    disable an unwanted "automatic reconnect" feature
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Sep 25 14:18:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.4.49

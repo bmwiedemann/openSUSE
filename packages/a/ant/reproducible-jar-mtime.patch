@@ -1,113 +1,17 @@
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/condition/IsLastModified.java	2024-07-22 09:18:51.385562681 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/condition/IsLastModified.java	2024-07-22 10:01:32.218061839 +0200
-@@ -128,6 +128,9 @@
-             return millis;
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-09-18 09:25:56.006778808 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-09-18 11:06:39.405766871 +0200
+@@ -846,6 +846,14 @@
+                 archiveType);
          }
-         if ("now".equalsIgnoreCase(dateTime)) {
-+            if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
-+                return 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
-+            }
-             return System.currentTimeMillis();
-         }
-         DateFormat df = dfFactory.getPrimaryFormat();
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-22 09:18:51.382229324 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-22 09:19:09.242362668 +0200
-@@ -450,6 +450,13 @@
-         serviceList.add(service);
-     }
  
-+    private long currentTimeMillisOrSourceDateEpoch() {
-+        if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
-+            return 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++        if (fixedModTime == null) {
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                // the DateUtils.parseLenientDateTime requires miliseconds
++                fixedModTime = sde + "000";
++            }
 +        }
-+        return System.currentTimeMillis();
-+    }
 +
-     /**
-      * Write SPI Information to JAR
-      */
-@@ -459,7 +466,7 @@
-                 //stolen from writeManifest
-                super.zipFile(is, zOut,
-                              "META-INF/services/" + service.getType(),
--                             System.currentTimeMillis(), null,
-+                             currentTimeMillisOrSourceDateEpoch(), null,
-                              ZipFileSet.DEFAULT_FILE_MODE);
-            }
-         }
-@@ -579,7 +586,7 @@
-             new ByteArrayInputStream(baos.toByteArray());
-         try {
-             super.zipFile(bais, zOut, MANIFEST_NAME,
--                          System.currentTimeMillis(), null,
-+                          currentTimeMillisOrSourceDateEpoch(), null,
-                           ZipFileSet.DEFAULT_FILE_MODE);
-         } finally {
-             // not really required
-@@ -656,7 +663,7 @@
-         writer.close();
-         try (ByteArrayInputStream bais =
-             new ByteArrayInputStream(baos.toByteArray())) {
--            super.zipFile(bais, zOut, INDEX_NAME, System.currentTimeMillis(),
-+            super.zipFile(bais, zOut, INDEX_NAME, currentTimeMillisOrSourceDateEpoch(),
-                           null, ZipFileSet.DEFAULT_FILE_MODE);
-         }
-     }
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-22 09:18:51.385562681 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-22 09:19:09.242362668 +0200
-@@ -682,6 +682,7 @@
-                     "Failed to create missing parent directory for %s",
-                     zipFile);
-             }
-+            parent.setLastModified(currentTimeMillisOrSourceDateEpoch());
- 
-             updatedFile = true;
-             if (!zipFile.exists() && state.isWithoutAnyResources()) {
-@@ -1669,6 +1670,13 @@
-             extra);
-     }
- 
-+    private long currentTimeMillisOrSourceDateEpoch() {
-+        if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
-+            return 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
-+        }
-+        return System.currentTimeMillis();
-+    }
-+
-     /**
-      * Add a directory to the zip stream.
-      * @param dir  the directory to add to the archive
-@@ -1708,7 +1716,7 @@
-             } else if (dir != null && dir.isExists()) {
-                 ze.setTime(dir.getLastModified() + millisToAdd);
-             } else {
--                ze.setTime(System.currentTimeMillis() + millisToAdd);
-+                ze.setTime(currentTimeMillisOrSourceDateEpoch() + millisToAdd);
-             }
-             ze.setSize(0);
-             ze.setMethod(ZipEntry.STORED);
-@@ -1794,7 +1802,11 @@
- 
-         if (!skipWriting) {
-             final ZipEntry ze = new ZipEntry(vPath);
--            ze.setTime(fixedModTime != null ? modTimeMillis : lastModified);
-+            long newLastModified = lastModified;
-+            if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
-+                newLastModified = 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
-+            }
-+            ze.setTime(fixedModTime != null ? modTimeMillis : newLastModified);
-             ze.setMethod(doCompress ? ZipEntry.DEFLATED : ZipEntry.STORED);
-             // if the input stream doesn't support mark/reset ability, we wrap it in a
-             // stream that adds that support.
---- apache-ant-1.10.14/src/main/org/apache/tools/zip/ZipOutputStream.java	2024-07-22 09:18:51.405562831 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/zip/ZipOutputStream.java	2024-07-22 10:00:20.874193063 +0200
-@@ -791,6 +791,9 @@
- 
-         if (entry.getTime() == -1) { // not specified
-             entry.setTime(System.currentTimeMillis());
-+            if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
-+                entry.setTime(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
-+            }
-         }
-     }
- 
+         if (fixedModTime != null) {
+             try {
+                 modTimeMillis = DateUtils.parseLenientDateTime(fixedModTime).getTime();

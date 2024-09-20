@@ -91,11 +91,11 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xxf86vm)
+#!BuildRequires: antlr3-tool
+#!BuildIgnore:  antlr3-bootstrap-tool
 Obsoletes:      %{name}-javadoc < %{version}
 Obsoletes:      %{name}-jmods < %{version}
 Obsoletes:      %{name}-src < %{version}
-#!BuildRequires: antlr3-tool
-#!BuildIgnore:   antlr3-bootstrap-tool
 
 %description
 JavaFX/OpenJFX is a set of graphics and media APIs that enables Java
@@ -162,7 +162,8 @@ rm -rf ./modules/javafx.web/src/main/native/Source/ThirdParty/icu
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
-%{mvn_build} -fj
+%{mvn_build} -f -j -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install

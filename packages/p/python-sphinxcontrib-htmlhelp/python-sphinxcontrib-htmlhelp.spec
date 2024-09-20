@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
-Version:        2.0.6
+Version:        2.1.0
 Release:        0
 Summary:        Sphinx extension to generate HTML help files
 License:        BSD-2-Clause
@@ -71,8 +71,8 @@ sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst CHANGES
-%license LICENSE
+%doc README.rst CHANGES.rst
+%license LICENCE.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/htmlhelp
 %{python_sitelib}/sphinxcontrib_htmlhelp-%{version}*-info

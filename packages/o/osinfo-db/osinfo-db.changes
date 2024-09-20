@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 17 07:21:53 MDT 2024 - carnold@suse.com
+
+- Add support for SLE Micro 6.1 (jsc#PED-8910)
+  add-slem6.1-support.patch
+- Drop support for Leap 15.7. Next major version is Leap 16
+  add-opensuse-leap-15.7-support.patch
+- Adjust place holder release-date for sle15sp7
+  add-sle15sp7-support.patch
+
+-------------------------------------------------------------------
 Wed Sep  4 10:05:17 MDT 2024 - carnold@suse.com
 
 - Add support for openSUSE Leap 15.7 (jsc#PED-8910)

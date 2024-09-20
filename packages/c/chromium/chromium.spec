@@ -96,7 +96,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        128.0.6613.137
+Version:        129.0.6668.58
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -149,6 +149,7 @@ Patch360:       chromium-127-bindgen.patch
 Patch361:       chromium-127-rust-clanglib.patch
 Patch362:       chromium-127-clang17-traitors.patch
 Patch363:       chromium-127-constexpr.patch
+Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -517,7 +518,6 @@ keeplibs=(
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
     third_party/catapult/third_party/beautifulsoup4
     third_party/catapult/third_party/html5lib-1.1/
-    third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/polymer
     third_party/catapult/third_party/six
     third_party/catapult/tracing/third_party/d3
@@ -601,7 +601,6 @@ keeplibs=(
     third_party/libsecret
     third_party/libsrtp
     third_party/libsync
-    third_party/libudev
     third_party/liburlpattern
     third_party/libva_protected_content
     third_party/libwebm
@@ -649,6 +648,7 @@ keeplibs=(
     third_party/pyjson5
     third_party/pyyaml
     third_party/qcms
+    third_party/rapidhash
     third_party/rnnoise
     third_party/rust
     third_party/ruy

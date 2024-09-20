@@ -1,7 +1,7 @@
 #
 # spec file for package libdovi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           libdovi
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        Library to read & write Dolby Vision metadata
 Group:          Development/Libraries/Rust
@@ -27,7 +27,6 @@ License:        MIT
 URL:            https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 Source0:        https://github.com/quietvoid/dovi_tool/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 Source9:        baselibs.conf
 BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging
@@ -54,20 +53,18 @@ Library to read & write Dolby Vision metadata
 
 %prep
 %setup -a1 -q -n dovi_tool-%{name}-%{version}/dolby_vision
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 CFLAGS="%{optflags}" cargo cbuild \
     --release \
-    --frozen \
+    --offline \
     --prefix=%{_prefix} \
     --library-type=cdylib
 
 %install
 cargo cinstall \
     --release \
-    --frozen \
+    --offline \
     --destdir=%{buildroot} \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \

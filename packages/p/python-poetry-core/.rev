@@ -335,4 +335,14 @@
     <comment>- Skip test failing with Python 3.12.6 gh#python-poetry/poetry#9678</comment>
     <requestid>1199731</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>fee2070d250858d8790200588e3abfaf</srcmd5>
+    <version>1.9.0</version>
+    <time>1726844935</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-newer-pythons.patch:
+  * Remove failing test with Python 3.12.6 and 3.13.
+- Switch to autosetup macro.</comment>
+    <requestid>1201909</requestid>
+  </revision>
 </revisionlist>

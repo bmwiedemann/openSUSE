@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,18 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy1
-Version:        1.4.49
+Version:        1.4.54
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
 URL:            https://www.sqlalchemy.org
-Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy/sqlalchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,17 +69,17 @@ This package contains HTML documentation, including tutorials and API
 reference for python-SQLAlchemy.
 
 %prep
-%autosetup -p1 -n SQLAlchemy-%{version}
+%autosetup -p1 -n sqlalchemy-%{version}
 
 rm -rf doc/build # Remove unnecessary scripts for building documentation
 sed -i 's/\r$//' examples/dynamic_dict/dynamic_dict.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -89,7 +91,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
-%{python_sitearch}/SQLAlchemy-%{version}-py*.egg-info
+%{python_sitearch}/SQLAlchemy-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc doc/

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 15:12:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Wed Aug 28 16:32:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:

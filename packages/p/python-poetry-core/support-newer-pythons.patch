@@ -1,0 +1,24 @@
+From 10c20e199caa4809cceb14456d7e647cb833906a Mon Sep 17 00:00:00 2001
+From: Emmanuel Arias <eamanu@yaerobi.com>
+Date: Fri, 13 Sep 2024 09:18:00 -0300
+Subject: [PATCH] Remove parametrize test for failed test
+
+In CPython3.12.6 urllib.parse.urlunsplit() was modified to preserve relative path
+in URL without netloc. poetry-core use this method to check the links in requirements.
+This patch remove that parametrize test.
+---
+ tests/version/test_requirements.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/version/test_requirements.py b/tests/version/test_requirements.py
+index c1d6a34aa..6705cac06 100644
+--- a/tests/version/test_requirements.py
++++ b/tests/version/test_requirements.py
+@@ -134,7 +134,6 @@ def test_requirement(string: str, expected: dict[str, Any]) -> None:
+     [
+         ("foo!", "Unexpected character at column 4\n\nfoo!\n   ^\n"),
+         ("foo (>=bar)", 'invalid version constraint ">=bar"'),
+-        ("name @ file:.", "invalid URL"),
+         ("name @ file:/.", "invalid URL"),
+     ],
+ )

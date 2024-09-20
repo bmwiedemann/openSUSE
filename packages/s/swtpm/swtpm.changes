@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 19 10:55:54 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix swtpm custom module (bsc#1229131)
+  - Add patch: 1229131-fix-swtpm-selinux-policy-mismatch.patch
+  - this can be removed once swtpm upstream sorts out their custom selinux module.
+    see: https://github.com/stefanberger/swtpm/issues/885
+    there were a couple changes in the selinux-policy libvirt handling
+    which causes the logfile in /var/log/swtpm/libvirt/qemu/*.log to be labeled
+    virt_log_t instead of var_log_t. this patch allows swtpm_t to open the virt_log_t
+
+-------------------------------------------------------------------
 Thu Aug  1 07:23:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.9.0:

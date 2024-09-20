@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-alabaster
-Version:        0.7.16
+Version:        1.0.0
 Release:        0
-Summary:        Modified Kr Sphinx doc theme
+Summary:        (c)lean, responsive, configurable theme for the Sphinx
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/bitprophet/alabaster
-Source:         https://files.pythonhosted.org/packages/source/a/alabaster/alabaster-%{version}.tar.gz
+URL:            https://alabaster.readthedocs.io/en/latest
+Source:         https://github.com/sphinx-doc/alabaster/archive/refs/tags/%{version}.tar.gz#/alabaster-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -34,10 +34,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This theme is a modified "Kr" Sphinx theme from @kennethreitz
-(especially as used in his Requests project), which was itself
-originally based on @mitsuhiko's theme used for Flask & related
-projects.
+Alabaster is a visually (c)lean, responsive, configurable theme for the Sphinx documentation system.
+It requires Python 3.10 or newer and Sphinx 6.2 or newer.
 
 %prep
 %setup -q -n alabaster-%{version}

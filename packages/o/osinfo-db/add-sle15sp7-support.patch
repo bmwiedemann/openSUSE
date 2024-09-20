@@ -32,7 +32,7 @@ Index: osinfo-db-20240701/os/suse.com/sle-15.7.xml
 +    <distro>sle</distro>
 +    <upgrades id="http://suse.com/sle/15.6"/>
 +    <derives-from id="http://suse.com/sle/15.6"/>
-+    <release-date>2024-06-26</release-date>
++    <release-date>2024-11-28</release-date>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id>LINUX</system-id>

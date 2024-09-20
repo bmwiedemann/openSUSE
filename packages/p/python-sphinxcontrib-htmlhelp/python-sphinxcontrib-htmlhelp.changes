@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 19 10:17:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.1.0
+  * Adopt Ruff
+  * Tighten MyPy settings
+  * Update GitHub actions versions
+  * Escape HTML entities
+
+-------------------------------------------------------------------
 Sat Jul 20 16:15:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.0.6:

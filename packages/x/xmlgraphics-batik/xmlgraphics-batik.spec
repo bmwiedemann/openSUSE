@@ -202,19 +202,20 @@ export OPT_JAR_LIST=:
     -f build-batik.xml -Dtest.skip=true \
 	package
 %{ant} \
+    -Dbuild.id="%{version} ($(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ))" \
     all-jar jars javadoc
 
 %install
 
 # jars
-mkdir -p %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
 
 for dir in batik-%{version} batik-%{version}/lib batik-%{version}/extensions; do
   pushd ${dir}
     for jar in batik-*.jar; do
       basename=`basename ${jar} .jar`
       name=`echo ${basename} | sed -e 's/batik-//' | sed -e 's/-%{version}//' `
-      cp -p ${jar} %{buildroot}%{_javadir}/%{name}/${name}.jar
+      install -pm 0644 ${jar} %{buildroot}%{_javadir}/%{name}/${name}.jar
     done
   popd
 done
@@ -227,13 +228,7 @@ mv %{buildroot}%{_javadir}/%{name}/all.jar %{buildroot}%{_javadir}/%{name}-all.j
 ln -s %{name}-all.jar %{buildroot}%{_javadir}/batik-all.jar
 
 #pom
-mkdir -p %{buildroot}%{_mavenpomdir}/%{name}
-
-%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
-%add_maven_depmap %{name}/parent.pom
-
-%{mvn_install_pom} batik-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-all.pom
-%add_maven_depmap %{name}-all.pom %{name}-all.jar
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 
 for i in anim awt-util bridge codec constants dom ext extension gvt i18n parser script shared-resources svg-dom svgbrowser svggen svgrasterizer swing transcoder util gui-util xml;
 do
@@ -241,27 +236,21 @@ do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 
-cp -p batik-css/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/css.pom
-%add_maven_depmap %{name}/css.pom %{name}/css.jar -f css
-
-cp -p batik-svgpp/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/svgpp.pom
-%add_maven_depmap %{name}/svgpp.pom %{name}/svgpp.jar -f svgpp
-
-cp -p batik-ttf2svg/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/ttf2svg.pom
-%add_maven_depmap %{name}/ttf2svg.pom %{name}/ttf2svg.jar -f ttf2svg
-
-cp -p batik-slideshow/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/slideshow.pom
-%add_maven_depmap %{name}/slideshow.pom %{name}/slideshow.jar -f slideshow
+for i in css svgpp ttf2svg slideshow;
+do
+  %{mvn_install_pom} batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
+done
 
 for i in squiggle squiggle-ext;
 do
-  cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f squiggle
 done
 
 for i in rasterizer rasterizer-ext;
 do
-  cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f rasterizer
 done
 
@@ -273,18 +262,18 @@ done
 %jpackage_script org.apache.batik.apps.slideshow.Main '' '' %{classpath} %{name}-slideshow true
 
 # demo
-mkdir -p %{buildroot}%{_datadir}/%{name}
+install -dm 0755 %{buildroot}%{_datadir}/%{name}
 cp -pr contrib samples test-resources \
   %{buildroot}%{_datadir}/%{name}
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 ln -s %{name} %{buildroot}%{_datadir}/batik
 
 # policy
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-cp -p %{SOURCE7} %{buildroot}%{_sysconfdir}/%{name}/rasterizer.policy
+install -dm 0755 %{buildroot}%{_sysconfdir}/%{name}
+install -pm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/%{name}/rasterizer.policy
 
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr batik-%{version}/docs/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
@@ -292,6 +281,7 @@ cp -pr batik-%{version}/docs/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 %doc KEYS MAINTAIN README
 %{_javadir}/batik-all.jar
+%{_javadir}/%{name}-all.jar
 
 %files css -f .mfiles-css
 

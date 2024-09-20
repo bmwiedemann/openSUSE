@@ -39,6 +39,14 @@ URL:            https://github.com/stefanberger/swtpm
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source100:      swtpm-rpmlintrc
 Patch0:         swtpm-fix-build.patch
+# 19-09-24 cahu bsc#1229131
+# this can be removed once swtpm upstream sorts out their custom selinux module
+# see: https://github.com/stefanberger/swtpm/issues/885
+# there were a couple changes in the selinux-policy libvirt handling
+# which causes the logfile in /var/log/swtpm/libvirt/qemu/*.log to be labeled
+# virt_log_t instead of var_log_t.
+# this patch allows swtpm_t to open the virt_log_t
+Patch1:         1229131-fix-swtpm-selinux-policy-mismatch.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
@@ -100,7 +108,7 @@ This package provides the SELinux module for the Software TPM emulator.
 %endif
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 mkdir m4

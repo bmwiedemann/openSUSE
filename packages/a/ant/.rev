@@ -882,4 +882,24 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>more reproducible changes</comment>
     <requestid>1193876</requestid>
   </revision>
+  <revision rev="99" vrev="9">
+    <srcmd5>c33df8e1878f577c30f2ffdc9986f00a</srcmd5>
+    <version>1.10.14</version>
+    <time>1726844935</time>
+    <user>anag+factory</user>
+    <comment>- Modified patch:
+  * reproducible-jar-mtime.patch
+    + try different approach to get bit-reproducible builds
+- Modified patch:
+  * reproducible-jar-mtime.patch
+    + try different approach to get bit-reproducible builds
+- Modified patch:
+  * reproducible-jar-mtime.patch
+    + try different approach to get bit-reproducible builds
+- Modified patch:
+  * reproducible-jar-mtime.patch
+    + try different approach to get bit-reproducible builds
+</comment>
+    <requestid>1201917</requestid>
+  </revision>
 </revisionlist>

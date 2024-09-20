@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Sep 19 08:57:57 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.2
+  New Features:
+  * Support for Offline KSK implemented.
+  * Add a new configuration option offline-ksk to enable Offline
+    KSK key management. Signed Key Response (SKR) files created
+    with dnssec-ksr (or other programs) can now be imported into
+    named with the new rndc skr -import command. Rather than
+    creating new DNSKEY, CDS, and CDNSKEY records and generating
+    signatures covering these types, these records are loaded from
+    the currently active bundle from the imported SKR.
+  * The implementation is loosely based on
+    draft-icann-dnssec-keymgmt-01.txt.
+  * Print the full path of the working directory in startup log
+    messages.
+  * named now prints its initial working directory during startup,
+    and the changed working directory when loading or reloading its
+    configuration file, if it has a valid directory option defined.
+  * Support a restricted key tag range when generating new keys.
+  * When multiple signers are being used to sign a zone, it is
+    useful to be able to specify a restricted range of key tags to
+    be used by an operator to sign the zone. The range can be
+    specified with tag-range in dnssec-policy’s keys (for named and
+    dnssec-ksr) and with the new options dnssec-keyfromlabel -M and
+    dnssec-keygen -M.
+
+  Feature Changes:
+  * Exempt prefetches from the fetches-per-zone and
+    fetches-per-server quotas.
+  * Fetches generated automatically as a result of prefetch are now
+    exempt from the fetches-per-zone and fetches-per-server quotas.
+    This should help in maintaining the cache from which query
+    responses can be given.
+  * Follow the number of CPUs set by taskset/cpuset.
+  * Administrators may wish to constrain the set of cores that
+    named runs on via the taskset, cpuset, or numactl programs (or
+    equivalents on other OSes).
+  * If the admin has used taskset, named now automatically uses the
+    given number of CPUs rather than the system-wide count.
+
+  Bug Fixes:
+  * Delay the release of root privileges until after configuring
+    controls.
+  * Delay relinquishing root privileges until the control channel
+    has been configured, for the benefit of systems that require
+    root to use privileged port numbers. This mostly affects
+    systems without fine- grained privilege systems (i.e., other
+    than Linux).
+  * Fix a rare assertion failure when shutting down incoming
+    transfer.
+  * A very rare assertion failure could be triggered when the
+    incoming transfer was either forcefully shut down, or it
+    finished during the printing of the details about the
+    statistics channel. This has been fixed.
+  * Fix algorithm rollover bug when there are two keys with the
+    same keytag.
+  * If there was an algorithm rollover and two keys of different
+    algorithms shared the same keytags, there was the possibility
+    that the check of whether the key matched a specific state
+    could be performed against the wrong key. This has been fixed
+    by not only checking for the matching key tag but also the key
+    algorithm.
+  * Fix an assertion failure in validate_dnskey_dsset_done().
+  * Under rare circumstances, named could terminate unexpectedly
+    when validating a DNSKEY resource record if the validation had
+    been canceled in the meantime. This has been fixed.
+
+  Known Issues:
+  * Long-running tasks in offloaded threads (e.g. the loading of
+    RPZ zones or processing zone transfers) may block the
+    resolution of queries during these operations and cause the
+    queries to time out. To work around the issue, the
+    UV_THREADPOOL_SIZE environment variable can be set to a larger
+    value before starting named. The recommended value is the
+    number of RPZ zones (or number of transfers) plus the number of
+    threads BIND should use, which is typically the number of CPUs.
+
+
+-------------------------------------------------------------------
 Fri Aug 23 09:26:22 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.20.1

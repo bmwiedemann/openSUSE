@@ -13,5 +13,5 @@ Index: chromium-106.0.5249.91/media/BUILD.gn
 -}
 -
  # Common configuration for targets in the media directory; these must not be
- # exported since things like USE_NEON and USE_CRAS have different meanings
- # elsewhere in the code base.
+ # exported since things like USE_NEON have different meanings elsewhere in the
+ # code base.

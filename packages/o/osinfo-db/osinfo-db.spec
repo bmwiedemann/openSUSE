@@ -33,8 +33,8 @@ Patch26:        add-slem5.5-support.patch
 Patch27:        add-sle15sp6-support.patch
 Patch28:        add-sle15sp7-support.patch
 Patch29:        add-opensuse-leap-15.6-support.patch
-Patch30:        add-opensuse-leap-15.7-support.patch
-Patch31:        add-slem6.0-support.patch
+Patch30:        add-slem6.0-support.patch
+Patch31:        add-slem6.1-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch
