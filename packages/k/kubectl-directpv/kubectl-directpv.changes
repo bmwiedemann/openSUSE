@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 20 07:44:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.1.4:
+  * Add `target_commitish` to goreleaser spec (#950)
+
+-------------------------------------------------------------------
 Sat Sep 14 10:09:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.1.3:

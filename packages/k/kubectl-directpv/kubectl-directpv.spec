@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-directpv
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        Kubectl plugin for the MinIO CSI driver for Direct Attached Storage
 License:        Apache-2.0
