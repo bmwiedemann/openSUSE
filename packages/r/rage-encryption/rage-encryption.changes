@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 20 04:57:20 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1229959 - RUSTSEC-2024-0006 - CVE-2024-43806
+  - rust-shlex: Multiple issues involving quote API
+
+-------------------------------------------------------------------
 Wed Sep  4 01:43:07 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1229959 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API

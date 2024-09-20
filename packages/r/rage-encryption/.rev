@@ -146,4 +146,12 @@
     <comment>- bsc#1229959 - RUSTSEC-2024-0006 - rust-shlex: Multiple issues involving quote API</comment>
     <requestid>1198787</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>e6031ade3bda7243b1897055f53bb844</srcmd5>
+    <version>0.10.0+0</version>
+    <time>1726845113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202074</requestid>
+  </revision>
 </revisionlist>
