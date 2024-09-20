@@ -25,6 +25,7 @@ URL:            https://github.com/openSUSE/himmelblau
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  krb5-devel
