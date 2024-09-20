@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 12 11:35:55 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update version to 1.15.8:
+  GtkDialog "type-hint" changed to dialog;
+  Fix lua plugin;
+  Update the Copyright year in setup dialog;
+  Update opencc-config to use s2tw.json;
+
+-------------------------------------------------------------------
 Thu Aug  1 08:12:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix boo#1228652
