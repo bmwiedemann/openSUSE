@@ -17,13 +17,13 @@
 
 
 Name:           qpwgraph
-Version:        0.7.5
+Version:        0.7.8
 Release:        0
 Summary:        PipeWire Graph Qt GUI Interface
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://gitlab.freedesktop.org/rncbc/qpwgraph
-Source:         https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v%{version}/qpwgraph-v%{version}.tar.bz2
+Source:         https://rncbc.org/archive/qpwgraph-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -44,7 +44,7 @@ qpwgraph is a graph manager dedicated for PipeWire, using the
 Qt C++ framework, based and pretty much like the same of QjackCtl.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q
 
 %build
 %cmake_qt6 \
