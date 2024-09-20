@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 14:35:07 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Revert removing source files for RHEL 9
+- Do not fail on unpackaged files for RHEL
+
+-------------------------------------------------------------------
 Thu Sep 12 15:15:22 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not include source files in the package for RHEL 9
