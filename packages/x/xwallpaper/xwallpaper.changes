@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 19 17:26:52 UTC 2024 - Tomasz Hołubowicz <services@alternateved.com> - 0.7.5
+
+- Update to version 0.7.5
+  * Fix daemon mode with atoms when screens are modified. Reported by Basil L. Contovounesios.
+  * Adjust sandbox to support loong64. Reported by wuruilong01.
+
+-------------------------------------------------------------------
 Thu Jun 30 12:40:24 UTC 2022 - Tomasz Hołubowicz <alternateved@pm.me>
 
 - Update to version 0.7.4
