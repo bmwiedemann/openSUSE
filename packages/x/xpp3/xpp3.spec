@@ -74,10 +74,14 @@ sed -i 's|depends="junit_main,junit_addons"|depends="junit_main"|' build.xml
 
 %build
 export CLASSPATH=$(build-classpath xml-commons-apis junit)
-ant xpp3 junit apidoc
+%{ant} xpp3 junit apidoc
 
 # Add OSGi metadata
-jar ufm build/%{name}-%{version}.jar %{SOURCE4}
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=build/%{name}-%{version}.jar --manifest=%{SOURCE4}
 
 %install
 # jars

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 14:50:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Tue Apr 30 11:54:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify the spec: remove old macros and avoid versioned jars

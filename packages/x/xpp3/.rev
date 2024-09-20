@@ -181,4 +181,12 @@
     <comment>Simplify the spec: remove old macros and avoid versioned jars</comment>
     <requestid>1170978</requestid>
   </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>6286d610621d41d5eeadbe1fbbcf5132</srcmd5>
+    <version>1.1.4c</version>
+    <time>1726845086</time>
+    <user>anag+factory</user>
+    <comment>Bit-reproducible build</comment>
+    <requestid>1202039</requestid>
+  </revision>
 </revisionlist>
