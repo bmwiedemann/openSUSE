@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package o2scl
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -22,8 +22,6 @@
 %define psuffix -test
 # Python binding tests do not work in the chroot env
 %bcond_with python3
-# Tests for non-x86_64 fail due to tolerance issues in the tests gh#awsteiner/o2scl#39, gh#awsteiner/o2scl#41
-ExclusiveArch:  x86_64
 %else
 %bcond_with test
 %bcond_without python3
@@ -32,7 +30,7 @@ ExclusiveArch:  x86_64
 %define pname o2scl
 %define shlib lib%{pname}0
 Name:           %{pname}%{?psuffix}
-Version:        0.929.1
+Version:        0.929.2
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
@@ -119,8 +117,8 @@ sed -Ei "s/\r$/\n/g" doc/o2scl/html/_static/evan.eml
 %build
 autoreconf -fvi
 %limit_build -m 2500
-# -DO2SCL_FAST_TEST due to https://github.com/awsteiner/o2scl/issues/37
-export CXXFLAGS+="-DO2SCL_PLAIN_HDF5_HEADER %{?with_test:-DO2SCL_FAST_TEST} %{?with_python3:-I%{python3_sitearch}/numpy/core/include}"
+# *_OPENSUSE_* flags disable some tolerance related tests as recommended upstream: https://github.com/awsteiner/o2scl/issues/37
+export CXXFLAGS+="-DO2SCL_PLAIN_HDF5_HEADER%{?with_test: -DO2SCL_OPENSUSE -DO2SCL_OPENSUSE_I386}%{?with_python3: `numpy-config --cflags`}"
 # Leap 15.X has hdf5 1.10.X
 %if 0%{?suse_version} < 1650
 export CXXFLAGS+=" -DO2SCL_HDF5_PRE_1_12"
