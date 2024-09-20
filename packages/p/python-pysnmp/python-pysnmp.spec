@@ -17,7 +17,7 @@
 
 
 Name:           python-pysnmp
-Version:        7.1.1
+Version:        7.1.4
 Release:        0
 Summary:        A pure-Python SNMPv1/v2c/v3 library
 License:        BSD-2-Clause
@@ -33,9 +33,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  net-snmp
 BuildRequires:  python-rpm-macros
+Requires:       python-cryptography
 Requires:       python-pyasn1 >= 0.4.8
 Requires:       python-pysmi
-Requires:       python-pysnmpcrypto
 BuildArch:      noarch
 %python_subpackages
 
