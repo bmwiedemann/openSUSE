@@ -28,7 +28,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends java-22-openjdk curl finduti
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI OpenJDK 22 runtime"
 LABEL org.opencontainers.image.description="OpenJDK 22 runtime container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="22"
+LABEL org.opencontainers.image.version="%%java_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
