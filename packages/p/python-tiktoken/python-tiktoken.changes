@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Sep 20 06:53:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix Requires
+- Use manual mode in _service instead of deprecated disabled.
+
+-------------------------------------------------------------------
+Thu Aug 22 17:25:09 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Release v0.7.0
+  * Support for gpt-4o
+  * Performance improvements 
