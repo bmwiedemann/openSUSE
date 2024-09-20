@@ -25,19 +25,20 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/1.9/gajim-%{version}.tar.gz
-BuildRequires:  %{python_module nbxmpp >= 5.0.3}
+BuildRequires:  %{python_module nbxmpp >= 5.0.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
+BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpcre1
@@ -92,11 +93,15 @@ sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 %build
 %pyproject_wheel
-python%{python_bin_suffix} ./pep517build/build_metadata.py -o dist/metadata
+python%{python_bin_suffix} ./make.py build --dist unix
+# FIXME: Build locales.
+python%{python_bin_suffix} ./make.py build --dist win
 
 %install
 %pyproject_install
-python%{python_bin_suffix} ./pep517build/install_metadata.py dist/metadata --prefix=%{buildroot}%{_prefix}
+python%{python_bin_suffix} ./make.py install --dist unix --prefix=%{buildroot}%{_prefix}
+# FIXME: Install locales.
+cp -a %{name}/data/locale %{buildroot}%{python_sitelib}/%{name}/data/
 
 mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{python_sitelib}/%{name}/data,%{_datadir}/%{name}}/

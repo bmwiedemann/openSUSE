@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 19 22:51:18 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.9.4:
+  * Raise nbxmpp version to 5.0.4.
+  * Add setting to prevent synchronisation of group chats.
+  * XEP-0317 (Hats).
+  * Integrate providers.xmpp.net into account creation wizard.
+  * Search: Add user interface for message filters.
+  * Create a common directory for temporary files.
+  * Unify usage of "synchronise"/"synchronize" strings.
+  * Control: Improve query to load messages around a timestamp.
+  * Dataforms: Improve read only form presentation.
+  * Indicate modified contact name in info dialogues.
+  * StartChat: Show description, user count, and language in search
+    results.
+  * Add a Quit dialogue for setting window preference.
+  * Search: Add fade-in effect for results and make search icon
+    spin.
+  * Search: Indicate search state with placeholder.
+  * Message rows: Use transition for row highlight.
+  * Build: Move all configure/build/installation steps into single
+    script.
+  * ChatControl: Show typing indicator in a separate widget.
+  * Search: Use quotes to mark search filter content.
+  * Parse xmpp IRI correctly.
+  * Display error message correctly when missing dependencies.
+  * MUC: Display errors related to nickname change.
+  * DBus: Use correct app id.
+  * JingleFileTransfer: Fix message data argument.
+  * Dataforms: Fix completion of single list forms.
+  * Catch KeyringLocked error when trying to delete a password.
+  * Debug Console: Catch errors before trying to send stanzas.
+  * Menu: Fix "Mark as read" action not sending read marker.
+  * MessageRowActions: Enable scrolling while cursor rests on
+    action.
+  * GroupchatRoster: Fix loading roster while participants are
+    added/removed.
+  * StartChat: Only search s.j.n if there is a search string.
+  * GroupchatRoster: Fix filtering for participants with status
+    set.
+  * ChatListStack: Fix default workspace id when getting current
+    chat list.
+  * Fix wrapping lines for long words.
+  * MessageRowActions: Make actions more robust.
+  * Debug Console: Fix Ctrl+F hotkey.
+  * MessageInputTextView: Make background transparent.
+  * GroupChatRoster: Fix hover style scope to avoid hidden
+    scrollbar thumb.
+  * Search: Allow to search for same string again.
+
+-------------------------------------------------------------------
 Sun Aug 31 15:12:38 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.9.3:
