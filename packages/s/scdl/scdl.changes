@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 20 02:52:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix Requires to be python3-foo. 
+
+-------------------------------------------------------------------
+Thu Sep 19 03:38:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.12.1:
+  * Use tempdir for downloading
+  * Set albumartist metadata for playlists
+  * Migrate from cgi.parse_header to email.message.Message due to PEP 594
+  * Use maintained dependencies
+  * More consistent tag mapping
+  * Added '--add-description' option
+  * Add -q <search_query> command line argument
+- Switch to pyproject macros.
+- List directories in %files explicitly.
+
+-------------------------------------------------------------------
 Sun Dec  4 12:09:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.3:
