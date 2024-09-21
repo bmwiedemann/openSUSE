@@ -4160,7 +4160,6 @@ unsorted:
   - fence-agents-aliyun 
   - fence-agents-all 
   - fence-agents-alom 
-  - fence-agents-amt 
   - fence-agents-apc 
   - fence-agents-apc-snmp 
   - fence-agents-aws 
@@ -16796,7 +16795,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-69 
+  - libvapoursynth-70 
   - libvapoursynth-script0 
   - libvarlink-devel 
   - libvarlink0 
@@ -23140,18 +23139,6 @@ unsorted:
   - postgresql-pltcl 
   - postgresql-server-devel 
   - postgresql-test 
-  - postgresql11 
-  - postgresql11-contrib 
-  - postgresql11-devel 
-  - postgresql11-docs 
-  - postgresql11-llvmjit 
-  - postgresql11-llvmjit-devel 
-  - postgresql11-plperl 
-  - postgresql11-plpython 
-  - postgresql11-pltcl 
-  - postgresql11-server 
-  - postgresql11-server-devel 
-  - postgresql11-test 
   - postgresql12 
   - postgresql12-contrib 
   - postgresql12-devel 
@@ -25060,7 +25047,6 @@ unsorted:
   - python310-copr-cli 
   - python310-cornice 
   - python310-cotengra 
-  - python310-cov-core 
   - python310-covdefaults 
   - python310-coverage 
   - python310-coveralls-check 
@@ -25080,7 +25066,6 @@ unsorted:
   - python310-cron-descriptor 
   - python310-croniter 
   - python310-crontab 
-  - python310-crumbs 
   - python310-cryptography 
   - python310-cryptography-vectors 
   - python310-css-html-js-minify 
@@ -27171,6 +27156,7 @@ unsorted:
   - python310-seaborn 
   - python310-securesystemslib 
   - python310-seedir 
+  - python310-segno 
   - python310-selection 
   - python310-selenium 
   - python310-selinux 
@@ -27422,6 +27408,7 @@ unsorted:
   - python310-thrift 
   - python310-thriftpy2 
   - python310-tifffile 
+  - python310-tiktoken 
   - python310-time-machine 
   - python310-time-travel 
   - python310-timeout-decorator 
@@ -27503,6 +27490,7 @@ unsorted:
   - python310-typepy 
   - python310-typer 
   - python310-typer-slim 
+  - python310-types-PyYAML 
   - python310-types-humanfriendly 
   - python310-types-python-dateutil 
   - python310-types-requests 
@@ -28714,7 +28702,6 @@ unsorted:
   - python311-copr-cli 
   - python311-cornice 
   - python311-cotengra 
-  - python311-cov-core 
   - python311-covdefaults 
   - python311-coverage 
   - python311-coveralls-check 
@@ -28734,7 +28721,6 @@ unsorted:
   - python311-cron-descriptor 
   - python311-croniter 
   - python311-crontab 
-  - python311-crumbs 
   - python311-cryptography-vectors 
   - python311-css-html-js-minify 
   - python311-css-parser 
@@ -30746,6 +30732,7 @@ unsorted:
   - python311-seaborn 
   - python311-securesystemslib 
   - python311-seedir 
+  - python311-segno 
   - python311-selection 
   - python311-selenium 
   - python311-semantic_version 
@@ -30991,6 +30978,7 @@ unsorted:
   - python311-thrift 
   - python311-thriftpy2 
   - python311-tifffile 
+  - python311-tiktoken 
   - python311-time-machine 
   - python311-time-travel 
   - python311-timeout-decorator 
@@ -31070,6 +31058,7 @@ unsorted:
   - python311-typepy 
   - python311-typer 
   - python311-typer-slim 
+  - python311-types-PyYAML 
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
   - python311-types-requests 
@@ -32307,7 +32296,6 @@ unsorted:
   - python312-copr-cli 
   - python312-cornice 
   - python312-cotengra 
-  - python312-cov-core 
   - python312-covdefaults 
   - python312-coverage 
   - python312-coveralls-check 
@@ -32327,7 +32315,6 @@ unsorted:
   - python312-cron-descriptor 
   - python312-croniter 
   - python312-crontab 
-  - python312-crumbs 
   - python312-cryptography 
   - python312-cryptography-vectors 
   - python312-css-html-js-minify 
@@ -34414,6 +34401,7 @@ unsorted:
   - python312-seaborn 
   - python312-securesystemslib 
   - python312-seedir 
+  - python312-segno 
   - python312-selection 
   - python312-selenium 
   - python312-selinux 
@@ -34664,6 +34652,7 @@ unsorted:
   - python312-thrift 
   - python312-thriftpy2 
   - python312-tifffile 
+  - python312-tiktoken 
   - python312-time-machine 
   - python312-time-travel 
   - python312-timeout-decorator 
@@ -34745,6 +34734,7 @@ unsorted:
   - python312-typepy 
   - python312-typer 
   - python312-typer-slim 
+  - python312-types-PyYAML 
   - python312-types-humanfriendly 
   - python312-types-python-dateutil 
   - python312-types-requests 
@@ -49191,6 +49181,7 @@ unsorted:
   - zn_poly-devel 
   - znc 
   - znc-devel 
+  - znc-doc 
   - znc-lang 
   - znc-perl 
   - znc-python3 
