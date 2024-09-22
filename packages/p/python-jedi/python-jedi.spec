@@ -25,8 +25,12 @@ License:        MIT AND Python-2.0
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM - Add support for Python 3.13	
+# https://github.com/davidhalter/jedi/pull/2008
+# https://github.com/davidhalter/jedi/pull/2003
+Patch0:         python3.13-support.patch
 # The author of jedi and parso takes pinning very seriously, adhere to it!
-BuildRequires:  %{python_module parso >= 0.8.3 with %python-parso < 0.9}
+BuildRequires:  %{python_module parso >= 0.8.4 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}

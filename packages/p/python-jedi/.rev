@@ -396,4 +396,14 @@
 - Stop skipping some tests.</comment>
     <requestid>1118190</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7d524e3d22684237c40b068af5fa7ca2</srcmd5>
+    <version>0.19.1</version>
+    <time>1726995938</time>
+    <user>anag+factory</user>
+    <comment>- Cherry-pick patch from Fedora to add support for Python 3.13
+  * python3.13-support.patch
+</comment>
+    <requestid>1202115</requestid>
+  </revision>
 </revisionlist>
