@@ -92,6 +92,7 @@
     <package name="shadow"/>
     <package name="tar"/>
     <package name="timezone"/>
+    <package name="user(nobody)"/> <!-- Needed for Podman, see bsc#1212118 -->
     <package name="zypper"/>
     <!-- Only used in config.sh and then removed again -->
     <package name="jdupes"/>

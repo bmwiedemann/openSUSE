@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:13:20 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Install system-user-nobody to provide nobody user
+  for Podman keep-groups flag (bsc#1212118)
+
+-------------------------------------------------------------------
 Tue Jul 30 12:00:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add org.opensuse.lifecycle-url
