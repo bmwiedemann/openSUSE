@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 21 12:58:00 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.18.1:
+  * wlr_scene: Force blend mode to PREMULTIPLIED if calculate visibility is disabled
+  * wlr_scene: Funnel all damage operations through scene_output_damage
+  * wlr_scene: Immediately apply pending output commit damage
+  * wlr_scene: Inline output_state_apply_damage
+  * wlr_scene: Don't special case swapchain buffers
+  * wlr_scene: Fix WLR_SCENE_DEBUG_DAMAGE_HIGHLIGHT when output is transformed
+  * ext-foreign-toplevel-list: use correct interface and add missing handler
+  * backend/drm: fix a use-after-free
+  * wlr_output: remove dead function
+  * docs: update comments for wlr_output API changes
+  * backend/drm: don't set vsync present flag if page flip was async
+  * output-power-management: send zwlr_output_power_v1.failed on output destroy
+  * xdg-popup: don't set a role resource destroy handler
+  * pointer-constraints: don't init/finish current/pending states
+  * linux-drm-syncobj: add missing decls in the header
+  * backend/wayland: process initial events from globals correctly
+  * scene: update output geom on commit after dropping pending damage
+  * scene: resize damage ring on geometry update
+  * linux-drm-syncobj-v1: actually use the requested version
+  * backend/drm: use CRTCs in-order
+  * render/vulkan: use non-coherent memory for read_pixels()
+  * build: bump version to 0.18.1
+  * render/vulkan: Fix draw rect clip region invalid in blend none mod
+  * Fix memory leak in drm.c
+  * Fix memory leak in xwayland.c
+  * xwayland/xwm: listen shell destroy signal
+
+-------------------------------------------------------------------
 Fri Jul 26 01:56:34 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Reverted "Add pkgconfig(wlroots) to provides to allow this to be a drop-in
