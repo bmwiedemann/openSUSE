@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 19 14:56:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16
+  * tests.json: add tests extracing URL encoded components.
+  * trurl: normalize the fragment.
+  * trurl: make sure URL encoded %-hex is done lowercase.
+  * README: minor language polish.
+  * trurl: silence --replace-append when appending.
+  * trurl.md: document URL component details.
+  * trurl.md: extend the component sections with more examples.
+  * trurl: introduce --qtrim for trimming queries (only).
+  * trurl.c: clarify the --help text for --urlencode.
+  * tests.json: add more tests.
+  * trurl: fix a few returns codes for out of memory.
+  * tests: verify --get + --json rejects.
+  * trurl.md: provide examples to more option descriptions.
+
+-------------------------------------------------------------------
 Sat Sep 14 07:48:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.15.1
