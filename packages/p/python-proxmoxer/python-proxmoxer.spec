@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-proxmoxer
 Version:        2.1.0
 Release:        0
