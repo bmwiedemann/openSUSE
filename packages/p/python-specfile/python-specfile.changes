@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 20 22:05:27 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.32.2:
+  * Explicitly invalidate the global parse hash when a SpecParser
+    instance is created to prevent this issue.
+
+-------------------------------------------------------------------
 Mon Jul 29 16:25:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.32.1:
