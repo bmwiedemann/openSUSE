@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-smpplib
 Version:        2.2.3
 Release:        0
