@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,10 @@
 #
 
 
-%define apiver  v58
+%define apiver  v59
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 8.4.0
+%define pkg_ver 9.2.0
 %define src_ver %{pkg_ver}
-
-# Use native graphics or gnuplot
-%bcond_without native_graphics
-
-# Build GUI
-%bcond_without gui
-
-# JIT compilation
-%bcond_with jit
-
-# JAVA support
-%bcond_without java
-
 # Image processing library
 %if 0
 # currently, octave cannot be built against ImageMagick 7
@@ -41,20 +28,24 @@
 # Default variant - GraphicsMagick
 %bcond_with imagemagick
 %endif
-
+# Use native graphics or gnuplot
+%bcond_without native_graphics
+# Build GUI
+%bcond_without gui
+# JIT compilation
+%bcond_with jit
+# JAVA support
+%bcond_without java
 # Sound IO
 %bcond_without sound
-
 # Allow building without openBLAS, e.g. for architectures
 # like RISC-V where openBLAS is not available
 %bcond_without openblas
-
 %if %{with openblas}
 %define blas_library openblas
 %else
 %define blas_library blas
 %endif
-
 Name:           octave
 Version:        %{pkg_ver}
 Release:        0
@@ -69,13 +60,12 @@ Source2:        %{name}-rpmlintrc
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
+#
+BuildRequires:  %{blas_library}-devel
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
-#
-BuildRequires:  %{blas_library}-devel
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  fdupes
@@ -83,47 +73,63 @@ BuildRequires:  fftw3-threads-devel
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+BuildRequires:  ghostscript
 BuildRequires:  glpk-devel
 BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libtool
+BuildRequires:  lzip
 # required for help/doc called from the tests
 BuildRequires:  makeinfo
-%if %{with imagemagick}
-BuildRequires:  pkgconfig(Magick++)
-%else
-BuildRequires:  pkgconfig(GraphicsMagick++)
-%endif
-BuildRequires:  lzip
 BuildRequires:  pcre-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  qhull_r-devel
 BuildRequires:  qrupdate-devel
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  sundials-devel
+# Tests build requires
+BuildRequires:  unzip
+BuildRequires:  xvfb-run
+BuildRequires:  zip
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)
+Requires:       octave-cli = %{version}
+Requires(pre):  update-alternatives
+%if %{with imagemagick}
+BuildRequires:  pkgconfig(Magick++)
+%else
+BuildRequires:  pkgconfig(GraphicsMagick++)
+%endif
 # GUI build requires
 %if %{with gui}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqscintilla_qt5-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qttools
+BuildRequires:  qscintilla-qt6-devel
+BuildRequires:  qt6-tools-helpgenerators
+BuildRequires:  qt6-tools-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-# testing
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+# Section testing
 BuildRequires:  xorg-x11-Xvfb
+%if %{without native_graphics}
+BuildRequires:  gnuplot
+%endif
+# \Section
 # boo#1095605
-Requires:       libQt5Sql5-sqlite
+Requires:       qt6-sql-sqlite
 Obsoletes:      octave-gui < 4.0
 Provides:       octave-gui = %{version}
 %endif
@@ -153,12 +159,6 @@ BuildRequires:  pkgconfig(glu)
 %else
 Requires:       gnuplot
 %endif
-# Tests build requires
-BuildRequires:  unzip
-BuildRequires:  xvfb-run
-BuildRequires:  zip
-Requires:       octave-cli = %{version}
-Requires(pre):  update-alternatives
 
 %description
 Octave is a high level programming language. It is designed for the
@@ -173,9 +173,10 @@ Summary:        Command-line user interface for Octave
 Group:          Productivity/Scientific/Math
 Requires:       makeinfo
 Requires(pre):  update-alternatives
+Recommends:     octave-doc = %{version}
 # SECTION Resolve degeneracy between multiple libsundials_{sunlinsol,ida}.so providers from serial and parallel flavours of sundials
-Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_sunlinsol[0-9_]+")
 Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_ida[0-9]")
+Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_sunlinsol[0-9_]+")
 # /SECTION
 %if %{with native_graphics}
 Recommends:     epstool
@@ -183,7 +184,6 @@ Recommends:     pstoedit
 # transfig requires texlive installation now
 # Recommends:     transfig
 %endif
-Recommends:     octave-doc = %{version}
 
 %description    cli
 Octave is a high level programming language. It is designed for the
@@ -229,9 +229,6 @@ This package contains documentation for Octave.
 
 # rebuild makefiles after Patch0
 autoreconf -i -s -f
-%if 0%{?suse_version} > 1500
-export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
-%endif
 %configure \
   --libexecdir=%{_libdir} \
 %if %{with imagemagick}
@@ -254,7 +251,7 @@ export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
 # see bnc#557340
 mkdir -p %{buildroot}/%{_sysconfdir}/ld.so.conf.d
 echo %{_libdir}/%{name}/%{src_ver} > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/%{name}.conf
-rm %{buildroot}/%{_libdir}/%{name}/%{src_ver}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 # local rc file into /etc
 mkdir %{buildroot}/%{_sysconfdir}/%{name}
 mv %{buildroot}/%{_datadir}/%{name}/site/m/startup/octaverc %{buildroot}/%{_sysconfdir}/%{name}
@@ -286,13 +283,12 @@ echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 %check
 # Increase stack limits. OpenBLAS tests are run after some JVM test, and OpenBLAS
 # dgetrf is quite memory hungry, see https://github.com/xianyi/OpenBLAS/issues/246
-
 echo "-Xss8m" >  scripts/java/java.opts
-xvfb-run make check
 
-%post -p /sbin/ldconfig
+# We need "--no-gui-libs" as a temporary work around to https://savannah.gnu.org/bugs/index.php?65866
+xvfb-run make %{?_smp_mflags} check RUN_OCTAVE_OPTIONS="--no-gui-libs"
 
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %post cli
 /sbin/ldconfig
@@ -321,11 +317,11 @@ xvfb-run make check
 %{_bindir}/octave-%{src_ver}
 %{_bindir}/octave-cli
 %{_bindir}/octave-cli-%{src_ver}
-%{_mandir}/man1/octave.1.gz
-%{_mandir}/man1/octave-cli.1.gz
+%{_mandir}/man1/octave.1%{?ext_man}
+%{_mandir}/man1/octave-cli.1%{?ext_man}
 %{_bindir}/octave-config
 %{_bindir}/octave-config-%{src_ver}
-%{_mandir}/man1/octave-config.1.gz
+%{_mandir}/man1/octave-config.1%{?ext_man}
 %{_infodir}/*.gz
 %config %{_sysconfdir}/ld.so.conf.d/%{name}.conf
 %config(noreplace) %{_sysconfdir}/%{name}/octaverc
@@ -348,7 +344,7 @@ xvfb-run make check
 %files devel
 %{_bindir}/mkoctfile
 %{_bindir}/mkoctfile-%{src_ver}
-%{_mandir}/man1/mkoctfile.1.gz
+%{_mandir}/man1/mkoctfile.1%{?ext_man}
 %{_includedir}/*
 %{_libdir}/%{name}/%{src_ver}/lib*.so
 %{_libdir}/%{name}/api-%{apiver}

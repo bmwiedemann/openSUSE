@@ -741,4 +741,97 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>1127969</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>ed27eff9ee3f8670f743f951e5b25ece</srcmd5>
+    <version>9.2.0</version>
+    <time>1726995963</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.2.0:
+  * Improvements and fixes:
+    - hist.m: Add input validation for Y restricting it to 2-D
+      array (bug #65478). Avoid error when Y value range is very
+      small (bug #65714).
+    - cross.m: Add input validation for dim restricting it to a
+      numeric integer valued scalar (bug #65544, bug #65527).
+    - getframe.m: Respect pixel ratio (high DPI) of screen with
+      figure (bug #65540).
+    - legend.m: Fix error if root property &quot;showhiddenhandles&quot; is
+      &quot;on&quot; (bug #65442)
+    - savepath.m: Correctly handle packages without binaries (bug
+      #65559).
+    - Correctly scale figure position on screen with DPI scaling
+      (high DPI).
+    - profile ('on') now clears any existing profile data as the
+      documentation states (bug #65595).
+    - Fix segmentation fault when trying to set breakpoint in
+      non-existent method of classdef class (bug #65610).
+    - Improve default display of classdef properties (bug #62432).
+    - Avoid crash with Qt6 6.7.0 (bug #65605).
+    - bar.m: Catch input number validation error.
+    - Prevent OOM crash or segmentation fault in sort () when dim
+      equals Inf (bug #65712).
+    - legend.m: Avoid setting more colors than coordinates for
+      patch objects (bug #65632).
+    - inputParser.m: Allow default classdef objects which overload
+      struct (bug #65667).
+    - Preserve &quot;position&quot; property of figure when object is
+      reset() (bug #65750).
+    - hist.m: Avoid error when y value range is very small (bug
+      #65714).
+    - barh: Add input validation check for nargin &lt; 1.
+  * GUI:
+    - Use first word for options in right-click menu of command
+      window widget (bug #65518).
+    - Set DontUseNativeDialog flag as first property in
+      QFileDialog.
+    - Explicitly raise non-modal message boxes ensuring
+      visibility.
+    - Save and restore splitter state of documentation widget.
+    - Allow executing new files from built-in editor with F5 (bug
+      #65548).
+    - Allow unbinding GUI shortcuts (bug #65580).
+    - Fix restoring headers in file browser and workspace view
+      (bug #65030).
+    - File dialogs of the built-in editor are now modal.
+    - Fix dragging editor from main window into floating state
+      (bug #65725).
+  * Build system / Tests:
+    - Avoid overriding save_* variables from outer scope (bug
+      #65476). This fixes an error that might have lead to
+      overlinking of shared libraries (e.g., .oct files). Consider
+      rebuilding shared libraries that have been built with Octave
+      9.1.0.
+    - Add BIST for is_valid_file_id.m (bug #65543).
+    - Update metainfo.xml with new fields for AppStream 1.0 (bug
+      #65355).
+    - Show result of check for std::pmr::polymorphic_allocator in
+      configure summary.
+    - Run test program for polymorphic allocators if possible
+      instead of a simple build check.
+    - Speed up BIST for the central part of convn with 'full'
+      shape.
+    - Require Qt Widgets module when building the GUI (bug
+      #65625).
+    - bug-53027.tst: Delete temporary file after test is done (bug
+      #53027).
+    - Avoid build error with GCC 14 when targeting Windows.
+    - Try to clean up after BIST also in case test failed (bug
+      #53027).
+    - bar.m, barh.m: Add plotting BISTs (bug #65671).
+    - Check if C and Fortran compilers accept -fexceptions flag
+      (bug #65767). This affects building Octave itself from
+      sources and also how .mex or .oct files are built by mex and
+      mkoctfile.
+  * Documentation updates.
+- Changes from version 9.1.0:
+  * Long list, see &lt;https://octave.org/NEWS-9.html&gt;
+- Switch to Qt6 library for GUI.
+- Tests: Need to pass `RUN_OCTAVE_OPTIONS=&quot;--no-gui-libs&quot;` as a
+  temporary work around to
+  &lt;https://savannah.gnu.org/bugs/index.php?65866&gt;
+- Add BuildRequires: gnuplot when building without
+  `native_graphics`; it is needed for tests.
+</comment>
+    <requestid>1202223</requestid>
+  </revision>
 </revisionlist>
