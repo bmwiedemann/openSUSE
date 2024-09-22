@@ -60,12 +60,17 @@
 %bcond_with profileopt
 %endif
 
+# No experimental_jit in SLES, there's no clang >=18
+%if 0%{?suse_version} <= 1600
+%bcond_with experimental_jit
+%else
 # Currently supported architectures
 # https://peps.python.org/pep-0744/#support
-%ifarch %{x86_64} aarch64
+%ifarch x86_64 %{x86_64} aarch64
 %bcond_without experimental_jit
 %else
 %bcond_with experimental_jit
+%endif
 %endif
 
 %define         python_pkg_name python313
@@ -201,6 +206,16 @@ Patch08:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch09:        skip-test_pyobject_freed_is_freed.patch
+# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
+# This problem on libexpat is patched on 15.6 without version
+# update, this patch changes the tests to match the libexpat provided
+# by SUSE
+Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
+# PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
+# Skip some failing tests in test_compile for i586 arch in 15.6.
+Patch40:        fix-test-recursion-limit-15.6.patch
+# PATCH-FIX-UPSTREAM gh-124040-fix-test-math-i586.patch gh#python/cpython#124042
+Patch41:        gh-124040-fix-test-math-i586.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -228,15 +243,25 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
+
+%if 0%{?sle_version} >= 150700 && !0%{?is_opensuse}
+BuildRequires:  python311-Sphinx
+BuildRequires:  python311-python-docs-theme
+%else
 BuildRequires:  python3-Sphinx >= 4.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
-%endif
 
+%endif
+%endif
+# end of {with doc}
+
+%if %{with experimental_jit}
 # needed for experimental_jit
 BuildRequires:  clang => 18
 BuildRequires:  llvm => 18
+%endif
 
 %if %{without GIL}
 ExcludeArch:    aarch64
@@ -506,6 +531,9 @@ tar xvf %{SOURCE21}
 # sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
 
 %build
+export SUSE_VERSION="0%{?suse_version}"
+export SLE_VERSION="0%{?sle_version}"
+
 %if %{with doc}
 TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 # TODO use not date of tarball but date of latest patch
@@ -564,7 +592,6 @@ export CFLAGS="%{optflags} -IVendor/"
         # Objects/typeslots.inc \
         # Python/opcode_targets.h \
         # Include/opcode.h
-%make_build
 
 %if %{with general}
 %make_build
@@ -581,6 +608,8 @@ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
 %endif
 
 %check
+export SUSE_VERSION="0%{?suse_version}"
+export SLE_VERSION="0%{?sle_version}"
 %if %{with general}
 # exclude test_gdb -- it doesn't run in buildservice anyway, and fails on missing debuginfos
 # when you install gdb into your test env
@@ -709,7 +738,6 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_abi}
 )
 
 # keep just idle3.X
-ls -l %{buildroot}%{_bindir}/
 rm %{buildroot}%{_bindir}/idle3
 
 # mve idle binary to idle3.13t to avoid conflict

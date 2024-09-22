@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:05:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make it build for SLE SP7 (jsc#PED-10075):
+  - Add CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch to build in
+    SLE-15-SP7.
+  - Add fix-test-recursion-limit-15.6.patch, gh#python/cpython#115083
+  - Add gh-124040-fix-test-math-i586.patch, gh#python/cpython#124042
+
+-------------------------------------------------------------------
 Sat Sep  7 15:36:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.0~rc2:
