@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 20 08:29:30 UTC 2024 - adrian@suse.de
+
+- Update to version 0.3.11:
+  * llm: add solar pro (preview) (#6846)
+  * server: add tool parsing support for nemotron-mini (#6849)
+  * make patches git am-able
+  * CI: dist directories no longer present (#6834)
+  * CI: clean up naming, fix tagging latest (#6832)
+  * CI: set platform build build_linux script to keep buildx happy (#6829)
+  * readme: add Agents-Flex to community integrations (#6788)
+  * fix typo in import docs (#6828)
+  * readme: add vim-intelligence-bridge to Terminal section (#6818)
+  * readme: add Obsidian Quiz Generator plugin to community integrations (#6789)
+  * Fix incremental builds on linux (#6780)
+  * Use GOARCH for build dirs (#6779)
+  * Optimize container images for startup (#6547)
+  * examples: updated requirements.txt for privategpt example
+  * examples: polish loganalyzer example (#6744)
+  * readme: add ollama_moe to community integrations (#6752)
+  * runner: Flush pending responses before returning
+  * add "stop" command (#6739)
+  * refactor show ouput
+  * readme: add QodeAssist to community integrations (#6754)
+  * Verify permissions for AMD GPU (#6736)
+  * add *_proxy for debugging
+  * docs: update examples to use llama3.1 (#6718)
+  * Quiet down dockers new lint warnings (#6716)
+  * catch when model vocab size is set correctly (#6714)
+  * readme: add crewAI to community integrations (#6699)
+  * readme: add crewAI with mesop to community integrations
+
+-------------------------------------------------------------------
 Tue Sep 17 10:48:34 UTC 2024 - adrian@suse.de
 
 - Update to version 0.3.10:
