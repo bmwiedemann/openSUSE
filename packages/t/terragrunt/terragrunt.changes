@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:44:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.10:
+  * Improved errors printing in case of terraform/tofu invocation
+    (#3423)
+  * feat: Adding release announcement workflow (#3419)
+
+-------------------------------------------------------------------
+Sat Sep 21 13:38:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.9:
+  * fix: update repository for catalog command (#3415)
+  * feat: Adding issue templates (#3416)
+  * feat: Adding `codespell` to Automatically Check Spelling
+    (#3413)
+
+-------------------------------------------------------------------
+Sat Sep 21 13:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.8:
+  * User-friendly error for invalid envs/flags (#3414)
+
+-------------------------------------------------------------------
+Sat Sep 21 13:30:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.7:
+  * Downloading of latest engine (#3412)
+  * feat: Adding `stylecheck` lint (#3354)
+
+-------------------------------------------------------------------
+Sat Sep 21 13:26:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.6:
+  * Fixing output STDOUT logs to `stdout` (#3409)
+  * Allow pre-release versions to pass version constraints (#3405)
+
+-------------------------------------------------------------------
+Sat Sep 14 08:22:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.5:
+  * Fix various logging issues. Log package refactoring. (#3400)
+  * feat: Adding `preserved` label exemption to stale check (#3392)
+  * Fixed scafold tests (#3396)
+
+-------------------------------------------------------------------
 Fri Sep 13 18:50:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.67.4:
