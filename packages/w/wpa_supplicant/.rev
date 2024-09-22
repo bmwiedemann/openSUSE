@@ -827,4 +827,16 @@
     dbus-Fix-property-DebugShowKeys-and-DebugTimestamp.patch</comment>
     <requestid>1200682</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>2a056ab833c331ec845df694d060d1d4</srcmd5>
+    <version>2.11</version>
+    <time>1726995946</time>
+    <user>anag+factory</user>
+    <comment>- Revert &quot;Mark authorization completed on driver indication
+  during 4-way HS offload&quot; because of WPA2-PSK/WPA-SAE connection
+  problems with brcmfmac wifi hardware. (bsc#1230797) 
+  [+ Revert-Mark-authorization-completed-on-driver-indica.patch]
+</comment>
+    <requestid>1202189</requestid>
+  </revision>
 </revisionlist>

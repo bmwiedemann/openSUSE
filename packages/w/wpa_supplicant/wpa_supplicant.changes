@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 20 10:37:22 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Revert "Mark authorization completed on driver indication
+  during 4-way HS offload" because of WPA2-PSK/WPA-SAE connection
+  problems with brcmfmac wifi hardware. (bsc#1230797) 
+  [+ Revert-Mark-authorization-completed-on-driver-indica.patch]
+
+-------------------------------------------------------------------
 Wed Sep 11 14:44:58 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - update to v2.11:

@@ -38,6 +38,7 @@ Patch1:         wpa_supplicant-flush-debug-output.patch
 Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
+Patch6:         Revert-Mark-authorization-completed-on-driver-indica.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
