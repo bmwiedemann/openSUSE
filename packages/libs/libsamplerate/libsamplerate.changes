@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:28:33 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use a constant profile dir for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Fri Mar  1 09:25:05 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

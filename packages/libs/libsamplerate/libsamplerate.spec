@@ -78,7 +78,7 @@ to develop applications that require these.
 %build
 autoreconf -fvi
 %configure
-profiledir=`mktemp -d`
+profiledir=.tmp.libsamplerateprofile
 
 %make_build CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
 %make_build check
