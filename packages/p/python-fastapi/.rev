@@ -408,4 +408,20 @@
   * Allow starlette 0.38.</comment>
     <requestid>1193792</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ef3caa0a37a2e584f0431ba50fddee66</srcmd5>
+    <version>0.114.2</version>
+    <time>1726995939</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.114.2:
+  * Fix form field regression with alias.
+  * Improve performance in request body parsing with a cache for internal
+    model fields.
+  * Add support for Pydantic models in Form parameters.
+  * Fix allow_inf_nan option for Param and Body classes.
+  * Ensure that app.include_router merges nested lifespans.
+  * Allow Starlette 0.38.x, update the pin to &gt;=0.37.2,&lt;0.39.0
+- Drop patch allow-starlette-0.38.patch, included upstream.</comment>
+    <requestid>1202122</requestid>
+  </revision>
 </revisionlist>

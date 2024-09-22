@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.112.0
+Version:        0.114.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -28,8 +28,6 @@ URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Remove two unknown classifiers
 Patch0:         remove-classifiers.patch
-# PATCH-FIX-UPSTREAM gh#fastapi/fastapi#11876
-Patch1:         allow-starlette-0.38.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
@@ -48,13 +46,13 @@ BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module Flask >= 1.1.2}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart >= 0.0.7}
-BuildRequires:  %{python_module sqlalchemy < 2.0}
 BuildRequires:  %{python_module trio}
 %if !%{with ringdisabled}
 BuildRequires:  %{python_module aiosqlite}

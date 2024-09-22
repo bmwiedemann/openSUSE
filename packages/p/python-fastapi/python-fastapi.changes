@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 20 08:05:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.114.2:
+  * Fix form field regression with alias.
+  * Improve performance in request body parsing with a cache for internal
+    model fields.
+  * Add support for Pydantic models in Form parameters.
+  * Fix allow_inf_nan option for Param and Body classes.
+  * Ensure that app.include_router merges nested lifespans.
+  * Allow Starlette 0.38.x, update the pin to >=0.37.2,<0.39.0
+- Drop patch allow-starlette-0.38.patch, included upstream.
+
+-------------------------------------------------------------------
 Wed Aug 14 02:13:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch allow-starlette-0.38.patch:
