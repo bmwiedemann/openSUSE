@@ -18,7 +18,7 @@
 
 
 Name:           feroxbuster
-Version:        2.10.4
+Version:        2.11.0
 Release:        0
 Summary:        A recursive content discovery tool
 License:        MIT

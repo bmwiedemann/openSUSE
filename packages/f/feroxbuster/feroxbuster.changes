@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:12:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.0
+  What's Changed
+  * add --scan-dir-listings
+  * add --request-file
+  * add --protocol
+  * add --limit-bars
+  Brief descriptions
+  * --request-file and --protocol - read in a raw http request
+    file, from burp or similar
+  * --scan-dir-listings - force recursion into folders where
+    directory listing is enabled
+  * --limit-bars - cap the number of progress bars displayed
+  Documentation
+  * --request-file and --protocol 
+  * --scan-dir-listings
+  * --limit-bars
+
+-------------------------------------------------------------------
 Tue Jun 18 18:59:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.4
