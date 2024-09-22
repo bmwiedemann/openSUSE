@@ -932,4 +932,18 @@ Core and Builtins
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1201476</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>79faf240c0808fc8a4f5101d899f94f4</srcmd5>
+    <version>3.8.20</version>
+    <time>1726995979</time>
+    <user>anag+factory</user>
+    <comment>- Add sphinx-802.patch to overcome working both with the most
+  recent and older Sphinx versions.
+- Update CVE-2023-52425-libexpat-2.6.0-backport.patch
+  so that it uses features sniffing, not just
+  comparing version number. Include also
+  support-expat-CVE-2022-25236-patched.patch. 
+</comment>
+    <requestid>1202275</requestid>
+  </revision>
 </revisionlist>

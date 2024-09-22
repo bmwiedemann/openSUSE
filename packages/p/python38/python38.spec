@@ -174,9 +174,11 @@ Patch33:        bpo44426-complex-keyword-sphinx.patch
 # PATCH-FIX-UPSTREAM bpo34990-2038-problem-compileall.patch gh#python/cpython#79171 mcepl@suse.com
 # Make compileall.py compatible with year 2038
 Patch34:        bpo34990-2038-problem-compileall.patch
-# PATCH-FIX-UPSTREAM gh#python/cpython#90967 gh#python/cpython#93900  mcepl@suse.com
-# NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
-Patch36:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport.patch
+# This problem on libexpat is patched on SLE without version
+# update, this patch changes the tests to match the libexpat provided
+# by SUSE
+Patch36:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 # PATCH-FIX-OPENSUSE platlibdir-in-sys.patch bsc#1204395
 Patch37:        platlibdir-in-sys.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
@@ -194,6 +196,9 @@ Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
 # PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
 # Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
 Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
+# PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
+# status_iterator method moved between the Sphinx versions
+Patch51:        sphinx-802.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -468,6 +473,7 @@ other applications.
 %patch -p1 -P 46
 %patch -p1 -P 48
 %patch -p1 -P 50
+%patch -p1 -P 51
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
