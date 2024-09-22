@@ -29,8 +29,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source1000:     README.suse-maint
 BuildRequires:  cargo >= 0.80.0
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig(openssl)
 
 %description
 The is a cargo applet to build and install C-ABI compatibile dynamic and static

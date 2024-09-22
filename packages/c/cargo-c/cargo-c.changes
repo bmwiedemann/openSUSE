@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 03:18:07 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1230683 - CVE-2024-45405 - gix-path improper path resolution
+
+-------------------------------------------------------------------
 Tue Aug 27 09:20:15 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 0.10.3~git0.ee7d7ef:
