@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 14 15:33:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.54.1:
+  * [BUGFIX] Scraping: allow multiple samples on same series, with
+    explicit timestamps. #14685
+  * [BUGFIX] Docker SD: fix crash in match_first_network mode when
+    container is reconnected to a new network. #14654
+  * [BUGFIX] PromQL: fix experimental native histogram counter
+    reset detection on stale samples. #14514
+  * [BUGFIX] PromQL: fix experimental native histograms getting
+    corrupted due to vector selector bug in range queries. #14538
+  * [BUGFIX] PromQL: fix experimental native histogram memory
+    corruption when using histogram_count or histogram_sum. #14605
+
+-------------------------------------------------------------------
 Fri Aug 16 18:49:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - drop patch 0003-Bump-go-retryablehttp.patch
