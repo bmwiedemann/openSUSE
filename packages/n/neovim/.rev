@@ -1404,4 +1404,12 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1194028</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>6fa73fa61497ff3889d70bd65a29ecce</srcmd5>
+    <version>0.10.1</version>
+    <time>1726995967</time>
+    <user>anag+factory</user>
+    <comment>- fix the post scriptlet (forwarded request 1202252 from rrahl0)</comment>
+    <requestid>1202253</requestid>
+  </revision>
 </revisionlist>

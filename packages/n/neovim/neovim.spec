@@ -24,7 +24,6 @@
 %else
 %bcond_without luajit
 %endif
-%define         vimplugin_dir %{_datadir}/vim/site
 Name:           neovim
 Version:        0.10.1
 Release:        0
@@ -73,15 +72,6 @@ BuildRequires:  pkgconfig(msgpack-c)
 BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(unibilium) >= 2.0.0
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
-%if %{without make_optional}
-BuildRequires:  tree-sitter-c >= 0.21.3
-BuildRequires:  tree-sitter-lua
-BuildRequires:  tree-sitter-markdown
-BuildRequires:  tree-sitter-python
-BuildRequires:  tree-sitter-query >= 0.4.0
-BuildRequires:  tree-sitter-vim
-BuildRequires:  tree-sitter-vimdoc >= 3.0.0
-%endif
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
 Requires:       lua51-bit32
@@ -161,57 +151,54 @@ install -p -m 644 %{SOURCE4} %{buildroot}%{_datadir}/nvim/runtime/plugin/spec.vi
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
     runtime/nvim.desktop
-install -d -m0755 %{buildroot}%{_datadir}/pixmaps
-install -m0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
+install -Dm0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
 
 # Fix exec bits
 find %{buildroot}%{_datadir} \( -name \*.bat -o -name \*.awk \) \
     -print -exec chmod -x '{}' \;
 
 # vim/site directories for plugins shared with vim
-mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
+mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
 
-%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}
 %find_lang nvim
-
-%if %{without make_optional}
-# let's make tree-sitter grammars visible to neovim
-install -d %{buildroot}%{_datadir}/nvim/runtime/parser
-for i in c lua markdown python query vim vimdoc; do
-   ln -s %{_libdir}/libtree-sitter-$i.so %{buildroot}%{_datadir}/nvim/runtime/parser/$i.so;
-done
-ln -s %{_libdir}/libtree-sitter-markdown-inline.so %{buildroot}%{_datadir}/nvim/runtime/parser/markdown_inline.so
-%endif
 
 # We have to have rpath
 # https://en.opensuse.org/openSUSE:Packaging_checks
 export NO_BRP_CHECK_RPATH=true
 
+%post
+if [ -d %{_datadir}/nvim/runtime/parser ]; then
+if [ ! -h %{_datadir}/nvim/runtime/parser ]; then
+mv %{_datadir}/nvim/runtime/parser \
+   %{_datadir}/nvim/runtime/parser.rpmsave
+ln -sf %{_libdir}/tree_sitter %{_datadir}/nvim/runtime/parser
+fi
+else
+ln -sf %{_libdir}/tree_sitter %{_datadir}/nvim/runtime/parser
+fi
+
 %files
-%doc CONTRIBUTING.md README.md
-%docdir %{_mandir}
 %license LICENSE.txt
-%{_bindir}/nvim
-%{_mandir}/man?/nvim.1%{?ext_man}
-%dir %{_datadir}/nvim
-%{_datadir}/nvim/sysinit.vim
-%{_datadir}/nvim/template.spec
-%{_datadir}/nvim/runtime/
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
-%{_datadir}/icons/*
+%doc CONTRIBUTING.md README.md
 %dir %{_sysconfdir}/nvim
 %config(noreplace) %{_sysconfdir}/nvim/sysinit.vim
+%{_bindir}/nvim
+%{_mandir}/man?/nvim.?%{?ext_man}
+%{_datadir}/nvim
+%{_datadir}/applications/nvim.desktop
+%{_datadir}/icons/hicolor/128x128/apps/nvim.png
+%{_datadir}/pixmaps/nvim.png
 %dir %{_datadir}/vim
-%dir %{vimplugin_dir}
-%dir %{vimplugin_dir}/after
-%dir %{vimplugin_dir}/after/*
-%dir %{vimplugin_dir}/autoload
-%dir %{vimplugin_dir}/colors
-%dir %{vimplugin_dir}/doc
-%dir %{vimplugin_dir}/ftdetect
-%dir %{vimplugin_dir}/plugin
-%dir %{vimplugin_dir}/syntax
+%dir %{_datadir}/vim/site
+%dir %{_datadir}/vim/site/after
+%dir %{_datadir}/vim/site/after/*
+%dir %{_datadir}/vim/site/autoload
+%dir %{_datadir}/vim/site/colors
+%dir %{_datadir}/vim/site/doc
+%dir %{_datadir}/vim/site/ftdetect
+%dir %{_datadir}/vim/site/plugin
+%dir %{_datadir}/vim/site/syntax
 
 %files lang -f nvim.lang
 

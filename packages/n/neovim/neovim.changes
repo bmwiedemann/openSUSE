@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 18:24:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix the post scriptlet
+
+-------------------------------------------------------------------
 Wed Aug 14 21:23:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add make-tree-sitter-optional.patch for making the tree-sitter plugins
