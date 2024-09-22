@@ -274,6 +274,17 @@ monitoring.
 
 This package installs the default Boost version of the library.
 
+%package     -n libboost_process-devel
+Summary:        Development headers for Boost.Process library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_process%{boost_version}-devel
+
+%description -n libboost_process-devel
+This package contains development headers for Boost.Process
+library.
+
+This package installs the default Boost version of the library.
+
 %package     -n libboost_program_options-devel
 Summary:        Development headers for Boost.ProgramOptions library
 Group:          Development/Libraries/C and C++
@@ -498,6 +509,9 @@ cp %{SOURCE1} .
 %doc README
 
 %files -n libboost_test-devel
+%doc README
+
+%files -n libboost_process-devel
 %doc README
 
 %files -n libboost_program_options-devel
