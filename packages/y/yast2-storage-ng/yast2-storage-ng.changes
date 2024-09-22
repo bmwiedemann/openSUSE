@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 20 13:06:00 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Extend the API to resize partitions during a proposal (required
+  by gh#openSUSE/agama#1599).
+- 5.0.18
+
+-------------------------------------------------------------------
 Mon Aug 26 14:47:40 UTC 2024 - José Iván López González <jlopez@suse.com>
 
 - AutoYaST: small fix to ensure symbol for the drive type when
