@@ -87,8 +87,16 @@ iconv -f iso8859-1 -t utf-8 LICENSE.dom-software.txt > \
 ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 jar javadoc
 
 # inject OSGi manifests
-jar ufm build/xml-apis.jar %{SOURCE1}
-jar ufm build/xml-apis-ext.jar %{SOURCE2}
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=build/xml-apis.jar --manifest=%{SOURCE1}
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=build/xml-apis-ext.jar --manifest=%{SOURCE2}
 
 %install
 # jar

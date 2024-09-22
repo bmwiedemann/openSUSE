@@ -41,4 +41,12 @@
     <comment>cleanup</comment>
     <requestid>1148923</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3a4b11d8d80c60eaf7a9e4a229807bda</srcmd5>
+    <version>1.4.01</version>
+    <time>1726995922</time>
+    <user>anag+factory</user>
+    <comment>Bit-reproducible build</comment>
+    <requestid>1202038</requestid>
+  </revision>
 </revisionlist>
