@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 20 13:22:21 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.4
+  * [Build]
+    - Prevent a collision with macro WRMSRNS within kernel 6.11
+  * [x86_64]
+    - [Virtualization] Switch to the HCF or VP_RUNTIME counters depending on the detected hypervisor
+
+-------------------------------------------------------------------
 Fri Aug 30 07:47:04 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.3

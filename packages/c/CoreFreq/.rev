@@ -334,4 +334,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 1.98.3</comment>
     <requestid>1197732</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1efe916b4f1e472945a4b0546f6c97f1</srcmd5>
+    <version>1.98.4</version>
+    <time>1726995959</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.98.4 (fixes build on kernel 6.11)</comment>
+    <requestid>1202218</requestid>
+  </revision>
 </revisionlist>
