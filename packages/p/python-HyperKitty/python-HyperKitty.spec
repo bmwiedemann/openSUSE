@@ -19,16 +19,14 @@
 %bcond_without testsuite
 
 # keep in sync with setup.py
-%global django_min_version 3.2
-%global django_max_version 4.3
+%global django_min_version 4.2
+%global django_max_version 5.1
 %global django_mailman3_min_version 1.3.13
 %global django_gravatar2_min_version 1.0.6
 %global djangorestframework_min_version 3.0.0
 %global robot_detection_min_version 0.3
-%global pytz_min_version 2012
 %global django_compressor_min_version 1.3
 %global mailmanclient_min_version 3.3.3
-# original this was >= 2.0.0, < 3.0 but overwritten by mistune3.patch
 %global mistune_min_version 3.0
 %global python_dateutil_min_version  2.0
 %global networkx_min_version 2.0
@@ -66,14 +64,16 @@
 %define plainpython python
 
 Name:           python-HyperKitty
-Version:        1.3.10
+Version:        1.3.11
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/hyperkitty
 #
-Source0:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz
-Source1:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz.asc
+Source0:        https://gitlab.com/mailman/hyperkitty/-/archive/1.3.11/hyperkitty-1.3.11.tar.gz
+# The release links give 404 for this release :-(
+#Source0:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz
+#Source1:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz.asc
 Source2:        python-HyperKitty.keyring
 Source3:        python-HyperKitty-rpmlintrc
 #
@@ -138,7 +138,6 @@ BuildRequires:  %{python_module networkx >= %{networkx_min_version}}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= %{python_dateutil_min_version}}
-BuildRequires:  %{python_module pytz >= %{pytz_min_version}}
 BuildRequires:  %{python_module robot-detection >= %{robot_detection_min_version}}
 # /SECTION
 
@@ -162,7 +161,6 @@ Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
 Requires:       %{mypython}-mistune >= %{mistune_min_version}
 Requires:       %{mypython}-networkx >= %{networkx_min_version}
 Requires:       %{mypython}-python-dateutil >= %{python_dateutil_min_version}
-Requires:       %{mypython}-pytz >= %{pytz_min_version}
 Requires:       %{mypython}-robot-detection >= %{robot_detection_min_version}
 Requires:       %{mypython}-xapian-haystack >= %{django_haystack_min_version}
 # help in replacing any previously installed flavor package back to the unprefixed package

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 11 18:35:28 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.11
+  * https://gitlab.com/mailman/hyperkitty/-/blob/1.3.11/doc/news.rst
+- Removed GPG signature as the download links don't work
+- Removed requirement for pytz
+
+-------------------------------------------------------------------
 Thu Jul 18 20:22:39 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Add gl-mr635-empty_attachment.patch to resolve corrupted archive
