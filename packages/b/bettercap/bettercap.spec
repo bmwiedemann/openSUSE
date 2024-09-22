@@ -1,6 +1,7 @@
 #
 # spec file for package bettercap
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,28 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           bettercap
-Version:        2.32.0
+Version:        2.4.0
 Release:        0
 Summary:        Swiss army knife for network attacks and monitoring
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.bettercap.org/
 #Git-Clone:     https://github.com/bettercap/bettercap.git
-Source:         https://github.com/bettercap/bettercap/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.9
+BuildRequires:  golang-packaging
 BuildRequires:  libpcap-devel
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.9
 BuildRequires:  pkgconfig(libnetfilter_queue)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  systemd-rpm-macros
 Requires:       libnetfilter_queue1
 Recommends:     iw
 Recommends:     wireless-tools
-BuildRequires:  golang-packaging
 %{go_provides}
 %{?systemd_requires}
 
@@ -43,17 +46,19 @@ Ethernet networks reconnaissance and MITM attacks.
 
 %prep
 %autosetup -a 1
-find . -type f -exec sed -i 's|/usr/local/|/usr/|g' {} \;
+find . -type f -exec sed -i 's|%{_prefix}/local/|%{_prefix}/|g' {} \;
 
 %build
-%goprep github.com/bettercap/bettercap/
-%gobuild -mod=vendor .
+go build \
+  -mod=vendor \
+  -buildmode=pie \
+  -o bettercap .
 
 %install
-%goinstall
+install -Dm 0755 bettercap %{buildroot}%{_bindir}/bettercap
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_datadir}/bettercap
-install -D -m0644 bettercap.service  %{buildroot}%{_unitdir}/%{name}.service
+install -Dm 0644 bettercap.service  %{buildroot}%{_unitdir}/%{name}.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre

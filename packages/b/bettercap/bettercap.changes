@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:19:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0:
+  * fix: added better debug logging for core.Exec (fixes #1125).
+  * new: added support for 29bit obd2 identifiers.
+  * new: implemented can.obd2 builtin parser.
+  * fix: fixed address reload on api.rest.
+  * new: can.fuzz now supports an optional size argument.
+  * fix: can.fuzz now expects an hexadecimal frame id.
+  * fix: stop can.dump reader when can.recon is stopped.
+  * new: can.dump reader will now sleep for the correct amount
+    of time.
+  * new: implemented can.dup and can.dump.inject to read a candump
+    log file.
+  * refact: refactored can dbc logic.
+  * new: added new wifi cipher suites and auth types.
+  * new: added new wifi RSN parsing.
+  * fix: fixed a nil pointer dereference when wifi.show is executed
+    before wifi.recon on.
+  * fix: fixed handshakes filename if wifi.aggregate is false.
+  * fix: expanding file path in file read api.
+  * fix: initialize wifi module state correctly.
+  * new: embedded ui.
+  * new: added CAN to session json object.
+  * fix: do not allow wifi.recon if wifi.bruteforce is running.
+  * fix: added p2p_disabled=1 for wifi.bruteforce on linux.
+  * new: implemented wifi.bruteforce for linux.
+  * fix: bring interface down for mac.changer module.
+  * fix: do not attempt mac lookup if gateway is empty.
+  * fix: do not report a routing error if the interface is
+    disconnected.
+  * fix: make sure that wifi channels are unique and sorted.
+  * fix: WPA3 is now correcly identified and reported.
+  * new: ble, can, hid and wifi modules will now set a custom
+    prompt.
+  * new: implemented can.filter.
+  * new: can.fuzz command.
+  * new: gps.set to manually set/override gps coordinates.
+  * fix: fixed verbose gousb logging.
+  * fix: using proper v2 package suffix.
+  * fix: fixed device index use for BLE module.
+  * new: history file location can now be set via
+    BETTERCAP_HISTORY env var.
+  * new: implemented can.inject.
+  * new can module for CAN-bus.
+
+-------------------------------------------------------------------
 Fri Apr  5 12:31:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Remove the empty %check section.
