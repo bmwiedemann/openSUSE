@@ -38,12 +38,15 @@ URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM apache-arrow-pr43766-boost1_86.patch gh#apache/arrow#43766
+Patch1:         apache-arrow-pr43766-boost1_86.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_process-devel
 BuildRequires:  libboost_system-devel >= 1.64.0
 %if %{with static}
 BuildRequires:  libzstd-devel-static

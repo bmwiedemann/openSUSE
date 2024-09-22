@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 06:59:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add apache-arrow-pr43766-boost1_86.patch for Boost 1.86
+  * gh#apache/arrow#43766
+
+-------------------------------------------------------------------
 Mon Aug 12 17:11:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 17.0.0
