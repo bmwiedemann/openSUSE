@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-mypy-testing
 Version:        0.1.3
 Release:        0
@@ -23,9 +24,9 @@ Summary:        Pytest plugin to check mypy output
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/davidfritzsche/pytest-mypy-testing
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy-testing/pytest-mypy-testing-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mypy >= 1.0}
 BuildRequires:  %{python_module pytest >= 7}
