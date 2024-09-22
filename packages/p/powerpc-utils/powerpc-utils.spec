@@ -37,6 +37,10 @@ Patch9:         ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
 Patch10:        0002-lparstat-Fix-Idle-and-busy-PURR-SPURR.patch
 Patch11:        0003-lparstat-app-Use-pic-value-at-boot-for-accurate-boot.patch
 Patch12:        0004-lparstat-Use-CLOCK_BOOTTIME-for-get_time-interface-a.patch
+Patch13:        0001-drmgr-pci-Enable-in-kernel-functionality-to-update-d.patch
+Patch14:        0002-drmgr-SLOT-Add-kernel-interface-support-for-device-t.patch
+Patch15:        0003-drmgr-pci-Add-kernel-interface-support-for-device-tr.patch
+Patch16:        0004-drmgr-phb-Add-kernel-interface-support-for-device-tr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
