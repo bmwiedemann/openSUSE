@@ -1,3 +1,66 @@
+------------------------------------------------------------------
+Wed Sep 18 06:20:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 130.0.1 Release
+  https://www.mozilla.org/en-US/firefox/130.0.1/releasenotes
+  * Enterprise: Added an enterprise policy to disable the
+    *Firefox Labs* section in *Settings*. (bmo#1911826)
+  * Fixed a recent regression causing some UI elements to
+    be rendered as left-to-right instead of right-to-left for
+    users of our Saraiki localization. (bmo#1917175)
+  * Linux: Fixed black rendering of AVIF images when
+    Firefox is built with GCC. (bmo#1916038)
+- removed obsolete patches
+  mozilla-bmo1916038.patch
+
+-------------------------------------------------------------------
+Sat Sep  7 07:06:40 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 130.0
+  https://www.mozilla.org/en-US/firefox/130.0/releasenotes
+  MFSA 2024-39 (bsc#1229821)
+  * CVE-2024-8385 (bmo#1911909)
+    WASM type confusion involving ArrayTypes
+  * CVE-2024-8381 (bmo#1912715)
+    Type confusion when looking up a property name in a "with" block
+  * CVE-2024-8388 (bmo#1902996, bmo#1839074, bmo#1865413, bmo#1868970,
+    bmo#1873367, bmo#1877820, bmo#1884642, bmo#1886469, bmo#1894326,
+    bmo#1894891, bmo#1897648)
+    Fullscreen notice on Android could be hidden under various
+    panels and OS prompts
+  * CVE-2024-8382 (bmo#1906744)
+    Internal event interfaces were exposed to web content when
+    browser EventHandler listener callbacks ran
+  * CVE-2024-8383 (bmo#1908496)
+    Firefox did not ask before openings news: links in an
+    external application
+  * CVE-2024-8384 (bmo#1911288)
+    Garbage collection could mis-color cross-compartment objects
+    in OOM conditions
+  * CVE-2024-8386 (bmo#1907032, bmo#1909163, bmo#1909529)
+    SelectElements could be shown over another site if popups are
+    allowed
+  * CVE-2024-8387 (bmo#1857607, bmo#1911858, bmo#1914009)
+    Memory safety bugs fixed in Firefox 130, Firefox ESR 128.2,
+    and Thunderbird 128.2
+  * CVE-2024-8389 (bmo#1907230, bmo#1909367)
+    Memory safety bugs fixed in Firefox 130
+- requires NSS 3.103
+- removed obsolete patches
+  mozilla-bmo1898476.patch
+  mozilla-bmo1907511.patch
+- added mozilla-bmo1916038.patch to fix AVIF decoding (bsc#1230500)
+
+-------------------------------------------------------------------
+Fri Sep  6 08:36:45 UTC 2024 - Marvin Friedrich <contact@marvinf.com>
+
+- Update dependency on clang-devel from LLVM15 to LLVM18
+
+-------------------------------------------------------------------
+Wed Sep  4 03:11:13 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Added mozilla-bmo1746799.patch to fix incorrect audio volume scaling
+
 -------------------------------------------------------------------
 Sat Aug 24 19:41:08 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 

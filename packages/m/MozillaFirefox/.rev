@@ -6996,4 +6996,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199138</requestid>
   </revision>
+  <revision rev="437" vrev="1">
+    <srcmd5>888c86d04cfe35cb2a18e18ecd9998cb</srcmd5>
+    <version>130.0.1</version>
+    <time>1726995923</time>
+    <user>anag+factory</user>
+    <comment>------------------------------------------------------------------
+- Firefox 130.0.1 Release
+  https://www.mozilla.org/en-US/firefox/130.0.1/releasenotes
+  * Enterprise: Added an enterprise policy to disable the
+    *Firefox Labs* section in *Settings*. (bmo#1911826)
+  * Fixed a recent regression causing some UI elements to
+    be rendered as left-to-right instead of right-to-left for
+    users of our Saraiki localization. (bmo#1917175)
+  * Linux: Fixed black rendering of AVIF images when
+    Firefox is built with GCC. (bmo#1916038)
+- removed obsolete patches
+  mozilla-bmo1916038.patch
+
+- Mozilla Firefox 130.0
+  https://www.mozilla.org/en-US/firefox/130.0/releasenotes
+  MFSA 2024-39 (bsc#1229821)
+  * CVE-2024-8385 (bmo#1911909)
+    WASM type confusion involving ArrayTypes
+  * CVE-2024-8381 (bmo#1912715)
+    Type confusion when looking up a property name in a &quot;with&quot; block
+  * CVE-2024-8388 (bmo#1902996, bmo#1839074, bmo#1865413, bmo#1868970,
+    bmo#1873367, bmo#1877820, bmo#1884642, bmo#1886469, bmo#1894326,
+    bmo#1894891, bmo#1897648)
+    Fullscreen notice on Android could be hidden under various
+    panels and OS prompts
+  * CVE-2024-8382 (bmo#1906744)
+    Internal event interfaces were exposed to web content when
+    browser EventHandler listener callbacks ran
+  * CVE-2024-8383 (bmo#1908496)
+    Firefox did not ask before openings news: links in an</comment>
+    <requestid>1202047</requestid>
+  </revision>
 </revisionlist>

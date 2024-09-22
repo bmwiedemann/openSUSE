@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  ed4bafa3b0d1f1da83e0a81545a0144602530a80
+# Parent  1bc018c4fee525f3a9dfafdb9550e53b6d82fd65
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -426,7 +426,7 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
 diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
 --- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
 +++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -101,16 +101,18 @@ const char* VideoFrameBufferTypeToString
+@@ -107,16 +107,18 @@ const char* VideoFrameBufferTypeToString
        return "kI210";
      case VideoFrameBuffer::Type::kI410:
        return "kI410";
@@ -469,7 +469,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -187,16 +187,17 @@ class VideoEncoderSoftwareFallbackWrappe
+@@ -186,16 +186,17 @@ class VideoEncoderSoftwareFallbackWrappe
          [[fallthrough]];
        case EncoderState::kMainEncoderUsed:
          return encoder_.get();
@@ -487,7 +487,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
  
    // Settings used in the last InitEncode call and used if a dynamic fallback to
    // software is required.
-@@ -382,16 +383,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
+@@ -381,16 +382,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
      case EncoderState::kMainEncoderUsed: {
        return EncodeWithMainEncoder(frame, frame_types);
      }
@@ -763,40 +763,6 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
          cfg, proc_sample_rate_hz(), num_proc_channels());
    }
  }
-diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
---- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-@@ -27,28 +27,30 @@ std::string NoiseSuppressionLevelToStrin
-     case AudioProcessing::Config::NoiseSuppression::Level::kModerate:
-       return "Moderate";
-     case AudioProcessing::Config::NoiseSuppression::Level::kHigh:
-       return "High";
-     case AudioProcessing::Config::NoiseSuppression::Level::kVeryHigh:
-       return "VeryHigh";
-   }
-   RTC_CHECK_NOTREACHED();
-+  return "";
- }
- 
- std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
-   switch (mode) {
-     case Agc1Config::Mode::kAdaptiveAnalog:
-       return "AdaptiveAnalog";
-     case Agc1Config::Mode::kAdaptiveDigital:
-       return "AdaptiveDigital";
-     case Agc1Config::Mode::kFixedDigital:
-       return "FixedDigital";
-   }
-   RTC_CHECK_NOTREACHED();
-+  return "";
- }
- 
- }  // namespace
- 
- constexpr int AudioProcessing::kNativeSampleRatesHz[];
- 
- void CustomProcessing::SetRuntimeSetting(
-     AudioProcessing::RuntimeSetting setting) {}
 diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
@@ -821,7 +787,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_
 diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 --- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 +++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
-@@ -90,16 +90,18 @@ BandwidthLimitedCause GetBandwidthLimite
+@@ -82,16 +82,18 @@ BandwidthLimitedCause GetBandwidthLimite
        // Probes may not be sent in this state.
        return BandwidthLimitedCause::kLossLimitedBwe;
      case LossBasedState::kIncreasing:
@@ -898,6 +864,27 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depa
  }
  
  }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
+@@ -105,16 +105,17 @@ uint16_t To2BitEcn(rtc::EcnMarking ecn_m
+       return 0;
+     case rtc::EcnMarking::kEct1:
+       return kEcnEct1 << 13;
+     case rtc::EcnMarking::kEct0:
+       return kEcnEct0 << 13;
+     case rtc::EcnMarking::kCe:
+       return kEcnCe << 13;
+   }
++  return 0; // should not be reached
+ }
+ 
+ rtc::EcnMarking ToEcnMarking(uint16_t receive_info) {
+   const uint16_t ecn = (receive_info >> 13) & 0b11;
+   if (ecn == kEcnEct1) {
+     return rtc::EcnMarking::kEct1;
+   }
+   if (ecn == kEcnEct0) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
@@ -922,7 +909,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-@@ -105,16 +105,17 @@ size_t BufferToIndex(Vp8BufferReference 
+@@ -104,16 +104,17 @@ size_t BufferToIndex(Vp8BufferReference 
        return 0;
      case Vp8FrameConfig::Vp8BufferReference::kGolden:
        return 1;

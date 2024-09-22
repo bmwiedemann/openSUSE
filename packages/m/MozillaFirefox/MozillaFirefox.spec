@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          129
+%define major          130
 %define mainver        %major.0.1
-%define orig_version   129.0.1
+%define orig_version   130.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.102.1
+BuildRequires:  mozilla-nss-devel >= 3.103
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -149,7 +149,7 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-BuildRequires:  clang15-devel
+BuildRequires:  clang18-devel
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -223,8 +223,7 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch23:        mozilla-rust-disable-future-incompat.patch
-Patch25:        mozilla-bmo1898476.patch
-Patch26:        mozilla-bmo1907511.patch
+Patch24:        mozilla-bmo1746799.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
