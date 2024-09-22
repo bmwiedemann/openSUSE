@@ -4950,4 +4950,54 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1201752</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>3b93c91dbdd3984f1aefe9b512071a8e</srcmd5>
+    <version>2.6.1+git20240918.5cb5647</version>
+    <time>1726995920</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20240918.5cb5647:
+  * opensuse: explain pull requests more precisely
+  * Fix pam-module test binary package
+  * Fix tests with new rpm2cpio command
+  * openSUSE: strict policy to ERR on patch-macro-old-format
+  * Add traefik user and group
+  * test: Fix test_extract_fail when running as root
+  * Update users-groups.toml 3proxy (#1267)
+  * Add user and group sssd
+  * Test: Add missing test file for test_files.py
+  * Remove not needed binary rpm
+  * Replace bin in test_files.py
+  * Replace bin in test_shlib_policy.py
+  * Rewrite test_extract to *_fail variant that tests an expected failure in rpm2cpio
+  * Exclude python311-pytest-xprocess from test_lint because rpm2cpio fails on it
+  * Remove test_directory_without_x_permission2 test
+  * Don't mask rpm2cpio failure in Pkg._extract_rpm()
+  * Replace bin in test_icon_sizes.py
+  * Replace bin in test_build_date.py
+  * Replace bin in test_bashisms.py
+  * test: Add bad unicode desktop file
+  * Delete not needed test files
+  * Replace bin in test_LSB.py
+  * Replace bin in test_pam_modules.py
+  * Replace bin in test_sysvinitonsystemd.py
+  * Delete not needed test files
+  * Replace bin in test_menuxdg.py in the absence of the penultimate test that must be corrected
+  * Replace bin in test_menuxdg.py
+  * Replace bin in test_pkgconfig.py
+  * Replace bin in test_FHS.py
+  * Remove not needed test files
+  * Replace bin in test_mixed_ownership.py
+  * Replace bin in test_build_root.py
+  * Replace bin in test_dbus_policy.py
+  * Fix for bug detected in test_appdata.py
+  * Replace bin in test_appdata.py
+  * Remove not needed binary files.
+  * Replace bin in test_lib_dependency.py
+  * Replace bin in test_erlang.py
+  * Delete not needed files
+  * Update users-groups.toml
+  * Replace bin in test_mixed_ownership.py
+</comment>
+    <requestid>1202243</requestid>
+  </revision>
 </revisionlist>
