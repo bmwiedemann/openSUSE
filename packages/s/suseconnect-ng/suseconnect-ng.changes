@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 14:11:22 UTC 2024 - Miquel Sabate Sola <msabate@suse.com>
+
+- Update version to 1.12:
+  - Set the filesystem root on zypper when given (bsc#1230229,bsc#1229014)
+
+-------------------------------------------------------------------
 Thu Jul 10 12:03:20 UTC 2024 - Miquel Sabaté <msabate@suse.com>
 
 - Update version to 1.11
