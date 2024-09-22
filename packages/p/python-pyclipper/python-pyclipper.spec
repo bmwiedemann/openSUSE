@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyclipper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyclipper
 Version:        1.3.0.post5
 Release:        0
@@ -54,7 +54,7 @@ library is based on Vatti's clipping algorithm.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch

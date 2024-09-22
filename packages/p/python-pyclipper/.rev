@@ -64,4 +64,14 @@
   * Build Python 3.12 wheels. No code changes.</comment>
     <requestid>1132372</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e146e8a133da60fbe7483ec83d720a2d</srcmd5>
+    <version>1.3.0.post5</version>
+    <time>1726995956</time>
+    <user>anag+factory</user>
+    <comment>- It is sitearch not sitelib
+- - Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1202220</requestid>
+  </revision>
 </revisionlist>
