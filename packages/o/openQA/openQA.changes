@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:53:04 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727085175.00b92eeb:
+  * Add example for overriding example test parameters
+  * Make fetchneedles work with modern Git repos like the example distri
+  * Ease development of `fetchneedles` by avoid hardcoding `OPENQA_BASEDIR`
+  * Allow cloning example test distribution from UI for running example test
+  * Allow scheduling a (example) product via the web UI
+  * Simplify code for assigning config values
+  * Make selectors in `t/17-build_tagging.to` more specific
+  * Quote URLs with double quotes
+
+-------------------------------------------------------------------
 Wed Sep 18 20:41:52 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1726600250.e88bdd3c:
