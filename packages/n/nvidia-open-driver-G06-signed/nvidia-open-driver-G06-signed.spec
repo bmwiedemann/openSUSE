@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 550.107.02
+%define gfx_version 550.120
 %define cuda_version 555.42.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -83,6 +83,13 @@ Source14:       group-source-files.pl
 Patch0:         persistent-nvidia-id-string.patch
 %if "%{flavor}" == "cuda"
 Patch1:         kernel-6.10.patch
+%endif
+%if "%{flavor}" != "cuda"
+%ifarch aarch64
+%if 0%{?suse_version} >= 1600
+Patch2:         aarch64-TW-buildfix.patch
+%endif
+%endif
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes

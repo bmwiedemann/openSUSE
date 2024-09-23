@@ -447,4 +447,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1201781</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6b3cc3dd552343423a0a8579d22bc188</srcmd5>
+    <version>550.120</version>
+    <time>1727097801</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.120 (boo#1230779)
+  * Fixed a bug that could cause kernel crashes upon attempting
+    KMS operations through DRM when nvidia_drm was loaded with
+    modeset=0.
+- aarch64-TW-buildfix.patch
+  * fixes build on aarch64 with latest TW kernel</comment>
+    <requestid>1202361</requestid>
+  </revision>
 </revisionlist>
