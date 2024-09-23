@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-identity
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-identity/azure-identity-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_identity/azure_identity-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,9 +34,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.5
 Requires:       python-typing_extensions >= 4.0.0
-Requires:       (python-azure-core >= 1.23.0 with python-azure-core < 2.0.0)
-Requires:       (python-msal >= 1.24.0 with python-msal < 2.0.0)
-Requires:       (python-msal-extensions >= 0.3.0 with python-msal-extensions < 2.0.0)
+Requires:       (python-azure-core >= 1.31.0 with python-azure-core < 2.0.0)
+Requires:       (python-msal >= 1.30.0 with python-msal < 2.0.0)
+Requires:       (python-msal-extensions >= 1.2.0 with python-msal-extensions < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-identity < 1.15.0
@@ -51,10 +50,9 @@ libraries. It provides credentials Azure SDK clients can use to authenticate
 their requests.
 
 %prep
-%setup -q -n azure-identity-%{version}
+%setup -q -n azure_identity-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-identity-%{version}
 %pyproject_wheel
 
 %install
@@ -67,7 +65,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/identity
 %{python_sitelib}/azure_identity-*.dist-info
 
