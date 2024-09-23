@@ -18,7 +18,7 @@
 
 %{!?license: %global license %doc}
 Name:           jp2a
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Converts JPEG images to ASCII
 License:        GPL-2.0-only
@@ -28,8 +28,10 @@ Source:         https://github.com/Talinx/jp2a/archive/v%{version}.tar.gz#/%{nam
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
+BuildRequires:  libexif-devel
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libwebp-devel
 BuildRequires:  unzip
 
 %package bash-completion
@@ -37,11 +39,19 @@ Summary:        Bash completions scripts for jp2a
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
+%package zsh-completion
+Summary:        Zsh completions scripts for jp2a
+Supplements:    (%{name} and zsh-completion)
+BuildArch:      noarch
+
 %description
 jp2a is a JPEG to ASCII converter.
 
 %description bash-completion
 This package contains the bash completions scripts for jp2a.
+
+%description zsh-completion
+This package contains the zsh completions scripts for jp2a.
 
 %prep
 %setup -q
@@ -69,5 +79,10 @@ popd
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/jp2a
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_jp2a
 
 %changelog
