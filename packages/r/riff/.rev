@@ -166,4 +166,16 @@
     The goal of this is to improve readability of the output.</comment>
     <requestid>1199547</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9604fa813706e8721116a4f6128ab336</srcmd5>
+    <version>3.3.1~0</version>
+    <time>1727097814</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.1:
+  * Tune leading whitespace lowlighting
+
+- Update to 3.3.0:
+  * Don't highlight leading whitespace</comment>
+    <requestid>1202542</requestid>
+  </revision>
 </revisionlist>
