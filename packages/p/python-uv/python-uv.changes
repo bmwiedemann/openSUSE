@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:47:28 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update source tarball from upstream GitHub instead of Python hosted
+  * i received a version lesser than the actual in python hosted.
+    upstream is more clearer to get.
+
+-------------------------------------------------------------------
+Sat Sep 21 16:04:19 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.15:
+  * Revert "Treat invalid platform as more compatible than invalid Python"
+  * Add the execution policy to powershell installs for single versions
+  * Move uvx shell completion to `uvx --generate-shell-completion`
+  * Adjust messaging for frozen hint on resolution failure during `uv add`
+  * Provide resolution hints in case of possible local name conflicts
+  * Improve Docker image release tagging order and display on `ghcr.io`
+  * Improve deserialization error messages
+  * Allow system environments during project environment validity check
+  * Avoid validating workspace members when `--no-sources` is provided
+  * Fix handling of `sys.base_prefix` collision in interpreter identity check during tool installs
+  * Make `uv cache prune` robust to unreadable rkyv entries
+  * Revert "Remove duplicate warning for settings discovery errors"
+  * Fix `-` to `_` in packaged applications document
+  * Add `socks` support
+  * Avoid warning about bad Python interpreter links for empty project environment directories
+  * Improve invalid environment warning messages
+  * Use more verbose spelling of "virtualenv" during creation
+  * Do not use a user-facing warning for "Waiting to acquire lock..." message
+  * Use a single buffer for hints on resolver errors
+  * Allow Python pre-releases to be used if they are first on the `PATH`
+  * Avoid deleting the project environment directory if it is not a virtual environment
+  * Do not error if the `CACHEDIR.TAG` file exists but cannot be written to
+  * Treat invalid platform as more compatible than invalid Python
+  * Use portable paths when serializing sources
+  * Compute resolver hints using the final reduced derivation tree
+  * Bump the wheel and sdist cache versions
+  * Heal cache entries with missing source distributions
+  * Bump minimum supported Rust version from 1.80 -> 1.81
+  * Add `UV_LINK_MODE` to Docker caching example
+  * Clarify behavior of of overrides in CLI reference
+  * Allow users to provide pre-defined metadata for resolution
+  * Invalidate existing tool environments on Python interpreter mismatch
+  * Avoid fatal error when searching for egg-info with missing directory
+  * Add note on cache growth for self-hosted GitHub runners
+  * Add `--no-editable` support to `uv sync` and `uv export`
+  * Add support for `--only-dev` to `uv sync` and `uv export`
+  * Add support for remaining pip-supported file extensions
+  * Generate shell completion for `uvx`
+  * Include `uv export` command in `requirements.txt` output
+  * Prune unzipped source distributions in `uv cache prune --ci`
+  * Warn when trying to `uv sync` a package without build configuration
+  * Support requests for pre-releases in the `--python` option
+  * Avoid erroneous version warning for `.dist-info` directories
+  * Avoid removing seed packages for `uv venv --seed` environments
+  * Avoid unnecessary progress bar initializations
+  * Error when `tool.uv.sources` contains duplicate package names
+  * Include `--branch` et al when resolving unnamed URLs in `uv add`
+  * Include `dev-dependencies` in `--no-sources` invocations
+  * Include the parent interpreter in Python discovery when `--system` is used
+  * Respect `--no-sources` in PEP 723 scripts
+  * Respect `pyproject.toml` credentials from user-provided requirements
+  * Use consistent PyPI cache bucket
+  * Use unambiguous relative paths in `uv export`
+  * Add documentation on platform-specific dependencies
+  * Add documentation for passing installer options on Linux
+  * Separate project data from configuration settings
+  * Hint at missing `project.name`
+  * Surface dedicated `project.name` error for workspaces
+  * Remove duplicate warning for settings discovery errors
+  * Allow `uv tool upgrade --all` to continue on individual upgrade failure
+  * Support globs as cache keys in `tool.uv.cache-keys`
+  * Add Python package (`__main__.py`) support to `uv run`
+  * Add zip application support to `uv run`
+  * Add `--token` option to `self update` command
+  * Use `globwalk` for `cache-keys` matching
+  * Always treat archive-like requirements as local files
+  * Apply `--no-install` options when constructing resolution
+  * Avoid clobbering existing `py.typed` files contents in `uv init`
+  * Avoid enforcing platform compatibility when validating lockfile
+  * Avoid installing transitive dev dependencies
+  * Avoid selecting prerelease Python installations without opt-in
+  * Fix PPC64 page size in binary builds.
+  * Include pre-release Python versions in `uv python list`
+  * Make version ID optional for source builds
+  * Support relative paths in `uv add --script`
+  * Fix documentation typos for `uv build --build-constraint` flag
+  * Fix grammatical error in CLI docs
+  * Add dedicated lock errors for wheel-only distributions
+  * Avoid treating `.whl` sources as source distributions
+  * Clarify Python requirement source for script incompatibilities
+
+-------------------------------------------------------------------
+Fri Sep 13 11:11:48 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Attempt to use clang+mold for faster and less memory intensive linking
+  * fallback to ld and gcc if leap.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:12:55 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.9
