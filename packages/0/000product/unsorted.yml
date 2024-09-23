@@ -1644,6 +1644,7 @@ unsorted:
   - btfs 
   - btop 
   - btrfs-extent-same 
+  - btrfs-soft-reboot-generator 
   - btrfsprogs-static 
   - bucklespring 
   - buckygen 
@@ -2921,6 +2922,7 @@ unsorted:
   - cross-x86_64-linux-glibc-devel 
   - cross-xtensa-binutils 
   - crossguid-devel 
+  - crossplane-cli 
   - crosstool-ng 
   - crow-translate 
   - crow-translate-lang 
@@ -3262,6 +3264,7 @@ unsorted:
   - delve 
   - demumble 
   - deno 
+  - descent3 
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
@@ -4317,8 +4320,6 @@ unsorted:
   - finalcut-bitmap-fonts 
   - finch 
   - finch-devel 
-  - findbugs-bcel 
-  - findbugs-bcel-javadoc 
   - fio 
   - fiona-fio 
   - fips 
@@ -9605,6 +9606,7 @@ unsorted:
   - jp 
   - jp2a 
   - jp2a-bash-completion 
+  - jp2a-zsh-completion 
   - jpcre2-devel 
   - jpegoptim 
   - jpm 
@@ -9748,6 +9750,11 @@ unsorted:
   - k4dirstat 
   - k4dirstat-lang 
   - k8s-sidecar 
+  - k8tz 
+  - k8tz-bash-completion 
+  - k8tz-fish-completion 
+  - k8tz-zsh-completion 
+  - k8up-cli 
   - k9s 
   - kColorPicker-Qt5-devel 
   - kColorPicker-Qt6-devel 
@@ -10516,6 +10523,10 @@ unsorted:
   - kubectl-node-shell 
   - kubectl-oomd 
   - kubectl-operator 
+  - kubectl-retina 
+  - kubectl-retina-bash-completion 
+  - kubectl-retina-fish-completion 
+  - kubectl-retina-zsh-completion 
   - kubectl-tree 
   - kubectl-validate 
   - kubectl-view-allocations 
@@ -10528,6 +10539,9 @@ unsorted:
   - kubefirst-zsh-completion 
   - kubelogin 
   - kubens 
+  - kubeone 
+  - kubeone-bash-completion 
+  - kubeone-zsh-completion 
   - kubepug 
   - kubepug-bash-completion 
   - kubepug-fish-completion 
@@ -11734,6 +11748,8 @@ unsorted:
   - libaccounts-qt6-doc 
   - libacl-devel 
   - libacl-devel-32bit 
+  - libacm-1_3 
+  - libacm-devel 
   - libacr38ucontrol0 
   - libad9361-0 
   - libad9361-iio-devel 
@@ -12868,7 +12884,6 @@ unsorted:
   - libeconf-devel-static 
   - libeconf-utils 
   - libecpg6 
-  - libecpg6-32bit 
   - libecpint-devel 
   - libecpint1 
   - libecryptfs1 
@@ -13600,7 +13615,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_134 
+  - libgsoap-2_8_135 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -15390,7 +15405,6 @@ unsorted:
   - libppl14 
   - libppl_c4 
   - libpplite4 
-  - libpq5-32bit 
   - libpqos-devel 
   - libpqos5 
   - libpqxx-6_4 
@@ -15417,7 +15431,7 @@ unsorted:
   - libprimesieve12 
   - libprofiler0 
   - libproj25 
-  - libprometheus-cpp0_12 
+  - libprometheus-cpp0_13 
   - libprotobuf-c-devel 
   - libprotobuf-lite25_4_0-32bit 
   - libprotobuf-lite3_21_12 
@@ -19931,9 +19945,12 @@ unsorted:
   - nut-drivers-net 
   - nv-prefer-signed-open-driver 
   - nvdock 
+  - nvidia-libXNVCtrl 
+  - nvidia-libXNVCtrl-devel 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
   - nvidia-open-driver-G06-signed-default-devel 
   - nvidia-open-driver-G06-signed-kmp-default 
+  - nvidia-settings 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -22964,6 +22981,7 @@ unsorted:
   - plexus-xml-javadoc 
   - plib-devel 
   - plistutil 
+  - plog-devel 
   - plotutils 
   - plotutils-devel 
   - plotutils-doc 
@@ -23133,7 +23151,6 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -23230,8 +23247,9 @@ unsorted:
   - postgresql15-server-devel 
   - postgresql15-test 
   - postgresql15-timescaledb 
+  - postgresql16 
+  - postgresql16-contrib 
   - postgresql16-devel 
-  - postgresql16-devel-mini 
   - postgresql16-docs 
   - postgresql16-libversion 
   - postgresql16-llvmjit 
@@ -23248,9 +23266,19 @@ unsorted:
   - postgresql16-pltcl 
   - postgresql16-postgis 
   - postgresql16-postgis-utils 
+  - postgresql16-server 
   - postgresql16-server-devel 
   - postgresql16-test 
   - postgresql16-timescaledb 
+  - postgresql17-devel 
+  - postgresql17-devel-mini 
+  - postgresql17-docs 
+  - postgresql17-llvmjit-devel 
+  - postgresql17-plperl 
+  - postgresql17-plpython 
+  - postgresql17-pltcl 
+  - postgresql17-server-devel 
+  - postgresql17-test 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -26269,10 +26297,13 @@ unsorted:
   - python310-opentelemetry-exporter-otlp-proto-grpc 
   - python310-opentelemetry-exporter-otlp-proto-http 
   - python310-opentelemetry-instrumentation 
+  - python310-opentelemetry-instrumentation-asgi 
+  - python310-opentelemetry-instrumentation-fastapi 
   - python310-opentelemetry-proto 
   - python310-opentelemetry-sdk 
   - python310-opentelemetry-semantic-conventions 
   - python310-opentelemetry-test-utils 
+  - python310-opentelemetry-util-http 
   - python310-opentracing 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
@@ -26902,6 +26933,7 @@ unsorted:
   - python310-python-multipart 
   - python310-python-openid-cla 
   - python310-python-openid-teams 
+  - python310-python-oxmsg 
   - python310-python-pam 
   - python310-python-poppler 
   - python310-python-pptx 
@@ -29875,10 +29907,13 @@ unsorted:
   - python311-opentelemetry-exporter-otlp-proto-grpc 
   - python311-opentelemetry-exporter-otlp-proto-http 
   - python311-opentelemetry-instrumentation 
+  - python311-opentelemetry-instrumentation-asgi 
+  - python311-opentelemetry-instrumentation-fastapi 
   - python311-opentelemetry-proto 
   - python311-opentelemetry-sdk 
   - python311-opentelemetry-semantic-conventions 
   - python311-opentelemetry-test-utils 
+  - python311-opentelemetry-util-http 
   - python311-opentracing 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
@@ -30487,6 +30522,7 @@ unsorted:
   - python311-python-multipart 
   - python311-python-openid-cla 
   - python311-python-openid-teams 
+  - python311-python-oxmsg 
   - python311-python-pam 
   - python311-python-poppler 
   - python311-python-pptx 
@@ -33515,10 +33551,13 @@ unsorted:
   - python312-opentelemetry-exporter-otlp-proto-grpc 
   - python312-opentelemetry-exporter-otlp-proto-http 
   - python312-opentelemetry-instrumentation 
+  - python312-opentelemetry-instrumentation-asgi 
+  - python312-opentelemetry-instrumentation-fastapi 
   - python312-opentelemetry-proto 
   - python312-opentelemetry-sdk 
   - python312-opentelemetry-semantic-conventions 
   - python312-opentelemetry-test-utils 
+  - python312-opentelemetry-util-http 
   - python312-opentracing 
   - python312-openwrt-luci-rpc 
   - python312-opt-einsum 
@@ -34147,6 +34186,7 @@ unsorted:
   - python312-python-multipart 
   - python312-python-openid-cla 
   - python312-python-openid-teams 
+  - python312-python-oxmsg 
   - python312-python-pam 
   - python312-python-poppler 
   - python312-python-pptx 
@@ -48745,6 +48785,9 @@ unsorted:
   - xml-security 
   - xml-security-c-bin 
   - xml-security-javadoc 
+  - xml-stylebook 
+  - xml-stylebook-demo 
+  - xml-stylebook-javadoc 
   - xml2po 
   - xml2po-devel 
   - xmlb-tool 
