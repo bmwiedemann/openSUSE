@@ -27,4 +27,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1201509</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b5f8a8f9b13bedc1a5b10152265cd75</srcmd5>
+    <version>10.0.0</version>
+    <time>1727097843</time>
+    <user>anag+factory</user>
+    <comment>- Version 10
+
+- Revert to use tty7 (gh#openSUSE/agama#1582)
+  openQA tty expectations for installer are always in this tty.
+  The change to tty2 created an sporadic failure assigning tty2
+  as a non-grafical one anyway in ppc64le and aarch64.
+
+- Define boot menu for all arches by scripts in config-cdroot
+  newly added x86_64 and aarch64 write stock copies from kiwi
+  generated grub.cfg
+- intel uefi boot fix from &quot;Boot from disk item&quot; (gh#openSUSE/agama#1609)
+- Keep -x on purpose for future trubleshooting (advice from Marcus)
+- Use $kiwi_iname instead of static agama-live reference in all of
+  config-cdroom/* with exception of s390x, where for some reason
+  we use SUSE Linux... string instead</comment>
+    <requestid>1202591</requestid>
+  </revision>
 </revisionlist>
