@@ -16,8 +16,16 @@
 #
 
 
-%bcond_without  test
-Name:           python-holoviews
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-holoviews%{psuffix}
 Version:        1.19.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
@@ -25,18 +33,10 @@ License:        BSD-3-Clause
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 Patch0:         ignore-pandas-warning.patch
-BuildRequires:  %{python_module colorcet}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module numpy >= 1.21}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 1.3}
-BuildRequires:  %{python_module panel >= 1.0}
-BuildRequires:  %{python_module param >= 1.12 with %python-param < 3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyct >= 0.4.4}
-BuildRequires:  %{python_module pyviz-comms >= 2.1}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 3.1
@@ -70,8 +70,10 @@ Suggests:       python-pyarrow < 1.0
 Suggests:       python-ibis-framework >= 1.3
 BuildArch:      noarch
 %if %{with test}
+##
+BuildRequires:  %{python_module holoviews = %{version}}
+##
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module contourpy}
 BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
@@ -117,6 +119,7 @@ rendered automatically by one of the supported plotting libraries
 %autosetup -p1 -n holoviews-%{version}
 sed -i 's/, "--color=yes"//' pyproject.toml
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
@@ -131,6 +134,7 @@ $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/holov
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/holoviews/util/
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
 %if %{with test}
 %check
@@ -183,11 +187,13 @@ fi
 %postun
 %python_uninstall_alternative holoviews
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %python_alternative %{_bindir}/holoviews
 %{python_sitelib}/holoviews-%{version}.dist-info
 %{python_sitelib}/holoviews/
+%endif
 
 %changelog
