@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:50:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240916.6615422:
+  * gocd: slfo_stagings: Fix openSUSE-release-tools path.
+
+-------------------------------------------------------------------
+Sat Sep 14 09:49:55 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240914.29d8faa:
+  * ttm: fix repo handling in is_snapshotable for Leap 16
+
+-------------------------------------------------------------------
+Fri Sep 13 08:04:16 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240913.f823b3d:
+  * gocd: enable Leap 16.0 TTM
+  * ttm: support Leap 16.0 development structure
+
+-------------------------------------------------------------------
+Thu Sep 12 07:55:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240912.637be99:
+  * Enable update-repos for Leap 16.0
+
+-------------------------------------------------------------------
+Wed Sep 11 16:27:59 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240911.239a205:
+  * gocd: slfo-stagings: Fix osc staging plugin setup.
+
+-------------------------------------------------------------------
+Wed Sep 11 07:56:18 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240911.44779bb:
+  * gocd: run slfo-packagelist-uploader.py once a day at 4AM
+  * Add slfo-packagelist-uploader.py for uploading SLFO packagelist to meta package
+  * check_source: decline the request if target package exist in SLFO project
+
+-------------------------------------------------------------------
+Fri Sep 06 14:15:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240906.9054fef:
+  * gocd: slfo-stagings: Fix syntax error.
+
+-------------------------------------------------------------------
+Fri Sep 06 05:07:31 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240906.f4cbf0b:
+  * Upload project-installcheck result for Leap 16.0 Ring1 project
+
+-------------------------------------------------------------------
+Thu Sep 05 07:04:39 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240905.8e12150:
+  * gocd: SUSE.SLFO.Main.Staging.Weekly.Freeze: Add osc staging bot oscrc.
+
+-------------------------------------------------------------------
+Wed Sep 04 15:04:14 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240904.da9a918:
+  * gocd: slfo-stagings: Avoid busy waiting for 50 minutes, instead rely on scheduling from GoCD.
+
+-------------------------------------------------------------------
+Wed Sep 04 09:03:35 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240904.94791de:
+  * docker_publisher.py: Add riscv64 to opensuse/tumbleweed
+
+-------------------------------------------------------------------
+Fri Aug 30 13:07:42 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240830.9384211:
+  * Add state acceptable_by_lawyer
+
+-------------------------------------------------------------------
+Fri Aug 30 08:16:44 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240830.82f193b:
+  * gocd: slfo-stagins: Minor syntax hot fix.
+  * gocd: slfo-stagings: Freeze the Stagings each Sunday.
+
+-------------------------------------------------------------------
+Tue Aug 27 12:50:50 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240827.4114946:
+  * gocd: reuse Leap as pipeline group and fix the format error
+  * gocd: add checks for letter stagings in Leap 16.0
+
+-------------------------------------------------------------------
+Thu Aug 22 08:36:47 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240822.ca5f1d4:
+  * Revert "legal-auto: Link to legal review via comment"
+
+-------------------------------------------------------------------
+Wed Aug 21 12:17:34 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240821.83ca4c0:
+  * Add pipelines for SLFO Snapshot
+  * Cleanup pipelines from Dolomite project
+
+-------------------------------------------------------------------
+Tue Aug 20 14:20:49 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240820.648451d:
+  * legal-auto: Link to legal review via comment
+
+-------------------------------------------------------------------
+Tue Aug 20 13:50:00 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240820.6d79e25:
+  * Check devel pkg maintainers in devel_project_review_needed
+
+-------------------------------------------------------------------
+Tue Aug 20 08:36:23 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240820.37e5c33:
+  * pipeline: remove unneeded pipelines and add needed ones for Leap 16.0
+
+-------------------------------------------------------------------
+Fri Aug 16 12:43:06 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240816.83685f8:
+  * dashboard: add openQA group for RISC-V
+
+-------------------------------------------------------------------
+Thu Aug 15 14:56:50 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240815.4962071:
+  * metrics: Use https for openQA influxdb endpoint
+
+-------------------------------------------------------------------
+Thu Aug 15 14:55:06 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240815.bdf9527:
+  * Work around test failure due to osc missing a fix
+  * Add TTM for openSUSE:Factory:RISCV
+
+-------------------------------------------------------------------
+Thu Aug 15 10:30:43 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240815.d3ff6c6:
+  * Adding openSUSE:Backports:SLE-15-SP7
+  * Adding openSUSE:Backports:SLE-15-SP7 for install-check
+
+-------------------------------------------------------------------
 Tue Aug 06 08:48:44 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240806.376cbb3:
