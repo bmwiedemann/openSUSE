@@ -44,7 +44,8 @@ LT_TOOLS_CLASSPATH=$(build-classpath languagetool morfologik-stemming commons-cl
 bash build-morfologik-lt.sh
 
 pushd resultats/java-lt
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 popd
 
 %install
