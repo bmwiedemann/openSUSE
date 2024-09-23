@@ -80,4 +80,22 @@
     (/etc/agama.d/ssl) is checked for a certificate</comment>
     <requestid>1200781</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ef85d577517c39d2de1c3312ad7dced1</srcmd5>
+    <version>0</version>
+    <time>1727097837</time>
+    <user>anag+factory</user>
+    <comment>- Version 10
+
+- Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).
+
+- Expose the zFCP D-Bus API through HTTP (gh#openSUSE/agama#1570).
+
+- For CLI, use HTTP clients instead of D-Bus clients,
+  final piece: Storage (gh#openSUSE/agama#1600)
+  - added StorageHTTPClient
+
+- Add additional wireless settings (gh#openSUSE/agama#1602).</comment>
+    <requestid>1202589</requestid>
+  </revision>
 </revisionlist>
