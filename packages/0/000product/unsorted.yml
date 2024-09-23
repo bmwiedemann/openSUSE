@@ -12884,6 +12884,7 @@ unsorted:
   - libeconf-devel-static 
   - libeconf-utils 
   - libecpg6 
+  - libecpg6-32bit 
   - libecpint-devel 
   - libecpint1 
   - libecryptfs1 
@@ -15405,6 +15406,7 @@ unsorted:
   - libppl14 
   - libppl_c4 
   - libpplite4 
+  - libpq5-32bit 
   - libpqos-devel 
   - libpqos5 
   - libpqxx-6_4 
