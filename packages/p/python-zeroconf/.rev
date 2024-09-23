@@ -459,4 +459,14 @@
   * Python 3.13 support</comment>
     <requestid>1199500</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e7cc7edb81b850dfa6102f48c9947cde</srcmd5>
+    <version>0.134.0</version>
+    <time>1727097831</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.134.0:
+  * Improve performance when IP addresses change frequently
+  * Improve helpfulness of ServiceInfo.request assertions</comment>
+    <requestid>1202578</requestid>
+  </revision>
 </revisionlist>

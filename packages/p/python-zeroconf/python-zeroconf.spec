@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zeroconf
-Version:        0.133.0
+Version:        0.134.0
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only

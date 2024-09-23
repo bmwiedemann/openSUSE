@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:05:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.134.0:
+  * Improve performance when IP addresses change frequently
+  * Improve helpfulness of ServiceInfo.request assertions
+
+-------------------------------------------------------------------
 Sun Sep  8 16:34:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.133.0:
