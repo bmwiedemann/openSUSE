@@ -305,4 +305,13 @@ Should fix problem with non-downloadable source file.</comment>
   * Fix ScrollBar mouse_event handling with ListBox</comment>
     <requestid>1183913</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a2551a8111736a8a3bdd8326a15138e2</srcmd5>
+    <version>2.6.15</version>
+    <time>1727097829</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.15:
+  * Fix `ListBox.rows_max` calculation for empty container</comment>
+    <requestid>1202571</requestid>
+  </revision>
 </revisionlist>
