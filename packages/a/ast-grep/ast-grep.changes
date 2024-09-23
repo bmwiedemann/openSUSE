@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:03:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.3:
+  * feat: add prettified pattern debug 70d33b5
+  * fix(deps): update rust crate pyo3 to v0.22.3 683e398
+  * test: add test for CST a79f13f
+
+-------------------------------------------------------------------
+Mon Sep 23 07:03:15 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.2:
+  * feat: add follow symbolic links option to CLI #1461
+  * fix(deps): update dependency @swc/core to v1.7.26 e0b437d
+  * fix(deps): update dependency @swc/core to v1.7.24 657bc4e
+  * chore(deps): update dependency typescript to v5.6.2 c55a404
+
+-------------------------------------------------------------------
 Mon Sep  9 06:24:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.1:
