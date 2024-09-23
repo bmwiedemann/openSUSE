@@ -31,4 +31,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963838</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5bbdbffd196e4d322a55a7d0a8f16f78</srcmd5>
+    <version>1.4</version>
+    <time>1727097825</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202561</requestid>
+  </revision>
 </revisionlist>
