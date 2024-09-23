@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-core
-Version:        1.30.2
+Version:        1.31.0
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-core/azure-core-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_core/azure_core-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -57,10 +56,9 @@ This is due to the fact that both synchronous and asynchronous implementations o
 pipeline must be supported independently.
 
 %prep
-%setup -q -n azure-core-%{version}
+%setup -q -n azure_core-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-core-%{version}
 %pyproject_wheel
 
 %install
@@ -73,7 +71,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/core
 %{python_sitelib}/azure_core-*.dist-info
 

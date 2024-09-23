@@ -517,4 +517,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1179170 from glaubitz)</comment>
     <requestid>1179202</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9c7201bd1f0929fac7504321356c33bf</srcmd5>
+    <version>1.31.0</version>
+    <time>1727097813</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.31.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section</comment>
+    <requestid>1202546</requestid>
+  </revision>
 </revisionlist>
