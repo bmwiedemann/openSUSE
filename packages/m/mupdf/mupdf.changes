@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 20 09:31:30 UTC 2024 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.24.9:
+  * Improve memory usage for shadings.
+  * Improve rendering speed when applying transfer functions to softmasks.
+  * Avoid crashing due to colorspaces.
+  * Fix bug with SVG clip paths.
+  * Fix several bugs concerning text extraction. 
+
+-------------------------------------------------------------------
 Tue Aug  6 11:06:12 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to 1.24.8:
