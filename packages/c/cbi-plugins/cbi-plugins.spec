@@ -99,7 +99,9 @@ done
 
 %build
 # Tests require jimfs which we don't have
-%{mvn_build} -f -- -f maven-plugins/pom.xml -Dproject.build.sourceEncoding=UTF-8 -Dsource=1.8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -f maven-plugins/pom.xml -Dproject.build.sourceEncoding=UTF-8 -Dsource=1.8
 
 %install
 %mvn_install

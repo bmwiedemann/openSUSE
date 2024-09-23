@@ -39,4 +39,12 @@
     <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
     <requestid>1174393</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1aa31e169a38dca188b528d1637472d5</srcmd5>
+    <version>1.1.5</version>
+    <time>1727097798</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202522</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 05:44:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Thu May 16 08:06:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-plugin-plugin >= 3.11
