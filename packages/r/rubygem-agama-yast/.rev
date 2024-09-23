@@ -73,4 +73,18 @@
   config (gh#openSUSE/agama#1560).</comment>
     <requestid>1200782</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d1a52abbb897216071f6e8653e520a4d</srcmd5>
+    <version>10</version>
+    <time>1727097843</time>
+    <user>anag+factory</user>
+    <comment>- Storage: preliminary support for resizing partitions based on
+  limits specified at the config (gh#openSUSE/agama#1599).
+
+- Version 10
+
+- Storage: add support for creating LVM volume groups and logical
+  volumes (gh#openSUSE/agama#1581).</comment>
+    <requestid>1202592</requestid>
+  </revision>
 </revisionlist>
