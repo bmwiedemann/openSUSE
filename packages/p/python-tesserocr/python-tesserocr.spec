@@ -17,7 +17,7 @@
 
 
 Name:           python-tesserocr
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT

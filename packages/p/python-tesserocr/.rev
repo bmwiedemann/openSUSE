@@ -201,4 +201,14 @@
   * Keep tesseract's default debug_file setting</comment>
     <requestid>1170607</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2cc12665309db54cfb8e7e788ce1970c</srcmd5>
+    <version>2.7.1</version>
+    <time>1727097832</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.1:
+  * bugfix: `set_leptonica_log_level` expects int
+  * revert: disable tesseract's logging by default</comment>
+    <requestid>1202582</requestid>
+  </revision>
 </revisionlist>
