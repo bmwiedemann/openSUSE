@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 23 05:38:18 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.050:
+  * Redo Hebrew vowel marks
+  * Add (for Hebrew) uniE801-3, uniFB29, shin variants, letters
+    with dagesh,
+  * letters with rafe, patah, ganuv, hireqmem and holamalef
+  * Add circledotted with anchors for Hebrew vowels
+  * Correct spacing for uni01DD
+  * Add missing above marks to lowercase L in Serif family
+  * Add above marks and aboveMark base marks to Serif Semibold
+  * Add lowercase e and r with stroke to Serif family
+  * Overhaul math font glyphs for style consistency
+  * Add U+FB29 (Hebrew alternative plus sign) to all families
+  * Add U+29B9 and U+29BA glyphs to Libertinus Math
+  * Add U+2B33, long leftwards squiggle arrow to Math family
+  * Add Dutch-specific i_j and I_J digraphs
+- Source is no longer availabel as tar.gz. Swithed to zip
+
+-------------------------------------------------------------------
 Sat Feb 27 09:17:42 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 7.0.40:
