@@ -17,7 +17,7 @@
 
 
 Name:           python-sphinx-autobuild
-Version:        2024.9.3
+Version:        2024.9.19
 Release:        0
 Summary:        Rebuild Sphinx documentation on changes, with live-reload in the browser
 License:        MIT

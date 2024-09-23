@@ -31,4 +31,17 @@
   * Differentiate pre-build command failures from Sphinx failures</comment>
     <requestid>1199492</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03ca207dd879e5eef238a06080f018c5</srcmd5>
+    <version>2024.9.19</version>
+    <time>1727097826</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.09.19:
+  * Filter various directories by default (``.git``, ``venv``, etc).
+  * Serve the correct directory when using make mode (``-M``).
+  * Run Sphinx through the Python entry point rather than the
+    binary on PATH.
+  * Relax checks for paths that aren't required to exist.</comment>
+    <requestid>1202566</requestid>
+  </revision>
 </revisionlist>
