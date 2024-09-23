@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 22 19:12:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.5
+  * Add Supports oklab() and oklch() for --foreground and
+    --background
+- Add completion script
+
+-------------------------------------------------------------------
 Sun Aug  4 22:16:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.4

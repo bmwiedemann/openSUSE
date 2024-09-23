@@ -22,7 +22,7 @@
 %bcond_without test
 %endif
 Name:           qrtool
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        An utility for encoding or decoding QR code
 License:        MIT AND CC-BY-4.0 AND Apache-2.0
@@ -46,6 +46,18 @@ qrtool is a command-line utility for encoding or decoding QR code.
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 install -Dm644 target/release/build/qrtool*/out/*.? -t %{buildroot}%{_mandir}/man1
 
+comp="target/release/%{name} --generate-completion"
+$comp bash >"target/release/%{name}.bash"
+$comp fish >"target/release/%{name}.fish"
+$comp zsh >"target/release/_%{name}"
+
+install -Dm644 target/release/%{name}.bash -t \
+    %{buildroot}%{_datadir}/bash-completion/completions
+install -Dm644 target/release/%{name}.fish -t \
+    %{buildroot}%{_datadir}/fish/vendor_completions.d
+install -Dm644 target/release/_%{name} -t \
+    %{buildroot}%{_datadir}/zsh/site-functions
+
 %if %{with test}
 %check
 %{cargo_test}
@@ -56,5 +68,8 @@ install -Dm644 target/release/build/qrtool*/out/*.? -t %{buildroot}%{_mandir}/ma
 %doc README* CHANGELOG.adoc
 %{_bindir}/%{name}
 %{_mandir}/man1/qrtool*
+%{_datadir}/bash-completion/completions
+%{_datadir}/fish
+%{_datadir}/zsh
 
 %changelog
