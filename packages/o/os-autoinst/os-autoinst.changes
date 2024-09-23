@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 21 15:59:40 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1726934371.91a005a:
+  * Use double quotes for URLs
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * video_stream: fix setting EDID when using ffmpeg and explicit FPS
+  * Exclude sub packages with many additional dependencies on SLE
+  * Replace single quotes with double of URLs in the log strings
+
+-------------------------------------------------------------------
 Mon Sep 16 10:04:02 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1726481035.fb2a478:
