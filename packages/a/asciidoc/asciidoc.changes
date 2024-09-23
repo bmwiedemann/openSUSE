@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 22 08:56:48 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 10.2.1 
+  + Bug fixes: 
+    * Fix deprecation warning on escaping table separators
+  + Miscellaneous:
+    * Include manpage source files to sdist archive
+    * Fix setting up debian backports in Dockerfile
+
+-------------------------------------------------------------------
 Tue Jun 11 07:50:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python3 shebang from sitelib files (bsc#1212476)

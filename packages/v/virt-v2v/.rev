@@ -151,4 +151,12 @@
     <comment>Update virt-v2v to version 2.5.9</comment>
     <requestid>1197948</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6458f6a8bd2c69229cdee68c7f3ce267</srcmd5>
+    <version>2.5.10</version>
+    <time>1727097548</time>
+    <user>anag+factory</user>
+    <comment>Update virt-v2v to version 2.5.10</comment>
+    <requestid>1202256</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 20 18:59:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.135
+  * Updated `soap::http_extra_header` optional user-defined
+    custom HTTP header string to permit multiple HTTP headers in
+    the specified string separated by newlines, the specified
+    headers are checked by the engine to conform to HTTP header
+    formats.
+
+-------------------------------------------------------------------
 Thu Apr 25 13:39:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.134

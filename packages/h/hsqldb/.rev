@@ -266,4 +266,12 @@
     <comment>provide hsqldb user and group</comment>
     <requestid>1146916</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a994f38abd2124bfa39830c4b29e8ed0</srcmd5>
+    <version>2.7.3</version>
+    <time>1727097601</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202360</requestid>
+  </revision>
 </revisionlist>

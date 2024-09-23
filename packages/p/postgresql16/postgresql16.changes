@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 19 11:21:38 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Don't build the libs and mini flavor anymore to hand over to
+  PostgreSQL 17.
+
+-------------------------------------------------------------------
+Sat Aug 10 14:08:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 16.4 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/docs/release/16.4/
+
+-------------------------------------------------------------------
 Wed May  8 08:28:48 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 16.3 (bsc#1224051):

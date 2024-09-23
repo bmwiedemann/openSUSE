@@ -181,4 +181,31 @@
     <comment></comment>
     <requestid>1198667</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e0812400772ae0d8abf47b2ac692444d</srcmd5>
+    <version>2.8.1</version>
+    <time>1727097543</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8.1
+  * Fixed slow loading UI on some machines, because of blocking
+    desktop notification.
+- Update to version 2.8
+  * Much nicer way to set the music library path on first use.
+  * Checks at startup if the music library's modified time has
+    changed when using cached library. If it has, update the
+    library.
+  * Improved search: kew now also shows the album name (directory
+    name) of search results, for clarity.
+  * You can now use TAB to cycle through the different views.
+  * Don't repeat the song notification when enqueuing songs.
+  * Fixed issue where kew sometimes couldn't find the cover image
+    in the folder.
+  * Better handling of songs that cannot be initialized.
+  * Removed support for .mp4 files so as to not add a bunch of
+    video folders to the music library.
+  * Cursor was not reappearing in some cases on FreeBSD after
+    program exited.
+</comment>
+    <requestid>1202423</requestid>
+  </revision>
 </revisionlist>

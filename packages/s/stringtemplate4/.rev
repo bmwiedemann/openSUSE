@@ -60,4 +60,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148632</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>54300cf978fcb970088fc1c2058886e6</srcmd5>
+    <version>4.3.3</version>
+    <time>1727097600</time>
+    <user>anag+factory</user>
+    <comment>reproducible timestamp + adapt to antlr3 changes</comment>
+    <requestid>1202358</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        13.25
+Version:        13.26
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only

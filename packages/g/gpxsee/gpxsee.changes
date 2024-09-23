@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Tue Sep 17 21:50:48 CEST 2025 - tumic@cbox.cz
+Sat Sep 21 15:35:56 CEST 2024 - tumic@cbox.cz
+
+- Update to version 13.26
+  * Disabled fractional GUI scaling in Qt6 (fixes all the rendering
+    issues with 125% display scales).
+  * Fixed display artifacts in the graph tab bar (Qt6.7).
+  * Improved graphs and paths rendering performance.
+
+-------------------------------------------------------------------
+Tue Sep 17 21:50:48 CEST 2024 - tumic@cbox.cz
 
 - Update to version 13.25
   * Fixed map artifacts in PNG exports under Qt6.

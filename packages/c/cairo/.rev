@@ -755,4 +755,12 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
     <comment></comment>
     <requestid>1199435</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>355b01fae36370651729ed0ff8355e3a</srcmd5>
+    <version>1.18.2</version>
+    <time>1727097530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202417</requestid>
+  </revision>
 </revisionlist>

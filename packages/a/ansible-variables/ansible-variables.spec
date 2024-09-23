@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-variables
-Version:        0.7.0
+Version:        0.7.3
 Release:        0
 Summary:        Tool to show origin of Ansible host context variables
 License:        GPL-3.0-or-later
@@ -50,13 +50,13 @@ BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.11.0
+BuildRequires:  ansible-core >= 2.12.0
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-rich
 # /SECTION
 BuildRequires:  fdupes
 Requires:       %{ansible_python}-rich
-Requires:       ansible-core >= 2.11.0
+Requires:       ansible-core >= 2.12.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

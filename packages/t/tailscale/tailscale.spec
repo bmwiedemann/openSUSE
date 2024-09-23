@@ -98,7 +98,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/default/%{name}d
 
 install -D -p -m 0644 ./%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -D -p -m 0644 ./%{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/%{name}
+install -D -p -m 0644 ./%{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -D -p -m 0644 ./%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}
 
 %pre
@@ -127,7 +127,7 @@ install -D -p -m 0644 ./%{name}.fish %{buildroot}%{_datadir}/fish/vendor_complet
 %{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%{_datadir}/zsh/site-functions/%{name}
+%{_datadir}/zsh/site-functions/_%{name}
 
 %files fish-completion
 %{_datadir}/fish/vendor_completions.d/%{name}

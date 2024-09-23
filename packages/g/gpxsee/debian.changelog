@@ -1,3 +1,12 @@
+gpxsee (13.26) stable; urgency=low
+
+  * Disabled fractional GUI scaling in Qt6 (fixes all the rendering
+    issues with 125% display scales).
+  * Fixed display artifacts in the graph tab bar (Qt6.7).
+  * Improved graphs and paths rendering performance.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 21 Sep 2024 15:47:53 +0200
+
 gpxsee (13.25) stable; urgency=low
 
   * Fixed map artifacts in PNG exports under Qt6.

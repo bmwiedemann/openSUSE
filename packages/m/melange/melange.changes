@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:30:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.1:
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump chainguard.dev/apko from 0.18.1 to 0.19.1
+  * sca: remove set but never used variable
+  * update_config: expose function to get valid schedule messages
+  * Add uses and name to slog values
+  * Include subpackage name in slog values
+  * Only read the first line for shbang.
+  * pombump: add flag to display the dependency tree
+  * build(deps): bump dagger.io/dagger from 0.12.7 to 0.13.0
+  * build(deps): bump step-security/harden-runner in the actions
+    group
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump the gomod group with 2 updates
+  * keygen: reject bit size < 4096
+  * cleanup: remove some direct imports of charm log
+
+-------------------------------------------------------------------
 Sat Sep 14 15:42:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.12.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:09:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.19.2:
+  * fix(rule): comment out errant validation case (#1509)
+  * remove validate config test temporarily
+  * Update README.md
+
+-------------------------------------------------------------------
 Sat Sep 14 10:43:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.19.1:

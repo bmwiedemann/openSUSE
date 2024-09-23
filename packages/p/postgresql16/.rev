@@ -85,4 +85,19 @@
 - Make sure all compilation and doc generation happens in %build.</comment>
     <requestid>1172960</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>55624790e533e178493c963f14ecd01a</srcmd5>
+    <version>16.4</version>
+    <time>1727097538</time>
+    <user>anag+factory</user>
+    <comment>- Don't build the libs and mini flavor anymore to hand over to
+  PostgreSQL 17.
+
+- Upgrade to 16.4 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/docs/release/16.4/</comment>
+    <requestid>1201997</requestid>
+  </revision>
 </revisionlist>

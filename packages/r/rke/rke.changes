@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:27:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.2:
+  * [v2.9] Fix panic on context switch by @enrichman in #387
+  * [v2.9] Revert error message of #387 by @enrichman in #392
+  * [v2.9] Bump dependencies for v2.9.2 by @pmatseykanets in #394
+
+-------------------------------------------------------------------
 Tue Aug  6 06:39:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.1:

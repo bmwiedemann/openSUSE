@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 20 18:10:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.2
+  - Fix actions using the 'free' command
+  - Fix buffer accounting when generating metric XML
+  - Fix warning with gcc >= 13
+  - Fix implicit declarations
+  - Change actions to retrieve vendor and product info
+  - Add a 'unit' attribute to the metrics element
+  - vif-stats.py: convert to Python3
+  - Misc coverity fixes
+  - Relax virtio requirement in config file
+- Drop relax-virtio-config-requirement.patch
+- Add service file
+
+-------------------------------------------------------------------
 Tue Feb 20 13:25:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

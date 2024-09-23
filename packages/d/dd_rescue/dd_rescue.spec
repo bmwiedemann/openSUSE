@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.13
+Version:        1.99.15
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,9 +31,6 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
-Patch1:         dd_rescue-ossl3-evpcipherctx.diff
-Patch2:         dd_rescue-md5-unaligned-armv7.diff
-Patch3:         dd_rescue-u-emptyout-segfault.diff
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
 # Remove dependency on python2
 BuildRequires:  autoconf

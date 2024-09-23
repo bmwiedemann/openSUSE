@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Sep 13 17:43:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update description; showcase more features.
+
+-------------------------------------------------------------------
+Wed Feb 21 13:31:50 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Tumbleweed.
+
+-------------------------------------------------------------------
+Thu Jan 25 07:44:15 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Remove Provides: %{name}-static because no .a file exists.
+
+-------------------------------------------------------------------
+Sun Nov 12 13:27:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Initial version 1.10.0

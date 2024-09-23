@@ -1,12 +1,12 @@
 --- tool/src/main/java/ActionAnalysis.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ActionAnalysis.tokens	2023-09-16 07:24:37.353550331 +0200
++++ tool/src/main/java/ActionAnalysis.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,4 @@
 +ID=4
 +X=5
 +X_Y=6
 +Y=7
 --- tool/src/main/java/ActionTranslator.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ActionTranslator.tokens	2023-09-16 07:24:38.166867305 +0200
++++ tool/src/main/java/ActionTranslator.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,34 @@
 +ACTION=4
 +ARG=5
@@ -43,7 +43,7 @@
 +UNKNOWN_SYNTAX=36
 +WS=37
 --- tool/src/main/java/ANTLR.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLR.tokens	2023-09-16 07:24:36.620231748 +0200
++++ tool/src/main/java/ANTLR.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -160,7 +160,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/ANTLRTreePrinter.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRTreePrinter.tokens	2023-09-16 07:24:37.273551941 +0200
++++ tool/src/main/java/ANTLRTreePrinter.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -277,7 +277,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/ANTLRv3.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRv3.tokens	2023-09-16 07:24:37.636877965 +0200
++++ tool/src/main/java/ANTLRv3.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,128 @@
 +T__67=67
 +T__68=68
@@ -408,7 +408,7 @@
 +'}'=92
 +'~'=93
 --- tool/src/main/java/ANTLRv3Tree.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRv3Tree.tokens	2023-09-16 07:24:38.943518349 +0200
++++ tool/src/main/java/ANTLRv3Tree.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,128 @@
 +T__67=67
 +T__68=68
@@ -539,7 +539,7 @@
 +'}'=92
 +'~'=93
 --- tool/src/main/java/AssignTokenTypesWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/AssignTokenTypesWalker.tokens	2023-09-16 07:24:38.693523378 +0200
++++ tool/src/main/java/AssignTokenTypesWalker.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,115 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -657,7 +657,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/CodeGenTreeWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/CodeGenTreeWalker.tokens	2023-09-16 07:24:38.350196951 +0200
++++ tool/src/main/java/CodeGenTreeWalker.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -774,7 +774,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/DefineGrammarItemsWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/DefineGrammarItemsWalker.tokens	2023-09-16 07:24:38.596858656 +0200
++++ tool/src/main/java/DefineGrammarItemsWalker.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -891,7 +891,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/LeftRecursiveRuleWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/LeftRecursiveRuleWalker.tokens	2023-09-16 07:24:38.470194537 +0200
++++ tool/src/main/java/LeftRecursiveRuleWalker.tokens	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -1008,9 +1008,9 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	2023-09-16 07:24:37.353550331 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,442 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionAnalysis.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionAnalysis.g 2024-09-21 10:56:01
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.runtime.*;
@@ -1453,9 +1453,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	2023-09-16 07:24:38.166867305 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,3600 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionTranslator.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionTranslator.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +import org.stringtemplate.v4.ST;
@@ -5056,9 +5056,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	2023-09-16 07:24:37.100222094 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,3520 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2024-09-21 10:56:01
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.ErrorManager;
@@ -8579,9 +8579,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	2023-09-16 07:24:36.616898482 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,10551 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2024-09-21 10:56:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.ErrorManager;
@@ -9264,7 +9264,7 @@
 +			// AST REWRITE
 +			// elements: a, cmt, gid, gr, ig, optionsSpec, r, scopes, ts
 +			// token labels: cmt
-+			// rule labels: a, r, gid, scopes, gr, ig, retval, ts
++			// rule labels: a, gid, gr, ig, r, retval, scopes, ts
 +			// token list labels: 
 +			// rule list labels: 
 +			// wildcard labels: 
@@ -9272,12 +9272,12 @@
 +			retval.tree = root_0;
 +			RewriteRuleTokenStream stream_cmt=new RewriteRuleTokenStream(adaptor,"token cmt",cmt);
 +			RewriteRuleSubtreeStream stream_a=new RewriteRuleSubtreeStream(adaptor,"rule a",a!=null?a.getTree():null);
-+			RewriteRuleSubtreeStream stream_r=new RewriteRuleSubtreeStream(adaptor,"rule r",r!=null?r.getTree():null);
 +			RewriteRuleSubtreeStream stream_gid=new RewriteRuleSubtreeStream(adaptor,"rule gid",gid!=null?gid.getTree():null);
-+			RewriteRuleSubtreeStream stream_scopes=new RewriteRuleSubtreeStream(adaptor,"rule scopes",scopes!=null?scopes.getTree():null);
 +			RewriteRuleSubtreeStream stream_gr=new RewriteRuleSubtreeStream(adaptor,"rule gr",gr!=null?gr.getTree():null);
 +			RewriteRuleSubtreeStream stream_ig=new RewriteRuleSubtreeStream(adaptor,"rule ig",ig!=null?ig.getTree():null);
++			RewriteRuleSubtreeStream stream_r=new RewriteRuleSubtreeStream(adaptor,"rule r",r!=null?r.getTree():null);
 +			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++			RewriteRuleSubtreeStream stream_scopes=new RewriteRuleSubtreeStream(adaptor,"rule scopes",scopes!=null?scopes.getTree():null);
 +			RewriteRuleSubtreeStream stream_ts=new RewriteRuleSubtreeStream(adaptor,"rule ts",ts!=null?ts.getTree():null);
 +
 +			root_0 = (GrammarAST)adaptor.nil();
@@ -11252,8 +11252,8 @@
 +
 +			// AST REWRITE
 +			// elements: aa, ex, optionsSpec, p1, p2, p3, p4, rt, ruleActions, ruleAltList, ruleName, scopes, throwsSpec
-+			// token labels: aa, p1, p2, rt, p3, p4
-+			// rule labels: ex, ruleName, scopes, retval
++			// token labels: aa, p1, p2, p3, p4, rt
++			// rule labels: ex, retval, ruleName, scopes
 +			// token list labels: 
 +			// rule list labels: 
 +			// wildcard labels: 
@@ -11262,13 +11262,13 @@
 +			RewriteRuleTokenStream stream_aa=new RewriteRuleTokenStream(adaptor,"token aa",aa);
 +			RewriteRuleTokenStream stream_p1=new RewriteRuleTokenStream(adaptor,"token p1",p1);
 +			RewriteRuleTokenStream stream_p2=new RewriteRuleTokenStream(adaptor,"token p2",p2);
-+			RewriteRuleTokenStream stream_rt=new RewriteRuleTokenStream(adaptor,"token rt",rt);
 +			RewriteRuleTokenStream stream_p3=new RewriteRuleTokenStream(adaptor,"token p3",p3);
 +			RewriteRuleTokenStream stream_p4=new RewriteRuleTokenStream(adaptor,"token p4",p4);
++			RewriteRuleTokenStream stream_rt=new RewriteRuleTokenStream(adaptor,"token rt",rt);
 +			RewriteRuleSubtreeStream stream_ex=new RewriteRuleSubtreeStream(adaptor,"rule ex",ex!=null?ex.getTree():null);
++			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +			RewriteRuleSubtreeStream stream_ruleName=new RewriteRuleSubtreeStream(adaptor,"rule ruleName",ruleName!=null?ruleName.getTree():null);
 +			RewriteRuleSubtreeStream stream_scopes=new RewriteRuleSubtreeStream(adaptor,"rule scopes",scopes!=null?scopes.getTree():null);
-+			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +
 +			root_0 = (GrammarAST)adaptor.nil();
 +			// 604:3: -> ^( RULE[$ruleName.start, \"rule\"] $ruleName ( $p1)? ( $p2)? ( $p3)? ( $p4)? ^( ARG[\"ARG\"] ( $aa)? ) ^( RET[\"RET\"] ( $rt)? ) ( throwsSpec )? ( optionsSpec )? $scopes ( ruleActions )? ruleAltList ( $ex)? EOR[$SEMI,\"<end-of-rule>\"] )
@@ -11896,15 +11896,15 @@
 +			// AST REWRITE
 +			// elements: a1, r1
 +			// token labels: 
-+			// rule labels: a1, retval, r1
++			// rule labels: a1, r1, retval
 +			// token list labels: 
 +			// rule list labels: 
 +			// wildcard labels: 
 +			if ( state.backtracking==0 ) {
 +			retval.tree = root_0;
 +			RewriteRuleSubtreeStream stream_a1=new RewriteRuleSubtreeStream(adaptor,"rule a1",a1!=null?a1.getTree():null);
-+			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +			RewriteRuleSubtreeStream stream_r1=new RewriteRuleSubtreeStream(adaptor,"rule r1",r1!=null?r1.getTree():null);
++			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +
 +			root_0 = (GrammarAST)adaptor.nil();
 +			// 657:4: -> $a1 ( $r1)?
@@ -11977,14 +11977,14 @@
 +							// AST REWRITE
 +							// elements: a2, r2, ruleAltList
 +							// token labels: 
-+							// rule labels: r2, a2, retval
++							// rule labels: a2, r2, retval
 +							// token list labels: 
 +							// rule list labels: 
 +							// wildcard labels: 
 +							if ( state.backtracking==0 ) {
 +							retval.tree = root_0;
-+							RewriteRuleSubtreeStream stream_r2=new RewriteRuleSubtreeStream(adaptor,"rule r2",r2!=null?r2.getTree():null);
 +							RewriteRuleSubtreeStream stream_a2=new RewriteRuleSubtreeStream(adaptor,"rule a2",a2!=null?a2.getTree():null);
++							RewriteRuleSubtreeStream stream_r2=new RewriteRuleSubtreeStream(adaptor,"rule r2",r2!=null?r2.getTree():null);
 +							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +
 +							root_0 = (GrammarAST)adaptor.nil();
@@ -17218,14 +17218,14 @@
 +					// AST REWRITE
 +					// elements: t
 +					// token labels: 
-+					// rule labels: t, retval
++					// rule labels: retval, t
 +					// token list labels: 
 +					// rule list labels: 
 +					// wildcard labels: 
 +					if ( state.backtracking==0 ) {
 +					retval.tree = root_0;
-+					RewriteRuleSubtreeStream stream_t=new RewriteRuleSubtreeStream(adaptor,"rule t",t!=null?t.getTree():null);
 +					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++					RewriteRuleSubtreeStream stream_t=new RewriteRuleSubtreeStream(adaptor,"rule t",t!=null?t.getTree():null);
 +
 +					root_0 = (GrammarAST)adaptor.nil();
 +					// 963:4: -> $t
@@ -17258,14 +17258,14 @@
 +							// AST REWRITE
 +							// elements: subrule
 +							// token labels: 
-+							// rule labels: subrule, retval
++							// rule labels: retval, subrule
 +							// token list labels: 
 +							// rule list labels: 
 +							// wildcard labels: 
 +							if ( state.backtracking==0 ) {
 +							retval.tree = root_0;
-+							RewriteRuleSubtreeStream stream_subrule=new RewriteRuleSubtreeStream(adaptor,"rule subrule",subrule!=null?subrule.getTree():null);
 +							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++							RewriteRuleSubtreeStream stream_subrule=new RewriteRuleSubtreeStream(adaptor,"rule subrule",subrule!=null?subrule.getTree():null);
 +
 +							root_0 = (GrammarAST)adaptor.nil();
 +							// 966:4: -> $subrule
@@ -17313,14 +17313,14 @@
 +					// AST REWRITE
 +					// elements: tr
 +					// token labels: 
-+					// rule labels: tr, retval
++					// rule labels: retval, tr
 +					// token list labels: 
 +					// rule list labels: 
 +					// wildcard labels: 
 +					if ( state.backtracking==0 ) {
 +					retval.tree = root_0;
-+					RewriteRuleSubtreeStream stream_tr=new RewriteRuleSubtreeStream(adaptor,"rule tr",tr!=null?tr.getTree():null);
 +					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++					RewriteRuleSubtreeStream stream_tr=new RewriteRuleSubtreeStream(adaptor,"rule tr",tr!=null?tr.getTree():null);
 +
 +					root_0 = (GrammarAST)adaptor.nil();
 +					// 970:4: -> $tr
@@ -17353,14 +17353,14 @@
 +							// AST REWRITE
 +							// elements: subrule
 +							// token labels: 
-+							// rule labels: subrule, retval
++							// rule labels: retval, subrule
 +							// token list labels: 
 +							// rule list labels: 
 +							// wildcard labels: 
 +							if ( state.backtracking==0 ) {
 +							retval.tree = root_0;
-+							RewriteRuleSubtreeStream stream_subrule=new RewriteRuleSubtreeStream(adaptor,"rule subrule",subrule!=null?subrule.getTree():null);
 +							RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++							RewriteRuleSubtreeStream stream_subrule=new RewriteRuleSubtreeStream(adaptor,"rule subrule",subrule!=null?subrule.getTree():null);
 +
 +							root_0 = (GrammarAST)adaptor.nil();
 +							// 973:4: -> $subrule
@@ -19133,9 +19133,9 @@
 +	public static final BitSet FOLLOW_ruleref_in_synpred1_ANTLR1936 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	2023-09-16 07:24:37.273551941 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,3622 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRTreePrinter.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRTreePrinter.g 2024-09-21 10:56:01
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.*;
@@ -22758,9 +22758,9 @@
 +	public static final BitSet FOLLOW_BANG_in_ast_suffix1807 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	2023-09-16 07:24:38.060202784 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,3357 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2024-09-21 10:56:02
 +
 +    package org.antlr.grammar.v3;
 +
@@ -26118,9 +26118,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	2023-09-16 07:24:37.633544699 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,9847 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2024-09-21 10:56:01
 +
 +    package org.antlr.grammar.v3;
 +
@@ -28079,15 +28079,15 @@
 +
 +			// AST REWRITE
 +			// elements: RET, altList, arg, exceptionGroup, id, optionsSpec, rt, ruleAction, ruleScopeSpec, throwsSpec
-+			// token labels: rt, arg
++			// token labels: arg, rt
 +			// rule labels: retval
 +			// token list labels: 
 +			// rule list labels: 
 +			// wildcard labels: 
 +			if ( state.backtracking==0 ) {
 +			retval.tree = root_0;
-+			RewriteRuleTokenStream stream_rt=new RewriteRuleTokenStream(adaptor,"token rt",rt);
 +			RewriteRuleTokenStream stream_arg=new RewriteRuleTokenStream(adaptor,"token arg",arg);
++			RewriteRuleTokenStream stream_rt=new RewriteRuleTokenStream(adaptor,"token rt",rt);
 +			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +
 +			root_0 = (CommonTree)adaptor.nil();
@@ -33028,14 +33028,14 @@
 +					// elements: last, predicated, preds, rew, rew2
 +					// token labels: rew2
 +					// rule labels: last, retval
-+					// token list labels: rew, preds
++					// token list labels: preds, rew
 +					// rule list labels: predicated
 +					// wildcard labels: 
 +					if ( state.backtracking==0 ) {
 +					retval.tree = root_0;
 +					RewriteRuleTokenStream stream_rew2=new RewriteRuleTokenStream(adaptor,"token rew2",rew2);
-+					RewriteRuleTokenStream stream_rew=new RewriteRuleTokenStream(adaptor,"token rew", list_rew);
 +					RewriteRuleTokenStream stream_preds=new RewriteRuleTokenStream(adaptor,"token preds", list_preds);
++					RewriteRuleTokenStream stream_rew=new RewriteRuleTokenStream(adaptor,"token rew", list_rew);
 +					RewriteRuleSubtreeStream stream_last=new RewriteRuleSubtreeStream(adaptor,"rule last",last!=null?last.getTree():null);
 +					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 +					RewriteRuleSubtreeStream stream_predicated=new RewriteRuleSubtreeStream(adaptor,"token predicated",list_predicated);
@@ -35968,9 +35968,9 @@
 +	public static final BitSet FOLLOW_rewrite_tree_alternative_in_synpred2_ANTLRv32659 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	2023-09-16 07:24:38.943518349 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	2024-09-21 13:00:23.373602908 +0200
 @@ -0,0 +1,3771 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3Tree.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3Tree.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +
@@ -39742,9 +39742,9 @@
 +	public static final BitSet FOLLOW_ID_in_qid1436 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	2023-09-16 07:24:38.693523378 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	2024-09-21 13:00:23.373602908 +0200
 @@ -0,0 +1,2936 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/AssignTokenTypesWalker.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/AssignTokenTypesWalker.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +
@@ -42681,9 +42681,9 @@
 +	public static final BitSet FOLLOW_atom_in_atom1152 = new BitSet(new long[]{0x0000000000000008L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	2023-09-16 07:24:38.350196951 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,5305 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/CodeGenTreeWalker.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/CodeGenTreeWalker.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +
@@ -42692,7 +42692,7 @@
 +import org.antlr.tool.*;
 +import org.antlr.codegen.*;
 +
-+import java.util.HashSet;
++import java.util.TreeSet;
 +import java.util.Set;
 +import java.util.Collection;
 +import java.util.Collections;
@@ -42868,7 +42868,7 @@
 +	protected ST currentBlockST = null;
 +	protected boolean currentAltHasASTRewrite = false;
 +	protected int rewriteTreeNestingLevel = 0;
-+	protected HashSet<Object> rewriteRuleRefs = null;
++	protected TreeSet<Object> rewriteRuleRefs = null;
 +
 +	public String getCurrentRuleName() {
 +	    return currentRuleName;
@@ -46462,18 +46462,18 @@
 +						retval.code.add("rewriteBlockLevel", OUTER_REWRITE_NESTING_LEVEL);
 +						retval.code.add("referencedElementsDeep",
 +										  getTokenTypesAsTargetLabels(((GrammarAST)retval.start).rewriteRefsDeep));
-+						Set<String> tokenLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.TOKEN_LABEL);
-+						Set<String> tokenListLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.TOKEN_LIST_LABEL);
-+						Set<String> ruleLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.RULE_LABEL);
-+						Set<String> ruleListLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.RULE_LIST_LABEL);
-+						Set<String> wildcardLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.WILDCARD_TREE_LABEL);
-+						Set<String> wildcardListLabels =
-+							grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.WILDCARD_TREE_LIST_LABEL);
++						TreeSet<String> tokenLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.TOKEN_LABEL));
++						TreeSet<String> tokenListLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.TOKEN_LIST_LABEL));
++						TreeSet<String> ruleLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.RULE_LABEL));
++						TreeSet<String> ruleListLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.RULE_LIST_LABEL));
++						TreeSet<String> wildcardLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.WILDCARD_TREE_LABEL));
++						TreeSet<String> wildcardListLabels =
++							new TreeSet<String>(grammar.getLabels(((GrammarAST)retval.start).rewriteRefsDeep, Grammar.WILDCARD_TREE_LIST_LABEL));
 +						// just in case they ref r for "previous value", make a stream
 +						// from retval.tree
 +						ST retvalST = templates.getInstanceOf("prevRuleRootRef");
@@ -46532,7 +46532,7 @@
 +							case 1 :
 +								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1241:5: ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative )
 +								{
-+								if ( state.backtracking==0 ) {rewriteRuleRefs = new HashSet<Object>();}
++								if ( state.backtracking==0 ) {rewriteRuleRefs = new TreeSet<Object>();}
 +								r=(GrammarAST)match(input,REWRITE,FOLLOW_REWRITE_in_rewrite1717); if (state.failed) return retval;
 +								match(input, Token.DOWN, null); if (state.failed) return retval;
 +								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1242:18: (pred= SEMPRED )?
@@ -47989,9 +47989,9 @@
 +	public static final BitSet FOLLOW_element_action_in_synpred2_CodeGenTreeWalker1405 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	2023-09-16 07:24:38.596858656 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	2024-09-21 13:00:23.373602908 +0200
 @@ -0,0 +1,4468 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/DefineGrammarItemsWalker.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/DefineGrammarItemsWalker.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.*;
@@ -52460,9 +52460,9 @@
 +	public static final BitSet FOLLOW_dotLoop_in_synpred1_DefineGrammarItemsWalker1222 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	2023-09-16 07:24:38.466861270 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	2024-09-21 13:00:23.370269551 +0200
 @@ -0,0 +1,3240 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/LeftRecursiveRuleWalker.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/LeftRecursiveRuleWalker.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +
@@ -55703,9 +55703,9 @@
 +	public static final BitSet FOLLOW_suffix_in_synpred5_LeftRecursiveRuleWalker704 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	2023-09-16 07:24:38.846853627 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	2024-09-21 13:00:23.373602908 +0200
 @@ -0,0 +1,4395 @@
-+// $ANTLR 3.5.3 org/antlr/grammar/v3/TreeToNFAConverter.g 2023-09-15 00:00:00
++// $ANTLR 3.5.3 org/antlr/grammar/v3/TreeToNFAConverter.g 2024-09-21 10:56:02
 +
 +package org.antlr.grammar.v3;
 +
@@ -60101,7 +60101,7 @@
 +	public static final BitSet FOLLOW_testSetElement_in_testSetElement2000 = new BitSet(new long[]{0x0000000000000008L});
 +}
 --- tool/src/main/java/TreeToNFAConverter.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/TreeToNFAConverter.tokens	2023-09-16 07:24:38.846853627 +0200
++++ tool/src/main/java/TreeToNFAConverter.tokens	2024-09-21 13:00:23.373602908 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5

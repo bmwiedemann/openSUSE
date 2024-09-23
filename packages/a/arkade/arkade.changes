@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:07:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.26:
+  * fix: k0sctl binary name change & tests
+
+-------------------------------------------------------------------
+Sat Sep 21 17:05:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.25:
+  * Enable override for cni download
+  * Bump golang.org/x/crypto from 0.26.0 to 0.27.0
+
+-------------------------------------------------------------------
 Sat Sep 14 10:09:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.24:

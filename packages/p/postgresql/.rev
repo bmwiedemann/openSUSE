@@ -602,4 +602,12 @@
   stability is being taken care of between minor releases.</comment>
     <requestid>1200762</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8fc6bf3b1216607324f43576a8851e86</srcmd5>
+    <version>17</version>
+    <time>1727097536</time>
+    <user>anag+factory</user>
+    <comment>- Bump major and default to 17 for Factory and TW.</comment>
+    <requestid>1201994</requestid>
+  </revision>
 </revisionlist>

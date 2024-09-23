@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:31:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.23.2:
+  https://istio.io/latest/news/releases/1.23.x/announcing-1.23.2/
+  no istioctl-related changes mentioned in the changelog
+
+-------------------------------------------------------------------
 Sat Sep 14 14:01:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.23.1:

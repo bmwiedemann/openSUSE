@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 15 22:27:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add plplot-numpy-2.0-compat.patch for compatibility with numpy
+  >= 2.0 (gh#PLplot/PLplot#10); patch taken from upstream PR and
+  updated to fix tests.
+
+-------------------------------------------------------------------
 Mon Apr  8 05:34:11 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable python3.12 as it is not supported by upstream.

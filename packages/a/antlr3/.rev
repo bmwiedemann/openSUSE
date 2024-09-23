@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1147967</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>09b1609528400f0dc5c1081a5a43151a</srcmd5>
+    <version>3.5.3</version>
+    <time>1727097599</time>
+    <user>anag+factory</user>
+    <comment>reproducible labels order</comment>
+    <requestid>1202357</requestid>
+  </revision>
 </revisionlist>

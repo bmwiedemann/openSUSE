@@ -16,9 +16,9 @@
 #
 
 
-%define pgversion 16.3
+%define pgversion 16.4
 %define pgmajor 16
-%define buildlibs 1
+%define buildlibs 0
 %define tarversion %{pgversion}
 %define latest_supported_llvm_ver 18
 
@@ -60,7 +60,7 @@ Name:           %pgname
 %endif
 
 %if %pgmajor >= 17
-%bcond_with dreived
+%bcond_with derived
 %else
 %bcond_without derived
 %endif

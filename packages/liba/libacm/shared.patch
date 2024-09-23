@@ -1,0 +1,25 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-09-06 00:16:07.708564412 +0200
+
+---
+ src/Makefile.am |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+Index: libacm/src/Makefile.am
+===================================================================
+--- libacm.orig/src/Makefile.am
++++ libacm/src/Makefile.am
+@@ -1,10 +1,11 @@
+ 
+ bin_PROGRAMS = acmtool
+-noinst_LTLIBRARIES = libacm.la
++lib_LTLIBRARIES = libacm.la
+ 
+-noinst_HEADERS = libacm.h
++include_HEADERS = libacm.h
+ 
+ libacm_la_SOURCES = decode.c util.c
++libacm_la_LDFLAGS = -release ${PACKAGE_VERSION}
+ 
+ acmtool_SOURCES = acmtool.c
+ 

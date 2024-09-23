@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 18 15:43:37 UTC 2024 - Coly Li <colyli@suse.de>
+
+- Detail: remove duplicated code (bsc#1226413) 
+  0008-Detail-remove-duplicated-code.patch
+- mdadm: Fix native --detail --export (bsc#1226413)
+  0009-mdadm-Fix-native-detail-export.patch
+
+-------------------------------------------------------------------
 Sat Jul  6 15:43:04 UTC 2024 - Coly Li <colyli@suse.de>
 
 - util.c: change devnm to const in mdmon functions (bsc#1225307)

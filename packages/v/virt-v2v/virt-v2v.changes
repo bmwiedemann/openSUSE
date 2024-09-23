@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 20 11:20:49 MDT 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.5.10 (jsc#PED-8910)
+  * convert: Display osinfo in "Converting ..." message
+  * Updated language translations
+  * Fix the bugs in YAML generator
+  * output: -o kubevirt: Fix firmware section to match specification
+
+-------------------------------------------------------------------
 Thu Aug 29 14:54:30 MDT 2024 - carnold@suse.com
 
 - Update to virt-v2v 2.5.9 (jsc#PED-8910)

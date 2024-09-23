@@ -1,7 +1,7 @@
 #
-# spec file for package antlr3-java
+# spec file for package antlr3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -193,10 +193,18 @@ sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resour
 # build ant task
 pushd antlr-ant/main/antlr3-task/
 export CLASSPATH=$(build-classpath ant)
-javac -encoding ISO-8859-1 -source 8 -target 8 antlr3-src/org/apache/tools/ant/antlr/ANTLR3.java
-jar cvf ant-antlr3.jar \
-  -C antlr3-src org/apache/tools/ant/antlr/antlib.xml \
-  -C antlr3-src org/apache/tools/ant/antlr/ANTLR3.class
+javac \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	--release 8 \
+%endif
+    -encoding ISO-8859-1 antlr3-src/org/apache/tools/ant/antlr/ANTLR3.java
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --verbose --file=ant-antlr3.jar \
+    -C antlr3-src org/apache/tools/ant/antlr/antlib.xml \
+    -C antlr3-src org/apache/tools/ant/antlr/ANTLR3.class
 popd
 
 %endif

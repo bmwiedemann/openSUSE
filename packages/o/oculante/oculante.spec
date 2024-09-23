@@ -18,14 +18,16 @@
 
 %bcond_without test
 %define force_gcc_version 13
+%define appid io.github.woelper.Oculante
 Name:           oculante
-Version:        0.8.23
+Version:        0.9.0
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
 URL:            https://github.com/woelper/oculante
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -61,8 +63,12 @@ export CXX="g++-%{?force_gcc_version}"
 
 %install
 install -Dpm755 target/release/%{name} -t %{buildroot}%{_bindir}
-install -Dpm644 res/%{name}.png -t %{buildroot}%{_datadir}/pixmaps/
-install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
+install -Dpm644 res/icons/icon.png \
+    %{buildroot}%{_datadir}/pixmaps/%{appid}.png
+install -Dpm644 res/flathub/%{appid}.desktop -t \
+    %{buildroot}%{_datadir}/applications
+install -Dpm644 res/flathub/%{appid}.metainfo.xml -t \
+    %{buildroot}%{_datadir}/metainfo
 
 %check
 %if %{with test}
@@ -72,14 +78,16 @@ export CXX="g++-%{?force_gcc_version}"
 %endif
 %{cargo_test} -- --skip=tests::net --skip=bench
 %endif
-
+appstream-util validate-relax --nonet \
+      %{buildroot}%{_datadir}/metainfo/%{appid}.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license LICENSE*
 %doc README* CHANGELOG.md
 %{_bindir}/%{name}
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/%{appid}.png
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/metainfo
 
 %changelog

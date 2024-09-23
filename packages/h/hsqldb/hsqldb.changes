@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 20 08:56:17 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 2.7.3:
+  * version 2.7.3 jar requires JRE 11 or later - tested up to
+    Java 21
+  * version 2.7.3 alternative jar requires JRE 8 or later
+  * SQL:2023 updates 
+  * source code refactoring to use Java Generics - no longer
+    compiles with pre 1.8 JDK
+  * added support for CAST with datetime template argument
+  * enhancements to TO_CHAR, TO_DATE etc. functions; now using
+    java.time.format.DateTimeFormatter
+  * added TO_CHAR for numeric values
+  * added JDBC 4.3 support
+  * fixed a number of reported regressions and bugs (see tracker) 
+
+-------------------------------------------------------------------
 Thu Feb 15 17:17:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - rpm 4.19 requires dependencies on hsqldb user and group

@@ -1,13 +1,26 @@
---- antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2023-09-15 20:06:39.620275234 +0200
-+++ antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2023-09-16 06:38:17.929360459 +0200
-@@ -56,6 +56,7 @@
- import java.util.HashSet;
+--- antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2024-09-21 12:35:02.440474037 +0200
++++ antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2024-09-21 12:52:37.133715512 +0200
+@@ -53,9 +53,10 @@
+ import org.antlr.tool.*;
+ import org.antlr.codegen.*;
+ 
+-import java.util.HashSet;
++import java.util.TreeSet;
  import java.util.Set;
  import java.util.Collection;
 +import java.util.Collections;
  import org.antlr.runtime.BitSet;
  import org.antlr.runtime.DFA;
  import org.stringtemplate.v4.ST;
+@@ -73,7 +74,7 @@
+ protected ST currentBlockST = null;
+ protected boolean currentAltHasASTRewrite = false;
+ protected int rewriteTreeNestingLevel = 0;
+-protected HashSet<Object> rewriteRuleRefs = null;
++protected TreeSet<Object> rewriteRuleRefs = null;
+ 
+ public String getCurrentRuleName() {
+     return currentRuleName;
 @@ -284,6 +285,7 @@
          }
          labels.add( label );
@@ -16,3 +29,43 @@
      return labels;
  }
  
+@@ -1202,18 +1204,18 @@
+ 				$code.add("rewriteBlockLevel", OUTER_REWRITE_NESTING_LEVEL);
+ 				$code.add("referencedElementsDeep",
+ 								  getTokenTypesAsTargetLabels($start.rewriteRefsDeep));
+-				Set<String> tokenLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.TOKEN_LABEL);
+-				Set<String> tokenListLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.TOKEN_LIST_LABEL);
+-				Set<String> ruleLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.RULE_LABEL);
+-				Set<String> ruleListLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.RULE_LIST_LABEL);
+-				Set<String> wildcardLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.WILDCARD_TREE_LABEL);
+-				Set<String> wildcardListLabels =
+-					grammar.getLabels($start.rewriteRefsDeep, Grammar.WILDCARD_TREE_LIST_LABEL);
++				TreeSet<String> tokenLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.TOKEN_LABEL));
++				TreeSet<String> tokenListLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.TOKEN_LIST_LABEL));
++				TreeSet<String> ruleLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.RULE_LABEL));
++				TreeSet<String> ruleListLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.RULE_LIST_LABEL));
++				TreeSet<String> wildcardLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.WILDCARD_TREE_LABEL));
++				TreeSet<String> wildcardListLabels =
++					new TreeSet<String>(grammar.getLabels($start.rewriteRefsDeep, Grammar.WILDCARD_TREE_LIST_LABEL));
+ 				// just in case they ref $r for "previous value", make a stream
+ 				// from retval.tree
+ 				ST retvalST = templates.getInstanceOf("prevRuleRootRef");
+@@ -1236,7 +1238,7 @@
+ }
+ 	:	^(	REWRITES
+ 			(
+-				{rewriteRuleRefs = new HashSet<Object>();}
++				{rewriteRuleRefs = new TreeSet<Object>();}
+ 				^( r=REWRITE (pred=SEMPRED)? alt=rewrite_alternative)
+ 				{
+ 					rewriteBlockNestingLevel = OUTER_REWRITE_NESTING_LEVEL;

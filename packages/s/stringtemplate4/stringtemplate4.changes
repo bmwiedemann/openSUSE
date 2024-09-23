@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 21 15:19:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * stringtemplate4-generated-sources.patch
+    + regenerate to account for latest antlr3 changes
+- Use SOURCE_DATE_EPOCH timestamp for reproducible builds
+
+-------------------------------------------------------------------
 Wed Feb 21 10:54:02 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

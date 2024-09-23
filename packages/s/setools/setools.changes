@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 14:17:31 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add upstream tarball signature
+- Add key 85649089C9F385B35F40568D21698FD29D4355A4 to setools.keyring
+
+-------------------------------------------------------------------
 Tue May 28 11:19:10 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Rework packaging to modern python packaging

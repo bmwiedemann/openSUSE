@@ -1,7 +1,7 @@
-Index: vhostmd-1.1/docs/man/vm-dump-metrics.1
+Index: vhostmd-1.2/docs/man/vm-dump-metrics.1
 ===================================================================
---- vhostmd-1.1.orig/docs/man/vm-dump-metrics.1
-+++ vhostmd-1.1/docs/man/vm-dump-metrics.1
+--- vhostmd-1.2.orig/docs/man/vm-dump-metrics.1
++++ vhostmd-1.2/docs/man/vm-dump-metrics.1
 @@ -10,8 +10,12 @@ vm-dump-metrics \- Dump VM metrics.
  .BR vm-dump-metrics
  reads virtualization hosts provided metrics decription and dumps output

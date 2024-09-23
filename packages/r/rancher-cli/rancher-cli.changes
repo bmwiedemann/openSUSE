@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:28:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.2 (no release 2.9.1):
+  * [v2.9] Bump dependencies for v2.9.2 (#394)
+  * revert error message (#390) (#392)
+  * Fix panic on `context switch` (#386) (#387)
+
+-------------------------------------------------------------------
 Wed Jul 24 18:01:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.0:

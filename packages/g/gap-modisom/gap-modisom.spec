@@ -17,7 +17,7 @@
 
 
 Name:           gap-modisom
-Version:        2.5.4
+Version:        3.0.0
 Release:        0
 Summary:        GAP: Computing with nilpotent associative algebras
 License:        GPL-2.0-or-later

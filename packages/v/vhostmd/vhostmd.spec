@@ -1,7 +1,7 @@
 #
 # spec file for package vhostmd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           vhostmd
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Virtual Host Metrics Daemon (vhostmd)
 License:        LGPL-2.1-or-later
@@ -36,8 +36,7 @@ Patch0:         vhostmd-conf.patch
 Patch1:         manpage.patch
 Patch2:         value-newline.patch
 Patch3:         libmetrics-link.patch
-Patch4:         relax-virtio-config-requirement.patch
-Patch5:         harden_vhostmd.service.patch
+Patch4:         harden_vhostmd.service.patch
 BuildRequires:  libtool
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2

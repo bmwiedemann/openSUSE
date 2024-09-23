@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:46:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.37.0:
+  * Release v1.37.0 (#6834)
+  * removing helm hybrid operator plugin (#6833)
+  * updating both webhook links to reference main docs url (#6828)
+  * Remove java-operator-plugins (#6824)
+  * updating docker dependencies to address GHSA-v23v-6jw2-98fq
+    (#6823)
+  * Bump github.com/opencontainers/runc from 1.1.12 to 1.1.14
+    (#6827)
+  * Bump java-operator-plugins to v0.11.1 (#6817)
+
+-------------------------------------------------------------------
 Fri Aug 09 17:56:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.36.1:

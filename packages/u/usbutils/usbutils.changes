@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 17 07:55:42 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- enable usbreset
+
+-------------------------------------------------------------------
 Mon Feb 26 09:54:21 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -32,6 +32,8 @@ Source99:       baselibs.conf
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
+# PATCH-FIX-UPSTREAM b9eed915f9a67380e7ef9d8746656455c43f67e2.patch -- cff: Don't fail if no local subs. Fix regression when writing PDFs with fonts
+Patch2:         https://gitlab.freedesktop.org/cairo/cairo/-/commit/b9eed915f9a67380e7ef9d8746656455c43f67e2.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler

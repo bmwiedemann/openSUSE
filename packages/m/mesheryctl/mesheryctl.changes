@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Sep 21 18:40:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.106:
+  * Meshery CLI
+    - proper error logs and event w/singoff @Jougan-0 (#11354)
+  * Documentation
+    - proper error logs and event w/singoff @Jougan-0 (#11354)
+    - [docs] Overview: Update feature section title to h3
+      @hamza-mohd (#12091)
+    - [Docs] Simplify presentation of feature overview @jamieplu
+      (#12081)
+
+-------------------------------------------------------------------
+Sat Sep 21 17:32:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.105:
+  * no CLI-related changes in this release
+- update to 0.7.104:
+  * no CLI-related changes in this release
+- update to 0.7.103:
+  * no CLI-related changes in this release
+- update to 0.7.102:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sat Sep 21 16:58:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.101:
+  * General
+    - Provider interface @MUzairS15 (#12043)
+    - initialize usercapabilities persister @MUzairS15 (#12031)
+    - [Models] New model: meshery-dev-icons @leecalcote (#11984)
+  * Meshery CLI
+    - Add version flag support on model export command @lekaf974
+      (#11934)
+    - Update model.go @vishalvivekm (#11986)
+  * Documentation
+    - create a empty folder entitled week-of-09-23-2024 w/signoff
+      @JianMinTang (#12027)
+    - configure meshery ui before building @codeSafari10 (#12035)
+    - Add version flag support on model export command @lekaf974
+      (#11934)
+
+-------------------------------------------------------------------
 Sun Sep 15 13:18:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.100:

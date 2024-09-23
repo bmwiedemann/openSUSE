@@ -1,7 +1,7 @@
-Index: vhostmd-1.1/vhostmd/metric.c
+Index: vhostmd-1.2/vhostmd/metric.c
 ===================================================================
---- vhostmd-1.1.orig/vhostmd/metric.c
-+++ vhostmd-1.1/vhostmd/metric.c
+--- vhostmd-1.2.orig/vhostmd/metric.c
++++ vhostmd-1.2/vhostmd/metric.c
 @@ -280,6 +280,12 @@ int metric_value_get(metric *m)
        goto out;
  

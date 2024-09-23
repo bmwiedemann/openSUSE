@@ -1,7 +1,7 @@
 #
 # spec file for package bcel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcel
-Version:        6.8.0
+Version:        6.10.0
 Release:        0
 Summary:        Byte Code Engineering Library
 License:        Apache-2.0

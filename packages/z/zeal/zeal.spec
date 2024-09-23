@@ -19,10 +19,10 @@
 %global optflags %{optflags} -Wno-unused-variable
 
 Name:           zeal
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Offline API documentation browser
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://zealdocs.org
 Source0:        %{name}-%{version}.tar.xz
@@ -49,8 +49,8 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 Requires:       libQt6Sql6 >= 6.2.0
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 
 %description
 Zeal is an offline API documentation browser inspired by Dash

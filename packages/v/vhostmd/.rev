@@ -288,4 +288,23 @@ regression introduced by the last update. See bsc#1152803 for details.
     <comment></comment>
     <requestid>1148202</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>946f1fd49e1922d3b135242b2fbc1fe3</srcmd5>
+    <version>1.2</version>
+    <time>1727097554</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2
+  - Fix actions using the 'free' command
+  - Fix buffer accounting when generating metric XML
+  - Fix warning with gcc &gt;= 13
+  - Fix implicit declarations
+  - Change actions to retrieve vendor and product info
+  - Add a 'unit' attribute to the metrics element
+  - vif-stats.py: convert to Python3
+  - Misc coverity fixes
+  - Relax virtio requirement in config file
+- Drop relax-virtio-config-requirement.patch
+- Add service file</comment>
+    <requestid>1202258</requestid>
+  </revision>
 </revisionlist>

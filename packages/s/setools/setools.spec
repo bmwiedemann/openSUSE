@@ -31,7 +31,9 @@ Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
-Source2:        README.SUSE
+Source2:        https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2.sha256.asc
+Source3:        setools.keyring
+Source4:        README.SUSE
 BuildRequires:  %{python_module Cython >= 0.29.14}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module setuptools}

@@ -1,6 +1,6 @@
 diff -urEbwBN src/main/java/CodeGenerator.tokens src/main/java/CodeGenerator.tokens
 --- src/main/java/CodeGenerator.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/CodeGenerator.tokens	2023-09-16 09:51:34.457267791 +0200
++++ src/main/java/CodeGenerator.tokens	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16
@@ -83,7 +83,7 @@ diff -urEbwBN src/main/java/CodeGenerator.tokens src/main/java/CodeGenerator.tok
 +'/'=38
 diff -urEbwBN src/main/java/Group.tokens src/main/java/Group.tokens
 --- src/main/java/Group.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/Group.tokens	2023-09-16 09:51:34.560601828 +0200
++++ src/main/java/Group.tokens	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,44 @@
 +T__16=16
 +T__17=17
@@ -131,9 +131,9 @@ diff -urEbwBN src/main/java/Group.tokens src/main/java/Group.tokens
 +'true'=14
 diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java
 --- src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java	2023-09-16 09:51:34.457267791 +0200
++++ src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,2595 @@
-+// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/CodeGenerator.g 2022-03-22 00:00:00
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/CodeGenerator.g 2024-09-21 11:54:23
 +
 +/*
 + * [The "BSD license"]
@@ -2730,9 +2730,9 @@ diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java sr
 +}
 diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java
 --- src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java	2023-09-16 09:51:34.623935593 +0200
++++ src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,1310 @@
-+// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2022-03-22 00:00:00
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2024-09-21 11:54:24
 +
 +/*
 + * [The "BSD license"]
@@ -4044,9 +4044,9 @@ diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java src/m
 +}
 diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupParser.java src/main/java/org/stringtemplate/v4/compiler/GroupParser.java
 --- src/main/java/org/stringtemplate/v4/compiler/GroupParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/org/stringtemplate/v4/compiler/GroupParser.java	2023-09-16 09:51:34.560601828 +0200
++++ src/main/java/org/stringtemplate/v4/compiler/GroupParser.java	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,1420 @@
-+// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2022-03-22 00:00:00
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2024-09-21 11:54:24
 +
 +/*
 + * [The "BSD license"]
@@ -5468,9 +5468,9 @@ diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupParser.java src/
 +}
 diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/STParser.java src/main/java/org/stringtemplate/v4/compiler/STParser.java
 --- src/main/java/org/stringtemplate/v4/compiler/STParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/org/stringtemplate/v4/compiler/STParser.java	2023-09-16 09:51:34.297266701 +0200
++++ src/main/java/org/stringtemplate/v4/compiler/STParser.java	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,5613 @@
-+// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/STParser.g 2022-03-22 00:00:00
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/STParser.g 2024-09-21 11:54:23
 +
 +package org.stringtemplate.v4.compiler;
 +import org.stringtemplate.v4.misc.ErrorManager;
@@ -7326,18 +7326,18 @@ diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/STParser.java src/mai
 +			// AST REWRITE
 +			// elements: ELSE, ELSE, ELSEIF, ELSEIF, IF, IF, c1, c1, c2, c2, i, t1, t1, t2, t2, t3, t3
 +			// token labels: i
-+			// rule labels: t1, c1, retval, t3
++			// rule labels: c1, retval, t1, t3
 +			// token list labels: 
-+			// rule list labels: t2, c2
++			// rule list labels: c2, t2
 +			// wildcard labels: 
 +			retval.tree = root_0;
 +			RewriteRuleTokenStream stream_i=new RewriteRuleTokenStream(adaptor,"token i",i);
-+			RewriteRuleSubtreeStream stream_t1=new RewriteRuleSubtreeStream(adaptor,"rule t1",t1!=null?t1.getTree():null);
 +			RewriteRuleSubtreeStream stream_c1=new RewriteRuleSubtreeStream(adaptor,"rule c1",c1!=null?c1.getTree():null);
 +			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
++			RewriteRuleSubtreeStream stream_t1=new RewriteRuleSubtreeStream(adaptor,"rule t1",t1!=null?t1.getTree():null);
 +			RewriteRuleSubtreeStream stream_t3=new RewriteRuleSubtreeStream(adaptor,"rule t3",t3!=null?t3.getTree():null);
-+			RewriteRuleSubtreeStream stream_t2=new RewriteRuleSubtreeStream(adaptor,"token t2",list_t2);
 +			RewriteRuleSubtreeStream stream_c2=new RewriteRuleSubtreeStream(adaptor,"token c2",list_c2);
++			RewriteRuleSubtreeStream stream_t2=new RewriteRuleSubtreeStream(adaptor,"token t2",list_t2);
 +			root_0 = (CommonTree)adaptor.nil();
 +			// 128:3: -> {indent!=null}? ^( INDENTED_EXPR $i ^( 'if' $c1 ( $t1)? ( ^( 'elseif' $c2 $t2) )* ( ^( 'else' ( $t3)? ) )? ) )
 +			if (indent!=null) {
@@ -11085,7 +11085,7 @@ diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/STParser.java src/mai
 +}
 diff -urEbwBN src/main/java/STParser.tokens src/main/java/STParser.tokens
 --- src/main/java/STParser.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/main/java/STParser.tokens	2023-09-16 09:51:34.300600057 +0200
++++ src/main/java/STParser.tokens	2024-09-21 13:57:52.307857206 +0200
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16

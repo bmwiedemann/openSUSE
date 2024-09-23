@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 21 15:26:23 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 0.7.2:
+  * docs(readme): fix Telegram link
+  * feat(ui): add shortcut (Ctrl+B) to toggle sidebar visibility
+  * chore: fix typos in code comments
+  * fix(app): do not register protocol handlers on startup
+  * fix(ui): fix Unix build when X11 is not available
+  * docs(readme): update license to GPLv3 or later (#1646)
+  * chore(pkg): remove unused zeal.wxs file
+  * fix(browser): use button release for forward/back navigation
+  * refactor(browser): replace WebKit specific CSS rules
+  * refactor(registry): add missing override specifier
+  * fix(core): use archive_entry_pathname_utf8
+  * feat(registry,ui): show docset search keywords/prefixes
+  * refactor(registry): use class enum for index level
+  * fix(browser): use default QWebEngineProfile for Qt 6
+  * fix(ui): use correct QWebEngineProfile when applying font settings
+  * feat(browser): apply dark mode without restart with Qt 6.7+
+
+-------------------------------------------------------------------
 Sat Jul 27 11:45:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add zeal-cmake-find-qt-components.patch -- Explicitly find

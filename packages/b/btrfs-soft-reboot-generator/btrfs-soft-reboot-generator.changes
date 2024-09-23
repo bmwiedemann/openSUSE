@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Wed Sep 18 12:36:19 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240918.c86bd4f:
+  * Re-Add PrivateDevices=no
+  * Add hello-world container example
+
+-------------------------------------------------------------------
+Tue Sep 17 07:56:54 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240917.ac44a3a:
+  * Add attr requires to spec file
+
+-------------------------------------------------------------------
+Mon Sep 16 14:26:56 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240916.03e22f0:
+  * Don't modify PrivateDevices
+
+-------------------------------------------------------------------
+Mon Sep 16 13:20:07 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240916.f6373f0:
+  * Add support for podman quadlets
+  * Add set_service_attrs script to spec file
+
+-------------------------------------------------------------------
+Mon Sep 16 11:46:11 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240916.23a234d:
+  * Add script to configure slice of container service
+
+-------------------------------------------------------------------
+Fri Sep 13 13:41:05 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240913.7f9b809:
+  * Use PrivateTmp=yes
+  * Adjust paths
+
+-------------------------------------------------------------------
+Fri Sep 06 08:19:02 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240904.7e0e431:
+  * Fix path to journal socket
+
+-------------------------------------------------------------------
+Mon Sep 02 12:53:41 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240902.61101d6:
+  * Add example config for named (bind)
+  * Disable always PrivateDevices
+
+-------------------------------------------------------------------
+Fri Aug 30 14:21:57 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240830.7af3389:
+  * Enhance error messages with current service
+  * Add example nginx.conf
+
+-------------------------------------------------------------------
+Fri Aug 30 12:07:13 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240830.cc405ec:
+  * Install example config snippets
+
+-------------------------------------------------------------------
+Fri Aug 30 12:01:36 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240830.27efc01:
+  * Add example config for sec-counter-web
+  * Some cleanup
+  * Add example for rsyncd
+
+-------------------------------------------------------------------
+Mon Aug 26 14:07:42 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240826.38d90bf:
+  * Write keys not starting with "_" to snippet
+  * Setup default directories/sockets
+
+-------------------------------------------------------------------
+Fri Aug 23 12:48:30 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240823.afc6b53:
+  * Example config for sec-counter.service
+  * Don't abort if no config is found
+
+-------------------------------------------------------------------
+Thu Aug 22 14:18:25 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240822.273aa9d:
+  * Support _snapshot and _subvolid config
+  * Fix subvolid handling
+  * Add spec file for btrfs-soft-reboot-generator
+  * Remove unused config.h
+
+-------------------------------------------------------------------
+Tue Aug 20 13:45:29 UTC 2024 - kukuk@suse.com
+
+- Update to version 20240820.73bab8a:
+  * Add install_dir for generator
+  * Import btrfs-soft-reboot-generator
+

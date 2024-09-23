@@ -19,21 +19,21 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-explore
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        A better kubectl explain with the fuzzy finder
 License:        MIT
 URL:            https://github.com/keisku/kubectl-explore
 Source:         kubectl-explore-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.22
+BuildRequires:  go1.23
 
 %description
-This plugin fuzzy-finds the field explanation from supported API resources. It implements different explanations for particular API version.
+This plugin fuzzy-finds the field explanation from supported API resources. It
+implements different explanations for particular API version.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
@@ -43,7 +43,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md

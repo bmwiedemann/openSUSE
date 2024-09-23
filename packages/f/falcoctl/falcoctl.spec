@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           falcoctl
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        CLI / Administrative tooling for Falco
 License:        Apache-2.0

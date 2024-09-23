@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 11:30:29 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Bump major and default to 17 for Factory and TW.
+
+-------------------------------------------------------------------
 Thu Sep 12 08:28:00 UTC 2024 - Reinhard Max <max@suse.com>
 
 - bsc#1230423: Relax the dependency of extensions on the server

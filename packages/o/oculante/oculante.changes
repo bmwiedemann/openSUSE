@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Sep 22 00:07:11 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- add appstream-glib BuildRequires: for validate xml file
+
+-------------------------------------------------------------------
+Sat Sep 21 12:23:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.0:
+  + Bug Fixes
+    - Flip operation would always flip horizontal
+    - When pressing right mouse, panning operation got stuck.
+      Panning is now only possible using left or middle mouse.
+  + Features
+    - Show confirmation dialog when deleting a file
+    - Stack Blur provides much faster blur performance for the blur
+      filter
+    - Visually indicate difference between operator types with a
+      separator
+    - Persistent and volatile settings are now split for easier
+      versioning of configuration files
+    - enable version control friendly settings
+    - Use built in file browser
+  + Chore
+    - deps: bump quinn-proto from 0.11.3 to 0.11.8
+    - update turbojpeg and remove image dependency
+    - Update gif/ gif-dispose
+    - Update fast_image_resize, libavif-image, self_update,
+      libheif-rs
+    - update trash
+    - Update webbrowser, wgpu, ruzstd
+    - Update jpg2000 and add test image
+    - update image and nalgebra
+
+-------------------------------------------------------------------
 Tue Aug  6 07:25:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Fix conditional build for leap

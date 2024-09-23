@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 21 05:28:42 UTC 2024 - Eric Torres <eric.torres@its-et.me>
+
+- Change path of zsh completion file to make zsh properly recognize completions
+  * /usr/share/zsh/site-functions/tailscale moved to /usr/share/zsh/site-functions/_tailscale
+
+-------------------------------------------------------------------
 Wed Sep 18 19:10:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.74.1:

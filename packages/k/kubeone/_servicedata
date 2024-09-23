@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubermatic/kubeone</param>
+              <param name="changesrevision">90462aa736bd192f749d6042aecc1e03db80db3b</param></service></servicedata>

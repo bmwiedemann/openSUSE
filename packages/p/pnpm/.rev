@@ -51,4 +51,19 @@
 </comment>
     <requestid>1199941</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57ee42dc659adfea1b606f635c685eef</srcmd5>
+    <version>9.11.0</version>
+    <time>1727097645</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.11.0:
+  * Experimental: added pnpm cache commands for inspecting the
+    metadata cache #8512
+  * Fix a regression in which pnpm deploy with node-linker=hoisted
+    produces an empty node_modules directory #6682
+  * pnpm deploy should work in workspace with shared-workspace-lockfile=false #8475
+  * Don't print a warning when linking packages globally #4761
+</comment>
+    <requestid>1202424</requestid>
+  </revision>
 </revisionlist>

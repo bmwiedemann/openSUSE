@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Sat Sep 21 16:17:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * build: release v0.17.0
+  * build: bump tzdata version to 2024b
+  * build(helm): release helm chart 0.16.2
+
+-------------------------------------------------------------------
+Thu Jun 13 18:45:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.2:
+  * build: release v0.16.2
+  * fix: revert volume name back to "k8tz" after it changed by
+    mistake to initContainer name
+  * build(helm): release helm chart 0.16.1
+
+-------------------------------------------------------------------
+Sat Jun 01 19:23:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.1:
+  * build: release v0.16.1
+  * build(deps): bump golang.org/x/net from 0.17.0 to 0.23.0
+  * docs: remove trailing space in values.yaml
+  * docs: fix table format in charts readme
+  * Remove duplicate resources entries in values.yaml; Document new
+    initContainerResources param in helm chart's readme
+  * Patch the init container with compute resources
+  * build(deps): bump google.golang.org/protobuf from 1.28.1 to
+    1.33.0
+  * build(helm): release helm chart 0.16.0
+  * docs: fix typo in changelog
+
+-------------------------------------------------------------------
+Thu Apr 18 08:02:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
+Thu Feb 08 11:56:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * build: release v0.16.0
+  * build: bump tzdata version to 2024a
+  * feat: add verbose flag to bootstrap initContainer
+  * build(helm): release helm chart 0.15.0
+
+-------------------------------------------------------------------
+Sun Jan 07 15:34:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * build: release v0.15.0
+  * build: bump tzdata version to 2023d
+  * build(helm): release helm chart 0.14.1
+
+-------------------------------------------------------------------
+Sun Jan 07 15:29:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.1:
+  * build: release v0.14.1
+  * refactor(helm): allow using helm built-in namespace
+  * chore(helm): Add possibility to set topologySpreadConstraints
+    to k8tz controller
+  * build(deps): bump golang.org/x/net from 0.7.0 to 0.17.0
+  * test: add testcase covering custom initContainerName
+  * chore: Upgrade to go 1.21
+  * build(helm): release helm chart 0.14.0
+  * fix(test): add default container name
+  * feat(helm): support overriding injected initContainer name
+  * feat: support overriding injected initContainer name
+
+-------------------------------------------------------------------
+Fri Oct 13 06:39:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package k8tz: CLI tool to inject timezones into Kubernetes
+  Pods and CronJobs

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 17 15:28:10 CEST 2024 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.15:
+  * Build issue: Detect pread64() and pwrite64() support separately
+    and provide individual replacement functions. 
+    Thanks to David Geiger for reporting (Mageia).
+  * Bugfix: printstatus() would not be called with odd offsets,
+    resulting in missing progress report and missing sync (-y) and
+    write throttling (-C).
+  * Optimization: Some unrolling for the hash functions gives up to
+    10% better performance (on Zen4).
+  * Optimization: Rationalize prefetching for hash functions and
+    clear memory after using (avoid cleartext data on the stack).
+  * Optimization: Save function calls for fault injection and for
+    graph updates when unneeded.
+  * Usability: Better handle progress update frequency.
+  * Build improvement: Add -target linux-aarch64/arm-android28
+    automatically where needed.
+  * Drop: ddr-autoconf-no-fortify.diff (included upstream).
+
+-------------------------------------------------------------------
+Thu Aug 22 22:12:51 CEST 2024 - kurt@garloff.de
+
+- Avoid setting _FORTIFY_SOURCE in configure script, it may
+  conflict with flags passed in otherwise (e.g. rpmbuild).
+
+-------------------------------------------------------------------
+Thu Aug 22 20:31:00 CEST 2024 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.14:
+  * Drop patches dd_rescue-u-emptyout-segfault.diff:,
+    dd_rescue-fuzz-test-more-err.diff:,
+    dd_rescue-md5-unaligned-armv7.diff:,
+    dd_rescue-ossl3-evpcipherctx.diff: All integrated upstream.
+  * Fix detection of LFS function availability for musl.
+  * Include headers and settings to make it work on musl.
+  * Replaced basename() with mybasename.h.
+  * Prefetch lookup table for sha hashing. 
+  * Fix verbose output when falling back to small blocksize.
+  * Fix clearing of errno (unaligned writes at EOF on musl)
+- Final tarball with fixes for Android Makefiles. 
+
+-------------------------------------------------------------------
 Mon Aug 12 15:52:05 CEST 2024 - kurt@garloff.de
 
 - dd_rescue-u-emptyout-segfault.diff: Prevent (cosmetic) segfault

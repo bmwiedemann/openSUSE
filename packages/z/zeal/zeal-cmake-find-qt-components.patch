@@ -1,13 +1,8 @@
----
- src/app/CMakeLists.txt |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: zeal-0.7.1/src/app/CMakeLists.txt
-===================================================================
---- zeal-0.7.1.orig/src/app/CMakeLists.txt
-+++ zeal-0.7.1/src/app/CMakeLists.txt
+diff --color -ur zeal-0.7.2.orig/src/app/CMakeLists.txt zeal-0.7.2/src/app/CMakeLists.txt
+--- zeal-0.7.2.orig/src/app/CMakeLists.txt	2024-09-08 17:33:39.000000000 +0200
++++ zeal-0.7.2/src/app/CMakeLists.txt	2024-09-21 17:32:24.516710104 +0200
 @@ -1,4 +1,4 @@
--find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Concurrent WebEngineWidgets Widgets REQUIRED)
 +find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Concurrent Network WebChannel WebEngineWidgets Widgets REQUIRED)
  if (Qt${QT_VERSION_MAJOR}Widgets_VERSION VERSION_LESS QT_MINIMUM_VERSION)
      message(FATAL_ERROR "Qt version >= ${QT_MINIMUM_VERSION} is required.")

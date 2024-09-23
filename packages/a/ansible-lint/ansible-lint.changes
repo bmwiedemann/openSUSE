@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:46:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.2:
+  * Bugfixes
+    - Fix github action (#4342) @ssbarnea
+
+-------------------------------------------------------------------
+Sat Sep 21 17:40:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.1:
+  * Bugfixes
+    - Fix missing MatchErrors due to hash collisions (#4307)
+      @cavcrosby
+    - Remove requirement of options field in argument_specs.yaml
+      (#4291) @MatthiasKunnen
+    - Correct use of working directory with ansible-lint github
+      action (#4340) @ssbarnea
+    - Avoid running application initialization twice (#4335)
+      @ssbarnea
+    - Handle bare exception case from nested jinja2 vars (#4315)
+      @cavcrosby
+    - Require ansible-compat>=24.9.1 (#4336) @ssbarnea
+    - Update execution environment schema (#4334) @ssbarnea
+    - Add new OEL versions to meta JSON schema (#4312)
+      @mpmurphy-aexp
+    - Fix for ignoring test / directories by fqcn[deep] rule
+      (#4320) @tanwigeetika1618
+  * Other
+    - Docs: remove IRC/ML/google.groups remnants (#4322)
+      @Andersson007
+
+-------------------------------------------------------------------
 Thu Sep 12 05:55:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.0:

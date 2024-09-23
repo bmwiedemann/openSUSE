@@ -19,7 +19,7 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{!?_fillupdir:%global _fillupdir /var/adm/fillup-templates}
 Name:           hsqldb
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause

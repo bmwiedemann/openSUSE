@@ -56,9 +56,11 @@ autoreconf -fiv
   --datadir=%{_datadir}/hwdata \
   --disable-usbids
 %make_build
+make usbreset
 
 %install
 %make_install
+install -c usbreset %{buildroot}/%_bindir
 %python3_fix_shebang
 
 %files
@@ -68,6 +70,7 @@ autoreconf -fiv
 %{_bindir}/lsusb.py
 %{_bindir}/usb-devices
 %{_bindir}/usbhid-dump
+%{_bindir}/usbreset
 %{_mandir}/man1/usb-devices.1%{?ext_man}
 %{_mandir}/man8/lsusb.8%{?ext_man}
 %{_mandir}/man8/usbhid-dump.8%{?ext_man}

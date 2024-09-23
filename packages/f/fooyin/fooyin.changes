@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sat Sep 21 14:16:22 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.7.1
+    * Improvements
+        * Interface: Add option to lock splitters
+        * OpenMpt: Add config dialog
+        * ScriptEditor: Open with currently selected track if available
+    * Fixes
+        * Interface: Fix a few misspellings
+        * ScriptFormatter: Fix parsing of '<' in metadata fields
+        * SelectionInfo: Fix empty model on some systems
+        * TagEditor: Fix changing rating
+
+-------------------------------------------------------------------
+Fri Sep 20 17:38:32 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.7.0
+    * New features
+        * ReplayGain support
+            * Adds support for reading and applying RG info
+        * Scrobbling
+            * Last.fm and ListenBrainz are currently supported
+    * Improvements
+        * General
+            * Support multiple values for composer, performer
+            * Store additional fields: codec profile, encoding, tool, tag types
+        * Interface
+            * FontButton: Apply set font to button text
+            * Show dynamic bitrate in status bar for vbr/abr tracks
+            * ToolTip: Improve positioning
+            * Volume: Add slider dB tooltip
+        * Scripting
+            * Improve implementation of $abbr and $replace
+            * Add $ascii function
+        * SelectionInfo
+            * Add optional ReplayGain section
+            * Hide empty entries
+        * Engine: Handle audio samples as float64
+        * FileOps: Replace directory separators in variable calls
+        * PlaylistOrganiser: Support dropping tracks on existing playlists
+        * TagEditor: Support customising default fields
+    * Fixes
+        * Interface
+            * Resolve crash when changing layouts
+            * Fix fonts not being set correctly on startup
+            * Fix painting alternating row colours
+            * Fix toggling selection in some views
+            * LogSlider: Fix undefined behaviour
+            * SeekBar: Fix some fonts causing widget to resize
+        * Engine
+            * Fix playback not pausing while muted
+            * Fix listened duration carrying over to next track
+            * Fix track always being considered played when restoring state on startup
+        * Filters
+            * Fix incorrect item width on startup
+            * Fix page up/down in artwork mode
+        * PlaylistOrganiser
+            * Resolve crash when deleting active playlist
+            * Fix shortcuts not working after right-click
+        * General: Fix building with Qt6.8
+        * Library: Notify of updated tracks while reloading
+        * Scripting: Support split values with $swapprefix, $stripprefix
+        * Selection Info: Fix sorting of entries
+        * WaveBar: Fix restoring playing/paused state 
+
+-------------------------------------------------------------------
 Thu Sep 12 08:08:09 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to upstream 0.6.2

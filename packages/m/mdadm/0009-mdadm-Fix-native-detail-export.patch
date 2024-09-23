@@ -1,0 +1,251 @@
+From ba65d917d121dfb9876053e6f62dbd4ebf2e028c Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Date: Mon, 18 Mar 2024 16:19:30 +0100
+Subject: [PATCH] mdadm: Fix native --detail --export
+Git-commit: ba65d917d121dfb9876053e6f62dbd4ebf2e028c
+Patch-mainline: mdadm-4.3
+References: bsc#1226413
+
+Mentioned commit (see Fixes) causes that UUID is not swapped as expected
+for native superblock. Fix this problem.
+
+For detail, we should avoid superblock calls, we can have information
+about supertype from map, use that.
+
+Simplify fname_from_uuid() by removing dependencies to metadata
+handler, it is not needed. Decision is taken at compile time, expect
+super1 but this function is not used by super1. Add warning about that.
+Remove separator, it is always ':'.
+
+Fixes: 60c19530dd7c ("Detail: remove duplicated code")
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Detail.c      | 26 +++++++++++++++++++++++++-
+ mdadm.h       |  3 +--
+ super-ddf.c   | 10 +++++-----
+ super-intel.c | 16 ++++++++--------
+ util.c        | 24 +++++++++++++-----------
+ 5 files changed, 52 insertions(+), 27 deletions(-)
+
+diff --git a/Detail.c b/Detail.c
+index f23ec16f..55a086d3 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -49,6 +49,30 @@ static int add_device(const char *dev, char ***p_devices,
+ 	return n_devices + 1;
+ }
+ 
++/**
++ * detail_fname_from_uuid() - generate uuid string with special super1 handling.
++ * @mp: map entry to parse.
++ * @buf: buf to write.
++ *
++ * Hack to workaround an issue with super1 superblocks. It swapuuid set in order for assembly
++ * to work, but can't have it set if we want this printout to match all the other uuid printouts
++ * in super1.c, so we force swapuuid to 1 to make our printout match the rest of super1.
++ *
++ * Always convert uuid if host is big endian.
++ */
++char *detail_fname_from_uuid(struct map_ent *mp, char *buf)
++{
++#if __BYTE_ORDER == BIG_ENDIAN
++	bool swap = true;
++#else
++	bool swap = false;
++#endif
++	if (strncmp(mp->metadata, "1.", 2) == 0)
++		swap = true;
++
++	return __fname_from_uuid(mp->uuid, swap, buf, ':');
++}
++
+ int Detail(char *dev, struct context *c)
+ {
+ 	/*
+@@ -256,7 +280,7 @@ int Detail(char *dev, struct context *c)
+ 			mp = map_by_devnm(&map, fd2devnm(fd));
+ 
+ 		if (mp) {
+-			__fname_from_uuid(mp->uuid, 0, nbuf, ':');
++			detail_fname_from_uuid(mp, nbuf);
+ 			printf("MD_UUID=%s\n", nbuf + 5);
+ 			if (mp->path && strncmp(mp->path, DEV_MD_DIR, DEV_MD_DIR_LEN) == 0)
+ 				printf("MD_DEVNAME=%s\n", mp->path + DEV_MD_DIR_LEN);
+diff --git a/mdadm.h b/mdadm.h
+index 3fedca48..a363708a 100644
+--- a/mdadm.h
++++ b/mdadm.h
+@@ -1696,8 +1696,7 @@ extern const int uuid_zero[4];
+ extern int same_uuid(int a[4], int b[4], int swapuuid);
+ extern void copy_uuid(void *a, int b[4], int swapuuid);
+ extern char *__fname_from_uuid(int id[4], int swap, char *buf, char sep);
+-extern char *fname_from_uuid(struct supertype *st,
+-			     struct mdinfo *info, char *buf, char sep);
++extern char *fname_from_uuid(struct mdinfo *info, char *buf);
+ extern unsigned long calc_csum(void *super, int bytes);
+ extern int enough(int level, int raid_disks, int layout, int clean,
+ 		   char *avail);
+diff --git a/super-ddf.c b/super-ddf.c
+index 94ac5ff3..21426c75 100644
+--- a/super-ddf.c
++++ b/super-ddf.c
+@@ -1617,7 +1617,7 @@ static void brief_examine_super_ddf(struct supertype *st, int verbose)
+ 	struct mdinfo info;
+ 	char nbuf[64];
+ 	getinfo_super_ddf(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 
+ 	printf("ARRAY metadata=ddf UUID=%s\n", nbuf + 5);
+ }
+@@ -1632,7 +1632,7 @@ static void brief_examine_subarrays_ddf(struct supertype *st, int verbose)
+ 	unsigned int i;
+ 	char nbuf[64];
+ 	getinfo_super_ddf(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 
+ 	for (i = 0; i < be16_to_cpu(ddf->virt->max_vdes); i++) {
+ 		struct virtual_entry *ve = &ddf->virt->entries[i];
+@@ -1645,7 +1645,7 @@ static void brief_examine_subarrays_ddf(struct supertype *st, int verbose)
+ 		ddf->currentconf =&vcl;
+ 		vcl.vcnum = i;
+ 		uuid_from_super_ddf(st, info.uuid);
+-		fname_from_uuid(st, &info, nbuf1, ':');
++		fname_from_uuid(&info, nbuf1);
+ 		_ddf_array_name(namebuf, ddf, i);
+ 		printf("ARRAY%s%s container=%s member=%d UUID=%s\n",
+ 		       namebuf[0] == '\0' ? "" : " " DEV_MD_DIR, namebuf,
+@@ -1658,7 +1658,7 @@ static void export_examine_super_ddf(struct supertype *st)
+ 	struct mdinfo info;
+ 	char nbuf[64];
+ 	getinfo_super_ddf(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf("MD_METADATA=ddf\n");
+ 	printf("MD_LEVEL=container\n");
+ 	printf("MD_UUID=%s\n", nbuf+5);
+@@ -1798,7 +1798,7 @@ static void brief_detail_super_ddf(struct supertype *st, char *subarray)
+ 		return;
+ 	else
+ 		uuid_of_ddf_subarray(ddf, vcnum, info.uuid);
+-	fname_from_uuid(st, &info, nbuf,':');
++	fname_from_uuid(&info, nbuf);
+ 	printf(" UUID=%s", nbuf + 5);
+ }
+ 
+diff --git a/super-intel.c b/super-intel.c
+index e1754f29..ff2590fe 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -2217,7 +2217,7 @@ static void examine_super_imsm(struct supertype *st, char *homehost)
+ 	else
+ 		printf("not supported\n");
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf("           UUID : %s\n", nbuf + 5);
+ 	sum = __le32_to_cpu(mpb->check_sum);
+ 	printf("       Checksum : %08x %s\n", sum,
+@@ -2242,7 +2242,7 @@ static void examine_super_imsm(struct supertype *st, char *homehost)
+ 
+ 		super->current_vol = i;
+ 		getinfo_super_imsm(st, &info, NULL);
+-		fname_from_uuid(st, &info, nbuf, ':');
++		fname_from_uuid(&info, nbuf);
+ 		print_imsm_dev(super, dev, nbuf + 5, super->disks->index);
+ 	}
+ 	for (i = 0; i < mpb->num_disks; i++) {
+@@ -2267,7 +2267,7 @@ static void brief_examine_super_imsm(struct supertype *st, int verbose)
+ 	char nbuf[64];
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf("ARRAY metadata=imsm UUID=%s\n", nbuf + 5);
+ }
+ 
+@@ -2284,13 +2284,13 @@ static void brief_examine_subarrays_imsm(struct supertype *st, int verbose)
+ 		return;
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	for (i = 0; i < super->anchor->num_raid_devs; i++) {
+ 		struct imsm_dev *dev = get_imsm_dev(super, i);
+ 
+ 		super->current_vol = i;
+ 		getinfo_super_imsm(st, &info, NULL);
+-		fname_from_uuid(st, &info, nbuf1, ':');
++		fname_from_uuid(&info, nbuf1);
+ 		printf("ARRAY " DEV_MD_DIR "%.16s container=%s member=%d UUID=%s\n",
+ 		       dev->volume, nbuf + 5, i, nbuf1 + 5);
+ 	}
+@@ -2304,7 +2304,7 @@ static void export_examine_super_imsm(struct supertype *st)
+ 	char nbuf[64];
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf("MD_METADATA=imsm\n");
+ 	printf("MD_LEVEL=container\n");
+ 	printf("MD_UUID=%s\n", nbuf+5);
+@@ -2324,7 +2324,7 @@ static void detail_super_imsm(struct supertype *st, char *homehost,
+ 		super->current_vol = strtoul(subarray, NULL, 10);
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf("\n              UUID : %s\n", nbuf + 5);
+ 
+ 	super->current_vol = temp_vol;
+@@ -2341,7 +2341,7 @@ static void brief_detail_super_imsm(struct supertype *st, char *subarray)
+ 		super->current_vol = strtoul(subarray, NULL, 10);
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+-	fname_from_uuid(st, &info, nbuf, ':');
++	fname_from_uuid(&info, nbuf);
+ 	printf(" UUID=%s", nbuf + 5);
+ 
+ 	super->current_vol = temp_vol;
+diff --git a/util.c b/util.c
+index 49a9c6e2..03336d6f 100644
+--- a/util.c
++++ b/util.c
+@@ -589,19 +589,21 @@ char *__fname_from_uuid(int id[4], int swap, char *buf, char sep)
+ 
+ }
+ 
+-char *fname_from_uuid(struct supertype *st, struct mdinfo *info,
+-		      char *buf, char sep)
+-{
+-	// dirty hack to work around an issue with super1 superblocks...
+-	// super1 superblocks need swapuuid set in order for assembly to
+-	// work, but can't have it set if we want this printout to match
+-	// all the other uuid printouts in super1.c, so we force swapuuid
+-	// to 1 to make our printout match the rest of super1
++/**
++ * fname_from_uuid() - generate uuid string. Should not be used with super1.
++ * @info: info with uuid
++ * @buf: buf to fill.
++ *
++ * This routine should not be used with super1. See detail_fname_from_uuid() for details. It does
++ * not use superswitch swapuuid as it should be 0 but it has to do UUID conversion if host is big
++ * endian- left for backward compatibility.
++ */
++char *fname_from_uuid(struct mdinfo *info, char *buf)
++{
+ #if __BYTE_ORDER == BIG_ENDIAN
+-	return __fname_from_uuid(info->uuid, 1, buf, sep);
++	return __fname_from_uuid(info->uuid, true, buf, ':');
+ #else
+-	return __fname_from_uuid(info->uuid, (st->ss == &super1) ? 1 :
+-				 st->ss->swapuuid, buf, sep);
++	return __fname_from_uuid(info->uuid, false, buf, ':');
+ #endif
+ }
+ 
+-- 
+2.46.0
+

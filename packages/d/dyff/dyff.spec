@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dyff
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
 URL:            https://github.com/homeport/dyff
 Source:         dyff-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 
 %description
 A diff tool for YAML files, and sometimes JSON.
@@ -64,7 +64,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md

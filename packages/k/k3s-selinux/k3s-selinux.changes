@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 21 18:13:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.stable.1:
+  * Fix upload repo script for all distros (#70)
+  * Add docker volume to the rest of drone steps (#69)
+  * Fix dapper commands in drone (#68)
+  * Fix CI (#67)
+  * Remove maximum version limit for container-selinux for slemicro
+    (#66)
+
+-------------------------------------------------------------------
 Wed Feb 07 07:13:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.5.stable.1:

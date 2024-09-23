@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:57:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.18:
+  * Prepare for v0.16.18 release
+  * chore(deps): update azure/login action to v2.2.0
+  * release: Install curl
+  * chore(deps): update ubuntu:24.04 docker digest to dfc1087
+  * github: Remove unused files
+  * vendor: Remove gops dependency
+  * chore(deps): update ubuntu:24.04 docker digest to 56a8952
+  * action: Run version command with --client flag
+  * Update stable release to v0.16.17
+
+-------------------------------------------------------------------
 Sat Sep 14 07:29:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.17:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 21 18:09:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.3:
+  * usage of uv for development and packaging(#81) (eca13a3)
+- update to 0.7.2:
+  * migrate to release please v4 (#78) (e14c7b3)
+- update to 0.7.1:
+  * deps: bump pypa/gh-action-pypi-publish from 1.8.14 to 1.10.1 (#75) (7f3c4ee)
+
+-------------------------------------------------------------------
 Fri May 31 13:11:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.0:

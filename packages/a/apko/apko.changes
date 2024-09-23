@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:09:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.2:
+  * set audience correctly, no https (#1313)
+  * point to the apk.cgr.dev repo urls (#1311)
+
+-------------------------------------------------------------------
+Sat Sep 21 17:06:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.1:
+  * Restore SourceDateEpoch in tarball for melange (#1310)
+  * build(deps): bump google.golang.org/api from 0.197.0 to 0.198.0
+    (#1309)
+  * build(deps): bump github/codeql-action from 3.26.7 to 3.26.8
+    (#1308)
+
+-------------------------------------------------------------------
+Sat Sep 21 17:04:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * Keep apk modtime (#1305)
+  * Delete a bunch of dead code (#1306)
+  * build(deps): bump chainguard.dev/sdk from 0.1.24 to 0.1.25
+    (#1301)
+
+-------------------------------------------------------------------
 Sat Sep 14 10:35:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - BuildRequire go1.23 to fix builds on Leap 16.0

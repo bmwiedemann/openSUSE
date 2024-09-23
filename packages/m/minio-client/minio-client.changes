@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:18:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240916T174314Z:
+  * iam export:designate zip file name (#4995)
+  * mirror:Add the printing of event time (#4953)
+  * alias: `mc alias list` command outputs the alias information
+    specified by MC_CONFIG_ENV_FILE (#5028)
+  * idp-ldap: Fix create-with-login command (#5036)
+
+-------------------------------------------------------------------
 Sat Sep 14 15:34:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240909T075310Z:

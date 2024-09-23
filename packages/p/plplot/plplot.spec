@@ -81,6 +81,8 @@ Patch5:         support-python3-pythondemos.patch
 Patch6:         plplot-libharu-version-check.patch
 # PATCH-FIX-UPSTREAM plplot-pkgconfig-includedir.patch badshah400@gmail.com -- Fix includedir in pkgconfig files
 Patch7:         plplot-pkgconfig-includedir.patch
+# PATCH-FIX-UPSTREAM plplot-numpy-2.0-compat.patch gh#PLplot/PLplot#10 badshah400@gmail.com -- Make plplot compilation compatible with numpy >= 2.0
+Patch8:         plplot-numpy-2.0-compat.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:39:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.9.1:
+  * Bugfixes
+    - Avoid running prepare ansible paths twice (#409) @ssbarnea
+    - Avoid duplicate paths when path injection (#407) @ssbarnea
+    - Provide more detail on multiple collection installs (#405)
+      @mrgum
+
+-------------------------------------------------------------------
 Thu Sep 12 05:27:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.0:

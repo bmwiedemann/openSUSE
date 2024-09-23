@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 21 11:04:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * reproducible-order.patch
+    + some more instances where the sorting (sorted containers)
+      are needed
+  * antlr3-generated_sources.patch
+    + regenerate in cycle to correspond to the changes in the
+      reproducible-order.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 10:54:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

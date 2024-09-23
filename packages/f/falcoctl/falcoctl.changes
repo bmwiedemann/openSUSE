@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 21 17:34:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.0:
+  * fix(goreleaser): use latest tag when two tags point to the same
+    commit
+  * update(go,pkg): updated driverkit to v0.20.3.
+  * update(driver/config): add new unit tests
+  * update(driver/config)!: use the same logic to configure engine
+    kind for different enviroments
+
+-------------------------------------------------------------------
 Sat Sep 14 11:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.1:

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:59:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.1:
+  * Bump golang.org/x/tools from 0.24.0 to 0.25.0
+  * Bump golang.org/x/net from 0.28.0 to 0.29.0
+  * Bump golang.org/x/term from 0.23.0 to 0.24.0
+  * Bump golang.org/x/text from 0.17.0 to 0.18.0
+  * Bump golang.org/x/sys from 0.24.0 to 0.25.0
+  * Bump Go version to `1.23`
+  * Bump github.com/onsi/ginkgo/v2 from 2.20.0 to 2.20.1
+  * Bump golang.org/x/sys from 0.23.0 to 0.24.0
+  * Bump golang.org/x/tools from 0.23.0 to 0.24.0
+  * Bump github.com/onsi/ginkgo/v2 from 2.19.1 to 2.20.0
+  * Bump golang.org/x/net from 0.27.0 to 0.28.0
+  * Bump golang.org/x/term from 0.22.0 to 0.23.0
+  * Bump golang.org/x/sys from 0.22.0 to 0.23.0
+  * Bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * Unify `.goreleaser.yml` configuration
+
+-------------------------------------------------------------------
 Sat Aug 03 07:53:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:

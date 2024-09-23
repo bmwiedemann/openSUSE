@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ae7461c3cff90fe8dac061a264efeee</srcmd5>
+    <version>20240918.c86bd4f</version>
+    <time>1727097552</time>
+    <user>anag+factory</user>
+    <comment>Let services and container survive a soft-reboot</comment>
+    <requestid>1202255</requestid>
+  </revision>
+</revisionlist>
