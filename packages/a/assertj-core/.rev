@@ -23,4 +23,12 @@
     <comment>Some more action for conflict/choice of providers</comment>
     <requestid>1176654</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>96f8c330a1e2735842eef0be1debc94a</srcmd5>
+    <version>3.25.3</version>
+    <time>1727097795</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202515</requestid>
+  </revision>
 </revisionlist>

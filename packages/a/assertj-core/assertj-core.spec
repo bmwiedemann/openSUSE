@@ -72,7 +72,9 @@ This package provides API documentation for %{name}.
 %pom_add_dep org.apiguardian:apiguardian-api:1.1.2:provided
 
 %build
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.release=8 -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.release=8 -Dsource=8
 
 %install
 %mvn_install

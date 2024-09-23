@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 05:32:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Fri May 24 05:36:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Require in OBS junit5-minimal to avoid provider choice
