@@ -1,0 +1,53 @@
+--- build.xml	2024-09-22 12:25:07.874769227 +0200
++++ build.xml	2024-09-22 12:25:21.108202662 +0200
+@@ -56,9 +56,6 @@
+ 	  <property name="build.dest" value="${build.dir}/classes"/>
+ 	  <property name="src.dir" value="./src"/>
+ 	  <property name="bin.dir" value="./bin"/>
+-      <condition property="sun.codec.present" >
+-        <available classname="com.sun.image.codec.jpeg.JPEGCodec"/>
+-      </condition>
+   </target>
+ 
+   <target name="prepare" depends="init">
+@@ -88,7 +85,6 @@
+   <target name="compile2" depends="prepare">
+     <javac srcdir="${src.dir}" excludes="org/apache/stylebook/processors/XalanProcessor.java" destdir="${build.dest}" debug="${debug}">
+         <exclude name="**/org/apache/stylebook/processors/XalanProcessor.java"/>
+-        <exclude name="**/org/apache/stylebook/printers/ImagePrinter.java" unless="sun.codec.present"/>
+     </javac>
+     <copy todir="${build.dest}/org/apache/stylebook/data">
+       <fileset dir="${build.src}/org/apache/stylebook/data"/>
+--- src/org/apache/stylebook/printers/ImagePrinter.java	2024-09-22 12:25:07.878102586 +0200
++++ src/org/apache/stylebook/printers/ImagePrinter.java	2024-09-22 12:25:21.108202662 +0200
+@@ -8,7 +8,9 @@
+ package org.apache.stylebook.printers;
+ 
+ import org.apache.stylebook.*;
+-import com.sun.image.codec.jpeg.*;
++import javax.imageio.*;
++import javax.imageio.plugins.jpeg.*;
++import javax.imageio.stream.*;
+ import java.io.IOException;
+ import java.io.OutputStream;
+ import java.io.PrintStream;
+@@ -144,11 +146,14 @@
+             }
+         }
+ 
+-        // Write out image (highest quality for jpeg data)
+-        JPEGEncodeParam jpar=JPEGCodec.getDefaultJPEGEncodeParam(img);
+-        jpar.setQuality(1,true);
+-        JPEGImageEncoder jenc=JPEGCodec.createJPEGEncoder(out,jpar);
+-        jenc.encode(img);
++        // Write out image
++        ImageWriter encoder =
++            (ImageWriter)ImageIO.getImageWritersByFormatName("jpeg").next();
++        ImageWriteParam param = encoder.getDefaultWriteParam();
++        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
++        param.setCompressionQuality(1);
++        encoder.setOutput(new MemoryCacheImageOutputStream(out));
++        encoder.write(null, new IIOImage(img, null, null), param);
+         out.flush();
+     }
+ 

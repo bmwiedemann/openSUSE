@@ -1,0 +1,60 @@
+--- build.xml	2024-09-22 12:28:36.683013503 +0200
++++ build.xml	2024-09-22 12:30:09.423708245 +0200
+@@ -54,6 +54,7 @@
+ 	  <property name="build.dir" value="./build"/>
+ 	  <property name="build.src" value="${build.dir}/src"/>
+ 	  <property name="build.dest" value="${build.dir}/classes"/>
++	  <property name="build.javadoc" value="${build.dir}/javadoc"/>
+ 	  <property name="src.dir" value="./src"/>
+ 	  <property name="bin.dir" value="./bin"/>
+   </target>
+@@ -62,6 +63,7 @@
+     <mkdir dir="${build.dir}"/>
+     <mkdir dir="${build.src}"/>
+     <mkdir dir="${build.dest}"/>
++    <mkdir dir="${build.javadoc}"/>
+     <copy todir="${build.src}">
+       <fileset dir="${src.dir}"/>
+     </copy>
+@@ -83,14 +85,14 @@
+   
+ <!--Compile and Package to work with Xalan-J 2 -->
+   <target name="compile2" depends="prepare">
+-    <javac srcdir="${src.dir}" excludes="org/apache/stylebook/processors/XalanProcessor.java" destdir="${build.dest}" debug="${debug}">
++    <javac srcdir="${src.dir}" excludes="org/apache/stylebook/processors/XalanProcessor.java" destdir="${build.dest}" debug="${debug}" classpath="${classpath}">
+         <exclude name="**/org/apache/stylebook/processors/XalanProcessor.java"/>
+     </javac>
+     <copy todir="${build.dest}/org/apache/stylebook/data">
+       <fileset dir="${build.src}/org/apache/stylebook/data"/>
+     </copy>
+   </target>
+-  <target name="package2" depends="compile2">
++  <target name="package2" depends="compile2,javadoc">
+     <replace file="${build.dest}/org/apache/stylebook/data/engine.xml" token="XalanProcessor" value="Xalan2Processor"/>
+     <jar jarfile="${bin.dir}/${name}-${version-xalan-2}.jar" basedir="${build.dest}" includes="org/**"/>
+   </target>
+@@ -99,4 +101,24 @@
+     <deltree dir="${build.dir}"/>
+   </target>
+ 
++  <target name="javadoc" depends="prepare">
++    <javadoc destdir="${build.javadoc}"
++             additionalparam="-Xdoclint:none"
++             classpath="${classpath}"
++             packagenames="*"
++             noindex="false"
++             splitindex="true"
++             use="true"
++             version="true"
++             author="true"
++             windowtitle="${name} ${version-xalan-2}"
++             doctitle="${name} ${version-xalan-2} JavaDoc">
++      <fileset dir="${build.src}">
++        <exclude name="**/XalanProcessor.java"/>
++        <exclude name="**/stylebook/data/*"/>
++      </fileset>
++      <link href="/usr/share/javadoc/java" offline="true" packagelistLoc="/usr/share/javadoc/java"/>
++    </javadoc>
++  </target>
++
+ </project>
