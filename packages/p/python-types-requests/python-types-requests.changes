@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 23 08:46:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.0.20240914:
+  * Correct requests `cookies` argument
+  * requests: Session.adapters is a mapping of Adapters
+  * Add hint for requests.models.Response.raw
+  * requests: Add connection property (type HTTPAdapter) to the
+    Response class
+  * The `Response` instance is built by `HTTPAdapter`. When
+    built, a property called `connection` is added to the
+    `Response` that points back to the `HTTPAdapter` that created
+    it. For example, this is used in the `requests` library's
+    `HTTPDigestAuth` class to remake requests with credentials
+    after authorization is requested by a server.
+  * requests: Fix Response.content return type to include None
+  * [requests] Update to 2.32.3
+
+-------------------------------------------------------------------
 Wed Aug 28 20:37:09 UTC 2024 - Meera Belur <mbelur@suse.com>
 
-- Initial package 
+- Initial package

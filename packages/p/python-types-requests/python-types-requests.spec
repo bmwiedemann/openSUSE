@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-types-requests
-Version:        2.32.0.20240523
+Version:        2.32.0.20240914
 Release:        0
 Summary:        Typing stubs for requests
 License:        Apache-2.0
@@ -25,10 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python/typeshed
 Source:         https://files.pythonhosted.org/packages/source/t/types-requests/types-requests-%{version}.tar.gz
 Source99:       python-types-requests.rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module urllib3 >= 2}
 BuildRequires:  %{python_module mypy}
