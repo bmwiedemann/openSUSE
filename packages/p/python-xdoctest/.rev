@@ -92,4 +92,15 @@
     python 3.13 compliance.</comment>
     <requestid>1194647</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c95d6c8db24aada931fe84c3131c67e9</srcmd5>
+    <version>1.2.0</version>
+    <time>1727097828</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Support for top level awaits in async code examples.
+  * Dropped 3.6 and 3.7 support. Now supporting 3.6+ Use
+    xdoctest&lt;=1.1.6 for 3.6 or 3.7 support.</comment>
+    <requestid>1202569</requestid>
+  </revision>
 </revisionlist>

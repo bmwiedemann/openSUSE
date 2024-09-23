@@ -16,13 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-xdoctest
-Version:        1.1.6
+Version:        1.2.0
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/xdoctest
 Source:         https://github.com/Erotemic/xdoctest/archive/refs/tags/v%{version}.tar.gz#/xdoctest-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
