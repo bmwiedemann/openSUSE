@@ -21,4 +21,12 @@
   (gh#openSUSE/agama#1539)</comment>
     <requestid>1194878</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>253034d7f097675b5d6d12a11eb9bb83</srcmd5>
+    <version>0</version>
+    <time>1727097836</time>
+    <user>anag+factory</user>
+    <comment>- Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).</comment>
+    <requestid>1202587</requestid>
+  </revision>
 </revisionlist>
