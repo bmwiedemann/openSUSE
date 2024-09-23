@@ -214,4 +214,14 @@
   * allow to enable iso generation by flavor</comment>
     <requestid>1198285</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d86024144b86723df67ee7cd9c2bf2e8</srcmd5>
+    <version>0.4.18</version>
+    <time>1727097844</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.18
+  * Fix product name in SPDX SBOM files (was hardcoded to ALP)
+  * Some more progress lines for logfile</comment>
+    <requestid>1202607</requestid>
+  </revision>
 </revisionlist>

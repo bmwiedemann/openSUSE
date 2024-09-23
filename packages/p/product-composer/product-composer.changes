@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 10:50:59 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.18
+  * Fix product name in SPDX SBOM files (was hardcoded to ALP)
+  * Some more progress lines for logfile
+
+-------------------------------------------------------------------
 Mon Sep  2 12:18:07 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.17
