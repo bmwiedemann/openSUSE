@@ -17,10 +17,10 @@
 
 
 %define sover_major 0
-%define libname lib%{name}%{sover_major}_12
+%define libname lib%{name}%{sover_major}_13
 
 Name:           prometheus-cpp
-Version:        0.12.3
+Version:        0.13.0
 Release:        0
 Summary:        Prometheus client library for C++
 License:        MIT

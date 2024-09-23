@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 17 13:07:17 UTC 2024 - ncutler@suse.com - 0.13.0
+
+- Update to version 0.13.0:
+  * fix(core): Locale-independent floating-point serialization
+  * chore: prepare 0.13.0 release
+  * ci: iwyu entered Debian Sid
+  * chore(pull): Use civetweb 1.15
+  * chore: Use Google Benchmark 1.6.0
+  * docs: update Readme
+  * feat(pull): Use civetweb 1.15
+  * ci: Run iwyu 8.16 from Debian Experimental
+  * chore: update curl and Google Benchmark
+  * ci: select proper test configuration
+  * chore: add missing include for iwyu
+  * chore: update googletest and curl
+  * Add const/reserve (#495)
+  * Make summary quantiles non-const (#493)
+  * Update handler.cc
+  * Update handler.cc
+  * fix make_unique
+
+-------------------------------------------------------------------
 Mon Apr  8 12:07:56 UTC 2024 - Nathan Cutler <ncutler@suse.com>
 
 - spec: add Copyright boilerplate 
