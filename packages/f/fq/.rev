@@ -30,4 +30,41 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     your _service to use 'manual' and then 'manualrun/mr' instead. (forwarded request 1128988 from jfkw)</comment>
     <requestid>1128990</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b0727c3c139be7cc3275df77e9dcc10</srcmd5>
+    <version>0.13.0</version>
+    <time>1727097790</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.13.0
+  Changes
+  * New format decoders midi, negentropy, tap and txz
+  * Add byte_array bits format.
+  Format changes
+  * matroska Updated to latest specification.
+  * midi MIDI decoder added.
+  * negentropy Negentropy message decoder.
+  * tap and txz TAP and TXZ tape format for ZX Spectrum computers.
+- Update to version 0.12.0
+  Changes
+  * Update readline package to fix issue with left/right word jump
+    in REPL.
+  * Update of version of golang and other dependencies.
+  Format changes
+  * jpeg
+    + Decode DHT paramaters.
+    + Fix EOI description.
+- Update to version 0.11.0
+  Changes
+  * Add string_truncate option to configure how to truncate long
+    strings when displaying a decode value tree. dd, dv etc set
+    truncate length to zero to not truncate.
+  * gojq updates from upstream:
+    + Implement ltrim, rtrim, and trim functions.
+    + Fix object construction with duplicate keys
+      ({x:0,y:1} | {a:.x,a:.y}).
+    + Fix halt and halt_error functions to stop the command
+      execution immediately.
+    + Fix variable scope of binding syntax (forwarded request 1202408 from mnhauke)</comment>
+    <requestid>1202507</requestid>
+  </revision>
 </revisionlist>
