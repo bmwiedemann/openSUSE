@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           python-txtorcon
-Version:        23.11.0
+Version:        24.8.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
 URL:            https://txtorcon.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/t/txtorcon/txtorcon-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 36.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Automat
 Requires:       python-Twisted-tls >= 15.5.0
 Requires:       python-cryptography
-Requires:       python-six
 Requires:       python-zope.interface >= 3.6.1
 BuildArch:      noarch
 # SECTION test requirements
@@ -37,7 +38,6 @@ BuildRequires:  lsof
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module Twisted-tls >= 15.5.0}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
 %python_subpackages
 
@@ -51,10 +51,10 @@ unit-tests, examples, state-tracking code and configuration abstraction.
 sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # remove the tests from distribution
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/test/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -69,7 +69,7 @@ $python -m twisted.trial test
 %files %{python_files}
 %license LICENSE docs/*.rst
 %{python_sitelib}/txtorcon
-%{python_sitelib}/txtorcon-%{version}*-info
+%{python_sitelib}/txtorcon-%{version}.dist-info
 %{python_sitelib}/twisted/plugins/*
 
 %changelog

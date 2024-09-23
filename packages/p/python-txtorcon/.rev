@@ -139,4 +139,14 @@
  * Remove `incremental`</comment>
     <requestid>1135604</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2f7089a698cac372f14b959ff00c0cf</srcmd5>
+    <version>24.8.0</version>
+    <time>1727097827</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.8.0:
+  * Fix (test) issues with Twisted 24.7.0
+  * Remove usage of &quot;six&quot;</comment>
+    <requestid>1202567</requestid>
+  </revision>
 </revisionlist>

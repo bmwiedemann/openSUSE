@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 08:49:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.8.0:
+  * Fix (test) issues with Twisted 24.7.0
+  * Remove usage of "six"
+
+-------------------------------------------------------------------
 Fri Dec 29 09:02:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.11.0:
