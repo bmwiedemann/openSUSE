@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:23:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Bump black from 22.10.0 to 24.3.0
+  * Improve huge_patch test
+
+-------------------------------------------------------------------
 Thu Nov  9 02:39:23 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add sle15_python_module_pythons

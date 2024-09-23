@@ -46,4 +46,14 @@
     <comment></comment>
     <requestid>1124318</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa27b7b4f5064c9395b20f89aba0ed12</srcmd5>
+    <version>1.0.6</version>
+    <time>1727097834</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.6:
+  * Bump black from 22.10.0 to 24.3.0
+  * Improve huge_patch test</comment>
+    <requestid>1202584</requestid>
+  </revision>
 </revisionlist>
