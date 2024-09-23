@@ -59,4 +59,19 @@
 - Bring back DASD management support (gh#openSUSE/agama#1549).</comment>
     <requestid>1200783</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ecc276b254ea4d52a2b4c7b01e86a955</srcmd5>
+    <version>0</version>
+    <time>1727097838</time>
+    <user>anag+factory</user>
+    <comment>- Version 10
+
+- Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).
+
+- Bring back zFCP management support (gh#openSUSE/agama#1570).
+
+- Consider TypeScript files for translation
+  (gh#openSUSE/agama#1604).</comment>
+    <requestid>1202590</requestid>
+  </revision>
 </revisionlist>
