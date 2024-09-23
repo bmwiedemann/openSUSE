@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:48:44 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.13
+
+- Update 2.4.13
+  * docs: Use --verbose with performance CPython build instructions by @caerulescens in #3053
+  * Fix latest version resolution when using python- prefix by @edmorley in #3056
+  * Fix tgz checksum for 3.9.20; fallback OpenSSL URLs and checksums by @native-api in #3060
+  * Fix OpenSSL 3.3.2 download URLs by @edgarrmondragon in #3059
+  * Add GraalPy 24.1.0 by @msimacek in #3066
+
+-------------------------------------------------------------------
 Mon Sep  9 08:38:10 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.12
 
 - Update 2.4.12
