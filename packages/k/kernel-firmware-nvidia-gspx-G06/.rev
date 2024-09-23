@@ -163,4 +163,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>- added missing LICENSE file</comment>
     <requestid>1197777</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3b001d8d665b04b96b329f5925b97c87</srcmd5>
+    <version>550.120</version>
+    <time>1727097803</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.120 (boo#1230779)</comment>
+    <requestid>1202558</requestid>
+  </revision>
 </revisionlist>
