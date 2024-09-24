@@ -12,4 +12,4 @@ Advantages are:
 * ability to download patch files
 * cryptographically signed commits to impede tampering with history
 * even works on Thursdays (when we do maintenance of our infrastructure)
-* does not carry tarballs and other large binaries, so the whole repo is still below 1GB
+* does not carry tarballs and other large binaries, so the whole repo is still below 2GB
