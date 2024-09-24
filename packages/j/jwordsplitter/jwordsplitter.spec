@@ -1,7 +1,7 @@
 #
 # spec file for package jwordsplitter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,11 @@ java -cp target/classes de.danielnaber.jwordsplitter.converter.SerializeDict \
 %install
 %mvn_install
 # include the wordGerman.ser in the jar
-jar uf %{buildroot}%{_javadir}/%{name}/%{name}.jar -C tmp .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{buildroot}%{_javadir}/%{name}/%{name}.jar -C tmp .
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
