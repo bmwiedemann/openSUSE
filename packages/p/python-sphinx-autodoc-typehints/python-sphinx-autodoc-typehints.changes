@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:25:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.4:
+  * Fix placement of return type when there is a doctest
+  * README and CI fixes
+
+-------------------------------------------------------------------
 Sun Sep  8 13:20:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:

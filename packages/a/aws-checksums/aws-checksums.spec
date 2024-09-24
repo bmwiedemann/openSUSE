@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.1.18
+Version:        0.1.20
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -36,6 +36,17 @@ BuildRequires:  cmake(aws-c-common)
 %description
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
 configuration, data structures, and error handling.
+
+%package -n %{name}-bin
+Summary:        Binary files for aws-checksums library
+Group:          Development/Libraries/C and C++
+Requires:       lib%{name}%{library_soversion} = %{version}
+
+%description -n %{name}-bin
+Core c99 package for AWS SDK for C. Includes cross-platform primitives,
+configuration, data structures, and error handling.
+
+This package contains the binary files.
 
 %package -n lib%{name}%{library_soversion}
 Summary:        Shared library files for aws-checksums library
@@ -77,6 +88,9 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 
 %post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
 %postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+
+%files -n %{name}-bin
+%{_bindir}/checksum-profile
 
 %files -n lib%{name}%{library_soversion}
 %doc README.md

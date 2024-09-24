@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:17:58 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.0.11
+  * app: Use window groups
+  * app: Do not hold reference to window
+  * Port drawing to gsk::Path
+  * Update zbus to v4.0
+  * Update translations 
+- Remove pkgconfig(gdk-pixbuf-2.0) BuildRequires: unneeded anymore
+  on version 0.0.11
+- add meson_test to validate files
+
+-------------------------------------------------------------------
 Thu Oct 19 12:44:04 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

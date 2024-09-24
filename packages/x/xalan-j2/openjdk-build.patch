@@ -1,30 +1,8 @@
-diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
---- xalan-j_2_7_3.orig/build.xml	2023-08-30 18:36:44.177771503 +0200
-+++ xalan-j_2_7_3/build.xml	2023-08-30 18:49:32.266249508 +0200
-@@ -221,14 +221,12 @@
-     <pathelement location="${taglet.jar}" />
-     <pathelement location="${build.serializer.jar}" />
-     <pathelement location="${build.xalan.jar}" />
--    <pathelement path="${java.class.path}" />
-   </path>
-   <path id="samples.class.path">
-     <pathelement location="${xmlapis.jar}" />
-     <pathelement location="${build.serializer.jar}" />    
-     <pathelement location="${parser.jar}" />  
-     <pathelement location="${build.xalan.jar}" />
--    <pathelement path="${java.class.path}" />
-   </path>
-   <path id="compile.class.path">
-     <!-- Ensure the selected parser.jar file is used to compile against -->
-@@ -237,7 +235,6 @@
-     <pathelement location="${xmlapis.jar}" />
-     <pathelement location="${build.serializer.jar}" />
-     <pathelement location="${parser.jar}" />
--    <pathelement path="${java.class.path}" />
-   </path>
- 	
-   <path id="xslt.boot.class.path">
-@@ -398,7 +395,6 @@
+diff --git a/build.xml b/build.xml
+index 2a2703a..20fe6e4 100644
+--- a/build.xml
++++ b/build.xml
+@@ -391,7 +391,6 @@ $Id$
        <exclude name="**/IncrementalSAXSource_Xerces.java" 
          unless="xerces.present"	 />
        <classpath refid="compile.class.path" />
@@ -32,20 +10,20 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
      </javac>
      <!-- Copy needed properties, resource, etc. files to be put into .jar file -->
      <copy todir="${build.classes}">
-@@ -414,6 +410,12 @@
+@@ -407,6 +406,12 @@ $Id$
    <!-- =================================================================== -->
    <target name="xalan-interpretive.compile" depends="xml.compile"
      description="Compile the Xalan interpretive classes (skips XSLTC)" >
 +
-+    <gunzip src="${xml-commons-srcs.tar.gz}" dest="${build.dir}" />                                                                         
-+    <untar src="${xml-commons-srcs.tar}" 
++    <gunzip src="${xml-commons-srcs.tar.gz}" dest="${build.dir}" />
++    <untar src="${xml-commons-srcs.tar}"
 +           dest="${src.dir}">
 +    </untar>
 +
      <echo message="Compiling Xalan interpretive classes" />
      <javac srcdir="${src.dir}" 
             destdir="${build.classes}"
-@@ -425,7 +427,6 @@
+@@ -418,7 +423,6 @@ $Id$
        <include name="${xalan.reldir}/**/*.java" />
        <exclude name="${xsltc.reldir}/**/*.java" />
        <classpath refid="compile.class.path" />
@@ -53,45 +31,37 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
        <sourcepath refid="compile.source.path" />
      </javac>
      <!-- Copy needed properties, resource, etc. files to be put into .jar file -->
-@@ -454,7 +455,6 @@
-     <!-- build.classes needed for 
-          org.apache.xalan.xsltc.util.JavaCupRedirect -->
-     <pathelement location="${build.classes}" />
--    <pathelement path="${java.class.path}" />
-   </path>
- 
-   <!-- Attempt to determine dependency info for generated sources -->
-@@ -469,7 +469,6 @@
-     	   target="${compiler.target}" source="${compiler.source}"
+@@ -461,7 +465,6 @@ $Id$
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="xsltc.class.path" />
 -      <bootclasspath refid="xslt.boot.class.path" />
      </javac>
      <!-- These tricky uptodate statements hopefully determine if we 
           actually need to generate the java_cup and jlex files 
-@@ -534,7 +533,6 @@
-     	   target="${compiler.target}" source="${compiler.source}"
+@@ -526,7 +529,6 @@ $Id$
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}"> 
        <classpath refid="xsltc.class.path" />
 -      <bootclasspath refid="xslt.boot.class.path" />
      </javac>
    </target>
  
-@@ -549,7 +547,6 @@
-     	   target="${compiler.target}" source="${compiler.source}"
+@@ -541,7 +543,6 @@ $Id$
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="xsltc.class.path" />
 -      <bootclasspath refid="xslt.boot.class.path" />
      </javac>
    </target>
  
-@@ -748,104 +745,104 @@
+@@ -740,104 +741,104 @@ $Id$
      <!-- Since the samples are packageless, they must be compiled separately. -->   
      <javac srcdir="${samples.dir}/SimpleTransform" 
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -99,7 +69,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -107,7 +77,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -115,7 +85,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -123,13 +93,13 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
      <javac srcdir="${samples.dir}/Pipe"  
             destdir="${build.samples}"  excludes="${exclude}"
--           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
+-           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
@@ -138,7 +108,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -146,7 +116,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}"  excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -154,7 +124,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>
@@ -162,7 +132,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>             
@@ -170,7 +140,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -178,7 +148,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>           
@@ -186,7 +156,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path"
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac> 
@@ -194,7 +164,7 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
      </javac>
@@ -202,81 +172,69 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
        <classpath refid="samples.class.path" />
-@@ -889,7 +886,6 @@
+@@ -881,7 +882,6 @@ $Id$
       <javac srcdir="${samples.dir}/servlet"
              destdir="${build.servlet}/WEB-INF/classes"
              debug="${build.debug}"
 -            bootclasspathref="xslt.boot.class.path" 
-      	    target="${compiler.target}" source="${compiler.source}"
+      	    target="${compiler.target}" source="${compiler.source}" 
       	    nowarn="${compiler.nowarn}">
          <classpath refid="samples.class.path" />
-@@ -930,14 +926,14 @@
-   <target name="xsltc.samples.nojardepends">
-     <mkdir dir="${build.samples}"/>
+@@ -924,12 +924,12 @@ $Id$
      <javac srcdir="${samples.dir}/translets"
--           classpath="${java.class.path}:${build.xalan.jar}" 
-+           classpath="${build.xalan.jar}" 
+            classpath="${build.xalan.jar}" 
             destdir="${build.samples}" excludes="${exclude}" 
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}" 
-   	       target="${compiler.target}" source="${compiler.source}"
-   	       nowarn="${compiler.nowarn}"/>
+   	       target="${compiler.target}" source="${compiler.source}" 
+     	   nowarn="${compiler.nowarn}"/>
      <javac srcdir="${samples.dir}/CompiledJAXP"
             destdir="${build.samples}" excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
-+           debug="${build.debug}"
-   	       target="${compiler.target}" source="${compiler.source}"
-   	       nowarn="${compiler.nowarn}"/>
++           debug="${build.debug}" 
+   	       target="${compiler.target}" source="${compiler.source}" 
+     	   nowarn="${compiler.nowarn}"/>
    </target>
-@@ -951,7 +947,7 @@
+@@ -943,7 +943,7 @@ $Id$
      <mkdir dir="${build.samples}/CompiledApplet"/>
      <javac srcdir="${samples.dir}/CompiledApplet"
             destdir="${build.samples}/CompiledApplet" excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
-   	       nowarn="${compiler.nowarn}"/>
+     	   target="${compiler.target}" source="${compiler.source}" 
+     	   nowarn="${compiler.nowarn}"/>
      <jar jarfile="${build.xsltc.applet.jar}"
-@@ -968,7 +964,7 @@
+@@ -960,7 +960,7 @@ $Id$
      <mkdir dir="${build.samples}/CompiledBrazil"/>
      <javac srcdir="${samples.dir}/CompiledBrazil"
             destdir="${build.samples}/CompiledBrazil" excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
      	<classpath location="${brazil.jar}"/>
-@@ -989,7 +985,7 @@
+@@ -981,7 +981,7 @@ $Id$
      <mkdir dir="${build.samples}/CompiledEJB"/>
      <javac srcdir="${samples.dir}/CompiledEJB"
             destdir="${build.samples}/CompiledEJB" excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
-     	   target="${compiler.target}" source="${compiler.source}"
+     	   target="${compiler.target}" source="${compiler.source}" 
      	   nowarn="${compiler.nowarn}">
      	<classpath location="${javaee-api.jar}"/>
-@@ -1008,7 +1004,7 @@
+@@ -1000,7 +1000,7 @@ $Id$
      <mkdir dir="${build.samples}/CompiledServlet"/>
      <javac srcdir="${samples.dir}/CompiledServlet"
             destdir="${build.samples}/CompiledServlet" excludes="${exclude}"
 -           debug="${build.debug}" bootclasspathref="xslt.boot.class.path" 
 +           debug="${build.debug}"
      	   target="${compiler.target}" source="${compiler.source}" 
-     	   classpath="${build.xalan.jar}:${servlet-api.jar}"
+     	   classpath="${build.xalan.jar}:${servlet-api.jar}" 
      	   nowarn="${compiler.nowarn}">
-@@ -1627,7 +1623,7 @@
-     <!-- Use FOP to generate a pdf file (classpath may need updating! -sc 18-Apr-01)-->
-     <java fork="yes" 
-           classname="org.apache.fop.apps.CommandLine"
--      classpath="${java.class.path}:${build.xalan.jar}:${bin.dir}/fop.jar:${bin.dir}/w3c.jar">
-+      classpath="${build.xalan.jar}:${bin.dir}/fop.jar:${bin.dir}/w3c.jar">
-       <arg line="${build.docs}/xalan-collate.fo build/docs/xalan.pdf"/>
-     </java>
-   </target>
-@@ -1764,7 +1760,6 @@
+@@ -1760,7 +1760,6 @@ $Id$
      	   nowarn="${compiler.nowarn}">
        <include name="${serializer.reldir}/**/*.java" />
        <classpath refid="compile.class.path" />
@@ -284,5 +242,3 @@ diff -urEbwB xalan-j_2_7_3.orig/build.xml xalan-j_2_7_3/build.xml
      </javac>
      <!-- Copy needed properties, resource, etc. files to be put into .jar file -->
      <copy todir="${serializer.build.classes}">
-Only in xalan-j_2_7_3: build.xml.orig
-Only in xalan-j_2_7_3: build.xml.rej

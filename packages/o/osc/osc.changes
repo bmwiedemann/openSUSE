@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:05:28 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.9.2
+  - Command-line:
+    - Fix 'resolved' command to skip subdirectories in package checkouts
+    - Fix 'comment' command to resolve project name
+    - Implement meter.SimpleTextMeter that prints what's being downloaded
+  - Connection:
+    - Use configured 'http_headers' in HTTP requests
+  - Library:
+    - Fix storing _buildinfo and _buildconfig files in .osc rather than among the source files
+    - Use findtext() instead of find().text
+  - Spec:
+    - Recommend python3-zstandard to support opening control.tar.zst
+
+-------------------------------------------------------------------
 Tue Aug 27 11:54:50 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.9.1

@@ -1,0 +1,17 @@
+--- maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2024-09-23 11:44:25.479106748 +0200
++++ maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2024-09-23 12:10:05.439871672 +0200
+@@ -251,6 +251,14 @@
+         archiver.setArchiver( (JarArchiver) archivers.get( archiverName ) );
+         archiver.setOutputFile( jarFile );
+ 
++        if ( outputTimestamp == null ||
++            outputTimestamp.length() < 1 ||
++            ( ( outputTimestamp.length() == 1 )
++                && !Character.isDigit( outputTimestamp.charAt(0) ) ) )
++        {
++            outputTimestamp = System.getenv("SOURCE_DATE_EPOCH");
++        }
++
+         // configure for Reproducible Builds based on outputTimestamp value
+         archiver.configureReproducibleBuild( outputTimestamp );
+ 

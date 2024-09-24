@@ -134,4 +134,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148706</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>7d88bb8e814f63a44cc0d9c3cbe2d4ff</srcmd5>
+    <version>2.5.1</version>
+    <time>1727191982</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202707</requestid>
+  </revision>
 </revisionlist>

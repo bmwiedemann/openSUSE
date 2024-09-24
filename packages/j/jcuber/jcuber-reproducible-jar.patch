@@ -1,0 +1,11 @@
+--- jcuber-4.4.1/build-frontend/Makefile.in	2024-09-23 15:57:54.537303310 +0200
++++ jcuber-4.4.1/build-frontend/Makefile.in	2024-09-23 16:13:22.450597929 +0200
+@@ -1268,7 +1268,7 @@
+ 	list1=`find scalasca | grep '.class'`;\
+ 	list2=`find org | grep '.class'`;\
+ 	list="$$list1 $$list2";\
+-	$(JAR) cf $@ $$list 
++	$(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=$@ $$list 
+ 
+ classes_dir_struct:
+ 	@echo "Create classes directories"; \

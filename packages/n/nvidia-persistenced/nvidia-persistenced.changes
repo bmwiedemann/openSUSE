@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Sep 23 08:33:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't require libnvidia-cfg.so.1()(64bit), because this is part
+  of NVIDIA's proprietary userspace libs, which we cannot ship
+
+-------------------------------------------------------------------
+Fri Sep 20 10:58:39 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package
+  --> https://github.com/openSUSE/nvidia-driver-G06/issues/16

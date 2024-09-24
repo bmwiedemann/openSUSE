@@ -34,11 +34,9 @@ BuildRequires:  apache-commons-beanutils
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom
 BuildRequires:  tomcat-jsp-2_3-api
-Requires:       java >= 1.8
-Requires:       jdom >= 1.0
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
 Provides:       %{short_name} = %{version}-%{release}
@@ -75,16 +73,20 @@ build-jar-repository -s target/lib commons-beanutils jdom glassfish-servlet-api 
 sed -i "s/@name@/%{short_name}/g" src/conf/MANIFEST.MF
 sed -i "s/@fragment@/%{base_name}/g" src/conf/MANIFEST.MF
 sed -i "s/@version@/%{version}/g" src/conf/MANIFEST.MF
-jar ufm target/%{short_name}.jar src/conf/MANIFEST.MF
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=target/%{short_name}.jar --manifest=src/conf/MANIFEST.MF
 
 %install
 #jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 644 target/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -pm 0644 target/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 ln -sf %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

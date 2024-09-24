@@ -38,6 +38,7 @@ Patch2:         0002-Port-to-OSGI-7.0.0.patch
 Patch3:         0003-Remove-unmet-dependencies.patch
 Patch4:         0004-reproducible-timestamps.patch
 Patch5:         0005-reproducible-packages-list.patch
+Patch6:         0006-Set-reproducible-build-from-environment.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
@@ -91,6 +92,7 @@ build-jar-repository -s lib \
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 # the commands pull in more dependencies than we want (felix-resolver, jetty)
 rm biz.aQute.bnd/src/aQute/bnd/main/{ExportReportCommand,MbrCommand,RemoteCommand,ReporterLogger,ResolveCommand,Shell}.java

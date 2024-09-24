@@ -1,7 +1,7 @@
 #
 # spec file for package jcip-annotations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@ License:        CC-BY-2.5
 Group:          Development/Libraries/Java
 URL:            http://www.jcip.net/
 Source0:        http://www.jcip.net/jcip-annotations-src.jar
-Source1:        http://repo1.maven.org/maven/livetribe/maven/m2/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.pom
+Source1:        https://repo1.maven.org/maven2/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -52,40 +51,38 @@ mkdir -p src/main/java/
 mv net src/main/java
 
 %build
-export JAVA_HOME=%{_jvmdir}/java
-$JAVA_HOME/bin/javac -source 1.8 -target 1.8 -d target/classes $(find src/main/java -name "*.java")
-$JAVA_HOME/bin/javadoc -source 1.8 -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
+javac -source 1.8 -target 1.8 -d target/classes $(find src/main/java -name "*.java")
+javadoc -source 1.8 -notimestamp -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
 for f in $(find aQute/ -type f -not -name "*.class"); do
     cp $f target/classes/$f
 done
 pushd target/classes
-$JAVA_HOME/bin/jar cmf ../../META-INF/MANIFEST.MF ../%{name}-%{version}.jar *
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --manifest=../../META-INF/MANIFEST.MF --file=../%{name}-%{version}.jar *
 popd
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 target/%{name}-%{version}.jar \
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
 
 # javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name} # ghost symlink
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%{_javadir}/*
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml
+%files -f .mfiles
 
 %files javadoc
-%doc %{_javadocdir}/%{name}-%{version}
-%doc %{_javadocdir}/%{name}
+%{_javadocdir}/%{name}
 
 %changelog

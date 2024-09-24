@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
-%define tar_version 05.00.05
+%define tar_version 05.00.06
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -90,6 +90,7 @@ make DESTDIR=%{buildroot} install
 %dir /usr/share/remind/site
 /usr/share/remind/ansitext.rem
 /usr/share/remind/holidays/ca.rem
+/usr/share/remind/holidays/chinese-new-year.rem
 /usr/share/remind/holidays/fr.rem
 /usr/share/remind/holidays/gr.rem
 /usr/share/remind/holidays/ie.rem

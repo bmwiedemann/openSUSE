@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:26:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.28
+  * Add aws_ prefix to prebuild_dependency CMake function name by @sfod in (#1146)
+  * Makefile.common updates for CBMC by @tautschnig in (#1148)
+  * Run proofs with CBMC 6.2.0 by @graebm in (#1149)
+  * Only set mtune neoverse if compiler supports it by @DmitriyMusatkin in (#1150)
+
+-------------------------------------------------------------------
 Mon Aug 26 14:56:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.27

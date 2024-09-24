@@ -201,4 +201,26 @@
   * pkg/terminal,service/debugger: Support to add a new suboption --follow-calls to trace subcommand  (#3594) (forwarded request 1188049 from jfkw)</comment>
     <requestid>1188050</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e0a29a62e004715015db7ace4d0d462d</srcmd5>
+    <version>1.23.1</version>
+    <time>1727191998</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.23.1:
+  * *: release version 1.23.1 (#3816)
+  * proc: cache module data (#3800)
+  * proc: for optimized functions allow .closureptr to not exist (#3808)
+  * proc: improve Rosetta check (#3810)
+  * proc: fix result type of division of untyped constants (#3794)
+  * service/dap: fix test failure with 1.24 (#3805)
+  * service/dap: make handlesMap generic (#3798)
+  * proc: workaround for macOS section name truncation (#3799)
+  * terminal/starbind: fix starlark conversion of named consts (#3802)
+  * chore: fix function name (#3803)
+  * eval: Allow reslicing a slice up to its cap, rather than its length (#3796)
+  * proc: fix TestRangeOverFuncNext on linux/386 (#3795)
+  * proc: fix step stuttering when entering range-over-func bodies (#3788)
+  * proc: move stepping test to their own file (#3784) (forwarded request 1202749 from jfkw)</comment>
+    <requestid>1202750</requestid>
+  </revision>
 </revisionlist>

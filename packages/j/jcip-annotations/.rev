@@ -106,4 +106,12 @@ Most of the pattern matches in the package are for CC-BY-2.5, not CC-BY-3.0 (for
     <comment>Build with source and target levels 8</comment>
     <requestid>964417</requestid>
   </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>023b4a5b399624554a28a7bd0596c839</srcmd5>
+    <version>1.0</version>
+    <time>1727191954</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202690</requestid>
+  </revision>
 </revisionlist>

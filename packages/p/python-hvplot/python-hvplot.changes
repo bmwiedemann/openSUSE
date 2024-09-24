@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 22 13:20:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Make testing multibuild in order to avoid resolver errors with
+  numba and numpy.
+
+-------------------------------------------------------------------
 Fri Aug 30 13:18:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Unpin numpy 2

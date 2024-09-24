@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 16 14:31:26 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- update to version 2.5.0:
+  * Remove unnecessary git-cliff-action output file
+  * Include new contributors in repository changelog 
+  * Check for null commit_id in detailed templa
+  * Fix comment for changelog header template 
+  * Update keepachangelog.toml comme
+  * Clarify authentication with GitHub tok
+  * Correct inverted consequences of configuration val
+  * Make example templates more user-friendly 
+  * Clean up url encoding for GitLab 
+  * Allow using --bumped-version without conventional commits
+  * Allow using environment variables without config file present
+  * Fix fetching repository for gitlab integration test
+  * URL-encode the owner in remote requests for GitLab
+  * Include for-loop arguments in template variables
+  * Allow GitLab groups with --gitlab-repo
+  * Support bumping to a specific semver type
+  * Support count_tags option
+  * Skip ssh and x509 signatures in tag messages
+  * Generate changelog from JSON context
+  * Allow whole commit context to be used in commit parsers
+  * Support performance profiling via pprof
+  * Activate integration if remote is set manually
+
+-------------------------------------------------------------------
 Sat Jul  6 20:36:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.4.0:

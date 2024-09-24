@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 23 06:17:02 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update vendor.tar.zst: gix-path improper path resolution
+  (bsc#1230688 CVE-2024-45405).
+
+-------------------------------------------------------------------
 Tue Sep  3 14:26:47 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update vendored deps to resolve boo#1230083

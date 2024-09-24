@@ -1121,4 +1121,29 @@ Build tested.
     <comment></comment>
     <requestid>1200676</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>470b9d8c166904a41a4b0f6ed42a8edf</srcmd5>
+    <version>1.2.4</version>
+    <time>1727191887</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.4:
+  + Highlights:
+    - Avoid a crash in cleanup of globals.
+    - Use systemd-logind to scan for new devices in v4l2.
+    - Some more bugfixes and improvements.
+  + PipeWire:
+    - Avoid a crash in cleanup of globals.
+    - Improve RequestProcess dispatch.
+  + Tools:
+    - Improve float parsing.
+  + SPA:
+    - Clear the ringbuffer when stopping in libcamera.
+    - Use systemd-logind to scan for new devices in v4l2.
+    - Queue dropped first buffer in v4l2.
+    - Unlink pcm devices when moving drivers to avoid broken pipe.
+  + JACK:
+    - Emit buffer_size callback in jack_activate() to improve
+      compatibility with GStreamer.</comment>
+    <requestid>1202730</requestid>
+  </revision>
 </revisionlist>

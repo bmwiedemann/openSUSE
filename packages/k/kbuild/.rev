@@ -312,4 +312,14 @@
     <comment></comment>
     <requestid>1179187</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>66667013b6f86c0e9bf82b683688febd</srcmd5>
+    <version>0.1.9998+svn3613</version>
+    <time>1727191878</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 0.1.9998+svn3613
+
+new version required for Vbox 7.1 (forwarded request 1202284 from jengelh)</comment>
+    <requestid>1202613</requestid>
+  </revision>
 </revisionlist>

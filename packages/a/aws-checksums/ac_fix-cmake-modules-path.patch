@@ -1,6 +1,6 @@
-diff -Nru aws-checksums-0.1.8.orig/CMakeLists.txt aws-checksums-0.1.8/CMakeLists.txt
---- aws-checksums-0.1.8.orig/CMakeLists.txt	2020-07-16 22:22:27.000000000 +0200
-+++ aws-checksums-0.1.8/CMakeLists.txt	2020-08-14 14:04:46.532565535 +0200
+diff -Nru aws-checksums-0.1.20.orig/CMakeLists.txt aws-checksums-0.1.20/CMakeLists.txt
+--- aws-checksums-0.1.20.orig/CMakeLists.txt	2024-09-13 18:19:34.000000000 +0000
++++ aws-checksums-0.1.20/CMakeLists.txt	2024-09-17 10:59:10.258664608 +0000
 @@ -16,17 +16,10 @@
      file(TO_CMAKE_PATH "${CMAKE_INSTALL_PREFIX}" CMAKE_INSTALL_PREFIX)
  endif()
@@ -20,9 +20,9 @@ diff -Nru aws-checksums-0.1.8.orig/CMakeLists.txt aws-checksums-0.1.8/CMakeLists
 -list(APPEND CMAKE_MODULE_PATH ${AWS_MODULE_PATH})
 +include(GNUInstallDirs)
  
+ include(AwsSIMD)
  include(AwsCFlags)
- include(AwsCheckHeaders)
-@@ -140,7 +133,7 @@
+@@ -151,7 +144,7 @@
  endif()
  
  install(EXPORT "${PROJECT_NAME}-targets"
@@ -31,7 +31,7 @@ diff -Nru aws-checksums-0.1.8.orig/CMakeLists.txt aws-checksums-0.1.8/CMakeLists
          NAMESPACE AWS::
          COMPONENT Development)
  
-@@ -149,7 +142,7 @@
+@@ -160,7 +153,7 @@
          @ONLY)
  
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"

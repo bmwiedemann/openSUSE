@@ -1,6 +1,7 @@
-diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.MF xalan-j_2_7_3/src/MANIFEST.MF
---- xalan-j_2_7_3.orig/src/MANIFEST.MF	2023-08-30 18:36:44.211105060 +0200
-+++ xalan-j_2_7_3/src/MANIFEST.MF	2023-08-30 18:39:12.542098631 +0200
+diff --git a/src/MANIFEST.MF b/src/MANIFEST.MF
+index 15a12ae..43c7c3b 100644
+--- a/src/MANIFEST.MF
++++ b/src/MANIFEST.MF
 @@ -1,7 +1,6 @@
  Manifest-Version: 1.0
  Created-By: @java.version@ (@java.vendor@)
@@ -9,7 +10,7 @@ diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.MF xalan-j_2_7_3/src/MANIFEST.MF
  
  
  Name: org/apache/xalan/
-@@ -38,33 +37,3 @@
+@@ -38,33 +37,3 @@ Implementation-Version: @impl.version@
  Implementation-Vendor: Apache Software Foundation
  Implementation-URL: https://xalan.apache.org/xalan-j/
  
@@ -43,9 +44,10 @@ diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.MF xalan-j_2_7_3/src/MANIFEST.MF
 -Implementation-Vendor: Apache Software Foundation
 -Implementation-URL: http://jakarta.apache.org/regexp
 -
-diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.SERIALIZER xalan-j_2_7_3/src/MANIFEST.SERIALIZER
---- xalan-j_2_7_3.orig/src/MANIFEST.SERIALIZER	2023-08-30 18:36:44.211105060 +0200
-+++ xalan-j_2_7_3/src/MANIFEST.SERIALIZER	2023-08-30 18:38:46.375256700 +0200
+diff --git a/src/MANIFEST.SERIALIZER b/src/MANIFEST.SERIALIZER
+index 54be291..4bc1c11 100644
+--- a/src/MANIFEST.SERIALIZER
++++ b/src/MANIFEST.SERIALIZER
 @@ -1,7 +1,6 @@
  Manifest-Version: 1.0
  Created-By: @java.version@ (@java.vendor@)
@@ -54,9 +56,10 @@ diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.SERIALIZER xalan-j_2_7_3/src/MANIFE
  
  Name: org/apache/xml/serializer/
  Comment: Serializer to write out XML, HTML etc. as a stream of characters from an input DOM or from input SAX events.
-diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xalan-interpretive xalan-j_2_7_3/src/manifest.xalan-interpretive
---- xalan-j_2_7_3.orig/src/manifest.xalan-interpretive	2023-08-30 18:36:44.211105060 +0200
-+++ xalan-j_2_7_3/src/manifest.xalan-interpretive	2023-08-30 18:38:46.375256700 +0200
+diff --git a/src/manifest.xalan-interpretive b/src/manifest.xalan-interpretive
+index fd5882a..f1c895e 100644
+--- a/src/manifest.xalan-interpretive
++++ b/src/manifest.xalan-interpretive
 @@ -1,7 +1,6 @@
  Manifest-Version: 1.0
  Created-By: @java.version@ (@java.vendor@)
@@ -65,9 +68,10 @@ diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xalan-interpretive xalan-j_2_7_3/sr
  
  Name: org/apache/xalan/
  Comment: Main Xalan engine implementing TrAX/JAXP
-diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xsltc xalan-j_2_7_3/src/manifest.xsltc
---- xalan-j_2_7_3.orig/src/manifest.xsltc	2023-08-30 18:36:44.211105060 +0200
-+++ xalan-j_2_7_3/src/manifest.xsltc	2023-08-30 18:39:52.469032707 +0200
+diff --git a/src/manifest.xsltc b/src/manifest.xsltc
+index fd24887..2c99f38 100644
+--- a/src/manifest.xsltc
++++ b/src/manifest.xsltc
 @@ -1,6 +1,5 @@
  Manifest-Version: 1.0
  Created-By: @java.version@ (@java.vendor@)
@@ -75,7 +79,7 @@ diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xsltc xalan-j_2_7_3/src/manifest.xs
  
  Name: org/apache/xalan/xsltc/
  Comment: Main XSLTC engine implementing TrAX/JAXP
-@@ -19,33 +18,3 @@
+@@ -19,33 +18,3 @@ Implementation-Version: @impl.version@
  Implementation-Vendor: Apache Software Foundation
  Implementation-URL: http://xml.apache.org/xalan-j/dist/
  

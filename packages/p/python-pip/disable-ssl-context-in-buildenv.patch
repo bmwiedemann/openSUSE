@@ -7,7 +7,7 @@ Index: pip-24.2/src/pip/_vendor/requests/adapters.py
          extract_zipped_paths(DEFAULT_CA_BUNDLE_PATH)
      )
 -except ImportError:
-+except (ImportError, FileNotFoundError):
++except (ImportError, FileNotFoundError, ssl.SSLError):
      # Bypass default SSLContext creation when Python
      # interpreter isn't built with the ssl module.
      _preloaded_ssl_context = None
@@ -22,7 +22,7 @@ Index: pip-24.2/src/pip/_internal/cli/index_command.py
 -    ctx.load_verify_locations(certifi.where())
 +    try:
 +        ctx.load_verify_locations(certifi.where())
-+    except FileNotFoundError:
++    except (FileNotFoundError, ssl.SSLError):
 +        logger.warning("Disabling truststore because of missing certificates")
 +        return None
      return ctx

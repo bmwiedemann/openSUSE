@@ -1,0 +1,10 @@
+<package name="frog-protocols" project="openSUSE:Factory">
+  <title>frog-protocols - Faster moving Wayland protocols</title>
+  <description>frog-protocols contains Wayland protocol definitions for protocols
+being developed in a more agile fashion to enable shipping
+functionality to users more quickly. It is intended to
+accelerate development of formal Wayland protocols.
+</description>
+  <devel project="X11:Wayland" package="frog-protocols"/>
+  <url>https://github.com/misyltoad/frog-protocols</url>
+</package>

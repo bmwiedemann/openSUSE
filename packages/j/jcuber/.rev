@@ -16,4 +16,12 @@
     <comment></comment>
     <requestid>715557</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d27d314138138b1ce6942b0db61e957c</srcmd5>
+    <version>4.4.1</version>
+    <time>1727191966</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202689</requestid>
+  </revision>
 </revisionlist>

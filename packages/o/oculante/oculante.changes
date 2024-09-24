@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 20:48:21 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.1:
+  + Bug Fixes
+    - Prevent scrollbars from occluding info panel
+    - Noise filter ui would extend panel too much
+  + Chore
+    - Fix wronf icon for Rotate operator
+
+-------------------------------------------------------------------
 Sun Sep 22 00:07:11 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - add appstream-glib BuildRequires: for validate xml file

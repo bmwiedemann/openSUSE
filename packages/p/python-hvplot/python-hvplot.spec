@@ -16,7 +16,16 @@
 #
 
 
-Name:           python-hvplot
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-hvplot%{psuffix}
 Version:        0.10.0
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
@@ -25,9 +34,7 @@ URL:            https://github.com/pyviz/hvplot
 Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%{version}.tar.gz
 # Test data. Bump the commit whenever you bump this version
 Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
-BuildRequires:  %{python_module param >= 1.9 with %python-param < 3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,19 +71,15 @@ Recommends:     python-spatialpandas
 Recommends:     python-streamz >= 0.3.0
 Recommends:     python-xarray
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
+##
+BuildRequires:  %{python_module hvplot = %{version}}
+##
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh >= 1.0.0}
-BuildRequires:  %{python_module colorcet >= 2}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader}
-BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module numpy >= 1.15}
-BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module panel >= 0.11.0}
-BuildRequires:  %{python_module param >= 1.9.0}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pooch}
@@ -86,7 +89,7 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module streamz >= 0.3.0}
 BuildRequires:  %{python_module xarray}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -102,16 +105,17 @@ mkdir -p cache/xarray_tutorial_data
 pushd cache/xarray_tutorial_data
 tar -x -f %{SOURCE1} --strip-components=1
 popd
-sed -i "s/import xarray as xr/import pytest; xr = pytest.importorskip('xarray')/" hvplot/tests/test*.py
-sed -i "s/import hvplot.xarray/import pytest; xarray = pytest.importorskip('xarray')/" hvplot/tests/testinteractive.py
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # set pooch cache dir
 export XDG_CACHE_HOME=$(pwd)/cache
@@ -127,12 +131,15 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_plot_resolution_with_rasterize"
 fi
 %pytest hvplot/tests/test* -n auto -ra -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/hvplot
 %exclude %{python_sitelib}/hvplot/tests
 %{python_sitelib}/hvplot-%{version}.dist-info
+%endif
 
 %changelog

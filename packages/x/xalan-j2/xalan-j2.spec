@@ -16,39 +16,39 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "extras"
+%bcond_without extras
+%else
+%bcond_with extras
+%endif
 %define cvs_version 2_7_3
-Name:           xalan-j2
+%global base_name xalan-j2
 Version:        2.7.3
 Release:        0
 Summary:        Java XSLT processor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://xalan.apache.org/index.html
-Source0:        https://www.apache.org/dist/xalan/xalan-j/source/xalan-j_%{cvs_version}-src.tar.gz
+Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://repo1.maven.org/maven2/xalan/xalan/%{version}/xalan-%{version}.pom
 Source2:        https://repo1.maven.org/maven2/xalan/serializer/%{version}/serializer-%{version}.pom
 Source3:        xsltc-%{version}.pom
 Source4:        xalan-j2-serializer-MANIFEST.MF
 Source5:        xalan-j2-MANIFEST.MF
 # OSGi manifests
-Patch0:         %{name}-noxsltcdeps.patch
-Patch1:         %{name}-manifest.patch
-Patch2:         %{name}-crosslink.patch
+Patch0:         %{base_name}-noxsltcdeps.patch
+Patch1:         %{base_name}-manifest.patch
+Patch2:         %{base_name}-crosslink.patch
 Patch3:         openjdk-build.patch
 BuildRequires:  ant
-BuildRequires:  bcel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-cup-bootstrap
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jlex
-BuildRequires:  regexp
-BuildRequires:  servletapi5
 BuildRequires:  xml-commons-apis-bootstrap
 #!BuildIgnore:  apache-commons-lang3
 #!BuildIgnore:  java-cup
-#!BuildIgnore:  xerces-j2
 #!BuildIgnore:  xml-commons
 #!BuildIgnore:  xml-commons-apis
 #!BuildIgnore:  xml-commons-jaxp-1.3-apis
@@ -58,6 +58,24 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       jaxp_transform_impl
 BuildArch:      noarch
+%if %{with extras}
+Name:           %{base_name}-extras
+%else
+Name:           %{base_name}
+%endif
+%if %{with extras}
+BuildRequires:  bcel
+BuildRequires:  dejavu-fonts
+BuildRequires:  java-cup-bootstrap
+BuildRequires:  jlex
+BuildRequires:  regexp
+BuildRequires:  servletapi5
+BuildRequires:  xalan-j2
+BuildRequires:  xerces-j2
+BuildRequires:  xml-stylebook
+%else
+#!BuildIgnore:  xerces-j2
+%endif
 
 %description
 Xalan is an XSLT processor for transforming XML documents into HTML,
@@ -66,7 +84,7 @@ Recommendations for XSL Transformations (XSLT) and the XML Path
 Language (XPath). It can be used from the command line, in an applet or
 a servlet, or as a module in other program.
 
-%package        xsltc
+%package        -n %{base_name}-xsltc
 Summary:        Java XSLT compiler
 Group:          Development/Libraries/Java
 Requires:       bcel
@@ -75,15 +93,15 @@ Requires:       jaxp_parser_impl
 Requires:       jlex
 Requires:       regexp
 
-%description    xsltc
+%description    -n %{base_name}-xsltc
 The XSLT Compiler is a Java-based tool for compiling XSLT stylesheets
 into lightweight and portable Java byte codes called translets.
 
-%package        manual
+%package        -n %{base_name}-manual
 Summary:        Manual for xalan-j2
 Group:          Development/Libraries/Java
 
-%description    manual
+%description    -n %{base_name}-manual
 Xalan is an XSLT processor for transforming XML documents into HTML,
 text, or other XML document types. It implements the W3C
 Recommendations for XSL Transformations (XSLT) and the XML Path
@@ -92,13 +110,13 @@ a servlet, or as a module in other program.
 
 This package contains the manual for Xalan.
 
-%package        demo
+%package        -n %{base_name}-demo
 Summary:        Demonstration and samples for xalan-j2
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{base_name} = %{version}-%{release}
 Requires:       servlet
 
-%description    demo
+%description    -n %{base_name}-demo
 Xalan is an XSLT processor for transforming XML documents into HTML,
 text, or other XML document types. It implements the W3C
 Recommendations for XSL Transformations (XSLT) and the XML Path
@@ -108,78 +126,89 @@ a servlet, or as a module in other program.
 This package contains demonstration and sample files for Xalan.
 
 %prep
-%setup -q -n xalan-j_%{cvs_version}
+%setup -q -n %{base_name}-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
-# Remove all binary libs, except ones needed to build docs and N/A elsewhere.
-for j in $(find . -name "*.jar"); do
-        mv $j $j.no
-done
-mv tools/xalan2jdoc.jar.no tools/xalan2jdoc.jar
-mv tools/xalan2jtaglet.jar.no tools/xalan2jtaglet.jar
-dos2unix KEYS LICENSE.txt NOTICE.txt xdocs/sources/xsltc/README.xsltc xdocs/sources/xsltc/README.xslt
 
 %build
 if [ ! -e "$JAVA_HOME" ] ; then export JAVA_HOME="%{java_home}" ; fi
 pushd lib
+%if %{with extras}
 ln -sf $(build-classpath java-cup-runtime) runtime.jar
 ln -sf $(build-classpath bcel) bcel-6.7.0.jar
 ln -sf $(build-classpath regexp) regexp.jar
+pushd endorsed
 ln -sf $(build-classpath xerces-j2) xercesImpl.jar
-ln -sf $(build-classpath xml-commons-apis) xml-apis.jar
+ln -sf $(build-classpath xml-apis) xml-apis.jar
+popd
+%endif
 popd
 pushd tools
-ln -sf $(build-classpath java-cup) java_cup.jar
 ln -sf $(build-classpath ant) ant.jar
+%if %{with extras}
+ln -sf $(build-classpath java-cup) java_cup.jar
 ln -sf $(build-classpath jlex) JLex.jar
-ln -sf $(build-classpath stylebook) stylebook-1.0-b3_xalan-2.jar
+ln -sf $(build-classpath xml-stylebook) stylebook-1.0-b3_xalan-2.jar
+%endif
 popd
+%if %{with extras}
+mkdir -p build
+pushd build
+ln -sf $(build-classpath %{base_name}) xalan-interpretive.jar
+popd
+%endif
+
 %{ant} \
-  -Dservlet-api.jar=$(build-classpath servletapi5) \
   -Dcompiler.source=1.8 -Dcompiler.target=1.8 \
   -Djava.awt.headless=true \
   -Dapi.j2se=%{_javadocdir}/java \
   -Dbuild.xalan-interpretive.jar=build/xalan-interpretive.jar \
-  xalan-interpretive.jar\
+%if %{with extras}
+  -Dservlet-api.jar=$(build-classpath servletapi5) \
   xsltc.unbundledjar \
   docs \
   xsltc.docs \
   samples \
   servlet
+%else
+  xalan-interpretive.jar
 
 # inject OSGi manifests
-jar ufm build/serializer.jar %{SOURCE4}
-jar ufm build/xalan-interpretive.jar %{SOURCE5}
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=build/serializer.jar --manifest=%{SOURCE4}
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=build/xalan-interpretive.jar --manifest=%{SOURCE5}
+
+%endif
 
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
+%if %{without extras}
 install -p -m 644 build/xalan-interpretive.jar \
-  %{buildroot}%{_javadir}/%{name}.jar
+  %{buildroot}%{_javadir}/%{base_name}.jar
+install -p -m 644 build/serializer.jar \
+  %{buildroot}%{_javadir}/%{base_name}-serializer.jar
+%else
 install -p -m 644 build/xsltc.jar \
   %{buildroot}%{_javadir}/xsltc.jar
-install -p -m 644 build/serializer.jar \
-  %{buildroot}%{_javadir}/%{name}-serializer.jar
+%endif
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
-%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-serializer.pom
-%add_maven_depmap %{name}-serializer.pom %{name}-serializer.jar
-%{mvn_install_pom} %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc.pom
-%add_maven_depmap xsltc.pom xsltc.jar -f xsltc
-
-# demo
-install -d -m 755 %{buildroot}%{_datadir}/%{name}
-install -p -m 644 build/xalansamples.jar \
-  %{buildroot}%{_datadir}/%{name}/%{name}-samples.jar
-install -p -m 644 build/xalanservlet.war \
-  %{buildroot}%{_datadir}/%{name}/%{name}-servlet.war
-cp -pr samples %{buildroot}%{_datadir}/%{name}
-%fdupes -s %{buildroot}%{_datadir}/%{name}
+%if %{without extras}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{base_name}.pom
+%add_maven_depmap %{base_name}.pom %{base_name}.jar
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{base_name}-serializer.pom
+%add_maven_depmap %{base_name}-serializer.pom %{base_name}-serializer.jar
 
 # alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -189,14 +218,32 @@ ln -sf %{_sysconfdir}/alternatives/jaxp_transform_impl.jar %{buildroot}%{_javadi
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/ant.d/
 echo xalan-j2-serializer > %{buildroot}/%{_sysconfdir}/ant.d/serializer
 
+%else
+%{mvn_install_pom} %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc.pom
+%add_maven_depmap xsltc.pom xsltc.jar -f xsltc
+
+# demo
+install -d -m 755 %{buildroot}%{_datadir}/%{base_name}
+install -p -m 644 build/xalansamples.jar \
+  %{buildroot}%{_datadir}/%{base_name}/%{base_name}-samples.jar
+install -p -m 644 build/xalanservlet.war \
+  %{buildroot}%{_datadir}/%{base_name}/%{base_name}-servlet.war
+cp -pr samples %{buildroot}%{_datadir}/%{base_name}
+%fdupes -s %{buildroot}%{_datadir}/%{base_name}
+
+# manual
+%fdupes -s build/docs
+%endif
+
+%if %{without extras}
 %post
 update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
-  jaxp_transform_impl %{_javadir}/%{name}.jar 30
+  jaxp_transform_impl %{_javadir}/%{base_name}.jar 30
 
 %preun
 {
   [ $1 = 0 ] || exit 0
-  update-alternatives --remove jaxp_transform_impl %{_javadir}/%{name}.jar
+  update-alternatives --remove jaxp_transform_impl %{_javadir}/%{base_name}.jar
 } >/dev/null 2>&1 || :
 
 %files -f .mfiles
@@ -207,14 +254,18 @@ update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
 %ghost %{_sysconfdir}/alternatives/jaxp_transform_impl.jar
 %{_javadir}/jaxp_transform_impl.jar
 
-%files xsltc -f .mfiles-xsltc
+%else
 
-%files manual
+%files -n %{base_name}-xsltc -f .mfiles-xsltc
+
+%files -n %{base_name}-manual
 %defattr(0644,root,root,0755)
 %doc build/docs/*
 
-%files demo
+%files -n %{base_name}-demo
 %defattr(0644,root,root,0755)
-%{_datadir}/%{name}
+%{_datadir}/%{base_name}
+
+%endif
 
 %changelog

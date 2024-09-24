@@ -1,7 +1,7 @@
 #
 # spec file for package amdgpu_top
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           amdgpu_top
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Tool that displays AMD GPU utilization
 License:        MIT

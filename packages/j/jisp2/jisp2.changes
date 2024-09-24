@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 15:58:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jisp2-2.5.1-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for jar modification times
+- Modified patch:
+  * jisp2-2.5.1-javac-flags.patch
+    + build javadoc with the -notimestamp option
+
+-------------------------------------------------------------------
 Wed Feb 21 12:37:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

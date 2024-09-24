@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 20 19:12:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.1.9998+svn3613
+  * Qt6 support
+- Switch all patches to the same patch level (p1)
+- Delete kbuild-armv7l.diff (nonsensical change),
+  kBuild-configure-c99.patch, kBuild-configure-c99-2.patch,
+  kBuild-c99.patch, kBuild-c99-2.patch (obsolete)
+- Rework ppc64le.patch: reuse ppc64 arch enumerator value;
+  implement unconditional trap macro
+- Rework aarch64.patch: define aarch64 as a full alias of arm64
+
+-------------------------------------------------------------------
 Fri Jun  7 11:04:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Make kbuild buildable with GCC 14 (boo#1225792)

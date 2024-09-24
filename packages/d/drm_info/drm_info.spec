@@ -17,7 +17,7 @@
 
 
 Name:           drm_info
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Small utility to dump info about DRM devices
 License:        MIT

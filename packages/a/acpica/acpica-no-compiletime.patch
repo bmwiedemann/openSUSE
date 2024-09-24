@@ -1,3 +1,5 @@
+Drop the build date from our binary
+
 Index: acpica-unix-20240321/source/compiler/aslutils.c
 ===================================================================
 --- acpica-unix-20240321.orig/source/compiler/aslutils.c
@@ -13,16 +15,3 @@ Index: acpica-unix-20240321/source/compiler/aslutils.c
      }
  
      /* Summary of main input and output files */
-Index: acpica-unix-20240321/source/compiler/aslglobal.h
-===================================================================
---- acpica-unix-20240321.orig/source/compiler/aslglobal.h
-+++ acpica-unix-20240321/source/compiler/aslglobal.h
-@@ -325,7 +325,7 @@ ASL_EXTERN BOOLEAN                  ASL_
- ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_DisplayRemarks, TRUE);
- ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_DisplayWarnings, TRUE);
- ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_DisplayOptimizations, FALSE);
--ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_Deterministic, TRUE);
-+ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_Deterministic, FALSE);
- ASL_EXTERN UINT8                    ASL_INIT_GLOBAL (AslGbl_WarningLevel, ASL_WARNING);
- ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_UseOriginalCompilerId, FALSE);
- ASL_EXTERN BOOLEAN                  ASL_INIT_GLOBAL (AslGbl_VerboseTemplates, FALSE);

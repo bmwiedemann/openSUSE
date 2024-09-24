@@ -1,7 +1,7 @@
 #
 # spec file for package jcuber
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,11 @@ Name:           jcuber
 Version:        4.4.1
 Release:        0
 Summary:        Java Cube Reader Library
-License:        BSD-3-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            http://www.scalasca.org/software/cube-4.x/download.html
 Source0:        http://apps.fz-juelich.de/scalasca/releases/cube/4.4/dist/%{name}-%{version}.tar.gz
+Patch0:         jcuber-reproducible-jar.patch
 BuildRequires:  java-devel
 BuildRequires:  xerces-j2
 BuildArch:      noarch
@@ -51,6 +52,9 @@ This package contains the documentation and examples for %{name}.
 
 %prep
 %setup -q
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 0 -p1
+%endif
 
 %build
 %configure

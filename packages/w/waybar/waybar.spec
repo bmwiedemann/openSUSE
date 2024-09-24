@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        https://github.com/Alexays/Waybar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        waybar.rpmlintrc
+Patch1:         https://github.com/Alexays/Waybar/pull/3604.patch#/tray-fix.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc13-c++

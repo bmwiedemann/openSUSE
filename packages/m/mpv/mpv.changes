@@ -1,4 +1,246 @@
 -------------------------------------------------------------------
+Mon Sep 23 17:57:39 UTC 2024 - llyyr@yukari.in
+
+- 14904.patch: add patch to fix build while excluding win32-smtc.
+  This will be upstreamed soon so we can get rid of it then.
+- Update to version 0.39.0+git20240923.b64c53f730bd:
+  * ci/lint-commit-msg: make some minor adjustments to the rules
+  * Update MPV_VERSION
+  * Release 0.39.0
+  * TOOLS/gen-interface-changes: small usability improvement
+  * ci/msys2: disable some features for 32-bit build
+  * console.lua: fix the height calculation with --video-osd=no
+  * meson: use relative file paths for file2string
+  * ytdl_hook: make path and json available to other scripts
+  * select.lua: don't use add_forced_key_binding
+  * ytdl_hook: fix typo (chapters -> chapter)
+  * DOCS/man/options.rst: further tweak sub-ass-use-video-data description
+  * TOOLS/cycle-deinterlace-pullup.lua: fix removing the filter
+  * options: fix missing comma in default watch_later_options values
+  * workflows/comment: fix workflow syntax
+  * Revert "mp_image: don't restore image params if they're unknown"
+  * f_hwtransfer: filter out unsupported hwuploads from p->fmts
+  * hwdec/vaapi: additionally probe hwupload format conversions
+  * wayland: properly use tranche_formats when getting compositor formats
+  * vo_dmabuf_wayland: reject formats not supported by the GPU
+  * wayland: rename wayland_format to compositor_format
+  * sub/sd_ass: don't override event attributes to mpv defaults
+  * TOOLS/gen-mpv-desktop.py: set --no-config when probing protocols
+  * f_auto_filters: don't set interlaced-only for userdeint
+  * DOCS/man/options.rst: fix nono typo
+  * vo_gpu_next: allow setting antiring value for cscale
+  * DOCS/man/options.rst: clarify sub-ass-use-video-data a bit
+  * DOCS/interface-changes: fix format for sub-ass-use-video-data
+  * console.lua: respect --video-osd=no
+  * console.lua: truncate more characters with --msg-module and --msg-time
+  * console.lua: fix highlighting the selected item with --msg-module
+  * osdep/terminal-win: reset tmp_buffers_key when uninit
+  * player/main: revert msg uninit order changes
+  * DOCS/man/options.rst: update description of `hwdec=auto` behaviour
+  * sub/osd: add log if osd rendering takes too long time
+  * meson: require Vulkan loader/headers >= 1.3.238
+  * vd_lavc: add Vulkan hardware decoding to autoprobe
+  * console.lua: sync colors after msg.c change
+  * msg: don't use bold colors and instead use bright ones
+  * console.lua: fix completing empty --dscale and --cscale
+  * vo_gpu{,_next}: convert scale options to type choice
+  * stream: don't mark stdin as a filesystem file
+  * vulkan: don't tolerate suboptimal swapchain configurations
+  * ao_alsa: assume device lost if we couldn't recover after 10 attempts
+  * ao_alsa: don't early exit out of the loop if we have an error
+  * ytdl_hook: add some more yt-dlp tags
+  * sub: add ass-video-aspect-override option
+  * sub: merge vsfilter-aspect and vsfilter-blur-compat options
+  * vf_d3d11vpp: adjust options for userdeint filter
+  * wayland: fix vertical resizing
+  * various: use talloc_replace
+  * ta_utils: add talloc_replace
+  * ta_talloc: remove non-existent function prototype
+  * stats.lua: don't use ASS tags when use_ass is false
+  * player/main: uninit input after terminal uninit
+  * video/out/wayland_common: set key state only on keyboard_enter keys
+  * input: add MP_KEY_STATE_SET_ONLY
+  * input/keycodes: fix typo
+  * ci/win32: add dav1d
+  * stats.lua: fix text size/alignment for key bindings page
+  * DOCS/man/options: update defaults for `--hwdec-codecs`
+  * DOCS/man/options: fix deinterlacing typo
+  * input: fix use of bstr like null terminated one
+  * osdep/io: redefine off_t for Windows build
+  * sub: remove dead code
+  * vo_gpu: restore dovi mapping directly on image_params after init
+  * mp_image: don't restore image params if they're unknown
+  * etc/mpv.conf: update stale comment about mpv config location
+  * vo_libmpv: use fallback colorspace for Dolby Vision
+  * input.conf: swap the positions of values for `ctrl+h` binding
+  * vf_d3d11vpp: add output format selection
+  * vf_format: restore image params before dovi mapping
+  * vo_gpu: use fallback colorspace for Dolby Vision
+  * mp_image: save fallback colorspace when dovi metadata is present
+  * ci/linux: disable leak detector temporarily
+  * command: expand ~ paths in load-config-file
+  * video/out/gpu/video: use video rectangle for video-target-params
+  * video/out/wayland_common: don't pass mouse inputs on resizing edges
+  * fuzzer_options_parser: add options parser fuzzing
+  * DOCS/vf: update obsolete note hwdec in d3d11vpp
+  * f_hwtransfer: fix best upload format selection
+  * vf_d3d11vpp: skip conversion mode selection if not requested
+  * vf_d3d11vpp: don't force nv12 output
+  * vf_d3d11vpp: alloc output frames through AVHWFramesContext
+  * vulkan/context_display: don't fake avalibity of callbacks
+  * video/csputils: remove space from choice option for chroma loc
+  * DOCS/man/vf: don't document removed vf_format field
+  * console.lua: pre-filter searched commands if the line is filled
+  * playlist: fix setting current item with autocreate-playlist
+  * demux_mkv: fix av_parser_codec leak
+  * console.lua: add numpad + - * / keybindings
+  * vf_d3d11vpp: ensure width and height is even
+  * vf_d3d11vpp: add support for Intel VSR and NVIDIA RTX scaling modes
+  * vf_d3d11vpp: add support for scaling
+  * DOCS/man/options.rst: add a note about the effective limit of --pitch
+  * DOCS/man/mpv.rst: add documentation for the numpad volume key bindings
+  * DOCS/interface-changes: fix KP_DIVIDE typo
+  * github/issue_template: don't use markdown for "Important Information"
+  * github/issue_template: ask users to check for already supported features
+  * hwdec_vulkan: allow using multiple decoding family queues
+  * hwdec_vulkan: update to new libavutil queue family API
+  * console.lua: implement history search
+  * Revert "ci/mingw: don't run test on 32-bit binary"
+  * ci/{mingw,win32}: specify nasm as it seems to be required now by libass
+  * img_format: prevent an offset >= MP_MAX_PLANES into bpp
+  * common/playlist: add missing playlist_dir clear
+  * player/loadfile: don't clear watch later for auto playlist parent file
+  * context_drm_egl: always use drmModeAddFB2WithModifiers
+  * drm_prime: fix use of formats with modifiers
+  * input.conf: add KP_DIVIDE/KP_MULTIPLY key bindings
+  * various: handle numpad add/subtract/multiply/divide keycodes
+  * input/keycodes: add KP_ADD/SUBTRACT/MULTIPLY/DIVIDE keycodes
+  * demux_playlist: use --directory-filter-types for --autocreate-playlist
+  * common/playlist: add playlist_set_current()
+  * player/misc: add str_in_list() and use it
+  * demux_playlist: add only media files when opening directory
+  * options: add --{video,audio,image}-exts
+  * demux_playlist: add --directory-filter-types
+  * demux_playlist: add --autocreate-playlist-{video,audio,image}-exts
+  * demux: add --autocreate-playlist
+  * video: hwdec: extend look up of hwdecs to consider device type as well
+  * vo: hwdec: add AVHWDeviceType property to hwdecs
+  * DOCS/man: improve explanation on how to shift notes with --pitch
+  * audio: add pitch-shifting feature
+  * ci/freebsd: update to 14.1
+  * ci/win32: update to FFmpeg 7.0
+  * workflows/fuzz: report OOMs and timeouts
+  * console.lua: guard user-data/osc/margins value
+  * DOCS/man/input: document user-data/osc/margins
+  * DOCS/man/input: reserve user-data/osc and user-data/mpv sub-paths
+  * {osc,select}.lua: show playlist entries with trailing /
+  * input: fix inverted condition
+  * input: don't mutate 'section' variable inside a loop
+  * vo_libmpv: don't steal pointer provided by the API user
+  * fuzzer_set_property: ensure idle is enabled
+  * loadfile: fix relative file open exclusion for fuzzing
+  * input: use bstr for section name
+  * demux_mf: disable glob for fuzzing
+  * loadfile,select.lua: print only one bitrate
+  * player/audio: invert audio_started boolean
+  * ad_spdif: update list of DTS_HD profiles
+  * TOOLS/stats-conv: minor cleanup
+  * TOOLS/stats-conv: silence linter messages
+  * TOOLS/stats-conv: convert to pyqt6
+  * github/workflows/{build,fuzz}: exclude pr/issue template paths
+  * github/issue_template: fix paragraph spacing
+  * win32/smtc: add thumbnail support
+  * ci/{msys2,win32}: explicitly enable win32-smtc
+  * win32: add Media Control support
+  * ci/msys2: install cppwinrt
+  * osdep/threads-win32: cast function type directly to avoid warnings
+  * build: bump minimal Windows version to 10
+  * VERSION: rename to MPV_VERSION to avoid standard library header conflict
+  * meson: define WINRT_NO_SOURCE_LOCATION
+  * meson: minor adjustment for compatibility
+  * input/ipc: use bstr for fd parsing
+  * input/ipc-win: support fd:// for --input-ipc-client
+  * DOCS/man: add more --input-ipc-client references
+  * player/scripting: remove outdated comment about posix_spawn
+  * meson: check for vulkan headers
+  * DOCS/compile-windows.md: fix MSYS2 packages
+  * build: detect VT_GETMODE on OpenBSD
+  * github/issue_template: add a note about log file
+  * player/command: fix --force-window=yes acting like immediate
+  * player: don't decrement --ab-loop-count=N and add remaining-ab-loops
+  * player: don't decrement --loop-file=N and add remaining-file-loops
+  * player: remove empty line from --help
+  * options/m_config_frontend: remove empty line from --show-profile
+  * options: move all wayland specific options to vo_opts
+  * various: allow changing GPU API options at runtime
+  * m_option: add UPDATE_VO flag
+  * external_files: allow specifying --cover-art-whitelist filenames
+  * DOCS/options: remove misdirection in `sub-color`
+  * sd_ass: fix margin y scale with font size
+  * DOCS/man/options: clarify subtitle scale options
+  * sd_ass: fix sub scale with window when use_margins is enabled
+  * command: remove deprecated packet-*-bitrate properties
+  * loadfile,select.lua: print bitrates of tracks
+  * various: sync shown track flags
+  * various: print Image instead or Video for image tracks
+  * osc.lua: don't hide osc when touch is active
+  * player: remove empty line from --version
+  * fuzzer: stop player after 5 seconds of playback
+  * playloop: move run_command_opts to command_event for playback-restart
+  * command: run input commands after idle state is ready
+  * workflows/fuzz: run all sanitizers
+  * vo_gpu_next: support --gamma-factor
+  * ci/mingw: update dependency versions
+  * test/libmpv_lifetime: don't re-define ASAN macro
+  * player/command: don't return ill-formed node if there is no default val
+  * fuzzer_set_property: reset sstep to 0 to avoid seeking loop
+  * test/libmpv_lifetime: activate test on macOS
+  * mac/vulkan: error out on context creation without an NSApplication
+  * demux/ebml: bump ebml size limit to 512 MiB
+  * ci: add fuzzing of pull requests for 20 minutes
+  * player/command: fix M_PROPERTY_KEY_ACTION for filter metadata
+  * DOCS/input: fix filter name without label
+  * wayland: avoid potential floating point errors while scaling
+  * player/{command,scripting}: log subprocess execution
+  * demux_mf: don't run glob() on urls
+  * demux_mf: support URLs in @listfile and filemask
+  * x11_common: handle runtime keepaspect/keepaspect-window change
+  * sub: add (sub/osd)-border-style; renaming sub options
+  * ytdl_hook.lua: fix hook triggering while it shouldn't
+  * input.conf: add zoom, pan, scale and rotate keybinds for numpad
+  * player/core: add core thread handle to MPContext
+  * fuzzer_set_property: set duration to 0.1s
+  * test/libmpv_lifetime: add test to test libmpv ability to reinit itself
+  * win32: unregister window class on dll detach
+  * vo/opengl/context_win: fix crash on init failure
+  * demux_mkv: ignore duplicated BlockAdditions to avoid memory leak
+  * player/loadfile: prevent fuzzers from loading absolute directories
+  * player/loadfile: cancel playback cleanly if thread fails to start
+  * demux_edl: don't try to extract dirname from self-expanding protocols
+  * vo_dmabuf_wayland: don't use -ve margins in window size calculation
+  * DOCS/input: fix "does does" typo
+  * ao: don't add buffer length to timeout twice
+  * ao: use the right type for pending samples
+  * demux/ebml: fix ebml size check
+  * stream_bluray: check fread return value
+  * test/libmpv_encode: check fread return value
+  * wayland: use wl_list_empty instead of wl_list_length
+  * wayland: bump wayland-protocol requirement to 1.31
+  * ao_pipewire: bump minimum libpipewire version to 0.3.57
+  * ytdl_hook.lua: allow changing try_ytdl_first during runtime
+
+-------------------------------------------------------------------
+Wed Aug 14 23:09:05 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Remove fix-docs-path.patch: move files after install instead.
+- Move 'Copyright' file to licenses.
+- Stop installing example mpv.conf and input.conf provided by
+  upstream to /etc/mpv. These are purely examples and don't actually
+  set any options. The user can already see them for reference in
+  %{_defaultdocdir}/mpv.
+- Run tests
+
+-------------------------------------------------------------------
 Sat Jul 06 15:51:42 UTC 2024 - llyyr@yukari.in
 
 - Update to version 0.38.0+git20240706.00f43e0916fa:

@@ -116,7 +116,7 @@ mysql_upgrade() {
 		echo "Running upgrade itself..."
 		echo "It will do some chek first and report all errors and tries to correct them"
 		echo
-		if /usr/bin/mysql_upgrade --no-defaults --force --socket="$protected/mysql.sock"; then
+		if /usr/bin/mysql_upgrade --force --socket="$protected/mysql.sock"; then
 			echo "Everything upgraded successfully"
 			up_ok=""
 			rm -f "$mariadb_status_dir/.mariadb_run_upgrade"

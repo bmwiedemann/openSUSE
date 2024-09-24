@@ -16,3 +16,12 @@
          
  profile: JispLoadTest
  	java -Xrunhprof:cpu=samples,file=JispLoadTest.profile JispLoadTest
+@@ -16,7 +17,7 @@
+ 	jar -cfm jisp.jar JISPJAR.MF com/coyotegulch/jisp/*.class svfl.txt
+ 	
+ docs:
+-	javadoc -d docs com.coyotegulch.jisp
++	javadoc -d docs -notimestamp com.coyotegulch.jisp
+ 	
+ clean:
+ 	-rm -rf *.class

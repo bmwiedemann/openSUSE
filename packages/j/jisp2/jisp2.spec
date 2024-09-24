@@ -27,6 +27,7 @@ URL:            http://www.coyotegulch.com/jisp/
 Source0:        jisp-2.5.1-source.tar.bz2
 Patch0:         jisp2-2.5.1-java5-enum.patch
 Patch1:         jisp2-2.5.1-javac-flags.patch
+Patch2:         jisp2-2.5.1-reproducible-jar-mtime.patch
 # jisp-3.0.0 won't work with jakarta-turbine-jcs
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
@@ -62,6 +63,9 @@ serialized objects stored in files.
 %patch -P 0 -p1
 sed -i -e 's/\r$//g' svfl.txt
 %patch -P 1 -b .java-cflags
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 2 -p1
+%endif
 
 %build
 export CLASSPATH=

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 22 07:00:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+- Split into two _multibuild flavours to avoid use of binary jars
+  and prevent build cycles
+- Fetch the sources from git and clean the tarball of binary jars
+- Modified patches:
+  * openjdk-build.patch
+  * xalan-j2-crosslink.patch
+  * xalan-j2-manifest.patch
+  * xalan-j2-noxsltcdeps.patch
+    + adapt to different line-endings and to slightly changed
+      context
+
+-------------------------------------------------------------------
 Wed Feb 21 16:24:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 21 12:43:18 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.2
+  * core: fixup client new_id handling
+  * core: fix overzealous wl_proxy* replacement of uint32s
+
+-------------------------------------------------------------------
 Mon Jul 22 01:03:59 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.4.0:

@@ -914,4 +914,17 @@
     or https://www.lyx.org/announce/2_4_1.txt</comment>
     <requestid>1185215</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>b1fe79fd3d1683d8d916e07ca2b3e246</srcmd5>
+    <version>2.4.2</version>
+    <time>1727191986</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.2:
+  * This is bugfix release. For details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_4_2.txt
+  * One significant change relates to how vertical space between
+    paragraph is handled. Details can be found in the just
+    mentioned documents</comment>
+    <requestid>1202731</requestid>
+  </revision>
 </revisionlist>

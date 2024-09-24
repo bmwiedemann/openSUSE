@@ -1,0 +1,11 @@
+--- maven-bundle-plugin-5.1.9/src/main/java/org/apache/felix/bundleplugin/BundlePlugin.java	2024-09-23 11:31:10.426888887 +0200
++++ maven-bundle-plugin-5.1.9/src/main/java/org/apache/felix/bundleplugin/BundlePlugin.java	2024-09-23 11:35:04.561855048 +0200
+@@ -551,7 +551,7 @@
+         properties.putAll( getDefaultProperties( currentProject ) );
+         properties.putAll( transformDirectives( originalInstructions ) );
+ 
+-        if ( new MavenArchiver().parseOutputTimestamp( outputTimestamp ) != null )
++        if ( new MavenArchiver().parseOutputTimestamp( outputTimestamp ) != null || System.getenv( "SOURCE_DATE_EPOCH" ) != null )
+         {
+           properties.put( Constants.REPRODUCIBLE, "true" );
+         }

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 14:17:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jcuber-reproducible-jar.patch
+    + Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Mon Jul 15 09:29:59 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Remove commented out Requires. 

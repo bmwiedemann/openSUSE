@@ -1,0 +1,5 @@
+<package name="perses-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="perses-cli"/>
+</package>

@@ -1205,4 +1205,39 @@
    * Fix errors not shown for restored snippet on page load</comment>
     <requestid>1201802</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e4825d242b80ab6069aae2f4964d8870</srcmd5>
+    <version>0.6.7</version>
+    <time>1727191882</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.7:
+  * Add Python version support to ruff analyze CLI
+  * Add `exclude` support to `ruff analyze`
+  * Fix parentheses around return type annotations
+  * \[`pycodestyle`\] Fix: Don't autofix if the first line ends
+    in a question mark? (D400)
+  * Respect `lint.exclude` in ruff check `--add-noqa`
+  * Avoid tracking module resolver files in Salsa
+- update to 0.6.6:
+  * \[`refurb`\] Skip `slice-to-remove-prefix-or-suffix`
+    (`FURB188`) when non-trivial slice steps are present
+  * Add a subcommand to generate dependency graphs
+  * Fix placement of inline parameter comments
+  * Fix off-by one error in the `LineIndex::offset` calculation
+  * \[`fastapi`\] Respect FastAPI aliases in route definitions
+  * \[`pydocstyle`\] Respect word boundaries when detecting
+    function signature in docs
+
+   * [pydoclint] Ignore DOC201 when function name is &quot;new&quot;
+   * [refurb] Implement slice-to-remove-prefix-or-suffix (FURB188)
+   * [eradicate] Ignore script-comments with multiple end-tags (ERA001)
+       was added in a newer version than specified in Ruff config (F821)
+   * Add support for extensionless Python files for server
+   * Fix configuration inheritance for configurations specified in the LSP settings
+   * [ruff] Handle unary operators in decimal-from-float-literal (RUF032)
+   * Only include rules with diagnostics in SARIF metadata
+   * Add &quot;Copy as pyproject.toml/ruff.toml&quot; and &quot;Paste from TOML&quot;
+   * Fix errors not shown for restored snippet on page load</comment>
+    <requestid>1202630</requestid>
+  </revision>
 </revisionlist>

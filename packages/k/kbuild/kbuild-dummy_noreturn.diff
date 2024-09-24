@@ -1,7 +1,12 @@
-Index: src/kmk/kmkbuiltin/expr.c
+---
+ src/kmk/kmkbuiltin/expr.c              |    2 ++
+ src/kmk/kmkbuiltin/kbuild_protection.c |    1 +
+ 2 files changed, 3 insertions(+)
+
+Index: kbuild-0.1.9998+svn3613/src/kmk/kmkbuiltin/expr.c
 ===================================================================
---- src/kmk/kmkbuiltin/expr.c.orig
-+++ src/kmk/kmkbuiltin/expr.c
+--- kbuild-0.1.9998+svn3613.orig/src/kmk/kmkbuiltin/expr.c
++++ kbuild-0.1.9998+svn3613/src/kmk/kmkbuiltin/expr.c
 @@ -317,6 +317,8 @@ eval6(PEXPRINSTANCE pThis)
  		return v;
  	} else {
@@ -11,10 +16,10 @@ Index: src/kmk/kmkbuiltin/expr.c
  	}
  	/* NOTREACHED */
  }
-Index: src/kmk/kmkbuiltin/kbuild_protection.c
+Index: kbuild-0.1.9998+svn3613/src/kmk/kmkbuiltin/kbuild_protection.c
 ===================================================================
---- src/kmk/kmkbuiltin/kbuild_protection.c.orig
-+++ src/kmk/kmkbuiltin/kbuild_protection.c
+--- kbuild-0.1.9998+svn3613.orig/src/kmk/kmkbuiltin/kbuild_protection.c
++++ kbuild-0.1.9998+svn3613/src/kmk/kmkbuiltin/kbuild_protection.c
 @@ -29,6 +29,7 @@
  #include "config.h"
  #include <sys/types.h>

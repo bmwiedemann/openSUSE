@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:42:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+- Added patch:
+  * reproducible-from-environment.patch
+    + SOURCE_DATE_EPOCH environmental variable triggers reproducible
+      use of the maven-bundle-plugin if it is not requested already
+      using the project.build.outputTimestamp option.
+
+-------------------------------------------------------------------
 Wed Feb 21 10:49:57 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

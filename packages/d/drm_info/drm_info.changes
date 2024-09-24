@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 11 23:26:27 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 2.7.0:
+  * Add new DRM caps from libdrm v2.4.120
+  * Don't print zero version date
+  * Constify blob data
+  * Add flag to read JSON from file
+  * pretty: use Unicode multiplication sign for sizes
+  * build: bump libdrm to v2.4.122
+  * Add support for the SIZE_HINTS property
+  * Print modifier hex code with leading zeroes
+
+-------------------------------------------------------------------
 Thu Mar 28 06:58:19 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - require json-c >= 0.14 to avoid build failures

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:44:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Properly propagate "up" keypresses
+  * Update deprecated urwid.util usage
+  * Use up to date versions in CI
+
+-------------------------------------------------------------------
 Mon Mar 18 13:57:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14:

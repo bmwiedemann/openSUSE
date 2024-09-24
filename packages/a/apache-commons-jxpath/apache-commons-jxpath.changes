@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 22 19:13:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Tue Feb 20 10:20:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

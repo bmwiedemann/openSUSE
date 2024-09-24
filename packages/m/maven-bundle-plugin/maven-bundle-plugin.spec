@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://felix.apache.org
 Source0:        https://repo1.maven.org/maven2/org/apache/felix/%{name}/%{version}/%{name}-%{version}-source-release.tar.gz
 Patch0:         new-reporting-api.patch
+Patch1:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib)
@@ -69,6 +70,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 find -name '*.jar' -delete
 
@@ -81,6 +83,7 @@ find -name '*.jar' -delete
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install

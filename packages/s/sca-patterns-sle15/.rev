@@ -207,4 +207,12 @@
     <comment>bsc#1219319 bsc#1219320 (forwarded request 1142629 from jrecord)</comment>
     <requestid>1142630</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>97eed40ea701d5aab2e97611f73d903a</srcmd5>
+    <version>1.5.8</version>
+    <time>1727192006</time>
+    <user>anag+factory</user>
+    <comment>bsc#1230868 sle15sp6 pattern base (forwarded request 1202764 from jrecord)</comment>
+    <requestid>1202765</requestid>
+  </revision>
 </revisionlist>

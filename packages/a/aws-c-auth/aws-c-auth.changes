@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 17 09:33:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.31
+  * Add more partitions for sts cred provider
+    by @DmitriyMusatkin in (#253)
+- from version 0.7.30
+  * Fix Multiple Shutdown Callback for Profile with
+    STS Code Path by @waahm7 in (#251)
+- from version 0.7.29
+  * When sourcing credentials from an external process,
+    ignore stderr by @graebm in (#250)
+- from version 0.7.28
+  * Service specific presign by @TingDaoK in (#249)
+
+-------------------------------------------------------------------
 Thu Sep  5 07:35:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.27

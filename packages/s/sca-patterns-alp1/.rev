@@ -15,4 +15,12 @@
     <comment>bsc#1218660 removed 00_template.py (forwarded request 1137790 from jrecord)</comment>
     <requestid>1137791</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3340bfef450db6f8ea4af685b242cfb</srcmd5>
+    <version>2.0.4</version>
+    <time>1727192004</time>
+    <user>anag+factory</user>
+    <comment>bsc#1230883 (forwarded request 1202760 from jrecord)</comment>
+    <requestid>1202761</requestid>
+  </revision>
 </revisionlist>

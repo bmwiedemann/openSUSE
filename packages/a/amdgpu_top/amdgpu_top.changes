@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 22 08:45:11 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 0.9.2 
+  * Support for suspended devices in TUI mode and GUI mode, if
+    there are no active AMDGPU devices, amdgpu_top wake up a
+    suspended device.
+  * Add Activity view
+  * Add Activity plot
+  * Fix full_fdinfo_list
+  * Persist show sidepanel state
+  * Persist theme
+
+-------------------------------------------------------------------
 Tue Sep  3 13:35:32 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 0.9.1:

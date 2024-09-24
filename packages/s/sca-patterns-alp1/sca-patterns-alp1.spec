@@ -22,12 +22,12 @@
 %define patuser root
 %define patgrp root
 %define patmode 755
-%define category ALP
+%define category SLE
 
 Name:           sca-patterns-alp1
-Version:        2.0.1
+Version:        2.0.4
 Release:        0
-Summary:        Supportconfig Analysis Patterns for ALP1
+Summary:        Supportconfig Analysis Patterns for SLE16
 License:        GPL-2.0-only
 URL:            https://github.com/g23guy/sca-patterns-alp1
 Group:          System/Monitoring
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
-issues relating to all versions of SUSE Adaptable Linux Platform (ALP) 1.
+issues relating to all versions of SUSE Linux Enterprise 16
 
 See %{_docdir}/sca-patterns-base/COPYING.GPLv2
 
@@ -50,10 +50,12 @@ See %{_docdir}/sca-patterns-base/COPYING.GPLv2
 %install
 pwd;ls -la
 install -d %{buildroot}/%{patdir}/%{category}
-install -d %{buildroot}/%{patdir}/%{category}/alp1all
-install -d %{buildroot}/%{patdir}/%{category}/alp1sp0
-install -m %{patmode} patterns/%{category}/alp1all/* %{buildroot}/%{patdir}/%{category}/alp1all
-install -m %{patmode} patterns/%{category}/alp1sp0/* %{buildroot}/%{patdir}/%{category}/alp1sp0
+install -d %{buildroot}/%{patdir}/%{category}/sle16all
+install -d %{buildroot}/%{patdir}/%{category}/sle16sp0
+install -d %{buildroot}/%{patdir}/%{category}/sle16sp1
+install -m %{patmode} patterns/%{category}/sle16all/* %{buildroot}/%{patdir}/%{category}/sle16all
+install -m %{patmode} patterns/%{category}/sle16sp0/* %{buildroot}/%{patdir}/%{category}/sle16sp0
+install -m %{patmode} patterns/%{category}/sle16sp0/* %{buildroot}/%{patdir}/%{category}/sle16sp1
 %fdupes %{buildroot}
 
 %files
@@ -61,9 +63,11 @@ install -m %{patmode} patterns/%{category}/alp1sp0/* %{buildroot}/%{patdir}/%{ca
 %dir %{patdirbase}
 %dir %{patdir}
 %dir %{patdir}/%{category}
-%dir %{patdir}/%{category}/alp1all
-%dir %{patdir}/%{category}/alp1sp0
-%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/alp1all/*
-%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/alp1sp0/*
+%dir %{patdir}/%{category}/sle16all
+%dir %{patdir}/%{category}/sle16sp0
+%dir %{patdir}/%{category}/sle16sp1
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle16all/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle16sp0/*
+%attr(%{patmode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle16sp1/*
 
 %changelog

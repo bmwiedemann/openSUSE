@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 02:58:01 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.4:
+  * This release does not present a wrong warning message if used 
+    with BorgBackup 1.4. On Flathub, this release comes with 
+    updates to GNOME 47 features like accent colors.
+
+-------------------------------------------------------------------
 Mon May 13 22:35:06 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - clean spec file, readying for Factory

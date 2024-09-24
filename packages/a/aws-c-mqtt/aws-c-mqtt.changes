@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:31:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.5
+  * clang-format 18 by @graebm in (#371)
+  * Update MacOS to arm64 by @waahm7 in (#372)
+  * Final request-response polish by @bretambrose in (#367)
+  * Enum reordering by @bretambrose in (#374)
+
+-------------------------------------------------------------------
 Fri May 31 10:44:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.4

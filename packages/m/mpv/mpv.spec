@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.38.0+git20240706.00f43e0916fa
+Version:        0.39.0+git20240923.b64c53f730bd
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -31,8 +31,7 @@ Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
-# Install docs in proper directory
-Patch2:         fix-docs-path.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/14904.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  linux-kernel-headers
@@ -109,7 +108,7 @@ BuildRequires:  pkgconfig(libplacebo) >= 6.338.2
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
 BuildRequires:  pkgconfig(mujs)
 BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  pkgconfig(vulkan) >= 1.1.70
+BuildRequires:  pkgconfig(vulkan) >= 1.3.238
 BuildRequires:  pkgconfig(wayland-client) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
@@ -195,27 +194,21 @@ myopts=" -Dbuild-date=false"
 
 %install
 %meson_install
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
+mv %{buildroot}/%{_datadir}/doc/%{name}/* %{buildroot}/%{_defaultdocdir}/%{name}/
 
-install -D -m 0644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
-install -D -m 0644 etc/mpv.conf %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
-# remove shebang
-sed -i -e '1d' %{buildroot}%{_datadir}/bash-completion/completions/mpv
+%check
+%meson_test
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%license LICENSE.GPL
-%doc Copyright README.md RELEASE_NOTES
-%doc %{_defaultdocdir}/%{name}/input.conf
-%doc %{_defaultdocdir}/%{name}/mplayer-input.conf
-%doc %{_defaultdocdir}/%{name}/mpv.conf
-%doc %{_defaultdocdir}/%{name}/restore-old-bindings.conf
+%license LICENSE.GPL Copyright
+%doc README.md RELEASE_NOTES
+%doc %{_defaultdocdir}/%{name}/*
 %dir %{_sysconfdir}/%{name}/
-%ghost %dir %{_sysconfdir}/%{name}/scripts/
 %config %{_sysconfdir}/%{name}/encoding-profiles.conf
-%config %{_sysconfdir}/%{name}/input.conf
-%config %{_sysconfdir}/%{name}/mpv.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor

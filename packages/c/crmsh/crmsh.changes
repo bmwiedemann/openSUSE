@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 20 06:36:45 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240920.c4ce88eb:
+  * Fix: bootstrap: check is_nologin more robustly (bsc#1228251)
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: completers: Reuse node completer for cluster remove and health
+  * Dev: bootstrap: Enhance log clarity during crm cluster remove process
+
+-------------------------------------------------------------------
+Mon Sep 09 09:41:14 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240909.28abc7cb:
+  * Dev: utils: Catch PermissionError when reading files
+
+-------------------------------------------------------------------
 Mon Sep 09 05:42:00 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240909.1d497d0c:

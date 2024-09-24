@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:15:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+- Clean the spec file, fix download urls and redownload the sources
+
+-------------------------------------------------------------------
 Sun Mar 20 07:01:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

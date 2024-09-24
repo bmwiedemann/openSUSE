@@ -20,14 +20,14 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20240321
+Version:        20240827
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
 URL:            https://acpica.org
 # https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
 # New location:
-# https://github.com/acpica/acpica/files/14718333/acpica-unix-20240321.tar.gz
+# https://github.com/user-attachments/files/16769900/acpica-unix-20240827.tar.gz
 Source:         %{src_dir}.tar.gz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
@@ -60,6 +60,8 @@ firmware. It also can disassemble AML, for debugging purposes.
 
 %prep
 %setup -q -n %{src_dir} -a 2 -a 4
+# Workaround for https://github.com/acpica/acpica/issues/971
+mv source/include/ACPIXF.H source/include/acpixf.h
 %autopatch -p1
 mkdir acpidump-%{dmp_ver}
 cd acpidump-%{dmp_ver}

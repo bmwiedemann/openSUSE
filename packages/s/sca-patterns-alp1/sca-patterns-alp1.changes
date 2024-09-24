@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 21 18:15:03 UTC 2024 - jason.record@suse.com
+
+- Changes to version 2.0.4
+  + Added directory for sle16sp1 patterns (bsc#1230883)
+
+-------------------------------------------------------------------
+Wed Aug 28 12:30:42 UTC 2024 - jason.record@suse.com
+
+- Changes to version 2.0.3
+  + changed package name and references to sca-patterns-sle16 
+
+-------------------------------------------------------------------
+Wed Jan 31 23:06:35 UTC 2024 - jason.record@suse.com
+
+- Changes to version 2.0.2
+  + fixed set_supportconfig_path (bsc#1219421)
+
+-------------------------------------------------------------------
 Tue Jan  9 17:49:46 UTC 2024 - jason.record@suse.com
 
 - Removed 00_template.py (bsc#1218660)

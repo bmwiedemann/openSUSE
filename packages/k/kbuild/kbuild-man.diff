@@ -1,5 +1,11 @@
---- kmk.pod
-+++ kmk.pod
+---
+ kmk.pod |   24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+Index: kbuild-0.1.9998+svn3613/kmk.pod
+===================================================================
+--- /dev/null
++++ kbuild-0.1.9998+svn3613/kmk.pod
 @@ -0,0 +1,24 @@
 +=head1 NAME
 +
@@ -25,4 +31,3 @@
 +=head1 AUTHOR
 +
 +Torsten Werner <twerner@debian.org>
-

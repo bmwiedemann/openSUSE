@@ -18,7 +18,7 @@
 
 %define         appname org.gnome.World.PikaBackup
 Name:           pika-backup
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 Summary:        Simple backups based on borg
 License:        GPL-3.0-or-later

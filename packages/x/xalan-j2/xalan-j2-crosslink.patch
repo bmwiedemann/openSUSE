@@ -1,7 +1,8 @@
-diff -urN xalan-j_2_7_2.old/build.xml xalan-j_2_7_2/build.xml
---- xalan-j_2_7_2.old/build.xml	2014-06-23 09:21:30.815410307 +0200
-+++ xalan-j_2_7_2/build.xml	2014-06-23 09:22:59.124418473 +0200
-@@ -204,7 +204,9 @@
+diff --git a/build.xml b/build.xml
+index df58558..2a2703a 100644
+--- a/build.xml
++++ b/build.xml
+@@ -205,7 +205,9 @@ $Id$
    <property name="serializer.jar.name"          value="serializer.jar"/>   
    <property name="build.serializer.jar"         value="${serializer.build.dir}/${serializer.jar.name}"/> 
    <property name="lib.serializer.jar"           value="./lib/${serializer.jar.name}"/>   
@@ -12,7 +13,7 @@ diff -urN xalan-j_2_7_2.old/build.xml xalan-j_2_7_2/build.xml
    <!-- Class paths used in various targets -->
    <path id="docs.class.path">
      <pathelement location="${xmlapis.jar}" />
-@@ -1098,6 +1100,7 @@
+@@ -1120,6 +1122,7 @@ $Id$
            <group title="DOM 2" packages="org.w3c.dom*"/>
            <group title="XSLTC Core"
                   packages="org.apache.xalan.xsltc*"/>
@@ -20,7 +21,7 @@ diff -urN xalan-j_2_7_2.old/build.xml xalan-j_2_7_2/build.xml
      </javadoc>
    </target>
  
-@@ -1133,6 +1136,7 @@
+@@ -1155,6 +1158,7 @@ $Id$
            <group title="DOM 2" packages="org.w3c.dom*"/>
            <group title="XSLTC Core"
                   packages="org.apache.xalan.xsltc*"/>

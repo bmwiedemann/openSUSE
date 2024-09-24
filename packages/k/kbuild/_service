@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="filename">kbuild</param>
+		<param name="scm">svn</param>
+		<param name="url">http://svn.netlabs.org/repos/kbuild/trunk</param>
+		<param name="revision">3613</param>
+		<param name="versionformat">0.1.9998.svn%r</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>

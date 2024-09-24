@@ -1,0 +1,64 @@
+--- hsqldb/build/build.xml	2024-09-23 15:25:41.743475668 +0200
++++ hsqldb/build/build.xml	2024-09-23 15:28:34.971382483 +0200
+@@ -577,6 +577,7 @@
+                      value='Standard runtime'/>
+           <attribute name='Implementation-Version' value='${build.label}'/>
+           <attribute name='Sealed' value='true'/>
++          <attribute name='Main-Class' value='org.hsqldb.util.DatabaseManagerSwing'/>
+         </manifest>
+         <fileset refid='minclasses' />
+         <fileset refid='mainaddedclasses' />
+@@ -585,23 +586,6 @@
+         <fileset refid='${filesetawt.ref}' />
+         <fileset refid='modinfoclass'/>
+       </jar>
+-
+-      <!-- Ant jar task doesn't support -e / -Main-Class switch! -->
+-      <exec executable="${jar.exec.path}" dir="lib"
+-            outputproperty="out.1" errorproperty="err.1"
+-            resultproperty="exec.val.1">
+-        <arg value="-ufe"/>
+-        <arg value="hsqldb${jdk8string}.jar"/>
+-        <arg value="org.hsqldb.util.DatabaseManagerSwing"/>
+-      </exec>
+-      <condition property="_do-abort" value="DUMMY">
+-        <not> <equals arg1="0" arg2="${exec.val.1}"/> </not>
+-      </condition>
+-      <fail if="_do-abort">Exiting due to 'jar' exit value ${exec.val.1}.
+-JVM stdout: ---------------------------------------------------
+-${out.1}
+-JVM stderr: ---------------------------------------------------
+-${err.1}</fail>
+     </target>
+ 
+     <target name="dbmanswing" depends="-swing, -prep-license-files"
+@@ -660,28 +644,12 @@
+           <attribute name='Class-Path'
+               value='hsqldb-${hsqldb.version}.jar hsqldb.jar hsqldbmin.jar hsqldbmain.jar'/>
+           <attribute name='Sealed' value='true'/>
++          <atttibute name='Main-Class' value='org.hsqldb.cmdline.SqlTool'/>
+         </manifest>
+         <fileset refid='sqltoolclasses'/>
+         <fileset refid='sqltoolres'/>
+         <fileset refid='modinfoclass'/>
+       </jar>
+-
+-      <!-- Ant jar task doesn't support -e switch! -->
+-      <exec executable="${jar.exec.path}" dir="lib"
+-            outputproperty="out.2" errorproperty="err.2"
+-            resultproperty="exec.val.2">
+-        <arg value="-ufe"/>
+-        <arg value="sqltool${jdk8string}.jar"/>
+-        <arg value="org.hsqldb.cmdline.SqlTool"/>
+-      </exec>
+-      <condition property="_do-abort" value="DUMMY">
+-        <not> <equals arg1="0" arg2="${exec.val.2}"/> </not>
+-      </condition>
+-      <fail if="_do-abort">Exiting due to 'jar' exit value ${exec.val.2}.
+-JVM stdout: ---------------------------------------------------
+-${out.2}
+-JVM stderr: ---------------------------------------------------
+-${err.2}</fail>
+     </target>
+ 
+     <target name="-clone-shared-sources">

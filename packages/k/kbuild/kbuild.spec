@@ -16,35 +16,23 @@
 #
 
 
-%define _svnrev 3427
+%define _svnrev 3613
 Name:           kbuild
-Version:        0.1.9998svn%{_svnrev}
+Version:        0.1.9998+svn3613
 Release:        0
 Summary:        Framework for writing simple makefiles for complex tasks
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://svn.netlabs.org/kbuild
-Source0:        %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Patch0:         kbuild-man.diff
 Patch2:         kbuild-dummy_noreturn.diff
 Patch5:         kbuild-pthread.diff
 Patch6:         kbuild-timestamps.diff
-Patch7:         kbuild-armv7l.diff
 Patch8:         kbuild-wrong-memset.patch
 Patch9:         ppc64le.patch
 Patch10:        aarch64.patch
 Patch13:        glob-lstat.patch
-
-# C99 compatibility patches to resolve boo#1225792:
-# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
-Patch14:        kBuild-configure-c99.patch
-# Somehow RedHat did not need this one:
-Patch15:        kBuild-configure-c99-2.patch
-# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
-Patch16:        kBuild-c99.patch
-# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
-Patch17:        kBuild-c99-2.patch
-
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  byacc
@@ -67,20 +55,7 @@ The goals of the kBuild framework:
  - Non-recursive makefile method by using sub-makefiles
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 2
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
-%patch -P 16 -p1
-%patch -P 17 -p0
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

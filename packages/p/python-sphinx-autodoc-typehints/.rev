@@ -241,4 +241,14 @@
   * Fix rendering when docstring starst with a directive</comment>
     <requestid>1199458</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e1219520012006946e7a5fd3621dca52</srcmd5>
+    <version>2.4.4</version>
+    <time>1727191905</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.4:
+  * Fix placement of return type when there is a doctest
+  * README and CI fixes</comment>
+    <requestid>1202593</requestid>
+  </revision>
 </revisionlist>

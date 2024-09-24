@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 22 22:31:04 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Read defaults during mysql_upgrade to respect client configuration
+
+-------------------------------------------------------------------
 Tue Aug 20 17:00:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.5.2:

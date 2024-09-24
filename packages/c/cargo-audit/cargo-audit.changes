@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 00:54:04 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update vendor.tar.zst: gix-path improper path resolution
+  (bsc#1230688 CVE-2024-45405).
+
+-------------------------------------------------------------------
 Tue Sep 10 23:56:50 UTC 2024 - William Brown <william.brown@suse.com>
 
 - explicitly depend on cargo to pull in latest compiler revision

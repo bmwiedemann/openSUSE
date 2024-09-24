@@ -1,0 +1,13 @@
+--- jisp-2.5.1/Makefile	2024-09-23 17:44:21.056217694 +0200
++++ jisp-2.5.1/Makefile	2024-09-23 17:48:23.961290309 +0200
+@@ -12,8 +12,8 @@
+         
+ jars:
+ 	-rm -rf *.jar
+-	jar -cfm jisp-demo.jar MANIFEST.MF *.class svfl.txt
+-	jar -cfm jisp.jar JISPJAR.MF com/coyotegulch/jisp/*.class svfl.txt
++	jar --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=jisp-demo.jar --manifest=MANIFEST.MF *.class svfl.txt
++	jar --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=jisp.jar --manifest=JISPJAR.MF com/coyotegulch/jisp/*.class svfl.txt
+ 	
+ docs:
+ 	javadoc -d docs -notimestamp com.coyotegulch.jisp

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 23 06:03:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.2:
+  + compilers: do not strip '-isystem' from C build arguments.
+  + Prevent raw exception during project().
+  + compilers: Pass mode to determine_args, not its string value.
+  + nasm: Use different test sources for x86 and x86_64.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:34:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Sat Jul 27 20:50:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.1:

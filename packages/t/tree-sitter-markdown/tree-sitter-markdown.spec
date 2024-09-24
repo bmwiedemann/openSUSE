@@ -18,12 +18,12 @@
 
 %define         _name markdown
 Name:           tree-sitter-%{_name}
-Version:        0.2.3
+Version:        0.3.2
 Release:        0
 Summary:        Markdown grammar for tree-sitter
 License:        MIT
-URL:            https://github.com/MDeiml/tree-sitter-markdown
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/tree-sitter-grammars/tree-sitter-markdown
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  tree-sitter
 
 %description
@@ -32,39 +32,51 @@ some extensions to the spec from different sources such as Github flavored
 markdown are also included. These can be toggled on or off at compile time.
 
 %package devel
-Summary:       Devel files for %{name}
+Summary:        Devel files for %{name}
 
 %description devel
 Development files for %{name}.
 
 %prep
 %autosetup -p1
-cd tree-sitter-markdown
+pushd %{name}
 tree-sitter generate --no-bindings src/grammar.json
-cd ..
-cd tree-sitter-markdown-inline
+popd
+pushd %{name}-inline
 tree-sitter generate --no-bindings src/grammar.json
-cd ..
+popd
 
 %build
-%make_build
+%make_build PREFIX=%{_prefix} INCLUDEDIR=%{_includedir} LIBDIR=%{_libdir} PCLIBDIR=%{_libdir}/pkgconfig
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
-mv %{buildroot}%{_libdir}/libtree-sitter-markdown.so.0.2 %{buildroot}%{_libdir}/libtree-sitter-markdown.so
-mv %{buildroot}%{_libdir}/libtree-sitter-markdown-inline.so.0.2 %{buildroot}%{_libdir}/libtree-sitter-markdown-inline.so
+%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir} PCLIBDIR=%{_libdir}/pkgconfig
 #remove unncessary stuff
-rm %{buildroot}%{_libdir}/libtree-sitter-markdown{.so.0,-inline.so.0}
 rm %{buildroot}%{_libdir}/libtree-sitter-{markdown-inline.a,markdown.a}
+
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+ln -s %{_libdir}/lib%{name}-inline.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}-inline.so
+
+%ldconfig_scriptlets
 
 %files
 %license LICENSE
 %doc README.md CONTRIBUTING.md
-%{_libdir}/libtree-sitter-markdown.so
-%{_libdir}/libtree-sitter-markdown-inline.so
+%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}-inline.so.*
+%{_libdir}/tree_sitter/%{_name}.so
+%{_libdir}/tree_sitter/%{_name}-inline.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
 
 %files devel
 %{_includedir}/tree_sitter
-%{_libdir}/pkgconfig/tree-sitter-markdown*
+%{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}-inline.so
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}-inline.pc
 
 %changelog

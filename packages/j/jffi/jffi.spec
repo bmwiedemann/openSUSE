@@ -125,7 +125,11 @@ cp target/%{name}-%{version}-complete.jar target/%{name}-%{version}.jar
 
 mkdir -p META-INF/
 cp %{SOURCE3} META-INF/
-jar -uf %{buildroot}%{_jnidir}/%{name}/%{name}.jar META-INF/p2.inf
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{buildroot}%{_jnidir}/%{name}/%{name}.jar META-INF/p2.inf
 
 # install *.so
 install -dm0755 %{buildroot}%{_libdir}/%{name}

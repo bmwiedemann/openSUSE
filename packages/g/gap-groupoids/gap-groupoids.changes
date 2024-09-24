@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 23 11:17:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.76
+  * fix error caused re immutable ExtRepOfObj
+
+-------------------------------------------------------------------
 Wed Jan 24 00:20:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.74

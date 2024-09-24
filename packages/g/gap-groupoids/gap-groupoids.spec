@@ -17,7 +17,7 @@
 
 
 Name:           gap-groupoids
-Version:        1.74
+Version:        1.76
 Release:        0
 Summary:        GAP: Groupoids, graphs of groups, and graphs of groupoids
 License:        GPL-2.0-or-later

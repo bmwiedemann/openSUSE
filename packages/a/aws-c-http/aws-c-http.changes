@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:38:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.10
+  * Increase timeout for http integration tests by @TingDaoK in (#487)
+- from version 0.8.9
+  * Fix max_pending_connection_acquisitions to respect connection
+    pool size by @waahm7 in (#485)
+
+-------------------------------------------------------------------
 Mon Aug 26 15:08:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.8

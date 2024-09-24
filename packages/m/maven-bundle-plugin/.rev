@@ -15,4 +15,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148605</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b5de63a43ad4e4c7ed1eaa66b35bf0c0</srcmd5>
+    <version>5.1.9</version>
+    <time>1727191961</time>
+    <user>anag+factory</user>
+    <comment>switch on reproducible also with SOURCE_DATE_EPOCH in the plugin</comment>
+    <requestid>1202686</requestid>
+  </revision>
 </revisionlist>

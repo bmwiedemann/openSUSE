@@ -247,4 +247,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148802</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>a27b3812ff895cb17901476e4ef117c4</srcmd5>
+    <version>2.7.3</version>
+    <time>1727191885</time>
+    <user>anag+factory</user>
+    <comment>reproducible build + packaging overhaul</comment>
+    <requestid>1202691</requestid>
+  </revision>
 </revisionlist>

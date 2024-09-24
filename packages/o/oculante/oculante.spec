@@ -20,7 +20,7 @@
 %define force_gcc_version 13
 %define appid io.github.woelper.Oculante
 Name:           oculante
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
@@ -76,7 +76,10 @@ install -Dpm644 res/flathub/%{appid}.metainfo.xml -t \
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
-%{cargo_test} -- --skip=tests::net --skip=bench
+%{cargo_test} -- \
+    --skip=tests::net \
+    --skip=bench \
+    --skip=tests::flathub
 %endif
 appstream-util validate-relax --nonet \
       %{buildroot}%{_datadir}/metainfo/%{appid}.metainfo.xml

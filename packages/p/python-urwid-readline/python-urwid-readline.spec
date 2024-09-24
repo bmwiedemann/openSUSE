@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-urwid-readline
-Version:        0.14
+Version:        0.15.1
 Release:        0
 Summary:        Text input widget for urwid that supports readline shortcuts
 License:        MIT

@@ -1,0 +1,5 @@
+<package name="update-bootloader" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="update-bootloader"/>
+</package>

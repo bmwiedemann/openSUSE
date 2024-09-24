@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:37:39 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.0.7:
+  * Fixed incorrect url detection for some links
+- Update to 2.0.6:
+  * Updated appimage type detection according to the specs
+  * Moved the "Cancel download" button to avoid unintentional errors
+- Update to 2.0.5:
+  * Added checks to detect if Gear Lever is running as a flatpak
+  * Bug fix
+
+-------------------------------------------------------------------
 Sat Aug  3 08:50:37 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.0.4

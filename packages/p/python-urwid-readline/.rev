@@ -18,4 +18,15 @@
 - Initial packaging of urwid-readline for openSUSE</comment>
     <requestid>1159023</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10d57324fb5b1b24994ab96cb4ad8d23</srcmd5>
+    <version>0.15.1</version>
+    <time>1727191907</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.1:
+  * Properly propagate &quot;up&quot; keypresses
+  * Update deprecated urwid.util usage
+  * Use up to date versions in CI</comment>
+    <requestid>1202594</requestid>
+  </revision>
 </revisionlist>

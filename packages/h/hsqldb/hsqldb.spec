@@ -40,14 +40,14 @@ Source9:        hsqldb-stop
 # Javadoc fails to create since apidocs folder is deleted and not recreated
 Patch0:         hsqldb-apidocs.patch
 Patch1:         hsqldb-mdescriptor.patch
-Patch3:         harden_hsqldb.service.patch
+Patch2:         harden_hsqldb.service.patch
+Patch3:         reproducible-jar-mtime.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 # Needed for maven conversions
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  pkgconfig
 BuildRequires:  servletapi5
@@ -128,21 +128,23 @@ sed -i -e 's|doc/apidocs|%{_javadocdir}/%{name}|g' index.html
 %build
 pushd build
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
-ant hsqldb javadoc -Dservletapi.lib=$(build-classpath glassfish-servlet-api)
+%{ant} \
+    -Dservletapi.lib=$(build-classpath glassfish-servlet-api) \
+    hsqldb javadoc
 popd
 
 %install
 # jar
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 lib/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 lib/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # systemd
-install -d -m 755 %{buildroot}%{_unitdir}
-install -d -m 755 %{buildroot}%{_libexecdir}/%{name}
-install -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
-install -m 755 %{SOURCE7} %{buildroot}%{_libexecdir}/%{name}/%{name}-wrapper
-install -m 755 %{SOURCE8} %{buildroot}%{_libexecdir}/%{name}/%{name}-post
-install -m 755 %{SOURCE9} %{buildroot}%{_libexecdir}/%{name}/%{name}-stop
+install -dm 0755 %{buildroot}%{_unitdir}
+install -dm 0755 %{buildroot}%{_libexecdir}/%{name}
+install -pm 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
+install -pm 0755 %{SOURCE7} %{buildroot}%{_libexecdir}/%{name}/%{name}-wrapper
+install -pm 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/%{name}/%{name}-post
+install -pm 0755 %{SOURCE9} %{buildroot}%{_libexecdir}/%{name}/%{name}-stop
 
 # rchsqldb link
 install -d -m 0755 %{buildroot}/%{_sbindir}/
@@ -153,35 +155,36 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}
 install -m 0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/%{name}.conf
 
 # serverconfig
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
-install -m 644 %{SOURCE2} %{buildroot}%{_localstatedir}/lib/%{name}/server.properties
-install -m 644 %{SOURCE3} %{buildroot}%{_localstatedir}/lib/%{name}/webserver.properties
+install -dm 0755 %{buildroot}%{_localstatedir}/lib/%{name}
+install -pm 0644 %{SOURCE2} %{buildroot}%{_localstatedir}/lib/%{name}/server.properties
+install -pm 0644 %{SOURCE3} %{buildroot}%{_localstatedir}/lib/%{name}/webserver.properties
 install -m 600 %{SOURCE4} %{buildroot}%{_localstatedir}/lib/%{name}/sqltool.rc
 
 # lib
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}/lib
+install -dm 0755 %{buildroot}%{_localstatedir}/lib/%{name}/lib
 
 # javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -r doc/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 
 # data
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}/data
+install -dm 0755 %{buildroot}%{_localstatedir}/lib/%{name}/data
 
 # demo
-install -d -m 755 %{buildroot}%{_datadir}/%{name}/sample
+install -dm 0755 %{buildroot}%{_datadir}/%{name}/sample
 rm -f sample/%{name}.init
-install -m 644 sample/* %{buildroot}%{_datadir}/%{name}/sample
+install -pm 0644 sample/* %{buildroot}%{_datadir}/%{name}/sample
 
 # manual
-install -d -m 755 %{buildroot}%{_docdir}/%{name}-%{version}
+install -dm 0755 %{buildroot}%{_docdir}/%{name}-%{version}
 cp -pr doc/* %{buildroot}%{_docdir}/%{name}-%{version}
 cp -p index.html %{buildroot}%{_docdir}/%{name}-%{version}
 
 cd ..
 # Maven metadata
-install -pD -T -m 644 %{SOURCE5} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE5} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
 
 pushd %{buildroot}%{_localstatedir}/lib/%{name}/lib
     # build-classpath can not be used as the jar is not
@@ -218,11 +221,10 @@ fi
 %postun
 %service_del_postun %{name}.service
 
-%files
+%files -f ../.mfiles
 %defattr(0644,root,root,0755)
 %dir %{_docdir}/%{name}-%{version}
 %doc %{_docdir}/%{name}-%{version}/hsqldb_lic.txt
-%{_javadir}/*
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %dir %{_libexecdir}/%{name}/
@@ -236,9 +238,6 @@ fi
 %attr(0600,hsqldb,hsqldb) %{_localstatedir}/lib/%{name}/sqltool.rc
 %dir %{_localstatedir}/lib/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}.conf
-%dir %{_mavenpomdir}
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml
 
 %files manual
 %defattr(0644,root,root,0755)

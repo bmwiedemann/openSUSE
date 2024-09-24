@@ -33,6 +33,7 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_n
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         01-allow-replacing-artifacts.patch
+Patch2:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -88,6 +89,7 @@ cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
@@ -108,10 +110,11 @@ build-jar-repository -s lib \
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
-    -Dmaven.test.skip=true -DmavenVersion=3.1.1 \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
+    -Dmaven.test.skip=true -DmavenVersion=3.1.1 \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 

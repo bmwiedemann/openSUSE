@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 16 14:44:54 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.0 Patch 6 - 2024-09-16
+
+- NEW FEATURE: remind: Include a file containing the dates of Chinese
+  New Year through 2050.
+
+- NEW FEATURE: remind: Add $SuppressImplicitWarnings system variable.
+  Setting this to 1 suppresses the warnings "Unrecognized command;
+  interpreting as REM" and "Missing REM type; assuming MSG"
+
+- NEW FEATURE: remind: Add --print-tokens command-line argument.  This
+  simply prints all of Remind's built-in tokens, functions, and system
+  variables.  It's designed to help people who are writing editor
+  add-ons for syntax highlighting.
+
+- CHANGE: remind: allow '12:34' to be parsed as a TIME constant.  This
+  matches DATEs and DATETIMEs which are enclosed in single-quotes.
+  (The quotes are optional for TIME constants, however.)
+
+- IMPROVEMENT: Improve many error messages and warnings.
+
+- UPDATE: contrib/ical2rem: Update to upstream version 0.7
+
+- IMPROVEMENT: contrib/remind-conf-mode: Improve the Emacs
+  remind-conf-mode package.  Add new keywords and make comment
+  highlighting correct.
+
+- FIX: remind man page: Remove note saying REM can be omitted.
+
+-------------------------------------------------------------------
 Mon Sep  9 13:20:52 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.0 Patch 5 - 2024-09-02

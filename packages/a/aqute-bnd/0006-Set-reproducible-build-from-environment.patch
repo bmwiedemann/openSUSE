@@ -1,0 +1,30 @@
+From e2a396594fc53b2e839a5b0e017a9f6ed8669d45 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 23 Sep 2024 11:20:44 +0200
+Subject: [PATCH 6/6] Set reproducible build from environment
+
+---
+ .../aQute/bnd/maven/plugin/AbstractBndMavenPlugin.java     | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/plugin/AbstractBndMavenPlugin.java b/maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/plugin/AbstractBndMavenPlugin.java
+index b6458080..4c58d632 100644
+--- a/maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/plugin/AbstractBndMavenPlugin.java
++++ b/maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/plugin/AbstractBndMavenPlugin.java
+@@ -363,6 +363,13 @@ public abstract class AbstractBndMavenPlugin extends AbstractMojo {
+ 				// no timestamp configured (1 character configuration is useful
+ 				// to override a full value during pom inheritance)
+ 				&& ((outputTimestamp.length() > 1) || Character.isDigit(outputTimestamp.charAt(0)));
++			if (!isReproducible) {
++				String sde = System.getenv("SOURCE_DATE_EPOCH");
++				if (sde != null) {
++					outputTimestamp = sde;
++					isReproducible = true;
++				}
++			}
+ 			if (isReproducible) {
+ 				builder.setProperty(Constants.REPRODUCIBLE, outputTimestamp);
+ 				if (builder.getProperty(Constants.NOEXTRAHEADERS) == null) {
+-- 
+2.46.1
+

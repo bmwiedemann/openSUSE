@@ -17,8 +17,8 @@
 
 #!BuildTag: opensuse/bci/gcc:12
 #!BuildTag: opensuse/bci/gcc:12-%RELEASE%
-#!BuildTag: opensuse/bci/gcc:%%gcc_version%%
-#!BuildTag: opensuse/bci/gcc:%%gcc_version%%-%RELEASE%
+#!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%
+#!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -29,7 +29,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends gcc12 gcc12-c++ make curl fi
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI GNU Compiler Collection"
 LABEL org.opencontainers.image.description="GNU Compiler Collection container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="12"
+LABEL org.opencontainers.image.version="%%gcc_minor_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
@@ -41,7 +41,7 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gcc-12-image/README.md"
-ENV GCC_VERSION="%%gcc_version%%"
+ENV GCC_VERSION="%%gcc_minor_version%%"
 
 # symlink all versioned gcc & g++ binaries to unversioned
 # ones in /usr/local/bin so that plain gcc works

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 17 11:05:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.20
+  * Add crc helpers for writing to large buffers. by @DmitriyMusatkin in (#93)
+  * Fix builds on clang 16+ by @DmitriyMusatkin in (#96)
+- from version 0.1.19
+  * Rebase CRC32DATA32VALUE by @jmklix in (#87)
+  * clang-format 18 by @graebm in (#91)
+  * Update MacOS to arm64 by @waahm7 in (#92)
+  * Better vectorization and crc64 by @JonathanHenson in (#79)
+- Add new aws-checksums-bin binary package
+- Refresh patches for new version
+  * ac_fix-cmake-modules-path.patch
+  * ac_re-add-so-version.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 11:13:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

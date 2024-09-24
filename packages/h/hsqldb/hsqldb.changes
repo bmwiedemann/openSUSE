@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:32:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-jar-mtime.patch
+    + Don't add the Main-Class after jar creation, but during
+    + Fixes manifest timestamp
+- Clean the spec file
+
+-------------------------------------------------------------------
 Fri Sep 20 08:56:17 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 2.7.3:

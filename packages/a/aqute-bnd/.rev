@@ -96,4 +96,12 @@
     <comment>6.4.1</comment>
     <requestid>1199718</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>498ed8342dd8514ffbaacb7f367a8dab</srcmd5>
+    <version>6.4.1</version>
+    <time>1727191959</time>
+    <user>anag+factory</user>
+    <comment>switch on reproducible also with SOURCE_DATE_EPOCH in the plugin</comment>
+    <requestid>1202685</requestid>
+  </revision>
 </revisionlist>

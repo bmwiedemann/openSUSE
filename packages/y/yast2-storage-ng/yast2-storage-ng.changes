@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 23 11:27:55 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use the newer exfatprogs instead of exfat-utils (bsc#1187854)
+- 5.0.19
+
+-------------------------------------------------------------------
 Fri Sep 20 13:06:00 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Extend the API to resize partitions during a proposal (required

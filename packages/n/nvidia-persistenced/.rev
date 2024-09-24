@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d14a5bdc9dacd72d4d9f0f779ebb935f</srcmd5>
+    <version>560.35.03</version>
+    <time>1727191897</time>
+    <user>anag+factory</user>
+    <comment>- don't require libnvidia-cfg.so.1()(64bit), because this is part
+  of NVIDIA's proprietary userspace libs, which we cannot ship
+
+- created package
+  --&gt; https://github.com/openSUSE/nvidia-driver-G06/issues/16</comment>
+    <requestid>1202562</requestid>
+  </revision>
+</revisionlist>

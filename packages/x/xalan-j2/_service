@@ -1,0 +1,18 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/apache/xalan-java.git</param>
+		<param name="revision">xalan-j_2_7_3-rc10</param>
+		<param name="match-tag">xalan-j_*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">xalan-j_(\d+)_(\d+)_(\d+).*</param>
+		<param name="versionrewrite-replacement">\1.\2.\3</param>
+		<param name="filename">xalan-j2</param>
+        <param name="exclude">**/*.jar</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

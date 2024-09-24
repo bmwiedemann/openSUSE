@@ -1,6 +1,7 @@
 #
 # spec file for package contrast
 #
+# Copyright (c) 2024 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,20 +18,19 @@
 
 
 %define lname   org.gnome.design.Contrast
-%define lurl    23b9cf42e16630f0eab2eeb1686eb25b
+%define lurl    06d276a9bf45f81a548c4dcefb27437d
 Name:           contrast
-Version:        0.0.10
+Version:        0.0.11
 Release:        0
 Summary:        Check difference between two colors
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/design/contrast
-Source:         %{url}/uploads/%{lurl}/%{name}-%{version}.tar.xz
+Source:         https://gitlab.gnome.org/-/project/8128/uploads/%{lurl}/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) 
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.13.0
 BuildRequires:  pkgconfig(libadwaita-1) 
 
 %description
@@ -48,6 +48,9 @@ Check whether the contrast between two colors meet the WCAG requirements.
 %install
 %meson_install
 
+%check
+%meson_test
+
 %find_lang %{name}
 
 %files
@@ -62,4 +65,3 @@ Check whether the contrast between two colors meet the WCAG requirements.
 %files lang -f %{name}.lang
 
 %changelog
-

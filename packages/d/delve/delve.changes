@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:42:20 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.23.1:
+  * *: release version 1.23.1 (#3816)
+  * proc: cache module data (#3800)
+  * proc: for optimized functions allow .closureptr to not exist (#3808)
+  * proc: improve Rosetta check (#3810)
+  * proc: fix result type of division of untyped constants (#3794)
+  * service/dap: fix test failure with 1.24 (#3805)
+  * service/dap: make handlesMap generic (#3798)
+  * proc: workaround for macOS section name truncation (#3799)
+  * terminal/starbind: fix starlark conversion of named consts (#3802)
+  * chore: fix function name (#3803)
+  * eval: Allow reslicing a slice up to its cap, rather than its length (#3796)
+  * proc: fix TestRangeOverFuncNext on linux/386 (#3795)
+  * proc: fix step stuttering when entering range-over-func bodies (#3788)
+  * proc: move stepping test to their own file (#3784)
+
+-------------------------------------------------------------------
 Tue Jul 16 18:49:07 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.23.0:
