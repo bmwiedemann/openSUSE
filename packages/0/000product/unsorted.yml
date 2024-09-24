@@ -1165,6 +1165,7 @@ unsorted:
   - aws-c-s3-bin 
   - aws-c-s3-devel 
   - aws-c-sdkutils-devel 
+  - aws-checksums-bin 
   - aws-cli 
   - aws-crt-cpp-bin 
   - aws-crt-cpp-devel 
@@ -3352,6 +3353,7 @@ unsorted:
   - distribution-registry 
   - distrobuilder 
   - dita 
+  - dive 
   - diy-devel 
   - diy-mpich-devel 
   - djvu2pdf 
@@ -4586,6 +4588,7 @@ unsorted:
   - frizbee-bash-completion 
   - frizbee-fish-completion 
   - frizbee-zsh-completion 
+  - frog-protocols 
   - frogr 
   - frogr-lang 
   - frozen-bubble 
@@ -9540,7 +9543,6 @@ unsorted:
   - jlfgr 
   - jline 
   - jline-javadoc 
-  - jline3 
   - jline3-builtins 
   - jline3-console 
   - jline3-javadoc 
@@ -19952,8 +19954,10 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-default-devel 
   - nvidia-open-driver-G06-signed-default-devel 
   - nvidia-open-driver-G06-signed-kmp-default 
+  - nvidia-persistenced 
   - nvidia-settings 
   - nvidia-texture-tools 
+  - nvidia-xconfig 
   - nvimpager 
   - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
@@ -22647,6 +22651,10 @@ unsorted:
   - perl-yui 
   - permissions-zypp-plugin 
   - permlib-devel 
+  - perses-cli 
+  - perses-cli-bash-completion 
+  - perses-cli-fish-completion 
+  - perses-cli-zsh-completion 
   - perseus-sdr-tools 
   - pesign 
   - pesign-obs-integration 
@@ -24436,7 +24444,6 @@ unsorted:
   - python310-argon2-cffi-bindings 
   - python310-argparse-manpage 
   - python310-argparse_addons 
-  - python310-args 
   - python310-arrow 
   - python310-arviz 
   - python310-asciimatics 
@@ -25021,7 +25028,6 @@ unsorted:
   - python310-cliff 
   - python310-cligj 
   - python310-clikit 
-  - python310-clint 
   - python310-cloud-init-seed 
   - python310-cloudflare 
   - python310-cloudpickle 
@@ -25110,7 +25116,6 @@ unsorted:
   - python310-csvkit 
   - python310-ctranslate2 
   - python310-ctypesgen 
-  - python310-cu2qu 
   - python310-curlylint 
   - python310-curses 
   - python310-curtsies 
@@ -25680,6 +25685,7 @@ unsorted:
   - python310-httpx 
   - python310-httpx-socks 
   - python310-httpx-ws 
+  - python310-huey 
   - python310-huggingface-hub 
   - python310-humanfriendly 
   - python310-humanhash3 
@@ -26399,6 +26405,7 @@ unsorted:
   - python310-pdm-backend 
   - python310-pecan 
   - python310-peewee 
+  - python310-peewee-migrate 
   - python310-pefile 
   - python310-pegasus-wms.api 
   - python310-pegasus-wms.common 
@@ -26915,6 +26922,7 @@ unsorted:
   - python310-python-gitlab 
   - python310-python-gnupg 
   - python310-python-gvm 
+  - python310-python-iso639 
   - python310-python-jenkins 
   - python310-python-jose 
   - python310-python-jose-cryptography 
@@ -28108,7 +28116,6 @@ unsorted:
   - python311-argon2-cffi 
   - python311-argon2-cffi-bindings 
   - python311-argparse_addons 
-  - python311-args 
   - python311-arrow 
   - python311-arviz 
   - python311-asciimatics 
@@ -28684,7 +28691,6 @@ unsorted:
   - python311-cliff 
   - python311-cligj 
   - python311-clikit 
-  - python311-clint 
   - python311-cloud-init-seed 
   - python311-cloudflare 
   - python311-cloudpickle 
@@ -28767,7 +28773,6 @@ unsorted:
   - python311-csvkit 
   - python311-ctranslate2 
   - python311-ctypesgen 
-  - python311-cu2qu 
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
@@ -29319,6 +29324,7 @@ unsorted:
   - python311-httptools 
   - python311-httpx-socks 
   - python311-httpx-ws 
+  - python311-huey 
   - python311-huggingface-hub 
   - python311-humanfriendly 
   - python311-humanhash3 
@@ -30007,6 +30013,7 @@ unsorted:
   - python311-pdm-backend 
   - python311-pecan 
   - python311-peewee 
+  - python311-peewee-migrate 
   - python311-pefile 
   - python311-pegasus-wms.api 
   - python311-pegasus-wms.common 
@@ -30504,6 +30511,7 @@ unsorted:
   - python311-python-gitlab 
   - python311-python-gnupg 
   - python311-python-gvm 
+  - python311-python-iso639 
   - python311-python-jenkins 
   - python311-python-jose 
   - python311-python-jose-cryptography 
@@ -31694,7 +31702,6 @@ unsorted:
   - python312-argon2-cffi-bindings 
   - python312-argparse-manpage 
   - python312-argparse_addons 
-  - python312-args 
   - python312-arrow 
   - python312-arviz 
   - python312-asciimatics 
@@ -32278,7 +32285,6 @@ unsorted:
   - python312-cliff 
   - python312-cligj 
   - python312-clikit 
-  - python312-clint 
   - python312-cloud-init-seed 
   - python312-cloudflare 
   - python312-cloudpickle 
@@ -32367,7 +32373,6 @@ unsorted:
   - python312-csvkit 
   - python312-ctranslate2 
   - python312-ctypesgen 
-  - python312-cu2qu 
   - python312-curlylint 
   - python312-curses 
   - python312-curtsies 
@@ -32937,6 +32942,7 @@ unsorted:
   - python312-httpx 
   - python312-httpx-socks 
   - python312-httpx-ws 
+  - python312-huey 
   - python312-huggingface-hub 
   - python312-humanfriendly 
   - python312-humanhash3 
@@ -33653,6 +33659,7 @@ unsorted:
   - python312-pdm-backend 
   - python312-pecan 
   - python312-peewee 
+  - python312-peewee-migrate 
   - python312-pefile 
   - python312-pegasus-wms.api 
   - python312-pegasus-wms.common 
@@ -34168,6 +34175,7 @@ unsorted:
   - python312-python-gitlab 
   - python312-python-gnupg 
   - python312-python-gvm 
+  - python312-python-iso639 
   - python312-python-jenkins 
   - python312-python-jose 
   - python312-python-jose-cryptography 
@@ -36597,6 +36605,10 @@ unsorted:
   - rxtx-java 
   - rxtx-java-javadoc 
   - rxvt-unicode 
+  - rye 
+  - rye-bash-completion 
+  - rye-fish-completion 
+  - rye-zsh-completion 
   - rygel 
   - rygel-devel 
   - rygel-lang 

@@ -90,7 +90,6 @@
     <package name="pam" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam-extra" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permctl" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -116,6 +115,7 @@
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="update-bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
