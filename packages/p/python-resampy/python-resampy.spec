@@ -16,7 +16,16 @@
 #
 
 
-Name:           python-resampy
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%else
+%bcond_without test
+%define psuffix -%{flavor}
+%endif
+
+Name:           python-resampy%{psuffix}
 Version:        0.4.3
 Release:        0
 Summary:        Signal resampling in Python
@@ -35,13 +44,11 @@ Requires:       python-numpy >= 1.17
 Suggests:       python-numpydoc
 Suggests:       python-sphinx
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module numba >= 0.53}
-BuildRequires:  %{python_module numpy >= 1.17}
-BuildRequires:  %{python_module pytest-cov}
+%if %{with test}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0}
-# /SECTION
+BuildRequires:  %{python_module resampy = %{version}}
+BuildRequires:  %{python_module scipy >= 1.1}
+%endif
 %python_subpackages
 
 %description
@@ -57,21 +64,29 @@ http://ccrma.stanford.edu/~jos/resample/.
 %setup -q -n resampy-%{version}
 # Remove shebang from files
 sed -i -e '/^#!\//, 1d' */*.py
+# Remove code coverage options
+sed -i '/addopts/d' setup.cfg
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/resampy
 %{python_sitelib}/resampy-%{version}.dist-info
+%endif
 
 %changelog

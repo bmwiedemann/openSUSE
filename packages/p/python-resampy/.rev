@@ -75,4 +75,12 @@
 - reenable build for python311 (numba available)</comment>
     <requestid>1158459</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e58454c60ef5cb4906bb66ab181e02d9</srcmd5>
+    <version>0.4.3</version>
+    <time>1727192040</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202833</requestid>
+  </revision>
 </revisionlist>
