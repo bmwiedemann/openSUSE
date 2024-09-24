@@ -340,4 +340,12 @@
     <comment>security update Tryton issue #13142</comment>
     <requestid>1172374</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4e8a29244bac450dd4d90ac1e97431d8</srcmd5>
+    <version>6.0.28</version>
+    <time>1727192033</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1202824</requestid>
+  </revision>
 </revisionlist>
