@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 10:59:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Mon Apr  8 04:36:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
