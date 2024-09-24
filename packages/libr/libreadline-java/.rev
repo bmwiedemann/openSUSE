@@ -256,4 +256,12 @@
     <comment>fix build with gcc14</comment>
     <requestid>1172227</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>b3de0e122ddf91adf561076f580d2d97</srcmd5>
+    <version>0.8.3</version>
+    <time>1727192074</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202894</requestid>
+  </revision>
 </revisionlist>

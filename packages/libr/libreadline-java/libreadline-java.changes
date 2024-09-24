@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:04:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libreadline-java-reproducible-jar-mtime.patch
+    + use SOURCE_DATE_EPOCH for reproducible jar modification times
+
+-------------------------------------------------------------------
 Mon May  6 15:58:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -1,0 +1,25 @@
+--- libreadline-java-0.8.3/Makefile	2024-09-24 11:56:26.680687376 +0200
++++ libreadline-java-0.8.3/Makefile	2024-09-24 12:01:12.635966813 +0200
+@@ -163,10 +163,20 @@
+ world : jar build-native
+ 
+ jar: build-java
+-	cd $(BUILDDIR) ; $(JAVA_HOME)/bin/jar -cvmf ../$(MF_STUB) ../$(JAR) *
++	cd $(BUILDDIR) ; $(JAVA_HOME)/bin/jar \
++		--date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++		--create \
++		--verbose \
++		--manifest=../$(MF_STUB) \
++		--file=../$(JAR) *
+ 
+ $(JAR):
+-	cd $(BUILDDIR) ; $(JAVA_HOME)/bin/jar -cvmf ../$(MF_STUB) ../$(JAR) *
++	cd $(BUILDDIR) ; $(JAVA_HOME)/bin/jar \
++		--date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++		--create \
++		--verbose \
++		--manifest=../$(MF_STUB) \
++		--file=../$(JAR) *
+ 
+ build-java: $(BUILDDIR)
+ 	cd src ; $(MAKE) JAVAC="$(JAVAC)" JC_FLAGS="$(JC_FLAGS)" \
