@@ -49,16 +49,14 @@
 %global __mypython %{expand:%%{__%{mypython}}}
 
 Name:           python-postorius
-Version:        1.3.12
+Version:        1.3.13
 Release:        0
 Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/postorius
 #
-Source0:        https://gitlab.com/mailman/postorius/-/archive/v1.3.12/postorius-v1.3.12.tar.gz
-# The release links give 404 for this release :-(
-#Source0:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz
-#Source1:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz.asc
+Source0:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz
+Source1:        https://gitlab.com/mailman/postorius/-/releases/v%{version}/downloads/postorius-%{version}.tar.gz.asc
 Source2:        python-postorius.keyring
 Source3:        python-postorius-rpmlintrc
 #
@@ -159,7 +157,7 @@ BuildRequires:  sysuser-tools
 System user for HyperKitty.
 
 %prep
-%setup -q -n postorius-v%{version}
+%setup -q -n postorius-%{version}
 cp %{SOURCE20} .
 touch settings_local.py
 
