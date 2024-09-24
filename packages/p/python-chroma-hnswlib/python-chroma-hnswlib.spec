@@ -48,6 +48,7 @@ Chroma-Hnswlib - fast approximate nearest neighbor search
 %autosetup -p1 -n hnswlib-%{version}
 
 %build
+export HNSWLIB_NO_NATIVE=1
 export CFLAGS="%{optflags}"
 %pyproject_wheel
 

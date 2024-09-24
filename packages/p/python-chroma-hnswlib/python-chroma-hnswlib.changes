@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 21 07:54:40 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Wed Sep 18 09:12:53 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Use GitHub tarball
