@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:17:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Add numpy.linalg.pinv wrapper PR#63
+  * Update to handle modified behaviour of numpy.linalg.solve PR#63
+- Add multibuild: Test with current numpy and with numba compatible
+  numpy < 2.1
+
+-------------------------------------------------------------------
 Thu Sep  5 09:18:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Pin numpy < 2 in testing, due to numba
