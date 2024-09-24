@@ -37,9 +37,6 @@ URL:            https://datashader.org
 # SourceRepository: https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
-BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct}
@@ -53,6 +50,7 @@ Requires:       python-dask-dataframe
 Requires:       python-multipledispatch
 Requires:       python-numba
 Requires:       python-numpy
+Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-param
 Requires:       python-pyct
@@ -64,6 +62,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
+BuildRequires:  %{python_module dask-expr}
 BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module matplotlib >= 3.3}
@@ -104,6 +103,7 @@ saturation, overplotting, or underplotting issues.
 %autosetup -p1 -n datashader-%{version}
 sed -i -e '/^#!\//, 1d' examples/*.py
 chmod -x examples/getting_started/2_Pipeline.ipynb
+sed -i 's/"--color=yes"//' pyproject.toml
 
 %build
 %pyproject_wheel

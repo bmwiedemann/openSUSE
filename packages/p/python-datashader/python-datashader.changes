@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 22 12:17:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Don't require runtime requirements for building: Avoid resolver
+  conflict for numpy with numba
+
+-------------------------------------------------------------------
 Fri Aug 30 13:04:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Unpin numpy 2
