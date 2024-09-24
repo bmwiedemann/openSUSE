@@ -63,7 +63,11 @@ mkdir -p lib
 build-jar-repository -s lib xpp3
 %{ant}
 
-jar ufm dist/%{name}2-%{version}.jar %{SOURCE3}
+jar  \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=dist/%{name}2-%{version}.jar --manifest=%{SOURCE3}
 
 %{mvn_artifact} %{SOURCE1} dist/%{name}2-%{version}.jar
 %{mvn_artifact} %{SOURCE2} dist/%{name}2-min-%{version}.jar
