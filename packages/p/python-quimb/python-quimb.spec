@@ -16,7 +16,19 @@
 #
 
 
-Name:           python-quimb
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+BuildArch:      noarch
+%else
+%bcond_without test
+%define psuffix -%{flavor}
+# This package does not support 32 bit arch, s390x fails too
+ExcludeArch:    %{ix86} %{arm} ppc s390x
+%endif
+
+Name:           python-quimb%{psuffix}
 Version:        1.8.4
 Release:        0
 Summary:        Python library for quantum information and many-body calculations
@@ -29,8 +41,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-autoray >= 0.6.7
-Requires:       python-cotengra >= 0.5.6
+Requires:       python-autoray >= 0.6.12
+Requires:       python-cotengra >= 0.6.1
 Requires:       python-cytoolz >= 0.8.0
 Requires:       python-numba >= 0.39
 Requires:       python-numpy >= 1.17
@@ -41,30 +53,21 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-diskcache >= 3.0
 Recommends:     python-matplotlib >= 2
-Recommends:     python-networkx
+Recommends:     python-networkx >= 2.3
 Suggests:       python-mpi4py
 Suggests:       python-petsc4py
-Suggests:       python-randomgen >= 1.18
 Suggests:       python-slepc4py
-# This package does not support 32 bit arch, s390x fails too
-ExcludeArch:    %{ix86} %{arm} ppc s390x
-# SECTION test
-BuildRequires:  %{python_module autoray >= 0.6.7}
-BuildRequires:  %{python_module cotengra >= 0.5.6}
-BuildRequires:  %{python_module cytoolz >= 0.8.0}
+%if %{with test}
+BuildRequires:  %{python_module quimb = %{version}}
+##
 BuildRequires:  %{python_module diskcache >= 3.0}
 BuildRequires:  %{python_module matplotlib >= 2}
 BuildRequires:  %{python_module networkx >= 2.3}
-BuildRequires:  %{python_module numba >= 0.39}
-BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module psutil >= 4.3.1}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0.0}
-BuildRequires:  %{python_module tqdm >= 4}
-# /SECTION
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -77,13 +80,17 @@ many-body calculations, including with tensor networks.
 sed -i '/addopts/d' pyproject.toml
 
 %build
+%if !%{with test}
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/quimb-mpi-python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %post
 %python_install_alternative quimb-mpi-python
@@ -91,16 +98,21 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %postun
 %python_uninstall_alternative quimb-mpi-python
 
+%if %{with test}
 %check
+mv quimb quimb.movedsrc
 # precision comparison slightly out of tolerance: this one is permament, others are flaky (rerun them)
 donttest="(test_subtract_update and float32)"
 %pytest -n auto --reruns 3 -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/quimb-mpi-python
 %{python_sitelib}/quimb-%{version}.dist-info
 %{python_sitelib}/quimb
+%endif
 
 %changelog
