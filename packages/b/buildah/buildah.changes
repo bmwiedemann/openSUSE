@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 24 05:42:35 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.37.3:
+  * [release-1.37] Bump to Buildah v1.37.3
+  * Do not error on trying to write IMA xattr as rootless
+  * imagebuildah.StageExecutor: clean up volumes/volumeCache
+  * `manifest add --artifact`: handle multiple values
+  * Packit: split out ELN jobs and reuse fedora downstream targets
+  * Packit: Enable sidetags for bodhi updates
+  * Use Epoch: 2 and respect the epoch in dependencies.
+
+-------------------------------------------------------------------
 Thu Aug 22 08:03:41 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.37.2:
