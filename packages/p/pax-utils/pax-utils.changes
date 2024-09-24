@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 24 06:32:02 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.3.8
+  * ar: handle invalid ascii numbers better
+  * ar: handle invalid extended filename offsets
+  * ar: switch from alloca to malloc
+  * dumpelf: check dyn pointer before DT_NULL check too
+  * dumpelf: free elf after fuzzing it to avoid leaking
+  * dumpelf: improve note memory check
+  * dumpelf: limit note name display
+  * lddtree: Add --wrapper-preload
+  * lddtree: add LD_ARGV0_REL
+  * lddtree: keep relativeness of invoked program in elf wrapper
+  * lddtree: use readlink -f for absolute links
+  * paxelf: reject ELFs with incomplete Ehdr structures
+  * paxelf: use correct format string
+  * pspax: fix buffer limiting in cmdline reading
+  * pspax: fix error handling when reading attr or ipaddr fail
+  * pspax: fix libcap memory leaks
+  * pspax: replace proc_fopen with fopenat_r
+  * pspax: rework & document get_proc_name
+  * pspax: switch from fgets to getline
+  * scanelf: fix hashtable overflow checks
+  * seccomp: make socket() fail with -ENOSYS
+  * unify usage() output across all the tools
+
+-------------------------------------------------------------------
 Tue Aug 15 11:41:37 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Fix lddtree to call python3 (boo#1213178)
