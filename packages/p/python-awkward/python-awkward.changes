@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Sep 22 12:33:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert numpy restriction to > 2
+  * Upstream declares 1.18.0.
+- Test both in multibuild:
+  * numba: requires numpy < 2.1 (--> installs numpy1)
+  * no numba --> installs numpy >= 2.1
+- enable uproot tests: no cycle in multibuild
+
+-------------------------------------------------------------------
+Sun Sep 15 23:18:42 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.8:
+  * feat: Add ak.array_equal (gh#scikit-hep/awkward#3215).
+  * feat: to TensorFlow RaggedTensor (gh#scikit-hep/awkward#3210).
+  * feat: provide a way for Form.select_columns to distinguish
+    structural dots from dots in the names of record fields
+    (gh#scikit-hep/awkward#3222).
+  * fix: 2881 akconcatenate fails trying to concatenate too many
+    nested arrays (gh#scikit-hep/awkward#3207).
+  * fix: adjust checks in ForthMachine to prevent segfault when
+    num_items is negative (gh#scikit-hep/awkward#3209).
+  * fix: generalize Index.ptr (gh#scikit-hep/awkward#3206).
+  * fix: add ak.array_equal to NEP18 overrides, documentation, and
+    add one more test (gh#scikit-hep/awkward#3225).
+  * fix: cuda max reducer bugfix and more tests
+    (gh#scikit-hep/awkward#3228).
+  * fix: empty arrays in ak.to_parquet with extensionarray=True
+    (gh#scikit-hep/awkward#3234).
+  * fix: GPU complex reducer prod for empty lists
+    (gh#scikit-hep/awkward#3235).
+  * test: loosen message on test_2757 due to upstream Cython
+    changes (gh#scikit-hep/awkward#3224).
+  * style: fix documentation (gh#scikit-hep/awkward#3227).
+- Bump required python-numpy versions to >= 2.0.0.
+
+-------------------------------------------------------------------
 Thu Jun  6 08:25:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.5:

@@ -16,10 +16,27 @@
 #
 
 
-%define awkward_cpp_version 34
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+BuildArch:      noarch
+%else
+%bcond_without test
+# Test suite fails on numerous tests when trying to convert 64-bit types
+ExcludeArch:    %{ix86} %{arm32}
+%define psuffix -%{flavor}
+%if "%{flavor}" == "test-numba"
+%bcond_without numba
+%else
+%bcond_with numba
+%endif
+%endif
+
+%define awkward_cpp_version 38
 %{?sle15_python_module_pythons}
-Name:           python-awkward
-Version:        2.6.5
+Name:           python-awkward%{psuffix}
+Version:        2.6.8
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -34,8 +51,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-awkward-cpp >= %{awkward_cpp_version}
-Requires:       python-fsspec
-Requires:       python-numpy >= 1.17.0
+Requires:       python-fsspec >= 2022.11.0
+Requires:       python-numpy >= 1.18.0
 Requires:       python-packaging
 Requires:       (python-importlib-metadata if python-base < 3.12)
 Requires:       (python-importlib-resources if python-base < 3.9)
@@ -43,25 +60,21 @@ Requires:       (python-typing-extensions >= 4.1.0 if python-base < 3.11)
 Recommends:     python-cupy
 Recommends:     python-numba
 Recommends:     python-pandas
-# SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module awkward-cpp = %{awkward_cpp_version}}
-BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.12}
-BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
+%if %{with test}
+BuildRequires:  %{python_module awkward = %{version}}
+%if %{with numba}
+# numba 0.60 requires numpy < 2.1
 BuildRequires:  %{python_module numba >= 0.50 if %python-base < 3.11}
-BuildRequires:  %{python_module numexpr}
-BuildRequires:  %{python_module numpy >= 1.17.0}
-BuildRequires:  %{python_module packaging}
+%endif
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module numexpr >= 2.7}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions >= 4.1.0 if %python-base < 3.11}
-# Don't add uproot here: build cycle dependency
-# /SECTION
-BuildArch:      noarch
-# Test suite fails on numerous tests when trying to convert 64-bit types
-ExcludeArch:    %{ix86} %{arm32}
+BuildRequires:  %{python_module uproot >= 5}
+%endif
+
 %python_subpackages
 
 %description
@@ -77,26 +90,34 @@ generalizes when they're not.
 %setup -q -n awkward-%{version}
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %{python_expand # remove devel files
 rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/rdataframe/include
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
+%if %{with test}
 %check
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # need to package cupy
 rm -rvf ./tests-cuda-kernels
 # jax, jaxlib missing
 %pytest -n auto --ignore tests-cuda/ -k "not test_2603_custom_behaviors_with_jax"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/awkward/
 %{python_sitelib}/awkward-%{version}.dist-info/
+%endif
 
 %changelog

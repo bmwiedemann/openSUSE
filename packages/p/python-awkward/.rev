@@ -497,4 +497,12 @@
   * fix: prevent exponential memory growth in UnionArray</comment>
     <requestid>1178926</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a146df819b77fbcb0c437e577292525c</srcmd5>
+    <version>2.6.8</version>
+    <time>1727192103</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202834</requestid>
+  </revision>
 </revisionlist>
