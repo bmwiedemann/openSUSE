@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:41:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.36:
+  * Fixed #7544: Social cards incorrectly rendering HTML entities
+  * Fixed #7542: Improved support for setting custom list styles
+
+-------------------------------------------------------------------
+Sat Sep 21 16:40:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.35:
+  * Fixed #7498: Search not showing for Vietnamese language
+
+-------------------------------------------------------------------
 Mon Sep  9 11:53:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.34:

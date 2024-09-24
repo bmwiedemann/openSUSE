@@ -525,4 +525,12 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1199682</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>f766ac073857b4b8589e83b2607d569c</srcmd5>
+    <version>9.5.36</version>
+    <time>1727192044</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202836</requestid>
+  </revision>
 </revisionlist>
