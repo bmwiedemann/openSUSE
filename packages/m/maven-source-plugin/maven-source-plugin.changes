@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:38:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-from-environment.patch
+    + SOURCE_DATE_EPOCH environmental variable triggers reproducible
+      use of the maven-source-plugin if it is not requested already
+      using the project.build.outputTimestamp option.
+
+-------------------------------------------------------------------
 Tue Mar 22 13:48:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

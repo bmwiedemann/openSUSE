@@ -1,0 +1,18 @@
+diff -urEbwB maven-source-plugin-3.3.1.orig/src/main/java/org/apache/maven/plugins/source/AbstractSourceJarMojo.java maven-source-plugin-3.3.1/src/main/java/org/apache/maven/plugins/source/AbstractSourceJarMojo.java
+--- maven-source-plugin-3.3.1.orig/src/main/java/org/apache/maven/plugins/source/AbstractSourceJarMojo.java	2024-09-24 08:52:01.065274036 +0200
++++ maven-source-plugin-3.3.1/src/main/java/org/apache/maven/plugins/source/AbstractSourceJarMojo.java	2024-09-24 08:52:08.211989382 +0200
+@@ -390,6 +390,14 @@
+         archiver.setCreatedBy("Maven Source Plugin", "org.apache.maven.plugins", "maven-source-plugin");
+         archiver.setBuildJdkSpecDefaultEntry(false);
+ 
++        if ( outputTimestamp == null ||
++            outputTimestamp.length() < 1 ||
++            ( ( outputTimestamp.length() == 1 )
++                && !Character.isDigit( outputTimestamp.charAt(0) ) ) )
++        {
++            outputTimestamp = System.getenv("SOURCE_DATE_EPOCH");
++        }
++
+         // configure for Reproducible Builds based on outputTimestamp value
+         archiver.configureReproducibleBuild(outputTimestamp);
+ 
