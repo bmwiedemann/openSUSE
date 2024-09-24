@@ -805,4 +805,12 @@
     <comment>bugfix version</comment>
     <requestid>1191469</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>77aa205b2972390a01ec31feb6dbe2ef</srcmd5>
+    <version>6.0.52</version>
+    <time>1727192031</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1202822</requestid>
+  </revision>
 </revisionlist>
