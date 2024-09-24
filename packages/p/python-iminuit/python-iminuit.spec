@@ -16,38 +16,57 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%else
+%bcond_without test
+%define psuffix -%{flavor}
+%if "%{flavor}" == "test-numba"
+%bcond_without numba
+%else
+%bcond_with numba
+%endif
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-iminuit
+Name:           python-iminuit%{psuffix}
 Version:        2.28.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+%if !%{with test}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy >= 1.21.0}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.3.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.21.0
+Requires:       python-numpy >= 1.21
 Recommends:     python-matplotlib
 Recommends:     python-scipy
-# SECTION test requirements
-BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
-BuildRequires:  %{python_module matplotlib}
+%if %{with test}
+BuildRequires:  %{python_module iminuit = %{version}}
+%if %{with numba}
+# numba 0.60 requires numpy < 2.1. This resolves to numpy1,
+# if no other **Build**Requires on a conflicting numpy interferes.
 BuildRequires:  %{python_module numba}
+%endif
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tabulate}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -64,25 +83,28 @@ and to get model parameter error estimates from likelihood profile analysis.
 rm -fr extern/pybind11
 
 %build
+%if !%{with test}
 export CXXFLAGS="%{optflags}"
 export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
-%{python_expand # remove empty file and dedup
-f=%{buildroot}%{$python_sitearch}/iminuit-%{version}.dist-info/entry_points.txt
-[ -f $f -a ! -s $f  ] && rm $f
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%endif
 
+%if %{with test}
 %check
-%pytest_arch
+%pytest_arch -v
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/iminuit/
 %{python_sitearch}/iminuit-%{version}.dist-info/
+%endif
 
 %changelog
