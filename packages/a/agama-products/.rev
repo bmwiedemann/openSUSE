@@ -7,4 +7,12 @@
     <comment>Package agama-products is replacing agama-products-opensuse</comment>
     <requestid>1199237</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a700fae06257b0ea8cf5b46880db9c1</srcmd5>
+    <version>0</version>
+    <time>1727192105</time>
+    <user>anag+factory</user>
+    <comment>- Update products translations (gh#openSUSE/agama#1607).</comment>
+    <requestid>1202948</requestid>
+  </revision>
 </revisionlist>
