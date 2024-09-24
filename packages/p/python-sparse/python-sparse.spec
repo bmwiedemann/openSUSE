@@ -16,8 +16,20 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+BuildArch:      noarch
+%else
+%bcond_without test
+%define psuffix -%{flavor}
+# 32bit fails in half of the test suite because the tests try to convert to 64bit types
+ExcludeArch:    %{ix86} %{arm} ppc
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-sparse
+Name:           python-sparse%{psuffix}
 Version:        0.15.4
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
@@ -29,20 +41,17 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
-# SECTION test requirements
-BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module numba >= 0.49}
-BuildRequires:  %{python_module numpy >= 1.17}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.19}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.49
 Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
-BuildArch:      noarch
-
+%if %{with test}
+BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sparse = %{version}}
+%endif
 %python_subpackages
 
 %description
@@ -59,22 +68,27 @@ intended for somewhat general use.
 sed -i /addopts/d pytest.ini
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-# 32bit fails in half of the test suite because the tests try to convert to 64bit types
-if [ $(getconf LONG_BIT) -eq 64 ]; then
-%pytest
-fi
+%pytest -n auto
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst docs/*.rst
 %license LICENSE
 %{python_sitelib}/sparse
-%{python_sitelib}/sparse-%{version}*-info
+%{python_sitelib}/sparse-%{version}.dist-info
+%endif
 
 %changelog

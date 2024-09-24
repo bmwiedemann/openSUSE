@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:48:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Switch to testing in multibuild: The obs runtime requirement
+  resolver deals with numba/numpy blockage more gracefully than
+  trying to resolve a BuildRequires on them. Numba 0.60 is
+  restricted to Numpy < 2.1 right now.
+* Test in parallel with xdist
+
+-------------------------------------------------------------------
 Fri Aug 30 14:42:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Unpin numpy 2
