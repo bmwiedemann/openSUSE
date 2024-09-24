@@ -1,7 +1,7 @@
 #
 # spec file for package jline3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,12 +37,9 @@ BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.googlecode.juniversalchardet:juniversalchardet)
 BuildRequires:  mvn(net.java.dev.jna:jna)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.apache.sshd:sshd-core)
 BuildRequires:  mvn(org.apache.sshd:sshd-scp)
 BuildRequires:  mvn(org.apache.sshd:sshd-sftp)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
@@ -155,8 +152,10 @@ API documentation for %{name}.
 %pom_remove_plugin org.graalvm.nativeimage:native-image-maven-plugin
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :maven-source-plugin
 
 %pom_xpath_remove -r "pom:arg[text()='-Werror']" . jline
+%pom_disable_module jline
 
 %pom_xpath_remove -r 'pom:profile[pom:id="javadoc"]'
 
@@ -168,10 +167,6 @@ API documentation for %{name}.
 %install
 %mvn_install
 %fdupes %{buildroot}%{_javadocdir}/%{name}
-
-%files -f .mfiles
-%doc README.md
-%license LICENSE.txt
 
 %files builtins -f .mfiles-builtins
 %doc README.md

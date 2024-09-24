@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:44:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build/distribute the source jars
+- Do not build the jline uber-jar that we don't use
+
+-------------------------------------------------------------------
 Thu Oct 26 05:36:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not break build on compiler warnings

@@ -15,4 +15,12 @@
     <comment>Fix build with jdk 21</comment>
     <requestid>1120428</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9d382b08df45e410fbf909d6106f084</srcmd5>
+    <version>3.22.0</version>
+    <time>1727192063</time>
+    <user>anag+factory</user>
+    <comment>Simplify dependencies</comment>
+    <requestid>1202882</requestid>
+  </revision>
 </revisionlist>
