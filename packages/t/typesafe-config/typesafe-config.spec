@@ -57,7 +57,11 @@ javac -d target/classes \
   -g \
   -Xlint:unchecked \
   $(find src/main/java -name \*.java | xargs)
-jar -cf target/config.jar -C target/classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+  --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+  --create --file=target/config.jar -C target/classes .
 
 %if ! 0%{?rhel} >= 9
 mkdir -p target/api

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:39:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Wed Feb 21 17:10:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
