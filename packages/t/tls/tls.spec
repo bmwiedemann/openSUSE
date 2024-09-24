@@ -1,7 +1,7 @@
 #
 # spec file for package tls
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ command with additional options for controlling the SSL session.
 %autosetup -n tcl%{name}-%{version} -p1
 
 %build
+export TCL_PACKAGE_PATH=%tcl_archdir
 %configure \
 	--disable-rpath		\
 	--enable-deterministic	\

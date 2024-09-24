@@ -168,4 +168,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>974465</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>c102a459b3f4b7b992114b770a23d1d0</srcmd5>
+    <version>1.7.22</version>
+    <time>1727192088</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with tcl 8.6.15 by working around the change of
+  TCL_PACKAGE_PATH from a Tcl list to a colon-separated Unix path.</comment>
+    <requestid>1202912</requestid>
+  </revision>
 </revisionlist>

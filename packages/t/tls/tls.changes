@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:58:59 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Fix build with tcl 8.6.15 by working around the change of
+  TCL_PACKAGE_PATH from a Tcl list to a colon-separated Unix path.
+
+-------------------------------------------------------------------
 Sun Mar 27 09:15:51 UTC 2022 - munix9@googlemail.com
 
 - Add certs-tests.patch, cipher-tests.patch, fall-through.patch,
