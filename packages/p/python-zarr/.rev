@@ -169,4 +169,13 @@
     arrays with size-1 chunks.</comment>
     <requestid>1183912</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b444fdc9d142ae35fd4d677193a21f36</srcmd5>
+    <version>2.18.2</version>
+    <time>1727192060</time>
+    <user>anag+factory</user>
+    <comment>- Fix build error and use numpy1
+</comment>
+    <requestid>1202874</requestid>
+  </revision>
 </revisionlist>
