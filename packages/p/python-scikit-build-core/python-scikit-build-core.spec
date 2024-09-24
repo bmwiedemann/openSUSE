@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build-core
-Version:        0.10.5
+Version:        0.10.7
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0

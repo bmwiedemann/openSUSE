@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 23 12:38:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.7
+  * Avoid modifying the input dict by @henryiii in #903
+  * Avoid providing prepare-metadata methods if `failed`
+    in overrides by @henryiii in #904
+  * Support negative envvar values correctly by @henryiii in #907
+- from version 0.10.6
+  * Use correct settings key to remove parts of the version
+    in regex metadata plugin by @philippjh in #887
+  * Support multiplexed path by @henryiii in #896
+  * Editable subpackage by @henryiii in #895
+  * Only strip Release and MinSizeRel builds by default by @henryiii in #898
+  * Typo in debug message by @LecrisUT in #892
+  * Add build info by @henryiii in #878
+  * Fix typo in `if.platform-system` example by @henryiii in #879
+  * Packit configuration update by @LecrisUT in #799
+
+-------------------------------------------------------------------
 Thu Sep  5 20:51:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.5
