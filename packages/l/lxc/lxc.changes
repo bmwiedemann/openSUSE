@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:20:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.2:
+  The LXC team is pleased to announce the release of LXC 6.0.2!
+  This is the second bugfix release for LXC 6.0 which is supported
+  until June 2029.
+  As usual this bugfix releases focus on stability and hardening.
+  * Some of the highlights for this release are:
+    - Reduced log level on some common messages
+    - Fix compilation error on aarch64
+  * Detailed changelog
+    - Remove unused function
+    - idmap: Lower logging level of newXidmap tools to INFO
+    - Exit 0 when there's no error
+    - doc: Fix definitions of get_config_path and set_config_path
+    - README: Update security contact
+    - fix possible clang compile error in AARCH
+
+-------------------------------------------------------------------
 Sat Jul 13 11:14:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.1:
