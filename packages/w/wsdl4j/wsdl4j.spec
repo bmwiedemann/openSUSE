@@ -1,7 +1,7 @@
 #
 # spec file for package wsdl4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,16 @@ Release:        0
 Summary:        Web Services Description Language Toolkit for Java
 License:        IPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://sourceforge.net/projects/wsdl4j
+URL:            https://sourceforge.net/projects/wsdl4j
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.zip
 Source1:        %{name}-MANIFEST.MF
-Source2:        http://repo1.maven.org/maven2/wsdl4j/wsdl4j/%{version}/wsdl4j-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/wsdl4j/wsdl4j/%{version}/wsdl4j-%{version}.pom
 BuildRequires:  ant-junit
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
-BuildRequires:  xml-commons-apis
-BuildRequires:  zip
+BuildRequires:  xml-apis
 Requires:       java
 Requires:       jaxp_parser_impl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -64,11 +61,11 @@ ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 compile javadocs
 
 %install
 # inject OSGi manifests
-mkdir -p META-INF
-cp -p %{SOURCE1} META-INF/MANIFEST.MF
-touch META-INF/MANIFEST.MF
-zip -u build/lib/%{name}.jar META-INF/MANIFEST.MF
-
+jar --update --verbose \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --file=build/lib/%{name}.jar --manifest=%{SOURCE1}
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}
 install -m 644 build/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
@@ -76,7 +73,7 @@ install -m 644 build/lib/qname.jar %{buildroot}%{_javadir}/qname.jar
 
 # POMs
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -p -m 0644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a axis:axis-%{name}
 
 # javadoc
@@ -87,11 +84,9 @@ install -d -m 755 %{buildroot}%{_javadir}/javax.wsdl/
 ln -sf ../%{name}.jar %{buildroot}%{_javadir}/javax.wsdl/
 ln -sf ../qname.jar %{buildroot}%{_javadir}/javax.wsdl/
 
-%files
+%files -f .mfiles
 %defattr(0644,root,root,0755)
-%doc license.html
-%{_mavenpomdir}/JPP-%{name}.pom
-%{_datadir}/maven-metadata/%{name}.xml*
+%license license.html
 %{_javadir}/*
 
 %files javadoc

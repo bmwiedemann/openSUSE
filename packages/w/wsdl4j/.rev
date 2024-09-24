@@ -176,4 +176,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963258</requestid>
   </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>17b169e4e043c5e1568e5c198bf3bb26</srcmd5>
+    <version>1.6.3</version>
+    <time>1727192096</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
+    <requestid>1202930</requestid>
+  </revision>
 </revisionlist>
