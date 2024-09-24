@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 24 00:25:39 UTC 2024 - Eric Torres <eric.torres@its-et.me>
+
+- Update to version 3.1.4
+  - Fixes CVE-2024-45410, boo#1230842
+  - k8s, ingress, rules, crd
+    * Allow configuring rule syntax with Kubernetes Ingress annotation
+    * Re-allow empty configuration for Kubernetes Ingress provider
+    * Remove mentions about APIVersion traefik.io/v1
+    * Update quick-start-with-kubernetes.md to include required permissions
+  - middlewares, metrics
+    * Wrap capture for services used by pieces of middleware
+    * Mention missing metrics removal in the migration guide
+    * Guess Datadog socket type when prefix is unix
+  - plugins
+    * Removes goexport dependency and adds _initialize
+  - tracing
+    * Fix tracing documentation
+    * OTLP doc + potential panic
+
+- Update ldflags to point to correct traefik version (v3 instead of v2)
+
+-------------------------------------------------------------------
 Thu Sep 12 14:50:28 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Moved /etc/traefik/acme.json to /var/lib/traefik/acme.json to allow traefik

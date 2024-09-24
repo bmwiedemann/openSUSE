@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.1.2
+Version:        3.1.4
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -73,9 +73,9 @@ build_date=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +"%%Y%%m%%d")
 CGO_ENABLED=1 GOGC=off go build \
   -buildmode=%{buildmode} \
   -mod=vendor \
-  -ldflags "-X github.com/traefik/traefik/v2/pkg/version.Version=%{version} \
-            -X github.com/traefik/traefik/v2/pkg/version.Codename='' \
-            -X github.com/traefik/traefik/v2/pkg/version.BuildDate=${build_date}" \
+  -ldflags "-X github.com/traefik/traefik/v3/pkg/version.Version=%{version} \
+            -X github.com/traefik/traefik/v3/pkg/version.Codename='' \
+            -X github.com/traefik/traefik/v3/pkg/version.BuildDate=${build_date}" \
   -installsuffix nocgo \
   -o traefik \
   ./cmd/traefik
