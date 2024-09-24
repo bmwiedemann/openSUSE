@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 21 16:20:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.2 LTS:
+  * This is the second bugfix release for LXCFS 6.0 which is
+    supported until June 2029.
+  * Some of the highlights for this release are:
+    - Fix building of LXCFS on musl systems (missing include)
+  * Detailed changelog
+    - Add missing linux/limits.h include
+
+-------------------------------------------------------------------
 Sat Jul 13 10:58:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.1 LTS:
