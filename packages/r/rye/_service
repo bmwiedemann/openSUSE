@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<services>
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">rye*.tar.gz</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>

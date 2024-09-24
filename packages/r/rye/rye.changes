@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Sep 24 10:46:02 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Completion packages require the main package as well
+
+-------------------------------------------------------------------
+Mon Sep 23 11:31:08 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.40.0:
+  * Remove pip-tools support; use uv for all operations
+  * Respect exclusions when generating hashes
+  * List all existing tool references on rye toolchain remove
+  * Update bundled Ruff version to v0.6.3
+  * Fix a few regex inefficiencies
+  * Never modify or delete the virtualenv in rye list
+  * Use inspect_err over map_err
+  * Upgrade bundled Python releases
+  * Upgrade bundled uv version to v0.4.15
+
+-------------------------------------------------------------------
+Sun Aug  4 14:07:43 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Initial spec for rye
