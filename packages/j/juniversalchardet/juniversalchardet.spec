@@ -1,7 +1,7 @@
 #
 # spec file for package juniversalchardet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source3:        README.txt
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  java-javadoc >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -54,9 +54,22 @@ cp %{SOURCE3} .
 
 %build
 mkdir -p target/classes
-javac -source 8 -target 8 -encoding UTF-8 -sourcepath src/main/java -d target/classes $(find src/main/java -name \*.java)
-jar -cvf %{name}-%{version}.jar -C target/classes .
+javac \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    --release 8 \
+%else
+    -source 8 -target 8 \
+%endif
+    -encoding UTF-8 -sourcepath src/main/java -d target/classes $(find src/main/java -name \*.java)
+
+jar --create --verbose \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --file=%{name}-%{version}.jar -C target/classes .
+
 javadoc -source 8 -encoding UTF-8 \
+    -notimestamp \
     -d target/apidocs \
     -sourcepath src/main/java \
     -link file://%{_javadocdir}/java \
@@ -68,7 +81,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

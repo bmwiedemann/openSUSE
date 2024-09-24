@@ -7,4 +7,12 @@
     <comment>New package needed to upgrade scala stack</comment>
     <requestid>1117480</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e85ca7699cce55c7fc53de31f1c07427</srcmd5>
+    <version>1.0.3</version>
+    <time>1727192064</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
+    <requestid>1202884</requestid>
+  </revision>
 </revisionlist>
