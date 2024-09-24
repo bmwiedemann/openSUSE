@@ -352,4 +352,13 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
   * LayerSurface: focus on_demand-interactive surfaces on map</comment>
     <requestid>1189688</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>602c4b56079e83cb34f21eb3e5bb9f0d</srcmd5>
+    <version>0.3.5</version>
+    <time>1727192080</time>
+    <user>anag+factory</user>
+    <comment>- Completion package requires main package
+</comment>
+    <requestid>1202900</requestid>
+  </revision>
 </revisionlist>

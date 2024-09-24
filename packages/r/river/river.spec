@@ -102,6 +102,7 @@ Modules for interacting or modifying the River Wayland compositor.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name}
 Requires:       fish
 BuildArch:      noarch
 
@@ -112,6 +113,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name}
 Requires:       zsh
 BuildArch:      noarch
 
@@ -122,6 +124,7 @@ Zsh command-line completion support for %{name}.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -131,7 +134,7 @@ Bash command-line completion support for %{name}.
 %package        contrib
 Summary:        Helper files for making river easy to use
 Supplements:    (%{name} and river-contrib)
-Requires:       river
+Requires:       %{name}
 BuildArch:      noarch
 
 %description    contrib
