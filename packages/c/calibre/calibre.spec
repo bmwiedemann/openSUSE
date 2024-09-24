@@ -150,7 +150,6 @@ BuildRequires:  python311-css-parser >= 1.0.8
 BuildRequires:  python311-dateutil >= 2.8.2
 BuildRequires:  python311-devel >= 3.10
 BuildRequires:  python311-dnspython >= 2.1.0
-BuildRequires:  python311-dukpy-kovidgoyal >= 0.3
 BuildRequires:  python311-feedparser >= 6.0.8
 BuildRequires:  python311-html2text >= 2020.1.16
 BuildRequires:  python311-html5-parser >= 0.4.10
@@ -224,7 +223,6 @@ Requires:       python311-dateutil >= 2.8.2
 Requires:       python311-dnspython >= 2.1.0
 Requires:       python311-FontTools >= 4.39.3
 Requires:       python311-PyQt6-sip >= 13.5.2
-Requires:       python311-dukpy-kovidgoyal >= 0.3
 Requires:       python311-feedparser >= 6.0.8
 Requires:       python311-html2text >= 2020.1.16
 Requires:       python311-html5-parser >= 0.4.10
@@ -273,7 +271,7 @@ Requires:       xdg-utils >= 1.0.2
 Requires:       xz >= 5.2.3
 Requires:       zlib >= 1.2.13
 
-Requires(pretrans):findutils
+Requires(pretrans): findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
