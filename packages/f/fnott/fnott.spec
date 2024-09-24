@@ -56,9 +56,9 @@ Lightweight notification daemon for Wayland.
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Supplements:    (%{name} and zsh)
-BuildArch:      noarch
+Requires:       %{name}
+Requires:       zsh
 
 %description    zsh-completion
 Zsh command-line completion support for %{name}

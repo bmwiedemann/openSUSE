@@ -117,4 +117,13 @@
     (i.e. `org.freedesktop.Notifications.NotificationClosed` is</comment>
     <requestid>1191228</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f83b5c0a7bb49ff96bf4407b584234dd</srcmd5>
+    <version>1.7.0</version>
+    <time>1727192081</time>
+    <user>anag+factory</user>
+    <comment>- Completion packages require main package
+</comment>
+    <requestid>1202903</requestid>
+  </revision>
 </revisionlist>
