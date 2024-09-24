@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-flexparser
 Version:        0.3.1
 Release:        0
