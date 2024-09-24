@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:23:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Wed Mar 23 18:57:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

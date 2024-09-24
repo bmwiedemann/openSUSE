@@ -1,7 +1,7 @@
 #
 # spec file for package test-interface
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        https://github.com/sbt/test-interface/archive/v%{test_interface_
 Source1:        https://repo1.maven.org/maven2/org/scala-sbt/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -64,10 +64,15 @@ Specification-Vendor: org.scala-sbt
 Specification-Title: %{name}
 Specification-Version: %{version}
 EOF
-%jar -cMf ../target/%{name}.jar *
+%jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --no-manifest --file=../target/%{name}.jar *
 )
 
-%{javadoc} -source 8 -d target/api -classpath $PWD/target/%{name}.jar $(find src/main/java -name "*.java")
+%{javadoc} -notimestamp -source 8 -d target/api \
+    -classpath $PWD/target/%{name}.jar $(find src/main/java -name "*.java")
 
 %install
 # jar
@@ -76,7 +81,7 @@ install -pm 0644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 
 # javadoc
