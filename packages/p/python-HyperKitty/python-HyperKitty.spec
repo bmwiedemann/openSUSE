@@ -64,16 +64,14 @@
 %define plainpython python
 
 Name:           python-HyperKitty
-Version:        1.3.11
+Version:        1.3.12
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/hyperkitty
 #
-Source0:        https://gitlab.com/mailman/hyperkitty/-/archive/1.3.11/hyperkitty-1.3.11.tar.gz
-# The release links give 404 for this release :-(
-#Source0:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz
-#Source1:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz.asc
+Source0:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz
+Source1:        https://gitlab.com/mailman/hyperkitty/-/releases/%{version}/downloads/hyperkitty-%{version}.tar.gz.asc
 Source2:        python-HyperKitty.keyring
 Source3:        python-HyperKitty-rpmlintrc
 #
@@ -94,8 +92,6 @@ Patch0:         hyperkitty-settings.patch
 Patch98:        gl-mr300-add-opengraph-metadata.patch
 # PATCH-FIX-UPSTREAM gl-mr470-introduce-feed-filtering.patch gl#mailman/hyperkitty#470
 Patch99:        gl-mr470-introduce-feed-filtering.patch
-# PATCH-FIX-UPSTREAM gl-mr635-empty_attachment.patch gl#mailman/hyperkitty#635
-Patch100:       gl-mr635-empty_attachment.patch
 #
 BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
 BuildRequires:  %{python_module Whoosh}
@@ -361,7 +357,7 @@ fi
 %service_del_postun %{hyperkitty_services}
 
 %files -n %{hyperkitty_pkgname}
-%doc AUTHORS.txt README.rst example_project
+%doc AUTHORS.txt README.rst doc/news.rst example_project
 %license COPYING.txt
 %{mypython_sitelib}/hyperkitty
 %{mypython_sitelib}/hyperkitty-%{version}*-info
