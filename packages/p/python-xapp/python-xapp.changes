@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 15:06:31 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Aug 12 09:31:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.4.2:

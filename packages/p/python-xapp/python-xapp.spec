@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define         skip_python2 1
 %define         _name python3-xapp
 Name:           python-xapp
