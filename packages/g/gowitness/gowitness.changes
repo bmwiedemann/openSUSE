@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Sun Sep 22 17:56:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+  New
+  * Add the delay option to the /submit and /submit/single API
+    endpoints. This adds a delay between when the page is
+    considered loading and when a screenshot should be taken.
+    The command line already adds a delay, but this adds it to
+    the API as well (see Swagger docs).
+  * Add new web UI for probing using immediate mode. Immediate 
+    mode does not record data to the database but instead shows
+    a modal with the results.
+  Fixes
+  * Fix API documentation for /submit/single to show the full
+    return object.
+  * Trim spaces for file targets to help improve reliability of
+    the reader.
+
+-------------------------------------------------------------------
+Thu Sep 19 15:41:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  Fixes
+  * Allow file parser to parse <host>:<port> targets
+
+-------------------------------------------------------------------
+Wed Sep 18 18:19:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  New
+  * add /submit/single api endpoint for immediate screenshot
+    results without invoking writers.
+  * add a link to the swagger api documentation in the ui.
+  Fixes
+  * dont send completely failed results to writers.
+  * handle results without tls information better in the ui.
+  * fix handling of ports specifications in the file reader (and
+    add ipv6 support while im here).
+  * dont check for file existence when using stdin.
+
+-------------------------------------------------------------------
+Tue Sep 17 17:57:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * Reworked the CLI. Commands are now properly categorised into
+    subcommands. Flags also properly inherit from their parents now.
+  * Refactored the scanning and screenshotting logic. Most notably,
+    the old preflight logic is removed. It was nice and fast, but
+    when it mattered, it was a huge pain to deal with and came at
+    the cost of result accuracy. Instead, in v3, results are now
+    grabbed from network events like Network.responseReceived.
+  * Introduced the concept of "drivers," where chromedp was the
+    original (and still default) driver. However, rod is also a
+    driver option now that you can choose using a command-line flag.
+  * Significantly improved and fixed code quality,
+    concurrency-related issues, and general screenshot reliability.
+  * Rewrote the report web server frontend in React. It just looks
+    so much better, has significantly more features, and is easier
+    to change now.
+  * Added an official API, complete with code-generated Swagger
+    documentation!
+  * Introduced the concept of "writers," which can be used
+    simultaneously. For example, you could write results to an
+    SQLite database, JSON Lines, and stdout all at the same time.
+  * Fixed perception hashing to use Hamming Distance for grouping.
+- Drop subpackage for bash_completion
+  * not supported on version 3.0.0
+
+-------------------------------------------------------------------
+Mon Oct 30 18:44:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add subpackage for bash_completion
+
+-------------------------------------------------------------------
+Mon Oct 30 18:20:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  * html a-tag unclosed bug.
+  * Fix database file path location parser.
+  * (fix) MarshalJSON spells with one "l".
+  * Fixing the missing port issue with Nessus.
+- Update to version 2.5.0
+  New
+  * Make URLs clickable in static report exports.
+  * Add ability to execute externally introduced JavaScript via
+    the new --js flag on screenshotted pages.
+  * Add PostgreSQL support.
+  * Add search API endpoint.
+  * Add ability to store screenshots in the database using a
+    new flag --screenshot-db-store .
+  * Add HTTP response code filtering, controlling which HTTP
+    codes get screenshotted.
+  Fixes
+  * Fix report server range selector.
+  * Fix example nessus file syntax.
+  * Prevent duplicate file extensions added to filenames.
+- Update to version 2.4.2
+  * Improve web UI reverse proxy support when served under a sub
+    directory.
+- Update to version 2.4.1
+  * Add ability to specify additional headers when screenshotting
+    via the HTTP api. See the API docs for a usage example.
+  * Fix nmap command example documentation.
+
+-------------------------------------------------------------------
+Sun Jun 19 12:17:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+
+-------------------------------------------------------------------
+Thu Jul  8 14:12:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.3.6

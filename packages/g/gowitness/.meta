@@ -1,0 +1,6 @@
+<package name="gowitness" project="openSUSE:Factory">
+  <title>A commandline web screenshot and information gathering tool</title>
+  <description>A commandline web screenshot and information gathering tool.</description>
+  <devel project="network:utilities" package="gowitness"/>
+  <url>https://github.com/sensepost/gowitness</url>
+</package>
