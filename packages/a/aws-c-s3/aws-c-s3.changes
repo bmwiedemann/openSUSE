@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 09:55:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.6
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#451)
+  * Fix MemoryLimit primary_allocated stat by @waahm7 in (#453)
+
+-------------------------------------------------------------------
 Thu Sep  5 07:46:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.5
