@@ -96,7 +96,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        129.0.6668.58
+Version:        129.0.6668.70
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -135,7 +135,6 @@ Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
-Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch240:       chromium-117-string-convert.patch
 Patch248:       chromium-119-assert.patch
 Patch256:       chromium-120-make_unique-struct.patch
@@ -172,7 +171,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ninja >= 1.7.2
-BuildRequires:  nodejs >= 8.0
+BuildRequires:  nodejs >= 20.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} >= 1599

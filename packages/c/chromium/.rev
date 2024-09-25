@@ -5121,4 +5121,22 @@ boo#1224178</comment>
   (not in our ffmpeg yet)</comment>
     <requestid>1201958</requestid>
   </revision>
+  <revision rev="432" vrev="1">
+    <srcmd5>e25708c352e34af4b9a6418c57cbf1b6</srcmd5>
+    <version>129.0.6668.70</version>
+    <time>1727294128</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 129.0.6668.70 (stable released 2024-09-24)
+  (boo#1230964)
+  * CVE-2024-9120: Use after free in Dawn
+  * CVE-2024-9121: Inappropriate implementation in V8
+  * CVE-2024-9122: Type Confusion in V8
+  * CVE-2024-9123: Integer overflow in Skia
+
+- bump BR for nodejs to minimal 20.0
+- dropped patches:
+  * chromium-disable-GlobalMediaControlsCastStartStop.patch
+    it was applied at the wrong place and the crash is gone</comment>
+    <requestid>1203613</requestid>
+  </revision>
 </revisionlist>

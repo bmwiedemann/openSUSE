@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 25 16:01:32 CEST 2024 - ro@suse.de
+
+- Chromium 129.0.6668.70 (stable released 2024-09-24)
+  (boo#1230964)
+  * CVE-2024-9120: Use after free in Dawn
+  * CVE-2024-9121: Inappropriate implementation in V8
+  * CVE-2024-9122: Type Confusion in V8
+  * CVE-2024-9123: Integer overflow in Skia
+
+-------------------------------------------------------------------
+Thu Sep 19 15:23:46 CEST 2024 - ro@suse.de
+
+- bump BR for nodejs to minimal 20.0
+- dropped patches:
+  * chromium-disable-GlobalMediaControlsCastStartStop.patch
+    it was applied at the wrong place and the crash is gone
+
+-------------------------------------------------------------------
 Wed Sep 18 17:29:16 CEST 2024 - ro@suse.de
 
 - Chromium 129.0.6668.58 (stable released 2024-09-17)
