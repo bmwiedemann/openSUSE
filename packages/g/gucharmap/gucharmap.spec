@@ -31,7 +31,7 @@ Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appdata-tools
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.0
 BuildRequires:  gtk-doc
 BuildRequires:  gtk3-devel >= 3.4.0
