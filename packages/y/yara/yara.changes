@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:47:31 UTC 2024 - ming li <mli@suse.com>
+
+- update to 4.5.1:
+  * Allow spaces in regexp repetition operators (e.g: {n, m}).
+  * BUGFIX: matches operator was not matching empty strings.
+  * BUGFIX: Several bugs in array type handling in dotnet module.
+  * BUGFIX: Fix issue while parsing .NET files.
+  * BUGFIX: Fix issues while parsing PE resources.
+  * BUGFIX: Infinite loop while parsing corrupt PE files.
+  * BUGFIX: OOM errors while parsing corrupt PE files.
+  * BUGFIX: Build issue in Alpine Linux due to pread64 not found.
+  * BUGFIX: Issue while parsing rich header in some PE files.
+
+-------------------------------------------------------------------
 Sun Feb 18 15:52:28 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 4.5.0:
