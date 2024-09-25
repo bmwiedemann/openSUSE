@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:20:15 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to version 2.11.10
+  * CVEs:
+    - CVE-2024-45410 (boo#1230842)
+  * Bug fixes:
+    - [acme] Allow handling ACME challenges with custom routers
+    - [acme] Update go-acme/lego to v4.18.0
+    - [http3] Bump github.com/quic-go/quic-go to v0.47.0
+    - [logs,middleware] Ensure proper logs for aborted streaming responses
+    - [logs,middleware] Make the keys of the accessLog.fields.names map case-insensitive
+    - [middleware,server] Cleanup Connection headers before passing the middleware chain
+    - [plugins] Upgrade paerser to v0.2.1
+    - [server,tcp] Prevent error logging when TCP WRR pool is empty
+    - [server] Check if ACME certificate resolver is not nil
+    - [webui] Upgrade webui dependencies 
+
+-------------------------------------------------------------------
 Wed Aug  7 08:11:10 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fixed service-file: set working directory, so that the /etc/traefik/acme.json
