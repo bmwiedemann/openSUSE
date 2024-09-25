@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:07:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.18.3
+  * Update TEAM.md by @jhamman in #2071
+  * [v2] Fix doctests with numpy 2.0 by @dstansby in #2073
+  * Fix version number in built docs by @dstansby in #2044
+  * Fix orthogonal indexing with a scalar by @dcherian in #1947
+  * [v2] Drop support for Python 3.9 by @dstansby in #2074
+  * Fix Array.array for numpy 2.1 by @dstansby in #2106
+  * Bump test version of numcodecs by @dstansby in #2114
+  * fix: numpy 1.24 compat for Array.array by @jhamman in #2123
+  * Deprecate N5Store by @jhamman in #2103
+  * Run tests on numpy 1.23 by @dstansby in #2124
+  * chore: bump minimum numpy version to 1.24 by @jhamman in #2127
+- Revert the numpy1 restriction
+- Add zarr-numcodecs-zstd-test.patch:
+  * Allow older numcodecs < 0.13 in zstd tests
+  * Overrides gh#zarr-developers/zarr-python#2114
+
+-------------------------------------------------------------------
 Mon Sep 23 19:36:57 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error and use numpy1

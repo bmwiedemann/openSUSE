@@ -18,26 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zarr
-Version:        2.18.2
+Version:        2.18.3
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
 URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE zarr-numcodecs-zstd-test.patch code@bnavigator.de -- Allow numcodecs < 0.13 for zstd tests, overrides gh#zarr-developers/zarr-python#2114
+Patch0:         zarr-numcodecs-zstd-test.patch
 # Needs full python stdlib, base is not enough
 BuildRequires:  %{pythons}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 64.0.0}
 BuildRequires:  %{python_module setuptools_scm > 1.5.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.8
+Requires:       python >= 3.10
 Requires:       python-asciitree
 Requires:       python-fasteners
 Requires:       python-numcodecs >= 0.10.0
-Requires:       python-numpy1 >= 1.23
+Requires:       python-numpy >= 1.24
 Suggests:       python-dbm
 Suggests:       python-ipytree
 Suggests:       python-msgpack
@@ -49,7 +51,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module numcodecs >= 0.10.0}
-BuildRequires:  %{python_module numpy1 >= 1.23}
+BuildRequires:  %{python_module numpy >= 1.24}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -82,7 +84,7 @@ donttest+=" or test_read_from_all_blocks"
 donttest+=" or test_format_compatibility"
 %pytest -k "not ($donttest)"
 %else
-%pytest
+%pytest -v
 %endif
 
 %files %{python_files}
