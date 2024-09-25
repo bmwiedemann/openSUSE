@@ -17,7 +17,7 @@
 
 
 Name:           ryzenadj
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Settings manager for mobile AMD Ryzen processors
 License:        GPL-3.0-or-later
