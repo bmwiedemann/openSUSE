@@ -17,7 +17,7 @@
 
 
 Name:           tokei
-Version:        13.0.0.alpha.1+git0
+Version:        13.0.0.alpha.5+git0
 Release:        0
 Summary:        Code statistics commandline tool
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND MIT AND MPL-2.0 AND (Apache-2.0 OR MIT)
