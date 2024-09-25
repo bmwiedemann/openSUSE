@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 24 07:24:51 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.3.15:
+  * update CHANGELOG in preparation for new release
+  * upgrade dependencies and version of cargo-dist used to build releases
+
+-------------------------------------------------------------------
 Thu Aug 15 08:56:25 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.3.14:
