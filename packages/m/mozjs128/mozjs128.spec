@@ -41,7 +41,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        128.1.0
+Version:        128.2.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
@@ -75,15 +75,13 @@ Patch15:        spidermonkey_checks_disable.patch
 # PATCH-FIX-UPSTREAM -- s390x/ppc64 fixes, TODO: file bug report upstream?
 Patch18:        spidermonkey_style_check_disable_s390x.patch
 # PATCH-FIX-OPENSUSE
-Patch19:        0001-Skip-failing-tests-on-ppc64-and-s390x.patch
-# PATCH-FIX-OPENSUSE
 Patch20:        Fix-i586-float-math.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  cargo
-BuildRequires:  rust-cbindgen
 BuildRequires:  ccache
 BuildRequires:  clang
+BuildRequires:  rust-cbindgen
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
@@ -161,8 +159,6 @@ pushd ../..
 %ifarch s390x
 %patch -P 18 -p1
 %endif
-# Fixes for ppc64 and s390x, there is no need to keep it in ifarch here since mozilla tests support ifarch conditions
-%patch -P 19 -p1
 %patch -P 20 -p1
 
 # Copy out the LICENSE file
