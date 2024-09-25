@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:33:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.9:
+  + Address Google YouTube API usage review comments
+  + Fix a memory leak during slideshows
+  + Fix a compile error if OpenCV does not come with DNN support
+  + Fix issue with missing application icon on Wayland compositors
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:35:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Mon Aug 12 14:59:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.8:

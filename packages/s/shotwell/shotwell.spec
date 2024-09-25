@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.32.8
+Version:        0.32.9
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ Source99:       shotwell-rpmlintrc
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext >= 0.19.7
+BuildRequires:  gettext-devel >= 0.19.7
 BuildRequires:  libraw-devel-static
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
