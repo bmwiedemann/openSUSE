@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Sep 25 10:52:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.5.2
+  * Fixed a bug in masking indices with secondary ranges in Patches
+    and MultiPolygons glyphs (pull request 14016)
+  * Restored support for browsers that don’t implement
+    OffscreenCanvas (pull request 14008)
+  * Improved determination of WebSocket protocol in <iframe>
+    embedding (pull request 14003)
+  * Fixed a bug in handling of CORS requests (pull request 13999)
+  * Fixed an issue with numpy 2.0 and streaming ndarrays (pull
+    request 14007)
+  * Fixed bad string formatting in various error messages (pull
+    request 14020, pull request 14022)
+- Release 3.5.1
+  * Fixed handling of certain classes of objects in HasProps
+    internals (pull request 13970)
+  * Restored support for BOKEH_MINIFIED=no in resources (pull
+    request 13974)
+  * Updated the location of *.d.ts files in package.json (pull
+    request 13975)
+  * Fixed merging of plots in grid plots when only one plot is
+    involved (pull request 13978)
+  * Restored a bit of legacy font measurement logic for Firefox ESR
+    (pull request 13979)
+  * Fixed indexing of categories in CategoricalSlider widget (pull
+    request 13966)
+- Release 3.5.0
+  * Added support for BoxAnnotation.inverted property (pull request
+    13810)
+  * Added support for key modifiers to WheelZoomTool and
+    WheelPanTool (pull request 13815)
+  * Allowed auto-activation of tools using wheel/scroll events when
+    modifiers are set (pull request 13815)
+  * Added support for CSS variable based styling to plot renderers
+    (pull request 13828)
+  * Added support for outline shapes to text-like glyphs (Text, TeX
+    and MathML) (pull request 13620)
+  * Added support for range setting gesture to RangeTool and
+    allowed a choice of gesture (pan, tap or none) (pull request
+    13855)
+  * Added support for server-sent events, in particular for
+    ClearInput event on input widgets (pull request 13890)
+  * Added support for Legend item click events and
+    Legend.{on_click,js_on_click}() APIs (pull request 13922)
+  * Added support for wheel zoom of renderers under the cursor when
+    using sub-coordinates (pull request 13826)
+  * Added support for directory upload for FileInput (pull request
+    13873)
+  * Added support for formatters to ValueRef model and improved
+    tooltip templating in HoverTool (pull request 13650)
+  * Added support for interaction handles (move, resize) to
+    BoxAnnotation (pull request 13906)
+  * Dropped support for Python 3.9 and modernized the codebase
+    (pull request 13634)
+- Release 3.4.3
+  * Fixed performance regression related to inherited image data in
+    Image-like glyphs (pull request 13952)
+  * Fixed spurious warning about unknown bokeh version in the
+    documentation (pull request 13949)
+  * Fixed handling of certain classes of objects in HasProps
+    internals (pull request 13970)
+  * Restored support for BOKEH_MINIFIED=no in resources (pull
+    request 13974)
+  * Updated the location of *.d.ts files in package.json (pull
+    request 13975)
+  * Improved type hints of gridplot() (pull request 13914)
+  * Fixed merging of plots in grid plots when only one plot is
+    involved (pull request 13978)
+  * Fixed indexing of categories in CategoricalSlider widget (pull
+    request 13966)
+
+-------------------------------------------------------------------
 Wed Aug 14 14:49:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

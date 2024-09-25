@@ -30,9 +30,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.4.2
+Version:        3.5.2
 Release:        0
-Summary:        Statistical interactive HTML plots for Python
+Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause
 URL:            https://bokeh.org/
 # Source-URL:    https://github.com/bokeh/bokeh/
@@ -47,14 +47,14 @@ BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module contourpy >= 1}
+BuildRequires:  %{python_module contourpy >= 1.2}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module pandas >= 1.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git-versioning}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tornado >= 5.1}
+BuildRequires:  %{python_module tornado >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xyzservices >= 2021.9.1 }
 BuildRequires:  fdupes
@@ -63,11 +63,11 @@ Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-base >= 3.8
-Requires:       python-contourpy >= 1
+Requires:       python-contourpy >= 1.2
 Requires:       python-numpy >= 1.16
 Requires:       python-packaging >= 16.8
 Requires:       python-pandas >= 1.2
-Requires:       python-tornado >= 5.1
+Requires:       python-tornado >= 6.2
 Requires:       python-xyzservices >= 2021.9.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -108,10 +108,11 @@ BuildRequires:  npm
 %python_subpackages
 
 %description
-Bokeh is a Python interactive visualization library that targets web
-browsers for presentation. It provides concise construction of
-graphics in the style of D3.js, and favors delivering this capability
-with interactivity over large or streaming datasets.
+Bokeh is an interactive visualization library for modern web browsers.
+It provides elegant, concise construction of versatile graphics and affords
+high-performance interactivity across large or streaming datasets.
+Bokeh can help anyone who wants to create interactive plots, dashboards,
+and data applications quickly and easily.
 
 %prep
 %if !%{with test}
