@@ -224,4 +224,13 @@
   * Some more progress lines for logfile</comment>
     <requestid>1202607</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bd43867df83aa334d1b31a33360a5c9d</srcmd5>
+    <version>0.4.19</version>
+    <time>1727294245</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.19
+  * Avoid hanging installcheck with large output</comment>
+    <requestid>1203616</requestid>
+  </revision>
 </revisionlist>

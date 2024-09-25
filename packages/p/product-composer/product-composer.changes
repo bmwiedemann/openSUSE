@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 25 14:34:24 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.19
+  * Avoid hanging installcheck with large output
+
+-------------------------------------------------------------------
 Mon Sep 23 10:50:59 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.18
