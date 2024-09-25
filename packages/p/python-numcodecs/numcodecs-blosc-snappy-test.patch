@@ -1,0 +1,11 @@
+diff -ur numcodecs-0.13.0/numcodecs/tests/test_blosc.py numcodecs-0.13.0.p/numcodecs/tests/test_blosc.py
+--- numcodecs-0.13.0/numcodecs/tests/test_blosc.py	2024-07-12 19:46:32.000000000 +0200
++++ numcodecs-0.13.0.p/numcodecs/tests/test_blosc.py	2024-09-25 12:04:37.517629033 +0200
+@@ -155,6 +155,7 @@
+         'blosclz': 'BloscLZ',
+         'zlib': 'Zlib',
+         'zstd': 'Zstd',
++        'snappy': 'Snappy'
+     }
+     blosc.use_threads = use_threads
+     for cname in blosc.list_compressors():

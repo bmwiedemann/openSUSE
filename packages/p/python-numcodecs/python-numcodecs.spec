@@ -18,33 +18,38 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numcodecs
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Buffer compression and transformation codecs
 License:        MIT
 URL:            https://github.com/zarr-developers/numcodecs
 Source:         https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM unbundle-libs.patch -- unbundle system libs gh#zarr-developers/numcodecs#264
-Patch0:         unbundle-libs.patch
+# PATCH-FEATURE-UPSTREAM numcodecs-pr569-systemlibs.patch gh#zarr-developers/numcodecs#569
+Patch0:         numcodecs-pr569-systemlibs.patch
+# PATCH-FIX-OPENSUSE numcodecs-blosc-snappy-test.patch code@bnavigator.de -- allow testing snappy from the systemlib c-blosc compressors
+Patch1:         numcodecs-blosc-snappy-test.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module setuptools > 64}
 BuildRequires:  %{python_module setuptools_scm > 6.2}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  blosc-devel
+BuildRequires:  blosc-devel >= 1.21.5
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(liblz4) >= 1.9.3
+BuildRequires:  pkgconfig(libzstd) >= 1.5.5
+BuildRequires:  pkgconfig(zlib) >= 1.2.13
 Requires:       python-numpy >= 1.7
 Suggests:       python-msgpack
-Suggests:       python-zfpy >= 1
+Suggests:       python-pcodec
+Suggests:       (python-zfpy >= 1 with python-numpy < 2)
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module importlib-metadata}
@@ -65,6 +70,7 @@ sed -i 's/--cov=numcodecs --cov-report xml//' pyproject.toml
 
 %build
 export CFLAGS="%{optflags}"
+export NUMCODECS_USE_SYSTEM_LIBS=1
 export DISABLE_NUMCODECS_AVX2=1
 %pyproject_wheel
 
