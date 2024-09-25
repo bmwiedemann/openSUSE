@@ -114,4 +114,13 @@
   ipykernel)</comment>
     <requestid>1156363</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2cc413eb9a33e055518dc53142352dc6</srcmd5>
+    <version>0.11.0</version>
+    <time>1727294126</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1203612</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 
-%define         skip_python39 1
+%{?sle15_python_module_pythons}
 Name:           python-nbval%{psuffix}
 Version:        0.11.0
 Release:        0
