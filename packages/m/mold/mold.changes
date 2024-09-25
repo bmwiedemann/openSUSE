@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 25 14:21:13 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.34.0
+  * [ARM32] mold now deduplicates exception handling records in a .ARM.exidx section
+    to reduce the size of the table. (742ea87)
+  * [LoongArch] TLSDESC relocations are now supported. (dbaa6d7)
+  * --build-id=fast is now supported for compatibility with LLVM lld. mold handles
+    it as a synonym for --build-id=sha256. (afc52ee)
+  * Previously, if the same symbol was provided both by a static archive and dynamic
+    library, and if the symbol's visibility was hidden, mold sometimes failed to
+    link it and handled the symbol as if it were undefined. Now, mold can correctly
+    link such programs. (1efbe3f)
+  * Under rare circumstances, mold could create corrupted binaries if they were
+    linked with --retain-symbols-file. This bug has been fixed. (0ee12e4)
+  * [LoongArch] R_LARCH_CALL36 relocation with a large offset is now correctly
+    written. (1c32102)
+  * [FreeBSD] If all thread-local variables in a program have no initial values,
+    mold-produced executables could crash or misbehave on FreeBSD. This bug has been
+    fixed. (f6822fb)
+  * DEC Alpha support has been removed due to lack of demand. In fact, mold's Alpha
+    support has never been tested for real-world programs and was likely unable to
+    link them in the first place. This should not affect anyone because the last
+    Alpha processor was released more than 20 years ago. (3711ddb)
+
+-------------------------------------------------------------------
 Wed Aug  7 06:37:53 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.33.0
