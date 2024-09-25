@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
+Wed Sep 25 09:30:18 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- adjust for new helm version
+
+-------------------------------------------------------------------
 Fri Sep 13 09:56:19 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - Remove trailing whitespace
