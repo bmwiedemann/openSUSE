@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-ai-generativelanguage
-Version:        0.6.6
+Version:        0.6.10
 Release:        0
 Summary:        Google Ai Generativelanguage API client library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-ai-generativelanguage
-Source:         https://files.pythonhosted.org/packages/source/g/google-ai-generativelanguage/google-ai-generativelanguage-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google_ai_generativelanguage
+Source:         https://files.pythonhosted.org/packages/source/g/google-ai-generativelanguage/google_ai_generativelanguage-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module pytest-asyncio}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.1
@@ -48,7 +48,7 @@ BuildArch:      noarch
 Google Ai Generativelanguage API client library.
 
 %prep
-%autosetup -p1 -n google-ai-generativelanguage-%{version}
+%autosetup -p1 -n google_ai_generativelanguage-%{version}
 
 %build
 %pyproject_wheel
