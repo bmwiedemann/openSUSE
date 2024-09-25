@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:40:01 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.36.3:
+  * The option `second_transparent_bg` has been removed and replaced by
+    `transparent_background_colors` which allows setting up to seven
+    additional colors that will be transparent, with individual opacities
+    per color (#7646)
+  * Fix a regression in the previous release that broke use of the `cd`
+    command in session files (#7829)
+  * macOS: Fix shortcuts that become entries in the global menubar being
+    reported as removed shortcuts in the debug output
+  * macOS: Fix `macos_option_as_alt` not working when caps lock is
+    engaged (#7836)
+  * Fix a regression when tinting of background images was introduced that
+    caused window borders to have `background_opacity` applied to them (#7850)
+  * Fix a regression that broke writing to the clipboard using the OSC 5522
+    protocol (#7858)
+  * macOS: Fix a regression in the previous release that caused kitty to fail
+    to run after an unclean shutdown/crash when using --single-instance (#7846)
+  * kitten @ ls: Fix the `--self` flag not working (#7864)
+  * Remote control: Fix `--match state:self` not working (#7886)
+  * Splits layout: Allow setting the `split_axis` option to auto so that all
+    new windows have their split axis chosen automatically unless explicitly
+    specified in the launch command (#7887)
+
+-------------------------------------------------------------------
 Fri Sep  6 14:11:41 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.36.2:
