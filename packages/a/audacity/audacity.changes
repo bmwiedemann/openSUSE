@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 21 08:45:19 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove old Leap (15.3) workarounds
+- Update audacity-no_buildstamp.patch and fix cmake params in spec file
+- Update to 3.6.4
+  * #7310 Fixed another crash when exiting Audacity. (Thanks, Joe Souza!)
+  * #7312 Fixed projects not being compacted on close.
+
+-------------------------------------------------------------------
 Mon Sep  9 22:07:05 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update vst3sdk to 3.7.12_build_20

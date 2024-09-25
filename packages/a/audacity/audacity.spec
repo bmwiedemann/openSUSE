@@ -16,15 +16,8 @@
 #
 
 
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-# Disable VST3 for Leap 15.3 due an old cmake
-%bcond_with vst
-%else
-%bcond_without vst
-%endif
-
 Name:           audacity
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -140,9 +133,7 @@ rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
 #Included in src/AboutDialog.cpp but not supplied
 touch include/RevisionIdent.h
 
-%if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
-%endif
 
 %build
 %if 0%{?suse_version} <= 1600
@@ -157,7 +148,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
 
 %cmake  \
        -DAUDACITY_REV_TIME=$(date -u -d "@${SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ") \
-       -DAUDACITY_REV_LONG=STRING:%{version} \
+       -DAUDACITY_REV_LONG=%{version} \
        -DAUDACITY_BUILD_LEVEL=2 \
        -DCMAKE_MODULE_LINKER_FLAGS:STRING="$(wx-config --libs)" \
        -DCMAKE_SHARED_LINKER_FLAGS:STRING="$(wx-config --libs)" \
@@ -165,16 +156,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
        -Daudacity_has_networking:BOOL=Off \
        -Daudacity_lib_preference:STRING=system \
        -Duse_lame:STRING=system \
-%if %{without vst}
-       -Daudacity_has_vst3=off \
-%endif
        -Daudacity_use_ffmpeg:STRING=loaded \
        -DVST3_DEFAULT_INSTALL_PATH=%{_libdir}/vst3/
-
-# Workaround for an old cmake in Leap 15.3
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-export LD_LIBRARY_PATH=%{_builddir}/%{name}-Audacity-%{version}/build/utils/
-%endif
 
 %cmake_build
 
