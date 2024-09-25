@@ -166,4 +166,12 @@
     <comment>- disable pg11 builds as we will remove the EOL package soon</comment>
     <requestid>1201373</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c1b50afbb7de00bd8b2f6b2b34db4dad</srcmd5>
+    <version>4.13.0+git3.25d74aa</version>
+    <time>1727294121</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203572</requestid>
+  </revision>
 </revisionlist>

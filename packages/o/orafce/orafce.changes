@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 25 12:25:11 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.13.0+git3.25d74aa:
+  * Fix description of GUC orafce.varchar2_null_safe_concat
+  * Fix description of GUC orafce.varchar2_null_safe_concat
+  * fix regress tests
+  * Update README.asciidoc
+  * Fix documentation formatting.
+  * Add description of to_date(text,text) function and the error reported due to Oracle bug.
+  * Update regression test result with error message change.
+  * Raise an error when Oracle's to_date() bugs are reached. This concern dates before 1582-10-05 ('J2299159') usinf the 'J' format and dates before 1100-03-01 that cannot be verified due to a bug in Oracle.
+  * remove obsolete sql signature of dbms_alert.defered_signal
+  * update NEWS
+  * Remove the BC part of the Oracle like Julian Day date
+  * Fix wrong number of days add to julian day in to_char(text, text) function and add pg_catalog FQDN to the to_date() builtin function called. Add regression test.
+  * remove obsolete file
+  * Fix TO_DATE(text, text) function with the 'J' (Julian day) formatting. For Oracle this is the number of days since January 1, 4712 BC whereas for PostgreSQL this is the number of days since November 24, 4714 BC.
+
+-------------------------------------------------------------------
 Mon Sep  9 02:01:08 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable pg11 builds as we will remove the EOL package soon
