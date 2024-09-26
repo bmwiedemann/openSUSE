@@ -17,7 +17,6 @@
 
 
 %bcond_without tests
-%global pythons python3
 %{?sle15_python_module_pythons}
 Name:           python-pylint
 Version:        3.3.1
@@ -42,7 +41,9 @@ Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
-Requires:       python-typing-extensions >= 4.9
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing-extensions >= 3.10
+%endif
 %if %{with tests}
 # SECTION pylint deps
 BuildRequires:  %{python_module astroid >= 3.3.4 with %python-astroid < 3.4.0~dev0}
@@ -53,7 +54,7 @@ BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module tomlkit >= 0.10.1}
-BuildRequires:  %{python_module typing-extensions >= 4.9}
+BuildRequires:  %{python_module typing-extensions >= 3.10 if %python-base < 3.10}
 # /SECTION
 # SECTION test deps
 BuildRequires:  %{python_module GitPython > 3}
@@ -65,7 +66,7 @@ BuildRequires:  %{python_module requests}
 # /SECTION
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

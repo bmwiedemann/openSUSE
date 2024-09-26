@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 09:24:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert restriction to python3.
+
+-------------------------------------------------------------------
 Wed Sep 25 11:52:49 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.
