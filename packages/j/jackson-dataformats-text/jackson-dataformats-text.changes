@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 05:12:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require jflex-maven-plugin, but generate the Lexer.java
+  with a simple jflex call
+
+-------------------------------------------------------------------
 Wed Aug  7 09:43:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.2

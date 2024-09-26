@@ -47,4 +47,12 @@
     <comment>2.17.2</comment>
     <requestid>1193677</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3a87effd990762a9fd95ccea027eee35</srcmd5>
+    <version>2.17.2</version>
+    <time>1727369656</time>
+    <user>anag+factory</user>
+    <comment>Do not depend on jflex-maven-plugin</comment>
+    <requestid>1203779</requestid>
+  </revision>
 </revisionlist>

@@ -24,14 +24,13 @@ License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-dataformats-text
 Source0:        https://github.com/FasterXML/jackson-dataformats-text/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  jflex
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.17
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.17
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.17
 BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(de.jflex:jflex-maven-plugin)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.yaml:snakeyaml)
 BuildArch:      noarch
 
@@ -84,12 +83,18 @@ This package contains API documentation for %{name}.
 %pom_remove_plugin -r :gradle-module-metadata-maven-plugin
 %pom_remove_plugin -r :moditect-maven-plugin
 
+%pom_remove_plugin :jflex-maven-plugin toml
+
 cp -p yaml/src/main/resources/META-INF/{NOTICE,LICENSE} .
 sed -i 's/\r//' LICENSE NOTICE
 
 %{mvn_file} ":{*}" jackson-dataformats/@1
 
 %build
+jflex \
+    -d toml/src/main/java/com/fasterxml/jackson/dataformat/toml \
+    --skel toml/src/main/jflex/skeleton-toml \
+    toml/src/main/jflex/com/fasterxml/jackson/dataformat/toml/toml.jflex
 %{mvn_build} -sf -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
