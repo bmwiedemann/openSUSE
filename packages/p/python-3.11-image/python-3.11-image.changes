@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
 Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - remove release tags for additional_versions
