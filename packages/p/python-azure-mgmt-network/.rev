@@ -386,4 +386,16 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1189544 from glaubitz)</comment>
     <requestid>1189595</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>81a9961018d82082f69478ccc86c66c0</srcmd5>
+    <version>27.0.0</version>
+    <time>1727369669</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 27.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1203867 from glaubitz)</comment>
+    <requestid>1203889</requestid>
+  </revision>
 </revisionlist>
