@@ -11,5 +11,6 @@
     <param name="file">Dockerfile</param>
     <param name="regex">%%pg_patch_version%%</param>
     <param name="package">postgresql16-server</param>
+    <param name="parse-version">patch</param>
   </service>
 </services>
