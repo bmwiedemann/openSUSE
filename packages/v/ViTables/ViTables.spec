@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/uvemas/ViTables
 Source0:        https://github.com/uvemas/ViTables/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#uvemas/ViTables!127 Support numpy version 2
+Patch:          numpy2.patch
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
@@ -39,7 +41,6 @@ BuildRequires:  python3-tables
 Requires:       hdf5
 Requires:       hicolor-icon-theme
 Requires:       python3-QtPy
-Requires:       python3-blosc2
 Requires:       python3-numpy
 Requires:       python3-qt5
 Requires:       python3-tables
@@ -54,7 +55,7 @@ through the data hierarchy, view and modify metadata, view actual data
 and more.
 
 %prep
-%setup -q -n ViTables-%{version}
+%autosetup -p1 -n ViTables-%{version}
 find -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %build

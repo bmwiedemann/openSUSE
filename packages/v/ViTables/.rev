@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1136418</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a0d1450729a0a8b763af33fdbeb1a6e2</srcmd5>
+    <version>3.0.3</version>
+    <time>1727369657</time>
+    <user>anag+factory</user>
+    <comment>- Add numpy2.patch to fix build with new numpy
+  (gh#uvemas/ViTables!127).</comment>
+    <requestid>1203944</requestid>
+  </revision>
 </revisionlist>

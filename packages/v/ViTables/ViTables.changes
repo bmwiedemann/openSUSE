@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:15:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add numpy2.patch to fix build with new numpy
+  (gh#uvemas/ViTables!127).
+
+-------------------------------------------------------------------
 Wed Jan  3 03:20:27 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.0.3:
