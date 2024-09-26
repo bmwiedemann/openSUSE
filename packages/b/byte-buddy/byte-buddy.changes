@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 25 21:44:53 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.15.2
+  * Changes of v1.15.2
+    + Add support for multi-release JAR files in ClassFileLocators
+      and Plugin.Engine.Default.
+    + Add Gradle task for transforming multiple jar files with
+      ByteBuddyJarsTask.
+    + Avoid validation of JarFile when extracting individual
+      entries.
+    + Rework discovery in ByteBuddyMojo.
+
+-------------------------------------------------------------------
 Sun Sep  1 16:25:12 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.15.1
