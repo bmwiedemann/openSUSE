@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Jul 31 08:33:12 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.1
+  * update to llama3.1
+  * fix: tool_calls response parsing
+  * Update Message annotations to support tool calls
+
+-------------------------------------------------------------------
+Mon Jul 29 06:13:51 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 0.3.0
+
