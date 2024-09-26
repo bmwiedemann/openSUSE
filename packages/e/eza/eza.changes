@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:22:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  Bug Fixes:
+  * Flake trycmd bug
+  * Pre-commit-hook taplo bug
+  Documentation:
+  * Add link to eza-themes repository in readme
+  * Cargo install dir inaccurate
+  * Add x-cmd method to install eza
+  * Adding a testing infos file to guide everyone through tests
+  Features:
+  * Add opml file extension
+  * Add a regen rule
+  * [breaking] Relicensed to EUPL-1.2
+  Refactor:
+  * Move some files to .config
+  * Release scripts use .config
+  * Relicense to EUPL-1.2
+
+-------------------------------------------------------------------
 Wed Sep 18 19:37:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.4:

@@ -746,4 +746,28 @@
   * Pass from serde_yaml to serde_norway</comment>
     <requestid>1201854</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>337737c36b575ad509df67582b56f225</srcmd5>
+    <version>0.20.0</version>
+    <time>1727369668</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.0:
+  Bug Fixes:
+  * Flake trycmd bug
+  * Pre-commit-hook taplo bug
+  Documentation:
+  * Add link to eza-themes repository in readme
+  * Cargo install dir inaccurate
+  * Add x-cmd method to install eza
+  * Adding a testing infos file to guide everyone through tests
+  Features:
+  * Add opml file extension
+  * Add a regen rule
+  * [breaking] Relicensed to EUPL-1.2
+  Refactor:
+  * Move some files to .config
+  * Release scripts use .config
+  * Relicense to EUPL-1.2</comment>
+    <requestid>1203896</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,10 @@
 
 
 Name:           eza
-Version:        0.19.4
+Version:        0.20.0
 Release:        0
 Summary:        Replacement for ls written in Rust
-License:        MIT
+License:        EUPL-1.2
 Group:          System/Base
 URL:            https://github.com/eza-community/eza
 Source0:        %{name}-%{version}.tar.zst
@@ -99,7 +99,7 @@ install -Dm0644 completions/fish/eza.fish "%{buildroot}/%{_datadir}/fish/vendor_
 %{cargo_test}
 
 %files
-%license LICENCE
+%license LICENSE.txt
 %doc README.md
 %{_bindir}/eza
 %ifnarch %ix86 %arm ppc
