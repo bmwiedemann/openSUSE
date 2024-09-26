@@ -25,6 +25,7 @@ URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  x86_64 aarch64
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
+Patch0:         reproducible.patch
 
 BuildRequires:  gcc
 BuildRequires:  libpciaccess-devel
