@@ -1,0 +1,6 @@
+<package name="espanso" project="openSUSE:Factory">
+  <title>espanso</title>
+  <description>A cross-platform Text Expander written in Rust.</description>
+  <devel project="X11:Utilities" package="espanso"/>
+  <url>https://espanso.org</url>
+</package>
