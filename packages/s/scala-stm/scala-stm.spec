@@ -1,7 +1,7 @@
 #
 # spec file for package scala-stm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ Group:          Development/Libraries/Java
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %{mvn_file} org.%{name}:%{name}_%{scala_short_version} %{name}
 
@@ -66,7 +66,13 @@ scalac -nobootcp -d target/classes -release:8  \
       find jvm/src/main/scala-2.14- -name \*.scala && \
       find shared/src/main/scala -name \*.scala && \
       find shared/src/main/scala-2.13+ -name \*.scala | xargs)
-jar -cf target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
+
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
+
 mkdir -p target/apidoc
 scaladoc -nobootcp -d target/apidoc -release:8 \
     $(find jvm/src/main/scala -name \*.scala && \

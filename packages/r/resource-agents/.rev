@@ -1787,4 +1787,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1192174</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>2f18afc641f4f1eb70b000d3cbd32e77</srcmd5>
+    <version>4.15.1+git27.f2932e21</version>
+    <time>1727293880</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.15.1+git27.f2932e21:
+  * IPaddr2: add proto-parameter to be able to match a specific route
+  * Filesystem: stop/get_pids to be signaled
+  * Filesystem: on stop, try umount directly, before scanning for users
+  * docker-compose: use &quot;docker compose&quot; when not using older docker-compose command
+  * podman: Improve handling of &quot;stopping&quot; container removal in remove_container() (#1973)
+  * Filesystem: only use $umount_force after sending kill_signals
+  * apache/http-mon.sh: doc curl as preferred client
+  * apache/http-mon.sh: change curl opts to match wget
+  * powervs-subnet: Enable access via private endpoint for IBM IAM
+  * Filesystem: dont sleep during stop-action when there are no processes to kill
+  * IPsrcaddr: specify dev for default route, as e.g. fe80:: routes can be present on multiple interfaces
+  * powervs-subnet: Add optional argument route_table (#1966)
+  * findif.sh: ignore unreachable, blackhole, and prohibit routes
+  * powervs-subnet: Modify gathering of Apikey, calculation of timeout.
+  * azure-lb: fix spelling of adresses to addresses
+  * IPaddr2: Fix bringing up device
+- Drop pacakge monitoring-plugins-metadata (jsc#PED-5577) (jsc#PED-8232)</comment>
+    <requestid>1203050</requestid>
+  </revision>
 </revisionlist>

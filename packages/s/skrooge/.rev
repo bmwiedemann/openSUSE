@@ -149,4 +149,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment></comment>
     <requestid>1166299</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4a9058bdf3ca11bbb83fe8738ef2f081</srcmd5>
+    <version>2.33.0</version>
+    <time>1727294104</time>
+    <user>anag+factory</user>
+    <comment>Update to 2.33</comment>
+    <requestid>1203527</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:23:22 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240925:
+  * Allow snapperd to manage unlabeled_t files (bsc#1230966)
+
+-------------------------------------------------------------------
+Tue Sep 24 09:37:13 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240924:
+  * Revert "Allow virtstoraged to manage images (bsc#1228742)"
+  * Label /etc/mdevctl.d with mdevctl_conf_t
+  * Sync users with Fedora targeted users
+  * Update policy for rpc-virtstorage
+  * Allow virtstoraged get attributes of configfs dirs
+  * Fix SELinux policy for sandbox X server to fix 'sandbox -X' command
+  * Update bootupd policy when ESP is not mounted
+  * Allow thumb_t map dri devices
+  * Allow samba use the io_uring API
+  * Allow the sysadm user use the secretmem API
+  * Allow nut-upsmon read systemd-logind session files
+  * Allow sysadm_t to create PF_KEY sockets
+  * Update bootupd policy for the removing-state-file test
+
+-------------------------------------------------------------------
+Tue Sep 24 08:50:16 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix macros.selinux-policy (bsc#1230897)
+  - %selinux_relabel_post should not relabel files in
+    transactional systems in %post as the policy is not loaded
+    into the kernel directly after install, instead the relabelling
+    will happen on the next boot
+
+-------------------------------------------------------------------
 Thu Sep 12 07:34:20 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240912:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 23 08:48:24 UTC 2024 - ming li <mli@suse.com>
+
+- update to version 1.16.2:
+  * meson.build: Avoid configuration warnings
+  * MSVC build: Support VS2022 builds
+    (Chun-wei Fan) Merge request !20
+  * Meson build: When mm-common >= 1.0.4 is used, Perl is not required
+  * Meson build: Specify 'check' option in run_command()
+    Will be necessary with future versions of Meson.
+    Require Meson >= 0.55.0
+  * Meson build: Avoid unnecessary configuration warnings
+    (Kjell Ahlstedt)
+
+-------------------------------------------------------------------
 Mon Dec 19 08:41:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

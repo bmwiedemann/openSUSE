@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:19:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Thu Oct 12 12:06:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.13.12
@@ -30,7 +35,6 @@ Thu Oct 12 12:06:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + use the javapackages way of finding the JVM to invoke
   * scala-unbundle-fonts.patch
     + unbundle fonts from scaladoc
-
 
 -------------------------------------------------------------------
 Fri Sep 29 06:45:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>

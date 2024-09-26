@@ -25,6 +25,7 @@ URL:            https://maven.apache.org/archetype/
 Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
 Patch1:         0001-Avoid-reliance-on-groovy.patch
 Patch2:         port-to-maven-script-interpreter-1_3.patch
+Patch3:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -133,6 +134,7 @@ Summary:        Maven Plugin for using archetypes
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 %pom_change_dep ant:ant-antlr org.apache.ant:ant-antlr archetype-common
 %pom_change_dep org.sonatype.aether: org.eclipse.aether: archetype-common
 
@@ -190,7 +192,6 @@ done
 %build
 %{mvn_package} :archetype-models maven-archetype
 %{mvn_build} -s -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif

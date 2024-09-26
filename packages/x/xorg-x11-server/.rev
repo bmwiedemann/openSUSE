@@ -4133,4 +4133,15 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   type error with GCC 14.</comment>
     <requestid>1190943</requestid>
   </revision>
+  <revision rev="434" vrev="6">
+    <srcmd5>e7e044303116011ed3b980bcd79a11a6</srcmd5>
+    <version>21.1.12</version>
+    <time>1727293970</time>
+    <user>anag+factory</user>
+    <comment>- added conflicts to patterns-wsl-tmpfiles to Xserver packages
+  as this patterns package creates a symlink from /tmp/.X11-unix to
+  /mnt/wslg/.X11-unix and therefore prevents Xservers from creating
+  this needed directory (bsc#1230755)</comment>
+    <requestid>1202929</requestid>
+  </revision>
 </revisionlist>

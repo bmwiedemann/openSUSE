@@ -17,6 +17,7 @@
 
 
 %define modname accessible-pygments
+%{?sle15_python_module_pythons}
 Name:           python-accessible-pygments
 Version:        0.0.4
 Release:        0

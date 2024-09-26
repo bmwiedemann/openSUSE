@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:27:21 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.1:
+  * Fix path to the helper image used when creating a thumbnail
+    for images with non-standard aspect ratios. Closes #197.
+
+-------------------------------------------------------------------
 Fri Aug 23 05:46:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.13.0:

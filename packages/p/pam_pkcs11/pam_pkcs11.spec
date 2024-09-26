@@ -1,7 +1,7 @@
 #
 # spec file for package pam_pkcs11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch0:         %{name}-fsf-address.patch
 Patch1:         %{name}-0.5.3-nss-conf.patch
 Patch3:         %{name}-0.6.0-nss-autoconf.patch
 Patch4:         0001-Set-slot_num-configuration-parameter-to-0-by-default.patch
+# 0001-memory-leak-fixes.patch - Fix memory leaks and issues with kscreenlocker (boo#1230870) - adapted from https://github.com/OpenSC/pam_pkcs11/commit/f8e7d85aa3ca4fd2e2a8c2dfe601d1224debe372.patch
+Patch6:         0001-memory-leak-fixes.patch
 BuildRequires:  curl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
@@ -97,6 +99,7 @@ sed -i '/^HTML_TIMESTAMP/s/YES/NO/' doc/doxygen.conf.in
 %build
 ./bootstrap
 %configure\
+	CFLAGS="${CFLAGS:-%optflags} -Wno-implicit-function-declaration"\
 	--docdir=%{_docdir}/%{name}\
 	--with-nss\
 	--with-curl

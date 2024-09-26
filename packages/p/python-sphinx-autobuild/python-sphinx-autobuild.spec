@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-autobuild
 Version:        2024.9.19
 Release:        0

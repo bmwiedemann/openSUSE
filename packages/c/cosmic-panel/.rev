@@ -27,4 +27,20 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192452</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69b2db6a5d9a9a9106d451c475c118aa</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294092</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * fix: hide after popup closed and hover lost
+  * fix: force resize and relayout after scaling change
+  * fix: selection
+  * fix: fallback for GL_OES_standard_derivatives extension missing
+  * fix: convert usize to isize. Removes clippy errors
+  * refactor: process generated pointer events immediately
+  * refactor: delay pointer motion on auto-hover until next surface commit
+</comment>
+    <requestid>1203365</requestid>
+  </revision>
 </revisionlist>

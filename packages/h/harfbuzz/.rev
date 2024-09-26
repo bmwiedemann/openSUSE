@@ -1055,4 +1055,41 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1186028</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>1b370b7d77264fc443fcd464c3cd23ac</srcmd5>
+    <version>10.0.1</version>
+    <time>1727293902</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.0.1:
+  + Relax sanitization checks for “morx” subtables to fix broken
+    AAT shaping of macOS 15.0 version of GeezaPro.
+- Switch to source service for tarball.
+
+- Update to version 10.0.0:
+  + Unicode 16.0.0 support.
+  + Various documentation fixes.
+  + Various build fixes.
+  + Add API to allow HarfBuzz client to set what glyph to use when
+    a Unicode Variation Selector is not supported by the font,
+    which would allow the client to customize what happens in this
+    case, by using a different font for example.
+  + Add a callback to for “hb_face_t” for getting the list of table
+    tags. This is now used to make calling
+    “hb_face_get_table_tags()” work on a faces created by
+    “hb_face_create_for_tables()” (e.g. faces returned by
+    “hb_subset_or_fail()”).
+  + CGJ and Mongolian Variation Selectors are now ignored during
+    glyph positioning, previously they would block both glyph
+    substitution and positioning across them.
+  + Support cairo script as an output format for “hb-view” command
+    line tool.
+  + Drop an optimization that would cause HarfBuzz not apply pair
+    positioning lookup subtables under certain circumstances, for
+    compatibility with other implementations that do apply these
+    subtables.
+  + Subsetting will now fail if source font has no glyphs, so
+    feeding the subsetter invalid data will not silently return an
+    empty face.</comment>
+    <requestid>1203399</requestid>
+  </revision>
 </revisionlist>

@@ -1692,4 +1692,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>- Mark the configuration files as 'noreplace'. (forwarded request 1200646 from mschreiner)</comment>
     <requestid>1200649</requestid>
   </revision>
+  <revision rev="208" vrev="2">
+    <srcmd5>c9246ce2d339c00b66db7a2b600a472f</srcmd5>
+    <version>5.78</version>
+    <time>1727293967</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1202919</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:06:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+- Remove the EL9 sections, since the %%add_maven_depmap macro
+  exist back in javapackages.
+
+-------------------------------------------------------------------
 Wed Feb 21 21:49:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

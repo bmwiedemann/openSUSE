@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 25 10:26:16 UTC 2024 - Reinhard Max <max@suse.com>
+
+- For the correct generation of pkgIndex.tcl it is required that
+  libbrlapi_tcl can runtime-link to libbrlapi at install time.
+  Set LD_LIBRARY_PATH to allow that.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:27:31 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Work around a syntactic change to TCL_PACKAGE_PATH to fix build
+  with Tcl 8.6.15.
+
+-------------------------------------------------------------------
 Mon Jun 10 22:17:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add %python3_fix_shebang_path to fix binaries dependency on

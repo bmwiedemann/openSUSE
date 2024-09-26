@@ -1,0 +1,17 @@
+--- maven-javadoc-plugin-3.6.0/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java	2024-09-24 16:49:08.084112591 +0200
++++ maven-javadoc-plugin-3.6.0/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java	2024-09-24 16:52:42.392279532 +0200
+@@ -2665,6 +2665,14 @@
+     private String getBottomText() {
+         final String inceptionYear = project.getInceptionYear();
+ 
++        if ( outputTimestamp == null ||
++            outputTimestamp.length() < 1 ||
++            ( ( outputTimestamp.length() == 1 )
++                && !Character.isDigit( outputTimestamp.charAt(0) ) ) )
++        {
++            outputTimestamp = System.getenv("SOURCE_DATE_EPOCH");
++        }
++
+         // get Reproducible Builds outputTimestamp date value or the current local date.
+         final LocalDate localDate = MavenArchiver.parseBuildOutputTimestamp(outputTimestamp)
+                 .map(instant -> instant.atZone(ZoneOffset.UTC).toLocalDate())

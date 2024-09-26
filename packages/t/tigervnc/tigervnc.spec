@@ -132,7 +132,7 @@ BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 
 %description
@@ -170,6 +170,7 @@ Recommends:     xorg-x11-Xvnc-module
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       xorg-x11-Xvnc:/usr/lib/vnc/with-vnc-key.sh
+Conflicts:      patterns-wsl-tmpfiles
 
 %description -n xorg-x11-Xvnc
 This is the TigerVNC implementation of Xvnc.

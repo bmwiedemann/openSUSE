@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 19:11:45 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons.
+- Use proper macro for python executable 
+
+-------------------------------------------------------------------
 Thu Oct  7 12:49:49 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

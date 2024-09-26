@@ -338,11 +338,13 @@ export PYTHON=/usr/bin/python3
 %configure CPPFLAGS="$java_inc" \
         --with-tables-directory=%_datadir/%name \
         --disable-stripping
-make
+make TCL_DIR=%tcl_archdir
 
 %install
+# For the correct generation of pkgIndex.tcl
+export LD_LIBRARY_PATH=$PWD/Programs
 sed -i "s=/usr/libexec/brltty-systemd-wrapper=%_libexecdir/brltty-systemd-wrapper=" Autostart/Systemd/brltty@.service
-%make_install install-systemd install-udev install-polkit INSTALL_ROOT="%buildroot"
+%make_install install-systemd install-udev install-polkit INSTALL_ROOT="%buildroot" TCL_DIR=%tcl_archdir
 for exe in %buildroot%_bindir/*
 do
 	sed -i~ '1{s@%_bindir/env[[:blank:]]\+@%_bindir/@}' "${exe}"

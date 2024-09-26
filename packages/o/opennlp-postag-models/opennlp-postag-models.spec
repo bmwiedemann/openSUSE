@@ -1,7 +1,7 @@
 #
 # spec file for package opennlp-postag-models
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ License:        Apache-2.0
 URL:            https://opennlp.sourceforge.net
 Source0:        https://repo1.maven.org/maven2/edu/washington/cs/knowitall/%{name}/%{version}/%{name}-%{version}-sources.jar
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -38,7 +38,11 @@ cp %{SOURCE1} LICENSE
 %pom_remove_parent
 
 %build
-jar -cf %{name}-%{version}.jar *.bin
+jar --create --verbose \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --file=%{name}-%{version}.jar *.bin
 
 %install
 # jar
@@ -46,7 +50,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 
 %files -f .mfiles

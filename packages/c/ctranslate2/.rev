@@ -28,4 +28,12 @@
   * Quantization AWQ GEMM + GEMV</comment>
     <requestid>1201559</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46efebde56e8f57f1f4d81354c380672</srcmd5>
+    <version>4.4.0</version>
+    <time>1727294049</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203278</requestid>
+  </revision>
 </revisionlist>

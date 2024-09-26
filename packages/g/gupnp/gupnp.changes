@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 23 18:49:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.7:
+  + Fix compatiblity with libxml2 2.12.x
+  + Improve reproducability
+  + ControlPoint: Fix re-scan
+  + ContextManager: Fix boot-id update
+  + Context: Fix crash if served URI is not an IP address
+- Drop 00514fb6.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Apr 11 06:55:52 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

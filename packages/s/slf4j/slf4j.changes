@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:45:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Tue Feb 20 14:29:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

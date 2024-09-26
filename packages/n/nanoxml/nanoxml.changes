@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:41:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * nanoxml-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+- Modified patch:
+  * nanoxml-build.patch
+    + Generate javadoc without hidden timestamps
+
+-------------------------------------------------------------------
 Wed Feb 21 21:40:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

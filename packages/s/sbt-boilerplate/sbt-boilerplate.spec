@@ -62,7 +62,11 @@ rm -f src/main/scala/spray/boilerplate/BoilerplatePlugin.scala
 
 mkdir -p target/classes
 scalac -d target/classes -release:8 -cp $(build-classpath scala) $(find src/main/scala/spray/boilerplate -name \*.scala | xargs)
-jar -cf target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
 mkdir -p target/apidoc
 scaladoc -d target/apidoc -release:8 -cp $(build-classpath scala) $(find src/main/scala/spray/boilerplate -name \*.scala | xargs)
 

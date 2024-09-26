@@ -7336,4 +7336,21 @@ handle manual pages that consist only of a .so directive such as
   and play support in Wine for 32bit windows applications.</comment>
     <requestid>1194742</requestid>
   </revision>
+  <revision rev="431" vrev="1">
+    <srcmd5>61775eba753de3a2c0e590a6dc1fef14</srcmd5>
+    <version>256.6</version>
+    <time>1727293954</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 8a0ae4d90aff1d067a125ff9366eafc7dd5d4701 (merge of v256.6)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/bef0958f4db1b774c23505e93537ffe16f1b3894...8a0ae4d90aff1d067a125ff9366eafc7dd5d4701
+
+- Don't try to restart the udev socket units anymore (bsc#1228809)
+  There's currently no way to restart a socket activable service and its socket
+  units &quot;atomically&quot; and safely.
+
+- Move 80-container-host0.network back to the network sub-package (bsc#1229098)
+  Rev 428 mistakenly moved it to the container sub-package.</comment>
+    <requestid>1202876</requestid>
+  </revision>
 </revisionlist>

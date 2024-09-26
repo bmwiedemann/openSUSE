@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:08:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.8:
+  + decodebin3: Fix collection identity check
+  + encodebin: Fix pad removal
+  + glimagesink: Fix cannot resize viewport when video size changed
+    in caps
+  + video: Don't overshoot QoS earliest time by a factor of 2
+  + meson: gst-play: link to libm
+- Drop gst-plugins-base-decodebin3-collection-identity-check.patch:
+  Fixed upstream.
+- Rebase add_wayland_dep_to_tests.patch with quilt.
+
+-------------------------------------------------------------------
 Fri Aug 23 07:15:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.7:

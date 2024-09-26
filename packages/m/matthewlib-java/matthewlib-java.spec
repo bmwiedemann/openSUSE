@@ -19,27 +19,20 @@
 %global make make
 %define orig_name libmatthew-java
 Name:           matthewlib-java
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        A few useful Java libraries
-# actual upstream:
-#URL: http://matthew.ath.cx/projects/java/
-#Source0: http://matthew.ath.cx/projects/java/%{name}-%{version}.tar.gz
-# upstream author is also the debian maintainer for this package.
-# he gets newer releases into debian before he puts them up on
-# the upstream website. so we use the "original" source from debian
-# (ie, the source before debian patches are applied to it)
 License:        MIT
 Group:          Development/Libraries/Java
-Source0:        libmatthew-java-0.8.tar.gz
+URL:            http://matthew.ath.cx/projects/java/
+Source0:        http://matthew.ath.cx/projects/java/%{orig_name}-%{version}.tar.gz
 Patch0:         install_doc.patch
 Patch1:         classpath_fix.patch
-Patch2:         libmatthew-java-0.8-jdk10.patch
+Patch2:         libmatthew-java-0.8.1-jdk10.patch
+Patch3:         reproducible-jar-mtime.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
-Requires:       java >= 1.8
-Requires:       javapackages-tools
 Provides:       %{orig_name}
 
 %description
@@ -83,13 +76,17 @@ A collection of Java libraries: - Unix Sockets Library This is a
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 3 -p1
+%endif
 
 %build
-%make \
+%{make} \
     CFLAGS='%{optflags} -fpic -std=c99' \
     LIBDIR='%{_libdir}' \
     LD='gcc' \
-    JCFLAGS='-target 1.8 -source 1.8'
+    JCFLAGS='-target 1.8 -source 1.8' \
+    JAVADOCFLAGS='-quiet -author -notimestamp'
 
 %install
 make install \

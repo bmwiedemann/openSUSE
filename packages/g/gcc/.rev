@@ -662,4 +662,13 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
   of those packages.  Should fix build of boost in ALP.</comment>
     <requestid>1191646</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>c55b45d8bc7d143503e6bd89a75977e5</srcmd5>
+    <version>14</version>
+    <time>1727293870</time>
+    <user>anag+factory</user>
+    <comment>- Ensure every -build package conflicts and provides the non-build
+  counterpart (related to boo#1230628) (forwarded request 1202713 from epaolantonio)</comment>
+    <requestid>1202818</requestid>
+  </revision>
 </revisionlist>

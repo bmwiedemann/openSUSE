@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 25 00:59:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * fix: add padding to context menu divider
+  * feat: add missing file menu entries
+  * Continue operations in the background if the window is closed
+  * fix: add settings keybind
+  * Clear and close search field on nav
+  * Activate navbar selection on init and when switching tabs
+  * Sort modified descending on initial click
+  * fix icons
+  * Fix scrolling item into view when using arrow keys
+  * Fix breadcrumbs to use pointer mouse cursor
+  * Don't focus tab when opening folder in new tab
+  * Select previous directory when navigating back
+  * Add Open item location for search results, fixes
+  * Show symlinked directories as directories
+  * Enable extracting zip files to current folder
+  * removed examples from cargo.toml
+  * Display file ownership and permissions
+  * fix app name
+  * updated translations
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

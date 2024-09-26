@@ -95,4 +95,12 @@
     <comment>Upgrading the scala stack</comment>
     <requestid>1117473</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b95c787cb2b9f1fe981f531c606a94ed</srcmd5>
+    <version>2.13.12</version>
+    <time>1727293996</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
+    <requestid>1203016</requestid>
+  </revision>
 </revisionlist>

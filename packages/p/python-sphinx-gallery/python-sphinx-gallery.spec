@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-gallery
 Version:        0.17.1
 Release:        0

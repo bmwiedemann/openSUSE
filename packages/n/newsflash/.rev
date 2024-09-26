@@ -86,4 +86,12 @@
   * re-enable full text search in article plain text (forwarded request 1190348 from rrahl0)</comment>
     <requestid>1190349</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dca44c08427e717be136a3ed9ac1ee27</srcmd5>
+    <version>3.3.5</version>
+    <time>1727294025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203127</requestid>
+  </revision>
 </revisionlist>

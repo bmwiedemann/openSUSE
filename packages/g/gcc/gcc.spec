@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gcc
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -92,6 +92,10 @@ The system GNU C Compiler.
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-32bit = %{version}
+Conflicts:      gcc-32bit
+%endif
 Requires:       gcc%{gcc_version}-32bit
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -102,6 +106,10 @@ The system GNU C Compiler.
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-64bit = %{version}
+Conflicts:      gcc-64bit
+%endif
 Requires:       gcc%{gcc_version}-64bit
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -124,6 +132,10 @@ The system GNU Preprocessor.
 Summary:        The system GNU C Compiler Plugin development files
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-devel = %{version}
+Conflicts:      gcc-devel
+%endif
 Requires:       gcc%{gcc_version}-devel
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -134,6 +146,10 @@ The system GNU C Compiler Plugin development files.
 Summary:        The system GNU Compiler locale files
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-locale = %{version}
+Conflicts:      gcc-locale
+%endif
 Requires:       gcc%{gcc_version}-locale
 
 %description -n gcc%{gccsuffix}-locale
@@ -143,11 +159,16 @@ The system GNU Compiler locale files.
 Summary:        The system GNU Compiler documentation
 License:        GFDL-1.2-only
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-info = %{version}
+Conflicts:      gcc-info
+%endif
 PreReq:         %{install_info_prereq}
 PreReq:         gcc%{gcc_version}-info
 
 %description -n gcc%{gccsuffix}-info
 The system GNU Compiler documentation.
+
 
 
 
@@ -193,6 +214,10 @@ The system GNU C++ Compiler.
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-c++-32bit = %{version}
+Conflicts:      gcc-c++-32bit
+%endif
 Requires:       gcc%{gcc_version}-c++-32bit
 Requires:       gcc%{gccsuffix}-32bit = %{version}
 Requires:       gcc%{gccsuffix}-c++ = %{version}
@@ -204,6 +229,10 @@ The system GNU C++ Compiler 32 bit support.
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-c++-64bit = %{version}
+Conflicts:      gcc-c++-64bit
+%endif
 Requires:       gcc%{gcc_version}-c++-64bit
 Requires:       gcc%{gccsuffix}-64bit = %{version}
 Requires:       gcc%{gccsuffix}-c++ = %{version}
@@ -228,6 +257,10 @@ The system GNU C++ development files.
 Summary:        The system GNU C++ 32bit development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
+%if "%{gccsuffix}" != ""
+Provides:       libstdc++-devel-32bit = %{version}
+Conflicts:      libstdc++-devel-32bit
+%endif
 Requires:       libstdc++%{gccsuffix}-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-32bit
 
@@ -238,6 +271,10 @@ The system GNU C++ 32bit development files.
 Summary:        The system GNU C++ 64bit development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
+%if "%{gccsuffix}" != ""
+Provides:       libstdc++-devel-64bit = %{version}
+Conflicts:      libstdc++-devel-64bit
+%endif
 Requires:       libstdc++%{gccsuffix}-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-64bit
 
@@ -248,6 +285,10 @@ The system GNU C++ 64bit development files.
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
+%if "%{gccsuffix}" != ""
+Provides:       gcc-fortran = %{version}
+Conflicts:      gcc-fortran
+%endif
 Requires:       gcc%{gcc_version}-fortran
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -258,6 +299,10 @@ The system GNU Fortran Compiler.
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
+%if "%{gccsuffix}" != ""
+Provides:       gcc-fortran-32bit = %{version}
+Conflicts:      gcc-fortran-32bit
+%endif
 Requires:       gcc%{gcc_version}-fortran-32bit
 Requires:       gcc%{gccsuffix}-fortran = %{version}
 
@@ -268,6 +313,10 @@ The system GNU Fortran Compiler 32 bit support.
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Fortran
+%if "%{gccsuffix}" != ""
+Provides:       gcc-fortran-64bit = %{version}
+Conflicts:      gcc-fortran-64bit
+%endif
 Requires:       gcc%{gcc_version}-fortran-64bit
 Requires:       gcc%{gccsuffix}-fortran = %{version}
 
@@ -278,6 +327,10 @@ The system GNU Fortran Compiler 64 bit support.
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
+%if "%{gccsuffix}" != ""
+Provides:       gcc-objc = %{version}
+Conflicts:      gcc-objc
+%endif
 Requires:       gcc%{gcc_version}-objc
 Requires:       gcc%{gccsuffix} = %{version}
 %ifarch ppc64
@@ -291,6 +344,10 @@ The system GNU Objective C Compiler.
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
+%if "%{gccsuffix}" != ""
+Provides:       gcc-objc-32bit = %{version}
+Conflicts:      gcc-objc-32bit
+%endif
 Requires:       gcc%{gcc_version}-objc-32bit
 Requires:       gcc%{gccsuffix}-objc = %{version}
 
@@ -301,6 +358,10 @@ The system GNU Objective C Compiler 32 bit support.
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
+%if "%{gccsuffix}" != ""
+Provides:       gcc-objc-64bit = %{version}
+Conflicts:      gcc-objc-64bit
+%endif
 Requires:       gcc%{gcc_version}-objc-64bit
 Requires:       gcc%{gccsuffix}-objc = %{version}
 
@@ -311,6 +372,10 @@ The system GNU Objective C Compiler 64 bit support.
 Summary:        The system GNU Objective C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
+%if "%{gccsuffix}" != ""
+Provides:       gcc-objc-c++ = %{version}
+Conflicts:      gcc-objc-c++
+%endif
 Requires:       gcc%{gcc_version}-obj-c++
 Requires:       gcc%{gccsuffix}-objc = %{version}
 
@@ -321,6 +386,10 @@ The system GNU Objective C++ Compiler.
 Summary:        A default configuration to build all binaries in PIE mode
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
+%if "%{gccsuffix}" != ""
+Provides:       gcc-PIE = %{version}
+Conflicts:      gcc-PIE
+%endif
 Requires:       gcc%{gcc_version}-PIE
 
 %description -n gcc%{gccsuffix}-PIE
@@ -333,6 +402,10 @@ space randomization (ASLR).
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-ada = %{version}
+Conflicts:      gcc-ada
+%endif
 Requires:       gcc%{gcc_version}-ada
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -343,6 +416,10 @@ The system GNU Ada Compiler.
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-ada-32bit = %{version}
+Conflicts:      gcc-ada-32bit
+%endif
 Requires:       gcc%{gcc_version}-ada-32bit
 Requires:       gcc%{gccsuffix}-ada = %{version}
 
@@ -353,6 +430,10 @@ The system GNU Ada Compiler 32 bit support.
 Summary:        The system GNU Ada Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-ada-64bit = %{version}
+Conflicts:      gcc-ada-64bit
+%endif
 Requires:       gcc%{gcc_version}-ada-64bit
 Requires:       gcc%{gccsuffix}-ada = %{version}
 
@@ -363,10 +444,14 @@ The system GNU Ada Compiler 64 bit support.
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-go = %{version}
+Conflicts:      gcc-go
+%endif
 Requires:       gcc%{gcc_version}-go
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
@@ -375,6 +460,10 @@ The system GNU Go Compiler.
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-go-32bit = %{version}
+Conflicts:      gcc-go-32bit
+%endif
 Requires:       gcc%{gcc_version}-go-32bit
 Requires:       gcc%{gccsuffix}-go = %{version}
 
@@ -385,6 +474,10 @@ The system GNU Go Compiler 32bit support.
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-go-64bit = %{version}
+Conflicts:      gcc-go-64bit
+%endif
 Requires:       gcc%{gcc_version}-go-64bit
 Requires:       gcc%{gccsuffix}-go = %{version}
 
@@ -395,10 +488,14 @@ The system GNU Go Compiler 64bit support.
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-d = %{version}
+Conflicts:      gcc-d
+%endif
 Requires:       gcc%{gcc_version}-d
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description -n gcc%{gccsuffix}-d
 The system GNU D Compiler.
@@ -407,6 +504,10 @@ The system GNU D Compiler.
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-d-32bit = %{version}
+Conflicts:      gcc-d-32bit
+%endif
 Requires:       gcc%{gcc_version}-d-32bit
 Requires:       gcc%{gccsuffix}-d = %{version}
 
@@ -417,6 +518,10 @@ The system GNU D Compiler 32bit support.
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-d-64bit = %{version}
+Conflicts:      gcc-d-64bit
+%endif
 Requires:       gcc%{gcc_version}-d-64bit
 Requires:       gcc%{gccsuffix}-d = %{version}
 
@@ -427,6 +532,10 @@ The system GNU D Compiler 64bit support.
 Summary:        Support for embedding GCC inside programs and libraries
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       libgccjit-devel = %{version}
+Conflicts:      libgccjit-devel
+%endif
 Requires:       libgccjit%{libgccjit_sover}-devel-gcc%{gcc_version}
 
 %description -n libgccjit%{gccsuffix}-devel
@@ -436,6 +545,10 @@ Package contains header files and documentation for GCC JIT front-end.
 Summary:        Development files for the quadprecision math library
 License:        LGPL-2.1-only
 Group:          Development/Languages/Fortran
+%if "%{gccsuffix}" != ""
+Provides:       libquadmath-devel = %{version}
+Conflicts:      libquadmath-devel
+%endif
 Requires:       libquadmath0-devel-gcc%{gcc_version}
 
 %description -n libquadmath%{gccsuffix}-devel

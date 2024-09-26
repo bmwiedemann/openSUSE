@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 14 12:34:14 UTC 2024 - Dan Partelly <d.partelly@yahoo.com>
+
+- Enable (disabled by default) installation of headers needed
+  to build drivers.
+
+-------------------------------------------------------------------
+Fri Sep 13 05:08:15 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Use python macros from build config
+
+-------------------------------------------------------------------
 Thu Sep  5 11:40:32 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 with gcc14:
@@ -279,9 +290,9 @@ Mon Sep  2 06:15:32 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
     * 0002-SLE15-SP3-compatibility-patch-for-kni.patch
     * kni-fix-build-with-Linux-6.10.patch
     * kni-fix-build-with-Linux-6.8.patch
-    * preamble 
+    * preamble
 - Updated the below patch for DPDK v23.11
-    * 0001-fix-cpu-compatibility.patch 
+    * 0001-fix-cpu-compatibility.patch
 
 -------------------------------------------------------------------
 Thu Aug 22 17:33:47 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
@@ -409,7 +420,7 @@ Wed Apr  5 21:10:54 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
     * Added Patches:
         0001-fix-cpu-compatibility.patch
     * Rebased patches:
-        0002-SLE15-SP3-compatibility-patch-for-kni.patch 
+        0002-SLE15-SP3-compatibility-patch-for-kni.patch
 
 -------------------------------------------------------------------
 Wed Feb 22 08:58:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
@@ -420,7 +431,7 @@ Wed Feb 22 08:58:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 Tue Jun 21 13:20:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - also strip meson generated runpaths when installing examples
-  manually (bsc#1200620) 
+  manually (bsc#1200620)
 
 -------------------------------------------------------------------
 Wed May 25 10:13:44 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
@@ -673,7 +684,7 @@ Mon Oct 25 13:41:49 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
   0001-SLE15-SP3-compatibility-patch-for-kni.patch
   to
   0002-SLE15-SP3-compatibility-patch-for-kni.patch
-- rename 
+- rename
   dpdk-fallthrough-comment-fixes.patch
   to
   0003-dpdk-fallthrough-comment-fixes.patch
@@ -748,7 +759,7 @@ Tue Sep 22 08:13:23 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update to 19.11.4. For a list of fixes check:
   https://doc.dpdk.org/guides-19.11/rel_notes/release_19_11.html#id8
-- Add patch to resolve build error reported in Staging:E project 
+- Add patch to resolve build error reported in Staging:E project
   where a kernel backport (jsc#SLE-13536) introduced backward
   incompatible changes to the API that break kni module build
   * 0001-SLE15-SP3-compatibility-patch-for-kni.patch
@@ -1164,7 +1175,7 @@ Tue May 19 11:41:34 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 Wed Apr 29 11:45:24 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update to v19.11.1. For a list of changes, check:
-  * https://doc.dpdk.org/guides/rel_notes/release_19_11.html#new-features 
+  * https://doc.dpdk.org/guides/rel_notes/release_19_11.html#new-features
 - Removed patches no longer applying to the code base:
   * 0001-vhost-fix-possible-denial-of-service-on-SET_VRING_NU.patch
   * 0002-vhost-fix-possible-denial-of-service-by-leaking-FDs.patch
@@ -1194,7 +1205,7 @@ Tue Nov 19 15:45:29 UTC 2019 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 -------------------------------------------------------------------
 Mon Sep 30 10:04:59 UTC 2019 -  <jcaamano@suse.com>
 
-- Changed to multibuild (bsc#1151455). 
+- Changed to multibuild (bsc#1151455).
 - Added dpdk-fix-implicit-fallthrough-warning.patch to address build error with
   recent kernels (bsc#1144704).
 
@@ -1504,11 +1515,11 @@ Mon Sep  4 11:18:19 CEST 2017 - ndas@suse.de
      http://dpdk.org/doc/guides/rel_notes/release_17_08.html
      http://dpdk.org/doc/guides/rel_notes/release_17_05.html
      http://dpdk.org/doc/guides/rel_notes/release_17_02.html
-    [-0002-kni-define-HAVE_VF_VLAN_PROTO-for-SLES12SP3.patch                                                                                                                                            
-    -0003-kni-define-HAVE_TRANS_START_HELPER-for-SLES12SP3.patch                                                                                                                                       
-    -0004-net-thunderx-sync-mailbox-definitions-with-Linux-PF-.patch                                                                                                                                   
-    -0005-kni-fix-build-with-gcc-7.1.patch                                                                                                                                                             
-    -0006-kni-fix-ethtool-build-with-kernel-4.11.patch                                                                                                                                                 
+    [-0002-kni-define-HAVE_VF_VLAN_PROTO-for-SLES12SP3.patch
+    -0003-kni-define-HAVE_TRANS_START_HELPER-for-SLES12SP3.patch
+    -0004-net-thunderx-sync-mailbox-definitions-with-Linux-PF-.patch
+    -0005-kni-fix-build-with-gcc-7.1.patch
+    -0006-kni-fix-ethtool-build-with-kernel-4.11.patch
     -0007-igb_uio-switch-to-new-irq-function-for-MSI-X.patch]
 - Use updated patch to enable HAVE_TRANS_START_HELPER for SLE12SP3(bsc#1031705).
   [+ 0002-kni-fix-build-on-SLE12-SP3.patch]
@@ -1578,7 +1589,7 @@ Wed Jun 14 12:55:10 CEST 2017 - ndas@suse.de
    * net/ixgbe: fix Rx queue blocking issue
    * net/ixgbe: fix all queues drop setting of DCB
    * net/ixgbe: fix TC bandwidth setting
-   more details can be found in 
+   more details can be found in
    http://dpdk.org/ml/archives/stable/2017-May/001809.html
    [- 0005-kni-fix-build-with-kernel-4.11.patch]
 - use default gcc which is now gcc7 (bsc#1042372)
@@ -1738,7 +1749,7 @@ Fri Feb 24 13:46:44 CET 2017 - ndas@suse.de
 Thu Feb 16 18:29:43 CET 2017 - ndas@suse.de
 
 - Do not disable cryptodev as EXPREMENTAL tag has been removed.
-- Remove CONFIG_RTE_LIBRTE_MBUF_OFFLOAD as cryptodev is not depending 
+- Remove CONFIG_RTE_LIBRTE_MBUF_OFFLOAD as cryptodev is not depending
   on it anymore and its removed from the upstream.
 
 -------------------------------------------------------------------
@@ -1962,9 +1973,9 @@ Thu Jul 28 16:39:07 CEST 2016 - ndas@suse.de
 -------------------------------------------------------------------
 Mon Jul 11 18:20:57 CEST 2016 - ndas@suse.de
 
-- Added support for aarch64 compilation. 
+- Added support for aarch64 compilation.
   [+0035-PAGE_SIZE-constant-is-not-defined-on-ARM-since-multi.patch]
-- Disabled aarch64 dpdk-examples package for the time being as it 
+- Disabled aarch64 dpdk-examples package for the time being as it
   contains lots of Intel specific code.
 - Added proper "Group" field for the subpackages .
 
@@ -1984,7 +1995,7 @@ Thu Jun 23 09:56:05 UTC 2016 - mchandras@suse.de
 -------------------------------------------------------------------
 Tue Jun 14 10:04:09 UTC 2016 - ndas@suse.de
 
-- Removed unwanted files(bsc#984437). 
+- Removed unwanted files(bsc#984437).
 
 -------------------------------------------------------------------
 Thu Jun  9 17:18:01 CEST 2016 -  ndas@suse.de
@@ -1999,7 +2010,7 @@ Wed Jun  1 14:16:10 UTC 2016 - mchandras@suse.de
 -------------------------------------------------------------------
 Fri May 27 12:28:02 CEST 2016 - ndas@suse.de
 
-- Applied all the fixes recommended by upstream for 
+- Applied all the fixes recommended by upstream for
   v2.2 stable release(bsc#981996).
 
 	[+0008-app-testpmd-handle-SIGINT-and-SIGTERM.patch,
@@ -2050,7 +2061,7 @@ Wed Apr 27 14:55:37 UTC 2016 - mchandras@suse.de
 -------------------------------------------------------------------
 Tue Apr 19 10:45:29 CEST 2016 - ndas@suse.de
 
-- DPDK is most common vhost-user backend, Adding upstream patches to 
+- DPDK is most common vhost-user backend, Adding upstream patches to
   help qemu vm live migration with vhost-user (fate#320713).
   [+ 0004-54f9e32-vhost-handle-dirty-pages-logging-request.patch
    + 0005-d293dac-vhost-claim-support-of-guest-announce.patch
@@ -2087,11 +2098,11 @@ Mon Apr 11 16:12:09 CEST 2016 - ndas@suse.de
    - dpdk-2.2-warningflags.patch,
    + 0001-enic-fix-Type-punning-and-strict-aliasing-warning.patch
    + 0002-examples-ip_pipeline-fix-implicit-declaration-of-fun.patch]
-- Added CONFIG_RTE_BUILD_COMBINE_LIBS flags to club all all *.so into 
+- Added CONFIG_RTE_BUILD_COMBINE_LIBS flags to club all all *.so into
   one library
 
 -------------------------------------------------------------------
 Mon Mar 21 14:15:08 UTC 2016 - nirmoy.das@suse.com
 
-- Intial version 2.2.0(fate#319169) 
+- Intial version 2.2.0(fate#319169)
 

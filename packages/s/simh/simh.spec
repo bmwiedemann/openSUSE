@@ -1,7 +1,7 @@
 #
 # spec file for package simh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libvdeplug-devel
 BuildRequires:  unzip
 URL:            http://simh.trailing-edge.com/
-Version:        3.12_4
+Version:        3.12_5
 Release:        0
 Summary:        A collection of simulators of historically significant data processing systems
 License:        BSD-3-Clause
 Group:          System/Emulators/Other
-Source:         http://simh.trailing-edge.com/sources/simhv312-4.zip
-Patch1:         0001-declare-don-t-define-uc15_memsize-in-include-file.patch
+Source:         http://simh.trailing-edge.com/sources/simhv312-5.zip
+Patch1:         0001-Fix-const-declaration.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  help2man

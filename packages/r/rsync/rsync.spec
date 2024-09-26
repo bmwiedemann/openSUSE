@@ -58,6 +58,8 @@ Patch0:         rsync-no-libattr.patch
 Patch1:         rsync-gcc14.patch
 Patch2:         rsync-usr-etc.patch
 Patch3:         rsync-run-dir.patch
+# https://github.com/RsyncProject/rsync/pull/639
+Patch5:         rsyncd-return-from-list-command-with-0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler

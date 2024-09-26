@@ -16,21 +16,20 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           talosctl
-Version:        1.7.6
+Version:        1.8.0
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
 URL:            https://github.com/siderolabs/talos
-Source:         talos-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.22
 
 %description
 Talos Linux is a modern Linux distribution built for Kubernetes.
-The talosctl tool acts as a reference implementation for the Talos API, but it also handles a lot of conveniences for the use of Talos and its clusters.
+The talosctl tool acts as a reference implementation for the Talos API, but it
+also handles a lot of conveniences for the use of Talos and its clusters.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -64,15 +63,21 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n talos-%{version}
+%autosetup -p 1 -a 1
 
 %build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags=" -X github.com/siderolabs/talos/pkg/machinery/gendata.VersionSHA=v%{version} -X github.com/siderolabs/talos/pkg/version.Built=$BUILD_DATE" \
+   -ldflags="
+   -X github.com/siderolabs/talos/pkg/machinery/gendata.VersionTag=v%{version} \
+   -X github.com/siderolabs/talos/pkg/machinery/gendata.VersionSHA=${COMMIT_HASH:0:8} \
+   -X github.com/siderolabs/talos/pkg/machinery/version.Built=${BUILD_DATE}" \
    -o bin/talosctl ./cmd/talosctl
 
 %install

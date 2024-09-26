@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:03:30 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap.
+
+-------------------------------------------------------------------
 Mon Jul 22 09:42:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with Python 3.13

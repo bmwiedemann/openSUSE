@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:25:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-from-environment.patch
+    + SOURCE_DATE_EPOCH environmental variable triggers reproducible
+      use of the maven-archetype-plugin if it is not requested
+      already using the project.build.outputTimestamp option.
+
+-------------------------------------------------------------------
 Tue Apr  2 17:17:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

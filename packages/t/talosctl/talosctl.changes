@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 05:10:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.0:
+  Changelog for Talos 1.8.0 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.8.0
+  * Diagnostics
+    - Talos Linux now shows diagnostics information for common problems related
+      to misconfiguration via talosctl health and Talos dashboard.
+
+-------------------------------------------------------------------
 Wed Aug  7 07:13:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.7.6:

@@ -25,4 +25,19 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192445</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bc96f9a586adce9c84b7aed7e5eaf05</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294084</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * Update rust-toolchain to 1.80
+  * Add support for (fractional) DPI scaling
+  * Use fast_image_resize for resizing
+  * fix: clear current images and mark surfaces for redraw after slideshow
+  * fix: use scaled width and height for buffer damage
+  * Updated translations
+</comment>
+    <requestid>1203360</requestid>
+  </revision>
 </revisionlist>

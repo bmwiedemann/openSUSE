@@ -1,6 +1,7 @@
 #
 # spec file for package python-compressed_rtf
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,7 +17,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-compressed_rtf
 Version:        1.0.6
 Release:        0
@@ -24,9 +25,9 @@ Summary:        Compressed Rich Text Format (RTF) compression and decompression 
 License:        MIT
 URL:            https://github.com/delimitry/compressed_rtf
 Source:         compressed_rtf-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

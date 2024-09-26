@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 18 09:31:40 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 8a0ae4d90aff1d067a125ff9366eafc7dd5d4701 (merge of v256.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/bef0958f4db1b774c23505e93537ffe16f1b3894...8a0ae4d90aff1d067a125ff9366eafc7dd5d4701
+
+-------------------------------------------------------------------
+Tue Aug 27 08:04:14 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Don't try to restart the udev socket units anymore (bsc#1228809)
+
+  There's currently no way to restart a socket activable service and its socket
+  units "atomically" and safely.
+
+-------------------------------------------------------------------
+Mon Aug 26 10:51:51 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Move 80-container-host0.network back to the network sub-package (bsc#1229098)
+
+  Rev 428 mistakenly moved it to the container sub-package.
+
+-------------------------------------------------------------------
 Mon Aug 19 15:00:19 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit bef0958f4db1b774c23505e93537ffe16f1b3894 (merge of v256.5)

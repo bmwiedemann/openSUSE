@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:01:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * fix: Launch with invalid default profile fails
+  * fix ctrl or alt + arrows
+  * Support drag-and-drop for files
+  * Efficiently set config
+  * Zoom per tab/pane & not writing config to fs when zooming
+  * Make underlines stable
+  * Rework and unify repeated drawing
+  * Fix issues
+  * Fix nits
+  * Initial cursor shapes
+  * Fill in cursor support
+  * Add colors
+  * Change the default hold value when creating new profile
+  * Use patch for filetime
+  * Fix regression with hidden cursors
+  * Early exit if no monospace fonts were found
+  * Update dependencies
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:41 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

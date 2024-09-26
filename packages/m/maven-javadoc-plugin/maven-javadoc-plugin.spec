@@ -34,6 +34,7 @@ Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         stale-data-encoding.patch
 Patch2:         no-override.patch
+Patch3:         reproducible-from-environment.patch
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
 BuildRequires:  atinject
@@ -116,6 +117,7 @@ cp %{SOURCE1} build.xml
 %endif
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
 

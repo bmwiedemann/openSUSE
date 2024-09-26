@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:54:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.4:
+  * Fix regression with f-string inference.
+  * Fix bug with ``manager.clear_cache()`` not fully clearing
+    cache
+  * Fix a crash from inferring empty format specs.
+  * Fix inference regression with property setters.
+  * Add annotation-only instance attributes to attrs classes to
+    fix `no-member` false positives.
+  * Restore support for soft-deprecated members of the ``typing``
+    module with python 3.13.
+  * Fix a crash introduced in 3.3.0 involving invalid format
+    strings.
+
+-------------------------------------------------------------------
 Tue Aug  6 09:29:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.0

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/MariaDB/galera.git</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="match-tag">mariadb-26*</param>
+    <param name="scm">git</param>
+    <param name="versionrewrite-pattern">mariadb-([\.\d]+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

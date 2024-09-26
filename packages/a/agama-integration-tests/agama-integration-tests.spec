@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           agama-integration-tests
 Version:        0
 Release:        0
 Summary:        Support for running Agama integration tests
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/agama
 # source_validator insists that if obscpio has no version then
 # tarball must neither
@@ -61,12 +62,15 @@ cp -a %{_builddir}/agama/package.json %{buildroot}%{_datadir}/agama/integration-
 install -D -d -m 0755 %{buildroot}%{_bindir}
 cp -a %{_builddir}/agama/agama-integration-tests %{buildroot}%{_bindir}
 
+rm %{buildroot}%{_datadir}/agama/integration-tests/node_modules/.package-lock.json
+
 # symlink duplicate files
 %fdupes -s %{buildroot}/%{_datadir}/agama/integration-tests
 
 %files
 %defattr(-,root,root,-)
 %doc README.md
+%license LICENSE
 %dir %{_datadir}/agama
 %{_datadir}/agama/integration-tests
 %attr(0755,root,root) %{_bindir}/agama-integration-tests

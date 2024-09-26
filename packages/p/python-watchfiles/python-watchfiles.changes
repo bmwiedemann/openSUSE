@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 25 05:22:39 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.24.0:
+  - drop PyPy 3.8 by @samuelcolvin in #293
+  - Update Python version in index.md by @kjaymiller in #296
+  - return "file deleted" instead of raising an exception,
+    fix #282 by @samuelcolvin in #301
+- Changes from 0.23.0:
+  - Fix typo in watch doctstring by @kwentine in #280
+  - Bump up PyO3 to 0.22.2 by @FlickerSoul in #287
+  - Updates to GitHub Actions by @gaby in #274
+  - Update mkdocstring python handler option key by @kwentine in
+    #281
+  - Bump requests from 2.31.0 to 2.32.0 in /requirements by
+    @dependabot in #278
+  - Bump urllib3 from 2.2.1 to 2.2.2 in /requirements by
+    @dependabot in #283
+  - Bump certifi from 2024.2.2 to 2024.7.4 in /requirements by
+    @dependabot in #285
+  - Add support for Python 3.13 by @hugovk in #277
+  - remove watchfiles from ignore directory list by @CharlesFr in
+    #249
+  - fix windows build by @samuelcolvin in #291
+  - Full CI build by default by @samuelcolvin in #290
+  - use intern! in rust code by @samuelcolvin in #292
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jun 13 15:42:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.0:

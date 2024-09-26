@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 25 04:38:49 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.1.2
+  * changes are brought over since 0.1.0+14 as a new release
+    as well as the fix-zig-spoon-hash.patch
+- Remove ./fix-zig-spoon-hash.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 13:16:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Added new prompt to support ssh askpass

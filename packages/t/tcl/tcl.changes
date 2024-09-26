@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:15:58 UTC 2024 - Reinhard Max <max@suse.com>
+
+- TCL_PACKAGE_PATH now needs to be a unix-style path separated by
+  colons rather than a Tcl list.
+
+-------------------------------------------------------------------
+Fri Sep 13 14:38:41 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Version 8.6.15:
+  * [d63061] remove private unicode 0xE000-0xF8FF from unicode
+    control group
+  * [1b8a89] TCL_PACKAGE_PATH in tclConfig.sh change from TCL list
+    to ":" separated items
+    *** POTENTIAL INCOMPATIBILITY ***
+  * [1acd17] fix compiled mapped ensembles
+  * [f23022] fix encoding koi8-u codepoint 0xB4
+  * [6811a0] speedup op unicode transformation related operations
+  * Add encodings: koi8-ru, koi8-t
+  * [7cb740] Fix Tcl_ParseArgsObjv with TCL_ARGV_GENFUNC option
+  * Hash speedup for pointer compare. Option
+    TCL_HASH_KEY_DIRECT_COMPARE for hash tables
+  * [TIP 692] Deprecate Tcl_GetAlias()
+  * [a5f4a7] Correct tcl::tm::path autoload
+  * [3c26de] Remove empty all items from tclConfig.sh path
+    variables.
+  * [87271f] Fix crash in oo+coroutine
+  * [7842f3] fix crash in oo destructors in same namespace
+  * [79474c] Fix crash in reflected channels
+  * [c6897e] Fix crash due to unchecked file descriptor size
+  * [3fc328] Fix report of non ASCII computer names on Windows
+  * [e3f4a8] Fix error message caused by interp limit
+  * [1d26e5] Source files with BOM also in safe interpreters
+  * [5fca83] Fix encoding system result for system locale
+    ISO-8859-1
+  * [0de6c1] Fix crash in [child invokehidden info frame]
+  * [74b611] Fix removal of oo variable by [info exists]
+  * [91b3a5] Make [self] work inside [$obj eval]
+  * [154f09] Tcl_NewObjectInstance() errors on namespace re-use
+        *** POTENTIAL INCOMPATIBILITY -- breaks Itcl 4.2 ***
+  * [2da1cb] Fix [$obj varname] for linked varnames
+  * Unicode version 16
+  * [7179c6] Fix byte compiled [incr] with wide int increment
+
+-------------------------------------------------------------------
 Fri Mar  1 16:52:58 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Version 8.6.14:

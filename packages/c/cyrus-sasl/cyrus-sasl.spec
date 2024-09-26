@@ -33,6 +33,8 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
+Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
+
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
@@ -175,6 +177,7 @@ fi
 %patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

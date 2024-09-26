@@ -141,4 +141,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148925</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0aa0d1c18f69ceef68f3c778c872e413</srcmd5>
+    <version>0.8.1</version>
+    <time>1727294101</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
+    <requestid>1203395</requestid>
+  </revision>
 </revisionlist>

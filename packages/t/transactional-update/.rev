@@ -1299,4 +1299,14 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
   - Allow specifying only low value with setup-kdump [bsc#1230537]</comment>
     <requestid>1201457</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>b1cdd083f069f2b61f54ee4c72650195</srcmd5>
+    <version>4.8.3</version>
+    <time>1727293878</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.8.3
+  - Check return value of register command [bsc#1230901]
+</comment>
+    <requestid>1203022</requestid>
+  </revision>
 </revisionlist>

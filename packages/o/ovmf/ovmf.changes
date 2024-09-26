@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:37:37 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- ovmf-rpmlintrc: Add wildcard to make the filter effective on 15.x
+  again
+
+-------------------------------------------------------------------
 Wed Sep 18 04:37:14 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch

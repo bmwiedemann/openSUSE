@@ -18,9 +18,7 @@
 #!BuildTag: opensuse/postgres:15
 #!BuildTag: opensuse/postgres:15-%RELEASE%
 #!BuildTag: opensuse/postgres:%%pg_minor_version%%
-#!BuildTag: opensuse/postgres:%%pg_minor_version%%-%RELEASE%
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%
-#!BuildTag: opensuse/postgres:%%pg_patch_version%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 

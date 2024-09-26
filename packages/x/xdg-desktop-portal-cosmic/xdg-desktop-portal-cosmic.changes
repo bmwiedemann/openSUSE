@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 25 00:19:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Update cosmic-files and enable gvfs feature
+  * Update translations and dependencies
+
+-------------------------------------------------------------------
 Thu Aug  8 01:01:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

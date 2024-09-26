@@ -25,4 +25,17 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192443</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0e39a3d020a08fd7fb8f7e1e58f11679</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294080</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * fix(group_button): dynamic height
+  * fix(group_button): fix height
+  * fix: zombie processes
+  * Updated translations
+</comment>
+    <requestid>1203358</requestid>
+  </revision>
 </revisionlist>

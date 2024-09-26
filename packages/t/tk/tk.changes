@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:40:01 UTC 2024 - Reinhard Max <max@suse.com>
+
+- New version 8.6.15:
+  * [47d4f2] Invoke binding scripts for events with detail field
+     NotifyInferior *** POTENTIAL INCOMPATIBILITY ***
+  * [fdc0ed] Fix segfault on [focus -force] with xvfb
+  * [ab839e] Fix [text undo] clearingdata
+  * [e30699] Fix appearence of arrows in ttk widgets
+  * Add keycodes ISO_Group_Shift and dead_hamza
+  * Improve look of the classic theme
+  * Improved focus ring for ttk
+  * [treeview identify] now point aware
+  * Fix default font detection for high DPI
+  * Fix [ttk::combobox] covering down arrow
+  * [a0241c] Fix performance of image copy
+  * [157652] Fix image read with -from option for gif/png
+  * [865af0] Throw error message on corrupt gif file
+  * [51ece3] Fix crash on [canvas dchars]
+  * [0d4879,089da4,f569b9] Improve focus ring for ttk widgets
+  * [d82fa2] [ttk::treview] painting/clipping/scrolling of last
+    item
+
+-------------------------------------------------------------------
 Fri Mar  1 17:32:13 UTC 2024 - Reinhard Max <max@suse.com>
 
 - New version 8.6.14:

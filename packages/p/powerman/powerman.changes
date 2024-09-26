@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:51:05 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.4.4:
+  * powerman: fix segfault if unspecified host reports status
+  * redfishpower: do not report errors on dependent hosts
+  * Update hostlist library to fix potential array out of bounds error.
+
+-------------------------------------------------------------------
 Thu Jul 25 20:02:41 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 2.4.3:

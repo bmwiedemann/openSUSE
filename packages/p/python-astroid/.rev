@@ -591,4 +591,23 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1192588</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>83749b14a4d6527e95bf4842381ee096</srcmd5>
+    <version>3.3.4</version>
+    <time>1727293876</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.4:
+  * Fix regression with f-string inference.
+  * Fix bug with ``manager.clear_cache()`` not fully clearing
+    cache
+  * Fix a crash from inferring empty format specs.
+  * Fix inference regression with property setters.
+  * Add annotation-only instance attributes to attrs classes to
+    fix `no-member` false positives.
+  * Restore support for soft-deprecated members of the ``typing``
+    module with python 3.13.
+  * Fix a crash introduced in 3.3.0 involving invalid format
+    strings.</comment>
+    <requestid>1202985</requestid>
+  </revision>
 </revisionlist>

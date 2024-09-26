@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:49:01 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- This release is mostly bug fixes, particularly in the PDP-11 and
+  Sigma simulators. Chaosnet support has been added to the PDP-10 and
+  PDP-11.
+  See the detailed revision histories in individual source code
+  modules for details. 
+
+- drop 0001-declare-don-t-define-uc15_memsize-in-include-file.patch,
+  upstreamed
+
+- add 0001-Fix-const-declaration.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 13:09:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package scala
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -294,25 +294,41 @@ sed -e "s/@@DATE@@/$propdate/;s/@@VER@@/%{version}/;s/@@OSGI@@/%{osgiver}/" \
   -e "s/@@ASMVER@@/%{asmver}/;s/@@ASMREL@@/%{asmrel}/" \
   -e "s/@@JLINEVER@@/%{jlinever}/;s/@@JNAVER@@/$jnaver/" \
   %{SOURCE14} > compiler/scala-buildcharacter.properties
-jar cf scala-compiler.jar.no -C compiler .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=scala-compiler.jar.no -C compiler .
 bnd wrap --properties %{SOURCE11} --output scala-compiler.jar \
     --version "%{osgiver}" scala-compiler.jar.no
 
 # Build the reflect jar
 cp -p compiler/compiler.properties reflect/reflect.properties
-jar cf scala-reflect.jar.no -C reflect .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=scala-reflect.jar.no -C reflect .
 bnd wrap --properties %{SOURCE9} --output scala-reflect.jar \
     --version "%{osgiver}" scala-reflect.jar.no
 
 # Build the library jar
 cp -p compiler/compiler.properties library/library.properties
-jar cf scala-library.jar.no -C library .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=scala-library.jar.no -C library .
 bnd wrap --properties %{SOURCE10} --output scala-library.jar \
     --version "%{osgiver}" scala-library.jar.no
 
 # Build the decoder jar
 cp -p compiler/compiler.properties scalap/scalap.properties
-jar cf scalap-%{version}.jar -C scalap .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=scalap-%{version}.jar -C scalap .
 cd -
 
 # Build the man pages

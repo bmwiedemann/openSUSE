@@ -80,7 +80,11 @@ This package contains the API documentation for %{name}.
 mkdir -p main/build/classes
 javac -d main/build/classes -source 8 -target 8 -encoding utf-8 \
   $(find main/src/main/java -name *.java | xargs)
-jar cf %{name}-%{version}.jar -C main/build/classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{name}-%{version}.jar -C main/build/classes .
 
 touch manifest.txt
 echo "Automatic-Module-Name: org.objenesis" >> manifest.txt
@@ -103,15 +107,31 @@ echo "Import-Package: sun.misc;resolution:=optional,\
 COM.newmonics.PercClassloader;resolution:=optional,\
 sun.reflect;resolution:=optional" | sed 's/.\{71\}/&\n /g' >> manifest.txt
 echo "Require-Capability: osgi.ee;filter:=\"(&(osgi.ee=JavaSE)(version=1.6))\"" >> manifest.txt
-jar ufm %{name}-%{version}.jar manifest.txt
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{name}-%{version}.jar --manifest=manifest.txt
 
 mkdir -p tck/build/classes
 javac -d tck/build/classes -source 8 -target 8 -encoding utf-8 \
   -cp %{name}-%{version}.jar \
   $(find tck/src/main/java -name *.java | xargs)
-jar cf %{name}-tck-%{version}.jar -C tck/build/classes .
-jar uf %{name}-tck-%{version}.jar -C tck/src/main/resources .
-jar ufe %{name}-tck-%{version}.jar org.objenesis.tck.Main
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{name}-tck-%{version}.jar -C tck/build/classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{name}-tck-%{version}.jar -C tck/src/main/resources .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{name}-tck-%{version}.jar --main-class=org.objenesis.tck.Main
 
 mkdir -p build/apidoc
 javadoc -d build/apidoc -source 8 -encoding utf-8 -notimestamp \

@@ -18,9 +18,7 @@
 #!BuildTag: opensuse/prometheus:%%prometheus_patch_version%%
 #!BuildTag: opensuse/prometheus:%%prometheus_patch_version%%-%RELEASE%
 #!BuildTag: opensuse/prometheus:%%prometheus_minor_version%%
-#!BuildTag: opensuse/prometheus:%%prometheus_minor_version%%-%RELEASE%
 #!BuildTag: opensuse/prometheus:%%prometheus_major_version%%
-#!BuildTag: opensuse/prometheus:%%prometheus_major_version%%-%RELEASE%
 #!BuildTag: opensuse/prometheus:latest
 
 FROM opensuse/tumbleweed:latest

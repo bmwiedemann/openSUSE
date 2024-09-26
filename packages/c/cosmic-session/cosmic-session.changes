@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:45:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Simplify is_systemd_used
+  * Fix compile-time errors with --no-default-features
+  * Builds without systemd should no longer hard depend on journald
+  * Make failure to connect to journald a warning, not a hard error
+  * start-cosmic: Set QT auto scaling env variables
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

@@ -1,0 +1,62 @@
+--- libmatthew-java-0.8.1/cgi-java.c	2024-09-25 09:53:00.423917614 +0200
++++ libmatthew-java-0.8.1/cgi-java.c	2024-09-25 09:54:41.074573838 +0200
+@@ -26,7 +26,10 @@
+  */
+ 
+ #include <jni.h>
+-#include "cgi-java.h"
++#include "cx_ath_matthew_unix_UnixServerSocket.h"
++#include "cx_ath_matthew_unix_UnixSocket.h"
++#include "cx_ath_matthew_unix_USInputStream.h"
++#include "cx_ath_matthew_unix_USOutputStream.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+--- libmatthew-java-0.8.1/Makefile	2024-09-25 09:53:00.423917614 +0200
++++ libmatthew-java-0.8.1/Makefile	2024-09-25 09:55:21.598171368 +0200
+@@ -1,7 +1,6 @@
+ JAVAC?=javac
+ JAVADOC?=javadoc
+ JAR?=jar
+-JAVAH?=javah
+ GCJ?=gcj
+ CC?=gcc
+ LD?=gcc
+@@ -13,7 +12,7 @@
+ JVERCFLAGS+=-source 1.5
+ JCFLAGS+=
+ INCLUDES+=-I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+-JAVADOCFLAGS?=-quiet -author -link http://java.sun.com/j2se/1.4.2/docs/api/
++JAVADOCFLAGS?=-quiet -author
+ 
+ LDVER?=$(shell ld -v | cut -d' ' -f1)
+ UNAME?=$(shell uname -s)
+@@ -52,7 +51,7 @@
+ .classes: $(SRC) 
+ 	mkdir -p classes
+ 	$(MAKE) .$(DEBUG)debug
+-	$(JAVAC) $(JVERCFLAGS) $(JCFLAGS) -d classes -cp classes $^
++	$(JAVAC) $(JVERCFLAGS) $(JCFLAGS) -d classes -h . -cp classes $^
+ 	touch .classes
+ clean:
+ 	rm -rf classes doc
+@@ -80,8 +79,6 @@
+ lib%.so: %.o
+ 	$(CC) $(LDFLAGS) $(LDSHAREFLAGS) -o $@ $<
+ headers: .classes
+-	$(JAVAH) -classpath classes -o $@ cx.ath.matthew.unix.UnixServerSocket cx.ath.matthew.unix.UnixSocket cx.ath.matthew.unix.USInputStream cx.ath.matthew.unix.USOutputStream
+-	$(JAVAH) -classpath classes -o $@ cx.ath.matthew.cgi.CGI
+ 
+ test.cgi: cgi-$(CGIVER).jar libcgi-java.so
+ 	$(GCJ) $(GCJFLAGS) $(GCJJNIFLAG) -L. -lcgi-java -o test.cgi --main=cx.ath.matthew.cgi.testcgi cgi-$(CGIVER).jar
+--- libmatthew-java-0.8.1/unix-java.c	2024-09-25 09:53:00.423917614 +0200
++++ libmatthew-java-0.8.1/unix-java.c	2024-09-25 09:54:41.074573838 +0200
+@@ -29,7 +29,7 @@
+ /* _GNU_SOURCE is required to use struct ucred in glibc 2.8 */
+ #define _GNU_SOURCE
+ 
+-#include "unix-java.h"
++#include "cx_ath_matthew_cgi_CGI.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>

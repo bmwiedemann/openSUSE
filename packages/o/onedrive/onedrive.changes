@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Sep 24 06:57:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.0:
+  * Important
+    - OneDrive Client for Linux v2.5.0 contains a database schema
+      change to support the additional functionality and bug fixes
+      in the v2.5.x branch. As such, on your first use of this
+      client version, the database schema will be updated and the
+      client will perform an entire re-validation of your data -
+      both locally and online which may take an extended period of
+      time.
+  * Caution
+    - OneDrive Client for Linux v2.5.0 introduces significant
+      changes and is not backwards compatible with v2.4.x. Please
+      ensure that you do not use both v2.5.0 and v2.4.x clients
+      with the same Microsoft OneDrive account simultaneously -
+      whether on the same or different systems. If you upgrade to
+      v2.5.0, all your clients must be updated to this version.
+      However, you can revert to v2.4.x at any time if necessary,
+      but do not run different versions at the same time on any
+      system.
+  * Caution
+    - The application has been completely re-written in version
+      2.5.0, leading to changes in how many features and functions
+      operate compared to version 2.4.x. OneDrive Business Shared
+      Folder Sync is one of the features that has been fully
+      revamped. If you are using this feature, it is crucial to
+      read the updated documentation thoroughly.
+    - Additionally, when using the --download-only function, this
+      no longer automatically deletes local files by default.
+      Please ensure you review the new documentation carefully to
+      understand how all application options now operate as there
+      may be both major and subtle changes to the options that you
+      currently utilise.
+  * Feature Requests
+    - Implement Feature Request: Multi-threaded
+      uploading/downloading of files FR-232
+    - Implement Feature Request: Renaming/Relocation of OneDrive
+      Business shared folders FR-1251
+    - Implement Feature Request: Support the syncing of individual
+      business shared files FR-1300
+    - Implement Feature Request: Implement application output to
+      detail upload|download failures at the end of a sync process
+      FR-2457
+    - Implement Feature Request: Log when manual Authorization is
+      required when using --auth-files FR-2475
+    - Implement Feature Request: Add cmdline parameter to display
+      (human readable) quota status FR-2359
+    - Implement Feature Request: Add capability to disable
+      'fullscan_frequency' FR-2313
+    - Implement Feature Request: Ability to set
+      --disable-download-validation from Docker environment
+      variable FR-2559
+    - Implement Feature Request: Ability to set --sync-shared-files
+      from Docker environment variable FR-2680
+    - Implement Feature Request: file sync (upload/download/delete)
+      notifications FR-2760
+  * Bug Fixes
+    - Fix Bug: Upload only not working with Business shared folders
+      BUG-2379
+    - Fix Bug: Business shared folders with same basename get
+      merged BUG-2434
+    - Fix Bug: --dry-run prevents authorization BUG-2451
+    - Fix Bug: Log timestamps lacking trailing zeros, leading to
+      poor log file output alignment BUG-2479
+    - Fix Bug: Subscription ID already exists when using webhooks
+      BUG-2501
+    - Fix Bug: Not all files being downloaded when API data
+      includes HTML ASCII Control Sequences BUG-2562
+    - Fix Bug: --display-sync-status does not work when OneNote
+      sections (.one files) are in your OneDrive. BUG-2578
+    - Fix Bug: vim backups when editing files cause edited file to
+      be deleted rather than the edited file being uploaded
+      BUG-2586
+    - Fix Bug: skip_dir does not always work as intended for all
+      directory entries BUG-2590
+    - Fix Bug: Online date being changed in download-only mode
+      BUG-2591
+    - Fix Bug: Resolve that download_only = "true" and
+      cleanup_local_files = "true" also deletes files present
+      online BUG-2612
+    - Fix Bug: Resolve that upload session are not canceled with
+      resync option BUG-2624
+    - Fix Bug: Local files should be safely backed up when the item
+      is not in sync locally to prevent data loss when they are
+      deleted online BUG-2625
+    - Fix Bug: Files with newer timestamp are not chosen as version
+      to be kept BUG-2626
+    - Fix Bug: Synced file is removed when updated on the remote
+      while being processed by onedrive BUG-2699
+    - Fix Bug: Cannot select/filter within Personal Shared Folders
+      BUG-2731
+    - Fix Bug: HTML encoding requires to add filter entries twice
+      BUG-2740
+    - Fix Bug: Uploading files using fragments stuck at 0% BUG-2747
+    - Fix Bug: Implement safeguard when sync_dir is missing and is
+      re-created data is not deleted online BUG-2755
+    - Fix Bug: Fix that --get-sharepoint-drive-id does not handle a
+      SharePoint site with more than 200 entries BUG-2771
+    - Fix Bug: Fix that 'sync_list' does not include files that
+      should be included, when specified just as *.ext_type
+      BUG-2784
+    - Fix Bug: Fix that 'sync_list' does not allow to exclude
+      '.folder_name' and include 'folder_name' BUG-2796
+  * Other Changes | Fixes
+    - Implement buffered logging so that all logging from all
+      upload & download activities are handled correctly
+    - Replace polling monitor loop with blocking wait
+    - Update how the application utilises curl to fix socket reuse
+    - Various performance enhancements with many thanks to @JC-comp
+    - Implement refactored OneDrive API logic with many thanks to
+      @JC-comp
+    - Enforcement of operational conflicts
+    - Enforcement of application configuration defaults and
+      minimums
+    - Utilise threadsafe sqlite DB access methods
+    - Various code cleanup and optimisations
+  * Documentation
+    - Most documentation has been totally overhauled
+
+-------------------------------------------------------------------
 Thu Jun 22 07:30:57 UTC 2023 - hpj@urpla.net
 
 - Update to version 2.4.25:

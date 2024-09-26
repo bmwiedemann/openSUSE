@@ -1036,4 +1036,15 @@
     <comment></comment>
     <requestid>1151695</requestid>
   </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>6af092d2ecac6aedb1eecba8bca29465</srcmd5>
+    <version>1.13.1</version>
+    <time>1727293968</time>
+    <user>anag+factory</user>
+    <comment>- added conflicts to patterns-wsl-tmpfiles as this patterns package
+  creates a symlink from /tmp/.X11-unix to /mnt/wslg/.X11-unix and
+  therefore prevents Xvnc from creating this needed directory
+  (bsc#1230755)</comment>
+    <requestid>1202922</requestid>
+  </revision>
 </revisionlist>

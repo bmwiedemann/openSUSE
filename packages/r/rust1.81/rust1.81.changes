@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 03:52:06 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Fix specification of cmake version for SLE15SP3 and SP4
+
+-------------------------------------------------------------------
 Tue Sep 10 05:44:36 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Resolve wasm32-wasi build issues

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:38:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+- Rename native-platform-0.7-Makefile to native-platform-Makefile
+  and modify to generate javadoc without hidden timestamps
+
+-------------------------------------------------------------------
 Wed Feb 21 21:33:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

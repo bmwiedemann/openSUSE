@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:10:10 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.8:
+  + GstPlay: Name the different bus
+  + GstPlay: check whether stream is seekable before seeking when
+    state change
+  + GstPlayer: Check GstPlayerSignalDispatcher type
+  + mpegtsmux: Wait for data on all pads before deciding on a best
+    pad unless timing out
+  + mpegtsmux: Fix refcounting issue when selecting the best pad
+  + uvcsink: fix caps event handling
+  + v4l2codecs: h265: Minimize memory allocation
+  + voamrwbenc: fix list of bitrates
+  + vtenc: Restart encoding session when certain errors are
+    detected
+  + wayland: Fix ABI break in WL context type name
+  + webrtcbin: Prevent crash when attempting to set answer on
+    invalid SDP
+  + wpe: fix gst-launch example
+
+-------------------------------------------------------------------
 Fri Aug 23 07:42:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.7:

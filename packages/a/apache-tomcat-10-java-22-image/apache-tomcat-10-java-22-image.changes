@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:18:47 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- use internal target image for the last layer on tumbleweed
+
+-------------------------------------------------------------------
+Mon Sep 23 12:48:02 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- revert back to internal target images for TW
+
+-------------------------------------------------------------------
+Fri Sep 20 07:29:26 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- remove major version tag
+
+-------------------------------------------------------------------
+Wed Sep 18 16:43:21 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rename flavor to openjdk
+
+-------------------------------------------------------------------
+Wed Sep 18 16:35:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use released containers as buildtarget in multistage
+
+-------------------------------------------------------------------
 Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set useobsrepositories explicitly

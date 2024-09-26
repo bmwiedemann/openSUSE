@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gear
 Version:        0.16.0
 Release:        0
 Summary:        Pure Python Async Gear Protocol Library
 License:        Apache-2.0
-Group:          Development/Languages/Python
-URL:            https://github.com/openstack-infra/gear
+URL:            https://opendev.org/opendev/gear
 Source:         https://files.pythonhosted.org/packages/source/g/gear/gear-%{version}.tar.gz
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures >= 0.3.12}
 BuildRequires:  %{python_module pbr >= 1.8.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module python-daemon >= 2.0.4}
 BuildRequires:  %{python_module python-subunit}
@@ -37,6 +36,7 @@ BuildRequires:  %{python_module testrepository >= 0.0.13}
 BuildRequires:  %{python_module testresources}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools >= 0.9.27}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-extras
@@ -59,10 +59,10 @@ sed -i '9,13d' setup.cfg
 %endif
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/geard
 
@@ -78,7 +78,8 @@ sed -i '9,13d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog AUTHORS
-%{python_sitelib}/*
+%{python_sitelib}/gear
+%{python_sitelib}/gear-%{version}.dist-info
 %python_alternative %{_bindir}/geard
 
 %changelog

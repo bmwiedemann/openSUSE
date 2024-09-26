@@ -22,11 +22,11 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.14
+Version:        8.6.15
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.2.4
+%define itclver 4.3.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL
@@ -99,7 +99,7 @@ rm -r pkgs/sqlite3.*
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %define scriptdir %_libdir/tcl
-export TCL_PACKAGE_PATH="%scriptdir %_datadir/tcl"
+export TCL_PACKAGE_PATH="%scriptdir:%_datadir/tcl"
 export TCL_LIBRARY="%scriptdir/tcl%TCL_MINOR"
 cd unix
 autoconf

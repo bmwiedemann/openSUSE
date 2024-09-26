@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:20:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added conflicts to patterns-wsl-tmpfiles to Xserver packages
+  as this patterns package creates a symlink from /tmp/.X11-unix to
+  /mnt/wslg/.X11-unix and therefore prevents Xservers from creating
+  this needed directory (bsc#1230755)
+
+-------------------------------------------------------------------
 Thu Jul 25 16:04:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added U_xorg-xserver-e89edec497ba.patch to fix incompatible pointer

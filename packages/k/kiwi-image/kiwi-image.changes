@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- remove release tags for additional_versions
+
+-------------------------------------------------------------------
 Thu Sep 19 15:50:17 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - install openSUSE-release package to avoid have-choice errors

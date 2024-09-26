@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-red-black-tree-mod
 Version:        1.22
 Release:        0

@@ -1,4 +1,3 @@
-Nur in a: .cirrus.yml.
 diff -ur a/clientserver.c b/clientserver.c
 --- a/clientserver.c	2023-11-28 17:12:41.643268046 +0100
 +++ b/clientserver.c	2023-11-28 17:25:30.476279700 +0100

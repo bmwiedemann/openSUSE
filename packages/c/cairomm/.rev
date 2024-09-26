@@ -355,4 +355,12 @@
     <comment></comment>
     <requestid>1043968</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7da905893a7fa046c8c9e8cebf2097f2</srcmd5>
+    <version>1.16.2</version>
+    <time>1727293886</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.16.2 (forwarded request 1202577 from simonlm)</comment>
+    <requestid>1203315</requestid>
+  </revision>
 </revisionlist>

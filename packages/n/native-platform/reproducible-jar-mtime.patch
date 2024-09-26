@@ -1,0 +1,15 @@
+--- native-platform-0.14/Makefile	2024-09-25 10:25:12.649998838 +0200
++++ native-platform-0.14/Makefile	2024-09-25 10:27:13.894145263 +0200
+@@ -61,10 +61,10 @@
+ 
+ jar: $(JCLASSESDIR)/%.class
+ 	mkdir -p $(JDOCDIR)
+-	(cd $(JCLASSESDIR) ; $(JAVA_HOME)/bin/jar --create --file=../../$(JAR) .)
++	(cd $(JCLASSESDIR) ; $(JAVA_HOME)/bin/jar --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../../$(JAR) .)
+ 
+ arch-jar: $(ODIR)/libnative-platform.so $(ODIR)/libnative-platform-curses.so
+-	(cd $(ODIR) ; $(JAVA_HOME)/bin/jar --create --file=../../$(JAR_ARCH) *.so)
++	(cd $(ODIR) ; $(JAVA_HOME)/bin/jar --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../../$(JAR_ARCH) *.so)
+ 
+ $(ODIR)/%.o: $(SRCDIR)/%.cpp $(IGEN)/native.h
+ 	mkdir -p $(ODIR)

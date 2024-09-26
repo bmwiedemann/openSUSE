@@ -28,6 +28,7 @@ Source0:        NanoXML-2.2.3.tar.bz2
 Source1:        %{name}-java-1.4.2-package-list
 Patch0:         %{name}-build.patch
 Patch1:         %{name}-%{version}_enum.patch
+Patch2:         %{name}-jar-mtime.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
@@ -81,6 +82,9 @@ Java documentation for %{name}.
 %setup -q -n NanoXML-%{version}
 %patch -P 0
 %patch -P 1
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 2 -p1
+%endif
 cp %{SOURCE1} package-list
 find . -name "*.jar" -delete
 
@@ -91,12 +95,11 @@ sh ./build.sh
 # jars
 install -dm 755 %{buildroot}%{_javadir}
 install -pm 644 Output/%{name}-lite.jar \
-  %{buildroot}%{_javadir}/%{name}-lite-%{version}.jar
+  %{buildroot}%{_javadir}/%{name}-lite.jar
 install -pm 644 Output/%{name}-sax.jar \
-  %{buildroot}%{_javadir}/%{name}-sax-%{version}.jar
+  %{buildroot}%{_javadir}/%{name}-sax.jar
 install -pm 644 Output/%{name}.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+  %{buildroot}%{_javadir}/%{name}.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
@@ -104,13 +107,10 @@ cp -pr Documentation/JavaDoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{name}.jar
-%{_javadir}/%{name}-sax-%{version}.jar
 %{_javadir}/%{name}-sax.jar
 
 %files lite
-%{_javadir}/%{name}-lite-%{version}.jar
 %{_javadir}/%{name}-lite.jar
 
 %files manual

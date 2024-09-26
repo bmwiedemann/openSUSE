@@ -53,10 +53,11 @@ export NOSUBDIR=a_getopt
 %{env}
 %{mkcmake} all
 
-%check
+%install
 %{env}
-export TMPDIR=/tmp
-%{mkcmake} test
+export DESTDIR=%{buildroot}
+%{mkcmake} install
+cp -a `pwd`{,.copy_for_test}
 
 # Remove unneeded files
 rm examples/Makefile examples/*.sh examples/*.in
@@ -64,10 +65,12 @@ rm examples/Makefile examples/*.sh examples/*.in
 # Fix the shebang lines
 sed -i s,"/usr/bin/env ","/usr/bin/", examples/demo*
 
-%install
+%check
 %{env}
-export DESTDIR=%{buildroot}
-%{mkcmake} install
+export TMPDIR=/tmp
+# run on a copy of files to not let tests influence the build result (boo#1227364)
+cd `pwd`.copy_for_test
+%{mkcmake} test
 
 %files
 %license doc/LICENSE

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 24 06:51:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.16.2:
+  + GtkLabel: Fix centered text in RTL
+  + Gsk:
+    - Speed up some Vulkan operations
+    - Improve startup speed by avoiding initialization of GL and
+      Vulkan in most cases
+    - Reduce critials at startup to warnings
+    - Fix a crash on startup with some Vulkan drivers
+    - Fix a big texture leak in NGL
+  + Gdk: Speed up memory format conversions
+  + Wayland: Be more careful with mimetypes during DND or
+    copy-paste
+  + Tools: builder-tool: Improve conversion of boxes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 13 14:39:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.1:

@@ -1,0 +1,31 @@
+--- NanoXML-2.2.3/build.sh	2024-09-25 09:24:32.219097035 +0200
++++ NanoXML-2.2.3/build.sh	2024-09-25 09:32:26.275640105 +0200
+@@ -8,13 +8,15 @@
+ echo "Compiling NanoXML/Lite 2.2.3"
+ mkdir "${CURDIR}/tmp/nanoxml-lite-build-$$"
+ (cd Sources/Lite; javac -deprecation -target 1.8 -source 1.8 -g:none -d "${CURDIR}/tmp/nanoxml-lite-build-$$" nanoxml/*.java) || exit 1
+-(cd ${CURDIR}/tmp/nanoxml-lite-build-$$; jar cf "$CURRDIR/Output/nanoxml-lite.jar" nanoxml/*.class) || exit 1
++(cd ${CURDIR}/tmp/nanoxml-lite-build-$$; jar --verbose --create --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++    --file="$CURRDIR/Output/nanoxml-lite.jar" nanoxml/*.class) || exit 1
+ (cd Test/Lite; javac -target 1.8 -source 1.8 -classpath ":$CURRDIR/Output/nanoxml-lite.jar:." DumpXML_Lite.java) || exit 1
+ 
+ echo "Compiling NanoXML/Java 2.2.3"
+ mkdir "${CURDIR}/tmp/nanoxml-build-$$"
+ (cd Sources/Java; javac -deprecation -target 1.8 -source 1.8 -g:none -d "${CURDIR}/tmp/nanoxml-build-$$" net/n3/nanoxml/*.java) || exit 1
+-(cd ${CURDIR}/tmp/nanoxml-build-$$; jar cf "$CURRDIR/Output/nanoxml.jar" net/n3/nanoxml/*.class) || exit 1
++(cd ${CURDIR}/tmp/nanoxml-build-$$; jar --verbose --create --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++    --file="$CURRDIR/Output/nanoxml.jar" net/n3/nanoxml/*.class) || exit 1
+ (cd Test/Java; javac -target 1.8 -source 1.8 -classpath ":$CURRDIR/Output/nanoxml.jar:." DumpXML.java) || exit 1
+ 
+ echo "Compiling NanoXML/SAX 2.2.3"
+@@ -27,7 +29,8 @@
+     do cp "${CURDIR}/tmp/nanoxml-build-$$/net/n3/nanoxml/$a" "${CURDIR}/tmp/nanoxml-sax-build-$$/net/n3/nanoxml/"
+   done
+ (cd Sources/SAX; javac -target 1.8 -source 1.8 -g:none -d "${CURDIR}/tmp/nanoxml-build-$$" net/n3/nanoxml/sax/*.java) || exit 1
+-(cd ${CURDIR}/tmp/nanoxml-build-$$; jar cf "$CURRDIR/Output/nanoxml-sax.jar" net/n3/nanoxml/sax/*.class)
++(cd ${CURDIR}/tmp/nanoxml-build-$$; jar --verbose --create --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++    --file="$CURRDIR/Output/nanoxml-sax.jar" net/n3/nanoxml/sax/*.class)
+ 
+ echo "Generating JavaDoc"
+ mkdir "$CURRDIR/Documentation/JavaDoc"
+Only in NanoXML-2.2.3: nanoxml-jar-mtime.patch

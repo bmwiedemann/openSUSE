@@ -9,4 +9,12 @@
 (https://build.opensuse.org/request/show/1188610)</comment>
     <requestid>1189587</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>62b1a6a8776863c5b5b5c45c6ef33f1d</srcmd5>
+    <version>0</version>
+    <time>1727294000</time>
+    <user>anag+factory</user>
+    <comment>- Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).</comment>
+    <requestid>1203028</requestid>
+  </revision>
 </revisionlist>

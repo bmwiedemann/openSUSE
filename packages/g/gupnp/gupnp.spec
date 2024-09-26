@@ -21,7 +21,7 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.6
+Version:        1.6.7
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
@@ -29,8 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source0:        https://download.gnome.org/sources/gupnp/1.6/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM 00514fb6.patch -- Fix compatibility with libxml2 2.12.x
-Patch0:         https://gitlab.gnome.org/GNOME/gupnp/-/commit/00514fb6.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.54.0

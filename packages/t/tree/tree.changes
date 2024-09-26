@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:44:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * Mostly a brown-paper bag release to fix the below
+    regression and add a feature I forgot to add.
+  * Fix regression in search() function that broke --fromfile
+  * Allow the -L option to accept its parameter immediately
+    (with no space) instead of requiring it be the next option
+    word.
+  * Fix issue where --gitignore does not think a pattern with
+    a singular terminal '/' (indicating it matches only
+    directories,) is a relative path.
+  * Don't emit the error 'recursive, not followed' if when
+    using -L, the depth would prevent descending anyway. This also
+    fixes up a JSON output error (missing comma) when this happens.
+  * Don't prematurely sort files/directories with
+    --from*file. (gitlab @jack6th)
+  * Various seg-faults fixed
+    - Make doubly sure that there is actually a previous path
+      entry when reading from a tabbed file.
+    - Make sure there is actually a file entity when applying
+      the link info to it when reading fromfile using --fflinks.
+    - Increase space for the path a little in listdir(), just
+      to be sure.
+  * Make sure that there is no topsort (--dirsfirst /
+    --filesfirst) if there is no basesort (-U).
+  * Make sure gittrim() function can handle a null string.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:48:56 UTC 2024 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Source tarball URL was unresolvable, update it to the correct version based on
+  https://gitlab.com/OldManProgrammer/unix-tree
+
+-------------------------------------------------------------------
 Thu Nov 30 13:41:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build with openSUSE flags

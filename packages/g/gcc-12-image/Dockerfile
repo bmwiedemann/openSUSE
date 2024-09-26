@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/bci/gcc:12
 #!BuildTag: opensuse/bci/gcc:12-%RELEASE%
 #!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%
-#!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 

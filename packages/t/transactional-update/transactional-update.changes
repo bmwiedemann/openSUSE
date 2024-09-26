@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:45:45 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.8.3
+  - Check return value of register command [bsc#1230901]
+
+-------------------------------------------------------------------
 Mon Sep 16 16:12:34 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.8.2

@@ -84,10 +84,10 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  wxGTK3-devel
 %if %{with python}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel < 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+Requires:       python-numpy < 2.0
 %endif
 %if %{with octave}
 BuildRequires:  octave-devel

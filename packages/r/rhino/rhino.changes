@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:11:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Mon Sep 16 13:46:09 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 1.7.15

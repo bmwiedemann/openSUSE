@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:05:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Wed Mar  4 10:42:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of opennlp-postag-models 1.5

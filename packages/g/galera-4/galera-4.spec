@@ -25,14 +25,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.18
+Version:        26.4.19
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
-Source:         https://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz
-Source1:        https://releases.galeracluster.com/galera-4/source/%{name}-%{version}.tar.gz.asc
+Source:         galera-%{version}.tar.xz
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
 Patch2:         fix-cmake-install.patch
@@ -49,6 +48,7 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-wsrep-provider
 Conflicts:      galera-3
 %if 0%{?suse_version} >= 1500
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %endif
@@ -99,7 +99,7 @@ replication engine see http://www.codership.com.
 This package provides the libgalera_smm library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n galera-%{version}
 
 %build
 %sysusers_generate_pre %{SOURCE2} garb garb-user.conf

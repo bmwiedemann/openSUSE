@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 24 15:22:21 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727186979.2ec2ab59:
+  * Add test for uncovered code
+  * Schedule git_clone minion job via a service
+  * Remove unused import
+  * Make use of qw() feature
+  * Automatically update git for jobs without CASEDIR/NEEDLES_DIR
+  * Fix initial cloning via fetchneedles after 313ee7a1
+  * Bump eslint from 9.10.0 to 9.11.0
+  * Bump anser from 2.1.1 to 2.2.0
+  * Bump datatables.net-bs5 from 2.1.6 to 2.1.7
+  * Fix check for worker classes when creating jobs from settings
+  * Rewrite code for creating parent dependencies in a more compact way
+  * Fix check for worker classes when creating dependencies
+  * Fix inconsistent commenting style in openqa.ini
+
+-------------------------------------------------------------------
 Mon Sep 23 09:53:04 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727085175.00b92eeb:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 24 09:42:35 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.10.1:
+  * Bugfixes:
+    - autotools: fix `--with-ca-embed` build rule
+    - cmake: ensure `CURL_USE_OPENSSL`/`USE_OPENSSL_QUIC` are set in sync
+    - cmake: fix MSH3 to appear on the feature list
+    - connect: store connection info when really done
+    - FTP: partly revert eeb7c1280742f5c8fa48a4340fc1e1a1a2c7075a
+    - http2: when uploading data from stdin, fix eos forwarding
+    - http: make max-filesize check not count ignored bodies
+    - lib: fix AF_INET6 use outside of USE_IPV6
+    - multi: check that the multi handle is valid in curl_multi_assign
+    - QUIC: on connect, keep on trying on draining server
+    - request: correctly reset the eos_sent flag
+    - setopt: remove superfluous use of ternary expressions
+    - singleuse: drop `Curl_memrchr()` for no-HTTP builds
+    - tool_cb_wrt: use "curl_response" if no file name in URL
+    - transfer: fix sendrecv() without interim poll
+    - vtls: fix `Curl_ssl_conn_config_match` doc param
+
+-------------------------------------------------------------------
 Wed Sep 11 06:36:42 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 8.10.0:

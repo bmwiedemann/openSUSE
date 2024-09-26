@@ -1,7 +1,7 @@
 #
 # spec file for package libmbim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,13 @@
 
 
 Name:           libmbim
-Version:        1.28.4
+Version:        1.30.0
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://gitlab.freedesktop.org/mobile-broadband/libmbim
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-intel-mutual-authentication-new-service-fcc-lock.patch -- intel-mutual-authentication: new service, fcc-lock
-Patch0:         0001-intel-mutual-authentication-new-service-fcc-lock.patch
-# PATCH-FIX-UPSTREAM 0002-intel-tools-new-service-trace-config.patch --intel-tools: new service, trace-config
-Patch2:         0002-intel-tools-new-service-trace-config.patch
 
 BuildRequires:  help2man
 BuildRequires:  meson

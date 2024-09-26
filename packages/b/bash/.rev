@@ -2010,4 +2010,33 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     that cannot be re-read as input.</comment>
     <requestid>1194674</requestid>
   </revision>
+  <revision rev="193" vrev="14">
+    <srcmd5>608618bccb2bfa709a8f406353601b36</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1727293893</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patches
+  * bash52-037
+    Fix the case where text to be completed from the line buffer (quoted) is
+    compared to the common prefix of the possible matches (unquoted) and the
+    quoting makes the former appear to be longer than the latter. Readline
+    assumes the match doesn't add any characters to the word and doesn't display
+    multiple matches.
+  * bash52-036
+    When readline is accumulating bytes until it reads a complete multibyte
+    character, reading a byte that makes the multibyte character invalid can
+    result in discarding the bytes in the partial character.
+  * bash52-035
+    There are systems that supply one of select or pselect, but not both.
+  * bash52-034
+    If we parse a compound assignment during an alias expansion, it's possible
+    to have the current input string popped out from underneath the parse. In
+    this case, we should not restore the input we were using when we began to
+    parse the compound assignment.
+  * bash52-033
+    A typo in the autoconf test for strtold causes false negatives for strtold
+    being available and working when compiled with gcc-14.
+- Port patch bash-3.2-printf.patch to fit change in bash52-033</comment>
+    <requestid>1203319</requestid>
+  </revision>
 </revisionlist>

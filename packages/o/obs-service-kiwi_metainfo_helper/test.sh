@@ -145,3 +145,32 @@ RELEASE=0
 BUILDTIME=2018-10-30T09:19:02.074934628Z
 ARCH=noarch
 EOF
+
+# test base container annotations
+cat >Dockerfile - <<EOF
+BASE_REFNAME=%BASE_REFNAME%
+BASE_DIGEST=%BASE_DIGEST%
+EOF
+
+mkdir -p containers
+cat >containers/annotation - <<EOF
+<annotation>
+  <repo url="obsrepositories:/"/>
+  <binaryid>491e4873e01f1a58464ea33970a08a3219062ec1bb9a4c5a1bd014d0d596beab</binaryid>
+  <registry_refname>registry.suse.com/bci/bci-base:15.6</registry_refname>
+  <registry_digest>sha256:cee5bd9e5a186dc1cca01e523f588f4c19c6c45abaa47139f7c021c289cb4c04</registry_digest>
+  <registry_fatdigest>sha256:887c83266ee8ae4a83c215974a814abbb2007f0a445a67fac7079e922e846133</registry_fatdigest>
+  <version>cee5bd9e5a186dc1cca01e523f588f4c19c6c45abaa47139f7c021c289cb4c04</version>
+  <release>0</release>
+  <binaryarch>noarch</binaryarch>
+  <hdrmd5>05cb99d4617ee49ed6419f72cc8fcf6e</hdrmd5>
+</annotation>
+EOF
+
+bash "${script}"
+
+diff -u Dockerfile - <<EOF
+BASE_REFNAME=registry.suse.com/bci/bci-base:15.6
+BASE_DIGEST=sha256:cee5bd9e5a186dc1cca01e523f588f4c19c6c45abaa47139f7c021c289cb4c04
+EOF
+rm -r containers/annotation

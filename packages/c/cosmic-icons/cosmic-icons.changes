@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:40:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * fix: reduce symbolic icon background opacity to 0
+  * chore: add settings page icons
+  * fix: symbolic icon size
+  * feat: add window-pop-out-symbolic
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

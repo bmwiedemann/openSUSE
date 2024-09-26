@@ -25,4 +25,16 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192449</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e328c4a26b6a08f7631bfd67f64d6b28</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294090</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * fix: zombie processes
+  * chore: padding fixes
+  * Updated translations
+</comment>
+    <requestid>1203364</requestid>
+  </revision>
 </revisionlist>

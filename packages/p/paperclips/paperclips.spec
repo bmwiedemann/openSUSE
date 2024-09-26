@@ -74,7 +74,11 @@ pushd src
   test ! -d classes && mf="" \
     || mf="`find classes/ -type f -name "*.mf" 2>/dev/null`"
   test -n "$mf" && jar cvfm $jarfile $mf $files \
-    || %jar cvf $jarfile $files
+    || %jar --create --verbose \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+        --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+        --file=$jarfile $files
 popd
 
 %{ant} \

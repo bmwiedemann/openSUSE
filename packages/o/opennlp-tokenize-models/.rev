@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>781450</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e5da374430d732f4946a22c121c648bf</srcmd5>
+    <version>1.5</version>
+    <time>1727293994</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
+    <requestid>1203012</requestid>
+  </revision>
 </revisionlist>

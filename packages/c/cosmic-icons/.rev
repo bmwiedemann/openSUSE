@@ -24,4 +24,17 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192448</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3e2b4ccc8f06e92a187c11c23cc4466</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294090</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * fix: reduce symbolic icon background opacity to 0
+  * chore: add settings page icons
+  * fix: symbolic icon size
+  * feat: add window-pop-out-symbolic
+</comment>
+    <requestid>1203363</requestid>
+  </revision>
 </revisionlist>

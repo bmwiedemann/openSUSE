@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 15:00:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-from-environment.patch
+    + SOURCE_DATE_EPOCH environmental variable triggers reproducible
+      use of the maven-javadoc-plugin if it is not requested already
+      using the project.build.outputTimestamp option.
+
+-------------------------------------------------------------------
 Mon Jun 10 16:33:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on plexus-metadata-generator,

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:24:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added conflicts to patterns-wsl-tmpfiles as this patterns package
+  creates a symlink from /tmp/.X11-unix to /mnt/wslg/.X11-unix and
+  therefore prevents Xwayland from creating this needed directory
+  (bsc#1230755)
+
+-------------------------------------------------------------------
 Sat Aug 24 20:14:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 24.1.2

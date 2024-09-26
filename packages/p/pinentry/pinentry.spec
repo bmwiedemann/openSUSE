@@ -24,6 +24,10 @@
 %endif
 
 %bcond_without fltk
+%bcond_without efl
+%ifarch ppc
+%bcond_with efl
+%endif
 
 Name:           pinentry%{?nsuffix}
 Version:        1.3.1
@@ -57,7 +61,7 @@ BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libsecret-1)
-%ifnarch ppc
+%if %{with efl}
 BuildRequires:  pkgconfig(efl)
 %endif
 %endif
@@ -80,6 +84,7 @@ Provides:       pinentry:%{_bindir}/pinentry-emacs
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, integrated into Emacs.
 
+%if %{with efl}
 %package -n pinentry-efl
 Summary:        Simple PIN or Passphrase Entry Dialog for EFL
 Group:          Productivity/Other
@@ -91,6 +96,7 @@ Provides:       pinentry:%{_bindir}/pinentry-efl
 %description -n pinentry-efl
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using Enlightenment Foundation Libraries.
+%endif
 
 %package -n pinentry-gtk2
 Summary:        Simple PIN or Passphrase Entry Dialog for GTK2
@@ -181,7 +187,11 @@ cd gui
 %else
         --disable-pinentry-fltk \
 %endif
+%if %{with efl}
 	--enable-pinentry-efl \
+%else
+	--disable-pinentry-efl \
+%endif
 	--without-ncurses-include-dir
 %make_build
 # build text version without libsecret (bnc#934214)
@@ -234,7 +244,7 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 
 %if "%{flavor}" == "gui"
 
-%ifnarch ppc
+%if %{with efl}
 %files -n pinentry-efl
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-efl

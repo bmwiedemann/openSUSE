@@ -31,7 +31,7 @@
 %endif
 
 Name:           powerman
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Centralized Power Control for Clusters
 License:        GPL-2.0-or-later

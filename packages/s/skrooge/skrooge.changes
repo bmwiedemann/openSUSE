@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 25 10:25:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.33:
+  * Correction bug 485366: Differnce in different
+    Report-Selections (kde#485366)
+  * Correction bug 484156: "Monthly Report" Last month grahic
+    failure (kde#484156)
+  * Correction bug 489784: Importing a QIF the account type is
+    changed (kde#489784)
+  * Correction bug 492287: Skrooge 2.32.0 freezes while opening
+    existing .skg files, but import is fast (kde#492287)
+  * Correction bug 493062: Another Problem with QIF and 
+    Character "/" (kde#493062)
+  * Correction bug: Fix mimetype of .sta file
+  * Correction bug: Remove dependency on QCA. So, old password
+    protected files are no more supported.
+  * Correction bug: Fix translation issue in "Incomes vs
+    Expenditures" dashboard widget
+
+-------------------------------------------------------------------
 Tue Apr  9 01:45:33 UTC 2024 - Garret Wassermann <gwasser@gmail.com>
 
 - Update to 2.32.0

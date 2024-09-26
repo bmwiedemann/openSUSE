@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:26:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.40:
+  + Security: Minor follow-up fixes for CVE-2024-40897
+  + Fix include header use from C++
+  + orccodemem: Assorted memory mapping fixes
+  + powerpc: fix div255w which still used the inexact substitution
+  + powerpc: Disable VSX and ISA 2.07 for Apple targets
+  + powerpc: Allow detection of ppc64 in Mac OS
+  + x86: work around old GCC versions (pre 9.0) having broken
+    xgetbv implementationsv
+  + x86: consider MSYS2/Cygwin as Windows for ABI purposes only
+  + x86: handle unnatural and misaligned array pointers
+  + x86: Fix non-C11 typedefs
+  + x86: try fixing AVX detection again by adding check for XSAVE
+  + Some compatibility fixes for Musl
+  + meson: Fix detecting XSAVE on older AppleClangv
+  + Check return values of malloc() and realloc()
+
+-------------------------------------------------------------------
 Mon Jul 22 10:52:35 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.4.39:

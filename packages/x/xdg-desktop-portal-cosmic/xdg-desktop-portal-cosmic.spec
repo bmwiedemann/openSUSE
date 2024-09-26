@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.0~alpha1
+Version:        1.0.0~alpha2
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only

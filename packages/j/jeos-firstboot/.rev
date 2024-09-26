@@ -638,4 +638,12 @@
     <comment></comment>
     <requestid>1201795</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>3850d934ecfb6e220d3ccbfe91106fd4</srcmd5>
+    <version>1.5.2</version>
+    <time>1727293969</time>
+    <user>anag+factory</user>
+    <comment>- Add dependency on cracklib for cracklib-check</comment>
+    <requestid>1202924</requestid>
+  </revision>
 </revisionlist>

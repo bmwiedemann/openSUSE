@@ -121,4 +121,12 @@
 put into adi:2</comment>
     <requestid>1179762</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>f3e78fae18e981cf4ffa53aae5dcd626</srcmd5>
+    <version>3.6.0</version>
+    <time>1727293990</time>
+    <user>anag+factory</user>
+    <comment>Reproducible build</comment>
+    <requestid>1203007</requestid>
+  </revision>
 </revisionlist>

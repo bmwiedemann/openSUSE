@@ -81,4 +81,14 @@
 - Fix build for Backports with python 3.6, bsc#1222933</comment>
     <requestid>1172148</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c8cf0097ffd2041bd1cc7f4b145b0c30</srcmd5>
+    <version>0.16.0</version>
+    <time>1727294034</time>
+    <user>anag+factory</user>
+    <comment>- Update URL.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1203239</requestid>
+  </revision>
 </revisionlist>

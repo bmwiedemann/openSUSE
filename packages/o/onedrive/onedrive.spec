@@ -1,7 +1,7 @@
 #
 # spec file for package onedrive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.25
+Version:        2.5.0
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -57,19 +57,28 @@ Summary:        OneDrive Bash completition
 Group:          Productivity/Networking/Other
 BuildRequires:  bash
 BuildRequires:  bash-completion
+BuildArch:      noarch
+Requires:       %{name} = %{version}
 Requires:       bash
 Requires:       bash-completion
 Requires:       onedrive = %{version}
+Supplements:    (%{name} and bash-completion)
 
 %package completion-zsh
 Summary:        OneDrive zsh completition
 Group:          Productivity/Networking/Other
+BuildArch:      noarch
+Requires:       %{name} = %{version}
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 
 %package completion-fish
 Summary:        OneDrive fish completition
 Group:          Productivity/Networking/Other
+BuildArch:      noarch
+Requires:       %{name} = %{version}
 Requires:       fish
+Supplements:    (%{name} and fish)
 
 %description
 OneDrive is a client for Microsoft file serving service
@@ -121,10 +130,8 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
 %license LICENSE
-%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config
-%doc README.md BusinessSharedFolders.md advanced-usage.md application-security.md
+%doc readme.md changelog.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}
@@ -133,6 +140,8 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %{_unitdir}/%{name}@.service
 %attr(0644, root, root) %{_mandir}/man1/%{name}.1*
 %{_localstatedir}/log/%{name}
+%dir %{_docdir}/%{name}
+%{_docdir}/%{name}
 
 %files completion-bash
 %{_datadir}/bash-completion/completions/

@@ -7,4 +7,18 @@
     <comment></comment>
     <requestid>1192454</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>323880e9136440a217c98a9188f5a312</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294094</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * Simplify is_systemd_used
+  * Fix compile-time errors with --no-default-features
+  * Builds without systemd should no longer hard depend on journald
+  * Make failure to connect to journald a warning, not a hard error
+  * start-cosmic: Set QT auto scaling env variables
+</comment>
+    <requestid>1203366</requestid>
+  </revision>
 </revisionlist>

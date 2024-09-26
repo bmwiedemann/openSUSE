@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 23 15:57:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.30.0:
+  + New Intel Mutual Authentication service
+  + New Intel Tools service
+  + New Google service
+  + Extended the Microsoft-defined Basic Connect Extensions service
+- Drop patches included upstream:
+  + 0001-intel-mutual-authentication-new-service-fcc-lock.patch
+  + 0002-intel-tools-new-service-trace-config.patch
+
+-------------------------------------------------------------------
 Tue Nov  7 08:53:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

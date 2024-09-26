@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicBackground
 Name:           cosmic-bg
-Version:        1.0.0~alpha1
+Version:        1.0.0~alpha2
 Release:        0
 Summary:        COSMIC service for backgrounds
 License:        MPL-2.0
@@ -31,6 +31,7 @@ BuildRequires:  just
 BuildRequires:  mold
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)

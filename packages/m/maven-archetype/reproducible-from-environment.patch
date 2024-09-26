@@ -1,0 +1,17 @@
+--- maven-archetype-3.2.1/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java	2024-09-24 16:19:57.678404688 +0200
++++ maven-archetype-3.2.1/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java	2024-09-24 16:21:47.675826578 +0200
+@@ -139,6 +139,14 @@
+ 
+         archiver.setArchiver( (JarArchiver) archivers.get( "jar" ) );
+ 
++        if ( outputTimestamp == null ||
++            outputTimestamp.length() < 1 ||
++            ( ( outputTimestamp.length() == 1 )
++                && !Character.isDigit( outputTimestamp.charAt(0) ) ) )
++        {
++            outputTimestamp = System.getenv("SOURCE_DATE_EPOCH");
++        }
++
+         // configure for Reproducible Builds based on outputTimestamp value
+         archiver.configureReproducible( outputTimestamp );
+ 

@@ -32,4 +32,15 @@
 - enable leap with patch leap-fix-libexec.patch (thanks to vyvir)</comment>
     <requestid>1192458</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>202a6bc257a6eb807727d255acfdceba</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294098</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * Update cosmic-files and enable gvfs feature
+  * Update translations and dependencies
+</comment>
+    <requestid>1203368</requestid>
+  </revision>
 </revisionlist>

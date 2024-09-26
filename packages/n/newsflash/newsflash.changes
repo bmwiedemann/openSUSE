@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 21:16:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update 3.3.5:
+  * Fix listview selection regression
+  * Fix headerbar sensitivity after 'mark all as read'
+  * local RSS: prefer summary over media description
+
+-------------------------------------------------------------------
 Mon Jul 29 21:16:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.3.4:

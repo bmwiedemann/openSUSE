@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/bci/php-apache:8
 #!BuildTag: opensuse/bci/php-apache:8-%RELEASE%
 #!BuildTag: opensuse/bci/php-apache:%%php_version%%
-#!BuildTag: opensuse/bci/php-apache:%%php_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/php-apache:latest
 
 FROM opensuse/tumbleweed:latest

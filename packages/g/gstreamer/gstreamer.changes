@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:03:47 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.8:
+  + Highlighted bugfixes:
+    - decodebin3: collection handling fixes
+    - encodebin: Fix pad removal (and smart rendering in
+      gst-editing-services)
+    - glimagesink: Fix cannot resize viewport when video size
+      changed in caps
+    - matroskamux, webmmux: fix firefox compatibility issue with
+      Opus audio streams
+    - mpegtsmux: Wait for data on all pads before deciding on a
+      best pad unless timing out
+    - splitmuxsink: Override LATENCY query to pretend to downstream
+      that we're not live
+    - video: QoS event handling improvements
+    - voamrwbenc: fix list of bitrates
+    - vtenc: Restart encoding session when certain errors are
+      detected
+    - wayland: Fix ABI break in WL context type name
+    - webrtcbin: Prevent crash when attempting to set answer on
+      invalid SDP
+    - cerbero: ship vp8/vp9 software encoders again, which went
+      missing in 1.24.7; ship transcode plugin
+    - Various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+  + gstreamer:
+    - clock: Fix unchecked overflows in linear regression code
+    - meta: Add missing include of gststructure.h
+    - pad: Check data NULL-ness when probes are stopped
+    - aggregator: Immediately return NONE from
+      simple_get_next_time() on non-TIME segments
+
+-------------------------------------------------------------------
 Fri Aug 23 07:10:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.7:

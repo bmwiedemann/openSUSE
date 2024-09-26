@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 23 13:18:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.8:
+  + pad-monitor: Fix remaining pad function data handling
+  + pad-monitor: Fix pad function data properly
+
+-------------------------------------------------------------------
 Fri Aug 23 08:05:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.7:

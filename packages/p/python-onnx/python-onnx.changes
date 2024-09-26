@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:49:15 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 1.16.2:
+  * Mitigate tarball directory traversal risks #6164
+  * Refactor safe extract method #6222
+  * Add check on dimensions in Gemm opset 6 #6217
+  * Update broken URLs #6255
+- skipped 1.16.1:
+  * Prevent crash on import after GCC 8 builds #6048
+  * Add missing shape inference check for DequantizeLinear #6080
+  * Fix input names for quantize/dequantize ONNX backend tests #6122
+  * fix a skipped shape infer code #6049
+
+-------------------------------------------------------------------
+Wed Sep 25 06:48:43 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
+
+- Changes needed to fix build errors on Leap 15.6 and Tumbleweed
+
+-------------------------------------------------------------------
 Sat Jun 22 09:33:24 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Disable tests for s390x based on IBM support without working tests (boo#1215337)

@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:52:49 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap.
+
+-------------------------------------------------------------------
+Tue Sep 24 13:46:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Fix regression causing some f-strings to not be inferred as
+    strings.
+- update to 3.3.0:
+  * We migrated ``symilar`` to argparse, from getopt, so the
+    error and help output changed (for the better).
+    We exit with 2 instead of sometime 1, sometime 2.
+    The error output is not captured by the runner anymore.
+    It's not possible to use a value for the boolean options
+    anymore (``--ignore-comments 1`` should become
+    ``--ignore-comments``).
+  * Add new `declare-non-slot` error which reports when a class
+    has a `__slots__` member and a type hint on the class is not
+    present in `__slots__`.
+  * Added `too-many-positional-arguments` to allow distinguishing
+    the configuration for too many total arguments
+    (with keyword-only params specified after `*`) from the
+    configuration for too many positional-or-keyword or
+    positional-only arguments.
+  * Add `using-exception-group-in-unsupported-version` and
+    `using-generic-type-syntax-in-unsupported-version` for uses
+    of Python 3.11+ or 3.12+ features on lower supported versions
+    provided with `--py-version`.
+  * Add `using-assignment-expression-in-unsupported-version` for
+    uses of `:=` (walrus operator) on Python versions below 3.8
+    provided with `--py-version`.
+  * Add `using-positional-only-args-in-unsupported-version` for
+    uses of positional-only args on Python versions below 3.8
+    provided with `--py-version`.
+  * Add ``unnecessary-default-type-args`` to the ``typing``
+    extension to detect the use of unnecessary default type args
+    for ``typing.Generator`` and ``typing.AsyncGenerator``.
+  * Fix computation of never-returning function: `Never` is
+    handled in addition to `NoReturn`, and priority is given to
+    the explicit `--never-returning-functions` option.
+  * Fix a false negative for `await-outside-async` when await is
+    inside Lambda.
+  * Fix a false negative for ``duplicate-argument-name`` by
+    including ``positional-only``, ``*args`` and ``**kwargs``
+    arguments in the check.
+  * Fix false negative for `multiple-statements` when multiple
+    statements are present on `else` and `finally` lines of
+    `try`.
+  * Fix false negatives when `isinstance` does not have exactly
+    two arguments.
+  * pylint now emits a `too-many-function-args` or `no-value-for-
+    parameter` appropriately for `isinstance` calls.
+  * `--enable` with `--disable=all` now produces an error, when
+    an unknown msg code is used. Internal `pylint` messages are
+    no longer affected by `--disable=all`.
+  * Impossible to compile regexes for paths in the configuration
+    or argument given to pylint won't crash anymore but raise an
+    argparse error and display the error message from
+    ``re.compile`` instead.
+  * Fix a bug where a ``tox.ini`` file with pylint configuration
+    was ignored and it exists in the current directory.
+  * ``.cfg`` and ``.ini`` files containing a ``Pylint``
+    configuration may now use a section named ``[pylint]``. This
+    enhancement impacts the scenario where these file types are
+    used as defaults when they are present and have not been
+    explicitly referred to, using the ``--rcfile`` option.
+  * Improve file discovery for directories that are not python
+    packages.
+  * Remove support for launching pylint with Python 3.8.
+  * Code that supports Python 3.8 can still be linted with the
+    ``--py-version=3.8`` setting.
+  * Add support for Python 3.13.
+  * All variables, classes, functions and file names containing
+    the word 'similar', when it was, in fact, referring to
+    'symilar' (the standalone program for the duplicate-code
+    check) were renamed to 'symilar'.
+  * Remove old-style classes (Python 2) code and remove check for
+    new-style class since everything is new-style in Python 3.
+    Updated doc for exception checker to remove reference to new
+    style class.
+- update to 3.2.7:
+  * Fixed a false positive `unreachable` for `NoReturn` coroutine
+    functions.
+  * Fix crash in refactoring checker when calling a lambda bound
+    as a method.
+  * Fix a crash in ``undefined-loop-variable`` when providing the
+    ``iterable`` argument to ``enumerate()``.
+  * Fix to address indeterminacy of error message in case a
+    module name is same as another in a separate namespace.
+- drop support-astroid-3.3.patch pytest-8.patch: upstream
+
+-------------------------------------------------------------------
 Mon Aug 12 06:12:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.6:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:42:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Use patch for filetime
+  * Update depdencies
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Aug  8 00:58:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

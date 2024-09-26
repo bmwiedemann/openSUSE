@@ -62,7 +62,11 @@ ant \
 
 %install
 # inject OSGi manifest
-jar -umf %{SOURCE2} build/lib/sac.jar
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --manifest=%{SOURCE2} --file=build/lib/sac.jar
 
 install -d -m 0755 %{buildroot}%{_javadir}
 install -p -m 0644 ./build/lib/sac.jar %{buildroot}%{_javadir}/%{name}.jar

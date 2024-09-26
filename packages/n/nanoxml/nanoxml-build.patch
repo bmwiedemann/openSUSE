@@ -54,7 +54,7 @@
  echo "Generating JavaDoc"
  mkdir "$CURRDIR/Documentation/JavaDoc"
 -javadoc -protected -sourcepath "$CURRDIR/Sources/Lite:$CURRDIR/Sources/Java:$CURRDIR/Sources/SAX"         -classpath "/tmp/nanoxml-lite-build-$$:/tmp/nanoxml-build-$$:/tmp/nanoxml-sax-build-$$:$CURRDIR/Thirdparty/SAX/sax.jar"         -d "$CURRDIR/Documentation/JavaDoc" -version -author -windowtitle "NanoXML 2.2.3"         net.n3.nanoxml         net.n3.nanoxml.sax         nanoxml >"/tmp/javadoc.log" 2>&1 || (cat /tmp/javadoc.log; exit 1) || exit 1
-+javadoc -source 1.8 -protected -sourcepath "$CURRDIR/Sources/Lite:$CURRDIR/Sources/Java:$CURRDIR/Sources/SAX"         -classpath "${CURDIR}/tmp/nanoxml-lite-build-$$:${CURDIR}/tmp/nanoxml-build-$$:${CURDIR}/tmp/nanoxml-sax-build-$$"         -d "$CURRDIR/Documentation/JavaDoc" -version -author -windowtitle "NanoXML 2.2.3" -link "$CURRDIR"        net.n3.nanoxml         net.n3.nanoxml.sax         nanoxml >"${CURDIR}/tmp/javadoc.log" 2>&1 || (cat ${CURDIR}/tmp/javadoc.log; exit 1) || exit 1
++javadoc -notimestamp -source 1.8 -protected -sourcepath "$CURRDIR/Sources/Lite:$CURRDIR/Sources/Java:$CURRDIR/Sources/SAX"         -classpath "${CURDIR}/tmp/nanoxml-lite-build-$$:${CURDIR}/tmp/nanoxml-build-$$:${CURDIR}/tmp/nanoxml-sax-build-$$"         -d "$CURRDIR/Documentation/JavaDoc" -version -author -windowtitle "NanoXML 2.2.3" -link "$CURRDIR"        net.n3.nanoxml         net.n3.nanoxml.sax         nanoxml >"${CURDIR}/tmp/javadoc.log" 2>&1 || (cat ${CURDIR}/tmp/javadoc.log; exit 1) || exit 1
  
 -rm -rf "/tmp/nanoxml-lite-build-$$"
 -rm -rf "/tmp/nanoxml-sax-build-$$"

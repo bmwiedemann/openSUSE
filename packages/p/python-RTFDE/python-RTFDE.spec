@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-RTFDE
 Version:        0.1.1
 Release:        0
@@ -24,10 +25,10 @@ Summary:        A library for extracting HTML content from RTF encapsulated HTML
 License:        LGPL-3.0-or-later
 URL:            https://github.com/seamustuohy/RTFDE
 Source:         https://files.pythonhosted.org/packages/source/R/RTFDE/RTFDE-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module lark >= 1.1.8}
 BuildRequires:  %{python_module oletools >= 0.56}

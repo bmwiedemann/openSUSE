@@ -24,14 +24,14 @@ Summary:        Java bindings for various native APIs
 License:        Apache-2.0
 URL:            https://github.com/adammurdoch/native-platform
 Source0:        https://github.com/adammurdoch/native-platform/archive/%{version}.tar.gz
-# From Debian
-Source4:        %{name}-0.7-Makefile
+Source4:        %{name}-Makefile
 # Try to load native library from /usr/lib*/native-platform
 # instead of extractDir or classpath.
 Patch0:         0001-Load-lib-from-system.patch
 # Use generate libraries without arch references
 # Add support for arm and other x64 arches
 Patch1:         0002-Use-library-name-without-arch.patch
+Patch2:         reproducible-jar-mtime.patch
 BuildRequires:  fdupes
 # build tools and deps
 BuildRequires:  gcc-c++
@@ -62,10 +62,13 @@ This package contains javadoc for %{name}.
 find .  -name "*.jar" -delete
 find .  -name "*.class" -delete
 
+cp -p %{SOURCE4} Makefile
+
 %patch -P 0 -p1
 %patch -P 1 -p1
-
-cp -p %{SOURCE4} Makefile
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 2 -p1
+%endif
 
 chmod 644 readme.md
 sed -i 's/\r//' readme.md

@@ -18,9 +18,7 @@
 #!BuildTag: opensuse/bci/python:3.12
 #!BuildTag: opensuse/bci/python:3.12-%RELEASE%
 #!BuildTag: opensuse/bci/python:3
-#!BuildTag: opensuse/bci/python:3-%RELEASE%
 #!BuildTag: opensuse/bci/python:%%py312_ver%%
-#!BuildTag: opensuse/bci/python:%%py312_ver%%-%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 

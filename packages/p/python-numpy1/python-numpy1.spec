@@ -102,7 +102,7 @@ BuildRequires:  %{python_module meson-python >= 0.15 with %python-meson-python <
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  cmake
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -233,7 +233,7 @@ EOF
 %else
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %endif
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif

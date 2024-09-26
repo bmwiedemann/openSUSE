@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:55:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Remove progress and timeout from notifications
+  * update the notification-in-progress
+  * improv: Cycle screenshots
+  * fix: app open button
+  * Fix navbar open in condensed mode by default
+  * Improve initial load times
+  * fix(header): make search button padding fixed
+  * Update dependencies
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

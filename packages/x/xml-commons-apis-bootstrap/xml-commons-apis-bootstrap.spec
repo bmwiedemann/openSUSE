@@ -124,8 +124,13 @@ function compileFiles() {
 # PARAM#1: name of jar archive (without .jar suffix)
 # uses $TARGET_DIR to move created jar to
 function mkJar() {
-  find  -name "version.txt" -or -name "*.class" -or -name "*.properties" -or -name "*.rsc" |\
-    xargs jar cfm ${1}.jar manifest.* ;
+  jar  \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=${1}.jar \
+    `find  -name "version.txt" -or -name "*.class" -or -name "*.properties" -or -name "*.rsc" |\
+    xargs` ;
   mv ${1}.jar $TARGET_DIR
 }
 #<<<

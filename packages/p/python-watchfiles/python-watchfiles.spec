@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-watchfiles
-Version:        0.22.0
+Version:        0.24.0
 Release:        0
 Summary:        File watching and code reload in python
 License:        MIT
@@ -35,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 3.0.0 with python-anyio < 4)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION test
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module pytest-mock}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 08:35:40 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- add Fix-crash-after-bt_uhid_unregister_all.patch to fix crashes
+  when devices disconnect or go to sleep
+
+-------------------------------------------------------------------
 Thu Sep 12 12:46:33 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Mark the configuration files as 'noreplace'. 

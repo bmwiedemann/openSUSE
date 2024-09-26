@@ -48,10 +48,10 @@ Check whether the contrast between two colors meet the WCAG requirements.
 %install
 %meson_install
 
+%find_lang %{name}
+
 %check
 %meson_test
-
-%find_lang %{name}
 
 %files
 %license LICENSE*

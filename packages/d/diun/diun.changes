@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Aug 13 08:55:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.28.0:
+  * Update CHANGELOG
+  * chore(deps): bump golang.org/x/sys from 0.18.0 to 0.19.0
+  * dockerfile: add tzdata package
+  * chore(deps): bump golang.org/x/mod from 0.16.0 to 0.17.0
+  * chore(deps): bump google.golang.org/grpc from 1.62.1 to 1.63.0
+  * chore(deps): bump github.com/panjf2000/ants/v2 from 2.9.0 to 2.9.1
+
+-------------------------------------------------------------------
+Tue Aug 13 08:55:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package diun: Docker Image Update Notifier is a CLI
+  application to receive notifications when a Docker image is
+  updated on a Docker registry

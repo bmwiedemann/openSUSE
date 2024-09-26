@@ -15,19 +15,17 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/apache-tomcat:10-jre21
-#!BuildTag: opensuse/apache-tomcat:10-jre21-%RELEASE%
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-jre21
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-jre21-%RELEASE%
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_minor%%-jre21
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_minor%%-jre21-%RELEASE%
+#!BuildTag: opensuse/apache-tomcat:10.1-openjdk21
+#!BuildTag: opensuse/apache-tomcat:10.1-openjdk21-%RELEASE%
+#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk21
+#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk21-%RELEASE%
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; zypper --installroot /target --gpg-auto-import-keys  -n in --no-recommends tomcat10 curl sed java-21-openjdk java-21-openjdk-headless; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
-FROM target
+FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.apache-tomcat
@@ -39,8 +37,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="10-jre21-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/apache-tomcat:10-jre21-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="10.1-openjdk21-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/apache-tomcat:10.1-openjdk21-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

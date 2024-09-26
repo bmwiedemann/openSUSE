@@ -71,4 +71,20 @@
     <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
     <requestid>1200567</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>670405e66e2f99c301db99e776b61af5</srcmd5>
+    <version>unknown</version>
+    <time>1727293985</time>
+    <user>anag+factory</user>
+    <comment>- use internal target image for the last layer on tumbleweed
+
+- revert back to internal target images for TW
+
+- remove major version tag
+
+- rename flavor to openjdk
+
+- use released containers as buildtarget in multistage</comment>
+    <requestid>1202998</requestid>
+  </revision>
 </revisionlist>

@@ -61,14 +61,18 @@ all of the vendor-specific SQL is optional.
 %build
 mkdir classes
 javac -source 1.8 -target 1.8 -d classes `find net -name '*.java' -print`
-jar cf %{name}-%{version}.jar META-INF/MANIFEST.MF *.* images -C classes . `find net -name '*.properties'`
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{name}-%{version}.jar \
+    META-INF/MANIFEST.MF *.* images -C classes . `find net -name '*.properties'`
 
 %install
 
 # JAR file
 install -d %{buildroot}%{_javadir}
-install %{name}-%{version}.jar %{buildroot}%{_javadir}/
-ln -sf %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # Man page
 install -d %{buildroot}%{_mandir}/man1

@@ -191,6 +191,7 @@ Requires:       xkeyboard-config
 # Unfortunately we need a requires here due to OBS not installing 'recommended'
 # packages :-(
 Requires:       xorg-x11-server-Xvfb
+Conflicts:      patterns-wsl-tmpfiles
 
 # PATCH-FEATURE-OPENSUSE n_xorg-x11-server-rpmmacros.patch dimstar@opensuse.org -- Provide RPM macros to require correct ABI Versions.
 Patch1:         N_default-module-path.diff
@@ -258,6 +259,7 @@ Requires:       xkeyboard-config
 Recommends:     xorg-x11-fonts-core
 Provides:       xorg-x11-Xnest
 Obsoletes:      xorg-x11-Xnest
+Conflicts:      patterns-wsl-tmpfiles
 
 %description extra
 This package contains additional Xservers (Xephyr, Xnest).
@@ -273,6 +275,7 @@ Recommends:     xorg-x11-fonts-core
 Provides:       xorg-x11-Xvfb
 Provides:       xorg-x11-server:/usr/bin/Xvfb
 Obsoletes:      xorg-x11-Xvfb
+Conflicts:      patterns-wsl-tmpfiles
 
 %description Xvfb
 This package contains the virtual Xserver Xvfb.

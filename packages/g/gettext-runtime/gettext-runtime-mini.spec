@@ -51,6 +51,8 @@ Requires:       this-is-only-for-build-envs
 # rpm-build requires gettext-tools, but we will only just be building it
 #!BuildIgnore:  gettext-tools
 %endif
+# gettext.sh requires envsubst
+Requires:       envsubst%{?with_mini:-mini} = %{version}
 Summary:        Tools for Native Language Support (NLS)
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Tools/Other
@@ -92,8 +94,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       xz
-# gettext.sh requires envsubst
-Requires:       envsubst%{?with_mini:-mini} = %{version}
 # autopoint requires find
 Requires:       findutils
 # For non-UTF encodings

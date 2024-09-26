@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 24 10:47:25 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch test-bottle-flask.patch to use Flask instead of
+  bottle for tests.
+  gh#pycurl/pycurl#838
+
+-------------------------------------------------------------------
 Thu Jun  6 15:17:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.45.3:

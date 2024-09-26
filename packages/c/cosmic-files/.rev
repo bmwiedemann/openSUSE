@@ -26,4 +26,32 @@
 - disable tests for now, as they get killed on OBS</comment>
     <requestid>1192447</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>527f8a66f5092cf5455f3ae50f193f38</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294087</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * fix: add padding to context menu divider
+  * feat: add missing file menu entries
+  * Continue operations in the background if the window is closed
+  * fix: add settings keybind
+  * Clear and close search field on nav
+  * Activate navbar selection on init and when switching tabs
+  * Sort modified descending on initial click
+  * fix icons
+  * Fix scrolling item into view when using arrow keys
+  * Fix breadcrumbs to use pointer mouse cursor
+  * Don't focus tab when opening folder in new tab
+  * Select previous directory when navigating back
+  * Add Open item location for search results, fixes
+  * Show symlinked directories as directories
+  * Enable extracting zip files to current folder
+  * removed examples from cargo.toml
+  * Display file ownership and permissions
+  * fix app name
+  * updated translations
+</comment>
+    <requestid>1203362</requestid>
+  </revision>
 </revisionlist>

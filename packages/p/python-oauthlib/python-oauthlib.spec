@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/oauthlib/oauthlib
 Source:         https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh/oauthlib/oauthlib#866 - Make UtilsTests.test_filter_params Python 3.13+ compatible
-Patch:          https://github.com/oauthlib/oauthlib/pull/866.patch#/Make-UtilsTests.test_filter_params-Python-3.13-compatible.patch
+Patch1:         https://github.com/oauthlib/oauthlib/pull/866.patch#/Make-UtilsTests.test_filter_params-Python-3.13-compatible.patch
 BuildRequires:  %{python_module PyJWT >= 2.0.0}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cryptography >= 3.0.0 }
@@ -61,13 +61,18 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 
 %prep
 %setup -q -n oauthlib-%{version}
-%patch -P0 -p1
+%patch -P 1 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

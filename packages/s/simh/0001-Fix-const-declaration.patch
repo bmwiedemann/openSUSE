@@ -1,0 +1,29 @@
+From 50c02ee8db98285ae5b3aec4879af1167c26a1d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 24 Sep 2024 15:58:13 +0200
+Subject: [PATCH] Fix const declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@gmail.com>
+---
+ PDP11/pdp11_ch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/PDP11/pdp11_ch.c b/PDP11/pdp11_ch.c
+index 5f9310e..5500f82 100644
+--- a/PDP11/pdp11_ch.c
++++ b/PDP11/pdp11_ch.c
+@@ -268,7 +268,7 @@ void ch_validate (CONST uint8 *p, int count)
+ int ch_receive (void)
+ {
+   size_t count;
+-  CONST uint8 *p;
++  const uint8 *p;
+ 
+   tmxr_poll_rx (&ch_tmxr);
+   if (tmxr_get_packet_ln (&ch_lines[0], &p, &count) != SCPE_OK) {
+-- 
+2.46.0
+

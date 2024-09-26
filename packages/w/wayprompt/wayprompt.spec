@@ -17,17 +17,15 @@
 
 
 Name:           wayprompt
-Version:        0.1.0+g14
+Version:        0.1.2
 Release:        0
 Summary:        Multi-purpose prompt tool for Wayland
 License:        GPL-3.0-only
 URL:            https://git.sr.ht/~leon_plickat/wayprompt/
 # We use OBS Tar SCM to also pull the git submodules
 # Original source tarball does not have that and is done manually
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://git.sr.ht/~leon_plickat/wayprompt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# Upstream forgot to update the hash
-Patch1:         fix-zig-spoon-hash.patch
 BuildRequires:  fdupes
 BuildRequires:  scdoc
 BuildRequires:  zig = 0.13.0
@@ -52,7 +50,7 @@ To use as a himitsu prompter, run as 'hiprompt-wayprompt'. (TODO)
 To use as a generic prompter for scripts, run as 'wayprompt-cli'.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1 -p1 -n %{name}-v%{version}
 
 %build
 %zig_build -Dpie --global-cache-dir vendor/

@@ -39,11 +39,18 @@
 %define min 0
 #%%define lname libdpdk-%%{maj}_%%{min}
 %define lname libdpdk-%{maj}
+#
+%if 0%{?sle_version} >= 150600
+%global pprefix python311
+%{?sle15_python_module_pythons}
+%else
+%global pythons python3
+%global pprefix python3
+%endif
 # Add option to build without examples
 %bcond_without examples
 # Add option to build without tools
 %bcond_without tools
-#
 Name:           dpdk%{name_tag}
 Version:        23.11.1
 Release:        0
@@ -56,6 +63,9 @@ Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Patch0:         0001-fix-cpu-compatibility.patch
 # PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pyelftools >= 0.22}
+BuildRequires:  %{pythons}
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -66,9 +76,6 @@ BuildRequires:  modutils
 BuildRequires:  patchelf
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-pyelftools >= 0.22
 BuildRequires:  rdma-core-devel
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcrypto)
@@ -165,7 +172,7 @@ as L2 and L3 forwarding.
 
 %prep
 # can't use %%{name} because of dpdk-thunderx
-%setup -n dpdk-stable-%{version}
+%setup -q -n dpdk-stable-%{version}
 %if 0%{?suse_version} > 1600
 %autopatch -p1
 %else
@@ -197,6 +204,7 @@ for flavor in %{flavors_to_build}; do
     -Dplatform="%{platform}" \
     -Dcpu_instruction_set=%{machine} \
     -Denable_kmods=true \
+    -Denable_driver_sdk=true \
     -Ddrivers_install_subdir=%{pmddir} \
     -Dkernel_dir="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor"
   %meson_build

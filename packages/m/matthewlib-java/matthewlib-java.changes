@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:18:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.8.1
+  * Commit versions of jni headers rather than relying on javah to
+    be in new versions of openjdk
+- Modified patches:
+  * libmatthew-java-0.8-jdk10.patch ->
+        libmatthew-java-0.8.1-jdk10.patch
+  * install_doc.patch
+    + rediff to changed context
+- Added patch:
+  * reproducible-jar-mtime.patch
+    + use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Wed Feb 21 14:45:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

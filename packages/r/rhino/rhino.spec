@@ -33,7 +33,7 @@ Source10:       %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -72,10 +72,6 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-Rhino%{scm_version}_Release
 cp %{SOURCE10} build.xml
-cp %{SOURCE1} pom.xml
-cp %{SOURCE2} pom-engine.xml
-cp %{SOURCE3} pom-runtime.xml
-%pom_remove_parent pom.xml pom-engine.xml pom-runtime.xml
 
 %build
 %{ant} jar javadoc
@@ -85,7 +81,11 @@ pushd examples
 export CLASSPATH=../target/%{name}-%{version}.jar
 SOURCEPATH=../src
 %javac -sourcepath ${SOURCEPATH} -source 8 -target 8 *.java
-%jar cvf ../target/%{name}-examples-%{version}.jar *.class
+%jar --create --verbose \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --file=../target/%{name}-examples-%{version}.jar *.class
 
 popd
 
@@ -104,11 +104,11 @@ install -pm 0644 target/%{name}-runtime-%{version}.jar %{buildroot}%{_javadir}/%
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a "rhino:js"
-install -pm 0644 pom-engine.xml %{buildroot}%{_mavenpomdir}/%{name}-engine.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-engine.pom
 %add_maven_depmap %{name}-engine.pom %{name}-engine.jar -f engine
-install -pm 0644 pom-runtime.xml %{buildroot}%{_mavenpomdir}/%{name}-runtime.pom
+%{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-runtime.pom
 %add_maven_depmap %{name}-runtime.pom %{name}-runtime.jar -f runtime
 
 # javadoc

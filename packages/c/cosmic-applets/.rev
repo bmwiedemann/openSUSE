@@ -26,4 +26,31 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192444</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6286423aedfd6c63f6205c4e6d88753a</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294082</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * chore(audio): add cosmic-settings button
+  * fix(audio): rtl media title overlap on controls
+  * feat: toggle popups on press down
+  * feat(bluetooth): add battery indicator to devices with battery status
+  * fix: make overflow button and status area buttons popup on press down
+  * fix(power): use correct restart icon
+  * fix(time): Update applet timezone on change
+  * fix: zombie processes
+  * feat(time): Option to show seconds on the clock
+  * fix(time): Try LC_TIME before LANG
+  * fix(time): improve display of time
+  * fix(audio): panic when pulseaudio channel is full
+  * feat: add cosmic-panel-button to multicall binary
+  * fix(audio): fix high CPU usage
+  * perf(audio): further reduce CPU usage
+  * improv: filter firefox player
+  * fix: padding, spacing, context menu style, and settings buttons
+  * fix: show empty dropdown menu when no app uses dGPU
+</comment>
+    <requestid>1203359</requestid>
+  </revision>
 </revisionlist>

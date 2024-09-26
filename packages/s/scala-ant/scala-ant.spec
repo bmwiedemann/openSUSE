@@ -47,7 +47,11 @@ mkdir -p target/classes
 
 scalac -release 8 -d target/classes -cp $(build-classpath ant scala) \
     $(find src/main -name \*.scala | xargs)
-jar -cf target/%{name}-%{version}.jar -C target/classes . -C src/main/resources .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=target/%{name}-%{version}.jar -C target/classes . -C src/main/resources .
 
 %install
 install -d -m 0755 %{buildroot}%{_javadir}/scala

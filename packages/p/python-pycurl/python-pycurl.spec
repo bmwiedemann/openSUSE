@@ -41,6 +41,8 @@ Patch2:         disable_randomly_failing_tests.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
 Patch3:         make-leap15-compat.patch
+# PATCH-FIX-UPSTREAM test-bottle-flask.patch gh#pycurl/pycurl#838
+Patch4:         test-bottle-flask.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +51,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcurl) >= 7.19.0
 BuildRequires:  pkgconfig(openssl)
 %if %{with test}
-BuildRequires:  %{python_module bottle}
+BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pytest}
 %endif

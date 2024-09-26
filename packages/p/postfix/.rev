@@ -2359,4 +2359,16 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1194618</requestid>
   </revision>
+  <revision rev="245" vrev="8">
+    <srcmd5>c22b826349dc01c4cf64e68ec8c8e1ce</srcmd5>
+    <version>3.9.0</version>
+    <time>1727293955</time>
+    <user>anag+factory</user>
+    <comment>- Missing posttls-finger in postfix though changes mention it
+  (bsc#1221501)
+
+- Missing posttls-finger in postfix though changes mention it
+  (bsc#1221501)</comment>
+    <requestid>1202891</requestid>
+  </revision>
 </revisionlist>

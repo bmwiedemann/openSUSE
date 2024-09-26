@@ -1,7 +1,7 @@
 #
 # spec file for package scala-parser-combinators
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,11 @@ rm -rf \
 
 mkdir -p target/classes
 scalac -d target/classes -release:8  $(find shared/src/main -name \*.scala && find jvm/src/main -name \*.scala | xargs)
-jar -cf target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
 mkdir -p target/apidoc
 scaladoc -d target/apidoc -release:8 $(find shared/src/main -name \*.scala && find jvm/src/main -name \*.scala | xargs)
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 25 00:32:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Update rust-toolchain to 1.80
+  * Add support for (fractional) DPI scaling
+  * Use fast_image_resize for resizing
+  * fix: clear current images and mark surfaces for redraw after slideshow
+  * fix: use scaled width and height for buffer damage
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Aug  8 00:58:41 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

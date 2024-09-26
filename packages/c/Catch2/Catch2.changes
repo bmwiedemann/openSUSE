@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 23 23:19:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.7.1:
+  - Applied the JUnit reporter's optimization from last release to
+    the SonarQube reporter
+  - Suppressed `-Wuseless-cast` in CHECK_THROWS_MATCHES
+    (gh#catchorg/Catch2#2904)
+  - Standardize exit codes for various failures
+  - Fixed out-of-bounds access when the arg parser encounters
+    single `-` as an argument (gh#catchorg/Catch2#2905)
+  - Added catch_config_prefix_messages.hpp to meson build
+    (gh#catchorg/Catch2#2903)
+  - `catch_discover_tests` now supports skipped tests
+    (gh#catchorg/Catch2#2873) 
+
+-------------------------------------------------------------------
 Mon May 13 19:14:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.6.0:

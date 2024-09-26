@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicAppLibrary
 Name:           cosmic-app-library
-Version:        1.0.0~alpha1
+Version:        1.0.0~alpha2
 Release:        0
 Summary:        A template for getting started with COSMIC
 License:        GPL-3.0-only

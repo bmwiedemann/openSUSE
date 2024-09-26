@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 19:08:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * y2038.patch
+    + Don't pass possibly negative time to File.setLastModified,
+      where it is explicitly forbidden
+    + Fixes java.lang.IllegalArgumentException: Negative time
+
+-------------------------------------------------------------------
 Thu Sep 19 05:40:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstrem version 4.10.0

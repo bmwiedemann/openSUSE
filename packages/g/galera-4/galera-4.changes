@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:12:12 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 26.4.19:
+  * WSREP_KEY_SHARED key type is being phased out since it had insufficiently
+    strict certification rules that may lead to certification test passes where it
+    should fail. WSREP_KEY_REFERENCE fixes this, and all new writesets will be
+    constructed using this. WSREP_KEY_SHARED is supported for backwards
+    compatibility.
+  * A memory leak in the commit cut action has been fixed.
+  * Network level node isolation, which can help shut down all communication with
+    the rest of the cluster to achieve a fail-silent crash. 
+  * GCS level protocol bumped, as error voting for joiner in the JOINED state was
+    broken when group-wide commit cut (implied SUCCESS vote) was not taken into
+    account when processing error vote requests from the JOINED node. 
+- Switch to mariadb fork of galera-4.
+
+-------------------------------------------------------------------
 Sat Jun 29 20:31:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.4.18:

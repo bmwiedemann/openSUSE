@@ -178,14 +178,30 @@ ant -Dmaven2.jpp.mode=true \
 # Sources
 for i in api ext jcl jdk14 reload4j nop simple; do
   mkdir -p %{name}-${i}/target
-  jar cf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/java .
-  jar uf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/java .
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=%{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
 done
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   mkdir -p ${i}/target
-  jar cf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
-  jar uf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --update --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
 done
 
 %install

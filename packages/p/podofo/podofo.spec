@@ -19,7 +19,7 @@
 %define libver 2
 %bcond_with tools
 Name:           podofo
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Tools to work with PDF files
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ URL:            http://podofo.sourceforge.net/
 Source0:        https://github.com/podofo/podofo/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE: manuals does not build
 Patch0:         podofo-tools_man.patch
+Patch1:         podofo-CVE-2019-20093.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  doxygen
 BuildRequires:  fdupes

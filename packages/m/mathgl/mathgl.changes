@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:20:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pin to numpy < 2.0 to allow builds to succeed; mathgl is not
+  numpy2 ready yet.
+
+-------------------------------------------------------------------
 Wed May  8 20:26:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable generation of docs, this has been a constant source of

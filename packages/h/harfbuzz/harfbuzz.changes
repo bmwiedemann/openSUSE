@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:26:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.0.1:
+  + Relax sanitization checks for “morx” subtables to fix broken
+    AAT shaping of macOS 15.0 version of GeezaPro.
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
+Mon Sep 23 20:10:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.0.0:
+  + Unicode 16.0.0 support.
+  + Various documentation fixes.
+  + Various build fixes.
+  + Add API to allow HarfBuzz client to set what glyph to use when
+    a Unicode Variation Selector is not supported by the font,
+    which would allow the client to customize what happens in this
+    case, by using a different font for example.
+  + Add a callback to for “hb_face_t” for getting the list of table
+    tags. This is now used to make calling
+    “hb_face_get_table_tags()” work on a faces created by
+    “hb_face_create_for_tables()” (e.g. faces returned by
+    “hb_subset_or_fail()”).
+  + CGJ and Mongolian Variation Selectors are now ignored during
+    glyph positioning, previously they would block both glyph
+    substitution and positioning across them.
+  + Support cairo script as an output format for “hb-view” command
+    line tool.
+  + Drop an optimization that would cause HarfBuzz not apply pair
+    positioning lookup subtables under certain circumstances, for
+    compatibility with other implementations that do apply these
+    subtables.
+  + Subsetting will now fail if source font has no glyphs, so
+    feeding the subsetter invalid data will not silently return an
+    empty face.
+  + If after partially instancing a font no variation data is left
+    (the instance is fully static), don’t consider this a failure.
+  + Workaround a Firefox bug in displaying SVGs generated be
+    “hb-view” command line tool under certain circumstances.
+  + Fix bug in macroman mapping for “cmap” table.
+  + Fix difference shaping output when HarfBuzz is built with with
+    “HB_NO_OT_RULESETS_FAST_PATH” enabled.
+  + Various subsetting and instancing fixes.
+  + Various fuzzing fixes.
+  + Add “with_libstdcxx” meson build option.
+
+-------------------------------------------------------------------
 Sun Jul  7 11:23:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 9.0.0:

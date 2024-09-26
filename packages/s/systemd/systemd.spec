@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    256.5
+%define systemd_version    256.6
 %define systemd_release    0
-%define archive_version    +suse.7.gbef0958f4d
+%define archive_version    +suse.8.g8a0ae4d90a
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -1182,22 +1182,8 @@ fi
 
 %postun -n udev%{?mini}
 %regenerate_initrd_post
-
-# The order of the units being restarted is important here because there's
-# currently no way to queue multiple jobs into a single transaction
-# atomically. Therefore systemctl will create 3 restart jobs that can be handled
-# by PID1 separately and if the jobs for the sockets are being handled first
-# then starting them again will fail as the service is still active hence the
-# sockets held by udevd. However if the restart job for udevd is handled first,
-# there should be enough time to queue the socket jobs before the stop job for
-# udevd is processed. Hence PID1 will automatically sort the restart jobs
-# correctly by stopping the service then the sockets and then by starting the
-# sockets and the unit.
-#
-# Note that when systemd-udevd is restarted, there will always be a short time
-# frame where no socket will be listening to the events sent by the kernel, no
-# matter if the socket unit is restarted in first or not.
-%systemd_postun_with_restart systemd-udevd.service systemd-udevd-{control,kernel}.socket
+# Restarting udev socket units along with udevd is not safe (bsc#1228809).
+%systemd_postun_with_restart systemd-udevd.service
 %systemd_postun_with_restart systemd-timesyncd.service
 %systemd_postun systemd-pstore.service
 

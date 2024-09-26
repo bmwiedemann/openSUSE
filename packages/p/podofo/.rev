@@ -402,4 +402,12 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>1194678</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e9418039ac347b8aa0d896282069fc51</srcmd5>
+    <version>0.10.4</version>
+    <time>1727293901</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203389</requestid>
+  </revision>
 </revisionlist>

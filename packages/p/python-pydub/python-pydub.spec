@@ -24,6 +24,7 @@
 %endif
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-pydub
 Version:        0.25.1
 Release:        0

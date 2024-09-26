@@ -18,9 +18,7 @@
 #!BuildTag: opensuse/pcp:6.2.1
 #!BuildTag: opensuse/pcp:6.2.1-%RELEASE%
 #!BuildTag: opensuse/pcp:6.2
-#!BuildTag: opensuse/pcp:6.2-%RELEASE%
 #!BuildTag: opensuse/pcp:6
-#!BuildTag: opensuse/pcp:6-%RELEASE%
 #!BuildTag: opensuse/pcp:latest
 
 FROM opensuse/bci/bci-init:latest

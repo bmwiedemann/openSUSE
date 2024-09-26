@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/blackbox_exporter:%%blackbox_exporter_patch_version%%
 #!BuildTag: opensuse/blackbox_exporter:%%blackbox_exporter_patch_version%%-%RELEASE%
 #!BuildTag: opensuse/blackbox_exporter:%%blackbox_exporter_minor_version%%
-#!BuildTag: opensuse/blackbox_exporter:%%blackbox_exporter_minor_version%%-%RELEASE%
 #!BuildTag: opensuse/blackbox_exporter:latest
 
 FROM opensuse/tumbleweed:latest

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 18 05:13:21 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.14.2:
+  * fixes "b4 am/shazam" sometimes pulling in bogus trailers
+  * fixes "b4 send" treating message-ids as email addresses to cc
+  * fixes "prep-perpatch-check-cmd" for custom checkpatch configurations
+  * fixes "b4 send" expanding prerequisites in incorrect order
+
+-------------------------------------------------------------------
 Wed Jul 24 05:10:07 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.14.1:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:35:30 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add dependency on cracklib for cracklib-check
+
+-------------------------------------------------------------------
 Wed Sep 18 13:03:38 UTC 2024 - jeos-internal@suse.de
 
 - Update to version 1.5.2:

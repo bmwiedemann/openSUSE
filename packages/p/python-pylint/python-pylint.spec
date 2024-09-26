@@ -16,30 +16,27 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_without tests
+%global pythons python3
+%{?sle15_python_module_pythons}
 Name:           python-pylint
-Version:        3.2.6
+Version:        3.3.1
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 URL:            https://github.com/pylint-dev/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/pylint-dev/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM pytest-8.patch gh#pylint-dev/pylint#9576
-Patch0:         pytest-8.patch
-# PATCH-FIX-UPSTREAM One commit of gh#pylint-dev/pylint#9851
-Patch1:         support-astroid-3.3.patch
 BuildRequires:  %{python_module base >= 3.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dill >= 0.3.6
+Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 3.3.0 with python-astroid < 3.4.0~dev0)
+Requires:       (python-astroid >= 3.3.4 with python-astroid < 3.4.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
@@ -48,8 +45,9 @@ Requires:       python-tomli >= 1.1.0
 Requires:       python-typing-extensions >= 4.9
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 3.3.0 with %python-astroid < 3.4.0~dev0}
-BuildRequires:  %{python_module dill >= 0.3.6}
+BuildRequires:  %{python_module astroid >= 3.3.4 with %python-astroid < 3.4.0~dev0}
+BuildRequires:  %{python_module dill >= 0.3.7}
+BuildRequires:  %{python_module enchant}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
@@ -67,7 +65,7 @@ BuildRequires:  %{python_module requests}
 # /SECTION
 %endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

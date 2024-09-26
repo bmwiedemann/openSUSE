@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 14:07:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Wed Mar  4 10:38:56 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of opennlp-tokenize-models 1.5

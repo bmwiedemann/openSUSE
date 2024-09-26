@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.36
+Version:        2.37
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -47,6 +47,7 @@ BuildRequires:  rubygem(asciidoctor)
 # Replacements of vendored C++ libraries
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  expected-lite-devel
+#BuildRequires:  libboost_program_options-devel
 BuildRequires:  optional-lite-devel
 Recommends:     %{name}-lang
 Recommends:     web_browser
@@ -73,8 +74,8 @@ sed -i 's|/bin/sh|/bin/bash|' ./doc/examples/example-bookmark-plugin.sh
 for lib in nlohmann/json nonstd/optional nonstd/expected
 do
     shortlib=$(echo ${lib} | sed 's|.*/||')
-    sed -i "s|3rd-party/${shortlib}.hpp|${lib}.hpp|" include/*.h src/*.cpp
-    rm 3rd-party/${shortlib}.hpp
+    sed -i "s|3rd-party/${shortlib}.hpp|${lib}.hpp|" include/*.h src/*.cpp rss/*.h
+    rm -f 3rd-party/${shortlib}.hpp
 done
 
 %build

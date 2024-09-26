@@ -25,4 +25,31 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192446</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae9547c43de9aa310117902c0a653da4</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294085</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * Use EGL_MESA_device_software as fallback for screen capture
+  * iced: Set default font
+  * Add wl-clipboard to tiling exceptions
+  * kms: Try to calculate dpi and scale factor
+  * Use fallback scale if size is invalid
+  * screencopy: Use buffer age of 0 for render to temporary buffer
+  * Add xdg-foreign-unstable-v2 protocol
+  * xwayland: Add descaling option
+  * added cursor_follows_focus and focus_follows_cursor
+  * Use new config from cosmic-settings-config 
+  * Add config reloading for tiling exceptions 
+  * Apply suggestions from code review
+  * wayland: Implement cursor-shape-v1
+  * input: Move actions into own module
+  * actions: Fix focus on Output-actions
+  * input: Fix passed button events
+  * fix: add wayland, x11 libraries in runtime
+  * Destroy X11Wm when we lose connect to X server
+</comment>
+    <requestid>1203361</requestid>
+  </revision>
 </revisionlist>

@@ -64,4 +64,12 @@
     <comment>4.10.0</comment>
     <requestid>1201913</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>659388b4ff67b7f1a9e88793d8392bf9</srcmd5>
+    <version>4.10.0</version>
+    <time>1727294008</time>
+    <user>anag+factory</user>
+    <comment>Fix Year 2038 bug</comment>
+    <requestid>1203351</requestid>
+  </revision>
 </revisionlist>

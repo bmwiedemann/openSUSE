@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:27:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added conflicts to patterns-wsl-tmpfiles as this patterns package
+  creates a symlink from /tmp/.X11-unix to /mnt/wslg/.X11-unix and
+  therefore prevents Xvnc from creating this needed directory
+  (bsc#1230755)
+
+-------------------------------------------------------------------
 Mon Feb 26 11:29:31 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

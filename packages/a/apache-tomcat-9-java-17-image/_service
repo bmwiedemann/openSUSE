@@ -6,10 +6,4 @@
     <param name="regex">%%tomcat_version%%</param>
     <param name="package">tomcat</param>
   </service>
-  <service name="replace_using_package_version" mode="buildtime">
-    <param name="file">Dockerfile</param>
-    <param name="regex">%%tomcat_minor%%</param>
-    <param name="package">tomcat</param>
-    <param name="parse-version">minor</param>
-  </service>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ebcdic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-ebcdic
 Version:        1.1.1
 Release:        0
@@ -38,12 +38,12 @@ Additional EBCDIC codecs for Python.
 %prep
 %setup -q -n CodecMapper-%{version}/ebcdic
 # do not use venv python
-sed -i -e 's:"${basedir}/venv/bin/python":"/usr/bin/python3":' ../build.xml
+sed -i -e 's:"${basedir}/venv/bin/python":"${PYTHON}":' ../build.xml
 
 %build
 # first generate the py files
 pushd ..
-ant ebcdic
+%python_expand ant ebcdic -DPYTHON="$python"
 popd
 %python_build
 

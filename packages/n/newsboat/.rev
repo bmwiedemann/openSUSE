@@ -1077,4 +1077,34 @@ run -osc service localrun format_spec_file to fix copyright
     <comment></comment>
     <requestid>1185838</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>00b8297533f2e7086b92df914c4fee54</srcmd5>
+    <version>2.37</version>
+    <time>1727294009</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.37:
+  Added:
+  * contrib: a bookmark plugin for Readeck
+  * Podboat: podcasts can now be &quot;missing&quot;, meaning a file was
+    downloaded by Podboat but removed by some other program
+  * contrib: completions file for fish shell
+  Changed:
+  * Sped up -x reload a little by grouping feeds on the same domain.
+    Other ways to trigger a reload already had this optimization
+  * Sped up FreshRSS integration with regard to marking articles as read
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.77.0
+  * Updated vendored library Catch2 to 3.7.0
+  Fixed:
+  * Newsboat spamming sites with requests when download-retries is
+    changed from its default of 1 and the site returns HTTP code 304 Not Modified (#2732)
+  * Crash on articles with combining Unicode characters (#2805)
+  * Crash on articles where author name ends in a closing parenthesis
+  * Cursor highlighting the wrong list entry after the terminal was resized (#2845)
+  * highlight-article with expressions that contain flags had no effect on unread articles (#2814)
+  * &quot;Searching...&quot; message not disappearing when the search is over (#2837)
+  Security:
+  * Fixed clickjacking vulnerability on newsboat.org</comment>
+    <requestid>1203054</requestid>
+  </revision>
 </revisionlist>

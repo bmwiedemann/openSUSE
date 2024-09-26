@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-theme-builder
 Version:        0.2.0b2
 Release:        0

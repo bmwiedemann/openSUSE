@@ -466,4 +466,14 @@
 - Add Source URL, see https://en.opensuse.org/SourceUrls</comment>
     <requestid>1179069</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>287e603795076ed6a9c9cb09f05b1db1</srcmd5>
+    <version>7.45.3</version>
+    <time>1727293959</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch test-bottle-flask.patch to use Flask instead of
+  bottle for tests.
+  gh#pycurl/pycurl#838</comment>
+    <requestid>1202901</requestid>
+  </revision>
 </revisionlist>

@@ -694,4 +694,12 @@ New stable rel</comment>
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1166770 from pgajdos)</comment>
     <requestid>1166785</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>31807da89f90cc5ddd757411f0d6b928</srcmd5>
+    <version>1.6.7</version>
+    <time>1727293887</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1202736 from iznogood)</comment>
+    <requestid>1203316</requestid>
+  </revision>
 </revisionlist>

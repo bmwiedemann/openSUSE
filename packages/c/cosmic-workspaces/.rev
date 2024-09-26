@@ -25,4 +25,14 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192455</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e555248070e9d2681a6bb56bde37e26</srcmd5>
+    <version>1.0.0~alpha2</version>
+    <time>1727294096</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha2:
+  * Don't panic if dmabuf global isn't present
+</comment>
+    <requestid>1203367</requestid>
+  </revision>
 </revisionlist>

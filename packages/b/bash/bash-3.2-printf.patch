@@ -24,7 +24,7 @@
 @@ -710,7 +711,12 @@ printf_builtin (list)
  
  		    p = getfloatmax ();
- 		    f = mklong (start, "L", 1);
+ 		    f = mklong (start, FLOATMAX_CONV, USE_LONG_DOUBLE);
 +
 +		    if (lce && lcl) setlocale(LC_NUMERIC, lce);
 +

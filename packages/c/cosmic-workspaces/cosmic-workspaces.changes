@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:59:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Don't panic if dmabuf global isn't present
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

@@ -112,14 +112,14 @@ BuildRequires:  libnsl-devel
 Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  /usr/bin/ed
-Requires(preun): /usr/bin/ed
+Requires(preun):/usr/bin/ed
 Requires(post): /usr/bin/ed
-Requires(postun): /usr/bin/ed
+Requires(postun):/usr/bin/ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun): perl
+Requires(preun):perl
 Requires(post): perl
-Requires(postun): perl
+Requires(postun):perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
@@ -423,6 +423,9 @@ mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
 
+# posttls-finger is built but not installed
+install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
+
 # ---------------------------------------------------------------------------
 
 %pre -f postfix.pre
@@ -506,7 +509,6 @@ fi
 %config %{_sysconfdir}/pam.d/*
 %{_fillupdir}/sysconfig.%{name}
 %{_fillupdir}/sysconfig.mail-%{name}
-%{_sbindir}/config.%{name}
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/main.cf.default
 %config(noreplace) %{_sysconfdir}/%{name}/[^mysql]*[^mysql]
@@ -543,8 +545,7 @@ fi
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
-%{_bindir}/mailq
-%{_bindir}/newaliases
+%{_bindir}/*
 %attr(0755,root,root) %{_sbindir}/sendmail
 %attr(0755,root,root) %{_sbindir}/postalias
 %attr(0755,root,root) %{_sbindir}/postcat
@@ -555,6 +556,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/postmap
 %attr(0755,root,root) %{_sbindir}/postmulti
 %attr(0755,root,root) %{_sbindir}/postsuper
+%attr(0755,root,root) %{_sbindir}/posttls-finger
 %attr(0755,root,root) %{_sbindir}/qshape
 %attr(0755,root,root) %{_sbindir}/qmqp-source
 %attr(0755,root,root) %{_sbindir}/smtp-sink

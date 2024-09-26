@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 24 17:22:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.80.2:
+  * chore(deps): update Syft to v1.13.0 (#2140)
+  * Correctly match JVM version ranges (#2114)
+  * chore: switch to yardstick validate from custom gate.py (#2090)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.9.0
+    to 0.9.1 (#2118)
+  * chore(deps): update tools to latest versions (#2123)
+  * chore(deps): bump github/codeql-action from 3.26.7 to 3.26.8
+    (#2135)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.2 to
+    7.0.5 (#2136)
+  * test: fix slice init length (#2133)
+  * fix: hash vuln db only once on load (#2054)
+  * chore: include file specifier in help (#2121)
+  * docs: add mention of file scheme (#2120)
+  * fix(apk): find secdb entries for origin packages (#1602)
+  * chore(deps): update tools to latest versions (#2115)
+  * chore(deps): bump github/codeql-action from 3.26.6 to 3.26.7
+    (#2113)
+  * chore(deps): update tools to latest versions (#2102)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.0
+    to 1.1.1 (#2109)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.1 to
+    7.0.2 (#2111)
+
+-------------------------------------------------------------------
 Thu Sep 12 05:00:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.80.1:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:26:32 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.68.1:
+  * Version v1.68.1
+  * docs: document that fusermount3 may be needed when mounting/unmounting
+  * pikpak: fix login issue where token retrieval fails
+  * s3: fix rclone ignoring static credentials when env_auth=true
+  * fs: fix setting stringArray config values from environment variables
+  * rc: fix default value of --metrics-addr
+  * fs: fix --dump filters not always appearing
+  * docs: correct notes on docker manual build
+  * build: fix docker release build - fixes #8062
+  * docs: add section for improving performance for s3
+  * onedrive: fix spurious "Couldn't decode error response: EOF" DEBUG
+  * serve docker: add missing vfs-read-chunk-streams option in docker volume driver
+  * Start v1.68.1-DEV development
+
+-------------------------------------------------------------------
 Sun Sep 08 22:35:33 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.68.0:

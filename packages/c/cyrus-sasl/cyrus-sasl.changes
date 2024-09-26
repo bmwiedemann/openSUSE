@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 19 06:36:56 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Make DIGEST-MD5 work with openssl3 ( bsc#1230111 ) 
+  RC4 is legacy provided since openSSL3 and requires explicit loading, dDisable openssl3 depricated API warnings.
+  * Add cyrus-sasl-make-digestmd5-work-ssl3.patch
+
+-------------------------------------------------------------------
 Tue May  7 08:26:51 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - GCC 14: cyrus-sasl package fails (bsc#1221863)

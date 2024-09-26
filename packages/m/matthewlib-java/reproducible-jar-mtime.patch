@@ -1,0 +1,42 @@
+--- libmatthew-java-0.8.1/Makefile	2024-09-25 09:59:53.643278466 +0200
++++ libmatthew-java-0.8.1/Makefile	2024-09-25 10:14:37.565768216 +0200
+@@ -59,9 +59,9 @@
+ 	rm -rf libmatthew-java-$(MATTVER)
+ 
+ cgi-$(CGIVER).jar: .classes
+-	(cd classes; $(JAR) cf ../$@ cx/ath/matthew/cgi/*class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ cx/ath/matthew/cgi/*class)
+ io-$(IOVER).jar: .classes
+-	(cd classes; $(JAR) cf ../$@ cx/ath/matthew/io/*class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ cx/ath/matthew/io/*class)
+ unix-$(UNIXVER).jar: .classes
+ #ifeq ($(DEBUG),enable)
+ #	echo "Class-Path: $(JARDIR)/debug-$(DEBUG).jar" > Manifest
+@@ -69,10 +69,10 @@
+ #	echo "Class-Path: " > Manifest
+ #endif
+ 	echo > Manifest
+-	(cd classes; $(JAR) cfm ../$@ ../Manifest cx/ath/matthew/unix/*class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ --manifest=../Manifest cx/ath/matthew/unix/*class)
+ 
+ hexdump-$(HEXVER).jar: .classes
+-	(cd classes; $(JAR) cf ../$@ cx/ath/matthew/utils/Hexdump.class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ cx/ath/matthew/utils/Hexdump.class)
+ 
+ %.o: %.c %.h
+ 	$(CC) $(CFLAGS) $(CSTD) $(CSHAREFLAG) $(INCLUDES) -c -o $@ $<
+@@ -92,12 +92,12 @@
+ 	make .enabledebug
+ 	#echo "Class-Path: $(JARDIR)/hexdump.jar" > Manifest
+ 	echo > Manifest
+-	(cd classes;jar cfm ../$@ ../Manifest cx/ath/matthew/debug/*.class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ --manifest=../Manifest cx/ath/matthew/debug/*.class)
+ debug-disable-$(DEBUGVER).jar: cx/ath/matthew/debug/Debug.jpp
+ 	make .disabledebug
+ 	#echo "Class-Path: $(JARDIR)/hexdump.jar" > Manifest
+ 	echo > Manifest
+-	(cd classes;jar cfm ../$@ ../Manifest cx/ath/matthew/debug/*.class)
++	(cd classes; $(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=../$@ --manifest=../Manifest cx/ath/matthew/debug/*.class)
+ .enabledebug: cx/ath/matthew/debug/Debug.jpp 
+ 	mkdir -p classes
+ 	cpp $(PPFLAGS) $(JPPFLAGS) -DDEBUGSETTING=true < cx/ath/matthew/debug/Debug.jpp > cx/ath/matthew/debug/Debug.java

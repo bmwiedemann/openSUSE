@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 25 00:25:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * chore(audio): add cosmic-settings button
+  * fix(audio): rtl media title overlap on controls
+  * feat: toggle popups on press down
+  * feat(bluetooth): add battery indicator to devices with battery status
+  * fix: make overflow button and status area buttons popup on press down
+  * fix(power): use correct restart icon
+  * fix(time): Update applet timezone on change
+  * fix: zombie processes
+  * feat(time): Option to show seconds on the clock
+  * fix(time): Try LC_TIME before LANG
+  * fix(time): improve display of time
+  * fix(audio): panic when pulseaudio channel is full
+  * feat: add cosmic-panel-button to multicall binary
+  * fix(audio): fix high CPU usage
+  * perf(audio): further reduce CPU usage
+  * improv: filter firefox player
+  * fix: padding, spacing, context menu style, and settings buttons
+  * fix: show empty dropdown menu when no app uses dGPU
+
+-------------------------------------------------------------------
 Thu Aug  8 00:55:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

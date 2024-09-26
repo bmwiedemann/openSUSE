@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 23 16:34:29 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Ensure every -build package conflicts and provides the non-build
+  counterpart (related to boo#1230628)
+
+-------------------------------------------------------------------
+Wed Aug  7 14:06:50 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Make gcc-build-fortran provide and conflict gcc-fortran.
+
+-------------------------------------------------------------------
 Thu Aug  1 10:53:40 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add libquadmath-devel package for GCC 14.

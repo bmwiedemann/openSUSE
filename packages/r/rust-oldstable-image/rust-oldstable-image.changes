@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:14:58 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rust 1.81 for stable, rust 1.80 for oldstable
+
+-------------------------------------------------------------------
 Thu Sep 12 10:37:22 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set useobsrepositories explicitly

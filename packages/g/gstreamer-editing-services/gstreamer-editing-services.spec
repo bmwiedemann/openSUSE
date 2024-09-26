@@ -20,13 +20,16 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.24.7
+Version:        1.24.8
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
+Patch0:         gstreamer-editing-services-glib2.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7556.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -149,7 +152,7 @@ a series of classes to simplify the creation of many kind of
 editing-related applications.
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p3 -n %{_name}-%{version}
 
 %build
 %meson \

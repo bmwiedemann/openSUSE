@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15_python_module_pythons}
+
 # python-nbval needed for test isn't available python39
 %define         skip_python39 1
 
-
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
+
+%{?sle15_python_module_pythons}
 Name:           python-onnx
-Version:        1.16.0
+Version:        1.16.2
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
@@ -30,10 +31,11 @@ URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module fb-re2}
 BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2.0}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pybind11-devel}
@@ -41,18 +43,27 @@ BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
+BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
+BuildRequires:  libstdc++-devel
 BuildRequires:  protobuf21-devel
 BuildRequires:  python-rpm-macros
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version
-Requires:       python-numpy
+Requires:       libstdc++-devel
+Requires:       python-numpy < 2.0
 Requires:       python-protobuf
+Requires:       python-pybind11
 Requires:       python-typing_extensions >= 3.6.2.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-onnx-devel = %{version}-%{release}
 Obsoletes:      python-onnx-devel < %{version}-%{release}
 %python_subpackages
@@ -109,13 +120,21 @@ sed -i "/^CMAKE_BUILD_DIR = / s/TOP_DIR, '.setuptools-cmake-build'/TOP_DIR, 'bui
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
+
+%if 0%{?suse_version} <= 1500
+export CC=%{_bindir}/gcc-11
+export CXX=%{_bindir}/g++-11
+%endif
+
 %{python_expand # Generate the build system using the distro macro, configuring everything to taste for every python flavor.
+
 %cmake -DONNX_USE_PROTOBUF_SHARED_LIBS:BOOL=ON \
        -DONNX_WERROR:BOOL=OFF
 # the macro stays in build/
 cd ..
 }
 # let setup.py do the cmake build call (for every flavor)
+
 %python_build
 
 %install

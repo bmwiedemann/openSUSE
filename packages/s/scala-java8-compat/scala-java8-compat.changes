@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 13:22:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible jar mtime
+
+-------------------------------------------------------------------
 Sun Oct  1 16:19:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of version 1.0.2 for scala 2.13

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 12:19:33 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run the tests on a copy of files to not let tests influence
+  the build result (boo#1227364)
+
+-------------------------------------------------------------------
 Mon Mar 11 13:29:32 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.6.1 

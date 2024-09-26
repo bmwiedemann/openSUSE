@@ -786,4 +786,41 @@ sqlite3 patch I will submit in a moment.</comment>
     ASCII strings</comment>
     <requestid>1154135</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b76a0d4e60e5ca6c110385ab09f1c88e</srcmd5>
+    <version>8.6.15</version>
+    <time>1727293983</time>
+    <user>anag+factory</user>
+    <comment>- TCL_PACKAGE_PATH now needs to be a unix-style path separated by
+  colons rather than a Tcl list.
+
+- Version 8.6.15:
+  * [d63061] remove private unicode 0xE000-0xF8FF from unicode
+    control group
+  * [1b8a89] TCL_PACKAGE_PATH in tclConfig.sh change from TCL list
+    to &quot;:&quot; separated items
+    *** POTENTIAL INCOMPATIBILITY ***
+  * [1acd17] fix compiled mapped ensembles
+  * [f23022] fix encoding koi8-u codepoint 0xB4
+  * [6811a0] speedup op unicode transformation related operations
+  * Add encodings: koi8-ru, koi8-t
+  * [7cb740] Fix Tcl_ParseArgsObjv with TCL_ARGV_GENFUNC option
+  * Hash speedup for pointer compare. Option
+    TCL_HASH_KEY_DIRECT_COMPARE for hash tables
+  * [TIP 692] Deprecate Tcl_GetAlias()
+  * [a5f4a7] Correct tcl::tm::path autoload
+  * [3c26de] Remove empty all items from tclConfig.sh path
+    variables.
+  * [87271f] Fix crash in oo+coroutine
+  * [7842f3] fix crash in oo destructors in same namespace
+  * [79474c] Fix crash in reflected channels
+  * [c6897e] Fix crash due to unchecked file descriptor size
+  * [3fc328] Fix report of non ASCII computer names on Windows
+  * [e3f4a8] Fix error message caused by interp limit
+  * [1d26e5] Source files with BOM also in safe interpreters
+  * [5fca83] Fix encoding system result for system locale
+    ISO-8859-1
+  * [0de6c1] Fix crash in [child invokehidden info frame]</comment>
+    <requestid>1202886</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,14 @@
 
 
 %bcond_without released
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64
 # Only include WebEngine for platforms that support it
 %bcond_without qtwebengine
 %else
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.32.0
+Version:        2.33.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -45,7 +45,6 @@ BuildRequires:  libofx-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlcipher-devel
-BuildRequires:  sqlite-devel
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
@@ -63,16 +62,17 @@ BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5NewStuffCore)
+BuildRequires:  cmake(KF5NewStuffQuick)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Runner)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
-#BuildRequires:  cmake(Qt5Config)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
@@ -85,8 +85,10 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Requires:       hicolor-icon-theme
+Requires:       libQt5Sql5-sqlite
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -114,7 +116,9 @@ analyze expenses.
 %kf5_makeinstall
 
 %find_lang %{name} --with-kde
+
 %{kf5_find_htmldocs}
+
 %fdupes -s %{buildroot}
 
 %{kf5_post_install}
@@ -122,8 +126,7 @@ analyze expenses.
 # E: env-script-interpreter
 sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING

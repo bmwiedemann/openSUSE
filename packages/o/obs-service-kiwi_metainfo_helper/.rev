@@ -168,4 +168,18 @@
     <comment></comment>
     <requestid>1179158</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>2fbf7815e250776964a921911ea9de44</srcmd5>
+    <version>0.6</version>
+    <time>1727293896</time>
+    <user>anag+factory</user>
+    <comment>- Small cleanups:
+  * Pass --quiet to cpio
+  * Use consistent variable name for REGISTRY_DIGEST
+  * Mention %BASE_*% behaviour for multi-stage builds explicitly
+
+- add substitutions for base image references and digests
+  (jsc#PED-8543)</comment>
+    <requestid>1203385</requestid>
+  </revision>
 </revisionlist>

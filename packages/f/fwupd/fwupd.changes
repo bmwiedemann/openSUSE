@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:47:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.25:
+  + This release fixes the following bugs:
+    - Fix checking new Synaptics MST firmware size
+    - Make another ModemManager instance ID visible for firmware
+      matching
+    - Never set a zero-length device name when matching the vendor
+      name
+    - Recalculate the device supported flag when reparenting
+      devices
+    - Reduce idle power consumption of paired logitech-hidpp
+      devices
+    - Retry the open action to fix BC901 NVMe reload
+  + This release adds support for the following hardware:
+    - Algoltek devices supporting sector erase
+    - Dell K2 dock
+    - Intel USB4 hub 5787
+    - More MediaTek scaler devices
+    - Nordic HID devices supporting DFUv1
+
+-------------------------------------------------------------------
 Thu Aug 22 06:07:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.24:

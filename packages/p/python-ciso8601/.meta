@@ -1,0 +1,5 @@
+<package name="python-ciso8601" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-ciso8601"/>
+</package>

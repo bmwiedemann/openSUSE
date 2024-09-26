@@ -100,6 +100,7 @@ Requires:       libpixman-1-0
 %endif
 Obsoletes:      xorg-x11-server-wayland < %{version}
 Provides:       xorg-x11-server-wayland = %{version}
+Conflicts:      patterns-wsl-tmpfiles
 
 %description
 This package contains the Xserver running on the Wayland Display Server.

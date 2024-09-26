@@ -130,14 +130,14 @@ Requires(pre):  shadow
 Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  ed
-Requires(preun): ed
+Requires(preun):ed
 Requires(post): ed
-Requires(postun): ed
+Requires(postun):ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun): perl
+Requires(preun):perl
 Requires(post): perl
-Requires(postun): perl
+Requires(postun):perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -400,6 +400,9 @@ rm -rf %{buildroot}/usr/lib/sysusers.d/postfix-vmail-user.conf
 rm -rf %{buildroot}/usr/share/doc/packages/postfix-doc/
 rm -rf %{buildroot}/%{_includedir}/postfix/
 
+# posttls-finger is built but not installed
+install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
+
 %if 0%{?suse_version} >= 1330
 %pre -f postfix.pre
 %else
@@ -471,7 +474,6 @@ fi
 %config %{_sysconfdir}/pam.d/*
 %{_fillupdir}/sysconfig.postfix
 %{_fillupdir}/sysconfig.mail-postfix
-%{_sbindir}/config.postfix
 %dir %{_sysconfdir}/postfix
 %config %{_sysconfdir}/postfix/main.cf.default
 %config(noreplace) %{_sysconfdir}/postfix/[^mysql]*[^mysql]
@@ -508,11 +510,11 @@ fi
 %dir %{pf_shlib_directory}/systemd
 %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/postfix.service
+%{_bindir}/*
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
-%{_bindir}/mailq
-%{_bindir}/newaliases
+%attr(0755,root,root) %{_sbindir}/config.postfix
 %attr(0755,root,root) %{_sbindir}/sendmail
 %attr(0755,root,root) %{_sbindir}/postalias
 %attr(0755,root,root) %{_sbindir}/postcat
@@ -523,6 +525,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/postmap
 %attr(0755,root,root) %{_sbindir}/postmulti
 %attr(0755,root,root) %{_sbindir}/postsuper
+%attr(0755,root,root) %{_sbindir}/posttls-finger
 %attr(0755,root,root) %{_sbindir}/qshape
 %attr(0755,root,root) %{_sbindir}/qmqp-source
 %attr(0755,root,root) %{_sbindir}/smtp-sink

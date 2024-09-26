@@ -31,6 +31,8 @@ Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/jeos-firstboot
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  systemd-rpm-macros
+# Provides cracklib-check used for password quality checking during user creation
+Requires:       cracklib
 Requires:       dialog
 Requires:       iproute2
 Requires:       live-langset-data

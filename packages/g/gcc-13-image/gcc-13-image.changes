@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- remove release tags for additional_versions
+
+-------------------------------------------------------------------
 Mon Sep 23 07:17:50 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - use full version in container labels

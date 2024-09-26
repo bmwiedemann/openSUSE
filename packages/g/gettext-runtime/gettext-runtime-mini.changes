@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 12 10:43:43 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Move envsubst requires into main package, gettext.sh is not part of
+  gettext-tools, but gettext-runtime (fixes boo#1227070)
+
+-------------------------------------------------------------------
 Tue Jul 16 08:42:20 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %autosetup

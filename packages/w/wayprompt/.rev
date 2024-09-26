@@ -32,4 +32,16 @@
 </comment>
     <requestid>1190643</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e704b50073df2c0ac54971817eb4fafc</srcmd5>
+    <version>0.1.2</version>
+    <time>1727294035</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.2
+  * changes are brought over since 0.1.0+14 as a new release
+    as well as the fix-zig-spoon-hash.patch
+- Remove ./fix-zig-spoon-hash.patch
+</comment>
+    <requestid>1203241</requestid>
+  </revision>
 </revisionlist>

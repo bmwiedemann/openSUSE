@@ -30,7 +30,7 @@ License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/jinja2-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - gh/pallets/jinja#1960 and gh/pallets/jinja#1977 - Fix FTBFS with Python 3.13
-Patch:          https://src.fedoraproject.org/rpms/python-jinja2/raw/rawhide/f/python3.13.patch#/fix-ftbfs-with-python313.patch
+Patch1:         https://src.fedoraproject.org/rpms/python-jinja2/raw/rawhide/f/python3.13.patch#/fix-ftbfs-with-python313.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
@@ -56,13 +56,18 @@ sandboxed environment.
 
 %prep
 %setup -q -n jinja2-%{version}
-%patch -P0 -p1
+%patch -P 1 -p1
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,0 +1,128 @@
+From 5e90f3eff787f81b935500e2973eb9329b473d1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim-Philipp=20M=C3=BCller?= <tim@centricular.com>
+Date: Tue, 20 Aug 2024 02:09:39 +0100
+Subject: [PATCH] gst-editing-services: use g_sort_array() instead of
+ deprecated g_qsort_with_data()
+
+Fixes compiler warnings with the latest GLib versions.
+
+See https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4127
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7384>
+---
+ .../gst-editing-services/ges/ges-container.c  |  4 +-
+ .../ges/ges-timeline-element.c                |  4 +-
+ .../ges/glib-compat-private.h                 | 56 +++++++++++++++++++
+ 3 files changed, 62 insertions(+), 2 deletions(-)
+ create mode 100644 subprojects/gst-editing-services/ges/glib-compat-private.h
+
+diff --git a/subprojects/gst-editing-services/ges/ges-container.c b/subprojects/gst-editing-services/ges/ges-container.c
+index 45a7b4f978d7..2b7707436e42 100644
+--- a/subprojects/gst-editing-services/ges/ges-container.c
++++ b/subprojects/gst-editing-services/ges/ges-container.c
+@@ -41,6 +41,8 @@
+ #include "ges.h"
+ #include "ges-internal.h"
+ 
++#include "glib-compat-private.h"
++
+ #include <string.h>
+ 
+ GST_DEBUG_CATEGORY_STATIC (ges_container_debug);
+@@ -1022,7 +1024,7 @@ ges_container_group (GList * containers)
+   /* FIXME: how can user sub-classes interact with this if
+    * ->grouping_priority is private? */
+   children_types = g_type_children (GES_TYPE_CONTAINER, &n_children);
+-  g_qsort_with_data (children_types, n_children, sizeof (GType),
++  g_sort_array (children_types, n_children, sizeof (GType),
+       (GCompareDataFunc) compare_grouping_prio, NULL);
+ 
+   for (i = 0; i < n_children; i++) {
+diff --git a/subprojects/gst-editing-services/ges/ges-timeline-element.c b/subprojects/gst-editing-services/ges/ges-timeline-element.c
+index c5136f58d4e9..53a76a7fdaaf 100644
+--- a/subprojects/gst-editing-services/ges/ges-timeline-element.c
++++ b/subprojects/gst-editing-services/ges/ges-timeline-element.c
+@@ -120,6 +120,8 @@
+ #include <string.h>
+ #include <gobject/gvaluecollector.h>
+ 
++#include "glib-compat-private.h"
++
+ /* maps type name quark => count */
+ static GData *object_name_counts = NULL;
+ 
+@@ -2248,7 +2250,7 @@ ges_timeline_element_list_children_properties (GESTimelineElement * self,
+   }
+ 
+   ret = class->list_children_properties (self, n_properties);
+-  g_qsort_with_data (ret, *n_properties, sizeof (GParamSpec *),
++  g_sort_array (ret, *n_properties, sizeof (GParamSpec *),
+       (GCompareDataFunc) compare_gparamspec, NULL);
+ 
+   return ret;
+diff --git a/subprojects/gst-editing-services/ges/glib-compat-private.h b/subprojects/gst-editing-services/ges/glib-compat-private.h
+new file mode 100644
+index 000000000000..0e433156d9ea
+--- /dev/null
++++ b/subprojects/gst-editing-services/ges/glib-compat-private.h
+@@ -0,0 +1,56 @@
++/*
++ * glib-compat.c
++ * Functions copied from glib 2.10
++ *
++ * Copyright 2005 David Schleef <ds@schleef.org>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Library General Public License for more details.
++ *
++ * You should have received a copy of the GNU Library General Public
++ * License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
++ * Boston, MA 02110-1301, USA.
++ */
++
++#ifndef __GLIB_COMPAT_PRIVATE_H__
++#define __GLIB_COMPAT_PRIVATE_H__
++
++#include <glib.h>
++
++G_BEGIN_DECLS
++
++/* copies */
++
++/* adaptations */
++
++#if !GLIB_CHECK_VERSION(2, 81, 1)
++#define g_sort_array(a,n,s,f,udata) gst_g_sort_array(a,n,s,f,udata)
++
++// Don't need to maintain ABI compat here (n_elements), since we never pass
++// the function as pointer but always call it directly ourselves.
++static inline void
++gst_g_sort_array (const void       *array,
++                  gssize            n_elements,
++                  size_t            element_size,
++                  GCompareDataFunc  compare_func,
++                  void             *user_data)
++{
++  if (n_elements >= 0 && n_elements <= G_MAXINT) {
++    g_qsort_with_data (array, n_elements, element_size, compare_func, user_data);
++  } else {
++    g_abort ();
++  }
++}
++#endif
++
++G_END_DECLS
++
++#endif
+-- 
+GitLab
+
+

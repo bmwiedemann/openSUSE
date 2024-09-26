@@ -622,4 +622,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186212</requestid>
   </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>b8c7c7e9b8aafa6beec45c331948f537</srcmd5>
+    <version>6.6</version>
+    <time>1727293984</time>
+    <user>anag+factory</user>
+    <comment>- For the correct generation of pkgIndex.tcl it is required that
+  libbrlapi_tcl can runtime-link to libbrlapi at install time.
+  Set LD_LIBRARY_PATH to allow that. (forwarded request 1203523 from rmax)</comment>
+    <requestid>1203552</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
-Version:        8.6.14
+Version:        8.6.15
 Release:        0
 %define         rrc %{nil}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bottle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bottle
-Version:        0.12.25
+Version:        0.13.1
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
 URL:            https://bottlepy.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bottle/bottle-%{version}.tar.gz
 Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
-# PATCH-FIX-UPSTREAM gh#bottlepy/bottle#ca6762c559c5e71e0dff71dc97eb4c6b3ed9bbcd
-Patch0:         update-module-loader.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

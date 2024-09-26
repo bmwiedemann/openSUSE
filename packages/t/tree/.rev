@@ -280,4 +280,39 @@
     <comment></comment>
     <requestid>1130183</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7b18daa37ba6cc884156c155a3c22303</srcmd5>
+    <version>2.1.3</version>
+    <time>1727293894</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.3:
+  * Mostly a brown-paper bag release to fix the below
+    regression and add a feature I forgot to add.
+  * Fix regression in search() function that broke --fromfile
+  * Allow the -L option to accept its parameter immediately
+    (with no space) instead of requiring it be the next option
+    word.
+  * Fix issue where --gitignore does not think a pattern with
+    a singular terminal '/' (indicating it matches only
+    directories,) is a relative path.
+  * Don't emit the error 'recursive, not followed' if when
+    using -L, the depth would prevent descending anyway. This also
+    fixes up a JSON output error (missing comma) when this happens.
+  * Don't prematurely sort files/directories with
+    --from*file. (gitlab @jack6th)
+  * Various seg-faults fixed
+    - Make doubly sure that there is actually a previous path
+      entry when reading from a tabbed file.
+    - Make sure there is actually a file entity when applying
+      the link info to it when reading fromfile using --fflinks.
+    - Increase space for the path a little in listdir(), just
+      to be sure.
+  * Make sure that there is no topsort (--dirsfirst /
+    --filesfirst) if there is no basesort (-U).
+  * Make sure gittrim() function can handle a null string.
+
+- Source tarball URL was unresolvable, update it to the correct version based on
+  https://gitlab.com/OldManProgrammer/unix-tree</comment>
+    <requestid>1203372</requestid>
+  </revision>
 </revisionlist>

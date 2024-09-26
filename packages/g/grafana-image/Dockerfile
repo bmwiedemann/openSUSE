@@ -18,9 +18,7 @@
 #!BuildTag: opensuse/grafana:%%grafana_patch_version%%
 #!BuildTag: opensuse/grafana:%%grafana_patch_version%%-%RELEASE%
 #!BuildTag: opensuse/grafana:%%grafana_minor_version%%
-#!BuildTag: opensuse/grafana:%%grafana_minor_version%%-%RELEASE%
 #!BuildTag: opensuse/grafana:%%grafana_major_version%%
-#!BuildTag: opensuse/grafana:%%grafana_major_version%%-%RELEASE%
 #!BuildTag: opensuse/grafana:latest
 
 FROM opensuse/tumbleweed:latest

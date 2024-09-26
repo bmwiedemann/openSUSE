@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 24 22:09:22 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727108423.e2e59c5:
+  * Use double quotes for URLs
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * video_stream: fix setting EDID when using ffmpeg and explicit FPS
+  * Exclude sub packages with many additional dependencies on SLE
+  * Remove obsolete support for "script_run" with "die_on_timeout=0"
+  * Fix pod for backend_get_wait_still_screen_on_here_doc_input
+
+-------------------------------------------------------------------
 Sat Sep 21 15:59:40 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1726934371.91a005a:

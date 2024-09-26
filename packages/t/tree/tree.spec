@@ -1,7 +1,7 @@
 #
 # spec file for package tree
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           tree
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        File listing as a tree
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://mama.indstate.edu/users/ice/tree/
-Source0:        https://mama.indstate.edu/users/ice/tree/src/%{name}-%{version}.tgz
+URL:            https://oldmanprogrammer.net/tar/tree/
+Source0:        https://oldmanprogrammer.net/tar/tree/%{name}-%{version}.tgz
 
 %description
 Tree is a recursive directory listing command that produces a depth

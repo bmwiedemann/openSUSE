@@ -62,6 +62,8 @@ Patch14:        hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
 Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 # bsc#1013712 CVE-2016-9798
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
+# Fix crash when devices disconnect or go to sleep. Upstream issue 952
+Patch17:        Fix-crash-after-bt_uhid_unregister_all.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)

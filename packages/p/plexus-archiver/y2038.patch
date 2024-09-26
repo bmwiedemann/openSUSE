@@ -1,0 +1,38 @@
+--- plexus-archiver-4.10.0/src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java	2024-09-25 07:27:00.833967276 +0200
++++ plexus-archiver-4.10.0/src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java	2024-09-25 08:30:07.036715483 +0200
+@@ -325,7 +325,7 @@
+                 Files.copy(compressedInputStream, targetFileName.toPath(), REPLACE_EXISTING);
+             }
+ 
+-            targetFileName.setLastModified(entryDate.getTime());
++            setTargetLastModified(targetFileName, entryDate.getTime());
+ 
+             if (!isIgnorePermissions() && mode != null && !isDirectory) {
+                 ArchiveEntryUtils.chmod(targetFileName, mode);
+@@ -391,6 +391,10 @@
+         return isOverwrite() || fileOnDiskIsOlderThanEntry;
+     }
+ 
++    protected void setTargetLastModified(File target, long millis) {
++        target.setLastModified(millis);
++    }
++
+     private String normalizedFileSeparator(String pathOrEntry) {
+         return pathOrEntry.replace("/", File.separator);
+     }
+--- plexus-archiver-4.10.0/src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java	2024-09-25 07:27:01.097302238 +0200
++++ plexus-archiver-4.10.0/src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java	2024-09-25 08:21:11.862993093 +0200
+@@ -193,4 +193,13 @@
+                     "Error while expanding " + getSourceFile().getAbsolutePath(), ioe);
+         }
+     }
++
++    @Override
++    protected void setTargetLastModified(File target, long millis) {
++        if (millis >= 0)
++        {
++            target.setLastModified( millis );
++        }
++    }
++
+ }

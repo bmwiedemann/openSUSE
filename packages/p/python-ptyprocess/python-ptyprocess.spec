@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pexpect/ptyprocess
 Source:         https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - gh/pexpect/ptyprocess#75 - Remove unittest.makeSuite, gone from Python 3.13
-Patch:          https://github.com/pexpect/ptyprocess/pull/75.patch#/remove-old-unittest-functions.patch
+Patch1:         https://github.com/pexpect/ptyprocess/pull/75.patch#/remove-old-unittest-functions.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,13 +46,18 @@ If you need to automate these things, running the process in a pseudo terminal
 
 %prep
 %setup -q -n ptyprocess-%{version}
-%patch -P0 -p1
+%patch -P 1 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

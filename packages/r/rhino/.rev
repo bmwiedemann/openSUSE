@@ -299,4 +299,12 @@
     <comment></comment>
     <requestid>1201438</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>3968beb2d9f430e9c1ce2740932d4018</srcmd5>
+    <version>1.7.15</version>
+    <time>1727293877</time>
+    <user>anag+factory</user>
+    <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
+    <requestid>1203014</requestid>
+  </revision>
 </revisionlist>

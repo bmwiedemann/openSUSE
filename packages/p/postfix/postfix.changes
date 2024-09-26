@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 24 08:29:19 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Missing posttls-finger in postfix though changes mention it
+  (bsc#1221501) 
+
+-------------------------------------------------------------------
 Fri Aug  9 08:48:07 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove rcpostfix symlink [jsc#PED-266] 

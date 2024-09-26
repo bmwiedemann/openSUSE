@@ -664,4 +664,38 @@
     <comment></comment>
     <requestid>1199179</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>ce70576c615c7d2f52affd38bc9becba</srcmd5>
+    <version>23.11.1</version>
+    <time>1727293979</time>
+    <user>anag+factory</user>
+    <comment>- Enable (disabled by default) installation of headers needed
+  to build drivers.
+
+- Use python macros from build config
+
+    * preamble
+    * 0001-fix-cpu-compatibility.patch
+        0002-SLE15-SP3-compatibility-patch-for-kni.patch
+  manually (bsc#1200620)
+- rename
+- Add patch to resolve build error reported in Staging:E project
+  * https://doc.dpdk.org/guides/rel_notes/release_19_11.html#new-features
+- Changed to multibuild (bsc#1151455).
+    [-0002-kni-define-HAVE_VF_VLAN_PROTO-for-SLES12SP3.patch
+    -0003-kni-define-HAVE_TRANS_START_HELPER-for-SLES12SP3.patch
+    -0004-net-thunderx-sync-mailbox-definitions-with-Linux-PF-.patch
+    -0005-kni-fix-build-with-gcc-7.1.patch
+    -0006-kni-fix-ethtool-build-with-kernel-4.11.patch
+   more details can be found in
+- Remove CONFIG_RTE_LIBRTE_MBUF_OFFLOAD as cryptodev is not depending
+- Added support for aarch64 compilation.
+- Disabled aarch64 dpdk-examples package for the time being as it
+- Removed unwanted files(bsc#984437).
+- Applied all the fixes recommended by upstream for
+- DPDK is most common vhost-user backend, Adding upstream patches to
+- Added CONFIG_RTE_BUILD_COMBINE_LIBS flags to club all all *.so into
+- Intial version 2.2.0(fate#319169)</comment>
+    <requestid>1203005</requestid>
+  </revision>
 </revisionlist>
