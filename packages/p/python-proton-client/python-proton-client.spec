@@ -1,7 +1,7 @@
 #
 # spec file for package python-proton-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch1:         urllib3-v2-migration.patch
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module gnupg}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module wheel}
@@ -65,6 +66,6 @@ wrapper to Proton Technologies API, abstracting from the SRP authentication.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/proton
-%{python_sitelib}/proton_client-%{version}*-info
+%{python_sitelib}/proton_client-%{version}.dist-info
 
 %changelog

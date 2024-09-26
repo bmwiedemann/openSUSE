@@ -25,4 +25,12 @@
 - Add urllib3-v2-migration.patch to fix authentication errors.</comment>
     <requestid>1113551</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>cc1adea9fc33c5f2ed4ab53c5aa5df70</srcmd5>
+    <version>0.7.1</version>
+    <time>1727369625</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on pyOpenSSL.</comment>
+    <requestid>1203729</requestid>
+  </revision>
 </revisionlist>

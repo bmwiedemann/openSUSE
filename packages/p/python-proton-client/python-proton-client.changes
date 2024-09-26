@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 04:09:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pyOpenSSL. 
+
+-------------------------------------------------------------------
 Mon Sep 25 16:24:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file
