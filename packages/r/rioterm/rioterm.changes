@@ -1,4 +1,468 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:24:45 UTC 2024 - Nico Fischer <nf@ioa.pm>
+
+- Update to version 0.1.16
+  * confirm before quit on macos
+  * remove window_activation_hack
+  * use application should reopen api
+  * apply close logic to all navigations (closes #683)
+  * add macro to hide_application
+  * implement unhide on macos app
+  * fix window has focus to find keyWindow
+  * increase max-fps on macos
+  * Revert "frame interval"
+  * remove examples on sugarloaf README
+  * enable new tab on macos dock
+  * support should_embolden and should_italicize
+  * frame interval
+  * flake.lock: Update (#682)
+  * remove plugins page
+  * macos and windows as 240
+  * obtain render time from fn render
+  * update fps logic and allow to keep rendering if render took less time
+  * [i18n] Japanese support for landing page (#681)
+  * change default weight for regular and italic fonts
+  * confirm before quit
+  * linux to 120
+  * increase macos fps to 240
+  * implement menu hooks
+  * remove menu_legacy
+  * fix derefs
+  * update menu and add dockbar
+  * dialog to quit
+  * increase max-fps (macos: 120->180, others: 60->90)
+  * Fix invalid link in default config.toml (#679)
+  * update dependencies and lock copa
+  * remove ununsed stuff
+  * allow option_as_alt as unused
+  * add listen_device_events again
+  * implement system_theme x11
+  * add for wayland and windows
+  * update_colors_based_on_theme
+  * update macos defaults
+  * update default configuration file
+  * fix blinking cursor lag issue and introduce blinking cursor interval
+  * Fix adaptive theme background color on macos
+  * add limited debug to release
+  * update releases.md
+  * Testing msys2 release builds (#643)
+  * update defaults info
+  * rotate two fonts
+  * make bold, bold_italic and italic evictable as well
+  * remove println and apply format on size'
+  * Word cache for multiple font sources
+  * add MOUSE_MODE to Mode initialisation
+  * add lifetimes to application
+  * add is_emoji to from_slice
+  * font deallocation
+  * reduce SIZE of atlas to 1024 (it was consuming a lot of memory)
+  * add content.rs
+  * apply corrections on renderer and use hashmap for font
+  * implement get for font_library
+  * reduce abstractions
+  * use inspect instead of map
+  * remove mark_dirty
+  * remove abstractions on content level
+  * reduce initial quantity for rect in buffer
+  * fix run width on emojis
+  * only build scaler if necessary
+  * fix font switching
+  * remove boundaries check
+  * fixup! move from RwLock to FairMutex
+  * move from RwLock to FairMutex
+  * change font to Arc<dyn AsRef<[u8]> + Send + Sync>
+  * disable unicode that is not available yet for all OS
+  * simply style on fragment data
+  * start rewrite builder
+  * update docs regarding bookmark
+  * remove boundaries analyze
+  * remove font from TextRunStyle
+  * reduce word cache
+  * remove println on config/mod.rs
+  * fix lint for linux
+  * move routes inside router
+  * fix macos tabbing for native tabs
+  * set rio variable title
+  * specify tab id
+  * use 1CC6D instead of triangle
+  * drop cfg! for default trait
+  * update documentation
+  * configure_window apply on reference
+  * use config alpha for window on macos
+  * use ▲ to match with bottom tab
+  * implement background color on macos
+  * update code to early return
+  * macos: native tab as default with transparency
+  * check before put on wordcache
+  * remove clear_cache
+  * fix cache and just remove metrics when font size/scale changes
+  * disable hinting on macos
+  * Fix font emoji width
+  * remove shape_with
+  * remove rich_text util mod
+  * update deps version
+  * update deps
+  * refactor and remove hash logic
+  * remove draw layout cache
+  * improve cache on builder
+  * remove cache
+  * remove temporary test/fix of positioning
+  * update docs about iterm2 image protocol
+  * remove unicode-normalization on copa
+  * Support to iTerm2 image protocol
+  * implement set_private_mode
+  * rewrite backend core and sixel
+  * remove old code
+  * iTerm2 image protocol
+  * remove ThemeChanged from skip_window_event (closes #660)
+  * use correct ffi::XPointer on ime/context.rs for x11
+  * image: Workaround WGPU OpenGL heuristics
+  * Fix this double render hack on scale update
+  * feat(logger): improve the logging via tracing (#648)
+  * scale other fonts whenever is necessary
+  * implement lru for render operations
+  * set subtitle on macos again
+  * use Twemoji as default
+  * introduce fonts.ui
+  * remove fonts to load
+  * update docs regarding emojis
+  * use ref charmap_proxy
+  * use 120 max fps only for macos
+  * remove all markers
+  * drop frame timer and use based on config max-fps
+  * format code and remove comment
+  * set limit as 120
+  * reset to i32 display_offset
+  * use values_mut
+  * reenable img protocol
+  * comment stuff for now
+  * refactor hash
+  * merge render again...
+  * refactor on shaper
+  * refactor shape fn
+  * cache analysis
+  * add markers
+  * disable cache for testing
+  * perf: work in progress
+  * docs(cursor): update cursor documentation (#650)
+  * fix sugarloaf tests
+  * remove unnecessary deprecated
+  * remove time markers
+  * add header mentioning swash
+  * remove OnceCell and apply lint on font_introspector
+  * lint and format
+  * port swash into rio source code
+  * refactor(config)!: revamp the cursor configuration (#632)
+  * fix underline cursor not working
+  * set edition as 2015 for corcovado
+  * update lint
+  * remove needless borrow
+  * workaround to fix sixel rendering order
+  * remove benches references
+  * remove sugarloaf benchmark and update examples to use rio-window
+  * add algolia search
+  * add cfg target_os as macos for platforms
+  * remove use_wa from code reference
+  * use clipboard as refcell
+  * drop unwrap on event_proxy
+  * finish port to use-run
+  * use run-app
+  * update release regarding WM_PAINT
+  * update release notes
+  * fix lint
+  * fix lints on windows and make pty be faillable
+  * remove send_resize windows
+  * pty window creation fallible
+  * remove ios support
+  * Reduce WM_PAINT messages of thread target window
+  * replace naming on comments
+  * remove rwh_06 entry on windows
+  * update parent
+  * update examples
+  * remove unnecessary stuff
+  * use raw-window-handle straight
+  * introduce rio-window crate
+  * remove winit-fork and introduce rio-window
+  * use DepartureMono as default font for UI
+  * messenger.send_resize on windows
+  * fix response and order csi_st-16
+  * implement CSI t 16 (cells size report)
+  * implement TextAreaSizeRequest
+  * cleanup selection once happens a resize
+  * update docs regarding CSI t 14 and 18
+  * add terminal capability on device
+  * add more info on docs and update example
+  * remove generational on entries
+  * remove owner and standalone logic
+  * add explict drops
+  * remove extra steps on resize and set_scale
+  * rename changelog to releases
+  * reduce max length on cache size for draw_layout
+  * specify primitive state on rich text
+  * range_request
+  * add more info on background
+  * add note regarding background-image width/height
+  * update docs regarding sixel
+  * implement background graphic
+  * graphics as struct
+  * reduce clones
+  * use textureSampleLevel
+  * drop fn and apply direct access on dlist
+  * remove double draw_indexed
+  * cursor as option
+  * remove texture_id
+  * refactor finish
+  * atlas for text only (missing grow/cleanup)
+  * remove context from prepare
+  * apply bind group only if entries are different
+  * drop extra texture
+  * rename color_layer
+  * working when bindings are swiped
+  * simplify stuff
+  * pass layers
+  * use i32 texture map instead of flags
+  * ok it renders now but is still very nonoptimal
+  * fix size
+  * set new as just context ref
+  * correct order
+  * refactoring atlas
+  * layout bind group refactor
+  * define max texture
+  * load graphic directly on rich_text_brush
+  * scroll with image
+  * render image
+  * add graphics into image cache
+  * set offset x and y
+  * media field on FragmentStyle
+  * chore(config): rename option to hide-mouse-cursor-when-typing (#631)
+  * feat(config): allow configuring with lowercase values for enums (#628)
+  * change docs structure (readd deleted under configs)
+  * change docs structure
+  * add search local
+  * remove grab cursor on macos and place default instead
+  * Unschedule pending events
+  * update frame scheduling
+  * frame scheduler
+  * remove tokio runtime
+  * remove deadlock_detection feature flag
+  * enable features on parking_lot like hardware-lock-elision (x86) and deadlock_detection
+  * added tabs-active-foreground config (#619)
+  * fixed tabs-active-highlight config key (#618)
+  * remove rust-toolchain.toml
+  * update version on install
+  * remove kitty as default for now
+  * update rio winit fork
+  * update CHANGELOG
+  * feat(tabs): add command for closing all tabs except the current one (#614)
+  * add windows search key bindings and update docs
+  * remove * scale on size for search bar
+  * if current was 0 then needs to update again
+  * fix padding on native tabs
+  * refactor close contexts logic
+  * define exec to conpty
+  * fix the behavior of using a complete shell command and a shell command with parameters is inconsistent
+  * fix kitty keyboard delete (backspace + fn) on macos
+  * fix lint
+  * update build_key_sequence on kitty keyboard protocol
+  * prepare bump
+  * flake.lock: Update (#609)
+  * fix(bindings): enable search as default on Linux (#612)
+  * cancel search on tab is changed/deleted/created
+  * remove breadcrumb on navigation features section
+  * fix wrong version title
+  * ignore size on curly
+  * reduce underline size for smaller dpis
+  * comment line height for now
+  * implement SearchDeleteWord, SearchHistoryPrevious and SearchHistoryNext
+  * search details on key bindings
+  * update Cargo.lock
+  * rollback version
+  * update rio winit fork to 0.30.8
+  * remove 0.0.x references
+  * remove warning note
+  * delete versioned docs
+  * fix lint
+  * update rio winit fork to 0.30.7
+  * remove hyphen on bindings
+  * update rio winit fork to 0.30.6
+  * update rio winit fork
+  * resize top or bottom line after rio evicts close terminal
+  * draw with less opacity
+  * fix len value
+  * set capacity for objects
+  * ignore clippy for now
+  * refactor navigation renderer
+  * render hints
+  * focused and match on search
+  * set active search
+  * move check to up
+  * when search is active then BottomTab should not be rendered
+  * update UI styles (make it larger and able to show more text when necessary)
+  * update demo bottom tab
+  * resize on search
+  * receive colors and apply on search bar
+  * drop colors on navigation entity
+  * update vec with capacity
+  * state -> renderer and introduce demand renderer
+  * move render function down
+  * update search
+  * wip highlight
+  * render as immutable
+  * hint.rs
+  * type and search next
+  * render simple search bar
+  * map search bindings and triggers on frontend
+  * search.rs (retired from alacritty and ported to rio code)
+  * work in progress (search)
+  * start search
+  * remove unused on quit and update content when hyperlink search is by modifiers
+  * add keyword
+  * bump dependencies
+  * feat(config): support creating config via `--write-config` (#605)
+  * refactor(cli): support a short variant (`-w`) for `--working-dir` (#606)
+  * Fix scale update on transitioning between screens with different DPI
+  * add update content
+  * fix default for hide_if_single
+  * remove Wakeup and create update_content
+  * remove derivable impls for BottomTab
+  * update tab UI
+  * improve tabs UI
+  * Fix `[editor]` overshadow headerless parameters in config (#604)
+  * hide if single
+  * hide single tab config property
+  * add bar and remove breadcrumbs
+  * remove resize conditional
+  * introduce object
+  * remove intercepts support
+  * remove hash as option
+  * font size
+  * remove font size from style
+  * remove unnecessary stuff
+  * cleanup with sugar references
+  * cleanup on examples
+  * use Content instead of Sugar primitives
+  * undo latest changes
+  * fix lint
+  * redraw straight after key up
+  * add schedule render on RenderRoute to avoid multiple re-renders
+  * use slice
+  * remove drop call
+  * render as immutable
+  * keep immutable call
+  * Vec::with_capacity for grid lines
+  * prepare version
+  * Make ConPty creation fallible (alacritty/91d034ff8b53867143c005acfaa14609147c9a2c)
+  * update dependencies
+  * remove patreon link
+  * fix lint
+  * drop run_on_demand
+  * use custom route as topic
+  * add split color support
+  * implement args for editor (close #550)
+  * fix Weird rendering behaviour on setting padding-x in config (closes #590)
+  * remove unnecessary check
+  * update blinking to only on route
+  * fix lint
+  * wip undercurl
+  * undercurl
+  * work in progress curly underline
+  * add testing scripts
+  * support decoration colors
+  * corrections double
+  * dotted corrections
+  * dashed and double corrections
+  * dotted as rect
+  * introduce shape enum
+  * support double underline and use same function on cache
+  * add new underlines on enum
+  * fixed custom key bindings URL in default config (#589)
+  * set macos latest in ci
+  * update tokio and CHANGELOG
+  * fix multiple cursors and background being rendered
+  * set caches as fn argument
+  * fix glyph.y for rendering with padding
+  * remove println used for debugging
+  * fix underline cache
+  * cache strategy improvements
+  * refactor cache strategy
+  * fix order
+  * use char_width outside of loop
+  * remove subpixel from cache key
+  * avoid create session for repeated fonts (perf gain ~25% for draw_layout)
+  * fix tests on text mod
+  * drop rtl support and script
+  * fixup! update
+  * remove Language import
+  * refactor FragmentStyle organization
+  * remove bidi, direction logics
+  * remove unnecessary stuff
+  * Changed default font family to Cascadia Code, width to 800 and height to 500
+  * update winit fork
+  * consider blocks as part of tree
+  * In case no font_id is found and exists a font spec requirement, then drop requirement and try to find something that can match.
+  * remove is_focused
+  * correct current_route id check
+  * fix lint
+  * update example resouces and fix double items when extra font is loaded
+  * update examples
+  * use CascadiaMonoPL with otf
+  * fix Bug switch tabs doesn't work (closes #536)
+  * stop select font id in runtime and apply on builder.rs
+  * update Cascadia Code to 2404.23 (it includes native 'Nerd Font' variant
+  * bump fork version
+  * remove dimensions changed check
+  * change test rules to doesn't match round
+  * rename variable
+  * Improvements for mouse selection
+  * do not rely on index for route_id
+  * save route_id on terminal and only render if necessary
+  * key_without_modifiers for process key bindings
+  * fix binding without modifiers on macos
+  * use same image version
+  * update wgpu to 22.1.0
+  * use FxHashMap instead of Hashmap on glyph.rs
+  * update swash (0.1.18), ab_glyph (0.2.28) and remove double hashmap implementation
+  * support padding-y (top and bottom) (closes #400)
+  * update Info.plis
+  * update version on Cargo.toml
+  * always_dirty on wayland
+  * remove hack from 0.0.x version that was computing margins wrongly
+  * update default config file
+  * font features settled up on initialisation
+  * font features updates
+  * fix IO Safety violation from dropping RawFd (fatal runtime error: IO Safety violation: owned file descriptor already closed)
+  * set font features
+  * rust 1.80.0
+  * add default for font features
+  * support to font features
+  * use cargo-deb default
+  * use cargo-deb 2.4.0
+  * use cargo-deb 2.5.0
+  * add comment on deallocation
+  * drop epoch for cache
+  * bump dependencies
+  * comment markers
+  * fix comment
+  * re add copy lines index
+  * drop synchronous redraw
+  * cache rects to render
+  * use hash as separated field since isn't responsible for order
+  * retrieve line as hash
+  * perf upgrades markers
+  * upgrade wgpu to v22.0.0
+  * save width as f32
+  * apply cell width/height restrictions
+  * update winit fork
+  * option as alt as unused
+  * lint epoll.rs
+  * Revert "disable sixel terminal backend support for now"
+  * update rust to 1.79.0
+  * Wayland: avoid crashing when compositor is misbehaving
+  * update actions-gh-pages
+  * update workflows
+  * update swash and fix ci pipeline for macos unsigned
+
+-------------------------------------------------------------------
 Thu Jun 20 13:45:52 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove checksums update for config.guess and config.sub for aarch64
