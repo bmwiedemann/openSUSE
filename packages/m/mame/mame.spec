@@ -16,7 +16,7 @@
 #
 
 
-%define ver     269
+%define ver     270
 Name:           mame
 Version:        0.%{ver}
 Release:        0
