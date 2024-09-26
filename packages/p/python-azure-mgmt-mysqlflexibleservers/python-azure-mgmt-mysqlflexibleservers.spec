@@ -15,17 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
+%define realversion 1.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-mysqlflexibleservers
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Mysqlflexibleservers Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-mysqlflexibleservers/azure-mgmt-mysqlflexibleservers-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_mysqlflexibleservers/azure_mgmt_mysqlflexibleservers-%{realversion}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -50,7 +50,7 @@ This is the Microsoft Azure Mysqlflexibleservers Management Client Library.
 This package has been tested with Python 3.8+.
 
 %prep
-%setup -q -n azure-mgmt-mysqlflexibleservers-%{realversion}
+%setup -q -n azure_mgmt_mysqlflexibleservers-%{realversion}
 
 %build
 %pyproject_wheel
