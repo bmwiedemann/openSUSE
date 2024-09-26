@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
+Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- remove release tags for additional_versions
+
+-------------------------------------------------------------------
 Tue Sep 24 13:14:58 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - rust 1.81 for stable, rust 1.80 for oldstable
