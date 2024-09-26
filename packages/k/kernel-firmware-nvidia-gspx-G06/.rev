@@ -171,4 +171,15 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>- Update to 550.120 (boo#1230779)</comment>
     <requestid>1202558</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b52d12a57772d89a0cd676040a9771e3</srcmd5>
+    <version>550.120</version>
+    <time>1727369680</time>
+    <user>anag+factory</user>
+    <comment>- use SUSE-Firmware as License tag in specfile
+
+- switch to official license for NVIDIA firmware files
+  --&gt; https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.nvidia</comment>
+    <requestid>1203914</requestid>
+  </revision>
 </revisionlist>
