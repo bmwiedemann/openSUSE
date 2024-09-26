@@ -3,7 +3,7 @@ Index: openssh-8.9p1/Makefile.in
 --- openssh-8.9p1.orig/Makefile.in
 +++ openssh-8.9p1/Makefile.in
 @@ -116,7 +116,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
- 	kexsntrup761x25519.o sntrup761.o kexgen.o \
+ 	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
  	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
 -	sshbuf-io.o
@@ -2245,7 +2245,7 @@ Index: openssh-8.9p1/sshd-session.c
  
  	if (the_active_state != NULL && the_authctxt != NULL) {
 @@ -2525,7 +2593,9 @@ cleanup_exit(int i)
- 		_exit(EXIT_AUTH_ATTEMPTED);
+ 	}
  #ifdef SSH_AUDIT_EVENTS
  	/* done after do_cleanup so it can cancel the PAM auth 'thread' */
 -	if (the_active_state != NULL && mm_is_monitor())
@@ -2254,12 +2254,22 @@ Index: openssh-8.9p1/sshd-session.c
 +           mm_is_monitor())
  		audit_event(the_active_state, SSH_CONNECTION_ABANDON);
  #endif
- 	_exit(i);
+ 	/* Override default fatal exit value when auth was attempted */
 Index: openssh-8.9p1/sshkey.c
 ===================================================================
 --- openssh-8.9p1.orig/sshkey.c
 +++ openssh-8.9p1/sshkey.c
-@@ -400,6 +400,38 @@ sshkey_type_is_valid_ca(int type)
+@@ -35,6 +35,9 @@ sshkey_type_is_valid_ca(int type)
+ #include <openssl/evp.h>
+ #include <openssl/err.h>
+ #include <openssl/pem.h>
++# if (OPENSSL_VERSION_NUMBER >= 0x30000000L)
++# include <openssl/core_names.h>
++# endif
+ #endif
+ 
+ #include "crypto_api.h"
+@@ -400,6 +403,53 @@ sshkey_type_is_valid_ca(int type)
  }
  
  int
@@ -2267,23 +2277,38 @@ Index: openssh-8.9p1/sshkey.c
 +{
 +      switch (k->type) {
 +#ifdef WITH_OPENSSL
++# if (OPENSSL_VERSION_NUMBER >= 0x30000000L)
 +      case KEY_RSA_CERT:
-+      case KEY_RSA: {
-+              const BIGNUM *d;
-+              RSA_get0_key(k->rsa, NULL, NULL, &d);
++      case KEY_RSA:
++      case KEY_ECDSA_CERT:
++      case KEY_ECDSA: {
++              BIGNUM *d = NULL;
++              EVP_PKEY_get_bn_param(k->pkey, OSSL_PKEY_PARAM_PRIV_KEY, &d);
 +              return d != NULL;
 +          }
++# else /* OPENSSL < 3.0.0 */
++      case KEY_RSA_CERT:
++      case KEY_RSA: {
++              const BIGNUM *d = NULL;
++              RSA *rsakey = EVP_PKEY_get0_RSA(k->pkey);
++              if (rsakey)
++                  RSA_get0_key(rsakey, NULL, NULL, &d);
++              return d != NULL;
++          }
++#  ifdef OPENSSL_HAS_ECC
++      case KEY_ECDSA_CERT:
++      case KEY_ECDSA: {
++              EC_KEY *eckey = EVP_PKEY_get0_EC_KEY(k->pkey);
++              return (eckey != NULL) && (EC_KEY_get0_private_key(eckey) != NULL);
++          }
++#  endif /* OPENSSL_HAS_ECC */
++# endif /* OPENSSL < 3.0.0 */
 +      case KEY_DSA_CERT:
 +      case KEY_DSA: {
-+              const BIGNUM *priv_key;
++              const BIGNUM *priv_key = NULL;
 +              DSA_get0_key(k->dsa, NULL, &priv_key);
 +              return priv_key != NULL;
 +          }
-+#ifdef OPENSSL_HAS_ECC
-+      case KEY_ECDSA_CERT:
-+      case KEY_ECDSA:
-+              return EC_KEY_get0_private_key(k->ecdsa) != NULL;
-+#endif /* OPENSSL_HAS_ECC */
 +#endif /* WITH_OPENSSL */
 +      case KEY_ED25519_CERT:
 +      case KEY_ED25519:
@@ -2303,9 +2328,9 @@ Index: openssh-8.9p1/sshkey.h
 --- openssh-8.9p1.orig/sshkey.h
 +++ openssh-8.9p1/sshkey.h
 @@ -189,6 +189,7 @@ int		 sshkey_shield_private(struct sshke
- int		 sshkey_unshield_private(struct sshkey *);
  
  int	 sshkey_type_from_name(const char *);
+ int	 sshkey_type_from_shortname(const char *);
 +int	 sshkey_is_private(const struct sshkey *);
  int	 sshkey_is_cert(const struct sshkey *);
  int	 sshkey_is_sk(const struct sshkey *);

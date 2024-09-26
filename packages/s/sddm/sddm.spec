@@ -65,6 +65,12 @@ Patch50:        0001-Redesign-login-shell-use-in-session-scripts.patch
 Patch51:        0001-Fix-terminal-clearing.patch
 # https://github.com/sddm/sddm/pull/1904
 Patch52:        0001-Use-xrdb-to-set-Xcursor.theme.patch
+# https://github.com/sddm/sddm/pull/1969
+Patch53:        0001-Remove-unused-Display-m_relogin-variable.patch
+Patch54:        0002-Set-Display-m_started-early.patch
+Patch55:        0003-Load-autologin-configuration-in-Display-Display.patch
+Patch56:        0004-Reset-daemonApp-first-in-the-Display-constructor.patch
+Patch57:        0005-If-autologin-is-used-avoid-starting-a-display-server.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch

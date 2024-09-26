@@ -19,13 +19,12 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-%define skip_python39 1
 %bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-jupyter-client%{psuffix}
 Version:        8.6.2
 Release:        0

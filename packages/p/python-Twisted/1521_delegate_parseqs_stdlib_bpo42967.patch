@@ -1,20 +1,19 @@
-From df79d69adea5c819bb104861dccf1bbe25851644 Mon Sep 17 00:00:00 2001
+From 7130df7ee21ebd93d7e15e7c4ef752b759f8e1c3 Mon Sep 17 00:00:00 2001
 From: Thomas Grainger <tagrain@gmail.com>
 Date: Sun, 21 Feb 2021 11:54:25 +0000
-Subject: [PATCH 1/2] delegate to stdlib parse qs
+Subject: [PATCH] delegate to stdlib parse qs
 
 ---
- src/twisted/web/http.py                    |   26 +-------------------------
- src/twisted/web/newsfragments/10096.bugfix |    1 +
- src/twisted/web/server.py                  |    5 ++---
- 3 files changed, 4 insertions(+), 28 deletions(-)
+ src/twisted/web/http.py                    | 29 +---------------------
+ src/twisted/web/newsfragments/10096.bugfix |  1 +
+ 2 files changed, 2 insertions(+), 28 deletions(-)
  create mode 100644 src/twisted/web/newsfragments/10096.bugfix
 
-Index: twisted-24.3.0/src/twisted/web/http.py
-===================================================================
---- twisted-24.3.0.orig/src/twisted/web/http.py
-+++ twisted-24.3.0/src/twisted/web/http.py
-@@ -115,6 +115,7 @@ from urllib.parse import (
+diff --git a/src/twisted/web/http.py b/src/twisted/web/http.py
+index 18710f51dc..f0fea06b5d 100644
+--- a/src/twisted/web/http.py
++++ b/src/twisted/web/http.py
+@@ -125,6 +125,7 @@ from urllib.parse import (
      ParseResultBytes,
      unquote_to_bytes as unquote,
      urlparse as _urlparse,
@@ -22,7 +21,7 @@ Index: twisted-24.3.0/src/twisted/web/http.py
  )
  
  from zope.interface import Attribute, Interface, implementer, provider
-@@ -288,34 +289,6 @@ def urlparse(url):
+@@ -363,34 +364,6 @@ def urlparse(url):
      return ParseResultBytes(scheme, netloc, path, params, query, fragment)
  
  
@@ -57,39 +56,13 @@ Index: twisted-24.3.0/src/twisted/web/http.py
  def datetimeToString(msSinceEpoch=None):
      """
      Convert seconds since epoch to HTTP datetime string.
-Index: twisted-24.3.0/src/twisted/web/newsfragments/10096.bugfix
-===================================================================
+diff --git a/src/twisted/web/newsfragments/10096.bugfix b/src/twisted/web/newsfragments/10096.bugfix
+new file mode 100644
+index 0000000000..8f5b4759cb
 --- /dev/null
-+++ twisted-24.3.0/src/twisted/web/newsfragments/10096.bugfix
++++ b/src/twisted/web/newsfragments/10096.bugfix
 @@ -0,0 +1 @@
 +delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
-Index: twisted-24.3.0/src/twisted/web/server.py
-===================================================================
---- twisted-24.3.0.orig/src/twisted/web/server.py
-+++ twisted-24.3.0/src/twisted/web/server.py
-@@ -21,7 +21,7 @@ import zlib
- from binascii import hexlify
- from html import escape
- from typing import List, Optional
--from urllib.parse import quote as _quote
-+from urllib.parse import quote as _quote, unquote_to_bytes as _unquote_to_bytes
- 
- from zope.interface import implementer
- 
-@@ -37,7 +37,6 @@ from twisted.python.deprecate import dep
- from twisted.spread.pb import Copyable, ViewPoint
- from twisted.web import http, iweb, resource, util
- from twisted.web.error import UnsupportedMethod
--from twisted.web.http import unquote
- 
- NOT_DONE_YET = 1
- 
-@@ -210,7 +209,7 @@ class Request(Copyable, http.Request, co
- 
-         # Resource Identification
-         self.prepath = []
--        self.postpath = list(map(unquote, self.path[1:].split(b"/")))
-+        self.postpath = [_unquote_to_bytes(v) for v in self.path[1:].split(b"/")]
- 
-         # Short-circuit for requests whose path is '*'.
-         if self.path == b"*":
+-- 
+2.46.0
+

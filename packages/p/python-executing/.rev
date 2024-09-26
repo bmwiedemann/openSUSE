@@ -106,4 +106,15 @@
     <comment></comment>
     <requestid>1201732</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d753f71102349e2bc7150edd7d533cb5</srcmd5>
+    <version>2.1.0</version>
+    <time>1727369566</time>
+    <user>anag+factory</user>
+    <comment>- Split test run into separate build using _multibuild.
+- The test suite has to be run with pytest, unittest is not enough
+- Add missing BuildRequires: ipython
+</comment>
+    <requestid>1203862</requestid>
+  </revision>
 </revisionlist>

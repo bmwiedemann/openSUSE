@@ -49,7 +49,6 @@ components for parsing, generating, and processing HTML, XML or
 other textual content for output generation on the web. The major
 feature is a template language, which is heavily inspired by Kid.
 
-%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        A toolkit for generation of output for the web - Documentation
 Group:          Development/Libraries/Python
@@ -63,7 +62,6 @@ other textual content for output generation on the web. The major
 feature is a template language, which is heavily inspired by Kid.
 
 This package contains documentation and examples.
-%endif
 
 %prep
 %autosetup -p1 -n Genshi-%{version}
@@ -73,27 +71,26 @@ This package contains documentation and examples.
 
 %install
 %python_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitearch}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 # remove accidentally installed source files
 %python_expand find %{buildroot}%{$python_sitearch}/genshi -name '*.c' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%if %{suse_version} < 1550
-# calling unittest directly fails on Leap
-%python_exec setup.py test
-%else
 %pyunittest_arch -v genshi.tests.suite
-%endif
 
 %files %{python_files}
 %license COPYING
 %doc ChangeLog README.md
 %{python_sitearch}/genshi/
 %{python_sitearch}/Genshi-%{version}*-info
-%if 0%{?suse_version} > 1500
+
 %files -n %{name}-doc
 %doc doc
-%endif
 %doc examples
 
 %changelog

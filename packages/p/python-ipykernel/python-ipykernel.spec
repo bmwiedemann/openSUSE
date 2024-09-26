@@ -32,6 +32,10 @@ Provides:       %{python_module jupyter_ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
 Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
+%if %{suse_version} < 1600
+# python311-ipykernel and python3-ipykernel cannot both provide the kernelspec
+Conflicts:      python3-ipykernel
+%endif
 BuildArch:      noarch
 # SECTION build-system
 BuildRequires:  %{python_module base >= 3.8}
@@ -96,9 +100,6 @@ sed -i -e 's/, "--color=yes"//' pyproject.toml
 %install
 %pyproject_install
 
-# use the symlink for the default python3 flavor, which was installed during the install but used python3.X name
-# from the primary flavor.
-sed -i "s|$(readlink -f python3)|python3|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
 %{python_expand # install kernelspecs for each flavor
 PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m ipykernel install \
@@ -127,7 +128,7 @@ donttest="$donttest or test_do_apply"
 %{python_sitelib}/ipykernel-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__/ipykernel_launcher*.pyc
 %{_jupyter_kernel_dir}/python%{python_bin_suffix}
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3" || 0%{?suse_version} < 1600
 %{_jupyter_kernel_dir}/python3
 %endif
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
 Wed Sep 18 16:36:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use released containers as buildtarget in multistage

@@ -87,4 +87,12 @@
 - use released containers as buildtarget in multistage</comment>
     <requestid>1203000</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>a59c72766c68d146dc0917012329b002</srcmd5>
+    <version>unknown</version>
+    <time>1727369604</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1203675</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,9 @@
 -------------------------------------------------------------------
-Tue Sep  3 14:42:41 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Thu Sep 26 04:58:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
-- Update vendored deps to resolve boo#1230089
-
+-  Update vendored deps. This still won't resolve boo#1230089 as dependencies are
+   hard dependencies so they won't be version bumped that easily.
+  
 -------------------------------------------------------------------
 Tue Jun 18 09:54:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 

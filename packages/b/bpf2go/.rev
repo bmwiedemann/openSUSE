@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f69bdfb2101f828fc16c2cb39858b9f</srcmd5>
+    <version>0.16.0</version>
+    <time>1727369602</time>
+    <user>anag+factory</user>
+    <comment>New package bpf2go v0.16.0 is a CLI tool to read, modify and load eBPF programs and attach them to various hooks in the Linux kernel.
+
+Required by incoming package kepler for use with go generate build step.</comment>
+    <requestid>1203672</requestid>
+  </revision>
+</revisionlist>

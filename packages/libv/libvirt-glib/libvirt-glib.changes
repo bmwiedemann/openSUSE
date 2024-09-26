@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:33:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Wed Dec  6 13:47:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.0.0:

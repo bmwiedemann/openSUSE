@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Wed Sep 25 20:11:23 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 0.16.0:
+  * map: remove misleading error message when creating without BTF
+  * btf: fix panic when copying nil Type
+  * program: deprecate LogSize and VerifierError.Truncated
+  * map: do not allocate on lookup when key doesn't exist
+  * fix a variety of Copy() problems
+  * perf: do not add offline CPUs
+  * info: make it harder to add backwards incompatible API
+  * link: fix nil pointer dereference in AttachXDP
+  * map: fix flaky TestMapIteratorAllocations
+  * perf: fix panic when CPU is offline
+  * cmd/bpf2go: make Nick Zavaritsky a reviewer
+  * build(deps): bump certifi from 2024.6.2 to 2024.7.4 in /docs
+  * program, btf: probe correct log buffer size
+  * ci: fix golangci-lint
+  * link: allow pinning uprobe multi links
+  * build(deps): bump mkdocs-material from 9.5.26 to 9.5.27 in /docs
+  * link: allow pinning perf event based links
+  * bpf2go: export targets
+  * bpf2go: export compilation
+  * bpf2go: export binding generator
+  * perf: rearrange fields to make locking of Reader clearer
+  * perf, ringbuf: add Flush for manual Read/ReadInto wakeup
+  * ringbuf: fix ring size reporting
+  * docs: fix clipped headline on home page
+  * examples: add tcx example
+  * build(deps): bump urllib3 from 2.2.1 to 2.2.2 in /docs
+  * map: add Map.Handle() method for retrieving a Map's type information
+  * gh: try to group dependabot updates
+  * map: fix TestMapBatch failing with ENOSPC for hash maps
+  * build(deps): bump mkdocs-git-revision-date-localized-plugin in /docs
+  * build(deps): bump mkdocs-git-authors-plugin from 0.8.0 to 0.9.0 in /docs
+  * build(deps): bump golangci/golangci-lint-action from 5.1.0 to 6.0.1
+  * build(deps): bump mkdocs-material from 9.5.20 to 9.5.26 in /docs
+  * docs: add a section on examples
+  * elf: turn BTF map_extra into ErrNotSupported
+  * program: add RecursionMisses to access ProgramInfo recursion misses counter
+  * link: add Info() method to all link types
+  * ci: use stable-selftests tag
+  * ci: debug sporadic vimto hang
+  * link: add test suite for netkit
+  * perf_event_open cpu should be -1 for valid PID
+  * link: allow retrieving perf event file descriptor
+  * perf: flush Record when deadline is exceeded
+  * perf: opportunistically check all rings for data
+  * epoll: fix eventFd.add
+  * epoll: simplify timeout calculation
+  * ci: ignore kprobe_multi test failures on arm64
+  * ci: test against stable and mainline
+  * ci: replace virtme with vimto
+  * build(deps): bump jinja2 from 3.1.3 to 3.1.4 in /docs
+  * build(deps): bump mkdocs-git-revision-date-localized-plugin in /docs
+  * build(deps): bump mkdocs-material from 9.5.16 to 9.5.20 in /docs
+  * build(deps): bump golangci/golangci-lint-action from 4.0.0 to 5.1.0
+  * build(deps): bump mkdocs from 1.5.3 to 1.6.0 in /docs
+  * CI: switch from 6.7 to 6.8
+  * features: Fix test `TestHaveProgramType/Extension` in kernel >=v6.8
+  * gh: don't use code blocks in Bug report template
+  * [go.mod] Change `go` directive to `1.21`
+  * perf: clean up error handling and bare fds

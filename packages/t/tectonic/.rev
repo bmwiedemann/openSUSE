@@ -126,4 +126,16 @@
 </comment>
     <requestid>1198552</requestid>
   </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>dd664cd32ef7e3d9200feb571ff85072</srcmd5>
+    <version>0.15.0</version>
+    <time>1727369596</time>
+    <user>anag+factory</user>
+    <comment>-  Update vendored deps. This still won't resolve boo#1230089 as dependencies are
+   hard dependencies so they won't be version bumped that easily.
+  
+Alas, we will wait until tectonic gets a new release. The vuln is not
+that heavy of an impact anyway and unrealistic in most situations.</comment>
+    <requestid>1203733</requestid>
+  </revision>
 </revisionlist>

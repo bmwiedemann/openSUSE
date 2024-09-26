@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,28 @@
 
 
 %define oldpython python
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-bugzilla
-Version:        3.2.0
+Version:        3.2.0+git.1726768917.5eedea3
 Release:        0
 Summary:        Python library for Bugzilla
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-bugzilla/python-bugzilla
-Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%{version}.tar.gz
+# Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%%{version}.tar.gz
+Source:         python-bugzilla-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 106-basic-auth.diff bsc#1098219 mcepl@suse.com
 # Fix basic authentication on bugzilla.suse.com
 Patch0:         106-basic-auth.diff
-# PATCH-FIX-UPSTREAM pending https://github.com/python-bugzilla/python-bugzilla/pull/188
-# Fix API Key leak
-Patch1:         188-fix-api-key-leak.diff
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       osc
 Conflicts:      %{oldpython}-bugzillatools
 Obsoletes:      python2-bugzilla
@@ -82,6 +81,6 @@ export CFLAGS="%{optflags}"
 %python_alternative %{_bindir}/bugzilla
 %python_alternative %{_mandir}/man1/bugzilla.1%{ext_man}
 %{python_sitelib}/bugzilla
-%{python_sitelib}/python_bugzilla-%{version}-py*.egg-info
+%{python_sitelib}/python_bugzilla-3.3.0*-info
 
 %changelog

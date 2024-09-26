@@ -1,0 +1,27 @@
+From bbdb56932845dceb47332a4c967c13a9a78b88bc Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 25 Sep 2024 14:08:20 +0300
+Subject: [PATCH] Avoid explicit reading of /etc/salt/minion
+ (bsc#1220357)
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@vmware.com>
+---
+ salt/utils/azurearm.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/salt/utils/azurearm.py b/salt/utils/azurearm.py
+index 276cbb66b3..9ae128273c 100644
+--- a/salt/utils/azurearm.py
++++ b/salt/utils/azurearm.py
+@@ -47,8 +47,6 @@ try:
+ except ImportError:
+     HAS_AZURE = False
+ 
+-__opts__ = salt.config.minion_config("/etc/salt/minion")
+-__salt__ = salt.loader.minion_mods(__opts__)
+ 
+ log = logging.getLogger(__name__)
+ 
+-- 
+2.46.1
+

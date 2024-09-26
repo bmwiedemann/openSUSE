@@ -588,4 +588,17 @@
 - Drop ignore-ipython-deprecationwarning.patch</comment>
     <requestid>1197749</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>ab60e4a5aea94e6a11d1e52c6671ec5b</srcmd5>
+    <version>6.29.5</version>
+    <time>1727369558</time>
+    <user>anag+factory</user>
+    <comment>- The command replacement for kernelspec python3 was inactive since
+  v6.13. A plain python command is transformed correctly by the
+  calling interpreter.
+- Conflict with old Python 3.6 package on SLE/Leap for python3
+  kernelspec
+</comment>
+    <requestid>1203615</requestid>
+  </revision>
 </revisionlist>

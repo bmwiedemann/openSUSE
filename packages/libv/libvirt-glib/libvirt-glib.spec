@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-glib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@ Source0:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.xz
 Source1:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.xz.asc
 
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig

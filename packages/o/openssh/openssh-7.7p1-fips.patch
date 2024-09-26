@@ -754,7 +754,7 @@ Index: openssh-9.6p1/ssh-keygen.c
 @@ -3794,6 +3815,15 @@ main(int argc, char **argv)
  		key_type_name = DEFAULT_KEY_TYPE_NAME;
  
- 	type = sshkey_type_from_name(key_type_name);
+ 	type = sshkey_type_from_shortname(key_type_name);
 +
 +	/* protocol v1 is not allowed in FIPS mode, DSA is not acceptable because
 +	 * it has to be 1024 bit due to RFC 4253 using SHA-1 which implies 1024 bit

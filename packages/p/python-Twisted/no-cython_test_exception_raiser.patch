@@ -1,13 +1,9 @@
----
- src/twisted/test/test_failure.py |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-Index: twisted-24.3.0/src/twisted/test/test_failure.py
-===================================================================
---- twisted-24.3.0.orig/src/twisted/test/test_failure.py
-+++ twisted-24.3.0/src/twisted/test/test_failure.py
-@@ -18,7 +18,8 @@ from types import TracebackType
- from typing import Any, Generator
+diff --git a/src/twisted/test/test_failure.py b/src/twisted/test/test_failure.py
+index a9e920c10e..de9c499972 100644
+--- a/src/twisted/test/test_failure.py
++++ b/src/twisted/test/test_failure.py
+@@ -19,7 +19,8 @@ from types import TracebackType
+ from typing import Any, Generator, cast
  from unittest import skipIf
  
 -from cython_test_exception_raiser import raiser

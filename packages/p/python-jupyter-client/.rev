@@ -404,4 +404,13 @@ Update to 5.3.4</comment>
   * Use non-blocking zmq Poller #1023 (@fcollonval)</comment>
     <requestid>1201257</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>4b713fcb1def0e522cdfbc7c3a312e2c</srcmd5>
+    <version>8.6.2</version>
+    <time>1727369558</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1203614</requestid>
+  </revision>
 </revisionlist>

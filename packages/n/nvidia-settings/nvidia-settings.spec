@@ -22,10 +22,11 @@ Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-or-later
 URL:            http://www.nvidia.com/object/unix.html
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 %ix86
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-load.desktop
+Source2:        nvidia-libXNVCtrl.rpmlintrc
 Patch0:         %{name}-desktop.patch
 Patch1:         %{name}-lib-permissions.patch
 Patch2:         %{name}-link-order.patch
@@ -125,8 +126,15 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}
 desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}-load.desktop
 
+%if 0%{?suse_version} >= 1550 ||  0%{?sle_version} >= 150400
 %ldconfig_scriptlets
 %ldconfig_scriptlets -n nvidia-libXNVCtrl
+%else
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+%post   -n nvidia-libXNVCtrl -p /sbin/ldconfig
+%postun -n nvidia-libXNVCtrl -p /sbin/ldconfig
+%endif
 
 %files
 %{_bindir}/%{name}

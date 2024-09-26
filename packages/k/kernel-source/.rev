@@ -6746,4 +6746,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.10.11 &amp; 6.10.10 &amp; cleanups (sorry, no 6.11 yet due to vacation); bugs: bsc#1012628 bsc#1230350</comment>
     <requestid>1201955</requestid>
   </revision>
+  <revision rev="749" vrev="1">
+    <srcmd5>a3de3e9581f4d51657e64b5079f90bb2</srcmd5>
+    <version>6.11.0</version>
+    <time>1727369568</time>
+    <user>anag+factory</user>
+    <comment>6.11 w/ fixed loop and ACS; bugs: bsc#1225147 bsc#1226449 bsc#1228093 bsc#1228801 bsc#1229019 bsc#1230132 bsc#1230629 bsc#1230925</comment>
+    <requestid>1203745</requestid>
+  </revision>
 </revisionlist>

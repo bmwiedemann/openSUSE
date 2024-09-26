@@ -26,14 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/testing-cabal/testtools/pull/373 Treat methodName="runTest" similar to unittest.TestCase
-Patch:          pytest82.patch
+# PATCH-FIX-UPSTREAM https://github.com/testing-cabal/testtools/commit/5b8cb6497c7159f593e68de6a13e15f7e78e56e3 Prepare tests for upcoming twisted version
+Patch0:         twisted.patch
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

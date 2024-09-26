@@ -1,0 +1,6 @@
+<package name="bpf2go" project="openSUSE:Factory">
+  <title>bpf2go</title>
+  <description>bpf2go is a CLI tool to read, modify and load eBPF programs and attach them to various hooks in the Linux kernel.</description>
+  <devel project="devel:languages:go" package="bpf2go"/>
+  <url>https://ebpf-go.dev</url>
+</package>

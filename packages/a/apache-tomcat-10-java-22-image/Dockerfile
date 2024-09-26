@@ -18,14 +18,17 @@
 #!BuildTag: opensuse/apache-tomcat:10.1-openjdk22
 #!BuildTag: opensuse/apache-tomcat:10.1-openjdk22-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk22
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk22-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
-RUN set -euo pipefail; zypper --installroot /target --gpg-auto-import-keys  -n in --no-recommends tomcat10 curl sed java-22-openjdk java-22-openjdk-headless; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 curl sed java-22-openjdk java-22-openjdk-headless; \
+    zypper -n --installroot /target remove util-linux; \
+    zypper -n clean; \
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
@@ -54,7 +57,8 @@ ENV PATH="/usr/share/tomcat/bin:$PATH"
 
 CMD ["/usr/libexec/tomcat/server", "start"]
 EXPOSE 8080
-RUN set -euo pipefail; mkdir -p /var/log/tomcat; chown --recursive tomcat:tomcat /var/log/tomcat;
+RUN set -euo pipefail; mkdir -p /var/log/tomcat; chown --recursive tomcat:tomcat /var/log/tomcat
+RUN set -euo pipefail; ln -s /usr/share/tomcat /usr/local/tomcat
 RUN set -euo pipefail; \
     sed -i /etc/tomcat/logging.properties \
         -e 's|org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.handlers =.*|org.apache.catalina.core.ContainerBase.[Catalina].[localhost].handlers = java.util.logging.ConsoleHandler|' \

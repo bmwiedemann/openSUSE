@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep 17 08:24:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 24.7.2
+  * Incremental could mis-identify that a project had opted in to version management.
+- from version 24.7.1
+  * Incremental 24.7.0 would produce an error when parsing the ``pyproject.toml`` of
+    a project that lacked the ``use_incremental=True`` or ``[tool.incremental]`` opt-in
+    markers if that file lacked a ``[project]`` section containing the package name.
+    This could cause a project that only uses ``pyproject.toml`` to configure tools to
+    fail to build if Incremental is installed. Incremental now ignores such projects. (#100)
+  * Fix issue #101
+- from version 24.7.0
+  * Incremental can now be configured using ``pyproject.toml``. (#90)
+  * Incremental now provides a read-only `Hatchling version source plugin (#93)
+  * Incremental no longer inserts a dot before the rc version component (i.e., ``1.2.3rc1``
+    instead of ``1.2.3.rc1``), resulting in version numbers in the `canonical format. (#81)
+  * Incremental's tests are now included in the sdist release artifact. (#80)
+  * ``incremental[scripts]`` no longer depends on Twisted. (#88)
+  * Support for Python 2.7 has been dropped for lack of test infrastructure.
+    We no longer provide universal wheels. (#86)
+  * Support for Python 3.5, 3.6, and 3.7 has been
+    dropped for lack of test infrastructure. (#92)
+- Limit Python files matched in %files section
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Allow test_prereleaseAttributeDeprecated and test_prereleaseDeprecated tests again
+- Skip tests from skip_examples.py
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

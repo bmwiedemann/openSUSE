@@ -1621,4 +1621,12 @@
   * CVE-2024-41810.patch gh#twisted/twisted@046a164f89a0</comment>
     <requestid>1190585</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>432a9f54ab8258f1914f11947a9a6f03</srcmd5>
+    <version>24.7.0</version>
+    <time>1727369564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203276</requestid>
+  </revision>
 </revisionlist>

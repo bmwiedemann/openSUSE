@@ -1,0 +1,25 @@
+From 936c298c177a50783b080c445745bedf77050cb0 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 25 Sep 2024 14:04:40 +0300
+Subject: [PATCH] Prevent using SyncWrapper with no reason
+
+---
+ salt/channel/server.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/channel/server.py b/salt/channel/server.py
+index b6d51fef08..f1b6f701a9 100644
+--- a/salt/channel/server.py
++++ b/salt/channel/server.py
+@@ -86,7 +86,7 @@ class ReqServerChannel:
+         # other things needed for _auth
+         # Create the event manager
+         self.event = salt.utils.event.get_master_event(
+-            self.opts, self.opts["sock_dir"], listen=False
++            self.opts, self.opts["sock_dir"], listen=False, io_loop=io_loop
+         )
+         self.auto_key = salt.daemons.masterapi.AutoKey(self.opts)
+         # only create a con_cache-client if the con_cache is active
+-- 
+2.46.1
+

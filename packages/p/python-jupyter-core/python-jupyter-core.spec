@@ -24,14 +24,13 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%define skip_python39 1
 %define psuffix -test
 %bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-jupyter-core%{psuffix}
 Version:        5.7.2
 Release:        0

@@ -1,0 +1,24 @@
+Index: cli-0.22.0/systemd/ssh-cert-renewer.service
+===================================================================
+--- cli-0.22.0.orig/systemd/ssh-cert-renewer.service
++++ cli-0.22.0/systemd/ssh-cert-renewer.service
+@@ -3,6 +3,7 @@ Description=Renew the local SSH host cer
+ After=network-online.target
+ Documentation=https://smallstep.com/docs/step-ca/certificate-authority-server-production
+ StartLimitIntervalSec=0
++PartOf=cert-renewer.target
+ 
+ [Service]
+ Type=oneshot
+Index: cli-0.22.0/systemd/ssh-cert-renewer.timer
+===================================================================
+--- cli-0.22.0.orig/systemd/ssh-cert-renewer.timer
++++ cli-0.22.0/systemd/ssh-cert-renewer.timer
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=Timer to renew the local SSH host certificate
+ Documentation=https://smallstep.com/docs/step-ca/certificate-authority-server-production
++PartOf=cert-renewer.target
+ 
+ [Timer]
+ Persistent=true

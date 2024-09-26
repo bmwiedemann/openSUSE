@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:49:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build against sle15-sp3; %ldconfig_scriptlets doesn't exist
+  yet 
+
+-------------------------------------------------------------------
+Thu Sep 26 11:16:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added nvidia-libXNVCtrl.rpmlintrc to workaround SUSE's package
+  name policy
+
+-------------------------------------------------------------------
+Thu Sep 26 11:10:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added %ix86 to exclusivearchs because hwloc and others like
+  bitwarden, conky, element-desktop nodejs-electron need libNVCtrl
+  for this arch
+
+-------------------------------------------------------------------
 Fri Sep 20 12:01:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - created package

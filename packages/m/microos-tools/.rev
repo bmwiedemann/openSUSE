@@ -339,4 +339,16 @@
     <comment></comment>
     <requestid>1186859</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b887fa0b6a61a6af18465016371a2b26</srcmd5>
+    <version>2.21+git16</version>
+    <time>1727369556</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21+git16:
+  * selinux: Avoid parameter duplication
+  * 98selinux-microos: Use a single thread for relabelling /etc
+  * Use all cores for SELinux restorecon (related to jsc#SMO-382)
+- _service: Omit +git0 suffix in versions</comment>
+    <requestid>1203604</requestid>
+  </revision>
 </revisionlist>

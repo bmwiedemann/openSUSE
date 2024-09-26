@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
+Wed Sep 25 16:59:48 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- add compatibility symlink
+
+-------------------------------------------------------------------
+Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- remove release tags for additional_versions
+
+-------------------------------------------------------------------
 Tue Sep 24 12:18:47 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - use internal target image for the last layer on tumbleweed

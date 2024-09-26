@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:13:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.21+git16:
+  * selinux: Avoid parameter duplication
+  * 98selinux-microos: Use a single thread for relabelling /etc
+  * Use all cores for SELinux restorecon (related to jsc#SMO-382)
+- _service: Omit +git0 suffix in versions
+
+-------------------------------------------------------------------
 Thu Jul 11 11:48:19 UTC 2024 - fvogt@suse.com
 
 - Update to version 2.21+git13:

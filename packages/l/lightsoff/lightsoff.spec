@@ -26,7 +26,7 @@ URL:            https://wiki.gnome.org/Apps/Lightsoff
 Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
-BuildRequires:  gettext >= 0.19.8
+BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

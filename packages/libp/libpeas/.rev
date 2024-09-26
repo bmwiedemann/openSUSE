@@ -404,4 +404,12 @@
     <comment>New stable release (forwarded request 1072722 from iznogood)</comment>
     <requestid>1073176</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>33b9ab94c355d44b931dc7ce6e71648c</srcmd5>
+    <version>1.36.0</version>
+    <time>1727369556</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203599</requestid>
+  </revision>
 </revisionlist>

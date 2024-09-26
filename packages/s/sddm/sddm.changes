@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 10 22:04:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Move default value for [Autologin] Session
+  0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+  to 00-general.conf
+
+-------------------------------------------------------------------
+Fri Aug 30 19:17:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to make autologin with wayland more reliable (boo#1221507):
+  * 0001-Remove-unused-Display-m_relogin-variable.patch
+  * 0002-Set-Display-m_started-early.patch
+  * 0003-Load-autologin-configuration-in-Display-Display.patch
+  * 0004-Reset-daemonApp-first-in-the-Display-constructor.patch
+  * 0005-If-autologin-is-used-avoid-starting-a-display-server.patch
+- Rebase 0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+
+-------------------------------------------------------------------
 Fri May 10 08:07:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop the empty branding-upstream subpackages (boo#1224063)

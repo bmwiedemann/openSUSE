@@ -32,7 +32,7 @@ Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
 
 # For directory ownership
 BuildRequires:  dbus-1
-BuildRequires:  gettext >= 0.19.8
+BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
 BuildRequires:  libgcrypt-devel >= 1.4.5
 BuildRequires:  meson >= 0.52

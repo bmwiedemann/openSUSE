@@ -10,4 +10,20 @@
 make use of %ldconfig_scriptlets</comment>
     <requestid>1202390</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13c328ff5d4820f3d9e4642b47049d82</srcmd5>
+    <version>560.35.03</version>
+    <time>1727369567</time>
+    <user>anag+factory</user>
+    <comment>- fixed build against sle15-sp3; %ldconfig_scriptlets doesn't exist
+  yet 
+
+- added nvidia-libXNVCtrl.rpmlintrc to workaround SUSE's package
+  name policy
+
+- added %ix86 to exclusivearchs because hwloc and others like
+  bitwarden, conky, element-desktop nodejs-electron need libNVCtrl
+  for this arch</comment>
+    <requestid>1203883</requestid>
+  </revision>
 </revisionlist>

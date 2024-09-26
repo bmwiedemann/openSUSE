@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:45:28 UTC 2024 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Avoid explicit reading of /etc/salt/minion (bsc#1220357)
+- Allow NamedLoaderContexts to be returned from loader
+- Revert the change making reactor less blocking (bsc#1230322)
+- Use --cachedir for extension_modules in salt-call (bsc#1226141)
+- Prevent using SyncWrapper with no reason
+
+- Added:
+  * avoid-explicit-reading-of-etc-salt-minion-bsc-122035.patch
+  * allow-namedloadercontexts-to-be-returned-from-loader.patch
+  * revert-the-change-making-reactor-less-blocking-bsc-1.patch
+  * use-cachedir-for-extension_modules-in-salt-call-bsc-.patch
+  * prevent-using-syncwrapper-with-no-reason.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 12:51:43 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix the SELinux context for Salt Minion service (bsc#1219041)

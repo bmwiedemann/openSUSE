@@ -1115,4 +1115,12 @@ Send to Staging:E.
     (manylinux_2_28) wheels were added.</comment>
     <requestid>1180847</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>b59c8c8bc7803a8a7daa76092603b2b8</srcmd5>
+    <version>5.3.0</version>
+    <time>1727369565</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203784</requestid>
+  </revision>
 </revisionlist>

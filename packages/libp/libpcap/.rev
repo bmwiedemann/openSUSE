@@ -973,4 +973,12 @@
     - Report IEEE 802.11 as PCAP_IF_WIRELESS. (forwarded request 1198278 from pmonrealgonzalez)</comment>
     <requestid>1198327</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>7acfa1814f302575bf1ac728bdd0cb59</srcmd5>
+    <version>1.10.5</version>
+    <time>1727369549</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203533</requestid>
+  </revision>
 </revisionlist>

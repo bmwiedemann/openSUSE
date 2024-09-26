@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        24.3.0
+Version:        24.7.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -45,13 +45,11 @@ Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 Patch5:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-UPSTREAM CVE-2024-41671.patch gh#twisted/twisted@4a930de12fb6
-Patch7:         CVE-2024-41671.patch
-# PATCH-FIX-UPSTREAM CVE-2024-41810.patch gh#twisted/twisted@046a164f89a0
-Patch8:         CVE-2024-41810.patch
+# PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/pull/12314 12313 Fix test_manhole.py on Python 3.13rc2
+Patch7:         12313-fix-test_manhole.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module incremental >= 21.3.0}
+BuildRequires:  %{python_module incremental >= 24.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -65,7 +63,7 @@ Requires:       python-Automat >= 0.8.0
 Requires:       python-attrs >= 19.2.0
 Requires:       python-constantly >= 15.1
 Requires:       python-hyperlink >= 17.1.1
-Requires:       python-incremental >= 21.3.0
+Requires:       python-incremental >= 24.7.0
 Requires:       python-typing_extensions >= 3.6.5
 Requires:       python-zope.interface >= 4.4.2
 # /SECTION

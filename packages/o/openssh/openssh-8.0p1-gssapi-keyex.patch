@@ -5,7 +5,7 @@ index e7549470..b68c1710 100644
 @@ -109,6 +109,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  	kex.o kex-names.o kexdh.o kexgex.o kexecdh.o kexc25519.o \
  	kexgexc.o kexgexs.o \
- 	kexsntrup761x25519.o sntrup761.o kexgen.o \
+ 	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
 +	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
  	sshbuf-io.o
@@ -1293,9 +1293,9 @@ index a5ae6ac0..fe714141 100644
 --- a/kex.h
 +++ b/kex.h
 @@ -102,6 +102,15 @@ enum kex_exchange {
- 	KEX_ECDH_SHA2,
  	KEX_C25519_SHA256,
  	KEX_KEM_SNTRUP761X25519_SHA512,
+ 	KEX_KEM_MLKEM768X25519_SHA256,
 +#ifdef GSSAPI
 +	KEX_GSS_GRP1_SHA1,
 +	KEX_GSS_GRP14_SHA1,
@@ -3488,7 +3488,7 @@ index af00fb30..03bc87eb 100644
  
  	free(hkalgs);
  
-@@ -224,14 +256,44 @@ ssh_kex2(struct ssh *ssh, char *host, struct sockaddr *hostaddr, u_short port)
+@@ -224,15 +256,45 @@ ssh_kex2(struct ssh *ssh, char *host, struct sockaddr *hostaddr, u_short port)
  # ifdef OPENSSL_HAS_ECC
  	ssh->kex->kex[KEX_ECDH_SHA2] = kex_gen_client;
  # endif
@@ -3507,6 +3507,7 @@ index af00fb30..03bc87eb 100644
 +#endif /* WITH_OPENSSL */
  	ssh->kex->kex[KEX_C25519_SHA256] = kex_gen_client;
  	ssh->kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_client;
+ 	ssh->kex->kex[KEX_KEM_MLKEM768X25519_SHA256] = kex_gen_client;
  	ssh->kex->verify_host_key=&verify_host_key_callback;
  
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
@@ -3758,7 +3759,7 @@ index 60b2aaf7..d92f03aa 100644
 +#endif /* WITH_OPENSSL */
  	kex->kex[KEX_C25519_SHA256] = kex_gen_server;
  	kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_server;
- 	kex->load_host_public_key=&get_hostkey_public_by_type;
+  	kex->kex[KEX_KEM_MLKEM768X25519_SHA256] = kex_gen_server;
 diff --git a/sshd_config b/sshd_config
 index 19b7c91a..2c48105f 100644
 --- a/sshd_config

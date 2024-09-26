@@ -1,0 +1,73 @@
+From 1be3f92ef3bf14e47340e2e075291204b3e75e98 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 25 Sep 2024 14:07:42 +0300
+Subject: [PATCH] Allow NamedLoaderContexts to be returned from loader
+
+It is useful in some cases to return NamedLoaderContexts from loaded
+functions. Instead of choking or requireing implimenters to call the
+context's value() method before being de-scoped, detect when a
+NamedLoaderContext has been returned and return the value from the
+current context.
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+---
+ salt/loader/lazy.py                              |  5 ++++-
+ tests/pytests/integration/modules/test_config.py |  8 ++++++++
+ tests/pytests/unit/loader/test_loader.py         | 13 +++++++++++++
+ 3 files changed, 25 insertions(+), 1 deletion(-)
+ create mode 100644 tests/pytests/integration/modules/test_config.py
+
+diff --git a/salt/loader/lazy.py b/salt/loader/lazy.py
+index 5de995d446..b7fd97f0e1 100644
+--- a/salt/loader/lazy.py
++++ b/salt/loader/lazy.py
+@@ -1246,7 +1246,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+             self.parent_loader = current_loader
+         token = salt.loader.context.loader_ctxvar.set(self)
+         try:
+-            return _func_or_method(*args, **kwargs)
++            ret = _func_or_method(*args, **kwargs)
++            if isinstance(ret, salt.loader.context.NamedLoaderContext):
++                ret = ret.value()
++            return ret
+         finally:
+             self.parent_loader = None
+             salt.loader.context.loader_ctxvar.reset(token)
+diff --git a/tests/pytests/integration/modules/test_config.py b/tests/pytests/integration/modules/test_config.py
+new file mode 100644
+index 0000000000..afdf470605
+--- /dev/null
++++ b/tests/pytests/integration/modules/test_config.py
+@@ -0,0 +1,8 @@
++import pytest
++
++
++@pytest.mark.slow_test
++def test_config_items(salt_cli, salt_minion):
++    ret = salt_cli.run("config.items", minion_tgt=salt_minion.id)
++    assert ret.returncode == 0
++    assert isinstance(ret.data, dict)
+diff --git a/tests/pytests/unit/loader/test_loader.py b/tests/pytests/unit/loader/test_loader.py
+index 86348749db..aba605f42a 100644
+--- a/tests/pytests/unit/loader/test_loader.py
++++ b/tests/pytests/unit/loader/test_loader.py
+@@ -62,3 +62,16 @@ def test_raw_mod_functions():
+     ret = salt.loader.raw_mod(opts, "grains", "get")
+     for k, v in ret.items():
+         assert isinstance(v, salt.loader.lazy.LoadedFunc)
++
++
++def test_return_named_context_from_loaded_func(tmp_path):
++    opts = {
++        "optimization_order": [0],
++    }
++    contents = """
++    def foobar():
++        return __test__
++    """
++    with pytest.helpers.temp_file("mymod.py", contents, directory=tmp_path):
++        loader = salt.loader.LazyLoader([tmp_path], opts, pack={"__test__": "meh"})
++        assert loader["mymod.foobar"]() == "meh"
+-- 
+2.46.1
+

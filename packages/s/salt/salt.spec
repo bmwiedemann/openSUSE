@@ -436,6 +436,16 @@ Patch135:       fix-test_debian-to-work-in-our-infrastructure-676.patch
 Patch136:       fix-deprecated-code-677.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66780
 Patch137:       fix-the-selinux-context-for-salt-minion-service-bsc-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66510
+Patch138:       prevent-using-syncwrapper-with-no-reason.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66742
+Patch139:       use-cachedir-for-extension_modules-in-salt-call-bsc-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/680
+Patch140:       revert-the-change-making-reactor-less-blocking-bsc-1.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66649
+Patch141:       allow-namedloadercontexts-to-be-returned-from-loader.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/d54407ba6dc664e5e5f3f613e27ae24f828c9648
+Patch142:       avoid-explicit-reading-of-etc-salt-minion-bsc-122035.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

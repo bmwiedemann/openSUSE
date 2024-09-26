@@ -304,4 +304,13 @@ Update to 4.6.1</comment>
     <comment>- Remove upper bound on pytest, and switch to importlib import-mode.</comment>
     <requestid>1175661</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>2f6003b5d17a7f57b639d1ab07d36bea</srcmd5>
+    <version>5.7.2</version>
+    <time>1727369557</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1203611</requestid>
+  </revision>
 </revisionlist>

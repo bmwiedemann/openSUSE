@@ -1,7 +1,9 @@
-Index: Python-3.12.3/Lib/test/test_compile.py
-===================================================================
---- Python-3.12.3.orig/Lib/test/test_compile.py
-+++ Python-3.12.3/Lib/test/test_compile.py
+---
+ Lib/test/test_compile.py |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/Lib/test/test_compile.py
++++ b/Lib/test/test_compile.py
 @@ -14,6 +14,9 @@ from test.support import (script_helper,
                            requires_specialization, C_RECURSION_LIMIT)
  from test.support.os_helper import FakePath

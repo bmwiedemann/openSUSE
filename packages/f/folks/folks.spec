@@ -32,7 +32,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
 Source:         %{name}-%{version}.tar.zst
 
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig

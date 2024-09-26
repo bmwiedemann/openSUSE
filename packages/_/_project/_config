@@ -654,8 +654,8 @@ Prefer: -libcurl-mini4
 #have choice for pkgconfig(libsystemd): systemd-devel systemd-devel-32bit
 Prefer: -systemd-devel-32bit
 
-#have choice for libXNVCtrl.so.0()(64bit) needed by nodejs-electron: libXNVCtrl0 nvidia-libXNVCtrl
-Prefer: -nvidia-libXNVCtrl
+#have choice for libXNVCtrl.so.0()(64bit): libXNVCtrl0 nvidia-libXNVCtrl
+Prefer: -libXNVCtrl0
 
 #---
 

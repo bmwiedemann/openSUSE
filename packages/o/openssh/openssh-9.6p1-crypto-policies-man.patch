@@ -160,7 +160,7 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm HostKeyAlias
  Specifies an alias that should be used instead of the
  real host name when looking up or saving the host key
-@@ -1311,36 +1313,30 @@ it may be zero or more of:
+@@ -1311,37 +1313,30 @@ it may be zero or more of:
  and
  .Cm pam .
  .It Cm KexAlgorithms
@@ -172,7 +172,7 @@ Index: openssh-9.6p1/ssh_config.5
 +.Pp
  Specifies the permitted KEX (Key Exchange) algorithms that will be used and
  their preference order.
- The selected algorithm will the the first algorithm in this list that
+ The selected algorithm will be the first algorithm in this list that
  the server also supports.
  Multiple algorithms must be comma-separated.
  .Pp
@@ -194,7 +194,8 @@ Index: openssh-9.6p1/ssh_config.5
 -.Pp
 -The default is:
 -.Bd -literal -offset indent
--sntrup761x25519-sha512@openssh.com,
+-sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,
+-mlkem768x25519-sha256,
 -curve25519-sha256,curve25519-sha256@libssh.org,
 -ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
 -diffie-hellman-group-exchange-sha256,
@@ -534,13 +535,14 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The supported algorithms are:
  .Pp
-@@ -1072,16 +1057,6 @@ ecdh-sha2-nistp521
+@@ -1072,17 +1057,6 @@ ecdh-sha2-nistp521
  sntrup761x25519-sha512@openssh.com
  .El
  .Pp
 -The default is:
 -.Bd -literal -offset indent
--sntrup761x25519-sha512@openssh.com,
+-sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,
+-mlkem768x25519-sha256,
 -curve25519-sha256,curve25519-sha256@libssh.org,
 -ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
 -diffie-hellman-group-exchange-sha256,

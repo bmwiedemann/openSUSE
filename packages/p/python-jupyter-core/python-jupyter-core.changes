@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 25 08:33:08 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May 22 04:15:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on pytest, and switch to importlib import-mode. 

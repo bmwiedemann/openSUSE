@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/cilium/ebpf.git</param>
+              <param name="changesrevision">061e86d8f5e99aa6f04d11a3807c8cacdbe7908b</param></service></servicedata>

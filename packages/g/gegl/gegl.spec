@@ -37,6 +37,7 @@ Source1:        normalize-gir.pl
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM
 Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/commit/66de8124.patch
+Patch1:         revertleap.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

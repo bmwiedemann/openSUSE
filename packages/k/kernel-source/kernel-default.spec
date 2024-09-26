@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.10
-%define patchversion 6.10.11
-%define git_commit bd33620bc42c8ee17ac16edda89043075c0b0049
+%define srcversion 6.11
+%define patchversion 6.11.0
+%define git_commit b87e8860163b37f36aaa069d6a77d6e0ffa005ae
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,9 +37,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.10.11
+Version:        6.11.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbd33620
+Release:        <RELEASE>.gb87e886
 %else
 Release:        0
 %endif

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 20 19:54:11 UTC 2024 - mcepl@cepl.eu
+
+- Switch to Git source and update to version 3.2.0+git.1726768917.5eedea3:
+  * Use non-deprecated argument name in test-suite
+  * Fixed issue in `Bugzilla.fix_url`
+  * Prep for release 3.3.0
+  * ci: bump actions/checkout from 3 to 4
+  * ci: bump actions/setup-python from 4 to 5
+  * Run functional RO tests in GitHub actions
+  * man: Regenerate bugzilla.1
+  * man: Add section about `bugzillarc`
+  * Allow bug creation with an explicitly empty list of groups (closes #210)
+  * cli: Support `--field` and `--field-json` for `bugzilla attach` (#206)
+- Remove upstreamed patch 188-fix-api-key-leak.diff
+
+-------------------------------------------------------------------
 Mon Sep 25 14:57:10 UTC 2023 - Julio González Gil <jgonzalez@suse.com>
 
 - Fix API Key leak (bsc#1215718)

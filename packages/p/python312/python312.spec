@@ -110,7 +110,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.5
+Version:        3.12.6
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -168,13 +168,6 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
-# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API)
-Patch36:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM CVE-2023-6597-TempDir-cleaning-symlink.patch bsc#1219666 mcepl@suse.com
-# tempfile.TemporaryDirectory: fix symlink bug in cleanup (from gh#python/cpython!99930)
-Patch38:        CVE-2023-6597-TempDir-cleaning-symlink.patch
 # PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # This problem on libexpat is patched on 15.6 without version
 # update, this patch changes the tests to match the libexpat provided
@@ -186,9 +179,9 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 # PATCH-FIX-SLE docs-docutils_014-Sphinx_420.patch bsc#[0-9]+ mcepl@suse.com
 # related to gh#python/cpython#119317
 Patch41:        docs-docutils_014-Sphinx_420.patch
-# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
-# avoid denial of service in zipfile
-Patch42:        CVE-2024-8088-inf-loop-zipfile_Path.patch
+# PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
+# Make documentation extensions working with Python 3.6
+Patch44:        doc-py38-to-py36.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -219,6 +212,9 @@ BuildRequires:  mpdecimal-devel
 BuildRequires:  python3-Sphinx >= 4.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
+%if 0%{?suse_version} < 1599
+BuildRequires:  python3-dataclasses
+%endif
 %endif
 %endif
 %if %{with general}
@@ -480,7 +476,7 @@ rm Lib/site-packages/README.txt
 tar xvf %{SOURCE21}
 
 # Don't fail on warnings when building documentation
-# sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
+sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
 
 %build
 %if %{with doc}

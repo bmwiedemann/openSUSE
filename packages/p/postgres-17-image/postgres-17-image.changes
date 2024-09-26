@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
+Wed Sep 25 10:02:07 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install libpq5 to avoid have-choice errors
+
+-------------------------------------------------------------------
+Wed Sep 25 09:52:54 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the PostgreSQL 17 %%pg_patch_version%% BCI

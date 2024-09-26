@@ -41,19 +41,19 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.5
+Version:        4.6
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-URL:            https://chrony.tuxfamily.org/
-Source:         https://download.tuxfamily.org/chrony/chrony-%{version}.tar.gz
+URL:            https://chrony-project.org/
+Source:         https://chrony-project.org/releases/chrony-%{version}.tar.gz
+Source1:        https://chrony-project.org/releases/chrony-%{version}-tar-gz-asc.txt#/chrony-%{version}.tar.gz.sig
 Source2:        chronyd.sysconfig
 Source3:        chrony.dhclient
 Source4:        chrony.helper
 Source5:        chrony-dnssrv@.service
 Source6:        chrony-dnssrv@.timer
-Source7:        https://download.tuxfamily.org/chrony/chrony-%{version}-tar-gz-asc.txt#/chrony-%{version}.tar.gz.sig
 Source8:        chrony.keyring
 # Simulator for test suite
 Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/clknetsim-%{clknetsim_ver}.tar.gz
@@ -70,7 +70,6 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
-Patch9:         chrony-124-tai.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -182,7 +181,6 @@ e.g. because the servers will be set via DHCP.
 %patch -P 3
 %patch -P 7
 %patch -P 8
-%patch -P 9
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .

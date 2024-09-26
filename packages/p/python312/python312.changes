@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Sep 13 17:09:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add doc-py38-to-py36.patch making building documentation
+  compatible with Python 3.6, which runs Sphinx on SLE.
+
+-------------------------------------------------------------------
+Sat Sep  7 21:49:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.6:
+  - Tests
+    - gh-101525: Skip test_gdb if the binary is relocated by
+      BOLT. Patch by Donghee Na.
+  - Security
+    - gh-123678: Upgrade libexpat to 2.6.3
+    - gh-121285: Remove backtracking from tarfile header parsing
+      for hdrcharset, PAX, and GNU sparse headers (bsc#1230227,
+      CVE-2024-6232).
+  - Library
+    - gh-123270: Applied a more surgical fix for malformed
+      payloads in zipfile.Path causing infinite loops (gh-122905)
+      without breaking contents using legitimate characters
+      (bsc#1229704, CVE-2024-8088).
+    - gh-123213: xml.etree.ElementTree.Element.extend() and
+      Element assignment no longer hide the internal exception if
+      an erronous generator is passed. Patch by Bar Harel.
+    - gh-85110: Preserve relative path in URL without netloc in
+      urllib.parse.urlunsplit() and urllib.parse.urlunparse().
+    - gh-123067: Fix quadratic complexity in parsing "-quoted
+      cookie values with backslashes by http.cookies
+      (bsc#1229596, CVE-2024-7592)
+    - gh-122903: zipfile.Path.glob now correctly matches
+      directories instead of silently omitting them.
+    - gh-122905: zipfile.Path objects now sanitize names from the
+      zipfile.
+    - gh-122695: Fixed double-free when using gc.get_referents()
+      with a freed asyncio.Future iterator.
+    - gh-116263: logging.handlers.RotatingFileHandler no longer
+      rolls over empty log files.
+    - gh-118814: Fix the typing.TypeVar constructor when name is
+      passed by keyword.
+    - gh-122478: Remove internal frames from tracebacks
+      shown in code.InteractiveInterpreter with non-default
+      sys.excepthook(). Save correct tracebacks in
+      sys.last_traceback and update __traceback__ attribute of
+      sys.last_value and sys.last_exc.
+    - gh-113785: csv now correctly parses numeric fields (when
+      used with csv.QUOTE_NONNUMERIC) which start with an escape
+      character.
+    - gh-112182: asyncio.futures.Future.set_exception() now
+      transforms StopIteration into RuntimeError instead of
+      hanging or other misbehavior. Patch contributed by Jamie
+      Phan.
+    - gh-108172: webbrowser honors OS preferred browser on Linux
+      when its desktop entry name contains the text of a known
+      browser name.
+    - gh-102988: email.utils.getaddresses() and
+      email.utils.parseaddr() now return ('', '') 2-tuples
+      in more situations where invalid email addresses are
+      encountered instead of potentially inaccurate values. Add
+      optional strict parameter to these two functions: use
+      strict=False to get the old behavior, accept malformed
+      inputs. getattr(email.utils, 'supports_strict_parsing',
+      False) can be use to check if the strict paramater is
+      available. Patch by Thomas Dwyer and Victor Stinner to
+      improve the CVE-2023-27043 fix.
+    - gh-99437: runpy.run_path() now decodes path-like objects,
+      making sure __file__ and sys.argv[0] of the module being
+      run are always strings.
+  - IDLE
+    - gh-120083: Add explicit black IDLE Hovertip foreground
+      color needed for recent macOS. Fixes Sonoma showing
+      unreadable white on pale yellow. Patch by John Riggles.
+  - Core and Builtins
+    - gh-123321: Prevent Parser/myreadline race condition from
+      segfaulting on multi-threaded use. Patch by Bar Harel and
+      Amit Wienner.
+    - gh-122982: Extend the deprecation period for bool inversion
+      (~) by two years.
+    - gh-123229: Fix valgrind warning by initializing the
+      f-string buffers to 0 in the tokenizer. Patch by Pablo
+      Galindo
+    - gh-123142: Fix too-wide source location in exception
+      tracebacks coming from broken iterables in comprehensions.
+    - gh-123048: Fix a bug where pattern matching code could emit
+      a JUMP_FORWARD with no source location.
+    - gh-123083: Fix a potential use-after-free in
+      STORE_ATTR_WITH_HINT.
+    - gh-122527: Fix a crash that occurred when a
+      PyStructSequence was deallocated after its type’s
+      dictionary was cleared by the GC. The type’s tp_basicsize
+      now accounts for non-sequence fields that aren’t included
+      in the Py_SIZE of the sequence.
+    - gh-93691: Fix source locations of instructions generated
+      for with statements.
+  - Build
+    - gh-123297: Propagate the value of LDFLAGS to LDCXXSHARED in
+      sysconfig. Patch by Pablo Galindo
+- Remove upstreamed patches:
+  - CVE-2023-27043-email-parsing-errors.patch
+  - CVE-2024-8088-inf-loop-zipfile_Path.patch
+  - CVE-2023-6597-TempDir-cleaning-symlink.patch
+  - gh120226-fix-sendfile-test-kernel-610.patch
+
+-------------------------------------------------------------------
+Mon Sep  2 09:44:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh120226-fix-sendfile-test-kernel-610.patch to avoid
+  failing test_sendfile_close_peer_in_the_middle_of_receiving
+  tests on Linux >= 6.10 (GH-120227).
+
+-------------------------------------------------------------------
 Wed Aug 28 16:54:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent

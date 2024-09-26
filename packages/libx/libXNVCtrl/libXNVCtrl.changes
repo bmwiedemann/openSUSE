@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Fri Jul 29 13:19:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
-
-- Initial packaging of libXNVCtrl version 510.47.03
-  * nothing changed between 510.47.03 and 515.57
-- Add required patches:
-  * shared-library.patch
-  * persistent-nvidia-id-string.patch
-

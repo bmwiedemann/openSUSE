@@ -97,7 +97,8 @@ pic="pic"
 export CFLAGS="%{optflags} -f$pic" CXXFLAGS="%{optflags} -f$pic"
 %configure \
 	--enable-bluetooth=yes \
-	--enable-ipv6
+	--enable-ipv6 \
+	--enable-rdma
 %make_build all shared
 
 %install

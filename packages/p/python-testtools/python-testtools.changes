@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 23 14:06:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.2
+  * Treat methodName="runTest" similar to unittest.TestCase,
+    fixes compatibility with pytest 8.3. (Natanael Copa, #372)
+  * Use ruff for linting. (Jelmer Vernooĳ)
+  * Fix compatibility with Python 3.12.1. (Matthew Treinish)
+  * Deprecate SkippedTest exception. (Stephen Finucane)
+  * Drop support for Python 3.7. (Jelmer Vernooĳ)
+- Drop merged pytest82.patch
+- Add upstream twisted.patch to fix tests with new Twisted
+
+-------------------------------------------------------------------
 Fri May 17 14:07:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add pytest82.patch to fix functionality with the new pytest.

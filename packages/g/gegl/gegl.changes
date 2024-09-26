@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 16 11:20:53 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- add revertleap.patch to get gegl build on older ffmpegs
+
+-------------------------------------------------------------------
 Wed Jul 31 06:02:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add backported 66de8124.patch: Fix build against ffmpeg-7.

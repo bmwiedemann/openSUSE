@@ -34,12 +34,24 @@
 %bcond_without allow_root_password_login_by_default
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+%bcond_without crypto_policies
+%else
+%bcond_with crypto_policies
+%endif
+
+%if 0%{?suse_version} < 1500
+%bcond_without openssl11
+%else
+%bcond_with openssl11
+%endif
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        9.8p1
+Version:        9.9p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -126,20 +138,22 @@ Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
-# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
-Patch107:       openssh-9.6p1-crypto-policies.patch
-Patch108:       openssh-9.6p1-crypto-policies-man.patch
-Patch109:       fix-memleak-in-process_server_config_line_depth.patch
-# PATCH-FIX-UPSTREAM alarrosa@suse.com -- https://github.com/openssh/openssh-portable/pull/516
-Patch110:       fix-audit-fail-attempt.patch
+# 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
-Patch111:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+# 1000 - 2000  --  Conditional patches
+# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
+%if 0%{with crypto_policies}
+Patch1000:      openssh-9.6p1-crypto-policies.patch
+Patch1001:      openssh-9.6p1-crypto-policies-man.patch
+%endif
 %if 0%{with allow_root_password_login_by_default}
-Patch1000:      openssh-7.7p1-allow_root_password_login.patch
+# PATCH-FIX-SLE Allow root login with password by default (for SLE12 and SLE15)
+Patch1002:      openssh-7.7p1-allow_root_password_login.patch
 %endif
 BuildRequires:  audit-devel
 BuildRequires:  automake
-%if 0%{?sle_version} >= 150500
+%if 0%{?suse_version} <= 1600
 BuildRequires:  gcc11
 %endif
 BuildRequires:  groff
@@ -148,7 +162,12 @@ BuildRequires:  libselinux-devel
 %if %{with ldap}
 BuildRequires:  openldap2-devel
 %endif
+%if 0%{with openssl11}
+BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  openssl-1_1
+%else
 BuildRequires:  openssl-devel
+%endif
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -158,7 +177,7 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Requires:       %{name}-clients = %{version}-%{release}
 Requires:       %{name}-server = %{version}-%{release}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?suse_version} < 1500 
 BuildRequires:  pkgconfig(krb5)
 %else
 BuildRequires:  krb5-mini-devel
@@ -204,7 +223,9 @@ clients.
 Summary:        SSH (Secure Shell) server
 Group:          Productivity/Networking/SSH
 Requires:       %{name}-common = %{version}-%{release}
+%if 0%{with crypto_policies}
 Requires:       crypto-policies >= 20220824
+%endif
 Recommends:     audit
 Requires(pre):  findutils
 Requires(pre):  grep
@@ -260,7 +281,9 @@ ssh-copy-id(1).
 %package clients
 Summary:        SSH (Secure Shell) client applications
 Group:          Productivity/Networking/SSH
+%if 0%{with crypto_policies}
 Requires:       crypto-policies >= 20220824
+%endif
 Requires:       %{name}-common = %{version}-%{release}
 Provides:       openssh:%{_bindir}/ssh
 
@@ -329,7 +352,7 @@ sed -i.libexec 's,@LIBEXECDIR@,%{_libexecdir}/ssh,' \
     )
 
 %build
-%if 0%{?sle_version} >= 150500
+%if 0%{?suse_version} <= 1600
 export CC=gcc-11
 %endif
 autoreconf -fiv
@@ -426,11 +449,13 @@ mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buil
 %endif
 %endif
 
+%if 0%{with crypto_policies}
 install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 %if %{defined _distconfdir}
 install -m 644 sshd_config_suse_cp %{buildroot}%{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %else
 install -m 644 sshd_config_suse_cp %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
+%endif
 %endif
 
 %if 0%{?suse_version} < 1550
@@ -457,13 +482,19 @@ install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
 #
 # this shows up earlier because otherwise the %%expand of
 # the macro is too late.
+%if 0%{with openssl11}
+%define opensslbin openssl-1_1
+%else
+%define opensslbin openssl
+%endif
+
 %{expand:%%global __os_install_post {%__os_install_post
 for b in \
         %{_bindir}/ssh \
         %{_sbindir}/sshd \
         %{_libexecdir}/ssh/sftp-server \
         ; do
-    openssl dgst -sha256 -binary -hmac %{CHECKSUM_HMAC_KEY} < %{buildroot}$b > %{buildroot}$b%{CHECKSUM_SUFFIX}
+    %{opensslbin} dgst -sha256 -binary -hmac %{CHECKSUM_HMAC_KEY} < %{buildroot}$b > %{buildroot}$b%{CHECKSUM_SUFFIX}
 done
 
 }}
@@ -481,6 +512,7 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 %{fillup_only -n ssh}
 %service_add_post sshd.service sshd.socket
 
+%if 0%{with crypto_policies}
 %if ! %{defined _distconfdir}
 test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
     echo "WARNING: /etc/ssh/sshd_config doesn't include config files from"
@@ -488,6 +520,7 @@ test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.c
     echo "be honored until the following line is added at the start of"
     echo "/etc/ssh/sshd_config :"
     echo "Include /etc/ssh/sshd_config.d/*.conf" ) ) ||:
+%endif
 %endif
 
 %preun server
@@ -503,6 +536,7 @@ else
 %service_del_postun sshd.service sshd.socket
 fi
 
+%if 0%{with crypto_policies}
 %if ! %{defined _distconfdir}
 %post server-config-disallow-rootlogin
 test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
@@ -511,6 +545,7 @@ test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.c
     echo "openssh-server-config-disallow-rootlogin won't be used until"
     echo "the following line is added at the start of /etc/ssh/sshd_config :"
     echo "Include /etc/ssh/sshd_config.d/*.conf" ) ) ||:
+%endif
 %endif
 
 %if %{defined _distconfdir}
@@ -526,6 +561,7 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config.rpmsave.old ||:
 %endif
 
+%if 0%{with crypto_policies}
 %if ! %{defined _distconfdir}
 %post clients
 test -f /etc/ssh/ssh_config && (grep -q "^Include /etc/ssh/ssh_config\.d/\*\.conf" /etc/ssh/ssh_config || ( \
@@ -534,6 +570,7 @@ test -f /etc/ssh/ssh_config && (grep -q "^Include /etc/ssh/ssh_config\.d/\*\.con
     echo "be honored until the following line is added at the start of"
     echo "/etc/ssh/ssh_config :"
     echo "Include /etc/ssh/ssh_config.d/*.conf" ) ) ||:
+%endif
 %endif
 
 %if %{defined _distconfdir}
@@ -582,10 +619,12 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %endif
+%if 0%{with crypto_policies}
 %if %{defined _distconfdir}
 %attr(0600,root,root) %config(noreplace) %{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %else
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
+%endif
 %endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
 %attr(0644,root,root) %{_unitdir}/sshd@.service
@@ -624,8 +663,10 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %endif
 
 %files clients
+%if 0%{with crypto_policies}
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
+%endif
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/ssh/ssh_config
 %else
