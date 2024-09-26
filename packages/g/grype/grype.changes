@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 26 05:02:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.81.0:
+  * add awaiting response management (#2141)
+  * feat: add distro mapping for azure linux 3 (#1848)
+
+-------------------------------------------------------------------
 Tue Sep 24 17:22:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.80.2:
