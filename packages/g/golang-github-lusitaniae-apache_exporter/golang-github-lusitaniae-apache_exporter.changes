@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 12:15:11 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Revert not failing on upackaged files for RHEL
+- Delete unpackaged debug files for RHEL
+
+-------------------------------------------------------------------
 Fri Sep 13 14:35:07 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Revert removing source files for RHEL 9

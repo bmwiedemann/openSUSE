@@ -25,7 +25,6 @@
 %endif
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
-%define _unpackaged_files_terminate_build 0
 %endif
 
 %if 0%{?suse_version}
@@ -103,6 +102,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targe
 %if 0%{?rhel}
 # Fix OBS debug_package execution.
 rm -f %{buildroot}/usr/lib/debug%{_bindir}/%{targetname}-%{version}-*.debug
+rm -rf %{buildroot}%{_usrsrc}/debug/%{name}-%{version}-*
 %endif
 
 %pre
