@@ -148,4 +148,27 @@
     <comment></comment>
     <requestid>1189902</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a2ad7c6fe2ebe7e87d676e559c04666</srcmd5>
+    <version>1.3.5</version>
+    <time>1727369687</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.5
+  * added screencopy:allow_token_by_default to tick the &quot;allow restore token&quot; box by default
+  * added --version
+  * screencopy: fixed invalid toplevel handles being picked in the prompt
+  * screencopy: improved restore data handling
+  * screencopy: fixed a bug where restore data would be gone after 2 restarts of an app
+  * core: added explicit casts to wl_proxy* to fix clang builds
+  * core: improved --help
+  * core: move to hyprwayland-scanner
+  * screenshot: fix compilation due to dubious cast
+  * global shortcuts: fix crash by ignoring duplicate shortcuts
+  * hacky fix for fixing output screencopy
+  * CMakeLists: just search for the wayland-scanner binary
+  * Second fix for out of buffers
+  * Move [some code] to hyprwayland-scanner
+</comment>
+    <requestid>1203909</requestid>
+  </revision>
 </revisionlist>

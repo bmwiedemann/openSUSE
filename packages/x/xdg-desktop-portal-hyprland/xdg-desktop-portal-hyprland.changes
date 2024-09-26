@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:39:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.3.5
+  * added screencopy:allow_token_by_default to tick the "allow restore token" box by default
+  * added --version
+  * screencopy: fixed invalid toplevel handles being picked in the prompt
+  * screencopy: improved restore data handling
+  * screencopy: fixed a bug where restore data would be gone after 2 restarts of an app
+  * core: added explicit casts to wl_proxy* to fix clang builds
+  * core: improved --help
+  * core: move to hyprwayland-scanner
+  * screenshot: fix compilation due to dubious cast
+  * global shortcuts: fix crash by ignoring duplicate shortcuts
+  * hacky fix for fixing output screencopy
+  * CMakeLists: just search for the wayland-scanner binary
+  * Second fix for out of buffers
+  * Move [some code] to hyprwayland-scanner
+
+-------------------------------------------------------------------
 Mon Jul 22 17:43:39 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove fix-compilation-with-pw.patch -- Fixed upstream
