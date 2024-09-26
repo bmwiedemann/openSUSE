@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Sep 26 06:39:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.1:
+  * Implement keep file for #6
+
+-------------------------------------------------------------------
+Sat Sep 14 15:03:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.1~rc4:
+  * add compression to binaries
+  * Update README.md
+  * Clarify write flag
+
+-------------------------------------------------------------------
+Tue Aug 20 06:48:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.1~rc3:
+  * Don't remove if there are zero or no reachable contexts
+  * Add notes on daily trim
+  * Add Q&A
+
+-------------------------------------------------------------------
+Mon Aug 19 13:52:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubetrim: trim your KUBECONFIG automatically
