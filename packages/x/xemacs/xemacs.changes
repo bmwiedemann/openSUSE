@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 19 06:10:19 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Use -fpermissive as compiler option 
+
+-------------------------------------------------------------------
 Wed Jul  3 07:21:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop dependency on fwnndev: fwnn is dead and unmaintained.

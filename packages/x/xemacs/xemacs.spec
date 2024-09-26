@@ -282,7 +282,7 @@ LIBEXEC=${LIB}/xemacs/${VERSION}
     MOD=${ARCH}/modules
   STATE=/var/lib/xemacs
     MAN=/usr/share/man/man1
- CFLAGS="-Wall ${RPM_OPT_FLAGS} -pipe ${LOOP} -DLDAP_DEPRECATED "
+ CFLAGS="-Wall ${RPM_OPT_FLAGS} -pipe ${LOOP} -DLDAP_DEPRECATED -fpermissive"
 %ifarch s390x
  CFLAGS="$CFLAGS -O1"
 %endif
