@@ -465,4 +465,12 @@ versions of libva(2)</comment>
 - updated supplements</comment>
     <requestid>1200642</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5d8c212dffc7813095ba8ce1e30c5178</srcmd5>
+    <version>24.3.4</version>
+    <time>1727369677</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203905</requestid>
+  </revision>
 </revisionlist>

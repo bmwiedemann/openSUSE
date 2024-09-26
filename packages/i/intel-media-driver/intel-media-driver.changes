@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 24 16:01:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.4:
+  * Disable Xe2_Hpm VD-SFC
+  * Fix AV1 Vdenc TU7 GPU Hang Issue
+  * Fix HEVC long scalability hang issue
+  * Fix Coverity issue about 444 read kernel integrate code
+  * Avoid duplicate pointer in packet pipe recycle pool
+  * [Media Common] [VP][MOS] fix double free issue
+
+-------------------------------------------------------------------
 Thu Sep 12 10:43:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to intel-media-24.3.3 - changes since 24.1.5 (jira#PED-10348)
