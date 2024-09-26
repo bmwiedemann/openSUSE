@@ -407,6 +407,7 @@ unsorted:
   - acpid 
   - act 
   - actkbd 
+  - actuated-cli 
   - adaptx 
   - adaptx-doc 
   - adaptx-javadoc 
@@ -1582,6 +1583,7 @@ unsorted:
   - bowtie2 
   - boxfort 
   - boxfort-devel 
+  - bpf2go 
   - bpfmon 
   - bpftool 
   - bpftool-bash-completion 
@@ -3874,6 +3876,7 @@ unsorted:
   - erldash 
   - esbuild 
   - esc 
+  - espanso 
   - espeak-devel 
   - espeak-ng 
   - espeak-ng-compat 
@@ -10632,6 +10635,7 @@ unsorted:
   - kubesec-zsh-completion 
   - kubespy 
   - kubetap 
+  - kubetrim 
   - kubetui 
   - kubeval 
   - kubevirt-container-disk 
@@ -11612,8 +11616,6 @@ unsorted:
   - libX11-xcb1-32bit 
   - libXISF-devel 
   - libXISF0 
-  - libXNVCtrl-devel 
-  - libXNVCtrl0 
   - libXRes1-32bit 
   - libXau-devel 
   - libXau-devel-32bit 
@@ -23688,7 +23690,6 @@ unsorted:
   - python-libcomps-doc 
   - python-libeconf-doc 
   - python-logutils-doc 
-  - python-logzero-doc 
   - python-lxml-doc 
   - python-magic-wormhole-bash-completion 
   - python-magic-wormhole-fish-completion 
@@ -24030,7 +24031,6 @@ unsorted:
   - python3-pyginac 
   - python3-pyginac-devel 
   - python3-pylibiio 
-  - python3-pylint 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pynitrokey 
@@ -24658,6 +24658,7 @@ unsorted:
   - python310-azure-mgmt-communication 
   - python310-azure-mgmt-compute 
   - python310-azure-mgmt-computefleet 
+  - python310-azure-mgmt-computeschedule 
   - python310-azure-mgmt-confidentialledger 
   - python310-azure-mgmt-confluent 
   - python310-azure-mgmt-connectedvmware 
@@ -25785,7 +25786,6 @@ unsorted:
   - python310-itemloaders 
   - python310-iterable-io 
   - python310-itsdangerous 
-  - python310-itypes 
   - python310-iwlib 
   - python310-j2gen 
   - python310-jaraco.classes 
@@ -25909,7 +25909,6 @@ unsorted:
   - python310-korean-lunar-calendar 
   - python310-kubernetes 
   - python310-kwant 
-  - python310-l20n 
   - python310-labels 
   - python310-lal 
   - python310-lalapps 
@@ -26040,7 +26039,6 @@ unsorted:
   - python310-logilab-common 
   - python310-loguru 
   - python310-logutils 
-  - python310-logzero 
   - python310-looseversion 
   - python310-lscsoft-glue 
   - python310-lsprotocol 
@@ -26280,6 +26278,7 @@ unsorted:
   - python310-oktaloginwrapper 
   - python310-olefile 
   - python310-oletools 
+  - python310-ollama 
   - python310-olm 
   - python310-omemo-dr 
   - python310-omni-camera 
@@ -26694,6 +26693,7 @@ unsorted:
   - python310-pylibmc 
   - python310-pylineclip 
   - python310-pylink-square 
+  - python310-pylint 
   - python310-pylint-ignore 
   - python310-pylint-venv 
   - python310-pylons-sphinx-themes 
@@ -28329,6 +28329,7 @@ unsorted:
   - python311-azure-mgmt-communication 
   - python311-azure-mgmt-compute 
   - python311-azure-mgmt-computefleet 
+  - python311-azure-mgmt-computeschedule 
   - python311-azure-mgmt-confidentialledger 
   - python311-azure-mgmt-confluent 
   - python311-azure-mgmt-connectedvmware 
@@ -29419,7 +29420,6 @@ unsorted:
   - python311-itemloaders 
   - python311-iterable-io 
   - python311-itsdangerous 
-  - python311-itypes 
   - python311-iwlib 
   - python311-j2gen 
   - python311-jaraco.classes 
@@ -29537,7 +29537,6 @@ unsorted:
   - python311-korean-lunar-calendar 
   - python311-kubernetes 
   - python311-kwant 
-  - python311-l20n 
   - python311-labels 
   - python311-lal 
   - python311-lalapps 
@@ -29663,7 +29662,6 @@ unsorted:
   - python311-logilab-common 
   - python311-loguru 
   - python311-logutils 
-  - python311-logzero 
   - python311-lscsoft-glue 
   - python311-lsprotocol 
   - python311-lupa 
@@ -29890,6 +29888,7 @@ unsorted:
   - python311-oiffile 
   - python311-oktaloginwrapper 
   - python311-oletools 
+  - python311-ollama 
   - python311-olm 
   - python311-omemo-dr 
   - python311-omni-camera 
@@ -30285,6 +30284,7 @@ unsorted:
   - python311-pylibmc 
   - python311-pylineclip 
   - python311-pylink-square 
+  - python311-pylint 
   - python311-pylint-ignore 
   - python311-pylint-venv 
   - python311-pylons-sphinx-themes 
@@ -31916,6 +31916,7 @@ unsorted:
   - python312-azure-mgmt-communication 
   - python312-azure-mgmt-compute 
   - python312-azure-mgmt-computefleet 
+  - python312-azure-mgmt-computeschedule 
   - python312-azure-mgmt-confidentialledger 
   - python312-azure-mgmt-confluent 
   - python312-azure-mgmt-connectedvmware 
@@ -33042,7 +33043,6 @@ unsorted:
   - python312-itemloaders 
   - python312-iterable-io 
   - python312-itsdangerous 
-  - python312-itypes 
   - python312-iwlib 
   - python312-j2gen 
   - python312-jaraco.classes 
@@ -33164,7 +33164,6 @@ unsorted:
   - python312-korean-lunar-calendar 
   - python312-kubernetes 
   - python312-kwant 
-  - python312-l20n 
   - python312-labels 
   - python312-lal 
   - python312-lalapps 
@@ -33295,7 +33294,6 @@ unsorted:
   - python312-logilab-common 
   - python312-loguru 
   - python312-logutils 
-  - python312-logzero 
   - python312-looseversion 
   - python312-lscsoft-glue 
   - python312-lsprotocol 
@@ -33535,6 +33533,7 @@ unsorted:
   - python312-oktaloginwrapper 
   - python312-olefile 
   - python312-oletools 
+  - python312-ollama 
   - python312-olm 
   - python312-omemo-dr 
   - python312-omni-camera 
@@ -33947,6 +33946,7 @@ unsorted:
   - python312-pylibmc 
   - python312-pylineclip 
   - python312-pylink-square 
+  - python312-pylint 
   - python312-pylint-ignore 
   - python312-pylint-venv 
   - python312-pylons-sphinx-themes 
@@ -37406,6 +37406,10 @@ unsorted:
   - stellarbatchsolver 
   - stellarium 
   - stellarsolver-devel 
+  - step-cli 
+  - step-cli-bash-completion 
+  - step-cli-fish-completion 
+  - step-cli-zsh-completion 
   - stern 
   - stgit 
   - stgit-bash-completion 
