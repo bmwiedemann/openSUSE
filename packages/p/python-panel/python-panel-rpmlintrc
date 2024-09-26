@@ -1,2 +1,2 @@
-# Required for version info checked by other packages
-addFilter(".*hidden-file-or-dir.*/site-packages/panel/.version")
+# These must be empty, otherwise npm fails
+addFilter("zero-length .*css")

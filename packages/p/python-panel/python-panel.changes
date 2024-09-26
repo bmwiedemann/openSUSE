@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Sep 25 10:38:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.0
+  * This release, while technically a minor release hugely expands
+    the scope of what is possible in Panel. In particular the
+    introduction of the new panel.custom module makes it trivially
+    easy to create new JS and React based components using modern
+    tooling, a first-class developer experience and support for
+    compilation and bundling. We are incredibly excited to see
+    which new components you build using this approach. This
+    release also includes native integration with FastAPI, such
+    that you can now run Panel apps natively on an existing FastAPI
+    server. We also introduce a number of new components, improved
+    the developer experience, and squashed a huge number of bugs,
+    particularly for the Tabulator component.
+  ## Features
+  * Allow building custom ESM based JSComponent and ReactComponent
+    (#5593)
+  * Add Placeholder pane (#6790)
+  * Add FileDropper widget (#6826)
+  * Add ChatStep component to show/hide intermediate steps (#6617)
+  * Add TimePicker widget (#7013)
+  * Add PyComponent baseclass (#7051)
+  * Add native support for running Panel on FastAPI server (#7205)
+  ## Enhancements
+  * Allow callbacks after append and stream (#6805)
+  * Enable directory uploads with FileInput (#6808)
+  * Make autoreload robust to syntax errors and empty apps (#7028)
+  * Add support for automatically determining optimal
+    Tabulator.page_size (#6978)
+  * Various typing improvements (#7081, #7092, #7094, #7132)
+  * Display value for player (#7060)
+  * Optimize rendering and scrolling behavior of Feed (#7101)
+  * Implement support for multi-index columns in Tabulator (#7108)
+  * Add placeholder while loading to ChatFeed (#7042)
+  * Allow streaming chunks to HTML and Markdown panes (#7125)
+  * Show Player interval value on click (#7064)
+  * Expose Player options to scale and hide buttons (#7065)
+  * Add on_keyup and value_input for CodeEditor (#6919)
+  * Detect WebGL support on BrowserInfo (#6931)
+  * Tweak ChatMessage layout (#7209, #7266)
+  * Add nested editor to Tabulator (#7251)
+  * Support anchor links in HTML and Markdown panes (#7258, #7263)
+  # Bug fixes
+  * Ensure Gauge is responsively sized (#7034)
+  * Ensure Tabulator sorters are correctly synced (#7036)
+  * Ensure Tabulator selection is consistent across paginated,
+    sorted and filtered states (#7058)
+  * Do not propagate clicks on input elements in Card header
+    (#7057)
+  * Ensure Tabulator range selection applies to current view
+    (#7063)
+  * Ensure Tabulator.selection is updated when indexes change
+    (#7066)
+  * Ensure Tabulator can be updated with None value (#7067)
+  * Fix issues with PYTHONPATH in Jupyter Preview (#7059)
+  * Ensure Tabulator styling is correctly applied on multi-index
+    (#7075)
+  * Fix various scrolling related Tabulator issues (#7076)
+  * Ensure Tabulator data is updated after filters are changed
+    (#7074)
+  * Allow controlling DataFrame pane header and cell alignment
+    (#7082)
+  * Highlight active page in Tabulator using Fast Design (#7085)
+  * Ensure follow behavior works when streaming to paginated
+    Tabulator (#7084)
+  * Avoid events boomeranging from frontend (#7093)
+  * Correctly map Tabulator expanded indexes when paginated,
+    filtered and sorted (#7103)
+  * Ensure custom HoloViews backends do not error out (#7114)
+  * Ensure events are always dispatched sequentially (#7128)
+  * Ensure 'multiselect' Tabulator.header_filter uses 'in' filter
+    function (#7111)
+  * Ensure no content warning is not displayed when template is
+    added (#7164)
+  * Make it easy to prompt user for input in ChatFeed (#7148)
+  * Fix LaTeX pane MathJax rendering (#7188)
+  * Ensure OAuth expiry is numeric and can be compared (#7191)
+  * Correctly detect max depth of NestedSelect if level is empty
+    (#7194)
+  * Make --setup/--autoreload/--warm work with --num-procs (#6913)
+  * Ensure error rendering application does not crash server
+    (#7223)
+  * Refactor state.notifications to fix pyodide (#7235)
+  * Handle setting None value on DateRangePicker (#7240)
+  * Add header_tooltips parameter to Tabulator (#7241)
+  * Fix issue using Tabulator.header_filter with recent Pandas
+    versions (#7242)
+  * Fix setting of Dial background (#7261)
+  * Fix issues when loading multiple times in a Jupyter(Lab)
+    session (#7269)
+  ## Compatibility and Updates
+  * Update to Bokeh 3.5.x
+  * Update Tabulator to 6.2.1 (#6840)
+  * Update to latest Pyscript (2024.08.01) and Pyodide (0.26.2)
+    (#7016)
+  * Add compatibility for latest Textual (#7130)
+  ## Deprecation and API Warnings
+  * PasswordInput and TextAreaInput no longer inherit directly from
+    TextInput (#6593)
+  * Remove deprecated panel.depends.param_value_if_widget function
+    (#7202)
+
+-------------------------------------------------------------------
 Tue May  7 09:14:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Bring back package %build from source, removing binary .whl

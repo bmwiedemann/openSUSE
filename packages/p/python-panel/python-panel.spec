@@ -24,45 +24,53 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python39 1
+
+# truncate trailing suffix
+%define distversion 1.5
 Name:           python-panel%{psuffix}
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/panel
 Source0:        https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
+# package-lock.json file generated with procedure:
+# - delete old package-lock.json in panel subdirectory
+# - add '"typescript": "^4.2.0"' to package.json devDependencies
+# - npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source10:       package-lock.json
+# node_modules generated using "osc service mr" with https://github.com/openSUSE/obs-service-node_modules
+Source11:       node_modules.spec.inc
 Source99:       python-panel-rpmlintrc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.4.0}
+BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.6}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module param >= 2.0.0}
+BuildRequires:  %{python_module param >= 2.1.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 2.0.0}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tqdm >= 4.48.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
-BuildRequires:  nodejs
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       python-Markdown
 Requires:       python-bleach
-Requires:       python-bokeh >= 3.2.0
 Requires:       python-linkify-it-py
 Requires:       python-markdown-it-py
 Requires:       python-mdit-py-plugins
+Requires:       python-packaging
 Requires:       python-pandas >= 1.2
-Requires:       python-param >= 2.0.0
 Requires:       python-pyviz_comms >= 2.0.0
 Requires:       python-requests
-Requires:       python-tqdm >= 4.48.0
+Requires:       python-tqdm
 Requires:       python-typing_extensions
-Requires:       python-xyzservices >= 2021.09.1
+Requires:       (python-bokeh >= 3.5.0 with python-bokeh < 3.6)
+Requires:       (python-param >= 2.1 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     jupyter-panel
@@ -73,16 +81,15 @@ Recommends:     python-matplotlib
 Recommends:     python-plotly
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module altair}
-BuildRequires:  %{python_module asyncio}
-BuildRequires:  %{python_module diskcache}
-BuildRequires:  %{python_module folium}
-BuildRequires:  %{python_module holoviews >= 1.16.0}
-BuildRequires:  %{python_module ipympl}
-BuildRequires:  %{python_module ipython >= 7.0}
 BuildRequires:  %{python_module panel = %{version}}
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module plotly >= 4.0}
+##
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module diskcache}
+BuildRequires:  %{python_module holoviews >= 1.16.0}
+BuildRequires:  %{python_module jupyterlab}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
@@ -104,7 +111,8 @@ text.
 Summary:        Jupyter notebook and server cofiguration for python-panel
 Group:          Development/Languages/Python
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(panel) = %{version}
+Requires:       python3dist(panel) = %{distversion}
+Requires:       jupyter-bokeh
 Suggests:       python3-panel
 
 %description -n jupyter-panel
@@ -117,24 +125,26 @@ to all Python flavors.
 
 %prep
 %autosetup -p1 -n panel-%{version}
-# Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
-sed -i '/def _build_paneljs/ a \    return' setup.py
 # no color for pytest
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
+rm panel/.eslintrc.js
 for p in panel/tests/io/reload_module.py
 do \
     [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
 done
-for p in panel/dist/css/regular_table.css \
-  panel/dist/bundled/perspective/@finos/perspective-viewer@2.9.0/dist/css/variables.css
-do \
-    [ -f $p -a ! -s $p ] || exit 1 && echo "// Empty css" > $p
-done
+# Resources are already bundled in sdist
+sed -i 's|bundle_resources()$|assert os.path.exists("panel/dist/bundled/font-awesome")|' hatch_build.py
+# npm registry for Source10 provided in Source11
+pushd panel
+rm package-lock.json
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
+popd
+sed -i /asyncio_default_fixture_loop_scope/d pyproject.toml
 
+%if ! %{with test}
 %build
 %pyproject_wheel
 
-%if ! %{with test}
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/panel
@@ -144,18 +154,8 @@ done
 %if %{with test}
 %check
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-# DISABLE TESTS REQUIRING NETWORK ACCESS
-donttest="test_loading_a_image_from_url"
-donttest="$donttest or test_png_native_size_embed"
-donttest="$donttest or test_png_embed_scaled_fixed_size"
-donttest="$donttest or (test_png_scale_ and True)"
-donttest="$donttest or (test_png_stretch_ and True)"
-donttest="$donttest or (test_svg_native_size and True)"
-donttest="$donttest or (test_svg_scaled_fixed_size and True)"
-donttest="$donttest or (test_svg_scale_ and True)"
-donttest="$donttest or (test_svg_stretch_ and True)"
 # flaky async test
-donttest="$donttest or test_server_async_callbacks"
+donttest="test_server_async_callbacks"
 # flaky timeout
 donttest="$donttest or test_server_thread_pool_change_event or test_server_on_load_after_init"
 # upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
@@ -164,8 +164,11 @@ donttest="$donttest or (test_terminal and test_subprocess)"
 donttest="$donttest or test_pdf_local_file"
 # Don't test on 32-bit: asyncio is too flaky
 [ $(getconf LONG_BIT) -eq 32 ] && exit 0
-#
-%pytest -n auto -rsfE -k "not ($donttest)"
+# no network connection in obs
+deselectmark=(-m "not internet")
+# no multiflavor playwright
+ignorefiles=(--ignore scripts/panelite/test/test_utils.py --ignore scripts/panelite/test/test_panelite.py)
+%pytest -n auto -rsfE -k "not ($donttest)" "${deselectmark[@]}" "${ignorefiles[@]}"
 %endif
 
 %post
