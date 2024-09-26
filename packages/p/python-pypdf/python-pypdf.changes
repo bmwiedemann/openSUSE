@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 18:28:54 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
+
+- Update to 4.3.1:
+  * Bug Fixes: Cope with Matrix entry in field annotations (#2736)
+  * Robustness: Cope with fields with upside down box/rectangle (#2729)
+  * Maintenance: Add deprecate_with_replacement to 
+    StreamObject.initializeFromD… (#2728);
+    Deal with cryptography>=43 moving ARC4 (#2765)
+ 
+-------------------------------------------------------------------
 Fri Sep 13 05:35:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on typing_extensions for Python 3.10.

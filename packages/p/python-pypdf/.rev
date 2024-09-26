@@ -25,4 +25,12 @@
 - Add an empty %check section to silence rpmlint.</comment>
     <requestid>1200738</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee56c9014f78e9ff11486c62d8a09def</srcmd5>
+    <version>4.3.1</version>
+    <time>1727369619</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203706</requestid>
+  </revision>
 </revisionlist>
