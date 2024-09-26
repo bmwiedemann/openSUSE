@@ -386,6 +386,7 @@
     <package name="enchant-1-backends" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="enchant-2-backend-hunspell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="enchant-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="envsubst" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="eog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="eog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="epson-inkjet-printer-escpr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->

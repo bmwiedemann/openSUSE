@@ -3353,6 +3353,7 @@ unsorted:
   - distribution-registry 
   - distrobuilder 
   - dita 
+  - diun 
   - dive 
   - diy-devel 
   - diy-mpich-devel 
@@ -3798,7 +3799,6 @@ unsorted:
   - entangle-plugin-shooter 
   - entr 
   - envoy-build-tools 
-  - envsubst 
   - envsubst-mini 
   - envy24control 
   - eog-devel 
@@ -7913,6 +7913,7 @@ unsorted:
   - govc 
   - goverlay 
   - govulncheck 
+  - gowitness 
   - goxel 
   - gp2c 
   - gpa 
@@ -18555,6 +18556,7 @@ unsorted:
   - mcds 
   - mcfly 
   - mchange-commons 
+  - mchange-commons-javadoc 
   - mcjoin 
   - mcomix 
   - mcpp 
@@ -24028,6 +24030,7 @@ unsorted:
   - python3-pyginac 
   - python3-pyginac-devel 
   - python3-pylibiio 
+  - python3-pylint 
   - python3-pymod2pkg 
   - python3-pynest2d 
   - python3-pynitrokey 
@@ -24808,6 +24811,7 @@ unsorted:
   - python310-azure-mgmt-springappdiscovery 
   - python310-azure-mgmt-sql 
   - python310-azure-mgmt-sqlvirtualmachine 
+  - python310-azure-mgmt-standbypool 
   - python310-azure-mgmt-storage 
   - python310-azure-mgmt-storagecache 
   - python310-azure-mgmt-storageimportexport 
@@ -25008,6 +25012,7 @@ unsorted:
   - python310-cinemagoer 
   - python310-circuitbreaker 
   - python310-ciscoconfparse 
+  - python310-ciso8601 
   - python310-cl 
   - python310-cleo 
   - python310-cli-helpers 
@@ -25341,7 +25346,6 @@ unsorted:
   - python310-duckduckgo2 
   - python310-duet 
   - python310-dukpy 
-  - python310-dukpy-kovidgoyal 
   - python310-dulwich 
   - python310-dunamai 
   - python310-dynaconf 
@@ -26690,7 +26694,6 @@ unsorted:
   - python310-pylibmc 
   - python310-pylineclip 
   - python310-pylink-square 
-  - python310-pylint 
   - python310-pylint-ignore 
   - python310-pylint-venv 
   - python310-pylons-sphinx-themes 
@@ -28479,6 +28482,7 @@ unsorted:
   - python311-azure-mgmt-springappdiscovery 
   - python311-azure-mgmt-sql 
   - python311-azure-mgmt-sqlvirtualmachine 
+  - python311-azure-mgmt-standbypool 
   - python311-azure-mgmt-storage 
   - python311-azure-mgmt-storagecache 
   - python311-azure-mgmt-storageimportexport 
@@ -28672,6 +28676,7 @@ unsorted:
   - python311-cinemagoer 
   - python311-circuitbreaker 
   - python311-ciscoconfparse 
+  - python311-ciso8601 
   - python311-cl 
   - python311-cleo 
   - python311-cli-helpers 
@@ -28992,7 +28997,6 @@ unsorted:
   - python311-duckduckgo2 
   - python311-duet 
   - python311-dukpy 
-  - python311-dukpy-kovidgoyal 
   - python311-dulwich 
   - python311-dunamai 
   - python311-dynaconf 
@@ -30281,7 +30285,6 @@ unsorted:
   - python311-pylibmc 
   - python311-pylineclip 
   - python311-pylink-square 
-  - python311-pylint 
   - python311-pylint-ignore 
   - python311-pylint-venv 
   - python311-pylons-sphinx-themes 
@@ -32066,6 +32069,7 @@ unsorted:
   - python312-azure-mgmt-springappdiscovery 
   - python312-azure-mgmt-sql 
   - python312-azure-mgmt-sqlvirtualmachine 
+  - python312-azure-mgmt-standbypool 
   - python312-azure-mgmt-storage 
   - python312-azure-mgmt-storagecache 
   - python312-azure-mgmt-storageimportexport 
@@ -32265,6 +32269,7 @@ unsorted:
   - python312-cinemagoer 
   - python312-circuitbreaker 
   - python312-ciscoconfparse 
+  - python312-ciso8601 
   - python312-cl 
   - python312-cleo 
   - python312-cli-helpers 
@@ -32598,7 +32603,6 @@ unsorted:
   - python312-duckduckgo2 
   - python312-duet 
   - python312-dukpy 
-  - python312-dukpy-kovidgoyal 
   - python312-dulwich 
   - python312-dunamai 
   - python312-dynaconf 
@@ -33943,7 +33947,6 @@ unsorted:
   - python312-pylibmc 
   - python312-pylineclip 
   - python312-pylink-square 
-  - python312-pylint 
   - python312-pylint-ignore 
   - python312-pylint-venv 
   - python312-pylons-sphinx-themes 
