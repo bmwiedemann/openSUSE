@@ -915,4 +915,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1198241</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2811d8cebc2b8cb7083f3ac108ceb926</srcmd5>
+    <version>12.97</version>
+    <time>1727369650</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203746</requestid>
+  </revision>
 </revisionlist>
