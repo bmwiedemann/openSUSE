@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- rerender installation step in multiple lines, allow uninstalling optional packages
+
+-------------------------------------------------------------------
+Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- improved log cleaning
+
+-------------------------------------------------------------------
+Wed Sep 25 10:02:07 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install libpq5 to avoid have-choice errors
+
+-------------------------------------------------------------------
 Tue Sep 24 20:00:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - remove release tags for additional_versions
