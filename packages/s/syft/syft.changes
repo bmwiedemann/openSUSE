@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Sep 24 17:39:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.0:
+  * Add JVM cataloger (#3217)
+  * feat: classifier for Dart lang binaries (#3265)
+  * Add compliance policy for empty name and version (#3257)
+  * chore(deps): bump github.com/github/go-spdx/v2 from 2.3.1 to
+    2.3.2 (#3254)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.3 to
+    7.0.5 (#3255)
+  * chore(deps): bump github/codeql-action from 3.26.7 to 3.26.8
+    (#3256)
+  * chore(deps): update tools to latest versions (#3259)
+  * chore(deps): bump github.com/docker/docker (#3260)
+  * feat: add binary classifiers for lighttp, proftpd, zstd, xz,
+    gzip, jq, and sqlcipher (#3252)
+  * fix: capture-snippet.sh can handle leading whitespaces now
+    (#3249) (#3250)
+  * chore(deps): update tools to latest versions (#3251)
+  * chore(deps): update tools to latest versions (#3247)
+  * chore(deps): update tools to latest versions (#3243)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.9.0
+    to 0.9.1 (#3242)
+  * chore(deps): bump github/codeql-action from 3.26.6 to 3.26.7
+    (#3241)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.2 to
+    7.0.3 (#3240)
+  * chore(deps): update tools to latest versions (#3231)
+  * chore(deps): update CPE dictionary index (#3232)
+  * chore(deps): update tools to latest versions (#3205)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.0
+    to 1.1.1 (#3225)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.1 to
+    7.0.2 (#3226)
+  * chore(deps): bump modernc.org/sqlite from 1.33.0 to 1.33.1
+    (#3229)
+  * feat: --enrich flag for data enrichment feature enablement
+    (#3182)
+
+-------------------------------------------------------------------
 Thu Sep 12 04:56:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.2 (no releases between 1.11.1 and this
