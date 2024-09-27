@@ -1,0 +1,6 @@
+<package name="python-sphinxcontrib-jinja" project="openSUSE:Factory">
+  <title></title>
+  <description>A sphinx extension to include jinja based templates based documentation into a sphinx doc</description>
+  <devel project="devel:languages:python" package="python-sphinxcontrib-jinja"/>
+  <url>https://github.com/tardyp/sphinx-jinja</url>
+</package>
