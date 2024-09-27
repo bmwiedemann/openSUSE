@@ -755,4 +755,17 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>1199485</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>aaeacbdeb7e267d78b9fc3d9cc6c9dfc</srcmd5>
+    <version>6.0.1</version>
+    <time>1727450898</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.1
+  * Fix Spyder hanging at startup on Linux when started in a
+    terminal in background mode.
+  * Fix appeal/sponsor Spyder message being shown at every startup.
+  * Avoid crashes at startup from faulty/outdated external plugins.
+  * Fix errors related to unmaximazing panes and layout changes. (forwarded request 1203788 from bnavigator)</comment>
+    <requestid>1203789</requestid>
+  </revision>
 </revisionlist>

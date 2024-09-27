@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
