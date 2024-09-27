@@ -1,0 +1,26 @@
+diff -ur pyroomacoustics-0.7.7.orig/setup.py pyroomacoustics-0.7.7/setup.py
+--- pyroomacoustics-0.7.7.orig/setup.py	2024-09-26 20:27:34.085466114 +0200
++++ pyroomacoustics-0.7.7/setup.py	2024-09-26 20:34:39.988736073 +0200
+@@ -3,6 +3,7 @@
+ 
+ import os
+ import sys
++import subprocess
+ 
+ # To use a consistent encoding
+ from os import path
+@@ -67,13 +68,11 @@
+             libroom_src_dir,
+             str(get_pybind_include()),
+             str(get_pybind_include(user=True)),
+-            os.path.join(libroom_src_dir, "ext/eigen"),
++            subprocess.getoutput('pkg-config --cflags-only-I eigen3')[2:]
+         ],
+         language="c++",
+         extra_compile_args=[
+             "-DEIGEN_MPL2_ONLY",
+-            "-Wall",
+-            "-O3",
+             "-DEIGEN_NO_DEBUG",
+         ],
+     ),

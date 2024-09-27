@@ -133,4 +133,12 @@
   * Appveyor builds for compiled wheels for win32/win64 x86</comment>
     <requestid>1170441</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30604d224b6dc16e32ce674567f7334b</srcmd5>
+    <version>0.7.7</version>
+    <time>1727449896</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204089</requestid>
+  </revision>
 </revisionlist>

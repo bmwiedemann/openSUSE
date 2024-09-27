@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 26 17:49:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.7
+  * Fixes a bug when plotting an anechoic room
+  * Fixes a buggy assert from rir_build.cpp
+  * Makes the build system consistent for all source files in
+    pyroomacoustics/libroom_src
+  * Fixes a call to a deprecated function of scipy.integrate in
+    pyroomacoustics/denoise/iterative_wiener (issue #362)
+- Release v0.7.6
+  * Fixes the default value of energy_thres in experimental.rt60 to
+    match the previous behavior of the function (issue #358)
+  * Further fixes issue with cast reflections delays to float32 in
+    room.py (#353) which was not fully fixed by the previous update
+  * Fixes calls to deprecated API of scipy.linalg.eigh
+  * Fixes use of deprecated feature of numpy (conversion of
+    singleton array to scalar)
+- Release v0.7.5
+  * Extra parameter energy_thresh added to
+    pyroomacoustics.experimental.measure_rt60. The energy tail
+    beyond this threshold is discarded which is useful for noisy
+    RIR measurements. The default value is 0.95.
+  * Fixes a bug in beamforming.circular_microphone_array_xyplane
+    (#348)
+  * Fixes a bug in room.Room.plot_rir where the x-axis would have
+    the wrong ticks when called with kind="tf"
+  * Fixes an issue where the visibility attribute of the room is
+    not set if there are no visible source or image source in the
+    room. (#313)
+  * Fixes issue with cast reflections delays to float32 in room.py
+    (#353)
+  * Fixes calls to numpy.linalg.solve with Numpy 2.0 API
+- PEP517 build
+- Add pyroomacoustics-opensuse-buildoptions.patch
+
+-------------------------------------------------------------------
 Sat Apr 27 08:00:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.4:
