@@ -26,6 +26,7 @@ Group:          Productivity/Multimedia/Other
 URL:            https://github.com/scdl-org/scdl
 Source:         https://files.pythonhosted.org/packages/source/s/scdl/scdl-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel

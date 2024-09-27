@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 06:30:43 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- require python3 >= 3.7
+
+-------------------------------------------------------------------
 Fri Sep 20 02:52:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Fix Requires to be python3-foo. 
