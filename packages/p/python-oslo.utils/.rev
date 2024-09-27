@@ -622,4 +622,12 @@
 - fix requires</comment>
     <requestid>1198460</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>12a7f78479dcd2cbd73e5f44e99f461d</srcmd5>
+    <version>7.3.0</version>
+    <time>1727449902</time>
+    <user>anag+factory</user>
+    <comment>- drop obsolete dependencies</comment>
+    <requestid>1204112</requestid>
+  </revision>
 </revisionlist>
