@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 25 22:05:56 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 2.3.2
+  * Changes of version 2.3.2
+    + Added Automatic-Module-Name attribute to the manifest, for
+      Java Platform Module System (request from AndreasWBartels).
+    + Build: corrected an issue in JfmJavacHelper, which was always
+      using ';' as classpath separator, instead of ':' by default
+      and ';' only on Windows.
+    + Little code cleanups.
+    + Removed AllTests class (instead just launch tests from the
+      IDE project).
+    + Changed README to use Markdown.
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+- JPMS: Add the Automatic-Module-Name attribute to the manifest.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:59:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jafama 2.3.1
