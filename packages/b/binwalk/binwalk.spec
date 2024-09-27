@@ -1,7 +1,7 @@
 #
 # spec file for package binwalk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           binwalk
-Version:        2.3.4
+Version:        2.4.2
 Release:        0
 Summary:        Firmware Analysis Tool
 License:        MIT
-URL:            https://github.com/devttys0/binwalk
-Source:         https://github.com/devttys0/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/OSPG/binwalk
+Source:         https://github.com/OSPG/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
@@ -30,6 +30,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-setuptools
 # Depends on libmagic.
 Requires:       file
+Requires:       python3 >= 3.8
 Requires:       python3-curses
 # Depends on libfuzzy.
 Requires:       ssdeep

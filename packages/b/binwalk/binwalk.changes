@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep 27 03:20:21 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Switch upstream to a maintained fork
+- Update to version 2.4.2
+  * enhance the accuracy of esp image by @samhjn in #17
+  * Improve install by @stkw0 in #20
+  * Show warning when extraction fails and print only successful extracted entries
+- Update to version 2.4.1
+  * change jefferson uri by @stkw0 in #7
+  * Detect WAVE and FLAC by @puhitaku in #8
+  * Update audio signature file by @kagekiyo7 in #10
+  * entropy: don't parse math by @ElDavoo in #12
+- Update to version 2.4.0
+  This release merged the next upstream PR:
+  * Add magic for ZTE firmware
+  * Improve YAFFS signature
+  * Add Microware OS-9/68000 magic support
+  * Add PKCS#1 DER hash signatures
+  * Add firmware signatures used with JBOOT bootloader
+  * Added ESP32 image and partition entry signatures
+  * Add WinCE file extractor plugin
+  * PKCS #8 Private key
+- Update to version 2.3.8
+  * Fix support for python3.12
+- Update to version 2.3.7
+  * Fix issue in Windows due to the use of pwd
+  * Fix dep.sh bug in some specific distros
+- Update to version 2.3.6
+  * Fix missing import on extractor.py
+- Update to version 2.3.5
+  This release applies a bunch of important pull request from the original repository.
+  Most relevant changes:
+  * Add support for python 3.12
+  * Switch from nose to pytest
+  * Update minimum supported python version to 3.8
+  * Move from travis to Github actions
+  * Fix dep.sh build issues
+
+-------------------------------------------------------------------
 Tue Feb 14 08:16:19 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 2.3.4
