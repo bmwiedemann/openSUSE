@@ -6,9 +6,30 @@ Upstream: never
 Python files in openSUSE should directly specify the correct Python interpreter
 to ensure we don't run into issues if a virtualenv or the like should be active
 when invoking the script.
+---
+ doc/conf.py.in              | 2 +-
+ test/data-parse-test.py     | 2 +-
+ test/duplicate-check.py     | 2 +-
+ test/receiver-check.py      | 2 +-
+ tools/check_scan_build.py   | 2 +-
+ tools/merge_ratbagd.py      | 2 +-
+ tools/ratbagctl.body.py.in  | 2 +-
+ tools/ratbagctl.devel.py.in | 2 +-
+ tools/ratbagctl.test.py.in  | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
 
+diff --git a/doc/conf.py.in b/doc/conf.py.in
+index 128a344..f725867 100644
+--- a/doc/conf.py.in
++++ b/doc/conf.py.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # @PACKAGE_NAME@ documentation build configuration file, created by
+ # sphinx-quickstart on Wed Oct 11 13:45:08 2017.
 diff --git a/test/data-parse-test.py b/test/data-parse-test.py
-index bdd4fe9..31ca244 100755
+index 1c08180..4ced391 100755
 --- a/test/data-parse-test.py
 +++ b/test/data-parse-test.py
 @@ -1,4 +1,4 @@
@@ -18,7 +39,7 @@ index bdd4fe9..31ca244 100755
  # Copyright © 2017 Red Hat, Inc.
  #
 diff --git a/test/duplicate-check.py b/test/duplicate-check.py
-index 332f125..1841696 100755
+index b87faad..0c35a9c 100755
 --- a/test/duplicate-check.py
 +++ b/test/duplicate-check.py
 @@ -1,4 +1,4 @@
@@ -28,7 +49,7 @@ index 332f125..1841696 100755
  # Copyright © 2018 Red Hat, Inc.
  #
 diff --git a/test/receiver-check.py b/test/receiver-check.py
-index 024f3e6..68d9d99 100755
+index 60d62c6..be5f68b 100755
 --- a/test/receiver-check.py
 +++ b/test/receiver-check.py
 @@ -1,4 +1,4 @@
@@ -38,7 +59,7 @@ index 024f3e6..68d9d99 100755
  # Copyright © 2018 Red Hat, Inc.
  #
 diff --git a/tools/check_scan_build.py b/tools/check_scan_build.py
-index c5d13f7..73209c1 100755
+index 33918d5..090fc51 100755
 --- a/tools/check_scan_build.py
 +++ b/tools/check_scan_build.py
 @@ -1,4 +1,4 @@
@@ -48,7 +69,7 @@ index c5d13f7..73209c1 100755
  #  This program is free software; you can redistribute it and/or modify
  #  it under the terms of the GNU General Public License as published by
 diff --git a/tools/merge_ratbagd.py b/tools/merge_ratbagd.py
-index 77b7e07..ed7f4ef 100755
+index 7653f40..520d298 100755
 --- a/tools/merge_ratbagd.py
 +++ b/tools/merge_ratbagd.py
 @@ -1,4 +1,4 @@
@@ -57,33 +78,36 @@ index 77b7e07..ed7f4ef 100755
  #
  # Copyright 2017 Red Hat, Inc.
  #
-diff --git a/tools/ratbagctl.devel.in b/tools/ratbagctl.devel.in
-index a3d6c2f..71c14c5 100755
---- a/tools/ratbagctl.devel.in
-+++ b/tools/ratbagctl.devel.in
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python3
-+#!/usr/bin/python3
- #
- # This file is part of libratbag.
- #
-diff --git a/tools/ratbagctl.in.in b/tools/ratbagctl.in.in
-index ad0bacc..8bfdb85 100755
---- a/tools/ratbagctl.in.in
-+++ b/tools/ratbagctl.in.in
+diff --git a/tools/ratbagctl.body.py.in b/tools/ratbagctl.body.py.in
+index 65d1f80..7cbb63d 100755
+--- a/tools/ratbagctl.body.py.in
++++ b/tools/ratbagctl.body.py.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
  # Copyright 2016 Red Hat, Inc.
  #
-diff --git a/tools/ratbagctl.test.in b/tools/ratbagctl.test.in
-index c4ad1bf..8f2f8ce 100755
---- a/tools/ratbagctl.test.in
-+++ b/tools/ratbagctl.test.in
+diff --git a/tools/ratbagctl.devel.py.in b/tools/ratbagctl.devel.py.in
+index 07a1b50..96bc30f 100755
+--- a/tools/ratbagctl.devel.py.in
++++ b/tools/ratbagctl.devel.py.in
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
  # This file is part of libratbag.
  #
+diff --git a/tools/ratbagctl.test.py.in b/tools/ratbagctl.test.py.in
+index 2db7104..a197c07 100755
+--- a/tools/ratbagctl.test.py.in
++++ b/tools/ratbagctl.test.py.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # This file is part of libratbag.
+ #
+-- 
+2.43.0
+

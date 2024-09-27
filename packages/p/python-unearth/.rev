@@ -104,4 +104,18 @@
     <comment></comment>
     <requestid>1185399</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7433efc305617c806dcd87089b08a505</srcmd5>
+    <version>0.17.2</version>
+    <time>1727449871</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.2:
+  * Really drop python&lt;=3.7 support
+  * Don't show warning message when no netrc exists
+  * Show warning message when failing to parse netrc file
+  * Report download status when checking out vcs repo
+  * Allow using local file:// locations with find_links and index_urls
+  * New method check_wheel_tags for override</comment>
+    <requestid>1204011</requestid>
+  </revision>
 </revisionlist>

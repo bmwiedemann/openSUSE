@@ -1,0 +1,6 @@
+<package name="mockery" project="openSUSE:Factory">
+  <title>mockery</title>
+  <description>CLI tool to generate generate mocks for Golang interfaces using the stretchr/testify/mock package. It removes the boilerplate coding required to use mocks.</description>
+  <devel project="devel:languages:go" package="mockery"/>
+  <url>https://github.com/vektra/mockery</url>
+</package>

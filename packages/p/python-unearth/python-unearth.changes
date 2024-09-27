@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 05:05:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.17.2:
+  * Really drop python<=3.7 support
+  * Don't show warning message when no netrc exists
+  * Show warning message when failing to parse netrc file
+  * Report download status when checking out vcs repo
+  * Allow using local file:// locations with find_links and index_urls
+  * New method check_wheel_tags for override
+
+-------------------------------------------------------------------
 Tue Jul  2 09:45:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.15.5:

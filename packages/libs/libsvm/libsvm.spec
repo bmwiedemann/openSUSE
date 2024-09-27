@@ -1,7 +1,7 @@
 #
 # spec file for package libsvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Release:        0
 URL:            https://www.csie.ntu.edu.tw/~cjlin/libsvm/
 Source0:        https://www.csie.ntu.edu.tw/~cjlin/libsvm/%{name}-%{fileversion}.tar.gz
 Patch0:         libsvm-java8.patch
+Patch1:         libsvm-reproducible-jar-mtime.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.8
@@ -88,14 +89,19 @@ Requires:       %{libname} = %{version}
 Requires:       java >= 1.6.0
 Requires:       javapackages-tools
 Requires(post): javapackages-tools
-Requires(postun):javapackages-tools
+Requires(postun): javapackages-tools
 BuildArch:      noarch
 
 %description java
 This package contains the Java bindings for libsvm.
 
 %prep
-%autosetup -p1 -n %{name}-%{fileversion}
+%setup -n %{name}-%{fileversion}
+%patch -P 0 -p1
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 1 -p1
+%endif
 
 %build
 # We can't override CFLAGS, we have to patch the Makefile.

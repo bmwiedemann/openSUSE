@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libratbag
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Configuration library for gaming mice
 License:        MIT
@@ -27,7 +27,6 @@ URL:            https://github.com/libratbag/libratbag
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Patch1:         shebang-env.diff
-Patch2:         install-daemon-into-sbindir.patch
 Patch3:         harden_ratbagd.service.patch
 Patch4:         use-python-3.6.patch
 BuildRequires:  fdupes
@@ -106,7 +105,6 @@ mice.
 %prep
 %setup -q
 %patch -P1 -p1
-%patch -P2 -p1
 %patch -P3 -p1
 %if 0%{?suse_version} < 1550
 %patch -P4 -p1

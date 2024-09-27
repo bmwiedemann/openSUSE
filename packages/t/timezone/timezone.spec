@@ -20,7 +20,7 @@
 %global AREA    Etc
 %global ZONE    UTC
 Name:           timezone
-Version:        2024a
+Version:        2024b
 Release:        0
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -43,8 +43,8 @@ These are configuration files that describe available time zones. You
 can select an appropriate time zone for your system with YaST.
 
 %package -n     tzselect
-Requires:       awk
 Requires:       %{name} = %{version}
+Requires:       awk
 Summary:        Helper script to select the timezone
 BuildArch:      noarch
 Provides:       %{name}:/usr/bin/tzselect

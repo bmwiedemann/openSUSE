@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep 26 18:02:34 UTC 2024 - Matthias Bach <marix@marix.org> - 0.18
+
+- Update to version 0.18:
+  * This release bumps D-Bus API version and is not compatible with older Piper versions.
+  * Add button disabling.
+  * Add resolution disabling (used in hidpp20 and sinowealth drivers).
+  * Add firmware version API (used in steelseries and sinowealth drivers).
+  * Add debounce time changing (used in asus and sinowealth drivers).
+  * Add device type API (allows Piper to reassign first two keys on keyboards).
+  * Add angle snapping changing (used in asus driver).
+  * ASUS - implement simple key actions button mappings.
+  * Sinowealth - implement several device profiles.
+  * Fix crash on on profile disabling.
+  * Clamp minimal allowed report rate to 125hz.
+  * Properly announce property changes to D-Bus (so Piper can reflect changes made with ratbagctl without restarting).
+  * New supported devices:
+    + ASUS ROG Chakram Core
+    + ASUS ROG Chakram X
+    + ASUS ROG Harpe Wireless
+    + ASUS ROG Keris Wireless AimPoint
+    + ASUS ROG Spatha X
+    + ASUS ROG Strix Impact II
+    + Logitech G PRO Keyboard
+    + Logitech G102 (new variation: usb:046d:c09d)
+    + Logitech G303 Shroud Edition
+    + Logitech G413 (keyboard)
+    + Logitech G733 (new variation: usb:046d:0afe)
+    + Logitech MX Anywhere 3S
+    + Logitech MX Master 3S
+    + Logitech MX Master 3S for Business
+    + Mad Dog GM905 (sinowealth)
+    + Mars Gaming MM4 (new driver 'marsgaming')
+    + SteelSeries Rival 650 Wireless
+    + T-Dagger Imperial T-TGM310 (sinowealth)
+- Refreshed shebang-env.diff as it no longer applied properly.
+- Dropped install-daemon-into-sbindir.patch as it was merged
+  upstream.
+- Switch osc service file to use manual instead of disabled which
+  is no longer supported.
+
+-------------------------------------------------------------------
 Fri Mar 29 08:41:46 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add use-python-3.6.patch force to build with python 3.6 on Leap 15

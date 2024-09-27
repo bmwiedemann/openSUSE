@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:46:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Delete m4/libassuan.m4, and call autoreconf: let autoconf copy
+  libassuan.m4 based on the libassuan-devel package. Fixes build
+  with libassuan 3.
+- Add libtool BuildRequires: needed to bootstrap.
+
+-------------------------------------------------------------------
 Thu Feb  8 16:02:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

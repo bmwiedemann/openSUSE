@@ -193,6 +193,7 @@ Patch9:         postgresql-var-run-socket.patch
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
 %endif
+Patch12:        postgresql-testsuite-timezone-fix.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -527,6 +528,7 @@ touch -r configure tmp
 %patch -P 10
 %patch -P 11
 %endif
+%patch -P 12 -p1
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete

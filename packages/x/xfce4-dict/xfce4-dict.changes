@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 25 06:46:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.7
+  * panel-plugin: Drop submenu (#2)
+  * panel-plugin: Add submenus to toggle search mode (#2)
+  * panel-plugin: Reduce default text size
+  * panel-plugin: Restore function of the button in text entry
+  * Change log level (#17)
+  * prefs: Add radio buttons to correct group
+  * scan-build: Fix deadcode.DeadStores
+  * scan-build: Add false positive file
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Nov 25 09:17:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.6

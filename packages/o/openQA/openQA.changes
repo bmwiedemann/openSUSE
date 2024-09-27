@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 23:22:41 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727367369.3b39dda0:
+  * t: Improve mocked commands
+  * Workaround `scheduler_step` showing up as uncovered
+  * Fix quoting of git ssh arguments
+  * Fix script name in git-auto-update service
+  * Improve stability of `t/ui/10-tests_overview.t`
+  * Increase time limit of `t/ui/10-tests_overview.t`
+
+-------------------------------------------------------------------
 Tue Sep 24 15:22:21 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727186979.2ec2ab59:

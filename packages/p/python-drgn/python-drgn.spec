@@ -27,7 +27,7 @@ Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
-Source:         https://files.pythonhosted.org/packages/source/d/drgn/drgn-%{version}.tar.gz
+Source:         https://github.com/osandov/drgn/archive/refs/tags/v%{version}.tar.gz#/drgn-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf

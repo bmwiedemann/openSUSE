@@ -83,4 +83,14 @@
  * Changelog: https://gleam.run/news/convenient-code-actions/</comment>
     <requestid>1202051</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e11c7b1ebeb61c8daee86e3e25d5d475</srcmd5>
+    <version>1.5.1</version>
+    <time>1727449848</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1:
+ * Fixed a bug where Erlang file paths would not be escaped on Windows.
+   (Louis Pilfold)</comment>
+    <requestid>1203926</requestid>
+  </revision>
 </revisionlist>

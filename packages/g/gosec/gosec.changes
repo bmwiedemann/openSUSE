@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:11:23 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 2.21.4:
+  * Update the gosec to v2.21.4 in the Github action
+  * Add the version into goreleaser config
+  * chore(deps): update module google.golang.org/api to v0.198.0 (#1233)
+  * Prevent panic: unexpected constant value: <nil> (#1232)
+  * Fix running single analyzer which isn't a rule bug (#1231)
+
+-------------------------------------------------------------------
 Wed Sep 18 18:34:55 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 2.21.3:

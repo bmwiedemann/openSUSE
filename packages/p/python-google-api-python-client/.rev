@@ -1223,4 +1223,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **redis:** Update the api (forwarded request 1198454 from glaubitz)</comment>
     <requestid>1198462</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>51108065db23045b693f647376ba9622</srcmd5>
+    <version>2.147.0</version>
+    <time>1727449861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.147.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androiddeviceprovisioning:** Update the api
+  * **backupdr:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **chromeuxreport:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **eventarc:** Update the api
+  * **firebaseml:** Update the api
+  * **integrations:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **places:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **servicenetworking:** Update the api
+  * **spanner:** Update the api
+  * **storage:** Update the api
+  * **testing:** Update the api (forwarded request 1203908 from glaubitz)</comment>
+    <requestid>1203965</requestid>
+  </revision>
 </revisionlist>

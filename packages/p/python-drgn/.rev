@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>1184765</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3d58114f7700f4c8a32262beed147611</srcmd5>
+    <version>0.0.27</version>
+    <time>1727449853</time>
+    <user>anag+factory</user>
+    <comment>- Update RPM's Source: to match tarball proper</comment>
+    <requestid>1203947</requestid>
+  </revision>
 </revisionlist>

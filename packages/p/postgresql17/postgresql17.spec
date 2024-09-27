@@ -1,5 +1,5 @@
 #
-# spec file for package postgresql16
+# spec file for package postgresql17
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,10 +16,11 @@
 #
 
 
-%define pgversion 17rc1
+%define pgversion 17.0
 %define pgmajor 17
 %define buildlibs 1
 %define tarversion %{pgversion}
+%define oldest_supported_llvm_ver 10
 %define latest_supported_llvm_ver 18
 
 ### CUT HERE ###
@@ -76,9 +77,9 @@ Name:           %pgname
 
 %if %{without derived}
 BuildRequires:  bison
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  flex
 BuildRequires:  perl
-BuildRequires:  docbook-xsl-stylesheets
 %endif
 %if %mini
 %bcond_with  selinux
@@ -145,13 +146,8 @@ BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
 BuildRequires:  gcc-c++
-%if 0%{?product_libs_llvm_ver} > %{latest_supported_llvm_ver}
-BuildRequires:  clang%{latest_supported_llvm_ver}
-BuildRequires:  llvm%{latest_supported_llvm_ver}-devel
-%else
-BuildRequires:  clang
-BuildRequires:  llvm-devel
-%endif
+BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) <= %{latest_supported_llvm_ver})
+BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  <= %{latest_supported_llvm_ver})
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
@@ -179,7 +175,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        17~rc1
+Version:        %pgversion
 Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2
 Source1:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2.sha256
@@ -774,8 +770,6 @@ done
 %endif
 popd
 
-#mkdir -p %buildroot%pgmandir/man1
-#cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
 %find_lang ecpg-$VLANG devel.files
 # The devel subpackage is exclusive across versions
 # and not handled by update-alternatives.

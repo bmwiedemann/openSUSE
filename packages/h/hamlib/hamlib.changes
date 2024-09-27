@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 22:51:51 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- add patch hamlib-add-stdlib-header.patch to fix the build for
+  Tumbleweed
+
+-------------------------------------------------------------------
 Mon May 22 18:36:53 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - switch to upstream bootstrapped tarball

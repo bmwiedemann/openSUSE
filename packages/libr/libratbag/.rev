@@ -237,4 +237,41 @@ Matthias</comment>
     <comment></comment>
     <requestid>1163515</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3fe0a21c65671dd0df841ffb824e6149</srcmd5>
+    <version>0.18</version>
+    <time>1727449862</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18:
+  * This release bumps D-Bus API version and is not compatible with older Piper versions.
+  * Add button disabling.
+  * Add resolution disabling (used in hidpp20 and sinowealth drivers).
+  * Add firmware version API (used in steelseries and sinowealth drivers).
+  * Add debounce time changing (used in asus and sinowealth drivers).
+  * Add device type API (allows Piper to reassign first two keys on keyboards).
+  * Add angle snapping changing (used in asus driver).
+  * ASUS - implement simple key actions button mappings.
+  * Sinowealth - implement several device profiles.
+  * Fix crash on on profile disabling.
+  * Clamp minimal allowed report rate to 125hz.
+  * Properly announce property changes to D-Bus (so Piper can reflect changes made with ratbagctl without restarting).
+  * New supported devices:
+    + ASUS ROG Chakram Core
+    + ASUS ROG Chakram X
+    + ASUS ROG Harpe Wireless
+    + ASUS ROG Keris Wireless AimPoint
+    + ASUS ROG Spatha X
+    + ASUS ROG Strix Impact II
+    + Logitech G PRO Keyboard
+    + Logitech G102 (new variation: usb:046d:c09d)
+    + Logitech G303 Shroud Edition
+    + Logitech G413 (keyboard)
+    + Logitech G733 (new variation: usb:046d:0afe)
+    + Logitech MX Anywhere 3S
+    + Logitech MX Master 3S
+    + Logitech MX Master 3S for Business
+    + Mad Dog GM905 (sinowealth)
+    + Mars Gaming MM4 (new driver 'marsgaming')</comment>
+    <requestid>1203971</requestid>
+  </revision>
 </revisionlist>

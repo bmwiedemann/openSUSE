@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.16.1
+Version:        2.19.1
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -40,27 +40,24 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
-Requires:       python-cachecontrol >= 0.12.11
-Requires:       python-certifi
-Requires:       python-dep-logic
-Requires:       python-findpython >= 0.4
-Requires:       python-hishel
-Requires:       python-installer
+Requires:       python-dep-logic >= 0.4.4
+Requires:       python-filelock >= 3.13
+Requires:       python-findpython >= 0.6
+Requires:       python-hishel >= 0.0.24
+Requires:       python-httpx >= 0.20
+Requires:       python-installer >= 0.7
+Requires:       python-msgpack >= 1.0
 Requires:       python-packaging >= 20.9
-Requires:       python-pbs-installer
-Requires:       python-pdm-backend
+Requires:       python-pbs-installer >= 2024.4.18
 Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
 Requires:       python-python-dotenv >= 0.15
-Requires:       python-requests-toolbelt
 Requires:       python-resolvelib >= 1.0.1
 Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
-Requires:       python-unearth >= 0.12.1
+Requires:       python-unearth >= 0.17.0
 Requires:       python-virtualenv >= 20
 Requires:       (python-tomlkit >= 0.11.1 with python-tomlkit < 1)
-# from python-cachecontrol[filecache]
-Requires:       python-lockfile >= 0.9
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
@@ -76,15 +73,11 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module hishel}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module pbs-installer}
 BuildRequires:  %{python_module pdm = %{version}}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module unearth}
 %endif
 # /SECTION
 %python_subpackages

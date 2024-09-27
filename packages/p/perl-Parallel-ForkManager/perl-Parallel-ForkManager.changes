@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  1 05:31:55 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.30.0 (2.03)
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  2.03 2024-08-24
+   [BUG FIXES]
+   - Fix invalid default error when using old Moo (GH#41)
+
+   [DOCUMENTATION]
+   - Standardize the link to `fork`. (GH#32)
+   - Fix typo in code example. (GH#31, dimir)
+   - Fix typo for 'max_proc' argument in `new`.
+
+   [STATISTICS]
+   - code churn: 6 files changed, 186 insertions(+), 48 deletions(-)
+
+-------------------------------------------------------------------
 Thu Nov  8 06:46:31 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 2.02

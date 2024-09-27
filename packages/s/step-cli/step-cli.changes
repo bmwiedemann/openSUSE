@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Sep 14 07:55:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.4:
+  * Bump smallstep/certificates to 0.27.4 (#1276)
+  * Bumping CHANGELOG to 0.27.4 (#1275)
+  * Update changelog for 0.27.3 (#1272)
+  * Allow input from stdin for 'certificate fingerprint' command
+    (#1270)
+  * Bump go.mozilla.org/pkcs7
+  * Bump golang.org/x/crypto from 0.26.0 to 0.27.0
+  * Bump go.step.sm/crypto from 0.51.1 to 0.51.2
+  * Bump software.sslmate.com/src/go-pkcs12 from 0.4.0 to 0.5.0
+  * Parse crlEntryExtensions in CRLs
+  * Bump github.com/google/go-tpm from 0.9.0 to 0.9.1
+  * Fix linter issues
+  * Run `go mod tidy`
+  * Bump github.com/slackhq/nebula from 1.8.2 to 1.9.3
+  * Fix Release URLs with new file name formats. (#1256)
+  * Guard legacy Windows vt100 setup syscall on more recent builds
+    of Windows
+  * Switch to goreleaser.yml@main.
+  * Set NFPM id and remove GORELEASER_PHASE.
+  * Adjust template.
+  * Unquote the things.
+  * Add quotes.
+  * Switch to is-prerelease.
+  * Move package import logic into package-repo-import.sh and use
+    IS_PRERELEASE.
+  * Switch back to goreleaser.yml@main.
+  * Bump golang.org/x/crypto from 0.25.0 to 0.26.0
+  * Bump golang.org/x/sys from 0.23.0 to 0.24.0
+  * Fix Debian ARMv6 and ARMv7 duplicated package names.
+  * Ignore goreleaser dist/ directory.
+  * Set enable-packages-upload: true.
+  * Add packages: write.
+  * Use goreleaser.yml@jdoss/Package_Repos for testing.
+  * Fix conditional for uploading packages
+  * Add missing variables.
+  * Update scripts/package-repo-import.sh
+  * Update scripts/package-repo-import.sh
+  * Add yaml-language-server modline to set the YAML schema to
+    Goreleaser Pro.
+  * Add support in for signing and publishing RPM and Deb packages
+    to GCP Artifact Registry.
+  * Bump golang.org/x/sys from 0.22.0 to 0.23.0
+  * Fix `x5rt#S256` for SSH public keys and tests
+  * Bump go.step.sm/crypto from 0.50.0 to 0.51.1
+  * Fix linter warning
+  * Apply suggestions from code review
+  * Remove SSH cfn support and use x5rt#S256 property
+  * [ci] remove duplicate s3 builds in favor of name_templates in
+    s3 upload step (#1244)
+  * Fix builds
+  * Fix debug
+  * Default id back in makefile
+  * Explicitly name the default build 'step'
+  * Goreleaser s3 upload not working (#1243)
+  * Remove the extra "default" build
+  * Remove redundant /
+  * Bump softprops/action-gh-release from 2.0.6 to 2.0.8
+  * Cleanups and small fixes
+  * Bump github.com/smallstep/certificates from 0.27.1 to 0.27.2
+  * Rename INSTALL_PREFIX to DESTDIR and fix BINNAME
+  * One more fix
+  * Re-add BINNAME and describe available vars
+  * Build using go by default. Add goreleaser goal and an intro at
+    the top
+  * Cleanups
+  * Use GoReleaser Pro for Makefile builds
+  * Install goreleaser-pro in make bootstrap
+  * Allow to add confirmation claims to tokens
+  * Generate fingerprints for CSRs
+
+-------------------------------------------------------------------
 Thu Jul 18 18:58:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.2:

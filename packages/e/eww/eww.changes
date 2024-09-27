@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:27:51 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.6.0+git53:
+  * Implement explicitly setting a center of rotation (#783)
+  * Clean up example SCSS file (#644)
+  * fix: demote two logging statements to debug (#1183)
+  * fix: fix system tray not displaying anything (#1181)
+  * Fixing missing commas in example (#1174)
+  * docs(readme): improve spacing (#886)
+  * fix: make formattime follow system locale (#1177)
+  * fix: remove unused import (#1168)
+  * Fix Typo ("procent" -> "percent") (#1169)
+  * add `EWW_BATTERY` support in (free|open|net)bsd (#645)
+- Switch over to obs-scm in _service for now
+- Update vendored dependencies
+
+-------------------------------------------------------------------
 Mon Apr 22 07:30:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.6.0

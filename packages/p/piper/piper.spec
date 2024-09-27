@@ -18,7 +18,7 @@
 
 
 Name:           piper
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
@@ -38,14 +38,14 @@ BuildRequires:  python3-evdev
 BuildRequires:  python3-flake8
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-lxml
-BuildRequires:  ratbagd >= 0.14
+BuildRequires:  ratbagd >= 0.18
 BuildRequires:  update-desktop-files
 Requires:       python3-cairo
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
-Requires:       ratbagd >= 0.14
+Requires:       ratbagd >= 0.18
 BuildArch:      noarch
 
 %description
@@ -82,7 +82,7 @@ PATH="${PATH}:%{_sbindir}" %meson
 %{_datadir}/icons/hicolor/symbolic/apps/org.freedesktop.Piper-symbolic.svg
 %{_datadir}/metainfo/org.freedesktop.Piper.appdata.xml
 %{_datadir}/piper
-%{python3_sitelib}/*
+%{python3_sitelib}/piper
 %{_mandir}/man1/piper.1%{?ext_man}
 %doc README.SUSE
 

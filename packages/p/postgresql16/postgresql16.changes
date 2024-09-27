@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 20 22:16:10 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Pull upstream patch to fix tests with timezone 2024b
+  * postgresql-testsuite-timezone-fix.patch
+
+-------------------------------------------------------------------
 Thu Sep 19 11:21:38 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Don't build the libs and mini flavor anymore to hand over to

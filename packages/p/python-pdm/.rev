@@ -435,4 +435,41 @@
     <comment>- Fix build on Leap 15.6</comment>
     <requestid>1198921</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e64978eb6390c7c6139e7ecf1def1f48</srcmd5>
+    <version>2.19.1</version>
+    <time>1727449871</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.19.1: 
+  * Features &amp; Improvements:
+    + Respect certificates in env vars REQUESTS_CA_BUNDLE and CURL_CA_BUNDLE
+      when verifying SSL certificates.
+    + Improve the installation progress output to show the time elapsed
+    + Support reading requirement constraints from pip-style requirement
+      files for &quot;overriding&quot; via --override option.
+    + Add a --non-interactive option for automation scenarios, also
+      interactive prompts will not show up when not running in an
+      interactive terminal.
+    + Add --license and --project-version as CLI options to control and
+      streamline them during pdm init.
+    + Run pdm sync in &quot;post-rewrite&quot; stage of pre-commit
+    + Project.get_dependencies() now returns a list of Requirement instead
+      of a mapping. The old usage will be kept working for a short period of
+      time and will be removed in the future.
+    + Support locking for specific target, which is a combination of (python,
+      platform, implementation) triple.
+    + Rename --reuse-env to --recreate for run command, and reverse the
+      behavior.
+  * Bug Fixes
+    + Fallback version to 0.0.0 when the version is not specified or empty.
+    + Ensures that / is URL encoded in sources URL environment variables.
+    + Respect the excludes and overrides settings when installing packages.
+    + Fix a bug of export command that packages with extras are included
+      twice.
+    + Remove empty groups when removing packages with pdm remove.
+    + When running pdm venv purge, if the current project's python version
+      had been referencing the removed venv then clear it out.
+    + Fix command pdm config to not show site configuration file path if it</comment>
+    <requestid>1204012</requestid>
+  </revision>
 </revisionlist>

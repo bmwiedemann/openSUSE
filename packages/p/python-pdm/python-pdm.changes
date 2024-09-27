@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Sep 27 04:52:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.19.1: 
+  * Features & Improvements:
+    + Respect certificates in env vars REQUESTS_CA_BUNDLE and CURL_CA_BUNDLE
+      when verifying SSL certificates.
+    + Improve the installation progress output to show the time elapsed
+    + Support reading requirement constraints from pip-style requirement
+      files for "overriding" via --override option.
+    + Add a --non-interactive option for automation scenarios, also
+      interactive prompts will not show up when not running in an
+      interactive terminal.
+    + Add --license and --project-version as CLI options to control and
+      streamline them during pdm init.
+    + Run pdm sync in "post-rewrite" stage of pre-commit
+    + Project.get_dependencies() now returns a list of Requirement instead
+      of a mapping. The old usage will be kept working for a short period of
+      time and will be removed in the future.
+    + Support locking for specific target, which is a combination of (python,
+      platform, implementation) triple.
+    + Rename --reuse-env to --recreate for run command, and reverse the
+      behavior.
+  * Bug Fixes
+    + Fallback version to 0.0.0 when the version is not specified or empty.
+    + Ensures that / is URL encoded in sources URL environment variables.
+    + Respect the excludes and overrides settings when installing packages.
+    + Fix a bug of export command that packages with extras are included
+      twice.
+    + Remove empty groups when removing packages with pdm remove.
+    + When running pdm venv purge, if the current project's python version
+      had been referencing the removed venv then clear it out.
+    + Fix command pdm config to not show site configuration file path if it
+      doesn't exist.
+    + Now when --no-markers is used, the exported requirements can only work
+      on the current platform.
+    + Skip checking project.name if it is absent when running pdm outdated.
+    + Don't remove the cross_platform strategy from old lock files.
+    + Fixed pdm venv activate to remove quotes
+    + Don't fail install-pdm.py if there is an invalid pyproject.toml file
+      under the current directory.
+    + Fix a bug that Python markers from the existing locked packages are
+      considered when locking with --append option.
+    + Fix a crash issue when requires-python is absent in the project
+      metadata.
+    + Ignore invalid requires-python values from index.
+    + Fix the group selection logic, to make --without GROUP work as
+      expected.
+    + Raise dep-logic lower bound to 0.4.2 to fix issues with pdm lock
+    + When locking dependencies that references the self project, the
+      referenced groups should also be recorded in the lockfile.
+    + Retry failed installation jobs if they are run sequentially, such as
+      for editable dependencies.
+    + Fix the local path issue when -p is passed to change the project root.
+    + Fix a bug that PDM can't install editable self package with
+      non-isolated build in one go.
+    + Add context when parsing version failed.
+  * Removals and Deprecations
+    + Remove the deprecation warning of BaseCommand.__init__() method. Now
+      it doesn't take any arguments.
+    + Provider.get_reuse_candidate() method is deprecated in favor of
+      Provider.iter_reuse_candidates(), to return an iterable of reuse
+      candidates.
+    + --no-markers option in pdm export command becomes a no-op and is
+      marked as deprecated, because it doesn't make sense anymore.
+
+-------------------------------------------------------------------
 Thu Sep  5 09:17:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix build on Leap 15.6

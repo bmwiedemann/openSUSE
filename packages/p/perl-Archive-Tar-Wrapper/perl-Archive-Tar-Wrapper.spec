@@ -18,26 +18,22 @@
 
 %define cpan_name Archive-Tar-Wrapper
 Name:           perl-Archive-Tar-Wrapper
-Version:        0.400.0
+Version:        0.420.0
 Release:        0
-# 0.40 -> normalize -> 0.400.0
-%define cpan_version 0.40
+# 0.42 -> normalize -> 0.420.0
+%define cpan_version 0.42
 #Upstream: GPL-1.0-or-later
 License:        GPL-3.0-or-later
 Summary:        API wrapper around the 'tar' utility
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta)
-BuildRequires:  perl(Dumbbench) >= 0.503
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IPC::Run)
 BuildRequires:  perl(Log::Log4perl)
-BuildRequires:  perl(Test::Simple) >= 1.302073
-Requires:       perl(CPAN::Meta)
 Requires:       perl(File::Which)
 Requires:       perl(IPC::Run)
 Requires:       perl(Log::Log4perl)
@@ -78,7 +74,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md README.md
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog

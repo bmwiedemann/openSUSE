@@ -1,6 +1,7 @@
 #
 # spec file for package eww
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +19,19 @@
 
 %bcond_without test
 Name:           eww
-Version:        0.6.0
+Version:        0.6.0+git53
 Release:        0
 Summary:        ElKowars wacky widgets
 License:        MIT
 URL:            https://github.com/elkowar/eww
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.70.0
 BuildRequires:  cargo-packaging
-BuildRequires:  libdbusmenu-gtk3-devel
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  gtk3-devel
-BuildRequires:  rust >= 1.70.0
+BuildRequires:  libdbusmenu-gtk3-devel
+BuildRequires:  zstd
 
 %description
 Elkowars Wacky Widgets is a standalone widget system made in Rust that

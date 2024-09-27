@@ -31,4 +31,44 @@
     <comment></comment>
     <requestid>975239</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89fdde917b20eef4d1521c4a3423ad39</srcmd5>
+    <version>1.14.0</version>
+    <time>1727449854</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.0
+  * Update pipeline according to security issue #258, the version
+    of protobuf must be 3.20.2.
+  * Fix SubGraph bug when convert to fp16 model, the sub graph in
+    loop operator used to be treated as part of main graph, so the
+    converted fp16 model will be invalid. #260
+  * After added Cast op, the order of all the ops should be
+    re-sort, in order that the ORT can inference it correctly.
+    Before this PR, the resort need using other tools to do, not
+    friendly to end user. #260
+  * Added pyproject.toml, because setup.py was deprecated and
+    cannot be used any longer since last week, now you must use
+    python -m build instead of python setup.py..... #260
+  * Add new manually-publish.yml, because project under
+    github/microsoft need to use ESRP process to upload package to
+    PyPI. #263
+- Release 1.13.0
+  * add warning message when fp32 was truncated to fp16, #246
+  * update tasoptions to align with security review #244
+  * add new test cases #243
+  * add RandomUniformLike op into fp16 converter block list #239
+  * delay import onnxruntime to avoid ImportError when onnxruntime
+    is not necessary #235
+  * create and update OneBranchPipeline-Official.yml for security
+    review #232 #226 #223
+  * add 3 descriptions files for OSS #230
+  * add auto_mixed_precision_model_path function for large model
+    (larger than 2G) #217 #230
+  * fix Resize op convert to fp16 issue #212
+- No release notes between 1.9.0 and 1.13.0
+- Disable BuildRequires numpy so that onnx can specifiy numpy &lt; 2
+  as long as it needs to
+</comment>
+    <requestid>1203948</requestid>
+  </revision>
 </revisionlist>

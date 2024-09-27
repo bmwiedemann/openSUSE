@@ -1,9 +1,23 @@
 <services>
-  <service name="download_files" mode="manual" />
-  <service name="cargo_vendor" mode="manual">
-     <param name="src">eww-*.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">false</param>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/elkowar/eww</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">8661abf2bf07f5a809fc995233d93810cc1ac871</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
   </service>
-  <service name="cargo_audit" mode="manual"/>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">eww*.tar*</param>
+     <param name="update">false</param>
+     <param name="filter">false</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 12 04:53:13 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2024b:
+  * Improve historical data for Mexico, Mongolia, and Portugal.
+  * System V names are now obsolescent.
+  * The main data form now uses %z.
+  * The code now conforms to RFC 8536 for early timestamps.
+  * Support POSIX.1-2024, which removes asctime_r and ctime_r.
+  * Assume POSIX.2-1992 or later for shell scripts.
+  * SUPPORT_C89 now defaults to 1.
+
+-------------------------------------------------------------------
 Mon Sep  2 14:03:38 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Split tzselect script into a subpackage to prevent awk getting into minimal

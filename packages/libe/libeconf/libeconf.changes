@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:08:13 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.4:
+  * Fixed memory leaks (#219)
+  * Fixed: econf_readDirs crashes if one of the paths is NULL (#211)
+  * Added links to man page. E.g. "man econf_readConfig" is working now.
+  * Handle groups correctly which do not have any key entry.
+
+-------------------------------------------------------------------
 Wed Sep 18 11:16:34 UTC 2024 - schubi@suse.com
 
 - Update to version 0.7.3:

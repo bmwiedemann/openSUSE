@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:08:13 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.4:
+  * fixed memory leaks (#219)
+
+-------------------------------------------------------------------
 Wed Sep 18 11:16:34 UTC 2024 - schubi@suse.com
 
 - Update to version 0.7.3:

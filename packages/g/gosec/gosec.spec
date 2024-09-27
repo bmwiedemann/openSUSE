@@ -17,7 +17,7 @@
 
 
 Name:           gosec
-Version:        2.21.3
+Version:        2.21.4
 Release:        0
 Summary:        CLI tool to scan the Go AST and SSA code representations for security problems
 License:        Apache-2.0

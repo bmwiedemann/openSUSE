@@ -646,4 +646,14 @@
     <comment></comment>
     <requestid>1198950</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>18b12d6f54b3a98d753fec2588b71811</srcmd5>
+    <version>2.6.3</version>
+    <time>1727449837</time>
+    <user>anag+factory</user>
+    <comment>- updated keyring [https://build.suse.de/request/show/345282]
+- modified sources
+  % expat.keyring</comment>
+    <requestid>1203777</requestid>
+  </revision>
 </revisionlist>

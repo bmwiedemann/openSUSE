@@ -1361,4 +1361,41 @@
   * Add detector for Nvidia NGC Personal Keys (#3280) (forwarded request 1200895 from ph03nix)</comment>
     <requestid>1200896</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>43bcb52bc5da8506b7b015fba9251381</srcmd5>
+    <version>3.82.5</version>
+    <time>1727449844</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.82.5:
+  * fix(deps): update module google.golang.org/api to v0.199.0 (#3336)
+  * [chore] Ensure testing Endpoints() doesn't silently pass on change (#3334)
+  * [fix] Correctly initialize detectors with cloud endpoint customization (#3333)
+  * RailwayApp Detector (#3331)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.9.2 (#3332)
+  * Adding Descriptions (#3258)
+  * update timeout to 60s (#3330)
+  * Include all detector tests for captain (#3329)
+  * Use captain for test aggregation (#3328)
+  * [Fix] (#3306)
+  * fix(deps): update module google.golang.org/api to v0.198.0 (#3323)
+  * Endpoint customizer refresh (#3308)
+  * Ignore glTF &amp; JPEG XL files (#3325)
+  * fix(deps): update module golang.org/x/oauth2 to v0.23.0 (#3322)
+  * fix(deps): update module go.uber.org/automaxprocs to v1.6.0 (#3321)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.17.0 (#3319)
+  * [bug] - Improve seekability check for stdout pipes in BufferedReadSeeker (#3189)
+  * Improve MongoDB connection string matching (#1550)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.109.0 (#3318)
+  * [Analyzer] Test and generated permissions for HuggingFace, Square &amp; Stripe (#3294)
+  * Implement SourceUnitEnumChunker for GitHub (#3298)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.7.0 (#3317)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to v3.16.0 (#3315)
+  * hit em w/ a min (#3316)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.11.1 (#3313)
+  * [fix] - Add Size Method to BufferedReadSeeker and Refactor Context Timeout Handling in HandleFile (#3307)
+  * fix(deps): update module github.com/sendgrid/sendgrid-go to v3.16.0+incompatible (#3312)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to v3.15.0 (#3311)
+  * fix(deps): update module github.com/getsentry/sentry-go to v0.29.0 (#3310) (forwarded request 1203786 from ph03nix)</comment>
+    <requestid>1203921</requestid>
+  </revision>
 </revisionlist>

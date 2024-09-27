@@ -25,7 +25,7 @@
 %define pkg_name cli
 
 Name:           step-cli
-Version:        0.27.2
+Version:        0.27.4
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
@@ -111,6 +111,9 @@ install -D -m 0644 systemd/${unit} %{buildroot}%{_unitdir}/${unit}
 done
 
 install -D -d -m 0711 %{buildroot}%{configdir}/{certs,config}
+
+%check
+bin/%{executable_name} --version | grep %{version}
 
 %pre
 %service_add_pre %{services}

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:01:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.147.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androiddeviceprovisioning:** Update the api
+  * **backupdr:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **chromeuxreport:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **eventarc:** Update the api
+  * **firebaseml:** Update the api
+  * **integrations:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **places:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **servicenetworking:** Update the api
+  * **spanner:** Update the api
+  * **storage:** Update the api
+  * **testing:** Update the api
+  * **tpu:** Update the api
+  * **walletobjects:** Update the api
+  * **youtube:** Update the api
+  * **androidpublisher:** Update the api
+  * **cloudkms:** Update the api
+- from version 2.146.0
+  * **accesscontextmanager:** Update the api
+  * **aiplatform:** Update the api
+  * **apigee:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigtableadmin:** Update the api
+  * **civicinfo:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudfunctions:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **css:** Update the api
+  * **datastream:** Update the api
+  * **discoveryengine:** Update the api
+  * **documentai:** Update the api
+  * **firebaseml:** Update the api
+  * **firebase:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **logging:** Update the api
+  * **looker:** Update the api
+  * **merchantapi:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkmanagement:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **serviceusage:** Update the api
+  * **vpcaccess:** Update the api
+  * **walletobjects:** Update the api
+  * **bigquery:** Update the api
+  * **chat:** Update the api
+  * **translate:** Update the api
+
+-------------------------------------------------------------------
 Tue Sep  3 11:22:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.143.0

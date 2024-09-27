@@ -165,4 +165,41 @@ changes incompatibly.</comment>
     <comment></comment>
     <requestid>1163319</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dd6d7ad71b748231e1ac6ccf358fd2da</srcmd5>
+    <version>0.8</version>
+    <time>1727449863</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8:
+  * Use new APIs from libratbag v0.18. Older libratbag versions are not
+    supported.
+  * Add debounce time and angle snapping changing.
+  * Fix remapping of first two keys on keyboards only allowing to set left
+    and right mouse buttons.
+  * Reflect changes done with ratbagctl while Piper is running.
+  * Add resolution disabling.
+  * Add a text box for changing resolutions.
+  * Use single-key actions for simple macros if possible (important for
+    ASUS and some Logitech devices).
+  * New images for following devices:
+    + ASUS ROG Chakram X
+    + ASUS ROG Gladius II Origin
+    + ASUS ROG Gladius II Origin PNK LTD
+    + ASUS ROG Harpe Wireless
+    + ASUS ROG Keris Wireless
+    + ASUS ROG Keris Wireless AimPoint
+    + ASUS ROG Strix Carry
+    + ASUS ROG Strix Impact II
+    + ASUS ROG Strix Impact II Wireless
+    + Glorious Model D
+    + Glorious Model O/O-
+    + Logitech G502 X Wireless
+    + Logitech G502 X
+    + Logitech G705
+    + Logitech G Pro Keyboard
+    + Logitech MX Anywhere 3B
+    + Logitech MX Master 3S
+- Switch osc service file to use manual instead of disabled which</comment>
+    <requestid>1203974</requestid>
+  </revision>
 </revisionlist>

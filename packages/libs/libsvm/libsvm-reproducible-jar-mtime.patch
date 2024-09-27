@@ -1,0 +1,12 @@
+--- libsvm-3.3/java/Makefile	2024-09-26 17:44:00.135921357 +0200
++++ libsvm-3.3/java/Makefile	2024-09-26 17:46:18.746958191 +0200
+@@ -11,7 +11,8 @@
+ export CLASSPATH := .:$(CLASSPATH)
+ 
+ all: $(FILES)
+-	jar cvf libsvm.jar *.class libsvm/*.class
++	jar --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++	    --create --verbose --file=libsvm.jar *.class libsvm/*.class
+ 
+ .java.class:
+ 	$(JAVAC) $(JAVAC_FLAGS) $<

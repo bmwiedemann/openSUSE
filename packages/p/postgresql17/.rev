@@ -7,4 +7,35 @@
     <comment>New version 17, which also is the new default.</comment>
     <requestid>1202171</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35ca7ee1798b3f767250bd6b93de8e49</srcmd5>
+    <version>17.0</version>
+    <time>1727449842</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 17.0.0:
+  * New memory management system for VACUUM, which reduces memory
+    consumption and can improve overall vacuuming performance.
+  * New SQL/JSON capabilities, including constructors, identity
+    functions, and the JSON_TABLE() function, which converts JSON
+    data into a table representation.
+  * Various query performance improvements, including for
+    sequential reads using streaming I/O, write throughput under
+    high concurrency, and searches over multiple values in a btree
+    index.
+  * Logical replication enhancements, including:
+    + Failover control
+    + pg_createsubscriber, a utility that creates logical replicas
+      from physical standbys
+    + pg_upgrade now preserves replication slots on both publishers
+      and subscribers
+  * New client-side connection option, sslnegotiation=direct, that
+    performs a direct TLS handshake to avoid a round-trip
+    negotiation.
+  * pg_basebackup now supports incremental backup.
+  * COPY adds a new option, ON_ERROR ignore, that allows a copy
+    operation to continue in the event of an error.
+  * https://www.postgresql.org/about/news/p-2936/
+  * https://www.postgresql.org/docs/17/release-17.html</comment>
+    <requestid>1203910</requestid>
+  </revision>
 </revisionlist>

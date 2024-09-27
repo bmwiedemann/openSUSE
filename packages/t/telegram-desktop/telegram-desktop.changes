@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 22 22:52:10 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 5.5.5 
+  * Suggest URL from clipboard when creating a custom link.
+  * Fix animated topic icons in topic info page.
+  * Fix excessive getChannelDifference requests.
+
+-------------------------------------------------------------------
 Thu Aug 22 05:30:55 UTC 2024 - Xu Zhao <i@xuzhao.net>
 
 - Remove 0007-tg-owt-disable-h264.patch

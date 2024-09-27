@@ -18,29 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.15.5
+Version:        0.17.2
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
 URL:            https://unearth.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/u/unearth/unearth-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module cached-property >= 1.5.2 if %python-base < 3.8}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests >= 2.25}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-httpx
 Requires:       python-packaging >= 20
-Requires:       python-requests >= 2.25
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 38
-Requires:       python-cached-property >= 1.5.2
-%endif
 # SECTION test
 BuildRequires:  %{python_module Flask >= 2.1.2}
 BuildRequires:  %{python_module httpx}
@@ -87,6 +81,6 @@ They provide all the low-level functionalities that are needed to resolve and in
 %license LICENSE
 %python_alternative %{_bindir}/unearth
 %{python_sitelib}/unearth
-%{python_sitelib}/unearth-%{version}*-info
+%{python_sitelib}/unearth-%{version}.dist-info
 
 %changelog

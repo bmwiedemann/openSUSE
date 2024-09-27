@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 16:05:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libsvm-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+    + Applied if building with Java >= 17
+
+-------------------------------------------------------------------
 Fri Mar  1 10:07:24 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

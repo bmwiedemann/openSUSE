@@ -26,4 +26,24 @@
   * Use the same marker environment for current platform</comment>
     <requestid>1184006</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab42ea5557d112c1ddc6025c9a3f09e7</srcmd5>
+    <version>0.4.9</version>
+    <time>1727449870</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.9:
+  * Handle unknown platform
+  * Parsing generic and freebsk platforms
+  * Support generic platforms
+  * Evaluate free threaded wheel tags
+  * Support risvc64 arch
+  * Add python_version to markers if requires_python is ==
+  * Ignore invalid python tags
+  * Allow not set env criteria and compatibility check for env spec
+  * Str representation of env spec
+  * Platform parsing missing arch part
+  * Markers for env spec
+  * Add normalized representation for platform</comment>
+    <requestid>1204010</requestid>
+  </revision>
 </revisionlist>

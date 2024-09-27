@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Thu Sep  5 23:55:19 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v20240303
+  * #875 20240303-pre-release-updates
+  * #874 Deployment and Pipeline action updates
+  * #869 Revert recent obj long get long changes
+  * #860 Added missing Javadocs for Java 21
+  * #858 cleanup-after-commit for #854 and #856
+  * #856 add ability for custom delimiters
+- Update to v20240205
+  * #855 Fix JSONArrayTest testRecursiveDepthArrayFor1000Levels() 
+  * #846 Cleanup warnings and merge new unit tests
+  * #845 improved annotation search performance
+  * #835 Delete redundant .toString() call in README
+  * #832 Add a config flag to disable whitespace trimming
+  * #831 Refactor NumberConversionUtil and toString() of CookieList
+    & XML Classes
+  * #830 Upgrade json-path's version to 2.4.0 to avoid dependency
+    conflict
+  * #828 Fixed flaky tests in XMLTest.java
+  * #824 Ignore tests that fail due to resource differences
+  * #823 JSON parsing self reference object and array
+  * #820 Close XML tag explicitly for empty tags with configuration
+  * #815 Ensure java 6 compatable 
+  * #814 Refactor duplicate code for stringToNumber() in
+    JSONObject, JSONArray, and XML
+  * #812 docs: use syntax highlighting
+  * #808 Fix compiler warnings
+  * #806 Add new deployment pipeline
+  * #803 ci: test with Java 21 
+  * #801 Updates the pipeline to validate that packaging a jar
+    works properly
+  * #798 fix: flakiness in
+    org.json.junit.XMLTest#testIndentComplicatedJsonObjectWithArrayAndWithConfig
+  * #794 XML optLong/getLong equivalent updates for string to
+    number conversion.
+- Update to v20231013
+  * #793 Reverted #761
+  * #792 update the docs for release 20231013
+  * #783 optLong vs getLong inconsistencies
+  * #782 Fix
+    XMLTest.testIndentComplicatedJsonObjectWithArrayAndWithConfig()
+    for Windows
+  * #779 add validity check for JSONObject constructors
+  * #778 Fix
+    XMLTest.testIndentComplicatedJsonObjectWithArrayAndWithConfig()
+    for Windows
+  * #776 Update [JUnit to version 4.13.2
+  * #774 Removing unneeded synchronization
+  * #773 Add optJSONArray method to JSONObject with a default value
+  * #772 Disallow nested objects and arrays as keys in objects
+  * #779 Unit test cleanup
+  * #769 Addressed Java 17 compile warnings
+  * #764 Update CodeQL action version
+  * #761 Add module-info
+  * #759 JSON parsing should detect embedded 
+  * #753 Updated new object methods
+  * #752 Fixes possible unit test bug when compiling/testing on
+    Windows
+- Update to v20230618
+  * #749 Prep for release 20230618
+  * #740 Fixed Flaky Tests Caused by JSON permutations
+  * #734 Fixed Flaky Tests Caused by JSON permutations
+  * #733 JSONTokener implemented java.io.Closeable
+  * #731 Removing commented out code in JSONObject optDouble()
+  * #729 Refactor ParserConfiguration class hierarchy
+- Update to v20230227
+  * #723 Protect JSONML from stack overflow exceptions caused by
+    recursion
+  * #720 Limit the XML nesting depth for CVE-2022-45688
+  * #711 Revert pull 707 - interviewbit spam
+  * #704 Move javadoc comments above the interface definition to
+    make it visible
+  * #703 Update Releases.md for JSONObject(Map): Throws NPE if key
+    is null
+  * #696 Update JSONPointerTest for NonDex compatibility
+  * #694 Pretty print XML
+  * #692 Example.md syntax highlight and indentation
+  * #691 Create unit tests for various number formats
+- Update to v20220924
+  * #688 Update copyright to Public Domain
+  * #687 Fix a typo
+  * #685 JSONObject map type unit tests
+  * #684 Remove v7 build from pipeline
+  * #682 JSONString similarity
+  * #675 #675
+- Update to v20220320
+  * #660 Wrap StackOverflow with JSONException
+- Add build dependency on mvn(org.moditect:moditect-maven-plugin)
+
+-------------------------------------------------------------------
+Wed Sep 13 05:28:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Mar 22 15:29:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Mar  1 15:17:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of json-java 20211205

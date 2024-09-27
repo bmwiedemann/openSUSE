@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Sep 26 18:10:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Use BuildRequires: golang(API) >= 1.22 rather than pin go1.22.
+    The golang(API) expression allows use of newer go versions and
+    integrates with the go metapackage via OBS prjconf Prefer:
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop go build -o arg, default binary name is package of main()
+
+-------------------------------------------------------------------
+Sat May 11 13:52:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package mockery: A mock code autogenerator for Go

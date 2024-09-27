@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Parallel-ForkManager
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,29 @@
 #
 
 
-Name:           perl-Parallel-ForkManager
-Version:        2.02
-Release:        0
 %define cpan_name Parallel-ForkManager
-Summary:        Simple Parallel Processing Fork Manager
+Name:           perl-Parallel-ForkManager
+Version:        2.30.0
+Release:        0
+# 2.03 -> normalize -> 2.30.0
+%define cpan_version 2.03
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{version}.tar.gz
+Summary:        Simple parallel processing fork manager
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Moo)
+BuildRequires:  perl(Moo) >= 1.001000
 BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Moo)
+Requires:       perl(Moo) >= 1.001000
 Requires:       perl(Moo::Role)
+Provides:       perl(Parallel::ForkManager) = %{version}
+Provides:       perl(Parallel::ForkManager::Child) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -78,9 +81,9 @@ You must specify the maximum number of processes to be created. If you
 specify 0, then NO fork will be done; this is good for debugging purposes.
 
 Next, use $pm->start to do the fork. $pm returns 0 for the child process,
-and child pid for the parent process (see also perlfunc(1p)/fork()). The
-"and next" skips the internal loop in the parent process. NOTE: $pm->start
-dies if the fork fails.
+and child pid for the parent process (see also perlfunc/fork). The "and
+next" skips the internal loop in the parent process. NOTE: $pm->start dies
+if the fork fails.
 
 $pm->finish terminates the child process (assuming a fork was done in the
 "start").
@@ -90,14 +93,14 @@ you want to manage another set of subprocesses in the child process, you
 must instantiate another Parallel::ForkManager object!
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -105,7 +108,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CODE_OF_CONDUCT.md CONTRIBUTORS doap.xml examples README.mkdn
 
 %changelog

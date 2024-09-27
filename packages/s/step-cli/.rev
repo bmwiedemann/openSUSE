@@ -7,4 +7,12 @@
     <comment>new package step-cli: A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.</comment>
     <requestid>1200973</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1eb63e8cb0324f5366590ff3c0c52fcd</srcmd5>
+    <version>0.27.4</version>
+    <time>1727449857</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1203949</requestid>
+  </revision>
 </revisionlist>

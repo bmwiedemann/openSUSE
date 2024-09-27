@@ -23,8 +23,8 @@ Summary:        GNU Privacy Assistant
 License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            http://www.gnupg.org/related_software/gpa/index.html
-Source:         ftp://ftp.gnupg.org/gcrypt/gpa/%{name}-%{version}.tar.bz2
-Source1:        ftp://ftp.gnupg.org/gcrypt/gpa/%{name}-%{version}.tar.bz2.sig
+Source:         https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2
+Source1:        https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2.sig
 Source2:        gpa.keyring
 Patch0:         gpa-0.10.0-reduce-gpgme-requirement.patch
 BuildRequires:  gnupg
@@ -32,6 +32,7 @@ BuildRequires:  gpgme-devel >= 1.9.0
 BuildRequires:  gtk2-devel >= 2.10.0
 BuildRequires:  libassuan-devel >= 2.4.2
 BuildRequires:  libgpg-error-devel >= 1.27
+BuildRequires:  libtool
 BuildRequires:  update-desktop-files
 
 %description
@@ -43,8 +44,11 @@ checking signatures, and signing, decrypting, and encrypting files.
 
 %prep
 %autosetup -p1
+rm m4/libassuan.m4
 
 %build
+# ensure to copy libassuan.m4 from libassuan-devel
+autoreconf -fiv
 %configure \
         --with-gnu-ld
 make %{?_smp_mflags}
