@@ -2436,6 +2436,7 @@ BuildFlags: onlybuild:npth
 BuildFlags: onlybuild:nss-mdns
 BuildFlags: onlybuild:numactl
 BuildFlags: onlybuild:nuspell
+BuildFlags: onlybuild:nvidia-settings
 BuildFlags: onlybuild:obs-service-recompress
 BuildFlags: onlybuild:obs-service-set_version
 BuildFlags: onlybuild:obs-service-tar_scm
