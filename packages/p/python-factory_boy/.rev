@@ -214,4 +214,12 @@
 - BuildRequires on %{pythons} as setuptools no longer drags it in.</comment>
     <requestid>1198077</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>383398e0e068ac473288744558ce0eaf</srcmd5>
+    <version>3.3.1</version>
+    <time>1727449888</time>
+    <user>anag+factory</user>
+    <comment>- skip testing with Django on SLFO</comment>
+    <requestid>1204071</requestid>
+  </revision>
 </revisionlist>

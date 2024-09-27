@@ -31,7 +31,7 @@ BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} > 1600
 BuildRequires:  %{python_module Django}
 %endif
 Requires:       python-Faker >= 0.7.0

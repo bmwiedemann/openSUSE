@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:37:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- skip testing with Django on SLFO
+
+-------------------------------------------------------------------
 Sat Aug 31 12:41:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
