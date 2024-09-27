@@ -19,16 +19,17 @@
 %define         pg_name  @BUILD_FLAVOR@%{nil}
 %define         ext_name postgis
 %{pg_version_from_name}
-%define         main_version 3.4
+%define         main_version 3.5
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 URL:            https://postgis.net/
 Source0:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz
+Source1:        https://postgis.net/stuff/%{ext_name}-%{version}.tar.gz.md5
 BuildRequires:  %{pg_name}-llvmjit-devel
 BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  cgal-devel
@@ -38,7 +39,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gdal-devel >= 3.0
 BuildRequires:  gtk2-devel
-BuildRequires:  libgeos-devel >= 3.7.0
+BuildRequires:  libgeos-devel >= 3.8.0
 BuildRequires:  libjson-c-devel
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  proj-devel >= 6.1.0
