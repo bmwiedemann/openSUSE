@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Sep 27 10:28:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.0
+  * Bug
+    + ARCHETYPE-626: mvn install deploy does not work with 3.2.1
+      but worked with 3.2.0
+    + ARCHETYPE-635: Groovy present twice on classpath of
+      maven-archetype-plugin
+    + ARCHETYPE-637: PomUtils.addNewModule Pretty-Printing has
+      issue on java 9+
+    + ARCHETYPE-646: "WARNING: Parameter 'localRepository' is
+      deprecated" with Maven 3.9.1
+    + ARCHETYPE-657, CVE-2024-47197, boo#1231000: create 
+      target/archetype-it instead of target/classes/archetype-it, 
+  * Improvement
+    + ARCHETYPE-632: Add logging conflict line in integration-test
+    + ARCHETYPE-634: WARNING: An illegal reflective access
+      operation has occurred
+    + ARCHETYPE-650: improve "The defined artifact is not an
+      archetype" error message
+    + ARCHETYPE-651: add a message when updating local catalog
+    + ARCHETYPE-654: Clarify repository/server id used for custom
+      repository catalog
+    + ARCHETYPE-655: Get rid of Wagon API to download catalogs
+    + ARCHETYPE-660: Require Maven 3.6.3
+    + ARCHETYPE-668: Switch to JSR-330
+    + ARCHETYPE-673: Get rid of maven-artifact-transfer
+- Removed patch:
+  * port-to-maven-script-interpreter-1_3.patch
+    + upstream is on 1.5 now
+- Modified patches:
+  * 0001-Avoid-reliance-on-groovy.patch
+  * reproducible-from-environment.patch
+    + rediff
+- Added patch:
+  * 0002-Revert-ARCHETYPE-667-Upgrade-Velocity-from-1.7-to-2..patch
+    + use for the while velocity 1.x before we have the
+      velocity-engine upgraded to the right version and free of
+      build cycles
+
+-------------------------------------------------------------------
 Tue Sep 24 14:25:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

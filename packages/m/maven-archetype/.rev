@@ -55,4 +55,12 @@
     <comment>Reproducible build</comment>
     <requestid>1203003</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>702c816e83c93a363e404555bab71764</srcmd5>
+    <version>3.3.0</version>
+    <time>1727449913</time>
+    <user>anag+factory</user>
+    <comment>3.3.0 (security fix)</comment>
+    <requestid>1204136</requestid>
+  </revision>
 </revisionlist>

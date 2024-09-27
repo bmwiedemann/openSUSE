@@ -1,8 +1,8 @@
---- maven-archetype-3.2.1/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java	2024-09-24 16:19:57.678404688 +0200
-+++ maven-archetype-3.2.1/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java	2024-09-24 16:21:47.675826578 +0200
-@@ -139,6 +139,14 @@
+--- a/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java
++++ b/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java
+@@ -133,6 +133,14 @@ public class JarMojo extends AbstractMojo {
  
-         archiver.setArchiver( (JarArchiver) archivers.get( "jar" ) );
+         archiver.setArchiver((JarArchiver) archivers.get("jar"));
  
 +        if ( outputTimestamp == null ||
 +            outputTimestamp.length() < 1 ||
@@ -13,5 +13,5 @@
 +        }
 +
          // configure for Reproducible Builds based on outputTimestamp value
-         archiver.configureReproducible( outputTimestamp );
+         archiver.configureReproducibleBuild(outputTimestamp);
  

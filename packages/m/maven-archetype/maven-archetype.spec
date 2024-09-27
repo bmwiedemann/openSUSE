@@ -17,14 +17,14 @@
 
 
 Name:           maven-archetype
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Maven project templating toolkit
 License:        Apache-2.0
 URL:            https://maven.apache.org/archetype/
 Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
 Patch1:         0001-Avoid-reliance-on-groovy.patch
-Patch2:         port-to-maven-script-interpreter-1_3.patch
+Patch2:         0002-Revert-ARCHETYPE-667-Upgrade-Velocity-from-1.7-to-2..patch
 Patch3:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -36,11 +36,8 @@ BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
-BuildRequires:  mvn(org.apache.maven.shared:maven-invoker)
-BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter)
-BuildRequires:  mvn(org.apache.maven.wagon:wagon-provider-api)
-BuildRequires:  mvn(org.apache.maven:maven-aether-provider)
+BuildRequires:  mvn(org.apache.maven.shared:maven-invoker) >= 3.3.0
+BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter) >= 1.5
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -52,13 +49,11 @@ BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
 BuildRequires:  mvn(org.apache.velocity:velocity)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interactivity-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
-BuildRequires:  mvn(org.eclipse.aether:aether-impl)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildArch:      noarch
 
@@ -135,12 +130,9 @@ Summary:        Maven Plugin for using archetypes
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
-%pom_change_dep ant:ant-antlr org.apache.ant:ant-antlr archetype-common
-%pom_change_dep org.sonatype.aether: org.eclipse.aether: archetype-common
 
 # Pointless for rpm build
 %pom_remove_plugin -r org.apache.rat:apache-rat-plugin
-%pom_remove_plugin -r org.apache.maven.plugins:maven-enforcer-plugin
 
 # Add OSGI info to catalog and descriptor jars
 pushd archetype-models/archetype-catalog
