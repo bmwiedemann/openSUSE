@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 06:14:18 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.1.2
+  This release contains some security fixes.
+  * matomo-org/matomo
+    - #22562 Limit length of annotations to 255 characters and sanitize
+    - #22589 Add information about risks associated with giving super user access to a user
+    - #22536 [Bug] Illegal mix of collations with MariaDB 11.5+
+    - #22592 Limit date ranges that end far in the future
+
+-------------------------------------------------------------------
 Sat Aug 31 14:04:49 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.1.1
