@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 08:27:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.2
+  ## Bug Fixes
+  * Fix filetype detection to use the detected filetype if a known
+    reader is registered. (#7788)
+  * Fixed loading of ~sunpy.map.sources.ADAPTMap if sunkit-magex
+    v1.0.0 is installed. (#7798)
+  * Fixed loading of GOES XRS files with newer versions of numpy
+
+-------------------------------------------------------------------
 Sat Aug 17 13:51:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.1
