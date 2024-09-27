@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 14:53:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.3
+  * Improves compatibility with recent pandas releases
+
+-------------------------------------------------------------------
 Mon Apr 29 14:11:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.2

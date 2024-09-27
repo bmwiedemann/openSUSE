@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-statsmodels%{psuffix}
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
@@ -90,8 +90,6 @@ sed -i 's/\r$//' README_l1.txt
 %build
 %if !%{with test}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-# force cythonization
-export SM_FORCE_C=1
 %pyproject_wheel
 %endif
 
