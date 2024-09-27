@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:07:49 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.051:
+  The important change for the fonts themselves is:
+  * Correct some errors in composite glyphs in Hebrew Italic
+  Other changes, only availabe in the sources:
+  * Re-typeset multilingual sample pages
+  * Enable builds of autohinted static TTF variants via Fontship
+
+-------------------------------------------------------------------
 Mon Sep 23 05:38:18 UTC 2024 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 7.050:
@@ -16,7 +26,7 @@ Mon Sep 23 05:38:18 UTC 2024 - Cor Blom <cornelis@solcon.nl>
   * Add U+29B9 and U+29BA glyphs to Libertinus Math
   * Add U+2B33, long leftwards squiggle arrow to Math family
   * Add Dutch-specific i_j and I_J digraphs
-- Source is no longer availabel as tar.gz. Swithed to zip
+- Source is no longer available as tar.gz. Switched to zip
 
 -------------------------------------------------------------------
 Sat Feb 27 09:17:42 UTC 2021 - Cor Blom <cornelis@solcon.nl>
