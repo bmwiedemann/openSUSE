@@ -32,4 +32,12 @@
     <comment>1.3</comment>
     <requestid>973693</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dde09701ee9df61b4674bfb0c345c377</srcmd5>
+    <version>1.6</version>
+    <time>1727449912</time>
+    <user>anag+factory</user>
+    <comment>1.6 (will be needed for security fix upgrade of maven-archetype)</comment>
+    <requestid>1204135</requestid>
+  </revision>
 </revisionlist>

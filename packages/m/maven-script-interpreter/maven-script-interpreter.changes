@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 27 09:04:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.6
+  * Changes
+    + [MSHARED-1001] Shared GitHub Actions
+    + [MSHARED-1002] Require Java 8
+    + [MSHARED-1068] Upgrade Groovy to 4.0.2
+    + simplify exception management
+    + [MSHARED-1368] - Synchronize interpreter execution
+    + [MSHARED-1359] - Use child first classloader in
+      BeanShellScriptInterpreter
+    + [MSHARED-1359] - Optimize classloader in
+      BeanShellScriptInterpreter
+    + [MSHARED-1359] - Allow reuse the same classloader for multiple
+      script executions
+    + [MSHARED-1386] - Manage context ClassLoader for current thread
+
+-------------------------------------------------------------------
 Thu Apr 28 11:43:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.3

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-script-interpreter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-script-interpreter
-Version:        1.3
+Version:        1.6
 Release:        0
 Summary:        Maven Script Interpreter
 License:        Apache-2.0
@@ -29,12 +29,9 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  bsh2
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  slf4j
 BuildRequires:  unzip
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(org.apache-extras.beanshell:bsh)
-Requires:       mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
 %description
@@ -81,7 +78,7 @@ install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 
 # javadoc
