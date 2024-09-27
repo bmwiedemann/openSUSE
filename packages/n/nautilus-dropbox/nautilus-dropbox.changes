@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 19 06:09:05 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libgthread-2_0-0 to dependency as Requires to fix GUI
+  launching (bsc#1230714).
+
+-------------------------------------------------------------------
 Tue Nov 22 14:38:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require python3-gpg instead of python3-gpgme: gpgme is deprecated

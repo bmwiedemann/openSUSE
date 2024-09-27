@@ -47,6 +47,7 @@ Summary:        Dropbox command line interface
 Group:          Productivity/File utilities
 Requires:       python3-gpg
 Requires:       python3-gobject-Gdk
+Requires:       libgthread-2_0-0
 Provides:       dropbox = %{version}
 Obsoletes:      dropbox <= 2015.10.28
 
