@@ -17,7 +17,7 @@
 
 
 Name:           eartag
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Edit audio file tags
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-mutagen
 BuildRequires:  python3-pyacoustid
 BuildRequires:  python3-python-magic
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.16
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 Requires:       chromaprint-fpcalc
 Requires:       python3-Pillow

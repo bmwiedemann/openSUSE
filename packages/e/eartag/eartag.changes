@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 27 07:32:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.6.2:
+  * Adapt to GNOME 47
+  * requires gtk >= 4.16
+  * minor bugfixes
+  * updated translations
+
+-------------------------------------------------------------------
 Thu Jul 25 23:02:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - change license to MIT
