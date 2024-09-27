@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 19:00:44 UTC 2024 - Matthias Bach <marix@marix.org>
+
+- Update to 2.13.2
+  * Read JSON files in binary mode to avoid UnicodeDecodeError
+  * typing_extensions dependency not required on Python 3.9 and
+    higher
+- Drop dependency on python-typing_extensions as we are only
+  packaging for Python versions higher than 3.9.
+
+-------------------------------------------------------------------
 Thu Sep 19 19:54:48 UTC 2024 - Matthias Bach <marix@marix.org> - 2.13.0
 
 - Update to 2.13.0
