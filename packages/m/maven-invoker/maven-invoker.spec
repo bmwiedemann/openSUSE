@@ -17,7 +17,7 @@
 
 
 Name:           maven-invoker
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        An API for firing a maven build in a clean environment
 License:        Apache-2.0
@@ -25,8 +25,6 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-invoker/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
-# Patch rejected upstream
-Patch1:         %{name}-MSHARED-279.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -34,8 +32,6 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-shared-utils >= 3.3.3
 BuildRequires:  sisu-inject
 BuildRequires:  unzip
-Requires:       mvn(org.apache.maven.shared:maven-shared-utils)
-Requires:       mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildArch:      noarch
 
 %description
@@ -58,13 +54,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-sed -i 's/\r$//' src/main/java/org/apache/maven/shared/invoker/MavenCommandLineBuilder.java
 cp %{SOURCE1} build.xml
-%patch -P 1 -p1
-%pom_change_dep javax.inject:javax.inject:1  org.eclipse.sisu:org.eclipse.sisu.inject
-
-%pom_remove_parent .
-%pom_xpath_inject pom:project "<groupId>org.apache.maven.shared</groupId>" .
 
 %build
 mkdir -p lib

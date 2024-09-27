@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148756</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9f5ce6f6819ac94a2e9ff06e88c4d39</srcmd5>
+    <version>3.3.0</version>
+    <time>1727449912</time>
+    <user>anag+factory</user>
+    <comment>3.3.0 (will be needed for security fix upgrade of maven-archetype)</comment>
+    <requestid>1204134</requestid>
+  </revision>
 </revisionlist>

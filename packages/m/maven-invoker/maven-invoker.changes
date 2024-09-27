@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:39:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.3.0
+  * New features and improvements
+    + MSHARED-1040: Require Java 8
+    + MSHARED-1019: Allow pass raw cli option to Maven process
+    + MSHARED-1018: Allow for using the -ntp ,--no-transfer-progress
+      flag in Maven invocations
+    + MSHARED-1009: Allow providing Maven executable from workspace
+    + MSHARED-649: Allow Pom file outside base directory
+    + MSHARED-1007: Add MavenHome and MavenExecutable options to
+      InvocationRequest
+    + MINVOKER-233: Improve DefaultInvoker with a timeout.
+    + MSHARED-1390: Deprecate InvocationRequest#setGoals
+    + MSHARED-1382: support a possibility to disable snapshots
+      update.
+    + MSHARED-1150: Add ps1 as detectable file type for PowerShell
+  * Bug Fixes
+    + MSHARED-1008: Set builder id in proper way
+    + MSHARED-971: Add test for inherited environment
+  * Maintenance
+    + MSHARED-577: Remove usage of M2_HOME environment variable
+    + MSHARED-1006: Deprecate not thread safe methods on Invoker
+    + Unit test MavenCommandLineBuilderTest refactor
+    + remove --no-module-directories from javadoc configuration
+    + remove unused property
+    + remove deprecated class and use up to date JUnit fixtures
+    + MSHARED-1152: Remove public modifier for JUnit5 tests
+    + MSHARED-1391: Code cleanups
+    + MSHARED-1389: Refresh download page
+    + MSHARED-1307: systemProperties is deprecated:
+      systemPropertyVariables instead
+    + MSHARED-1306: Use fixtures to reduce duplicate code
+    + MSHARED-1306: don't log from passing tests
+    + MNG-6829: Replace any StringUtils#isEmpty(String) and 
+      #isNotEmpty(String)
+    + MSHARED-1152: Migrate tests to JUnit5
+    + MSHARED-1145: remove rendundant error message
+- Removed patch:
+  * maven-invoker-MSHARED-279.patch
+    + rejected upstream
+
+-------------------------------------------------------------------
 Wed Feb 21 14:55:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
