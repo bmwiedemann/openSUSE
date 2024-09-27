@@ -1,0 +1,42 @@
+Index: posthog-3.6.0/posthog/consumer.py
+===================================================================
+--- posthog-3.6.0.orig/posthog/consumer.py
++++ posthog-3.6.0/posthog/consumer.py
+@@ -1,9 +1,9 @@
+ import json
+ import logging
++import time
+ from threading import Thread
+ 
+ import backoff
+-import monotonic
+ 
+ from posthog.request import APIError, DatetimeSerializer, batch_post
+ 
+@@ -96,11 +96,11 @@ class Consumer(Thread):
+         queue = self.queue
+         items = []
+ 
+-        start_time = monotonic.monotonic()
++        start_time = time.monotonic()
+         total_size = 0
+ 
+         while len(items) < self.flush_at:
+-            elapsed = monotonic.monotonic() - start_time
++            elapsed = time.monotonic() - start_time
+             if elapsed >= self.flush_interval:
+                 break
+             try:
+Index: posthog-3.6.0/setup.py
+===================================================================
+--- posthog-3.6.0.orig/setup.py
++++ posthog-3.6.0/setup.py
+@@ -14,7 +14,7 @@ long_description = """
+ PostHog is developer-friendly, self-hosted product analytics. posthog-python is the python package.
+ """
+ 
+-install_requires = ["requests>=2.7,<3.0", "monotonic>=1.5", "backoff>=1.10.0", "python-dateutil>2.1"]
++install_requires = ["requests>=2.7,<3.0", "backoff>=1.10.0", "python-dateutil>2.1"]
+ 
+ extras_require = {
+     "dev": [

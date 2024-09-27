@@ -23,20 +23,19 @@ Release:        0
 Summary:        PostHog is developer-friendly, self-hosted product analytics
 License:        MIT
 URL:            https://github.com/posthog/posthog-python
-Group:          Development/Libraries/Python
 Source:         https://files.pythonhosted.org/packages/source/p/posthog/posthog-%{version}.tar.gz
 Patch1:         python-posthog-no-mock.patch
 Patch2:         python-posthog-no-six.patch
-BuildRequires:  python-rpm-macros
+Patch3:         no-more-monotonic.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module backoff >= 1.10.0}
-BuildRequires:  %{python_module monotonic >= 1.5}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module python-dateutil > 2.1}
 BuildRequires:  %{python_module requests >= 2.7}
 # /SECTION

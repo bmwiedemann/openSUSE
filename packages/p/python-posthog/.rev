@@ -7,4 +7,13 @@
     <comment>Initial Package</comment>
     <requestid>1199245</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2871bddc4de2994270e7cc93d7fa89fe</srcmd5>
+    <version>3.6.0</version>
+    <time>1727449883</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-more-monotonic.patch:
+  * Just use time.monotonic</comment>
+    <requestid>1204056</requestid>
+  </revision>
 </revisionlist>

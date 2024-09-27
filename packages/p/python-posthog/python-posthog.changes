@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 07:03:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-monotonic.patch:
+  * Just use time.monotonic
+
+-------------------------------------------------------------------
 Thu Sep  5 17:07:16 UTC 2024 - Meera Belur <mbelur@suse.com>
 
 - Remove dependency on python-six 
