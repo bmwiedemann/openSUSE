@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:07:44 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.36.4:
+  * Fix a regression in the previous release that caused window padding to be
+    rendered opaque even when `background_opacity` is less than 1 (#7895)
+  * Wayland GNOME: Fix a crash when using multiple monitors with different
+    scales and starting on or moving to the monitor with lower scale (#7894)
+  * macOS: Fix a regression in the previous release that caused junk to be
+    rendered in font previews in the choose fonts kitten and crash on Intel
+    macs (#7892)
+
+-------------------------------------------------------------------
 Wed Sep 25 13:40:01 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.36.3:
