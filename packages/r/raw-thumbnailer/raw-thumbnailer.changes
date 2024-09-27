@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 25 13:33:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to source service for easier upgrading.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:01:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0.1:
+  + Fix the module name / tarballs.
+- Changes from version 47.0.0:
+  + Rewrote in Rust.
+  + Uses meson to build.
+- Add meson BuildRequires and replace configure based macros with
+  meson_* based macros.
+- Add cargo BuildRequires: new dependency as raw-thumbnailer was
+  rewritten in rust.
+- Drop obsoleted patches:
+  + raw-thumbnailer-3.0.0-add-Panasonic.patch
+  + raw-thumbnailer-3.0.0-mime-data-remove.patch
+
+-------------------------------------------------------------------
 Thu Feb  8 15:51:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

@@ -17,24 +17,22 @@
 
 
 Name:           raw-thumbnailer
-Version:        3.0.0
+Version:        47.0.1
 Release:        0
 Summary:        RAW images thumbnailer for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://libopenraw.freedesktop.org
-Source0:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Summary(ru):    Генератор миниатюр RAW изображений для GNOME
-# PATCH-FEATURE-UPSTREAM raw-thumbnailer-3.0.0-add-Panasonic.patch svalx@svalx.net -- Add support for image/x-panasonic-raw and image/x-panasonic-raw2.
-Patch0:         raw-thumbnailer-3.0.0-add-Panasonic.patch
-# PATCH-FIX-OPENSUSE raw-thumbnailer-3.0.0-mime-data-remove.patch svalx@svalx.net -- remove mime type definitions - it is duplicate of definition in shared-mime-info package.
-Patch1:         raw-thumbnailer-3.0.0-mime-data-remove.patch
+BuildRequires:  cargo
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(libopenraw-gnome-0.3)
 Requires:       shared-mime-info >= 0.90
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A lightweight and fast thumbnailer used by Nautilus for digital camera RAW files.
@@ -43,17 +41,17 @@ A lightweight and fast thumbnailer used by Nautilus for digital camera RAW files
 Быстрое и не требовательное приложение, используемое Nautilus для создание миниатюр RAW файлов, полученных с цифровых камер.
 
 %prep
-%autosetup -p0
-if pkg-config --exists libopenraw-gnome-0.3; then
-  sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.3/g" configure*
-fi
+%autosetup -p1 -a1
 
 %build
-%configure
-%make_build
+%meson -Dprofile=release
+%meson_build
 
 %install
-%make_install
+%meson_install
+
+%check
+%meson_test
 
 %files
 %defattr(-,root,root)
@@ -62,5 +60,6 @@ fi
 %{_bindir}/raw-thumbnailer
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/raw.thumbnailer
+%{_datadir}/mime/packages/raw-thumbnailer.xml
 
 %changelog
