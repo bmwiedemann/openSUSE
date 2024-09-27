@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:46:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.2.3:
+  * Math: add Mat3x3 
+
+- Changes from 0.2.2:
+  * string: fixup isNumber not accepting -1.0
+
+-------------------------------------------------------------------
 Thu Aug  8 07:39:55 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.2.1:

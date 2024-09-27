@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           hyprutils
-Version:        0.2.1
+Version:        0.2.3
 Release:        0
 Summary:        Utilities used across the Hypr* ecosystem
 License:        BSD-3-Clause
