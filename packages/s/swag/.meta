@@ -1,0 +1,6 @@
+<package name="swag" project="openSUSE:Factory">
+  <title>swag</title>
+  <description>Swag is a CLI tool to convert Go annotations to Swagger Documentation 2.0. We've created a variety of plugins for popular Go web frameworks. This allows you to quickly integrate with an existing Go project using Swagger UI.</description>
+  <devel project="devel:languages:go" package="swag"/>
+  <url>https://github.com/swaggo/swag</url>
+</package>
