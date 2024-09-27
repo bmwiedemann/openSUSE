@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Cors
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        A Flask extension adding a decorator for CORS support
 License:        MIT

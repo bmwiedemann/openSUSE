@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 25 17:41:21 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
+
+- version update to 5.0.0:
+  * Breaking: Change default to disable private network access by 
+    @corydolphin in #368. This effectively resolves 
+    GHSA-hxwh-jpp2-84pm https://osv.dev/vulnerability/PYSEC-2024-71 
+
+-------------------------------------------------------------------
 Tue Aug 13 17:14:40 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - version update to 4.0.1
