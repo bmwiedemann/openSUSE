@@ -19,7 +19,7 @@
 %global parent xmvn
 %global subname tools
 Name:           %{parent}-%{subname}
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
@@ -27,10 +27,6 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/xmvn/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
-Patch0:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
-Patch1:         0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
-Patch2:         0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
-Patch3:         0004-Reproducible-manifest-modification-time.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
@@ -164,6 +160,7 @@ build-jar-repository -s lib \
   atinject \
   beust-jcommander \
   commons-compress \
+  commons-io \
   objectweb-asm/asm \
   org.eclipse.sisu.inject \
   org.eclipse.sisu.plexus \

@@ -175,4 +175,12 @@
     <comment>preserve manifest modification time</comment>
     <requestid>1201943</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bdf53ce9462942a8e741898a4514a3d9</srcmd5>
+    <version>4.3.0</version>
+    <time>1727449918</time>
+    <user>anag+factory</user>
+    <comment>4.3.0</comment>
+    <requestid>1204170</requestid>
+  </revision>
 </revisionlist>

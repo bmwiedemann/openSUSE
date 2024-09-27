@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 27 11:35:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.3.0
+  * Changes:
+    + Fix typo in JavadocMojo
+    + Reproducible javadoc
+    + Reproducible manifest injection
+    + Deprecate UUIDs
+    + Implement MetadataResult.getPackageMetadataMap()
+- Removed patches:
+  * 0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
+  * 0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
+  * 0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
+  * 0004-Reproducible-manifest-modification-time.patch
+    + integrated upstream or similar functionality was added
+  
+-------------------------------------------------------------------
 Wed Sep 18 16:33:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

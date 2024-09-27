@@ -17,7 +17,7 @@
 
 
 Name:           xmvn
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
