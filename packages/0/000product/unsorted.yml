@@ -2272,7 +2272,6 @@ unsorted:
   - clingo 
   - clingo-devel 
   - clipgrab 
-  - clipit 
   - clipman 
   - clipped 
   - clipped-lang 
@@ -4401,9 +4400,6 @@ unsorted:
   - flocq-doc 
   - flom 
   - flom-devel 
-  - florence 
-  - florence-devel 
-  - florence-lang 
   - flowgrind 
   - fltk-devel 
   - fltk-devel-32bit 
@@ -7182,9 +7178,6 @@ unsorted:
   - glab-doc 
   - glab-fish-completion 
   - glab-zsh-completion 
-  - glabels 
-  - glabels-devel 
-  - glabels-lang 
   - glade 
   - glade-catalog-anjuta 
   - glade-catalog-evolution 
@@ -9634,6 +9627,8 @@ unsorted:
   - jsch-javadoc 
   - jshon 
   - json-glib-devel 
+  - json-java 
+  - json-java-javadoc 
   - json-table 
   - jsoncpp-devel 
   - jsonp 
@@ -11214,7 +11209,6 @@ unsorted:
   - libLLVM15-32bit 
   - libLLVM16 
   - libLLVM16-32bit 
-  - libLLVM17 
   - libLLVM17-32bit 
   - libLLVM18-32bit 
   - libLLVMSPIRVLib-devel 
@@ -13131,7 +13125,6 @@ unsorted:
   - libflite_cmulex1 
   - libflite_usenglish1 
   - libflom0 
-  - libflorence-1_0-1 
   - libfltk1_3-32bit 
   - libfluidsynth3 
   - libfluidsynth3-32bit 
@@ -13371,8 +13364,6 @@ unsorted:
   - libgedit-amtk-devel 
   - libgedit-gtksourceview-devel 
   - libgee-devel 
-  - libgee06-devel 
-  - libgee2 
   - libgeis1 
   - libgenders0 
   - libgendersplusplus2 
@@ -18607,8 +18598,6 @@ unsorted:
   - memkind-devel 
   - memleax 
   - memory-constraints 
-  - memprof 
-  - memprof-lang 
   - menu-cache 
   - menu-cache-devel 
   - mercurial 
@@ -18889,6 +18878,7 @@ unsorted:
   - mobidict 
   - mobipocket-devel 
   - moc 
+  - mockery 
   - mockito 
   - mockito-javadoc 
   - mockito-junit-jupiter 
@@ -23291,6 +23281,8 @@ unsorted:
   - postgresql17-plperl 
   - postgresql17-plpython 
   - postgresql17-pltcl 
+  - postgresql17-postgis 
+  - postgresql17-postgis-utils 
   - postgresql17-server-devel 
   - postgresql17-test 
   - postgrey 
@@ -24474,6 +24466,7 @@ unsorted:
   - python310-astunparse 
   - python310-asv 
   - python310-async-lru 
+  - python310-async-wrapper 
   - python310-async_generator 
   - python310-async_timeout 
   - python310-asyncclick 
@@ -24487,6 +24480,7 @@ unsorted:
   - python310-attr 
   - python310-attrs 
   - python310-aubio 
+  - python310-audible 
   - python310-audio-degrader 
   - python310-audiogrep 
   - python310-audiomate 
@@ -27328,6 +27322,7 @@ unsorted:
   - python310-sphinxcontrib-htmlhelp 
   - python310-sphinxcontrib-httpdomain 
   - python310-sphinxcontrib-issuetracker 
+  - python310-sphinxcontrib-jinja 
   - python310-sphinxcontrib-jquery 
   - python310-sphinxcontrib-jsmath 
   - python310-sphinxcontrib-newsfeed 
@@ -27458,6 +27453,7 @@ unsorted:
   - python310-time-machine 
   - python310-time-travel 
   - python310-timeout-decorator 
+  - python310-timeout-executor 
   - python310-tiny-proxy 
   - python310-tinyarray 
   - python310-tinycss2 
@@ -28146,6 +28142,7 @@ unsorted:
   - python311-astunparse 
   - python311-asv 
   - python311-async-lru 
+  - python311-async-wrapper 
   - python311-async_generator 
   - python311-async_timeout 
   - python311-asyncclick 
@@ -28158,6 +28155,7 @@ unsorted:
   - python311-atspi 
   - python311-attr 
   - python311-aubio 
+  - python311-audible 
   - python311-audio-degrader 
   - python311-audiogrep 
   - python311-audiomate 
@@ -30902,6 +30900,7 @@ unsorted:
   - python311-sphinxcontrib-htmlhelp 
   - python311-sphinxcontrib-httpdomain 
   - python311-sphinxcontrib-issuetracker 
+  - python311-sphinxcontrib-jinja 
   - python311-sphinxcontrib-jquery 
   - python311-sphinxcontrib-jsmath 
   - python311-sphinxcontrib-newsfeed 
@@ -31032,6 +31031,7 @@ unsorted:
   - python311-time-machine 
   - python311-time-travel 
   - python311-timeout-decorator 
+  - python311-timeout-executor 
   - python311-tiny-proxy 
   - python311-tinyarray 
   - python311-tinycss2 
@@ -31732,6 +31732,7 @@ unsorted:
   - python312-astunparse 
   - python312-asv 
   - python312-async-lru 
+  - python312-async-wrapper 
   - python312-async_generator 
   - python312-async_timeout 
   - python312-asyncclick 
@@ -31745,6 +31746,7 @@ unsorted:
   - python312-attr 
   - python312-attrs 
   - python312-aubio 
+  - python312-audible 
   - python312-audio-degrader 
   - python312-audiogrep 
   - python312-audiomate 
@@ -33543,6 +33545,7 @@ unsorted:
   - python312-opcodes 
   - python312-openTSNE 
   - python312-openai 
+  - python312-openapi-core 
   - python312-openapi-schema-validator 
   - python312-openapi-spec-validator 
   - python312-opencensus 
@@ -34580,6 +34583,7 @@ unsorted:
   - python312-sphinxcontrib-htmlhelp 
   - python312-sphinxcontrib-httpdomain 
   - python312-sphinxcontrib-issuetracker 
+  - python312-sphinxcontrib-jinja 
   - python312-sphinxcontrib-jquery 
   - python312-sphinxcontrib-jsmath 
   - python312-sphinxcontrib-newsfeed 
@@ -34710,6 +34714,7 @@ unsorted:
   - python312-time-machine 
   - python312-time-travel 
   - python312-timeout-decorator 
+  - python312-timeout-executor 
   - python312-tiny-proxy 
   - python312-tinyarray 
   - python312-tinycss2 
@@ -37548,6 +37553,7 @@ unsorted:
   - svm-tools 
   - svn2git 
   - svxlink-server 
+  - swag 
   - swaks 
   - swappy 
   - swappy-lang 
@@ -47580,7 +47586,6 @@ unsorted:
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gdl-3 
   - typelib-1_0-Gee-0_8 
-  - typelib-1_0-Gee-1_0 
   - typelib-1_0-Gegl-0_4 
   - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
