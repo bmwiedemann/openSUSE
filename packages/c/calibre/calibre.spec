@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.18.0
+Version:        7.19.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -271,7 +271,7 @@ Requires:       xdg-utils >= 1.0.2
 Requires:       xz >= 5.2.3
 Requires:       zlib >= 1.2.13
 
-Requires(pretrans): findutils
+Requires(pretrans):findutils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
