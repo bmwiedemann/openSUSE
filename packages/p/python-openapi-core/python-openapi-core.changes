@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:15:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- reformat the django test constraints
+
+-------------------------------------------------------------------
+Fri Sep 27 07:44:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.4:
+  * Starlette 0.38.x support #906
+  * Fix resolvers not updating properly when referencing other
+    files. #894
+  * Fix RequestUnmarshalResult body type #900
+  * Fix Starlette streaming response for HTTPMiddleware #906
+- update to 0.19.3:
+  * Fix resolver for jsonschema validator created by
+    SchemaValidatorsFactory #853
+  * Use `base_uri` from schema path for spec validation #859
+  * Openapi 3.0 unmarshalling None with nullable subschema fix
+    #876
+- update to 0.19.2:
+  * Falcon multi-value query parameters fix #830
+  * Fix a DeprecationWarning from aiohttp in TestPetPhotoView
+  * Fix hyphen characters in path parameters #851
+- update to 0.19.1:
+  * Path finder cls configuration #797
+  * Invalid usage of super() when having multi-baseclass
+    inheritance: … #802
+  * Fix content-type when no space after semicolon #814
+  * Protocols body and data attributes docstrings fix #829
+
+- update to 0.19.0:
+  * FastAPI integration #738
+  * Mimetype parameters (i.e. charset) handling #678
+  * Parameter deserializers renamed to Style deserializers #676
+  * Unmarshalling processor enhancement #625
+  * Option to skip response validation in Django, Falcon and
+    Flask integrations #667
+  * use explicit arguments (instead of kwargs) in Spec.from_dict
+    and add short note in documentation how to use base_url for
+    Spec.from_dict
+  * Parameter and header get value refactor #677
+  * Python 3.12 support #684
+  * Bump openapi-spec-validator from 0.6.0 to 0.7.0 #685
+  * Use openapi-spec-validator spec version finder #691
+  * Move to `SchemaPath` from jsonschema-path package #690
+  * Specification validation as part of shortcuts #686
+  * Style deserializing reimplementation with support for all
+    styles #694
+  * Media type encoding support #646
+  * Replace `mimetype` with `content_type` to include content
+    parameters #699
+  * Suport for primitive properties casting of urlencoded
+    objects. #701
+  * Request response binary format support #710
+  * Starlette middleware #680
+  * OpenAPI app and high level integration #716
+  * aiohttp request host_url include scheme #673
+  * aiohttp response body check none #674
+  * Validate empty request body fix #713
+  * Path finder returns default server #648
+  * OpenAPI config passed to validators and unmarshallers fix
+  * milti types schema format unmarshal fix #562
+
+-------------------------------------------------------------------
+Thu Sep 26 10:41:14 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Exclude django tests for non-Factory
+
+-------------------------------------------------------------------
 Tue Feb  6 20:36:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python312: No compatible jsonschema-spec available. We are
