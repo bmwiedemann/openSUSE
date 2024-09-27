@@ -46,6 +46,7 @@ Feature rich WhatsApp Client for Desktop Linux.
 
 %build
 %qmake5 src
+%make_build
 
 %install
 make install INSTALL_ROOT=%{buildroot}

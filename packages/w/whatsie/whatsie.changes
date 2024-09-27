@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 18 12:29:22 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add macro %make_build in the %build section
+  * let the build happen in the %build section using parallel build
+
+-------------------------------------------------------------------
 Mon Sep 16 09:25:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.15.5:
