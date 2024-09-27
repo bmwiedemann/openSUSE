@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Fri Sep 27 10:41:01 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix license
+- Make files more specific
+
+-------------------------------------------------------------------
+Thu Sep 26 16:06:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Fix autodetect_locale function
+  * Drop support for Python 3.8 and 3.9
+  * Add support for Python 3.12
+- Drop audible-pyver.patch
+
+-------------------------------------------------------------------
+Thu Sep 19 09:25:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Add audible-pyver.patch:
+  Patch out Python version requirement. See gh/mkb79/Audible#510
+
+-------------------------------------------------------------------
+Fri Sep  6 10:26:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1
+  * fix: fix login issues on brazilian marketplace (#204)
+
+-------------------------------------------------------------------
+Fri Sep  6 10:25:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * ci: update release workflow (#181)
+  * build: bump poetry and virtualenv (#150)
+  * style(login.py): restyle line length (#149)
+  * fix: login.py MFA form id updated (#128)
+  * 116 switch to poetry implement ci+cd remove python version < 38 (#129)
+  * remove pdf_url, add rights, customer_rights product_details (#126)
+  * Fix spelling mistake in index.rst file (#125)
+  * Update external_api.rst (#121)
+  * Update external_api.rst (#115)
+  * Multiple fixes for XXTEA encryption/decryption in metadata module (#109)
+  * Grammar check on authorization.rst (#105)
+  * Additional catalog/products response groups. (#96)
+  * feat: add brazilian marketplace (#195)
+
+-------------------------------------------------------------------
+Wed Nov  9 14:11:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  * Allow httpx v0.23.x to fix a security issue in httpx
+
+-------------------------------------------------------------------
+Wed Nov  9 14:11:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * fix a bug in Client.delete and AsyncClient.delete method
+
+-------------------------------------------------------------------
+Wed Nov  9 14:09:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  Added:
+  * full support of pre-Amazon accounts (e.g. refresh access token,
+    deregister device)
+  * Client and AsynClient now accepts session kwargs which are
+    bypassed to the underlying httpx Client
+  * a respone_callback can now be set to Client and AsyncClient
+    class to allow custom preparation of response output
+  * An absolut url can now be passed to a client get, post, delete
+    and put method as the path arg. So in most cases the client
+    raw_request method is not needed anymore.
+  Changed:
+  * rename (and rework) Client._split_kwargs to Client._prepare_params
+
+-------------------------------------------------------------------
+Fri Apr  8 16:25:06 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of python-audible 0.7.2 for openSUSE
