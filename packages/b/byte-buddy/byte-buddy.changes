@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 26 22:46:31 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.15.3
+  * Changes of v1.15.3
+    + Treat multi-release class files that are newer than the
+      supported version as regular resources.
+    + Allow overriding the multi-release class file version from
+      Maven and Gradle plugin.
+    + Correctly resolve multi-release class files in Android.
+
+-------------------------------------------------------------------
 Wed Sep 25 21:44:53 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.15.2
