@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 25 14:26:34 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.46.1.2
+  * Features
+    ~ jdbc
+      add configuration to disable eager retrieval of generated
+      keys (aed5121), closes #1135
+
+-------------------------------------------------------------------
+Wed Sep 25 01:33:41 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.46.1.1
+  * Features
+    ~ make slf4j optional with fallback on JUL (b8ea5ca), closes
+      #1094
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 24.0.2 to 24.1.0
+        (ec4d3fd)
+      + bump org.graalvm.buildtools:native-maven-plugin (588614a)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (abdf61d)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (a445f6c)
+      + bump org.jreleaser:jreleaser-maven-plugin (1309c5c)
+      + bump surefire.version from 3.4.0 to 3.5.0 (2ed606f)
+      + bump org.apache.maven.plugins:maven-help-plugin (4fa9e6f)
+      + bump surefire.version from 3.3.1 to 3.4.0 (793fac5)
+    ~ deps-dev
+      + bump org.junit.jupiter:junit-jupiter (02bac1a)
+      + bump org.mockito:mockito-core from 5.12.0 to 5.13.0
+        (ea152b4)
+
+-------------------------------------------------------------------
 Sun Sep  1 16:12:07 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.46.1.0
