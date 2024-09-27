@@ -35,7 +35,7 @@ Patch2:         https://github.com/geany/geany-plugins/commit/644550babb52013d26
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  intltool
 BuildRequires:  libgeany0 >= 2.0
 BuildRequires:  libgpgme-devel
