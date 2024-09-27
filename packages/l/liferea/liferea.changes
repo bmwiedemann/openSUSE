@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:20:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.6:
+  + Fixes #1272: crash when moving feed to empty folder
+  + Fixes #1198: FreshRSS logging in correctly but can't get posts
+  + Fixes #1248: Can’t maximize for reading feeds
+- Add be8ef494.patch: add `#include <libxml/tree.h>` for
+  `xmlNodePtr` type.
+- Rebase liferea-opensuse-feeds.patch to apply with -p1.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:55:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

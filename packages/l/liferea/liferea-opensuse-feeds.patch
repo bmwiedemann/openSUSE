@@ -1,6 +1,7 @@
-diff -Pdpru opml.orig/feedlist_bg.opml opml/feedlist_bg.opml
---- opml.orig/feedlist_bg.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_bg.opml	2023-01-15 16:15:14.390429467 +0100
+Index: liferea-1.14.6/opml/feedlist_bg.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_bg.opml
++++ liferea-1.14.6/opml/feedlist_bg.opml
 @@ -12,6 +12,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -12,9 +13,10 @@ diff -Pdpru opml.orig/feedlist_bg.opml opml/feedlist_bg.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_ca.opml opml/feedlist_ca.opml
---- opml.orig/feedlist_ca.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_ca.opml	2023-01-15 16:15:22.142480435 +0100
+Index: liferea-1.14.6/opml/feedlist_ca.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_ca.opml
++++ liferea-1.14.6/opml/feedlist_ca.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -26,9 +28,10 @@ diff -Pdpru opml.orig/feedlist_ca.opml opml/feedlist_ca.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_de.opml opml/feedlist_de.opml
---- opml.orig/feedlist_de.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_de.opml	2023-01-15 16:15:51.338672400 +0100
+Index: liferea-1.14.6/opml/feedlist_de.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_de.opml
++++ liferea-1.14.6/opml/feedlist_de.opml
 @@ -19,6 +19,10 @@
   
  		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -40,9 +43,10 @@ diff -Pdpru opml.orig/feedlist_de.opml opml/feedlist_de.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_en.opml opml/feedlist_en.opml
---- opml.orig/feedlist_en.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_en.opml	2023-01-15 16:16:01.654740229 +0100
+Index: liferea-1.14.6/opml/feedlist_en.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_en.opml
++++ liferea-1.14.6/opml/feedlist_en.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -54,9 +58,10 @@ diff -Pdpru opml.orig/feedlist_en.opml opml/feedlist_en.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_es.opml opml/feedlist_es.opml
---- opml.orig/feedlist_es.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_es.opml	2023-01-15 16:16:10.018795223 +0100
+Index: liferea-1.14.6/opml/feedlist_es.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_es.opml
++++ liferea-1.14.6/opml/feedlist_es.opml
 @@ -15,6 +15,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -68,9 +73,10 @@ diff -Pdpru opml.orig/feedlist_es.opml opml/feedlist_es.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdot" />
-diff -Pdpru opml.orig/feedlist_eu.opml opml/feedlist_eu.opml
---- opml.orig/feedlist_eu.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_eu.opml	2023-01-15 16:16:30.482929559 +0100
+Index: liferea-1.14.6/opml/feedlist_eu.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_eu.opml
++++ liferea-1.14.6/opml/feedlist_eu.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -82,9 +88,10 @@ diff -Pdpru opml.orig/feedlist_eu.opml opml/feedlist_eu.opml
  		<outline text="Berriak">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_fa.opml opml/feedlist_fa.opml
---- opml.orig/feedlist_fa.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_fa.opml	2023-01-15 16:16:48.095045173 +0100
+Index: liferea-1.14.6/opml/feedlist_fa.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_fa.opml
++++ liferea-1.14.6/opml/feedlist_fa.opml
 @@ -13,6 +13,10 @@
  		
  		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -96,9 +103,10 @@ diff -Pdpru opml.orig/feedlist_fa.opml opml/feedlist_fa.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_fr.opml opml/feedlist_fr.opml
---- opml.orig/feedlist_fr.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_fr.opml	2023-01-15 16:16:54.627088051 +0100
+Index: liferea-1.14.6/opml/feedlist_fr.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_fr.opml
++++ liferea-1.14.6/opml/feedlist_fr.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -110,9 +118,10 @@ diff -Pdpru opml.orig/feedlist_fr.opml opml/feedlist_fr.opml
  		<outline text="News">		<!-- translate this title for localized feed list -->
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_gl.opml opml/feedlist_gl.opml
---- opml.orig/feedlist_gl.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_gl.opml	2023-01-15 16:17:01.839135394 +0100
+Index: liferea-1.14.6/opml/feedlist_gl.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_gl.opml
++++ liferea-1.14.6/opml/feedlist_gl.opml
 @@ -12,6 +12,10 @@
  	</outline>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -124,9 +133,10 @@ diff -Pdpru opml.orig/feedlist_gl.opml opml/feedlist_gl.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_he.opml opml/feedlist_he.opml
---- opml.orig/feedlist_he.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_he.opml	2023-01-15 16:17:27.803305834 +0100
+Index: liferea-1.14.6/opml/feedlist_he.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_he.opml
++++ liferea-1.14.6/opml/feedlist_he.opml
 @@ -28,6 +28,10 @@
      </outline>
   		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -138,9 +148,10 @@ diff -Pdpru opml.orig/feedlist_he.opml opml/feedlist_he.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-diff -Pdpru opml.orig/feedlist_hu.opml opml/feedlist_hu.opml
---- opml.orig/feedlist_hu.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_hu.opml	2023-01-15 16:17:51.471461202 +0100
+Index: liferea-1.14.6/opml/feedlist_hu.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_hu.opml
++++ liferea-1.14.6/opml/feedlist_hu.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -152,9 +163,10 @@ diff -Pdpru opml.orig/feedlist_hu.opml opml/feedlist_hu.opml
  		<outline text="Magyar hírek">
  			<outline text="[origo]" htmlUrl="http://www.origo.hu/" xmlUrl="http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml" />
  			<outline text="Index" htmlUrl="https://index.hu/" xmlUrl="https://index.hu/24ora/rss/" />
-diff -Pdpru opml.orig/feedlist_id.opml opml/feedlist_id.opml
---- opml.orig/feedlist_id.opml	2023-01-10 21:12:42.000000000 +0100
-+++ opml/feedlist_id.opml	2023-01-15 16:17:58.327506208 +0100
+Index: liferea-1.14.6/opml/feedlist_id.opml
+===================================================================
+--- liferea-1.14.6.orig/opml/feedlist_id.opml
++++ liferea-1.14.6/opml/feedlist_id.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
