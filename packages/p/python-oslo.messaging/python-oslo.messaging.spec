@@ -36,7 +36,6 @@ BuildRequires:  python3-fixtures
 BuildRequires:  python3-futurist >= 1.2.0
 BuildRequires:  python3-greenlet
 BuildRequires:  python3-kombu >= 4.6.6
-BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.log >= 3.36.0

@@ -656,4 +656,23 @@
   - rabbit: Make PreconditionFailed warning log more informative</comment>
     <requestid>1198363</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>96c1db232a92c157568d4ae854cc92c3</srcmd5>
+    <version>14.9.0</version>
+    <time>1727449902</time>
+    <user>anag+factory</user>
+    <comment>- drop unused monotonic dependencies
+
+- fix build/deps
+- fix requires
+- add temporary workaround for non-release versions
+- add simplejson dependency for SLE11 based installs
+- go back to released version (1.3.0)
+- fix requires
+- clean up requires
+- update requires
+- fix requires
+- Initial package</comment>
+    <requestid>1204111</requestid>
+  </revision>
 </revisionlist>
