@@ -27,7 +27,6 @@ Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.l
 BuildRequires:  fdupes
 BuildRequires:  openstack-macros
 BuildRequires:  python3-eventlet
-BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.21.0
 BuildRequires:  python3-oslo.i18n >= 3.20.0
@@ -48,7 +47,6 @@ support for context specific logging (like resource id's etc).
 %package -n python3-oslo.log
 Summary:        OpenStack log library
 Requires:       python3-debtcollector
-Requires:       python3-monotonic
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.context >= 2.21.0
 Requires:       python3-oslo.i18n >= 3.20.0

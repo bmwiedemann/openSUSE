@@ -493,4 +493,12 @@
   - Revert &quot;Remove the usage of the Eventlet debug feature from oslo.log.&quot;</comment>
     <requestid>1198364</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>80875d665b1f1a64bc16eabafb473920</srcmd5>
+    <version>6.1.2</version>
+    <time>1727449901</time>
+    <user>anag+factory</user>
+    <comment>- drop unused monotonic dependency</comment>
+    <requestid>1204110</requestid>
+  </revision>
 </revisionlist>
