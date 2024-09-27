@@ -15,27 +15,35 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define sname speedtest-cli
 Name:           librespeed-cli
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Command line client for LibreSpeed
-License:        LGPL-3.0
-Url:            https://github.com/librespeed/speedtest-cli
-Source:         https://github.com/librespeed/speedtest-cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+License:        LGPL-3.0-only
+URL:            https://github.com/librespeed/speedtest-cli
+Source:         %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.18
 
-%description 
+%description
 Command line interface for LibreSpeed speed test backends, written in Go.
 
-%prep 
-%autosetup -a1 -n speedtest-cli-%{version}
+%prep
+%autosetup -a1 -n %{sname}-%{version}
 
-%build 
-go build -mod=vendor
+%build
+DEFS_PATH="github.com/librespeed/speedtest-cli"
+go build -mod=vendor -buildmode=pie -ldflags "-w -s \
+  -X \"${DEFS_PATH}/defs.ProgName=%{name}\" \
+  -X \"${DEFS_PATH}/defs.ProgVersion=%{version}\" \
+  -X \"${DEFS_PATH}/defs.BuildDate=$(date -u '+%%Y-%%m-%%d %%H:%%M:%%S %%Z')\" \
+" -trimpath
 
-%install 
-install -Dm755 speedtest-cli %{buildroot}%{_bindir}/%{name}
+%install
+install -Dm755 %{sname} %{buildroot}%{_bindir}/%{name}
 
 %files
 %{_bindir}/%{name}

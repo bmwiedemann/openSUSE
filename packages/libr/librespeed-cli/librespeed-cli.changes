@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 26 17:36:48 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to hotfix commit 7573b65ebc89a4cf463334dbdfab5b3edc706149:
+  * Upgrade to Go 1.18 as minimum required version
+
+- Update to version 1.0.11:
+  * fix build for non-windows/linux platforms
+  * go mod tidy to fix build
+  * Update goreleaser config to v2
+  * add `--ca-cert` option (#81)
+  * Fix integer overflow issues at high speeds (#73)
+  * Fix code-highlighting (#68)
+  * Add interface option (#65)
+  * Reduced container image size (#64)
+  * Updated dependencies (#62)
+  * make `--version` to report the binary version again (#58)
+
+-------------------------------------------------------------------
 Thu Jul 18 12:33:17 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Initial package, version 1.0.10
