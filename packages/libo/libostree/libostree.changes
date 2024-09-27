@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 27 06:01:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2024.8:
+  + Adapt to a change in libcurl 8.10.1 that caused ostree to start
+    crashing.
+  + switchroot: Stop making /sysroot mount private.
+
+-------------------------------------------------------------------
 Sun Jul 21 18:02:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024.7:
