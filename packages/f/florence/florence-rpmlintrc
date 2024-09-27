@@ -1,2 +1,0 @@
-# There is no guarantee that help content does not span multiple packages and the link target is in the main package
-addFilter('files-duplicate /usr/share/gnome/help/florence/');
