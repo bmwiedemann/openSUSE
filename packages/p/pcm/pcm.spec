@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202405
+Version:        202409
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ energy metrics of Intel Core, Xeon, Atom and Xeon Phi processors.
 %setup -q
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_INSTALL_DOCDIR=%{_docdir}/pcm
+%cmake -DPCM_NO_STATIC_LIBASAN=ON -DCMAKE_BUILD_TYPE=CUSTOM -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_INSTALL_DOCDIR=%{_docdir}/pcm
 %{!?cmake_build:%define cmake_build %{__cmake}}
 %cmake_build
 
@@ -92,6 +92,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_datadir}/pcm/opCode-134.txt
 %{_datadir}/pcm/opCode-143.txt
 %{_datadir}/pcm/opCode-143-accel.txt
+%{_datadir}/pcm/opCode-173.txt
 %{_datadir}/pcm/opCode-175.txt
 %{_datadir}/pcm/opCode-207.txt
 %{_datadir}/pcm/PMURegisterDeclarations

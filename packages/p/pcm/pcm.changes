@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 27 11:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202409:
+  * Intel Xeon 6 processors with P-cores (Granite Rapids) support
+  * Lunar Lake support
+  * support pcm-power on Sierra Forest processors
+  * grafana: add core and uncore frequencies metrics
+  * grafana: add TMA and local/remote access ratio metrics
+  * pcm-tpmi: add -i instances option
+  * pcm-sensor-server: enable compilation with SSL
+  * pcm-sensor-server: addition of a fuzzing client and subsequent rewrite of parts of the network communication and SSL detection
+  * pcm-sensor-server: stop using deprecated SSL functions
+  * pcm-memory: replace NODE with SKT to avoid confusion with NUMA NODEs
+  * avoid using the hard-coded /usr/share/pcm/ path
+  * grafana: change the refresh period to 1s
+  * grafana: show energy charts after freq charts
+  * pcm-raw: make ICX PMURegisterDeclarations available on older steppings
+  * add -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer and other hardening
+  * set pointers to nullptr after delete or free
+  * add PCM_ENFORCE_MBM option (env variable)
+  * erase unneeded environment variables
+  * handle TPMI initilization for systems without access to MCFG tables e.g. docker/VM
+  * fix ssl accept issues
+  * fix public github issue #810
+  * fix double free
+  * pcm-raw: really use the alt_path if it exists (a bug fix)
+  * link 1 does not have own speed register only on QPI
+  * grafana: don't show unsupported metrics in prometheus
+  * disable unsupported freq metrics for prometheus
+  * fix locking in AcceleratorCounterState::getInstance()
+  * fix a crash due to uninitialized array
+  * avoid pre-mature PCM init triggered by global counter state init
+  * fix a heap-buffer-overflow and a memory leak and throw exception with verbose reason
+  * do not include shared library code into pcm-core executable
+  * address issue #758 SPR UPI discovery table is broken on SPR MCC
+
+-------------------------------------------------------------------
 Thu May 23 11:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202405:
