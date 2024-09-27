@@ -18,7 +18,7 @@
 
 %bcond_with    nautilus_extension
 Name:           easytag
-Version:        2.4.3+155
+Version:        2.4.3+161
 Release:        0
 Summary:        GTK+ tag editor for audio files
 License:        GPL-2.0-or-later
