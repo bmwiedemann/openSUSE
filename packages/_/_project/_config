@@ -1470,8 +1470,7 @@ Prefer: kernel-default-devel
 
 # llvm exists in multiple versions
 Prefer: libclang13 libc++1 libc++abi1 libc++-devel libc++abi-devel
-# have choice for (cmake(Clang) : clang15-devel clang17-devel
-# have choice for (cmake(LLVM) : llvm15-devel llvm17-devel
+
 Prefer: clang17-devel clang16-devel clang15-devel clang14-devel clang13-devel
 Prefer: llvm17-devel lllvm16-devel llvm15-devel llvm14-devel llvm13-devel
 
