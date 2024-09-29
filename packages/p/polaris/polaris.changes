@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.4.1:
+  * Updated Go to 1.22.7 to fix vulnerabilities (#1069)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Sat Sep 21 13:33:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.4.0:
