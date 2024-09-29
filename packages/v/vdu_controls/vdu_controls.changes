@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 28 00:53:40 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.1.0
+  * Preset transitions have been deprecated.  All presets are now restored instantly no 
+    matter how they have been set to transition.  The Preset-Dialog controls for assigning
+    transitions have been hidden.  All  transition related code may be removed in a future 
+    version, please contact me or comment on issue #93 if you prefer transitions to be retained.
+  * Transitions and related controls can be re-enabled by disabling `protect-nvram` in the
+    Settings-Dialog. 
+  * To avoid unnecessary updates, preset restoration now queries the VDU's existing
+    values. This may slow down preset restoration.
+  * Lux-metered auto adjustment has been defaulted to 10 minute intervals (up from 5).
+  * Color-Preset (VCP code 0x14) has been added to the list of standard controls.
+  * Added a VDU Initializer-Preset feature to provide a replacement for dead NVRAM.
+    This also provides a way to restore settings not persisted in VDU NVRAM.  A VDU's 
+    initializer-preset is automatically run if the target VDU is present at startup or 
+    is subsequently detected. Any preset that has a name that matches a VDU model and
+    serial-number will be treated as an Initializer-Preset. 
+  * The Preset-Dialog now includes a tool-button  to the right of the preset-name entry 
+    that will create a VDU specific Initializer-Preset. 
+
+-------------------------------------------------------------------
 Thu Aug 22 01:21:40 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.0.4
