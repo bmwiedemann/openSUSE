@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:30:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.4:
+  * Bump version to 2.12.4 (#20115)
+  * fix: CVE-2024-45296 Backtracking regular expressions cause
+    ReDoS by upgrading path-to-regexp from 1.8.0 to 1.9.0 (#20087)
+    (#20090)
+  * cherry-pick chore(deps-dev): bump webpack from 5.84.1 to 5.94.0
+    in /ui (#20056)
+  * chore(deps): bump dompurify from 2.3.6 to 2.5.6 in /ui (#19955)
+    (#20016)
+  * fix(appset): Fix perpetual appset reconciliation (#19822)
+    (#19995)
+  * chore(deps): bump express from 4.19.2 to 4.20.0 in /ui (#19883)
+    (#19987)
+  * fix: diffing should not fail if resource fail schema validation
+    (#19714) (#19729)
+  * docs: note cluster scoping changes in 2.12x (#19684) (#19702)
+
+-------------------------------------------------------------------
 Tue Sep 10 05:53:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.3:
