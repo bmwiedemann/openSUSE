@@ -177,12 +177,14 @@ rm %{buildroot}%{apache_serverroot}/%{name}/.htaccess
 
 %files
 %doc MPL-2.0.html
+%dir %{apache_serverroot}
 %defattr(-,%{apache_user},root)
 # exclude language de_DE
 %exclude %{apache_serverroot}/bugzilla/template/de
 %{apache_serverroot}/bugzilla
 
 %files lang-de
+%dir %{apache_serverroot}
 %defattr(0644,%{apache_user},root,755)
 %{apache_serverroot}/bugzilla/template/de
 

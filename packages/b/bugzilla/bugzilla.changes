@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 28 12:02:42 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix installcheck failure from obs staging-bot after last change
+  of [bsc#1231027]:
+  /srv/www [mode mismatch: d755 wwwrun:root, d755 root:root]
+
+-------------------------------------------------------------------
+Sat Sep 28 07:00:42 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Thu Jun 13 08:51:16 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - remove dependency on /usr/bin/python3 using
