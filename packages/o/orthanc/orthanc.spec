@@ -39,7 +39,9 @@ Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jqu
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
 
 Patch0:         dcmtk.diff
-## Patch1:         boost185.diff
+Patch1:         toolbox.patch
+Patch2:         boost.patch
+
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
