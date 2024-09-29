@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:59:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.19.3:
+  * fix(config): extend allowlist & handle extend when validating
+    (#1524)
+  * refactor(kubernetes-secret): tweak variable chars (#1520)
+  * Revert "remove validate config test temporarily" (#1529)
+  * feat: create fly.io rule (#1528)
+  * fix: to many false-positive for gltf files, add gltf suffix to
+    allowlist (#1527)
+  * Add support in .gitleaksignore file comment strings  (#1425)
+    (#1502)
+  * Restrict Etsy keywords (#1491)
+  * feat(github): add entropy to rule (#1489)
+  * feat(gcp): update api key rule (#1481)
+  * fix(hashicorp): ignore common fps (#1498)
+  * fix(square): make prefix case sensitive (#1469)
+  * refactor(kubernetes-secret): collapse rules and update regex
+    (#1462)
+
+-------------------------------------------------------------------
 Sat Sep 21 17:09:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.19.2:
