@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:53:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.108:
+  * General
+    - improve check for export format @MUzairS15 (#12109)
+    - To stop seeding sample applications @vaishnaviadhau (#11910)
+  * Meshery CLI
+    - Support Generating Models and Components from Local CSV Files
+      @Aijeyomah (#12051)
+  * Maintenance
+    - update if condition @vishalvivekm (#12106)
+  * Documentation
+    - fix the wrong command 'mesheryctl mesh' @JianMinTang (#12084)
+
+-------------------------------------------------------------------
+Wed Sep 25 06:00:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.107:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sat Sep 21 18:40:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.106:
