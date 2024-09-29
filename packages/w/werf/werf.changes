@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:29:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.7:
+  * chore: release 2.10.7
+  * fix: disable rendering of subchart notes by default
+  * fix(compose): support image names with dot
+  * docs(usage, cr-cleanup): update gitlab token section
+  * chore(release): 1.2 rock-solid, 2 alpha
+
+-------------------------------------------------------------------
 Sat Sep 21 13:22:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.6:
