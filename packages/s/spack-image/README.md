@@ -25,7 +25,7 @@ spack:
     format: <container_format>
     images:
       build: "registry.opensuse.org/opensuse/bci/spack:0.22"
-      final: "registry.suse.com/bci/bci-base:latest"
+      final: "registry.opensuse.org/opensuse/bci/bci-base:latest"
     os_packages:
       command: zypper
       build:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 28 08:15:08 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- fix registry references in READMEs
+
+-------------------------------------------------------------------
 Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - rerender installation step in multiple lines, allow uninstalling optional packages
