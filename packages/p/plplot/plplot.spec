@@ -83,6 +83,8 @@ Patch6:         plplot-libharu-version-check.patch
 Patch7:         plplot-pkgconfig-includedir.patch
 # PATCH-FIX-UPSTREAM plplot-numpy-2.0-compat.patch gh#PLplot/PLplot#10 badshah400@gmail.com -- Make plplot compilation compatible with numpy >= 2.0
 Patch8:         plplot-numpy-2.0-compat.patch
+# PATCH-FIX-SUSE
+Patch9:         plplot-reproducible-jar-mtime.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
@@ -1082,7 +1084,20 @@ This package provides the xwin driver for plotting using PLplot.
 ##########################################################################
 
 %prep
-%autosetup -p1
+%setup
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 9 -p1
+%endif
 
 %build
 for file in NEWS README.release

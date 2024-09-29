@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 26 17:17:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * plplot-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+    + Applied if building with Java >= 17
+
+-------------------------------------------------------------------
 Sun Sep 15 22:27:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add plplot-numpy-2.0-compat.patch for compatibility with numpy
