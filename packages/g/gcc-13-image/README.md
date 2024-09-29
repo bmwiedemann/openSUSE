@@ -34,7 +34,7 @@ WORKDIR /src/
 COPY . /src/
 RUN gcc -o app main.c src1.c src2.c
 
-FROM registry.suse.com/bci/bci-micro:latest
+FROM registry.opensuse.org/opensuse/bci/bci-micro:latest
 WORKDIR /build/
 COPY --from=builder /src/app /build/
 CMD ["/build/app"]
