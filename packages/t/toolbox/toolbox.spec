@@ -41,9 +41,9 @@ such a system. The root filesystem can be found at /media/root.
 %if 0%{?sle_version}
 %if !0%{?is_opensuse}
 sed -i -e 's,registry.opensuse.org,registry.suse.com,' toolbox
-sed -i -e 's,opensuse/toolbox,suse/sle-micro/6.0/toolbox,' toolbox
+sed -i -e 's,opensuse/toolbox,suse/sle-micro/5.5/toolbox,' toolbox
 %else
-sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/6.0/toolbox,' toolbox
+sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/5.5/toolbox,' toolbox
 %endif
 %endif
 

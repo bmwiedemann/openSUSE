@@ -247,11 +247,7 @@ BuildRequires:  pkgconfig(shaderc) >= 2019.1
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
 %endif
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
-%ifarch x86_64 %x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 %ifarch x86_64 %x86_64
 BuildRequires:  pkgconfig(vpl) >= 2.6
 %endif
@@ -648,11 +644,7 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %endif
 	--enable-lv2 \
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
-%ifarch x86_64 %x86_64
-	--enable-libmfx \
-%endif
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 %ifarch x86_64 %x86_64
 	--enable-libvpl \
 %endif

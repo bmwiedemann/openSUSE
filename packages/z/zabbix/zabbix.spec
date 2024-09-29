@@ -42,7 +42,9 @@ Source14:       zabbix-java-gateway.service
 Source15:       README-SSL.SUSE
 Source16:       system-user-zabbix.conf
 # PATCH-FIX-OPENSUSE  zabbix-6.0.12-netsnmp-fixes.patch fix for removed md5 auth protocol
-Patch3:         zabbix-6.0.12-netsnmp-fixes.patch
+Patch0:         zabbix-6.0.12-netsnmp-fixes.patch
+# PATCH-FIX-OPENSUSE zabbix-reproducible-jar-mtime.patch reproducible jar mtime with openjdk17+
+Patch1:         zabbix-reproducible-jar-mtime.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -269,7 +271,12 @@ BuildArch:      noarch
 Zabbix users and groups required by zabbix packages
 
 %prep
-%autosetup -p0 -n zabbix-%{version}
+%setup -n zabbix-%{version}
+%patch -P 0 -p0
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 1 -p1
+%endif
 
 cp %{SOURCE6} .
 # fix source & config files to respect adapted names

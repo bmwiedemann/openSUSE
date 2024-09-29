@@ -134,10 +134,6 @@ Source100:      PACKAGING-NOTES
 # to /usr/local if executable is /usr/bin/python* and RPM build
 # is not detected to make pip and distutils install into separate location
 Patch02:        F00251-change-user-install-location.patch
-# PATCH-FEATURE-UPSTREAM decimal.patch bsc#1189356 mcepl@suse.com
-# fix building with mpdecimal
-# https://www.bytereef.org/contrib/decimal.diff
-Patch05:        decimal.patch
 # PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # Improve reproduceability
 Patch06:        distutils-reproducible-compile.patch
@@ -161,36 +157,43 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
+# PATCH-FEATURE-UPSTREAM decimal.patch bsc#1189356 mcepl@suse.com
+# fix building with mpdecimal
+# https://www.bytereef.org/contrib/decimal.diff
+Patch35:        decimal.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
-Patch35:        support-expat-CVE-2022-25236-patched.patch
+Patch40:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
-Patch36:        CVE-2023-52425-libexpat-2.6.0-backport.patch
+Patch41:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
-Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+Patch42:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 # PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
 # Make `set` and `frozenset` marshalling deterministic
-Patch38:        bpo-37596-make-set-marshalling.patch
+Patch43:        bpo-37596-make-set-marshalling.patch
 # PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
 # marshal: Stabilize FLAG_REF usage
-Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
+Patch44:        gh-78214-marshal_stabilize_FLAG_REF.patch
 # PATCH-FIX-UPSTREAM 99366-patch.dict-can-decorate-async.patch bsc#[0-9]+ mcepl@suse.com
 # Patch for gh#python/cpython#98086
-Patch40:        99366-patch.dict-can-decorate-async.patch
+Patch45:        99366-patch.dict-can-decorate-async.patch
 # PATCH-FIX-OPENSUSE downport-Sphinx-features.patch mcepl@suse.com
 # Make documentation build with older Sphinx
-Patch41:        downport-Sphinx-features.patch
+Patch46:        downport-Sphinx-features.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
-Patch46:        bso1227999-reproducible-builds.patch
+Patch47:        bso1227999-reproducible-builds.patch
 # PATCH-FIX-UPSTREAM CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch bsc#1227233 mcepl@suse.com
 # Remove for support for anything but OpenSSL 1.1.1 or newer
 Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
 # PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
 # Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
 Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
+# PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
+# status_iterator method moved between the Sphinx versions
+Patch51:        sphinx-802.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -430,6 +433,7 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
+
 %patch -P 02 -p1
 %patch -P 06 -p1
 %patch -P 07 -p1
@@ -439,25 +443,30 @@ other applications.
 %patch -P 25 -p1
 %patch -P 29 -p1
 %patch -P 32 -p1
+
 %if 0%{?sle_version}
 %patch -P 33 -p1
 %patch -P 34 -p1
 %endif
 %if %{with mpdecimal}
-%patch -P 05 -p1
-%endif
 %patch -P 35 -p1
-%patch -P 36 -p1
-%patch -P 37 -p1
-%patch -P 38 -p1
-%patch -P 39 -p1
-%patch -P 40 -p1
-%if 0%{?sle_version} && 0%{?sle_version} <= 150500
-%patch -p1 -P 41
 %endif
+
+%patch -P 40 -p1
+%patch -P 41 -p1
+%patch -P 42 -p1
+%patch -P 43 -p1
+%patch -P 44 -p1
+%patch -P 45 -p1
+
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
 %patch -p1 -P 46
-%patch -p1 -P 48
-%patch -p1 -P 50
+%endif
+
+%patch -P 47 -p1
+%patch -P 48 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 27 17:32:21 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Fri Aug 16 02:21:19 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Renamed nginx-1.6.1-default_config.patch to nginx-conf.patch.

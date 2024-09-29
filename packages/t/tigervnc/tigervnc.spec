@@ -61,6 +61,10 @@ Patch5:         n_tigervnc-Date-time.patch
 Patch6:         n_tigervnc-Correct-path-in-desktop-file.patch
 Patch7:         n_tigervnc-Vncserver.patch
 Patch8:         n_tigervnc-Dont-sign-java-client.patch
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+Patch9:         n_tigervnc-reproducible-jar-mtime.patch
+%endif
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc
@@ -132,7 +136,7 @@ BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description

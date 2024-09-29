@@ -197,6 +197,8 @@ rm -r $GPGTMP
 %{ngx_module_dir}/ngx_mail_module.so
 %{ngx_module_dir}/ngx_stream_module.so
 %{_mandir}/man3/%{name}.3pm*
+%dir /srv/www
+%dir /srv/www/htdocs
 /srv/www/htdocs/50x.html
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{_localstatedir}/log/nginx/

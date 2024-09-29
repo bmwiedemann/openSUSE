@@ -40,7 +40,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module debugpy = %{version}}
 BuildRequires:  %{python_module gevent}
@@ -125,6 +124,10 @@ donttest="$donttest or test_attach_pid_client"
 %ifarch s390x
 sed -i "s/timeout=30/timeout=60/g" pytest.ini
 donttest+=" or test_attach_api or test_reattach or test_break_api or test_set_variable or test_unicode or test_debugpySystemInfo or test_debug_this_thread or test_tracing"
+%endif
+# Attach-to-PID is not supported on ARM https://github.com/microsoft/debugpy/issues/1220
+%ifarch aarch64
+donttest+=" or test_reattach"
 %endif
 
 # Do not have numpy dependency

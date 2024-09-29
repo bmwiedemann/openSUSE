@@ -952,4 +952,12 @@ Changes in 0.5.3:
   * MED: Channel panning is now only applied in MMD2 files if the</comment>
     <requestid>1188976</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>67642d905bf1e7eff9e66d07931fdb07</srcmd5>
+    <version>0.7.10</version>
+    <time>1727626191</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204356</requestid>
+  </revision>
 </revisionlist>

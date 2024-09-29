@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           flashrom
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://flashrom.org/Flashrom
-Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2
-Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2.asc#/%{name}-%{version}.tar.bz2.sig
+Source0:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz
+Source1:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.bz2.sig
 # Got the key from David Hendricks
 Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libjaylink)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     %{name}-doc = %{version}
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
@@ -48,6 +50,24 @@ It supports a wide range of DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, and
 TSOP40 chips, which use various protocols such as LPC, FWH, parallel flash,
 or SPI.
 
+%package doc
+Summary:        Documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+Documentation files and examples for %{name}.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Enhances:       (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command-line completion support for %{name}.
+
 %package -n libflashrom1
 Summary:        A universal flash programming utility
 Group:          Development/Tools/Other
@@ -60,7 +80,7 @@ cards (NICs), SATA controller cards, and other external devices which can
 program flash chips.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %package devel
 Summary:        A universal flash programming utility
@@ -84,15 +104,22 @@ This package contains the headers needed to compile against libflashrom.
 %install
 %meson_install
 rm %{buildroot}%{_libdir}/libflashrom.a
+rm %{buildroot}%{_datadir}/doc/%{name}/html/.buildinfo
 
 %post -n libflashrom1 -p /sbin/ldconfig
 %postun -n libflashrom1 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc README
+%doc README.rst
 %{_sbindir}/flashrom
 %{_mandir}/man8/flashrom.8%{ext_man}
+
+%files doc
+%{_datadir}/doc/%{name}
+
+%files bash-completion
+%{_datadir}/bash-completion
 
 %files -n libflashrom1
 %{_libdir}/libflashrom.so.1

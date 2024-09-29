@@ -297,4 +297,13 @@ For staging:n</comment>
 - add requires for yjit enabled ruby</comment>
     <requestid>1179322</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>1fe7bebbbfc4adb5812ef3528aafc978</srcmd5>
+    <version>3.2.1</version>
+    <time>1727626167</time>
+    <user>anag+factory</user>
+    <comment>- update gem_packages.spec.erb:
+  dont strip the newline at the end of main:filelist output</comment>
+    <requestid>1204269</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 27 10:27:38 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap.
+
+-------------------------------------------------------------------
+Thu Sep 26 13:37:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.1
+  * Fix crashes on 32-bit PPC Linux. Note that there is no CI for this,
+    and support is best effort; there may be other issues lurking.
+  * Remove unnecessary logging sometimes during interpreter shutdown.
+  * Fix some crashes on 32-bit PPC MacOS. This is a very old platform,
+    and is only known to be tested on beta versions of an operating
+    system that was never released, using the GCC 14 only provided by
+    MacPorts; it may or may not work on the final MacOS X release that
+    supported 32-bit PowerPC. It has the known issue of leaking memory
+    when greenlets are used in multiple threads. Help debugging this
+    would be appreciated.
+
+-------------------------------------------------------------------
 Tue Sep 10 20:44:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.0

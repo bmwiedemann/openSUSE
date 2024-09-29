@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:09:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.14:
+  * fix: Use env vars for `sops_decrypt_file` (#3439)
+
+-------------------------------------------------------------------
+Fri Sep 27 13:05:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.13:
+  * CVE fixes and dependencies update (#3435)
+
+-------------------------------------------------------------------
+Fri Sep 27 12:58:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.12:
+  * Fixing registry host discovery (Terragrunt Provider Cache)
+    (#3432)
+  * Fixing converting absolute paths to relative in logs (#3433)
+
+-------------------------------------------------------------------
+Wed Sep 25 17:03:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.67.11:
+  * feat: introducing "copy_terraform_lock_file" to fine tune Lock
+    File Handling (#2889)
+
+-------------------------------------------------------------------
 Sat Sep 21 13:44:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.67.10:

@@ -1,7 +1,7 @@
 #
 # spec file for package atftp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ Recommends:     logrotate
 Conflicts:      tftp
 Provides:       tftp(client)
 Provides:       tftp(server)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  systemd-rpm-macros
 
 %description
@@ -66,16 +65,15 @@ boot of hundreds of machines simultaneously.
 
 %build
 autoreconf -fi
-CFLAGS="%optflags -fgnu89-inline"
+# https://sourceware.org/bugzilla/show_bug.cgi?id=32206
+CFLAGS="%optflags -fgnu89-inline -U_FORTIFY_SOURCE"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-# SuSE rc
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_unitdir}/atftpd.service
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/atftpd.socket
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcatftpd
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.atftpd
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -119,13 +117,11 @@ done
 %endif
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc BUGS FAQ README README.MCAST README.PCRE TODO
 %{_bindir}/atftp
 %{_sbindir}/atftpd
 %{_sbindir}/in.tftpd
-%{_sbindir}/rcatftpd
 %{_unitdir}/atftpd.service
 %{_unitdir}/atftpd.socket
 %if 0%{?suse_version} > 1500

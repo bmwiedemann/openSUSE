@@ -18,10 +18,10 @@
 
 %bcond_without test
 Name:           rmpc
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Rusty Music Player Client for MPD
-License:        MIT
+License:        BSD-3-Clause
 URL:            https://github.com/mierak/rmpc
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -61,7 +61,7 @@ install -Dm644 target/completions/_%{name} -t \
 
 %files
 %license LICEN*
-%doc README*
+%doc README* CHANGELOG.md
 %{_bindir}/%{name}
 %{_mandir}/man*/%{name}.*
 %{_datadir}/bash-completion/completions

@@ -18,9 +18,10 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.620.0
+Version:        2.630.0
 Release:        0
-%define cpan_version 2.62
+# 2.63 -> normalize -> 2.630.0
+%define cpan_version 2.63
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -212,7 +213,6 @@ Provides:       perl(DateTime::TimeZone::Asia::Barnaul) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Beirut) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Bishkek) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Chita) = %{version}
-Provides:       perl(DateTime::TimeZone::Asia::Choibalsan) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Colombo) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Damascus) = %{version}
 Provides:       perl(DateTime::TimeZone::Asia::Dhaka) = %{version}
@@ -292,12 +292,7 @@ Provides:       perl(DateTime::TimeZone::Australia::Lord_Howe) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Melbourne) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Perth) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Sydney) = %{version}
-Provides:       perl(DateTime::TimeZone::CET) = %{version}
-Provides:       perl(DateTime::TimeZone::CST6CDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Catalog) = %{version}
-Provides:       perl(DateTime::TimeZone::EET) = %{version}
-Provides:       perl(DateTime::TimeZone::EST) = %{version}
-Provides:       perl(DateTime::TimeZone::EST5EDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Andorra) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Astrakhan) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Athens) = %{version}
@@ -337,7 +332,6 @@ Provides:       perl(DateTime::TimeZone::Europe::Volgograd) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Warsaw) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Zurich) = %{version}
 Provides:       perl(DateTime::TimeZone::Floating) = %{version}
-Provides:       perl(DateTime::TimeZone::HST) = %{version}
 Provides:       perl(DateTime::TimeZone::Indian::Chagos) = %{version}
 Provides:       perl(DateTime::TimeZone::Indian::Maldives) = %{version}
 Provides:       perl(DateTime::TimeZone::Indian::Mauritius) = %{version}
@@ -345,16 +339,12 @@ Provides:       perl(DateTime::TimeZone::Local) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::Android) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::Unix) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::VMS) = %{version}
-Provides:       perl(DateTime::TimeZone::MET) = %{version}
-Provides:       perl(DateTime::TimeZone::MST) = %{version}
-Provides:       perl(DateTime::TimeZone::MST7MDT) = %{version}
 Provides:       perl(DateTime::TimeZone::OffsetOnly) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Change) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Observance) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Rule) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Zone) = %{version}
-Provides:       perl(DateTime::TimeZone::PST8PDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Apia) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Auckland) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Bougainville) = %{version}
@@ -386,7 +376,6 @@ Provides:       perl(DateTime::TimeZone::Pacific::Tahiti) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Tarawa) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Tongatapu) = %{version}
 Provides:       perl(DateTime::TimeZone::UTC) = %{version}
-Provides:       perl(DateTime::TimeZone::WET) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

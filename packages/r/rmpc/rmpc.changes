@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 27 19:35:33 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.5.0
+  + Fixed
+    - allow negative one in status.volume
+    - Do not query album art when it is disabled
+    - browser column zero width, make docs wider
+    - skip unnecessary album art work and fix some overdraws when
+      changing screens
+    - always print CARGO_PKG_VERSION
+    - improve logging of mpd parse failures
+
+-------------------------------------------------------------------
+Wed Aug 28 11:40:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Change license from MIT to BSD-3-Clause
+
+-------------------------------------------------------------------
 Mon Aug 26 23:34:59 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - skip config::utils::tests::home_dir_not_present::_yes_yes_expects

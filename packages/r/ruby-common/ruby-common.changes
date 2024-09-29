@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 28 00:00:32 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update gem_packages.spec.erb:
+  dont strip the newline at the end of main:filelist output
+
+-------------------------------------------------------------------
 Fri Jun  7 13:52:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - refactor the jemalloc requires code so that it can accomodate

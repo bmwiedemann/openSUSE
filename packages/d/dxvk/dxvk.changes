@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Sep 27 00:12:25 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.4.1:
+
+  * The size for memory chunks is now determined dynamically based
+    on the amount of memory the application has already allocated
+    This should improve the out-of-the-box behaviour in various
+    game launchers; the dxvk.maxChunkSize option was removed
+    accordingly
+  * Fixed an issue where the Vulkan swap chain would not always be
+    recreated appropriately in a native Wayland environment
+  * Fixed an issue with descriptor pools growing too large on
+    Nvidia cards in some situations
+  * Changed default shader code generation for DXBC mad
+    instructions to work around flickering issues in games that
+    use different vertex shaders to render the same geometry in
+    multiple render passes. The d3d11.longMad and d3d9.longMad
+    options were removed accordingly
+  * Improved overall robustness of the D3D8 implementation with
+    error handling and fixed various memory leaks
+  * Slightly improved performance by optimizing vertex buffer
+    uploads
+  * Significantly improved performance in some games using
+    Software Vertex Processing
+  * Fixed full-screen presentation issues in some Game Maker games
+  * Removed VK_IMAGE_USAGE_SAMPLED_BIT from textures that don't
+    need it
+  * Enabled strict float emulation by default on AMDVLK now that
+    this driver optimizes the pattern emitted by DXVK
+    Do note that this was already the case on RADV
+  * Chrome: Gold Edition: Enabled 60 FPS limit to work around game
+    issues at higher frame rates
+  * GTA: San Andreas: Fix regression that made it crash with DXVK
+    2.4
+  * Operation Racoon City: Worked around a game crash
+  * Prince of Persia (2008): Enabled 240 FPS limit to work around
+    game issues at very high frame rates
+  * Rayman 3: Fixed missing geometry
+  * Serious Sam 2: Fix in-game videos
+  * Splinter Cell: Pandora Tomorrow: Enabled 60 FPS limit to fix
+    broken input and physics
+  * The First Templar: Fixed lighting issues
+  * The Sims 2: Fix regression that made it crash with earlier
+    DXVK versions
+  * Worked around a general issue wherein some games default to an
+    integrated GPU based on the amount of available video memory
+  * Worked around an issue where various games would misbehave
+    when the amount of available VRAM is reported as a power of
+    two
+  * Changed shader code generation for dot product instructions to
+    be more in line with code generation on native drivers
+    This fixes a water rendering issue in Trails through Daybreak
+    on Nvidia
+  * Implemented a basic dead code elimination pass to avoid
+    generating invalid SPIR-V shaders in rare situations
+    Note: All these shader-related changes will invalidate
+    fossilize databases
+  * Games will now leave fullscreen mode when the game window
+    loses focus
+    This is closer to Windows behaviour and fixes various issues
+    with games hanging on some setups
+  * Made sure the built-in options in DXVK for a game take
+    precedence over the options enabled/disabled by DXVK-NVAPI
+    This fixes a performance regression in God of War on Nvidia
+    GPUs
+  * Batman Arkham Knight: Worked around an issue where the game
+    does not start when it detects an Intel GPU
+  * Hunt Showdown: Fixed a crash caused by DXVK reporting a very
+    high UMD driver version
+  * Kena: Bridge of Spirits: Worked around a water rendering issue
+    when the game detects an Intel GPU
+  * Microsoft Flight Simulator: Fixed garbled screen on start-up
+  * Senran Kagura Peach Ball: Fixed character models being
+    rendered the wrong way around
+  * The Sims 4: Work around a crash caused by a use-after-free bug
+    in the game
+
+-------------------------------------------------------------------
 Sun Aug 25 11:40:13 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 2.4:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:32:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop unneeded Django test dependency
+- Skip one failing test on aarch64 
+
+-------------------------------------------------------------------
 Sat Jun 29 19:34:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

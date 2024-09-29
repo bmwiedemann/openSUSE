@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 31 05:33:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.89.0 (2.089)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.089 2024/08/29
+  - new option SSL_force_fingerprint to enforce fingerprint matching even if
+    certificate validation would be successful without
+  - document _get_ssl_object and _get_ctx_object for cases, where direct use of
+    Net::SSLeay functions is needed
+
+-------------------------------------------------------------------
 Sun Jul 14 16:02:28 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove patches 80315ed1a6a0b7968ce26284ed81b56c0ab288d9.patch,

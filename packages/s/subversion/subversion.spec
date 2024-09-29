@@ -96,6 +96,7 @@ BuildRequires:  python3-xml
 BuildRequires:  ruby-devel >= 1.8.2
 BuildRequires:  swig
 BuildRequires:  sysuser-tools
+BuildRequires:  strip-nondeterminism
 BuildRequires:  update-alternatives
 BuildRequires:  utf8proc-devel
 BuildRequires:  pkgconfig(apr-1) >= 1.3.0
@@ -329,6 +330,8 @@ export LDFLAGS="-pie"
 %if "%{flavor}" != "testsuite"
 %make_install
 make DESTDIR=%{buildroot} install-swig-py install-swig-pl install-javahl install-swig-rb
+strip-nondeterminism %{buildroot}%{_libdir}/svn-javahl/svn-javahl.jar
+
 %if %{with python_ctypes}
 make DESTDIR=%{buildroot} install-ctypes-python
 # remove csvn .pyc files and recompile them because they contain the $RPM_BUILD_ROOT path:

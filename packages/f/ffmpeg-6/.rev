@@ -140,4 +140,13 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment>- Add ffmpeg-6-CVE-2024-7055.patch:</comment>
     <requestid>1201544</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>09e01a6e248c8e5f8fcbba37d7660ca5</srcmd5>
+    <version>6.1.1</version>
+    <time>1727626152</time>
+    <user>anag+factory</user>
+    <comment>- no longer build against libmfx; build also 15.5 against libvpl
+ (boo#1230983)</comment>
+    <requestid>1203990</requestid>
+  </revision>
 </revisionlist>

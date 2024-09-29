@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:44:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Only run the full testsuite in openSUSE
+
+-------------------------------------------------------------------
 Thu Aug  3 06:29:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-pkg_resources.patch:

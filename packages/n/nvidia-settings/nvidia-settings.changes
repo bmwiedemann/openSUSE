@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 17:19:14 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Remove ExclusiveArch. The program may be non-functional without nvidia drivers,
+  but the library is needed by various packages and builds fine everywhere.
+
+-------------------------------------------------------------------
 Thu Sep 26 11:49:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build against sle15-sp3; %ldconfig_scriptlets doesn't exist

@@ -2,6 +2,7 @@
   <service name="obs_scm" mode="localonly">
     <param name="url">https://github.com/cminyard/openipmi.git</param>
     <param name="scm">git</param>
+<!--    <param name="basename">OpenIPMI</param> -->
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
     <param name="changesgenerate">enable</param>

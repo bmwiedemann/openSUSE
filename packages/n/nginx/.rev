@@ -1135,4 +1135,12 @@
   * Fixed new HTTP/2 connections might ignore graceful shutdown of old worker processes.</comment>
     <requestid>1194200</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>c4856b3e50c5d9773af406d26184deb1</srcmd5>
+    <version>1.27.1</version>
+    <time>1727626189</time>
+    <user>anag+factory</user>
+    <comment>- Add /srv/www to filelist [bsc#1231027]</comment>
+    <requestid>1204304</requestid>
+  </revision>
 </revisionlist>

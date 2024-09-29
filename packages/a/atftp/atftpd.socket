@@ -2,7 +2,7 @@
 Description=Advanced tftp Server Activation Socket
 
 [Socket]
-ListenDatagram=0.0.0.0:69
+ListenDatagram=69
 
 [Install]
 WantedBy=sockets.target

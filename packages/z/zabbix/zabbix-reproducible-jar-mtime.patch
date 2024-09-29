@@ -1,0 +1,12 @@
+diff -urEbwB zabbix-6.0.33.orig/src/zabbix_java/Makefile.am zabbix-6.0.33/src/zabbix_java/Makefile.am
+--- zabbix-6.0.33.orig/src/zabbix_java/Makefile.am	2024-09-26 21:55:13.116258283 +0200
++++ zabbix-6.0.33/src/zabbix_java/Makefile.am	2024-09-26 21:58:05.924204894 +0200
+@@ -18,7 +18,7 @@
+ 
+ $(ZJG): class src/com/zabbix/gateway/*.java
+ 	$(JAVAC) -d class/src -classpath $(LIB) src/com/zabbix/gateway/*.java
+-	$(JAR) cf $(ZJG) -C class/src .
++	$(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" --create --file=$(ZJG) -C class/src .
+ 
+ test: class
+ 	echo "badger useruser" > tests/com/zabbix/gateway/jmx_test_beans/jmxremote.password

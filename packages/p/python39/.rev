@@ -1253,4 +1253,14 @@
   complexity in parsing tarfile headers (bsc#1230227, CVE-2024-6232).</comment>
     <requestid>1202002</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>522287e9c968215f25380f39499b5530</srcmd5>
+    <version>3.9.20</version>
+    <time>1727626202</time>
+    <user>anag+factory</user>
+    <comment>- Add sphinx-802.patch to overcome working both with the most
+  recent and older Sphinx versions.
+</comment>
+    <requestid>1204230</requestid>
+  </revision>
 </revisionlist>

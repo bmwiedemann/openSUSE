@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Sep 25 10:40:09 UTC 2024 - trenn@suse.de
+
+- Fix bsc#1229910 CVE-2024-42934 by below 2 patches:
+  * lanserv: Fix an issue with authorization range checking
+  * lanserv: Check some bounds on incoming messages
+- Remove mainlined patches:
+D OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
+D OpenIPMI-c99.patch
+- Update to version 2.0.36.4+git.c114912:
+  * strings: Fix an incorrect string in sensor type 0x1f
+  * lanserv: Check that message and negotiated authtypes are the same
+  * Update some strings for newer IPMI standards
+  * Fix error report in startup_set_sel_time
+  * Move to version 2.0.36
+  * lanserv: Fix an issue with authorization range checking
+  * lanserv: Fix an issue logging an error on a message
+  * include: Add a doc for the lifetime of ipmi_entity_get_fru()
+  * Move to version 2.0.35
+  * lanserv: Check some bounds on incoming messages
+  * Create SECURITY.md
+  * swig: Cast some values to get proper passing of values
+  * sample: Fix an snprintf overflow issue
+  * ui: Fix an snprintf overflow issue
+  * Add github actions
+  * cmdlang: Remove yet more dead code
+  * swig: Remove a double free
+  * ui: More print issues
+  * sensor: Remove more dead code
+  * swig: Fix more resource leaks
+  * Finish up error updates
+  * ui: Fix a ton of formatting errors
+  * cmdlang: Remove some dead code
+  * cmdlang: Remove some dead code
+  * cmdlang: Remove an unneeded if
+  * cmdlang: Remove an unnecessary loop
+  * cmdlang: Remove some dead code
+  * lanserv: Fix an invalid overlapping copy
+  * lanserv: Add a missing break for watchdog handling
+  * lanserv: Add a check for the picmg address controller not found
+  * lanserv: Add a missing NULL pointer check
+  * lanserv: Fix an error report
+  * lanserv: Fix an unsigned compare issue
+  * lanserv: Remove some dead code
+  * lanserv: Fix reading persistance data
+  * domain: Fix some various bugs
+  * entity: Fix a ordering check issue
+  * fru: Remove unnecessary check
+  * smi: Remove some dead code
+  * utils: Fix address comparison
+  * fru: Fix record with possible NULL data
+  * mc: Fix sel re-fetch
+  * atca: Fix some various issues
+  * oem_motorola_mxp: Fix some minor issues
+  * control,sensor: Fix some string handling
+  * sel: Add a missing NULL check
+  * sample: Remove some dead code
+  * sensor: Fix some wrong sizes
+  * tcl: Fix an infinite loop
+  * swig: Fix a wrong malloc size
+  * lanserv: Fix a memory leak in sdrcomp
+  * unix: Add missing unlock on an error handler
+  * unix: Cast a variable to int from time()
+  * swig: Fix issues with memory handling
+  * Don't run perl tests in parallel
+  * C type errors in the SWIG-generated Perl bindings
+  * Move to version 2.0.34
+  * swig:perl: Fix the tests
+  * swig:perl: Add a way to print the test environment
+  * lanserv: Allow zero to be specified for the port
+  * lanserv: Return an error if sensor data is requested before ready
+  * unix: Handle EAGAIN along with EINTR
+  * ipmi_sim:sensor: Add the low 8 bits of discrete value to sensor reading
+  * fix coredump when use ipmi_ui
+  * Fix the name of global event support for sensors
+  * Update configure.ac
+  * Move to version 2.0.33
+  * exec: fix race in symlink install
+  * Make lan.conf and simulator startup file 600 permissions
+  * Update the python m4 file
+  * Avoid searching host library path
+
+-------------------------------------------------------------------
 Tue Jun 18 12:31:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add OpenIPMI-c99.patch in order to make the package buildable with

@@ -706,4 +706,16 @@
 </comment>
     <requestid>1156543</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>936aad4e35fb6e2279021c4fe7cb8652</srcmd5>
+    <version>2.630.0</version>
+    <time>1727626155</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.630.0 (2.63)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.63    2024-09-07
+  - This release is based on version 2024b of the Olson database. This release does not include any
+    changes to current or future zones, only historical changes.</comment>
+    <requestid>1204045</requestid>
+  </revision>
 </revisionlist>

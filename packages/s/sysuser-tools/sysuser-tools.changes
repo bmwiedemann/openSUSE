@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:42:07 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove check for .buildenv to see failures in OBS
+
+-------------------------------------------------------------------
 Wed Aug  7 10:04:38 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - usermod: revert renamed arguments

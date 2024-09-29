@@ -239,4 +239,20 @@
     <comment></comment>
     <requestid>1181776</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c2ad1f17461ad944b628c19a82d63156</srcmd5>
+    <version>0.902.0</version>
+    <time>1727626154</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.902.0 (v0.902.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  v0.902.0 2024-09-20 21:39:00+02:00
+   - Loaded builtin booleans are not readonly anymore for perl &gt;= v5.36
+  v0.901.0 2024-09-06 23:56:41+02:00
+   - Change version scheme
+   - Fix missing linebreak in pod from Dist::Zilla conversion
+  0.90 2024-09-06 23:44:13+02:00
+   - Change from Zilla::Dist to Dist::Zilla (forwarded request 1203093 from tinita)</comment>
+    <requestid>1204044</requestid>
+  </revision>
 </revisionlist>

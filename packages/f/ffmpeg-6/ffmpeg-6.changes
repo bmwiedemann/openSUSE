@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 10:02:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer build against libmfx; build also 15.5 against libvpl
+ (boo#1230983)
+
+-------------------------------------------------------------------
 Fri Sep  6 15:06:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-7055.patch:

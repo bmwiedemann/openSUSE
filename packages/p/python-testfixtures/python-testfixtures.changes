@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 26 04:56:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Support Python 3.13 AttributeError message changes.
+
+-------------------------------------------------------------------
+Sun Jun 30 08:18:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.0:
+  * :class:`ShouldRaise` now supports :class:`ExceptionGroup`.
+  * Fixed bug where
+    :func:`~testfixtures.comparison.compare_generator` did not
+    respect strict=True.
+  * Fixed bug in the type annotations for :class:`ShouldRaise`
+    and :func:`~testfixtures.comparison.compare_exception`.
+  * :class:`LogCapture` will now raise an exception if closed
+    while still installed. This can be a source of particularly
+    confusing bugs.
+
+-------------------------------------------------------------------
 Wed May  8 06:08:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.2.0:

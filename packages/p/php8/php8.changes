@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Sep 28 07:07:17 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027] 
+
+-------------------------------------------------------------------
+Thu Sep 26 19:44:41 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.3.12
+    CGI:
+        Fixed bug GHSA-p99j-rfp4-xqvq (Bypass of CVE-2024-4577, Parameter Injection Vulnerability). (CVE-2024-8926)
+        Fixed bug GHSA-94p6-54jq-9mwp (cgi.force_redirect configuration is bypassable due to the environment variable collision). (CVE-2024-8927)
+    Core:
+        Fixed bug GH-15408 (MSan false-positve on zend_max_execution_timer).
+        Fixed bug GH-15515 (Configure error grep illegal option q).
+        Fixed bug GH-15514 (Configure error: genif.sh: syntax error).
+        Fixed bug GH-15565 (--disable-ipv6 during compilation produces error EAI_SYSTEM not found).
+        Fixed bug GH-15587 (CRC32 API build error on arm 32-bit).
+        Fixed bug GH-15330 (Do not scan generator frames more than once).
+        Fixed uninitialized lineno in constant AST of internal enums.
+    Curl:
+        Fixed bug GH-15547 (curl_multi_select overflow on timeout argument).
+    DOM:
+        Fixed bug GH-15551 (Segmentation fault (access null pointer) in ext/dom/xml_common.h).
+        Fixed bug GH-15654 (Signed integer overflow in ext/dom/nodelist.c).
+    Fileinfo:
+        Fixed bug GH-15752 (Incorrect error message for finfo_file with an empty filename argument).
+    FPM:
+        Fixed bug GHSA-865w-9rf3-2wh5 (Logs from childrens may be altered). (CVE-2024-9026)
+    MySQLnd:
+        Fixed bug GH-15432 (Heap corruption when querying a vector).
+    Opcache:
+        Fixed bug GH-15661 (Access null pointer in Zend/Optimizer/zend_inference.c).
+        Fixed bug GH-15658 (Segmentation fault in Zend/zend_vm_execute.h).
+    SAPI:
+        Fixed bug GHSA-9pqp-7h25-4f32 (Erroneous parsing of multipart form data). (CVE-2024-8925)
+    Standard:
+        Fixed bug GH-15552 (Signed integer overflow in ext/standard/scanf.c).
+    Streams:
+        Fixed bug GH-15628 (php_stream_memory_get_buffer() not zero-terminated).
+
+-------------------------------------------------------------------
 Fri Aug 30 07:19:33 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.3.11

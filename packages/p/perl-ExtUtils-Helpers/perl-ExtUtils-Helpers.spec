@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-Helpers
 Name:           perl-ExtUtils-Helpers
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
-# 0.027 -> normalize -> 0.27.0
-%define cpan_version 0.027
+# 0.028 -> normalize -> 0.28.0
+%define cpan_version 0.028
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Various portability utilities for module builders
 URL:            https://metacpan.org/release/%{cpan_name}

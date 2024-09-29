@@ -116,4 +116,19 @@
             - Implement dynamic prerequisites (forwarded request 1185765 from tinita)</comment>
     <requestid>1186037</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0763ec80af315775a27da15a74f6c8f3</srcmd5>
+    <version>0.51.0</version>
+    <time>1727626156</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.51.0 (0.051)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+  0.051     2024-09-06 11:05:08+02:00 Europe/Brussels
+            - Make CPAN::Requirements::Dynamic an optional dependency
+  0.050     2024-09-04 10:21:13+02:00 Europe/Brussels
+            - Revert &quot;Make CPAN::Requirements::Dynamic an optional dependency&quot;
+  0.049     2024-09-03 19:25:05+02:00 Europe/Brussels
+            - Make CPAN::Requirements::Dynamic an optional dependency (forwarded request 1203088 from tinita)</comment>
+    <requestid>1204046</requestid>
+  </revision>
 </revisionlist>

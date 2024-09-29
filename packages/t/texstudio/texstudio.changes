@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:59:57 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.3
+  * use argument position to assign argument type (fixes some issues concerning keyval arguments)
+  * fix activation of keyvals for completion when new packages are used
+    gh#texstudio-org/texstudio#3791
+  * improved table manipulation when multiline arguments are used
+    gh#texstudio-org/texstudio#3789
+
+
+-------------------------------------------------------------------
 Thu Sep 12 10:57:59 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.2

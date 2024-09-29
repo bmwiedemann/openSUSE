@@ -1,7 +1,7 @@
 #
 # spec file for package eglexternalplatform
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           eglexternalplatform
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        The EGL External Platform interface
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/eglexternalplatform
 Source0:        https://github.com/NVIDIA/eglexternalplatform/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
-BuildArch:      noarch
+BuildRequires:  meson
 
 %description
 A work-in-progress specification of the EGL External Platform interface.
@@ -43,19 +42,18 @@ EGL functions.
 
 %prep
 %autosetup
+%meson
 
 %build
+%meson_build
 
 %install
-install -d -m0755 %{buildroot}%{_datadir}/pkgconfig
-install -d -m0755 %{buildroot}%{_includedir}/EGL
-install -m0644 eglexternalplatform.pc %{buildroot}%{_datadir}/pkgconfig
-install -m0644 interface/*.h %{buildroot}%{_includedir}/EGL
+%meson_install
 
 %files devel
 %license COPYING
 %doc README.md
-%{_datadir}/pkgconfig/eglexternalplatform.pc
-%{_includedir}/EGL
+%{_libdir}/pkgconfig/eglexternalplatform.pc
+%{_includedir}/*.h
 
 %changelog

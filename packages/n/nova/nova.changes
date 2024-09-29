@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:31:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.10.2:
+  * Bumped Go to 1.22.7 for fixing vulnerabilities (#335)
+  * Bump alpine from 3.19 to 3.20 (#313)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Mon Aug 12 14:41:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.10.1:

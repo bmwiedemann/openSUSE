@@ -34,4 +34,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>923041</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8a74a5f75bb0e491ccdf9c8e3f044ea</srcmd5>
+    <version>1.2</version>
+    <time>1727626168</time>
+    <user>anag+factory</user>
+    <comment>- update to release 1.2
+  * Change the shutdown behavior so that 
+    EGLExtPlatformExports::unloadEGLExternalPlatform is called
+    while the internal EGLDisplays are still valid.
+  * Added a meson.build file to generate the pkg-config file. It's
+    also set up so that you can use eglexternalplatform as a Meson
+    subproject.
+  * Interface version 1.2 is supported on 560.* and later drivers.</comment>
+    <requestid>1204273</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 26 21:19:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Enhancements for filtering dump and flush commands, see
+    struct nfct_filter_dump and nfct_nlmsg_build_filter().
+  * ctnetlink event BPF fixes (endianness issue, IPv6 matching)
+    and enhancements (zone matching).
+
+-------------------------------------------------------------------
 Mon Feb 14 11:58:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.9

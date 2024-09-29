@@ -1,0 +1,36 @@
+From 291850017e9154b4219fc35d8eca3551724bef94 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 26 Sep 2024 14:50:58 +1000
+Subject: [PATCH] Support Python 3.13's AttributeError changes
+
+Python 3.13 has changed the message that is raised with an
+AttributeError to provide a hint on how to help avoid it -- but this
+breaks a test case. Support both the old and the new message.
+---
+ testfixtures/tests/test_replace.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/testfixtures/tests/test_replace.py b/testfixtures/tests/test_replace.py
+index 073e43c..863981b 100644
+--- a/testfixtures/tests/test_replace.py
++++ b/testfixtures/tests/test_replace.py
+@@ -15,6 +15,7 @@
+ from unittest import TestCase
+ 
+ import os
++import sys
+ 
+ from testfixtures.mock import Mock
+ from testfixtures.tests import sample1, sample3
+@@ -1362,7 +1363,10 @@ def test_invalid_attribute_on_instance_of_slotted_class(self):
+         obj = OriginE()
+         assert not hasattr(obj, '__dict__')
+         replace_ = Replacer()
+-        with ShouldRaise(AttributeError("'OriginE' object has no attribute 'bad'")):
++        msg = "'OriginE' object has no attribute 'bad'"
++        if sys.version_info >= (3, 13):
++            msg += " and no __dict__ for setting new attributes"
++        with ShouldRaise(AttributeError(msg)):
+             replace_(obj, name='bad', replacement=42, strict=self.strict)
+ 
+     def test_method_on_instance_of_slotted_subclass(self):

@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#pywbem/pywbem#3217
+Patch0:         support-new-testfixtures.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.4.1}
 BuildRequires:  %{python_module wheel}

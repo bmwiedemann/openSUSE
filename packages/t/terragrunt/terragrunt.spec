@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           terragrunt
-Version:        0.67.10
+Version:        0.67.14
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT
@@ -28,10 +28,12 @@ Source:         terragrunt-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        Makefile
 Source3:        PACKAGING_README.md
-BuildRequires:  go1.22
+BuildRequires:  go1.23
 
 %description
-Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state.
+Terragrunt is a thin wrapper for Terraform that provides extra tools for
+keeping your Terraform configurations DRY, working with multiple Terraform
+modules, and managing remote state.
 
 %prep
 %autosetup -p1 -a 1

@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.3.11
+Version:        8.3.12
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -1428,6 +1428,8 @@ fi
 %dir %{php_sysconf}/fastcgi
 %{_bindir}/php-cgi
 %{_mandir}/man1/php-cgi.1%{?ext_man}
+%dir %{apache_serverroot}
+%dir %{apache_serverroot}/cgi-bin
 %{apache_serverroot}/cgi-bin/php
 %endif
 

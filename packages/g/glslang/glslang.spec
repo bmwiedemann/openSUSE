@@ -16,9 +16,9 @@
 #
 
 
-%define lname libglslang14
+%define lname libglslang15
 Name:           glslang
-Version:        14.3.0
+Version:        15.0.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -89,8 +89,9 @@ but which some downstream packages rely on.
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-# ABI keeps on breaking (gh#3052 #3311 #3312 #3593)
-echo "V_%version { global: *; };" >/tmp/z.sym
+# (gh#3052 #3311 #3312 #3593) -- supposedly handled better in
+# glslang-15 and onwards, do watch for ABI breaks
+#echo "V_%version { global: *; };" >/tmp/z.sym
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
 export CC=gcc-11 CXX=g++-11
 %endif
@@ -141,11 +142,10 @@ done
 
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/*.so.14*
+%_libdir/*.so.15*
 
 %files devel -f devel.files
 %_bindir/gls*

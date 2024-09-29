@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 28 12:41:34 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.7.4
+  * Fix musllinux rpath for non-cffi bindings
+    gh#PyO3/maturin#2233
+- Changes in 1.7.3:
+  * Fix pypi/testpypi upload
+    gh#PyO3/maturin#2229
+- Changes in 1.7.2:
+  * Split out test-windows-cross to speed up ci
+    gh#PyO3/maturin#2188
+  * Upgrade cargo-deny
+    gh#PyO3/maturin#2200
+  * Cross building fixes
+    gh#PyO3/maturin#2204
+  * UniFFI: supports bindings generated from multiple crates
+    gh#PyO3/maturin#2208
+  * doc: add -r/--release flag info to tutorial
+    gh#PyO3/maturin#2211
+  * Enable --all-features when building source distribution
+    gh#PyO3/maturin#2215
+  * Replace "." with "/" in module_name
+    gh#PyO3/maturin#2219
+
+-------------------------------------------------------------------
 Sun Aug 25 00:00:47 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.7.1

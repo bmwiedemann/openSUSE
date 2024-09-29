@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  1 05:31:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.279.0 (1.279)
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.279   2024-08-23 14:02:44Z
+  	Summary:
+  	- Implemented a cache to speed up sibling iteration
+  	  (GH#287) (Graham Knop (haarg))
+
+-------------------------------------------------------------------
 Fri Mar 22 16:33:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.278

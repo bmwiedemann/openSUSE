@@ -18,14 +18,14 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.278.0
+Version:        1.279.0
 Release:        0
-# 1.278 -> normalize -> 1.278.0
-%define cpan_version 1.278
+# 1.279 -> normalize -> 1.279.0
+%define cpan_version 1.279
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MITHALDU/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl

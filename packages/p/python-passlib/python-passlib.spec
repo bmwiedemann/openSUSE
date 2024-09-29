@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-passlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module argon2_cffi}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
-%if 0%{?suse_version} >= 1550 || 0%{?is_opensuse}
+%if 0%{?is_opensuse}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module scrypt}
 %endif

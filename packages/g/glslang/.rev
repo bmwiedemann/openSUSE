@@ -425,4 +425,12 @@
     <comment>- Update to release 14.3</comment>
     <requestid>1189188</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4890b1c102428b55974b361ced514bb8</srcmd5>
+    <version>15.0.0</version>
+    <time>1727626153</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 15</comment>
+    <requestid>1203991</requestid>
+  </revision>
 </revisionlist>

@@ -18,9 +18,10 @@
 
 %define cpan_name YAML-LibYAML
 Name:           perl-YAML-LibYAML
-Version:        0.890.0
+Version:        0.902.0
 Release:        0
-%define cpan_version 0.89
+# v0.902.0 -> normalize -> 0.902.0
+%define cpan_version v0.902.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl YAML Serialization using XS and libyaml
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,9 +30,6 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.9
-Provides:       perl(YAML::LibYAML) = %{version}
-Provides:       perl(YAML::XS) = %{version}
-%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,7 +53,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING README
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog

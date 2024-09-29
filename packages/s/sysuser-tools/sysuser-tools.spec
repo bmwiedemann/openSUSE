@@ -82,7 +82,7 @@ m   me  nogroup
 EOF
 
 cat <<EOFF > expected-account-pre
-/usr/sbin/sysusers2shadow me.conf <<"EOF" || [ -f /.buildenv ]
+/usr/sbin/sysusers2shadow me.conf <<"EOF"
 u   me   -     "myself" /dev/null
 m   me  nogroup
 g   asdf

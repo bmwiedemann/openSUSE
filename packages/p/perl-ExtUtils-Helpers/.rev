@@ -67,4 +67,15 @@
             - Revert &quot;Make split_like_shell always unixy&quot; (forwarded request 1182887 from tinita)</comment>
     <requestid>1182966</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d933ead51e2033d4200019b48e184cbb</srcmd5>
+    <version>0.28.0</version>
+    <time>1727626157</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.28.0 (0.028)
+   see /usr/share/doc/packages/perl-ExtUtils-Helpers/Changes
+  0.028     2024-09-02 22:25:13+02:00 Europe/Brussels
+            - Add ext argument to man1_pagename and man3_pagename (forwarded request 1203076 from tinita)</comment>
+    <requestid>1204050</requestid>
+  </revision>
 </revisionlist>

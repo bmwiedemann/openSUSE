@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 19 20:44:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.2
+  * Change the shutdown behavior so that 
+    EGLExtPlatformExports::unloadEGLExternalPlatform is called
+    while the internal EGLDisplays are still valid.
+  * Added a meson.build file to generate the pkg-config file. It's
+    also set up so that you can use eglexternalplatform as a Meson
+    subproject.
+  * Interface version 1.2 is supported on 560.* and later drivers. 
+
+-------------------------------------------------------------------
 Mon Sep 27 13:47:11 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653 

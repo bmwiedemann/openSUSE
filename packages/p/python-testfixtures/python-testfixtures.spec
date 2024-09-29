@@ -26,12 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testfixtures%{psuffix}
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#simplistix/testfixtures#202
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

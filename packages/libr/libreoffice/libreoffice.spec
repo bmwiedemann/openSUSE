@@ -78,7 +78,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.8.1.2
+Version:        24.8.2.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -152,8 +152,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.9.1.tar.xz
-Provides:       bundled(curl) = 8.9.1
+Source2013:     %{external_url}/curl-8.10.1.tar.xz
+Provides:       bundled(curl) = 8.10.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -303,7 +303,7 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 Source2020:     %{external_url}/boost_1_85_0.tar.xz
 Source2023:     %{external_url}/poppler-24.08.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
-Source2030:     %{external_url}/tiff-4.6.0t.tar.xz
+Source2030:     %{external_url}/tiff-4.7.0.tar.xz
 Provides:       bundled(boost) = 1.85.0
 Provides:       bundled(poppler) = 24.08.0
 Provides:       bundled(poppler-data) = 0.4.12

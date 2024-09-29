@@ -247,7 +247,7 @@ fi
 %defattr(-,root,root,-)
 # MANUAL
 <% if config[:main] && config[:main][:filelist] -%>
-<%= config[:main][:filelist] -%>
+<%= config[:main][:filelist] %>
 <% end -%>
 # /MANUAL
 <% unless docdirfiles.empty? -%>

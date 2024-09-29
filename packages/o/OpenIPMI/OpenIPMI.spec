@@ -1,7 +1,7 @@
 #
 # spec file for package OpenIPMI
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,6 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-
 # IPMI.pdf build for devel package
 # It is not worth to build, but as I got it running I add it
 # how it worked for me in Tumbleweed, Leap 42.2 and 42.3 and SLE 15
@@ -29,9 +24,12 @@
 %if 0%{?suse_version} < 1500
 %define doc_build 0
 %endif
-
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 Name:           OpenIPMI
-Version:        2.0.32.3+git.05faa36e
+Version:        2.0.36.4+git.c114912
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
@@ -49,13 +47,6 @@ Patch2:         openipmi-tinfo.patch
 Patch3:         OpenIMPI-add-libncurses.patch
 Patch4:         fix_dia_version_detection.patch
 Patch5:         use_python3_shebang
-# PATCH-FIX-UPSTREAM OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
-# replace autoconf script serial18 addtion by serial 25 capable of finding python3.10
-# retains upstream change https://sourceforge.net/p/openipmi/code/ci/53d2b36b58383d155e2410cae3b30975a92f417d
-Patch6:         OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
-# Backport of upstream https://sourceforge.net/p/openipmi/patches/38/ to fix boo#1225871
-Patch7:         OpenIPMI-c99.patch
-
 BuildRequires:  autoconf-archive
 BuildRequires:  gd-devel
 BuildRequires:  gdbm-devel
@@ -79,6 +70,12 @@ BuildRequires:  swig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcl-devel
 BuildRequires:  tix
+Requires(post): %fillup_prereq
+Provides:       ipmi_ui
+Provides:       ipmicmd
+Provides:       ipmilan
+%{?systemd_ordering}
+%{?perl_requires}
 %if 0%{?doc_build}
 BuildRequires:  dia
 BuildRequires:  ghostscript
@@ -88,13 +85,6 @@ BuildRequires:  texlive-dvips-bin
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-moreverb
 %endif
-
-Requires(post): %fillup_prereq
-Provides:       ipmi_ui
-Provides:       ipmicmd
-Provides:       ipmilan
-%{?systemd_ordering}
-%{?perl_requires}
 
 %description
 OpenIPMI allows access to IPMI information on a server and to abstract it.
@@ -137,8 +127,8 @@ Group:          System/Monitoring
 Requires:       OpenIPMI
 Requires:       python3-tk
 Requires:       tix
-Provides:       openipmigui
 Conflicts:      OpenIPMI-python
+Provides:       openipmigui
 
 %description python3
 The Python parts provide an OpenIPMI Python library and a GUI, openipmigui,

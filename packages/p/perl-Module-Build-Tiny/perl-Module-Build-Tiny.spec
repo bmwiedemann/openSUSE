@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Build-Tiny
 Name:           perl-Module-Build-Tiny
-Version:        0.48.0
+Version:        0.51.0
 Release:        0
-# 0.048 -> normalize -> 0.48.0
-%define cpan_version 0.048
+# 0.051 -> normalize -> 0.51.0
+%define cpan_version 0.051
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny replacement for Module::Build
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +30,6 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
-BuildRequires:  perl(CPAN::Requirements::Dynamic)
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::Config) >= 0.003
 BuildRequires:  perl(ExtUtils::Helpers) >= 0.020
@@ -42,7 +41,6 @@ BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(TAP::Harness::Env)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(CPAN::Meta)
-Requires:       perl(CPAN::Requirements::Dynamic)
 Requires:       perl(ExtUtils::CBuilder)
 Requires:       perl(ExtUtils::Config) >= 0.003
 Requires:       perl(ExtUtils::Helpers) >= 0.020
@@ -53,6 +51,7 @@ Requires:       perl(JSON::PP) >= 2
 Requires:       perl(TAP::Harness::Env)
 Provides:       perl(Module::Build::Tiny) = %{version}
 %undefine       __perllib_provides
+Recommends:     perl(CPAN::Requirements::Dynamic)
 %{perl_requires}
 
 %description

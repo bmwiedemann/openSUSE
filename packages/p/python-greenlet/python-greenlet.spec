@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -36,7 +36,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  c++_compiler
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with docs}
@@ -65,6 +71,10 @@ This package contains header files required for C modules development.
 sed -i '1{/env python/d}' src/greenlet/tests/test_version.py
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
 %pyproject_wheel
 

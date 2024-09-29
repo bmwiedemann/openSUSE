@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  3 05:31:04 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28.0 (0.028)
+   see /usr/share/doc/packages/perl-ExtUtils-Helpers/Changes
+
+  0.028     2024-09-02 22:25:13+02:00 Europe/Brussels
+            - Add ext argument to man1_pagename and man3_pagename
+
+-------------------------------------------------------------------
 Sun Jun 23 16:18:43 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 0.27.0 (0.027)

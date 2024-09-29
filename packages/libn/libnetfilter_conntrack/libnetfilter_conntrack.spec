@@ -1,7 +1,7 @@
 #
 # spec file for package libnetfilter_conntrack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnetfilter_conntrack
 %define lname	libnetfilter_conntrack3
-Version:        1.0.9
+Version:        1.1.0
 Release:        0
 Summary:        Userspace library for the in-kernel connection tracking state table
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libnetfilter_conntrack/
 
 #Git-Clone:	https://git.netfilter.org/libnetfilter_conntrack/
-Source:         https://netfilter.org/projects/libnetfilter_conntrack/files/%name-%version.tar.bz2
-Source2:        https://netfilter.org/projects/libnetfilter_conntrack/files/%name-%version.tar.bz2.sig
+Source:         https://netfilter.org/projects/libnetfilter_conntrack/files/%name-%version.tar.xz
+Source2:        https://netfilter.org/projects/libnetfilter_conntrack/files/%name-%version.tar.xz.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
 BuildRequires:  pkgconfig >= 0.21

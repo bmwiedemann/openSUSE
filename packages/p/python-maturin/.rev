@@ -1151,4 +1151,32 @@
     gh#PyO3/maturin#2184</comment>
     <requestid>1195862</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>43d37ede236f4bce3db6f91416b1411d</srcmd5>
+    <version>1.7.4</version>
+    <time>1727626189</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.4
+  * Fix musllinux rpath for non-cffi bindings
+    gh#PyO3/maturin#2233
+- Changes in 1.7.3:
+  * Fix pypi/testpypi upload
+    gh#PyO3/maturin#2229
+- Changes in 1.7.2:
+  * Split out test-windows-cross to speed up ci
+    gh#PyO3/maturin#2188
+  * Upgrade cargo-deny
+    gh#PyO3/maturin#2200
+  * Cross building fixes
+    gh#PyO3/maturin#2204
+  * UniFFI: supports bindings generated from multiple crates
+    gh#PyO3/maturin#2208
+  * doc: add -r/--release flag info to tutorial
+    gh#PyO3/maturin#2211
+  * Enable --all-features when building source distribution
+    gh#PyO3/maturin#2215
+  * Replace &quot;.&quot; with &quot;/&quot; in module_name
+    gh#PyO3/maturin#2219</comment>
+    <requestid>1204352</requestid>
+  </revision>
 </revisionlist>

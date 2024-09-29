@@ -22,7 +22,6 @@ Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-or-later
 URL:            http://www.nvidia.com/object/unix.html
-ExclusiveArch:  x86_64 aarch64 %ix86
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-load.desktop

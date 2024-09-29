@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 26 06:02:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-testfixtures.patch:
+  * Support testfixtures >= 8.3.0.
+
+-------------------------------------------------------------------
 Mon May 13 03:49:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.2:

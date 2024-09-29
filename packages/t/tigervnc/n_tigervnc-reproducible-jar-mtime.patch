@@ -1,0 +1,32 @@
+diff -urEbwB tigervnc-1.13.1.orig/java/CMakeLists.txt tigervnc-1.13.1/java/CMakeLists.txt
+--- tigervnc-1.13.1.orig/java/CMakeLists.txt	2024-09-26 22:41:57.677131737 +0200
++++ tigervnc-1.13.1/java/CMakeLists.txt	2024-09-26 22:46:01.029014276 +0200
+@@ -139,6 +139,15 @@
+ string(REGEX REPLACE "jar" "" Java_PATH ${Java_JAR_EXECUTABLE})
+ string(REGEX REPLACE ".exe" "" Java_PATH ${Java_PATH})
+ 
++if (DEFINED ENV{SOURCE_DATE_EPOCH})
++    execute_process(
++      COMMAND "date" "-u" "-d" "@$ENV{SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ"
++      OUTPUT_VARIABLE COMPILATION_DATE
++      OUTPUT_STRIP_TRAILING_WHITESPACE)
++else ()
++    string (TIMESTAMP COMPILATION_DATE "+%Y-%m-%dT%H:%M:%SZ")
++endif ()
++
+ add_custom_command(OUTPUT VncViewer.jar
+   DEPENDS ${JAVA_CLASSES}
+     ${SRCDIR}/${CLASSPATH}/MANIFEST.MF
+@@ -148,8 +157,10 @@
+     ${BINDIR}/${CLASSPATH}/insecure.png
+     ${BINDIR}/${CLASSPATH}/secure.png
+   COMMAND ${JAVA_ARCHIVE}
+-  ARGS cfm VncViewer.jar
+-    ${SRCDIR}/${CLASSPATH}/MANIFEST.MF
++  ARGS --create
++    --date=${COMPILATION_DATE}
++    --file=VncViewer.jar
++    --manifest=${SRCDIR}/${CLASSPATH}/MANIFEST.MF
+     ${CLASSPATH}/timestamp
+     ${CLASSPATH}/*.class
+     com/tigervnc/rfb/*.class

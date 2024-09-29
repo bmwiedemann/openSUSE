@@ -433,4 +433,12 @@ being deleted. This was the reason why, for the last two years, this package
 could not be forwarded to Factory (incl. the recent gcc14 fixes) (forwarded request 1193361 from dimstar)</comment>
     <requestid>1193362</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f48d809dd99faac4534680a2ba21298c</srcmd5>
+    <version>2.0.36.4+git.c114912</version>
+    <time>1727626148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1203915</requestid>
+  </revision>
 </revisionlist>

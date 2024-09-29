@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  8 05:31:11 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.630.0 (2.63)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.63    2024-09-07
+
+  - This release is based on version 2024b of the Olson database. This release does not include any
+    changes to current or future zones, only historical changes.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:16:52 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

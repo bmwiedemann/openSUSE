@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:38:35 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.8:
+ * Preview features
+   * Remove unnecessary parentheses around match case clauses 
+   * Parenthesize overlong if guards in match..case clauses 
+   * Detect basic wildcard imports in ruff analyze graph 
+   * [pylint] Implement boolean-chained-comparison (R1716) 
+ * Rule changes
+   * [lake8-simplify] Detect SIM910 when using variadic keyword arguments, i.e., **kwargs 
+   * [pyupgrade] Avoid false negatives with non-reference shadowed bindings of loop variables (UP028) 
+ * Bug fixes
+   * Detect tuples bound to variadic positional arguments i.e. *args 
+   * Exit gracefully on broken pipe errors 
+   * Avoid panic when analyze graph hits broken pipe 
+ * Performance
+   * Reuse BTreeSets in module resolver 
+   * Skip traversal for non-compound statements 
+
+-------------------------------------------------------------------
 Mon Sep 23 12:00:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.7:

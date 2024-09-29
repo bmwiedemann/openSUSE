@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 24 18:33:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete /usr/sbin/rc* symlink & specfile housekeeping
+- Make atftpd.socket listen on AF_INET6 as well
+- Deactivate FORTIFY_SOURCE for the time being due to a glibc bug
+
+-------------------------------------------------------------------
 Wed Sep 14 11:02:03 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to version 0.8.0 

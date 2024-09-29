@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 27 09:30:16 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Revert last change and update SLE/Leap Micro images to 5.5 (bsc#1227328)
+
+-------------------------------------------------------------------
 Tue Sep 24 12:22:08 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update SLE/Leap Micro images from 5.4 to 6.0 (bsc#1227328)
