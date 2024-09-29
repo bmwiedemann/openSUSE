@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:32:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.20.3:
+  * INSIGHTS-374 Pluto: bump go to 1.22.7 (#553)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Sat Sep 14 08:28:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.20.2:
