@@ -71,7 +71,7 @@ sed -i -r '1s/env (lua)/\1%{lua_version}/' rep.lua
 %luarocks_install *.rock
 
 # Version the rep.lua file
-sed -i -r -e "s#%{buildroot}##" -e "s#(/bin/rep.lua)#\1-%{lua_version}#" \
+sed -i -r -e "s#%{buildroot}##g" -e "s#(/bin/rep.lua)#\1-%{lua_version}#" \
     "%{buildroot}/usr/bin/rep.lua"
 mv %{buildroot}%{_bindir}/rep.lua{,-%{lua_version}}
 
