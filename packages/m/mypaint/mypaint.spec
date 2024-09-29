@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,6 @@ pencils, ink, or paint.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}/lib/%{name}/
 %fdupes %{buildroot}%{_datadir}/icons/hicolor/
-
-%check
-python3 setup.py test
 
 %files
 %doc Changelog.md README.md

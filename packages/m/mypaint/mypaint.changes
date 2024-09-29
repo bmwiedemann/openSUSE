@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 22:53:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop %check section that depends on outdated setup.py.
+
+-------------------------------------------------------------------
 Wed Jun 21 11:56:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1193.patch: fix build against python 3.11.
