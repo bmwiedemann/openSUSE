@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 27 16:22:56 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.1
+  Bugfixes:
+  * Fixed thumbnail preview popup not resizing after disabling
+    the previews
+  * Use the same volume component for both footer styles 
+
+-------------------------------------------------------------------
 Tue Aug 27 13:45:23 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.0
