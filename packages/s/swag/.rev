@@ -7,4 +7,23 @@
     <comment>New package swag version 1.16.3 is a CLI tool to automatically generate RESTful API documentation with Swagger 2.0 from annotated Go source code.</comment>
     <requestid>1204158</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e72249d10ea2fd427e2553b58c83158</srcmd5>
+    <version>1.16.3</version>
+    <time>1727626242</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Use BuildRequires: golang(API) &gt;= 1.22 rather than pin go1.22.
+    The golang(API) expression allows use of newer go versions and
+    integrates with the go metapackage via OBS prjconf Prefer:
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop go build -o arg, default binary name is package of main() (forwarded request 1204252 from jfkw)</comment>
+    <requestid>1204253</requestid>
+  </revision>
 </revisionlist>

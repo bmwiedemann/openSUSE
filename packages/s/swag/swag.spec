@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           swag
 Version:        1.16.3
 Release:        0
 Summary:        Automatically generate RESTful API documentation with Swagger 2.0 for Go
 License:        MIT
-URL:            https://github.com/swaggo/swag/
+URL:            https://github.com/swaggo/swag
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.22
 
 %description
 Swag converts Go annotations to Swagger Documentation 2.0. We've created a
@@ -34,17 +32,16 @@ variety of plugins for popular Go web frameworks. This allows you to quickly
 integrate with an existing Go project (using Swagger UI).
 
 %prep
-%autosetup -p 1 -a 1
+%autosetup -a 1
 
 %build
-go build \
-   -mod=vendor \
-   -buildmode=pie \
-   -o bin/%{name} ./cmd/%{name}
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build ./cmd/%{name}
 
 %install
-# Install the binary.
-install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
 %doc README.md
