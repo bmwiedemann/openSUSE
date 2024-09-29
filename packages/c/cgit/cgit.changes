@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 25 18:18:12 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Tue Mar 17 08:30:09 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to new upstream release 1.2.3

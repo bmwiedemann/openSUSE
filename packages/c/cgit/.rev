@@ -319,4 +319,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>787708</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>a4d26d834d7ba07be26b09c93ade5085</srcmd5>
+    <version>1.2.3</version>
+    <time>1727626398</time>
+    <user>anag+factory</user>
+    <comment>- Add /srv/www directories to filelist [bsc#1231027]</comment>
+    <requestid>1204346</requestid>
+  </revision>
 </revisionlist>

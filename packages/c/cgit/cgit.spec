@@ -1,7 +1,7 @@
 #
 # spec file for package cgit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           cgit
 Version:        1.2.3
 Release:        0
 Summary:        A web frontend for git repositories
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
-Url:            http://git.zx2c4.com/cgit/
+URL:            http://git.zx2c4.com/cgit/
 #Git-Clone:	https://git.zx2c4.com/cgit
 Source:         https://git.zx2c4.com/cgit/snapshot/%name-%version.tar.xz
 Source2:        https://www.kernel.org/pub/software/scm/git/git-%git_version.tar.xz
@@ -38,7 +38,7 @@ BuildRequires:  libxslt
 BuildRequires:  libzip-devel
 BuildRequires:  xz
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %_tmppath/%name-%version-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       bundled(git) = %version
 
 %description
@@ -68,6 +68,9 @@ cp "%_sourcedir/cgitrc" "$b/%_sysconfdir/"
 %defattr(-,root,root)
 %doc README COPYING
 %_mandir/man5/cgitrc.5%ext_man
+%dir /srv/www
+%dir /srv/www/cgi-bin
+%dir /srv/www/htdocs
 /srv/www/cgi-bin/cgit/
 /srv/www/htdocs/cgit/
 %_prefix/lib/cgit/
