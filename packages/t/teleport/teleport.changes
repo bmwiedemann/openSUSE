@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:35:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 16.4.2:
+  * Fixed a panic when using the self-hosted PagerDuty plugin.
+    #46925
+  * A user joining a session will now see available controls for
+    terminating & leaving the session. #46901
+  * Fixed a regression in the SAML IdP service which prevented
+    cache from initializing in a cluster that may have a service
+    provider configured with unsupported acs_url and relay_state
+    values. #46845
+
+-------------------------------------------------------------------
 Wed Sep 25 17:04:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 16.4.1:
