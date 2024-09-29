@@ -103,7 +103,7 @@ COPY . ./
 RUN go build -o /hello
 
 # Bundle the application into a scratch image
-FROM registry.suse.com/bci/bci-micro:15.4
+FROM registry.opensuse.org/opensuse/bci/bci-micro:latest
 
 COPY --from=build /hello /usr/local/bin/hello
 
