@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 28 11:06:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix version output to fix broken 'cilium upgrade'
+
+-------------------------------------------------------------------
 Sat Sep 21 16:57:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.18:

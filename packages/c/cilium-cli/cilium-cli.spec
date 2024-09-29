@@ -28,6 +28,8 @@ License:        Apache-2.0
 URL:            https://github.com/cilium/cilium-cli
 Source:         cilium-cli-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# download the file to make maintenance easier
+Source11:       https://raw.githubusercontent.com/cilium/cilium/main/stable.txt
 BuildRequires:  go1.23
 
 %description
@@ -68,12 +70,15 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+CILIUM_VERSION="$(cat %{SOURCE11})"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="w -s -X 'github.com/cilium/cilium-cli/internal/cli/cmd.Version=%{version}'" \
-   -o %{executable_name} \
-   ./cmd/cilium
+   -ldflags=" \
+   -X github.com/cilium/cilium/cilium-cli/defaults.Version=${CILIUM_VERSION} \
+   -X github.com/cilium/cilium/cilium-cli/defaults.CLIVersion=v%{version}" \
+   -o %{executable_name} ./cmd/cilium/
 
 %install
 # Install the binary.
