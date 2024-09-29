@@ -19,17 +19,21 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kyverno
-Version:        1.12.5
+Version:        1.12.6
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
 URL:            https://github.com/kyverno/kyverno
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.23.1
 
 %description
-Kyverno is a policy engine designed for Kubernetes. It can validate, mutate, and generate configurations using admission controls and background scans. Kyverno policies are Kubernetes resources and do not require learning a new language. Kyverno is designed to work nicely with tools you already use like kubectl, kustomize, and Git.
+Kyverno is a policy engine designed for Kubernetes. It can validate, mutate,
+and generate configurations using admission controls and background scans.
+Kyverno policies are Kubernetes resources and do not require learning a new
+language. Kyverno is designed to work nicely with tools you already use like
+kubectl, kustomize, and Git.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}

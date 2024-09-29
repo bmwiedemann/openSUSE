@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 27 20:43:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.6:
+  * release 1.12.6 (#11255)
+  * release-1.12.6-rc.3 (#11246)
+  * fix: webhooks reconciliation with policies (#11233) (#11235)
+  * fix: webhooks reconciliation when no policies (#11230) (#11232)
+  * fix(webhook): error variable (#11225) (#11228)
+  * fix(status): status comparison is wrong ( cherry-pick #11203)
+    (#11217)
+  * fix(helm): remove namespace from RoleBinding/roleRef field
+    (cherry-pick #10685) (#11194)
+  * release v1.12.6-rc.2 (#11165)
+  * fix: get ns labels before creating a policy context (#11176)
+  * fix: range through all resources to build webhook (#11162)
+  * Release v1.12.6-rc.1 (#11151)
+  * fix: Updated Go version to v1.23.1 to address CVE-2024-34156
+    (#11112) (#11142)
+  * fix: bump docker in release 1.12 (#11088)
+  * fix: Check for the client being nil before applying a mutation
+    (#10726) (#10737)
+  * Evaluate one version of each pod security standard (#10924)
+    (#10996)
+  * fix: properly use useCache field in image verification policies
+    (#10709) (#10889)
+  * fix: check the resource namespace (#10738) (#10740)
+  * chore(deps): bump github.com/docker/docker (#10750) (#10764)
+  * chore: bump chainsaw (cherry-pick #10687) (#10765)
+  * chore: retrayable/http version bump (#10719)
+  * cherry-pick #10678 (#10681)
+
+-------------------------------------------------------------------
 Fri Jul 12 19:30:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.5:
