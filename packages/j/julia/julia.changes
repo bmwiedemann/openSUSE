@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:21:20 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove julia-libunwind-1.9.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 00:09:24 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Use bundled libunwind
+
+-------------------------------------------------------------------
+Wed Sep 25 01:27:20 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add the following gmp patches
+  * ./gmp-6.2.1-arm64-invert_limb.patch
+  * ./apply-gmp-arm64-invert_limb.patch
+
+-------------------------------------------------------------------
+Tue Sep 24 01:20:22 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add pp64le variants of the bundled deps
+  * CompilerSupportLibraries.v1.1.1+0.powerpc64le-linux-gnu-libgfortran5.tar.gz
+  * GMP.v6.2.1+6.powerpc64le-linux-gnu-cxx11.tar.gz
+  * LLD.v15.0.7+10.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * LibCURL.v8.4.0+0.powerpc64le-linux-gnu.tar.gz
+  * LibGit2.v1.6.4+0.powerpc64le-linux-gnu.tar.gz
+  * LibSSH2.v1.11.0+1.powerpc64le-linux-gnu.tar.gz
+  * LibUV.v2.0.1+14.powerpc64le-linux-gnu.tar.gz
+  * LibUnwind.v1.5.0+5.powerpc64le-linux-gnu.tar.gz
+  * MPFR.v4.2.0+1.powerpc64le-linux-gnu.tar.gz
+  * MbedTLS.v2.28.2+1.powerpc64le-linux-gnu.tar.gz
+  * OpenBLAS.v0.3.23+4.powerpc64le-linux-gnu-libgfortran5.tar.gz
+  * OpenLibm.v0.8.1+2.powerpc64le-linux-gnu.tar.gz
+  * PCRE2.v10.42.0+1.powerpc64le-linux-gnu.tar.gz
+  * SuiteSparse.v7.2.1+1.powerpc64le-linux-gnu.tar.gz
+  * Zlib.v1.2.13+1.powerpc64le-linux-gnu.tar.gz
+  * dSFMT.v2.2.4+4.powerpc64le-linux-gnu.tar.gz
+  * julia.spec
+  * libLLVM.v15.0.7+10.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * libblastrampoline.v5.11.0+0.powerpc64le-linux-gnu.tar.gz
+  * nghttp2.v1.52.0+1.powerpc64le-linux-gnu.tar.gz
+  * p7zip.v17.4.0+2.powerpc64le-linux-gnu.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 23 10:11:57 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add the aarch64 variants of the bundled deps
+  * CompilerSupportLibraries.v1.1.1+0.aarch64-linux-gnu-libgfortran5.tar.gz
+  * GMP.v6.2.1+6.aarch64-linux-gnu-cxx11.tar.gz
+  * LLD.v15.0.7+10.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * LibCURL.v8.4.0+0.aarch64-linux-gnu.tar.gz
+  * LibGit2.v1.6.4+0.aarch64-linux-gnu.tar.gz
+  * LibSSH2.v1.11.0+1.aarch64-linux-gnu.tar.gz
+  * LibUV.v2.0.1+14.aarch64-linux-gnu.tar.gz
+  * LibUnwind.v1.5.0+5.aarch64-linux-gnu.tar.gz
+  * MPFR.v4.2.0+1.aarch64-linux-gnu.tar.gz
+  * MbedTLS.v2.28.2+1.aarch64-linux-gnu.tar.gz
+  * OpenBLAS.v0.3.23+4.aarch64-linux-gnu-libgfortran5.tar.gz
+  * OpenLibm.v0.8.1+2.aarch64-linux-gnu.tar.gz
+  * PCRE2.v10.42.0+1.aarch64-linux-gnu.tar.gz
+  * SuiteSparse.v7.2.1+1.aarch64-linux-gnu.tar.gz
+  * Zlib.v1.2.13+1.aarch64-linux-gnu.tar.gz
+  * dSFMT.v2.2.4+4.aarch64-linux-gnu.tar.gz
+  * julia.spec
+  * libLLVM.v15.0.7+10.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * libblastrampoline.v5.11.0+0.aarch64-linux-gnu.tar.gz
+  * nghttp2.v1.52.0+1.aarch64-linux-gnu.tar.gz
+  * p7zip.v17.4.0+2.aarch64-linux-gnu.tar.gz
+
+-------------------------------------------------------------------
+Sat Sep 21 06:20:30 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add ./libblastrampoline.v5.11.0+0.x86_64-linux-gnu.tar.gz
+
+-------------------------------------------------------------------
+Sat Sep 21 00:55:28 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add ./deps-makefile.patch
+
+-------------------------------------------------------------------
+Wed Sep 18 14:07:20 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- The full.tar.gz tarball is not a full.tar.gz tarball so we have to
+  manually add the sources now.
+  * add CompilerSupportLibraries.v1.1.1+0.x86_64-linux-gnu-libgfortran5.tar.gz
+  * add dSFMT.v2.2.4+4.x86_64-linux-gnu.tar.gz
+  * add GMP.v6.2.1+6.x86_64-linux-gnu-cxx11.tar.gz
+  * add LibCURL.v8.4.0+0.x86_64-linux-gnu.tar.gz
+  * add LibGit2.v1.6.4+0.x86_64-linux-gnu.tar.gz
+  * add libLLVM.v15.0.7+10.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * add LibSSH2.v1.11.0+1.x86_64-linux-gnu.tar.gz
+  * add LibUnwind.v1.5.0+5.x86_64-linux-gnu.tar.gz
+  * add LibUV-v2.0.1+14.x86_64-linux-gnu.tar.gz
+  * add LLD.v15.0.7+10.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz
+  * add MbedTLS.v2.28.2+1.x86_64-linux-gnu.tar.gz
+  * add MPFR.v4.2.0+1.x86_64-linux-gnu.tar.gz
+  * add nghttp2.v1.52.0+1.x86_64-linux-gnu.tar.gz
+  * add OpenBLAS.v0.3.23+4.x86_64-linux-gnu-libgfortran5.tar.gz
+  * add OpenLibm.v0.8.1+2.x86_64-linux-gnu.tar.gz
+  * add p7zip.v17.4.0+2.x86_64-linux-gnu.tar.gz
+  * add PCRE2.v10.42.0+1.x86_64-linux-gnu.tar.gz
+  * add SuiteSparse.v7.2.1+1.x86_64-linux-gnu.tar.gz
+  * add Zlib.v1.2.13+1.x86_64-linux-gnu.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 16 12:18:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add -Wno-implicit-function-declaration for CFLAGS and CXXFLAGS
+  * this is an issue building with source-vendored GMP.
+  * see https://discourse.julialang.org/t/building-julia-for-nix/115304/6.
+    it might be a nix build issue but it affects all distros tbh.
+- Adopt buildkite env from Julia's CI. See utilities/build_envs.sh.
+- Update CFLAGS and CXXFLAGS to %optflags macro
+- Reenable other architectures for testing
+- BUG-GCC-LLVM-UPSTREAM: Add -Wno-error=incompatible-pointer-types for aarch64.
+  * already fixed but still affecting the vendored LLVM build. might be an openSUSE
+    GCC issue (need to confirm but let's just by-pass the warning for now).
+  * reference issue -> https://github.com/JuliaLang/julia/issues/45400
+- Update julia.specfile
+  * remove allow_libssp_libatomic_and_libgomp_to_fail_as_they_are_not_available_on_all_systems.patch
+- Update to version 1.10.5:
+  * bump Pkg to latest 1.10
+  * 🤖 [backports-release-1.10] Bump the Pkg stdlib from 45521a6e8 to a4f26cff6
+  * 🤖 [backports-release-1.10] Bump the Pkg stdlib from 9cb6d35f8 to 45521a6e8
+  * `stale_cachefile`: handle if the expected cache file is missing
+  * bump Pkg to latest 1.10
+  * Fix tr for block SymTridiagonal
+  * [libblastrampoline] Bump to v5.11.0
+  * Profile: Fix stdlib paths
+  * Restrict argument to `isleapyear(::Integer)`
+  * Add `lbt_forwarded_funcs()` to debug LBT forwarding issues
+  * Fix a bug in `stack`'s DimensionMismatch error message
+  * [docs] change docstring to match code
+  * AllocOpt: Fix stack lowering where alloca continas boxed and unboxed data
+  * [build] Some improvements to the LLVM build system
+  * 🤖 [backports-release-1.10] Bump the Pkg stdlib from bf83c387b to ff18647d8
+  * Add openlibm to sysimg link line on windows
+  * Remove the WarnMissedTransformations pass from the 1.10 pipeline
+  * Do not hide libssp.dll.a (Windows import library) in private library dir
+  * fixup some casts in uv code, extraced from commit e5496e0
+  * Fix calling LLVM_SIZE on windows
+  * relax equality in trace test
+  * Remove reference to memory attribute in llvm pass
+  * Disable typed pointer tests for alloc-opt-pass since the base file is now using opaque pointers
+  * bump Pkg to latest v1.10
+  * Bump libblastrampoline to v5.10.1
+  * add missing compat entry to edit
+  * LinearAlgebra: LazyString in error messages for Diagonal/Bidiagonal
+  * Use triple quotes in TOML.print when string contains newline
+  * Fix assertion/crash when optimizing function with dead basic block
+  * more precise aliasing checks for SubArray
+  * document mutable struct const fields
+  * correction to compat notice for a[begin]
+  * compat notice for a[begin] indexing
+  * Compat for `Base.@nospecializeinfer`
+  * Update the aarch64 devdocs to reflect the current state of its support
+  * Fix generic triangular solves with empty matrices
+  * Profile: Improve module docstring
+  * Remove boxing in pinv
+  * `LazyString` in `LinearAlgebra.checksquare` error message
+  * LinearAlgebra: use `≈` instead of `==` for `tr` tests in symmetric.jl
+  * 🤖 [backports-release-1.10] Bump the Pkg stdlib from f487626b0 to 6d73ac1fc
+  * [release-1.10] fix a race condition in jl_gc_realloc_string
+  * Do not add type tag size to the `alloc_typed` lowering for GC allocations
+  * add sticky task warning to `@task` and `schedule`
+  * [LinearAlgebra] Improve resilience to unknown libblastrampoline flags
+  * make: use `readelf` for LLVM symbol version detection
+  * LazyString in reinterpretarray error messages
+  * make: Fix `sed` command for LLVM libraries with no symbol versioning
+  * Add boundscheck in bindingkey_eq to avoid OOB access due to data race
+  * ensure we set the right value to gc_first_tid
+  * Aggressive constprop in trevc! to stabilize triangular eigvec
+  * Fix trampoline assembly for build on clang 18 on apple silicon
+  * Allow libquadmath to also fail as it is not available on all systems
+
+-------------------------------------------------------------------
 Fri Jun  7 17:17:22 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix build. typo caused a misconfigure:

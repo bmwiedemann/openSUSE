@@ -1,0 +1,15 @@
+diff -ruN ../julia-1.10.5.orig/deps/gmp.mk /tmp/julia-1.10.5/deps/gmp.mk
+--- julia-1.10.5/deps/gmp.mk	2024-09-25 09:20:05.861086670 +0800
++++ julia-1.10.5/deps/gmp.mk	2024-09-25 09:22:26.475127794 +0800
+@@ -62,6 +62,11 @@
+ 		patch -p1 -f < $(SRCDIR)/patches/gmp-more_alloc_overflow.patch
+ 	echo 1 > $@
+ 
++$(SRCCACHE)/gmp-$(GMP_VER)/gmp-6.2.1-arm64-invert_limb.patch-applied: $(SRCCACHE)/gmp-$(GMP_VER)/gmp-6.2.1-arm64-invert_limb.patch-applied
++	cd $(dir $@) && \
++		patch -p1 -f < $(SRCDIR)/patches/gmp-6.2.1-arm64-invert_limb.patch
++	echo 1 > $@
++
+ $(SRCCACHE)/gmp-$(GMP_VER)/source-patched: $(SRCCACHE)/gmp-$(GMP_VER)/gmp-more_alloc_overflow.patch-applied
+ 	echo 1 > $@
+ 

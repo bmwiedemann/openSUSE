@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+%global force_gcc_version 13
+%endif
+
 # We must not strip binaries in julia, since it can lead to many problems.
 # For example, see:
 #
@@ -28,13 +32,13 @@
 
 # If not Tumbleweed. Leap 15.6 seems to have trouble with libpthread
 %if 0%{?suse_version} < 1600
-%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_CCACHE=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=1 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %else
-%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_CCACHE=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=1 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %endif
 
 # List all bundled libraries.
-%global _privatelibs lib(ssh.*|pcre.*|dSFMT.*|gmp.*|mpfr.*|git.*|mbed.*|nghttp.*||LLVM-.*|ccalltest|llvmcalltest|uv|openblas.*|lapack.*|sys|julia.*|amd|btf|camd|ccolamd|cholmod|colamd|cxsparse|graphblas|klu|klu_cholmod|lagraph|lagraphx|ldl|paru|rbio|spex|spqr|suitesparse_mongoose|suitesparseconfig|umfpack)\\.so.*
+%global _privatelibs lib(ssh.*|pcre.*|dSFMT.*|gmp.*|mpfr.*|git.*|mbed.*|nghttp.*||LLVM-.*|unwind*|ccalltest|llvmcalltest|uv|openblas.*|lapack.*|sys|julia.*|amd|btf|camd|ccolamd|cholmod|colamd|cxsparse|graphblas|klu|klu_cholmod|lagraph|lagraphx|ldl|paru|rbio|spex|spqr|suitesparse_mongoose|suitesparseconfig|umfpack)\\.so.*
 %global __provides_exclude ^(%{_privatelibs})$
 %global __requires_exclude ^(%{_privatelibs})$
 
@@ -57,7 +61,7 @@
 # LTO currently makes building blastrampoline and Julia itself fail
 # It is not enabled upstream anyway
 %global _lto_cflags %nil
-Version:        1.10.4
+Version:        1.10.5
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
@@ -65,6 +69,70 @@ Source1:        https://github.com/JuliaLang/julia/releases/download/v%{version}
 Source2:        https://gitlab.archlinux.org/archlinux/packaging/packages/julia/-/raw/main/keys/pgp/3673DF529D9049477F76B37566E3C7DC03D6E495.asc?ref_type=heads#/julia.keyring
 Source3:        https://www.unicode.org/Public/13.0.0/ucd/UnicodeData.txt
 Source4:        julia-rpmlintrc
+Source5:        https://github.com/JuliaBinaryWrappers/CompilerSupportLibraries_jll.jl/releases/download/CompilerSupportLibraries-v1.1.1+0/CompilerSupportLibraries.v1.1.1.x86_64-linux-gnu-libgfortran5.tar.gz#/CompilerSupportLibraries.v1.1.1+0.x86_64-linux-gnu-libgfortran5.tar.gz
+Source6:        https://github.com/JuliaBinaryWrappers/LibUV_jll.jl/releases/download/LibUV-v2.0.1+14/LibUV.v2.0.1.x86_64-linux-gnu.tar.gz#/LibUV.v2.0.1+14.x86_64-linux-gnu.tar.gz
+Source7:        https://github.com/JuliaBinaryWrappers/LibUnwind_jll.jl/releases/download/LibUnwind-v1.5.0+5/LibUnwind.v1.5.0.x86_64-linux-gnu.tar.gz#/LibUnwind.v1.5.0+5.x86_64-linux-gnu.tar.gz
+Source8:        https://github.com/JuliaBinaryWrappers/OpenLibm_jll.jl/releases/download/OpenLibm-v0.8.1+2/OpenLibm.v0.8.1.x86_64-linux-gnu.tar.gz#/OpenLibm.v0.8.1+2.x86_64-linux-gnu.tar.gz
+Source9:        https://github.com/JuliaBinaryWrappers/dSFMT_jll.jl/releases/download/dSFMT-v2.2.4+4/dSFMT.v2.2.4.x86_64-linux-gnu.tar.gz#/dSFMT.v2.2.4+4.x86_64-linux-gnu.tar.gz
+Source10:       https://github.com/JuliaBinaryWrappers/libLLVM_jll.jl/releases/download/libLLVM-v15.0.7+10/libLLVM.v15.0.7.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz#/libLLVM.v15.0.7+10.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source11:       https://github.com/JuliaBinaryWrappers/LLD_jll.jl/releases/download/LLD-v15.0.7+10/LLD.v15.0.7.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz#/LLD.v15.0.7+10.x86_64-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source12:       https://github.com/JuliaBinaryWrappers/PCRE2_jll.jl/releases/download/PCRE2-v10.42.0+1/PCRE2.v10.42.0.x86_64-linux-gnu.tar.gz#/PCRE2.v10.42.0+1.x86_64-linux-gnu.tar.gz
+Source13:       https://github.com/JuliaBinaryWrappers/OpenBLAS_jll.jl/releases/download/OpenBLAS-v0.3.23+4/OpenBLAS.v0.3.23.x86_64-linux-gnu-libgfortran5.tar.gz#/OpenBLAS.v0.3.23+4.x86_64-linux-gnu-libgfortran5.tar.gz
+Source14:       https://github.com/JuliaBinaryWrappers/GMP_jll.jl/releases/download/GMP-v6.2.1+6/GMP.v6.2.1.x86_64-linux-gnu-cxx11.tar.gz#/GMP.v6.2.1+6.x86_64-linux-gnu-cxx11.tar.gz
+Source15:       https://github.com/JuliaBinaryWrappers/MbedTLS_jll.jl/releases/download/MbedTLS-v2.28.2+1/MbedTLS.v2.28.2.x86_64-linux-gnu.tar.gz#/MbedTLS.v2.28.2+1.x86_64-linux-gnu.tar.gz
+Source16:       https://github.com/JuliaBinaryWrappers/LibSSH2_jll.jl/releases/download/LibSSH2-v1.11.0+1/LibSSH2.v1.11.0.x86_64-linux-gnu.tar.gz#/LibSSH2.v1.11.0+1.x86_64-linux-gnu.tar.gz
+Source17:       https://github.com/JuliaBinaryWrappers/nghttp2_jll.jl/releases/download/nghttp2-v1.52.0+1/nghttp2.v1.52.0.x86_64-linux-gnu.tar.gz#/nghttp2.v1.52.0+1.x86_64-linux-gnu.tar.gz
+Source18:       https://github.com/JuliaBinaryWrappers/LibCURL_jll.jl/releases/download/LibCURL-v8.4.0+0/LibCURL.v8.4.0.x86_64-linux-gnu.tar.gz#/LibCURL.v8.4.0+0.x86_64-linux-gnu.tar.gz
+Source19:       https://github.com/JuliaBinaryWrappers/LibGit2_jll.jl/releases/download/LibGit2-v1.6.4+0/LibGit2.v1.6.4.x86_64-linux-gnu.tar.gz#/LibGit2.v1.6.4+0.x86_64-linux-gnu.tar.gz
+Source20:       https://github.com/JuliaBinaryWrappers/MPFR_jll.jl/releases/download/MPFR-v4.2.0+1/MPFR.v4.2.0.x86_64-linux-gnu.tar.gz#/MPFR.v4.2.0+1.x86_64-linux-gnu.tar.gz
+Source21:       https://github.com/JuliaBinaryWrappers/SuiteSparse_jll.jl/releases/download/SuiteSparse-v7.2.1+1/SuiteSparse.v7.2.1.x86_64-linux-gnu.tar.gz#/SuiteSparse.v7.2.1+1.x86_64-linux-gnu.tar.gz
+Source22:       https://github.com/JuliaBinaryWrappers/Zlib_jll.jl/releases/download/Zlib-v1.2.13+1/Zlib.v1.2.13.x86_64-linux-gnu.tar.gz#/Zlib.v1.2.13+1.x86_64-linux-gnu.tar.gz
+Source23:       https://github.com/JuliaBinaryWrappers/p7zip_jll.jl/releases/download/p7zip-v17.4.0+2/p7zip.v17.4.0.x86_64-linux-gnu.tar.gz#/p7zip.v17.4.0+2.x86_64-linux-gnu.tar.gz
+Source24:       https://github.com/JuliaBinaryWrappers/libblastrampoline_jll.jl/releases/download/libblastrampoline-v5.11.0+0/libblastrampoline.v5.11.0.x86_64-linux-gnu.tar.gz#/libblastrampoline.v5.11.0+0.x86_64-linux-gnu.tar.gz
+
+Source25:       https://github.com/JuliaBinaryWrappers/CompilerSupportLibraries_jll.jl/releases/download/CompilerSupportLibraries-v1.1.1+0/CompilerSupportLibraries.v1.1.1.aarch64-linux-gnu-libgfortran5.tar.gz#/CompilerSupportLibraries.v1.1.1+0.aarch64-linux-gnu-libgfortran5.tar.gz
+Source26:       https://github.com/JuliaBinaryWrappers/LibUV_jll.jl/releases/download/LibUV-v2.0.1+14/LibUV.v2.0.1.aarch64-linux-gnu.tar.gz#/LibUV.v2.0.1+14.aarch64-linux-gnu.tar.gz
+Source27:       https://github.com/JuliaBinaryWrappers/LibUnwind_jll.jl/releases/download/LibUnwind-v1.5.0+5/LibUnwind.v1.5.0.aarch64-linux-gnu.tar.gz#/LibUnwind.v1.5.0+5.aarch64-linux-gnu.tar.gz
+Source28:       https://github.com/JuliaBinaryWrappers/OpenLibm_jll.jl/releases/download/OpenLibm-v0.8.1+2/OpenLibm.v0.8.1.aarch64-linux-gnu.tar.gz#/OpenLibm.v0.8.1+2.aarch64-linux-gnu.tar.gz
+Source29:       https://github.com/JuliaBinaryWrappers/dSFMT_jll.jl/releases/download/dSFMT-v2.2.4+4/dSFMT.v2.2.4.aarch64-linux-gnu.tar.gz#/dSFMT.v2.2.4+4.aarch64-linux-gnu.tar.gz
+Source30:       https://github.com/JuliaBinaryWrappers/libLLVM_jll.jl/releases/download/libLLVM-v15.0.7+10/libLLVM.v15.0.7.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz#/libLLVM.v15.0.7+10.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source31:       https://github.com/JuliaBinaryWrappers/LLD_jll.jl/releases/download/LLD-v15.0.7+10/LLD.v15.0.7.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz#/LLD.v15.0.7+10.aarch64-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source32:       https://github.com/JuliaBinaryWrappers/PCRE2_jll.jl/releases/download/PCRE2-v10.42.0+1/PCRE2.v10.42.0.aarch64-linux-gnu.tar.gz#/PCRE2.v10.42.0+1.aarch64-linux-gnu.tar.gz
+Source33:       https://github.com/JuliaBinaryWrappers/OpenBLAS_jll.jl/releases/download/OpenBLAS-v0.3.23+4/OpenBLAS.v0.3.23.aarch64-linux-gnu-libgfortran5.tar.gz#/OpenBLAS.v0.3.23+4.aarch64-linux-gnu-libgfortran5.tar.gz
+Source34:       https://github.com/JuliaBinaryWrappers/GMP_jll.jl/releases/download/GMP-v6.2.1+6/GMP.v6.2.1.aarch64-linux-gnu-cxx11.tar.gz#/GMP.v6.2.1+6.aarch64-linux-gnu-cxx11.tar.gz
+Source35:       https://github.com/JuliaBinaryWrappers/MbedTLS_jll.jl/releases/download/MbedTLS-v2.28.2+1/MbedTLS.v2.28.2.aarch64-linux-gnu.tar.gz#/MbedTLS.v2.28.2+1.aarch64-linux-gnu.tar.gz
+Source36:       https://github.com/JuliaBinaryWrappers/LibSSH2_jll.jl/releases/download/LibSSH2-v1.11.0+1/LibSSH2.v1.11.0.aarch64-linux-gnu.tar.gz#/LibSSH2.v1.11.0+1.aarch64-linux-gnu.tar.gz
+Source37:       https://github.com/JuliaBinaryWrappers/nghttp2_jll.jl/releases/download/nghttp2-v1.52.0+1/nghttp2.v1.52.0.aarch64-linux-gnu.tar.gz#/nghttp2.v1.52.0+1.aarch64-linux-gnu.tar.gz
+Source38:       https://github.com/JuliaBinaryWrappers/LibCURL_jll.jl/releases/download/LibCURL-v8.4.0+0/LibCURL.v8.4.0.aarch64-linux-gnu.tar.gz#/LibCURL.v8.4.0+0.aarch64-linux-gnu.tar.gz
+Source39:       https://github.com/JuliaBinaryWrappers/LibGit2_jll.jl/releases/download/LibGit2-v1.6.4+0/LibGit2.v1.6.4.aarch64-linux-gnu.tar.gz#/LibGit2.v1.6.4+0.aarch64-linux-gnu.tar.gz
+Source40:       https://github.com/JuliaBinaryWrappers/MPFR_jll.jl/releases/download/MPFR-v4.2.0+1/MPFR.v4.2.0.aarch64-linux-gnu.tar.gz#/MPFR.v4.2.0+1.aarch64-linux-gnu.tar.gz
+Source41:       https://github.com/JuliaBinaryWrappers/SuiteSparse_jll.jl/releases/download/SuiteSparse-v7.2.1+1/SuiteSparse.v7.2.1.aarch64-linux-gnu.tar.gz#/SuiteSparse.v7.2.1+1.aarch64-linux-gnu.tar.gz
+Source42:       https://github.com/JuliaBinaryWrappers/Zlib_jll.jl/releases/download/Zlib-v1.2.13+1/Zlib.v1.2.13.aarch64-linux-gnu.tar.gz#/Zlib.v1.2.13+1.aarch64-linux-gnu.tar.gz
+Source43:       https://github.com/JuliaBinaryWrappers/p7zip_jll.jl/releases/download/p7zip-v17.4.0+2/p7zip.v17.4.0.aarch64-linux-gnu.tar.gz#/p7zip.v17.4.0+2.aarch64-linux-gnu.tar.gz
+Source44:       https://github.com/JuliaBinaryWrappers/libblastrampoline_jll.jl/releases/download/libblastrampoline-v5.11.0+0/libblastrampoline.v5.11.0.aarch64-linux-gnu.tar.gz#/libblastrampoline.v5.11.0+0.aarch64-linux-gnu.tar.gz
+
+Source45:       https://github.com/JuliaBinaryWrappers/CompilerSupportLibraries_jll.jl/releases/download/CompilerSupportLibraries-v1.1.1+0/CompilerSupportLibraries.v1.1.1.powerpc64le-linux-gnu-libgfortran5.tar.gz#/CompilerSupportLibraries.v1.1.1+0.powerpc64le-linux-gnu-libgfortran5.tar.gz
+Source46:       https://github.com/JuliaBinaryWrappers/LibUV_jll.jl/releases/download/LibUV-v2.0.1+14/LibUV.v2.0.1.powerpc64le-linux-gnu.tar.gz#/LibUV.v2.0.1+14.powerpc64le-linux-gnu.tar.gz
+Source47:       https://github.com/JuliaBinaryWrappers/LibUnwind_jll.jl/releases/download/LibUnwind-v1.5.0+5/LibUnwind.v1.5.0.powerpc64le-linux-gnu.tar.gz#/LibUnwind.v1.5.0+5.powerpc64le-linux-gnu.tar.gz
+Source48:       https://github.com/JuliaBinaryWrappers/OpenLibm_jll.jl/releases/download/OpenLibm-v0.8.1+2/OpenLibm.v0.8.1.powerpc64le-linux-gnu.tar.gz#/OpenLibm.v0.8.1+2.powerpc64le-linux-gnu.tar.gz
+Source49:       https://github.com/JuliaBinaryWrappers/dSFMT_jll.jl/releases/download/dSFMT-v2.2.4+4/dSFMT.v2.2.4.powerpc64le-linux-gnu.tar.gz#/dSFMT.v2.2.4+4.powerpc64le-linux-gnu.tar.gz
+Source50:       https://github.com/JuliaBinaryWrappers/libLLVM_jll.jl/releases/download/libLLVM-v15.0.7+10/libLLVM.v15.0.7.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz#/libLLVM.v15.0.7+10.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source51:       https://github.com/JuliaBinaryWrappers/LLD_jll.jl/releases/download/LLD-v15.0.7+10/LLD.v15.0.7.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz#/LLD.v15.0.7+10.powerpc64le-linux-gnu-cxx11-llvm_version+15.tar.gz
+Source52:       https://github.com/JuliaBinaryWrappers/PCRE2_jll.jl/releases/download/PCRE2-v10.42.0+1/PCRE2.v10.42.0.powerpc64le-linux-gnu.tar.gz#/PCRE2.v10.42.0+1.powerpc64le-linux-gnu.tar.gz
+Source53:       https://github.com/JuliaBinaryWrappers/OpenBLAS_jll.jl/releases/download/OpenBLAS-v0.3.23+4/OpenBLAS.v0.3.23.powerpc64le-linux-gnu-libgfortran5.tar.gz#/OpenBLAS.v0.3.23+4.powerpc64le-linux-gnu-libgfortran5.tar.gz
+Source54:       https://github.com/JuliaBinaryWrappers/GMP_jll.jl/releases/download/GMP-v6.2.1+6/GMP.v6.2.1.powerpc64le-linux-gnu-cxx11.tar.gz#/GMP.v6.2.1+6.powerpc64le-linux-gnu-cxx11.tar.gz
+Source55:       https://github.com/JuliaBinaryWrappers/MbedTLS_jll.jl/releases/download/MbedTLS-v2.28.2+1/MbedTLS.v2.28.2.powerpc64le-linux-gnu.tar.gz#/MbedTLS.v2.28.2+1.powerpc64le-linux-gnu.tar.gz
+Source56:       https://github.com/JuliaBinaryWrappers/LibSSH2_jll.jl/releases/download/LibSSH2-v1.11.0+1/LibSSH2.v1.11.0.powerpc64le-linux-gnu.tar.gz#/LibSSH2.v1.11.0+1.powerpc64le-linux-gnu.tar.gz
+Source57:       https://github.com/JuliaBinaryWrappers/nghttp2_jll.jl/releases/download/nghttp2-v1.52.0+1/nghttp2.v1.52.0.powerpc64le-linux-gnu.tar.gz#/nghttp2.v1.52.0+1.powerpc64le-linux-gnu.tar.gz
+Source58:       https://github.com/JuliaBinaryWrappers/LibCURL_jll.jl/releases/download/LibCURL-v8.4.0+0/LibCURL.v8.4.0.powerpc64le-linux-gnu.tar.gz#/LibCURL.v8.4.0+0.powerpc64le-linux-gnu.tar.gz
+Source59:       https://github.com/JuliaBinaryWrappers/LibGit2_jll.jl/releases/download/LibGit2-v1.6.4+0/LibGit2.v1.6.4.powerpc64le-linux-gnu.tar.gz#/LibGit2.v1.6.4+0.powerpc64le-linux-gnu.tar.gz
+Source60:       https://github.com/JuliaBinaryWrappers/MPFR_jll.jl/releases/download/MPFR-v4.2.0+1/MPFR.v4.2.0.powerpc64le-linux-gnu.tar.gz#/MPFR.v4.2.0+1.powerpc64le-linux-gnu.tar.gz
+Source61:       https://github.com/JuliaBinaryWrappers/SuiteSparse_jll.jl/releases/download/SuiteSparse-v7.2.1+1/SuiteSparse.v7.2.1.powerpc64le-linux-gnu.tar.gz#/SuiteSparse.v7.2.1+1.powerpc64le-linux-gnu.tar.gz
+Source62:       https://github.com/JuliaBinaryWrappers/Zlib_jll.jl/releases/download/Zlib-v1.2.13+1/Zlib.v1.2.13.powerpc64le-linux-gnu.tar.gz#/Zlib.v1.2.13+1.powerpc64le-linux-gnu.tar.gz
+Source63:       https://github.com/JuliaBinaryWrappers/p7zip_jll.jl/releases/download/p7zip-v17.4.0+2/p7zip.v17.4.0.powerpc64le-linux-gnu.tar.gz#/p7zip.v17.4.0+2.powerpc64le-linux-gnu.tar.gz
+Source64:       https://github.com/JuliaBinaryWrappers/libblastrampoline_jll.jl/releases/download/libblastrampoline-v5.11.0+0/libblastrampoline.v5.11.0.powerpc64le-linux-gnu.tar.gz#/libblastrampoline.v5.11.0+0.powerpc64le-linux-gnu.tar.gz
+
+Source100:      gmp-6.2.1-arm64-invert_limb.patch
 
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch1:         julia-env-script-interpreter.patch
@@ -72,10 +140,8 @@ Patch1:         julia-env-script-interpreter.patch
 Patch2:         disable-doc-gen-in-makefile.patch
 # PATCH-FIX-OPENSUSE -- Despite having no network, build looks for UnicodeData.txt (now Source3). Disabled with this patch.
 Patch3:         disable-download-of-unicode-for-doc-gen.patch
-%if 0%{?suse_version} > 1600
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/julia/-/raw/main/julia-libunwind-1.6.patch?ref_type=heads -- System libunwind compatibility
-Patch4:         julia-libunwind-1.9.patch
-%endif
+# Patch4:         julia-libunwind-1.9.patch
 # Based of https://gitlab.archlinux.org/archlinux/packaging/packages/julia/-/raw/main/julia-libcholmod-cuda.patch?ref_type=heads -- we don't have NVIDIA or any CUDA platform by default
 Patch5:         julia-remove-libcholmod_cuda.patch
 # PATCH-FIX-OPENSUSE -- julia hardcodes looking for the libraries
@@ -84,8 +150,9 @@ Patch6:         openlibm.patch
 Patch7:         julia-hardcoded-libs.patch
 # PATCH-FIX-OPENSUSE -- A bug in MPFR which they describe in their INSTALL file. So we have to assist the mpfr.mk that julia uses.
 Patch8:         mpfr-looking-for-gmp-fix.patch
-# PATCH-FIX-UPSTREAM
-Patch9:         https://github.com/JuliaLang/julia/pull/54605.patch#/allow_libssp_libatomic_and_libgomp_to_fail_as_they_are_not_available_on_all_systems.patch
+# # PATCH-FIX-OPENSUSE -- Respect openSUSE FSH
+Patch9:         deps-makefile.patch
+Patch10:        apply-gmp-arm64-invert_limb.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  autoconf
@@ -96,13 +163,12 @@ BuildRequires:  dos2unix
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel >= 3.3.4
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  git
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  libstdc++6-devel-gcc13
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(jansson)
@@ -148,7 +214,7 @@ BuildRequires:  fipscheck
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libblastrampoline-devel
-BuildRequires:  libunwind-devel >= 1.3.1
+# BuildRequires:  libunwind-devel >= 1.3.1
 BuildRequires:  libwhich
 BuildRequires:  m4
 BuildRequires:  make
@@ -176,13 +242,12 @@ BuildRequires:  valgrind-devel
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  ccache
 BuildRequires:  fdupes
-BuildRequires:  libstdc++-devel
+BuildRequires:  libstdc++6-devel-gcc13
 BuildRequires:  libvmmalloc-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-base
 BuildRequires:  python3-psutil
 BuildRequires:  python3-recommonmark
 BuildRequires:  python3-setuptools
@@ -263,16 +328,17 @@ Provides:       julia = %{version}
 %endif
 Obsoletes:      %{name} < %{version}
 
+# NOTICE: Enabled for now
 # Let's not be optimistic towards 32 bit support and other architectures
 # openSUSE or Julia cannot guarantee to support, shall we? Only choose
 # Tier1 architectures
 # libquadmath is disabled in the aarch64 build of gcc. so we cannot
 # include that as exclusive arches for now.
-%if 0%{?compat_mode}
-ExclusiveArch:  x86_64 x86_64_v3
-%else
-ExclusiveArch:  x86_64 x86_64_v3 aarch64
-%endif
+# %%if 0%%{?compat_mode}
+# ExclusiveArch:  x86_64 x86_64_v3
+# %%else
+# ExclusiveArch:  x86_64 x86_64_v3 aarch64
+# %%endif
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -320,16 +386,67 @@ Contains library files for interacting with Julia through C interfaces.
 %autosetup -p1 -n julia-%{version}
 
 # Copy https://www.unicode.org/Public/13.0.0/ucd/UnicodeData.txt to deps/srccache
-cp %{SOURCE3} deps/srccache/UnicodeData-13.0.0.txt
+cp -v %{SOURCE3} deps/srccache/UnicodeData-13.0.0.txt
 
-# JLDOWNLOAD SHOULD BE DISABLED IF WE HAVE THE FULL TARBALL
+# All bundled sources. Full.tar.gz is not full.tar.gz now eh?
+cp -v %{SOURCE5}  deps/srccache/
+cp -v %{SOURCE6}  deps/srccache/
+cp -v %{SOURCE7}  deps/srccache/
+cp -v %{SOURCE8}  deps/srccache/
+cp -v %{SOURCE9}  deps/srccache/
+cp -v %{SOURCE10} deps/srccache/
+cp -v %{SOURCE11} deps/srccache/
+cp -v %{SOURCE12} deps/srccache/
+cp -v %{SOURCE13} deps/srccache/
+cp -v %{SOURCE14} deps/srccache/
+cp -v %{SOURCE15} deps/srccache/
+cp -v %{SOURCE16} deps/srccache/
+cp -v %{SOURCE17} deps/srccache/
+cp -v %{SOURCE18} deps/srccache/
+cp -v %{SOURCE19} deps/srccache/
+cp -v %{SOURCE20} deps/srccache/
+cp -v %{SOURCE21} deps/srccache/
+cp -v %{SOURCE22} deps/srccache/
+cp -v %{SOURCE23} deps/srccache/
+cp -v %{SOURCE24} deps/srccache/
+cp -v %{SOURCE25} deps/srccache/
+cp -v %{SOURCE25} deps/srccache/
+cp -v %{SOURCE26} deps/srccache/
+cp -v %{SOURCE27} deps/srccache/
+cp -v %{SOURCE28} deps/srccache/
+cp -v %{SOURCE29} deps/srccache/
+cp -v %{SOURCE30} deps/srccache/
+cp -v %{SOURCE31} deps/srccache/
+cp -v %{SOURCE32} deps/srccache/
+cp -v %{SOURCE33} deps/srccache/
+cp -v %{SOURCE34} deps/srccache/
+cp -v %{SOURCE35} deps/srccache/
+cp -v %{SOURCE36} deps/srccache/
+cp -v %{SOURCE37} deps/srccache/
+cp -v %{SOURCE38} deps/srccache/
+cp -v %{SOURCE39} deps/srccache/
+cp -v %{SOURCE40} deps/srccache/
+cp -v %{SOURCE41} deps/srccache/
+cp -v %{SOURCE42} deps/srccache/
+cp -v %{SOURCE43} deps/srccache/
+cp -v %{SOURCE44} deps/srccache/
+
+cp -v %{SOURCE100} deps/patches/
+
+# JLDOWNLOAD SHOULD BE DISABLED IF WE HAVE THE FULL TARBALL (NOT USEFUL FOR OPENSUSE)
 echo "true" | tee deps/tools/jldownload
 
+# JLCHECKSUM SHOULD BE DISABLED IF WE HAVE THE SOURCES (NOT USEFUL FOR OPENSUSE)
+echo "true" | tee deps/tools/jlchecksum
+
 %build
-# Just use native
-# Offline mode
-export CFLAGS="%{optflags}"
-export CXXLAGS="%{optflags}"
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
+export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
+export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 
 # Needed when USE_SYSTEM_CSL=1
 # https://github.com/JuliaLang/julia/issues/39637
@@ -363,7 +480,7 @@ make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} 
 # Based on fedora specfile
 # Work around bug that prompts zlib to be downloaded even when not used
 # https://github.com/JuliaLang/julia/pull/42524/files#r734972945
-sed "s/ \$(build_prefix)\\/manifest\\/zlib//" -i deps/llvm.mk
+# sed "s/ \$(build_prefix)\\/manifest\\/zlib//" -i deps/llvm.mk
 
 %if 0%{?suse_version} > 1600
 RELEASE_BANNER="openSUSE Tumbleweed - Built on $(date -u)"
@@ -374,10 +491,19 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make %{?_smp_mflags} \
                      MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-                     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+                     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1);x86_64-v4,-rdrnd,base(1)" \
+%endif
+%ifarch i686
+                     JULIA_CPU_TARGET="pentium4" \
+%endif
+%ifarch armv7l
+                     JULIA_CPU_TARGET="armv7-a;armv7-a,neon;armv7-a,neon,vfp4" \
 %endif
 %ifarch aarch64
-                     JULIA_CPU_TARGET="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
+                     JULIA_CPU_TARGET="generic;cortex-a57;thunderx2t99;carmel,clone_all" \
+%endif
+%ifarch pp64le
+                     JULIA_CPU_TARGET="pwr8" \
 %endif
                      build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
                      build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \
@@ -403,6 +529,12 @@ if [ "x%{_lib}" != xlib ] ; then
 fi
 
 %check
+export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
+export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 # Failures are to be expected if tests are done
 # - int.jl not being found. see https://github.com/JuliaLang/julia/pull/53682#issuecomment-1992420825
 # - Dates printing inconsistent. see https://github.com/JuliaLang/julia/issues/34655
@@ -410,6 +542,8 @@ fi
 #   understandable if LLVM and other patched libraries but for unpatched ones, i am not sure if it is a strict requirement but reports
 #   say mbedtls and similar work just fine.
 # I might have to disable the tests for now
+export CFLAGS="%{optflags} -Wno-error=implicit-function-declaration"
+export CXXFLAGS="%{optflags} -Wno-error=implicit-function-declaration"
 export LD_LIBRARY_PATH="%{_builddir}/%{buildsubdir}/build/usr/lib:%{_builddir}/%{buildsubdir}/build%{_libdir}:/usr/lib64:/usr/lib"
 pushd %{_builddir}/%{buildsubdir}/test
 # DISABLED FOR NOW
@@ -419,10 +553,12 @@ pushd %{_builddir}/%{buildsubdir}/test
 popd
 
 %install
-export NO_GIT=1
-export CFLAGS="%{optflags}"
-export CXXLAGS="%{optflags}"
-export USE_CCACHE=1
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
+export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 export DEPS_GIT=0
 export BUILD_LLD=1
 export BUILD_LLDB=1
@@ -437,10 +573,19 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make install DESTDIR="%{buildroot}" \
              MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-             JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+                     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1);x86_64-v4,-rdrnd,base(1)" \
+%endif
+%ifarch i686
+                     JULIA_CPU_TARGET="pentium4" \
+%endif
+%ifarch armv7l
+                     JULIA_CPU_TARGET="armv7-a;armv7-a,neon;armv7-a,neon,vfp4" \
 %endif
 %ifarch aarch64
-             JULIA_CPU_TARGET="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
+                     JULIA_CPU_TARGET="generic;cortex-a57;thunderx2t99;carmel,clone_all" \
+%endif
+%ifarch pp64le
+                     JULIA_CPU_TARGET="pwr8" \
 %endif
              build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
              build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \
