@@ -19,14 +19,14 @@ dependencies and needs no further installation of packages.
 Example using a Go application:
 
 ```Dockerfile
-FROM registry.suse.com/bci/golang:stable as build
+FROM registry.opensuse.org/opensuse/bci/golang:stable as build
 
 WORKDIR /app
 
 RUN go install github.com/go-training/helloworld@latest
 
 # Create an image to bundle the app
-FROM registry.suse.com/bci/bci-micro:latest
+FROM registry.opensuse.org/opensuse/bci/bci-micro:latest
 
 COPY --from=build /go/bin/helloworld /usr/local/bin/helloworld
 
