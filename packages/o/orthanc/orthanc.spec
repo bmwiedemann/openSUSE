@@ -41,6 +41,7 @@ Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dic
 Patch0:         dcmtk.diff
 Patch1:         toolbox.patch
 Patch2:         boost.patch
+Patch3:         sha.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
