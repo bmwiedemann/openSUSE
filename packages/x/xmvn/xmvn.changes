@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:52:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Fri Sep 27 11:35:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.3.0

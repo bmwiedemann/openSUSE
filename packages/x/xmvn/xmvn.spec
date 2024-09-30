@@ -27,6 +27,7 @@ BuildRequires:  %{name}-api = %{version}
 BuildRequires:  %{name}-connector = %{version}
 BuildRequires:  %{name}-core = %{version}
 BuildRequires:  %{name}-subst
+BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  maven
 BuildRequires:  maven-lib
