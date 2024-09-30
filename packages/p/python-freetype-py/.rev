@@ -88,4 +88,30 @@
 </comment>
     <requestid>1136881</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3367f1aecb84032071087dac52583113</srcmd5>
+    <version>2.5.1</version>
+    <time>1727703623</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.1:
+  * fix binary wheel pypi upload in v2.5.0.
+- update to 2.5.0:
+  * Add missing build-backend to pyproject.toml
+  * freetype.Face.__del__: check first if FT_Face_Done has been
+    set to None
+  * Ot svg support
+  * Google font ot svg update
+  * Basic colrv1 support
+  * Fix PyInstaller hook
+  * use custom PEP517 build backend to require cmake
+    conditionally
+  * Update to latest freetype and harfbuzz
+  * Fix wrong enum name in Face.get_fstype()
+  * Ft encoding fix
+  * API for Unicode Variation Sequences, from
+    https://freetype.org/freety…
+  * Fix bbox calculation in hello-world example
+  * Trusted publisher fix</comment>
+    <requestid>1204580</requestid>
+  </revision>
 </revisionlist>

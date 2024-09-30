@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:02:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * fix binary wheel pypi upload in v2.5.0.
+- update to 2.5.0:
+  * Add missing build-backend to pyproject.toml
+  * freetype.Face.__del__: check first if FT_Face_Done has been
+    set to None
+  * Ot svg support
+  * Google font ot svg update
+  * Basic colrv1 support
+  * Fix PyInstaller hook
+  * use custom PEP517 build backend to require cmake
+    conditionally
+  * Update to latest freetype and harfbuzz
+  * Fix wrong enum name in Face.get_fstype()
+  * Ft encoding fix
+  * API for Unicode Variation Sequences, from
+    https://freetype.org/freety…
+  * Fix bbox calculation in hello-world example
+  * Trusted publisher fix
+
+-------------------------------------------------------------------
 Thu Jan  4 16:14:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.
