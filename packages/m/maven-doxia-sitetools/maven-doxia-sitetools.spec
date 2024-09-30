@@ -137,8 +137,7 @@ for i in \
     doxia-decoration-model \
     doxia-skin-model \
     doxia-integration-tools \
-    doxia-site-renderer \
-    doxia-doc-renderer; do
+    doxia-site-renderer; do
   %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
   if [ -d ${i}/target/site/apidocs ]; then
     cp -r ${i}/target/site/apidocs target/site/apidocs/${i}

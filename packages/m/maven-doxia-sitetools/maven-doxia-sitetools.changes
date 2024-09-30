@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:59:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Don't build/distribute unused doxia-doc-renderer
+
+-------------------------------------------------------------------
 Mon Jun 10 16:41:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use plexus-metadata-generator executable directly to simplify
