@@ -16,16 +16,16 @@
 #
 
 
-%define libname %{name}6
+%define libname %{name}8
 Name:           libdatovka
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://www.datovka.cz/cs/pages/libdatovka.html
-Source0:        https://secure.nic.cz/files/datove_schranky/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://secure.nic.cz/files/datove_schranky/%{name}/%{name}-%{version}.tar.xz.sha256
+Source0:        https://datovka.nic.cz/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://datovka.nic.cz/%{name}/%{name}-%{version}.tar.xz.sha256
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
@@ -64,7 +64,7 @@ developing applications that use %{name}.
 %configure \
 	--disable-static \
 	--with-docbook-xsl-stylesheets=/usr/share/xml/docbook/stylesheet/nwalsh/current
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
