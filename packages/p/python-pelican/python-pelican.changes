@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 28 20:22:21 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.10.1:
+  * Fix error when running pelican -r -l
+  * Fix symlink handling in pelican-themes
+- add build dependency python-pdm-backend
+
+-------------------------------------------------------------------
 Mon Sep 16 19:41:55 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.10.0:

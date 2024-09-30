@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pelican
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module blinker >= 1.7.0}
 BuildRequires:  %{python_module docutils >= 0.20.1}
 BuildRequires:  %{python_module feedgenerator >= 2.1.0}
 BuildRequires:  %{python_module ordered-set >= 4.1.0}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.8.2}
