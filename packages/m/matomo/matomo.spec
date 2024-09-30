@@ -221,6 +221,7 @@ fi
 %attr(0640,%{apache_user},%{apache_group}) %{_sysconfdir}/%{name}/environment/*.php
 %ghost %attr(0750,%{apache_user},%{apache_group}) /run/%{name}_sessions
 %defattr(644,root,root,755)
+%dir %{apache_serverroot}
 %dir %{apache_serverroot}/%{name}
 %dir %attr(0750,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/js
 %dir %attr(0750,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc
