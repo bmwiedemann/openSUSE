@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:32:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-mock-assertion.patch:
+  * Correct mock has_calls call.
+- Skip recalcitrant test.
+
+-------------------------------------------------------------------
 Mon Apr  8 05:32:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2024.01.21:

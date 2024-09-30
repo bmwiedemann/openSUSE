@@ -1,0 +1,35 @@
+From 5d5ca2b57aa49c508950c927eb42d2ffe14c3cf6 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 9 Apr 2024 15:36:24 +1000
+Subject: [PATCH] Fix mock assertion in ICU recipe
+
+Python 3.12 now does not blindly any methods on mocked objects, which
+masks issues. Correct the assertion of has_calls to assert_has_calls in
+the ICU recipe.
+
+Fixes #3002
+---
+ tests/recipes/test_icu.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/recipes/test_icu.py b/tests/recipes/test_icu.py
+index 239b99e4c1..dacf65a0b4 100644
+--- a/tests/recipes/test_icu.py
++++ b/tests/recipes/test_icu.py
+@@ -52,13 +52,14 @@ def test_build_arch(
+ 
+         # We expect some calls to `sh.Command`
+         build_root = self.recipe.get_build_dir(self.arch.arch)
+-        mock_sh_command.has_calls(
++        mock_sh_command.assert_has_calls(
+             [
+                 mock.call(
+                     os.path.join(build_root, "source", "runConfigureICU")
+                 ),
+                 mock.call(os.path.join(build_root, "source", "configure")),
+-            ]
++            ],
++            any_order=True
+         )
+         mock_ensure_dir.assert_called()
+         mock_chdir.assert_called()

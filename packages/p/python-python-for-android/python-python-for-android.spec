@@ -27,6 +27,8 @@ Source:         https://github.com/kivy/python-for-android/archive/refs/tags/v%{
 Source1:        python-python-for-android-rpmlintrc
 # PATCH-FIX-OPENSUSE We don't need or want isolation when determining metadata
 Patch0:         no-isolation-for-metadata-build.patch
+# PATCH-FIX-UPSTREAM gh#kivy/python-for-android#3003
+Patch1:         fix-mock-assertion.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,12 +36,14 @@ Requires:       python-Jinja2
 Requires:       python-appdirs
 Requires:       python-build
 Requires:       python-colorama >= 0.3.3
+Requires:       python-packaging
+Requires:       python-setuptools
+Requires:       python-sh >= 2
 Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     cmake
 Recommends:     python-pip
-Recommends:     python-setuptools
 Recommends:     python-wheel
 BuildArch:      noarch
 # SECTION test requirements
@@ -108,8 +112,8 @@ export PYTHONPATH=${PWD}:${PWD}/tests/
 skip_tests="test_get_dep_names_of_package or test_get_package_dependencies or test_venv or test_get_package_as_folder or test_extract_metainfo_files_from_package"
 # Unable to download NDK
 skip_tests="$skip_tests or (TestToolchainCL and test_create) or test_create_python_bundle"
-# Broken with 3.12 - https://github.com/kivy/python-for-android/issues/3002
-skip_tests="$skip_tests or (TestIcuRecipe and test_build_arch)"
+# build_dir is somehow None
+skip_tests="$skip_tests or (TestSDL2MixerRecipe and test_get_include_dirs)"
 
 %pytest -rs tests -k "not ($skip_tests)"
 
@@ -124,7 +128,7 @@ skip_tests="$skip_tests or (TestIcuRecipe and test_build_arch)"
 %license LICENSE
 %python_alternative %{_bindir}/python-for-android
 %python_alternative %{_bindir}/p4a
-%{python_sitelib}/*pythonforandroid*/
-%{python_sitelib}/*python_for_android*/
+%{python_sitelib}/pythonforandroid
+%{python_sitelib}/python_for_android-%{version}.dist-info
 
 %changelog

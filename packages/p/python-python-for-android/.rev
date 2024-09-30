@@ -141,4 +141,14 @@
 - Skip a test that breaks with Python 3.12.</comment>
     <requestid>1166050</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>09884b2856b5daa16b96f0d0d4805bb3</srcmd5>
+    <version>2024.1.21</version>
+    <time>1727703675</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-mock-assertion.patch:
+  * Correct mock has_calls call.
+- Skip recalcitrant test.</comment>
+    <requestid>1204662</requestid>
+  </revision>
 </revisionlist>
