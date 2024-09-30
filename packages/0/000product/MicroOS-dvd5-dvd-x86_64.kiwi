@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240927" schemaversion="4.1">
+<image name="OBS__MicroOS___20240929" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240927</productvar>
+      <productvar name="VERSION">20240929</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240927,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240929,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240927/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240929/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -745,7 +745,7 @@
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
       <repopackage name="libglibmm-2_68-1"/>
-      <repopackage name="libglslang14"/>
+      <repopackage name="libglslang15"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libgme0"/>
       <repopackage name="libgmodule-2_0-0"/>
@@ -864,6 +864,7 @@
       <repopackage name="libjansson4"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjavascriptcoregtk-6_0-1"/>
+      <repopackage name="libjaylink0"/>
       <repopackage name="libjbig2"/>
       <repopackage name="libjcat1"/>
       <repopackage name="libjitterentropy3"/>

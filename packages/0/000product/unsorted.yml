@@ -4376,7 +4376,9 @@ unsorted:
   - flarq 
   - flashfocus 
   - flashrom 
+  - flashrom-bash-completion 
   - flashrom-devel 
+  - flashrom-doc 
   - flatbuffers-devel 
   - flatpak-builder 
   - flatpak-devel 
@@ -13433,7 +13435,7 @@ unsorted:
   - libglog2 
   - libgloox18 
   - libglpk40 
-  - libglslang14-32bit 
+  - libglslang15-32bit 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterfs0 
@@ -14065,9 +14067,7 @@ unsorted:
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18 
   - libjavascriptcoregtk-4_0-18-32bit 
-  - libjaylink 
   - libjaylink-devel 
-  - libjaylink0 
   - libjbig-devel 
   - libjbig-devel-32bit 
   - libjbig2-32bit 
