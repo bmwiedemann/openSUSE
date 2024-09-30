@@ -30,6 +30,7 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-configuration2
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
+BuildRequires:  commons-collections
 BuildRequires:  fdupes
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core

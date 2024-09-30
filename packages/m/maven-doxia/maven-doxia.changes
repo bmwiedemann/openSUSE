@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:57:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- A runtime dependency needs to be resolved with %%mvn_install
+
+-------------------------------------------------------------------
 Mon Jun 10 16:37:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use plexus-metadata-generator executable directly to simplify

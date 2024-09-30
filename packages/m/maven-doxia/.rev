@@ -106,4 +106,12 @@
     <comment>guice 6.0.0 + dependent changes</comment>
     <requestid>1179962</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>84297840945497865a7d1f90151a9773</srcmd5>
+    <version>1.12.0</version>
+    <time>1727703610</time>
+    <user>anag+factory</user>
+    <comment>A runtime dependency needs to be resolved with %mvn_install</comment>
+    <requestid>1204574</requestid>
+  </revision>
 </revisionlist>
