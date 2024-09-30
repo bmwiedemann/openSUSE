@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 23 10:42:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-libpinyin.spec:
+  Change python depending version, Since tumbleweed and SLE already
+  totally switch to python3, no longer coexist with python2.
+  (boo#1228652)
+
+-------------------------------------------------------------------
+Mon Sep 23 10:20:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ibus-libpinyin-revert-python-3.2.patch:
+  Backporting cf67e92a from upstream, Revert python3 version
+  checking to 3.2 to enable lower python version building.
+  (boo#1228652)
+
+-------------------------------------------------------------------
 Thu Sep 12 11:35:55 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update version to 1.15.8:
