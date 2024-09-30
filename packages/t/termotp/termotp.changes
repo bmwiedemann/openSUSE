@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:23:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.10:
+  * 74848fa Change references to termotp.
+  * 303edfe Fix install bug with double digit versions.
+  * 569a353 Fixed lint complaints about error messages.
+  * 95a2b35 Regex typo fix.
+  * 20a51e8 Use goreleaser to create releases.
+
+-------------------------------------------------------------------
 Mon Mar 18 08:02:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.0.9:

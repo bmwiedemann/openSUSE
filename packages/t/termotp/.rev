@@ -26,4 +26,17 @@
   * 28cf034: Add JSON output support.</comment>
     <requestid>1158898</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21861c3909c5fdccc1cbab638f2e18e2</srcmd5>
+    <version>0.0.10</version>
+    <time>1727703679</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.10:
+  * 74848fa Change references to termotp.
+  * 303edfe Fix install bug with double digit versions.
+  * 569a353 Fixed lint complaints about error messages.
+  * 95a2b35 Regex typo fix.
+  * 20a51e8 Use goreleaser to create releases.</comment>
+    <requestid>1204660</requestid>
+  </revision>
 </revisionlist>
