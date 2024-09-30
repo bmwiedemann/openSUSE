@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 25 07:28:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Temp disable update of vendors, stay with versions specified by
+  upstream to fix build on aarch64 and ppc64le. Following this,
+  "downgrade" the vendor tarball.
+
+-------------------------------------------------------------------
 Mon Sep 16 11:08:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.1:

@@ -17,7 +17,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">glycin</param>
-  <param name="update">true</param>
+  <param name="update">false</param>
   </service>
 </services>
 
