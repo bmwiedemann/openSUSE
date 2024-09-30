@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:24:56 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Update to v2024.2
+  - Editorial changes for v2024.1 JOSS paper ([gh#votca/votca##1148],
+    [gh#votca/votca##1153], [gh#votca/votca##1154])
+  - Fix permissions on some scripts ([gh#votca/votca##1150])
+  - Fix exit code on some scripts ([gh#votca/votca##1151])
+  - Update CITATION.cff ([gh#votca/votca##1155])
+  - Clean up CI ([gh#votca/votca##1146], [gh#votca/votca##1160],
+    [gh#votca/votca##1161], [gh#votca/votca##1162])
+  - supporting ORCA6 logfile reading ([gh#votca/votca##1157])
+
+
+-------------------------------------------------------------------
 Sat Jul 20 15:06:44 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Drop 1032.patch, merged upstream

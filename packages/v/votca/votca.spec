@@ -25,7 +25,7 @@
 %endif
 
 Name:           votca
-Version:        2024.1
+Version:        2024.2
 Release:        0
 %define         uversion %{version}
 %define         sover 2024
@@ -203,9 +203,6 @@ sed -i '1s@/usr/bin/env .*bash@/bin/bash@' \
   %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*.sh \
   %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*/*/*.sh \
   %{buildroot}/%{_bindir}/csg_{call,inverse}
-
-# fixed in next release
-chmod +x %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi_espressopp/spce.py
 
 %if %{with_xtp}
 chmod +x %{buildroot}/%{_datadir}/votca/xtp-tutorials/pyxtp/scripts/run_*.py
