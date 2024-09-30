@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:50:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Tue Aug 20 08:17:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

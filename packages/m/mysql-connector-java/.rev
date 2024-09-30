@@ -439,4 +439,12 @@
     <comment>bsc#1229150</comment>
     <requestid>1194888</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>639c9c143618c6e7ef5fb2ab69a2797e</srcmd5>
+    <version>8.4.0</version>
+    <time>1727703602</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204567</requestid>
+  </revision>
 </revisionlist>

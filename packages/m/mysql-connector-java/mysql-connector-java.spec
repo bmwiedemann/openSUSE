@@ -127,9 +127,8 @@ export CLASSPATH=$(build-classpath \
     -Dant.java.version=1.8 \
     -Dant.build.javac.source=1.8 \
     -Dant.build.javac.target=1.8 \
-    -Dcom.mysql.cj.build.jdk=%{java_home} \
-    -Dcom.mysql.cj.build.jdk.javac=%javac \
-    -Dcom.mysql.cj.build.jdk.java=%java \
+    -Dcom.mysql.cj.build.jdk.javac=javac \
+    -Dcom.mysql.cj.build.jdk.java=java \
     build
 
 %install
