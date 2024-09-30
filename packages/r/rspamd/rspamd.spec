@@ -31,7 +31,7 @@
     %bcond_without hyperscan
   %endif
   %if (0%{?suse_version} >= 1315)
-    %bcond_without luajit
+    %bcond_with luajit
   %endif
 %endif
 
@@ -95,7 +95,10 @@ BuildRequires:  openblas-devel
 %endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fmt) >= 11
+BuildRequires:  pkgconfig(fmt)
+%if !%{pkg_vcmp fmt-devel > 11}
+Provides:       bundled(fmt) = 11.0.0
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 %if %{with ext_hiredis}
 BuildRequires:  pkgconfig(hiredis)

@@ -322,4 +322,19 @@
   - Some tunes and fixes for GPT by @vstakhov in #5068</comment>
     <requestid>1190637</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e19007d6d6f2d7fdc3cc8f39d3eadc7f</srcmd5>
+    <version>3.9.1</version>
+    <time>1727703653</time>
+    <user>anag+factory</user>
+    <comment>- disable luajit until we actually package all the lua extensions
+  for all interpreters. mixing luajit with lua built extensions
+  is not working properly apparently
+  https://github.com/rspamd/rspamd/discussions/4898
+  https://github.com/rspamd/rspamd/discussions/4819
+- loosen the Buildrequires for fmt to allow all versions. For older
+  distros we will use the intree copy. We added the bundled
+  provides in that case.</comment>
+    <requestid>1204600</requestid>
+  </revision>
 </revisionlist>

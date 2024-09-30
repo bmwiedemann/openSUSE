@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 29 23:24:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable luajit until we actually package all the lua extensions
+  for all interpreters. mixing luajit with lua built extensions
+  is not working properly apparently
+  https://github.com/rspamd/rspamd/discussions/4898
+  https://github.com/rspamd/rspamd/discussions/4819
+- loosen the Buildrequires for fmt to allow all versions. For older
+  distros we will use the intree copy. We added the bundled
+  provides in that case.
+
+-------------------------------------------------------------------
 Wed Jul 31 10:21:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.9.1
