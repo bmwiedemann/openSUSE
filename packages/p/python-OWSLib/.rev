@@ -86,4 +86,12 @@ new request since download source check failed the first time</comment>
   * fix WMS dimension parsing (@emilianocastaneda)</comment>
     <requestid>1107936</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ed8479fbed9962eb7d97a5affb6728ad</srcmd5>
+    <version>0.31.0</version>
+    <time>1727703711</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204696</requestid>
+  </revision>
 </revisionlist>

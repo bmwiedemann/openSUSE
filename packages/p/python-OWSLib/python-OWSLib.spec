@@ -1,7 +1,7 @@
 #
 # spec file for package python-OWSLib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>
 # Copyright (c) 2021 Ioda-Net Sàrl, Bruno Friedmann, Charmoille, Switzerland.
 #
@@ -18,8 +18,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-OWSLib
-Version:        0.29.2
+Version:        0.31.0
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
@@ -27,27 +28,21 @@ Group:          Productivity/Scientific/Other
 URL:            https://owslib.readthedocs.io/
 # get the test suite form Github
 Source:         https://github.com/geopython/OWSLib/archive/refs/tags/%{version}.tar.gz#/OWSLib-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %python_version_nodots < 37
-Requires:       python-dataclasses
-%endif
 Requires:       python-PyYAML
 Requires:       python-lxml
 Requires:       python-python-dateutil >= 1.5
 Requires:       python-pytz
 Requires:       python-requests >= 1.0
-%if 0%{?python_version_nodots} < 37
-Requires:       python-dataclasses
-%endif
 Provides:       python-owslib = %{version}
 Obsoletes:      python-owslib < %{version}
 # SECTION test
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 1.5}

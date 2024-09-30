@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 28 11:54:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.31.0
+  * This release adds support for ISO 19115 Part 3 XML
+  * ISO: Add support for ISO 19115 Part 3 XML (#900) (@vjf)
+  * CSW: fix malformed init result (#918) (@pvgenuchten)
+  * WCS: add timeout to init (@WrenRaming)
+- Release 0.30.0
+  * This release adds support for OGC API - Environmental Data
+    Retrieval (in the owslib.ogcapi module), as well as WMTS and
+    OGC API - Coverages updates.
+  * add OGC API - Environmental Data Retrieval client (#899)
+  * add WMTS dimensions parsing (#904)
+  * align to latest OGC API - Coverage specification updates (#908)
+- Release 0.29.3
+  * fix WMS 1.1.1 expression bug
+  * removed unused lxml code
+  * ensure schema_key is never None when reading namespaces
+  * fix WFS2 POST attribute name
+  * silence FutureWarning when passing XML etree object to filter
+  * fix WPS logging DEBUG statements
+  * fix CRS for non-int code by URL
+- Move to the python311 module on SLE/Leap
+
+-------------------------------------------------------------------
 Tue Aug 29 12:16:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.29.2
