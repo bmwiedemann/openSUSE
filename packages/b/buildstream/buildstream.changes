@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 12 09:28:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.0:
+  + Proxy remote asset and remote execution requests via
+    buildbox-casd
+  + Optimize bst show when no cached state is needed
+  + Support %{description} in bst show commands
+  + Support HTTP Bearer authentication for remote API servers
+  + Drop support for Python 3.7
+  + downloadablefilesource: Add 10 minutes timeout
+  + tar.py: Always check member paths
+  + Ensure blobs are available locally when using storage-service
+  + Support loading source mirror plugins from pip and junction
+    origins
+  + Restore terminal after exiting a bst shell
+  + Fail early if buildbox-run is present but non-functional
+- Changes from version 2.2.1:
+  + Fix parsing of keepalive time
+  + Fix alias mapping when using source mirror plugins
+  + Fix typing of SourceFetcher.fetch() and Source.translate_url():
+    the `alias_override` parameter should be considered opaque.
+  + Update documentation regarding the buildbox merge
+- Changes from version 2.2.0:
+  + Support Python 3.12
+  + Add suffix parameter to `Source.translate_url()`
+  + Error out if a YAML mapping has duplicate keys
+  + New configuration option to set the grpc keepalive time
+  + Add SourceMirror plugins to allow more flexibility when
+    defining mirrors
+  + Use system-installed buildbox components over bundled ones if
+    available
+  + Support bearer authentication in DownloadableFileSource
+  + Support mapping aliases from subprojects to parent project to
+    ease mirroring 
+
+-------------------------------------------------------------------
 Sun Sep 24 10:46:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.1.0:
