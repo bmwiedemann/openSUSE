@@ -1,7 +1,7 @@
 #
 # spec file for package tali
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
@@ -55,7 +54,6 @@ can hold certain dice with each roll.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.Tali
 %fdupes %{buildroot}/%{_prefix}
 
 %files
