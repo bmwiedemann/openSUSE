@@ -103,4 +103,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148879</requestid>
   </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>661f19af9b6068bf5ebc9828387a9b9f</srcmd5>
+    <version>1.1</version>
+    <time>1727703600</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204566</requestid>
+  </revision>
 </revisionlist>

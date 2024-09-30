@@ -86,7 +86,7 @@ sed -i -e 's/.$//' doc/javadoc/stylesheet.css doc/javadoc/package-list Copyright
 
 %build
 ant \
-    -f make/build.xml -Djavaws.dir=%{java_home}/bin \
+    -f make/build.xml -Djavaws.dir=%{_jvmdir}/java/bin \
     -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
