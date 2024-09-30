@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 29 13:59:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.0
+  * New integration: DuckDB!
+  * Automatic latitude/longitude conversion when displaying a tile
+    map
+  * Support for displaying subcoordinate y-axis
+  * New hover options: hover_tooltips and hover_formatters
+  * Optimized Pandas index support
+  * Fixing "No output in jupyter"
+  * Update of the minimum version of the dependencies
+
+-------------------------------------------------------------------
 Sun Sep 22 13:20:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Make testing multibuild in order to avoid resolver errors with
