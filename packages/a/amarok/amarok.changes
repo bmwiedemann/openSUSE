@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 29 14:35:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.1
+  * Most of the context view QML items ported from QtControls 1
+    to QtControls 2
+  * Default to no fadeout on pause and stop (kde#491603)
+  * Actually show the file browser panel toolbar
+  * Fix track editor autocompletions (kde#491520)
+  * Ensure home icon is shown in browser breadcrumb
+    widgets (kde#491354)
+
+-------------------------------------------------------------------
 Mon Aug  5 05:48:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.1.0

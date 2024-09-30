@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 07:38:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.8.28:
+  * Fix lsm2cmap with tifffile > 2024.8.24.
+  * Drop support for Python 3.9 and numpy < 1.24 (NEP29).
+
+-------------------------------------------------------------------
 Wed Jul 17 07:22:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert. Works fine with numpy2. The pinning creates too many
@@ -7,7 +14,7 @@ Wed Jul 17 07:22:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Jul 17 02:13:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Restrict numpy to < 2. 
+- Restrict numpy to < 2.
 
 -------------------------------------------------------------------
 Mon Apr  8 10:28:32 UTC 2024 - Dirk Müller <dmueller@suse.com>

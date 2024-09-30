@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:42:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Tue Jul  9 12:52:37 UTC 2024 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 10.1.25

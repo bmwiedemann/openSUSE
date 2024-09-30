@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 11 06:22:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.16.0:
+  + Almost identical to 4.15.1.
+
+-------------------------------------------------------------------
+Mon Sep  9 16:03:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.15.1:
+  + Gdk:
+    - DrawContext: Deprecate begin_frame(), end_frame(),
+      is_in_frame(), get_frame_region().
+    - Surface: Deprecate set_opaque_region().
+    - Cursor: Rename create(const SlotGetTexture& slot, .....).
+      Call it create_from_slot(). It was added in 4.15.0, but some
+      create() calls in old code became ambiguous.
+  + Gtk:
+    - Window: Add set_interactive_debugging().
+    - TextBuffer: Add enum TextBuffer::NotifyFlags,
+      add_commit_notify(), remove_commit_notify().
+  + Build: Require gtk4 >= 4.15.5.
+- Drop gtkmm4-docs-without-timestamp.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Mar 18 07:49:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.14.0:

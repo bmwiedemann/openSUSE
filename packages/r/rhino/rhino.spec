@@ -80,8 +80,8 @@ pushd examples
 
 export CLASSPATH=../target/%{name}-%{version}.jar
 SOURCEPATH=../src
-%javac -sourcepath ${SOURCEPATH} -source 8 -target 8 *.java
-%jar --create --verbose \
+javac -sourcepath ${SOURCEPATH} -source 8 -target 8 *.java
+jar --create --verbose \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif

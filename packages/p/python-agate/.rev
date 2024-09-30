@@ -194,4 +194,16 @@
     &quot;3.0&quot; was treated as unequal to &quot;3.00&quot;.</comment>
     <requestid>1180144</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77512487b79eac5bb4c02507fbbd4ca7</srcmd5>
+    <version>1.12.0</version>
+    <time>1727703502</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.12.0:
+  * feat: :class:`.Number` accepts a no_leading_zeroes keyword
+    argument, to indicate whether to disallow numbers with
+    leading zeroes (not including a single zero, or a single zero
+    before a decimal).</comment>
+    <requestid>1204400</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# Disabled because openapi move to 0.19
+%bcond_with openapi
 
+%{?sle15_python_module_pythons}
 Name:           python-jupyterlab-server%{psuffix}
 Version:        2.27.3
 Release:        0
@@ -95,7 +98,7 @@ Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-v
 Requires:       python-strict-rfc3339
 Requires:       python-jupyterlab-server = %{version}
 Requires:       python-ruamel.yaml
-%if %{python_version_nodots} < 312
+%if %{with openapi}
 Requires:       (python-openapi-core >= 0.18 with python-openapi-core < 0.19)
 %endif
 
@@ -128,13 +131,14 @@ sed -i 's/, "--color=yes"//' pyproject.toml
 %if %{with test}
 %check
 export PYTHONDONTWRITEBYTECODE=1
-# no openapi-core in python312
-python312_ignoretests="--ignore tests/test_labapp.py"
-python312_ignoretests="$python312_ignoretests --ignore tests/test_listings_api.py"
-python312_ignoretests="$python312_ignoretests --ignore tests/test_settings_api.py"
-python312_ignoretests="$python312_ignoretests --ignore tests/test_themes_api.py"
-python312_ignoretests="$python312_ignoretests --ignore tests/test_translation_api.py"
-python312_ignoretests="$python312_ignoretests --ignore tests/test_workspaces_api.py"
+%if !%{with openapi}
+ignoretests="--ignore tests/test_labapp.py"
+ignoretests="$ignoretests --ignore tests/test_listings_api.py"
+ignoretests="$ignoretests --ignore tests/test_settings_api.py"
+ignoretests="$ignoretests --ignore tests/test_themes_api.py"
+ignoretests="$ignoretests --ignore tests/test_translation_api.py"
+ignoretests="$ignoretests --ignore tests/test_workspaces_api.py"
+%endif
 %{python_expand # https://github.com/jupyterlab/jupyterlab_server/issues/390
 $python -m venv build/testenv --system-site-packages
 for p in \
@@ -143,7 +147,7 @@ for p in \
 do
   build/testenv/bin/pip install --use-pep517 --no-build-isolation --disable-pip-version-check $p
 done
-build/testenv/bin/python -m pytest -v ${$python_ignoretests}
+build/testenv/bin/python -m pytest -v $ignoretests
 }
 %endif
 
@@ -154,12 +158,10 @@ build/testenv/bin/python -m pytest -v ${$python_ignoretests}
 %{python_sitelib}/jupyterlab_server
 %{python_sitelib}/jupyterlab_server-%{version}.dist-info
 
-%if %{python_version_nodots} >= 310
 %files %{python_files test}
 %license LICENSE
-%endif
 
-%if %{python_version_nodots} < 312
+%if %{with openapi}
 %files %{python_files openapi}
 %license LICENSE
 %endif

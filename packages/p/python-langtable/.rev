@@ -131,4 +131,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186047</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6eb9dd775c2ac88a81862cb817e2e8b2</srcmd5>
+    <version>0.0.68</version>
+    <time>1727703283</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.68:
+  * Reorder ibus/chewing as the default inputmethod for TW or
+    Hant.
+  * Add ltg_LV.UTF-8</comment>
+    <requestid>1204578</requestid>
+  </revision>
 </revisionlist>

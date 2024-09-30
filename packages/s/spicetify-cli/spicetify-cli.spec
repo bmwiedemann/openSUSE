@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sname cli
 %define binname spicetify
 Name:           spicetify-cli
-Version:        2.38.3
+Version:        2.38.4
 Release:        0
 Summary:        Command-line tool to customize Spotify client
 License:        LGPL-2.1-or-later
@@ -26,8 +27,8 @@ URL:            https://spicetify.app/
 Source0:        %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.21
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.21
 
 %description
 Command-line tool to customize the official Spotify client
@@ -54,4 +55,3 @@ find %{buildroot}%{_libdir}/%{name}/ -type f -executable | grep -v %{name}/%{bin
 %doc README.md
 
 %changelog
-

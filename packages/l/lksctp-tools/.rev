@@ -234,4 +234,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077178</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9eca970b16b82e8170e442534a6d3434</srcmd5>
+    <version>1.0.21</version>
+    <time>1727703271</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.21
+  App
+  * Close some opened sockets in sctp_darn and sctp_test
+  * Free host_s and serv_s in sctp_test and sctp_status
+  Test
+  * Call close on the correct sk in test_1_to_1_send
+  * Free the allocated buffers before return
+  * Replace malloc with test_malloc
+- Update to version 1.0.20
+  App
+  * Replace use of deprecated gethostbyname with getaddrinfo
+  * Check strdup return in append_addr
+  Lib
+  * Define cmsg array with correct size in sendv and recvv
+  * zero-initialize sinfo_assoc_id in sctp_rcvmsg
+  * Man page updates
+  Test
+  * Add a test case for RE_CONFIG and interleaving (forwarded request 1204322 from mnhauke)</comment>
+    <requestid>1204500</requestid>
+  </revision>
 </revisionlist>

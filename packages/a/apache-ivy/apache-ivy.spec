@@ -1,7 +1,7 @@
 #
 # spec file for package apache-ivy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,9 @@ BuildArch:      noarch
 %if %{with pack200}
 BuildRequires:  pack200
 %else
+BuildConflicts: java >= 14
 BuildConflicts: java-devel >= 14
+BuildConflicts: java-headless >= 14
 %endif
 %if %{with vfs}
 BuildRequires:  apache-commons-vfs2

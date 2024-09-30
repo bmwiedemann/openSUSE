@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 29 12:10:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.0
+  * A fix for a torrent client stack overflow crash with the lockfile
+    buffer.
+  * New trackers.delay_scrape command for .rtorrent.rc to avoid
+    crashes with thousands of torrents and allow instant startups.
+  * A fix for a critical memory leak with RPC commands which may
+    waste an alarming amount of memory.
+  * A fix for critical torrent client breakage if a power
+    outage/failure occurs during a session saving interval
+- Delete 0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Jun 21 00:28:35 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Backport fix which resolves a crashing issue on startup on openSUSE.

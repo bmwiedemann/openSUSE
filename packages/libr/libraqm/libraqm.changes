@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 28 16:54:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.2:
+  * Fix Unicode codepoint conversion from UTF-16.
+
+-------------------------------------------------------------------
 Thu Jan 18 12:48:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build on non-suse distributions

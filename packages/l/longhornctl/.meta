@@ -1,0 +1,12 @@
+<package name="longhornctl" project="openSUSE:Factory">
+  <title>CLI for the Longhorn cloud native distributed block storage</title>
+  <description>longhornctl, a CLI (command-line interface) designed to simplify Longhorn manual operations.
+
+What Can You Do With longhornctl?
+
+- Install and verify prelight requirements.
+- Execute one-time Longhorn operations.
+- Gain inside into your Longhorn system.</description>
+  <devel project="devel:kubic" package="longhornctl"/>
+  <url>https://github.com/longhorn/cli</url>
+</package>

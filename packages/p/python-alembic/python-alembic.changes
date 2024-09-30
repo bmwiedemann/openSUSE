@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:16:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.3:
+  * Render `if_exists` and `if_not_exists` parameters in
+    `CreateTableOp`, `CreateIndexOp`, `DropTableOp` and
+    `DropIndexOp` in an autogenerate context.
+  * Enhance `version_locations` parsing to handle paths containing
+    newlines.
+  * Added support for `Operations.create_table.if_not_exists` and
+    `Operations.drop_table.if_exists`, adding similar
+    functionality  to render IF [NOT] EXISTS for table operations
+    in a similar way as with indexes.
+
+-------------------------------------------------------------------
 Tue Aug 13 23:30:46 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- update to 1.31.2:
+- update to 1.13.2:
   * Improve computed column compare function to support multi-line
     expressions. Pull request courtesy of Georg Wicke-Arndt.
   * Fixed bug in alembic command stdout where long messages were
@@ -16,7 +30,7 @@ Tue Aug 13 23:30:46 UTC 2024 - Guang Yee <gyee@suse.com>
     tables not under default schema on PostgreSQL.
 - Drop pytest8.patch as it has merged upstream and included
   in the 1.31.2 release.
-  
+
 
 -------------------------------------------------------------------
 Fri May 17 13:09:48 UTC 2024 - Markéta Machová <mmachova@suse.com>

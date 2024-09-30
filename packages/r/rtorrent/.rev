@@ -88,4 +88,12 @@
   + 0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch</comment>
     <requestid>984398</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6bee7e947e716d277fdd3378ccfb4c65</srcmd5>
+    <version>0.10.0</version>
+    <time>1727703558</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.10.0</comment>
+    <requestid>1204535</requestid>
+  </revision>
 </revisionlist>

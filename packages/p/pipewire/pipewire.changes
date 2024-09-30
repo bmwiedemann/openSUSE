@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Sep 29 18:31:08 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.2.5:
+  + Highlights
+    - Fix an fd mismatch in the protocol in some cases that could
+      lead to fd leaks and crashes.
+    - Fix a bug where the mixer was not updated after setting the
+      port, which would cause muted audio at boot or resume from
+      suspend.
+    - Fix a potential use-after-free in module-rt when stopping a
+      thread.
+    - Cached objects are now freed in the JACK API to avoid memory
+      leaks.
+    - Some more fixes and improvements.
+  + PipeWire
+    - RequestProcess commands are now only sent after the node
+      completes the state change to RUNNING.
+    - More FreeBSD fixes.
+    - Handle ACTIVE links going to < PAUSED as well. This improves
+      renegotiation in some cases.
+    - Fix an fd mismatch in the protocol in some cases that could
+      lead to fd leaks and crashes.
+  + Modules
+    - Many of the network modules can now also accept hostnames
+      instead of IP addresses.
+    - Fix a potential use-after-free in module-rt when stopping
+      the thread.
+  + SPA
+    - Support for elogind was added.
+    - Some more errors are checked when converting JSON to POD.
+    - Fix a bug where the mixer was not updated after setting the
+      port, which would cause muted audio at boot or resume from
+      suspend.
+  + JACK
+    - The BBT transport handling was improved. Some fields were
+      added to be able to handle the JACK semantics correctly.
+    - Buffers are now aligned according to the maximum CPU
+      alignment instead of the hardcoded 16 bytes alignment.
+    - Cached objects are now freed correctly.
+  + Doc
+    - Some small doc updates.
+- Don't try to enable apparmor support if without_apparmor is
+  defined (as in SLFO).
+
+-------------------------------------------------------------------
 Fri Sep 20 09:25:31 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 1.2.4:

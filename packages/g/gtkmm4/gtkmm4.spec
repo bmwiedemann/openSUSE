@@ -20,15 +20,13 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.14.0
+Version:        4.16.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.14/%{_name}-%{version}.tar.xz
-#PATCH-FIX-UPSTREAM gtkmm4-docs-without-timestamp.patch -- Do not add timestamps to generated doc files
-Patch0:         gtkmm4-docs-without-timestamp.patch
+Source0:        https://download.gnome.org/sources/gtkmm/4.16/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
@@ -42,12 +40,12 @@ BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
 BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(gtk4) >= 4.13.6
+BuildRequires:  pkgconfig(gtk4) >= 4.15.5
 BuildRequires:  pkgconfig(pangomm-2.48) >= 2.50.0
 
 %description
-Gtkmm provides a C++ interface to the GTK+ GUI library. gtkmm3 wraps
-GTK+ 3. Highlights include typesafe callbacks, widgets extensible via
+Gtkmm provides a C++ interface to the GTK+ GUI library. gtkmm4 wraps
+GTK4. Highlights include typesafe callbacks, widgets extensible via
 inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.
 

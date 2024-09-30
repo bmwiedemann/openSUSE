@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:00:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.68:
+  * Reorder ibus/chewing as the default inputmethod for TW or
+    Hant.
+  * Add ltg_LV.UTF-8
+
+-------------------------------------------------------------------
 Sun Jun 30 20:36:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.67:

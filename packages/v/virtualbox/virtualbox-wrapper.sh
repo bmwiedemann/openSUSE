@@ -67,4 +67,4 @@ then
     exit 1
 fi
 # Now run the VB GUI
-LD_LIBRARY_PATH="/usr/lib/virtualbox${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" /usr/lib/virtualbox/VirtualBox6 $@
+LD_LIBRARY_PATH="/usr/lib/virtualbox${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" exec /usr/lib/virtualbox/VirtualBoxQt "$@"

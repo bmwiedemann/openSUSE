@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 22 15:13:22 UTC 2024 - scott.bradnick@suse.com
+
+- Updating ROCm to v6.2.1
+- Update to version 1.4.0+git20240922.6c0cedd:
+  * v1.4.0 Intel GPU support & NetBSD support
+  * Added documentation for Intel GPU support and setcap command to Makefile
+  * Set Intel GPU baseline max power at 10W
+  * Added warnings when toggling boxes and terminal size is to small
+  * Fix missing core percentages, issue #792
+  * GPU fixes
+  * Fix missing headers headers for GPU build on Alpine
+  * Fixed includes for CC
+  * Fixed Makefile and added workaround for missing asprintf with Clang
+  * intel gpu frequency
+  * don't namespace on x64
+  * add stdio
+  * intel gpu power consumption
+  * intel igpu support
+
+-------------------------------------------------------------------
 Fri Aug 16 22:06:46 UTC 2024 - scott.bradnick@suse.com
 
 - Updating ROCm to v6.2.0

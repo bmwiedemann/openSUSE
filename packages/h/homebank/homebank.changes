@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:43:55 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 5.8.3:
+ * bugfix: lp#2066535 cannot see a 1 sub-category in Stats Rept
+   donut view
+ * bugfix: lp#2076458 saved filter date ranges going wrong
+ * bugfix: lp#2076474 dark mode applied live, but not on app
+   startup or when exiting preferences dialog
+ * bugfix: lp#2077180 budget report category do not sum their
+   subcat budget in 5.8.2
+ * bugfix: lp#2078281 csv export crash
+ * bugfix: lp#2078679 category appeard Empty and crashes Homebank
+   on Linux 
+- Changes in 5.8.2:
+ * bugfix: lp#2073805 switching saved filter with same date range
+   doesn't refresh
+ * bugfix: lp#2073233 vehicle cost distance/volume is rounded to
+   distance and always xx,0
+ * bugfix: lp#2071648 possibility for positive or negative budget
+   values gone
+ * bugfix: lp#2069152 windows: CFA protected folder save fail with
+   no dialog warning
+ * bugfix: lp#2068825 budget report type filter do not work
+   anymore
+ * bugfix: lp#2068664 filter text option only work when both memo
+   and number are filled
+ * bugfix: lp#2068634 copy/paste a txn do not enable save
+ * bugfix: lp#2067855 transfer from one account to another does
+   not sync statuse even with "Sync transfer Status" checked
+ * bugfix: lp#2067440 payment settings not retained
+ * bugfix: lp#2066539 budget Report - unbudgeted includes
+   transactions for subcats where main cat has a budget
+ * bugfix: lp#2062021 transaction date may change if system
+   shortdate is not dd/MM/yy 
+- add %check section to spec file
+
+-------------------------------------------------------------------
 Tue May 28 04:39:09 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.8.1:

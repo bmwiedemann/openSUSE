@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.103
+%global nss_softokn_fips_version 3.104
 %define NSPR_min_version 4.35
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.103
+Version:        3.104
 Release:        0
-%define underscore_version 3_103
+%define underscore_version 3_104
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -83,7 +83,6 @@ Patch49:        nss-allow-slow-tests-s390x.patch
 Patch50:        nss-fips-bsc1223724.patch
 Patch51:        nss-fips-aes-gcm-restrict.patch
 Patch52:        nss-fips-safe-memset.patch
-Patch53:        nss-reproducible-builds.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -254,7 +253,6 @@ cd nss
 # glibc on SLE-12 is too old and doesn't have explicit_bzero yet.
 %patch -P 52 -p1
 %endif
-%patch -P 53 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

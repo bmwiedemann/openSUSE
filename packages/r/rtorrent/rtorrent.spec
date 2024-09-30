@@ -1,7 +1,7 @@
 #
 # spec file for package rtorrent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           rtorrent
-Version:        0.9.8
+Version:        0.10.0
 Release:        0
-Summary:        Console-based BitTorrent Client
+Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/rakshasa/rtorrent
@@ -29,7 +29,7 @@ Source2:        rtorrent.desktop
 # This manpage copied from the 0.9.2 tarball as it was missing in later versions
 Source3:        rtorrent.1
 Source4:        rtorrent.service
-Patch1:         0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -37,9 +37,10 @@ BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
-BuildRequires:  pkgconfig(libtorrent) >= 0.13.8
+BuildRequires:  pkgconfig(libtorrent) >= 0.14.0
 BuildRequires:  pkgconfig(xmlrpc)
-Requires(pre):  shadow
+BuildRequires:  sysuser-tools
+%sysusers_requires
 
 %description
 rTorrent is a console-based BitTorrent client. It aims to be a
@@ -54,7 +55,7 @@ management.
 # It's full of type pun violations
 export CFLAGS="%optflags -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-export CXXFLAGS="$CXXFLAGS -std=gnu++11"
+export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 autoreconf -fiv
 %configure \
 	--with-xmlrpc-c="%_bindir/xmlrpc-c-config" \
@@ -70,8 +71,12 @@ install -pm0644 "%{S:3}" "$b/%_mandir/man1/"
 %suse_update_desktop_file -r "%name" Network P2P
 install -Dm0644 "%{S:4}" "$b/%_unitdir/rtorrent.service"
 
-%pre
-getent passwd rtorrent >/dev/null || useradd -r rtorrent
+echo 'u rtorrent - "rtorrent daemon"' >system-user-rtorrent.conf
+mkdir -p "$b/%_sysusersdir"
+cp -a system-user-rtorrent.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-rtorrent.conf random system-user-rtorrent.conf
+
+%pre -f random.pre
 %service_add_pre rtorrent.service
 
 %post
@@ -90,5 +95,6 @@ getent passwd rtorrent >/dev/null || useradd -r rtorrent
 %_datadir/applications/%name.desktop
 %_mandir/man1/rtorrent.1*
 %_unitdir/rtorrent.service
+%_sysusersdir/*
 
 %changelog

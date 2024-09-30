@@ -68,8 +68,6 @@ find . -name "*.jar" -exec rm -f {} \;
 sed -i 's|@LIBDIR@|%{_libdir}|' src/org/gnu/readline/Readline.java
 
 %build
-export JAVA_HOME=%{java_home}
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 %make CFLAGS="%{optflags} -fPIC -DPOSIX" T_LIBS=JavaEditline -j1
 %make apidoc -j1
 

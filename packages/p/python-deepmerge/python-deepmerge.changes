@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:46:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * Add typing / drop Python < 3.8 support
+  * feat: add typing for `merge` and `value_strategy` functions
+  * fix: Different hash for same dictionaries problem
+- update to 2.0b0:
+  * minor: small doc improvement
+  * Add typing / drop Python < 3.8 support
+
+-------------------------------------------------------------------
 Tue Dec 19 09:34:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

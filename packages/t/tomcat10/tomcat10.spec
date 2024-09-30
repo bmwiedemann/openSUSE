@@ -486,7 +486,7 @@ popd
 # install sample webapp
 mkdir -p %{buildroot}%{tomcatappdir}/sample
 pushd %{buildroot}%{tomcatappdir}/sample
-%jar xf %{buildroot}%{tomcatappdir}/docs/appdev/sample/sample.war
+jar xf %{buildroot}%{tomcatappdir}/docs/appdev/sample/sample.war
 popd
 
 pushd %{buildroot}%{tomcatappdir}/examples/WEB-INF/lib

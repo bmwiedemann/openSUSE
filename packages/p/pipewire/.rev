@@ -1146,4 +1146,12 @@ Build tested.
       compatibility with GStreamer.</comment>
     <requestid>1202730</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>173d16bc4468c324939162dc379fcba4</srcmd5>
+    <version>1.2.5</version>
+    <time>1727703279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204550</requestid>
+  </revision>
 </revisionlist>

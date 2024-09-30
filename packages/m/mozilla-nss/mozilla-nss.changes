@@ -1,14 +1,61 @@
 -------------------------------------------------------------------
+Sun Sep 29 10:12:09 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap by rebasing nss-fips-safe-memset.patch.
+
+-------------------------------------------------------------------
+Sat Sep 28 11:12:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.104
+  * bmo#1910071 - Copy original corpus to heap-allocated buffer
+  * bmo#1910079 - Fix min ssl version for DTLS client fuzzer
+  * bmo#1908990 - Remove OS2 support just like we did on NSPR
+  * bmo#1910605 - clang-format NSS improvements
+  * bmo#1902078 - Adding basicutil.h to use HexString2SECItem function
+  * bmo#1908990 - removing dirent.c from build
+  * bmo#1902078 - Allow handing in keymaterial to shlibsign to make
+                  the output reproducible
+  * bmo#1908990 - remove nec4.3, sunos4, riscos and SNI references
+  * bmo#1908990 - remove other old OS (BSDI, old HP UX, NCR,
+                  openunix, sco, unixware or reliantUnix
+  * bmo#1908990 - remove mentions of WIN95
+  * bmo#1908990 - remove mentions of WIN16
+  * bmo#1913750 - More explicit directory naming
+  * bmo#1913755 - Add more options to TLS server fuzz target
+  * bmo#1913675 - Add more options to TLS client fuzz target
+  * bmo#1835240 - Use OSS-Fuzz corpus in NSS CI
+  * bmo#1908012 - set nssckbi version number to 2.70.
+  * bmo#1914499 - Remove Email Trust bit from ACCVRAIZ1 root cert.
+  * bmo#1908009 - Remove Email Trust bit from certSIGN ROOT CA.
+  * bmo#1908006 - Add Cybertrust Japan Roots to NSS.
+  * bmo#1908004 - Add Taiwan CA Roots to NSS.
+  * bmo#1911354 - remove search by decoded serial in
+                  nssToken_FindCertificateByIssuerAndSerialNumber
+  * bmo#1913132 - Fix tstclnt CI build failure
+  * bmo#1913047 - vfyserv: ensure peer cert chain is in db for
+                  CERT_VerifyCertificateNow
+  * bmo#1912427 - Enable all supported protocol versions for UDP
+  * bmo#1910361 - Actually use random PSK hash type
+  * bmo#1911576 - Initialize NSS DB once
+  * bmo#1910361 - Additional ECH cipher suites and PSK hash types
+  * bmo#1903604 - Automate corpus file generation for TLS client Fuzzer
+  * bmo#1910364 - Fix crash with UNSAFE_FUZZER_MODE
+  * bmo#1910605 - clang-format shlibsign.c
+- remove obsolete nss-reproducible-builds.patch
+
+-------------------------------------------------------------------
 Tue Aug 13 07:08:55 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.103
   * bmo#1908623 - move list size check after lock acquisition in sftk_PutObjectToList.
-  * bmo#1899542: Add fuzzing support for SSL_ENABLE_POST_HANDSHAKE_AUTH,
+  * bmo#1899542 - Add fuzzing support for SSL_ENABLE_POST_HANDSHAKE_AUTH,
   * bmo#1909638 - Follow-up to fix test for presence of file nspr.patch.
-  * bmo#1903783: Adjust libFuzzer size limits
-  * bmo#1899542: Add fuzzing support for SSL_SetCertificateCompressionAlgorithm, SSL_SetClientEchConfigs, SSL_VersionRangeSet and SSL_AddExternalPsk
-  * bmo#1899542: Add fuzzing support for SSL_ENABLE_GREASE and SSL_ENABLE_CH_EXTENSION_PERMUTATION
-- Add nss-reproducible-builds.patch to make the rpms reproducible, 
+  * bmo#1903783 - Adjust libFuzzer size limits
+  * bmo#1899542 - Add fuzzing support for SSL_SetCertificateCompressionAlgorithm,
+                  SSL_SetClientEchConfigs, SSL_VersionRangeSet and SSL_AddExternalPsk
+  * bmo#1899542 - Add fuzzing support for SSL_ENABLE_GREASE and
+                  SSL_ENABLE_CH_EXTENSION_PERMUTATION
+- Add nss-reproducible-builds.patch to make the rpms reproducible,
   by using a hardcoded, static key to generate the checksums (*.chk-files)
 - Updated nss-fips-approved-crypto-non-ec.patch to enforce
   approved curves with the CKK_EC_MONTGOMERY key type (bsc#1224113).

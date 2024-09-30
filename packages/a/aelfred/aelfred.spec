@@ -22,11 +22,12 @@ Release:        0
 Summary:        Java-based XML parser
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://saxon.sourceforge.net/aelfred.html
+URL:            https://saxon.sourceforge.net/aelfred.html
 Source0:        http://downloads.sourceforge.net/project/saxon/aelfred/7.0/aelfred7_0.zip
 Patch0:         aelfred-icedtea-build.patch
 Patch1:         aelfred-javadoc.patch
 BuildRequires:  ant
+BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
@@ -54,38 +55,35 @@ Demonstrations and samples for aelfred.
 
 %prep
 %setup -q -c
+rm *.jar
 unzip %{name}-source.zip
 %patch -P 0
 %patch -P 1 -p1
 
 %build
-export JAVA_HOME=%{java_home}
-export PATH=%{java_home}/bin:$PATH
-export CLASSPATH=
-cd net
-%{javac} -source 8 -target 8 `find . -name \*.java`
-%{javadoc} -notimestamp -source 8 -d ../HTML `find . -name \*.java`
+mkdir -p classes
+javac -source 8 -target 8 -d classes `find net -name \*.java`
+javadoc -notimestamp -source 8 -d HTML `find net -name \*.java`
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{name}.jar -C classes .
 
 %install
 # jar
-export JAVA_HOME=%{java_home}
-cd net
-mkdir -p %{buildroot}%{_javadir}
-cp -a ../saxon-%{name}.jar \
-%{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do \
-ln -s ${jar} ${jar/-%{version}/}; done)
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 %{name}.jar %{buildroot}%{_javadir}/%{name}.jar
+
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -a ../HTML/* %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -a HTML/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%defattr(0644,root,root,0755)
-%{_javadir}/*
+%{_javadir}/%{name}.jar
 
 %files javadoc
-%defattr(0644,root,root,0755)
-%dir %{_javadocdir}/%{name}
-%{_javadocdir}/%{name}/*
+%{_javadocdir}/%{name}
 
 %changelog

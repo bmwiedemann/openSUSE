@@ -179,4 +179,21 @@ https://github.com/fooyin/fooyin/releases/tag/v0.6.0
 </comment>
     <requestid>1202356</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ba958e36df0aa58c4e5927821dea2fe0</srcmd5>
+    <version>0.7.3</version>
+    <time>1727703493</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream 0.7.3
+    * Improvements
+        * Decoding: Support vgm7z
+        * Properties: Improve appearance
+    * Fixes
+        * Decoding: Resolve crash when restarting playback of some decoders
+        * Layout: Resolve crash when leaving layout editing mode
+- Release notes for interim release 0.7.2 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.7.2
+</comment>
+    <requestid>1204391</requestid>
+  </revision>
 </revisionlist>

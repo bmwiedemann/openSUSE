@@ -138,4 +138,15 @@
   * Prevent OctKey to import ssh and PEM strings.</comment>
     <requestid>1179686</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dd2397e4eb98e24c5126f1a9bd9d50b2</srcmd5>
+    <version>1.3.2</version>
+    <time>1727703503</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.2:
+  * Prevent ever-growing session size for OAuth clients.
+  * Revert quote client id and secret.
+  * unquote basic auth header for authorization server.</comment>
+    <requestid>1204401</requestid>
+  </revision>
 </revisionlist>

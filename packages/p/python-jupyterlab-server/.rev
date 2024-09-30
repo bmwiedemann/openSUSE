@@ -159,4 +159,13 @@
     (@krassowski)</comment>
     <requestid>1201268</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a91f2c2eb43863961392e68e2236ed55</srcmd5>
+    <version>2.27.3</version>
+    <time>1727703556</time>
+    <user>anag+factory</user>
+    <comment>- Disable openapi: Not compatible with 0.19
+</comment>
+    <requestid>1204531</requestid>
+  </revision>
 </revisionlist>

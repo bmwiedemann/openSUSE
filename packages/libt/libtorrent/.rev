@@ -106,4 +106,12 @@
     <comment>- Remove outdated specfile constructs.</comment>
     <requestid>832209</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d38d8fcb6d1b990c68d91ee83690777f</srcmd5>
+    <version>0.14.0</version>
+    <time>1727703557</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.14.0</comment>
+    <requestid>1204534</requestid>
+  </revision>
 </revisionlist>

@@ -98,7 +98,6 @@ Features of the APR connector:
 cd native
 %configure \
     --with-apr=%{_bindir}/apr-1-config \
-    --with-java-home=%{java_home} \
     --with-java-platform=2
 %make_build
 

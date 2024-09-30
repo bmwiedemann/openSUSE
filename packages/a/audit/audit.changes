@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Sep 17 18:20:58 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update to 4.0
+  - Drop python2 support
+  - Drop auvirt and autrace programs
+  - Drop SysVinit support
+  - Require the use of the 5.0 or later kernel headers
+  - New README.md file
+  - Rewrite legacy service functions in terms of systemctl
+  - Consolidate and update end of event detection to a common function
+  - Split off rule loading from auditd.service into audit-rules.service
+  - Refactor libaudit.h to split out logging functions and record numbers
+  - Speed up aureport --summary reports
+  - Limit libaudit python bindings to logging functions
+  - Add a metrics function for auparse
+  - Change auditctl to use pidfd_send_signal for signaling auditd
+  - Adjust watches to optimize syscalls hooked when watch file access
+  - Drop nispom rules
+  - Add intepretations for fsconfig, fsopen, fsmount, & move_mount
+  - Many code fixups (cgzones)
+  - Update syscall and interpretation tables to the 6.8 kernel
+  (from v3.1.2)
+  - When processing a run level change, make auditd exit
+  - In auditd, fix return code when rules added in immutable mode
+  - In auparse, when files are given, also consider EUID for access
+  - Auparse now interprets unnamed/anonymous sockets (Enzo Matsumiya)
+  - Disable Python bindings from setting rules due to swig bug (S. Trofimovich)
+  - Update all lookup tables for the 6.5 kernel
+  - Don't be as paranoid about auditctl -R file permissions
+  - In ausearch, correct subject/object search to be an and if both are given
+  - Adjust formats for 64 bit time_t
+  - Fix segfault in python bindings around the feed API
+  - Add feed_has_data, get_record_num, and get/goto_field_num to python bindings
+
+- Update spec:
+  * Add fix-auparse-test.patch (downstream):
+    Upstream tests uses a static value (42) for 'gdm' uid/gid (based
+    on Fedora values, apparently).  Replace these occurrences with
+    'unknown(123456)'
+  * Replace '--with-python' with '--with-python3' on %configure
+  * Add new headers 'audit_logging.h' and 'audit-records.h' for
+    audit-devel
+
+-------------------------------------------------------------------
 Mon Jul  3 08:33:52 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.1:

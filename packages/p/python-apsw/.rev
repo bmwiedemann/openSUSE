@@ -409,4 +409,14 @@
     pragma against attached databases.  (:issue:`524`)</comment>
     <requestid>1184155</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>40ddbd777555b9f7aa1d0f3ce1ab710c</srcmd5>
+    <version>3.46.1.0</version>
+    <time>1727703491</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.46.1.0:
+  * The shell dump command outputs the application_id in addition
+    to the user_version.</comment>
+    <requestid>1204392</requestid>
+  </revision>
 </revisionlist>

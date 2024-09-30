@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Sep 27 13:33:35 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.33~git20240927:
+  * SPU: Improve SPURS Task limit algorithm
+  * Fake sceNpMatching2GetLobbyInfoList
+  * MacOs/Arm64/Shortcuts: Add more plist entries
+  * Shortcuts: Try to create shortcut link path if it doesn't exist
+  * VS: add mac and linux hidapi files for improved input debugging
+  * SPU: SPURS limit update
+  * GUI: Add SPURS limit to home menu
+  * SPU: Make SPURS limit a dynamic setting
+  * Qt: Tiny improvements to Cam/Mic permissions
+  * Qt: Simplify some string conversion bloat
+  * aarch64: Correctly implement the null function trap
+  * Brute-force Qt cache invalidation
+  * Needed for qtimageformats changes to kick in
+  * Download qtimageformats so that shortcut icons create successfully
+  * Fix camera permission prompts
+  * SPU: Fix callback leak
+  * SPU: SPURS limiter algorithm update
+  * SPU: Task-based SPURS limiter
+  * Add AArch64 files to VS Project
+  * Update curl to 8.10.1
+  * input: use static hid singleton for init and exit
+  * Fix yet another warning
+  * macOS arm64 CI (#16070)
+  * spu: Do not apply a Max SPURS Threads limit to libSail
+  * Debugger: Fix thread-selection and refactoring
+  * cellMsgDialog: only abort dialogs that were actually spawned by cellMsgDialog
+  * cellSaveData: improve logging for overlays
+  * Improve logging during RPCS3 updates
+  * Added reconciliation functions for game list file (games.yml) (#16061)
+  * Updater API V3 (macOS only) (#16086)
+  * Implement old matching API
+  * SPU Analyzer Hotfix
+  * cellAtracXdec: fix FFmpeg warning
+
+-------------------------------------------------------------------
+Mon Sep 16 04:45:10 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.33~git20240914:
+  * [TESTERS NEEDED] Improved contextual menu (#16038)
+  * cellAtracXdec: review fixes
+  * cellAtracXdec: set to HLE by default
+  * cellAtracXdec implementation
+  * cellAdec: add internal datatypes
+  * Update curl to 8.10.0
+  * Update libpng to 1.6.44
+  * input: enable squircle settings in keyboard pad handler
+  * SPU Analyzer: Fix dereferencing freed reference
+  * rsx: Add 120fps and monitor refresh-rate frame limits
+  * Update FFMPEG to properly rebased branch
+  * Set cellSysutilAvcExtInitOptionParam to notice
+  * cellSysutilAvc: fix cellSysutilAvcEnumPlayers error check
+  * Fix some warning
+  * sysinfo/arm64: Improve code around registry access and document the fields
+  * ci: Fix clang linux failure
+  * windows/arm64: Implement fallback OS version detection
+  * build: Disable fixed base for windows-on-arm
+  * Fix compilation warning
+  * Fix GCC compilation for windows
+  * SPU Analyser: Fix source termination of starting block
+  * ffmpeg: Update submodule, supports linux arm64
+  * Fix arm64 RPCS3 being reported by macOS as an iOS app
+  * Debugger: Non-blocking thread list refresh
+  * cellSysutilAvcExt: add some param checks
+  * cellSysutilAvcExt: fix some params and size of long (the disassembly makes zero sense with s64)
+  * cellSysutilAvc: add param checks
+  * Stub cellSysutilAvc
+  * Update FAudio to 24.09
+  * cellPad: Remove obsolete comment
+  * cellPad: draw debug overlay for basic input debugging of port 0
+  * cellPad: scale emulated skateboard IR input down
+  * Qt: Force reset of debugger when a different game is running
+  * Qt: Don't start the debug update timer in the constructor
+  * Add support for SHRED dongle
+  * c++-ify empty return
+  * cpu: Format additions to sse2neon to match the rest of the file
+  * aarch64: Fix compilation for windows-on-arm
+  * patch_manager: set config_key_role to current key after handle_item_selected
+  * cellMic: add 16-bit PCM to 32-bit float conversion for DSP stream (#16030)
+  
+-------------------------------------------------------------------
+Mon Sep 03 17:27:36 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.33~git20240903:
+  * Update SDL to 2.30.7
+  * Qt: ignore double clicks unless they are left clicks
+  * rpcs3_version: Bump to 0.0.33
+  * BUILDING: Bump gcc/clang versions to the ones used in rpcs3-docker
+  * gcc: 11 -> 13
+  * clang: 12 -> 17
+  * BUILDING: Add qt6-svg for archlinux systems
+  * aarch64: Support calloc patch blocks
+  * Block parallel JIT allocation on macos
+  * Fix overlapping addresses returned by mmap
+  * Restore comment
+  * Allow overcommit on macos
+  * rsx: Silence compiler warnings
+  * Fix GL stencil tracking
+
+-------------------------------------------------------------------
 Mon Aug 26 22:15:02 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.32~git20240827:

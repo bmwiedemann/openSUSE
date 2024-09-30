@@ -444,7 +444,6 @@ rm -rf build/lib/ant-jai.jar build/lib/ant-netrexx.jar
 
 %if %{with bootstrap}
 export GC_MAXIMUM_HEAP_SIZE="134217728" #128M
-export JAVA_HOME="%{java_home}"
 sh -x ./build.sh --noconfig jars
 
 %endif

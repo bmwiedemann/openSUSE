@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>790d6c64f9317e04a9b5ec90aba35149</srcmd5>
+    <version>1.0.2</version>
+    <time>1727703480</time>
+    <user>anag+factory</user>
+    <comment>new package k8senv: manage multiple versions of kubectl, helm and velero clients on same system/jumpbox/bastion</comment>
+    <requestid>1204382</requestid>
+  </revision>
+</revisionlist>

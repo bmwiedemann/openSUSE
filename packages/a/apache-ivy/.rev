@@ -229,4 +229,12 @@
     <comment></comment>
     <requestid>1147962</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>e87119726804c9aabfbbcbe242758e6c</srcmd5>
+    <version>2.5.2</version>
+    <time>1727703281</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204561</requestid>
+  </revision>
 </revisionlist>

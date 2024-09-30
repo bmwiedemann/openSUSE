@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1200130</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb59fed63587c119e0ce81a71215defa</srcmd5>
+    <version>2.38.4</version>
+    <time>1727703534</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.38.4:
+  * fix(preprocess): add new regex to catch variable names for context menu
+  * chore(sidebarConfig): change how msg is shown
+  * fix(new-releases): use hardcoded `queryArtistDiscographyAll` def (#3166)
+  * fix(apply): check for old global navbar existence
+</comment>
+    <requestid>1204514</requestid>
+  </revision>
 </revisionlist>

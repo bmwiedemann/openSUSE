@@ -7,13 +7,13 @@
  tests/bench/test_x509.py               |   16 ++++++-------
  7 files changed, 37 insertions(+), 68 deletions(-)
 
-Index: cryptography-43.0.0/pyproject.toml
+Index: cryptography-43.0.1/pyproject.toml
 ===================================================================
---- cryptography-43.0.0.orig/pyproject.toml
-+++ cryptography-43.0.0/pyproject.toml
+--- cryptography-43.0.1.orig/pyproject.toml
++++ cryptography-43.0.1/pyproject.toml
 @@ -66,8 +66,6 @@ nox = ["nox"]
  test = [
-     "cryptography_vectors==43.0.0",
+     "cryptography_vectors==43.0.1",
      "pytest >=6.2.0",
 -    "pytest-benchmark",
 -    "pytest-cov",
@@ -63,10 +63,10 @@ Index: cryptography-43.0.0/pyproject.toml
  [tool.ruff]
  line-length = 79
  
-Index: cryptography-43.0.0/tests/bench/test_aead.py
+Index: cryptography-43.0.1/tests/bench/test_aead.py
 ===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_aead.py
-+++ cryptography-43.0.0/tests/bench/test_aead.py
+--- cryptography-43.0.1.orig/tests/bench/test_aead.py
++++ cryptography-43.0.1/tests/bench/test_aead.py
 @@ -26,84 +26,84 @@ def _aead_supported(cls):
      not _aead_supported(ChaCha20Poly1305),
      reason="Requires OpenSSL with ChaCha20Poly1305 support",
@@ -172,10 +172,10 @@ Index: cryptography-43.0.0/tests/bench/test_aead.py
      ct = aes.encrypt(b"\x00" * 12, b"hello world plaintext", None)
 -    benchmark(aes.decrypt, b"\x00" * 12, ct, None)
 +    aes.decrypt(b"\x00" * 12, ct, None)
-Index: cryptography-43.0.0/tests/bench/test_ec_load.py
+Index: cryptography-43.0.1/tests/bench/test_ec_load.py
 ===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_ec_load.py
-+++ cryptography-43.0.0/tests/bench/test_ec_load.py
+--- cryptography-43.0.1.orig/tests/bench/test_ec_load.py
++++ cryptography-43.0.1/tests/bench/test_ec_load.py
 @@ -5,9 +5,9 @@
  from ..hazmat.primitives.fixtures_ec import EC_KEY_SECP256R1
  
@@ -190,10 +190,10 @@ Index: cryptography-43.0.0/tests/bench/test_ec_load.py
 -    benchmark(EC_KEY_SECP256R1.private_key)
 +def test_load_ec_private_numbers():
 +    EC_KEY_SECP256R1.private_key()
-Index: cryptography-43.0.0/tests/bench/test_hashes.py
+Index: cryptography-43.0.1/tests/bench/test_hashes.py
 ===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_hashes.py
-+++ cryptography-43.0.0/tests/bench/test_hashes.py
+--- cryptography-43.0.1.orig/tests/bench/test_hashes.py
++++ cryptography-43.0.1/tests/bench/test_hashes.py
 @@ -5,10 +5,10 @@
  from cryptography.hazmat.primitives import hashes
  
@@ -207,10 +207,10 @@ Index: cryptography-43.0.0/tests/bench/test_hashes.py
  
 -    benchmark(bench)
 +    bench()
-Index: cryptography-43.0.0/tests/bench/test_hmac.py
+Index: cryptography-43.0.1/tests/bench/test_hmac.py
 ===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_hmac.py
-+++ cryptography-43.0.0/tests/bench/test_hmac.py
+--- cryptography-43.0.1.orig/tests/bench/test_hmac.py
++++ cryptography-43.0.1/tests/bench/test_hmac.py
 @@ -5,10 +5,10 @@
  from cryptography.hazmat.primitives import hashes, hmac
  
@@ -224,10 +224,10 @@ Index: cryptography-43.0.0/tests/bench/test_hmac.py
  
 -    benchmark(bench)
 +    bench()
-Index: cryptography-43.0.0/tests/bench/test_x509.py
+Index: cryptography-43.0.1/tests/bench/test_x509.py
 ===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_x509.py
-+++ cryptography-43.0.0/tests/bench/test_x509.py
+--- cryptography-43.0.1.orig/tests/bench/test_x509.py
++++ cryptography-43.0.1/tests/bench/test_x509.py
 @@ -13,40 +13,40 @@ from cryptography import x509
  from ..utils import load_vectors_from_file
  

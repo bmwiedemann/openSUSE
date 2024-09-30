@@ -20,17 +20,13 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.52.0
+Version:        2.54.0
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org
-# Source0 disabled, we are using source service
-#Source0:        https://download.gnome.org/sources/%%{name}/2.50/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM pangomm-docs-without-timestamp.patch -- Do not add timestamp to generated doc files.
-Patch0:         pangomm-docs-without-timestamp.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
@@ -41,13 +37,13 @@ BuildRequires:  m4
 BuildRequires:  mm-common
 BuildRequires:  perl(XML::Parser)
 #
-BuildRequires:  meson >= 0.55.0
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(pangocairo) >= 1.52.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.54.0
 
 %description
 pangomm provides a C++ interface to the pango library.

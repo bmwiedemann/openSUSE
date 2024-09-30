@@ -8,4 +8,20 @@
 </comment>
     <requestid>1200651</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6fe01258736b0700911db6bae14e26a</srcmd5>
+    <version>6.2.13</version>
+    <time>1727703497</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2.13:
+  * Bump primp to v0.6.3
+  * DDGS._impersonates: add chrome_129, safari_18, safari_ipad_18
+  * README: proxy section - change socks5:// to socks5h://
+- update to 6.2.12:
+  * fix _normalize_url() - replace space after unquote
+  * Update requrements: bump primp to v0.6.2
+  * DDGS._impersonates: add chrome_128
+  * CLI: _download_file - set impersonate=chrome_128</comment>
+    <requestid>1204396</requestid>
+  </revision>
 </revisionlist>

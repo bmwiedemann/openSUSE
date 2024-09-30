@@ -368,4 +368,13 @@
   * Update test vectors to match python-cryptography 43.0.0</comment>
     <requestid>1189787</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1965265d591a4d8656ccbf9d87b92cf7</srcmd5>
+    <version>43.0.1</version>
+    <time>1727703270</time>
+    <user>anag+factory</user>
+    <comment>- update to 43.0.1:
+  * Update test vectors to match python-cryptography 43.0.1</comment>
+    <requestid>1204398</requestid>
+  </revision>
 </revisionlist>

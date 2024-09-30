@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:22:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.13:
+  * Bump primp to v0.6.3
+  * DDGS._impersonates: add chrome_129, safari_18, safari_ipad_18
+  * README: proxy section - change socks5:// to socks5h://
+- update to 6.2.12:
+  * fix _normalize_url() - replace space after unquote
+  * Update requrements: bump primp to v0.6.2
+  * DDGS._impersonates: add chrome_128
+  * CLI: _download_file - set impersonate=chrome_128
+
+-------------------------------------------------------------------
 Wed Sep 11 22:54:31 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Release v6.2.11

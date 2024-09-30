@@ -389,6 +389,7 @@ grep -q '^dockremap:' /etc/subgid || \
 %config(noreplace) %{_sysconfdir}/docker/daemon.json
 %{_fillupdir}/sysconfig.docker
 
+%dir %attr(750,root,root) %{_sysconfdir}/audit/rules.d
 %config %{_sysconfdir}/audit/rules.d/%{name}.rules
 %{_udevrulesdir}/80-%{name}.rules
 

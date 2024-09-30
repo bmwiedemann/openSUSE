@@ -31,6 +31,8 @@ URL:            https://wiki.gnome.org/Apps/Cheese
 Source0:        https://download.gnome.org/sources/cheese/44/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cheese-c99.patch boo#1224002 mgorse@suse.com -- fix cast to invalid pointer type.
 Patch0:         cheese-c99.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.gnome.org/GNOME/cheese/-/merge_requests/73.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

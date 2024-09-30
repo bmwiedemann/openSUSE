@@ -51,4 +51,16 @@
     <comment></comment>
     <requestid>1188212</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>97b9d13d41571edc094ccfae50dfb2fc</srcmd5>
+    <version>2024.8.28</version>
+    <time>1727703517</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.8.28:
+  * Fix lsm2cmap with tifffile &gt; 2024.8.24.
+  * Drop support for Python 3.9 and numpy &lt; 1.24 (NEP29).
+
+- Restrict numpy to &lt; 2.</comment>
+    <requestid>1204497</requestid>
+  </revision>
 </revisionlist>

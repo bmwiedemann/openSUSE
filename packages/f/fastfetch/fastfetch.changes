@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Sep 29 16:05:07 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to 2.26.1
+  Changes:
+   * To be consistent to other platforms, CPU frequency detection 
+     on Linux no longer checks `bios_limit`
+  Features:
+   * Detect GPU index (gh#fastfetch-cli/fastfetch#1267, GPU)
+   * Count Flatpak runtime packages 
+     (gh#fastfetch-cli/fastfetch#1085, Packages, Linux)
+   * Support `pacstall` package manager (Packages, Linux)
+     - CMake `-DPACKAGES_DISABLE_PACSTALL=ON` can be used to disable 
+   * Support CU core count, max frequency, VMEM usage detection for 
+     AMD cards on Linux (GPU, Linux) 
+     - Requires `--gpu-driver-specific`
+   * Support EU core count, VMEM size detection Intel cards on Linux 
+     (GPU, Linux) 
+     - Requires --gpu-driver-specific. VMEM usage detection requires 
+       root permissions
+   * Add new module TPM to print TPM (Trusted Platform Module) 
+     version if available (TPM)
+   * Support GPU driver version detection (GPU, macOS)
+   * Add new CMake option `-DENABLE_EMBEDDED_PCIIDS=<BOOL>`
+     - If enabled, fastfetch will download the newest `pci.ids` file, 
+       transform it into C code and compile it into fastfetch 
+       binaries
+  Bugfixes:
+   * Fix font size detecton of foot terminal 
+     (gh#fastfetch-cli/fastfetch#1276, TerminalFont, Linux)
+   * Ignore `su` and `sudo` when detecting terminal 
+     (gh#fastfetch-cli/fastfetch#1283, Terminal, Linux)
+   * Always print inches in integer (Display)
+   * Fix Wifi connection protocol detection on macOS Sequoia (Wifi, 
+     macOS)
+   * Fix hanging when font name is long when detecting kitty term font 
+     (gh#fastfetch-cli/fastfetch#1289, TerminalFont)
+   * Detect all enabled or connected connectors 
+     (gh#fastfetch-cli/fastfetch#1301, Display, Linux)
+
+-------------------------------------------------------------------
 Thu Sep 19 04:17:15 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.25.0

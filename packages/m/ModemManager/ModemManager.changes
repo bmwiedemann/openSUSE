@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 23 15:48:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + A new "MSG" (message) log verbosity level is introduced, which
+    is also the new default one if none explicitly defined. This
+    level takes the place of the old "INFO" level, as a level
+    including the most important messages that should be logged
+    without needing to be warnings or errors. The new "INFO" level
+    is more verbose than "MSG" but less verbose than "DBG", and may
+    be useful as default in systems where active debugging of WWAN
+    related issues is required. E.g. all user operations triggered
+    via DBus method calls are logged in "INFO" level.
+  + Introduced the concept of "personal information" which should
+    by default not be included in log messages. Enabling personal
+    information in logs requires to run the daemon with the
+    '--log-personal-info' option. This feature is mostly
+    implemented for QMI and MBIM specific logs, but hasn't yet been
+    included in generic daemon logs or when using the AT protocol.
+    Changes and fixes related to this feature will be cherry-picked
+    and included in the future stable branch updates.
+- Update URL and Source adresses.
+
+-------------------------------------------------------------------
 Fri Oct  6 17:30:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit /usr/bin/dbus-daemon BuildRequires: Needed for

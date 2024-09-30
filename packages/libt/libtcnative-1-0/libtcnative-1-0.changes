@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:47:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Tue Feb 13 09:05:45 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.2.39:

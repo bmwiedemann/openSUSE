@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Sep 23 11:07:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package k8senv: manage multiple versions of kubectl, helm and
+  velero clients on same system/jumpbox/bastion

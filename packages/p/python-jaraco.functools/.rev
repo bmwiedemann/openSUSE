@@ -156,4 +156,13 @@
   * No significant changes.</comment>
     <requestid>1178459</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e08eaa41be5948edf669be7c37df41a</srcmd5>
+    <version>4.1.0</version>
+    <time>1727703284</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Added chainable decorator.</comment>
+    <requestid>1204579</requestid>
+  </revision>
 </revisionlist>

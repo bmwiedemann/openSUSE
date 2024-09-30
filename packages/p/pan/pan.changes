@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 28 21:17:19 UTC 2024 - Jim Henderson <hendersj@gmail.com>
+
+- Update to version 0.160:
+  * fix color management that was broken with v0.159
+  * body-pane: remove icon from "Copy URL" menu
+  * load_icon: print error message when icon is not found
+  * delete newsrc file when deleting a news server
+  * setup StartupWMClass in desktop.in file (glgo#GNOME/pan#191)
+- Drop pan-window-set-StartupWMClass.patch: incorporated
+  upstream.
+
+-------------------------------------------------------------------
 Mon Jul 22 13:04:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.159:

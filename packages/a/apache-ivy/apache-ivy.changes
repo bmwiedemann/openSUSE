@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:45:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Tue Feb 20 10:44:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

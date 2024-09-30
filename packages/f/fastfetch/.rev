@@ -817,4 +817,12 @@ Bugfixes:
    * Fix compiling with old linux headers (Camera, Linux)</comment>
     <requestid>1201910</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0fd929ac605e0da382d139a367f516e3</srcmd5>
+    <version>2.26.1</version>
+    <time>1727703568</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204541</requestid>
+  </revision>
 </revisionlist>

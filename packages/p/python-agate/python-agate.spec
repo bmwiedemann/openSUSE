@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define modname agate
 Name:           python-agate
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Data analysis library optimized for humans instead of machines
 License:        MIT

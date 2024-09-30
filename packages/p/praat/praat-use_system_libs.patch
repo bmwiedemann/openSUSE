@@ -10,10 +10,10 @@ to be compatible with upstream ones.
 Praat also supplies an unstable upstream portaudio version that's
 not recommendable for distro inclusion.
 
-Index: praat-6.4.02/melder/NUMlinprog.cpp
+Index: praat-6.4.21/melder/NUMlinprog.cpp
 ===================================================================
---- praat-6.4.02.orig/melder/NUMlinprog.cpp
-+++ praat-6.4.02/melder/NUMlinprog.cpp
+--- praat-6.4.21.orig/melder/NUMlinprog.cpp
++++ praat-6.4.21/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -23,10 +23,10 @@ Index: praat-6.4.02/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat-6.4.02/melder/NUMspecfunc.cpp
+Index: praat-6.4.21/melder/NUMspecfunc.cpp
 ===================================================================
---- praat-6.4.02.orig/melder/NUMspecfunc.cpp
-+++ praat-6.4.02/melder/NUMspecfunc.cpp
+--- praat-6.4.21.orig/melder/NUMspecfunc.cpp
++++ praat-6.4.21/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -42,10 +42,10 @@ Index: praat-6.4.02/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat-6.4.02/melder/melder.cpp
+Index: praat-6.4.21/melder/melder.cpp
 ===================================================================
---- praat-6.4.02.orig/melder/melder.cpp
-+++ praat-6.4.02/melder/melder.cpp
+--- praat-6.4.21.orig/melder/melder.cpp
++++ praat-6.4.21/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -55,10 +55,10 @@ Index: praat-6.4.02/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat-6.4.02/dwsys/Makefile
+Index: praat-6.4.21/dwsys/Makefile
 ===================================================================
---- praat-6.4.02.orig/dwsys/Makefile
-+++ praat-6.4.02/dwsys/Makefile
+--- praat-6.4.21.orig/dwsys/Makefile
++++ praat-6.4.21/dwsys/Makefile
 @@ -4,7 +4,7 @@
  
  include ../makefile.defs
@@ -75,10 +75,10 @@ Index: praat-6.4.02/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat-6.4.02/Makefile
+Index: praat-6.4.21/Makefile
 ===================================================================
---- praat-6.4.02.orig/Makefile
-+++ praat-6.4.02/Makefile
+--- praat-6.4.21.orig/Makefile
++++ praat-6.4.21/Makefile
 @@ -21,25 +21,20 @@ all: all-external all-self
  		dwsys/libdwsys.a sys/libsys.a melder/libmelder.a kar/libkar.a \
  		external/espeak/libespeak.a \
@@ -110,23 +110,23 @@ Index: praat-6.4.02/Makefile
  
  all-self:
  	$(MAKE) -C kar
-Index: praat-6.4.02/dwtools/Makefile
+Index: praat-6.4.21/dwtools/Makefile
 ===================================================================
---- praat-6.4.02.orig/dwtools/Makefile
-+++ praat-6.4.02/dwtools/Makefile
-@@ -4,7 +4,7 @@
- 
+--- praat-6.4.21.orig/dwtools/Makefile
++++ praat-6.4.21/dwtools/Makefile
+@@ -5,7 +5,7 @@
  include ../makefile.defs
  
--CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../external/vorbis -I ../external/opusfile
-+CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I /usr/include/opus
+ CPPFLAGS = -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
+-	-I ../external/clapack -I ../external/vorbis -I ../external/opusfile -I ../external/portaudio -I ../external/espeak
++	-I ../external/clapack -I /usr/include/opus -I ../external/portaudio -I ../external/espeak
  
  OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
  	Categories.o CategoriesEditor.o \
-Index: praat-6.4.02/dwtools/Sound_extensions.cpp
+Index: praat-6.4.21/dwtools/Sound_extensions.cpp
 ===================================================================
---- praat-6.4.02.orig/dwtools/Sound_extensions.cpp
-+++ praat-6.4.02/dwtools/Sound_extensions.cpp
+--- praat-6.4.21.orig/dwtools/Sound_extensions.cpp
++++ praat-6.4.21/dwtools/Sound_extensions.cpp
 @@ -37,10 +37,10 @@
  #include "Manipulation.h"
  #include "NUMcomplex.h"

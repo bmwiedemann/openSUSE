@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:15:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.46.1.0:
+  * The shell dump command outputs the application_id in addition
+    to the user_version.
+
+-------------------------------------------------------------------
 Sun Jun 30 21:32:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.46.0.1:

@@ -79,4 +79,13 @@
     <comment></comment>
     <requestid>1140307</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2bcd662df072f396e7d9d9b6fd22144e</srcmd5>
+    <version>0.10.2</version>
+    <time>1727703489</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.2:
+  * Fix Unicode codepoint conversion from UTF-16.</comment>
+    <requestid>1204387</requestid>
+  </revision>
 </revisionlist>

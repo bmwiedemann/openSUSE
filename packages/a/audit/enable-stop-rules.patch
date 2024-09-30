@@ -11,18 +11,19 @@ Disable audit when auditd.service stops, so kauditd stops logging/running.
 
 Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
 
-Index: audit-3.0.9/init.d/auditd.service
-===================================================================
---- audit-3.0.9.orig/init.d/auditd.service
-+++ audit-3.0.9/init.d/auditd.service
-@@ -25,9 +25,9 @@ ExecStart=/sbin/auditd
- ## NOTE: augenrules expect any rules to be added to /etc/audit/rules.d/
- ExecStartPost=-/sbin/augenrules --load
- #ExecStartPost=-/sbin/auditctl -R /etc/audit/audit.rules
--# By default we don't clear the rules on exit. To enable this, uncomment
+---
+ init.d/auditd.service |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/init.d/auditd.service
++++ b/init.d/auditd.service
+@@ -22,6 +22,10 @@ Documentation=man:auditd(8) https://gith
+ Type=forking
+ PIDFile=/run/auditd.pid
+ ExecStart=/sbin/auditd
++ExecStartPost=-/sbin/augenrules --load
 +# By default we clear the rules on exit. To disable this, comment
- # the next line after copying the file to /etc/systemd/system/auditd.service
--#ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
++# the next line after copying the file to /etc/systemd/system/auditd.service
 +ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
  Restart=on-failure
  # Do not restart for intentional exits. See EXIT CODES section in auditd(8).

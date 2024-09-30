@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 29 00:34:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.21:
+  * SpeechSynthesizer: repaired an old bug whereby Get phonemes
+    from text... could increase the duration of a subsequent Play
+    (or To Sound...).
+  * SpeechSynthesizer and TextGrid alignment: repaired a bug
+    (existing since 6.4.18) whereby clause and word tiers would be
+    empty.
+  * TextGrid window: disambiguated Command-F5 (now Option-F5 for
+    Get minimum pitch; likewise, Option-F8 for Get minimum
+    intensity).
+  * Calling Praat from command line: reenabled --pref-dir= option.
+- Refresh praat-use_system_libs.patch for update.
+
+-------------------------------------------------------------------
 Tue Aug 13 05:15:53 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.17:

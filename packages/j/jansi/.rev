@@ -53,4 +53,12 @@
     <comment>Appease lawyers</comment>
     <requestid>1083071</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>63f8653cabd9d1a2e5134c0306c9a724</srcmd5>
+    <version>2.4.0</version>
+    <time>1727703285</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204584</requestid>
+  </revision>
 </revisionlist>

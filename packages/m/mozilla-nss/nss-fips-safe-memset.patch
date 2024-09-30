@@ -277,7 +277,7 @@ Index: nss/lib/freebl/rijndael.c
 ===================================================================
 --- nss.orig/lib/freebl/rijndael.c
 +++ nss/lib/freebl/rijndael.c
-@@ -1114,7 +1114,7 @@ AES_DestroyContext(AESContext *cx, PRBoo
+@@ -1251,7 +1251,7 @@ AES_DestroyContext(AESContext *cx, PRBoo
          cx->worker_cx = NULL;
          cx->destroy = NULL;
      }
@@ -445,7 +445,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -4994,7 +4994,7 @@ pairwise_signverify_mech (CK_SESSION_HAN
+@@ -5105,7 +5105,7 @@ pairwise_signverify_mech (CK_SESSION_HAN
      if ((signature_length >= pairwise_digest_length) &&
          (PORT_Memcmp(known_digest, signature + (signature_length - pairwise_digest_length), pairwise_digest_length) == 0)) {
          PORT_Free(signature);
@@ -468,8 +468,8 @@ Index: nss/lib/util/secport.h
  #include <string.h>
  #include <stddef.h>
  #include <stdlib.h>
-@@ -182,6 +185,39 @@ SEC_END_PROTOS
- #endif /*SUNOS4*/
+@@ -178,6 +181,39 @@ SEC_END_PROTOS
+ #define PORT_Memmove memmove
  #define PORT_Memset memset
  
 +/* there are cases where the compiler optimizes away our attempt to clear

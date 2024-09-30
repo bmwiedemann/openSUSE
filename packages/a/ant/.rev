@@ -902,4 +902,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
 </comment>
     <requestid>1201917</requestid>
   </revision>
+  <revision rev="100" vrev="10">
+    <srcmd5>c825e8071ffff116f6ea1019d796460d</srcmd5>
+    <version>1.10.14</version>
+    <time>1727703283</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204562</requestid>
+  </revision>
 </revisionlist>

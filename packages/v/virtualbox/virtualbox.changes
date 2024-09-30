@@ -1,3 +1,23 @@
+-------------------------------------------------------------------
+Fri Sep 20 22:33:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * The GUI now offers a selection between Basic and Experienced
+    user level with reduced or full UI functionality.
+  * VRDE: If user does not set up TLS with custom certificates,
+    enable it with self-signed certificate, including issuing a
+    new one before the old one expires
+  * NAT: New engine with IPv6 support.
+  * Linux host and guest: Added Wayland support for Clipboard
+    sharing.
+- Add cxx17.patch to workaround "new" build failures
+  with gcc14/C++17
+- Move the C++17 command line switch from vbox-vboxadd-init-script.diff
+  to cxx17.patch
+- Add Conflict markers to prevent the situation {virtualbox-7.1
+  combined with virtualbox-qt-7.0}; old VBQT did not have the right
+  (strong enough) Requires lines.
+
 ---------------------------------------------------------------------
 Wed Aug 12  20:12:00 UTC 2024 - Larry Rainey <llrainey15@gmail.com>
 

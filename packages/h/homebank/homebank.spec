@@ -17,13 +17,13 @@
 
 
 Name:           homebank
-Version:        5.8.1
+Version:        5.8.3
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
-URL:            http://homebank.free.fr/
-Source:         http://homebank.free.fr/public/%{name}-%{version}.tar.gz
+URL:            https://www.gethomebank.org/
+Source:         https://www.gethomebank.org/public/sources/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
@@ -61,6 +61,9 @@ export CXX="g++-13"
 
 %configure
 %make_build
+
+%check
+make check
 
 %install
 %make_install

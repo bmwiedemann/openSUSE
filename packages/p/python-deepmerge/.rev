@@ -27,4 +27,18 @@
     collections subtypes</comment>
     <requestid>1133986</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9267260bed772442ef990d0f48cebd1b</srcmd5>
+    <version>2.0</version>
+    <time>1727703498</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0:
+  * Add typing / drop Python &lt; 3.8 support
+  * feat: add typing for `merge` and `value_strategy` functions
+  * fix: Different hash for same dictionaries problem
+- update to 2.0b0:
+  * minor: small doc improvement
+  * Add typing / drop Python &lt; 3.8 support</comment>
+    <requestid>1204399</requestid>
+  </revision>
 </revisionlist>

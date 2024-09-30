@@ -49,7 +49,7 @@ Javadoc for %{name}.
 
 %build
 mkdir -p classes target/api
-%javac -source 8 -target 8 -d classes $(find src/main/java -name "*.java")
+javac -source 8 -target 8 -d classes $(find src/main/java -name "*.java")
 
 (
 cd classes
@@ -64,14 +64,14 @@ Specification-Vendor: org.scala-sbt
 Specification-Title: %{name}
 Specification-Version: %{version}
 EOF
-%jar \
+jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
     --create --no-manifest --file=../target/%{name}.jar *
 )
 
-%{javadoc} -notimestamp -source 8 -d target/api \
+javadoc -notimestamp -source 8 -d target/api \
     -classpath $PWD/target/%{name}.jar $(find src/main/java -name "*.java")
 
 %install

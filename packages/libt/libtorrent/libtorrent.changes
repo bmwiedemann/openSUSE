@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 29 12:10:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.14.0
+  * Significant performance improvements to improve throughput and
+    reduce CPU usage.
+  * A fix for a torrent client crash with the socket address object.
+  * Support for 33 Gbit/s throttles on ruTorrent.
+
+-------------------------------------------------------------------
 Fri Sep  4 14:55:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove outdated specfile constructs.

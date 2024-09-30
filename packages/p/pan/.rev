@@ -212,4 +212,14 @@
     <comment></comment>
     <requestid>1190452</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cfeab1f6712668b0cfabb6e955d0beca</srcmd5>
+    <version>0.160</version>
+    <time>1727703506</time>
+    <user>anag+factory</user>
+    <comment>* Update to version 0.160:
+* Drop pan-window-set-StartupWMClass.patch: incorporated upstream.
+</comment>
+    <requestid>1204408</requestid>
+  </revision>
 </revisionlist>

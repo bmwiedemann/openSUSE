@@ -1,5 +1,5 @@
 #
-# spec file for package python-duckduckgo_search
+# spec file for package python-duckduckgo-search
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,31 +18,31 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-duckduckgo-search
-Version:        6.2.11
+Version:        6.2.13
 Release:        0
 Summary:        Search using the DuckDuckGo.com search engine
 License:        MIT
 URL:            https://github.com/deedy5/duckduckgo_search
 Source:         https://files.pythonhosted.org/packages/source/d/duckduckgo-search/duckduckgo_search-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.1.7}
-BuildRequires:  %{python_module primp >= 0.6.1}
+BuildRequires:  %{python_module primp >= 0.6.3}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-click >= 8.1.7
-Requires:       python-primp >= 0.6.1
+Requires:       python-primp >= 0.6.3
 Suggests:       python-lxml >= 5.2.2
 Suggests:       python-mypy >= 1.11.1
 Suggests:       python-pytest >= 8.3.1
 Suggests:       python-pytest-asyncio >= 0.23.8
 Suggests:       python-ruff >= 0.6.1
-Requires(post):	update-alternatives
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages

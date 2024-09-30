@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+	echo "You need to pass the filename VirtualBox-x.y.z.tar.bz2 as first argument."
+	exit 1
+fi
+
 REMOVE_DIRS=( 
 src/VBox/Additions/WINNT 
 src/VBox/Additions/os2 
@@ -54,4 +59,4 @@ fi
 cp -a "$BASENAME.tar.bz2" "$BASENAME-patched.tar.bz2"
 bunzip2 "$BASENAME-patched.tar.bz2"
 tar --wildcards --delete -f "$BASENAME-patched.tar" "${REMOVE_DIRS[@]}"
-bzip2 "$BASENAME-patched.tar"
+pixz -9 "$BASENAME-patched.tar"

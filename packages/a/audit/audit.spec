@@ -23,7 +23,7 @@
 %endif
 
 Name:           audit
-Version:        3.1.1
+Version:        4.0
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Source0:        https://people.redhat.com/sgrubb/audit/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        README-BEFORE-ADDING-PATCHES
 Patch0:         change-default-log_group.patch
+Patch1:         fix-auparse-test.patch
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  kernel-headers >= 2.6.30
 BuildRequires:  libtool
@@ -98,12 +99,11 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %ifarch arm
 	--with-arm \
 %endif
-	--enable-systemd \
 	--libexecdir=%{_libexecdir}/%{name} \
 	--with-apparmor \
 	--with-libcap-ng=no \
 	--disable-static \
-	--with-python=no \
+	--with-python3=no \
 	--disable-zos-remote
 
 %make_build -C common
@@ -178,6 +178,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libaudit.so
 %{_libdir}/libauparse.so
 %{_includedir}/libaudit.h
+%{_includedir}/audit_logging.h
+%{_includedir}/audit-records.h
 %{_includedir}/auparse.h
 %{_includedir}/auparse-defs.h
 %{_mandir}/man3/*

@@ -18,15 +18,13 @@
 
 %define __builder ninja
 Name:           pan
-Version:        0.159
+Version:        0.160
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM pan-window-set-StartupWMClass.patch glgo#GNOME/pan#191 badshah400@gmail.com -- Set wmclass for open windows
-Patch0:         pan-window-set-StartupWMClass.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

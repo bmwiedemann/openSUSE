@@ -454,4 +454,13 @@
     @murrayrm in #1017</comment>
     <requestid>1197027</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>af5147c629ef94f4ef49e20c1deb441b</srcmd5>
+    <version>0.10.1</version>
+    <time>1727703536</time>
+    <user>anag+factory</user>
+    <comment>- Skip two more flaky precision tests
+</comment>
+    <requestid>1204540</requestid>
+  </revision>
 </revisionlist>

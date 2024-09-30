@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 15:09:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 73.patch: Fix JSON validation. Fixes startup with json-glib
+  1.10.
+
+-------------------------------------------------------------------
 Tue May  7 15:11:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add cheese-c99.patch: fix cast to invalid pointer type

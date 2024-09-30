@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:48:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Wed Apr 26 15:53:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch sources using source_service and don't distribute legally

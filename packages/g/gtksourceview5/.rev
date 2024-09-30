@@ -129,4 +129,12 @@
   + Fix section name for elixir. (forwarded request 1178271 from dimstar)</comment>
     <requestid>1178279</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>820d4e1bd682be201780d1d10a41ed2a</srcmd5>
+    <version>5.14.0</version>
+    <time>1727703293</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204693</requestid>
+  </revision>
 </revisionlist>

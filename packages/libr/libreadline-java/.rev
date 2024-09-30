@@ -264,4 +264,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202894</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>3e03190f3f8e0a7f469d33d6269162a3</srcmd5>
+    <version>0.8.3</version>
+    <time>1727703596</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204563</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 28 08:31:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.21
+  App
+  * Close some opened sockets in sctp_darn and sctp_test
+  * Free host_s and serv_s in sctp_test and sctp_status
+  Test
+  * Call close on the correct sk in test_1_to_1_send
+  * Free the allocated buffers before return
+  * Replace malloc with test_malloc
+- Update to version 1.0.20
+  App
+  * Replace use of deprecated gethostbyname with getaddrinfo
+  * Check strdup return in append_addr
+  Lib
+  * Define cmsg array with correct size in sendv and recvv
+  * zero-initialize sinfo_assoc_id in sctp_rcvmsg
+  * Man page updates
+  Test
+  * Add a test case for RE_CONFIG and interleaving
+
+-------------------------------------------------------------------
 Thu Mar 23 13:04:53 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO now (boo#1133097).

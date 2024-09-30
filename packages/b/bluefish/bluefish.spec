@@ -1,7 +1,7 @@
 #
 # spec file for package bluefish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluefish
-Version:        2.2.14
+Version:        2.2.15
 Release:        0
 Summary:        A feature-Rich HTML Editor
 License:        GPL-3.0-or-later
@@ -81,7 +81,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
              UPDATE_DESKTOP=echo \
              UPDATE_MIME=echo
 
-%suse_update_desktop_file -r bluefish Application Network WebDevelopment GNOME
 %fdupes %{buildroot}%{_datadir}
 
 %find_lang bluefish

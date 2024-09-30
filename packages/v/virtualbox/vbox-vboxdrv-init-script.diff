@@ -1,7 +1,11 @@
-Index: VirtualBox-7.0.20/src/VBox/Installer/linux/vboxdrv.sh
+---
+ src/VBox/Installer/linux/vboxdrv.sh |   42 ++++++------------------------------
+ 1 file changed, 7 insertions(+), 35 deletions(-)
+
+Index: VirtualBox-7.1.0/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-7.0.20.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-7.0.20/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-7.1.0.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-7.1.0/src/VBox/Installer/linux/vboxdrv.sh
 @@ -29,11 +29,12 @@
  #
  ### BEGIN INIT INFO
@@ -66,17 +70,3 @@ Index: VirtualBox-7.0.20/src/VBox/Installer/linux/vboxdrv.sh
  
      # Sign kernel modules if kernel configuration requires it.
      if test "$(kernel_requires_module_signature)" = "1"; then
-Index: VirtualBox-7.0.20/Config.kmk
-===================================================================
---- VirtualBox-7.0.20.orig/Config.kmk
-+++ VirtualBox-7.0.20/Config.kmk
-@@ -3087,6 +3087,9 @@ else
-  endif
-  VBOX_MACOSX_ICON_FILE             ?= $(PATH_ROOT)/src/VBox/Artwork/darwin/NonOSE/VirtualBox.icns
- endif
-+ifndef VBOX_GCC_std
-+  VBOX_GCC_std := -std=c++17
-+endif
- 
- 
- ifndef VBOX_NOINC_DYNAMIC_CONFIG_KMK

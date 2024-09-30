@@ -1,0 +1,5 @@
+<package name="kubectl-cost" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubectl-cost"/>
+</package>

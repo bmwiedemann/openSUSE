@@ -1,7 +1,7 @@
 #
 # spec file for package jansi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Patch0:         %{name}-jni.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 
 %description
 Jansi is a java library that allows you to use ANSI escape sequences
@@ -67,8 +67,8 @@ cp %{SOURCE1} build.xml
 %pom_xpath_set "//pom:properties/pom:jdkTarget" 1.8
 
 # Link the JNI headers
-ln -s %{java_home}/include/jni.h src/main/native/inc_linux
-ln -s %{java_home}/include/linux/jni_md.h src/main/native/inc_linux
+ln -s %{_jvmdir}/java/include/jni.h src/main/native/inc_linux
+ln -s %{_jvmdir}/java/include/linux/jni_md.h src/main/native/inc_linux
 
 # Set the JNI path
 sed -i 's,@LIBDIR@,%{_libdir},' \
@@ -79,13 +79,13 @@ sed -i 's,\${project.version},%{version},' \
 
 %build
 # Build the native artifact
-CFLAGS="$CFLAGS -I. -I%{java_home}/include -I%{java_home}/include/linux -fPIC -fvisibility=hidden"
+CFLAGS="$CFLAGS -I. -fPIC -fvisibility=hidden"
 pushd src/main/native
-%__cc $CFLAGS -c jansi.c
-%__cc $CFLAGS -c jansi_isatty.c
-%__cc $CFLAGS -c jansi_structs.c
-%__cc $CFLAGS -c jansi_ttyname.c
-%__cc $CFLAGS $LDFLAGS -shared -o libjansi.so *.o -lutil
+gcc $CFLAGS -c jansi.c
+gcc $CFLAGS -c jansi_isatty.c
+gcc $CFLAGS -c jansi_structs.c
+gcc $CFLAGS -c jansi_ttyname.c
+gcc $CFLAGS $LDFLAGS -shared -o libjansi.so *.o -lutil
 popd
 
 # Build the Java artifacts
@@ -101,7 +101,7 @@ install -dm 0755 %{buildroot}%{_jnidir}/%{name}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 %fdupes -s %{buildroot}%{_javadocdir}

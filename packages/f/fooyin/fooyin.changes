@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 28 14:19:55 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.7.3
+    * Improvements
+        * Decoding: Support vgm7z
+        * Properties: Improve appearance
+    * Fixes
+        * Decoding: Resolve crash when restarting playback of some decoders
+        * Layout: Resolve crash when leaving layout editing mode
+- Release notes for interim release 0.7.2 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.7.2
+
+-------------------------------------------------------------------
 Sat Sep 21 14:16:22 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to upstream 0.7.1

@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Jul 11 19:56:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-cost: CLI for determining the cost of
+  Kubernetes workloads

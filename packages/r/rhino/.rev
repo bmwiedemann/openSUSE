@@ -307,4 +307,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
     <requestid>1203014</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>282bb8e32621a2922b46b6b79a41448f</srcmd5>
+    <version>1.7.15</version>
+    <time>1727703281</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204556</requestid>
+  </revision>
 </revisionlist>

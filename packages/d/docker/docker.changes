@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 18 13:47:45 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add %{_sysconfdir}/audit/rules.d to filelist 
+
+-------------------------------------------------------------------
 Wed Jul 31 05:28:09 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 26.1.5-ce. See upstream changelog online at

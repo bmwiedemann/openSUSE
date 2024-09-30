@@ -1,7 +1,7 @@
 #
 # spec file for package lksctp-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           lksctp-tools
-Version:        1.0.19
+Version:        1.0.21
 Release:        0
 Summary:        Utilities for SCTP (Stream Control Transmission Protocol)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            http://lksctp.sourceforge.net
 #Git-Clone:     https://github.com/sctp/lksctp-tools
-Source:         https://github.com/sctp/lksctp-tools/archive/refs/tags/v%version.tar.gz
+Source:         https://github.com/sctp/lksctp-tools/archive/refs/tags/v%version.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libtool
 
 %description
@@ -51,6 +51,7 @@ transparent multi-homing, and multiple ordered streams of messages.
 
 %prep
 %setup -q
+sed -i 's/\r$//' doc/rfc2960.txt
 
 %build
 autoreconf -fi

@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubecost/kubectl-cost</param>
+              <param name="changesrevision">33d395bea3a9b26631898cc8ca78630b71db2899</param></service><service name="tar_scm">
+                <param name="url">https://github.com/johanneskastl/kubectl-cost</param>
+              <param name="changesrevision">a9498a30c672ac5596a2b1d6d92606a1f784a150</param></service></servicedata>

@@ -1,7 +1,7 @@
 #
 # spec file for package libwnck
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        https://download.gnome.org/sources/libwnck/43/%{name}-%{version}
 Patch0:         handle-avoid-segfault-in-invalidate-icons.patch
 
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig

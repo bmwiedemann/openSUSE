@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 25 17:45:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.0:
+  + Color: Add parse_with_alpha().
+  + Context: Add set/get_round_glyph_positions().
+  + Item: Add default constructor, get_char_offset().
+  + Layout: Add set/get_justify_last_line(), get_direction(),
+    get_caret_pos().
+  + LayoutIter: Add operator bool(), get_run_baseline().
+  + LayoutLine: Add is_paragraph_start(), get_resolved_direction(),
+    get_height().
+  + TabArray: Add TabArray(const Glib::ustring& text) constructor,
+    operator bool(), set_positions_in_pixels(), to_string(),
+    set/get_decimal_point(), sort().
+  + Documentation:
+    - Language::get_scripts(): Improve documentation.
+    - Don't link to removed parts of library.gnome.org.
+  + Build:
+    - Require pango >= 1.54.0.
+    - Meson build: Require meson >= 0.62.0.
+    - Use Meson's pkgconfig module instead of using the *.pc.in
+      templates.
+- Drop pangomm-docs-without-timestamp.patch, fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar 15 20:59:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.52.0:

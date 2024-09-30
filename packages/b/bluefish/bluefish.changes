@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep  8 20:41:15 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.15:
+  * Allow highlighting the indenting level with a vertical line.
+  * Fix zencoding for python releases newer than 3.12.
+  * Add a retry button when opening files from a remote  location.
+  * A tiny performance improvement when scrolling.
+  * Fix a bug  in the bookmarks function and the visible indenting
+    function that potentially could lead to a crash.
+  * The perl syntax detection has been greatly improved.
+  * YAML syntax detection has been added. 
+- Drop use of deprecated %suse_update_desktop_file; upstream
+  .desktop file now has the right categories anyway.
+- remove-python-class-shebang.patch: Minor refresh to apply
+  cleanly.
+
+-------------------------------------------------------------------
 Sat Jun 10 07:21:10 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Update to 2.2.14

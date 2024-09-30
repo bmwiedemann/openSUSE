@@ -1027,4 +1027,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1186370</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>1babd2128343d3205b65d16fd54cc8b2</srcmd5>
+    <version>9.0.91</version>
+    <time>1727703589</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204557</requestid>
+  </revision>
 </revisionlist>

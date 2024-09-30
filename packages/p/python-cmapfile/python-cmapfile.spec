@@ -18,29 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cmapfile
-Version:        2023.8.30
+Version:        2024.8.28
 Release:        0
 Summary:        Write Chimera Map (CMAP) files
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/cmapfile/
 # SourceRepository: https://github.com/cgohlke/cmapfile
 Source:         https://github.com/cgohlke/cmapfile/archive/v%{version}.tar.gz#/cmapfile-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module h5py >= 3.1}
-BuildRequires:  %{python_module numpy >= 1.22}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module h5py >= 3.11}
+BuildRequires:  %{python_module numpy >= 2.1.0}
 BuildRequires:  %{python_module oiffile >= 2021.6.6}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 1.5}
+BuildRequires:  %{python_module scipy >= 1.14.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tifffile >= 2021.11.2}
+BuildRequires:  %{python_module tifffile >= 2024.5.24}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-h5py >= 3.1
-Requires:       python-numpy >= 1.22
+Requires:       python-h5py >= 3.11
+Requires:       python-numpy >= 2.1.0
 Requires:       python-oiffile >= 2021.6.6
 Requires:       python-scipy >= 1.5
-Requires:       python-tifffile >= 2021.11.2
+Requires:       python-tifffile >= 2024.5.24
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

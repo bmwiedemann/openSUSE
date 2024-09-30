@@ -59,10 +59,16 @@
 %bcond_with use_ffmpeg
 %endif
 
+%if 0%{?without_apparmor:0}
+%bcond_with apparmor
+%else
+%bcond_without apparmor
+%endif
+
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -121,7 +127,9 @@ BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
 BuildRequires:  libcamera-devel >= 0.2.0
 %endif
+%if %{with apparmor}
 BuildRequires:  pkgconfig(libapparmor)
+%endif
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)

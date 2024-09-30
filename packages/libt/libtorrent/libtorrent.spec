@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define rtorrentvers 0.9.8
+%define rtorrentvers 0.10.0
 Name:           libtorrent
-%define lname	libtorrent21
-Version:        0.13.8
+%define lname	libtorrent22
+Version:        0.14.0
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -64,7 +64,7 @@ seed speeds than the official client on high-bandwidth links.
 %build
 export CFLAGS="%optflags -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-export CXXFLAGS="$CXXFLAGS -std=gnu++11"
+export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 autoreconf -fiv
 %configure --enable-ipv6 --with-posix-fallocate
 %make_build
@@ -73,8 +73,7 @@ autoreconf -fiv
 %make_install
 find "%buildroot" -type f -name "*.la" -delete
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libtorrent.so.*

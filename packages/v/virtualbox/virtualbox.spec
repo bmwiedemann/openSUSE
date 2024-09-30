@@ -52,7 +52,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.20
+Version:        7.1.0
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -67,7 +67,7 @@ URL:            https://www.virtualbox.org/
 # script virtualbox-patch-source.sh will do the job :)
 # WARNING: This is not a comment, but the real command to repack source
 #%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
-Source0:        VirtualBox-%{version}-patched.tar.bz2
+Source0:        VirtualBox-%{version}-patched.tpxz
 Source1:        UserManual.pdf
 Source3:        virtualbox-60-vboxguest.rules
 Source4:        virtualbox-default.virtualbox
@@ -113,6 +113,7 @@ Patch8:         turn_off_cloud_net.patch
 Patch9:         vbox-usb-warning.diff
 # Patch for 15.5
 Patch10:        fix_for_leap15.5.patch
+Patch11:        cxx17.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -122,9 +123,14 @@ BuildRequires:  kernel-syms-longterm
 BuildRequires:  acpica
 BuildRequires:  cmake-full
 BuildRequires:  dwarves
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  kbuild >= 0.1.9998svn3101
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
+BuildRequires:  kbuild >= 0.1.9998+svn3613
 BuildRequires:  libcap-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
@@ -156,11 +162,6 @@ BuildRequires:  libelf-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libopus-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libtpms-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  libxslt-devel
@@ -170,6 +171,7 @@ BuildRequires:  lzfse-devel
 BuildRequires:  pulseaudio-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  qt6-tools-linguist
 BuildRequires:  rpm
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -177,6 +179,16 @@ BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  which
 BuildRequires:  xorg-x11-server
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Help)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6StateMachine)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glx)
@@ -203,7 +215,12 @@ BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-kmp = %{version}
 Requires(pre):  %fillup_prereq
-Requires(pre):  permissions
+Requires(post): permissions
+Requires(verify): permissions
+Conflicts:      %{name}-qt < %{version}
+Conflicts:      %{name}-qt > %{version}
+Conflicts:      %{name}-websrv < %{version}
+Conflicts:      %{name}-websrv > %{version}
 Recommends:     %{name}-gui = %{version}
 # package i4l-vbox from source package i4l-base shares the directory /etc/vbox
 # with us, but with different owner.
@@ -219,8 +236,13 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  boost-devel
 %endif
 %ifarch amd64 x86_64 ia32e em64t
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
+%else
+BuildRequires:  gcc11-32bit
+BuildRequires:  gcc11-c++-32bit
+%endif
 BuildRequires:  xorg-x11-libX11-devel-32bit
 BuildRequires:  xorg-x11-libXext-devel-32bit
 BuildRequires:  xorg-x11-libXmu-devel-32bit
@@ -256,7 +278,9 @@ the terms of the GNU Public License (GPL).
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
 Requires(pre):  %{name} = %{version}
-Requires(pre):  permissions
+Requires:       %{name} = %{version}
+Requires(post): permissions
+Requires(verify): permissions
 Provides:       %{name}-gui = %{version}
 #this is needed during update to trigger installing qt subpackage
 #http://en.opensuse.org/openSUSE:Upgrade_dependencies_explanation#Splitting_and_Merging
@@ -388,17 +412,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %endif
 
 %prep
-%setup -q -n VirtualBox-%{version}
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
+%autosetup -n VirtualBox-%{version} -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -419,13 +433,20 @@ sed -i 's:include/drm:%{_prefix}/src/linux/include/drm:' src/VBox/Additions/linu
 ### %%build, %%install, and %%file sections for virtualbox ###
 %if %{main_package}
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+# kmk is annoying, does not respond to CXX=g++-11 ...
+mkdir tc
+export PATH="$PWD/tc:$PATH"
+ln -s /usr/bin/gcc-11 tc/gcc
+ln -s /usr/bin/g++-11 tc/g++
+%endif
 # Disable LTO - Link Time Optimization
 	%define _lto_cflags %{nil}
 	#ensure we don't ever use them
 rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 
 #	--disable-kmods		don't build Linux kernel modules -  but use SUSE specific way see few lines under
-# NOT an autoconf ceonfigure macro
+# NOT an autoconf configure script
 ./configure \
     --enable-vnc \
     --enable-vde \
@@ -558,15 +579,13 @@ ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
 ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
 ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
 install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxXPCOMIPCD 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxExtPackHelperApp		%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxTestOGL			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxPermissionMessage		%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSUIDMessage			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxUSB_DevRules			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetDHCP			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetAdpCtl			%{buildroot}%{_vbox_instdir}
-install -m 755 VirtualBox			%{buildroot}%{_vbox_instdir}/VirtualBox6
+install -m 755 VirtualBox			%{buildroot}%{_vbox_instdir}/VirtualBoxQt
 install -m 755 VirtualBoxVM			%{buildroot}%{_vbox_instdir}
 # compatibility symlink in order to keep old desktop links functional
 ln -s %{_vbox_instdir}/VirtualBoxVM		%{buildroot}%{_vbox_instdir}/VirtualBox
@@ -639,7 +658,7 @@ install -m 0755 -D src/VBox/Installer/linux/VBoxCreateUSBNode.sh %{buildroot}%{_
 ######################################################
 echo "entering python-virtualbox install section"
 ######################################################
-pushd out/linux.*/release/bin/sdk/installer
+pushd out/linux.*/release/bin/sdk/installer/python
 VBOX_INSTALL_PATH=%{_vbox_instdir} python3 vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
@@ -857,7 +876,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxEFI*.fd
 %{_vbox_instdir}/VBoxManage
 %{_vbox_instdir}/VBoxSVC
-%{_vbox_instdir}/VBoxXPCOMIPCD
+%{_vbox_instdir}/VBoxXPCOMIPCD.so
 %{_vbox_instdir}/VBoxExtPackHelperApp
 %{_vbox_instdir}/vboximg-mount
 %{_vbox_instdir}/DbgPlugInDiggers.so
@@ -869,6 +888,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxDxVk.so
 %{_vbox_instdir}/UICommon.so
 %{_vbox_instdir}/VBoxHostChannel.so
+%{_vbox_instdir}/VBoxTraceLogDecoders.so
 %dir %{_vbox_instdir}/components
 %{_vbox_instdir}/components/*.so
 %{_vbox_instdir}/components/*.xpt
@@ -907,15 +927,13 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxPermissionMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSUIDMessage
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxUSB_DevRules
-%attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBox6
+%attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBoxQt
 %verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSDL
 %{_vbox_instdir}/VirtualBox
 #wrapper script is in bindir
 %attr(0755,root,root) %{_bindir}/VirtualBox
 %attr(0755,root,root) %{_bindir}/update-extpack.sh
-#ldd shows libQt* dependency
-%{_vbox_instdir}/VBoxTestOGL
 #qm's translations
 %{_datadir}/virtualbox/nls
 %{_vbox_instdir}/VBoxSVGA3D.so

@@ -345,4 +345,12 @@
     <comment>1.2.39</comment>
     <requestid>1146440</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>47d79a96e520280858cf416848c69d3c</srcmd5>
+    <version>1.2.39</version>
+    <time>1727703598</time>
+    <user>anag+factory</user>
+    <comment>Fix build after removal of the default %%{java_home} define</comment>
+    <requestid>1204564</requestid>
+  </revision>
 </revisionlist>

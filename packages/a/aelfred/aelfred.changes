@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:43:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+- Refactor the spec file to actually build the jar and not just
+  to distribute the prebuilt one
+
+-------------------------------------------------------------------
 Tue Feb 20 10:02:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

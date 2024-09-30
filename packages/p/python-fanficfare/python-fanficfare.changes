@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 22 16:10:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Chrome Simple Browser Cache extra field fix (Mac/Linux)
+- adapter_scribblehubcom: Allow for changing title in story URL.
+- Update adapter_syosetucom.py (#1095) Fix update retrieval for
+  series not completed, thanks dado330
+- Make CLI username prompt more visible
+- Update translations
+
+-------------------------------------------------------------------
 Thu Aug  1 16:51:04 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - update to 4.37.0:
