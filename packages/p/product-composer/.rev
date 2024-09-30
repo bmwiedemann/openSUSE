@@ -233,4 +233,13 @@
   * Avoid hanging installcheck with large output</comment>
     <requestid>1203616</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5b6280ef17a18036cafa456bcc1f2342</srcmd5>
+    <version>0.4.20</version>
+    <time>1727703738</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.20
+  * fix logic of installcheck fatality</comment>
+    <requestid>1204743</requestid>
+  </revision>
 </revisionlist>
