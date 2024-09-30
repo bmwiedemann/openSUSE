@@ -868,6 +868,10 @@ unsorted:
   - arianna 
   - arianna-lang 
   - arkade 
+  - arlon-cli 
+  - arlon-cli-bash-completion 
+  - arlon-cli-fish-completion 
+  - arlon-cli-zsh-completion 
   - arm-ml-examples-data 
   - arm-trusted-firmware 
   - arm-trusted-firmware-tools 
@@ -7259,6 +7263,10 @@ unsorted:
   - glassfish-websocket-api-javadoc 
   - glassfishbuild-maven-plugin 
   - glassfishbuild-maven-plugin-javadoc 
+  - glasskube-cli 
+  - glasskube-cli-bash-completion 
+  - glasskube-cli-fish-completion 
+  - glasskube-cli-zsh-completion 
   - gle-devel 
   - gleam 
   - glew 
@@ -9753,6 +9761,10 @@ unsorted:
   - k4dirstat 
   - k4dirstat-lang 
   - k8s-sidecar 
+  - k8senv 
+  - k8senv-bash-completion 
+  - k8senv-fish-completion 
+  - k8senv-zsh-completion 
   - k8tz 
   - k8tz-bash-completion 
   - k8tz-fish-completion 
@@ -10518,12 +10530,17 @@ unsorted:
   - kubectl-cnpg-bash-completion 
   - kubectl-cnpg-fish-completion 
   - kubectl-cnpg-zsh-completion 
+  - kubectl-cost 
+  - kubectl-cost-bash-completion 
+  - kubectl-cost-fish-completion 
+  - kubectl-cost-zsh-completion 
   - kubectl-directpv 
   - kubectl-dup 
   - kubectl-explore 
   - kubectl-foreach 
   - kubectl-neat 
   - kubectl-node-shell 
+  - kubectl-np-viewer 
   - kubectl-oomd 
   - kubectl-operator 
   - kubectl-retina 
@@ -10630,6 +10647,10 @@ unsorted:
   - kubesec-bash-completion 
   - kubesec-fish-completion 
   - kubesec-zsh-completion 
+  - kubeshark-cli 
+  - kubeshark-cli-bash-completion 
+  - kubeshark-cli-fish-completion 
+  - kubeshark-cli-zsh-completion 
   - kubespy 
   - kubetap 
   - kubetrim 
@@ -12678,7 +12699,7 @@ unsorted:
   - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
-  - libdatovka6 
+  - libdatovka8 
   - libdatrie-devel 
   - libdatrie1-32bit 
   - libdav1d7-32bit 
@@ -16594,7 +16615,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent21 
+  - libtorrent22 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm_unseal1 
@@ -17006,6 +17027,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
+  - libwebsockets-evlib-uv 
   - libwebsockets19 
   - libweston-13 
   - libweston-13-0 
@@ -17652,6 +17674,7 @@ unsorted:
   - lmdb-devel 
   - lmms 
   - lmms-devel 
+  - lmms-vst 
   - lnav 
   - lndir 
   - local-npm-registry 
@@ -17703,6 +17726,10 @@ unsorted:
   - lomt-script1-fonts 
   - lomt-sniglet-fonts 
   - lomt-sortsmillgoudy-fonts 
+  - longhornctl 
+  - longhornctl-bash-completion 
+  - longhornctl-fish-completion 
+  - longhornctl-zsh-completion 
   - lookbook 
   - lookbook-lang 
   - loook 
@@ -24139,7 +24166,6 @@ unsorted:
   - python310-Flask-Mail 
   - python310-Flask-Mailman 
   - python310-Flask-Migrate 
-  - python310-Flask-OpenTracing 
   - python310-Flask-Paranoid 
   - python310-Flask-Principal 
   - python310-Flask-RESTful 
@@ -24918,6 +24944,7 @@ unsorted:
   - python310-bobo 
   - python310-bokcolmaps 
   - python310-bokeh 
+  - python310-bokeh_sampledata 
   - python310-boltons 
   - python310-boolean.py 
   - python310-booleanOperations 
@@ -25872,7 +25899,6 @@ unsorted:
   - python310-jupyterlab 
   - python310-jupyterlab-pygments 
   - python310-jupyterlab-server 
-  - python310-jupyterlab-server-openapi 
   - python310-jupyterlab-server-test 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets 
@@ -26090,7 +26116,6 @@ unsorted:
   - python310-mdurl 
   - python310-mechanize 
   - python310-mediafile 
-  - python310-meld3 
   - python310-memory_profiler 
   - python310-mercantile 
   - python310-merge3 
@@ -26182,7 +26207,6 @@ unsorted:
   - python310-myst-parser 
   - python310-napalm 
   - python310-napalm-asa 
-  - python310-napalm-digineo-procurve 
   - python310-napalm-procurve 
   - python310-natsort 
   - python310-nautilus 
@@ -26309,7 +26333,6 @@ unsorted:
   - python310-opentelemetry-semantic-conventions 
   - python310-opentelemetry-test-utils 
   - python310-opentelemetry-util-http 
-  - python310-opentracing 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
   - python310-orange-canvas-core 
@@ -27720,7 +27743,6 @@ unsorted:
   - python310-xyzservices 
   - python310-y-py 
   - python310-yacron 
-  - python310-yafe 
   - python310-yamale 
   - python310-yamldoc 
   - python310-yamllint 
@@ -27830,7 +27852,6 @@ unsorted:
   - python311-Flask-Mail 
   - python311-Flask-Mailman 
   - python311-Flask-Migrate 
-  - python311-Flask-OpenTracing 
   - python311-Flask-Paranoid 
   - python311-Flask-Principal 
   - python311-Flask-RESTful 
@@ -28590,6 +28611,7 @@ unsorted:
   - python311-bobo 
   - python311-bokcolmaps 
   - python311-bokeh 
+  - python311-bokeh_sampledata 
   - python311-boltons 
   - python311-boolean.py 
   - python311-booleanOperations 
@@ -29505,7 +29527,6 @@ unsorted:
   - python311-jupyterlab 
   - python311-jupyterlab-pygments 
   - python311-jupyterlab-server 
-  - python311-jupyterlab-server-openapi 
   - python311-jupyterlab-server-test 
   - python311-jupyterlab-templates 
   - python311-jupyterlab-widgets 
@@ -29713,7 +29734,6 @@ unsorted:
   - python311-mdit-py-plugins 
   - python311-mechanize 
   - python311-mediafile 
-  - python311-meld3 
   - python311-memory_profiler 
   - python311-mercantile 
   - python311-merge3 
@@ -29803,7 +29823,6 @@ unsorted:
   - python311-myst-parser 
   - python311-napalm 
   - python311-napalm-asa 
-  - python311-napalm-digineo-procurve 
   - python311-napalm-procurve 
   - python311-natsort 
   - python311-nautilus 
@@ -29923,7 +29942,6 @@ unsorted:
   - python311-opentelemetry-semantic-conventions 
   - python311-opentelemetry-test-utils 
   - python311-opentelemetry-util-http 
-  - python311-opentracing 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
   - python311-orange-canvas-core 
@@ -31294,7 +31312,6 @@ unsorted:
   - python311-xyzservices 
   - python311-y-py 
   - python311-yacron 
-  - python311-yafe 
   - python311-yamale 
   - python311-yamldoc 
   - python311-yamllint 
@@ -31405,7 +31422,6 @@ unsorted:
   - python312-Flask-Mail 
   - python312-Flask-Mailman 
   - python312-Flask-Migrate 
-  - python312-Flask-OpenTracing 
   - python312-Flask-Paranoid 
   - python312-Flask-Principal 
   - python312-Flask-RESTful 
@@ -32185,6 +32201,7 @@ unsorted:
   - python312-bobo 
   - python312-bokcolmaps 
   - python312-bokeh 
+  - python312-bokeh_sampledata 
   - python312-boltons 
   - python312-boolean.py 
   - python312-booleanOperations 
@@ -33353,7 +33370,6 @@ unsorted:
   - python312-mdurl 
   - python312-mechanize 
   - python312-mediafile 
-  - python312-meld3 
   - python312-memory_profiler 
   - python312-mercantile 
   - python312-merge3 
@@ -33444,7 +33460,6 @@ unsorted:
   - python312-myst-parser 
   - python312-napalm 
   - python312-napalm-asa 
-  - python312-napalm-digineo-procurve 
   - python312-napalm-procurve 
   - python312-natsort 
   - python312-nautilus 
@@ -33572,7 +33587,6 @@ unsorted:
   - python312-opentelemetry-semantic-conventions 
   - python312-opentelemetry-test-utils 
   - python312-opentelemetry-util-http 
-  - python312-opentracing 
   - python312-openwrt-luci-rpc 
   - python312-opt-einsum 
   - python312-orange-canvas-core 
@@ -34982,7 +34996,6 @@ unsorted:
   - python312-xyzservices 
   - python312-y-py 
   - python312-yacron 
-  - python312-yafe 
   - python312-yamale 
   - python312-yamldoc 
   - python312-yamllint 
@@ -35886,6 +35899,10 @@ unsorted:
   - regexploit 
   - registries-conf-suse 
   - rehex 
+  - reimage 
+  - reimage-bash-completion 
+  - reimage-fish-completion 
+  - reimage-zsh-completion 
   - reiser4progs 
   - reiser4progs-devel 
   - rekor 
@@ -47889,6 +47906,10 @@ unsorted:
   - update-test-retracted 
   - update-test-security 
   - update-test-trivial 
+  - updatecli 
+  - updatecli-bash-completion 
+  - updatecli-fish-completion 
+  - updatecli-zsh-completion 
   - uperf 
   - upm-devel 
   - upmpdcli 

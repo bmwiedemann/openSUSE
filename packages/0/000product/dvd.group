@@ -145,6 +145,7 @@
     <package name="atmel-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="attr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="audit-rules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="augeas-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="augeas-lenses" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

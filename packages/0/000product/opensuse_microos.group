@@ -40,6 +40,7 @@
     <package name="at-spi2-core" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="attr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
+    <package name="audit-rules" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="baloo-widgets" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
