@@ -1,7 +1,7 @@
 #
 # spec file for package lmms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,37 +19,25 @@
 # The revision numbers for rpmalloc and qt5-x11embed come from accessing them via
 # https://github.com/LMMS/lmms/tree/v%%{version}/src/3rdparty/qt5-x11embed and
 # https://github.com/LMMS/lmms/tree/v1.2.1/src/3rdparty/rpmalloc/rpmalloc (two directories not a mistake)
-%define rpmallocrev b5bdc18051bb74a22f0bde4bcc90b01cf590b496
-%define qt5x11embedrev 022b39a1d496d72eb3e5b5188e5559f66afca957
+%define rev            18252088ba1dcbf5218e0bf7cb6604522a64185c
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-%bcond_with  wine
+%bcond_without  wine
 %endif
 %bcond_without  carla
 %bcond_without  crippled_stk
 Name:           lmms
-Version:        1.2.2
+Version:        1.3.0~git2024.09.21
 Release:        0
 Summary:        Linux MultiMedia Studio
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://lmms.io/
-Source0:        https://github.com/LMMS/lmms/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/mjansson/rpmalloc/archive/%{rpmallocrev}.tar.gz
-Source2:        https://github.com/lukas-w/qt5-x11embed/archive/%{qt5x11embedrev}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 %if %{with wine}
 Source3:        lmms-warning
 %endif
-# PATCH-FIX-OPENSUSE Patch for providing proper return code in a function
-Patch0:         lmms-1.2.0-return.patch
-%if %{with crippled_stk}
-# PATCH-FIX-OPENSUSE Some parts cannot be build because stk misses some files due to legal issues (bnc#761147)
-Patch1:         lmms-1.2.0-crippled_stk.patch
-%endif
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch2:         lmms-1.2.0-libdir.patch
-Patch3:         lmms-rpmalloc-fpic.patch
-# PATCH-FIX-UPSTREAM -- Fix build with recent carla releases
-Patch4:         lmms-1.2.2-carla_defines.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -63,6 +51,8 @@ BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libstk-devel
+BuildRequires:  perl-List-MoreUtils
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
 BuildRequires:  cmake(Qt5Core)
@@ -152,39 +142,12 @@ create a LMMS plugin.
 %prep
 %autosetup -p1
 
-pushd src/3rdparty
-rm -r qt5-x11embed
-tar -xf %{SOURCE2} && mv qt5-x11embed-%{qt5x11embedrev} qt5-x11embed
-pushd qt5-x11embed
-rm -r 3rdparty/ECM
-ln -s %{_datadir}/ECM 3rdparty/ECM
-popd
-cd rpmalloc && rm -r rpmalloc && tar -xf %{SOURCE1} && mv rpmalloc-%{rpmallocrev} rpmalloc
-popd
-
 %build
 export PATHBU=$PATH
 %if %{with wine}
 # Remove -m64 from CFLAGS, it causes VST build failure.
 export CFLAGS="-O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables"
 %define optflags $CFLAGS
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-#Add workaround for boo#1179734 to create the missing libwine.so symlink
-export WINELIB=$(find %{_libdir} -name libwine.so.?)
-export WINELIB32=$(find %{_prefix}/lib -name libwine.so.?)
-export WINELINK=$(echo $WINELIB | cut -d . -f 1,2)
-if ! test -e ${WINELINK}
-then
-mkdir -p $HOME/%{_lib}/wine
-mkdir -p $HOME/lib/wine
-pushd $HOME/%{_lib}/wine
-ln -sf ${WINELIB} libwine.so
-cd ../../lib/wine
-ln -sf ${WINELIB32} libwine.so
-export PATH="$PATH:$HOME/%{_lib}/:$HOME/lib"
-popd
-fi
-%endif
 %endif
 
 export CFLAGS="$CFLAGS -fPIC"
@@ -208,10 +171,6 @@ export CXXFLAGS="%optflags -fno-omit-frame-pointer"
   -Wno-dev
 
 export PATH=$PATHBU
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-sed -i 's/\/wine\/libwinecrt0.a//' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
-sed -i 's/libwinecrt0.a\/wine\///' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
-%endif
 
 %cmake_build
 
@@ -249,16 +208,16 @@ cp %{SOURCE3}  %{buildroot}%{_localstatedir}/adm/update-messages/
 
 %if %{with wine}
 %{_localstatedir}/adm/update-messages/%{name}-warning
-%exclude %{_libdir}/lmms/RemoteVstPlugin
-%exclude %{_libdir}/lmms/RemoteVstPlugin.exe.so
+%exclude %{_libdir}/lmms/32/RemoteVstPlugin32
+%exclude %{_libdir}/lmms/32/RemoteVstPlugin32.exe.so
 %exclude %{_libdir}/lmms/libvsteffect.so
 
 %post
 cat %{_localstatedir}/adm/update-messages/%{name}-warning
 
 %files vst
-%{_libdir}/lmms/RemoteVstPlugin
-%{_libdir}/lmms/RemoteVstPlugin.exe.so
+%{_libdir}/lmms/32/RemoteVstPlugin32
+%{_libdir}/lmms/32/RemoteVstPlugin32.exe.so
 %{_libdir}/lmms/libvsteffect.so
 %endif
 
