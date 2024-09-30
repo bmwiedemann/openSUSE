@@ -30,6 +30,17 @@
 %bcond_with qhull_support
 %bcond_with deflate_support
 %bcond_with tests_support
+
+%if 0%{suse_version} > 1500
+%define pythons python3
+%else
+%{?sle15_python_module_pythons}
+%define gccver 13
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+
 Name:           gdal
 Version:        3.9.2
 Release:        0
@@ -47,10 +58,10 @@ BuildRequires:  curl-devel
 BuildRequires:  dos2unix
 BuildRequires:  doxygen >= 1.4.2
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  geos-devel >= 3
+BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  geos-devel >= 3.8
 BuildRequires:  giflib-devel
-BuildRequires:  hdf5-devel
+BuildRequires:  hdf5-devel >= 1.10
 BuildRequires:  lapack-devel
 BuildRequires:  libcryptopp-devel
 BuildRequires:  libdeflate-devel
@@ -59,17 +70,18 @@ BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers
+BuildRequires:  %{mypython}-base
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-numpy-devel
+BuildRequires:  %{mypython}-setuptools
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  shapelib
+BuildRequires:  shapelib >= 1.4
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(OpenEXR)
+# c++17 standard errors for older versions
+BuildRequires:  pkgconfig(OpenEXR) >= 3
 BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
@@ -81,11 +93,11 @@ BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
 BuildRequires:  pkgconfig(libpcrecpp)
-BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpng) >= 1.6
 BuildRequires:  pkgconfig(libpq)
-BuildRequires:  pkgconfig(libtiff-4) >= 3.6.0
+BuildRequires:  pkgconfig(libtiff-4) >= 4.1
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
@@ -93,11 +105,11 @@ BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ocl-icd)
-BuildRequires:  pkgconfig(poppler)
-BuildRequires:  pkgconfig(proj)
+BuildRequires:  pkgconfig(poppler) >= 0.86
+BuildRequires:  pkgconfig(proj) >= 6.3
 BuildRequires:  pkgconfig(shapelib)
-BuildRequires:  pkgconfig(spatialite)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(spatialite) >= 4.1.2
+BuildRequires:  pkgconfig(sqlite3) >= 3.31
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
 %if %{with tests_support}
@@ -109,11 +121,11 @@ BuildRequires:  cmake
 BuildRequires:  python-rpm-macros
 %endif
 %if %{with tests_support}
+BuildRequires:  %{mypython}-lxml
+BuildRequires:  %{mypython}-pytest
+BuildRequires:  %{mypython}-pytest-env
+BuildRequires:  %{mypython}-pytest-sugar
 BuildRequires:  proj
-BuildRequires:  python3-lxml
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-env
-BuildRequires:  python3-pytest-sugar
 %endif
 %if %{with deflate_support}
 BuildRequires:  libdeflate-devel
@@ -144,7 +156,7 @@ BuildRequires:  libecwj2-devel
 %endif
 %endif
 # 3.9.x we stop requiring this hardly
-#Requires:       python3-GDAL = %%{version}
+#Requires:       %%{mypython}-GDAL = %%{version}
 
 %description
 GDAL is a translator library for raster geospatial data formats that
@@ -181,13 +193,13 @@ Conflicts:      lib%{name}32
 %description -n lib%{name}-drivers
 Drivers information for library
 
-%package -n python3-%{pypi_package_name}
-Summary:        GDAL Python3 module
+%package -n %{mypython}-%{pypi_package_name}
+Summary:        GDAL %{mypython} module
 Requires:       %{name} = %{version}-%{release}
-Provides:       python3-%{name} = %{version}
-Obsoletes:      python3-%{name} < %{version}
+Provides:       %{mypython}-%{name} = %{version}
+Obsoletes:      %{mypython}-%{name} < %{version}
 
-%description -n python3-%{pypi_package_name}
+%description -n %{mypython}-%{pypi_package_name}
 The GDAL python modules provide support to handle multiple GIS file formats.
 
 %package bash-completion
@@ -226,9 +238,11 @@ done
 find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
 find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python/d' {} \;
 # Fix wrong /usr/bin/env python3
-find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
+find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython}," {} \;
 
 %build
+%{?gccver:export CC=gcc-%{gccver}}
+%{?gccver:export CXX=g++-%{gccver}}
 %cmake \
   -DGDAL_USE_INTERNAL_LIBS=OFF \
   -DGDAL_USE_EXTERNAL_LIBS=ON \
@@ -301,7 +315,7 @@ find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/pyth
 
 %install
 %cmake_install
-%fdupes %{buildroot}%{python3_sitearch}
+%fdupes %{buildroot}%{mypython_sitearch}
 #remove duplicate license file
 rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
 
@@ -311,7 +325,7 @@ rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
 pushd %{name}autotest-%{version}
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 	export GDAL_DATA=%{buildroot}%{_datadir}/%{name}/
-    export PYTHONPATH=%{buildroot}%{python3_sitearch}/
+    export PYTHONPATH=%{buildroot}%{mypython_sitearch}/
 	export GDAL_DOWNLOAD_TEST_DATA=0
 	# Enable these tests on demand
 	#export GDAL_RUN_SLOW_TESTS=1
@@ -410,7 +424,7 @@ popd
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/sozip.1%{?ext_man}
 # 20240706 with 3.9.x release we have all binaries in gdal
-# and python3-GDAL will contains the *.py equivalent.
+# and python311-GDAL contains the *.py equivalent.
 %{_bindir}/gdalattachpct
 %{_bindir}/gdal2tiles
 %{_bindir}/gdal2xyz
@@ -462,12 +476,12 @@ popd
 %{_includedir}/gdal/*.h
 %{_mandir}/man1/gdal-config.1%{?ext_man}
 
-%files -n python3-%{pypi_package_name}
+%files -n %{mypython}-%{pypi_package_name}
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
-%{python3_sitearch}/osgeo_utils
-%{python3_sitearch}/osgeo
-%{python3_sitearch}/GDAL-%{version}*-info
+%{mypython_sitearch}/osgeo_utils
+%{mypython_sitearch}/osgeo
+%{mypython_sitearch}/GDAL-%{version}*-info
 %{_bindir}/gdalattachpct.py
 %{_bindir}/gdal2tiles.py
 %{_bindir}/gdal2xyz.py

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 28 12:17:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix SLE/Leap 15.6 build
+  * Move to SLE/Leap python311 module: Old Python 3.6 is no longer
+    supported by qgis
+  * use gcc13-c++ (gcc7-c++ does not provide <charconv>)
+  * Update build dependencies according to cmake defintions in
+    order to make clear what is missing for SLE/Leap
+
+-------------------------------------------------------------------
 Mon Aug 26 14:36:00 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to bugfix release 3.9.1
