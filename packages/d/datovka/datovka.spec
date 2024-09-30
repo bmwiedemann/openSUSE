@@ -26,14 +26,14 @@
 %define lrelease lrelease-qt5
 %endif
 Name:           datovka
-Version:        4.23.6
+Version:        4.24.2
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://www.datovka.cz
-Source0:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz.sha256
+Source0:        https://datovka.nic.cz/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://datovka.nic.cz/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         datovka-fix-pro.patch
 BuildRequires:  openssl-devel

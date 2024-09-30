@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Sep 30 05:42:23 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.24.2:
+ * Updated URLs to application-related web pages to point to new locations.
+ * Added support for a new credit event type when credit is being charged for
+   the recovering of a deleted message. This build requires libdatovka-0.7.0.
+ * Added optional date-based message search restrictions.
+ * Added sender and recipient data-box IDs into generated correspondence
+   overviews.
+ * Fixed sending e-gov requests that have been mistakenly sent as high-volume
+   messages.
+ * Fixed date sorting in found messages list.
+ * Added new CLI commands 'export-msg', 'export-msgs', 'import-msg' and
+   'import-msgs' allowing exporting and importing data from local databases.
+ * Using same PDF format to export envelope and delivery info as in mobile
+   application
+ * Added four configurable tool bars into main window.
+ * Top tool bars can be shown/hidden by the user.
+ * Message list filter field in the main window is by default hidden and
+   located below the message list.
+ * Updated 'create new message' icon.
+ * Always updating envelope for VoDZ messages when synchronising accounts.
+   This should fix problems when attempting to download VoDZ messages using
+   a message list that has been generated in old versions without VoDZ support.
+ * Showing a warning label in create message dialogue when source text of PDF
+   attachment has been modified after being attached or when not being
+   attached at all.
+ * Rewritten code for generating account, owner and user overviews. The code is
+   now shared with the mobile application.
+ * Increased default download timeout limit to 15 minutes because of VoDZ
+   messages.
+ * New message signature detail icon.
+ * CLI interface automatically detects whether to send a normal or a VoDZ
+   message.
+ * Fixed occasional crashes which may have occurred on backups.
+ * Users are occasionally notified about a donation possibility.
+ * Added new button icons the send message dialogue. Added 'Add Text' button
+   into the send message dialogue. Renamed some buttons in the create account
+   and the send message dialogue.
+ * The application sends basic environment and configuration stats.
+ * Updated support mail to datovka@labs.nic.cz.
+ * Added tool tips for create account dialogue labels.
+
+-------------------------------------------------------------------
 Sun Mar 24 18:03:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.23.6:
