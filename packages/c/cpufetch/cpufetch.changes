@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 18 20:10:18 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 1.06:
+  * [ARM] Added support for inferring the SoC from the uarch
+  * [ARM] Added support for inferring the SoC from PCI devices
+  * [ARM] Added support for SVE detection
+  * [X86] Significantly improved support for old x86 CPUs
+  * [X86] Added support for Hygon CPUs
+  * [ARM and X86] Added support for measuring max CPU frequency
+  * [ARM and X86] Added `--measure-max-freq` option to manually 
+    trigger CPU max frequency measurement
+  * [All] Added support for NO_COLOR
+
+-------------------------------------------------------------------
 Tue Apr  2 13:39:13 UTC 2024 - Taekyung Kim <gnuykeat.mik@gmail.com>
 
 - Changed wrong source url

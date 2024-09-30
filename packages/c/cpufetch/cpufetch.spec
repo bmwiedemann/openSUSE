@@ -1,6 +1,7 @@
 #
 # spec file for package cpufetch
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Taekyung Kim <gnuykeat.mik@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +18,16 @@
 
 
 Name:           cpufetch
-Version:        1.05
+Version:        1.06
 Release:        0
 Summary:        CLI CPU information tool written in C
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/Dr-Noob/%{name}
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 # Supports only x86_64, ARM and PowerPC
-ExclusiveArch: %{arm} aarch64 x86_64 ppc ppc64 ppc64le
+ExclusiveArch:  %{arm} aarch64 x86_64 ppc ppc64 ppc64le
 
 %description
 %{name} is a command-line tool written in C that displays the CPU information
