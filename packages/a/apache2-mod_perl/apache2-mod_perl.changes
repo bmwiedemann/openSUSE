@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:26:53 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Mon Jul  8 20:36:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build on Tumbleweed (boo#1227485)

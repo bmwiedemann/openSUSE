@@ -390,4 +390,12 @@
     <comment></comment>
     <requestid>1186316</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>0afa8cf24e84111a40dcb6753484e702</srcmd5>
+    <version>2.0.13</version>
+    <time>1727703750</time>
+    <user>anag+factory</user>
+    <comment>- Add /srv/www to filelist [bsc#1231027] (forwarded request 1204298 from kukuk)</comment>
+    <requestid>1204656</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_perl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -196,6 +196,7 @@ rm -f %{buildroot}%{perl_archlib}/perllocal.pod
 %{apache_libexecdir}/mod_perl.so
 %config(noreplace) %{apache_sysconfdir}/mod_perl-startup.pl
 %config(noreplace) %{apache_sysconfdir}/conf.d/mod_perl.conf
+%dir %{apache_serverroot}
 %dir %{apache_serverroot}/perl-lib
 %{_mandir}/man3/*
 %{perl_vendorarch}/Apache
