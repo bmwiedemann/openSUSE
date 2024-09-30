@@ -25,7 +25,7 @@
 %endif
 
 Name:           qbittorrent
-Version:        4.6.7
+Version:        5.0.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -34,8 +34,8 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
 Patch0:         harden_qbittorrent-nox@.service.patch
-# PATCH-FIX-OPENSUSE qbittorrent-fix_boost_1.66_build.patch search for libboost_system.so and patch stacktrace function # aloisio@gmx.com
-Patch2:         qbittorrent-fix_boost_1.66_build.patch
+# PATCH-FIX-OPENSUSE qbittorrent-fix_boost_1.75_build.patch search for libboost_system.so and patch stacktrace function # aloisio@gmx.com
+Patch2:         qbittorrent-fix_boost_1.75_build.patch
 # PATCH-FIX-OPENSUSE qbittorrent-altpython.patch force newer python for the plugins -- aloisio@gmx.com
 Patch3:         qbittorrent-altpython.patch
 BuildRequires:  cmake >= 3.16
@@ -48,7 +48,7 @@ BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core) >= 6.2
+BuildRequires:  cmake(Qt6Core) >= 6.5.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.9
-BuildRequires:  pkgconfig(openssl) >= 1.1.1
+BuildRequires:  pkgconfig(openssl) >= 3.0.2
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
 # contains the qt6 plugins to read SVG icons
@@ -110,6 +110,9 @@ done
 mkdir -p %{buildroot}%{_sbindir}/
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 
+%find_lang %{name} --with-man
+%find_lang %{name}-nox --with-man
+
 %fdupes %{buildroot}%{_datadir}/
 
 %preun nox
@@ -124,7 +127,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 %post nox
 %service_add_post %{name}-nox@.service
 
-%files
+%files -f %{name}.lang
 %license COPYING
 %doc AUTHORS Changelog README.md
 %{_bindir}/%{name}
@@ -135,7 +138,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 %{_datadir}/metainfo/org.qbittorrent.qBittorrent.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
-%files nox
+%files nox -f %{name}-nox.lang
 %license COPYING
 %doc AUTHORS Changelog README.md
 %{_bindir}/%{name}-nox

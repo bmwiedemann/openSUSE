@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:38:35 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.0
+  New features:
+  * Support creating .torrent with larger piece size
+  * Improve tracker entries handling
+  * Add separate filter item for tracker errors
+  * Allow to remove tracker from tracker filter widget menu
+  * Implement "Reannounce In" column
+  * Expose "DHT bootstrap nodes" setting
+  * Add support for Mark-of-the-Web
+    (https://redcanary.com/threat-detection-report/techniques/mark-of-the-web-bypass/)
+  * Allow to keep unwanted files in separate folder
+  * Add "Copy Comment" to the torrent list's context menu
+  * Allow relative profile paths
+  * Enable Ctrl+F hotkey for more inputs
+  * Add seeding limits to RSS and Watched folders options UI
+  * Subcategories implicitly follow the parent category options
+  * Add option to name each qbittorrent instance
+  * Add button for sending test email
+  * Allow torrents to override default share limit action
+  * Use Start/Stop instead of Resume/Pause
+  * Add the Popularity metric
+  * Focus on Download button if torrent link retrieved from the
+    clipboard
+  * Add ability to pause/resume entire BitTorrent session
+  * Add an option to set BitTorrent session shutdown timeout
+  * Apply "Excluded file names" to folder names as well
+  * Allow to use regular expression to filter torrent content
+  * Allow to move content files to Trash instead of deleting them
+  * Add ability to display torrent "privateness" in UI
+  * Add a flag in "Peers" tab denoting a connection using NAT
+    hole punching
+  Bug fixes:
+  * Display error message when unrecoverable error occurred
+  * Update size of selected files when selection is changed
+  * Normalize tags by trimming leading/trailing whitespace
+  * Correctly handle share limits in torrent options dialog
+  * Adjust tracker tier when adding additional trackers
+  * Fix inconsistent naming between "Done/Progress" column
+  * Sanitize peer client names
+  * Apply share limits immediately when torrent downloading is
+    finished
+  * Show download progress for folders with zero byte size as
+    100 instead of 0
+  * Fix highlighted piece color
+  * Apply "merge trackers" logic regardless of way the torrent
+    is added
+  Web UI:
+  * Improve WebUI responsiveness
+  * Do not exit the app when WebUI has failed to start
+  * Add "Moving" filter to side panel
+  * Add dark theme
+  * Allow to remember torrent content files deletion
+  * Leave the fields empty when value is invalid
+  * Use natural sorting
+  * Improve WebUI login behavior
+  * Conditionally show filters sidebar
+  * Add support for running concurrent searches
+  * Improve accuracy of trackers list
+  * Fix error when category doesn't exist
+  * Improve table scrolling and selection on mobile
+  * Restore search tabs on load
+  * Restore previously used tab on load
+  * Increase default height of "Share ratio limit" dialog
+  * Use enabled search plugins by default
+  * Add columns "Incomplete Save Path", "Info Hash v1", "Info
+    Hash v2"
+  * Always create generic filter items
+  * Provide "Use Category paths in Manual Mode" option
+  * Provide "Merge trackers to existing torrent" option
+  Web API:
+  * Fix wrong timestamp values
+  * Send binary data with filename and mime type specified
+  * Expose API for the torrent creator
+  * Add support for SSL torrents
+  * Provide endpoint for listing directory content
+  * Provide "private" flag via "torrents/info" endpoint
+  * Add a way to download .torrent file using search plugin
+  * Add "private" filter for "torrents/info" endpoint
+  * Add root_path to "torrents/info" result
+  RSS:
+  * Show RSS feed title in HTML browser
+  * Allow to set delay between requests to the same host
+  Search:
+  * Allow users to specify Python executable path
+  * Lazy load search plugins
+  * Add date column to the built-in search engine
+  * Allow to rearrange search tabs
+  Other changes:
+  * Add support for systemd power management
+  * Add support for localized man pages
+  * Specify a locale if none is set
+  * Drop support for Qt5, qmake, autotools
+  * Minimum supported versions: Qt: 6.5, Boost: 1.76, OpenSSL:
+    3.0.2
+  * Switch to C++20
+- Replace qbittorrent-fix_boost_1.66_build.patch with
+  qbittorrent-fix_boost_1.75_build.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 08:12:26 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.7
