@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Sep 23 07:17:26 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+* update to version 20240920:
+ * scamper:
+  * add -O noring to disable use of ring buffer on Linux when
+    scamper is configured with --enable-scamper-ring
+  * udpprobe: add -S src parameter, update manual page with
+    previously supported but undocumented options
+ * sc_prefixprober:
+  * allow do-not-probe list to be embedded in the input set of
+    prefixes to probe, update manual page.
+  * add -v to emit version of scamper release the sc_prefixprober
+    utility came from
+ * Python module:
+  * add src parameter to ScamperCtrl.do_udpprobe
+* update to version 20240916:
+ * scamper:
+  * with ping -F 0 and trace -s 0, choose a different TCP or UDP source
+    port if an otherwise available source port has been used in the past
+    5 seconds to the same destination IP and port.
+  * ping: add udp-sport probe method
+  * ping: refactor udp packet matching on datalink sockets
+  * allow -D when outputting to a file.
+  * use SO_TIMESTAMP on linux packet sockets, rather than call an ioctl,
+    to fix buggy linux timestamps when not using ring
+  * rework privsep code to be signal aware, and forward signals from
+    scamper's privileged process to scamper's unprivileged process via
+    the socketpair between the processes.  i.e.,
+    scamper -D -U /path/to/scamper-unix-socket -e /path/to/scamper.pid
+    kill -HUP `cat /path/to/scamper.pid`
+    now works.  TERM and INT also propagate from privileged to
+    unprivileged process.  this allows the user that started scamper to
+    send signals to the privileged process, which it then forwards to
+    unprivileged process.  the user who started scamper is otherwise not
+    able to send the unprivileged process signals, as that process
+    typically runs as user nobody.
+  * host: add -O nsid to signal queried server to include nsid OPT
+    record in response.  parse any server-provided OPT records.
+  * udpprobe: record ifname replies were received on
+  * udpprobe: increase supported probe size from 1000 to 1400 bytes.
+  * factor out most repeated tls code patterns into utils_tls.c
+  * add functions to utils_tls.c to load key material from opened
+    file descriptors, to allow key material to be reloaded in
+    unprivileged process
+  * reload TLS key material on HUP signal
+  * do not negotiate use of TLS v1.1
+  * refactor privsep code to make it obvious which functions belong to
+    which process, and develop an obvious pattern in the code.
+  * make route socket interface work on NetBSD again
+  * tracelb: fix sport validation
+  * other minor code cleanups
+ * sc_minrtt:
+  * thread input stage, add batch import.  by default, sc_minrtt
+    will import N files per batch, where N is the number of processors
+    online.
+  * add -b batchc parameter that allows for batch size to be adjusted
+    according to what is appropriate for the system
+  * set exit status to zero when import is successful
+  * add -v to emit version of scamper release the utility came from
+  * refactor code in places
+ * libscamperfile:
+  * bump version to account for added interfaces for udpprobe, host
+    objects.
+ * Python module:
+  * add nsid option to ScamperCtrl.do_dns method
+  * add ScamperUdpprobeReply.ifname attribute
+  * add OPT glue to ScamperHost, and related features
+    (udpsize, edns_version, edns_do attributes)
+  * add context manager support to ScamperFile and ScamperCtrl, allowing
+    for Python with / as syntax
+ * sc_bdrmap:
+  * change -v vp-ases option to -V vp-ases
+  * add -v to emit version of scamper release the utility came from
+ * sc_attach, sc_hoiho, sc_remoted:
+  * add -v to emit version of scamper release the utility came from
+ * sc_wartsdump:
+  * update for new udpprobe, host features.
+ * tests:
+  * add unit_cmd_tracelb, contributed by Marcus Luckie.
+  * add unit_ping_lib, check scamper_ping_reply_is_from_target
+  * add unit_host_warts, check OPT record reading and writing.
+  * expand unit_dl_parse_ip tests
+ * documentation:
+  * update python module documentation to reflect changes
+  * update scamper, sc_attach, sc_bdrmap, sc_hoiho, sc_minrtt,
+    sc_pinger, sc_remoted manual pages to reflect changes
+
+-------------------------------------------------------------------
 Mon Aug 19 07:05:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on Cython, Cython 3 appears to be supported. 
@@ -542,7 +630,7 @@ Fri Feb 24 07:32:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   - deorbit some unused functions from utils.c.
 
 -------------------------------------------------------------------
-Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20211212e:
  - scamper:
@@ -558,7 +646,7 @@ Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
     files.
 
 -------------------------------------------------------------------
-Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20211212d:
  - scamper:
@@ -567,7 +655,7 @@ Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
   * document trace json object in sc_warts2json(1) manual page
 
 -------------------------------------------------------------------
-Thu Aug 18 06:36:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Aug 18 06:36:07 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20211212b:
  - scamper:
@@ -606,18 +694,18 @@ Mon Apr 25 14:13:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   libscamperfile1 package.
 
 -------------------------------------------------------------------
-Fri Feb 25 20:29:54 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Feb 25 20:29:54 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - add provices/obsoletes for old libscamperfile1 sub-package.
 
 -------------------------------------------------------------------
-Sat Feb 12 18:37:04 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Feb 12 18:37:04 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20211212a:
  - No changelog available.
 
 -------------------------------------------------------------------
-Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20211212:
  - scamper:
@@ -630,7 +718,7 @@ Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
     sc_hoiho man page
 
 -------------------------------------------------------------------
-Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to 20211026:
  scamper:
@@ -654,14 +742,14 @@ Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    sc_hoiho man page
 
 -------------------------------------------------------------------
-Mon Apr  5 19:33:43 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Apr  5 19:33:43 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20210324:
  sc_speedtrap:
  * speed up speedtrap's runtime
 
 -------------------------------------------------------------------
-Wed Sep 23 06:32:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep 23 06:32:14 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20200923:
  - scamper:
@@ -672,7 +760,7 @@ Wed Sep 23 06:32:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   * add support for learning regexes that extract ASNs in hostnames
 
 -------------------------------------------------------------------
-Sat Jul 18 13:36:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jul 18 13:36:44 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20200717:
  - scamper:
@@ -701,7 +789,7 @@ Sat Jul 18 13:36:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - remove rcsid from all files
 
 -------------------------------------------------------------------
-Sat Mar 14 16:50:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Mar 14 16:50:43 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20191102b:
  - scamper:
@@ -714,7 +802,7 @@ Sat Mar 14 16:50:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   * a new utility to select specific records from a warts file
 
 -------------------------------------------------------------------
-Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 -update to version 20191102:
  * scamper
@@ -745,7 +833,7 @@ Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     already exists.
 
 -------------------------------------------------------------------
-Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - remove SIOCGSTAMP.patch
 - update to version 20190916:
@@ -785,12 +873,12 @@ Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   sc_tbitblind, sc_tbitpmtud, and sc_uptime
 
 -------------------------------------------------------------------
-Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - add SIOCGSTAMP.patch for recent changes in socket.h/socketios.h
 
 -------------------------------------------------------------------
-Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20181219:
  * scamper:
@@ -842,7 +930,7 @@ Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
   * document updates in sc_uptime.1
 
 -------------------------------------------------------------------
-Sun May  6 08:20:47 UTC 2018 - sebix+novell.com@sebix.at
+Sun May  6 08:20:47 UTC 2018 - sebix@sebix.at
 
 - update to version 20180504:
  * scamper:
@@ -860,7 +948,7 @@ Sun May  6 08:20:47 UTC 2018 - sebix+novell.com@sebix.at
     bdrmap inferences.
 
 -------------------------------------------------------------------
-Thu Mar  8 19:36:27 UTC 2018 - sebix+novell.com@sebix.at
+Thu Mar  8 19:36:27 UTC 2018 - sebix@sebix.at
 
 - update to version 20180309:
  * sc_*:
@@ -882,7 +970,7 @@ Thu Mar  8 19:36:27 UTC 2018 - sebix+novell.com@sebix.at
   * add a manual page
 
 -------------------------------------------------------------------
-Mon Dec  4 08:40:18 UTC 2017 - sebix+novell.com@sebix.at
+Mon Dec  4 08:40:18 UTC 2017 - sebix@sebix.at
 
 - remove new-openssl.patch, included upstream
 - update to version 20171204:
@@ -893,12 +981,12 @@ Mon Dec  4 08:40:18 UTC 2017 - sebix+novell.com@sebix.at
    * add -d 2 option, which dumps interface IP-ID behavior classifications.
 
 -------------------------------------------------------------------
-Thu Nov 30 21:22:24 UTC 2017 - sebix+novell.com@sebix.at
+Thu Nov 30 21:22:24 UTC 2017 - sebix@sebix.at
 
 - add patch new-openssl.patch to compile with new openssl versions
 
 -------------------------------------------------------------------
-Thu Aug 24 06:58:41 UTC 2017 - sebix+novell.com@sebix.at
+Thu Aug 24 06:58:41 UTC 2017 - sebix@sebix.at
 
 - update to version 20170822
   scamper:
@@ -929,7 +1017,7 @@ Thu Aug 24 06:58:41 UTC 2017 - sebix+novell.com@sebix.at
     https://www.caida.org/~mjl/pubs/spf.pdf
 
 -------------------------------------------------------------------
-Thu Jun 22 20:47:31 UTC 2017 - sebix+novell.com@sebix.at
+Thu Jun 22 20:47:31 UTC 2017 - sebix@sebix.at
 
 - update to 20161204a
  * More fixes to libscamperfile caught with fuzz testing.  corrupt
@@ -951,7 +1039,7 @@ Thu Jun 22 20:47:31 UTC 2017 - sebix+novell.com@sebix.at
    addresses
 
 -------------------------------------------------------------------
-Wed Jun 21 20:20:18 UTC 2017 - sebix+novell.com@sebix.at
+Wed Jun 21 20:20:18 UTC 2017 - sebix@sebix.at
 
 - update to 20161204
  * add remote control socket support to scamper.  scamper can be
