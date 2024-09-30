@@ -128,4 +128,51 @@
   Fix -Werror=enum-int-mismatch in lws_tls_server_abort_connection()</comment>
     <requestid>1089824</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c81ef46079aae581d504f6d0e209c458</srcmd5>
+    <version>4.3.3</version>
+    <time>1727703644</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1193269 from smolsheep
+
+- Make the main shared library require the evlib plugin.
+- Update to 4.3.3:
+  * cmake: ssl lib paths
+  * gcc: fix mbedtls missing enum
+  * libuv: fix idle being stopped when there is still pending stuff
+  * server: Always return result of _lws_vhost_init_server_af
+  * pt_destroy: possible leaking pipe side
+  * pmd: fix ws parser for non pmd packet with pmd ext enabled
+  * b64: lws_b64_decode_stateful truncates response
+  * clean: gcc13 false positive uninitialized
+  * mbedtls: if we have tls1.2 only accept exactly that
+  * cmake: mbedtls: mbedtls_ssl_conf_alpn_protocols check
+  * mbedtls: auto adapt to changed session constant
+  * msvc: avoid error about mixed ellipsis and cond
+  * mbedtls: print library version
+  * tls: mbedtls-3.5.0: correct privkey size
+  * ss: http: support PATCH
+  * openssl: Add lws ctx ref to client vhost's SSL_CTX
+  * openssl: Properly report OpenSSL error in
+    lws_tls_client_connect
+  * openssl-server: enum vs int disagreement
+  * openssl3: change deprecated warnings suppression
+  * tests: disable tests with jig rot
+  * remove LWS_CALLBACK_OPENSSL_CONTEXT_REQUIRES_PRIVATE_KEY
+    callback
+  * vhost: remove from defer binding on destroy
+  * fix build on QNX 6.5.0
+  * lib/secure-streams: Fix clang build error
+    `-Wunused-but-set-variable`
+  * ws: tell caller we closed wsi on handshake failure
+  * spa: file upload fix
+  * logs: setup earlier so we can use on fail path
+  * test-apps: use correct EXTERNAL_POLL flag
+  * lib/tls/CMakeLists.txt: fix build without threads
+  * http: server: correct plugin name in error
+  * http: server: mounts: dont assume Basic Auth if no FILE_OPS
+- Remove fix-gcc13-build.patch as PR 2824 was merged
+- Place evlib_uv.so into own package to fix SR#1112213</comment>
+    <requestid>1204598</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libwebsockets
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 19
 Name:           libwebsockets
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -28,11 +28,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-gcc13-build.patch -- based on PR 2824
-Patch0:         fix-gcc13-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libuv-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -45,6 +42,7 @@ HTTP/WebSocket servers or clients.
 %package -n %{name}%{sover}
 Summary:        A WebSockets library written in C
 Group:          Development/Libraries/C and C++
+Requires:       %{name}-evlib-uv = %{version}
 
 %description -n %{name}%{sover}
 Libwebsockets covers some features for people making embedded
@@ -58,6 +56,14 @@ HTTP/WebSocket servers or clients.
 * Account management (including registration, email verification,
   lost password, etc.)
 * SSL PFS support
+
+%package evlib-uv
+Summary:        Shared library for evlib_uv plugin
+Group:          Development/Libraries/C and C++
+Requires(pre):  %{name}%{sover} = %{version}
+
+%description evlib-uv
+This package contains the shared library for evlib_uv plugin.
 
 %package devel
 Summary:        Development files for %{name}
@@ -74,8 +80,7 @@ applications that want to make use of the WebSockets library.
 
 %build
 %cmake \
-    -DWITHOUT_TESTAPPS=1 \
-    -DLWS_USE_LIBUV=ON \
+    -DLWS_WITHOUT_TESTAPPS=ON \
     -DLWS_WITHOUT_BUILTIN_GETIFADDRS=ON \
     -DLWS_USE_BUNDLED_ZLIB=OFF \
     -DLWS_WITHOUT_BUILTIN_SHA1=ON \
@@ -95,11 +100,14 @@ rm %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
 %license LICENSE
 %{_libdir}/libwebsockets.so.%{sover}
 
+%files evlib-uv
+%license LICENSE
+%{_libdir}/libwebsockets-evlib_uv.so
+
 %files devel
 %doc README.* changelog
 %{_includedir}/*
 %{_libdir}/libwebsockets.so
-%{_libdir}/libwebsockets-evlib_uv.so
 %{_libdir}/pkgconfig/libwebsockets.pc
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake
