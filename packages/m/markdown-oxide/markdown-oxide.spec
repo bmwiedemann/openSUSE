@@ -15,16 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           markdown-oxide
-Version:        0.23.1
+Version:        0.23.2
 Release:        0
 Summary:        A markdown language server with Obsidian syntax support
 License:        CC0-1.0
 URL:            https://github.com/Feel-ix-343/markdown-oxide
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM smolsheep@opensuse.org -- Allow building with stable rust
-Patch0:         remove-unstable-rust.patch
 BuildRequires:  cargo-packaging
 
 %description

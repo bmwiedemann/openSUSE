@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 21:44:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove remove-unstable-rust.patch -- Fixed upstream
+- Update to version 0.23.2:
+  * Added daily files configuration
+
+-------------------------------------------------------------------
 Fri Jul  5 14:36:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add remove-unstable-rust.patch -- Allow building with stable rust
