@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:57:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2:
+  * Add module support; add support for disabling output and switch
+    markup; add support for reconfiguring stdin/stdout; support
+    repeated curly braces with functional expression; add
+    backward-compatible `Case` abstraction for match markup; add
+    more preprocessing and postprocessing commands via command
+    line options.
+
+-------------------------------------------------------------------
 Sat Apr  6 18:53:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1:

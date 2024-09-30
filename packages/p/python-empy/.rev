@@ -40,4 +40,18 @@
    updates.</comment>
     <requestid>1165864</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e530e96040a7cea5d05df15741c51a8a</srcmd5>
+    <version>4.2</version>
+    <time>1727703613</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2:
+  * Add module support; add support for disabling output and switch
+    markup; add support for reconfiguring stdin/stdout; support
+    repeated curly braces with functional expression; add
+    backward-compatible `Case` abstraction for match markup; add
+    more preprocessing and postprocessing commands via command
+    line options.</comment>
+    <requestid>1204577</requestid>
+  </revision>
 </revisionlist>
