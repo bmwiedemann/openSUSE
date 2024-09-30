@@ -68,13 +68,13 @@ and the layout is up to you.
 export CLASSPATH=%{_libdir}/java/swt.jar
 
 pushd src
-  %javac -source 1.8 -target 1.8 -g -encoding UTF-8 $(find . -type f -name "*.java")
+  javac -source 1.8 -target 1.8 -g -encoding UTF-8 $(find . -type f -name "*.java")
   jarfile="../net.sf.paperclips_%{version}.jar"
   files="$(find . -type f \( -name '*.class' -o -name '*.properties' \))"
   test ! -d classes && mf="" \
     || mf="`find classes/ -type f -name "*.mf" 2>/dev/null`"
   test -n "$mf" && jar cvfm $jarfile $mf $files \
-    || %jar --create --verbose \
+    || jar --create --verbose \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
         --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
