@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:34:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.09.27
+  * Support excluding player_clients in extractor-arg
+  * clip: Prioritize https formats
+
+-------------------------------------------------------------------
 Tue Aug 13 20:43:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.08.06

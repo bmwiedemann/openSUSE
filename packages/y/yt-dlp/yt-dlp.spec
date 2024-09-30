@@ -21,13 +21,14 @@
 %define skip_python37 1
 %{?sle15_python_module_pythons}
 Name:           yt-dlp
-Version:        2024.08.06
+Version:        2024.09.27
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
+Source9:        yt-dlp-rpmlintrc
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -88,8 +89,17 @@ rm -f youtube-dl yt-dlp
 b="%buildroot"
 %pyproject_install
 ln -s yt-dlp "$b/%_bindir/youtube-dl"
-%fdupes %buildroot/usr
 rm -Rf "$b/%_datadir/doc"
+# if you leave everything as-is, rpmlint complains about
+# 	python312-yt-dlp.noarch: W: files-duplicate
+# 	/usr/lib/python3.12/site-packages/yt_dlp/utils/__pycache__/progress.cpython-312.pyc
+# 	/usr/lib/python3.12/site-packages/yt_dlp/utils/__pycache__/progress.cpython-312.opt-1.pyc
+# if you add fdupes, rpmlint complains about
+# 	python312-yt-dlp.noarch: E: python-bytecode-inconsistent-mtime
+# 	/usr/lib/python3.12/site-packages/yt_dlp/extractor/__pycache__/screencastomatic.cpython-312.pyc
+# 	2024-09-29T18:11:02
+# 	/usr/lib/python3.12/site-packages/yt_dlp/extractor/screencastomatic.py
+# 	2024-09-29T18:11:01
 
 %files -n yt-dlp
 %license LICENSE
