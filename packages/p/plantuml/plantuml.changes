@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:51:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build after removal of the default %%{java_home} define
+
+-------------------------------------------------------------------
 Sun Apr  7 16:18:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.24.4

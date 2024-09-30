@@ -67,7 +67,7 @@ ant
 
 # build javadoc
 export CLASSPATH=$(build-classpath ant):plantuml.jar
-%{javadoc} -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
+javadoc -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
 
 %install
 # Set jar location
