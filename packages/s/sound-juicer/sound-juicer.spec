@@ -1,7 +1,7 @@
 #
 # spec file for package sound-juicer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Clean and Lean GNOME CD Ripper
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
-URL:            http://www.burtonini.com/blog/computers/sound-juicer/
+URL:            https://gitlab.gnome.org/GNOME/sound-juicer
 Source0:        https://download.gnome.org/sources/sound-juicer/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  brasero-devel
@@ -62,7 +62,6 @@ GStreamer-based CD ripping tool. Saves audio CDs to Ogg/vorbis.
 %meson_install
 # we do not want to pollute /usr/share/doc as a namespace
 rm -rf %{buildroot}%{_prefix}/share/doc
-%suse_update_desktop_file org.gnome.SoundJuicer AudioVideo Player Audio
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
