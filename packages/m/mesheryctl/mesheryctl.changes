@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 30 16:52:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.109:
+  * General
+    - Move to independent maintainer @Alero-Awani (#12164)
+    - fix reference to meshmates page @codered-lgtm (#12161)
+    - [Server] Assign unique names for generated declaration.
+      @MUzairS15 (#12153)
+    - Fix not able to ping k8s connection in local provider
+      @Yashsharma1911 (#12148)
+    - Seed design from locally present designs in local provider
+      @Yashsharma1911 (#12144)
+  * Meshery CLI
+    - changes in error shown @pranjalg1331 (#12141)
+  * Maintenance
+    - [bugfix] First-timer: Use GH_ACCESS_TOKEN, not GITHUB_TOKEN
+      @leecalcote (#12160)
+    - Bump github.com/open-policy-agent/opa from 0.67.1 to 0.68.0
+      @dependabot (#12100)
+  * Documentation
+    - [Doc]Fix catalog schema link @CalebZoe (#12145)
+
+-------------------------------------------------------------------
 Fri Sep 27 20:53:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.108:
