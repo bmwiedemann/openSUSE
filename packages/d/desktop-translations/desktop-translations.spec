@@ -40,6 +40,12 @@ BuildArch:      noarch
 %description
 This package provides the translations for installed desktop files.
 
+%package devel
+Summary:        Desktop Files Translations po Files
+
+%description devel
+This package provides the translations for installed desktop files as po files.
+
 %prep
 %setup -q -c %{name}
 
@@ -49,6 +55,7 @@ mv desktop-file-translations-%{version}/* .
 
 %install
 pushd po
+mkdir -p %{buildroot}%{_datadir}/%{name}/desktop_translations
 for lang in *; do
   if test "$lang" = "nb_no"; then
     continue
@@ -61,14 +68,17 @@ for lang in *; do
        msgfmt -o %{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES/desktop_translations.mo $f
        msgunfmt --no-wrap %{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES/desktop_translations.mo | \
           grep -v '^"[A-Z][^ ]*: ' | grep '[^\][\]n"' && exit 1
+       cp -a $f %{buildroot}%{_datadir}/%{name}/desktop_translations/${lang}.po
     done
   fi
 done
 popd
 
+mkdir -p %{buildroot}%{_datadir}/%{name}/polkitaction
 for lang in *; do
     if [ -e "${lang}/polkitaction.po" ]; then
 	msgfmt -o "%{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES/polkit-action-distro-translations.mo" "${lang}/polkitaction.po"
+	cp -a "${lang}/polkitaction.po" %{buildroot}%{_datadir}/%{name}/polkitaction/${lang}.po
     fi
 done
 
@@ -76,5 +86,9 @@ done
 
 %files -f %{name}.lang
 %defattr(-,root,root)
+
+%files devel
+%defattr(-,root,root)
+%{_datadir}/%{name}
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  4 23:04:14 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add support for the new tool %suse_translate_desktop.
+  (boo#1158957)
+
+-------------------------------------------------------------------
+Mon Aug 26 18:55:18 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Generate desktop-translation-devel for purpose of translation
+  check. (boo#1158957)
+
+-------------------------------------------------------------------
 Fri May 03 14:24:45 UTC 2024 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20240503.9343de5:
