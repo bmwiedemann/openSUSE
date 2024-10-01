@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 28 07:04:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027] 
+
+-------------------------------------------------------------------
 Thu Feb 22 13:44:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package info2html
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,10 @@ install -c arrows/r-ball.gif      $RPM_BUILD_ROOT%{apache_serverroot}/htdocs/gif
 
 %files
 %defattr(644,root,root,755)
+%dir %{apache_serverroot}
+%dir %{apache_serverroot}/htdocs
 %dir %{apache_serverroot}/htdocs/gif
+%dir %{apache_serverroot}/cgi-bin
 %attr(755,root,root) %{apache_serverroot}/cgi-bin/infocat
 %attr(755,root,root) %{apache_serverroot}/cgi-bin/info2html
 %attr(644,root,root) %config %{apache_serverroot}/cgi-bin/info2html.conf
