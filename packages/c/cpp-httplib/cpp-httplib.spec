@@ -16,20 +16,22 @@
 #
 
 
-%define sover 0.15
-%define libver 0_15
+%define         sover 0.18
+%define         libver 0_18
 Name:           cpp-httplib
-Version:        0.15.1
+Version:        0.18.0
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
 URL:            https://github.com/yhirose/cpp-httplib
-Source0:        https://codeload.github.com/yhirose/cpp-httplib/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}.pc
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openssl) >= 3.0.0
 
 %package -n lib%{name}%{libver}
@@ -38,7 +40,6 @@ Summary:        A C++11 HTTP/HTTPS library
 %package devel
 Summary:        A C++11 HTTP/HTTPS library
 Requires:       lib%{name}%{libver} = %{version}
-Conflicts:      cpp-httplib-headers-devel
 
 %description
 This is a multi-threaded HTTP library with blocking I/O. There is no
@@ -57,35 +58,46 @@ post-routing handlers, and support for binding sockets to multiple
 interfaces and any available port.
 
 %prep
-%setup -q
+%autosetup
 chmod -x example/uploader.sh
 
+# fix dynamically the version in the pkgconfig file
+sed -i 's|Version: 0.0.0|Version: %{version}|g' %{SOURCE1}
+
 %build
-%meson -Dcpp-httplib_compile=true -Dcpp-httplib_test=true \
-       --buildtype=release
-%meson_build
+%cmake \
+  -DBUILD_SHARED_LIBS=ON \
+  -DHTTPLIB_REQUIRE_OPENSSL=ON \
+  -DHTTPLIB_REQUIRE_ZLIB=ON \
+  -DHTTPLIB_REQUIRE_BROTLI=ON \
+  -DHTTPLIB_COMPILE=ON \
+  -DHTTPLIB_TEST=ON
+%cmake_build
 
 %install
-%meson_install
+%cmake_install
+install -Dm0644 %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
+
+#remove files
+rm -r %{buildroot}%{_datadir}/{licenses/httplib,doc/packages/cpp-httplib}
 
 %check
 # OBS and chroot build environments does not provide internet
 # connectivity, skip online tests to avoid failures
-export GTEST_FILTER='-*.*_Online'
-%meson_test
+%ctest --parallel 1 --exclude-regex '(_Online$)'
 
-%post   -n lib%{name}%{libver} -p /sbin/ldconfig
-%postun -n lib%{name}%{libver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{libver}
 
 %files -n lib%{name}%{libver}
+%license LICENSE
 %{_libdir}/lib%{name}.so.%{sover}
 %{_libdir}/lib%{name}.so.%{version}
-%license LICENSE
 
 %files devel
+%doc README.md example
 %{_libdir}/lib%{name}.so
 %{_includedir}/httplib.h
+%{_libdir}/cmake/httplib
 %{_libdir}/pkgconfig/%{name}.pc
-%doc README.md example
 
 %changelog

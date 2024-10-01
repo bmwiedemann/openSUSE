@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:05:37 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
+
+- Small specfile refactoring
+
+-------------------------------------------------------------------
+Sun Sep 22 16:50:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.18.0:
+  * httplib.h: support LibreSSL
+  * Nice way to call "handle_file_request" from user code
+  * How to diagnose the infamous read error 4
+  * Made default server and client read/write timeout settings separately
+  * Slow performance caused by get_remote_ip_and_port and get_local_ip_and_port
+  * Provides a way to ignore host verify
+  * add API support for verify certificate manually
+- update to 0.17.3:
+  * Accessing Directory
+  * ‘constexpr’ error
+  * Only match path params that span full path segment
+  * Fix KeepAliveTest.SSLClientReconnectionPost problem
+- update to 0.17.2:
+  * Fix incorrect handling of Expect: 100-continue
+  * Peformance improvement by removing tolower function call
+- update to 0.17.1:
+  * Header parser incorrectly accepts NUL and CR within header values
+  * Fix problem with Abstract Namespace Unix Domain
+  * Fix SIGINT problem in Docker image
+- update to 0.17.0:
+  * Changed CPPHTTPLIB_KEEPALIVE_MAX_COUNT to 100
+  * Add Dockerfile for static file server
+  * Breaking Change!: get_header_ methods on Request and Response now take…
+  * Add sleep in handle_EINTR
+  * Added set_ipv6_v6only method
+  * impossible to shut down the server safely
+  * Performance: reserve body to avoid frequent reallocations and copies
+- update to 0.16.3:
+  * Fixed set_connection_timeout() unexpected results
+  * Fix KeepAliveTest.SSLClientReconnectionPost
+- update to 0.16.2:
+  * threadsafe CLOEXEC on platforms that support it
+  * BoringSSL compatibility fixes
+- update to 0.16.1:
+  * detail::is_socket_alive() is not work for https connection
+  * avoid memory leaks if linked with static openssl libs
+  * Allow hex for ipv6 literal addr in redirect
+  * Fix build on Windows with no WINAPI_PARTITION_APP support
+  * test: fix GetRangeWithMaxLongLength on 32 bit machines
+  * Require a minimum of TLS 1.2
+- update to 0.16.0:
+  * Use final keyword for devirtualization
+  * FindBrotli cleanup & fixes
+  * client can't open the encrypted private key
+  * build(meson): generate new test PEMs
+  * Fix range parser when parsing too many ranges
+  * fix: increase default receive buffer to 16kb
+  * Removed excess usage of std::move
+  * Merge branch 'HerrCai0907-fix'
+  * Highlight notes using markdown features
+  * Added progress to POST, PUT, PATCH and DELETE requests
+  * Tweak CI & fix macOS prefix
+  * New function SSLServer::update_certs. Allows to update certificates while server is running
+  * Change library name to cpp-httplib
+- update to 0.15.3:
+  * Breaking change in handling requests with Range in v0.15.1 and v0.15.2
+- update to 0.15.2:
+  * Severe directory traversal vulnerability (dotdotslash)
+- switch to cmake build system
+
+-------------------------------------------------------------------
 Fri Feb  2 17:01:44 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
 
 - Update to version 0.15.1: 
