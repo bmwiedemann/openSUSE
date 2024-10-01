@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Sep 30 19:36:53 UTC 2024 - mrueckert@suse.de
+
+- Update to version 3.0.5+git0.8e879a52e:
+  * [RELEASE] Released version 3.0.5
+  * BUG/MINOR: quic: prevent freeze after early QCS closure
+  * BUG/MEDIUM: quic: handle retransmit for standalone FIN STREAM
+  * MINOR: quic: implement function to check if STREAM is fully acked
+  * MINOR: quic: convert qc_stream_desc release field to flags
+  * BUG/MINOR: cfgparse-listen: fix option httpslog override warning message
+  * BUG/MEDIUM: promex: Wait to have the request before sending the response
+  * BUG/MEDIUM: cache/stats: Wait to have the request before sending the response
+  * BUG/MEDIUM: sc_strm/applet: Wake applet after a successfull synchronous send
+  * DOC: config: Explicitly list relaxing rules for accept-invalid-http-* options
+  * BUG/MINOR: peers: local entries updates may not be advertised after resync
+  * BUG/MEDIUM: queue: implement a flag to check for the dequeuing
+  * BUG/MINOR: clock: validate that now_offset still applies to the current date
+  * BUG/MINOR: clock: make time jump corrections a bit more accurate
+  * BUG/MINOR: polling: fix time reporting when using busy polling
+  * MEDIUM: h1: Accept invalid T-E values with accept-invalid-http-response option
+  * BUG/MINOR: pattern: do not leave a leading comma on "set" error messages
+  * BUG/MINOR: h1-htx: Don't flag response as bodyless when a tunnel is established
+  * BUG/MAJOR: mux-h1: Wake SC to perform 0-copy forwarding in CLOSING state
+  * BUG/MEDIUM: pattern: prevent UAF on reused pattern expr
+  * BUG/MINOR: pattern: prevent const sample from being tampered in pat_match_beg()
+  * BUG/MEDIUM: clock: detect and cover jumps during execution
+  * REGTESTS: fix random failures with wrong_ip_port_logging.vtc under load
+  * DOC: configuration: place the HAPROXY_HTTP_LOG_FMT example on the correct line
+  * BUG/MINOR: quic: Too short datagram during packet building failures (aws-lc only)
+  * BUG/MINOR: quic: Crash from trace dumping SSL eary data status (AWS-LC)
+  * BUG/MEDIUM: quic: always validate sender address on 0-RTT
+  * MINOR: quic: Add trace for QUIC_EV_CONN_IO_CB event.
+  * MINOR: quic: Implement qc_ssl_eary_data_accepted().
+  * MINOR: quic: Modify NEW_TOKEN frame structure (qf_new_token struct)
+  * BUG/MINOR: quic: Missing incrementation in NEW_TOKEN frame builder
+  * MINOR: quic: Token for future connections implementation.
+  * MEDIUM: ssl/quic: implement quic crypto with EVP_AEAD
+  * MINOR: quic: Implement quic_tls_derive_token_secret().
+  * MINOR: tools: Implement ipaddrcpy().
+  * BUG/MEDIUM: clock: also update the date offset on time jumps
+  * BUILD: quic: 32bits build broken by wrong integer conversions for printf()
+  * BUG/MINOR: cfgparse-global: remove tune.fast-forward from common_kw_list
+  * DOC: config: correct the table for option tcplog
+  * BUG/MINOR: pattern: pat_ref_set: return 0 if err was found
+  * BUG/MINOR: pattern: pat_ref_set: fix UAF reported by coverity
+  * BUG/MINOR: h3: properly reject too long header responses
+  * BUG/MINOR: proto_uxst: delete fd from fdtab if listen() fails
+  * BUG/MINOR: mux-quic: do not send too big MAX_STREAMS ID
+  * REGTESTS: mcli: test the pipelined commands on master CLI
+  * BUG/MEDIUM: mworker/cli: fix pipelined modes on master CLI
+  * MINOR: channel: implement ci_insert() function
+  * BUG/MINOR: proto_tcp: keep error msg if listen() fails
+  * BUG/MINOR: proto_tcp: delete fd from fdtab if listen() fails
+  * BUG/MINOR: quic/trace: make quic_conn_enc_level_init() emit NEW not CLOSE
+  * BUG/MINOR: trace/quic: make "qconn" selectable as a lockon criterion
+  * BUG/MINOR: trace: automatically start in waiting mode with "start <evt>"
+  * BUG/MEDIUM: trace: fix null deref in lockon mechanism since TRACE_ENABLED()
+  * BUG/MINOR: trace/quic: permit to lock on frontend/connect/session etc
+  * BUG/MINOR: trace/quic: enable conn/session pointer recovery from quic_conn
+  * DOC: configuration: fix alphabetical ordering of {bs,fs}.aborted
+  * BUG/MINOR: fcgi-app: handle a possible strdup() failure
+  * BUG/MEDIUM: peer: Notify the applet won't consume data when it waits for sync
+  * BUG/MEDIUM: mux-h2: Propagate term flags to SE on error in h2s_wake_one_stream
+  * BUG/MEDIUM: h2: Only report early HTX EOM for tunneled streams
+  * BUG/MEDIUM: http-ana: Report error on write error waiting for the response
+  * BUG/MEDIUM: quic: prevent conn freeze on 0RTT undeciphered content
+  * BUG/MEDIUM: ssl: 0-RTT initialized at the wrong place for AWS-LC
+  * BUG/MEDIUM: ssl: reactivate 0-RTT for AWS-LC
+  * BUG/MINOR: stconn: bs.id and fs.id had their dependencies incorrect
+  * BUILD: mux-pt: Use the right name for the sedesc variable
+  * BUG/MEDIUM: mux-pt/mux-h1: Release the pipe on connection error on sending path
+  * BUG/MEDIUM: stconn: Report error on SC on send if a previous SE error was set
+  * BUG/MEDIUM: server/addr: fix tune.events.max-events-at-once event miss and leak
+
+-------------------------------------------------------------------
 Tue Sep 03 14:08:47 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.0.4+git0.7a59afa93: (CVE-2024-45506 boo#1229993)

@@ -1556,4 +1556,12 @@
     <comment>- Update to version 3.0.4+git0.7a59afa93: (CVE-2024-45506 boo#1229993)</comment>
     <requestid>1198535</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>e767ed33f83dfbe373d3bab4c5e2c508</srcmd5>
+    <version>3.0.5+git0.8e879a52e</version>
+    <time>1727795958</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.5+git0.8e879a52e:</comment>
+    <requestid>1204834</requestid>
+  </revision>
 </revisionlist>
