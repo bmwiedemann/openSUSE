@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 30 11:56:24 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Version update 1.0.1:
+   * example RPM packaging
+   * fork handling (issue #2)
+   * support passphrase callback for PIN (issue #5)
+   * additional testcases
+   * fix URI parsing (issues #9, #10)
+   * various fixes and cleanups
+
+-------------------------------------------------------------------
 Thu Nov 16 09:48:39 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Use non-default openssl-3 in SLE (jsc#PED-5440)
