@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Sep 26 10:52:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package fstail: scan a directory for changed files and tail
+  them

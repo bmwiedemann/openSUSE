@@ -1,0 +1,22 @@
+<package name="fstail" project="openSUSE:Factory">
+  <title>Scan a directory for changed files and tail them</title>
+  <description>What's this for?
+
+When you need to see the output from all changed files within a directory.
+
+Why doesn't tail -f /var/logs/* work?
+
+Unfortunately, tail -f /logs/* may not do what you want it to do. Bash will expand * to all existing files within /logs/ and then show the extra lines added to each of them.
+
+It also will not recurse down, any levels deeper than the current directory.
+
+How is fstail different then?
+
+fstail uses the gopkg.in/fsnotify to detect both new files, and existing files that are changed. It then starts concatenting their contents to the terminal.
+
+I needed this for actuated.dev which launches microVMs on servers for CI.
+
+Each VM launched will create a different file at: /var/log/actuated/GUID.txt, and tail -f * would only find existing files.</description>
+  <devel project="utilities" package="fstail"/>
+  <url>https://github.com/alexellis/fstail</url>
+</package>
