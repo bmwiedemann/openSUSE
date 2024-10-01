@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Sep 29 07:50:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.2:
+  * Feature Requests
+    - Enhancement: Added 15 second sleep to systemd services to
+      allow d-bus daemon to start and be available if present
+      (#2762)
+  * Bug Fixes
+    - Fix Bug: Application crash unable to correctly process a
+      timestamp that has fractional seconds (#2852)
+    - Fix Bug: Fixed application logging output of Personal Shared
+      Folder incorrectly advising there is no free space
+  * Other Changes | Fixes
+    - Updated documentation
+
+-------------------------------------------------------------------
+Sun Sep 29 07:48:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.1:
+  DO NOT USE .. CONTAINS A MAJOR TIMESTAMP ISSUE BUG
+  * Feature Requests
+    - Enhancement: Add --enable-debug to Docker files when building
+      client application (#2811)
+    - Enhancement: Update Debian Dockerfile to use 'curl' from
+      backports so a more modern curl version is used (#2831)
+    - Enhancement: Don't print the d-bus WARNING if
+      disable_notifications is set on cmd line or in config (#2840)
+  * Bug Fixes
+    - Fix Regression of extra quotation marks when using
+      ONEDRIVE_SINGLE_DIRECTORY with Docker (#2823)
+    - Fix Regression that --remove-source-files doesn’t work
+      (#2830)
+    - Fix Regression that real-time synchronization is not
+      occurring when using --monitor and sync_list (#2832)
+    - Fix Bug: Application crash when run synchronize due to
+      negative free space online (#2806)
+    - Fix Bug: Application crash when attempting to read timestamp
+      from database as invalid data was written (#2810, #2813,
+#2822, #2829)
+    - Fix Bug: Application crash when performing a URL dedocde
+      (#2815)
+    - Fix Bug: Application crash when using sync_list and Personal
+      Shared Folders the root folder fails to present the item id
+      (#2835)
+  * Other Changes | Fixes
+    - Updated documentation (various)
+
+-------------------------------------------------------------------
 Tue Sep 24 06:57:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.0:
