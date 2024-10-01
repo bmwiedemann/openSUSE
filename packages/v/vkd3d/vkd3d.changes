@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Sat Sep 28 23:36:17 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 1.13:
+  - libvkd3d
+    The ID3D12CommandList6 interface is supported.
+    Block-compressed textures can be created with unaligned
+    dimensions.
+    This corresponds to
+    D3D12_FEATURE_D3D12_OPTIONS8.UnalignedBlockTexturesSupported.
+    Some minor issues pointed out by the Vulkan validation layers
+    have been addressed.
+    These are not known to affect applications in practice, but
+    should make libvkd3d slightly more well-behaved.
+  - libvkd3d-shader
+    New features for the HLSL source type:
+    Basic loop unrolling support. Some of the more complicated
+    cases like loops containing conditional jumps are still
+    unsupported.
+    Initialisation values for global variables, function
+    parameters, and annotation variables are parsed and stored in
+    output formats supporting them.
+    Shader model 5.1 register spaces are supported when using the
+    corresponding target profiles, as well as shader model 5.1
+    reflection data.
+    Register reservations support expressions as offsets. For
+    example:
+    ‘float f : register(c0[1 + 1 * 2]);’
+    The tex1D(), tex2D(), tex3D(), and texCUBE() intrinsic
+    function variants with explicit derivatives are supported.
+    The following intrinsic functions are supported:
+    asint()
+    f16tof32()
+    faceforward()
+    GetRenderTargetSampleCount()
+    rcp()
+    tex2Dbias()
+    tex1Dgrad(), tex2Dgrad(), tex3Dgrad(), and texCUBEgrad()
+    The sin() and cos() intrinsic functions are supported in
+    shader model 1-3 profiles.
+    These were already supported in shader model 4+ profiles.
+    The following features specific to effects target profiles:
+    Types supported in version 4.0+:
+    BlendState
+    ComputeShader, DomainShader, GeometryShader, and HullShader
+    DepthStencilState
+    RasterizerState
+    State application functions implemented for version 4.0+
+    effects:
+    OMSetRenderTargets()
+    SetBlendState()
+    SetComputeShader(), SetDomainShader(), SetGeometryShader(),
+    SetHullShader(), SetPixelShader(), and SetVertexShader()
+    SetDepthStencilState()
+    SetRasterizerState()
+    String types. These are mainly used for annotations.
+    Annotations on global variables.
+    Support for the ‘Texture’ field of the ‘SamplerState’ type.
+    Support for NULL values.
+    Stores to swizzled matrix variables.
+    The ‘unsigned’ type modifier is supported. (For example,
+    ‘unsigned int’.)
+    Note that ‘uint’ and related types were already supported.
+    ‘ConstantBuffer<>’ types.
+    The ‘SV_Coverage’ output semantic for fragment shaders.
+    The experimental DXIL source type supports quad group
+    operations.
+    The Direct3D shader model 2-3 ‘texldb’ instruction is
+    correctly disassembled when outputting Direct3D shader
+    assembly.
+    New interfaces:
+    The vkd3d_shader_parameter_info structure extends the
+    vkd3d_shader_compile_info structure, and can be used to
+    specify shader parameters.
+    This is a more generic version of the shader parameter
+    interface for SPIR-V targets in struct
+    vkd3d_shader_spirv_target_info.
+    The VKD3D_SHADER_PARAMETER_DATA_TYPE_FLOAT32 enumeration value
+    specifies that a shader parameter contains 32-bit
+    floating-point data.
+    The VKD3D_SHADER_PARAMETER_NAME_ALPHA_TEST_FUNC shader
+    parameter specifies the alpha test function.
+    The VKD3D_SHADER_PARAMETER_NAME_ALPHA_TEST_REF shader
+    parameter specifies the alpha test reference value.
+    The VKD3D_SHADER_PARAMETER_NAME_FLAT_INTERPOLATION shader
+    parameter specifies the interpolation mode for colour inputs
+    in Direct3D shader model 1-3 fragment shaders.
+    The VKD3D_SHADER_PARAMETER_TYPE_BUFFER enumeration value
+    specifies that the value of a shader parameter is provided at
+    run-time through a buffer resource.
+
+-------------------------------------------------------------------
 Thu Mar  7 17:11:06 UTC 2024 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to version 1.11:
