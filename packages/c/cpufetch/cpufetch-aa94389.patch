@@ -1,0 +1,48 @@
+From aa94389bbe1209faa0f98b031d5cc6b39ec22e74 Mon Sep 17 00:00:00 2001
+From: Dr-Noob <peibolms@gmail.com>
+Date: Mon, 19 Aug 2024 08:38:53 +0100
+Subject: [PATCH] [v1.06][ARM] Fix two off-by-one bugs (#264)
+
+---
+ src/arm/midr.c   | 2 +-
+ src/common/pci.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/arm/midr.c b/src/arm/midr.c
+index b0b578d5..b869a17a 100644
+--- a/src/arm/midr.c
++++ b/src/arm/midr.c
+@@ -448,7 +448,7 @@ char* get_str_topology(struct cpuInfo* cpu, struct topology* topo, bool dual_soc
+ 
+ char* get_str_features(struct cpuInfo* cpu) {
+   struct features* feat = cpu->feat;
+-  uint32_t max_len = strlen("NEON,SHA1,SHA2,AES,CRC32,SVE,SVE2") + 1;
++  uint32_t max_len = strlen("NEON,SHA1,SHA2,AES,CRC32,SVE,SVE2,") + 1;
+   uint32_t len = 0;
+   char* string = ecalloc(max_len, sizeof(char));
+ 
+diff --git a/src/common/pci.c b/src/common/pci.c
+index f23bc5ac..c6931fb8 100644
+--- a/src/common/pci.c
++++ b/src/common/pci.c
+@@ -98,9 +98,9 @@ void populate_pci_devices(struct pci_devices * pci) {
+     int path_size = strlen(PCI_PATH) + strlen(dev->path) + 2;
+ 
+     // Read vendor_id
+-    char *vendor_id_path = emalloc(sizeof(char) * (path_size + strlen("vendor")));
++    char *vendor_id_path = emalloc(sizeof(char) * (path_size + strlen("vendor") + 1));
+     sprintf(vendor_id_path, "%s/%s/%s", PCI_PATH, dev->path, "vendor");
+-    
++
+     if ((buf = read_file(vendor_id_path, &filelen)) == NULL) {
+       printWarn("read_file: %s: %s\n", vendor_id_path, strerror(errno));
+       dev->vendor_id = 0;
+@@ -110,7 +110,7 @@ void populate_pci_devices(struct pci_devices * pci) {
+     }
+ 
+     // Read device_id
+-    char *device_id_path = emalloc(sizeof(char) * (path_size + strlen("device")));
++    char *device_id_path = emalloc(sizeof(char) * (path_size + strlen("device") + 1));
+     sprintf(device_id_path, "%s/%s/%s", PCI_PATH, dev->path, "device");
+ 
+     if ((buf = read_file(device_id_path, &filelen)) == NULL) {

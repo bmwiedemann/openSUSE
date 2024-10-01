@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 09:26:11 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix arm %check:
+  * cpufetch-aa94389.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 20:10:18 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to version 1.06:

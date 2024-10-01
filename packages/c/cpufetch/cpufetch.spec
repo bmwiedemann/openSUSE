@@ -25,7 +25,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/Dr-Noob/%{name}
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+# PATCH-FIX-UPSTREAM - Fix arm tests
+Patch1:         cpufetch-aa94389.patch
 # Supports only x86_64, ARM and PowerPC
 ExclusiveArch:  %{arm} aarch64 x86_64 ppc ppc64 ppc64le
 
@@ -34,7 +35,7 @@ ExclusiveArch:  %{arm} aarch64 x86_64 ppc ppc64 ppc64le
 in a clean and beautiful way.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %set_build_flags
