@@ -552,4 +552,21 @@
 </comment>
     <requestid>1199921</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e911d10f0587e0e7ba6caf480fe3c421</srcmd5>
+    <version>2.52.3</version>
+    <time>1727795813</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.52.3:
+  - Features
+    * feat: Set GOMAXPROCS based on available resources
+  - Documentation updates
+    * docs: Improve developer documentation
+    * docs: Use uv for managing Python and dependencies
+    * docs: Add note on reporting viruses or trojans on Windows
+    * docs: Add sequence diagram for chezmoi init
+    * docs: Add daily usage entry on editing files
+</comment>
+    <requestid>1204814</requestid>
+  </revision>
 </revisionlist>

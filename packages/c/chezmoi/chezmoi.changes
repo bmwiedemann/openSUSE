@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 30 17:07:24 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.52.3:
+  - Features
+    * feat: Set GOMAXPROCS based on available resources
+  - Documentation updates
+    * docs: Improve developer documentation
+    * docs: Use uv for managing Python and dependencies
+    * docs: Add note on reporting viruses or trojans on Windows
+    * docs: Add sequence diagram for chezmoi init
+    * docs: Add daily usage entry on editing files
+
+-------------------------------------------------------------------
 Tue Sep 10 17:08:37 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.52.2:
