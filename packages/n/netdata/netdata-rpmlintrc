@@ -1,5 +1,0 @@
-addFilter("script-without-shebang")
-addFilter("env-script-interpreter")
-addFilter("hidden-file-or-dir")
-addFilter("zero-length")
-addFilter("statically-linked-binary")
