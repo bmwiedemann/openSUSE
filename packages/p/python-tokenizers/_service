@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<services>
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">tokenizers*.tar.gz</param>
+     <param name="compression">zst</param>
+     <param name="cargotoml">bindings/python/Cargo.toml</param>
+     <param name="cargotoml">tokenizers/Cargo.toml</param>
+     <param name="respect-lockfile">false</param>
+     <param name="update">true</param>
+  </service>
+</services>
+

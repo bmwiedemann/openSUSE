@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Sep 23 07:19:52 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Don't use macros for Requires
+
+-------------------------------------------------------------------
+Fri Aug 30 05:18:30 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Update package name back to "huggingface-hub" to match pypi
+
+-------------------------------------------------------------------
+Tue Aug 27 05:48:31 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Update package name "huggingface-hub" to "huggingface_hub" 
+
+-------------------------------------------------------------------
+Tue Aug 20 07:27:42 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Fix testsuite on 15.6
+
+-------------------------------------------------------------------
+Sun Aug 18 16:49:56 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Replace vendor tarball to zstd compressed vendor tarball
+- Force gcc version on leap. Thanks @marv7000 for your zed.spec
+- Use `CARGO_*` environmental variables to force generate
+  full debuginfo and avoid stripping.
+- Enable cargo test in %check.
+- Update to version 0.20.0:
+  * remove enforcement of non special when adding tokens
+  * [BREAKING CHANGE] Ignore added_tokens (both special and not) in the decoder
+  * Make USED_PARALLELISM atomic
+  * Fixing for clippy 1.78
+  * feat(ci): add trufflehog secrets detection
+  * Switch from cached_download to hf_hub_download in tests
+  * Fix "dictionnary" typo
+  * make sure we don't warn on empty tokens
+  * Enable dropout = 0.0 as an equivalent to none in BPE
+  * Revert "[BREAKING CHANGE] Ignore added_tokens (both special and not) …
+  * Add bytelevel normalizer to fix decode when adding tokens to BPE
+  * Fix clippy + feature test management.
+  * Bump spm_precompiled to 0.1.3
+  * Add benchmark vs tiktoken
+  * Fixing the benchmark.
+  * Tiny improvement
+  * Enable fancy regex
+  * Fixing release CI strict (taken from safetensors).
+  * Adding some serialization testing around the wrapper.
+  * Add-legacy-tests
+  * Adding a few tests for decoder deserialization.
+  * Better serialization error
+  * Add test normalizers
+  * Improve decoder deserialization
+  * Using serde (serde_pyo3) to get str and repr easily.
+  * Merges cannot handle tokens containing spaces.
+  * Fix doc about split
+  * Support None to reset pre_tokenizers and normalizers, and index sequences
+  * Fix strip python type
+  * Tests + Deserialization improvement for normalizers.
+  * add deserialize for pre tokenizers
+  * Perf improvement 16% by removing offsets.
+
+-------------------------------------------------------------------
+Wed Jul  3 14:55:36 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- initial commit on rust based python-tokenizers 
