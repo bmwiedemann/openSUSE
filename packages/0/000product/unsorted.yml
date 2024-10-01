@@ -3271,6 +3271,7 @@ unsorted:
   - demumble 
   - deno 
   - descent3 
+  - desktop-translations-devel 
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
@@ -4610,6 +4611,7 @@ unsorted:
   - fsarchiver 
   - fscrypt 
   - fslsfonts 
+  - fstail 
   - fstl 
   - fstobdf 
   - fstrcmp 
@@ -12597,7 +12599,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_15 
+  - libcpp-httplib0_18 
   - libcpprest2_10 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -14909,9 +14911,13 @@ unsorted:
   - libnutclient2 
   - libnutclientstub1 
   - libnutscan2 
+  - libnvidia-egl-gbm-devel 
+  - libnvidia-egl-gbm1 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit 
+  - libnvidia-egl-x11-devel 
+  - libnvidia-egl-x111 
   - libnvme-devel 
   - libnxml-devel 
   - libnxml0 
@@ -15099,7 +15105,9 @@ unsorted:
   - libopusenc0 
   - libopusfile0 
   - liboqs-devel 
+  - liboqs-devel-32bit 
   - liboqs5 
+  - liboqs5-32bit 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -17533,6 +17541,10 @@ unsorted:
   - linux32 
   - linux_logo 
   - linuxconsoletools 
+  - linuxkit 
+  - linuxkit-bash-completion 
+  - linuxkit-fish-completion 
+  - linuxkit-zsh-completion 
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
@@ -19738,19 +19750,6 @@ unsorted:
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
-  - netdata 
-  - netdata-plugin-apps 
-  - netdata-plugin-chartsd 
-  - netdata-plugin-cups 
-  - netdata-plugin-debugfs 
-  - netdata-plugin-freeipmi 
-  - netdata-plugin-go 
-  - netdata-plugin-network-viewer 
-  - netdata-plugin-nfacct 
-  - netdata-plugin-perf 
-  - netdata-plugin-pythond 
-  - netdata-plugin-slabinfo 
-  - netdata-plugin-systemd-journal 
   - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
@@ -25943,6 +25942,7 @@ unsorted:
   - python310-langchain-chroma 
   - python310-langdetect 
   - python310-langfuse 
+  - python310-langsmith 
   - python310-langtable 
   - python310-lark 
   - python310-latexcodec 
@@ -26086,6 +26086,7 @@ unsorted:
   - python310-markdown-math 
   - python310-markdown2 
   - python310-marshmallow 
+  - python310-mashumaro 
   - python310-material-color-utilities-python 
   - python310-mathgl 
   - python310-mathics-pygments 
@@ -26546,7 +26547,6 @@ unsorted:
   - python310-proton-vpn-session 
   - python310-protonvpn-nm-lib 
   - python310-proxmoxer 
-  - python310-psautohint 
   - python310-pscript 
   - python310-psutil 
   - python310-psychtoolbox 
@@ -26558,7 +26558,6 @@ unsorted:
   - python310-psygnal 
   - python310-ptpython 
   - python310-ptpython-ptipython 
-  - python310-ptr 
   - python310-ptyprocess 
   - python310-publicsuffix2 
   - python310-publicsuffixlist 
@@ -27183,6 +27182,7 @@ unsorted:
   - python310-s3transfer 
   - python310-sadisplay 
   - python310-safe-netrc 
+  - python310-safetensors 
   - python310-sambacc 
   - python310-samplerate 
   - python310-sane 
@@ -27491,6 +27491,7 @@ unsorted:
   - python310-tlv8 
   - python310-tmx 
   - python310-tokenize-rt 
+  - python310-tokenizers 
   - python310-toml 
   - python310-tomli 
   - python310-tomli-w 
@@ -27521,6 +27522,7 @@ unsorted:
   - python310-traitsui 
   - python310-traittypes 
   - python310-transaction 
+  - python310-transformers 
   - python310-transip 
   - python310-transitions 
   - python310-translate-toolkit 
@@ -29570,6 +29572,7 @@ unsorted:
   - python311-langchain-chroma 
   - python311-langdetect 
   - python311-langfuse 
+  - python311-langsmith 
   - python311-langtable 
   - python311-latexcodec 
   - python311-launchpadlib 
@@ -29705,6 +29708,7 @@ unsorted:
   - python311-markdown-math 
   - python311-markdown2 
   - python311-marshmallow 
+  - python311-mashumaro 
   - python311-material-color-utilities-python 
   - python311-mathgl 
   - python311-mathics-pygments 
@@ -30148,7 +30152,6 @@ unsorted:
   - python311-proton-vpn-session 
   - python311-protonvpn-nm-lib 
   - python311-proxmoxer 
-  - python311-psautohint 
   - python311-pscript 
   - python311-psychtoolbox 
   - python311-psycopg 
@@ -30159,7 +30162,6 @@ unsorted:
   - python311-psygnal 
   - python311-ptpython 
   - python311-ptpython-ptipython 
-  - python311-ptr 
   - python311-publicsuffix2 
   - python311-publicsuffixlist 
   - python311-pudb 
@@ -30763,6 +30765,7 @@ unsorted:
   - python311-s3transfer 
   - python311-sadisplay 
   - python311-safe-netrc 
+  - python311-safetensors 
   - python311-sambacc 
   - python311-samplerate 
   - python311-sane 
@@ -31064,6 +31067,7 @@ unsorted:
   - python311-tlv8 
   - python311-tmx 
   - python311-tokenize-rt 
+  - python311-tokenizers 
   - python311-toml 
   - python311-tomli-w 
   - python311-tomlkit 
@@ -31092,6 +31096,7 @@ unsorted:
   - python311-traitsui 
   - python311-traittypes 
   - python311-transaction 
+  - python311-transformers 
   - python311-transip 
   - python311-transitions 
   - python311-translate-toolkit 
@@ -33197,6 +33202,7 @@ unsorted:
   - python312-langchain-chroma 
   - python312-langdetect 
   - python312-langfuse 
+  - python312-langsmith 
   - python312-langtable 
   - python312-lark 
   - python312-latexcodec 
@@ -33340,6 +33346,7 @@ unsorted:
   - python312-markdown-math 
   - python312-markdown2 
   - python312-marshmallow 
+  - python312-mashumaro 
   - python312-material-color-utilities-python 
   - python312-mathgl 
   - python312-mathics-pygments 
@@ -33797,7 +33804,6 @@ unsorted:
   - python312-proton-vpn-session 
   - python312-protonvpn-nm-lib 
   - python312-proxmoxer 
-  - python312-psautohint 
   - python312-pscript 
   - python312-psutil 
   - python312-psychtoolbox 
@@ -33809,7 +33815,6 @@ unsorted:
   - python312-psygnal 
   - python312-ptpython 
   - python312-ptpython-ptipython 
-  - python312-ptr 
   - python312-ptyprocess 
   - python312-publicsuffix2 
   - python312-publicsuffixlist 
@@ -34438,6 +34443,7 @@ unsorted:
   - python312-s3transfer 
   - python312-sadisplay 
   - python312-safe-netrc 
+  - python312-safetensors 
   - python312-sambacc 
   - python312-samplerate 
   - python312-sane 
@@ -34743,6 +34749,7 @@ unsorted:
   - python312-tlv8 
   - python312-tmx 
   - python312-tokenize-rt 
+  - python312-tokenizers 
   - python312-toml 
   - python312-tomli 
   - python312-tomli-w 
@@ -34773,6 +34780,7 @@ unsorted:
   - python312-traitsui 
   - python312-traittypes 
   - python312-transaction 
+  - python312-transformers 
   - python312-transip 
   - python312-transitions 
   - python312-translate-toolkit 
@@ -37335,6 +37343,7 @@ unsorted:
   - spooles-devel 
   - spooles-openmpi-devel 
   - spotify-easyrpm 
+  - spotify-launcher 
   - spotify-qt 
   - spread-sheet-widget-devel 
   - spyder 
