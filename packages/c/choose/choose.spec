@@ -1,7 +1,7 @@
 #
 # spec file for package choose
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           choose
-Version:        1.3.4~0
+Version:        1.3.5
 Release:        0
 Summary:        A human-friendly and fast alternative to cut and (sometimes) awk
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/theryangeary/choose
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 
@@ -34,8 +33,6 @@ A human-friendly and fast alternative to cut and (sometimes) awk.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
