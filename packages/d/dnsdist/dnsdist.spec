@@ -38,7 +38,7 @@
 %bcond_with     dnsdist_luajit
 %endif
 Name:           dnsdist
-Version:        1.9.4
+Version:        1.9.6
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
@@ -51,6 +51,8 @@ Source10:       dnsdist.user
 Source11:       dnsdist.lua
 Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
+Source99:       series
+Patch1:         powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libedit-devel

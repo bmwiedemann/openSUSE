@@ -114,4 +114,17 @@
   * Also handle EHOSTUNREACH as a case for reconnecting the socket</comment>
     <requestid>1173740</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f7782e436be2a5070a7b96b7bcc055e</srcmd5>
+    <version>1.9.6</version>
+    <time>1727795994</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.6:
+  https://dnsdist.org/changelog.html#change-1.9.6
+  https://dnsdist.org/changelog.html#change-1.9.5
+- add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from Arch
+  linux to fix build with Boost 1.86
+- track series file for easier patching</comment>
+    <requestid>1204907</requestid>
+  </revision>
 </revisionlist>
