@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 01 09:00:08 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727773199.b638ad7b:
+  * dist: Add required "group(kvm)" for openQA-worker
+  * Bump eslint-scope from 8.0.2 to 8.1.0
+  * Bump espree from 10.1.0 to 10.2.0
+  * Update t/lib/OpenQA/SeleniumTest.pm
+  * Decrease log level from warn to info for git clone reject
+  * Replace $.ajax() with fetch()
+  * Remove obsolete linkify workaround for anser<2.3
+  * Mark uncoverable statement in `wait_for_worker` as such
+  * Avoid problem with coverage report
+  * Prevent fullstack test from failing early due to 4xx errors
+  * Add example scenario definitions to "Create …" form
+  * Fix the example of minimum scenario definition in documentation
+  * Improve help popover of "Additional settings" in "Create …" form
+  * Dependency cron 2024-09-30
+  * Skip symlinks in enqueue_git_update_all
+  * ci: Set postgres container version to 16 to ensure compatibility
+  * Bump anser from 2.2.0 to 2.3.0
+
+-------------------------------------------------------------------
 Thu Sep 26 23:22:41 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727367369.3b39dda0:
