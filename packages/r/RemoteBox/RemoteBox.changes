@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 30 11:30:58 UTC 2024 - Christian Galeffi <chri@gallochri.com>
+
+-Update to 3.3
+ *RemoteBox now requires VirtualBox 7.1.x.
+ *Updated OS icons.
+ *Added support for VirtioSound Audio Controller.
+ *Implemented refresh function for guest logs, the button was 
+  available but actually did nothing.
+ *Changed the default freerdp client preset. VirtualBox now issues 
+  self-signed certs on RDP connections, the new default ignores 
+  certificate verification as RemoteBox cannot prompt you.
+ *Added Remmina as a VNC/RDP client preset.
+ *Significant work on removing dependence on Glade and GTKBuilder.
+ *VirtualBox now uses self-signed certs on RDP connections. 
+  You will need to reset your RDP settings in the RemoteBox 
+  Preferences -> Guest Display Tab, by selecting a preset.
+ *RemoteBox 3.3 requires the Perl module Time-HiRes to be installed 
+  if not already.
+ *RemoteBox 3.3 should run on ARM based Macs fine, but using ARM 
+  based Macs as the server is NOT supported. 
+-RemoteBox-3.0_fix-env-script-interpreter.patch update to
+  RemoteBox-3.3_fix-env-script-interpreter.patch
+-------------------------------------------------------------------
 Wed May 15 07:44:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

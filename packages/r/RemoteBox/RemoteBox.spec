@@ -23,7 +23,7 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Group:          System/Emulators/PC
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
 Source1:        http://knobgoblin.org.uk/docs/remotebox.pdf
-Patch0:         RemoteBox-3.0_fix-env-script-interpreter.patch
+Patch0:         RemoteBox-3.3_fix-env-script-interpreter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 Requires:       freerdp
