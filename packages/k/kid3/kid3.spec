@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\(Kid3.*
 
 Name:           kid3
-Version:        3.9.5
+Version:        3.9.6
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later
@@ -201,6 +201,8 @@ pushd %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 gzip -dS .svgz kid3.svgz
 mv kid3 kid3.svg
 popd
+
+chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.kid3.desktop
 
 %find_lang %{name} %{name}-core.lang --without-kde --with-qt --all-name --without-mo
 
