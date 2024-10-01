@@ -68,9 +68,11 @@ URL:            https://www.powerdns.com/
 Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
 Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
+Source10:       series
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
 # PATCH-FIX-OPENSUSE pdns-4.9.0-fix_boost.patch -- fix including boost headers with older releases
 Patch1:         pdns-4.9.0-fix_boost.patch
+Patch2:         powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

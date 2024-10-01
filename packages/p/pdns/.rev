@@ -928,4 +928,14 @@ https://doc.powerdns.com/authoritative/upgrading.html</comment>
 - added pdns-4.9.0-fix_boost.patch</comment>
     <requestid>1177309</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>3c1d763006e6cfd6fafec0bcded9253f</srcmd5>
+    <version>4.9.1</version>
+    <time>1727795998</time>
+    <user>anag+factory</user>
+    <comment>- add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from arch
+  linux to fix building with boost 1.86
+- track series file for easier patching</comment>
+    <requestid>1204912</requestid>
+  </revision>
 </revisionlist>

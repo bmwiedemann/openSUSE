@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:03:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from arch
+  linux to fix building with boost 1.86
+- track series file for easier patching
+
+-------------------------------------------------------------------
 Tue May 28 09:49:18 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 4.9.1
