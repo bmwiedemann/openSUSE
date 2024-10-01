@@ -7,4 +7,12 @@
     <comment>Requires sr#1132000.</comment>
     <requestid>1132002</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e197255b29166d911717631aeb2c7124</srcmd5>
+    <version>2.1.0</version>
+    <time>1727795966</time>
+    <user>anag+factory</user>
+    <comment>- Update denose.patch to fix more setup methods.</comment>
+    <requestid>1204851</requestid>
+  </revision>
 </revisionlist>
