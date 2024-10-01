@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 30 09:47:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.0.0
+  * Added support for Python 3.11 and 3.12.
+  * Drop support for Python <=3.8.
+  * Change local development setup to use Poetry_.
+  * Testsuite and code quality checks are done
+    through Github Actions.
+  * Code quality and formatting utilises ruff_.
+  * Removed ``typing_extensions`` as a dependency,
+    as it's no longer required with
+    having Python 3.9+ as a requirement.
+  * Only allow high error correction rate (`qrcode.ERROR_CORRECT_H`)
+    when generating QR codes with embedded images to ensure content
+    is readable
+- Install manpage manually in %install section
+- Drop 364.patch, merged upstream
+- Switch package source from PyPi to Github
+
+-------------------------------------------------------------------
 Sun Jun 23 08:43:04 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix applying the patch on Leap (SLE)

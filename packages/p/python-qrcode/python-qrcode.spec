@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-qrcode
-Version:        7.4.2
+Version:        8.0
 Release:        0
 Summary:        QR Code image generator
 License:        BSD-3-Clause
 URL:            https://github.com/lincolnloop/python-qrcode
-Source:         https://files.pythonhosted.org/packages/source/q/qrcode/qrcode-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Add buffer and fileno for mocked sys.stdout
-Patch0:         https://github.com/lincolnloop/python-qrcode/pull/364.patch
+Source:         %{url}/archive/v%{version}.tar.gz#/qrcode-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -49,8 +48,7 @@ This module uses the Python Imaging Library (PIL) to allow for the generation
 of QR Codes.
 
 %prep
-%setup -q -n qrcode-%{version}
-%patch -P0 -p1
+%setup -q -n python-qrcode-%{version}
 # drop shebang from console_scripts
 sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 
@@ -59,6 +57,7 @@ sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 
 %install
 %pyproject_install
+install -Dm 644 doc/qr.1 %{buildroot}%{_mandir}/man1/qr.1
 %python_clone -a %{buildroot}%{_mandir}/man1/qr.1
 %python_clone -a %{buildroot}%{_bindir}/qr
 %fdupes %{buildroot}%{_prefix}
