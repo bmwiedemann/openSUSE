@@ -17,7 +17,7 @@
 
 
 Name:           fprintd
-Version:        1.94.3
+Version:        1.94.4
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
