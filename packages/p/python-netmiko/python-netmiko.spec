@@ -1,7 +1,7 @@
 #
 # spec file for package python-netmiko
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,33 +18,37 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netmiko
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ktbyers/netmiko
 Source:         https://files.pythonhosted.org/packages/source/n/netmiko/netmiko-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module setuptools >= 65.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-ntc-templates
-Requires:       python-paramiko >= 2.6.0
-Requires:       python-pyserial
-Requires:       python-scp >= 0.13.2
+Requires:       python-PyYAML >= 5.3
+Requires:       python-cffi >= 1.17.0
+Requires:       python-ntc-templates >= 3.1.0
+Requires:       python-paramiko >= 2.9.5
+Requires:       python-pyserial >= 3.3
+Requires:       python-scp >= 0.13.6
 Requires:       python-setuptools
 Requires:       python-tenacity
-Requires:       python-textfsm >= 1.1.2
+Requires:       python-textfsm >= 1.1.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module paramiko >= 2.6.0}
-BuildRequires:  %{python_module pyserial}
+BuildRequires:  %{python_module pyserial >= 3.3}
 BuildRequires:  %{python_module scp >= 0.13.2}
-BuildRequires:  %{python_module textfsm}
+BuildRequires:  %{python_module textfsm >= 1.1.3}
 # /SECTION
 %python_subpackages
 
@@ -59,14 +63,19 @@ sed -i -e '/^#!\//, 1d' \
   netmiko/cdot/cdot_cros_ssh.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/netmiko-cfg
 %python_clone -a %{buildroot}%{_bindir}/netmiko-grep
 %python_clone -a %{buildroot}%{_bindir}/netmiko-show
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 
 %check
 # NOTE: for testing, we have to manually run it against a given device.
@@ -93,6 +102,6 @@ sed -i -e '/^#!\//, 1d' \
 %python_alternative %{_bindir}/netmiko-grep
 %python_alternative %{_bindir}/netmiko-show
 %{python_sitelib}/netmiko
-%{python_sitelib}/netmiko-%{version}*-info
+%{python_sitelib}/netmiko-%{version}.dist-info
 
 %changelog

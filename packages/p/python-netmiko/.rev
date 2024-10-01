@@ -234,4 +234,25 @@
     allows a custom no_log definition.</comment>
     <requestid>1132682</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5295f4d7f325587fb6d5784472f195e3</srcmd5>
+    <version>4.4.0</version>
+    <time>1727795972</time>
+    <user>anag+factory</user>
+    <comment>- Fix cffi version specifier, we are shipping a recent enough version.
+
+- Update to 4.4.0
+  * New Drivers
+    - Aruba AOS-CX
+  * Other Major Changes
+    - Add Python 3.13 support
+    - Vendor telnetlib internally to Netmiko (PY3.13 dropped inclusion of telnetlib)
+  * Other Improvements
+    - Add save_config for Huawei VRPv8
+    - Expand SSH autodetect support
+    - Improvements for Sophos driver
+    - Clean up log filter after disconnect
+    - Improve IOS-XR exit_config_mode() behavior</comment>
+    <requestid>1204856</requestid>
+  </revision>
 </revisionlist>

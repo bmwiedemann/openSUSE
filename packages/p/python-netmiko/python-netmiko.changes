@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  1 05:35:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix cffi version specifier, we are shipping a recent enough version.
+
+-------------------------------------------------------------------
+Tue Sep 24 11:13:34 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.4.0
+  * New Drivers
+    - Aruba AOS-CX
+  * Other Major Changes
+    - Add Python 3.13 support
+    - Vendor telnetlib internally to Netmiko (PY3.13 dropped inclusion of telnetlib)
+  * Other Improvements
+    - Add save_config for Huawei VRPv8
+    - Expand SSH autodetect support
+    - Improvements for Sophos driver
+    - Clean up log filter after disconnect
+    - Improve IOS-XR exit_config_mode() behavior
+
+-------------------------------------------------------------------
 Tue Dec 12 13:37:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:
