@@ -1,7 +1,7 @@
 #
 # spec file for package magpie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define api_major 0
 %bcond_with profiler
 Name:           magpie
-Version:        0.9.3+0
+Version:        0.9.4+0
 Release:        0
 Summary:        Magpie is a softish fork of Mutter
 License:        GPL-2.0-or-later
@@ -92,7 +93,7 @@ Requires:       mutter >= 44.0
 %description
 Magpie is a soft-fork of GNOME's mutter
 at version 43 tailored to the requirements
-of the Budgie Desktop 10 series (from v10.8 and later). 
+of the Budgie Desktop 10 series (from v10.8 and later).
 
 %package devel
 Summary:        Development files for magpie, a window and compositing manager

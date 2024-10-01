@@ -25,4 +25,17 @@
     <comment></comment>
     <requestid>1112980</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b88948eeb354626d5a49ec16282be3ba</srcmd5>
+    <version>0.9.4+0</version>
+    <time>1727795799</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.4+0:
+  * Cleanup of code
+  * Ensure update scaling is done when monitors are notified
+  * Create the new X11 scaling dbus interface that GSD 47 requires
+  * Add API replacing gsd-power's use of libgnome-rr
+</comment>
+    <requestid>1204793</requestid>
+  </revision>
 </revisionlist>
