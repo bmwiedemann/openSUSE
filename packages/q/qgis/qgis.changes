@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 28 12:06:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix SLE/Leap 15.6 build
+  * Move to SLE/Leap python311 module: Old Python 3.6 is no longer
+    supported
+  * Use gcc13-c++ (gcc7 does not provide <filesystem> from c++17)
+
+-------------------------------------------------------------------
 Sun Sep 15 15:56:24 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.38.3

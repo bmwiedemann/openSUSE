@@ -24,6 +24,16 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
+
+%if 0%{suse_version} >= 1600
+%define pythons python3
+%else
+%define gccver 13
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+
 Version:        3.38.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
@@ -45,6 +55,7 @@ BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  flex >= 2.5.6
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  geos-devel >= 3.9
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libQt5Sql5-mysql
@@ -52,6 +63,19 @@ BuildRequires:  libQt5Sql5-postgresql
 # Add the 3 main db we should access
 # also have them in requires
 BuildRequires:  libQt5Sql5-sqlite
+BuildRequires:  %{mypython}-GDAL
+BuildRequires:  %{mypython}-Jinja2
+BuildRequires:  %{mypython}-OWSLib
+BuildRequires:  %{mypython}-PyYAML
+BuildRequires:  %{mypython}-devel >= 3.7
+BuildRequires:  %{mypython}-psycopg2
+BuildRequires:  %{mypython}-pygments
+BuildRequires:  %{mypython}-pyqt-builder
+BuildRequires:  %{mypython}-qscintilla-qt5
+BuildRequires:  %{mypython}-qscintilla-qt5-sip
+BuildRequires:  %{mypython}-qt5-devel
+BuildRequires:  %{mypython}-sip-devel
+BuildRequires:  %{mypython}-termcolor
 BuildRequires:  libexiv2-devel
 BuildRequires:  libqscintilla_qt5-devel
 BuildRequires:  libspatialindex-devel
@@ -61,18 +85,6 @@ BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
 BuildRequires:  protobuf-devel
-BuildRequires:  python3-GDAL
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-OWSLib
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-psycopg2
-BuildRequires:  python3-pygments
-BuildRequires:  python3-pyqt-builder
-BuildRequires:  python3-qscintilla-qt5
-BuildRequires:  python3-qscintilla-qt5-sip
-BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-sip-devel
-BuildRequires:  python3-termcolor
 BuildRequires:  sqlite-devel >= 3.12.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -116,7 +128,6 @@ BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(pdal) >= 2.2.0
 BuildRequires:  pkgconfig(proj) >= 7.2.0
-BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
 # Force requires of those 3 main component.
@@ -125,17 +136,17 @@ Requires:       libQt5Sql5-postgresql
 Requires:       libQt5Sql5-sqlite
 # proj.db is required
 Requires:       proj
+Requires:       %{mypython}-GDAL
+Requires:       %{mypython}-Jinja2
+Requires:       %{mypython}-OWSLib
+Requires:       %{mypython}-PyYAML
+Requires:       %{mypython}-Pygments
+Requires:       %{mypython}-numpy
+Requires:       %{mypython}-psycopg2
 Requires:       pdal
-Requires:       python3-GDAL
-Requires:       python3-Jinja2
-Requires:       python3-OWSLib
-Requires:       python3-PyYAML
-Requires:       python3-Pygments
-Requires:       python3-numpy
-Requires:       python3-psycopg2
 # Those are not picked by obs
-Requires:       python3-qscintilla-qt5
-Requires:       python3-termcolor
+Requires:       %{mypython}-qscintilla-qt5
+Requires:       %{mypython}-termcolor
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
 Recommends:     gpsbabel
@@ -159,8 +170,8 @@ BuildRequires:  memory-constraints
 %package devel
 Summary:        Development Libraries for QGIS
 Group:          Development/Libraries/C and C++
+Requires:       %{mypython}-qt5-devel
 Requires:       %{name} = %{version}
-Requires:       python3-qt5-devel
 %if %{with grass}
 %package plugin-grass
 Summary:        GRASS Support Libraries for QGIS
@@ -198,11 +209,13 @@ QGIS sample data with raster, vector, gps files and a GRASS location from the Al
 %prep
 %autosetup -p1 -n qgis-%{version}
 # Remove bad env and python version in grass plugin
-sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
-sed -i 's,^#!%{_bindir}/env python3$,#!%{_bindir}/python3,g' src/plugins/grass/scripts/*.py
+sed -i 's,^#!%{_bindir}/env python$,#!%{__mypython},g' src/plugins/grass/scripts/*.py
+sed -i 's,^#!%{_bindir}/env python3$,#!%{__mypython},g' src/plugins/grass/scripts/*.py
 
 %build
 %define _lto_cflags %{nil}
+%{?gccver:export CC=gcc-%{gccver}}
+%{?gccver:export CXX=g++-%{gccver}}
 
 export CFLAGS="%{optflags}"
 export QTDIR=%{_prefix}
