@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Sep 30 12:31:33 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.6.0
+  * support for RFC6874-like scope identifiers. This is very useful for 
+    multicast IPs as one can now do the following on L3: 
+    sr(IP(dst="224.0.0.1%eth0")/..., multi=True)
+  * using the iface= argument is deprecated on level3 functions (send, sr, sr1),
+    as its behavior was undefined. It remains in use for level2 
+    functions (sendp, srp, srp1). RFC6874-like scope identifiers should be used.
+  * the internals that read the routes and interfaces configuration have been
+    rewritten on Linux and BSD:
+    - on linux, to use RTNETLINK. (this should help on machines that have huge BPG tables)
+    - on *BSDs, to use PF_ROUTE.
+    - on Linux, NetBSD and FreeBSD, link-local and multicast routes should now properly be loaded
+  * new Windows protocols:
+    - DCE/RPC: DCERPC_Client and DCERPC_Server with support for NCACN_IP_TCP and NCACN_NP
+    - SMB2/3:
+      * Protocol refactor, many more SMB2/3 structures supported
+      * Server (class + 'simple' util smbserver()) (2.0.2 to 3.1.1)
+      * Client (class + interactive CLI smbclient()) (2.0.2 to 3.1.1)
+      * SMB socket, RPC over SMB socket, etc.
+    - Kerberos:
+      * KerberosSSP to use in SMB/RPC clients/servers, [MS-KILE] variants, SFU and more
+      * Crypto: use cryptography, latest RFC8009, GSS_WrapEx support, typing, etc.
+      * Util functions krb_as_req, krb_tgt_req, kpasswd (both modes), etc.
+      * Ticketer++: ccache support, ask/renew/resign/edit tickets, etc
+    - NTLM:
+      * refactor, clean SSP
+    - Extensive GSSAPI / SPNEGO support
+    - LDAP 
+      * Fixes, ASN.1 Windows variation support
+      * dclocator, answering machine for "LDAP PING", etc.
+      * add a (very) basic LDAP_client (support for various binding mechanisms, encryption, etc.)
+- More features, bug fixes and updated protocol support as listed in:
+  https://github.com/secdev/scapy/releases/tag/v2.6.0
+
+-------------------------------------------------------------------
 Thu Dec 14 11:13:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add python3-cryptography to BuildRequires to have out of the

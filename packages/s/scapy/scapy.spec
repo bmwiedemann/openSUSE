@@ -1,7 +1,7 @@
 #
 # spec file for package scapy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scapy
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Interactive Packet Manipulation Tool
 License:        GPL-2.0-only
@@ -25,7 +25,8 @@ Group:          Productivity/Networking/Security
 URL:            https://scapy.net
 Source:         https://github.com/secdev/scapy/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  python3-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-setuptools
 # Testing requirements: (require root permission and a fully functional network stack)
 #BuildRequires:  tcpdump
@@ -66,7 +67,6 @@ sed 's|%{_sysconfdir}/services|%{_prefix}%{_sysconfdir}/services|g' -i scapy/dat
 %install
 %python3_install
 %fdupes %{buildroot}%{python3_sitelib}
-rm -Rv %{buildroot}%{python3_sitelib}/test/
 
 #%%check
 #cd test && ./run_tests
@@ -75,7 +75,6 @@ rm -Rv %{buildroot}%{python3_sitelib}/test/
 %license LICENSE
 %doc README.md
 %{_bindir}/scapy
-%{_mandir}/man1/scapy.1%{?ext_man}
 %{python3_sitelib}/scapy*
 
 %changelog
