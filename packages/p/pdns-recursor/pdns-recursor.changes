@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 29 19:46:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 5.1.1
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.1
+  https://doc.powerdns.com/recursor/changelog/5.0.html#change-5.0.8
+- add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from arch
+  linux to fix building with boost 1.86
+- refreshed cargo_build_fix.patch
+- track series file for easier patching
+- no more conf.dist file. I think we should switch the default
+  config in the package to the yaml format maybe
+
+-------------------------------------------------------------------
 Sat May 25 09:17:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.0.5:

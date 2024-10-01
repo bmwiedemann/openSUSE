@@ -808,4 +808,20 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>1177076</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e43b31c760fe1f3e38c198ecc479400d</srcmd5>
+    <version>5.1.1</version>
+    <time>1727795996</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.1
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.1
+  https://doc.powerdns.com/recursor/changelog/5.0.html#change-5.0.8
+- add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from arch
+  linux to fix building with boost 1.86
+- refreshed cargo_build_fix.patch
+- track series file for easier patching
+- no more conf.dist file. I think we should switch the default
+  config in the package to the yaml format maybe</comment>
+    <requestid>1204908</requestid>
+  </revision>
 </revisionlist>

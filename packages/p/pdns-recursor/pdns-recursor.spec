@@ -26,7 +26,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        5.0.5
+Version:        5.1.1
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -84,8 +84,11 @@ Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyrin
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
 Source3:        vendor.tar.zst
+# for easier patching
+Source99:       series
 Patch1:         boost_context.patch
 Patch2:         cargo_build_fix.patch
+Patch3:         powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
@@ -159,7 +162,6 @@ rm -rvf %{buildroot}%{_sysconfdir}/init.d/%{name}
 %files
 %config(noreplace)  %attr(640,root,pdns) %{_sysconfdir}/pdns/*.conf
 %{_sysconfdir}/pdns/recursor.yml-dist
-%{_sysconfdir}/pdns/recursor.conf-dist
 %if %{with systemd}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}@.service
