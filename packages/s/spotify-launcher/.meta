@@ -1,0 +1,6 @@
+<package name="spotify-launcher" project="openSUSE:Factory">
+  <title></title>
+  <description>Client for Spotify's apt repository in Rust</description>
+  <devel project="multimedia:apps" package="spotify-launcher"/>
+  <url>https://github.com/kpcyrd/spotify-launcher</url>
+</package>
