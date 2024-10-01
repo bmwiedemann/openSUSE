@@ -19,4 +19,12 @@
   * docs: add --rm in docker (forwarded request 1185209 from jfkw)</comment>
     <requestid>1185210</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5140cae2862ab67d3aa2508f740647c</srcmd5>
+    <version>1.0.5</version>
+    <time>1727795810</time>
+    <user>anag+factory</user>
+    <comment>update to 1.0.5 (forwarded request 1204810 from ojkastl_buildservice)</comment>
+    <requestid>1204816</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 30 16:56:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.5:
+  * chore: upgrade deps
+  * fix fishCompletion
+  * update globalping client
+  * update args
+  * add support for --json, --short && update docs
+  * feat: integrate Globalping API for global network diagnostics
+  * chore: document completions subcommand in --help output
+  * Update README.md
+  * fix: change DefaultResolvConfPath to var instead of const
+  * fix(logger): Change log destination to stderr
+  * Update README.md
+
+-------------------------------------------------------------------
 Wed Jul 03 17:49:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.0.4:
