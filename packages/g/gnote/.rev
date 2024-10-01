@@ -805,4 +805,17 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>1190316</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>b530e5ca9558d1031f87c0abdfea3d02</srcmd5>
+    <version>47.0</version>
+    <time>1727795981</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.0:
+  + Use screenshots from gitlab
+  + Better colors for search highlight
+  + Fix readonly plugin enable with note already open
+- Bump base_version to 47.
+</comment>
+    <requestid>1204880</requestid>
+  </revision>
 </revisionlist>

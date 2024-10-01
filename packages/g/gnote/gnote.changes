@@ -1,3 +1,13 @@
+
+-------------------------------------------------------------------
+Sun Sep 22 06:34:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Use screenshots from gitlab
+  + Better colors for search highlight
+  + Fix readonly plugin enable with note already open
+- Bump base_version to 47.
+
 -------------------------------------------------------------------
 Mon Jul 29 12:54:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
