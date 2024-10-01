@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 30 18:06:03 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.4.1:
+  Fixes
+  * core: avoid crash in done callbacks
+
+-------------------------------------------------------------------
+Sun Sep 29 23:24:06 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove changesgenerate from _service
+- Update to version 0.4.0:
+  New
+  * fractional scaling is now supported and on by default. No
+    more blur
+  * --version, --verbose and --quiet have been added
+  Fixes
+  * core: minor log cleanups
+  * cmake: use CXX_STANDARD instead of a flag
+  * events: use enter coords
+  Packagers
+  * new deps: hyprwayland-scanner>0.4.2, hyprutils>=0.2.0
+  MRs
+  * fix segmentation fault when cursor_shape_manager_v1 is not
+    supported
+  * README: add required Debian packages to build
+  * cmake: remove unneeded dependencies
+  * remove unneeded GLES headers
+  * Ensure the manpage location is correct.
+  * core: move to hyprwayland-scanner
+
+-------------------------------------------------------------------
 Thu Jun 06 09:35:03 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch build to cmake

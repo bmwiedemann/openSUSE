@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpicker
 #
-# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           hyprpicker
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        A wlroots-compatible Wayland color picker
 License:        BSD-3-Clause
-Url:            https://github.com/hyprwm/hyprpicker
+URL:            https://github.com/hyprwm/hyprpicker
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  Mesa-libGLESv3-devel
+BuildRequires:  pkgconfig(hyprutils) >= 0.2.0
+BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.4.2
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(pangocairo)
-BuildRequires:  pkgconfig(libjpeg)
-buildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 A wlroots-compatible Wayland color picker with magnifying lens. It
