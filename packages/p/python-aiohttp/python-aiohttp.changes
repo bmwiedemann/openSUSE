@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:57:08 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.10.6
+  * Increased minimum yarl version to 1.12.0
+  * Declared Python 3.13 supported
+  * Full changelog: https://github.com/aio-libs/aiohttp/releases/tag/v3.10.6 
+
+-------------------------------------------------------------------
+Wed Sep  4 12:40:42 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Add patch test_no_warnings_fix.patch
+  * Ignore UserWarning about importing aiohttp from a second sys.path
+    location under the abuild home directory when running tests under
+    the build service.
+
+-------------------------------------------------------------------
 Tue Aug 20 06:48:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-e Update to 3.10.5:
+- Update to 3.10.5:
   * Fixed aiohttp.ClientResponse.json() not setting status when
     aiohttp.ContentTypeError is raised
   * Improved performance of the WebSocket reader

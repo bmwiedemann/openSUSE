@@ -35,8 +35,10 @@
 # disable for now, as our OBS builds do not work with it. Marcus 20220511
 #bcond_without kcapi
 %bcond_with kcapi
+%bcond_without liboqs
 %else
 %bcond_with kcapi
+%bcond_with liboqs
 %endif
 %bcond_with tpm
 Name:           gnutls
@@ -90,6 +92,9 @@ BuildRequires:  pkgconfig(autoopts)
 BuildRequires:  pkgconfig(zlib)
 %if %{with kcapi}
 BuildRequires:  pkgconfig(libkcapi)
+%endif
+%if %{with liboqs}
+BuildRequires:  pkgconfig(liboqs)
 %endif
 %if 0%{?suse_version} <= 1320
 BuildRequires:  net-tools
@@ -234,6 +239,9 @@ autoreconf -fiv
 %endif
 %if %{with srp}
         --enable-srp-authentication \
+%endif
+%if %{with liboqs}
+        --with-liboqs \
 %endif
 %ifarch %{ix86} %{arm}
         --disable-year2038 \

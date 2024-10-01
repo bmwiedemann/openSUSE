@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 30 12:41:11 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.11:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.11 brings several bug fixes regarding IPP response
+  validation, processing PPD values, Web UI support
+  (checkbox support, modifying printers) and others fixes.
+  Detailed list (from CHANGES.md):
+  * Updated the maximum file descriptor limit
+    for `cupsd` to 64k-1 (Issue #989)
+  * Fixed `lpoptions -d` with a discovered
+    but not added printer (Issue #833)
+  * Fixed incorrect error message for HTTP/IPP errors (Issue #893)
+  * Fixed JobPrivateAccess and SubscriptionPrivateAccess support
+    for "all" (Issue #990)
+  * Fixed issues with cupsGetDestMediaByXxx (Issue #993)
+  * Fixed adding and modifying of printers
+    via the web interface (Issue #998)
+  * Fixed HTTP PeerCred authentication
+    for domain users (Issue #1001)
+  * Fixed checkbox support (Issue #1008)
+  * Fixed printer state notifications (Issue #1013)
+  * Fixed IPP Everywhere printer setup (Issue #1033)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+  In particular CUPS 2.4.11 contains those commit regarding
+  IPP response validation and processing PPD values:
+  * "Quote PPD localized strings"
+    https://github.com/OpenPrinting/cups/commit/1e6ca5913eceee906038bc04cc7ccfbe2923bdfd
+    plus a cleanup to "Fix warnings for unused vars"
+    https://github.com/OpenPrinting/cups/commit/2abe1ba8a66864aa82cd9836b37e57103b8e1a3b
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.11
+- avoid_C99_mode_for_loop_initial_declarations.patch
+  is no longer needed because the issue is fixed upstream.
+
+-------------------------------------------------------------------
 Mon Jul  8 13:50:50 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Replaced avoid_C99_mode_for_loop_initial_declarations.patch

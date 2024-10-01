@@ -124,7 +124,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.19.0_02
+Version:        4.19.0_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -162,7 +162,14 @@ Source99:       baselibs.conf
 Patch1:         66a8b8ac-bunzip2-rare-failure.patch
 Patch2:         66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
 Patch3:         66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
-Patch4:         66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
+Patch4:         66cf737b-x86-Dom0-disable-SMAP-for-PV-only.patch
+Patch5:         66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
+Patch6:         66d6dca8-libxl-nul-termination-in-xen_console_read_line.patch
+Patch7:         66d8690f-SUPPORT-split-XSM-from-Flask.patch
+Patch8:         66e29480-x86-HVM-properly-reject-indirect-VRAM-writes.patch
+Patch9:         66e44ae2-x86-ucode-AMD-buffer-underrun.patch
+Patch10:        66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
+Patch11:        66f2fd92-x86-ucode-Intel-stricter-sanity-check.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

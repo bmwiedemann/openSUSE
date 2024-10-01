@@ -19,12 +19,13 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.10.5
+Version:        3.10.6
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
+Patch0:         test_no_warnings_fix.patch
 Requires:       python-aiohappyeyeballs >= 2.3.0
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0
@@ -34,7 +35,7 @@ Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
 %endif
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
-Requires:       (python-yarl >= 1.0 with python-yarl < 2)
+Requires:       (python-yarl >= 1.12.0 with python-yarl < 2)
 Recommends:     python-Brotli
 Recommends:     python-aiodns
 Recommends:     python-cChardet

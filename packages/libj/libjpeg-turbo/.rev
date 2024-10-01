@@ -1175,4 +1175,41 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     components specified in the Start Of Frame segment.) (forwarded request 1198096 from dirkmueller)</comment>
     <requestid>1198276</requestid>
   </revision>
+  <revision rev="74" vrev="81">
+    <srcmd5>2a183bcf145d12cda8bce07d1187c692</srcmd5>
+    <version>unknown</version>
+    <time>1727795470</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Fixed an issue whereby the CPU usage of the default marker
+    processor in the decompressor grew exponentially with the
+    number of markers.  This caused an unreasonable slow-down in
+    `jpeg_read_header()` if an application called `jpeg_save_markers()`
+    to save markers of a particular type and then attempted to
+    decompress a JPEG image containing an excessive number of markers
+    of that type.
+  * Hardened the default marker processor in the decompressor to guard
+    against an issue (exposed by 3.0 beta2[6]) whereby attempting to
+    decompress a specially-crafted malformed JPEG image (specifically
+    an image with a complete 12-bit-per-sample Start Of Frame segment
+    followed by an incomplete 8-bit-per-sample Start Of Frame segment)
+    using buffered-image mode and input prefetching caused a segfault
+    if the `fill_input_buffer()` method in the calling application's
+    custom source manager incorrectly returned `FALSE` in response to a
+    prematurely-terminated JPEG data stream.
+  * Fixed an issue in cjpeg whereby, when generating a
+    12-bit-per-sample or 16-bit-per-sample lossless JPEG image,
+    specifying a point transform value greater than 7 resulted in an
+    error (&quot;Invalid progressive/lossless parameters&quot;) unless the
+    `-precision` option was specified before the `-lossless` option.
+  * Fixed a regression introduced by 3.0.3[3] that made it impossible
+    for calling applications to generate 12-bit-per-sample
+    arithmetic-coded lossy JPEG images using the TurboJPEG API.
+  * Fixed an error (&quot;Destination buffer is not large enough&quot;) that
+    occurred when attempting to generate a full-color lossless JPEG
+    image using the TurboJPEG Java API's `byte[]
+    TJCompressor.compress()` method if the value of `TJ.PARAM_SUBSAMP`
+    was not `TJ.SAMP_444`. (forwarded request 1204571 from dirkmueller)</comment>
+    <requestid>1204657</requestid>
+  </revision>
 </revisionlist>

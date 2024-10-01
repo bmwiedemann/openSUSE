@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:48:16 CEST 2024 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.16:
+  * Refactoring: Move CPU feature detection to archdep.c.
+  * libddr_cypt: Support passing in password via pipe and passfd=
+  * Add testcase for this
+  * Support sha256 acceleration on x86-64 and armv8.
+  * Improve detection of armv8 crypto (aes) acceleration (32bit).
+
+-------------------------------------------------------------------
 Tue Sep 17 15:28:10 CEST 2024 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.15:

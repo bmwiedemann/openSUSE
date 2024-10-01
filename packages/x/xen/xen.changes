@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:30:00 CEST 2024 - jbeulich@suse.com
+
+- bsc#1230366 - VUL-0: CVE-2024-45817: xen: x86: Deadlock in
+  vlapic_error() (XSA-462)  
+  66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
+  Drop xsa462.patch
+- Upstream bug fixes (bsc#1027519)
+  66cf737b-x86-Dom0-disable-SMAP-for-PV-only.patch
+  66d6dca8-libxl-nul-termination-in-xen_console_read_line.patch
+  66d8690f-SUPPORT-split-XSM-from-Flask.patch
+  66e29480-x86-HVM-properly-reject-indirect-VRAM-writes.patch
+  66e44ae2-x86-ucode-AMD-buffer-underrun.patch
+  66f2fd92-x86-ucode-Intel-stricter-sanity-check.patch
+
+-------------------------------------------------------------------
+Tue Sep 10 09:54:34 MDT 2024 - carnold@suse.com
+
+- bsc#1230366 - VUL-0: CVE-2024-45817: xen: x86: Deadlock in
+  vlapic_error() (XSA-462)  
+  xsa462.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 07:32:58 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 with gcc14 (bsc#1225953)

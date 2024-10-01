@@ -40,18 +40,18 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.10
+Version:        2.4.11
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.10-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.11-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.10-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.4.11-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.11/cups-2.4.11-source.tar.gz.sig
 # To make Source2 use e.g.
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -61,21 +61,13 @@ Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'Zdenek Dohnal'
-#   gpg --verify cups-2.4.10-source.tar.gz.sig cups-2.4.10-source.tar.gz
+#   gpg --verify cups-2.4.11-source.tar.gz.sig cups-2.4.11-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
 Source108:      cups-client.conf
 Source109:      baselibs.conf
 # Patch0...Patch9 is for patches from upstream:
-# Patch1 avoid_C99_mode_for_loop_initial_declarations.patch is
-# https://github.com/OpenPrinting/cups/commit/a2b8872ea95564e065e3a08e2aa12a15515bc993
-# to avoid "error: 'for' loop initial declarations are only allowed in C99 mode"
-# that happens when building for SLE12 at "for (char *start = ..." since
-# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
-# see https://github.com/OpenPrinting/cups/issues/1000
-# and https://github.com/OpenPrinting/cups/pull/1004
-Patch1:         avoid_C99_mode_for_loop_initial_declarations.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
@@ -305,14 +297,6 @@ printer drivers for CUPS.
 %prep
 %setup -q
 # Patch0...Patch9 is for patches from upstream:
-# Patch1 avoid_C99_mode_for_loop_initial_declarations.patch is
-# https://github.com/OpenPrinting/cups/commit/a2b8872ea95564e065e3a08e2aa12a15515bc993
-# to avoid "error: 'for' loop initial declarations are only allowed in C99 mode"
-# that happens when building for SLE12 at "for (char *start = ..." since
-# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
-# see https://github.com/OpenPrinting/cups/issues/1000
-# and https://github.com/OpenPrinting/cups/pull/1004
-%patch -P 1 -b avoid_C99_mode_for_loop_initial_declarations.orig
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
 %patch -P 10 -b choose-uri-template.orig
@@ -639,6 +623,7 @@ exit 0
 %{_unitdir}/cups.service
 %{_unitdir}/cups.socket
 %{_unitdir}/cups.path
+%{_unitdir}/system-cups.slice
 %{_unitdir}/cups-lpd.socket
 %{_unitdir}/cups-lpd@.service
 %{_tmpfilesdir}/cups.conf

@@ -1190,4 +1190,109 @@
   + Fix regression when using an SVG inside a feImage element. (forwarded request 1200697 from iznogood)</comment>
     <requestid>1201592</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>e30a13af5553fd20ff18f7e262577172</srcmd5>
+    <version>2.59.1</version>
+    <time>1727795484</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.59.1:
+  + Two mitigations for crashes found throuh fuzz testing:
+    - Cairo is easy to crash by giving it path coordinates that are
+      outside of the range that it can represent internally with
+      its fixed-point arithmetic. Fuzzers usually produce SVGs with
+      very large numbers for coordinates, which overflow Cairo's
+      arithmetic.
+      This is just a *mitigation*, not a complete fix: librsvg will
+      now check if path coordinates are outside of Cairo's
+      supported range, and it will not render shapes with
+      problematic coordinates. However, fuzzers may still produce
+      coordinates that are in range but that still make Cairo
+      crash. I am starting to learn Cairo's code to see if this can
+      be fixed gradually.
+- Update to version 2.59.0:
+  + The biggest change in this release is that librsvg now uses the
+    Meson build system instead of autotools.
+  + With Meson, librsvg now builds a lot more reliably on Windows
+    and MacOS.
+  + Librsvg now uses Meson instead of Autotools
+  + There is a -Davif meson option to include support for AVIF in
+    the image-rs crate, which librsvg uses to load raster images.
+  + Librsvg now explicitly builds only its supported raster formats
+    for image-rs: JPEG, PNG, GIF, WEBP, and optional compile-time
+    support for AVIF). Other raster image formats are not
+    supported, to minimize the attack surface.
+  + Librsvg now supports cancellable rendering; you can start
+    rendering an RsvgHandle in one thread, and stop it from another
+    thread with a GCancellable. In the C API, you can use the
+    rsvg_handle_set_cancellable_for_rendering() function; in the
+    Rust API, CairoRenderer now has a with_cancellable() method.
+  + For Rust users, there is now a 'librsvg-rebind' crate that
+    binds the C API for use from Rust. Internally this links to the
+    system's librsvg shared library, in contrast with the 'librsvg'
+    crate, which is statically linked and which has a native Rust
+    API. The 'librsvg-rebind' crate is for cases where the
+    additional code size from static linking is not desired. This
+    librsvg-rebind crate is available from crates.io.
+  + A bunch of fixes to bugs found through fuzz testing.
+- Use ldconfig_scriptlets macro for some of the post(un) handling.
+- Update to version 2.58.94:
+  + The minimum supported Rust version (MSRV) is 1.77.2.
+  + Fix assertion failures with large Hue value in hsl() or hwb()
+    colors.
+  + Limit the baseFrequency for feTurbulence to avoid integer
+    overflow.
+  + Only make exported symbols visible in the library's binary.
+  + Fix the -Davif=enabled feature; it was not being handled
+    correctly at compilation time.
+  + Ensure compatibility with Binutils &lt; 2.39.
+  + Build fixes for Windows.
+- Update to version 2.58.92:
+  + Librsvg is now part of Google's oss-fuzz and is fuzz-tested
+    automatically - see
+    https://gnome.pages.gitlab.gnome.org/librsvg/devel-docs/oss_fuzz.html
+    for details.
+  + This release has two bug fixes from fuzz testing, and a new API
+    call:
+    - Don't leak XML entities when the XML document fails to parse.
+    - Fix stack overflow in &lt;use&gt; reference cycle.
+    - Librsvg now supports cancellable rendering; you can start
+      rendering an RsvgHandle in one thread, and stop it from
+      another thread with a GCancellable. In the C API, you can use
+      the rsvg_handle_set_cancellable_for_rendering() function; in
+      the Rust API, CairoRenderer now has a with_cancellable()
+      method.
+  + Many build fixes for Windows, MacOS, iOS, and cross-compilation
+  + Continued refactoring for a render tree.
+  + Many fixes to the documentation.
+- Update to version 2.58.91:
+  + Librsvg now requires cairo version 1.18.0 or later.
+  + Librsvg now explicitly builds only its supported raster
+    formats for image-rs: JPEG, PNG, GIF, WEBP, and optional
+    compile-time support for AVIF. Other raster image formats are
+    not supported, to minimize the attack surface.
+  + Don't generate gdk-pixbuf loaders cache if DESTDIR is set.
+  + Documentation updates for meson.
+  + Document the fact that the default DPI in the C API for
+    RsvgHandle is 90 DPI, unlike rsvg-convert and the Rust API,
+    which use 96 DPI.
+  + Document the security considerations for the image-rs crate
+    and the raster image formats that librsvg supports.
+  + Fix and fine-tune compilation on Windows (MSVC and msys2),
+    MacOS, and Android.
+  + Fix installation when only compiling the static library.
+  + Update Pango for CI and fix a test file. The test suite now
+    includes the DejaVu Sans font, which supports extra
+    glyphs/languages for the test suite.
+- Changesfrom version 2.58.90:
+  + librsvg has been ported to the Meson build system.  Librsvg no
+    longer uses autotools!
+  + Changes in this release:
+    - Librsvg now uses Meson instead of Autotools.
+    - There is a -Davif meson option to include support for AVIF in
+      the image-rs crate, which librsvg uses to load raster images.
+    - Start revamping the fuzzing infrastructure.
+- Add cargo-c and pkgconfig(dav1d) BuildRequires: new dependencies.
+</comment>
+    <requestid>1204711</requestid>
+  </revision>
 </revisionlist>

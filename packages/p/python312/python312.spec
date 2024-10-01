@@ -796,6 +796,7 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
 )
 echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-import-failed-hooks.pth
 %endif
+find %{buildroot}%{_docdir}/%{name} -type f -name \*.pyc -delete ||:
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk

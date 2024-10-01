@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 30 13:54:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.52:
+  * rpm-script: create vmlinuz and initrd also in image build environments
+    (bsc#1231040, bsc#1230858)
+  * regenerate-initrd-posttrans: Fix SKIP_REGENERATE_INITRD_ALL
+    (bsc#1228929)
+
+-------------------------------------------------------------------
 Thu Sep  5 10:01:04 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.51:

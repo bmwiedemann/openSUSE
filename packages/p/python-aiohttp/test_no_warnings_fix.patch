@@ -1,0 +1,15 @@
+diff -rup aiohttp-3.10.5.orig/tests/test_circular_imports.py aiohttp-3.10.5/tests/test_circular_imports.py
+--- aiohttp-3.10.5.orig/tests/test_circular_imports.py	2024-08-19 15:18:15.000000000 -0400
++++ aiohttp-3.10.5/tests/test_circular_imports.py	2024-09-04 08:18:49.702469018 -0400
+@@ -111,6 +111,11 @@ def test_no_warnings(import_path: str) -
+         # `gunicorn.util`.
+         "-W", "ignore:pkg_resources is deprecated as an API:"
+         "DeprecationWarning",
++        # UserWarning about importing aiohttp from a second sys.path
++        # location under the abuild home directory when running tests
++        # under the build service
++        "-W", "ignore:Module aiohttp was already imported from "
++        "/home/abuild/rpmbuild/BUILDROOT",
+         "-c", f"import {import_path!s}",
+         # fmt: on
+     )

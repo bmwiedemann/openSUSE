@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 30 09:42:13 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop .pyc files from docdir for reproducible builds
+
+-------------------------------------------------------------------
 Fri Sep 13 17:09:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add doc-py38-to-py36.patch making building documentation

@@ -848,4 +848,16 @@ source service setup which messed up my spec file.
 - Update to version 16.0.50: (forwarded request 1198937 from mwilck)</comment>
     <requestid>1200081</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>dd14c7c1c58290be85249928fe7abab5</srcmd5>
+    <version>16.0.52</version>
+    <time>1727795489</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.52:
+  * rpm-script: create vmlinuz and initrd also in image build environments
+    (bsc#1231040, bsc#1230858)
+  * regenerate-initrd-posttrans: Fix SKIP_REGENERATE_INITRD_ALL
+    (bsc#1228929) (forwarded request 1204786 from mwilck)</comment>
+    <requestid>1204787</requestid>
+  </revision>
 </revisionlist>

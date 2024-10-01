@@ -1,0 +1,24 @@
+Authors: code@bnavigator.de, bwiedemann@suse.com
+Ref: https://github.com/openSUSE/python-rpm-macros/issues/182
+Ref: https://github.com/mesonbuild/meson-python/issues/671
+
+Reproducible builds require a deterministic build path.
+Use the python-rpm-macros shuffled build directory.
+
+
+Index: meson_python-0.16.0/mesonpy/__init__.py
+===================================================================
+--- meson_python-0.16.0.orig/mesonpy/__init__.py
++++ meson_python-0.16.0/mesonpy/__init__.py
+@@ -943,7 +943,10 @@ def _project(config_settings: Optional[D
+ 
+     with contextlib.ExitStack() as ctx:
+         if build_dir is None:
+-            build_dir = ctx.enter_context(tempfile.TemporaryDirectory(prefix='.mesonpy-', dir=source_dir))
++            if(os.environ.get('SOURCE_DATE_EPOCH')):
++                build_dir = pathlib.Path(source_dir) / 'build'
++            else:
++                build_dir = ctx.enter_context(tempfile.TemporaryDirectory(prefix='.mesonpy-', dir=source_dir))
+         yield Project(source_dir, build_dir, meson_args, editable_verbose)
+ 
+ 

@@ -403,4 +403,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148020</requestid>
   </revision>
+  <revision rev="54" vrev="125">
+    <srcmd5>2cb7f00e7c8163ccf9c47101926b0eab</srcmd5>
+    <version>2.7.7</version>
+    <time>1727795504</time>
+    <user>anag+factory</user>
+    <comment>Make the bootstrap package reproducible too</comment>
+    <requestid>1204893</requestid>
+  </revision>
 </revisionlist>

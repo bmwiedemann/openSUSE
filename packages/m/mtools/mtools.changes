@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 30 09:13:35 UTC 2024 - pgajdos@suse.com
+
+- version update to 4.0.45
+  * Fixed iconv descriptor leak
+  * Fixed size of error message buffer
+
+-------------------------------------------------------------------
 Mon Jul  8 07:17:04 UTC 2024 - pgajdos@suse.com
 
 - version update to 4.0.44

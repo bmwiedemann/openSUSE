@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-scikit-build-core
+Name:           python-scikit-build-core%{psuffix}
 Version:        0.10.7
 Release:        0
 Summary:        Build backend for CMake based projects
@@ -44,17 +52,7 @@ Requires:       (python-typing-extensions >= 3.10.0 if python-base < 3.9)
 Recommends:     ninja
 Recommends:     python-rich
 Provides:       python-scikit_build_core = %{version}-%{release}
-# SECTION require runtime
-BuildRequires:  %{python_module exceptiongroup >= 1 if %python-base < 3.11}
-BuildRequires:  %{python_module importlib-metadata >= 4.13 if %python-base < 3.8}
-BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
-BuildRequires:  %{python_module pathspec >= 0.10.1}
-BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
-BuildRequires:  %{python_module typing-extensions >= 3.10.0 if %python-base < 3.9}
-BuildRequires:  cmake >= 3.15
-BuildArch:      noarch
-# /SECITON
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module build >= 0.8}
 BuildRequires:  %{python_module cattrs >= 22.2.0}
 BuildRequires:  %{python_module devel}
@@ -63,12 +61,15 @@ BuildRequires:  %{python_module pybind11-devel >= 2.11}
 BuildRequires:  %{python_module pytest >= 7.2}
 BuildRequires:  %{python_module pytest-subprocess >= 1.5.0}
 BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module scikit-build-core = %{version}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv >= 20.20}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 # /SECTION
+%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -101,10 +102,13 @@ Python CMake adaptor and Python API for plugins: The extra requirement to build 
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # A writable temp dir is required for some tests
 mkdir ./tmp
 export PYTEST_DEBUG_TEMPROOT=./tmp
@@ -113,7 +117,9 @@ donttestmark="isolated"
 # different hash due to different build environment:
 donttest="test_pep517_sdist_hash or test_pep518_sdist"
 %pytest -m "not ($donttestmark)" -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
@@ -123,5 +129,6 @@ donttest="test_pep517_sdist_hash or test_pep518_sdist"
 %files %{python_files pyproject}
 %license LICENSE
 %doc README.md
+%endif
 
 %changelog

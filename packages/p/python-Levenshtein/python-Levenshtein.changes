@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 23 12:56:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.0
+  * Add support for Python 3.13
+  * Drop support for Python 3.8
+  * Switch build system to `scikit-build-core`
+  * Upgrade to `Cython==3.0.11`
+- Adjust upstream source name in spec file
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue May 28 15:13:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.25.1

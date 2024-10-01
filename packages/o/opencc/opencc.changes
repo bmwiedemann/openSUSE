@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 22 11:58:00 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+ 
+- update to 1.1.9:
+  * Change googletest to bazel dev_dependency.
+  * Add Installation details in readme.
+  * Test of Github FUNDING.yml
+  * Fix npmignore.
+  * Apply patch to rapidjson.
+  * Use Python 3.
+  * Add Bazel Python library and test.
+  * Add back Config::NewFromFile with one argument to maintain the
+    ABI compatibility.
+
+-------------------------------------------------------------------
 Fri May 24 04:20:02 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - switch to system rapidjson, fix boo#1221875

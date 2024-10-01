@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:48:02 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240928
+  + improve error-message from infocmp when a terminal entry cannot be
+    opened (patch by Branden Robinson).
+  + improve filtering of -L options in misc/gen-pkgconfig.in and in
+    misc/ncurses-config.in
+  + add check in wresize() for out-of-range dimensions (report by Peter
+    Bierma). 
+
+-------------------------------------------------------------------
 Mon Sep 23 06:00:15 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240922

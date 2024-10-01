@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 22:19:53 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.30.4:
+  * FetchContent: Don't update verify script timestamp if it
+    doesn't change
+  * project: Only define non-cache vars if already defined
+  * librhash: aligned_alloc is not available with glibc < 2.16
+  * FindPython: ensure all ABI are searched by default
+  * FindMatlab: multiple fixes for MCR
+
+-------------------------------------------------------------------
 Fri Aug 30 05:02:09 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 3.30.3:

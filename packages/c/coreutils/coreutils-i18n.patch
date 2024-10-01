@@ -1535,19 +1535,18 @@ Index: coreutils-9.5/src/fold.c
                /* Look for the last blank. */
                while (logical_end)
                  {
-@@ -214,13 +251,225 @@ fold_file (char const *filename, size_t
+@@ -214,13 +251,224 @@ fold_file (char const *filename, size_t
        line_out[offset_out++] = c;
      }
  
 -  saved_errno = errno;
 +  *saved_errno = errno;
-   if (!ferror (istream))
--    saved_errno = 0;
++  if (!ferror (istream))
 +    *saved_errno = 0;
- 
-   if (offset_out)
-     fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
- 
++
++  if (offset_out)
++    fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
++
 +}
 +
 +#if HAVE_MBRTOWC
@@ -1633,39 +1632,38 @@ Index: coreutils-9.5/src/fold.c
 +        }
 +
 +rescan:
-+      if (operating_mode == byte_mode)                        /* byte mode */
++      if (convfail)
++        increment = 1;
++      else if (wc == L'\n')
++        {
++          /* preserve newline */
++          fwrite (line_out, sizeof(char), offset_out, stdout);
++          START_NEW_LINE;
++          continue;
++        }
++      else if (operating_mode == byte_mode)                  /* byte mode */
 +        increment = mblength;
 +      else if (operating_mode == character_mode)        /* character mode */
 +        increment = 1;
-+      else                                                /* column mode */
++      else                                                 /* column mode */
 +        {
-+          if (convfail)
-+            increment = 1;
-+          else
++          switch (wc)
 +            {
-+              switch (wc)
-+                {
-+                case L'\n':
-+                  fwrite (line_out, sizeof(char), offset_out, stdout);
-+                  START_NEW_LINE;
-+                  continue;
++            case L'\b':
++              increment = (column > 0) ? -1 : 0;
++              break;
 +
-+                case L'\b':
-+                  increment = (column > 0) ? -1 : 0;
-+                  break;
++            case L'\r':
++              increment = -1 * column;
++              break;
 +
-+                case L'\r':
-+                  increment = -1 * column;
-+                  break;
++            case L'\t':
++              increment = 8 - column % 8;
++              break;
 +
-+                case L'\t':
-+                  increment = 8 - column % 8;
-+                  break;
-+
-+                default:
-+                  increment = wcwidth (wc);
-+                  increment = (increment < 0) ? 0 : increment;
-+                }
++            default:
++              increment = wcwidth (wc);
++              increment = (increment < 0) ? 0 : increment;
 +            }
 +        }
 +
@@ -1719,12 +1717,13 @@ Index: coreutils-9.5/src/fold.c
 +    }
 +
 +  *saved_errno = errno;
-+  if (!ferror (istream))
+   if (!ferror (istream))
+-    saved_errno = 0;
 +    *saved_errno = 0;
-+
-+  if (offset_out)
-+    fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
-+
+ 
+   if (offset_out)
+     fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
+ 
 +}
 +#endif
 +
@@ -1763,7 +1762,7 @@ Index: coreutils-9.5/src/fold.c
    if (STREQ (filename, "-"))
      clearerr (istream);
    else if (fclose (istream) != 0 && !saved_errno)
-@@ -251,7 +500,8 @@ main (int argc, char **argv)
+@@ -251,7 +499,8 @@ main (int argc, char **argv)
  
    atexit (close_stdout);
  
@@ -1773,7 +1772,7 @@ Index: coreutils-9.5/src/fold.c
  
    while ((optc = getopt_long (argc, argv, shortopts, longopts, nullptr)) != -1)
      {
-@@ -260,7 +510,15 @@ main (int argc, char **argv)
+@@ -260,7 +509,15 @@ main (int argc, char **argv)
        switch (optc)
          {
          case 'b':		/* Count bytes rather than columns. */
@@ -4195,7 +4194,7 @@ Index: coreutils-9.5/tests/misc/fold.pl
 ===================================================================
 --- coreutils-9.5.orig/tests/misc/fold.pl
 +++ coreutils-9.5/tests/misc/fold.pl
-@@ -20,9 +20,18 @@ use strict;
+@@ -20,20 +20,80 @@ use strict;
  
  (my $program_name = $0) =~ s|.*/||;
  
@@ -4214,8 +4213,21 @@ Index: coreutils-9.5/tests/misc/fold.pl
  my @Tests =
    (
     ['s1', '-w2 -s', {IN=>"a\t"}, {OUT=>"a\n\t"}],
-@@ -31,9 +40,48 @@ my @Tests =
+    ['s2', '-w4 -s', {IN=>"abcdef d\n"}, {OUT=>"abcd\nef d\n"}],
+    ['s3', '-w4 -s', {IN=>"a cd fgh\n"}, {OUT=>"a \ncd \nfgh\n"}],
     ['s4', '-w4 -s', {IN=>"abc ef\n"}, {OUT=>"abc \nef\n"}],
++
++   # The downstream I18N patch made fold(1) exit with success for non-existing
++   # files since v5.2.1-1158-g3d3030da6 (2004) changed int to bool for booleans.
++   # The I18N patch was fixed only in July 2024.  (rhbz#2296201).
++   ['enoent', 'enoent', {EXIT => 1},
++     {ERR=>"$prog: enoent: No such file or directory\n"}],
++
++   # The downstream I18N patch made 'fold -b' mishandled newlines in UTF locales.
++   # The I18N patch was fixed only in Sep 2024.  (RHEL-60295)
++   ['bw1', '-b -w 4', {IN=>"abcdef\nghijkl"}, {OUT=>"abcd\nef\nghij\nkl"}],
++   ['bw2', '-b -w 6', {IN=>"1234567890\nabcdefghij\n1234567890"},
++     {OUT=>"123456\n7890\nabcdef\nghij\n123456\n7890"}],
    );
  
 +# Add _POSIX2_VERSION=199209 to the environment of each test

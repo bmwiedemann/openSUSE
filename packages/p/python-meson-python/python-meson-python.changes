@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 29 11:22:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add mesonpy-reproducible.patch gh#openSUSE/python-rpm-macros#182
+  initiated by Bernhard Wiedemann @bmwiedemann
+
+-------------------------------------------------------------------
 Mon Jul 22 04:20:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.16.0:

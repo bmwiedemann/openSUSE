@@ -17,7 +17,7 @@
 
 
 Name:           opencc
-Version:        1.1.7
+Version:        1.1.9
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
@@ -93,11 +93,11 @@ find %{buildroot} -name "*.a" -delete -print
 %postun -n libopencc1_1 -p /sbin/ldconfig
 
 %files
-%license LICENSE
-%doc AUTHORS NEWS.md README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}_dict
 %{_bindir}/%{name}_phrase_extract
+%doc AUTHORS NEWS.md README.md
+%license LICENSE
 
 %files data
 %{_datadir}/%{name}/

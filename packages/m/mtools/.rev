@@ -599,4 +599,16 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
   + mtools-4.0.44.tar.bz2.sig</comment>
     <requestid>1186319</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>63f900a646ab6cb4f161f7218a8049ca</srcmd5>
+    <version>4.0.45</version>
+    <time>1727795487</time>
+    <user>anag+factory</user>
+    <comment>version update to 4.0.45
+
+
+
+(🤖: Submission of mtools via https://src.opensuse.org/pool/mtools/pulls/1 by pgajdos)</comment>
+    <requestid>1204740</requestid>
+  </revision>
 </revisionlist>

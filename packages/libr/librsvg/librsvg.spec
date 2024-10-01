@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.58.4
+Version:        2.59.1
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
@@ -30,14 +30,16 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       baselibs.conf
 
+BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
 BuildRequires:  vala
-BuildRequires:  pkgconfig(cairo) >= 1.16.0
+BuildRequires:  pkgconfig(cairo) >= 1.18.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
+BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 20.0.14
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.20
@@ -137,24 +139,13 @@ graphics) data.
 %autosetup -p1 -a1
 
 %build
-export RUSTFLAGS="%{build_rustflags}"
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static\
-	--enable-introspection\
-	--enable-vala \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-export RUSTFLAGS="%{build_rustflags}"
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-# %%doc is used to package such contents
-rm -rf %{buildroot}%{_datadir}/doc/%{name}/CO*.md
+%meson_install
 
 %check
-export RUSTFLAGS="%{build_rustflags}"
 export LANG=C
 %ifarch x86_64 %{?x86_64}
 # 2023-01-15: the pdf-related tests are failing (bsc#1207167)
@@ -164,12 +155,10 @@ export LANG=C
 --skip filter_morphology_from_reference_page_svg --skip bugs_bug668_small_caps_svg
 %endif
 
-%post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n librsvg-2-%{librsvg_sover}
 
 %post -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_post}
-
-%postun -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 
 %postun -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_postun}
@@ -183,7 +172,7 @@ export LANG=C
 %{_libdir}/girepository-1.0/Rsvg-2.0.typelib
 
 %files -n gdk-pixbuf-loader-rsvg
-%{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-svg.so
+%{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader_svg.so
 
 %files -n rsvg-convert
 %{_bindir}/rsvg-convert
@@ -195,7 +184,6 @@ export LANG=C
 
 %files devel
 %doc AUTHORS
-%doc %{_datadir}/doc/%{name}/
 %doc %{_datadir}/doc/Rsvg-2.0/
 %{_includedir}/librsvg-2.0/
 %{_libdir}/librsvg-2.so
@@ -203,5 +191,6 @@ export LANG=C
 %{_datadir}/gir-1.0/Rsvg-2.0.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/librsvg-2.0.vapi
+%{_datadir}/vala/vapi/librsvg-2.0.deps
 
 %changelog

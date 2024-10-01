@@ -18,7 +18,7 @@
 
 %define sover 11
 Name:           libgtop
-Version:        2.41.3
+Version:        2.41.3+4
 Release:        0
 Summary:        System status information library
 License:        GPL-2.0-or-later

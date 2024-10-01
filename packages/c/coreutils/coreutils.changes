@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 14:36:55 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-i18n.patch: fold(1): fix fold -b with UTF8 locale.
+  Sync fix in I18N patch from Fedora/Redhat and add a test. (RHEL-60295)
+  Original report: https://access.redhat.com/solutions/3459791
+
+-------------------------------------------------------------------
 Fri Jul 19 07:57:52 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Avoid empty scriptlets

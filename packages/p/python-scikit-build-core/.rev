@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1202813</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a6cd917c2d392b3286224823fca834a9</srcmd5>
+    <version>0.10.7</version>
+    <time>1727795495</time>
+    <user>anag+factory</user>
+    <comment>- Inject multibuild.</comment>
+    <requestid>1204614</requestid>
+  </revision>
 </revisionlist>

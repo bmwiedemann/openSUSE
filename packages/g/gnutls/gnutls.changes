@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 08:02:09 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Build with liboqs to support the X25519Kyber768 post-quantum key
+  exchange algorithm.
+
+-------------------------------------------------------------------
 Mon Sep  2 10:09:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.7:

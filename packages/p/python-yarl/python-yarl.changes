@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 25 11:36:24 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- update to 1.12.1
+- update to 1.12.0
+  * Added attr `~yarl.URL.path_safe` to be able to fetch the 
+    path without %2F and %25 decoded
+  * Restore decoding %2F (/) in URL.path
+  * Improved performance of processing paths
+
+-------------------------------------------------------------------
+Tue Sep  3 06:46:22 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- updaze to 1.9.7:
+  * Removed support :rfc:3986#section-3.2.3 port normalization
+    when the scheme is not one of http, https, wss, or ws
+  * Joining URLs with empty segments has been changed
+    to match :rfc:3986
+
+-------------------------------------------------------------------
 Tue Mar 12 10:35:11 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - restore correct reproducible.patch

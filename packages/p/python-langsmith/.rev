@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07bf8fad12a806006f87a408aa594bab</srcmd5>
+    <version>0.1.52</version>
+    <time>1727795515</time>
+    <user>anag+factory</user>
+    <comment>-------------------------------------------------------------------
+Tue Aug 27 16:15:03 UTC 2024 - Guang Yee &lt;gyee@suse.com&gt;
+
+- Enable sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
+
+- initial commit of langchain</comment>
+    <requestid>1202279</requestid>
+  </revision>
+</revisionlist>

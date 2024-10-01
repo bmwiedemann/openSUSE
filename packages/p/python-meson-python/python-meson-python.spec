@@ -27,7 +27,10 @@ URL:            https://github.com/mesonbuild/meson-python
 Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
 Patch11:        mesonpy-trim-deps.patch
+# PATCH-FEATURE-OPENSUSE mesonpy-reproducible.patch gh#openSUSE/python-rpm-macros#182
+Patch12:        mesonpy-reproducible.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module packaging >= 0.19}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
@@ -35,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  meson >= 1.2.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging >= 0.19
 Requires:       python-pyproject-metadata >= 0.7.1
 BuildArch:      noarch
 %if 0%{python_version_nodots} >= 312
@@ -76,7 +80,10 @@ modules implemented in languages such as C, C++, Cython, Fortran, Pythran, or Ru
 %check
 # test suite path issues
 donttest="test_vendored_meson"
-%pytest -k "not ($donttest)"
+%{python_expand # clear test builds
+find tests -name build -type d -prune -print -exec rm -r {} +
+$python -m pytest -v -k "not ($donttest)"
+}
 
 %files %{python_files}
 %license LICENSE

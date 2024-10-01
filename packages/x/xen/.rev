@@ -2982,4 +2982,12 @@
     <comment>Fix build on aarch64 with gcc14 (bsc#1225953)</comment>
     <requestid>1198569</requestid>
   </revision>
+  <revision rev="351" vrev="1">
+    <srcmd5>e001f5d2fb36832c38fa60301a3c7137</srcmd5>
+    <version>4.19.0_04</version>
+    <time>1727795499</time>
+    <user>anag+factory</user>
+    <comment>Various upstream bug fixes</comment>
+    <requestid>1204818</requestid>
+  </revision>
 </revisionlist>

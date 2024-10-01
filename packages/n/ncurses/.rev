@@ -4752,4 +4752,18 @@
     the term-driver.</comment>
     <requestid>1202539</requestid>
   </revision>
+  <revision rev="273" vrev="46">
+    <srcmd5>7faa8d7d491174569e417a6ba20ba3e2</srcmd5>
+    <version>unknown</version>
+    <time>1727795512</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240928
+  + improve error-message from infocmp when a terminal entry cannot be
+    opened (patch by Branden Robinson).
+  + improve filtering of -L options in misc/gen-pkgconfig.in and in
+    misc/ncurses-config.in
+  + add check in wresize() for out-of-range dimensions (report by Peter
+    Bierma).</comment>
+    <requestid>1204742</requestid>
+  </revision>
 </revisionlist>

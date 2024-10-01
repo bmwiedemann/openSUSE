@@ -974,4 +974,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1203343</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c3898a689bb013fbdf87423b889402b0</srcmd5>
+    <version>20240930</version>
+    <time>1727795479</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240930:
+  * Label yast binaries correctly
+</comment>
+    <requestid>1204680</requestid>
+  </revision>
 </revisionlist>
