@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:44:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Use builtin async-timeout for Python>=3.11
+
+-------------------------------------------------------------------
 Sat Aug 31 12:10:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:

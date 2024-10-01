@@ -80,4 +80,13 @@
   * Fix socks5 reply reading</comment>
     <requestid>1198056</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed1eda2c5a4202cb4d4cdd5bca45096c</srcmd5>
+    <version>2.5.2</version>
+    <time>1727796014</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.2:
+  * Use builtin async-timeout for Python&gt;=3.11</comment>
+    <requestid>1204933</requestid>
+  </revision>
 </revisionlist>
