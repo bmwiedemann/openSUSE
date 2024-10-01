@@ -210,4 +210,16 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
     on a ``GPG`` instance.</comment>
     <requestid>1133187</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>73e742c58e35ac66573451f34660d3a1</srcmd5>
+    <version>0.5.3</version>
+    <time>1727796012</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.3:
+  * Add WKD (Web Key Directory) support for auto-locating keys.
+  * Ensure local variable is initialized even when an exception
+    occurs.
+  * Fix #239: Remove logging of decryption result.</comment>
+    <requestid>1204932</requestid>
+  </revision>
 </revisionlist>
