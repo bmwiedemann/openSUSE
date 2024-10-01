@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 30 16:43:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.22:
+  * release: prepare v0.15.22 (#1400)
+  * The vulnerabilities have been fixed by bumping the Go version
+    and by updating the opa. (#1398)
+
+-------------------------------------------------------------------
 Tue Jul 16 06:08:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.21:

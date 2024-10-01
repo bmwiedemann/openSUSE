@@ -19,21 +19,25 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           starboard
-Version:        0.15.21
+Version:        0.15.22
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0
 URL:            https://github.com/aquasecurity/starboard
 Source:         starboard-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.23
 
 %description
-Starboard integrates security tools into the Kubernetes environment, so that users can find and view the risks that relate to different resources in a Kubernetes-native way. Starboard provides custom resources definitions and a Go module to work with a range of existing security scanners, as well as a kubectl-compatible command, the Octant plugin, and the Lens extension that make security reports available through familiar Kubernetes tools.
+Starboard integrates security tools into the Kubernetes environment, so that
+users can find and view the risks that relate to different resources in a
+Kubernetes-native way. Starboard provides custom resources definitions and a Go
+module to work with a range of existing security scanners, as well as a
+kubectl-compatible command, the Octant plugin, and the Lens extension that make
+security reports available through familiar Kubernetes tools.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build -mod=vendor \
