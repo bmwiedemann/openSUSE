@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 30 01:04:21 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.2.2
+  https://www.blender.org/download/lts/4-2/
+- Add assets from the "Essentials" library, these are expected
+  to be bundled (boo#1231122).
+- Minor cleanup for lang subpackage
+
+-------------------------------------------------------------------
 Thu Aug  1 13:26:21 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Import Arch linux patch for building with ffmpeg-7

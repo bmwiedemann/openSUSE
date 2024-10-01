@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,6 +86,8 @@ URL:            https://www.blender.org/
 # Please leave the source url intact
 Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
+# Unfortunately, the "Essentials" library is only availabe using GIT LFS. https://projects.blender.org/blender/blender/issues/128359
+Source2:        blender-assets-%{version}.tar.xz
 Source4:        geeko.blend
 Source5:        geeko.README
 Source6:        geeko_example_scene.blend
@@ -306,6 +308,8 @@ md5sum -c %{SOURCE1}
 popd
 
 %autosetup -p1
+%setup -T -D -a 2 -q
+mv blender-assets-%{version} release/datafiles/assets
 
 rm -rf extern/libopenjpeg
 %if %{with system_glew}
@@ -533,7 +537,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}/%{_version}/datafiles/locale
-%{_datadir}/%{name}/%{_version}/datafiles/locale/
+%dir %{_datadir}/%{name}/%{_version}/datafiles/locale/*
+%dir %{_datadir}/%{name}/%{_version}/datafiles/locale/*/LC_MESSAGES
 
 %files
 %{_bindir}/*

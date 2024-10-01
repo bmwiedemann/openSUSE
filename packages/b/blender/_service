@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="revision">v4.2.2</param>
+    <param name="version">4.2.2</param>
+    <param name="url">https://projects.blender.org/blender/blender-assets.git</param>
+    <param name="scm">git</param>
+    <param name="lfs">enable</param>
+    <param name="exclude">testing/*</param>
+    <param name="exclude">working/*</param>
+    <param name="exclude">icons/*</param>
+  </service>
+  <service name="tar" mode="manual">
+    <param name="exclude">testing/*</param>
+    <param name="exclude">working/*</param>
+    <param name="exclude">icons/*</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+
+
