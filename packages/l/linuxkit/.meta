@@ -1,0 +1,6 @@
+<package name="linuxkit" project="openSUSE:Factory">
+  <title>linuxkit</title>
+  <description>A toolkit for building secure, portable and lean operating systems for containers</description>
+  <devel project="Virtualization:containers" package="linuxkit"/>
+  <url>https://github.com/linuxkit/linuxkit</url>
+</package>
