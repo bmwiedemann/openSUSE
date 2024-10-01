@@ -241,4 +241,24 @@
   * Group commands under dedicated heading in --help output (forwarded request 1197296 from rrahl0)</comment>
     <requestid>1197297</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c698260f573b7ca2af46774c7e435d49</srcmd5>
+    <version>1.36.0</version>
+    <time>1727795978</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.36.0:
+  * Allow default values to use earlier recipe arguments
+  * Add `--one` flag to forbid multiple recipes from being invoked
+  * Allow including arbitrary characters in strings with `\u{…}`
+  * Print recipe doc string when`--explain` flag  is passed
+  * Use unwrap_or_default() when getting default color and verbosity
+  * De-duplicate suggestion methods
+  * Refactor analyzer
+  * Use `console` codeblocks in readme
+  * Add PyPI install instructions
+  * Remove old recipes from project justfile
+  * Fix clippy lints
+- remove cargo_audit, as it's included in cargo_vendor (forwarded request 1204882 from rrahl0)</comment>
+    <requestid>1204883</requestid>
+  </revision>
 </revisionlist>

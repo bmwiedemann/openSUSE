@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  1 06:39:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.36.0:
+  * Allow default values to use earlier recipe arguments
+  * Add `--one` flag to forbid multiple recipes from being invoked
+  * Allow including arbitrary characters in strings with `\u{…}`
+  * Print recipe doc string when`--explain` flag  is passed
+  * Use unwrap_or_default() when getting default color and verbosity
+  * De-duplicate suggestion methods
+  * Refactor analyzer
+  * Use `console` codeblocks in readme
+  * Add PyPI install instructions
+  * Remove old recipes from project justfile
+  * Fix clippy lints
+- remove cargo_audit, as it's included in cargo_vendor
+
+-------------------------------------------------------------------
 Thu Aug 29 05:59:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.35.0:
