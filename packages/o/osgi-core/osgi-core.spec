@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source2:        http://www.apache.org/licenses/LICENSE-2.0
 Source3:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  osgi-annotation
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -79,7 +79,7 @@ mv org src/main/java/
 %pom_add_dep org.osgi:osgi.annotation::provided
 
 %build
-%{ant} jar javadoc
+ant jar javadoc
 
 %install
 # jar
@@ -87,7 +87,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/osgi.core-%{version}.jar %{buildroot}%{_javadir}/%{name}/osgi.core.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.core.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.core.pom
 %add_maven_depmap %{name}/osgi.core.pom %{name}/osgi.core.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
