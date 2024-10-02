@@ -26,12 +26,16 @@
 %bcond_with    systemd
 %endif
 
+%global lua_abi_version 51
+
 %ifarch %{ix86} x86_64
   %if 0%{?suse_version} > 1500
     %bcond_without hyperscan
   %endif
-  %if (0%{?suse_version} >= 1315)
-    %bcond_with luajit
+  %if 0%{?suse_version} >= 1500
+    %bcond_without luajit
+  %else
+    %bcond_with    luajit
   %endif
 %endif
 
@@ -56,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -88,8 +92,10 @@ BuildRequires:  libicu-devel
 %if %{with luajit}
 BuildRequires:  luajit-devel
 %else
-BuildRequires:  lua-devel
+BuildRequires:  lua%{?lua_abi_version}-devel
 %endif
+BuildRequires:  lua%{?lua_abi_version}-lpeg
+Requires:       lua%{?lua_abi_version}-lpeg
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %endif
@@ -121,15 +127,6 @@ BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openblas)
-%if 0%{?suse_version} >= 1550
-Requires:       lua54-lpeg
-%else
-%if 0%{?suse_version} >= 1500
-Requires:       lua53-lpeg
-%else
-Requires:       lua51-LPeg
-%endif
-%endif
 %if 0%{?with split_out_client}
 Requires:       rspamd-client = %{version}
 %else
@@ -176,6 +173,12 @@ This package holds the client tools (rspamc and rspamadm)
 %autosetup -p1
 
 %build
+%if %{with luajit}
+if ! [ "%{lua_abi_version}" = "$(pkg-config --variable=abiver luajit | tr -d '.')" ] ; then
+  echo "the lua_abi_version define and the abi version of luajit do not match. please investigate. exiting."
+  exit 1
+fi
+%endif
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
@@ -189,9 +192,8 @@ export CXX="g++-%{?force_gcc_version}"
 %if 0%{suse_version} == 1315
   -DCMAKE_USER_MAKE_RULES_OVERRIDE=""       \
 %endif
-  -DCMAKE_EXE_LINKER_FLAGS:STRING=''        \
-  -DCMAKE_MODULE_LINKER_FLAGS:STRING=''     \
-  -DCMAKE_SHARED_LINKER_FLAGS:STRING=''     \
+  -DCMAKE_SHARED_LINKER_FLAGS='-flto=auto -Wl,--as-needed -Wl,-z,now' \
+  -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now -pie" \
   -DRSPAMD_LIBDIR=%{_libdir}/rspamd         \
   -DCONFDIR=%{_sysconfdir}/rspamd           \
   -DMANDIR=%{_mandir}                       \
@@ -304,7 +306,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %service_add_pre %{name}.service
 
 %post
-#systemd-tmpfiles --create /usr/lib/tmpfiles.d/%{name}.conf ||:
+#systemd-tmpfiles --create /usr/lib/tmpfiles.d/%%{name}.conf ||:
 %service_add_post %{name}.service
 %endif
 
@@ -617,11 +619,13 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/neural_test.lua
 %{_datadir}/rspamd/lualib/rspamadm/dkim_keygen.lua
 %{_datadir}/rspamd/lualib/rspamadm/fuzzy_ping.lua
+%{_datadir}/rspamd/lualib/rspamadm/secretbox.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
 %{_datadir}/rspamd/lualib/plugins/neural.lua
 %{_datadir}/rspamd/lualib/plugins/rbl.lua
+%{_datadir}/rspamd/lualib/plugins/ratelimit.lua
 
 %dir %{_datadir}/rspamd/lualib/redis_scripts/
 %{_datadir}/rspamd/lualib/redis_scripts/neural_maybe_invalidate.lua

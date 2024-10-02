@@ -337,4 +337,27 @@
   provides in that case.</comment>
     <requestid>1204600</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>862426cf49633b526b3751682843d022</srcmd5>
+    <version>3.10.0</version>
+    <time>1727897678</time>
+    <user>anag+factory</user>
+    <comment>- Actually for all distros to use luajit and lua 5.1 ABI modules
+  for the additional modules
+- for non luajit enabled distros we also use lua 5.1 to build
+  against as rspamd does not really support newer lua APIs
+  
+  https://github.com/rspamd/rspamd/issues/5163
+
+- restore the overriden CMAKE_SHARED_LINKER_FLAGS but only remove
+  the --undefined option as rspamd doesnt have its dependencies
+  between parts of the code correct
+
+- Simplify lua handling
+
+- fix building the binaries with PIE 
+
+- Update to 3.10.0</comment>
+    <requestid>1205186</requestid>
+  </revision>
 </revisionlist>

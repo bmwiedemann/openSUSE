@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:11:02 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Actually for all distros to use luajit and lua 5.1 ABI modules
+  for the additional modules
+- for non luajit enabled distros we also use lua 5.1 to build
+  against as rspamd does not really support newer lua APIs
+  
+  https://github.com/rspamd/rspamd/issues/5163
+
+-------------------------------------------------------------------
+Wed Oct  2 10:28:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- restore the overriden CMAKE_SHARED_LINKER_FLAGS but only remove
+  the --undefined option as rspamd doesnt have its dependencies
+  between parts of the code correct
+
+-------------------------------------------------------------------
+Wed Oct  2 09:59:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Simplify lua handling
+
+-------------------------------------------------------------------
+Mon Sep 30 20:05:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix building the binaries with PIE 
+
+-------------------------------------------------------------------
+Mon Sep 30 19:40:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.10.0
+  - [FIX] Arc regex to no longer match on dmarc= by
+    @JasonStephenson in #4960
+  - [Conf] Add SenderScore RPBL return codes by @moisseev in #5077
+  - Add name in statistic.conf by @dragoangel in #5079
+  - [Minor] Improve errors reporting for lua_redis by @vstakhov in
+    #5086
+  - [Feature] Allow to set negative group score limit via min_score
+    by @vstakhov in #5084
+  - [Fix] Fix Redis scripts uploading when Redis is not ready by
+    @vstakhov in #5091
+  - [Conf] Add SenderScore Reputationlist RBL by @moisseev in #5088
+  - [Test] Add tests for milter_headers by @fatalbanana in #5083
+  - [Project] Allow to change log tag from HTTP request by
+    @vstakhov in #5092
+  - [Rework] Resolve rdns in a separate function by @vstakhov in
+    #5093
+  - [Dep] Update doctest to 2.4.11 by @vstakhov in #5094
+  - Pull Request for OpenSSL 3.0 support by @left-try in #5072
+  - Remove NIST mode from cryptobox by @vstakhov in #5099
+  - Fix keypairs encryption/decryption by @vstakhov in #5100
+  - [Project] Allow manipulations with opaque UCL objects by
+    @vstakhov in #5104
+  - Provide OpenSSL 3.0 support for lua_rsa by @left-try in #5101
+  - Fix issue with broken HTTP message to learn endpoints by
+    @vstakhov in #5106
+  - [Test] Improve grow_factor tests by @fatalbanana in #5110
+  - Set expiration for history_redis to 5 days by default by
+    @dragoangel in #5115
+  - Fix for issue #5089 - learning of the empty tasks by @vstakhov
+    in #5118
+  - Update URIBL_RED/GREY scores by @slavkoja in #5119
+  - [Fix] Preserve the previous behaviour of RDNS_* checks by
+    @vstakhov in #5121
+  - [Test] Improve startup error handling by @fatalbanana in #5114
+  - [Fix] Unify lua symbols registration by @vstakhov in #5125
+  - [PATCH] ICAP: encode constructed path to be URL safe. by
+    @oliyks in #5111
+  - [Rework] Change the logic of skipping symbols by @vstakhov in
+    #5126
+  - Draft pull request for issue #5095 by @left-try in #5116
+  - Rework fuzzy symbols by @vstakhov in #5127
+  - [Fix] Another fix for Redis schema by @vstakhov in #5129
+  - [Feature] Allow differen modes for fuzzy rules by @vstakhov in
+    #5131
+  - Implement individual limits for fuzzy keys by @vstakhov in
+    #5135
+  - [Fix] Rework DMARC grammar to correctly handle spaces in values
+    by @spacefreak86 in #5139
+  - [Test] Upgrade linters by @moisseev in #5133
+  - [Feature] DMARC: Implement reporting.only_domains setting by
+    @fatalbanana in #5142
+  - Draft pull request for PR#5116 by @left-try in #5132
+  - Detect CPU using __builtin_cpu_supports where it's possible by
+    @vstakhov in #5140
+  - [Rework] Allow more flexible keypair encoding by @vstakhov in
+    #5144
+  - Add more build targets by @vstakhov in #5153
+  - Fixes for OpenSSL by @vstakhov in #5154
+  - [Fix] Iterate over dynamic keys in fuzzy storage by @vstakhov
+    in #5156
+  - [Rework] Remove control block support by @vstakhov in #5160
+  - MIME UTF8 support by @vstakhov in #5056
+  - [Fix] Fix DCC rep handling by @vstakhov in #5161
+
+-------------------------------------------------------------------
 Sun Sep 29 23:24:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable luajit until we actually package all the lua extensions
