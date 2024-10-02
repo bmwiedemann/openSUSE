@@ -1,7 +1,0 @@
-<package name="gedit-latex" project="openSUSE:Factory">
-  <title>LaTeX plugin for gedit</title>
-  <description>This plugin turns the editor gedit into a productive environment for editing LaTeX documents and managing BibTeX bibliographies.
-
-NOTE: It has been packaged dependent on arch to abuse from the %{_libdir} macro to package it. Needs testing.</description>
-  <devel project="GNOME:Apps" package="gedit-latex"/>
-</package>
