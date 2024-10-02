@@ -1,7 +1,7 @@
 #
 # spec file for package saxpath
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}-FCS/%{name}-%{version}-FCS.pom
 Source2:        LICENSE
 BuildRequires:  ant
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       jpackage-utils
 BuildArch:      noarch
 
@@ -65,7 +65,7 @@ install -d -m 755 %{buildroot}/%{_javadir}
 install -p -m 644 build/%{name}.jar %{buildroot}/%{_javadir}/
 # pom
 install -d -m 755 %{buildroot}/%{_mavenpomdir}
-install -p -m 644 %{SOURCE1} %{buildroot}/%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}/%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}/%{_javadocdir}/%{name}

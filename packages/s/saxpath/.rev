@@ -7,4 +7,12 @@
     <comment>new package for staging:M</comment>
     <requestid>1105585</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4fba32a55e736d5d18edfeae6aeb87c</srcmd5>
+    <version>1.0</version>
+    <time>1727897769</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205283</requestid>
+  </revision>
 </revisionlist>
