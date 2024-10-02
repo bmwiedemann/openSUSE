@@ -17,7 +17,7 @@
 
 
 Name:           wike
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A Wikipedia reader for the GNOME Desktop
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 BuildRequires:  dbus-1
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
+BuildRequires:  gtk4-tools
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
