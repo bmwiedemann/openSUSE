@@ -22,18 +22,19 @@ Release:        0
 Summary:        Java components interfaces
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://avalon.apache.org/
-Source0:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-api-%{version}-src.tar.gz
-Source1:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-impl-%{version}-src.tar.gz
+URL:            https://avalon.apache.org/
+#Source0:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-api-%{version}-src.tar.gz
+#Source1:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-impl-%{version}-src.tar.gz
+Source0:        %{name}-api-%{version}-src.tar.gz
+Source1:        %{name}-impl-%{version}-src.tar.gz
 Patch0:         0001-Port-build-script-to-Maven-3.patch
 Patch1:         %{name}-manifest.patch
 BuildRequires:  ant
 BuildRequires:  avalon-logkit
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  reload4j
-Requires:       mvn(avalon-logkit:avalon-logkit)
 BuildArch:      noarch
 
 %description
@@ -55,20 +56,20 @@ Obsoletes:      %{name}-manual < %{version}-%{release}
 API documentation for %{name}.
 
 %prep
-%setup -cT -a 0 -a 1
+%setup -q -cT -a 0 -a 1
 %autopatch -p1
 
 %build
 pushd %{name}-api-%{version}
   mkdir -p target/lib
   build-jar-repository -s target/lib avalon-logkit
-  %ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
+  ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd
 pushd %{name}-impl-%{version}
   mkdir -p target/lib
   build-jar-repository -s target/lib avalon-logkit reload4j commons-logging
   cp ../%{name}-api-%{version}/target/*.jar target/lib/
-  %ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
+  ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd
 
 %install
@@ -79,9 +80,9 @@ install -pm 0644 %{name}-impl-%{version}/dist/%{name}-impl-%{version}.jar %{buil
 (cd %{buildroot}%{_javadir} && ln -s %{name}-impl.jar %{name}.jar)
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{name}-api-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
+%{mvn_install_pom} %{name}-api-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
 %add_maven_depmap %{name}-api.pom %{name}-api.jar -a org.apache.avalon.framework:avalon-framework-api
-install -pm 0644 %{name}-impl-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-impl.pom
+%{mvn_install_pom} %{name}-impl-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-impl.pom
 %add_maven_depmap %{name}-impl.pom %{name}-impl.jar -a "org.apache.avalon.framework:avalon-framework-impl","avalon-framework:avalon-framework"
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}

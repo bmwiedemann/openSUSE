@@ -134,4 +134,12 @@
     <comment>Add an artifact alias</comment>
     <requestid>1188395</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>c29863efc6c8946fc80578e74962e73a</srcmd5>
+    <version>4.3</version>
+    <time>1727897740</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205242</requestid>
+  </revision>
 </revisionlist>
