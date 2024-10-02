@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct  2 17:47:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.15.0
+  * New Feature
+    + MPLUGIN-529: Add new report goal 'report-no-fork' which
+      will not invoke process-classes
+  * Improvement
+    + MPLUGIN-530: Deprecate o.a.m.plugins.annotations.Component
+  * Task
+    + MPLUGIN-523: Split Maven3 and Maven4 support
+    + MPLUGIN-526: Clean up dependencies reported by
+      dependencies:analyze
+    + MPLUGIN-528: Tone done report plugin console output
+  * Dependency upgrade
+    + MPLUGIN-414: Upgrade to Velocity Engine 2.3
+    + MPLUGIN-501: Upgrade to Doxia 2.0.0 Milestone Stack
+    + MPLUGIN-533: Upgrade to Parent 43
+- Modified patch:
+  * maven-plugin-plugin-bootstrap-resouces.patch
+    + regenerate in cycle with itself
+
+-------------------------------------------------------------------
 Wed May 15 11:37:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.13.0
