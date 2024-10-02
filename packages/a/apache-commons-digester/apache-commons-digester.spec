@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-digester
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,7 @@ BuildRequires:  commons-beanutils
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       mvn(commons-beanutils:commons-beanutils)
-Requires:       mvn(commons-logging:commons-logging)
+BuildRequires:  javapackages-local >= 6
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -89,7 +87,7 @@ install -pm 644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{na
 ln -s %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
