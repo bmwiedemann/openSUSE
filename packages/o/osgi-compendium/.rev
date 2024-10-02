@@ -39,4 +39,12 @@
     <comment>regenerate bundle manifest</comment>
     <requestid>1108669</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>09a58ebc2fcec117d7eb3251f5fd91b5</srcmd5>
+    <version>7.0.0</version>
+    <time>1727897763</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205274</requestid>
+  </revision>
 </revisionlist>

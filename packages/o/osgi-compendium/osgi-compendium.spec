@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-compendium
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@ Release:        0
 Summary:        Interfaces and Classes for use in compiling OSGi bundles
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.osgi.org
+URL:            https://www.osgi.org
 Source0:        https://osgi.org/download/r7/osgi.cmpn-%{version}.jar
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jpa-3_0-api
 BuildRequires:  glassfish-servlet-api
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  osgi-annotation
 BuildRequires:  osgi-core
 BuildRequires:  unzip
@@ -101,7 +101,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/osgi.cmpn-%{version}.jar %{buildroot}%{_javadir}/%{name}/osgi.cmpn.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.cmpn.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.cmpn.pom
 %add_maven_depmap %{name}/osgi.cmpn.pom %{name}/osgi.cmpn.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
