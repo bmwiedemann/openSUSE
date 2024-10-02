@@ -31,4 +31,12 @@
     <comment>Fix a typo causing failures in eclipse build</comment>
     <requestid>1030185</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2ac380b9c3de8de463f3ff37a4cae0c5</srcmd5>
+    <version>1.15.3</version>
+    <time>1727897760</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205270</requestid>
+  </revision>
 </revisionlist>
