@@ -76,7 +76,12 @@ Patch15:        spidermonkey_checks_disable.patch
 Patch18:        spidermonkey_style_check_disable_s390x.patch
 # PATCH-FIX-OPENSUSE
 Patch20:        Fix-i586-float-math.patch
-
+# PATCH-FIX-UPSTREAM mozjs128-CVE-2024-45490-part01-5c1a3164.patch CVE-2024-45490 bsc#1230036 qzhao@suse.com -- Reject negative len for XML_ParseBuffer.
+Patch21:        mozjs128-CVE-2024-45490-part01-5c1a3164.patch
+# PATCH-FIX-UPSTREAM mozjs128-CVE-2024-45491.patch CVE-2024-45491 bsc#1230037 qzhao@suse.com -- Detect integer overflow in dtdCopy.
+Patch22:        mozjs128-CVE-2024-45491.patch
+# PATCH-FIX-UPSTREAM mozjs128-CVE-2024-45492.patch CVE-2024-45492 bsc#1230038 qzhao@suse.com -- Detect integer overflow in function nextScaffoldPart.
+Patch23:        mozjs128-CVE-2024-45492.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -160,6 +165,9 @@ pushd ../..
 %patch -P 18 -p1
 %endif
 %patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
 
 # Copy out the LICENSE file
 cp LICENSE js/src/
