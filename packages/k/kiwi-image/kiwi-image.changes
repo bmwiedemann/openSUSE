@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  1 10:40:00 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- install the common devel tools into the kiwi container
+
+-------------------------------------------------------------------
 Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - rerender installation step in multiple lines, allow uninstalling optional packages
