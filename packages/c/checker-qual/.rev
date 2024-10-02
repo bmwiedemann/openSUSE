@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>977798</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>38ac7bfaa11a20db58c5550ad287b151</srcmd5>
+    <version>3.22.0</version>
+    <time>1727897742</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205247</requestid>
+  </revision>
 </revisionlist>

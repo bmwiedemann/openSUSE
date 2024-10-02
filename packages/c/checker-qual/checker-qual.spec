@@ -1,7 +1,7 @@
 #
-# spec file for package j2objc-annotations
+# spec file for package checker-qual
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@ Source1:        https://repo1.maven.org/maven2/org/checkerframework/%{name}/%{ve
 Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8 javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -57,7 +58,7 @@ install -d -m 0755 %{buildroot}%{_javadir}
 install -p -m 0644 %{name}/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
