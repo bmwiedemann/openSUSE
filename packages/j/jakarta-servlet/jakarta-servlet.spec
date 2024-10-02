@@ -28,7 +28,7 @@ Source1:        %{name}-api-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -47,17 +47,7 @@ API documentation for %{name}.
 cp LICENSE.md api/src/main/resources/META-INF/
 cp NOTICE.md api/src/main/resources/META-INF/
 
-# remove unnecessary dependency on parent POM
-%pom_remove_parent . api
-
 cp %{SOURCE1} api/build.xml
-
-# remove unnecessary maven plugins
-%pom_remove_plugin -r :formatter-maven-plugin
-%pom_remove_plugin -r :impsort-maven-plugin
-%pom_remove_plugin -r :maven-enforcer-plugin
-%pom_remove_plugin -r :maven-javadoc-plugin
-%pom_remove_plugin -r :maven-source-plugin
 
 %build
 pushd api
@@ -70,7 +60,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 api/target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifactId}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
+%{mvn_install_pom} api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
 %add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
