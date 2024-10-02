@@ -7,4 +7,18 @@
     <comment></comment>
     <requestid>1204066</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1dc82555fe23759ebf949bd6e42a7ec6</srcmd5>
+    <version>0.10.0</version>
+    <time>1727897718</time>
+    <user>anag+factory</user>
+    <comment>- Use the tarball from GitHub, because it contains tests
+- Add fix-version.patch, because we cannot use dynamically
+  generated version number from the GitHub tarball
+  (gh#phi-friday/async-wrapper#1).
+- Run tests
+- Add missing Requires
+</comment>
+    <requestid>1205227</requestid>
+  </revision>
 </revisionlist>

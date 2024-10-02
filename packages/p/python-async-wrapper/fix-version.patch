@@ -1,0 +1,24 @@
+---
+ pyproject.toml |    5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [project]
+ name = "async-wrapper"
+-dynamic = ["version"]
++version = "@VERSION@"
+ description = "async wrapper"
+ authors = [{ name = "phi", email = "phi.friday@gmail.com" }]
+ readme = "README.md"
+@@ -67,9 +67,6 @@ check = "pre-commit run --all-files --sh
+ requires = ["hatchling", "hatch-vcs"]
+ build-backend = "hatchling.build"
+ 
+-[tool.hatch.version]
+-source = "vcs"
+-
+ [tool.hatch.build.targets.wheel]
+ packages = ["src/async_wrapper"]
+ 

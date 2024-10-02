@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:59:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Use the tarball from GitHub, because it contains tests
+- Add fix-version.patch, because we cannot use dynamically
+  generated version number from the GitHub tarball
+  (gh#phi-friday/async-wrapper#1).
+- Run tests
+- Add missing Requires
+
+-------------------------------------------------------------------
 Thu Sep 26 19:14:00 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-async-wrapper 0.10.0 
