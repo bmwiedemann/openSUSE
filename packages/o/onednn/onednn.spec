@@ -81,6 +81,10 @@ This package only includes the benchmark utility including its input files.
 %package devel
 Summary:        Header files of Intel Math Kernel Library
 Requires:       %{libname} = %{version}
+%if %{with opencl}
+Requires:       opencl-headers
+Requires:       pkgconfig(OpenCL)
+%endif
 Provides:       mkl-dnn-devel = %{version}
 Obsoletes:      mkl-dnn-devel <= %{version}
 Provides:       oneDNN-devel = %{version}
