@@ -15,4 +15,12 @@
     <comment>fix build with java &gt;= 20</comment>
     <requestid>1112752</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ecd76aa6869f7c9a7067abdf9f2716b3</srcmd5>
+    <version>1.0.2</version>
+    <time>1727897744</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205248</requestid>
+  </revision>
 </revisionlist>

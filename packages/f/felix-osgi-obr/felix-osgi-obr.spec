@@ -1,7 +1,7 @@
 #
 # spec file for package felix-osgi-obr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,8 @@ Source0:        http://archive.apache.org/dist/felix/org.osgi.service.obr-%{vers
 Source1:        %{bundle}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  osgi-core
-Requires:       mvn(org.osgi:osgi.core)
 BuildArch:      noarch
 
 %description
@@ -47,16 +46,13 @@ API documentation for %{name}.
 %setup -q -n %{bundle}-%{version}
 cp %{SOURCE1} build.xml
 
-%pom_remove_parent
-%pom_xpath_inject pom:project "<groupId>org.apache.felix</groupId>"
-
 # Use latest OSGi implementation
 %pom_change_dep :org.osgi.core org.osgi:osgi.core
 
 %build
 mkdir -p lib
 build-jar-repository -s lib osgi-core
-%{ant} package javadoc
+ant package javadoc
 
 %install
 # jar
@@ -65,7 +61,7 @@ install -m 644 target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/felix/%{b
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/felix
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
 %add_maven_depmap felix/%{bundle}.pom felix/%{bundle}.jar
 
 # javadoc
