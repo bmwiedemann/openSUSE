@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncpg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/MagicStack/asyncpg/pull/1185 notice also the MERGE command
+Patch0:         0001-notice-also-the-MERGE-command.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout}
 BuildRequires:  %{python_module devel >= 3.6}

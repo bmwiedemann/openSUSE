@@ -1,0 +1,55 @@
+From 75f68ce46da7c3393ec07ff0e03b654158b6e9f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta?= <meggy.calabkova@gmail.com>
+Date: Wed, 2 Oct 2024 15:14:07 +0200
+Subject: [PATCH] notice also the MERGE command
+
+---
+ asyncpg/prepared_stmt.py           | 4 ++--
+ asyncpg/protocol/prepared_stmt.pyx | 2 +-
+ tests/test_exceptions.py           | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/asyncpg/prepared_stmt.py b/asyncpg/prepared_stmt.py
+index 8e241d6..195d005 100644
+--- a/asyncpg/prepared_stmt.py
++++ b/asyncpg/prepared_stmt.py
+@@ -147,8 +147,8 @@ class PreparedStatement(connresource.ConnectionResource):
+             # will discard any output that a SELECT would return, other
+             # side effects of the statement will happen as usual. If you
+             # wish to use EXPLAIN ANALYZE on an INSERT, UPDATE, DELETE,
+-            # CREATE TABLE AS, or EXECUTE statement without letting the
+-            # command affect your data, use this approach:
++            # MERGE, CREATE TABLE AS, or EXECUTE statement without letting
++            # the command affect your data, use this approach:
+             #     BEGIN;
+             #     EXPLAIN ANALYZE ...;
+             #     ROLLBACK;
+diff --git a/asyncpg/protocol/prepared_stmt.pyx b/asyncpg/protocol/prepared_stmt.pyx
+index 7335825..cb0afa2 100644
+--- a/asyncpg/protocol/prepared_stmt.pyx
++++ b/asyncpg/protocol/prepared_stmt.pyx
+@@ -142,7 +142,7 @@ cdef class PreparedStatementState:
+                 # that the user tried to parametrize a statement that does
+                 # not support parameters.
+                 hint += (r'  Note that parameters are supported only in'
+-                         r' SELECT, INSERT, UPDATE, DELETE, and VALUES'
++                         r' SELECT, INSERT, UPDATE, DELETE, MERGE and VALUES'
+                          r' statements, and will *not* work in statements '
+                          r' like CREATE VIEW or DECLARE CURSOR.')
+ 
+diff --git a/tests/test_exceptions.py b/tests/test_exceptions.py
+index dbffcc2..e8bb7a1 100644
+--- a/tests/test_exceptions.py
++++ b/tests/test_exceptions.py
+@@ -42,7 +42,7 @@ class TestExceptions(tb.ConnectedTestCase):
+             self.assertEqual(
+                 e.detail,
+                 "Function's final statement must be SELECT or "
+-                "INSERT/UPDATE/DELETE RETURNING.")
++                "INSERT/UPDATE/DELETE/MERGE RETURNING.")
+             self.assertIn(
+                 'DETAIL:  Function', str(e)
+             )
+-- 
+2.46.1
+
