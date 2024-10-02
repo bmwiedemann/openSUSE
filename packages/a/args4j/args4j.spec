@@ -1,7 +1,7 @@
 #
 # spec file for package args4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -85,21 +85,13 @@ find -name '*.jar' -exec rm -f '{}' \;
 %pom_disable_module args4j-maven-plugin
 %pom_disable_module args4j-maven-plugin-example
 
-for i in args4j args4j-tools; do
-  %pom_remove_parent $i
-  %pom_xpath_inject pom:project "
-    <groupId>args4j</groupId>
-    <version>%{version}</version>
-" $i
-done
-
 %build
 mkdir -p lib
 %if %{with tests}
 build-jar-repository -s lib cglib/cglib mockito/mockito-core objectweb-asm/asm objenesis/objenesis
-%ant package javadoc
+ant package javadoc
 %else
-%ant -Dtest.skip=true package javadoc
+ant -Dtest.skip=true package javadoc
 %endif
 
 %install
@@ -112,9 +104,9 @@ install -pm 0644 %{name}-tools/target/%{name}-tools-%{version}.jar %{buildroot}%
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
-install -pm 0644 %{name}-tools/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tools.pom
+%{mvn_install_pom} %{name}-tools/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tools.pom
 %add_maven_depmap %{name}/%{name}-tools.pom %{name}/%{name}-tools.jar -f tools
 
 # javadoc
