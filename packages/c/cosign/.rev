@@ -577,4 +577,19 @@
     <comment></comment>
     <requestid>1198420</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80bd933883a4530b9c44bc3d3136b63f</srcmd5>
+    <version>2.4.0</version>
+    <time>1727897775</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0 (jsc#SLE-23879)
+  - Add new bundle support to verify-blob and verify-blob-attestation (#3796)
+  - Adding protobuf bundle support to sign-blob and attest-blob (#3752)
+  - Bump sigstore/sigstore to support email_verified as string or boolean (#3819)
+  - Conformance testing for cosign (#3806)
+  - move incremental builds per commit to GHCR instead of GCR (#3808)
+  - Add support for recording creation timestamp for cosign attest (#3797)
+  - Include SCT verification failure details in error message (#3799) (forwarded request 1205245 from msmeissn)</comment>
+    <requestid>1205246</requestid>
+  </revision>
 </revisionlist>

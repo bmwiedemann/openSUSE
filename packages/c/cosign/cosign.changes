@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:34:01 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.4.0 (jsc#SLE-23879)
+  - Add new bundle support to verify-blob and verify-blob-attestation (#3796)
+  - Adding protobuf bundle support to sign-blob and attest-blob (#3752)
+  - Bump sigstore/sigstore to support email_verified as string or boolean (#3819)
+  - Conformance testing for cosign (#3806)
+  - move incremental builds per commit to GHCR instead of GCR (#3808)
+  - Add support for recording creation timestamp for cosign attest (#3797)
+  - Include SCT verification failure details in error message (#3799)
+
+-------------------------------------------------------------------
 Tue Aug 20 19:14:06 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Set CGO_ENABLED=1 for fixing s390x failed build 
