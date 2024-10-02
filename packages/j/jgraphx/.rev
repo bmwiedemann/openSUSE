@@ -63,4 +63,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>distribute with maven metadata</comment>
     <requestid>968022</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2a779475f3e1e1899f7221848b764115</srcmd5>
+    <version>4.2.2</version>
+    <time>1727897758</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205267</requestid>
+  </revision>
 </revisionlist>

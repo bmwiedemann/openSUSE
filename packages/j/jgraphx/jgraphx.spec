@@ -1,7 +1,7 @@
 #
 # spec file for package jgraphx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,7 @@ Source0:        https://github.com/jgraph/%{name}/archive/refs/tags/v%{version}.
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       java >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -66,7 +65,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 lib/jgraphx.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
