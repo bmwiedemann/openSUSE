@@ -1,7 +1,7 @@
 #
 # spec file for package jdependency
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,8 @@ Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  objectweb-asm
-Requires:       apache-commons-io
-Requires:       objectweb-asm
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -60,7 +58,7 @@ mkdir -p lib
 build-jar-repository -s lib commons-io objectweb-asm
 
 %build
-%{ant} \
+ant \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -72,9 +70,9 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
-# javadocdir
+# javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
