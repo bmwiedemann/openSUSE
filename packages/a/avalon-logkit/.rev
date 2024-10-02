@@ -176,4 +176,12 @@
     <comment></comment>
     <requestid>1147898</requestid>
   </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>443f8908aced44b916d2f81eacbe623b</srcmd5>
+    <version>2.1</version>
+    <time>1727897740</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205243</requestid>
+  </revision>
 </revisionlist>

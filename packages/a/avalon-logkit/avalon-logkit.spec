@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-logkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -92,7 +92,7 @@ install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 #pom
 install -d -m 755 %{buildroot}/%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a "%{short_name}:%{short_name},org.apache.avalon.logkit:%{name}"
 
 # javadoc
@@ -101,10 +101,11 @@ cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%doc LICENSE.txt NOTICE.txt
+%license LICENSE.txt
+%doc NOTICE.txt
 
 %files javadoc
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadocdir}/*
 
 %changelog
