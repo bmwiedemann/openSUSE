@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-jexl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,7 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  javapackages-local
-Requires:       mvn(commons-logging:commons-logging)
+BuildRequires:  javapackages-local >= 6
 Provides:       %{short_name} = %{version}-%{release}
 BuildArch:      noarch
 %if %{with tests}
@@ -93,7 +92,7 @@ mkdir -p lib
 build-jar-repository -s lib commons-logging
 
 # commons-jexl
-%{ant} \
+ant \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -117,9 +116,9 @@ install -pm 0644 jexl2-compat/target/%{short_name}-compat-%{compatver}.jar %{bui
 ln -sf %{name}/%{short_name}-compat.jar %{buildroot}%{_javadir}/%{short_name}-compat.jar
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
 %add_maven_depmap %{name}/%{short_name}.pom %{name}/%{short_name}.jar
-install -pm 0644 jexl2-compat/pom.xml  %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}-compat.pom
+%{mvn_install_pom} jexl2-compat/pom.xml  %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}-compat.pom
 %add_maven_depmap %{name}/%{short_name}-compat.pom %{name}/%{short_name}-compat.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/jexl2-compat
