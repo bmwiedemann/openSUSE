@@ -657,6 +657,9 @@ Prefer: -systemd-devel-32bit
 #have choice for libXNVCtrl.so.0()(64bit): libXNVCtrl0 nvidia-libXNVCtrl
 Prefer: -libXNVCtrl0
 
+# have choice for pkgconfig(liboqs): liboqs-devel liboqs-devel-32bit
+Prefer: -liboqs-devel-32bit
+
 #---
 
 %if "%_repository" != "ports"
@@ -2238,6 +2241,7 @@ BuildFlags: onlybuild:libnss_usrfiles
 BuildFlags: onlybuild:libnvidia-egl-wayland
 BuildFlags: onlybuild:libogg
 BuildFlags: onlybuild:libopenmpt
+BuildFlags: onlybuild:liboqs
 BuildFlags: onlybuild:libpaper
 BuildFlags: onlybuild:libparserutils
 BuildFlags: onlybuild:libpcap
