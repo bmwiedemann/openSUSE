@@ -1,7 +1,7 @@
 #
 # spec file for package j2objc-annotations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@ Source1:        https://raw.githubusercontent.com/google/j2objc/master/LICENSE
 Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8 javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -58,7 +59,7 @@ install -d -m 0755 %{buildroot}%{_javadir}
 install -p -m 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
