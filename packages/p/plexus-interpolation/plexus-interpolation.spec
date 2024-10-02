@@ -28,7 +28,7 @@ Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{ver
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -50,14 +50,9 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
-%pom_remove_plugin :maven-release-plugin
-
-%pom_remove_parent
-
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>"
 
 %build
-%{ant} \
+ant \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -69,7 +64,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/interpolation.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/interpolation.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/interpolation.pom
 %add_maven_depmap plexus/interpolation.pom plexus/interpolation.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
