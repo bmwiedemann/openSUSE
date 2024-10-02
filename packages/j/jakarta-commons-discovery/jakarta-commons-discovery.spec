@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package jakarta-commons-discovery
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,7 @@ BuildRequires:  ant
 BuildRequires:  commons-logging >= 1.1.1
 BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
-Requires:       commons-logging >= 1.1.1
+BuildRequires:  javapackages-local >= 6
 Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
 BuildArch:      noarch
@@ -76,7 +75,7 @@ install -m 644 target/%{short_name}-*.jar %{buildroot}%{_javadir}/%{short_name}.
 (cd %{buildroot}%{_javadir} && ln -s %{short_name}.jar %{name}.jar)
 
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -p -m 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar
 
 # javadoc
@@ -89,7 +88,6 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %{_javadir}/%{name}.jar
 
 %files javadoc
-%defattr(0644,root,root,0755)
 %doc %{_javadocdir}/%{name}
 
 %changelog
