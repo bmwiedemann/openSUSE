@@ -1,7 +1,7 @@
 #
 # spec file for package apache-portlet-1_0-api
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Portlet API 1.0 from Jetspeed2
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://portals.apache.org/jetspeed-2/
+URL:            https://portals.apache.org/jetspeed-2/
 Source0:        apache-portlet-1.0-api.tar.gz
 # svn export http://svn.apache.org/repos/asf/portals/jetspeed-2/tags/JETSPEED-RELEASE-2.0/portlet-api/
 Source1:        apache-portlet-1.0-api-pom.xml
@@ -33,11 +33,9 @@ Source3:        apache-portlet-1.0-api-build.xml
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 Provides:       portlet = %{version}
 Provides:       portlet-1.0-api = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -56,7 +54,7 @@ Java Standard Portlet API accoring to JSR-168, from Jetspeed-2 .
 %setup -q -n apache-portlet-1.0-api
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-cp %{SOURCE1} pom.xml
+cp %{SOURCE2} LICENSE.TXT
 cp %{SOURCE3} build.xml
 
 %build
@@ -64,39 +62,28 @@ ant jar javadoc
 
 %install
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 0644 target/portlet-api-1.0.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && ln -sf %{name}-%{version}.jar %{base_name}-%{version}.jar)
-(cd %{buildroot}%{_javadir} && ln -sf %{name}-%{version}.jar portlet-api-%{version}.jar)
-# create unversioned symlinks
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} $(echo $jar | sed -e 's+-%{version}\.jar+.jar+'); done)
+install -m 0644 target/portlet-api-1.0.jar %{buildroot}%{_javadir}/%{name}.jar
+(cd %{buildroot}%{_javadir} && ln -sf %{name}.jar %{base_name}.jar)
+(cd %{buildroot}%{_javadir} && ln -sf %{name}.jar portlet-api.jar)
 
 #poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-portlet-api.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-portlet-api.pom
 %add_maven_depmap JPP-portlet-api.pom portlet-api.jar
 
 #javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* \
-        %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
+        %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 install -d -m 755 %{buildroot}%{_docdir}/%{name}-%{version}
-cp %{SOURCE2} %{buildroot}%{_docdir}/%{name}-%{version}/LICENSE.TXT
 
-%files
-%defattr(0644,root,root,0755)
-%doc %{_docdir}/%{name}-%{version}/LICENSE.TXT
-%dir %{_docdir}/%{name}-%{version}
-%{_javadir}/%{name}*.jar
-%{_javadir}/%{base_name}*.jar
-%{_javadir}/portlet-api*.jar
-%{_datadir}/maven-metadata/%{name}.xml
-%{_mavenpomdir}/*
+%files -f .mfiles
+%license LICENSE.TXT
+%{_javadir}/%{name}.jar
+%{_javadir}/%{base_name}.jar
 
 %files javadoc
-%defattr(0644,root,root,0755)
-%{_javadocdir}/%{name}-%{version}
 %{_javadocdir}/%{name}
 
 %changelog

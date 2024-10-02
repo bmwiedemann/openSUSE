@@ -149,4 +149,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620760</requestid>
   </revision>
+  <revision rev="22" vrev="114">
+    <srcmd5>35d86e126799965200082a8f7ad8a5d2</srcmd5>
+    <version>1.0</version>
+    <time>1727897737</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205240</requestid>
+  </revision>
 </revisionlist>
