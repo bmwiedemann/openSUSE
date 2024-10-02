@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:17:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add tests-tests_require.patch fixing broken tests
+  (gh#toabctl/metaextract#20).
+
+-------------------------------------------------------------------
 Wed Jun 21 15:27:55 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-metaextract
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,11 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://github.com/toabctl/metaextract
 Source:         https://github.com/toabctl/metaextract/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM tests-tests_require.patch gh#toabctl/metaextract#20 mcepl@suse.com
+# Fix failing tests
+Patch0:         tests-tests_require.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needed even though no tests are present
@@ -35,7 +39,7 @@ Requires:       python-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -46,13 +50,13 @@ tarball that was retrieved from the Python Package Index.
 The tool was first developed in py2pack but is now its own module.
 
 %prep
-%setup -q -n metaextract-%{version}
+%autosetup -p1 -n metaextract-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/metaextract

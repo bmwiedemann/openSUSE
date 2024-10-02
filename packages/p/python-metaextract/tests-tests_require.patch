@@ -1,0 +1,49 @@
+---
+ metaextract/tests/test_metaextract.py |    9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+--- a/metaextract/tests/test_metaextract.py
++++ b/metaextract/tests/test_metaextract.py
+@@ -147,7 +147,7 @@ class TestMetaExtract(object):
+                 'entry_points': None, 'extras_require': {'extra1': ['pkg1']},
+                 'install_requires': ['bar', 'foo'], 'python_requires': None,
+                 'setup_requires': [], 'has_ext_modules': None,
+-                'scripts': None, 'data_files': None, 'tests_require': None}
++                'scripts': None, 'data_files': None}
+         ),
+         (
+             "setuptools_simple_unicode", {
+@@ -155,14 +155,14 @@ class TestMetaExtract(object):
+                     'extra1': ['pkg1'], 'extra2': ['pkg2', 'pkg3']},
+                 'install_requires': ['bar', 'foo'], 'python_requires': None,
+                 'setup_requires': [], 'has_ext_modules': None,
+-                'scripts': None, 'data_files': None, 'tests_require': None}
++                'scripts': None, 'data_files': None}
+         ),
+         (
+             "setuptools_simple_unicode_and_header", {
+                 'entry_points': None, 'extras_require': {},
+                 'install_requires': ['bar', 'foo'], 'python_requires': None,
+                 'setup_requires': [], 'has_ext_modules': None,
+-                'scripts': None, 'data_files': None, 'tests_require': None}
++                'scripts': None, 'data_files': None}
+         ),
+         (
+             "setuptools_full", {
+@@ -174,7 +174,7 @@ class TestMetaExtract(object):
+                     ['share/doc/testpgk',
+                      ['AUTHORS', 'LICENSE', 'README.rst']],
+                     ['share/doc/testpkg/html', ['doc/testpkg.html']],
+-                ], 'tests_require': ['testpkg1'], 'entry_points':
++                ], 'entry_points':
+                 {
+                     'console_scripts': ['testpkgp1=testpkg:main']
+                 },
+@@ -207,7 +207,6 @@ class TestMetaExtract(object):
+              'extras_require': {}, 'install_requires': [],
+              'python_requires': None, 'setup_requires': ['pbr>=1.0'],
+              'has_ext_modules': None, 'scripts': None, 'data_files': None,
+-             'tests_require': None,
+              'version': '1'}
+         ),
+         (

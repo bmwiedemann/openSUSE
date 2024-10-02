@@ -188,4 +188,14 @@
     <comment></comment>
     <requestid>1094490</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>137d1ac334ca99b67b34f699678af2a6</srcmd5>
+    <version>1.0.9</version>
+    <time>1727897774</time>
+    <user>anag+factory</user>
+    <comment>- Add tests-tests_require.patch fixing broken tests
+  (gh#toabctl/metaextract#20).
+</comment>
+    <requestid>1205230</requestid>
+  </revision>
 </revisionlist>
