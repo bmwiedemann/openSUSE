@@ -62,11 +62,21 @@ analysis library.
 %package -n dlib-devel
 Summary:        Headers and sources for developing apps with dlib
 Requires:       %{shlib} = %{version}
+Requires:       giflib-devel
+Requires:       pkgconfig(blas)
+Requires:       pkgconfig(cblas)
 Requires:       pkgconfig(fftw3)
+Requires:       pkgconfig(lapack)
 Requires:       pkgconfig(libavcodec)
+Requires:       pkgconfig(libavdevice)
+Requires:       pkgconfig(libavfilter)
+Requires:       pkgconfig(libavformat)
+Requires:       pkgconfig(libavutil)
 Requires:       pkgconfig(libjpeg)
 Requires:       pkgconfig(libjxl)
 Requires:       pkgconfig(libpng16)
+Requires:       pkgconfig(libswresample)
+Requires:       pkgconfig(libswscale)
 Requires:       pkgconfig(libwebp)
 
 %description -n dlib-devel

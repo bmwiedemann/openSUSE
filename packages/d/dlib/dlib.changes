@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 07:55:07 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add more Requires to -devel (now listing all from
+  /usr/lib64/pkgconfig/dlib-1.pc)
+
+-------------------------------------------------------------------
 Fri Aug 16 14:25:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 19.24.6:
