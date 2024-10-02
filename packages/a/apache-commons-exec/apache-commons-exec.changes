@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:30:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Tue Feb 20 11:05:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

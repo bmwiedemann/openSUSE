@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-exec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,19 @@
 %global base_name exec
 %global short_name commons-%{base_name}
 %bcond_with tests
-Name:           apache-commons-exec
+Name:           apache-%{short_name}
 Version:        1.3
 Release:        0
 Summary:        Java library to reliably execute external processes from within the JVM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/exec/
-Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Patch0:         commons-exec-1.3-build_xml.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -64,7 +64,7 @@ find -name Exec57Test.java -delete
 %pom_remove_parent .
 
 %build
-%{ant} \
+ant \
 %if %{without tests}
     -Dmaven.test.skip=true \
 %endif
@@ -77,7 +77,7 @@ install -pm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{s
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
