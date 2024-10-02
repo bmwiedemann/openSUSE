@@ -31,4 +31,12 @@
     <comment>change build system to ant</comment>
     <requestid>962398</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fa024508d2a34222f44331fb3d814dc1</srcmd5>
+    <version>1.4.3</version>
+    <time>1727897744</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205249</requestid>
+  </revision>
 </revisionlist>
