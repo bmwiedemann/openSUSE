@@ -1,7 +1,7 @@
 #
 # spec file for package jcommon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,11 @@ Release:        0
 Summary:        Common library
 License:        LGPL-2.1-only
 URL:            https://www.jfree.org/jcommon/
-# see _service file for Source0
-Source0:        jcommon-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Obsoletes:      %{name}-test
 BuildArch:      noarch
 
@@ -66,7 +65,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
