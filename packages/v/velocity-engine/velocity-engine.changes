@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Oct  2 16:43:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Version 2.4:
+  * Fixes:
+    + Drop CachingDatabaseObjectsFactory class
+    + Clarify template reuse in RuntimeInstance javadoc
+    + Make commons-pool2 dependency optional
+    + Fix overzealous string to number conversion in comparison
+    + Unclosed #[[ ]]# statement should give a parsing error
+    + Add a new compatibility flag for integer ranges immutability
+    + VELOCITY-981: Upgrade to Parent 7
+    + Support Java 16 records in property lookup
+    + VELOCITY-977: Upgrade Java Compiler Compiler to Version 7.0.13
+    + VELOCITY-976: Remove obsolete VelTools66TestCase
+    + VELOCITY-974: Use non-deprecated config property for resource
+      loaders in VelocityEngineFactory
+    + VELOCITY-973: Upgrade dependencies
+    + VELOCITY-951: DataSourceResourceLoader: property
+      datasource_url wrong
+    + VELOCITY-972: Remove Commons IO
+    + VELOCITY-971: Upgrade to Parent 6
+    + Easier #include and #parse directives subclassing - fixes
+      VELOCITY-959
+    + Make templates cloneable - fixes VELOCITY-958
+    + Fixes VELOCITY-953 where VelocimacroProxy polutes context
+      stack due to wrong handling of #break or exceptions
+- Split into two _multibuild flavours, so that the
+  velocity-engine-core can be used early.
+  * generate and customize ant build system
+- Fetch sources using a source service from git tag
+- Removed patch:
+  * build.patch
+    + not needed with this version
+- Added patch:
+  * 0001-Implement-the-new-method-from-StandardParserVisitor-.patch
+    + implement one missing method from StandardParserVisitor
+      interface that renders the BaseVisitor class uninstantiable
+
+-------------------------------------------------------------------
 Tue Feb 20 13:17:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

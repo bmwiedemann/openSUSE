@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="velocity-engine-core" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <!-- properties needed for replacement by filtering in template files -->
+  <property name="parser.basename" value="Standard"/>
+  <property name="parser.char.asterisk" value="*"/>
+  <property name="parser.char.at" value="@"/>
+  <property name="parser.char.dollar" value="$"/>
+  <property name="parser.char.hash" value="#"/>
+  <property name="parser.debug" value="false"/>
+  <property name="parser.package" value="org.apache.velocity.runtime.parser"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="project.groupId" value="org.apache.velocity"/>
+  <property name="project.artifactId" value="velocity-engine-core"/>
+
+  <property name="project.version" value="2.4"/>
+  <property name="spec.version" value="${project.version}"/>
+  <property name="bundle.version" value="${project.version}.0"/>
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <property name="build.parserSrcDir" value="src/main/parser"/>
+  <property name="build.parserOutputDir" value="${build.dir}/parser"/>
+  <property name="build.jjtreeOutputDir" value="${build.dir}/generated-sources/jjtree"/>
+  <property name="build.javaccOutputDir" value="${build.dir}/generated-sources/javacc"/>
+  <property name="build.templateSrcDir" value="src/main/java-templates"/>
+  <property name="build.templateOutputDir" value="${build.dir}/generated-sources/java-templates"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Source generation target                                               -->
+  <!-- ====================================================================== -->
+
+  <target name="gen-sources" description="Generate the sources">
+    <mkdir dir="${build.templateOutputDir}"/>
+    <copy todir="${build.templateOutputDir}">
+      <fileset dir="${build.templateSrcDir}"/>
+      <filterchain>
+        <expandproperties/>
+      </filterchain>
+    </copy>
+    <mkdir dir="${build.parserOutputDir}"/>
+    <copy todir="${build.parserOutputDir}">
+      <fileset dir="${build.parserSrcDir}"/>
+      <filterchain>
+        <expandproperties/>
+      </filterchain>
+    </copy>
+    <mkdir dir="${build.outputDir}/org/apache/velocity/runtime/parser"/>
+    <copy todir="${build.outputDir}/org/apache/velocity/runtime/parser">
+      <fileset dir="${build.parserSrcDir}"/>
+    </copy>
+    <mkdir dir="${build.jjtreeOutputDir}"/>
+    <exec executable="jjtree">
+      <arg value="-GRAMMAR_ENCODING=UTF-8"/>
+      <arg value="-BUILD_NODE_FILES=false"/>
+      <arg value="-MULTI=true"/>
+      <arg value="-NODE_PACKAGE=org.apache.velocity.runtime.parser.node"/>
+      <arg value="-NODE_USES_PARSER=true"/>
+      <arg value="-STATIC=false"/>
+      <arg value="-OUTPUT_DIRECTORY=${build.jjtreeOutputDir}"/>
+      <arg value="${build.parserOutputDir}/Parser.jjt"/>
+    </exec>
+    <delete>
+      <fileset dir="${build.jjtreeOutputDir}">
+        <include name="**/Node.java"/>
+      </fileset>
+    </delete>
+    <mkdir dir="${build.javaccOutputDir}"/>
+    <exec executable="javacc">
+      <arg value="-GRAMMAR_ENCODING=UTF-8"/>
+      <arg value="-STATIC=false"/>
+      <arg value="-DEBUG_PARSER=${parser.debug}"/>
+      <arg value="-DEBUG_LOOKAHEAD=${parser.debug}"/>
+      <arg value="-DEBUG_TOKEN_MANAGER=${parser.debug}"/>
+      <arg value="-BUILD_PARSER=true"/>
+      <arg value="-TOKEN_MANAGER_USES_PARSER=true"/>
+      <arg value="-OUTPUT_DIRECTORY=${build.javaccOutputDir}"/>
+      <arg value="${build.jjtreeOutputDir}/Parser.jj"/>
+    </exec>
+    <delete>
+      <fileset dir="${build.javaccOutputDir}">
+        <include name="**/ParseException.java"/>
+        <include name="**/CharStream.java"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" depends="gen-sources" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.templateOutputDir}"/>
+        <pathelement location="${build.jjtreeOutputDir}"/>
+        <pathelement location="${build.javaccOutputDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             encoding="utf-8"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             linksource="false"
+             source="${compiler.source}"
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+      <fileset dir="${build.srcDir}"/>
+      <fileset dir="${build.templateOutputDir}"/>
+      <fileset dir="${build.jjtreeOutputDir}"/>
+      <fileset dir="${build.javaccOutputDir}"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Bundle-Description" value="Apache Velocity is a general purpose template engine."/>
+		<attribute name="Bundle-DocURL" value="https://www.apache.org/"/>
+		<attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="Apache Velocity - Engine"/>
+		<attribute name="Bundle-SymbolicName" value="org.apache.velocity.engine-core"/>
+		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Bundle-Version" value="${bundle.version}"/>
+		<attribute name="Export-Package" value="org.apache.velocity.app.event.implement;uses:=&quot;org.apache.velocity.app.event,org.apache.velocity.context,org.apache.velocity.runtime,org.apache.velocity.util,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.app.event;uses:=&quot;org.apache.velocity.context,org.apache.velocity.runtime,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.app;uses:=&quot;org.apache.velocity,org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.context;uses:=&quot;org.apache.velocity,org.apache.velocity.app.event,org.apache.velocity.runtime.resource,org.apache.velocity.util.introspection&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.exception;uses:=&quot;org.apache.velocity.runtime.parser,org.apache.velocity.util.introspection&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.io;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.defaults;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.directive.contrib;uses:=&quot;org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.directive,org.apache.velocity.runtime.parser,org.apache.velocity.runtime.parser.node&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.directive;uses:=&quot;org.apache.velocity,org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.parser,org.apache.velocity.runtime.parser.node,org.apache.velocity.runtime.resource,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.parser.node;uses:=&quot;org.apache.velocity,org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.parser,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.parser;uses:=&quot;org.apache.velocity,org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.directive,org.apache.velocity.runtime.parser.node,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.resource.loader;uses:=&quot;javax.sql,org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.resource,org.apache.velocity.runtime.resource.util,org.apache.velocity.util,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.resource.util;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.resource;uses:=&quot;org.apache.velocity.exception,org.apache.velocity.runtime,org.apache.velocity.runtime.resource.loader,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime.visitor;uses:=&quot;org.apache.velocity.context,org.apache.velocity.runtime.parser.node&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.runtime;uses:=&quot;org.apache.velocity,org.apache.velocity.app.event,org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime.directive,org.apache.velocity.runtime.parser,org.apache.velocity.runtime.parser.node,org.apache.velocity.runtime.resource,org.apache.velocity.util,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.util.introspection;uses:=&quot;org.apache.velocity.runtime,org.apache.velocity.runtime.parser.node,org.apache.velocity.util,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity.util;uses:=&quot;org.apache.velocity.context,org.apache.velocity.runtime,org.apache.velocity.runtime.directive,org.apache.velocity.runtime.parser.node,org.apache.velocity.util.introspection,org.slf4j&quot;;version=&quot;${bundle.version}&quot;,org.apache.velocity;uses:=&quot;org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.runtime.resource&quot;;version=&quot;${bundle.version}&quot;"/>
+		<attribute name="Implementation-Title" value="Apache Velocity - Engine"/>
+		<attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Import-Package" value="javax.naming,javax.sql,org.apache.commons.lang3.reflect;version=&quot;[3.17,4)&quot;,org.apache.commons.lang3.tuple;version=&quot;[3.17,4)&quot;,org.apache.commons.lang3;version=&quot;[3.17,4)&quot;,org.apache.velocity,org.apache.velocity.app.event,org.apache.velocity.context,org.apache.velocity.exception,org.apache.velocity.io,org.apache.velocity.runtime,org.apache.velocity.runtime.directive,org.apache.velocity.runtime.parser,org.apache.velocity.runtime.parser.node,org.apache.velocity.runtime.resource,org.apache.velocity.runtime.resource.loader,org.apache.velocity.runtime.resource.util,org.apache.velocity.util,org.apache.velocity.util.introspection,org.slf4j;version=&quot;[1.7,2)&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+		<attribute name="Specification-Title" value="Apache Velocity - Engine"/>
+		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
+		<attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

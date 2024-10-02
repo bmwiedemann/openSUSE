@@ -1,7 +1,7 @@
 #
 # spec file for package velocity-engine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,13 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "core"
+%bcond_without core
+%else
+%bcond_with core
+%endif
+%global base_name velocity-engine
 %global desc \
 Velocity is a Java-based template engine. It permits anyone to use the\
 simple yet powerful template language to reference objects defined in\
@@ -36,44 +43,40 @@ or as an integrated component of other systems. Velocity also provides\
 template services for the Turbine web application framework.\
 Velocity+Turbine provides a template service that will allow web\
 applications to be developed according to a true MVC model.
-
-Name:           velocity-engine
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Apache Velocity - Engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://velocity.apache.org/
-Source0:        %{name}-%{version}.tar.xz
-Patch1:         build.patch
+Source0:        %{base_name}-%{version}.tar.xz
+Patch0:         0001-Implement-the-new-method-from-StandardParserVisitor-.patch
 BuildRequires:  fdupes
-BuildRequires:  junit
-BuildRequires:  maven-local
-%if 0%{?rhel} >=9
-BuildRequires:  xmvn-minimal
-BuildRequires:  xmvn-tools
+BuildArch:      noarch
+%if %{with core}
+Name:           %{base_name}-core
+%else
+Name:           %{base_name}
 %endif
-BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(commons-io:commons-io)
-BuildRequires:  mvn(org.apache.commons:commons-lang3)
+%if %{with core}
+Source100:      %{base_name}-core-build.xml
+BuildRequires:  ant
+BuildRequires:  apache-commons-lang3
+BuildRequires:  javacc
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  slf4j
+%else
+BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  mvn(org.apache.velocity:velocity-engine-core)
 BuildRequires:  mvn(org.apache.velocity:velocity-master:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:javacc-maven-plugin)
-BuildRequires:  mvn(org.jdom:jdom)
-BuildRequires:  mvn(org.slf4j:slf4j-api)
-BuildArch:      noarch
+BuildRequires:  mvn(org.dom4j:dom4j)
+%endif
 
 %description
-
-%package core
-Summary:        Apache Velocity - Engine
-Group:          Development/Libraries/Java
-
-%description core
-%{desc}
 
 %package parent
 Summary:        Apache Velocity - Engine parent pom
@@ -121,39 +124,65 @@ Group:          Documentation/HTML
 This package contains Javadoc documentation
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{base_name}-%{version}
+
+%if %{with core}
+cp %{SOURCE100} %{name}/build.xml
+%endif
 
 %pom_disable_module spring-velocity-support
+%pom_disable_module velocity-engine-core
 
-%pom_remove_plugin org.apache.maven.plugins:maven-enforcer-plugin
-%pom_remove_plugin org.apache.maven.plugins:maven-source-plugin
-%pom_remove_plugin org.codehaus.mojo:templating-maven-plugin velocity-engine-core
-%pom_remove_plugin com.google.code.maven-replacer-plugin:replacer velocity-engine-core
 %pom_remove_plugin :maven-clean-plugin velocity-custom-parser-example
 %pom_remove_plugin org.apache.maven.plugins:maven-javadoc-plugin
-%pom_remove_parent
-%pom_xpath_inject '/pom:project' '<groupId>org.apache.velocity</groupId>'
-%pom_xpath_inject 'pom:plugins/pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]' '<version>3.8.1</version>'
-
-sed 's/\${project\.version}/2.2/' \
-    velocity-engine-core/src/main/java-templates/org/apache/velocity/runtime/VelocityEngineVersion.java \
-    >velocity-engine-core/src/main/java/org/apache/velocity/runtime/VelocityEngineVersion.java
-
-sed -i 's:template:xtemplate:g' \
-    velocity-engine-core/src/main/parser/Parser.jjt
 
 %build
+%if %{with core}
+
+mkdir -p %{name}/lib
+build-jar-repository -s %{name}/lib commons-lang3 slf4j/api
+ant -f %{name}/build.xml package javadoc
+
+%else
+
 %{mvn_build} -f -s -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
     -Dsource=8
 
+%endif
+
 %install
+
+%if %{with core}
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+install -pm 0644 %{name}/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
+%{mvn_install_pom} %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/%{name}.pom
+%add_maven_depmap %{base_name}/%{name}.pom %{base_name}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r %{name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
+
+%else
+
 %mvn_install
+
+%endif
+
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files core -f .mfiles-%{name}-core
+%if %{with core}
+%files -f .mfiles
 %license LICENSE NOTICE
 %doc README.md
+
+%files javadoc
+%{_javadocdir}/%{name}
+
+%else
 
 %files parent -f .mfiles-%{name}-parent
 %license LICENSE NOTICE
@@ -168,5 +197,7 @@ sed -i 's:template:xtemplate:g' \
 %license LICENSE NOTICE
 
 %files javadoc -f .mfiles-javadoc
+
+%endif
 
 %changelog
