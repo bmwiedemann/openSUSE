@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 02 10:50:26 UTC 2024 - ecsos@opensuse.org
+
+- Update to version 0.13.2:
+  * Released 0.13.2
+  * [github] trailing dot
+  * [github] add feature-request template
+  * [github] add 'bug' label
+  * [github] unbreak lines
+  * [gitub] improve bug-description
+  * [github] about->description
+  * [github] add 'title' to form template
+  * [github] replace bug tempate with form
+  * [github] YML header
+  * fix mod64 warnings on arm
+  * Replace (s64 % u32) with our own v4l2l_mod64() wrapper
+  * clang-format
+  * mention the special caps 'any'
+  * improve error-reporting
+  * avoid unused variable warning
+  * v4l2loopback-ctl: return errcodes where appropriate
+  * utils: clean objectfiles
+  * explicitly return the fd from open_controldevice()
+  * Don't fail 'clean' target if 'make -C utils clean' fails
+
+-------------------------------------------------------------------
 Wed Jun 12 16:57:48 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - build kmp-longterm flavor on tumbleweed
