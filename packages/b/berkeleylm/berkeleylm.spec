@@ -1,7 +1,7 @@
 #
 # spec file for package berkeleylm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        pom.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -47,7 +47,7 @@ This package contains the API documentation for %{name}.
 %setup -q
 
 %build
-%{ant} \
+ant \
 	-Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 	-Dtest.skip=true \
 	jar javadoc
@@ -57,7 +57,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 jar/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
