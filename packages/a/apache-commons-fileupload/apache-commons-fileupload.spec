@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-fileupload
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,19 +25,18 @@ Release:        0
 Summary:        API to work with HTML file upload
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/fileupload/
+URL:            https://commons.apache.org/fileupload/
 Source0:        http://archive.apache.org/dist/commons/fileupload/source/commons-fileupload-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 5
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
-Requires:       mvn(commons-io:commons-io)
 BuildArch:      noarch
 %if %{with portlet}
 BuildRequires:  apache-portlet-1_0-api
@@ -73,7 +72,7 @@ sed -i "s|<groupId>portlet-api</groupId>|<groupId>javax.portlet</groupId>|" pom.
 rm -r src/main/java/org/apache/commons/fileupload/portlet
 %endif
 
-%{pom_remove_parent}
+%pom_remove_parent
 
 %build
 mkdir -p lib
@@ -96,7 +95,7 @@ install -pm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{s
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a org.apache.commons:commons-fileupload
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
