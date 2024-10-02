@@ -20,19 +20,12 @@
 %define sover   0
 %define __builder ninja
 
-# For dolphin KF5/KF6 integration
-%if 0%{?suse_version} < 1650
-%bcond_with qt6_dolphin
-%else
-%bcond_without qt6_dolphin
-%endif
-
 # std=c++17 and <filesystem> now required, use GCC >= 8 for Leap
 %if 0%{?suse_version} < 1650
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.13.4
+Version:        3.14.1
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -41,8 +34,6 @@ URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
 Source2:        README.vfs.md
-# PATCH-FIX-UPSTREAM nextcloud-fix-HiDPI-window-size.patch badshah400@gmail.com -- Fix huge size of the nextcloud client settings and crash-reporter windows on HiDPI systems
-Patch0:         nextcloud-fix-HiDPI-window-size.patch
 BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.8.0
 BuildRequires:  fdupes
@@ -50,50 +41,43 @@ BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5GuiAddons)
-###BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6GuiAddons)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6XcbQpaPrivate)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6WebSockets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-%if %{with qt6_dolphin}
-BuildRequires:  kf6-extra-cmake-modules
-BuildRequires:  cmake(KF6KIO)
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6DBus)
-BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  rpm_macro(_qt6_pluginsdir)
-%else
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5KIO) >= 5.16
-%endif
 #
 Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
 Requires:       nextcloud-cli = %{version}
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
@@ -276,8 +260,8 @@ done
 #  %%{buildroot}%%{_sysconfdir}/sysctl.d/99-%%{name}-sync-inotify.conf
 
 # Needs the following symlinks for VFS support, otherwise client crashes when VFS is enabled
-mkdir -p %{buildroot}%{_libqt5_plugindir}
-ln -s -t %{buildroot}%{_libqt5_plugindir}/ %{_libdir}/nextcloudsync_vfs_{suffix,xattr}.so
+mkdir -p %{buildroot}%{_qt6_pluginsdir}
+ln -s -t %{buildroot}%{_qt6_pluginsdir}/ %{_libdir}/nextcloudsync_vfs_{suffix,xattr}.so
 
 %fdupes %{buildroot}%{_datadir}/
 
@@ -352,17 +336,10 @@ needed to enable the plugin." || true
 
 %files dolphin
 %{_libdir}/libnextclouddolphinpluginhelper.so
-%if %{with qt6_dolphin}
 %dir %{_qt6_pluginsdir}/kf6/kfileitemaction
 %{_qt6_pluginsdir}/kf6/kfileitemaction/nextclouddolphinactionplugin.so
 %dir %{_qt6_pluginsdir}/kf6/overlayicon
 %{_qt6_pluginsdir}/kf6/overlayicon/nextclouddolphinoverlayplugin.so
-%else
-%dir %{_libqt5_plugindir}/kf5/kfileitemaction
-%{_libqt5_plugindir}/kf5/kfileitemaction/nextclouddolphinactionplugin.so
-%dir %{_libqt5_plugindir}/kf5/overlayicon
-%{_libqt5_plugindir}/kf5/overlayicon/nextclouddolphinoverlayplugin.so
-%endif
 
 # /SECTION
 %endif
@@ -376,6 +353,6 @@ needed to enable the plugin." || true
 %license COPYING
 %doc README.vfs.md
 %{_libdir}/nextcloudsync_vfs_*.so
-%{_libqt5_plugindir}/*.so
+%{_qt6_pluginsdir}/*.so
 
 %changelog

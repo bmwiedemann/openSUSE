@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 28 18:32:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.1:
+  * Bugfix/fix vfs folder state when remote move is forbidden
+    (gh#nextcloud/desktop#7131).
+  * Revert always enable http2 (gh#nextcloud/desktop#7192).
+  * Add ability to provide multiple hardcoded server URLs via
+    CMake define (gh#nextcloud/desktop#7197).
+  * Bugfix/fix upload locked files (gh#nextcloud/desktop#7201).
+  * Use version of linuxdeploy-plugin-qt from PR in the project
+    (gh#nextcloud/desktop#7207).
+  * Bugfix/missing unlock command (gh#nextcloud/desktop#7213).
+  * Fix alignment and size of buttons (gh#nextcloud/desktop#7217).
+  * disable our code for network timeout
+    (gh#nextcloud/desktop#7218).
+  * Only check for leading/trailing space for files on Windows
+    (gh#nextcloud/desktop#7224).
+- Changes from version 3.14.0:
+  * Too many to list, see
+    <https://github.com/nextcloud/desktop/releases/tag/v3.14.0>.
+- Switch to building with Qt6; upstream no longer supports Qt5.
+- Drop nextcloud-fix-HiDPI-window-size.patch: Not needed with Qt6.
+
+-------------------------------------------------------------------
 Sat Sep 14 05:24:42 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.13.4:
