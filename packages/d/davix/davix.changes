@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 28 23:24:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add 057b4fa188b6b8afdb34cc6b7d103c78e73c1001.patch: Upstream
+  commit to disable the "GcloudTest::UrlSigning" test as the
+  GCloud V4 signature involves the current timestamp, which leads
+  to non-static results.
+
+-------------------------------------------------------------------
 Wed Jul 17 07:18:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.7:

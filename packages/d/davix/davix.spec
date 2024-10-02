@@ -28,6 +28,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
 Source:         https://github.com/cern-fts/davix/releases/download/R_%{v_maj}_%{v_min}_%{v_pat}/davix-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/cern-fts/davix/commit/057b4fa188b6b8afdb34cc6b7d103c78e73c1001.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  git

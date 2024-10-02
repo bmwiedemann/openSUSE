@@ -1,0 +1,191 @@
+From 057b4fa188b6b8afdb34cc6b7d103c78e73c1001 Mon Sep 17 00:00:00 2001
+From: Mihai Patrascoiu <mihai.patrascoiu@cern.ch>
+Date: Wed, 31 Jul 2024 13:52:55 +0200
+Subject: [PATCH] DMC-1418: Implement loop protection in the
+ "RedirectionResolver::redirectionResolve()" function
+
+The function has been extended to also pass along a set of visited URIs. If in the redirection resolve chain process we encounter a previously visited URI, then we stop and return this URI. This mechanism will avoid falling into infinite redirection resolve loops
+---
+ src/core/RedirectionResolver.cpp | 28 +++++++++++----
+ src/core/RedirectionResolver.hpp | 11 ++++--
+ test/unit/session-factory.cpp    | 60 ++++++++++++++++++++++----------
+ 3 files changed, 72 insertions(+), 27 deletions(-)
+
+diff --git a/src/core/RedirectionResolver.cpp b/src/core/RedirectionResolver.cpp
+index 71361888..405bb002 100644
+--- a/src/core/RedirectionResolver.cpp
++++ b/src/core/RedirectionResolver.cpp
+@@ -31,7 +31,7 @@ static const std::pair<std::string, std::string> makeKey(const std::string & met
+     if(mymethod == "HEAD")
+         mymethod = "GET";
+ 
+-    return std::make_pair(origin.getString(), mymethod);
++    return {origin.getString(), mymethod};
+ }
+ 
+ RedirectionResolver::RedirectionResolver(bool act) : active(act), redirCache(256) {
+@@ -50,13 +50,29 @@ void RedirectionResolver::addRedirection(const std::string & method, const Uri &
+ 
+ // try to find cached redirection, resolve a full chain
+ std::shared_ptr<Uri> RedirectionResolver::redirectionResolve(const std::string & method, const Uri & origin) {
+-  std::shared_ptr<Uri> res = resolveSingle(method, origin);
+-  if(res.get() != NULL) {
+-    std::shared_ptr<Uri> res_rec = redirectionResolve(method, *res);
+-    if(res_rec.get() != NULL) {
+-      return res_rec;
++  std::set<redirectionKey> visited;
++  return redirectionResolve(method, origin, visited);
++}
++
++// private function of redirectionResolve (contains set of visited URIs to avoid redirection loop)
++std::shared_ptr<Uri> RedirectionResolver::redirectionResolve(const std::string& method, const Uri& origin, std::set<redirectionKey>& visited) {
++  auto res = resolveSingle(method, origin);
++
++  if (res != nullptr) {
++    // Identified a loop, stop at the element before the resolved redirection
++    if (visited.find(makeKey(method, *res)) != visited.end()) {
++      return std::make_shared<Uri>(origin);
++    } else {
++      // We haven't seen this resolved redirection before
++      visited.insert(makeKey(method, origin));
++      auto res_rec = redirectionResolve(method, *res, visited);
++
++      if (res_rec != nullptr) {
++        return res_rec;
++      }
+     }
+   }
++
+   return res;
+ }
+ 
+diff --git a/src/core/RedirectionResolver.hpp b/src/core/RedirectionResolver.hpp
+index 881c8080..3a903490 100644
+--- a/src/core/RedirectionResolver.hpp
++++ b/src/core/RedirectionResolver.hpp
+@@ -23,6 +23,7 @@
+ #define DAVIX_CORE_REDIRECTION_RESOLVER_HPP
+ 
+ #include <map>
++#include <set>
+ #include <mutex>
+ #include <utils/davix_uri.hpp>
+ #include <memory>
+@@ -48,10 +49,16 @@ class RedirectionResolver {
+   void redirectionClean(const Uri & origin);
+ 
+ private:
++  using redirectionKey = std::pair<std::string, std::string>;
++
++  ///< Boolean guarding the redirection cache
+   bool active;
+ 
+-  // redirection pool
+-  Davix::Cache<std::pair<std::string, std::string>, Uri> redirCache;
++  ///< Redirection pool
++  Davix::Cache<redirectionKey, Uri> redirCache;
++
++  // resolve a full redirection chain (with redirection loop protection in-place)
++  std::shared_ptr<Uri> redirectionResolve(const std::string& method, const Uri& origin, std::set<redirectionKey>& visited);
+ 
+   // resolve a single redirection chunk
+   std::shared_ptr<Uri> resolveSingle(const std::string & method, const Uri & origin);
+diff --git a/test/unit/session-factory.cpp b/test/unit/session-factory.cpp
+index 2b4562df..dcc87cf2 100644
+--- a/test/unit/session-factory.cpp
++++ b/test/unit/session-factory.cpp
+@@ -5,16 +5,15 @@
+ 
+ using namespace Davix;
+ 
+-TEST(testRedirectCache, testCacheSimple){
++TEST(testRedirectCache, testCacheSimple) {
+     davix_set_log_level(DAVIX_LOG_ALL);
+ 
+-
+-    std::shared_ptr<Uri> dest(new Uri("http://sffsdfsd.com/dsffds/fsdfsdsdf"));
+-    std::shared_ptr<Uri> dest2(new Uri("http://sffsdfsd.com/dsffds/fsdfsdsdf"));
++    std::shared_ptr<Uri> dest(new Uri("https://sffsdfsd.com/dsffds/fsdfsdsdf"));
++    std::shared_ptr<Uri> dest2(new Uri("https://sffsdfsd.com/dsffds/fsdfsdsdf"));
+     Uri u("http://higgs.boson/is/watchingus");
+ 
+     Uri u_sec("https://higgs.boson/is/watchingus");
+-    Uri u_port("http://higgs.boson:8668/is/watchingus");
++    Uri u_port("https://higgs.boson:8668/is/watchingus");
+ 
+     RedirectionResolver f(true);
+     f.addRedirection("GET", u, dest);
+@@ -33,17 +32,14 @@ TEST(testRedirectCache, testCacheSimple){
+     ASSERT_TRUE(f.redirectionResolve("GET", u_port) == dest2);
+ }
+ 
+-
+-
+-TEST(testRedirectCache, testCacheChainRedirection){
++TEST(testRedirectCache, testCacheChainRedirection) {
+     davix_set_log_level(DAVIX_LOG_ALL);
+ 
+     Uri u("http://higgs.boson/is/watchingus");
+-
+-    std::shared_ptr<Uri> url1(new Uri("http://sffsdfsd.com/dsffds/fsdfsdsdf"));
+-    std::shared_ptr<Uri> url2(new Uri("http://server2.com/dsffds/sfdfdsfsdfdsfdsfds"));
+-    std::shared_ptr<Uri> url3(new Uri("http://server2.com:8080/dsffds/sfdfdsfsdfdsfdsfds"));
+-    std::shared_ptr<Uri> url4(new Uri("http://server3.com/dsffds/fsdaaaaa"));
++    std::shared_ptr<Uri> url1(new Uri("https://sffsdfsd.com/dsffds/fsdfsdsdf"));
++    std::shared_ptr<Uri> url2(new Uri("https://server2.com/dsffds/sfdfdsfsdfdsfdsfds"));
++    std::shared_ptr<Uri> url3(new Uri("https://server2.com:8080/dsffds/sfdfdsfsdfdsfdsfds"));
++    std::shared_ptr<Uri> url4(new Uri("https://server3.com/dsffds/fsdaaaaa"));
+ 
+     RedirectionResolver f(true);
+     f.addRedirection("GET", u, url1);
+@@ -60,14 +56,12 @@ TEST(testRedirectCache, testCacheChainRedirection){
+     ASSERT_TRUE(f.redirectionResolve("GET", *url4).get() == NULL);
+ }
+ 
+-
+-TEST(testRedirectCache, test_GET_HEAD){
++TEST(testRedirectCache, test_GET_HEAD) {
+     davix_set_log_level(DAVIX_LOG_ALL);
+ 
+-    Uri u("http://higgs.boson/is/watchingus");
+-
+-    std::shared_ptr<Uri> url1(new Uri("http://sffsdfsd.com/dsffds/fsdfsdsdf"));
+-    std::shared_ptr<Uri> url2(new Uri("http://server2.com/dsffds/sfdfdsfsdfdsfdsfds"));
++    Uri u("https://higgs.boson/is/watchingus");
++    std::shared_ptr<Uri> url1(new Uri("https://sffsdfsd.com/dsffds/fsdfsdsdf"));
++    std::shared_ptr<Uri> url2(new Uri("https://server2.com/dsffds/sfdfdsfsdfdsfdsfds"));
+ 
+     RedirectionResolver f(true);
+     f.addRedirection("GET", u, url1);
+@@ -88,3 +82,31 @@ TEST(testRedirectCache, test_GET_HEAD){
+     ASSERT_TRUE(f.redirectionResolve("GET", u) == url1);
+     ASSERT_TRUE(f.redirectionResolve("HEAD", u) == url1);
+ }
++
++TEST(testRedirectCache, noRedirectLoop) {
++    davix_set_log_level(DAVIX_LOG_ALL);
++
++    std::shared_ptr<Uri> start(new Uri("https://redirection.start/file"));
++    std::shared_ptr<Uri> middle(new Uri("https://redirection.middle/file"));
++    std::shared_ptr<Uri> end(new Uri("https://redirection.end/loop"));
++
++    RedirectionResolver f(true);
++    f.addRedirection("GET", *start, middle);
++    f.addRedirection("GET", *middle, start);
++    ASSERT_TRUE(*(f.redirectionResolve("GET", *start)) == *middle);
++    ASSERT_TRUE(*(f.redirectionResolve("GET", *middle)) == *start);
++
++    // Cleaning one item from a loop deletes the full loop
++    f.redirectionClean("GET", *middle);
++    ASSERT_TRUE(f.redirectionResolve("GET", *start) == NULL);
++
++    f.addRedirection("GET", *start, middle);
++    f.addRedirection("GET", *middle, end);
++    f.addRedirection("GET", *end, start);
++    ASSERT_TRUE(*(f.redirectionResolve("GET", *start)) == *end);
++    ASSERT_TRUE(*(f.redirectionResolve("GET", *middle)) == *start);
++    ASSERT_TRUE(*(f.redirectionResolve("GET", *end)) == *middle);
++
++    f.redirectionClean("GET", *end);
++    ASSERT_TRUE(f.redirectionResolve("GET", *start) == NULL);
++}
