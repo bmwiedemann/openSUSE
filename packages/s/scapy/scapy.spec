@@ -50,8 +50,6 @@ arpspoof, firewalk, irpas, tethereal, tcpdump, etc.
 
 %prep
 %setup -q -n scapy-%{version}
-# Fix non-executable-script rpmlint issue:
-find scapy -name "*.py" -exec sed -i "/#!/d" {} \;
 
 %build
 %python3_build
@@ -66,6 +64,8 @@ sed 's|%{_sysconfdir}/services|%{_prefix}%{_sysconfdir}/services|g' -i scapy/dat
 
 %install
 %python3_install
+# Fix non-executable-script rpmlint issue:
+find %{buildroot}%{python3_sitelib} -name "*.py" -exec sed -i "/#!/d" {} \;
 %fdupes %{buildroot}%{python3_sitelib}
 
 #%%check
