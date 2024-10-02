@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-annotation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Annotations for use in compiling OSGi bundles
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.osgi.org/
+URL:            https://www.osgi.org/
 # Upstream project is behind an account registration system with no anonymous
 # read access, so we download the source from maven central instead
 Source0:        https://repo1.maven.org/maven2/org/osgi/osgi.annotation/%{version}/osgi.annotation-%{version}-sources.jar
@@ -31,7 +31,7 @@ Source2:        http://www.apache.org/licenses/LICENSE-2.0
 Source3:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -82,7 +82,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/osgi.annotation-%{version}.jar %{buildroot}%{_javadir}/%{name}/osgi.annotation.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.annotation.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/osgi.annotation.pom
 %add_maven_depmap %{name}/osgi.annotation.pom %{name}/osgi.annotation.jar -a org.osgi:org.osgi.annotation
 # javadoc
 install -dm 0744 %{buildroot}%{_javadocdir}/%{name}

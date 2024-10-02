@@ -39,4 +39,12 @@
     <comment>8.1.0</comment>
     <requestid>1108668</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8951649b1f8a699c910dcce2393394eb</srcmd5>
+    <version>8.1.0</version>
+    <time>1727897764</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205275</requestid>
+  </revision>
 </revisionlist>
