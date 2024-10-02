@@ -1,7 +1,7 @@
 #
 # spec file for package jsr-305
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source2:        NOTICE-CC-BY.txt
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %package javadoc
@@ -71,7 +71,7 @@ ln -s %{name}.jar %{buildroot}%{_javadir}/jsr305.jar
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 ri/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} ri/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
