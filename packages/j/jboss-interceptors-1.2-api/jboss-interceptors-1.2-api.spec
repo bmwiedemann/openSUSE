@@ -30,7 +30,7 @@ Source0:        https://github.com/jboss/jboss-interceptors-api_spec/archive/jbo
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -64,7 +64,7 @@ install -pm 0644 target/%{oname}-%{namedversion}.jar %{buildroot}%{_javadir}/%{o
 ln -sf %{oname}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{oname}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{oname}.pom
 %add_maven_depmap %{oname}.pom %{oname}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
