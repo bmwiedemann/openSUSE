@@ -30,7 +30,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  guava
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -55,7 +55,7 @@ dos2unix *.txt
 %build
 mkdir -p lib
 build-jar-repository -s lib guava
-%{ant} \
+ant \
   -Dproject.version=%{version} \
   clean jar javadoc
 
@@ -65,7 +65,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

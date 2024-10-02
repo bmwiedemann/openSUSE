@@ -32,4 +32,12 @@
     <comment>2.2.3</comment>
     <requestid>1199277</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>216d0c9c8b1bef411192a507a3812a9a</srcmd5>
+    <version>2.2.3</version>
+    <time>1727897758</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205269</requestid>
+  </revision>
 </revisionlist>
