@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jsp-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-el-api
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  javapackages-local
-Requires:       mvn(javax.el:javax.el-api)
-Requires:       mvn(javax.servlet:javax.servlet-api)
 BuildArch:      noarch
 
 %description
@@ -60,10 +58,6 @@ cp -p %{SOURCE3} build.xml
 # Submited upstream: http://java.net/jira/browse/JSP-31
 sed -i "/<bundle.symbolicName>/s/-api//" pom.xml
 
-%pom_xpath_set "pom:project/pom:version" %{version}
-
-%pom_remove_parent
-
 %pom_xpath_remove "pom:dependency[pom:groupId='javax.el' or pom:groupId='javax.servlet']/pom:scope"
 # xmvn-connector-gradle does not handle well the ranges of versions
 # like here [3.0.1-b06,), so change it to a fixed version.
@@ -81,7 +75,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifactId}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
 %add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar -a javax.servlet:jsp-api,javax.servlet.jsp:jsp-api
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
