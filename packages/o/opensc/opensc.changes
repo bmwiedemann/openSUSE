@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Oct  1 06:30:06 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- - Security fix: [CVE-2024-8443, bsc#1230364]
+    * opensc: heap buffer overflow in OpenPGP driver when generating key
+    * Added patch: opensc-CVE-2024-8443.patch
+
+-------------------------------------------------------------------
+Tue Oct  1 06:27:05 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fix: [opensc-CVE-2024-45620, bsc#1230076]
+- Security fix: [opensc-CVE-2024-45619, bsc#1230075]
+- Security fix: [opensc-CVE-2024-45618, bsc#1230074]
+- Security fix: [opensc-CVE-2024-45617, bsc#1230073]
+- Security fix: [opensc-CVE-2024-45616, bsc#1230072]
+- Security fix: [opensc-CVE-2024-45615, bsc#1230071]
+  * opensc: pkcs15init: Usage of uninitialized values in libopensc and pkcs15init
+  * opensc: Uninitialized values after incorrect check or usage of APDU response values in libopensc
+  * opensc: Uninitialized values after incorrect or missing checking return values of functions in libopensc
+  * opensc: Uninitialized values after incorrect or missing checking return values of functions in pkcs15init
+  * opensc: Incorrect handling length of buffers or files in libopensc
+  * opensc: Incorrect handling of the length of buffers or files in pkcs15init
+  * Added patches:
+    - opensc-CVE-2024-45615.patch
+    - opensc-CVE-2024-45616.patch
+    - opensc-CVE-2024-45617.patch
+    - opensc-CVE-2024-45618.patch
+    - opensc-CVE-2024-45619.patch
+    - opensc-CVE-2024-45620.patch
+
+-------------------------------------------------------------------
 Fri Apr  5 18:54:38 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to verion 0.25.1
