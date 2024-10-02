@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mozjs78
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,12 @@ Patch19:        0001-Skip-failing-tests-on-ppc64-and-s390x.patch
 Patch20:        Add-riscv64-support.patch
 Patch21:        mozilla-python310.patch
 Patch22:        mozjs78-python-3.11.patch
+# PATCH-FIX-UPSTREAM mozjs78-CVE-2024-45490-part01-5c1a3164.patch CVE-2024-45490 bsc#1230036 qzhao@suse.com -- Reject negative len for XML_ParseBuffer.
+Patch23:        mozjs78-CVE-2024-45490-part01-5c1a3164.patch
+# PATCH-FIX-UPSTREAM mozjs78-CVE-2024-45491.patch CVE-2024-45491 bsc#1230037 qzhao@suse.com -- Detect integer overflow in dtdCopy.
+Patch24:        mozjs78-CVE-2024-45491.patch
+# PATCH-FIX-UPSTREAM mozjs78-CVE-2024-45492.patch CVE-2024-45492 bsc#1230038 qzhao@suse.com -- Detect integer overflow in function nextScaffoldPart.
+Patch25:        mozjs78-CVE-2024-45492.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -150,6 +156,10 @@ pushd ../..
 
 # Fixes for ppc64 and s390x, there is no need to keep it in ifarch here since mozilla tests support ifarch conditions
 %patch -P 19 -p1
+
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
 
 # Copy out the LICENSE file
 cp LICENSE js/src/
