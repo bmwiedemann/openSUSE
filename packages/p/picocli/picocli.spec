@@ -35,7 +35,7 @@ BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jline >= 2
 Requires:       java-headless >= 1.8
 BuildArch:      noarch
@@ -110,9 +110,9 @@ install -pm0644 target/%{name}-shell-jline2-%{version}.jar %{buildroot}%{_javadi
 
 #pom
 install -dm0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm0644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-install -pm0644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}/%{name}-codegen.pom
-install -pm0644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/%{name}/%{name}-shell-jline2.pom
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}/%{name}-codegen.pom
+%{mvn_install_pom} %{SOURCE4} %{buildroot}%{_mavenpomdir}/%{name}/%{name}-shell-jline2.pom
 
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 %add_maven_depmap %{name}/%{name}-codegen.pom %{name}/%{name}-codegen.jar -f codegen
