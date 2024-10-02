@@ -67,7 +67,7 @@ Requires:       python-requests
 Requires:       python-sympy >= 1.10.1
 Requires:       (python-Pillow >= 9.2 if python-base >= 3.7)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-scikit-image >= 0.17
 %if %{with test}
 # SECTION For tests
@@ -81,6 +81,7 @@ BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image >= 0.17}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %endif
@@ -88,7 +89,8 @@ Provides:       python-Mathics3 = %{version}
 %python_subpackages
 
 %description
-Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
+Mathics is a general-purpose computer algebra system (CAS). It is meant to be a
+free, lightweight alternative to Mathematica.
 
 %prep
 %autosetup -p1 -n %{pyname}-%{version}
@@ -119,6 +121,7 @@ export USE_CYTHON=0
 %check
 # Home page tests require django server up and running, test_gudermannian needs network access
 # test_image: https://github.com/Mathics3/mathics-core/issues/837
+PYTHONPATH+=:${PWD}
 %pytest -k 'not (test_home_page or test_gudermannian or test_image)'
 %endif
 

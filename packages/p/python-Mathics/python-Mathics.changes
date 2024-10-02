@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  1 23:18:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-testsuite as BuildRequires for test flavor.
+- Add source dir into PYTHONPATH to allow importing of test helper
+  modules.
+
+-------------------------------------------------------------------
 Mon Apr  8 05:16:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable python 3.12 as it is unsupported:
