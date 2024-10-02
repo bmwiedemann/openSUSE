@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  2 05:41:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.39.0:
+  - Better error when utf8FromSoup called with None.
+  - adapter_asianfanficscom: Add Is adult toggle call,
+    use_cloudscraper:true in defaults.ini
+  - Fix(es) for get_url_search not found when seriesUrl doesn't
+    match an adapter site.
+  - Fix for regression when browser_cache_simple_header_old
+    added. #1104
+  - Add decode_emails option, defaults to false.
+
+-------------------------------------------------------------------
 Sun Sep 22 16:10:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Chrome Simple Browser Cache extra field fix (Mac/Linux)
