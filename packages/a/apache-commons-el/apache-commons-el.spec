@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-el
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,9 +35,8 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  glassfish-jsp-api
 BuildRequires:  glassfish-servlet-api
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
-Requires:       mvn(commons-logging:commons-logging)
 Provides:       jakarta-%{short_name}
 Obsoletes:      jakarta-%{short_name}
 Provides:       %{short_name}
@@ -73,9 +72,7 @@ jspapi.build.notrequired=true
 EOBP
 
 %build
-export CLASSPATH=
-export OPT_JAR_LIST=:
-%{ant} \
+ant \
   -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Dfinal.name=%{short_name} \
   -Dj2se.javadoc=%{_javadocdir}/java \
@@ -89,7 +86,7 @@ ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/jakarta-%{short_name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:commons-el"
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
