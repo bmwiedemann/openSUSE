@@ -38,11 +38,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  oro
-Requires:       commons-beanutils >= 1.5
-Requires:       commons-collections
-Requires:       commons-digester >= 1.8
-Requires:       commons-logging >= 1.0.2
-Requires:       oro >= 2.0.6
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -82,8 +77,6 @@ sed -i 's/\r//' LICENSE.txt
 sed -i 's/\r//' RELEASE-NOTES.txt
 sed -i 's/\r//' NOTICE.txt
 
-%pom_remove_parent .
-
 %build
 export CLASSPATH=$(build-classpath \
                    commons-collections \
@@ -120,7 +113,7 @@ install -pm 644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadi
 ln -s %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}

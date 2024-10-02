@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:32:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Sat Apr 27 11:33:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Put hamcrest on classpath explicitely. This allows buiding against
