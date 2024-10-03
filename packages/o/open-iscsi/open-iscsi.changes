@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 30 19:25:24 UTC 2024 - lduncan@suse.com
+
+- Update to version 2.1.10.suse+51.fea0fde82ed1:
+  * Incudes upstream version 2.1.10 plus some fixes
+  * Fix firmware targets startup to always be "onboot" (#482)
+    (bsc#1228084)
+  * Change a discovery function to void return type (#481)
+  * Fix gcc issues (#480)
+  * Bugfix read specific sysfs value "off" of session attribute (#466)
+  * Fix bug where abort_tmo read failures were ignored. (#467)
+  * grammar nitpicks (#464)
+  * Fix memory leak in iscsi_check_session_use_count (#465)
+  * improve the comments in idbm_lock() (#458)
+  * Make it visible when memory allocation failure (#457)
+  * Better handle multiple iscsiadm commands (#453)
+  * iscsiadm: allow hostnames in node-mode commands (#451)
+  * Modify how workqueue priority is set (#445)
+  * Fix authmethod check by printing a warning message when CHAP used and authmethod=None (#443)
+  * iscsid: Rescan devices on relogin (#444)
+  * Adds missing characters in README. (#440)
+  * Turn off iSCSI NOP-Outs, by default.
+  * fix: add usr/iscsid_req.h missinig underline (#431) (#436)
+
+-------------------------------------------------------------------
 Wed Dec 20 18:39:01 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream: two small changes, with no known

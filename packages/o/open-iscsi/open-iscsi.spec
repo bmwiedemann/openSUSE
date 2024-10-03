@@ -1,7 +1,7 @@
 #
 # spec file for package open-iscsi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,13 +46,13 @@
 %endif
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 9
+%define iscsi_patch_release 10
 %define iscsi_patch_release_suse %{iscsi_patch_release}.suse
-%define iscsi_service_tag 844.d557967bc9ae
+%define iscsi_service_tag 52.9a4cb8fdee02
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi
-Version:        2.1.9
+Version:        2.1.10
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
