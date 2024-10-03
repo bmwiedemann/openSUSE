@@ -155,4 +155,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963033</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>0418dbaca575be37e191f5cc2e334a92</srcmd5>
+    <version>2011.1</version>
+    <time>1727971232</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205282</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package relaxngDatatype
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        https://github.com/java-schema-utilities/relaxng-datatype-java/a
 Source1:        copying.txt
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Obsoletes:      %{name}-javadoc
 BuildArch:      noarch
 
@@ -54,7 +54,7 @@ install -Dpm 644 %{name}.jar \
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a relaxngDatatype:relaxngDatatype
 
 %files -f .mfiles
