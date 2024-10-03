@@ -108,4 +108,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1184274</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ad3e0824e744bebfae2bf38c94d5b15e</srcmd5>
+    <version>6.7.3</version>
+    <time>1727969851</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205125</requestid>
+  </revision>
 </revisionlist>

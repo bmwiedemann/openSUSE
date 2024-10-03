@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 28 08:22:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.3
+  * https://www.qt.io/blog/qt-6.7.3-released
+
+-------------------------------------------------------------------
 Mon Jun 24 09:32:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Drop the with_usable_protobuf condition now that bug 1222343
