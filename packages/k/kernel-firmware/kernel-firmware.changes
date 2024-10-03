@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct 01 14:06:36 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241001 (git commit 51e5af813eaf):
+  * linux-firmware: add firmware for MediaTek Bluetooth chip (MT7920)
+  * linux-firmware: add firmware for MT7920
+  * amdgpu: update raven firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update PSP 13.0.8 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update PSP 14.0.1 firmware
+  * amdgpu: update GC 11.5.1 firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update SMU 13.0.6 firmware
+  * amdgpu: update SDMA 4.4.2 firmware
+  * amdgpu: update PSP 13.0.6 firmware
+  * amdgpu: update GC 9.4.3 firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update VCN 4.0.4 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update aldebaran firmware
+  * qcom: update gpu firmwares for qcm6490 chipset
+  * mt76: mt7996: add firmware files for mt7992 chipset
+  * mt76: mt7996: add firmware files for mt7996 chipset variants
+  * qcom: add gpu firmwares for sa8775p chipset
+  * rtw89: 8922a: add fw format-2 v0.35.42.1
+- Pick up the fixed ath12k firmware from
+  https://git.codelinaro.org/clo/ath-firmware/ath12k-firmware
+  (bsc#1230596)
+- Update aliases from 6.11.x and 6.12-rc1
+
+-------------------------------------------------------------------
 Mon Sep 16 13:15:53 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240913 (git commit bcbdd1670bc3):

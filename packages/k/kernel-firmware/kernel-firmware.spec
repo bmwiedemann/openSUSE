@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240913
+%define version_unconverted 20241001
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240913
+Version:        20241001
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -71,7 +71,7 @@ Source1014:     README.build
 Source1100:     qcom-post
 Source1101:     uncompressed-post
 # temporary revert for ath12k firmware (bsc#1230596)
-Source1200:     board-2.bin.gfb04a7f
+Source1200:     board-2.bin
 # workarounds
 Patch1:         copy-file-ignore-README.patch
 # for compatibility with SLE15-SP4 kernel (bsc#1209681)
@@ -3330,6 +3330,7 @@ Conflicts:      kernel-firmware-uncompressed
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(auxiliary:ice.sf)
 Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v0000106Bd00001645sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008020sv*sd*bc02sc00i00*)
@@ -4421,6 +4422,10 @@ Supplements:    modalias(of:N*T*Cqcom,sm6375-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm6375-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm7150-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm7150-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm7150-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm7150-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)
@@ -5540,6 +5545,8 @@ Supplements:    modalias(pci:v00001814d0000539Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001814d0000539Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001814d0000539Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001A3Bd00001059sv*sd*bc*sc*i*)
+Supplements:    modalias(sdw:m025Dp1320v03c*)
+Supplements:    modalias(sdw:m025Dp1320v03c01*)
 Supplements:    modalias(usb:v0409p02B6d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0411p00E8d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0411p012Ed*dc*dsc*dp*ic*isc*ip*in*)
@@ -5807,6 +5814,7 @@ Supplements:    modalias(usb:v0BDAp817Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp817Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Cd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp817Cd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp817Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Ed*dc*dsc*dp*ic*isc*ip*in*)
@@ -5822,10 +5830,12 @@ Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8192d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp819Ad*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp819Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8712d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8713d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8724d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8754d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8754d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApB711d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApC512d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6506,6 +6516,7 @@ Supplements:    modalias(pnp:dCSC0000*)
 Supplements:    modalias(pnp:dCSC0004*)
 Supplements:    modalias(pnp:dCSC0010*)
 Supplements:    modalias(pnp:dPnPb006*)
+Supplements:    modalias(spi:cs35l41-hda)
 Supplements:    modalias(sst)
 Supplements:    modalias(usb:v086Ap0100d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*)

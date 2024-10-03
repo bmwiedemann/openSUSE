@@ -1749,6 +1749,7 @@ ib_qib: fs-ipathfs
 ib_qib: pci:v00001077d00007220sv*sd*bc*sc*i*
 ib_qib: pci:v00001077d00007322sv*sd*bc*sc*i*
 ib_qib: pci:v00001FC1d00000010sv*sd*bc*sc*i*
+ice: auxiliary:ice.sf
 ice: pci:v00008086d0000124Csv*sd*bc*sc*i*
 ice: pci:v00008086d0000124Dsv*sd*bc*sc*i*
 ice: pci:v00008086d0000124Esv*sd*bc*sc*i*
@@ -3019,6 +3020,10 @@ msm: of:N*T*Cqcom,sm6375-dpu
 msm: of:N*T*Cqcom,sm6375-dpuC*
 msm: of:N*T*Cqcom,sm6375-mdss
 msm: of:N*T*Cqcom,sm6375-mdssC*
+msm: of:N*T*Cqcom,sm7150-dpu
+msm: of:N*T*Cqcom,sm7150-dpuC*
+msm: of:N*T*Cqcom,sm7150-mdss
+msm: of:N*T*Cqcom,sm7150-mdssC*
 msm: of:N*T*Cqcom,sm8150-dpu
 msm: of:N*T*Cqcom,sm8150-dpuC*
 msm: of:N*T*Cqcom,sm8150-mdss
@@ -5128,6 +5133,7 @@ rtl8xxxu: usb:v0BDAp8178d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8179d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp817Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp817Bd*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDAp817Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp817Dd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp817Ed*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp817Fd*dc*dsc*dp*icFFiscFFipFFin*
@@ -5135,7 +5141,9 @@ rtl8xxxu: usb:v0BDAp818Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp818Bd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp818Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDAp819Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8724d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDAp8754d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB711d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin*
@@ -5398,6 +5406,7 @@ snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0100%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0101%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CSC3551%3A*
 snd_hda_scodec_cs35l41_spi: acpi*:CSC3551%3A*
+snd_hda_scodec_cs35l41_spi: spi:cs35l41-hda
 snd_hda_scodec_cs35l56_i2c: acpi*:CSC3554%3A*
 snd_hda_scodec_cs35l56_i2c: acpi*:CSC3556%3A*
 snd_hda_scodec_cs35l56_i2c: acpi*:CSC3557%3A*
@@ -5454,6 +5463,8 @@ snd_soc_avs: pci:v00008086d0000F0C8sv*sd*bc*sc*i*
 snd_soc_avs: pci:v00008086d0000F1C8sv*sd*bc*sc*i*
 snd_soc_catpt: acpi*:INT33C8%3A*
 snd_soc_catpt: acpi*:INT3438%3A*
+snd_soc_rt1320_sdw: sdw:m025Dp1320v03c*
+snd_soc_rt1320_sdw: sdw:m025Dp1320v03c01*
 snd_soc_sc8280xp: of:N*T*Cqcom,qcm6490-idp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom,qcm6490-idp-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom,qcs6490-rb3gen2-sndcard
