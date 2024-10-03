@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  2 10:54:17 CEST 2024 - ro@suse.de
+
+- Chromium 129.0.6668.89 (stable released 2024-09-24)
+  (boo#1231232)
+  * CVE-2024-7025: Integer overflow in Layout
+  * CVE-2024-9369: Insufficient data validation in Mojo
+  * CVE-2024-9370: Inappropriate implementation in V8
+
+-------------------------------------------------------------------
 Wed Sep 25 16:01:32 CEST 2024 - ro@suse.de
 
 - Chromium 129.0.6668.70 (stable released 2024-09-24)

@@ -5139,4 +5139,16 @@ boo#1224178</comment>
     it was applied at the wrong place and the crash is gone</comment>
     <requestid>1203613</requestid>
   </revision>
+  <revision rev="433" vrev="1">
+    <srcmd5>81bb73d9678a518979779151e82c2481</srcmd5>
+    <version>129.0.6668.89</version>
+    <time>1727969868</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 129.0.6668.89 (stable released 2024-09-24)
+  (boo#1231232)
+  * CVE-2024-7025: Integer overflow in Layout
+  * CVE-2024-9369: Insufficient data validation in Mojo
+  * CVE-2024-9370: Inappropriate implementation in V8</comment>
+    <requestid>1205161</requestid>
+  </revision>
 </revisionlist>
