@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-vfs2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Release:        0
 Summary:        Commons Virtual File System
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/vfs/
-Source0:        http://www.apache.org/dist/commons/vfs/source/%{short_name}-distribution-%{version}-src.tar.gz
+URL:            https://commons.apache.org/vfs/
+Source0:        https://archive.apache.org/dist/commons/vfs/source/%{short_name}-distribution-%{version}-src.tar.gz
 Source1:        %{short_name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-collections4
@@ -38,8 +38,7 @@ BuildRequires:  apache-commons-httpclient
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-net > 2
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
-Requires:       mvn(commons-logging:commons-logging)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 %if %{with hadoop}
 BuildRequires:  mvn(org.apache.hadoop:hadoop-common)
@@ -99,8 +98,6 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n commons-vfs-%{version} -a1
 
-%pom_remove_plugin :apache-rat-plugin
-
 # Convert from dos to unix line ending
 for file in LICENSE.txt NOTICE.txt README.txt RELEASE-NOTES.txt; do
  sed -i.orig 's|\r||g' $file
@@ -145,8 +142,6 @@ rm commons-vfs2-examples/src/main/java/org/apache/commons/vfs2/libcheck/SftpChec
 rm -r commons-vfs2/src/{main,test}/java/org/apache/commons/vfs2/provider/ftps
 %endif
 
-%pom_remove_parent commons-vfs2 commons-vfs2-examples
-
 %build
 mkdir -p lib
 build-jar-repository -s lib ant commons-httpclient commons-logging commons-compress commons-collections4 commons-net
@@ -157,7 +152,7 @@ build-jar-repository -s lib hadoop/common hadoop/hdfs
 build-jar-repository -s lib jsch
 %endif
 
-%{ant} \
+ant \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -172,9 +167,9 @@ install -pm 0644 %{short_name}-examples/target/%{short_name}-examples-%{version}
 ln -sf %{short_name}-examples.jar %{buildroot}%{_javadir}/%{name}-examples.jar
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{short_name}/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} %{short_name}/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar
-install -pm 0644 %{short_name}-examples/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}-examples.pom
+%{mvn_install_pom} %{short_name}-examples/pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}-examples.pom
 %add_maven_depmap %{short_name}-examples.pom %{short_name}-examples.jar -f examples
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{short_name}-examples
