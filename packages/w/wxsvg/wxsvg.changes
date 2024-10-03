@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 16 05:53:10 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.5.25
+  * applied ffmpeg7 patch
+- Changes from 1.5.24
+  * applied ffmpeg5 patch
+- Drop ffmpeg5.patch from suse, because now in upstream.
+- Drop wxsvg-fix-missing-include.patch, because now in upstream.
+- Add wxsvg-fix-version.patch because in configure files are 1.5.24.
+
+-------------------------------------------------------------------
+Mon Sep 16 05:51:10 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Upstream does not need ffmpeg-6 to build. Remove it again.
+
+-------------------------------------------------------------------
 Wed Aug 21 04:56:34 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Fix build by ensuring that ffmpeg-6 libraries are pulled in.

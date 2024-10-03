@@ -20,14 +20,13 @@
 
 %define sover   3
 Name:           wxsvg
-Version:        1.5.23
+Version:        1.5.25
 Release:        0
 Summary:        Library to create, manipulate and render SVG files
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 URL:            http://wxsvg.sourceforge.net/
 Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar.bz2
-Patch0:         ffmpeg5.patch
-Patch1:         wxsvg-fix-missing-include.patch
+Patch1:         %{name}-fix-version.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  wxGTK3-3_2-devel
@@ -35,7 +34,7 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(pangocairo)
 # WARNING: needs to build with the same ffmpeg libraries as DVDStyler.
-BuildRequires:  ffmpeg-6-libavcodec-devel
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libexif)
