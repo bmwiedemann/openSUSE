@@ -31,4 +31,12 @@
     <comment>Try to make the upgrade which removed gnu-jaf as smooth as possible</comment>
     <requestid>989128</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4795fab30b949b5c124cb8ba13dd767d</srcmd5>
+    <version>1.2.0</version>
+    <time>1727971217</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205250</requestid>
+  </revision>
 </revisionlist>

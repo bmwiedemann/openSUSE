@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:39:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Wed Jul 13 14:11:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid missing symlink %_javadir/jaf.jar, by recreating it when

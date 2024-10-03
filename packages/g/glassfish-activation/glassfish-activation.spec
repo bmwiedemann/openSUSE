@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-activation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source0:        activation-%{version}.tar.xz
 Source1:        activation-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Obsoletes:      gnu-jaf < %{version}
 Obsoletes:      jaf
 BuildArch:      noarch
@@ -70,9 +70,6 @@ cp %{SOURCE1} activation/build.xml
 # maven-dependency-plugin doesn't work correctly without access to remote repos
 %pom_remove_plugin :maven-dependency-plugin activationapi
 
-%pom_remove_parent activation activationapi
-%pom_xpath_inject pom:project "<version>%{version}</version>" activation activationapi
-
 %pom_remove_plugin org.codehaus.mojo:build-helper-maven-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
 %pom_remove_plugin -r :maven-source-plugin
@@ -88,21 +85,21 @@ popd
 
 %install
 # jar
-install -d -m 755 %{buildroot}%{_javadir}/
-install -m 644 activation/target/javax.activation-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -m 644 activation/target/javax.activation-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
+install -d -m 0755 %{buildroot}%{_javadir}/
+install -m 0644 activation/target/javax.activation-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 0644 activation/target/javax.activation-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
 ln -sf %{name}-api.jar %{buildroot}%{_javadir}/activation.jar
 ln -sf %{name}-api.jar %{buildroot}%{_javadir}/jaf.jar
 
 # pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 activation/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-install -pm 644 activationapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
+install -d -m 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} activation/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} activationapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 %add_maven_depmap %{name}-api.pom %{name}-api.jar -a javax.activation:activation -f api
 
 # javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -r activation/target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
