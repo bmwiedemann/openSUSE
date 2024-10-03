@@ -64,6 +64,7 @@ BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
+BuildRequires:  selinux-policy-%{selinuxtype}
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools

@@ -1001,4 +1001,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment></comment>
     <requestid>1196015</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>38000fd747525cc4639bbfbccc6589d2</srcmd5>
+    <version>1.15.10</version>
+    <time>1727971226</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205277</requestid>
+  </revision>
 </revisionlist>

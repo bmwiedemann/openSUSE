@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:16:49 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Explicitly BuildRequire selinux-policy-targeted to allow
+  selinux_relabel_* in scriptlets to work on other codestreams
+
+-------------------------------------------------------------------
 Wed Aug 14 16:07:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.15.10:
