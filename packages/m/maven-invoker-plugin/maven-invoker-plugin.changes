@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Oct  2 21:50:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade tu upstream version 3.8.0
+- Changes of version 3.3.0:
+   * Breaking changes
+    + MINVOKER-304: Use only common groovy modules - xml, json
+    + MINVOKER-281: java 8 as minimum
+  * New features and improvements
+    + MINVOKER-269: Execute forked Maven in quiet mode
+    + MINVOKER-288: Failed setup job cause skip rest of jobs
+    + MINVOKER-303: Print build summary at the end after logs
+    + MINVOKER-294: Allow override mavenExecutable in
+      invoker.properties
+  * Bug Fixes
+    + MINVOKER-299: fix filtering-extensions test
+    + MINVOKER-297: NPE when non-existing Maven Home
+    + Fix Modello namespace
+    + MINVOKER-273: Environment variable with empty value
+- Changes of version 3.4.0:
+  * New features and improvements
+    + MINVOKER-312: change to groovy groupId org.apache.groovy and
+      bump version to 4.x support jdk19
+    + MINVOKER-289: Support for shared invoker's Update-Snapshots
+      Flag
+  * Bug Fixes
+    + MINVOKER-306: Fixed bug if only exclude-patterns specified
+- Changes of version 3.5.0:
+  * Bug
+    + MINVOKER-318: invoker install can not resolve test
+      dependencies if they overlap with runtime deps
+    + MINVOKER-319: Invoker Install fail with Maven 4.0.0-alpha-4
+    + MINVOKER-323: DefaultVersionResolver is inflicting
+      ArtifactNotFoundException for classifiers with SNAPSHOT
+      version
+  * Improvement
+    + MINVOKER-313: Get rid of maven-artifact-transfer
+  * Task
+    + MINVOKER-324: Fix Temporary File Information Disclosure
+      Vulnerability
+- Changes of version 3.5.1:
+  * Bug Fixes
+    + MINVOKER-333: Artifact should be installed once
+    + MINVOKER-330: Allow relative path for mavenExecutable
+    + MINVOKER-328: Skip install artifacts with the same source and
+      target path
+- Changes of version 3.6.0
+  * Sub-task
+    + MINVOKER-347: Document upcoming report file name change
+  * Bug
+    + MINVOKER-340: AbstractInvokerMojo/InvokerReport subclasses are
+      not thread-safe due to use of DecimalFormat
+  * Improvement
+    + MINVOKER-341: Make elapsed time field type consistent with
+      Maven Surefire
+    + MINVOKER-342: Use ChoiceFormat to selectively render elapsed
+      time in AbstractInvokerMojo
+    + MINVOKER-345: Use ChoiceFormat to selectively render
+      percentage and elapsed time in InvokerReportRenderer
+  * Task
+    + MINVOKER-343: Make elapsed time rendering consistent with
+      Maven Surefire
+    + MINVOKER-344: Move reporting rendering logic into a
+      ReportRenderer class
+- Changes of version 3.6.1
+  * New features and improvements
+    + MINVOKER-352: Remove usage of commons-lang3
+- Changes of version 3.7.0
+  * New features and improvements
+    + MINVOKER-307: Support @{..} syntax in mavenOpts
+    + MINVOKER-365: Allow to pre-build script to set user properties
+    + MINVOKER-366: Require Maven 3.6.3
+    + MINVOKER-364: Rename invoker.systemPropertiesFile to
+      invoker.userPropertiesFile
+  * Bug Fixes
+    + MINVOKER-351: Escape special xml character in junit report
+    + MINVOKER-335: Use selector script for preparing test with
+      symlinks
+    + MINVOKER-336: Create empty .mvn directory in cloned projects
+    + MINVOKER-335: Preserve symlinks for copied files
+    + MINVOKER-337: Exclude plexus-container-default and o.a.maven
+      from runtime dependencies
+- Changes of version 3.8.0
+  * New features and improvements
+    + MINVOKER-368: Filter artifacts by scope before resolving in
+      install
+    + MINVOKER-354: Upgrade to Doxia 2.0.0 Milestone Stack
+
+-------------------------------------------------------------------
 Mon Sep 25 09:40:54 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2
@@ -7,6 +95,19 @@ Mon Sep 25 09:40:54 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 Thu Apr 28 11:47:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.2.2
+  * Changes:
+    * MINVOKER-191: "Artifact is not fully assembled" error with
+      maven-invoker-plugin in parallel build
+    * MINVOKER-224: Unable to set cloneProjectsTo to null
+    * MINVOKER-196: Support for JUnit report style
+    * MINVOKER-249: InstallMojo extraArtifacts are always
+      downloaded (optionally local repo must checked first)
+    * MINVOKER-174: add a property to configure build order
+    * MINVOKER-251: Allow options parallelThreads depends on
+      available cores
+    * MINVOKER-195: Fast Build - mergeUserSettings and mirrors, docs
+    * MINVOKER-250: streamLogsOnFailures
+    * MINVOKER-268: Introduce updateOnly parameter to AbstractInvokerMojo
   * fixes build with maven-script-interpreter 1.3
 
 -------------------------------------------------------------------

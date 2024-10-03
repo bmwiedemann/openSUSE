@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with  groovy
 Name:           maven-invoker-plugin
-Version:        3.2.2
+Version:        3.8.0
 Release:        0
 Summary:        Maven Invoker Plugin
 License:        Apache-2.0
@@ -29,19 +29,16 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache-extras.beanshell:bsh)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-core)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-decoration-model)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-site-renderer)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
-BuildRequires:  mvn(org.apache.maven.shared:maven-common-artifact-filters)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven.shared:maven-invoker)
 BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter) >= 1.3
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
@@ -50,13 +47,21 @@ BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-settings)
+BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 %if %{with groovy}
-BuildRequires:  mvn(org.codehaus.groovy:groovy)
+# runtime dependencies, but must be there
+BuildRequires:  mvn(org.apache.groovy:groovy)
+BuildRequires:  mvn(org.apache.groovy:groovy-bom:pom:)
+BuildRequires:  mvn(org.apache.groovy:groovy-json)
+BuildRequires:  mvn(org.apache.groovy:groovy-xml)
 %endif
 
 %description
@@ -74,8 +79,10 @@ API documentation for %{name}.
 %prep
 %setup -q
 
+%pom_remove_plugin :maven-enforcer-plugin
+
 %if %{without groovy}
-%pom_remove_dep ':${groovy-artifactId}'
+%pom_remove_dep 'org.apache.groovy:'
 %endif
 
 %build
