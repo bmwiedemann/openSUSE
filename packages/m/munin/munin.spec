@@ -72,8 +72,8 @@ Requires:       perl-rrdtool
 Requires:       rrdtool
 Requires:       shadow
 Requires:       spawn-fcgi
-Requires:       perl(Date::Manip)
 Requires:       perl(FCGI)
+Requires:       perl(Date::Manip)
 Requires:       perl(File::Copy::Recursive)
 Requires:       perl(HTML::Template)
 Requires:       perl(IO::Socket::IP)
@@ -300,6 +300,7 @@ fi
 %{_prefix}/lib/munin/munin-update
 %{_prefix}/lib/munin/DejaVuSans.ttf
 %{_prefix}/lib/munin/DejaVuSansMono.ttf
+%dir %{cgidir}
 %{cgidir}/munin-cgi-graph
 %{cgidir}/munin-cgi-html
 %{_prefix}/lib/tmpfiles.d/munin.conf
@@ -313,6 +314,8 @@ fi
 %dir %{_sysconfdir}/cron.d
 %config %{_sysconfdir}/cron.d/munin
 %endif
+%dir /srv/www
+%dir /srv/www/htdocs
 %attr(0755, munin, munin) %dir %{htmldir}
 %attr(0444, munin, munin) %{htmldir}/.htaccess
 %dir %{_sysconfdir}/munin

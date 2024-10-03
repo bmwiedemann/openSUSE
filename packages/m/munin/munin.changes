@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:48:44 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Thu Jun 13 10:19:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependenices: the FastCGI perl module is called FCGI.
