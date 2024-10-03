@@ -199,4 +199,12 @@
     <comment>- Make sure the plugins are installed (boo#1227871) (forwarded request 1187689 from Vogtinator)</comment>
     <requestid>1187800</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d9946cd53950abdba4613571967697b</srcmd5>
+    <version>6.7.3</version>
+    <time>1727971330</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205144</requestid>
+  </revision>
 </revisionlist>
