@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.2
+%define real_version 6.7.3
 %define short_version 6.7
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.7.2
+Version:        6.7.3
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -46,11 +46,12 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
+Patch1:         fix-llvm19-build.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150600
 BuildRequires:  clang17-devel
 %else
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150500
 BuildRequires:  clang15-devel
 %else
 BuildRequires:  clang-devel >= 8
