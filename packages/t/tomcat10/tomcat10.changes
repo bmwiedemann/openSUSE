@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:17:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt the scripts to run also with javapackages-tools >= 6.3
+
+-------------------------------------------------------------------
 Sun Sep 29 19:42:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

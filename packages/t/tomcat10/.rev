@@ -125,4 +125,12 @@
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204559</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>80a0a364348f186503e51db9481cb5a4</srcmd5>
+    <version>10.1.25</version>
+    <time>1727970055</time>
+    <user>anag+factory</user>
+    <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
+    <requestid>1205528</requestid>
+  </revision>
 </revisionlist>
