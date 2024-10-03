@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 01 10:02:52 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 4.16.2+10:
+  * wayland: Look for default cursor theme in XDG directories
+  * wayland: Clear settings_portal when going to fallback with no
+    portal settings
+  * wayland: Use the same default cursor size as gsettings schema
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 24 06:51:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.2:

@@ -949,4 +949,12 @@ New upstream release</comment>
     <comment>New release (forwarded request 1202812 from iznogood)</comment>
     <requestid>1203318</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>48ce9c1ef942a915c569196b46e12128</srcmd5>
+    <version>4.16.2+10</version>
+    <time>1727971208</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205222</requestid>
+  </revision>
 </revisionlist>

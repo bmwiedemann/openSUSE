@@ -3,11 +3,11 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gtk.git</param>
-    <param name="revision">4.16.2</param>
+    <param name="revision">c2417dc10777b6e65a975bf7f9b2e9f5d8f584f2</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-<!--    <param name="changesgenerate">enable</param> -->
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
