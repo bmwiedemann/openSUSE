@@ -31,4 +31,12 @@
     <comment>security update</comment>
     <requestid>1040351</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c9689ca513b06c9e54bc450d24c5a8f0</srcmd5>
+    <version>3.9.0</version>
+    <time>1727971214</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205237</requestid>
+  </revision>
 </revisionlist>

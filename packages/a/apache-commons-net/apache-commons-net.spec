@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-net
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -58,10 +58,9 @@ Group:          Documentation/HTML
 %prep
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
-%pom_remove_parent .
 
 %build
-%{ant} \
+ant \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -74,7 +73,7 @@ install -pm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{s
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
