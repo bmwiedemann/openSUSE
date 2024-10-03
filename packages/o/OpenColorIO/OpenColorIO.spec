@@ -25,14 +25,14 @@
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_3
+%define so_ver 2_5
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause

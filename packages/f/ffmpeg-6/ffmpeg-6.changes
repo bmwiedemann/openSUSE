@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 30 12:34:56 UTC 2024 - olaf@aepfle.de
+
+- Fix assertion due to missing priv_data cleanup on failed VAAPI
+  acceleration with 11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+  (ffmpeg#11013, vlc#28811)
+
+-------------------------------------------------------------------
 Thu Sep 26 10:02:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer build against libmfx; build also 15.5 against libvpl

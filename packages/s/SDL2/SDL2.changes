@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  1 23:24:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.8
+  * Fixed a crash in XInput code at startup
+  * Fixed flooding the OS with I/O when a PS4/PS5 controller is
+    disconnected
+  * Added SDL_VIDEO_DOUBLE_BUFFER support to the Wayland backend
+  * SDL_WINDOWEVENT_EXPOSED is sent appropriately when using
+    Wayland
+  * Fixed hang at startup in audio code when the application has
+    large stack usage on Linux
+  * Fixed initializing KMSDRM on older Linux systems
+
+-------------------------------------------------------------------
 Tue Sep  3 23:59:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.7

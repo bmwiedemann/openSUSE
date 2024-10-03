@@ -27,24 +27,26 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20240903.81f1f40%{git_version}
+Version:        1+git20241002.7da4a47%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
 URL:            https://en.opensuse.org/openSUSE:Usr_merge
 Source:         %{name}-%{version}.tar
 Requires:       dialog
+Requires:       dracut-pcr-signature
 Requires:       efibootmgr
 Requires:       jq
 Requires:       pcr-oracle
 Requires:       sed
-Requires:       systemd-boot
 # While systemd-pcrlock is in experimental
 Requires:       systemd-experimental
-Requires:       dracut-pcr-signature
-Supplements:    (systemd-boot and shim)
+# While bootctl is in udev
+Requires:       udev
 Requires:       (%{name}-snapper if (snapper and btrfsprogs))
 Requires:       (%{name}-tukit if read-only-root-fs)
+Supplements:    (grub2-x86_64-efi-bls and shim)
+Supplements:    (systemd-boot and shim)
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %description

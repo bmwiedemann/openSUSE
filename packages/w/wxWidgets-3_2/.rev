@@ -248,4 +248,12 @@
   condition in the test (fixes the build on s390x)</comment>
     <requestid>1195015</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a55d3c719155693789ecafed16061227</srcmd5>
+    <version>3.2.6</version>
+    <time>1727897561</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.6</comment>
+    <requestid>1204934</requestid>
+  </revision>
 </revisionlist>

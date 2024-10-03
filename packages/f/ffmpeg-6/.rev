@@ -149,4 +149,14 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
  (boo#1230983)</comment>
     <requestid>1203990</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>a722ebc45ea26434060dc9ed17d3da5d</srcmd5>
+    <version>6.1.1</version>
+    <time>1727897559</time>
+    <user>anag+factory</user>
+    <comment>- Fix assertion due to missing priv_data cleanup on failed VAAPI
+  acceleration with 11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+  (ffmpeg#11013, vlc#28811)</comment>
+    <requestid>1204923</requestid>
+  </revision>
 </revisionlist>

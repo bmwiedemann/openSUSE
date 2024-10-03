@@ -26,11 +26,11 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pygraphviz%{psuffix}
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
-URL:            https://pygraphviz.github.io/
+URL:            https://github.com/pygraphviz/pygraphviz
 Source:         https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-%{version}.tar.gz
 # https://github.com/pygraphviz/pygraphviz/issues/532
 Source1:        https://raw.githubusercontent.com/pygraphviz/pygraphviz/main/examples/README.txt

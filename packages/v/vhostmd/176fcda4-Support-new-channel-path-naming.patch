@@ -1,0 +1,82 @@
+From 176fcda44caca807b4bec9fd613991afd9d5a70b Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Fri, 27 Sep 2024 10:48:41 -0600
+Subject: [PATCH 2/3] Support libvirt's new channel path naming scheme
+
+libvirt commit 8abc979bb0 changed the channel path naming scheme from
+domain-<id>-<name> to <id>-<name>. Change the logic searching for channels
+to work with either scheme.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ vhostmd/virtio.c | 49 +++++++++++++++++++++++++-----------------------
+ 1 file changed, 26 insertions(+), 23 deletions(-)
+
+diff --git a/vhostmd/virtio.c b/vhostmd/virtio.c
+index d2d07bf..4516b1f 100644
+--- a/vhostmd/virtio.c
++++ b/vhostmd/virtio.c
+@@ -277,34 +277,37 @@ static int vio_readdir(const char * path)
+     }
+ 
+     while ((ent = readdir(dir)) != NULL) {
+-        int rc, id;
++        char tmp[SUN_PATH_LEN + 8];
++        struct stat st;
++        char *name = NULL;
++        int id = -1;
++        int rc;
++        channel_t *c = NULL;
+ 
+-        if (sscanf(ent->d_name, "domain-%d-", &id) == 1) {
++        if (sscanf(ent->d_name, "domain-%d-", &id) == 1)
++            name = strchr(&(ent->d_name[strlen("domain-")]), '-');
++        else if (sscanf(ent->d_name, "%d-", &id) == 1)
++            name = strchr(ent->d_name, '-');
++        else
++            continue;
+ 
+-            char tmp[SUN_PATH_LEN + 8];
+-            struct stat st;
++        rc = snprintf(tmp, sizeof(tmp), "%s/%s/%s", path, ent->d_name, channel_name);
+ 
+-            rc = snprintf(tmp, sizeof(tmp), "%s/%s/%s", path, ent->d_name, channel_name);
++        if (rc > 0 && rc < (int) sizeof(tmp) &&
++            strlen(tmp) < SUN_PATH_LEN &&
++            stat(tmp, &st) == 0 &&
++            S_ISSOCK(st.st_mode)) {
+ 
+-            if (rc > 0 && rc < (int) sizeof(tmp) &&
+-                strlen(tmp) < SUN_PATH_LEN &&
+-                stat(tmp, &st) == 0 &&
+-                S_ISSOCK(st.st_mode)) {
++            pthread_mutex_lock(&channel_mtx);
++            c = vio_channel_find(id, name, 0);
++            pthread_mutex_unlock(&channel_mtx);
+ 
+-                channel_t *c = NULL;
+-                const char *name = strchr(&(ent->d_name[strlen("domain-")]), '-');
+-
+-                pthread_mutex_lock(&channel_mtx);
+-                c = vio_channel_find(id, name, 0);
+-                pthread_mutex_unlock(&channel_mtx);
+-
+-                if (c && c->fd == FREE) {
+-                    c->uds_name = strdup(tmp);
+-                    if (c->uds_name == NULL)
+-                        goto error;
+-                    if (vio_channel_open(c))
+-                        goto error;
+-                }
++            if (c && c->fd == FREE) {
++                c->uds_name = strdup(tmp);
++                if (c->uds_name == NULL)
++                    goto error;
++                if (vio_channel_open(c))
++                    goto error;
+             }
+         }
+     }
+-- 
+2.35.3
+

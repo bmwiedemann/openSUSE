@@ -116,4 +116,13 @@
     <comment></comment>
     <requestid>1081834</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6df387a9940bd629a21c0e45e09ae52a</srcmd5>
+    <version>2.10.0</version>
+    <time>1727897557</time>
+    <user>anag+factory</user>
+    <comment>- Make Django build-requirement conditional and disable by default for
+  SUSE:SLFO:Main, bsc#1231124</comment>
+    <requestid>1204914</requestid>
+  </revision>
 </revisionlist>

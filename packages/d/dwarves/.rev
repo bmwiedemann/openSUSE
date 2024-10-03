@@ -347,4 +347,15 @@
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1181904 from pgajdos)</comment>
     <requestid>1181908</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>2a7258012ffd15e4293336cf773b8001</srcmd5>
+    <version>1.27</version>
+    <time>1727897555</time>
+    <user>anag+factory</user>
+    <comment>- fix baselibs.conf
+
+- Don't require libebl-plugins on suse_version &gt;= 1550
+- update to 1.8 release</comment>
+    <requestid>1204898</requestid>
+  </revision>
 </revisionlist>

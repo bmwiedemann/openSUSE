@@ -361,4 +361,16 @@
     <comment></comment>
     <requestid>1149286</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>61db93e05a3a1fce7f3f4b6db5b7289a</srcmd5>
+    <version>0.41.2</version>
+    <time>1727897621</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.41.2:
+  * Fix breaking change introduced on SQLAlchemy 2.0.22 changes to
+    attributes.AttributeImpl constructor
+- Drop patch sqlalchemy-2.0.22.patch:
+  * Included upstream.</comment>
+    <requestid>1205031</requestid>
+  </revision>
 </revisionlist>

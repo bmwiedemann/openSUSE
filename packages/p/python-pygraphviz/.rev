@@ -127,4 +127,23 @@
 - Switch to pyproject macros.</comment>
     <requestid>1175976</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7746b400d560c774d80540ec45940ee6</srcmd5>
+    <version>1.14</version>
+    <time>1727897560</time>
+    <user>anag+factory</user>
+    <comment>- update 1.14:
+  * Avoid subprocess window creation with agraph.AGraph._run_prog
+    (#514).
+  * Support Python 3.13 (#542).
+  * AGraph.draw(): close filehandle for pathlib.Path (#535).
+  * Fix formatting (#538).
+  * Test on Python 3.13 (#539).
+  * Use ruff and update pre-commit config (#540).
+
+  * Copy edges keys when copying a graph
+- fix dependencies for distros older than tumbleweed
+- Set license to BSD-3-Clause according to legal</comment>
+    <requestid>1204931</requestid>
+  </revision>
 </revisionlist>

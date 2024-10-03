@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Oct 02 06:30:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * chore(release): changelog for v1.9.0 (#1292)
+  * chore(deps): update workflows (#1281)
+  * chore(deps): lock file maintenance (#1282)
+  * fix: bump osv max concurrent requests (#1290)
+  * fix: apply go version override to _all_ instances of the
+    `stdlib` (#1278)
+  * fix: output invalid PURLs when scanning sboms (#1283)
+  * fix(offline): report all ecosystems without local databases in
+    one single line (#1279)
+  * test: update snapshot (#1284)
+  * chore(deps): update workflows (#1264)
+  * fix(deps): update osv-scanner minor (#1265)
+  * feat: assume `txt` files with "requirements" in their name are
+    `requirements.txt` files (#1271)
+  * chore(deps): update dependency webrick to v1.8.2 [security]
+    (#1270)
+  * test: update case to reflect recent config parsing changes
+    (#1267)
+  * feat: group DSA and its CVEs together (#1262)
+  * feat: error if configuration file has unknown properties
+    (#1249)
+  * fix: don't allow `LoadPath` to be set via config file (#1252)
+  * refactor: Follow revive rules across the repo (#1263)
+  * chore: make guided remediation follow revive's default lint
+    rules (#1259)
+  * refactor(guided remediation): Take `PreFetch` out of
+    `DependencyClient`  interface and prevent repeated datasource
+    network calls (#1224)
+  * ci: pin `amannn/action-semantic-pull-request` to a commit
+    (#1256)
+  * ci: pin `actions/stale` to a commit (#1255)
+  * test: update snapshots with new security vulnerabilities
+    (#1254)
+  * chore: deprecate parser functions in favor of their extract
+    equivalents (#1253)
+  * refactor: simplify and reuse `tryLoadConfig` (#1248)
+  * test: ensure `cmp.Diff` usage is consistent (#1251)
+  * test: restructure internal `config` cases and fixtures (#1250)
+  * fix: don't assume there's always a reason for a package being
+    filtered out (#1241)
+  * feat: Copy over dark docs theming from osv.dev (#1245)
+  * fix: announce when a config file is invalid and exit with a
+    non-zero code (#1242)
+  * chore(deps): update workflows (#1247)
+  * fix(deps): update osv-scanner minor (#1246)
+  * feat: allow explicitly ignoring the license of a package in
+    config (#1243)
+  * feat(guided remediation): remediate unresolved dependency
+    management vulns (#1235)
+  * chore(deps): update alpine:3.20 docker digest to beefdbd
+    (#1230)
+  * chore(deps): update golang docker tag to v1.23.1 (#1231)
+  * chore(deps): update workflows (#1205)
+  * fix(deps): update osv-scanner minor (#1204)
+  * chore(deps): lock file maintenance (#1195)
+
+-------------------------------------------------------------------
 Sat Sep 14 10:51:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.5:

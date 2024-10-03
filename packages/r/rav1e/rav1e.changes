@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:43:21 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- remove cargo_config: contained in vendor.tar
+- remove cargo_audit service: now part of cargo_vendor
+- Update to version 0.7.1:
+  * Remove some now-unneeded dependencies
+  * Make sure av1-grain matches the rav1e serialize feature (serde is back optional)
+  * Make sure to use a version of ivf that does not depends on bitstream-io 1
+  * More internal cleanups
+  * Sync up assembly with dav1d 1.2.1
+  * More encoder-specific assembly for both x86_64 and aarch64
+  * Many internal cleanups and fixes
+  * The Channel API does not rely on crossbeam-channel anymore
+  * Initial Speed level rebalance
+- Update README.suse-maint
+- Update baselibs.conf
+
+-------------------------------------------------------------------
 Thu Oct 19 08:38:11 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.6.6:

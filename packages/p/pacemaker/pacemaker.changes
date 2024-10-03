@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 01 11:36:55 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20240808.3980678f03 (Pacemaker-2.1.8):
+- scheduler: correct format arguments
+- libpacemaker: Don't apply colocation twice for promotion priority
+- libpacemaker: Apply promotion priority to cloned group instance
+
+-------------------------------------------------------------------
 Fri Jul 12 11:13:38 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20240711.239cba384:

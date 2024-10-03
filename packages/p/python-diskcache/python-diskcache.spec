@@ -1,7 +1,7 @@
 #
 # spec file for package python-diskcache
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} == 1600
+# No django in SLFO:Main
+%bcond_with django
+%else
+%bcond_without django
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-diskcache
@@ -30,8 +37,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with django}
 BuildRequires:  %{python_module Django if (%python-base without python36-base)}
 BuildRequires:  %{python_module pytest-django if (%python-base without python36-base)}
+%endif
 Requires:       python
 BuildArch:      noarch
 %python_subpackages
@@ -54,11 +63,15 @@ sed -i '/--cov/d' tox.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if %{without django}
+python_flags=("--ignore" "tests/test_doctest.py" "-k" "not README.rst")
+%else
 # No python36-Django 4 on TW
 python36_flags=("--ignore" "tests/test_doctest.py" "-k" "not README.rst")
+%endif
 # Broken since Django 3.2 -- https://github.com/grantjenks/python-diskcache/issues/210
 donttest_djangocache="--ignore tests/test_djangocache.py"
-%pytest "${$python_flags[@]}" ${donttest_djangocache}
+%pytest "${$python_flags[@]}" "${python_flags[@]}" ${donttest_djangocache}
 
 %files %{python_files}
 %license LICENSE

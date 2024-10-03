@@ -1159,4 +1159,41 @@
   * autopackager: mkpackage.sh: remove lunar</comment>
     <requestid>1196051</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>94c5df31bb61278f2bae5dee2a488c00</srcmd5>
+    <version>24.09.00</version>
+    <time>1727897670</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.09.00:
+  * lib: fwts_version.h - update to V24.09.00
+  * debian: update changelog
+  * klog.json: Add the missing processor error message to klog database
+  * klog.json: Add the missing exreqion error message to klog database
+  * klog.json: Add the missing exserial error message to klog database
+  * klog.json: Add the missing exoparg2 error message to klog database
+  * klog.json: Add the missing dswload2 error message to klog database
+  * klog.json: Add the missing nsinit error message to klog database
+  * klog.json: Add the missing exstore error message to klog database
+  * klog.json: Add more nsxfeval error messages to klog database
+  * klog.json: Add more utobject error messages to klog database
+  * klog.json: Add more uttrack error messages to klog database
+  * klog.json: Add the missing srat error message to klog database
+  * klog.json: Add more error messages for battery to klog database
+  * klog.json: Add the missing scan error messages to klog database
+  * klog.json: Add the missing prmt error messages to klog database
+  * klog.json: Add the missing viot error messages to klog database
+  * klog.json: Add the missing ipmi error messages to klog database
+  * klog.json: Add the missing fan_core error message to klog database
+  * klog.json: Add more missing acpi pcc kernel messages to klog database
+  * klog.json: Add more missing osl kernel messages to klog database
+  * fwts-test: slic: sync test results with fixes to ACPICA SLIC dumping
+  * ACPICA: Update to version 20240827
+  * lib: modprobe: add checking the compressed zst module format
+  * klog.json: Add more missing iort kernel messages to klog database
+  * klog.json: Add some missing gtdt kernel messages to klog database
+  * klog.json: Add some missing ghes kernel messages to klog database
+  * klog.json: Add some missing agdi kernel messages to klog database
+  * klog: fix the pattern errors for einj trigger table entry</comment>
+    <requestid>1205115</requestid>
+  </revision>
 </revisionlist>

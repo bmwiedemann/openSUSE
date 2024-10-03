@@ -30,7 +30,7 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.7.4
+Version:        3.7.6
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
@@ -41,11 +41,6 @@ Source1:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
-Patch2:         fix-soversion.patch
-# PATCH-FIX-SUSE danilo.spinella@suse.com
-# bsdunzip test fails because of a locale issue, set locale properly to fix it
-# It will be fixed in the next release
-Patch3:         fix-bsdunzip-test.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel

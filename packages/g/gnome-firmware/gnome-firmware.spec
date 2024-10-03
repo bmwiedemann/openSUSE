@@ -17,7 +17,7 @@
 
 
 Name:           gnome-firmware
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        Install firmware on devices
 License:        GPL-2.0-or-later
@@ -64,6 +64,7 @@ supported by fwupd.
 %{_datadir}/metainfo/org.gnome.Firmware.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Firmware.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Firmware-symbolic.svg
+%{_datadir}/glib-2.0/schemas/org.gnome.Firmware.gschema.xml
 %{_mandir}/man1/gnome-firmware.1%{?ext_man}
 
 %files lang -f %{name}.lang

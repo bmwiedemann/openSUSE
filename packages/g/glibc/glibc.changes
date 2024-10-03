@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 30 20:56:18 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- langpacks are no more used. Drop glibc-2.3.90-langpackdir.diff.
+
+-------------------------------------------------------------------
+Thu Sep 26 11:45:57 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- gen-tempname-randomness.patch: Fix missing randomness in __gen_tempname
+  (bsc#1230965, BZ #32214)
+
+-------------------------------------------------------------------
+Wed Sep 18 15:11:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Use nss-systemd by default also in SLE (bsc#1230638)
+
+-------------------------------------------------------------------
 Mon Jul 29 07:50:31 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to glibc 2.40

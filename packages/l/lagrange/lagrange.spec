@@ -16,9 +16,11 @@
 #
 
 
-%define app_id fi.skyjake.Lagrange
+%define gui_app_id fi.skyjake.Lagrange
+%define tui_app_id fi.skyjake.clagrange
+
 Name:           lagrange
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
@@ -35,6 +37,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(ncursesw) >= 6
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
@@ -45,26 +48,43 @@ conveniences familiar from web browsers, such as smooth scrolling, inline image
 viewing, multiple tabs, visual themes, Unicode fonts, bookmarks, history, and
 page outlines.
 
+%package -n clagrange
+Summary:        TUI client for browsing Geminispace
+
+%description -n clagrange
+Clagrange is a TUI client for browsing Geminispace.
+
 %prep
 %setup -q
 
 %build
-%cmake -DTFDN_ENABLE_SSE41=NO
+%cmake \
+    -DTFDN_ENABLE_SSE41=NO \
+    -DENABLE_TUI=YES
 %cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file -G "Gemini Client" %{app_id} WebBrowser
+%suse_update_desktop_file %{gui_app_id} WebBrowser
+%suse_update_desktop_file %{tui_app_id} WebBrowser
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/applications/%{app_id}.desktop
+%{_datadir}/applications/%{gui_app_id}.desktop
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
 %dir %{_datadir}/icons/hicolor/256x256/apps
-%{_datadir}/icons/hicolor/256x256/apps/%{app_id}.png
+%{_datadir}/icons/hicolor/256x256/apps/%{gui_app_id}.png
 %{_datadir}/%{name}/
-%{_datadir}/metainfo/%{app_id}.appdata.xml
+%{_datadir}/metainfo/%{gui_app_id}.appdata.xml
 %{_mandir}/man1/%{name}.1%{ext_man}
+
+%files -n clagrange
+%{_bindir}/clagrange
+%{_datadir}/applications/%{tui_app_id}.desktop
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/256x256
+%dir %{_datadir}/icons/hicolor/256x256/apps
+%{_datadir}/icons/hicolor/256x256/apps/%{tui_app_id}.png
 
 %changelog

@@ -78,7 +78,12 @@ Patch18:        spidermonkey_style_check_disable_s390x.patch
 Patch19:        0001-Skip-failing-tests-on-ppc64-and-s390x.patch
 # PATCH-FIX-OPENSUSE
 Patch20:        Fix-i586-float-math.patch
-
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2024-45490-part01-5c1a3164.patch CVE-2024-45490 bsc#1230036 qzhao@suse.com -- Reject negative len for XML_ParseBuffer.
+Patch21:        mozjs115-CVE-2024-45490-part01-5c1a3164.patch
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2024-45491.patch CVE-2024-45491 bsc#1230037 qzhao@suse.com -- Detect integer overflow in dtdCopy.
+Patch22:        mozjs115-CVE-2024-45491.patch
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2024-45492.patch CVE-2024-45492 bsc#1230038 qzhao@suse.com -- Detect integer overflow in function nextScaffoldPart.
+Patch23:        mozjs115-CVE-2024-45492.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -163,6 +168,9 @@ pushd ../..
 # Fixes for ppc64 and s390x, there is no need to keep it in ifarch here since mozilla tests support ifarch conditions
 %patch -P 19 -p1
 %patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
 
 # Copy out the LICENSE file
 cp LICENSE js/src/

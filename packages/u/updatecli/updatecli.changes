@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 02 06:22:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.84.1:
+  * Fix prerelease semver filtering when current version is stable
+    (#2736)
+  * fix(prow/e2e): ignore broken image and use updatecli-test
+    (#2737)
+  * deps(go): bump module github.com/fluxcd/source-controller/api
+    (#2729)
+  * chore: deps(go): bump module github.com/drone/go-scm to v1.38.7
+    (#2724)
+  * deps(go): bump module helm.sh/helm/v3 (#2719)
+  * deps(go): bump module helm.sh/helm/v3 (#2713)
+  * chore: deps(go): bump module github.com/drone/go-scm to v1.38.6
+    (#2706)
+  * deps(go): bump module github.com/beevik/etree (#2702)
+  * deps(go): bump module github.com/aws/aws-sdk-go (#2691)
+  * chore: update golang patch one at a time (#2689)
+  * deps(go): bump module github.com/getsops/sops/v3 (#2684)
+  * deps: Bump Golang version to 1.23.1 (#2672)
+  * deps(go): bump module
+    github.com/testcontainers/testcontainers-go (#2677)
+  * deps: bump docker dependencies (#2671)
+  * deps(go): bump module golang.org/x/mod (#2669)
+  * deps(go): bump module golang.org/x/text (#2664)
+  * deps(go): bump module golang.org/x/oauth2 (#2658)
+  * chore(deps): Bump github.com/opencontainers/runc from 1.1.12 to
+    1.1.14 (#2647)
+  * chore(text): switch to httpclient (#2622)
+  * chore(spelling): add end of line new line (#2632)
+  * fix spelling warning (#2629)
+  * deps: bump updatecli version to v0.84.0 (#2623)
+
+-------------------------------------------------------------------
 Tue Sep 24 05:20:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package updatecli: a declarative dependency management tool

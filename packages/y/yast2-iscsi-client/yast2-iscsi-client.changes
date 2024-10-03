@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 27 14:37:24 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixes for bsc#1228084:
+  - Inst client: Read sessions just after auto login in order to 
+    enable services at the end of the installation if needed 
+  - Finish client: enable iscsiuio.service instead of the socket
+- Use ip for reading the ip address of a given device instead of 
+  the deprecated ifconfig command
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue May 28 11:51:41 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't leak passwords to the log (bsc#1225432)

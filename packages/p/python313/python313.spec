@@ -149,8 +149,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.0~rc2
-%define         tarversion 3.13.0rc2
+Version:        3.13.0~rc3
+%define         tarversion 3.13.0rc3
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -214,8 +214,6 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
-# PATCH-FIX-UPSTREAM gh-124040-fix-test-math-i586.patch gh#python/cpython#124042
-Patch41:        gh-124040-fix-test-math-i586.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -869,6 +867,11 @@ rm %{buildroot}%{_mandir}/man1/python%{python_version}.1*
 %endif
 
 %endif
+
+# For the purposes of reproducibility, it is necessary to eliminate any *.pyc files inside documentation dirs
+if [ -d %{buildroot}%{_defaultdocdir} ] ; then
+find %{buildroot}%{_defaultdocdir} -type f -name \*.pyc -ls -exec rm -vf '{}' \;
+fi
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk

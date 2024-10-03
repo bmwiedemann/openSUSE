@@ -548,4 +548,12 @@
     <comment>- Update to release 2.30.7</comment>
     <requestid>1198600</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>109bf75cb9bfd6dbf487784d19d3ee38</srcmd5>
+    <version>2.30.8</version>
+    <time>1727897517</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.30.8</comment>
+    <requestid>1205021</requestid>
+  </revision>
 </revisionlist>

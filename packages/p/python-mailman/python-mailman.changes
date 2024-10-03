@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct  2 07:11:06 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.10
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.10/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+
+-------------------------------------------------------------------
+Wed Sep 25 08:56:24 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.10b2
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.10b2/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+
+-------------------------------------------------------------------
+Sun Sep 22 08:58:30 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.10b1
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.10b1/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+- Removed find-flufl.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 17:32:20 UTC 2024 - Benjamin Greiner <code@bnavigator.de>
 
 - Simplify python flavor selection

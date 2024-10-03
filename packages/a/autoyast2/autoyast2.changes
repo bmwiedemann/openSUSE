@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  1 13:30:17 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Removed obsolete USERADD_CMD, USERDEL_PRECMD, USERDEL_POSTCMD 
+  (bsc#1231006)
+- 5.0.3
+
+-------------------------------------------------------------------
 Thu Feb 15 13:59:22 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Install standard SLES when the AY XML profile selects SLE_HPC,

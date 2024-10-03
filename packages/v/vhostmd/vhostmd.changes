@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  1 17:55:04 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Fix virtio transport to work with libvirt >= 9.7.0
+  Added patches:
+  5a04b594-Add-channel_path-setting.patch,
+  176fcda4-Support-new-channel-path-naming.patch,
+  9d282891-Fix-parsing-of-vmstat-output.patch
+  bsc#1230961
+
+-------------------------------------------------------------------
 Fri Sep 20 18:10:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 1.2

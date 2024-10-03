@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyYAML
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
-Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
-Patch1:         build-with-cython3.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pyyaml/pyyaml-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +47,7 @@ PyYAML is applicable for a broad range of tasks from complex
 configuration files to object serialization and persistance.
 
 %prep
-%autosetup -p1 -n PyYAML-%{version}
+%autosetup -p1 -n pyyaml-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -66,7 +65,7 @@ find examples/ -type f | xargs chmod a-x
 %ifarch ppc ppc64 s390 s390x
 ulimit -Sn 2048
 %endif
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python tests/lib/test_all.py}
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python tests/legacy_tests/test_all.py}
 
 %files %{python_files}
 %license LICENSE

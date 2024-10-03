@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  2 04:03:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires.
+- Refreshed patches:
+  * python-google-api-core-no-mock.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 13:32:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.20.0
+  * Add async unsupported paramater exception (#694)
+  * Add support for asynchronous rest streaming (#686)
+  * Add support for creating exceptions from an asynchronous response (#688)
+
+-------------------------------------------------------------------
 Tue Sep  3 11:00:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.19.2

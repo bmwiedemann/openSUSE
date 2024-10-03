@@ -346,4 +346,13 @@
     confusing bugs.</comment>
     <requestid>1203766</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>20b4c24553f5ea8e0c140145b3874c02</srcmd5>
+    <version>8.3.0</version>
+    <time>1727897558</time>
+    <user>anag+factory</user>
+    <comment>- Make Django build-requirement conditional and disable by default for
+  SUSE:SLFO:Main, bsc#1231124</comment>
+    <requestid>1204915</requestid>
+  </revision>
 </revisionlist>

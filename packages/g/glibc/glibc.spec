@@ -170,7 +170,6 @@ Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
 Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libc&download=1#/glibc.keyring
 Source4:        manpages.tar.bz2
 Source5:        nsswitch.conf
-Source6:        sle-nsswitch.conf
 Source7:        bindresvport.blacklist
 Source9:        glibc.rpmlintrc
 Source10:       baselibs.conf
@@ -276,8 +275,6 @@ Patch10:        glibc-version.diff
 Patch13:        glibc-2.3.2.no_archive.diff
 # PATCH-FIX-OPENSUSE -- add blacklist for bindresvport
 Patch14:        glibc-bindresvport-blacklist.diff
-# PATCH-FIX-OPENSUSE prefer -lang rpm packages
-Patch15:        glibc-2.3.90-langpackdir.diff
 # PATCH-FEATURE-SLE Use nscd user for nscd
 Patch19:        nscd-server-user.patch
 # PATCH-FEATURE-SLE read nsswich.conf from /usr
@@ -302,6 +299,8 @@ Patch306:       glibc-fix-double-loopback.diff
 %if %{without snapshot}
 ###
 # Patches from upstream
+# PATCH-FIX-UPSTREAM Fix missing randomness in __gen_tempname (BZ #32214)
+Patch1000:      gen-tempname-randomness.patch
 ###
 %endif
 
@@ -920,7 +919,7 @@ install -m 644 %{SOURCE7} %{buildroot}/etc
 %if %suse_version > 1500
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 %else
-install -m 644 %{SOURCE6} %{buildroot}/etc/nsswitch.conf
+install -m 644 %{SOURCE5} %{buildroot}/etc/nsswitch.conf
 %endif
 
 %if %{build_html}

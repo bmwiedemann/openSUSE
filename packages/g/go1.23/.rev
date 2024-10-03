@@ -51,4 +51,23 @@
   - go#69094 cmd/go: breaking change in 1.23rc2 with version constraints in GOPATH mode (forwarded request 1199060 from jfkw)</comment>
     <requestid>1199063</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8345c02f57e55536c9f85b287eb65ad</srcmd5>
+    <version>1.23.2</version>
+    <time>1727897515</time>
+    <user>anag+factory</user>
+    <comment>- go1.23.2 (released 2024-10-01) includes fixes to the compiler,
+  cgo, the runtime, and the maps, os, os/exec, time, and unique
+  packages.
+  Refs boo#1229122 go1.23 release tracking
+  * go#69119 os: double close pidfd if caller uses pidfd updated by os.StartProcess
+  * go#69156 maps: segmentation violation in maps.Clone
+  * go#69219 cmd/cgo: alignment issue with int128 inside of a struct
+  * go#69240 unique: fatal error: found pointer to free object
+  * go#69333 runtime,time: timer.Stop returns false even when no value is read from the channel
+  * go#69383 unique: large string still referenced, after interning only a small substring
+  * go#69402 os/exec: resource leak on exec failure
+  * go#69511 cmd/compile: mysterious crashes and non-determinism with range over func (forwarded request 1205005 from jfkw)</comment>
+    <requestid>1205007</requestid>
+  </revision>
 </revisionlist>

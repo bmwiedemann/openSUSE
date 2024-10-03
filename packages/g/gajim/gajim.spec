@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
@@ -92,16 +92,12 @@ Features:
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 
 %build
-%pyproject_wheel
 python%{python_bin_suffix} ./make.py build --dist unix
-# FIXME: Build locales.
-python%{python_bin_suffix} ./make.py build --dist win
+%pyproject_wheel
 
 %install
-%pyproject_install
 python%{python_bin_suffix} ./make.py install --dist unix --prefix=%{buildroot}%{_prefix}
-# FIXME: Install locales.
-cp -a %{name}/data/locale %{buildroot}%{python_sitelib}/%{name}/data/
+%pyproject_install
 
 mkdir -p %{buildroot}%{_datadir}/
 mv %{buildroot}{%{python_sitelib}/%{name}/data,%{_datadir}/%{name}}/

@@ -1,102 +1,183 @@
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/future/test_async_future.py google-api-core-2.19.0/tests/asyncio/future/test_async_future.py
---- google-api-core-2.19.0.orig/tests/asyncio/future/test_async_future.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/future/test_async_future.py	2024-05-16 16:03:34.320181259 +0200
-@@ -14,7 +14,7 @@
+From 5f28e210306de47ff5a9fa3b4bf48ac6ceb13e85 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 2 Oct 2024 13:50:33 +1000
+Subject: [PATCH] test: Switch to unittest.mock from mock
+
+Now that the minimum supported version of Python is 3.7, we can stop
+using the external mock requirement, and import it from unittest. I have
+also attempted to keep imports ordered.
+
+Fixes #377
+---
+ noxfile.py                                                  | 2 --
+ tests/asyncio/future/test_async_future.py                   | 2 +-
+ tests/asyncio/gapic/test_method_async.py                    | 2 +-
+ tests/asyncio/operations_v1/test_operations_async_client.py | 3 ++-
+ tests/asyncio/retry/test_retry_streaming_async.py           | 4 ++--
+ tests/asyncio/retry/test_retry_unary_async.py               | 2 +-
+ tests/asyncio/test_grpc_helpers_async.py                    | 3 ++-
+ tests/asyncio/test_operation_async.py                       | 3 ++-
+ tests/asyncio/test_page_iterator_async.py                   | 2 +-
+ tests/asyncio/test_rest_streaming_async.py                  | 6 +++---
+ tests/unit/future/test__helpers.py                          | 2 +-
+ tests/unit/future/test_polling.py                           | 2 +-
+ tests/unit/gapic/test_method.py                             | 2 +-
+ tests/unit/operations_v1/test_operations_rest_client.py     | 2 +-
+ tests/unit/retry/test_retry_base.py                         | 2 +-
+ tests/unit/retry/test_retry_streaming.py                    | 2 +-
+ tests/unit/retry/test_retry_unary.py                        | 2 +-
+ tests/unit/test_bidi.py                                     | 2 +-
+ tests/unit/test_exceptions.py                               | 2 +-
+ tests/unit/test_extended_operation.py                       | 2 +-
+ tests/unit/test_grpc_helpers.py                             | 3 ++-
+ tests/unit/test_operation.py                                | 3 ++-
+ tests/unit/test_page_iterator.py                            | 2 +-
+ tests/unit/test_path_template.py                            | 2 +-
+ tests/unit/test_timeout.py                                  | 3 +--
+ 25 files changed, 32 insertions(+), 30 deletions(-)
+
+diff --git a/tests/asyncio/future/test_async_future.py b/tests/asyncio/future/test_async_future.py
+index 0cfe6773..659f41cf 100644
+--- a/tests/asyncio/future/test_async_future.py
++++ b/tests/asyncio/future/test_async_future.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  import asyncio
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/gapic/test_method_async.py google-api-core-2.19.0/tests/asyncio/gapic/test_method_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/gapic/test_method_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/gapic/test_method_async.py	2024-05-16 16:03:34.310181235 +0200
-@@ -14,7 +14,7 @@
+diff --git a/tests/asyncio/gapic/test_method_async.py b/tests/asyncio/gapic/test_method_async.py
+index f64157b4..026993e2 100644
+--- a/tests/asyncio/gapic/test_method_async.py
++++ b/tests/asyncio/gapic/test_method_async.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  import datetime
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py google-api-core-2.19.0/tests/asyncio/operations_v1/test_operations_async_client.py
---- google-api-core-2.19.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/operations_v1/test_operations_async_client.py	2024-05-16 16:03:34.300181212 +0200
-@@ -12,7 +12,7 @@
+diff --git a/tests/asyncio/operations_v1/test_operations_async_client.py b/tests/asyncio/operations_v1/test_operations_async_client.py
+index 19ac9b56..e5b20dcd 100644
+--- a/tests/asyncio/operations_v1/test_operations_async_client.py
++++ b/tests/asyncio/operations_v1/test_operations_async_client.py
+@@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
 -import mock
 +from unittest import mock
++
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/retry/test_retry_streaming_async.py google-api-core-2.19.0/tests/asyncio/retry/test_retry_streaming_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/retry/test_retry_streaming_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/retry/test_retry_streaming_async.py	2024-05-16 16:03:34.296847871 +0200
-@@ -16,7 +16,7 @@
- import re
- import asyncio
+diff --git a/tests/asyncio/retry/test_retry_streaming_async.py b/tests/asyncio/retry/test_retry_streaming_async.py
+index 28ae6ff1..a54fc125 100644
+--- a/tests/asyncio/retry/test_retry_streaming_async.py
++++ b/tests/asyncio/retry/test_retry_streaming_async.py
+@@ -12,11 +12,11 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
  
--import mock
-+from unittest import mock
- import pytest
- 
- from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/retry/test_retry_unary_async.py google-api-core-2.19.0/tests/asyncio/retry/test_retry_unary_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/retry/test_retry_unary_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/retry/test_retry_unary_async.py	2024-05-16 16:03:34.293514530 +0200
-@@ -15,7 +15,7 @@
++import asyncio
  import datetime
  import re
+-import asyncio
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/test_grpc_helpers_async.py google-api-core-2.19.0/tests/asyncio/test_grpc_helpers_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/test_grpc_helpers_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/test_grpc_helpers_async.py	2024-05-16 16:03:34.286847847 +0200
-@@ -12,7 +12,7 @@
+diff --git a/tests/asyncio/retry/test_retry_unary_async.py b/tests/asyncio/retry/test_retry_unary_async.py
+index fc2f572b..032bab75 100644
+--- a/tests/asyncio/retry/test_retry_unary_async.py
++++ b/tests/asyncio/retry/test_retry_unary_async.py
+@@ -14,8 +14,8 @@
+ 
+ import datetime
+ import re
++from unittest import mock
+ 
+-import mock
+ import pytest
+ 
+ from google.api_core import exceptions
+diff --git a/tests/asyncio/test_grpc_helpers_async.py b/tests/asyncio/test_grpc_helpers_async.py
+index 1a408ccd..a53de083 100644
+--- a/tests/asyncio/test_grpc_helpers_async.py
++++ b/tests/asyncio/test_grpc_helpers_async.py
+@@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
 -import mock
 +from unittest import mock
++
  import pytest  # noqa: I202
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/test_operation_async.py google-api-core-2.19.0/tests/asyncio/test_operation_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/test_operation_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/test_operation_async.py	2024-05-16 16:03:34.316847918 +0200
-@@ -13,7 +13,7 @@
+diff --git a/tests/asyncio/test_operation_async.py b/tests/asyncio/test_operation_async.py
+index 127ba634..f7ebad8a 100644
+--- a/tests/asyncio/test_operation_async.py
++++ b/tests/asyncio/test_operation_async.py
+@@ -13,7 +13,8 @@
  # limitations under the License.
  
  
 -import mock
 +from unittest import mock
++
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/asyncio/test_page_iterator_async.py google-api-core-2.19.0/tests/asyncio/test_page_iterator_async.py
---- google-api-core-2.19.0.orig/tests/asyncio/test_page_iterator_async.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/asyncio/test_page_iterator_async.py	2024-05-16 16:03:34.283514506 +0200
-@@ -14,7 +14,7 @@
+diff --git a/tests/asyncio/test_page_iterator_async.py b/tests/asyncio/test_page_iterator_async.py
+index 75f9e1cf..e661bd26 100644
+--- a/tests/asyncio/test_page_iterator_async.py
++++ b/tests/asyncio/test_page_iterator_async.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  import inspect
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import page_iterator_async
-diff -Nru google-api-core-2.19.0.orig/tests/unit/future/test__helpers.py google-api-core-2.19.0/tests/unit/future/test__helpers.py
---- google-api-core-2.19.0.orig/tests/unit/future/test__helpers.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/future/test__helpers.py	2024-05-16 16:03:34.433514858 +0200
+diff --git a/tests/asyncio/test_rest_streaming_async.py b/tests/asyncio/test_rest_streaming_async.py
+index da5b1c8d..f726cbee 100644
+--- a/tests/asyncio/test_rest_streaming_async.py
++++ b/tests/asyncio/test_rest_streaming_async.py
+@@ -15,14 +15,14 @@
+ # TODO: set random.seed explicitly in each test function.
+ # See related issue: https://github.com/googleapis/python-api-core/issues/689.
+ 
+-import pytest  # noqa: I202
+-import mock
+-
+ import datetime
+ import logging
+ import random
+ import time
+ from typing import List, AsyncIterator
++from unittest import mock
++
++import pytest  # noqa: I202
+ 
+ import proto
+ 
+diff --git a/tests/unit/future/test__helpers.py b/tests/unit/future/test__helpers.py
+index 98afc599..a37efdd4 100644
+--- a/tests/unit/future/test__helpers.py
++++ b/tests/unit/future/test__helpers.py
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -106,169 +187,197 @@ diff -Nru google-api-core-2.19.0.orig/tests/unit/future/test__helpers.py google-
  
  from google.api_core.future import _helpers
  
-diff -Nru google-api-core-2.19.0.orig/tests/unit/future/test_polling.py google-api-core-2.19.0/tests/unit/future/test_polling.py
---- google-api-core-2.19.0.orig/tests/unit/future/test_polling.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/future/test_polling.py	2024-05-16 16:03:34.433514858 +0200
-@@ -16,7 +16,7 @@
+diff --git a/tests/unit/future/test_polling.py b/tests/unit/future/test_polling.py
+index f5d9b4f1..2f66f230 100644
+--- a/tests/unit/future/test_polling.py
++++ b/tests/unit/future/test_polling.py
+@@ -15,8 +15,8 @@
+ import concurrent.futures
  import threading
  import time
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions, retry
-diff -Nru google-api-core-2.19.0.orig/tests/unit/gapic/test_method.py google-api-core-2.19.0/tests/unit/gapic/test_method.py
---- google-api-core-2.19.0.orig/tests/unit/gapic/test_method.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/gapic/test_method.py	2024-05-16 16:03:34.413514811 +0200
-@@ -14,7 +14,7 @@
+diff --git a/tests/unit/gapic/test_method.py b/tests/unit/gapic/test_method.py
+index d966f478..87aa6390 100644
+--- a/tests/unit/gapic/test_method.py
++++ b/tests/unit/gapic/test_method.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  import datetime
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/unit/operations_v1/test_operations_rest_client.py google-api-core-2.19.0/tests/unit/operations_v1/test_operations_rest_client.py
---- google-api-core-2.19.0.orig/tests/unit/operations_v1/test_operations_rest_client.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/operations_v1/test_operations_rest_client.py	2024-05-16 16:03:34.393514764 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/operations_v1/test_operations_rest_client.py b/tests/unit/operations_v1/test_operations_rest_client.py
+index 4ab4f1f7..26f34c40 100644
+--- a/tests/unit/operations_v1/test_operations_rest_client.py
++++ b/tests/unit/operations_v1/test_operations_rest_client.py
+@@ -14,8 +14,8 @@
+ # limitations under the License.
  #
  import os
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/unit/retry/test_retry_base.py google-api-core-2.19.0/tests/unit/retry/test_retry_base.py
---- google-api-core-2.19.0.orig/tests/unit/retry/test_retry_base.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/retry/test_retry_base.py	2024-05-16 16:03:34.380181399 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/retry/test_retry_base.py b/tests/unit/retry/test_retry_base.py
+index a0c6776b..212c4293 100644
+--- a/tests/unit/retry/test_retry_base.py
++++ b/tests/unit/retry/test_retry_base.py
+@@ -14,8 +14,8 @@
+ 
  import itertools
  import re
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  import requests.exceptions
  
-diff -Nru google-api-core-2.19.0.orig/tests/unit/retry/test_retry_streaming.py google-api-core-2.19.0/tests/unit/retry/test_retry_streaming.py
---- google-api-core-2.19.0.orig/tests/unit/retry/test_retry_streaming.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/retry/test_retry_streaming.py	2024-05-16 16:03:34.376848059 +0200
-@@ -14,7 +14,7 @@
+diff --git a/tests/unit/retry/test_retry_streaming.py b/tests/unit/retry/test_retry_streaming.py
+index 01f35327..82b60b05 100644
+--- a/tests/unit/retry/test_retry_streaming.py
++++ b/tests/unit/retry/test_retry_streaming.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  import re
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/unit/retry/test_retry_unary.py google-api-core-2.19.0/tests/unit/retry/test_retry_unary.py
---- google-api-core-2.19.0.orig/tests/unit/retry/test_retry_unary.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/retry/test_retry_unary.py	2024-05-16 16:03:34.386848082 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/retry/test_retry_unary.py b/tests/unit/retry/test_retry_unary.py
+index 7dcd8dd6..b018fa96 100644
+--- a/tests/unit/retry/test_retry_unary.py
++++ b/tests/unit/retry/test_retry_unary.py
+@@ -14,8 +14,8 @@
+ 
  import datetime
  import re
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_bidi.py google-api-core-2.19.0/tests/unit/test_bidi.py
---- google-api-core-2.19.0.orig/tests/unit/test_bidi.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_bidi.py	2024-05-16 16:03:34.326847941 +0200
-@@ -17,7 +17,7 @@
+diff --git a/tests/unit/test_bidi.py b/tests/unit/test_bidi.py
+index 84ac9dc5..08e80afd 100644
+--- a/tests/unit/test_bidi.py
++++ b/tests/unit/test_bidi.py
+@@ -16,8 +16,8 @@
+ import logging
  import queue
  import threading
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_exceptions.py google-api-core-2.19.0/tests/unit/test_exceptions.py
---- google-api-core-2.19.0.orig/tests/unit/test_exceptions.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_exceptions.py	2024-05-16 16:03:34.403514788 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/test_exceptions.py b/tests/unit/test_exceptions.py
+index 07a36817..e3f8f909 100644
+--- a/tests/unit/test_exceptions.py
++++ b/tests/unit/test_exceptions.py
+@@ -14,8 +14,8 @@
+ 
  import http.client
  import json
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  import requests
  
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_extended_operation.py google-api-core-2.19.0/tests/unit/test_extended_operation.py
---- google-api-core-2.19.0.orig/tests/unit/test_extended_operation.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_extended_operation.py	2024-05-16 16:03:34.353514670 +0200
-@@ -16,7 +16,7 @@
+diff --git a/tests/unit/test_extended_operation.py b/tests/unit/test_extended_operation.py
+index 53af5204..ab550662 100644
+--- a/tests/unit/test_extended_operation.py
++++ b/tests/unit/test_extended_operation.py
+@@ -15,8 +15,8 @@
+ import dataclasses
  import enum
  import typing
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_grpc_helpers.py google-api-core-2.19.0/tests/unit/test_grpc_helpers.py
---- google-api-core-2.19.0.orig/tests/unit/test_grpc_helpers.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_grpc_helpers.py	2024-05-16 16:03:34.373514717 +0200
-@@ -12,7 +12,7 @@
+diff --git a/tests/unit/test_grpc_helpers.py b/tests/unit/test_grpc_helpers.py
+index 59442d43..8de9d8c0 100644
+--- a/tests/unit/test_grpc_helpers.py
++++ b/tests/unit/test_grpc_helpers.py
+@@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
 -import mock
 +from unittest import mock
++
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_operation.py google-api-core-2.19.0/tests/unit/test_operation.py
---- google-api-core-2.19.0.orig/tests/unit/test_operation.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_operation.py	2024-05-16 16:03:34.340181306 +0200
-@@ -13,7 +13,7 @@
+diff --git a/tests/unit/test_operation.py b/tests/unit/test_operation.py
+index f029866c..80680720 100644
+--- a/tests/unit/test_operation.py
++++ b/tests/unit/test_operation.py
+@@ -13,7 +13,8 @@
  # limitations under the License.
  
  
 -import mock
 +from unittest import mock
++
  import pytest
  
  try:
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_page_iterator.py google-api-core-2.19.0/tests/unit/test_page_iterator.py
---- google-api-core-2.19.0.orig/tests/unit/test_page_iterator.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_page_iterator.py	2024-05-16 16:03:34.333514624 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/test_page_iterator.py b/tests/unit/test_page_iterator.py
+index cf43aedf..560722c5 100644
+--- a/tests/unit/test_page_iterator.py
++++ b/tests/unit/test_page_iterator.py
+@@ -14,8 +14,8 @@
+ 
  import math
  import types
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api_core import page_iterator
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_path_template.py google-api-core-2.19.0/tests/unit/test_path_template.py
---- google-api-core-2.19.0.orig/tests/unit/test_path_template.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_path_template.py	2024-05-16 16:03:34.333514624 +0200
-@@ -14,7 +14,7 @@
+diff --git a/tests/unit/test_path_template.py b/tests/unit/test_path_template.py
+index 808b36f3..c34dd0f3 100644
+--- a/tests/unit/test_path_template.py
++++ b/tests/unit/test_path_template.py
+@@ -13,8 +13,8 @@
+ # limitations under the License.
  
  from __future__ import unicode_literals
++from unittest import mock
  
 -import mock
-+from unittest import mock
  import pytest
  
  from google.api import auth_pb2
-diff -Nru google-api-core-2.19.0.orig/tests/unit/test_timeout.py google-api-core-2.19.0/tests/unit/test_timeout.py
---- google-api-core-2.19.0.orig/tests/unit/test_timeout.py	2024-04-30 19:00:19.000000000 +0200
-+++ google-api-core-2.19.0/tests/unit/test_timeout.py	2024-05-16 16:03:34.426848175 +0200
-@@ -15,7 +15,7 @@
+diff --git a/tests/unit/test_timeout.py b/tests/unit/test_timeout.py
+index 0bcf07f0..60a2e65d 100644
+--- a/tests/unit/test_timeout.py
++++ b/tests/unit/test_timeout.py
+@@ -14,8 +14,7 @@
+ 
  import datetime
  import itertools
- 
+-
 -import mock
 +from unittest import mock
  

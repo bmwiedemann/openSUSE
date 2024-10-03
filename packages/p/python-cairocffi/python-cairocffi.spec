@@ -81,7 +81,7 @@ This package provides the optional gdk-pixbuf image loader module.
 
 %check
 # Switch off test_xcb_window (gh#Kozea/cairocffi#203)
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest --ignore cairocffi/test_xcb.py
 
 %files %{python_files}
 %license LICENSE

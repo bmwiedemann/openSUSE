@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 04:00:01 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 47.0:
+  * Drop device flags that will become private in fwupd 2.0.x 
+
+-------------------------------------------------------------------
 Thu Mar 21 16:36:57 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 46.0:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 01 08:05:06 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.82.6:
+  * [feat] - Add SizedLRU Cache (#3344)
+  * [bug] - Recover From Panic During Archive Handling (#3348)
+  * [fix] - Use Parent Context in Azure Detector (#3346)
+  * [chore] - update Go version to 1.23.0 (#3340)
+  * disable secret scans for community PRs (#3343)
+  * Enhanced the eraser detector to handle new status code from verification API (#3342)
+  * [feat] - Add Generic Hasher Interface with Blake2b Implementation (#3337)
+  * [fix] Move detector initialization to DefaultDetectors function (#3341)
+  * Improve process cleanup (#3339)
+  * fix(decoder): prevent race (#3031)
+  * Add named params to interface methods (#3335)
+
+-------------------------------------------------------------------
 Thu Sep 26 08:17:06 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.82.5:

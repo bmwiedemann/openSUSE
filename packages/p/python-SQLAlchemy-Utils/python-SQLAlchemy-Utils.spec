@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy-Utils
-Version:        0.41.1
+Version:        0.41.2
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
 URL:            https://github.com/kvesteri/sqlalchemy-utils
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE sqlalchemy-2.0.22.patch gh#kvesteri/sqlalchemy-utils#725
-Patch1:         sqlalchemy-2.0.22.patch
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Jinja2 >= 2.3}
 BuildRequires:  %{python_module Pygments >= 1.2}
@@ -107,8 +105,7 @@ rm tests/types/test_uuid.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%dir %{python_sitelib}/sqlalchemy_utils
-%{python_sitelib}/sqlalchemy_utils/*
-%{python_sitelib}/SQLAlchemy_Utils-%{version}*-info
+%{python_sitelib}/sqlalchemy_utils
+%{python_sitelib}/SQLAlchemy_Utils-%{version}.dist-info
 
 %changelog

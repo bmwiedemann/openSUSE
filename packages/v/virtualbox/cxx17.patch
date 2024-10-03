@@ -1,20 +1,36 @@
 From: Jan Engelhardt <ej@inai.de>
 Date: 2024-09-20 22:48:58.758026690 +0200
 
-The code uses <filesystem>, so ensure we always use -std=c++17 at the very least.
+The code uses <filesystem>, so ensure we always use -std=c++17 at the
+very least.
 
-Prior to C++17, noexcept cannot be part of a type alias, and noexcept is not part of the
-function signature. So it was ok that FNCONSUMER *didn't* match the function definition.
+Prior to C++17, noexcept cannot be part of a type alias, and so is
+not part of the function signature, and so is not part of the ABI.
 
-In C++17, noexcept is part of the signature, so its absence/presence is significant.
+In C++17, noexcept is significant. There is a compile error because
+the FNCONSUMER alias as defined in a .h file does not match the
+function body in a .cpp file.
 
-The def file is also wrong, but no one at virtualbox.org noticed for some reason even
-though it also caused a link/build failure.
+The def file is also wrong, but no one at virtualbox.org noticed for
+some reason, even though the def mismatch also caused a link/build
+failure in its own right.
+
+To resolve the mismatch between .cpp/.h, the function signature is
+augmented by RT_NOEXCEPT, based upon the function head being the
+authoritative source as to whether something was meant to be noexcept
+or not.
+
+In turn, adding RT_NOEXCEPT causes a change in the ABI of VBoxRT.so.
+The closed-source VirtualBox extension pack does not expect that and
+is unable to load [LD_BIND_NOW=1]. To resolve _that_, we add extra
+symbol aliases.
+
 ---
- Config.kmk                              |    3 +++
- include/iprt/cpp/restclient.h           |   12 ++++++++++--
- src/VBox/Runtime/VBox/VBoxRTImp-gcc.def |    2 +-
- 3 files changed, 14 insertions(+), 3 deletions(-)
+ Config.kmk                                   |    3 +++
+ include/iprt/cpp/restclient.h                |   12 ++++++++++--
+ src/VBox/Runtime/VBox/VBoxRTImp-gcc.def      |    2 +-
+ src/VBox/Runtime/common/rest/rest-binary.cpp |    9 +++++++++
+ 4 files changed, 23 insertions(+), 3 deletions(-)
 
 Index: VirtualBox-7.1.0/Config.kmk
 ===================================================================
@@ -73,3 +89,20 @@ Index: VirtualBox-7.1.0/src/VBox/Runtime/VBox/VBoxRTImp-gcc.def
      _ZN22RTCRestBinaryParameter19setProducerCallbackEPDoFiPS_PvmyPmES1_y ; after-noexcept  int64=llong
      _ZN22RTCRestBinaryParameterC1Ev
      _ZN22RTCRestBinaryParameterC2Ev
+Index: VirtualBox-7.1.0/src/VBox/Runtime/common/rest/rest-binary.cpp
+===================================================================
+--- VirtualBox-7.1.0.orig/src/VBox/Runtime/common/rest/rest-binary.cpp
++++ VirtualBox-7.1.0/src/VBox/Runtime/common/rest/rest-binary.cpp
+@@ -706,3 +706,12 @@ void RTCRestBinaryResponse::receiveCompl
+     AssertRC(rc);
+ }
+ 
++// extpack was built with wrong -std=, add a redirect
++extern "C" void DECLEXPORT_CLASS __attribute__((weak,
++alias("_ZN21RTCRestBinaryResponse19setConsumerCallbackEPDoFiPS_PKvmjmmEPv"))) // T symbol that exists
++       _ZN21RTCRestBinaryResponse19setConsumerCallbackEPFiPS_PKvmjmmEPv( // W symbol to make
++	RTCRestBinaryResponse::PFNCONSUMER, void *);
++extern "C" void DECLEXPORT_CLASS __attribute__((weak,
++alias("_ZN22RTCRestBinaryParameter19setProducerCallbackEPDoFiPS_PvmmPmES1_m"))) // T
++       _ZN22RTCRestBinaryParameter19setProducerCallbackEPFiPS_PvmmPmES1_m( // W
++	RTCRestBinaryParameter::PFNPRODUCER, void *, uint64_t);

@@ -1,0 +1,48 @@
+From 2d79dfc7a2a8dd42021ff0ea3dcc8ed05f7c23ef Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Mon, 16 Sep 2024 22:38:13 -0400
+Subject: [PATCH] Fix docs generation for datetime with doxygen 1.11.0
+References: https://github.com/wxWidgets/wxWidgets/pull/24814
+
+It seems that as of the below commit, doxygen changed its handling of
+parsing backticks in comments such that it now fails to properly
+generate documentation for the entire datetime.h file.  Fix this by
+closing the open backtick.
+
+Also update the actual, non-documentation, header to match for
+consistency, even if non-matching backticks are not a problem there.
+
+See: https://github.com/doxygen/doxygen/commit/f18767307be20ca8d2ca81f74cc1f3446205282b
+
+Closes #24814.
+---
+ include/wx/datetime.h   | 2 +-
+ interface/wx/datetime.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/wx/datetime.h b/include/wx/datetime.h
+index 445c3dbb3929..55292f008408 100644
+--- a/include/wx/datetime.h
++++ b/include/wx/datetime.h
+@@ -149,7 +149,7 @@ class WXDLLIMPEXP_BASE wxDateTime
+         Local,
+ 
+         // zones from GMT (= Greenwich Mean Time): they're guaranteed to be
+-        // consequent numbers, so writing something like `GMT0 + offset' is
++        // consequent numbers, so writing something like `GMT0 + offset` is
+         // safe if abs(offset) <= 12
+ 
+         // underscore stands for minus
+diff --git a/interface/wx/datetime.h b/interface/wx/datetime.h
+index ea3df2323338..1a0222435565 100644
+--- a/interface/wx/datetime.h
++++ b/interface/wx/datetime.h
+@@ -96,7 +96,7 @@ class wxDateTime
+ 
+         ///@{
+         /// zones from GMT (= Greenwich Mean Time): they're guaranteed to be
+-        /// consequent numbers, so writing something like `GMT0 + offset' is
++        /// consequent numbers, so writing something like `GMT0 + offset` is
+         /// safe if abs(offset) <= 12
+ 
+         // underscore stands for minus

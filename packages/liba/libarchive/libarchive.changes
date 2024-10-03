@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Sep 27 19:15:54 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.7.6:
+  * tar: clean up linkpath between entries
+  * tar: fix memory leaks when processing symlinks or parsing pax headers
+  * iso: be more cautious about parsing ISO-9660 timestamps
+- Version 3.7.5 changes:
+  * fix multiple vulnerabilities identified by SAST
+  * cpio: ignore out-of-range gid/uid/size/ino and harden AFIO parsing
+  * lzop: prevent integer overflow
+  * rar4: protect copy_from_lzss_window_to_unp() (CVE-2024-20696, bsc#1225971)
+  * rar4: fix CVE-2024-26256 (CVE-2024-26256, bsc#1225972)
+  * rar4: fix OOB in delta and audio filter
+  * rar4: fix out of boundary access with large files
+  * rar4: add boundary checks to rgb filter
+  * rar4: fix OOB access with unicode filenames
+  * rar5: clear 'data ready' cache on window buffer reallocs
+  * rpm: calculate huge header sizes correctly
+  * unzip: unify EOF handling
+  * util: fix out of boundary access in mktemp functions
+  * uu: stop processing if lines are too long
+  * 7zip: fix issue when skipping first file in 7zip archive that is a multiple
+    of 65536 bytes
+  * ar: fix archive entries having no type
+  * lha: do not allow negative file sizes
+  * lha: fix integer truncation on 32-bit systems
+  * shar: check strdup return value
+  * rar5: don't try to read rediculously long names
+  * xar: fix another infinite loop and expat error handling
+  * many Windows fixes, cleanups and improvements
+- Drop fix-soversion.patch, fix-bsdunzip-test.patch
+  * Fixed upstream
+
+-------------------------------------------------------------------
 Thu Jun 20 14:56:58 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update lib-suffix.patch

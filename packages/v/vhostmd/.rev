@@ -307,4 +307,17 @@ regression introduced by the last update. See bsc#1152803 for details.
 - Add service file</comment>
     <requestid>1202258</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8f6ad46e635f9addc71cd1964c71f605</srcmd5>
+    <version>1.2</version>
+    <time>1727897598</time>
+    <user>anag+factory</user>
+    <comment>- Fix virtio transport to work with libvirt &gt;= 9.7.0
+  Added patches:
+  5a04b594-Add-channel_path-setting.patch,
+  176fcda4-Support-new-channel-path-naming.patch,
+  9d282891-Fix-parsing-of-vmstat-output.patch
+  bsc#1230961</comment>
+    <requestid>1204975</requestid>
+  </revision>
 </revisionlist>

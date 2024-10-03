@@ -18,4 +18,14 @@
   * Applied clippy suggestions</comment>
     <requestid>1204910</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6948a6c62d7287fec2690f190f363642</srcmd5>
+    <version>1.3.6</version>
+    <time>1727897654</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.6:
+  * Fix windows asset name
+  * Move linker flag to github workflow</comment>
+    <requestid>1205065</requestid>
+  </revision>
 </revisionlist>

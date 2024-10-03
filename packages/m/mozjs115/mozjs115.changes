@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 30 17:35:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-45492.patch:
+  Backporting 9bf0f2c1 from libexpat upstream, Detect integer
+  overflow in function nextScaffoldPart.
+  (CVE-2024-45492, bsc#1230038)
+
+-------------------------------------------------------------------
+Mon Sep 30 17:25:22 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-45491.patch:
+  Backporting 8e439a99 from libexpat upstream, Detect integer
+  overflow in dtdCopy.
+  (CVE-2024-45491, bsc#1230037)
+
+-------------------------------------------------------------------
+Mon Sep 30 17:15:45 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-45490-part01-5c1a3164.patch:
+  Backporting 5c1a3164 from libexpat upstream, Reject negative len
+  for XML_ParseBuffer.
+  CVE-2024-45490's fixes including 3 parts: 5c1a3164 for libexpat
+  sources; c12f039b for libexpat tests; 2db23301 for libexpat docs;
+  Because mozjs only embeds libexpat sources, so unnecessary to
+  port prart02 and part03.
+  (CVE-2024-45490, bsc#1230036)
+
+-------------------------------------------------------------------
 Thu Apr  4 13:56:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly tag patches.

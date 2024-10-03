@@ -406,7 +406,27 @@ Patch215:       0008-blscfg-reading-bls-fragments-if-boot-present.patch
 Patch216:       0009-10_linux-Some-refinement-for-BLS.patch
 Patch217:       0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
 Patch218:       grub2-s390x-set-hostonly.patch
+Patch219:       0001-bli-Fix-crash-in-get_part_uuid.patch
+Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
 
+# Always requires a default cpu-platform package
+Requires:       grub2-%{grubarch} = %{version}-%{release}
+
+%if 0%{?only_x86_64:1}
+ExclusiveArch:  x86_64
+%else
+ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64
+%endif
+
+%description
+This is the second version of the GRUB (Grand Unified Bootloader), a
+highly configurable and customizable bootloader with modular
+architecture.  It support rich scale of kernel formats, file systems,
+computer architectures and hardware devices.
+
+%package common
+Summary:        Utilies to manage grub
+Group:          System/Boot
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
 %ifnarch s390x
@@ -416,9 +436,6 @@ Recommends:     os-prober
 # downgrade to suggest as minimal system can't afford pulling in tcl/tk and half of the x11 stack (bsc#1102515)
 Suggests:       libburnia-tools
 Suggests:       mtools
-%endif
-%if ! 0%{?only_efi:1}
-Requires:       grub2-%{grubarch} = %{version}-%{release}
 %endif
 %ifarch s390x
 # required utilities by grub2-s390x-04-grub2-install.patch
@@ -436,25 +453,15 @@ Requires:       powerpc-utils
 Recommends:     memtest86+
 %endif
 
-%if 0%{?only_x86_64:1}
-ExclusiveArch:  x86_64
-%else
-ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64
-%endif
-
-%description
-This is the second version of the GRUB (Grand Unified Bootloader), a
-highly configurable and customizable bootloader with modular
-architecture.  It support rich scale of kernel formats, file systems,
-computer architectures and hardware devices.
-
+%description common
 This package includes user space utlities to manage GRUB on your system.
 
 %package branding-upstream
 
 Summary:        Upstream branding for GRUB2's graphical console
 Group:          System/Fhs
-Requires:       %{name} = %{version}
+BuildArch:      noarch
+Requires:       %{name}-common = %{version}
 
 %description branding-upstream
 Upstream branding for GRUB2's graphical console
@@ -467,8 +474,8 @@ Group:          System/Boot
 %if "%{platform}" != "emu"
 BuildArch:      noarch
 %endif
-Requires:       %{name} = %{version}
-Requires(post): %{name} = %{version}
+Requires:       %{name}-common = %{version}
+Requires(post): %{name}-common = %{version}
 %{?update_bootloader_requires}
 
 %description %{grubarch}
@@ -516,8 +523,8 @@ BuildArch:      noarch
 # Without it grub-install is broken so break the package as well if unavailable
 Requires:       efibootmgr
 Requires(post): efibootmgr
-Requires:       %{name} = %{version}
-Requires(post): %{name} = %{version}
+Requires:       %{name}-common = %{version}
+Requires(post): %{name}-common = %{version}
 %{?update_bootloader_requires}
 %{?fde_tpm_update_requires}
 Provides:       %{name}-efi = %{version}-%{release}
@@ -528,6 +535,14 @@ The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
 bootloader with modular architecture.  It supports rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
+
+%package %{grubefiarch}-bls
+Summary:        Image for Boot Loader Specification (BLS) support on %{grubefiarch}
+Group:          System/Boot
+BuildArch:      noarch
+
+%description %{grubefiarch}-bls
+Custom EFI build tailored for Boot Loader Specification (BLS) support.
 
 %package %{grubefiarch}-extras
 
@@ -592,7 +607,7 @@ Unsupported modules for %{name}-%{grubxenarch}
 
 Summary:        Grub2's snapper plugin
 Group:          System/Fhs
-Requires:       %{name} = %{version}
+Requires:       %{name}-common = %{version}
 Requires:       libxml2-tools
 Supplements:    packageand(snapper:grub2)
 BuildArch:      noarch
@@ -755,6 +770,57 @@ mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
+
+rm memdisk.sqsh
+
+# Building grubbls.efi
+# FIXME: error out if theme_vendor missing
+theme_vendor=$(find %{_datadir}/%{name}/themes -type f -name activate-theme -exec dirname {} \; -quit)
+theme_vendor=${theme_vendor##*/}
+
+# [ -n "$theme_vendor" ] || { echo "ERROR: no grub2 theme vendor found, missing branding package ??"; exit 1 }
+
+mkdir -p ./boot/grub
+cp -rf "%{_datadir}/%{name}/themes/$theme_vendor" ./boot/grub/themes
+rm -f "./boot/grub/themes/activate-theme"
+
+cat > ./grubbls.cfg <<'EOF'
+
+regexp --set 1:root '\((.*)\)' "$cmdpath"
+
+set timeout=8
+set gfxmode=auto
+set gfxpayload=keep
+set enable_blscfg=1
+
+terminal_input console
+terminal_output console
+terminal_output --append gfxterm
+
+loadfont (memdisk)/boot/grub/themes/DejaVuSans-Bold14.pf2
+loadfont (memdisk)/boot/grub/themes/DejaVuSans10.pf2
+loadfont (memdisk)/boot/grub/themes/DejaVuSans12.pf2
+loadfont (memdisk)/boot/grub/themes/ascii.pf2
+
+set theme=(memdisk)/boot/grub/themes/theme.txt
+export theme
+
+EOF
+
+%if 0%{?suse_version} > 1500
+tar --sort=name -cf - ./boot | mksquashfs - memdisk.sqsh -tar -comp xz -quiet -no-progress
+%else
+mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
+%endif
+
+./grub-mkimage -O %{grubefiarch} \
+    -o grubbls.efi \
+    --memdisk=./memdisk.sqsh \
+    -c ./grubbls.cfg \
+    %{?sbat_generation:--sbat sbat.csv} \
+    -d grub-core \
+    all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
+    fat tpm tpm2 memdisk tar squash4 xzio blscfg linux bli regexp loadenv test echo true sleep
 
 %ifarch x86_64 aarch64
 if test -e %{_sourcedir}/_projectcert.crt ; then
@@ -947,6 +1013,7 @@ install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %ifarch x86_64
 ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
 %endif
+install -m 644 grubbls.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 
 # Create grub.efi link to system efi directory
 # This is for tools like kiwi not fiddling with the path
@@ -968,7 +1035,7 @@ EoM
 %endif
 
 %ifarch x86_64 aarch64
-export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
+export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{_datadir}/%{name}/%{grubefiarch}/grubbls.efi"
 install -m 444 grub.der %{buildroot}/%{sysefidir}/
 %endif
 
@@ -1101,10 +1168,10 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %fdupes %buildroot%{_libdir}
 %fdupes %buildroot%{_datadir}
 
-%pre
+%pre common
 %service_add_pre grub2-once.service
 
-%post
+%post common
 %service_add_post grub2-once.service
 
 %if ! 0%{?only_efi:1}
@@ -1132,19 +1199,14 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 
 %endif
 
-%preun
+%preun common
 %service_del_preun grub2-once.service
 
-%postun
+%postun common
 %service_del_postun grub2-once.service
 
-%files -f %{name}.lang
+%files
 %defattr(-,root,root,-)
-%if 0%{?suse_version} < 1500
-%doc COPYING
-%else
-%license COPYING
-%endif
 %doc AUTHORS
 %doc NEWS README
 %doc THANKS TODO ChangeLog
@@ -1152,6 +1214,14 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %ifarch s390x
 %doc README.ibm3215
 %endif
+
+%files common -f %{name}.lang
+%if 0%{?suse_version} < 1500
+%doc COPYING
+%else
+%license COPYING
+%endif
+%defattr(-,root,root,-)
 %dir /boot/%{name}
 %ghost %attr(600, root, root) /boot/%{name}/grub.cfg
 %{_datadir}/bash-completion/completions/grub*
@@ -1332,6 +1402,10 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %ifarch x86_64 aarch64
 %{sysefidir}/grub.der
 %endif
+
+%files %{grubefiarch}-bls
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/%{grubefiarch}/grubbls.efi
 
 %files %{grubefiarch}-extras -f %{grubefiarch}-mod-extras.lst
 %defattr(-,root,root,-)

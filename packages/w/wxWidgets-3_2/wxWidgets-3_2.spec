@@ -65,10 +65,10 @@ wxString and instead rely on the wxChar pointer API.
 # At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
 %define wx_minor 3.2
-%define psonum 11_0_0
-%define sonum 11.0.0
+%define psonum 12_0_0
+%define sonum 12.0.0
 Name:           %this_spec
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
@@ -83,6 +83,7 @@ Source6:        wxpython-mkdiff.sh
 Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
 Patch2:         textfiletest-fix-file-exists.diff
+Patch3:         doxygen111.patch
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -467,38 +468,22 @@ export WX_TEST_WEBREQUEST_URL=0
 # ./test_gui -l || true
 %endif
 
-%post   -n libwx_baseu-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_baseu-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_baseu_net-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_baseu_net-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_baseu_xml-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_baseu_xml-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_adv-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_adv-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_aui-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_aui-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_core-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_core-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_gl-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_gl-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_html-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_html-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_media-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_media-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_propgrid-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_propgrid-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_qa-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_qa-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_ribbon-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_ribbon-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_richtext-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_richtext-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_stc-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_stc-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_webview-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_webview-%variant%psonum -p /sbin/ldconfig
-%post   -n libwx_%{toolkit}u_xrc-%variant%psonum -p /sbin/ldconfig
-%postun -n libwx_%{toolkit}u_xrc-%variant%psonum -p /sbin/ldconfig
+%ldconfig_scriptlets -n libwx_baseu-%variant%psonum
+%ldconfig_scriptlets -n libwx_baseu_net-%variant%psonum
+%ldconfig_scriptlets -n libwx_baseu_xml-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_adv-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_aui-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_core-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_gl-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_html-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_media-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_propgrid-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_qa-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_ribbon-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_richtext-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_stc-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_webview-%variant%psonum
+%ldconfig_scriptlets -n libwx_%{toolkit}u_xrc-%variant%psonum
 
 %if "%{flavor}" == "doc"
 %files xml

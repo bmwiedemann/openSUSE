@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-semantic_version
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} == 1600 || 0%{?suse_version} <= 1550
+# No django in SLFO:Main
+%bcond_with django
+%else
+%bcond_without django
+%endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -40,7 +47,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
-%if 0%{?suse_version} > 1550
+%if %{with django}
 # Django 4.0 dropped support for Python < 3.8
 BuildRequires:  %{python_module Django >= 1.11 if (%python-base without python36-base)}
 %endif
@@ -65,9 +72,14 @@ It follows strictly the 2.0.0 version of the SemVer scheme.
 
 %if %{with test}
 %check
+%if %{without django}
+python_flags="--ignore tests/test_django.py"
+%else
 # Django 4.0 dropped support for Python < 3.8
 python36_flags="--ignore tests/test_django.py"
-%pytest ${$python_flags}
+%endif
+
+%pytest ${$python_flags} ${python_flags}
 
 %else
 

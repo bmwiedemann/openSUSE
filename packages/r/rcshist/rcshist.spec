@@ -1,7 +1,7 @@
 #
 # spec file for package rcshist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rcshist
-Version:        t20230130
+Version:        t20240419
 Release:        0
 Summary:        Display RCS change history
 License:        BSD-Source-Code
@@ -39,6 +39,8 @@ reverse date order over all revisions of all files.
 
 %install
 %make_install
+
+%check
 
 %files
 %license COPYING

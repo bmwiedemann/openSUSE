@@ -1,26 +1,31 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2014-11-07 10:41:58.650412802 +0100
 
-Because it is so easy to change the ABI with just one configure option,
-explicitly mark our build with a vendor tag.
-(We do the same in windows:mingw: where this issue is even more pressing.)
+https://github.com/wxWidgets/wxWidgets/releases/tag/v3.2.6 claims
+it's ABI compatible with 3.2.5, but then you see virtual function
+changes...
 
-In addition, because wxWidgets changes the ABI midway (for example,
-did so between 3.0.1 and 3.0.2) without changing the SONAME, we have
-to do it. As we have a vendor suffix, no filename conflicts can occur.
+-    virtual void        SetupMouseEvent(wxMouseEvent &wxevent, NSEvent * nsEvent);
++
++    using MouseEvents = std::vector<wxMouseEvent>;
++    virtual MouseEvents TranslateMouseEvent(NSEvent * nsEvent);
 
-One needs to look at the diff between versions. If in doubt, just
-always bump, specifically(!) the SO major.
+So their promise means nothing.
+
+It is also possible for distributions to accidentally cause ABI
+changes with the flick of a configure option (e.g. enable-stl), since
+that can change the set of class bases, members or member function
+signatures.
 
 ---
  Makefile.in               |    5 +++--
  build/aclocal/bakefile.m4 |    3 +--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: wxWidgets-3.2.5/Makefile.in
+Index: wxWidgets-3.2.6/Makefile.in
 ===================================================================
---- wxWidgets-3.2.5.orig/Makefile.in
-+++ wxWidgets-3.2.5/Makefile.in
+--- wxWidgets-3.2.6.orig/Makefile.in
++++ wxWidgets-3.2.6/Makefile.in
 @@ -2225,6 +2225,7 @@ LOCALE_LINGUAS = ca cs da de el es fi fr
  @COND_OFFICIAL_BUILD_0_PLATFORM_WIN32_1@WXCOMPILER = _gcc
  @COND_OFFICIAL_BUILD_1_PLATFORM_WIN32_1@WXCOMPILER \
@@ -39,18 +44,18 @@ Index: wxWidgets-3.2.5/Makefile.in
  COND_wxUSE_REGEX_builtin___wxregex___depname = \
  	$(LIBDIRNAME)/$(LIBPREFIX)wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX)$(LIBEXT)
 @@ -13982,7 +13983,7 @@ COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE
- @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.2.3.$(SO_SUFFIX)
+ @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .0.3.0.$(SO_SUFFIX)
  @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@dll___targetsuf3 = -0.$(SO_SUFFIX)
  @COND_USE_SOVERSION_0@dll___targetsuf3 = .$(SO_SUFFIX)
 -@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).0
-+@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).11.0.0
++@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).12.0.0
  @COND_TOOLKIT_MSW@__RCDEFDIR_p = --include-dir \
  @COND_TOOLKIT_MSW@	$(LIBDIRNAME)/wx/include/$(TOOLCHAIN_FULLNAME)
  @COND_USE_GUI_1_wxUSE_LIBTIFF_builtin@__LIB_TIFF_p \
-Index: wxWidgets-3.2.5/build/aclocal/bakefile.m4
+Index: wxWidgets-3.2.6/build/aclocal/bakefile.m4
 ===================================================================
---- wxWidgets-3.2.5.orig/build/aclocal/bakefile.m4
-+++ wxWidgets-3.2.5/build/aclocal/bakefile.m4
+--- wxWidgets-3.2.6.orig/build/aclocal/bakefile.m4
++++ wxWidgets-3.2.6/build/aclocal/bakefile.m4
 @@ -408,8 +408,7 @@ AC_DEFUN([AC_BAKEFILE_SHARED_VERSIONS],
              SONAME_FLAG="-Wl,-soname,"
          fi

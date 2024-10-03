@@ -646,4 +646,13 @@
     <comment>- Add dependency on cracklib for cracklib-check</comment>
     <requestid>1202924</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d3fd8ea4203397d0248249fb8c81d007</srcmd5>
+    <version>1.5.3</version>
+    <time>1727897565</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.3:
+  * otp: Show the QR code in a separate window if necessary (bsc#1231177)</comment>
+    <requestid>1204945</requestid>
+  </revision>
 </revisionlist>

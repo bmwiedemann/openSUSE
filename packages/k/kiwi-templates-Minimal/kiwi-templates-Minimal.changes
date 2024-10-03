@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  1 16:07:08 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires systemd-boot in the sdboot flavor
+
+-------------------------------------------------------------------
+Thu Sep  5 13:55:46 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove root from /etc/kernel/cmdline during image creation 
+
+-------------------------------------------------------------------
 Tue Aug 27 09:27:20 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix grub package name for aarch64 (grub2-arm64-efi)
+
+-------------------------------------------------------------------
+Tue Aug 13 13:53:32 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use the new grub2-bls subpackage
+
+-------------------------------------------------------------------
+Fri Aug  9 08:45:16 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Enable disk-encryption-tool-enroll.service
 
 -------------------------------------------------------------------
 Wed Jul 31 13:38:18 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>

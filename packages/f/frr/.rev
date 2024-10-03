@@ -327,4 +327,12 @@
   See https://frrouting.org/release/10.0.1/</comment>
     <requestid>1201459</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9e7f3fed38744c09daff7670b2e832c8</srcmd5>
+    <version>10.0.2</version>
+    <time>1727897604</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204981</requestid>
+  </revision>
 </revisionlist>

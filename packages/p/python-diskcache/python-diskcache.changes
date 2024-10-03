@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 10:19:39 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make Django build-requirement conditional and disable by default for
+  SUSE:SLFO:Main, bsc#1231124
+
+-------------------------------------------------------------------
 Wed Sep 27 12:15:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

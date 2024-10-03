@@ -37,7 +37,7 @@
 %global jsonschema_version            4.20.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               1.0.8
+%global msgpack_version               1.1.0
 # TODO 1.3.0
 %global netaddr_version               1.2.1
 %global phonenumbers_version          8.13.44
@@ -157,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.115.0
+Version:        1.116.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

@@ -276,4 +276,6 @@ if rpm -q sdbootutil; then
 	rpm -q systemd-boot && loader_type="systemd-boot"
 	rpm -q grub2 && loader_type="grub2-bls"
 	echo "LOADER_TYPE=\"${loader_type}\"" >> /etc/sysconfig/bootloader
+
+	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable disk-encryption-tool-enroll.service
 fi

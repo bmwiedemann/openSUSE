@@ -306,4 +306,12 @@
   cython3 (needed for python 3.13+)</comment>
     <requestid>1184287</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>00880f1d8389c4d877a13f7836f3bcad</srcmd5>
+    <version>6.0.2</version>
+    <time>1727897529</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205113</requestid>
+  </revision>
 </revisionlist>

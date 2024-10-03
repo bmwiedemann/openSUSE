@@ -154,7 +154,7 @@ BuildRequires:  dmidecode
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
-BuildRequires:  glslang-devel
+BuildRequires:  glslang-devel >= 11.5
 BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
 #BuildRequires:  libSDL2-2_0-0

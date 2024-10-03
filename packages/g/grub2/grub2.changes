@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 13 07:12:58 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Introduces a new package, grub2-x86_64-efi-bls, which includes a
+  straightforward grubbls.efi file. This file can be copied to the EFI System
+  Partition (ESP) along with boot fragments in the Boot Loader Specification
+  (BLS) format
+  * 0001-Streamline-BLS-and-improve-PCR-stability.patch
+- Fix crash in bli module (bsc#1226497)
+  * 0001-bli-Fix-crash-in-get_part_uuid.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 02:42:42 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Rework package dependencies: grub2-common now includes common userland
+  utilities and is required by grub2 platform packages. grub2 is now a meta
+  package that pulls in the default platform package.
+
+-------------------------------------------------------------------
 Fri Aug  2 08:44:40 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix btrfs subvolume for platform modules not mounting at runtime when the

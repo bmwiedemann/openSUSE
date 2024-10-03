@@ -116,6 +116,7 @@ Patch11:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
 Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch14:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-CVE-2023-50007.patch
@@ -839,6 +840,7 @@ Patch11:        0001-avfilter-af_dialoguenhance-do-output-scaling-once.patch
 Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch14:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-CVE-2023-50007.patch

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Oct  1 09:24:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.0
+  This is the main new feature release for this year and is the
+  base version for the CY2025 VFX Reference Platform (which
+  specifies 2.4.x).
+
+  The headline feature this year is a Preview Release of ACES 2
+  Output Transform support. This is a work-in-progress and we
+  anticipate that both the processing results and the API will
+  likely change somewhat before it is finalized. Our goal is to do
+  that by the end of the year in a 2.4.x release.
+
+  Ideally, application developers will introduce 2.4.0 into their
+  testing programs now and then update to the latest 2.4.x release
+  available before shipping next year.
+
+  This documentation page explains the new features in this
+  release.
+
+  - Major new features:
+    - PR #1983, ACES 2 Output Transforms
+    - PR #2039, Add updated CG and Studio configs for ACES 1.3
+    - PR #1941, Builtin Transform for Apple Log
+    - PR #1914, OCIOView: Chromaticities inspector
+    - PR #1932, Add AVX512 accelerated LUT1D and LUT3D
+    - PR #2029, Add new FixedFunction and Builtin Transforms
+  - Bug fixes and minor enhancements:
+    - PR #1988, Add NamedTransform support for ocioconvert
+    - PR #2051, Add DCDM displays and improve HLG OOTF
+      implementation
+    - PR #2052, Add Wheels for Python 3.13
+    - PR #2006, OCIOView: App mode, tests, color space menus, bug
+      fixes
+    - PR #1966, OCIOView: Updates & fixes
+    - PR #1985, OCIOView: Fix color_space_to_rgb_colourspace
+      function usage
+    - PR #1962, Add function to check if an extension is supported
+      by FileTransform
+    - PR #2059, Add hasAlias method to ColorSpace and
+      NamedTransform
+    - PR #2038, Add bit-depth flag to ocioconvert
+    - PR #1981, Modify half-domain LUT1D GPU shader to improve zero
+      handling
+    - PR #1976, Allow read and write of file rules without color
+      space validation
+    - PR #2026, Update supported apps info for Photoshop and After
+      Effects
+    - PR #2022, Add Photoshop Beta support section to documentation
+    - PR #2025, Remove legacy Photoshop and After Effects plug-ins
+    - PR #2062, Add Python usage example for viewing pipeline on
+      CPU
+    - PR #2037, Add TouchDesigner to supported apps list
+    - PR #2024, Fix typo in documentation
+    - PR #1989, Improve GradingPrimary documentation
+    - PR #2020, Allow building with gcc-15
+    - PR #2019, Harden test temp folder handling
+    - PR #1987, Use the correct locale include for Darwin
+    - PR #1977, TSC & Committer update, add Mark & Cuneyt, create
+      an emeritus section
+    - PR #1961, Replaced deprecated Carbon framework with ColorSync
+      and CoreGraphics
+    - PR #1960, Add ociocpuinfo utility
+    - PR #1950, Fix CPU unit test failures on recent macOS ARM
+      platforms
+    - PR #2060, Update documentation for 2.4 release
+  - Build process enhancements:
+    - PR #2053, Add Docker images for VFX Platform 2024 to CI
+    - PR #2058, Fix Platform Latest CI
+    - PR #2028, Add config file to fix ReadTheDocs builds
+    - PR #1990, Fix for GitHub Actions node.js glibc issue
+    - PR #1986, Improve minizip-ng installer CMake
+    - PR #1945, Various CI workflow fixes
+    - PR #1980, Improve Windows batch files to find installed
+      Visual Studio location
+
+-------------------------------------------------------------------
 Fri May 24 14:55:05 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.3.2

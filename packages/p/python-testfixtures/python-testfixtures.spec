@@ -24,6 +24,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%if 0%{?suse_version} == 1600
+# No django in SLFO:Main
+%bcond_with django
+%else
+%bcond_without django
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-testfixtures%{psuffix}
 Version:        8.3.0
@@ -39,10 +47,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
+
+%if %{with django}
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pytest-django}
+%endif
+
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module sybil >= 6}
 BuildRequires:  %{python_module testfixtures = %{version}}
 %endif
@@ -81,9 +93,13 @@ chmod a-x docs/*.txt
 
 %check
 %if %{with test}
-export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
 export PYTHONPATH=$(pwd)
-%pytest testfixtures/tests
+%if %{with django}
+export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
+%else
+test_flags="--ignore=testfixtures/tests/test_django"
+%endif
+%pytest $test_flags testfixtures/tests
 %endif
 
 %if %{without test}

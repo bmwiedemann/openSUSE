@@ -19,11 +19,11 @@
 %global aiosmtpd_min_version 1.4.3
 # normally it would be 1.6.2,!=1.7.0 but to avoid super comlex constructs in the spec file ... lets go with the version that we have in TW
 %global alembic_min_version 1.12
-%global authheaders_min_version 0.15.2
+%global authheaders_min_version 0.16
 %global authres_min_version 1.0.1
 %global click_min_version 8.0.0
 %global dnspython_min_version 1.14.0
-%global falcon_min_version 3.0.0
+%global falcon_min_version 3.1.3
 %global flufl_bounce_min_version 4.0
 %global flufl_i18n_min_version 3.2
 %global flufl_lock_min_version 5.1
@@ -59,13 +59,15 @@
 %define plainpython python
 
 Name:           python-mailman%{psuffix}
-Version:        3.3.9
+Version:        3.3.10
 Release:        0
 Summary:        A Mailing List Manager
 Group:          Productivity/Networking/Email/Mailinglists
 License:        GPL-3.0-only
 URL:            https://www.list.org
-Source0:        https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
+Source0:        https://gitlab.com/mailman/mailman/-/releases/v%{version}/downloads/mailman-%{version}.tar.gz
+Source1:        https://gitlab.com/mailman/mailman/-/releases/v%{version}/downloads/mailman-%{version}.tar.gz.asc
+Source2:        python-mailman.keyring
 #
 Source10:       mailman.cfg
 Source11:       mailman.service
@@ -81,14 +83,8 @@ Source23:       mailman-notify.timer
 Source30:       README.SUSE.md
 Source31:       python-mailman.rpmlintrc
 #
-Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
-Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
-#
-# PATCH-FIX-OPENSUSE mmachova@suse.com based on upstream merge request https://gitlab.com/mailman/mailman/-/merge_requests/1123
-# it won't be needed with new releases of flufl.lock and flufl.i18n, because the issue was fixed in pdm upstream https://github.com/pdm-project/pdm/pull/2057
-Patch0:         find-flufl.patch
-#
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -119,7 +115,7 @@ Requires:       %{mypython}-authheaders >= %{authheaders_min_version}
 Requires:       %{mypython}-authres >= %{authres_min_version}
 Requires:       %{mypython}-click >= %{click_min_version}
 Requires:       %{mypython}-dnspython >= %{dnspython_min_version}
-Requires:       %{mypython}-falcon > %{falcon_min_version}
+Requires:       %{mypython}-falcon >= %{falcon_min_version}
 Requires:       %{mypython}-flufl.bounce >= %{flufl_bounce_min_version}
 Requires:       %{mypython}-flufl.i18n >= %{flufl_i18n_min_version}
 Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version}
@@ -154,6 +150,8 @@ Mailman is a mailing list manager from the GNU project.
 
 %package -n system-user-%{mailman_name}
 Summary:        System user and group mailman
+Requires(pre):  group(lock)
+Requires(pre):  group(mail)
 %sysusers_requires
 
 %description -n system-user-%{mailman_name}
@@ -162,23 +160,12 @@ System user for use by the mailman client.
 %prep
 %autosetup -p1 -n mailman-%{version}
 
-# https://gitlab.com/mailman/mailman/-/issues/704
-cp %{SOURCE100} src/mailman/testing/
-cp %{SOURCE101} src/mailman/testing/
+# README.SUSE.md
 cp %{SOURCE30} .
 
 %build
 sed -i 's:/sbin:%{_prefix}/bin:' src/mailman/config/mailman.cfg
-%if 0%{?suse_version} > 1500
-pushd src/mailman
-for i in $(grep -r '^from importlib_resources' | sed 's/\(.*\.py\):.*/\1/'); do
-  line=$(grep '^from importlib_resources' $i)
-  what_import=$(echo $line | sed 's:.* import ::')
-  sed -i "s@^\(from importlib_resources.*\)@try:\n  from importlib.resources import $what_import\nexcept ImportError:\n    \1\n@" $i;
-done
-popd
-sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
-%endif
+
 %pyproject_wheel
 ./generate_mo.sh
 
@@ -286,7 +273,7 @@ done
 %service_del_postun %{mailman_services}
 
 %files -n mailman3
-%doc README.rst README.SUSE.md src/mailman/docs/NEWS.rst
+%doc README.md README.SUSE.md src/mailman/docs/NEWS.rst
 %license COPYING
 %{_sbindir}/rc%{mailman_name}*
 %{_bindir}/runner

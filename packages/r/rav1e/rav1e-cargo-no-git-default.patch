@@ -1,10 +1,10 @@
-Index: rav1e/Cargo.toml
+Index: rav1e-0.7.1/Cargo.toml
 ===================================================================
---- rav1e.orig/Cargo.toml	2023-01-02 16:54:30.914458207 +0100
-+++ rav1e/Cargo.toml	2023-01-02 17:06:28.018646860 +0100
+--- rav1e-0.7.1.orig/Cargo.toml
++++ rav1e-0.7.1/Cargo.toml
 @@ -38,7 +38,7 @@ binaries = [
-     "av-metrics",
-     "nom",
+   "av-metrics",
+   "nom",
  ]
 -default = ["binaries", "asm", "threading", "signal_support", "git_version"]
 +default = ["binaries", "asm", "threading", "signal_support"]

@@ -1,0 +1,15 @@
+Source: mapitags
+Priority: optional
+Section: libs
+Maintainer: Gromox <null@gromox.com>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: mapitags
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: MAPI tag name database
+ A list of mnemonics for MAPI property tags. MAPI programs can use
+ these to translate between the raw 32-bit integer and a
+ human-readable name.

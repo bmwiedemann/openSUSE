@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  1 21:09:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.4
+  * Adapt Diff3Line::getLineData to handle being called on
+    non-existant lines
+  * Suppress clang warning for quirky QT "enum" use
+  * Pass over diff code completely if no data is loaded
+  * Do full clearing of all diff related lists when one is cleared
+
+-------------------------------------------------------------------
 Mon Jul  1 09:25:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.2

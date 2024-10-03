@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 02 05:30:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.19:
+  * Prepare for v0.16.19 release
+  * chore(deps): update dependency go to v1.23.2
+  * chore(deps): update docker/build-push-action action to v6.9.0
+  * go.mod: pick up github.com/cilium/cilium v1.17.0-pre.1
+  * Change default entrypoint for both usecases
+  * Prepare for #2755 - Dockerfile only
+  * chore(deps): update dependency cilium/cilium to v1.16.2
+  * chore(deps): update all github action dependencies
+  * github: Add a workflow to close stale issues and PRs
+  * chore(deps): update dependency ubuntu to v24
+  * github: Increase hubble-event-queue-size
+  * multicluster: correctly specify the dst context to clustermes
+    connect
+  * Update stable release to v0.16.18
+
+-------------------------------------------------------------------
 Sat Sep 28 11:06:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix version output to fix broken 'cilium upgrade'

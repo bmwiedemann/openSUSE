@@ -7,4 +7,12 @@
     <comment>new package glasskube-cli: CLI for the Glasskube next generation Package Manager for Kubernetes</comment>
     <requestid>1204377</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bda7773db332130203f620d03c7d43c6</srcmd5>
+    <version>0.23.0</version>
+    <time>1727897633</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205038</requestid>
+  </revision>
 </revisionlist>

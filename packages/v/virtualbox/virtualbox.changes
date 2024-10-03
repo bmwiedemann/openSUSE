@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  1 23:30:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit cxx17.patch to make the Extension Pack work with our
+  compiler flags and RT_NOEXCEPT choices. [boo#1231225]
+
+-------------------------------------------------------------------
+Sun Sep 29 12:00:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Set BuildRequire on glslang to 11.5; this is when it starts to
+  recognize GL_EXT_spirv_intrinsics.
+
+-------------------------------------------------------------------
 Fri Sep 20 22:33:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1

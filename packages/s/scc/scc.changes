@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Tue Oct  1 15:36:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Remove Conflicts: sc-controller to address binary name scc
+    conflict with sc-controller Steam game controller driver
+  * Use binary name sccount suggested by Woflgang Frisch
+  * Define shortname corresponding to binary name when different
+    from package name. Use shortname where applicable to normalize
+    common lines across Go app packages, similar to name macro.
+
+-------------------------------------------------------------------
+Mon Sep 30 00:39:01 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.4.0:
+  * Add in gitmodule support and prepare 3.4.0 release
+  * Enhance scripts/include.go (#516)
+  * Add example of creating public URL (#515)
+  * docs: Add WinGet install instructions (#517)
+  * Update README.md
+  * Fix typo (#514)
+  * Update ReadMe.md (#512)
+  * feat: enhance awk,c,cpp complexity checks (#506)
+  * Update cache for badges
+  * fix: fix OpenMetrics tests (#505)
+  * openmetrics formatter: emit gauge metrics (#504)
+  * Replace unmaintained dependencies (#502)
+  * feat: add slint support (#500)
+  * fix: fix concurrent map read and map write on ulocLanguageCount (#499)
+  * chore: fix github-action warnings and errors (#497)
+  * Remove dual licence back to just MIT
+  * Change version to 3.4.0 beta
+  * Tweak json to have uloc output (#495)
+  * Update after updates
+  * refactor: use Go 1.22 new features (#492)
+  * Fix the Trie matching bug (#493)
+  * feat: add support for Rscript shebangs (#491)
+  * chore: upgrade to Go 1.22 (#489)
+  * perf: preallocate the slice if we know its final length (#487)
+- Packaging improvements:
+  * Use BuildRequires: golang(API) >= 1.22 matching go.mod
+
+-------------------------------------------------------------------
+Mon Sep 30 00:38:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.5:
+  * Release 3.3.5
+  * Tweak after merge
+  * Added Clipper lang support (#485)
+  * Initial detection for Cangjie language (#483)
+  * Update README.md
+  * improve: remove redundant calls of sprintf (#482)
+  * code review (#478)
+  * Fix Dockerfile (#480)
+  * Use strings.EqualFold in case-insensitive comparisons (#479)
+  * typos suggestion (#477)
+  * Add --no-hborder (#476)
+  * Add `pnpm-lock.yaml` to default exclude file list (#474)
+  * Update README.md (#473)
+  * Upgrade dependancy for performance
+  * tweak benchmark some more
+  * update benchmark
+  * Compress the languages data (#468)
+  * Update to alpine:3.20 (#470)
+  * Fix Golang complexity checks (#467)
+  * Add partial support for wenyan (#465)
+  * Add a comment to capnp as test
+  * Add support for Cap n Proto (#463)
+  * Update FORTRAN to Fortran for modern Fortran (#460)
+
+-------------------------------------------------------------------
+Thu May 16 23:31:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.4:
+  * Feature: Issue177 (#459)
+  * Resolve issue 457
+  * Add Support for WGSL (#458)
+  * Add in percentage as per Issue 325 (#455)
+
+-------------------------------------------------------------------
+Thu May 16 23:31:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.3:
+  * Add circom language
+  * Add support for slang
+  * Add support for chapel
+  * Add Max language
+  * Add ZoKrates
+  * Add support for Typst
+  * Add OpenQASM
+  * Add support for Snakemake
+  * Add luau extention for lua
+  * Add addtional support for python files
+  * Add LALRPOP
+  * remove file that apparently breaks Go installs
+
+-------------------------------------------------------------------
+Thu May 02 11:26:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.2:
+  * fix version
+
+-------------------------------------------------------------------
+Thu May 02 11:26:42 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.1:
+  * Upgrade gocodwalker to resolve parallel walking bug
+
+-------------------------------------------------------------------
+Thu May 02 11:26:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.3.0:
+  * json2 output format
+  * Add in cocomo documentation to readme for sqlite
+  * Add cocomo output
+  * Resolve issue #333
+  * add in dryness calculation
+  * Add typespec support
+  * Adds in proper .gitignore support (#451)
+  * chore: remove repetitive words (#449)
+  * feat: add support for jsonnet (#448)
+  * Update languages.json: MDX Support (#445)
+  * Add support for RC (Windows Resource-definition Script) (#443)
+  * Add support for JSONC (JSON with comments) (#442)
+  * Add support for Arturo (#438)
+  * Add lesser-known ILPROJ extension to MSBUILD
+  * remove the Gopkg.toml and Gopkg lock files leftover from golang/dep
+  * Add https://pkl-lang.org/ support
+  * resolve https://github.com/boyter/scc/issues/429
+  * add in support for bicep files
+  * Add support for Odin programming language
+  * add graphql support
+  * Basic cuda support
+  * Add support for templ language
+  * Add support for Picat (.pi), a descendant of Prolog with similar syntax
+
+-------------------------------------------------------------------
+Thu Feb 22 16:44:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add Conflicts: sc-controller to address conflicting binary scc
+
+-------------------------------------------------------------------
+Sat Feb 17 15:52:49 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.2.0:
+  * update to latest goreleaser format
+  * Avoid allocations with `(*regexp.Regexp).MatchString`
+  * feat: support cairo
+  * do not add a '~' when filename is not truncated
+  * add in badge support for sr.ht
+  * Add PRQL
+  * Add Luau support
+  * Improve Lua complexity, quote, and multiline comment checks
+  * Add FreeBSD instructions
+  * Add Template::Toolkit support
+  * add in cocomo
+  * start to add in requisite methods
+  * start to replace the badge
+  * add support for ReScript
+  * Support Textile
+  * add support for gnumakefile
+  * Upgrade to actions/checkout@v3
+  * Use go.mod instead of go 1.17
+  * bait: change file extension to .bt
+  * Fix incorrect string escaping
+  * Add Hare lang
+  * remove deprecated functions
+  * upgrade dependancies and go version
+  * Bump golang.org/x/text from 0.3.0 to 0.3.8
+  * Patch csv-stream format
+  * resolve openmetrics tests
+  * Resolve https://github.com/boyter/scc/issues/368
+  * Make OpenMetrics output spec compliant
+  * update Julia complexity checks
+  * added Raku info to languages.json
+  * Add Factor Support
+  * Reduce MSBuild complexity checks
+  * Add obscure Visual Studio file extensions
+  * Add MSVC project types
+  * add in support for https://github.com/boyter/scc/issues/358
+  * add in ini file support for https://github.com/boyter/scc/issues/358
+  * Add support for Python raw docstrings
+  * Add FSL as language
+  * add ability to remove files matching names
+  * README: add MacPorts install info
+  * Update benchamrks
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * _service set_version remove param basename since autodetects OK
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) >= 1.20 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Tue Sep 20 06:11:54 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 3.1.0:
+  * support hoon
+  * remove redundant line
+  * Added Nial, K, and SNOBOL
+  * processing for matlab objective c
+  * add new language teal
+  * new language teal
+  * add applescript support
+  * support bait
+  * Add @file flag parsing syntax
+  * Add Blade Template language support
+  * Bump gopkg.in/yaml.v2 from 2.2.2 to 2.2.8
+  * complexity checks for cloudformation
+  * Add in experimental support for cloudformation
+  * Add CodeQL to recognised languages
+  * resolve https://github.com/boyter/scc/issues/311
+  * add error output for formatter
+  * add additional extentions for sql https://github.com/boyter/scc/issues/263
+  * resolve https://github.com/boyter/scc/issues/259
+  * resolve https://github.com/boyter/scc/issues/250
+  * resolve https://github.com/boyter/scc/issues/271
+  * resolve https://github.com/boyter/scc/issues/253
+  * add racket support https://github.com/boyter/scc/issues/269
+  * add nushell for https://github.com/boyter/scc/issues/304
+  * Adding OpenMetrics report support
+  * Add missing line to SLOCCount COCOMO calculation
+  * Add --sloccount-format flag to print a more SLOCCount like COCOMO calculation
+  * Add simple language support for number formats
+  * Fix processed bytes in wide table
+  * Unify output of fileSummarizeShort() and fileSummarizeLong().
+  * Add a command line argument for the effort adjustment factor.
+  * Add a overhead commandline flag to set the multiplier for corporate overhead. #281
+  * Add a command line argument for the currency symbol in the cocomo project cost estimation.
+  * Avoid reading non-regular files.
+  * Add Fennel support and fix Clojure complexity
+  * Add support for Solidity
+  * Added svelte syntax
+  * Add support for Arduino sketches
+  * use Compile instead of MustCompile to avoid panic
+  * Fix languages.json broken since 5ceb901
+  * Add go and defer as complexity checks
+  * Add initial support for Dyalog APL
+  * resolve https://github.com/boyter/scc/issues/260
+  * add in new python complexity and gofmt
+  * Fix Python complexity checks
+  * corrent the escape character judge
+  * Fix vim comments and extensions
+  * Refactor CountStats state machine
+  * Clean up new bloom filter implementation
+  * New bloom filter
+  * scc in Chocolatey
+  * Add TypeLanguage support
+
+-------------------------------------------------------------------
+Thu Apr 15 20:18:02 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fix summary
+
+-------------------------------------------------------------------
+Wed Apr 14 18:45:04 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial packaging of version 3.0.0:
+  * resolve https://github.com/boyter/scc/issues/230
+  * csv formats
+  * spdx fix
+  * Make cocomo configurable
+  * Add DM language support
+  * potential fix for https://github.com/boyter/scc/issues/229
+  * https://github.com/boyter/scc/issues/228
+  * Add in fix for https://github.com/boyter/scc/issues/223
+  * Update LICENSE

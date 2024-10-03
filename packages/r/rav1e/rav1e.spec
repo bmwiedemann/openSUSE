@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.6.6
+Version:        0.7.1
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 # rav1e is published under the terms of the BSD-2-Clause license,
@@ -29,7 +29,6 @@ URL:            https://github.com/xiph/rav1e
 #
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 Source98:       README.suse-maint
 Source99:       baselibs.conf
 #
@@ -37,7 +36,8 @@ Patch0:         rav1e-cargo-no-git-default.patch
 #
 BuildRequires:  cargo-c > 0.9.26
 BuildRequires:  cargo-packaging
-BuildRequires:  nasm
+BuildRequires:  nasm >= 2.14.02
+BuildRequires:  rust >= 1.70.0
 
 %description
 rav1e is an AV1 video encoder.
@@ -62,11 +62,11 @@ rav1e features:
 * Variable speed settings
 * Near real-time encoding at high speed levels
 
-%package -n librav1e0_6
+%package -n librav1e0_7
 Summary:        AV1 encoder library
 Group:          System/Libraries
 
-%description -n librav1e0_6
+%description -n librav1e0_7
 rav1e is an AV1 video encoder libary. It is designed to eventually cover all
 use cases, though in its current form it is most suitable for cases where
 libaom (the reference encoder) is too slow.
@@ -74,7 +74,7 @@ libaom (the reference encoder) is too slow.
 %package devel
 Summary:        Development files for rav1e
 Group:          Development/Libraries/C and C++
-Requires:       librav1e0_6 = %{version}
+Requires:       librav1e0_7 = %{version}
 
 %description devel
 The rav1e-devel package contains libraries and header files for
@@ -82,8 +82,6 @@ developing applications that use rav1e.
 
 %prep
 %autosetup -a1 -p1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 # Disable rav1e_js
 sed -i 's/"rav1e_js", //' Cargo.toml
@@ -107,12 +105,12 @@ cargo cinstall \
 rm -f %{buildroot}%{_libdir}/librav1e.a
 rm -f %{buildroot}%{_prefix}/.crates*
 
-%ldconfig_scriptlets -n librav1e0_6
+%ldconfig_scriptlets -n librav1e0_7
 
 %files
 %{_bindir}/rav1e
 
-%files -n librav1e0_6
+%files -n librav1e0_7
 %license LICENSE
 %{_libdir}/librav1e.so.*
 

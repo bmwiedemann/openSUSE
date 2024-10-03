@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 21:38:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.6:
+  * Fix a critical error with pass-through group layers (kde#493774)
+
+-------------------------------------------------------------------
 Sun Sep 29 15:21:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.5

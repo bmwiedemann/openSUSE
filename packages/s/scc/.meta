@@ -1,0 +1,6 @@
+<package name="scc" project="openSUSE:Factory">
+  <title>scc</title>
+  <description>CLI tool providing fast accurate code counter with complexity calculations and COCOMO estimates</description>
+  <devel project="devel:languages:go" package="scc"/>
+  <url>https://github.com/boyter/scc</url>
+</package>

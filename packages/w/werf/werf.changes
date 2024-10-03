@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 02 06:22:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.9:
+  * chore: release 2.10.9
+  * chore(release): 2 alpha
+  * chore(build): up builder image
+  * chore(release): 1.2 alpha, 2 alpha,beta,ea
+
+-------------------------------------------------------------------
+Wed Oct 02 06:05:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.8:
+  * chore: release 2.10.8
+  * chore(build): up golang from 1.21.1 to 1.22.7
+  * fix(build): allow usage of non-final images for specific
+    commands
+  * refactor(build): improve image handling logic
+  * docs(build): fix header level
+  * chore(release): 1.2 alpha,beta
+
+-------------------------------------------------------------------
 Fri Sep 27 20:29:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.7:

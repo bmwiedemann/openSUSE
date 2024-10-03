@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 30 12:32:40 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.80:
+  * pyraminx and oct mode extended now to any size > 1, also some hard
+    coding of size removed and fixed some drawing errors.
+
+-------------------------------------------------------------------
 Sun Sep 15 13:53:22 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.79:

@@ -105,4 +105,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183576</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2cedd7ccb667c4fa82ef0c8eb41a230d</srcmd5>
+    <version>1.24.0</version>
+    <time>1727897647</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly BuildRequires on pytz, the testsuite uses it.</comment>
+    <requestid>1205062</requestid>
+  </revision>
 </revisionlist>

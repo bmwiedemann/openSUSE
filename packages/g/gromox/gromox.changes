@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  1 14:13:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.33
+  * oxcmail: Implement MIME fragment joining for the construction
+    of the contents of PR_HTML.
+  * dscli: add --ac option to test Mail Autoconfig (what
+    Thunderbird uses in leu of AutoDiscover)
+  * http: credential caching for HTTP Basic (config directive
+    ``http_basic_auth_cred_caching``, defaulting to 60s)
+  * oxcical: revert commit which evaluates different MAPI
+    timezone properties to generate DTSTART/DTEND's TZID value
+
+-------------------------------------------------------------------
 Wed Sep  4 08:17:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32

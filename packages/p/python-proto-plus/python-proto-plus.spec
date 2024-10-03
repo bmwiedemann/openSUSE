@@ -46,6 +46,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 %endif
 # /SECTION
 BuildRequires:  fdupes

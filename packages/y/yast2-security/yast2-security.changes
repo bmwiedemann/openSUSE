@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 30 14:36:10 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Drop obsolete USERADD_CMD, USERDEL_PRECMD, USERDEL_POSTCMD in
+  /etc/login.defs.d/70-yast.defs (bsc#1231006)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Aug  6 11:34:20 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not load the security settings from the security policy until

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 08:12:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Readd disabling test_xcb tests. Please, don’t reenable until
+  gh#Kozea/cairocffi#203 is fixed.
+
+-------------------------------------------------------------------
 Wed Jun 19 07:38:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.0:

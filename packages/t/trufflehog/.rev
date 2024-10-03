@@ -1398,4 +1398,23 @@
   * fix(deps): update module github.com/getsentry/sentry-go to v0.29.0 (#3310) (forwarded request 1203786 from ph03nix)</comment>
     <requestid>1203921</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>48ebd687a1a0fc02c36b3398ea79fe63</srcmd5>
+    <version>3.82.6</version>
+    <time>1727897601</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.82.6:
+  * [feat] - Add SizedLRU Cache (#3344)
+  * [bug] - Recover From Panic During Archive Handling (#3348)
+  * [fix] - Use Parent Context in Azure Detector (#3346)
+  * [chore] - update Go version to 1.23.0 (#3340)
+  * disable secret scans for community PRs (#3343)
+  * Enhanced the eraser detector to handle new status code from verification API (#3342)
+  * [feat] - Add Generic Hasher Interface with Blake2b Implementation (#3337)
+  * [fix] Move detector initialization to DefaultDetectors function (#3341)
+  * Improve process cleanup (#3339)
+  * fix(decoder): prevent race (#3031)
+  * Add named params to interface methods (#3335) (forwarded request 1204896 from ph03nix)</comment>
+    <requestid>1204979</requestid>
+  </revision>
 </revisionlist>

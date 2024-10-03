@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  1 19:08:40 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.18.1
+  - TUI: Fixed potentially garbled output.
+  - TUI: Only link Curses statically when using CMake option ENABLE_STATIC.
+  - Updated UI translations.
+- created clagrange subpackage
+
+-------------------------------------------------------------------
 Sat Sep 21 08:59:06 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.18.0

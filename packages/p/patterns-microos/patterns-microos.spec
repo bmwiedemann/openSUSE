@@ -68,9 +68,9 @@ Requires:       ca-certificates-mozilla
 Requires:       coreutils
 Requires:       coreutils-systemd
 Requires:       glibc
-Requires:       (grub2-branding-openSUSE if grub2)
+Requires:       (grub2-branding-openSUSE if (grub2 or grub2-common))
 ### Packages formerly provided by bootloader
-Requires:       (grub2-snapper-plugin if grub2)
+Requires:       (grub2-snapper-plugin if (grub2 or grub2-common))
 ###
 Suggests:       busybox-hostname
 Requires:       NetworkManager
@@ -104,7 +104,7 @@ Requires:       glibc-locale-base
 Suggests:       busybox-gzip
 Requires:       iputils
 Requires:       issue-generator
-Requires:       (health-checker if grub2)
+Requires:       (health-checker if (grub2 or grub2-common))
 Requires:       (health-checker-plugins-MicroOS if health-checker)
 %ifnarch %{arm}
 Requires:       kdump

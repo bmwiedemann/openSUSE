@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,8 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{_unitdir}/%{name}-reports-monthly.timer
 
 %defattr(0644,root,root,0755)
+%dir /srv/www
+%dir /srv/www/htdocs
 /srv/www/htdocs/sarg-php
 %{_mandir}/man1/%{name}*
 %{_mandir}/man1/%{name}-report*

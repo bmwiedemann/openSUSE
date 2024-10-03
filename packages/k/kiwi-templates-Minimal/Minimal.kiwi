@@ -403,20 +403,23 @@
     <packages type="image" profiles="kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
         <!-- kernel-default-base lacks dm-crypt -->
         <package name="kernel-default-base"/>
-
         <package name="sdbootutil-snapper"/>
         <package name="efibootmgr"/>
         <package name="uefi_mbr" arch="x86_64"/>
-
         <package name="systemd-experimental"/> <!-- XXX: pulls in python but needed for tpm files -->
-
         <package name="disk-encryption-tool"/>
         <package name="dracut-pcr-signature"/>
     </packages>
 
+    <packages type="image" profiles="kvm-and-xen-sdboot">
+        <package name="systemd-boot"/>
+    </packages>
+
     <packages type="image" profiles="kvm-and-xen-grub-bls">
-        <package name="grub2-x86_64-efi" arch="x86_64"/>
-        <package name="grub2-arm64-efi" arch="aarch64"/>
+        <package name="patterns-base-bootloader"/>
+        <package name="uefi_mbr" arch="x86_64"/>
+        <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
+        <package name="grub2-arm64-efi-bls" arch="aarch64"/>
     </packages>
 
     <packages type="image" profiles="VMware">

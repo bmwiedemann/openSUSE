@@ -1,0 +1,213 @@
+diff --git a/build.xml b/build.xml
+index d9e7b0d..3dd35fd 100644
+--- a/build.xml
++++ b/build.xml
+@@ -101,38 +101,12 @@
+          xmlns:artifact="antlib:org.apache.maven.artifact.ant"
+ >
+ 
+-  <!-- Ant tasks definition for JaCoCo tasks -->
+-  <taskdef resource="org/jacoco/ant/antlib.xml" uri="antlib:org.jacoco.ant">
+-    <classpath path="${jacocoant_jar}" />
+-  </taskdef>
+-  <!-- Note: to enable/disable the code coverage, we found shorter to use the agent, versus the coverage tasks
+-       Note: looks we cannot use properties here in the values -->
+-  <jacoco:agent property="jacocoagentvmparam"
+-                enabled="true"
+-                destfile="target/jacoco/jacoco.exec"
+-                classdumpdir="target/jacoco/dump"
+-                append="true"
+-  />
+-  <!-- to disable code coverage comment the previous definition and uncomment the next two -->
+-  <!--
+-  <jacoco:agent property="jacocoagentvmparam" enabled="false" />
+-  <property name="no_code_coverage" value="true"/>
+-  -->
+-
+-  <!-- Ant type definition for Maven tasks -->
+-  <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant">
+-    <classpath path="${mavenanttasks_jar}" />
+-  </typedef>
+-
+   <!-- Import JTB properties -->
+   <import file="jtb_props.xml" />
+ 
+   <!-- Import JavaCC properties -->
+   <import file="javacc_props.xml" />
+ 
+-  <!-- Import build file for html  -->
+-  <import file="build_jtb_html.xml" />
+-
+   <!-- Echo JTB and JavaCC / JJTree properties -->
+   <target name="echo_all_props">
+     <antcall target="echo_jtb_props" />
+@@ -169,7 +143,6 @@
+     <antcall target="build_examplesparsers" />
+     <antcall target="run_testparsers" />
+     <antcall target="run_examplesparsers" />
+-    <antcall target="generate_html" />
+   </target>
+ 
+   <!-- Check the versions set in 3 places - see jtb_props.xml -->
+@@ -1831,7 +1804,7 @@
+     <move file="${jtb_prev_jar_src}" tofile="${jtb_new_jar_src}" overwrite="false" />
+   </target>
+ 
+-  <target name="clean" depends="clean_classes, clean_all_gen_files, clean_html" />
++  <target name="clean" depends="clean_classes, clean_all_gen_files" />
+ 
+   <!-- Clean Java classes -->
+   <target name="clean_classes">
+@@ -2305,152 +2278,4 @@ public class TokenMgrError</replacevalue>
+     <echo>toto:${toto}</echo>
+   </target>
+ 
+-  <!-- ************************************** maven related targets ************************************** -->
+-  <!-- never used by MMa -->
+-
+-  <!-- FAn: COMMENT ??? -->
+-  <artifact:pom id="jtb.pom" file="pom.xml" />
+-
+-  <!-- FAn: COMMENT ??? -->
+-  <target name="dist" depends="build_all, javadoc" description="build a distribution">
+-    <property name="install-name" value="${target-folder}/jtb-${jtb_vp_version}" />
+-
+-    <!-- FAn: COMMENT ??? -->
+-    <delete file="${install-name}-distribution.tar.gz" />
+-    <tar destfile="${install-name}-distribution.tar.gz" compression="gzip">
+-      <tarfileset username="root"
+-                  uid="1"
+-                  group="root"
+-                  prefix="jtb-${jtb_vp_version}/doc"
+-                  filemode="444"
+-                  dir="doc"
+-      />
+-      <tarfileset username="root"
+-                  uid="1"
+-                  group="root"
+-                  prefix="jtb-${jtb_vp_version}"
+-                  filemode="444"
+-                  file="LICENSE"
+-      />
+-      <tarfileset username="root"
+-                  uid="1"
+-                  group="root"
+-                  prefix="jtb-${jtb_vp_version}/${target-folder}"
+-                  filemode="444"
+-                  file="${jtb}"
+-      />
+-    </tar>
+-
+-    <!-- FAn: COMMENT ??? -->
+-    <delete file="${install-name}-distribution.zip" />
+-    <zip destfile="${install-name}-distribution.zip">
+-      <zipfileset prefix="jtb-${jtb_vp_version}/${target-folder}" filemode="444" file="${jtb}" />
+-      <zipfileset prefix="jtb-${jtb_vp_version}/doc" filemode="444" dir="doc" />
+-      <!-- zipfileset prefix="jtb-${jtb_vp_version}/examples" filemode="444" dir="examples/" / -->
+-      <zipfileset prefix="jtb-${jtb_vp_version}" filemode="444" file="LICENSE" />
+-    </zip>
+-
+-    <!-- FAn: COMMENT ??? -->
+-    <delete dir="." includes="**/*.class" />
+-    <delete file="${install-name}-sources.tar.gz" />
+-    <tar destfile="${install-name}-sources.tar.gz" compression="gzip">
+-      <tarfileset username="root"
+-                  uid="1"
+-                  group="root"
+-                  prefix="jtb-${jtb_vp_version}"
+-                  filemode="444"
+-                  file="./**"
+-                  excludes=".git, target/**, temp/**, .svn, CVS, **/*.zip, **/*.tar.gz"
+-      />
+-    </tar>
+-
+-    <!-- FAn: COMMENT ??? -->
+-    <delete file="${install-name}-sources.jar" />
+-    <zip destfile="${install-name}-sources.jar">
+-      <zipfileset prefix="jtb-${jtb_vp_version}"
+-                  filemode="444"
+-                  file="./**"
+-                  excludes=".svn,CVS,**/*.zip,**/*.tar.gz, deployment_pom/**, target/**, dist/**, temp/**"
+-      />
+-    </zip>
+-  </target>
+-
+-
+-  <!-- FAn: COMMENT ??? -->
+-  <target name="javadoc">
+-    <property name="install-name" value="${target-folder}/jtb-${jtb_vp_version}" />
+-
+-    <delete dir="${target-folder}/javadoc" />
+-    <mkdir dir="${target-folder}/javadoc" />
+-    <javadoc destdir="${target-folder}/javadoc">
+-      <fileset dir="${jtb_src_dir}" />
+-    </javadoc>
+-
+-    <zip destfile="${install-name}-javadoc.jar" basedir="${target-folder}/javadoc">
+-    </zip>
+-  </target>
+-
+-  <!-- FAn: COMMENT ??? -->
+-  <target name="install" depends="">
+-    <artifact:install file="${jtb_prev_jar}">
+-      <pom refid="jtb.pom" />
+-    </artifact:install>
+-  </target>
+-
+-  <!-- FAn: COMMENT ??? -->
+-  <target name="deploy" depends="dist" description="deploy snapshot version to Maven snapshot repository">
+-    <artifact:mvn>
+-      <arg value="org.apache.maven.plugins:maven-deploy-plugin:2.8:deploy-file" />
+-      <arg value="-Durl=${ossrh-snapshots-repository-url}" />
+-      <arg value="-DrepositoryId=${ossrh-server-id}" />
+-      <arg value="-DpomFile=pom.xml" />
+-      <arg value="-Dfile=${jtb-path}" />
+-    </artifact:mvn>
+-  </target>
+-
+-  <!-- defined maven snapshots and staging repository id and url -->
+-  <property name="ossrh-snapshots-repository-url"
+-            value="https://oss.sonatype.org/content/repositories/snapshots/"
+-  />
+-  <property name="ossrh-staging-repository-url"
+-            value="https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+-  />
+-  <!-- there server id in the Maven settings.xml -->
+-  <property name="ossrh-server-id" value="ossrh" />
+-
+-  <!-- before this, update project version (both jtb_props.xml and pom.xml) from SNAPSHOT to RELEASE -->
+-  <target name="stage" depends="" description="deploy release version to Maven staging repository">
+-    <!-- sign and deploy the main artifact -->
+-    <artifact:mvn>
+-      <arg value="org.apache.maven.plugins:maven-gpg-plugin:1.5:sign-and-deploy-file" />
+-      <arg value="-Durl=${ossrh-staging-repository-url}" />
+-      <arg value="-DrepositoryId=${ossrh-server-id}" />
+-      <arg value="-DpomFile=pom.xml" />
+-      <arg value="-Dfile=${jtb-path}" />
+-      <arg value="-Pgpg" />
+-    </artifact:mvn>
+-
+-    <!-- sign and deploy the sources artifact -->
+-    <artifact:mvn>
+-      <arg value="org.apache.maven.plugins:maven-gpg-plugin:1.5:sign-and-deploy-file" />
+-      <arg value="-Durl=${ossrh-staging-repository-url}" />
+-      <arg value="-DrepositoryId=${ossrh-server-id}" />
+-      <arg value="-DpomFile=pom.xml" />
+-      <arg value="-Dfile=${jtb-sources-path}" />
+-      <arg value="-Dclassifier=sources" />
+-      <arg value="-Pgpg" />
+-    </artifact:mvn>
+-
+-    <!-- sign and deploy the javadoc artifact -->
+-    <artifact:mvn>
+-      <arg value="org.apache.maven.plugins:maven-gpg-plugin:1.5:sign-and-deploy-file" />
+-      <arg value="-Durl=${ossrh-staging-repository-url}" />
+-      <arg value="-DrepositoryId=${ossrh-server-id}" />
+-      <arg value="-DpomFile=pom.xml" />
+-      <arg value="-Dfile=${jtb-javadoc-path}" />
+-      <arg value="-Dclassifier=javadoc" />
+-      <arg value="-Pgpg" />
+-    </artifact:mvn>
+-  </target>
+-
+ </project>

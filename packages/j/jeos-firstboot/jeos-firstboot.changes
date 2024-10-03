@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 01 14:07:29 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5.3:
+  * otp: Show the QR code in a separate window if necessary (bsc#1231177)
+
+-------------------------------------------------------------------
 Tue Sep 24 11:35:30 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add dependency on cracklib for cracklib-check

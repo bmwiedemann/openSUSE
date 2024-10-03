@@ -1,0 +1,60 @@
+diff --git a/build.xml b/build.xml
+index d9e7b0d..6f78764 100644
+--- a/build.xml
++++ b/build.xml
+@@ -473,6 +473,7 @@
+            excludes="**/templates/*"
+            includeantruntime="false"
+            debug="true"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            classpath="${jtb_tgt_cla_dir}"
+@@ -493,6 +494,7 @@
+            destdir="${jtb_tgt_cla_dir}"
+            includeantruntime="false"
+            debug="true"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            classpath="${jtb_tgt_cla_dir};${freemarker_jar}"
+@@ -515,6 +517,7 @@
+            destdir="${jtb_tgt_cla_dir}"
+            includeantruntime="false"
+            debug="true"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            classpath="${jtb_tgt_cla_dir};${freemarker_jar}"
+@@ -536,6 +539,7 @@
+            destdir="${jtb_tgt_cla_dir}"
+            includeantruntime="false"
+            debug="true"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            classpath="${jtb_tgt_cla_dir}"
+@@ -557,6 +561,7 @@
+            includes="**/signature/*"
+            includeantruntime="false"
+            debug="true"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            classpath="${jtb_tgt_cla_dir}"
+@@ -589,6 +594,7 @@
+                      **/JavaPrinter*,
+                      **/AcceptInliner*, **/CommentsPrinter*, JavaCCPrinter*, **/JJFileAnnotator*"
+            includeantruntime="false"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            listfiles="true"
+@@ -607,6 +613,7 @@
+            destdir="${jtb_tgt_cla_dir}"
+            includes="**/visitor/*"
+            includeantruntime="false"
++           encoding="utf-8"
+            source="${jdk_version}"
+            target="${jdk_version}"
+            listfiles="true"

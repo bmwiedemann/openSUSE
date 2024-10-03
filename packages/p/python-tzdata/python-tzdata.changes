@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  2 08:25:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2024.2
+  * Improve historical data for Mexico, Mongolia, and Portugal.
+  * System V names are now obsolescent.
+  * The main data form now uses %z.
+  * The code now conforms to RFC 8536 for early timestamps.
+  * Support POSIX.1-2024, which removes asctime_r and ctime_r.
+  * Assume POSIX.2-1992 or later for shell scripts.
+  * SUPPORT_C89 now defaults to 1.
+
+-------------------------------------------------------------------
 Wed Mar 27 10:50:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 
 - Switch to Python 3.11 build.

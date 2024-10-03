@@ -163,4 +163,15 @@
   * Declare compatibility with Python 3.13.</comment>
     <requestid>1179139</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f949bdda18dd1aa80f7bddfe93b0699</srcmd5>
+    <version>7.3.0</version>
+    <time>1727897587</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.3.0:
+  * Fix an issue when only the first Step would inject a fixture,
+    while later steps would not be able to.
+  * Test against the latest versions of pytest (8.2, 8.3).</comment>
+    <requestid>1204943</requestid>
+  </revision>
 </revisionlist>

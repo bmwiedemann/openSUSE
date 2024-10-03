@@ -809,4 +809,12 @@
     <comment>Update to 5.2.5</comment>
     <requestid>1204538</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>d30cc4d6bc6e5d706888c72897f43205</srcmd5>
+    <version>5.2.6</version>
+    <time>1727897614</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.2.6</comment>
+    <requestid>1205003</requestid>
+  </revision>
 </revisionlist>

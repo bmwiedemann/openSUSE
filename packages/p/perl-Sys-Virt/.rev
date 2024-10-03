@@ -1073,4 +1073,16 @@ in the libvirt 10.3.0 dev cycle, so no 10.3.0 release of the perl bindings.
   - Add all new APIs and constants in libvirt 10.5.0</comment>
     <requestid>1188056</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>2c4578264fa4ac7146c28d0bd01a74c1</srcmd5>
+    <version>10.6.0</version>
+    <time>1727897612</time>
+    <user>anag+factory</user>
+    <comment>Latest release of libvirt perl bindings.
+
+- Update to 10.6.0
+  - Add all new APIs and constants in libvirt 10.6.0
+  - jsc#PED-8909</comment>
+    <requestid>1204999</requestid>
+  </revision>
 </revisionlist>

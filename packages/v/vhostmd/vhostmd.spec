@@ -37,6 +37,9 @@ Patch1:         manpage.patch
 Patch2:         value-newline.patch
 Patch3:         libmetrics-link.patch
 Patch4:         harden_vhostmd.service.patch
+Patch5:         5a04b594-Add-channel_path-setting.patch
+Patch6:         176fcda4-Support-new-channel-path-naming.patch
+Patch7:         9d282891-Fix-parsing-of-vmstat-output.patch
 BuildRequires:  libtool
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2

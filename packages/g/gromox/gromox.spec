@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.32
+Version:        2.33
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -92,6 +92,7 @@ Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
 Provides:       php-mapi-gromox = %version-%release
 Conflicts:      grommunio-admin-api < 1.10.7
+Recommends:     mapitags
 %{?systemd_ordering}
 %if !0%{?_pamdir:1}
 %define _pamdir /%_lib/security

@@ -11,4 +11,12 @@ The rcshist utility displays the complete revision history of an RCS file.
 It is quite a common tool for RCS users.</comment>
     <requestid>1146127</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cc7a13f5dc772335782d25114f1deb93</srcmd5>
+    <version>t20240419</version>
+    <time>1727897585</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1204941</requestid>
+  </revision>
 </revisionlist>

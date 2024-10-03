@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.0.2
-%define pyeggversion 4.0.2
+%define tarversion v4.0.3
+%define pyeggversion 4.0.3
 
 Name:           apparmor
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -81,6 +81,9 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
+
+# Mesa: new cachedir in Mesa 24.2.2 (merged upstream 2024-09-30 https://gitlab.com/apparmor/apparmor/-/merge_requests/1333)
+Patch10:        mesa-cachedir.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -349,6 +352,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
+%patch -p1 -P 10
 
 %build
 export SUSE_ASNEEDED=0

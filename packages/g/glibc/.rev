@@ -3111,4 +3111,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   s390-clone-error-clobber-r7.patch, sigisemptyset.patch, (forwarded request 1190420 from Andreas_Schwab)</comment>
     <requestid>1190421</requestid>
   </revision>
+  <revision rev="295" vrev="2">
+    <srcmd5>75d7012f4f03d72ebe81a6970d9c3812</srcmd5>
+    <version>2.40</version>
+    <time>1727897508</time>
+    <user>anag+factory</user>
+    <comment>- langpacks are no more used. Drop glibc-2.3.90-langpackdir.diff. (forwarded request 1204838 from sbrabec)</comment>
+    <requestid>1204897</requestid>
+  </revision>
 </revisionlist>

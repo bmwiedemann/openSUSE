@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:37:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update 1.14:
+  * Avoid subprocess window creation with agraph.AGraph._run_prog
+    (#514).
+  * Support Python 3.13 (#542).
+  * AGraph.draw(): close filehandle for pathlib.Path (#535).
+  * Fix formatting (#538).
+  * Test on Python 3.13 (#539).
+  * Use ruff and update pre-commit config (#540).
+
+-------------------------------------------------------------------
 Thu May 23 02:32:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13:
@@ -6,7 +18,7 @@ Thu May 23 02:32:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix segfault from repr attempting to access attrs on uninitialized
     instance (#520).
   * Add Python 3.12 support (#486).
-  * Copy edges keys when copying a graph 
+  * Copy edges keys when copying a graph
   * Drop Python 3.8 support per SPEC 0 (#465).
   * Drop Python 3.9 support (#487).
   * Update documentation building requirements (#488).
@@ -40,7 +52,7 @@ Thu Feb 23 10:53:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Fri Feb 17 22:02:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- fix dependencies for distros older than tumbleweed 
+- fix dependencies for distros older than tumbleweed
 
 -------------------------------------------------------------------
 Sun Aug 14 15:16:00 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -109,7 +121,7 @@ Wed Jun 15 17:11:49 UTC 2016 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Mar 28 14:42:59 UTC 2014 - speilicke@suse.com
 
-- Set license to BSD-3-Clause according to legal 
+- Set license to BSD-3-Clause according to legal
 
 -------------------------------------------------------------------
 Fri Dec  6 13:44:13 UTC 2013 - toddrme2178@gmail.com

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  1 08:56:39 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.9.5:
+  * DebugConsole: Show "Log" when opening the dialogue.
+  * DebugConsole: Improve search for XML logs.
+  * Datafroms: Display text-multi fields without scrolled window.
+  * Inform user when referenced message cannot be found.
+  * Move chat state indicator above message input.
+  * Preview: Update preview object while updating progress.
+  * Dataforms: Don’t try to calculate label size.
+  * Groupchat: Wrap long nicknames in subject row.
+  * StartChat: Fix global search results missing the name in some
+    cases.
+  * Build: Build translations for all distributions again.
+
+-------------------------------------------------------------------
 Thu Sep 19 22:51:18 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.9.4:

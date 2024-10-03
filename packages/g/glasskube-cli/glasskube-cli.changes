@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Oct 02 05:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * chore(main): release 0.23.0 (#1285)
+  * fix(package-operator): add auth support for relative manifest
+    urls in package.yaml (#1295)
+  * fix(deps): update module
+    github.com/fluxcd/source-controller/api to v1.4.1 (#1281)
+  * feat: make auto update changeable on UI and show hint (#1291)
+  * fix(deps): update module github.com/fluxcd/helm-controller/api
+    to v1.1.0 (#1287)
+  * chore(deps): update dependency typescript-eslint to v8.8.0
+    (#1293)
+  * docs(website): fix typo in website (#1290)
+  * feat: show conflicts at package update (#1282)
+  * chore(docs): fix architecture diagram in readme (#1289)
+  * chore(deps): update dependency eslint-plugin-react to v7.37.0
+    (#1288)
+  * fix: avoid dependency errors during uninstallation (#1284)
+  * feat: show package components (#1283)
+
+-------------------------------------------------------------------
+Wed Oct 02 05:34:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * chore(main): release 0.22.0 (#1230)
+  * feat(ui): improve package detail page (#1253)
+  * chore(website): fix broken links (#1280)
+  * docs: use a mermaid diagram for the dependency management
+    algorithm (#1270)
+  * docs(website): fix link to package configuration design
+    documentation in guides (#1279)
+  * fix: consider metadata when calculating max version (#1276)
+  * fix(ui): add text-break inside toast-body (#1278)
+  * fix(deps): update dependency
+    @getcanary/docusaurus-theme-search-pagefind to ^0.0.15 (#1271)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to
+    v3.16.0 (#1272)
+  * chore(deps): update dependency typescript-eslint to v8.7.0
+    (#1275)
+  * chore(deps): update dependency @eslint/js to v9.11.1 (#1274)
+  * docs(website): fix cert-manager typo (#1273)
+  * chore: add docusaurus config to release please for automatic
+    banner updates (#1268)
+  * chore(deps): update actions/setup-node digest to 0a44ba7
+    (#1255)
+  * fix: dependency manager uses given repository if known (#1259)
+  * chore(deps): update dependency esbuild to v0.24.0 (#1269)
+  * docs(website): improve wording (#1267)
+  * docs(website): rename cta (#1266)
+  * docs(website): improve website wording (#1265)
+  * chore(deps): update dependency @eslint/js to v9.11.0 (#1263)
+  * fix(deps): update dependency @glasskube/theme to v0.1.2 (#1254)
+  * chore(deps): update actions/setup-node action to v4.0.4 (#1256)
+  * fix(ui): reopen strategy for portforwardings (#1248)
+  * fix(ui): use hardcoded giscus backlink (#1252)
+  * fix(ui): error installing clusterpackage (#1247)
+  * fix: increase resilience in case of broken repositories (#1237)
+  * fix(deps): update module github.com/posthog/posthog-go to
+    v1.2.24 (#1244)
+  * feat(ui): create namespace at installation (#1246)
+  * chore(deps): update dependency typescript-eslint to v8.6.0
+    (#1245)
+  * chore(deps): update dependency eslint to v8.57.1 (#1243)
+  * feat(cli): create namespace if necessary when installing a
+    package (#1131)
+  * fix(deps): update module github.com/posthog/posthog-go to
+    v1.2.22 (#1241)
+  * fix(deps): update dependency @getcanary/web to ^0.0.106 (#1239)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to
+    v3.15.0 (#1240)
+  * fix(deps): update dependency
+    @getcanary/docusaurus-theme-search-pagefind to ^0.0.14 (#1238)
+  * docs: fix spelling errors on website and README (#1236)
+  * fix(deps): update fontsource monorepo to v5.1.0 (#1231)
+  * feat(cli): unify value config flags and add support for
+    `--value` with `--use-default` (#1232)
+  * docs(website): added link to package scope section of the
+    launch blog (#1234)
+  * chore(deps): update dependency eslint-plugin-react to v7.36.1
+    (#1233)
+  * docs(website): added package scopes page to docs (#1226)
+  * chore(deps): update dependency eslint-plugin-react to v7.36.0
+    (#1229)
+  * fix(deps): update kubernetes packages to v0.31.1 (#1228)
+  * fix(deps): update dependency @getcanary/web to ^0.0.105 (#1227)
+
+-------------------------------------------------------------------
 Mon Sep 23 11:53:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package glasskube-cli: CLI for the Glasskube next generation

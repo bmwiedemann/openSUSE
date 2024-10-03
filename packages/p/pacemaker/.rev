@@ -2357,4 +2357,15 @@
 - tools: Don't skip formatting if running crm_simulate interactively. (forwarded request 1187166 from yan_gao)</comment>
     <requestid>1187168</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>eb00dbf1a5c6f809f26c6d571c0d932d</srcmd5>
+    <version>2.1.8+20240808.3980678f03</version>
+    <time>1727897567</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.8+20240808.3980678f03 (Pacemaker-2.1.8):
+- scheduler: correct format arguments
+- libpacemaker: Don't apply colocation twice for promotion priority
+- libpacemaker: Apply promotion priority to cloned group instance (forwarded request 1204954 from yan_gao)</comment>
+    <requestid>1204955</requestid>
+  </revision>
 </revisionlist>

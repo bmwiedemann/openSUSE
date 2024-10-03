@@ -231,4 +231,17 @@ the go metapackage to version 1.22.</comment>
   - go#68972 cmd/cgo: aix c-archive corrupting stack (forwarded request 1199061 from jfkw)</comment>
     <requestid>1199062</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7f81e64324daff3c3e2d893589e8dcc</srcmd5>
+    <version>1.22.8</version>
+    <time>1727897512</time>
+    <user>anag+factory</user>
+    <comment>- go1.22.8 (released 2024-10-01) includes fixes to cgo, and the
+  maps and syscall packages.
+  Refs boo#1218424 go1.22 release tracking
+  * go#69155 maps: segmentation violation in maps.Clone
+  * go#69218 cmd/cgo: alignment issue with int128 inside of a struct
+  * go#69366 syscall: TestAmbientCapsUserns fails on Ubuntu 24.04/Linux 6.8.0 (forwarded request 1205004 from jfkw)</comment>
+    <requestid>1205006</requestid>
+  </revision>
 </revisionlist>

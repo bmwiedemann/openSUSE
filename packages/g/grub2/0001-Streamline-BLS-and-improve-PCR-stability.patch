@@ -1,0 +1,188 @@
+From 8201e8e6fbb7ee992c430679705852ede91efcd6 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 20 Aug 2024 12:14:35 +0800
+Subject: [PATCH] Streamline BLS and improve PCR stability
+
+Introduce an environment variable enable_blscfg to allow looking for and
+reading BLS (Boot Loader Specification) configurations right at startup,
+rather than relying on the traditional grub.cfg. The benefit of this
+approach is that it eliminates the layer of using an external grub.cfg
+to piggyback the blscfg command. This change reduces the complexity of
+managing command sequences, which would otherwise complicate the PCR
+(Platform Configuration Register) policy. Managing a sequence of
+commands can be difficult to maintain and ensure they remain in order
+indefinitely.
+
+Along the way, we can remove the external grub.cfg and have everything
+embedded in memdisk and early embedded configurations. This approach
+significantly improves the overall stability and makes it easier to
+maintain a consistent and predictable PCR outcome.
+
+The grubenv in the EFI boot directory can be used to override default
+settings in the grubbls image, allowing for continued customization.
+
+By introducing grubbls.efi for managing BLS configuration integration,
+all necessary modules are built-in, and sensible default settings are
+applied. This allows us to remove the following hardcoded command
+sequences in blscfg:
+
+  load_video
+  set gfxpalyload=keep
+  insmod gzio
+
+Since these are now part of the EFI image, this change effectively
+simplifies the TPM event log, making it easier to handle with tools like
+pcr-oracle or systemd-pcrlock.
+
+Signed-Off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blscfg.c |  4 ++
+ grub-core/normal/main.c     | 82 +++++++++++++++++++++++++++++++++++++
+ include/grub/parser.h       |  4 ++
+ 3 files changed, 90 insertions(+)
+
+diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
+index cbe2a289e..e08f35817 100644
+--- a/grub-core/commands/blscfg.c
++++ b/grub-core/commands/blscfg.c
+@@ -953,10 +953,14 @@ static void create_entry (struct bls_entry *entry)
+ 
+   const char *sdval = grub_env_get("save_default");
+   bool savedefault = ((NULL != sdval) && (grub_strcmp(sdval, "true") == 0));
++#ifdef GRUB_MACHINE_EFI
++  src = grub_xasprintf ("%slinux %s%s%s%s\n"
++#else
+   src = grub_xasprintf ("%sload_video\n"
+ 			"set gfxpayload=keep\n"
+ 			"insmod gzio\n"
+ 			"linux %s%s%s%s\n"
++#endif
+ 			"%s%s",
+ 			savedefault ? "savedefault\n" : "",
+ #ifdef GRUB_MACHINE_EMU
+diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
+index 03631f07a..8e58ced67 100644
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -113,6 +113,65 @@ read_config_file_getline (char **line, int cont __attribute__ ((unused)),
+   return GRUB_ERR_NONE;
+ }
+ 
++#ifdef GRUB_MACHINE_EFI
++
++static void
++read_envblk_from_cmdpath (void)
++{
++  const char *cmdpath;
++  char *envfile = NULL;
++  int found = 0;
++
++  cmdpath = grub_env_get ("cmdpath");
++
++  if (cmdpath)
++    envfile = grub_xasprintf ("%s/grubenv", cmdpath);
++
++  if (envfile)
++    {
++      grub_file_t file;
++
++      file = grub_file_open (envfile, GRUB_FILE_TYPE_FS_SEARCH
++			     | GRUB_FILE_TYPE_NO_DECOMPRESS | GRUB_FILE_TYPE_SKIP_SIGNATURE);
++      if (file)
++	{
++	  found = 1;
++	  grub_file_close (file);
++	}
++    }
++
++  if (found)
++    {
++      char *cfg;
++
++      cfg = grub_xasprintf ("load_env -f %s\n", envfile);
++      grub_parser_execute ((char *)cfg);
++      grub_free (cfg);
++    }
++
++  grub_free (envfile);
++}
++
++static grub_menu_t
++read_blscfg (void)
++{
++  grub_menu_t newmenu;
++  newmenu = grub_env_get_menu ();
++  if (! newmenu)
++    {
++      newmenu = grub_zalloc (sizeof (*newmenu));
++      if (! newmenu)
++	return 0;
++
++      grub_env_set_menu (newmenu);
++    }
++
++  grub_parser_execute ((char *)"blscfg\n");
++  return newmenu;
++}
++
++#endif
++
+ static grub_menu_t
+ read_config_file (const char *config)
+ {
+@@ -282,6 +341,26 @@ grub_normal_execute (const char *config, int nested, int batch)
+ 
+   grub_boot_time ("Executing config file");
+ 
++#ifdef GRUB_MACHINE_EFI
++  const char *val;
++
++  val = grub_env_get ("enable_blscfg");
++  if (val && (val[0] == '1' || val[0] == 'y'))
++    read_envblk_from_cmdpath ();
++
++  /* Above would be used to override enable_blscfg, so verify again */
++  val = grub_env_get ("enable_blscfg");
++  if (val && (val[0] == '1' || val[0] == 'y'))
++    {
++      menu = read_blscfg ();
++      /* Ignore any error.  */
++      grub_errno = GRUB_ERR_NONE;
++      /* unset to let configfile and source commands continue to work */
++      grub_env_unset ("enable_blscfg");
++      goto check_batch;
++    }
++#endif
++
+   if (config)
+     {
+       menu = read_config_file (config);
+@@ -307,6 +386,9 @@ grub_normal_execute (const char *config, int nested, int batch)
+ 
+   grub_boot_time ("Executed config file");
+ 
++#ifdef GRUB_MACHINE_EFI
++ check_batch:
++#endif
+   if (! batch)
+     {
+       if (menu && menu->size)
+diff --git a/include/grub/parser.h b/include/grub/parser.h
+index 64f9f5cc2..9d702571a 100644
+--- a/include/grub/parser.h
++++ b/include/grub/parser.h
+@@ -86,7 +86,11 @@ struct grub_parser
+ };
+ typedef struct grub_parser *grub_parser_t;
+ 
++#ifdef GRUB_MACHINE_EFI
++grub_err_t EXPORT_FUNC (grub_parser_execute) (char *source);
++#else
+ grub_err_t grub_parser_execute (char *source);
++#endif
+ 
+ grub_err_t
+ grub_rescue_parse_line (char *line,
+-- 
+2.46.0
+

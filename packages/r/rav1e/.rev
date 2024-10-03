@@ -570,4 +570,12 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
     <comment></comment>
     <requestid>1119215</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3d37eeda900dfb8e2ea842f6d4770c9a</srcmd5>
+    <version>0.7.1</version>
+    <time>1727897563</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.7.1:</comment>
+    <requestid>1204942</requestid>
+  </revision>
 </revisionlist>

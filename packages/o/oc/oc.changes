@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed Oct 02 05:56:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.17.0:
+  * node-joiner: use proxy settings when required
+  * make the idle command's scale update unconditional
+  * Adding examples for add-cluster-role-to-* and
+    remove-cluster-role-from-* so they show in the CLI docs
+  * Make MacAddress mandatory until installer validations are
+    updated
+  * Make MacAddress flag optional, add test for
+    createConfigFileFromFlags
+  * upgrade-status: add test coverage for a compact cluster and a
+    single-node cluster
+  * WRKLDS-1429: Adds a guardrail for node-image commands which is
+    supported only for Openshift version 4.17 and later
+  * upgrade-status: fix HasOSImage function
+  * [OTA-1153]upgrade-status: communicate control plane completion
+    clearly
+  * WRKLDS-1316: Retry and do not fail when logs cannot be updated
+  * added flags to support simper single node interface
+  * WRKLDS-1316: Remove clusterversions from certificates api group
+  * node-joiner: add the required role to support platform type
+    validation
+  * Separate api group for secrets
+  * upgrade-status: fix a typo in README
+  * Update command description
+  * upgrade status: removes custom nodes from the worker pool (2)
+  * Revert "upgrade status: removes custom nodes from the worker
+    pool"
+  * Remove common.go and incorporate review feedback
+  * Create monitor run test and reuse common code
+  * Revert "OCPBUGS-35994: pkg/cli/admin/upgrade/rollback: Drop
+    this command"
+  * upgarde status: use a table to represent node pools (#1821)
+  * Minor wording tweaks for CLI help
+  * Shared code placed in common.go
+  * WRKLDS-1316: oc adm node-image monitor command
+  * renamed to node-image
+  * add-nodes: define empty commands structure
+  * WRKLDS-1314: create image command (#1819)
+  * upgrade status: removes custom nodes from the worker pool
+  * Extend the kube version check for images/tools/Dockerfile
+  * Remove invalid test cases: empty dockerfiles are no longer
+    allowed
+  * Lower case command value before comparision
+  * bump(k8s.io)=1.30.2
+  * pkg/cli/admin/mustgather: GA since and since-time flags
+  * pkg/cli/admin/prune/renderedmachineconfigs: 'Error dry-run
+    deleting'
+  * pkg/cli/admin/upgrade/rollback: Drop this command
+  * Inject ReleaseArch into openshift-install
+  * `upgrade status`: revert to overestimating remaining time
+  * `upgrade status`: lower estimated node actions to avoid
+    inconsistency with estimation
+  * `upgrade status`: overestimate total duration, not remaining
+    time
+  * `upgrade status`: change how last observed progress is computed
+  * `upgrade status`: get baseline from history when possible
+  * `upgrade status`: stalled or progressing-slow when over
+    estimate
+  * `upgrade status`: show <10m when estimate is lower than 10m
+  * `upgrade status`: overestimate remaining time by 20%
+  * `update status`: Avoid projecting from small values
+  * `upgrade status`: do not show estimate TTC when completed
+  * `upgrade status`: estimate better via last observed progress
+  * `update status`: use timewise completion estimate
+  * `update status`: project estimate duration from elapsed
+  * `update status`: add baseline control plane estimate duration
+  * `update status`: truncate subsecond durations
+  * `update status`: inject ns skew to eliminate input data
+    rounding
+  * Ignore pruning when deployment points to replicationcontroller
+  * Update comment about using OpenFileSequential
+  * `upgrade status`: polish alert insights
+  * pkg/cli/admin/mustgather: don't manually delete cluster role
+    binding
+  * pkg/helpers: remove legacy pkg
+  * pkg/cli/expose: override print flags for cmd
+  * pkg/cli/create,pkg/cli/expose: use custom scheme
+  * pkg/helpers/scheme: stop loading legacy schemes on global
+    scheme
+  * pkg/cli/admin/mustgather: gofumpt file
+  * go 1.22 lint fix
+  * Run make update
+  * Update tools images kube version to 1.30.1
+  * Manually bump indirect dependency runc to v1.1.12 to pull some
+    fixes
+  * Bump aws-sdk-go version to v1.53.12
+  * React to type changes in containers/image/v5 v5.30.1 version
+  * Bump containers/image/v5 to v5.30.1
+  * Go 1.22 changes the escape output of some special characters
+  * Bump go based imports
+  * Bump k8s dependencies to 1.30
+  * Remove already deprecated versions
+  * Bump go version to 1.22
+  * inspectalerts: refactor `getWithBearer` to try all urls in
+    route
+  * inspectalerts: use client-go wrappers for thanos call debugging
+  * OCPBUGS-33896: `status/inspect-alerts`: handle non-200 by
+    Thanos
+  * Updating openshift-enterprise-deployer-container image to be
+    consistent with ART for 4.17 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/4c1326094222f9209876f06833179a1b9178faf7/images/openshift-enterprise-deployer.yml
+  * `upgrade status`: upgrade -> update
+  * OCPBUGS-33903: Simplify output when not updating
+  * Updating ose-tools-container image to be consistent with ART
+    for 4.17 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/0a1310d4df1f00e3e218da6e356585997c7c0178/images/ose-tools.yml
+  * Updating openshift-enterprise-cli-container image to be
+    consistent with ART for 4.17 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/0a1310d4df1f00e3e218da6e356585997c7c0178/images/openshift-enterprise-cli.yml
+  * OCPBUGS-33762: Hardcode resource groups/kinds for now
+  * update status: minor code cleanups
+  * OCPBUGS-33898: `adm update status`: Show information about the
+    upgrade target version (#1767)
+  * add mock tests for alerts in oc adm upgrade status
+  * Add s390x based oc into extraction target
+  * pkg/cli/admin/upgrade/rollback: Gate on
+    OC_ENABLE_CMD_UPGRADE_ROLLBACK
+  * debug: set required-scc annotation to privileged for node debug
+    pods
+  * add alerts to update health in oc adm upgrade status
+
+-------------------------------------------------------------------
 Wed Jul 03 16:02:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.16.0:

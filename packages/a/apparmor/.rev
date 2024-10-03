@@ -2888,4 +2888,17 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1195292 from pgajdos)</comment>
     <requestid>1195595</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>1e48e8c1e653c1d2e0cbfcb14524609f</srcmd5>
+    <version>4.0.3</version>
+    <time>1727897510</time>
+    <user>anag+factory</user>
+    <comment>- add mesa-cachedir.diff: new cachedir in Mesa 24.2.2
+
+- update to AppArmor 4.0.3
+  - several small bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.3
+    for the full release notes (forwarded request 1204990 from cboltz)</comment>
+    <requestid>1204991</requestid>
+  </revision>
 </revisionlist>

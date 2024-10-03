@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  2 04:49:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.41.2:
+  * Fix breaking change introduced on SQLAlchemy 2.0.22 changes to
+    attributes.AttributeImpl constructor
+- Drop patch sqlalchemy-2.0.22.patch:
+  * Included upstream.
+
+-------------------------------------------------------------------
 Thu Feb 22 11:23:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - build for modern python stack

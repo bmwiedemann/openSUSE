@@ -1,0 +1,148 @@
+From 5a04b59495490bf921c661ff95754ea9955e7cd4 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Fri, 27 Sep 2024 09:20:52 -0600
+Subject: [PATCH 1/3] Add channel_path setting to daemon config file
+
+libvirt commit 8abc979b moved the target path for channel devices.
+To accommodate libvirt deployments with and without that commit,
+allow specifying the path in the daemon configuration file.
+
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+---
+ README            |  3 +++
+ include/virtio.h  |  2 +-
+ vhostmd.dtd       |  3 ++-
+ vhostmd.xml       |  1 +
+ vhostmd/vhostmd.c | 12 ++++++++++--
+ vhostmd/virtio.c  |  5 +++--
+ 6 files changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/README b/README
+index 579acd5..2ff7e8b 100644
+--- a/README
++++ b/README
+@@ -51,6 +51,7 @@ includes a few examples of user-defined metrics, which provide a
+         <size unit="k">256</size>
+       </disk>
+       <virtio>
++        <channel_path>/var/run/libvirt/qemu/channel</channel_path>
+         <max_channels>1024</max_channels>
+         <expiration_time>15</expiration_time>
+       </virtio>
+@@ -300,6 +301,8 @@ between the host and VMs. Basically for a virtio serial device, QEMU creates
+ - 'connects' both to a 'communication channel'
+ 
+ It can be configured in the virtio section of the vhostmd configuration file.
++<channel_path> defines a path on the host where QEMU creates the unix domain
++sockets.
+ <max_channels> defines the maximum number of virtio channels/VMs supported
+ by the vhostmd instance with a default value of 1024.
+ <expiration_time> is the time after which the virtio serial channel of a VM
+diff --git a/include/virtio.h b/include/virtio.h
+index 1ff31a2..962adea 100644
+--- a/include/virtio.h
++++ b/include/virtio.h
+@@ -24,7 +24,7 @@
+ /*
+  * Initialize virtio layer
+  */
+-int virtio_init(int max_channel, int expiration_period);
++int virtio_init(char *channel_path, int max_channel, int expiration_period);
+ 
+ /*
+  * Main virtio function
+diff --git a/vhostmd.dtd b/vhostmd.dtd
+index 6c159dd..045860d 100644
+--- a/vhostmd.dtd
++++ b/vhostmd.dtd
+@@ -20,7 +20,8 @@ Virtual Host Metrics Daemon (vhostmd). Configuration file DTD
+ <!ELEMENT update_period (#PCDATA)>
+ <!ELEMENT transport (#PCDATA)>
+ 
+-<!ELEMENT virtio (max_channels,expiration_time)>
++<!ELEMENT virtio (channel_path,max_channels,expiration_time)>
++<!ELEMENT channel_path (#PCDATA)>
+ <!ELEMENT max_channels (#PCDATA)>
+ <!ELEMENT expiration_time (#PCDATA)>
+ 
+diff --git a/vhostmd.xml b/vhostmd.xml
+index 5c88d8c..0dff85d 100644
+--- a/vhostmd.xml
++++ b/vhostmd.xml
+@@ -34,6 +34,7 @@ the logical && operator must be replaced with "&amp;&amp;".
+         <size unit="k">256</size>
+       </disk>
+       <virtio>
++	<channel_path>/var/run/libvirt/qemu/channel</channel_path>
+         <max_channels>1024</max_channels>
+         <expiration_time>15</expiration_time>
+       </virtio>
+diff --git a/vhostmd/vhostmd.c b/vhostmd/vhostmd.c
+index 4426faf..88e89ac 100644
+--- a/vhostmd/vhostmd.c
++++ b/vhostmd/vhostmd.c
+@@ -105,6 +105,7 @@ static mdisk_header md_header =
+          };
+ static char *search_path = NULL;
+ static int transports = 0;
++static char *virtio_channel_path = NULL;
+ static int virtio_max_channels = 1024;
+ static int virtio_expiration_time = 15;
+ 
+@@ -623,7 +624,14 @@ static int parse_config_file(const char *filename)
+    }
+     
+    if (transports & VIRTIO) {
+-      if (vu_xpath_long("string(./globals/virtio/max_channels[1])", ctxt, &l) == 0)
++       virtio_channel_path = vu_xpath_string("string(./globals/virtio/channel_path[1])", ctxt);
++       if (virtio_channel_path == NULL) {
++           virtio_channel_path = strdup("/var/lib/libvirt/qemu/channel/target");
++           if (virtio_channel_path == NULL)
++               goto out;
++       }
++
++       if (vu_xpath_long("string(./globals/virtio/max_channels[1])", ctxt, &l) == 0)
+          virtio_max_channels = (int)l;
+ 
+       if (vu_xpath_long("string(./globals/virtio/expiration_time[1])", ctxt, &l) == 0)
+@@ -980,7 +988,7 @@ static int vhostmd_run(int diskfd)
+       if (virtio_expiration_time < (update_period * 3))
+          virtio_expiration_time = update_period * 3;
+ 
+-      if (virtio_init(virtio_max_channels, virtio_expiration_time)) {
++      if (virtio_init(virtio_channel_path, virtio_max_channels, virtio_expiration_time)) {
+          vu_buffer_delete(buf);
+          return -1;
+       }
+diff --git a/vhostmd/virtio.c b/vhostmd/virtio.c
+index 98340ce..d2d07bf 100644
+--- a/vhostmd/virtio.c
++++ b/vhostmd/virtio.c
+@@ -68,7 +68,7 @@ static channel_t *channel = NULL;
+ static id_map_t *id_map = NULL;
+ static time_t exp_period = 0;
+ 
+-static const char *channel_path = "/var/lib/libvirt/qemu/channel/target";
++static const char *channel_path = NULL;
+ static const char *channel_name = "org.github.vhostmd.1";
+ static int channel_max = 0;
+ static volatile int channel_count = 0;
+@@ -572,13 +572,14 @@ static void vio_handle_io(unsigned epoll_wait_ms)
+  * Once the channel is added to epoll the vu_buffer can be accessed
+  * by the epoll_event.data.ptr.
+  */
+-int virtio_init(int _max_channel, int _expiration_period)
++int virtio_init(char *_channel_path, int _max_channel, int _expiration_period)
+ {
+     int i;
+ 
+     if (virtio_status == VIRTIO_INIT) {
+         pthread_mutex_init(&channel_mtx, NULL);
+ 
++        channel_path = _channel_path;
+         channel_max = _max_channel;
+         exp_period = _expiration_period;
+         channel_count = 0;
+-- 
+2.35.3
+

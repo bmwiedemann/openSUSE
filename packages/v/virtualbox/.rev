@@ -2637,4 +2637,15 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- Update to release 7.1</comment>
     <requestid>1204228</requestid>
   </revision>
+  <revision rev="280" vrev="2">
+    <srcmd5>009ba850233f3eddb7841b58f93ad19c</srcmd5>
+    <version>7.1.0</version>
+    <time>1727897554</time>
+    <user>anag+factory</user>
+    <comment>- Edit cxx17.patch to make the Extension Pack work with our
+  compiler flags and RT_NOEXCEPT choices. [boo#1231225]
+- Set BuildRequire on glslang to 11.5; this is when it starts to
+  recognize GL_EXT_spirv_intrinsics.</comment>
+    <requestid>1205210</requestid>
+  </revision>
 </revisionlist>

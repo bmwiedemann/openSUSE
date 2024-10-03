@@ -19,14 +19,12 @@
 %define modname httpbin
 %{?sle15_python_module_pythons}
 Name:           python-httpbin
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        HTTP Request and Response Service
 License:        MIT
 URL:            https://github.com/psf/httpbin
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/psf/httpbin/pull/29 Support Flask 3.0
-Patch:          flask3.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask >= 2.2.4}
 BuildRequires:  %{python_module Werkzeug >= 2.0}
@@ -41,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli
 Requires:       python-Flask >= 2.2.4
-Requires:       python-Werkzeug >= 2.0
+Requires:       python-Werkzeug >= 2.2.2
 Requires:       python-decorator
 Requires:       python-flasgger
 Requires:       python-gevent

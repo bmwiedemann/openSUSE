@@ -30,7 +30,7 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,7 +41,6 @@ Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{ver
 Source1:        %{name}-tmpfiles.d
 Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
-Patch2:         0002-bgpd-Check-the-actual-remaining-stream-length-before.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7

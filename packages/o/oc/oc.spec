@@ -25,7 +25,7 @@
 %define OC_COMMIT 0c63f9da
 
 Name:           oc
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Openshift / OKD Client CLI
 License:        Apache-2.0

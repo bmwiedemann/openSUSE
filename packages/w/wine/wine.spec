@@ -41,8 +41,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.17
-Version:        9.17
+%define realver 9.18
+Version:        9.18
 Release:        0
 
 %if "%{flavor}" != ""
@@ -133,6 +133,7 @@ BuildRequires:  mingw32-zlib-devel
 Requires:       mingw32-libz
 %endif
 %endif
+BuildRequires:  ffmpeg-devel
 BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
@@ -196,7 +197,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.17
+%define staging_version 9.18
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

@@ -862,4 +862,13 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1199623</requestid>
   </revision>
+  <revision rev="92" vrev="92">
+    <srcmd5>1ce675943a0bf1a306380b60fddc63b4</srcmd5>
+    <version>5.0</version>
+    <time>1727897579</time>
+    <user>anag+factory</user>
+    <comment>- Enahnce supplements that were so far triggering on grub2 to also
+  trigger on grub2-common. (forwarded request 1205197 from dimstar)</comment>
+    <requestid>1205198</requestid>
+  </revision>
 </revisionlist>

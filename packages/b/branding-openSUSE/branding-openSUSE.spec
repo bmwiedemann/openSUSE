@@ -113,8 +113,8 @@ process using YaST2
 %package -n grub2-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for GRUB2
 License:        CC-BY-SA-3.0
-Requires:       grub2
-Supplements:    (grub2 and branding-%{theme_name})
+Requires:       (grub2 or grub2-common)
+Supplements:    ((grub2 or grub2-common) and branding-%{theme_name})
 Conflicts:      grub2-branding
 Provides:       grub2-branding = %{version}
 BuildArch:      noarch
