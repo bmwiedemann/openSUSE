@@ -4,7 +4,7 @@
     <product>
       <vendor>openSUSE</vendor>
       <name>openSUSE</name>
-      <version>20241001</version>
+      <version>20241002</version>
       <release>0</release>
 
       <productline>openSUSE</productline>
@@ -262,15 +262,15 @@
       <package name="MozillaThunderbird"/>
       <package name="MozillaThunderbird-translations-common"/>
       <package name="MozillaThunderbird-translations-other"/>
-      <package name="libmozjs-78-0"/>
-      <package name="libmozjs-102-0"/>
       <package name="libmozjs-115-0"/>
-      <package name="mozjs78"/>
-      <package name="mozjs102"/>
+      <package name="libmozjs-128-0"/>
+      <package name="libmozjs-78-0"/>
       <package name="mozjs115"/>
-      <package name="mozjs78-devel"/>
-      <package name="mozjs102-devel"/>
       <package name="mozjs115-devel"/>
+      <package name="mozjs128"/>
+      <package name="mozjs128-devel"/>
+      <package name="mozjs78"/>
+      <package name="mozjs78-devel"/>
       <package name="nodejs-electron"/>
       <package name="nodejs-electron-devel"/>
     </packagelist>

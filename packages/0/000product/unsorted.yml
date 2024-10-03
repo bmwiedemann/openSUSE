@@ -2204,6 +2204,7 @@ unsorted:
   - clFFT 
   - clFFT-devel 
   - clack 
+  - clagrange 
   - clair 
   - clairctl 
   - clamav-devel 
@@ -5068,7 +5069,6 @@ unsorted:
   - gecode-minizinc 
   - gede 
   - gedit-devel 
-  - gedit-latex-lang 
   - gedit-plugin-bookmarks 
   - gedit-plugin-bracketcompletion 
   - gedit-plugin-charmap 
@@ -5078,7 +5078,6 @@ unsorted:
   - gedit-plugin-drawspaces 
   - gedit-plugin-git 
   - gedit-plugin-joinlines 
-  - gedit-plugin-latex 
   - gedit-plugin-multiedit 
   - gedit-plugin-session-saver 
   - gedit-plugin-smartspaces 
@@ -7394,7 +7393,6 @@ unsorted:
   - gnome-kiosk-sample-app 
   - gnome-klotski 
   - gnome-klotski-lang 
-  - gnome-latex 
   - gnome-menus-branding-upstream 
   - gnome-menus-devel 
   - gnome-multi-writer 
@@ -8081,11 +8079,13 @@ unsorted:
   - grsync-lang 
   - grub2-branding-upstream 
   - grub2-i386-efi 
+  - grub2-i386-efi-bls 
   - grub2-i386-efi-debug 
   - grub2-i386-efi-extras 
   - grub2-i386-pc-debug 
   - grub2-i386-pc-extras 
   - grub2-theme-breeze 
+  - grub2-x86_64-efi-bls 
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
   - grub2-x86_64-xen-extras 
@@ -9652,6 +9652,8 @@ unsorted:
   - jsr-305-javadoc 
   - jsr-311 
   - jsr-311-javadoc 
+  - jtb 
+  - jtb-javadoc 
   - jtc 
   - jthread-devel 
   - jtidy 
@@ -11291,7 +11293,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
-  - libOpenColorIO2_3 
+  - libOpenColorIO2_5 
   - libOpenEXR-3_2-31-32bit 
   - libOpenEXRCore-3_2-31-32bit 
   - libOpenEXRUtil-3_2-31 
@@ -14661,7 +14663,6 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
-  - libmozjs-102-0 
   - libmozjs-128-0 
   - libmozjs-78-0 
   - libmp3lame-devel 
@@ -15805,7 +15806,7 @@ unsorted:
   - librasqal-devel-doc 
   - libratbag-devel 
   - libratbag-tools 
-  - librav1e0_6-32bit 
+  - librav1e0_7-32bit 
   - libraven0 
   - libraw-devel 
   - libraw-devel-static 
@@ -17096,91 +17097,91 @@ unsorted:
   - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl11_0_0 
+  - libwx_baseu-suse-nostl12_0_0 
   - libwx_baseu-suse-nostl3_0_5 
-  - libwx_baseu-suse11_0_0 
+  - libwx_baseu-suse12_0_0 
   - libwx_baseu-suse3_0_5 
-  - libwx_baseu_net-suse-nostl11_0_0 
+  - libwx_baseu_net-suse-nostl12_0_0 
   - libwx_baseu_net-suse-nostl3_0_5 
-  - libwx_baseu_net-suse11_0_0 
+  - libwx_baseu_net-suse12_0_0 
   - libwx_baseu_net-suse3_0_5 
-  - libwx_baseu_xml-suse-nostl11_0_0 
+  - libwx_baseu_xml-suse-nostl12_0_0 
   - libwx_baseu_xml-suse-nostl3_0_5 
-  - libwx_baseu_xml-suse11_0_0 
+  - libwx_baseu_xml-suse12_0_0 
   - libwx_baseu_xml-suse3_0_5 
   - libwx_gtk2u_adv-suse-nostl3_0_5 
-  - libwx_gtk2u_adv-suse11_0_0 
+  - libwx_gtk2u_adv-suse12_0_0 
   - libwx_gtk2u_adv-suse3_0_5 
   - libwx_gtk2u_aui-suse-nostl3_0_5 
-  - libwx_gtk2u_aui-suse11_0_0 
+  - libwx_gtk2u_aui-suse12_0_0 
   - libwx_gtk2u_aui-suse3_0_5 
   - libwx_gtk2u_core-suse-nostl3_0_5 
-  - libwx_gtk2u_core-suse11_0_0 
+  - libwx_gtk2u_core-suse12_0_0 
   - libwx_gtk2u_core-suse3_0_5 
   - libwx_gtk2u_gl-suse-nostl3_0_5 
-  - libwx_gtk2u_gl-suse11_0_0 
+  - libwx_gtk2u_gl-suse12_0_0 
   - libwx_gtk2u_gl-suse3_0_5 
   - libwx_gtk2u_html-suse-nostl3_0_5 
-  - libwx_gtk2u_html-suse11_0_0 
+  - libwx_gtk2u_html-suse12_0_0 
   - libwx_gtk2u_html-suse3_0_5 
   - libwx_gtk2u_media-suse-nostl3_0_5 
-  - libwx_gtk2u_media-suse11_0_0 
+  - libwx_gtk2u_media-suse12_0_0 
   - libwx_gtk2u_media-suse3_0_5 
   - libwx_gtk2u_propgrid-suse-nostl3_0_5 
-  - libwx_gtk2u_propgrid-suse11_0_0 
+  - libwx_gtk2u_propgrid-suse12_0_0 
   - libwx_gtk2u_propgrid-suse3_0_5 
   - libwx_gtk2u_qa-suse-nostl3_0_5 
-  - libwx_gtk2u_qa-suse11_0_0 
+  - libwx_gtk2u_qa-suse12_0_0 
   - libwx_gtk2u_qa-suse3_0_5 
   - libwx_gtk2u_ribbon-suse-nostl3_0_5 
-  - libwx_gtk2u_ribbon-suse11_0_0 
+  - libwx_gtk2u_ribbon-suse12_0_0 
   - libwx_gtk2u_ribbon-suse3_0_5 
   - libwx_gtk2u_richtext-suse-nostl3_0_5 
-  - libwx_gtk2u_richtext-suse11_0_0 
+  - libwx_gtk2u_richtext-suse12_0_0 
   - libwx_gtk2u_richtext-suse3_0_5 
   - libwx_gtk2u_stc-suse-nostl3_0_5 
-  - libwx_gtk2u_stc-suse11_0_0 
+  - libwx_gtk2u_stc-suse12_0_0 
   - libwx_gtk2u_stc-suse3_0_5 
   - libwx_gtk2u_xrc-suse-nostl3_0_5 
-  - libwx_gtk2u_xrc-suse11_0_0 
+  - libwx_gtk2u_xrc-suse12_0_0 
   - libwx_gtk2u_xrc-suse3_0_5 
-  - libwx_gtk3u_adv-suse-nostl11_0_0 
-  - libwx_gtk3u_adv-suse11_0_0 
-  - libwx_gtk3u_aui-suse-nostl11_0_0 
-  - libwx_gtk3u_aui-suse11_0_0 
-  - libwx_gtk3u_core-suse-nostl11_0_0 
-  - libwx_gtk3u_core-suse11_0_0 
-  - libwx_gtk3u_gl-suse-nostl11_0_0 
-  - libwx_gtk3u_gl-suse11_0_0 
-  - libwx_gtk3u_html-suse-nostl11_0_0 
-  - libwx_gtk3u_html-suse11_0_0 
-  - libwx_gtk3u_media-suse-nostl11_0_0 
-  - libwx_gtk3u_media-suse11_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl11_0_0 
-  - libwx_gtk3u_propgrid-suse11_0_0 
-  - libwx_gtk3u_qa-suse-nostl11_0_0 
-  - libwx_gtk3u_qa-suse11_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl11_0_0 
-  - libwx_gtk3u_ribbon-suse11_0_0 
-  - libwx_gtk3u_richtext-suse-nostl11_0_0 
-  - libwx_gtk3u_richtext-suse11_0_0 
-  - libwx_gtk3u_stc-suse-nostl11_0_0 
-  - libwx_gtk3u_stc-suse11_0_0 
-  - libwx_gtk3u_webview-suse11_0_0 
-  - libwx_gtk3u_xrc-suse-nostl11_0_0 
-  - libwx_gtk3u_xrc-suse11_0_0 
-  - libwx_qtu_adv-suse11_0_0 
-  - libwx_qtu_aui-suse11_0_0 
-  - libwx_qtu_core-suse11_0_0 
-  - libwx_qtu_gl-suse11_0_0 
-  - libwx_qtu_html-suse11_0_0 
-  - libwx_qtu_media-suse11_0_0 
-  - libwx_qtu_propgrid-suse11_0_0 
-  - libwx_qtu_qa-suse11_0_0 
-  - libwx_qtu_ribbon-suse11_0_0 
-  - libwx_qtu_richtext-suse11_0_0 
-  - libwx_qtu_stc-suse11_0_0 
-  - libwx_qtu_xrc-suse11_0_0 
+  - libwx_gtk3u_adv-suse-nostl12_0_0 
+  - libwx_gtk3u_adv-suse12_0_0 
+  - libwx_gtk3u_aui-suse-nostl12_0_0 
+  - libwx_gtk3u_aui-suse12_0_0 
+  - libwx_gtk3u_core-suse-nostl12_0_0 
+  - libwx_gtk3u_core-suse12_0_0 
+  - libwx_gtk3u_gl-suse-nostl12_0_0 
+  - libwx_gtk3u_gl-suse12_0_0 
+  - libwx_gtk3u_html-suse-nostl12_0_0 
+  - libwx_gtk3u_html-suse12_0_0 
+  - libwx_gtk3u_media-suse-nostl12_0_0 
+  - libwx_gtk3u_media-suse12_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl12_0_0 
+  - libwx_gtk3u_propgrid-suse12_0_0 
+  - libwx_gtk3u_qa-suse-nostl12_0_0 
+  - libwx_gtk3u_qa-suse12_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl12_0_0 
+  - libwx_gtk3u_ribbon-suse12_0_0 
+  - libwx_gtk3u_richtext-suse-nostl12_0_0 
+  - libwx_gtk3u_richtext-suse12_0_0 
+  - libwx_gtk3u_stc-suse-nostl12_0_0 
+  - libwx_gtk3u_stc-suse12_0_0 
+  - libwx_gtk3u_webview-suse12_0_0 
+  - libwx_gtk3u_xrc-suse-nostl12_0_0 
+  - libwx_gtk3u_xrc-suse12_0_0 
+  - libwx_qtu_adv-suse12_0_0 
+  - libwx_qtu_aui-suse12_0_0 
+  - libwx_qtu_core-suse12_0_0 
+  - libwx_qtu_gl-suse12_0_0 
+  - libwx_qtu_html-suse12_0_0 
+  - libwx_qtu_media-suse12_0_0 
+  - libwx_qtu_propgrid-suse12_0_0 
+  - libwx_qtu_qa-suse12_0_0 
+  - libwx_qtu_ribbon-suse12_0_0 
+  - libwx_qtu_richtext-suse12_0_0 
+  - libwx_qtu_stc-suse12_0_0 
+  - libwx_qtu_xrc-suse12_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -18235,6 +18236,7 @@ unsorted:
   - mangoplot 
   - manpageeditor 
   - mapi-header-php 
+  - mapitags 
   - mapserver 
   - mapserver-devel 
   - marble 
@@ -19100,8 +19102,6 @@ unsorted:
   - mozilla-nss-devel 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
-  - mozjs102 
-  - mozjs102-devel 
   - mozjs115 
   - mozjs115-devel 
   - mozjs128 
@@ -26574,7 +26574,6 @@ unsorted:
   - python310-py-espeak-ng 
   - python310-py-gitea-opensuse-org 
   - python310-py-moneyed 
-  - python310-py-multihash 
   - python310-py-partiql-parser 
   - python310-py-radix 
   - python310-py-ubjson 
@@ -26680,7 +26679,6 @@ unsorted:
   - python310-pygls 
   - python310-pygments-ansi-color 
   - python310-pygments-pytest 
-  - python310-pygments-style-railscasts 
   - python310-pygn 
   - python310-pygraphviz 
   - python310-pyhanko-certvalidator 
@@ -27801,6 +27799,7 @@ unsorted:
   - python310-zstandard 
   - python310-zstd 
   - python310-zxcvbn 
+  - python310-zxcvbn-rs-py 
   - python310-zypp-plugin 
   - python311-32bit 
   - python311-APScheduler 
@@ -30177,7 +30176,6 @@ unsorted:
   - python311-py-espeak-ng 
   - python311-py-gitea-opensuse-org 
   - python311-py-moneyed 
-  - python311-py-multihash 
   - python311-py-obs 
   - python311-py-partiql-parser 
   - python311-py-radix 
@@ -30274,7 +30272,6 @@ unsorted:
   - python311-pygls 
   - python311-pygments-ansi-color 
   - python311-pygments-pytest 
-  - python311-pygments-style-railscasts 
   - python311-pygn 
   - python311-pygraphviz 
   - python311-pyhanko-certvalidator 
@@ -31371,6 +31368,7 @@ unsorted:
   - python311-zstandard 
   - python311-zstd 
   - python311-zxcvbn 
+  - python311-zxcvbn-rs-py 
   - python312 
   - python312-32bit 
   - python312-APScheduler 
@@ -33831,7 +33829,6 @@ unsorted:
   - python312-py-espeak-ng 
   - python312-py-gitea-opensuse-org 
   - python312-py-moneyed 
-  - python312-py-multihash 
   - python312-py-obs 
   - python312-py-partiql-parser 
   - python312-py-radix 
@@ -33939,7 +33936,6 @@ unsorted:
   - python312-pygls 
   - python312-pygments-ansi-color 
   - python312-pygments-pytest 
-  - python312-pygments-style-railscasts 
   - python312-pygn 
   - python312-pygraphviz 
   - python312-pyhanko-certvalidator 
@@ -35060,6 +35056,7 @@ unsorted:
   - python312-zstandard 
   - python312-zstd 
   - python312-zxcvbn 
+  - python312-zxcvbn-rs-py 
   - python312-zypp-plugin 
   - python313 
   - python313-base 
@@ -36800,6 +36797,7 @@ unsorted:
   - scap-workbench-doc 
   - scapy 
   - scat 
+  - scc 
   - sccache 
   - sccs 
   - scdl 
@@ -48110,6 +48108,7 @@ unsorted:
   - velocity-custom-parser-example 
   - velocity-demo 
   - velocity-engine-core 
+  - velocity-engine-core-javadoc 
   - velocity-engine-examples 
   - velocity-engine-javadoc 
   - velocity-engine-parent 

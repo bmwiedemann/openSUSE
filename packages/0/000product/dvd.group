@@ -679,6 +679,7 @@
     <package name="groff-full" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2-branding-openSUSE -->
+    <package name="grub2-common" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
     <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2628,7 +2629,7 @@
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="librav1e0_6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="librav1e0_7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libraw23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
