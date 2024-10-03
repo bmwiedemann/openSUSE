@@ -21,7 +21,7 @@ Name:           libeconf
 Version:        0.7.4
 Release:        0
 Summary:        Enhanced config file parser ala systemd
-License:        LGPL-2.1-or-later
+License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz

@@ -22,7 +22,7 @@ Name:           python-libeconf
 Version:        0.7.4
 Release:        0
 Summary:        Python bindings for libeconf
-License:        LGPL-2.1-or-later
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz
