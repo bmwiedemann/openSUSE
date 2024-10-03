@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:31:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.2:
+  * Fixed issue with SQS #2113
+  * tzdata is required for machines without IANA database
+  * blacksmith.sh: Migrate workflows to Blacksmith
+  * Revert "Validate SQS SSL certs by default"
+- update to 5.4.1:
+  * Update mypy to 1.11.2
+  * SQS: Fixes #2091 queue_delete() method doesn't actually
+    delete the queue
+  * Validate SQS SSL certs by default
+  * Resolving TypeError, during version unpacking
+  * Revert: allow users to disable broker heartbeats by not
+    providing a timeout
+- update to 5.4.0:
+  * fix: Fanout exchange messages mixed across virtual databases
+    in Redis sentinel
+  * Pin pymongo to latest version 4.7.2
+  * enable/fix test_etcd.py (resolves #2001)
+  * Limit requests<2.32.0 due to docker-py issue 3256
+  * enhance: allow users to disable broker heartbeats
+  * enhance: allow uses to disable broker heartbeats by not
+    providing a timeout
+  * chore(typing): annotate `utils/debug.py`
+  * ConnectionPool can't be used after .resize(..., reset=True)
+    (resolves #2018)
+  * Fix Redis connections after reconnect - consumer starts
+    consuming the tasks after crash.
+  * Add support for mongodb+srv scheme
+  * Reverted limiting requests<2.32.0 in requirements/default.txt
+    but kept in tox.ini due to docker-py issue 3256
+  * Redis transport - Redelivered messages should respect the
+    original priority
+  * Exclude Unit 3.9 from CI
+  * Fixed CI error from excluding Python 3.9 unit tests
+
+-------------------------------------------------------------------
 Sun Apr 14 07:46:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.7:

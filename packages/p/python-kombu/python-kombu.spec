@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.3.7
+Version:        5.4.2
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{v
 # PATCH-FIX-OPENSUSE Use Pyro4 compatibility for now, upstream should switch
 # for 5.3
 Patch0:         support-pyro-5.patch
-BuildRequires:  %{python_module Brotli >= 1.0.0}
+BuildRequires:  %{python_module Brotli >= 1.0.9}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro5}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -36,20 +36,18 @@ BuildRequires:  %{python_module azure-identity >= 1.12.0}
 BuildRequires:  %{python_module boto3 >= 1.26.143}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module pycurl >= 7.43.0.2}
+BuildRequires:  %{python_module pycurl >= 7.43.0.5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 3.4.1}
-BuildRequires:  %{python_module setuptools >= 20.6.7}
+BuildRequires:  %{python_module redis >= 4.5.2}
+BuildRequires:  %{python_module setuptools >= 47}
 BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 Requires:       python-amqp >= 5.1.1
+Requires:       python-tzdata
 Requires:       python-vine
-%if 0%{?python_version_nodots} < 310
-Requires:       python-typing_extensions
-%endif
-Recommends:     python-Brotli >= 1.0.0
+Recommends:     python-Brotli >= 1.0.9
 Recommends:     python-PyYAML >= 3.10
 BuildArch:      noarch
 %python_subpackages
