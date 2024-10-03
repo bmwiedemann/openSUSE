@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-servlet-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source2:        glassfish-servlet-api-build.xml
 Source3:        glassfish-servlet-api-build.properties
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -57,8 +57,6 @@ cp -p %{SOURCE3} build.properties
 # README contains also part of javax.servlet-api license
 cp -p src/main/resources/META-INF/README .
 
-%pom_remove_parent .
-
 %build
 ant package javadoc
 
@@ -68,7 +66,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a javax.servlet:servlet-api,org.apache.geronimo.specs:geronimo-servlet_3.0_spec,org.eclipse.jetty.orbit:javax.servlet
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
