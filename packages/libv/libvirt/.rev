@@ -4656,4 +4656,18 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-7-0-2024-09-02</comment>
     <requestid>1198829</requestid>
   </revision>
+  <revision rev="403" vrev="1">
+    <srcmd5>aa6bc885c89bf2fd9fdfc1407aaee094</srcmd5>
+    <version>10.8.0</version>
+    <time>1727971228</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.8.0
+  - libvirt-daemon-driver-storage-core: Change dependency on
+    nfs-utils from Requires to Recommends
+  - Switch from YAJL to json-c for JSON parsing and formatting
+  - jsc#PED-8909
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-8-0-2024-10-01</comment>
+    <requestid>1205278</requestid>
+  </revision>
 </revisionlist>

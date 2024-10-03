@@ -149,7 +149,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.7.0
+Version:        10.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -210,8 +210,8 @@ BuildRequires:  python3-pytest
 BuildRequires:  readline-devel
 # For pool-build probing for existing pools
 BuildRequires:  libblkid-devel >= 2.17
+BuildRequires:  libjson-c-devel
 BuildRequires:  libpciaccess0-devel >= 0.10.9
-BuildRequires:  libyajl-devel
 BuildRequires:  pkgconfig(libudev) >= 145
 %if %{with_sanlock}
 BuildRequires:  sanlock-devel >= 2.4
@@ -487,7 +487,7 @@ an implementation of the secret key APIs.
 Summary:        Storage driver plugin including base backends for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
-Requires:       nfs-utils
+Recommends:     nfs-utils
 # For mkfs
 Requires:       util-linux
 %if %{with_qemu}
@@ -1070,7 +1070,7 @@ Allows SSH into domains via VSOCK without need for network.
            %{?arg_apparmor} \
            %{?arg_apparmor_profiles} \
            -Dudev=enabled \
-           -Dyajl=enabled \
+           -Djson_c=enabled \
            %{?arg_sanlock} \
            -Dlibpcap=enabled \
            -Dlibnl=enabled \
