@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.2
+%define real_version 6.7.3
 %define short_version 6.7
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.7.2
+Version:        6.7.3
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,7 +42,7 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         gcc14.patch
+Patch0:         0001-Revert-xcb-handle-XI2-input-button-and-motion-events.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -50,7 +50,6 @@ Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 Patch101:       0001-Use-newer-GCC-on-Leap.patch
 %endif
 Patch102:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
-Patch103:       0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -447,6 +446,8 @@ report generation facilities.
 
 %package -n qt6-printsupport-devel
 Summary:        Development files for the Qt 6 PrintSupport library
+# Due to QTBUG-87776, the dependency needs to be in qt6-printsupport-devel
+Requires:       cups-devel
 Requires:       libQt6PrintSupport6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
@@ -457,8 +458,6 @@ Development files for the Qt 6 PrintSupport library.
 
 %package -n qt6-printsupport-private-devel
 Summary:        Non-ABI stable API for the Qt 6 PrintSupport library
-# Includes <cups/ppd.h> in qprint_p.h
-Requires:       cups-devel
 Requires:       qt6-core-private-devel = %{version}
 Requires:       qt6-gui-private-devel = %{version}
 Requires:       qt6-widgets-private-devel = %{version}

@@ -498,4 +498,12 @@
     <comment>- Add gcc14.patch so that the package builds for 32bit with GCC 14.</comment>
     <requestid>1192518</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>041b7db0efc123cf9bbec6bd5fa6bddb</srcmd5>
+    <version>6.7.3</version>
+    <time>1727971306</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205118</requestid>
+  </revision>
 </revisionlist>

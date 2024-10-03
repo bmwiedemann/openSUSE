@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  1 22:23:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix:
+  * 0001-Revert-xcb-handle-XI2-input-button-and-motion-events.patch
+
+-------------------------------------------------------------------
+Sat Sep 28 08:22:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.3
+  * https://www.qt.io/blog/qt-6.7.3-released
+- Drop patches, merged upstream:
+  * gcc14.patch
+  * 0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch
+
+-------------------------------------------------------------------
 Wed Aug  7 12:46:16 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add gcc14.patch so that the package builds for 32bit with GCC 14.
