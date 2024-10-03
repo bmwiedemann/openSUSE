@@ -29,6 +29,7 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}

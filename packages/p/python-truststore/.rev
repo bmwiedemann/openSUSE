@@ -36,4 +36,13 @@
 - Drop patch no-network-testing.patch, not required.</comment>
     <requestid>1193797</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a18549dfc77a4b10f9d9480b05dc74f8</srcmd5>
+    <version>0.9.1</version>
+    <time>1727970016</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires on pyOpenSSL for the testsuite, rather than
+  depending on it transitivity.</comment>
+    <requestid>1205341</requestid>
+  </revision>
 </revisionlist>

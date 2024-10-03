@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 05:43:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pyOpenSSL for the testsuite, rather than
+  depending on it transitivity.
+
+-------------------------------------------------------------------
 Wed Aug 14 05:38:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.9.1:
