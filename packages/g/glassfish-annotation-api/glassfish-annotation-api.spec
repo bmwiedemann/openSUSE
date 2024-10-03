@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-annotation-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source2:        https://raw.githubusercontent.com/javaee/%{groupId}/master/LICEN
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -49,10 +49,8 @@ This package contains javadoc for %{name}.
 cp %{SOURCE1} build.xml
 cp %{SOURCE2} .
 
-%pom_remove_parent .
-
 %build
-%{ant}
+ant
 
 %install
 # jar
@@ -60,7 +58,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}
