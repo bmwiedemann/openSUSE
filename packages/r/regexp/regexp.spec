@@ -1,7 +1,7 @@
 #
 # spec file for package regexp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,6 @@
 
 
 %define full_name       jakarta-%{name}
-%define section         free
 Name:           regexp
 Version:        1.5
 Release:        0
@@ -28,15 +27,15 @@ Group:          Development/Libraries/Java
 URL:            http://jakarta.apache.org/%{name}/
 Source0:        http://www.apache.org/dist/jakarta/regexp/jakarta-regexp-%{version}.tar.gz
 Source1:        regexp-%{version}.pom
-BuildRequires:  ant
 BuildRequires:  ant >= 1.6
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xml-commons-apis-bootstrap
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#!BuildIgnore:  xml-commons-apis xml-commons-resolver xml-commons xerces-j2
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-commons
+#!BuildIgnore:  xml-commons-apis
 #!BuildIgnore:  xml-commons-jaxp-1.3-apis
+#!BuildIgnore:  xml-commons-resolver
 BuildArch:      noarch
 
 %description
@@ -53,27 +52,20 @@ testing suite for compatibility.
 find . -type f -name "*.jar" | xargs -t rm
 
 %build
-export OPT_JAR_LIST=:
-export CLASSPATH=
 mkdir lib
 ant -Djakarta-site2.dir=. -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8  jar
 
 %install
 # jars
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 build/*.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 build/*.jar %{buildroot}%{_javadir}/%{name}.jar
 [ -d docs/api ] && rm -rf docs/api
 # pom
 mkdir -p %{buildroot}%{_mavenpomdir}
-install -p -m 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a %{full_name}:%{full_name}
 
-%files
-%defattr(0644,root,root,0755)
-%doc LICENSE
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
+%files -f .mfiles
+%license LICENSE
 
 %changelog
