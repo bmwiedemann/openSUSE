@@ -1143,4 +1143,22 @@
     <comment>- Add /srv/www to filelist [bsc#1231027]</comment>
     <requestid>1204304</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>4b5c8dfc79c92cbdfe7e58b9b56fcb8a</srcmd5>
+    <version>1.27.2</version>
+    <time>1727971239</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.27.2
+  * https://nginx.org/en/CHANGES
+  * Added SSL certificates, secret keys, and CRLs are now cached on start
+    or during reconfiguration.
+  * Added client certificate validation with OCSP in the stream module.
+  * Added OCSP stapling support in the stream module.
+  * Added the &quot;proxy_pass_trailers&quot; directive in the ngx_http_proxy_module.
+  * Added the &quot;ssl_client_certificate&quot; directive now supports certificates
+    with auxiliary information.
+  * Changed now the &quot;ssl_client_certificate&quot; directive is not required
+    for client SSL certificates verification.</comment>
+    <requestid>1205364</requestid>
+  </revision>
 </revisionlist>

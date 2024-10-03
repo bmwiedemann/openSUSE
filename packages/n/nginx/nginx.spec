@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.27.1
+Version:        1.27.2
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -68,7 +68,7 @@ Provides:       http_daemon
 Provides:       httpd
 %{?systemd_ordering}
 %sysusers_requires
-#
+
 %if %{with ngx_google_perftools}
 BuildRequires:  google-perftools-devel
 %endif
@@ -98,14 +98,8 @@ The source of %{name} [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
 %autosetup -p1
-
 sed -i 's/\r//g' contrib/geo2nginx.pl
-sed -i 's|#LIBDIR#|%{_libdir}|g' conf/nginx.conf
-
-%if %{with systemd}
-sed -i 's/\/var\/run/\/run/' conf/nginx.conf
-%endif
-
+sed -i -e 's|#LIBDIR#|%{_libdir}|g' -e 's|/var/run|/run|' conf/nginx.conf
 sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config.h
 
 %build
@@ -126,16 +120,14 @@ install -Dpm0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
 rm %{buildroot}/srv/www/htdocs/index.html
 
 mkdir -p %{buildroot}%{ngx_doc_dir}
-cp -av CHANGES* LICENSE \
-  %{buildroot}%{ngx_doc_dir}
+cp -av CHANGES* LICENSE %{buildroot}%{ngx_doc_dir}
 
 mkdir -p %{buildroot}%{_datadir}/%{name}/
 mkdir -p %{buildroot}%{ngx_conf_dir}/vhosts.d/
 mkdir -p %{buildroot}%{ngx_conf_dir}/conf.d/
 
 chmod a+rx contrib/geo2nginx.pl
-cp -av contrib/geo2nginx.pl contrib/unicode2nginx/ \
-  %{buildroot}%{_datadir}/%{name}/
+cp -av contrib/geo2nginx.pl contrib/unicode2nginx/ %{buildroot}%{_datadir}/%{name}/
 
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
