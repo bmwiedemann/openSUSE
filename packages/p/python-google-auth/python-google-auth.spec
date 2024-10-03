@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.34.0
+Version:        2.35.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-auth/goo
 Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
+BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module freezegun}
@@ -35,6 +36,7 @@ BuildRequires:  %{python_module pyOpenSSL >= 22.0.0}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pyu2f >= 0.1.5}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  1 14:24:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.35.0
+  * Add cred info to ADC creds (#1587)
+  * Add support for asynchronous `AuthorizedSession` api (#1577)
+  * Remove token_info call from token refresh path (#1595)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+- Updates BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Tue Sep 17 07:34:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.34.0
