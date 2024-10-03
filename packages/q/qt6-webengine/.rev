@@ -279,4 +279,12 @@
   * qtwebengine-ffmpeg-7.patch</comment>
     <requestid>1192339</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>57a36ffccce3d17b15b965d453ba24e5</srcmd5>
+    <version>6.7.3</version>
+    <time>1727971347</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205156</requestid>
+  </revision>
 </revisionlist>
