@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 30 14:40:42 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027] 
+  (apache2 will not start since default config uses this directory)
+
+-------------------------------------------------------------------
 Sat Aug  3 17:27:07 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 2.4.62

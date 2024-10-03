@@ -549,6 +549,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/apache2/sysconfig.d
 mkdir -p %{buildroot}/%{_fillupdir}
 install -m 644 %{SOURCE30} %{buildroot}%{_fillupdir}/sysconfig.apache2
 
+# htdocsdir is used by default-server.conf
+mkdir -p %{buildroot}%{htdocsdir}
 mkdir -p %{buildroot}%{sysconfdir}
 mkdir -p %{buildroot}%{sysconfdir}/conf.d
 for c in default-server.conf \
@@ -834,6 +836,8 @@ exit 0
 %attr(750,root,root) %dir %{logfiledir}
 %attr(750,%{httpduser},root) %dir %{proxycachedir}
 %attr(750,%{httpduser},root) %dir %{localstatedir}
+%dir %{datadir}
+%dir %{htdocsdir}
 %dir %{libexecdir}
 %dir %{_libexecdir}
 %attr(755,root,root) %{_libexecdir}/apache2_MMN
