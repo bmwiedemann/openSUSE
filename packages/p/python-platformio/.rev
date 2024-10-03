@@ -262,4 +262,27 @@
     Clang compiler (pull #4897)</comment>
     <requestid>1172343</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d223e51a680a7bb1d337cc5410d61881</srcmd5>
+    <version>6.1.16</version>
+    <time>1727970033</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.16:
+  * Added support for Python 3.13
+  * Introduced the PLATFORMIO_SYSTEM_TYPE environment variable,
+    enabling manual override of the detected system type for
+    greater flexibility and control in custom build environments
+  * Enhanced internet connection checks by falling back to HTTPS
+    protocol when HTTP (port 80) fails (issue #4980)
+  * Upgraded the build engine to the latest version of SCons
+    (4.8.1) to improve build performance, reliability, and
+    compatibility with other tools and systems (release notes)
+  * Upgraded the Doctest testing framework to version 2.4.11, the
+    GoogleTest to version 1.15.2, and the Unity to version 2.6.0,
+    incorporating the latest features and improvements for
+    enhanced testing capabilities
+  * Corrected an issue where the incorrect public class was
+    imported for the ``DoctestTestRunner`` (issue #4949)</comment>
+    <requestid>1205379</requestid>
+  </revision>
 </revisionlist>

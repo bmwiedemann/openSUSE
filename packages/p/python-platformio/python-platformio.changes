@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:30:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.16:
+  * Added support for Python 3.13
+  * Introduced the PLATFORMIO_SYSTEM_TYPE environment variable,
+    enabling manual override of the detected system type for
+    greater flexibility and control in custom build environments
+  * Enhanced internet connection checks by falling back to HTTPS
+    protocol when HTTP (port 80) fails (issue #4980)
+  * Upgraded the build engine to the latest version of SCons
+    (4.8.1) to improve build performance, reliability, and
+    compatibility with other tools and systems (release notes)
+  * Upgraded the Doctest testing framework to version 2.4.11, the
+    GoogleTest to version 1.15.2, and the Unity to version 2.6.0,
+    incorporating the latest features and improvements for
+    enhanced testing capabilities
+  * Corrected an issue where the incorrect public class was
+    imported for the ``DoctestTestRunner`` (issue #4949)
+
+-------------------------------------------------------------------
 Tue May  7 07:32:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.15:
