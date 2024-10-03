@@ -1,6 +1,7 @@
 #
 # spec file for package gowitness
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           gowitness
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        A commandline web screenshot and information gathering tool
 License:        GPL-3.0-or-later

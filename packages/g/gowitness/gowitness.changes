@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  2 18:32:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.4
+  New
+  * Add search by HTML body, fixing #236.
+  * (ui) Add keyboard navigation to the detail view so that you can
+    use the left and right arrows to quickly flick between results.
+  Changed
+  * (ui) Tweak HTML copy modal in report server.
+  * (ui) Remove duplicate close icon.
+  * (ui) Screenshot modals in the detail view now show the URL and
+    timestamp taken.
+  Fixed
+  * Use correct command options structure for report generate.
+  * Write - when an illegal character is found in a potential file
+    name, makes parsing as described #242 possible again too.
+  Other
+  * Bump dependencies (737f590) (db94b2f) (f5713f3).
+
+-------------------------------------------------------------------
 Sun Sep 22 17:56:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3
