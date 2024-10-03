@@ -1035,4 +1035,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204557</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>2344056709b4fb849781a7194ccdfc8f</srcmd5>
+    <version>9.0.91</version>
+    <time>1727970054</time>
+    <user>anag+factory</user>
+    <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
+    <requestid>1205527</requestid>
+  </revision>
 </revisionlist>
