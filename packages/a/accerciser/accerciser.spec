@@ -1,7 +1,7 @@
 #
 # spec file for package accerciser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           accerciser
-Version:        3.42.0
+Version:        3.44.1
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Accerciser
-Source0:        https://download.gnome.org/sources/accerciser/3.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/accerciser/3.44/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 # py3atspi is a virtual name that is provided by the default at-spi stack
 BuildRequires:  py3atspi
@@ -72,12 +73,11 @@ This package provides the IPython console widget
 %autosetup -p1
 
 %build
-%configure \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %suse_update_desktop_file -r -N "Accerciser" -G "Accesibility Debugger" accerciser Utility GNOME Accessibility
 %find_lang %{name} %{?no_lang_C}
 %python3_fix_shebang
@@ -87,10 +87,15 @@ This package provides the IPython console widget
 %license COPYING
 %doc AUTHORS NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
+%dir %{_datadir}/gnome-shell/
+%dir %{_datadir}/gnome-shell/extensions/
+%dir %{_datadir}/gnome-shell/extensions/accerciser@accerciser.gnome.org/
+%{_datadir}/gnome-shell/extensions/accerciser@accerciser.gnome.org/extension.js
+%{_datadir}/gnome-shell/extensions/accerciser@accerciser.gnome.org/metadata.json
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/plugins/ipython_view.py
-%{_datadir}/metainfo/accerciser.appdata.xml
+%{_datadir}/metainfo/org.gtk.accerciser.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.a11y.Accerciser.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/applications/%{name}.desktop

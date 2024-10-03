@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Sep 30 05:18:26 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 3.44.1 
+  * Replace intltool dep with gettext
+  * Add meson build support
+  * Drop autotools build
+  * Add CI
+  * plugins: Port from imp to importlib
+  * Drop last occurrence of importing imp
+  * Drop using deprecated gtk features
+  * Don't add when cancelling "New Bookmark" dialog
+  * event_monitor: Port "Clear Selection" button from "stock"
+  * event_monitor: Fix saving to file
+  * event_monitor: Fix jumping to object on click
+  * node: Calculate screen coords for gtk4 apps
+  * node: More reliably detect the right gtk4 window
+  * Move retrieval of window stacking order to WindowManager
+  * Only consider windows in current workspace for "Inspect under
+    mouse"
+  * WindowInfo: Add stacking order
+  * WindowInfo: Add info whether on current workspace
+  * Unify WindowManager implementations further, consider size
+  * win manager: Add more infos to WindowInfo
+  * window_manager: Extract helper method to get toolkit name and
+    version
+  * window_manager: Escape special chars in window title regex
+  * Wnck: Use frame geometry when client geometry includes CSD
+  * Support "Inspect under mouse" for Gtk 4 apps
+  * GNOME: Use gtk and sandboxed app ID to retrieve app icon
+  * GnomeShellWindowManager: Retrieve mouse pos from Mutter
+  * GNOME Shell: Add extension and win manager using Mutter win pos
+  * GNOME Shell: Add info whether on current workspace
+  * GNOME Shell/Mutter: Use client/frame geometry except for GTK 3
+  * GNOME Shell/Mutter: Support GNOME 47
+  * GNOME Shell: Install the GNOME Shell extension
+  * Add a window manager that retrieves screen coords from KWin
+  * KWinWindowManager: Support KWin 6 as well
+  * KWinWindowManager: Don't fail on win title containing quotes
+  * KWinWindowManager: Get mouse position via KWin API
+  * KWinWindowManager: Get window stacking order from KWin
+  * KWin: Use 'console.info' instead of 'print' in KWin script
+  * KWin 6: Use client/frame geometry instead of buffer geometry
+    except for GTK 3
+  * Kwin: Drop extra KWin 5 win title suffix right away
+  * KWin: Retrieve app/window icon via desktop entry
+  * interface_view: Add help text
+  * interface_view: Update acc description when it changes
+  * interface_view: Update help text when it changes
+  * interface_view: Show infos for Hyperlink iface
+  * ipython_view: Handle more color-related ANSI escape codes
+  * ipython_view: Use raw string for regex
+  * Add project_license tag to AppStream metadata file
+  * Updated translations.
+- Add meson BuildRequires and macros following upstreams port to it
+
+-------------------------------------------------------------------
 Sun Oct  8 10:33:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.0:
