@@ -170,4 +170,14 @@
 </comment>
     <requestid>1169579</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8edc2bc738e5f35b869ec1907da0e9ae</srcmd5>
+    <version>0.20240505</version>
+    <time>1727970012</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20240505.
+  * For LLVM 19.
+</comment>
+    <requestid>1205331</requestid>
+  </revision>
 </revisionlist>

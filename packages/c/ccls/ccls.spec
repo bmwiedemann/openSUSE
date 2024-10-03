@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20240202
+Version:        0.20240505
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
