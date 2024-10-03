@@ -171,13 +171,8 @@ find core-* containers/{grizzly2,jdk,jetty}-http media/sse ext/{entity-filtering
 %pom_add_dep org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-transaction
 %pom_add_dep org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-validation
 
-# Fix reference to JDK tools jar
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 13}%{!?pkg_vcmp:0}
 # uses com.sun.javadoc apis removed in JDK 13
 %pom_disable_module wadl-doclet ext
-%endif
-%pom_xpath_remove "pom:dependencies/pom:dependency[pom:artifactId = 'tools']/pom:scope" ext/wadl-doclet
-%pom_xpath_remove "pom:dependencies/pom:dependency[pom:artifactId = 'tools']/pom:systemPath" ext/wadl-doclet
 
 # Don't use obsolete servlet API version
 %pom_remove_dep -r org.mortbay.jetty:servlet-api-2.5
@@ -288,7 +283,7 @@ sed -i -e 's/javax\.annotation\.\*;version="!"/javax.annotation.*/' $(find -name
 # Make optional dep on javax.activation
 sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' core-common/pom.xml
 %pom_add_dep javax.activation:javax.activation-api::provided core-common
-%pom_add_dep javax.xml.bind:jaxb-api::provided core-server ext/entity-filtering ext/wadl-doclet
+%pom_add_dep javax.xml.bind:jaxb-api::provided core-server ext/entity-filtering
 
 # All aggregation poms conflict because they have the same aId
 %{mvn_file} "org.glassfish.jersey.connectors:project" %{name}/connectors-project

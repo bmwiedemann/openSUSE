@@ -64,4 +64,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148585</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>dbcdae24293cd69bc3c1d89cf77b1a2a</srcmd5>
+    <version>2.28</version>
+    <time>1727970010</time>
+    <user>anag+factory</user>
+    <comment>fix build on sle15 and sle12</comment>
+    <requestid>1205333</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 23:59:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Disable wadl-doclet unconditionally, since it is broken with
+  all java versions
+
+-------------------------------------------------------------------
 Wed Feb 21 10:46:33 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
