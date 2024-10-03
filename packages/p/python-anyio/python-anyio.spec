@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros >= 20210127.3a18043
 BuildRequires:  %{python_module hypothesis >= 4.0}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
-BuildRequires:  %{python_module trio >= 0.23}
+BuildRequires:  %{python_module trio >= 0.26.1}
 BuildRequires:  %{python_module trustme}
 # /SECTION
 BuildRequires:  fdupes
@@ -49,7 +49,7 @@ Requires:       python-sniffio >= 1.1
 Requires:       python-exceptiongroup
 Requires:       python-typing_extensions
 %endif
-Suggests:       python-trio >= 0.23
+Suggests:       python-trio >= 0.26.1
 BuildArch:      noarch
 %python_subpackages
 

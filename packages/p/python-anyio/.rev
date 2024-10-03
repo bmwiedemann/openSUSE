@@ -319,4 +319,12 @@ SR for python stack proposal</comment>
   * Fixed cancellation delivery on asyncio incrementing the wrong</comment>
     <requestid>1193842</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>18dcd3253780556e236f6b7968da8cc7</srcmd5>
+    <version>4.6.0</version>
+    <time>1727971237</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205309</requestid>
+  </revision>
 </revisionlist>
