@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package javacc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@ Provides:       %{base_name}
 Name:           %{base_name}
 BuildRequires:  %{base_name}
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
@@ -82,7 +82,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -n %{base_name}-%{base_name}-%{version}
+%setup -q -n %{base_name}-%{base_name}-%{version}
 rm -f lib/*.jar
 %if %{without bootstrap}
 rm -f bootstrap/javacc.jar
@@ -96,7 +96,7 @@ rm examples/JavaGrammars/cpp/.gitignore
 %endif
 
 %build
-%{ant} -Dant.build.javac.{source,target}=8 \
+ant -Dant.build.javac.{source,target}=8 \
 %if %{with bootstrap}
   jar
 %else
@@ -112,7 +112,7 @@ install -pm0644 target/%{base_name}-%{version}.jar %{buildroot}%{_javadir}/%{bas
 
 # pom
 install -dm0755 %{buildroot}%{_mavenpomdir}
-install -pm0644 pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
 %add_maven_depmap %{base_name}.pom %{base_name}.jar
 # javadoc
 install -dm0755 %{buildroot}%{_javadocdir}/%{name}

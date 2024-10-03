@@ -175,4 +175,12 @@
     <comment>7.0.13</comment>
     <requestid>1128021</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>126d21171c7715a6c6d34532a20fd33b</srcmd5>
+    <version>7.0.13</version>
+    <time>1727971220</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205259</requestid>
+  </revision>
 </revisionlist>
