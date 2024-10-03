@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:06:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file a bit and generate the launcher script from
+  the spec file using the %%jpackage_script macro
+  + Fixes running with javapackage-tools >= 6.3
+
+-------------------------------------------------------------------
 Sun Sep 29 19:51:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

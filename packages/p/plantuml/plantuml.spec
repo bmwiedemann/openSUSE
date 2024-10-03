@@ -24,14 +24,11 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://plantuml.com/
 Source0:        https://github.com/plantuml/plantuml/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.script
 Source10:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
 Patch0:         build-with-javac-utf8-encoding.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  xmvn-install
-Requires:       java >= 1.8.0
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -59,7 +56,6 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q
 %patch -P 0 -p1
-cp %{SOURCE1} %{name}
 cp %{SOURCE10} .
 
 %build
@@ -67,31 +63,34 @@ ant
 
 # build javadoc
 export CLASSPATH=$(build-classpath ant):plantuml.jar
-javadoc -source 1.8 -encoding UTF-8 -Xdoclint:none -d javadoc $(find src -name "*.java") -windowtitle "PlantUML %{version}"
+javadoc \
+    -source 1.8 \
+    -encoding UTF-8 \
+    -notimestamp \
+    -Xdoclint:none \
+    -d javadoc \
+    -windowtitle "PlantUML %{version}" \
+    $(find src -name "*.java")
 
 %install
 # Set jar location
-%{mvn_file} net.sourceforge.%{name}:%{name} %{name}
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 %{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # Configure maven depmap
-%{mvn_artifact} net.sourceforge.%{name}:%{name}:%{version} %{name}.jar
-%mvn_install -J javadoc
-
-install -m 755 -d %{buildroot}%{_bindir}/
-install -m 755 -d %{buildroot}%{_javadir}
-install -m 755 %{name} %{buildroot}%{_bindir}/%{name}
-
-# Install jar file
-cp %{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
-
+%add_maven_depmap  net.sourceforge.%{name}:%{name}:%{version} %{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes %{buildroot}%{_datadir}
+# launcher script
+%jpackage_script net.sourceforge.plantuml.Run "" "" %{name} %{name}
 
 %files -f .mfiles
-%{_bindir}/plantuml
-%{_javadir}/%{name}-%{version}.jar
+%{_bindir}/%{name}
 %license COPYING
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license COPYING
 
 %changelog

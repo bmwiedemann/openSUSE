@@ -275,4 +275,12 @@
     <comment>Fix build after removal of the default %{java_home} define</comment>
     <requestid>1204568</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>f200ef8faeef801458810265a50d1cd5</srcmd5>
+    <version>1.2024.4</version>
+    <time>1727970050</time>
+    <user>anag+factory</user>
+    <comment>fix launcher with javapackage-tools &gt;= 6.3</comment>
+    <requestid>1205523</requestid>
+  </revision>
 </revisionlist>
