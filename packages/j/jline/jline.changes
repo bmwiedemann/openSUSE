@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  2 15:53:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Tue Feb 20 14:38:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

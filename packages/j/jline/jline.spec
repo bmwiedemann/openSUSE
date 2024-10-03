@@ -30,7 +30,7 @@ Patch1:         jline-jansi2.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jansi
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 #!BuildIgnore:  ant-antlr
 BuildArch:      noarch
 
@@ -55,22 +55,9 @@ This package contains the API documentation for %{name}.
 cp %{SOURCE1} build.xml
 mkdir -p lib
 
-# Remove maven-shade-plugin usage
-%pom_remove_plugin "org.apache.maven.plugins:maven-shade-plugin"
-# Remove animal sniffer plugin in order to reduce deps
-%pom_remove_plugin "org.codehaus.mojo:animal-sniffer-maven-plugin"
-
-# Remove unavailable and unneeded deps
-%pom_xpath_remove "pom:build/pom:extensions"
-%pom_remove_plugin :maven-site-plugin
-%pom_remove_plugin :maven-enforcer-plugin
-%pom_remove_plugin :maven-javadoc-plugin
-
-%pom_remove_parent
-
 %build
 build-jar-repository -s lib jansi
-%{ant} package javadoc
+ant package javadoc
 
 %install
 # jar
@@ -78,7 +65,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

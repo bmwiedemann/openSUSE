@@ -202,4 +202,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148108</requestid>
   </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>8983b092678056a2115abce3e988d8a2</srcmd5>
+    <version>2.14.6</version>
+    <time>1727971223</time>
+    <user>anag+factory</user>
+    <comment>Spec file cleanup</comment>
+    <requestid>1205268</requestid>
+  </revision>
 </revisionlist>
