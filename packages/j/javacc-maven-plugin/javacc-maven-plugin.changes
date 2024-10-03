@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  2 18:04:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1.0
+  * Changes
+    + Require Maven 3.6.3+
+    + Enable spotless for code formatting
+    + Do not overwrite javacc defaults
+    + move to annotations, use a prefix javacc. for all properties
+- Fetch source code from github using source service
+- Removed patch:
+  * javacc-maven-plugin-pom.patch
+    + not needed since the jtb is now packaged and we depend on it
+
+-------------------------------------------------------------------
 Wed Feb 21 10:45:39 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

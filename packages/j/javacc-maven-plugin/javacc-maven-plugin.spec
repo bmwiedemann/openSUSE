@@ -17,31 +17,32 @@
 
 
 Name:           javacc-maven-plugin
-Version:        2.6
+Version:        3.1.0
 Release:        0
 Summary:        Maven Plugin for processing JavaCC grammar files
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://mojo.codehaus.org/javacc-maven-plugin/
-#svn export http://svn.codehaus.org/mojo/tags/javacc-maven-plugin-2.6
-#tar cjf javacc-maven-plugin-2.6.tar.bz2 javacc-maven-plugin-2.6
-Source0:        javacc-maven-plugin-2.6.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Patch0:         javacc-maven-plugin-pom.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  mvn(edu.ucla.cs.compilers:jtb)
 BuildRequires:  mvn(net.java.dev.javacc:javacc)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-site-renderer)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildArch:      noarch
 
 %description
@@ -56,12 +57,12 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch -P 0 -b .sav
 cp -p %{SOURCE1} .
 
-# migrate to maven 3
-%pom_xpath_set pom:prerequisites/pom:maven 3.8.6
-%pom_change_dep :maven-project :maven-core
+# Only used for integration tests
+%pom_remove_plugin :maven-invoker-plugin
+
+%mvn_alias :javacc-maven-plugin org.javacc.plugin:
 
 %build
 %{mvn_build} -f -- \
