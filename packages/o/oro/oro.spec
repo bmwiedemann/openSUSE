@@ -1,7 +1,7 @@
 #
 # spec file for package oro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xml-commons-apis
 Provides:       %{full_name} = %{version}-%{release}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -64,7 +63,7 @@ for file in `find . -type f -name .cvsignore`; do rm -rf $file; done
 perl -pi -e 's#\@version\@#VERSION#g' $(grep -rl \@version\@ . |xargs)
 
 %build
-%ant \
+%{ant} \
 	-Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 	-Dfinal.name=%{name} jar javadocs
 
@@ -75,7 +74,7 @@ install -pm 0644 %{name}.jar %{buildroot}%{_javadir}/
 ln -sf %{name}.jar %{buildroot}%{_javadir}/%{full_name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
