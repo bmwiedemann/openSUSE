@@ -915,4 +915,16 @@ fix a jira reference in the changelog.
   - jsc#PED-8909</comment>
     <requestid>1198590</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4bd6e666ba91c3b447b8030a2b09958f</srcmd5>
+    <version>10.8.0</version>
+    <time>1727971202</time>
+    <user>anag+factory</user>
+    <comment>Updated python bindings for libvirt 10.8.0
+
+- Update to 10.8.0
+  - Add all new APIs and constants in libvirt 10.8.0
+  - jsc#PED-8909</comment>
+    <requestid>1204997</requestid>
+  </revision>
 </revisionlist>
