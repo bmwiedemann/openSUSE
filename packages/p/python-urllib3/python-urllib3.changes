@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Oct  3 05:10:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.3:
+  * Features
+    + Added support for Python 3.13.
+  * Bugfixes
+    + Fixed the default encoding of chunked request bodies to be UTF-8
+      instead of ISO-8859-1. All other methods of supplying a request body
+      already use UTF-8 starting in urllib3 v2.0.
+    + Fixed ResourceWarning on CONNECT with Python < 3.11.4 by backporting
+      python/cpython#103472.
+    + Fixed a crash where certain standard library hash functions were absent
+      in restricted environments.
+    + Added the Proxy-Authorization header to the list of headers to strip
+      from requests when redirecting to a different host. As before,
+      different headers can be set via Retry.remove_headers_on_redirect.
+    + Allowed passing negative integers as amt to read methods of
+      http.client.HTTPResponse as an alternative to None.
+    + Fixed issue where InsecureRequestWarning was emitted for HTTPS
+      connections when using Emscripten.
+    + Fixed HTTPConnectionPool.urlopen to stop automatically casting
+      non-proxy headers to HTTPHeaderDict. This change was premature as it
+      did not apply to proxy headers and HTTPHeaderDict does not handle byte
+      header values correctly yet.
+    + Changed InvalidChunkLength to ProtocolError when response terminates
+      before the chunk length is sent.
+    + Changed ProtocolError to be more verbose on incomplete reads with
+      excess content.
+    + Added support for HTTPResponse.read1() method.
+    + Fixed issue where requests against urls with trailing dots were
+      failing due to SSL errors when using proxy.
+    + Fixed HTTPConnection.proxy_is_verified and
+      HTTPSConnection.proxy_is_verified to be always set to a boolean after
+      connecting to a proxy. It could be None in some cases previously.
+    + Fixed an issue where headers passed in a request with json= would be
+      mutated
+    + Fixed HTTPSConnection.is_verified to be set to False when connecting
+      from a HTTPS proxy to an HTTP target. It was set to True previously.
+    + Fixed handling of new error message from OpenSSL 3.2.0 when configuring
+      an HTTP proxy as HTTPS
+    + Fixed TLS 1.3 post-handshake auth when the server certificate
+      validation is disabled
+  * HTTP/2 (experimental)
+    + Excluded Transfer-Encoding: chunked from HTTP/2 request body
+    + Added a probing mechanism for determining whether a given target
+      origin supports HTTP/2 via ALPN.
+    + Add support for sending a request body with HTTP/2
+  * Removals
+    + Drop support for end-of-life PyPy3.8 and PyPy3.9.
+- Drop patches, they are now included upstream:
+  * CVE-2024-37891.patch
+  * openssl-3.2.patch
+- Included patched hypercorn, which is only unpacked and used for the test
+  suite.
+
+-------------------------------------------------------------------
 Tue Jun 18 09:46:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add CVE-2024-37891.patch (bsc#1226469)

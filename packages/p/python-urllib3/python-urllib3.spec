@@ -18,6 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
+# No Quart for Python 3.10
+%define skip_python310 1
 %define psuffix -test
 %bcond_without test
 %else
@@ -26,42 +28,45 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.1.0
+Version:        2.2.3
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
 URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE openssl-3.2.patch gh#urllib3/urllib3#3271
-Patch1:         openssl-3.2.patch
-# PATCH-FIX-UPSTREAM https://github.com/urllib3/urllib3/commit/accff72ecc2f6cf5a76d9570198a93ac7c90270e Strip Proxy-Authorization header on redirects
-Patch2:         CVE-2024-37891.patch
-BuildRequires:  %{python_module base >= 3.7}
+# https://github.com/urllib3/urllib3/issues/3334
+%define hypercorn_commit d1719f8c1570cbd8e6a3719ffdb14a4d72880abb
+Source1:        https://github.com/urllib3/hypercorn/archive/%{hypercorn_commit}/hypercorn-%{hypercorn_commit}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #!BuildIgnore:  python-requests
 Requires:       ca-certificates-mozilla
-Requires:       python-certifi
-Requires:       python-cryptography >= 1.9
-Requires:       python-idna >= 3.4
-Requires:       python-pyOpenSSL >= 23.2.0
 Recommends:     python-Brotli >= 1.0.9
 Recommends:     python-PySocks >= 1.7.1
+Recommends:     python-h2 >= 4
+Recommends:     python-zstandard >= 0.18
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.9}
 BuildRequires:  %{python_module PySocks >= 1.7.1}
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module cryptography >= 1.9}
+BuildRequires:  %{python_module Quart >= 0.19}
+BuildRequires:  %{python_module cryptography >= 43}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module idna >= 3.4}
+BuildRequires:  %{python_module h2 >= 4.1}
+BuildRequires:  %{python_module httpx >= 0.25}
+BuildRequires:  %{python_module idna >= 3.7}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyOpenSSL >= 24.2}
 BuildRequires:  %{python_module pytest >= 7.4.0}
+BuildRequires:  %{python_module pytest-socket >= 0.7}
 BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module tornado >= 6.2}
+BuildRequires:  %{python_module quart-trio >= 0.11}
+BuildRequires:  %{python_module trio >= 0.26}
 BuildRequires:  %{python_module trustme >= 0.9.0}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 BuildRequires:  timezone
@@ -88,6 +93,11 @@ Highlights
 
 %prep
 %autosetup -p1 -n urllib3-%{version}
+# https://github.com/urllib3/urllib3/issues/3334
+%if %{with test}
+mkdir ../patched-hypercorn
+tar -C ../patched-hypercorn -zxf %{SOURCE1}
+%endif
 
 find . -type f -exec chmod a-x '{}' \;
 find . -name __pycache__ -type d -exec rm -fr {} +
@@ -104,6 +114,8 @@ find . -name __pycache__ -type d -exec rm -fr {} +
 
 %if %{with test}
 %check
+# https://github.com/urllib3/urllib3/issues/3334
+export PYTHONPATH="$PWD/../patched-hypercorn/hypercorn-%{hypercorn_commit}/src"
 # gh#urllib3/urllib3#2109
 export CI="true"
 # skip some randomly failing tests (mostly on i586, but sometimes they fail on other architectures)
@@ -116,6 +128,8 @@ skiplist+=" or test_recent_date"
 skiplist+=" or test_requesting_large_resources_via_ssl"
 # Try to access external evil.com
 skiplist+=" or test_deprecated_no_scheme"
+# weird threading issues on OBS runners
+skiplist+=" or test_http2_probe_blocked_per_thread"
 %pytest %{?jobs:-n %jobs} -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
 %endif
 
@@ -124,7 +138,7 @@ skiplist+=" or test_deprecated_no_scheme"
 %license LICENSE.txt
 %doc CHANGES.rst README.md
 %{python_sitelib}/urllib3
-%{python_sitelib}/urllib3-%{version}*-info
+%{python_sitelib}/urllib3-%{version}.dist-info
 %endif
 
 %changelog
