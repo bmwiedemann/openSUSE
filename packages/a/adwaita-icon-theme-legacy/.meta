@@ -1,0 +1,5 @@
+<package name="adwaita-icon-theme-legacy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="adwaita-icon-theme-legacy"/>
+</package>
