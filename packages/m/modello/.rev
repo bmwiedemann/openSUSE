@@ -153,4 +153,12 @@
     <comment></comment>
     <requestid>1179732</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>4d25778b9762087e56925d5db4ab632a</srcmd5>
+    <version>2.4.0</version>
+    <time>1727970007</time>
+    <user>anag+factory</user>
+    <comment>Build against velocity-engine-core</comment>
+    <requestid>1205319</requestid>
+  </revision>
 </revisionlist>

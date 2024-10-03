@@ -94,8 +94,6 @@ cp -p %{SOURCE1} .
 
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
 
-%pom_change_dep -r :velocity-engine-core :velocity
-
 %pom_remove_dep :jackson-bom
 
 %build

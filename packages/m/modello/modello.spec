@@ -48,7 +48,7 @@ BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  snakeyaml
 BuildRequires:  unzip
-BuildRequires:  velocity
+BuildRequires:  velocity-engine-core
 Requires:       aopalliance
 Requires:       atinject
 Requires:       google-guice
@@ -67,7 +67,7 @@ Requires:       sisu-inject
 Requires:       sisu-plexus
 Requires:       slf4j
 Requires:       snakeyaml
-Requires:       velocity
+Requires:       velocity-engine-core
 BuildArch:      noarch
 
 %description
@@ -109,9 +109,6 @@ cp -p %{SOURCE1} .
 
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
 
-# This builds correctly with the older velocity 1.x and avoids build cycles
-%pom_change_dep -r :velocity-engine-core :velocity
-
 %pom_remove_dep :jackson-bom
 
 %build
@@ -133,7 +130,7 @@ build-jar-repository -s lib \
     plexus/xml \
     slf4j/api \
     snakeyaml \
-    velocity
+    velocity-engine/velocity-engine-core
 
 %{ant} \
   -Dtest.skip=true \
@@ -166,7 +163,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
 
 %files -f .mfiles -f .mfiles-core
 %license LICENSE.txt LICENSE-2.0.txt
