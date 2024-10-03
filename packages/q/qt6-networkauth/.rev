@@ -239,4 +239,12 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182599</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b890505448bb51aad5227ab88f6ef6ab</srcmd5>
+    <version>6.7.3</version>
+    <time>1727971320</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205134</requestid>
+  </revision>
 </revisionlist>
