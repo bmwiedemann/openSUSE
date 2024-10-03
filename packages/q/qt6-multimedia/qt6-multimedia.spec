@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.2
+%define real_version 6.7.3
 %define short_version 6.7
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.7.2
+Version:        6.7.3
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -239,13 +239,13 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 # The GstreamerMediaPlugin library has a limited usage outside of Qt development
 # (needed to create unit tests for the gstreamer plugin)
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Multimedia/Qt6QGstreamerMediaPluginAdditionalTargetInfo.cmake
-rm %{buildroot}%{_qt6_descriptionsdir}/QGstreamerMediaPluginPrivate.json
-rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPlugin.a
-rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPlugin.prl
-rm %{buildroot}%{_qt6_metatypesdir}/qt6qgstreamermediapluginprivate_*_metatypes.json
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qgstreamermediaplugin_private.pri
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QGstreamerMediaPluginPrivate/
-rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPlugin/
+rm %{buildroot}%{_qt6_descriptionsdir}/QGstreamerMediaPluginImplPrivate.json
+rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPluginImpl.a
+rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPluginImpl.prl
+rm %{buildroot}%{_qt6_metatypesdir}/qt6qgstreamermediapluginimplprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qgstreamermediapluginimpl_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QGstreamerMediaPluginImplPrivate/
+rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPluginImpl/
 
 %ldconfig_scriptlets -n libQt6Multimedia6
 %ldconfig_scriptlets -n libQt6MultimediaQuick6
