@@ -1,0 +1,14 @@
+---
+ init.d/auditd.service |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/init.d/auditd.service
++++ b/init.d/auditd.service
+@@ -29,6 +29,7 @@ ExecStopPost=/sbin/auditctl -R /etc/audi
+ Restart=on-failure
+ # Do not restart for intentional exits. See EXIT CODES section in auditd(8).
+ RestartPreventExitStatus=2 4 6
++KillMode=mixed
+ 
+ ### Security Settings ###
+ MemoryDenyWriteExecute=true

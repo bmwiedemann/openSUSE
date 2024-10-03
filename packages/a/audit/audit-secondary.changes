@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:15:07 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Readd audit-allow-manual-stop.patch (removed by mistake)
+
+-------------------------------------------------------------------
+Tue Oct  1 14:43:13 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix plugin termination when using systemd service units (bsc#1215377)
+  * add auditd.service-fix-plugin-termination.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 16:51:29 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update audit-secondary.spec:

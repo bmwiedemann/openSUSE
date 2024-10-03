@@ -39,6 +39,8 @@ Patch6:         change-default-log_format.patch
 Patch7:         fix-hardened-service.patch
 Patch8:         enable-stop-rules.patch
 Patch9:         fix-auparse-test.patch
+Patch10:        auditd.service-fix-plugin-termination.patch
+Patch11:        audit-allow-manual-stop.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  kernel-headers >= 2.6.30
