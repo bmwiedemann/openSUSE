@@ -302,4 +302,12 @@
   * 0001-update-wayland_xml-to-version-1_23_0.patch</comment>
     <requestid>1197321</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6fa354e55c5709eb366ca3c1749706c8</srcmd5>
+    <version>6.7.3</version>
+    <time>1727971342</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.3</comment>
+    <requestid>1205153</requestid>
+  </revision>
 </revisionlist>

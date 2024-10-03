@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 28 08:23:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.3
+  * https://www.qt.io/blog/qt-6.7.3-released
+- Drop patches, merged upstream:
+  * 0001-Client-Ensure-that-guessed-popup-parent-has-a-shell-.patch
+  * 0001-client-Guard-against-windows-being-on-a-null-screen.patch
+  * 0002-Client-Improve-thread-safety-determining-window-size.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 08:36:28 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add patch to fix 'wl_shm' higher than interface version (2 > 1)
