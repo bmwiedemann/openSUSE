@@ -78,10 +78,8 @@ add_dep javax.mail mailapijar
 rm mail/src/test/java/com/sun/mail/imap/IMAPIdleUntaggedResponseTest.java
 rm mail/src/test/java/com/sun/mail/smtp/SMTPWriteTimeoutTest.java
 
-%pom_remove_parent .
-
 %build
-%{ant} -Djavac.source=1.8 -Djavac.target=1.8 \
+ant -Djavac.source=1.8 -Djavac.target=1.8 \
     -Dactivation.jar=$(find-jar glassfish-activation-api) \
     jar jars docs
 
@@ -108,20 +106,20 @@ ln -sf ../%{name}/javax.mail.jar %{buildroot}%{_javadir}/javax.mail/
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name pom.xml).pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name pom.xml).pom
 pompart=%{name}/$(get_name pom.xml).pom
 %add_maven_depmap ${pompart}
 for i in mailapijar smtp imap gimap pop3 dsn; do
-  %mvn_install_pom ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name ${i}/pom.xml).pom
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name ${i}/pom.xml).pom
   pompart=%{name}/$(get_name ${i}/pom.xml).pom
   jarpart=%{name}/$(get_name ${i}/pom.xml).jar
   %add_maven_depmap ${pompart} ${jarpart}
 done
-%mvn_install_pom mail/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mail/pom.xml).pom
+%{mvn_install_pom} mail/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mail/pom.xml).pom
 pompart=%{name}/$(get_name mail/pom.xml).pom
 jarpart=%{name}/$(get_name mail/pom.xml).jar
 %add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mail,org.eclipse.jetty.orbit:javax.mail.glassfish,com.sun.mail:jakarta.mail
-%mvn_install_pom mailapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mailapi/pom.xml).pom
+%{mvn_install_pom} mailapi/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/$(get_name mailapi/pom.xml).pom
 pompart=%{name}/$(get_name mailapi/pom.xml).pom
 jarpart=%{name}/$(get_name mailapi/pom.xml).jar
 %add_maven_depmap ${pompart} ${jarpart} -a javax.mail:mailapi
