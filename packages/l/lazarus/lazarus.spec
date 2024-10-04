@@ -19,7 +19,7 @@
 %define qt5_sover   1
 %define qt6_sover   6
 Name:           lazarus
-Version:        3.4
+Version:        3.6
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -149,7 +149,7 @@ This package contains LCL components for developing applications
 using the GTK2 widgetset.
 
 %package lcl-gtk3
-Summary:        Lazarus Component Library - GTK2 widgetset support
+Summary:        Lazarus Component Library - GTK3 widgetset support
 Requires:       %{name}-lcl = %{version}-%{release}
 Requires:       gtk3-devel >= 3.24.24
 
