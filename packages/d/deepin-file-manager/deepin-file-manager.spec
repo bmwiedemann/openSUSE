@@ -37,6 +37,8 @@ Patch2:         gcc-12.patch
 Patch3:         update-taglib-interface.patch
 # PATCH-FIX-UPSTRAM fix-build-on-icu-75.patch hillwood@opensuse.org - ICU 75 needs c++17
 Patch4:         fix-build-on-icu-75.patch
+# PATCH-FIX-UPSTRAM include-string_utils_h.patch hillwood@opensuse.org - Include string_utils.h to fix build on Tumbleweed
+Patch5:         include-string_utils_h.patch
 Patch99:        harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  4 13:21:20 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add include-string_utils_h.patch to fix build on Tumbleweed 
+
+-------------------------------------------------------------------
 Fri May 31 13:27:50 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-build-on-icu-75.patch, icu 75 needs c++17 
