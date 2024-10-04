@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 03 10:04:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.47.0:
+  * feat(stacked-diffs): Add origin fetch so sync will fully
+    pull+push
+  * docs: revise token-create page lightly
+  * feat(stack): introduce stack list command
+  * fix: use conventional linux package and archive file names
+  * chore(ci): run build_windows asap
+  * fix(stacked-diffs): fix MR creation for forks
+  * feat: cluster agent bootstrap command
+  * fix: glab mr view prompt disabled if NO_PROMPT is set with
+    multiple mr
+  * chore: insert commit subject + body to MR template descriptions
+  * chore: increase size of CI runners
+  * chore: optimize pipeline runtime
+  * feat: create personal, project or group tokens
+  * chore(deps): update @commitlint/config-conventional to ^19.5.0
+  * fix(repo clone): fix --with-shared behaviour
+  * chore: bump code intel component to v0.0.3
+  * chore(deps): update module k8s.io/client-go to v0.31.1
+  * chore(deps): update dependency @commitlint/lint to ^19.5.0
+  * fix: revise docker image dependencies
+  * chore(deps): update dependency @commitlint/format to ^19.5.0
+  * chore(deps): update golang to v1.23.1
+  * chore(deps): update module golang.org/x/oauth2 to v0.23.0
+
+-------------------------------------------------------------------
 Wed Sep 11 06:56:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.46.1:
