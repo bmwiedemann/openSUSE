@@ -18,10 +18,6 @@
     <param name="compression">xz</param>
   </service>
 
-  <service name="cargo_audit" mode="disabled">
-    <param name="srcdir">sevctl</param>
-  </service>
-
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">sevctl</param>
     <param name="compression">xz</param>

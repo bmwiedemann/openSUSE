@@ -25,7 +25,7 @@ License:        Apache-2.0
 URL:            https://github.com/virtee/sevctl
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 BuildRequires:  rubygem(asciidoctor)
@@ -40,8 +40,6 @@ Administrative utility for AMD SEV
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

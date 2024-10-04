@@ -87,4 +87,12 @@
   levels deep in the dependency tree and only fixed with the more agressive cargo update strategy</comment>
     <requestid>1141311</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4511c91a7b51d67cf75fcc6f5a2dd64b</srcmd5>
+    <version>0.4.3</version>
+    <time>1728054640</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205580</requestid>
+  </revision>
 </revisionlist>

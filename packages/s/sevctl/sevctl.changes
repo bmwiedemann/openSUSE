@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 18:17:16 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: Add direct dependency on cargo in addition to cargo-packaging.
+    This fixes build errors on 15SP7 where the inherited version of Rust 
+    is too old
+- Service: Remove deprecated cargo_config and cargo_audit services, both
+    are now handled by the cargo_vendor service
+
+-------------------------------------------------------------------
 Wed Jan 24 15:22:20 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Fix CVE-2023-50711: vmm-sys-util: out of bounds memory accesses (bsc#1218502, bsc#1218499)
