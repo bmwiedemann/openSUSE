@@ -24,11 +24,10 @@
 %bcond_without  static
 
 Name:           busybox
-Version:        1.36.1
+Version:        1.37.0
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
-Group:          System/Base
 URL:            https://www.busybox.net/
 Source:         https://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source2:        busybox.config
@@ -42,23 +41,24 @@ Source7:        busybox.config.static.warewulf3
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
 Patch2:         testsuite-gnu-echo.patch
-# PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
-Patch3:         ash-fix-segfault-d417193cf.patch
+# # PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
+# Patch3:         ash-fix-segfault-d417193cf.patch
 Patch4:         udhcp6-install-path.patch
 Patch5:         tc-no-TCA_CBQ.patch
 # other patches
 Patch100:       busybox.install.patch
-Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libselinux)
+# for test suite
+BuildRequires:  zip
+Provides:       useradd_or_adduser_dep
 #in SLE12 hostname is part of the net-tools package
 %if %{?suse_version} && %{?suse_version} <= 1315
 BuildRequires:  net-tools
 %else
 BuildRequires:  hostname
 %endif
-BuildRequires:  pkgconfig(libselinux)
-# for test suite
-BuildRequires:  zip
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -75,7 +75,6 @@ box but need special configuration, like udhcpc, the dhcp client.
 
 %package static
 Summary:        Static linked version of Busybox, a compact UNIX utility collection
-Group:          System/Base
 
 %description static
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -83,7 +82,6 @@ single executable.
 
 %package warewulf3
 Summary:        Static version of Busybox - for building Warewulf3
-Group:          System/Base
 
 %description warewulf3
 This version of busybox is only for building Warewulf3
@@ -91,7 +89,6 @@ https://github.com/warewulf/warewulf3
 
 %package testsuite
 Summary:        Testsuite of busybox
-Group:          Development/Testing
 Requires:       %{name} = %{version}
 Requires:       zip
 
@@ -100,8 +97,8 @@ Using this package you can test the busybox build on different kernels and glibc
 It needs to run with permission to the current directory, so either copy it away
 as is or run as root:
 
-cd /usr/share/busybox/testsuite
-PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
+cd %{_datadir}/busybox/testsuite
+PATH=%{_datadir}/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
 #SLE12 needs an empty line after autosetup for it to expand properly (bsc#1205420)
@@ -118,31 +115,31 @@ export CC="gcc"
 export HOSTCC=gcc
 %if %{with static}
 cat %{SOURCE3} %{SOURCE2} > .config
-make %{?_smp_mflags} -e oldconfig
-make -e %{?_smp_mflags}
+%make_build -e oldconfig
+%make_build -e
 mv busybox busybox-static
 %endif
 
 %if 0%{with ww3}
-make -e %{?_smp_mflags} clean
+%make_build -e clean
 cat %{SOURCE7} %{SOURCE3} %{SOURCE2} > .config
-make %{?_smp_mflags} -e oldconfig
-make -e %{?_smp_mflags}
+%make_build -e oldconfig
+%make_build -e
 mv busybox busybox-warewulf3
-make -e busybox.links %{?_smp_mflags}
+%make_build -e busybox.links
 mv busybox.links busybox-warewulf3.links
 %endif
 
-make -e %{?_smp_mflags} clean
+%make_build -e clean
 cp -a %{SOURCE2} .config
-make %{?_smp_mflags} -e oldconfig
+%make_build -e oldconfig
 #make -e %{?_smp_mflags}
-make -e
-make -e doc busybox.links %{?_smp_mflags}
+%make_build -e
+%make_build -e doc busybox.links
 
 %if 0%{?suse_version} >= 1550
 for i in busybox.links %{?with_ww3:busybox-warewulf3.links}; do
-    sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' $i
+    sed -i -e 's,^/\(s\?bin\)/,%{_prefix}/\1/,' $i
 done
 %endif
 
@@ -164,7 +161,7 @@ install -m 0644 busybox-warewulf3.links %{buildroot}%{_datadir}/busybox
 install -m 0755 busybox-warewulf3 %{buildroot}%{_bindir}
 %endif
 cp %{SOURCE2} %{buildroot}%{_datadir}/busybox/.config
-ln -s %_bindir/busybox %{buildroot}%{_datadir}/busybox/busybox
+ln -s %{_bindir}/busybox %{buildroot}%{_datadir}/busybox/busybox
 cp -a testsuite %{buildroot}%{_datadir}/busybox/testsuite
 
 %check
@@ -175,13 +172,13 @@ export CC="gcc"
 export HOSTCC=gcc
 export SKIP_KNOWN_BUGS=1
 export SKIP_INTERNET_TESTS=1
-make -e %{?_smp_mflags} test
+%make_build -e test
 
 %files
 %license LICENSE
 %doc docs/mdev.txt
 %config %{_sysconfdir}/man.conf
-%doc %{_mandir}/man1/busybox.1.gz
+%{_mandir}/man1/busybox.1%{?ext_man}
 %{_bindir}/busybox
 %{_bindir}/busybox.install
 %dir %{_datadir}/busybox

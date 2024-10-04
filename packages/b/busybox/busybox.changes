@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:55:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix busybox.config again (got broken with 1.37.0 update)
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Sat Sep 28 20:48:01 UTC 2024 - Matthias G. Eckermann <mge@suse.com>
+
+- Update to 1.37.0
+- remove unnecessary patch ash-fix-segfault-d417193cf.patch
+- Update default config to match 1.37.0 expectations
+
+-------------------------------------------------------------------
 Thu Mar 14 09:15:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - tc-no-TCA_CBQ.patch: Disable TCA_CBQ code if kernel headers don't 
