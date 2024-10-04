@@ -221,4 +221,12 @@
     version still supports test.</comment>
     <requestid>1194965</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>416b6c00970bfceeda6908127f23f117</srcmd5>
+    <version>6.5</version>
+    <time>1728054656</time>
+    <user>anag+factory</user>
+    <comment>- Add missing psuffix to name for multibuild.</comment>
+    <requestid>1205614</requestid>
+  </revision>
 </revisionlist>

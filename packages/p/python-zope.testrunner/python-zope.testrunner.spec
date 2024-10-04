@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 %{?sle15_python_module_pythons}
-Name:           python-zope.testrunner
+Name:           python-zope.testrunner%{psuffix}
 Version:        6.5
 Release:        0
 Summary:        Zope testrunner script
