@@ -15,7 +15,7 @@ shift # Keep only remaining options
 # Source the configuration
 #. ./.config
 
-h=`sort filelist.txt | uniq`
+h=`sort /usr/share/busybox/busybox.links | uniq`
 
 sharedlib_dir="0_lib"
 
@@ -60,8 +60,8 @@ if [ -n "$DO_INSTALL_LIBS" ] && [ x"$DO_INSTALL_LIBS" != x"n" ]; then
 	done
 fi
 
-if [ x"$cleanup" = x"1" ] && [ -e "$prefix/usr/bin/busybox" ]; then
-	inode=`ls -i "$prefix/usr/bin/busybox" | awk '{print $1}'`
+if [ x"$cleanup" = x"1" ] && [ -e "$prefix/bin/busybox" ]; then
+	inode=`ls -i "$prefix/bin/busybox" | awk '{print $1}'`
 	sub_shell_it=`
 		cd "$prefix"
 		for d in usr/sbin usr/bin sbin bin; do
@@ -76,9 +76,9 @@ if [ x"$cleanup" = x"1" ] && [ -e "$prefix/usr/bin/busybox" ]; then
 	exit 0
 fi
 
-rm -f "$prefix/usr/bin/busybox" || exit 1
+rm -f "$prefix/bin/busybox" || exit 1
 mkdir -p "$prefix/bin" || exit 1
-install -m 755 /usr/bin/busybox "$prefix/usr/bin/busybox" || exit 1
+install -m 755 /usr/bin/busybox "$prefix/bin/busybox" || exit 1
 
 for i in $h; do
 	appdir=`dirname "$i"`
@@ -93,7 +93,7 @@ for i in $h; do
 			ln $linkopts busybox "$prefix/$i" || exit 1
 		else
 			rm -f "$prefix/$i"
-			echo "../usr/bin/busybox" >"$prefix/$i"
+			echo "#!/bin/busybox" >"$prefix/$i"
 			chmod +x "$prefix/$i"
 		fi
 		echo "	$prefix/$i"
@@ -108,19 +108,16 @@ for i in $h; do
 		fi
 	else
 		if [ x"$linkopts" = x"-f" ]; then
-			bb_path="$prefix/usr/bin/busybox"
+			bb_path="$prefix/bin/busybox"
 		else
 			case "$appdir" in
 			/)
-				bb_path="../usr/bin/busybox"
+				bb_path="usr/bin/busybox"
 			;;
-			/bin)
-				bb_path="../usr/bin/busybox"
+			/bin | /usr/bin)
+				bb_path="../bin/busybox"
 			;;
-			/sbin)
-				bb_path="../usr/bin/busybox"
-			;;
-			/usr/bin | /usr/sbin)
+			/sbin | /usr/sbin)
 				bb_path="../bin/busybox"
 			;;
 			*)

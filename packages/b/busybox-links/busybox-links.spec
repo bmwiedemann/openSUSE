@@ -85,6 +85,7 @@ Source58:       filelist-udhcpc.txt
 # out ouf WORKDIR into the package directory
 Source98:       create-filelists.sh
 Source99:       Dockerfile
+BuildRequires:  busybox
 Requires:       busybox = %{version}
 Requires:       busybox-adduser = %{version}
 Requires:       busybox-attr = %{version}
@@ -611,15 +612,17 @@ cp %{_sourcedir}/filelist*.txt .
 %build
 %if 0%{?suse_version} < 1550
 echo "/bin/sh" >> filelist-sh.txt
-echo -e "/sbin/loadkmap" >> filelist-kbd.txt
 %endif
 
-cat filelist-*.txt | sort -u > filelist.txt
-
 %install
-mkdir -p %{buildroot}%{_bindir}
 bash %{_sourcedir}/busybox.install %{buildroot} --symlinks
-rm %{buildroot}%{_bindir}/busybox
+rm %{buildroot}/bin/busybox %{buildroot}%{_bindir}/[[
+# Move files to correct directories
+mv %{buildroot}%{_sbindir}/{arping,chroot,ifconfig,route,setfont,setlogcons} %{buildroot}%{_bindir}/
+mv %{buildroot}%{_bindir}/{traceroute,traceroute6} %{buildroot}%{_sbindir}/
+ln -sf %{_sbindir}/lsmod %{buildroot}%{_bindir}/lsmod
+ln -sf %{_sbindir}/ip %{buildroot}%{_bindir}/ip
+ln -sf %{_sbindir}/sestatus %{buildroot}%{_bindir}/sestatus
 ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
 %if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh

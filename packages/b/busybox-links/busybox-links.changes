@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  4 08:39:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Partly revert changes from Aug 8th 2023 to automatically detect
+  changes in busybox configuration
+- Add getfattr applet to attr filelist
+
+-------------------------------------------------------------------
+Thu Oct  3 14:00:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire busybox: as we want to track the version of busybox,
+  we need to ensure busybox is part of the buildroot.
+
+-------------------------------------------------------------------
 Wed Feb 21 16:40:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - busybox-udhcpc conflicts with udhcp.
