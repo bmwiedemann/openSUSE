@@ -15,4 +15,12 @@
     <comment>Remove nonfree code from javadoc</comment>
     <requestid>1114058</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a56d9711d203bc9961565dd3689b1008</srcmd5>
+    <version>10.9</version>
+    <time>1728054515</time>
+    <user>anag+factory</user>
+    <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
+    <requestid>1205529</requestid>
+  </revision>
 </revisionlist>
