@@ -18,7 +18,7 @@
 
 
 Name:           hdjmod
-Version:        1.35
+Version:        1.36
 Release:        0
 Summary:        Support for Hercules DJ Devices
 License:        GPL-2.0-or-later

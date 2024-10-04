@@ -232,4 +232,13 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
   * Compatibility with GCC 14</comment>
     <requestid>1197717</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d628959c52a6a2f1ea2a19762cf4dfc3</srcmd5>
+    <version>1.36</version>
+    <time>1728054636</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.36
+  * Compatibility with Linux 6.12</comment>
+    <requestid>1205564</requestid>
+  </revision>
 </revisionlist>
