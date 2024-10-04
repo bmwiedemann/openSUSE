@@ -16,58 +16,59 @@
 #
 
 
+%define pythons python3
 Name:           borgmatic
-Version:        1.8.9
+Version:        1.8.14
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
-Group:          Productivity/Archiving/Backup
-URL:            https://torsion.org/borgmatic/
-Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
-Source99:       %{name}.rpmlintrc
-# PATCH-FIX-OPENSUSE
-Patch1:         skip-tests.patch
-# testing requirements
+URL:            https://torsion.org/borgmatic
+Source:         https://github.com/borgmatic-collective/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module apprise}
+BuildRequires:  %{python_module atomicwrites}
+BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module docopt}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module flexmock}
+BuildRequires:  %{python_module jsonschema >= 3.2.0}
+BuildRequires:  %{python_module mccabe}
+BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pluggy}
+BuildRequires:  %{python_module pycodestyle}
+BuildRequires:  %{python_module pyflakes}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module ruamel.yaml}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
+# Testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.8
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-appdirs
-BuildRequires:  python3-apprise
-BuildRequires:  python3-atomicwrites
-BuildRequires:  python3-attrs
-BuildRequires:  python3-click
-BuildRequires:  python3-colorama
-BuildRequires:  python3-coverage
-BuildRequires:  python3-docopt
-BuildRequires:  python3-flake8
-BuildRequires:  python3-flexmock
-BuildRequires:  python3-jsonschema >= 3.2.0
-BuildRequires:  python3-mccabe
-BuildRequires:  python3-more-itertools
-BuildRequires:  python3-pluggy
-BuildRequires:  python3-py
-BuildRequires:  python3-pycodestyle
-BuildRequires:  python3-pyflakes
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-requests
-BuildRequires:  python3-ruamel.yaml
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-toml
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
+Requires:       %{pythons}-colorama > 0.3.9
+Requires:       %{pythons}-jsonschema >= 3.2.0
+Requires:       %{pythons}-packaging
+Requires:       %{pythons}-requests
+Requires:       %{pythons}-ruamel.yaml > 0.15.0
+Requires:       %{pythons}-setuptools
 Requires:       borgbackup
-Requires:       python3-colorama > 0.3.9
-Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-requests
-Requires:       python3-ruamel.yaml > 0.15.0
-Requires:       python3-setuptools
-ExcludeArch:    %ix86
+Suggests:       %{pythons}-apprise
 BuildArch:      noarch
+ExcludeArch:    %{ix86}
+%python_subpackages
 
 %description
 borgmatic is a Python wrapper script for the Borg backup software
@@ -86,21 +87,22 @@ sed -i -e "s/^LogRateLimitIntervalSec=/#LogRateLimitIntervalSec=/" sample/system
 %endif
 
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
-perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
-perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic.service
-perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic-user.service
-perl -pi -e "s,=sleep,=/usr/bin/sleep," sample/systemd/borgmatic.service
-perl -pi -e "s,=sleep,=/usr/bin/sleep," sample/systemd/borgmatic-user.service
-perl -pi -e "s,=systemd-inhibit,=/usr/bin/systemd-inhibit," sample/systemd/borgmatic.service
+perl -pi -e "s,PATH=\\$PATH:%{_prefix}/local/bin /root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/cron/borgmatic
+perl -pi -e "s,/root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/systemd/borgmatic.service
+perl -pi -e "s,/root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/systemd/borgmatic-user.service
+perl -pi -e "s,=sleep,=%{_bindir}/sleep," sample/systemd/borgmatic.service
+perl -pi -e "s,=sleep,=%{_bindir}/sleep," sample/systemd/borgmatic-user.service
+perl -pi -e "s,=systemd-inhibit,=%{_bindir}/systemd-inhibit," sample/systemd/borgmatic.service
 perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
 perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
 
 %build
+%python_build
 # Create the manpage
 pandoc -s -f markdown -t man README.md -o borgmatic.1
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python_install
 install -d %{buildroot}%{_sysconfdir}/borgmatic
 install -d %{buildroot}%{_sysconfdir}/borgmatic.d
 install -d %{buildroot}%{_docdir}/%{name}/sample/cron
@@ -121,9 +123,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcborgmatic
 # venv, we face problems with setuptools (borg uses pkg_resources to locate the installed
 # package), while py.test relies on the usual module handling. <hpj@urpla.net>
 export LANG=en_US.UTF-8
-python3 -m venv --system-site-packages --without-pip borgmatic-env
+%python_exec -m venv --system-site-packages --without-pip borgmatic-env
 source borgmatic-env/bin/activate
-python3 setup.py install
+%python_exec setup.py install
 PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
 
 %post
@@ -144,14 +146,12 @@ fi
 %files
 %doc AUTHORS NEWS README.md
 %license LICENSE
-%config %ghost %{_sysconfdir}/borgmatic/config.yaml
+%config %ghost %attr(0600,root,root) %{_sysconfdir}/borgmatic/config.yaml
 %dir %{_sysconfdir}/borgmatic
 %dir %{_sysconfdir}/borgmatic.d
 %dir %{_docdir}/%{name}/sample
-%dir %{_docdir}/%{name}/sample/cron
-%dir %{_docdir}/%{name}/sample/systemd
-%{python3_sitelib}/borgmatic/
-%{python3_sitelib}/borgmatic-%{version}-py%{py3_ver}.egg-info
+%{python_sitelib}/borgmatic/
+%{python_sitelib}/borgmatic-%{version}-py%{py3_ver}.egg-info
 %{_unitdir}/borgmatic.service
 %{_unitdir}/borgmatic.timer
 %{_bindir}/borgmatic
