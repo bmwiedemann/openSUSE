@@ -927,4 +927,13 @@
     mentioned documents</comment>
     <requestid>1202731</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>f89dab17a976653a47139ae6510667bb</srcmd5>
+    <version>2.4.2.1</version>
+    <time>1728054672</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.2.1:
+  * Incliudes last minute fix. This is the read 2.4.2</comment>
+    <requestid>1205669</requestid>
+  </revision>
 </revisionlist>
