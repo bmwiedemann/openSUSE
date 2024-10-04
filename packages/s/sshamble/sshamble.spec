@@ -1,6 +1,7 @@
 #
 # spec file for package sshamble
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           sshamble
-Version:        0.0.3
+Version:        0.0.5
 Release:        0
 Summary:        Security testing toolset for SSH
 License:        BSD-2-Clause
