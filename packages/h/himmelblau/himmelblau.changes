@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 02 20:29:43 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.6.0+git.0.b8dae18:
+  * Attempt to fix the cargo version in launchpad build
+  * Add branch stable-0.6.x to the workflows
+  * Install the pam module to the proper location
+  * Update README.md
+  * Add a debug option to the config
+  * Add a pam option for the OpenSSH 2876 workaround
+  * Update to the latest libhimmelblau
+  * Authorize all users when pam_allow_groups is empty
+  * Fix clippy warnings
+  * Fix pam echo not displayed via ssh
+  * Fix pam failure to register Pin following mfa poll
+  * Fork from kanidm
+  * Version 0.6.0
+  * Add cargo deb build
+  * Version 0.5.3
+  * Improve the README installation instructions
+  * Add `make install` command
+  * Improve Debian/Ubuntu install instructions
+  * Fix tag push permissions for tag-version workflow
+  * Version 0.5.2
+  * Add a version check script
+  * Version 0.5.1
+  * Remove the rustc dependency, breaking rustup
+  * Added Debian packaging workflow and files
+
+-------------------------------------------------------------------
 Thu Sep 12 00:22:33 UTC 2024 - William Brown <william.brown@suse.com>
 
 - explicitly depend on cargo to pull in latest compiler revision

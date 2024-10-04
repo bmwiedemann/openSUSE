@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.5.0+git.0.22f84f0
+Version:        0.6.0+git.0.b8dae18
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        GPL-3.0-or-later
@@ -25,6 +25,7 @@ URL:            https://github.com/openSUSE/himmelblau
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
@@ -37,6 +38,7 @@ BuildRequires:  libopenssl-3-devel
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  pam-devel
+BuildRequires:  patchelf
 BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel
@@ -95,13 +97,19 @@ install -D -d -m 0755 %{buildroot}/%{_sysconfdir}/himmelblau
 cp src/config/himmelblau.conf.example %{buildroot}/%{_sysconfdir}/himmelblau/himmelblau.conf
 cp target/release/libnss_%{name}.so target/release/libnss_%{name}.so.2
 install -D -d -m 0755 %{buildroot}/%{_libdir}
+patchelf --set-soname libnss_himmelblau.so.2 target/release/libnss_himmelblau.so.2
+strip --strip-unneeded target/release/libnss_himmelblau.so.2
 install -m 0755 target/release/libnss_%{name}.so.2 %{buildroot}/%{_libdir}
 install -D -d -m 0755 %{buildroot}/%{_pam_moduledir}
+strip --strip-unneeded target/release/libpam_himmelblau.so
 install -m 0755 target/release/libpam_%{name}.so %{buildroot}/%{_pam_moduledir}/pam_%{name}.so
 install -D -d -m 0755 %{buildroot}%{_sbindir}
+strip --strip-unneeded target/release/himmelblaud
+strip --strip-unneeded target/release/himmelblaud_tasks
 install -m 0755 target/release/himmelblaud %{buildroot}/%{_sbindir}
 install -m 0755 target/release/himmelblaud_tasks %{buildroot}/%{_sbindir}
 install -D -d -m 0755 %{buildroot}%{_bindir}
+strip --strip-unneeded target/release/aad-tool
 install -m 0755 target/release/aad-tool %{buildroot}/%{_bindir}
 install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud.service %{buildroot}%{_unitdir}/himmelblaud.service
