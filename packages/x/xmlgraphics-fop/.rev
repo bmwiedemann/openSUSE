@@ -593,4 +593,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148006</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>412e415c6a40364bc1f3215bed27165f</srcmd5>
+    <version>2.8</version>
+    <time>1728054512</time>
+    <user>anag+factory</user>
+    <comment>Adapt scripts to the new javapackages-tools version</comment>
+    <requestid>1205393</requestid>
+  </revision>
 </revisionlist>

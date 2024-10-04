@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 10:53:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt the scripts to the new javapackages-tools version
+
+-------------------------------------------------------------------
 Tue Feb 20 13:22:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
