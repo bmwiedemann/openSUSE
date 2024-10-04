@@ -386,4 +386,12 @@
 </comment>
     <requestid>1205032</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8bda2c6ac6bdd08eb0ddd850d9752c06</srcmd5>
+    <version>3.13.0~rc3</version>
+    <time>1728054627</time>
+    <user>anag+factory</user>
+    <comment>- Drop .pyc files from docdir for reproducible builds (bsc#1230906).</comment>
+    <requestid>1205550</requestid>
+  </revision>
 </revisionlist>

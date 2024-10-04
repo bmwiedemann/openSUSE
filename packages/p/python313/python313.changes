@@ -106,6 +106,7 @@ Tue Oct  1 15:40:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       (temporarily) disallowed when the GIL is disabled.
 - Remove upstreamed patch:
   - gh-124040-fix-test-math-i586.patch
+- Drop .pyc files from docdir for reproducible builds (bsc#1230906).
 
 -------------------------------------------------------------------
 Thu Sep 12 12:05:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
