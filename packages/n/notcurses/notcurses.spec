@@ -2,7 +2,7 @@
 # spec file for package notcurses
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        3.0.9
+Version:        3.0.11
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -45,6 +45,7 @@ BuildRequires:  python3-cffi
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
+BuildRequires:  qrcodegen-devel
 BuildRequires:  pkgconfig(libavcodec) >= 57.0
 BuildRequires:  pkgconfig(libavformat) >= 57.0
 BuildRequires:  pkgconfig(libavutil) >= 56.0
@@ -56,7 +57,6 @@ BuildRequires:  pkgconfig(zlib)
 %if %{with pandoc}
 BuildRequires:  python3-pypandoc
 %endif
-BuildRequires:  qrcodegen-devel
 
 %description
 notcurses facilitates the creation of modern TUI programs, making
@@ -219,12 +219,10 @@ cd python
 %python3_install
 %fdupes %{buildroot}/%{python3_sitearch}
 
-%post   -n libnotcurses%{sover} -p /sbin/ldconfig
-%postun -n libnotcurses%{sover} -p /sbin/ldconfig
-%post   -n libnotcurses-core%{sover} -p /sbin/ldconfig
-%postun -n libnotcurses-core%{sover} -p /sbin/ldconfig
-%post   -n libnotcurses++%{sover} -p /sbin/ldconfig
-%postun -n libnotcurses++%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnotcurses%{sover}
+%ldconfig_scriptlets -n libnotcurses-core%{sover}
+%ldconfig_scriptlets -n libnotcurses++%{sover}
+%ldconfig_scriptlets -n libnotcurses-ffi%{sover}
 
 %check
 cd build
@@ -262,7 +260,7 @@ cd build
 %{_mandir}/man1/ncplayer.1%{?ext_man}
 %{_mandir}/man1/ncls.1%{?ext_man}
 %{_mandir}/man1/ncneofetch.1%{?ext_man}
-%{_mandir}/man1/tfman.1.gz
+%{_mandir}/man1/tfman.1%{?ext_man}
 %endif
 %{_datadir}/notcurses/
 
@@ -295,6 +293,7 @@ cd build
 %{_libdir}/cmake/Notcurses++/Notcurses++ConfigVersion.cmake
 
 %files -n python3-notcurses
-%{python3_sitearch}/*
+%{python3_sitearch}/notcurses
+%{python3_sitearch}/notcurses-3.0.10*-info
 
 %changelog

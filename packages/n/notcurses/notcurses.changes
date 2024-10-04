@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:06:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.11
+  https://github.com/dankamongmen/notcurses/releases/tag/v3.0.11
+- Update to version 3.0.10
+  https://github.com/dankamongmen/notcurses/releases/tag/v3.0.10
+- Use %ldconfig_scriptlets macros
+
+-------------------------------------------------------------------
 Tue Feb 27 22:03:41 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Use the correct documentation's path.
