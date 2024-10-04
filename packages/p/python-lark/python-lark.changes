@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:30:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Bugfix: Earley now respects ambiguity='resolve' again.
+- update to 1.2.1:
+  * Dropped support for Python versions lower than 3.8
+  * Several bugfixes in the Earley algorithm, related to
+    suppressed ambiguities
+  * Improved performance in `InteractiveParser.accepts()`
+  * Give "Shaping the tree" clear sub-headings
+  * Fix for when providing a transformer with a Token
+  * Pin types-regex to a working version
+  * Add Outlines to list of projects using Lark
+  * Code coverage: Update Python version
+  * Attempt to solve performance problems in accepts()
+  * Docs: Added Indenter
+  * Clean up test_parser.py, use xFail instead of skip where
+    appropriate
+  * Update config and drop python < 3.8
+  * BUGFIX Earley: Now yielding a previously repressed ambiguity
+  * Fix SymbolNode.end for completed tokens
+  * Disable ForestToParseTree cache when ambiguity='resolve'
+  * Bugfix for issue #1434
+
+-------------------------------------------------------------------
 Sat Jan 13 20:25:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.9:

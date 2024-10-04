@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lark
-Version:        1.1.9
+Version:        1.2.2
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT
