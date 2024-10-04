@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  2 13:48:57 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.14
+
+- Update 2.4.14
+  * Add CPython 3.12.7 by @edgarrmondragon in #3078
+  * Add CPython 3.13.0rc3 by @edgarrmondragon in #3077
+
+-------------------------------------------------------------------
 Mon Sep 23 07:48:44 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.13
 
 - Update 2.4.13
