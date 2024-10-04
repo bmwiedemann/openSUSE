@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  3 12:17:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.110:
+  * no CLI-related changes in this release
+  * General
+    - [Docs] MAINTAINERS: Update maintainer list @Vaibhav701161
+      (#12167)
+    - [chore] Fix failing go static check. @MUzairS15 (#12126)
+    - [Docs] Add Field Descriptions Meshery CRDs
+      @TomiwaAribisala-git (#11674)
+
+-------------------------------------------------------------------
 Mon Sep 30 16:52:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.109:
