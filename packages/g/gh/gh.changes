@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct 02 11:28:34 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.58.0:
+  * build(deps): bump github.com/theupdateframework/go-tuf/v2
+  * Include `dnf5` commands
+  * Add GPG key instructions to appropriate sections
+  * Update docs language to remove possible confusion around 'where you log in'
+  * Change conditional in promptForHostname to better reflect prompter changes
+  * Shorten language on Authenticate with a GitHub host.
+  * Update language on docstring for `gh auth login`
+  * Change prompts for `gh auth login` to reflect change from GHE to Other
+  * Sentence case 'Other' option in hostname prompt
+  * build(deps): bump github.com/henvic/httpretty from 0.1.3 to 0.1.4
+  * Add documentation explaining how to use `hostname` for `gh auth login`
+  * Replace "GitHub Enterprise Server" with "other" in `gh auth login` prompt
+  * fix tenant-awareness for trusted-root command
+  * Fix test
+  * Update pkg/cmd/extension/manager.go
+  * Update comment formatting
+  * Use new HasActiveToken method in trustedroot.go
+  * Add HasActiveToken method to AuthConfig interface
+  * Add HasActiveToken to AuthConfig.
+  * Improve error presentation
+  * Improve the suggested command for creating an issue when an extension doesn't have a binary for your platform
+  * Update pkg/cmd/attestation/trustedroot/trustedroot_test.go
+  * build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.4 to 2.0.5
+  * enforce auth for tenancy
+  * disable auth check for att trusted-root cmd
+  * better error for att verify custom issuer mismatch
+  * Enhance gh repo create docs, fix random cmd link
+
+-------------------------------------------------------------------
 Wed Sep 18 06:15:39 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.57.0:
