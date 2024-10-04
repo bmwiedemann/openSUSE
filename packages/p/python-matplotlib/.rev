@@ -966,4 +966,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1178866</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>51550c0e4d85a3719fc38dacce54c0a9</srcmd5>
+    <version>3.9.0</version>
+    <time>1728054510</time>
+    <user>anag+factory</user>
+    <comment>- Disable nbagg and wx plugin also on Leap16</comment>
+    <requestid>1205391</requestid>
+  </revision>
 </revisionlist>

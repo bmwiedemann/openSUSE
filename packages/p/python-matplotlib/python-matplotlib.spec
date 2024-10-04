@@ -16,6 +16,8 @@
 #
 
 
+%define SLE_VERSION 1600
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -97,10 +99,10 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module matplotlib-nbagg = %{version} if %python-base >= 3.10}
 %endif
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module matplotlib-wx = %{version}}
 %endif
 # SECTION latex test dependencies
@@ -115,7 +117,7 @@ BuildRequires:  %{python_module cairo >= 1.14.0}
 BuildRequires:  %{python_module cairocffi >= 0.8}
 # /SECTION cairo
 # SECTION nbagg backend tests
-%if %{without ringdisabled} && 0%{?suse_version} > 1500
+%if %{without ringdisabled} && 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module nbconvert if %python-base >= 3.10}
 BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 %endif
@@ -123,7 +125,7 @@ BuildRequires:  %{python_module nbformat if %python-base >= 3.10}
 # SECTION qt backends: Only test PyQt5 in Minimal-X
 BuildRequires:  %{python_module qt5}
 %if %{without ringdisabled}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > %SLE_VERSION
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  python3-pyside2
 BuildRequires:  python3-pyside6
@@ -269,7 +271,7 @@ Requires:       python-tornado
 This package includes the browser-based webagg backend
 for the %{name} plotting package
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > %SLE_VERSION
 %package        wx
 Summary:        WxWidgets backend for %{name}
 Requires:       %{name} = %{version}
@@ -451,7 +453,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
-%if 0%{?suse_version} > 1500 && 0%{?python_version_nodots} >= 310
+%if 0%{?suse_version} > %SLE_VERSION && 0%{?python_version_nodots} >= 310
 %files %{python_files nbagg}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_nbagg.py*
@@ -498,7 +500,7 @@ $python -m pytest --pyargs matplotlib.tests \
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_webagg_core.*.py*
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > %SLE_VERSION
 %files %{python_files wx}
 %license LICENSE/
 %{python_sitearch}/matplotlib/backends/backend_wx.py*
