@@ -44,6 +44,8 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source99:       python-panel-rpmlintrc
 %include        %{_sourcedir}/node_modules.spec.inc
+# PATCH-FEATURE-OPENSUSE exclude-package-lock.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
+Patch0:         exclude-package-lock.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.6}

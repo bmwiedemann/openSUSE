@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:03:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add exclude-package-lock.patch
+  * Do not install package-lock.json
+  * Avoids non-reproducible local registry port
+  * boo#1231254 gh#openSUSE/obs-service-node_modules#41
+
+-------------------------------------------------------------------
 Wed Sep 25 10:38:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.0
