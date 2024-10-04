@@ -25,7 +25,7 @@
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0

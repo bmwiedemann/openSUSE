@@ -1412,4 +1412,41 @@ FIXES (LSP):
     <comment>- fix the post scriptlet (forwarded request 1202252 from rrahl0)</comment>
     <requestid>1202253</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>620f31830f642aa73b55d21ff1845f35</srcmd5>
+    <version>0.10.2</version>
+    <time>1728054663</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.2
+- Features
+ * jumplist: Allow opting out of removing unloaded buffers (#30419)
+- Bug Fixes
+ * api: Error properly with invalid field in nvim_open_win (#30078)
+ * api: Nvim_buf_get_text() crashes with large negative column #28740
+ * api: Fix crash/leak with float title/footer on error (#30543)
+ * channel: Handle writing to file instead of pipe (#30520)
+ * column: Set signcolumn width after splitting window (#30556)
+ * completion: Don't include &lt;Lua function&gt; in -complete= (#30209)
+ * decor: Don't use separate DecorSignHighlight for url (#30096)
+ * decor: Exclude invalid marks from meta total
+ * diagnostics: Don't apply extmarks to invalid lines #29321
+ * diff: Use mmfile_t in linematch
+ * filetype: Handle .in files with no filename (#30487)
+ * float: Properly find last window of tabpage (#30571)
+ * health: Fix pyenv root and python exepath detect issue
+ * health: Return correct name from 'path2name()'
+ * lsp: Don't send foreign diagnostics to servers in buf.code_action (#29501)
+ * lsp: Avoid reusing diagnostics from different servers in actions (#30002)
+ * lsp: Return call hierarchy item, not the index (#30145)
+ * lsp: Handle out-of-bounds character positions #30288
+ * lsp: Handle encoding bounds in str_utfindex_enc
+ * lsp: Handle nil bytes in strings
+ * lua: Ignore stdout and stderr for xdg-open
+ * man: Avoid setting v:errmsg (#30052)
+ * man: Check if buffer is valid before restoring 'tagfunc' (#30180)
+ * regexp: Fix typo in E888 error message (#30161)
+ * runtime: Sync bundled treesitter queries
+ * runtime: Sync bundled treesitter queries (forwarded request 1205561 from mvyskocil)</comment>
+    <requestid>1205619</requestid>
+  </revision>
 </revisionlist>

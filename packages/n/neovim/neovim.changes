@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Oct  3 16:06:51 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 0.10.2
+- Features
+ * jumplist: Allow opting out of removing unloaded buffers (#30419)
+- Bug Fixes
+ * api: Error properly with invalid field in nvim_open_win (#30078)
+ * api: Nvim_buf_get_text() crashes with large negative column #28740
+ * api: Fix crash/leak with float title/footer on error (#30543)
+ * channel: Handle writing to file instead of pipe (#30520)
+ * column: Set signcolumn width after splitting window (#30556)
+ * completion: Don't include <Lua function> in -complete= (#30209)
+ * decor: Don't use separate DecorSignHighlight for url (#30096)
+ * decor: Exclude invalid marks from meta total
+ * diagnostics: Don't apply extmarks to invalid lines #29321
+ * diff: Use mmfile_t in linematch
+ * filetype: Handle .in files with no filename (#30487)
+ * float: Properly find last window of tabpage (#30571)
+ * health: Fix pyenv root and python exepath detect issue
+ * health: Return correct name from 'path2name()'
+ * lsp: Don't send foreign diagnostics to servers in buf.code_action (#29501)
+ * lsp: Avoid reusing diagnostics from different servers in actions (#30002)
+ * lsp: Return call hierarchy item, not the index (#30145)
+ * lsp: Handle out-of-bounds character positions #30288
+ * lsp: Handle encoding bounds in str_utfindex_enc
+ * lsp: Handle nil bytes in strings
+ * lua: Ignore stdout and stderr for xdg-open
+ * man: Avoid setting v:errmsg (#30052)
+ * man: Check if buffer is valid before restoring 'tagfunc' (#30180)
+ * regexp: Fix typo in E888 error message (#30161)
+ * runtime: Sync bundled treesitter queries
+ * runtime: Sync bundled treesitter queries
+ * runtime: Add remaining missing commentstrings (#30252)
+ * terminal: Interrupt/got_int hangs terminal (#30094)
+ * treesitter: Escape things like " in omnifunc results
+ * treesitter: Lint top-level anonymous nodes
+ * treesitter: EditQuery shows swapfile ATTENTION #30536
+ * treesitter: Indent size for inspect_tree #28727
+ * tui: Set id parameter in OSC 8 sequences (#29847)
+ * tui: Reset active attr ID when OSC 8 sequence is terminated (#29960)
+ * version: Return nil with empty string
+ * vim.ui.open: Prefer xdg-open on WSL #30302
+ * win-msi: Set installer scope to machine #29895
+ * window: Respect hide flag of float windows when switching (#30507)
+ * window: Making float with title/footer non-float leaks memory (#30551)
+
+-------------------------------------------------------------------
 Fri Sep 20 18:24:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix the post scriptlet
