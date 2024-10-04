@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:24:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.9:
+  + Ignore invalid proxy URL.
+  + Memleak fixes.
+  + kde: Add ReversedException support.
+  + Fix memory leak using PX_FORCE_CONFIG.
+  + Update msys2 build steps.
+  + Remove white space in key value.
+- Changes from version 0.5.8:
+  + Update repology list.
+  + Properly handle empty proxy ignore entry.
+  + Add support for direct keyword in PAC.
+
+-------------------------------------------------------------------
 Wed Jun 19 07:39:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.7:
