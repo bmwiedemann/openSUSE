@@ -37,10 +37,10 @@ releases.
  ffbuild/library.mak |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: ffmpeg-5.1/ffbuild/library.mak
+Index: ffmpeg-7.1/ffbuild/library.mak
 ===================================================================
---- ffmpeg-5.1.orig/ffbuild/library.mak
-+++ ffmpeg-5.1/ffbuild/library.mak
+--- ffmpeg-7.1.orig/ffbuild/library.mak
++++ ffmpeg-7.1/ffbuild/library.mak
 @@ -59,7 +59,7 @@ $(SUBDIR)lib$(FULLNAME).pc: $(SUBDIR)ver
  	$$(M) $$(SRC_PATH)/ffbuild/pkgconfig_generate.sh $(NAME) "$(DESC)"
  

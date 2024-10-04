@@ -11,11 +11,11 @@ Add av_stream_get_first_dts for Chromium
  libavformat/utils.c    |    7 +++++++
  2 files changed, 11 insertions(+)
 
-Index: ffmpeg-7.0/libavformat/avformat.h
+Index: ffmpeg-7.1/libavformat/avformat.h
 ===================================================================
---- ffmpeg-7.0.orig/libavformat/avformat.h
-+++ ffmpeg-7.0/libavformat/avformat.h
-@@ -1170,6 +1170,10 @@ typedef struct AVStreamGroup {
+--- ffmpeg-7.1.orig/libavformat/avformat.h
++++ ffmpeg-7.1/libavformat/avformat.h
+@@ -1202,6 +1202,10 @@ typedef struct AVStreamGroup {
  
  struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
  
@@ -26,13 +26,13 @@ Index: ffmpeg-7.0/libavformat/avformat.h
  #define AV_PROGRAM_RUNNING 1
  
  /**
-Index: ffmpeg-7.0/libavformat/utils.c
+Index: ffmpeg-7.1/libavformat/utils.c
 ===================================================================
---- ffmpeg-7.0.orig/libavformat/utils.c
-+++ ffmpeg-7.0/libavformat/utils.c
-@@ -56,6 +56,13 @@ int ff_unlock_avformat(void)
-     return ff_mutex_unlock(&avformat_mutex) ? -1 : 0;
- }
+--- ffmpeg-7.1.orig/libavformat/utils.c
++++ ffmpeg-7.1/libavformat/utils.c
+@@ -44,6 +44,13 @@
+  * various utility functions for use within FFmpeg
+  */
  
 +// Chromium: We use the internal field first_dts vvv
 +int64_t av_stream_get_first_dts(const AVStream *st)

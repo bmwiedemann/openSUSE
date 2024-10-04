@@ -86,7 +86,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.0.2
+Version:        7.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -109,8 +109,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch95:        ffmpeg-7-fix-crashes.patch
-Patch96:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -230,11 +229,7 @@ BuildRequires:  pkgconfig(shaderc) >= 2019.1
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
 %endif
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
-%ifarch x86_64 %x86_64
-BuildRequires:  pkgconfig(libmfx)
-%endif
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 %ifarch x86_64 %x86_64
 BuildRequires:  pkgconfig(vpl) >= 2.6
 %endif
@@ -631,11 +626,7 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %endif
 	--enable-lv2 \
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150200 && 0%{?sle_version} < 150600
-%ifarch x86_64 %x86_64
-	--enable-libmfx \
-%endif
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 %ifarch x86_64 %x86_64
 	--enable-libvpl \
 %endif
@@ -807,7 +798,7 @@ done
 %else
 %define _name ffmpeg
 Name:           ffmpeg-7-mini
-Version:        7.0.2
+Version:        7.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -823,8 +814,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch95:        ffmpeg-7-fix-crashes.patch
-Patch96:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * ffmpeg CLI filtergraph chaining
+  * pad_vaapi, drawbox_vaapi filters
+  * vf_scale supports secondary ref input and framesync options
+  * vf_scale2ref deprecated
+  * removed DEC Alpha DSP and support code
+  * perlin video source
+  * Cropping metadata parsing and writing in Matroska and MP4/MOV
+    de/muxers
+  * YUV colorspace negotiation for codecs and filters, obsoleting
+    the YUVJ pixel format
+  * Vulkan H.264 and H.265 encoders
+  * stream specifiers in fftools can now match by stream
+    disposition
+  * LCEVC enhancement data exporting in H.26x and MP4/ISOBMFF
+  * LCEVC filter
+- Delete patches/ffmpeg-7-fix-crashes.patch,
+  0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
+
+-------------------------------------------------------------------
+Mon Sep 30 12:34:56 UTC 2024 - olaf@aepfle.de
+
+- Fix assertion due to missing priv_data cleanup on failed VAAPI
+  acceleration with 11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+  (ffmpeg#11013, vlc#28811)
+
+-------------------------------------------------------------------
+Thu Sep 26 10:02:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer build against libmfx; build also 15.5 against libvpl
+ (boo#1230983)
+
+-------------------------------------------------------------------
 Wed Aug 21 09:58:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
@@ -29,6 +64,7 @@ Wed Aug  7 07:37:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   * avcodec/hevcdec: fix segfault on invalid film grain metadata (CVE-2024-32228, bsc#1227277)
   * avfilter/vf_tiltandshift: fix buffer offset for yuv422p input (CVE-2024-32229, bsc#1227295)
   * avcodec/mpegvideo_enc: Fix 1 line and one column images (CVE-2024-32230, bsc#1227296)
+  * avcodec/pnmdec: Use 64bit for input size check (CVE-2024-7055, bsc#1229026)
 - Drop ffmpeg-7-CVE-2024-32228.patch:
   The fix has been merged.
 - Drop ffmpeg-7-CVE-2024-32229.patch:

@@ -65,4 +65,12 @@
   to resolve build failure on armv7 [boo#1229338]</comment>
     <requestid>1195053</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>023c1fc7a70a11a9451c94d0273c3267</srcmd5>
+    <version>7.1</version>
+    <time>1728054502</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.1</comment>
+    <requestid>1205169</requestid>
+  </revision>
 </revisionlist>
