@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 04 11:15:59 UTC 2024 - joan.torres@suse.com
+
+- Update to version 1.14.7:
+  * Set version to 1.14.7
+  * Fix venv for pytest.run.sh
+  * Test that card opening does not take too long
+  * Do not wait for master on wayland session
+  * Test that monitor power off event is sent on vt terminal swithc when user is connected
+  * Test that no monitor power off events are sent when user driver is not connected
+  * Test that evdi_painter listens to VT notifications
+  * Blank evdi display on switch to tty console. Fixes GH-474.
+  * Add evdi_test_data base test context stucture and drm_device removal hook
+  * Make evdi_painter_dpms_notify to take evdi_painter as argument instead of evdi_device
+- With this update fix-v1.14.5-build.patch is not needed anymore.
+
+-------------------------------------------------------------------
 Fri Aug  2 11:24:45 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Fix adding uefi cert for the kernel module

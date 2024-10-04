@@ -21,7 +21,7 @@
 
 Name:           evdi
 Release:        0
-Version:        1.14.5
+Version:        1.14.7
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
@@ -30,7 +30,6 @@ Source0:        evdi-%{version}.tar
 Source1:        evdi-kmp-preamble
 Source2:        evdi-rpmlintrc
 Patch0:         evdi-Enable-compilation-against-15.5.patch
-Patch1:         fix-v1.14.5-build.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
@@ -74,7 +73,6 @@ an application that uses the libevdi library.
 %if 0%{?sle_version} == 150500
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
 
 %build
 pushd library
