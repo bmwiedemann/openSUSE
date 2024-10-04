@@ -467,6 +467,7 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
+  - adwaita-icon-theme-legacy 
   - adwaita-qt5 
   - adwaita-qt6 
   - aelfred 
@@ -15107,8 +15108,8 @@ unsorted:
   - libopusfile0 
   - liboqs-devel 
   - liboqs-devel-32bit 
-  - liboqs5 
-  - liboqs5-32bit 
+  - liboqs6 
+  - liboqs6-32bit 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -15828,6 +15829,7 @@ unsorted:
   - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit 
+  - libre2-11 
   - libre23 
   - libreadline-java 
   - libreadline-java-javadoc 
@@ -17535,8 +17537,6 @@ unsorted:
   - linphone-devel 
   - linssid 
   - linstor 
-  - linux-atm 
-  - linux-atm-devel 
   - linux-ftools 
   - linux-libertine-fonts 
   - linux32 
@@ -26717,7 +26717,6 @@ unsorted:
   - python310-pylsqpack 
   - python310-pylzma 
   - python310-pymacaroons 
-  - python310-pymacaroons-pynacl 
   - python310-pymad 
   - python310-pymarc 
   - python310-pymavlink 
@@ -27077,7 +27076,6 @@ unsorted:
   - python310-rapidfuzz 
   - python310-rarfile 
   - python310-rarfile-doc 
-  - python310-rawkit 
   - python310-rcssmin 
   - python310-rdflib 
   - python310-re-assert 
@@ -30309,7 +30307,6 @@ unsorted:
   - python311-pylsqpack 
   - python311-pylzma 
   - python311-pymacaroons 
-  - python311-pymacaroons-pynacl 
   - python311-pymad 
   - python311-pymarc 
   - python311-pymavlink 
@@ -30664,7 +30661,6 @@ unsorted:
   - python311-rapidfuzz 
   - python311-rarfile 
   - python311-rarfile-doc 
-  - python311-rawkit 
   - python311-rcssmin 
   - python311-rdflib 
   - python311-re-assert 
@@ -31365,7 +31361,6 @@ unsorted:
   - python311-zope.testing 
   - python311-zope.testrunner 
   - python311-zopfli 
-  - python311-zstandard 
   - python311-zstd 
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
@@ -33974,7 +33969,6 @@ unsorted:
   - python312-pylsqpack 
   - python312-pylzma 
   - python312-pymacaroons 
-  - python312-pymacaroons-pynacl 
   - python312-pymad 
   - python312-pymarc 
   - python312-pymavlink 
@@ -34335,7 +34329,6 @@ unsorted:
   - python312-rapidfuzz 
   - python312-rarfile 
   - python312-rarfile-doc 
-  - python312-rawkit 
   - python312-rcssmin 
   - python312-rdflib 
   - python312-re-assert 
