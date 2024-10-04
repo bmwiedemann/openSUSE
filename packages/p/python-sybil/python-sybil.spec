@@ -39,11 +39,13 @@ BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 7.1}
-BuildRequires:  %{python_module seedir}
 BuildRequires:  %{python_module sybil = %{version}}
 BuildRequires:  %{python_module testfixtures}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module dataclasses}
+%endif
+%if 0%{suse_version} > 1600
+BuildRequires:  %{python_module seedir}
 %endif
 %endif
 BuildRequires:  fdupes
@@ -61,6 +63,11 @@ of the normal test run. Integration is provided for the main Python test runners
 %autosetup -p1 -n sybil-%{version}
 sed -i '/pytest-cov/ d'  setup.py
 
+%if 0%{suse_version} <= 1600
+# Remove seedir dependency for SLFO
+sed -i '/import seedir/d' tests/helpers.py
+%endif
+
 %build
 %pyproject_wheel
 
@@ -72,7 +79,13 @@ sed -i '/pytest-cov/ d'  setup.py
 
 %check
 %if %{with test}
-%pytest
+
+%if 0%{suse_version} <= 1600
+# Remove seedir build dependency
+test_flags="--ignore docs/patterns.rst"
+%endif
+
+%pytest $test_flags
 %endif
 
 %if !%{with test}

@@ -195,4 +195,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181992</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8081f71678e27f7b23e8a81ad180da70</srcmd5>
+    <version>6.1.1</version>
+    <time>1728054504</time>
+    <user>anag+factory</user>
+    <comment>- Make seedir dependency optional for SLFO</comment>
+    <requestid>1205373</requestid>
+  </revision>
 </revisionlist>
