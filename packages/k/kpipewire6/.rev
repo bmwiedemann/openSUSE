@@ -87,4 +87,12 @@
     <comment>Plasma 6.1.5. sddm-kcm6 needed a patch change. (forwarded request 1199935 from Vogtinator)</comment>
     <requestid>1200006</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ab8132f3f990968f1b729e490541f725</srcmd5>
+    <version>6.1.5</version>
+    <time>1728054517</time>
+    <user>anag+factory</user>
+    <comment>ffmpeg 7.1 compat</comment>
+    <requestid>1205538</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 14:08:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add ffmpeg 7.1 compatibility patch:
+  * 0001-h264vaapi-Use-the-proper-getter-for-getting-the-hard.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 14:53:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

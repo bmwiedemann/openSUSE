@@ -1,0 +1,37 @@
+From 5ff964b62d0112f27b52b742f4e6a054ba9e4732 Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Thu, 3 Oct 2024 10:44:04 +0200
+Subject: [PATCH] h264vaapi: Use the proper getter for getting the hardware
+ context
+
+The hw_frames_context was moved out of AVFilterLink for FFmpeg 7.1.
+Apparently there is actually a proper getter for getting the
+hw_frames_ctx of a filter context, so use that instead so things keep
+compiling with 7.1.
+
+While at it, add a comment explaining why we need this in the first
+place.
+---
+ src/h264vaapiencoder.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/h264vaapiencoder.cpp b/src/h264vaapiencoder.cpp
+index 2d610de..cf315f3 100644
+--- a/src/h264vaapiencoder.cpp
++++ b/src/h264vaapiencoder.cpp
+@@ -144,7 +144,11 @@ bool H264VAAPIEncoder::initialize(const QSize &size)
+     // av_dict_set_int(&options, "threads", qMin(16, QThread::idealThreadCount()), 0);
+     applyEncodingPreference(options);
+ 
+-    m_avCodecContext->hw_frames_ctx = av_buffer_ref(m_outputFilter->inputs[0]->hw_frames_ctx);
++    // Assign the right hardware context for encoding frames.
++    // We rely on FFmpeg for creating the VAAPI hardware context as part of
++    // `avfilter_graph_parse()`. The codec context needs the VAAPI context to be
++    // able to encode properly, so get that from the output filter.
++    m_avCodecContext->hw_frames_ctx = av_buffer_ref(av_buffersink_get_hw_frames_ctx(m_outputFilter));
+ 
+     if (int result = avcodec_open2(m_avCodecContext, codec, &options); result < 0) {
+         qCWarning(PIPEWIRERECORD_LOGGING) << "Could not open codec" << av_err2str(ret);
+-- 
+2.46.1
+
