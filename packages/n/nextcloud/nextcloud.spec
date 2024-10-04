@@ -23,13 +23,13 @@
 %define apache_docdir /usr/share/doc/packages
 %else
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
-%define apache_serverroot /var/www/html
+%define apache_myserverroot /var/www/html
 %define apache_confdir /etc/httpd/conf.d
 %define apache_user apache
 %define apache_group apache
 %define __jar_repack 0
 %else
-%define apache_serverroot /var/www
+%define apache_myserverroot /var/www
 %define apache_confdir /etc/httpd/conf.d
 %define apache_user www
 %define apache_group www
@@ -312,6 +312,8 @@ fi
 %{_sbindir}/rc%{name}-cron
 %{_unitdir}/%{name}-cron.service
 %{_unitdir}/%{name}-cron.timer
+%dir %{apache_serverroot}
+%dir %{apache_myserverroot}
 %{apache_myserverroot}/%{name}
 %attr(-,%{apache_user},%{apache_group}) %{apache_myserverroot}/%{name}/occ
 %config(noreplace) %{apache_myserverroot}/%{name}/.user.ini
