@@ -378,7 +378,6 @@
     <package name="efibootmgr"/>
     <package name="ipw-firmware"/>
     <package name="iw"/>
-    <package name="libatm1"/>
     <package name="lsb-release"/>
     <package name="lvm2"/>
     <package name="memtest86+" arch="i686,x86_64"/>

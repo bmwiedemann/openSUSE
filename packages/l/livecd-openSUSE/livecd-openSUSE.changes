@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  4 10:25:03 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop the large amdgpu/isp*.fw firmware: No sane mind will use
+  the live image (which is low performing) for HDR Image processing.
+
+-------------------------------------------------------------------
+Fri Oct  4 08:56:26 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Do not add libatm1: linux-atm was dropped.
+
+-------------------------------------------------------------------
 Tue Sep 10 10:48:53 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update removed locales. 

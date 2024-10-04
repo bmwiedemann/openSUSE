@@ -2038,4 +2038,19 @@
     <comment></comment>
     <requestid>1199870</requestid>
   </revision>
+  <revision rev="257" vrev="257">
+    <srcmd5>bbcb5fac701869d5b523e57a4367b238</srcmd5>
+    <version>unknown</version>
+    <time>1728032233</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not add libatm1: linux-atm was dropped.</comment>
+  </revision>
+  <revision rev="258" vrev="258">
+    <srcmd5>a1cdd2f8d06ff9d7db6be61ecb7cfcac</srcmd5>
+    <version>unknown</version>
+    <time>1728037557</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the large amdgpu/isp*.fw firmware: No sane mind will use
+  the live image (which is low performing) for HDR Image processing.</comment>
+  </revision>
 </revisionlist>

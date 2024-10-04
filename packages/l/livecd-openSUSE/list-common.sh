@@ -257,7 +257,6 @@ install dmidecode
 install efibootmgr
 install ipw-firmware
 install iw
-install libatm1
 install lsb-release
 install lvm2
 install memtest86+ i686,x86_64
