@@ -18,12 +18,15 @@
 
 %define _apiver       2.0
 %define _wksover      2_0-1
+%define _wpsover      2_0-0
 %define _sonameverpkg 2_0
 
 Name:           wpewebkit
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
+%ifarch %{ix86} ppc64le
 %define _lto_cflags %{nil}
-Version:        2.44.2
+%endif
+Version:        2.46.0
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -72,6 +75,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libgcrypt) >= 1.7.0
+BuildRequires:  pkgconfig(libinput) >= 1.19.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl) >= 0.7.0
 BuildRequires:  pkgconfig(libpng)
@@ -130,6 +134,19 @@ WPE allows embedders to create simple and performant systems based on
 Web platform technologies. It is designed with hardware acceleration
 in mind, leveraging common 3D graphics APIs for best performance.
 
+%package -n libWPEPlatform-%{_wpsover}
+Summary:        Library for rendering web content, new WPE platform API
+Group:          System/Libraries
+Requires:       %{name}-%{_sonameverpkg}-injected-bundles
+Requires:       bubblewrap
+Requires:       xdg-dbus-proxy
+Provides:       libWPEPlatform-{_apiver}
+
+%description -n libWPEPlatform-%{_wpsover}
+WPE allows embedders to create simple and performant systems based on
+Web platform technologies. It is designed with hardware acceleration
+in mind, leveraging common 3D graphics APIs for best performance.
+
 %package -n WPEWebDriver
 Summary:        WebDriver service implementation for WPE  WebKit
 Group:          System/Libraries
@@ -184,12 +201,17 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
   -DENABLE_JIT=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
 %endif
+  -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
 %ninja_build
 
 %install
 %ninja_install -C build
 
 %ldconfig_scriptlets -n libWPEWebKit-%{_wksover}
+%ldconfig_scriptlets -n libWPEPlatform-%{_wpsover}
+
+%files -n libWPEPlatform-%{_wpsover}
+%{_libdir}/libWPEPlatform-%{_apiver}.so.*
 
 %files -n libWPEWebKit-%{_wksover}
 %dir %{_libdir}/wpe-webkit-%{_apiver}
@@ -210,7 +232,12 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 
 %files devel
 %{_includedir}/wpe-webkit-%{_apiver}
+%{_libdir}/libWPEPlatform-%{_apiver}.so
 %{_libdir}/libWPEWebKit-%{_apiver}.so
+%{_libdir}/pkgconfig/wpe-platform-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-drm-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-headless-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-wayland-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-webkit-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-web-process-extension-%{_apiver}.pc
 
