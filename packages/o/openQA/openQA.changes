@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 03 17:50:45 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1727950788.ba063877:
+  * Improve OpenID auth handling on not_openid response
+  * Improve minion guards for needle tasks
+  * Mark obviously uncoverable lines in scripts
+  * Add test for delete_needles
+  * Bump eslint from 9.11.0 to 9.11.1
+  * Make t/ui/21-admin-needles.t work for every timezone
+  * Render tooltip in needle table to reveal absolute time
+
+-------------------------------------------------------------------
 Tue Oct 01 09:00:08 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727773199.b638ad7b:
