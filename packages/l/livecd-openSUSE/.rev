@@ -2053,4 +2053,10 @@
     <comment>- Drop the large amdgpu/isp*.fw firmware: No sane mind will use
   the live image (which is low performing) for HDR Image processing.</comment>
   </revision>
+  <revision rev="259" vrev="259">
+    <srcmd5>c8fc92e61ec5bc3497043687a8e7350e</srcmd5>
+    <version>unknown</version>
+    <time>1728042526</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
