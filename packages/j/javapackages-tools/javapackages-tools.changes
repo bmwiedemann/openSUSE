@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Oct  2 17:27:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.3.1
+  * Changes:
+    + Allow missing components with abs2rel
+    + Fix tests with python 3.4
+    + Sync spec file from Fedora
+    + Drop default JRE/JDK
+    + Fix the use of java-functions in scripts
+    + Update RPM spec file
+    + Reproducible builds: constant timestamp for pom.properties
+    + Test that we don't bomb on <relativePath/>
+    + Test variable expansion in artifactId
+    + Interpolate properties also in the current artifact
+    + Rewrite abs2rel in shell
+    + Use asciidoctor instead of asciidoc
+    + Fix incompatibility with RPM 4.20
+    + Don't define %topdir macro
+    + coverage: use usercustomize
+    + Reproducible builds: keep order of aliases and dependencies
+    + Reproducible exclusions order in maven metadata
+    + Do not bomb on <relativePath/> construct
+    + Make maven_depmap order of aliases reproducible
+- Removed patches:
+  * 0001-Make-maven_depmap-order-of-aliases-reproducible.patch
+  * 0002-Do-not-bomb-on-relativePath-construct.patch
+  * 0003-Reproducible-exclusions-order-in-maven-metadata.patch
+  * 0004-Reproducible-builds-keep-order-of-aliases-and-depend.patch
+  * 0005-Interpolate-properties-also-in-the-current-artifact.patch
+  * 0006-Test-variable-expansion-in-artifactId.patch
+  * 0007-Test-that-we-don-t-bomb-on-relativePath.patch
+  * 0008-Reproducible-builds-constant-timestamp-for-pom.prope.patch
+    + Integrated in this version
+- Added patch:
+  * 0001-Double-quote-to-avoid-substitution-during-build.patch
+    + Double-quote a macro in macros.jpackages to avoid value
+      substitution during the build
+
+-------------------------------------------------------------------
 Thu Jul 18 12:15:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

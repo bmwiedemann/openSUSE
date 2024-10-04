@@ -1,0 +1,25 @@
+From 5ede44f34a30011908b7dfc911d9c9bc270f1abc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Thu, 3 Oct 2024 11:21:43 +0200
+Subject: [PATCH] Double-quote to avoid substitution during build
+
+---
+ macros.d/macros.jpackage | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/macros.d/macros.jpackage b/macros.d/macros.jpackage
+index adfff436..55d4ba94 100644
+--- a/macros.d/macros.jpackage
++++ b/macros.d/macros.jpackage
+@@ -37,7 +37,7 @@ cat > %{buildroot}%{_bindir}/%5 << EOF \
+ # JPackage Project <http://www.jpackage.org/>\
+ \
+ # Set default JAVA_HOME\
+-export JAVA_HOME="\\${JAVA_HOME:-%{?java_home}}"\
++export JAVA_HOME="\\${JAVA_HOME:-%%{?java_home}}"\
+ \
+ # Source functions library\
+ . @{javadir}-utils/java-functions\
+-- 
+2.46.1
+

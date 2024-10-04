@@ -399,4 +399,12 @@
     <comment>some reproducible mtimes</comment>
     <requestid>1188405</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5bed88e90957862abf659cc6319ce20a</srcmd5>
+    <version>6.3.1</version>
+    <time>1728054508</time>
+    <user>anag+factory</user>
+    <comment>6.3.1</comment>
+    <requestid>1205387</requestid>
+  </revision>
 </revisionlist>

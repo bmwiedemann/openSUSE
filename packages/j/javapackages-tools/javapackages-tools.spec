@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.2.0
+Version:        6.3.1
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -45,27 +45,13 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-#PATCH-FIX-UPSTREAM: Make maven_depmap order of aliases reproducible
-Patch3:         0001-Make-maven_depmap-order-of-aliases-reproducible.patch
-#PATCH-FIX-UPSTREAM: Do not bomb on <relativePath/> construct
-Patch4:         0002-Do-not-bomb-on-relativePath-construct.patch
-#PATCH-FIX-UPSTREAM: Sort exclusions when writing out metadata
-Patch5:         0003-Reproducible-exclusions-order-in-maven-metadata.patch
-#PATCH-FIX-UPSTREAM: make the aliases and dependencies lists so that the order is kept
-Patch6:         0004-Reproducible-builds-keep-order-of-aliases-and-depend.patch
-#PATCH-FIX-UPSTREAM: substitute variables like _${scala.binary.version} in artifact coordinates
-Patch7:         0005-Interpolate-properties-also-in-the-current-artifact.patch
-#PATCH-FIX-UPSTREAM: test changes from previous patch
-Patch8:         0006-Test-variable-expansion-in-artifactId.patch
-#PATCH-FIX-UPSTREAM: test gracious handling of <relativePath/> construct
-Patch9:         0007-Test-that-we-don-t-bomb-on-relativePath.patch
-#PATCH-FIX-UPSTREAM: make the pom.properties have reproducible timestamp
-Patch10:        0008-Reproducible-builds-constant-timestamp-for-pom.prope.patch
-BuildRequires:  asciidoc
+Patch3:         0001-Double-quote-to-avoid-substitution-during-build.patch
+
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  rpm
 BuildRequires:  xmlto
+BuildRequires:  rubygem(asciidoctor)
 %if %{with python}
 BuildRequires:  javapackages-filesystem
 %else
