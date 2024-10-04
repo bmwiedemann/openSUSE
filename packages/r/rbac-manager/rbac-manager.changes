@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:32:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- replace "make test" with just calling "go test ./..." as no
+  golangci-lint is available
+
+-------------------------------------------------------------------
+Wed Oct 02 11:21:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * ci: add cosign yes flag
+  * docs: fix dead link
+  * Sudermanjr/update deps and golang (#477)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:18:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * Update documentation from template (#433)
+  * sc/pkg bumps 2023 12 15 (#442)
+  * Bump alpine from 3.18 to 3.19 (#439)
+  * Managed by Terraform
+  * test(e2e): test on later versions of k8s (#441)
+  * test: add chainsaw tests (#438)
+  * Update modules with go mod tidy (#427)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:13:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.0:
+  * Allow extra manually added pull secrets to managed SA (#418)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:12:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.5:
+  * Bump github.com/prometheus/client_golang from 1.15.1 to 1.16.0
+    (#404)
+  * Bump k8s.io/client-go from 0.27.2 to 0.27.3 (#402)
+  * fix: add inline struct tag (#401)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:10:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.4:
+  * remove auto-generated README and fix HTML (#400)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:08:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.3:
+  * fix documentation site
+
+-------------------------------------------------------------------
+Wed Oct 02 11:08:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.2:
+  * Update logo to current (#399)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:06:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.1:
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.4 (#397)
+  * Bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 (#398)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:06:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.0:
+  * update deps and alpine version (#390)
+  * Bump alpine from 3.17 to 3.18 (#389)
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.2 (#371)
+
+-------------------------------------------------------------------
+Wed Oct 02 11:00:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.0:
+  * Update dependencies and docker image (#382)
+
+-------------------------------------------------------------------
+Wed Oct 02 10:58:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.4.3:
+  * Update documentation from template (#372)
+  * Fix circleci builds (#377)
+  * Update documentation from template (#362)
+
+-------------------------------------------------------------------
 Mon Nov 28 11:57:10 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 1.4.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,11 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
 
 Name:           rbac-manager
-Version:        1.4.2
+Version:        1.9.0
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
@@ -27,15 +26,23 @@ URL:            https://github.com/FairwindsOps/rbac-manager
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.22
+
+# test dependency
+BuildRequires:  git-core
+
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
-%{go_nostrip}
 
 %description
 RBAC Manager is designed to simplify authorization in Kubernetes.
-This is an operator that supports declarative configuration for RBAC with new custom resources.
-Instead of managing role bindings or service accounts directly, you can specify a desired state and RBAC Manager will make the necessary changes to achieve that state.
+
+This is an operator that supports declarative configuration for RBAC with new
+custom resources.
+
+Instead of managing role bindings or service accounts directly, you can specify
+a desired state and RBAC Manager will make the necessary changes to achieve
+that state.
 
 %package k8s-yaml
 Summary:        Kubernetes yaml file to run rbac-manager
@@ -47,17 +54,22 @@ This package contains the yaml file requried to download and run the
 rbac-manager in a kubernetes cluster.
 
 %prep
-%setup -qa1
+%autosetup -p 1 -a 1
 
 %build
-go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags=" \
+   -X github.com/fairwindsops/rbac-manager/version.Version=v%{version}" \
+   -o bin/%{name} ./cmd/manager/
 
 %check
-make test
+go test ./...
 
 %install
 mkdir -p %{buildroot}%{_sbindir}/
-install -D -m 0755 rbac-manager %{buildroot}%{_sbindir}/
+install -D -m 0755 bin/%{name} %{buildroot}%{_sbindir}/%{name}
 
 # Install provided yaml file to download and run the rbac-manager
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
