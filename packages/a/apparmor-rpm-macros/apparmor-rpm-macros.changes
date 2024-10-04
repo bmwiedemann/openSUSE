@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 09:28:40 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Add %apparmor_profilesdir
+
+-------------------------------------------------------------------
 Tue Feb 20 12:15:28 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Update macro to detect when installing in chroot

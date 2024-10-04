@@ -1,3 +1,5 @@
+%apparmor_profilesdir    %{_sysconfdir}/apparmor.d
+
 %apparmor_reload()\
 	if [ "$YAST_IS_RUNNING" != "instsys" -a -x /usr/bin/systemd-detect-virt -a -x /usr/bin/systemctl ]; then\
                 systemd-detect-virt --chroot --quiet \

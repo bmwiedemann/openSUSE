@@ -70,4 +70,12 @@ The initial package only contains %apparmor_reload to (re)load a profile.</comme
   (transactional-update) and avoid calling apparmor_parser. (forwarded request 1147928 from fcrozat)</comment>
     <requestid>1147946</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>ea7f245970b54560cf9a299a05e5edf4</srcmd5>
+    <version>1.0</version>
+    <time>1728054519</time>
+    <user>anag+factory</user>
+    <comment>Add %apparmor_profilesdir (forwarded request 1205388 from crameleon)</comment>
+    <requestid>1205548</requestid>
+  </revision>
 </revisionlist>
