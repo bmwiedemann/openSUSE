@@ -32,7 +32,6 @@ License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
 Patch1:         cpupower_fix_library_so_name.patch
-Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 BuildRequires:  gettext-tools
 BuildRequires:  kernel-source
@@ -106,7 +105,6 @@ There is no reason to install this package.
 chmod +x tools/power/cpupower/utils/version-gen.sh
 %patch -P 1 -p1
 cd %{maindir}
-%patch -P 3 -p1
 %patch -P 6 -p1
 
 %build
