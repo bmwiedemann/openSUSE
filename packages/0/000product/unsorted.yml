@@ -11628,6 +11628,7 @@ unsorted:
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
+  - libWPEPlatform-2_0-0 
   - libWPEWebInspectorResources 
   - libWPEWebKit-2_0-1 
   - libWildMidi2 
@@ -25407,6 +25408,7 @@ unsorted:
   - python310-environ-config 
   - python310-environmental-override 
   - python310-envisage 
+  - python310-envs 
   - python310-enzyme 
   - python310-ephem 
   - python310-ephemeral-port-reserve 
@@ -27018,7 +27020,6 @@ unsorted:
   - python310-pyviz-comms 
   - python310-pyvmomi 
   - python310-pyvo 
-  - python310-pywal 
   - python310-pywayland 
   - python310-pywbem 
   - python310-pywbemtools 
@@ -29057,6 +29058,7 @@ unsorted:
   - python311-environ-config 
   - python311-environmental-override 
   - python311-envisage 
+  - python311-envs 
   - python311-enzyme 
   - python311-ephem 
   - python311-ephemeral-port-reserve 
@@ -30603,7 +30605,6 @@ unsorted:
   - python311-pyviz-comms 
   - python311-pyvmomi 
   - python311-pyvo 
-  - python311-pywal 
   - python311-pywayland 
   - python311-pywbem 
   - python311-pywbemtools 
@@ -32661,6 +32662,7 @@ unsorted:
   - python312-environ-config 
   - python312-environmental-override 
   - python312-envisage 
+  - python312-envs 
   - python312-enzyme 
   - python312-ephem 
   - python312-ephemeral-port-reserve 
@@ -34270,7 +34272,6 @@ unsorted:
   - python312-pyviz-comms 
   - python312-pyvmomi 
   - python312-pyvo 
-  - python312-pywal 
   - python312-pywayland 
   - python312-pywbem 
   - python312-pywbemtools 
