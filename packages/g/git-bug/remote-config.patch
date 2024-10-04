@@ -1,0 +1,100 @@
+From 65cfe2b3fff11d34b5ffc9f7e5d24aefb505497f Mon Sep 17 00:00:00 2001
+From: William Ahern <william@25thandClement.com>
+Date: Thu, 27 Jul 2023 22:06:45 -0700
+Subject: [PATCH] pull, push: try reading git-bug.remote config value before
+ defaulting to 'origin' when no explicit REMOTE argument
+
+---
+ commands/pull.go     |   16 +++++++++++-----
+ commands/push.go     |   16 +++++++++++-----
+ repository/config.go |   11 +++++++++++
+ 3 files changed, 33 insertions(+), 10 deletions(-)
+
+--- a/commands/pull.go
++++ b/commands/pull.go
+@@ -8,6 +8,7 @@ import (
+ 	"github.com/git-bug/git-bug/commands/completion"
+ 	"github.com/git-bug/git-bug/commands/execenv"
+ 	"github.com/git-bug/git-bug/entity"
++	"github.com/git-bug/git-bug/repository"
+ )
+ 
+ func newPullCommand(env *execenv.Env) *cobra.Command {
+@@ -25,13 +26,18 @@ func newPullCommand(env *execenv.Env) *c
+ }
+ 
+ func runPull(env *execenv.Env, args []string) error {
+-	if len(args) > 1 {
++	var remote string
++	switch {
++	case len(args) > 1:
+ 		return errors.New("Only pulling from one remote at a time is supported")
+-	}
+-
+-	remote := "origin"
+-	if len(args) == 1 {
++	case len(args) == 1:
+ 		remote = args[0]
++	default:
++		v, err := repository.GetDefaultString("git-bug.remote", env.Repo.AnyConfig(), "origin")
++		if err != nil {
++			return err
++		}
++		remote = v
+ 	}
+ 
+ 	env.Out.Println("Fetching remote ...")
+--- a/commands/push.go
++++ b/commands/push.go
+@@ -7,6 +7,7 @@ import (
+ 
+ 	"github.com/git-bug/git-bug/commands/completion"
+ 	"github.com/git-bug/git-bug/commands/execenv"
++	"github.com/git-bug/git-bug/repository"
+ )
+ 
+ func newPushCommand(env *execenv.Env) *cobra.Command {
+@@ -24,13 +25,18 @@ func newPushCommand(env *execenv.Env) *c
+ }
+ 
+ func runPush(env *execenv.Env, args []string) error {
+-	if len(args) > 1 {
++	var remote string
++	switch {
++	case len(args) > 1:
+ 		return errors.New("Only pushing to one remote at a time is supported")
+-	}
+-
+-	remote := "origin"
+-	if len(args) == 1 {
++	case len(args) == 1:
+ 		remote = args[0]
++	default:
++		v, err := repository.GetDefaultString("git-bug.remote", env.Repo.AnyConfig(), "origin")
++		if err != nil {
++			return err
++		}
++		remote = v
+ 	}
+ 
+ 	stdout, err := env.Backend.Push(remote)
+--- a/repository/config.go
++++ b/repository/config.go
+@@ -60,6 +60,17 @@ type ConfigWrite interface {
+ 	RemoveAll(keyPrefix string) error
+ }
+ 
++func GetDefaultString(key string, cfg ConfigRead, def string) (string, error) {
++	val, err := cfg.ReadString(key)
++	if err == nil {
++		return val, nil
++	} else if errors.Is(err, ErrNoConfigEntry) {
++		return def, nil
++	} else {
++		return "", err
++	}
++}
++
+ func ParseTimestamp(s string) (time.Time, error) {
+ 	timestamp, err := strconv.Atoi(s)
+ 	if err != nil {

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Thu Oct 03 18:28:47 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0.8.0+git.1725552198.b0cc690:
+  * build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0 (#1261)
+  * graphql: properly namespace Bug to make space for other entities (#1254)
+  * refactor: rename github test repository: test-github-bridge (#1256)
+  * build(deps-dev): bump the npm_and_yarn group across 1 directory with 4 updates (#1250)
+  * core: make label a common type, in a similar fashion as for status (#1252)
+  * chore: regenerate command completion and documentation (#1253)
+  * feat: update references to the git-bug organization (#1249)
+  * build(deps): bump github.com/vbauerster/mpb/v8 from 8.7.5 to 8.8.2 (#1248)
+  * build(deps): bump golang.org/x/sys from 0.23.0 to 0.24.0 (#1242)
+  * feat: add package to dev shell: delve (#1240)
+  * build(deps): bump golang.org/x/crypto from 0.25.0 to 0.26.0 (#1239)
+  * build(deps): bump golang.org/x/text from 0.16.0 to 0.17.0 (#1237)
+  * feat(ci): support a merge queue
+  * DOC: it is "new" not "configure" command (also was missing \)
+  * build(deps): bump golang.org/x/sys from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/oauth2 from 0.21.0 to 0.22.0
+  * build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0
+  * fix: correct path for reusable workflow: lifecycle
+  * feat: merge go directive and toolchain specification
+  * feat: improved lifecycle management with stale-bot
+  * build(deps): bump github.com/vbauerster/mpb/v8 from 8.7.4 to 8.7.5
+  * revert: "feat: increase operations per run for workflow: cron"
+  * chore: update go dependencies
+  * fix: run the presubmit pipeline for PRs
+  * chore: remove refs to deprecated io/ioutil
+  * fix: move codeql into an independent workflow
+  * feat: bump node versions to 16.x, 18.x, and 20.x
+  * feat: refactor pipelines into reusable workflows
+  * build(deps): bump jsonwebtoken and @graphql-tools/prisma-loader
+  * build(deps-dev): bump tough-cookie from 4.1.2 to 4.1.3 in /webui
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.106.0 to 0.107.0
+  * build(deps): bump graphql from 16.6.0 to 16.8.1 in /webui
+  * build(deps-dev): bump undici from 5.11.0 to 5.28.4 in /webui
+  * build(deps): bump @babel/traverse from 7.19.3 to 7.24.8 in /webui
+  * build(deps): bump github.com/99designs/gqlgen from 0.17.36 to 0.17.49
+  * build(deps): bump github.com/dvsekhvalnov/jose2go from 1.5.0 to 1.6.0
+  * build(deps-dev): bump semver from 5.7.1 to 5.7.2 in /webui
+  * build(deps-dev): bump word-wrap from 1.2.3 to 1.2.5 in /webui
+  * build(deps-dev): bump express from 4.18.1 to 4.19.2 in /webui
+  * build(deps-dev): bump ws from 7.5.9 to 7.5.10 in /webui
+  * build(deps): bump golang.org/x/vuln from 1.1.2 to 1.1.3
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.8.1 to 5.12.0
+  * build(deps-dev): bump undici from 5.11.0 to 5.26.3 in /webui
+  * build(deps): bump github.com/vbauerster/mpb/v8 from 8.5.2 to 8.7.4
+  * build(deps): bump webpack from 5.74.0 to 5.76.1 in /webui
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.4.1 to 5.5.0
+  * build(deps): bump ua-parser-js from 0.7.31 to 0.7.33 in /webui
+  * build(deps): bump github.com/vektah/gqlparser/v2 from 2.5.15 to 2.5.16
+  * build(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+  * build(deps): bump json5 from 1.0.1 to 1.0.2 in /webui
+  * build(deps): bump loader-utils from 2.0.2 to 2.0.4 in /webui
+  * build(deps): bump minimatch and recursive-readdir in /webui
+  * fix: add write for prs: stale/issue-and-pr
+  * feat: allow for manual execution of workflow: cron
+  * feat: increase operations per run for workflow: cron
+  * fix: add missing `with` property to //.github/workflows:cron.yml
+  * feat: add workflow for triaging stale issues and prs
+  * feat: add initial editorconfig configuration file
+  * feat: add a common file for git-blame ignored revisions
+  * feat: add a commit message template
+  * feat: add initial nix development shell
+  * feat: update action library versions
+  * feat: add concurrency limits to all pipelines
+  * fix: bump to go v1.22.5
+  * fix: correct typo: acceps => accepts
+  * build(deps): bump github.com/fatih/color from 1.16.0 to 1.17.0 (#1183)
+  * build(deps): bump github.com/gorilla/mux from 1.8.0 to 1.8.1 (#1181)
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.1 (#1179)
+  * build(deps): bump golang.org/x/vuln from 1.0.0 to 1.1.2 (#1171)
+  * build(deps): bump golang.org/x/crypto from 0.21.0 to 0.25.0 (#1175)
+  * build(deps): bump github.com/hashicorp/golang-lru/v2 from 2.0.5 to 2.0.7 (#1113)
+  * build(deps): bump golang.org/x/text from 0.14.0 to 0.16.0 (#1173)
+  * build(deps): bump github.com/vektah/gqlparser/v2 from 2.5.8 to 2.5.15 (#1164)
+  * build(deps): bump github.com/hashicorp/go-retryablehttp (#1162)
+  * build(deps): bump golang.org/x/net from 0.14.0 to 0.23.0 (#1166)
+  * build(deps): bump golang.org/x/oauth2 from 0.11.0 to 0.21.0 (#1165)
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.90.0 to 0.106.0 (#1167)
+  * build(deps): bump golang.org/x/sys from 0.11.0 to 0.14.0 (#1132)
+
+-------------------------------------------------------------------
+Sat Aug  3 15:16:21 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remote-config.patch (gh#MichaelMure/git-bug!1076): try
+  reading git-bug.remote config value before defaulting to
+  'origin' when no explicit REMOTE argument.
+
+-------------------------------------------------------------------
 Tue May 07 14:31:42 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 0.8.0+git.1713935544.6d051a2:

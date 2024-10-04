@@ -17,19 +17,22 @@
 
 
 Name:           git-bug
-Version:        0.8.0+git.1713935544.6d051a2
+Version:        0.8.0+git.1725552198.b0cc690
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
 URL:            https://github.com/MichaelMure/git-bug
 # Source0:        https://github.com/MichaelMure/%%{name}/archive/refs/tags/v%%{version}.tar.gz#/git-bug-%%{version}.tar.gz
 Source0:        git-bug-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remote-config.patch gh#MichaelMure/git-bug!1076 mcepl@suse.com
+# try reading git-bug.remote config value before defaulting to 'origin' when no explicit REMOTE argument
+Patch0:         remote-config.patch
 Source1:        vendor.tar.gz
 # # PATCH-FEATURE-UPSTREAM 501-export.patch gh#MichaelMure/git-bug!501 mcepl@suse.com
 # # add a command to export bugs as raw operations
 # Patch0:         501-export.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.22
 
 %description
 git-bug is a bug tracker that:
