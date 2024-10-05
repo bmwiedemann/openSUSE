@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  5 08:05:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fixes (picked from Debian) (boo#1231317)
+  * 0001-info-Fix-incompatible-pointer-type.patch
+  * 0002-redirection-Fix-incompatible-pointer-type.patch
+  * 0003-redirection-Fix-incompatible-pointer-type.patch
+  * 0004-X11-fix-pointer-integer-type-mismatch.patch
+  * 0005-client-wayland-fix-const-correctness.patch
+  * 0006-warnings-fix-Wincompatible-pointer-types.patch
+  * 0007-server-proxy-deactivate-capture-module.patch
+  * 0001-Fix-build-with-ffmpeg-7.patch
+
+-------------------------------------------------------------------
 Mon Jun  3 16:39:14 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 2.11.7

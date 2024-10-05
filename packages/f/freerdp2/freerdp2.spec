@@ -43,11 +43,21 @@ URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/releases/download/%{version}/freerdp-%{version}.tar.gz
 Source1:        freerdp2-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
-Patch1:         0001-Make-H.264-codec-optional-during-runtime.patch
+Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
 # PATCH-FIX-OPENSUSE -- Don't let 'cmake(WinPR)' require unneeded tools
-Patch2:         0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
+Patch1:         0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2024-32661.patch CVE-2024-32661 bsc#1223348 yu.daike@suse.com -- client NULL pointer dereference
-Patch3:         freerdp-CVE-2024-32661.patch
+Patch2:         freerdp-CVE-2024-32661.patch
+# PATCH-FIX-UPSTREAM -- gcc 14 compat
+Patch3:         0001-info-Fix-incompatible-pointer-type.patch
+Patch4:         0002-redirection-Fix-incompatible-pointer-type.patch
+Patch5:         0003-redirection-Fix-incompatible-pointer-type.patch
+Patch6:         0004-X11-fix-pointer-integer-type-mismatch.patch
+Patch7:         0005-client-wayland-fix-const-correctness.patch
+Patch8:         0006-warnings-fix-Wincompatible-pointer-types.patch
+Patch9:         0007-server-proxy-deactivate-capture-module.patch
+# PATCH-FIX-UPSTREAM -- ffmpeg 7 compat
+Patch10:        0001-Fix-build-with-ffmpeg-7.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed

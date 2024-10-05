@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1178908</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>53b2984d8725ca26ce0add1137e3c654</srcmd5>
+    <version>2.11.7</version>
+    <time>1728119104</time>
+    <user>dimstar_suse</user>
+    <comment>Add factory fixes (forwarded request 1205800 from krop)</comment>
+    <requestid>1205803</requestid>
+  </revision>
 </revisionlist>

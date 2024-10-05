@@ -1,0 +1,118 @@
+From 681a273cbba744b65e44d0205bce42f2ca794576 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9bastien=20Noel?= <sebastien@twolife.be>
+Date: Tue, 30 Jul 2024 11:29:58 +0200
+Subject: [PATCH] Fix build with ffmpeg 7
+
+cherry picked from d0c5b1ae4289c7f3cde3fbc031cb4a3160df05ff
+from freerdp3
+---
+ libfreerdp/codec/dsp_ffmpeg.c | 28 ++++++++++------------------
+ 1 file changed, 10 insertions(+), 18 deletions(-)
+
+diff --git a/libfreerdp/codec/dsp_ffmpeg.c b/libfreerdp/codec/dsp_ffmpeg.c
+index 80df188..68dfe5f 100644
+--- a/libfreerdp/codec/dsp_ffmpeg.c
++++ b/libfreerdp/codec/dsp_ffmpeg.c
+@@ -225,18 +225,15 @@ static void ffmpeg_close_context(FREERDP_DSP_CONTEXT* context)
+ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+ {
+ 	int ret;
+-	int layout;
+-	const AUDIO_FORMAT* format;
+ 
+ 	if (!context || context->isOpen)
+ 		return FALSE;
+ 
+-	format = &context->format;
++	const AUDIO_FORMAT* format = &context->format;
+ 
+ 	if (!format)
+ 		return FALSE;
+ 
+-	layout = av_get_default_channel_layout(format->nChannels);
+ 	context->id = ffmpeg_get_avcodec(format);
+ 
+ 	if (ffmpeg_codec_is_filtered(context->id, context->encoder))
+@@ -270,8 +267,7 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+ 			break;
+ 	}
+ 
+-	context->context->channels = format->nChannels;
+-	context->context->channel_layout = layout;
++	av_channel_layout_default(&context->context->ch_layout, format->nChannels);
+ 	context->context->sample_rate = format->nSamplesPerSec;
+ 	context->context->block_align = format->nBlockAlign;
+ 	context->context->bit_rate = format->nAvgBytesPerSec * 8;
+@@ -314,8 +310,7 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+ 	if (!context->rcontext)
+ 		goto fail;
+ 
+-	context->frame->channel_layout = layout;
+-	context->frame->channels = format->nChannels;
++	av_channel_layout_default(&context->frame->ch_layout, format->nChannels);
+ 	context->frame->sample_rate = format->nSamplesPerSec;
+ 	context->frame->format = AV_SAMPLE_FMT_S16;
+ 
+@@ -330,13 +325,11 @@ static BOOL ffmpeg_open_context(FREERDP_DSP_CONTEXT* context)
+ 		context->resampled->sample_rate = format->nSamplesPerSec;
+ 	}
+ 
+-	context->resampled->channel_layout = layout;
+-	context->resampled->channels = format->nChannels;
++	av_channel_layout_default(&context->resampled->ch_layout, format->nChannels);
+ 
+ 	if (context->context->frame_size > 0)
+ 	{
+-		context->buffered->channel_layout = context->resampled->channel_layout;
+-		context->buffered->channels = context->resampled->channels;
++		av_channel_layout_copy(&context->buffered->ch_layout, &context->resampled->ch_layout);
+ 		context->buffered->format = context->resampled->format;
+ 		context->buffered->nb_samples = context->context->frame_size;
+ 
+@@ -421,7 +414,7 @@ static BOOL ffmpeg_encode_frame(AVCodecContext* context, AVFrame* in, AVPacket*
+ 	if (in->format == AV_SAMPLE_FMT_FLTP)
+ 	{
+ 		uint8_t** pp = in->extended_data;
+-		for (int y = 0; y < in->channels; y++)
++		for (int y = 0; y < in->ch_layout.nb_channels; y++)
+ 		{
+ 			float* data = (float*)pp[y];
+ 			for (int x = 0; x < in->nb_samples; x++)
+@@ -477,14 +470,13 @@ static BOOL ffmpeg_fill_frame(AVFrame* frame, const AUDIO_FORMAT* inputFormat, c
+                               size_t size)
+ {
+ 	int ret, bpp;
+-	frame->channels = inputFormat->nChannels;
++	av_channel_layout_default(&frame->ch_layout, inputFormat->nChannels);
+ 	frame->sample_rate = inputFormat->nSamplesPerSec;
+ 	frame->format = ffmpeg_sample_format(inputFormat);
+-	frame->channel_layout = av_get_default_channel_layout(frame->channels);
+ 	bpp = av_get_bytes_per_sample(frame->format);
+ 	frame->nb_samples = size / inputFormat->nChannels / bpp;
+ 
+-	if ((ret = avcodec_fill_audio_frame(frame, frame->channels, frame->format, data, size, 1)) < 0)
++	if ((ret = avcodec_fill_audio_frame(frame, inputFormat->nChannels, frame->format, data, size, 1)) < 0)
+ 	{
+ 		const char* err = av_err2str(ret);
+ 		WLog_ERR(TAG, "Error during audio frame fill %s [%d]", err, ret);
+@@ -566,7 +558,7 @@ static BOOL ffmpeg_decode(AVCodecContext* dec_ctx, AVPacket* pkt, AVFrame* frame
+ 		}
+ 
+ 		{
+-			const size_t data_size = resampled->channels * resampled->nb_samples * 2;
++			const size_t data_size = resampled->ch_layout.nb_channels * resampled->nb_samples * 2;
+ 			Stream_EnsureRemainingCapacity(out, data_size);
+ 			Stream_Write(out, resampled->data[0], data_size);
+ 		}
+@@ -664,7 +656,7 @@ BOOL freerdp_dsp_ffmpeg_encode(FREERDP_DSP_CONTEXT* context, const AUDIO_FORMAT*
+ 			rc =
+ 			    av_samples_copy(context->buffered->extended_data, context->resampled->extended_data,
+ 			                    (int)context->bufferedSamples, copied, inSamples,
+-			                    context->context->channels, context->context->sample_fmt);
++			                    context->context->ch_layout.nb_channels, context->context->sample_fmt);
+ 			rest -= inSamples;
+ 			copied += inSamples;
+ 			context->bufferedSamples += (UINT32)inSamples;
+-- 
+2.46.1
+
