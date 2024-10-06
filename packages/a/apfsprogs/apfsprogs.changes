@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  3 20:37:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0~git491
+  * apfs-label: Add new tool to list container labels
+  * apfs-label: Check label termination before print
+- Build new apfs-label binary in %build section
+- Build shared library required by apfs-label in %build-section
+- Install apfs-label binary and manpage in %install section
+
+-------------------------------------------------------------------
 Thu Jun 13 12:39:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0~git491

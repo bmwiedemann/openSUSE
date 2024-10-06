@@ -17,7 +17,7 @@
 
 
 Name:           apfsprogs
-Version:        0~git491
+Version:        0~git493
 Release:        0
 Summary:        Experimental APFS tools for Linux
 License:        GPL-2.0-only
@@ -38,11 +38,14 @@ are included:
 %setup -q -n %{name}
 
 %build
+make %{?_smp_mflags} -C lib
+make %{?_smp_mflags} -C apfs-label
 make %{?_smp_mflags} -C apfs-snap
 make %{?_smp_mflags} -C apfsck
 make %{?_smp_mflags} -C mkapfs
 
 %install
+%make_install -C apfs-label BINDIR=%{_sbindir} MANDIR=%{_mandir}
 %make_install -C apfs-snap BINDIR=%{_sbindir} MANDIR=%{_mandir}
 %make_install -C apfsck BINDIR=%{_sbindir} MANDIR=%{_mandir}
 %make_install -C mkapfs BINDIR=%{_sbindir} MANDIR=%{_mandir}
