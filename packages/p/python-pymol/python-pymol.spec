@@ -16,11 +16,10 @@
 #
 
 
-%bcond_with test
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define oldpython python
 %define modname pymol-open-source
+%bcond_with test
 Name:           python-pymol
 Version:        3.0.0
 Release:        0
@@ -33,6 +32,10 @@ Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{
 Patch0:         no-build-date.patch
 # PATCH-FIX-OPENSUSE no-o3.patch tchvatal@suse.com -- do not add O3 to the code
 Patch1:         no-o3.patch
+# PATCH-FIX-UPSTREAM pymol3-numpy2.patch
+Patch10:        pymol3-numpy2.patch
+# PATCH-FIX-UPSTREAM pymol3-version-compare.patch
+Patch11:        pymol3-version-compare.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
@@ -42,29 +45,29 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel
-BuildRequires:  msgpack-cxx-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mmtf-cpp-devel
+BuildRequires:  msgpack-cxx-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy
+Requires:       python-pmw
+Requires:       python-qt5
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Obsoletes:      pymol < %{version}
+Provides:       pymol = %{version}
 %if %{with test}
-BuildRequires:  Catch2-2-devel
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  Catch2-2-devel
 ## tests need recent biopython not available in Leap
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
 %else
 BuildRequires:  %{python_module biopython}
 %endif
-BuildRequires:  %{python_module pytest}
 %endif
-Requires:       python-numpy
-Requires:       python-qt5
-Requires:       python-pmw
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Obsoletes:      pymol < %{version}
-Provides:       pymol = %{version}
 %python_subpackages
 
 %description
@@ -103,11 +106,11 @@ sed -e '/def testglTF(self):/,+7d' -i testing/tests/api/exporting.py
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
 ## TestSeqalign needs recent biopython not available in Leap
 rm testing/tests/api/seqalign.py
-## fails on Leap, but freemol is unused anyway
-rm testing/tests/system/freemol_.py
 ## default pytest / python on leap are too old...
 sed -e '/--import-mode=importlib/d' -i testing/pytest.ini
 %endif
+## succeeds when run separately, but fails when run after ..../api/viewing.py
+rm testing/tests/api/test_editing.py
 ## pymol -ckqy testing/testing.py --run all
 PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_version} -m pymol -ckqy testing/testing.py --offline --run all
 %endif

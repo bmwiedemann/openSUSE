@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  1 19:23:57 UTC 2024 - <hsk17@mail.de>
+
+- add patches:
+  * pymol3-numpy2.patch:  add numpy-2 compatability
+  * pymol3-version-compare.patch:  fix tests/helpers/test_utils.py
+
+-------------------------------------------------------------------
 Tue Jun 18 15:42:12 UTC 2024 - <hsk17@mail.de>
 
 - update to 3.0.0

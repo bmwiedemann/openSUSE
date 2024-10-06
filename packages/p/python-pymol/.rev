@@ -106,4 +106,15 @@
     <comment></comment>
     <requestid>1183332</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c3d6f59241f04e5af809021b9c8c07f1</srcmd5>
+    <version>3.0.0</version>
+    <time>1728229957</time>
+    <user>anag+factory</user>
+    <comment>- add patches:
+  * pymol3-numpy2.patch:  add numpy-2 compatability
+  * pymol3-version-compare.patch:  fix tests/helpers/test_utils.py
+</comment>
+    <requestid>1205768</requestid>
+  </revision>
 </revisionlist>
