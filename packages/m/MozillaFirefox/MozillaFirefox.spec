@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          130
-%define mainver        %major.0.1
-%define orig_version   130.0.1
+%define major          131
+%define mainver        %major.0
+%define orig_version   131.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.103
+BuildRequires:  mozilla-nss-devel >= 3.104
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -149,7 +149,11 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+%if 0%{?suse_version} < 1599
+BuildRequires:  clang15-devel
+%else
 BuildRequires:  clang18-devel
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0

@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent  125a78208d2cef58191a0328ffe894dd14c6b146
+# Parent  e31f5228a09ed69d7ac3c84e54f0faa6a5910ae0
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -151,17 +151,18 @@ static IntRect CalculateSurfaceBounds(co
+@@ -155,17 +155,18 @@ static IntRect CalculateSurfaceBounds(co
    if (!sampledBounds.ToIntRect(&bounds)) {
      return surfaceBounds;
    }
@@ -28,8 +28,8 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
-@@ -84,28 +84,21 @@ enum class SurfaceFormat : int8_t {
-   YUV422,  // Single plane YUV 4:2:2 interleaved as Y`0 Cb Y`1 Cr.
+@@ -94,28 +94,21 @@ enum class SurfaceFormat : int8_t {
+               // this format.
    HSV,
    Lab,
    Depth,

@@ -1,3 +1,48 @@
+-------------------------------------------------------------------
+Sun Sep 29 10:38:36 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Firefox 131.0
+  https://www.mozilla.org/en-US/firefox/131.0/releasenotes/
+  MFSA 2024-46 (bsc#1230979)
+  * CVE-2024-9391 (bmo#1892407)
+    Prevent users from exiting full-screen mode in Firefox Focus
+    for Android
+  * CVE-2024-9392 (bmo#1899154, bmo#1905843)
+    Compromised content process can bypass site isolation
+  * CVE-2024-9393 (bmo#1918301)
+    Cross-origin access to PDF contents through multipart responses
+  * CVE-2024-9394 (bmo#1918874)
+    Cross-origin access to JSON contents through multipart responses
+  * CVE-2024-9395 (bmo#1906024)
+    Specially crafted filename could be used to obscure download type
+  * CVE-2024-9396 (bmo#1912471)
+    Potential memory corruption may occur when cloning certain objects
+  * CVE-2024-9397 (bmo#1916659)
+    Potential directory upload bypass via clickjacking
+  * CVE-2024-9398 (bmo#1881037)
+    External protocol handlers could be enumerated via popups
+  * CVE-2024-9399 (bmo#1907726)
+    Specially crafted WebTransport requests could lead to denial
+    of service
+  * CVE-2024-9400 (bmo#1915249)
+    Potential memory corruption during JIT compilation
+  * CVE-2024-9401 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 115.16,
+    Firefox ESR 128.3, Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1913445,
+    bmo#1914106, bmo#1914475, bmo#1914963, bmo#1915008, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 128.3,
+    Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9403 (bmo#1917807)
+    Memory safety bugs fixed in Firefox 131 and Thunderbird 131
+- requires NSS 3.104
+- rebased patches
+
+------------------------------------------------------------------
+Sat Sep 21 08:14:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't use clang18-devel on Leap as they don't have that version.
+
 ------------------------------------------------------------------
 Wed Sep 18 06:20:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
