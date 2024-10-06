@@ -127,6 +127,8 @@ dont_test="or test_getinfo "
 dont_test+="or test_multi_socket_select "
 # test_multi_socket_action gh#pycurl/pycurl#729
 dont_test+="or test_multi_socket_action "
+# just get rid of all test_multi tests
+dont_test+="or test_multi_ "
 # test_request_with_verifypeer for gh#pycurl/pycurl#822
 dont_test+="or test_request_with_verifypeer "
 %pytest_arch -s -k "not ($test_flags $dont_test)"

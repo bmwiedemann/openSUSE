@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:25:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switching off test_multi_ tests, they are just too
+  unrealiable. When running the test cycle in cycle I have never
+  managed to make it pass ten times without this change.
+
+-------------------------------------------------------------------
 Tue Sep 24 10:47:25 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch test-bottle-flask.patch to use Flask instead of

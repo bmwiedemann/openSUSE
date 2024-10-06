@@ -476,4 +476,15 @@
   gh#pycurl/pycurl#838</comment>
     <requestid>1202901</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>9bdf7b132b6857853a486a4d0c901e1d</srcmd5>
+    <version>7.45.3</version>
+    <time>1728229899</time>
+    <user>anag+factory</user>
+    <comment>- Switching off test_multi_ tests, they are just too
+  unrealiable. When running the test cycle in cycle I have never
+  managed to make it pass ten times without this change.
+</comment>
+    <requestid>1205723</requestid>
+  </revision>
 </revisionlist>
