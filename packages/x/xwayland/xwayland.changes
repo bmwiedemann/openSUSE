@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  3 21:35:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.1.3
+  * dix: check for calloc() failure in Xi event conversion routines
+  * dix: PolyText: fully initialize local_closure
+  * dix: SetFontPath: don't set errorValue on Success
+  * dix: enterleave.c: fix implicit fallthrough warnings
+  * dix: CreateScratchGC: avoid dereference of pointer we just set to NULL
+  * dix: InitPredictableAccelerationScheme: avoid memory leak on failure
+  * dix: dixChangeWindowProperty: don't call memcpy if malloc failed
+  * dix: ProcListProperties: skip unneeded work if numProps is 0
+  * dix: HashResourceID: use unsigned integers for bit shifting
+  * dix: GetPairedDevice: check if GetMaster returned NULL
+  * dix: FindBestPixel: fix implicit fallthrough warning
+  * CI: clone libdecor from fd.o instead of gnome.org
+  * CI: update libdecor from 0.1.0 to 0.1.1
+  * Don't crash if the client argv or argv[0] is NULL.
+  * Return NULL in *cmdname if the client argv or argv[0] is NULL
+  * xwayland: connect to the wl display before calling into EGL
+  * xwayland: Report correct mode size when rootful
+  * build: Move epoll dependency check
+  * build: Add epoll to Xwayland for DragonFly and OpenBSD
+  * build: Fix DRI3 on DragonFly and OpenBSD
+  * os: Fix NULL pointer dereference
+  * dix: don't push the XKB state to a non-existing master keyboard
+  * Xi: when removing a master search for a disabled paired device
+
+-------------------------------------------------------------------
 Tue Sep 24 11:24:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - added conflicts to patterns-wsl-tmpfiles as this patterns package
