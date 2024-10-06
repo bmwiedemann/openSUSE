@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  5 14:53:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add skip-failing-tests-3_12_7.patch as a temporary workaround,
+  skip failing tests (gh#kislyuk/argcomplete#507).
+
+-------------------------------------------------------------------
 Tue Aug 13 20:18:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require ca-certificates-mozilla for the pip >= 24.2
