@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  6 02:22:39 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 5.0.1
+
+  * Fix occasional crashes in the Mac package, caused by a Qt bug, by
+    updating the version of Qt used when packaging
+
+  * Fix bug in Preferences that prevented some of the analysis settings
+    from taking effect
+
+  * Fix failure to load some older 32-bit Windows Vamp plugins
+
+  * Update UI translation loading logic to better reflect system locale
+    settings
+
+-------------------------------------------------------------------
 Sat Sep  7 09:39:59 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Use gcc-12 for Leap 15.6

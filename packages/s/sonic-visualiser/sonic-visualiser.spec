@@ -22,7 +22,7 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        5.0
+Version:        5.0.1
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
