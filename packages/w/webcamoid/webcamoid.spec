@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           webcamoid
-Version:        9.1.1
+Version:        9.2.3
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
@@ -28,21 +28,28 @@ BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  kf5-filesystem
-BuildRequires:  libqt5-linguist
 BuildRequires:  perl-Text-Markdown
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15
-BuildRequires:  cmake(Qt5Core) >= 5.15
-BuildRequires:  cmake(Qt5DBus) >= 5.15
-BuildRequires:  cmake(Qt5Multimedia) >= 5.15
-BuildRequires:  cmake(Qt5OpenGL) >= 5.15
-BuildRequires:  cmake(Qt5QuickControls2) >= 5.15
-BuildRequires:  cmake(Qt5Svg) >= 5.15
-BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  qt6-tools-linguist
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-app-1.0)
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -54,8 +61,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(vlc-plugin)
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
 Provides:       plasmoid-webcamoid = %{version}
 Obsoletes:      plasmoid-webcamoid < %{version}
 
@@ -82,18 +87,18 @@ Features:
 %autosetup -p1
 
 %build
-%cmake
-%cmake_build
+export CXX=g++
+test -x "$(type -p g++-13)" && export CXX=g++-13
+%cmake_qt6 \
+ -DPLUGINSDIR=%{_qt6_pluginsdir} \
+ -DOUTPUT_QT_PLUGINS_DIR=%{_qt6_pluginsdir}
+%qt6_build
 
 # generate help file
-Markdown.pl --html4 ../README.md > ../README.html
+Markdown.pl --html4 README.md > README.html
 
 %install
-%cmake_install
-
-%{kf5_post_install}
-
-%fdupes %{buildroot}%{_datadir}
+%qt6_install
 
 rm %{buildroot}%{_libdir}/libavkys.so
 
@@ -105,12 +110,11 @@ rm %{buildroot}%{_libdir}/libavkys.so
 %doc AUTHORS ChangeLog README.html THANKS
 %license COPYING
 %{_bindir}/%{name}
-%{_kf5_applicationsdir}/%{name}.desktop
-%{_kf5_appstreamdir}/io.github.%{name}.Webcamoid.metainfo.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/metainfo/io.github.%{name}.Webcamoid.metainfo.xml
+%{_datadir}/icons/hicolor
 %{_libdir}/libavkys.so.*
-%dir %{_libdir}/avkys
-%{_libdir}/avkys/*.so
-%{_kf5_mandir}/man1/%{name}.1%{ext_man}
-%{_kf5_iconsdir}/hicolor
+%{_mandir}/man1/%{name}.1%{ext_man}
+%{_qt6_pluginsdir}/avkys
 
 %changelog

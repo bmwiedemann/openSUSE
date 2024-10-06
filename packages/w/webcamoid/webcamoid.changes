@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  3 06:29:46 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 9.2.3
+  * Misc non-linux changes
+  version 9.2.0:
+  * Webcamoid ported to Qt6.
+  * Added PipeWire video capture support.
+  * Added Xlib screen capture plugin.
+  * Added desktop capture using FFmpeg.
+  * Added option to show or hide the mouse cursor on screen
+    capture.
+  * Qt screen capture plugin is now using QScreenCapture.
+  * Added ColorKey plugin.
+  * Added support for extended controls in V4L2.
+  * Attend to screen orientation.
+  * Fixed ARM 64 packages.
+  * Fixed saving the selected camera format.
+  * Added a debug log to the preferences dialog.
+  * Added options for enabling/disabling interprocess
+    optimizations.
+  * Do not show the video outputs if the virtual camera is not
+    supported.
+
+-------------------------------------------------------------------
 Thu Jun 15 05:05:39 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 9.1.1
