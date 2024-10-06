@@ -231,4 +231,16 @@
 - Remove upper bound from pytest, it works.</comment>
     <requestid>1175274</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8ce130f36f105d0988a109c83cfe237c</srcmd5>
+    <version>5.14.3</version>
+    <time>1728229909</time>
+    <user>anag+factory</user>
+    <comment>FOR  openSUSE:Factory:Staging:I 
+
+- Skip test_complete_custom_completers test because it is failing
+  with 3.12.7 (gh#ipython/traitlets#911).
+</comment>
+    <requestid>1205857</requestid>
+  </revision>
 </revisionlist>

@@ -52,7 +52,8 @@ sed -i 's/"--color=yes",//' pyproject.toml
 
 %check
 # no mypy testing in Ring1
-%pytest --ignore tests/test_typing.py
+# skip test_complete_custom_completers because of gh#ipython/traitlets#911
+%pytest --ignore tests/test_typing.py -k 'not test_complete_custom_completers'
 
 %files %{python_files}
 %doc README.md

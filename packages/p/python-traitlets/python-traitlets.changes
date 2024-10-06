@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  5 21:34:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test_complete_custom_completers test because it is failing
+  with 3.12.7 (gh#ipython/traitlets#911).
+
+-------------------------------------------------------------------
 Mon May 20 05:50:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update 5.14.3:
