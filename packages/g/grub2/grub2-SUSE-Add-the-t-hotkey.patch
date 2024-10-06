@@ -21,6 +21,11 @@ v2 -> v3 (by fvogt@suse.de)
 
   - make it a runtime decision (bsc#1164385)
 
+v3 -> v4
+
+  - display the message only when necessary
+  - clear the screen to enhance visual comfort (bsc#1224465)
+
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -552,6 +552,12 @@
@@ -38,17 +43,25 @@ v2 -> v3 (by fvogt@suse.de)
    name = grub-mkrescue;
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
-@@ -247,6 +247,10 @@
+@@ -246,6 +246,18 @@
+ 	    fi
  	fi
  
-     cat << EOF
++if echo "$GRUB_TERMINAL_OUTPUT" | grep -qwv console &&
++  ([ x"$GRUB_TIMEOUT_STYLE" = xmenu ] ||
++   ([ x"$GRUB_TIMEOUT_STYLE" = x ] &&
++    [ x"$GRUB_HIDDEN_TIMEOUT" = x -o x"$GRUB_HIDDEN_TIMEOUT" = x0 ])); then
++    cat <<EOF
 +  if [ "\${grub_platform}" = "efi" ]; then
++    clear
 +    echo "Please press 't' to show the boot menu on this console"
 +  fi
++EOF
++fi
 +
+     cat << EOF
    set gfxmode=${GRUB_GFXMODE}
    load_video
-   insmod gfxterm
 --- /dev/null
 +++ b/util/grub.d/95_textmode.in
 @@ -0,0 +1,12 @@

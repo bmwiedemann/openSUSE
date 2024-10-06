@@ -1,0 +1,55 @@
+From 8b9234c7e482edd49a9b3377da8e48fbd54aab28 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 24 Sep 2024 18:59:34 +0800
+Subject: [PATCH] efinet: Skip virtual VLAN devices during card enumeration
+
+Similar to the fix in commit "c52ae4057 efinet: skip virtual IPv4 and
+IPv6 devices during card enumeration", the UEFI PXE driver creates
+additional VLAN child devices when a VLAN ID is configured on a network
+interface associated with a physical NIC. These virtual VLAN devices
+must be skipped during card enumeration to ensure that the subsequent
+SNP exclusive open operation targets the correct physical card
+instances, otherwise packet transfer would fail.
+
+Example device path with VLAN nodes:
+
+/MAC(123456789ABC,0x1)/Vlan(20)/IPv4(0.0.0.0,0x0,DHCP,0.0.0.0,0.0.0.0,0.0.0.0)
+
+Signed-Off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/net/drivers/efi/efinet.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
+index 720b5d0e1..3d0bf34fa 100644
+--- a/grub-core/net/drivers/efi/efinet.c
++++ b/grub-core/net/drivers/efi/efinet.c
+@@ -280,7 +280,8 @@ grub_efinet_findcards (void)
+ 	      || GRUB_EFI_DEVICE_PATH_SUBTYPE (child) == GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE)
+ 	  && parent
+ 	  && GRUB_EFI_DEVICE_PATH_TYPE (parent) == GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
+-	  && GRUB_EFI_DEVICE_PATH_SUBTYPE (parent) == GRUB_EFI_MAC_ADDRESS_DEVICE_PATH_SUBTYPE)
++	  && (GRUB_EFI_DEVICE_PATH_SUBTYPE (parent) == GRUB_EFI_MAC_ADDRESS_DEVICE_PATH_SUBTYPE
++	      || GRUB_EFI_DEVICE_PATH_SUBTYPE (parent) == GRUB_EFI_VLAN_DEVICE_PATH_SUBTYPE))
+ 	continue;
+ 
+       net = grub_efi_open_protocol (*handle, &net_io_guid,
+@@ -810,6 +811,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+ 	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
+ 	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
+ 	dup_ldp->length = sizeof (*dup_ldp);
++
++	dup_ldp = grub_efi_find_last_device_path (dup_dp);
++	if (GRUB_EFI_DEVICE_PATH_SUBTYPE (dup_ldp) == GRUB_EFI_VLAN_DEVICE_PATH_SUBTYPE)
++	  {
++	    dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
++	    dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
++	    dup_ldp->length = sizeof (*dup_ldp);
++	  }
++
+ 	match = grub_efi_compare_device_paths (dup_dp, cdp) == 0;
+ 	grub_free (dup_dp);
+ 	if (!match)
+-- 
+2.46.1
+

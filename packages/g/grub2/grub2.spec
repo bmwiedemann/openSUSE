@@ -408,6 +408,9 @@ Patch217:       0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
 Patch218:       grub2-s390x-set-hostonly.patch
 Patch219:       0001-bli-Fix-crash-in-get_part_uuid.patch
 Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
+Patch221:       0001-fix-grub-screen-filled-with-post-screen-artifects.patch
+Patch222:       0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
+Patch223:       0001-tpm-Skip-loopback-image-measurement.patch
 
 # Always requires a default cpu-platform package
 Requires:       grub2-%{grubarch} = %{version}-%{release}
@@ -607,9 +610,9 @@ Unsupported modules for %{name}-%{grubxenarch}
 
 Summary:        Grub2's snapper plugin
 Group:          System/Fhs
-Requires:       %{name}-common = %{version}
 Requires:       libxml2-tools
-Supplements:    packageand(snapper:grub2)
+Requires:       (grub2 or grub2-common)
+Supplements:    ((grub2 or grub2-common) and snapper)
 BuildArch:      noarch
 
 %description snapper-plugin
@@ -620,9 +623,9 @@ Grub2's snapper plugin for advanced btrfs snapshot boot menu management
 
 Summary:        Grub2's systemd-sleep plugin
 Group:          System/Fhs
-Requires:       grub2
 Requires:       util-linux
-Supplements:    packageand(systemd:grub2)
+Requires:       (grub2 or grub2-common)
+Supplements:    ((grub2 or grub2-common) and systemd)
 BuildArch:      noarch
 
 %description systemd-sleep-plugin

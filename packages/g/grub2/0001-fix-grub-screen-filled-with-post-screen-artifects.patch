@@ -1,0 +1,48 @@
+From 44f3c7978a8ac5cc94a5c885ac9e983ba2980f5e Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 29 May 2024 12:32:32 +0800
+Subject: [PATCH] fix grub screen filled with post screen artifects
+
+---
+ grub-core/normal/menu.c      | 7 ++++---
+ grub-core/term/efi/console.c | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index 1df2638d7..b11b28e0d 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -975,13 +975,14 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
+       if (! e)
+ 	continue; /* Menu is empty.  */
+ 
+-      grub_cls ();
+-
+       if (auto_boot)
+ 	grub_menu_execute_with_fallback (menu, e, autobooted,
+ 					 &execution_callback, &notify_boot);
+       else
+-	grub_menu_execute_entry (e, 0);
++	{
++	  grub_cls ();
++	  grub_menu_execute_entry (e, 0);
++	}
+       if (autobooted)
+ 	break;
+     }
+diff --git a/grub-core/term/efi/console.c b/grub-core/term/efi/console.c
+index bb587f39d..258b52737 100644
+--- a/grub-core/term/efi/console.c
++++ b/grub-core/term/efi/console.c
+@@ -432,7 +432,7 @@ grub_console_cls (struct grub_term_output *term __attribute__ ((unused)))
+   grub_efi_simple_text_output_interface_t *o;
+   grub_efi_int32_t orig_attr;
+ 
+-  if (grub_efi_is_finished || text_mode != GRUB_TEXT_MODE_AVAILABLE)
++  if (grub_prepare_for_text_output (term) != GRUB_ERR_NONE)
+     return;
+ 
+   o = grub_efi_system_table->con_out;
+-- 
+2.45.1
+

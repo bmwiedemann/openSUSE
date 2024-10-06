@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct  4 06:58:06 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix missng menu entry "Start bootloader from a read-only snapshot" by
+  ensuring grub2-snapper-plugin is installed when both snapper and grub2-common
+  are installed (bsc#1231271) 
+
+-------------------------------------------------------------------
+Fri Oct  4 06:49:12 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix OOM error in loading loopback file (bsc#1230840)
+  * 0001-tpm-Skip-loopback-image-measurement.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 06:41:11 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix UEFI PXE boot failure on tagged VLAN network (bsc#1230263)
+  * 0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
+
+-------------------------------------------------------------------
+Thu Oct  3 08:25:57 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix grub screen is filled with artifects from earlier post menu (bsc#1224465)
+  * grub2-SUSE-Add-the-t-hotkey.patch
+  * 0001-fix-grub-screen-filled-with-post-screen-artifects.patch
+
+-------------------------------------------------------------------
 Tue Aug 13 07:12:58 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Introduces a new package, grub2-x86_64-efi-bls, which includes a
