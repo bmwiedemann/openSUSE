@@ -24,7 +24,6 @@ Release:        0
 Summary:        Real-Time Linux Analysis tools
 License:        GPL-2.0-only
 URL:            https://www.kernel.org/
-Patch1:         fix-libtracefs.patch
 BuildRequires:  kernel-source
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libtracefs-devel
@@ -52,7 +51,6 @@ There is no reason to install this package.
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib Documentation/tools/rtla) | tar -xf -
 # Workaround for missing lib dependency
 sed -i 's/--libs libtracefs/--libs libtracefs libtraceevent/' tools/tracing/rtla/Makefile
-%patch -P 1 -p1
 
 %build
 cd tools/tracing/rtla

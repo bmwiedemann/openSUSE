@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 07:09:18 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- The kernel ships the necessary build fix, thus
+  remove fix-libtracefs.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 09:58:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace deprecated %patchN syntax with %patch -P N.
