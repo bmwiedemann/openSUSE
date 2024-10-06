@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Sep 29 21:38:08 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to 5.9
+  * Added new transaction during reconcile, didn't show up in 
+    reconcile window
+  * Improve error reporting for bad credentials with MySQL backend 
+    ("bad or corrupt data" => "access denied") 
+  * Transaction Copy/Paste problem
+  * sqlite backend: Example Python script prints error when creating 
+    new file
+  * Transaction Journal view cursor placement after commit to 
+    transaction change
+  * Reconciled date cannot be parsed 
+  * Crash when removing an account 
+  * Transaction Cut/Paste doesn't move the transaction to the target 
+    account 
+  * relative date offset quarters occasionally wrong 
+  * Windows Keypad decimal locale error 
+  * Post invoice: post to account dropdown listbox too small
+  * Intermittent quote price issue 
+  * Add YH Finance (FINANCEAPI) API Key to Quotes infrastructure 
+    with a preference in the Online Quotes page and add financeapi 
+    to known sources
+  * Move copied_class and copied_leader_guid
+    - Move static copied_class and static copied_leader_guid to be 
+      part of the copied_item structure. This makes it more evident 
+      that calling clear_copied_item needs to be called before 
+      copied_item is used
+  * [gnc-datetime] improve CSV date parser with ICU and Boost
+    - Add dateformat "Locale" with ICU; uses current locale for date 
+      parsing. ICU's locale date parser may parse "3 May 2023" or 
+      "2024年9月13日" (LC_TIME=zh_TW.utf8) and maybe others
+    - Augment d-m-y m-d-y and y-m-d with boost UK/US/ISO parsers. 
+      This allows CSV import of dates with months as words as 
+      "30 Sep 2023" or "May 4, 1978" or "2023-Dec-25". Note boost 
+      parser cannot recognise 2-digit years, therefore "30 Sep 24" 
+      is invalid
+  * Csv Import - improve assisant's introduction page
+  * Correctly handle uncommitted edits when opening a file from 
+    history
+  * Don't use gnc_difftime and deprecate it because it casts time64 
+    to doubles
+  * [gnc-pricedb.h] remove unused gnc_pricedb_substitute_commodity
+  * [gnc-pricedb.h] remove unused gnc_pricedb_lookup_at_time64
+- New and Updated Translations: Assamese, Chinese (Simplified), 
+  Chinese (Traditional), Croatian, Dutch, English (United Kingdom), 
+  Hebrew, Hungarian, Macedonian, Norwegian Bokmål, Portuguese (Brazil),
+  Russian, Spanish, Swedish, Turkish
+
+-------------------------------------------------------------------
 Fri Jul 26 20:32:32 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 5.8

@@ -34,7 +34,7 @@
 %endif
 
 Name:           gnucash
-Version:        5.8
+Version:        5.9
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
