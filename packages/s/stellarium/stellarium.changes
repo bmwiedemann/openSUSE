@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 23 19:56:36 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 24.3
+  * Performance improvements for computation of Solar system bodies
+    positions
+  * Improvements in plugins and AstroCalc tools
+  * Updates in sky cultures
+  * Updates in GUI
+
+-------------------------------------------------------------------
 Sun Jun 23 20:23:23 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 24.2
