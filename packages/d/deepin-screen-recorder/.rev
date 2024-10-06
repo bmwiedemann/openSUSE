@@ -86,4 +86,13 @@
     <comment>- Fix build on Tumbleweed: don't use ffmpeg 7 and later (forwarded request 1194122 from hillwood)</comment>
     <requestid>1194123</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a099cb9f85ff8441a5b98d0532f7f021</srcmd5>
+    <version>5.11.6</version>
+    <time>1728229923</time>
+    <user>anag+factory</user>
+    <comment>- Add add-missing-include-header.patch, need include camview.h in
+  3rdparty/libcam/libcam_encoder/mp4.c (forwarded request 1205717 from hillwood)</comment>
+    <requestid>1205718</requestid>
+  </revision>
 </revisionlist>

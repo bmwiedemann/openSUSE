@@ -30,6 +30,8 @@ Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{
 Patch0:         fix-include-path.patch
 # PATCH-FIX-UPSTREAM fix-reture-type.patch hillwood@opensuse.org
 Patch1:         fix-reture-type.patch
+# PATCH-FIX-UPSTREAM add-missing-include-header.patch hillwood@opensuse.org - Missing include a header
+Patch2:         add-missing-include-header.patch
 # fdupes macro works
 Source1:        %{name}-rpmlintrc
 %ifarch ppc ppc64 ppc64le s390 s390x

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 13:27:54 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add add-missing-include-header.patch, need include camview.h in
+  3rdparty/libcam/libcam_encoder/mp4.c 
+
+-------------------------------------------------------------------
 Thu Aug 15 11:46:38 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Tumbleweed: don't use ffmpeg 7 and later
