@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 04 19:45:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.8:
+  * docs: update docs and scripts to lock release-0.8 branch into
+    latest stable release (#2611)
+  * chore(backport release-0.8): fix(kubeclient): retry patch on
+    conflict (#2516)
+  * chore(backport release-0.8): fix(docs): specify pnpm version
+    for building docs (#2512)
+  * chore(backport release-0.8): fix(ui): promote downstream subs
+    in control flow stages was broken (#2498)
+
+-------------------------------------------------------------------
 Sat Sep 14 14:13:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.7:
