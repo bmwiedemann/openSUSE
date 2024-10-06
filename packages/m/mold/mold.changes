@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  4 18:37:30 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.34.1
+  * [ARM32] Fixed a regression that R_ARM_TARGET1 wasn't handled as a synonym for
+    R_ARM_ABS32 relocation. This issue caused some ARM32 programs to crash on
+    startup if linked with mold. (186272a)
+  * [RISC-V] mold now sets the STO_RISCV_VARIANT_CC dynamic tag if the ELF module
+    exports a function symbol with a non-standard calling convention. (16eb513)
+
+-------------------------------------------------------------------
 Wed Sep 25 14:21:13 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.34.0
