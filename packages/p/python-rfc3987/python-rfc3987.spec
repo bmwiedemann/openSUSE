@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3987
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-rfc3987
 Version:        1.3.8
 Release:        0
 Summary:        Module for parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
-URL:            https://github.com/dgerber/rfc3987
+URL:            https://codeberg.org/atufi/rfc3987
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3987/rfc3987-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +45,10 @@ utilities for composition and relative resolution of references.
 sed -i '1{/^#!/d}' rfc3987.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +57,8 @@ sed -i '1{/^#!/d}' rfc3987.py
 %files %{python_files}
 %license COPYING.txt
 %doc README.txt
-%{python_sitelib}/*
+%{python_sitelib}/rfc3987.py
+%pycache_only %{python_sitelib}/__pycache__/rfc3987.*.pyc
+%{python_sitelib}/rfc3987-%{version}.dist-info
 
 %changelog
