@@ -32,6 +32,7 @@ URL:            https://gitlab.com/virtio-fs/virtiofsd
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        50-virtiofsd.json
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libseccomp-devel

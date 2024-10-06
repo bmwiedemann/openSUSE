@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  3 18:55:20 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: Add direct dependency on cargo in addition to cargo-packaging.
+    This fixes build errors on 15SP7 where the inherited version of Rust
+    is too old
+
+-------------------------------------------------------------------
 Thu Aug  8 19:57:34 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Service: Remove deprecated cargo_config and cargo_audit services, both 
