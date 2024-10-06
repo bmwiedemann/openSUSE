@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  1 19:07:43 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.2.2
+
+  * Regular service release to fix bugs
+  * Fix #242: Do not push item types (Demand) to followup docs
+  * Fix #241: Allow negative item sums
+  * Changes to fix CI 
+
+-------------------------------------------------------------------
 Sun May  5 20:27:36 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 1.2.1
