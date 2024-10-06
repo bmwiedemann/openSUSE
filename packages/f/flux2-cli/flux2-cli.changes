@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Oct 02 06:44:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.0:
+  https://github.com/fluxcd/flux2/releases/tag/v2.4.0
+  CLI Changelog
+  * PR #5014 - @stefanprodan - Update Kubernetes dependencies to
+    v1.31.1
+  * PR #5011 - @stefanprodan - Remove TLS deprecated flags from
+    flux create secret
+  * PR #5010 - @stefanprodan - Add flux create secret proxy command
+  * PR #5009 - @stefanprodan - Add --proxy-secret-ref to flux
+    create source commands
+  * PR #5008 - @stefanprodan - Promote bucket commands to GA
+  * PR #5007 - @stefanprodan - Run conformance tests for Kubernetes
+    1.29-1.31
+  * PR #5005 - @fluxcdbot - Update toolkit components
+  * PR #5004 - @fluxcdbot - Update source-controller to v1.4.1
+  * PR #4986 - @dipti-pai - [RFC-0007] Add --provider flag to flux
+    create source git
+  * PR #4970 - @JasonTheDeveloper - Update
+    notaryproject/notation-go to 1.2.1
+  * PR #4967 - @mxtw - tests: use tempdir to avoid manual gc
+  * PR #4959 - @stefanprodan - Fix GitHub bootstrap for
+    repositories with custom properties
+  * PR #4948 - @harshitasao - fix: fixed GHA token-permission and
+    pinned dependencies issue
+  * PR #4939 - @bkreitch - Recursively diff Kustomizations
+  * PR #4936 - @stefanprodan - Build with Go 1.23
+  * PR #4934 - @stefanprodan - Update dependencies to Kubernetes
+    v1.31.0
+  * PR #4922 - @bkreitch - Stop spinner on cancel of flux diff
+    kustomization
+  * PR #4918 - @matheuscscp - Fix reconcile helmrelease command
+    description
+  * PR #4892 - @stefanprodan - Run conformance tests for Kubernetes
+    v1.31
+  * PR #4871 - @harshitasao - changed the scorecard badge link to
+    the standard format
+  * PR #4866 - @nagyv - Introduce visibility flag for bootstrap
+    gitlab
+  * PR #4863 - @stefanprodan - Update conformance tests to
+    Kubernetes v1.30.2
+  * PR #4845 - @stefanprodan - Run ARM64 e2e tests on GitHub
+    runners
+  * PR #4842 - @stefanprodan - Add part-of label to controllers
+    base
+  * PR #4835 - @stefanprodan - ci: Adapt config to GoRelease v2
+  * PR #4806 - @dipti-pai - [RFC] Passwordless authentication for
+    Git repositories
+
+-------------------------------------------------------------------
 Sat Jun 15 16:59:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix completions by using executable_name as file name, not

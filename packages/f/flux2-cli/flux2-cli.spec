@@ -18,25 +18,24 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define repo_name flux2
 %define executable_name flux
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v1.0.1
-%define image_automation_controller_version v0.38.0
-%define image_reflector_controller_version  v0.32.0
-%define kustomize_controller_version        v1.3.0
-%define notification_controller_version     v1.3.0
-%define source_controller_version           v1.3.0
+%define helm_controller_version             v1.1.0
+%define image_automation_controller_version v0.39.0
+%define image_reflector_controller_version  v0.33.0
+%define kustomize_controller_version        v1.4.0
+%define notification_controller_version     v1.4.0
+%define source_controller_version           v1.4.1
 
 Name:           flux2-cli
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
 URL:            https://github.com/fluxcd/flux2
-Source:         %{repo_name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source11:       helm-controller.crds.yaml
 Source12:       helm-controller.deployment.yaml
@@ -58,13 +57,21 @@ BuildRequires:  helm
 BuildRequires:  kustomize
 
 %description
-Flux is a tool for keeping Kubernetes clusters in sync with sources of configuration (like Git repositories and OCI artifacts), and automating updates to configuration when there is new code to deploy.
+Flux is a tool for keeping Kubernetes clusters in sync with sources of
+configuration (like Git repositories and OCI artifacts), and automating updates
+to configuration when there is new code to deploy.
 
-Flux version 2 ("v2") is built from the ground up to use Kubernetes' API extension system, and to integrate with Prometheus and other core components of the Kubernetes ecosystem. In version 2, Flux supports multi-tenancy and support for syncing an arbitrary number of Git repositories, among other long-requested features.
+Flux version 2 ("v2") is built from the ground up to use Kubernetes' API
+extension system, and to integrate with Prometheus and other core components of
+the Kubernetes ecosystem. In version 2, Flux supports multi-tenancy and support
+for syncing an arbitrary number of Git repositories, among other long-requested
+features.
 
-Flux v2 is constructed with the GitOps Toolkit, a set of composable APIs and specialized tools for building Continuous Delivery on top of Kubernetes.
+Flux v2 is constructed with the GitOps Toolkit, a set of composable APIs and
+specialized tools for building Continuous Delivery on top of Kubernetes.
 
-Flux is a Cloud Native Computing Foundation (CNCF) project, used in production by various organisations and cloud providers.
+Flux is a Cloud Native Computing Foundation (CNCF) project, used in production
+by various organisations and cloud providers.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -98,7 +105,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n %{repo_name}-%{version}
+%autosetup -p 1 -a 1
 
 %build
 cp %{SOURCE11} ./manifests/bases/helm-controller/
