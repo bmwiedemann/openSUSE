@@ -1214,4 +1214,41 @@
     <comment></comment>
     <requestid>1204807</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e58ff698eb6c3d722256b4b3964f6ea5</srcmd5>
+    <version>3.12.7</version>
+    <time>1728229903</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.12.7:
+  - Tests
+    - gh-124378: Updated test_ttk to pass with Tcl/Tk 8.6.15.
+  - Security
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified.
+  - Library
+    - gh-116850: Fix argparse for namespaces with not directly
+      writable dict (e.g. classes).
+    - gh-58573: Fix conflicts between abbreviated long options in
+      the parent parser and subparsers in argparse.
+    - gh-61181: Fix support of choices with string value in
+      argparse. Substrings of the specified string no longer
+      considered valid values.
+    - gh-80259: Fix argparse support of positional arguments with
+      nargs='?', default=argparse.SUPPRESS and specified type.
+    - gh-124498: Fix typing.TypeAliasType not to be generic, when
+      type_params is an empty tuple.
+    - gh-124345: argparse vim supports abbreviated single-dash
+      long options separated by = from its value.
+    - gh-104860: Fix disallowing abbreviation of single-dash long
+      options in argparse with allow_abbrev=False.
+    - gh-63143: Fix parsing mutually exclusive arguments in
+      argparse. Arguments with the value identical to the default
+      value (e.g. booleans, small integers, empty or 1-character
+      strings) are no longer considered “not present”.
+    - gh-72795: Positional arguments with nargs equal to '*' or</comment>
+    <requestid>1205549</requestid>
+  </revision>
 </revisionlist>

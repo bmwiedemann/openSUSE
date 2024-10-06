@@ -18,7 +18,7 @@
  
  # Create table of contents entries for domain objects (e.g. functions, classes,
  # attributes, etc.). Default is True.
-@@ -328,7 +328,7 @@ html_short_title = f'{release} Documenta
+@@ -329,7 +329,7 @@ html_short_title = f'{release} Documenta
  # (See .readthedocs.yml and https://docs.readthedocs.io/en/stable/reference/environment-variables.html)
  is_deployment_preview = os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
  repository_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", "")
@@ -251,7 +251,7 @@
      stable_abi_data = {}
      with open(stable_abi_file, encoding="utf8") as fp:
          for record in csv.DictReader(fp):
-@@ -135,7 +131,8 @@ def add_annotations(app: Sphinx, doctree
+@@ -132,7 +128,8 @@ def add_annotations(app: Sphinx, doctree
          objtype = par["objtype"]
  
          # Stable ABI annotation.
@@ -261,7 +261,7 @@
              if ROLE_TO_OBJECT_TYPE[record.role] != objtype:
                  msg = (
                      f"Object type mismatch in limited API annotation for {name}: "
-@@ -242,7 +239,7 @@ def _unstable_api_annotation() -> nodes.
+@@ -239,7 +236,7 @@ def _unstable_api_annotation() -> nodes.
      )
  
  
@@ -270,7 +270,7 @@
      classes = ["refcount"]
      if result_refs is None:
          rc = sphinx_gettext("Return value: Always NULL.")
-@@ -262,7 +259,7 @@ class LimitedAPIList(SphinxDirective):
+@@ -259,7 +256,7 @@ class LimitedAPIList(SphinxDirective):
      optional_arguments = 0
      final_argument_whitespace = True
  
@@ -279,7 +279,7 @@
          state = self.env.domaindata["c_annotations"]
          content = [
              f"* :c:{record.role}:`{record.name}`"
-@@ -285,7 +282,7 @@ def init_annotations(app: Sphinx) -> Non
+@@ -282,7 +279,7 @@ def init_annotations(app: Sphinx) -> Non
      )
  
  
@@ -288,7 +288,7 @@
      app.add_config_value("refcount_file", "", "env", types={str})
      app.add_config_value("stable_abi_file", "", "env", types={str})
      app.add_directive("limited-api-list", LimitedAPIList)
-@@ -297,10 +294,10 @@ def setup(app: Sphinx) -> ExtensionMetad
+@@ -294,10 +291,10 @@ def setup(app: Sphinx) -> ExtensionMetad
          from sphinx.domains.c import CObject
  
          # monkey-patch C object...

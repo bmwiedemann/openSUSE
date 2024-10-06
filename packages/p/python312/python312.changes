@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Tue Oct  1 15:32:06 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.7:
+  - Tests
+    - gh-124378: Updated test_ttk to pass with Tcl/Tk 8.6.15.
+  - Security
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified.
+  - Library
+    - gh-116850: Fix argparse for namespaces with not directly
+      writable dict (e.g. classes).
+    - gh-58573: Fix conflicts between abbreviated long options in
+      the parent parser and subparsers in argparse.
+    - gh-61181: Fix support of choices with string value in
+      argparse. Substrings of the specified string no longer
+      considered valid values.
+    - gh-80259: Fix argparse support of positional arguments with
+      nargs='?', default=argparse.SUPPRESS and specified type.
+    - gh-124498: Fix typing.TypeAliasType not to be generic, when
+      type_params is an empty tuple.
+    - gh-124345: argparse vim supports abbreviated single-dash
+      long options separated by = from its value.
+    - gh-104860: Fix disallowing abbreviation of single-dash long
+      options in argparse with allow_abbrev=False.
+    - gh-63143: Fix parsing mutually exclusive arguments in
+      argparse. Arguments with the value identical to the default
+      value (e.g. booleans, small integers, empty or 1-character
+      strings) are no longer considered “not present”.
+    - gh-72795: Positional arguments with nargs equal to '*' or
+      argparse.REMAINDER are no longer required. This allows to
+      use positional argument with nargs='*' and without default
+      in mutually exclusive group and improves error message
+      about required arguments.
+    - gh-59317: Fix parsing positional argument with nargs equal
+      to '?' or '*' if it is preceded by an option and another
+      positional argument.
+    - gh-53780: argparse now ignores the first "--" (double dash)
+      between an option and command.
+    - gh-124217: Add RFC 9637 reserved IPv6 block 3fff::/20 in
+      ipaddress module.
+    - gh-124248: Fixed potential crash when using struct to
+      process zero-width ‘Pascal string’ fields (0p).
+    - gh-81691: Fix handling of multiple "--" (double dashes)
+      in argparse. Only the first one has now been removed, all
+      subsequent ones are now taken literally.
+    - gh-87041: Fix a bug in argparse where lengthy subparser
+      argument help is incorrectly indented.
+    - gh-124171: Add workaround for broken fmod() implementations
+      on Windows, that loose zero sign (e.g. fmod(-10, 1) returns
+      0.0). Patch by Sergey B Kirpichev.
+    - gh-123934: Fix unittest.mock.MagicMock reseting magic
+      methods return values after .reset_mock(return_value=True)
+      was called.
+    - gh-123935: Fix parent slots detection for dataclasses that
+      inherit from classes with __dictoffset__.
+    - gh-123892: Add "_wmi" to sys.stdlib_module_names. Patch by
+      Victor Stinner.
+    - gh-116810: Resolve a memory leak introduced in CPython
+      3.10’s ssl when the ssl.SSLSocket.session property was
+      accessed. Speeds up read and write access to said property
+      by no longer unnecessarily cloning session objects via
+      serialization.
+    - gh-121735: When working with zip archives,
+      importlib.resources now properly honors module-adjacent
+      references (e.g. files(pkg.mod) and not just files(pkg)).
+    - gh-119004: Fix a crash in OrderedDict.__eq__ when operands
+      are mutated during the check. Patch by Bénédikt Tran.
+    - bpo-44864: Do not translate user-provided strings in
+      argparse.ArgumentParser.
+  - IDLE
+    - gh-112938: Fix uninteruptable hang when Shell gets rapid
+      continuous output.
+  - Core and Builtins
+    - gh-116510: Fix a bug that can cause a crash when
+      sub-interpreters use “basic” single-phase extension
+      modules. Shared objects could refer to PyGC_Head nodes that
+      had been freed as part of interpreter cleanup.
+    - gh-124188: Fix reading and decoding a line from the source
+      file witn non-UTF-8 encoding for syntax errors raised in
+      the compiler.
+    - gh-77894: Fix possible crash in the garbage collector when
+      it tries to break a reference loop containing a memoryview
+      object. Now a memoryview object can only be cleared if
+      there are no buffers that refer it.
+    - gh-98442: Fix too wide source locations of the cleanup
+      instructions of a with statement.
+    - gh-113993: Strings interned with sys.intern() are again
+      garbage-collected when no longer used, as per the
+      documentation. Strings interned with the C function
+      PyUnicode_InternInPlace() are still immortal. Internals of
+      the string interning mechanism have been changed. This may
+      affect performance and identities of str objects.
+  - C API
+    - gh-113993: PyUnicode_InternInPlace() no longer prevents its
+      argument from being garbage collected.
+    - Several functions that take char * are now documented
+      as possibly preventing string objects from being
+      garbage collected; refer to their documentation
+      for details: PyUnicode_InternFromString(),
+      PyDict_SetItemString(), PyObject_SetAttrString(),
+      PyObject_DelAttrString(), PyUnicode_InternFromString(), and
+      PyModule_Add* convenience functions.
+  - Build
+    - gh-124487: Windows builds now use Windows 8.1 as their API
+      baseline (installation already required Windows 8.1).
+    - gh-123917: Fix the check for the crypt() function in the
+      configure script. Patch by Paul Smith and Victor Stinner.
+- Change previous removal of *.pyc files with rm -f instead of
+  ||/bin/true (bsc#1230906).
+
+-------------------------------------------------------------------
 Mon Sep 30 09:42:13 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop .pyc files from docdir for reproducible builds

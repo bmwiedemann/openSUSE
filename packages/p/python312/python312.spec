@@ -110,7 +110,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.6
+Version:        3.12.7
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -796,7 +796,11 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
 )
 echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-import-failed-hooks.pth
 %endif
-find %{buildroot}%{_docdir}/%{name} -type f -name \*.pyc -delete ||:
+
+# For the purposes of reproducibility, it is necessary to eliminate any *.pyc files inside documentation dirs
+if [ -d %{buildroot}%{_defaultdocdir} ] ; then
+find %{buildroot}%{_defaultdocdir} -type f -name \*.pyc -ls -exec rm -vf '{}' \;
+fi
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk
