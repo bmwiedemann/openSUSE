@@ -21,7 +21,7 @@
 %define executable_name glasskube
 
 Name:           glasskube-cli
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        The next generation Package Manager for Kubernetes
 License:        Apache-2.0

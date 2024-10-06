@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 04 19:38:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.0:
+  * chore(main): release 0.24.0 (#1298)
+  * feat(package-operator): add "well-known" label field specs
+    (#1305)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to
+    v3.16.1 (#1304)
+  * chore(deps): update dependency eslint-plugin-react to v7.37.1
+    (#1296)
+  * chore(deps): update dependency eslint-plugin-import to v2.31.0
+    (#1301)
+  * fix(ui): clear previous modal content (#1292)
+  * chore(deps): update dependency globals to v15.10.0 (#1297)
+
+-------------------------------------------------------------------
 Wed Oct 02 05:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.0:
