@@ -22,13 +22,14 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.rpmlintrc
+Patch1:         meson-missing-wayland-include.patch
 Patch100:       opensuse-hyprpm-use-hyprland-devel-subpkg.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14

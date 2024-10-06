@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Oct  6 11:41:04 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.44.0:
+  + An update full of bugfixes and new niceties has landed upon us :)
+  + New features:
+    - args: add --version to binary args
+    - config: add descriptions for dwindle and master layout options
+      (#7933)
+    - config: add order rule for layers (#7697)
+    - core: add HYPRLAND_CONFIG environment variable (#7851)
+    - core: add a --systeminfo parameter to gather systeminfo without
+      running
+    - dwindle: add config option split_bias (#7920)
+    - dwindle: add movetoroot method to layout messages (#7903)
+    - hyprctl: add defaultName to workspacerules
+    - hyprctl: add solitary field to hyprctl monitors
+    - hyprctl: add submap request
+    - layout: add auto_group to control default grouping (#7883)
+    - userchecks: add an xdg_current_desktop check
+  + Fixes:
+    - Meson: fix protocols, clean up
+    - Meson: add tracy dependency
+    - byteoperations: add missing header
+    - core: Fix Musl builds (#7934)
+    - dispatchers: fixup dpms toggle (#7875)
+    - gammactrl: fix potential crash on monitor removed (#7828)
+    - internal: Fix change group current fullscreen state query
+      (#7802)
+    - internal: fix initial cursor warping (#7793)
+    - internal: fix missing include directive (#7984)
+    - layout: fix dragging a window into a group (#7976)
+    - man: Fixed the man page to show the new information (#7713)
+    - protocol: fix missing include
+    - renderer: Fix resize artifacts (stretching, bumps) (#7499)
+    - renderer: fix uvBR calculation (#7975)
+    - textinput: fix tiv3 leave (#7761)
+    - tiv1: fix deleting first character (#7716)
+  + Other:
+    - Internal: move to Mat3x3 from hyprutils (#7902)
+    - Meson: pass AQUAMARINE_VERSION argument
+    - Meson: try to find udis86 through pkgconfig, fallback to
+      subproject
+    - assets: Remove execute permission from lockdead.png (#7715)
+    - build: Set cmake_minimum_required to version 3.30 (#7709)
+    - compositor/wayland: up the max buffer size to avoid disconnects
+      when app hangs
+    - compositor: update all xdg outputs on arrange
+    - config: Limit max volume to 100%
+    - config: include XF86Audio* key bindings to default cfg (#7695)
+    - data-device: conform to reported source actions
+    - data-device: don't send default action of move
+    - data-device: send clock time in motion events
+    - dispatchers: allow moveintogroup when floating (#7818)
+    - dmabuffer: attempt importing failed dmabufs as implicit
+    - eventloop: dispatch pending in session on start
+    - github: encourage usage of --systeminfo if Hyprland won't
+      launch
+    - hyprctl: allow parsing empty value
+    - hyprctl: use the getMonitorData helper everywhere
+    - input: move dmps activation to input listeners (#7721)
+    - internal: removed Herobrine
+    - internal: Delay monitor events/hooks (#7797)
+    - internal: move to hyprutils' scopeguard
+    - internal: nuke wlsignal and related
+    - monitor: arrange monitors on connect and disconnect
+    - monitor: cleanup and modernize scheduleDone
+    - monitor: use a scope guard for disconnect events
+    - opengl: use GL_CLAMP_TO_EDGE instead of GL_CLAMP
+    - pointermgr: Hide hardware cursor on leave (#7806)
+    - pointermgr: avoid derefing null outputs
+    - pointermgr: avoid hogging CMonitor refs
+    - protocolmgr: don't expose the fallback output
+    - shm: send a static list of shm formats
+    - single-pixel-buffer: new protocol impl
+    - single-pixel: set buffer size to 1,1
+    - textinput: don't reset if ti isn't enabled (#7798)
+    - textinput: handle IME resetting (#7731)
+    - version: log build aquamarine version
+    - wayland/output: send geometry in updateState
+    - wlr-output-configuration: Improve output configuration (#7571)
+    - wlr-output-management: accept 0 refresh rates
+    - xdg-output: minor cleanups
+    - xwayland: Some readability improvements (#7807)
+    - xwayland: remove extra x11 deactivation (#7755)
+    - xwayland: use proper path for the XWayland sockets (#7852)
+    - xwm: Minor cleanup, add wrappers for basic types (#7856)
+- Added "meson-missing-wayland-include.patch" required to build
+  hyprland. See message body of the patch for more details.
+
+-------------------------------------------------------------------
 Sun Sep  8 23:12:21 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.43.0:
@@ -1113,7 +1203,6 @@ Sat Mar 16 19:50:56 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
     - socket2: Add 5 IPC event with support for workspace ID (#5022)
     - subsurface/popup: expand on map/unmap to add buffering
   + Fixes:
-    - CrashReporter: Fix compilation with musl libc (#4805)
     - animations: fix m_Goal not being set after #4911 (#4992)
     - configmgr: fix compile on 32-bit archs
     - core: add additional headers for Popup.cpp and
