@@ -25,11 +25,11 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           update-bootloader
-Version:        1.15
+Version:        1.16
 Release:        0
 Requires:       coreutils
-Obsoletes:      perl-Bootloader-YAML < %{version}
 Obsoletes:      perl-Bootloader < %{version}-%{release}
+Obsoletes:      perl-Bootloader-YAML < %{version}
 Provides:       perl-Bootloader = %{version}-%{release}
 Conflicts:      kexec-tools < 2.0.26.0
 Summary:        Tool for boot loader configuration

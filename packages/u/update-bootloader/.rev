@@ -7,4 +7,12 @@
     <comment>rename perl-Bootloader to update-bootloader</comment>
     <requestid>1195049</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4b0917ed96fd7df1cc046de4e9dfe52</srcmd5>
+    <version>1.16</version>
+    <time>1728229901</time>
+    <user>anag+factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1205724</requestid>
+  </revision>
 </revisionlist>

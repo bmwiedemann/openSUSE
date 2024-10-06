@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Fri Oct 4 14:53:58 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#173
+- grub2-bls: adjust config script test
+- grub2-bls: adjust install script test
+- grub2-bls: prefer sdbootutil over bootctl in install script
+- adjust test environment
+- grub2-bls: add default script
+- grub2-bls, systemd-boot: add default script test
+- grub2-bls: use bootctl to get default settings
+- adjust default-settings tests
+- update test result data
+- add emacs config
+- log efi boot manager config after install
+- adjust test data
+- support new grub2-bls package
+- 1.16
+
+--------------------------------------------------------------------
 Mon Aug 19 10:34:21 UTC 2024 - wfeldt@opensuse.org
 
 - rename package perl-Bootloader to update-bootloader (bsc#1214361)
