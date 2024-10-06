@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 06 08:01:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.0:
+  * Fix typo in README
+  * test: Fix typo
+  * Added additional documentation for package version selection
+  * sca: Properly detect .so files as deps
+  * Adjust an e2e-test that made a bad assumption.
+  * update the docs
+  * add --cleanup flag (default true)
+  * build(deps): bump github.com/chainguard-dev/yam from 0.1.1 to
+    0.2.0
+  * build(deps): bump google.golang.org/api from 0.198.0 to 0.199.0
+  * build(deps): bump actions/checkout in the actions group
+  * Support string replacement in ImageContents
+  * build(deps): bump the gomod group with 5 updates
+  * git-checkout: support scheduled updates
+  * sca: never emit libcuda.so.1 runtime dep
+  * Add table of contents
+  * Add pipeline markdown reference markdown generator.
+  * feat(melange): Add sub for output directory
+
+-------------------------------------------------------------------
 Sat Sep 21 16:30:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.12.1:

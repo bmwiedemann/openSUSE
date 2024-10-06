@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           melange
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0
