@@ -14,7 +14,15 @@ if rpm -q sdbootutil; then
     esac
 
     echo "install boot loader"
+    loader_type="grub2-bls"
+    rpm -q systemd-boot && loader_type="systemd-boot"
+    if [ -f /etc/sysconfig/bootloader ]; then
+	sed -i "s/^LOADER_TYPE=.*$/LOADER_TYPE=\"$loader_type\"/g" /etc/sysconfig/bootloader
+    else
+	echo "LOADER_TYPE=\"${loader_type}\"" > /etc/sysconfig/bootloader
+    fi
     sdbootutil -v --no-random-seed --arch "$arch" --esp-path /boot/efi --entry-token=auto --no-variables install
+
     echo "add kernels"
     export hostonly_l=no # for dracut
     sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels

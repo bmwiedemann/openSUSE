@@ -144,9 +144,5 @@ if rpm -q sdbootutil; then
 
 	echo "rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
 
-	rpm -q systemd-boot && loader_type="systemd-boot"
-	rpm -q grub2 && loader_type="grub2-bls"
-	echo "LOADER_TYPE=\"${loader_type}\"" >> /etc/sysconfig/bootloader
-
 	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable disk-encryption-tool-enroll.service
 fi

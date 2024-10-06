@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 09:42:47 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Move /etc/sysconfig/bootloader creation to disk.sh, as KIWI can
+  replace the one generated in config.sh (bsc#1231271)
+
+-------------------------------------------------------------------
 Tue Oct  1 16:07:08 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Requires systemd-boot in the sdboot flavor
