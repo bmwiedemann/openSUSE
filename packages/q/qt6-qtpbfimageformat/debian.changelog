@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (3.2) stable; urgency=low
+
+  * Improved rendering performance.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 06 Oct 2024 13:58:00 +0200
+
 qt5-pbf-image-plugin (3.1) stable; urgency=low
 
   * Added support for SDF sprites.

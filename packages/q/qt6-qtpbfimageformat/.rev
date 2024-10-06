@@ -7,4 +7,12 @@
     <comment>Qt6 version of libqt5-qtpbfimageformat required for MVT support in GPXSee. Since GPXSee has already switched to Qt6 in Tumbleweed, a Qt6 version of the plugin is required.</comment>
     <requestid>1183338</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0fbc4d2f7d62818d278d0806e83a0e68</srcmd5>
+    <version>3.2</version>
+    <time>1728229992</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1205963</requestid>
+  </revision>
 </revisionlist>
