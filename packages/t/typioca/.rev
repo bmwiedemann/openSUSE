@@ -21,4 +21,13 @@
   * add openSUSE install instruction (forwarded request 1188249 from kskarthik)</comment>
     <requestid>1188253</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36d563f719814b62586aa5ec688fed2c</srcmd5>
+    <version>3.1.0</version>
+    <time>1728229970</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.0:
+  * Dependency bumps (forwarded request 1205843 from smolsheep)</comment>
+    <requestid>1205848</requestid>
+  </revision>
 </revisionlist>
