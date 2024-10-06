@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Oct  3 20:53:02 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.7.0 27.09.2024
+  * Features
+    Battery Care:
+    - Apple Silicon Macbooks (M*) with MacOS 13.0 (or later) firmware and
+      Asahi Linux kernel 6.6 (or later): start and stop threshold
+    - MSI laptops supported by the msi_ec driver in kernel 6.3 (or later):
+      start and stop threshold (Issue #707)
+    - Lenovo laptops (non-ThinkPad series): tlp-stat -b: number 60% removed
+      because the threshold varies by model (Issue #717)
+    - LG Gram laptops: forward to lg-legacy for kernel <= 5.17 only
+    - ThinkPads:
+      - The obsolete tpacpi-bat driver along with the acpi_call dependency
+        were removed. Current Linux distributions ship with kernel 5.17 or
+        later, which enables battery care via the built-in thinkpad_acpi.
+      - tlp-stat -b improvements for coreboot:
+        - Fix charge readings (Issue #657)
+        - Indicate when recalibration is not possible
+    - tlp-stat -b: Highlight battery care status
+    - tlp setcharge, tlp-stat -b: display a recommendation to use the laptop
+      on battery power until the battery is discharged to the stop threshold
+    Disks:
+    - tlp-stat -d: replace disk serial number with asterisks (for privacy)
+    General:
+    - TLP_MSG_COLORS: highlight error, warning, notice and success messages
+      in color.
+    - Add option --version to all TLP commands
+    - Add tlp-stat output options:
+      -m|--mode: print current power mode
+      -q|--quiet: omit version header and show less information in the
+        processor category
+    - Add Fish shell command completion
+    - Improve busybox compatibility by using only portable options for flock
+    Graphics:
+    - AMDGPU_ABM_LEVEL_ON_AC/BAT: configure display panel power savings via
+      Adaptive Backlight Modulation (ABM) from AMD Vega or newer GPUs;
+      kernel 6.9 required
+    Processor:
+    - CPU_ENERGY_PERF_POLICY_ON_AC/BAT: drop backwards compatibility for
+      EPB with kernels < 5.2; x86_energy_perf_policy is no longer required
+    - CPU_HWP_DYN_BOOST_ON_AC/BAT: drop the AMD implementation; the
+      corresponding kernel patch was discarded during the 2022 review,
+      reincarnation seems unlikely
+    - tlp-stat -t:
+      - Show AMD CPU temperatures
+      - Indicate unavailable fan speed
+    - tlp-stat -p: identify CPU model on ARM systems
+    Radio Devices:
+    - DEVICES_TO_ENABLE/DISABLE_ON_SHUTDOWN removed
+    USB:
+    - USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN removed
+  * Bugfixes 
+    Battery:
+    - Thinkpads:
+      - Fix premature abort of discharge/recalibrate for *20 models
+        (Issue #759)
+      - Fix ThinkPad X13s ARM power source detection (Issue #758)
+      - tlp-stat -b: do not recommend kernel 5.17 for coreboot,
+        as coreboot does not support discharge/recalibrate anyway.
+      - Fix Edge 11 battery enumeration (Issue #714)
+      - Support ThinkPad W510
+    Disks:
+    - Ensure power saving for all USB disks when plugged in
+    - tlp diskid: filter duplicates
+    General:
+    - tlp-stat -s: rework manual mode detection (Issue #702)
+    - tlp-stat --psup/udev: fix udev rule check
+    Radio Devices:
+    - Avoid error popups from NetworkManager when switching wifi/wwan
+    USB:
+    - tlp-stat -u: filter out error messages
+    - Prevent USB devices from being unrecognized or malfunctioning on battery;
+      adds xhci_hcd to RUNTIME_PM_DRIVER_DENYLIST defaults (Issues #436, #587) 
+    
+-------------------------------------------------------------------
 Wed May 22 16:08:00 UTC 2024 - Thomas Renninger <trenn@suse.de>
 
 - Conflicts with tuned (bsc#1224202)

@@ -25,12 +25,12 @@
 %endif
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
 Name:           tlp
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Hardware/Mobile
-URL:            http://linrunner.de/tlp
+URL:            https://linrunner.de/tlp
 Source:         https://github.com/linrunner/%{_name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 Source10:       tlp-rpmlintrc
 BuildRequires:  gzip
@@ -78,7 +78,7 @@ Switch radios upon network connect/disconnect and dock/undock.
 %setup -q -n %{_name}-%{version}
 
 %build
-make %{?_smp_mflags} V=1 \
+%make_build \
   TLP_ULIB=%{_udevdir} \
   TLP_SYSD=%{_unitdir}
 
@@ -129,6 +129,8 @@ fi
 %dir %{_datadir}/bash-completion/completions/
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %config(noreplace) %{_sysconfdir}/%{name}.d/00-template.conf
 %{_sysconfdir}/%{name}.d/README
@@ -153,6 +155,8 @@ fi
 %exclude %{_datadir}/zsh/site-functions/_tlp-rdw
 %{_mandir}/man?/*.?%{?ext_man}
 %exclude %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
+%{_datadir}/fish/vendor_completions.d/*
+%exclude %{_datadir}/fish/vendor_completions.d/tlp-rdw.fish
 
 %files rdw
 %dir %{_prefix}/lib/NetworkManager
@@ -164,5 +168,6 @@ fi
 %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}-rdw
 %{_datadir}/zsh/site-functions/_%{name}-rdw
+%{_datadir}/fish/vendor_completions.d/%{name}-rdw.fish
 
 %changelog
