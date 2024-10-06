@@ -950,4 +950,36 @@ Version 1.11.66
   * Fix reply message truncation on 2 lines (https://github.com/matrix-org/matrix-react-sdk/pull/12929). Contributed by @florianduros.</comment>
     <requestid>1200139</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>37554adf6dbad448496b5ebe25c5ce9c</srcmd5>
+    <version>1.11.79</version>
+    <time>1728229920</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.79
+  * No changes
+  ## ✨ Features
+  * https://github.com/element-hq/matrix-react-sdk/pull/106). Contributed by @RiotRobot.
+
+- Fix build on 15.6 with old python3.6
+  * Patch: no-walrus-operator.patch
+
+- Fix home dir for osc in prepare.sh
+
+- Version 1.11.78
+  ## ✨ Features
+  * Add Release announcement for the pinning message list (https://github.com/element-hq/matrix-react-sdk/pull/46). Contributed by @florianduros.
+  * Unlabs feature pinning (https://github.com/element-hq/matrix-react-sdk/pull/22). Contributed by @florianduros.
+  * Add mobile registration (https://github.com/element-hq/matrix-react-sdk/pull/42). Contributed by @langleyd.
+  * Add support for `org.matrix.cross_signing_reset` UIA stage flow (https://github.com/element-hq/matrix-react-sdk/pull/34). Contributed by @t3chguy.
+  * Add timezone to user profile (https://github.com/element-hq/matrix-react-sdk/pull/20). Contributed by @Half-Shot.
+  * Add config option to force verification (https://github.com/element-hq/matrix-react-sdk/pull/29). Contributed by @dbkr.
+  * Reduce pinned message banner size (https://github.com/element-hq/matrix-react-sdk/pull/28). Contributed by @florianduros.
+  * Enable message pinning labs by default (https://github.com/element-hq/matrix-react-sdk/pull/25). Contributed by @florianduros.
+  * Remove release announcement of the new header (https://github.com/element-hq/matrix-react-sdk/pull/23). Contributed by @florianduros.
+  ## 🐛 Bug Fixes
+  * Fix timeout type (https://github.com/element-hq/matrix-react-sdk/pull/40). Contributed by @dbkr.
+  * Fix huge usage bandwidth and performance issue of pinned message banner. (https://github.com/element-hq/matrix-react-sdk/pull/37). Contributed by @florianduros.
+  * Reverse order of pinned message list (https://github.com/element-hq/matrix-react-sdk/pull/19). Contributed by @florianduros.</comment>
+    <requestid>1205715</requestid>
+  </revision>
 </revisionlist>

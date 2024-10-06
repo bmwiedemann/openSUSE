@@ -27,6 +27,7 @@ cd "$tmpdir"
 #additionally, --ignore-scripts seems to be evaluated during caching, and not during install to node_modules.
 #Mitigate this by resetting ~ to an empty directory
 mkdir -pv "$tmpdir/home"
+oldhome="$HOME"
 export HOME="$tmpdir/home"
 
 tar -xzvvf "${oldwd}/element-desktop-${version}.tar.gz"
@@ -97,5 +98,6 @@ echo -e "\n\nDONE creating npm offline dependencies archive 'vendor.tar.zst'"
 
 
 read -p "Write changes?"
+export HOME="$oldhome"
 osc vc -m "${changes}" element-desktop.changes
 dos2unix element-desktop.changes
