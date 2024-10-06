@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 04 11:49:32 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241004.a1bb60f:
+  * Support bootloader switch
+  * Update order after bootloader install
+  * Use /etc/sysconfig/bootloader to untie detection
+  * Reference to grub2-bls
+
+-------------------------------------------------------------------
 Wed Oct 02 09:15:48 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241002.7da4a47:
