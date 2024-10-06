@@ -1,46 +1,11 @@
-From fb02d9949459e7660195e7d98c06b29297be5ee8 Mon Sep 17 00:00:00 2001
-From: Jan Engelhardt <jengelh@inai.de>
-Date: Mon, 19 Aug 2024 22:47:45 +0200
-Subject: [PATCH] Resolve build failures in pipewire code
-References: https://github.com/libsdl-org/SDL/pull/10568
-
-g++-13 complains:
-
-```
-SDL_pipewire.c:129:42: warning: assignment to "struct pw_main_loop *
-(*)(struct pw_main_loop *)" from incompatible pointer type "struct
-pw_main_loop * (*)(const struct spa_dict *)"
-[-Wincompatible-pointer-types]
- 129 | #define SDL_PIPEWIRE_SYM(x) PIPEWIRE_##x = x
-SDL_pipewire.c:148:5: note: in expansion of macro "SDL_PIPEWIRE_SYM"
- 148 |     SDL_PIPEWIRE_SYM(pw_main_loop_new);
-```
-
-g++-14 complains:
-
-```
-SDL_pipewire.c:129:42: error: assignment to "struct pw_main_loop *
-(*)(const struct pw_main_loop *)" from incompatible pointer type
-"struct pw_main_loop * (*)(const struct spa_dict *)"
-[-Wincompatible-pointer-types]
-```
----
- src/audio/pipewire/SDL_pipewire.c         | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/src/audio/pipewire/SDL_pipewire.c b/src/audio/pipewire/SDL_pipewire.c
-index 251b324a3..ad8d1ef52 100644
---- a/src/audio/pipewire/SDL_pipewire.c
-+++ b/src/audio/pipewire/SDL_pipewire.c
-@@ -56,7 +56,7 @@ static SDL_bool pipewire_initialized = SDL_FALSE;
- static const char *(*PIPEWIRE_pw_get_library_version)(void);
- static void (*PIPEWIRE_pw_init)(int *, char ***);
- static void (*PIPEWIRE_pw_deinit)(void);
--static struct pw_main_loop *(*PIPEWIRE_pw_main_loop_new)(struct pw_main_loop *loop);
-+static struct pw_main_loop *(*PIPEWIRE_pw_main_loop_new)(const struct spa_dict *loop);
- static struct pw_loop *(*PIPEWIRE_pw_main_loop_get_loop)(struct pw_main_loop *loop);
- static int (*PIPEWIRE_pw_main_loop_run)(struct pw_main_loop *loop);
- static int (*PIPEWIRE_pw_main_loop_quit)(struct pw_main_loop *loop);
--- 
-2.46.0
-
+--- SDL3-3.1.3.orig/src/camera/pipewire/SDL_camera_pipewire.c	2024-10-05 20:41:45.901850659 +0200
++++ SDL3-3.1.3/src/camera/pipewire/SDL_camera_pipewire.c	2024-10-05 20:46:44.515609068 +0200
+@@ -79,7 +79,7 @@
+ static void (*PIPEWIRE_pw_context_destroy)(struct pw_context *);
+ static struct pw_core *(*PIPEWIRE_pw_context_connect)(struct pw_context *, struct pw_properties *, size_t);
+ static void (*PIPEWIRE_pw_proxy_add_object_listener)(struct pw_proxy *, struct spa_hook *, const void *, void *);
+-static void (*PIPEWIRE_pw_proxy_add_listener)(struct pw_proxy *, struct spa_hook *, const void *, void *);
++static void (*PIPEWIRE_pw_proxy_add_listener)(struct pw_proxy *, struct spa_hook *, const struct pw_proxy_events *, void *);
+ static void *(*PIPEWIRE_pw_proxy_get_user_data)(struct pw_proxy *);
+ static void (*PIPEWIRE_pw_proxy_destroy)(struct pw_proxy *);
+ static int (*PIPEWIRE_pw_core_disconnect)(struct pw_core *);

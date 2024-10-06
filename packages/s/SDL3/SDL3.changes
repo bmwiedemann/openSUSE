@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  5 21:04:22 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to preview release 3.1.3
+  * New GPU API for modern 3D rendering and GPU compute in a
+    cross-platform manner
+  * Various new cross-platform APIs around dialogs / filesystems /
+    storage / camera / pen access, new example programs, audio
+    streams, color-space support
+  * More HiDPI support
+  * Better keyboard input handling
+  * Prefer PipeWire over PulseAudio
+
+-------------------------------------------------------------------
 Mon Aug 19 21:05:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc14.patch

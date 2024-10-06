@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -28,7 +28,7 @@ URL:            https://libsdl.org/
 #Git-Clone:     https://github.com/libsdl-org/SDL
 #Source:         https://libsdl.org/release/%name-%version.tar.gz
 #Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
-Source:         https://github.com/libsdl-org/SDL/releases/download/prerelease-%version/%name-%version.tar.xz
+Source:         https://github.com/libsdl-org/SDL/releases/download/preview-%version/%name-%version.tar.xz
 Source3:        %name.keyring
 Patch1:         gcc14.patch
 BuildRequires:  cmake
@@ -129,7 +129,7 @@ SDL3 C API.
 	-DSDL_X11_SHARED:BOOL=OFF -DSDL_WAYLAND_SHARED:BOOL=OFF \
 	-DSDL_KMSDRM_SHARED:BOOL=OFF \
 	-DSDL_STATIC:BOOL=OFF -DSDL_STATIC_PIC:BOOL=ON -DSDL_RPATH:BOOL=OFF \
-	-DSDL_TEST_LIBRARY:BOOL=OFF
+	-DSDL_TEST_LIBRARY:BOOL=OFF -DSDL_DISABLE_INSTALL_DOCS:BOOL=OFF
 
 %cmake_build
 
