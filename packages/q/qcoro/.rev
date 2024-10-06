@@ -100,4 +100,12 @@
   that can't build with the default compiler</comment>
     <requestid>1143093</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43cee30b69bcbc2bde56b353ed331fe7</srcmd5>
+    <version>0.11.0</version>
+    <time>1728229872</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.11.0</comment>
+    <requestid>1205765</requestid>
+  </revision>
 </revisionlist>

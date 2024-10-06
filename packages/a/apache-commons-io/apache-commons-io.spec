@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.16.1
+Version:        2.17.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
@@ -28,6 +28,7 @@ URL:            https://commons.apache.org/%{base_name}
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Source2:        %{name}-build.xml
+Source100:      https://downloads.apache.org/commons/KEYS#/%{name}.keyring
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8

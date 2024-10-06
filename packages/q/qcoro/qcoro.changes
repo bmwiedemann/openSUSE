@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  4 21:37:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.11.0
+  * Suppress Clang error when building against Android NDK <= 25
+  * Add QtGui dependency if QCORO_WITH_QTQUICK=ON
+  * Fix wrong result of QCoroIODevice::write()
+  * Add override to fix build failure due to -Werror -Wsuggest-override
+  * Fix coroutine being resumed on a wrong thread after timeout
+  * Implement QCoroFuture::takeResult
+  * #include , needed by std::exception_ptr
+  * waitFor(QCoro::Task): Do not require T to be default
+    constructible
+  * Add QCORO_BUILD_TESTING to allow overriding BUILD_TESTING
+  * Use refcount to track when to destroy coroutine
+  * Drop support for older compilers
+  * Implement LazyTask
+  * Use QueuedConnection for signals in QCoroNetworkReply
+  * Awaiting a default-constructed or moved-from Task will hang
+  * Add a backround task example
+
+-------------------------------------------------------------------
 Wed Jan 31 17:25:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Switch to the latest GCC version available in Leap for packages

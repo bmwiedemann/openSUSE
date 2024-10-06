@@ -1,7 +1,7 @@
 #
 # spec file for package qcoro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 #
 Name:           qcoro%{?_pkg_name_suffix}
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Coroutines for Qt
 License:        MIT
@@ -55,15 +55,15 @@ BuildRequires:  cmake(Qt%{_qt_suffix}Concurrent) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}DBus) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Network) >= %{qt_min_version}
-BuildRequires:  cmake(Qt%{_qt_suffix}Quick) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Qml) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{_qt_suffix}Quick) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Test) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}WebSockets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{_qt_suffix}Widgets) >= %{qt_min_version}
 # C++-20 support is required
 %if 0%{?qt5} && 0%{?suse_version} < 1550
-BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 
 %description

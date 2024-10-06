@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri Oct  4 19:23:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.17.0
+  * New features:
+    + Add IOIterator.adapt(Iterable)
+    + Add getInputStream() for 'https' and 'http' in URIOrigin 
+      #630. Fixes IO-831
+    + Add IOSupplier.getUnchecked()
+    + Add CloseShieldInputStream.systemIn(InputStream)
+    + Add NullInputStream.init()
+    + Add AbstractInputStream and refactor duplicate code
+    + Add UnsynchronizedReader
+    + Add UnsynchronizedBufferedReader
+  * Fixes:
+    + FileUtilsWaitForTest does not test anything useful.
+      Fixes IO-858.
+    + Add missing unit tests
+    + FileUtils.lastModifiedFileTime(File) calls 
+      Objects.requireNonNull() on the wrong object
+    + PathUtils.deleteOnExit(Path) calls Objects.requireNonNull() 
+      on the wrong object
+    + Deprecate LineIterator.nextLine() in favor of next()
+    + Fix PMD UnnecessaryFullyQualifiedName
+    + Add test for CircularByteBuffer clear() #620
+    + PathUtils.isPosix(Path, LinkOption...) should return false on 
+      null input
+    + AutoCloseInputStream(InputStream) uses 
+      ClosedInputStream.INSTANCE when its input is null
+    + Avoid NullPointerException in ProxyInputStream.available() 
+      when the underlying input stream is null
+    + Avoid NullPointerException in ProxyInputStream.markSupported()
+      when the underlying input stream is null
+    + Avoid NullPointerException in ProxyInputStream.mark(int) when 
+      the underlying input stream is null
+    + BufferedFileChannelInputStream.available() returns 0 before 
+      any reads
+    + BufferedFileChannelInputStream.available() should return 0 
+      instead of -1 at the end of the stream
+    + BufferedFileChannelInputStream.available() should return 0 
+      when the stream is closed instead of throwing an exception
+    + CharSequenceInputStream.available() should return 0 after the 
+      stream is closed
+    + BoundedInputStream.available() should return 0 when the 
+      stream is closed
+    + CircularInputStream.available() should return 0 when the 
+      stream is closed
+    + InfiniteCircularInputStream.available() should return 0 when 
+      the stream is closed
+    + ChecksumInputStream(InputStream, Checksum, long, long) should 
+      fail-fast on null Checksum input
+    + Deprecate NullInputStream.INSTANCE in favor of constructors
+    + NullInputStream.available() should return 0 after the stream 
+      is closed
+    + MemoryMappedFileInputStream.available() should return 0 after 
+      the stream is closed
+    + RandomAccessFileInputStream.available() should return 0 after 
+      the stream is closed
+    + ReaderInputStream.available() should return 0 after the 
+      stream is closed
+    + AutoCloseInputStream does not call handleIOException() on 
+      close() when the proxied stream throws an IOException
+    + BoundedInputStream does not call handleIOException() on 
+      close() when the proxied stream throws an IOException
+    + NullInputStream.read(*) should throw IOException when it is 
+      closed
+    + NullInputStream.read(byte[]) should return 0 when the input 
+      byte array in length 0
+    + NullInputStream.read(byte[], int, int) should return 0 when 
+      the input byte array in length 0 or requested length is 0
+    + MarkShieldInputStream.read(*) should throw IOException when 
+      it is closed
+    + Replace deprecated constant FileFileFilter.FILE in Javadoc 
+      #657
+    + Pick up exec-maven-plugin version from parent POM
+  * Updates:
+    + Bump tests commons.bytebuddy.version from 1.14.13 to 1.15.1 
+      #615, #621, #631, #635, #642, #658, #663, #665
+    + Bump tests commons-codec:commons-codec from 1.16.1 to 1.17.1 
+      #644
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.2.0 to 3.4.1 
+      #632, #652, #659
+    + Bump org.apache.commons:commons-parent from 69 to 74 #628, 
+      #637, #649, #661, #664
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.17.0 
+      #645, #653, #666
+
+-------------------------------------------------------------------
 Mon Apr 29 13:12:59 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 2.16.1

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  4 17:08:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.3.2
+  * Changes
+    + spec: Update Obsoletes versions
+    + Search for JAVACMD under JAVA_HOME only if it's set
+    + Obsolete set_jvm and set_jvm_dirs functions
+    + Drop unneeded _set_java_home function
+    + Remove JAVA_HOME check from check_java_env function
+    + Bump codecov/codecov-action from 2.0.2 to 4.6.0
+    + Bump actions/setup-python from 4 to 5
+    + Bump actions/checkout from 2 to 4
+    + Add custom dependabot config
+    + Remove the test for JAVA_HOME and error if it is not set
+    + java-functions: Remove unneeded local variables
+    + Fix build status shield
+- Removed patch:
+  * 0001-Double-quote-to-avoid-substitution-during-build.patch
+    + Fixed differently in this version
+
+-------------------------------------------------------------------
 Wed Oct  2 17:27:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.3.1

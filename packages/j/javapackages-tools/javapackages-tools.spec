@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -45,7 +45,6 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-Patch3:         0001-Double-quote-to-avoid-substitution-during-build.patch
 
 BuildRequires:  fdupes
 BuildRequires:  perl
