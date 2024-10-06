@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://gitlab.gnome.org/GNOME/recipes.git</param>
     <param name="scm">git</param>
-    <param name="revision">d5e9733c</param>
+    <param name="revision">5b5526abf68c5e4337ba5d97a621af259c998c6d</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

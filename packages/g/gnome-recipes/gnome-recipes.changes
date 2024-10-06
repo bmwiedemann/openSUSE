@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 05 10:37:07 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 2.0.4+117:
+  * meson: drop unused argument for i18n.merge_file()
+  * Fix minor typos
+  * help: Add one missing author (follow-up to previous 4eb2571)
+  * help: Include file legal.xml instead of using <license> tags;
+    add years
+  * Fix a few more compiler warnings
+  * recipes.db: Fix Tzatziki ingredient list
+  * Fix deprecation warnings for use of GTimeVal
+  * Revert "Fix deprecation warnings for use of GTimeVal"
+  * Fix deprecation warnings for use of GTimeVal
+  * build: Use i18n.merge_file for .desktop and .appdata
+  * build: Read language lists from LINGUAS
+  * build: Remove Makevars files
+  * meson: Bump to a development version (2.0.5)
+  * build: fix cross building
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar  9 10:15:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.4
