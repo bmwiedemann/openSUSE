@@ -32,6 +32,8 @@ Source1:        https://files.pythonhosted.org/packages/source/t/types-psutil/ty
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
 Source2:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/python/mypy/pull/17849 Fix tests on latest Python 3.13 (and 3.12)
+Patch0:         latest-pythons.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}

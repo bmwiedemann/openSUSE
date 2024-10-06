@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  4 14:11:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream latest-pythons.patch to fix tests on latest Python releases
+
+-------------------------------------------------------------------
 Tue Sep 10 15:01:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.11.2
