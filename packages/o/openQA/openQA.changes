@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 06 01:50:50 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1728073440.a54ab8d4:
+  * Fix race condition in `t/ui/18-tests-details.t`
+  * Bump datatables.net-bs5 from 2.1.7 to 2.1.8
+  * OpenID: Clarify the impact of errors to users and admins
+  * Remove scripted waiting for db in favor of healthcheck
+
+-------------------------------------------------------------------
 Thu Oct 03 17:50:45 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727950788.ba063877:
