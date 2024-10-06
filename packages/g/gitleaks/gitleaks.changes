@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 04 19:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.20.0:
+  * Make private key check less greedy and include fifth dash
+    (#1440)
+  * print tags if they exist
+  * Decode Base64 (#1488)
+  * refactor(config): keyword map (#1538)
+  * fix: use regexTarget for extend config (#1536)
+  * feat: bump go to 1.22 (#1537)
+  * fix: handle pre-commit and staged (#1533)
+  * Bugfix/1352 incorrect report multiple lines (#1501)
+
+-------------------------------------------------------------------
 Fri Sep 27 20:59:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.19.3:
