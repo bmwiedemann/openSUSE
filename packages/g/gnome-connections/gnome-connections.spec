@@ -17,7 +17,7 @@
 
 
 Name:           gnome-connections
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(freerdp2) >= 2.0.0
+BuildRequires:  pkgconfig(freerdp3)
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
