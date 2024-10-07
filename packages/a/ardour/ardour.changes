@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct  4 22:28:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.8.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  * Add option to name new MIDI tracks from SMF with just the
+    SMF track name.
+  * Fix for LV2 plugins whose GUI depend on a "changed" signal
+    (e.g. ZynSubAddFX).
+  * Fix MIDI Clock output times by using the correct call to get
+    tempo at a position.
+  * Overdubbing in non-layered mode no longer assignes regions to
+    the wrong groups.
+  * Add build support for latest versions of macOS.
+  * Generic MIDI: do not send touch events for all mapped
+    controllers when one is touched.
+  * Fix fan-out of instruments with illegal path-chars in their
+    name.
+  * Require user's own color theme files to be versioned.
+  * Fix underruns when looping/locating and changing region
+    content.
+  * Do not allow changing the loop range while recording.
+  * Avoid pixel-level shifts in waveform when splitting or
+    trimming regions.
+  * Fix playhead moving beyond loop range.
+  * Fix count-in/preroll recording offsets.
+  * Use dedicated thread to start export timespans.
+  * Fix and simplify Playlist::fade_range for multiple ranges.
+  * Fix interaction with snapshot list.
+  * Fix sample-rate display rounding for 22.05kHz.
+  * Fix playback of sessions with low sample-rate.
+  * VST3: Fix possible deadlock when using PSL extension for
+    sends.
+  * VST3: work around plugins that do not heed
+    ContextInfo::kSendCount.
+  * Fix XML syntax for AKAI MPK mini mk3 MIDI binding map.
+- Drop patch, merged upstream:
+  * ardour-boost-1.85.patch
+
+-------------------------------------------------------------------
 Sat Sep 14 10:39:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.7.0. Check https://ardour.org/whatsnew.html for the
