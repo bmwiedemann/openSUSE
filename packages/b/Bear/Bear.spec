@@ -18,19 +18,18 @@
 
 %bcond_with     tests
 Name:           Bear
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
 URL:            https://github.com/rizsotto/Bear
 Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         0001-Fix-FMT11-Build.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(nlohmann_json) >= 3.7.3
 BuildRequires:  pkgconfig(absl_synchronization)
-BuildRequires:  pkgconfig(fmt) >= 6.1
+BuildRequires:  pkgconfig(fmt) >= 6.2
 BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(grpc++) >= 1.26
 BuildRequires:  pkgconfig(protobuf) >= 3.11

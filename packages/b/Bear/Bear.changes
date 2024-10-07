@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  6 17:35:25 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to version 3.1.5
+  * dependency: fix fmt library usage in the project
+  * add gfortran as recognised compiler
+- Drop patch 0001-Fix-FMT11-Build.patch, now part of the release
+
+-------------------------------------------------------------------
 Wed Aug  7 20:24:48 UTC 2024 - Laszlo <helaslo@helaslo.net>
 
-- Added not-yet tagged patch 0001-Fix-FMT11-Build.patch from upstream to fix build on FMT11 
+- Added not-yet tagged patch 0001-Fix-FMT11-Build.patch from
+  upstream to fix build on FMT11 
 
 -------------------------------------------------------------------
 Sat May 18 17:34:02 UTC 2024 - Christoph G <foss@grueninger.de>
