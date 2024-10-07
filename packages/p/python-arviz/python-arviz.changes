@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Oct  6 10:24:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.20.0
+  ##New features
+  * Add optimized simultaneous ECDF confidence bands (2368)
+  * Add support for setting groups with idata[group] (2374)
+  ## Maintenance and fixes
+  * Make dm-tree and optional dependency (2379)
+  * Fix bug in psislw modifying input inplace (2377)
+  * Fix behaviour of two dimensional KDE plot with recent
+    matplotlib releases (2383)
+  * Make defaults in plot_compare more intuitive (2388)
+  ## Documentation
+  * Added extensions of virtual environments in .gitignore (2371)
+  * Fixed the issue in the Contribution References Documentation
+    (2369)
+  * Improve docstrings for loo and waic (2366)
+- Release 0.19.0
+  ## New Features
+  * Use revised Pareto k threshold (2349)
+  * Added arguments ci_prob, eval_points, rvs, and random_state to
+    plot_ecdf (2316)
+  * Deprecated rcParam stats.hdi_prob and replaced with
+    stats.ci_prob (2316)
+  * Expose features from arviz-base, arviz-stats and arviz-plots as
+    arviz.preview submodule (2361)
+  ## Maintenance and fixes
+  * Ensure support with numpy 2.0 (2321)
+  * Update testing strategy to include an environment without
+    optional dependencies and an environment with scientific python
+    nightlies (2321)
+  * Address bokeh related deprecations (2362)
+  * Fix legend overwriting issue in plot_trace (2334)
+  ## Deprecation
+  * Support for arrays and DataArrays in plot_khat has been
+    deprecated. Only ELPDdata will be supported in the future
+    (2349)
+  * Removed arguments values2, fpr, pointwise, and pit in plot_ecdf
+    (2316)
+- Update test setup
+  * Disable numba test due to missing compatibility with numpy 2.1
+  * Remove old bokeh test skips
+  * Add netCDF4 to tests
+  * Run in parallel with pytest-xdist
+
+-------------------------------------------------------------------
 Thu Jul 11 02:36:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.0:

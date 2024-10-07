@@ -17,9 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python39 1
 Name:           python-arviz
-Version:        0.18.0
+Version:        0.20.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
@@ -28,32 +27,35 @@ Source:         https://github.com/arviz-devs/arviz/archive/v%{version}.tar.gz#/
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60.0.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module bokeh >= 3}
 BuildRequires:  %{python_module dash}
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module dm-tree}
+BuildRequires:  %{python_module dm-tree >= 0.1.8}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib >= 3.5}
-BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.22.0 with %python-numpy < 2}
+BuildRequires:  %{python_module netCDF4}
+# Optional test, Numba is currently not compatible with numpy >= 2.1
+#BuildRequires:  %%{python_module numba}
+BuildRequires:  %{python_module numpy >= 1.23.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 0.23}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module scipy >= 1.8.0}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module ujson}
 BuildRequires:  %{python_module xarray >= 0.21.0}
 BuildRequires:  %{python_module xarray-einstats >= 0.3}
-BuildRequires:  %{python_module zarr}
+BuildRequires:  %{python_module zarr >= 2.5 with %python-zarr < 3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-dm-tree
 Requires:       python-h5netcdf
 Requires:       python-matplotlib >= 3.5
+Requires:       python-numpy >= 1.23.0
 Requires:       python-packaging
 Requires:       python-pandas >= 1.4.0
 Requires:       python-scipy >= 1.8.0
@@ -61,8 +63,9 @@ Requires:       python-setuptools >= 60.0.0
 Requires:       python-typing_extensions
 Requires:       python-xarray >= 0.21.0
 Requires:       python-xarray-einstats
-Requires:       (python-numpy >= 1.22.0 with python-numpy < 2)
-Recommends:     python-bokeh >= 1.4.0
+Recommends:     python-bokeh >= 3
+Recommends:     python-dm-tree >= 0.1.8
+Recommends:     python-netCDF4
 Recommends:     python-numba
 Recommends:     python-ujson
 BuildArch:      noarch
@@ -86,10 +89,9 @@ diagnostics.
 %check
 # Matplotlib tests try to save results to non-writeable dir
 donttest="test_plots_matplotlib"
-donttest+=" or test_plot_separation"
-# Different edge numbers
-donttest+=" or (test_plots_bokeh and test_plot_forest)"
-%pytest -k "not ($donttest)"
+# Tries to connect to external server for arviz data
+donttest="$donttest or test_plot_separation"
+%pytest -n auto -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
