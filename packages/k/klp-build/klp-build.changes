@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 07 12:58:01 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20241007.06dcc8f:
+  * README: Fix typos about the configuration
+  * man: Add "--ignore-errors" definition
+  * extractor: Do not use compile_commands.json for SLE kernels
+  * extract: Add --ignore-errors argument
+  * tests: Fix remove/apply patches log writer handle
+  * setup: Call validate_config before checking for files
+  * setup: Check the number of affected codestreams only after filter_cs
+  * tests: Convert ccp to pytest, and rename the files
+  * tests: Check classify_codestreams
+  * test_ksrc: Start using pytest instead of unittest
+  * setup: Download the missing codestreams before checking for files/mods
+  * setup: Move file-funcs, repo and info to the check phase
+  * setup: Mark some functions as static
+  * ibs: Create a symlink from data/ARCH/lib to data/ARCH/usr/lib
+  * setup: Show info about the affected architectures
+  * ksrc: Improve method of detecting patched kernels
+  * README: Add information about configuration file
+  * man: Add information about the default files/dirs
+  * ibs.py: Show information when prepare-tests is called
+  * ccp: Add one more symbol to the blacklist
+  * config: Fix missing_codestream check
+  * Add support to extract code from current running kernel
+  * config: Introduce self.host to in order to create lp on the running system
+  * klp-build: Remove the kdir argument
+  * templ: Fix {mod}_funcs struct nameing for modules that start with numbers
+  * setup: 15.6-RT uses the SLERT repo
+
+-------------------------------------------------------------------
 Wed Sep 04 14:30:27 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240902.c95cc9e:
