@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct  7 11:04:29 UTC 2024 - jason.record@suse.com
+
+- Fixed extract here for reports regression
+
+-------------------------------------------------------------------
+Fri Oct  4 20:02:27 UTC 2024 - jason.record@suse.com
+
+- Changes to version 1.6.3
+  + Corrected error message for unreadable supportconfigs (bsc#1230857)
+  + Valid product labels for SLE Micro (bsc#1230862)
+  + Unknown supportconfig products produce valid error (bsc#1230880)
+  + Doesn't hang on access issues for extraction (bsc#1230881)
+  + Added -x, --extract_here options (bsc#1230882)
+  + Made debug messages have consistent format (bsc#1231049)
+  + Default report path uses given extract path (bsc#1231259)
+  + Combined the file checking and reporting loops (bsc#1231286)
+  + Only gets extract_here and report_output_path once (bsc#1231287)
+
+-------------------------------------------------------------------
 Mon Jan 29 19:56:43 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.6.2
