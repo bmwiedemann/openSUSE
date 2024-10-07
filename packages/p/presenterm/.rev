@@ -206,4 +206,41 @@
   * Display background color behind '\t' in code exec output (#245).</comment>
     <requestid>1190368</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>345378f7ce15a6a8a7531174f390b072</srcmd5>
+    <version>0.9.0+0</version>
+    <time>1728330740</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0:
+  Breaking changes:
+  * Default themes now no longer use a progress bar based footer.
+    Instead they use indicator of the current page number and the
+    total number of pages. If you'd like to preserve the old behavior,
+    you can override the theme by using footer.style = progress_bar in your theme.
+  * Links that include a title (e.g. [my title](http://example.com))
+    now have their title rendered as well.
+    Removing a link's title will make it look the same as they used to.
+  New features:
+  * Use &quot;template&quot; footer in built-in themes (#358).
+  * Allow including external code snippets (#328) (#372).
+  * Add +no_background property to remove background from code blocks (#363) (#368).
+  * Show colored output from snippet execution output (#316).
+  * Style markdown inside block quotes (#350) (#351).
+  * Allow using all intro slide variables in footer template (#338).
+  * Include hidden line prefix in executors file (#337).
+  * Show link labels and titles (#334).
+  * Add +exec_replace which executes snippets and replaces them with their output (#330) (#371).
+  * Always show snippet execution bar (#329).
+  * Handle suspend signal (SIGTSTP) (#318).
+  * Allow closing with q (#321).
+  * Add event, location, and date labels in intro slide (#317).
+  * Use transparent background in mermaid charts (#314).
+  * Add +acquire_terminal to acquire the terminal when running snippets (#366) (#376).
+  * Add PHP executor (#332).
+  * Add Racket syntax highlighting (#367).
+  * Add TOML highlighting (#361).
+  Fixes:
+  * Wrap code snippets if they don't fit in terminal (#320).</comment>
+    <requestid>1206040</requestid>
+  </revision>
 </revisionlist>
