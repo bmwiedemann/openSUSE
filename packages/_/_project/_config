@@ -1475,7 +1475,7 @@ Prefer: kernel-default-devel
 Prefer: libclang13 libc++1 libc++abi1 libc++-devel libc++abi-devel
 
 Prefer: clang17-devel clang16-devel clang15-devel clang14-devel clang13-devel
-Prefer: llvm17-devel lllvm16-devel llvm15-devel llvm14-devel llvm13-devel
+Prefer: llvm17-devel llvm16-devel llvm15-devel llvm14-devel llvm13-devel
 
 Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
 Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
