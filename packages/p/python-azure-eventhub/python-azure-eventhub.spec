@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventhub
-Version:        5.12.1
+Version:        5.12.2
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-eventhub/azure-eventhub-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_eventhub/azure_eventhub-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-typing_extensions >= 4.0.1
-Requires:       (python-azure-core >= 1.14.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.27.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-eventhub < 5.11.6
@@ -63,10 +62,9 @@ Hubs events and may be used to:
    your ecosystem, then publish the transformed events to a new stream for consumers to observe.
 
 %prep
-%setup -q -n azure-eventhub-%{version}
+%setup -q -n azure_eventhub-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-eventhub-%{version}
 %pyproject_wheel
 
 %install
@@ -79,7 +77,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/eventhub
 %{python_sitelib}/azure_eventhub-*.dist-info
 

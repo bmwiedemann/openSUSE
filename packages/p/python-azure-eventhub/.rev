@@ -273,4 +273,19 @@
     CHANGELOG.md file provided with this package (forwarded request 1180121 from glaubitz)</comment>
     <requestid>1180172</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>092729790c0d20d8dc1f5a215e90413d</srcmd5>
+    <version>5.12.2</version>
+    <time>1728330765</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 5.12.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1206061 from glaubitz)</comment>
+    <requestid>1206074</requestid>
+  </revision>
 </revisionlist>
