@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:05:51 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.0
+  * Add support for c++20 where available.
+  * residfp: retuned cw parameters after measuring waves RMS.
+  * residfp: code refactoring and minor performance optimizations.
+  * resid/residfp: scale down filter inputs in the mixer for 6581.
+  * Centralized handling of muted voices and allow muting samples.
+  * new API to toggle the filter and deprecated sidplayfp::filter.
+
+-------------------------------------------------------------------
 Sun Aug 25 16:52:01 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.0
