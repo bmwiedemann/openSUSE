@@ -186,4 +186,12 @@
 - Restrict numpy to &lt; 2.</comment>
     <requestid>1193895</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3f83fcacf9212a8f13c874a7b34f3daa</srcmd5>
+    <version>2.0.7</version>
+    <time>1728330750</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206052</requestid>
+  </revision>
 </revisionlist>

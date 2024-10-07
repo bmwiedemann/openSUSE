@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-intake%{psuffix}
-Version:        2.0.5
+Version:        2.0.7
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
@@ -41,21 +41,24 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-appdirs
 Requires:       python-fsspec >= 2023
+Requires:       python-networkx
+Requires:       python-platformdirs
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module intake = %{version}}
+#
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module dask-all}
+BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module hvplot}
-BuildRequires:  %{python_module intake = %{version}}
 # strictly a test req, but not a runtime requirement, not available in openSUSE
 #BuildRequires:  %%{python_module intake-parquet}
 BuildRequires:  %{python_module msgpack-numpy}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module pytest}

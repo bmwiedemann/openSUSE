@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct  6 10:54:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.7
+  ## No upstream changelog. Providing some PR titles and commits:
+  * cache system prompt file to disk
+  * start llamacppservice on free port
+  * supported short-form kwargs
+  * double dash llama-server kwargs
+  * Reimplement opendap auth for xarray reader
+  * revise LlamaServerReader
+  * Enable pattern URLs for xarray
+
+-------------------------------------------------------------------
+Fri Aug 30 13:19:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Unpin numpy 2 in testing
+
+-------------------------------------------------------------------
 Wed Aug 14 14:51:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15
