@@ -40,7 +40,7 @@ BuildRequires:  libiptcdata-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libjxl-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libraw-devel
+BuildRequires:  libraw-devel >= 0.21
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -58,39 +58,12 @@ Conflicts:      rawtherapee-nosse
 Conflicts:      rawtherapee-nosse-unstable
 Conflicts:      rawtherapee-stable-3.x
 Conflicts:      rawtherapee-unstable
-%if 0%{?suse_version} > 1320
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%endif
-%if 0%{?suse_version} == 1320
-BuildRequires:  gcc49-c++
-#!BuildIgnore:  libgcc_s1
-%endif
-%if 0%{?sle_version} == 120100
-# Leap 42.1 / SLE12SP2
-BuildRequires:  gcc5-c++
-%endif
-%if 0%{?sle_version} == 120200
-# Leap 42.2+ / SLE12SP2Backports
-%if 0%{?is_opensuse}
-BuildRequires:  gcc6-c++
-#!BuildIgnore:  libasan3
-%else
-BuildRequires:  gcc5-c++
-%endif
-%endif
-%if 0%{?sle_version} == 120300
-# Leap 42.3+ / SLE12SP2Backports
-%if 0%{?is_opensuse}
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc5-c++
-%endif
-%endif
-%if 0%{?sle_version} == 120400
-BuildRequires:  gcc5-c++
-%endif
- %if 0%{?sle_version} == 120400 && !0%{?is_opensuse}
-BuildRequires:  gcc8-c++
 %endif
 %if 0%{?suse_version} == 1315
 #!BuildIgnore:  libgcc_s1
@@ -134,7 +107,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  liblcms2-devel >= 2.6
 BuildRequires:  update-desktop-files
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 %else
 BuildRequires:  desktop-file-utils
 BuildRequires:  expat-devel
@@ -158,14 +131,10 @@ Latest stable build from "releases" branch.
 %autosetup -p1
 
 %build
-test -x "$(type -p gcc-4.9)" && export CC=gcc-4.9
-test -x "$(type -p g++-4.9)" && export CXX=g++-4.9
-test -x "$(type -p gcc-5)" && export CC=gcc-5
-test -x "$(type -p g++-5)" && export CXX=g++-5
-test -x "$(type -p gcc-6)" && export CC=gcc-6
-test -x "$(type -p g++-6)" && export CXX=g++-6
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p g++-7)" && export CXX=g++-7
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 
 # Adding -fno-tree-loop-vectorize due to https://github.com/Beep6581/RawTherapee/issues/5749
 export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/') -fno-tree-loop-vectorize"

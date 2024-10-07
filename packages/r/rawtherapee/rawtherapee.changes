@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  3 08:05:28 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in by cleanup gcc requirements.
+
+-------------------------------------------------------------------
 Sat Aug 24 22:30:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add libjxl and libraw to BuildRequires. Use system libraw and
