@@ -363,4 +363,12 @@
   * Add support for creating exceptions from an asynchronous response (#688)</comment>
     <requestid>1205028</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>05db655bc39cb0832b23c571b6a8ea06</srcmd5>
+    <version>2.20.0</version>
+    <time>1728330787</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206129</requestid>
+  </revision>
 </revisionlist>

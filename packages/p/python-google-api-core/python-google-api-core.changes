@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  7 11:43:06 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- fix requirements
+  * Accepts new protobuf version 5.28 now.
+
+-------------------------------------------------------------------
 Wed Oct  2 04:03:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires.

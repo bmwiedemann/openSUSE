@@ -35,7 +35,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/google_api_core
 # PATCH-FIX-UPSTREAM Based on gh#googleapis/python-api-core#713
 Patch0:         python-google-api-core-no-mock.patch
 # Needed for python_sitelib/google
-BuildRequires:  %{python_module googleapis-common-protos >= 1.53.0}
+BuildRequires:  %{python_module googleapis-common-protos >= 1.56.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module wheel}
@@ -53,12 +53,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-googleapis-common-protos >= 1.53.0
+Requires:       python-googleapis-common-protos >= 1.56.2
 Requires:       python-grpcio >= 1.49.1
 Requires:       python-grpcio-status >= 1.49.1
 Requires:       python-requests >= 2.18.0
 Requires:       (python-proto-plus >= 1.22.3 with python-proto-plus < 2.0.0dev0)
-Requires:       (python-protobuf >= 3.19.5 with python-protobuf < 5.0.0.dev0)
+Requires:       (python-protobuf >= 3.19.5 with python-protobuf < 6.0.0.dev0)
 BuildArch:      noarch
 %python_subpackages
 
