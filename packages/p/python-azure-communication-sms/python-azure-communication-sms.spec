@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-sms
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Communication SMS Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-sms/azure-communication-sms-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_communication_sms/azure_communication_sms-%{version}.tar.gz
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -33,12 +32,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.0
-Requires:       python-six >= 1.11.0
-Requires:       (python-azure-core >= 1.11.0 with python-azure-core < 2.0.0)
+Requires:       python-msrest >= 0.7.1
+Requires:       (python-azure-core >= 1.27.0 with python-azure-core < 2.0.0)
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-communication-sms <= 1.0.1
 %endif
@@ -49,10 +46,9 @@ BuildArch:      noarch
 Azure Communication SMS client package is intended to be used to send SMS using an Azure Resource.
 
 %prep
-%setup -q -n azure-communication-sms-%{version}
+%setup -q -n azure_communication_sms-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-sms-%{version}
 %pyproject_wheel
 
 %install
@@ -67,7 +63,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/communication/sms
 %{python_sitelib}/azure_communication_sms-*.dist-info
 
