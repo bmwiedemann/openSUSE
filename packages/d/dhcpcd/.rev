@@ -21,4 +21,15 @@
 </comment>
     <requestid>1195147</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db41aa17656c8784d02454755c8198f4</srcmd5>
+    <version>10.1.0</version>
+    <time>1728330769</time>
+    <user>anag+factory</user>
+    <comment>- Update to 10.1.0
+  * dhcp: get_option_uint32/16 only accept options with correct len
+  * Include frame header in buffer length
+</comment>
+    <requestid>1206091</requestid>
+  </revision>
 </revisionlist>
