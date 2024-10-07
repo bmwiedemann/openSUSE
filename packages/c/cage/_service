@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/cage-kiosk/cage.git</param>
     <param name="scm">git</param>
-    <param name="revision">e7d8780f46277af87881e0be91cb2092541bb1d5</param>
+    <param name="revision">v0.2.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>

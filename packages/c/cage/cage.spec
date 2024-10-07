@@ -17,7 +17,7 @@
 
 
 Name:           cage
-Version:        0.1.5+36.e7d8780
+Version:        0.2.0+0.e128a9f
 Release:        0
 Summary:        Wayland Kiosk
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  scdoc
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(wlroots) >= 0.17.0
+BuildRequires:  pkgconfig(wlroots-0.18) >= 0.18.0
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description

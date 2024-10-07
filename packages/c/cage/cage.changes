@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:38:45 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Fix name for BuildRequire of wlroots
+  * wlroots is very explicit with versions. It now has a suffix added based
+    version format <major>.<minor> i.e. wlroots-0.18 to refer to the 0.18.x
+    series
+
+-------------------------------------------------------------------
+Mon Oct 07 07:02:00 UTC 2024 - mvetter@suse.com
+
+- Update to version 0.2.0+0.e128a9f:
+  * build: bump to version 0.2.0
+  * ci: drop libwayland C23 workaround
+  * xdg_shell: wait for initial commit to unconstrain popups
+  * cage: fix abort on shutdown
+  * xdg_shell: wait for initial commit to set xdg-decoration mode
+  * xdg_shell: configure surface on initial commit
+  * ci: workaround libwayland C23 bug
+  * seat: rename WLR_INPUT_DEVICE_TABLET_TOOL to WLR_INPUT_DEVICE_TABLET
+  * xdg_shell: use new lifecycle events
+  * cage: drop wlr_scene_set_presentation()
+  * cage: create backend with wl_event_loop and output layout with wl_display
+  * seat: pass relative direction to wlr_seat_pointer_notify_axis()
+  * Bump wlroots requirement to v0.18
+  * cage: fix SIGINT/SIGTERM handler data
+  * ci: turn on --fatal-meson-warnings
+  * readme: update meson commands
+  * readme: update wlroots dependency version
+  * build: drop xwayland option
+
+-------------------------------------------------------------------
 Tue Aug 13 15:27:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Cleanup up _service:
