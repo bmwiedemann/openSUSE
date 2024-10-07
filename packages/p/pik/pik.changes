@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  5 17:34:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.0
+  + Bugs fixes
+    - fixed failing tests - removed fuzzy search from args
+  + New Features
+    - Add fuzzy search for Path type of queries
+    - Add configuration
+    - Add fuzzy search for Cmd, Ports, and Args
+
+-------------------------------------------------------------------
 Tue Sep 24 07:35:19 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.7.0
