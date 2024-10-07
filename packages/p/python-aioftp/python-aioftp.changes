@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  7 12:07:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.22.3
+  * minimal python version downgraded to 3.8
+- from version 0.22.2
+  * ci: separate build and publish jobs
+- from version 0.22.1
+  * docs: update/fix readthedocs configuration
+  * ci: fix workflow file extension from `yaml` to `yml`
+- from version 0.22.0
+  * client.list: fix infinite symlink loop for `.` and `..` on FTP servers
+    with UNIX-like filesystem for `client.list(path, recursive=True)`
+  * project file structure: refactor to use `pyproject.toml`
+  * minimal python version bumped to 3.11
+  * ci: update publish/deploy job (#171)
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Sat Jan  7 20:25:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove 'legacy' pytest-asyncio mode command line argument. It is

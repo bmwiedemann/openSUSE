@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioftp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,27 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-aioftp
-Version:        0.21.4
+Version:        0.22.3
 Release:        0
 Summary:        FTP client/server for asyncio
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aioftp
 Source:         https://files.pythonhosted.org/packages/source/a/aioftp/aioftp-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-siosocks >= 0.2.0
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module async_timeout}
+BuildRequires:  %{python_module async_timeout >= 4.0.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module siosocks >= 0.2.0}
 BuildRequires:  %{python_module trustme}
-# /SECTION
 %python_subpackages
 
 %description
@@ -45,10 +45,10 @@ aioftp is a python FTP client/server based on asyncio.
 %setup -q -n aioftp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
