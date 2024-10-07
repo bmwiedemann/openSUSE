@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  6 16:06:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * log_ticks allow custom formatting (e.g. with shorted minus) by
+    @tdegeus in #46
+- Release 0.14.0
+  * Changing output fit
+- Releae 0.13.0
+  * Adding voronoi binning by @tdegeus in #42
+  * Adding ticks as equivalent of log_ticks by @tdegeus in #43
+- Add GooseMPL-pr52-np2.patch gh#tdegeus/GooseMPL#52
+
+-------------------------------------------------------------------
 Fri Jan 20 16:25:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.1

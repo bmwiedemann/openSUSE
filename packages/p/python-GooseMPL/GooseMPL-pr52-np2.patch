@@ -1,0 +1,28 @@
+From c023377bfd6099cb56a6a69a3f01e7ecad6ff956 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sun, 6 Oct 2024 18:21:16 +0200
+Subject: [PATCH] Replace np.NaN: removed in Numpy 2
+
+---
+ GooseMPL/__init__.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/GooseMPL/__init__.py b/GooseMPL/__init__.py
+index 4e57433..e88e9a5 100644
+--- a/GooseMPL/__init__.py
++++ b/GooseMPL/__init__.py
+@@ -2413,10 +2413,10 @@ def bin(
+     n = bin_edges.size - 1
+ 
+     ret = {
+-        "x": np.NaN * np.ones(n, dtype=float),
+-        "y": np.NaN * np.ones(n, dtype=float),
+-        "xerr": np.NaN * np.ones(n, dtype=float),
+-        "yerr": np.NaN * np.ones(n, dtype=float),
++        "x": np.nan * np.ones(n, dtype=float),
++        "y": np.nan * np.ones(n, dtype=float),
++        "xerr": np.nan * np.ones(n, dtype=float),
++        "yerr": np.nan * np.ones(n, dtype=float),
+         "n": np.zeros(n, dtype=int),
+     }
+ 

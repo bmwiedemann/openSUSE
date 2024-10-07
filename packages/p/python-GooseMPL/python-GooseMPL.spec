@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooseMPL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           python-GooseMPL
-Version:        0.12.1
+Version:        0.15.0
 Release:        0
 Summary:        Style and extension functions for matplotlib
 License:        MIT
 URL:            https://github.com/tdegeus/GooseMPL
 Source:         https://files.pythonhosted.org/packages/source/G/GooseMPL/GooseMPL-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM GooseMPL-pr52-np2.patch gh#tdegeus/GooseMPL#52
+Patch0:         GooseMPL-pr52-np2.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,7 +63,7 @@ functions that extend matplotlib, and several examples to make professional plot
 using matplotlib.
 
 %prep
-%setup -q -n GooseMPL-%{version}
+%autosetup -p1 -n GooseMPL-%{version}
 
 %build
 %pyproject_wheel
@@ -71,7 +73,7 @@ using matplotlib.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest test/main.py
+%pytest
 
 %files %{python_files}
 %doc README.md
