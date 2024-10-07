@@ -4352,6 +4352,7 @@ unsorted:
   - firewall-macros 
   - firewalld-rpcbind-helper 
   - firewalld-test 
+  - firstyear-b612-fonts 
   - fish 
   - fish-devel 
   - fityk 
@@ -11479,6 +11480,7 @@ unsorted:
   - libQt5TextToSpeech5-32bit 
   - libQt5VirtualKeyboard5 
   - libQt5WaylandClient5-32bit 
+  - libQt5WaylandCompositor5 
   - libQt5WaylandCompositor5-32bit 
   - libQt5WebChannel5-32bit 
   - libQt5WebSockets5 
@@ -11532,7 +11534,6 @@ unsorted:
   - libQt6Pdf6 
   - libQt6PdfQuick6 
   - libQt6PdfWidgets6 
-  - libQt6PositioningQuick6 
   - libQt6Protobuf6 
   - libQt6QmlCompiler6 
   - libQt6Quick3DGlslParser6 
@@ -12068,7 +12069,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot1 
-  - libbaresip15 
+  - libbaresip18 
   - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
@@ -13052,7 +13053,7 @@ unsorted:
   - libfastjson-devel 
   - libfastlz1 
   - libfastlz1-x86-64-v3 
-  - libfaxutil7_0_7 
+  - libfaxutil7_0_9 
   - libfcache-devel 
   - libfcache1 
   - libfcft4 
@@ -15721,6 +15722,7 @@ unsorted:
   - libqt5-qtvirtualkeyboard-examples 
   - libqt5-qtvirtualkeyboard-hunspell 
   - libqt5-qtvirtualkeyboard-private-headers-devel 
+  - libqt5-qtwayland 
   - libqt5-qtwayland-32bit 
   - libqt5-qtwayland-devel 
   - libqt5-qtwayland-devel-32bit 
@@ -15830,7 +15832,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre23 
+  - libre27 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -20322,6 +20324,9 @@ unsorted:
   - okteta-part 
   - okteta-part-lang 
   - okteto 
+  - okteto-bash-completion 
+  - okteto-fish-completion 
+  - okteto-zsh-completion 
   - okular-devel 
   - okular-mobile 
   - okular-spectre 
@@ -20779,6 +20784,8 @@ unsorted:
   - osgi-service-jdbc-javadoc 
   - osgi-service-log 
   - osgi-service-log-javadoc 
+  - osgi-service-subsystem 
+  - osgi-service-subsystem-javadoc 
   - osinfo-db-tools 
   - osmo-bsc 
   - osmo-bsc-abisip-find 
@@ -26628,6 +26635,7 @@ unsorted:
   - python310-pyclipper 
   - python310-pycocotools 
   - python310-pycodestyle 
+  - python310-pycognito 
   - python310-pycomposefile 
   - python310-pycountry 
   - python310-pycparser 
@@ -27499,11 +27507,9 @@ unsorted:
   - python310-torch 
   - python310-torch-converters 
   - python310-torch-devel 
-  - python310-torch-examples 
   - python310-torch-openmpi4 
   - python310-torch-openmpi4-converters 
   - python310-torch-openmpi4-devel 
-  - python310-torch-openmpi4-examples 
   - python310-tornado 
   - python310-tornado6 
   - python310-tortilla 
@@ -30224,6 +30230,7 @@ unsorted:
   - python311-pyclipper 
   - python311-pycocotools 
   - python311-pycodestyle 
+  - python311-pycognito 
   - python311-pycomposefile 
   - python311-pycountry 
   - python311-pycrdt 
@@ -31071,11 +31078,9 @@ unsorted:
   - python311-torch 
   - python311-torch-converters 
   - python311-torch-devel 
-  - python311-torch-examples 
   - python311-torch-openmpi4 
   - python311-torch-openmpi4-converters 
   - python311-torch-openmpi4-devel 
-  - python311-torch-openmpi4-examples 
   - python311-tornado 
   - python311-tortilla 
   - python311-towncrier 
@@ -33880,6 +33885,7 @@ unsorted:
   - python312-pyclipper 
   - python312-pycocotools 
   - python312-pycodestyle 
+  - python312-pycognito 
   - python312-pycomposefile 
   - python312-pycountry 
   - python312-pycparser 
@@ -34750,11 +34756,9 @@ unsorted:
   - python312-torch 
   - python312-torch-converters 
   - python312-torch-devel 
-  - python312-torch-examples 
   - python312-torch-openmpi4 
   - python312-torch-openmpi4-converters 
   - python312-torch-openmpi4-devel 
-  - python312-torch-openmpi4-examples 
   - python312-tornado 
   - python312-tornado6 
   - python312-tortilla 
@@ -35454,7 +35458,6 @@ unsorted:
   - qt6-positioning-docs-html 
   - qt6-positioning-docs-qch 
   - qt6-positioning-examples 
-  - qt6-positioning-imports 
   - qt6-positioning-private-devel 
   - qt6-positioningquick-devel 
   - qt6-positioningquick-private-devel 
@@ -36623,6 +36626,7 @@ unsorted:
   - rustdesk-server-utils 
   - rustscan 
   - rustup 
+  - rusty_v8 
   - rxp 
   - rxp-devel 
   - rxtx-java 
@@ -49229,6 +49233,7 @@ unsorted:
   - zchunk 
   - zdbsp 
   - zeal 
+  - zed 
   - zellij 
   - zellij-bash-completion 
   - zellij-fish-completion 

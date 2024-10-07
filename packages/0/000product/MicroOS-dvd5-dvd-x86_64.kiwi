@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20241006" schemaversion="4.1">
+<image name="OBS__MicroOS___20241007" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241006</productvar>
+      <productvar name="VERSION">20241007</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241006,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241007,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241006/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241007/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1191,7 +1191,6 @@
       <repopackage name="libqt5-qtimageformats"/>
       <repopackage name="libqt5-qtquickcontrols"/>
       <repopackage name="libqt5-qtquickcontrols2"/>
-      <repopackage name="libqt5-qtwayland"/>
       <repopackage name="libQt5Core5"/>
       <repopackage name="libQt5DBus5"/>
       <repopackage name="libQt5Gui5"/>
@@ -1206,7 +1205,6 @@
       <repopackage name="libQt5Test5"/>
       <repopackage name="libQt5TextToSpeech5"/>
       <repopackage name="libQt5WaylandClient5"/>
-      <repopackage name="libQt5WaylandCompositor5"/>
       <repopackage name="libQt5Widgets5"/>
       <repopackage name="libQt5X11Extras5"/>
       <repopackage name="libQt5Xml5"/>
@@ -1228,6 +1226,7 @@
       <repopackage name="libQt6OpenGL6"/>
       <repopackage name="libQt6OpenGLWidgets6"/>
       <repopackage name="libQt6Positioning6"/>
+      <repopackage name="libQt6PositioningQuick6"/>
       <repopackage name="libQt6PrintSupport6"/>
       <repopackage name="libQt6Qml6"/>
       <repopackage name="libQt6QmlCore6"/>
@@ -1773,6 +1772,7 @@
       <repopackage name="qt6-network-tls"/>
       <repopackage name="qt6-networkinformation-glib"/>
       <repopackage name="qt6-networkinformation-nm"/>
+      <repopackage name="qt6-positioning-imports"/>
       <repopackage name="qt6-printsupport-cups"/>
       <repopackage name="qt6-qt5compat-imports"/>
       <repopackage name="qt6-quick3d-imports"/>
