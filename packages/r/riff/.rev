@@ -187,4 +187,16 @@
   * Tune what gets highlighted and not</comment>
     <requestid>1204661</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce97cec9b7453ec233af1c868374c49a</srcmd5>
+    <version>3.3.3</version>
+    <time>1728330739</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.3:
+  * With this release, we go from plain LCS to the Patience Diff algorithm.
+    &quot;Patience&quot; is marketed as producing more human friendly diffs.
+  * Additionally, post processing has been tuned to take better decisions on
+    which differences should be highlighted and not.</comment>
+    <requestid>1206039</requestid>
+  </revision>
 </revisionlist>

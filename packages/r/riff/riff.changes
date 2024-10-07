@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:26:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.3:
+  * With this release, we go from plain LCS to the Patience Diff algorithm.
+    "Patience" is marketed as producing more human friendly diffs.
+  * Additionally, post processing has been tuned to take better decisions on
+    which differences should be highlighted and not.
+
+-------------------------------------------------------------------
 Mon Sep 30 06:24:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.2:
