@@ -23,7 +23,7 @@
 %define pythons python311
 %endif
 Name:           bup
-Version:        0.33.3
+Version:        0.33.4
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
