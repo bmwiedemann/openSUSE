@@ -4,6 +4,7 @@
 # Author: Elisei Roca
 #------------------------------------
 
+set -eo pipefail
 # set -x
 
 NAME=etcd
@@ -14,21 +15,26 @@ VERSION=$(grep -oP '(?<=Version:)(.*)' etcd.spec | xargs)
 
 echo "Updating vendor file..."
 
-rm -rf /tmp/"$NAME" ||:
-mkdir -p /tmp/"$NAME"/vendor
+tempdir="$(mktemp -d --suffix=.etcd)"
+function cleanup() {
+  rm -rf "${tempdir}"
+}
+trap cleanup EXIT
 
-tar --strip-components=1 -xvf "$NAME-$VERSION".tar.gz -C /tmp/"$NAME" &> /dev/null
+mkdir -p "${tempdir}/vendor"
+
+tar --strip-components=1 -xvf "$NAME-$VERSION".tar.gz -C "${tempdir}" &> /dev/null
 
 dir=$(pwd)
 for item in ${STACK[*]}; do
-	mkdir /tmp/"$NAME"/vendor/"$item"
-	cd /tmp/"$NAME/$item"
+	mkdir "${tempdir}/vendor/${item}"
+	cd "${tempdir}/${item}"
 	go mod vendor
 	mv vendor/ ../vendor/"$item"
 done
 cd "$dir"
 
-fdupes -r -1 /tmp/"$NAME"/vendor/ |
+fdupes -r -1 "${tempdir}/vendor/" |
   while read line; do 
     target="";
     for file in ${line[*]}; do
@@ -40,7 +46,6 @@ fdupes -r -1 /tmp/"$NAME"/vendor/ |
     done;
   done
 
-tar -czvf vendor.tar.gz -C /tmp/"$NAME" vendor &> /dev/null
-rm -rf /tmp/"$NAME"  ||:
+tar -czvf vendor.tar.gz -C "${tempdir}" vendor &> /dev/null
 
 echo "Repacked to vendor.tar.gz"

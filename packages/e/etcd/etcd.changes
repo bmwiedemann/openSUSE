@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  2 15:08:01 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- vendor-update.sh: Fix static /tmp file issue (bsc#1199031)
+
+-------------------------------------------------------------------
 Mon Mar 25 09:07:45 UTC 2024 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.5.12:
