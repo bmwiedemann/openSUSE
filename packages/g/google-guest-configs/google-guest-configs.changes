@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 30 11:14:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240925.00
+  * Call google_set_hostname on openSUSE and when the agent
+    is configured to manage hostname and FQDN, let it (#75)
+- from version 20240924.00
+  * Include systemd-networkd hook in Ubuntu packaging (#77)
+- from version 20240905.00
+  * Update packaging as of Ubuntu devel packaging (#65)
+- from version 20240830.00
+  * Fix the name for A3 Edge VMs (#76)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:33:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240725.00
