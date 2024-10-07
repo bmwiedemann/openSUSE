@@ -1,0 +1,2 @@
+# cryptography requirement comes from pyjwt[crypto]
+addFilter("python-leftover-require python3.*-cryptography")

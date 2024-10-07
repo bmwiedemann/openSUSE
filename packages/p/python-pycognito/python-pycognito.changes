@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Oct  7 13:43:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Apply spec-cleaner and improve overall spec file quality
+- Test in multibuild in order to avoid illegal build dependency
+  cycle.
+
+-------------------------------------------------------------------
+Fri Oct  4 07:40:37 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Initial version 2024.5.1
