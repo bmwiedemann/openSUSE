@@ -17,4 +17,12 @@
 - Add %check section to run the script, it's just running with --version</comment>
     <requestid>1180321</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fca544b1e500f68d3bb9197914cbdfcc</srcmd5>
+    <version>0.6.0</version>
+    <time>1728330746</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206048</requestid>
+  </revision>
 </revisionlist>

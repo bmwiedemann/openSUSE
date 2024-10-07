@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-demosh
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Run code in Markdown files or shell scripts very interactively
 License:        Apache-2.0
