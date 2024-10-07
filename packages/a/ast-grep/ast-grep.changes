@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:35:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.0:
+  * feat: TypeScript types for Rules in NAPI #1038
+  * feat:support glob path match in CLI #1062
+  * refactor: move input/output args to standalone file 3d937cb
+  * refactor: move worker outside of utils 84ea621
+  * fix(deps): update babel monorepo to v7.25.7 b989f05
+
+-------------------------------------------------------------------
 Mon Sep 23 07:03:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.3:
