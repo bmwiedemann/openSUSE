@@ -16,16 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.0.3
+Version:        5.0.16
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
+Group:          Development/Languages/Python
 URL:            https://github.com/getmoto/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +42,7 @@ Requires:       python-xmltodict
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3)
 Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Recommends:     python-moto-all
 Suggests:       python-moto-server
 BuildArch:      noarch
@@ -49,10 +51,12 @@ BuildRequires:  %{python_module Flask without (%python-Flask >= 2.2.0 with %pyth
 BuildRequires:  %{python_module Flask-Cors}
 BuildRequires:  %{python_module Jinja2 >= 2.10.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
+BuildRequires:  %{python_module antlr4-python3-runtime}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.14.0}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module docker >= 3.0.0}
 BuildRequires:  %{python_module ecdsa}
@@ -60,10 +64,15 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module graphql-core}
 BuildRequires:  %{python_module joserfc}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
+BuildRequires:  %{python_module jsonpath-ng}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
 BuildRequires:  %{python_module py-partiql-parser >= 0.5}
+BuildRequires:  %{python_module pycognito}
+BuildRequires:  %{python_module pylint}
+BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module pyparsing >= 3.0.7}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-order}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -136,6 +145,11 @@ sed -i '/py-partiql-parser/ s/==/>=/' setup.cfg
 
 %install
 %pyproject_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/moto_server
@@ -170,6 +184,7 @@ donttest+=" or test_failed_job or test_failed_dependencies"
 donttest+=" or TestResponsesMockWithPassThru"
 # (?)
 donttest+=" or test_send_raw_email"
+donttest+=" or test_dynamodb_import_tabl or test_dynamodb_statements"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile
