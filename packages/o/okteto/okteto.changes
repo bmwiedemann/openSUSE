@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Oct  6 14:07:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix version output, add shell completion subpackages
+
+-------------------------------------------------------------------
+Sun Oct 06 08:10:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.0:
+  * refactor (release): refactor the actions release script to
+    match the … (#4484) (#4520)
+  * refactor: improve circleci config (#4514) (#4516)
+  * move name inferrer inside destroyCommand.destroy (#4511)
+    (#4517)
+  * test: change trivy cmd in intergraiton test (#4518) (#4519)
+  * Jlo/merge with master (#4491)
+  * Support for "priorityClassName" in dev containers (#4513)
+    (#4515)
+  * Fix `okteto build -f <folder>` (#4506) (#4512)
+  * Fix okteto status: namespace load for synthing (#4500) (#4505)
+  * Refactor error messages for Docker Compose usage (#4503)
+    (#4508)
+  * fix: build command to handle Okteto Manifest without a build
+    section (#4502) (#4507)
+  * fix: versions getting last 15 from gh (#4509) (#4510)
+  * DEV-690: Use right build context path to get the right diff and
+    sha in git operations for Smart Builds (#4494) (#4504)
+  * refactor: remove context and namespace from Stackraw (#4492)
+    (#4499)
+  * Refactor getStackServicesToDeploy function to handle multiple
+    Compose… (#4487) (#4498)
+  * Use "IfNotPresent" when using busybox for init volumes and
+    hybrid mode (#4495) (#4497)
+  * Remove context and namespace from manifestRaw (#4488) (#4496)
+  * check abs with abs (#4486) (#4493)
+  * Refactor deploy.go to conditionally display recommendation for
+    enabling remote execution (#4483) (#4490)
+  * revert pipeline and preview file check (#4485) (#4489)
+  * Refactor dockerfile to use private cache sharing (#4463)
+    (#4482)
+  * Refactor authProvider to prioritize local registry credentials
+    (#4470) (#4480)
+  * Add specific error for compose on cli only  (#4473) (#4481)
+  * remove remote deploy CTA on vanilla (#4471) (#4479)
+  * PROD-218: Add a timeout flag to okteto preview destroy command
+    (#4464) (#4477)
+  * Fix checking for pod sandbox creation error (#4475) (#4476)
+  * Add CI env var to okteto test (#4461) (#4474)
+  * Host "busybox" in the "okteto" DockerHub organization (#4467)
+    (#4469)
+  * Update CTA to install Okteto in the cluster for unsupported
+    command/f… (#4465) (#4466)
+  * fix(remote): :bug: multiline preparation on dockerfile (#4452)
+    (#4460)
+  * Support okteto volume access mode, volume mode, labels and
+    annotations (#4458) (#4459)
+  * revert default wait flag values (#4455) (#4457)
+  * Update cobra help message to be aligned with out official docs
+    (#4453) (#4456)
+  * Ultra mega release branch 3.0 (#4451)
+  * Add context store validation (#4447)
+  * build(deps): bump github.com/opencontainers/runc from 1.1.12 to
+    1.1.14 (#4442)
+  * bump customize (#4443)
+  * Fixed typo in a feature flag to enable dev branch tracking on
+    okteto up (#4440)
+  * DEV-624: Added scan for okteto/bin image, and update okteto/bin
+    dependency to 1.6.1 (#4438)
+
+-------------------------------------------------------------------
 Sat Sep 14 08:55:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.31.0:
