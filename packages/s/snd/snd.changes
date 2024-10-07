@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  6 15:25:35 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Migrate from deprecated %suse_update_desktop_file to
+  %translate_suse_desktop. (boo#1158957)
+
+-------------------------------------------------------------------
 Thu Jul 25 09:32:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.5:

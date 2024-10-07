@@ -34,7 +34,7 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://ccrma.stanford.edu/software/snd/
 Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
-Source1:        snd.desktop
+Source1:        snd.desktop.in
 Source2:        snd.png
 BuildRequires:  alsa-devel
 BuildRequires:  fftw3-devel
@@ -48,7 +48,7 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  motif-devel
-BuildRequires:  update-desktop-files
+BuildRequires:  translate-suse-desktop
 Requires:       ladspa
 
 %description
@@ -59,6 +59,7 @@ and extended using guile and guile-gtk.
 
 %prep
 %setup -q
+cp -a %{SOURCE1} .
 find -name "*~" -type f -print -delete
 find -name "*.png" -type f -exec chmod 0644 "{}" "+"
 
@@ -73,6 +74,7 @@ find -name "*.png" -type f -exec chmod 0644 "{}" "+"
 sed -i "s:\(^LIBS =.*\):\1 -lX11 -ldl:" makefile
 %make_build
 %make_build sndplay sndinfo
+%translate_suse_desktop snd.desktop
 
 %install
 install -d -m 755 %{buildroot}/%{_bindir}
@@ -83,7 +85,7 @@ mkdir -p %{buildroot}/%{_libdir}/snd/scheme
 cp -a *.scm %{buildroot}/%{_libdir}/snd/scheme
 mkdir -p %{buildroot}/%{_mandir}/man1
 install -c -m 0644 snd.1 %{buildroot}/%{_mandir}/man1
-%suse_update_desktop_file -i snd AudioVideo AudioVideoEditing
+install -D -m 0644 snd.desktop %{buildroot}%{_datadir}/applications/snd.desktop
 mkdir -p %{buildroot}/%{_datadir}/pixmaps
 cp %{SOURCE2} %{buildroot}/%{_datadir}/pixmaps
 
