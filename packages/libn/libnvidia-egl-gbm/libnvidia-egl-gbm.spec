@@ -28,14 +28,15 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-gbm
 Source0:        https://github.com/NVIDIA/egl-gbm/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         U_Add-ICD-json-file.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(eglexternalplatform) >= 1.2
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(libdrm)
 
 %description
 The GBM EGL external platform library.
@@ -72,10 +73,12 @@ export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-
 %files -n %{lname}
 %license COPYING
 %{_libdir}/libnvidia-egl-gbm.so.%{so_ver}*
+%dir %{_datadir}/egl
+%dir %{_datadir}/egl/egl_external_platform.d
+%{_datadir}/egl/egl_external_platform.d/15_nvidia_gbm.json
 
 %files -n libnvidia-egl-gbm-devel
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  7 13:24:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Add-ICD-json-file.patch
+  * Add ICD json file; related:
+    https://github.com/openSUSE/nvidia-driver-G06/issues/26 
+
+-------------------------------------------------------------------
 Sat Sep 28 00:15:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - created packge

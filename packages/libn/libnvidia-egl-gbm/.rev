@@ -8,4 +8,14 @@
   --&gt; https://github.com/openSUSE/nvidia-driver-G06/issues/12</comment>
     <requestid>1204274</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2f9cbc385d84f738ee62a0b0ed9da6b9</srcmd5>
+    <version>1.1.2</version>
+    <time>1728330784</time>
+    <user>anag+factory</user>
+    <comment>- U_Add-ICD-json-file.patch
+  * Add ICD json file; related:
+    https://github.com/openSUSE/nvidia-driver-G06/issues/26</comment>
+    <requestid>1206110</requestid>
+  </revision>
 </revisionlist>
