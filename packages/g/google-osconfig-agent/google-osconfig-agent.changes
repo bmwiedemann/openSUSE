@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep 30 11:22:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240927.00
+  * Third batch of dependencies upgrade (#690)
+- from version 20240926.03
+  * Revert "Bump go.opentelemetry.io/otel from 1.24.0 to 1.30.0 (#679)" (#684)
+- from version 20240926.02
+  * Bump go.opentelemetry.io/otel from 1.24.0 to 1.30.0 (#679)
+  * another batch of depencies upgrade (#683)
+- from version 20240926.01
+  * aggregate dependabot changes to go.mod (#677)
+  * Revert back Source package info delivery to control-plane (#673)
+- from version 20240926.00
+  * Update OWNERS (#676)
+- from version 20240924.02
+  * Upgrade grpc and it's dependencies to latest version (#672)
+- from version 20240924.01
+  * Implement keepalive config (#671)
+- from version 20240924.00
+  * Set new version of gRPC for test (#669)
+- from version 20240920.00
+  * Revert "bump version of the gRPC" (#667)
+- from version 20240919.00
+  * bump version of the gRPC (#666)
+- from version 20240917.00
+  * Merge pull request #665 from GoogleCloudPlatform/revert-664-update_grpc_dependency
+  * Revert "Update grpc library and other dependencies. (#664)"
+- from version 20240916.00
+  * Update grpc library and other dependencies. (#664)
+- from version 20240913.00
+  * Move packagebuild presubmit to osconfig (#662)
+- from version 20240912.00
+  * Revert "update osconfig api to v1.13.0 & indirect dependency update" (#659)
+- from version 20240822.00
+  * Revert "Source package info delivery to control-plane (#639)" (#656)
+- from version 20240821.00
+  * Fix golang version format to fix builds. (#655)
+- from version 20240814.01
+  * Use gcsfuse pkg in guest-policies e2e in pkg
+    update tests instead of old pkgs (#653)
+  * Replace osconfig-agent-test pkg by gcsfuse in ospolicies
+    tests and inventory-report tests (#652)
+- from version 20240806.00
+  * Disable Repository Resource test for SLES-12 (#650)
+
+-------------------------------------------------------------------
 Mon Aug  5 10:43:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240801.00
