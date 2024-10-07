@@ -191,4 +191,15 @@
   * libcextract: Add support for Weak symbols for kernel mode</comment>
     <requestid>1198748</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5194ed43345d1c1f449a94403e288786</srcmd5>
+    <version>0~20241002.ec46efd</version>
+    <time>1728330774</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20241002.ec46efd:
+  * Allow clang-extract to ignore errors pointed by clang
+  * SymbolExternalizer: Make sure we pass a valid location when searching identifiers
+  * SymbolExternalizer: Add ! to TOKEN_VECTOR</comment>
+    <requestid>1206104</requestid>
+  </revision>
 </revisionlist>
