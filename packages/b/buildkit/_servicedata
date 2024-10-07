@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/moby/buildkit.git</param>
-    <param name="changesrevision">9e14164a1099d3e41b58fc879cbdd6f2b2edb04e</param>
+    <param name="changesrevision">856ae24aa74793c122533d6bfdeffee26cb6e80b</param>
   </service>
 </servicedata>

@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Wed Sep 25 09:10:41 UTC 2024 - danish.prakash@suse.com
+
+- _service:
+  * rely on version and not `PARENT_TAG` versionformat.
+    By default, `PARENT_TAG` instructs git to use the first tag found for
+    the revision. This causes issues when there are multiple tags for the
+    same revision (ref/*) because git ends up choosing an incorrect tag.
+  * switch to `obs_scm`
+- Update to version 0.16.0:
+  * ci: switch to ubuntu runner for freebsd job
+  * debug: add trace flight recorder
+  * Updated tests in frontend/dockerfile/dockerfile_test.go to run on Windows.
+  * docs: windows: add a note about ContainerUser limited permissions
+  * solver: move scheduler debug statements to their own functions
+  * Sort errors alphabetically by detail if line number is the same when comparing tests
+  * exec: allow specifying non-zero exit codes for execs
+  * Add stub implementations to make buildkitd build for Darwin
+  * dockerfile: mask usage of secret env in command name
+  * solver: fix possible panic from error handler
+  *  frontend/dockerfile/docs: add $ in mount env example
+  * docs: fix broken link to dockerfile reference
+  * solver: pipe implementation utilizes generics for better typing
+  * ci: Fix govulncheck permissions, it needs at least content read to be able to checkout the repository.
+  * readme: add r2d4/llb frontend and dacc project
+  * util/resolver: ignore invalid (empty) scope
+  * tests: frontend/dockerfile: add dockerfile lint tests for WCOW
+  * vendor: github.com/docker/docker v27.2.1
+  * vendor: github.com/docker/docker v27.2.1
+  * tests: add more integration tests for windows/wcow
+  * fix windows area label when modifications are under the vendor folder
+  * bklog: always enable trace id if it exists
+  * hack: update golangci-lint to 1.61
+  * vendor: update grpc to v1.62.0
+  * exec: fix pruning cache mounts with parent ref on no-cache
+  * execlude vendor directory from windows label
+  * hack: do not cache rootless stage on release
+  * vendor: github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
+  * vendor: github.com/containerd/containerd v1.7.21
+  * docs: run mount secret env dockerfile example
+  * Dockerfile: update containerd binary to v1.7.21
+  * Dockerfile: update runc binary to 1.1.14
+  * chore: update AUTHORS and mailmap
+  * add SourceInfoMap callback to LintResults.PrintErrorTo params
+  * docs: use front matter title in buildkitd.toml doc
+  * vendor: github.com/moby/sys/mountinfo v0.7.2
+  * docs: update reference docs for `check` directive
+  * vendor: github.com/moby/sys/signal v0.7.1
+  * docs: add min dockerfile version for flags
+  * vendor: github.com/containerd/typeurl/v2 v2.2.0
+  * vendor: github.com/docker/docker v27.2.0
+  * Update rule check print to include path to dockerfile relative to context
+  * Parallel layer upload for s3 cache
+  * Cleanup Linux-isms in code
+  * Updated tests in frontend/dockerfile/dockerfile_provenance_test.go to run on Windows. Partially addressing #4485
+  * README.md: Add DevZero as consuming project
+  * Fix #4885: Use multipart upload instead of CopyObject for touching file > 5GB
+  * Update docs to clarify in the shell-form section that heredocs apply only to supported commands
+  * check command casing after parsing the ast
+  * Implements frontend side of #2122.
+  * docs: use gh alert syntax for callouts
+  * executor: detect containers killed by OOMKiller
+  * docs: fix instruction name (s/ADD/COPY/)
+  * remotecache: handle not implemented error for Info()
+  * refactor lint printing functionality
+  * ci: update golangci-lint to v1.60.1
+  * tests: frontend/dockerfile: more windows/wcow tests (pt.2)
+  * uploadprovider: allow closing used sources
+  * chore: set pb.Empty on ssh and secret mounts
+  * errdefs: mark ENOMEM & ENOSPC with ResourceExhausted code
+  * errdefs: detect certain sycall errors as internal
+  * exec: fix incorrect deps computation for special mounts
+  * ci: enable validating all Dockerfiles
+  * Dockerfile: check .git directory available in build context
+  * dockerfile: add missing mount completions
+  * docs: clarify valid from targets for run --mount
+  * In host networking mode, unconditionally use "/etc/resolv.conf"
+  * Add note in generated docs indicating experimental rule checks
+  * docs: list supported algorithms for ADD --checksum
+  * hack: ensure SARIF output has results field defined for govulncheck
+  * expand globs for area/project in auto PR labeler
+  * ci: update scout to 1.13.0
+  * ci: print scout result
+  * dockerfile: update containerd to v1.7.20
+  * migrate to github.com/moby/sys/userns
+  * ci: apply no-cache-filter for master tags
+  * ci: missing tags to be scanned with scout
+  * hack: fix no-cache-filter on release
+  * ci: generate annotations on PR, not just push
+  * ci: generate annotations on PR, not just push
+  * docs: dockerfile chmod variable interpolation
+  * docs: replace `and` with `or`
+  * implement experimental rule checks
+  * docs: emphasize the fact that secrets aren't saved in cache
+  * docs: mention `dst` and `destination` options too
+  * vendor: github.com/containerd/nydus-snapshotter v0.14.0
+  * vendor: github.com/containerd/nydus-snapshotter v0.13.14
+  * vendor: go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v0.44.0
+  * govulncheck to report known vulnerabilities
+  * chore(labeler): fix area/storage filter
+  * chore(labeler): update area/hack filter
+  * chore(labeler): align syntax
+  * ci: add OCI image annotations to Dockerfile frontend images
+  * ci: sync labels when files are reverted or no longer changed with labeler
+  * snapshot/containerd: fix wrong errdefs package import
+  * test: enabling integration tests on windows
+  * db: move DB dependencies to transactor interface
+  * ci: scan images with docker scout
+  * migrate to github.com/moby/sys/user/userns
+  * dockerfile: use ADD for fetching sources
+  * vendor: github.com/moby/sys/user v0.2.0
+  * vendor: github.com/docker/docker v27.1.1
+  * vendor: github.com/docker/docker v27.1.1
+  * Check the validity of the chmod option arguments for COPY and ADD
+  * Add environment replacement support for chmod option
+  * ci: add OCI image annotations to docker images
+  * introduce PR labeler GHA workflow and configuration
+  * dockerfile: test support for custom sessionID for locals
+  * otel: add wrapping "resolving" spans for ResolveImageConfig
+  * vendor: bump github.com/gofrs/flock to v0.12.1
+  * llbsolver: avoid nil releaser on error
+  * stack: compress shared stacks for clearer output
+  * ops: improve error messages from fileop
+  * executor: rebase the path of submount error
+  * executor: ensure deeper stacktraces for system errors
+  * vendor: github.com/docker/cli v27.1.0
+  * vendor: go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v0.44.0
+  * vendor: google.golang.org/grpc v1.60.1
+  * vendor: github.com/docker/docker v27.1.0
+  * vendor: github.com/containerd/containerd v1.7.20
+  * vendor: google.golang.org/genproto/googleapis/rpc v0.0.0-20231212172506-995d672761c0
+  * dockerui: allow passing sessionID for specific local source
+  * session: remove session name property
+  * errors: remove usage of errors.Cause
+  * build(deps): bump softprops/action-gh-release from 2.0.7 to 2.0.8
+  * history api: save number of warnings to build record
+  * build(deps): bump softprops/action-gh-release from 2.0.6 to 2.0.7
+  * solver: mark history and graph concistency errors as internal
+  * lint: finish up testifylint
+  * Check invalid environment replacement form like ${VAR:%}
+  * Pass cache imports from solve ptions to solve request
+
+-------------------------------------------------------------------
 Fri Aug 23 10:24:14 UTC 2024 - dcermak@suse.com
 
 - Update to version 0.15.2:
