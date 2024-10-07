@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:07:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.0
+  * Added support for muting samples.
+  * Allow setting filter range from command line.
+
+-------------------------------------------------------------------
 Sun Aug 25 16:54:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.0
