@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Oct  6 16:22:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.115:
+  * no CLI-related changes in this release
+  * General
+    - [GraphQL] Regenerate graphql @MUzairS15 (#12283)
+
+-------------------------------------------------------------------
+Sun Oct  6 08:19:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.114:
+  * Meshery CLI
+    - Rename pattern to design in mesheryctl @alphaX86 (#11051)
+  * Documentation
+    - Rename pattern to design in mesheryctl @alphaX86 (#11051)
+
+-------------------------------------------------------------------
+Sun Oct  6 08:19:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.113:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sun Oct  6 08:18:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.112:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sun Oct  6 08:16:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.111:
+  * General
+    - remove redudant models and components w/signoff @Jougan-0
+      (#12225)
+    - [chore] Upgrade meshkit to v0.7.79 @MUzairS15 (#12257)
+    - Remove duplicate and mismatch shapes @amitamrutiya (#12178)
+    - set Matthieu EVRIN as Independent @lekaf974 (#12201)
+  * Meshery CLI
+    - update only latest version w/signoff @Jougan-0 (#12271)
+    - Relationship generate @Jougan-0 (#12223)
+
+-------------------------------------------------------------------
 Thu Oct  3 12:17:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.110:
