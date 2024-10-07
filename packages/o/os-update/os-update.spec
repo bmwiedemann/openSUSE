@@ -21,13 +21,16 @@
 %endif
 
 Name:           os-update
-Version:        1.17
+Version:        1.17+git.20241007
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/os-update
-Source:         https://github.com/openSUSE/os-update/releases/download/v%{version}/os-update-%{version}.tar.xz
+Source:         os-update-%{version}.tar.xz
 Source99:       os-update-rpmlintrc
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -69,6 +72,7 @@ of the service, the hostname and the output of
 %setup -q
 
 %build
+./autogen.sh
 %configure --enable-vendordir=%{_distconfdir}
 %if 0%{?suse_version} < 1500
   %define make_build %{__make} -O %{?_smp_mflags}

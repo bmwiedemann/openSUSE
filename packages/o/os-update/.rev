@@ -213,4 +213,14 @@
   - Implement soft-reboot support for non restartable services</comment>
     <requestid>1172738</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2370f6ea7d8193fd990adfc1b0b6b00d</srcmd5>
+    <version>1.17+git.20241007</version>
+    <time>1728330772</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.17+git.20241007:
+  * Refresh before dup
+  * Always refresh</comment>
+    <requestid>1206097</requestid>
+  </revision>
 </revisionlist>
