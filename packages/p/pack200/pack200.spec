@@ -1,7 +1,7 @@
 #
-# spec file for package reload4j
+# spec file for package pack200
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javamail
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
@@ -50,7 +49,7 @@ This package contains the API documentation for %{name}.
 cp %{SOURCE1} build.xml
 
 # Test dependency that should not be in compile scope
-%pom_remove_dep :junit
+%pom_change_dep :junit :::test:
 
 %build
 %{ant} package javadoc
@@ -62,7 +61,7 @@ install -p -m 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:31:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Remove bogus dependency on javamail
+
+-------------------------------------------------------------------
 Mon Oct 30 14:50:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of standalone Pack200/Unpack200 code forked from
