@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  6 13:43:41 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.19 release
+  - Character tables updates to Unicode 16.0.0.
+  - Better window positioning in the Wayland driver.
+  - More support for network sessions in DirectPlay.
+  - Support for plug&play device change notifications.
+  - Various bug fixes.
+- update staging to 9.19 release
+
+-------------------------------------------------------------------
 Sun Sep 22 14:50:04 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.18 release

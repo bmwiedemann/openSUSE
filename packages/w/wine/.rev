@@ -5313,4 +5313,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1204533</requestid>
   </revision>
+  <revision rev="451" vrev="1">
+    <srcmd5>38b5bd3d7906eb4626ab13347ad11791</srcmd5>
+    <version>9.19</version>
+    <time>1728330583</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.19 release
+  - Character tables updates to Unicode 16.0.0.
+  - Better window positioning in the Wayland driver.
+  - More support for network sessions in DirectPlay.
+  - Support for plug&amp;play device change notifications.
+  - Various bug fixes.
+- update staging to 9.19 release</comment>
+    <requestid>1205980</requestid>
+  </revision>
 </revisionlist>
