@@ -1,8 +1,51 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * h264vaapi: Use the proper getter for getting the hardware context
+
+-------------------------------------------------------------------
+Thu Oct  3 14:12:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Drop patch, no longer needed:
+  * 0001-h264vaapi-Use-the-proper-getter-for-getting-the-hard.patch
+
+-------------------------------------------------------------------
 Thu Oct  3 14:08:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add ffmpeg 7.1 compatibility patch:
   * 0001-h264vaapi-Use-the-proper-getter-for-getting-the-hard.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * sourcestream: Do not process null streams
+  * Add missing "pipewireencodedstream.h" include
+  * Generate wayland code with PRIVATE_CODE
+  * produce: Use a separate condition_variable for passthrough/output thread
+  * Guard m_stream in setMaxFramerate
+  * pipewireproduce.cpp: Add guard to m_stream
+  * sourcestream: make resilient against pipewire restarts
+  * Fix some copy-and-paste issues in h264vaapi and libx264 encoders
+  * Add encoder using libopenh264 (kde#476187)
+  * Simpler yet more useful handling of KPIPEWIRE_FORCE_ENCODER
+  * produce: Properly cleanup on deactivate in all cases (kde#488687)
+  * produce: Destroy PipeWireSourceStream on the right thread (kde#489434)
+  * gitignore: add VS Code dir
+  * mediamonitortest: start media session and create dummy output to test playback state
+  * Use only non external only format modifiers
+  * Drop implicit modifier shortcut
+  * Use reserve to reserve space in list
+  * update version for new release
 
 -------------------------------------------------------------------
 Tue Sep 10 14:53:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>

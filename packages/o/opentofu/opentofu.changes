@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 04 19:47:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.3:
+  * Backport 1.8 handle static variable secrets (#2046)
+  * Make sure test vars are only processed during test commands
+    (#2040)
+  * Fix Terraform Version in 1.8.x Migration Guide (#1987) (#2000)
+  * Update docs version message (#1990) (#1997)
+
+-------------------------------------------------------------------
 Tue Sep 10 08:43:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.2:

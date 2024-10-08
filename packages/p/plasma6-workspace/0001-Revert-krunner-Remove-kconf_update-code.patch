@@ -167,9 +167,9 @@ index 0000000000..9e3c29ef4a
 +    QCoreApplication app(argc, argv);
 +
 +    // Migrate data to state data file
-+    KSharedConfigPtr krunnerrc = KSharedConfig::openConfig("krunnerrc");
++    KSharedConfigPtr krunnerrc = KSharedConfig::openConfig(u"krunnerrc"_s);
 +    KConfigGroup stateData = krunnerrc->group(u"PlasmaRunnerManager"_s);
-+    KSharedConfigPtr newStateLocation = KSharedConfig::openConfig("krunnerstaterc", KConfig::NoGlobals, QStandardPaths::GenericDataLocation);
++    KSharedConfigPtr newStateLocation = KSharedConfig::openConfig(u"krunnerstaterc"_s, KConfig::NoGlobals, QStandardPaths::GenericDataLocation);
 +    stateData.reparent(newStateLocation.data());
 +    stateData.sync();
 +

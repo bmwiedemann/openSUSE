@@ -18,14 +18,15 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luadbi
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        A database interface library for Lua
 License:        MIT
 Group:          Productivity/Databases/Tools
 URL:            https://github.com/mwild1/luadbi
+Source0:        https://github.com/mwild1/%{mod_name}/archive/refs/tags/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 # Formely found on code.google.com
-Source:         luadbi-%{version}.tar.gz
+Source1:        luadbi-%{version}.tar.gz
 Source50:       tests-modules-load.lua
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - fix postgresql headers' path
 Patch0:         luadbi-postgresql-headers.patch
@@ -35,7 +36,7 @@ BuildRequires:  postgresql-devel
 BuildRequires:  postgresql-server-devel
 BuildRequires:  sqlite3-devel
 Requires:       %{flavor}
-%lua_provides
+# %%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
@@ -70,7 +71,7 @@ make install_free DESTDIR=%{buildroot} LUA_LDIR=%{lua_noarchdir} LUA_CDIR=%{lua_
 
 %check
 # run tests
-lua%lua_version %{SOURCE50} "%{buildroot}"
+lua%{lua_version} %{SOURCE50} %{buildroot}
 
 %files
 %license COPYING

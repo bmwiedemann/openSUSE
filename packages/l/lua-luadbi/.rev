@@ -56,4 +56,20 @@
   %patchN.</comment>
     <requestid>1149143</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d49a02f30b4087634d99e5b177484450</srcmd5>
+    <version>0.7.3</version>
+    <time>1728330536</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.3:
+  - oracle column name bugfix
+  - [travis] fix mysql grant error
+  - Don't break SQLite 3.6.20 as shipped in RHEL/CentOS 6
+  - dbd/mysql/statement.c: fix compilation with mysql-8
+  - Issue 56: Remove useless setting of is_null
+  - Issue-66: dbd/mysql/statement.c: return nil for NULL
+  - Attempt to provide partial fix for Issue #64.
+</comment>
+    <requestid>1205567</requestid>
+  </revision>
 </revisionlist>

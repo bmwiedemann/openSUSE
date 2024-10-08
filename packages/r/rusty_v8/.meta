@@ -1,0 +1,12 @@
+<package name="rusty_v8" project="openSUSE:Factory">
+  <title> V8 javascript bindings for Rust </title>
+  <description>Do not install. Only used as the first stage for building deno, and for development/debugging purposes.
+
+Deno offers an alternate build, where the v8 engine is referenced through a static binary dump.
+
+This package exists just to test rusty_v8 in isolation. It will generate binaries that include full debug symbols/tables.
+
+Users should refer to the deno package for an integrated build without development symbols.</description>
+  <devel project="devel:languages:javascript" package="rusty_v8"/>
+  <url>https://github.com/denoland/rusty_v8/</url>
+</package>

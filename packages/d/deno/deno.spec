@@ -19,32 +19,29 @@
 
 
 Name:           deno
-Version:        1.45.0
+Version:        2.0.0~rc10
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
 Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
-Source99:       revendor_source.sh
-Patch1:         deno-rm-upgrade.patch
-Patch2:         deno-v8-arm.patch
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-# gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
 # needed by `libz-ng-sys` after 1.36.1
 # see: https://build.opensuse.org/package/show/devel:languages:javascript/deno#comment-1808174
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  cargo >= 1.68.0
 BuildRequires:  gn
 BuildRequires:  lld
 BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  rust >= 1.68.0
+BuildRequires:  rusty_v8
+BuildRequires:  sccache
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -69,26 +66,32 @@ updated with the --reload flag.
 
 %prep
 %autosetup -a1 -p1
-# Drop lock file due to revendor_source.sh breaking check
-rm Cargo.lock
-# drop checksum for ICU 72 -> 73
-echo '{"files":{},"package":""}' > vendor/deno_core/.cargo-checksum.json
 
-cp %{SOURCE2} .cargo/config
+# From archlinux. We are using a patched v8 from our build
+unlink $PWD/rusty_v8 || true
+ln -sf %{_libdir}/crates/rusty_v8 $PWD/rusty_v8
+echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
+%{__cargo} update --offline
 
 %build
+# Ensure that the clang version matches. This command came from Archlinux. Thanks.
+export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
+export CC=clang
+export CXX=clang++
 # https://www.chromium.org/developers/gn-build-configuration
-export GN_ARGS="enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
-# enable binary stripping
-export RUSTFLAGS="%{__global_rustflags} -Clink-arg=-s"
+export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
 %{cargo_build}
 
 %install
 # place deno cli manually (cannot cargo install)
 mkdir -p %{buildroot}%{_bindir}
 cp target/release/deno %{buildroot}%{_bindir}
+
+%check
+export PATH="${PATH}:%{buildroot}%{_bindir}"
+deno run tests/testdata/run/002_hello.ts
 
 %files
 %license LICENSE.md

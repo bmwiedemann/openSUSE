@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  5 09:15:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.20:
+  * Generate PNG icons for desktop environments with bad SVG support
+  * Use PNG app icons instead of SVG
+- update to 0.4.19:
+  * Fix Proton-Sarek
+  * Update description to include Sarek
+  * Add keywords to metainfo
+- update to 0.4.18:
+  * Refresh application logo with more shading and modern border
+  * Add Sarek
+  * Update Swedish translation
+
+-------------------------------------------------------------------
 Tue Sep 17 00:09:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.4.17:

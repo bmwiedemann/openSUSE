@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.plasma\\.private\\.nanoshell.*
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname plasma-nano
 
 %bcond_without released
 Name:           plasma6-nano
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -34,9 +34,9 @@ Release:        0
 Summary:        Minimal Plasma shell for embedded devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -82,9 +82,6 @@ A minimal plasma shell package intended for embedded devices
 
 %files
 %license LICENSES/*
-%{_kf6_appstreamdir}/org.kde.plasma.nano.desktoptoolbox.appdata.xml
-%dir %{_kf6_plasmadir}/packages/
-%{_kf6_plasmadir}/packages/org.kde.plasma.nano.desktoptoolbox/
 %dir %{_kf6_plasmadir}/shells
 %{_kf6_plasmadir}/shells/org.kde.plasma.nano/
 %dir %{_kf6_qmldir}/org/kde/plasma/

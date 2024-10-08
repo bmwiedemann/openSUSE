@@ -1,0 +1,7 @@
+<package name="firstyear-b612-fonts" project="openSUSE:Factory">
+  <title>B612 font family</title>
+  <description>B612 is an highly legible open source font family designed and tested to be used on aircraft cockpit screens. It was originally commissioned by Airbus from Intactile DESIGN in 2012, then later donated to the Eclipse Foundation as part of the PolarSys project.
+
+This contains the B612 font family with patches from SUSE's William Brown adjusting some characters and changing the zero to a slashed zero, for better readability.</description>
+  <devel project="M17N:fonts" package="firstyear-b612-fonts"/>
+</package>

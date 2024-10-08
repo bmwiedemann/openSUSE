@@ -1,0 +1,886 @@
+-------------------------------------------------------------------
+Fri Oct  4 05:58:29 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add ./rusty_v8-rpmlintrc to one of the sources
+
+-------------------------------------------------------------------
+Thu Oct  3 10:10:51 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- update to version 0.106.0 -> NOTICE: this version will become 129.0.0 in the future
+  * feat: cppgc NameProvider
+  * re-add deprecated cppgc api
+  * Rolling to V8 12.9.202.13
+  * Rolling to V8 12.9.202.12
+  * feat: add Module::is_graph_async
+  * download ninja/gn from cipd
+  * Rolling to V8 12.9.202.11
+  * Update to v0.105.1
+  * Rolling to V8 12.9.202.9
+  * Rolling to V8 12.9.202.8
+  * Rolling to V8 12.9.202.7
+  * fix: Check for null pointer returned by `ValueSerializer::Release`
+  * Allow `ValueSerializerImpl` and `ValueDeserializerImpl` impls to be re-entrant
+  * remove unused submodule
+  * disable pointer compression
+  * Backport ESM TLA fixes
+  * Rolling to V8 12.9.202.5
+  * feat: add InspectorClient::ensureDefaultContextInGroup
+  * chore: respect explicitly set RUSTY_V8_SRC_BINDING_PATH
+  * Disable relative vtable on Android
+  * Rolling to V8 12.9.202.4
+- Add ./rusty_v8-rpmlintrc. This is not C
+- Make deno use this as a crate path by updating deno's Cargo.toml
+- GN is looking for clang at lib and not lib64. 
+  * Use sed to change lib -> lib64
+- update _service file
+- remove vendor.tar.xz
+- use a new vendor tarball vendor.tar.zst
+- remove cargo_config
+
+-------------------------------------------------------------------
+Thu Aug 22 20:25:50 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.104.0
+  * version 0.104.0 (#1585)
+  * Rolling to V8 12.9.202.2 (#1584)
+  * Update V8 to 12.9 (#1578)
+- includes version 0.103.0 (#1577)
+  * fix: ensure /Zl flag (#1572)
+  * Revert "Add "to Rust string" benchmarks" (#1576)
+  * Add "to Rust string" benchmarks (#1566)
+  * feat: expose v8 version constants (#1569)
+  * feat: add UseCounterCallback (#1567)
+  * update fast calls api (#1564)
+  * chore: update all v8 deps (#1554)
+- includes version 0.102.0 (#1560)
+  * feat: changes for vm (#1557)
+  * chore: disable android in ci (#1558)
+  * chore: upgrade to rust 1.80 (#1553)
+- includes version 0.101.0 (#1552)
+  * chore: binding cleanup (#1551)
+  * feat: upgrade ScriptOrigin (#1550)
+  * Roll V8 to include new patches (#1549)
+  * add embedder suffix to v8 version (#1548)
+- includes v0.100.0 (#1546)
+  * feat: access with receiver (#1542)
+  * fix: QueryCallback should use Integer (#1545)
+  * feat: add String::ValueView (#1543)
+  * feat: V8 12.8 (#1539)
+  * set v8_enable_private_mapping_fork_optimization = true (#1535)
+  * Update V8 to 12.8 (#1538)
+- includes v0.98.2 (#1536)
+  * fix: ExternalOneByteStringResource is not guaranteed to be
+    valid UTF-8 (#1532)
+  * chore: Add a couple convenience casting functions to v8::Local (#1533)
+  * chore(build): try remove_file on windows (#1529)
+  * rust 1.79.0 (#1527)
+
+-------------------------------------------------------------------
+Fri Jul 12 02:19:05 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.98.0:
+  * feat: cppgc::Ptr (#1523)
+  * Rolling to V8 12.7.224.13 (#1524)
+  * fix: put fslock around entire build process (#1525)
+  * chore: output more information in build (#1521)
+- includes 0.97.1:
+  * attempt to fix symlink problem (#1520)
+
+-------------------------------------------------------------------
+Wed Jul 10 23:14:45 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.97.0:
+  * Rolling to V8 12.7.224.12 (#1513)
+  * Use &mut Isolate in Object::wrap and Object::unwrap (#1518)
+  * feat: enable maglev (#1517)
+  * build: remove symlink on Windows before creating it (#1516)
+
+-------------------------------------------------------------------
+Sat Jul  6 03:15:34 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.96.0:
+  * Rolling to V8 12.7.224.10 (#1509)
+  * Add non-static external onebyte string (#1511)
+  * feat: Add Source Maps APIs (#1514)
+
+-------------------------------------------------------------------
+Fri Jun 28 01:54:42 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.95.0:
+  * Rolling to V8 12.7.224.9 (#1508)
+  * Add cppgc::InnerMember::get_mut (#1505)
+  * feat: rust bindgen and publish flow (#1507)
+  * fix: remove use of deprecated apis (#1488)
+- add deno-v8-arm.patch
+  * thanks to Guillaume_G for fix
+
+-------------------------------------------------------------------
+Tue Jun 18 18:24:21 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.94.0:
+  * Rolling to V8 12.7.224.1 (#1502)
+  * Update v8 to 12.7 (#1501)
+- includes 0.93.1:
+  * build: fix publishing step (#1495)
+  * Fix uninitialized context annex slot (#1497)
+  * Add v8::Template::set_intrinsic_data_property (#1496)
+
+-------------------------------------------------------------------
+Sun Jun  9 19:51:47 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.93.0:
+  * chore: Update use of deprecated APIs (#1481)
+  * Rolling to V8 12.6.228.9 (#1487)
+  * fix: fix size checking on 32-bit platforms (#1489)
+  * feat: add DataView constructor (#1491)
+  * chore: update dependencies (#1493)
+
+-------------------------------------------------------------------
+Tue May 28 21:59:01 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.92.0:
+  * see https://github.com/denoland/rusty_v8/compare/v0.89.0...v0.92.0
+
+-------------------------------------------------------------------
+Thu Mar 28 21:47:07 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.89.0:
+  * chore: bump rust-toolchain (#1408)
+  * feat: Add string access methods to OneByteConst (#1409)
+  * Fixed a typo in the parameter capture in
+    `v8__Isolate__SetCaptureStackTraceForUncaughtExceptions` (#1410)
+  * feat: expose CachedData::rejected (#1413)
+  * chore: revert V8 upgrade from 12.3 to 12.2. (#1414)
+  * Reland "Track V8 12.3 (#1401)" (#1417)
+  * V8 12.3.219.9 (#1419)
+  * Add Isolate::add_message_listener_with_error_level (#1424)
+  * feat: pass source as mut ref to script_compiler::compile (#1420)
+  * feat: Add IndexedPropertyHandlerConfiguration::*_raw methods (#1426)
+  * fix: update README with release instructions (#1431)
+  * Add v8::MicrotaskQueue bindings (#1423)
+  * feat: Add "v8::Object::get_real_named_property_*" methods (#1428)
+  * feat: aarch64 for macos (#1429)
+  * feat: use .cargo/.rusty_v8/<file> for caching downloads
+    manually (#1433)
+  * feat: .gz compress release artifacts (#1434)
+  * chore: update README with cache info (#1435)
+  * chore: Release v0.88.0 (#1436)
+  * fix: mispelling in C binding (#1439)
+  * feat: Add v8::MicrotaskQueue::new() (#1440)
+
+-------------------------------------------------------------------
+Thu Feb 22 20:54:13 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.84.0:
+  * Add String::get_external_string_resource_base and
+    get_external_string_resource #1396
+  * build(deps): bump zerocopy from 0.7.30 to 0.7.32 #1398
+  * V8 12.3.219.1 #1402
+
+-------------------------------------------------------------------
+Thu Feb 15 19:10:37 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.83.2:
+  * Rolling to V8 12.1.285.27 #1383
+  * Fix busted doc comment #1392
+  * Fix misleading BigInt rustdoc #1379
+  * feat: allow v8::Data as a generic for get_*_from_snapshot_once #1393
+
+-------------------------------------------------------------------
+Fri Feb  9 04:04:07 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.83.1:
+  * feat: Support custom host objects in ValueSerializer (#1322)
+  * Rolling to V8 12.0.267.8 (#1365)
+  * chore: track v8 12.1 (#1372)
+  * chore: bump deps (#1376)
+  * chore: disable android example deps on non-android platforms (#1375)
+  * Explicit panic instead of silent memory corruption (#1377)
+  * Add faq for non-main thread init crash (#1384)
+  * isolate->GetCppHeap() can return nullptr if no heap is attached (#1385)
+  * Remove AllCanRead flag from PropertyHandlerFlags (#1387)
+  * Retrieve value from cppgc::Member handle (#1388)
+
+-------------------------------------------------------------------
+Thu Nov  2 20:56:46 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.81.0:
+  * Rolling to V8 12.0.267.1 #1361
+  * chore: disable zlib in rusty_v8 #1358
+  * Add cppgc bindings #1336
+  * 0.81.0 #1362
+- update to 0.80.0:
+  * chore: update V8 to latest floated patch (#1354)
+  * feat: add call_with_context to v8::Function (#1350)
+
+-------------------------------------------------------------------
+Sat Oct 14 20:59:59 UTC 2023 - avindra <avindra@opensuse.org>
+
+- update to 0.79.2:
+  * Add test for --expose-deno-builtins (#1344)
+  * Rolling to V8 11.8.172.13 (#1335)
+- includes 0.79.1:
+  * feat: add get_backing_store to ArrayBufferView (#1342)
+  * fix: arraybuffer init from vec was broken if vec reallocated to box (#1341)
+- includes 0.79.0:
+  * feat: add scope-less data() access on ArrayBufferView (#1338)
+  * feat: new_backing_store_from_bytes and empty for ArrayBuffer
+    and SharedArrayBuffer (#1334)
+
+-------------------------------------------------------------------
+Wed Sep 27 21:07:24 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.78.0:
+  * fix: better fix for empty Uint8Array (#1329)
+- includes 0.77.0:
+  * Rolling to V8 11.8.172.6 (#1320)
+  * fix(Symbol): deprecate for_global in favour of for_key and `for_api`
+  * fix: never create a null slice (#1326)
+
+-------------------------------------------------------------------
+Tue Sep 19 22:07:45 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.76.0:
+  * chore: track v8 11.8 (#1315)
+  * Rolling to V8 11.8.172.3 (#1317)
+  * build(deps): bump bumpalo from 3.9.1 to 3.13.0 (#1306)
+  * fix: don't allocate for zero-length strings (#1309)
+  * fix: crash on x86_64 systems that support memory protection keys (#1318)
+
+-------------------------------------------------------------------
+Fri Aug 25 20:03:27 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.75.1:
+  * chore: turn pointer compression off again (#1302)
+  * Rolling to V8 11.7.439.6 (#1304)
+
+-------------------------------------------------------------------
+Thu Aug 10 19:02:24 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.75.0:
+  * chore: track v8 11.7 (#1295)
+  * Rolling to V8 11.7.439.1 (#1296)
+  * v0.75.0 (#1299)
+
+-------------------------------------------------------------------
+Fri Jul 28 22:33:33 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to rev 86fddc2fc8c87be36561ad6cbd60900b9a1abe09:
+  * Rolling to V8 11.6.189.15 (#1291)
+  * fix: 32-bit build fails on non-size_t based size assertions (#1289)
+
+-------------------------------------------------------------------
+Sat Jul 22 22:42:57 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.74.3:
+  * feat: v8::Object::PreviewEntries (#1276)
+  * feat: Add Uint8 type for fastcall (#1279)
+  * fix: Use unaligned read as copy_nonoverlapping requires
+    alignment (#1278)
+  * chore: Add Debug for ExternalReference (#1272)
+  * feat: Implement Rust-side const ExternalOneByteStringResource
+    subclass (#1275)
+  * chore: update to Rust 1.71 (#1283)
+  * fix(OneByteConst): missing ASCII assertion, assert length (#1282)
+  * feat: Add {Dis,}allowJavascriptExecutionScope (#862)
+  * Rolling to V8 11.6.189.12 (#1286)
+  * feat: Add v8::Value::type_repr() (#1285)
+  * v0.74.3 (#1287)
+
+-------------------------------------------------------------------
+Thu Jul 13 03:10:44 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.74.2:
+  * Fix build for android (#1246)
+  * silence warning for unused 'must use' (#1269)
+  * Add v8::NamedPropertyHandlerConfiguration::*_raw methods (#1273)
+
+-------------------------------------------------------------------
+Wed Jul  5 04:48:46 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.74.1:
+  * Rolling to V8 11.6.189.7 (#1260)
+  * fix: Ensure that one-byte strings that are not ASCII go
+    through write_utf8_uninit (#1261)
+
+-------------------------------------------------------------------
+Thu Jun 29 18:18:12 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.74.0:
+  * Track v8 11.6 (#1252)
+  * Rolling to V8 11.6.189.6 (#1253)
+  * feat(fastcall): Int64Representation (#1238)
+  * Don't preserve V8 archive mode and ownership on build (#1244)
+  * chore: support 128-bit TypeId (#1249)
+  * feat: Fix is_onebyte and add an uninit write for onebyte (#1255)
+  * Add `Function::{ScriptId, GetScriptOrigin}, ScriptOrigin::Get{
+    ScriptId, ResourceName, SourceMapUrl}` bindings (#1250)
+  * chore: Add copy, clone and debug to some fast API types (#1257)
+  * feat: Use MaybeUninit for to_rust_string_lossy and add
+    to_rust_cow_lossy (#1256)
+  * v0.74.0 (#1258)
+
+-------------------------------------------------------------------
+Sat May 27 22:39:37 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.73.0:
+  * Rolling to V8 11.5.150.2 (#1239)
+  * Add more Object methods (#1240)
+  * Improved ObjectTemplate::set_*_handlers (#1237)
+
+-------------------------------------------------------------------
+Wed May 24 19:33:11 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.72.0:
+  * Rolling to V8 11.5.150.1 (#1235)
+  * Track v8 11.5 (#1234)
+  * feat: Add v8::CreateParams::has_set_array_buffer_allocator (#1232)
+
+-------------------------------------------------------------------
+Thu May 18 20:14:37 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.71.2:
+  * Fix exception not caught in debug build for v8::Function::call (#1229)
+
+-------------------------------------------------------------------
+Fri May 12 17:02:17 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- includes 0.71.1:
+  * feat: Add bindings for "v8::Set" (#1221)
+  * feat: Expose set_accessor_with_configuration to include data and prop
+  * feat: Add the option to disable generation from strings (#1222)
+  * Rolling to V8 11.4.183.2 (#1219)
+  * refactor: use Deno.Command instead of Deno.run (#1225)
+  * test: Add tests showing incorrect exception behavior in debug build (#
+
+-------------------------------------------------------------------
+Sat Apr 29 00:12:04 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.71.0:
+  * Rolling to V8 11.4.183.1 (#1217)
+  * Fix build for v11.4 (#1218)
+- includes 0.70.0:
+  * chore: disable V8 pointer compression (#1214)
+  * Support for unconventional builds (#1209)
+  * chore: Track v8 11.4 (#1216)
+- includes 0.69.0:
+  * Update to Ubuntu-22.04-XL runners (#1208)
+  * refactor: migrate from lazy_static to once_cell (#1210)
+  * feat: Add v8::StackTrace::current_script_name_or_source_url (#1211)
+  * Rolling to V8 11.2.214.15 (#1207)
+  * feat: Add v8::Object::get_constructor_name (#1212)
+
+-------------------------------------------------------------------
+Sat Apr  1 17:54:41 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.68.0:
+  * FastApiOneByteString is not always utf-8 (#1206)
+
+-------------------------------------------------------------------
+Wed Mar 29 20:37:30 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.67.0:
+  * New const evaluated FastFunction API (#1201)
+  * ArrayBuffer: add binding for IsResizableByUserJavaScript (#1205)
+
+-------------------------------------------------------------------
+Thu Mar 23 01:07:09 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.66.0:
+  * build: add PYTHON envvar to specify your python binary (#1202)
+  * chore: Track v8 11.2 (#1203)
+  * Rolling to V8 11.2.214.9 (#1204)
+- remove python3 hack
+
+-------------------------------------------------------------------
+Fri Mar 17 23:36:24 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.65.0:
+  * feat: Expose the security token API from V8 (#1192)
+  * Change signature of FunctionTemplate::build_fast (#1197)
+  * Inline hint for default FastFunction trait methods (#1199)
+  * Add tests for invalid UTF-8 sequences in v8::String::new_from_utf8 (#1190)
+  * Use dsherret/rust-toolchain-file@v1 for release CI (#1200)
+
+-------------------------------------------------------------------
+Sat Mar 11 17:52:37 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.64.0:
+  * Add PropertyDescriptor::new_from_value_writable and new_from_value (#1187)
+  * Explicitly set v8_enable_handle_zapping to false (#1188)
+  * Rolling to V8 11.0.226.19 (#1191)
+  * test: fix flaky cached_data_version_tag test (#1194)
+  * Disable snapshot checksum verification (#1195)
+
+-------------------------------------------------------------------
+Thu Feb 23 23:36:35 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.63.0:
+  * refactor: v8::Context::set_promise_hooks requires scope (#1185)
+  * feat: Add bindings for continuation embedder data (#1184)
+  * refactor: Move set_promise_hooks API to HandleScope (#1186)
+
+-------------------------------------------------------------------
+Tue Feb  7 19:22:09 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.62.2:
+  * Exposing Value::TypeOf (#1133)
+  * Meaningful error message if gn can't be run (#1115)
+  * resolve CVE-2022-37434 (#1136)
+  * chore: update v8 submodule to floated patch for string support in Fas
+  * Add SeqOneByteString to fast API calls (#1129)
+- includes v0.57.0
+  * Fix length type of FastApiOneByteString (#1140)
+  * Optional key in v8::ArrayBuffer:detach (#1141)
+  * feat: Isolate::memory_pressure_notification() (#1139)
+  * feat: v8::Isolate::{add,remove}_gc_prologue_callback (#1142)
+- includes v0.58.0
+  * feat: Add v8::Isolate::request_garbage_collection_for_testing (#1148)
+  * ci: add "release" action workflow (#1150)
+  * feat: v8::Inspector::exception_thrown, v8::Inspector::create_stack_tr
+  * ci: provide crate name in release script (#1151)
+- includes v0.59.0
+  * chore: Update docstring on v8::Global (#1153)
+  * ci: update release action (#1154)
+- includes v0.60.0
+  * chore: Track v8 11.0 (#1157)
+  * chore: bump CI time-out to 3 hours (#1160)
+  * chore: run clang-format (#1160)
+  * deps: upgrade V8 to 11.0.226.2 (#1160)
+  * deps: upgrade ICU to 72-1 (#1160)
+  * deps: update other submodules with libraries and build tools (#1160)
+  * deps: upgrade Ninja and GN (#1160)
+  * fix: use default value (true) for 'v8_enable_shared_ro_heap' config f
+  * chore: update to Rust 1.66.0 (#1156)
+  * Rolling to V8 11.0.226.3 (#1161)
+  * feat: Add tests for void pointer support in Fast API calls (#1162)
+- includes v0.61.0
+  * Rolling to V8 11.0.226.5 (#1165)
+  * feat: Add v8::TypedArray::length (#1166)
+  * Rolling to V8 11.0.226.6 (#1167)
+  * Avoid referencing uninitalized in Inspector API (#1164)
+  * ci: update python, python setup, cache, and rust version (#1171)
+  * feat: Add v8::Object::DefineProperty (#1172)
+  * Rolling to V8 11.0.226.10 (#1173)
+  * build: turn off v8_enable_shared_ro_heap flag again (#1174)
+- includes v0.62.0
+  * Rolling to V8 11.0.226.13 (#1176)
+  * fix: don't use C++ references for possibly-null pointers (#1179)
+  * feat: v8::Context::set_promise_hooks accepts None (#1178)
+- includes v0.62.1
+  * Don't run GC on isolate disposal (#1181)
+  * Update and improve documentation about finalizers (#1182)
+
+-------------------------------------------------------------------
+Mon Nov 28 19:42:56 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.56.1:
+  * Add 'aux_data' to v8::Inspector::contextCreated() (#1134) 
+- includes 0.56.0:
+  * feat: v8::Module::get_stalled_top_level_await_message (#1123)
+  * (docs): add note about curl [#1111] (#1114)
+  * Add ArrayBuffer::set_detach_key (#1127)
+  * Update ArrayBuffer::was_detached to not use OpenHandle (#1126)
+  * Add v8::V8Inspector::context_destroyed API (#1125)
+  * Add WasmMemoryObject::buffer method (#1128)
+  * refactor: Have ArrayBuffer::data return Option<NonNull<c_void>> (#1131)
+  * Remove libc dependency. (#1117)
+  * Rolling to V8 10.9.194.4 (#1122)
+  * chore: update Rust to 1.65.0 (#1116)
+
+-------------------------------------------------------------------
+Tue Nov 15 19:16:59 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.55.0:
+  * feat: add ArrayBuffer::was_detached() (#1103)
+  * Access to raw v8::Context slots (#1092)
+  * Track v8 10.8 (#1105)
+  * Rolling to V8 10.8.168.4 (#1106)
+  * perf: optimize FunctionCallbackInfo and PropertyCallbackInfo methods (#
+  * docs: add note how to create a v8::Local out of v8::Global (#1113)
+  * Rolling to V8 10.9.194.1 (#1118)
+  * Track v8 10.9 (#1119)
+  * fix: Rework deprecated v8::ArrayBuffer:detach API (#1121)
+
+-------------------------------------------------------------------
+Sat Oct  8 22:59:14 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.52.0:
+  * Rolling to V8 10.7.193.13 (#1081)
+  * Skip running benchmarks in CI (#1085)
+  * feat: Add v8::icu::get_language_tag() (#953)
+  * feat: Add ObjectTemplate NamedProperty and
+    IndexedProperty handlers (#1064)
+  * feat: Guaranteed finalizers (#1076)
+  * feat(isolate): expose get/set_data (#911)
+  * feat: add String::write_utf8_uninit (#1019)
+  * use Isolate for creating primitives (#1082)
+- drop fix-cflags.patch, factory now on clang15
+
+-------------------------------------------------------------------
+Thu Sep 29 18:51:36 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.51.0:
+  * Inline API functions (#1078)
+  * fastcall: Fix get_storage_if_aligned for non-uint8arrays (#1077)
+  * fix(fastcall): Fix options.data representation (#1074)
+  * chore: small clean ups (#1073)
+  * Build with v8_typed_array_max_size_in_heap=0 (#1070)
+  * Rolling to V8 10.7.193.3 (#1072)
+
+-------------------------------------------------------------------
+Mon Sep 19 19:50:35 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.50.0:
+  * Add v8::ArrayBuffer::Data (#1068)
+  * fix: property_attribute operator (#1067)
+  * Improve Object::get_property_names() and `Object::get_own_property_names()`
+    (#1049)
+  * fix: auto_update_v8 README regex (#1061)
+  * Fix creation of invalid librusty_v8.a (#1059)
+  * Remove zlib dependency (#1058)
+
+-------------------------------------------------------------------
+Thu Aug 25 17:02:21 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.49.0:
+  * Fix compilation for 32-bit targets (#1050)
+  * Rolling to V8 10.6.194.5 (#1042)
+
+-------------------------------------------------------------------
+Mon Aug 15 17:55:41 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.48.1:
+  * Track v8 10.5 (#1034)
+  * Rolling to V8 10.5.218.1 (#1036)
+  * Add type specialized setters for v8::ReturnValue (#1015)
+  * chore: add check for no-fail-fast label (#1017)
+  * Expose from_function_callback_info (#1016)
+  * Add ReturnValue::set_bool (#1020)
+  * V8 Fast API Calls (#1021)
+  * V8 Fast API Sequence (#1022)
+  * Add back gn args --list on build (#1013)
+  * Add Uint32 / Int32 Value method bindings (#1030)
+  * feat: WasmAsyncResolvePromiseCallback (#1029)
+  * Add v8::Object [Get/Set]AlignedPointer[From/In]InternalField (#1026)
+  * Support Fast API Overloads (#1031)
+  * refactor: remove unnecessary complexity from build.rs (#963)
+  * support V8 FastApiCallbackOptions (#1044)
+  * Export WasmAsyncSuccess enum, change signature of
+    WasmAsyncResolvePro (#1046)
+  * Add support for Fast calls with Uint8Array (#1047)
+- rebase fix-cflags.patch
+
+-------------------------------------------------------------------
+Thu Jun 30 19:17:27 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.44.3:
+  * add type specialized setters for v8::ReturnValue (#1015)
+  * Expose from_function_callback_info (#1016)
+
+-------------------------------------------------------------------
+Tue Jun 21 19:26:37 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.44.2:
+  * build: fix flags for Clang 13 and 14 (#1009)
+  * Rolling to V8 10.4.132.8 (#1010)
+  * chore: upgrade 'regex' crate (#1011)
+- remove python 2
+
+-------------------------------------------------------------------
+Sat Jun 18 20:52:42 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.44.1:
+  * CI changes
+- includes 0.44.0:
+  * Rolling to V8 10.4.132.5 (#1002)
+- includes 0.43.1:
+  * fix(v8): don't crash on Apple Silicon when mprotect() fails
+    expectedly (#982)
+  * Rolling to V8 10.3.174.6 (#984)
+- includes 0.43.0:
+  * Set v8::Promise internal field count to 1 (#967)
+  * Upgrade V8 to 10.3.174.3 (#969)
+  * chore: upgrade Rust crates (#972)
+  * feat: Context slots (#937) 
+  * feat: add ObjectTemplate::set_immutable_proto() (#977)
+  * chore: update README to reflect Python 3 requirement (#980)
+  * chore: clean up and remove redundant gn args (#981)
+  * chore: reduce size of distributed static library (#918)
+  * feat: add Context::get_extras_binding_object (#975)
+  * ShadowRealm integration callback (#959)
+- add fix-cflags.patch to fix build
+
+-------------------------------------------------------------------
+Thu May 19 20:52:00 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.42.1:
+  * fix(build): avoid redownloads (#956)
+  * feat: add binding for Context::SetPromiseHooks (#938)
+  * feat: add WasmModuleObject::compile bindings (#960)
+  * refactor: small build.rs clean ups (#961)
+  * feat: Weak handles and finalizers (#895)
+  * feat: add FunctionTemplate::instance_template binding (#952) 
+  * print gn args --list (#962)
+  * Fix misuse of MaybeUninit and avoid refs to uninit memory (#954)
+
+-------------------------------------------------------------------
+Thu Apr 21 16:55:00 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.42.0:
+  * Rolling to V8 10.0.139.17 (#944)
+  * Ignore more unnecessary ICU data (#923)
+  * Add crate feature that controls whether custom libcxx is used (#924)
+  * perf: avoid double boxing of Arc/Box/Rc in Isolate slot (#925)
+  * Sync V8 heap object type hierarchy with C++ (#929)
+  * feat: ArrayBuffer::new_backing_store_from_ptr (#926)
+  * feat: v8::ArrayBuffer::new_backing_store_from_vec (#946)
+
+-------------------------------------------------------------------
+Thu Mar 10 23:18:42 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.41.0:
+  * feat: raw APIs to build v8::Functions from ptrs (#917)
+  * Upgrade to ICU 70 (#919)
+  * Rolling to V8 10.0.139.6 (#915)
+  * chore: track v8 10.0 (#914)
+- includes 0.40.2:
+  * Add ObjectTemplate::set_accessor_property (#908)
+  * fix: Global::from_raw() should not create a new Global (#906)
+- includes 0.40.1:
+  * feat: add bindings for String::kMaxLength and TypedArray::kMaxLength (#904)
+  * feat: support adding raw pointers to ExternalReferences (#901)
+  * feat: v8::Global::from_raw, v8::Global::into_raw (#902)
+
+-------------------------------------------------------------------
+Thu Feb 17 21:52:51 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.40.0:
+  * Add bindings for v8::ScriptCompiler::CreateCodeCacheForFunction (#888) 
+  * Rolling to V8 9.9.115.7 (#896)
+  * Add v8::Value::InstanceOf bindings (#879)
+  * Add v8::Object::HasOwnProperty bindings (#897)
+  * Add v8::FunctionCallbackInfo::NewTarget bindings (#898) 
+- includes 0.39.0:
+  * Track V8 9.9 (#886)
+  * Add v8::Map bindings (#872)
+  * Fix unused import warning (#875)
+  * Add v8::Isolate:AdjustAmountOfExternalAllocatedMemory bindings (#880)
+  * Add support for v8::Object.set_integrity_level (#874)
+  * Make v8::script_compiler::Source.get_cached_data return Option (#885)
+
+-------------------------------------------------------------------
+Fri Jan 21 20:11:34 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.38.1:
+  * fix: separate out android example into crate (#871)
+- includes 0.38.0:
+  * feat: v8::StackTrace::CurrentStackTrace() bindings (#800)
+  * Rolling to V8 9.8.177.6 (#868)
+
+-------------------------------------------------------------------
+Fri Dec 17 17:57:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.37.0
+  * fix: segfault when dropping BackingStore constructed from empty slice
+  * fix: url param to v8::WasmStreaming::SetUrl() must be null terminated (#854)
+  * test: don't use --harmony-top-level-await flag (#854)
+  * Rolling to V8 9.8.177.2 (#854)
+  * Add support for generating a clangd compilation database (#823)
+
+-------------------------------------------------------------------
+Sat Dec  4 02:20:58 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.36.0:
+  * rolling to V8 9.7.106.15 (#845)
+  * add Function::GetScript{Line,Column}Number bindings (#843)
+
+-------------------------------------------------------------------
+Thu Nov 25 15:07:47 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.35.0:
+  * Make lifetime in FunctionCallback signature more restrictive (#822)
+  * Rolling to V8 9.7.106.3 (#831)
+  * chore: Specify the rust toolchain version (#821)
+  * Rolling to V8 9.7.106.4 (#832)
+  * 8 refactor: Have BackingStore::data return Option<NonNull<c_void>> (#…
+  * v8: fix segfault during concurrent isolate creation/disposal on Windo…
+- update to 0.34.0:
+  * Narrow dead_code allowance (#818)
+  * Ignore environment variables set by cargo (#825)
+  * Rolling to V8 9.7.106.2 (#827)
+
+-------------------------------------------------------------------
+Sun Oct 31 17:53:30 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.33.0:
+  * Rolling to V8 9.6.180.9 (#815)
+  * chore: rename rusty_v8 to v8 (#803)
+  * Rename Handle::get() to Handle::open() (#806)
+  * Track V8 v9.6 (#810)
+  * Add support for a RUSTY_V8_ARCHIVE environment variable (#812)
+  * fix: Make derefing a zero-size BackingStore no longer UB (#809)
+  * Add missing cargo:rerun-if-env-changed (#807)
+- update to 0.32.0:
+  * Rolling to V8 9.5.172.19 (#801)
+  * Track V8 9.5 (#795)
+
+-------------------------------------------------------------------
+Sun Oct 10 06:34:55 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.31.0:
+  * Roll to V8 9.4.146.19 (#793)
+  * feat: WasmStreaming::set_url, CompiledWasmModule::source_url (#786)
+  * feat: Function::get/set_name() (#792)
+- includes 0.30.0:
+  * Default to linking against release v8 builds (#783)
+
+-------------------------------------------------------------------
+Sun Sep 26 09:17:05 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.29.0:
+  * V8 9.4.146.16 (#779)
+  * fix(json): relax lifetime for json_object (#778)
+  * feat: Add v8::CompiledWasmModule (#776)
+  * throw DataCloneError if SAB cannot be cloned (#781)
+
+-------------------------------------------------------------------
+Sat Sep 18 01:38:29 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.28.0
+  * V8 9.4.146.15 (#773)
+  * feat: Implement Isolate::remove_slot (#769)
+- includes 0.27.0
+  * fix x86 build (#751)
+  * feat: implement counter_lookup_callback (#756)
+  * fix building in the presence of depot_tools (#757)
+
+-------------------------------------------------------------------
+Mon Aug  9 22:20:40 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.26.0
+  * Roll to V8 9.3.345.11 (#748)
+  * feat: add V8InspectorSession::can_dispatch_method (#746)
+
+-------------------------------------------------------------------
+Wed Jul 21 20:57:45 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- fast-foward to rev with v8 9.3.345.3
+
+-------------------------------------------------------------------
+Tue Jul 13 18:45:07 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.3
+  * disable siphash, v8 now uses 64-bit hash seed (#731)
+- includes 0.25.2
+  * Rolling V8 to 9.2.230.14 (#728)
+
+-------------------------------------------------------------------
+Sun Jul  4 01:00:25 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.1
+  * exclude ICU data files for unsupported platforms from crate
+- update to 0.25.0
+  * include ICU data file in crate
+  * add Isolate::has_pending_background_tasks
+- includes 0.24.0
+  * support for Platform::pump_message_loop and Platform::run_idle_tasks (#706)
+  * feat: various FunctionTemplate::*() methods (#718)
+- includes 0.23.0 changes since last checkin
+  * fix: pass serializer helpers as mut refs (#712)
+  * Upgrade V8 to 9.2.230.12 (#709)
+  * Enable v8's siphash for hash seed creation (#707)
+  * add missing methods for 1 and 2 byte strings (#704)
+
+-------------------------------------------------------------------
+Sat Jun 19 05:34:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- fast-forward to f85508868ebb9477fe57ff9cb352c43e29a5cf7d
+  * Upgrade V8 to 9.2.230.10 (#700)
+  * CreateParams cleanup (#701)
+  * ename set_common_data to set_common_data_69 (#702)
+  * chore: upgrade Rust to 1.53.0 (#705)
+- remove revendor_source.sh (applied in vendor-rust)
+
+-------------------------------------------------------------------
+Wed Jun  9 05:10:32 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.22.3
+  * rolling to V8 9.1.269.35
+  * chore: upgrade Rust to 1.52.1
+  * Add ObjectTemplate::set_accessor{_with_setter}
+  * build: add flag to build CRT flavor agnostic Windows libraries
+
+-------------------------------------------------------------------
+Wed May 12 20:00:56 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.22.2
+  * rolling V8 to 9.1.269.27
+  * avoid warnings by adding explicit dyns in a few spots (#677)
+  * Add ScriptCompiler::compile_function_in_context() (#670)
+  * Add Signature::new() (#666)
+  * Fix bad assumption in static_assert (#668)
+
+-------------------------------------------------------------------
+Tue Apr 13 21:03:59 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.22.1
+  * Upgrade V8 to 9.1.269.5
+- includes 0.22:
+  * Upgrade V8 to 9.1.269.2
+  * Upgrade Rust to 1.51.0
+  * Add ArrayBuffer::detach() and is_detachable()
+  * Cache should be updated when build or buildtools is changed
+  * Remove dead platform code
+  * Add String::new_from_one_byte
+  * String::new_external_onebyte_static() should take `&[u8]` instead of …
+  * Add new_single_threaded_default_platform()
+  * Upgrade crates
+
+-------------------------------------------------------------------
+Sun Mar 21 21:45:52 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.21
+  * add code cache api
+  * add ScriptCompiler::{Compile,CompileUnboundScript} apis
+  * support for external v8 strings
+
+-------------------------------------------------------------------
+Thu Feb 25 22:51:49 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.20
+  * v8: 9.0.257.3
+
+-------------------------------------------------------------------
+Mon Feb 15 17:23:38 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.19
+  * includes icu which adds a few dozen MB to src tarball
+
+-------------------------------------------------------------------
+Sun Feb  7 19:26:29 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.17
+
+-------------------------------------------------------------------
+Thu Feb  4 01:49:02 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to rev containing v8 9.0
+
+-------------------------------------------------------------------
+Tue Jan 19 00:37:25 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.16
+
+-------------------------------------------------------------------
+Sun Jan 10 20:39:55 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- bump to 0.15
+- remove fix-ninja-check.patch (upstreamed)
+
+-------------------------------------------------------------------
+Sun Dec 20 07:11:31 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Init package at 0.14.0 for deno 1.6.1
+- add fix-ninja-check.patch to fix gn/ninja validation
+- add _constraints for huge v8/chromium build

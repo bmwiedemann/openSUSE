@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname plasma-nm
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,14 +30,14 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -281,6 +281,7 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %dir %{_kf6_plugindir}/plasma/network
 %dir %{_kf6_plugindir}/plasma/network/vpn
 %{_kf6_applicationsdir}/kcm_networkmanagement.desktop
+%{_kf6_applicationsdir}/org.kde.vpnimport.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
 %{_kf6_debugdir}/plasma-nm.categories
 %{_kf6_libdir}/libplasmanm_editor.so

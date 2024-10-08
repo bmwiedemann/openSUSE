@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  4 18:59:40 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.12.0:
+  * Fix peer dependency resolution dead lock #8570. This change
+    might change some of the keys in the snapshots field inside
+    pnpm-lock.yaml but it should happen very rarely.
+  * pnpm outdated command supports now a --sort-by=name option
+    for sorting outdated dependencies by package name #8523
+  * Added the ability for overrides to remove dependencies by
+    specifying "-" as the field value #8572
+  * Fixed an issue where pnpm list --json pkg showed "private":
+    false for a private package #8519
+  * Packages with libc that differ from pnpm.
+    supportedArchitectures.libc are not downloaded #7362
+  * Prevent ENOENT errors caused by running store prune in parallel #8586
+  * Add issues alias to pnpm bugs #8596
+
+-------------------------------------------------------------------
 Sat Sep 21 19:23:32 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.11.0:

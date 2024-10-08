@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Oct  5 15:23:58 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 7.6.0
+  * The Varnish Delivery Processor (VDP) filter API has
+    been generalized to also accommodate future use for
+    backend request bodies.
+  * VDPs with no vdp_bytes_f function are now supported if
+    the vdp_init_f returns a value greater than zero to
+    signify that the filter is not to be added to the
+    chain. This is useful to support VDPs which only need
+    to work on headers.
+  * The epoll and kqueue waiters have been improved to
+    correctly report WAITER_REMCLOSE, which increases the
+    WAITER.*.remclose counter.
+  * varnishtest now supports the shutdown command
+    corresponding to the shutdown(2) standard C library
+    call.
+  * VSC counters for waiters have been added:
+     * conns to count waits on idle connections
+     * remclose to count idle connections closed by the peer
+     * timeout to count idle connections which timed out in the waiter
+     * action to count idle connections which resulted in a read
+  * The port of a listen_endpoint given with the -a
+    argument to varnishd can now also be a numerical port
+    range like "80-89".
+  * The warning "mlock() of VSM failed" message is now
+    emitted when locking of shared memory segments (via
+    mlock(2)) fails.
+  * A bug has been fixed where string comparisons in VCL
+    could fail with the nonsensical error message
+    "Comparison of different types: STRING '==' STRING".
+  * An issue has been addressed in the builtin.vcl where
+    backend responses would fail if they contained a
+    Content-Range header when no range was requested.
+  * Additional SessError VSL events are now generated for
+    various HTTP/2 protocol errors.
+  * A new Linux jail has been added which is now the
+    default on Linux. For now, it is almost identical to
+    the Unix jail with one addition:
+  * When the new Linux jail is used, the working directory
+    not mounted on tmpfs partition.
+  * A race condition with VCL temperature transitions has
+    been addressed.
+  * Internal management of probes has been reworked to
+    address race conditions.
+  * Backend tasks can now be instructed to queue if the
+    backend has reached its max_connections.
+  * The size of the buffer to hold panic messages is now
+    tunable through the new panic_buffer parameter.
+  * The Varnish Shared Memory (VSM) and Varnish Shared
+    Counters (VSC) consumer implementation in libvarnishapi
+    have been improved for stability and performance.
+  * An issue has been fixed where Varnish Shared Log (VSL)
+    queries (for example using ``varnishlog -q``) with
+    numerical values would fail in unexpected ways due to
+    truncation.
+  * The ``ObjWaitExtend()`` Object API function gained a
+    statep argument to optionally return the busy object
+    state consistent with the current extension. A NULL
+    value may be passed if the caller does not require it.
+  * For backends using the ``.via`` attribute to connect
+    through a proxy, the connect_timeout,
+    ``first_byte_timeout`` and ``between_bytes_timeout``
+    attributes are now inherited from proxy unless
+    explicitly given.
+  * varnishd now creates a worker_tmpdir which can be used
+    by VMODs for temporary files. The VMOD developer
+    documentation has details.
+  * The environment variable VARNISH_DEFAULT_N now provides
+    the default "varnish name" / "workdir" as otherwise
+    specified by the ``-n`` argument to varnishd and
+    varnish* utilities except varnishtest.
+  * A glitch with TTL comparisons has been fixed which
+    could, for example, lead to unexpected behavior with
+    purge.soft().
+
+-------------------------------------------------------------------
 Tue Mar 26 18:27:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.5.0

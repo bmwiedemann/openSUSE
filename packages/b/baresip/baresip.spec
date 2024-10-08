@@ -16,10 +16,10 @@
 #
 
 
-%global sover   15
+%global sover   18
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        3.11.0
+Version:        3.16.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -176,6 +176,7 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/httpd.so
 %{_libdir}/baresip/modules/httpreq.so
 %{_libdir}/baresip/modules/ice.so
+/usr/lib64/baresip/modules/in_band_dtmf.so
 %{_libdir}/baresip/modules/jack.so
 %{_libdir}/baresip/modules/l16.so
 %{_libdir}/baresip/modules/menu.so
@@ -183,7 +184,6 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/mixminus.so
 %{_libdir}/baresip/modules/mpa.so
 %{_libdir}/baresip/modules/mqtt.so
-%{_libdir}/baresip/modules/multicast.so
 %{_libdir}/baresip/modules/mwi.so
 %{_libdir}/baresip/modules/natpmp.so
 %{_libdir}/baresip/modules/netroam.so

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * notifier: Fix showing the tray notifier on the first notification ever
+  * DiscoverWindow.qml: Port message OverlaySheet to Dialog and make it friendlier (kde#468657,kde#482551)
+  * appiumtests: fix flatpak test
+  * UpdatesPage: Fix footer geometry (kde#479782)
+  * Prompt for reboot after update again
+  * flatpak: Fix test
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep 10 14:53:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

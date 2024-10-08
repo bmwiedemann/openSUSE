@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname oxygen
 
@@ -34,14 +34,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           oxygen6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        Oxygen style, KWin decoration and cursors
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -115,6 +115,10 @@ Obsoletes:      oxygen-style5 < %{version}
 Provides:       oxygen5-style = %{version}
 Obsoletes:      oxygen5-style < %{version}
 Obsoletes:      oxygen5-style-lang < %{version}
+# The oxygen desktop theme was moved here in 6.2.0
+Conflicts:      plasma-framework < 6.2.0
+Conflicts:      libplasma6-desktoptheme < 6.2.0
+Conflicts:      plasma-framework-desktoptheme < 6.2.0
 
 %description style
 This package contains the libraries of the Oxygen style.
@@ -168,11 +172,14 @@ This package contains the Oxygen's KWin decoration.
 %{_kf6_libdir}/liboxygenstyle6.so.*
 %{_kf6_libdir}/liboxygenstyleconfig6.so.*
 %{_kf6_plasmadir}/look-and-feel/
+%dir %{_kf6_plasmadir}/desktoptheme/
+%{_kf6_plasmadir}/desktoptheme/oxygen/
 %{_kf6_plugindir}/styles/
 %{_kf6_plugindir}/kstyle_config/
 %{_kf6_applicationsdir}/kcm_oxygendecoration.desktop
 %{_kf6_sharedir}/color-schemes/Oxygen*.colors
 %{_kf6_sharedir}/kstyle/
+
 %if %{with plasma5}
 %{_kf6_bindir}/oxygen-demo5
 %{_kf5_libdir}/liboxygenstyle5.so.*

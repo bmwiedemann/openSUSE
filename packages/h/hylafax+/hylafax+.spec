@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.7
+Version:        7.0.9
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -40,13 +40,13 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
-Patch1:         tiff.patch
+## Patch1:         tiff.patch
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtiff-devel
+BuildRequires:  libtiff-devel >= 4.6.0t
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -104,7 +104,7 @@ server is already running on another machine, this package can be
 used to access the server.
 
 %prep
-%autosetup -p1 -n hylafax-%{version}
+%autosetup -n hylafax-%{version}
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
@@ -137,6 +137,7 @@ STRIP=':' \
         --with-PATH_IMPRIP="" \
         --with-SYSVINIT=%{_initddir}/hylafax+ \
         --with-INTERACTIVE=no \
+        --with-tiff-tools-unsupported=yes \
         --with-JBIGTIFF=yes
 # can't use _smp_mflags because it breaks libfaxutil dso building
 make -j1

@@ -1,27 +1,26 @@
-From fb7b5af1ef98643e84d40e58174d48ba22723253 Mon Sep 17 00:00:00 2001
+From f0375048f336740dd2239369df7be18a619ec8e8 Mon Sep 17 00:00:00 2001
 From: Luca Beltrame <lbeltrame@kde.org>
-Date: Fri, 12 Apr 2024 07:51:45 +0200
+Date: Sun, 11 Aug 2024 21:21:11 +0200
 Subject: [PATCH] Use the openSUSE wallpaper
 
 This is unfortunately hardcoded. Use our default to more likely match what
 the user sees.
 ---
- src/qml/mock/MockDesktop.qml | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ src/qml/mock/MockCard.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/qml/mock/MockDesktop.qml b/src/qml/mock/MockDesktop.qml
-index d9c906c..19c7b26 100644
---- a/src/qml/mock/MockDesktop.qml
-+++ b/src/qml/mock/MockDesktop.qml
-@@ -14,12 +14,12 @@ Item {
- 
+diff --git a/src/qml/mock/MockCard.qml b/src/qml/mock/MockCard.qml
+index 356e96a..cc29eb5 100644
+--- a/src/qml/mock/MockCard.qml
++++ b/src/qml/mock/MockCard.qml
+@@ -21,12 +21,12 @@ Kirigami.AbstractCard {
      property int backgroundAlignment: Qt.AlignRight | Qt.AlignBottom
+     property int blurRadius: 32
  
 -    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1280x800.png"
 +    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1280x1024.png"
-     readonly property int desktopWidth: 1280
--    readonly property int desktopHeight: 800
-+    readonly property int desktopHeight: 1024
+     readonly property int desktopWidth: wallpaperImage.sourceSize.width
+     readonly property int desktopHeight: wallpaperImage.sourceSize.height
  
      /*
 -     * 1280x800 is chosen to look good at normal window sizes: The aspect closely
@@ -30,5 +29,5 @@ index d9c906c..19c7b26 100644
       *
       * The background be positioned according to the alignment, and expand to fit
 -- 
-2.44.0
+2.46.0
 

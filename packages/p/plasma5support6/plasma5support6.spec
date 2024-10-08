@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.6.0
+%define qt6_version 6.7.0
 
 %define rname plasma5support
 # Full KF6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -102,7 +102,9 @@ Development Files for the plasma5support framework.
 %dir %{_kf6_plugindir}/plasma5support
 %dir %{_kf6_plugindir}/plasma5support/dataengine
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_devicenotifications.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_hotplug.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_keystate.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_soliddevice.so
 
 %files -n libPlasma5Support6
 %license LICENSES/*

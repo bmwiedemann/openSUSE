@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * viewer: manage lifespan of View* properly (kde#491710)
+  * update version for new release
+  * use KF6Kirigami instead of KF6Kirigami2
+  * Use QQmlTriviallyDestructibleDebuggingEnabler (QQmlDebuggingEnabler deprecated in qt6.4)
+  * Port [=] deprecated x
+  * Fix Test_FOUND version
+  * update version for new release
+  * iconexplorer: Port window layout to SplitView, improve Preview pane
+  * update version for new release
+  * plasmoidviewer: prevent error when settingValueChanged not exist
+  * plasmoidviewer: Sync to plasma-desktop
+  * update version for new release
+  * fix: remove duplicated entries from appdata.xml files
+  * update version for new release
+  * appstream versions
+  * update version for new release
+  * Remove ServiceType from applet metadata in favor of KPackage key
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

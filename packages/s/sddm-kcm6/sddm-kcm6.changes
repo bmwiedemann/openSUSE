@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * Drop unused Qt5Compat import
+
+-------------------------------------------------------------------
+Tue Sep 17 14:55:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * Port everything to Kirigami.Dialog
+  * Adopt card style for wallpaper changer dialog too
+  * Clean up preview dialog QML code a bit
+  * Put the preview image in a card
+  * Don't unnecessarily set sourceSize on preview image (kde#492950)
+  * Fix needssave state management (kde#490937)
+  * Move to modern KDE_COMPILERSETTINGS_LEVEL
+  * Use file descriptor to install theme
+  * Fix visual window artifact
+  * Port header InlineMessage to frameless style
+  * update version for new release
+- Rebase patches:
+  * 0001-Remove-some-features-with-questionable-security.patch
+  * 0002-Read-and-write-autologin-user-to-etc-sysconfig-displ.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

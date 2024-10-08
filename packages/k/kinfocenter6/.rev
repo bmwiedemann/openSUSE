@@ -87,4 +87,12 @@
     <comment>Plasma 6.1.5. sddm-kcm6 needed a patch change. (forwarded request 1199935 from Vogtinator)</comment>
     <requestid>1200004</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1b76ae66d269fc6e9d4bbc40d8ec6788</srcmd5>
+    <version>6.2.0</version>
+    <time>1728330441</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.0</comment>
+    <requestid>1205903</requestid>
+  </revision>
 </revisionlist>

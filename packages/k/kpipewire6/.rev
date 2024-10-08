@@ -95,4 +95,12 @@
     <comment>ffmpeg 7.1 compat</comment>
     <requestid>1205538</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4126561edfb4fd8e0ea449d60447959b</srcmd5>
+    <version>6.2.0</version>
+    <time>1728330444</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.0</comment>
+    <requestid>1205905</requestid>
+  </revision>
 </revisionlist>

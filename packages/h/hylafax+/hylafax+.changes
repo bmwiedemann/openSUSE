@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Oct  6 07:49:58 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.9
+  * add support for libtiff 4.7.0 (7 Sep 2024)
+  * try to cope with T.38 invite stutter at beginning of receive (25 Aug 2024)
+  * identify more senders who confuse RTN (21-24 Aug 2024)
+  * cope with Phase C carrier fast restart when receiving (21 Aug 2024)
+  * Support PDF form as cover page template (6 Aug 2024)
+  * fix some build warnings (6 Aug 2024)
+  * Correctly report file encoding with cqtest (5 Aug 2024)
+  * Set FIFO response waiting flag earlier to prevent deadlock (5 Aug 2024)
+  * Increasing file header buffer used to detect file type (5 Aug 2024)
+  * Log invalid FIFO messages received by hfaxd (5 Aug 2024)
+  * Allow triggers to work in passive mode (5 Aug 2024)
+  * Abort deleting user when an error prevent writing new file (5 Aug 2024)
+  * Allow recvstats to correctly show times over 99 minutes (5 Aug 2024)
+  * Close both sides of the control pipe when jobcontrol fork fails (5 Aug 2024)
+  * Don't log in faxq signal handler (5 Aug 2024)
+  * various logging and documentation corrections (5 Aug 2024)
+  * faxq: scanQueueDirectory fixup (5 Aug 2024)
+  * faxq: Dispatch while we are scanning for all our jobs (5 Aug 2024)
+  * ModemServer: Write freeing status to void no-longer valid status (5 Aug 2024)
+  * faxq: Make debug show modems and their states too (5 Aug 2024)
+  * faxdeluser: preserve current hosts file ownership and modes (5 Aug 2024)
+  * Close files when done with them. (5 Aug 2024)
+  * Wait for end marker before terminating SHIELDED_DTMF retrieval (5 Aug 2024)
+  * Allow email headers to be folded between field-name and field-body (5 Aug 2024)
+  * We need to check for child that terminate while SIGCLD is not setup. (5 Aug 2024)
+  * MAXSEQNUM is a valid value to be returned. It's any above that is invalid (5 Aug 2024)
+  * New option to return receive stats by device (already in xfer stats) (5 Aug 2024)
+  * Get DF from params when DCS is not present/valid (5 Aug 2024)
+  * Do not poll for children when checking for FD or processes already ready (5 Aug 2024)
+  * Make sure all messages from a child are processed before reaping that child (5 Aug 2024)
+  * Replace non signal-safe signal handlers with simple ones setting a flag (5 Aug 2024)
+  * PDF2FaxCmd documentation (5 Aug 2024)
+  * Make sure message didn't get truncated before sending command to FIFO (5 Aug 2024)
+  * FIFO sending utilities must send NUL character at the end of commands (5 Aug 2024)
+  * specify /bin/bash in faxmail scripts requiring bash (26 Apr 2024)
+
+-------------------------------------------------------------------
+Thu Mar 28 19:27:54 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.8
+  * tiff.patch removed (included)
+  * add support for libtiff 4.6.0t (20 Mar 2024)
+  * don't attempt SSL Fax for the last training attempt (19 Feb 2024)
+  * fix sslfaxproxy from terminating if a client doesn't provide a passcode (9 Oct 2023)
+  * fix faxmail to cope with uppercase in multipart content-type header (25 Jul 2023)
+  * increase SSL Fax listener backlog to system somaxconn value (24 Jul 2023)
+  * improve sslfaxproxy error handling (7 Jul 2023)
+  * fix handling of Phase B signals in Phase D when in V.34-Fax (10 May 2023)
+  * improve V.34-Fax recovery after SSL Fax termination (10 May 2023)
+  * cope with Class 1.0 V.34-Fax scenarios where we receive ECM data frames
+     when we were expecting Phase D signaling (3-4 Apr 2023)
+  * ignore modem input when trying to deliberately terminate a call (3 Apr 2023)
+  * C99 compatibility fixes for configure script (17 Feb 2023)
+  * cope with libjpeg informative messages (6, 8 Feb 2023)
+  * cope with color senders that do not include G3FAX marker (4 Feb 2023)- 
+
+-------------------------------------------------------------------
+Wed Feb 21 13:22:29 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- prepare for rpm 4.20
+
+-------------------------------------------------------------------
 Mon Nov 20 17:05:09 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Remove stray pseudo comment (from Bjørn Lie)

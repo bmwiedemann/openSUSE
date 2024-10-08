@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * dataengines: move hotplug and soliddevice dataengines from plasma-workspace
+  * Drop dead code
+  * Drop unused libplasma, kio and kservice dependencies
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

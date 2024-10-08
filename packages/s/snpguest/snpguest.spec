@@ -26,6 +26,7 @@ Group:          Productivity/Security
 URL:            https://github.com/virtee/snpguest
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 ExclusiveArch:  x86_64
 

@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname kinfocenter
 %bcond_without released
@@ -26,14 +26,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -121,6 +121,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_kwinsupportinfo.so
+%{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_memory.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_network.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_opencl.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_pci.so

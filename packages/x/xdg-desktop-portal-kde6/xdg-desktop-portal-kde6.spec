@@ -19,8 +19,8 @@
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.xdgdesktopportal.*
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname xdg-desktop-portal-kde
 
@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           xdg-desktop-portal-kde6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        QT/KF6 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -46,6 +46,7 @@ BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-printsupport-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -115,8 +116,7 @@ A Qt/KF backend implementation for xdg-desktop-portal
 %{_kf6_debugdir}/xdp-kde.categories
 %{_kf6_notificationsdir}/xdg-desktop-portal-kde.notifyrc
 %{_kf6_sharedir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
-%dir %{_kf6_sharedir}/xdg-desktop-portal
-%{_kf6_sharedir}/xdg-desktop-portal/kde-portals.conf
+%dir %{_kf6_sharedir}/xdg-desktop-portal/
 %dir %{_kf6_sharedir}/xdg-desktop-portal/portals
 %{_kf6_sharedir}/xdg-desktop-portal/portals/kde.portal
 %{_libexecdir}/xdg-desktop-portal-kde

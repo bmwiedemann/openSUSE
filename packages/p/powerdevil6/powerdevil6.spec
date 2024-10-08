@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,9 +31,9 @@ Release:        0
 Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -55,12 +55,16 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6Runner) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Screen) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(PlasmaWaylandProtocols)
+BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(ddcutil)
 BuildRequires:  pkgconfig(libcap)
@@ -105,26 +109,36 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
 
 %post
 %ldconfig
-%{systemd_user_post plasma-powerdevil.service plasma-powerprofile-osd.service}
+%{systemd_user_post plasma-powerdevil.service}
 
 %preun
-%{systemd_user_preun plasma-powerdevil.service plasma-powerprofile-osd.service}
+%{systemd_user_preun plasma-powerdevil.service}
 
 %postun
 %ldconfig
-%{systemd_user_postun plasma-powerdevil.service plasma-powerprofile-osd.service}
+%{systemd_user_postun plasma-powerdevil.service}
 
 %files
 %license COPYING*
 %doc %{_kf6_htmldir}/en/kcontrol/
 %{_kf6_applicationsdir}/kcm_powerdevilprofilesconfig.desktop
+%{_kf6_appstreamdir}/org.kde.plasma.battery.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.brightness.appdata.xml
 %{_kf6_configdir}/autostart/powerdevil.desktop
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.backlighthelper.conf
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.discretegpuhelper.conf
+%{_kf6_debugdir}/batterymonitor.categories
 %{_kf6_debugdir}/powerdevil.categories
 %{_kf6_libdir}/libpowerdevilconfigcommonprivate.so.*
 %{_kf6_libdir}/libpowerdevilcore.so.*
+%{_kf6_libexecdir}/kauth/backlighthelper
+%{_kf6_libexecdir}/kauth/chargethresholdhelper
+%{_kf6_libexecdir}/kauth/discretegpuhelper
 %{_kf6_notificationsdir}/powerdevil.notifyrc
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.battery/
+%{_kf6_plasmadir}/plasmoids/org.kde.plasma.brightness/
+%dir %{_kf6_plugindir}/kf6/krunner
+%{_kf6_plugindir}/kf6/krunner/krunner_powerdevil.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_powerdevilprofilesconfig.so
 %dir %{_kf6_plugindir}/powerdevil/
 %dir %{_kf6_plugindir}/powerdevil/action
@@ -135,8 +149,11 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_keyboardbrightnesscontrolaction.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_powerprofileaction.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_runscriptaction.so
+%{_kf6_plugindir}/powerdevil/action/powerdevil_screenbrightnesscontrolaction.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_suspendsessionaction.so
-%{_kf6_sharedir}/dbus-1/services/org.kde.powerdevil.powerProfileOsdService.service
+%dir %{_kf6_qmldir}/org/kde/plasma/private/
+%{_kf6_qmldir}/org/kde/plasma/private/batterymonitor/
+%{_kf6_qmldir}/org/kde/plasma/private/brightnesscontrolplugin/
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.backlighthelper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.discretegpuhelper.service
@@ -144,13 +161,8 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.backlighthelper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.chargethresholdhelper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.powerdevil.discretegpuhelper.policy
-%{_kf6_libexecdir}/kauth/backlighthelper
-%{_kf6_libexecdir}/kauth/chargethresholdhelper
-%{_kf6_libexecdir}/kauth/discretegpuhelper
 %{_libexecdir}/org_kde_powerdevil
-%{_libexecdir}/power_profile_osd_service
 %{_userunitdir}/plasma-powerdevil.service
-%{_userunitdir}/plasma-powerprofile-osd.service
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/kcontrol

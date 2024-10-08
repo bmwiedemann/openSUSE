@@ -17,18 +17,17 @@
 
 
 Name:           podlet
-Version:        0.2.4~0
-Release:	0
+Version:        0.3.0~0
+Release:        0
 Summary:        Podman quadlet generator
 License:        MPL-2.0
-URL:            https://github.com/k9withabone/podlet/
-Source0:        podlet-0.2.4~0.tar.zst
-Source1:	vendor.tar.zst
+URL:            https://github.com/containers/podlet/
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 
 %description
 Podlet generates podman quadlet files from a podman command, compose file, or existing object.
-
 
 %prep
 %autosetup -p1 -a1
@@ -48,4 +47,3 @@ Podlet generates podman quadlet files from a podman command, compose file, or ex
 %{_bindir}/podlet
 
 %changelog
-

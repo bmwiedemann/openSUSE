@@ -4,19 +4,20 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.21.0</param>
-    <param name="changesgenerate">disable</param>
+    <param name="revision">v0.22.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="changesgenerate">disable</param>
+    <param name="filename">jujutsu</param>
   </service>
   <service name="set_version" mode="manual">
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="update">true</param>
     <param name="srcdir">jj</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
 </services>

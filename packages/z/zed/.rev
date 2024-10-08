@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb29e9ff75df184455ac2b8b3330b3b4</srcmd5>
+    <version>0.155.2</version>
+    <time>1728330534</time>
+    <user>anag+factory</user>
+    <comment>With v0.155.2, Zed finally no longer downloads npm on its own and we can merge with Factory (see SR#1188336, SR#1186710)</comment>
+    <requestid>1205310</requestid>
+  </revision>
+</revisionlist>

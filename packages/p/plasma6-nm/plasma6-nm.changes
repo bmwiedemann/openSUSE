@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * set and check for the DEP version for dependencies so as not to upset CI in common with other Plasma packages
+  * update version for new release
+  * Allow importing VPN files by clicking on them (kde#350413)
+  * applet: use the correct icon for WiFi hotspot
+  * kded: capitalize Internet in connectivity message (kde#491362)
+  * kcm: Use sentence case in json description
+  * openvpn: Implement challenge-response echo hint prefix (kde#487417)
+  * Use a shared QQmlEngine when possible (kde#488326)
+  * Implement WiFi "Enhanced Open" (OWE) (kde#464615)
+  * Treat loopback connections as virtual
+  * Recognize Loopback device and connection types
+  * Fix some connections for multiple devices not having icons
+  * Set the security type for unencrypted wireless networks properly
+  * Don't call QApplication::processEvents to update size hint (kde#487135)
+  * applet: Append -symbolic to plasmoid.icon when in a panel (kde#487761)
+  * Revert "Use -symbolic for all network icons"
+  * applet: set drag target to null to avoid repositioning barcode image
+  * Remove separator lines from the connection list
+  * Add WebAuth support for SAML-based authentication
+  * applet: make QR code image draggable
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

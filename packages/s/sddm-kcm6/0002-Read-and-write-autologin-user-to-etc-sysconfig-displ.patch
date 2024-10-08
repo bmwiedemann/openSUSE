@@ -1,4 +1,4 @@
-From faaff11bc4aaddc471bc3ee2d0a79d72f4a0cda7 Mon Sep 17 00:00:00 2001
+From 957d6a8d4dc546e64d39c7d49599e67ab4be6b38 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Tue, 19 Jan 2021 20:45:33 +0100
 Subject: [PATCH] Read and write autologin user to
@@ -11,10 +11,10 @@ That's where SDDM reads from.
  2 files changed, 34 insertions(+), 2 deletions(-)
 
 diff --git a/sddmauthhelper.cpp b/sddmauthhelper.cpp
-index dea06ef..8f453a8 100644
+index 2a38b40..0702465 100644
 --- a/sddmauthhelper.cpp
 +++ b/sddmauthhelper.cpp
-@@ -17,6 +17,8 @@
+@@ -19,6 +19,8 @@
  #include <QMimeDatabase>
  #include <QMimeType>
  #include <QSharedPointer>
@@ -22,8 +22,8 @@ index dea06ef..8f453a8 100644
 +#include <QRegularExpression>
  
  #include <KArchive>
- #include <KConfig>
-@@ -281,6 +283,34 @@ ActionReply SddmAuthHelper::save(const QVariantMap &args)
+ #include <KCompressionDevice>
+@@ -310,6 +312,34 @@ ActionReply SddmAuthHelper::save(const QVariantMap &args)
          QString groupName = configFields[1];
          QString keyName = configFields[2];
  
@@ -59,7 +59,7 @@ index dea06ef..8f453a8 100644
          // hierarchically SDDM prefers "etc/sddm.conf" to "/etc/sddm.conf.d/some_file.conf"
  
 diff --git a/src/sddmsettingsbase.cpp b/src/sddmsettingsbase.cpp
-index a928823..74ab3c9 100644
+index e6e4af0..cbf3b3d 100644
 --- a/src/sddmsettingsbase.cpp
 +++ b/src/sddmsettingsbase.cpp
 @@ -9,6 +9,7 @@
@@ -74,18 +74,18 @@ index a928823..74ab3c9 100644
  
  QString SddmSettingsBase::defaultUser() const
  {
--    return m_defaultConfig->group("AutoLogin").readEntry("User");
+-    return m_defaultConfig->group(QStringLiteral("AutoLogin")).readEntry("User");
 +    QSettings sysconfSettings(QStringLiteral("/etc/sysconfig/displaymanager"), QSettings::IniFormat);
 +    return sysconfSettings.value(QStringLiteral("DISPLAYMANAGER_AUTOLOGIN")).toString();
  }
  
  QString SddmSettingsBase::defaultSession() const
  {
--    return m_defaultConfig->group("AutoLogin").readEntry("Session");
-+    return m_defaultConfig->group("AutoLogin").readEntry("Session", "default.desktop");
+-    return m_defaultConfig->group(QStringLiteral("AutoLogin")).readEntry("Session");
++    return m_defaultConfig->group(QStringLiteral("AutoLogin")).readEntry("Session", "default.desktop");
  }
  
  bool SddmSettingsBase::defaultRelogin() const
 -- 
-2.41.0
+2.45.2
 

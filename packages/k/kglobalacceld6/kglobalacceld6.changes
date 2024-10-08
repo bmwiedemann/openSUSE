@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * plugins/xcb: skip xrecord events when keyboard is grabbed (kde#488268,kde#491315)
+  * plugins/xcb: support different event types in xrecord
+  * Set up crash handling
+  * plugins/xcb: correctly handle multiple modifiers in xrecord
+  * plugins/xcb: only handle modifier presses in XRecord (kde#489113)
+  * explicitly process invalid keycodes (kde#489001)
+  * Add .gitignore file from kglobalaccel repo
+  * trigger modifier-only shortcuts when any modifier is released
+  * Remove redundant returns - no events are filtered out
+  * Prevent high CPU usage due to mass key remappings
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:53:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

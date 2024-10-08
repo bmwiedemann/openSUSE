@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * greeter: Fix signal invocation on QNetworkReply
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * set and check for the DEP version for dependencies so as not to upset CI in common with other Plasma packages
+  * update version for new release
+  * Move to a newer KDE_COMPILERSETTINGS_LEVEL
+  * KSldTest: Change all durations to std:chrono
+  * KSldTest: Warn the user that unintended inputs may interrupt the test
+  * autotests: Don't try to run X11-specific code under Wayland
+  * greeter/pamauthenticators: also consider non-interactive info messages a "prompt" (kde#490547)
+  * greeter/authenticators: add a property for if a prompt was shown in the past
+  * greeter: Change --theme option to --shell option, and make it work
+  * kcm: Only use a single Loader for both possible dialogs
+  * kcm: Factor out ComboBoxWithCustomValue for later reuse
+  * ksldapp: add a signal for when the greeter is (re)started
+  * greeter: don't start authenticating during the grace lock time (kde#476567)
+  * greeter: Fix Shader Wallpaper plugin and possibly others
+  * kcm: Fix some appearance page glitches
+  * Port begin/end loops to range iterators
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:53:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

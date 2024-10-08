@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * sentry: mark incompatible Qt's as such
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * backtracegenerator: cache raw debugger output and give the user access to it (kde#477586,kde#474116,kde#478110)
+  * preamble: more aggressively capture exceptions
+  * Update file mappings
+  * replace debugger definition files with in-code defintions
+  * debugger: refactor backing data management
+  * don't submit to sentry if the crashed app isn't targeting kde bugzilla
+  * backtracegenerator: remove unused code
+  * preamble: set a distribution identifier
+  * Remove virtual keyword when we use override
+  * qml: show context text for the report button (kde#491225)
+  * Enhance messages to add notes about time taken
+  * Use frameworks version number from kcrash
+  * drop ptracer support
+  * Improve default window proportions and layout
+  * sentry: also send qt_version in the tags
+  * support consuming the qt version from kcrash
+  * coredump: synthesize crash metadata for kwin_x11
+  * implement ANR support
+  * Add finish button to automatic crash handler (kde#487767)
+  * sentry: correctly use dbus interface name (kde#488555)
+  * polkit: correctly call fcntl (kde#487727)
+  * polkit: don't ignore fcntl errors
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:53:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

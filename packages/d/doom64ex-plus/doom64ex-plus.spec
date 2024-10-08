@@ -18,18 +18,19 @@
 
 Name:           doom64ex-plus
 Summary:        An improved modern version of Doom64EX
-Version:        4.0.0.1
+Version:        4.0.0.3
 Release:        0
 Group:          Amusements/Games/3D/Shoot
 License:        GPL-2.0-or-later
 URL:            https://github.com/atsb/Doom64EX-Plus
 Source0:        %{name}-%{version}.tar.gz
+Patch:          fix-user-dir.patch
 BuildRequires:  gcc
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sdl3) >= 3.1.3
 BuildRequires:  pkgconfig(zlib)
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
@@ -49,7 +50,8 @@ You must place file DOOM.WAD (case-sensitive) from the Steam or GOG version
 of Doom 64 into either folder %datafilesdir or ~/.local/share/doom64ex-plus
 
 %prep
-%setup -q -n Doom64EX-Plus-%{version}
+%setup -q -n Doom64EX-Plus-%{version}.SDL.3.1.3
+%patch -P 0 -p 1
 sed -i 's/__DATE__/"unset"/' src/engine/i_main.c
 
 %build
@@ -76,7 +78,7 @@ EOF
 
 %post
 if [ $1 -eq 1 ]; then
-    # show this on installs only
+    # shown on installs only
     echo "INFO: %name: The global IWAD directory is %{datafilesdir}"
     echo "You must place file DOOM.WAD (case-sensitive) from the Steam or GOG version
     	 of Doom64 into that folder or in ~/.local/share/doom64ex-plus"

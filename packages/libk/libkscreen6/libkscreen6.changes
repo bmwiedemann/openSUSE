@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * wayland: Drop WaylandOutputDeviceMode::operator==()
+  * wayland: Properly determine whether the current mode has changed
+  * wayland: Correctly compare refresh rates when applying config
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * repair edid parsing
+  * repair config deserialization
+  * typo--
+  * backends/kwayland: handle compositor restarts
+  * backends/kwayland: port output management to QtWaylandClientExtensionTemplate
+  * Make EDID raw data accessible
+  * Generate wayland code with PRIVATE_CODE
+  * It compile fine without kf deprecated methods
+  * Fix export debug categories
+  * add BrightnessControl capability
+  * Destroy the registry when WaylandConfig gets deleted (kde#482768)
+  * doctor: fix min brightness override setting
+  * cmake: increase minimum plasma wayland protocols version to 1.13
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

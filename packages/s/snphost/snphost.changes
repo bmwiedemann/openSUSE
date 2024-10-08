@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  3 19:23:31 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: Add direct dependency on cargo in addition to cargo-packaging.
+    This fixes build errors on 15SP7 where the inherited version of Rust
+    is too old
+
+-------------------------------------------------------------------
 Fri Sep 13 03:25:36 UTC 2024 - Caleb Crane (caleb.crane@suse.com)
 
 - Update to version 0.5.0:

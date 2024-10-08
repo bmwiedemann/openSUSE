@@ -19,12 +19,12 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
 URL:            https://github.com/martinvonz/jj
-Source0:        jj-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.76
 BuildRequires:  cargo-packaging
@@ -60,14 +60,14 @@ be work-in-progress features, suboptimal UX, and workflow gaps that make it
 unusable for your particular use.
 
 %prep
-%autosetup -p 1 -a 1 -n jj-%{version}
+%autosetup -p 1 -a 1
 
 %build
 %{cargo_build}
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/%{binary_name}-%{version}/target/release/%{binary_name} %{buildroot}%{_bindir}/%{binary_name}
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{binary_name} %{buildroot}%{_bindir}/%{binary_name}
 
 %check
 rm -rf tests/contest/

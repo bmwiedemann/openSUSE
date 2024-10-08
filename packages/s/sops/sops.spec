@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           sops
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0
@@ -30,14 +30,13 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.22
 
 %description
 Simple and flexible tool for managing secrets
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \

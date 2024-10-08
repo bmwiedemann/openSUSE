@@ -1,0 +1,11 @@
+# This is not C, dear
+addFilter("E: devel-file-in-non-devel-package")
+addFilter("E: bin-sh-syntax-error")
+addFilter("E: env-script-interpreter")
+addFilter("E: zero-length")
+addFilter("E: version-control-internal-file")
+addFilter("E: wrong-script-interpreter")
+addFilter("E: script-without-shebang")
+addFilter("E: non-executable-script")
+addFilter("W: position-independent-executable-suggested")
+addFilter("W: potential-bashisms")

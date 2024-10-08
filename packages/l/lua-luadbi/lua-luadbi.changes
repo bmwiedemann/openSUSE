@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  3 15:12:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.7.3:
+  - oracle column name bugfix
+  - [travis] fix mysql grant error
+  - Don't break SQLite 3.6.20 as shipped in RHEL/CentOS 6
+  - dbd/mysql/statement.c: fix compilation with mysql-8
+  - Issue 56: Remove useless setting of is_null
+  - Issue-66: dbd/mysql/statement.c: return nil for NULL
+  - Attempt to provide partial fix for Issue #64.
+
+-------------------------------------------------------------------
 Thu Feb 22 09:57:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * ComboBox: Fix it not displaying delegates (kde#492650)
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * Add Kick themes as CI dependency for Android
+  * Use KIconLoader on Android as well to allow icon recoloring
+  * Fix: After changing the font, the size of the switch does not change in real time and requires a restart.
+  * Fix Markdown syntax in README for link
+  * Add small spacing between MenuSeparator and MenuItem
+  * Remove double cursor handles on Android
+  * Fix compiler warning when comparing qreal == bool and enum == bool
+  * Match the new corner radius used in Breeze QStyle
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

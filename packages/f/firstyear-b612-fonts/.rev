@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>107826c0c3002eae37738fc4686def88</srcmd5>
+    <version>4.20.69</version>
+    <time>1728330576</time>
+    <user>anag+factory</user>
+    <comment>Hi there, I have packaged up an actively maintained fork of the B612 font family from Firstyear.
+
+B612 is an highly legible open source font family designed and tested to be used on aircraft cockpit screens. It was originally commissioned by Airbus from Intactile DESIGN in 2012, then later donated to the Eclipse Foundation as part of the PolarSys project.
+
+This contains the B612 font family with patches from SUSE's William Brown adjusting some characters and changing the zero to a slashed zero, for better readability.</comment>
+    <requestid>1205964</requestid>
+  </revision>
+</revisionlist>

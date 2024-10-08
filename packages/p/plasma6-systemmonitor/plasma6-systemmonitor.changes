@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * Add a missing screenshot
+  * BaseTableView: Set pixelAligned to true (kde#493240)
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * Display signal type when SIGKILL'ing a process or application (kde#490934)
+  * Fix opening About Page on Global Menu
+  * faces/processtable: use sentence case in combobox
+  * FaceConfigurationPage: use title case for actions
+  * table: Fix default sort order when doing initial sort on a column (kde#490935)
+  * TableViewHeader: remove from tab chain
+  * use KF6Kirigami instead of KF6Kirigami2
+  * Revert fix for the alternating background
+  * Add option to allow a column to be hidden from the header
+  * EditablePage: position loading placeholder overlay correctly (kde#488044)
+  * appstream versions
+  * Update the formatting of ColumnConfigurationDialog to better show the extent of the delegate while dragging. This is done by showing the highlight on the dragged item during the drag.
+  * faces/FullRepresentation.qml: add minimum sizes (kde#487815)
+  * Enable KCrash (kde#485891)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

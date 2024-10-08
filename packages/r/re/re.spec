@@ -16,10 +16,10 @@
 #
 
 
-%global sover   23
+%global sover   27
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.11.0
+Version:        3.16.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
@@ -87,11 +87,11 @@ rm -v %{buildroot}/%{_libdir}/libre.a
 #%%{_datadir}/re
 %{_libdir}/libre.so
 %{_libdir}/pkgconfig/libre.pc
-%dir %{_libdir}/cmake/re
-%{_libdir}/cmake/re/re-config.cmake
 %dir %{_libdir}/cmake/libre
 %{_libdir}/cmake/libre/libre-config.cmake
-%{_libdir}/cmake/libre/libre-release.cmake
-%{_libdir}/cmake/libre/libre.cmake
+%{_libdir}/cmake/libre/libre-targets-release.cmake
+%{_libdir}/cmake/libre/libre-targets.cmake
+%dir %{_libdir}/cmake/re
+%{_libdir}/cmake/re/re-config.cmake
 
 %changelog

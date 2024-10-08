@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * applet: fix power profile label not visible when using ppd
+  * Port popup to PlasmaExtras.Menu (kde#492493)
+  * daemon: Do not compare const and non-const QMap iterator (kde#493519)
+  * applets/batterymonitor: React to D-Bus service (un)register events
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

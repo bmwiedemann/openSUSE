@@ -20,8 +20,8 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|org\\.kde\\.private\\.mobile\\.homescreen\\.folio|MeeGo\\.QOfono|).*
 
-%define kf6_version 6.2.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname plasma-mobile
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -39,9 +39,9 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -66,6 +66,7 @@ BuildRequires:  cmake(KWin) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -132,6 +133,8 @@ Plasma shell for mobile devices.
 %{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
 %{_kf6_applicationsdir}/kcm_mobileshell.desktop
 %{_kf6_appstreamdir}/org.kde.breeze.mobile.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.mobile.defaultNavigationPanel.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.mobile.defaultStatusBar.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.homescreen.folio.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.homescreen.halcyon.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.panel.appdata.xml
@@ -154,6 +157,7 @@ Plasma shell for mobile devices.
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.mobiledata.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.nightcolor.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.powermenu.appdata.xml
+%{_kf6_appstreamdir}/org.kde.plasma.quicksetting.record.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.screenrotation.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.screenshot.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.settingsapp.appdata.xml
@@ -164,6 +168,10 @@ Plasma shell for mobile devices.
 %{_kf6_bindir}/startplasmamobile
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Mobile.xml
 %{_kf6_notificationsdir}/plasma_mobile_quicksetting_screenshot.notifyrc
+%{_kf6_notificationsdir}/plasma_mobile_quicksetting_record.notifyrc
+%dir %{_kf6_plasmadir}/layout-templates
+%{_kf6_plasmadir}/layout-templates/org.kde.plasma.mobile.defaultNavigationPanel/
+%{_kf6_plasmadir}/layout-templates/org.kde.plasma.mobile.defaultStatusBar/
 %dir %{_kf6_plasmadir}/look-and-feel
 %{_kf6_plasmadir}/look-and-feel/org.kde.breeze.mobile/
 %dir %{_kf6_plasmadir}/mobileinitialstart
@@ -195,6 +203,7 @@ Plasma shell for mobile devices.
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.settingsapp/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.wifi/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksettings.docked/
+%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %dir %{_kf6_plasmadir}/shells
 %{_kf6_plasmadir}/shells/org.kde.plasma.mobileshell/
 %{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_autodetect_apn.so
@@ -224,6 +233,7 @@ Plasma shell for mobile devices.
 %{_kf6_qmldir}/org/kde/plasma/quicksetting/flashlight/
 %{_kf6_qmldir}/org/kde/plasma/quicksetting/nightcolor/
 %{_kf6_qmldir}/org/kde/plasma/quicksetting/powermenu/
+%{_kf6_qmldir}/org/kde/plasma/quicksetting/record/
 %{_kf6_qmldir}/org/kde/plasma/quicksetting/screenrotation/
 %{_kf6_qmldir}/org/kde/plasma/quicksetting/screenshot/
 %{_kf6_qmldir}/org/kde/private/mobile/

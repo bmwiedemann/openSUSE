@@ -24,7 +24,7 @@
 %define statedir_name openbao
 
 Name:           openbao
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0

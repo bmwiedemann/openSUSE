@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sun Oct 06 08:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.9.1:
+  * Add missing newlines.
+  * Add changelog for 3.9.1.
+  * Bump version to 3.9.1.
+  * Do not ignore errors when trying to parse a config file.
+  * Update all go deps with 'go get -t -u ./...'.
+  * build(deps): Bump the rust group in /functional-tests with 5
+    updates
+  * build(deps): Bump the go group with 7 updates
+  * Add Cargo.lock for better reproducability of functional tests.
+  * build(deps): Bump the go group with 7 updates
+  * build(deps): Bump the ci group with 2 updates
+  * Dependabot: fix config for Docker, add config for Rust/Cargo.
+  * Show changes in shamir_threshold when updating keys.
+  * Do not encrypt if a key group is empty, or there are no key
+    groups.
+  * Fix checkout action version.
+  * Use Go version from go.mod.
+  * Build release with Go 1.22.x.
+  * Allow edit subcommand to create files.
+  * Build 1.22 1.23 because 1.21 is unsupported without security
+    fixes
+  * Review: Add test "matrix" but only for 1.22
+  * feat(build): Build last 2 Go versions
+  * refactor: specify missing file in error message
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the go group with 10 updates
+  * Add 'check' task to CI that makes sure everything is green.
+  * sops_test: add more tests on errors
+  * sops_test: homogenize use of asserts
+  * tests: add coverage for unset
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the go group with 4 updates
+  * Fix `--config` being ignored by `loadConfig`
+  * github actions: set rust version globally
+  * linters: pin version of Rust
+  * functional tests: formatting lint
+  * github actions: add Rust linter
+  * Added example of having age recipients in .sops.yaml
+  * Actually use option --shamir-secret-sharing-threshold.
+  * build(deps): Bump github.com/opencontainers/runc from 1.1.13 to
+    1.1.14
+  * build(deps): Bump the go group with 12 updates
+  * tests: ignore env var SOPS_AGE_KEY_FILE
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 7 updates
+  * build(deps): Bump the ci group with 2 updates
+  * Bump go version.
+  * build(deps): Bump the go group across 1 directory with 15
+    updates
+  * build(deps): Bump the ci group with 2 updates
+  * Use ReST admonition syntax for note
+  * Note on the name of the configuration file
+  * build(deps): Bump the ci group with 3 updates
+  * build(deps): Bump github.com/docker/docker
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 5 updates
+  * build(deps): Bump github.com/docker/docker
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the go group with 4 updates
+  * build(deps): Bump the ci group across 1 directory with 5
+    updates
+  * build(deps): Bump the go group with 5 updates
+  * build(deps): Bump the ci group with 3 updates
+  * build(deps): Bump the go group with 10 updates
+  * build(deps): Bump the go group with 11 updates
+  * build(deps): Bump the ci group with 4 updates
+  * Fix the URL used for determining the latest SOPS version.
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the go group with 8 updates
+  * Explicitly mark goreleaser's version, to avoid confusion with
+    the Go version.
+
+-------------------------------------------------------------------
 Wed Jul 03 15:43:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.9.0:

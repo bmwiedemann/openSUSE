@@ -1,4 +1,4 @@
-From bc12001cb93b29799bc7cbbf963e4b793c008032 Mon Sep 17 00:00:00 2001
+From e4e1a5f5d90d84363637806437ffb3f2758fbc88 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Wed, 20 Mar 2024 09:38:27 +0100
 Subject: [PATCH] Remove some features with questionable security
@@ -11,10 +11,10 @@ Subject: [PATCH] Remove some features with questionable security
  2 files changed, 8 deletions(-)
 
 diff --git a/src/ui/Advanced.qml b/src/ui/Advanced.qml
-index 8be5d81..3d05eea 100644
+index d6f1827..ca777ee 100644
 --- a/src/ui/Advanced.qml
 +++ b/src/ui/Advanced.qml
-@@ -36,7 +36,6 @@ Kirigami.Page {
+@@ -45,7 +45,6 @@ Kirigami.Page {
                      // to appear when the user checks the checkbox, not all the
                      // time when the checkbox is checked.
                      if (checked && kcm.KDEWalletAvailable()) {
@@ -23,7 +23,7 @@ index 8be5d81..3d05eea 100644
                  }
              }
 diff --git a/src/ui/main.qml b/src/ui/main.qml
-index c30dd1f..e8b3bdd 100644
+index ef8ee86..dbe143e 100644
 --- a/src/ui/main.qml
 +++ b/src/ui/main.qml
 @@ -34,13 +34,6 @@ KCM.GridViewKCM {
@@ -39,7 +39,7 @@ index c30dd1f..e8b3bdd 100644
 -            }
          }
      ]
-     header: Kirigami.InlineMessage {
+ 
 -- 
-2.43.2
+2.46.0
 

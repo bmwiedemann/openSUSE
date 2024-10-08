@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * Fix "Create new" button being broken
+  * Port [=]
+  * Use ECMDeprecationSettings
+  * Drop vim templates
+  * applet: Add Bug Report URL
+  * Add missing include header
+  * Reformat CMake files
+  * applet: Remove useless proxy property
+  * applet: Use [].includes(Plasmoid.location) idiom
+  * applet: Port to qualifier property access and pragma ComponentBehavior: Bound
+  * visible
+  * applet: Rewrite a lengthy ternary expression into an if-else chain
+  * applet: Drop unused property
+  * applet: Port footer to PlasmaExtras.PlasmoidHeading toolbar with ToolButton
+  * applet: Reuse icon.name between actions
+  * applet: Explicitly specify arguments in signal handlers
+  * applet: Replace double smallSpacing with single largeSpacing
+  * applet: Clip the ListView
+  * applet: Fix indentation
+  * applet: Add conventional QML import aliases
+  * applet: Sort QML imports alphabetically
+  * applet: Drop QML import versions
+  * Remove unused CPack include
+  * Remove ServiceType from KFileItemActions plugin
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

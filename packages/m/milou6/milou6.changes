@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * plasmoid: use sentence case in plasmoid description
+  * applet: Add forgotten Kirigami import, and sort imports while at it
+  * applet: Rework layout of fullRepresentation, adapt to location changes on the fly
+  * applet: Explicitly specify arguments in signal handlers
+  * applet: Drop unused parameter from setTextFieldFocus method
+  * applet: Clean up QML/JS code style, drop QML import versions
+  * applet: Fix most blatant layout errors
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

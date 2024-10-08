@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9290cd134c9542d33ce56524805bb305</srcmd5>
+    <version>0.106.0</version>
+    <time>1728330546</time>
+    <user>anag+factory</user>
+    <comment>I want this package added to openSUSE:Factory. This package is required to build deno and is not intended for an actual installation but part of deno's build deps. It's packaged for the purpose of testing patches to make it work in openSUSE</comment>
+    <requestid>1205620</requestid>
+  </revision>
+</revisionlist>

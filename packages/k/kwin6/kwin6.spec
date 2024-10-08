@@ -19,8 +19,8 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.2.0
-%define qt6_version 6.6.0
+%global kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %define rname   kwin
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -29,14 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.1.5
+Version:        6.2.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -81,6 +81,7 @@ BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -89,6 +90,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.112
@@ -265,7 +267,6 @@ This package provides development files.
 %dir %{_kf6_plugindir}/kwin/effects/configs
 %{_kf6_plugindir}/kwin/effects/configs/kcm_kwin4_genericscripted.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_blur_config.so
-%{_kf6_plugindir}/kwin/effects/configs/kwin_colorblindnesscorrection_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_diminactive_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_glide_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_hidecursor_config.so
@@ -288,6 +289,7 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/BounceKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/buttonsrebind.so
 %{_kf6_plugindir}/kwin/plugins/eis.so
+%{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
 %{_kf6_plugindir}/kwin/plugins/screencast.so
@@ -320,7 +322,6 @@ This package provides development files.
 %{_userunitdir}/plasma-kwin_x11.service
 
 %files -n libkwin6
-%{_kf6_libdir}/libkwin.so.6
 %{_kf6_libdir}/libkwin.so.*
 
 %files devel

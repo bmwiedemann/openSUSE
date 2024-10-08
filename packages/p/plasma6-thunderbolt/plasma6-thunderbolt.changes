@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- No code changes since 6.1.90
+
+-------------------------------------------------------------------
+Tue Sep 17 14:54:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * Correct typo in test server config data
+  * kcm: Add myself to copyright headers
+  * kcm: Redo device list delegates
+  * kcm: Fix usage of BusyIndicator control
+  * kcm: Port to pragma ComponentBehavior: Bound
+  * kcm: Port from a custom PageRow to KCMUtils
+  * Use ellipses instead of triple period
+  * kcm: Fix up QML/JS code style
+  * kcm: Uplift DeviceModel to the root component
+  * kcm: Fix typo in Kirigami.Theme color property (kde#481216)
+  * kcm: Fix usage of Kirigami.Theme colors (kde#481216)
+  * kcm: Remove unused component
+  * kcm: Factor out long checks for securityLevel
+  * kcm: Add conventional QML import aliases
+  * kcm: Drop QML import versions
+  * Port header InlineMessage to frameless style
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

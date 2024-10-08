@@ -51,7 +51,7 @@ BuildRequires:  libitm1
 BuildRequires:  libtool
 BuildRequires:  libudev-devel
 BuildRequires:  openldap2-devel
-BuildRequires:  openssl-devel >= 1.0
+BuildRequires:  openssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
 BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
@@ -67,25 +67,27 @@ Provides:       group(pkcs11)
 ExclusiveArch:  %{openCryptoki_32bit_arch} %{openCryptoki_64bit_arch}
 %{?systemd_requires}
 %ifarch s390 s390x
-BuildRequires:  libica-devel
+BuildRequires:  libica-devel >= 3.3
 BuildRequires:  libica-tools
 %endif
 
 %description
-The PKCS#11 version 2.11 API implemented for the IBM cryptographic
-cards. This package includes support for the IBM 4758 cryptographic
-coprocessor (with the PKCS#11 firmware loaded) and the IBM eServer
-Cryptographic Accelerator (FC 4960 on pSeries).
+Opencryptoki implements the PKCS#11 specification v2.20 for a set of
+cryptographic hardware, such as IBM 4764 and 4765 crypto cards, and the
+Trusted Platform Module (TPM) chip. Opencryptoki also brings a software
+token implementation that can be used without any cryptographic
+hardware.
+This package contains the Slot Daemon (pkcsslotd) and general utilities.
 
 %package devel
 Summary:        Development files for openCryptoki, a PKCS#11 implementation for IBM hardware
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel
-Requires:       libopenssl-devel
+Requires:       libopenssl-devel >= 1.1.1
 Requires:       openldap2-devel
 Requires:       trousers-devel
 %ifarch s390 s390x
-Requires:       libica-devel
+Requires:       libica-devel >= 3.3
 %endif
 
 %description devel
@@ -93,6 +95,9 @@ The PKCS#11 version 2.01 API implemented for the IBM cryptographic
 cards. This package includes support for the IBM 4758 cryptographic
 co-processor (with the PKCS#11 firmware loaded) and the IBM eServer
 Cryptographic Accelerator (FC 4960 on pSeries).
+This package contains the development header files for building
+opencryptoki and PKCS#11 based applications
+
 
 %ifarch %{openCryptoki_32bit_arch}
 %package 32bit
@@ -150,9 +155,9 @@ cp %{SOURCE2} .
     --enable-locks \
 %endif
 %ifarch s390 s390x
-    --enable-pkcsep11_migrate
+    --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate
 %else
-    --disable-ccatok
+    --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --enable-pkcscca_migrate
 %endif
 
 make %{?_smp_mflags}
@@ -213,6 +218,7 @@ if [ -L %{_sysconfdir}/pkcs11 ] ; then
 	rm %{_sysconfdir}/pkcs11
 fi
 %{service_del_postun pkcsslotd.service}
+/sbin/ldconfig
 
 %post 32bit
 # Old library name links
@@ -250,8 +256,8 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
+%ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf
 %{_sbindir}/pkcsep11_migrate
@@ -263,8 +269,8 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # utilities
 %ifarch s390 s390x
 %{_sbindir}/pkcsep11_session
-%{_sbindir}/pkcscca
 %endif
+%{_sbindir}/pkcscca
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf

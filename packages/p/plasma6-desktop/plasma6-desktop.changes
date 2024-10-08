@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * applets/pager: Remove animations
+  * FolderViewLayer.qml: Load the icon positions when geometry changes (kde#493569)
+  * Use strict available space for positioning widget explorer sidebar (kde#493592)
+  * WidgetExplorer: make margins perfect
+  * WidgetExplorer: improve header margins
+  * kcms/ksplash: Correctly remove entries when uninstalled via kns
+  * desktop/RenameEditor.qml: Use QQC2 TextArea to add context menu (kde#427292)
+  * desktoppackage: suppress onSettingValueChanged error
+  * [kcms/automounter] Fix crash on close (kde#484690)
+  * applets/kickoff: close on session/power action (kde#493439)
+  * kcms/keys: Wrap long shortcut names (kde#493371)
+  * applets/kickoff: use symbolic icons for categories (kde#457077)
+  * applets/window-list: use new popup placement enum
+  * kcms/touchpad: Make four strings translatable
+  * kaccess: Order service after plasma-core.target
+  * [kcms/keys] Don't write into a read-only KConfigGroup (kde#493161)
+  * Only open panel settings when closing widget sidebar if manually closed (kde#493048)
+  * Make ConfigOverlay fill applet area, not entire panel (kde#492919)
+  * Always consider autohide panels in the edit mode zoom (kde#493143)
+  * applets/showdesktop: Minimize All in LRU order
+  * containments/desktop: fix single-click to rename (kde#493124)
+  * Fix highlight on RTL layouts (kde#491055)
+  * containments/panel: don't assign undefined to bool
+
+-------------------------------------------------------------------
+Tue Sep 17 14:53:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep 10 14:54:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:

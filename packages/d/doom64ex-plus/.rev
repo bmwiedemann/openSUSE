@@ -10,4 +10,12 @@ There are many Doom source ports in Factory, but none for Doom 64.
 This Doom 64 port is well maintained and uses bleeding edge SDL3.</comment>
     <requestid>1191193</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d660af3a0b0ee8ad69d02a5e42c20c15</srcmd5>
+    <version>4.0.0.3</version>
+    <time>1728330574</time>
+    <user>anag+factory</user>
+    <comment>New version 4.0.0.3</comment>
+    <requestid>1205953</requestid>
+  </revision>
 </revisionlist>

@@ -408,4 +408,12 @@
     <comment>- Update to release 7.5.0</comment>
     <requestid>1162360</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9e7ee89fd683f17c6b1cdb2bcc70b6d3</srcmd5>
+    <version>7.6.0</version>
+    <time>1728330567</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.6.0</comment>
+    <requestid>1205851</requestid>
+  </revision>
 </revisionlist>

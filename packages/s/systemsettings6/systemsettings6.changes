@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  5 10:44:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.0
+- Changes since 6.1.90:
+  * update version for new release
+  * Fix loading external modules
+  * appiumtests: add test to launch systemsettings
+  * SettingsBase.cpp: Restore window state and position (kde#478443)
+
+-------------------------------------------------------------------
+Tue Sep 17 14:55:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.90
+- Changes since 6.1.5:
+  * update version for new release
+  * Use preferences- icons for relevant categories/groups
+  * Rephrase "apply or discard changes" dialog according to the HIG (kde#491630)
+  * Port deprecated [=]
+  * Actually start the KAuth::ExecuteJob (kde#490507)
+  * runner: Don't match if just one query word matches (kde#488676)
+  * Share the qml engine as a qApp property (kde#488326)
+  * Force focus to subcategory page only when actually needed (kde#489209)
+  * Fix sub-category view remaining visible when moving to a top-level KCM (kde#434345)
+  * Remove leftover of intro page button
+  * Stop hiding homepage from sidebar, and remove "go home" toolbar button
+  * appstream versions
+  * join keywords lists using ZERO WIDTH SPACE instead of empty string (kde#487855)
+  * Port to KStandardActions
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Sep 10 14:55:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.5:
