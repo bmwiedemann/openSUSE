@@ -31,4 +31,12 @@
     <comment>fix conflict/choice of providers</comment>
     <requestid>1176984</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7063bd8ff652f3054e630edca5691316</srcmd5>
+    <version>1.3.0</version>
+    <time>1728401084</time>
+    <user>anag+factory</user>
+    <comment>1.3</comment>
+    <requestid>1206235</requestid>
+  </revision>
 </revisionlist>

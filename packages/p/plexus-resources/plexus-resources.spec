@@ -16,26 +16,23 @@
 #
 
 
-%global base_ver 1.0
-%global alpha_ver 7
-%global namedversion %{base_ver}-alpha-%{alpha_ver}
 Name:           plexus-resources
-Version:        %{base_ver}~a%{alpha_ver}
+Version:        1.3.0
 Release:        0
 Summary:        Plexus Resource Manager
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-resources
-# svn export http://svn.codehaus.org/plexus/plexus-components/tags/plexus-resources-1.0-alpha-7/
-# tar caf plexus-resources-1.0-alpha-7-src.tar.xz plexus-resources-1.0-alpha-7
-Source0:        %{name}-%{namedversion}-src.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-BuildRequires:  sisu-plexus
+BuildRequires:  plexus-xml
+BuildRequires:  sisu-inject
+BuildRequires:  slf4j
 BuildArch:      noarch
 
 %description
@@ -53,19 +50,18 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{namedversion}
+%setup -q
 cp %{SOURCE1} build.xml
-%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils org.eclipse.sisu.plexus
+build-jar-repository -s lib atinject org.eclipse.sisu.inject plexus/utils plexus/xml slf4j/api
 %{ant} jar javadoc
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/plexus
-install -pm 0644 target/%{name}-%{namedversion}.jar %{buildroot}%{_javadir}/plexus/resources.jar
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/resources.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/resources.pom

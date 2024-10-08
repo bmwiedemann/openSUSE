@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-resources"/>
-  <property name="project.version" value="1.0-alpha-7"/>
+  <property name="project.version" value="1.3.0"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -19,11 +19,7 @@
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.resourceDir" value="src/main/resources"/>
-  <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
-  <property name="build.testDir" value="src/test/java"/>
-  <property name="build.testResourceDir" value="src/test/resources"/>
-  <property name="test.reports" value="${build.dir}/test-reports"/>
+
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
   <!-- ====================================================================== -->
@@ -67,30 +63,28 @@
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-    <copy todir="${build.outputDir}">
-      <fileset dir="${build.resourceDir}"/>
-    </copy>
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Target to generate Plexus component.xml                                -->
+  <!-- Sisu javax.inject.Named generation target                              -->
   <!-- ====================================================================== -->
 
-  <target name="generate-metadata"
+  <target name="sisu"
           depends="compile"
-          description="Generate Plexus component.xml">
-    <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <exec executable="plexus-metadata-generator" failonerror="true">
-      <env key="CLASSPATH" value="${build.outputDir}"/>
-      <arg value="-s"/>
-      <arg value="${build.srcDir}"/>
-      <arg value="-c"/>
-      <arg value="${build.outputDir}"/>
-      <arg value="-m"/>
-      <arg value="${build.outputDir}/META-INF/plexus"/>
-      <arg value="-o"/>
-      <arg value="${build.outputDir}/META-INF/plexus/components.xml"/>
-    </exec>
+          description="Generate javax.inject.Name index">
+    <sequential>
+	  <java classname="org.eclipse.sisu.space.SisuIndex"
+	        failonerror="true"
+			fork="true">
+        <classpath>
+          <path refid="build.classpath"/>
+        </classpath>
+        <arg value="${build.outputDir}"/>
+      </java>
+      <move todir="${build.outputDir}/META-INF">
+        <fileset dir="META-INF"/>
+      </move>
+	</sequential>
   </target>
 
   <!-- ====================================================================== -->
@@ -127,7 +121,7 @@
   <!-- ====================================================================== -->
 
   <target name="package"
-          depends="generate-metadata"
+          depends="sisu"
           description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
