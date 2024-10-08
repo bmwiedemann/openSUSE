@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 01 02:15:01 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.8.2~1:
+  * Add experimental concurrent cache support
+  * sccache: prepare new release
+  * Update FreeBSD docs to refer to 14.1 (#2263)
+  * build(deps): bump jobserver from 0.1.31 to 0.1.32 (#2255)
+
+-------------------------------------------------------------------
 Tue Sep 10 05:16:58 UTC 2024 - william.brown@suse.com
 
 - explicitly depend on cargo to pull in latest compiler revision
