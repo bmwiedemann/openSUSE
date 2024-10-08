@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  7 19:25:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.6:
+  * Clean up code to locate the Python installation substantially
+    to avoid references to hard-coded paths in binaries.
+- Drop upstreamed patches:
+  * cadabra2-cmake-correct-python-variable.patch.
+  * cadabra2-use-system-pybind11.patch.
+  * cadabra2-link-gmp.patch.
+- Add cadabra2-default-python-path.patch: Fix default python path
+  when starting up cadabra2.
+
+-------------------------------------------------------------------
 Mon Aug 12 04:32:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
-- Update to version 2.5.2:
+- Update to version 2.5.4:
   *  Fix simplification of pow nodes.
   *  Make ExNode iterators skip nodes hidden by zoom.
   *  Fix canonicalise acting on expressions with

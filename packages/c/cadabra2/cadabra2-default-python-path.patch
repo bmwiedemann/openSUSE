@@ -1,0 +1,21 @@
+---
+ core/pythoncdb/py_helpers.cc |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: cadabra2-2.5.6/core/pythoncdb/py_helpers.cc
+===================================================================
+--- cadabra2-2.5.6.orig/core/pythoncdb/py_helpers.cc
++++ cadabra2-2.5.6/core/pythoncdb/py_helpers.cc
+@@ -45,8 +45,10 @@ namespace cadabra {
+ 
+ 		if(spath=="") {
+ 			py::module_ sysconfig = py::module_::import("sysconfig");
+-			py::object result = sysconfig.attr("get_path")("platlib");
+-			spath = result.cast<std::string>();
++			// On openSUSE, this gives paths relative to /usr/local/; use 'stdlib' instead
++			// py::object result = sysconfig.attr("get_path")("platlib");
++			py::object result = sysconfig.attr("get_path")("stdlib");
++			spath = result.cast<std::string>() + "/site-packages";
+ 			// Some older systems return the wrong path in platlib: they
+ 			// use "dist-packages", but still return "site-packages". So we
+ 			// test for the existence of platlib, and if it does not

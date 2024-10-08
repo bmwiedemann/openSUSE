@@ -27,7 +27,7 @@
 %global pythons python3
 %endif
 Name:           cadabra2
-Version:        2.5.4
+Version:        2.5.6
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -36,12 +36,8 @@ URL:            https://cadabra.science/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
-# PATCH-FIX-UPSTREAM cadabra2-link-gmp.patch badshah400@gmail.com -- Link against gmp shared lib explicitly
-Patch1:         cadabra2-link-gmp.patch
-# PATCH-FIX-UPSTREAM cadabra2-use-system-pybind11.patch gh#kpeeters/cadabra2#310 badshah400@gmail.com -- Allow use of system pybind11, fall back to bundled sources if not found
-Patch2:         cadabra2-use-system-pybind11.patch
-# PATCH-FIX-UPSTREAM cadabra2-cmake-correct-python-variable.patch gh#kpeeters/cadabra2#309 badshah400@gmail.com -- Use correct variable set by cmake FindPython, i.e. Python_EXECUTABLE, not PYTHON_EXECUTABLE
-Patch3:         cadabra2-cmake-correct-python-variable.patch
+# PATCH-FEATURE-OPENSUSE cadabra2-default-python-path.patch badshah400@gmail.com -- Fix default python path when starting up cadabra2
+Patch1:         cadabra2-default-python-path.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module gobject-devel}
 BuildRequires:  %{python_module ipykernel}
