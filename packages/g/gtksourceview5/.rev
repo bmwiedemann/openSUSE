@@ -137,4 +137,12 @@
     <comment></comment>
     <requestid>1204693</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c227cbf584d47593360f25ae385b0ae4</srcmd5>
+    <version>5.14.1</version>
+    <time>1728401142</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1205741 from iznogood)</comment>
+    <requestid>1205806</requestid>
+  </revision>
 </revisionlist>
