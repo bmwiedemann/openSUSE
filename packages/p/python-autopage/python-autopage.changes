@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  8 07:22:31 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Force $LANG env to UTF-8 to fix tests for Leap 16.0
+
+-------------------------------------------------------------------
 Mon Feb  5 04:53:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch support-python-311.patch, no longer required. 

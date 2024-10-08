@@ -54,6 +54,7 @@ in a pager (like `less`)
 
 %check
 unset LESS
+export LANG=en_US.UTF-8
 rm -v autopage/tests/test_end_to_end.py
 %pytest
 

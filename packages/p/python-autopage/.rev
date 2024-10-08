@@ -91,4 +91,12 @@
     <comment>- Drop patch support-python-311.patch, no longer required.</comment>
     <requestid>1144079</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e0f0297cf2913cc2a7eaf90eedfaf87d</srcmd5>
+    <version>0.5.2</version>
+    <time>1728401091</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206251</requestid>
+  </revision>
 </revisionlist>
