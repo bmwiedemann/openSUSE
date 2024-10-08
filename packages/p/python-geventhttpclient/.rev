@@ -78,4 +78,41 @@
   * Disable unit tests for no ssl module + fixes for build</comment>
     <requestid>1131746</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebd68e1e8a7a6d5b84dba5043fbc82c2</srcmd5>
+    <version>2.3.1</version>
+    <time>1728401102</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.1:
+  * Fix locust backwards compatibility by @ml31415 in #218
+- 2.3.0:
+  * Clean up readme and example code by @ml31415 in #212
+  * Fix for #179 and improved multipart form handling by @ml31415 in #213
+  * requests compatibility layer by @ml31415 in #209
+  * Fixed #186 and improved package build by @ml31415 in #214
+  * Add pre-commit hooks by @ml31415 in #215
+  * Add requests compatibility to README by @ml31415 in #216
+- 2.2.1:
+  * URL refactoring by @ml31415 in #206
+  * Switch default ssl protocol to PROTOCOL_TLS_CLIENT and improve tests by @ml31415 in #207
+  * Fixes #40 max_retries and max_redirects by @ml31415 in #208
+  * Use test.pypi.org before publishing by @ml31415 in #211
+- 2.2.0:
+  * Fixes http.client patching by @ml31415 in #200
+  * Better headers by @ml31415 in #203
+- 2.1.1:
+  * Reduce httpbin dependency by @ml31415 in #199
+  * Fix publishing build issue by @ml31415 in #201
+- 2.1.0:
+  * Spring cleaning (mostly test updates) by @ml31415 in #191
+  * Drop support for outdated python and gevent versions by @ml31415 in #192
+  * Upgrade llhttp v6.0.11 by @ml31415 in #193
+  * Github actions and project metadata improvements by @ml31415 in #195
+  * Benchmarks updated; some tests parametrized by @ml31415 in #196
+  * More spring cleaning by @ml31415 in #197
+- 2.0.12:
+  * port examples to Python3 by @a-detiste in #185
+  * add response cookies to cookiejar before verify_status by @onestay in #188</comment>
+    <requestid>1206263</requestid>
+  </revision>
 </revisionlist>
