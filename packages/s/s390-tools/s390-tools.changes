@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct  8 10:35:04 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+* Upgrade s390-tools to version 2.35 (jsc#PED-9591, jsc#PED-10303)
+* Changes of existing tools:
+  - cpacfstats: Add support for FULL XTS (MSA 10) and HMAC (MSA 11) PAI counter
+  - cpuplugd: Make cpuplugd compatible with hiperdispatch
+  - dbginfo.sh: Add network sockstat info
+  - pvapconfig: s390x exclusive build
+  - zdev: Add option to select IPL device
+  - zdump/dfo_s390: Support s390 DFO for vr-kernel dumps
+  - zipl: Add support of mirror devices
+* Bug Fixes:
+  - (genprotimg|zipl)/boot: discard .note.package ELF section to save memory
+  - netboot/mk-s390image: Fix size when argument is a symlink
+  - ziorep_config: Fix warning message when multipath device is not there.
+  - zipl: Fix problems when target parameters are specified by user
+  - zipl: Fix segfault when creating device-based dumps with '--dry-run'
+* Removed obsolete patches
+  - s390-tools-2.34-Fix-Rust-compilation-errors.patch
+  - s390-tools-01-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+  - s390-tools-02-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
+* Revendored vendor.tar.gz
+
+-------------------------------------------------------------------
 Mon Sep 16 12:49:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 * Applied patches (bsc#1230345)

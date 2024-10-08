@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.34.0
+Version:        2.35.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -154,9 +154,6 @@ Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch914:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
-Patch915:       s390-tools-2.34-Fix-Rust-compilation-errors.patch
-Patch916:       s390-tools-01-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
-Patch917:       s390-tools-02-zipl-src-add-basic-support-for-multiple-target-base-disks.patch
 ###
 
 BuildRequires:  curl-devel
@@ -232,7 +229,9 @@ pvattest   - create, perform, and verify protected virtualization attestation me
 pvsecret   - manage secrets for IBM Secure Execution guests.
 pvapconfig - used to automatically set up the AP configuration within an IBM Secure Execution guest.
 
-Note: Auxiliary data package - s390-tools-genprotimg-data
+Warning: There is an auxiliary data package - s390-tools-genprotimg-data.
+         To install s390-tools properly, please use:
+         'sudo zypper install s390-tools s390-tools-genprotimg-data'
 
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent
