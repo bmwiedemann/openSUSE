@@ -324,4 +324,12 @@
     to MSAL 1.30+. (#717) (forwarded request 1190661 from glaubitz)</comment>
     <requestid>1190666</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>10512a0f6c279b9427c639c45153e517</srcmd5>
+    <version>1.31.0</version>
+    <time>1728401087</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206228</requestid>
+  </revision>
 </revisionlist>
