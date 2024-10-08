@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  3 21:20:35 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.31.0:
+  + This release adds support for new braille tables, such as Thai
+    contracted and Greek International US, and updates existing
+    braille tables such as the Finnish table which has been updated
+    to the latest braille standard. Benehalo has uncovered a number
+    of security problems in the liblouis code and has thankfully
+    also provided fixes for them by hardening the code.
+
+-------------------------------------------------------------------
 Tue Aug 20 00:34:28 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.30.0:
