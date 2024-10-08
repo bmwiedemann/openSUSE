@@ -1,7 +1,7 @@
 #
 # spec file for package Setzer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Setzer
-Version:        65
+Version:        66
 Release:        0
 Summary:        Simple yet full-featured LaTeX editor for GTK/GNOME
 License:        GPL-3.0-or-later
