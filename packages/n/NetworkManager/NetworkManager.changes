@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  3 06:25:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.0:
+  + The support for "dhclient" has been deprecated, not built
+    unless explicitely enabled, and will be removed in a future
+    release. The internal DHCP client should be used instead and
+    has been the default since version 1.20 (1.12 when built with
+    meson).
+  + Support matching a OVS system interface by MAC address.
+  + Add a timeout option to connectivity checking.
+  + Support configuring veth interfaces in nmtui.
+  + When looking up the system hostname from the reverse DNS lookup
+    of addresses configured on interfaces, NetworkManager now takes
+    into account the content of /etc/hosts.
+  + Revert to using sysctl ipv6.conf.default for ip6-privacy.
+  + Allow specifying a system OVS interface by MAC address.
+  + ndisc: Support multiple gateways for a single network.
+  + wifi: Support configuring channel-width in AP mode.
+  + keyfile: Stop writing offensive terms into keyfiles.
+  + Support reapplying the VLANs on bridge ports.
+  + Fix crash caused by malformed LLDP package if debug log is
+    enabled.
+  + Retry hostname resolution when it fails.
+- Drop NetworkManager-dont-enforce-ip-cleanup-on-device-deactivating.patch:
+  Fixed upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Mon Aug 26 09:45:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.48.10:

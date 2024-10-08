@@ -1562,4 +1562,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>add CVE reference for the previous submit (forwarded request 1181842 from JonathanKang)</comment>
     <requestid>1181999</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>eefb559bd1a7b725f9e23158c843f0e7</srcmd5>
+    <version>47.1</version>
+    <time>1728400666</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205456</requestid>
+  </revision>
 </revisionlist>

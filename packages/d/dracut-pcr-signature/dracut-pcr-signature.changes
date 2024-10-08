@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 07 14:52:41 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.4+2:
+  * Synchronize spec file
+  * Copy JSON file in /run to survive initrd
+
+-------------------------------------------------------------------
 Thu May 30 08:45:40 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.4:

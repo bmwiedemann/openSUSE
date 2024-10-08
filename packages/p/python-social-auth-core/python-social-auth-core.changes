@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:53:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.4:
+  * LinkedIn supports refresh token
+  * SteamOpenId validation of identify URL
+  * Box state redirestion
+  * The `uid` is automatically converted to string in the
+    pipeline
+  * Mediawiki error handling
+
+-------------------------------------------------------------------
 Thu Mar 28 05:49:33 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

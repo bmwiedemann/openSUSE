@@ -1,0 +1,12 @@
+diff --git a/docs/Doxyfile.in b/docs/Doxyfile.in
+index 067619c7..c13caec0 100644
+--- a/docs/Doxyfile.in
++++ b/docs/Doxyfile.in
+@@ -1279,7 +1279,6 @@ HTML_HEADER            = "@GLFW_SOURCE_DIR@/docs/header.html"
+ # that doxygen normally uses.
+ # This tag requires that the tag GENERATE_HTML is set to YES.
+ 
+-HTML_FOOTER            = "@GLFW_SOURCE_DIR@/docs/footer.html"
+ 
+ # The HTML_STYLESHEET tag can be used to specify a user-defined cascading style
+ # sheet that is used by each HTML page. It can be used to fine-tune the look of

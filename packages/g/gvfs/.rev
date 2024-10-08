@@ -1549,4 +1549,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1200875 from iznogood)</comment>
     <requestid>1201594</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>71a4c758c04c77100235cf43ccf4c2ef</srcmd5>
+    <version>1.56.0</version>
+    <time>1728400684</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205471</requestid>
+  </revision>
 </revisionlist>

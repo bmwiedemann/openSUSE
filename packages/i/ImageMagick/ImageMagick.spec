@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   37
+%define mfr_revision   39
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -469,7 +469,6 @@ ln -s ./MagickWand %{buildroot}%{_includedir}/ImageMagick-%{maj}/wand
 # these will be included via %%doc
 rm -r %{buildroot}%{_datadir}/doc/ImageMagick-%{maj}/
 rm %{buildroot}%{_libdir}/*.la
-rm -r %{buildroot}/usr/lib/perl5/*linux-thread-multi*/
 # remove RPATH from perl module
 perl_module=$(find %{buildroot}%{_prefix}/lib/perl5 -name '*.so')
 chmod 755 $perl_module
@@ -491,7 +490,7 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %postun -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
 
 %pretrans config-7-upstream-open -p <lua>
--- this %pretrans to be removed soon [bug#1122033#c37]
+-- this %pretrans to be removed soon [bug#1122033#37]
 path = "%{_sysconfdir}/%{config_dir}"
 st = posix.stat(path)
 if st and st.type == "directory" then

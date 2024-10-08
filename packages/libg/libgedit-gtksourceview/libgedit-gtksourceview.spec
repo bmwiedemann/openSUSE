@@ -17,7 +17,7 @@
 
 
 Name:           libgedit-gtksourceview
-Version:        299.1.0
+Version:        299.3.0
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
@@ -46,16 +46,16 @@ Summary:        libgedit-gtksourceview's GObject introspection bindings
 %description -n typelib-1_0-GtkSource-300
 The GObject introspection bindings for libgedit-gtksourceview library.
 
-%package -n libgedit-gtksourceview-300-0
+%package -n libgedit-gtksourceview-300-2
 Summary:        libgedit-gtksourceview shared library
 Requires:       %{name} >= %{version}
 
-%description -n libgedit-gtksourceview-300-0
+%description -n libgedit-gtksourceview-300-2
 The libgedit-gtksourceview shared library.
 
 %package devel
 Summary:        Source code editing widget development headers
-Requires:       libgedit-gtksourceview-300-0
+Requires:       libgedit-gtksourceview-300-2 = %{version}
 Requires:       typelib-1_0-GtkSource-300 = %{version}
 
 %description devel
@@ -72,6 +72,8 @@ Development files related to libgedit-gtksourceview.
 %meson_install
 %find_lang libgedit-gtksourceview-300
 
+%ldconfig_scriptlets -n libgedit-gtksourceview-300-2
+
 %files
 %license COPYING
 %{_datadir}/libgedit-gtksourceview-300/
@@ -79,8 +81,8 @@ Development files related to libgedit-gtksourceview.
 %files -n typelib-1_0-GtkSource-300
 %{_libdir}/girepository-1.0/GtkSource-300.typelib
 
-%files -n libgedit-gtksourceview-300-0
-%{_libdir}/libgedit-gtksourceview-300.so.0
+%files -n libgedit-gtksourceview-300-2
+%{_libdir}/libgedit-gtksourceview-300.so.2
 
 %files devel
 %{_libdir}/libgedit-gtksourceview-300.so

@@ -55,9 +55,7 @@ This package provides %{summary}.
 cp %{SOURCE2} build.xml
 
 %build
-%{ant} \
-	-Dcompiler.source=1.8 \
-    jar javadoc
+ant jar javadoc
 
 %install
 # jars

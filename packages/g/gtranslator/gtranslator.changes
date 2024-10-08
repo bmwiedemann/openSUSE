@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  5 13:03:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Do D-L requests async
+  + Fix bugs
+  + Add tooltip-text to buttons
+  + Use newer widgets from libadwaita
+  + Updated translations.
+- Switch to source service for tarball.
+- Stop passing gtk_doc=false to meson, no longer needed, nor
+  recognized.
+
+-------------------------------------------------------------------
 Wed Apr 24 05:09:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 46.1:

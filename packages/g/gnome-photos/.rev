@@ -527,4 +527,12 @@
     <comment> (forwarded request 1117715 from iznogood)</comment>
     <requestid>1117967</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>11327789f9714e6262e76b11d9507562</srcmd5>
+    <version>44.0+23</version>
+    <time>1728400664</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205454</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:38:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.16.0
+  * CLDR: Upgrade to CLDR 45
+  * Lists: Support list format fallbacks
+  * Messages: Initial support for reading mapping configuration as TOML
+  * CLDR: Do not allow substituting alternates or drafts in derived locales
+  * Core: Allow falling back to modifier-less locale data
+  * Core: Allow use of importlib.metadata for finding entrypoints
+  * Dates: Avoid crashing on importing localtime when TZ is malformed
+  * Messages: Allow parsing .po files that have an extant but empty Language header
+  * Messages: Fix ``--ignore-dirs`` being incorrectly read
+  * Messages: Make pgettext search plurals when translation is not found
+  * Replace deprecated `ast.Str` with `ast.Constant`
+  * CI fixes
+  * Test on Python 3.13 beta releases
+  * Normalize package name to lower-case in setup.py
+  * Add a mention to the docs that `format_skeleton(..., fuzzy=True)` may raise
+  * Two hyperlinks (to CLDR) and some typos
+- Adjust filename for dist file in %files section
+
+-------------------------------------------------------------------
 Mon Jul 15 11:10:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.0

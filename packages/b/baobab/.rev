@@ -443,4 +443,26 @@
     <comment>GNOME 46 (forwarded request 1160558 from dimstar)</comment>
     <requestid>1160587</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4cc625a818a02ddca83ff23630bc755e</srcmd5>
+    <version>47.0</version>
+    <time>1728400720</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.0:
+  + Port to AdwSpinner.
+  + Updated translations.
+
+- Update to version 47.alpha:
+  + Use GtkColumnView instead of GtkTreeView
+  + Replace named colors with CSS variables
+  + Use symbolic icons in location lists
+  + Port to AdwDialog
+  + Use AdwPreferencesPage/Group for location list
+  + Use AdwButtonRow for &quot;Add Location&quot; button
+  + Miscellaneous style cleanups
+  + Allow removing files that don't exist
+  + New pathbar style
+  + Updated translations.</comment>
+    <requestid>1205555</requestid>
+  </revision>
 </revisionlist>

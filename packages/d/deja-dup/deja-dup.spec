@@ -17,13 +17,13 @@
 
 
 Name:           deja-dup
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
-Source0:        https://gitlab.gnome.org/World/deja-dup/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  appstream-glib
 BuildRequires:  dbus-1
 BuildRequires:  desktop-file-utils
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
@@ -90,7 +90,6 @@ Features:
 # put the files in the right subpackage
 %dir %{_libexecdir}/deja-dup
 %{_libexecdir}/deja-dup/deja-dup-monitor
-%{_libexecdir}/deja-dup/restic-dump-to
 %{_datadir}/applications/org.gnome.DejaDup.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.DejaDup.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.DejaDup*

@@ -1,4 +1,4 @@
-From 3568a62d39a708fbad43c7c1bb2f3a81947820e3 Mon Sep 17 00:00:00 2001
+From b1351877c3b407c638c039305e57ff6616e58c3a Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -36,7 +36,7 @@ index 768c6572d6..86f4b1a103 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index ddf9414b08..644963d867 100644
+index 17666814c5..4114321f73 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
 @@ -1116,6 +1116,22 @@ source "board/sunxi/Kconfig"
@@ -63,7 +63,7 @@ index ddf9414b08..644963d867 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 0140b07d32..d043c4d3a8 100644
+index 046e9fbfc6..6f20834671 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
 @@ -314,7 +314,30 @@ uint32_t sunxi_get_boot_device(void)
@@ -97,7 +97,7 @@ index 0140b07d32..d043c4d3a8 100644
  uint32_t sunxi_get_spl_size(void)
  {
  	struct boot_file_head *egon_head = (void *)SPL_ADDR;
-@@ -456,6 +479,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
+@@ -459,6 +482,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
  
  void board_init_f(ulong dummy)
  {
@@ -106,7 +106,7 @@ index 0140b07d32..d043c4d3a8 100644
  
  	/* Enable non-secure access to some peripherals */
 diff --git a/cmd/boot.c b/cmd/boot.c
-index d7c7db449c..111c9d9409 100644
+index 9de90aca6c..4e2da505eb 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -47,6 +47,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])

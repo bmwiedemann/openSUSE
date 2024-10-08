@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1-modules
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyasn1/pyasn1-modules
 Source:         https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1_modules-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pyasn1/pyasn1-modules/pull/22 Stop using pyasn1.compat.octets
+Patch0:         pyasn1-061.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1 >= 0.4.7}
@@ -43,7 +45,7 @@ then generalized to be suitable for a wide range of protocols based on ASN.1
 specification.
 
 %prep
-%setup -q -n pyasn1_modules-%{version}
+%autosetup -p1 -n pyasn1_modules-%{version}
 
 %build
 %pyproject_wheel

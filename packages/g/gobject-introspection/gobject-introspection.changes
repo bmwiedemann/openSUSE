@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Sep 13 14:36:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.82.0:
+  + Require GLib 2.82.0
+
+-------------------------------------------------------------------
+Tue Sep  3 16:30:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.81.4:
+  + Add rpath when building the type dumper on macOS
+  + Fix regression in the installation of GIRepository-2.0.typelib
+
+-------------------------------------------------------------------
+Tue Sep  3 12:32:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.81.2:
+  * Add strict mode warning for enumeration members starting with a
+    number
+  * Set deprecation message for signals and properties
+  * Fix HTML definition lists in the documentation generator
+  * Catch up with Python-Markdown 3.4 extension API changes
+  * Propagate scanner errors
+  * Do not break when parsing ARM SVE types in system headers
+  * Pair pointer GTypes with their opaque structure
+  * Fix property accessor pairing
+  * Handle pid_t, etc. as their own top-level types
+  * Add warning for closure annotation
+  * Warn on invalid callback annotations
+  * Make sure to set a GError with an invalid introspect-dump
+    string
+  * Move gobject-introspection tests to a submodule
+  * Remove dependency on distutils.msvccompiler
+  * Be more thorough about applying -Wl,--no-as-needed option
+  * Documentation and build fixes
+
+-------------------------------------------------------------------
 Mon Apr 29 11:46:08 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

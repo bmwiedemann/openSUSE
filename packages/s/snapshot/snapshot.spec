@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        46.3
+Version:        47.0.1
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -30,6 +30,8 @@ Source1:        vendor.tar.zst
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
+BuildRequires:  liblcms2-devel
+BuildRequires:  libseccomp-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -51,17 +53,14 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 %autosetup -p1 -a1
 
 %build
-export RUSTFLAGS="%{build_rustflags}"
 %meson
 %meson_build
 
 %install
-export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
 %check
-export RUSTFLAGS="%{build_rustflags}"
 %{cargo_test}
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Snapshot.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Snapshot.metainfo.xml

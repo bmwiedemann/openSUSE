@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:01:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 15:08:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Add --parent-handle command line option to integrate as a
+    "modal dialog".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 25 10:45:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Set window icon
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:38:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

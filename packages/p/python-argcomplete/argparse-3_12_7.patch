@@ -1,0 +1,22 @@
+From 480d112ba488fa6825db877201577270053dacce Mon Sep 17 00:00:00 2001
+From: Eggry Ran <eggry@live.cn>
+Date: Sun, 6 Oct 2024 16:16:49 +0800
+Subject: [PATCH] Fix issue #507
+
+---
+ argcomplete/packages/_argparse.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/argcomplete/packages/_argparse.py b/argcomplete/packages/_argparse.py
+index 2a064f9..d10cf01 100644
+--- a/argcomplete/packages/_argparse.py
++++ b/argcomplete/packages/_argparse.py
+@@ -162,6 +162,8 @@ def take_action(action, argument_strings, option_string=None):
+         def consume_optional(start_index):
+             # get the optional identified at this index
+             option_tuple = option_string_indices[start_index]
++            if isinstance(option_tuple, list):  # Python 3.12.7+
++                option_tuple = option_tuple[0]
+             if len(option_tuple) == 3:
+                 action, option_string, explicit_arg = option_tuple
+             else:  # Python 3.11.9+, 3.12.3+, 3.13+

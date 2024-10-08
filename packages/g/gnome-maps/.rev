@@ -771,4 +771,12 @@
   * appdata: Fix typo in release version number (forwarded request 1173690 from dimstar)</comment>
     <requestid>1173981</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>05d59989679c063e2ed73e71f3cef021</srcmd5>
+    <version>47.0</version>
+    <time>1728400659</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205450</requestid>
+  </revision>
 </revisionlist>

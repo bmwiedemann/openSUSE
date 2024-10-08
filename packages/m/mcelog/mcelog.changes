@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 07 12:57:23 UTC 2024 - trenn@suse.de
+
+- Update to version 200:
+  * mcelog: Reduce default threshold for corrected error page offline
+  * Revert "mcelog: Reduce default threshold for corrected error page offline"
+  * mcelog: Add new model number for Panther Lake
+  * server: Correct prameter type for connect() API
+
+-------------------------------------------------------------------
 Mon May 13 12:47:27 UTC 2024 - trenn@suse.de
 
 - Update to version 198:

@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Oct  4 19:02:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.2:
+  + Limit the number of corrections to 10 in enchant backend to
+    help with dictionary configurations which produce many results.
+  + Hide add/ignore menu items when disabled.
+  + Don't show word corrections when spellcheck is disabled.
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
+Fri Sep 27 12:57:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.1:
+  + Fixes an important issue tracking weak pointers from a
+    GtkTextBuffer.
+  + Fixes an important issue where we could get invalid text iters
+    from GtkTextBuffer::delete-range() after the deletion occurred
+    when other signal handlers are in play.
+
+-------------------------------------------------------------------
+Tue Sep 10 10:30:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + This is a stable release for GNOME 47.0.
+  + Protect the SpellingEngine from systems with misconfigured
+    dictionaries.
+  + Protect the SpellingTextBufferAdapter from NULL language codes.
+  + Protect the SpellingJob from uncooperative break chars which
+    could result in zero length runs.
+  + Fix some incorrect licenses.
+- Changes from version 0.3.1:
+  + Immediately clear tags for invalidated regions without
+    round-tripping to the checker thread.
+  + Bump soname for ABI changes in 0.3
+  + Fix licenses to be LGPLv2.1+
+  + Add sysprof profiler marks for performance profiling
+  + Update example so people know to copy the button-press work to
+    update the menu immediately.
+  + Fix pkg-config fields
+  + Fix libspelling usage from subproject
+  + Make introspection building optional
+  + Documentation improvements
+- Pass sysprof=false to meson configure, do not build the profiler
+  support at this time.
+- Add so_ver and api_ver define, and set them to 1-2 and 1
+  respectivly.
+- Add myspell-en_US BuildRequires: Needed for tests.
+
+-------------------------------------------------------------------
+Thu Aug  8 19:54:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.0:
+  + This is an unstable release for GNOME 47.beta.
+  + The highlight for this release is a new threaded spellchecking
+    engine. It performs text analysis and dictionary lookups in
+    bulk off the UI thread. Care is taken to catch collisions in
+    the face of user editing while spellchecking operations are in
+    flight.
+   + I expect a significant reduction in initial spellchecking time
+     after opening a document. Opening `gtktextbuffer.c` in Text
+     Editor was more than 8x faster.
+   + Currently, libspelling relies on GTK main until 4.15.5 is
+     released so do keep this in mind if you are a distributor.
+   + Some API has changed, though that is unlikely to affect any
+     known applications using libspelling.
+   + Many new unit tests are part of the testsuite
+   + SpellingLanguage was renamed to SpellingDictionary
+   + SpellingLanguageInfo was renamed to SpellingLanguage
+   + Various helpers were added to SpellingTextBufferAdapter so
+     that they can update spelling menus. Applications that update
+     the cursor position on clicks before showing menus may want to
+     force the menu updating before `menu.popup`.
+   + SpellingTextBufferAdapter now uses the new
+     GtkTextBufferCommitNotify API in GTK 4.15.5 and newer.
+
+-------------------------------------------------------------------
 Mon Mar  4 08:46:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.1:

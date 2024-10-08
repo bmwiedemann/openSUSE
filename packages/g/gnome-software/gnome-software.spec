@@ -16,11 +16,11 @@
 #
 
 
-%define gs_plugin_api 20
+%define gs_plugin_api 21
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        46.5
+Version:        47.0+23
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 Patch1:         gnome-software-disable-offline-update.patch
 %endif
 BuildRequires:  gtk-doc
+BuildRequires:  itstool
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
@@ -107,6 +108,8 @@ the GNOME software store.
 	-D soup2=false \
 	-D sysprof=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	-D opensuse-distro-upgrade=true \
+	-D hardcoded_curated=true \
+	-D default_featured_apps=true \
 	%{nil}
 %meson_build
 

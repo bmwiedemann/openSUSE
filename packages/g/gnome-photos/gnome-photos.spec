@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-photos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,9 +61,7 @@ BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 # gnome-photos references tracker's glib schemas
-Requires:       tracker >= 3
-# and also org.freedesktop.Tracker.Miner3.Files, which lives in tracker-miner-files
-Requires:       tracker-miner-files >= 3
+Requires:       localsearch
 # If we want to be able to send photos to a remote DLNA renderer, we require the dbus service for it
 Recommends:     dbus(dleyna-renderer-service)
 

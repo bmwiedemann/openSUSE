@@ -18,10 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.280.0
+Version:        5.290.0
 Release:        0
-# 5.28 -> normalize -> 5.280.0
-%define cpan_version 5.28
+# 5.29 -> normalize -> 5.290.0
+%define cpan_version 5.29
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,11 +30,13 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(MIME::Base32)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(parent)
+Requires:       perl(MIME::Base32)
 Requires:       perl(parent)
 Provides:       perl(URI) = %{version}
 Provides:       perl(URI::Escape) = %{version}
@@ -68,6 +70,7 @@ Provides:       perl(URI::mms) = %{version}
 Provides:       perl(URI::news) = %{version}
 Provides:       perl(URI::nntp) = %{version}
 Provides:       perl(URI::nntps) = %{version}
+Provides:       perl(URI::otpauth) = %{version}
 Provides:       perl(URI::pop) = %{version}
 Provides:       perl(URI::rlogin) = %{version}
 Provides:       perl(URI::rsync) = %{version}

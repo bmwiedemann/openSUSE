@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 08:06:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prefer webkit2gtk-4.1 over webkit2gtk-4.0: configure also prefers
+  API version 4.1 and uses 4.0 only as a fallback.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:47:37 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-gcc14.patch to make flymake-tests work even with

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 30 19:45:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.1:
+  + Simplify udev rule installation
+  + Dont' fail tests with newer json-glib
+- Changes from version 0.4.0:
+  + Support `hw_pattern` on devices using qcom-lpg. This allows to
+    keep LEDs on in suspend.
+  + Internal cleanups and restructuring to cater for different LED
+    types.
+  + Support RGB color mixing for multicolor leds
+  + Allow to use (camera) flash LEDs as notificaton LED
+  + Immediately end "too noisy" feedbacks when switching profile
+    levels
+- Changes from version 0.3.0:
+  + Allow blessed apps (e.g. alarm clocks) to override the global
+    feedback level
+  + Documentation, CI and packaging updates
+  + Make it simpler to add new led types
+- Add pkgconfig(gmobile) and pkgconfig(umockdev-1.0) BuildRequires:
+  New dependencies.
+
+-------------------------------------------------------------------
 Wed Sep  6 08:56:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.1:

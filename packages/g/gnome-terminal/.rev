@@ -2495,4 +2495,12 @@
   + client: legacy: Error out when specifying more than one argv. (forwarded request 1179616 from dimstar)</comment>
     <requestid>1179671</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>3263c6c35ec0091255f70691eea58f7c</srcmd5>
+    <version>3.54.0</version>
+    <time>1728400674</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205462</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:14:06 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fixed flatpak build
+  + Don't use symbolic icons for the window
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 15:06:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Added brand colors
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 25 12:08:28 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Fix hex string conversion for bitwise operator
+  + Force LTR for buttons
+  + Added kWh, MJ, KJ unit support
+  + Sort conversion categories alphabetically
+  + Removed obsolete bulgarian translations
+  + Only allow alphanumeric values for variable names
+  + Replace base_label with buttons
+  + Updated flathub badge
+  + Use adwaita spinner
+- Changes from version 47.alpha:
+  + Support VND currency
+  + Fixed incorrect event handling
+  + Removed Shift left/right dropdown
+  + Improved popover remove buttons
+  + Use result format instead of number format
+  + Ported to Adwaita adaptive dialogs
+  + Disable undo button if nothing to undo
+  + Metainfo improvements
+  + Keep last conversion options at launch
+  + Minor improvements to the undo button
+  + Make sure to use the correct app id for development builds
+  + Stop using orange accent color
+  + A11y announce status changes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May  7 10:08:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

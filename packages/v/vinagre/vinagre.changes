@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 17:17:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macros.
+
+-------------------------------------------------------------------
 Wed Jun 19 17:07:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to compiler options to work around GCC 14 not allowing

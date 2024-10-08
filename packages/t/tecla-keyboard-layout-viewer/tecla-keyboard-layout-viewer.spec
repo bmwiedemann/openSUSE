@@ -17,7 +17,7 @@
 
 
 Name:           tecla-keyboard-layout-viewer
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        A keyboard layout viewer
 License:        GPL-2.0-only

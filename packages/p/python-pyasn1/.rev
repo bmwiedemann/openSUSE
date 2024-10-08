@@ -433,4 +433,12 @@
   * Removed support for EOL Python 2.7, 3.6, 3.7</comment>
     <requestid>1164372</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>db5da1f3b35918fcd2db6526f8b9f1be</srcmd5>
+    <version>0.6.1</version>
+    <time>1728400976</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206127</requestid>
+  </revision>
 </revisionlist>

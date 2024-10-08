@@ -37,7 +37,7 @@ BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  tracker-devel
+BuildRequires:  tinysparql-devel
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files

@@ -19,7 +19,7 @@
 %define api_ver 5
 
 Name:           libgedit-amtk
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 19 13:28:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0.1:
+  + Add back gnome-session-ctl.
+
+-------------------------------------------------------------------
+Wed Sep 18 18:02:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Allow to disable X11 sessions.
+  + Updated translations.
+- Bump base_ver define to 47.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:47:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

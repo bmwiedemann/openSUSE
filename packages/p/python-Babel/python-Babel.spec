@@ -26,7 +26,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Babel
-Version:        2.15.0
+Version:        2.16.0
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
@@ -94,6 +94,6 @@ A collection of tools for internationalizing Python applications.
 %doc CHANGES.rst
 %python_alternative %{_bindir}/pybabel
 %{python_sitelib}/babel
-%{python_sitelib}/Babel-%{version}.dist-info
+%{python_sitelib}/babel-%{version}.dist-info
 
 %changelog

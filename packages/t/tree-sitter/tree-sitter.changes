@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Sun Oct  6 03:45:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.2:
+  * Drop legacy binding updates
+  * templates: Properly replace author email
+  * templates: Update npm packages
+  * bindings: Improve cmake file
+  * cmake: Support amalgamated build
+  * cmake: Correct library scopes
+  * make: Fix tree-sitter.pc generation
+
+-------------------------------------------------------------------
+Fri Oct  4 06:39:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.1:
+  * fix(generate): move generated header files into the generate crate
+- update do 0.24.0:
+  * docs: add Kotlin to the playground
+  * fix(generate): remove necessary files from gitignore template
+  * feat(generate): bump tree-sitter dev dependency to 0.23
+  * fix(cli): remove conflicting short flags in the fuzz subcommand
+  * feat(bindings): bump go-tree-sitter version
+  * docs(changelog): add 0.23.0 release notes
+  * feat: add an API to time out query executions
+  * fix(generate): disallow inline variables referencing themselves
+  * fix(rust): add missing TSNode functions
+  * fix(lib): correct extra node creation from non-zero root-alias cursors
+  * fix(test): exit with an error if a test marked with :error has no error
+  * fix(test): retain attributes when running test -u
+  * feat(language): derive Clone and Copy on LanguageFn
+  * fix(lib): backtrack to the last relevant iterator if no child was found
+  * fix(generate): add tree-sitter to the dev-dependencies of the Cargo.toml
+  * fix(binding_web): correct edit signature
+  * build(lib): build using cmake
+  * fix(cli): keep skipped tests unchanged in the test/corpus
+  * feat!: remove C++ support for external scanners
+  * chore: clippy lints
+  * feat!: remove the build-wasm subcommand
+  * fix(generate): do not generate large character sets for unused variables
+  * fix(binding_web): remove nonexistent function definition
+  * feat: add field_name_for_named_child
+  * fix(cli): remove duplicate short options from fuzz command
+  * fix: correct comment quote
+  * fix(generate): remove excludes in Package.swift
+  * chore(bindings): update rust lib docs
+  * build(deps): bump the cargo group across 1 directory with 11 updates
+  * fix(docs): fix highlight readme example using compatible versions
+  * fix(lib): peek at the next sibling when iterating to find the child
+  * build(make): support darwin cross-compile
+  * fix(wasm): use / paths for workdir
+  * fix: properly handle utf8 code points for highlight and tag assertions
+  * feat: add root field in node-types.json
+  * fix(fuzz): skip tests marked with :skip & don't report errors on them
+  * feat: add eslint configuration package
+  * chore: remove compile_flags.txt
+  * style(tests): do not use .as_bytes().len() on strings
+  * feat: provide a rebuild flag to force rebuild parsers
+  * feat(test): test all queries
+  * fix(test): correctly handle assertions on empty lines
+  * feat: add shell completions
+  * refactor(cli): break out subcommand logic into separate functions
+  * fix: do not generate spurious files if the grammar path is not the detected
+  * fix: disallow empty string literals in rules
+  * feat(cli): add a no-ranges flag to the parse command
+  * fix(lib): correct descendant-for-range behavior with zero-width tokens
+  * fix(lib): silence warnings with -Wpedantic
+  * style(lib): add parameter names in declarations that are missing them
+  * feat!: move generation of grammar files to an init command
+  * chore: clippy fixes
+  * feat: move generate logic to its own crate
+  * feat(generate): add a no-op --no-bindings flag
+  * Update cli/src/main.rs
+  * refactor: improve the grammar schema
+  * chore: update generate crate paths
+  * build: bump deps
+  * feat(init): add an update flag
+  * feat!: implement StreamingIterator instead of Iterator for `Query…`
+  * fix(lib)!: child_containing_descendant now returns direct children
+  * feat: add --overview-only to test subcommand
+  * fix: correct test name parsing when the prior test has equal signs
+  * fix: handle more cases of editing subtrees that depend on column values
+  * fix: exclude APIs that dup given file descriptors from WASI builds
+  * feat: move tree-sitter configuration to dedicated file
+  * fix(cli): generate the parser version from the config as well
+  * fix: deprecate child_containing_descendant
+  * fix(bindings): use RUST_BINDING_VERSION in Cargo.toml template
+  * fix(bindings): lower go version to 1.22
+  * build(bindings): add CMakeLists.txt file
+  * feat(api): expose function to check if symbol represents a supertype
+  * fix(init): fix some schema issues
+  * fix(init): don't prompt to reconfigure
+  * fix(init): do not migrate package.json on error
+  * fix(build): correct wasm root path lookup
+  * fix(generate): remove unused rules
+  * fix(generate): add *.scm section to .editorconfig template
+  * fix(generate): filter out unused rules in other spots
+  * build(cmake): link wasmtime dependencies
+  * fix(lib): ensure an unfinished state was found before removing it
+  * fix(build): force rebuild parsers when build is invoked
+  * build(xtask): bump cmake version in bump-version
+  * build(xtask): only consider major and minor versions when validating
+  * build(xtask): ignore the language crate
+  * build: bump language to 0.1.1
+
+-------------------------------------------------------------------
+Tue Oct  1 06:51:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.1:
+  * fix(generate): remove necessary files from gitignore template
+  * fix(cli): remove conflicting short flags in the fuzz subcommand
+  * feat(generate): bump tree-sitter dev dependency to 0.23
+  * feat(bindings): bump go-tree-sitter version
+  * fix(lib): correct extra node creation from non-zero root-alias cursors
+  * fix(rust): add missing TSNode functions
+  * fix(test): exit with an error if a test marked with :error has no error
+  * fix(test): retain attributes when running test -u
+  * fix(generate): disallow inline variables referencing themselves
+  * feat(language): derive Clone and Copy on LanguageFn
+  * fix(lib): backtrack to the last relevant iterator if no child was found
+  * fix(generate): add tree-sitter to the dev-dependencies of the Cargo.toml
+  * fix(binding_web): correct edit signature
+  * fix(cli): keep skipped tests unchanged in the test/corpus
+  * fix(generate): do not generate large character sets for unused variables
+  * fix(binding_web): remove nonexistent function definition
+  * fix(cli): remove duplicate short options from fuzz command
+  * fix(generate): remove excludes in Package.swift
+  * chore(bindings): update rust lib docs
+  * fix: correct comment quote
+  * build(make): support darwin cross-compile
+  * fix(lib): peek at the next sibling when iterating to find the child
+  * fix(docs): fix highlight readme example using compatible versions
+  * build(deps): bump the cargo group across 1 directory with 11 updates
+  * fix(wasm): use / paths for workdir
+  * fix: properly handle utf8 code points for highlight and tag assertions
+  * fix(fuzz): skip tests marked with :skip & don't report errors on them
+  * fix: do not generate spurious files if the grammar path is not the default path
+  * fix: disallow empty string literals in rules
+  * fix(lib): correct descendant-for-range behavior with zero-width tokens
+  * fix: correct test name parsing when the prior test has equal signs
+  * fix: handle more cases of editing subtrees that depend on column values
+  * fix: exclude APIs that dup given file descriptors from WASI builds
+
+-------------------------------------------------------------------
 Mon Aug 26 16:33:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.0:

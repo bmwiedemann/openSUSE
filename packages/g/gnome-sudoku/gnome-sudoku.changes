@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Sep 13 16:10:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Switch back all keyboard input to KeyPress
+  + The number picker buttons will no longer grab the focus which
+    was blocking movement keys and shortcuts
+  + Let mouse shortcuts be used in the number picker
+  + Always dismiss the picker on number input from the keyboard
+  + Add Enter shortcut interaction with earmark mode
+  + A lot of backend changes with the number picker
+  + Fix number picker not updating on undo/redo
+  + Fix undo and redo being usable in pause
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 18:19:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Add mouse wheel zoom
+  + Use consistent terminology for Puzzle and Game
+  + Increase meson requirement to v1.4
+  + Change the selection to be a bit lighter in light mode
+  + Update default size to 650x700
+  + Use variables for app id
+  + Change app_id to org.gnome.Sudoku.Devel for gnome nightly
+  + Add feature set to metainfo description
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 26 17:31:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Add accent color support
+  + Add zoom feature, supported by new buttons and the standard
+    bindings
+  + Move create custom game to the start menu
+  + Add mouse button bindings for undo and redo
+  + Allow earmark picker in filled cells
+  + Adjust play again to skip the start menu
+  + Give play custom game success style to make it more visible and
+    move it next to the primary menu
+  + Disable "New Puzzle" and "Clear Board" while in start menu
+  + Fix cell[0, 0] not being selectable on game start
+  + Fix highlighter bugs with undo/redo and clear board
+  + Fix fixed cells not being counted in custom games
+  + Fix clear button adding individual actions to the undo/redo
+    stack
+  + Fix disable_all_earmarks not grabbing focus on undo/redo
+  + Port Message Dialogs to Alert Dialogs
+  + Updated translations
+- Changes from version 47.alpha:
+  + Add preferences dialog with the previously hidden settings
+    aswell as new customizations for warnings and the highlighter
+  + Add earmark mode button (shortcut e) to toggle earmark input
+  + Change warnings to additionally check against the solution by
+    default to prevent getting stuck
+  + Add autoclean earmarks feature toggleable in preferences
+  + Add number picker on second click feature toggleable in
+    preferences
+  + Add keyboard shortcuts window
+  + Change the headerbar and error color to follow adwaita's theme
+  + Port AboutDialog and PrintDialog to Adw.Dialog
+  + Restore the difficulty in the headerbar as a subtitle
+  + Reduce margin sizes and hide the clock when the window gets too
+    small
+  + Move the paused button to the left side
+  + Disable most Sudoku shortcuts in dialogs
+  + Change dark mode's highlighter to be more subtle and its
+    earmark highlight easier to read
+  + Remove Clear Board confirmation, with the stack rework it can
+    now be undone with "undo"
+  + Remove showing 'X' as warnings
+  + Includes changes from 46.1, 46.2, 46.3
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 28 21:00:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.3:

@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        46.2
+Version:        47.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -111,7 +111,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.4
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ply-boot-client)
@@ -130,11 +129,10 @@ Requires:       gnome-settings-daemon
 Requires:       gnome-shell
 # xdm package ships systemd display-manager service and other common scripts
 # between display managers (bsc#1084655)
-Requires:       xdm
+Requires:       (gdm-xdm-integration or gdm-systemd)
+Suggests:       gdm-xdm-integration
 Requires(post): dconf
 Requires(pre):  group(video)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     iso-codes
 # accessibility
 Recommends:     orca
@@ -213,6 +211,17 @@ The GNOME Display Manager is a system service that is responsible for
 providing graphical log-ins and managing local and remote displays.
 
 This package provides the upstream default configuration for gdm.
+
+%package xdm-integration
+Summary:        gdm integration into the xdm wrapper script
+Requires:       gdm
+Requires:       xdm
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description xdm-integration
+GDM's XDM wrapper integration
+By default openSUSE uses xdm which enables the DM based on sysconfig.
 
 %package systemd
 Summary:        Systemd gdm.service file
@@ -362,6 +371,8 @@ install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.
 
 %post
 %tmpfiles_create gdm.conf
+
+%post xdm-integration
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm 25
 
@@ -369,7 +380,7 @@ install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.
 # Create dconf database for gdm, to lockdown the gdm session
 dconf update
 
-%postun
+%postun xdm-integration
 [ -f %{_prefix}/lib/X11/displaymanagers/gdm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm
 
@@ -385,7 +396,6 @@ dconf update
 %{_sbindir}/gdm
 %{_bindir}/gdm
 %{_bindir}/gdm-config
-%{_bindir}/gdm-screenshot
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %{_datadir}/dconf/profile/gdm
@@ -413,11 +423,6 @@ dconf update
 %_config_norepl %{_pam_vendordir}/gdm-password
 %_config_norepl %{_pam_vendordir}/gdm-launch-environment
 %{_datadir}/dbus-1/system.d/gdm.conf
-# /etc/xinit.d/xdm integration
-%dir %{_prefix}/lib/X11/displaymanagers
-%{_prefix}/lib/X11/displaymanagers/default-displaymanager
-%{_prefix}/lib/X11/displaymanagers/gdm
-%ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_udevrulesdir}/61-gdm.rules
 %{_tmpfilesdir}/gdm.conf
 %{_sysusersdir}/gdm.conf
@@ -425,6 +430,13 @@ dconf update
 %{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 %dir %{_userunitdir}/gnome-session@gnome-login.target.d
 %{_userunitdir}/gnome-session@gnome-login.target.d/session.conf
+
+%files xdm-integration
+# /etc/xinit.d/xdm integration
+%dir %{_prefix}/lib/X11/displaymanagers
+%{_prefix}/lib/X11/displaymanagers/default-displaymanager
+%{_prefix}/lib/X11/displaymanagers/gdm
+%ghost %{_sysconfdir}/alternatives/default-displaymanager
 
 %files -n libgdm1
 %{_libdir}/libgdm.so.*

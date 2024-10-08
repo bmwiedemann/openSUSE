@@ -415,6 +415,8 @@ Wed Oct 18 12:52:58 UTC 2023 - David Anes <david.anes@suse.com>
 - Update to 2.14.0:
   * Lots of new features, fixes and updates.
   * https://commons.apache.org/proper/commons-io/changes-report.html#a2.14.0
+  * Fixes bsc#1231298, CVE-2024-47554: untrusted input to XmlStreamReader
+    can lead to uncontrolled resource consumption
 
 -------------------------------------------------------------------
 Tue Apr 19 15:34:30 UTC 2022 - David Anes <david.anes@suse.com>

@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        46.2
+Version:        47.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
@@ -118,7 +118,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %meson \
     -D classic_mode=true \
     -D extension_set=classic \
-    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,user-theme,system-monitor"
+    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,user-theme,system-monitor,status-icons"
 %meson_build
 
 %install
@@ -144,12 +144,14 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.apps-menu.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.workspace-indicator.gschema.xml
 %dir %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/
+%{_datadir}/gnome-shell/extensions/status-icons@gnome-shell-extensions.gcampax.github.com/
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
 %dir %{_datadir}/wayland-sessions

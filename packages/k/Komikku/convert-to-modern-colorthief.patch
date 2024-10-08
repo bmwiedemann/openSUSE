@@ -1,6 +1,6 @@
 diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2024-08-30 00:20:12.000000000 +0200
-+++ komikku-patched/komikku/models/database/mangas.py	2024-08-30 08:12:05.056293989 +0200
+--- komikku/komikku/models/database/mangas.py	2024-09-18 23:17:50.000000000 +0200
++++ komikku-patched/komikku/models/database/mangas.py	2024-09-19 03:23:15.844776113 +0200
 @@ -11,7 +11,7 @@
  import shutil
  import time
@@ -10,18 +10,19 @@ diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/mode
  
  from komikku.models.database import create_db_connection
  from komikku.models.database import insert_row
-@@ -128,7 +128,7 @@
+@@ -132,7 +132,7 @@
              return None
  
-         colors = []
+         colors = [':root {\n']
 -        for index, color in enumerate(palette):
 +        for index, color in enumerate(get_palette):
-             colors.append(f'@define-color background_color_{index} rgba({color[0]}, {color[1]}, {color[2]}, 1);\n')  # noqa: E702, E231
-         colors.append('@define-color background_color_2 @window_bg_color;')
- 
+             colors.append(f'\t--backdrop-background-color-{index}: rgb({color[0]} {color[1]} {color[2]} / 100%);\n')  # noqa: E702, E231
+         colors.append('\t--backdrop-background-color-2: var(--window-bg-color);\n')
+         colors.append('}\n')
+Only in komikku-patched/komikku/models/database: mangas.py.orig
 diff -rub komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2024-08-30 00:20:12.000000000 +0200
-+++ komikku-patched/requirements.txt	2024-08-30 08:12:22.482940241 +0200
+--- komikku/requirements.txt	2024-09-18 23:17:50.000000000 +0200
++++ komikku-patched/requirements.txt	2024-09-19 03:21:44.684673635 +0200
 @@ -1,6 +1,6 @@
  beautifulsoup4
  brotli >= 1.1.0

@@ -23,21 +23,21 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.80.1
+Version:        2.82.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.80/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.82/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  m4
-BuildRequires:  meson >= 0.55.0
+BuildRequires:  meson >= 0.62
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.81.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(sigc++-3.0) >= 2.99.5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:50:50 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- add which to the tomcat containers (bsc#1231347)
+
+-------------------------------------------------------------------
 Wed Oct  2 12:31:14 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - add dummy Dockerfile for tricking the bots

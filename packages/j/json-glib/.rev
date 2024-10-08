@@ -413,4 +413,12 @@
     <comment></comment>
     <requestid>1111885</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fba14f16e39db93b36a30af0c9079066</srcmd5>
+    <version>1.10.0</version>
+    <time>1728400686</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205472</requestid>
+  </revision>
 </revisionlist>

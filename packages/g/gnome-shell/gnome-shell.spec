@@ -17,11 +17,11 @@
 
 
 %global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 14
+%define mutter_api 15
 %define mutter_req 46.0
 
 Name:           gnome-shell
-Version:        46.5
+Version:        47.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -35,14 +35,12 @@ Source1:        libgnome-volume-control-0.gitmodule.tar.zst
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
 Source100:      noise-texture.png
 
-# PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
+# PATCH-NEEDS-REBASE # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
 Patch9:         gnome-shell-fix-cursor-on-hide-preedit.patch
-# PATCH-FIX-UPSTREAM CVE-2024-36472.patch glgo#GNOME/gnome-shell#7688 bsc#1225567 xiaoguang.wang@suse.com -- Show notification when detecting captive portal
-Patch10:        CVE-2024-36472.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -70,6 +68,7 @@ Patch1013:      gnome-shell-add-linkoption-dl.patch
 BuildRequires:  asciidoc
 BuildRequires:  dbus-1
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docutils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.58.0
@@ -188,10 +187,10 @@ pushd subprojects
 tar xf %{SOURCE1}
 mv libgnome-volume-control-0.gitmodule gvc
 popd
-%patch -P 7 -p1
+# Patch needs rebase
+#%%patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
-%patch -P 10 -p1
 
 %if 0%{?sle_version}
 %patch -P 1001 -p1
@@ -240,7 +239,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %doc README.md NEWS
 %{_bindir}/gnome-shell
 %{_bindir}/gnome-extensions
-%{_bindir}/gnome-shell-extension-prefs
 %{_bindir}/gnome-shell-extension-tool
 %{_bindir}/gnome-shell-test-tool
 %dir %{_libdir}/gnome-shell
@@ -307,6 +305,8 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/bash-completion/completions/gnome-extensions
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.CaptivePortal.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.CaptivePortal-symbolic.svg
 %{_userunitdir}/org.gnome.Shell-disable-extensions.service
 %{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml

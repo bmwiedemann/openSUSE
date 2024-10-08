@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:57:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.0:
+  + Port to latest gedit API.
+  + Build: some refactorings.
+  + Text Size plugin: moved to the main gedit repository.
+  + Git plugin: removed.
+  + Translation updates.
+- Changes from version 47.1:
+  + Session Saver plugin: bug fix.
+- Changes from version 47.0:
+  + Port to latest libgedit-gtksourceview API.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:49:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0+5:

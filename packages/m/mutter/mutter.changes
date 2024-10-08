@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Sep 26 18:20:54 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 47.0+19:
+  * Revert "window/wayland: Use scale for configured rect in
+    configuration"
+  * cogl/gles: Don't initialize glGetStringi
+  * cogl/gl: Don't initialize potentially unused/unsupported
+    functions
+  * cogl: Don't _cogl_context_get_gl_extensions before
+    check_gl_version
+  * cogl/egl: Restore support for EGL 1.4
+  * wayland/tablet-tool: Fix grabbing tablet devices
+  * cogl/gles: Use unsized internal formats for RGB8, RGBA8 in GLES
+    2.0
+  * wayland/color-management: Fix SIGSEGV on dispose 
+  * x11: Reduce chances XPending does recvmsg() syscall
+  * gwakeup: Reduce wake-ups to only first item in queue
+  * window/x11: Use g_autoslist (MetaStrut) in
+    meta_window_x11_update_struts
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 22:52:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fix resizing of electron windows
+  + Fix using modifiers on multi-GPU setups
+  + Don't override externally set tablet calibration
+  + Add experimental support for xdg-session-manager-v1 protocol
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add gvdb submodule and add as source.
+
+-------------------------------------------------------------------
+Mon Sep 16 21:20:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.rc+40:
+  + window/xwayland: Handle arithmetics close to the int limits.
+
+-------------------------------------------------------------------
+Mon Sep 16 20:19:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update version requirements to correspond with the source.
+
+-------------------------------------------------------------------
+Mon Sep 16 18:19:54 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Add experimental color management protocol support
+  + Merge Cally into Clutter
+  + Fix drag and drop between X11 and wayland clients
+  + Fix drag and drop from grabbing popups
+  + Fix EGLDevice support
+  + Improve cursor smoothness under load
+  + Fix frozen cursor on some hybrid machines
+  + Fix touch window dragging with pointer lock enabled
+  + Store the layout mode in monitor config
+  + Fix keys sometimes getting stuck after using global shortcut
+  + Fix propagating tablet device removals to clients
+  + Fix tablet input in maximized windows
+  + Reduce damage on window movement
+  + Install mutter tests
+  + Use libadwaita for server-side decorations on GNOME
+  + Fix frozen cursor after suspend
+  + Let scaling-aware Xwayland clients scale themselves
+  + Add initial PipeWire explicit sync support
+  + Trace damage reason in sysprof
+  + Expose new backlight API to gnome-settings-daemon
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 18:17:08 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Fix visibility of Xwayland windows
+  + Add plumbing for transforming color state
+  + Build and publish GNOME OS systemd-sysext extensions
+  + Implement support for tablet tool keybindings and actions
+  + Add support for tablet tool pressure ranges
+  + Improve sticky behavior with transient dialogs
+  + Improve placement and focus logic with always-on-top windows
+  + Expose Orientationmanager to introspection
+  + Recover from secondary GPU update failures
+  + Plugged leaks
+  + Misc. bug fixes and cleanups.
+- Rebase patches with quilt.
+- Bump api_major to 15 following upstream changes.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:06:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.5:

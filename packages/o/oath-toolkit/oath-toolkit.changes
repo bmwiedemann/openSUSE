@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 13 15:10:22 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Fix security issue CVE-2024-47191 by adding
+  0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch .
+- Add patch to implement new null_usersfile_okay argument
+  42-null_usersfile_okay.patch .
+- Makes this version 2.6.11.12 to be able to depend on it.
+
+-------------------------------------------------------------------
 Wed Apr  3 11:18:24 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.6.11

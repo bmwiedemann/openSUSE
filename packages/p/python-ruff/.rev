@@ -1263,4 +1263,26 @@
    * Skip traversal for non-compound statements</comment>
     <requestid>1203894</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>77874b297ea223f6bbd7d56cf1931874</srcmd5>
+    <version>0.6.9</version>
+    <time>1728400597</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.9
+ * Preview features
+   * Fix codeblock dynamic line length calculation for indented docstring examples 
+   * [refurb] Mark FURB118 fix as unsafe 
+ * Rule changes
+   * [pydocstyle] Don't raise D208 when last line is non-empty 
+   * [pylint] Preserve trivia (i.e. comments) in PLR5501 autofix 
+ * Configuration
+   * [pyflakes] Add allow-unused-imports setting for unused-import rule (F401) 
+ * Bug fixes
+   * Support ruff discovery in pip build environments 
+   * [flake8-bugbear] Avoid short circuiting B017 for multiple context managers 
+   * [pylint] Do not offer an invalid fix for PLR1716 when the comparisons contain parenthesis 
+   * [pyupgrade] Fix UP043 to apply to collections.abc.Generator and collections.abc.AsyncGenerator 
+   * [refurb] Fix handling of slices in tuples for FURB118, e.g., x[:, 1]</comment>
+    <requestid>1206146</requestid>
+  </revision>
 </revisionlist>

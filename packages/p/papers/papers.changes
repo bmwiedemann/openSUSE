@@ -1,0 +1,427 @@
+-------------------------------------------------------------------
+Sun Sep 15 09:40:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  * It is now possible to sign documents with digital certificates,
+    like those stored in the national IDs of states like Estonia or
+    Spain
+  * Url parsing in commandline arguments now supports RFC 8118 for
+    URI parsing
+- Update service and spec, prepare for inclucion in GNOME.
+
+-------------------------------------------------------------------
+Thu Sep 12 21:23:44 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.beta+106:
+  * Update Ukrainian translation
+  * Update Hebrew translation
+  * Update Slovenian translation
+  * Update Georgian translation
+  * Update Chinese (China) translation
+  * Update Belarusian translation
+  * build: macos: Initial support for building standalone app on MacOS
+  * build: Add the libview/context to the include directories
+  * libview: Declare PpsJobSave as final type
+  * data: Set default page-cache-size to 200 MB
+  * shell: Remove useless pps_print_region_contents
+  * shell: Clean up some unused ensure_type()
+  * Add digital signing support
+  * Update Danish translation
+  * Update Danish translation
+  * shell: remove unused D-Bus stub
+  * shell: Implement RFC 8118 for URI parsing of PDF
+  * Update German translation
+  * Update Hebrew translation
+  * shell: Add a main menu on the start view page
+  * shell-rs: update bindings for document view nullable metadata in open_document
+  * shell: document-view: fix open_document nullable argument doc string
+  * shell: set the Outline as the default page in the sidebar
+  * shell-rs: set outline sidebar as default if it's available
+  * Define PPS_LOCALEDIR in config instead of having a function
+  * libdocument: backend: meson: drop unused define
+  * Drop Windows support
+  * doap: add camelCaseNick as maintainer
+  * 47.rc
+
+-------------------------------------------------------------------
+Mon Sep 02 16:58:58 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.beta+77:
+  * Update Swedish translation
+  * Update Italian translation
+  * shell-rs: Update gtk-rs to 0.9.1 & gettext-rs to 0.7.1
+  * Update Turkish translation
+  * Update British English translation
+  * Update Greek translation
+  * Update Occitan translation
+  * Update Korean translation
+  * meson: Remove platform build option
+  * Update Basque translation
+  * shell: Port PpsPasswordDialog to AdwAlertDialog
+  * shell: Port keyring to Rust
+  * libview: decrease zoom factor when smooth scrolling is used
+  * shell: Remove workaround of PpsPasswordView.ask_password
+  * shell-rs: Move file_monitor module out of window:: namespace
+  * shell: Remove unused pps_document_view_get_header_bar
+  * shell-rs: Remove empty show_loading_message for PpsWindow
+  * libview: Add pps_bookmark_new to PpsBookmark
+  * shell: Don't set "devel" CSS class for PpsDocumentView
+  * shell: Remove unused priv->dest of PpsDocumentView
+  * shell-rs: Don't reset password preference to never when unlocking document
+  * shell: document-view: remove incorrect referencing of newly created search context
+  * shell: document-view: remove unnecessary signal action update
+
+-------------------------------------------------------------------
+Fri Aug 23 12:14:26 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.beta+54:
+  * shell: Merge the PpsDocumentViewTitle into PpsDocumentView
+  * shell: Construct attachment context inside UI template
+  * shell: Rename setup_document_from_metadata to setup_document
+  * libview: Add document-model property for PpsHistory
+  * shell: find-sidebar: fix binary search algorithm
+  * shell: find-sidebar: fix binary search algorithm
+  * shell-rs: Fix loading encrypted pdf
+  * shell: Port PpsSidebarAnnotations to Rust
+  * shell-rs: Update Rust bindings
+  * libview: Make PpsBookmark a boxed type
+  * libview: Declare PpsBookmarks as a final type
+  * libdocument: Make PpsMapping a boxed type
+  * libdocument, shell-rs: Fix the memory leak of PpsDocumentInfo
+  * shell-rs: Remove skip_assert_initialized in papers-shell
+  * shell-rs: Update glib-rs to 0.20.1
+  * libview: Add missing element-type annotations
+  * Update Brazilian Portuguese translation
+  * Update Occitan translation
+  * shell: close overlaid sidebar on escape
+  * Update Russian translation
+  * Update Catalan translation
+  * Update Hindi translation
+
+-------------------------------------------------------------------
+Sat Aug 17 12:33:15 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.beta+32:
+  * Update Georgian translation
+  * Update Chinese (China) translation
+  * Update Hungarian translation
+  * Update Ukrainian translation
+  * Update Belarusian translation
+  * Update Persian translation
+  * Update Slovenian translation
+  * Update Romanian translation
+  * Update Portuguese translation
+  * shell: hide search button when search not available
+  * Update German translation
+  * libview+shell: move view search integration from window into view
+  * shell: port to new attachment context
+  * shell-rs: add manual attachment context bindings
+  * shell-rs: update bindings for new libview context
+  * libview: context: introduce attachment context
+  * move bookmarks, document-model, metadata, and search-context to libview/context
+  * shell: find-sidebar: implement binary search
+  * shell: use settings instead of metadata to make sidebar visible
+  * shell: use settings instead of metadat for setting the sidebar page
+  * shell-rs: update Rust bindings
+  * shell: fix introspection of pps_document_view_open_document
+  * libview: use draw_surface for drawing the link popover surface
+  * Update Belarusian translation
+  * Update Romanian translation
+  * Update Turkish translation
+  * Update Brazilian Portuguese translation
+  * Update Catalan translation
+  * Update Occitan translation
+  * Update Hungarian translation
+  * Update Hungarian translation
+  * Update Hindi translation
+
+-------------------------------------------------------------------
+Tue Aug 06 20:37:52 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.beta+0:
+  * 47.beta
+  * Update Portuguese translation
+  * Update Georgian translation
+  * Update Chinese (China) translation
+  * Update Ukrainian translation
+  * Update Hebrew translation
+  * Update Slovenian translation
+  * Update Persian translation
+  * shell: fix translatable string to single line in PpsDocumentView
+  * Update Slovenian translation
+  * shell-rs: Update Rust bindings
+  * shell: Refactor PpsWindow to PpsDocumentView
+  * shell-rs: Initial implement PpsWindow
+  * libview: Make PpsViewPresentation.set_document create page cache
+  * libdocument: Temporary mark pps_document_get_info as transfer none
+  * shell-rs: Fix cargo-clippy error of rust 1.80
+  * readme: Fix update-rust-bindings instruction
+  * Update Turkish translation
+  * Update Hindi translation
+  * Update Portuguese translation
+  * libview: add libadwaita as private requires
+  * libview: make sure that we clear jobs properly
+  * libview: fix some instances of prpps from evince rebrand
+  * libview: add smooth scrolling with arrow keys to PpsView
+  * meson: Only set the libadwaita pkgconfig path if needed
+  * libview, shell: Use AdwSpinner instead of GtkSpinner
+  * meson: rename gtk_doc option to documentation
+  * Update Russian translation
+  * Update Russian translation
+  * data: Bring back the new-window action since flatpak need this
+  * shell: Fix launch action for PDF document
+  * data: Fix the new-window action in .desktop
+  * shell, nautilus: Fix memory leak caused by PpsDocumentInfo
+  * backend: poppler: Handle annotation of subscript and superscript
+  * libdocument: Move the doc mutex into the PpsDocument
+  * libdocument: Remove unused PPS_DOC_MUTEX_{LOCK, UNLOCK}
+  * libdocument: Remove legacy fontconfig mutex
+  * libview: Fix close-request handler of PpsAnnotationWindow
+  * shell: Fix opening file URI with '#' inside
+  * libview: Fix criticals of PpsViewPresentation
+  * shell: sidebar-annot: Set the empty picture to chat-bubble-text-symbolic
+  * shell-rs: Implement DocumentInfo.mode() properly
+  * Update Swedish translation
+  * Update Swedish translation
+  * Update Georgian translation
+  * Update Persian translation
+  * Update Brazilian Portuguese translation
+  * Update Brazilian Portuguese translation
+  * libview: Switch to use private class member for PpsJob
+  * libview: Split the abstract class PpsJob into another file
+  * Update Occitan translation
+  * shell: Fix critical on start up in PpsSidebarThumbnails
+  * libview: Set the properties of PpsViewPresentation not construct only
+  * libview: Fix double free caused by pps_job_is_succeeded
+  * libview: Add get_password{,_save} for PpsJobLoad
+  * libdocument: Change the default annotation color to yellow-4
+  * Update Hebrew translation
+  * shell-rs: Bump version of gir to d7c0763ca
+  * shell-rs: Switch to the new clone! syntax introduced in glib 0.20
+  * shell-rs: Bump version of gtk-rs to 0.9
+  * Update Chinese (China) translation
+  * Update Ukrainian translation
+  * shell: sidebar-thumbnails: move scale-factor signal to the sidebar widget
+  * Update Slovenian translation
+  * Update Hebrew translation
+  * Update Occitan translation
+  * shell, libview: Fix heading of AdwAlertDialog according to HIG
+  * shell-rs: Fix the wrapper type of PpsPropertiesWindow
+  * shell-rs: Add DocumentInfo.permissions method
+  * shell-rs: Generate binding for DocumentPermissions
+  * shell: Remove unused PpsSaveType
+  * Update Occitan translation
+  * data: remove unused annotations-text-symbolic icon
+  * shell: Remove the unused print_dialog field of PpsWindow
+  * shell: Move the Esc handler from the application to the widget
+  * shell: Group the actions that going to be moved to doc group
+  * shell, libview: Move shortcut of select-all to PpsView
+  * data: Update branding color
+  * Update Hindi translation
+  * shell-rs: update sidebar-annotations-row to new design
+  * shell: sidebar-annotations: port to list view
+  * shell-rs: Add binding for PapersDocument.DocumentText
+  * libdocument: document-text: add missing docs
+  * libdocument: document-text: add get_text_in_area API and implement for PDF backend
+  * readme: Update Flathub badge
+  * Update Persian translation
+  * Update Hebrew translation
+  * Update Ukrainian translation
+  * Update Ukrainian translation
+  * Update Slovenian translation
+  * Update Georgian translation
+  * shell: Tweak some strings from the "Save Changes to a Copy?" AdwAlertDialog
+  * shell: Tweak the "Save a copy [...]" AdwAlertDialog heading
+  * libdocument: Handle annotation with different char size
+  * libdocument: Fix annotation of several split regions
+  * Update Slovenian translation
+  * ci: Check we don't use gettext! in our code base
+  * shell-rs: Implement custom gettext_f to replace gettext!
+  * Revert "po: Mark gettext! as a valid keyword"
+  * shell: Enable the open handler for PpsApplication
+  * shell: Register the application session
+  * po: Mark gettext! as a valid keyword
+  * libdocument, libview: Remove rect_deprecated argument of add_annotation
+  * libdocument: Fix selection region of poppler backend
+  * Update Slovenian translation
+  * Update Chinese (China) translation
+  * flatpak: Bump the version of poppler to 24.07.0
+  * libdocument: Fix crash when open djvu documents with outlines
+  * css: Ensure the pages border isn't blurry and looks correct in dark
+  * libview: Use system accent color for selection
+  * ci: Update CI image to obtain libadwaita 1.6.alpha
+  * shell: update sidebar icons
+  * shell: use less technically sounding tooltip
+  * libview: adjust page spacing
+  * libview+shell: use libadwaita's .card style for a consistent look
+  * shell: Force set the version of AdwAboutDialog
+  * shell-rs: sidebar-thumbnails: adjust margins and border of thumbnails
+  * shell-rs: sidebar-thumbnails: replace GtkImage with GtkPicture for variable sizes
+  * shell: sidebar-thumbnails: remove incorrectly applied margins
+  * shell-rs: sidebar-thumbnails: stop replacing model on un-/binding
+  * shell-rs: sidebar-thumbnails: insert all thumbnails at once
+  * meson: fix name of fallback dependency for gtk when used as subproject
+  * subprojects: do a swallow clone of subprojects
+  * meson: make "introspection" option a feature
+  * shell: use CSS variables instead of GTK named colours
+  * ci: rebuild Fedora image for GTK >=4.15.2
+  * Update Russian translation
+  * Update Hindi translation
+  * flatpak: add read-only filesystem permissions
+  * Mark app ready for mobile in AppStream
+  * flatpak: Bump the version of poppler to 24.06.1
+  * shell-rs: Remove GDK dependency of papers-shell-sys
+  * shell: Remove variable args list in pps_progress_message_area_new
+  * shell-rs: Don't generate binding for removed GObject
+  * shell: Fix GI metadata of pps_sidebar_page_get_model
+  * shell: Fix the GI of pps_message_area_get_info_bar
+  * libview: add touch-only longpress for context menu
+  * libview: port page switching gesture form pan to swipe
+  * libview: use gesture swipe for middle click dragging
+  * libview: remove image drag and drop code
+  * libview: use gdk_event_triggers_context_menu
+  * libview: claim zoom gesture
+  * libview: replace start gesture states with gtk_gesture_drag_get_start_point
+  * libview: remove some complexity in PpsView handle_cursor_over_link
+  * libview: split annotation dragging and text selection into separate gestures
+  * libview: rework selection and annotation move with GtkGestureDrag
+  * Update German translation
+
+-------------------------------------------------------------------
+Mon Jul 01 01:10:29 UTC 2024 - mantarimay@pm.me
+
+- Update to version 47.alpha+0:
+  * 47.alpha
+  * shell: Port PpsFileMonitor to Rust
+  * shell: make Gtk.Spinner spinning again
+  * Use g_set_object helper to simplify the code base
+  * shell: sidebar: add collapsing to view API
+  * shell: make PpsSidebarPage an abstract class
+  * shell: Drop workaround for GtkSpinner not stopping on unmap
+  * shell-rs: Update the version of gtk-rs
+  * libview: Fix the alignment of the page when we set the page number
+  * libdocument: document: fix page index range check
+  * libdocument: document: simplify cache by removing unnecessary static functions
+  * shell-rs: application: use current executable regardless of name or path
+  * libview: fix measurement of PpsView
+  * shell-rs: sidebar-links: allow wrapping outline entries
+  * shell: bind can-zoom-in/-out to zoom buttons
+  * libview: fix determining can-zoom-in
+
+-------------------------------------------------------------------
+Mon Jun 24 05:04:58 UTC 2024 - mantarimay@pm.me
+
+- Update to version 46.1+101:
+  * libview: Fix scroll-wheel zoom does not follow the cursor
+  * libview: Fix find job not working to one page document
+  * Update Hebrew translation
+  * Update Slovenian translation
+  * Update Chinese (China) translation
+  * ui: Mark a few strings translatable
+  * Update Slovenian translation
+  * po: Mark some translatable string and fix POTFILES.in
+  * shell: Remove ProgressMessageArea in file reloading and saving
+  * Update Chinese (China) translation
+  * Update Chinese (China) translation
+  * Update Italian translation
+  * build: Remove libxml_req_version since we don't depend on it anymore
+  * shell: Fallback to g_spawn_commandline_async in pps_spawn
+  * shell: Remove GtkListBox:can-focus property from PpsPropertiesFonts
+  * shell: Port PpsPropertiesFont to AdwPreferencesPage
+  * shell: Improve a11y of the "Folder" row from PpsPropertiesGeneral
+  * shell: Add mnemonics to the view switcher buttons from PpsPropertiesWindow
+  * shell: Port PpsPropertiesWindow to AdwDialog
+  * libdocument: reorganize the pps_document_factory_add_filters code
+  * screenshot: Add new screenshots for flathub website
+  * Update Slovenian translation
+  * ci: move prepare stage to the front
+  * window: Add Open With action
+  * Update Occitan translation
+  * shell-rs: cargo update
+  * shell-rs: Switch to crates.io based gtk-rs crates
+  * Update Slovenian translation
+  * shell: use PpsWindow helper to set PpsDocument of PpsDocumentModel
+  * shell: remove PpsWindow setup_document_idle
+  * shell: stop using the monitor to clamp requested size in PpsWindow
+  * shell: position file monitor creation close to setting the uri
+  * shell: simplify pps_window_open_document
+  * shell: Port PpsAnnotationPropertiesDialog to Rust
+  * shell: Merge two constructors of PpsAnnotationPropertiesDialog
+  * shell: Port PpsAnnotationPropertiesDialog to libadwaita
+  * shell-rs: port PpsSidebarAnnotationsRow to Rust
+  * libview: save the annotations from the window, instead of from the view
+  * shell,libview: do not call the sidebar when annotations changed
+  * shell: split the logic of creating sidebar annotation rows into widget
+  * Update Slovenian translation
+  * shell: Port PpsSidebar to Rust
+  * shell-rs: Port pps_spawn to Rust
+  * shell: Detect the lockdown schema dynamically at runtime
+  * shell: Free the leaked lockdown_settings object
+  * shell: add tooltips to zoom buttons
+  * shell: Remove the tooltip of window titlebar
+  * Update Slovenian translation
+  * Update Hebrew translation
+  * shell: Fix the UI of the alert when close window with active print job
+  * shell: Fix UI style of caret mode alert
+  * shell: Enforce header capitalization for dialog heading
+  * Update Russian translation
+  * shell-rs: Sort the type name in Gir.toml and add extra bindings
+
+-------------------------------------------------------------------
+Sat Jun 08 07:25:12 UTC 2024 - mantarimay@pm.me
+
+- Update to version 46.1+47:
+  * shell: Use appstream data to build the about dialog
+  * shell: Port PpsApplication to Rust
+  * shell-rs: Generate binding for pps_spawn
+  * shell: Remove is_native parameter of save_attachment_to_target_file
+  * shell: Remove PPS_SAVE_DOCUMENT of PpsSaveType
+  * shell: Use PPS_WINDOW_MODE_NORMAL instead magical 0
+  * shell: Remove useless gtk_widget_set_visible
+  * shell: Remove pps_str_replace
+  * po: Remove accidently included papers.pot and add .gitignore entry
+  * shell: Rename to pps_gdk_pixbuf_format_by_extension
+  * shell: Remove the dbus interface of PpsWindow
+  * ci: Check format of rust source code
+  * shell: Release memory of document model for PpsSidebar
+  * shell: Stop double free priv->model in pps_window_dispose
+  * shell: Make pps_sidebar_set_page private
+  * shell: Remove useless test & realize GtkWindow
+  * shell: Fix GI metadata of pps_spawn
+  * shell-rs: Bump the required version of libadwaita to 1.5
+  * shell: Remove unused -l command line parameter
+  * shell-rs: Remove useless temp file
+  * shell: Remove unused marshaller
+  * shell-rs: add cargo-fmt as dependency
+  * shell: Bind the fullscreen state to the show-end-title-buttons
+  * Update Slovenian translation
+  * shell: Port PpsSearchBox to Rust
+  * shell-rs: Generate binding for PpsSearchContext and PpsSearchResult
+  * shell: Fix duplicated type definition when generating Gir of libshell
+  * shell: Fix GI metadata of pps_search_context_get_result_model
+  * shell: Fix NULL job returned by PpsSearchContext::finished signal
+  * shell: inline unnecessary pps_application_open_uri_in_window function
+  * shell: stop using pps_application_open_uri_list from PpsWindow
+  * shell: stop using pps_application_open_uri_at_dest in PpsWindow
+  * shell: move pps_spawn from PpsApplication to pps_utils
+
+-------------------------------------------------------------------
+Tue Jun 04 23:03:03 UTC 2024 - mantarimay@pm.me
+
+- Update to version 46.1+14:
+  * shell: fix referencing search context
+  * shell-rs: reduce page selector width to the minimum required
+  * shell: move searchbar from window into to find sidebar
+  * shell: window: replace document menu icons with text entries
+  * shell: window: split off document menu from primary menu
+  * shell: window: remember show-sidebar state when collapsing
+  * shell: window: split toolbar into overlay and document
+  * shell: search-box: remove previous and next buttons
+  * shell: make pps_application_open_start_view private
+  * shell: small simplification and explanation in pps-application
+
+-------------------------------------------------------------------
+Tue Mar  5 14:52:09 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package
+

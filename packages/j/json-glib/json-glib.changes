@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 30 18:21:54 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + Allow disabling installed tests
+  + Support parsing multiple root statements in non-strict mode
+  + Allow loading files >4GB with json-glib-validate
+- Add docutils BuildRequires: New dependency (rst2man)
+
+-------------------------------------------------------------------
 Sat Sep 16 12:17:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.0:

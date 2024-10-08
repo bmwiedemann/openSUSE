@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.80.1
+Version:        1.82.0
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -36,7 +36,7 @@ Source99:       %{name}-rpmlintrc
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  glib2-stage1-devel
+BuildRequires:  glib2-stage1-devel >= 2.82.0
 BuildRequires:  gtk-doc
 #!BuildIgnore:  glib2-devel
 BuildRequires:  meson >= 0.55.3

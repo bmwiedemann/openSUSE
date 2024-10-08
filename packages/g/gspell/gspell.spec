@@ -1,7 +1,7 @@
 #
 # spec file for package gspell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%define shlib lib%{name}-1-2
+%define shlib lib%{name}-1-3
 Name:           gspell
-Version:        1.12.2
+Version:        1.14.0
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/gspell
-Source0:        https://download.gnome.org/sources/gspell/1.12/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gspell/1.14/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc >= 1.25
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant-2) >= 2.1.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
@@ -84,21 +85,24 @@ gspell.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--enable-gtk-doc
-%make_build
+%meson \
+	%{nil}
+%meson_build
+
+### FIXME ###
+#%%check
+#%%meson_test
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-1 %{?no_lang_C}
 
 %ldconfig_scriptlets -n %{shlib}
 
 %files
-%license COPYING
-%doc AUTHORS ChangeLog README NEWS
+%license LICENSES
+%doc AUTHORS README.md NEWS
 %{_bindir}/gspell-app1
 
 %files -n %{shlib}
@@ -108,13 +112,29 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/Gspell-1.typelib
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/gspell-1.0/
+%doc %{_datadir}/gtk-doc/html/gspell-1/
 %{_includedir}/gspell-1/
 %{_libdir}/lib%{name}-1.so
 %{_libdir}/pkgconfig/gspell-1.pc
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gspell-1.*
+%dir %{_libexecdir}/installed-tests
+%dir %{_libexecdir}/installed-tests/gspell-1
+%{_libexecdir}/installed-tests/gspell-1/test-checker
+%{_libexecdir}/installed-tests/gspell-1/test-entry
+%{_libexecdir}/installed-tests/gspell-1/test-icu
+%{_libexecdir}/installed-tests/gspell-1/test-inline-checker-text-buffer
+%{_libexecdir}/installed-tests/gspell-1/test-text-iter
+%{_libexecdir}/installed-tests/gspell-1/test-utils
+%dir %{_datadir}/installed-tests
+%dir %{_datadir}/installed-tests/gspell-1
+%{_datadir}/installed-tests/gspell-1/test-checker.test
+%{_datadir}/installed-tests/gspell-1/test-entry.test
+%{_datadir}/installed-tests/gspell-1/test-icu.test
+%{_datadir}/installed-tests/gspell-1/test-inline-checker-text-buffer.test
+%{_datadir}/installed-tests/gspell-1/test-text-iter.test
+%{_datadir}/installed-tests/gspell-1/test-utils.test
 
 %files lang -f %{name}-1.lang
 

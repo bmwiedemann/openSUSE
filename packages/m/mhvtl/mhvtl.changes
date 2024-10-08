@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 05 14:34:28 UTC 2024 - lduncan@suse.com
+
+- Update to version 1.71_release+26.3f767890cdb2:
+  * mhvtl.ko: fix build issues with bus_type
+  * mhvtl.ko: fix config.sh check for scsi_host_template
+  * Add missing LTO9 definitions.
+  * Add LTO9 basics.
+  * vtltape & vtllibrary: Change exit strategy
+  * Enhancement: Report on commit id and date if built from git source
+  * vtltape: READ POSITION improvements
+  * vtltape: Fix compile error due to rename of struct fields in TapeCapacity
+  * LogPage cleanup
+  * Update Makefile to trace changes in mhvtl_log.h
+  * vtltape LP 0x11: Only update load status once per change.
+  * LP 0x11: Set/Clear Cleaning Required/Requested bits on TapeAlert
+  * Normalize tar file
+  * Rename vtltape.pem to vtltape_pem.h
+  * LP 0x11: Implement VHF log page (0x11)
+  * Place wrappers around media state values
+  * mhvtl.ko: Upstream kernel defines scsi_host_template as const struct
+
+-------------------------------------------------------------------
+Thu Feb 15 17:12:22 UTC 2024 - Lee Duncan <lduncan@suse.com>
+
+- Fix build issues with SOURCE_DATA_EPOCH, updating the SPEC file.
+
+-------------------------------------------------------------------
 Wed Jul 26 16:01:08 UTC 2023 - lduncan@suse.com
 
 - Besides lots of bug fixes, the main visible change is the

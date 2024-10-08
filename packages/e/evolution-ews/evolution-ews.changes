@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:38:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 08:27:47 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 25 13:38:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.2:
+  + Bug Fixes:
+    - m365: Slow search with "Message contains"
+    - Contacts: Offline GAL not searched with "manual query" views
+    - m365: Workaround MIME send server's reencode with forced
+      base64
+    - OAuth2: Implement prompter cookie interface for Intune
+      support
+  + CI: Update dependencies in the Flatpak manifest
+  + m365: Calendar: Ability to create Online meeting
+  + Misc: Extract common code into a new shared library
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug  5 06:53:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.4:

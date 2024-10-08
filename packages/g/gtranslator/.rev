@@ -428,4 +428,20 @@
   + Update some translations</comment>
     <requestid>1170058</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a57b7b860957a94ff1156faf304515a6</srcmd5>
+    <version>47.0</version>
+    <time>1728401042</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.0:
+  + Do D-L requests async
+  + Fix bugs
+  + Add tooltip-text to buttons
+  + Use newer widgets from libadwaita
+  + Updated translations.
+- Switch to source service for tarball.
+- Stop passing gtk_doc=false to meson, no longer needed, nor
+  recognized.</comment>
+    <requestid>1206026</requestid>
+  </revision>
 </revisionlist>

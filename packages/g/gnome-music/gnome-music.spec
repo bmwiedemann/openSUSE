@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
@@ -65,9 +65,7 @@ Requires:       python3-gobject-Gdk
 # gnomemusic/player.py imports requests (not introspected)
 Requires:       python3-requests
 # gnome-music relies on tracker to find local files (bsc#1084861)
-Requires:       tracker >= 2.99
-# gnome-music relies on tracker to find local files.
-Requires:       tracker-miner-files >= 2.99
+Requires:       localsearch
 # The versioned format depenency is written in a form not understood by our gi-scanner
 Requires:       typelib(Tracker) = 3.0
 Requires:       typelib(GstTag) = 1.0

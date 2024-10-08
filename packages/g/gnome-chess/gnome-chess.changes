@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 12 16:57:47 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fix appdata screenshot URL
+  + Updated translations.
+- Changes from version 47.beta:
+  + Use modern libadwaita widgetry
+  + Fix incorrect shortcuts on shortcuts help dialog
+  + Change First/Last history shortcuts to Up/Down key
+  + Miscellaneous code modernization and improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 01 11:25:38 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 46.0+21:
+  + Remove an unnecessary GtkBox
+  + Utilize bottom portion of AdwToolbarView
+  + Switch to AdwApplicationWindow, AdwToolbarView, and AdwHeaderBar
+  + Link with libm
+  + Changes "First/Last" move shortcut to "Up/Down" key
+  + Fix "Show next/previous" move on shortcuts dialog
+  + Updated translations.
+- Switch to current master, use explicit commit, fixes build for
+  i586 in GNOME:Next.
+
+-------------------------------------------------------------------
 Fri Mar 15 14:37:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

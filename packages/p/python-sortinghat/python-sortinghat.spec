@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        1.2.1
+Version:        1.4.0
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ URL:            https://github.com/grimoirelab/sortinghat
 Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/tags/%{version}.tar.gz#/sortinghat-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Allow overridding the database config
 Patch0:         allow-database-config-overrides.patch
-Patch1:         add-missing-format-calls.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 30 14:00:53 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.4:
+  * Changelog: https://www.glfw.org/docs/3.4/news.html
+- Package html docs
+- Add docs-remove-footer.patch
+  * Custom footer for html docs includes build date and time.
+    Use default footer instead.
+- Drop multibuild and wayland flavor. Build a single package with
+  X11 and Wayland support.
+
+-------------------------------------------------------------------
 Wed Mar 20 10:46:34 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Build with geany by default only on TW

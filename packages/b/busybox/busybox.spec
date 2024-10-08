@@ -45,6 +45,8 @@ Patch2:         testsuite-gnu-echo.patch
 # Patch3:         ash-fix-segfault-d417193cf.patch
 Patch4:         udhcp6-install-path.patch
 Patch5:         tc-no-TCA_CBQ.patch
+# PATCH-FIX-UPSTREAM - Borrowed from Fedora - https://src.fedoraproject.org/rpms/busybox/blob/rawhide/f/busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
+Patch6:         busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
 # other patches
 Patch100:       busybox.install.patch
 BuildRequires:  glibc-devel-static

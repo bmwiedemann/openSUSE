@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:34:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.0:
+  + Bug Fixes:
+    - Camel: Prefer GLib API for gpg process spawning.
+    - Camel: Correct typos in disabled code.
+  + Miscellaneous:
+    - docs: Correct developer documentation to install API indexes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 08:22:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.3:
+  + Bug Fixes: Camel: Claim attachment in multipart/mixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 25 12:58:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.53.2:
+  + module-gnome-online-accounts: Recognize "Microsoft 365"
+    accounts
+  + e_util_get_source_full_name: Fix possible runtime warning
+  + Bug Fixes:
+    - Calendar: Respect TZDIR env variable
+    - alarm-notify: Save acknowledge time without sending iTip
+      message
+    - Calendar: Anniversaries hidden when book goes to online
+    - Camel: 'match-threads' in search folder can miss messages
+    - Add helper object to talk to intune (Microsoft OAuth2 broker
+      service)
+    - e-ms-oapxbc: Check if broker is running before starting it
+    - e-ms-oapxbc: Use GDBusProxy to communicate with broker
+    - Enhance "junk-test" to return also "inconclusive" value
+    - "Thread by Subject" option not propagated to Search Folders
+  + Updated translations.
+- Changes from version 3.53.1:
+  + Calendar: Update comment of
+    E_CAL_STATIC_CAPABILITY_RETRACT_SUPPORTED
+  + CamelMimePart: Fix runtime warning when removing some headers
+  + CamelMimeMessage: Check for non-NULL Subject value before using
+    it
+  + IMAPx: Correct return value of imapx_splice_with_progress()
+    when cancelled
+  + IMAPX: Correct path returned by imapx_get_filename()
+  + OAuth2 Prompter: Fix two memory leaks
+  + EOAuth2ServiceOutlook: Cannot be used with IMAP
+  + EOAuth2ServiceYahoo: Update redirect URI
+  + OAuth2Prompter: Fix possible crash on application quit
+  + Mark org.gnome.evolution-data-server.OAuth2-handler.desktop for
+    translation
+  + Fix few issues reported by Coverity Scan
+  + CI: Pass --verbose to flatpak-builder
+  + CI: Update OpenLDAP version in devel/nightly build
+  + CI: Workaround broken git clone for libcanberra
+  + Bug fixes:
+    - vCard: Incorrectly parses non-UTF-8 vCard data
+    - WebDAV: Handle `Retry-After` header on 503 error
+    - Camel: Sanitize exported OpenPGP public key before transfer
+    - Google Task stale item cannot be deleted
+    - Calendar: "This and Future" modifications can duplicate
+      events
+    - Camel: GPG message decryption can sometimes miss content
+    - CardDAV: Prefetch PHOTO/LOGO when being remote URL
+    - Camel: Attachments not recognized when filtering POP3 message
+    - addressbook-export: Enhance listing of available sources
+    - ECalClient: Generate RECURRENCE-ID in UTC
+    - OAuth2 Prompt: Enlarge "Open in Browser" button
+    - Camel: Search folder's message UID is not persistent
+    - Camel: Unfolding headers eats consecutive white-spaces
+    - Flatpak: Drop org.freedesktop.Sdk.Extension.vala and rely on
+      GNOME SDK
+  + Updated translations.
+- Add pkgconfig(uuid) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:28:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Mon Aug  5 06:49:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.4:

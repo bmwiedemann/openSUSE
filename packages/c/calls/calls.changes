@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:05:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Clear number and address entries when closing the application
+    window
+  + Fix crash on mobile when placing outgoing call
+  + Fix keypad layout in RTL locales
+  + Updated translations.
+- Changes from version 47.rc:
+  + Now uses AdwAboutDialog, requiring Adwaita 1.5
+  + Improved style sheets
+  + Actually shipping translated metainfo
+- Changes from version 47.beta:
+  + Add systemd unit file
+  + Emit phone-hangup event
+  + libpeas-2 port
+- Changes from version 47.alpha:
+  + GTK4 Port
+  + Fix crash when Modem has no location services
+  + Fix crash when SIP handles have never gotten set up
+- Changes in BuildRequires following upstreams porting:
+  + Add pkgconfig(libadwaita-1), pkgconfig(libpeas-2) and
+    pkgconfig(gtk4)
+  + Drop pkgconfig(gtk+-3.0), pkgconfig(libhandy-1) and
+    pkgconfig(libpeas-1.0)
+
+-------------------------------------------------------------------
 Sat Jun 29 12:28:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.3:

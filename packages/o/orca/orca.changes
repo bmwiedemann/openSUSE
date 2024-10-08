@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Tue Sep 17 13:59:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service.
+
+-------------------------------------------------------------------
+Tue Sep 17 13:46:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + General:
+    - Fix several regressions in presentation that resulted from
+      the code cleanup work. Thanks to everyone who tested!
+    - Don't kill braille flash message in
+      default.process_routing_key().
+  + Web: Support aria-disabled on gridcell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 20:47:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Web:
+    - Fix double-presenting editable list items in braille.
+    - Fix regressions in name presentation.
+    - Improve speech presentation of list items in structural
+      navigation.
+  + General:
+    - Handle event floods during start up.
+    - Work around Qt bug causing table cells to not be announced
+      during navigation.
+    - Fix regression in the presentation of notifications.
+    - Address several issues related to presentation of sets in UI.
+    - Eliminate some chattiness from redundant descriptions and
+      ancestors with redundant names.
+  + Updated translations.
+- Changes from version 47.beta:
+  + Web:
+    - Present indentation in non-editable code/pre elements.
+    - Treat tab lists as lists and tabs as list items to make them
+      reachable via structural navigation.
+    - Treat toggle buttons as a form control for structural
+      navigation.
+    - Improve reliability of synthesized clicks.
+    - Eliminate some chattiness with lists and description terms
+      and values.
+    - Eliminate some chattiness related to page-load events.
+    - Reduce verbosity of heading presentation.
+    - Present object rather than line for focus mode widget
+      navigation.
+    - Fix SayAll failing when launched from non-text web element.
+    - Work around
+      https://bugzilla.mozilla.org/show_bug.cgi?id=1882794 more
+      reliably in order to be less chatty and less likely to
+      refresh keygrabs unnecessarily.
+  + General:
+    - Much code cleanup, old-hack removal, and miscellaneous
+      performance improvements.
+    - Fix Orca dialogs opening in the background.
+    - Always speak the role if object navigator is active.
+    - Improve identification of redundant descriptions to eliminate
+      some chattiness.
+    - Fix bug causing incorrect presentation of content during line
+      navigation.
+    - Fix bug causing table cell headers to be repeated.
+    - Include description when generating braille.
+    - Notification Presenter: Ensure we only create one dialog.
+    - Fix sentence tracking in the Spiel speechserver.
+  + Updated translations.
+- Changes from version 47.alpha:
+  + LibreOffice: Fix several issues related to presentation of
+    application UI.
+  + Thunderbird:
+    - Work around unexpected re-use of existing accessible objects
+      when a message is deleted from the message list.
+    - Handle event spam (performance).
+  + General:
+    - Much code cleanup, performance improvements, removal of
+      obsolete scripts, removal of hacks, etc.
+    - Create documentation for application developers.
+    - Stop listening for the "focus:" event which was deprecated
+      over a decade ago, replaced by
+      "object:state-changed:focused".
+    - Make posinset and setsize attribute retrieval global so they
+      can be used in native applications.
+    - Prefer the description over unrelated labels for static text
+      in native applications.
+    - Enable tutorial messages by default, so that the new "help
+      text" messages from applications is automatically presented.
+    - Make Bypass Mode a toggle, rather than something which
+      applies to only the next keystroke.
+    - Treat "activate" as a click-like action we should attempt
+      when the user attempts to synthesize a mouse-click on a
+      widget.
+    - Improve error handling and recovery when mouse review is
+      enabled in Wayland.
+    - Eliminate chattiness from redundant objects in ancestry.
+    - Handle issue causing selection changes in collapsed combo
+      boxes to not be presented.
+    - Improve correctness of presentation of GTK managed-descendant
+      tables.
+    - Fix orca saying "invalid" for the "editbar" role.
+    - Improve presentation of spin buttons.
+    - Improve menu-related and has-popup presentation.
+    - Fix bug causing press and hold events being treated as a
+      multi-click.
+    - Persist runtime settings between terminal and terminal app
+      scripts so that the user preferences are applied both in the
+      terminal and in the app UI.
+    - Present character count rather than string in huge selection
+      changes.
+    - Don't apply the repeated character count presentation for
+      alphanumeric characters.
+    - Ensure we say "blank" for an empty line in multiline text
+      fields.
+    - Fix "task_done() called too many times" error.
+    - Fix several issues related to Spiel support.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jul  1 10:32:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

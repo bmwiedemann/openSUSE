@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:42:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  1 08:14:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Updated translations.
+- Changes from version 47.beta:
+  + The third-party repositories page, which is currently only
+    displayed on Fedora, now links to a webpage documenting what
+    software is provided by these external repositories.
+  + On the privacy page, references to Mozilla Location Service
+    have been removed, since this service was shut down earlier
+    this year.
+  + If an error occurs when applying the user's settings (which in
+    practice means while creating user accounts), it is now
+    displayed in a dialog rather than only in the journal.
+  + The password page has been lightly refreshed, fixing a bug
+    where the empty input shows the red error style as soon as the
+    page is displayed.
+  + There is now a field to set an optional password hint, which
+    has been supported by accountsservice for many years. However,
+    since the login screen does not currently know how to display
+    the hint when the user needs it, this field is currently hidden.
+  + Updated translations.
+- Changes from version 47.alpha:
+  + gnome-initial-setup-copy-worker, which runs when the
+    newly-created user signs in to copy files from the temporary
+    gnome-initial-setup home directory to the user's real home
+    directory, has been rewritten to not use GFile & GVFS. There
+    have previously been issues with GVFS, due to this program
+    running very early in the session startup, & there is no need
+    to unleash the formidable power of GFile to copy a few files.
+  + The summary page now uses an embedded themed icon for the
+    checkmark, which ensures that the icon is loaded at the proper
+    scaling level on hidpi displays.
+  + If you customize the generated username for the new account,
+    changing the account name no longer clobbers the customized
+    username.
+  + The keyboard page no longer crashes if it is destroyed and
+    recreated while still waiting for the set of IBus engines.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug  8 20:04:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.4:

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Sep 15 19:10:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0.1:
+  + Fix a build issue where the tarballs would be generated with
+    missing vendor packages.
+
+-------------------------------------------------------------------
+Sun Sep 15 15:02:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Improve recording pipeline
+  + Improve video player performance
+  + Offload DMABUFs in Viewfinder
+  + Squash various bugs
+  + Update dependencies
+  + Use glycin for viewing images
+  + Updated translations.
+- Cleanup spec for old obsolete rust exports.
+
+-------------------------------------------------------------------
+Fri Aug 30 08:54:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Offload DMABUFs in Viewfinder
+  + Improve recording pipeline
+  + Update dependencies
+  + Squash various bugs
+  + Updated translations.
+- Add liblcms2-devel and libseccomp-devel BuildRequires: new
+  dependencies.
+
+-------------------------------------------------------------------
 Tue May  7 10:11:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.3:

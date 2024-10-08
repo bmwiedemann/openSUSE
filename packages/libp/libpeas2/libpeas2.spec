@@ -27,7 +27,7 @@
 %bcond_with     vapi
 
 Name:           libpeas2
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        GObject-based Plugin Engine version 2
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ Source0:        https://download.gnome.org/sources/libpeas/2.0/libpeas-%{version
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
 %endif
 %if %{with gjs}
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.77.1
-BuildRequires:  pkgconfig(mozjs-115)
+BuildRequires:  pkgconfig(mozjs-128)
 %endif
 %if %{with gtkdoc}
 BuildRequires:  pkgconfig(gi-docgen) >= 2021.7

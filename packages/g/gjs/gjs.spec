@@ -19,7 +19,7 @@
 %bcond_with profiling
 
 Name:           gjs
-Version:        1.80.2
+Version:        1.82.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-115)
+BuildRequires:  pkgconfig(mozjs-128)
 %if %{with profiling}
 BuildRequires:  pkgconfig(sysprof-capture-4)
 %endif
@@ -102,7 +102,7 @@ Mozilla SpiderMonkey JavaScript engine.
 
 %build
 %meson \
-	-Dinstalled_tests=false \
+ 	-Dinstalled_tests=false \
 	-Dprofiler=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	%{nil}
 %meson_build
@@ -138,5 +138,16 @@ sleep 10
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/%{name}-1.0/
+# FIXME -- nuke these
+%dir %{_libexecdir}/installed-tests/gjs
+%{_libexecdir}/installed-tests/gjs/GIMarshallingTests-1.0.typelib
+%{_libexecdir}/installed-tests/gjs/Regress-1.0.typelib
+%{_libexecdir}/installed-tests/gjs/RegressUnix-1.0.typelib
+%{_libexecdir}/installed-tests/gjs/Utility-1.0.typelib
+%{_libexecdir}/installed-tests/gjs/WarnLib-1.0.typelib
+%{_libexecdir}/installed-tests/gjs/libgimarshallingtests.so
+%{_libexecdir}/installed-tests/gjs/libregress.so
+%{_libexecdir}/installed-tests/gjs/libutility.so
+%{_libexecdir}/installed-tests/gjs/libwarnlib.so
 
 %changelog

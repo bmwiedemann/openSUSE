@@ -628,4 +628,24 @@ Features
   [CVE-2024-43167, bsc#1229068]</comment>
     <requestid>1194091</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>acaf8b4983dd3ae7ad12beee8bda6ceb</srcmd5>
+    <version>1.21.1</version>
+    <time>1728400592</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.21.0:
+  Security Fixes:
+  * Fix CVE-2024-8508, unbounded name compression could lead to
+    denial of service.
+    [CVE-2024-8508, bsc#1231284]
+- Update keyring
+- Update to 1.21.0:
+  Security Fixes:
+  * Fix CVE-2024-8508, unbounded name compression could lead to
+    denial of service.
+    [CVE-2024-8508, bsc#1231284]
+- Update keyring
+</comment>
+    <requestid>1206077</requestid>
+  </revision>
 </revisionlist>

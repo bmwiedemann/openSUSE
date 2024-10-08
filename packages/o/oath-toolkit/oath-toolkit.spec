@@ -18,15 +18,18 @@
 
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 Name:           oath-toolkit
-Version:        2.6.11
+Version:        2.6.11.12
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.nongnu.org/oath-toolkit/
-Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
+Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-2.6.11.tar.gz
+Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-2.6.11.tar.gz.sig
 Source99:       %{name}.keyring
+Patch001:       0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch
+# https://gitlab.com/oath-toolkit/oath-toolkit/-/merge_requests/42
+Patch002:       42-null_usersfile_okay.patch
 BuildRequires:  bison
 BuildRequires:  gengetopt
 BuildRequires:  libgcrypt-devel
@@ -128,7 +131,9 @@ For managing secret key files, the Portable Symmetric Key Container
 This subpackage contains the headers for this library.
 
 %prep
-%setup -q
+%setup -q -n %{name}-2.6.11
+%patch -P 001 -p1
+%patch -P 002 -p1
 
 %build
 autoreconf -fiv

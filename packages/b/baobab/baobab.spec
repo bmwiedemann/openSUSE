@@ -20,7 +20,7 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.4.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
 
 %description
 Disk Usage Analyzer is a graphical, menu-driven application to analyse
@@ -66,7 +66,7 @@ also provides a full graphical treemap window for each selected folder.
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%license COPYING COPYING.docs
+%license COPYING
 %doc AUTHORS NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}

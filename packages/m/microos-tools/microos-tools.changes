@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 07 13:51:51 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0:
+  * Release version 4.0
+  * Have the autorelabel hook propagate failure from relabelling
+  * Split SELinux relabelling code into separate package
+  * Make 98selinux-microos usable on non-transactional systems
+  * selinux-autorelabel-generator: Don't hardcode mountpoints
+  * Consistently use tabs in selinux-autorelabel-generator
+  * Add automated testing of SELinux relabelling functionality
+  * Fix OBS workflow for pushes to master
+
+-------------------------------------------------------------------
 Wed Sep 25 13:13:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 2.21+git16:

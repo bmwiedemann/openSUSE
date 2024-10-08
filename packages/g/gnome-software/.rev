@@ -1200,4 +1200,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1201266 from iznogood)</comment>
     <requestid>1201598</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>717ec2e46a9acf965779e45be53f75b3</srcmd5>
+    <version>47.0+23</version>
+    <time>1728400671</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205459</requestid>
+  </revision>
 </revisionlist>

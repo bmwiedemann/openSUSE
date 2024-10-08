@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:14:21 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20241007.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241007
+  * Add -d, --dir option to install to <prefix>/<definition> instead of <prefix> by @eregon in #2447
+  * Support `ruby-build ruby-X.Y.Z DIR` by @eregon in #2448
+  * Add Ruby 3.4.0-preview2 by @a-lavis in #2451
+
+-------------------------------------------------------------------
 Tue Sep 17 13:53:52 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240917.

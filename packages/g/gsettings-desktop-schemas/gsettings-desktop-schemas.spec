@@ -18,7 +18,7 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        46.1
+Version:        47.1
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
@@ -87,6 +87,7 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.app-folders.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.lockdialog.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.break-reminders.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.calendar.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.datetime.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.default-applications.gschema.xml

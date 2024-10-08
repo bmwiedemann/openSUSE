@@ -1,4 +1,4 @@
-From 22bbf7e08787378854fe57ef015b806255bbb512 Mon Sep 17 00:00:00 2001
+From 868ea4a7299092d598239efeeb2e5713f752bc7e Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Fri, 18 Sep 2020 15:27:37 +0200
 Subject: [PATCH] rpi: Use firmware provided device tree

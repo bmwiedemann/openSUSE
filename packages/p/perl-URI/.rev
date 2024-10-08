@@ -412,4 +412,15 @@
     <comment></comment>
     <requestid>1173973</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6d306bcb2f98063c24feafb838a3ba03</srcmd5>
+    <version>5.290.0</version>
+    <time>1728400966</time>
+    <user>anag+factory</user>
+    <comment>- updated to 5.290.0 (5.29)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.29      2024-09-05 16:09:30Z
+      - Add otpauth URI (GH#145) (david-dick) (forwarded request 1203087 from tinita)</comment>
+    <requestid>1204049</requestid>
+  </revision>
 </revisionlist>

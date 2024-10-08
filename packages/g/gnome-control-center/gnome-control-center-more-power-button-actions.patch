@@ -1,8 +1,7 @@
-diff --git a/panels/power/cc-power-panel.c b/panels/power/cc-power-panel.c
-index 26e3837..3fa91db 100644
---- a/panels/power/cc-power-panel.c
-+++ b/panels/power/cc-power-panel.c
-@@ -680,7 +680,8 @@ populate_power_button_row (AdwComboRow *combo_row,
+diff -urp gnome-control-center-47.rc.orig/panels/power/cc-power-panel.c gnome-control-center-47.rc/panels/power/cc-power-panel.c
+--- gnome-control-center-47.rc.orig/panels/power/cc-power-panel.c	2024-09-10 10:09:29.314005144 -0500
++++ gnome-control-center-47.rc/panels/power/cc-power-panel.c	2024-09-10 10:10:46.471756741 -0500
+@@ -433,7 +433,8 @@ populate_power_button_row (CcNumberRow *
      { N_("Suspend"), GSD_POWER_BUTTON_ACTION_SUSPEND },
      { N_("Power Off"), GSD_POWER_BUTTON_ACTION_INTERACTIVE },
      { N_("Hibernate"), GSD_POWER_BUTTON_ACTION_HIBERNATE },
@@ -10,5 +9,5 @@ index 26e3837..3fa91db 100644
 +    { N_("Nothing"), GSD_POWER_BUTTON_ACTION_NOTHING },
 +    { N_("Force Off"), GSD_POWER_BUTTON_ACTION_SHUTDOWN }
    };
-   guint item_index = 0;
    guint i;
+ 

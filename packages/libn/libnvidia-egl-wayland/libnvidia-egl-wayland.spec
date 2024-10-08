@@ -28,6 +28,15 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         0001-egl-wayland-bump-version-to-1.1.17.patch
+Patch2:         0002-Fix-the-include-path-for-drm_fourcc.h.patch
+Patch3:         0003-Fix-a-declaration-after-code.patch
+Patch4:         0004-egl-swap-provide-damage-rectangles-to-wl_surface.patch
+Patch5:         0005-Use-INT32_MAX-for-wl_surface_damage.patch
+Patch6:         0006-egl-wayland-Accept-device-name-from-either-wl_drm-or.patch
+Patch7:         0007-egl-wayland-fix-device-name-case-where-only-wl_drm-e.patch
+Patch8:         0008-Add-ICD-json-file.patch
+Patch9:         0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
@@ -94,6 +103,9 @@ export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 %doc README.md
 %{_libdir}/libnvidia-egl-wayland.so.%{so_ver}*
 %{_datadir}/wayland-eglstream/
+%dir %{_datadir}/egl
+%dir %{_datadir}/egl/egl_external_platform.d
+%{_datadir}/egl/egl_external_platform.d/10_nvidia_wayland.json
 
 %files -n libnvidia-egl-wayland-devel
 %license COPYING

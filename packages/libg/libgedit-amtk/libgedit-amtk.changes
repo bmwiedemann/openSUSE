@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  2 14:19:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.9.0:
+  + Adopt new versioning scheme (this version is a stable one).
+  + Use GtkImageMenuItem even if deprecated.
+  + Build: add the 'tests' option.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan 11 08:29:37 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Update spec file to conclicts the legacy amtk-devel, which

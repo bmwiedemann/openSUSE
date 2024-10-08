@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 16 10:52:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + Updated translations.
+- Drop no longer used pkgconfig(gdk-pixbuf-2.0) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Mar 15 21:07:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

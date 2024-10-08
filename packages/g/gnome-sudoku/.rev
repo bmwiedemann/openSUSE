@@ -440,4 +440,12 @@
   + Remove option show-possible-values from --help. (forwarded request 1183894 from iznogood)</comment>
     <requestid>1184244</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7bfcc5b48bdf0cd777381344cca3065b</srcmd5>
+    <version>47.0</version>
+    <time>1728401016</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205460</requestid>
+  </revision>
 </revisionlist>

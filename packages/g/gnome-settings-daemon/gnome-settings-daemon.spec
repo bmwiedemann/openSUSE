@@ -27,10 +27,10 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 46
+%define base_ver 47
 
 Name:           gnome-settings-daemon
-Version:        46.0
+Version:        47.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -42,10 +42,6 @@ Source0:        %{name}-%{version}.tar.zst
 Patch0:         gnome-settings-daemon-initial-keyboard.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
-# PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
-Patch2:         gnome-settings-daemon-bgo793253.patch
-# PATCH-FIX-UPSTREAM gnome-settings-daemon-stop-service-when-no-network.patch [merged] joan.torres@suse.com -- Stop assigned services only when no network connection
-Patch3:         gnome-settings-daemon-stop-service-when-no-network.patch
 # PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423, CVE-2024-38394 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 
@@ -150,16 +146,7 @@ contact the settings daemon via its DBus interface.
 %if ! 0%{?sle_version}
 %autopatch -p1 -M 999
 %else
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 4 -p1
-%endif
-
-# Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
-%if 0%{?sle_version} >= 150000
-%patch -P 1000 -p1
-%patch -P 1001 -p1
+%autopatch -p1
 %endif
 
 %build

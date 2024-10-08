@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 12 12:32:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.50.0:
+  + tests: Fix event test errors when GTK is not installed
+
+-------------------------------------------------------------------
+Fri Sep  6 18:59:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.0:
+  + Rename master branch to main
+  + Drop support for Python 3.8
+  + Add Override for Gio.DataInputStream
+  + Treat GParamSpec as any other fundamental type
+  + override connection.register_object to prevent an invocation
+    object from leaking
+  + Various PyPy related fixes
+  + bind_property: Accept keyword arguments
+  + Various documentation improvements
+  + Python2 / GTK2 cleanups
+  + asyncio integration with support to await Gio async functions
+  + meson: move from .egg-info to .dist-info/METADATA
+  + build: fixes for building with gobject-introspection 1.81
+- Stop removing executable bits from examples, no longer needed.
+
+-------------------------------------------------------------------
 Mon Apr  8 06:47:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.48.2:

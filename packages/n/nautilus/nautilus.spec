@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        46.2
+Version:        47.0+8
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -27,10 +27,13 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
 
+# PATCH-FIX-OPENSUSE revert-post-release-bump.patch -- Allow us to ship a git checkout, drop on next stable bump
+Patch:          revert-post-release-bump.patch
+
 # needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
@@ -56,13 +59,13 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pango) >= 1.44.4
-BuildRequires:  pkgconfig(tracker-sparql-3.0)
+BuildRequires:  pkgconfig(tinysparql-3.0)
 # Needed for tests
 BuildRequires:  python3-gobject
-BuildRequires:  tracker
-BuildRequires:  tracker-miner-files >= 2.99
+BuildRequires:  localsearch
+#BuildRequires:  tracker-testutils-3.0
 #
-Requires:       tracker-miner-files >= 2.99
+Requires:       localsearch
 Recommends:     gvfs
 
 %description
@@ -156,7 +159,7 @@ install -m0755 -D %{SOURCE2} %{buildroot}%{_bindir}/set_trusted.sh
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nautilus*
 %{_datadir}/metainfo/org.gnome.Nautilus.metainfo.xml
 %{_datadir}/%{name}/
-%{_datadir}/tracker3/domain-ontologies/org.gnome.Nautilus.domain.rule
+%{_datadir}/localsearch3/domain-ontologies/org.gnome.Nautilus.domain.rule
 %{_mandir}/man1/nautilus*.1%{?ext_man}
 %if 0%{?sle_version}
 %{_sysconfdir}/skel/.config/autostart

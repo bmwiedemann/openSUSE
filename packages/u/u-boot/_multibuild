@@ -56,8 +56,6 @@
   <flavor>odroid-c4</flavor>
   <flavor>odroid-n2</flavor>
   <flavor>odroid-xu3</flavor>
-  <flavor>omap3beagle</flavor>
-  <flavor>omap4panda</flavor>
   <flavor>orangepipc</flavor>
   <flavor>orangepipc2</flavor>
   <flavor>orangepizero</flavor>
@@ -90,6 +88,7 @@
   <flavor>rpiarm64</flavor>
   <flavor>sifiveunleashed</flavor>
   <flavor>sifiveunmatched</flavor>
+  <flavor>sige7-rk3588</flavor>
   <flavor>snow</flavor>
   <flavor>socfpgade0nanosoc</flavor>
   <flavor>soquartz-blade-rk3566</flavor>

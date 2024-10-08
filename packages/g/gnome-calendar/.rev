@@ -453,4 +453,12 @@
   + Updated translations. (forwarded request 1171284 from dimstar)</comment>
     <requestid>1171396</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>67d2b1d4359d5644a8ac003f87f1cf5b</srcmd5>
+    <version>47.0</version>
+    <time>1728401005</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205438</requestid>
+  </revision>
 </revisionlist>

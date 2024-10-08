@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 18 12:53:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0.1:
+  + Do a better job of passing on the app icon to the window
+    manager, so it appropriately shows up when one of its windows
+    is focused.
+  + Add support for GnuPG 2.4 and 2.5.
+  + Try to show a bit more info when showing a password from some
+    apps, like Evolution and Remmina.
+  + Several build fixes.
+  + Updated translations.
+- Drop seahorse-gcc14.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Jun  4 19:37:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add seahorse-gcc14.patch: fix an invalid cast

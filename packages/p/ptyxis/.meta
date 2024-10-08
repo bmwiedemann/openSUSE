@@ -1,0 +1,6 @@
+<package name="ptyxis" project="openSUSE:Factory">
+  <title>A terminal for GNOME with first-class support for containers</title>
+  <description>Ptyxis is a terminal for GNOME with first-class support for containers.</description>
+  <devel project="GNOME:Factory" package="ptyxis"/>
+  <url>https://www.gnome.org</url>
+</package>

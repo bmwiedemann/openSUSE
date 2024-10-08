@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Oct  6 20:27:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.39
+  * Add missing Threshold command to command array of Region of Interest mode #7606
+  * uhdr.c: update uhdr coder for gainmap metadata configuration #7635
+  * uhdr: fix language choice in autoconf #7663
+
+-------------------------------------------------------------------
+Fri Sep 13 15:38:48 UTC 2024 - pgajdos@suse.com
+
+- version update to 7.1.1.38
+  * properly set image byte order 40f6599
+  * set max colormap size for remap 1ffe565
+  * beta release 250b748
+  * deprecate the -respect-paranthesis option 4e7d789
+  * Build fixes. b80c509
+  * save IPTC + ICC profiles are profiles, not properties 25d5335
+  * update copyright year 4caf7d1
+  * Patch to fix reading of the ICC profile. 18377f9
+  * prepping framework to interact with X11 clipboard b20dda3
+  * Build fix. 20a5af3
+  * More build fixes. c36fdf0
+  * Another attempt to silence the warnings. 600708c
+  * Use SetImageProfilePrivate to avoid duplicate allocations. f246eab
+  * support clipboard delegate 39a135a
+  * restore clipboard.c 1070b17
+  * improved rounding 27a0a9c
+  * don't allow negative scenes 8fda05a
+  * eliminate compiler warnings 878daf9
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Aug 27 08:21:42 UTC 2024 - pgajdos@suse.com
 
 - version update to 7.1.1.37

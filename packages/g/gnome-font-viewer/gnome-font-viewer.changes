@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 16 16:28:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Set application name and icon
+  + Remove unused dependency on gnome-desktop
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 29 18:09:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.alpha:
+  + Add slant preview
+  + Fix install button mnemonic
+  + Fix the "Install" button stuck in "Installing" when font
+    install is successful
+  + Use adaptive dialogs
+- Drop 565d795731471c27542bb9ee60820a2d0d15534e.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Jul  9 20:14:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 565d795731471c27542bb9ee60820a2d0d15534e.patch: window: Fix

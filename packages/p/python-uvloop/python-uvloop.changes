@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:54:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Upgrade libuv to v1.48.0
+  * Fix test_create_server_4 with Python 3.12.5
+  * Use len(os.sched_getaffinity(0)) instead of os.cpu_count()
+  * Inline _Py_RestoreSignals() from CPython
+
+-------------------------------------------------------------------
 Fri Dec 29 09:59:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.19.0:

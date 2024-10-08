@@ -99,7 +99,7 @@ Substitute: system-packages:podman podman buildah createrepo_c release-compare c
 # That ignore seems not to make sense - we only inject -strict based on specific projects already
 Ignore: container-build-checks-strict
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE skopeo umoci
+Substitute: system-packages:docker docker createrepo_c container-build-checks-vendor-openSUSE skopeo umoci
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE skopeo umoci
 %endif
 
@@ -1890,13 +1890,8 @@ BuildFlags: onlybuild:expat
 BuildFlags: onlybuild:expect
 BuildFlags: onlybuild:fcitx
 BuildFlags: onlybuild:fdk-aac-free
-BuildFlags: onlybuild:fdupes
 BuildFlags: onlybuild:ffado
 BuildFlags: onlybuild:ffmpeg-4
-BuildFlags: onlybuild:ffmpeg-5
-BuildFlags: onlybuild:ffmpeg-5:ffmpeg-5-mini
-BuildFlags: onlybuild:ffmpeg-6
-BuildFlags: onlybuild:ffmpeg-6:ffmpeg-6-mini
 BuildFlags: onlybuild:ffmpeg-7
 BuildFlags: onlybuild:ffmpeg-7:ffmpeg-7-mini
 BuildFlags: onlybuild:ffnvcodec
@@ -2361,7 +2356,6 @@ BuildFlags: onlybuild:lirc
 BuildFlags: onlybuild:lksctp-tools
 BuildFlags: onlybuild:llvm
 BuildFlags: onlybuild:llvm15
-BuildFlags: onlybuild:llvm16
 BuildFlags: onlybuild:llvm17
 BuildFlags: onlybuild:llvm18
 BuildFlags: onlybuild:lmdb
@@ -2612,6 +2606,7 @@ BuildFlags: onlybuild:perl-List-SomeUtils
 BuildFlags: onlybuild:perl-List-SomeUtils-XS
 BuildFlags: onlybuild:perl-List-UtilsBy
 BuildFlags: onlybuild:perl-Log-Log4perl
+BuildFlags: onlybuild:perl-MIME-Base32
 BuildFlags: onlybuild:perl-MIME-Charset
 BuildFlags: onlybuild:perl-MRO-Compat
 BuildFlags: onlybuild:perl-MailTools
@@ -3185,7 +3180,6 @@ BuildFlags: onlybuild:tix
 BuildFlags: onlybuild:tk
 BuildFlags: onlybuild:toilet
 BuildFlags: onlybuild:tpm2-0-tss
-BuildFlags: onlybuild:tracker
 BuildFlags: onlybuild:transfig
 BuildFlags: onlybuild:translation-update-upstream
 BuildFlags: onlybuild:tre

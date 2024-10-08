@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:40:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't produce podofo.rpm when tools are disabled (bcond_with):
+  the podofo main package only contained readme and license files
+  (boo#1231058).
+
+-------------------------------------------------------------------
 Sun Sep  8 07:50:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add podofo-CVE-2019-20093.patch:

@@ -1,4 +1,4 @@
-From fe7491cdf46d5151584a3d53cd41ecbc38664485 Mon Sep 17 00:00:00 2001
+From b8e1c5193e38cfa66d85b9c7256b7a67aee1878e Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 09:56:06 +0100
 Subject: [PATCH] configs: Re-sync with CONFIG_DISTRO_DEFAULTS
@@ -18,7 +18,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index 2bd4eeaade..7f647e37d2 100644
+index dd0582d2a0..a76f75e1c2 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
 @@ -90,7 +90,6 @@ CONFIG_CMD_REGULATOR=y
@@ -30,7 +30,7 @@ index 2bd4eeaade..7f647e37d2 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index 93b52f2de5..db6fd922d4 100644
+index dc5fcdbd1c..fee9baff8c 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
 @@ -125,7 +125,6 @@ CONFIG_CMD_AES=y
@@ -64,10 +64,10 @@ index c62e0d04c9..36237199e2 100644
  CONFIG_MAC_PARTITION=y
  CONFIG_OF_LIST="armada-3720-turris-mox armada-3720-ripe-atlas"
 diff --git a/configs/turris_omnia_defconfig b/configs/turris_omnia_defconfig
-index 9753e27095..6979706166 100644
+index 93f0bc53f9..ba5fe1783c 100644
 --- a/configs/turris_omnia_defconfig
 +++ b/configs/turris_omnia_defconfig
-@@ -76,7 +76,6 @@ CONFIG_CMD_TIME=y
+@@ -79,7 +79,6 @@ CONFIG_CMD_TIME=y
  CONFIG_CMD_RNG=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_HASH=y

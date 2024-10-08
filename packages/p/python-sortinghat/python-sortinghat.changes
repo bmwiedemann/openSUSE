@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  7 20:49:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Less distracting main identity indicator
+  * Redirect to the original URL after log in
+  * Merge organizations when adding an alias
+  * Customizable trusted sources for username matching
+  * Users permissions migrated (#849)
+  * Update workspace when identities are split (#919)
+- update to 1.3.0:
+  * Remove merge recommendations (#883)
+  * Merge organizations when adding an alias (#913)
+  * User permissions per tenant
+  * The link to an individual's GitHub profile no longer
+    appears several times when there is more than one GitHub
+    identity.
+  * Connection closed when job is executed
+- drop add-missing-format-calls.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Aug 28 03:30:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.1:
@@ -104,16 +124,16 @@ Thu Jul 20 05:47:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Sat Dec  3 00:58:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.7.23 
+- Update to version 0.7.23
   * Update Poetry's package dependencies
 
-- Update to version 0.7.22  
+- Update to version 0.7.22
   * Update Poetry's package dependencies
 
 -------------------------------------------------------------------
 Sat Oct 29 01:20:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.7.21 
+- Update to version 0.7.21
   * Update package dependencies
   * Update jinja2 package and dev-dependencies.
   * Update Poetry's package dependencies
@@ -122,7 +142,7 @@ Sat Oct 29 01:20:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Fri Oct  7 16:13:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.7.20 
+- Update to version 0.7.20
   Bug fixes:
   * [gitdm] Skip invalid format lines
   * Gitdm parser won't fail reading files with an invalid format. Instead,

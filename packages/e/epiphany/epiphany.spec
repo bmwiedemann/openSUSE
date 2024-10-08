@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        46.4
+Version:        47.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.beta
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
@@ -132,9 +132,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
 %{_mandir}/man1/epiphany.1%{ext_man}
 %dir %{_libdir}/epiphany
+%{_libdir}/epiphany/libephyautofill.so
 %dir %{_libdir}/epiphany/web-process-extensions
 %{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
-%{_libdir}/epiphany/web-process-extensions/libephywebextension.so
 %{_libdir}/epiphany/libephymain.so
 %{_libdir}/epiphany/libephymisc.so
 %{_libdir}/epiphany/libephysync.so

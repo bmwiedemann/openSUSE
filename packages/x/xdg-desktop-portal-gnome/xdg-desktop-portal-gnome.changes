@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Sep 19 13:30:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Fix the capabilities for the print dialog.
+
+-------------------------------------------------------------------
+Mon Sep 16 13:26:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 15:35:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Fix restoring last used folder in the File Chooser portal
+  + Fix selecting multiple window on single selection
+  + Do not block xdg-desktop-portal-gnome when connecting to
+    Nautilus
+  + Fix incorrectly set mimetype in the File Chooser portal
+  + Updated tanslations.
+
+-------------------------------------------------------------------
+Sun Aug 25 10:13:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Use GNOME Shell's private API for the Notification portal
+  + Use Nautilus for the File Chooser portal
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Expose the new accent colors setting
+  + Various cleanups to the screencast widget
+  + Add support for the "supported_output_file_formats" option in
+    the Print portal
+  + Fix default layout mode of the ScreenCast/Remote Desktop portal
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 27 07:01:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

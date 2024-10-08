@@ -17,7 +17,7 @@
 
 
 Name:           gnome-nibbles
-Version:        4.0.4
+Version:        4.1.0
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
@@ -38,6 +38,8 @@ BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk4) >= 4.6
 BuildRequires:  pkgconfig(libgnome-games-support-2) >= 2.0.0
 BuildRequires:  pkgconfig(pangocairo)
+###FIXME### Test again on next release
+#BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
 Nibbles is a worm game for GNOME. The player controls a 2D worm while

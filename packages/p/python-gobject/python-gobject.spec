@@ -34,7 +34,7 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.48.2
+Version:        3.50.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
@@ -124,8 +124,6 @@ addon libraries such as pygtk in both Python2 and Python3.
 
 %prep
 %setup -q -n %{_name}-%{version}
-# Remove the executable bits from example scripts:
-find examples -name '*.py' -exec chmod -R -x {} +
 
 %build
 export CFLAGS="%{optflags}"
@@ -157,7 +155,8 @@ find %{buildroot}%{$python_sitearch} -name GIMarshallingTests* -delete -print
 }
 
 find %{buildroot} "(" -name '*.la' -or -name '*.a' ")" -delete
-rm %{buildroot}%{_libdir}/*/site-packages/*.egg-info
+# Nuke a stray metadata file
+find %{buildroot}%{python_sitearch}/PyGObject*/ "(" -name 'METADATA' ")" -delete -print
 
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -165,7 +164,6 @@ rm %{buildroot}%{_libdir}/*/site-packages/*.egg-info
 %files %{python_files}
 %license COPYING
 %doc NEWS
-%doc examples/
 %{python_sitearch}/gi/
 # Lives in cairo subpackage
 %exclude %{python_sitearch}/gi/_gi_cairo*.so

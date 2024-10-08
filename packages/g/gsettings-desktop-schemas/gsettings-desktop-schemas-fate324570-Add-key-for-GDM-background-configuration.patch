@@ -15,22 +15,10 @@ https://gitlab.gnome.org/GNOME/gnome-shell/issues/680
  2 files changed, 60 insertions(+)
  create mode 100644 schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
 
-Index: gsettings-desktop-schemas-45.0/schemas/meson.build
-===================================================================
---- gsettings-desktop-schemas-45.0.orig/schemas/meson.build
-+++ gsettings-desktop-schemas-45.0/schemas/meson.build
-@@ -16,6 +16,7 @@ schemas = [
-   'org.gnome.desktop.thumbnailers.gschema.xml',
-   'org.gnome.desktop.session.gschema.xml',
-   'org.gnome.desktop.background.gschema.xml',
-+  'org.gnome.desktop.background.lockdialog.gschema.xml',
-   'org.gnome.desktop.calendar.gschema.xml',
-   'org.gnome.desktop.datetime.gschema.xml',
-   'org.gnome.desktop.media-handling.gschema.xml',
-Index: gsettings-desktop-schemas-45.0/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
+Index: gsettings-desktop-schemas-47.beta/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
 ===================================================================
 --- /dev/null
-+++ gsettings-desktop-schemas-45.0/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
++++ gsettings-desktop-schemas-47.beta/schemas/org.gnome.desktop.background.lockdialog.gschema.xml.in
 @@ -0,0 +1,67 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<schemalist gettext-domain="gsettings-desktop-schemas">
@@ -99,3 +87,15 @@ Index: gsettings-desktop-schemas-45.0/schemas/org.gnome.desktop.background.lockd
 +    </key>
 +  </schema>
 +</schemalist>
+Index: gsettings-desktop-schemas-47.beta/schemas/meson.build
+===================================================================
+--- gsettings-desktop-schemas-47.beta.orig/schemas/meson.build
++++ gsettings-desktop-schemas-47.beta/schemas/meson.build
+@@ -16,6 +16,7 @@ schemas = [
+   'org.gnome.desktop.thumbnailers.gschema.xml',
+   'org.gnome.desktop.session.gschema.xml',
+   'org.gnome.desktop.background.gschema.xml',
++  'org.gnome.desktop.background.lockdialog.gschema.xml',
+   'org.gnome.desktop.break-reminders.gschema.xml',
+   'org.gnome.desktop.calendar.gschema.xml',
+   'org.gnome.desktop.datetime.gschema.xml',

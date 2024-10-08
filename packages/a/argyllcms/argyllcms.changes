@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep 27 17:40:00 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.3.0:
+  * Improved reliability of i1Pro2 startup by adding recovery delay after the
+    getmisc instruction.
+  * Fixed i1pro2/3 driver to be more forgiving of wavelength calibration pushing
+    filter offsets outside the range of raw CCD range.  
+  * Fixed numerical bug in targen when using -V and -c with profile with zero
+    black.
+  * Added support for Spyder X2 (thanks to Chris Minasians and A.K. for helping
+    make an instrument available).
+  * Added support for JETI 2501 spectrometer thanks to to Omardis.
+  * Added -T option to targen to allow separate total ink limit for text and spacer
+    text.
+  * Modified targen CMYK chart generation to apply a level of luminance boost to
+    the resulting OFPS samples. This partially compensates for the overall
+    darkening of the test set due to exploring the combined K response of the
+    device. While this will reduce the sampling density and resulting profile
+    accuracy in darker parts of the gamut, it should improve the accuracy of colors
+    for realistic prints, which typically have a lighter average than the device
+    CMYK gamut.
+  * Added extra diagnostics and -p plot detail to printcal. Added -z flag to allow
+    setting a resulting calibration table resolution to values other than 256.
+  * Fix 3.2.0 bug introduced into spectro/Jamfile install that omitted spec2cie
+    from binary distributions.
+
+-------------------------------------------------------------------
 Tue May 14 14:47:25 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.2.0:

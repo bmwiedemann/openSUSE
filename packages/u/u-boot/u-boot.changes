@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  8 07:10:55 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add support for sige7-rk3588 (based on SR from Jianfeng Liu - amazingfate)
+
+-------------------------------------------------------------------
+Tue Oct  8 07:10:38 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2024.10:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2024.07...v2024.10
+- Drop boards removed upstream:
+  * omap3beagle
+  * omap4panda
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.10
+* Patches added:
+  0017-riscv-dts-jh7110-Update-qspi-node-w.patch
+
+-------------------------------------------------------------------
 Wed Sep  4 13:57:12 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Install u-boot-dtb.bin for milkvduo flavor

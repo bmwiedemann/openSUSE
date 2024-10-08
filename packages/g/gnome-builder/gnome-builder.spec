@@ -17,11 +17,11 @@
 
 
 # Update this on every major/minor bump
-%define basever 46
+%define basever 47
 %define glib_version 2.75
 
 Name:           gnome-builder
-Version:        46.3
+Version:        47.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.74
+BuildRequires:  pkgconfig(gom-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.8
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
@@ -64,6 +65,7 @@ BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libpanel-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-2) >= 1.99.0
 BuildRequires:  pkgconfig(libportal-gtk4)
+BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(sysprof-6)
 BuildRequires:  pkgconfig(sysprof-capture-4) >= 45.0
@@ -156,9 +158,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.des
 %{_datadir}/icons/hicolor/
 %{_includedir}/%{name}-%{basever}/
 %{_libdir}/pkgconfig/gnome-builder-%{basever}*.pc
-%dir %{python3_sitelib}/gi
-%dir %{python3_sitelib}/gi/overrides
-%{python3_sitelib}/gi/overrides/*
 
 %files doc
 %doc %{_datadir}/doc/libide/

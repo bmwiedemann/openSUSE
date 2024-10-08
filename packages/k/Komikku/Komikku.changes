@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 18 23:17:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.59.0:
+  * [UX] Added system accent colors support
+  * [Explorer] Fixed Global search
+  * [Servers] Bentoscan (FR): Disabled
+  * [Servers] VF Scan (FR): Disabled
+- new minimum requirement of libadwaita (1.6)
+
+-------------------------------------------------------------------
 Mon Sep 16 11:28:37 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.58.0:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  6 05:34:12 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.290.0 (5.29)
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.29      2024-09-05 16:09:30Z
+      - Add otpauth URI (GH#145) (david-dick)
+
+-------------------------------------------------------------------
 Wed Mar 27 03:08:07 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.28

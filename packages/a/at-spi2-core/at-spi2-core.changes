@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:25:10 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 16:56:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.90:
+  + Make ATSPI_ROLE_PUSH_BUTTON an enum value again.
+  + atk: Align button role with AT-SPI one.
+  + Fix warning when atspi_event_quit is called multiple times.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:22:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.52.0:

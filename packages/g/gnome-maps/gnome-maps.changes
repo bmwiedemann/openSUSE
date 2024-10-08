@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Sep 13 10:33:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + Fix issue with sometimes bad contrasting public transit route
+    lines.
+  + Fix orientation of "fish head"-shaped highway shields.
+  + Add additional public transit mode icons, and also use taxi
+    icon for taxi stations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 31 11:50:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Support Transitous for public transit routing
+  + Update POI definitions
+  + Update highway shields from OSM Americana
+  + Don't grab focus on search entry when pressing modifier keys
+  + Fix build with -Dvector_renderer=false
+  + Allow building with C++
+  + Fix crash in MapSource
+  + Add documentation for the GTK inspector page
+  + Fix compilation warnings
+  + Use the vector by default, and remove the old raster tiles
+  + Remove the "What's here" menu item, as we now have clickable
+    POIs
+  + Stop using the downloaded service file, as it's not needed for
+    raster tiles now that the vector style embeds a map source, and
+    instead bundle defintions for public transit providers
+  + Use zoom parameter from geo: URIs when available
+  + Support dark mode when drawing public transit routes on the map
+  + Unselect previously selected place when clicking on the
+    background
+  + Speed up "zoom to" animations
+  + Show brand logos from Wikidata for POIs when available
+  + Show place type icon and in place type in bubbles for POIs
+  + Port more dialogs to use libadwaita dialogs
+  + Add missing mnemonics for menu items
+  + Various a11y improvements
+  + Add playground icons :)
+  + Properly show 12/24 hour format based on system setting when
+    selecting time for public transit routing when running as
+    Flakpak
+  + Set Window icon, used by some WMs/DEs
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 13 14:19:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.11:

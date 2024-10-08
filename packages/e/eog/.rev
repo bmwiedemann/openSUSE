@@ -1356,4 +1356,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1191748</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>ee92e24a87ab428de793579641cdf4a9</srcmd5>
+    <version>47.0</version>
+    <time>1728400624</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205420</requestid>
+  </revision>
 </revisionlist>

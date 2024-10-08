@@ -16,9 +16,9 @@
 #
 
 
-%define         somajor 0_23
+%define         somajor 0_24
 Name:           tree-sitter
-Version:        0.23.0
+Version:        0.24.2
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT
@@ -105,6 +105,11 @@ find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
 # stupid workaround for "integrating" the grammars into neovim
 install -d %{buildroot}%{_libdir}/tree_sitter
+
+#fix pkgconfig file
+for i in lib include; do
+sed -i 's|'$i'dir=${prefix}//usr/|'$i'dir=${prefix}/usr/|g' %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
+done
 
 %ldconfig_scriptlets -n lib%{name}%{somajor}
 

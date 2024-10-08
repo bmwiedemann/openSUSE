@@ -150,4 +150,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1177034 from dimstar)</comment>
     <requestid>1177058</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9852fe88a5ee47f95c415bc5b076fad1</srcmd5>
+    <version>47.1</version>
+    <time>1728400710</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205493</requestid>
+  </revision>
 </revisionlist>

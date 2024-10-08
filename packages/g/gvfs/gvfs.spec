@@ -19,7 +19,7 @@
 %bcond_without  cdda
 %bcond_without  onedrive
 Name:           gvfs
-Version:        1.54.3
+Version:        1.56.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -84,6 +84,7 @@ BuildRequires:  pkgconfig(libcdio_paranoia) >= 0.78.2
 # The library gvfscommon was converted to a private library and is not used outside of gvfs
 Obsoletes:      libgvfscommon0 <= %{version}
 %endif
+Obsoletes:      %{name}-devel <= %{version}
 
 %description
 gvfs GNOME's userspace virtual filesystem designed to work with the
@@ -223,6 +224,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %files
 %license COPYING daemon/trashlib/COPYING.trashlib
 %doc NEWS README.md
+%doc CONTRIBUTING.md NEWS.pre-1-2
 %doc daemon/org.gtk.vfs.file-operations.rules.in
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/mounts
@@ -335,7 +337,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/mounts/network.mount
 # allow priv ports for mounting nfs. Otherwise the nfs-service requires insecure (boo#1065864)
 %verify(not mode caps) %caps(cap_net_bind_service=+ep) %{_libexecdir}/%{name}/gvfsd-nfs
-%{_libexecdir}/%{name}/gvfsd-nfs
 %{_datadir}/%{name}/mounts/nfs.mount
 %{_libexecdir}/%{name}/gvfsd-recent
 %{_datadir}/%{name}/mounts/recent.mount
@@ -354,10 +355,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_libexecdir}/gvfs/gvfsd-wsdd
 %{_datadir}/glib-2.0/schemas/org.gnome.system.wsdd.gschema.xml
 %{_datadir}/gvfs/mounts/wsdd.mount
-
-%files devel
-%doc CONTRIBUTING.md NEWS.pre-1-2
-%{_includedir}/gvfs-client
 
 %files lang -f %{name}.lang
 

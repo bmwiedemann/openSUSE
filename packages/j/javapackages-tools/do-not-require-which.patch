@@ -1,0 +1,47 @@
+--- javapackages-6.3.2/javapackages-tools.spec	2024-10-08 08:19:44.208034468 +0200
++++ javapackages-6.3.2/javapackages-tools.spec	2024-10-08 08:21:27.532053244 +0200
+@@ -22,7 +22,6 @@
+ Source21:       toolchains-openjdk21.xml
+ 
+ BuildRequires:  coreutils
+-BuildRequires:  which
+ BuildRequires:  make
+ BuildRequires:  rubygem-asciidoctor
+ BuildRequires:  %{python_prefix}-devel
+@@ -33,7 +32,6 @@
+ Requires:       javapackages-filesystem = %{version}-%{release}
+ Requires:       coreutils
+ Requires:       findutils
+-Requires:       which
+ 
+ Provides:       jpackage-utils = %{version}-%{release}
+ 
+--- javapackages-6.3.2/java-utils/java-functions	2024-10-08 08:19:44.211367825 +0200
++++ javapackages-6.3.2/java-utils/java-functions	2024-10-08 08:21:27.535386599 +0200
+@@ -169,7 +169,7 @@
+         done
+     fi
+ 
+-    JAVACMD=$(which java 2>/dev/null || :)
++    JAVACMD=$(type -p java 2>/dev/null || :)
+     if [ -x "${JAVACMD}" ]; then
+ 	_log "Using JAVACMD from PATH: $JAVACMD"
+ 	if [ -n "${JAVACMD_OPTS}" ]; then
+@@ -179,6 +179,8 @@
+ 	    JAVACMD="@{javadir}-utils/java-wrapper"
+ 	fi
+ 	return 0
++    else
++        unset JAVACMD
+     fi
+ 
+     _err "Failed to set JAVACMD"
+@@ -315,7 +317,7 @@
+ {
+     local IFS=:
+     local artifact="${1}"
+-    local cmd=$(which xmvn-resolve 2>/dev/null || :)
++    local cmd=$(type -p xmvn-resolve 2>/dev/null || :)
+ 
+     # If artifact contains semicolon then assume it specifies Maven
+     # artifact coordinates.

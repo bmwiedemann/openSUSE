@@ -1,7 +1,7 @@
 #
 # spec file for package feedbackd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.2.1
+Version:        0.4.1
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -33,11 +33,13 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gmobile)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(umockdev-1.0)
 
 %description
 feedbackd provides a DBus daemon (feedbackd) to act on events to provide
@@ -84,7 +86,6 @@ developing applications that use %{name}.
 
 %install
 %meson_install
-%{__install} -Dm0644 -T debian/feedbackd.udev %{buildroot}%{_udevrulesdir}/90-feedbackd.rules
 
 %pre
 getent group feedbackd >/dev/null || groupadd -r feedbackd

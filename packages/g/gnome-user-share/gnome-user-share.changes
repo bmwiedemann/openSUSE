@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 15 07:04:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 26 16:19:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.alpha:
+  + Increase the required Apache web server version to 2.4
+  + Remove GNOME 2 migration code
+  + Remove the size limit for file transfers
+  + Fix leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 13 19:37:56 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 43.0+11:

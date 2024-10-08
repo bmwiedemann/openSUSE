@@ -351,4 +351,20 @@
 - _service: Omit +git0 suffix in versions</comment>
     <requestid>1203604</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5c3a98f49f18c5ff6029e5d2d6988917</srcmd5>
+    <version>4.0</version>
+    <time>1728400982</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0:
+  * Release version 4.0
+  * Have the autorelabel hook propagate failure from relabelling
+  * Split SELinux relabelling code into separate package
+  * Make 98selinux-microos usable on non-transactional systems
+  * selinux-autorelabel-generator: Don't hardcode mountpoints
+  * Consistently use tabs in selinux-autorelabel-generator
+  * Add automated testing of SELinux relabelling functionality
+  * Fix OBS workflow for pushes to master</comment>
+    <requestid>1206112</requestid>
+  </revision>
 </revisionlist>

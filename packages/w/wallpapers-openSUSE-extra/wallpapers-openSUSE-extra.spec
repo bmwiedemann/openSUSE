@@ -1,7 +1,7 @@
 #
 # spec file for package wallpapers-openSUSE-extra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,17 @@
 
 
 Name:           wallpapers-openSUSE-extra
-Version:        15
+Version:        16
 Release:        0
 Summary:        openSUSE Extra Wallpapers
-License:        CC-BY-2.0 AND CC-BY-SA-2.0 AND CC-BY-SA-4.0
+License:        CC-BY-2.0 AND CC-BY-SA-2.0 AND CC-BY-SA-4.0 AND SUSE-Public-Domain
 Group:          System/GUI/Other
 URL:            https://github.com/openSUSE/wallpapers
-Source0:        wallpapers.tar.xz
+Source0:        wallpapers-master.zip
+# Building svg's at the build time
+BuildRequires:  optipng
+BuildRequires:  rsvg-convert
+BuildRequires:  unzip
 Provides:       extra-wallpapers
 BuildArch:      noarch
 
@@ -31,7 +35,7 @@ BuildArch:      noarch
 Extra wallpapers for openSUSE Leap %{version}
 
 %prep
-%setup -q -c
+%autosetup -p1 -n wallpapers-master
 
 %build
 
@@ -41,8 +45,20 @@ Extra wallpapers for openSUSE Leap %{version}
 %files
 %license leap%{version}/license/*
 %dir %{_datadir}/gnome-background-properties
+%dir %{_datadir}/wallpapers
 %{_datadir}/gnome-background-properties/wallpapers-leap%{version}.xml
-%{_datadir}/wallpapers
 %{_datadir}/wallpapers/leap%{version}
+
+%package 		leap15
+Summary:        wallpapers from openSUSE Leap 15.
+Group:          System/GUI/Other
+
+%description leap15
+This package contains wallpapers from openSUSE Leap 15.
+
+%files leap15
+%license leap15/license/*
+%{_datadir}/gnome-background-properties/wallpapers-leap15.xml
+%{_datadir}/wallpapers/leap15
 
 %changelog

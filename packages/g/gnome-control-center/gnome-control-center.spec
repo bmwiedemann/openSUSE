@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        46.4
+Version:        47.0.1+8
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ URL:            https://apps.gnome.org/app/org.gnome.Settings
 Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 
+# PATCH-NEEDS-REBASE Patch1
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-users-page-Don-t-show-the-system-accounts.patch bsc#1224199 glgo#GNOME/Settings#3066 xwang@suse.com -- not show system account in Users panel
@@ -76,16 +77,16 @@ BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon) >= 41
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(goa-1.0) >= 3.49.1
+BuildRequires:  pkgconfig(goa-1.0) >= 3.51.0
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.alpha
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.8
+BuildRequires:  pkgconfig(gtk4) >= 4.15.2
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libnm) >= 1.24.0
 BuildRequires:  pkgconfig(libnma-gtk4)

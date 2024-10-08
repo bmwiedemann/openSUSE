@@ -45,6 +45,9 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
+#
+#PATCH-FIX-UPSTREAM: do not fail if which does not exist
+Patch3:         do-not-require-which.patch
 
 BuildRequires:  fdupes
 BuildRequires:  perl

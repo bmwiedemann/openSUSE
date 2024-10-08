@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  6 21:27:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add argparse-3_12_7.patch which should actually fix
+  gh#kislyuk/argcomplete#507.
+- Remove skip-failing-tests-3_12_7.patch, which is now
+  unnecessary.
+
+-------------------------------------------------------------------
 Sat Oct  5 14:53:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add skip-failing-tests-3_12_7.patch as a temporary workaround,

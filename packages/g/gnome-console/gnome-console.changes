@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Sep 18 16:26:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Some minor build issues on certain platforms have been ironed
+    out.
+
+-------------------------------------------------------------------
+Wed Sep 18 06:32:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0+5:
+  + Fix build on 32bit architectures (glgo#GNOME/console#391).
+
+-------------------------------------------------------------------
+Sun Sep 15 22:02:18 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + A edge case in drag-and-drop has been resolved.
+  + Fixed a string that hadn't been marked for translation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  2 06:58:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + A couple small improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 20 18:32:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + The preferences dialogue has been expanded to include
+    scrollback size, and there has been behind the scenes work
+    fixing some pesky issues and setting up future improvements.
+  + Thanks to work elsewhere in the stack, we now have restored
+    screen reader support. This has taken far too long, and there
+    is more work do be done, but hopefully this is a significant
+    step forward.
+  + Additionally reworked our styles to take advantage of
+    improvements in Gtk, and keep current with developments in
+    Adwaita, and some more fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:50:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

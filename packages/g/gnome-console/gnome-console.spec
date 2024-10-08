@@ -17,7 +17,7 @@
 
 
 Name:           gnome-console
-Version:        46.0
+Version:        47.1
 Release:        0
 Summary:        A minimal terminal for GNOME
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.12.2
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.32
-BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.75.1
+BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.77.0
 
 Obsoletes:      nautilus-extension-console < %{version}
 Provides:       console = %{version}

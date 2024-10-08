@@ -31,4 +31,12 @@
     <comment>GNOME 46 (forwarded request 1159252 from dimstar)</comment>
     <requestid>1159523</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0dbd2824ca7f900e945550acc7bddc1f</srcmd5>
+    <version>47.1</version>
+    <time>1728401011</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205443</requestid>
+  </revision>
 </revisionlist>

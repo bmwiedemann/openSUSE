@@ -17,7 +17,7 @@
 
 
 Name:           calls
-Version:        46.3
+Version:        47.0
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
@@ -42,12 +42,12 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcallaudio-0.1)
 BuildRequires:  pkgconfig(libebook-contacts-1.2)
 BuildRequires:  pkgconfig(libfeedback-0.0)
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libpeas-1.0)
+BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(sofia-sip-ua-glib)
 
@@ -74,6 +74,7 @@ want ofono support.
 %build
 %meson \
 	--sysconfdir=%{_distconfdir} \
+	-Dsystemd_user_unit_dir=%{_userunitdir} \
 	%{nil}
 %meson_build
 
@@ -119,6 +120,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Calls.deskt
 %{_datadir}/metainfo/org.gnome.Calls.metainfo.xml
 %{_mandir}/man1/gnome-calls.1%{?ext_man}
 %{_distconfdir}/xdg/autostart/org.gnome.Calls-daemon.desktop
+%{_userunitdir}/calls-daemon.service
 
 %files ofono
 %dir %{_libdir}/%{name}/plugins/provider/ofono

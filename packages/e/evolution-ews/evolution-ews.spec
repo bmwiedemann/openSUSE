@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.52.4
+Version:        3.54.0
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
@@ -91,6 +91,7 @@ using exchange web services protocol.
 %{_libdir}/evolution-data-server/camel-providers/libcamelmicrosoft365.urls
 %{_libdir}/evolution-data-server/registry-modules/module-ews-backend.so
 %{_libdir}/evolution-data-server/registry-modules/module-microsoft365-backend.so
+%{_libdir}/evolution-ews/libevolution-ews-common.so
 %{_libdir}/evolution-ews/libevolution-microsoft365.so
 %{_libdir}/evolution/modules/module-ews-configuration.so
 %{_libdir}/evolution/modules/module-microsoft365-configuration.so

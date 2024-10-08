@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.71_release+903.d3ec98550dc3
+Version:        1.71_release+26.3f767890cdb2
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -81,6 +81,7 @@ through to user-space daemons.
 %setup -qn %{name}-%{version}
 
 %build
+[ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
 	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir} \
 	SYSTEMD_SERVICE_DIR=%{_unitdir} FIRMWAREDIR=%{_firmware_path}
@@ -166,7 +167,7 @@ fi
 %{_unitdir}/vtltape@.service
 %{_unitdir}/vtllibrary@.service
 %dir %{mhvtl_home_dir}
-%ghost %{mhvtl_home_dir}/*
+%ghost %attr(0644,root,root) %{mhvtl_home_dir}/*
 %defattr(644,root,root)
 %{_mandir}/man1/vtlcmd.1%{ext_man}
 %{_mandir}/man1/vtllibrary.1%{ext_man}

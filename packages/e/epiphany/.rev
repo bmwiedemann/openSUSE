@@ -1765,4 +1765,12 @@ New stable rel</comment>
   + Fix crashes in tab overview mode with no open tabs (forwarded request 1200695 from iznogood)</comment>
     <requestid>1201591</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>e717d102bc4e444633848667d480a778</srcmd5>
+    <version>47.0</version>
+    <time>1728400995</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205421</requestid>
+  </revision>
 </revisionlist>

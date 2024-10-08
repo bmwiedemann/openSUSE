@@ -151,4 +151,16 @@
  * ssl.CertificateError is no longer logged as it's delivered to</comment>
     <requestid>1136315</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>828811fb46f2a3f786ff0be4ca7a40ff</srcmd5>
+    <version>0.20.0</version>
+    <time>1728400601</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.0:
+  * Upgrade libuv to v1.48.0
+  * Fix test_create_server_4 with Python 3.12.5
+  * Use len(os.sched_getaffinity(0)) instead of os.cpu_count()
+  * Inline _Py_RestoreSignals() from CPython</comment>
+    <requestid>1206172</requestid>
+  </revision>
 </revisionlist>

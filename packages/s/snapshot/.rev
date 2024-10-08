@@ -60,4 +60,12 @@ New package for GNOME</comment>
   + Updated translations. (forwarded request 1172406 from dimstar)</comment>
     <requestid>1172408</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c4357b8a53e401122c30e7ca9cd711c2</srcmd5>
+    <version>47.0.1</version>
+    <time>1728401029</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205488</requestid>
+  </revision>
 </revisionlist>

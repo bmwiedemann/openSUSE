@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.52.4
+Version:        3.54.0
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -35,7 +35,7 @@ BuildRequires:  bogofilter
 BuildRequires:  cmake >= 3.15
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  openldap2-devel

@@ -280,4 +280,14 @@
     <comment></comment>
     <requestid>1202277</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a9ed8a6a275308029e771b0a8db398a1</srcmd5>
+    <version>0.32.3</version>
+    <time>1728401047</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.32.3:
+  * specfile can now handle multi-line tag values (enclosed in a
+    macro body, e.g. `%shrink`).</comment>
+    <requestid>1206169</requestid>
+  </revision>
 </revisionlist>

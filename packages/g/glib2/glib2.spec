@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.80.5
+Version:        2.82.1
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -371,9 +371,6 @@ The GObject library provides an object-oriented framework for C.
 
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE5} .
 cp -a %{SOURCE4} gnome_defaults.conf
-# replace /usr/bin/env shebangs
-# /usr/bin/env @PYTHON@ -> /usr/bin/python3
-grep "%{_bindir}/env @PYTHON@" . -rl | xargs sed -i "s|%{_bindir}/env @PYTHON@|%{_bindir}/python3|g"
 sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 
 %build
@@ -401,6 +398,8 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 	-Ddtrace=false \
 %endif
         -Dintrospection=%[ "%{flavor}" != "stage1" ? "enabled" : "disabled" ] \
+        -Dglib_debug=disabled \
+        -Dsysprof=disabled \
 	%{nil}
 %meson_build
 

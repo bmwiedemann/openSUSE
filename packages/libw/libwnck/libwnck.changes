@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  5 12:07:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Return correct number of application windows.
+  + Avoid showing pointless tooltips.
+  + Do not remove underscores form window titles.
+  + Do not crash if XRes 1.2 is not available.
+  + Do not crash if display is not available.
+- Drop handle-avoid-segfault-in-invalidate-icons.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:33:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to

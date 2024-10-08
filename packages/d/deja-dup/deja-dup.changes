@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  4 16:11:10 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fix a case of "another duplicity instance is already running"
+    error
+  + Mention when an encryption password is wrong, rather than just
+    re-showing the password prompt without explanation
+  + Use new adwaita widgets (button rows and spinner)
+  + Exclude Steam flatpak folder by default too (in addition to
+    normal Steam folder)
+  + Restic:
+    - Allow creating a no-password backup
+    - Enable post-backup verification checks
+    - Show logs in troubleshooting dialog
+    - Show per-file errors during restore
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Mon Sep  9 13:00:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

@@ -16,7 +16,6 @@
 #
 
 
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
 Version:        2.9.0
@@ -26,15 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
 Source:         https://files.pythonhosted.org/packages/source/p/pyjwt/pyjwt-%{version}.tar.gz
-BuildRequires:  %{python_module cryptography >= 3.3.1}
+BuildRequires:  %{python_module cryptography >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 3.3.1
-Requires:       python-typing-extensions
+Recommends:     python-cryptography >= 3.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -66,6 +63,6 @@ donttest+=" or test_ec_to_jwk_with_invalid_curve"
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/jwt
-%{python_sitelib}/PyJWT-%{version}*-info
+%{python_sitelib}/PyJWT-%{version}.dist-info
 
 %changelog

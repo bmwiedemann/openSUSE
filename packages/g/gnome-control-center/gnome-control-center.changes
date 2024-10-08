@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Sep 27 17:25:17 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 47.0.1+8:
+  * online-accounts: Fix gettext use for row
+  * online-accounts: fix gettext calls to static strings
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:09:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0.1:
+  + Fix invalid appstream release notes syntax.
+- Changes from version 47.0:
+  + Appearance: Fix accessibility regression on background names.
+  + Apps: Handle opening details of Epiphany webapps.
+  + Color:
+    - Fix visibility of control buttons when expanding rows.
+    - Fix "Show details" link on profile warning.
+  + Sharing: Make "Media Sharing" dialog use GtkFileDialog for
+    adding new folders.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 10 15:16:21 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Rebase gnome-control-center-more-power-button-actions.patch.
+- Update some version requirements.
+
+-------------------------------------------------------------------
+Tue Sep  3 12:06:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Various ports from deprecated GTK and Libadwaita APIs
+  + Appearance: Improve performance when loading wallpapers
+  + Apps: Fix crash when handling invalid app permissions
+  + Date and Time: Fix "Auto Timezone" setting visibility when
+    Location Services are unavailable
+  + Online Accounts: Update description of MS365 online account
+    provider
+  + Sharing: Fix adding "Shared Media" folders
+  + Users:
+    - Update feedback icons for validating username and passwords
+    - Use a dialog to confirm removable of user fingerprints
+  + WiFi: Fix crash when unplugging removable WiFi adapters
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 29 19:35:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Various CI fixes
+  + Various ports to modern libadwaita widgets
+  + Various mnemonics additions
+  + Use GtkWindow.set_default_icon_name for legacy sessions
+  + Accessibility: Rename "Reduce Animation" setting to "Animation
+    Effects"
+  + Apps:
+    - Rename "File and Link Associations" page to "Files and Links"
+    - Show status page when Parental Controls aren't available
+    - Don't show "App is not sandboxed" banner for system
+      components
+  + Display:
+    - Adapt rotation labels to the screen ratio
+    - Don't set automatic Night Light when Location Services are
+      unavailable
+  + Keyboard
+    - Load input choice locales asynchronously
+    - Fix "Move" buttons in input rows
+  + Location: Remove reference to now retired Mozilla Location
+    Services
+  + Mouse:
+    - Use monochrome assets to support different accent colors
+    - Separate "Touchpad" row into its own preferences row group
+  + Network: Don't set empty ignored hosts
+  + Notifications: Turn "App Notifications" dialog into a subpage
+  + Online Accounts: Add a toast overlay for panel
+    notifications/error messages
+  + Users:
+    - Modernize the "Add User" dialog
+    - Respect password "enforcing" based on
+      /etc/security/pwquality.conf
+    - Avoid user names with underscores being interpreted as
+      mnemonics
+    - Show correctly the remaining list of fingerprints to enroll
+    - Reverse sorting of finger names list to prioritize most used
+      ones
+  + Printers:
+    - Various tweaks for the PPD Selection dialog
+    - Add button instead of link to open printer cups web page
+  + Privacy:
+    - Don't leak Bolt and Location subpages
+    - Fix visibility of Bolt settings when Bolt isn't available
+  + Remote Desktop:
+    - Fix loop resetting credentials
+    - Use new gnome-remote-desktop server configuration DBUs
+      interface
+  + Sound: Add an empty state page for when no sound device is
+    available
+  + Wacom: Set up Wacom stylus keyboard shortcuts and switch
+    monitor
+  + WWAN: Fix crash preventing the load of the SIM Unlock dialog
+  + Updated translations.
+- Rebase patch, and disable patch 1, needs manual rebase.
+
+-------------------------------------------------------------------
 Sun Aug 11 13:10:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.4:

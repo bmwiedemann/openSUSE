@@ -1,7 +1,7 @@
 #
 # spec file for package python-termcolor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-termcolor
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        ANSII Color formatting for output in terminal
 License:        MIT
 URL:            https://pypi.python.org/pypi/termcolor
 Source:         https://files.pythonhosted.org/packages/source/t/termcolor/termcolor-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

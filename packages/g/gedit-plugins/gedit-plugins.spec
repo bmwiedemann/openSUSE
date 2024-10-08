@@ -18,7 +18,7 @@
 
 
 Name:           gedit-plugins
-Version:        46.0+5
+Version:        48.0
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 46
+BuildRequires:  pkgconfig(gedit) >= 48
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
@@ -56,13 +56,11 @@ Suggests:       gedit-plugin-charmap
 Suggests:       gedit-plugin-codecomment
 Suggests:       gedit-plugin-colorpicker
 Suggests:       gedit-plugin-drawspaces
-Suggests:       gedit-plugin-git
 Suggests:       gedit-plugin-joinlines
 Suggests:       gedit-plugin-multiedit
 Suggests:       gedit-plugin-smartspaces
 Suggests:       gedit-plugin-session-saver
 Suggests:       gedit-plugin-terminal
-Suggests:       gedit-plugin-textsize
 Suggests:       gedit-plugin-wordcompletion
 Enhances:       gedit
 Obsoletes:      gedit-plugin-dashboard <= %{version}
@@ -153,15 +151,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/drawspaces.plugin
 %description -n gedit-plugin-drawspaces
 The gedit drawspaces plugin.
 
-%package -n gedit-plugin-git
-Summary:        Gedit git plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/git.plugin
-
-%description -n gedit-plugin-git
-The gedit git plugin.
-
 %package -n gedit-plugin-joinlines
 Summary:        Gedit joinlines plugin
 Group:          Productivity/Text/Editors
@@ -206,15 +195,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/terminal.plugin
 
 %description -n gedit-plugin-terminal
 The gedit terminal plugin
-
-%package -n gedit-plugin-textsize
-Summary:        Gedit textsize plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/textsize.plugin
-
-%description -n gedit-plugin-textsize
-The gedit textsize plugin
 
 %package -n gedit-plugin-wordcompletion
 Summary:        Gedit wordcompletion plugin
@@ -288,12 +268,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/libdrawspaces.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.drawspaces.gschema.xml
 
-%files -n gedit-plugin-git
-# git
-%{_datadir}/metainfo/gedit-git.metainfo.xml
-%{_libdir}/gedit/plugins/git.plugin
-%{_libdir}/gedit/plugins/git/
-
 %files -n gedit-plugin-joinlines
 # joinlines
 %{_datadir}/metainfo/gedit-joinlines.metainfo.xml
@@ -324,12 +298,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/terminal.plugin
 %{_libdir}/gedit/plugins/terminal.py*
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.terminal.gschema.xml
-
-%files -n gedit-plugin-textsize
-# textsize
-%{_datadir}/metainfo/gedit-textsize.metainfo.xml
-%{_libdir}/gedit/plugins/textsize.plugin
-%{_libdir}/gedit/plugins/textsize/
 
 %files -n gedit-plugin-wordcompletion
 # wordcompletion

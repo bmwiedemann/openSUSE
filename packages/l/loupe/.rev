@@ -86,4 +86,12 @@
     for actual print. (forwarded request 1166576 from dimstar)</comment>
     <requestid>1167758</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bcc79f602a82fcdfba4fa6b53f6ac8f0</srcmd5>
+    <version>47.0</version>
+    <time>1728401026</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205482</requestid>
+  </revision>
 </revisionlist>

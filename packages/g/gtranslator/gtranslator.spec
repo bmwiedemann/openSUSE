@@ -17,13 +17,13 @@
 
 
 Name:           gtranslator
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/46/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       gtranslator-rpmlintrc
 
 BuildRequires:  fdupes
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.12.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.4.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libsoup-3.0)
@@ -66,7 +66,7 @@ Gtranslator is an enhanced gettext PO file editor for the GNOME desktop environm
 %build
 # https://gitlab.gnome.org/GNOME/gtranslator/-/issues/184
 %meson \
-	-D gtk_doc=false
+	%{nil}
 %meson_build
 
 %install

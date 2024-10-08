@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 15 06:57:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  1 13:16:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Changes from version 47.beta:
+  + window-list: Modernize styling
+  + Include "status-icons" extension
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Improve workspace previews in window-list and
+    workspace-indicator
+  + apps-menu: Fix a11y of category labels
+  + window-list: Fix long-press support
+  + window-list: Animate transitions
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Build the new status-icons extension.
+
+-------------------------------------------------------------------
 Mon May 27 07:03:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

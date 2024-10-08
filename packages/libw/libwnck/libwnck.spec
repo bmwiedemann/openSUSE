@@ -17,15 +17,13 @@
 
 
 Name:           libwnck
-Version:        43.0
+Version:        43.1
 Release:        0
 Summary:        Window Navigator Construction Kit (Library Package)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
 Source0:        https://download.gnome.org/sources/libwnck/43/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM handle-avoid-segfault-in-invalidate-icons.patch glgo#GNOME/libwnck#46 -- avoid segfault in invalidate_icons
-Patch0:         handle-avoid-segfault-in-invalidate-icons.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel

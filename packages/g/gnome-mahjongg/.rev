@@ -255,4 +255,12 @@
   + Updated translations. (forwarded request 1168855 from dimstar)</comment>
     <requestid>1168887</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b5f7d4b07b9c3eb64477825e830edd63</srcmd5>
+    <version>47.0</version>
+    <time>1728401013</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205449</requestid>
+  </revision>
 </revisionlist>

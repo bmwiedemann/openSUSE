@@ -511,4 +511,12 @@
     <comment> (forwarded request 1117722 from iznogood)</comment>
     <requestid>1117968</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>489567b413ee48d15452dbb3f2abe450</srcmd5>
+    <version>47.0+0</version>
+    <time>1728400677</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205466</requestid>
+  </revision>
 </revisionlist>

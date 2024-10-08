@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  3 10:13:34 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add wallpapers-openSUSE-extra-leap15 subpackage with wallpapers
+  from Leap 15
+
+* This approach eventually obsoletes gos-wallpapers and simplify
+  wallpaper situation in openSUSE
+
+* Apply suggestsions from spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  2 18:08:40 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial Leap 16.0 version
+
+* Distribution agnostict wallpaper for all of our distributions
+  gh#openSUSE/branding#156
+
+* A Bluetail Day Gecko, endemic to the small island of Mauritius. 
+  Photo competition gh#openSUSE/wallpapers#18
+
+* Add Buildrequires for rsvg-convert and optipng to support
+  svg -> png generation on build time
+
+* Use github branch .zip export to be consistent with rest of
+ branding-* packages. Was tar.xz with tar -C wallpapers -cvf ...
+
+-------------------------------------------------------------------
 Thu Nov 19 12:29:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not conflict with branding package providers: this package

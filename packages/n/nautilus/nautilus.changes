@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Fri Sep 27 17:36:06 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 47.0+8:
+  * sidebarrow: Add appropriate margin and opacity
+  * list-base: Fix scroll to zoom
+  * list-base: Don't scroll when the ctrl key is held
+  * contributing: Add a CONTRIBUTING.md file
+  * gschema: Revert accidental new translatable strings
+  * Updated translations.
+- Add revert-post-release-bump.patch: Since we are using a
+  gitcheckout, the metadata fails during tests if we do not set a
+  proper iso-date.
+
+-------------------------------------------------------------------
+Sun Sep 15 14:58:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Enhancements:
+    - Show new folder button in Open Folder(s) modes
+    - Persist window size for file chooser
+  + Bugfixes:
+    - Fix grammar error
+    - Fix build error
+    - Escape toast button mnemonics
+  + File chooser fixes:
+    - Don't show undo button when suggested name doesn't exist
+    - Show filter name more consistently
+    - Stop crashing when using "Open Item Location"
+    - Fix issue where new folder button disappears
+    - Fix flat dropdown styles
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 17:40:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Enhancements:
+    - Polish the file chooser
+    - Implement file chooser "choices" menu
+    - Allow extracting bzip2 tar files
+    - Allow dropping items into the file chooser
+    - Add the background menu to the file chooser
+    - Allow vertical scrolling in the pathbar
+    - Activate the accept button by default in file chooser
+  + Bugfixes:
+    - Fix various file chooser crashes
+    - Don't hide file chooser filters with long filenames or in
+      narrow mode
+    - Make sure the pathbar always shows the current folder
+    - Fix overlapping filename widget in file chooser
+    - Make nautilus previewer work between the main window and file
+      chooser
+    - Various fixes for file chooser paths and save locations
+    - Set focus correctly in file chooser
+    - Allow unselecting an item in file chooser
+    - Add a tooltip to the network address bar button
+    - Disallow conventional DnD into the pathbar in file chooser
+      mode
+    - Don't overflow window in file chooser
+  + Updated translations.
+- Build against renamed trackers*: Update dependencies.
+
+-------------------------------------------------------------------
+Tue Aug 27 17:45:40 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Enhancements:
+    - Implement file chooser portal and introduce file chooser ui
+    - Redesign and modernize the compression dialog
+    - Modernize the new folder dialog
+    - Replace Search Banner with Search Info Popover
+    - Redesign "Other Types" search
+    - Port to new adwaita widgets
+    - Update emblems with symbolics
+  + Bugfixes:
+    - Use correct path for email
+    - File chooser bug fixes
+    - Disable bookmarking the network view
+    - Change files view accent to grey
+    - Fix dragging on touch devices
+    - Misc bugfixes
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Enhancements:
+    - Add the Network view
+    - Show xdg dirs in sidebar as regular (removable) bookmarks
+    - Show sidebar bookmarks before mounts
+    - Remove "Other Locations" and show mounts directly on the
+      sidebar
+    - Improve view performance
+    - Use new adw views
+    - Improve internal NautilusFile performance
+    - Improve ui for progress indicator
+    - Improve ui to floating bar
+    - Allow staring from the context menu
+    - Redesign trash dialog
+    - Allow Scripts in flatpak
+    - Open mounts in original tab instead of focused tab
+    - Allow simultaneous mounting
+  + Bugfixes:
+    - Create archive with Enter on Compress dialog
+    - Accessibility fixes
+    - Move focus correctly when item is removed
+    - Don't reset permissions when copying from a non-isofs
+      readonly filesystem
+    - Open correct panel in GNOME Settings for trash settings
+    - Disable paste in Trash, Recent, and Starred
+    - Fix error when passing invalid location to portals
+    - Fix memory leaks
+    - Call shutdown() on modules
+    - Don't show banners in global search
+    - Prevent a crash
+    - Keep correct file list order in a DnD
+    - Don't display future dates as "Today" or "Yesterday"
+    - Prevent freeze
+    - Fix broken sort order when switching views
+    - Don't irreversibly hide sidebar with touch gesture
+    - Don't unnecessarily re-set selection in search
+    - Don't scale up images in properties preview
+    - Actually drop wayland export handles
+    - Fix potentially incorrect file operation
+    - Batch rename fix tags, and allow illegal characters
+    - Allow xdp to fail
+    - Fix typo
+  + Cleanups:
+    - Use property styling for adw rows
+    - Code cleanup
+    - Significant refactoring and cleanup to prepare to Nautilus as
+      a file chooser
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:34:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Mon May 27 07:04:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

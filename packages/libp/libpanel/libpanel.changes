@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 15 13:57:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.0:
+  + Updated translations.
+- Changes from version 1.7.1:
+  + Various dialog improvements
+  + Build system improvements
+  + Updated translations.
+- Changes from version 1.7.0:
+  + Style fixes for libadwaita 1.6.alpha
+  + A new PanelChangesDialog which is an AdwDialog but is
+    otherwise like PanelSaveDialog. PanelSaveDialog is now
+    deprecated for what will become 1.8+.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:22:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.6.0:

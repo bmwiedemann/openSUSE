@@ -256,4 +256,12 @@
     <comment>- Update to release 3.2.6</comment>
     <requestid>1204934</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>fecd019a6181e6481b03890179a9af5e</srcmd5>
+    <version>3.2.6</version>
+    <time>1728400974</time>
+    <user>anag+factory</user>
+    <comment>- Use webkit2gtk-4.1 pkgconfig file instead of 4.0</comment>
+    <requestid>1206125</requestid>
+  </revision>
 </revisionlist>

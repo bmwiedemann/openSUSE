@@ -288,4 +288,12 @@
   * Removed support for EOL Pythons 2.7, 3.6, 3.7</comment>
     <requestid>1163304</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>33fdc7213da54f561fa478cef2f2c63e</srcmd5>
+    <version>0.4.1</version>
+    <time>1728400980</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206141</requestid>
+  </revision>
 </revisionlist>

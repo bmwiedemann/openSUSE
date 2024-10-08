@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:35:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.0:
+  + Various build system improvements to help catch correctness
+    issues.
+  + Increased assertions in fibers to help Coverity discover usage
+    patterns.
+  + Avoid releasing discarded future until chained future is
+    released.
+  + Fix overflow in extremely large timeout calculation.
+  + Various introspection fixes.
+  + Fix inclusion from C++.
+
+-------------------------------------------------------------------
 Mon Jun  3 09:53:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.6.1:

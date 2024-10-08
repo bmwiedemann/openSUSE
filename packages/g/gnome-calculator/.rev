@@ -470,4 +470,41 @@
     <comment></comment>
     <requestid>1172405</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>89f134f221073188b21a8a998aeb9ae6</srcmd5>
+    <version>47.0</version>
+    <time>1728400721</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.0:
+  + Fixed flatpak build
+  + Don't use symbolic icons for the window
+  + Updated translations.
+
+- Update to version 47.rc:
+  + Added brand colors
+  + Updated translations.
+
+- Update to version 47.beta:
+  + Fix hex string conversion for bitwise operator
+  + Force LTR for buttons
+  + Added kWh, MJ, KJ unit support
+  + Sort conversion categories alphabetically
+  + Removed obsolete bulgarian translations
+  + Only allow alphanumeric values for variable names
+  + Replace base_label with buttons
+  + Updated flathub badge
+  + Use adwaita spinner
+- Changes from version 47.alpha:
+  + Support VND currency
+  + Fixed incorrect event handling
+  + Removed Shift left/right dropdown
+  + Improved popover remove buttons
+  + Use result format instead of number format
+  + Ported to Adwaita adaptive dialogs
+  + Disable undo button if nothing to undo
+  + Metainfo improvements
+  + Keep last conversion options at launch
+  + Minor improvements to the undo button</comment>
+    <requestid>1205556</requestid>
+  </revision>
 </revisionlist>

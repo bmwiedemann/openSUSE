@@ -346,4 +346,12 @@
   + Updated translations. (forwarded request 1200871 from iznogood)</comment>
     <requestid>1201593</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a7fa005a676565bc3e57d7214e03b9d9</srcmd5>
+    <version>1.6.0</version>
+    <time>1728400687</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205473</requestid>
+  </revision>
 </revisionlist>

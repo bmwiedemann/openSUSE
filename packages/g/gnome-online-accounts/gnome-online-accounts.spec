@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.50.5
+Version:        3.52.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gcr-4)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52
@@ -39,6 +40,7 @@ BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -143,7 +145,8 @@ libraries in GNOME can access the user's online accounts.
 %{_libdir}/libgoa-backend-1.0.so.*
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/goa/
+%dir %{_datadir}/doc/gnome-online-accounts
+%doc %{_datadir}/doc/gnome-online-accounts/Goa-1.0
 %{_includedir}/goa-1.0/
 %dir %{_libdir}/goa-1.0
 %{_libdir}/goa-1.0/include/

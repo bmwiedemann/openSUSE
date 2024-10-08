@@ -111,10 +111,10 @@ cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 %post -n libpodofo%{libver} -p /sbin/ldconfig
 %postun -n libpodofo%{libver} -p /sbin/ldconfig
 
+%if %{with tools}
 %files
 %license COPYING
 %doc AUTHORS.md README.md
-%if %{with tools}
 %{_bindir}/*
 %{_mandir}/man1/podofo*.1%{?ext_man}
 %endif

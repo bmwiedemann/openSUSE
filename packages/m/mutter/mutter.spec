@@ -18,17 +18,18 @@
 
 %bcond_with profiler
 
-%define api_major 14
+%define api_major 15
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        46.5
+Version:        47.0+19
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.zst
+Source1:        gvdb-0.gitmodule.tar.zst
 
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch1:         mutter-disable-cvt-s390x.patch
@@ -50,7 +51,7 @@ BuildRequires:  fdupes
 %ifnarch s390x
 BuildRequires:  (libxcvt if xorg-x11-server > 21)
 %endif
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  meson >= 1.3.0
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server
 BuildRequires:  xvfb-run
@@ -58,29 +59,29 @@ BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(colord) >= 1.4.5
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
-BuildRequires:  pkgconfig(gbm) >= 17.3
+BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.69.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.81.1
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(graphene-gobject-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.beta
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
-BuildRequires:  pkgconfig(libeis-1.0)
-BuildRequires:  pkgconfig(libinput) >= 1.15.0
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.21
+BuildRequires:  pkgconfig(libeis-1.0) >= 1.0.901
+BuildRequires:  pkgconfig(libinput) >= 1.26.0
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libudev) >= 136
+BuildRequires:  pkgconfig(libudev) >= 228
 BuildRequires:  pkgconfig(libwacom) >= 0.13
-BuildRequires:  pkgconfig(pango) >= 1.2.0
+BuildRequires:  pkgconfig(pango) >= 1.46.0
 BuildRequires:  pkgconfig(pixman-1) >= 0.42
 BuildRequires:  pkgconfig(sm)
 %if %{with profiler}
@@ -90,8 +91,8 @@ BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.2
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-eglstream)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.33
-BuildRequires:  pkgconfig(wayland-server) >= 1.22
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.36
+BuildRequires:  pkgconfig(wayland-server) >= 1.23
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
@@ -142,6 +143,10 @@ applications that want to make use of the mutter library.
 
 %prep
 %autosetup -N
+pushd subprojects
+tar xf %{SOURCE1}
+mv gvdb-0.gitmodule gvdb
+popd
 %if !0%{?sle_version}
 %autopatch -p1 -M 999
 %else
@@ -162,7 +167,7 @@ applications that want to make use of the mutter library.
 	-Dwayland_eglstream=true \
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
-	-Dtests=false \
+	-Dtests=disabled \
 	-Dinstalled_tests=false \
 	-Dxwayland_initfd=auto \
 	-Dlibdisplay_info=true \
@@ -198,7 +203,6 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/plugins/libdefault.so
 
 # These typelibs are not split out since they are private to mutter
-%{_libdir}/mutter-%{api_major}/Cally-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.typelib
@@ -224,7 +228,6 @@ applications that want to make use of the mutter library.
 %files devel
 %{_includedir}/mutter-%{api_major}/
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.gir
-%{_libdir}/mutter-%{api_major}/Cally-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.gir

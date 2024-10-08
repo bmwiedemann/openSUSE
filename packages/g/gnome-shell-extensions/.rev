@@ -2380,4 +2380,12 @@
   + Updated translations. (forwarded request 1177036 from dimstar)</comment>
     <requestid>1177060</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>d0ad8b08cb3b2b834e90e4716160e676</srcmd5>
+    <version>47.0</version>
+    <time>1728400670</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205458</requestid>
+  </revision>
 </revisionlist>

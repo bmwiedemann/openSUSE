@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Sep 16 15:11:47 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + AdwAboutDialog/Window: Support non-deprecated GPL-2/3.0-only
+    SPDX IDs
+  + AdwBottomSheet: Fix a crash in tests on some platforms
+  + AdwHeaderBar: Fix back button menu picking up phantom pages in
+    some situations
+  + AdwMessageDialog: Fix title size
+  + AdwTabOverview: Focus search entry with Ctrl+F
+  + Docs:
+    - Screenshot tool fixes
+    - Update screenshots
+  + Tests: Add AdwBackButton tests
+  + Stylesheet:
+    - Disable .devel header bars for bottom sheets, like for
+      dialogs
+    - Fix header bar in GTK dialogs
+    - Fix fine-tune scale styles
+    - Fix scroll undershoot in dropdowns and emoji picker
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 15 17:40:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.rc:
+  + AdwMultiLayoutView: Hide slots when their child is invisible
+  + AdwPreferencesDialog/Window: Support macOS keybindings
+  + AdwSpinner: Work around a memory corruption issue
+  + AdwTabBar/Overview: Fix 2 drag-n-drop crashes
+  + AdwTabView: Support macOS keybindings
+  + Demo:
+    - List ADW_DEBUG_ACCENT_COLOR in about dialog debug info
+    - Support macOS keybindings
+  + Docs:
+    - List available style classes for each widget
+    - Typo fixes
+  + Stylesheet
+    - Add .ssd-frame style class for mutter titlebars
+    - Make radio button focus ring round
+    - Use relative font sizes
+    - Support .property.monospace for AdwExpanderRow too
+    - Fix GtkScale value overlapping with slider
+    - Fix --window-radius 0px unit
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 14 17:15:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.beta:
+  + Introduce AdwSpinner and AdwSpinnerPaintable
+  + AdwAlertDialog:
+    - Accessibility fixes
+    - Fix a sizing bug with :prefer-wide-layout
+  + AdwComboRow: Don't change sensitivity on model change
+  + AdwDialog:
+    - Fix a memory leak
+    - Speed up switching presentation
+  + AdwEntryRow: Fix row activation
+  + AdwPreferencesPage: Add an a11y relation to the description
+  + AdwSpinRow: Set accessible role to presentation
+  + AdwStatusPage: Adjust style when using AdwSpinnerPaintable
+  + AdwStyleManager:
+    - Speed up reloading CSS
+    - Partially support system accent color on macOS
+  + AdwSwitchRow: Set accessible role to switch
+  + AdwTabBar/Overview:
+    - Use AdwSpinnerPaintable for loading state
+    - Fix a use after free when closing tabs
+  + AdwToastOverlay: Announce appearing toasts for screen reader
+  + Demo:
+    - Make strings HIG-compliant
+    - Add ctrl+q shortcut, make ctrl+w close the window instead
+  + Docs:
+    - Don't annotate user_data params with closure
+    - Fix typos in migrating to breakpoints page
+  + Stylesheet:
+    - Fix a specificity issue with scrolled windows in popovers
+    - Fix file chooser styles
+  + Updated translations.
+- Please see NEWS for even more changes.
+
+-------------------------------------------------------------------
 Fri Sep 13 15:09:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.4:

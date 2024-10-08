@@ -456,4 +456,18 @@
     <comment></comment>
     <requestid>1163236</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b110ffed47080d523b9a57e0d41f4593</srcmd5>
+    <version>4.5.4</version>
+    <time>1728401049</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.4:
+  * LinkedIn supports refresh token
+  * SteamOpenId validation of identify URL
+  * Box state redirestion
+  * The `uid` is automatically converted to string in the
+    pipeline
+  * Mediawiki error handling</comment>
+    <requestid>1206171</requestid>
+  </revision>
 </revisionlist>

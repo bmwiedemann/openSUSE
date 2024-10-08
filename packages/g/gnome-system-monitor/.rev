@@ -866,4 +866,34 @@
     <comment>GNOME 46 (forwarded request 1158686 from dimstar)</comment>
     <requestid>1159489</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>0f7eef4e83e154e91936e5e5c69400e7</srcmd5>
+    <version>47.0</version>
+    <time>1728400723</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.0:
+  + Fix blurred background on HiDPI screens
+  + Updated translations.
+
+- Update to version 47.rc:
+  + Minor improvements in defaults and settings loading
+  + Updated translations.
+
+- Update to version 47.beta:
+  + Fix help and version crashing the application
+  + UI modernization for dialogs and disks view
+  + Improve initial loadgraph points
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Improved flatpak app icon search
+  + Set affinity for all tasks
+  + Use new Adwaita adaptive dialogs
+  + Use same translatable for CPU charts and affinty
+  + Several migrations from deprecated treeview to columnview
+  + Migrate color button to GtkColorDialog
+  + Add one column per group of 32 core labels
+  + Various interface improvements to match HIG
+  + Updated translations.</comment>
+    <requestid>1205558</requestid>
+  </revision>
 </revisionlist>

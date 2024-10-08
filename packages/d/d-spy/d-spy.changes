@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 15 12:29:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Set legacy icon for window
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Transition to GNOME release numbering
+  + Build changes to accomidate bundling from Builder
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:21:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.0:

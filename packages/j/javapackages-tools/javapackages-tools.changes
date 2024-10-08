@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  7 17:38:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * do-not-require-which.patch
+    + do not fail launching scripts if which is not installed
+      (bsc#1231347)
+
+-------------------------------------------------------------------
 Fri Oct  4 17:08:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.3.2

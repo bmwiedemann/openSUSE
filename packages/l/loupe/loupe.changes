@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 13 11:48:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + Flickering while images are reloaded. Instead, keep the old
+    textures around until a new texture is available.
+  + Forcing the zoom to the center of the image is now working
+    again. This is especially noticable when using the touchpads
+    pinch gesture.
+  + When disabling animations in the OS and using the buttons to
+    change the image, the wrong image was shown, disabling features
+    like zoom.
+
+-------------------------------------------------------------------
+Fri Aug 30 09:01:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta.1:
+  + Don't force Flatpak sandbox SVGs. This fixes SVGs not loading
+    outside of Flatpak.
+  + Make the window wider when it would open with a bottom-sheet
+    overlay for properties. That way, the properties can be shown
+    in a sidebar.
+  + Properly detect non-transparent images and down download a
+    thumbnail for background detection for them. For some reason,
+    the thumbnail download is using a lot of VRAM.
+
+-------------------------------------------------------------------
 Wed Apr 10 07:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

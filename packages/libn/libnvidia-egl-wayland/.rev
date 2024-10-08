@@ -121,4 +121,22 @@
     <comment></comment>
     <requestid>1195685</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>fb1700f342fc48a469a27317d73aa087</srcmd5>
+    <version>1.1.16</version>
+    <time>1728400970</time>
+    <user>anag+factory</user>
+    <comment>- 0001-egl-wayland-bump-version-to-1.1.17.patch
+  0002-Fix-the-include-path-for-drm_fourcc.h.patch
+  0003-Fix-a-declaration-after-code.patch
+  0004-egl-swap-provide-damage-rectangles-to-wl_surface.patch
+  0005-Use-INT32_MAX-for-wl_surface_damage.patch
+  0006-egl-wayland-Accept-device-name-from-either-wl_drm-or.patch
+  0007-egl-wayland-fix-device-name-case-where-only-wl_drm-e.patch
+  0008-Add-ICD-json-file.patch
+  0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
+  * apply latest fixes including adding ICD json file; related:
+    https://github.com/openSUSE/nvidia-driver-G06/issues/26</comment>
+    <requestid>1206111</requestid>
+  </revision>
 </revisionlist>

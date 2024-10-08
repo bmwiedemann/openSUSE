@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mahjongg
-Version:        3.40.1
+Version:        47.0
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ corresponding tiles and taking them out of play.
 %doc NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/metainfo/org.gnome.Mahjongg.appdata.xml
+%{_datadir}/metainfo/org.gnome.Mahjongg.metainfo.xml
 %{_datadir}/applications/org.gnome.Mahjongg.desktop
 %{_datadir}/dbus-1/services/org.gnome.Mahjongg.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Mahjongg.gschema.xml

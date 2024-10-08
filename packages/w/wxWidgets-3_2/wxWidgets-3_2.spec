@@ -109,7 +109,7 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 %if "%toolkit" == "gtk3"
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with webview}
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 %endif
 %endif
 %if "%toolkit" == "qt"

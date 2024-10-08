@@ -377,4 +377,16 @@
 </comment>
     <requestid>1205831</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>2f9f7c2470030f45c3fad1e742a5c974</srcmd5>
+    <version>3.4.0</version>
+    <time>1728400587</time>
+    <user>anag+factory</user>
+    <comment>- Add argparse-3_12_7.patch which should actually fix
+  gh#kislyuk/argcomplete#507.
+- Remove skip-failing-tests-3_12_7.patch, which is now
+  unnecessary.
+</comment>
+    <requestid>1206005</requestid>
+  </revision>
 </revisionlist>

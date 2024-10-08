@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 17 10:50:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Add HW and brand colors info to metainfo file
+  + Rename metainfo file to o.g.B.metainfo.xml.in
+  + Don't consider distro derivatives when resolving logos
+  + Updated translations.
+- Switch to source service.
+
+-------------------------------------------------------------------
+Sun Sep  8 07:54:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace tracker with localsearch Requires following renameing of
+  tracker.
+
+-------------------------------------------------------------------
+Thu Aug 22 19:48:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Fix appdata validation for "Devel" build profile
+  + Check when a libvirt-broker reference is invalid
+  + Improve some print format specifiers
+  + Add "Trisquel" logo
+  + Various CI fixes
+  + Updated translations.
+- Drop fix-return-val-if-fail-build.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Jul 10 11:22:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-return-val-if-fail-build.patch: libvirt-broker: Guard

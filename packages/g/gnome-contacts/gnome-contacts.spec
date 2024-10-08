@@ -21,7 +21,7 @@
 %define glib_version 2.64
 
 Name:           gnome-contacts
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gmodule-export-2.0) >= %{glib_version}
-#BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libebook-1.2) >= %{eds_version}

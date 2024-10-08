@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Fri Oct  4 19:07:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix closing window title dialog with Return/Enter
+  + Fix naming of Ubuntu palette
+  + Allow setting shortcuts with Fn keys on Macbooks
+  + Fix some solarized palette inconsistencies
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 25 06:48:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.1:
+  + More clipboard fixes for initial state tracking.
+  + Handle shell detection when directory slash is omitted.
+  + Exit cleanly when ptyxis-agent exits.
+  + Fix VteRegex warning from the search bar.
+  + Fix potential leak of VteTerminal instances.
+  + Update gruvbox light/dark scheme.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 14 08:46:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Implement application open file vfunc to work with Nautilus
+  + Fix inintial clipboard action state
+  + Fix various styling issues
+  + Rename Clone of Ubuntu to Ubuntu at request of Ubuntu
+  + Try to adjust window size to keep grid size the same when
+    adding or removing tabs
+
+-------------------------------------------------------------------
+Wed Sep 11 20:29:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Ctrl+shift+w now set as default shortcut for closing a tab,
+    matching GNOME Terminal.
+  + Preferences window improvements.
+  + Updated GNOME Terminal palettes.
+  + UI changes to improve screen reader support.
+  + Make CSS provider priority less than the GTK inspector.
+  + Styling improvements to match Builder and Text Editor.
+  + Fix support for enabling login shells.
+  + Convenience API for distros which require downstream patching
+    for current directory tracking (such as Debian).
+  + Fix container tracking and notifications via termprops.
+  + Show opacity toggle if the setting has been changed.
+  + Handle new tab creation when directory is in a GVFS FUSE path.
+  + Reduce agent poll priority when ^C is pressed.
+  + Overview styling and live-preview improvements to updated
+    immediately when preferences changes.
+  + Fix missing shortcut bindings for reset and reset-and-clear.
+- Changes from version 47.beta:
+  + Ptyxis no longer requires patches to VTE when using a recent
+    VTE git tag for GNOME 47.
+  + Legacy libc compat was dropped for 32-bit x86 as it is
+    unnecessary.
+  + Window pallete and styling improvements to match GNOME 47
+    styling.
+  + A new gsetting to disable padding around the terminal, at the
+    cost of runtime performance.
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Many updates for GNOME HIG across dialogs and widgetry.
+  + Ptyxis can run the ptyxis-agent inside the sandbox if we fail
+    to run on the host. That comes with drawbacks but at least
+    keeps the application working in those scenarios.
+  + The build system supports some whitebox renaming allowing it to
+    be called "Terminal" in some situations. Distributions shipping
+    Ptyxis as their terminal may be encouraged to use that.
+    Branding is also reduced to less dramatic styling.
+  + Many fixes for Podman, Toolbox, and Distrobox.
+  + Fallback to `sh` if we cannot locate the shell specified in
+    /etc/passwd.
+  + Improvements to the tab parking lot so that processes are
+    properly exited.
+  + Notification improvements.
+  + Port Ptyxis to use the new VTE "termprops" feature. This
+    requires a newer VTE than is currently released but is
+    anticipated shortly. This reduces the number of patches
+    required by Ptyxis (and eventually Fedora) to a single small
+    patch for vte.sh.in.
+  + New palettes styles.
+  + Many new command line options and improved support for
+    combining them.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  9 19:07:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.6:
+  + Use a lower value for CSS provider so inspector CSS changes can
+    occur at a higher priority.
+  + Drop libc compat mode for x86, this is unnecessary now.
+  + Fix login-shell toggle in preferences.
+  + Show opacity control if the value is currently < 100%.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul  9 20:00:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.5:
+  + Ptyxis (1) man page has been added.
+
+-------------------------------------------------------------------
+Mon Jul  1 10:42:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.4:
+  + Fix clear selection shortcut binding
+  + Only allow a single palette to affect window dressing at a
+    time, fixing a situation where the last palette selected takes
+    precedence.
+  + Work around misconfigured /etc/passwd in containers.
+
+-------------------------------------------------------------------
+Tue Jun 11 07:18:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.3:
+  + stdin in child processes defaults to blocking mode as is
+    generally expected of terminals.
+  + Ignore tab respawn warnings when custom commands are used and
+    they exited nominally.
+  + Various build system and metainfo updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun  6 13:32:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2+13:
+  + Update metainfo.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 13 14:16:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Additional troubleshooting data has been added to the about
+    dialog to help users provide useful information.
+  + Patches for `vte.sh` are updated to match changes I made for
+    Fedora 40 which properly support PROMPT_COMMAND as a bash
+    array.
+  + Patches for a11y are updated to apply against vte-0-76 branch.
+  + Ensure tabs are force-quit when timing out in the parking lot.
+  + Some build system rework has occurred for Ptyxis to be compiled
+    with alternate app-id and/or gschema identifiers.
+  + The build system will now enforce specific linked versions of
+    GLib, GTK, and libadwaita using min/max version macros.
+
+-------------------------------------------------------------------
+Sat Apr 20 18:55:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update file list.
+- Split out lang package.
+
+-------------------------------------------------------------------
+Thu Apr 11 11:26:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Ensure run contexts start with full environment which fixes an
+    issue with running podman in some configurations.
+  + Fix initial tab icon state.
+  . Podman integration now uses PtyxisRunContext to better
+    trampoline into the target container.
+
+-------------------------------------------------------------------
+Sat Mar 16 09:25:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 46.0.
+

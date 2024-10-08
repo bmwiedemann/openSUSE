@@ -2372,4 +2372,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1191744</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>94097ba11e037b2a34a6fc7b424cf55c</srcmd5>
+    <version>3.54.0</version>
+    <time>1728400633</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205423</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,12 @@
 #
 
 
-%define skip_python2 1
 %define modname social-core
 # saml is optional: packages in TW and Leap not compatible
 %bcond_with saml
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-core
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause

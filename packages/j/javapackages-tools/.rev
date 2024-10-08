@@ -415,4 +415,12 @@
     <comment>6.3.2</comment>
     <requestid>1205748</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f752583853637ab874f0f2db37d3305e</srcmd5>
+    <version>6.3.2</version>
+    <time>1728400602</time>
+    <user>anag+factory</user>
+    <comment>bsc#1231347 - minimal solution: which -&gt; type -p</comment>
+    <requestid>1206227</requestid>
+  </revision>
 </revisionlist>

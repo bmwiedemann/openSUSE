@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  7 21:44:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace tracker-devel with tinysparql-devel BuildRequires
+  following the rename of tracker.
+
+-------------------------------------------------------------------
 Wed Jul 10 11:35:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 5cdefa8c76ddb797bce8b67a3f5767678bd36a5a.patch: Fix gcc 14.x

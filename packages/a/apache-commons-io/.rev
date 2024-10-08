@@ -186,4 +186,12 @@
     <comment>2.17.0</comment>
     <requestid>1205749</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5819ead01e3bbbb58199e2cf8d320d2a</srcmd5>
+    <version>2.17.0</version>
+    <time>1728400595</time>
+    <user>anag+factory</user>
+    <comment>sync changes with sle12</comment>
+    <requestid>1206090</requestid>
+  </revision>
 </revisionlist>

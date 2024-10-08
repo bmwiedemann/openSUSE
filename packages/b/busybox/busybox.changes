@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:59:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on non-x86* architectures:
+  * busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
+
+-------------------------------------------------------------------
 Fri Oct  4 11:55:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix busybox.config again (got broken with 1.37.0 update)

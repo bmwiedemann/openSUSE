@@ -31,4 +31,12 @@
     <comment>GNOME 46 (forwarded request 1159283 from dimstar)</comment>
     <requestid>1159441</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>343fc9bf838ff0c519826d2a830fff5e</srcmd5>
+    <version>0.4.2</version>
+    <time>1728401039</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1205740 from iznogood)</comment>
+    <requestid>1205805</requestid>
+  </revision>
 </revisionlist>

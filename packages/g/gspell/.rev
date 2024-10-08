@@ -229,4 +229,12 @@
   + Small code maintenance: don't use g_slice_*().</comment>
     <requestid>1103423</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2b42ff5b7ee2607e52ca6f8183a72c13</srcmd5>
+    <version>1.14.0</version>
+    <time>1728400682</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205470</requestid>
+  </revision>
 </revisionlist>

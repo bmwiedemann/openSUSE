@@ -602,4 +602,12 @@
     <comment></comment>
     <requestid>1187539</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>87e32e7f1882d5e55ed35fdb60461c9c</srcmd5>
+    <version>47.1</version>
+    <time>1728400680</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205469</requestid>
+  </revision>
 </revisionlist>

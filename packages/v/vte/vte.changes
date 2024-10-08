@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Sep 20 17:08:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.78.0:
+  + build: Only default to -Bsymbolic-functions on gnu linker
+
+-------------------------------------------------------------------
+Fri Sep 20 17:07:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.77.92:
+  * lib: Remove custom terminfo
+  * minifont: Fix syntax warning with python 3.12
+  * app: Add scroll options
+  * widget: Fix legacy OSC 7 notification
+  * widget: gtk3: a11y: Remove use of language extension
+  * widget: gtk3: a11y: Fix NULL title
+  * lib: Include stdint.h where needed
+  * vte.sh: Preserve exit status
+  * widget: termprop: Allow NULL value in
+    vte_terminal_get_termprop_value
+  * widget: termprops: Change vte.shell.postexec termprop to UINT
+  * vte.sh: Fix function name
+  * minifont: Use FAST filter for fill pattern
+  * minifont: Simplify drawing bitmap pattern
+
+-------------------------------------------------------------------
+Fri Sep 20 17:07:01 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 0.77.91:
+  * minifont: gtk4: Fix character alignment for U+1CC40..U+1CC47
+  * minifont: gtk4: Remove incorrect definition of U+1FB97
+  * parser: test: Remove some debug output
+  * parser: test: Fix glue/uchar test for zero_v and add more tests
+  * build: Post release version bump
+  * all: Remove SIXEL support from stable branch
+  * widget: termprops: Change color termprop variant type
+  * widget: termprops: Return nothing for colour termprops on gtk4
+  * widget: termprops: Skip value initialisation on false return
+  * emulation: DECERA/DECCARA/DECRARA fixes
+
+-------------------------------------------------------------------
 Fri Sep 20 12:56:58 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 0.76.4:

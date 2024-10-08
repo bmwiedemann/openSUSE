@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 17 07:10:11 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Speed up capture loading using gtk_tim_sort().
+  + Speed up capture loading using a private bump allocator for
+    callgraph nodes.
+  + Use AdwAboutDialog.
+  + Add GIO and Mutter to graphics section.
+  + Fix use of tracefd on some child processes.
+  + Fix some use of blocking FDs.
+  + Collapse some recursive functions in callgraphs.
+  + Improve styling of waterfall labels.
+  + Allow polkit to be optional in some situations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 17 16:47:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete update-desktop-files BuildRequires and macro
+  with desktop-file-utils BuildRequires.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:24:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

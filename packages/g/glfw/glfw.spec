@@ -16,21 +16,15 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "-wayland"
-%bcond_without wayland
-%else
-%bcond_with wayland
-# On TW, build with geany by default
+# On TW and ALP, build with geany by default
 %if 0%{?suse_version} >= 1600
 %bcond_without geany
 %else
 %bcond_with geany
 %endif
-%endif
 %define sover  3
-Name:           glfw%{flavor}
-Version:        3.3.9
+Name:           glfw
+Version:        3.4
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib
@@ -38,18 +32,18 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.glfw.org/
 Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/glfw-%{version}.tar.gz
 Source99:       glfw-rpmlintrc
+# PATCH-FIX-OPENSUSE docs-remove-footer.patch antonio.teixeira@suse.com -- Custom footer for html docs includes build date and time. Use default footer instead.
+Patch1:         docs-remove-footer.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-%if %{with wayland}
-BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
-%else
 %if %{with geany}
 BuildRequires:  geany
 %endif
@@ -57,7 +51,6 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
-%endif
 
 %description
 GLFW is a framework for OpenGL application development. It is a
@@ -65,39 +58,46 @@ single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%package -n libglfw%{sover}%{flavor}
+%package -n libglfw%{sover}
 Summary:        Framework for OpenGL application development
 Group:          System/Libraries
-%if %{with wayland}
-Provides:       libglfw%{sover} = %{version}
-Conflicts:      libglfw%{sover}
-%else
-Conflicts:      libglfw%{sover}-wayland = %{version}
-%endif
+Provides:       libglfw%{sover}-wayland = %{version}
+Obsoletes:      libglfw%{sover}-wayland <= %{version}
 
-%description -n libglfw%{sover}%{flavor}
+%description -n libglfw%{sover}
 GLFW is a framework for OpenGL application development. It is a
 single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%if %{without wayland}
-%package -n libglfw%{flavor}-devel
+%package -n libglfw-devel
 Summary:        Development files for GLFW, an OpenGL application framework
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libglfw%{sover} = %{version}
 Requires:       pkgconfig(gl)
 
-%description -n libglfw%{flavor}-devel
+%description -n libglfw-devel
 GLFW is a framework for OpenGL application development. It is a
 single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
-%endif
+
+%package doc
+Summary:        Documentation for GLFW, an OpenGL application framework
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+GLFW is a framework for OpenGL application development. It is a
+single library providing a powerful, portable API for otherwise
+operating system specific tasks such as opening an OpenGL window, and
+reading keyboard, time, mouse and joystick input.
+
+This subpackage contains GLFW's documentation in html format.
 
 %prep
-%setup -q -n glfw-%{version}
+%autosetup -p1 -n glfw-%{version}
 find . -type f | xargs sed -i 's/\r//'
 
 # temp geany config directory for allow geany to generate tags
@@ -110,35 +110,27 @@ geany -c geany_config -g glfw.c.tags $(find src \( ! -name CMakeFiles \) -type f
 ) include/GLFW/glfw3.h
 %endif
 
-%cmake \
-%if %{with wayland}
-  -DGLFW_USE_WAYLAND=ON
-%endif
+%cmake
 
 %make_build
 
 %install
 %cmake_install
 
-%if %{with wayland}
-# Only in main package
-rm -rfv %{buildroot}%{_includedir} %{buildroot}%{_libdir}/{cmake,libglfw.so,pkgconfig}
-%endif
 %if %{with geany}
 # install geany tags
 install -d %{buildroot}/%{_datadir}/geany/tags/
 install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %endif
 
-%post   -n libglfw%{sover}%{flavor} -p /sbin/ldconfig
-%postun -n libglfw%{sover}%{flavor} -p /sbin/ldconfig
+%post   -n libglfw%{sover} -p /sbin/ldconfig
+%postun -n libglfw%{sover} -p /sbin/ldconfig
 
-%files -n libglfw%{sover}%{flavor}
+%files -n libglfw%{sover}
 %license LICENSE.md
 %doc README.md
 %{_libdir}/libglfw.so.%{sover}*
 
-%if %{without wayland}
 %files -n libglfw-devel
 %doc examples/*.c
 %{_includedir}/GLFW/
@@ -148,6 +140,8 @@ install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %if %{with geany}
 %{_datadir}/geany/*
 %endif
-%endif
+
+%files doc
+%{_docdir}/%{name}/
 
 %changelog

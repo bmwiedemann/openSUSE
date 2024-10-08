@@ -3969,4 +3969,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * set max colormap size for remap 1ffe565</comment>
     <requestid>1196236</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>7450d360051dbe4bb0ce089272d4cf39</srcmd5>
+    <version>7.1.1.39</version>
+    <time>1728400590</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.39
+  * Add missing Threshold command to command array of Region of Interest mode #7606
+  * uhdr.c: update uhdr coder for gainmap metadata configuration #7635
+  * uhdr: fix language choice in autoconf #7663 (forwarded request 1206003 from adkorte)</comment>
+    <requestid>1206072</requestid>
+  </revision>
 </revisionlist>

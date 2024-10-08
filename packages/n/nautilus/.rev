@@ -1654,4 +1654,12 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations. (forwarded request 1177038 from dimstar)</comment>
     <requestid>1177061</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>f90a3dfca4b738903be5ebf53cfc43f1</srcmd5>
+    <version>47.0+8</version>
+    <time>1728400698</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205484</requestid>
+  </revision>
 </revisionlist>

@@ -212,4 +212,12 @@
   needed.</comment>
     <requestid>1110926</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c27d7949b94717ba7c14646f12b4b304</srcmd5>
+    <version>0.11+11</version>
+    <time>1728400712</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205494</requestid>
+  </revision>
 </revisionlist>

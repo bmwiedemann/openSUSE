@@ -17,7 +17,7 @@
 
 
 Name:           gnome-sudoku
-Version:        46.3
+Version:        47.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
@@ -71,7 +71,7 @@ with the correct digits.
 %{_datadir}/dbus-1/services/org.gnome.Sudoku.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Sudoku.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/metainfo/org.gnome.Sudoku.appdata.xml
+%{_datadir}/metainfo/org.gnome.Sudoku.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_bindir}/%{name}
 

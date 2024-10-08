@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 17 17:27:40 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.0:
+  + metainfo: Fix incorrect/missing URLs
+  + all: Set prgname to application ID for server and preferences
+  + searchprovider:
+    - Remove use of language extension
+    - Fix for NULL window title
+  + docs: man:
+    - Fix '-t' description
+    - Fix '-e' description
+  + regex: Disallow terminating colon in URLs
+  + client: legacy: Error out on extra arguments after parsing
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun 10 06:55:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.2:

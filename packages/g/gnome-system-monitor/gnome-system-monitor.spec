@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        46.0
+Version:        47.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(glibmm-2.4) >= 2.46
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 3.22.0
 BuildRequires:  pkgconfig(gtkmm-4.0) >= 3.3.18
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.41.2
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
@@ -86,8 +86,7 @@ processor time, memory, and disk space are being used.
 %{_libexecdir}/%{name}/gsm-taskset
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/gsm.gresource
-%{_datadir}/icons/hicolor/*/apps/org.gnome.SystemMonitor*.svg
-%{_datadir}/icons/hicolor/symbolic/apps/speedometer-symbolic.svg
+%{_datadir}/icons/hicolor/*/apps/*.svg
 
 %files lang -f %{name}.lang
 

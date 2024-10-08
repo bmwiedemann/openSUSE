@@ -45,7 +45,6 @@ BuildRequires:  intltool >= 0.50.0
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
@@ -101,8 +100,6 @@ export CFLAGS="%{optflags} -Wno-error=format-nonliteral -fcommon"
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -G "Remote Desktop Viewer" vinagre
-%suse_update_desktop_file vinagre-file
 %find_lang %{name} %{?no_lang_C}
 for size in 8x8 16x16 22x22 24x24 32x32 48x48 256x256; do
         if test -f %{_datadir}/icons/Adwaita/$size/legacy/preferences-desktop-remote-desktop.png; then
@@ -112,20 +109,6 @@ for size in 8x8 16x16 22x22 24x24 32x32 48x48 256x256; do
 done
 
 %fdupes %{buildroot}
-
-%if 0%{?suse_version} < 1500
-%post
-%glib2_gsettings_schema_post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%glib2_gsettings_schema_postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-%endif
 
 %files
 %doc %{_datadir}/help/C/%{name}/

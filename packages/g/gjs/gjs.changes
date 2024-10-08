@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 17 06:17:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.82.0:
+  + Installed tests are failing because they can't load internal
+    typelibs from parent directory
+  + GIMarshalling test has 3 failures with 1.81.90 on i686.
+
+-------------------------------------------------------------------
+Fri Sep 13 07:42:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.81.90.g4:
+  + arg-cache: Init out parameters with correct number of bits.
+
+-------------------------------------------------------------------
+Mon Sep  2 07:55:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.81.90:
+  + callbacks: fix sweeping check for incremental GC
+  + GJS doesn't handle query parameters in imports
+  + Integrate gobject-introspection-tests as submodule
+  + module: Include full module specifier in import.meta.url
+  + doap: Remove invalid maintainer entry
+  + installed tests have the wrong libexecdir
+  + Inheriting final class crashes GJS
+  + Various maintenance
+
+-------------------------------------------------------------------
+Fri Aug 30 06:58:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.81.2:
+  + This version of GJS is based on SpiderMonkey 128, an upgrade
+    from the previous ESR (Extended Support Release) of
+    SpiderMonkey 115.
+
+-------------------------------------------------------------------
 Tue Mar 26 08:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.80.2:

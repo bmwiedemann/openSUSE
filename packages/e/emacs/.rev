@@ -2044,4 +2044,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   gcc14 (backport from upstream master)</comment>
     <requestid>1201403</requestid>
   </revision>
+  <revision rev="194" vrev="9">
+    <srcmd5>b8423fead2f60ec5fc7f7fe5e76e60ff</srcmd5>
+    <version>29.4</version>
+    <time>1728400614</time>
+    <user>anag+factory</user>
+    <comment>- Prefer webkit2gtk-4.1 over webkit2gtk-4.0: configure also prefers
+  API version 4.1 and uses 4.0 only as a fallback. (forwarded request 1206266 from dimstar)</comment>
+    <requestid>1206276</requestid>
+  </revision>
 </revisionlist>

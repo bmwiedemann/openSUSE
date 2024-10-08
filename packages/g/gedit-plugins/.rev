@@ -559,4 +559,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1164289</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>02d845e807a9289ed056606be0a1870c</srcmd5>
+    <version>48.0</version>
+    <time>1728400998</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205428</requestid>
+  </revision>
 </revisionlist>

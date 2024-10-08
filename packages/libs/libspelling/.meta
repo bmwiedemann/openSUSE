@@ -6,6 +6,6 @@ Builder's spellcheck implementation. However, it is licensed
 LGPL-2.1-or-later
 
 </description>
-  <devel project="GNOME:Apps" package="libspelling"/>
+  <devel project="GNOME:Factory" package="libspelling"/>
   <url>https://gitlab.gnome.org/chergert/libspelling</url>
 </package>

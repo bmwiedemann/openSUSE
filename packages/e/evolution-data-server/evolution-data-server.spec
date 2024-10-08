@@ -32,7 +32,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.52.4
+Version:        3.54.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
@@ -44,7 +44,7 @@ BuildRequires:  cmake >= 3.15
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  gtk-doc >= 1.9
@@ -73,6 +73,7 @@ BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.58
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf) >= 2.4
+BuildRequires:  pkgconfig(uuid) >= 2.0
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
 Requires:       mozilla-nss

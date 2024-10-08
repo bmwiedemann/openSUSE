@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep 16 20:55:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fix new wifi connections for restricted users
+  + Do not disable required animations
+  + Fix showing pending PAM messages on login screen
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop gnome-shell-private-connection.patch: Following changes
+  upstream, this patch should not be needed anymore.
+- Refresh gnome-shell-exit-crash-workaround.patch with quilt.
+- Disable gnome-shell-executable-path-not-absolute.patch: Needs
+  rebase or dropping.
+
+-------------------------------------------------------------------
+Mon Sep 16 19:08:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Fix smartcard logins
+  + Mark drag to dash as move operation
+  + Use rst2man to generate man pages
+  + Fix glitch when quick settings menu animation is interrupted
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add docutils BuildRequires, new dependency (rst2man).
+
+-------------------------------------------------------------------
+Mon Sep 16 18:22:47 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Use hardware encoding for screen recordings if possible
+  + Allow notification portal to always use GTK protocol
+  + Improve Persian on-screen keyboard layout
+  + Build and publish GNOME OS systemd-sysext extensions
+  + Make overview startup notification more reliable
+  + Fix keyboard navigation in app folders
+  + Support exporting DebugControl service from looking glass
+  + Use low-power pipeline in screen recorder if possible
+  + Show notification when detecting captive portal
+  + Fix connecting to WPA2 enterprise networks
+  + Use unlinked rounded buttons in notifications and dialogs
+  + Misc. bug fixes and cleanups
+- Bump mutter_api to 15 following upstream changes.
+- Rebase patches with quilt, drop CVE-2024-36472.patch, fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:09:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.5:

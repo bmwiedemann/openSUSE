@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Sep 15 16:53:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Fix crash when using Ctrl+D or Ctrl+Alt+D
+  + Fix icon URL used for install web application dialog
+  + Remove tab overview shortcut in web apps
+  + Fix crashes in tab overview mode with no open tabs
+  + Fix pluralization in privacy report dialog
+  + Fix bookmark tag widget focus border
+  + Revert key event handling changes due to problems with
+    non-Latin keyboard layouts
+
+-------------------------------------------------------------------
+Sat Sep 14 18:16:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Extract .xpi during web app installation
+  + Show confirmation dialog when deleting web app
+  + Allow exporting passwords to CSV and improve CSV import
+  + Improve count of trackers in privacy report
+  + Fix crash on close multiple tabs dialog
+  + Many improvements to bookmarks sidebar and dialog
+
+-------------------------------------------------------------------
+Fri Sep 13 08:27:38 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + Add autofill support
+  + Add bookmarks search bar
+  + Improve sorting of bookmarks
+  + Restore set image as wallpaper functionality under flatpak
+  + New Window should always open a non-incognito window
+  + Prompt for confirmation when installing a WebExtension
+  + Add Ctrl+Shift+Delete shortcut for Clear Website Data
+  + Add Privacy Report feature (#1982) and improve its UI
+  + Use GtkGraphicsOffload to maybe improve graphics performance in
+    fullscreen mode
+  + Replace bookmark properties popover with redesigned dialog
+  + Disable Firefox Sync
+  + Don't show reader mode button when page is loading
+  + Revert address bar UI changes due to pango bug
+  + Fix application mode when always start in incognito mode
+    setting is enabled
+  + Don't warn about failure to download favicon when creating web
+    app
+  + Fix crash when starting secondary instance
+  + Fix crash when web process becomes unresponsive
+  + Fix crash when closing window with context menu open
+  + Fix crash on exit
+  + Allow overriding fatal criticals using G_DEBUG= environment
+    variable
+  + Fix hiding of developer context menu actions
+  + Fix a different crash when destroying window
+  + Stop using various deprecated GTK APIs
+  + Support importing passwords from CSV files
+  + Reduce the size of the preferences dialog
+  + Use modern libadwaita spinners
+  + Fix yet another crash when destroying window
+  + Improve autofill dialog UI
+  + Update to highlight.js 11.10.0
+  + Miscellaneous code robustness improvements
+  + Load only one web process extension rather than two
+  + Add fallback web app icon
+  + Redesign the bookmarks UI to use sidebar instead of popover
+  + Rearrange the window/hamburger menu
+  + Adopt new floating bar style from nautilus
+  + Focus address bar after deleting URL
+  + Reenable search in preferences dialog
+  + Make address bar dropdown suggestions selectable
+  + WebExtensions: support runtime.getManifest() API
+  + Modernize encoding dialog
+
+-------------------------------------------------------------------
 Thu Sep 12 16:51:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.4:

@@ -20,7 +20,7 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk4) >= 4.4.1
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.2.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 

@@ -26,9 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE skip-failing-tests-3_12_7.patch gh#kislyuk/argcomplete#507 mcepl@suse.com
-# temporary workaround, skip failing tests
-Patch0:         skip-failing-tests-3_12_7.patch
+# PATCH-FIX-OPENSUSE argparse-3_12_7.patch gh#kislyuk/argcomplete#507 mcepl@suse.com
+# fix the incompatibility with Python 3.12.7+
+Patch0:         argparse-3_12_7.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}

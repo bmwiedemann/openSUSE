@@ -732,4 +732,12 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>1199736</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>2c89e7f6433fcfb5af484ab3d663fb57</srcmd5>
+    <version>47.0</version>
+    <time>1728401040</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1205731 from iznogood)</comment>
+    <requestid>1205807</requestid>
+  </revision>
 </revisionlist>

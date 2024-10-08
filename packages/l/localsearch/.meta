@@ -1,0 +1,9 @@
+<package name="localsearch" project="openSUSE:Factory">
+  <title>Search tool and indexer using tinysparql</title>
+  <description>LocalSearch is a desktop-neutral object database, tag/metadata database,
+search tool and indexer.
+
+These are the sources for the search tool and indexer (e.g. files, rss)</description>
+  <devel project="GNOME:Factory" package="localsearch"/>
+  <url>https://gitlab.gnome.org/GNOME/localsearch</url>
+</package>

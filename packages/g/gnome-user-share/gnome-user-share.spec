@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-share
-Version:        43.0+11
+Version:        47.0+0
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
@@ -72,7 +72,7 @@ up in the Network location in GNOME.
 
 %files
 %license COPYING
-%doc README NEWS
+%doc README.md NEWS
 %{_libexecdir}/gnome-user-share
 %{_datadir}/gnome-user-share
 %{_datadir}/applications/gnome-user-share-webdav.desktop

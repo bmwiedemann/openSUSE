@@ -2391,4 +2391,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   anymore after changes upstream. (forwarded request 1201264 from iznogood)</comment>
     <requestid>1201597</requestid>
   </revision>
+  <revision rev="262" vrev="1">
+    <srcmd5>c807be543b1a5d491ebb4afe80b14a95</srcmd5>
+    <version>47.0</version>
+    <time>1728400668</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205457</requestid>
+  </revision>
 </revisionlist>

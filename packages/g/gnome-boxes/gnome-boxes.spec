@@ -20,15 +20,13 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/46/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-return-val-if-fail-build.patch -- libvirt-broker: Guard methods with "require" Instead of return_val_if_fail. Fixes #863
-Patch1:         fix-return-val-if-fail-build.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -65,7 +63,7 @@ Requires:       libvirt-daemon-qemu
 # Needed for unattended installations
 Requires:       mtools
 # gnome-boxes requires org.freedesktop.Tracker.FTS schema to be available (bnc#785356).
-Requires:       tracker
+Requires:       localsearch
 # Recommend libvirt-client, needed for gnome-boxes to recognize the kvm module and boxes storage pool
 Recommends:     libvirt-client
 # Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)
@@ -134,7 +132,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Boxes.deskt
 %doc %{_datadir}/help/C/gnome-boxes
 %{_bindir}/gnome-boxes
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Boxes.appdata.xml
+%{_datadir}/metainfo/org.gnome.Boxes.metainfo.xml
 %{_datadir}/applications/org.gnome.Boxes.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.boxes.gschema.xml
 %{_datadir}/dbus-1/services/org.gnome.Boxes.service

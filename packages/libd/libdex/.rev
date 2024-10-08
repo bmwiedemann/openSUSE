@@ -50,4 +50,12 @@
   + Adds Fiber support for macOS on Apple Silicon. (forwarded request 1178270 from dimstar)</comment>
     <requestid>1178278</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d94874b59ff3691e155ac112b3f49c5b</srcmd5>
+    <version>0.8.0</version>
+    <time>1728401023</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205474</requestid>
+  </revision>
 </revisionlist>

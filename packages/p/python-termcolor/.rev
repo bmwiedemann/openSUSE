@@ -134,4 +134,14 @@
   * Drop support for EOL Python 3.7 (#47) @hugovk</comment>
     <requestid>1135347</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f7af96f5e86c00cea06b204410d16af8</srcmd5>
+    <version>2.5.0</version>
+    <time>1728401045</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.0:
+  * drop python 3.8
+  * switch to ruff</comment>
+    <requestid>1206168</requestid>
+  </revision>
 </revisionlist>

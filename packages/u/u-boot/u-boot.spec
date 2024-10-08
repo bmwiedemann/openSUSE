@@ -86,6 +86,12 @@
 %define rockchip_idb 1
 %define binext .itb
 %endif
+%if "%target" == "sige7-rk3588"
+%define is_rk3588 1
+%define is_armv8 1
+%define rockchip_idb 1
+%define binext .itb
+%endif
 %if "%target" == "bananapim64" || "%target" == "nanopia64" || "%target" == "pine64plus" || "%target" == "pinebook"
 %define is_a64 1
 %define is_armv8 1
@@ -186,7 +192,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2024.07
+%define archive_version 2024.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -216,7 +222,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2024.07
+Version:        2024.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -227,6 +233,8 @@ Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.
 Source2:        arndale-bl1.img
 Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
 Source4:        https://github.com/JeffyCN/rockchip_mirrors/blob/ddf03c1d80b33dac72a33c4f732fc5849b47ff99/bin/rk35/rk3568_ddr_1056MHz_v1.13.bin?raw=true#/rk3568_ddr_1056MHz_v1.13.bin
+Source5:        https://github.com/armbian/rkbin/blob/fdb0feeb23c3b709383e4a43e3f3a166942de763/rk35/rk3588_bl31_v1.45.elf?raw=true#/rk3588_bl31_v1.45.elf
+Source6:        https://github.com/armbian/rkbin/blob/d5a9069ba7fe71ba76d0a4c63f05515136c27b9c/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.15.bin?raw=true#/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.15.bin
 Source99:       u-boot.keyring
 Source300:      u-boot-rpmlintrc
 Source900:      update_git.sh
@@ -247,6 +255,7 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+Patch0017:      0017-riscv-dts-jh7110-Update-qspi-node-w.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -304,7 +313,7 @@ BuildRequires:  arm-trusted-firmware-rk3399
 # make_fit_atf.py
 BuildRequires:  python3-pyelftools
 %endif
-%if 0%{?is_rk3566}
+%if (0%{?is_rk3566} || 0%{?is_rk3588})
 BuildRequires:  python3-pyelftools
 %endif
 %if (0%{?is_a64} || 0%{?is_h5})
@@ -435,6 +444,12 @@ cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf ./atf-bl31
 # So, use pre-built blobs
 cp %{S:3} ./atf-bl31
 cp %{S:4} ./rockchip-tpl
+%endif
+%if 0%{?is_rk3588}
+# Upstream Arm trusted-firmware does not support rk3588 yet
+# So, use pre-built blobs
+cp %{S:5} ./atf-bl31
+cp %{S:6} ./rockchip-tpl
 %endif
 
 %if %{is_zynq}

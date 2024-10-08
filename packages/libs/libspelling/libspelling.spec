@@ -16,13 +16,16 @@
 #
 
 
+%define so_ver 1-2
+%define api_ver 1
+
 Name:           libspelling
-Version:        0.2.1
+Version:        0.4.2
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libspelling
-Source:         https://download.gnome.org/sources/libspelling/0.2/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
@@ -31,10 +34,12 @@ BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.15.5
 BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(vapigen)
+# For tests
+BuildRequires:  myspell-en_US
 
 %description
 A spellcheck library for GTK 4.
@@ -42,13 +47,13 @@ This library is heavily based upon GNOME Text Editor and GNOME
 Builder's spellcheck implementation. However, it is licensed
 LGPL-2.1-or-later
 
-%package -n libspelling1-1
+%package -n libspelling%{so_ver}
 Summary:        Shared libraries for %{name}
 
-%description -n libspelling1-1
+%description -n libspelling%{so_ver}
 Shared libraries for %{name}.
 
-%package -n typelib-1_0-Spelling-1
+%package -n typelib-1_0-Spelling-%{api_ver}
 Summary:        Introspection file for %{name}
 
 %description -n typelib-1_0-Spelling-1
@@ -56,8 +61,8 @@ Introspection file for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       libspelling1-1 = %{version}
-Requires:       typelib-1_0-Spelling-1 = %{version}
+Requires:       libspelling%{so_ver} = %{version}
+Requires:       typelib-1_0-Spelling-%{api_ver} = %{version}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -67,7 +72,9 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-D sysprof=false \
+	%{nil}
 %meson_build
 
 %install
@@ -76,25 +83,25 @@ developing applications that use %{name}.
 %check
 %meson_test
 
-%ldconfig_scriptlets -n libspelling1-1
+%ldconfig_scriptlets -n libspelling%{so_ver}
 
-%files -n libspelling1-1
+%files -n libspelling%{so_ver}
 %license COPYING
 %doc NEWS README.md
-%{_libdir}/libspelling-1.so.1*
+%{_libdir}/libspelling-%{api_ver}.so.*
 
-%files -n typelib-1_0-Spelling-1
-%{_libdir}/girepository-1.0/Spelling-1.typelib
+%files -n typelib-1_0-Spelling-%{api_ver}
+%{_libdir}/girepository-1.0/Spelling-%{api_ver}.typelib
 
 %files devel
-%doc %{_datadir}/doc/libspelling-1/
-%{_includedir}/libspelling-1
-%{_libdir}/libspelling-1.so
-%{_libdir}/pkgconfig/libspelling-1.pc
-%{_datadir}/gir-1.0/Spelling-1.gir
+%doc %{_datadir}/doc/libspelling-%{api_ver}/
+%{_includedir}/libspelling-%{api_ver}
+%{_libdir}/libspelling-%{api_ver}.so
+%{_libdir}/pkgconfig/libspelling-%{api_ver}.pc
+%{_datadir}/gir-1.0/Spelling-%{api_ver}.gir
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
-%{_datadir}/vala/vapi/libspelling-1.deps
-%{_datadir}/vala/vapi/libspelling-1.vapi
+%{_datadir}/vala/vapi/libspelling-%{api_ver}.deps
+%{_datadir}/vala/vapi/libspelling-%{api_ver}.vapi
 
 %changelog

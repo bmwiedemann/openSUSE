@@ -815,4 +815,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     Gst.Bitmask. (forwarded request 1166090 from dimstar)</comment>
     <requestid>1166245</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2524fc17c1eacd6af46986c1d697b1f2</srcmd5>
+    <version>3.50.0</version>
+    <time>1728400703</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205486</requestid>
+  </revision>
 </revisionlist>

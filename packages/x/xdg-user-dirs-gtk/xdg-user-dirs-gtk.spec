@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           xdg-user-dirs-gtk
-Version:        0.11
+Version:        0.11+11
 Release:        0
 Summary:        Xdg-user-dir support for Gnome and Gtk+ applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://download.gnome.org/sources/xdg-user-dirs-gtk
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM xdg-user-dirs-gtk-XFCE-LXDE-autostart.patch fdo#33107 gber@opensuse.org -- Start xdg-user-dirs-gtk in Xfce sessions as well
 Patch1:         %{name}-XFCE-autostart.patch
 
 BuildRequires:  gnome-common
-BuildRequires:  gtk3-devel
 BuildRequires:  intltool
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       xdg-user-dirs
 
 %description
@@ -52,15 +52,14 @@ export CFLAGS='%{optflags} -Wno-error=cast-align'
 
 %install
 %make_install
-%suse_update_desktop_file user-dirs-update-gtk
 %find_lang %{name}
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS README ChangeLog
 %{_bindir}/xdg-user-dirs-gtk-update
 %{_sysconfdir}/xdg/autostart/user-dirs-update-gtk.desktop
+%{_datadir}/applications/user-dirs-update-gtk.desktop
 
 %files lang -f %{name}.lang
 

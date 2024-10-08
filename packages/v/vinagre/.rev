@@ -821,4 +821,12 @@
   plan to keep the bug opened for now). (forwarded request 1181980 from jamborm)</comment>
     <requestid>1182000</requestid>
   </revision>
+  <revision rev="108" vrev="18">
+    <srcmd5>a53ef9a60ab5da29acb8ddd7ab9a501f</srcmd5>
+    <version>3.22.0</version>
+    <time>1728400707</time>
+    <user>anag+factory</user>
+    <comment>SCripted push of GNOME 47</comment>
+    <requestid>1205491</requestid>
+  </revision>
 </revisionlist>

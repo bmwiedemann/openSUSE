@@ -17,10 +17,10 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 46
+%define api_ver 48
 
 Name:           gedit
-Version:        46.2
+Version:        48.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source0:        %{name}-%{version}.tar.zst
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
 Patch1:         gedit-plugins-python-env.patch
-# PATCH-FIX-UPSTREAM gedit-quickhighlight-gtksourcestyle-api.patch mgorse@suse.com -- adapt quickhighlight plugin for new libgedit-gtksourceview API.
-Patch2:         gedit-quickhighlight-gtksourcestyle-api.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -44,7 +42,7 @@ BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.64
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
@@ -52,10 +50,10 @@ BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libgedit-amtk-5)
+BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.11
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tepl-6) >= 6.5.1
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -138,7 +136,6 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/gedit/
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.externaltools.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.pythonconsole.gschema.xml
@@ -146,7 +143,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/metainfo/org.gnome.gedit.appdata.xml
+%{_datadir}/metainfo/org.gnome.gedit.metainfo.xml
 %dir %{_libdir}/gedit/
 %{_libdir}/gedit/libgedit-%{api_ver}.so
 %{_libdir}/gedit/girepository-1.0/
@@ -154,18 +151,14 @@ This subpackage contains the header files for creating gedit plugins.
 # Explicitly list plugins so we know when we miss one
 %{_libdir}/gedit/plugins/docinfo.plugin
 %{_libdir}/gedit/plugins/libdocinfo.so
-%{_libdir}/gedit/plugins/externaltools/
-%{_libdir}/gedit/plugins/externaltools.plugin
 %{_libdir}/gedit/plugins/filebrowser.plugin
 %{_libdir}/gedit/plugins/libfilebrowser.so
 %{_libdir}/gedit/plugins/modelines.plugin
 %{_libdir}/gedit/plugins/libmodelines.so
 %{_libdir}/gedit/plugins/pythonconsole/
 %{_libdir}/gedit/plugins/pythonconsole.plugin
-%{_libdir}/gedit/plugins/quickopen/
-%{_libdir}/gedit/plugins/quickopen.plugin
-%{_libdir}/gedit/plugins/snippets/
-%{_libdir}/gedit/plugins/snippets.plugin
+%{_libdir}/gedit/plugins/textsize/
+%{_libdir}/gedit/plugins/textsize.plugin
 %{_libdir}/gedit/plugins/sort.plugin
 %{_libdir}/gedit/plugins/libsort.so
 %{_libdir}/gedit/plugins/spell.plugin
@@ -173,6 +166,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/plugins/time.plugin
 %{_libdir}/gedit/plugins/libtime.so
 %{_libdir}/gedit/plugins/quickhighlight.plugin
+
 %{_libdir}/gedit/plugins/libquickhighlight.so
 %{_mandir}/man1/gedit.1%{?ext_man}
 

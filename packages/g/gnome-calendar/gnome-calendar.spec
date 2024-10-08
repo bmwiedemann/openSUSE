@@ -17,7 +17,7 @@
 
 
 Name:           gnome-calendar
-Version:        46.1
+Version:        47.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
@@ -83,7 +83,7 @@ search results from GNOME Calendar.
 %{_datadir}/applications/org.gnome.Calendar.desktop
 # Own dir for openSUSE Leap 42.1
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Calendar.appdata.xml
+%{_datadir}/metainfo/org.gnome.Calendar.metainfo.xml
 %{_datadir}/dbus-1/services/org.gnome.Calendar.service
 %{_datadir}/glib-2.0/schemas/org.gnome.calendar.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.calendar.gschema.xml

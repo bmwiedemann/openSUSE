@@ -16,10 +16,10 @@
 #
 
 
-%define basever 46
+%define basever 47
 
 Name:           gnome-session
-Version:        46.0
+Version:        47.0.1
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later

@@ -10,11 +10,11 @@ currently it will pass 1, which is the wrong previous value.
  js/misc/inputMethod.js | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/js/misc/inputMethod.js b/js/misc/inputMethod.js
-index d8c3e62f0..2642aca9e 100644
---- a/js/misc/inputMethod.js
-+++ b/js/misc/inputMethod.js
-@@ -163,9 +163,7 @@ export const InputMethod = GObject.registerClass({
+Index: gnome-shell-47.beta/js/misc/inputMethod.js
+===================================================================
+--- gnome-shell-47.beta.orig/js/misc/inputMethod.js
++++ gnome-shell-47.beta/js/misc/inputMethod.js
+@@ -161,9 +161,7 @@ export const InputMethod = GObject.regis
      }
  
      _onHidePreeditText() {
@@ -25,6 +25,3 @@ index d8c3e62f0..2642aca9e 100644
          this._preeditVisible = false;
      }
  
--- 
-2.45.0
-

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  7 09:45:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.1
+  * Added support for Python 3.13 and updated GitHub Actions
+  * Removed Python 2 support and related code
+  * Improved error handling and consistency
+  * Runtime deprecation of `tagMap` and `typeMap` aliases
+  * Fixed duplicated and missing declarations
+  * Cleaned documentation and comments
+  * Removed bdist_wheel universal flag from setup.cfg
+
+-------------------------------------------------------------------
 Wed Apr  3 14:05:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:
