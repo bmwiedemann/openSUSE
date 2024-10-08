@@ -371,4 +371,12 @@ Reduce dependencies from 260MiB to 14MiB.
   * Support Django 5.1 (#3207)</comment>
     <requestid>1194964</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>10b85edbbe88e59ce4e0490c9cc05fba</srcmd5>
+    <version>2.15.0</version>
+    <time>1728401122</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206304</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Oct  8 06:08:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 2.15.0:
+  * Integrations
+    Please see release notes for details
+    https://github.com/getsentry/sentry-python/releases/tag/2.15.0
+  * Miscellaneous
+    - Deprecate sentry_sdk.metrics (#3512) by @szokeasaurusrex
+    - Add name parameter to start_span() and deprecate description
+      parameter (#3524 & #3525) by @antonpirker
+    - Fix add_query_source with modules outside of project root
+      (#3313) by @rominf
+    - Test more integrations on 3.13 (#3578) by @sentrivana
+    - Fix trailing whitespace (#3579) by @sentrivana
+    - Improve get_integration typing (#3550) by @szokeasaurusrex
+    - Make import-related tests stable (#3548) by @BYK
+    - Fix breadcrumb sorting (#3511) by @sentrivana
+    - Fix breadcrumb timestamp casting and its tests (#3546) by
+      @BYK
+    - Don't use deprecated logger.warn (#3552) by @sentrivana
+    - Fix Cohere API change (#3549) by @BYK
+    - Fix deprecation message (#3536) by @antonpirker
+    - Remove experimental explain_plan feature. (#3534) by
+      @antonpirker
+    - X-fail one of the Lambda tests (#3592) by @antonpirker
+    - Update Codecov config (#3507) by @antonpirker
+    - Update actions/upload-artifact to v4 with merge (#3545) by
+      @joshuarli
+    - Bump actions/checkout from 4.1.7 to 4.2.0 (#3585) by
+      @dependabot
+- Update to 2.14.0:
+  * New SysExitIntegration (#3401) by @szokeasaurusrex
+  * For more information, see the documentation for the
+    SysExitIntegration.
+  * Add SENTRY_SPOTLIGHT env variable support (#3443) by @BYK
+  * Support Strawberry 0.239.2 (#3491) by @szokeasaurusrex
+  * Add separate pii_denylist to EventScrubber and run it always
+    (#3463) by @sl0thentr0py
+  * Celery: Add wrapper for Celery().send_task to support behavior
+    as Task.apply_async (#2377) by @divaltor
+  * Django: SentryWrappingMiddleware.init fails if super() is
+    object (#2466) by @cameron-simpson
+  * Fix data_category for sessions envelope items (#3473) by
+    @sl0thentr0py
+  * Fix non-UTC timestamps (#3461) by @szokeasaurusrex
+  * Remove obsolete object as superclass (#3480) by @sentrivana
+  * Replace custom TYPE_CHECKING with stdlib typing.TYPE_CHECKING
+    (#3447) by @dev-satoshi
+  * Refactor tracing_utils.py (#3452) by @rominf
+  * Explicitly export symbol in subpackages instead of ignoring
+    (#3400) by @hartungstenio
+  * Better test coverage reports (#3498) by @antonpirker
+  * Fixed config for old coverage versions (#3504) by @antonpirker
+  * Fix AWS Lambda tests (#3495) by @antonpirker
+  * Remove broken Bottle tests (#3505) by @sentrivana
+
+-------------------------------------------------------------------
 Wed Aug 21 03:59:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.13.0:

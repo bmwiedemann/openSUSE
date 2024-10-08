@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.13.0
+Version:        2.15.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -154,7 +154,13 @@ export DJANGO_SETTINGS_MODULE=tests.conftest
 # do not test integration (many package are missing at SUSE):
 rm -r tests/integrations
 # test_auto_enabling_integrations_catches_import_error asert False where False = ..., not sure
-%pytest -rs -k 'not ((test_default_release and test_utils) or test_new_scopes_compat_event or test_transport_works or test_auto_enabling_integrations_catches_import_error)'
+IGNORED_CHECKS="(test_default_release and test_utils)"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_new_scopes_compat_event"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_transport_works"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_auto_enabling_integrations_catches_import_error"
+# https://github.com/getsentry/sentry-python/issues/3624
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_redis_disabled_when_not_installed"
+%pytest -rs -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
 %doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md
