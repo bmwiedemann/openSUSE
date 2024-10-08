@@ -17,7 +17,7 @@
 
 
 Name:           javaparser
-Version:        3.25.10
+Version:        3.26.2
 Release:        0
 Summary:        Java Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
