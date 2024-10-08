@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Oct  8 07:08:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0:
+  Major new features of the 3.13 series, compared to 3.12
+  Some of the new major new features and changes in Python 3.13 are:
+  - New features
+    - A new and improved interactive interpreter, based on
+      PyPy's, featuring multi-line editing and color support, as
+      well as colorized exception tracebacks.
+    - An experimental free-threaded build mode, which disables
+      the Global Interpreter Lock, allowing threads to run
+      more concurrently. The build mode is available as an
+      experimental feature in the Windows and macOS installers as
+      well.
+    - A preliminary, experimental JIT, providing the ground work
+      for significant performance improvements.
+    - The locals() builtin function (and its C equivalent)
+      now has well-defined semantics when mutating the
+      returned mapping, which allows debuggers to operate more
+      consistently.
+    - A modified version of mimalloc is now included, optional
+      but enabled by default if supported by the platform, and
+      required for the free-threaded build mode.
+    - Docstrings now have their leading indentation stripped,
+      reducing memory use and the size of .pyc files. (Most tools
+      handling docstrings already strip leading indentation.)
+    - The dbm module has a new dbm.sqlite3 backend that is used
+      by default when creating new files.
+    - WASI is now a Tier 2 supported platform. Emscripten is
+      no longer an officially supported platform (but Pyodide
+      continues to support Emscripten).
+  - Typing
+    - Support for type defaults in type parameters.
+    - A new type narrowing annotation, typing.TypeIs.
+    - A new annotation for read-only items in TypeDicts.
+    - A new annotation for marking deprecations in the type
+      system.
+  - Removals and new deprecations
+    - PEP 594 (Removing dead batteries from the standard library)
+      scheduled removals of many deprecated modules: aifc,
+      audioop, chunk, cgi, cgitb, crypt, imghdr, mailcap, msilib,
+      nis, nntplib, ossaudiodev, pipes, sndhdr, spwd, sunau,
+      telnetlib, uu, xdrlib, lib2to3.
+    - Many other removals of deprecated classes, functions and
+      methods in various standard library modules.
+    - C API removals and deprecations. (Some removals present
+      in alpha 1 were reverted in alpha 2, as the removals were
+      deemed too disruptive at this time.)
+    - New deprecations, most of which are scheduled for removal
+      from Python 3.15 or 3.16.
+  - For more details on the changes to Python 3.13, see What's
+    new in Python 3.13 in the documentation.
+
+-------------------------------------------------------------------
 Tue Oct  1 15:40:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.0~rc3:

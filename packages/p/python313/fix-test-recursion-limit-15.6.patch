@@ -22,7 +22,7 @@
      def test_extended_arg(self):
          repeat = int(get_c_recursion_limit() * 0.9)
          longexpr = 'x = x or ' + '-x' * repeat
-@@ -688,6 +692,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -701,6 +705,7 @@ class TestSpecifics(unittest.TestCase):
  
      @support.cpython_only
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
