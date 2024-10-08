@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 08 09:50:50 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1728376236.4a3830a3:
+  * Print error messages to stderr
+  * Bump synckit from 0.9.1 to 0.9.2
+  * Bump eslint from 9.11.1 to 9.12.0
+  * Drop OpenQA::WebAPI::Plugin::HashedParams
+  * AdminTable: Only trim hash keys after selecting values
+  * Fix typo for Test names form field
+  * cli: List 'arch' and 'machine' as supported in API help
+
+-------------------------------------------------------------------
 Sun Oct 06 01:50:50 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1728073440.a54ab8d4:
