@@ -46,6 +46,7 @@ BuildRequires:  jline
 BuildRequires:  osgi-annotation
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
+BuildRequires:  osgi-service-subsystem
 BuildRequires:  slf4j
 Requires:       %{name}lib = %{version}-%{release}
 # Explicit javapackages-tools requires since bnd script uses
@@ -85,7 +86,7 @@ API documentation for %{name}.
 
 mkdir -p lib
 build-jar-repository -s lib \
-  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium ant jline
+  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium osgi-service-subsystem ant jline
 
 %patch -P 1 -p1
 %patch -P 2 -p1
@@ -153,7 +154,6 @@ popd
 # bnd.exporters
 pushd biz.aQute.bnd.exporters
 cp -p %{SOURCE2} pom.xml
-%pom_remove_dep org.osgi:org.osgi.service.subsystem
 %pom_xpath_remove pom:dependency/pom:scope
 popd
 

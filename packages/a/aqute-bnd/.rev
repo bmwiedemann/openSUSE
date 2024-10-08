@@ -104,4 +104,12 @@
     <comment>switch on reproducible also with SOURCE_DATE_EPOCH in the plugin</comment>
     <requestid>1202685</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9d3c440fce3987fd5bd3963dccd7e410</srcmd5>
+    <version>6.4.1</version>
+    <time>1728401059</time>
+    <user>anag+factory</user>
+    <comment>fix build with osgi-compendium 8.0.0</comment>
+    <requestid>1206186</requestid>
+  </revision>
 </revisionlist>
