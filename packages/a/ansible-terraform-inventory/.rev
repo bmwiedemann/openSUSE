@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8680c1776091b2f337476202c7cc0a1a</srcmd5>
+    <version>0.10</version>
+    <time>1728401090</time>
+    <user>anag+factory</user>
+    <comment>new package ansible-terraform-inventory: generate a dynamic Ansible inventory from a Terraform state file</comment>
+    <requestid>1206238</requestid>
+  </revision>
+</revisionlist>

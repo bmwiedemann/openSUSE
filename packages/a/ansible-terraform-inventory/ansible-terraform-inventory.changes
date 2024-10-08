@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Oct  8 06:24:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package ansible-terraform-inventory: generate a dynamic
+  Ansible inventory from a Terraform state file

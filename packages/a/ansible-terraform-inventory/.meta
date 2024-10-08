@@ -1,0 +1,5 @@
+<package name="ansible-terraform-inventory" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:ansible" package="ansible-terraform-inventory"/>
+</package>
