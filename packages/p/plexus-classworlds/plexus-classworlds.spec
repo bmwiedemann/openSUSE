@@ -17,9 +17,8 @@
 
 
 %global short_name classworlds
-%bcond_with tests
 Name:           plexus-%{short_name}
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        Plexus Classworlds Classloader Framework
 License:        Apache-2.0 AND Plexus
@@ -33,11 +32,6 @@ BuildRequires:  javapackages-local >= 6
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       %{short_name} = %{version}-%{release}
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  commons-logging
-BuildRequires:  xml-apis
-%endif
 
 %description
 Classworlds is a framework for container developers
@@ -59,20 +53,9 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
-%if %{with tests}
-mkdir -p target/test-lib
-rm -f target/test-lib/{ant-1.9.0,commons-logging-1.0.3,xml-apis-1.3.02}.jar
-ln -s $(build-classpath ant/ant) target/test-lib/ant-1.9.0.jar
-ln -s $(build-classpath commons-logging) target/test-lib/commons-logging-1.0.3.jar
-ln -s $(build-classpath xml-apis) target/test-lib/xml-apis-1.3.02.jar
-%endif
 
 %build
-%{ant} \
-%if %{without tests}
-    -Dtest.skip=true \
-%endif
-    jar javadoc
+ant jar javadoc
 
 %install
 # jar
@@ -90,12 +73,12 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE.txt LICENSE-2.0.txt
+%license LICENSE.txt LICENSE-Codehaus.txt
 %{_javadir}/plexus
 %{_javadir}/%{short_name}.jar
 
 %files javadoc
-%license LICENSE.txt LICENSE-2.0.txt
+%license LICENSE.txt LICENSE-Codehaus.txt
 %{_javadocdir}/%{name}
 
 %changelog
