@@ -1,0 +1,6 @@
+<package name="go-licenses" project="openSUSE:Factory">
+  <title>go-licenses</title>
+  <description>CLI tool to report the licenses used by a Go package and its dependencies</description>
+  <devel project="devel:languages:go" package="go-licenses"/>
+  <url>https://github.com/google/go-licenses</url>
+</package>

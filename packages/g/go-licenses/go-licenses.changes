@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Oct 07 21:10:53 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 2.0.0alpha1:
+  * Add /v2 to module and imports (#270)
+  * build(deps): bump golang.org/x/text from 0.12.0 to 0.13.0 (#226)
+  * build(deps): bump golang.org/x/tools from 0.8.0 to 0.12.0 (#223)
+  * Performance Improvements (#204)
+  * add more complex e2e test (#215)
+  * if the same license is found in a LICENSE file twice, only return it once (#214)
+  * Upgrade dependencies including licenseclassifier/v2 (#203)
+  * build(deps): bump golang.org/x/net from 0.5.0 to 0.9.0 (#201)
+  * chore: improve check error message when license not found (#197)
+  * Bump golang.org/x/mod from 0.7.0 to 0.9.0 (#188)
