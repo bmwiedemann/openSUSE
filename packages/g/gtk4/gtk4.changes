@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  4 18:19:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.16.3:
+  + GtkScrolledWindow: Fix criticals in size allocation code
+  + GtkFileChooser: Fix a crash in the portal code
+  + GtkPicture: Avoid unnecessary resizes
+  + GtkVideo: Make dmabufs work without GL
+  + Accessibility: Always realized non-widget accessibles
+  + Wayland:
+    - Improve settings portal handling
+    - Improve fallback for cursor themes
+    - Sync default values for settings with schema defaults
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 01 10:02:52 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 4.16.2+10:
