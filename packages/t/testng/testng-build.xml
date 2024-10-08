@@ -11,7 +11,7 @@
   <property name="project.groupId" value="org.testng"/>
   <property name="project.artifactId" value="testng"/>
   <property name="project.name" value="TestNG"/>
-  <property name="project.version" value="7.10.1"/>
+  <property name="project.version" value="7.10.2"/>
   <property name="project.description" value="${project.name} is a testing framework."/>
 
   <property name="compiler.release" value="8"/>

@@ -17,7 +17,7 @@
 
 
 Name:           testng
-Version:        7.10.1
+Version:        7.10.2
 Release:        0
 Summary:        Java-based testing framework
 License:        Apache-2.0

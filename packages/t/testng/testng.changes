@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 10:19:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 7.10.2
+  * Changes
+    + GITHUB-3117: ListenerComparator doesn't work
+
+-------------------------------------------------------------------
 Tue Apr 16 13:27:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 7.10.1
