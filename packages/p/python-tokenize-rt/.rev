@@ -33,4 +33,13 @@
   * add Token.matches(*, name, str)</comment>
     <requestid>1132084</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f186759a308111a00d3ef7619355551</srcmd5>
+    <version>6.0.0</version>
+    <time>1728401057</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * properly handle FSTRING_MIDDLE escaped braces</comment>
+    <requestid>1206176</requestid>
+  </revision>
 </revisionlist>
