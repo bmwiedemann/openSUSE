@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Wed Sep 25 19:00:44 UTC 2024 - Matthias Bach <marix@marix.org>
+Mon Oct  7 19:12:20 UTC 2024 - Matthias Bach <marix@marix.org> - 2.14.0
+
+- Update to 2.14.0
+  * Update to Unicode 16.0
+
+-------------------------------------------------------------------
+Wed Sep 25 19:00:44 UTC 2024 - Matthias Bach <marix@marix.org> - 2.13.2
 
 - Update to 2.13.2
   * Read JSON files in binary mode to avoid UnicodeDecodeError
