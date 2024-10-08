@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  4 22:31:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 4.0.2
+  * Bug Fixes
+    + Specify /D for cmd.exe to bypass the Command Processor
+      Autorun folder
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 17 to 18
+    + Bump org.codehaus.plexus:plexus-xml from 3.0.0 to 3.0.1
+
+-------------------------------------------------------------------
 Tue Apr 30 14:09:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.0.1
