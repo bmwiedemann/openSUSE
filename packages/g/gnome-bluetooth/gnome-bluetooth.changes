@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct  7 16:45:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + This version contains a fix for the devices page staying empty
+    on load in some circumstances.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 12 14:03:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.0:
+  + This versions contains a crash fix when cancelling pairing,
+    pairing support for the Kawai CA501 music keyboard, and a fix
+    for a device properties accessibility regression.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 18:08:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + This version makes the pairing dialogue adaptive.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 22 19:27:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.beta:
+  + This version contains translation updates and build fixes. It
+    also ports some widgets to use libadwaita's spinner instead of
+    GTK's, simplifying the code.
+- Changes from version 47.alpha:
+  + This version fixes the devices list when empty, improves the
+    dialogue when removing a device, and ports a number of widgets
+    to their modern libadwaita equivalents.
+
+-------------------------------------------------------------------
 Sun Aug 11 13:07:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.1:

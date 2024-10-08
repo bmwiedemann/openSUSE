@@ -18,7 +18,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           gnome-bluetooth
-Version:        46.1
+Version:        47.1
 Release:        0
 Summary:        GNOME Bluetooth graphical utilities
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -135,7 +135,7 @@ This package provides the necessary files for development with GNOME Bluetooth.
 %{_libdir}/girepository-1.0/GnomeBluetooth-3.0.typelib
 
 %files devel
-%doc AUTHORS ChangeLog.README MAINTAINERS
+%doc AUTHORS MAINTAINERS
 %doc %{_datadir}/gtk-doc/html/gnome-bluetooth-3.0
 %{_includedir}/gnome-bluetooth-3.0
 %{_libdir}/libgnome-bluetooth-3.0.so
