@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-search-documents
-Version:        11.4.0
+Version:        11.5.1
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-search-documents/azure-search-documents-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_search_documents/azure_search_documents-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-search-nspkg >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -36,6 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
 Requires:       python-isodate >= 0.6.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
@@ -55,10 +55,9 @@ middleware technologies including reliable message queuing and durable
 publish/subscribe messaging.
 
 %prep
-%setup -q -n azure-search-documents-%{version}
+%setup -q -n azure_search_documents-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-search-documents-%{version}
 %pyproject_wheel
 
 %install
@@ -73,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/search/documents
 %{python_sitelib}/azure_search_documents-*.dist-info
 
