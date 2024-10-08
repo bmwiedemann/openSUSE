@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 07 13:56:12 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.37.4:
+  * CVE-2024-9407: validate "bind-propagation" flag settings
+    fixes bsc#1231208
+  * Update c/common to fix CVE-2024-9341 aka bsc#1231230
+
+-------------------------------------------------------------------
 Tue Sep 24 05:42:35 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.37.3:
