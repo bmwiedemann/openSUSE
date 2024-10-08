@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  8 13:50:01 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Add missing dependency on python-cffi
+
+-------------------------------------------------------------------
 Thu Jun 20 14:32:08 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Not part of SLE, use sle15allpythons instead of sle15_python_module_pythons

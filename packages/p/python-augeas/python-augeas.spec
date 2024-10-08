@@ -30,6 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  augeas-lenses
 BuildRequires:  python-rpm-macros
 Requires:       augeas
+Requires:       python-cffi >= 1.0.0
 # We'd always want to have augeas-lenses installed
 Requires:       augeas-lenses
 BuildArch:      noarch
