@@ -28,8 +28,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-setuptools
-# Testing requirements: (require root permission and a fully functional network stack)
-#BuildRequires:  tcpdump
 Requires:       python3-cryptography
 Recommends:     python3-PyX
 Recommends:     python3-ipython
@@ -51,25 +49,27 @@ arpspoof, firewalk, irpas, tethereal, tcpdump, etc.
 %prep
 %setup -q -n scapy-%{version}
 
+# In (open)SUSE /etc/protocols and /etc/services
+# moved to /usr/etc/
+sed 's|%{_sysconfdir}/protocols|%{_prefix}%{_sysconfdir}/protocols|g' -i scapy/data.py
+sed 's|%{_sysconfdir}/services|%{_prefix}%{_sysconfdir}/services|g' -i scapy/data.py
+
 %build
 %python3_build
 #NOTE(saschpe): The documentation is CC-BY-SA-NC-2.5, thus we can not
 # redistribute it (sr#172834):
 rm -r doc/scapy
 
-# In (open)SUSE /etc/protocols and /etc/services
-# moved to /usr/etc/
-sed 's|%{_sysconfdir}/protocols|%{_prefix}%{_sysconfdir}/protocols|g' -i scapy/data.py
-sed 's|%{_sysconfdir}/services|%{_prefix}%{_sysconfdir}/services|g' -i scapy/data.py
-
 %install
 %python3_install
 # Fix non-executable-script rpmlint issue:
-find %{buildroot}%{python3_sitelib} -name "*.py" -exec sed -i "/#!/d" {} \;
+# WARN: Using simple globbing (*.py) will break manufdb loading
+find %{buildroot}%{python3_sitelib} -name "pdu.py" -exec sed -i "/#!/d" {} \;
+find %{buildroot}%{python3_sitelib} -name "doip.py" -exec sed -i "/#!/d" {} \;
 %fdupes %{buildroot}%{python3_sitelib}
 
-#%%check
-#cd test && ./run_tests
+%check
+cd test && ./run_tests -c configs/linux.utsc -K ci_only -K scanner -K netaccess
 
 %files
 %license LICENSE

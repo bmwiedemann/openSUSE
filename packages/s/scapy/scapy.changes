@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  7 14:01:07 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Fix load of embedded manufdb, by explicitly targeting non-executable-scripts
+- Fix /etc paths to point to /usr/etc in published rpm.
+- Enable unit tests to find issues earlier.
+
+-------------------------------------------------------------------
 Wed Oct  2 14:11:00 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move sed call to fix reproducible builds (boo#1231253)
