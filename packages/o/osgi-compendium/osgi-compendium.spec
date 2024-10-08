@@ -17,15 +17,17 @@
 
 
 Name:           osgi-compendium
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        Interfaces and Classes for use in compiling OSGi bundles
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.osgi.org
-Source0:        https://osgi.org/download/r7/osgi.cmpn-%{version}.jar
+Source0:        https://osgi.org/download/r8/osgi.cmpn-%{version}.jar
 Source1:        %{name}-build.xml
 BuildRequires:  ant
+BuildRequires:  atinject
+BuildRequires:  cdi-api
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jpa-3_0-api
 BuildRequires:  glassfish-servlet-api
@@ -56,10 +58,9 @@ mkdir -p src/main/{java,resources}
 mv OSGI-OPT/src/org src/main/java/
 mv xmlns src/main/resources
 
-# J2ME stuff
-rm -r src/main/java/org/osgi/service/io
-
 mv META-INF/maven/org.osgi/osgi.cmpn/pom.xml .
+mv META-INF/LICENSE .
+mv META-INF/NOTICE .
 
 %pom_xpath_inject pom:project '
 <packaging>bundle</packaging>
@@ -82,15 +83,18 @@ mv META-INF/maven/org.osgi/osgi.cmpn/pom.xml .
   </plugins>
 </build>'
 
+%pom_remove_dep :
 %pom_add_dep org.osgi:osgi.annotation::provided
 %pom_add_dep org.osgi:osgi.core::provided
 %pom_add_dep javax.servlet:javax.servlet-api::provided
 %pom_add_dep javax.persistence:persistence-api::provided
+%pom_add_dep javax.enterprise:cdi-api::provided
+%pom_add_dep javax.inject:javax.inject::provided
 
 rm -r src/main/java/org/osgi/service/jaxrs
 
 mkdir -p lib
-build-jar-repository -s lib geronimo-jpa-3.0-api glassfish-servlet-api osgi-annotation osgi-core
+build-jar-repository -s lib geronimo-jpa-3.0-api glassfish-servlet-api osgi-annotation osgi-core javax.enterprise.inject atinject
 
 %build
 ant jar javadoc
@@ -109,11 +113,10 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE
-%doc about.html
+%license LICENSE NOTICE
 
 %files javadoc
-%license LICENSE
+%license LICENSE NOTICE
 %{_javadocdir}/%{name}
 
 %changelog
