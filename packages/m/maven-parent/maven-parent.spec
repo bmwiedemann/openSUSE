@@ -17,7 +17,7 @@
 
 
 Name:           maven-parent
-Version:        40
+Version:        43
 Release:        0
 Summary:        Apache Maven parent POM
 License:        Apache-2.0
@@ -44,6 +44,8 @@ Apache Maven parent POM file used by other Maven projects.
 %pom_remove_plugin -r :apache-rat-plugin
 %pom_remove_plugin -r :spotless-maven-plugin
 %pom_remove_plugin -r :maven-scm-publish-plugin
+
+%pom_remove_dep :junit-bom
 
 %build
 

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct  8 06:49:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Apache Maven parent POM version 43
+  * Breaking changes
+    + Remove dependency on maven-plugin-annotations to better
+      support Maven 4 plugins
+    + Remove checkstyle.violation.ignore
+  * Bug
+    + MPOM-449: Remove the leading "1." from source/target
+      properties
+  * Improvement
+    + MPOM-426: downgrade plexus-xml to 3.0.0; 4.0.0 is incompatible
+      with Maven 3
+    + MPOM-429: Support development with Java 21
+      (palantirJavaFormat)
+    + MPOM-443: Skip empty surefire reports
+    + MPOM-447: activate javac's release flag when building with JDK
+      supporting that feature
+    + MPOM-453: Disable annotation processing by compiler
+    + MPOM-454: Warning about usage of deprecated API by compiler
+    + MPOM-477: Skip empty PMD reports
+    + MPOM-478: Remove manually maintained history from site
+    + MPOM-483: Make a separate module for documentation
+    + Skip render empty taglist report (#193) @slawekjaranowski
+    + MNG-8158: Adding name to empty components section in shared
+      site left nav
+    + Introduce property for maven-shared-resources version
+  * Task
+    + MPOM-427: use version.artifactId property for dependency
+      versions (like plugins)
+    + MPOM-436: Remove quality-checks profile with maven-docck-plugin
+    + MPOM-445: Use maven-checkstyle-plugin version from parent
+    + MPOM-482: Publish site descriptor with new parent
+
+-------------------------------------------------------------------
 Tue Jan 23 10:57:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Version Provides/Obsoletes to sync with SLE
