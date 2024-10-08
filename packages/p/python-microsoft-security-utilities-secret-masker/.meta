@@ -1,0 +1,5 @@
+<package name="python-microsoft-security-utilities-secret-masker" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:azure" package="python-microsoft-security-utilities-secret-masker"/>
+</package>
