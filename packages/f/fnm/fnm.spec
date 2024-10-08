@@ -1,7 +1,7 @@
 #
 # spec file for package fnm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           fnm
-Version:        1.37.1
+Version:        1.37.2
 Release:        0
 Summary:        Fast and simple Node.js version manager in Rust
 License:        GPL-3.0-only
@@ -27,12 +27,12 @@ URL:            https://github.com/Schniz/fnm
 Source0:        https://github.com/Schniz/fnm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 %if 0%{?suse_version}
-BuildRequires:  cargo-packaging
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 %else
-BuildRequires:  rust >= 1.64
 BuildRequires:  cargo >= 1.64
+BuildRequires:  rust >= 1.64
 %endif
 
 %package        fish-completion
@@ -101,7 +101,6 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 fnm completions --shell bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 fnm completions --shell fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 fnm completions --shell zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-
 
 %files
 %{_bindir}/fnm

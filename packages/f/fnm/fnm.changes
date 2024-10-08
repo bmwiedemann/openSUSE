@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  7 12:49:47 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- update to version 1.37.2:
+  * fix: allow to type powershell and power-shell as shell type inputs
+  * When downloading from node-dist, Fallback to .tar.gz download when the .tar.xz download fails
+  * Fix --resolve-engines in combination with --use-on-cd
+  * docs: add link for windows terminal startup script configuration
+  * fix panic when list-remote --filter --latest has no results
+  * set aliases during install, even if corepack is enabled
+  * Document how to use nightly builds
+  * internal: retry download in case of error in test proxy
+  * performance optimizations, especially for fnm env
+  * Allow reading non-unicode paths from environment variables
+
+-------------------------------------------------------------------
 Sun Aug 18 13:12:32 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Initial spec for fnm
