@@ -28,7 +28,6 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-eventlet
-BuildRequires:  python3-monotonic
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-stestr

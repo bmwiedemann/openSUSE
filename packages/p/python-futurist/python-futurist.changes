@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 30 02:13:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop monotonic BuildRequires, unneeded since 2.2.0. 
+
+-------------------------------------------------------------------
 Fri May 10 08:39:55 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.0.0

@@ -194,4 +194,12 @@
   - Moves supported python runtimes from version 3.8 to 3.10</comment>
     <requestid>1173070</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>65046bf238c0bbc41a723baa5222a028</srcmd5>
+    <version>3.0.0</version>
+    <time>1728401074</time>
+    <user>anag+factory</user>
+    <comment>- Drop monotonic BuildRequires, unneeded since 2.2.0.</comment>
+    <requestid>1206195</requestid>
+  </revision>
 </revisionlist>
