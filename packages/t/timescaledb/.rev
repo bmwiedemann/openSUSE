@@ -272,4 +272,15 @@
   https://github.com/timescale/timescaledb/releases/tag/2.16.0</comment>
     <requestid>1191988</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>467e96f4369564f281f46850867425f1</srcmd5>
+    <version>2.17.0</version>
+    <time>1728401129</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.17.0
+  https://github.com/timescale/timescaledb/releases/tag/2.17.0
+- drop series file
+- enable pg17</comment>
+    <requestid>1206329</requestid>
+  </revision>
 </revisionlist>

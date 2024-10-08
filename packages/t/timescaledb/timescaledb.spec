@@ -21,14 +21,13 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.16.1
+Version:        2.17.0
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
 Group:          Productivity/Databases/Tools
 URL:            https://www.timescale.com/
 Source:         https://github.com/timescale/%{ext_name}/archive/%{version}/%{ext_name}-%{version}.tar.gz
-Source1:        series
 
 BuildRequires:  %{pg_name}-server-devel
 BuildRequires:  cmake >= 3.11
