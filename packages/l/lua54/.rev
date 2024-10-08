@@ -295,4 +295,17 @@
     <comment></comment>
     <requestid>1189368</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b4b1eca00ddc8f29e4f7ddf609f980fc</srcmd5>
+    <version>5.4.7</version>
+    <time>1728422596</time>
+    <user>anag+factory</user>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>fd35c29e2b12db9e55184c6bb93f8965</srcmd5>
+    <version>5.4.7</version>
+    <time>1728422810</time>
+    <user>anag+factory</user>
+    <comment>restore packaging</comment>
+  </revision>
 </revisionlist>
