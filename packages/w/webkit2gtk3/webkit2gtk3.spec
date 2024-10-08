@@ -79,7 +79,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.44.4
+Version:        2.45.92
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -92,8 +92,6 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
-Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -111,7 +109,7 @@ BuildRequires:  libbacktrace-devel
 %if %usegcc11
 BuildRequires:  gcc11-c++
 %else
-BuildRequires:  gcc-c++ >= 10.2
+BuildRequires:  gcc-c++ >= 11.2
 %endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
@@ -186,8 +184,6 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
-BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
@@ -521,6 +517,7 @@ export PYTHON=%{_bindir}/python3
 %if !%{use_jxl}
   -DUSE_JPEGXL=OFF \
 %endif
+  -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
 
 %ninja_build -j $max_link_jobs
 

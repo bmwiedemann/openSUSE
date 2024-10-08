@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 11 16:53:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.45.92:
+  + Add webkit://gpu/stdout to dump the information from
+    webkit://gpu to stdout.
+  + Undeprecate injected bundle frame access interfaces.
+  + Fix drag and drop.
+  + Fix connection to a11y bus under flatpak.
+  + Fix the build with Wayland and GBM disabled.
+  + Fix linker relocation errors on Debug/RelWithDebInfo builds.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Sep 10 21:35:51 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Up gcc requirement to match cmake check.
+  Remove wpe and wpebackend-fdo from BuildRequires: no longer used.
+
+-------------------------------------------------------------------
+Mon Sep  9 21:12:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.45.91:
+  + Add new API to WebKitAutomationSession to be notified when the
+    session is about to be closed.
+  + Fix WebGL with accelerated compositing disabled.
+  + Fix image filtering not being applied in some cases.
+  + Fix the build on 32 bits systems.
+  + Fix the build with -DUSE_TEXTURE_MAPPER_DMABUF=OFF
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Rebase patch with quilt.
+- Drop webkit2gtk3-disable-dmabuf-nvidia.patch: Should not be
+  needed anymore.
+- Pass USE_SYSTEM_SYSPROF_CAPTURE=NO to cmake, avoid building
+  sysprof capture for now.
+- Disable LTO on x86 and ppc64le.
+
+-------------------------------------------------------------------
 Mon Sep  9 20:12:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.4:
@@ -363,7 +401,6 @@ Sun Aug 13 09:33:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Add support for P010 video format.
   + Fix non-accelerated rendering that broke web inspector.
   + Fix several crashes and rendering issue
-- Temp disable LTO during build via define.
 
 -------------------------------------------------------------------
 Wed Aug  2 18:25:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
