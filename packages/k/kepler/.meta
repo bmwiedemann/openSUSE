@@ -1,0 +1,6 @@
+<package name="kepler" project="openSUSE:Factory">
+  <title>Kepler</title>
+  <description>Kubernetes-based Efficient Power Level Exporter</description>
+  <devel project="server:monitoring" package="kepler"/>
+  <url>https://github.com/sustainable-computing-io/kepler</url>
+</package>
