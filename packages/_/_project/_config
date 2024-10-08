@@ -521,6 +521,8 @@ FileProvides: /usr/sbin/useradd shadow
 FileProvides: /usr/sbin/userdel shadow
 FileProvides: /usr/sbin/usermod shadow
 
+FileProvides: /usr/bin/findmnt util-linux-systemd
+
 # Files which are provided and required by the same package only
 # are not part of primary.xml.gz, thus missing in the section above.
 FileProvides: /usr/bin/Xvfb xorg-x11-server-Xvfb
