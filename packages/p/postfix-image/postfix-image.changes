@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  8 11:38:12 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- switch postfix to multi-stage micro based build
+
+-------------------------------------------------------------------
 Wed Sep 25 17:36:16 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - rerender installation step in multiple lines, allow uninstalling optional packages

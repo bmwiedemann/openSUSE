@@ -19,13 +19,16 @@
 #!BuildTag: opensuse/postfix:%%postfix_version%%-%RELEASE%
 #!BuildTag: opensuse/postfix:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends ca-certificates-mozilla cyrus-sasl cyrus-sasl-plain ed gawk netcfg postfix postfix-ldap postfix-lmdb timezone mandoc spamassassin-spamc spamass-milter; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla curl cyrus-sasl cyrus-sasl-plain ed findutils gawk grep netcfg openldap2 openldap2-client postfix postfix-ldap postfix-lmdb sed timezone mandoc spamassassin-spamc spamass-milter; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.postfix
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
