@@ -7,4 +7,41 @@
     <comment>Initial release of 18.1.8</comment>
     <requestid>1144076</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3298c8cd5ba633f9202c332a9889eb5</srcmd5>
+    <version>18.1.10</version>
+    <time>1728504779</time>
+    <user>anag+factory</user>
+    <comment>- update to 18.1.10:
+  * Since MS Windows is unsupported without community help, I
+    deleted some legacy code. It could be restored if there is
+    demand and some help to improve MS Windows support.
+  * New URL for :Oracle:`Oracle documentation &lt;index.html&gt;`.
+  * Now we also use Python Stable ABI under Python 3.8 and 3.9.
+    Under Python 3.10 and up we can define types that users can
+    not instantiate as Py_TPFLAGS_DISALLOW_INSTANTIATION, but
+    that flag is not available under previous Python versions. In
+    Python 3.8 and 3.9 we used to do type-&gt;tp_new = NULL; for
+    that, but this approach is not available under Python Stable
+    ABI. That is the reason this module could use Python Stable
+    ABI only when compiled under Python 3.10 and superior. In
+    this release we define the slot Py_tp_new as NULL in Python
+    3.8 and 3.9 to achieve the same effect, and that is available
+    under Python Stable ABI.
+  * Since this module can now use Python Stable ABI under all
+    supported Python releases, that is exactly what we do. From
+    now on this module always uses Python Stable ABI.
+  * WARNING - BREAKING CHANGE: Change return value of
+    berkeleydb.py_limited_api(). This function was introduced in
+    18.1.9 and it is used to indicate if the module was using the
+    Python Stable ABI or not, and the version Python Stable ABI
+    used. Now that the module has been improved to use Python
+    Stable ABI always, the function returns a tuple of integers.
+    First tuple element tells us what Python Stable ABI version
+    are we supporting. Second element tells us what Python
+    release was this module compiled under, although it should
+    work in any more recent Python release. Since this function
+    was introduced in release 18.1.9, we consider this breaking</comment>
+    <requestid>1206439</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:33:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.10:
+  * Since MS Windows is unsupported without community help, I
+    deleted some legacy code. It could be restored if there is
+    demand and some help to improve MS Windows support.
+  * New URL for :Oracle:`Oracle documentation <index.html>`.
+  * Now we also use Python Stable ABI under Python 3.8 and 3.9.
+    Under Python 3.10 and up we can define types that users can
+    not instantiate as Py_TPFLAGS_DISALLOW_INSTANTIATION, but
+    that flag is not available under previous Python versions. In
+    Python 3.8 and 3.9 we used to do type->tp_new = NULL; for
+    that, but this approach is not available under Python Stable
+    ABI. That is the reason this module could use Python Stable
+    ABI only when compiled under Python 3.10 and superior. In
+    this release we define the slot Py_tp_new as NULL in Python
+    3.8 and 3.9 to achieve the same effect, and that is available
+    under Python Stable ABI.
+  * Since this module can now use Python Stable ABI under all
+    supported Python releases, that is exactly what we do. From
+    now on this module always uses Python Stable ABI.
+  * WARNING - BREAKING CHANGE: Change return value of
+    berkeleydb.py_limited_api(). This function was introduced in
+    18.1.9 and it is used to indicate if the module was using the
+    Python Stable ABI or not, and the version Python Stable ABI
+    used. Now that the module has been improved to use Python
+    Stable ABI always, the function returns a tuple of integers.
+    First tuple element tells us what Python Stable ABI version
+    are we supporting. Second element tells us what Python
+    release was this module compiled under, although it should
+    work in any more recent Python release. Since this function
+    was introduced in release 18.1.9, we consider this breaking
+    change a minor infraction affecting most probably nobody.
+  * Delete some unneeded ancient Python 2.x code.
+  * Delete more unneeded code to check threading support since
+    Python 3.7 and up always guarantee threads.
+  * pkg_resources is deprecated, so migrate to packaging. This is
+    already provided by modern setuptools. This change only
+    affects you if you run the test suite.
+  * If compiled under Python 3.10 or higher, we use the Python
+    Stable ABI, as defined in PEP 384 and related PEPs. That is,
+    you can use the same compiled module with any Python release
+    if Python version >= 3.10. In order to achieve this, we have
+    made these changes:  Some fast Python API (not error
+    checking) have been replaced by somewhat slower functions
+    (functions that do error checking), because the former are
+    not available in the Stable ABI: PyBytes_GET_SIZE(),
+    PyBytes_AS_STRING(), PyTuple_SET_ITEM(). We replaced
+    PyErr_Warn() by PyErr_WarnEx() because it is not available in
+    the Stable ABI. When an exception is raised because an
+    incompatible type, we need to write complicated code because
+    Py_TYPE(keyobj)->tp_name is not available in the Stable ABI.
+    Code generated for Python < 3.11 is "ugly", we will clean it
+    up when the minimum supported Python version is 3.11.
+    TYPE->tp_alloc is not available under the Stable ABI. We
+    replace it with PyType_GenericNew(). Internal types that
+    should NOT be instanciated by the user has type->tp_new =
+    NULL. This can not be done under the Stable ABI, so we use
+    Py_TPFLAGS_DISALLOW_INSTANTIATION flag. This is the reason we
+    only create Stable ABI modules under Python >= 3.10, because
+    that flag is defined in that Python release. The new function
+    berkeleydb.py_limited_api() returns an integer describing the
+    minimum supported Stable ABI or None. If None, the module is
+    not compiled with Stable ABI and can not be used with a
+    different Python version. When not None, the value of
+    berkeleydb.py_limited_api() can be easily interpreted using
+    something like hex(berkeleydb.py_limited_api()).
+  * Some fast Python API (not error checking) have been replaced
+    by somewhat slower functions (functions that do error
+    checking), because the former are not available in the Stable
+    ABI: PyBytes_GET_SIZE(), PyBytes_AS_STRING(),
+    PyTuple_SET_ITEM().
+  * We replaced PyErr_Warn() by PyErr_WarnEx() because it is not
+    available in the Stable ABI.
+  * When an exception is raised because an incompatible type, we
+    need to write complicated code because
+    Py_TYPE(keyobj)->tp_name is not available in the Stable ABI.
+    Code generated for Python < 3.11 is "ugly", we will clean it
+    up when the minimum supported Python version is 3.11.
+  * TYPE->tp_alloc is not available under the Stable ABI. We
+    replace it with PyType_GenericNew().
+  * Internal types that should NOT be instanciated by the user
+    has type->tp_new = NULL. This can not be done under the
+    Stable ABI, so we use Py_TPFLAGS_DISALLOW_INSTANTIATION flag.
+    This is the reason we only create Stable ABI modules under
+    Python >= 3.10, because that flag is defined in that Python
+    release.
+  * The new function berkeleydb.py_limited_api() returns an
+    integer describing the minimum supported Stable ABI or None.
+    If None, the module is not compiled with Stable ABI and can
+    not be used with a different Python version. When not None,
+    the value of berkeleydb.py_limited_api() can be easily
+    interpreted using something like
+    hex(berkeleydb.py_limited_api()).
+  * Python 3.13 added to the full test matrix.
+  * Experimental Python 3.13 support. Tested under 3.13.0b2.
+  * This code can be compiled under MS Windows, but I am unable
+    to provide support for it and it is far from trivial. Because
+    of this and some complains about it, I change the
+    "Classifiers" for this project from  'Operating System :: OS
+    Independent'  to  'Operating System :: Unix'  I would restore
+    MS Windows support if there is some kind of community support
+    for it. I can not do it by myself alone. Sorry about that.
+
+-------------------------------------------------------------------
 Mon Feb  5 03:28:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 18.1.8 
