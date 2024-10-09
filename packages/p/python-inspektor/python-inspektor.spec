@@ -1,7 +1,7 @@
 #
 # spec file for package python-inspektor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{suse_version} >= 1550
 # cliff and stevedore are only built for primary python3
 %define pythons python3
@@ -34,26 +33,22 @@ BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module logutils >= 0.3.3}
 BuildRequires:  %{python_module pbr >= 1.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.0.0}
 BuildRequires:  %{python_module pylint >= 1.3.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cliff
 BuildRequires:  python3-stevedore
-Requires:       python-astroid >= 1.2.1
 Requires:       python-cliff
-Requires:       python-cmd2
-Requires:       python-logutils >= 0.3.3
-Requires:       python-pbr >= 1.4
 Requires:       python-pycodestyle >= 2.0.0
 Requires:       python-pylint >= 1.3.1
-Requires:       python-stevedore
+Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-BuildRequires:  python3-typed-ast
-Requires:       python3-typed-ast
 %python_subpackages
 
 %description
@@ -67,13 +62,13 @@ Inspektor can work with Git and SVN checkouts.
 %setup -q -n %{pkgname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 # No test suite
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/inspekt
 %fdupes %{buildroot}
 
@@ -87,6 +82,7 @@ Inspektor can work with Git and SVN checkouts.
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/inspekt
-%{python_sitelib}/*
+%{python_sitelib}/%{pkgname}
+%{python_sitelib}/%{pkgname}-%{version}.dist-info
 
 %changelog

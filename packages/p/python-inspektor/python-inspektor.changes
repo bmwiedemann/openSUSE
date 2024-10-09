@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:39:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+- Clean up {Build,}Requires.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Apr 29 13:20:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Only build for primary python3
