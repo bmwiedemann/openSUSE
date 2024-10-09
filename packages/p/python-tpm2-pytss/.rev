@@ -39,4 +39,25 @@
     <comment></comment>
     <requestid>1152931</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>836e85b86527564b9720b88ee5448b72</srcmd5>
+    <version>2.3.0</version>
+    <time>1728504766</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.0:
+  * FAPI: support exists_ok for create_nv
+  * Compatibility with python-cryptography 42
+  * scripts: update regex for #defines
+  * cryptography: fixes for newer version of cryptography
+  * docs/maintainers: add gpg key details
+  * docs: fix whitespace error
+  * docs: fix error on SECURITY.md not being used
+  * cryptography: add module for using TPM keys with the cryptography module
+  * encoding: add deprecation warning to tools_encdec
+  * internal/crypto: fix _MyRSAPrivateNumbers with cryptograpy &gt;= 42.0.1
+  * test: disable pcr_set_auth_value and pcr_set_auth_policy tests for swtpm
+- Drop patch python-tpm2-pytss-RSAPrivateNumbers.patch, included upstream.
+- Switch to pyproject macros.</comment>
+    <requestid>1206411</requestid>
+  </revision>
 </revisionlist>

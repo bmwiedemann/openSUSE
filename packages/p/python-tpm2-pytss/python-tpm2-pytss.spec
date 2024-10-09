@@ -17,28 +17,27 @@
 
 
 %define pythons python3
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define srcname tpm2-pytss
 %bcond_with     test
 Name:           python-%{srcname}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Python bindings for TSS
 License:        BSD-2-Clause
 URL:            https://github.com/tpm2-software/tpm2-pytss
 Source:         %{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix tpm2-pkcs11 build: github.com/tpm2-software/tpm2-pytss/pull/562
-Patch0:         python-tpm2-pytss-RSAPrivateNumbers.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -49,7 +48,6 @@ Requires:       python3-asn1crypto
 Requires:       python3-cffi
 Requires:       python3-cryptography
 Requires:       python3-packaging
-Requires:       python3-setuptools
 Requires:       pkgconfig(tss2-esys)
 Requires:       pkgconfig(tss2-fapi)
 %if %{with test}
@@ -81,10 +79,10 @@ Metadata-Version: 1.1
 Version:        %{version}
 EOF
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}
@@ -95,6 +93,6 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %{python_sitearch}/tpm2_pytss
-%{python_sitearch}/tpm2_pytss-%{version}*-info
+%{python_sitearch}/tpm2_pytss-%{version}.dist-info
 
 %changelog

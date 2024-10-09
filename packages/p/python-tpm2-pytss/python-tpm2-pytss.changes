@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  9 04:00:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 2.3.0:
+  * FAPI: support exists_ok for create_nv
+  * Compatibility with python-cryptography 42
+  * scripts: update regex for #defines
+  * cryptography: fixes for newer version of cryptography
+  * docs/maintainers: add gpg key details
+  * docs: fix whitespace error
+  * docs: fix error on SECURITY.md not being used
+  * cryptography: add module for using TPM keys with the cryptography module
+  * encoding: add deprecation warning to tools_encdec
+  * internal/crypto: fix _MyRSAPrivateNumbers with cryptograpy >= 42.0.1
+  * test: disable pcr_set_auth_value and pcr_set_auth_policy tests for swtpm
+- Drop patch python-tpm2-pytss-RSAPrivateNumbers.patch, included upstream.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Feb 28 10:44:28 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix tpm2-pkcs11 build:
