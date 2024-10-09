@@ -1890,6 +1890,7 @@ BuildFlags: onlybuild:expat
 BuildFlags: onlybuild:expect
 BuildFlags: onlybuild:fcitx
 BuildFlags: onlybuild:fdk-aac-free
+BuildFlags: onlybuild:fdupes
 BuildFlags: onlybuild:ffado
 BuildFlags: onlybuild:ffmpeg-4
 BuildFlags: onlybuild:ffmpeg-7
@@ -3176,6 +3177,7 @@ BuildFlags: onlybuild:tidy
 BuildFlags: onlybuild:tidyp
 BuildFlags: onlybuild:tiff
 BuildFlags: onlybuild:timezone
+BuildFlags: onlybuild:tinysparql
 BuildFlags: onlybuild:tix
 BuildFlags: onlybuild:tk
 BuildFlags: onlybuild:toilet
@@ -3231,7 +3233,7 @@ BuildFlags: onlybuild:waf
 BuildFlags: onlybuild:wavpack
 BuildFlags: onlybuild:wayland
 BuildFlags: onlybuild:wayland-protocols
-BuildFlags: onlybuild:webkit2gtk3:gtk3-soup2
+BuildFlags: onlybuild:webkit2gtk3:gtk3
 BuildFlags: onlybuild:webrtc-audio-processing
 BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:which
