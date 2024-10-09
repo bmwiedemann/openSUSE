@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.27
+Version:        0.0.29
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
@@ -39,6 +39,8 @@ BuildRequires:  libelf-devel
 BuildRequires:  libkdumpfile-devel
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -71,6 +73,10 @@ export CFLAGS="%{optflags}"
 %doc README.rst
 %license COPYING
 %python_alternative %{_bindir}/drgn
-%{python_sitearch}/*
+%{python_sitearch}/drgn
+%{python_sitearch}/drgn-%{version}*-info
+%{python_sitearch}/_drgn*.pyi
+%{python_sitearch}/_drgn*.so
+%{python_sitearch}/_drgn_util
 
 %changelog

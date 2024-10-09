@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:46:34 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to drgn-0.0.29:
+  * Fix call_function(), write_memory(), and write_object() for
+    kernels with CONFIG_MODVERSIONS=y
+- Fix a few rpmlint warnings.
+
+-------------------------------------------------------------------
+Wed Oct  9 06:24:34 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to drgn-0.0.28:
+  * Linux 6.11 and 6.12 support
+  * Helpers for modifying the running kernel
+  * 32-bit Arm address translation
+  * AArch64 52-bit virtual addresses with 4k or 16k pages
+
+-------------------------------------------------------------------
 Thu Sep 26 16:45:15 UTC 2024 - Michal Koutný <mkoutny@suse.com>
 
 - Update RPM's Source: to match tarball proper

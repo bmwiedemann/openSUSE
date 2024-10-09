@@ -95,4 +95,12 @@
     <comment>- Update RPM's Source: to match tarball proper</comment>
     <requestid>1203947</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>13a0a32aa89eac7d1c02353d0a36421a</srcmd5>
+    <version>0.0.29</version>
+    <time>1728504786</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206458</requestid>
+  </revision>
 </revisionlist>
