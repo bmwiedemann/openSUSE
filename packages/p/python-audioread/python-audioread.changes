@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 15:29:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use the distro default ffmpeg version:
+  + BuildRequire %ffmpeg_pref instead of ffmpeg-5.
+  + BuildConflict %{ffmpeg_pref}-mini-libs: we need to have the
+    decoders available in order to pass the test suite.
+  + Recommend /usr/bin/ffmpeg instead of ffmpeg-5: the python
+    library interacts via the ffmpeg binary.
+
+-------------------------------------------------------------------
 Tue Apr  2 23:44:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - No more greedy globs in %files.

@@ -23,16 +23,17 @@ Summary:        Wrapper for audio decoding via selectable backends
 License:        MIT
 URL:            https://github.com/beetbox/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
+BuildRequires:  %{ffmpeg_pref}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-5
+BuildConflicts: %{ffmpeg_pref}-mini-libs
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Recommends:     ffmpeg-5
+Recommends:     /usr/bin/ffmpeg
 Recommends:     python-gobject
 Recommends:     python-pymad
 Recommends:     typelib(Gst) = 1.0
