@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Sun Oct  6 16:18:55 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- add _service
+- remove cargo_config
+- add vendor.tar.zst
+- update to version 1.9.3:
+  * fix: add missing word
+  * perf(linter): remove unneeded memory allocation for str
+  * fix(lint): options for `noLabelWithoutControl` are optional
+  * feat(useExhaustiveDependencies): add option to disable errors for unecessary dependencies
+  * fix(noUnusedVariables): don't panic when renaming ref at the start
+  * chore: setup GritQL benchmark
+  * feat(useExplicitFunctionReturnType): support higher-order function
+  * feat(biome_css_analyze): implement `noDescendingSpecificity`
+  * ci: update codspeed action
+  * fix(noMisleadingCharacterClass): properly handle escaping and improve diagnostics
+  * chore(deps): update @biomejs packages
+  * chore(deps): update dependency @typescript-eslint/eslint-plugin to v8.7.0
+  * chore(deps): update rust:1.81.0 docker digest to a21d540
+  * chore(deps): update actions/checkout action to v4.2.0
+  * chore(deps): update rust crate oxc_resolver to 1.12.0
+  * chore(deps): update dependency eslint to v9.11.1
+  * chore(deps): update pnpm to v9.11.0
+  * feat(formatter): implement formatting for GritQL root node
+  * fix(bench): typo in `.prettierignore`
+  * fix(deps): update rust crate libc to 0.2.159
+  * fix(js-api): update code
+  * fix(formatter): trim CSS raw values
+  * fix(cli): don't error in stdin, with `--write`
+  * fix: updated query feature range interval format
+  * docs: fix `isNan` to `isNaN`
+  * fix(lsp): correctly enable CSS on LSP
+  * chore: to_lowercase -> to_lowercase_cow
+  * feat(biome_js_parser): forbid undefined as type name
+  * fix(noMisleadingCharacterClass): ignore characters outside of char classes
+  * fix(linter): apply `useExplicitFunctionReturnType` only to TypeScript…
+  * fix(noUndeclaredDependencies): ignore NodeJS modules
+  * fix(noUselessEscapeInRegex): don't panic on regexes starting with an empty class
+  * chore: update CHANGELOG.md
+  * perf: iterate over bytes instead of chars where possible
+  * feat(grit): implement disregarded snippet nodes
+  * fix(schema): make optional the `options` JSON schema field
+  * feat(linter): implement noTemplateCurlyInString
+  * fix(useSemanticElements): examples
+  * fix(useSemanticElements): check only elements associated to a role
+  * fix(useButtonType): don't report dynamically created button with valid type
+  * fix(format/html): keep at most 1 empty line between elements
+  * feat(linter): implement no-nested-ternary
+  * feat(markdown/parser): support thematic break block parser
+  * refactor(parser/html): refactor comments to be nodes in the tree
+  * fix(noUnusedFunctionParameters): ignore params in obj pattern with a rest param
+  * fix(noUselessStringConcat): don't panic on malformed code
+  * fix(linter): noUselessFragments fix creates invalid CST
+  * refactor(aria_metadata): generate ARIA metadata from specification
+  * docs: fix markdown link in CHANGELOG.md
+  * perf(linter): performance improvement for css semantic model
+  * perf(grit): use `to_ascii_lowercase_cow`
+  * test(format/grit): add tests for grit formatter
+  * feat(linter): support allow expressions
+  * fix(deps): update rust crate rand to 0.8.5
+  * chore(deps): update rust crate bpaf to 0.9.14
+  * chore(deps): update actions/setup-node action to v4.0.4
+  * chore(deps): update @biomejs packages
+  * feat(html): resolve format options
+  * fix(parser/html): add `param` to void elements list
+  * feat(html): implement debug features for html
+  * feat(lsp): `noExcessiveCognitiveComplexity` diagnostic shows levels
+  * feat(linter): support direct const assertions in useExplicitFunctionReturnType rule
+  * fix(parser/html): allow multi line attribute values
+  * feat(linter): implement useExplicitFunctionReturnType
+  * chore: fix udeps failure
+  * chore: enforce usage of to_ascii_lowercase_cow
+  * fix(graphql_formatter): panic in block comments with empty line
+  * chore(cli): replace PanicInfo -> PanicHookInfo
+  * fix(parser/html): fix incorrect parsing when text starts with a quote
+  * feat(formatter/html): add line break at the end of files
+  * feat: add additional `FeatureKind` entries for debug features
+  * chore(readme): use polar shield
+  * feat(html/formatter): self close tag add slash char
+  * fix(html/parser): support root element list 
+  * feat(grit): implement GritQL log() function
+  * feat(linter): implement noOctalEscape
+  * docs: improve documentation of rule
+  * refactor(lint): set version field for new rules
+  * test(format/html): reenable snapshot tests
+  * chore: move Grit changes in CHANGELOG
+  * chore: add Grit updates to CHANGELOG
+  * fix(grit): fix node walking
+  * feat(grit): implement Grit built-ins
+  * fix(noLabelWithoutControl): accept expressions as label
+  * feat(lint): add rule `useComponentExportOnlyModules`
+  * feat(grit): support for Grit pattern, predicate and function definitions
+  * feat(html): add `experimental-html` feature flag to enable html file handler
+  * build: upgrade to Rust 1.81
+  * fix(lsp): code actions capabilities
+  * feat(parser/html): handle script and style tags
+  * feat(parser/html): parse doctype declarations
+  * feat(parser/html): lex and parse unquoted attribute values
+  * feat(markdown): support markdown grammar code generation
+  * fix(format/html): fix doctype formatting
+  * fix(format/html): keep single quotes if string contains a double quote
+  * fix(parser/html): check void element names case insensitively
+  * chore(deps): update dependency vite to v5.4.6 [security]
+  * fix(useFilenamingConvention): apply formats to file extensions
+  * fix(useFilenamingConvention): allow leading digits in lower-like cases
+  * feat(linter): add noMissingVarFunction
+  * fix(useFilenamingConvention): don't suggest names with disallowed case
+  * feat(format/html): port `JsxChildList` formatting to `HtmlElementList`
+  * fix(lsp): reduced the number of log files on disk
+  * test: fix outdated snapshot tests
+  * fix(useStrictMode): check actual directives
+  * fix(lsp): apply `.editorconfig` options
+  * fix: preserve other children in `useConsistentCurlyBraces`
+  * fix(config): handle `unset` and `off` values in editorconfig files
+  * fix(css_parser): accept U+FDCF and U+FFFD in identifiers
+  * fix(parser/html): fix whitespace being lexed as html literal
+  * chore(deps): update rust crate anyhow to 1.0.89
+  * chore(deps): update rust crate serde to 1.0.210
+  * chore(deps): update @biomejs packages
+  * fix(cli): use correct list of evaluated paths
+  * chore(deps): update dependency @typescript-eslint/eslint-plugin to v8.5.0
+  * chore(deps): update rust crate dashmap to 6.1.0
+  * chore(deps): update rust crate insta to 1.40.0
+  * fix: re-implement #3856 to improve correctness
+  * chore(deps): update rust docker tag to v1.81.0
+  * chore(deps): update rust crate tokio to 1.40.0
+  * chore(deps): update dependency eslint to v9.10.0
+  * docs(readme): add zh-tw readme translation
+  * feat(format/grit): grit formatter initial configuration
+  * chore(deps): update rust crate serde_json to 1.0.128
+  * fix(deps): update rust crates
+  * chore: update biome version of rules
+  * revert: "feat(lsp): add codeActionKinds"
+  * chore: remove sponsor
+  * fix(noUndeclaredDependencies): ignore invalid package names, bun import, and recognize Definitely Typed
+  * chore: tweak `useConsistentArrayType` rule documentation
+  * chore: add `noConsole` options documentation
+  * feat(lint): add noProcessEnv
+  * feat(format/html): attribute formatting
+  * docs: update snippet ignore file on `useFilenamingConvention` rule
+  * chore: add more logs for #3839
+  * docs(changelog): fix typo
+  * refactor(package.json): add more keywords
+  * fix(editorconfig): fix editorconfig not being loaded when running `biome ci`
+  * docs(readme): add CSS and GraphQL
+  * fix(aria): remove concept for alert like roles
+  * fix: update eslint-plugin-solid docs position
+  * feat(parser/html): correctly parse void elements
+  * chore: fix docs comments
+
+-------------------------------------------------------------------
 Thu Sep 12 16:43:58 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.9.0:

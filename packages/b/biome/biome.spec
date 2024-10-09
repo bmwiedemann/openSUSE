@@ -17,32 +17,30 @@
 #
 
 
-%define ver 1.9.0
-%define rev b260d5b0e6b2e8e0093128ca2bf1f66c8e5d35da
+%define rev d5034515f48f9052fe4c47a60d43f05ed7986105
 Name:           biome
-Version:        %{ver}
+Version:        1.9.3
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
 Group:          Productivity/Other
 URL:            https://github.com/biomejs/biome
-Source0:        https://github.com/biomejs/biome/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source0:        https://github.com/biomejs/biome/archive/refs/tags/cli/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.53.0
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.53.0
+BuildRequires:  zstd
 
 %description
-A JavaScript and TypeScript toolchain.
+A toolchain for web projects, aimed to provide functionalities to maintain
+them. Biome offers formatter and linter, usable via CLI and LSP.
 
 %prep
-%autosetup -a1 -p1 -n biome-%{rev}
-cp %{SOURCE2} .cargo/config.toml
+%autosetup -a1 -p1 -n %{name}-cli-v%{version}
 
 %build
-export BIOME_VERSION=%{ver}-%{rev}
-# auditable build fails
-cargo build %{?__rustflags} %{?_smp_mflags} --release
+export BIOME_VERSION=%{version}-%{rev}
+%{cargo_build} -p biome_cli
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -53,6 +51,4 @@ cp target/release/%{name} %{buildroot}%{_bindir}
 %doc README.md
 %{_bindir}/%{name}
 
-# generate changelog with:
-# $$(".Box li").map(l => l.textContent.trim()).join('\n')
 %changelog
