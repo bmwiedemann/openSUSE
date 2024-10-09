@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:39:18 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require systemd-boot, because sdbootutil doesn't (boo#1231324)
+
+-------------------------------------------------------------------
+Sat Aug 17 16:33:28 UTC 2024 - malcolmlewis@opensuse.org
+
+- Add Accessibility comment and missing packages for screen reader,
+  (boo#1229268). 
+
+-------------------------------------------------------------------
 Tue Jul 30 09:55:42 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Add aeon-check (boo#1228416) 

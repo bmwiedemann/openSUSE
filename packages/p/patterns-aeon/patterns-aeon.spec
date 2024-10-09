@@ -52,10 +52,11 @@ Requires:       distribution-release
 Requires:       filesystem
 
 ### Packages formerly provided by bootloader
-Requires:       sdbootutil-snapper
+Requires:       systemd-boot
 Requires:       dracut-pcr-signature
 Requires:       efibootmgr
 Requires:       sdbootutil-rpm-scriptlets
+Requires:       sdbootutil-snapper
 Requires:       shim
 Requires:       uefi_mbr
 
@@ -218,6 +219,12 @@ Requires:       desktop-file-utils
 Requires:       gjs
 Requires:       gnome-menus-branding-openSUSE
 Requires:       system-group-wheel
+
+### Accessibility packages (boo#1229268)
+Requires:       orca
+Requires:       brltty-driver-speech-dispatcher
+Requires:       speech-dispatcher-module-espeak
+
 #
 # Now the real packages
 #

@@ -124,4 +124,15 @@
     <comment>- Add aeon-check (boo#1228416)</comment>
     <requestid>1190481</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>6910320d0711755a47d24128d3dc17bb</srcmd5>
+    <version>5.0</version>
+    <time>1728504803</time>
+    <user>anag+factory</user>
+    <comment>- Require systemd-boot, because sdbootutil doesn't (boo#1231324)
+
+- Add Accessibility comment and missing packages for screen reader,
+  (boo#1229268).</comment>
+    <requestid>1206524</requestid>
+  </revision>
 </revisionlist>
