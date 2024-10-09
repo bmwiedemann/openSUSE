@@ -29,7 +29,7 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           owntone
-Version:        28.9
+Version:        28.10
 Release:        0
 URL:            https://github.com/owntone/owntone-server
 Source0:        %url/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -43,6 +43,8 @@ BuildRequires:  gperf
 BuildRequires:  libgcrypt-devel >= 1.2.0
 BuildRequires:  libgpg-error-devel >= 1.6
 BuildRequires:  libunistring-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.24
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavcodec)
