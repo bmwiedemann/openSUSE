@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  9 15:11:23 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.44.1:
+  + A minor patch release with a few patches backported from main to
+    0.44.0.
+  + Fixes backported
+    - output/xdg-output: avoid sending events to released globals
+    - keyboard: update group state on change for the sym resolve
+      state
+    - defaultConfig: add a nofocus rule for weird X windows
+    - pointer: expand sw cursor damage box
+    - keybinds: fixup xkb_states for resolve_by_sym
+    - config: give simple help for super+q not working
+    - screencopy: fix screencopy frames not being cleaned up
+    - layout: fix auto group when opening a new window in a
+      non-focused workspace
+
+-------------------------------------------------------------------
 Sun Oct  6 11:41:04 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.44.0:
