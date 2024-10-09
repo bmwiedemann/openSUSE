@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:21:18 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.8.5:
+  * bugfix: date button shortened in ledger book
+- Changes in 5.8.4:
+  * bugfix: prevent some problems with xfer and both legder
+    window opened
+  * bugfix: lp#2083124 account rename doesn't allow case correction
+  * bugfix: lp#2081574 windows: budget report date fields not
+    showing in their entirety
+  * bugfix: lp#2081379 planned split operations are not modified
+    after a category merge
+  * bugfix: lp#2080864 HomeBank CLI --version or -V no longer
+    works in linux
+  * bugfix: lp#2080756 balance change from ledger toolbar not
+    updated for xfer target
+  * bugfix: lp#2080032 your accounts print/export hidden columns
+  * bugfix: lp#2079884 ledger window snap half left oversize
+  * bugfix: lp#2036404 grouped budget categories not showing
+    total amount 
+
+-------------------------------------------------------------------
 Thu Sep 26 13:43:55 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 5.8.3:
