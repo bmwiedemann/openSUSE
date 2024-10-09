@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicPlayer
 Name:           cosmic-player
-Version:        0.1.0+git20240702.52b9439
+Version:        0.1.0+git20241008.d614269
 Release:        0
 Summary:        COSMIC media player
 License:        GPL-3.0-only
@@ -26,28 +26,24 @@ URL:            https://github.com/pop-os/cosmic-player
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         ffmpeg-next.patch
-Patch1:         ffmpeg-7.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 %{summary}.
 
 %prep
-%autosetup -N -a1
-%patch -P0 -p1
-%if 0%{?suse_version} >= 1600
-%patch -P1 -p1
-%endif
+%autosetup -a1 -p1
 
 %build
 just build-release

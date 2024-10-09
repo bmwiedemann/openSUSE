@@ -26,4 +26,13 @@
     <comment>- fix Tumbleweed by using ffmpeg-next.patch and ffmpeg-7.patch (forwarded request 1201423 from rrahl0)</comment>
     <requestid>1201424</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d26fc4e2613651ba32309cdabc9f22b5</srcmd5>
+    <version>0.1.0+git20241008.d614269</version>
+    <time>1728504768</time>
+    <user>anag+factory</user>
+    <comment>- remove patch ffmpeg-7.patch as ffmpeg is not directly a requirement
+  anymore (forwarded request 1206436 from rrahl0)</comment>
+    <requestid>1206437</requestid>
+  </revision>
 </revisionlist>
