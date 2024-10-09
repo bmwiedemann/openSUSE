@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:16:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip one test failing with new redis, upstream is aware of that
+
+-------------------------------------------------------------------
 Thu Oct  3 08:31:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.2:

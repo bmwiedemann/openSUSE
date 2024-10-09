@@ -79,7 +79,8 @@ rm t/unit/transport/test_azureservicebus.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_global_keyprefix_transaction doesn't support new redis yet https://github.com/celery/kombu/pull/2132
+%pytest -k "not test_global_keyprefix_transaction"
 
 %files %{python_files}
 %license LICENSE
