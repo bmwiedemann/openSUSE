@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-vlc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-python-vlc
-Version:        3.0.20123
+Version:        3.0.21203
 Release:        0
 Summary:        VLC bindings for python
 License:        LGPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            http://wiki.videolan.org/PythonBinding
-Source:         https://files.pythonhosted.org/packages/source/p/python-vlc/python-vlc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-docs.patch -- Fix some example code in the docs
-Patch0:         fix-docs.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python-vlc/python_vlc-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  vlc-devel
@@ -41,14 +41,14 @@ This module provides ctypes-based bindings for the native libvlc API
 (see http://wiki.videolan.org/LibVLC) of the VLC video player.
 
 %prep
-%autosetup -p1 -n python-vlc-%{version}
+%autosetup -p1 -n python_vlc-%{version}
 sed -i -e '1{\,^#! %{_bindir}/python,d}' vlc.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
