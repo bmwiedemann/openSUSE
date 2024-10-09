@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 29 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
+
+- Update to version 9.3.1, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.3.md
+- Add patches:
+  * 0001-ioss-update-fmt-includes.patch
+- Drop upstream patches:
+  * fix_rendering_core_linkage.patch
+- New features and bugfixes:
+  * The vendored `fmt` library has been updated to 10.1.1.
+  * Fix SIGSEGV on `vtkCompositeDataProbeFilter`.
+  * Add `ComponentName` in `vtkImageAlgorithm` and subclasses.
+  * Fix UT record support in `vtkDICOMParser`
+  * Fix for reading binary XML files > 2Gb on Windows.
+  * Fix `ResampleWithDataSet` with an HTG source using MPI.
+  * Fix `HyperTree` iterator in `ExtractElements` method.
+  * Fix `vtkOpenGLRenderWindow::GetZBufferData` in OpenGL ES 3.
+  * Fix GPU Ray Cast Volume Rendering with `ModelTransformMatrix`.
+  * Fix Off-axis stereo image separation issue.
+  * Fix Display Attribute Inheritance `vtkOpenGLGlyph3DMapper`.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:26:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

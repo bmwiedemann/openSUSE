@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,7 +92,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.3.0
+Version:        9.3.1
 Release:        0
 %define series  9.3
 Summary:        The Visualization Toolkit - A high level 3D visualization library
@@ -108,8 +108,6 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 Source99:       vtk-rpmlintrc
 # PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (gh#libharu/libharu#213)
 Patch1:         bundled_libharu_add_missing_libm.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         fix_rendering_core_linkage.patch
 # PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
 Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
@@ -122,6 +120,8 @@ Patch10:        Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
 # PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
+# PATCH-FIX-UPSTREAM -- Update fmt includes in ioss thirdparty package
+Patch19:        0001-ioss-update-fmt-includes.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -398,7 +398,6 @@ languages.
 %prep
 %setup -n VTK-%{version}
 %patch -P 1 -p1
-%patch -P 2 -p1
 %if %{with gles}
 %patch -P 7 -p1
 %patch -P 8 -p1
@@ -407,6 +406,7 @@ languages.
 %endif
 %patch -P 17 -p1
 %patch -P 18 -p1
+%patch -P 19 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
