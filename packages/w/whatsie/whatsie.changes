@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:03:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.16.0:
+  Feature:
+  * Add secure compilation flags (4720ffe)
+  Bug Fixes:
+  * change zoom factor when app starts minimized in systray (be47a73)
+  * set QTWEBENGINE_DICTIONARIES_PATH to fix spell checker (#199) (40da519)
+
+-------------------------------------------------------------------
 Wed Sep 18 12:29:22 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add macro %make_build in the %build section

@@ -78,4 +78,17 @@
     <comment></comment>
     <requestid>1204059</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>801b4049de0d6ba8faf3a860a5fbf55b</srcmd5>
+    <version>4.16.0</version>
+    <time>1728504832</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.0:
+  Feature:
+  * Add secure compilation flags (4720ffe)
+  Bug Fixes:
+  * change zoom factor when app starts minimized in systray (be47a73)
+  * set QTWEBENGINE_DICTIONARIES_PATH to fix spell checker (#199) (40da519)</comment>
+    <requestid>1206532</requestid>
+  </revision>
 </revisionlist>
