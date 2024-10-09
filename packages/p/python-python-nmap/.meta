@@ -1,0 +1,6 @@
+<package name="python-python-nmap" project="openSUSE:Factory">
+  <title>Python class for using nmap from Python</title>
+  <description>This is a Python class for using nmap and accessing scan results from Python.</description>
+  <devel project="devel:languages:python" package="python-python-nmap"/>
+  <url>https://xael.org/pages/python-nmap-en.html</url>
+</package>
