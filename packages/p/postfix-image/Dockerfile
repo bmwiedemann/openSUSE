@@ -24,7 +24,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla curl cyrus-sasl cyrus-sasl-plain ed findutils gawk grep netcfg openldap2 openldap2-client postfix postfix-ldap postfix-lmdb sed timezone mandoc spamassassin-spamc spamass-milter; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla curl cyrus-sasl cyrus-sasl-plain ed findutils gawk grep netcfg postfix postfix-ldap postfix-lmdb sed timezone openldap2 openldap2-client mandoc spamassassin-spamc spamass-milter tar; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
