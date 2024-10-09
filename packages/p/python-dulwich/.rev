@@ -752,4 +752,12 @@
   * Add ``dulwich.porcelain.for_each_ref``. (Daniele Trifirò)</comment>
     <requestid>1131298</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>28f86e217581a7163f94e01563901709</srcmd5>
+    <version>0.22.1</version>
+    <time>1728504800</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206503</requestid>
+  </revision>
 </revisionlist>

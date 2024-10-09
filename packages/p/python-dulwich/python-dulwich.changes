@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:51:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch geventhttpclient-compat.patch to make it compatible with
+  latest geventhttpclient.
+  (gh#jelmer/dulwich#1299, gh#jelmer/dulwich#1294)
+- Update 0.22.1:
+  * Fix pypi deployments by @jelmer in #1284
+  * Handle alternate case for worktreeconfig setting by @wshanks in #1286
+  * Ship rust files. Fixes #1287 by @jelmer in #1290
+- update 0.22.0:
+  * Start on 0.21.8 by @jelmer in #1240
+  * Install twine when uploading to pypi by @jelmer in #1241
+  * Remove shebang from graph.py by @mtelka in #1242
+  * Disable pypi uploads in disperse; this is now down by the GitHub actions workflow by @jelmer in #1243
+  * tweak doc-strings in LocalGitClient for clarity by @stspdotname in #1245
+  * Keep GitHub Actions up to date with GitHub's Dependabot by @cclauss in #1249
+  * Bump the github_actions group with 5 updates by @dependabot in #1250
+  * Add Python 3.12 to the testing by @cclauss in #1251
+  * pyproject.toml: Add trove classifier for Python 3.12 by @cclauss in #1252
+  * Convert _objects.c to _objects.rs by @jelmer in #1204
+  * Convert pack C helper to rust by @jelmer in #1255
+  * Convert diff-tree C helper to rust by @jelmer in #1256
+  * Revert "Bump the github_actions group with 5 updates" by @jelmer in #1257
+  * Only expect a shallow update when requesting a depth by @abderrahim in #1259
+  * Use f-strings by @jelmer in #1263
+  * Wrap all urllib3 read ProtocolErrors as GitProtocolError by @nanonyme in #1261
+  * Update cargo dependencies with dependabot by @jelmer in #1264
+  * wheels: Don't build with nightly by @jelmer in #1273
+  * Reformat with ruff by @jelmer in #1272
+  * Use latest cibuildwheel by @jelmer in #1276
+  * cibuildwheel: define options in pyproject.toml by @jelmer in #1275
+  * Move tests to root. Fixes #1024 by @jelmer in #1277
+  * Stop installing docs/ as part of package code by @jelmer in #1278
+  * Bump pyo3 from 0.21.1 to 0.21.2 by @dependabot in #1280
+  * Set correct version for rust modules by @jelmer in #1281
+  * Fix installation of tests package by @jelmer in #1282
+
+-------------------------------------------------------------------
 Wed Dec  6 09:36:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.7:

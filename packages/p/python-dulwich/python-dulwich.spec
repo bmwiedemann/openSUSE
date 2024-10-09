@@ -1,7 +1,7 @@
 #
 # spec file for package python-dulwich
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,20 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        0.21.7
+Version:        0.22.1
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
-Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
+Source0:        https://github.com/jelmer/dulwich/archive/dulwich-%{version}.tar.gz#/dulwich-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM geventhttpclient-compat.patch gh#jelmer/dulwich#1299, gh#jelmer/dulwich#1294
+Patch0:         geventhttpclient-compat.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 17.1}
+BuildRequires:  %{python_module setuptools-rust}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -42,6 +47,7 @@ BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module gpg}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  %{python_module urllib3 >= 1.24.1}
 %if 0%{?suse_version} <= 1500
@@ -53,7 +59,7 @@ Requires:       python-urllib3 >= 1.24.1
 Requires:       python-typing_extensions
 %endif
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Recommends:     python-fastimport
 Recommends:     python-gpg
 Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
@@ -64,16 +70,16 @@ Simple Pure-Python implementation of the Git file formats and protocols. Dulwich
 is the place where Mr. and Mrs. Git live in one of the Monty Python sketches.
 
 %prep
-%autosetup -p1 -n dulwich-%{version}
+%autosetup -p1 -n dulwich-dulwich-%{version}
+sed -i '/usr\/bin\/env/d' dulwich/contrib/diffstat.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Do not remove tests as they are reused by other packages
-#%%python_expand rm -r %{buildroot}%{$python_sitearch}/dulwich/tests
+%pyproject_install
+
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/dulwich
 %python_clone -a %{buildroot}%{_bindir}/dul-receive-pack
@@ -81,7 +87,7 @@ export CFLAGS="%{optflags}"
 
 %check
 %if %{with test}
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest dulwich.tests.test_suite
+%python_expand $python -m unittest tests.test_suite
 %endif
 
 %post
@@ -100,6 +106,7 @@ export CFLAGS="%{optflags}"
 %python_alternative dulwich
 %python_alternative dul-receive-pack
 %python_alternative dul-upload-pack
-%{python_sitearch}/*
+%{python_sitearch}/dulwich
+%{python_sitearch}/dulwich-%{version}*-info
 
 %changelog
