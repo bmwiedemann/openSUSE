@@ -17,10 +17,10 @@
 
 
 Name:           element-web
-Version:        1.11.79
+Version:        1.11.80
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
-License:        Apache-2.0
+License:        AGPL-3.0-only or GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://github.com/vector-im/element-web
 Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
@@ -66,7 +66,7 @@ DIST_VERSION=%{version} ./scripts/package.sh
 pushd dist || exit 1
 tar xf element-%{version}.tar.gz
 popd
-cp LICENSE dist/element-%{version}/LICENSE
+cp -v LICENSE* dist/element-%{version}/
 
 %install
 install -d -m 0755 %{buildroot}%{_datadir}/webapps/element
@@ -79,7 +79,7 @@ install -m 0644 config.sample.json "%{buildroot}%{_sysconfdir}/webapps/element/c
 %fdupes %{buildroot}%{_datadir}/webapps/element/
 
 %files
-%license LICENSE
+%license LICENSE-AGPL-3.0 LICENSE-GPL-3.0
 %dir %{_datadir}/webapps
 %{_datadir}/webapps/element
 %dir %{_sysconfdir}/webapps
