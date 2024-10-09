@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-file-share
-Version:        12.18.0
+Version:        12.19.0
 Release:        0
 Summary:        Azure Storage File Share client library for Python
 License:        MIT
