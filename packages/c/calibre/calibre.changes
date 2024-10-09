@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:14:19 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error and remove podofo as buildrequire and require, 
+  after suse has removed podofo binary. boo#1231058 
+  Upstream say only podofo >= 0.10.3, but not whether libpodofo is
+  sufficient or whether they need the binary podofo.
+
+-------------------------------------------------------------------
 Fri Sep 27 05:49:22 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.19.0
