@@ -29,8 +29,12 @@ Summary:        Virtualenv-based automation of test activities
 License:        MIT
 URL:            https://github.com/tox-dev/tox
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
-Patch0:         0001-Make-use-of-devpi_process-optional.patch
-Patch1:         0002-skip-test-which-require-network-access.patch
+# PATCH-FIX-OPENSUSE optional_devpi_process.patch mcepl@suse.com
+# Make use devpi_process optional
+Patch0:         optional_devpi_process.patch
+# PATCH-FEATURE-UPSTREAM mark-network-tests.patch mcepl@suse.com
+# to skip test which require network access
+Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module build >= 0.10.0}
 BuildRequires:  %{python_module cachetools >= 5.3.2}
@@ -147,6 +151,8 @@ donttest+=" or test_python_generate_hash_seed"
 donttest+=" or test_bad_env_var"
 # this test doesn't work on Leap
 donttest+=" or test_package_cmd_builder"
+# gh#tox-dev/tox#3399
+donttest+=" or test_skip_develop_mode"
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}

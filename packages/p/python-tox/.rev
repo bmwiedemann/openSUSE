@@ -702,4 +702,19 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>1163255</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>43a48beaa71acaa592b4cd6c74681e3d</srcmd5>
+    <version>4.14.2</version>
+    <time>1728504752</time>
+    <user>anag+factory</user>
+    <comment>- Skip test_skip_develop_mode (gh#tox-dev/tox#3399)
+- Rename patches:
+  - 0001-Make-use-of-devpi_process-optional.patch to optional_devpi_process.patch
+  - 0002-skip-test-which-require-network-access.patch to mark-network-tests.patch
+  which removes these two patches:
+  - 0001-Make-use-of-devpi_process-optional.patch
+  - 0002-skip-test-which-require-network-access.patch
+</comment>
+    <requestid>1206399</requestid>
+  </revision>
 </revisionlist>

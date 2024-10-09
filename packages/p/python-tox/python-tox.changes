@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 19:20:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test_skip_develop_mode (gh#tox-dev/tox#3399)
+- Rename patches:
+  - 0001-Make-use-of-devpi_process-optional.patch to optional_devpi_process.patch
+  - 0002-skip-test-which-require-network-access.patch to mark-network-tests.patch
+  which removes these two patches:
+  - 0001-Make-use-of-devpi_process-optional.patch
+  - 0002-skip-test-which-require-network-access.patch
+
+-------------------------------------------------------------------
 Wed Mar 27 16:33:24 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.
