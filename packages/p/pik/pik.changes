@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  9 11:09:03 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.0
+  + New Features
+    - Support vim-like key bindings for navigation
+    - add ctrl+arrow up/ctrl+arrow down keybinding to go first/end
+      row
+
+-------------------------------------------------------------------
 Sat Oct  5 17:34:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.0
