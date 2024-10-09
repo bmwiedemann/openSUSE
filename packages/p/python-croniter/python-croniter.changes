@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:35:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * Fix start_time not respected in
+    get_next/get_prev/all_next/all_prev (#86) [hesstobi, kiorky]
+  * Add an update_current argument to
+    get_next/get_prev/all_next/all_prev to facilitate writing of
+    some downstream code, see #83. [kiorky]
+  * Support for year field [zhouyizhen, kiorky]
+  * Better support for 6 fields (second), and 7 fields crons
+    [zhouyizhen, kiorky]
+  * Better fix hashed expressions omitting some entries (#82,
+    #42, #30) fix is retained over #42 initial fix [zhouyizhen,
+    kiorky]
+  * Ensure match return false when not time available (#81)
+
+-------------------------------------------------------------------
 Fri Sep 20 09:37:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.0.7:
