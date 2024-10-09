@@ -16,9 +16,9 @@
 #
 
 
-%global shlib libtrng4-25
+%global shlib libtrng4-27
 Name:           trng
-Version:        4.26
+Version:        4.27
 Release:        0
 Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
@@ -32,8 +32,6 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  tbb-devel
 BuildRequires:  cmake(Catch2) < 3.0
-# Fails at %%check: see https://github.com/rabauke/trng4/issues/32
-ExcludeArch:    aarch64 %{power64}
 
 %description
 TRNG is a pseudo random number generator C++ library.
