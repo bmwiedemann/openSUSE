@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:51:51 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.8.0+git17.856ba8a
+  https://github.com/nayuki/QR-Code-generator/compare/v1.8.0...856ba8a
+- switch build to cmake files from
+  https://github.com/EasyCoding/qrcodegen-cmake.git
+  - This build also adds the pkgconfig and cmake files for easier
+    integration with other projects ( like the upcoming obs-studio
+    31.0.0)
+  - drop patches:
+    0002-Make-use-of-fPIC-parameter-when-building.patch
+    0003-Generate-both-shared-and-static-libraries.patch
+    0004-Create-install-targets-for-C-and-CPP.patch
+- use %ldconfig_scriptlets
+- add BR for pkgconfig to ensure we get the pkgconfig provides
+
+-------------------------------------------------------------------
 Sun Nov 12 12:17:20 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.8.0

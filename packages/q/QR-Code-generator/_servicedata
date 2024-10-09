@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/nayuki/QR-Code-generator.git</param>
+              <param name="changesrevision">856ba8a74b48a6b3b32dd86f13b66b61b8579fcd</param></service><service name="tar_scm">
+                <param name="url">https://github.com/EasyCoding/qrcodegen-cmake.git</param>
+              <param name="changesrevision">0bc38a5c3ce8bc700a7e1b3082a55b82e292530e</param></service></servicedata>
