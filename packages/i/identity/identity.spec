@@ -1,6 +1,7 @@
 #
 # spec file for package identity
 #
+# Copyright (c) 2024 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +19,14 @@
 
 %define _lto_cflags %{nil}
 %define appid org.gnome.gitlab.YaLTeR.Identity
-%define rurl d938a20a7de0fa0f3348be961d49f690
+%define rurl abddc256d6b3b7fce433a40eae4588fe
 Name:           identity
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Compare images and videos
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/YaLTeR/identity
-Source:         %{url}/uploads/%{rurl}/%{name}-%{version}.tar.xz
+Source:         https://gitlab.gnome.org/-/project/12785/uploads/%{rurl}/%{name}-%{version}.tar.xz
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -36,8 +37,10 @@ BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libseccomp)
 
 %description
 A program for comparing multiple versions of an image or video.
@@ -58,6 +61,9 @@ sed -i "s/Exec=identity/Exec=identity-compare/g" data/org.gnome.gitlab.YaLTeR.Id
 %meson_install
 
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %license COPYING

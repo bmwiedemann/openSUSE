@@ -8,4 +8,29 @@
 - Rename binary from identity to identity-compare</comment>
     <requestid>1134368</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13935ce1cce6a633734bf366dc689ab1</srcmd5>
+    <version>0.7.0</version>
+    <time>1728504809</time>
+    <user>anag+factory</user>
+    <comment>- Update to Version 0.7.0
+  * Images are now loaded with glycin, adding support for many
+    more formats like AVIF and JPEG XL, and improving
+    compatibility, like using the correct color space for JPEG
+    images.
+  * Zoom level now takes into account fractional display scale.
+  * Fixed unusably fast zoom on mice with high-resolution scroll
+    wheels.
+  * Fixed slightly blurry image borders on some zoom levels.
+  * Added an Alt+Enter shortcut to open the media properties
+    dialog.
+  * Updated to the GNOME 47 platform.
+  * Updated translations.
+- Add BuildRequires to build glycin:
+  * pkgconfig(libseccomp)
+  * pkgconfig(lcms2)
+- Add meson_test to validate files
+</comment>
+    <requestid>1206515</requestid>
+  </revision>
 </revisionlist>

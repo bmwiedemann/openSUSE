@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  1 18:14:24 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to Version 0.7.0
+  * Images are now loaded with glycin, adding support for many
+    more formats like AVIF and JPEG XL, and improving
+    compatibility, like using the correct color space for JPEG
+    images.
+  * Zoom level now takes into account fractional display scale.
+  * Fixed unusably fast zoom on mice with high-resolution scroll
+    wheels.
+  * Fixed slightly blurry image borders on some zoom levels.
+  * Added an Alt+Enter shortcut to open the media properties
+    dialog.
+  * Updated to the GNOME 47 platform.
+  * Updated translations.
+- Add BuildRequires to build glycin:
+  * pkgconfig(libseccomp)
+  * pkgconfig(lcms2)
+- Add meson_test to validate files
+
+-------------------------------------------------------------------
 Thu Dec 21 04:30:24 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Rename binary from identity to identity-compare
