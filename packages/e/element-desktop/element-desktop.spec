@@ -17,10 +17,10 @@
 
 
 Name:           element-desktop
-Version:        1.11.79
+Version:        1.11.80
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
-License:        Apache-2.0
+License:        AGPL-3.0-only or GPL-3.0-only
 URL:            https://github.com/vector-im/element-desktop
 Source0:        https://github.com/vector-im/element-desktop/archive/v%{version}.tar.gz#/element-desktop-%{version}.tar.gz
 Source2:        vendor.tar.zst
@@ -214,7 +214,7 @@ ln -vs de_DE.json "%{buildroot}%{_datadir}/element/app/lib/i18n/strings/de.json"
 %electron_check_native
 
 %files
-%license LICENSE
+%license LICENSE-AGPL-3.0 LICENSE-GPL-3.0
 %{_bindir}/%{name}
 
 %dir %{_datadir}/element/

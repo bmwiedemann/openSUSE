@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct  9 09:28:41 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.80
+  ## ✨ Features
+
+  * enable Element Call on desktop nightly (https://github.com/element-hq/element-desktop/pull/1873). Contributed by @fkwp.
+  * Add doc for 'force\_verification config option (https://github.com/element-hq/element-web/pull/28035). Contributed by @dbkr.
+  * Roll back change to device isolation mode (https://github.com/element-hq/matrix-react-sdk/pull/104). Contributed by @richvdh.
+  * Remove right panel toggling behaviour on room header buttons (https://github.com/element-hq/matrix-react-sdk/pull/100). Contributed by @t3chguy.
+  * Improve error display for messages sent from insecure devices (https://github.com/element-hq/matrix-react-sdk/pull/93). Contributed by @richvdh.
+  * Add labs option to exclude unverified devices (https://github.com/element-hq/matrix-react-sdk/pull/92). Contributed by @richvdh.
+  * Improve contrast for timestamps, date separators \& spotlight trigger (https://github.com/element-hq/matrix-react-sdk/pull/91). Contributed by @t3chguy.
+  * Open room settings on room header avatar click (https://github.com/element-hq/matrix-react-sdk/pull/88). Contributed by @t3chguy.
+  * Use `strong` over `b` for improved a11y semantics (https://github.com/element-hq/matrix-react-sdk/pull/41). Contributed by @t3chguy.
+  * Grant Element Call widget capabilities for "raise hand" feature (https://github.com/element-hq/matrix-react-sdk/pull/82). Contributed by @AndrewFerr.
+  * Mobile registration optimizations and tests (https://github.com/element-hq/matrix-react-sdk/pull/62). Contributed by @langleyd.
+  * Ignore chat effect when older than 48h (https://github.com/element-hq/matrix-react-sdk/pull/48). Contributed by @florianduros.
+
+  ## 🐛 Bug Fixes
+
+  * Update native OIDC callback url to be RFC8252 compliant (https://github.com/element-hq/element-web/pull/28096). Contributed by @t3chguy.
+  * Update icons to include transparency (https://github.com/element-hq/element-web/pull/28040). Contributed by @t3chguy.
+  * Fix default\_widget\_container\_height in sample config (https://github.com/element-hq/element-web/pull/28034). Contributed by @dbkr.
+  * Fix untranslated keys being rendered in `/help` dialog (https://github.com/element-hq/matrix-react-sdk/pull/90). Contributed by @t3chguy.
+  * Ensure timeline search results are visible even in video rooms (https://github.com/element-hq/matrix-react-sdk/pull/96). Contributed by @t3chguy.
+  * Pop right panel timeline when unmaximising widget to avoid double timeline (https://github.com/element-hq/matrix-react-sdk/pull/94). Contributed by @t3chguy.
+  * Fix accessible label on left panel spotlight trigger (https://github.com/element-hq/matrix-react-sdk/pull/87). Contributed by @t3chguy.
+  * Crypto: fix display of device key (https://github.com/element-hq/matrix-react-sdk/pull/86). Contributed by @richvdh.
+
+-------------------------------------------------------------------
 Wed Oct  2 12:43:45 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.79
