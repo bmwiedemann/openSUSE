@@ -238,4 +238,22 @@
   * Changed nose dependency for unit test (#383).</comment>
     <requestid>1124875</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e4f6e6d5a0f14562ce7e07732453ecfc</srcmd5>
+    <version>4.2.1</version>
+    <time>1728504779</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.1:
+  * Remove `SIGUSR2` from `TERMSIGS_DEAULT`
+  * Add on_ready_counter to Worker.__reduce__.
+  * Adapt for logging lock internal changes in Python3.13
+  * blacksmith.sh: Migrate workflows to blacksmith
+  * Prepare for release: v4.2.1
+
+  * fix #314
+  - Pass arguments when wrapping sys.exit (#275)
+  - Remove win32/py2k special (#276)
+  - Fix compatibility with Python 2.7 on Windows (#283)</comment>
+    <requestid>1206440</requestid>
+  </revision>
 </revisionlist>
