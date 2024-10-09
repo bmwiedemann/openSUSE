@@ -16,4 +16,12 @@
   * Just use time.monotonic</comment>
     <requestid>1204056</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c2bdc815fe685b60c849a0843320706c</srcmd5>
+    <version>3.6.0</version>
+    <time>1728504759</time>
+    <user>anag+factory</user>
+    <comment>- Actually remove requirement on monotonic.</comment>
+    <requestid>1206408</requestid>
+  </revision>
 </revisionlist>

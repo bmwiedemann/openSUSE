@@ -41,7 +41,6 @@ BuildRequires:  %{python_module requests >= 2.7}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-backoff >= 1.10.0
-Requires:       python-monotonic >= 1.5
 Requires:       python-python-dateutil > 2.1
 Requires:       python-requests >= 2.7
 Suggests:       python-black

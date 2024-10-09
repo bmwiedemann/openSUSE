@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  9 00:31:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually remove requirement on monotonic. 
+
+-------------------------------------------------------------------
 Fri Sep 27 07:03:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-more-monotonic.patch:
