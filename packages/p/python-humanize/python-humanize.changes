@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  9 15:00:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.11.0
+  * Add natural_list (#110) @akshaybabloo
+  * filesize: support the ronna and quetta prefixes (#142) @bbolli
+  * Update French translations for numbers (#192) @enlivn
+  * Drop support for Python 3.8 (#202) @hugovk
+  * Defer fractions.Fraction import to save 5ms (#201) @hugovk
+  * Speedup x 1.85: Generate __version__ at build to avoid slow
+    importlib.metadata import (#200) @hugovk
+  * Fix finding location of translations (#204) @dangillet
+  * Fix rollover from ZB to 1.0 YB (#206) @hugovk
+  * Fix zh_CN/zh_HK translation for "1 year, %d days" (#196) @luliangce
+
+-------------------------------------------------------------------
 Wed Sep  4 12:12:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 4.10.0:
