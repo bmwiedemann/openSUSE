@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 09 04:39:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.82.0:
+  * chore(deps): update Syft to v1.14.0 (#2164)
+  * fix: use fix info from secDB in APK matcher even if NVD fix
+    info present (#2162)
+  * chore(deps): bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#2159)
+  * chore(deps): bump github/codeql-action from 3.26.10 to 3.26.11
+    (#2160)
+  * chore(deps): update tools to latest versions (#2157)
+  * Add v6 DB metadata store (#2146)
+  * feat: remove `wordpress` from `known` targets due to wordpress
+    cataloger support syft/#1553
+  * Add a space following the "Name:" label (#2155)
+  * chore(deps): update tools to latest versions (#2154)
+  * test: update quality gate db to latest version (#2153)
+  * explicitly skip update ts on check failure (#2152)
+  * port over tar/xz decompressors (#2139)
+  * chore(deps): bump github/codeql-action from 3.26.9 to 3.26.10
+    (#2149)
+  * chore(deps): bump github.com/docker/docker (#2147)
+  * implement a low pass filter for update checks (#2148)
+  * migrate legacy distribution concerns (#2144)
+  * chore(deps): bump github/codeql-action from 3.26.8 to 3.26.9
+    (#2142)
+  * chore(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#2145)
+
+-------------------------------------------------------------------
 Thu Sep 26 05:02:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.81.0:
