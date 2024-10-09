@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Oct 09 04:42:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.0:
+  * feat: report unknowns in sbom (#2998)
+  * chore(deps): bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#3299)
+  * chore(deps): update stereoscope to
+    efa76446cc1c7e6c4117350943a2754b2453aec4 (#3301)
+  * chore(deps): bump golang.org/x/net from 0.29.0 to 0.30.0
+    (#3304)
+  * chore(deps): bump actions/cache from 4.0.2 to 4.1.0 (#3305)
+  * chore(deps): update CPE dictionary index (#3302)
+  * Fix: Parse package.json with non-standard fields in 'author'
+    section (#3300)
+  * chore(deps): bump github/codeql-action from 3.26.10 to 3.26.11
+    (#3298)
+  * chore: add pull request template (#3294)
+  * chore(deps): update tools to latest versions (#3296)
+  * Track supporting DPKG evidence (#3228)
+  * Fix: make failed CPE validation correctly return error (#2762)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.9 to
+    6.6.0 (#3293)
+  * feat: update haproxy classifier (#3277)
+  * chore(deps): update tools to latest versions (#3291)
+  * fix: don't use builtin scanner in licensecheck (#3290)
+  * chore(deps): update CPE dictionary index (#3288)
+  * chore(deps): bump github/codeql-action from 3.26.9 to 3.26.10
+    (#3289)
+  * update redis classifier (#3281)
+  * fix: improve node classifier version matching (#3284)
+  * fix: update ruby classifier for -rc, -dev, etc. versions
+    (#3285)
+  * chore(deps): update CPE dictionary index (#3262)
+  * chore(deps): bump github.com/docker/docker (#3264)
+  * chore(deps): bump github/codeql-action from 3.26.8 to 3.26.9
+    (#3275)
+  * chore(deps): update stereoscope to
+    dc10ea61fd18efa45b516eda4de8bc19d8322429 (#3280)
+  * chore(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#3283)
+  * add awaiting response management (#3272)
+  * fix: correct excluded mount point comparison to file paths
+    (#3269)
+
+-------------------------------------------------------------------
 Tue Sep 24 17:39:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.0:
