@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-identity-broker
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Azure Identity Broker plugin for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-identity-broker/azure-identity-broker-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_identity_broker/azure_identity_broker-%{version}.tar.gz
 BuildRequires:  %{python_module azure-identity < 2.0.0}
 BuildRequires:  %{python_module azure-identity >= 1.14.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -35,8 +34,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-identity >= 1.15.0 with python-azure-identity < 2.0.0)
-Requires:       (python-msal >= 1.25.0 with python-msal < 2.0.0)
+Requires:       (python-azure-identity >= 1.18.0 with python-azure-identity < 2.0.0)
+Requires:       (python-msal >= 1.31.0 with python-msal < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-identity-broker < 1.0.0
@@ -54,10 +53,9 @@ accounts. Currently, only the Windows authentication broker, Web Account
 Manager (WAM), is supported.
 
 %prep
-%setup -q -n azure-identity-broker-%{version}
+%setup -q -n azure_identity_broker-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-identity-broker-%{version}
 %pyproject_wheel
 
 %install
@@ -70,7 +68,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/identity/broker
 %{python_sitelib}/azure_identity_broker-*.dist-info
 

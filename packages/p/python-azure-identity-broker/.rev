@@ -36,4 +36,19 @@
 - Update Requires from setup.py (forwarded request 1166824 from glaubitz)</comment>
     <requestid>1166872</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8fe777b5bee925d48e01756bc48fadb2</srcmd5>
+    <version>1.2.0</version>
+    <time>1728504825</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1206488 from glaubitz)</comment>
+    <requestid>1206534</requestid>
+  </revision>
 </revisionlist>
