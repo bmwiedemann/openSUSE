@@ -60,4 +60,17 @@
     <comment>- Lower tik installer footprint, removing health-checker</comment>
     <requestid>1200821</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>9a8d7684c13c4ea4daf3632fc2aae1fb</srcmd5>
+    <version>1.0</version>
+    <time>1728504819</time>
+    <user>anag+factory</user>
+    <comment>- Revert grub2-common, use grub2 (breaks kiwi builds) 
+
+- grub2-common is a replacement for grub2
+
+- Add Accessibility comment and missing packages for screen reader,
+  (boo#1229268).</comment>
+    <requestid>1206520</requestid>
+  </revision>
 </revisionlist>

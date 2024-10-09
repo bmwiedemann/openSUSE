@@ -218,6 +218,12 @@ Requires:       gjs
 Requires:       desktop-file-utils
 Requires:       gnome-menus-branding-openSUSE
 Requires:       system-group-wheel
+
+### Accessibility packages (boo#1229268)
+Requires:       orca
+Requires:       brltty-driver-speech-dispatcher
+Requires:       speech-dispatcher-module-espeak
+
 #
 # Now the real packages
 #
