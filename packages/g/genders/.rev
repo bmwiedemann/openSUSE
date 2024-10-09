@@ -95,4 +95,15 @@
     <comment></comment>
     <requestid>1043086</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd19b36edebe7f1894a6e15981697823</srcmd5>
+    <version>1.29.1</version>
+    <time>1728504830</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.29.1 which increased the internal buffer in nodeattr for large
+  cluster hostranges
+- removed also-check-for-python3.patch
+</comment>
+    <requestid>1206533</requestid>
+  </revision>
 </revisionlist>

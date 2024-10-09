@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:58:01 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- update to 1.29.1 which increased the internal buffer in nodeattr for large
+  cluster hostranges
+- removed also-check-for-python3.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 12:14:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28.1:

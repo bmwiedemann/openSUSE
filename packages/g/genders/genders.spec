@@ -1,7 +1,7 @@
 #
 # spec file for package genders
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define c_api 0
 %define cpp_api 2
-%define slash_ver 1-28-1
+%define slash_ver 1-29-1
 
 Name:           genders
-Version:        1.28.1
+Version:        1.29.1
 Release:        0
 Summary:        Static cluster configuration database
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Source:         https://github.com/chaos/genders/archive/genders-%{slash_ver}/%{
 Patch1:         Fix-Python-package-installation-use-root.patch
 Patch2:         Remove-PERL_DESTDIR-use-DESTDIR-instead.patch
 Patch4:         lua_bindings.patch
-Patch5:         also-check-for-python3.patch
+#Patch5:         also-check-for-python3.patch
 URL:            https://github.com/chaos/genders
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
