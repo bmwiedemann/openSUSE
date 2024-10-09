@@ -31,23 +31,31 @@
 %bcond_with test
 %endif
 Name:           python-pysmi%{psuffix}
-Version:        0.3.4
+Version:        1.5.0
 Release:        0
 Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause
-URL:            http://pysmi.sourceforge.net/
+URL:            https://github.com/lextudio/pysmi
 Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#lextudio/pysmi#5
+Patch0:         support-new-pyasn1.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module ply}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros >= 20210929
+BuildRequires:  python-rpm-macros
 %if %{with test}
+BuildRequires:  %{python_module Jinja2 >= 3.1}
+BuildRequires:  %{python_module ply >= 3.11}
+BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module pysmi = %{version}}
 BuildRequires:  %{python_module pysnmp}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.26}
 %endif
-Requires:       python-ply
+Requires:       python-Jinja2 >= 3.1
+Requires:       python-ply >= 3.11
+Requires:       python-requests >= 2.26
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -62,10 +70,8 @@ BuildArch:      noarch
 A pure-Python implementation of SNMP/SMI MIB parsing and conversion library.
 Can produce PySNMP MIB modules.
 
-Documentation: http://pysmi.sf.net
-
 %prep
-%setup -q -n pysmi-%{version}
+%autosetup -p1 -n pysmi-%{version}
 
 %build
 %pyproject_wheel
@@ -73,8 +79,6 @@ Documentation: http://pysmi.sf.net
 %install
 %if !%{with test}
 %pyproject_install
-mv %{buildroot}%{_bindir}/mibdump.py %{buildroot}%{_bindir}/mibdump
-mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 %python_clone -a %{buildroot}%{_bindir}/mibdump
 %python_clone -a %{buildroot}%{_bindir}/mibcopy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -98,7 +102,7 @@ mv %{buildroot}%{_bindir}/mibcopy.py %{buildroot}%{_bindir}/mibcopy
 
 %files %{python_files}
 %license LICENSE.rst
-%doc README.md CHANGES.rst
+%doc README.md examples/*
 %{python_sitelib}/pysmi
 %{python_sitelib}/pysmi-%{version}.dist-info
 %python_alternative %{_bindir}/mibdump

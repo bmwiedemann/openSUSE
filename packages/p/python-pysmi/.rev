@@ -73,4 +73,30 @@
 - No more greedy globs in %files.</comment>
     <requestid>1147483</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42aa7e26c84da7c359a3c9b1598387c9</srcmd5>
+    <version>1.5.0</version>
+    <time>1728504777</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0:
+  * Better formatting of texts in MIB documents.
+  * Reworked on reserved Python keywords handling.
+  * Fixed TEXTUAL-CONVENTION handling.
+  * Fixed DEFVAL handling.
+  * Added cyclic dependency detection.
+  * Other fixes and improvements for real-world MIBs.
+  * Implemented a better strict mode.
+  * Fixed old Python version support.
+  * Fixed mibdump crash.
+  * Fixed a JSON output bug.
+  * Updated MIB URLs.
+  * Migrated to new asn1 repo.
+  * Bumped minimal Python version to 3.7.
+  * Introduced Jinja2 templates for code generation.
+  * Introduced SNMP agent code hooks generation template.
+- Switch to autosetup macros.
+- Add patch support-new-pyasn1.patch:
+  * Support new pyasn1 changes.</comment>
+    <requestid>1206438</requestid>
+  </revision>
 </revisionlist>

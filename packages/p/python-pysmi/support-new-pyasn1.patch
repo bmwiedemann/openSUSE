@@ -1,0 +1,69 @@
+From 01d0774948da432f39c5a89622d676e91b8c47af Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 9 Oct 2024 17:20:45 +1100
+Subject: [PATCH] Remove use of str2octs from pyasn1
+
+pyasn1 has been removing all Python 2 code from its codebase, and the
+octets module has been removed from 0.6.1 onwards. Since we only support
+Python 3.8, we can remove it and just encode to bytes.
+---
+ tests/test_objecttype_smiv2_pysnmp.py | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_objecttype_smiv2_pysnmp.py b/tests/test_objecttype_smiv2_pysnmp.py
+index fdec37e..b374332 100644
+--- a/tests/test_objecttype_smiv2_pysnmp.py
++++ b/tests/test_objecttype_smiv2_pysnmp.py
+@@ -13,7 +13,6 @@
+ except ImportError:
+     import unittest
+ 
+-from pyasn1.compat.octets import str2octs
+ from pysmi.parser.smi import parserFactory
+ from pysmi.codegen.pysnmp import PySnmpCodeGen
+ from pysmi.codegen.symtable import SymtableCodeGen
+@@ -75,7 +74,7 @@ def testObjectTypeStatus(self):
+     # TODO:revisit
+     #    def testObjectTypeReference(self):
+     #        self.assertEqual(
+-    #            self.ctx['testObjectType'].getReference(), str2octs('ABC'),
++    #            self.ctx['testObjectType'].getReference(), 'ABC'.encode('iso-8859-1'),
+     #            'bad REFERENCE'
+     #        )
+ 
+@@ -335,7 +334,7 @@ def setUp(self):
+     # TODO: pyasn1 does not like OctetString.defaultValue
+     def testObjectTypeSyntax(self):
+         self.assertEqual(
+-            self.ctx["testObjectType"].getSyntax(), str2octs("test value"), "bad DEFVAL"
++            self.ctx["testObjectType"].getSyntax(), "test value".encode('iso-8859-1'), "bad DEFVAL"
+         )
+ 
+ 
+@@ -374,7 +373,7 @@ def setUp(self):
+     def testObjectTypeSyntax(self):
+         self.assertEqual(
+             self.ctx["testObjectType"].getSyntax(),
+-            str2octs("\\ntest\nvalue\\"),
++            "\\ntest\nvalue\\".encode('iso-8859-1'),
+             "bad DEFVAL",
+         )
+ 
+@@ -488,7 +487,7 @@ def setUp(self):
+     def testObjectTypeSyntax(self):
+         self.assertEqual(
+             self.ctx["testObjectType"].getSyntax().clone(""),
+-            str2octs(""),
++            "".encode('iso-8859-1'),
+             "bad size constrained SYNTAX",
+         )
+ 
+@@ -526,7 +525,7 @@ def setUp(self):
+     def testObjectTypeSyntax(self):
+         self.assertEqual(
+             self.ctx["testObjectType"].getSyntax().clone(("set",)),
+-            str2octs("@"),
++            "@".encode('iso-8859-1'),
+             "bad BITS SYNTAX",
+         )
+ 
