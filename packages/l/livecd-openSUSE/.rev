@@ -2059,4 +2059,13 @@
     <time>1728042526</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="260" vrev="260">
+    <srcmd5>456ecc65c8522be6dfc1273d50d9caf8</srcmd5>
+    <version>unknown</version>
+    <time>1728486339</time>
+    <user>dimstar_suse</user>
+    <comment>- list-x11: Avoid the audio stack
+- list-x11: Ignore xdg-utils-screensaver only (forwarded request 1206554 from favogt)</comment>
+    <requestid>1206556</requestid>
+  </revision>
 </revisionlist>

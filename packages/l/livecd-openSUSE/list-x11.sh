@@ -137,7 +137,14 @@ buildignore libvdpau_nouveau
 
 # Pulls in a lot of libs, only used by libwebkit2gtk/epiphany anyway
 buildignore gstreamer-plugins-bad
-buildignore xdg-utils
+
+# Pulls in perl
+buildignore xdg-utils-screensaver
+
+# No audio stack
+buildignore libpipewire-0_3-0
+buildignore xfce4-pulseaudio-plugin
+#buildignore pipewire-pulseaudio
 
 # Previously required by rest_cd_x11
 install patterns-xfce-xfce_basis

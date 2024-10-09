@@ -635,8 +635,12 @@
     <ignore name="libvdpau_nouveau"/>
     <!-- OBS-IgnorePackage: gstreamer-plugins-bad -->
     <ignore name="gstreamer-plugins-bad"/>
-    <!-- OBS-IgnorePackage: xdg-utils -->
-    <ignore name="xdg-utils"/>
+    <!-- OBS-IgnorePackage: xdg-utils-screensaver -->
+    <ignore name="xdg-utils-screensaver"/>
+    <!-- OBS-IgnorePackage: libpipewire-0_3-0 -->
+    <ignore name="libpipewire-0_3-0"/>
+    <!-- OBS-IgnorePackage: xfce4-pulseaudio-plugin -->
+    <ignore name="xfce4-pulseaudio-plugin"/>
     <package name="patterns-xfce-xfce_basis"/>
     <namedCollection name="xfce_basis"/>
     <package name="evince"/>
