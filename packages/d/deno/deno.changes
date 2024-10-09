@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Oct  9 09:46:54 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- update to version v2.0.0:
+  * fix: use tree-sitter for deno_doc
+  * fix: disable same-origin.html WPT
+  * refactor: remove usage of full_range
+  * fix(ext/node): internal buffer length in readSync
+  * fix(console): missing cause property on non-error objects
+  * fix(lsp): exclude missing import quick fixes with bad resolutions
+  * feat(lsp): add a message when someone runs 'deno lsp' manually
+  * fix(ext/webstorage): make `getOwnPropertyDescriptor` with symbol return `undefined`
+  * feat(ext/crypto): X448 support
+  * refactor: improve node permission checks
+  * chore: enable lock_deno_json_package_json_deps
+  * fix(node): fix worker_threads issues blocking Angular support
+  * tests: enable package_json_node_modules_none
+  * fix(install): surface package.json dependency errors
+  * Revert "feat: warn when using --allow-run with no allow list"
+  * tests: enable specs::run::package_json::invalid_value
+  * fix(npm): root package has peer dependency on itself 
+  * fix(task): use current executable for deno even when not named deno
+  * chore: show expectation diff for wpt tests
+  * fix: don't prompt when using `Deno.permissions.request` with `--no-prompt`
+  * chore: remove custom `bench` profile
+  * fix(ext/crypto): fix identity test for x25519 derive bits
+  * feat(permissions): allow importing from cdn.jsdelivr.net by default
+  * perf: Use -O3 for sui in release builds
+  * fix: enable `Win32_Security` feature in `windows-sys`
+  * fix(install): store tags associated with package in node_modules dir
+  * chore: disable flaky uv_test.js for now
+  * fix(install): compare versions directly to decide whether to create a child node_modules dir for a workspace member
+  * feat(byonm): support `deno run npm:<package>` when package is not in package.json
+  * fix(node): implement libuv APIs needed to support `npm:sqlite3`
+  * Revert "fix(urlpattern): fallback to empty string for undefined group values"
+  * fix(workspace): handle when config has members when specified via --config
+  * fix(no-slow-types): better `override` handling
+  * perf(ext/node): reduce some allocations in require
+
+-------------------------------------------------------------------
+Mon Oct  7 23:26:04 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add bash, fish, and zsh completion subpackages
+
+-------------------------------------------------------------------
 Thu Oct  3 13:21:53 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Remove the following patches:

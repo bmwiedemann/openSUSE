@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        2.0.0~rc10
+Version:        2.0.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  clang
 # needed by `libz-ng-sys` after 1.36.1
 # see: https://build.opensuse.org/package/show/devel:languages:javascript/deno#comment-1808174
 BuildRequires:  cmake
-BuildRequires:  cargo >= 1.68.0
+BuildRequires:  cargo >= 1.80
 BuildRequires:  gn
 BuildRequires:  lld
 BuildRequires:  llvm
@@ -53,6 +53,39 @@ ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 %ifarch %{arm} aarch64
 Patch10:        deno-disable-lto.patch
 %endif
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name}
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name}
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       %{name}
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
 
 %description
 A JavaScript and TypeScript platform built on V8
@@ -87,7 +120,16 @@ export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false 
 %install
 # place deno cli manually (cannot cargo install)
 mkdir -p %{buildroot}%{_bindir}
+export PATH="%{buildroot}%{_bindir}:${PATH}"
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
+
 cp target/release/deno %{buildroot}%{_bindir}
+
+deno completions bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+deno completions fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+deno completions zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
 export PATH="${PATH}:%{buildroot}%{_bindir}"
@@ -97,5 +139,20 @@ deno run tests/testdata/run/002_hello.ts
 %license LICENSE.md
 %doc README.md
 %{_bindir}/%{name}
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
