@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.33
+Version:        2.34
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -29,7 +29,11 @@ Source:         https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
 BuildRequires:  fdupes
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 %if 0%{?suse_version}
 BuildRequires:  libmysqlclient-devel >= 5.6
 BuildRequires:  openldap2-devel
@@ -118,7 +122,11 @@ ready-to-run installation of Gromox.
 %autosetup -p1
 
 %build
-%configure
+%configure \
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+	CC=gcc-12 CXX=g++-12 \
+%endif
+	%nil
 %make_build V=1
 
 %install

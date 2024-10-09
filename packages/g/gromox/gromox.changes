@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 15:20:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.34
+  * php_mapi: cure crash occurring with mapi_getidsfromnames
+  * midb: resolve "inside a readonly TXN" warnings during message
+    deletion
+  * exmdb: emit notifications only after SQL transactions are
+    complete
+  * imap: resolve unstable EXPUNGE observability
+
+-------------------------------------------------------------------
 Tue Oct  1 14:13:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.33
