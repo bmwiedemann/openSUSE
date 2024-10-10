@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:09:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.98:
+  * Added write support for PDF files with huge offsets
+  * Added a number of new Sony LensType values
+  * Require -v4 or higher to output "JPG RST" lines
+  * Patched problem with -fast option when reading HEIC file via a pipe
+  * Patched to avoid hang when reading some corrupted XMP
+
+-------------------------------------------------------------------
 Thu Sep 26 03:32:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.97:
