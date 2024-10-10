@@ -142,4 +142,15 @@
   * Fixed `_check_rc` function.</comment>
     <requestid>1184030</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa8b47a3b73e2d3b07d68e90ade8f417</srcmd5>
+    <version>2.7.1</version>
+    <time>1728591307</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.1:
+  * Updated to latest C-Blosc2 2.15.1.
+  * Fixes SIGKILL issues when using the `blosc2` library in old
+    Intel CPUs.</comment>
+    <requestid>1206736</requestid>
+  </revision>
 </revisionlist>
