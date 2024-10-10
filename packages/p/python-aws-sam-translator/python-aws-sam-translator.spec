@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-aws-sam-translator
-Version:        1.89.0
+Version:        1.91.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -98,7 +98,7 @@ donttest="$donttest test_resolve_intrinsics or test_sar_service_calls or test_sa
 donttest="$donttest test_sar_throttling_doesnt_stop_processing or test_sleep_between_sar_checks or"
 donttest="$donttest test_unexpected_sar_error_stops_processing or test_time_limit_exceeds_between_combined_sar_calls or"
 donttest="$donttest test_is_service_supported_positive_4_ec2"
-%pytest  -k "not ($donttest)"
+PYTHONPATH="${PWD}" %pytest  -k "not ($donttest)"
 %endif
 
 %post

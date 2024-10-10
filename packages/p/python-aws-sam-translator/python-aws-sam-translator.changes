@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct  2 11:15:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.91.0
+  * chore(schema): update by @github-actions in #3626
+  * fix: add retry for statemachine integ test by @godwingrs22 in #3630
+  * Release 1.91.0 (to main) by @aaythapa in #3639
+- from version 1.90.0
+  * chore(schema): update by @github-actions in #3589
+  * Merge main to develop by @aaythapa in #3591
+  * chore(schema): update by @github-actions in #3592
+  * Merge main to develop by @godwingrs22 in #3596
+  * chore(schema): update by @github-actions in #3598
+  * chore: add missing partition to edge config support by @aaythapa in #3605
+  * chore: Upgrade ruff to 0.4.5 by @aahung in #3603
+  * feat: add StepFunctionsCallbackPolicy policy template by @kshyun28 in #3545
+  * fix: Remove ENI manual deletion by @jfuss in #3613
+  * fix: AttributeError: module 'pydantic.v1' has no
+    attribute 'error_wrapper' by @shikha372 in #3611
+  * fix: change endpoint configuration for state machine
+    integ test by @aaythapa in #3614
+  * fix: prevent redundant tags being added to
+    AWS::ApiGatewayV2::Api by @gracelu0 in #3615
+  * chore(schema): update by @github-actions in #3616
+  * Revert "fix: AttributeError: module 'pydantic.v1' has no
+    attribute 'error_wrapper'" by @aaythapa in #3619
+  * fix: exclude breaking pydantic version by @aaythapa in #3620
+  * chore(schema): update by @github-actions in #3621
+  * chore(schema): update by @github-actions in #3623
+  * chore(schema): update by @github-actions in #3625
+  * feat: Support KmsKeyArn for Events
+  * Release 1.90.0 (to main) by @paulhcsun in #3637
+- Set PYTHONPATH="${PWD}" for invoking testsuite
+
+-------------------------------------------------------------------
 Fri May 17 11:26:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.89.0
