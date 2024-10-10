@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:06:04 MDT 2024 - carnold@suse.com
+
+- Update to version 1.54.0 (jsc#PED-8910)
+  * Add detection of Circle Linux (Bella Zhang).
+  * Add support for LoongArch (liuxiang).
+  * Add detection of Kylin (grass-lu).
+  * Add detection of openEuler (Wang Guoquan).
+  * PARTUUID and PARTLABEL are now resolved in guest /etc/fstab.
+  * New APIs findfs_partuuid and findfs_partlabel. These can be
+    used to efficiently look up a filesystem by its GPT partition
+    UUID or label.
+  * Support for the following inactive or infrequently used device
+    types has been removed: Gluster, Sheepdog, TFTP.
+  * Add GOST R34.11-94 message digest algorithm to checksum APIs
+    (Alexey Shabalin).
+  * Allow nbd+unix:// URIs (NBD over Unix domain socket) in
+    guestfish and other places.
+  * Various part_* (partition) APIs related to GPT have been
+    reimplemented to use util-linux sfdisk instead of sgdisk.
+    Util-linux is more widely available, so this reduces
+    dependencies in the common case. One optional API remains that
+    still uses sgdisk. (Thanks Yongkui Guo).
+  * Add cipher suboption to cryptsetup_open (Jonatan Pålsson).
+  * Because of a bug, the part_get_gpt_attributes API could
+    truncate the return value from 64 to 32 bits. This has been
+    fixed.
+  * Libguestfs will now no longer recommend using
+    LIBGUESTFS_BACKEND=direct. This was shown previously when
+    libvirt failed to start the appliance. However it is felt that
+    this now does more harm than good.
+  * Fix generation of virt-customize --chown parameter (Yongkui Guo)
+  * In the appliance, reduce boot time when dhcp isn't needed
+    (Olaf Hering).
+  * A deadlock in the appliance caused by a regression in Linux
+    6.11 has been worked around. The deadlock was also fixed in
+    Linux 6.12.
+- Bug fixes
+  * Fix rare hangs while starting the appliance, at 'echo noop'
+    into /sys/block/{h,s,ub,v}d*/queue/scheduler
+  * Drop dependency from libguestfs -> gdisk
+  * libguestfs inspection does not know about /etc/fstab
+    PARTLABEL=<label>
+  * btrfs related c_api/tests are failing (unable to create quota
+    group: Invalid argument)
+  * Python how-to incorrect exception name
+  * Rust test 410_close_event fails
+
+-------------------------------------------------------------------
 Thu Aug 29 15:06:57 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.6 (jsc#PED-8910)
