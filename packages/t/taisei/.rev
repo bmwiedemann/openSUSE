@@ -126,4 +126,41 @@ and optimizations backported from the v1.5 development tree.
     GameMode integration on Linux.</comment>
     <requestid>1158800</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd4bf82b1e5b884a42c9ebcf3f72fb18</srcmd5>
+    <version>1.4.2</version>
+    <time>1728504721</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.2
+This is a stable maintenance release. It features some bugfixes,
+optimizations, and other improvements backported from the v1.5
+development tree.
+  * Reworked gamepad input handling and configuration:
+  * The free/restricted axis distinction is gone; the joystick
+    always operates in &quot;free&quot; mode.
+  * Added direction snapping functionality to help aid exact
+    movement in cardinal and/or diagonal directions. The snapping
+    angle can be adjusted from 0% (disabled) to 100% (similar to
+    the old &quot;restricted&quot; mode). The snapping angle can also be
+    biased towards cardinals or diagonals.
+  * When the maximum zone is less than or equals dead zone, moving
+    the character will always move at maximum speed (as in the old
+    &quot;restricted&quot; mode).
+  * Most of these settings are now visualized in the options menu
+    and can be tested there.
+  * Changed the default Spell Card (Bomb) and Power Surage gamepad
+    bindings to Left Trigger and Right Trigger respectively.
+  * If autorestart is enabled for spell practice, it will now try
+    to load a quicksave if one exists.
+  * Added a &quot;load quicksave&quot; option to the pause menu in practice
+    modes.
+  * Cutscenes that have been seen before can now be completely
+    skipped.
+  * Added an option to reset the config to last saved values.
+  * Reduced some sprite batching CPU overhead.
+  * Optimized rendering of scenes with many lasers.
+  * Optimized loading of webp files.
+  * Optimized various math routines.</comment>
+    <requestid>1206370</requestid>
+  </revision>
 </revisionlist>

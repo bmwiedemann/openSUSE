@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Oct 08 13:59:39 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.32.1:
+  * Telegraf v1.32.1
+  * fix: Correct Changelog version number
+  * Telegraf 1.32.1
+  * Update changelog for 1.32.1
+  * Update build_version.txt for 1.32.1
+  * fix(agent): Fix buffer not flushing if all metrics are written (#15969)
+  * chore(deps): Bump cloud.google.com/go/monitoring from 1.20.2 to 1.21.1 (#15932)
+  * test(inputs.postgresql): Fixing integration test (#15986)
+  * fix(inputs.influxdb_v2_listener): Fix concurrent read/write dict (#15982)
+  * fix(processors.aws_ec2): Remove leading slash and cancel worker only if it exists (#15965)
+  * test(compilation): Fixing test compilation (#15978)
+  * test(outputs.sql): Fix failing integration test by excluding options (#15972)
+  * test(common.socket): Increase margin for memleak test to avoid flaky tests (#15961)
+  * fix(inputs.cisco_telemetry_mdt): Handle NXOS DME subtree telemetry format (#15923)
+  * chore(outputs.remotefile): Deprecate trace option (#15970)
+  * chore(agent): Fix typo in service install command (#15967)
+  * chore(inputs.modbus): Add more debug information for request grouping (#15959)
+  * fix(inputs.vsphere): Add tags to VSAN ESA disks (#15960)
+  * chore(deps): Bump github.com/prometheus/common from 0.55.0 to 0.60.0 (#15962)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/feature/ec2/imds from 1.16.12 to 1.16.14 (#15957)
+  * chore(deps): Bump golang.org/x/oauth2 from 0.21.0 to 0.23.0 (#15955)
+  * chore(linters): Enable `import-alias-naming` and `redundant-import-alias` rules for revive (#15836)
+  * chore(deps): Bump github.com/srebhan/protobufquery from 0.0.0-20230803132024-ae4c0d878e55 to 1.0.1 (#15954)
+  * chore(deps): Bump k8s.io/apimachinery from 0.30.1 to 0.31.1 (#15933)
+  * fix(config): Correctly print removal version info (#15937)
+  * chore(deps): Bump github.com/boschrexroth/ctrlx-datalayer-golang from 1.3.0 to 1.3.1 (#15931)
+  * chore(deps): Bump github.com/prometheus/client_golang from 1.20.3 to 1.20.4 (#15930)
+  * chore(deps): Bump go.mongodb.org/mongo-driver from 1.16.0 to 1.17.0 (#15929)
+  * fix(parsers.avro): Add mutex to cache access (#15921)
+  * chore(inputs): Remove deprecated options from sample config (#15872)
+  * fix(inputs.consul): Move config checking to Init method (#15907)
+  * chore(linters): Enable `comment-spacings` rule for revive (#15914)
+  * chore(deps): Bump github.com/p4lang/p4runtime from 1.3.0 to 1.4.0 (#15903)
+  * fix(inputs.amqp_consumer): NACKing messages on non-delivery related errors (#15796)
+  * chore(deps): Bump github.com/harlow/kinesis-consumer from v0.3.6-0.20240606153816-553e2392fdf3 to v0.3.6-0.20240916192723-43900507c911 (#15890)
+  * chore(deps): Bump modernc.org/sqlite from 1.32.0 to 1.33.1 (#15901)
+  * chore(deps): Bump golang.org/x/mod from 0.19.0 to 0.21.0 (#15902)
+  * chore(deps): Bump github.com/netsampler/goflow2/v2 from 2.1.5 to 2.2.1 (#15904)
+  * chore(deps): Bump github.com/prometheus/client_golang from 1.20.2 to 1.20.3 (#15905)
+  * fix(common.http): Keep timeout after creating oauth client (#15900)
+  * chore: Fix linter findings for `revive:comment-spacings` (part 3) (#15898)
+  * chore: Fix linter findings for `revive:comment-spacings` (part 2) (#15897)
+  * chore: Fix linter findings for `revive:comment-spacings` (part 1) (#15896)
+  * chore(linters): Fix findings found by `testifylint`: `go-require` for`instrumental` and parsers/processors (#15887)
+  * chore(linters): Enable `max-public-structs` rule for revive (#15895)
+  * chore(output.kinesis): Log kinesis consumer events (#15843)
+  * chore: Update go to v1.23.1 (#15894)
+  * chore: Fix linter findings for revive:max-public-structs in plugins/inputs/[t-z]* and rest (#15879)
+  * chore: Fix linter findings for revive:max-public-structs in plugins/inputs/[n-s]* (#15878)
+  * test(testutil): Fix value comparison (#15886)
+  * chore(outputs.amqp): Remove deprecated options from sample config (#15873)
+  * chore: Fix linter findings for `revive:enforce-repeated-arg-type-style` in `plugins/inputs/[a-g]*` (#15849)
+  * chore: Fix linter findings for `revive:enforce-repeated-arg-type-style` in `plugins/inputs/[h-n]*` (#15850)
+  * chore(deps): Bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.13.0 to 1.14.0 (#15862)
+  * chore(linters): Enable `get-return` rule for revive (#15841)
+  * chore(aggregators): Comment out default values in sample configs (#15864)
+  * chore: Fix linter findings for `revive:enforce-repeated-arg-type-style` in `plugins/inputs/[o-z]*` (#15857)
+  * chore: Fix linter findings for `revive:max-public-structs` in `plugins/inputs/[a-n]*` (#15858)
+  * chore(deps): Bump github.com/snowflakedb/gosnowflake from 1.10.0 to 1.11.1 (#15860)
+  * chore(cmd): Align plugin deprecation messages (#15867)
+  * chore: Fix linter findings for `revive:enforce-repeated-arg-type-style` in `plugins/outputs` and `plugins/parsers` (#15847)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/dynamodb from 1.34.4 to 1.34.9 (#15859)
+  * chore(deps): Bump golangci-lint from v1.60.3 to v1.61.0 (#15856)
+  * chore(deps): Bump golang.org/x/term from 0.23.0 to 0.24.0 (#15861)
+  * chore(deps): Bump github.com/Azure/azure-kusto-go from 0.15.3 to 0.16.1 (#15863)
+
+-------------------------------------------------------------------
 Mon Sep 09 22:52:26 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.32.0:

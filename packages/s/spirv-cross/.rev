@@ -119,4 +119,12 @@
     <comment>Replace blocked SR</comment>
     <requestid>1161664</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86e18be6b14f653908f4fabdcae9ef83</srcmd5>
+    <version>1.3.296.0</version>
+    <time>1728504730</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.296.0</comment>
+    <requestid>1206375</requestid>
+  </revision>
 </revisionlist>

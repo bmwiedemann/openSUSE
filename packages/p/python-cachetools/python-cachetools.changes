@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:57:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * TTLCache.expire() returns iterable of expired (key, value)
+    pairs.
+
+-------------------------------------------------------------------
 Tue Apr  2 13:10:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.3:

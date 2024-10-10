@@ -23,29 +23,29 @@
 %define cryptolink_sover 50
 %define d2srv_sover 46
 %define database_sover 61
-%define dhcppp_sover 89
+%define dhcppp_sover 90
 %define dhcp_ddns_sover 56
-%define dhcpsrv_sover 108
+%define dhcpsrv_sover 109
 %define dnspp_sover 56
 %define eval_sover 69
 %define exceptions_sover 33
-%define hooks_sover 97
+%define hooks_sover 98
 %define http_sover 71
 %define log_sover 61
-%define mysql_sover 69
-%define pgsql_sover 69
+%define mysql_sover 70
+%define pgsql_sover 70
 %define process_sover 72
 %define stats_sover 41
 %define tcp_sover 18
 %define util_io_sover 0
 %define util_sover 84
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1600
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -59,7 +59,9 @@ Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 Source3:        kea.keyring
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
+%if %{with regen_files}
 BuildRequires:  bison >= 3.3
+%endif
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
@@ -75,7 +77,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
 %sysusers_requires
 Suggests:       %name-hooks = %version
-%if 0%{with regen_files}
+%if %{with regen_files}
 BuildRequires:  flex
 %endif
 %if 0%{?suse_version} >= 1500
@@ -357,7 +359,7 @@ export FREERADIUS_DICTIONARY=""
 autoreconf -fi
 %configure \
 	--disable-rpath --disable-static \
-%if 0%{with regen_files}
+%if %{with regen_files}
 	--enable-generate-docs --enable-generate-parser \
 %endif
 	--enable-logger-checks \

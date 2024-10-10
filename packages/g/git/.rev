@@ -2816,4 +2816,41 @@ git 2.12.3
     <comment></comment>
     <requestid>1202213</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>809aa64a0a54054f5f3e1cc9bf17fab6</srcmd5>
+    <version>2.47.0</version>
+    <time>1728504216</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.47.0:
+  * https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.47.0.txt
+  * Many Porcelain commands that internally use the merge machinery
+    were taught to consistently honor the diff.algorithm
+    configuration.
+ * A few descriptions in &quot;git show-ref -h&quot; have been clarified.
+ * A 'P' command to &quot;git add -p&quot; that passes the patch hunk to the
+   pager has been added.
+ * &quot;git grep -W&quot; omits blank lines that follow the found function at
+   the end of the file, just like it omits blank lines before the next
+   function.
+ * The value of http.proxy can have &quot;path&quot; at the end for a socks
+   proxy that listens to a unix-domain socket, but we started to
+   discard it when we taught proxy auth code path to use the
+   credential helpers, which has been corrected.
+ * The code paths to compact multiple reftable files have been updated
+   to correctly deal with multiple compaction triggering at the same
+   time.
+ * Support to specify ref backend for submodules has been enhanced.
+ * &quot;git svn&quot; has been taught about svn:global-ignores property
+   recent versions of Subversion has.
+ * The default object hash and ref backend format used to be settable
+   only with explicit command line option to &quot;git init&quot; and
+   environment variables, but now they can be configured in the user's
+   global and system wide configuration.
+ * &quot;git send-email&quot; learned &quot;--translate-aliases&quot; option that reads
+   addresses from the standard input and emits the result of applying
+   aliases on them to the standard output.
+ * 'git for-each-ref' learned a new &quot;--format&quot; atom to find the branch
+   that the history leading to a given commit &quot;%(is-base:&lt;commit&gt;)&quot; is</comment>
+    <requestid>1206497</requestid>
+  </revision>
 </revisionlist>

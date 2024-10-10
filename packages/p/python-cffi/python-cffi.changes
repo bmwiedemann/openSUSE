@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:36:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.1:
+  * Fix failing distutils.msvc9compiler imports under Windows (#118).
+  * ffibuilder.emit_python_code() and ffibuiler.emit_c_code()
+    accept file-like objects (#115).
+  * ffiplatform calls are bypassed by ffibuilder.emit_python_code()
+    and ffibuilder.emit_c_code() (#81).
+
+-------------------------------------------------------------------
 Sat Aug 31 12:39:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.0:

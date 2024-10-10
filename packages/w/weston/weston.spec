@@ -18,8 +18,8 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   13
-Version:        13.0.1
+%define major   14
+Version:        14.0.0
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -29,6 +29,7 @@ URL:            https://wayland.freedesktop.org/
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz.sig
+Patch1:         wsp-deps.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel >= 2.27
@@ -48,6 +49,7 @@ BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(lcms2) >= 2.9
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput) >= 0.8.0

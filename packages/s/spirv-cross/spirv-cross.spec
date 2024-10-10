@@ -19,7 +19,7 @@
 %define lname libspirv-cross-c-shared0
 %define __builder ninja
 Name:           spirv-cross
-Version:        1.3.280.0
+Version:        1.3.296.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT

@@ -432,4 +432,17 @@
   py313-use-hashpointer.patch (upstream)</comment>
     <requestid>1198079</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5cec4d410d2896698d13e1a29f9e52be</srcmd5>
+    <version>1.17.1</version>
+    <time>1728504206</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17.1:
+  * Fix failing distutils.msvc9compiler imports under Windows (#118).
+  * ffibuilder.emit_python_code() and ffibuiler.emit_c_code()
+    accept file-like objects (#115).
+  * ffiplatform calls are bypassed by ffibuilder.emit_python_code()
+    and ffibuilder.emit_c_code() (#81).</comment>
+    <requestid>1206446</requestid>
+  </revision>
 </revisionlist>

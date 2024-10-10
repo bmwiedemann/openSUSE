@@ -207,4 +207,14 @@
   * Update CI environment.</comment>
     <requestid>1164117</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2b0558f4d4ac0d3b0dd0693cf74c77bb</srcmd5>
+    <version>5.5.0</version>
+    <time>1728504205</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5.0:
+  * TTLCache.expire() returns iterable of expired (key, value)
+    pairs.</comment>
+    <requestid>1206442</requestid>
+  </revision>
 </revisionlist>

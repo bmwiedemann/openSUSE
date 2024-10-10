@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 14:33:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- add the normalized provides for perl(FCGI) until auto provides is
+  fixed
+
+-------------------------------------------------------------------
 Thu Jun 13 08:49:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename perl-FastCGI subpackage to perl-FCGI: adjust the package
@@ -60,7 +66,7 @@ Tue Mar 27 08:35:39 UTC 2012 - cfarrell@suse.com
   SPDX.org. Fedora tracks this as OML.
 
 -------------------------------------------------------------------
-Wed Dec 21 16:14:12 UTC 2011 - mrueckert@suse.com
+Wed Dec 21 16:14:12 UTC 2011 - mrueckert@suse.de
 
 - added FastCGI-fix_deprecated_api.patch: (bnc#735882)
   Fixes an issue where CGI.pm received CGI variables from previous

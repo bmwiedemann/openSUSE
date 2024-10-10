@@ -48,6 +48,10 @@ Patch2:         suse-no-epoch.patch
 #
 #PATCH-FIX-UPSTREAM: do not fail if which does not exist
 Patch3:         do-not-require-which.patch
+#PATCH-FIX-UPSTREAM: fix broken %%ant, %%jar, %%javadoc and %%javac commands
+Patch4:         fix-broken-commands.patch
+#PATCH-FIX-UPSTREAM Remove pointless assignment if %%java_home is unset
+Patch5:         remove-pointless-assignment.patch
 
 BuildRequires:  fdupes
 BuildRequires:  perl

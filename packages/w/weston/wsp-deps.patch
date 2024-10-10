@@ -1,0 +1,48 @@
+From f86ff8c07d9951672cee089ad626eb0898815bf0 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 8 Oct 2024 19:18:24 +0200
+Subject: [PATCH] build: insert missing wayland-server-protocol dependency
+References: https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1623
+
+A new build error sprung up in weston-14 compared to 13.0.0.
+Fix it.
+
+FAILED: tests/liblib_lcms_util.a.p/lcms_util.c.o
+cc -Itests/liblib_lcms_util.a.p -Itests -I../tests -I. -I.. -Iinclude
+-I../include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall
+-Winvalid-pch -Wextra -Wpedantic -std=gnu99 -Wmissing-prototypes
+-Wno-unused-parameter -Wno-shift-negative-value
+-Wno-missing-field-initializers -Wno-pedantic -Wundef
+-fvisibility=hidden -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3
+-fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables
+-fstack-clash-protection -Werror=return-type -flto=auto -g -fPIC -MD
+-MQ tests/liblib_lcms_util.a.p/lcms_util.c.o -MF
+tests/liblib_lcms_util.a.p/lcms_util.c.o.d -o
+tests/liblib_lcms_util.a.p/lcms_util.c.o -c ../tests/lcms_util.c
+In file included from ../tests/lcms_util.c:35:
+../include/libweston/matrix.h:33:10: fatal error:
+wayland-server-protocol.h: No such file or directory
+
+   33 | #include <wayland-server-protocol.h>
+
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+---
+ tests/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 45b475c3..f5f34b2b 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -74,7 +74,7 @@ lib_lcms_util = static_library(
+ 	[ 'lcms_util.c' ],
+ 	include_directories: common_inc,
+ 	dependencies: [
+-		dep_lcms2, dep_libm
++		dep_lcms2, dep_libm, dep_wayland_server
+ 	],
+ 	build_by_default: false,
+ 	install: false,
+-- 
+2.46.1
+

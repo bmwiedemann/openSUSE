@@ -364,4 +364,12 @@ join Staging:E</comment>
     <comment>- Update to release 2024.3</comment>
     <requestid>1189190</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6167f1c381feaa204d2daf46b3d0f11d</srcmd5>
+    <version>2024.4~rc1</version>
+    <time>1728504200</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2024.4~rc1</comment>
+    <requestid>1206398</requestid>
+  </revision>
 </revisionlist>

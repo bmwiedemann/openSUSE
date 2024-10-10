@@ -346,4 +346,12 @@
     <comment>- Updateto release SDK-1.3.290.0</comment>
     <requestid>1189189</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d6d99a3aafc9236c1c30a8b95436b412</srcmd5>
+    <version>1.6.4+sdk296</version>
+    <time>1728504190</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.6.4+sdk296</comment>
+    <requestid>1206373</requestid>
+  </revision>
 </revisionlist>

@@ -242,4 +242,13 @@ Use SUSE- proprietary prefix until license is accepted upstream by SPDX.org. Fed
   name to the actual perl module name.</comment>
     <requestid>1180339</requestid>
   </revision>
+  <revision rev="33" vrev="176">
+    <srcmd5>8573fd45428587a4d7c7e5084388abf9</srcmd5>
+    <version>2.4.0</version>
+    <time>1728504188</time>
+    <user>anag+factory</user>
+    <comment>- add the normalized provides for perl(FCGI) until auto provides is
+  fixed</comment>
+    <requestid>1206336</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  9 01:15:23 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add explicit pkgconfig(librsvg-2.0) BuildRequires: Needed support
+  svg file (bsc#1222655).
+
+-------------------------------------------------------------------
 Mon Jun 17 06:45:58 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.0:

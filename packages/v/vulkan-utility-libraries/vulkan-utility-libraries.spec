@@ -16,9 +16,9 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_3_290
+%define lname libVulkanLayerSettings-1_3_296
 Name:           vulkan-utility-libraries
-Version:        1.3.290
+Version:        1.3.296
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Utility-Libraries
 Source:         https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Patch1:         shared.diff
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
-BuildRequires:  gcc11-c++
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  c++_compiler
 %endif

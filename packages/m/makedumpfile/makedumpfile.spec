@@ -97,9 +97,9 @@ make %{?_smp_mflags} eppic_makedumpfile.so %{?ncurses_make_opts}
 
 %install
 install -D -m 0755 makedumpfile %{buildroot}%{_bindir}/makedumpfile
-install -D -m 0755 makedumpfile-R.pl %{buildroot}%{_bindir}/makedumpfile-R.pl
 install -D -m 0644 makedumpfile.8 %{buildroot}%{_mandir}/man8/makedumpfile.8
 install -D -m 0644 makedumpfile.conf.5 %{buildroot}%{_mandir}/man5/makedumpfile.conf.5
+install -D -m 0644 makedumpfile-R.pl %{buildroot}%{_datadir}/%{name}-%{version}/makedumpfile-R.pl
 %if %{build_eppic}
 install -D -m 0755 eppic_makedumpfile.so %{buildroot}%{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts
@@ -123,10 +123,11 @@ install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ epp
 %doc README IMPLEMENTATION
 %{_mandir}/man?/*
 %{_bindir}/*
+%dir %{_datadir}/%{name}-%{version}
+%{_datadir}/%{name}-%{version}/makedumpfile-R.pl
 %if %{build_eppic}
 %dir %{_libdir}/%{name}-%{version}
 %{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
-%dir %{_datadir}/%{name}-%{version}
 %{_datadir}/%{name}-%{version}/eppic_scripts/
 %endif
 

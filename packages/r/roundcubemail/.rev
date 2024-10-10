@@ -793,4 +793,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment>update to 1.6.9</comment>
     <requestid>1198637</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>d090d55ba1194732ff5a825ce3b13f2c</srcmd5>
+    <version>1.6.9</version>
+    <time>1728504719</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206355</requestid>
+  </revision>
 </revisionlist>

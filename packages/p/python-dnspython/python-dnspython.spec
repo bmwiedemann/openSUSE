@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dnspython%{psuffix}
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
@@ -41,12 +41,14 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # dnssec
-Requires:       python-cryptography
+Requires:       python-cryptography >= 43.0
 Requires:       python-httpx
 # idna
 Requires:       python-idna >= 2.1
 # HTTP/2 support in httpx
 Recommends:     python-h2
+# quic
+Recommends:     python-aioquic
 # trio
 Suggests:       python-trio >= 0.14.0
 BuildArch:      noarch
@@ -55,8 +57,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module cryptography}
 # BuildRequires:  %%{python_module curio >= 1.2}
 BuildRequires:  %{python_module h2}
-# doh:
+# doh
 BuildRequires:  %{python_module httpx}
+# quic
+BuildRequires:  %{python_module aioquic}
 # idna
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pytest}
@@ -111,6 +115,17 @@ chmod -x dns/win32util.py
 
 %if %{with test}
 %check
+# remove tests that require a working resolver and external DNS resolution
+rm tests/test_async.py
+rm tests/test_doh.py
+rm tests/test_resolver.py
+rm tests/test_resolver_override.py
+# remove dnssec related tests since those require an openssl version with
+# support for supports "ECDSA with deterministic signature (RFC 6979)"
+# https://github.com/pyca/cryptography/pull/10369
+# TODO: reenable once TW ships openssl >= 3.2.0
+rm tests/test_dnssec.py
+rm tests/test_dnssecalgs.py
 %pytest
 %endif
 

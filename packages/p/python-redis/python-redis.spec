@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-redis
-Version:        5.0.8
+Version:        5.1.1
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
@@ -61,9 +61,10 @@ cp %SOURCE1 .
 %patch -P 0 -p1
 %endif
 
-# This test passes locally but fails in obs with different
+# These tests pass locally but fail in obs with different
 # environment, like ALP build...
 rm tests/test_commands.py*
+rm tests/test_asyncio/test_commands.py
 # The openSUSE redis json, bloom, ts and
 # graph are missing in the repos
 rm tests/test_bloom.py
@@ -84,7 +85,7 @@ rm tests/test_timeseries.py
 # We just start two of them locally
 # master
 # https://github.com/redis/redis/pull/9920
-%{_sbindir}/redis-server --version | grep ' v=7\.' && redis7args="--enable-debug-command yes --enable-module-command yes"
+%{_sbindir}/redis-server --version | grep ' v=[78]\.' && redis7args="--enable-debug-command yes --enable-module-command yes"
 %{_sbindir}/redis-server --port 6379 --save "" $redis7args &
 victims="$!"
 trap "kill $victims || true" EXIT

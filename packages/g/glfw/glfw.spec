@@ -16,6 +16,12 @@
 #
 
 
+# html docs need doxygen >= 1.9.8 which isn't available on Leap
+%if 0%{?suse_version} >= 1600
+%bcond_without html_docs
+%else
+%bcond_with html_docs
+%endif
 # On TW and ALP, build with geany by default
 %if 0%{?suse_version} >= 1600
 %bcond_without geany
@@ -31,11 +37,13 @@ License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://www.glfw.org/
 Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/glfw-%{version}.tar.gz
-Source99:       glfw-rpmlintrc
 # PATCH-FIX-OPENSUSE docs-remove-footer.patch antonio.teixeira@suse.com -- Custom footer for html docs includes build date and time. Use default footer instead.
 Patch1:         docs-remove-footer.patch
 BuildRequires:  cmake >= 3.0
-BuildRequires:  doxygen
+%if %{with html_docs}
+BuildRequires:  doxygen >= 1.9.8
+BuildRequires:  fdupes
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -62,7 +70,7 @@ reading keyboard, time, mouse and joystick input.
 Summary:        Framework for OpenGL application development
 Group:          System/Libraries
 Provides:       libglfw%{sover}-wayland = %{version}
-Obsoletes:      libglfw%{sover}-wayland <= %{version}
+Obsoletes:      libglfw%{sover}-wayland < %{version}
 
 %description -n libglfw%{sover}
 GLFW is a framework for OpenGL application development. It is a
@@ -83,6 +91,7 @@ single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
+%if %{with html_docs}
 %package doc
 Summary:        Documentation for GLFW, an OpenGL application framework
 Group:          Documentation/HTML
@@ -95,6 +104,7 @@ operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
 This subpackage contains GLFW's documentation in html format.
+%endif
 
 %prep
 %autosetup -p1 -n glfw-%{version}
@@ -117,6 +127,9 @@ geany -c geany_config -g glfw.c.tags $(find src \( ! -name CMakeFiles \) -type f
 %install
 %cmake_install
 
+%if %{with html_docs}
+%fdupes -s %{buildroot}/%{_docdir}/%{name}
+%endif
 %if %{with geany}
 # install geany tags
 install -d %{buildroot}/%{_datadir}/geany/tags/
@@ -141,7 +154,9 @@ install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %{_datadir}/geany/*
 %endif
 
+%if %{with html_docs}
 %files doc
 %{_docdir}/%{name}/
+%endif
 
 %changelog

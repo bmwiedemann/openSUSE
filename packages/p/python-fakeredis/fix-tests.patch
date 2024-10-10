@@ -1,0 +1,29 @@
+From b6c0140e17fb571906251e0fb300a52735427bf7 Mon Sep 17 00:00:00 2001
+From: Daniel M <daniel.maruani@gmail.com>
+Date: Fri, 27 Sep 2024 14:14:53 -0400
+Subject: [PATCH] fix:tests for redis 5.1.0
+
+---
+ test/test_asyncredis.py               |  5 +--
+ test/test_mixins/test_set_commands.py | 50 +++++++++++++++++----------
+ 2 files changed, 35 insertions(+), 20 deletions(-)
+
+diff --git a/test/test_asyncredis.py b/test/test_asyncredis.py
+index 9f623d38..c98bb515 100644
+--- a/test/test_asyncredis.py
++++ b/test/test_asyncredis.py
+@@ -165,11 +165,12 @@ async def test_failed_script_error7(self, async_redis):
+             await async_redis.eval('return redis.call("ZCOUNT", KEYS[1])', 1, "foo")
+ 
+ 
++@fake_only
+ @testtools.run_test_if_redispy_ver("gte", "5.1")
+ async def test_repr_redis_51(async_redis: redis.asyncio.Redis):
+     assert re.fullmatch(
+-        r"<redis.asyncio.connection.ConnectionPool("
+-        r"<fakeredis.aioredis.FakeConnection(server=<fakeredis._server.FakeServer object at .*>,db=0)>)>",
++        r"<redis.asyncio.connection.ConnectionPool\("
++        r"<fakeredis.aioredis.FakeConnection\(server=<fakeredis._server.FakeServer object at .*>,db=0\)>\)>",
+         repr(async_redis.connection_pool),
+     )
+ 

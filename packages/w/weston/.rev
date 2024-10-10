@@ -287,4 +287,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to release 13.0.1</comment>
     <requestid>1169919</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d16c69437104752fe0e3c25f1ac24beb</srcmd5>
+    <version>14.0.0</version>
+    <time>1728504734</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 14</comment>
+    <requestid>1206381</requestid>
+  </revision>
 </revisionlist>

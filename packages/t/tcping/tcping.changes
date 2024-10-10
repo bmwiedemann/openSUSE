@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct  6 12:57:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * add -h flag to show help.
+  * add -D flag to show time in output lines.
+  * Refactor Makefile: Split build section into smaller, distinct
+    targets.
+  * update flag section of README to include show-failures-only.
+  * Refactor/minor cleanups.
+  * update Makefile version and tidy go modules.
+  * display second instead of seconds on probe failures.
+- Update to version 2.5.0
+  * new feature: add -show-failures-only flag to omit printing
+    successful probes.
+  * fix: extra precision for seconds calculation when the value is
+    under a second.
+  * refactor: migrate to a pure-Go sqlite package.
+  * refactor: user flag handlers.
+  * cleanup: user input functions.
+
+-------------------------------------------------------------------
 Sun Nov 12 20:34:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:

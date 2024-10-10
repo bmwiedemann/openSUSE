@@ -32,12 +32,15 @@ Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/c
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
-BuildRequires:  doctest-devel
 BuildRequires:  fmt-devel
+%if %{?suse_version} > 1600
+BuildRequires:  doctest-devel
+%endif
 %if %{?suse_version} > 1500
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-# SLE requires gcc11 for std::filesystem
+BuildRequires:  pkgconfig(cpp-httplib)
+# SLE15 requires gcc11 for std::filesystem
 %else
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
@@ -69,6 +72,9 @@ export CC=gcc-11 CXX=g++-11
 %endif
 %cmake \
   -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+  -DENABLE_TESTING=OFF \
+%endif
 %if !%{with hiredis}
   -DREDIS_STORAGE_BACKEND=OFF \
 %endif

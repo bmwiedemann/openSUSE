@@ -73,6 +73,7 @@ Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Provides:       perl-FastCGI = %{version}
 Obsoletes:      perl-FastCGI <= %{version}
+Provides:       perl(FCGI) = 0.670.0
 %if 0%{?suse_version} < 1120
 Requires:       perl >= 5.8.0
 %else

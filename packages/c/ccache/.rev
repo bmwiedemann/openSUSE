@@ -841,4 +841,13 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment>- use unversioned gcc also for SLE16</comment>
     <requestid>1200662</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>9ca50af2a4bfa4a5d45af78bcc1933b3</srcmd5>
+    <version>4.10.2</version>
+    <time>1728504207</time>
+    <user>anag+factory</user>
+    <comment>- avoid optional dependency on doctest on SLE16 and older
+- unbundle cpp-httplib for new enough distributions</comment>
+    <requestid>1206454</requestid>
+  </revision>
 </revisionlist>

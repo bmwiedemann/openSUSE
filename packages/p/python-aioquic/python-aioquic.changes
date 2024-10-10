@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:43:08 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.2.0
+  * Ensure no data is sent after a stream reset.
+  * Make H3Connection’s send_datagram() and send_push_promise() methods 
+    raise an InvalidStreamTypeError exception if an invalid stream ID 
+    is specified.
+  * Fix utcnow() deprecation warning on Python 3.12 by using 
+    cryptography 42.0 and timezone-aware datetime instances when 
+    validating TLS certificates.
+  * Perform more extensive HTTP/3 header validation in H3Connection.
+  * Enable SHA-384 based signature algorithms and SECP384R1 key exchange.
+  * Add support for QUIC Version 2
+  * Drop support for draft QUIC versions which were obsoleted by RFC 9000.
+  * Allow asyncio clients to make efficient use of 0-RTT by passing 
+    wait_connected=False to connect().
+- Drop merged support-service-identity-24.patch
+
+-------------------------------------------------------------------
 Thu Jan 25 04:25:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch cryptography.patch:

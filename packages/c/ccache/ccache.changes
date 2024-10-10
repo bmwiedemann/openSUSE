@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:02:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- avoid optional dependency on doctest on SLE16 and older
+- unbundle cpp-httplib for new enough distributions
+
+-------------------------------------------------------------------
 Thu Sep 12 14:07:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use unversioned gcc also for SLE16

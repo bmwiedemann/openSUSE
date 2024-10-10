@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:21:38 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- SpaceMaker: make it possible to generate physical volumes for
+  several volume groups (needed by gh#agama-project/agama#1655).
+- 5.0.20
+
+-------------------------------------------------------------------
 Mon Sep 23 11:27:55 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Use the newer exfatprogs instead of exfat-utils (bsc#1187854)

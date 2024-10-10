@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.290
+Version:        1.3.296
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -26,16 +26,16 @@ URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.7.12
-%if 0%{?suse_version} >= 1599
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %else
-BuildRequires:  gcc11-c++
+BuildRequires:  c++_compiler
 %endif
 BuildRequires:  glslang-devel >= 14.3
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.1+sdk290
+BuildRequires:  spirv-headers >= 1.6.4+sdk296
 BuildRequires:  spirv-tools-devel >= 2024.3
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
@@ -63,10 +63,10 @@ cat >gxx <<-EOF
 	#!/bin/sh
 	exec g++ "\$@" -lpthread
 EOF
-%if 0%{?suse_version} < 1599
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
 cat >gxx <<-EOF
 	#!/bin/sh
-	exec g++-11 "\$@" -lpthread
+	exec g++-12 "\$@" -lpthread
 EOF
 %endif
 chmod a+x gxx

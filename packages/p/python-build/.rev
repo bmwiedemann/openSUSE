@@ -151,4 +151,12 @@
 - Add remove-unused-import.patch to work with importlib_metadata</comment>
     <requestid>1183987</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dd0e0959a76e640d85911eb70026ed84</srcmd5>
+    <version>1.2.2</version>
+    <time>1728504215</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206482</requestid>
+  </revision>
 </revisionlist>

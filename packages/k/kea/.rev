@@ -130,4 +130,12 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183193</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3f855a4051f4766c2f4ff67d86e26b37</srcmd5>
+    <version>2.6.1</version>
+    <time>1728504717</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.6.1</comment>
+    <requestid>1206346</requestid>
+  </revision>
 </revisionlist>

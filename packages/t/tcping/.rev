@@ -51,4 +51,12 @@
   * refactor: Debian packaging instructions</comment>
     <requestid>1125281</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>145a465b47a6d4a8e189e767eeb11f03</srcmd5>
+    <version>2.6.0</version>
+    <time>1728504701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206327</requestid>
+  </revision>
 </revisionlist>

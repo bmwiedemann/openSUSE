@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:57:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.13.2
+  cpp target
+  * [Cpp] Use target_include_dirs for cmake targets (target:cpp)
+  * Update C++ documentation to state that C++17 is required (comp:doc, target:cpp)
+  go target
+  * fix go-target.md, remove duplicate 'get' (comp:doc, target:go)
+  javascript target
+  * fix(javascript): fix types not being recognized for NodeNext module resolution (target:javascript)
+  * [Javascript] Fix broken package entrypoints (target:javascript, type:cleanup)
+  python3 target
+  * name 'state' conflict with Python3 runtime. (target:python3)
+
+-------------------------------------------------------------------
 Thu Mar  7 11:43:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

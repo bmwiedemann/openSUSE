@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:41:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.296
+  * Use ASM unknown function trampolines on GN
+  * Fix vkCreateSharedSwapchainsKHR not unwrapping handles correctly
+  * Remove unused VkIcdSurface struct members
+  * Add VK_IMPLICIT_LAYER_APTH & VK_ADD_IMPLICIT_LAYER_PATH env-vars
+  * Fix windows_read_sorted_physical_devices buffer overrun
+
+-------------------------------------------------------------------
 Tue Jul 23 05:06:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.290

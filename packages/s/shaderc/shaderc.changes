@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:02:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.3
+  * During HLSL compilation or any optimizing compile, do not
+    tell the validator to use "friendly names". This should save
+    time spent in the initial validation step of the optimization
+    recipe.
+  * Adapt test golden results to Glslang changes which reorder
+    decorations by object enum value.
+
+-------------------------------------------------------------------
 Thu May 16 12:10:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.1

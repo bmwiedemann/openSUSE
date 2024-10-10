@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-antlr4-python3-runtime
-Version:        4.13.1
+Version:        4.13.2
 Release:        0
 Summary:        ANTLR runtime for Python 3
 License:        BSD-3-Clause

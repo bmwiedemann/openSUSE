@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Oct  9 10:34:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.47.0:
+  * https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.47.0.txt
+  * Many Porcelain commands that internally use the merge machinery
+    were taught to consistently honor the diff.algorithm
+    configuration.
+ * A few descriptions in "git show-ref -h" have been clarified.
+ * A 'P' command to "git add -p" that passes the patch hunk to the
+   pager has been added.
+ * "git grep -W" omits blank lines that follow the found function at
+   the end of the file, just like it omits blank lines before the next
+   function.
+ * The value of http.proxy can have "path" at the end for a socks
+   proxy that listens to a unix-domain socket, but we started to
+   discard it when we taught proxy auth code path to use the
+   credential helpers, which has been corrected.
+ * The code paths to compact multiple reftable files have been updated
+   to correctly deal with multiple compaction triggering at the same
+   time.
+ * Support to specify ref backend for submodules has been enhanced.
+ * "git svn" has been taught about svn:global-ignores property
+   recent versions of Subversion has.
+ * The default object hash and ref backend format used to be settable
+   only with explicit command line option to "git init" and
+   environment variables, but now they can be configured in the user's
+   global and system wide configuration.
+ * "git send-email" learned "--translate-aliases" option that reads
+   addresses from the standard input and emits the result of applying
+   aliases on them to the standard output.
+ * 'git for-each-ref' learned a new "--format" atom to find the branch
+   that the history leading to a given commit "%(is-base:<commit>)" is
+   likely based on.
+ * The command line prompt support used to be littered with bash-isms,
+   which has been corrected to work with more shells.
+ * Support for the RUNTIME_PREFIX feature has been added to z/OS port.
+ * "git send-email" learned "--mailmap" option to allow rewriting the
+   recipient addresses.
+ * "git mergetool" learned to use VSCode as a merge backend.
+ * "git pack-redundant" has been marked for removal in Git 3.0.
+ * One-line messages to "die" and other helper functions will get LF
+   added by these helper functions, but many existing messages had an
+   unnecessary LF at the end, which have been corrected.
+ * The "scalar clone" command learned the "--no-tags" option.
+ * The environment GIT_ADVICE has been intentionally kept undocumented
+   to discourage its use by interactive users.  Add documentation to
+   help tool writers.
+ * "git apply --3way" learned to take "--ours" and other options.
+
+-------------------------------------------------------------------
+Mon Oct  7 12:01:19 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.46.2:
+  * Revert the "git patch-id" change that went into 2.46.1,
+    as it seems to have got a regression reported (I haven't verified,
+    but it is better to keep a known breakage than adding an unintended
+    regression).
+  * In a few corner cases "git diff --exit-code" failed to report
+    "changes" (e.g., renamed without any content change), which has
+    been corrected.
+  * The interpret-trailers command failed to recognise the end of the
+    message when the commit log ends in an incomplete line.
+
+-------------------------------------------------------------------
 Fri Sep 20 08:18:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.46.1;

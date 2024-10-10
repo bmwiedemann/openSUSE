@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aioquic
-Version:        0.9.25
+Version:        1.2.0
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
 URL:            https://github.com/aiortc/aioquic
 Source:         https://files.pythonhosted.org/packages/source/a/aioquic/aioquic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#aiortc/aioquic#452
-Patch0:         support-service-identity-24.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 17:46:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.296.0
+  * Support cases of LUTs which are not function-local
+  * Block loop optimization if Phi is used
+  * Use recursive template for spvArrayCopy
+  * Add option to enforce fragment execution with side effects in MSL
+  * HLSL: Implement SM 6.8 BaseVertex/BaseInstance
+
+-------------------------------------------------------------------
 Thu Mar 21 09:56:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.280.0

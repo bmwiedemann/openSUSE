@@ -423,4 +423,12 @@
     <comment>bsc#1231347 - minimal solution: which -&gt; type -p</comment>
     <requestid>1206227</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>ea5ea312f04e983991bcbb6c637dc43e</srcmd5>
+    <version>6.3.2</version>
+    <time>1728504212</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206476</requestid>
+  </revision>
 </revisionlist>

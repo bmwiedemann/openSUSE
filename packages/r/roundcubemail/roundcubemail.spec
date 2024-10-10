@@ -307,6 +307,7 @@ exit 0
 %doc LICENSE
 %endif
 %doc %{_defaultdocdir}/%{name}
+%dir %{apache_serverroot}
 %dir %{roundcubepath}
 %dir %{roundcubeconfigpath}
 %dir %{roundcubeconfigpath}/skins

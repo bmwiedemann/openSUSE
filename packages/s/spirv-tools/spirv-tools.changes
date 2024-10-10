@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:12:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.4~rc1
+  * Add knowledge of cooperative matrices
+  * Add FPEncoding operand type
+  * Allow for empty list of enums for an operand
+  * Support SPV_KHR_untyped_pointers
+  * properly handle the load and store cache control operand types
+  * spirv-link: allow linking functions with different pointer arguments
+  * Allow ArrayStride on untyped pointers
+  * [OPT] Add SPV_KHR_ray_tracing_position_fetch to allow lists
+  * Validate presence of Stride operand to OpCooperativeMatrix{Load,Store}KHR
+  * [SPV_KHR_untyped_pointers] Fix verification of vload/vstore OpenCL.std instructions
+  * spirv-opt: make traversal deterministic
+  * add support for SPV_INTEL_global_variable_host_access
+- Add 0001-SPV_KHR_untyped_pointers-Fix-verification-for-OpenCL.patch
+  for shaderc.
+
+-------------------------------------------------------------------
 Tue Jun 25 20:47:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.3

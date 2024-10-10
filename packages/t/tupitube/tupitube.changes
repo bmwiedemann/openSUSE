@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:14:40 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.22 (no changelog supplied)
+- Force build against ffmpeg-4 in Factory
+- Drop tupitube.quazip5.patch (no longer required)
+
+-------------------------------------------------------------------
 Fri Mar  3 13:01:05 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix build with newer rubies, that removed File:exists method

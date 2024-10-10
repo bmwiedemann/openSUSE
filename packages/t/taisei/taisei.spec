@@ -23,7 +23,7 @@
 %endif
 
 Name:           taisei
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT

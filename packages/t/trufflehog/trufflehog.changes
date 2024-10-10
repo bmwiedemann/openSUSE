@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 08 09:21:03 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.82.7:
+  * Log skipped files on debug level (#3383)
+  * build: update retracted bluemonday ver (#3369)
+  * Fix git binary handling and add a smoke test (#3379)
+  * fix(deps): update module google.golang.org/protobuf to v1.35.1 (#3382)
+  * Added Cisco Meraki API Key detector (#3367)
+  * improved the agora detector (#3360)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.110.0 (#3376)
+  * fix(deps): update golang.org/x/exp digest to 225e2ab (#3371)
+  * fix(deps): update module golang.org/x/net to v0.30.0 (#3373)
+  * fix(deps): update module golang.org/x/crypto to v0.28.0 (#3372)
+  * chore(deps): update sigstore/cosign-installer action to v3.7.0 (#3368)
+  * fix(deps): update module cloud.google.com/go/storage to v1.44.0 (#3366)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to v3.16.1 (#3365)
+  * [refactor] - Decouple Metrics From Cache Implementation (#3355)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.11.2 (#3363)
+  * Updated Cosign Install URL (#3364)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.0 (#3361)
+  * Added Pattern test cases for detectors (#3354)
+  * remove size check (#3351)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.17.1 (#3357)
+  * [chore] - Rename memory cache package to 'simple' for clarity (#3352)
+  * Fixed github oauth2 token detector (#3353)
+
+-------------------------------------------------------------------
 Tue Oct 01 08:05:06 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.82.6:

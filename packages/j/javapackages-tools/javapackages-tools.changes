@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:27:42 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- remove-pointless-assignment.patch: Remove pointless assignment if
+  %java_home is unset
+
+-------------------------------------------------------------------
+Tue Oct  8 22:48:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fix-broken-commands.patch
+    + fix commands broken after recent removal of the default
+      %%{java_home} macro
+
+-------------------------------------------------------------------
 Mon Oct  7 17:38:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

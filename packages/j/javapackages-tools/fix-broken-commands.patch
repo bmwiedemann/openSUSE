@@ -1,0 +1,18 @@
+--- a/macros.d/macros.jpackage
++++ b/macros.d/macros.jpackage
+@@ -10,11 +10,11 @@
+ #==============================================================================
+ # ---- default Java commands
+ 
+-%ant            %{?jpb_env} JAVA_HOME=%{java_home} ant
+-%jar            %{java_home}/bin/jar
++%ant            %{?jpb_env} ant
++%jar            jar
+ %java           %(. @{javadir}-utils/java-functions; set_javacmd; echo $JAVACMD)
+-%javac          %{java_home}/bin/javac
+-%javadoc        %{java_home}/bin/javadoc
++%javac          javac
++%javadoc        javadoc
+ 
+ 
+ #

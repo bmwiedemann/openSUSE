@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:21:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.2
+  * Add editable to ``builder.get_requries_for_build``'s static types
+  * Include artifact attestations in our release
+  * Fix typing compatibility with typed ``pyproject-hooks``
+  * Mark more tests with ``network``
+  * Add more intersphinx links to docs
+  * Make ``uv`` optional for tests
+
+-------------------------------------------------------------------
 Sat Jun 29 12:49:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:

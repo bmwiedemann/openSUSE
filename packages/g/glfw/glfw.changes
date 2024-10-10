@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 21:04:25 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Use %bcond macro for building html docs
+- Fix rpmlint errors/warnings
+  * Remove obsolete glfw-rpmlintrc
+  * Fix self-obsoletion warning
+  * Remove duplicate files in html docs
+
+-------------------------------------------------------------------
+Tue Oct  8 15:51:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Package html docs only for Tumbleweed, Documentation generation
+  requires Doxygen 1.9.8 or later, Leap does have only 1.8.14
+
+-------------------------------------------------------------------
 Mon Sep 30 14:00:53 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.4:

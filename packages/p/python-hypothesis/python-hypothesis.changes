@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:02:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.112.2
+  * removes a now-incorrect internal assertion about numpy’s typing 
+    after recent numpy changes
+  * fixes an internal error when the __context__ attribute of a raised 
+    exception leads to a cycle
+
+-------------------------------------------------------------------
 Fri Sep  6 05:56:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.112.0

@@ -19,19 +19,21 @@
 # The git repo is a hodgepodge.
 # Most recent tag is 1.5.4, but that is outdated.
 # CMakeLists.txt's project() line contains 1.5.5, but this is outdated too.
-# The SPIR-V version is 1.6.1 (include/spirv/unified1/spirv.core.grammar.json)
+# The SPIR-V version is 1.6.4 (include/spirv/unified1/spirv.core.grammar.json)
 # They add "SDK" tags that reflect the Vulkan version (1.3),
-# and the independently increasing toolchain release number (283).
+# and the independently increasing toolchain release number (296).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk290
-%define innerver 1.3.290
+Version:        1.6.4+sdk296
+%define innerver 1.3.296
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
 Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-sdk-%innerver.tar.gz
+Patch1:         0001-Add-SPV_EXT_optnone-449.patch
+Patch2:         0002-Reserve-SPIR-V-enums-for-MediaTek-451.patch
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

@@ -17,8 +17,8 @@
 
 
 Name:           vulkan-volk
-%define lname libvolk-1_3_290
-Version:        1.3.290
+%define lname libvolk-1_3_296
+Version:        1.3.296
 Release:        0
 Summary:        Meta loader for the Vulkan API
 License:        MIT
@@ -29,7 +29,7 @@ Patch1:         shared.diff
 BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  python3-base
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= %version
 
 %description
 A meta loader for Vulkan.

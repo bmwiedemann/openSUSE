@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 13 09:37:15 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- move makedumpfile-R.pl from /usr/bin to 
+  /usr/share/makedumpfile-{version} (bsc#1230448)
+
+-------------------------------------------------------------------
 Fri Aug  9 14:51:00 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - add (bsc#1226183)

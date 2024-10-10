@@ -17,7 +17,7 @@
 
 
 Name:           trivy
-Version:        0.54.1
+Version:        0.56.1
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0

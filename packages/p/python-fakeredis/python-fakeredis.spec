@@ -24,6 +24,9 @@ Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/cunla/fakeredis-py
 Source:         https://github.com/cunla/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/cunla/fakeredis-py/commit/b6c0140e17fb571906251e0fb300a52735427bf7 fix:tests for redis 5.1.0
+# there is a new version, but the update failed for me
+Patch:          fix-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -35,8 +38,7 @@ Requires:       python-typing_extensions >= 4.7
 Suggests:       python-lupa >= 1.14
 BuildArch:      noarch
 # SECTION test requirements
-# technically requires hypothesis >= 6.56, but we don't have it yet
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 6.56}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-mock >= 3.7.0}

@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,20 +22,17 @@
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
 Name:           tupitube
-Version:        0.2.18
+Version:        0.2.22
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Graphics/Vector Editors
-URL:            https://maefloresta.com
+URL:            https://www.tupitube.com
 Source0:        https://sourceforge.net/projects/tupi2d/files/Source%20Code/tupitube.desk-%{version}.tar.gz
 Source99:       tupitube-rpmlintrc
-Patch0:         tupitube.quazip5.patch
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libquazip-qt5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  update-desktop-files
@@ -48,12 +45,25 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libavcodec) = 58.134.100
+BuildRequires:  pkgconfig(libavdevice) = 58.13.100
+BuildRequires:  pkgconfig(libavformat) = 58.76.100
+BuildRequires:  pkgconfig(libavutil) = 56.70.100
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libswscale) = 5.9.100
+%else
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswscale)
+%endif
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(quazip1-qt5)
+BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-plugins
@@ -98,11 +108,8 @@ sed -i '/require .os/d' qonf/configure.rb
 # Configure failed. error was: undefined method `exists?' for File:Class
 sed -i 's|File.exists|File.exist|' configure.rb qonf/test.rb
 
-# Fix 'E: spurious-executable-perm'
-chmod -x COPYING README* launcher/tupitube.xml
-
-# Fix 'W: wrong-script-end-of-line-encoding'
-dos2unix src/shell/html/css/tupitube.css
+# Configure failed. error was: undefined method `exists?' for module FileTest
+sed -e 's|FileTest.exists|FileTest.exist|' configure.rb
 
 # Add path to ffmpeg
 ffmpeg_include=$(pkg-config --cflags-only-I libavutil)
@@ -123,8 +130,7 @@ sed -i '/^#!/d' src/mypaint/raster/main/brushes/label-brush-mypaint.sh
 	--bindir=%{_tupibin} \
 	--libdir=%{_tupilib} \
 	--sharedir=%{_tupidata}
-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
