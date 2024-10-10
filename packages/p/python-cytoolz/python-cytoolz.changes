@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:41:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Test fixes for Python 3.13
+  * Drop Python 3.7
+  * Bump ``cibuildwheel`` in CI
+
+-------------------------------------------------------------------
 Tue Jan 30 11:54:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.3:

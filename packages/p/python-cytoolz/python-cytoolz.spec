@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-cytoolz
-Version:        0.12.3
+Version:        1.0.0
 Release:        0
 Summary:        High performance python functional utilities in Cython
 License:        BSD-3-Clause

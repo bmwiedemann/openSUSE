@@ -84,4 +84,15 @@
 - Use pytest instead of nose</comment>
     <requestid>1142760</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2604308827f58cd77dd056c53cfc9300</srcmd5>
+    <version>1.0.0</version>
+    <time>1728591304</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Test fixes for Python 3.13
+  * Drop Python 3.7
+  * Bump ``cibuildwheel`` in CI</comment>
+    <requestid>1206741</requestid>
+  </revision>
 </revisionlist>
