@@ -44,4 +44,13 @@
     identified base domain</comment>
     <requestid>1153060</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c4f45eacf5fa485baff23a445882038</srcmd5>
+    <version>5.5.0</version>
+    <time>1728591306</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5.0:
+  * Support `redirect` in SPF</comment>
+    <requestid>1206745</requestid>
+  </revision>
 </revisionlist>
