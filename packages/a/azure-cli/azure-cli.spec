@@ -39,7 +39,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.64.0
+Version:        2.65.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -60,7 +60,7 @@ Requires:       %{pythons}-PyGithub >= 1.38
 Requires:       %{pythons}-PyNaCl >= 1.5.0
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
-Requires:       %{pythons}-azure-appconfiguration >= 1.1.1
+Requires:       %{pythons}-azure-appconfiguration >= 1.7.0
 Requires:       %{pythons}-azure-batch >= 14.2.0
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
@@ -85,8 +85,8 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 31.0.0
-Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.5.1
+Requires:       %{pythons}-azure-mgmt-containerservice >= 32.0.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.6.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
@@ -102,7 +102,6 @@ Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-keyvault >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-kusto >= 0.3.0
 Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
-Requires:       %{pythons}-azure-mgmt-managedservices >= 1.0
 Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
@@ -126,7 +125,7 @@ Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b2
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b17
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b19
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
