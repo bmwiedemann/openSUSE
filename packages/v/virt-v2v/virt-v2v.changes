@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:19:56 MDT 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.6.0 (jsc#PED-8910)
+  * You can now use most virt-customize(1) options, such as
+    installing arbitrary firstboot scripts, uploading or editing
+    files, etc. during conversions.
+  * Installation of QEMU Guest Agent in Windows guests has been
+    revised and made much more reliable. Note that a visible effect
+    of this change is that Windows guests may reboot four or more
+    times during the first boot after conversion (which is
+    necessary). (Thanks Vadim Rozenfeld, Konstantin Kostiuk, Yuri
+    Benditovich, Yan Vugenfirer).
+  * We now forcibly online all virtio disks during firstboot,
+    working around a security mitigation in recent versions of
+    Windows that offlines them if they change bus (Martin Necas).
+  * QEMU Balloon Server (blnsvr) is now installed in Windows
+    guests, if found on the virtio-win ISO. This improves
+    statistics gathering for these guests.
+  * Add support for Circle Linux (Bella Zhang).
+  * Add some support for LoongArch guests (liuxiang).
+  * -i ova mode now uses the detected guest firmware, if it's not
+    specified in the OVA metadata (Bella Khizgiyaev).
+  * -o kubevirt output mode has been substantially changed to fix
+    multiple problems. It should be more compatible with real
+    KubeVirt instances now. (Thanks Arik Hadas, Bella Khizgiyaev,
+    Lee Yarwood, Martin Necas).
+  * -o libvirt mode now includes an <os firmware> attribute
+    specifying whether the guest needs BIOS or UEFI to boot.
+  * The output of virt-v2v-inspector(1) has been revised, with much
+    more metadata available.
+  * The --mac option now allows the gateway and network mask length
+    to be empty (Arik Hadas).
+  * The debug output of virt-v2v has been improved. Now when
+    searching the log for important events, you can just use the
+    regular expression /^info:/
+  * Added a test for -o kubevirt mode.
+- Bug fixes
+  * document that vmx+ssh "-ip" auth doesn't cover ssh / scp shell
+    commands
+  * Exact string (including the literal *) should be used when
+    converting guest via vmx by v2v
+  * Missing firmware type for kubvirt and local output
+  * Virt-v2v can't convert guest from maintained ESXi hosts with
+    vddk > 6
+  * Migrated Windows VMs require the BLNSVR.exe service to be
+    installed for accurate memory reporting
+  * Re-add the info about non-interactive authentication back into
+    virt-v2v-input-xen
+  * Missing OS info for kubevirt output
+  * qemu-guest-agent not being installed at first boot in Windows
+    Server 2022
+  * Allow --mac gw and len fields to be optional
+  * Uninstalling vmware-tools from windows guest sometimes fails
+    with exit code 1618 or exit code 1603
+  * network configuration script does not work for Windows 10 i386
+    guest
+  * Re-enable Windows disks post-live migration [rhel-9.5]
+  * Re-enable Windows disks post-live migration [rhel-9.4.z]
+  * window version shows incorrect during converting win11 guest
+    with build number 22631 by virt-v2v
+  * v2v: The -o kubevirt firmware is not compatible with kubevirt
+    api
+  * rhv-upload broken since Ovirt 4.5, cause Basic Auth has been
+    removed
+  * virt-v2v missing firmware type for kubvirt and local output
+  * Clustername not working when on same Data Center, sharing same
+    storage domains
+
+-------------------------------------------------------------------
 Fri Sep 20 11:20:49 MDT 2024 - carnold@suse.com
 
 - Update to virt-v2v 2.5.10 (jsc#PED-8910)
