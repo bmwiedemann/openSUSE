@@ -1,7 +1,7 @@
 #
 # spec file for package spek
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,9 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK-devel
-%if 0%{?suse_version} > 1500
-BuildRequires:  ffmpeg-5-mini-devel
-%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-%endif
 
 %description
 Spek helps to analyse your audio files by showing their spectrogram.

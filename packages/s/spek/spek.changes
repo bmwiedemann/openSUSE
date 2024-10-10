@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  9 14:45:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not limit to FFmpeg 5 on Tumbleweed: Upstream actually did a
+  good enough job to not use deprecated APIs to even be compatible
+  with ffmpeg 7.1.
+
+-------------------------------------------------------------------
 Sun Jul 16 08:23:56 UTC 2023 - munix9@googlemail.com
 
 - Update to version 0.8.5:
