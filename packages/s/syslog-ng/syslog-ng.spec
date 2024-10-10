@@ -88,7 +88,7 @@ BuildRequires:  protobuf-devel
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.8.0
+Version:        4.8.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -830,6 +830,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/slack/slack.conf
 %dir %{_datadir}/syslog-ng/include/scl/elasticsearch/
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/elasticsearch/elastic-http.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/elasticsearch/elastic-datastream.conf
 
 %endif
 
