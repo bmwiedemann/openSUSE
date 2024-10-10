@@ -1818,6 +1818,7 @@ BuildFlags: onlybuild:coreutils
 BuildFlags: onlybuild:coreutils:systemd
 BuildFlags: onlybuild:corosync
 BuildFlags: onlybuild:cpio
+BuildFlags: onlybuild:cpp-httplib
 BuildFlags: onlybuild:cppunit
 BuildFlags: onlybuild:cracklib
 BuildFlags: onlybuild:createrepo_c
