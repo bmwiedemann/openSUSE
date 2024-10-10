@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:05:18 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1728572709.326d308:
+  * Add xen-pv USBPV hub
+  * Add USBPV unit test
+  * Use double quotes for URLs
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Exclude sub packages with many additional dependencies on SLE
+  * Replace single quotes with double of URLs in the log strings
+  * Remove obsolete support for "script_run" with "die_on_timeout=0"
+  * Fix pod for backend_get_wait_still_screen_on_here_doc_input
+  * Virsh VMware images shell snippet debugging added
+  * Use more compact syntax to add features to virsh config
+  * Avoid configuring ACPI on s390x for compat with newer libvirt/qemu
+  * ci: Add OBS helper workflow
+  * Avoid having devel package depend on CI-specific Perl module
+  * Document new variables for VMWare's provisioning options
+  * Update unit tests
+  * VMWare: add combustion and ignition support
+  * Remove workaround for broken chromium
+  * Explain regexp argument for wait_serial
+  * Disable building with OCR support on SLE
+  * Make Python support optional in fullstack test
+  * Fix build condition for Python support
+  * Allow package builds without `Inline::Python`
+  * Avoid dependency on `File::Touch` for easier SLE submission
+  * systemd: Fix path to os-autoinst-openvswitch (regression from aa027ef4)
+  * Fix script/ folder install
+  * Consistently provide all scripts in script/
+  * Add help for os-autoinst-setup-multi-machine
+
+-------------------------------------------------------------------
 Tue Sep 24 22:09:22 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1727108423.e2e59c5:
