@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 10 03:11:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.1:
+  * Adding pytest integration to turn of networking tests
+  * Fix missing issuer problem in deserialize function
+  * Add a CL tool to verify SciTokens
+  * Fix issue in creating the cache file location
+  * Add convenience functions to issue demo tokens
+  * Adding python scitokens spec file changes for review
+- Drop patch use-importlib-metadata.patch, included upstream.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Apr 12 04:56:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.4:

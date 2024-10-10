@@ -1,7 +1,7 @@
 #
 # spec file for package python-scitokens
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,27 @@
 %define bname scitokens
 
 Name:           python-scitokens
-Version:        1.7.4
+Version:        1.8.1
 Release:        0
 Summary:        SciToken reference implementation library
 License:        Apache-2.0
 URL:            https://scitokens.org
 Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v%{version}.tar.gz#/%{bname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Do not use pkg_resources gh#scitokens/scitokens#182
-Patch0:         use-importlib-metadata.patch
 BuildRequires:  %{python_module PyJWT >= 2.2}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 2.2
+Requires:       python-cryptography
+Requires:       python-requests
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -49,28 +53,33 @@ want to delegate trust for an issuer for managing a storage allocation.
 %autosetup -p1 -n scitokens-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/scitokens-admin-create-key
 %python_clone -a %{buildroot}%{_bindir}/scitokens-admin-create-token
+%python_clone -a %{buildroot}%{_bindir}/scitokens-verify-token
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not network'
 
 %post
 %python_install_alternative scitokens-admin-create-key
 %python_install_alternative scitokens-admin-create-token
+%python_install_alternative scitokens-verify-token
 
 %postun
 %python_uninstall_alternative scitokens-admin-create-key
 %python_uninstall_alternative scitokens-admin-create-token
+%python_uninstall_alternative scitokens-verify-token
 
 %files %{python_files}
-%{python_sitelib}/scitokens*
+%{python_sitelib}/scitokens
+%{python_sitelib}/scitokens-%{version}.dist-info
 %python_alternative %{_bindir}/scitokens-admin-create-key
 %python_alternative %{_bindir}/scitokens-admin-create-token
+%python_alternative %{_bindir}/scitokens-verify-token
 
 %changelog

@@ -54,4 +54,20 @@
   * Use importlib.metadata, rather than pkg_resources.</comment>
     <requestid>1078556</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1102077cfccd746e0216b1bbf85b2b85</srcmd5>
+    <version>1.8.1</version>
+    <time>1728591081</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Adding pytest integration to turn of networking tests
+  * Fix missing issuer problem in deserialize function
+  * Add a CL tool to verify SciTokens
+  * Fix issue in creating the cache file location
+  * Add convenience functions to issue demo tokens
+  * Adding python scitokens spec file changes for review
+- Drop patch use-importlib-metadata.patch, included upstream.
+- Switch to pyproject macros.</comment>
+    <requestid>1206599</requestid>
+  </revision>
 </revisionlist>
