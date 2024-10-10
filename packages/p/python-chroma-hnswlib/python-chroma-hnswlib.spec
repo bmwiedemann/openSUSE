@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-chroma-hnswlib
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Chromas fork of hnswlib
 License:        Apache-2.0

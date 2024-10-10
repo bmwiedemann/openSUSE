@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1202863</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>86bbcba1b1e48e04946602104563478b</srcmd5>
+    <version>0.7.6</version>
+    <time>1728591303</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * [BUG] Persist single item</comment>
+    <requestid>1206737</requestid>
+  </revision>
 </revisionlist>
