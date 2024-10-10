@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 09 18:12:28 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.18
+- Make sure all emoji, even those which are sequences,
+  get a Unicode version and not only an Emoji version
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/542)
+- Translation update from Weblate (ka 100%, pl 99.5%, tr 100%)
+
+-------------------------------------------------------------------
 Tue Oct 08 15:46:43 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.25.17
