@@ -72,4 +72,25 @@
 - enable %{?sle15_python_module_pythons}</comment>
     <requestid>1139548</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50a270328a84794aeff48df058a0c31b</srcmd5>
+    <version>8.0.0</version>
+    <time>1728591304</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.0:
+  * Updated to simpler typing syntax for optional arguments and
+    iterable types using `pyupgrade`
+  * Reformatted files constrained to Python 3.8+ syntax using
+    `black`
+  * Updated documentation to prefer `tox` usage
+  * Updated documentation dependencies and removed upper bounds
+    on their versions
+  * Add support for Python 3.12
+  * Remove upper bound on dependencies
+
+  * Support for Python 3.6 has been removed due to its impending end of life and
+  * Remove Python 3.10 testing and support for now, as Travis CI only has
+    overridden by any value specified at call time</comment>
+    <requestid>1206740</requestid>
+  </revision>
 </revisionlist>

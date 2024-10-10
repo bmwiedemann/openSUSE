@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:37:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Updated to simpler typing syntax for optional arguments and
+    iterable types using `pyupgrade`
+  * Reformatted files constrained to Python 3.8+ syntax using
+    `black`
+  * Updated documentation to prefer `tox` usage
+  * Updated documentation dependencies and removed upper bounds
+    on their versions
+  * Add support for Python 3.12
+  * Remove upper bound on dependencies
+
+-------------------------------------------------------------------
 Wed Jan 17 22:07:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
@@ -46,9 +60,9 @@ Sun Aug 29 08:36:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
     Use PEP 517 builds
   * Testing matrix and trove classifiers for Python 3.9
     Type hints for all classes, methods, and functions
-  * Support for Python 3.6 has been removed due to its impending end of life and 
+  * Support for Python 3.6 has been removed due to its impending end of life and
     the desire to leverage features from 3.7
-  * Remove Python 3.10 testing and support for now, as Travis CI only has 
+  * Remove Python 3.10 testing and support for now, as Travis CI only has
     Python 3.10.0a5 which isn't compatible with recent pytest-randomly releases
   * Indicate (by renaming) that all functions in the client module are private, except for call
 
@@ -61,7 +75,7 @@ Mon Aug 31 04:37:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Ability to specify auth for a Service definition so all calls to the
     service use the defined authentication
   * Ability to specify return_raw_response_object at the endpoint level,
-    overridden by any value specified at call time 
+    overridden by any value specified at call time
 
 -------------------------------------------------------------------
 Tue Dec  3 07:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

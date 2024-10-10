@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-apiron
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2022 Dr. Axel Braun <DocB@opensuse.org>
@@ -18,16 +18,13 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python2 1
-%define skip_python36 1
-%define modname apiron
-Name:           python-%{modname}
-Version:        7.1.0.post3
+Name:           python-apiron
+Version:        8.0.0
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT
 URL:            https://github.com/ithaka/apiron
-Source:         https://files.pythonhosted.org/packages/source/a/apiron/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/apiron/apiron-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -45,7 +42,7 @@ Gathering data from multiple services has become a ubiquitous task for web appli
 apiron provides declarative, structured configuration of services and endpoints with a unified interface for interacting with them.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n apiron-%{version}
 
 %build
 %pyproject_wheel
@@ -62,6 +59,6 @@ apiron provides declarative, structured configuration of services and endpoints 
 %doc README.md
 %license LICENSE
 %{python_sitelib}/apiron
-%{python_sitelib}/apiron-%{version}*-info
+%{python_sitelib}/apiron-%{version}.dist-info
 
 %changelog
