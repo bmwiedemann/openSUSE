@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 10 17:50:55 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1728578795.2ebe3061:
+  * Fix loading array settings on scheduled product page
+  * Update docs/Installing.asciidoc
+  * Avoid incomplete jobs when restarting Minion while syncing tests
+  * Update circleci config to codecov@4.2
+  * Make activity view accessible to operators
+  * Install docs: Clarify when and how to add repos on SLE
+  * Show operator links of plugins (like OBS sync) only to operators
+  * Configure a default for the limit of online workers
+  * Partially revert "Drop OpenQA::WebAPI::Plugin::HashedParams"
+  * Skip all symlinks for git_auto_update service
+  * Add munin alert email wrapper
+  * Cover API for showing info of individual worker
+  * Cover unsuccessful websocket connection upgrade of worker
+  * Make `t/24-worker-webui-connection.t` work when error slightly differs
+  * Simplify making worker info removing unused live flag
+  * Allow limiting number of worker websocket connections
+  * Fix source view for running tests
+  * Trigger git_clone also for Job restart
+  * Emit individual comment create events when commenting on job restarts
+  * doc: Improve wording in documentation related to database setup
+  * doc: Add back command for starting daemon using unit test setup
+  * doc: Remove problematic/obsolete parts of "Manual daemon setup"
+  * Allow adding a comment when restarting jobs
+
+-------------------------------------------------------------------
 Tue Oct 08 09:50:50 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1728376236.4a3830a3:

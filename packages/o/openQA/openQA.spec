@@ -90,7 +90,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1728376236.4a3830a3
+Version:        4.6.1728578795.2ebe3061
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -402,6 +402,7 @@ install -d -m 755 %{buildroot}/%{_prefix}/lib/munin/plugins
 install -m 755 contrib/munin/plugins/minion %{buildroot}/%{_prefix}/lib/munin/plugins/openqa_minion_
 install -d -m 755 %{buildroot}/%{_sysconfdir}/munin/plugin-conf.d
 install -m 644 contrib/munin/config/minion.config %{buildroot}/%{_sysconfdir}/munin/plugin-conf.d/openqa-minion
+install -m 755 contrib/munin/utils/munin-mail %{buildroot}/%{_datadir}/openqa/script/munin-mail
 %endif
 
 cd %{buildroot}
@@ -807,11 +808,13 @@ fi
 %files munin
 %defattr(-,root,root)
 %doc contrib/munin/config/minion.config
+%dir %{_datadir}/openqa/script
 %dir %{_prefix}/lib/munin
 %dir %{_prefix}/lib/munin/plugins
 %dir %{_sysconfdir}/munin
 %dir %{_sysconfdir}/munin/plugin-conf.d
 %{_prefix}/lib/munin/plugins/openqa_minion_
+%{_datadir}/openqa/script/munin-mail
 %config(noreplace) %{_sysconfdir}/munin/plugin-conf.d/openqa-minion
 %endif
 
