@@ -59,4 +59,17 @@
     <comment></comment>
     <requestid>1183640</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36645ee55b7c23372b86c2bc012345d1</srcmd5>
+    <version>20241009</version>
+    <time>1728591057</time>
+    <user>anag+factory</user>
+    <comment>- Move servicemenus to %{_datadir}/kio/servicemenus
+- Migrate configuration files from %{_sysconfdir} to
+  %{_distconfdir}
+
+- Add exec permission to ark-addtoservicemenu.desktop,
+  ark-servicemenu.desktop (boo#1224070)</comment>
+    <requestid>1206587</requestid>
+  </revision>
 </revisionlist>

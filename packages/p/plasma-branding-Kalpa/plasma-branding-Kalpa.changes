@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  9 18:02:55 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Move servicemenus to %{_datadir}/kio/servicemenus
+- Migrate configuration files from %{_sysconfdir} to
+  %{_distconfdir}
+
+-------------------------------------------------------------------
+Mon Oct  7 08:59:40 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add exec permission to ark-addtoservicemenu.desktop,
+  ark-servicemenu.desktop (boo#1224070)
+
+-------------------------------------------------------------------
 Tue Jun 25 10:41:22 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Added for contextual menus in dolphin with ark flatpak

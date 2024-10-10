@@ -18,7 +18,7 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20240401
+Version:        20241009
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        BSD-3-Clause
@@ -83,22 +83,22 @@ cp -a %{SOURCE10} 50-kalpa
 %install
 install -d %{buildroot}%{_datadir}/kalpa
 install -m0644 flathub.flatpakrepo %{buildroot}%{_datadir}/kalpa
-install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
+install -d %{buildroot}%{_distconfdir}/skel/.config/autostart
 %ifnarch aarch64
-install -m0644 kalpa-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
+install -m0644 kalpa-firstboot.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 kalpa-firstboot %{buildroot}%{_bindir}/kalpa-firstboot
 %endif
 %ifarch aarch64
-install -m0644 kalpa-firstboot-aarch64.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
+install -m0644 kalpa-firstboot-aarch64.desktop %{buildroot}%{_distconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 kalpa-firstboot-aarch64 %{buildroot}%{_bindir}/kalpa-firstboot-aarch64
 %endif
-install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d
-install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
-install -d %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus
-install -m0644 ark-addtoservicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-addtoservicemenu.desktop
-install -m0644 ark-servicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-servicemenu.desktop
+install -d %{buildroot}%{_distconfdir}/transactional-update.conf.d
+install -m644 50-desktop.conf %{buildroot}%{_distconfdir}/transactional-update.conf.d/50-desktop.conf
+install -d %{buildroot}%{_datadir}/kio/servicemenus
+install -m0744 ark-addtoservicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-addtoservicemenu.desktop
+install -m0744 ark-servicemenu.desktop %{buildroot}%{_datadir}/kio/servicemenus/ark-servicemenu.desktop
 install -d %{buildroot}%{_userunitdir}
 install -m0644 distrobox-upgrade-all.service %{buildroot}%{_userunitdir}/distrobox-upgrade-all.service
 install -m0644 distrobox-upgrade-all.timer %{buildroot}%{_userunitdir}/distrobox-upgrade-all.timer
@@ -123,23 +123,21 @@ install -m0444 49-kalpa.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-kalpa.
 %license COPYING
 %dir %{_datadir}/kalpa
 %{_datadir}/kalpa/flathub.flatpakrepo
-%dir %{_sysconfdir}/skel/.config
-%dir %{_sysconfdir}/skel/.config/autostart
-%dir %{_sysconfdir}/skel/.local
-%dir %{_sysconfdir}/skel/.local/share
-%dir %{_sysconfdir}/skel/.local/share/kio
-%dir %{_sysconfdir}/skel/.local/share/kio/servicemenus
-%config %{_sysconfdir}/skel/.local/share/kio/servicemenus/*.desktop
+%dnl %dir %{_distconfdir}/skel/.config
+%dir %{_distconfdir}/skel/.config/autostart
+%dir %{_datadir}/kio
+%dir %{_datadir}/kio/servicemenus
+%{_datadir}/kio/servicemenus/*.desktop
 %ifnarch aarch64
-%config(noreplace) %{_sysconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
+%config(noreplace) %{_distconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
 %{_bindir}/kalpa-firstboot
 %endif
 %ifarch aarch64
-%config(noreplace) %{_sysconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
+%config(noreplace) %{_distconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
 %{_bindir}/kalpa-firstboot-aarch64
 %endif
-%dir %{_prefix}%{_sysconfdir}/transactional-update.conf.d
-%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
+%dir %{_distconfdir}/transactional-update.conf.d
+%{_distconfdir}/transactional-update.conf.d/50-desktop.conf
 %{_userunitdir}/distrobox-upgrade-all.service
 %{_userunitdir}/distrobox-upgrade-all.timer
 %{_distconfdir}/sudoers.d/50-kalpa
