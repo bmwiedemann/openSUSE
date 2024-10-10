@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:03:48 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.24:
+  * colorcorrection: allow user-defined order of CTL plugins
+  * improved bundle scripts to allow including the ART-imageio plugins
+  * imgiomanager: only print error messages when settings->verbose > 0
+  * better keyboard navigation for emptying the trash
+  * file browser: improved keyboard navigation when applying filters
+  * added preliminary support for Canon R5markII and R1
+  * fixed raw crop for ILCE-7CR and ILCE-7RM5 in 16-shot pixel shift mode
+  * added linear rec 709 icc profile
+- Add fix-missing-lm.patch.
+
+-------------------------------------------------------------------
 Tue Aug  6 02:59:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.23:

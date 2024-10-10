@@ -1,0 +1,10 @@
+--- ART-1.24/rtengine/CMakeLists.txt.orig	2024-10-10 09:00:11.656798999 +0200
++++ ART-1.24/rtengine/CMakeLists.txt	2024-10-10 09:00:45.723663142 +0200
+@@ -233,6 +233,7 @@
+     ${LENSFUN_LIBRARIES}
+     ${RSVG_LIBRARIES}
+     ${EXIV2_LIBRARIES}
++    m 
+     )
+ if(LCMS_FAST_FLOAT AND NOT LCMS_FAST_FLOAT_SYSTEM)
+     target_link_libraries(rtengine lcms2_fast_float)

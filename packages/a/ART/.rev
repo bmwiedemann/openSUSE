@@ -255,4 +255,22 @@
     <comment></comment>
     <requestid>1191814</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>642bdf40dd2549d099db030f97f6f08d</srcmd5>
+    <version>1.24</version>
+    <time>1728591086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.24:
+  * colorcorrection: allow user-defined order of CTL plugins
+  * improved bundle scripts to allow including the ART-imageio plugins
+  * imgiomanager: only print error messages when settings-&gt;verbose &gt; 0
+  * better keyboard navigation for emptying the trash
+  * file browser: improved keyboard navigation when applying filters
+  * added preliminary support for Canon R5markII and R1
+  * fixed raw crop for ILCE-7CR and ILCE-7RM5 in 16-shot pixel shift mode
+  * added linear rec 709 icc profile
+- Add fix-missing-lm.patch.
+</comment>
+    <requestid>1206636</requestid>
+  </revision>
 </revisionlist>
