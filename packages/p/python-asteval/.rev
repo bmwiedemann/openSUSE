@@ -194,4 +194,28 @@
     evaluation</comment>
     <requestid>1192791</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4b1ac73cd1200320a58cc0f5bbcfa40a</srcmd5>
+    <version>1.0.5</version>
+    <time>1728591305</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * more work on handling errors, including fixing #133 and
+    adding more comprehensive tests for #129 and #132
+- update to 1.0.4:
+  * fix error handling that might result in null exception
+- update to 1.0.3:
+  * functions (&quot;Procedures&quot;) defined within asteval have a `
+    _signature()` method, now use in repr
+  * add support for deleting subscript
+  * nested symbol tables now have a  Group() function
+  * update coverage config
+  * cleanups of exception handling :  errors must now have an
+    exception
+  * several related fixes to suppress repeated exceptions: see GH
+    #132 and #129
+  * make non-boolean return values from comparison operators
+    behave like Python - not immediately testing as bool</comment>
+    <requestid>1206742</requestid>
+  </revision>
 </revisionlist>

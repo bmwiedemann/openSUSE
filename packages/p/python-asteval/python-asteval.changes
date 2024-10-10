@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:41:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * more work on handling errors, including fixing #133 and
+    adding more comprehensive tests for #129 and #132
+- update to 1.0.4:
+  * fix error handling that might result in null exception
+- update to 1.0.3:
+  * functions ("Procedures") defined within asteval have a `
+    _signature()` method, now use in repr
+  * add support for deleting subscript
+  * nested symbol tables now have a  Group() function
+  * update coverage config
+  * cleanups of exception handling :  errors must now have an
+    exception
+  * several related fixes to suppress repeated exceptions: see GH
+    #132 and #129
+  * make non-boolean return values from comparison operators
+    behave like Python - not immediately testing as bool
+
+-------------------------------------------------------------------
 Fri Aug  9 06:56:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

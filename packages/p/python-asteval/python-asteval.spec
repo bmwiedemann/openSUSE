@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asteval
-Version:        1.0.2
+Version:        1.0.5
 Release:        0
 Summary:        Safe, minimalistic evaluator of python expression using ast module
 License:        MIT
