@@ -109,4 +109,12 @@
 - Drop patch remove_nose.patch, no longer required.</comment>
     <requestid>1193580</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2b316a735ca392a31c934575011ac92d</srcmd5>
+    <version>2.2.1</version>
+    <time>1728591303</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206726</requestid>
+  </revision>
 </revisionlist>

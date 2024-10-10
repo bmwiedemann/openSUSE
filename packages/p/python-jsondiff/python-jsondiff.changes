@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:30:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.1
+  * Protect Symbol.eq by instance check
+
+-------------------------------------------------------------------
 Tue Aug 13 03:18:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0:

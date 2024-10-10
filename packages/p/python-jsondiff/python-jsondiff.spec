@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsondiff
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Module to diff JSON and JSON-like structures in Python
 License:        MIT
