@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- OBS-ExclusiveArch: x86_64 aarch64 -->
 <image schemaversion="7.6" name="tik-osimage-Aeon" displayname="Aeon">
     <description type="system">
         <author>Richard Brown</author>

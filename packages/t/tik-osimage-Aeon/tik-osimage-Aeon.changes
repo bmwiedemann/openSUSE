@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  3 07:04:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclusively build for x86_64 and aarch64: match with
+  patterns-aeon.
+
+-------------------------------------------------------------------
 Wed Aug 7 17:12:23 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Force relabeling of /etc as part of fstab.script
