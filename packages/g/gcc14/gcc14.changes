@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:01:41 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, 4af44f2cf7d281f3e4f3957ef, git10750
+  * includes libstdc++6 fix for parsing tzdata 2024b [gcc#116657]
+- Add gcc14-pr116629.patch to fix ICE with LTO building openvino
+  on aarch64 [boo#1230262]
+
+-------------------------------------------------------------------
 Thu Aug 22 10:37:05 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Re-enable cross compiler builds on i586.

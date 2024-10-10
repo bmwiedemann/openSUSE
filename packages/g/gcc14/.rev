@@ -116,4 +116,15 @@ next week.  Gcc7 can pick it up from there.
     <comment>- Re-enable cross compiler builds on i586.</comment>
     <requestid>1195282</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b96cc7454c79048e8841074dbea20bb6</srcmd5>
+    <version>14.2.1+git10750</version>
+    <time>1728591046</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-14 branch head, 4af44f2cf7d281f3e4f3957ef, git10750
+  * includes libstdc++6 fix for parsing tzdata 2024b [gcc#116657]
+- Add gcc14-pr116629.patch to fix ICE with LTO building openvino
+  on aarch64 [boo#1230262]</comment>
+    <requestid>1206541</requestid>
+  </revision>
 </revisionlist>
