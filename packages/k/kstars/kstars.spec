@@ -23,7 +23,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 Name:           kstars
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -36,6 +36,7 @@ URL:            https://edu.kde.org/kstars/
 # For whatever reason, they aren't uploading releases anymore on DKO, so we use the one from gitlab instead.
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
+BuildRequires:  curl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12

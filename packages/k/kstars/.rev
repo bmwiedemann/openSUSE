@@ -1230,4 +1230,12 @@
     <comment>update to 3.7.2</comment>
     <requestid>1191595</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>be298ac73c79fe380f9acdfd1e34d538</srcmd5>
+    <version>3.7.3</version>
+    <time>1728591089</time>
+    <user>anag+factory</user>
+    <comment>3.7.3</comment>
+    <requestid>1206643</requestid>
+  </revision>
 </revisionlist>
