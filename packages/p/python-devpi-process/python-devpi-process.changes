@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:42:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Improve the CI
+- update to 1.0.1:
+  * Declare 3.13 support
+
+-------------------------------------------------------------------
 Tue Sep 26 19:22:07 UTC 2023 - Torsten Gruner <t.gruner@katodev.de>
 
 - update to version 1.0.0

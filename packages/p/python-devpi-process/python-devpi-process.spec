@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-devpi-process
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-devpi-process%{psuffix}
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Programmatic API to create and use a devpi server process
 License:        MIT
