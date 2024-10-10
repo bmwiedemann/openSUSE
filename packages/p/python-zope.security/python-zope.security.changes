@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:40:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.3
+  * Respect ``PURE_PYTHON`` environment variable set to ``0``.
+- from version 7.2
+  * Declare final support for Python 3.13.
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Sun Sep  8 16:31:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1:

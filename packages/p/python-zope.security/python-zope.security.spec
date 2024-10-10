@@ -27,13 +27,13 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        7.1
+Version:        7.3
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://www.python.org/pypi/zope.security
-Source0:        https://files.pythonhosted.org/packages/source/z/zope.security/zope.security-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/z/zope_security/zope_security-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
@@ -66,7 +66,7 @@ The Security framework provides a generic mechanism to implement security
 policies on Python objects.
 
 %prep
-%setup -q -n zope.security-%{version}
+%setup -q -n zope_security-%{version}
 
 %build
 %python_build
