@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  9 13:22:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add dont-strip.patch for not stripping the main binary (so we can
+  create debuginfo package)
+
+-------------------------------------------------------------------
+Wed Oct  9 05:46:17 UTC 2024 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Add package environment-to-ini for OCI containers
+
+-------------------------------------------------------------------
 Tue Sep 10 07:49:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.3:

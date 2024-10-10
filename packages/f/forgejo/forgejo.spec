@@ -51,6 +51,7 @@ Source10:       %{name}.apparmor
 Source11:       %{name}.firewalld
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
+Patch1:         dont-strip.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.22
 ## node >= 20
@@ -111,6 +112,19 @@ Requires:       selinux-policy-targeted
 This package adds SELinux enforcement to %{name}.
 %endif
 
+%package environment-to-ini
+Summary:        Configuration params via environment variables for %{name}
+Requires:       %{name} = %{version}-%{release}
+
+%description environment-to-ini
+OCI Container users can change arbitrary configuration
+via environment variables with this tool
+
+Forgejo needs to use an ini file for configuration because the running
+environment that starts the OCI container may not be the same as that used
+by the hooks. An ini file also gives a good default and means that
+users do not have to completely provide a full environment.
+
 %description
 Providing Git hosting for your project, friends, company or community? Forgejo (/for'd͡ʒe.jo/ inspired by forĝejo
 – the Esperanto word for forge) has you covered with its intuitive interface, light and easy hosting and a lot of builtin functionality.
@@ -121,14 +135,15 @@ local-npm-registry %{_sourcedir} install --also=dev
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
-export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
 %make_build build
+go build -buildmode=pie -mod=vendor -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
 
 %install
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_datadir}/%{name}
 install -d %{buildroot}%{_datadir}/%{name}/{conf,https,mailer}
+install -Dm0755 contrib/environment-to-ini/environment-to-ini %{buildroot}%{_bindir}
 ln -s %{name} %{buildroot}%{_bindir}/gitea
 install -d %{buildroot}%{_sharedstatedir}/%{name}/{data,https,indexers,queues,repositories}
 install -d %{buildroot}%{_sysconfdir}/%{name}
@@ -215,5 +230,8 @@ semodule -r %{name} 2>/dev/null || :
 
 %files firewalld
 %{_prefix}/lib/firewalld/services/%{name}.xml
+
+%files environment-to-ini
+%{_bindir}/environment-to-ini
 
 %changelog
