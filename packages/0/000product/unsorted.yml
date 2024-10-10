@@ -3273,6 +3273,9 @@ unsorted:
   - delve 
   - demumble 
   - deno 
+  - deno-bash-completion 
+  - deno-fish-completion 
+  - deno-zsh-completion 
   - descent3 
   - desktop-translations-devel 
   - desktopfolder 
@@ -11599,7 +11602,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2024_3-32bit 
+  - libSPIRV-Tools-2024_4_rc1-32bit 
   - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
@@ -11626,7 +11629,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_3_290 
+  - libVulkanLayerSettings-1_3_296 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -14170,17 +14173,17 @@ unsorted:
   - libkea-cryptolink50 
   - libkea-d2srv46 
   - libkea-database61 
-  - libkea-dhcp++89 
+  - libkea-dhcp++90 
   - libkea-dhcp_ddns56 
-  - libkea-dhcpsrv108 
+  - libkea-dhcpsrv109 
   - libkea-dns++56 
   - libkea-eval69 
   - libkea-exceptions33 
-  - libkea-hooks97 
+  - libkea-hooks98 
   - libkea-http71 
   - libkea-log61 
-  - libkea-mysql69 
-  - libkea-pgsql69 
+  - libkea-mysql70 
+  - libkea-pgsql70 
   - libkea-process72 
   - libkea-stats41 
   - libkea-tcp18 
@@ -16642,7 +16645,7 @@ unsorted:
   - libtrilinos_14_0_0-gnu-mpich-hpc 
   - libtrilinos_14_0_0-gnu-mvapich2-hpc 
   - libtrilinos_14_0_0-gnu-openmpi4-hpc 
-  - libtrng4-25 
+  - libtrng4-27 
   - libts0-32bit 
   - libtsan0 
   - libtsan2-gcc12 
@@ -16934,7 +16937,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_3_290 
+  - libvolk-1_3_296 
   - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
@@ -17029,8 +17032,8 @@ unsorted:
   - libwebsockets-devel 
   - libwebsockets-evlib-uv 
   - libwebsockets19 
-  - libweston-13 
-  - libweston-13-0 
+  - libweston-14 
+  - libweston-14-0 
   - libwget2 
   - libwhich 
   - libwiiuse0 
@@ -18876,7 +18879,6 @@ unsorted:
   - mirisdr 
   - mirisdr-udev 
   - mirror 
-  - mirror-registry 
   - mirrormagic 
   - mirrorsorcerer 
   - mjpg-streamer 
@@ -19078,6 +19080,8 @@ unsorted:
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
   - motv 
+  - mousai 
+  - mousai-lang 
   - mousam 
   - mousam-lang 
   - mousepad-devel 
@@ -26967,6 +26971,7 @@ unsorted:
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
+  - python310-python-nmap 
   - python310-python-openid-cla 
   - python310-python-openid-teams 
   - python310-python-oxmsg 
@@ -28081,7 +28086,6 @@ unsorted:
   - python311-aioitertools 
   - python311-aiomisc 
   - python311-aiomisc-pytest 
-  - python311-aioquic 
   - python311-aioresponses 
   - python311-aiorpcX 
   - python311-aiosignal 
@@ -30309,7 +30313,6 @@ unsorted:
   - python311-pylru 
   - python311-pyls-spyder 
   - python311-pylsp-rope 
-  - python311-pylsqpack 
   - python311-pylzma 
   - python311-pymacaroons 
   - python311-pymad 
@@ -30550,6 +30553,7 @@ unsorted:
   - python311-python-mpd2 
   - python311-python-mpv 
   - python311-python-multipart 
+  - python311-python-nmap 
   - python311-python-openid-cla 
   - python311-python-openid-teams 
   - python311-python-oxmsg 
@@ -34209,6 +34213,7 @@ unsorted:
   - python312-python-mpd2 
   - python312-python-mpv 
   - python312-python-multipart 
+  - python312-python-nmap 
   - python312-python-openid-cla 
   - python312-python-openid-teams 
   - python312-python-oxmsg 
@@ -35881,7 +35886,6 @@ unsorted:
   - redshift-gtk 
   - reflectasm 
   - reflectasm-javadoc 
-  - reg 
   - regclient 
   - regclient-bash-completion 
   - regclient-fish-completion 
