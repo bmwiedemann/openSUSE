@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Oct  9 19:59:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.8.0:
+  * New features:
+    - Add Clang 19 support. (gh#conan-io/conan#17010)
+    - conan config list <pattern> to filter available
+      configurations. (gh#conan-io/conan#17000)
+    - New auth_remote.py plugin for custom user authentication to
+      Conan remotes. (gh#conan-io/conan#16942)
+    - New auth_source.py plugin for custom user authentication for
+      generic downloads of sources. (gh#conan-io/conan#16942)
+    - Add --envs-generation={false} to conan install and conan
+      build to disable the generation of virtualenvs
+      (conanbuildenv.sh|bat and conanrunenv.sh|bat).
+      (gh#conan-io/conan#16935)
+    - New tools.files.unzip:filter conf that allows to define
+      data, tar and fully_trusted extraction policies for tgz
+      files. (gh#conan-io/conan#16918)
+    - get() and unzip() tools for source() learned a new
+      extract_filter argument to define data, tar and
+      fully_trusted extraction policies for tgz files.
+      (gh#conan-io/conan#16918)
+    - Add progress updates for large uploads (>100Mbs) every 10
+      seconds. (gh#conan-io/conan#16913)
+    - Implement conan config install-pkg --url=<repo-url> for
+      initial definition of remote URL when no remotes are defined
+      yet. (gh#conan-io/conan#16876)
+    - Allow building a compatible package still of the current
+      profile one. (gh#conan-io/conan#16871)
+    - Allow bootstrapping (depending on another variant of
+      yourself), even for the same version.
+      (gh#conan-io/conan#16870)
+    - Allow [replace_requires] to replace the package name and
+      self.dependencies still works with the old name.
+      (gh#conan-io/conan#16443)
+  * Bugs fixed:
+    - Let CMakeToolchain defining CMAKE_SYSTEM_XXX even if
+      user_toolchain is defined, but protected in case the
+      toolchain really defines them. (gh#conan-io/conan#17036)
+    - Replace | character in generated CMake and Environment
+      files. (gh#conan-io/conan#17024)
+    - Redirect the PkgConfig stderr to the exception raised.
+      (gh#conan-io/conan#17020)
+    - Use always forward slashes in Windows subsystems bash path.
+      (gh#conan-io/conan#16997)
+    - Better error messages when conan list
+      --graph=<graph-json-file> file has issues.
+      (gh#conan-io/conan#16936)
+    - PkgConfigDeps.set_property() was not setting properly all
+      the available properties. (gh#conan-io/conan#17051)
+    - BazelDeps did not find DLL files as Conan does not model
+      them in the Windows platform. (gh#conan-io/conan#17045)
+    - Do not skip dependencies of a package if it is not going to
+      be skipped due to tools.graph:skip_binaries=False.
+      (gh#conan-io/conan#17033)
+    - Allow requires(..., package_id_mode) trait in case of
+      diamonds to always use the recipe defined one irrespective
+      of requires() order. (gh#conan-io/conan#16987)
+    - Propagate include_prerelease flag to intersection of
+      VersionRange. (gh#conan-io/conan#16986)
+    - Raise error if invalid value passed to
+      conf.get(check_type=bool). (gh#conan-io/conan#16976)
+    - Allow remote_login accept patterns.
+      (gh#conan-io/conan#16942)
+
+-------------------------------------------------------------------
 Wed Jul 17 11:12:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.0:
