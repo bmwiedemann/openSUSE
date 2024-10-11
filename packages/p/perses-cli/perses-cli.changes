@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:27:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.48.0:
+  https://github.com/perses/perses/releases/tag/v0.48.0
+  CLI-related changes:
+  * [DOC] Add links in the CLI doc (#2276)
+  * [ENHANCEMENT] Ignore Not Found errors in percli delete command
+    (#2184)
+
+-------------------------------------------------------------------
 Tue Sep 10 06:52:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package perses-cli: CLI for the Perses observability
