@@ -19,11 +19,7 @@
 # The automatic requires would be java-headless >= 9, but the
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
-%if 0%{?suse_version} >= 1550
 %bcond_without extra_modules
-%else
-%bcond_with extra_modules
-%endif
 Name:           log4j
 Version:        2.17.2
 Release:        0

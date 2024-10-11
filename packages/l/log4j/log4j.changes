@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:36:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build the extra modules even for SLE
+
+-------------------------------------------------------------------
 Mon Apr 29 12:12:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8

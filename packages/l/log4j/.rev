@@ -350,4 +350,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170852</requestid>
   </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>64c4ae8f11fd2e9a355903a02fbfb6f7</srcmd5>
+    <version>2.17.2</version>
+    <time>1728659023</time>
+    <user>anag+factory</user>
+    <comment>Build the extra modules even for SLE</comment>
+    <requestid>1207152</requestid>
+  </revision>
 </revisionlist>
