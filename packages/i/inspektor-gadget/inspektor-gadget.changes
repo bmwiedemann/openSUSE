@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:25:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.33.0:
+  * Welcome to the v0.33.0 release of Inspektor Gadget. The most
+    relevant changes for this version are:
+    - introduce GadgetInstanceManager to run gadgets headless by
+      @flyth in #2960
+    - Add profile_tcprtt by @eiffel-fl in #3452
+    - gadgets: add gadget to trace mutex locks/unlocks by
+      @Snehil-Shah in #3503
+    - Add top_blockio by @burak-ok in #3273
+    - gadgets: Port trace_fsslower to image-based by
+      @mauriciovasquezbernal in #3463
+    - cmd/common: allow to specify gadget runtime configuration
+      using "-f" by @flyth in #3515
+  * General Improvements
+    - gadgets/top_file: Provide full file path by @MeherRushi in
+      #3347
+    - clioperator: Add support for adding / removing fields with
+      --fields by @h4l0gen in #3284
+    - Add inspect subcommand to image by @eiffel-fl in #3382
+    - gadgets: Update readme by @mauriciovasquezbernal in #3428
+    - pkg/oci: Rename ListGadgetImages() to GetGadgetImages(). by
+      @eiffel-fl in #3442
+    - pkg/operators/otel-metrics: don't automatically apply metrics
+      type based on role tag by @flyth in #3447
+    - pkg/datasource: Use FullName to look for fields in config by
+      @blanquicet in #3448
+    - treewide: Bump go to 1.22.7. by @eiffel-fl in #3458
+    - fsnotify: add new fields by @alban in #3438
+    - Add a second map to get pods and svcs by IP without GetCmp by
+      @matthyx in #3446
+    - pkg: Add safeset package. by @eiffel-fl in #3472
+    - trace-dns: use new fields from socket enricher by @alban in
+      #2684
+    - oci: Set artifactType in all cases by @mauriciovasquezbernal
+      in #3469
+    - socket enricher: warning in case of incompatibility by @alban
+      in #3479
+    - metadata: Clean up parameters handling by
+      @mauriciovasquezbernal in #3490
+    - cmd/build: Reduce duplicate code by @mauriciovasquezbernal in
+      #3498
+    - wasm: Add parameters handling to wasm by
+      @mauriciovasquezbernal in #3449
+    - pkg/operators/oci-handler: Support set annotations at runtime
+      by @blanquicet in #3468
+    - wasm: Add support for setting config by
+      @mauriciovasquezbernal in #3475
+    - gadgets: Rework the makefile to add better parallelism. by
+      @eiffel-fl in #2987
+    - feat: add verifier debug output when running faulty ebpf
+      gadget by @patrickpichler in #3529
+    - operators/kubeipresolver: Improve memory consumption by
+      @mauriciovasquezbernal in #3530
+  * Bug Fixes
+    - operators/ebpf: Fix crash when spec doesn't contain types by
+      @mauriciovasquezbernal in #3450
+    - gadgets: Fix headless test by @mauriciovasquezbernal in #3519
+  * Documentation Improvements
+    - docs: add operator documentation by @mauriciovasquezbernal in
+      #3406
+    - docs/gadget-devel/building: Clarify that sudo needs to be run
+      with -E by @mauriciovasquezbernal in #3435
+    - docs/operators: remove links from diagram by
+      @mauriciovasquezbernal in #3437
+    - docs: Distinguish between ig and kubectl-gadget in kernel
+      filtering by @blanquicet in #3423
+    - docs: Improve trace_dns guide by @mqasimsarfraz in #3429
+    - docs/specs/operators: Point to latest docs in pkg.go.dev by
+      @blanquicet in #3440
+    - docs: Extend documentation on allowed-gadgets. by @eiffel-fl
+      in #3473
+    - docs: Fix broken link for cosign container signing process.
+      by @eiffel-fl in #3482
+    - docs: Fix operators instance params by @mqasimsarfraz in
+      #3495
+    - docs: Use constants to point to correct versions in docs by
+      @mauriciovasquezbernal in #3496
+    - docs: Fixes for hello-world-gadget-wasm by @mqasimsarfraz in
+      #3512
+    - docs: Improve trace_oomkill guide by @mqasimsarfraz in #3493
+    - gadgets/README.mdx: Update sidebar_position after adding
+      top_blockio by @burak-ok in #3520
+
+-------------------------------------------------------------------
 Sat Sep 14 13:58:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.32.0:
