@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:00:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.10.2:
+  CLI-related changes:
+  * Relax mc validations in the CLI to avoid errors (#13151)
+
+-------------------------------------------------------------------
 Sun Oct 06 08:03:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.10.1:
