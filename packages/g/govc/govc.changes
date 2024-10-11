@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:28:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.44.1:
+  * chore: Update version.go for v0.44.1
+  * fix: ensure proper vSAN URI format in ResolveLibraryItemStorage
+
+-------------------------------------------------------------------
+Fri Oct 11 08:23:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.44.0:
+  * chore: Update version.go for v0.44.0
+  * chore: fixup internal version
+  * vcsim: lock ViewManager in RegisterObject callbacks
+  * govc: update help url
+  * build(deps): bump golang.org/x/text from 0.18.0 to 0.19.0
+  * vcsim: add *Context param to UpdateObject interface method
+  * govc: add vm.change -managed-by flag
+  * vcsim: support clearing ManagedBy field
+  * fix: synchronize access to session.Manager.userSession
+  * examples: add ExampleListView_ofContainerView
+  * vcsim: handle traversal spec object updates
+  * vcsim: ModifyListView 'remove' does not return unresolved
+    objects
+  * chore: bump default ClientVersion
+  * docs: sync CHANGELOG
+  * chore: bump Go versions
+  * chore: fix GH Action tag output param
+  * docs: various updates
+  * govc: add storage.policy.info flag to query IO filters
+  * Use internalpbm namespace for PbmQueryIOFiltersFromProfileId
+  * vcsim: override response namespace from struct tag
+  * api: Update folder.PlaceVMsXCluster to support several
+    placement types
+  * api: disable http.Transport.ForceAttemptHTTP2 by default
+  * vcsim: fix RelocateVM_Task related races
+  * govc: add native kms provider support
+  * api: add vapi/crypto package with support for native KMS
+  * api: add rest.Client.DownloadAttachment method
+  * api: extract NewDatastoreURL from Datastore.NewURL method
+  * api: Support querying PBM profile for IOFILTERS
+  * govc: add kms commands
+  * chore: rename crypto.Manager RegisterKmipCluster >
+    RegisterKmsCluster
+  * vcsim: support cluster registration in RegisterKmipServer
+  * vcsim: Gen enc key w default provider on createvm
+  * api: Helpers for key management servers
+  * chore: simplify error handling by using the new fault package
+
+-------------------------------------------------------------------
 Sat Sep 14 11:33:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.43.0:
