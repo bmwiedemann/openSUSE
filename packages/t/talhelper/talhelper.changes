@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:21:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.7:
+  * fix: change map type from `map[interface{}]interface{}` to
+    `map[string]interface{}`
+  * feat(deps): update `gopkg.in/yaml` to v3 for substitute package
+  * fix(deps)!: Update module gopkg.in/yaml.v2 to v3
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.2
+  * fix(CI): don't need `flakes-from-devshell` and typo
+  * feat(CI): add test nix build workflow
+  * docs: update CLI reference documentation (#643)
+  * chore(deps): update dependency siderolabs/talos to v1.8.1
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.8.1
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.8.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#642)
+  * chore(github-action): update actions/checkout action to v4.2.1
+  * chore(github-action): update actions/checkout digest to eef6144
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.9.1
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.9.1
+  * chore(github-action)!: Update cachix/install-nix-action action
+    to v30
+  * chore(schema): update talos-extensions.yaml JSON schema (#632)
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.1
+  * fix: Add support for relative paths when called from another
+    dir (#619)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.23-bookworm docker digest
+    to 16c623a
+  * chore(github-action): update renovatebot/github-action action
+    to v40.2.11
+  * chore(github-action)!: Update cachix/install-nix-action action
+    to v29
+  * chore(schema): update talos-extensions.yaml JSON schema (#625)
+  * chore(github-action): update actions/checkout action to v4.2.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#623)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.6
+  * feat(cmd): generate shell completion for `--node` flag
+  * chore(container): update alpine:3.20.3 docker digest to beefdbd
+  * chore(container): update alpine:3.20.3 docker digest to a8f1201
+  * feat: update Scoop for talhelper version v3.0.6
+  * feat: update flake (#617)
+
+-------------------------------------------------------------------
 Wed Sep 25 04:57:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.6:
