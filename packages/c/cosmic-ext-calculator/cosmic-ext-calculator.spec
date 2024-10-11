@@ -18,7 +18,7 @@
 
 %define         appid dev.edfloreshz.Calculator
 Name:           cosmic-ext-calculator
-Version:        0.1.0+git20240820.2286299
+Version:        0.1.0+git20241009.2a519cf
 Release:        0
 Summary:        A simple calculator for the COSMIC desktop
 License:        GPL-3.0-only
@@ -26,8 +26,10 @@ URL:            https://github.com/edfloreshz/cosmic-ext-calculator
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -41,9 +43,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 just build-release
 
 %install
-install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm0644 res/com.example.CosmicAppTemplate.desktop %{buildroot}%{_datadir}/applications/%{appid}.desktop
-#just rootdir=%{buildroot} prefix=%{_prefix} install
+just rootdir=%{buildroot} prefix=%{_prefix} install
 %suse_update_desktop_file %{appid}
 
 %files
@@ -51,5 +51,6 @@ install -Dm0644 res/com.example.CosmicAppTemplate.desktop %{buildroot}%{_datadir
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 
 %changelog

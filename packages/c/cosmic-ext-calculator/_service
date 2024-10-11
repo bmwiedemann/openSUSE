@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/edfloreshz/cosmic-ext-calculator.git</param>
+    <param name="url">https://github.com/cosmic-utils/calculator.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
     <param name="versionformat">0.1.0+git%cd.%h</param>
@@ -13,7 +13,7 @@
     <param name="compression">zstd</param>
   </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="src">cosmic-ext-calculator</param>
+    <param name="src">calculator</param>
     <param name="update">false</param>
   </service>
   <service name="set_version" mode="manual" />
