@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Oct 10 17:11:15 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.3.1
+  https://www.thunderbird.net/en-US/thunderbird/128.0esr/releasenotes/
+  and following release notes for minor version updates
+  MFSA 2024-52  (bsc#1231413)
+  * CVE-2024-9680 (bmo#1923344)
+    Use-after-free in Animation timeline
+  Mozilla Thunderbird 128.3.0
+  MFSA 2024-32 (128.0)
+  MFSA 2024-37 (128.1)
+  MFSA 2024-43 (128.2)
+  MFSA 2024-49 (128.3) (bsc#1230979)
+  * CVE-2024-9392 (bmo#1899154, bmo#1905843)
+    Compromised content process can bypass site isolation
+  * CVE-2024-9393 (bmo#1918301)
+    Cross-origin access to PDF contents through multipart responses
+  * CVE-2024-9394 (bmo#1918874)
+    Cross-origin access to JSON contents through multipart responses
+  * CVE-2024-8900 (bmo#1872841)
+    Clipboard write permission bypass
+  * CVE-2024-9396 (bmo#1912471)
+    Potential memory corruption may occur when cloning certain objects
+  * CVE-2024-9397 (bmo#1916659)
+    Potential directory upload bypass via clickjacking
+  * CVE-2024-9398 (bmo#1881037)
+    External protocol handlers could be enumerated via popups
+  * CVE-2024-9399 (bmo#1907726)
+    Specially crafted WebTransport requests could lead to denial
+    of service
+  * CVE-2024-9400 (bmo#1915249)
+    Potential memory corruption during JIT compilation
+  * CVE-2024-9401 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 115.16,
+    Firefox ESR 128.3, Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1913445,
+    bmo#1914106, bmo#1914475, bmo#1914963, bmo#1915008, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 128.3,
+    Thunderbird 131, and Thunderbird 128.3
+- removed obsolete patches
+  mozilla-bmo1504834-part3.patch
+  mozilla-bmo1512162.patch
+  mozilla-bmo1775202.patch
+  mozilla-bmo531915.patch
+  mozilla-fix-aarch64-libopus.patch
+  mozilla-fix-issues-with-llvm18.patch
+  mozilla-fix-top-level-asm.patch
+  mozilla-partial-revert-1768632.patch
+  mozilla-rust-disable-future-incompat.patch
+  thunderbird-fix-CVE-2024-34703.patch
+- new patch thunderbird-silence-no-return.patch
+- rebased
+  mozilla-bmo1504834-part1.patch
+  mozilla-kde.patch
+  mozilla-libavcodec58_91.patch
+  mozilla-silence-no-return-type.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 08:55:26 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.15.0

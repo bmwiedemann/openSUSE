@@ -2,9 +2,10 @@
 # Parent  9fcbd287056a40084b1e679f787bf683b291f323
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
-diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
---- a/gfx/2d/DrawTargetSkia.cpp
-+++ b/gfx/2d/DrawTargetSkia.cpp
+Index: firefox-128.0/gfx/2d/DrawTargetSkia.cpp
+===================================================================
+--- firefox-128.0.orig/gfx/2d/DrawTargetSkia.cpp
++++ firefox-128.0/gfx/2d/DrawTargetSkia.cpp
 @@ -156,7 +156,8 @@ static IntRect CalculateSurfaceBounds(co
  }
  
@@ -15,9 +16,10 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
  
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
-diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
---- a/gfx/2d/Types.h
-+++ b/gfx/2d/Types.h
+Index: firefox-128.0/gfx/2d/Types.h
+===================================================================
+--- firefox-128.0.orig/gfx/2d/Types.h
++++ firefox-128.0/gfx/2d/Types.h
 @@ -89,18 +89,11 @@ enum class SurfaceFormat : int8_t {
    // This represents the unknown format.
    UNKNOWN,  // TODO: Replace uses with Maybe<SurfaceFormat>.
@@ -40,10 +42,11 @@ diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
  
    // The following values are OS and endian-independent synonyms.
    //
-diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/skcms.cc
---- a/gfx/skia/skia/modules/skcms/skcms.cc
-+++ b/gfx/skia/skia/modules/skcms/skcms.cc
-@@ -30,6 +30,8 @@
+Index: firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
+===================================================================
+--- firefox-128.0.orig/gfx/skia/skia/modules/skcms/skcms.cc
++++ firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
+@@ -31,6 +31,8 @@
          #include <avx512fintrin.h>
          #include <avx512dqintrin.h>
      #endif
@@ -51,7 +54,7 @@ diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/
 +    #define SKCMS_PORTABLE
  #endif
  
- static bool runtime_cpu_detection = true;
+ using namespace skcms_private;
 @@ -324,20 +326,28 @@ enum {
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;

@@ -84,6 +84,7 @@ function set_internal_variables() {
   FTP_URL="https://ftp.mozilla.org/pub/$PRODUCT/releases/$VERSION$VERSION_SUFFIX/source"
   FTP_CANDIDATES_BASE_URL="https://ftp.mozilla.org/pub/%s/candidates"
   LOCALES_URL="https://product-details.mozilla.org/1.0/l10n"
+  FF_L10N_MONOREPO="https://github.com/mozilla-l10n/firefox-l10n"
   PRODUCT_URL="https://product-details.mozilla.org/1.0"
   ALREADY_EXTRACTED_LOCALES_FILE=0
 }
@@ -137,7 +138,7 @@ function get_source_stamp() {
   local BUILD_JSON=$(curl --silent --fail "$FTP_CANDIDATES_BASE_URL/$FTP_CANDIDATES_JSON_SUFFIX") || return 1;
   local REV=$(echo "$BUILD_JSON" | jq .moz_source_stamp)
   local SOURCE_REPO=$(echo "$BUILD_JSON" | jq .moz_source_repo)
-  local TIMESTAMP=$(echo "$BUILD_JSON" | jq .buildid)
+  TIMESTAMP=$(echo "$BUILD_JSON" | jq .buildid)
   echo "Extending $TAR_STAMP with:"
   echo "RELEASE_REPO=${SOURCE_REPO}"
   echo "RELEASE_TAG=${REV}"
@@ -428,7 +429,7 @@ function clone_and_repackage_sources() {
   # get repo and source stamp
   local REV=$(hg -R . parent --template="{node|short}\n")
   local SOURCE_REPO=$(hg showconfig paths.default 2>/dev/null | head -n1 | sed -e "s/^ssh:/https:/")
-  local TIMESTAMP=$(date +%Y%m%d%H%M%S)
+  TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
   if [ "$PRODUCT" = "thunderbird" ]; then
     pushd comm || exit 1
@@ -500,10 +501,6 @@ function clone_and_repackage_locales() {
     FF_L10N_BASE="l10n_ff"
   fi
 
-  test ! -d $FF_L10N_BASE && mkdir $FF_L10N_BASE
-  # No-op, if we are building FF:
-  test ! -d $FINAL_L10N_BASE && mkdir $FINAL_L10N_BASE
-
   # This is only relevant for Thunderbird-builds
   # Here, the relevant directories we need to copy from FF and from TB
   # are specified in a python-file in the tarball
@@ -512,33 +509,42 @@ function clone_and_repackage_locales() {
   tb_locale_template=$(get_locales_directories "COMM_STRINGS_PATTERNS")
 
   echo "Fetching Browser locales..."
-  jq -r 'to_entries[]| "\(.key) \(.value|.revision)"' "$FF_LOCALE_FILE" | \
-    while read -r locale changeset ; do
-      case $locale in
-        ja-JP-mac|en-US)
-          ;;
-        *)
-          echo "reading changeset information for $locale"
-          echo "fetching $locale changeset $changeset ..."
-          if [ -d "$FF_L10N_BASE/$locale/.hg" ]; then
-            pushd "$FF_L10N_BASE/$locale" || exit 1
-            hg pull || exit 1
-            popd || exit 1
-          else
-            hg clone "https://hg.mozilla.org/l10n-central/$locale" "$FF_L10N_BASE/$locale" || exit 1
-          fi
-          [ "$RELEASE_TAG" == "default" ] || hg -R "$FF_L10N_BASE/$locale" up -C -r "$changeset" || exit 1
+  if [ -d "$FF_L10N_BASE/.git" ]; then
+    pushd "$FF_L10N_BASE/" || exit 1
+    git fetch -a || exit 1
+    popd || exit 1
+  else
+    git clone "$FF_L10N_MONOREPO" "$FF_L10N_BASE" || exit 1
+  fi
+  # Currently all locales show the same changeset-hash, as they moved to a monorepo. We just take the first one.
+  changeset=$(jq -r 'to_entries[0]| "\(.key) \(.value|.revision)"' "$FF_LOCALE_FILE" | cut -d " " -f 2)
+  [ "$RELEASE_TAG" == "default" ] || git -C "$FF_L10N_BASE/" switch --detach "$changeset" || exit 1
 
-          # If we are doing TB, we have to merge both l10n-repos
-          if [ "$PRODUCT" = "thunderbird" ] && test -d "$TB_L10N_BASE/$locale/" ; then
+  # No-op, if we are building FF:
+  test ! -d $FINAL_L10N_BASE && mkdir $FINAL_L10N_BASE
+
+  # If we are doing TB, we have to merge both l10n-repos
+  if [ "$PRODUCT" = "thunderbird" ] && test -d "$TB_L10N_BASE/$locale/" ; then
+    jq -r 'to_entries[]| "\(.key) \(.value|.revision)"' "$FF_LOCALE_FILE" | \
+      while read -r locale changeset ; do
+        case $locale in
+          ja-JP-mac|en-US)
+            ;;
+          *)
             create_and_copy_locales "$locale" "$FF_L10N_BASE" "$ff_locale_template" "$FINAL_L10N_BASE"
             create_and_copy_locales "$locale" "$TB_L10N_BASE" "$tb_locale_template" "$FINAL_L10N_BASE"
-          fi
-          ;;
-      esac
-    done
+            ;;
+        esac
+      done
+  fi
+
   echo "creating l10n archive..."
   local TAR_FLAGS="--exclude-vcs"
+  # For reproducable tarballs
+  # Convert TIMESTAMP to ISO-format, so tar can understand it, then set mtime to it
+  local MTIME=$(python3 -c "from datetime import datetime; print(datetime.strptime(${TIMESTAMP}, '%Y%m%d%H%M%S').isoformat())")
+  TAR_FLAGS="$TAR_FLAGS --sort=name --format=posix --pax-option=delete=atime,delete=ctime,exthdr.name=%d/PaxHeaders/%f --numeric-owner --owner=0 --group=0 --mode=go+u,go-w --clamp-mtime --mtime=$MTIME"
+
   if [ "$PRODUCT" = "thunderbird" ]; then
     TAR_FLAGS="$TAR_FLAGS --exclude=suite"
   fi

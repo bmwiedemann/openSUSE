@@ -5466,4 +5466,41 @@ I cannot test locally unfortunately.
 - Don't use gcc14 as sources don't compile.</comment>
     <requestid>1199551</requestid>
   </revision>
+  <revision rev="342" vrev="1">
+    <srcmd5>b7a02cfe076308376f50fa1a412f0a3c</srcmd5>
+    <version>128.3.1</version>
+    <time>1728658958</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.3.1
+  https://www.thunderbird.net/en-US/thunderbird/128.0esr/releasenotes/
+  and following release notes for minor version updates
+  MFSA 2024-52  (bsc#1231413)
+  * CVE-2024-9680 (bmo#1923344)
+    Use-after-free in Animation timeline
+  Mozilla Thunderbird 128.3.0
+  MFSA 2024-32 (128.0)
+  MFSA 2024-37 (128.1)
+  MFSA 2024-43 (128.2)
+  MFSA 2024-49 (128.3) (bsc#1230979)
+  * CVE-2024-9392 (bmo#1899154, bmo#1905843)
+    Compromised content process can bypass site isolation
+  * CVE-2024-9393 (bmo#1918301)
+    Cross-origin access to PDF contents through multipart responses
+  * CVE-2024-9394 (bmo#1918874)
+    Cross-origin access to JSON contents through multipart responses
+  * CVE-2024-8900 (bmo#1872841)
+    Clipboard write permission bypass
+  * CVE-2024-9396 (bmo#1912471)
+    Potential memory corruption may occur when cloning certain objects
+  * CVE-2024-9397 (bmo#1916659)
+    Potential directory upload bypass via clickjacking
+  * CVE-2024-9398 (bmo#1881037)
+    External protocol handlers could be enumerated via popups
+  * CVE-2024-9399 (bmo#1907726)
+    Specially crafted WebTransport requests could lead to denial
+    of service
+  * CVE-2024-9400 (bmo#1915249)
+    Potential memory corruption during JIT compilation</comment>
+    <requestid>1207082</requestid>
+  </revision>
 </revisionlist>
