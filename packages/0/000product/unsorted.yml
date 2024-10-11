@@ -8487,6 +8487,14 @@ unsorted:
   - hayagriva 
   - hbci4java 
   - hbci4java-javadoc 
+  - hcloud-cli 
+  - hcloud-cli-bash-completion 
+  - hcloud-cli-fish-completion 
+  - hcloud-cli-zsh-completion 
+  - hcloud-upload-image 
+  - hcloud-upload-image-bash-completion 
+  - hcloud-upload-image-fish-completion 
+  - hcloud-upload-image-zsh-completion 
   - hcode 
   - hda-verb 
   - hdajackretask 
@@ -9464,6 +9472,8 @@ unsorted:
   - jetbrains-mono-fonts 
   - jettison 
   - jettison-javadoc 
+  - jetty-alpn-api 
+  - jetty-alpn-api-javadoc 
   - jetty-annotations 
   - jetty-ant 
   - jetty-artifact-remote-resources 
@@ -9559,6 +9569,7 @@ unsorted:
   - jlfgr 
   - jline 
   - jline-javadoc 
+  - jline3 
   - jline3-builtins 
   - jline3-console 
   - jline3-javadoc 
@@ -20186,6 +20197,7 @@ unsorted:
   - ocfs2-tools-devel-static 
   - ocfs2-tools-o2cb 
   - oci-cli 
+  - oci-registry 
   - ocl-icd-devel 
   - ocl-icd-devel-32bit 
   - ocli 
@@ -25975,6 +25987,7 @@ unsorted:
   - python310-ldaptor 
   - python310-ldas-tools-al-swig 
   - python310-leather 
+  - python310-legacy-cgi 
   - python310-leglight 
   - python310-lesscpy 
   - python310-lexicon 
@@ -26545,6 +26558,7 @@ unsorted:
   - python310-prometheus-client 
   - python310-promise 
   - python310-prompt_toolkit 
+  - python310-propcache 
   - python310-proselint 
   - python310-proto-plus 
   - python310-protobuf 
@@ -29592,6 +29606,7 @@ unsorted:
   - python311-ldaptor 
   - python311-ldas-tools-al-swig 
   - python311-leather 
+  - python311-legacy-cgi 
   - python311-leglight 
   - python311-lesscpy 
   - python311-lexicon 
@@ -30139,6 +30154,7 @@ unsorted:
   - python311-prometheus-client 
   - python311-promise 
   - python311-prompt_toolkit 
+  - python311-propcache 
   - python311-proselint 
   - python311-proto-plus 
   - python311-protobuf 
@@ -33212,6 +33228,7 @@ unsorted:
   - python312-ldaptor 
   - python312-ldas-tools-al-swig 
   - python312-leather 
+  - python312-legacy-cgi 
   - python312-leglight 
   - python312-lesscpy 
   - python312-lexicon 
@@ -33779,6 +33796,7 @@ unsorted:
   - python312-prometheus-client 
   - python312-promise 
   - python312-prompt_toolkit 
+  - python312-propcache 
   - python312-proselint 
   - python312-proto-plus 
   - python312-protobuf 
@@ -48125,6 +48143,8 @@ unsorted:
   - vhs-fish-completion 
   - vhs-zsh-completion 
   - viddy 
+  - video-trimmer 
+  - video-trimmer-lang 
   - vido 
   - vido-lang 
   - viewnior 
