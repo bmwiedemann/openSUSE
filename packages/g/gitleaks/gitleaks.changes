@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:04:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.20.1:
+  * feat(config): add placeholder regexes to global allowlist
+    (#1547)
+  * feat: add PrivateAI rule (#1548)
+  * Bump golang verion used in docker build to match version
+    specified in go.mod (#1551)
+  * feat: add cohere rule (#1549)
+  * feat(generate): generate global (#1546)
+  * Feat/nuget config password rule (#1540)
+
+-------------------------------------------------------------------
 Fri Oct 04 19:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.20.0:
