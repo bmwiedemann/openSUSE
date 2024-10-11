@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-aiocsv
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Asynchronous CSV reading/writing in Python
 License:        MIT
@@ -28,9 +28,11 @@ BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-typing_extensions
 %python_subpackages
 
 %description
