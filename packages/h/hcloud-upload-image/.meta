@@ -1,0 +1,5 @@
+<package name="hcloud-upload-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Cloud:Tools" package="hcloud-upload-image"/>
+</package>
