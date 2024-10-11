@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp-theme
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        A configurable sidebar-enabled Sphinx theme
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp-theme
-Source:         https://files.pythonhosted.org/packages/source/a/aiohttp-theme/aiohttp-theme-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/aiohttp_theme/aiohttp_theme-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,7 +35,7 @@ BuildArch:      noarch
 A configurable sidebar-enabled Sphinx theme used by aiohttp
 
 %prep
-%setup -q -n aiohttp-theme-%{version}
+%setup -q -n aiohttp_theme-%{version}
 
 %build
 %python_build

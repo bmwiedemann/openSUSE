@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 11 10:44:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.1.7
+  * Drop python2
+  * Upgrade to GitHub-native Dependabot
+  * Update semantic-version requirement from <2.5,>=2.4 to >=2.4,<2.9 (#5)
+  * Update semantic-version requirement from <2.9,>=2.4 to >=2.4,<2.11 (#48)
+  * Add CodeQL workflow for GitHub code scanning (#56)
+  * Remove margin rule (#61)
+  * Drop old classifiers and tweak license (#64)
+  * Update releases requirement from <2.0,>=1.2.0 to >=1.2.0,<3.0 (#59)
+  * Update CI (#63)
+  * Update dependencies (#68)
+  * Release v0.1.7 (#67)
+  * Rename cd-cd.yml to ci-cd.yml (#70)
+
+-------------------------------------------------------------------
 Tue Jul  4 11:31:21 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
