@@ -446,6 +446,12 @@ Patch140:       revert-the-change-making-reactor-less-blocking-bsc-1.patch
 Patch141:       allow-namedloadercontexts-to-be-returned-from-loader.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/d54407ba6dc664e5e5f3f613e27ae24f828c9648
 Patch142:       avoid-explicit-reading-of-etc-salt-minion-bsc-122035.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/682
+Patch143:       fix-x509-test-fails-on-old-openssl-systems-682.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/684
+Patch144:       fix-x509-private-key-tests-and-test_suse-on-sle12-68.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/685
+Patch145:       enhance-cleanup-mechanism-after-salt-bundle-upgrade-.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

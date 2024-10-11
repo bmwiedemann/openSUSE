@@ -1,0 +1,12 @@
+--- syslog-ng-4.8.0/modules/java/Makefile.am	2024-09-26 14:12:20.123899971 +0200
++++ syslog-ng-4.8.0/modules/java/Makefile.am	2024-09-26 14:17:32.826283221 +0200
+@@ -50,7 +50,8 @@
+ java-binaries: $(SYSLOG_NG_CORE_JAR)
+ 
+ $(SYSLOG_NG_CORE_JAR): $(JAVA_CLASS_FILES) $(SYSLOG_NG_CORE_LIBS_DIR)
+-	$(AM_V_GEN)$(JAR) cvf $(SYSLOG_NG_CORE_JAR) -C $(SYSLOG_NG_CORE_CLASSES_DIR) .
++	$(AM_V_GEN)$(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++        --create --verbose --file=$(SYSLOG_NG_CORE_JAR) -C $(SYSLOG_NG_CORE_CLASSES_DIR) .
+ 
+ $(SYSLOG_NG_CORE_LIBS_DIR) $(SYSLOG_NG_CORE_CLASSES_DIR) $(SYSLOG_NG_CORE_PACKAGE_DIR) $(JAVA_BUILDDIR):
+ 	mkdir -p $@

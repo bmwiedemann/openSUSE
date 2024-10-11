@@ -24,9 +24,8 @@
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
-  <property name="build.testDir" value="src/test/java"/>
-  <property name="test.reports" value="${build.dir}/test-reports"/>
+  <property name="build.moditectDir" value="src/moditect"/>
+
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
   <!-- ====================================================================== -->
@@ -34,11 +33,6 @@
   <!-- ====================================================================== -->
 
   <path id="build.classpath"/>
-  <path id="build.test.classpath">
-    <fileset dir="lib">
-      <include name="**/*.jar"/>
-    </fileset>
-  </path>
 
   <!-- ====================================================================== -->
   <!-- Cleaning up target                                                     -->
@@ -54,114 +48,39 @@
 
   <target name="compile" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
-    <javac destdir="${build.outputDir}" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           release="${compiler.release}" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
-		   encoding="utf-8"
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           encoding="utf-8"
            source="${compiler.source}">
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-  </target>
-
-  <!-- ====================================================================== -->
-  <!-- Test-compilation target                                                -->
-  <!-- ====================================================================== -->
-
-  <target name="compile-tests" 
-          depends="compile" 
-          description="Compile the test code" 
-          unless="test.skip">
-    <mkdir dir="${build.testOutputDir}"/>
-    <javac destdir="${build.testOutputDir}" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           release="${compiler.release}" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
-           source="${compiler.source}">
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="9"
+           verbose="false"
+           fork="false"
+           encoding="utf-8">
       <src>
-        <pathelement location="${build.testDir}"/>
+        <pathelement location="${build.moditectDir}"/>
       </src>
-      <classpath>
-        <path refid="build.test.classpath"/>
+      <modulepath>
+        <path refid="build.classpath"/>
         <pathelement location="${build.outputDir}"/>
-      </classpath>
+      </modulepath>
     </javac>
-  </target>
-
-  <!-- ====================================================================== -->
-  <!-- Run all tests                                                          -->
-  <!-- ====================================================================== -->
-
-  <target name="test" 
-          depends="compile-tests, junit-missing" 
-          unless="junit.skipped" 
-          description="Run the test cases">
-    <mkdir dir="${test.reports}"/>
-    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
-      <sysproperty key="basedir" value="."/>
-      <formatter type="xml"/>
-      <formatter type="plain" usefile="false"/>
-      <classpath>
-        <path refid="build.test.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-        <pathelement location="${build.testOutputDir}"/>
-      </classpath>
-      <batchtest todir="${test.reports}" unless="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/Test*.java"/>
-          <include name="**/*Test.java"/>
-          <include name="**/*TestCase.java"/>
-          <exclude name="**/*Abstract*Test.java"/>
-        </fileset>
-      </batchtest>
-      <batchtest todir="${test.reports}" if="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/${test}.java"/>
-          <exclude name="**/*Abstract*Test.java"/>
-        </fileset>
-      </batchtest>
-    </junit>
-  </target>
-
-  <target name="test-junit-present">
-    <available classname="junit.framework.Test" property="junit.present" classpathref="build.test.classpath"/>
-  </target>
-
-  <target name="test-junit-status" 
-          depends="test-junit-present">
-    <condition property="junit.missing">
-      <and>
-        <isfalse value="${junit.present}"/>
-        <isfalse value="${test.skip}"/>
-      </and>
-    </condition>
-    <condition property="junit.skipped">
-      <or>
-        <isfalse value="${junit.present}"/>
-        <istrue value="${test.skip}"/>
-      </or>
-    </condition>
-  </target>
-
-  <target name="junit-missing" 
-          depends="test-junit-status" 
-          if="junit.missing">
-    <echo>=================================== WARNING ===================================</echo>
-    <echo> JUnit is not present in the test classpath or your $ANT_HOME/lib directory. Tests not executed.</echo>
-    <echo>===============================================================================</echo>
   </target>
 
   <!-- ====================================================================== -->
@@ -169,27 +88,27 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir}" 
-             packagenames="*" 
-             destdir="${reporting.outputDirectory}/apidocs" 
-             access="protected" 
-             source="${compiler.source}" 
-             verbose="false" 
-             version="true" 
-             use="true" 
-             author="true" 
-             splitindex="false" 
-             nodeprecated="false" 
-             nodeprecatedlist="false" 
-             notree="false" 
-             noindex="false" 
-             nohelp="false" 
-             nonavbar="false" 
-             serialwarn="false" 
-			 encoding="utf-8"
-             charset="utf-8" 
-             linksource="false" 
-             breakiterator="false" 
+    <javadoc sourcepath="${build.srcDir}"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             source="${compiler.source}"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             encoding="utf-8"
+             charset="utf-8"
+             linksource="false"
+             breakiterator="false"
              maxmemory="1g">
     </javadoc>
   </target>
@@ -198,35 +117,35 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="compile,test" description="Package the application">
-    <jar jarfile="${build.dir}/${build.finalName}.jar" 
-         compress="true" 
-         index="false" 
-         basedir="${build.outputDir}" 
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-		<attribute name="Bundle-Description" value="${project.description}"/>
-		<attribute name="Bundle-DocURL" value="http://github.com/FasterXML/jackson"/>
-		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-		<attribute name="Bundle-ManifestVersion" value="2"/>
-		<attribute name="Bundle-Name" value="${project.name}"/>
-		<attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
-		<attribute name="Bundle-Vendor" value="${project.vendor}"/>
-		<attribute name="Bundle-Version" value="${bundle.version}"/>
-		<attribute name="Export-Package" value="com.fasterxml.jackson.annotation;version=&quot;${project.version}&quot;"/>
-		<attribute name="Implementation-Title" value="${project.name}"/>
-		<attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
-		<attribute name="Implementation-Vendor" value="${project.vendor}"/>
-		<attribute name="Implementation-Version" value="${project.version}"/>
-		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
-		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
-		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
-		<attribute name="Specification-Title" value="${project.name}"/>
-		<attribute name="Specification-Vendor" value="${project.vendor}"/>
-		<attribute name="Specification-Version" value="${project.version}"/>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-DocURL" value="http://github.com/FasterXML/jackson"/>
+        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="${project.vendor}"/>
+        <attribute name="Bundle-Version" value="${bundle.version}"/>
+        <attribute name="Export-Package" value="com.fasterxml.jackson.annotation;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Vendor" value="${project.vendor}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.vendor}"/>
+        <attribute name="Specification-Version" value="${project.version}"/>
       </manifest>
-	</jar>
+    </jar>
   </target>
 
   <!-- ====================================================================== -->

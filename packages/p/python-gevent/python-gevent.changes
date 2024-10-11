@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 10 09:39:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 24.10.1
+  * Update the bundled c-ares to 1.33.1.
+  * Add support for Python 3.13.
+    - The functions and classes in ``gevent.subprocess`` no longer accept
+      ``stdout=STDOUT`` and raise a ``ValueError``.
+    Several additions and changes to the ``queue`` module, including:
+    - ``Queue.shutdown`` is available on all versions of Python.
+    - ``LifoQueue`` is now a joinable queue.
+  * gevent.monkey changed from a module to a package. The public API
+    remains the same.
+    For this release, private APIs (undocumented, marked internal, or
+    beginning with an underscore) are also preserved. However, these may
+    be changed or removed at any time in the future. If you are using one
+    of these APIs and cannot replace it, please contact the gevent team.
+  * For platforms that don't have ``socketpair``, upgrade our fallback
+    code to avoid a security issue.
+    See :issue:`2048`.
+  * Remove support for Python 3.8, which has reached the end of its
+    support lifecycle.
+    See :issue:`remove_py38`.
+- Drop gh-113964-fix-tests-3.12.3.patch, fixed upstream
+- Renumber patches
+
+-------------------------------------------------------------------
 Tue May 28 10:56:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add gh-2031-cython-workaround.patch which fixes a regression

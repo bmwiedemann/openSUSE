@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:57:32 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 131.0.2
+  MFSA 2024-51 (bsc#1231413)
+  * CVE-2024-9680 (bmo#1923344)
+    Use-after-free in Animation timeline
+
+-------------------------------------------------------------------
 Sun Sep 29 10:38:36 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Firefox 131.0

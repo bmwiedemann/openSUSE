@@ -229,7 +229,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        31.6.0
+Version:        31.7.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -347,9 +347,6 @@ Patch2012:      chromium-94-ffmpeg-roll.patch
 #     'nomerge' attribute cannot be applied to a declaration
 # See https://reviews.llvm.org/D92800
 Patch2022:      electron-13-fix-base-check-nomerge.patch
-# Fix electron patched code
-#Patch2024:      electron-16-std-vector-non-const.patch
-Patch2029:      electron-16-webpack-fix-openssl-3.patch
 Patch2031:      partition_alloc-no-lto.patch
 Patch2032:      seccomp_bpf-no-lto.patch
 Patch2034:      swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch

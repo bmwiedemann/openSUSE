@@ -14,4 +14,4 @@
 +    return (False)
  
  
- # Mark a test as requiring llvm to run
+ def _multi_gpu_exists():

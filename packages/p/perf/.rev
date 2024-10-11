@@ -672,4 +672,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199539</requestid>
   </revision>
+  <revision rev="78" vrev="87">
+    <srcmd5>5c7535eae667c0259ac14154d693eafd</srcmd5>
+    <version>MACRO</version>
+    <time>1728658944</time>
+    <user>anag+factory</user>
+    <comment>- add perf-fix-non-listed-archs.patch to fix armv7l build
+</comment>
+    <requestid>1206671</requestid>
+  </revision>
 </revisionlist>

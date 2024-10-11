@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:07:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build the module-info.java source too (with release=9)
+
+-------------------------------------------------------------------
 Wed Aug  7 09:01:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.2

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 04:37:30 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.0
+  * Node 20.18.0
+  * Fixed a crash when calling focus on a WebView's webContents.
+  * Fixed a potential issue accessing a child window document when overriding browserWindow creation via setWindowOpenHandler.
+  * Fixed an issue when dragging to resize when using Window Controls Overlay on Linux.
+  * Fixed an issue where an exception could be thrown on BrowserView after its owner BrowserWindow was closed.
+  * Fixed an issue where clicking the eyedropper icon did nothing instead of opening an eyedropper for color selection as expected.
+  * Ensured that the sender-id hint is set when creating desktop notifications on DBus.
+- Drop no longer needed electron-16-webpack-fix-openssl-3.patch
+- Print a message to stderr so that support logs shared by end users are clearly distinguished from upstream builds.
+
+-------------------------------------------------------------------
 Mon Sep 16 17:40:09 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Update to 31.6.0

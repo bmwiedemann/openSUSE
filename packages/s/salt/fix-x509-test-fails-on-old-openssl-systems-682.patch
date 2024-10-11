@@ -1,0 +1,261 @@
+From 7daf461528c90776b8f865cd58d20e23bd5b6f3f Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 2 Oct 2024 09:09:34 +0200
+Subject: [PATCH] Fix x509 test fails on old openssl systems (#682)
+
+---
+ .../functional/modules/test_x509_v2.py        | 41 +++++++++++++----
+ .../pytests/functional/states/test_x509_v2.py | 44 +++++++++++++++----
+ .../scenarios/performance/test_performance.py |  8 +++-
+ 3 files changed, 75 insertions(+), 18 deletions(-)
+
+diff --git a/tests/pytests/functional/modules/test_x509_v2.py b/tests/pytests/functional/modules/test_x509_v2.py
+index 2e8152d04a..7de8f3b01f 100644
+--- a/tests/pytests/functional/modules/test_x509_v2.py
++++ b/tests/pytests/functional/modules/test_x509_v2.py
+@@ -681,8 +681,13 @@ def test_create_certificate_self_signed(x509, algo, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+     try:
+         res = x509.create_certificate(signing_private_key=privkey, CN="success")
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++    except salt.exceptions.CommandExecutionError as e:
++        if "Could not load PEM-encoded" in e.error:
++            pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++        else:
++            raise e
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -754,8 +759,13 @@ def test_create_certificate_from_privkey(x509, ca_key, ca_cert, algo, request):
+             private_key=privkey,
+             CN="success",
+         )
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++    except salt.exceptions.CommandExecutionError as e:
++        if "Could not load PEM-encoded" in e.error:
++            pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++        else:
++            raise e
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -802,8 +812,13 @@ def test_create_certificate_from_pubkey(x509, ca_key, ca_cert, algo, request):
+             public_key=pubkey,
+             CN="success",
+         )
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++    except salt.exceptions.CommandExecutionError as e:
++        if "Could not load PEM-encoded" in e.error:
++            pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++        else:
++            raise e
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -1341,8 +1356,13 @@ def test_create_csr(x509, algo, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+     try:
+         res = x509.create_csr(private_key=privkey)
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++    except salt.exceptions.CommandExecutionError as e:
++        if "Could not load PEM-encoded" in e.error:
++            pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++        else:
++            raise e
+     assert res.startswith("-----BEGIN CERTIFICATE REQUEST-----")
+ 
+ 
+@@ -1402,7 +1422,7 @@ def test_create_csr_raw(x509, rsa_privkey):
+ def test_create_private_key(x509, algo):
+     try:
+         res = x509.create_private_key(algo=algo)
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN PRIVATE KEY-----")
+ 
+@@ -1413,7 +1433,7 @@ def test_create_private_key_with_passphrase(x509, algo):
+     passphrase = "hunter2"
+     try:
+         res = x509.create_private_key(algo=algo, passphrase=passphrase)
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN ENCRYPTED PRIVATE KEY-----")
+     # ensure it can be loaded
+@@ -1465,8 +1485,13 @@ def test_get_private_key_size(x509, algo, expected, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+     try:
+         res = x509.get_private_key_size(privkey)
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++    except salt.exceptions.CommandExecutionError as e:
++        if "Could not load PEM-encoded" in e.error:
++            pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
++        else:
++            raise e
+     assert res == expected
+ 
+ 
+@@ -1612,7 +1637,7 @@ def test_verify_signature(x509, algo, request):
+     wrong_privkey = request.getfixturevalue(f"{algo}_privkey")
+     try:
+         privkey = x509.create_private_key(algo=algo)
+-    except UnsupportedAlgorithm:
++    except (UnsupportedAlgorithm, NotImplementedError):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     cert = x509.create_certificate(signing_private_key=privkey)
+     assert x509.verify_signature(cert, privkey)
+diff --git a/tests/pytests/functional/states/test_x509_v2.py b/tests/pytests/functional/states/test_x509_v2.py
+index 47a1c555f8..139f7b1906 100644
+--- a/tests/pytests/functional/states/test_x509_v2.py
++++ b/tests/pytests/functional/states/test_x509_v2.py
+@@ -574,9 +574,9 @@ def existing_cert(x509, cert_args, ca_key, rsa_privkey, request):
+         ca_key,
+         encoding=cert_args.get("encoding", "pem"),
+         passphrase=cert_args.get("pkcs12_passphrase"),
+-        subject=subject
+-        if "signing_policy" not in cert_args
+-        else "CN=from_signing_policy",
++        subject=(
++            subject if "signing_policy" not in cert_args else "CN=from_signing_policy"
++        ),
+     )
+     yield cert_args["name"]
+ 
+@@ -694,8 +694,12 @@ def existing_csr_exts(x509, csr_args, csr_args_exts, ca_key, rsa_privkey, reques
+ def existing_pk(x509, pk_args, request):
+     pk_args.update(request.param)
+     ret = x509.private_key_managed(**pk_args)
+-    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
+-        pytest.skip(f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version")
++    if ret.result == False and (
++        "UnsupportedAlgorithm" in ret.comment or "NotImplementedError" in ret.comment
++    ):
++        pytest.skip(
++            f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version"
++        )
+     _assert_pk_basic(
+         ret,
+         pk_args.get("algo", "rsa"),
+@@ -1054,6 +1058,8 @@ def test_certificate_managed_days_valid_does_not_override_days_remaining(
+ def test_certificate_managed_privkey_change(x509, cert_args, ec_privkey, ca_key):
+     cert_args["private_key"] = ec_privkey
+     ret = x509.certificate_managed(**cert_args)
++    if ret.result == False and "NotImplementedError" in ret.comment:
++        pytest.skip("Current OpenSSL does not support 'ec' algorithm")
+     _assert_cert_basic(ret, cert_args["name"], ec_privkey, ca_key)
+     assert ret.changes["private_key"]
+ 
+@@ -1237,6 +1243,8 @@ def test_certificate_managed_wrong_ca_key(
+     cert_args["private_key"] = ec_privkey
+     cert_args["signing_private_key"] = rsa_privkey
+     ret = x509.certificate_managed(**cert_args)
++    if ret.result == False and "NotImplementedError" in ret.comment:
++        pytest.skip("Current OpenSSL does not support 'ec' algorithm")
+     assert ret.result is False
+     assert not ret.changes
+     assert "Signing private key does not match the certificate" in ret.comment
+@@ -1917,6 +1925,8 @@ def test_csr_managed_existing_invalid_version(x509, csr_args, rsa_privkey):
+ def test_csr_managed_privkey_change(x509, csr_args, ec_privkey):
+     csr_args["private_key"] = ec_privkey
+     ret = x509.csr_managed(**csr_args)
++    if ret.result == False and "NotImplementedError" in ret.comment:
++        pytest.skip("Current OpenSSL does not support 'ec' algorithm")
+     _assert_csr_basic(ret, ec_privkey)
+     assert ret.changes["private_key"]
+ 
+@@ -2141,11 +2151,14 @@ def test_private_key_managed(x509, pk_args, algo, encoding, passphrase):
+         pytest.skip(
+             "PKCS12 serialization of Edwards-curve keys requires cryptography v37"
+         )
++
+     pk_args["algo"] = algo
+     pk_args["encoding"] = encoding
+     pk_args["passphrase"] = passphrase
+     ret = x509.private_key_managed(**pk_args)
+-    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
++    if ret.result == False and (
++        "UnsupportedAlgorithm" in ret.comment or "NotImplementedError" in ret.comment
++    ):
+         pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     _assert_pk_basic(ret, algo, encoding, passphrase)
+ 
+@@ -2155,6 +2168,8 @@ def test_private_key_managed_keysize(x509, pk_args, algo, keysize):
+     pk_args["algo"] = algo
+     pk_args["keysize"] = keysize
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "NotImplementedError" in ret.comment:
++        pytest.skip("Current OpenSSL does not support 'ec' algorithm")
+     pk = _assert_pk_basic(ret, algo)
+     assert pk.key_size == keysize
+ 
+@@ -2174,8 +2189,12 @@ def test_private_key_managed_keysize(x509, pk_args, algo, keysize):
+ )
+ def test_private_key_managed_existing(x509, pk_args):
+     ret = x509.private_key_managed(**pk_args)
+-    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
+-        pytest.skip(f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version")
++    if ret.result == False and (
++        "UnsupportedAlgorithm" in ret.comment or "NotImplementedError" in ret.comment
++    ):
++        pytest.skip(
++            f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version"
++        )
+     _assert_not_changed(ret)
+ 
+ 
+@@ -2382,6 +2401,8 @@ def test_private_key_managed_follow_symlinks_changes(
+     pk_args["encoding"] = encoding
+     pk_args["algo"] = "ec"
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "NotImplementedError" in ret.comment:
++        pytest.skip("Current OpenSSL does not support 'ec' algorithm")
+     assert ret.changes
+     assert Path(ret.name).is_symlink() == follow
+ 
+@@ -2722,7 +2743,12 @@ def _get_cert(cert, encoding="pem", passphrase=None):
+ def _belongs_to(cert_or_pubkey, privkey):
+     if isinstance(cert_or_pubkey, cx509.Certificate):
+         cert_or_pubkey = cert_or_pubkey.public_key()
+-    return x509util.is_pair(cert_or_pubkey, x509util.load_privkey(privkey))
++    try:
++        return x509util.is_pair(cert_or_pubkey, x509util.load_privkey(privkey))
++    except NotImplementedError:
++        pytest.skip(
++            "This OpenSSL version does not support current cryptographic algorithm"
++        )
+ 
+ 
+ def _signed_by(cert, privkey):
+diff --git a/tests/pytests/scenarios/performance/test_performance.py b/tests/pytests/scenarios/performance/test_performance.py
+index 85b92ed986..6319e26ce1 100644
+--- a/tests/pytests/scenarios/performance/test_performance.py
++++ b/tests/pytests/scenarios/performance/test_performance.py
+@@ -10,7 +10,13 @@ from saltfactories.utils import random_string
+ 
+ from salt.version import SaltVersionsInfo, __version__
+ 
+-pytestmark = [pytest.mark.skip_if_binaries_missing("docker")]
++pytestmark = [
++    pytest.mark.skip_if_binaries_missing("docker"),
++    pytest.mark.skipif(
++        os.environ.get("GITHUB_ACTIONS", "") == "true",
++        reason="Cannot spawn containers in GH actions run",
++    ),
++]
+ 
+ 
+ class ContainerMaster(SaltDaemon, master.SaltMaster):
+-- 
+2.46.1
+

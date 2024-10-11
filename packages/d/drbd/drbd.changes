@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Fri Oct 11 03:30:00 UTC 2024 - heming zhao <heming.zhao@suse.com>
+
+- Update DRBD version from 9.1.16 to 9.1.22
+
+  * Changelog from Linbit:
+
+    9.1.22 (api:genl2/proto:86-121/transport:18)
+    --------
+     * Upgrade from partial resync to a full resync if necessary when the
+       user manually resolves a split-brain situation
+     * Fix a potential NULL deref when a disk fails while doing a
+       forget-peer operation.
+     * Fix a rcu_read_lock()/rcu_read_unlock() imbalance
+     * Restart the open() syscall when a process auto promoting a drbd device gets
+       interrupted by a signal
+     * Remove a deadlock that caused DRBD to connect sometimes
+       exceptionally slow
+     * Make detach operations interruptible
+     * Added dev_is_open to events2 status information
+     * Improve log readability for 2PC state changes and drbd-threads
+     * Updated compability code for Linux 6.9
+    
+    9.1.21 (api:genl2/proto:86-121/transport:18)
+    --------
+     * fix a deadlock that can trigger when deleting a connection and
+       another connection going down in parallel. This is a regression of
+       9.1.20
+     * Fix an out-of-bounds access when scanning the bitmap. It leads to a
+       crash when the bitmap ends on a page boundary, and this is also a
+       regression in 9.1.20.
+    
+    9.1.20 (api:genl2/proto:86-121/transport:18)
+    --------
+     * Fix a kernel crash that is sometimes triggered when downing drbd
+       resources in a specific, unusual order (was triggered by the
+       Kubernetes CSI driver)
+     * Fix a rarely triggering kernel crash upon adding paths to a
+       connection by rehauling the path lists' locking
+     * Fix the continuation of an interrupted initial resync
+     * Fix the state engine so that an incapable primary does not outdate
+       indirectly reachable secondary nodes
+     * Fix a logic bug that caused drbd to pretend that a peer's disk is
+       outdated when doing a manual disconnect on a down connection; with
+       that cured impact on fencing and quorum.
+     * Fix forceful demotion of suspended devices
+     * Rehaul of the build system to apply compatibility patches out of
+       place that allows one to build for different target kernels from a
+       single drbd source tree
+     * Updated compability code for Linux 6.8
+    
+    9.1.19 (api:genl2/proto:86-121/transport:18)
+    --------
+     * Fix a resync decision case where drbd wrongly decided to do a full
+       resync, where a partial resync was sufficient; that happened in a
+       specific connect order when all nodes were on the same data
+       generation (UUID)
+     * Fix the online resize code to obey cached size information about
+       temporal unreachable nodes
+     * Fix a rare corner case in which DRBD on a diskless primary node
+       failed to re-issue a read request to another node with a backing
+       disk upon connection loss on the connection where it shipped the
+       read request initially
+     * Make timeout during promotion attempts interruptible
+     * No longer write activity-log updates on the secondary node in a
+       cluster with precisely two nodes with backing disk; this is a
+       performance optimization
+     * Reduce CPU usage of acknowledgment processing
+    
+    9.1.18 (api:genl2/proto:86-121/transport:18)
+    --------
+     * Fixed connecting nodes with differently sized backing disks,
+       specifically when the smaller node is primary, before establishing
+       the connections
+     * Fixed thawing a device that has I/O frozen after loss of quorum
+       when a configuration change eases its quorum requirements
+     * Properly fail TLS if requested (only available in drbd-9.2)
+     * Fixed a race condition that can cause auto-demote to trigger right
+       after an explicit promote
+     * Fixed a rare race condition that could mess up the handshake result
+       before it is committed to the replication state.
+     * Preserve "tiebreaker quorum" over a reboot of the last node (3-node
+       clusters only)
+     * Update compatibility code for Linux 6.6
+    
+    9.1.17 (api:genl2/proto:86-121/transport:18)
+    --------
+     * fix a potential crash when configuring drbd to bind to a
+       non-existent local IP address (this is a regression of drbd-9.1.8)
+     * Cure a very seldom triggering race condition bug during
+       establishing connections; when you triggered it, you got an OOPS
+       hinting to list corruption
+     * fix a race condition regarding operations on the bitmap while
+       forgetting a bitmap slot and a pointless warning
+     * Fix handling of unexpected (on a resource in secondary role) write
+       requests
+     * Fix a corner case that can cause a process to hang when closing the
+       DRBD device, while a connection gets re-established
+     * Correctly block signal delivery during auto-demote
+     * Improve the reliability of establishing connections
+     * Do not clear the transport with `net-options --set-defaults`. This
+       fix avoids unexpected disconnect/connect cycles upon an `adjust`
+       when using the 'lb-tcp' or 'rdma' transports in drbd-9.2.
+     * New netlink packet to report path status to drbdsetup
+     * Improvements to the content and rate-limiting of many log messages
+     * Update compatibility code and follow Linux upstream development
+       until Linux 6.5
+
+  * remove patches which already included in the new version:
+     0001-drbd-allow-transports-to-take-additional-krefs-on-a-.patch
+     0002-drbd-improve-decision-about-marking-a-failed-disk-Ou.patch
+     0003-drbd-fix-error-path-in-drbd_get_listener.patch
+     0004-drbd-build-fix-spurious-re-build-attempt-of-compat.p.patch
+     0005-drbd-log-error-code-when-thread-fails-to-start.patch
+     0006-drbd-log-numeric-value-of-drbd_state_rv-as-well-as-s.patch
+     0007-drbd-stop-defining-__KERNEL_SYSCALLS__.patch
+     0008-compat-block-introduce-holder-ops.patch
+     0009-drbd-reduce-net_ee-not-empty-info-to-a-dynamic-debug.patch
+     0010-drbd-do-not-send-P_CURRENT_UUID-to-DRBD-8-peer-when-.patch
+     0011-compat-block-pass-a-gendisk-to-open.patch
+     0012-drbd-Restore-DATA_CORKED-and-CONTROL_CORKED-bits.patch
+     0013-drbd-remove-unused-extern-for-conn_try_outdate_peer.patch
+     0014-drbd-include-source-of-state-change-in-log.patch
+     0015-compat-block-use-the-holder-as-indication-for-exclus.patch
+     0016-drbd-Fix-net-options-set-defaults-to-not-clear-the-t.patch
+     0017-drbd-propagate-exposed-UUIDs-only-into-established-c.patch
+     0018-drbd-rework-autopromote.patch
+     0019-compat-block-remove-the-unused-mode-argument-to-rele.patch
+     0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
+     0021-compat-sock-Remove-sendpage-in-favour-of-sendmsg-MSG.patch
+     0022-compat-block-replace-fmode_t-with-a-block-specific-t.patch
+     0023-compat-genetlink-remove-userhdr-from-struct-genl_inf.patch
+     0024-compat-fixup-FMODE_READ-FMODE_WRITE-usage.patch
+     0025-compat-drdb-Convert-to-use-bdev_open_by_path.patch
+     0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
+     boo1230635_01-compat-fix-nla_nest_start_noflag-test.patch
+     boo1230635_02-drbd-port-block-device-access-to-file.patch
+   
+  * removed patches which are not needed anymore:
+     boo1229062-re-enable-blk_queue_max_hw_sectors.patch
+     bsc1226510-fix-build-err-against-6.9.3.patch
+   
+  * update:
+     drbd_git_revision
+     suse-coccinelle.patch
+     drbd.spec
+   
+  * add upstream patches to align commit 13ada1be201e:
+     0001-drbd-properly-rate-limit-resync-progress-reports.patch
+     0002-drbd-inherit-history-UUIDs-from-sync-source-when-res.patch
+     0003-build-compat-fix-line-offset-in-annotation-pragmas-p.patch
+     0004-drbd-fix-exposed_uuid-going-backward.patch
+     0005-drbd-Proper-locking-around-new_current_uuid-on-a-dis.patch
+     0006-build-CycloneDX-fix-bom-ref-add-purl.patch
+     0007-build-Another-update-to-the-spdx-files.patch
+     0008-build-generate-spdx.json-not-tag-value-format.patch
+     0009-compat-fix-gen_patch_names-for-bdev_file_open_by_pat.patch
+     0010-compat-fix-nla_nest_start_noflag-test.patch
+     0011-compat-fix-blk_alloc_disk-rule.patch
+     0012-drbd-remove-const-from-function-return-type.patch
+     0013-drbd-don-t-set-max_write_zeroes_sectors-in-decide_on.patch
+     0014-drbd-split-out-a-drbd_discard_supported-helper.patch
+     0015-drbd-atomically-update-queue-limits-in-drbd_reconsid.patch
+     0016-compat-test-and-patch-for-queue_limits_start_update.patch
+     0017-compat-specify-which-essential-change-was-not-made.patch
+     0018-gen_patch_names-reorder-blk_mode_t.patch
+     0019-compat-fix-blk_queue_update_readahead-patch.patch
+     0020-compat-test-and-patch-for-que_limits-max_hw_discard_.patch
+     0021-compat-fixup-write_zeroes__no_capable.patch
+     0022-compat-fixup-queue_flag_discard__yes_present.patch
+     0023-drbd-move-flags-to-queue_limits.patch
+     0024-compat-test-and-patch-for-queue_limits.features.patch
+     0025-drbd-Annotate-struct-fifo_buffer-with-__counted_by.patch
+     0026-compat-test-and-patch-for-__counted_by.patch
+     0027-drbd-fix-function-cast-warnings-in-state-machine.patch
+     0028-Add-missing-documentation-of-peer_device-parameter-t.patch
+     0030-drbd-kref_put-path-when-kernel_accept-fails.patch
+     0031-build-fix-typo-in-Makefile.spatch.patch
+     0032-drbd-open-do-not-delay-open-if-already-Primary.patch
+   
+  * add patch to fix kernel imcompatibility issue (boo#1231290):
+     boo1231290_fix_drbd_build_error_against_kernel_v6.11.0.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 11:38:00 UTC 2024 - heming zhao <heming.zhao@suse.com>
 
 - drbdadm down fails to remove sysfs holder file (boo#1230635)

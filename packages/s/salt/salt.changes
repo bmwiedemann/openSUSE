@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 10 11:19:52 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Make Salt Bundle more tolerant to long running jobs (bsc#1228690)
+
+- Added:
+  * enhance-cleanup-mechanism-after-salt-bundle-upgrade-.patch
+
+-------------------------------------------------------------------
+Thu Oct  3 11:21:30 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix additional x509 tests and test_suse tests for SLE12
+
+- Added:
+  * fix-x509-private-key-tests-and-test_suse-on-sle12-68.patch
+
+-------------------------------------------------------------------
+Wed Oct  2 07:47:58 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix failing x509 tests with OpenSSL < 1.1
+
+- Added:
+  * fix-x509-test-fails-on-old-openssl-systems-682.patch
+
+-------------------------------------------------------------------
 Wed Sep 25 11:45:28 UTC 2024 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Avoid explicit reading of /etc/salt/minion (bsc#1220357)

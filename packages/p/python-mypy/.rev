@@ -181,4 +181,26 @@ reveal_type(Context[MyBot]().bot)
     <comment></comment>
     <requestid>1205767</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>791cd458e056c54196b03a882ffa4322</srcmd5>
+    <version>1.11.2+git.1728499967.eca206d</version>
+    <time>1728658865</time>
+    <user>anag+factory</user>
+    <comment>- Temporarily switched to using git source before the problems
+  with 3.13.0 compatibility are fixed.
+- Update to version 1.11.2+git.1728499967.eca206d:
+  * Fix union callees with functools.partial (#17903)
+  * [mypyc] Add &quot;runtests.py mypyc-fast&quot; for running fast mypyc tests (#17906)
+  * Emit error for &quot;raise NotImplemented&quot; (#17890)
+  * Document ReadOnly (PEP 705) (#17905)
+  * Make ReadOnly TypedDict items covariant (#17904)
+  * documentation for TypeIs (#17821)
+  * Improvements to functools.partial of types (#17898)
+  * Use 3.13.0 for ci tests (#17900)
+  * stubtest: Stop telling people to use double underscores (#17897)
+  * Add changelog for mypy 1.12 (#17889)
+- Remove upstreamed latest-pythons.patch
+</comment>
+    <requestid>1206747</requestid>
+  </revision>
 </revisionlist>

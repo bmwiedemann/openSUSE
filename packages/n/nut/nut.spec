@@ -500,6 +500,9 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_libdir}/libupsclient.so.*
 
 %files cgi
+%dir %{apache_serverroot}
+%dir %{apache_serverroot}/cgi-bin
+%dir %{apache_serverroot}/htdocs
 %{CGIPATH}
 %{HTMLPATH}
 %config(noreplace) %{CONFPATH}/upsstats-single.html

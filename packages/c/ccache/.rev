@@ -850,4 +850,12 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
 - unbundle cpp-httplib for new enough distributions</comment>
     <requestid>1206454</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>7bc142dd821055f36c770d66fdb5a644</srcmd5>
+    <version>4.10.2</version>
+    <time>1728658883</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1206645</requestid>
+  </revision>
 </revisionlist>

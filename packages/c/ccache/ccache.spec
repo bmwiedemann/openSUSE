@@ -22,6 +22,12 @@
 %else
 %bcond_with hiredis
 %endif
+# Run tests only on TW
+%if %{?suse_version} > 1600
+%bcond_without test
+%else
+%bcond_with test
+%endif
 Name:           ccache
 Version:        4.10.2
 Release:        0
@@ -33,9 +39,6 @@ Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/c
 Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  fmt-devel
-%if %{?suse_version} > 1600
-BuildRequires:  doctest-devel
-%endif
 %if %{?suse_version} > 1500
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -51,10 +54,11 @@ BuildRequires:  xxhash-devel
 BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
 Provides:       distcc:%{_bindir}/ccache
-%ifnarch %{ix86} %{arm}
-%endif
 %if %{with hiredis}
 BuildRequires:  pkgconfig(hiredis) >= 0.13.3
+%endif
+%if %{with test}
+BuildRequires:  doctest-devel
 %endif
 
 %description
@@ -72,7 +76,7 @@ export CC=gcc-11 CXX=g++-11
 %endif
 %cmake \
   -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-%if 0%{?suse_version} && 0%{?suse_version} < 1600
+%if %{without test}
   -DENABLE_TESTING=OFF \
 %endif
 %if !%{with hiredis}
@@ -102,8 +106,14 @@ ln -sf ../../bin/%{name} c++
 ln -sf ../../bin/%{name} nvcc
 
 %check
-# running the test with multiple threads will make tests fail
-%{__ctest} --output-on-failure --force-new-ctest-process -j1
+%if %{with test}
+for dir in build/test build/unittest; do
+  pushd $dir
+  # running the test with multiple threads will make tests fail
+  %{__ctest} --output-on-failure --force-new-ctest-process -j1
+  popd
+done
+%endif
 
 %files
 %license LICENSE.* GPL-3.0.txt

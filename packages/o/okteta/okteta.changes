@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 10 20:21:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.18
+  * Added: C code export tool now also with 64-bit integer types
+    options
+  * Added: print preview dialog
+  * Improved: char set conversion substitute byte now changeable
+  * Improved: used char set conversion substitute byte is remembered
+  * Improved: multiple issues in font-only view zooming
+    * new menu action to reset zoom to 100 %
+    * zoom slider got button to reset zoom to 100 %
+    * zoom slider, menu actions, mouse & touch controls zoom
+      steps now aligned
+    * zoom slider buttons now show tooltips
+  * Improved: C code export tool now uses fixed width integer
+    types options
+  * Improved: "Copy As" dialog on resize has preview stretch
+    to available height
+  * Improved: "Export" dialog on resize has preview stretch
+    to available height
+  * Improved: the configured page layout is remembered when printing
+  * Fixed: no more zoom state disorder on changing row/column mode
+  * Fixed: char set conversion substitute byte updated on char
+    coding change
+  * Fixed: no more scroll bars flickering on changing row/column mode
+  * Fixed: bytes line editors now use escape code
+    w/ undefined/unprintable chars
+  * Fixed: multiple issues in printing
+    * use row layout if used in view
+    * use current count of bytes per line in view
+    * apply configured page content margins
+  * Changed: font zoom range changed to 2 - 96 pt
+
+-------------------------------------------------------------------
 Tue Sep 10 06:14:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.17

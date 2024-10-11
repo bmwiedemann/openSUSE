@@ -21,19 +21,18 @@
 %define types_psutil_version 5.9.5.17
 %define types_setuptools_version 68.2.0.0
 Name:           python-mypy
-Version:        1.11.2
+Version:        1.11.2+git.1728499967.eca206d
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
 URL:            https://www.mypy-lang.org/
-Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
+# Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%%{version}.tar.gz
+Source0:        mypy-%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
 Source2:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/python/mypy/pull/17849 Fix tests on latest Python 3.13 (and 3.12)
-Patch0:         latest-pythons.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -154,7 +153,8 @@ donttest+=" or PEP561Suite"
 %license LICENSE
 %{python_sitelib}/mypy
 %{python_sitelib}/mypyc
-%{python_sitelib}/mypy-%{version}.dist-info
+# %{python_sitelib}/mypy-%%{version}.dist-info
+%{python_sitelib}/mypy-*.dist-info
 %python_alternative %{_bindir}/dmypy
 %python_alternative %{_bindir}/mypy
 %python_alternative %{_bindir}/mypyc

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct  9 08:04:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.9
+  * Fixed proxy headers being used in the ``ConnectionKey`` hash
+    when a proxy was not being used
+  * Widened the type of the ``trace_request_ctx`` parameter of
+    :meth:`ClientSession.request() <aiohttp.ClientSession.request>`
+    and friends
+  * Fixed failure to try next host after single-host connection timeout
+  * Improved performance of resolving hosts with Python 3.12+
+  * Reduced memory required for timer objects
+    created during the client request lifecycle
+- from version 3.10.8
+  * Fixed cancellation leaking upwards on timeout
+- from version 3.10.7
+  * Fixed assembling the :class:`~yarl.URL` for web requests when
+    the host contains a non-default port or IPv6 address
+  * Improved performance of determining if a URL is absolute
+  * Replaced code that can now be handled by ``yarl``
+- Add patch to increase timeout for import time test
+  * test_relax_import_time.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Sep 25 11:57:08 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.10.6

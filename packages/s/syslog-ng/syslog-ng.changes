@@ -6,6 +6,14 @@ Wed Oct  9 15:44:32 UTC 2024 - peter czanik <peter@czanik.hu>
 - added Elasticsearch datastream destination
 
 -------------------------------------------------------------------
+Thu Sep 26 14:27:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * syslog-ng-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+    + Applied if building with Java >= 17
+
+-------------------------------------------------------------------
 Sat Sep 14 13:23:27 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Replace obsolete udp() example in configuration with a dual stack network() one

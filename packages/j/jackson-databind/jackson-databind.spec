@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jackson-databind
 Version:        2.17.2
 Release:        0
@@ -28,8 +31,9 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jackson-annotations
 BuildRequires:  jackson-core
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -53,7 +57,7 @@ sed -i 's/\r//' LICENSE NOTICE
 
 %build
 build-jar-repository -s lib jackson-annotations jackson-core
-%{ant} -Dtest.skip=true jar javadoc
+ant jar javadoc
 
 %install
 install -dm 0755 %{buildroot}%{_javadir}

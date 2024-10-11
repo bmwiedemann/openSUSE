@@ -99,6 +99,7 @@ Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
+Patch0:         syslog-ng-reproducible-jar-mtime.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -144,7 +145,10 @@ BuildRequires:  hiredis-devel
 BuildRequires:  libdbi-devel
 %endif
 %if %{with java}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
+BuildRequires:  libtool
 %endif
 %if %{with python}
 BuildRequires:  python3-PyYAML
@@ -378,6 +382,12 @@ This package provides MQTT support for syslog-ng
 
 %prep
 %setup -q -n syslog-ng-%{version}
+%if %{with java}
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 0 -p1
+%endif
+%endif
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -400,7 +410,9 @@ done
 # touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
-#autoreconf -fi
+%if %{with java}
+autoreconf -fi
+%endif
 ##
 ## build ####################################################
 ##

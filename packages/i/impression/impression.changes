@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 20 21:06:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.3.0:
+  * Delete cache on start up to avoid build up
+  * Fix icon aliases.
+  * update to GNOME 47
+- increase minimum libadwaita and glib as specified in the meson.build
+
+-------------------------------------------------------------------
 Sun May  5 06:54:10 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 3.2.0:

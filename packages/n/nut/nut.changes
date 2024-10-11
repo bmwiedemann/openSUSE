@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:50:24 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Thu Sep 12 13:43:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Eaton scripts were mistakenly shipped by upstream with a proprietary

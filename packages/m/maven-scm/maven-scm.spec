@@ -18,7 +18,7 @@
 
 
 Name:           maven-scm
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Common API for doing SCM operations
 License:        Apache-2.0
@@ -85,8 +85,6 @@ Javadoc for %{name}.
 %pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
 
 %pom_remove_plugin :maven-enforcer-plugin
-
-%pom_change_dep -r :maven-project :maven-compat
 
 # Remove providers-integrity from build (we don't have mks-api)
 %pom_disable_module maven-scm-provider-integrity maven-scm-providers

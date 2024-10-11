@@ -672,4 +672,13 @@
     <comment></comment>
     <requestid>1193451</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7538637d5fa64f85e5b6135c6ebabbcb</srcmd5>
+    <version>54.0</version>
+    <time>1728658858</time>
+    <user>anag+factory</user>
+    <comment>- Update to rdma-core v54.0
+  - No release notes available</comment>
+    <requestid>1206678</requestid>
+  </revision>
 </revisionlist>

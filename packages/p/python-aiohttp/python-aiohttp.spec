@@ -19,13 +19,14 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.10.6
+Version:        3.10.9
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 Patch0:         test_no_warnings_fix.patch
+Patch1:         test_relax_import_time.patch
 Requires:       python-aiohappyeyeballs >= 2.3.0
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0
@@ -35,7 +36,7 @@ Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
 %endif
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
-Requires:       (python-yarl >= 1.12.0 with python-yarl < 2)
+Requires:       (python-yarl >= 1.13.0 with python-yarl < 2)
 Recommends:     python-Brotli
 Recommends:     python-aiodns
 Recommends:     python-cChardet
@@ -57,7 +58,7 @@ BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
 BuildRequires:  %{python_module frozenlist >= 1.1.1}
 BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
-BuildRequires:  %{python_module yarl >= 1.0 with %python-yarl < 2}
+BuildRequires:  %{python_module yarl >= 1.13.0 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
@@ -65,6 +66,7 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
+BuildRequires:  %{python_module propcache}
 BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}

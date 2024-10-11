@@ -35,7 +35,7 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.14.0
+Version:        0.16.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
@@ -114,7 +114,6 @@ Requires:       libtvm = %{version}
 Requires:       python3-scipy
 Requires:       python3-setuptools
 Requires:       python3-tvm = %{version}
-Requires:       python3-typed-ast
 Recommends:     python3-Pillow
 Recommends:     python3-onnx
 

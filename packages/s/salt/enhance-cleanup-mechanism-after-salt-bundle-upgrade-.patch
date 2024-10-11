@@ -1,0 +1,26 @@
+From 994ebca519945c86dc30f1510dff36b3261446c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 10 Oct 2024 11:51:02 +0100
+Subject: [PATCH] Enhance cleanup mechanism after Salt Bundle upgrade
+ (bsc#1228690) (#685)
+
+---
+ pkg/common/venv-salt-minion-postinstall.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/common/venv-salt-minion-postinstall.service b/pkg/common/venv-salt-minion-postinstall.service
+index b122d7d6ea..c9db270435 100644
+--- a/pkg/common/venv-salt-minion-postinstall.service
++++ b/pkg/common/venv-salt-minion-postinstall.service
+@@ -2,6 +2,6 @@
+ Description=Clean old environment for venv-salt-minion
+ 
+ [Service]
+-ExecStart=/bin/sh -c '/usr/lib/venv-salt-minion/bin/post_start_cleanup.sh || :'
++ExecStart=/bin/sh -c 'WAIT_IF_SALT_JOBS=1 /usr/lib/venv-salt-minion/bin/post_start_cleanup.sh || :'
+ Type=oneshot
+ 
+-- 
+2.46.1
+

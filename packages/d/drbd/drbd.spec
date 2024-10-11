@@ -24,11 +24,11 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.1.16
+Version:        9.1.22
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
-URL:            https://drbd.linbit.com/
+URL:            https://pkg.linbit.com/
 Source:         %{name}-%{version}.tar.gz
 Source1:        preamble
 Source2:        Module.supported
@@ -36,40 +36,43 @@ Source3:        drbd_git_revision
 
 ########################
 # upstream patch
-Patch0001:   0001-drbd-allow-transports-to-take-additional-krefs-on-a-.patch
-Patch0002:   0002-drbd-improve-decision-about-marking-a-failed-disk-Ou.patch
-Patch0003:   0003-drbd-fix-error-path-in-drbd_get_listener.patch
-Patch0004:   0004-drbd-build-fix-spurious-re-build-attempt-of-compat.p.patch
-Patch0005:   0005-drbd-log-error-code-when-thread-fails-to-start.patch
-Patch0006:   0006-drbd-log-numeric-value-of-drbd_state_rv-as-well-as-s.patch
-Patch0007:   0007-drbd-stop-defining-__KERNEL_SYSCALLS__.patch
-Patch0008:   0008-compat-block-introduce-holder-ops.patch
-Patch0009:   0009-drbd-reduce-net_ee-not-empty-info-to-a-dynamic-debug.patch
-Patch0010:   0010-drbd-do-not-send-P_CURRENT_UUID-to-DRBD-8-peer-when-.patch
-Patch0011:   0011-compat-block-pass-a-gendisk-to-open.patch
-Patch0012:   0012-drbd-Restore-DATA_CORKED-and-CONTROL_CORKED-bits.patch
-Patch0013:   0013-drbd-remove-unused-extern-for-conn_try_outdate_peer.patch
-Patch0014:   0014-drbd-include-source-of-state-change-in-log.patch
-Patch0015:   0015-compat-block-use-the-holder-as-indication-for-exclus.patch
-Patch0016:   0016-drbd-Fix-net-options-set-defaults-to-not-clear-the-t.patch
-Patch0017:   0017-drbd-propagate-exposed-UUIDs-only-into-established-c.patch
-Patch0018:   0018-drbd-rework-autopromote.patch
-Patch0019:   0019-compat-block-remove-the-unused-mode-argument-to-rele.patch
-Patch0020:   0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
-Patch0021:   0021-compat-sock-Remove-sendpage-in-favour-of-sendmsg-MSG.patch
-Patch0022:   0022-compat-block-replace-fmode_t-with-a-block-specific-t.patch
-Patch0023:   0023-compat-genetlink-remove-userhdr-from-struct-genl_inf.patch
-Patch0024:   0024-compat-fixup-FMODE_READ-FMODE_WRITE-usage.patch
-Patch0025:   0025-compat-drdb-Convert-to-use-bdev_open_by_path.patch
-Patch0026:   0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
-Patch0027:   boo1230635_01-compat-fix-nla_nest_start_noflag-test.patch
-Patch0028:   boo1230635_02-drbd-port-block-device-access-to-file.patch
+Patch0001:  0001-drbd-properly-rate-limit-resync-progress-reports.patch
+Patch0002:  0002-drbd-inherit-history-UUIDs-from-sync-source-when-res.patch
+Patch0003:  0003-build-compat-fix-line-offset-in-annotation-pragmas-p.patch
+Patch0004:  0004-drbd-fix-exposed_uuid-going-backward.patch
+Patch0005:  0005-drbd-Proper-locking-around-new_current_uuid-on-a-dis.patch
+Patch0006:  0006-build-CycloneDX-fix-bom-ref-add-purl.patch
+Patch0007:  0007-build-Another-update-to-the-spdx-files.patch
+Patch0008:  0008-build-generate-spdx.json-not-tag-value-format.patch
+Patch0009:  0009-compat-fix-gen_patch_names-for-bdev_file_open_by_pat.patch
+Patch0010:  0010-compat-fix-nla_nest_start_noflag-test.patch
+Patch0011:  0011-compat-fix-blk_alloc_disk-rule.patch
+Patch0012:  0012-drbd-remove-const-from-function-return-type.patch
+Patch0013:  0013-drbd-don-t-set-max_write_zeroes_sectors-in-decide_on.patch
+Patch0014:  0014-drbd-split-out-a-drbd_discard_supported-helper.patch
+Patch0015:  0015-drbd-atomically-update-queue-limits-in-drbd_reconsid.patch
+Patch0016:  0016-compat-test-and-patch-for-queue_limits_start_update.patch
+Patch0017:  0017-compat-specify-which-essential-change-was-not-made.patch
+Patch0018:  0018-gen_patch_names-reorder-blk_mode_t.patch
+Patch0019:  0019-compat-fix-blk_queue_update_readahead-patch.patch
+Patch0020:  0020-compat-test-and-patch-for-que_limits-max_hw_discard_.patch
+Patch0021:  0021-compat-fixup-write_zeroes__no_capable.patch
+Patch0022:  0022-compat-fixup-queue_flag_discard__yes_present.patch
+Patch0023:  0023-drbd-move-flags-to-queue_limits.patch
+Patch0024:  0024-compat-test-and-patch-for-queue_limits.features.patch
+Patch0025:  0025-drbd-Annotate-struct-fifo_buffer-with-__counted_by.patch
+Patch0026:  0026-compat-test-and-patch-for-__counted_by.patch
+Patch0027:  0027-drbd-fix-function-cast-warnings-in-state-machine.patch
+Patch0028:  0028-Add-missing-documentation-of-peer_device-parameter-t.patch
+#  0029-ci-update-build-helpers.patch is fedora special, we ignore it.
+Patch0029:  0030-drbd-kref_put-path-when-kernel_accept-fails.patch
+Patch0030:  0031-build-fix-typo-in-Makefile.spatch.patch
+Patch0031:  0032-drbd-open-do-not-delay-open-if-already-Primary.patch
 
 # suse special patch
-Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
-Patch1002:   suse-coccinelle.patch
-Patch1003:   bsc1226510-fix-build-err-against-6.9.3.patch
-Patch1004:   boo1229062-re-enable-blk_queue_max_hw_sectors.patch
+Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
+Patch1002:  suse-coccinelle.patch
+Patch1003:  boo1231290_fix_drbd_build_error_against_kernel_v6.11.0.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
@@ -78,6 +81,7 @@ BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
 BuildRequires:  modutils
+BuildRequires:  perl
 BuildRequires:  %kernel_module_package_buildreqs
 Requires:       drbd-utils >= 9.3.0
 Supplements:    drbd-utils >= 9.3.0
@@ -106,10 +110,6 @@ installed kernel.
 %prep
 %autosetup -p1 -n drbd-%{version}
 
-mkdir source
-cp -a drbd/. source/. || :
-cp $RPM_SOURCE_DIR/drbd_git_revision source/.drbd_git_revision
-
 %build
 rm -rf obj
 mkdir obj
@@ -124,22 +124,29 @@ export SPAAS='false'
 
 for flavor in %{flavors_to_build}; do
     rm -rf $flavor
-    cp -a -r source $flavor
-    cp -a %{_sourcedir}/Module.supported $flavor
+    cp -a -r drbd $flavor
+    cp $RPM_SOURCE_DIR/drbd_git_revision ${flavor}/.drbd_git_revision
+
     export DRBDSRC="$PWD/obj/$flavor"
     # bsc#1160194, check the coccicheck work.
     #make coccicheck
-    make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor SPAAS=${SPAAS}
+
+    # call make prep to generate drbd build dir
+    make %{?_smp_mflags} -C $flavor KDIR=%{kernel_source $flavor} prep SPAAS=${SPAAS}
+
+    cp -a %{_sourcedir}/Module.supported ${flavor}/build-current
+
+    make %{?_smp_mflags} -C %{kernel_source $flavor} modules M=$PWD/$flavor/build-current SPAAS=${SPAAS}
 
     # Check the compat result
-    cat $PWD/$flavor/compat.h
+    cat $PWD/${flavor}/build-current/compat.h
 done
 
 %install
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 for flavor in %{flavors_to_build}; do
-    make -C %{kernel_source $flavor} modules_install M=$PWD/$flavor
+    make -C %{kernel_source $flavor} modules_install M=$PWD/$flavor/build-current
 done
 
 mkdir -p %{buildroot}/%{_sbindir}

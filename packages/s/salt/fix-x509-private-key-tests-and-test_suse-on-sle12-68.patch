@@ -1,0 +1,87 @@
+From 43e05d3beea1d6e772fe88c051abf006c2a9bf90 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 3 Oct 2024 13:08:16 +0200
+Subject: [PATCH] Fix x509 private key tests and test_suse on SLE12
+ (#684)
+
+---
+ .../functional/modules/test_x509_v2.py        | 12 +++++++++--
+ .../functional/states/pkgrepo/test_suse.py    | 20 +++++++++----------
+ 2 files changed, 20 insertions(+), 12 deletions(-)
+
+diff --git a/tests/pytests/functional/modules/test_x509_v2.py b/tests/pytests/functional/modules/test_x509_v2.py
+index 7de8f3b01f..3db78c1b63 100644
+--- a/tests/pytests/functional/modules/test_x509_v2.py
++++ b/tests/pytests/functional/modules/test_x509_v2.py
+@@ -1442,14 +1442,22 @@ def test_create_private_key_with_passphrase(x509, algo):
+ 
+ @pytest.mark.slow_test
+ def test_create_private_key_der(x509):
+-    res = x509.create_private_key(algo="ec", encoding="der")
++    try:
++        res = x509.create_private_key(algo="ec", encoding="der")
++    except NotImplementedError:
++        pytest.skip("Algorithm 'ec' is not supported on this OpenSSL version")
+     assert base64.b64decode(res)
+ 
+ 
+ @pytest.mark.slow_test
+ @pytest.mark.parametrize("passphrase", [None, "hunter2"])
+ def test_create_private_key_pkcs12(x509, passphrase):
+-    res = x509.create_private_key(algo="ec", encoding="pkcs12", passphrase=passphrase)
++    try:
++        res = x509.create_private_key(
++            algo="ec", encoding="pkcs12", passphrase=passphrase
++        )
++    except NotImplementedError:
++        pytest.skip("Algorithm 'ec' is not supported on this OpenSSL version")
+     assert base64.b64decode(res)
+ 
+ 
+diff --git a/tests/pytests/functional/states/pkgrepo/test_suse.py b/tests/pytests/functional/states/pkgrepo/test_suse.py
+index 3bafeedc94..d21a9aeb9d 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_suse.py
++++ b/tests/pytests/functional/states/pkgrepo/test_suse.py
+@@ -28,14 +28,14 @@ def suse_state_tree(grains, pkgrepo, state_tree):
+         - comments:
+           - '# Salt Test'
+         - refresh: 1
+-    {% if grains['osmajorrelease'] == 15 %}
+-        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
+-        - humanname: openSUSE Backports for SLE 15 SP4
+-        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
+-    {% elif grains['osfullname'] == 'openSUSE Tumbleweed' %}
++    {% if grains['osfullname'] == 'openSUSE Tumbleweed' %}
+         - baseurl: http://download.opensuse.org/tumbleweed/repo/oss/
+         - humanname: openSUSE Tumbleweed OSS
+         - gpgkey: https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key
++    {% else %}
++        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
++        - humanname: openSUSE Backports for SLE 15 SP4
++        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
+     {% endif %}
+     """
+ 
+@@ -53,14 +53,14 @@ def suse_state_tree(grains, pkgrepo, state_tree):
+         - comments:
+           - '# Salt Test (modified)'
+         - refresh: 1
+-    {% if grains['osmajorrelease'] == 15 %}
+-        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
+-        - humanname: Salt modified Backports
+-        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
+-    {% elif grains['osfullname'] == 'openSUSE Tumbleweed' %}
++    {% if grains['osfullname'] == 'openSUSE Tumbleweed' %}
+         - baseurl: http://download.opensuse.org/tumbleweed/repo/oss/
+         - humanname: Salt modified OSS
+         - gpgkey: https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key
++    {% else %}
++        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
++        - humanname: Salt modified Backports
++        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
+     {% endif %}
+     """
+ 
+-- 
+2.46.1
+

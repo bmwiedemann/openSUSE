@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-docs-theme
 Version:        2024.6
 Release:        0

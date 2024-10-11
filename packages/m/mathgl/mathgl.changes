@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:26:16 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+-  Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Tue Sep 24 14:20:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pin to numpy < 2.0 to allow builds to succeed; mathgl is not

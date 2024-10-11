@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:39:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.14.0
+  * Switched to using the :mod:`propcache <propcache.api>`
+    package for property caching
+  * Started testing with Hypothesis
+  * Improved performance of :py:meth:`~yarl.URL.is_default_port`
+    when no explicit port is set
+  * Improved performance of converting :class:`~yarl.URL` to
+    a string when no explicit port is set
+  * Improved performance of the :py:meth:`~yarl.URL.origin` method
+  * Improved performance of encoding hosts
+- from version 1.13.1
+  * Improved performance of calling :py:meth:`~yarl.URL.build`
+    with ``authority``
+- from version 1.13.0
+  * Started rejecting ASCII hostnames with invalid characters. For
+    host strings that look like authority strings, the exception
+    message includes advice on what to do instead
+  * Fixed IPv6 addresses missing brackets when the :class:`~yarl.URL`
+    was converted to a string
+  * Added :attr:`~yarl.URL.host_subcomponent` which returns
+    the :rfc:`3986#section-3.2.2` host subcomponent
+- Update BuildRequires from requirements/test.txt
+
+-------------------------------------------------------------------
 Wed Sep 25 11:36:24 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - update to 1.12.1

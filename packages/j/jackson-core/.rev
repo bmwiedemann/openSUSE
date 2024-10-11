@@ -129,4 +129,12 @@
     <comment>2.17.2</comment>
     <requestid>1193673</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>33e7f748cec63fd7d35e0a9c21e182e5</srcmd5>
+    <version>2.17.2</version>
+    <time>1728658950</time>
+    <user>anag+factory</user>
+    <comment>Compile module info too</comment>
+    <requestid>1207065</requestid>
+  </revision>
 </revisionlist>

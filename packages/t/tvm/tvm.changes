@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 10 11:44:04 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.16.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.16.0
+- Skipped 0.14.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.14.0
+- Refresh patch:
+  * tvm-disable-vulkan-test-check.patch
+
+-------------------------------------------------------------------
+Thu Oct 10 02:40:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove typed-ast Requires for tvmc, it is not required. 
+
+-------------------------------------------------------------------
 Thu May  2 08:15:45 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - No longer use GCC 12 for building 

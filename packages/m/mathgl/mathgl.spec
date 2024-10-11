@@ -535,6 +535,8 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_libdir}/libmgl-wx.so.%{libversion}*
 
 %files -n %{name}-cgi
+%dir /srv/www
+%dir /srv/www/cgi-bin
 /srv/www/cgi-bin/mgl.cgi
 %if %{with docs}
 %{_mandir}/man1/mgl.cgi.1%{?ext_man}

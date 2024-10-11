@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:13:09 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Aug  5 19:04:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.6:

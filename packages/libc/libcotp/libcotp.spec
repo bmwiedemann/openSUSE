@@ -16,11 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+%ifarch x86_64
 %bcond_with criterion
+%endif
+%endif
 
 %define libsoname %{name}3
 Name:           libcotp
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -32,9 +36,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 %if %{with criterion}
-%ifarch x86_64
 BuildRequires:  libcriterion-devel
-%endif
 %endif
 BuildRequires:  libgcrypt-devel >= 1.8.0
 BuildRequires:  pkgconfig
@@ -68,9 +70,7 @@ Pkg-config and header files for developing applications that use %{name}
 %build
 %cmake \
 %if %{with criterion}
-%ifarch x86_64
   -DBUILD_TESTS=ON \
-%endif
 %endif
   -DBUILD_SHARED_LIBS=ON \
   -DHMAC_WRAPPER="gcrypt"
@@ -80,13 +80,11 @@ Pkg-config and header files for developing applications that use %{name}
 %cmake_install
 
 %if %{with criterion}
-%ifarch x86_64
 %check
 cd build
 ./tests/test_base32encode
 ./tests/test_base32decode
 ./tests/test_cotp
-%endif
 %endif
 
 %post -n        %{libsoname} -p /sbin/ldconfig

@@ -23,19 +23,19 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        9.6
+Version:        10.1
 Release:        0
 Summary:        A password manager for GNOME
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/World/secrets
 Source0:        secrets-%{version}.tar.zst
 Patch0:         fix-test.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson >= 0.51.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-PyKCS11
-BuildRequires:  python3-base >= 3.7.0
+BuildRequires:  python3-base >= 3.8.0
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pykeepass >= 4.0.7.post1
@@ -43,13 +43,13 @@ BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-yubico
 BuildRequires:  python3-validators
-BuildRequires:  python3-zxcvbn
+BuildRequires:  python3-zxcvbn-rs-py
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66
+BuildRequires:  pkgconfig(glib-2.0) >= 2.73.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66
 BuildRequires:  pkgconfig(gtk4) >= 4.5.0
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
 
 Requires:       opensc
 Requires:       python3-PyKCS11

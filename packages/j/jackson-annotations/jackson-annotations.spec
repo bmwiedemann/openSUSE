@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jackson-annotations
 Version:        2.17.2
 Release:        0
@@ -27,7 +30,9 @@ Source0:        https://github.com/FasterXML/jackson-annotations/archive/%{name}
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -52,7 +57,7 @@ mkdir -p lib
 sed -i 's/\r//' LICENSE
 
 %build
-%{ant} -Dtest.skip=true package javadoc
+ant package javadoc
 
 %install
 install -dm 0755 %{buildroot}%{_javadir}

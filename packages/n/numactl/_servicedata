@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/numactl/numactl</param>
-              <param name="changesrevision">3871b1c42fc71bceadafd745d2eff5dddfc2d67e</param></service></servicedata>
+              <param name="changesrevision">4bfdcc6e6111c5bf5d4ccb46f227aea80cc57159</param></service><service name="tar_scm">
+                <param name="url">http://github.com/numactl/numactl</param>
+              <param name="changesrevision">6c14bd59d438ebb5ef828e393e8563ba18f59cb2</param></service></servicedata>

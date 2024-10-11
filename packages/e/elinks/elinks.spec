@@ -22,7 +22,7 @@
 %bcond_with js
 %endif
 Name:           elinks
-Version:        0.17.0
+Version:        0.17.1.1
 Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ Source0:        https://github.com/rkd77/elinks/releases/download/v%{version}/el
 BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 %if %{with js}
-BuildRequires:  pkgconfig(libcss)
+BuildRequires:  pkgconfig(libcss) >= 0.9.2
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdom)
 BuildRequires:  pkgconfig(libxml++-5.0)

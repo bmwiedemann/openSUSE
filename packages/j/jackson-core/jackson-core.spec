@@ -16,6 +16,9 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           jackson-core
 Version:        2.17.2
 Release:        0
@@ -28,8 +31,9 @@ Source1:        %{name}-build.xml
 Patch0:         0001-Remove-ch.randelshofer.fastdoubleparser.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -51,7 +55,7 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-%{ant} -Dtest.skip=true package javadoc
+ant package javadoc
 
 %install
 install -dm 0755 %{buildroot}%{_javadir}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 10 07:58:01 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.5+git.1727339846.0abbc129:
+  * Fix: hb_report: indicate the 'crm report' failure (bsc#1230674)
+  * Dev: wizards: don't use root password (bsc#1230672)
+
+-------------------------------------------------------------------
 Sat Sep 07 14:29:21 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.5+git.1725719218.8945dc86:

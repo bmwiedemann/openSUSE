@@ -18,7 +18,7 @@
 
 %define         appname app.drey.KeyRack
 Name:           key-rack
-Version:        0.2.0+177
+Version:        0.4.0
 Release:        0
 Summary:        New GNOME secrets manager
 License:        GPL-3.0-or-later
@@ -26,12 +26,12 @@ URL:            https://gitlab.gnome.org/sophie-h/key-rack
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.3
-BuildRequires:  pkgconfig(gtk4) >= 4.6.0
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gtk4) >= 4.6.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 
 %description
 Key Rack allows to view and edit keys, like passwords or tokens, stored by apps.

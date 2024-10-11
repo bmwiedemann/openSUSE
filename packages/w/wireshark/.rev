@@ -1933,4 +1933,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1201641</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>5b8a6458dd79841d7de4c55246014891</srcmd5>
+    <version>4.4.1</version>
+    <time>1728658885</time>
+    <user>anag+factory</user>
+    <comment>wireshark 4.4.1: with references</comment>
+    <requestid>1206680</requestid>
+  </revision>
 </revisionlist>

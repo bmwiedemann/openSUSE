@@ -35,6 +35,7 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
 Patch0:         perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch
+Patch1:         perf-fix-non-listed-archs.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 09 22:17:25 UTC 2024 - mcepl@cepl.eu
+
+- Temporarily switched to using git source before the problems
+  with 3.13.0 compatibility are fixed.
+- Update to version 1.11.2+git.1728499967.eca206d:
+  * Fix union callees with functools.partial (#17903)
+  * [mypyc] Add "runtests.py mypyc-fast" for running fast mypyc tests (#17906)
+  * Emit error for "raise NotImplemented" (#17890)
+  * Document ReadOnly (PEP 705) (#17905)
+  * Make ReadOnly TypedDict items covariant (#17904)
+  * documentation for TypeIs (#17821)
+  * Improvements to functools.partial of types (#17898)
+  * Use 3.13.0 for ci tests (#17900)
+  * stubtest: Stop telling people to use double underscores (#17897)
+  * Add changelog for mypy 1.12 (#17889)
+- Remove upstreamed latest-pythons.patch
+
+-------------------------------------------------------------------
 Fri Oct  4 14:11:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream latest-pythons.patch to fix tests on latest Python releases

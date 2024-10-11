@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:48:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.4.0
+  * Main features of 4.x
+    + Predicates based claim verification
+    + Support for Instant API and Lambda functions
+    + Improved Exceptions API
+    + Consistent null handling
+  * Breaking changes:
+    + Make JWT constants final values
+  * Security:
+    + Bump com.fasterxml.jackson.core:jackson-databind to 2.13.4.2
+      CVE-2022-42003
+  * Additions:
+    + Add integration with our Shipping orb
+    + Add Ship CLI support
+    + Provide straightforward example for JWKS
+  * Changes:
+    + Update to gradle 6.9.2
+    + Update OSS plugin to latest
+    + SDK-3466 Upgrade Codecov
+    + Update README.md
+    + Re-enable japicmp API diff checking
+    + Update .shiprc to only update lib version in build.gradle
+    + Optimise TokenUtils parsing
+    + Update Circle Ship Orb configuration
+    + Improve JWT parse/decode performance
+    + Add support for passing json values for header and payload
+    + Preserve insertion order for claims
+    + Update Jackson to 2.14.2
+  * Fixed
+    + Check for null token before splitting
+    + [SDK-3816] Update docs for verification thread-safety
+    + Update Claim#asString documentation
+    + Fix for exp claim considered valid if equal to now
+- Build also module-info.java useful for modular javas
+- Change the build system to ant. Upstream anyway uses gradle and 
+  ant is more flexible then maven for this case
+
+-------------------------------------------------------------------
 Thu Oct 26 04:35:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

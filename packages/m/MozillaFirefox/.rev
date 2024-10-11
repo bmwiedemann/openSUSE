@@ -7070,4 +7070,15 @@
   * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1913445,</comment>
     <requestid>1205704</requestid>
   </revision>
+  <revision rev="439" vrev="1">
+    <srcmd5>6f75bbda37b23dac03382b9cd9713fdf</srcmd5>
+    <version>131.0.2</version>
+    <time>1728658868</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 131.0.2
+  MFSA 2024-51 (bsc#1231413)
+  * CVE-2024-9680 (bmo#1923344)
+    Use-after-free in Animation timeline</comment>
+    <requestid>1206551</requestid>
+  </revision>
 </revisionlist>

@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/sophie-h/key-rack.git</param>
     <param name="scm">git</param>
-    <param name="revision">main</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">refs/tags/0.4.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
@@ -12,6 +12,7 @@
   </service>
   <service name="set_version" mode="manual" />
   <service name="cargo_vendor" mode="manual">
+    <param name="update">false</param>
     <param name="src">key-rack</param>
   </service>
 </services>

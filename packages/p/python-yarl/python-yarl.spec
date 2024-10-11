@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.12.1
+Version:        1.14.0
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
@@ -32,7 +32,9 @@ BuildRequires:  %{python_module idna >= 2.0}
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module covdefaults}
+BuildRequires:  %{python_module hypothesis >= 6.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module propcache >= 0.2.0}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -41,6 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
 Requires:       python-multidict >= 4.0
+Requires:       python-propcache >= 0.2.0
 %python_subpackages
 
 %description

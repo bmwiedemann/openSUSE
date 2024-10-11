@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:37:28 UTC 2024 - trenn@suse.de
+
+- Update to version 2.0.18.10.g6c14bd5:
+  * Save and restore errno when probing for SET_PREFERRED_MANY
+  * libnuma: fix nodemask allocation size for get_mempolicy
+  * Update numactl.c
+  * numastat: eliminate hard-coded tables
+  * Don't fail build when set_mempolicy_home_node syscall is unknown
+  * numactl: Add documentation for weighted interleave
+  * numactl: Fix RESOURCE_LEAK in show()
+  * numademo: Fix the using of the uninitialized value
+  * Add `-w` and `--weighted-interleave` for weighted interleave mode
+  * Fix fallback for set_mempolicy_home_node syscall
+
+-------------------------------------------------------------------
+Mon May 13 12:59:04 UTC 2024 - trenn@suse.de
+
+- Update to version 2.0.18.5.g4bfdcc6:
+  * numactl: Add documentation for weighted interleave
+  * numactl: Fix RESOURCE_LEAK in show()
+  * numademo: Fix the using of the uninitialized value
+  * Add `-w` and `--weighted-interleave` for weighted interleave mode
+  * Fix fallback for set_mempolicy_home_node syscall
+
+-------------------------------------------------------------------
 Thu Feb 22 14:07:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

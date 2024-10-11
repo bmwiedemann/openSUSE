@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  7 12:24:42 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.9.2:
+  * Added support for SVG `fill-opacity` property.
+  * Added support for SVG `stroke-opacity` property.
+  * Added support for CSS property wide `revert` value.
+  * Added support for CSS property wide `unset` value.
+  * Added support for CSS property wide `initial` value.
+  * Added support for CSS `position` property `sticky` value.
+  * Added support for CSS `display` property "grid" values.
+  * Added support for `prefers-color-scheme` media query.
+  * Added new public API for CSS unit conversion.
+  * Added support for predefined counter styles.
+  * Optimised media query handling.
+  * Made selection code generator deterministic.
+  * Various selection code generator improvements.
+  * Squashed leak of system font names.
+  * Improved internal handling of property units.
+  * Improved internal string map.
+  * Minor buildsystem improvements.
+  * Improved example code.
+  * Added new tests.
+
+-------------------------------------------------------------------
 Wed May 19 14:52:17 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do

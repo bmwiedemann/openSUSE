@@ -1,7 +1,7 @@
 #
 # spec file for package java-jwt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,27 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           java-jwt
-Version:        3.8.3
+Version:        4.4.0
 Release:        0
 Summary:        Java JWT
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            https://github.com/auth0/%{name}
 Source0:        https://github.com/auth0/%{name}/archive/%{version}.tar.gz
-Source1:        https://repo1.maven.org/maven2/com/auth0/%{name}/%{version}/%{name}-%{version}.pom
+Source1:        %{name}-build.xml
+Source2:        https://repo1.maven.org/maven2/com/auth0/%{name}/%{version}/%{name}-%{version}.pom
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
-BuildRequires:  mvn(commons-codec:commons-codec)
+BuildRequires:  jackson-annotations
+BuildRequires:  jackson-core
+BuildRequires:  jackson-databind
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -44,30 +51,31 @@ API documentation for the Logback library
 
 %prep
 %setup -q
-cp %{SOURCE1} lib/pom.xml
-
-%pom_xpath_remove pom:dependency/pom:scope lib
+cp %{SOURCE1} lib/build.xml
 
 %build
-pushd lib
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
-%endif
-	-Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8
-popd
+mkdir -p lib/lib
+build-jar-repository -s lib/lib jackson-annotations jackson-core jackson-databind
+ant -f lib/build.xml jar javadoc
 
 %install
-pushd lib
-%mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
-popd
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 lib/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
-%files -f lib/.mfiles
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r lib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
+
+%files -f .mfiles
 %license LICENSE
 %doc README.md
 
-%files javadoc -f lib/.mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog

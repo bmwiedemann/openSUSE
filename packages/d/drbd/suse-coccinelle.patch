@@ -1,76 +1,71 @@
-diff -Naur drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/gen_compat_patch.sh
---- drbd-9.0.29~0+git.9a7bc817.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2021-05-07 11:24:44.877547149 +0800
-+++ drbd-9.0.29~0+git.9a7bc817/drbd/drbd-kernel-compat/gen_compat_patch.sh	2021-05-07 12:30:58.385703306 +0800
-@@ -44,9 +44,19 @@
+diff -Nupr a/drbd/drbd-kernel-compat/gen_compat_patch.sh b/drbd/drbd-kernel-compat/gen_compat_patch.sh
+--- a/drbd/drbd-kernel-compat/gen_compat_patch.sh	2024-09-16 10:24:47.044861735 +0800
++++ b/drbd/drbd-kernel-compat/gen_compat_patch.sh	2024-09-16 10:32:03.256040980 +0800
+@@ -43,9 +43,19 @@ fi
  
  if hash spatch && spatch_is_recent; then
-     K=$(cat $incdir/kernelrelease.txt)
+ 	K=$(cat $incdir/kernelrelease.txt || echo unknown kernel release)
 +
-+    echo "  compat.h content ";
-+    cat $incdir/compat.h;
-+    echo "  -------------------   ";
++	echo "  compat.h content ";
++	cat $incdir/compat.h;
++	echo "  -------------------   ";
 +
-     echo "  GENPATCHNAMES   "$K
-     gcc -I $incdir -o $incdir/gen_patch_names -std=c99 drbd-kernel-compat/gen_patch_names.c
-     $incdir/gen_patch_names > $incdir/applied_cocci_files.txt
+ 	echo "  GENPATCHNAMES   "$K
+ 	gcc -I $incdir -o $incdir/gen_patch_names -std=c99 drbd-kernel-compat/gen_patch_names.c
+ 	$incdir/gen_patch_names > $incdir/applied_cocci_files.txt
 +
-+    echo "  APPLIED_COCCI_FILES   ";
-+    cat $incdir/applied_cocci_files.txt;
-+    echo "  -------------------   ";
++	echo "  APPLIED_COCCI_FILES   ";
++	cat $incdir/applied_cocci_files.txt;
++	echo "  -------------------   ";
 +
-     rm $incdir/gen_patch_names
-     rm -f $incdir/.compat.cocci
-     rm -f $incdir/.compat.patch
-@@ -67,7 +77,15 @@
- 		< drbd-kernel-compat/cocci/debugfs_compat_template.cocci.in \
- 		>> $incdir/.compat.cocci
-     done
-+
-+    coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
-+    echo "  SPATCH_SOURCES: "$*;
-+    echo "  COCCI_LIBPATH: "$coccilibpath;
-+
-     if [ -e $incdir/.compat.cocci ]; then
-+	echo "  GENCOCCIRULES .compat.cocci";
-+	cat $incdir/.compat.cocci;
-+
- 	echo "  SPATCH   $chksum  "$K
- 	# Note: $* (or $@) is NOT make magic variable now, this is a shell script
- 	# make $@, the target file, was passed as $1, and is now $compat_patch
-@@ -77,8 +95,14 @@
- 	# we know we don't have white-space in the argument list
+ 	rm $incdir/gen_patch_names
+ 	# truncat them all
+ 	: > $incdir/.compat.cocci
+@@ -72,15 +82,28 @@ if hash spatch && spatch_is_recent; then
+ 			>> $incdir/.compat.cocci.tmp
+ 	done
  
- 	set +e
++	coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
++	echo "  SPATCH_SOURCES: "$*;
++	echo "  COCCI_LIBPATH: "$coccilibpath;
 +
-+	command="spatch --sp-file $incdir/.compat.cocci $@ --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet --all-includes > $compat_patch.tmp 2> $incdir/.spatch.stderr"
-+	echo "  SPATCH COMMAND $command  ";
+ 	mv $incdir/.compat.cocci.tmp $incdir/.compat.cocci
+ 	mv $incdir/.compat.patch.tmp $incdir/.compat.patch
+ 
+ 	if [ -s $incdir/.compat.cocci ]; then
++		echo "  GENCOCCIRULES .compat.cocci";
++		cat $incdir/.compat.cocci;
 +
- 	spatch --sp-file "$incdir/.compat.cocci" "$@" \
- 		--macro-file drbd-kernel-compat/cocci_macros.h \
-+		--macro-file-builtins $coccilibpath/standard.h \
-+		--iso-file $coccilibpath/standard.iso \
- 		--very-quiet \
- 		--all-includes \
- 		> "$compat_patch.tmp" \
-@@ -94,9 +118,21 @@
- 	echo "  SPATCH   $chksum  "$K" - nothing to do"
- 	touch $compat_patch.tmp
-     fi
+ 		# sources=( ... ) passed in via environment
+ 		echo "	SPATCH	 $chksum  "$K
+ 		set +e
 +
-+    echo "  GENSPATCHFILE $compat_patch.tmp  ";
-+    cat $compat_patch.tmp;
++		command="spatch --sp-file $incdir/.compat.cocci $@ --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet --all-includes > $compat_patch.tmp 2> $incdir/.spatch.stderr"
++		echo "  SPATCH COMMAND $command  ";
 +
-     if [ -e $incdir/.compat.patch ]; then
-+	echo "  EXIST $incdir/.compat.patch  ";
- 	cat $incdir/.compat.patch >> $compat_patch.tmp
+ 		spatch --sp-file "$incdir/.compat.cocci" "${sources[@]}" \
+ 			--macro-file drbd-kernel-compat/cocci_macros.h \
++			--macro-file-builtins $coccilibpath/standard.h \
++			--iso-file $coccilibpath/standard.iso \
+ 			--very-quiet \
+ 			--all-includes \
+ 			${SPATCH_DEBUG:+ --debug} \
+@@ -101,8 +124,18 @@ if hash spatch && spatch_is_recent; then
+ 		echo "	SPATCH	 $chksum  "$K" - nothing to do"
+ 	fi
+ 
++	echo "  GENSPATCHFILE $compat_patch.tmp  ";
 +	cat $compat_patch.tmp;
-     fi
 +
-+    if [ -e $incdir/.spatch.stderr ]; then
-+        echo "  GENSPATCHERR .spatch.stderr";
-+        cat $incdir/.spatch.stderr;
-+    fi
+ 	if [ -s $incdir/.compat.patch ]; then
++		echo "  EXIST $incdir/.compat.patch  ";
+ 		cat $incdir/.compat.patch >> $compat_patch.tmp
++		cat $compat_patch.tmp;
++	fi
 +
-     mv $compat_patch.tmp $compat_patch
-     # keep it around
-     # to better be able to match the "stderr" warnings to their source files
++	if [ -e $incdir/.spatch.stderr ]; then
++		echo "  GENSPATCHERR .spatch.stderr";
++		cat $incdir/.spatch.stderr;
+ 	fi
+ 
+ 	if [ -s $compat_patch.tmp ]; then

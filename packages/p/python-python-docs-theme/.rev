@@ -130,4 +130,12 @@
     Actions</comment>
     <requestid>1191759</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7624a870bdd5afdd16bdfb53bc92aff7</srcmd5>
+    <version>2024.6</version>
+    <time>1728658883</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1206648</requestid>
+  </revision>
 </revisionlist>

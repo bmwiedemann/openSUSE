@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 10 09:22:42 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 1.4.12
+  * Regression fix for ABI problem
+      TDB_1_4_11 vs. TDB_1.4.11
+
+- Update to 1.4.11
+  * Add tdbdump -x option to output all data as hex values
+  * Add missing overflow check for num_values in pytdb.c
+  * Remove Py2 related tests
+  * Update times in tdb_transaction_commit per fd, not per name
+  * Fix compilation with TDB_TRACE=1
+  * Allow tracing of internal tdb
+
+-------------------------------------------------------------------
 Thu May 16 11:29:15 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.4.10

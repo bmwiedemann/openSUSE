@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:12:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.0:
+  * doap: fix typo
+  * item: Special case chrome as well
+  * item_dialog: Make schema_row selectable
+  * resources: Remove no longer needed icons
+  * item: Derive icon / subtitle from xdg:schema
+  * metainfo: Update summary to passwords instead of keys
+  * overview_page: Add loading spinner
+  * data: Add Felix
+  * a11y: Ensure widgets are properly labelled
+  * collection_items_page: Disable create-item action for locked collections
+
+-------------------------------------------------------------------
 Sat Jun 22 19:49:27 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 0.2.0+177:

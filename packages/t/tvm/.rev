@@ -213,4 +213,19 @@
     <comment></comment>
     <requestid>1171325</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>68b65b09b9ee7bd014fd8c0ecb25136c</srcmd5>
+    <version>0.16.0</version>
+    <time>1728658947</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.16.0
+- Skipped 0.14.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.14.0
+- Refresh patch:
+  * tvm-disable-vulkan-test-check.patch
+- Remove typed-ast Requires for tvmc, it is not required. 
+</comment>
+    <requestid>1206695</requestid>
+  </revision>
 </revisionlist>

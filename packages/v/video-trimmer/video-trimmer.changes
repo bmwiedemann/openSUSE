@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Oct  9 20:41:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.0:
+  * Added I and O shortcuts to set start and end trimming point.
+  * Made all single-letter shortcuts work even when the time input
+    fields are focused.
+  * Changed the play/pause Ctrl+Space shortcut to just Space.
+  * The video now starts paused after opening.
+  * Updated to the GNOME 47 platform.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Apr 16 11:36:54 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.1:
+  * Added several keyboard shortcuts along with the shortcuts 
+    window listing them.
+  * Fixed app crashing when opening files which involve invalid 
+    UTF-8.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 16 09:25:40 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0:
+  * Fixed app closing when trying to open inaccessible files.
+  * Fixed crash when trying to open files from network locations.
+  * Updated translations. 
+
+-------------------------------------------------------------------
+Wed Jul 13 11:18:35 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package. 
