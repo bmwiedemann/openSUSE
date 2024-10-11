@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:31:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.19.2:
+  * Prepare release v4.19.2
+  * fix: go1.22 compatibility (#2295)
+  * Detach v4.19.1
+
+-------------------------------------------------------------------
+Sun Oct 06 14:13:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.19.1:
+  * Prepare release v4.19.1
+  * fix: follow Go convention about generated comment (#2292)
+  * epik: add User-Agent (#2290)
+  * selectelv2: use baseURL from configuration (#2291)
+  * Detach v4.19.0
+
+-------------------------------------------------------------------
+Sun Oct 06 14:08:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.19.0:
+  * Prepare release v4.19.0
+  * perf: reducing the lock strength of the soa cache entry (#2285)
+  * feat: add PropagationWait function (#2288)
+  * namesilo: restrict CleanUp (#2287)
+  * feat: add dns.propagation-rns option (#2284)
+  * chore: use contants for flag names (#2283)
+  * Add DNS provider for SelfHost.(de|eu) (#2278)
+  * chore: improve PR template
+  * chore: add PR template
+  * ionos: follow CNAME (#2281)
+  * chore: use UTC instead of GMT when possible (#2275)
+  * chore: update dependencies (#2272)
+  * godaddy: fix cleanup (#2270)
+  * Add DNS provider for HuaweiCloud (#2267)
+  * exoscale: update Egoscale to v3.1.1 (#2256)
+  * feat(cli): add dns.propagation-wait flag (#2266)
+  * docs: fix typos in some DNS descriptors (#2264)
+  * docs: add installation for OpenBSD (#2261)
+  * docs: update installation for FreeBSD (#2260)
+  * Detach v4.18.0
+
+-------------------------------------------------------------------
 Sat Sep 14 16:44:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.18.0:

@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           lego
-Version:        4.18.0
+Version:        4.19.2
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT
 URL:            https://github.com/go-acme/lego
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 
 %description
 Let's Encrypt/ACME client and library written in Go.
