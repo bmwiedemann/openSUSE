@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:53:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20241009.2fd615c:
+  * improv: simplify main
+  * chore: update libcosmic
+  * chore: update sqlx
+  * fix: new task input container style
+  * chore: downgrade cosmic-text
+  * Add dependencies
+  * update metainfo for COSMIC Store featured page
+  * Replace provides ID
+  * fix: remove project group cosmic
+  * Expand metainfo
+- update upstream url
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

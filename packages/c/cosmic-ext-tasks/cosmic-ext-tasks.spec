@@ -18,7 +18,7 @@
 
 %define         appname dev.edfloreshz.Tasks
 Name:           cosmic-ext-tasks
-Version:        0.1.0+git20240802.4d827d3
+Version:        0.1.0+git20241009.2fd615c
 Release:        0
 Summary:        Task Management app for COSMIC DE
 License:        GPL-3.0-only
@@ -32,6 +32,7 @@ BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(openssl)

@@ -23,4 +23,23 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192470</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7227e50e7cc489d66a8f7d30ba05743</srcmd5>
+    <version>0.1.0+git20241009.2fd615c</version>
+    <time>1728659016</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.0+git20241009.2fd615c:
+  * improv: simplify main
+  * chore: update libcosmic
+  * chore: update sqlx
+  * fix: new task input container style
+  * chore: downgrade cosmic-text
+  * Add dependencies
+  * update metainfo for COSMIC Store featured page
+  * Replace provides ID
+  * fix: remove project group cosmic
+  * Expand metainfo
+- update upstream url (forwarded request 1206730 from rrahl0)</comment>
+    <requestid>1206731</requestid>
+  </revision>
 </revisionlist>

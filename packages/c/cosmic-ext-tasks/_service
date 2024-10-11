@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/edfloreshz/tasks.git</param>
+    <param name="url">https://github.com/cosmic-utils/tasks.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
