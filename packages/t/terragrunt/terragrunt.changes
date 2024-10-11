@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:06:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.1:
+  * fix: Removing non non-interactive logic in err stream redirect
+    (#3464)
+
+-------------------------------------------------------------------
+Fri Oct 11 07:02:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.0:
+  * Suppressing `423` error in Terragrunt Provider Cache (#3453)
+  * Fix concurrent map write due to read lock and delete (#3457)
+  * fix(init): do not require re-init after explicit init on clean
+    directory (#2949)
+  * feat: support merging the "skip" attribute from included files.
+    (#3225)
+  * build(deps): bump webrick from 1.8.1 to 1.8.2 in /docs (#3436)
+
+-------------------------------------------------------------------
 Sun Oct 06 08:04:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.67.16:
