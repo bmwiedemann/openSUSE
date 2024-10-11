@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Oct 11 10:56:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.121:
+  * General
+    - [CI] Enhance make target for port as an argument @leecalcote
+      (#12324)
+  * Meshery CLI
+    - fix: connections commands description fixed w/signoff
+      @rahulrana701 (#11373)
+  * Documentation
+    - fix: connections commands description fixed w/signoff
+      @rahulrana701 (#11373)
+
+-------------------------------------------------------------------
+Fri Oct 11 10:56:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.120:
+  * General
+    - bump meshkit w/signoff @Jougan-0 (#12323)
+    - update comps and remove hardcoding w/singoff @Jougan-0
+      (#12322)
+    - [Server] Enhance redirection based on release channels.
+      @MUzairS15 (#12315)
+  * Meshery CLI
+    - [CI] Goreleaser upgrade to v2 and cleanup of repo root
+      @leecalcote (#12321)
+    - fix: Update golden file causing panic @lekaf974 (#12314)
+
+-------------------------------------------------------------------
+Fri Oct 11 10:55:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.119:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Oct 11 10:53:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.118:
+  * Meshery CLI
+    update rels w/singoff @Jougan-0 (#12302)
+
+-------------------------------------------------------------------
+Fri Oct 11 10:52:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.117:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Oct 11 10:52:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.116:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sun Oct  6 16:22:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.115:
