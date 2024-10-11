@@ -1,7 +1,7 @@
 #
 # spec file for package libiio
 #
-# Copyright (c) 2022-2023 SUSE LLC
+# Copyright (c) 2022-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  0
 Name:           libiio
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        Industrial I/O tools
 License:        LGPL-2.1-or-later
@@ -26,7 +26,7 @@ Group:          System/Libraries
 URL:            https://wiki.analog.com/resources/tools-software/linux-software/libiio
 Source:         https://github.com/analogdevicesinc/libiio/archive/v%{version}.tar.gz#/libiio-%{version}.tar.gz
 BuildRequires:  bison
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  flex
 BuildRequires:  libaio-devel
 BuildRequires:  libavahi-devel

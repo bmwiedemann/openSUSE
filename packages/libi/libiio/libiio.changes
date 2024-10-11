@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 30 17:38:43 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.26
+  * iiod: fix service start
+  * CMake: bump version to v0.26
+  * CI:publish_deps.ps1: update ghcup version
+  * CI: fix ghc version
+  * serial.c: force DTR serial connection flag to ON for Windows clients
+  * azure_pipelines.yml: Fix macos CIs
+  * iiod: Add default env var to service file [ #1142 ]
+
+-------------------------------------------------------------------
 Fri Aug 11 22:43:53 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.25
