@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 11 06:54:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.85.0:
+  * deps(go): bump module github.com/getsops/sops/v3 (#2787)
+  * chore(deps): Bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#2771)
+  * feat(autodiscovery/precommit): initial implementation (#2773)
+  * feat: dockerfile autodiscovery should ignore stage name and
+    scratch (#2752)
+  * deps(go): bump module golang.org/x/text (#2772)
+  * Disable spellcheck (#2765)
+  * chore(gha): update check-spelling to 0.0.22 (#2759)
+  * deps: Bump Golang version to 1.23.2 (#2753)
+  * deps: bump updatecli version to v0.84.1 (#2746)
+
+-------------------------------------------------------------------
 Wed Oct 02 06:22:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.84.1:
