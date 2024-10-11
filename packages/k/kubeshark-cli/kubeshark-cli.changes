@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:45:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.83:
+  * :bookmark: Bump the Helm chart version to 52.3.83
+  * :bookmark: Bump the Helm chart version to 72.3.83
+  * Added some error and info log lines
+  * Add `tap.presetFiltersChangingEnabled` helm value (#1627)
+  * Set reasonable `pcapdump` defaults. Storage is now at 10% of
+    the Worker's allocated storage.
+  * Tag Tracer as well as the other components upon a new release
+  * Ensure `scripting` command watched only JS files
+  * Feat pcapsaver (#1621)
+  * emit tls item (#1625)
+  * Update README with resource guard configuration (#1623)
+  * Add resource guard flag (#1622)
+  * Regenerate `values.yaml` and `complete.yaml`
+  * Do not enable `-unixsocket` flag of worker if no tracer is
+    running (#1619)
+  * Fixed a bug in the `console` command, where the CLI couldn't
+    connect to Hub as when the `url.URL` method was used, the Host
+    included a path
+  * Add list permissions for kubeshark service account (#1617)
+  * Add `udp` to list of enabled dissectors (#1616)
+  * Make the `scritps` command directly use the K8s API without
+    requiring a connector to Hub (#1615)
+  * Print instructions for running `kubectl port-forward` command
+    in case of failure (#1614)
+  * propagate host root to the tracer (#1613)
+  * Fix `-staletimeout` worker command value (#1611)
+  * Template the `-staletimeout` flag (#1610)
+  * updated Grafana dahsboard
+  * text change
+  * text changes
+
+-------------------------------------------------------------------
 Mon Sep 23 12:52:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubeshark-cli: CLI for the API traffic analyzer for

@@ -7,4 +7,12 @@
     <comment>new package kubeshark-cli: CLI for the API traffic analyzer for Kubernetes</comment>
     <requestid>1204379</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd7c0657c45d1865afba869c3d527732</srcmd5>
+    <version>52.3.83</version>
+    <time>1728659012</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1207113</requestid>
+  </revision>
 </revisionlist>
