@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 11 06:07:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.0:
+  * Clients lacking UDP connectivity no longer skip performing fallback latency
+    measurements with DERP servers.
+  * Warnings no longer display unnecessarily.
+  * Tailscale connectivity on in-flight internet on airplanes (such as Alaska Airlines) no longer fails.
+  * Service-related processes no longer run unnecessarily when services are disabled on the tailnet.
+  * Error messages include explanations in addition to the HTTP status code.
+  * Tailscale SSH supports sending environment variables to hosts. It's also possible to specify
+    permitted environment variables using the acceptEnv field.
+  * Tailscale SSH no longer breaks some terminal applications by omitting pixel width and height when
+    resizing the application window.
+
+-------------------------------------------------------------------
 Sat Sep 21 05:28:42 UTC 2024 - Eric Torres <eric.torres@its-et.me>
 
 - Change path of zsh completion file to make zsh properly recognize completions
