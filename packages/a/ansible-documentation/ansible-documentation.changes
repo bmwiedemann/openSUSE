@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct 11 05:35:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.5:
+  * add project survey 2024 banner (#1979) (#1980)
+  * Remove tagger script from stable (#1934)
+  * issue #1925 ee getting started missing content (#1975) (#1977)
+  * Remove no longer applicable part. (#1970) (#1973)
+  * Moved when condition after task name for block example (#1961)
+    (#1968)
+  * Update introduction.rst (#1960) (#1964)
+  * playbooks_filters: Mention the usage of the
+    ansible.builtin.split filter (#1929) (#1958)
+  * many: Fix title case of Git references (#1938) (#1941)
+  * getting_started_ee/build_execution_environment.rst: temporary
+    sample fix (#1924) (#1927)
+  * nox: add actionlint to lint Github Actions workflows (#1848)
+    (#1910)
+  * pr_labeler: re-architect triager script (#1882) (#1908)
+  * Add caveat about installing collections from git (#1894)
+    (#1898)
+  * ci: refresh dev dependencies (#1890)
+  * Change Getting started EE guide reference to point to the
+    relevant location (#1877) (#1880)
+  * Replace communication links with a link to communication guide,
+    part 2 (#1864) (#1874)
+  * Correct information about plugin enabling (#1760) (#1871)
+  * Replace communication links with a link to communication guide,
+    part 1 (#1851) (#1862)
+  * Restore community ee content (#1852) (#1859)
+  * Add porting guide for Ansible 9.10.0 (#1854) (#1857)
+  * Add porting guide for Ansible 10.4.0 (#1853) (#1855)
+  * Bump antsibull-docs to 2.14.0; add antsibull-docutils and
+    antsibull-fileutils. (#1837) (#1846)
+  * ci: refresh dev dependencies (#1842)
+
+-------------------------------------------------------------------
 Wed Sep 11 05:41:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.4:
