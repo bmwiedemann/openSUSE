@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:25:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.4:
+  * Revert "sca: Properly detect .so files as deps"
+  * Revert "sca: check if runtime dependencies are vendored"
+
+-------------------------------------------------------------------
+Fri Oct 11 09:19:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.3:
+  * cmake: switch from MinSizeRel to Release
+
+-------------------------------------------------------------------
+Fri Oct 11 09:13:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.2:
+  * fix: pc provides
+  * build(deps): bump golang.org/x/time from 0.6.0 to 0.7.0
+
+-------------------------------------------------------------------
+Fri Oct 11 09:11:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.1:
+  * tidy
+  * build(deps): bump cloud.google.com/go/storage from 1.43.0 to
+    1.44.0
+  * build(deps): bump golang.org/x/crypto from 0.27.0 to 0.28.0
+  * build(deps): bump github.com/chainguard-dev/yam in the gomod
+    group
+  * build(deps): bump the actions group with 2 updates
+  * sca: check if runtime dependencies are vendored
+
+-------------------------------------------------------------------
 Sun Oct 06 08:01:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.0:
