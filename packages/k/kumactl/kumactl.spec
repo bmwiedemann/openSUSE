@@ -21,7 +21,7 @@
 %define envoy_version 1.30.4-k.1
 
 Name:           kumactl
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
