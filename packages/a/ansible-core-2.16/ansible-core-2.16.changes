@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 05:02:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.12:
+  https://github.com/ansible/ansible/blob/v2.16.12/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - Add descriptions for ansible-galaxy install --help` and
+      `ansible-galaxy role|collection install --help`.
+    - ansible-galaxy install --help - Fix the usage text and
+      document that the requirements file passed to -r can include
+      collections and roles.
+    - dnf5 - re-introduce the state: installed alias to state:
+      present (#83960)
+
+-------------------------------------------------------------------
 Wed Sep 11 05:03:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.11:
