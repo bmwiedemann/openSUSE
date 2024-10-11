@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 10 15:30:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build using FFMPEG 7.1 : Add upstream patches:
+  + 8bf4c1bb.patch: ui: Replace deprecated libcurl function.
+  + b11ba432.patch player: Adapt to new ffmpeg channel layout API.
+
+-------------------------------------------------------------------
 Wed Aug 21 05:33:01 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Build against ffmpeg-6 on Factory
