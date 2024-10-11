@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
 Requires:       hicolor-icon-theme
-Requires:       (gnome-shell >= 46 with gnome-shell < 47)
+Requires:       (gnome-shell >= 46 with gnome-shell < 48)
 Recommends:     gstreamer-plugins-base
 
 %description
