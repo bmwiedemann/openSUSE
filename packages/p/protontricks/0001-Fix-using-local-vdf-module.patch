@@ -1,0 +1,80 @@
+From b78c219b2441d6a9738ac56ba6aae74c177ea851 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Thu, 10 Oct 2024 13:46:03 +0200
+Subject: [PATCH] Fix using local vdf module
+
+---
+ setup.cfg                         | 1 -
+ src/protontricks/_vdf/__init__.py | 2 +-
+ src/protontricks/steam.py         | 2 +-
+ tests/conftest.py                 | 2 +-
+ tests/test_steam.py               | 2 +-
+ 5 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index 7168136..44c9d3a 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -30,7 +30,6 @@ package_dir =
+ include_package_data = True
+ install_requires =
+     setuptools  # Required for pkg_resources
+-    vdf>=3.2
+     Pillow
+ setup_requires =
+     setuptools-scm
+diff --git a/src/protontricks/_vdf/__init__.py b/src/protontricks/_vdf/__init__.py
+index e79136b..722e6f5 100644
+--- a/src/protontricks/_vdf/__init__.py
++++ b/src/protontricks/_vdf/__init__.py
+@@ -16,7 +16,7 @@ try:
+ except:
+     from collections import Mapping
+ 
+-from vdf.vdict import VDFDict
++from . import vdict
+ 
+ # Py2 & Py3 compatibility
+ if sys.version_info[0] >= 3:
+diff --git a/src/protontricks/steam.py b/src/protontricks/steam.py
+index 98793e3..c8307ff 100644
+--- a/src/protontricks/steam.py
++++ b/src/protontricks/steam.py
+@@ -6,7 +6,7 @@ import zlib
+ from collections import OrderedDict
+ from pathlib import Path
+ 
+-import vdf
++from . import _vdf as vdf
+ 
+ from ._vdf import binary_loads as vendored_binary_loads
+ from .util import is_steam_deck, lower_dict
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 3553a94..c6d3706 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -8,7 +8,7 @@ from pathlib import Path
+ from subprocess import run, TimeoutExpired
+ 
+ import pytest
+-import vdf
++from protontricks import _vdf as vdf
+ 
+ from protontricks.cli.desktop_install import \
+     cli as desktop_install_cli_entrypoint
+diff --git a/tests/test_steam.py b/tests/test_steam.py
+index 347a034..6cb255f 100644
+--- a/tests/test_steam.py
++++ b/tests/test_steam.py
+@@ -4,7 +4,7 @@ import time
+ from pathlib import Path
+ 
+ import pytest
+-import vdf
++from protontricks import _vdf as vdf
+ 
+ from protontricks.steam import (SteamApp, _get_steamapps_subdirs,
+                                 find_appid_proton_prefix,
+-- 
+2.46.0
+

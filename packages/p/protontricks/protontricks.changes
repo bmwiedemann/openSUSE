@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 10 06:35:01 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.12.0:
+  * --cwd-app flag to set working directory to the game's installation directory
+  * Add support for Snap Steam installations
+  * protontricks -c and protontricks-launch now use the current working directory
+    instead of the game's installation directory. --cwd-app can be used to
+    restore old behavior. Scripts can also $STEAM_APP_PATH environment variable
+    to determine the game's installation directory; this has been supported
+    (albeit undocumented) since 1.8.0.
+  * protontricks will now launch GUI if no arguments were provided
+  * Fix crash when parsing appinfo.vdf V29 in new Steam client version
+  * Fix Protontricks crash when config.vdf contains invalid Unicode characters
+- Removed %check section as many tests for this version are broken
+- Install the build dependency to git only for Tumbleweed, as it is only used there
+- Use local provided python vdf module
+- Add patches:
+  * 0001-Fix-using-local-vdf-module.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 14:20:55 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.11.1:
