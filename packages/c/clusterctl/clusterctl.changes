@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:01:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.4:
+  * Bump cert manager to v1.16.0
+  * switch to using ECR mirror for trivy DB repo
+  * add cacheSyncPeriod option to ClusterCacheTracker
+  * pr-verify: use env var for passing the PR title
+  * Update RKE2 provider URL
+  * :seedling: test/e2e: decrease concurrency
+  * [release-1.8] :seedling: Add vultr infrastructure provider
+    (#11217)
+  * test/framework: GetCAPIResources should warn on rbac issues
+  * 🌱 test/framework: allow users to modify cache.Options
+  * [release-1.8] 🌱 machine: prevent error spamming for
+    NodeOutdatedTaint if objects are not found (#11199)
+  * Reduce verbosity of logs when calling Runtime Extensions
+  * clusterclass: fix nil pointer for empty workers in webhook
+  * 📖 Drop v1.5 column, set v1.6 to EOL in versions.md
+  * hack: fix the shell used when running pr-verify
+  * [release-1.8] 🌱 replace kubebuilder-release-tools with new
+    workflow (#11167)
+
+-------------------------------------------------------------------
 Sat Sep 14 10:50:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.3:
