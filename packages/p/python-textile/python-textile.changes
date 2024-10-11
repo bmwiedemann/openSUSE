@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:31:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.0.3
+  * Update supported Python versions to 3.8 - 3.12
+    ("#83":https://github.com/textile/python-textile/issues/83)
+  * Replace html5lib with nh3 for html sanitization
+  * General code cleanup
+  * Bugfixes:
+    ** Wrong HTML output when "bc.." is the very last in the document
+       ("#81":https://github.com/textile/python-textile/issues/81)
+  * Other:
+    ** Use github actions instead of travis for automated testing
+- Limit Python files matched in %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Sat Nov 27 10:13:30 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 4.0.2:

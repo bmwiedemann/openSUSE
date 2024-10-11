@@ -1,7 +1,7 @@
 #
 # spec file for package python-textile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-textile
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause
 URL:            https://github.com/textile/python-textile
 Source:         https://files.pythonhosted.org/packages/source/t/textile/textile-%{version}.tar.gz
 BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  %{python_module nh3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module regex >= 1.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow
-Requires:       python-html5lib >= 1.0.1
-Requires:       python-six
+Requires:       python-nh3
+Requires:       python-regex
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Recommends:     python-regex
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -49,17 +49,16 @@ MathML translation, Python code coloring and much more.
 
 %prep
 %setup -q -n textile-%{version}
-sed -i -e '/pytest-runner/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 rm pytest.ini
 %pytest
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pytextile
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,7 +70,8 @@ rm pytest.ini
 
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/textile
+%{python_sitelib}/textile-%{version}.dist-info
 %python_alternative %{_bindir}/pytextile
 
 %changelog
