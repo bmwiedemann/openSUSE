@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 11 06:59:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.4:
+  * Both by clearly highlighting the markers, and by improving how
+    we color the conflicting areas themselves.
+  * And remember: "git config --global merge.conflictstyle diff3"
+    is your friend!
+
+-------------------------------------------------------------------
 Mon Oct  7 08:26:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.3:

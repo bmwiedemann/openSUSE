@@ -199,4 +199,16 @@
     which differences should be highlighted and not.</comment>
     <requestid>1206039</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0590d72a1a83d8e40a8217ce8e9d8b72</srcmd5>
+    <version>3.3.4</version>
+    <time>1728658982</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.4:
+  * Both by clearly highlighting the markers, and by improving how
+    we color the conflicting areas themselves.
+  * And remember: &quot;git config --global merge.conflictstyle diff3&quot;
+    is your friend!</comment>
+    <requestid>1207061</requestid>
+  </revision>
 </revisionlist>
