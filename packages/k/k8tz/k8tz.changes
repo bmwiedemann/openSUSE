@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:25:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.1:
+  * build: release v0.17.1
+  * fix(helm): don't render secret permissions when cert-manager is
+    not used
+  * build(helm): release helm chart 0.17.0
+  * build(goreleaser): fix recent deprecation notices and
+    validation warnings
+
+-------------------------------------------------------------------
 Sat Sep 21 16:17:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.0:
