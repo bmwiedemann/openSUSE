@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:41:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Enable building of the module jline too
+
+-------------------------------------------------------------------
 Tue Sep 24 09:44:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build/distribute the source jars

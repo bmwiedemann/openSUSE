@@ -155,57 +155,68 @@ API documentation for %{name}.
 %pom_remove_plugin :maven-source-plugin
 
 %pom_xpath_remove -r "pom:arg[text()='-Werror']" . jline
-%pom_disable_module jline
-
-%pom_xpath_remove -r 'pom:profile[pom:id="javadoc"]'
-
-%{mvn_package} ":jline-{*}" @1
+%pom_remove_plugin :maven-dependency-plugin jline
+%pom_remove_plugin :build-helper-maven-plugin jline
+# This replaces the action of the two removed plugins
+mkdir -p jline/src/main/java
+mkdir -p jline/src/main/resources
+for module in  \
+    terminal \
+    terminal-jansi \
+    terminal-jna \
+    reader \
+    builtins \
+    console \
+    remote-ssh \
+    remote-telnet \
+    style; do
+  if [ -d ${module}/src/main/java ]; then
+    cp -r ${module}/src/main/java/* jline/src/main/java/
+  fi
+  if [ -d ${module}/src/main/resources ]; then
+    cp -r ${module}/src/main/resources/* jline/src/main/resources/
+  fi
+done
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -s -- -Dnojavadoc=true
 
 %install
 %mvn_install
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 
-%files builtins -f .mfiles-builtins
+%files -f .mfiles-jline
 %doc README.md
 %license LICENSE.txt
 
-%files console -f .mfiles-console
-%doc README.md
+%files builtins -f .mfiles-jline-builtins
 %license LICENSE.txt
 
-%files reader -f .mfiles-reader
-%doc README.md
+%files console -f .mfiles-jline-console
 %license LICENSE.txt
 
-%files remote-telnet -f .mfiles-remote-telnet
-%doc README.md
+%files reader -f .mfiles-jline-reader
 %license LICENSE.txt
 
-%files style -f .mfiles-style
-%doc README.md
+%files remote-telnet -f .mfiles-jline-remote-telnet
 %license LICENSE.txt
 
-%files terminal -f .mfiles-terminal
-%doc README.md
+%files style -f .mfiles-jline-style
 %license LICENSE.txt
 
-%files terminal-jna -f .mfiles-terminal-jna
-%doc README.md
+%files terminal -f .mfiles-jline-terminal
 %license LICENSE.txt
 
-%files terminal-jansi -f .mfiles-terminal-jansi
-%doc README.md
+%files terminal-jna -f .mfiles-jline-terminal-jna
 %license LICENSE.txt
 
-%files remote-ssh -f .mfiles-remote-ssh
-%doc README.md
+%files terminal-jansi -f .mfiles-jline-terminal-jansi
 %license LICENSE.txt
 
-%files parent -f .mfiles-parent
-%doc README.md
+%files remote-ssh -f .mfiles-jline-remote-ssh
+%license LICENSE.txt
+
+%files parent -f .mfiles-jline-parent
 %license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc
