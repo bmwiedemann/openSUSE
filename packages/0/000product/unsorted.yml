@@ -4490,6 +4490,7 @@ unsorted:
   - forgejo 
   - forgejo-apparmor 
   - forgejo-cli 
+  - forgejo-environment-to-ini 
   - forgejo-firewalld 
   - forgejo-runner 
   - forgejo-runner-bash-completion 
@@ -26169,7 +26170,6 @@ unsorted:
   - python310-modernize 
   - python310-mohawk 
   - python310-mongoengine 
-  - python310-monotonic 
   - python310-more-itertools 
   - python310-moreorless 
   - python310-moto 
@@ -27639,7 +27639,6 @@ unsorted:
   - python310-versioneer 
   - python310-versioneer-toml 
   - python310-versioningit 
-  - python310-versiontag 
   - python310-versiontools 
   - python310-veusz 
   - python310-vim-vint 
@@ -27698,7 +27697,6 @@ unsorted:
   - python310-widgetsnbextension 
   - python310-wikipedia 
   - python310-wirerope 
-  - python310-wiring 
   - python310-wmctrl 
   - python310-wolframalpha 
   - python310-wptools 
@@ -29782,7 +29780,6 @@ unsorted:
   - python311-modernize 
   - python311-mohawk 
   - python311-mongoengine 
-  - python311-monotonic 
   - python311-more-itertools 
   - python311-moreorless 
   - python311-moto 
@@ -31202,7 +31199,6 @@ unsorted:
   - python311-versioneer 
   - python311-versioneer-toml 
   - python311-versioningit 
-  - python311-versiontag 
   - python311-versiontools 
   - python311-veusz 
   - python311-vim-vint 
@@ -31261,7 +31257,6 @@ unsorted:
   - python311-widgetsnbextension 
   - python311-wikipedia 
   - python311-wirerope 
-  - python311-wiring 
   - python311-wmctrl 
   - python311-wolframalpha 
   - python311-wptools 
@@ -33412,7 +33407,6 @@ unsorted:
   - python312-modernize 
   - python312-mohawk 
   - python312-mongoengine 
-  - python312-monotonic 
   - python312-more-itertools 
   - python312-moreorless 
   - python312-moto 
@@ -34880,7 +34874,6 @@ unsorted:
   - python312-versioneer 
   - python312-versioneer-toml 
   - python312-versioningit 
-  - python312-versiontag 
   - python312-versiontools 
   - python312-veusz 
   - python312-vim-vint 
@@ -34939,7 +34932,6 @@ unsorted:
   - python312-widgetsnbextension 
   - python312-wikipedia 
   - python312-wirerope 
-  - python312-wiring 
   - python312-wmctrl 
   - python312-wolframalpha 
   - python312-wptools 
