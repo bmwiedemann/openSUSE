@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:55:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.0
+  * KleverNotes parser has been switched to md4qt
+  * The toolbar is now more precise for removing specific
+    Markdown tags but also to apply them.
+  * The parsing is now done on a separated thread, so parsing
+    very large notes should still be smooth
+  * The editor now has the abilty to be "WYSIWYG"
+
+-------------------------------------------------------------------
 Thu Jun  6 16:10:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Init klevernotes
