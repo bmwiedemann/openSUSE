@@ -824,4 +824,12 @@
     <comment>KDE release gear 24.08.1</comment>
     <requestid>1200557</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0a272a7825851f49ea7e1a2737b9a176</srcmd5>
+    <version>24.08.2</version>
+    <time>1728732365</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 24.08.2</comment>
+    <requestid>1206785</requestid>
+  </revision>
 </revisionlist>

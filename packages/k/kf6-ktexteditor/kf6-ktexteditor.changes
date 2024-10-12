@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:00:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * Port away from deprecated KPluralHandlingSpinBox
+  * Fix unexpected space indentation in Go var group (kde#487054)
+  * Read dir kateconfig on view creation (kde#489600)
+  * Fix pressing <ENTER> on } inserts two lines instead of one (kde#479717)
+  * Dont remove trailing spaces in markdown by default (kde#451648)
+  * Multicursors: Avoid indenting the sameline twice
+  * blockmode: repair indent when the cursor is in the first column
+  * Multicursor: Fix indent with multiple cursors
+  * with latest syntax definition, more tests pass for ruby
+  * use more views
+  * avoid double signal emission
+  * less deprecated calls, works locally
+  * Store multiline ranges spanning multiple blocks in TextBuffer
+  * Remove MovingRange caching in TextBlock
+  * add hint the file might got moved (kde#476071)
+  * Dont create selection highlights with multiple selections
+  * Optimize killLine for multiple cursors
+  * completion: Allow async population of documentation
+  * more const to avoid wrong use of these members
+  * ensure modify the renderer that is used for printing (kde#465526)
+  * Fix text insertion with multiple cursors at same position. (kde#492869)
+  * Add command names for "Remove Spaces" and "Keep Extra Spaces"
+  * Minimap now follows the theme also for search matches
+  * Run clang-format
+  * Fix merging of selections in opposite directions
+  * Fix secondary cursor at boundary of selection doesn't get removed
+  * Fix warnings
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
 Sat Sep  7 09:03:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

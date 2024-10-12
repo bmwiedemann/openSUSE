@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Add release description
+  * Bug 493128: Fix failure to play audio files using libVLC on some systems (kde#493128)
+  * Ensure that audio play is not attempted if audio initialisation failed
+  * Display audio error message immediately when using alarm edit Try button
+  * Bug 486187: Fix Wake from Suspend not working when using RTC wake (kde#486187)
+  * Fix crash if kernel alarm timers are enabled
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

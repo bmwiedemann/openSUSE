@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:02:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * ImagePlatformKWin: Use a 60 second timeout for CaptureInteractive
+  * ExportManager: fix crash when saving while timezone is misconfigured (kde#493191)
+  * ExportManager: Make Placeholder a bit more efficient
+  * ExportManager: rename removeEmptyPlaceholderAndSeparators to removePlaceholderAndSeparators
+  * ExportManager: Fix Save As using default filename template and wrong folder for filename formatting (kde#493370)
+  * Make screenshots with scales multiplied or divided by integers look sharper in AnnotationViewport
+  * Use blur and pixelate icons for blur and pixelate tools
+  * Round mouse positions to physical pixels (kde#489448)
+
+-------------------------------------------------------------------
 Tue Sep 10 14:11:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

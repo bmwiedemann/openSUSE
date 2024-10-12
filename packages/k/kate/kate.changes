@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * snapcraft: Add paths for libs in core22 to ld_library_path
+  * snapcraft: Ensure $SNAP path is first in LD_LIBRARY_PATH
+  * snapcraft: Patchelf dri files so we have graphics.
+  * fix strange behavior on document close after restore (kde#487034)
+  * add compat code to read old session config for views
+  * fix session restore of tabs/views of untitled documents (kde#464703)
+  * don't store pointer
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

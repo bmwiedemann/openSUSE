@@ -912,4 +912,12 @@
     <comment>KDE release gear 24.08.1</comment>
     <requestid>1200633</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c2278a46e58ec7d799e64ee441746188</srcmd5>
+    <version>24.08.2</version>
+    <time>1728732424</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 24.08.2</comment>
+    <requestid>1206982</requestid>
+  </revision>
 </revisionlist>

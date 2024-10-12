@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:00:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Ignore trailing slashes when comparing place URLs
+  * Fix display of filename ampersands in actions (kde#491684)
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

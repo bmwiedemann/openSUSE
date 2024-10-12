@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.1.0
+%define kf6_version 6.5.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -56,8 +56,8 @@ look native with any QQC2 style (qqc2-desktop-theme, Material
 or Plasma).
 
 %package -n libKirigamiAddonsStatefulApp6
-Summary: Stateful application suppport library for kirigami-addons
- 
+Summary:        Stateful application suppport library for kirigami-addons
+
 %description -n libKirigamiAddonsStatefulApp6
 A set of "widgets" i.e visual end user components along with a
 code to support them. Components are usable by both touch and
@@ -120,6 +120,7 @@ Provides translations for %{name}.
 %dir %{_kf6_sharedir}/kdevappwizard/
 %dir %{_kf6_sharedir}/kdevappwizard/templates/
 %{_kf6_sharedir}/kdevappwizard/templates/kirigamiaddons6.tar.bz2
+%{_kf6_sharedir}/kdevappwizard/templates/librarymanager6.tar.bz2
 
 %files lang -f %{name}.lang
 

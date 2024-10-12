@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:00:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * fix crash with older Qt (kde#493060)
+  * Fix build against a static Qt
+  * KDateComboBox: emit dateEntered() on FocusOut
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
 Sat Sep  7 09:03:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

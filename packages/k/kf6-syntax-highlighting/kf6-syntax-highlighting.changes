@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:00:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * upload the uncompressed files
+  * odin: add missing items, fix attribute, add directive
+  * Swift: fix detection of end of protocol method declaration (kde#493459)
+  * Indexer: treats 1-character StringDetect as a DetectChar for unreachable rules and the merge suggestion
+  * Indexer: check that WordDetect does not contain spaces at the beginning and end of text
+  * simplify installed xml syntax files to speed up reading
+  * Indexer: replace some QString with QStringView and QLatin1Char with char16_t literal
+  * Indexer: fix default value for char with LineContinuation
+  * orgmode.xml: Fix orgmode syntax highlighting not ending properly
+  * Jira, Markdown, Org Mode: use rhtml syntax with erb language
+  * Haml: complete the syntax and fix the highlighting of Ruby line following the change in ruby.xml
+  * Ruby: fix %W, dot member, some parenthesis ; add ?c, escape char, etc (kde#488014)
+  * Gleam: Minor modifications to syntax and example file
+  * Remove truncase from Common Lisp
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
 Sat Sep  7 09:03:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

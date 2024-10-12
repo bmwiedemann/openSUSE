@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:00:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * Add since info for new API
+  * Re-enable cachegen on Android
+  * Create CMake config file only once all build parameters are known
+  * Fix unit tests when using a static build
+  * PlatformTheme: fix crash when item is being destroyed
+  * OverlaySheet: make default title vertically center aligned (kde#489357)
+  * Fix clang-format version imcompatibilities
+  * Dialog: Take header width into account, small fix for footerToolbar width
+  * Workaround on incorrect palette update (kde#493654)
+  * platform: Check if weak pointer is expired in PlatformThemeChangeTracker ctor (kde#493652)
+  * Dialog: Use footer buttons width if its wider than content
+  * Fix sidebar text color in systemsettings
+  * Use disabled text colors also for inherit-ing Theme instances (kde#433256)
+  * autotests/tst_theme: Add a test that verifies only one signal emission happens
+  * autotests/tst_theme: Remove waiting for events
+  * autotests/tst_theme: Explicitly mark root test objects as not inheriting
+  * Add PlatformThemeChangeTracker to BasicTheme::sync()
+  * platform: Replace PlatformTheme::queueChildUpdate with ChangeTracker::Data flag
+  * platform: Don't use queued signals for batching change signals in PlatformTheme
+  * Fix NavigationTabBar sizing on mobile
+  * ContextualHelpButton: Clip to avoid text overflow
+  * ContextualHelpButton: Fix flickering when the popup covers the button (kde#489688)
+  * ColumnView currently allows having a QObject item inside its children list.
+    This commit restricts this list from `QList<QObject *>` to
+    `QList<QQuickItem *>` and removes redundant casts.
+  * ToolBarLayout: Add support for actions that are separators
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
 Sat Sep  7 09:03:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

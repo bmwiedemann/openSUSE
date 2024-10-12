@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Making isotope.xml consistent with halflife units
+  * Fixed isotope table not showing units of halflife
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:00:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * [OpenFileManagerWindowJob] Fix crash when falling back to KRunStrategy (kde#486494)
+  * previewjob: Use .cache as temp folder, delete temp file after use (kde#494096)
+  * KFileItemActions: Try reading X-KDE-Show-In-Submenu as bool instead of string
+  * KFilePlacesView: have setUrl() handle trailing slashes in place URLs
+  * KFilePlacesItem: Use Solid to find home mount point
+  * fileitem,file_unix: simplify types for stat
+  * Remove one level of three nesting in kdevtemplate
+  * knewfilemenutest: cleanup
+  * knewfilemenutest: test files and folders in ~/Templates
+  * ConnectionBackenp: fix passing errorString
+  * knewfilemenu: Make ~/Templates work by simply placing files and folders there (kde#191632)
+  * KFilePlacesItem: Cache groupType
+  * previewjob: avoid calling mkdir for path with two slashs
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
 Sat Sep  7 09:03:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

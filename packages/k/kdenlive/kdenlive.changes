@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Fix title producer update on edit undo (kde#494142)
+  * Fix typo in dance.xml
+  * Fix single item(s) move
+  * Fix cycle effects playling timeline and sometimes broken after reopening project Fixes #1921
+  * Fix recent regression breaking all sort of things when opening projects. Related to #1925
+  * Fix crash when dragging clip and using mouse wheel
+  * Don't play when clicking monitor container if disabled in settings
+  * Fix effect zones lost on project reopening
+  * Various fixes for bin clip effects
+  * disable check for ghost effects that currently removes valid effects
+  * detect and fix track producers with incorrect effects
+  * fix bin effects sometimes not correctly removed from timeline instance
+  * Don't try to build clone effect it if does not apply to the target
+  * Don't unnecessarily check MLT tractors
+  * Fix crash opening file with missing clips
+  * Fix crash on project close
+  * snapcraft: Remove glaximate option, it is not needed here.
+  * snspcraft: Release from release branch.
+  * Fix compilation
+  * Fix possible crash opening an interlaced project
+  * Fix on monitor seek to next/previous keyframe buttons
+  * Fix crash editing keyframes in a bin clip with grouped effects enabled
+  * Don't try to connect to dbus jobview on command line rendering
+  * Fix Qt5 compilation
+  * FIx looping through clips in project monitor effect scene
+  * Fix loop selected clip Fixes #1915
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

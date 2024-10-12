@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:00:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Fix tracks without metadata not playing (kde#492699)
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

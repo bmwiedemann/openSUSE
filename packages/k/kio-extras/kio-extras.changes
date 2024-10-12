@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * sftp: account for maximum request length when using sftp_aio (kde#488581)
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

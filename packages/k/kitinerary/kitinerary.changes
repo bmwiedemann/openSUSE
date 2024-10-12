@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Handle missing train number in Trenitalia SSB barcodes
+  * Handle German language variants of NH Hotels booking confirmations
+  * Support membership number in German-language Eurostar (Thalys) tickets
+  * Extract seat reservation data from SBB QR codes
+  * Add Koleo ticket extractor script
+  * eventim: Handle case when the event has no designated seats
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1

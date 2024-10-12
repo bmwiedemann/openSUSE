@@ -1180,4 +1180,12 @@
     <comment>KDE release gear 24.08.1 (forwarded request 1199910 from krop)</comment>
     <requestid>1200315</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>99d2fd313116b519f5401787a0b33cb1</srcmd5>
+    <version>24.08.2</version>
+    <time>1728732474</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 24.08.2</comment>
+    <requestid>1206783</requestid>
+  </revision>
 </revisionlist>
