@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.conscrypt</groupId>
+  <artifactId>conscrypt-openjdk</artifactId>
+  <version>2.5.2</version>
+  <packaging>pom</packaging>
+  <name>org.conscrypt:conscrypt-openjdk</name>
+  <description>Conscrypt: OpenJdk</description>
+  <url>https://conscrypt.org/</url>
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>conscrypt</id>
+      <name>Conscrypt Contributors</name>
+      <email>conscrypt@googlegroups.com</email>
+      <url>https://conscrypt.org/</url>
+      <organization>Google, Inc.</organization>
+      <organizationUrl>https://www.google.com</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:https://github.com/google/conscrypt.git</connection>
+    <developerConnection>scm:git:git@github.com:google/conscrypt.git</developerConnection>
+    <url>https://github.com/google/conscrypt</url>
+  </scm>
+</project>

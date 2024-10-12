@@ -1,0 +1,6 @@
+<package name="conscrypt" project="openSUSE:Factory">
+  <title>A Java Security Provider that implements parts of the JCE and JSSE</title>
+  <description>Conscrypt is a Java Security Provider (JSP) that implements parts of the Java Cryptography Extension (JCE) and Java Secure Socket Extension (JSSE). It uses BoringSSL to provide cryptographic primitives and Transport Layer Security (TLS) for Java applications on Android and OpenJDK. See the capabilities documentation for detailed information on what is provided.</description>
+  <devel project="Java:packages" package="conscrypt"/>
+  <url>https://github.com/google/conscrypt</url>
+</package>

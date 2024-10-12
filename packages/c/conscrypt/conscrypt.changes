@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Oct 11 09:31:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias for the uber jar, since that is basically what we are
+  producing here
+
+-------------------------------------------------------------------
+Tue Aug  2 05:09:39 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v2.5.2
