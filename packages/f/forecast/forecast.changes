@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Oct 11 09:56:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20241006.f98528a:
+  * Expand metainfo
+  * Bundle cosmic icons on flatpak manifest
+  * Add release info; remove COSMIC category
+  * Prepping for 1.0.0 release
+  * Move strings to translation file
+  * feat: app errors dialog box and own api key support
+  * feat: add on_submit event
+  * Fix daily view
+  * Tentative fix to daily view
+  * Work on details screen
+  * Make it possible to disable libcosmic wgpu feature
+  * Update app name from Weather to Forecast
+  * fix: remove unnecessary casting
+  * feat: add km/h to speed units
+  * fix: padding in details view
+  * Add wind speed units
+  * Add air pressure units
+  * Begin work on details screen
+  * fix: close dialog after selecting city
+  * feat: option to choose location from list
+  * fix: prevent unwraping unset values
+  * Update wording for time format
+  * update metno api from compact to complete
+  * cleanup: remove unused imports and functions
+  * chore: Add time format options
+  * fix: correct app id
+  * Refactor how current data is pulled
+  * Added data to hourly view
+  * More work on weather class
+- rename to new name
+- update upstream url
+
+-------------------------------------------------------------------
+Thu Aug  8 00:59:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Tue Jul 23 22:44:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
