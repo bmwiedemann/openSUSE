@@ -18,7 +18,7 @@
 
 %define         appname io.github.wiiznokes.cosmic-ext-applet-clipboard-manager
 Name:           cosmic-ext-applet-clipboard-manager
-Version:        0.1.0+git20240730.b204500
+Version:        0.1.0+git20241008.f349d15
 Release:        0
 Summary:        Clipboard manager for COSMIC
 License:        GPL-3.0-only
@@ -50,6 +50,12 @@ just build-release
 just rootdir=%{buildroot} prefix=%{_prefix} install
 %suse_update_desktop_file %{appname}
 
+%if 0%{?suse_version} >= 1600
+mkdir -p %{buildroot}%{_distconfdir}/profile.d
+mv %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh \
+   %{buildroot}%{_distconfdir}/profile.d/%{name}.sh
+%endif
+
 %check
 %{cargo_test}
 
@@ -59,11 +65,11 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
-%{_prefix}/lib/environment.d/%{name}.conf
-%{_datadir}/%{name}
 
-%if %{?suse_version} < 1600
-%{_prefix}/lib/environment.d
+%if 0%{?suse_version} >= 1600
+%{_distconfdir}/profile.d/%{name}.sh
+%else
+%{_sysconfdir}/profile.d/%{name}.sh
 %endif
 
 %changelog

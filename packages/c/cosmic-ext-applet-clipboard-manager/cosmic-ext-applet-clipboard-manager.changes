@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 20:24:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to :
+  * feat!: use second instead of Duration in Config.
+    This is a breaking change but hopefully, this will not have a
+    huge impact since it was not in the setting UI
+  * feat: add unique session toogle
+  * feat: favorite impl
+  * fix: environment -> profile
+  * feat: horizontal layout
+  * feat: qr code
+- update upstream url
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

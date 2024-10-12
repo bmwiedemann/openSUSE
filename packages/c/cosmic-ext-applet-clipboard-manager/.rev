@@ -23,4 +23,21 @@
   * fix justfile</comment>
     <requestid>1192462</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0975d180e55a0907cb9fe12b4c2b335d</srcmd5>
+    <version>0.1.0+git20241008.f349d15</version>
+    <time>1728732625</time>
+    <user>dimstar_suse</user>
+    <comment>- update to :
+  * feat!: use second instead of Duration in Config.
+    This is a breaking change but hopefully, this will not have a
+    huge impact since it was not in the setting UI
+  * feat: add unique session toogle
+  * feat: favorite impl
+  * fix: environment -&gt; profile
+  * feat: horizontal layout
+  * feat: qr code
+- update upstream url (forwarded request 1207344 from rrahl0)</comment>
+    <requestid>1207345</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/wiiznokes/clipboard-manager.git</param>
+    <param name="url">https://github.com/cosmic-utils/clipboard-manager.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionformat">0.1.0+git%cd.%h</param>
