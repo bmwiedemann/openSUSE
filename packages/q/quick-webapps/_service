@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/elevenhsoft/WebApps.git</param>
+    <param name="url">https://github.com/cosmic-utils/web-apps.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
@@ -13,7 +13,7 @@
     <param name="compression">zstd</param>
   </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="src">WebApps</param>
+    <param name="src">web-apps</param>
     <param name="update">false</param>
   </service>
   <service name="set_version" mode="manual" />

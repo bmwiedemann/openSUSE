@@ -18,7 +18,7 @@
 
 %define         appname io.github.elevenhsoft.WebApps
 Name:           quick-webapps
-Version:        0.4.6+git20240803.6598d33
+Version:        0.5.1+git20241009.953a096
 Release:        0
 Summary:        Web App Manager written with love and libcosmic
 License:        GPL-3.0-only
@@ -59,8 +59,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.png
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.png
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

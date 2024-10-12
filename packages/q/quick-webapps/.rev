@@ -23,4 +23,36 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192479</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fa616e0dee20a417f47a52829c56706</srcmd5>
+    <version>0.5.1+git20241009.953a096</version>
+    <time>1728732627</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.1+git20241009.953a096:
+  * fixed url for translations
+  * update dependencies
+  * docs: Expand metainfo
+  * fix: don't panic when not successfull fetch favicon
+  * fix: validation check when creating new launcher
+  * improv: read installed browsers from freedesktop entry
+  * temporary disable dbus-config feature
+  * fix: remove warn about icon when auto select icon
+  * feat: sort icons with priority for favicons
+  * improv: image_handle from url
+  * fix: better handling icon moving and selection
+  * removed unknown tag
+  * feat: better support for zen
+  * remove clippy allow hint
+  * remove unnecessary argument
+  * simplify move_icon function
+  * fix: moving icon
+  * reinitialize creator page after closing it
+  * improv: reorganization update method
+  * move Icon struct to common mod
+  * reinitialize creator window when done
+  * some code cleanup, reorganization and fixes
+  * fix: validation before creating launcher
+ - update upstream url (forwarded request 1207346 from rrahl0)</comment>
+    <requestid>1207347</requestid>
+  </revision>
 </revisionlist>
