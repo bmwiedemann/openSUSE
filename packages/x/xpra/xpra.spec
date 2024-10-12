@@ -28,17 +28,11 @@
 %define python_ver python311
 %define python_short_ver 3.11
 %define python_bin python3.11
-# ----
-%if 0%{?suse_version} >= 1550
-%define ffmpeg_ver 6
-%else
-%define ffmpeg_ver 4
-%endif
 
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.2.0+git20240718.6fcb897e
+Version:        6.2.0+git20241010.57777eda
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -54,12 +48,6 @@ BuildRequires:  cups
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-%{ffmpeg_ver}
-BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavcodec-devel
-BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavformat-devel
-BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavutil-devel
-BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswresample-devel
-BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswscale-devel
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
@@ -157,6 +145,8 @@ Recommends:     %{python_ver}-pyxdg
 #Recommends:     python3-setuptools
 #Recommends:     python3-six
 Recommends:     xdg-menu
+# Updating %%ghost items makes it complain about missing xpra group
+Provides:       group(xpra)
 # Overflow errors on 32-bit
 ExcludeArch:    %ix86
 %{?systemd_ordering}
@@ -195,7 +185,6 @@ sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
 %build
 
 ### DEBUGGING
-echo "ffmpeg_ver:    %ffmpeg_ver"
 echo "sle_version:   %sle_version"
 echo "suse_version:  %suse_version"
 echo "using_release: %using_release"
@@ -207,11 +196,6 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 #%%endif
 %{python_bin} setup.py clean
 
-### These don't appear available anymore:
-#  --with-enc_ffmpeg \
-#  --with-dec_avcodec2 \
-#  --with-csc_swscale \
-#####
 ### Not sure how to incorporate this from: Open H.264 Codec
 #  --with-openh264 \
 #####
@@ -230,16 +214,6 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 %endif
   --without-nvfbc \
   --without-nvidia
-#%%if %%{ffmpeg_ver} == 4
-#  --without-nvfbc
-#%%endif
-#%%if %%{ffmpeg_ver} == 5
-#  --without-nvfbc
-#%%endif
-#%%if %%{ffmpeg_ver} == 5
-#  --without-nvfbc \
-#  --without-strict
-#%%endif
 
 %install
 %{python_bin} setup.py install \
@@ -377,7 +351,7 @@ done
 %{_tmpfilesdir}/xpra.conf
 %{_unitdir}/xpra.service
 %{_unitdir}/xpra.socket
-%ghost %dir %{_rundir}/xpra
-%ghost %dir %{_rundir}/xpra/proxy
+%ghost %dir %attr(1775,-,xpra) %{_rundir}/xpra
+%ghost %dir %attr(1700,-,xpra) %{_rundir}/xpra/proxy
 
 %changelog

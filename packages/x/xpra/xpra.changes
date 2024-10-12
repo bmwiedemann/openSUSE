@@ -1,8 +1,524 @@
 -------------------------------------------------------------------
+Thu Oct 10 14:41:21 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20241010.57777eda:
+  * fix missing comtypes.stream error message
+  * ensure file-transfer error handlers clean up properly
+  * update the release notes
+  * we don't need rencode since v6
+  * type hint fixes: need stronger type
+  * #4377 import xsync when needed
+  * type hint fixes
+  * #4372 raise min iterations
+  * #4372 avoid even semi-predictable iv
+  * #4372 handle iv as bytes on lower layer
+  * #4372 send a new iv with every new context
+  * repr is safer than nonl
+  * prettify printing of network addresses
+  * 0 is a valid port number, it means assign one
+  * payload is not always the same as 'data'
+  * #4372 call finalize() in tests
+  * #4372 dump encrypted packet data for debugging
+  * derp: match code committed
+  * #4372 call cipher.finalize after each block
+  * move the 'encryption' prefix to callers
+  * (try to) simplify
+  * add more cbc roundtrip test, same as the new html5 code
+  * #4372 oops: remove debug logging
+  * fix type hints
+  * #4372 the correct block size for AES is 128 bits
+  * cosmetic
+  * #4372 log python-cryptography info, add stronger types
+  * #4372 update unit test data with the new default 10000 iterations
+  * #4372 raise default number of iterations
+  * #4372 remove unused 'legacy' padding
+  * #4372 allow much higher number of iterations for key derivation
+  * #4372 option to always include some padding with AES packets
+
+-------------------------------------------------------------------
+Thu Oct 10 13:40:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove ffmpeg dependency: upstream removed the ffmpeg decoded in
+  version 6.0.
+
+-------------------------------------------------------------------
+Mon Sep 30 17:27:03 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20240930.c985181d:
+  * move key arguments validation to common location
+  * add 'fixed output' test
+  * Update clipboard source
+  * update unit tests with stronger types
+  * stronger types, better validation and debug logging
+  * this should be rendundant
+  * #4370 missing $
+  * #3953 fix 'minimal' man page entry
+  * re-use the same send function
+  * #3953 add 'minimal' to man page
+  * no need for a full backtrace when ImageCms is missing
+  * #4366 make 'inline' mode the default
+  * #3657 some cameras use YUYV, mine does
+  * #4360 more direct import path
+  * #4354 increase the focus recheck delay
+  * there aren't any riscv64 bookworm containers
+  * silence http timeout errors
+  * #4363 generic server control commands: add to proxy instance process
+  * proxy instances should reply to id requests
+  * missed from 01fdc71faeced55287e48fc2c12c5758ba5f254d
+  * cosmetic
+  * #4362 use multi-process proxy with ssl sockets
+  * initialize the proxy video codecs for the first threaded connection
+  * this is redundant: running as uid 0 already enables 'client-username'
+  * typo
+  * prettier output: sort display numbers
+  * validate hostname without port for ssl redirection
+  * #4361 don't require xpra.x11 in the client
+  * simplify
+  * #4347 let clients override auth username with proxy
+  * fix linter warnings
+  * don't use deprecated API
+  * derp
+  * #4355 use Popen on win32 and re-use the same function
+  * fix reconnection to automatic displays
+  * #4355 quote the command to prevent parsing issues
+  * add type hints
+  * #4355 add debug logging
+  * shortcut out when we don't have nvidia decoders
+  * don't log eof on closed connections
+  * #4307 avoid x11 warning on MacOS and win32
+  * #4288 add 'show-ssl' and list new subcommands in usage info
+  * remove outdated docstring
+  * !fixup: `packaging/MacOS/postinstall`: whitespace vs tabs
+  * #4288 find a ssl certificate automatically
+  * #4288 download remote ssl certificates to local host store
+  * #4288 cosmetic changes
+  * don't enable cityhash by default
+  * #4288 also use 'setup-ssl' on Debian, MacOS and Windows
+  * we have the ssl key, so we can enable quic
+  * also allow udp (quic) port through firewall
+  * #4288 add 'setup-ssl' subcommand for local certificates
+  * add type hints
+  * #4353 prevent 'win_openssh.OpenSSHAgentConnection' from beind loaded
+  * must pass None value to ignore keyfile
+  * don't bundle Qt in light builds
+  * #4342 process mode works again
+  * #4342 partial revert of 431145386dede6e0dd71a02987a3aa4c7dfc3604
+  * we can also have ints as keys
+  * always return a valid exit code
+  * extract some re-usable functions
+  * write pidfile earlier
+  * better type hints, always tag packet metadata as 'compressed'
+  * prettier
+  * minor linter warnings
+  * shortcut out early
+  * don't bother logging packet stats for 'id' requests
+  * cosmetic
+  * proxy servers should respond to 'id' requests
+  * lookup the www dir just once
+  * missed from b074fa6bd14c6efd62063ab81fbdd3f7b7ee03ad
+  * #4342 use threaded mode until subprocess mode is fixed
+  * only add a delay if we need to wait for the splash screen
+  * simplify and robustify splash screen handling
+  * #4307 make it possible to block x11
+  * derp: fixup 44fe63a5805cdc2a08d74c005cc9c79db639c8a8
+  * safe to use wrapper now that imports have been split up
+  * add type hints
+  * skip logging redundant data
+  * remove unhelpful warnings
+  * #3335 add python watchdog backend to replace pyinotify
+  * #3335 generic menu loading and file monitoring
+  * replace pyinotify with Gio monitor
+  * audio data can be inlined
+  * minor linter warnings
+  * api was changed?
+  * 'jpega' requires transparency - hide it when unavailable
+  * add type hints to all "runnables"
+  * correct type - even if unused
+  * derp: fixup 9c2953f31e5b9a9274fd87c89c2604e27d86a526 (unused function)
+  * discard nvjpeg / nvdec decoders on non-transient failures
+  * invalid (unused) arguments from one-shot 'decompress' call
+  * discard decoders more quickly on non-transient exceptions
+  * don't re-use a decompressor after getting a CodecStateException
+  * #4348 don't retry failing decoders indefinitely
+  * more useful error messages
+  * derp: set the video decoder we found
+  * some cuda errors are transient, others are not
+  * cosmetic: rename, type hints
+  * #4052 add roi stub
+  * #4346 prevent menu item callbacks from firing when setting them
+  * stub for using datagram size to drive h264 slicing
+  * expose datagram size to video encoders
+  * can't use 'reason' string with bare quic close method
+  * cosmetic
+  * #4343 always include sps and pps
+  * let encoders specify their internal csc-type
+  * simplify: filter csc specs just once
+  * correct error message for virtual encodings
+  * #4345 nvenc produces frames with bigger padding now
+  * warn about outdated versions
+  * better connection failure message
+  * pynvml 12.560.30
+  * expose csc-type
+  * expose the correct csc format
+  * ensure qp is clamped to a valid range
+  * fix nvidia module version parsing from /proc
+  * #4342 forgot to update the server packet source
+  * add type hints
+  * honour the initial resolution, even if resizing is disabled
+  * non-x11 platforms don't have an xid
+  * the launcher has already loaded gtk
+  * Fix --keyboard-sync command line option
+  * missing argument for request mode
+  * cosmetic linter fixes
+  * encryption may still be enabled when sending the challenge response
+  * cosmetic
+  * bcrypt can't be build with jhbuild now
+  * skip unnecessary resize, log result of resize
+  * fix 3b641900c4afd199c35a4a2c68d573c92db0d02b: type hints to the rescue
+  * expose all targets
+  * better debug logging
+  * log error code
+  * silence Gtk warnings we can't do nothing about
+  * warn users about the carnage from setuptools
+  * cosmetic
+  * make linters happier - they can't count..
+  * mod missing contained incorrect types
+  * wrong argument order
+  * remove unused attribute
+  * unbreak the CI which doesn't have an X11 display
+  * oops: update one more test for b10e9a1d8769e737d4acf649e0e02955ce46599c
+  * update test to match b10e9a1d8769e737d4acf649e0e02955ce46599c
+  * assume the display is LIVE when we find a window manager
+  * debug logging tweaks
+  * #3871 move keymap to wrapper function
+  * #3871 remove more gtk calls
+  * add debug logging
+  * add (unused) randr definitions
+
+-------------------------------------------------------------------
+Mon Aug 26 14:21:20 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20240826.469f9329:
+  * client can specify refresh-rate with resolution
+  * #3871 remove gtk, use direct X11 calls
+  * #3871 remove gtk, use direct X11 calls
+  * #3871 don't use gtk for desktop servers
+  * better error message
+  * add 720p and WQHD resolution aliases
+  * handle errors more gracefully
+  * also use pid for non-seamless X11 servers
+  * add debug logging
+  * assume server is LIVE if its pid exists
+  * sessions-dir should be a string
+  * simplify + type hints
+  * reformat
+  * add type hints
+  * make it possible to block 'ssl' and 'ssh', #4307
+  * use 'none' and 'closed' instead of None values for packets
+  * incorrect type hint
+  * this class can no longer be used directly
+  * derp: do remove window state
+  * simplify and add type hints
+  * we may get a 'ModifierType' here, strict type hints require an int
+  * fix minor linter warnings
+  * must compare version with a tuple
+  * #4337 also map missing modifiers when using the defaults
+  * #4337 add type hints, better messages
+  * logging tweaks
+  * make it easier to debug issues with pings
+  * improve connection error messages
+  * cleanup needs an X11 context wrapper
+  * #4335 fixup 67ca44380d734db41e66c6eb416ad8b919ff916c
+  * don't log ConnectionResetError as scary errors
+  * silence linter warnings
+  * add ubuntu oracular
+  * stronger types
+  * version is specified in gi_import
+  * remove more unnecessary gtk glue
+  * handle missing window without raising an exception
+  * #4335 replace gtk with pure-x11 calls
+  * show more setup failure details
+  * update test to match f7f75aebf56c3226563e238270735e6d9fc3336f
+  * fix painting of system trays
+  * remove more legacy bytes vs strings
+  * also greylist the virtualbox driver
+  * fix linter warnings
+  * log both backtraces: from and to here
+  * dnf-5 broke the command line in Fedora 41
+  * accept xpm start menu icon data
+  * bump release no to force rebuild with regenerated cython bindings
+  * for now, only build packages for default python3
+  * sytem boost package can only be used with default python3
+  * Fedora 41 needs to re-cythonize the source
+  * #4332 oops, half the patch was missing
+  * #4332 fix Python 3.13 builds
+  * use backwards compatible syntax
+  * detect non-default python interpreter
+  * no need for Gtk here
+  * define stricter cython return types
+  * cosmetic: type hints and move legacy code
+  * better audio failure handling
+  * always set a default initial resolution
+  * cosmetic: remove unused function, whitespace
+  * no need for warning
+  * #4314 try to never mix gtk and qt
+  * we don't use the fps timer, so don't cancel it
+  * 0e445bbeb66618cc9f35f3214e89a1891377f373 wrongly dropped alpha blending
+  * never expose pillow enums in network packets
+  * derp: border attribute can have 3 parts
+  * cairo image surface cython glue is not tied to the client
+  * better error handling: more helpful messages
+  * #4330 add no-gstreamer switch
+  * fix pointer overlay with desktop-scaling
+  * cosmetic
+  * fixup 0d3e5d4de0d2a6f23c33804a6769b5c22be4eabb
+  * #4244 typos in deb package names
+  * simplify: group under plarform aliases
+  * detect 'Linux Mint'
+  * type hints
+  * #4329 remove special case for 'sync' attribute
+  * Fix to send keyboard_sync from client.
+  * Fix to read keyboard_sync option propery.
+  * #4319 fix scaled paints
+  * we don't need or want gtk imported here
+  * #4324 use bilinear filter when downscaling
+  * more tolerant parsing of border string
+  * sub-optimal or even buggy non-scroll encoding
+  * #4201 need to clear fbo before pasting over it
+  * fix desktop scaling: clear fbos before use
+  * log more opengl backend details at info level
+  * only present_fbo needs to scale to window size
+  * use a context manager for restoring the viewport
+  * match opengl refactoring
+  * stricter type for pointer_overlay attribute
+  * make it easier to choose display backends
+  * confusing message: not always the default display
+  * some command line options may query the encodings
+  * #4318 wait until after the handshake
+  * more type hints
+  * 'xdg_menu' check was redundant, 'is_closed' is not
+  * add type hints
+  * fix excluded test paths, add x11 client test to skip list
+  * fix painting the border with scaling
+  * CI is too slow, skip expensive tests
+  * make these tests cheaper to run on CI
+  * #4318 wait until we're running to start the timer
+  * Revert "generic methods for setting up fbo access"
+  * Fix x11 clipboard INCR protocal.
+  * border should always be defined
+  * #4318 desktop scaling was breaking pointer polling
+  * correct type hint
+  * ensure XShape windows also show the border
+  * xshape errors with desktop scaling
+  * add type hints
+  * #4318 add option to poll the pointer position
+  * don't populate av-sync menu if the feature is disabled
+  * add packet handler before enabling connection
+  * log the window xid with missing property messages
+  * stronger type hints
+  * use opengl greylist for drivers we don't enable
+  * with 'minimal', disable opengl
+
+-------------------------------------------------------------------
+Wed Aug 07 16:43:13 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20240807.6c0323f9:
+  * remove debug logging commited by mistake
+  * #4307 don't assume window forwarding is enabled
+  * #4307 we cannot import WindowClient unconditionally
+  * the border attribute should be initialized
+  * restore paint context for painting the border
+  * generic methods for setting up fbo access
+
+-------------------------------------------------------------------
+Tue Aug  6 15:43:28 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Provides: group(xpra)' - which was already the case in %pre, but
+  update to %ghost makes it complain if this isn't called out explicitly
+
+-------------------------------------------------------------------
+Tue Aug 06 13:50:15 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20240806.4132b7b9:
+  * ensure pointer overlay and fps counter don't clamp the viewport
+  * when paint debug is on, show where we padded the window when resizing
+  * missing debug paint color for 'avif'
+  * clear fbo before pasting existing data on it
+  * #4314 only build qt6 client for el10
+  * make save_fbo more useful
+  * only use lowercase for string keys
+  * don't send menu updates to clients that don't want them
+  * errors when the connection is closed as we process it
+  * slighlty more optimized cython options
+  * remove unused function
+  * cython 3.0.11
+  * simplify methods that use the default display
+  * show what type of record cannot be published
+  * #4317 move GDKX11Window to its own module
+  * #4317 don't import Gtk / Gdk this early
+  * OR windows, fix button events, disable pings with older servers
+  * #4317 pass NO_AT_BRIDGE=1 to dbus-launch
+  * IBUS_DAEMON_COMMAND can be empty
+  * don't blow up trying to run 'yes' as a command
+  * only build oldest and newest
+  * log opengl probe command
+  * use default modifiers if that's all we've got
+  * #4314 handle png, jpeg and webp via pillow
+  * #4314 do include PyQt6 with win32 fat builds
+  * this workaround is no longer needed
+  * README.md: fix download url
+  * #4314 handle map, move and resize
+  * #4314 more helpful error when qt6 client is missing
+  * #4314 don't bundle pyqt6 with light builds
+  * remove debug logging, add docstrings
+  * #4314 hook qt6 client into main script
+  * promote opengl module to top-level
+  * only send menus to clients that request them
+  * fix logging of stack frames
+  * #4314 forgot to add key mapping file
+  * #4314 RPM packaging for qt6 client
+  * #4314 add basic keyboard, focus and window-close
+  * keycode is always an int
+  * try harder to find a matching key by name
+  * #4314 test pyqt6 client
+  * consistent message format
+  * use a default value if the source doesn't have one
+  * cosmetic: docstring and error messages
+  * logging caused failures: we already have the packet type now
+  * stricter types
+  * match stricter type interface
+  * silence linter warning
+  * use the new enum
+  * fix typo in refactoring
+  * #4201 test tool for opengl backing
+  * make force_size_constraints re-usable
+  * fake client needs more methods / correct to be useful
+  * we have a shader for NV12
+  * also support 'no-XXXX' prefix for video and csc
+  * remove outdated comment - we no longer use pre-defined resolutions
+  * stronger type hints
+  * try to handle homeless user accounts more gracefully
+  * simplify use new utility function
+  * no need to swap fbos
+  * #4201 minor fixes and cleanups
+  * #4201 add screen update replay tool
+  * validate early
+  * has_pixels is a method
+  * pycuda 2024.1.2
+  * Fix starting stderr_reader as a thread in exec_client.py
+  * some applications seem to send signed ints in CARD32 for opaque region
+  * cosmetic: formatting
+  * compressor no longer accepts empty values
+  * clone the options before calling may_use_scrolling
+  * more type hints
+  * add screen update dump-to-file facility
+  * try harder to always provide a valid damage-time and process-damage-time
+  * add type hints
+  * move test codec data to checks module
+  * minor linter warnings
+  * add explicit dependency on pip for pep 517
+  * convert server exit mode to an enum
+  * match abc signature
+  * pytools 2024.1.11, switched to pep 517
+  * libyuv-dev was listed twice
+  * cosmetic
+  * call update method directly
+  * minor refactoring to make it easier to read
+  * csc_cython is the only option for some bit depths
+  * oops: can't set parent this way, we mean to use 'transient-for'
+  * minor linter fixes
+  * use abstract base class
+  * match authentication handlers interface: use bytes for challenge argument
+  * generic 'clean'
+  * forgot to add the shim in 85c7a366008f15b39b6dc527aa9d4649bdfbba6c
+  * add shim for playing with google's cityhash64
+  * update test to match auth code
+  * minot type hint fixes
+  * use strings as soon as we read the file
+  * the splash test only fails on the CI, skip it
+  * digest parsing error
+  * oops: function no longer takes an argument
+  * simplify
+  * Update pdfium.py
+  * update comment, this is not one of our FIXMEs
+  * add type hints
+  * this Gtk bug was fixed in 2007, I think we can drop the workaround
+  * remove outdated FIXME comment
+  * 4 is generally a better alignment
+  * when csc is scaling, the encoder mask does not apply to the raw input
+  * remove outdated TODOs
+  * TODO moved to issue #4308
+  * no need for padding, multiple of 4 works everywhere
+  * remove TODOs that aren't ours
+  * bump version requirement
+  * #3514 more reliable icon size fix: wait for map event
+  * #4307 / #3953 don't enable network-listener feature with minimal=yes
+  * #4307 also block loading of system python modules
+  * cosmetic: use the same format as tcp sockets
+  * #4307 honour the new 'dbus' switch here too
+  * #4307 use find_spec to avoid import side effects
+  * #3978 must use the correct type hints for cythonization
+  * #4307 remove magic 'xpra.' prefix
+  * #4307 move dbus component where it belongs
+  * #4307 delay import of notifications module
+  * make it easier to debug shadow import failures
+  * client auth interface requires strings now
+  * #4307 don't assume that the windows mixin can be loaded
+  * #4307 add module block enforcing mode
+  * delay logger import
+  * #4307 add global 'dbus' toggle
+  * don't show any warnings parsing 'desktop-scaling=no'
+  * #4307 only load 'mmap' module if needed
+  * #3978 cythonize client authentication modules
+  * whitespace
+  * #3978 cythonize the pillow codecs
+  * cosmetic debug logging tweak
+  * support 'no-XXX' as value for 'encodings' option
+  * give more time for slow CI
+  * normalize quality a bit
+  * pillow encoder quality is lower
+  * #3859 keyboard support should not require dbus
+  * #4305 make it possible to force yuv decoding with webp
+  * rgb is always full range
+  * simplify
+  * constify
+  * Revert "don't use Pillow for webp #3837"
+  * better type hints
+  * #4305 don't use studio range multiplication twice
+  * pycuda 2024.1.1
+  * more readable
+  * #4305 webp decoder produces studio range
+  * #4305 make it possible to paint using webp yuv image
+  * add a type alias for clibpoard callbacks
+  * also test pseudo video encoders: webp and jpeg
+  * let cython + compiler optimize the for loop
+  * split verification code into separate methods
+  * remove outdated comment
+  * make it easier to choose what to test using env vars
+  * faster: use inline cdef function
+  * remove unused attributes, no longer available in headers
+  * minor linter fixes
+  * cairo can handle stride greater than cairo_format_stride_for_width
+  * remove unused argument
+  * use 'Final' type hint for constants
+  * finally use the correct type hints for 'accept_data'
+  * #3376 expose quic / webtransport sockets via mdns
+  * add type hints
+  * default udp port for quic should be the same as xpra tcp
+  * skip scary uinput message if the module is not installed
+  * don't log a warning when a display socket does not exist
+  * #4302 use the current resolution as default vfb resolution
+  * don't raise exceptions if we don't need to
+  * build the latest dummy
+  * make sure we only build 6.2 in this branch
+  * check Cython version later
+  * workaround for RHEL 8.10 requiring %pycached
+
+-------------------------------------------------------------------
 Tue Aug  6 08:17:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit gcc-c++ BuildRequires: fix gcc: fatal error: cannot
-  execute ‘cc1plus’: execvp: No such file or directory.
+  execute 'cc1plus': execvp: No such file or directory.
 
 -------------------------------------------------------------------
 Thu Jul 18 14:15:03 UTC 2024 - scott.bradnick@suse.com
