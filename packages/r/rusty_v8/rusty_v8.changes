@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:33:49 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Match gn build config for v8 from chromium
+
+-------------------------------------------------------------------
+Fri Oct 11 06:06:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use a fast aarch64 host to avoid log idle timeout
+
+-------------------------------------------------------------------
 Fri Oct  4 05:58:29 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Add ./rusty_v8-rpmlintrc to one of the sources

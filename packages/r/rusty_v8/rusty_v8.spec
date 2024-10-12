@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
 
 Name:           rusty_v8
@@ -30,18 +31,17 @@ Source100:      rusty_v8-rpmlintrc
 Patch0:         deno-v8-arm.patch
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/main/compiler-rt-adjust-paths.patch
 Patch1:         compiler-rt-adjust-paths.patch
-BuildRequires:  cargo-packaging
 BuildRequires:  cargo
-BuildRequires:  sccache
+BuildRequires:  cargo-packaging
 BuildRequires:  clang
-BuildRequires:  lld
-BuildRequires:  zstd
-BuildRequires:  gn
-BuildRequires:  llvm
 BuildRequires:  fdupes
+BuildRequires:  gn
+BuildRequires:  lld
+BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -53,7 +53,6 @@ ExclusiveArch:  %{rust_tier1_arches}
 %ifarch ppc64 # wants g++ for some reason
 BuildRequires:  gcc-c++
 %endif
-
 
 %description
 V8 build tooling for Deno. This represents all of the common
@@ -72,12 +71,12 @@ sed -i 's|lib/clang|lib64/clang|g' build/config/clang/BUILD.gn
 %build
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
-# See https://github.com/denoland/rusty_v8/#build-v8-from-source
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
-export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true"
 export CC=clang
 export CXX=clang++
+# https://www.chromium.org/developers/gn-build-configuration
+export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
 export CFLAGS="%{optflags} -Wno-unknown-warning-option"
 export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
 export RUST_BACKTRACE=full

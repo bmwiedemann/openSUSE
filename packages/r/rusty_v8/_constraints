@@ -5,4 +5,16 @@
       <size unit="G">8</size>
     </physicalmemory>
   </hardware>
+  <!-- Use a fast aarch64 host to avoid log idle timeout -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+      <jobs>5</jobs>
+   </hardware>
+  </overwrite>
 </constraints>

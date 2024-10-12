@@ -7,4 +7,14 @@
     <comment>I want this package added to openSUSE:Factory. This package is required to build deno and is not intended for an actual installation but part of deno's build deps. It's packaged for the purpose of testing patches to make it work in openSUSE</comment>
     <requestid>1205620</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f95f70c0f640e4e816d8b34ca9b6b674</srcmd5>
+    <version>0.106.0</version>
+    <time>1728732608</time>
+    <user>dimstar_suse</user>
+    <comment>- Match gn build config for v8 from chromium
+- Use a fast aarch64 host to avoid log idle timeout
+</comment>
+    <requestid>1207352</requestid>
+  </revision>
 </revisionlist>
