@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:01:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * workaround: qtpy sometimes uses PYQT6 bindings even if it cannot find module PyQt6. See KDE bug 486171
+  * this should work with PYSIDE6 without PyQt6 being installed
+  * Help/About did not work with QT5 anymore
+  * did not work with QT=API=PYSIDE2 anymore
+
+-------------------------------------------------------------------
 Tue Sep 10 14:10:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1
