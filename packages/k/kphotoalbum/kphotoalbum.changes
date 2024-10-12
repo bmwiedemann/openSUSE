@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 11 17:21:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.13.0
+  https://www.kphotoalbum.org/2024/10/09/kphotoalbum-5.13.0-released/
+  * The “time ago”/birthday/age calculation has been reworked
+  * The ‘--db’ command line argument now rejects any file name
+    that is not either an existing directory or an index.xml
+    file within an existing directory (kde#418647)
+
+-------------------------------------------------------------------
 Mon Nov 27 08:23:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.12.0
