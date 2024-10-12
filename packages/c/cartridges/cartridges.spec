@@ -18,7 +18,7 @@
 
 %define lname   page.kramo.Cartridges
 Name:           cartridges
-Version:        2.8.5
+Version:        2.10.1
 Release:        0
 Summary:        A GTK4 + Libadwaita game launcher 
 License:        GPL-3.0-only
@@ -55,6 +55,7 @@ rm -rf %{buildroot}%{_datadir}/locale/zh_Hans
 %find_lang %{name} %{?no_lang_C}
 
 %check
+%meson_test
 
 %files
 %license LICENSE
@@ -76,4 +77,3 @@ rm -rf %{buildroot}%{_datadir}/locale/zh_Hans
 %files lang -f %{name}.lang
 
 %changelog
-
