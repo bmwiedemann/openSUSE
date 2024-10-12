@@ -29,7 +29,7 @@ Index: javapackages-5.2.0+git20180620.70fa2258/configure-base.sh
  test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
  
  test -z "${m2home}" && m2home="${datadir}/xmvn"
--test -z "${pyinterpreter}" && pyinterpreter=$(which python)
+-test -z "${pyinterpreter}" && pyinterpreter=$(type -p python)
  test -z "${abrtlibdir}" && abrtlibdir="${prefix}/lib/abrt-java-connector"
  
  eval $(sed -n 's/^%_\('"$vars_re"'\)\ *\(.*\)$/\1="\2"/;T;s/%{_\(.*}\)/${\1/;p' macros.d/macros.javapackages-filesystem)

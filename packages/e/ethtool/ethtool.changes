@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  8 20:55:52 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.11
+  * Feature: cmis: print active and inactive firmware versions
+  * Feature: flash transceiver module firmware (--flash-module-firmware)
+  * Feature: add T1BRR 10Mb/s mode to link mode tables
+  * Feature: support for disabling netlink from command line
+  * Fix: fix lanes parameter format specifier
+  * Fix: add missing clause 33 PSE manual description
+  * Fix: qsf: Better handling of Page A2h netlink read failure
+  * Fix: rss: retrieve ring count using ETHTOOL_GRXRINGS ioctl (-x)
+
+-------------------------------------------------------------------
 Fri Aug  9 13:27:19 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.10

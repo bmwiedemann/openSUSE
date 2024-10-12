@@ -1,0 +1,32 @@
+From 5f1ea127c2465e2a628396c17157834c73d528c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 11 Oct 2024 15:00:52 +0200
+Subject: [PATCH] Revert "jpackage_script: Remove unneeded backslashes"
+
+This is broken with rpm 4.14.1 for instance
+
+This reverts commit 098485a23336cf7df692631d7bbb90db200d554d.
+---
+ macros.d/macros.jpackage | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/macros.d/macros.jpackage b/macros.d/macros.jpackage
+index b6c41b48..ceee2a7d 100644
+--- a/macros.d/macros.jpackage
++++ b/macros.d/macros.jpackage
+@@ -35,9 +35,9 @@ cat > %{buildroot}%{_bindir}/%5 << EOF \
+ #\
+ # %{name} script\
+ # JPackage Project <http://www.jpackage.org/>\
+-%{?java_home:
+-# Set default JAVA_HOME
+-JAVA_HOME="\\${JAVA_HOME:-%{java_home}}"
++%{?java_home:\
++# Set default JAVA_HOME\
++JAVA_HOME="\\${JAVA_HOME:-%{java_home}}"\
+ }\
+ # Source functions library\
+ . @{javadir}-utils/java-functions\
+-- 
+2.47.0
+

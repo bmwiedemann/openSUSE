@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-twine
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0

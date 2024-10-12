@@ -220,4 +220,12 @@
   gh#rhboot/efivar#253).</comment>
     <requestid>1120479</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>371cba619f1515e35e4b24e31d90f131</srcmd5>
+    <version>38</version>
+    <time>1728732286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1207151</requestid>
+  </revision>
 </revisionlist>

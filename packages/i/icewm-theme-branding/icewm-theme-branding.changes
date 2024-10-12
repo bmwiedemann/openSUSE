@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 11 03:44:20 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- Remove patch files according to the 1.2.6 update:
+  pass-env-var-to-systemd-user-session.patch 
+  fix-web-browser-icon.patch
+  fix-font-configuration.patch
+
+-------------------------------------------------------------------
+Thu Oct 10 19:59:56 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.2.6 
+- Update web browser icon
+- Change to 1920x1200 compat symlink to enable new branding.
+  We'll eventually change it to default.png later, however,
+  this change ensures we're consistent with xfce, kde.
+- The 1080 symlink is no longer available gh#openSUSE/branding#162
+- Drop following patches:
+  pass-env-var-to-systemd-user-session.patch 
+  fix-web-browser-icon.patch
+  fix-font-configuration.patch
+  These patches are already part of the 1.2.6 archive
+
+-------------------------------------------------------------------
 Mon Apr  8 09:39:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Do not substitute png to jpg for default wallpaper

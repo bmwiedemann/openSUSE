@@ -431,4 +431,12 @@
     <comment></comment>
     <requestid>1206476</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7a199451dd10406a8d4562fefc9a6833</srcmd5>
+    <version>6.3.4</version>
+    <time>1728732291</time>
+    <user>dimstar_suse</user>
+    <comment>6.3.4 + fix</comment>
+    <requestid>1207246</requestid>
+  </revision>
 </revisionlist>

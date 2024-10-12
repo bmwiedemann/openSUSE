@@ -55,4 +55,12 @@
     <comment>KDE Frameworks 6.6.0 (forwarded request 1199844 from krop)</comment>
     <requestid>1201005</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04111e50e4b62b646f53c84c53819c3b</srcmd5>
+    <version>6.7.0</version>
+    <time>1728732318</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.7.0 (forwarded request 1206249 from krop)</comment>
+    <requestid>1207190</requestid>
+  </revision>
 </revisionlist>

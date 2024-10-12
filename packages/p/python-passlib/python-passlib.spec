@@ -36,6 +36,8 @@ URL:            https://foss.heptapod.net/python-libs/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Posted to https://foss.heptapod.net/python-libs/passlib/-/issues/185
 Patch0:         no-pkg_resources.patch
+# PATCH-FIX-OPENSUSE Skip crypt tests under Python 3.13
+Patch1:         no-crypt-with-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:15:00 UTC 2024 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 4.4:
+  * tools: Use getopt
+           Implement and document option -h
+  * i2cdetect: Display more functionality bits with option -F
+  * i2cdump: Remove support for SMBus block mode
+  * i2cget: Document SMBus block mode
+  * i2ctransfer: Sort command line options and add to help text
+                 Add an option to print binary data
+                 Drop redundant variable arg_idx
+  * py-smbus: Use setuptools instead of distutils
+
+-------------------------------------------------------------------
 Tue Jul  4 15:07:28 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Drop Recommends: modules. It does no longer refer to what it was

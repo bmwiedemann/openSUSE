@@ -1,0 +1,25 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: [PATCH] proper lib dir
+Patch-mainline: no
+
+Do not install to /usr/lib. Use CMAKE_INSTALL_LIBDIR instead (lib64 on
+64bit).
+
+Actually use CMAKE_INSTALL_* everywhere.
+---
+ CMakeLists.txt |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,7 +63,7 @@ add_executable(fasttext-bin src/main.cc)
+ target_link_libraries(fasttext-bin pthread fasttext-shared)
+ set_target_properties(fasttext-bin PROPERTIES PUBLIC_HEADER "${HEADER_FILES}" OUTPUT_NAME fasttext)
+ install (TARGETS fasttext-shared
+-    LIBRARY DESTINATION lib)
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install (TARGETS fasttext-bin
+-    RUNTIME DESTINATION bin
+- PUBLIC_HEADER DESTINATION include/fasttext)
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fasttext)

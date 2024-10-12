@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 10 16:26:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.3.1:
+  * CVE-2024-9680: Use-after-free in Animation timeline
+- Changes from version 128.3.0:
+  * CVE-2024-9392: Compromised content process can bypass site
+    isolation
+  * CVE-2024-9393: Cross-origin access to PDF contents through
+    multipart responses
+  * CVE-2024-9394: Cross-origin access to JSON contents through
+    multipart responses
+  * CVE-2024-8900: Clipboard write permission bypass
+  * CVE-2024-9396: Potential memory corruption may occur when
+    cloning certain objects
+  * CVE-2024-9397: Potential directory upload bypass via
+    clickjacking
+  * CVE-2024-9398: External protocol handlers could be enumerated
+    via popups
+  * CVE-2024-9399: Specially crafted WebTransport requests could
+    lead to denial of service
+  * CVE-2024-9400: Potential memory corruption during JIT
+    compilation
+  * CVE-2024-9401: Memory safety bugs fixed in Firefox 131, Firefox
+    ESR 115.16, Firefox ESR 128.3, Thunderbird 131, and Thunderbird
+    128.3
+  * CVE-2024-9402: Memory safety bugs fixed in Firefox 131, Firefox
+    ESR 128.3, Thunderbird 131, and Thunderbird 128.3
+
+-------------------------------------------------------------------
 Mon Sep 30 17:35:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add mozjs128-CVE-2024-45492.patch:

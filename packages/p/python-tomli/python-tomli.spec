@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tomli
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A lil' TOML parser
 License:        MIT

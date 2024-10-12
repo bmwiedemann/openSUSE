@@ -1,0 +1,34 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: [PATCH] py: link against shared
+Patch-mainline: no
+
+Link the python bindings to the now present libfasttext.so. It reduces
+the duplication as well as the compilation time.
+---
+ setup.py |   10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -54,19 +54,13 @@ else:
+     del sys.argv[coverage_index]
+     coverage = True
+ 
+-fasttext_src_files = map(str, os.listdir(FASTTEXT_SRC))
+-fasttext_src_cc = list(filter(lambda x: x.endswith('.cc'), fasttext_src_files))
+-
+-fasttext_src_cc = list(
+-    map(lambda x: str(os.path.join(FASTTEXT_SRC, x)), fasttext_src_cc)
+-)
+-
+ ext_modules = [
+     Extension(
+         str('fasttext_pybind'),
+         [
+             str('python/fasttext_module/fasttext/pybind/fasttext_pybind.cc'),
+-        ] + fasttext_src_cc,
++        ],
++        libraries=[str('fasttext')],
+         include_dirs=[
+             # Path to pybind11 headers
+             get_pybind_include(),

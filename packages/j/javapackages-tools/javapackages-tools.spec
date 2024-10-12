@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.3.2
+Version:        6.3.4
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -45,13 +45,8 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-#
-#PATCH-FIX-UPSTREAM: do not fail if which does not exist
-Patch3:         do-not-require-which.patch
-#PATCH-FIX-UPSTREAM: fix broken %%ant, %%jar, %%javadoc and %%javac commands
-Patch4:         fix-broken-commands.patch
-#PATCH-FIX-UPSTREAM Remove pointless assignment if %%java_home is unset
-Patch5:         remove-pointless-assignment.patch
+#PATCH-FIX-UPSTREAM: removing the backslashes breaks checks with rpm 4.14.1
+Patch3:         0001-Revert-jpackage_script-Remove-unneeded-backslashes.patch
 
 BuildRequires:  fdupes
 BuildRequires:  perl

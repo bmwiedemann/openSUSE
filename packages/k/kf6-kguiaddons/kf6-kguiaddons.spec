@@ -16,16 +16,16 @@
 #
 
 
-%define qt6_version 6.6.0
+%define qt6_version 6.7.0
 
 %define rname kguiaddons
-# Full KF6 version (e.g. 6.6.0)
+# Full KF6 version (e.g. 6.7.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.6.0
+Version:        6.7.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -65,6 +65,15 @@ Requires:       kf6-kguiaddons >= %{version}
 The KDE GUI addons provide utilities for graphical user interfaces in the areas
 of colors, fonts, text, images, keyboard input.
 
+%package imports
+Summary:        QtQuick bindings for utilities for graphical user interfaces
+Requires:       libKF6GuiAddons6 = %{version}
+
+%description imports
+The KDE GUI addons provide utilities for graphical user interfaces in the areas
+of colors, fonts, text, images, keyboard input. This package provides QtQuick
+bindings to use these GUI addons with QML and QtQuick applications.
+
 %package devel
 Summary:        Utilities for graphical user interfaces: Build Environment
 Requires:       libKF6GuiAddons6 = %{version}
@@ -100,6 +109,9 @@ of colors, fonts, text, images, keyboard input. Development files.
 %license LICENSES/*
 %doc README.md
 %{_kf6_libdir}/libKF6GuiAddons.so.*
+
+%files imports
+%{_kf6_qmldir}/org/kde/guiaddons/
 
 %files devel
 %doc %{_kf6_qchdir}/KF6GuiAddons.*

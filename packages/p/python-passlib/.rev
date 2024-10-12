@@ -244,4 +244,13 @@
     <comment></comment>
     <requestid>1203877</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>114057bba528e0f6f468a76eb3594206</srcmd5>
+    <version>1.7.4</version>
+    <time>1728732282</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-crypt-with-python-313.patch:
+  * Do not run tests requiring 'crypt' with Python 3.13.</comment>
+    <requestid>1207026</requestid>
+  </revision>
 </revisionlist>

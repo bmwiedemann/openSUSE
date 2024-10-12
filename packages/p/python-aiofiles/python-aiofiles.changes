@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:56:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 24.1.0
+  * Import `os.link` conditionally to fix importing on android. (#175)
+  * Remove spurious items from `aiofiles.os.__all__` when running on Windows.
+  * Switch to more modern async idioms: Remove types.coroutine and make
+    AiofilesContextManager an awaitable instead a coroutine.
+  * Add `aiofiles.os.path.abspath` and `aiofiles.os.getcwd`. (#174)
+  * _aiofiles_ is now tested on Python 3.13 too. (#184)
+  * Dropped Python 3.7 support. If you require it, use version 23.2.1.
+
+-------------------------------------------------------------------
 Thu Dec 14 09:12:51 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 23.2.1:

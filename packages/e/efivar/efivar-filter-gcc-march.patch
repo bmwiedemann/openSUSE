@@ -1,12 +1,15 @@
 From 85419ca09d225630cd1740e554bfb65c560e3904 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Wed, 21 Dec 2022 14:49:34 +0800
-Subject: [PATCH] Exclude '-march=native' from ppc64le and riscv64
+Date: Tue, 08 Oct 2024 04:18:22 +0800
+Subject: [PATCH] Exclude '-march=native' from all archs
 
-Since gcc of ppc64le and riscv64 doesn't support '-march=native', remove
-it from HOST_CPPFLAGS.
+Since we do not want our build results to depend on the build machine's CPU,
+remove it from HOST_CPPFLAGS.
+fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1231368
 
 Signed-off-by: Gary Lin <glin@suse.com>
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann suse.com>
 ---
  src/include/defaults.mk | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -20,7 +23,7 @@ index 9da5182..94502ed 100644
  
  HOST_ARCH=$(shell uname -m)
 -ifneq ($(HOST_ARCH),ia64)
-+ifeq (, $(filter ia64 riscv64 ppc64le, $(HOST_ARCH)))
++ifeq (0,1)
  	HOST_MARCH=-march=native
  else
  	HOST_MARCH=

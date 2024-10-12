@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 10 05:20:36 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- switch to cmake + ninja
+  * the former builds a proper lib
+- package the shared library, fasttext binary and -devel properly
+  (create new %package's for those)
+- add patches to fit our needs:
+  * no-static-lib.patch
+  * proper-lib-dir.patch
+  * py-link-against-shared.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

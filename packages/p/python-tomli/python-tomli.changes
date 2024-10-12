@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:11:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.2
+  * Removed
+    - Python 3.7 support
+  * Improved
+    - Make `loads` raise `TypeError` not `AttributeError` on bad
+      input types that do not have the `replace` attribute.
+      Improve error message when `bytes` is received.
+  * Type annotations
+    - Type annotate `load` input as `typing.IO[bytes]`
+      (previously `typing.BinaryIO`).
+
+-------------------------------------------------------------------
 Mon Aug 12 14:30:46 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Make testing more verbose

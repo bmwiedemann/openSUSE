@@ -282,18 +282,6 @@ export CFLAGS="%{optflags}"
 	--with-gnu-ld
 make %{?_smp_mflags}
 
-%check
-# On i586 this still fails
-%ifarch %{ix86}
-make %{?_smp_mflags} check || ( find -name \*.log -print -exec cat {} \; ; exit 0 )
-%else
-make %{?_smp_mflags} check || ( find -name \*.log -print -exec cat {} \; ; exit 1 )
-%endif
-# Clean up to package directory
-make -C doc/examples clean
-chmod a-x doc/examples/*
-rm doc/examples/Makefile*
-
 %install
 %{?with_hpc:%hpc_setup}
 
@@ -347,6 +335,23 @@ family "%pname"
 
 EOF
 %endif
+
+# create a copy for testing without dirtying the installed files
+cp -a `pwd` ../test.tmp
+# Clean up to package directory
+make -C doc/examples clean
+rm doc/examples/Makefile*
+chmod a-x doc/examples/*
+
+%check
+cd ../test.tmp
+# On i586 this still fails
+%ifarch %{ix86}
+make %{?_smp_mflags} check || ( find -name \*.log -print -exec cat {} \; ; exit 0 )
+%else
+make %{?_smp_mflags} check || ( find -name \*.log -print -exec cat {} \; ; exit 1 )
+%endif
+cd .. ; rm -rf test.tmp
 
 %if %{without hpc}
 %post   -n %{libname} -p /sbin/ldconfig

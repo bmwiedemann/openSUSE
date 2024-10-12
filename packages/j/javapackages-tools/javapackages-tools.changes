@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 11 10:56:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.3.4
+  * Changes:
+    + A corner case when which is not present
+    + Remove dependency on which
+    + Simplify after the which -> type -p change
+    + jpackage_script: Remove pointless assignment when %java_home
+      is unset
+    + Don't require %java_home for %java etc.
+    + Don't export JAVA_HOME
+- Removed patches:
+  * do-not-require-which.patch
+  * fix-broken-commands.patch
+  * remove-pointless-assignment.patch
+    + integrated upstream
+- Modified patch:
+  * python-optional.patch
+    + account for changed context
+- Added patch:
+  * 0001-Revert-jpackage_script-Remove-unneeded-backslashes.patch
+    + This change breaks build with rpm 4.14.1
+
+-------------------------------------------------------------------
 Wed Oct  9 07:27:42 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - remove-pointless-assignment.patch: Remove pointless assignment if

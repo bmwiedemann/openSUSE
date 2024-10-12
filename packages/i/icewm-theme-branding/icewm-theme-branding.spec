@@ -41,18 +41,12 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           icewm-theme-branding
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Icewm theme branding
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/openSUSE/icewm-config-openSUSE
 Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pass-env-var-to-systemd-user-session.patch bsc#1179237 yfjiang@suse.com -- Pass environment variables to the 'systemd --user' session
-Patch0:         pass-env-var-to-systemd-user-session.patch
-# PATCH-FIX-UPSTREAM fix-font-configuration.patch boo#1195328 bsc#1196336 yfjiang@suse.com -- Fix font configuration after google-droid-fonts update
-Patch1:         fix-font-configuration.patch
-# PATCH-FIX-UPSTREAM fix-web-browser-icon.patch bsc#1220034 yfjiang@suse.com -- Fix the path of web browser icon
-Patch2:         fix-web-browser-icon.patch
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
 Conflicts:      otherproviders(icewm-configuration-files)

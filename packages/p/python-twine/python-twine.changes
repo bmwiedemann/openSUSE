@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 11 11:50:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.1.1
+  * Resolve DeprecationWarnings when extracting ``twine`` metadata.
+  * Fix bug for Repository URLs with auth where the port was lost. When attempting
+    to prevent printing authentication credentials in URLs provided with username
+    and password, we did not properly handle the case where the URL also contains
+    a port (when reconstructing the URL). This is now handled and tested to
+    ensure no regressions.
+
+-------------------------------------------------------------------
 Sat Jun 29 12:59:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:

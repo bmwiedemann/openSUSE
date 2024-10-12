@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  8 02:18:42 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Adapt efivar-filter-gcc-march.patch to drop -march=native (boo#1231368)
+
+-------------------------------------------------------------------
 Wed Oct 11 16:37:24 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - We don’t mandoc at all after all (gh#rhboot/efivar#229 and

@@ -1,0 +1,15 @@
+Index: passlib-1.7.4/passlib/tests/utils.py
+===================================================================
+--- passlib-1.7.4.orig/passlib/tests/utils.py
++++ passlib-1.7.4/passlib/tests/utils.py
+@@ -3360,6 +3360,10 @@ class OsCryptMixin(HandlerCase):
+         if hasattr(self.handler, "orig_prefix"):
+             raise self.skipTest("not applicable to wrappers")
+ 
++        # crypt module removed in Python 3.13
++        if sys.version_info[:2] >= (3, 13):
++            raise self.skipTest("no crypt module with Python 3.13")
++
+         # look for first entry that matches current system
+         # XXX: append "/" + platform.release() to string?
+         # XXX: probably should rework to support rows being dicts w/ "minver" / "maxver" keys,
