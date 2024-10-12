@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Trying constraint per:
- https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/G4HX77LQANTQTZMARIU4XQI4JT3RCEQ7/#G3N7PCAUIIVPO63V5QYKY6QMZK4TEP2Q
--->
 <constraints>
-	<hardware>
-		<disk>
-			<size unit="G">18</size>
-		</disk>
-		<physicalmemory>
-			<size unit="G">21</size>
-		</physicalmemory>
-	</hardware>
+  <hardware>
+    <physicalmemory>
+      <size unit="G">8</size>
+    </physicalmemory>
+  </hardware>
+  <!-- Use a fast aarch64 host to avoid log idle timeout -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+      <jobs>5</jobs>
+   </hardware>
+  </overwrite>
 </constraints>
+

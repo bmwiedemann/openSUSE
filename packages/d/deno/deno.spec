@@ -18,6 +18,7 @@
 #
 
 
+%global _lto_cflags %nil
 Name:           deno
 Version:        2.0.0
 Release:        0
@@ -36,11 +37,11 @@ BuildRequires:  cargo >= 1.80
 BuildRequires:  gn
 BuildRequires:  lld
 BuildRequires:  llvm
+BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  rusty_v8
-BuildRequires:  sccache
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -50,9 +51,7 @@ BuildRequires:  pkgconfig(protobuf)
 # deno does not build on 32-bit archs
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
-%ifarch %{arm} aarch64
 Patch10:        deno-disable-lto.patch
-%endif
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
@@ -113,6 +112,8 @@ export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 export CC=clang
 export CXX=clang++
+export CFLAGS="%{optflags} -Wno-unknown-warning-option"
+export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
 # https://www.chromium.org/developers/gn-build-configuration
 export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
 %{cargo_build}

@@ -2680,4 +2680,20 @@
     <comment></comment>
     <requestid>1206506</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>4a52ecc46021a6598fc13c7de34cbecf</srcmd5>
+    <version>2.0.0</version>
+    <time>1728732636</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO. This seems to cause clang to recognize formats incorrectly,
+  thus, not recognizing the symbols. This also results disabling LTO
+  builds in rustc altogether removing the specified architecture
+  requirement for patch ./deno-disable-lto.patch
+- Add CFLAGS and CXXFLAGS
+- Refresh _constraints file.
+- Refresh patch:
+  *  deno-disable-lto.patch
+</comment>
+    <requestid>1207399</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 12 04:07:25 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Disable LTO. This seems to cause clang to recognize formats incorrectly,
+  thus, not recognizing the symbols. This also results disabling LTO
+  builds in rustc altogether removing the specified architecture
+  requirement for patch ./deno-disable-lto.patch
+
+-------------------------------------------------------------------
+Fri Oct 11 15:38:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add CFLAGS and CXXFLAGS
+
+-------------------------------------------------------------------
+Fri Oct 11 15:37:06 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Refresh _constraints file.
+
+-------------------------------------------------------------------
+Fri Oct 11 08:49:46 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Refresh patch:
+  *  deno-disable-lto.patch
+
+-------------------------------------------------------------------
 Wed Oct  9 09:46:54 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - update to version v2.0.0:
