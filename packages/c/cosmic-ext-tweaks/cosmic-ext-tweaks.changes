@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 11 19:33:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.0+git20241006.40bd0d2:
+  * Update README.md
+  * docs: Extend metainfo
+  * docs: Add Flathub badge to README
+  * chore: update libcosmic
+  * v0.1.1
+  * improv: move available themes to context drawer
+  * add: brand colors
+  * Update README.md
+  * add: flatpak-cargo-generator.py
+  * fix: themes not being applied
+  * fix: bring back OnlyShowIn=COSMIC
+  * fix: remove COSMIC from OnlyShowIn
+  * fix: add caption to screenshots
+  * fix: suggestions for flathub release
+  * fix: justfile
+  * improv: use llvm18 + mold in flatpak
+  * improv: tweaks can now load more themes
+  * update metainfo for COSMIC Store featured page
+- update upstream url
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:39 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

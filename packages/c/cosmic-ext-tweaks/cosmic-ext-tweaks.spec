@@ -18,7 +18,7 @@
 
 %define         appname dev.edfloreshz.CosmicTweaks
 Name:           cosmic-ext-tweaks
-Version:        0.1.0+git20240717.199cf69
+Version:        0.1.0+git20241006.40bd0d2
 Release:        0
 Summary:        A tweaking tool for the COSMIC DE
 License:        GPL-3.0-only
@@ -27,10 +27,13 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -55,8 +58,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 
 %changelog
