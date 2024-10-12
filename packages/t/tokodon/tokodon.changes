@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  8 12:02:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.2/
+- Changes since 24.08.1:
+  * Change bug reporting URL to the bug entry page. (kde#493429)
+  * Make Edit on translatable (kde#493428)
+
+-------------------------------------------------------------------
 Tue Sep 10 14:11:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.1
