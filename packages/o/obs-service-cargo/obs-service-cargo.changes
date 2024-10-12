@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 12 06:56:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 2.0.0
+  * refactor: successful move to use libroast
+  * minor: add `--versioned-dirs` flag
+
+-------------------------------------------------------------------
 Mon Sep 23 06:17:02 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update vendor.tar.zst: gix-path improper path resolution

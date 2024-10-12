@@ -235,4 +235,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment></comment>
     <requestid>1202647</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ead6672615ef82b78e239c1aa53255f0</srcmd5>
+    <version>2.0.0</version>
+    <time>1728732641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * refactor: successful move to use libroast
+  * minor: add `--versioned-dirs` flag
+</comment>
+    <requestid>1207400</requestid>
+  </revision>
 </revisionlist>
