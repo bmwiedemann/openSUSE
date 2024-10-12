@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 12 00:15:35 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241012:
+  * Better frame timing for smoother video, especially when
+    recording a game that runs at the same fps as the recording or
+    lower.
+  * Add constant bitrate option, for better live streaming
+    experience and for lower file size at the cost of quality
+- add vulkan-headers BuildRequires: to support vulkan video encode
+
+-------------------------------------------------------------------
 Mon Sep 23 10:44:33 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20240921:

@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20240921
+Version:        20241012
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only
@@ -28,6 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  vulkan-headers
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libavcodec)
