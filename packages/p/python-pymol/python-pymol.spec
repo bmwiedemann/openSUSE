@@ -21,25 +21,22 @@
 %define modname pymol-open-source
 %bcond_with test
 Name:           python-pymol
-Version:        3.0.0
+Version:        3.0.0+git.1725549602.9d3061c
 Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/
-Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+# Source0:        https://github.com/schrodinger/%%{modname}/archive/v%%{version}/%%{modname}-%%{version}.tar.gz
+Source0:        %{modname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE no-build-date.patch dhall@wustl.edu -- patch eliminates build date
 Patch0:         no-build-date.patch
-# PATCH-FIX-OPENSUSE no-o3.patch tchvatal@suse.com -- do not add O3 to the code
-Patch1:         no-o3.patch
-# PATCH-FIX-UPSTREAM pymol3-numpy2.patch
-Patch10:        pymol3-numpy2.patch
-# PATCH-FIX-UPSTREAM pymol3-version-compare.patch
-Patch11:        pymol3-version-compare.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
@@ -87,15 +84,14 @@ The file formats PyMOL can read include PDB, XYZ, CIF, MDL Molfile,
 ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build %{?with_test:--testing}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pymol
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -125,6 +121,12 @@ PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_version} -m pymol -ckqy
 %doc README ChangeLog
 %license LICENSE
 %python_alternative %{_bindir}/pymol
-%{python_sitearch}*
+%{python_sitearch}/chempy
+%{python_sitearch}/pmg_qt
+%{python_sitearch}/pmg_tk
+%{python_sitearch}/pymol
+%{python_sitearch}/pymol-*-info
+%{python_sitearch}/pymol2
+%{python_sitearch}/web
 
 %changelog

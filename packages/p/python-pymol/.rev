@@ -117,4 +117,27 @@
 </comment>
     <requestid>1205768</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff9ef1ea24622e6fd283f3bdedfaab37</srcmd5>
+    <version>3.0.0+git.1725549602.9d3061c</version>
+    <time>1728732611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0+git.1725549602.9d3061c:
+  * Symbol renaming in molfile_plugin and internal linkage
+  * New command: delete_states
+  * mark bind() calls with override where needed
+  * Separate CGO to VBO logic out into functions
+  * Remove unused returnData
+  * Use vector for memory alloc
+  * Use struct for total vert counts in CGO.cpp
+  * Remove _PYMOL_IOS (Discontinued; prep for MVK)
+  * Python 3.12 TypeError: convert progress to int for progress bar
+  * Fix ray/draw panel error when modifying units
+- Remove upstream patches:
+  * pymol3-version-compare.patch
+  * no-o3.patch
+  * pymol3-numpy2.patch
+</comment>
+    <requestid>1207270</requestid>
+  </revision>
 </revisionlist>

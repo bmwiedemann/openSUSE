@@ -12,7 +12,7 @@ Patch removes including build date in binary
 
 --- a/create_shadertext.py
 +++ b/create_shadertext.py
-@@ -133,7 +133,7 @@ def create_buildinfo(outputdir, pymoldir
+@@ -127,7 +127,7 @@ def create_buildinfo(outputdir, pymoldir
          print('''
  #define _PyMOL_BUILD_DATE %d
  #define _PYMOL_BUILD_GIT_SHA "%s"
