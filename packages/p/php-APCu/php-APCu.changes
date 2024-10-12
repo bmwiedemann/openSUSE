@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:00:03 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.24
+  * Make compatible with PHP 8.4.
+  * apc.php: Preserve search parameter when deleting entry.
+  * apc.PHP: Allow arbitrary search regex.
+
+-------------------------------------------------------------------
 Sat Nov 18 21:31:29 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.23
