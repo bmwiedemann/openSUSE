@@ -2518,6 +2518,8 @@ unsorted:
   - connman-test 
   - conntrack-tools 
   - conntrackd 
+  - conscrypt 
+  - conscrypt-javadoc 
   - console-setup 
   - consoleet-darwin-fonts 
   - consoleet-fixedsys-fonts 
@@ -2627,7 +2629,6 @@ unsorted:
   - cosmic-ext-dirstat 
   - cosmic-ext-tasks 
   - cosmic-ext-tweaks 
-  - cosmic-ext-weather 
   - cosmic-files 
   - cosmic-icons 
   - cosmic-launcher 
@@ -4033,6 +4034,8 @@ unsorted:
   - fastjet-plugin-siscone-devel 
   - fastlzlib 
   - fastlzlib-devel 
+  - fasttext 
+  - fasttext-devel 
   - fatrace 
   - fatsort 
   - fbcat 
@@ -4486,6 +4489,7 @@ unsorted:
   - foot-extra-terminfo 
   - foot-themes 
   - fooyin 
+  - forecast 
   - forge-parent 
   - forgejo 
   - forgejo-apparmor 
@@ -9273,8 +9277,6 @@ unsorted:
   - janino-javadoc 
   - jansi 
   - jansi-javadoc 
-  - janus-gateway 
-  - janus-gateway-devel 
   - jaq 
   - jarjar 
   - jarjar-javadoc 
@@ -10087,6 +10089,7 @@ unsorted:
   - kf6-kfilemetadata-devel 
   - kf6-kglobalaccel-devel 
   - kf6-kguiaddons-devel 
+  - kf6-kguiaddons-imports 
   - kf6-kholidays-devel 
   - kf6-ki18n-devel 
   - kf6-ki18n-imports 
@@ -13059,6 +13062,7 @@ unsorted:
   - libfastjson-devel 
   - libfastlz1 
   - libfastlz1-x86-64-v3 
+  - libfasttext0 
   - libfaxutil7_0_9 
   - libfcache-devel 
   - libfcache1 
@@ -15564,7 +15568,6 @@ unsorted:
   - libpython3_13-1_0 
   - libpython3_13-1_0-x86-64-v3 
   - libpython3_13t-1_0 
-  - libpython3_8-1_0 
   - libpython3_9-1_0 
   - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
@@ -27570,7 +27573,6 @@ unsorted:
   - python310-txaio 
   - python310-txt2tags 
   - python310-txtorcon 
-  - python310-typed-ast 
   - python310-typedload 
   - python310-typeguard 
   - python310-typepy 
@@ -31134,7 +31136,6 @@ unsorted:
   - python311-txaio 
   - python311-txt2tags 
   - python311-txtorcon 
-  - python311-typed-ast 
   - python311-typedload 
   - python311-typeguard 
   - python311-typepy 
@@ -34809,7 +34810,6 @@ unsorted:
   - python312-txaio 
   - python312-txt2tags 
   - python312-txtorcon 
-  - python312-typed-ast 
   - python312-typedload 
   - python312-typeguard 
   - python312-typepy 
@@ -35082,17 +35082,6 @@ unsorted:
   - python313-tk 
   - python313-tools 
   - python313-x86-64-v3 
-  - python38 
-  - python38-base 
-  - python38-curses 
-  - python38-dbm 
-  - python38-devel 
-  - python38-doc 
-  - python38-doc-devhelp 
-  - python38-idle 
-  - python38-testsuite 
-  - python38-tk 
-  - python38-tools 
   - python39 
   - python39-base 
   - python39-curses 
@@ -47997,7 +47986,6 @@ unsorted:
   - uudeview 
   - uuid-devel 
   - uuidd 
-  - uv 
   - uvcdynctrl 
   - uwac0-devel 
   - uwsc 
