@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 06:32:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.8
+  * Avoid freeze when toggling search modes
+  * Drop --text-field (#18)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Sep 25 06:46:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.7

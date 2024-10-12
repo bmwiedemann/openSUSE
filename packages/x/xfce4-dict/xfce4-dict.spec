@@ -18,7 +18,7 @@
 
 %define panel_version 4.10.0
 Name:           xfce4-dict
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        Xfce Dictionary Client Application
 License:        GPL-2.0-or-later
