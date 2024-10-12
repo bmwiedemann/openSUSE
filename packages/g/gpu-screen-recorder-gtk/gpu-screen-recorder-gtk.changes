@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 12 00:16:09 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241012:
+  * Constant bitrate is recommended for live streaming
+  * Change default bitrate quality
+  * Use -q instead of -bitrate for constant bitrate quality
+
+-------------------------------------------------------------------
 Mon Sep 23 10:44:33 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20240921:

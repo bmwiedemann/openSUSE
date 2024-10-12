@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1202610</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e332aae9791056bbfe71328d271ee3b8</srcmd5>
+    <version>20241012</version>
+    <time>1728732634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20241012:
+  * Constant bitrate is recommended for live streaming
+  * Change default bitrate quality
+  * Use -q instead of -bitrate for constant bitrate quality
+</comment>
+    <requestid>1207361</requestid>
+  </revision>
 </revisionlist>
