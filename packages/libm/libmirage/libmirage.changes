@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 11 21:53:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.9
+  * Determine session type when parsing cuesheets
+
+-------------------------------------------------------------------
 Sun Aug 18 13:00:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.8:

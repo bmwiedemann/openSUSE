@@ -232,4 +232,12 @@
   * crash fix in cue filter</comment>
     <requestid>1194551</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5ca24fcaa83e5af0e69b4049fcf3896f</srcmd5>
+    <version>3.2.9</version>
+    <time>1728732629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.9</comment>
+    <requestid>1207350</requestid>
+  </revision>
 </revisionlist>
