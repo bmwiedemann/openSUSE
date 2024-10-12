@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 11 20:18:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20240923.45bc56d:
+  * remove useless print
+  * feat: text selection and copy
+  * fix: make wgpu default again
+  * fix: wgpu rendering issue
+  * set text color for markdown buffer based on colorscheme
+  * fixed buttons
+- update upstream url
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

@@ -18,7 +18,7 @@
 
 %define         appname io.github.elevenhsoft.CosmicExtAppletOllama
 Name:           cosmic-ext-applet-ollama
-Version:        0.1.0+git20240624.d1b3238
+Version:        0.1.0+git20240923.45bc56d
 Release:        0
 Summary:        Ollama applet for COSMIC Desktop
 License:        GPL-3.0-only
@@ -45,13 +45,8 @@ on the COSMIC Desktop Environment
 just build-release
 
 %install
-install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm0755 data/%{appname}.desktop %{buildroot}%{_datadir}/applications/%{appname}.desktop
-install -Dm0755 data/icons/scalable/apps/%{appname}-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
+just rootdir=%{buildroot} prefix=%{_prefix} install
 %suse_update_desktop_file %{appname}
-
-#fix upstream
-chmod -x %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
 
 %check
 %{cargo_test}
