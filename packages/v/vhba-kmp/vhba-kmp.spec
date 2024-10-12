@@ -17,7 +17,7 @@
 
 
 Name:           vhba-kmp
-Version:        20240202
+Version:        20240917
 Release:        0
 Summary:        Virtual SCSI Host Bus Adapter
 License:        GPL-2.0-or-later
