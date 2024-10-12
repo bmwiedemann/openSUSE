@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:49:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.0
+  https://kgeotag.kde.org/news/2024/kgeotag-1.6.0-released/
+  * Coordinates format is now configurable
+  * It's now possible to (re-)assign all currently selected images
+    to the current map center using a keyboard shortcut.
+  * Updated the timezones data files to 2024b
+  * Fixed a crash when removing a GPX track and moving the
+    "track walker" slider afterwards.
+  * Changes to the image list layout (combined/separate) are now
+    displayed correctly (again).
+  * The window state saved by the KXmlGuiWindow/KMainWindow class
+    is now used to restore the dock arrangement
+  * Closed floating docks are now properly restored by using
+    "Set default dock arrangement" (kde#488597)
+
+-------------------------------------------------------------------
 Thu Jan 25 08:18:10 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
 
 - Update to 1.5.0

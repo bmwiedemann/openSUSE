@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kgeotag
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A photo geotagging utility
 License:        GPL-3.0-only
