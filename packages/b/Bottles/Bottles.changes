@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 13 07:16:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 51.14:
+  * New "Native" Force Stop all Processes option
+  * Provide bottle Path as env var
+  * Win11 support
+  * feat: support for personal repos
+  * Update manifest (important)
+  * Update GNOME runtime and Wine base
+  * Translations update
+  * Add Pre-Run script to launch options
+  * bottles with a different name and path weren't runnable through bottle picker
+  * fix: "bottles:run/" uri processing
+
+-------------------------------------------------------------------
 Wed Jul 10 21:45:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 51.13:

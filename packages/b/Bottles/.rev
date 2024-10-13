@@ -38,4 +38,22 @@
   * Fixed crash on starting executables via the file manager (forwarded request 1186699 from rrahl0)</comment>
     <requestid>1186700</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0901fc93e7bffb66757377ce4c1cab54</srcmd5>
+    <version>51.14</version>
+    <time>1728833665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 51.14:
+  * New &quot;Native&quot; Force Stop all Processes option
+  * Provide bottle Path as env var
+  * Win11 support
+  * feat: support for personal repos
+  * Update manifest (important)
+  * Update GNOME runtime and Wine base
+  * Translations update
+  * Add Pre-Run script to launch options
+  * bottles with a different name and path weren't runnable through bottle picker
+  * fix: &quot;bottles:run/&quot; uri processing (forwarded request 1207530 from rrahl0)</comment>
+    <requestid>1207531</requestid>
+  </revision>
 </revisionlist>

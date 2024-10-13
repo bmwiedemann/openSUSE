@@ -18,7 +18,7 @@
 
 %global appid com.usebottles.bottles
 Name:           Bottles
-Version:        51.13
+Version:        51.14
 Release:        0
 Summary:        Easily manage wineprefix using environments
 License:        GPL-3.0-or-later
