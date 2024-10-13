@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-busted
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -60,7 +60,7 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
@@ -146,6 +146,7 @@ bin/busted -v spec
 %{lua_noarchdir}/busted
 %{_datadir}/bash-completion/completions/busted
 %{_datadir}/bash-completion/completions/busted-%{lua_version}
+%dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/vendor-completions
 %{_datadir}/zsh/vendor-completions/_busted
 %{_datadir}/zsh/vendor-completions/_busted-%{lua_version}

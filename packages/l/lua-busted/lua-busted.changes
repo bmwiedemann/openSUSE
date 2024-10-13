@@ -2,6 +2,9 @@
 Thu Mar 16 18:09:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.
+- Add missing /usr/share/zsh ownership (I don’t want to
+  pull whole zsh as Requires and I am too lazy to create a
+  subpackage).
 
 -------------------------------------------------------------------
 Tue Nov 29 08:01:55 UTC 2022 - Michal Suchanek <msuchanek@suse.com>

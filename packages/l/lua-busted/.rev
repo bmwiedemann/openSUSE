@@ -47,4 +47,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1074032</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0083b162ffdd42bc64aa0eb8c81ddf78</srcmd5>
+    <version>2.0.0</version>
+    <time>1728833643</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+- Add missing /usr/share/zsh ownership (I don’t want to
+  pull whole zsh as Requires and I am too lazy to create a
+  subpackage).
+- Fix missing dependency on lua-macros (boo#1205612)
+- Adjust shebang of /usr/bin/busted to point to the correct lua
+  interpreter (boo#1199151).
+- Use %lua_provides macro for default lua versioning
+- Add lua54 as new build target
+- Add update-alternatives for the bash and zsh completion files.
+- Initial packaging effort of busted 2.0.0.
+</comment>
+    <requestid>1207471</requestid>
+  </revision>
 </revisionlist>
