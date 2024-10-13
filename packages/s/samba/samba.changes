@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Sep 25 14:52:10 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Support needed packaging changes required update to samba-4.21.0
+  Update samba.spec, baselibs.conf to deliver libldb packages.
+
+-------------------------------------------------------------------
+Thu Sep  5 07:29:17 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Package ceph_new VFS module.
+
+-------------------------------------------------------------------
+Thu Sep  5 07:13:01 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Incorrect FSCTL_QUERY_ALLOCATED_RANGES response when truncated;
+  (bso#15699); (bsc#1229684).
+
+-------------------------------------------------------------------
+Wed Aug 28 17:31:35 UTC 2024 - Noel Power <nopower@suse.com>
+
+-  Bad variable definition for ParseTuple causing test failure for
+   Smb3UnixTests.test_create_context_reparse; (bso#15702).
+
+-------------------------------------------------------------------
+Wed Aug 28 09:01:29 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 4.21.0
+  * Incorrect FSCTL_QUERY_ALLOCATED_RANGES response when
+    truncated; (bso#15699).
+  * Bad variable definition for ParseTuple causing test failure
+    for Smb3UnixTests.test_create_context_reparse; (bso#15702).
+  * Add new vfs_ceph module (based on low level API);
+    (bso#15686).
+  * samba-tool can not load the default configuration file;
+    (bso#15698).
+  * Crash when readlinkat fails; (bso#15700).
+  * Can't add/delete special keys to keytab for nfs, cifs, http
+    etc; (bso#15689).
+  * Compound SMB2 requests don't return
+    NT_STATUS_NETWORK_SESSION_EXPIRED for all requests, confuses
+    MacOSX clients; (bso#15696).
+  * --version-* options are still not ergonomic, and they reject
+    tilde characters; (bso#15673).
+  * ldb_version.h is missing from ldb public library;
+    (bso#15690).
+  * Can not add/delete special keys to keytab for nfs, cifs, http
+    etc; (bso#15689).
+  * undefined reference to winbind_lookup_name_ex; (bso#15687).
+  * per user veto and hide file syntax is to complex;
+    (bso#15688).
+
+-------------------------------------------------------------------
 Wed Aug  7 09:47:14 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Fix a crash when joining offline and 'kerberos method' includes

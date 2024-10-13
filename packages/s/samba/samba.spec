@@ -40,8 +40,7 @@
 
 %define talloc_version 2.4.2
 %define tevent_version 0.16.1
-%define tdb_version    1.4.10
-%define ldb_version    2.9.1
+%define tdb_version    1.4.12
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -67,6 +66,15 @@
 %{!?with_dc: %define with_dc 0}
 %endif
 
+%global with_lmdb 0
+# LMDB only available on 64bit archs
+%ifarch x86_64 ppc64le aarch64
+# lmdb is only built when ad_dc is configured
+%if %{with_dc}
+%global with_lmdb 1
+%endif
+%endif
+
 # Define whether smbd is built with SMB1 disabled
 %{!?without_smb1_server: %define without_smb1_server 1}
 
@@ -82,6 +90,7 @@ BuildRequires:  perl-Parse-Yapp
 BuildRequires:  libarchive-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
+BuildRequires:  libcmocka-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  cracklib-devel
 BuildRequires:  gdbm-devel
@@ -106,11 +115,9 @@ BuildRequires:  rpcgen
 BuildRequires:  fdupes
 %define pkgconfig_req pkg-config
 BuildRequires:  %{pkgconfig_req}
-BuildRequires:  libldb-devel >= %{ldb_version}
 BuildRequires:  libtalloc-devel >= %{talloc_version}
 BuildRequires:  libtdb-devel >= %{tdb_version}
 BuildRequires:  libtevent-devel >= %{tevent_version}
-BuildRequires:  python3-ldb-devel >= %{ldb_version}
 BuildRequires:  python3-talloc-devel
 BuildRequires:  python3-tdb
 BuildRequires:  python3-tevent
@@ -135,6 +142,8 @@ BuildRequires:  libgnutls-devel >= 3.4.7
 BuildRequires:  gpgme-devel
 BuildRequires:  libjansson-devel
 BuildRequires:  python3-gpg
+BuildRequires:  lmdb-devel >= 0.9.16
+BuildRequires:  lmdb
 %if %{with_mit_dc}
 BuildRequires:  krb5-devel >= 1.15.1
 BuildRequires:  krb5-server >= 1.15.1
@@ -160,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.20.4+git.356.d4a5fa2a818
+Version:        4.21.0+git.363.84c94ca948f
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -298,6 +307,9 @@ Provides:       libnetapi-devel = %{version}
 Obsoletes:      libnetapi-devel < %{version}
 Provides:       libwbclient-devel = %{version}
 Obsoletes:      libwbclient-devel < %{version}
+Provides:       libsamba-policy-devel = %{version}
+Obsoletes:      libsamba-policy-devel < %{version}
+Obsoletes:      libsamba-policy-python3-devel < %{version}
 
 %description devel
 This package contains the libraries and header files needed to
@@ -361,6 +373,7 @@ Provides:       libsmbconf0 = %{version}
 Obsoletes:      libsmbconf0 < %{version}
 Provides:       libdcerpc0 = %{version}
 Obsoletes:      libdcerpc0 < %{version}
+Obsoletes:      libsamba-policy0-python3 < %{version}
 
 %description client-libs
 The samba-libs package contains the libraries needed by samba client
@@ -393,7 +406,6 @@ Summary:        Samba Python3 libraries
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
-Requires:       libsamba-policy0-python3 = %{version}
 Requires:       python3-ldb
 Requires:       python3-talloc
 Requires:       python3-tdb
@@ -502,34 +514,6 @@ The CTDB Performance Co-Pilot (PCP) monitoring agent allows remote PCP
 clients to view and capture detailed real-time performance metrics for
 one or more cluster nodes.
 
-%package -n libsamba-policy0-python3
-Summary:        Active Directory Group Policy library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsamba-policy0-python3
-This subpackage contains the python3 library for policy management.
-
-%package -n libsamba-policy-devel
-Summary:        Development files for the Samba AD Group Policy library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-policy-python3-devel = %{version}
-
-%description -n libsamba-policy-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-policy.
-
-%package -n libsamba-policy-python3-devel
-Summary:        Development files for the Samba AD Group Policy library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsamba-policy0-python3 = %{version}
-
-%description -n libsamba-policy-python3-devel
-This subpackage contains libraries and header files for developing
-applications that want to make use of libsamba-policy.
-
 %package ceph
 Summary:        Ceph specific add-ons for Samba
 License:        GPL-3.0-or-later
@@ -591,12 +575,14 @@ Summary:        Samba LDB modules
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
 # The ldb modules provided by this package check their own version matches
-# the libldb2 version. It the version do not match (e.g. libldb2 version
+# the libldb2 version. If the version do not match (e.g. libldb2 version
 # is updated and samba-dsdb-modules is not rebuilt against it) programs using
 # libldb2 won't start. The requires_eq macro will require the libldb2 version
 # available at build time without having to manually maintain the global
 # ldb_version variable in this spec file (bsc#1118508, bsc#1199362)
-%requires_eq libldb2
+# NOTE 4.21 update. If ldb is built from this spec, this problem goes away and
+# it is enough with requiring libldb2 = %{version}
+Requires:       libldb2 = %{version}
 Requires:       samba-ldb-ldap = %{version}
 Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
@@ -604,6 +590,44 @@ Requires(postun):/sbin/ldconfig
 %description dsdb-modules
 This package contains plugins which add Active Directory features to the
 LDB library.
+
+
+%package -n libldb2
+Summary:        An LDAP-like embedded database
+License:        LGPL-3.0-or-later
+Obsoletes:      libldb1 < %{version}
+
+%description -n libldb2
+LDB is an LDAP-like embedded database.
+
+%package -n libldb-devel
+Summary:        Libraries and Header Files to Develop Programs with ldb2 Support
+Group:          Development/Libraries/C and C++
+Requires:       libldb2 = %{version}
+Requires:       pkg-config
+
+%description -n libldb-devel
+LDB is an LDAP-like embedded database.
+
+Libraries and Header Files to Develop Programs with ldb2 Support.
+
+%package -n ldb-tools
+Summary:        Tools to manipulate LDB files
+Group:          Development/Libraries/C and C++
+
+%description -n ldb-tools
+Tools to manipulate LDB files.
+
+%package -n python3-ldb
+Summary:        Python3 bindings for the LDB library
+Group:          Development/Libraries/Python
+Requires:       libldb2 = %{version}
+Obsoletes:      python-ldb < %{version}
+Obsoletes:      python3-ldb-devel < %{version}
+
+%description -n python3-ldb
+This package contains the python3 bindings for the LDB library.
+
 
 %prep
 %setup -n samba-%{version} -q
@@ -646,9 +670,14 @@ fi
 
 export CFLAGS="%{optflags} -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS -I/usr/include/tirpc"
 export LDFLAGS="-ltirpc"
+
+bundled_libraries="NONE"
 %if ! 0%{?with_mscat}
-bundled_libraries_extra+=",libtasn1"
+bundled_libraries+=",libtasn1"
 %endif
+
+private_libraries="!ldb"
+
 CONFIGURE_OPTIONS="\
 	--prefix=%{_prefix} \
 	--localstatedir=%{_localstatedir} \
@@ -663,6 +692,10 @@ CONFIGURE_OPTIONS="\
 	--disable-rpath-install \
 	--enable-debug \
 	--with-profiling-data \
+	--private-libraries=${private_libraries} \
+%if !%{with_lmdb}
+	--without-ldb-lmdb \
+%endif
 %if 0%{?build_ctdb_pmda}
 	--enable-pmda \
 %endif
@@ -693,7 +726,7 @@ CONFIGURE_OPTIONS="\
 	--with-experimental-mit-ad-dc \
 %endif
 %endif
-	--bundled-libraries=NONE,socket_wrapper,cmocka,${bundled_libraries_extra} \
+	--bundled-libraries=NONE,${bundled_libraries} \
 	--without-fam \
 %if 0%{?suse_version} > 1500
 %if %{without_smb1_server}
@@ -755,6 +788,9 @@ make %{?_smp_mflags} install \
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
 rm \
+	%{buildroot}/%{_libdir}/libsamba-policy.so* \
+	%{buildroot}/%{_libdir}/pkgconfig/samba-policy.pc \
+	%{buildroot}/%{_libdir}/samba/libsamba-net-private-samba.so \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
 	%{buildroot}/%{_unitdir}/samba-ad-dc.service
@@ -771,8 +807,6 @@ for file in README COPYING doc/examples doc/*.html doc/readonlyrecords.txt ; do
 	cp -a ctdb/${file} %{buildroot}/%{_defaultdocdir}/ctdb
 done
 touch %{buildroot}/%{_sysconfdir}/ctdb/nodes
-# sudo can be used by statd-callout, but is not needed
-rm %{buildroot}/%{_sysconfdir}/sudoers.d/ctdb
 # install the config_migrate.sh script to move to new 4.9+ ctdb configuration
 install -m 0744 ctdb/doc/examples/config_migrate.sh %{buildroot}/%{_sysconfdir}/ctdb/config_migrate.sh
 
@@ -890,6 +924,7 @@ for file in $( find %{buildroot}%{_libdir}/samba/vfs/ -mindepth 1 ); do
 	# if built we don't want ceph VFS modules in the base package
 	case "${file#%{buildroot}}" in
 		%{_libdir}/samba/vfs/ceph.so) continue ;;
+		%{_libdir}/samba/vfs/ceph_new.so) continue ;;
 		%{_libdir}/samba/vfs/ceph_snapshots.so) continue ;;
 	esac
 	echo "${file#%{buildroot}}" >>%{_builddir}/samba-%{version}/filelist-samba
@@ -898,6 +933,12 @@ done
 for file in %{buildroot}%{_mandir}/man8/vfs_*; do
 	case "${file#%{buildroot}}" in
 		%{_mandir}/man8/vfs_ceph.8)
+%if 0%{?build_ceph} == 0
+			rm ${file}
+%endif
+			continue
+			;;
+		%{_mandir}/man8/vfs_ceph_new.8)
 %if 0%{?build_ceph} == 0
 			rm ${file}
 %endif
@@ -1007,8 +1048,6 @@ fi
 %postun client
 /sbin/ldconfig
 
-%post   -n libsamba-policy0-python3 -p /sbin/ldconfig
-%postun -n libsamba-policy0-python3 -p /sbin/ldconfig
 %post client-libs -p /sbin/ldconfig
 %postun client-libs -p /sbin/ldconfig
 %post libs -p /sbin/ldconfig
@@ -1033,7 +1072,6 @@ fi
 
 %post dsdb-modules
 rm -f %{_libdir}/ldb/samba
-ln -sf %{_libdir}/samba/ldb %{_libdir}/ldb2/modules/ldb/samba
 /sbin/ldconfig
 
 %postun dsdb-modules -p /sbin/ldconfig
@@ -1079,7 +1117,7 @@ fi
 %service_add_pre ctdb.service
 if [ -e %{_sysconfdir}/sysconfig/ctdb ] ; then
     grep CTDB_LOGGING %{_sysconfdir}/sysconfig/ctdb >/dev/null 2>&1 ||
-    	sed -i s/CTDB_LOGFILE=/CTDB_LOGGING=file:/g %{_sysconfdir}/sysconfig/ctdb
+    sed -i s/CTDB_LOGFILE=/CTDB_LOGGING=file:/g %{_sysconfdir}/sysconfig/ctdb
 fi
 if [ ! -f %{_sysconfdir}/ctdb/config_migrate.sh ] ; then
     echo "* CTDB Configuration has been redesigned"
@@ -1118,6 +1156,12 @@ exit 0
 %postun -n ctdb
 %service_del_postun ctdb.service
 exit 0
+
+%post -n libldb2 -p /sbin/ldconfig
+%postun -n libldb2 -p /sbin/ldconfig
+
+%post -n python3-ldb -p /sbin/ldconfig
+%postun -n python3-ldb -p /sbin/ldconfig
 
 %files -f filelist-samba
 %defattr(-,root,root)
@@ -1289,6 +1333,7 @@ exit 0
 %_includedir/samba-4.0/passdb.h
 %_includedir/samba-4.0/netapi.h
 %_includedir/samba-4.0/libsmbclient.h
+%_includedir/samba-4.0/policy.h
 %dir %_includedir/samba-4.0/core/
 %_includedir/samba-4.0/core/doserr.h
 %_includedir/samba-4.0/core/error.h
@@ -1397,6 +1442,8 @@ exit 0
 %{_includedir}/samba-4.0/dcerpc_server.h
 %{_libdir}/libdcerpc-server.so
 %{_libdir}/pkgconfig/dcerpc_server.pc
+%{_libdir}/libsamba-policy.so
+%{_libdir}/pkgconfig/samba-policy.pc
 %endif
 
 %files client-libs
@@ -1493,7 +1540,6 @@ exit 0
 %{_libdir}/samba/libtalloc-report-printf-private-samba.so
 %{_libdir}/samba/libtdb-wrap-private-samba.so
 %{_libdir}/samba/libtime-basic-private-samba.so
-%{_libdir}/samba/libtrusts-util-private-samba.so
 %{_libdir}/samba/libutil-reg-private-samba.so
 %{_libdir}/samba/libutil-setid-private-samba.so
 %{_libdir}/samba/libutil-tdb-private-samba.so
@@ -1524,7 +1570,6 @@ exit 0
 %{_libdir}/samba/libtalloc-report-private-samba.so
 %{_libdir}/samba/libtorture-private-samba.so
 %{_libdir}/samba/libxattr-tdb-private-samba.so
-%{_libdir}/samba/libcmocka-private-samba.so
 %{_libdir}/samba/libREG-FULL-private-samba.so
 %{_libdir}/samba/libRPC-SERVER-LOOP-private-samba.so
 %{_libdir}/samba/libRPC-WORKER-private-samba.so
@@ -1546,12 +1591,13 @@ exit 0
 %endif
 
 %files libs-python3
-%{_libdir}/samba/libsamba-net.%{py3_soflags_dash}-private-samba.so
+%{_libdir}/samba/libsamba-net-join.%{py3_soflags_dash}-private-samba.so
 %{_libdir}/samba/libsamba-python.%{py3_soflags_dash}-private-samba.so
 
 %files python3
 %defattr(-,root,root)
-%{python3_sitearch}/*
+%dir %{python3_sitearch}/samba
+%{python3_sitearch}/samba/*
 
 %files gpupdate
 %defattr(-,root,root)
@@ -1658,6 +1704,8 @@ exit 0
 %dir %{_datadir}/ctdb/events
 %dir %{_datadir}/ctdb/events/legacy
 %{_datadir}/ctdb/events/legacy/*
+%dir %{_datadir}/ctdb/scripts
+%{_datadir}/ctdb/scripts/winbind_ctdb_updatekeytab.sh
 %dir %{_sysconfdir}/ctdb/events
 %dir %{_sysconfdir}/ctdb/events/notification
 %{_sysconfdir}/ctdb/events/notification/README
@@ -1691,6 +1739,8 @@ exit 0
 %{_libdir}/ctdb/ctdb_lvs
 %{_libdir}/ctdb/ctdb_mutex_fcntl_helper
 %{_libdir}/ctdb/tdb_mutex_check
+%{_libdir}/ctdb/statd_callout
+%{_libdir}/ctdb/statd_callout_helper
 %dir %{_localstatedir}/lib/ctdb
 %dir %{_localstatedir}/lib/ctdb/persistent
 %dir %{_localstatedir}/log/ctdb
@@ -1724,26 +1774,13 @@ exit 0
 %{_localstatedir}/lib/pcp/pmdas/ctdb/pmdactdb
 %{_localstatedir}/lib/pcp/pmdas/ctdb/pmns
 %endif
-
-%files -n libsamba-policy0-python3
-%defattr(-,root,root)
-%_libdir/libsamba-policy.%{py3_soflags_dash}.so.0*
-
-%files -n libsamba-policy-devel
-%defattr(-,root,root)
-%dir %_includedir/samba-4.0/
-%_includedir/samba-4.0/policy.h
-
-%files -n libsamba-policy-python3-devel
-%defattr(-,root,root)
-%_libdir/libsamba-policy.%{py3_soflags_dash}.so
-%_libdir/pkgconfig/samba-policy.%{py3_soflags}.pc
-
 %if 0%{?build_ceph}
 %files ceph
 %defattr(-,root,root)
 %{_mandir}/man8/vfs_ceph.8.*
 %{_libdir}/samba/vfs/ceph.so
+%{_mandir}/man8/vfs_ceph_new.8.*
+%{_libdir}/samba/vfs/ceph_new.so
 %{_mandir}/man8/vfs_ceph_snapshots.8.*
 %{_libdir}/samba/vfs/ceph_snapshots.so
 %{_mandir}/man7/ctdb_mutex_ceph_rados_helper.7.*
@@ -1868,6 +1905,7 @@ exit 0
 
 %files ldb-ldap
 %defattr(-,root,root)
+%{_libdir}/samba/ldb/ldap.so
 %{_libdir}/samba/ldb/ildap.so
 %{_libdir}/samba/ldb/ldbsamba_extensions.so
 
@@ -1898,6 +1936,8 @@ exit 0
 %{_libdir}/samba/service/winbindd.so
 %{_libdir}/samba/service/wrepl.so
 %{_libdir}/libdcerpc-server.so.*
+%{_libdir}/libsamba-policy.so.*
+%{_libdir}/samba/libsamba-net-private-samba.so
 %{_libdir}/samba/pdb/samba_dsdb.so
 %if %{with_mit_dc}
 %{_libdir}/krb5/plugins/kdb/samba.so
@@ -1964,5 +2004,59 @@ exit 0
 %{_libdir}/samba/ldb/paged_results.so
 %{_libdir}/samba/ldb/count_attrs.so
 %endif
+
+%files -n libldb2
+%{_libdir}/libldb.so.*
+%{_libdir}/samba/libldb-key-value-private-samba.so
+%{_libdir}/samba/libldb-tdb-err-map-private-samba.so
+%{_libdir}/samba/libldb-tdb-int-private-samba.so
+%dir %{_libdir}/samba/ldb
+%{_libdir}/samba/ldb/asq.so
+%{_libdir}/samba/ldb/paged_searches.so
+%{_libdir}/samba/ldb/rdn_name.so
+%{_libdir}/samba/ldb/sample.so
+%{_libdir}/samba/ldb/server_sort.so
+%{_libdir}/samba/ldb/skel.so
+%{_libdir}/samba/ldb/tdb.so
+%{_libdir}/samba/ldb/ldb.so
+%if %{with_lmdb}
+%{_libdir}/samba/libldb-mdb-int-private-samba.so
+%{_libdir}/samba/ldb/mdb.so
+%endif
+
+%files -n libldb-devel
+%{_includedir}/samba-4.0/ldb.h
+%{_includedir}/samba-4.0/ldb_errors.h
+%{_includedir}/samba-4.0/ldb_handlers.h
+%{_includedir}/samba-4.0/ldb_module.h
+%{_includedir}/samba-4.0/ldb_version.h
+%{_libdir}/libldb.so
+%{_libdir}/pkgconfig/ldb.pc
+%{_mandir}/man3/ldb*.3.*
+
+%files -n ldb-tools
+%defattr(-,root,root)
+%{_bindir}/ldbadd
+%{_bindir}/ldbdel
+%{_bindir}/ldbedit
+%{_bindir}/ldbmodify
+%{_bindir}/ldbrename
+%{_bindir}/ldbsearch
+%{_libdir}/samba/libldb-cmdline-private-samba.so
+%{_mandir}/man1/ldbadd.1.*
+%{_mandir}/man1/ldbdel.1.*
+%{_mandir}/man1/ldbedit.1.*
+%{_mandir}/man1/ldbmodify.1.*
+%{_mandir}/man1/ldbrename.1.*
+%{_mandir}/man1/ldbsearch.1.*
+
+%files -n python3-ldb
+%defattr(-,root,root)
+%{_libdir}/samba/libpyldb-util.%{py3_soflags_dash}-private-samba.so
+%{python3_sitearch}/_ldb_text.py
+%if 0%{?centos_version} > 599 || 0%{?fedora_version} > 11 || 0%{?rhel_version} > 599
+%{python3_sitearch}/__pycache__/_ldb_text.cpython-*.py[co]
+%endif
+%{python3_sitearch}/ldb.%{py3_soflags}.so
 
 %changelog
