@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 13 08:11:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.3
+  * Added QOI image format support;
+  * Added multi-threading image renderer;
+  * Added support for reverse image list order;
+  * Added mouse key binding support;
+  * Fixed antializing for downsampled images;
+  * Fixed gallery layout.
+
+-------------------------------------------------------------------
 Fri Aug 23 10:02:34 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.2
