@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/bci-init:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-init:%OS_VERSION_ID_SP%-%RELEASE%
+#!BuildTag: opensuse/bci/bci-init:%OS_VERSION_ID_SP%
 #!BuildTag: opensuse/bci/bci-init:latest
 
 FROM opensuse/tumbleweed:latest
