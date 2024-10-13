@@ -1,6 +1,58 @@
 -------------------------------------------------------------------
-Tue Feb 27 11:17:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+Sun Oct 13 06:34:46 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
+- new upstream v6.16.22 minor improvements and fixed potential
+  SIGSEGV while shrinking notation, automation and wave form data.
+
+-------------------------------------------------------------------
+Wed Aug 21 10:36:23 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.16.18 minor improvements.
+
+-------------------------------------------------------------------
+Fri Jul 26 05:47:01 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.16.16 minor improvements and bug-fixes.
+
+-------------------------------------------------------------------
+Sun May 19 09:26:57 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.13.4 fixed recently broken scrollbars.
+- new since v6.13.3 fixed potential SIGSEGV and improved UI.
+- improved dark mode
+
+-------------------------------------------------------------------
+Sun May 12 07:35:52 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.12.1 much UI cosmetics and minor improvements.
+
+-------------------------------------------------------------------
+Fri May  3 12:51:48 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.10.1 fixed tempo and a lot of cosmetics in UI.
+- refactored widgets in libgsequencer.so to use GtkWindow as parent
+  class instead of GtkDialog.
+
+-------------------------------------------------------------------
+Thu Apr 25 18:34:17 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.9.0 fixed note 256th counter bug.
+- refactored all soundcard implementations to use new utility
+  functions.
+
+-------------------------------------------------------------------
+Thu Apr 18 05:49:45 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.8.3 many bug-fixes.
+- fixed auto-scroll.
+- fixed memory-leak while stop playback.
+- fixed ags-fx-dssi.
+- fixed SIGSEGV with remove automation port.
+- new in version 6.6.0 implemented AgsFileDialog and AgsFileWidget.
+
+-------------------------------------------------------------------
+Tue Feb 27 11:17:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+ 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
   %patchN.
 
