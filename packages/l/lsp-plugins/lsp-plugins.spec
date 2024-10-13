@@ -22,22 +22,17 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.18
+Version:        1.2.19
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
-Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.7z#/%{name}-%{version}.7z
+Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
-%if 0%{?suse_version} > 1600
-BuildRequires:  7zip
-%else
-BuildRequires:  p7zip-full
-%endif
 BuildRequires:  php8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -168,7 +163,7 @@ Requires:       %{name}-common = %{version}
 Development files for Linux Studio Plugins
 
 %prep
-%setup -qn %{name}-src-%{version}
+%autosetup -n %{name}
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"

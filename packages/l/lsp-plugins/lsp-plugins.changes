@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 12 20:29:16 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.19
+- update .spec for tar.gz source
+
+  * Rollback of source code distribution to tar.gz archive format.
+  * Fixed unneeded resource object deletion and use-after-free in 
+    VST plugin wrapper.
+  * Fixed window sizing for CLAP plugin format.
+  * Updated CLAP SDK to 1.2.2.
+  * Updated VST3 SDK to 3.7.12, may be breaking changes related to
+    parameter identifiers as Steinberg has twice reduced the set of
+    valid paremeter identifiers.
+  * Several fixes in build scripts.
+
+-------------------------------------------------------------------
 Wed Oct  9 23:04:53 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.18 
