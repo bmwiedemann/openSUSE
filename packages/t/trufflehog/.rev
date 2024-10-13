@@ -1447,4 +1447,27 @@
   * Fixed github oauth2 token detector (#3353) (forwarded request 1206321 from ph03nix)</comment>
     <requestid>1206337</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9620fba7fad9449fad32144e79027d20</srcmd5>
+    <version>3.82.8</version>
+    <time>1728833639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.82.8:
+  * Update SaladCloud description (#3399)
+  * fix tests (#3400)
+  * [chore] Update custom detector default description (#3398)
+  * add description to salad (#3397)
+  * Add detector for SaladCloud API Keys (#3273)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.111.0 (#3393)
+  * Add SliceContainsString common util (#3395)
+  * fix: pr template link to golangci-lint (#3392)
+  * fix(deps): update golang.org/x/exp digest to f66d83c (#3389)
+  * Separate detector tests into unit/integration (#3274)
+  * Manually upgrade github dep (#3387)
+  * Updated Fastly Personal Token Detector (#3386)
+  * fix(deps): update module google.golang.org/api to v0.200.0 (#3391)
+  * [Fix] Snowflake privatelink Support (#3286)
+  * Enhanced the easyinsight detector (#3384) (forwarded request 1207460 from ph03nix)</comment>
+    <requestid>1207468</requestid>
+  </revision>
 </revisionlist>

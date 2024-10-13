@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 12 14:36:22 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.82.8:
+  * Update SaladCloud description (#3399)
+  * fix tests (#3400)
+  * [chore] Update custom detector default description (#3398)
+  * add description to salad (#3397)
+  * Add detector for SaladCloud API Keys (#3273)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.111.0 (#3393)
+  * Add SliceContainsString common util (#3395)
+  * fix: pr template link to golangci-lint (#3392)
+  * fix(deps): update golang.org/x/exp digest to f66d83c (#3389)
+  * Separate detector tests into unit/integration (#3274)
+  * Manually upgrade github dep (#3387)
+  * Updated Fastly Personal Token Detector (#3386)
+  * fix(deps): update module google.golang.org/api to v0.200.0 (#3391)
+  * [Fix] Snowflake privatelink Support (#3286)
+  * Enhanced the easyinsight detector (#3384)
+
+-------------------------------------------------------------------
 Tue Oct 08 09:21:03 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.82.7:
