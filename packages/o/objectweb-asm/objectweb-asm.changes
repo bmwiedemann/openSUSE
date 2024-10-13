@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct  9 21:24:18 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.7.1
+  * new Opcodes.V24 constant for Java 24
+  * Javadoc improvements
+  * new features
+    + 318013: new ClassWriter setFlags() method.
+    + Add ConstantDynamic serialization and Number suffixes to
+      Textifier.
+  * bug fixes
+    + 318014: Analyzer with a SimpleVerifier may throw an
+      AnalyzerException on valid java code due to incompatible
+      frame locals.
+    + 318015: Valid bytecode for jvm, but failed to pass the
+      CheckClassAdapter.
+    + 318016: ClassNotFoundException with an array of the type of
+      current class.
+    + 318018: changing invokedynamic Handle itf bool flag doesn't
+      create new methodref in symbol table.
+    + 318019: Attribute::write is invoked twice.
+    + Fix DUP_X1, DUP_X2, DUP2_X1, and DUP2_X2 not copying values
+      correctly in Analyzer.
+    + Fix SimpleVerifier multiple dimensions merge.
+    + Fix SourceInterpreter wrongly saying that Condy long /
+      doubles are one word elements.
+    + GeneratorAdapter: fix push(Type.VOID_TYPE).
+    + Fix null method parameter name in Asmifier causing NPE.
+
+-------------------------------------------------------------------
 Wed May 15 11:18:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.7
