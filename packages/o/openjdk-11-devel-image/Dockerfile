@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: aarch64 x86_64 ppc64le s390x
-#!BuildTag: opensuse/bci/openjdk-devel:11
 #!BuildTag: opensuse/bci/openjdk-devel:11-%RELEASE%
+#!BuildTag: opensuse/bci/openjdk-devel:11
 
 FROM opensuse/bci/openjdk:11
 
