@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set default JAVA_HOME
-export JAVA_HOME="${JAVA_HOME:-%{?java_home}}"
-
 # Source functions library
 if [ -f /usr/share/java-utils/java-functions ] ; then
   . /usr/share/java-utils/java-functions

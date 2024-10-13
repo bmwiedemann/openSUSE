@@ -19,7 +19,7 @@
 
 %define bname fop
 Name:           xmlgraphics-fop
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
@@ -38,25 +38,29 @@ Source12:       %{name}-fontlist.xml
 Patch1:         xmlgraphics-fop-cli.patch
 Patch2:         hyphenation-more-stack.patch
 Patch3:         fix-javadoc-java8.patch
-Patch4:         java8-compatibility.patch
+Patch4:         encoding.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- boo#1110024
 Patch5:         reproducible-build-manifest.patch
-Patch6:         fop-2.5-QDox-2.0.patch
+Patch6:         fop-2.10-QDox-2.0.patch
 Patch7:         reproducible.patch
+Patch8:         java8-compatibility.patch
 BuildRequires:  ant >= 1.9.15
 BuildRequires:  apache-pdfbox >= 2.0.23
+BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle-pkix
+BuildRequires:  bouncycastle-util
 BuildRequires:  commons-io >= 2.4
 BuildRequires:  commons-logging
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  glassfish-servlet-api
+BuildRequires:  jakarta-servlet
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  libxslt
 BuildRequires:  qdox >= 2.0
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
-BuildRequires:  xmlgraphics-batik >= 1.14
-BuildRequires:  xmlgraphics-commons >= 2.6
+BuildRequires:  xmlgraphics-batik >= 1.18
+BuildRequires:  xmlgraphics-commons >= 2.10
 #!BuildIgnore:  saxon
 Requires:       java >= 1.8
 Requires:       xml-commons-apis
@@ -83,6 +87,9 @@ find -name "*.jar" | xargs -t rm
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+%patch -P 8 -p1
+%endif
 
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
@@ -113,19 +120,22 @@ done
 
 %build
 build-jar-repository -s fop/lib \
+        bcpkix \
+        bcprov \
+        bcutil \
         commons-io \
         commons-logging \
         fontbox \
-        glassfish-servlet-api \
+        jakarta-servlet/jakarta.servlet-api \
         batik-all \
         xml-commons-apis \
         xml-commons-apis-ext \
         xmlgraphics-commons \
         qdox
 
-export CLASSPATH= LANG=en_US.UTF-8
-%{ant} -f fop/build.xml \
-    -Djavac.source=1.8 -Djavac.target=1.8 \
+ant \
+    -f fop/build.xml \
+    -Ddev=true \
     package
 
 # Build the manpage(s) and HTML

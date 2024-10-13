@@ -601,4 +601,12 @@
     <comment>Adapt scripts to the new javapackages-tools version</comment>
     <requestid>1205393</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>181bfe1e295ed4bdc39625e95469eaa2</srcmd5>
+    <version>2.10</version>
+    <time>1728833599</time>
+    <user>dimstar_suse</user>
+    <comment>2.10 fixing bsc#1231428, CVE-2024-28168</comment>
+    <requestid>1207477</requestid>
+  </revision>
 </revisionlist>

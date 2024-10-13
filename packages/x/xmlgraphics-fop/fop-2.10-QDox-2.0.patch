@@ -1,5 +1,6 @@
---- fop-2.5/fop-events/src/main/java/org/apache/fop/tools/EventProducerCollector.java	2020-05-05 11:42:05.000000000 +0200
-+++ fop-2.5/fop-events/src/main/java/org/apache/fop/tools/EventProducerCollector.java	2020-06-03 10:49:58.195555295 +0200
+diff -urEbwB fop-2.10/fop-events/src/main/java/org/apache/fop/eventtools/EventProducerCollector.java fop-2.10/fop-events/src/main/java/org/apache/fop/eventtools/EventProducerCollector.java
+--- fop-2.10/fop-events/src/main/java/org/apache/fop/eventtools/EventProducerCollector.java	2024-10-11 13:58:44.578271844 +0200
++++ fop-2.10/fop-events/src/main/java/org/apache/fop/eventtools/EventProducerCollector.java	2024-10-11 14:09:42.446141414 +0200
 @@ -21,6 +21,7 @@
  
  import java.io.File;

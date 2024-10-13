@@ -1,0 +1,12 @@
+diff -urEwbB fop-2.10/fop/build.xml fop-2.10/fop/build.xml
+--- fop-2.10/fop/build.xml	2024-10-11 13:58:44.468271086 +0200
++++ fop-2.10/fop/build.xml	2024-10-11 14:04:37.160704185 +0200
+@@ -185,7 +186,7 @@
+     <javac fork="${javac.fork}"
+       debug="${javac.debug}"
+       deprecation="${javac.deprecation}"
+-      optimize="${javac.optimize}"
++      optimize="${javac.optimize}" encoding="utf-8"
+       source="${javac.source}" target="${javac.target}"/>
+   </presetdef>
+   
