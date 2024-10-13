@@ -21,7 +21,7 @@
 %define _buildshell /bin/bash
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
@@ -31,7 +31,6 @@ Source0:        http://archive.apache.org/dist/xmlgraphics/batik/source/batik-sr
 Source1:        batik-build.tar.xz
 Source7:        %{name}.security.policy
 Patch0:         %{name}-nolinksinjavadoc.patch
-Patch1:         0001-Fix-imageio-codec-lookup.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -165,7 +164,6 @@ find -name '*.class' -delete
 find -name '*.jar' -delete
 
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 cp -p %{SOURCE7} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
 cp -p %{SOURCE7} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy
@@ -196,13 +194,13 @@ rm -rf batik-script/src/main/java/org/apache/batik/script/jpython
 build-jar-repository -s lib js xml-apis xml-commons-apis-ext xmlgraphics-commons
 
 %build
-export CLASSPATH=
-export OPT_JAR_LIST=:
-%{ant} \
-    -f build-batik.xml -Dtest.skip=true \
-	package
-%{ant} \
+ant \
+    -f build-batik.xml \
+    -Dtest.skip=true \
+    package
+ant \
     -Dbuild.id="%{version} ($(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ))" \
+    -Ddev=true \
     all-jar jars javadoc
 
 %install

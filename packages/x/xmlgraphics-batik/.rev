@@ -369,4 +369,12 @@
     <comment>reproducible + clean</comment>
     <requestid>1201996</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8732f327bc7b66504e140b0f8c2395ae</srcmd5>
+    <version>1.18</version>
+    <time>1728833597</time>
+    <user>dimstar_suse</user>
+    <comment>1.18 needed by bsc#1231428, CVE-2024-28168</comment>
+    <requestid>1207476</requestid>
+  </revision>
 </revisionlist>

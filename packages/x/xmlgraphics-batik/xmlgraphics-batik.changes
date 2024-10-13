@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:20:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.18
+  * Needed by xmlgraphics-fop 2.10
+  * Changes
+    + BATIK-1225: PNG transcoder references nonexistent class
+    + BATIK-1285: Set offset to 0 if missing in stop tag
+    + BATIK-1318: Validate throws NPE
+    + BATIK-1355: Missing arabic characters
+    + BATIK-1361: Animated rotate tranform ignores y-origin at
+      exactly 270 degrees
+    + BATIK-1362: Set an automatic module name
+    + BATIK-1363: Ignore inkscape properties
+    + BATIK-1364: Switch to spotbugs
+    + FOP-3135: Allow source and target resolution configuration
+- Removed patch:
+  * 0001-Fix-imageio-codec-lookup.patch
+    + fixed upstream
+
+-------------------------------------------------------------------
 Thu Sep 19 11:26:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Specify a reproducible build.id
