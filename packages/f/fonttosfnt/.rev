@@ -129,4 +129,22 @@
     <comment></comment>
     <requestid>1190940</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e7d7e8df87164df9b91680048beace89</srcmd5>
+    <version>1.2.4</version>
+    <time>1728833592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.4
+  * unifdef __UNIXOS2__
+  * unifdef __SCO__
+  * unifdef NEED_SNPRINTF
+  * Use long long for timestamp diff
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * Use FONT_UNITS_FLOOR for ascent/descent
+  * Fix `cmap` Subtable Format 4 `entrySelector`
+- supersedes reproducible.patch
+
+- refresh reproducible.patch</comment>
+    <requestid>1207469</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package fonttosfnt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           fonttosfnt
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Utility to wrap a bitmap font in a sfnt (TrueType) wrapper
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-Patch0:         https://gitlab.freedesktop.org/xorg/app/fonttosfnt/-/merge_requests/22.patch#/reproducible.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontenc)
 BuildRequires:  pkgconfig(freetype2)

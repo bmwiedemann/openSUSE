@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 12 17:41:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.4
+  * unifdef __UNIXOS2__
+  * unifdef __SCO__
+  * unifdef NEED_SNPRINTF
+  * Use long long for timestamp diff
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * Use FONT_UNITS_FLOOR for ascent/descent
+  * Fix `cmap` Subtable Format 4 `entrySelector`
+- supersedes reproducible.patch
+
+-------------------------------------------------------------------
+Wed Oct  9 09:48:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- refresh reproducible.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 13:37:47 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date in font files
@@ -38,12 +56,12 @@ Tue Dec 22 08:40:19 UTC 2020 - Dirk Müller <dmueller@suse.com>
 Wed Oct 21 09:17:35 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0
-  * This release contains a bunch of fixes all over the place 
+  * This release contains a bunch of fixes all over the place
 
 -------------------------------------------------------------------
 Tue Jan  7 09:38:28 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- Update to version 1.1.0 
+- Update to version 1.1.0
   * Update README for gitlab migration
   * Update configure.ac bug URL for gitlab migration
   * Correct a string literal
@@ -60,7 +78,7 @@ Tue Jan  7 09:38:28 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Fri Aug 17 10:46:14 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.5
-  * Is it a bird? is it a plane? No it's a fonttofs.. fontstof.. 
+  * Is it a bird? is it a plane? No it's a fonttofs.. fontstof..
     fonttofn... it's a release of the tool that wraps a bitmap
     font into a truetype wrapper! Bringing you the last 9 years
     of exciting changes including ansification and lots of
