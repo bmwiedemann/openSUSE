@@ -1,9 +1,0 @@
-<package name="ldb" project="openSUSE:Factory">
-  <title>Samba ldb Library</title>
-  <description>This package includes the ldb1 library.
-
-
-</description>
-  <devel project="network:samba:STABLE" package="ldb"/>
-  <url>http://ldb.samba.org/</url>
-</package>
