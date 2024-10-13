@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 10 12:07:50 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.6.3
+  * fix automatic type acquisition
+  * Don't issue implicit any when obtaining the implied type for 
+    a binding pattern
+  * Remove tsbuildInfo specification error
+
+-------------------------------------------------------------------
 Sun Sep 15 15:14:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.6.2
