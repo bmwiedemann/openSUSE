@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 12 14:48:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.192.0:
+  * Add release notes for v0.192.0 (#7974)
+  * Add support for EKS accelerated AMIs based on AL2023 (#7996)
+  * Disallow `overrideBootstrapCommand` and `preBootstrapCommands`
+    for MNG AL2023 (#7990)
+  * efa-installer: remove archive in 2023 files
+  * cleanup efa installer archive before install
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Sep 27 20:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.191.0:
