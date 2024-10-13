@@ -1223,4 +1223,14 @@ goes in line with 946250</comment>
   (bsc#1226157);</comment>
     <requestid>1187905</requestid>
   </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>3fb8b5037d90ffcf367069a9954a5357</srcmd5>
+    <version>2.9.5</version>
+    <time>1728833606</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage together with:
+#1206308
+#1206309</comment>
+    <requestid>1207137</requestid>
+  </revision>
 </revisionlist>

@@ -86,6 +86,13 @@ BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+# samba-client-devel pulls samba-client-libs pulls libldap-2_4-2 wants libldap-data(-2.4);
+# this conflicts with
+# openldap2-devel pulls libldap2 wants libldap-data(-2.6)
+# Package contains just config files, not needed for build.
+#!BuildIgnore: libldap-data
+%endif
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
 Requires(postun): pam-config
@@ -104,7 +111,7 @@ Obsoletes:      sssd-common < %version-%release
 %define ldbdir %(pkg-config ldb --variable=modulesdir)
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
-# %_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
+# %%_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
 # * cifs-utils one is the default (priority 20)
 # * installing SSSD should NOT switch to SSSD plugin (priority 10)
 %define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
@@ -420,7 +427,7 @@ perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
 b="%buildroot"
 
 # Copy some defaults
-%if %{?_distconfdir:1}
+%if "%{?_distconfdir}" != ""
 install -D -p -m 0600 src/examples/sssd-example.conf "$b/%_distconfdir/sssd/sssd.conf"
 install -d -m 0755 "$b/%_distconfdir/sssd/conf.d"
 %else
@@ -451,8 +458,11 @@ find "$b" -type f -name "*.la" -print -delete
 mkdir -pv %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
 ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 %python3_fix_shebang
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1600
 %python3_fix_shebang_path %buildroot/%_libexecdir/%name/
+%elif 0%{?suse_version} == 1600
+# python3_fix_shebang_path macro does not exist in < 1600, was added in python-rom-macros 20231204
+sed -i '1s@#!.*python.*@#!%{_bindir}/python3.11@' %{buildroot}/%{_libexecdir}/%{name}/sss_analyze
 %endif
 
 %check
@@ -461,7 +471,7 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 
 %pre
 %service_add_pre sssd.service
-%if %{?_distconfdir:1}
+%if "%{?_distconfdir}" != ""
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in sssd/sssd.conf pam.d/sssd-shadowutils logrotate.d/sssd ; do
 	test -f "%_sysconfdir/$i.rpmsave" && mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
@@ -554,7 +564,7 @@ touch /run/systemd/rpm/sssd-was-active
 fi
 
 %posttrans
-%if %{?_distconfdir:1}
+%if "%{?_distconfdir}" != ""
 # Migration to /usr/etc, restore just created .rpmsave
 for i in sssd/sssd.conf logrotate.d/sssd pam.d/sssd-shadowutils ; do
 	test -f "%_sysconfdir/$i.rpmsave" && mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i" || :
@@ -668,7 +678,7 @@ fi
 %attr(755,root,root) %dir %sssdstatedir/mc/
 %attr(700,root,root) %dir %sssdstatedir/keytabs/
 %attr(750,root,root) %dir %_localstatedir/log/%name/
-%if %{?_distconfdir:1}
+%if "%{?_distconfdir}" != ""
 %dir %_distconfdir/sssd/
 %%dir %_distconfdir/sssd/conf.d
 %config(noreplace) %_distconfdir/sssd/sssd.conf
@@ -822,7 +832,8 @@ fi
 %python3_sitelib/sssd/
 
 %files winbind-idmap
-%_libdir/samba/
+%dir %_libdir/samba/
+%_libdir/samba/idmap/
 %_mandir/man8/idmap_sss.8*
 
 %files -n libipa_hbac0

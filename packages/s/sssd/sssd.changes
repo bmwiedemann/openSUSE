@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  1 10:15:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update filelists involving memberof.so and idmap/sss.so to
+  avoid gobbling up one file into multiple sssd subpackages.
+  (Between samba-4.20 and 4.21, %ldbdir changes from
+  /usr/lib64/ldb2/modules/ldb to /usr/lib64/samba/ldb, so now
+  `%_libdir/samba` is a bit too broad.)
+
+-------------------------------------------------------------------
+Wed Jul 17 09:19:20 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix spec file for openSUSE ALP and SUSE SLFO, where the
+  python3_fix_shebang_path RPM macro is not available
+
+-------------------------------------------------------------------
 Thu Jul 11 09:41:21 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Revert the change dropping the default configuration file. If
