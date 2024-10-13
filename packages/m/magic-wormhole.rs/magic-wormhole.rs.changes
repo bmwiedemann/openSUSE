@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 12 12:59:41 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.7.2
+  Changed:
+  * breaking: Code words with a secret password section shorter
+    than 4 bytes are no longer accepted. This only breaks
+    completely invalid uses of the code.
+  * Code words with a weak password section or a non-integer
+    nameplate will throw an error in the long. This error can be
+    upgraded to a hard error by enabling the "entropy" feature.
+    This feature will become the default in the next major release.
+
+-------------------------------------------------------------------
 Fri Jul 26 18:53:50 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.7.1

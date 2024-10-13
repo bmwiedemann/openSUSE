@@ -19,7 +19,7 @@
 %define bin wormhole-rs
 
 Name:           magic-wormhole.rs
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Rust implementation of Magic Wormhole
 License:        EUPL-1.2
