@@ -18,7 +18,7 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0
@@ -58,9 +58,8 @@ Javadoc for package %{name}.
 find . -name "*.jar" | xargs rm
 
 %build
-export CLASSPATH=
 build-jar-repository -s lib commons-io commons-logging
-ant -Djavac.source=1.8 -Djavac.target=1.8 package javadocs
+ant -Ddev=true -Djavac.source=1.8 -Djavac.target=1.8 package javadocs
 
 %install
 # jar

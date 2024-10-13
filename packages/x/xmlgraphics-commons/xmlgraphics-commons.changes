@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:14:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.8
+  * Minor changes to support FOP 2.10 release
+  * Changes:
+    + XGC-133: Fix test for Java 11
+    + FOP-3127: Allow XMP at PDF page level
+    + FOP-3135: Allow source resolution configuration
+    + FOP-3144: Add new schema to handle pdf/a and pdfa/ua
+    + XGC-127: Set an automatic module name
+    + XGC-139: Switch to spotbugs
+    + XGC-141: Do not use a singleton for ImageImplRegistry
+
+-------------------------------------------------------------------
 Tue Feb 20 14:31:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -7,7 +21,17 @@ Tue Feb 20 14:31:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Wed Dec 28 12:37:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8:
-  * Minor changes to support FOP 2.8 release 
+  * Minor changes to support FOP 2.8 release
+  * Changes:
+    + XGC-128: Remove image transparency for PS
+    + FOP-3038: Allow sections which need security permissions
+      to be run when AllPermission denied in caller code
+    + FOP-3032: Embed pdf into afp using unique type
+    + FOP-3051: Upgrade to Commons IO 2.11
+    + FOP-3055: Use a event for a draw image error
+    + FOP-3091: Add transparency color support for PS
+    + XGC-130: Allow subproperties in XMP
+    + XGC-132: Fallback to raw png if ImageIO cannot read image
 
 -------------------------------------------------------------------
 Fri Mar 18 17:52:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
@@ -71,7 +95,7 @@ Fri Dec 22 13:37:24 UTC 2017 - fstrba@suse.com
 -------------------------------------------------------------------
 Fri Sep 29 08:43:00 UTC 2017 - fstrba@suse.com
 
-- Don't condition the maven defines on release version, but on 
+- Don't condition the maven defines on release version, but on
   _maven_repository being defined
 
 -------------------------------------------------------------------
@@ -82,7 +106,7 @@ Tue Sep 19 07:32:15 UTC 2017 - fstrba@suse.com
 -------------------------------------------------------------------
 Fri May 19 11:03:58 UTC 2017 - vsistek@suse.com
 
-- Add BuildRequires: javapackages-local (for maven conversions) 
+- Add BuildRequires: javapackages-local (for maven conversions)
 
 -------------------------------------------------------------------
 Mon Mar 20 15:20:21 UTC 2017 - sknorr@suse.com
@@ -132,12 +156,12 @@ Fri Sep  6 07:55:29 UTC 2013 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Wed Jan 23 09:27:51 UTC 2013 - mvyskocil@suse.com
 
-- fix javadoc installation 
+- fix javadoc installation
 
 -------------------------------------------------------------------
 Wed Oct 31 08:28:00 UTC 2012 - mvyskocil@suse.com
 
-- remove the symlink madness - jar and javadoc are not versioned anymore 
+- remove the symlink madness - jar and javadoc are not versioned anymore
 
 -------------------------------------------------------------------
 Wed Oct 24 10:13:01 UTC 2012 - mvyskocil@suse.com
@@ -153,8 +177,8 @@ Wed Oct 24 10:13:01 UTC 2012 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Mon Jun 18 13:46:01 UTC 2012 - mvyskocil@suse.cz
 
-- fix jdk7 build (Fedora patch) 
-
+- fix jdk7 build (Fedora patch)
+t
 -------------------------------------------------------------------
 Wed Nov  3 13:47:59 UTC 2010 - mvyskocil@suse.cz
 

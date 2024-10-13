@@ -252,4 +252,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148102</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7fbf2e477bd4d347974392bb9b25c4ef</srcmd5>
+    <version>2.10</version>
+    <time>1728833595</time>
+    <user>dimstar_suse</user>
+    <comment>2.10 needed by bsc#1231428, CVE-2024-28168</comment>
+    <requestid>1207475</requestid>
+  </revision>
 </revisionlist>
