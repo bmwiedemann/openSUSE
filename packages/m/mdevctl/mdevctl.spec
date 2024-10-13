@@ -22,13 +22,11 @@ Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/mdevctl/mdevctl
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.zst
-Source2:        cargo_config
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  python3-docutils
-BuildRequires:  rust
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(udev)
 
 %description
@@ -38,28 +36,17 @@ device (e.g. a vGPU) which can be dynamically created and potentially used by
 drivers like vfio-mdev for assignment to virtual machines.
 
 %prep
-%autosetup -p1
-%setup -q -D -T -a 1
-mkdir -p cargo-home
-cat >cargo-home/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%autosetup -a1 -p1
 
 %build
-export CARGO_HOME=$PWD/cargo-home
-cargo build --release %{?_smp_mflags}
+%{cargo_build}
 
 %install
-%make_install
+%{make_install}
 
 %check
 export MDEVCTL_LOG=debug RUST_BACKTRACE=full
-export CARGO_HOME=$PWD/cargo-home
-cargo test
+%{cargo_test}
 
 %files
 %license COPYING

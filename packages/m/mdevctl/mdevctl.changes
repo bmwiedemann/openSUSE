@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  8 14:13:37 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Spec: Update to use latest rust packaging tooling. Switch to obs_scm
+    service, remove cargo_audit service and cargo_config as it's now 
+    handled by the cargo_vendor service. Cleanup spec file to use 
+    cargo-packaging tooling where applicable.
+
+-------------------------------------------------------------------
 Mon Feb 12 17:54:05 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Add /usr/lib/mdevctl/scripts.d/{callouts,notifiers} directories
