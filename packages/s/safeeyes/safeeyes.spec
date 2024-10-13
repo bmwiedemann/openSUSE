@@ -27,10 +27,18 @@ Group:          Productivity/Graphics/Visualization/Other
 URL:            https://github.com/slgobinath/SafeEyes
 Source0:        %{name}-%{version}.tar.xz
 Source99:       safeeyes-rpmlintrc
+%if 0%{?suse_version} == 1500
+#PATCH-FIX-OPENSUSE SafeEyes-Python3.6-support.patch opensuse.lietuviu.kalba@gmail.com -- SafeEyes needs Python 3.10+, fix to use in Python 3.6
+Patch0:         SafeEyes-Python3.6-compatibility.patch
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Babel
-BuildRequires:  python3-devel
+%if 0%{?suse_version} == 1500
+BuildRequires:  python3-devel >= 3.6
+%else
+BuildRequires:  python3-devel >= 3.10
+%endif
 BuildRequires:  python3-psutil
 BuildRequires:  python3-python-xlib
 BuildRequires:  python3-setuptools
@@ -40,6 +48,7 @@ Requires:       python3-Babel
 Requires:       python3-cairo >= 1.11.1
 Requires:       python3-croniter
 Requires:       python3-gobject
+Requires:       python3-packaging
 Requires:       python3-psutil
 Requires:       python3-python-xlib
 Requires:       typelib(AppIndicator3)
@@ -61,6 +70,9 @@ find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python3][#\
 find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python][#\!%{_bindir}/python3]' {} \;
 # SmartPause: Increase default idle time to pause SafeEyes
 sed 's/"default": 5,/"default": 60,/' -i safeeyes/plugins/smartpause/config.json
+%if 0%{?suse_version} == 1500
+%autopatch -p1
+%endif
 
 %build
 python3 setup.py build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 13 06:23:13 UTC 2024 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Add SafeEyes-Python3.6-compatibility.patch fix to use in Python 3.6
+  for openSUSE Leap 15.*, because SafeEyes itself needs Python 3.10+.
+- Add missed python3-packaging dependency, see bsc#1227743 and 
+  gh#slgobinath/SafeEyes#467
+
+-------------------------------------------------------------------
 Wed Aug  7 05:35:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.2:
