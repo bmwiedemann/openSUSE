@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Thu Oct  3 13:18:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
-
-- Adapt the scripts to run also with javapackages-tools >= 6.3
-
--------------------------------------------------------------------
 Wed Sep 27 12:20:49 UTC 2023 - Gus Kenion <gkenion@suse.com>
 
 - Remove nonfree code from javadoc.

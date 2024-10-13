@@ -3,9 +3,6 @@
 # saxon10 script
 # JPackage Project <http://www.jpackage.org/>
 
-# Set default JAVA_HOME
-export JAVA_HOME="${JAVA_HOME:-%{?java_home}}"
-
 . /usr/share/java-utils/java-functions
 
 MAIN_CLASS=net.sf.saxon.Transform

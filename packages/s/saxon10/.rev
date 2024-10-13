@@ -23,4 +23,12 @@
     <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
     <requestid>1205529</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1ef9a9bf42cc02723d8c88fba8f1f103</srcmd5>
+    <version>10.9</version>
+    <time>1728833590</time>
+    <user>dimstar_suse</user>
+    <comment>revert a fix that was not one</comment>
+    <requestid>1207398</requestid>
+  </revision>
 </revisionlist>
