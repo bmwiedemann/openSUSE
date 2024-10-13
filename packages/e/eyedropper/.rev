@@ -21,4 +21,19 @@
 </comment>
     <requestid>1119181</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9af0e7d1b1235b0414aea9813c4a020e</srcmd5>
+    <version>2.0.1</version>
+    <time>1728833670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1
+  * A new color editor allows modifying the picked color
+  * The color system has been completely rewritten, now using the
+    palette library for more accurate color conversions.
+  * If the system does not allow color picking, a warning page is
+    now displayed.
+- Add meson_test and cleanup spec
+</comment>
+    <requestid>1207573</requestid>
+  </revision>
 </revisionlist>

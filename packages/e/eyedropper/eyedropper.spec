@@ -1,6 +1,7 @@
 #
 # spec file for package eyedropper
 #
+# Copyright (c) 2024 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,29 +18,28 @@
 
 
 %define lname   com.github.finefindus.eyedropper
-%define _ver    v1.0.0
 %bcond_with     warp
 %define sname   blueprint-compiler
 %define sver    0.8.1
 Name:           eyedropper
-Version:        1.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Pick and format colors
 License:        GPL-3.0-or-later
 URL:            https://github.com/FineFindus/eyedropper
-Source0:        %{url}/releases/download/%{_ver}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 %if %{with warp}
-BuildRequires:  blueprint-compiler
-%else
 Source1:        https://gitlab.gnome.org/jwestman/%{sname}/-/archive/v%{sver}/%{sname}-v%{sver}.tar.bz2
 BuildRequires:  python3-gobject
 Provides:       bundled(blueprint-compiler)
+%else
+BuildRequires:  blueprint-compiler
 %endif
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) 
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  desktop-file-utils
 
 %description
@@ -56,10 +56,8 @@ Features:
 %lang_package
 
 %prep
+%autosetup -p1
 %if %{with warp}
-%autosetup
-%else
-%setup -q
 mkdir subprojects/%{sname}
 tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 %endif
@@ -70,8 +68,10 @@ tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 
 %install
 %meson_install
-
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license LICENSE
@@ -90,4 +90,3 @@ tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 %files lang -f %{name}.lang
 
 %changelog
-
