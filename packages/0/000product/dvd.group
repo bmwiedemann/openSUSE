@@ -2686,7 +2686,6 @@
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby3_3-3_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="libsamba-policy0-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsamplerate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsane1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

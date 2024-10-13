@@ -16091,9 +16091,6 @@ unsorted:
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
-  - libsamba-policy-devel 
-  - libsamba-policy-python3-devel 
-  - libsamba-policy0-python3-32bit 
   - libsaml-devel 
   - libsaml12 
   - libsamplerate-devel 
@@ -23960,7 +23957,6 @@ unsorted:
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit 
-  - python3-ldb-devel 
   - python3-ldns 
   - python3-lensfun 
   - python3-libblockdev 
@@ -27765,6 +27761,7 @@ unsorted:
   - python310-y-py 
   - python310-yacron 
   - python310-yamale 
+  - python310-yamlcore 
   - python310-yamldoc 
   - python310-yamllint 
   - python310-yamlloader 
@@ -31326,6 +31323,7 @@ unsorted:
   - python311-y-py 
   - python311-yacron 
   - python311-yamale 
+  - python311-yamlcore 
   - python311-yamldoc 
   - python311-yamllint 
   - python311-yamlloader 
@@ -35003,6 +35001,7 @@ unsorted:
   - python312-y-py 
   - python312-yacron 
   - python312-yamale 
+  - python312-yamlcore 
   - python312-yamldoc 
   - python312-yamllint 
   - python312-yamlloader 
