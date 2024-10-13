@@ -18,7 +18,7 @@
 
 
 Name:           wayland-protocols
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        Wayland protocols that add functionality not available in the core protocol
 License:        MIT
@@ -84,5 +84,6 @@ export CXX=gcc-11
 %license COPYING
 %{_datadir}/pkgconfig/%{name}.pc
 %{_datadir}/%{name}/
+%{_includedir}/%{name}/
 
 %changelog
