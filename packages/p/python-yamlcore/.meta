@@ -1,0 +1,8 @@
+<package name="python-yamlcore" project="openSUSE:Factory">
+  <title>YAML 1.2 Support for PyYAML</title>
+  <description>This module can be used on top of PyYAML to load YAML 1.2 files. It depends on PyYAML and inherits from it, it's not a fork.
+
+Currently it supports enabling all YAML 1.2 Core Schema tags on top of the PyYAML BaseLoader. It does not (yet) support other tags like the &lt;&lt; merge key. You can add custom constructors, though.</description>
+  <devel project="devel:languages:python" package="python-yamlcore"/>
+  <url>https://pypi.org/project/yamlcore/</url>
+</package>

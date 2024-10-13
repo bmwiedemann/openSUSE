@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Oct 12 18:31:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix Source URL
+  (https://discuss.python.org/t/stable-pypi-url-or-where-in-the-world-is-yamlcore/67582
+   and
+   https://warehouse.pypa.io/api-reference/integration-guide.html#querying-pypi-for-package-urls).
+
+-------------------------------------------------------------------
+Wed Oct  9 19:21:20 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Update to 0.0.4
+  - Fix metadata (adding all test data and Changelog to the build)
+
+-------------------------------------------------------------------
+Sat Oct  5 23:13:31 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Update to 0.0.3
+  - Possibly breaking change: Forbid duplicate keys
+  - Add PyYAML dependency to meta data
+
+- Update to 0.0.2
+  - Move loader and dumper classes to __init__.py
+  - Add Changelog
