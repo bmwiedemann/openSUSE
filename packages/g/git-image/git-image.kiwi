@@ -14,7 +14,7 @@ https://github.com/SUSE/BCI-dockerfile-generator
 Please submit bugfixes or comments via https://bugs.opensuse.org/
 You can contact the BCI team via https://github.com/SUSE/bci/discussions
 -->
-<!-- OBS-AddTag: opensuse/git:%%git_minor_version%% opensuse/git:%%git_minor_version%%-%RELEASE% opensuse/git:%%git_major_version%% opensuse/git:%%git_version%% opensuse/git:latest -->
+<!-- OBS-AddTag: opensuse/git:%%git_minor_version%%-%RELEASE% opensuse/git:%%git_minor_version%% opensuse/git:%%git_major_version%% opensuse/git:%%git_version%% opensuse/git:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
 <image schemaversion="7.4" name="git-image" xmlns:suse_label_helper="com.suse.label_helper">
@@ -27,8 +27,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <type image="docker" derived_from="obsrepositories:/opensuse/bci/bci-micro#latest">
       <containerconfig
           name="opensuse/git"
-          tag="%%git_minor_version%%"
-          additionaltags="%%git_minor_version%%-%RELEASE%,%%git_major_version%%,%%git_version%%,latest">
+          tag="%%git_minor_version%%-%RELEASE%"
+          additionaltags="%%git_minor_version%%,%%git_major_version%%,%%git_version%%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.git">
             <label name="org.opencontainers.image.authors" value="openSUSE (https://www.opensuse.org/)"/>
