@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:12:52 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- make the tag with -%RELEASE% the first tag listed
+
+-------------------------------------------------------------------
 Sat Sep 28 08:15:08 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - fix registry references in READMEs
