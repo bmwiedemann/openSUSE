@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns-for-k8s1.30
-Version:        1.11.1
+Version:        1.11.3
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 Conflicts:      coredns
 Provides:       coredns-for-k8s = %{version}
 Conflicts:      coredns-for-k8s

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 13 18:16:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * This release fixes some compiler warnings and includes other
+    minor code cleanups.
+
+-------------------------------------------------------------------
 Mon Jul 11 12:18:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6

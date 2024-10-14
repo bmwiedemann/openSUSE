@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-mach64
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-video-mach64
-Version:        6.9.7
+Version:        6.10.0
 Release:        0
 Summary:        ATI Mach64 series video driver for the Xorg X server
 License:        MIT

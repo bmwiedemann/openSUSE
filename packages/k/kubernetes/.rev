@@ -972,4 +972,21 @@
 * CoreDNS (corednsversionminus2) - 1.11.1</comment>
     <requestid>1194876</requestid>
   </revision>
+  <revision rev="106" vrev="46">
+    <srcmd5>cea4a48a6b4afc35337a8f0bc88e113c</srcmd5>
+    <version>unknown</version>
+    <time>1728904064</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump meta package versions:
+* kubernetes (version) - 1.31.1
+* kubernetes (versionminus1) - 1.30.5
+* kubernetes (versionminus2) - 1.29.9
+* kubernetes (versionminus3) - 1.28.14
+* Etcd (etcdversionminus1) - 3.5.15
+* Etcd (etcdversionminus2) - 3.5.15
+* Etcd (etcdversionminus3) - 3.5.15
+* CoreDNS (corednsversion) - 1.11.3
+* CoreDNS (corednsversionminus1) - 1.11.3</comment>
+    <requestid>1207832</requestid>
+  </revision>
 </revisionlist>

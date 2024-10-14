@@ -24,4 +24,13 @@ https://github.com/kubernetes/kubernetes/blob/v1.28.2/build/dependencies.yaml#L6
     <comment></comment>
     <requestid>1166179</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f435adac74f0593ffbd01eb080951b49</srcmd5>
+    <version>3.5.15</version>
+    <time>1728904068</time>
+    <user>dimstar_suse</user>
+    <comment>etcd update - version 3.5.15
+wrt kubernetes 1.28.14 - https://github.com/kubernetes/kubernetes/blob/v1.28.14/build/dependencies.yaml#L65</comment>
+    <requestid>1207835</requestid>
+  </revision>
 </revisionlist>

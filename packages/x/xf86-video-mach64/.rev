@@ -155,4 +155,17 @@ Fixes a crash in the mach64 driver (bnc#865607)
 - supersedes u_xorg-server-21.1.patch</comment>
     <requestid>988396</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5d1d8ff1b5eb7d187231e376e8b13a7b</srcmd5>
+    <version>6.10.0</version>
+    <time>1728904035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.10.0
+  * This release raises the minimum supported version of the Xorg
+    server from 1.4 (released in 2007) to 1.18 (released in 2015).
+    This includes the removal of the XAA code, which cannot be
+    compiled for any Xserver newer than the 1.12 series, as it was
+    removed in the Xorg 1.13 release.</comment>
+    <requestid>1207651</requestid>
+  </revision>
 </revisionlist>

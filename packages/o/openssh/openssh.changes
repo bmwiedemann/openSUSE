@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 11 09:28:30 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a patch to fix a regression introduced in 9.6 that makes X11
+  forwarding very slow. Submitted to upstream in
+  https://bugzilla.mindrot.org/show_bug.cgi?id=3655#c4 . Fixes
+  bsc#1229449:
+  * fix-x11-regression-bsc1229449.patch
+- Remove empty line at the end of sshd-sle.pamd (bsc#1227456)
+
+-------------------------------------------------------------------
 Wed Sep 25 10:45:17 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a const to the openssl 1.1/RSA section of sshkey_is_private

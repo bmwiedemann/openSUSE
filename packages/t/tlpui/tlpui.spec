@@ -18,15 +18,13 @@
 
 %define pythons python3
 Name:           tlpui
-Version:        1.6.5
+Version:        1.7.1
 Release:        0
 Summary:        A GTK user interface for TLP
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
 URL:            https://github.com/d4nj1/TLPUI
 Source0:        %{url}/archive/refs/tags/%{name}-%{version}.tar.gz
-Source2:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM tlpui-application-name-fix.patch gh#d4nj1/TLPUI#149 badshah400@gmail.com -- Align application name with .desktop filename for correct icons in desktop overviews
-Patch0:         tlpui-application-name-fix.patch
+Source1:        %{name}.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  polkit

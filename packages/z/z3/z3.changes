@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 12 15:35:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 4.13.3:
+  * Fixes, including #7363
+  * Fix paths to Java binaries in release
+  * Remove internal build names from pypi wheels
+  * Performance regression fix. #7404
+  * single-sample cell projection in nlsat 
+  * using simple-checker together with and variable ordering 
+    The projection is described in paper by Haokun Li and Bican Xia, 
+    Solving Satisfiability of Polynomial Formulas By Sample - Cell Projection. 
+    The code ported from https://github.com/hybridSMT/hybridSMT.git
+  * Add API for providing hints for the solver/optimize contexts for which 
+    initial values to attempt to use for variables. The new API function are 
+    Z3_solver_set_initial_value and Z3_optimize_set_initial_value, respectively. 
+
+-------------------------------------------------------------------
 Fri Apr 12 19:53:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - includes changes from 4.13.0:

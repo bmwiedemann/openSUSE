@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 05:25:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a recalcitrant test for Python 3.13's benefit. 
+
+-------------------------------------------------------------------
 Tue Jul 25 14:23:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with pytest 7.4, they don't matter

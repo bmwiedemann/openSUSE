@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns-for-k8s1.31
-Version:        1.11.1
+Version:        1.11.3
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  4 16:04:56 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update audit.spec: add requirement for 'awk' package (bsc#1231236)
+
+-------------------------------------------------------------------
 Tue Sep 17 18:20:58 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update to 4.0

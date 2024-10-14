@@ -87,4 +87,22 @@
   * Use _CONST_X_STRING to make libXt declare String as const char *</comment>
     <requestid>988772</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41d0b7ff21c458830c37abfa95e7a3a0</srcmd5>
+    <version>1.0.8</version>
+    <time>1728904033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Clear 9 -Wuseless-cast warnings
+  * Fix -Wshadow warning for Display argument to Error()
+  * Fix -Wself-assign warning from clang 13
+  * Fix -Wmissing-variable-declarations warning from clang 13
+  * usage: add noreturn attribute
+  * Quiet 64 -Wunused-parameter warnings from clang 13
+  * Use double for all floating point numbers, not a mix of double and float</comment>
+    <requestid>1207648</requestid>
+  </revision>
 </revisionlist>

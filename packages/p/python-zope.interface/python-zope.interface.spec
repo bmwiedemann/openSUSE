@@ -24,24 +24,24 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global modname zope.interface
+%global modname zope_interface
 %{?sle15_python_module_pythons}
 Name:           python-zope.interface%{psuffix}
-Version:        7.0.3
+Version:        7.1.0
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.interface
-Source:         https://files.pythonhosted.org/packages/source/z/zope.interface/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/%{modname}/%{modname}-%{version}.tar.gz
 # needed for tests that try to compile things
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module zope.event}
-BuildRequires:  %{python_module zope.interface}
+BuildRequires:  %{python_module zope.interface = %{version}}
 BuildRequires:  %{python_module zope.testing}
 %endif
 # /SECTION
@@ -60,7 +60,7 @@ API or contract. So, this package can be considered as implementation of
 the Design By Contract methodology support in Python.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %if !%{with test}
@@ -84,7 +84,7 @@ cd src
 %files %{python_files}
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
-%{python_sitearch}/zope.interface-%{version}*-info
+%{python_sitearch}/zope.interface-%{version}.dist-info
 %{python_sitearch}/zope.interface-%{version}*-nspkg.pth
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/interface

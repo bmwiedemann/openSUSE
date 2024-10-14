@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 13 18:08:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.5:
+  * Enable pc file dependencies
+  * generateRuntimePkgConfigDeps: only do so for public .pc, not
+    vendored
+  * Improve some config parsing errors
+
+-------------------------------------------------------------------
 Fri Oct 11 09:25:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.4:

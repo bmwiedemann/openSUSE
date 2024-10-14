@@ -41,4 +41,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.30.0</comment>
     <comment>Monthly Patch Release – August, 2024: Update to version 1.30.4</comment>
     <requestid>1194864</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>13bc6b617b452d015c5240d07bd742c4</srcmd5>
+    <version>1.30.5</version>
+    <time>1728904058</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – Sept, 2024: Update to version 1.30.5</comment>
+    <requestid>1207828</requestid>
+  </revision>
 </revisionlist>

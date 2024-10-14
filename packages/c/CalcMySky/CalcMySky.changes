@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 14 07:00:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.3:
+  * Visual artifacts during solar eclipses where solar and lunar radii are nearly equal,
+  * Wrong sampling points when computing eclipse double scattering,
+  * SIGPIPE from broken X11 ICE connection that sometimes happened during calcmysky execution,
+  * Off-by-one mistake in calculation of light pollution texture coordinates,
+
+-------------------------------------------------------------------
 Mon Jun 17 08:45:09 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.2:

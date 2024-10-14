@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 14 03:37:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.0:
+  * Declare support for Python 3.13.
+  * Fix segmentation faults on Python 3.13. (#323)
+- Drop patch fix-testsuite-segfault.patch, included upstream.
+- Switch to autosetup macros.
+
+-------------------------------------------------------------------
+Wed Sep 25 13:39:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix testsuite segfault with Python 3.13
+  * fix-testsuite-segfault.patch
+
+-------------------------------------------------------------------
 Sun Sep  8 13:11:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.3:

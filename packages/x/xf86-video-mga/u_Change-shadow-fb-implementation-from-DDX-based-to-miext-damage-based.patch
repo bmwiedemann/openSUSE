@@ -17,11 +17,11 @@ Signed-off-by: Egbert Eich <eich@freedesktop.org>
  src/mga_shadow.c | 266 +++++++++++--------------------------------------------
  3 files changed, 94 insertions(+), 254 deletions(-)
 
-Index: xf86-video-mga-2.0.0/src/mga.h
+Index: xf86-video-mga-2.1.0/src/mga.h
 ===================================================================
---- xf86-video-mga-2.0.0.orig/src/mga.h
-+++ xf86-video-mga-2.0.0/src/mga.h
-@@ -539,7 +539,6 @@ typedef struct {
+--- xf86-video-mga-2.1.0.orig/src/mga.h
++++ xf86-video-mga-2.1.0/src/mga.h
+@@ -536,7 +536,6 @@ typedef struct {
      Bool		ShowCache;
      Bool		ShadowFB;
      unsigned char *	ShadowPtr;
@@ -29,7 +29,7 @@ Index: xf86-video-mga-2.0.0/src/mga.h
      int			MemClk;
      int			MinClock;
      int			MaxClock;
-@@ -576,6 +575,8 @@ typedef struct {
+@@ -570,6 +569,8 @@ typedef struct {
      void		(*PointerMoved)(SCRN_ARG_TYPE arg, int x, int y);
      CloseScreenProcPtr	CloseScreen;
      ScreenBlockHandlerProcPtr BlockHandler;
@@ -38,7 +38,7 @@ Index: xf86-video-mga-2.0.0/src/mga.h
      unsigned int	(*ddc1Read)(ScrnInfoPtr);
      void (*DDC1SetSpeed)(ScrnInfoPtr, xf86ddcSpeed);
      Bool		(*i2cInit)(ScrnInfoPtr);
-@@ -743,19 +744,14 @@ void MGAPolyArcThinSolid(DrawablePtr, GC
+@@ -731,19 +732,14 @@ Bool MGAHWCursorInit(ScreenPtr pScreen);
  
  Bool MGADGAInit(ScreenPtr pScreen);
  
@@ -60,12 +60,12 @@ Index: xf86-video-mga-2.0.0/src/mga.h
  
  void MGAInitVideo(ScreenPtr pScreen);
  void MGAResetVideo(ScrnInfoPtr pScrn);
-Index: xf86-video-mga-2.0.0/src/mga_driver.c
+Index: xf86-video-mga-2.1.0/src/mga_driver.c
 ===================================================================
---- xf86-video-mga-2.0.0.orig/src/mga_driver.c
-+++ xf86-video-mga-2.0.0/src/mga_driver.c
-@@ -92,7 +92,7 @@
- #endif
+--- xf86-video-mga-2.1.0.orig/src/mga_driver.c
++++ xf86-video-mga-2.1.0/src/mga_driver.c
+@@ -81,7 +81,7 @@
+ #include "mga_maven.h"
  
  #include "xf86cmap.h"
 -#include "shadowfb.h"
@@ -73,7 +73,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
  #include "fbdevhw.h"
  
  #ifdef MGADRI
-@@ -2046,7 +2046,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+@@ -2033,7 +2033,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
                  pMga->ShadowFB = TRUE;
                  pMga->NoAccel = TRUE;
                  pMga->HWCursor = FALSE;
@@ -82,7 +82,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
                  xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
                          "Rotating screen clockwise - acceleration disabled\n");
              } else
-@@ -2054,10 +2054,17 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+@@ -2041,10 +2041,17 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
                  pMga->ShadowFB = TRUE;
                  pMga->NoAccel = TRUE;
                  pMga->HWCursor = FALSE;
@@ -102,7 +102,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
                  xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
                          "\"%s\" is not a valid value for Option \"Rotate\"\n", s);
                  xf86DrvMsg(pScrn->scrnIndex, X_INFO,
-@@ -2078,6 +2085,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+@@ -2065,6 +2072,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
  		           "Falling back to shadowfb\n");
  		pMga->ShadowFB = TRUE;
  		pMga->NoAccel = TRUE;
@@ -110,15 +110,15 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
  	    }
  	} else {
  #endif
-@@ -2087,6 +2095,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
- 		           "Falling back to shadowfb\n");
- 		pMga->ShadowFB = TRUE;
- 		pMga->NoAccel = TRUE;
-+                pMga->HWCursor = FALSE;
- 	    }
- #endif
+@@ -2072,6 +2080,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+ 		       "Falling back to shadowfb\n");
+ 	    pMga->ShadowFB = TRUE;
+ 	    pMga->NoAccel = TRUE;
++	    pMga->HWCursor = FALSE;
  #ifdef USE_EXA
-@@ -2605,7 +2614,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
+ 	}
+ #endif
+@@ -2588,7 +2597,7 @@ MGAPreInit(ScrnInfoPtr pScrn, int flags)
  
      /* Load shadowfb if needed */
      if (pMga->ShadowFB) {
@@ -127,7 +127,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
  	    MGAFreeRec(pScrn);
  	    return FALSE;
  	}
-@@ -3159,7 +3168,6 @@ MGACrtc2FillStrip(ScrnInfoPtr pScrn)
+@@ -3135,7 +3144,6 @@ MGACrtc2FillStrip(ScrnInfoPtr pScrn)
      }
  }
  
@@ -135,7 +135,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
  /* Mandatory */
  
  /* This gets called at the start of each server generation */
-@@ -3339,9 +3347,8 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+@@ -3315,9 +3323,8 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
      }
  
      if(pMga->ShadowFB) {
@@ -147,7 +147,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
          FBStart = pMga->ShadowPtr;
      } else {
  	pMga->ShadowPtr = NULL;
-@@ -3380,7 +3387,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+@@ -3356,7 +3363,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
  	  "Static buffer allocation failed, not initializing the DRI\n");
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
  	  "Need at least %d kB video memory at this resolution, bit depth\n",
@@ -156,7 +156,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
         pMga->directRenderingEnabled = FALSE;
      }
      else {
-@@ -3390,7 +3397,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+@@ -3366,7 +3373,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
  
  
      if (!fbScreenInit(pScreen, FBStart, width, height, pScrn->xDpi,
@@ -165,7 +165,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
  	return FALSE;
      }
  
-@@ -3413,6 +3420,20 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+@@ -3389,6 +3396,20 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
      /* must be after RGB ordering fixed */
      fbPictureInit (pScreen, 0, 0);
  
@@ -186,7 +186,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
      xf86SetBlackWhitePixels(pScreen);
  
      pMga->BlockHandler = pScreen->BlockHandler;
-@@ -3469,26 +3490,6 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+@@ -3445,26 +3466,6 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
  	NULL, f))
  	return FALSE;
  
@@ -213,7 +213,7 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
      xf86DPMSInit(pScreen, mga_dpms_set_proc, 0);
  
      pScrn->memPhysBase = pMga->FbAddress;
-@@ -3812,7 +3813,11 @@ MGACloseScreen(CLOSE_SCREEN_ARGS_DECL)
+@@ -3784,7 +3785,11 @@ MGACloseScreen(CLOSE_SCREEN_ARGS_DECL)
  #endif
      if (pMga->CursorInfoRec)
      	xf86DestroyCursorInfoRec(pMga->CursorInfoRec);
@@ -226,15 +226,15 @@ Index: xf86-video-mga-2.0.0/src/mga_driver.c
      free(pMga->DGAModes);
      free(pMga->adaptor);
      free(pMga->portPrivate);
-@@ -4220,3 +4225,4 @@ MGAG100BlackMagic(ScrnInfoPtr pScrn)
+@@ -4169,3 +4174,4 @@ MGAG100BlackMagic(ScrnInfoPtr pScrn)
      OUTREG(MGAREG_MACCESS, 1<<15);
      usleep(10);
  }
 +
-Index: xf86-video-mga-2.0.0/src/mga_shadow.c
+Index: xf86-video-mga-2.1.0/src/mga_shadow.c
 ===================================================================
---- xf86-video-mga-2.0.0.orig/src/mga_shadow.c
-+++ xf86-video-mga-2.0.0/src/mga_shadow.c
+--- xf86-video-mga-2.1.0.orig/src/mga_shadow.c
++++ xf86-video-mga-2.1.0/src/mga_shadow.c
 @@ -9,244 +9,82 @@
  
  #include "xf86.h"

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 13 19:15:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.5.1
+  * gitlab CI: add xz-utils to container for "make distcheck"
+  * gitlab CI: collect config.log to help diagnose failures
+  * gitlab CI: add libc-dev to required packages in build container
+  * LocalInitTransports: Fix -Wuseless-cast warning for getenv() call
+  * SocketCreateListener: Fix -Wuseless-cast warning in bind() call
+  * Clear numerous -Wsign-compare warnings from gcc 14.1
+  * SocketINETConnect: return failure when malloc() fails
+  * ParseAddress: return failure when strdup() fails
+  * MakeAllCOTSServerListeners: Initialize temp_ciptrs
+  * GetMyNetworkId: Avoid writing to NULL pointer if malloc() fails
+  * GetPeerNetworkId: Avoid writing to NULL pointer if malloc() fails
+  * GetPeerNetworkId: avoid calling strlen() on a NULL pointer
+  * SocketOpen: avoid leak of out-of-range fd
+  * is_numeric: Add TRANS_SERVER to required ifdefs
+  * update .gitignore
+  * TRANS(ParseAddress): Fix "assignment discards ‘const’ qualifier" warnings
+  * TRANS(GetHostname): Fix "‘strncpy’ output truncated.." warning
+  * Fix string length check
+
+-------------------------------------------------------------------
 Mon Feb 26 12:17:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

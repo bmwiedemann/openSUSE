@@ -467,4 +467,12 @@
 - Drop CVE-2020-29651.patch, issue fixed upstream in 1.10.0</comment>
     <requestid>1109354</requestid>
   </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>384e300710180e51041264955095674e</srcmd5>
+    <version>1.11.0</version>
+    <time>1728903988</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a recalcitrant test for Python 3.13's benefit.</comment>
+    <requestid>1207774</requestid>
+  </revision>
 </revisionlist>

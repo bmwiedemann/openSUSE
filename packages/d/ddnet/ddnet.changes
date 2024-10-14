@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Oct  7 19:37:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.6:
+    * [Client] Smooth spectating
+    * [Client] Mouse click in spectator mode to lock/release view
+    * [Client] Add auto-completion hint for chat commands
+    * [Client] Add cl_freeze_stars setting (F1) for old freeze
+      stars
+    * [Editor] Add quick actions (ctrl+p)
+    * [Client] Show skin name as tooltip in friendlist and
+      serverinfo
+    * [Client] Put dead players at the bottom of scoreboard
+    * [Client] Add ghost list sorting
+    * [Client] Android improvements
+    * [Client] Skin save button and directory for Teeworlds 0.7
+    * [Client] Correctly handle country/type filters for
+      non-community servers
+    * [Client] Validate chat and console arguments
+    * [Client] Fix game launch on Wayland-only systems
+    * [Client] Resample audio to device playback rate
+    * [Client] Immediate browser filters
+    * [Client] Fix default player name for Teeworlds 0.7
+    * [Client] Don't open scoreboard during pause
+    * [Client] Vertical arrow key navigation in skin selection
+    * [Client] Rework 0.7 tee settings layout
+    * [Client] Fix dummy disconnecting on hot reload
+    * [Client] Fix map download fallback
+    * [Client] Add icon button to open console in bottom right of
+      start menu
+    * [Client] Fix illegal memory access in video recorder
+    * [Client] Fix directory in map paths
+    * [Client] Fix scrollbar rail clicking being active while
+      popups open
+    * [Client] Fix colored speed values after connecting to
+      a server
+    * [Client] Fix composite binds that open chat, console
+      or menus
+    * [Client] Fix name in chat not being highlighted
+    * [Client] Rework image loading, saving and manipulation
+    * [Client] Fix duplicate 0.7 flag sound with dummy connected
+    * [Client] Fix 0.7 team colors
+    * [Client] Change 'No servers found' message to hint at ports
+    * [Client] More gametype colors (LMS, LTS, gCTF, gDM, FreeZe,
+      iFreeze)
+    * [Client] Fix Leak IP check
+    * [Client] Make cl_show_direction change alpha with
+      cl_show_others_alpha
+    * [Client] Don't reset zoom on team switch
+    * [Editor] Allow custom entities
+    * [Editor] Add ed_layer_selector
+    * [Editor] Add center pivot for quads
+    * [Editor] Add ed_auto_map_reload setting
+    * [Editor] Add right-click to solo editor layer
+    * [Editor] Fix crash with RGB images
+    * [Editor] Fix undo/redo for adding layers
+    * [Editor] Allow non-conflicting keybinds while line input
+      is active
+    * [Editor] Fix crash with image/sound load failing
+    * [Server] Improvements to announcements (reload_announcement)
+    * [Server] Add reload_censorlist command
+    * [Server] Send result of random_unfinished_map to all clients
+    * [Server] Allow random_unfinished_map in rcon
+    * [Server] Add /lasttp to hot reload
+    * [Server] Fix hot reload crash with super
+    * [Server] Don't expose econ publicly when ec_bindaddr is set
+      to localhost
+    * [Server] Fix hot reload crash with draggers
+    * [Server] Alignment of separators in record output
+    * [Server] Fix sv_rescue_delay 
+    * [Tooling] Fix language contexts
+
+-------------------------------------------------------------------
 Mon Sep 16 18:00:54 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.5.1:

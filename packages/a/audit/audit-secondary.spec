@@ -83,6 +83,7 @@ Linux kernel.
 %package -n	audit-rules
 Summary:        Rules and utilities for audit
 License:        LGPL-2.1-or-later
+Requires:       gawk
 Recommends:     audit = %{version}-%{release}
 
 %description -n audit-rules
@@ -183,7 +184,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 mkdir -p %{buildroot}%{_sysconfdir}/%{_name}/
 mkdir -p %{buildroot}%{_sysconfdir}/%{_name}/rules.d/
 mkdir -p %{buildroot}%{_datadir}/%{_name}-rules
-touch %{buildroot}%{_sysconfdir}/{auditd.conf,audit.rules} %{buildroot}%{_sysconfdir}/audit/auditd.conf
+touch %{buildroot}%{_sysconfdir}/audit/{auditd.conf,audit.rules}
 # On platforms with 32 & 64 bit libs, we need to coordinate the timestamp
 touch -r ./audit.spec %{buildroot}%{_sysconfdir}/libaudit.conf
 # Starting with audit 2.5 no config is installed so start with no rules
@@ -226,29 +227,31 @@ chmod 0644 %{buildroot}%{_unitdir}/auditd.service
 %make_build check
 
 %post -n audit
-# Save existing audit files if any (from old locations)
+# Save existing auditd.conf if any (from old locations)
 if [ -f %{_sysconfdir}/auditd.conf ]; then
    mv %{_sysconfdir}/audit/auditd.conf %{_sysconfdir}/audit/auditd.conf.new
    mv %{_sysconfdir}/auditd.conf %{_sysconfdir}/audit/auditd.conf
 fi
-if [ -f %{_sysconfdir}/audit.rules ]; then
-   mv %{_sysconfdir}/audit.rules %{_sysconfdir}/audit/audit.rules
-elif [ ! -f %{_sysconfdir}/audit/audit.rules ]; then
-   cp %{_sysconfdir}/audit/rules.d/audit.rules %{_sysconfdir}/audit/audit.rules
-fi
 %service_add_post auditd.service
-%service_add_post audit-rules.service
 
 %post -n audit-rules
-%systemd_post audit-rules.service
-# Copy default rules into place on new installation
-files=`ls /etc/audit/rules.d/ 2>/dev/null | wc -w`
-if [ "$files" -eq 0 ] ; then
-	touch %{_sysconfdir}/audit.rules
-	install -m 0600 %{_datadir}/audit-rules/10-no-audit.rules %{_sysconfdir}/%{_name}/rules.d/audit.rules
-        # Make the new rules active
-        augenrules --load
+if [ -f %{_sysconfdir}/audit.rules ]; then
+   # If /etc/audit.rules exists, move into the expected default place /etc/audit/audit.rules.
+   mv %{_sysconfdir}/audit.rules %{_sysconfdir}/%{_name}/audit.rules
+else
+   # We only expect /etc/audit/audit.rules to exist.  If it doesn't, augenrules --load will create
+   # it with the rules in /etc/audit/rules.d.
+   #
+   # If /etc/audit/rules.d is empty, copy the default rules file (no-rules).
+   files=`ls /etc/audit/rules.d/ 2>/dev/null | wc -w`
+   if [ "$files" -eq 0 ] ; then
+      touch %{_sysconfdir}/%{_name}/audit.rules
+      install -m 0600 %{_datadir}/audit-rules/10-no-audit.rules %{_sysconfdir}/%{_name}/rules.d/audit.rules
+      # Make the new rules active
+   fi
+   augenrules --load
 fi
+%service_add_post audit-rules.service
 
 %pre -n audit
 %service_add_pre auditd.service

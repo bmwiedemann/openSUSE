@@ -1,7 +1,7 @@
 #
 # spec file for package sonivox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-# fails to load the sonivox library on 15.3
-%global build_tests (0%{?suse_version} > 1500 || 0%{?sle_version} > 150300)
 %define soversion 3
 Name:           sonivox
-Version:        3.6.12
+Version:        3.6.14
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0
 URL:            https://github.com/pedrolcl/sonivox
 Source:         https://github.com/pedrolcl/sonivox/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.14
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-%if %{build_tests}
 BuildRequires:  cmake(GTest)
-%endif
 
 %description
 Sonivox is a fork of the Android Open Source Project 'platform_external_sonivox'
@@ -69,10 +69,13 @@ Development files for the sonivox library.
 %autosetup -p1
 
 %build
-%cmake -DBUILD_SONIVOX_STATIC:BOOL=FALSE \
-%if !%{build_tests}
-  -DBUILD_TESTING:BOOL=FALSE
+%if 0%{?suse_version} == 1500
+export CC=gcc-13 CXX=g++-13
 %endif
+
+%cmake -DBUILD_SONIVOX_STATIC:BOOL=FALSE \
+       -DBUILD_EXAMPLE:BOOL=FALSE \
+       -DBUILD_TESTING:BOOL=TRUE
 
 %cmake_build
 
@@ -80,6 +83,9 @@ Development files for the sonivox library.
 %cmake_install
 
 %ldconfig_scriptlets -n libsonivox%{soversion}
+
+%check
+%ctest
 
 %files -n libsonivox%{soversion}
 %license LICENSE

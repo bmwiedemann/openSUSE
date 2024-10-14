@@ -75,4 +75,14 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>988400</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fef9c4da6a5a22398dabbbfc1dfe3b82</srcmd5>
+    <version>1.0.7</version>
+    <time>1728904031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * This release fixes some compiler warnings and includes other
+    minor code cleanups.</comment>
+    <requestid>1207646</requestid>
+  </revision>
 </revisionlist>

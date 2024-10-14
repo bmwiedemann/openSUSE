@@ -23,7 +23,7 @@
 Name:           hmcfgusb
 Version:        0.103+git23.g7157286
 Release:        0
-Summary:        Hmland and utilities to use the HM-CFG-USB(2)
+Summary:        DEPRECATED: Hmland and utilities to use the HM-CFG-USB(2)
 License:        MIT AND SUSE-Public-Domain
 Group:          System/Monitoring
 URL:            https://git.zerfleddert.de/cgi-bin/gitweb.cgi/hmcfgusb
@@ -36,7 +36,7 @@ Requires:       logrotate
 Requires(pre):  %fillup_prereq
 
 %description
-This package contains, amongst others, hmland an application, which emulates the
+DEPRECATED: This package contains, amongst others, hmland an application, which emulates the
 HomeMatic LAN configuration adapter-protocol to make it possible to use the
 HM-CFG-USB in Fhem or as a lan configuration tool for the CCU or the
 HomeMatic windows configuration software, also supporting devices using

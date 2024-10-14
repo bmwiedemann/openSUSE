@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  7 21:38:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.18.4:
+  * Add ioctls for Chromium OS EC devices.
+  * Generate "remove" uevent in umockdev_testbed_remove_device().
+  * Recursively remove children with uevents.
+  * preload: Fix sigmask block and restore race.
+
+-------------------------------------------------------------------
 Wed Jul 17 06:30:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.18.3:

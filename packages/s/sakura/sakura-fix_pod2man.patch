@@ -1,7 +1,7 @@
-Index: sakura-3.8.7/CMakeLists.txt
+Index: sakura-3.8.8/CMakeLists.txt
 ===================================================================
---- sakura-3.8.7.orig/CMakeLists.txt
-+++ sakura-3.8.7/CMakeLists.txt
+--- sakura-3.8.8.orig/CMakeLists.txt
++++ sakura-3.8.8/CMakeLists.txt
 @@ -72,5 +72,5 @@ ADD_CUSTOM_TARGET (distclean
  
  IF (POD2MAN)

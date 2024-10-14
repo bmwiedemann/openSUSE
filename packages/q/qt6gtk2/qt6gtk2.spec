@@ -17,14 +17,12 @@
 
 %define qt_version 6.0.0
 Name:           qt6gtk2
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Qt6 Gtk2 Style Plugin
 License:        GPL-2.0-or-later
 URL:            https://github.com/trialuser02/qt6gtk2
 Source:         https://github.com/trialuser02/qt6gtk2/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE qtstyleplugins-gtksettings.patch sor.alexei@meowr.ru -- Align Qt with GTK settings a bit better.
-Patch0:         qtstyleplugins-gtksettings.patch
 BuildRequires:  qt6-core-private-devel >= %{qt_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt_version}
 BuildRequires:  qt6-widgets-private-devel >= %{qt_version}

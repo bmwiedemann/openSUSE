@@ -141,9 +141,11 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 # 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+# PATCH-FIX-UPSTREAM -- https://bugzilla.mindrot.org/show_bug.cgi?id=3655#c4
+Patch201:       fix-x11-regression-bsc1229449.patch
 # 1000 - 2000  --  Conditional patches
-# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 %if 0%{with crypto_policies}
+# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 Patch1000:      openssh-9.6p1-crypto-policies.patch
 Patch1001:      openssh-9.6p1-crypto-policies-man.patch
 %endif

@@ -39,6 +39,7 @@ BuildRequires:  kernel-headers >= 2.6.30
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
+Requires:       gawk
 Requires:       libaudit1 = %{version}
 Requires:       libauparse0 = %{version}
 Provides:       bundled(libev) = 4.33

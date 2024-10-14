@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 24 12:05:12 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.1:
+  * Restart the init container to not be stuck in created state
+  * succeeded pod is being re-admitted
+  * Avoid SidecarContainers code path for non-sidecar pods
+  * Revert "fix: handle socket file detection on Windows"
+  * add missing RBAC to statefulset-controller for StatefulSetAutoDeletePVC feature
+  * Update cni-plugins to v1.5.1
+  * Bump images, dependencies and versions to go 1.22.6 and distroless iptables
+  * update coredns/corefile-migration to v1.0.23 to support coredns v1.11.3
+  * kubeadm: bump coredns to 1.11.3
+  * kube-up.sh: bump coreDNS to 1.11.3
+  * fix v1a3 ResourceSliceList metadata field name
+  * Switch DisableNodeKubeProxyVersion back to disabled-by-default
+  * fix a scheduler preemption issue that victim is not patched properly
+  * kube-proxy: initialization wait for service and endpoint handlers synced
+  * Restore honoring --version build ID overrides
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.6`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.1/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Tue Aug 20 08:11:23 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - refresh "revert-coredns-image-renaming.patch" patch as per release-1.31 branch:

@@ -8,4 +8,12 @@
 * Full changelog - https://github.com/kubernetes/kubernetes/blob/v1.31.0/CHANGELOG/CHANGELOG-1.31</comment>
     <requestid>1194868</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>324a41698569763757f5e6fc8a10323d</srcmd5>
+    <version>1.31.1</version>
+    <time>1728904056</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – Sept, 2024: Update to version 1.31.1</comment>
+    <requestid>1207826</requestid>
+  </revision>
 </revisionlist>

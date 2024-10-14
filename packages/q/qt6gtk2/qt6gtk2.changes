@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 13 19:02:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3
+  * Added Qt 6.8 support
+  * Fixed dock widget buttons size for Qt 6.7 or higher
+  * Improved GTK settings support
+- Drop patch, merged upstream:
+  * qtstyleplugins-gtksettings.patch
+
+-------------------------------------------------------------------
 Fri Jan 12 04:16:13 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Version 0.2

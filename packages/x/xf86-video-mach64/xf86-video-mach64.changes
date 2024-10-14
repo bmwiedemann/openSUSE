@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 13 18:28:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 6.10.0
+  * This release raises the minimum supported version of the Xorg
+    server from 1.4 (released in 2007) to 1.18 (released in 2015).
+    This includes the removal of the XAA code, which cannot be
+    compiled for any Xserver newer than the 1.12 series, as it was
+    removed in the Xorg 1.13 release.
+
+-------------------------------------------------------------------
 Mon Jul 11 13:50:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.9.7

@@ -1,7 +1,7 @@
 #
 # spec file for package xcmsdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xcmsdb
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Device Color Characterization utility for X Color Management System
 License:        MIT

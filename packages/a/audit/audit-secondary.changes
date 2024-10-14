@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  4 16:06:06 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update audit.spec (bsc#1231236):
+  * add requirement for 'awk' package
+  * move some %post logic from audit to audit-rules
+
+-------------------------------------------------------------------
 Wed Oct  2 11:15:07 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Readd audit-allow-manual-stop.patch (removed by mistake)

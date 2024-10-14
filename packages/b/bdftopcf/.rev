@@ -105,4 +105,17 @@
   * Depend on xproto and fsproto that are now used.</comment>
     <requestid>1012028</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1e5436eef06f05e419a52aed9c754bc7</srcmd5>
+    <version>1.1.2</version>
+    <time>1728903985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * bdfReadBitmap: avoid NULL dereference on zero-width glyphs
+  * bdfReadBitmap: avoid access to byte before start of array
+  * pcfWriteFont: Avoid uninitialized values in tables
+  * atom: Update Hash() to be unsigned</comment>
+    <requestid>1207660</requestid>
+  </revision>
 </revisionlist>

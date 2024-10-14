@@ -153,13 +153,6 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 # Distribution tests require internet access, so disable
 %pom_disable_module test-distribution tests
 
-# missing conscrypt
-%pom_disable_module jetty-alpn-conscrypt-server jetty-alpn
-%pom_disable_module jetty-alpn-conscrypt-client jetty-alpn
-%pom_remove_dep -r :jetty-alpn-conscrypt-server
-%pom_remove_dep -r :jetty-alpn-conscrypt-client
-rm -fr examples/embedded/src/main/java/org/eclipse/jetty/embedded/ManyConnectors.java
-
 # the default location is not allowed by SELinux
 sed -i '/<SystemProperty name="jetty.state"/d' \
     jetty-home/src/main/resources%{_sysconfdir}/jetty-started.xml
@@ -242,6 +235,14 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %{mvn_package} ::war: __noinstall
 %{mvn_package} :jetty-runner __noinstall
 %{mvn_package} :build-resources __noinstall
+
+%{mvn_package} org.eclipse.jetty.cdi: jetty-cdi
+
+%{mvn_package} ':jetty-alpn*-client' jetty-alpn-client
+%{mvn_package} ':jetty-alpn*-server' jetty-alpn-server
+
+%{mvn_package} :apache-jsp jetty-jsp
+%{mvn_alias} :apache-jsp :jetty-jsp
 
 %{mvn_build} -f -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \

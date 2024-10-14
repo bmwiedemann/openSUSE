@@ -920,4 +920,12 @@ Fix bz#1160384</comment>
     <comment></comment>
     <requestid>1205295</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>73bc078f899e83ee8e4cbdb613740e5c</srcmd5>
+    <version>4.0</version>
+    <time>1728903980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1207244</requestid>
+  </revision>
 </revisionlist>

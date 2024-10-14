@@ -221,4 +221,17 @@
   * Mark DriverRec exported in r128_probe.h to match r128_probe.c</comment>
     <requestid>1040104</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b28bb6014da71a8a7dc9d95fb3fa7674</srcmd5>
+    <version>6.13.0</version>
+    <time>1728903983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.13.0
+  * This release raises the minimum supported version of the Xorg
+    server to 1.18 (released in 2015). This includes the removal
+    of the XAA code, which cannot be compiled for any Xserver newer
+    than the 1.12 series, as XAA support was removed in the Xorg
+    1.13 release.</comment>
+    <requestid>1207658</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-r128
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-video-r128
-Version:        6.12.1
+Version:        6.13.0
 Release:        0
 Summary:        ATI Rage 128 video driver for the Xorg X server
 License:        MIT

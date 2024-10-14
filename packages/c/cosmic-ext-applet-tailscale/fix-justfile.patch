@@ -1,0 +1,12 @@
+diff -rub gui-scale-applet/justfile gui-scale-applet-patched/justfile
+--- gui-scale-applet/justfile	2024-10-12 16:25:34.421356021 +0200
++++ gui-scale-applet-patched/justfile	2024-10-12 16:49:18.592860326 +0200
+@@ -20,7 +20,7 @@
+ metainfo-dst := clean(rootdir / prefix) / 'share' / 'metainfo' / metainfo
+ 
+ icons-src := 'data' / 'icons' / 'scalable' / 'apps'
+-icons-dst := clean(rootdir / prefix) / 'share' / 'icons' / 'hicolor' / 'scalable' / 'status'
++icons-dst := clean(rootdir / prefix) / 'share' / 'icons' / 'hicolor' / 'scalable' / 'status' / APPID + '.png'
+ 
+ # Default recipe which runs 'just build-release'
+ default: build-release

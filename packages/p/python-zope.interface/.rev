@@ -365,4 +365,19 @@
   * Drop support for Python 3.7.</comment>
     <requestid>1199456</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3642ced2d9735a9579abd2d9773f0009</srcmd5>
+    <version>7.1.0</version>
+    <time>1728903987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.0:
+  * Declare support for Python 3.13.
+  * Fix segmentation faults on Python 3.13. (#323)
+- Drop patch fix-testsuite-segfault.patch, included upstream.
+- Switch to autosetup macros.
+
+- Cherry-pick upstream patch to fix testsuite segfault with Python 3.13
+  * fix-testsuite-segfault.patch</comment>
+    <requestid>1207763</requestid>
+  </revision>
 </revisionlist>

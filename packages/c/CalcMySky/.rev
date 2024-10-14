@@ -46,4 +46,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182979</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af1f1c14cd5fdc8870cd558ff5d26afa</srcmd5>
+    <version>0.3.3</version>
+    <time>1728904046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.3:
+  * Visual artifacts during solar eclipses where solar and lunar radii are nearly equal,
+  * Wrong sampling points when computing eclipse double scattering,
+  * SIGPIPE from broken X11 ICE connection that sometimes happened during calcmysky execution,
+  * Off-by-one mistake in calculation of light pollution texture coordinates,
+</comment>
+    <requestid>1207856</requestid>
+  </revision>
 </revisionlist>

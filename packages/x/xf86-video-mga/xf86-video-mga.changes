@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 13 18:32:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.1.0
+  * This release raises the minimum supported version of the Xorg
+    server to 1.18 (released in 2015).  This includes the removal
+    of the XAA code, which cannot be compiled for any Xserver
+    newer than the 1.12 series, as XAA support was removed in the
+    Xorg 1.13 release.
+- adjusted u_Change-shadow-fb-implementation-from-DDX-based-to-miext-damage-based.patch
+ - refreshed patches
+
+-------------------------------------------------------------------
 Mon Feb 26 12:13:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 13 15:27:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.6.14
+  * Fix CVE-2024-23709
+  * Fix "man page for the example program sonivoxrender"
+
+-------------------------------------------------------------------
 Mon Jul 24 07:38:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.6.12

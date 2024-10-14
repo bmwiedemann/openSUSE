@@ -177,4 +177,30 @@ Novell, and NCR are no longer supported.</comment>
     <comment></comment>
     <requestid>1151684</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>954dd4b0c9a608fb766b81c9445ebc2d</srcmd5>
+    <version>1.5.1</version>
+    <time>1728903985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1
+  * gitlab CI: add xz-utils to container for &quot;make distcheck&quot;
+  * gitlab CI: collect config.log to help diagnose failures
+  * gitlab CI: add libc-dev to required packages in build container
+  * LocalInitTransports: Fix -Wuseless-cast warning for getenv() call
+  * SocketCreateListener: Fix -Wuseless-cast warning in bind() call
+  * Clear numerous -Wsign-compare warnings from gcc 14.1
+  * SocketINETConnect: return failure when malloc() fails
+  * ParseAddress: return failure when strdup() fails
+  * MakeAllCOTSServerListeners: Initialize temp_ciptrs
+  * GetMyNetworkId: Avoid writing to NULL pointer if malloc() fails
+  * GetPeerNetworkId: Avoid writing to NULL pointer if malloc() fails
+  * GetPeerNetworkId: avoid calling strlen() on a NULL pointer
+  * SocketOpen: avoid leak of out-of-range fd
+  * is_numeric: Add TRANS_SERVER to required ifdefs
+  * update .gitignore
+  * TRANS(ParseAddress): Fix &quot;assignment discards ‘const’ qualifier&quot; warnings
+  * TRANS(GetHostname): Fix &quot;‘strncpy’ output truncated..&quot; warning
+  * Fix string length check</comment>
+    <requestid>1207659</requestid>
+  </revision>
 </revisionlist>

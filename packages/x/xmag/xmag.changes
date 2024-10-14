@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 13 18:22:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Clear 9 -Wuseless-cast warnings
+  * Fix -Wshadow warning for Display argument to Error()
+  * Fix -Wself-assign warning from clang 13
+  * Fix -Wmissing-variable-declarations warning from clang 13
+  * usage: add noreturn attribute
+  * Quiet 64 -Wunused-parameter warnings from clang 13
+  * Use double for all floating point numbers, not a mix of double and float
+
+-------------------------------------------------------------------
 Tue Jul 12 22:50:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.7

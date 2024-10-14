@@ -99,4 +99,12 @@ Followed by update to latest patch release version - 1.28.2</comment>
 Update changelog entries to mention fix for CVE-2024-24786, bsc#1229867</comment>
     <requestid>1197410</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c73d6affd74eeac13ea19928b21e8c77</srcmd5>
+    <version>1.28.14</version>
+    <time>1728904062</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – Sept, 2024: Update to version 1.28.14</comment>
+    <requestid>1207830</requestid>
+  </revision>
 </revisionlist>

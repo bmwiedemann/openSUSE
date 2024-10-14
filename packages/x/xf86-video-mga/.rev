@@ -262,4 +262,19 @@
     <comment></comment>
     <requestid>1151675</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1fb0ce11d0bb8000e4fb3538edf313aa</srcmd5>
+    <version>2.1.0</version>
+    <time>1728904036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0
+  * This release raises the minimum supported version of the Xorg
+    server to 1.18 (released in 2015).  This includes the removal
+    of the XAA code, which cannot be compiled for any Xserver
+    newer than the 1.12 series, as XAA support was removed in the
+    Xorg 1.13 release.
+- adjusted u_Change-shadow-fb-implementation-from-DDX-based-to-miext-damage-based.patch
+ - refreshed patches</comment>
+    <requestid>1207656</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 13 19:20:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * bdfReadBitmap: avoid NULL dereference on zero-width glyphs
+  * bdfReadBitmap: avoid access to byte before start of array
+  * pcfWriteFont: Avoid uninitialized values in tables
+  * atom: Update Hash() to be unsigned
+
+-------------------------------------------------------------------
 Mon Oct 17 08:27:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed download URLs of tarball and signature file in specfile 

@@ -175,4 +175,12 @@
     <comment>CVE-2024-22201, bsc#1220437</comment>
     <requestid>1152265</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>91f10624ca63e3de9c8cf21048e9a00b</srcmd5>
+    <version>9.4.54</version>
+    <time>1728903991</time>
+    <user>dimstar_suse</user>
+    <comment>add jetty-alpn and jetty-http2 spec files</comment>
+    <requestid>1207481</requestid>
+  </revision>
 </revisionlist>

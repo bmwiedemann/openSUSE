@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 13 02:26:02 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 14.0.4
+  * Make it possible to log heartbeat ping pong (#969) @emontnemery
+  * Move HeartbeatController to a separate module (#968) @emontnemery
+  * Simplify socket timeout (#967) @emontnemery
+  * Bump pylint from 3.2.7 to 3.3.1 (#957) @dependabot
+- Update to 14.0.3:
+  * Revert "Revert "Revert "Remove socket timeouts"" (#883)" (#965) @bdraco
+- Update to 14.0.2:
+  * Add OHF logo to README (#961) @mrdarrengriffin
+  * Fix errors found by pylint 3.2.7 (#946) @emontnemery
+  * Reduce verbosity of reconnection (#933) @elupus
+  * Add BRAVIA 4K VH21 to known devices (#904) @jayofdoom
+  * Initialize _session member on YouTube controller (#925) @alexdelorenzo
+  * Migrate to using efficient I/O multiplexing selectors (#865) @bdraco
+  * Revert "Revert "Remove socket timeouts"" (#883) @emontnemery
+
+-------------------------------------------------------------------
 Tue May  7 20:17:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.0.1:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 13 14:30:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.8.8:
+  * Updated translations
+  * Removed show closebutton option from the contextual menu
+  * Addded a term option to set the default terminal (solves issue #49)
+  * Let child processes manage button events if needed (solves issue #48)
+  * Disable tab scrolling because it's not working as expected (solves issue #45)
+  * Added support for shell programs different from the login shell (non-/bin/bash)
+
+-------------------------------------------------------------------
 Wed Jul  5 14:20:23 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.8.7:

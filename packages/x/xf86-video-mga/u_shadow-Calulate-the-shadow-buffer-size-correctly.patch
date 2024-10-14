@@ -17,11 +17,11 @@ Found-by: Oliver Schweigert <oliver.schweikert@horiba.com>
  src/mga_driver.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: xf86-video-mga-2.0.0/src/mga_driver.c
+Index: xf86-video-mga-2.1.0/src/mga_driver.c
 ===================================================================
---- xf86-video-mga-2.0.0.orig/src/mga_driver.c
-+++ xf86-video-mga-2.0.0/src/mga_driver.c
-@@ -3347,7 +3347,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
+--- xf86-video-mga-2.1.0.orig/src/mga_driver.c
++++ xf86-video-mga-2.1.0/src/mga_driver.c
+@@ -3323,7 +3323,7 @@ MGAScreenInit(SCREEN_INIT_ARGS_DECL)
      }
  
      if(pMga->ShadowFB) {

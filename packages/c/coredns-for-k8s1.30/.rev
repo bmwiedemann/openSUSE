@@ -10,4 +10,13 @@
   * Version specified in kubernetes v1.30.0 - https://github.com/kubernetes/kubernetes/blob/v1.30.0/build/dependencies.yaml#L32-L47</comment>
     <requestid>1169208</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ab0af92fd23b3b7dbd86961e2b82344</srcmd5>
+    <version>1.11.3</version>
+    <time>1728904071</time>
+    <user>dimstar_suse</user>
+    <comment>coredns update - version 1.11.3
+wrt kubernetes 1.30.5 - https://github.com/kubernetes/kubernetes/blob/v1.30.5/build/dependencies.yaml#L34</comment>
+    <requestid>1207837</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 05:54:29 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Disable epiphany build.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:07:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

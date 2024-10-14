@@ -1,5 +1,7 @@
 <multibuild>
   <package>jetty-unixsocket</package>
   <package>jetty-websocket</package>
+  <package>jetty-alpn</package>
+  <package>jetty-http2</package>
 </multibuild>
 

@@ -113,4 +113,17 @@
   + Fix detection of COSMIC protocols</comment>
     <requestid>1199089</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>12ea441bf229688369b003dfc54f14f4</srcmd5>
+    <version>1.4.0</version>
+    <time>1728904045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0
+  + Add clarifying tooltips when compositor is unknown
+  + Update upstream protocol list to v1.38
+  + Add frog protocols 🐸
+  + Add KDE external brightness protocol
+  + Add additional keys to desktop file</comment>
+    <requestid>1207664</requestid>
+  </revision>
 </revisionlist>

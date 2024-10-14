@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct  7 18:07:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 24.08.0:
+  * Add an advanced plotting tutorial.
+  * Try harder to kill maxima on closing it.
+  * Try harder to clean up maxima's temporary files on closing it.
+  * Resolved a race condition on closing multiple windows.
+  * Resolved a CMake error on configuration with -B switch
+    (gh#wxMaxima-developers/wxmaxima#1917).
+  * More menu icons.
+  * A better dialogue if Maxima isn't found.
+  * Better search for the Maxima binary.
+  * Security: Use a standard function (CreateTempFileName) for
+    creating a temporary file for the 'popout interactively'
+    function of wxdraw.
+  * Security: Add a random number to lisp generated temporary
+    files.
+  * Fix the greek letter replacement for 'beta' with newer Maxima
+    versions (gh#wxMaxima-developers/wxmaxima#1921).
+  * Fix a problem, when 'maxima-local' (a not installed version of
+    Maxima) was chosen as Maxima. WxMaxima did not finish on
+    File->Exit and used much CPU power.
+  * Size calculations for numbers that were broken into lines
+    failed the first time (gh#wxMaxima-developers/wxmaxima#1931).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul  2 10:53:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Manually install mimetype icons ignored by cmake install.

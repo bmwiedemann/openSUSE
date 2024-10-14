@@ -12,11 +12,11 @@ Signed-off-by: Egbert Eich <eich@freedesktop.org>
  src/mga_driver.c | 11 +++++++----
  1 file changed, 7 insertions(+), 4 deletions(-)
 
-Index: xf86-video-mga-2.0.0/src/mga_driver.c
+Index: xf86-video-mga-2.1.0/src/mga_driver.c
 ===================================================================
---- xf86-video-mga-2.0.0.orig/src/mga_driver.c
-+++ xf86-video-mga-2.0.0/src/mga_driver.c
-@@ -2690,7 +2690,7 @@ MGAMapMem(ScrnInfoPtr pScrn)
+--- xf86-video-mga-2.1.0.orig/src/mga_driver.c
++++ xf86-video-mga-2.1.0/src/mga_driver.c
+@@ -2673,7 +2673,7 @@ MGAMapMem(ScrnInfoPtr pScrn)
  	    err = pci_device_map_range(dev,
  				       region->base_addr, region->size,
  				       PCI_DEV_MAP_FLAG_WRITABLE,

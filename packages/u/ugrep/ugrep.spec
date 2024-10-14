@@ -101,6 +101,7 @@ This package contains the fish completion for ugrep.
 
 %build
 %configure \
+	--disable-avx2 \
 	--enable-color \
 %if 0%{?suse_version} > 1599
 	--with-bzip3 \

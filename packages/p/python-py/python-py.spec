@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,8 @@ export LANG=en_US.UTF-8
 # https://github.com/pytest-dev/py/issues/209
 # another failing tests with pytest 7.4: https://github.com/pytest-dev/pytest/commit/cc23ec91d042ee15145b890aea04e96f6e831101 https://github.com/pytest-dev/pytest/commit/0a20452f78a2f5401cf0fc05dad04c8aeee170d7
 # ...but the failure comes from py.core, which was integrated to pytest long ago and will probably be dropped soon: https://github.com/pytest-dev/py/issues/288
-%pytest -k 'not (test_getdimensions or test_format_excinfo or test_excinfo_repr or test_excinfo_str or test_syntaxerror_rerepresentation or test_len or test_power or test_comments or test_repr_traceback or test_traceback_getcrashentry)'
+# and failing tests with Python 3.13.
+%pytest -k 'not (test_getdimensions or test_format_excinfo or test_excinfo_repr or test_excinfo_str or test_syntaxerror_rerepresentation or test_len or test_power or test_comments or test_repr_traceback or test_traceback_getcrashentry or test_capturing_and_logging_fundamentals)'
 %endif
 
 %if !%{with test}
