@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/postfix:%%postfix_version%%
 #!BuildTag: opensuse/postfix:%%postfix_version%%-%RELEASE%
+#!BuildTag: opensuse/postfix:%%postfix_version%%
 #!BuildTag: opensuse/postfix:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
