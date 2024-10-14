@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: aarch64 x86_64 ppc64le s390x
-#!BuildTag: opensuse/bci/openjdk:17
 #!BuildTag: opensuse/bci/openjdk:17-%RELEASE%
+#!BuildTag: opensuse/bci/openjdk:17
 
 FROM opensuse/tumbleweed:latest
 
