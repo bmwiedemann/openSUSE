@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/gcc:12
 #!BuildTag: opensuse/bci/gcc:12-%RELEASE%
+#!BuildTag: opensuse/bci/gcc:12
 #!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%
 
 FROM opensuse/tumbleweed:latest
