@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 11 15:12:52 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- make the tag with -%RELEASE% the first tag listed
+
+-------------------------------------------------------------------
 Wed Sep 25 17:12:11 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - improved log cleaning
