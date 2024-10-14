@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: aarch64 x86_64 ppc64le s390x
-#!BuildTag: opensuse/bci/openjdk:21
 #!BuildTag: opensuse/bci/openjdk:21-%RELEASE%
+#!BuildTag: opensuse/bci/openjdk:21
 
 FROM opensuse/tumbleweed:latest
 
