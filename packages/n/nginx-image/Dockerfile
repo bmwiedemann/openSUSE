@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/nginx:1.27
 #!BuildTag: opensuse/nginx:1.27-%RELEASE%
+#!BuildTag: opensuse/nginx:1.27
 #!BuildTag: opensuse/nginx:latest
 
 FROM opensuse/tumbleweed:latest
