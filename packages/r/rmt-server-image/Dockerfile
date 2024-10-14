@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/rmt-server:%%rmt_version%%
 #!BuildTag: opensuse/rmt-server:%%rmt_version%%-%RELEASE%
+#!BuildTag: opensuse/rmt-server:%%rmt_version%%
 #!BuildTag: opensuse/rmt-server:latest
 
 FROM opensuse/tumbleweed:latest
