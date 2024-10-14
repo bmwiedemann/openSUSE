@@ -15,10 +15,10 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/rust:oldstable
 #!BuildTag: opensuse/bci/rust:oldstable-2.%RELEASE%
-#!BuildTag: opensuse/bci/rust:1.80
+#!BuildTag: opensuse/bci/rust:oldstable
 #!BuildTag: opensuse/bci/rust:1.80-2.%RELEASE%
+#!BuildTag: opensuse/bci/rust:1.80
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
 
 FROM opensuse/tumbleweed:latest
