@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/alertmanager:%%alertmanager_patch_version%%
 #!BuildTag: opensuse/alertmanager:%%alertmanager_patch_version%%-%RELEASE%
+#!BuildTag: opensuse/alertmanager:%%alertmanager_patch_version%%
 #!BuildTag: opensuse/alertmanager:%%alertmanager_minor_version%%
 #!BuildTag: opensuse/alertmanager:latest
 
