@@ -15,12 +15,12 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/nodejs:20
 #!BuildTag: opensuse/bci/nodejs:20-%RELEASE%
+#!BuildTag: opensuse/bci/nodejs:20
 #!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
 #!BuildTag: opensuse/bci/nodejs:latest
-#!BuildTag: opensuse/bci/node:20
 #!BuildTag: opensuse/bci/node:20-%RELEASE%
+#!BuildTag: opensuse/bci/node:20
 #!BuildTag: opensuse/bci/node:%%nodejs_version%%
 #!BuildTag: opensuse/bci/node:latest
 
