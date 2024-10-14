@@ -816,6 +816,7 @@ unsorted:
   - appeditor-lang 
   - appframework 
   - appframework-javadoc 
+  - apphub 
   - appimaged 
   - appmenu-registrar 
   - appres 
@@ -2155,6 +2156,7 @@ unsorted:
   - chromium-bsu 
   - chromium-uget-integrator 
   - chronic 
+  - chronos 
   - chrony-pool-empty 
   - chrony-pool-suse 
   - chrpath 
@@ -2623,6 +2625,7 @@ unsorted:
   - cosmic-ext-applet-external-monitor-brightness 
   - cosmic-ext-applet-ollama 
   - cosmic-ext-applet-places-status-indicator 
+  - cosmic-ext-applet-tailscale 
   - cosmic-ext-bg-theme 
   - cosmic-ext-calculator 
   - cosmic-ext-color-picker 
@@ -2794,7 +2797,6 @@ unsorted:
   - cross-epiphany-gcc13-bootstrap 
   - cross-epiphany-gcc7 
   - cross-epiphany-gcc7-bootstrap 
-  - cross-epiphany-newlib-devel 
   - cross-hppa-binutils 
   - cross-hppa-gcc12 
   - cross-hppa-gcc12-bootstrap 
@@ -3943,6 +3945,7 @@ unsorted:
   - eww 
   - exaile 
   - exaile-lang 
+  - examine 
   - exec-maven-plugin 
   - exec-maven-plugin-javadoc 
   - execstack 
@@ -9476,6 +9479,9 @@ unsorted:
   - jettison-javadoc 
   - jetty-alpn-api 
   - jetty-alpn-api-javadoc 
+  - jetty-alpn-client 
+  - jetty-alpn-javadoc 
+  - jetty-alpn-server 
   - jetty-annotations 
   - jetty-ant 
   - jetty-artifact-remote-resources 
@@ -9489,6 +9495,12 @@ unsorted:
   - jetty-fcgi 
   - jetty-http 
   - jetty-http-spi 
+  - jetty-http2-client 
+  - jetty-http2-common 
+  - jetty-http2-hpack 
+  - jetty-http2-http-client-transport 
+  - jetty-http2-javadoc 
+  - jetty-http2-server 
   - jetty-io 
   - jetty-jaas 
   - jetty-javax-websocket-client-impl 
@@ -15078,7 +15090,6 @@ unsorted:
   - libopensm9 
   - libopenspecfun2 
   - libopenssl-1_0_0-devel 
-  - libopenssl-1_0_0-devel-32bit 
   - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit 
   - libopenssl-3-devel 
@@ -15090,9 +15101,7 @@ unsorted:
   - libopenssl-fips-provider 
   - libopenssl10 
   - libopenssl1_0_0 
-  - libopenssl1_0_0-32bit 
   - libopenssl1_0_0-steam 
-  - libopenssl1_0_0-steam-32bit 
   - libopenssl1_1 
   - libopenssl1_1-32bit 
   - libopentracing-cpp1 
@@ -48609,7 +48618,6 @@ unsorted:
   - x2x 
   - x3270 
   - x86_64_v3-branding-Aeon 
-  - x86info 
   - xa 
   - xalan-c 
   - xalan-j2 
