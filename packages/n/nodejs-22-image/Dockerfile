@@ -15,11 +15,11 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/nodejs:22
 #!BuildTag: opensuse/bci/nodejs:22-%RELEASE%
+#!BuildTag: opensuse/bci/nodejs:22
 #!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
-#!BuildTag: opensuse/bci/node:22
 #!BuildTag: opensuse/bci/node:22-%RELEASE%
+#!BuildTag: opensuse/bci/node:22
 #!BuildTag: opensuse/bci/node:%%nodejs_version%%
 
 FROM opensuse/tumbleweed:latest
