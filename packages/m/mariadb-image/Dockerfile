@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/mariadb:11.5
 #!BuildTag: opensuse/mariadb:11.5-%RELEASE%
+#!BuildTag: opensuse/mariadb:11.5
 #!BuildTag: opensuse/mariadb:latest
 
 FROM opensuse/tumbleweed:latest
