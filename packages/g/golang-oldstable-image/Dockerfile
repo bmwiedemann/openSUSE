@@ -15,10 +15,10 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/golang:oldstable
 #!BuildTag: opensuse/bci/golang:oldstable-2.%RELEASE%
-#!BuildTag: opensuse/bci/golang:1.22
+#!BuildTag: opensuse/bci/golang:oldstable
 #!BuildTag: opensuse/bci/golang:1.22-2.%RELEASE%
+#!BuildTag: opensuse/bci/golang:1.22
 #!BuildTag: opensuse/bci/golang:%%golang_version%%
 
 FROM opensuse/tumbleweed:latest
