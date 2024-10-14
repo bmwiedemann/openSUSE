@@ -2041,6 +2041,7 @@ BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
 BuildFlags: onlybuild:jakarta-activation
 BuildFlags: onlybuild:jakarta-mail
+BuildFlags: onlybuild:jakarta-servlet
 BuildFlags: onlybuild:jasper
 BuildFlags: onlybuild:java-21-openjdk
 BuildFlags: onlybuild:java-cup:java-cup-bootstrap
