@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/mariadb-client:11.5
 #!BuildTag: opensuse/mariadb-client:11.5-%RELEASE%
+#!BuildTag: opensuse/mariadb-client:11.5
 #!BuildTag: opensuse/mariadb-client:latest
 
 FROM opensuse/tumbleweed:latest
