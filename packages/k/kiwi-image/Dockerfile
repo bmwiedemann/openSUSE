@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:10-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:10.1
 #!BuildTag: opensuse/bci/kiwi:10.1.11
 #!BuildTag: opensuse/bci/kiwi:latest
