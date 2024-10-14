@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/apache-tomcat:9-openjdk17
 #!BuildTag: opensuse/apache-tomcat:9-openjdk17-%RELEASE%
+#!BuildTag: opensuse/apache-tomcat:9-openjdk17
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk17
 
 FROM opensuse/bci/bci-micro:latest AS target
