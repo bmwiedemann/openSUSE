@@ -17,7 +17,7 @@
 
 
 Name:           xh
-Version:        0.22.2~0
+Version:        0.23.0
 Release:        0
 Summary:        Tool for sending HTTP requests
 License:        MIT

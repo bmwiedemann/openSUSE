@@ -52,4 +52,23 @@
   * Prevent directory traversal in server-supplied filenames #379</comment>
     <requestid>1186517</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4fc9c38c406c2adb237a8f5684f50865</srcmd5>
+    <version>0.23.0</version>
+    <time>1728998243</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.0:
+  Features:
+  * Handle responses compressed in zstd format, see #364
+  * Suppress warnings when -qq flag is used, see #371
+  * Add --debug option for logging and backtraces, see #371
+  * Decode content-disposition and location headers as UTF-8, see #375
+  * Print headers as latin1, with the UTF-8 decoding also shown if applicable, see #377
+  * Print the actual reason phrase sent by the server instead of guessing it from the status code, see #377
+  Bug fixes:
+  * Apply TLS options to non-HTTPS URLs, see #372
+  Other:
+  * Ignore NO_COLOR if set to empty string, see #370</comment>
+    <requestid>1208099</requestid>
+  </revision>
 </revisionlist>
