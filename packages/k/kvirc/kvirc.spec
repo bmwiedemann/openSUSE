@@ -23,7 +23,7 @@
 %bcond_without qtwebengine
 %endif
 Name:           kvirc
-Version:        5.2.4
+Version:        5.2.6
 Release:        0
 Summary:        Graphical Front-End for IRC
 License:        GPL-2.0-or-later AND (GPL-3.0-only OR SUSE-LGPL-2.1-with-digia-exception-1.1)

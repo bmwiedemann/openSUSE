@@ -592,4 +592,12 @@
 - Recreated spec file from kvirc-0.9.0.tar.gz using autospec script by kettner@suse.de (forwarded request 1174093 from kill_it)</comment>
     <requestid>1174126</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0a91edf335b5dba27e61ea293a70f463</srcmd5>
+    <version>5.2.6</version>
+    <time>1728997274</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.2.6</comment>
+    <requestid>1207992</requestid>
+  </revision>
 </revisionlist>
