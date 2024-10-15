@@ -18,7 +18,7 @@
 
 
 Name:           wf-recorder
-Version:        0.4.1+git11
+Version:        0.5.0+git1
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT

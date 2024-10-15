@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 14 12:52:54 UTC 2024 - ammen99@gmail.com
+
+- Update to version 0.5.0+git1:
+  * frame-writer: Track ffmpeg changes (#279)
+
+-------------------------------------------------------------------
+Mon Oct 14 12:48:48 UTC 2024 - ammen99@gmail.com
+
+- Update to version 0.5.0+git0:
+  * Also set buffer.drm_format with shm capture by @nowrep in #233
+  * Use dmabuf feedback instead of wl-drm to get compositor device by @nowrep in #235
+  * Set the default pixel format to yuv420p by @soreau in #237
+  * Get hw_frame_context from buffersink by @nowrep in #242
+  * Allow region capture with DMA-BUF by @nowrep in #244
+  * recreate buffer if format changes by @ammen99 in #251
+  * Add compatibility with FFMPEG 7.0 by @eclipseo in #262
+  * ensure all status messages use stderr by @nekopsykose in #267
+  * add -O/--overwrite by @nekopsykose in #266
+  * PipeWire audio capture by @nowrep in #247
+  * Require libpipewire >= 1.0.5 for pw_buffer.time by @nowrep in #271
+
+-------------------------------------------------------------------
 Wed Aug 21 09:23:42 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to version 0.4.1+git11:
