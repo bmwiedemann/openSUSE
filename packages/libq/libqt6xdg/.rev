@@ -7,4 +7,14 @@
     <comment>update</comment>
     <requestid>1177802</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>019188db36f02bca906e6e35844bbb9b</srcmd5>
+    <version>4.0.1</version>
+    <time>1728997329</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.1:
+ * Added plasma-applications.menu to the fallback menu files.
+ * Fixed compilation with Qt ≥ 6.8.</comment>
+    <requestid>1208071</requestid>
+  </revision>
 </revisionlist>

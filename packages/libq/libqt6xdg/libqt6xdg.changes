@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 09:00:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+ * Added plasma-applications.menu to the fallback menu files.
+ * Fixed compilation with Qt ≥ 6.8.
+
+-------------------------------------------------------------------
 Sat May 11 03:12:05 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 4.0.0:
