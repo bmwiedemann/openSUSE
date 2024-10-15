@@ -15,6 +15,8 @@
 
 #!UseOBSRepositories
 
+#!BuildTag: opensuse/mariadb:%%mariadb_version%%-%RELEASE%
+#!BuildTag: opensuse/mariadb:%%mariadb_version%%
 #!BuildTag: opensuse/mariadb:11.5-%RELEASE%
 #!BuildTag: opensuse/mariadb:11.5
 #!BuildTag: opensuse/mariadb:latest
@@ -36,8 +38,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="11.5-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb:11.5-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%mariadb_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb:%%mariadb_version%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
