@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define default_fw nftables
+%else
+%define default_fw iptables
+%endif
 Name:           tailscale
 Version:        1.76.0
 Release:        0
@@ -35,6 +40,8 @@ BuildRequires:  git
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
 BuildRequires:  golang(API) = 1.23
+Requires:       (nftables or iptables)
+Recommends:     %{default_fw}
 ExcludeArch:    i586
 %{?systemd_requires}
 
@@ -83,6 +90,10 @@ export VERSION_GIT_HASH='$(git rev-parse v%{version})'
 ./%{name} completion bash > ./%{name}.bash
 ./%{name} completion zsh > ./%{name}.zsh
 ./%{name} completion fish > ./%{name}.fish
+
+%check
+./tailscale version
+./tailscaled -version
 
 %install
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
