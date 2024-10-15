@@ -71,6 +71,7 @@ rm -f %{buildroot}%{cgibindir}/webdot.tcl
 %files
 %license COPYING
 %doc README AUTHORS CHANGES
+%dir %{cgibindir}
 %attr(755,root,root) %{cgibindir}/webdot
 %attr(-,root,root) %{htmldir}/webdot/
 %attr(700,%{apache_user},%{apache_group}) %{cachedir}/

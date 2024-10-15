@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 11:46:40 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027] 
+
+-------------------------------------------------------------------
 Thu May 16 14:36:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix URL to source: allows package to be submitted to Factory
