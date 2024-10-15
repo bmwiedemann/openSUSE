@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/artemsen/swayimg
 Source:         https://github.com/artemsen/swayimg/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1600

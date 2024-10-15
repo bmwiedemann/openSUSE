@@ -99,4 +99,16 @@
     <comment></comment>
     <requestid>1207548</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7f731c26cbb52205d6cc72c0c2cbe68</srcmd5>
+    <version>3.4</version>
+    <time>1728997349</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.4
+  * Fixed startup error if configuration file does not exist;
+  * Fixed bug with setting configuration parameters from command
+    line.
+</comment>
+    <requestid>1208090</requestid>
+  </revision>
 </revisionlist>

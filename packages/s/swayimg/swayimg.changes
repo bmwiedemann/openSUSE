@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 15 10:32:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.4
+  * Fixed startup error if configuration file does not exist;
+  * Fixed bug with setting configuration parameters from command
+    line.
+
+-------------------------------------------------------------------
 Sun Oct 13 08:11:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.3
