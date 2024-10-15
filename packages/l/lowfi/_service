@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">lowfi</param>
+    <param name="url">https://github.com/talwat/lowfi.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">1.4.2</param>
+    <param name="changesauthor">andrea.manzini@suse.com</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+   <service name="tar" mode="disabled"/> 
+    <service name="recompress" mode="disabled">
+    <param name="compression">zst</param>
+    <param name="file">*.tar</param>
+    </service> 
+  <service name="cargo_vendor" mode="manual">
+  <param name="srcdir">lowfi</param> 
+  <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+  <param name="srcdir">lowfi</param>
+  </service>
+</services>
