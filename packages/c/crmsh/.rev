@@ -3329,4 +3329,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1202782</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>a806d772be7459226c0f32623d7d25f7</srcmd5>
+    <version>5.0.0+20241011.05736903</version>
+    <time>1728997251</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1207969</requestid>
+  </revision>
 </revisionlist>

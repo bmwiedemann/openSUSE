@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Oct 11 07:24:04 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241011.05736903:
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: cibconfig: Disable auto add advise values for operations (bsc#1231386)
+
+-------------------------------------------------------------------
+Wed Oct 09 08:03:02 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241009.6e8ba2a7:
+  * Fix: ui_cluster: Stop renaming cluster name when using qdevice
+
+-------------------------------------------------------------------
+Fri Sep 27 08:15:13 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240927.113b2113:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: utils: Check node is reachable by using both ping and ssh
+
+-------------------------------------------------------------------
+Fri Sep 27 07:08:14 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240927.3727fc0c:
+  * Fix: help: crm help <topic> does not work (#1567)
+
+-------------------------------------------------------------------
+Fri Sep 27 02:03:22 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240927.e5c5acf8:
+  * Dev: report: do not capture stderr when unarchiving tarballs
+  * Dev: report: make error messages easier to parse for hawk2 (bsc#1228899)
+  * Fix: report: find_shell should accept hacluster user (bsc#1228899)
+
+-------------------------------------------------------------------
+Thu Sep 26 06:36:16 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240926.93245958:
+  * Dev: healthcheck: Enhace log clarity
+  * Dev: ui_cluster: Change the completer for crm cluster health
+
+-------------------------------------------------------------------
+Tue Sep 24 02:26:21 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240924.685cf0a1:
+  * Fix: command: `do_help` does not work as a 3rd level subcommand
+  * Dev: report: add a reminder to use `crm cluster health` (bsc#1228899)
+  * Dev: behave: add functional tests for previous changes
+  * Dev: ui_cluster: add a reminder to use "crm cluster init/join ssh" to initialize ssh (bsc#1228899)
+  * Dev: scripts: add a reminder to use `crm cluster health` to fix hacluster passwordless ssh authentication (bsc#1228899)
+  * Dev: scripts: generate readable messages when ssh authentication fails (bsc#1228899)
+  * Fix: report: should not try interactive authentication when stdin is not a tty (bsc#1228899)
+  * Dev: behave: remove unused functional tests
+  * Dev: main: remove upgradeutil (bsc#1228899)
+
+-------------------------------------------------------------------
 Fri Sep 20 06:36:45 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240920.c4ce88eb:
