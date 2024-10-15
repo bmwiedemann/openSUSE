@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 14.0.1
+%define real_version 14.0.2
 %define short_version 14.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        14.0.1
+Version:        14.0.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -180,8 +180,7 @@ rm -r src/shared/qbs
   -DBUILD_TESTING:BOOL=OFF \
   -DQTC_SEPARATE_DEBUG_INFO:BOOL=OFF \
   -DBUILD_LIBRARY_QLITEHTML:BOOL=ON \
-  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF \
-  -DWITH_QMLDESIGNER:BOOL=ON
+  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF
 
 %if 0%{?qt6}
 %{qt6_build}
@@ -240,7 +239,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_datadir}/qtcreator/cplusplus/
 %{_datadir}/qtcreator/debugger/
 %{_datadir}/qtcreator/externaltools/
-# This won't be needed when syntax-highlighting has a KF6 release
+# Upstream build system is a mess and doesn't allow using the KF6 SyntaxHighlighting framework
 %{_datadir}/qtcreator/generic-highlighter/
 %{_datadir}/qtcreator/glsl/
 %{_datadir}/qtcreator/indexer_preincludes/
