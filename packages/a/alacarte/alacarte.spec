@@ -17,17 +17,18 @@
 
 
 Name:           alacarte
-Version:        3.52.0
+Version:        3.54.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
-Source:         https://download.gnome.org/sources/alacarte/3.52/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
+BuildRequires:  libtool
 # Needed for the typelib() dependency parser
 BuildRequires:  gobject-introspection
 BuildRequires:  pkgconfig
@@ -51,6 +52,7 @@ type to edit, add, and delete any menu entry.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build
 
@@ -74,6 +76,7 @@ fi
 %{_bindir}/alacarte
 %{_datadir}/alacarte
 %{_datadir}/applications/alacarte.desktop
+%{_datadir}/metainfo/org.gnome.alacarte.metainfo.xml
 %{_datadir}/icons/hicolor/
 %{python3_sitelib}/Alacarte
 %{_mandir}/man1/alacarte.1%{?ext_man}
