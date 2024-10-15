@@ -301,4 +301,15 @@
 - Update Requires from setup.py (forwarded request 1202094 from glaubitz)</comment>
     <requestid>1202215</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3b09b7067275a90bcf3bc552b7d0b2ed</srcmd5>
+    <version>1.19.0</version>
+    <time>1728997266</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1207989 from glaubitz)</comment>
+    <requestid>1207991</requestid>
+  </revision>
 </revisionlist>
