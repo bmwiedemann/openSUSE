@@ -7934,6 +7934,7 @@ unsorted:
   - govc 
   - goverlay 
   - govulncheck 
+  - govulncheck-vulndb 
   - gowitness 
   - goxel 
   - gp2c 
@@ -9361,7 +9362,6 @@ unsorted:
   - java-diff-utils-javadoc 
   - java-jwt 
   - java-jwt-javadoc 
-  - java-libkolabxml1 
   - java-mraa 
   - javacc 
   - javacc-bootstrap 
@@ -14262,7 +14262,6 @@ unsorted:
   - libknet1-plugins-all 
   - libknot15 
   - libkokkos-4_3 
-  - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpathsea6 
@@ -14656,6 +14655,7 @@ unsorted:
   - libmms0 
   - libmng-devel 
   - libmnl-devel 
+  - libmnl-doc 
   - libmnl0-32bit 
   - libmodbus-devel 
   - libmodbus5 
@@ -16253,7 +16253,7 @@ unsorted:
   - libslang2-32bit 
   - libslirp-devel 
   - libslopy7_6 
-  - libslurm40 
+  - libslurm41 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit 
   - libsmartcols-devel-static 
@@ -17274,6 +17274,7 @@ unsorted:
   - libxdg-basedir1 
   - libxdot4 
   - libxdp-devel 
+  - libxerces-c-3_2 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
@@ -17771,6 +17772,7 @@ unsorted:
   - low-memory-monitor-doc 
   - lowdown 
   - lowdown-devel 
+  - lowfi 
   - lpairs 
   - lpe 
   - lpsolve 
@@ -23749,7 +23751,6 @@ unsorted:
   - python-magic-wormhole-zsh-completion 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
-  - python-mapscript 
   - python-marshmallow-doc 
   - python-masakariclient-doc 
   - python-md2workflow-common 
@@ -26115,6 +26116,7 @@ unsorted:
   - python310-mando 
   - python310-manuel 
   - python310-manuel-doc 
+  - python310-mapserver 
   - python310-marathon 
   - python310-markdown-it-py 
   - python310-markdown-math 
@@ -26158,7 +26160,6 @@ unsorted:
   - python310-meson-python 
   - python310-metaextract 
   - python310-metakernel 
-  - python310-metamagic.json 
   - python310-methodtools 
   - python310-micropipenv 
   - python310-microsoft-security-utilities-secret-masker 
@@ -29729,6 +29730,7 @@ unsorted:
   - python311-mando 
   - python311-manuel 
   - python311-manuel-doc 
+  - python311-mapserver 
   - python311-marathon 
   - python311-markdown-math 
   - python311-markdown2 
@@ -29770,7 +29772,6 @@ unsorted:
   - python311-meson-python 
   - python311-metaextract 
   - python311-metakernel 
-  - python311-metamagic.json 
   - python311-methodtools 
   - python311-micropipenv 
   - python311-microsoft-security-utilities-secret-masker 
@@ -33356,6 +33357,7 @@ unsorted:
   - python312-mando 
   - python312-manuel 
   - python312-manuel-doc 
+  - python312-mapserver 
   - python312-marathon 
   - python312-markdown-it-py 
   - python312-markdown-math 
@@ -33399,7 +33401,6 @@ unsorted:
   - python312-meson-python 
   - python312-metaextract 
   - python312-metakernel 
-  - python312-metamagic.json 
   - python312-methodtools 
   - python312-micropipenv 
   - python312-microsoft-security-utilities-secret-masker 
@@ -37139,7 +37140,6 @@ unsorted:
   - slurm-node 
   - slurm-openlava 
   - slurm-pam_slurm 
-  - slurm-plugin-ext-sensors-rrd 
   - slurm-plugin-oom-score-adj 
   - slurm-plugins 
   - slurm-rest 

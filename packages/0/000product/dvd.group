@@ -2310,7 +2310,6 @@
     <package name="libkmahjongg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkmahjongg-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libkolabxml1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkomparediff2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksane-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2973,7 +2972,6 @@
     <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxdp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libxerces-c-3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4panel-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4ui-2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

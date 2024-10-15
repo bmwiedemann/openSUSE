@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241014" schemaversion="4.1">
+<image name="OBS__openSUSE___20241015" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241014</productvar>
+      <productvar name="VERSION">20241015</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241014,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241015,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241014/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241015/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2086,7 +2086,6 @@
       <repopackage name="libkmahjongg-lang"/>
       <repopackage name="libKMahjongg6"/>
       <repopackage name="libkmod2"/>
-      <repopackage name="libkolabxml1"/>
       <repopackage name="libkomparediff2-6"/>
       <repopackage name="libkomparediff2-6-lang"/>
       <repopackage name="libKPim6AddressbookImportExport6"/>
@@ -2955,7 +2954,6 @@
       <repopackage name="libXdamage1"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxdp1"/>
-      <repopackage name="libxerces-c-3_2"/>
       <repopackage name="libXext6"/>
       <repopackage name="libxfce4kbd-private-3-0"/>
       <repopackage name="libxfce4panel-2_0-4"/>
