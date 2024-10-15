@@ -62,7 +62,7 @@ Requires:       python3-pyotp
 Requires:       python3-python-yubico
 Requires:       python3-pyusb
 Requires:       python3-validators
-Requires:       python3-zxcvbn
+Requires:       python3-zxcvbn-rs-py
 
 Obsoletes:      gnome-passwordsafe < 6.1
 Provides:       gnome-passwordsafe = %{version}
