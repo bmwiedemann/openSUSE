@@ -152,4 +152,19 @@
   * Host Meta 2: Show and test s2s Websocket.</comment>
     <requestid>1196013</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6733f520f8329f57e52d4e53330ddfa9</srcmd5>
+    <version>0.4.3</version>
+    <time>1728997335</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.3:
+  Changed:
+  * Host Meta (2): Improve output readability.
+  * Host Meta (2): Explicitly allow redirects.
+  * Host Meta 2: Also check host-meta2 if host-meta failed.
+  * QUIC: Improve layout.
+  * Websocket S2S: Set from attribute.
+  * Direct TLS: Stop connection test after failure.</comment>
+    <requestid>1208075</requestid>
+  </revision>
 </revisionlist>
