@@ -594,4 +594,13 @@
     <comment></comment>
     <requestid>1204717</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>a9e9a739796a4e02b47214ad02d91fdb</srcmd5>
+    <version>1.12.4</version>
+    <time>1728997243</time>
+    <user>anag+factory</user>
+    <comment>- applied patches to source tree (for plugins)
+</comment>
+    <requestid>1207936</requestid>
+  </revision>
 </revisionlist>

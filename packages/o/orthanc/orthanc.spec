@@ -198,8 +198,10 @@ tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 #Apply dcmtk patch
 patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
-#Apply boost patch
-## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
+#Apply remaining patches to source tree
+patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
+patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:2}
+patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:3}
 
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
