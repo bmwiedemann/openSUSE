@@ -18,18 +18,18 @@
 
 %define skip_python39 1
 Name:           python-mitmproxy-rs
-Version:        0.5.1
+Version:        0.9.2
 Release:        0
 Summary:        Rust bits for mitmproxy
 License:        MIT
 URL:            https://github.com/mitmproxy/mitmproxy_rs
 Source:         https://files.pythonhosted.org/packages/source/m/mitmproxy-rs/mitmproxy_rs-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo-packaging
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
@@ -37,7 +37,6 @@ This package contains mitmproxy's Rust bits.
 
 %prep
 %autosetup -a1 -p1 -n mitmproxy_rs-%{version}
-rm -v Cargo.lock
 
 %build
 %pyproject_wheel
