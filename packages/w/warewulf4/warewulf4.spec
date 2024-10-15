@@ -23,7 +23,7 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.5.6
+Version:        4.5.8
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
-Patch0:         added-cow-option-to-bind.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
