@@ -144,4 +144,14 @@
     <comment></comment>
     <requestid>1202771</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0ae07e79cef89c476426a986138a291a</srcmd5>
+    <version>0.9.1</version>
+    <time>1728997353</time>
+    <user>anag+factory</user>
+    <comment>- Add StartupWMClass on dekstop file to fix missing icon on GNOME
+- Add missing jxl mimetype
+</comment>
+    <requestid>1208091</requestid>
+  </revision>
 </revisionlist>

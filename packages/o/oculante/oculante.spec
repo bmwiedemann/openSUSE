@@ -50,6 +50,9 @@ tools.
 %prep
 %autosetup -a1 -p1
 
+echo 'StartupWMClass=oculante' >> res/flathub/%{appid}.desktop
+sed -i 's|MimeType=|MimeType=image/jxl;|' res/flathub/%{appid}.desktop
+
 %build
 %if 0%{?suse_version} < 1600
 export CC="gcc-%{?force_gcc_version}"
