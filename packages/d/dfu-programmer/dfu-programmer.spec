@@ -1,6 +1,7 @@
 #
 # spec file for package dfu-programmer
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +18,15 @@
 
 
 Name:           dfu-programmer
-Version:        0.7.2
+Version:        1.1.0
 Release:        0
 Summary:        A Device Firmware Update based USB programmer for Atmel chips
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 Url:            http://dfu-programmer.sourceforge.net
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libusb-1.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://github.com/dfu-programmer/dfu-programmer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  automake
+BuildRequires:  libusb-1_0-devel
 
 %description
 dfu-programmer is an implementation of the Device Firmware Upgrade class
@@ -39,15 +39,18 @@ on Linux, and because standard DFU loaders do not work for Atmel's chips.
 %setup -q
 
 %build
+./bootstrap.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
+%check
+
 %files
-%defattr(-, root, root)
-%doc AUTHORS NEWS README COPYING
+%doc AUTHORS NEWS README.md
+%license COPYING
 %{_bindir}/dfu-programmer
 %{_mandir}/man1/%{name}.1*
 

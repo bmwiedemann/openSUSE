@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 13 20:38:38 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 1.1.0
+  * Add --erase-first option #90 #92
+  * Fix missing update-bash-completion.sh #91
+  * Fix missing header files #93 #94
+- Update to version 1.0.0
+  * Remove libusb0 support
+- Update to version 0.9.0
+  * Add --validate-first and --ignore-outside options to the flash command
+  * Disabled progress bar when not using a tty
+- Update to version 0.8.1-libusb1
+  * Fix bug preventing specifying a device with libusb0
+  * Fix bug in order device id was printed with libusb0
+  * Publish Windows binaries with libusb1
+  * Update libusb1 include path
+  * Update uses of deprecated libusb1 functions
+- Update to version 0.8.1
+  * Fix bug preventing specifying a device with libusb0
+  * Fix bug in order device id was printed with libusb0
+- Update to version 0.8.0
+  * Experimental support for ST cortex M4
+  * Enable GitHub Actions for releases [2022-10-13]
+  * Make ./bootstrap.sh fail if any command fails (and print commands)
+  * Update configure.ac features
+  * Added IntelliSense hints for Visual Studio Code
+- New source location (Github)
+- Specfile update to current recommendations for Tumbleweed
+
+-------------------------------------------------------------------
 Tue Mar 22 11:52:41 UTC 2016 - wk@ire.pw.edu.pl
 
 - Update to version 0.7.2
