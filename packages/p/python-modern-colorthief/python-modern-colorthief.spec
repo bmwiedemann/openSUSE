@@ -19,15 +19,13 @@
 %{?sle15_python_module_pythons}
 %define         pyname modern_colorthief
 Name:           python-modern-colorthief
-Version:        0.1.3
+Version:        0.1.7
 Release:        0
 Summary:        Colorthief reimagined
 License:        MIT
 URL:            https://github.com/baseplate-admin/modern_colorthief
-Source0:        https://files.pythonhosted.org/packages/source/m/modern-colorthief/modern_colorthief-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# LICENSE added, as it was forgotten, remove with new version
-Source2:        https://raw.githubusercontent.com/baseplate-admin/modern_colorthief/master/LICENSE
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
@@ -43,7 +41,6 @@ Python-modern-colorthief is a rewritten rust python-colorthief replacement
 
 %prep
 %autosetup -a1 -n %{pyname}-%{version}
-cp %{SOURCE2} .
 
 %build
 %pyproject_wheel
@@ -58,6 +55,7 @@ cp %{SOURCE2} .
 %files %{python_files}
 %license LICENSE
 %{python_sitearch}/%{pyname}
+%pycache_only %{python_sitearch}/%{pyname}/__pycache__
 %{python_sitearch}/%{pyname}-%{version}.dist-info
 
 %changelog
