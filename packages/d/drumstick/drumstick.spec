@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(sonivox)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
 
 %description
@@ -141,8 +142,8 @@ This package contains the developer's documentation of the drumstick libraries.
 
 # Update obsolete config file
 doxygen -u Doxyfile.in
-sed -i 's#%{_includedir}/QtCore#%{_includedir}/qt5/QtCore#' Doxyfile.in
-sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
+sed -i 's#%{_includedir}/QtCore#%{_includedir}/qt6/QtCore#' Doxyfile.in
+sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt6/QtGui#' Doxyfile.in
 
 %build
 %cmake_qt6 -DSTATIC_DRUMSTICK=0

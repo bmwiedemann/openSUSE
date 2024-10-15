@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 14 19:35:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.9.1
+  RT library:
+  * initialization of PipeWire in the FluidSynth backend.
+  * fix for #25: FluidSynth backend, ability to configure chorus
+    and reverb parameters.
+  * fix for #24: FluidSynth backend, ability to set several
+    soundfonts.
+  Widgets library:
+  * fix for #25: FluidSynth settings dialog, configuration of
+    chorus and reverb.
+  * fix for #24: FluidSynth settings dialog, select several
+    soundfonts.
+
+-------------------------------------------------------------------
 Thu Feb  1 11:00:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.9.0
