@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 11 08:24:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.16.2:
+  * Revering change unrelated to issue #13176
+  * adds tests for handling of Helm index with broken chart
+    versions #13176
+  * improves handling of Helm index with broken helm chart versions
+    #13176
+  * Bump the k8s-io group with 7 updates
+  * adding check-latest:true
+  * Grammar fixes
+  * Fix typos
+
+-------------------------------------------------------------------
 Sat Sep 14 14:00:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.16.1:
