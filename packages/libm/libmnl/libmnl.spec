@@ -29,45 +29,48 @@ Source:         https://www.netfilter.org/projects/libmnl/files/libmnl-%version.
 Source2:        https://www.netfilter.org/projects/libmnl/files/libmnl-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        baselibs.conf
+BuildRequires:  doxygen
 BuildRequires:  libtool
-BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  pkg-config >= 0.21
 
 %description
-libmnl is a minimalistic user-space library oriented to Netlink
-developers. There are a lot of common tasks in parsing, validating,
-constructing of both the Netlink header and TLVs that are repetitive
-and easy to get wrong. This library aims to provide simple helpers
-that allows you to re-use code and to avoid re-inventing the wheel.
+libmnl is a user-space library for parsing, validation, constructing
+Netlink headers and TLVs.
 
 %package -n %lname
 Summary:        Minimalistic Netlink communication library
 Group:          System/Libraries
 
 %description -n %lname
-libmnl is a minimalistic user-space library oriented to Netlink
-developers. There are a lot of common tasks in parsing, validating,
-constructing of both the Netlink header and TLVs that are repetitive
-and easy to get wrong. This library aims to provide simple helpers
-that allows you to re-use code and to avoid re-inventing the wheel.
+libmnl is a user-space library for Netlink developers. There are a
+lot of common tasks in parsing, validating, constructing of both the
+Netlink header and TLVs that are repetitive and easy to get wrong.
+This library provides helpers that allow for code reuse.
 
 %package devel
-Summary:        Development files for libmnl
+Summary:        Headers for libmnl, a Netlink communications library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-libmnl is a minimalistic user-space library oriented to Netlink
-developers. There are a lot of common tasks in parsing, validating,
-constructing of both the Netlink header and TLVs that are repetitive
-and easy to get wrong. This library aims to provide simple helpers
-that allows you to re-use code and to avoid re-inventing the wheel.
+libmnl is a user-space library for parsing, validation, constructing
+Netlink headers and TLVs. This subpackage has the header files.
+
+%package doc
+Summary:        Documentation for libmnl, a Netlink communications library
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+libmnl is a user-space library for parsing, validation, constructing
+Netlink headers and TLVs. This subpackage has the documentation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # includedir intentional, cf. bugzilla.opensuse.org/795968
-%configure --includedir="%_includedir/%name"
+%configure --includedir="%_includedir/%name" --with-doxygen
 %make_build
 
 %check
@@ -75,10 +78,9 @@ that allows you to re-use code and to avoid re-inventing the wheel.
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
@@ -90,5 +92,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %_includedir/%name/
 %_libdir/libmnl.so
 %_libdir/pkgconfig/libmnl.pc
+
+%files doc
+%_mandir/man3/*.3*
 
 %changelog

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Sep 30 19:36:53 UTC 2024 - mrueckert@suse.de
 
-- Update to version 3.0.5+git0.8e879a52e:
+- Update to version 3.0.5+git0.8e879a52e: (VUL-0: CVE-2024-49214 boo#1231612)
   * [RELEASE] Released version 3.0.5
   * BUG/MINOR: quic: prevent freeze after early QCS closure
   * BUG/MEDIUM: quic: handle retransmit for standalone FIN STREAM

@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        47.0.1
+Version:        47.1
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{gstreamer_version}
 ##
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
+Requires:       gstreamer-plugins-rs
 
 %description
 %{summary}.

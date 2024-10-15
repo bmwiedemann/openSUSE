@@ -67,4 +67,12 @@
     <comment>- Add 0001-Fix-compilation-errors-with-libxml2-2.12.patch</comment>
     <requestid>1194774</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>43bc7eb79eb2fca80264ab95b93a2a24</srcmd5>
+    <version>8.2.2</version>
+    <time>1728997101</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 8.2.2</comment>
+    <requestid>1207881</requestid>
+  </revision>
 </revisionlist>

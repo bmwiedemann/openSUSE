@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>1205512</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54e02ead71de6bfc83edc5be286d8924</srcmd5>
+    <version>47.0</version>
+    <time>1728997113</time>
+    <user>anag+factory</user>
+    <comment>Add even suggests (forwarded request 1207652 from iznogood)</comment>
+    <requestid>1207880</requestid>
+  </revision>
 </revisionlist>

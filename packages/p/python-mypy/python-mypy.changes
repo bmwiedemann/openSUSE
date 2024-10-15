@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Oct 14 12:48:06 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to officially released version 1.12.0:
+  - Support Python 3.12 Syntax for Generics (PEP 695)
+  - Related improvements are included:
+    - Document Python 3.12 type parameter syntax (Jukka
+      Lehtosalo, PR 17816)
+    - Further documentation updates (Jukka Lehtosalo, PR 17826)
+    - Allow Self return types with contravariance (Jukka
+      Lehtosalo, PR 17786)
+    - Enable new type parameter syntax by default (Jukka
+      Lehtosalo, PR 17798)
+    - Generate error if new-style type alias used as base class
+      (Jukka Lehtosalo, PR 17789)
+    - Inherit variance if base class has explicit variance (Jukka
+      Lehtosalo, PR 17787)
+    - Fix crash on invalid type var reference (Jukka Lehtosalo,
+      PR 17788)
+    - Fix covariance of frozen dataclasses (Jukka Lehtosalo, PR
+      17783)
+    - Allow covariance with attribute that has "_" name prefix
+      (Jukka Lehtosalo, PR 17782)
+    - Support Annotated[...] in new-style type aliases (Jukka
+      Lehtosalo, PR 17777)
+    - Fix nested generic classes (Jukka Lehtosalo, PR 17776)
+    - Add detection and error reporting for the use of incorrect
+      expressions within the scope of a type parameter and a type
+      alias (Kirill Podoprigora, PR 17560)
+  - Basic Support for Python 3.13 This release adds partial
+    support for Python 3.13 features and compiled binaries for
+    Python 3.13. Mypyc now also supports Python 3.13.
+    - Various new stdlib features and changes (through typeshed
+      stub improvements)
+    - typing.ReadOnly (see below for more)
+    - typing.TypeIs (added in mypy 1.10, PEP 742)
+    - Type parameter defaults when using the legacy syntax (PEP
+    Th696) ese features are not supported yet:
+    - warnings.deprecated (PEP 702)
+    - Type parameter defaults when using Python 3.12 type
+      parameter syntax
+  - Mypyc Support for Python 3.13
+    - Add additional includes for Python 3.13 (Marc Mueller, PR
+      17506)
+    - Add another include for Python 3.13 (Marc Mueller, PR
+      17509)
+    - Fix ManagedDict functions for Python 3.13 (Marc Mueller, PR
+      17507)
+    - Update mypyc test output for Python 3.13 (Marc Mueller, PR
+      17508)
+    - Fix PyUnicode functions for Python 3.13 (Marc Mueller, PR
+      17504)
+    - Fix _PyObject_LookupAttrId for Python 3.13 (Marc Mueller,
+      PR 17505)
+    - Fix _PyList_Extend for Python 3.13 (Marc Mueller, PR 17503)
+    - Fix gen_is_coroutine for Python 3.13 (Marc Mueller, PR
+      17501)
+    - Fix _PyObject_FastCall for Python 3.13 (Marc Mueller, PR
+      17502)
+    - Avoid uses of _PyObject_CallMethodOneArg on 3.13 (Jukka
+      Lehtosalo, PR 17526)
+    - Don't rely on _PyType_CalculateMetaclass on 3.13 (Jukka
+      Lehtosalo, PR 17525)
+    - Don't use _PyUnicode_FastCopyCharacters on 3.13 (Jukka
+      Lehtosalo, PR 17524)
+    - Don't use _PyUnicode_EQ on 3.13, as it's no longer exported
+      (Jukka Lehtosalo, PR 17523)
+  - Inferring Unions for Conditional Expressions
+  - You can now use typing.ReadOnly to specity TypedDict items as
+    read-only (PEP 705):
+  - Python 3.8 End of Life Approaching
+  - Planned Changes to Defaults - more details in the full
+    Changelog.
+  - Documentation Updates
+  - Experimental Inline TypedDict Syntax
+  - Stubgen Improvements
+  - Stubtest Improvements
+  - Other Notables Fixes and Improvements
+  - Typeshed Updates
+- Update types-psutil 6.0.0.20241011, and types-setuptools to
+  75.1.0.20241014 (just for testing, these are not openSUSE
+  packages of these tools).
+- Remove _service* files.
+
+-------------------------------------------------------------------
 Wed Oct 09 22:17:25 UTC 2024 - mcepl@cepl.eu
 
 - Temporarily switched to using git source before the problems

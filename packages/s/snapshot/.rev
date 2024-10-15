@@ -68,4 +68,16 @@ New package for GNOME</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205488</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36c06bcde1d7934b0684e1b2747a497d</srcmd5>
+    <version>47.1</version>
+    <time>1728997104</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.1:
+  + Optimize caps selection for 16:9.
+  + Only get devices from pipewire.
+- Add gstreamer-plugins-rs Requires, Snapshot needs the
+  gst-plugin-gtk4 provided by it during runtime. (forwarded request 1207488 from iznogood)</comment>
+    <requestid>1207877</requestid>
+  </revision>
 </revisionlist>

@@ -172,4 +172,12 @@
     <comment>- Update to release 1.0.5</comment>
     <requestid>967160</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fe4c1434882706b601cd6bd77fc8d4ae</srcmd5>
+    <version>1.0.5</version>
+    <time>1728997066</time>
+    <user>anag+factory</user>
+    <comment>- Enable building documentation</comment>
+    <requestid>1207893</requestid>
+  </revision>
 </revisionlist>

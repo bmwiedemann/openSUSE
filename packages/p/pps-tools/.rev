@@ -82,4 +82,12 @@
   * Removes OFFSETASSERT requirement from ppstest and ppsctl.</comment>
     <requestid>1038815</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6001eb27633b85eac7478a96706fbb3a</srcmd5>
+    <version>1.0.3+git20240314</version>
+    <time>1728997060</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1207864</requestid>
+  </revision>
 </revisionlist>

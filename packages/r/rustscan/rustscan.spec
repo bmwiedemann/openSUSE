@@ -18,7 +18,7 @@
 
 
 Name:           rustscan
-Version:        2.1.1+0
+Version:        2.3.0+0
 Release:        0
 Summary:        Fast network port scanner
 License:        GPL-3.0-or-later
@@ -26,8 +26,8 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/RustScan/RustScan
 Source:         RustScan-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  python3
 Recommends:     nmap
 
 %description
@@ -36,14 +36,19 @@ pipe them into Nmap.
 
 %prep
 %setup -qa1 -n RustScan-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
 
 %install
 %{cargo_install}
+
+%check
+%{cargo_test} -- \
+  --skip address::tests::parse_correct_host_addresses \
+  --skip address::tests::parse_hosts_file_and_incorrect_hosts \
+  --skip address::tests::resolver_args_google_dns \
+  --skip address::tests::resolver_default_cloudflare
 
 %files
 %license LICENSE

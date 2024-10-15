@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:10:52 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch
+  '5c8bdb190f6d MdePkg DebugLib: Enable FILE NAME as DEBUG ASSERT for GCC12'
+  (bsc#1230425)
+- Using gcc12 for building x86_64 ovmf image:
+  As the item 'Changed the approach for creating the edk2 source code tarball'
+  in 'Update to edk2-stable202405' change log. We modified the folder name in
+  edk2-edk2-stable%{version}.tar.gz source code tarball to avoid the size
+  problem against FD_SIZE_2MB config. (bsc#1230425)
+  We can use gcc-12 to avoid the size problem because gcc-12 supported
+  __FILE_NAME__ macro for reproducing the size of firmware image. So we
+  applied the above 5c8bdb190f6d patch and aldo the following SLE15-SP7/
+  Leap 15.7 specific patch for setting the gcc-12 as the default compiler
+  for x86_64 ovmf:
+        - ovmf-BaseTools-Using-gcc12-for-building-image.patch
+          'BaseTools: Using gcc12 for building x86_64 ovmf image'
+        - This patch only be applied to x86_64 image when building on SUSE
+          15.5/15.6/15.7 codebases. Here is the pseudocode in ovmf.spec:
+                ifarch x86_64 
+                if sle_version >= 150500 && sle_version <= 150700
+                Patch13 ovmf-BaseTools-Using-gcc12-for-building-image.patch
+                endif    
+                endif
+          The main target is SLE15-SP7 and Leap 15.7. The SUSE 15.5/15.6 is
+          for building in Virtualization development project on OBS:
+- Changed the edk2-edk2-stable202405.tar.gz back to the tarball which directly
+  downloading from https://github.com/tianocore/edk2.
+  Because we moved to gcc-12 for reducing the size of firmware image. 
+        - Against this change, we modified the setup command in %prep section in
+          ovmf.spec back to original statement:
+            new: %setup -q -n edk2-edk2-stable%{version} 
+            old: %setup -q -n edk2
+
+-------------------------------------------------------------------
 Wed Sep 18 08:37:37 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - ovmf-rpmlintrc: Add wildcard to make the filter effective on 15.x

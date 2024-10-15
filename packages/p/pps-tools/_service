@@ -1,12 +1,13 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/ago/pps-tools.git</param>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/redlab-i/pps-tools</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">pps-tools</param>
-    <param name="versionformat">0.0.0+git.%cd</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service name="set_version"  mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

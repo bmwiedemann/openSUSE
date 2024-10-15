@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 13 11:54:18 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not embed a random tmpdir in binaries (boo#1062303)
+
+-------------------------------------------------------------------
 Wed Oct  9 07:35:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

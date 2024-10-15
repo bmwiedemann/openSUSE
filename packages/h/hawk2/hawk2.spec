@@ -31,9 +31,9 @@
 %define gname haclient
 %define uname hacluster
 
-%define rb_ruby_suffix 		ruby3.3
-%define rb_build_versions       %rb_default_ruby
-%define rb_build_ruby_abis      %rb_default_ruby_abi
+%define rb_build_versions %{rb_default_ruby}
+%define rb_build_abi      %{rb_default_ruby_abi}
+%define rb_suffix         %{rb_default_ruby_suffix}
 
 Name:           hawk2
 Summary:        HA Web Konsole
@@ -70,44 +70,44 @@ Provides:       group(%{gname})
 
 BuildRequires:  distribution-release
 BuildRequires:  timezone
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:bundler)
-Requires:       rubygem(%{rb_default_ruby_abi}:bundler)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:rails:7)
-Requires:       rubygem(%{rb_default_ruby_abi}:rails:7)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.6)
-Requires:       rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.6)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:puma) >= 5
-Requires:       rubygem(%{rb_default_ruby_abi}:puma) >= 5
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:sass-rails:5)
-Requires:       rubygem(%{rb_default_ruby_abi}:sass-rails:5)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:virtus) >= 1.0.1
-Requires:       rubygem(%{rb_default_ruby_abi}:virtus) >= 1.0.1
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:js-routes) >= 2.0.0
-Requires:       rubygem(%{rb_default_ruby_abi}:js-routes) >= 2.0.0
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:fast_gettext) >= 1.4
-Requires:       rubygem(%{rb_default_ruby_abi}:fast_gettext) >= 1.4
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:gettext_i18n_rails) >= 1.8
-Requires:       rubygem(%{rb_default_ruby_abi}:gettext_i18n_rails) >= 1.8
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:gettext_i18n_rails_js) >= 1.3
-Requires:       rubygem(%{rb_default_ruby_abi}:gettext_i18n_rails_js) >= 1.3
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:sprockets:3.7)
-Requires:       rubygem(%{rb_default_ruby_abi}:sprockets:3.7)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:kramdown) >= 1.14
-Requires:       rubygem(%{rb_default_ruby_abi}:kramdown) >= 1.14
+BuildRequires:  rubygem(%{rb_build_abi}:bundler)
+Requires:       rubygem(%{rb_build_abi}:bundler)
+BuildRequires:  rubygem(%{rb_build_abi}:rails:7)
+Requires:       rubygem(%{rb_build_abi}:rails:7)
+BuildRequires:  rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
+Requires:       rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
+BuildRequires:  rubygem(%{rb_build_abi}:puma) >= 5
+Requires:       rubygem(%{rb_build_abi}:puma) >= 5
+BuildRequires:  rubygem(%{rb_build_abi}:sass-rails:5)
+Requires:       rubygem(%{rb_build_abi}:sass-rails:5)
+BuildRequires:  rubygem(%{rb_build_abi}:virtus) >= 1.0.1
+Requires:       rubygem(%{rb_build_abi}:virtus) >= 1.0.1
+BuildRequires:  rubygem(%{rb_build_abi}:js-routes) >= 2.0.0
+Requires:       rubygem(%{rb_build_abi}:js-routes) >= 2.0.0
+BuildRequires:  rubygem(%{rb_build_abi}:fast_gettext) >= 1.4
+Requires:       rubygem(%{rb_build_abi}:fast_gettext) >= 1.4
+BuildRequires:  rubygem(%{rb_build_abi}:gettext_i18n_rails) >= 1.8
+Requires:       rubygem(%{rb_build_abi}:gettext_i18n_rails) >= 1.8
+BuildRequires:  rubygem(%{rb_build_abi}:gettext_i18n_rails_js) >= 1.3
+Requires:       rubygem(%{rb_build_abi}:gettext_i18n_rails_js) >= 1.3
+BuildRequires:  rubygem(%{rb_build_abi}:sprockets:3.7)
+Requires:       rubygem(%{rb_build_abi}:sprockets:3.7)
+BuildRequires:  rubygem(%{rb_build_abi}:kramdown) >= 1.14
+Requires:       rubygem(%{rb_build_abi}:kramdown) >= 1.14
 
 # TODO: remove uglifier completely
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:uglifier) >= 1.14
-Requires:       rubygem(%{rb_default_ruby_abi}:uglifier) >= 1.14
+BuildRequires:  rubygem(%{rb_build_abi}:uglifier) >= 1.14
+Requires:       rubygem(%{rb_build_abi}:uglifier) >= 1.14
 
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:execjs) >= 2.8
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:gettext) >= 3.2
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:uglifier) >= 3
+BuildRequires:  rubygem(%{rb_build_abi}:execjs) >= 2.8
+BuildRequires:  rubygem(%{rb_build_abi}:gettext) >= 3.2
+BuildRequires:  rubygem(%{rb_build_abi}:uglifier) >= 3
 # TODO: remove execjs below
-Requires:       rubygem(%{rb_default_ruby_abi}:execjs) >= 2.8
+Requires:       rubygem(%{rb_build_abi}:execjs) >= 2.8
 
 # Help OBS scheduler:
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:mail) >= 2.8
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:tilt) >= 2
+BuildRequires:  rubygem(%{rb_build_abi}:mail) >= 2.8
+BuildRequires:  rubygem(%{rb_build_abi}:tilt) >= 2
 #/Help OBS scheduler
 
 BuildRequires:  git
@@ -124,21 +124,21 @@ High-Availability cluster resource manager.
 
 
 %build
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/rails
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/rake
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_ruby_suffix}$' hawk/bin/bundle
+sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' hawk/bin/rails
+sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' hawk/bin/rake
+sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' hawk/bin/bundle
 pushd hawk
-if [ -x /usr/bin/bundle.ruby.%{rb_ruby_suffix} ]; then
-	bundlerexe=bundle.ruby.%{rb_ruby_suffix}
+if [ -x /usr/bin/bundle.ruby.%{rb_suffix} ]; then
+	bundlerexe=bundle.ruby.%{rb_suffix}
 else
-	bundlerexe=bundle.%{rb_ruby_suffix}
+	bundlerexe=bundle.%{rb_suffix}
 fi
 $bundlerexe exec bin/rails version
 popd
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"
 export CFLAGS
-make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{init_style} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} RUBY_SUFFIX=.%{rb_ruby_suffix}
+make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{init_style} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} RUBY_SUFFIX=.%{rb_suffix}
 # We need the Gemfile.lock only to set the permissions
 # (see %attr(-, %{uname},%{gname})%{www_base}/hawk/Gemfile.lock)
 # The content shoulhawk/Gemfile.lockd be generated locally.

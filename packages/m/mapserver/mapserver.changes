@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 13 20:43:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.2
+  * Use EPSGTreatsAsLatLong and EPSGTreatsAsNorthingEasting to
+    determine inverted axis
+- Delete 0001-Fix-compilation-errors-with-libxml2-2.12.patch
+  (merged)
+- Perform multipython build
+
+-------------------------------------------------------------------
 Mon Aug 19 20:30:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fix-compilation-errors-with-libxml2-2.12.patch

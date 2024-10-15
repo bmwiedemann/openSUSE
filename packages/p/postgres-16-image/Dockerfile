@@ -15,10 +15,11 @@
 
 #!UseOBSRepositories
 
+#!BuildTag: opensuse/postgres:%%pg_patch_version%%-%RELEASE%
+#!BuildTag: opensuse/postgres:%%pg_patch_version%%
 #!BuildTag: opensuse/postgres:16-%RELEASE%
 #!BuildTag: opensuse/postgres:16
 #!BuildTag: opensuse/postgres:%%pg_minor_version%%
-#!BuildTag: opensuse/postgres:%%pg_patch_version%%
 #!BuildTag: opensuse/postgres:latest
 
 FROM opensuse/tumbleweed:latest
@@ -38,8 +39,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="16-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/postgres:16-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%pg_patch_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/postgres:%%pg_patch_version%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

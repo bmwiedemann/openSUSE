@@ -71,6 +71,13 @@ Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 Patch10:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
 # Bug 1230587 - OVMF 202405 hangs due to missing fix
 Patch11:        %{name}-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch
+# Bug 1230425 - Using shorter name of build root folder can build out a smaller ovmf image
+Patch12:        %{name}-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch
+%ifarch x86_64
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
+Patch13:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
+%endif
+%endif
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -78,6 +85,12 @@ BuildRequires:  dosfstools
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%ifarch x86_64
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%endif
+%endif
 BuildRequires:  iasl
 BuildRequires:  libuuid-devel
 BuildRequires:  mkisofs
@@ -188,12 +201,7 @@ virt board.
 %endif
 
 %prep
-# We download the edk2-edk2-stable%{version}.tar.gz from
-# https://github.com/tianocore/edk2. Then we repackage the tarball for
-# renaming the root build folder from edk2-edk2-stable%{version}/ to edk2/
-# . This approach can reduce the size of FV image against FD_SIZE_2MB config.
-# Please check ovmf.change rpm changelog for more detail.
-%setup -q -n edk2
+%setup -q -n edk2-edk2-stable%{version}
 
 # bsc#973038 Remove the packages we don't need to avoid any potential
 # license issue.
@@ -326,6 +334,11 @@ BUILD_OPTIONS_RV64=" \
 
 # Build BaseTools
 %ifarch x86_64
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
+echo "gcc_version="`gcc -dumpversion`
+export CC=gcc-12
+export CXX=g++-12
+%endif
 	make -C BaseTools
 %endif
 %ifarch aarch64

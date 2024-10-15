@@ -24,6 +24,7 @@
 %bcond_without etebase
 %endif
 
+%bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
 Version:        24.08.2
@@ -44,7 +45,9 @@ BuildRequires:  libboost_system-devel
 %if %{with etebase}
 BuildRequires:  libetebase-devel
 %endif
+%if %{with kolabxml}
 BuildRequires:  libkolabxml-devel >= 1.1
+%endif
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -124,7 +127,9 @@ use PIM applications.
 %{_kf6_applicationsdir}/org.kde.akonadi_ews_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_google_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_imap_resource.desktop
+%if %{with kolabxml}
 %{_kf6_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
+%endif
 %{_kf6_applicationsdir}/org.kde.akonadi_openxchange_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcard_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcarddir_resource.desktop

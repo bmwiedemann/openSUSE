@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 12 21:26:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.9.0. Hotfix release. Check
+  https://ardour.org/whatsnew.html for the full list of changes
+  * Fix crash caused by a change in how waveforms were drawn
+  * Fix bug that caused MIDI notes immediately after the start
+    of playback to be ignored.
+
+-------------------------------------------------------------------
 Fri Oct  4 22:28:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.8.0. Check https://ardour.org/whatsnew.html for the

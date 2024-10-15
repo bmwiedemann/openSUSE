@@ -169,4 +169,24 @@
     <comment></comment>
     <requestid>1074111</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e13944456fe004be7d55765438ae9d27</srcmd5>
+    <version>1.5.42+git.de9f01e</version>
+    <time>1728997070</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.42+git.de9f01e:
+  * CMake: bump the minimal required version to 3.5
+  * python: move from distutils to sysconfig
+  * CMake: use ${PC_LIBUSB_LIBRARIES} instead of a library name
+  * CMake: fix multiarch support
+  * CMake: make the project compatible with building as a subproject
+  * ftdipp/CMakeLists.txt: remove VIM modline settings
+  * CMake: rework subdirectory handling
+  * CMake: rework findlibusb module
+  * CMake: report CMake version
+  * CMake: use dedicated recipe for documentation generation
+D 0001-Fix-race-during-build-of-python-bindings.patch
+Patch got integrated mainline</comment>
+    <requestid>1207954</requestid>
+  </revision>
 </revisionlist>

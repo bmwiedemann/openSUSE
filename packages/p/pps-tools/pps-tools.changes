@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 12 09:10:15 UTC 2024 - mardnh@gmx.de
+
+- Update to version 1.0.3+git20240314:
+  * Add support for "echo" function of pps-gpio driver
+  * Use %lld in printf for 64-bit time_t
+
+-------------------------------------------------------------------
 Tue Nov 29 06:29:58 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.0.0+git.20211122:

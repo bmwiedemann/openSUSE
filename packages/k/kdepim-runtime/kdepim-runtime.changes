@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 10 11:12:03 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make use of libkolabxml optional (boo#1060506)
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

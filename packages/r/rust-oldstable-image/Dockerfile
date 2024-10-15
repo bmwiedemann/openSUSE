@@ -17,9 +17,10 @@
 
 #!BuildTag: opensuse/bci/rust:oldstable-2.%RELEASE%
 #!BuildTag: opensuse/bci/rust:oldstable
+#!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-2.%RELEASE%
+#!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
 #!BuildTag: opensuse/bci/rust:1.80-2.%RELEASE%
 #!BuildTag: opensuse/bci/rust:1.80
-#!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
 
 FROM opensuse/tumbleweed:latest
 
@@ -38,8 +39,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="1.80-2.%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.80-2.%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%RUST_VERSION%%-2.%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:%%RUST_VERSION%%-2.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

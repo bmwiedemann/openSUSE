@@ -15,10 +15,11 @@
 
 #!UseOBSRepositories
 
+#!BuildTag: opensuse/bci/python:%%py311_ver%%-%RELEASE%
+#!BuildTag: opensuse/bci/python:%%py311_ver%%
 #!BuildTag: opensuse/bci/python:3.11-%RELEASE%
 #!BuildTag: opensuse/bci/python:3.11
 #!BuildTag: opensuse/bci/python:3
-#!BuildTag: opensuse/bci/python:%%py311_ver%%
 #!BuildTag: opensuse/bci/python:latest
 
 FROM opensuse/tumbleweed:latest
@@ -38,8 +39,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="3.11-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/python:3.11-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%py311_ver%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/python:%%py311_ver%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

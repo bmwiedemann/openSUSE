@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 13 10:16:37 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap.
+
+-------------------------------------------------------------------
 Sat Jul 27 23:57:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add doc and bash-completion subpackages

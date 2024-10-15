@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/ago/pps-tools.git</param>
-              <param name="changesrevision">c50cb7183e252b47308fa22f420e0a877277aa29</param></service></servicedata>
+              <param name="changesrevision">c50cb7183e252b47308fa22f420e0a877277aa29</param></service><service name="tar_scm">
+                <param name="url">https://github.com/redlab-i/pps-tools</param>
+              <param name="changesrevision">e5083fe1481a34373dee2acfabb63001ee9c40e0</param></service></servicedata>

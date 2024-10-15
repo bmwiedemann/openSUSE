@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 12 16:30:45 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.13.2:
+  * fix: depr() should return DeprecationWarning
+  * change: Deprecate bottle.py script install
+  * docs: Added deprecation note for Python 2.x to release notes
+- add bottle script as alternative alongside bottle.py
+
+-------------------------------------------------------------------
 Mon Sep  9 06:21:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.1

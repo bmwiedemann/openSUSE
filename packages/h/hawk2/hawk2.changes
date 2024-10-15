@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:32:16 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Do not assume a specific ruby version to build against
+  * instead use the default ruby of the distribution.
+
+-------------------------------------------------------------------
 Thu Oct 10 07:58:01 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.5+git.1727339846.0abbc129:

@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 0.0.0+git.20211122
+%define version_unconverted 1.0.3+git20240314
 Name:           pps-tools
-Version:        0.0.0+git.20211122
+Version:        1.0.3+git20240314
 Release:        0
 Summary:        Userspace tools for the Linux Pulse Per Second subsystem
 License:        GPL-2.0-or-later

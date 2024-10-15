@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 12 08:21:00 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to 4.4.1
+  * Improve controls responsiveness with the Sndio output plugin
+  * Add Qt 6 support for the Qt Multimedia output plugin
+  * Lower GTK 3 version requirement from 3.22 to 3.18
+
+-------------------------------------------------------------------
 Sun Aug  4 20:19:26 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Re-enable QT6 for Leap/SLE 15.X.

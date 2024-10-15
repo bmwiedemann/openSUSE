@@ -23,7 +23,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-onnx
-Version:        1.16.2
+Version:        1.17.0
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module fb-re2}
 BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module numpy < 2.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pybind11-devel}
@@ -159,7 +159,7 @@ done
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 # copy tests into clean subdir and test the installed lib in sitearch
 mkdir cleantestdir
-cp -r onnx/test onnx/examples cleantestdir/
+cp -r onnx/test examples cleantestdir/
 pushd cleantestdir
 # skip online tests
 donttest="   test_bvlc_alexnet_cpu \

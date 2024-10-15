@@ -144,12 +144,12 @@ Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix
 # PATCH-FIX-UPSTREAM -- https://bugzilla.mindrot.org/show_bug.cgi?id=3655#c4
 Patch201:       fix-x11-regression-bsc1229449.patch
 # 1000 - 2000  --  Conditional patches
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 Patch1000:      openssh-9.6p1-crypto-policies.patch
 Patch1001:      openssh-9.6p1-crypto-policies-man.patch
 %endif
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 # PATCH-FIX-SLE Allow root login with password by default (for SLE12 and SLE15)
 Patch1002:      openssh-7.7p1-allow_root_password_login.patch
 %endif
@@ -164,7 +164,7 @@ BuildRequires:  libselinux-devel
 %if %{with ldap}
 BuildRequires:  openldap2-devel
 %endif
-%if 0%{with openssl11}
+%if %{with openssl11}
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  openssl-1_1
 %else
@@ -225,7 +225,7 @@ clients.
 Summary:        SSH (Secure Shell) server
 Group:          Productivity/Networking/SSH
 Requires:       %{name}-common = %{version}-%{release}
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 Requires:       crypto-policies >= 20220824
 %endif
 Recommends:     audit
@@ -234,7 +234,7 @@ Requires(pre):  grep
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Provides:       openssh:%{_sbindir}/sshd
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 # For a brief period of time this package existed in SLE/Leap.
 # It was removed before GM but some people might have it from
 # a beta distribution version (boo#1227350)
@@ -254,7 +254,7 @@ also be forwarded over the secure channel.
 This package contains the Secure Shell daemon, which allows clients to
 securely connect to your server.
 
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 %package server-config-disallow-rootlogin
 Summary:        Config to disallow password root logins to sshd
 Group:          Productivity/Networking/SSH
@@ -283,7 +283,7 @@ ssh-copy-id(1).
 %package clients
 Summary:        SSH (Secure Shell) client applications
 Group:          Productivity/Networking/SSH
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 Requires:       crypto-policies >= 20220824
 %endif
 Requires:       %{name}-common = %{version}-%{release}
@@ -432,7 +432,7 @@ install -m 755 contrib/ssh-copy-id %{buildroot}%{_bindir}
 install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
 
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 echo "PermitRootLogin prohibit-password" > %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
 %else
 echo "PermitRootLogin yes" > %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
@@ -444,14 +444,14 @@ mkdir -p %{buildroot}%{_distconfdir}/ssh/ssh{,d}_config.d
 mv %{buildroot}%{_sysconfdir}/ssh/moduli %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/ssh_config %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
 %else
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 %endif
 %endif
 
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 %if %{defined _distconfdir}
 install -m 644 sshd_config_suse_cp %{buildroot}%{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
@@ -484,7 +484,7 @@ install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
 #
 # this shows up earlier because otherwise the %%expand of
 # the macro is too late.
-%if 0%{with openssl11}
+%if %{with openssl11}
 %define opensslbin openssl-1_1
 %else
 %define opensslbin openssl
@@ -514,7 +514,7 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 %{fillup_only -n ssh}
 %service_add_post sshd.service sshd.socket
 
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 %if ! %{defined _distconfdir}
 test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
     echo "WARNING: /etc/ssh/sshd_config doesn't include config files from"
@@ -538,7 +538,7 @@ else
 %service_del_postun sshd.service sshd.socket
 fi
 
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 %if ! %{defined _distconfdir}
 %post server-config-disallow-rootlogin
 test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
@@ -563,7 +563,7 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config.rpmsave.old ||:
 %endif
 
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 %if ! %{defined _distconfdir}
 %post clients
 test -f /etc/ssh/ssh_config && (grep -q "^Include /etc/ssh/ssh_config\.d/\*\.conf" /etc/ssh/ssh_config || ( \
@@ -621,7 +621,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %endif
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 %if %{defined _distconfdir}
 %attr(0600,root,root) %config(noreplace) %{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %else
@@ -648,7 +648,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %config %{_fwdefdir}/sshd
 %endif
 
-%if 0%{with allow_root_password_login_by_default}
+%if %{with allow_root_password_login_by_default}
 %files server-config-disallow-rootlogin
 %if %{defined _distconfdir}
 %{_distconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
@@ -665,7 +665,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %endif
 
 %files clients
-%if 0%{with crypto_policies}
+%if %{with crypto_policies}
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 %endif

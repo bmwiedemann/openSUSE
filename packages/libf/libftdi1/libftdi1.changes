@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 13 13:19:55 UTC 2024 - trenn@suse.de
+
+- Update to version 1.5.42+git.de9f01e:
+  * CMake: bump the minimal required version to 3.5
+  * python: move from distutils to sysconfig
+  * CMake: use ${PC_LIBUSB_LIBRARIES} instead of a library name
+  * CMake: fix multiarch support
+  * CMake: make the project compatible with building as a subproject
+  * ftdipp/CMakeLists.txt: remove VIM modline settings
+  * CMake: rework subdirectory handling
+  * CMake: rework findlibusb module
+  * CMake: report CMake version
+  * CMake: use dedicated recipe for documentation generation
+D 0001-Fix-race-during-build-of-python-bindings.patch
+Patch got integrated mainline
+
+-------------------------------------------------------------------
 Thu Mar 16 10:02:33 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix random build failures:

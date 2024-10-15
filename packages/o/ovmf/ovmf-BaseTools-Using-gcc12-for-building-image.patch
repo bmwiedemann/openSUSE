@@ -1,0 +1,54 @@
+From d5d287720d28ae6ed384432d6844d601577d14b2 Mon Sep 17 00:00:00 2001
+From: Chun-Yi Lee <jlee@suse.com>
+Date: Mon, 14 Oct 2024 12:02:41 +0800
+Subject: [PATCH] BaseTools: Using gcc12 for building x86_64 ovmf image
+
+After '5c8bdb190f6d MdePkg DebugLib: Enable FILE NAME as DEBUG ASSERT for
+GCC12' be merged to mainline. The __FILE_NAME__ marco can be used when
+using gcc12 for building firmware image. It's useful for reducing the
+final image size of FD_SIZE_2MB. (bsc#1230425)
+
+The default gcc version of SLE15 is gcc7. This patch modified the
+tools_def.template file which will be copied to Conf/tools_def.txt
+after 'source edksetup.sh' command be run for setting building
+environment.
+
+In ovmf.spec, we will only apply this patch to SUSE 15.5/15.6/15.7
+for building x86_64 image because the default gcc version of openSUSE
+Tumbleweed is gcc14.
+---
+ BaseTools/Conf/tools_def.template | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/BaseTools/Conf/tools_def.template b/BaseTools/Conf/tools_def.template
+index c34ecfd557..6e7ae252b8 100755
+--- a/BaseTools/Conf/tools_def.template
++++ b/BaseTools/Conf/tools_def.template
+@@ -1353,15 +1353,15 @@ RELEASE_GCC5_IA32_DLINK_FLAGS    = DEF(GCC5_IA32_X64_DLINK_FLAGS) -flto -Os -Wl,
+ # GCC5 X64 definitions
+ ##################
+ *_GCC5_X64_OBJCOPY_PATH          = DEF(GCC5_X64_PREFIX)objcopy
+-*_GCC5_X64_CC_PATH               = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_SLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-ar
+-*_GCC5_X64_DLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_ASLDLINK_PATH         = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_ASM_PATH              = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_PP_PATH               = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_VFRPP_PATH            = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_ASLCC_PATH            = DEF(GCC5_X64_PREFIX)gcc
+-*_GCC5_X64_ASLPP_PATH            = DEF(GCC5_X64_PREFIX)gcc
++*_GCC5_X64_CC_PATH               = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_SLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-ar-12
++*_GCC5_X64_DLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_ASLDLINK_PATH         = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_ASM_PATH              = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_PP_PATH               = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_VFRPP_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_ASLCC_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
++*_GCC5_X64_ASLPP_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
+ *_GCC5_X64_RC_PATH               = DEF(GCC5_X64_PREFIX)objcopy
+ 
+ *_GCC5_X64_ASLCC_FLAGS           = DEF(GCC5_ASLCC_FLAGS) -m64
+-- 
+2.35.3
+

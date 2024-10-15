@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 %bcond_without test
-%define types_psutil_version 5.9.5.17
-%define types_setuptools_version 68.2.0.0
+%define types_psutil_version 6.0.0.20241011
+%define types_setuptools_version 75.1.0.20241014
 Name:           python-mypy
-Version:        1.11.2+git.1728499967.eca206d
+Version:        1.12.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
 URL:            https://www.mypy-lang.org/
-# Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%%{version}.tar.gz
-Source0:        mypy-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
+# Source0:        mypy-%%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.

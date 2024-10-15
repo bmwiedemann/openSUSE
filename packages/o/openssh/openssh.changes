@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 15:06:19 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{with ...} instead of 0%{with ...}
+
+-------------------------------------------------------------------
 Fri Oct 11 09:28:30 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a patch to fix a regression introduced in 9.6 that makes X11

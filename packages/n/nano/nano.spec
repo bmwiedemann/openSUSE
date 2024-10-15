@@ -1,7 +1,7 @@
 #
 # spec file for package nano
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define _version 8
 Name:           nano
-Version:        8.1
+Version:        8.2
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later

@@ -37,6 +37,7 @@ Patch1:         fix.patch
 Patch2:         0001-fixed-encoding-of-silent-audio-file.patch
 # FFmpeg5 support
 Patch3:         dvdstyler-ffmpeg5.patch
+Patch4:         DVDStyler-ffmpeg7.patch
 BuildRequires:  bison
 #!BuildIgnore:  wxWidgets-3_2-devel
 BuildRequires:  dvd+rw-tools
@@ -46,13 +47,13 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 #BuildRequires:  mc
 BuildRequires:  mkisofs >= 2.01
-BuildRequires:  ffmpeg-6-libavcodec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xmlto
 BuildRequires:  zip
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)

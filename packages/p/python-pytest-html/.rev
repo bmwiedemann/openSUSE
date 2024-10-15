@@ -265,4 +265,13 @@
   * fix: Incorrect label for xfailed (#733) @BeyondEvil</comment>
     <requestid>1174794</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fa75b8645db14115d1f70bb57b83312a</srcmd5>
+    <version>4.1.1</version>
+    <time>1728997094</time>
+    <user>anag+factory</user>
+    <comment>- Update packages-lock.json to fix CVE-2024-48949, update elliptic js
+  dependency. bsc#1231562</comment>
+    <requestid>1207876</requestid>
+  </revision>
 </revisionlist>

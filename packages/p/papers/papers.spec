@@ -1,8 +1,8 @@
 #
 # spec file for package papers
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 mantarimay
-# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,18 +39,24 @@ BuildRequires:  nautilus-devel
 BuildRequires:  python3-gi-docgen
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(ddjvuapi)
+BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.13.8
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libgxps)
-BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspectre)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(poppler-glib)
+Recommends:     papers-plugin-pdfdocument
+Suggests:       papers-plugin-comicsdocument
+Suggests:       papers-plugin-djvudocument
+Suggests:       papers-plugin-psdocument
+Suggests:       papers-plugin-tiffdocument
+Suggests:       papers-plugin-pdfdocument
 
 %description
 Papers is a document viewer capable of displaying single-page and multi-page

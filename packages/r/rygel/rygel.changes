@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 12 21:44:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.44.1:
+  + Server: Fix progress reporting for ImportResource.
+  + MediaExport: Fix a critical when unable to detect mime type.
+
+-------------------------------------------------------------------
 Sun Sep 15 07:08:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.44.0:

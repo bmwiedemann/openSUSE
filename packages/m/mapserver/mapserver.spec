@@ -30,17 +30,18 @@
 %bcond_with php
 %define php_name    php7
 %endif
+%{?sle15_python_module_pythons}
 
 Name:           mapserver
-Version:        8.0.1
+Version:        8.2.2
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
+#Git-Clone:     https://github.com/MapServer/MapServer
 URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
-Patch1:         0001-Fix-compilation-errors-with-libxml2-2.12.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -76,6 +77,7 @@ BuildRequires:  postgresql-server-devel >= 9.1
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  php8-devel
 BuildRequires:  proj
+BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  rpm
 %if 0%{with php}
@@ -87,8 +89,15 @@ BuildRequires:  update-alternatives
 BuildRequires:  xorg-x11-libXpm-devel
 BuildRequires:  zlib-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
+%if %{with python}
+BuildRequires:  %python_module devel
+BuildRequires:  %python_module wheel
+BuildRequires:  %python_module pip
+BuildRequires:  %python_module setuptools >= 40.8.0
+%endif
 Requires:       %{libname} = %{version}-%{release}
 Requires:       proj
+%python_subpackages
 
 %description
 Mapserver is an internet mapping program that converts GIS data to
@@ -138,12 +147,7 @@ within the Perl programming language.
 %package -n python-mapscript
 Summary:        Python/Mapscript map making extensions to Python
 Group:          Development/Languages/Python
-%if 0%{with python}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-%endif
 Requires:       %{libname} = %{version}-%{release}
-Requires:       python3-base
 Provides:       mapserver-python = %{version}-%{release}
 Obsoletes:      mapserver-python < %{version}-%{release}
 
@@ -198,8 +202,6 @@ against the C Mapserver library.
 %autosetup -p1
 
 %build
-mkdir build
-cd build
 #Pre export the PREFIX ( having it on the command line doesn't expand correctly for
 #dynamic postgresql location
 export CMAKE_PREFIX_PATH="%{_includedir}:%{_includedir}/fastcgi:%%(pg_config --includedir):%%(pg_config --includedir-server):%%(pg_config --libdir)"
@@ -208,6 +210,9 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 #specify all options and play with true/false
 #so we always know which option are included in our build.
+%{python_expand #
+mkdir b$python
+pushd b$python
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
@@ -218,6 +223,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DCMAKE_SKIP_RPATH=ON \
+        -DPython_EXECUTABLE:PATH="/usr/bin/$python" \
         -DWITH_CAIRO=TRUE \
         -DWITH_CLIENT_WFS=TRUE \
         -DWITH_CLIENT_WMS=TRUE \
@@ -270,28 +276,20 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         ..
 
 %make_build
+popd
+}
 
 %check
 # make test
 
 %install
-mkdir -p %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{_cgibindir}
-mkdir -p %{buildroot}%{_libdir}/%{php_name}/extensions
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}%{python_sitearch}/
-mkdir -p %{buildroot}/%{_includedir}/%{name}
-#Comment this look a bit wired to be useful sub-dir should also needed
-# agg, etc
-cp *.h %{buildroot}/%{_includedir}/%{name}/
 
-# fix some exec bits essentially on examples to make rpmlint happy
-# and avoid rpm adding require
-find mapscript/ -type f "(" -iname "*.p[ly]" -o -iname "*.rb" -o -iname "*.dist" ")" -exec chmod -x {} +
-
-cd build
+%{python_expand #
+pushd b$python
 %make_install
-cd ..
+popd
+}
 
 %if 0%{with php}
 mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/
@@ -316,7 +314,8 @@ rm -rf %{buildroot}%{_docdir}/%{name}/tests/vera \
        %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
 
 chmod a+x "%{buildroot}/%{_libdir}/libjavamapscript.so"
-rm -fv "%buildroot/%_sysconfdir/mapserver-sample.conf"
+rm -fv "%buildroot/etc/mapserver-sample.conf" \
+       "%buildroot/usr/etc/mapserver-sample.conf"
 echo >"mapserver.conf" <<-EOF
 	CONFIG
 		ENV
@@ -325,17 +324,10 @@ echo >"mapserver.conf" <<-EOF
 	END
 EOF
 
-%if 0%{?suse_version} < 1550
-mkdir -pv "%buildroot/%python3_sitearch"
-mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
-%endif
+%ldconfig_scriptlets -n %libname
 
-%post -n %{libname} -p /sbin/ldconfig
-
-%postun -n %{libname} -p /sbin/ldconfig
-
-%files
-%doc README.md HISTORY.md MIGRATION_GUIDE.md mapserver.conf
+%files -n %name
+%doc README.md HISTORY.md MIGRATION_GUIDE.md mapserver.conf etc/mapserver-sample.conf
 %doc symbols tests fonts
 %{_bindir}/coshp
 %{_bindir}/map2img
@@ -348,6 +340,7 @@ mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
 %{_bindir}/msencrypt
 %{_bindir}/shptreetst
 %{_bindir}/shptreevis
+%dir %_cgibindir
 %{_cgibindir}/mapserv
 %{_cgibindir}/legend
 %{_cgibindir}/scalebar
@@ -362,23 +355,23 @@ mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
 %endif
 
 %files -n perl-mapscript
-%doc mapscript/perl/examples
+%doc src/mapscript/perl/examples
 %dir %{perl_vendorarch}/auto/mapscript
 %{perl_vendorarch}/auto/mapscript/*
 %{perl_vendorarch}/mapscript.pm
 
 %if 0%{with python}
-%files -n python-mapscript
-%doc mapscript/python/README.rst
-%doc mapscript/python/examples
-%doc mapscript/python/tests
-%{python3_sitearch}/*
+%files %python_files
+%doc src/mapscript/python/README.rst
+%doc src/mapscript/python/examples
+%doc src/mapscript/python/tests
+%python_sitearch/mapscript*
 %endif
 
 %files -n libjavamapscript
-%doc mapscript/java/README
-%doc mapscript/java/examples
-%doc mapscript/java/tests
+%doc src/mapscript/java/README
+%doc src/mapscript/java/examples
+%doc src/mapscript/java/tests
 %{_libdir}/libjavamapscript.so
 
 %if 0%{with ruby}
@@ -388,7 +381,7 @@ mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
 %{rb_sitearchdir}/mapscript.so
 %endif
 
-%files devel
+%files -n mapserver-devel
 %dir %{_includedir}/mapserver
 %{_includedir}/mapserver/*
 %{_libdir}/libmapserver.so

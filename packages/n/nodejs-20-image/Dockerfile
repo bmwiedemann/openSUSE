@@ -15,13 +15,15 @@
 
 #!UseOBSRepositories
 
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%-%RELEASE%
+#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
 #!BuildTag: opensuse/bci/nodejs:20-%RELEASE%
 #!BuildTag: opensuse/bci/nodejs:20
-#!BuildTag: opensuse/bci/nodejs:%%nodejs_version%%
 #!BuildTag: opensuse/bci/nodejs:latest
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%-%RELEASE%
+#!BuildTag: opensuse/bci/node:%%nodejs_version%%
 #!BuildTag: opensuse/bci/node:20-%RELEASE%
 #!BuildTag: opensuse/bci/node:20
-#!BuildTag: opensuse/bci/node:%%nodejs_version%%
 #!BuildTag: opensuse/bci/node:latest
 
 FROM opensuse/tumbleweed:latest
@@ -41,8 +43,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="20-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/nodejs:20-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%nodejs_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/nodejs:%%nodejs_version%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

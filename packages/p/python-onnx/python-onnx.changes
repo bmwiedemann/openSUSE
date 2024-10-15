@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 14 08:29:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.17.0:
+  * Key Updates
+    - ai.onnx Opset 22
+    Update to support bfloat16:
+    - Python Changes
+    Support for numpy >= 2.0
+  * Bug fixes and infrastructure improvements
+
+-------------------------------------------------------------------
 Wed Sep 25 06:49:15 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - update to 1.16.2:

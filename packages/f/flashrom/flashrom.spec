@@ -27,9 +27,13 @@ Source0:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz
 Source1:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.bz2.sig
 # Got the key from David Hendricks
 Source2:        %{name}.keyring
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1600
 BuildRequires:  python3-Sphinx
+%else
+BuildRequires:  python311-Sphinx
+%endif
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libjaylink)

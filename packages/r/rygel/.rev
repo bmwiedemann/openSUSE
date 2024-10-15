@@ -808,4 +808,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1201518</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5a578af8ef9e05765cd018b2da81e57f</srcmd5>
+    <version>0.44.1</version>
+    <time>1728997109</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1207489 from iznogood)</comment>
+    <requestid>1207878</requestid>
+  </revision>
 </revisionlist>

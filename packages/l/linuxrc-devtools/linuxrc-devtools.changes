@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Oct 14 10:37:41 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#34
+- do case-insensitive matches when de-duplicating log lines
+- allow submitting the same sources under different package names
+- 1.4
+
+--------------------------------------------------------------------
 Mon Jul 3 17:37:25 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#33

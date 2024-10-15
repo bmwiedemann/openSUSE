@@ -111,4 +111,13 @@
     <comment></comment>
     <requestid>1206656</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>dd31f572ffda6509a11d8b981d73ffb2</srcmd5>
+    <version>2.6.5+git.1727339846.0abbc129</version>
+    <time>1728997132</time>
+    <user>anag+factory</user>
+    <comment>- Do not assume a specific ruby version to build against
+  * instead use the default ruby of the distribution.</comment>
+    <requestid>1207962</requestid>
+  </revision>
 </revisionlist>

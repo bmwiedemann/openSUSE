@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:26:26 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- make the version-%release tag the first one listed; remove duplicates where they existed; update image.ref/reference to point to the version-%release(-) tag
+
+-------------------------------------------------------------------
 Fri Oct 11 15:12:52 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - make the tag with -%RELEASE% the first tag listed

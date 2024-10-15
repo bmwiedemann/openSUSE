@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bottle
-Version:        0.13.1
+Version:        0.13.2
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
@@ -68,20 +68,22 @@ cp %{SOURCE1} .
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/bottle.py
+%python_clone -a %{buildroot}%{_bindir}/bottle
 
 %check
 %pyunittest -v
 
 %post
-%python_install_alternative bottle.py
+%python_install_alternative bottle.py bottle
 
 %postun
-%python_uninstall_alternative bottle.py
+%python_uninstall_alternative bottle.py bottle
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/bottle.py
+%python_alternative %{_bindir}/bottle
 %{python_sitelib}/bottle.py*
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/bottle-%{version}.dist-info

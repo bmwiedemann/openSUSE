@@ -35,7 +35,7 @@ Alternatively, you can mount the application's source code directly into the
 container:
 
 ```ShellSession
-$ podman run -d -p 8080:80 -v ./app/:/srv/www/htdocs:Z registry.opensuse.org/opensuse/bci/php-apache:8-%RELEASE%
+$ podman run -d -p 8080:80 -v ./app/:/srv/www/htdocs:Z registry.opensuse.org/opensuse/bci/php-apache:8
 ```
 
 ## How to install PHP extensions

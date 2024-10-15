@@ -17,9 +17,10 @@
 
 #!BuildTag: opensuse/bci/golang:oldstable-2.%RELEASE%
 #!BuildTag: opensuse/bci/golang:oldstable
+#!BuildTag: opensuse/bci/golang:%%golang_version%%-2.%RELEASE%
+#!BuildTag: opensuse/bci/golang:%%golang_version%%
 #!BuildTag: opensuse/bci/golang:1.22-2.%RELEASE%
 #!BuildTag: opensuse/bci/golang:1.22
-#!BuildTag: opensuse/bci/golang:%%golang_version%%
 
 FROM opensuse/tumbleweed:latest
 
@@ -38,8 +39,8 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="1.22-2.%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/golang:1.22-2.%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%golang_version%%-2.%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/golang:%%golang_version%%-2.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

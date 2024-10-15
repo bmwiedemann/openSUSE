@@ -23,6 +23,7 @@ Summary:        Accelerated property cache
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/propcache
 Source:         https://files.pythonhosted.org/packages/source/p/propcache/propcache-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module expandvars}
