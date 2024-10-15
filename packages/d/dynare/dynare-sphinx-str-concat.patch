@@ -1,0 +1,17 @@
+---
+ doc/manual/utils/dynare_dom.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: dynare-6.2/doc/manual/utils/dynare_dom.py
+===================================================================
+--- dynare-6.2.orig/doc/manual/utils/dynare_dom.py
++++ dynare-6.2/doc/manual/utils/dynare_dom.py
+@@ -97,7 +97,7 @@ class DynObject(ObjectDescription):
+                 self.state_machine.reporter.warning(
+                     'duplicate object description of %s, ' % fullname +
+                     'other instance in ' +
+-                    self.env.doc2path(objects[fullname][0]),line=self.lineno)
++                    str(self.env.doc2path(objects[fullname][0])),line=self.lineno)
+             objects[fullname] = (self.env.docname, self.objtype)
+ 
+         indextext = self.get_index_text(fullname,name_obj)
