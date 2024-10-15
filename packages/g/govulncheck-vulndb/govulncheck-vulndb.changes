@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Oct 14 19:20:43 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
+
+- Update to version 0.0.20241014T192043o date 2024-10-14T19:20:43Z.
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3166
+  * GO-2024-3171
+
+-------------------------------------------------------------------
+Fri Oct 10 14:32:39 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
+
+- Update to version 0.0.20241011T143239 date 2024-10-11T14:32:39Z.
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3161
+  * GO-2024-3162
+  * GO-2024-3163
+  * GO-2024-3164
+  * GO-2024-3166
+  * GO-2024-3167
+  * GO-2024-3168
+  * GO-2024-3169
+  * GO-2024-3170
+  * GO-2024-3172
+  * GO-2024-3173
+  * GO-2024-3174
+  * GO-2024-3175
+  * GO-2024-3179
+  * GO-2024-3181
+  * GO-2024-3182
+  * GO-2024-3184
+  * GO-2024-3185
+  * GO-2024-3186
+  * GO-2024-3188
+  * GO-2024-3190
+  * GO-2024-3191
+
+-------------------------------------------------------------------
+Thu Sep 26 18:24:03 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
+
+- Initial package govulncheck-vulndb version 0.0.20240926T182403:
+  * Upstream vulndb.zip with modified date 2024-09-26T18:24:03Z
+  * Previx version with 0.0.x to preserve options if upstream
+    decides on a versioning scheme to supplement the timestamp

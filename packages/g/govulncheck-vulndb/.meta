@@ -1,0 +1,12 @@
+<package name="govulncheck-vulndb" project="openSUSE:Factory">
+  <title>govulncheck-vulndb</title>
+  <description>govulncheck-vulndb provides a local copy of the Go vulnerability database
+https://vuln.go.dev as files in the Open Source Vulnerability (OSV) schema.
+This allows tools such as govulncheck to be used in offline environments.
+
+Usage:
+
+govulncheck -db file:///usr/share/vulndb</description>
+  <devel project="devel:languages:go" package="govulncheck-vulndb"/>
+  <url>https://pkg.go.dev/vuln/</url>
+</package>
