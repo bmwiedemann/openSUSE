@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:15:06 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1728897629.cd422eac:
+  * etc: Fix wrong default value in comment
+  * Improve naming of `wait_for_data_table_entries`
+  * Stabilize `t/ui/21-admin-needles.t`
+  * Ensure the "Apply" button on needles table is always clickable
+
+-------------------------------------------------------------------
 Sun Oct 13 03:14:31 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1728661059.4cfa2f0b:
