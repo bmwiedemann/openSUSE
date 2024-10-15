@@ -1500,4 +1500,41 @@
     <comment></comment>
     <requestid>1161658</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>cbdcc6d2f28222b2f87c57b6099fdcb8</srcmd5>
+    <version>24.05.3</version>
+    <time>1728997294</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.05.3
+  * `data_parser/v0.0.40` - Added field descriptions.
+  * `slurmrestd` - Avoid creating new slurmdbd connection per request
+    to `* /slurm/slurmctld/*/*` endpoints.
+  * Fix compilation issue with `switch/hpe_slingshot` plugin.
+  * Fix gres per task allocation with threads-per-core.
+  * `data_parser/v0.0.41` - Added field descriptions.
+  * `slurmrestd` - Change back generated OpenAPI schema for
+    `DELETE /slurm/v0.0.40/jobs/` to `RequestBody` instead of using
+    parameters for request. `slurmrestd` will continue accept endpoint
+    requests via `RequestBody` or HTTP query.
+  * `topology/tree` - Fix issues with switch distance optimization.
+  * Fix potential segfault of secondary `slurmctld` when falling back
+    to the primary when running with a `JobComp` plugin.
+  * Enable `--json`/`--yaml=v0.0.39` options on client commands to
+    dump data using data_parser/v0.0.39 instead or outputting nothing.
+  * `switch/hpe_slingshot` - Fix issue that could result in a 0 length
+    state file.
+  * Fix unnecessary message protocol downgrade for unregistered nodes.
+  * Fix unnecessarily packing alias addrs when terminating jobs with
+    a mix of non-cloud/dynamic nodes and powered down cloud/dynamic
+    nodes.
+  * `accounting_storage/mysql` - Fix issue when deleting a qos that
+    could remove too many commas from the qos and/or delta_qos fields
+    of the assoc table.
+  * `slurmctld` - Fix memory leak when using RestrictedCoresPerGPU.
+  * Fix allowing access to reservations without `MaxStartDelay` set.
+  * Fix regression introduced in 24.05.0rc1 breaking
+    `srun --send-libs` parsing.
+  * Fix slurmd vsize memory leak when using job submission/allocation</comment>
+    <requestid>1208086</requestid>
+  </revision>
 </revisionlist>

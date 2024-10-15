@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package slurm
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,10 +17,10 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 40
+%define so_version 41
 # Make sure to update `upgrades` as well!
-%define ver 23.11.5
-%define _ver _23_11
+%define ver 24.05.3
+%define _ver _24_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -55,6 +55,9 @@ ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400
 %define base_ver 2011
+%endif
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+%define base_ver 2302
 %endif
 %if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
 %define base_ver 2302
@@ -170,8 +173,6 @@ Source20:       test_setup.tar.gz
 Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch10:        Fix-test-21.41.patch
-#Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 %{upgrade_dep %pname}
@@ -405,19 +406,6 @@ Requires:       %{name}-config = %{version}
 
 %description plugins
 This package contains the SLURM plugins (loadable shared objects)
-
-%package plugin-ext-sensors-rrd
-Summary:        SLURM ext_sensors/rrd Plugin (loadable shared objects)
-Group:          Productivity/Clustering/Computing
-Requires:       %{name}-plugins = %{version}
-%{upgrade_dep %{pname}-plugin-ext-sensors-rrd}
-# file was moved from slurm-plugins to here
-Conflicts:      %{pname}-plugins < %{version}
-
-%description plugin-ext-sensors-rrd
-This package contains the ext_sensors/rrd plugin used to read data
-using RRD, a tool that creates and manages a linear database for
-sampling and logging data.
 
 %package torque
 Summary:        Wrappers for transitition from Torque/PBS to SLURM
@@ -762,9 +750,15 @@ rm -rf %{buildroot}/%{_libdir}/slurm/*.{a,la} \
        %{buildroot}/%{_libdir}/*.la \
        %{buildroot}/%_lib/security/*.la
 
-rm %{buildroot}/%{perl_archlib}/perllocal.pod \
-   %{buildroot}/%{perl_vendorarch}/auto/Slurm/.packlist \
-   %{buildroot}/%{perl_vendorarch}/auto/Slurmdb/.packlist
+# Fix perl
+rm %{buildroot}%{perl_archlib}/perllocal.pod \
+   %{buildroot}%{perl_sitearch}/auto/Slurm/.packlist \
+   %{buildroot}%{perl_sitearch}/auto/Slurmdb/.packlist
+
+mkdir -p %{buildroot}%{perl_vendorarch}
+
+mv %{buildroot}%{perl_sitearch}/* \
+   %{buildroot}%{perl_vendorarch}
 
 # Remove Cray specific binaries
 rm -f %{buildroot}/%{_sbindir}/capmc_suspend \
@@ -1086,7 +1080,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{?have_netloc:%{_bindir}/netloc_to_topology}
 %{_sbindir}/sackd
 %{_sbindir}/slurmctld
-%{_sbindir}/slurmsmwd
 %dir %{_libdir}/slurm/src
 %{_unitdir}/slurmctld.service
 %{_sbindir}/rcslurmctld
@@ -1164,9 +1157,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %files -n perl-%{name}
 %{perl_vendorarch}/Slurm.pm
 %{perl_vendorarch}/Slurm
-%{perl_vendorarch}/auto/Slurm
 %{perl_vendorarch}/Slurmdb.pm
+%{perl_vendorarch}/auto/Slurm
 %{perl_vendorarch}/auto/Slurmdb
+%dir %{perl_vendorarch}/auto
 %{_mandir}/man3/Slurm*.3pm.*
 
 %files slurmdbd
@@ -1189,6 +1183,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %dir %{_libdir}/slurm
 %{_libdir}/slurm/libslurmfull.so
 %{_libdir}/slurm/accounting_storage_slurmdbd.so
+%{_libdir}/slurm/accounting_storage_ctld_relay.so
 %{_libdir}/slurm/acct_gather_energy_pm_counters.so
 %{_libdir}/slurm/acct_gather_energy_gpu.so
 %{_libdir}/slurm/acct_gather_energy_ibmaem.so
@@ -1197,6 +1192,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_filesystem_lustre.so
 %{_libdir}/slurm/burst_buffer_lua.so
 %{_libdir}/slurm/burst_buffer_datawarp.so
+%{_libdir}/slurm/data_parser_v0_0_41.so
 %{_libdir}/slurm/data_parser_v0_0_40.so
 %{_libdir}/slurm/data_parser_v0_0_39.so
 %{_libdir}/slurm/cgroup_v1.so
@@ -1214,12 +1210,13 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/gres_nic.so
 %{_libdir}/slurm/gres_shard.so
 %{_libdir}/slurm/hash_k12.so
+%{_libdir}/slurm/hash_sha3.so
+%{_libdir}/slurm/tls_none.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
 %{_libdir}/slurm/jobacct_gather_linux.so
 %{_libdir}/slurm/jobcomp_filetxt.so
 %{_libdir}/slurm/jobcomp_lua.so
 %{_libdir}/slurm/jobcomp_script.so
-%{_libdir}/slurm/job_container_cncu.so
 %{_libdir}/slurm/job_container_tmpfs.so
 %{_libdir}/slurm/job_submit_all_partitions.so
 %{_libdir}/slurm/job_submit_defaults.so
@@ -1253,6 +1250,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/serializer_url_encoded.so
 %{_libdir}/slurm/serializer_yaml.so
 %{_libdir}/slurm/site_factor_example.so
+%{_libdir}/slurm/switch_nvidia_imex.so
 %{_libdir}/slurm/task_affinity.so
 %{_libdir}/slurm/task_cgroup.so
 %{_libdir}/slurm/topology_3d_torus.so
@@ -1271,9 +1269,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/node_features_knl_generic.so
 %{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
-
-%files plugin-ext-sensors-rrd
-%{_libdir}/slurm/ext_sensors_rrd.so
 
 %files lua
 %{_libdir}/slurm/job_submit_lua.so
@@ -1310,8 +1305,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/openapi_slurmdbd.so
 %{_libdir}/slurm/openapi_dbv0_0_39.so
 %{_libdir}/slurm/openapi_v0_0_39.so
-%{_libdir}/slurm/openapi_dbv0_0_38.so
-%{_libdir}/slurm/openapi_v0_0_38.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 
@@ -1348,12 +1341,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %files config-man
 %{_mandir}/man5/acct_gather.conf.*
 %{_mandir}/man5/burst_buffer.conf.*
-%{_mandir}/man5/ext_sensors.conf.*
 %{_mandir}/man5/slurm.*
 %{_mandir}/man5/cgroup.*
 %{_mandir}/man5/gres.*
 %{_mandir}/man5/helpers.*
-#%%{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/oci.conf.5.gz
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
@@ -1368,17 +1359,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %endif
 
 %files cray
-# do not remove cray sepcific packages from SLES update
-# Only for Cray
-%{_libdir}/slurm/core_spec_cray_aries.so
-%{_libdir}/slurm/job_submit_cray_aries.so
-%{_libdir}/slurm/select_cray_aries.so
-%{_libdir}/slurm/switch_cray_aries.so
-%{_libdir}/slurm/task_cray_aries.so
-%{_libdir}/slurm/proctrack_cray_aries.so
 %{_libdir}/slurm/mpi_cray_shasta.so
-%{_libdir}/slurm/node_features_knl_cray.so
-%{_libdir}/slurm/power_cray_aries.so
 
 %if 0%{?slurm_testsuite}
 %files testsuite
