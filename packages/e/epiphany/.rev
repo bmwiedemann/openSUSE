@@ -1773,4 +1773,12 @@ New stable rel</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205421</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>1fad0dcb9d34f023e10465793d2f1602</srcmd5>
+    <version>47.1</version>
+    <time>1728997315</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208066</requestid>
+  </revision>
 </revisionlist>

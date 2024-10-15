@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 14 18:13:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Allow adding bookmarks in incognito mode
+  + Disable tab navigation shortcuts in tab overview
+  + Don't store page snapshots in web app mode
+  + Fix ephy-about suggestions not using pretty URL
+  + Fix crash in save password popover
+  + Fix crash when opening multiple preferences or history dialogs
+  + Fix crash when long pressing page
+  + Fix target origin property when using CSV password import
+  + Add tooltips to bookmarks tag rows
+  + Fix crash in history dialog
+  + Improve certificate selection dialog
+  + Fix non-translatable strings in autofill preferences
+  + Stop setting web view background color
+  + Fix failure to unregister autofill message handler
+
+-------------------------------------------------------------------
 Sun Sep 15 16:53:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
