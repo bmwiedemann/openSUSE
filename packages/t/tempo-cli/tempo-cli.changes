@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:40:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.1:
+  * tempo-query: register gRPC health server (#4178) (#4186)
+  * [release-v2.6]  Support Tempo on IBM s390x  (#4185)
+  * fix: bring back content-type header (#4123) (#4184)
+  * tempo-query: separate tls settings for server and client
+    (#4177) (#4183)
+  * [release-v2.6] docs: Add EKS Pod Identity as supported (#4174)
+  * Backport tempo-query changes to 2.6 (#4170)
+  * [release-v2.6] [DOC] Fix broken links in Alloy docs (#4169)
+  * [release-v2.6] [DOC] Update statement for metrics-generator for
+    Cloud (#4164)
+  * [release-v2.6] Fix typo in gcs configuration comment (#4150)
+  * [release-v2.6] Fixed a small typo in Tempo set up documentation
+    (#4145)
+  * [release-v2.6] [DOC] Add other attributes to trace structure
+    doc (#4108)
+  * [release-v2.6] Update and remove old images in Linux set up doc
+    (#4071)
+  * [release-v2.6] docs: Getting started sandbox (#4070)
+  * [release-v2.6] Add blog post links to rel notes (#4059)
+  * [release-v2.6] [DOC] TraceQL, metrics-gen, and overrides doc
+    updates for 2.6 (#4054)
+  * Use canonical centering an image example (#4043) (#4051)
+  * [release-v2.6] [DOC] Release notes for 2.6 (#4050)
+  * [release-v2.6] [DOC] Convert monitor, troubleshoot, set up test
+    app to Alloy (#4049)
+
+-------------------------------------------------------------------
 Sat Sep 14 14:25:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.6.0:
