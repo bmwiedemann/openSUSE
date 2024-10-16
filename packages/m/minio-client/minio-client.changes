@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 16 15:36:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20241008T093726Z:
+  * Do not fail mc-admin-policy-attach if policy already
+    attached/detached (#5058)
+  * Add `mc admin accesskey` commands (#5038)
+
+-------------------------------------------------------------------
 Thu Oct 03 12:08:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20241002T082728Z:
