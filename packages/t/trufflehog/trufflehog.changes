@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 16 06:24:21 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.82.9:
+  * fix(deps): update module github.com/prometheus/client_golang to v1.20.5 (#3412)
+  * fix: include integration test in generate.go (#3415)
+  * Add feature flags to CLI args (#3359)
+  * fix(deps): update module google.golang.org/api to v0.201.0 (#3416)
+  * feat: add github comments timeframe filtering (fixes #3388) (#3390)
+  * [fix] - resource leak (#3402)
+  * [detector] Implemented Box Detector (#3242)
+  * feat: propagate file info in log context (#3405)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.112.0 (#3410)
+  * fix(deps): update module github.com/getsentry/sentry-go to v0.29.1 (#3408)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.6 (#3407)
+
+-------------------------------------------------------------------
 Sat Oct 12 14:36:22 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.82.8:
