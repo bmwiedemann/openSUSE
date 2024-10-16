@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:38:57 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.169.0:
+  * Add comment withPreparedCharts by @mumoshu in #1704
+  * build(deps): bump k8s.io/apimachinery from 0.31.0 to 0.31.1
+    by @dependabot in #1705
+  * build(deps): bump helm.sh/helm/v3 from 3.15.4 to 3.16.1 by
+    @dependabot in #1707
+  * bump all helm to 3.16.1 by @yxxhero in #1708
+  * add zhaque44 in CODEOWNERS by @yxxhero in #1711
+  * Add hide notes support by @yxxhero in #1710
+  * update python3 version for mkdoc.yaml by @zhaque44 in #1712
+  * build(deps): bump dario.cat/mergo from 0.3.16 to 1.0.1 by
+    @yxxhero in #1714
+  * fix docs build errors by @zhaque44 in #1715
+  * feat(pkg/app): Update Helm Diff version to v3.9.11 by
+    @yxxhero in #1720
+  * update test to table driven with assertions & test
+    GetMergedValues by @zhaque44 in #1721
+  * feat: update go version and adjust dependencies in Dockerfile
+    and go.mod by @yxxhero in #1722
+  * feat: Update Docker image to ubuntu:24.10 by @yxxhero in #1726
+  * build(deps): bump github.com/zclconf/go-cty-yaml from 1.0.3 to
+    1.1.0 by @dependabot in #1723
+  * build(deps): bump golang.org/x/term from 0.24.0 to 0.25.0 by
+    @dependabot in #1724
+  * feat(pkg/policy): improve TopKeys function handling by
+    @yxxhero in #1730
+  * build(deps): bump helm.sh/helm/v3 from 3.16.1 to 3.16.2 by
+    @dependabot in #1732
+  * chore: Update AGE var version by @zhaque44 in #1731
+  * feat(helm-version): Update helm version to v3.16.2 by @yxxhero
+    in #1733
+  * fix: duration of delete failures are always 0s by @felipecrs
+    in #1734
+  * [feature] add --skip-refresh to globals by @sstarcher in #1736
+  * build(deps): bump github.com/helmfile/vals from 0.37.5 to
+    0.37.6 by @dependabot in #1739
+  * build(deps): bump github.com/helmfile/chartify from 0.20.2 to
+    0.20.3 by @dependabot in #1738
+  * feat: improve summary for releases failed to delete by
+    @felipecrs in #1735
+  * [feature] --skip-refresh to pass through to deps by @sstarcher
+    in #1740
+
+-------------------------------------------------------------------
 Fri Sep 13 06:52:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.168.0:
