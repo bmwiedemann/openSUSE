@@ -64,4 +64,13 @@
     pyproject.toml as possible. Dropped pydocstyle support.</comment>
     <requestid>1137438</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b8166c89e32d8334a38c39bc29ba609</srcmd5>
+    <version>0.7.3</version>
+    <time>1729115393</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.3:
+  * Adds PortType to package __all__</comment>
+    <requestid>1208374</requestid>
+  </revision>
 </revisionlist>

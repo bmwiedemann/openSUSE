@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-port-for
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 License:        MIT
 Summary:        Utility that helps with local TCP ports managment
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %python_subpackages

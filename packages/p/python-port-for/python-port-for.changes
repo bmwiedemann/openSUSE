@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:25:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.3:
+  * Adds PortType to package __all__
+
+-------------------------------------------------------------------
 Sun Jan  7 20:22:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.2:
