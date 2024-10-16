@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 16 06:43:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libXinerama-devel BuildRequires: ensure clanDisplay can be
+  built.
+
+-------------------------------------------------------------------
+Mon Oct 14 18:31:50 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.2
+  Enhancements
+  * Implement CSS justify-content:space-evenly for clanUI
+  * Modify Vec2 and Vec3 so std::is_trivially_copyable
+    returns true
+  Possible Breaking changes
+  * Update C++ required standard to c++20 (from c++11)
+  * Change OpenGL minimum requirements to 4.3 (Year 2012) from
+    3.2 (Year 2009) for the for GL3 target
+  * (Linux) libxinerama-dev is now a prerequisite
+  Fixes
+  * Fix usage of OpenGL Buffer Objects for Intel GPUs
+  * Implement fullscreen toggle on Linux.
+  * Fixed broken examples
+  Tidy Up
+  * Replace clan::make_unique with std::make_unique
+  * Enforce object ownership for providers by using
+    std::unique_ptr
+  * Updated GLSL shaders to version 430
+- Drop clanlib-add-aarch64.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Jun 16 12:37:52 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 since clanlib-cpuid.patch has been dropped:

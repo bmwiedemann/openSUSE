@@ -1,7 +1,7 @@
 #
 # spec file for package clanlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define clan_ver 4.1
+%define clan_ver 4.2
 Name:           clanlib
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        A Portable Interface for Writing Games
 License:        Zlib
 Group:          System/Libraries
 URL:            https://github.com/sphair/ClanLib
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/ClanLib-%{version}.tar.gz
-Patch1:         clanlib-add-aarch64.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -34,8 +33,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gnome
+BuildRequires:  libXinerama-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmikmod-devel
 BuildRequires:  libogg-devel
@@ -49,6 +48,12 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 ClanLib delivers a platform-independent interface for writing games.
@@ -64,7 +69,7 @@ Requires:       pkgconfig(fontconfig)
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
 
-%description     devel
+%description    devel
 ClanLib delivers a platform independent interface to write games with.
 
 %package        doc
@@ -76,7 +81,7 @@ BuildArch:      noarch
 %description doc
 ClanLib delivers a platform-independent interface for writing games.
 
-%package      examples
+%package        examples
 Summary:        A Portable Interface for Writing Games
 Group:          Documentation/Other
 Requires:       clanlib = %{version}
@@ -87,9 +92,13 @@ BuildArch:      noarch
 ClanLib delivers a platform-independent interface for writing games.
 
 %prep
-%autosetup -p1 -n ClanLib-%{version}
+%autosetup -n ClanLib-%{version}
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-12"
+export CXX="g++-12"
+%endif
 # Remove IDE files
 find Examples -name \*.sln -o -name \*.vcproj -o -name \*.vcxproj\* | xargs rm -vf
 # Fix line ending
