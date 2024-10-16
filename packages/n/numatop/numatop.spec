@@ -32,6 +32,10 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 ppc64le
+# PATCH-FIX-UPSTREAM numatop-fix-missing-fields.patch
+Patch0:         numatop-fix-missing-fields.patch
+# PATCH-FEATURE-SLE numatop-power11.patch jsc#PED-9887 jsc#PED-10899
+Patch1:         numatop-power11.patch
 
 %description
 NumaTOP is an observation tool for runtime memory locality characterization
@@ -45,6 +49,7 @@ E5-16xx/24xx/26xx/46xx-series should be updated to latest CPU microcode
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 
 %build
 autoreconf -i

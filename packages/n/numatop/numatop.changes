@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 13:34:50 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
+
+- numatop-fix-missing-fields.patch: Fix building with recent gcc
+- numatop-power11.patch: Support Power11 processors (jsc#PED-9887,
+  jsc#PED-10899)
+
+-------------------------------------------------------------------
 Tue Jan 16 08:11:17 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.4
