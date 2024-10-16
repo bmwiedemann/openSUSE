@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:21:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.24.2:
+  * Fix rename adding path in the renamed version
+- Updates from version 0.24.1:
+  * add --version -v flag
+- Updates from version 0.24.0:
+  * fix hover issue (in GUI editors) when hovering over non-links
+
+-------------------------------------------------------------------
 Sun Sep 29 21:44:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove remove-unstable-rust.patch -- Fixed upstream
