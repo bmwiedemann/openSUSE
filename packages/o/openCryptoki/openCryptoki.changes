@@ -2,7 +2,8 @@
 Fri Oct  4 08:11:35 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (jsc#PED-10241) 
-- Updated the %configure flags
+- Updated the %configure flags for i586
+- Implemented a logic to exclude i586 arch
 
 -------------------------------------------------------------------
 Fri Sep 20 08:33:19 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>

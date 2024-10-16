@@ -157,7 +157,11 @@ cp %{SOURCE2} .
 %ifarch s390 s390x
     --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate
 %else
+%ifnarch i586
     --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --enable-pkcscca_migrate
+%else
+    --disable-icatok --disable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcscca_migrate
+%endif
 %endif
 
 make %{?_smp_mflags}
@@ -256,7 +260,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%config %{_sysconfdir}/opencryptoki/ccatok.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf
@@ -270,7 +273,10 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %ifarch s390 s390x
 %{_sbindir}/pkcsep11_session
 %endif
+%ifnarch i586
+%config %{_sysconfdir}/opencryptoki/ccatok.conf
 %{_sbindir}/pkcscca
+%endif
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf
