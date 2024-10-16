@@ -5,14 +5,14 @@ Do what openssl-1.1 is doing to guard against an otherwise
 out-of-bounds access.
 
 ---
- crypto/des/fcrypt.c |    2 ++
+ crypto/des/des_fcrypt.c |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: libressl-3.8.2/crypto/des/fcrypt.c
+Index: libressl-4.0.0/crypto/des/des_fcrypt.c
 ===================================================================
---- libressl-3.8.2.orig/crypto/des/fcrypt.c
-+++ libressl-3.8.2/crypto/des/fcrypt.c
-@@ -79,6 +79,8 @@ DES_fcrypt(const char *buf, const char *
+--- libressl-4.0.0.orig/crypto/des/des_fcrypt.c
++++ libressl-4.0.0/crypto/des/des_fcrypt.c
+@@ -207,6 +207,8 @@ DES_fcrypt(const char *buf, const char *
  	 * crypt to "*".  This was found when replacing the crypt in
  	 * our shared libraries.  People found that the disabled
  	 * accounts effectively had no passwd :-(. */
