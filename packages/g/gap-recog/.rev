@@ -15,4 +15,12 @@
     <comment>- Force-rewrite &quot;/usr/bin/env python&quot; to &quot;python3&quot; (not 2.x)</comment>
     <requestid>1142589</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5182906da68e0967560af9002d6afdb6</srcmd5>
+    <version>1.4.3</version>
+    <time>1729115665</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.4.3</comment>
+    <requestid>1208482</requestid>
+  </revision>
 </revisionlist>

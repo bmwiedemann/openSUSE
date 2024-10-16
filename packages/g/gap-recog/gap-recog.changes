@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 16 16:41:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.3
+  * Stop overriding the system library function
+    ``MTX.InvariantBilinearForm`` with an old version (this was
+    meant to fix a bug in GAP but has been unnecessary for a
+    couple years, and now impedes improvements for this function
+    in GAP)
+
+-------------------------------------------------------------------
 Mon Jan 29 16:14:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Force-rewrite "/usr/bin/env python" to "python3" (not 2.x)

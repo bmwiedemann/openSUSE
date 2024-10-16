@@ -17,7 +17,7 @@
 
 
 Name:           gap-recog
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        GAP: A collection of group recognition methods
 License:        GPL-3.0-or-later
