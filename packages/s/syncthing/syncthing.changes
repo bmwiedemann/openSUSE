@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:28:46 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.28.0
+  * Bugfixes:
+    #9597: Filenames with extended characters not ignored correctly on macOS
+    #9668: The Web UI defaults to Filipino on Finnish browsers.
+    #9670: lib/api: /svc/lang disregards the passed quality values
+    #9719: Unable to establish/maintain multiple connections due to connection priority error
+  * Enhancements:
+    #9715: Lower the log level of "already connected to this device" to DEBUG (is: INFO)
+
+-------------------------------------------------------------------
 Fri Sep  6 08:41:28 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.12

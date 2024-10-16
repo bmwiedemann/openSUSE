@@ -1490,4 +1490,12 @@
     <comment>Update to v1.27.12</comment>
     <requestid>1199145</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>0ab175db64c374dfe21ce86e24c897e1</srcmd5>
+    <version>1.28.0</version>
+    <time>1729115597</time>
+    <user>anag+factory</user>
+    <comment>Update to v1.28.0</comment>
+    <requestid>1208391</requestid>
+  </revision>
 </revisionlist>
