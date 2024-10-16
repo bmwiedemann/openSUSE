@@ -95,4 +95,12 @@
     <comment>- Conflict packages before the oxygen desktoptheme move (forwarded request 1206117 from Vogtinator)</comment>
     <requestid>1206118</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a7206d6f9d5737faf6416bfc154223aa</srcmd5>
+    <version>6.2.1</version>
+    <time>1729115335</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.1 (forwarded request 1208221 from Vogtinator)</comment>
+    <requestid>1208330</requestid>
+  </revision>
 </revisionlist>

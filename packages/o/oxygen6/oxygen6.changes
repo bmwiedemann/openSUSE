@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Oct 15 12:06:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop unnecessary conflict on plasma-framework (boo#1231615)
+
+-------------------------------------------------------------------
 Mon Oct  7 14:09:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Conflict packages before the oxygen desktoptheme move
