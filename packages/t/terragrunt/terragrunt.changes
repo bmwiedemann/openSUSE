@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 08:01:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.2:
+  * Fixing modules output corruption (#3459)
+  * Redirect engine messages to stderr (#3468)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:06:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.1:
