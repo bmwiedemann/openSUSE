@@ -39,4 +39,12 @@
     <comment>New upstream release (forwarded request 1205740 from iznogood)</comment>
     <requestid>1205805</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a6e720daec548a73818162a88d97cee</srcmd5>
+    <version>0.4.3</version>
+    <time>1729115317</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208288</requestid>
+  </revision>
 </revisionlist>

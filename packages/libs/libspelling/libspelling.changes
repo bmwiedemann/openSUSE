@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 06:03:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.3:
+  + Fix build to disable assertions in release builds
+  + Fix an off-by-one in assertion
+  + Add i18n for translations of menu entries
+  + Ignore empty strings when building job list
+
+-------------------------------------------------------------------
 Fri Oct  4 19:02:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.2:
