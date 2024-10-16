@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 15 18:33:37 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.8.1
+    * Improvements
+        * LibraryScanner: Use a more detailed dialog that displays elapsed and estimated time
+        * LibraryScanner: Show per-file progress for archive and playlist scans
+        * RGScanner: Add dialog for removing RG info
+        * WaveBar: Use elapsed and estimated time dialog for generating waveforms
+    * Fixes
+        * Engine: Fix playback of WavPack
+        * RGScanner: Wait to close results dialog until files have been updated
+        * Settings: Fix reordering of decoders and tagreaders
+- Release notes for interim release 0.8.0 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.8.0
+
+-------------------------------------------------------------------
 Sat Sep 28 14:19:55 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to upstream 0.7.3
