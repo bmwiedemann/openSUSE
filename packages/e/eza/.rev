@@ -770,4 +770,40 @@
   * Relicense to EUPL-1.2</comment>
     <requestid>1203896</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6e3063a13f512f8b2148088dba17299d</srcmd5>
+    <version>0.20.2</version>
+    <time>1729115638</time>
+    <user>anag+factory</user>
+    <comment>- Update eza-fix-test.patch to fix tests
+
+- Update to 0.20.2:
+  Bug Fixes:
+  * Colors in old ms command prompt
+  * Bring help text in line with available flags
+  * Do not print parent filename with --absolute=on
+  Miscellaneous Tasks:
+  * Add fox installation option
+
+- Update to 0.20.1:
+  Bug Fixes:
+  * Release recipe
+  * Support passing multiple options for generate-trycmd-test.sh
+  * Move options into flags
+  * Rustfmt errors
+  Documentation:
+  * Fix cross-references
+  * Update file type colors
+  * Document that exit 13 == permission denied
+  Features:
+  * Update just, add more formats
+  * Recursively walk symlinks pointing at dirs
+  * Add --follow-symlinks option
+  * Add autocomplete for --follow-symlinks
+  * Show directories last
+  Testing:
+  * Add cases for -T and --follow-symlinks
+  * Regenerate tests broken by line number changes</comment>
+    <requestid>1208443</requestid>
+  </revision>
 </revisionlist>

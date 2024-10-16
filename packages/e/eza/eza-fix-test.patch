@@ -11,3 +11,38 @@ index 44233b9..9c56e28 100644
  
  tests/itest/vagrant/dev:
  [CWD]/tests/itest/vagrant/dev/main.bf
+diff --git a/tests/cmd/follow-symlinks_unix.stdout b/tests/cmd/follow-symlinks_unix.stdout
+index fd85613..91f8e59 100644
+--- a/tests/cmd/follow-symlinks_unix.stdout
++++ b/tests/cmd/follow-symlinks_unix.stdout
+@@ -6,7 +6,7 @@ tests/itest
+ ├── dir-symlink -> vagrant/debug
+ │  ├── a
+ │  ├── symlink -> a
+-│  └── symlink-broken -> ./b
++│  └── symlink-broken -> b
+ ├── e
+ ├── exa
+ │  ├── file.c -> djihisudjuhfius
+@@ -30,7 +30,7 @@ tests/itest
+    ├── debug
+    │  ├── a
+    │  ├── symlink -> a
+-   │  └── symlink-broken -> ./b
++   │  └── symlink-broken -> b
+    ├── dev
+    │  └── main.bf
+    └── log
+diff --git a/tests/cmd/tree_unix.stdout b/tests/cmd/tree_unix.stdout
+index d6b5eb6..9bd648c 100644
+--- a/tests/cmd/tree_unix.stdout
++++ b/tests/cmd/tree_unix.stdout
+@@ -27,7 +27,7 @@ tests/itest
+    ├── debug
+    │  ├── a
+    │  ├── symlink -> a
+-   │  └── symlink-broken -> ./b
++   │  └── symlink-broken -> b
+    ├── dev
+    │  └── main.bf
+    └── log

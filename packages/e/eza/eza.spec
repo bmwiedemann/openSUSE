@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.20.0
+Version:        0.20.2
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        EUPL-1.2
@@ -31,11 +31,11 @@ BuildRequires:  bash-completion
 BuildRequires:  cargo-packaging
 BuildRequires:  fish
 BuildRequires:  zsh
-%ifnarch %ix86 %arm ppc
-BuildRequires:  pandoc
-%endif
 Provides:       exa = 0.10.1
 Obsoletes:      exa <= 0.10.1
+%ifnarch %{ix86} %{arm} ppc
+BuildRequires:  pandoc
+%endif
 
 %description
 eza is a modern, maintained replacement for ls, built on exa.
@@ -81,7 +81,7 @@ Fish command line completion support for %{name}.
 
 # Manpage
 # pandoc isnt available everywhere
-%ifnarch %ix86 %arm ppc
+%ifnarch %{ix86} %{arm} ppc
 install -d -m 0755 %{buildroot}%{_mandir}/man1/
 pandoc --standalone -f markdown -t man man/eza.1.md > %{buildroot}%{_mandir}/man1/eza.1
 
@@ -102,7 +102,7 @@ install -Dm0644 completions/fish/eza.fish "%{buildroot}/%{_datadir}/fish/vendor_
 %license LICENSE.txt
 %doc README.md
 %{_bindir}/eza
-%ifnarch %ix86 %arm ppc
+%ifnarch %{ix86} %{arm} ppc
 %{_mandir}/man1/eza.1%{?ext_man}
 %{_mandir}/man5/eza_colors.5%{?ext_man}
 %{_mandir}/man5/eza_colors-explanation.5%{?ext_man}
