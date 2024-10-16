@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 16 16:37:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9.2
+  * Included new functions ``IsVertexColouring`` and
+    ``GRAPE_ExactSetCover``.
+  * Made new documentation chapter ``Auxiliary Functions``,
+    currently containing documentation for ``SmallestImageSet``
+    and ``GRAPE_ExactSetCover``.
+  * Made a performance improvement for
+    ``CompleteSubgraphsOfGivenSize`` for the case when all
+    weightvectors are (0,1)-vectors of dimension greater than 1.
+
+-------------------------------------------------------------------
 Tue Sep  3 23:06:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9.1
