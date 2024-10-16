@@ -452,4 +452,15 @@
 </comment>
     <requestid>1206252</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2c98c3bc58f37896fec74c6fbabdbe42</srcmd5>
+    <version>3.13.0</version>
+    <time>1729115398</time>
+    <user>anag+factory</user>
+    <comment>- With python311-Sphinx we don't need no-skipif-doctests.patch
+  any more.
+- Add warning about no-GIL builds being experimental.
+</comment>
+    <requestid>1208371</requestid>
+  </revision>
 </revisionlist>

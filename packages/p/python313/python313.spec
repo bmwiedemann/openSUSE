@@ -200,9 +200,6 @@ Patch06:        subprocess-raise-timeout.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch07:        bpo-31046_ensurepip_honours_prefix.patch
-# PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
-# SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
-Patch08:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch09:        skip-test_pyobject_freed_is_freed.patch
@@ -305,6 +302,12 @@ Installing "python3" is sufficient for the vast majority of usecases.
 In addition, recommended packages provide UI toolkit support (python3-curses,
 python3-tk), legacy UNIX database bindings (python3-dbm), and the IDLE
 development environment (python3-idle).
+%if %{with GIL}
+
+This package has been built with the Global Interpreter Lock removed.
+This feature is still considered to be experimental. This package is
+not ready to be used in production environments.
+%endif
 
 %package -n %{python_pkg_name}-tk
 Summary:        TkInter, a Python Tk Interface
@@ -420,6 +423,12 @@ This package contains the interpreter core and most commonly used modules
 from the standard library. This is sufficient for many usecases, but it
 excludes components that depend on external libraries, most notably XML,
 database and UI toolkits support.
+%if %{with GIL}
+
+This package has been built with the Global Interpreter Lock removed.
+This feature is still considered to be experimental. This package is
+not ready to be used in production environments.
+%endif
 
 %package -n %{python_pkg_name}-tools
 Summary:        Python Utility and Demonstration Scripts
@@ -484,12 +493,7 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%autopatch -p1 -M 07
-
-%if 0%{?suse_version} <= 1500
-%patch -P 08 -p1
-%endif
-%autopatch -p1 -m 09
+%autopatch -p1
 
 # Fix devhelp doc build gh#python/cpython#120150
 echo "master_doc = 'contents'" >> Doc/conf.py

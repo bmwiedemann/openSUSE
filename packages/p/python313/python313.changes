@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:26:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- With python311-Sphinx we don't need no-skipif-doctests.patch
+  any more.
+
+-------------------------------------------------------------------
+Thu Oct 10 11:18:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add warning about no-GIL builds being experimental.
+
+-------------------------------------------------------------------
 Tue Oct  8 07:08:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.0:
