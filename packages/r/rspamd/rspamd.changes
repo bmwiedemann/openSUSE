@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 16 11:09:33 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.10.1
+  - [Fix] Use correct type for keylen in lua_ucl_newindex by
+    @arkamar in #5169
+  - Update hiredis library removing all hacks by @vstakhov in #5167
+  - Remove proxy from url_redirector.conf as it not the option by
+    @dragoangel in #5164
+  - chore(publicsuffix): update effective_tld_names.dat by @wdhdev
+    in #5176
+  - [Fix] Avoid null-bytes in Log-Tag header value by @smarsching
+    in #5179
+  - [Fix] Do not abort when OpenSSL is broken, report that to a
+    user by @vstakhov in #5188
+  - Some build fixes by @vstakhov in #5189
+  - Some more fixes by @vstakhov in #5190
+
+-------------------------------------------------------------------
 Wed Oct  2 11:11:02 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Actually for all distros to use luajit and lua 5.1 ABI modules

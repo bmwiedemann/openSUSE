@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -333,6 +333,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %defattr(-,root,root)
 %{_sbindir}/rc%{name}
 %{_bindir}/rspamd
+%{_bindir}/rspamd-%{version}
 %{_bindir}/rspamd_stats
 %{_libdir}/librspamd-actrie.so
 %{_libdir}/librspamd-server.so
@@ -669,6 +670,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %dir %attr(750,%{rspamd_user},%{rspamd_group}) %{_localstatedir}/lib/rspamd
 %dir %attr(750,%{rspamd_user},%{rspamd_group}) %{_localstatedir}/log/rspamd
 
+%dir /srv/www
 %dir %{_wwwdir}
 %dir %{_wwwdir}/%{name}
 %{_wwwdir}/%{name}/apple-touch-icon.png
@@ -717,6 +719,8 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_mandir}/man1/rspamadm.1*
 %{_mandir}/man1/rspamc.1*
 %{_bindir}/rspamadm
+%{_bindir}/rspamadm-%{version}
 %{_bindir}/rspamc
+%{_bindir}/rspamc-%{version}
 
 %changelog

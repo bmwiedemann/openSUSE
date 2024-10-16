@@ -360,4 +360,25 @@
 - Update to 3.10.0</comment>
     <requestid>1205186</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fa413a309941bd1acf25ad4d1f5111cd</srcmd5>
+    <version>3.10.1</version>
+    <time>1729115618</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.10.1
+  - [Fix] Use correct type for keylen in lua_ucl_newindex by
+    @arkamar in #5169
+  - Update hiredis library removing all hacks by @vstakhov in #5167
+  - Remove proxy from url_redirector.conf as it not the option by
+    @dragoangel in #5164
+  - chore(publicsuffix): update effective_tld_names.dat by @wdhdev
+    in #5176
+  - [Fix] Avoid null-bytes in Log-Tag header value by @smarsching
+    in #5179
+  - [Fix] Do not abort when OpenSSL is broken, report that to a
+    user by @vstakhov in #5188
+  - Some build fixes by @vstakhov in #5189
+  - Some more fixes by @vstakhov in #5190</comment>
+    <requestid>1208437</requestid>
+  </revision>
 </revisionlist>
