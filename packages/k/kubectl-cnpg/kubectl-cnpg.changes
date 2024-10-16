@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 16 17:09:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.24.1:
+  * feat(plugin): add `logs pretty` command (#5779)
+  * fix(plugin): collect logs from sidecars with `logs cluster`
+    (#5826)
+  * chore(plugin): organise plugin commands into groups (#5796)
+  * fix(plugin): ensure pgadmin4 has a writable home directory
+    (#5800)
+  * feat(plugin): compact output of `status` command (#5765)
+  * fix(plugin): avoid jamming JSON logs with `logs` command
+    (#5775)
+  * fix(backup,plugin): keep plugin connection open while running a
+    backup (#5726)
+  * fix(backup,plugin): add `BackupStartingCondition` condition to
+    cluster while using the plugin method (#5697)
+  * fix(plugin): handle `potential` sync in `status` command
+    (#5533)
+  * fix(plugin): restrict `cnpg destroy` job deletion to the
+    specified namespace (#5372)
+
+-------------------------------------------------------------------
 Sat Sep 14 10:49:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.24.0:
