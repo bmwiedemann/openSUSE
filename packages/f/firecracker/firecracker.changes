@@ -1,4 +1,386 @@
 -------------------------------------------------------------------
+Thu Sep 26 13:18:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * Added
+    - #4687: Added VMGenID support for microVMs running on ARM
+      hosts with 6.1 guest kernels. Support for VMGenID via
+      DeviceTree bindings exists only on mainline 6.10 Linux
+      onwards. Users of Firecracker will need to backport the
+      relevant patches on top of their 6.1 kernels to make use of
+      the feature.
+    - #4732, #4733, #4741, #4746: Added official support for 6.1
+      microVM guest kernels.
+  * Changed
+    - nothing
+  * Deprecated
+    - Support for guest kernel 4.14 is now deprecated. We will
+      completely remove 4.14 support with Firecracker version v1.10
+  * Removed
+    - #4689: Drop support for host kernel 4.14. Linux 4.14 reached
+      end-of-life in January 2024. The minimum supported kernel now
+      is 5.10. Guest kernel 4.14 is still supported.
+  * Fixed
+    - 4680: Fixed an issue (#4659) where the virtio-net device
+      implementation would always assume the guest accepts all
+      VirtIO features the device offers. This is always true with
+      the Linux guest kernels we are testing but other kernels,
+      like FreeBSD make different assumptions. This PR fixes the
+      emulation code to set the TAP features based on the features
+      accepted by the guest.
+- Update to version 1.8.0:
+  * Added
+    - #4428: Added ACPI support to Firecracker for x86_64 microVMs.
+      Currently, we pass ACPI tables with information about the
+      available vCPUs, interrupt controllers, VirtIO and legacy x86
+      devices to the guest. This allows booting kernels without
+      MPTable support. Please see our kernel policy documentation
+      for more information regarding relevant kernel
+      configurations.
+    - #4487: Added support for the Virtual Machine Generation
+      Identifier (VMGenID) device on x86_64 platforms. VMGenID is a
+      virtual device that allows VMMs to notify guests when they
+      are resumed from a snapshot. Linux includes VMGenID support
+      since version 5.18. It uses notifications from the device to
+      reseed its internal CSPRNG. Please refer to snapshot support
+      and random for clones documention for more info on VMGenID.
+      VMGenID state is part of the snapshot format of Firecracker.
+      As a result, Firecracker snapshot version is now 2.0.0.
+  * Changed
+    - #4492: Changed --config parameter of cpu-template-helper
+      optional. Users no longer need to prepare kernel, rootfs and
+      Firecracker configuration files to use cpu-template-helper.
+    - #4537 Changed T2CL template to pass through bit 27 and 28 of
+      MSR_IA32_ARCH_CAPABILITIES (RFDS_NO and RFDS_CLEAR) since KVM
+      consider they are able to be passed through and T2CL isn't
+      designed for secure snapshot migration between different
+      processors.
+    - #4537 Changed T2S template to set bit 27 of
+      MSR_IA32_ARCH_CAPABILITIES (RFDS_NO) to 1 since it assumes
+      that the fleet only consists of processors that are not
+      affected by RFDS.
+    - #4388: Avoid setting kvm_immediate_exit to 1 if are already
+      handling an exit, or if the vCPU is stopped. This avoids a
+      spurious KVM exit upon restoring snapshots.
+    - #4567: Do not initialize vCPUs in powered-off state upon
+      snapshot restore. No functional change, as vCPU
+      initialization is only relevant for the booted case (where
+      the guest expects CPUs to be powered off).
+  * Deprecated
+    - Firecracker's --start-time-cpu-us and --start-time-us
+      parameters are deprecated and will be removed in v2.0 or
+      later. They are used by the jailer to pass the value that
+      should be subtracted from the (CPU) time, when emitting the
+      start_time_us and start_time_cpu_us metrics. These parameters
+      were never meant to be used by end customers, and we
+      recommend doing any such time adjustments outside
+      Firecracker.
+    - Booting with microVM kernels that rely on MPTable on x86_64
+      is deprecated and support will be removed in v2.0 or later.
+      We suggest to users of Firecracker to use guest kernels with
+      ACPI support. For x86_64 microVMs, ACPI will be the only way
+      Firecracker passes hardware information to the guest once
+      MPTable support is removed.
+  * Fixed
+    - #4526: Added a check in the network TX path that the size of
+      the network frames the guest passes to us is not bigger than
+      the maximum frame the device expects to handle. On the TX
+      path, we copy frames destined to MMDS from guest memory to
+      Firecracker memory. Without the check, a mis-behaving
+      virtio-net driver could cause an increase in the memory
+      footprint of the Firecracker process. Now, if we receive such
+      a frame, we ignore it and increase Net::tx_malformed_frames
+      metric.
+    - #4536: Make the first differential snapshot taken after a
+      full snapshot contain only the set of memory pages changed
+      since the full snapshot. Previously, these differential
+      snapshots would contain all memory pages. This will result in
+      potentially much smaller differential snapshots after a full
+      snapshot.
+    - #4578: Fix UFFD support not being forward-compatible with new
+      ioctl options introduced in Linux 6.6. See also
+      bytecodealliance/userfaultfd-rs#61.
+    - #4630: On x86_64, when taking a snapshot, if a vCPU has
+      MSR_IA32_TSC_DEADLINE set to 0, Firecracker will replace it
+      with the MSR_IA32_TSC value from the same vCPU. This is to
+      guarantee that the vCPU will continue receiving TSC
+      interrupts after restoring from the snapshot even if an
+      interrupt is lost when taking a snapshot.
+    - #4666: Fixed Firecracker sometimes restoring
+      MSR_IA32_TSC_DEADLINE before MSR_IA32_TSC. Now it always
+      restores MSR_IA32_TSC_DEADLINE MSR after MSR_IA32_TSC, as KVM
+      relies on the guest TSC for correct restoration of
+      MSR_IA32_TSC_DEADLINE. This fixed guests using the
+      TSC_DEADLINE hardware feature receiving incorrect timer
+      interrupts after snapshot restoration, which could lead to
+      them seemingly getting stuck in sleep-related syscalls (see
+      also #4099).
+- Update to version 1.7.0:
+  * Added
+    - #4346: Added support to emit aggregate (minimum/maximum/sum)
+      latency for VcpuExit::MmioRead, VcpuExit::MmioWrite,
+      VcpuExit::IoIn and VcpuExit::IoOut. The average for these VM
+      exits is not emitted since it can be deduced from the
+      available emitted metrics.
+    - #4360: Added dev-preview support for backing a VM's guest
+      memory by 2M hugetlbfs pages. Please see the documentation
+      for more information
+    - #4490: Added block and net device metrics for file/tap access
+      latencies and queue backlog lengths, which can be used to
+      analyse saturation of the Firecracker VMM thread and
+      underlying layers. Queue backlog length metrics are flushed
+      periodically. They can be used to esimtate an average queue
+      length by request by dividing its value by the number of
+      requests served.
+  * Changed
+    - #4230: Changed microVM snapshot format version strategy.
+      Firecracker snapshot format now has a version that is
+      independent of Firecracker version. The current version of
+      the snapshot format is v1.0.0. From now on, the Firecracker
+      binary will define the snapshot format version it supports
+      and it will only be able to load snapshots with format that
+      is backwards compatible with that version. Users can pass the
+      --snapshot-version flag to the Firecracker binary to see its
+      supported snapshot version format. This change renders all
+      previous Firecracker snapshots (up to Firecracker version
+      v1.6.0) incompatible with the current Firecracker version.
+    - #4449: Added information about page size to the payload
+      Firecracker sends to the UFFD handler. Each memory region
+      object now contains a page_size_kib field. See also the
+      hugepages documentation.
+    - #4501: Only use memfd to back guest memory if a
+      vhost-user-blk device is configured, otherwise use anonymous
+      private memory. This is because serving page faults of shared
+      memory used by memfd is slower and may impact workloads.
+  * Fixed
+    - #4409: Fixed a bug in the cpu-template-helper that made it
+      panic during conversion of cpu configuration with SVE
+      registers to the cpu template on aarch64 platform. Now
+      cpu-template-helper will print warnings if it encounters SVE
+      registers during the conversion process. This is because cpu
+      templates are limited to only modify registers less than 128
+      bits.
+    - #4413: Fixed a bug in the Firecracker that prevented it to
+      restore snapshots of VMs that had SVE enabled.
+    - #4414: Made PATCH requests to the /machine-config endpoint
+      transactional, meaning Firecracker's configuration will be
+      unchanged if the request returns an error. This fixes a bug
+      where a microVM with incompatible balloon and guest memory
+      size could be booted, due to the check for this condition
+      happening after Firecracker's configuration was updated.
+    - #4259: Added a double fork mechanism in the Jailer to avoid
+      setsid() failures occurred while running Jailer as the
+      process group leader. However, this changed the behaviour of
+      Jailer and now the Firecracker process will always have a
+      different PID than the Jailer process.
+    - #4436: Added a "Known Limitations" section in the Jailer docs
+      to highlight the above change in behaviour introduced in
+      PR#4259.
+    - #4442: As a solution to the change in behaviour introduced in
+      PR#4259, provided a mechanism to reliably fetch Firecracker
+      PID. With this change, Firecracker process's PID will always
+      be available in the Jailer's root directory regardless of
+      whether new_pid_ns was set.
+    - #4468: Fixed a bug where a client would hang or timeout when
+      querying for an MMDS path whose content is empty, because the
+      'Content-Length' header field was missing in a response.
+- Update to version 1.6.0:
+  * Added
+    - #4145: Added support for per net device metrics. In addition
+      to aggregate metrics net, each individual net device will
+      emit metrics under the label "net_{iface_id}". E.g. the
+      associated metrics for the endpoint
+      "/network-interfaces/eth0" will be available under "net_eth0"
+      in the metrics json object.
+    - #4202: Added support for per block device metrics. In
+      addition to aggregate metrics block, each individual block
+      device will emit metrics under the label "block_{drive_id}".
+      E.g. the associated metrics for the endpoint
+      "/drives/{drive_id}" will be available under "block_drive_id"
+      in the metrics json object.
+    - #4205: Added a new vm-state subcommand to info-vmstate
+      command in the snapshot-editor tool to print MicrovmState of
+      vmstate snapshot file in a readable format. Also made the
+      vcpu-states subcommand available on x86_64.
+    - #4063: Added source-level instrumentation based tracing. See
+      tracing for more details.
+    - #4138, #4170, #4223, #4247, #4226: Added developer preview
+      only (NOT for production use) support for vhost-user block
+      devices. Firecracker implements a vhost-user frontend. Users
+      are free to choose from existing open source backend
+      solutions or their own implementation. Known limitation:
+      snapshotting is not currently supported for microVMs
+      containing vhost-user block devices. See the related doc page
+      for details. The device emits metrics under the label
+      "vhost_user_{device}_{drive_id}".
+  * Changed
+    - #4309: The jailer’s option --parent-cgroup will move the
+      process to that cgroup if no cgroup options are provided.
+    - Simplified and clarified the removal policy of deprecated API
+      elements to follow semantic versioning 2.0.0. For more
+      information, please refer to this GitHub discussion.
+    - #4180: Refactored error propagation to avoid logging and
+      printing an error on exits with a zero exit code. Now, on
+      successful exit “Firecracker exited successfully” is logged.
+    - #4194: Removed support for creating Firecracker snapshots
+      targeting older versions of Firecracker. With this change,
+      running ‘firecracker –version’ will not print the supported
+      snapshot versions.
+    - #4301: Allow merging of diff snapshots into base snapshots by
+      directly writing the diff snapshot on top of the base
+      snapshot’s memory file. This can be done by setting the
+      mem_file_path to the path of the pre-existing full snapshot.
+  * Deprecated
+    - #4209: rebase-snap tool is now deprecated. Users should use
+      snapshot-editor for rebasing diff snapshots.
+  * Fixed
+    - #4171: Fixed a bug that ignored the --show-log-origin option,
+      preventing it from printing the source code file of the log
+      messages.
+    - #4178: Fixed a bug reporting a non-zero exit code on
+      successful shutdown when starting Firecracker with --no-api.
+    - #4261: Fixed a bug where Firecracker would log
+      “RunWithApiError error: MicroVMStopped without an error:
+      GenericError” when exiting after encountering an emulation
+      error. It now correctly prints “RunWithApiError error:
+      MicroVMStopped with an error: GenericError”.
+    - #4242: Fixed a bug introduced in #4047 that limited the
+      --level option of logger to Pascal-cased values (e.g.
+      accepting “Info”, but not “info”). It now ignores case again.
+    - #4286: Fixed a bug in the asynchronous virtio-block engine
+      that rendered the device non-functional after a PATCH request
+      was issued to Firecracker for updating the path to the
+      host-side backing file of the device.
+    - #4301: Fixed a bug where if Firecracker was instructed to
+      take a snapshot of a microvm which itself was restored from a
+      snapshot, specifying mem_file_path to be the path of the
+      memory file from which the microvm was restored would result
+      in both the microvm and the snapshot being corrupted. It now
+      instead performs a “write-back” of all memory that was
+      updated since the snapshot was originally loaded.
+- Update to version 1.5.1:
+  * Added
+    - #4287: Document a caveat to the jailer docs when using the
+      --parent-cgroup option, which results in it being ignored by
+      the jailer. Refer to the jailer documentation for a
+      workaround.
+  * Changed
+    - #4191: Refactored error propagation to avoid logging and
+      printing an error on exits with a zero exit code. Now, on
+      successful exit "Firecracker exited successfully" is logged.
+  * Fixed
+    - #4277: Fixed a bug that ignored the --show-log-origin option,
+      preventing it from printing the source code file of the log
+      messages.
+    - #4179: Fixed a bug reporting a non-zero exit code on
+      successful shutdown when starting Firecracker with --no-api.
+    - #4271: Fixed a bug where Firecracker would log
+      "RunWithApiError error: MicroVMStopped without an error:
+      GenericError" when exiting after encountering an emulation
+      error. It now correctly prints "RunWithApiError error:
+      MicroVMStopped with an error: GenericError".
+    - #4270: Fixed a bug introduced in #4047 that limited the
+      --level option of logger to Pascal-cased values (e.g.
+      accepting "Info", but not "info"). It now ignores case again.
+    - #4295: Fixed a bug in the asynchronous virtio-block engine
+      that rendered the device non-functional after a PATCH request
+      was issued to Firecracker for updating the path to the
+      host-side backing file of the device.
+- Update to version 1.5.0:
+  * Added
+    - #3837: Added official support for Linux 6.1. See
+      prod-host-setup for some security and performance
+      considerations.
+    - #4045 and #4075: Added snapshot-editor tool for modifications
+      of snapshot files. It allows for rebasing of memory snapshot
+      files, printing and removing aarch64 registers from the
+      vmstate and obtaining snapshot version.
+    - #3967: Added new fields to the custom CPU templates. (aarch64
+      only) vcpu_features field allows modifications of vCPU
+      features enabled during vCPU initialization. kvm_capabilities
+      field allows modifications of KVM capability checks that
+      Firecracker performs during boot. If any of these fields are
+      in use, minimal target snapshot version is restricted to 1.5.
+  * Changed
+    - Updated deserialization of bitmap for custom CPU templates to
+      allow usage of '_' as a separator.
+    - Changed the strip feature of cpu-template-helper tool to
+      operate bitwise.
+    - Better logs during validation of CPU ID in snapshot
+      restoration path. Also Firecracker now does not fail if it
+      can't get CPU ID from the host or can't find CPU ID in the
+      snapshot.
+    - Changed the serial device to only try to initialize itself if
+      stdin is a terminal or a FIFO pipe. This fixes logged
+      warnings about the serial device failing to initialize if the
+      process is daemonized (in which case stdin is /dev/null
+      instead of a terminal).
+    - Changed to show a warning message when launching a microVM
+      with C3 template on a processor prior to Intel Cascade Lake,
+      because the guest kernel does not apply the mitigation
+      against MMIO stale data vulnerability when it is running on a
+      processor that does not enumerate FBSDP_NO, PSDP_NO and
+      SBDR_SSDP_NO on IA32_ARCH_CAPABILITIES MSR.
+    - Made Firecracker resize its file descriptor table on process
+      start. It now preallocates the in-kernel fdtable to hold
+      RLIMIT_NOFILE many fds (or 2048 if no limit is set). This
+      avoids the kernel reallocating the fdtable during Firecracker
+      operations, resulting in a 30ms to 70ms reduction of snapshot
+      restore times for medium to large microVMs with many devices
+      attached.
+    - Changed the dump feature of cpu-template-helper tool not to
+      enumerate program counter (PC) on ARM because it is
+      determined by the given kernel image and it is useless in the
+      custom CPU template context.
+    - The ability to create snapshots for an older version of
+      Firecracker is now deprecated. As a result, the version body
+      field in PUT on /snapshot/create request in deprecated.
+    - Added support for the /dev/userfaultfd device available on
+      linux kernels >= 6.1. This is the default for creating UFFD
+      handlers on these kernel versions. If it is unavailable,
+      Firecracker falls back to the userfaultfd syscall.
+    - Deprecated cpu_template field in PUT and PATCH requests on
+      /machine-config API, which is used to set a static CPU
+      template. Custom CPU templates added in v1.4.0 are available
+      as an improved iteration of the static CPU templates. For
+      more information about the transition from static CPU
+      templates to custom CPU templates, please refer to this
+      GitHub discussion.
+    - Changed default log level from Warn to Info. This results in
+      more logs being output by default.
+  * Fixed
+    - Fixed a change in behavior of normalize host brand string
+      that breaks Firecracker on external instances.
+    - Fixed the T2A CPU template not to unset the MMX bit
+      (CPUID.80000001h:EDX[23]) and the FXSR bit
+      (CPUID.80000001h:EDX[24]).
+    - Fixed the T2A CPU template to set the RstrFpErrPtrs bit
+      (CPUID.80000008h:EBX[2]).
+    - Fixed a bug where Firecracker would crash during boot if a
+      guest set up a virtio queue that partially overlapped with
+      the MMIO gap. Now Firecracker instead correctly refuses to
+      activate the corresponding virtio device.
+    - Fixed the T2CL CPU template to pass through security
+      mitigation bits that are listed by KVM as bits able to be
+      passed through. By making the most use of the available
+      hardware security mitigations on a processor that a guest is
+      running on, the guest might be able to benefit from
+      performance improvements.
+    - Fixed the T2S CPU template to set the GDS_NO bit of the
+      IA32_ARCH_CAPABILITIES MSR to 1 in accordance with an Intel
+      microcode update. To use the template securely, users should
+      apply the latest microcode update on the host.
+    - Fixed the spelling of the nomodule param passed in the
+      default kernel command line parameters. This is a breaking
+      change for setups that use the default kernel command line
+      which also depend on being able to load kernel modules at
+      runtime. This may also break setups which use the default
+      kernel command line and which use an init binary that
+      inadvertently depends on the misspelled param ("nomodules")
+      being present at the command line, since this param will no
+      longer be passed.
+
+-------------------------------------------------------------------
 Tue Oct 10 14:01:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.4.1:

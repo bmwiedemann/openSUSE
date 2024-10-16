@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,14 @@
 #
 
 
-# Use hardening ldflags.
-%define cargo_home cargo-home
-
 Name:           firecracker
-Version:        1.4.1
+Version:        1.9.0
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
-Group:          System/Emulators/PC
 URL:            https://firecracker-microvm.github.io/
-Source0:        %{name}-%{version}.tar.xz
-# Created using cargo_vendor service
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
-
 BuildRequires:  cargo
 BuildRequires:  clang
 BuildRequires:  cmake
@@ -42,21 +35,9 @@ Firecracker is a virtualization technology for creating and managing
 multi-tenant container and function-based services.
 
 %prep
-%setup -q -a1
-
-cp %{SOURCE2} .cargo/config
-# Remove exec bits to prevent an issue in fedora shebang checking
-find vendor -type f -name \*.rs -exec chmod -x '{}' \;
+%autosetup -p 1 -a 1
 
 %build
-mkdir %{cargo_home}
-cat > %{cargo_home}/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
 
 # Copying the file elsewhere is required, because rpm build for aarch64
 # tries to change all the config.guess files found in BUILD with
