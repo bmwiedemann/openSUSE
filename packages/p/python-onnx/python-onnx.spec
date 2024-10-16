@@ -58,7 +58,7 @@ BuildRequires:  python-rpm-macros
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version
 Requires:       libstdc++-devel
-Requires:       python-numpy < 2.0
+Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-pybind11
 Requires:       python-typing_extensions >= 3.6.2.1

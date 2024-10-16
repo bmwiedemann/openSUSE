@@ -189,4 +189,13 @@
     <comment></comment>
     <requestid>1207862</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2bfdcb536d0e7525c6f09c9bffe71535</srcmd5>
+    <version>1.17.0</version>
+    <time>1729115421</time>
+    <user>anag+factory</user>
+    <comment>- Fix numpy version 'Requires'
+</comment>
+    <requestid>1208385</requestid>
+  </revision>
 </revisionlist>
