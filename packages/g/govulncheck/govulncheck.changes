@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add ExcludeArch: s390 to build with SLE-12. Go is supported on
+    s390x but not available on s390.
+  * Fix License: BSD-3-Clause, drop incorrect AND Apache-2.0
+
+-------------------------------------------------------------------
 Wed Jul 17 03:29:15 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.1.3:

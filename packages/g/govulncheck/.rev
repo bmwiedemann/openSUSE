@@ -207,4 +207,15 @@
     across Go app packages. Also makes renaming binary easier when (forwarded request 1188075 from jfkw)</comment>
     <requestid>1188076</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6fa039474305806c69ae6c8a3b7e4405</srcmd5>
+    <version>1.1.3</version>
+    <time>1729115649</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Add ExcludeArch: s390 to build with SLE-12. Go is supported on
+    s390x but not available on s390.
+  * Fix License: BSD-3-Clause, drop incorrect AND Apache-2.0 (forwarded request 1208472 from jfkw)</comment>
+    <requestid>1208475</requestid>
+  </revision>
 </revisionlist>

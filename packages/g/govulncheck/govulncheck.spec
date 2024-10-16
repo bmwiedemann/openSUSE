@@ -20,12 +20,14 @@ Name:           govulncheck
 Version:        1.1.3
 Release:        0
 Summary:        CLI tool to report known CVE vulnerabilities in Go source code and binaries
-License:        Apache-2.0 AND BSD-3-Clause
+License:        BSD-3-Clause
 Group:          Development/Languages/Go
 URL:            https://github.com/golang/vuln
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.21
+# Required to build on SLE-12
+ExcludeArch:    s390
 
 %description
 govulncheck is a CLI tool to report known vulnerabilities that affect Go code. It uses static analysis of source code or a binary's symbol table to narrow down reports to only those that could affect the application.
