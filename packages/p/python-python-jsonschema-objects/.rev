@@ -97,4 +97,17 @@
   - Drop no-longer-needed use-specification-obj.patch</comment>
     <requestid>1179856</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>326d967c8fdda8e914d6cf85515f3735</srcmd5>
+    <version>0.5.5</version>
+    <time>1729115390</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.5:
+  * remove six dependencies
+- drop no-six.patch (upstream)
+
+- Skip a failing test for now.
+  * Fixes import path for collections.abc to be compliant with Python 3.8 [#197] (h/t @adriangay)</comment>
+    <requestid>1208372</requestid>
+  </revision>
 </revisionlist>

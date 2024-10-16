@@ -17,14 +17,12 @@
 
 
 Name:           python-python-jsonschema-objects
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        An object wrapper for JSON Schema definitions
 License:        MIT
 URL:            https://python-jsonschema-objects.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/p/python_jsonschema_objects/python_jsonschema_objects-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/cwacek/python-jsonschema-objects/pull/289 clear some Python 2 remnants (including six)
-Patch:          no-six.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
