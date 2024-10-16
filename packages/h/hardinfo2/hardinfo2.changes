@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 16 20:26:53 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.1.14:
+  * PACKAGING: Added service (Allows memory DMI+SPD & resources
+    iomem+ioports)
+  * PACKAGING: Added build dependencies (DEB:libqt5opengl5-dev
+    qtbase5-dev)/(FEDORA:qt5-qtbase-devel)
+  * PACKAGING: BinReloc disabled for all distros - using CMAKE
+  * New OpenGL benchmark using QT5
+  * Fixed GPU benchmarks to show GPU instead of CPU in table
+  * CleanUserData on first run and program version changes
+  * Improve light themes, Updated anime theme
+  * Minor fixes, translations, isa ARM+RISCV updates, cpu
+    topology fixes, cpu flags fix, minor CLI
+  * Minor fixes, improve GPU name, improve distro name
+  * Added RISC-V identification table
+  * Memory SPD Vendor table update, minor updates
+    to PCI+USB tables
+  * Memory SPD & DMI and resources from user space via service
+  * Danish translation
+  * Added metainfo for appcenters
+  * Readded E2000 CPU Support after license change acceptance
+  * Fixes for PCLinuxOS+PureOS10+Devuan CPack building
+  * Fixes for NixOS+Nix, WSL2, Rasbian, RaspberryPi and
+    old distros
+- Rebase BuildRequires
+
+-------------------------------------------------------------------
 Mon Jun  3 06:00:46 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.1.11:

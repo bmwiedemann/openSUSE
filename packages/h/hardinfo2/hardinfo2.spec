@@ -17,7 +17,7 @@
 
 
 Name:           hardinfo2
-Version:        2.1.11
+Version:        2.1.14
 Release:        0
 Summary:        A System Information and Benchmark for Linux
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
@@ -31,6 +31,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  openSUSE-release
 BuildRequires:  pciutils
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-png)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
@@ -81,6 +85,18 @@ desktop-file-install --vendor="" \
 
 %find_lang %{name}
 
+%pre
+%service_add_pre %{name}.service
+
+%post
+%service_add_post %{name}.service
+
+%preun
+%service_del_preun %{name}.service
+
+%postun
+%service_del_postun %{name}.service
+
 %files -f %{name}.lang
 %doc README.md
 %license LICENSE LICENSE.1 LICENSE.2
@@ -90,5 +106,7 @@ desktop-file-install --vendor="" \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/hardinfo2.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/metainfo/org.hardinfo2.hardinfo2.metainfo.xml
+%{_unitdir}/hardinfo2.service
 
 %changelog
