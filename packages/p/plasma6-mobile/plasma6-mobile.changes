@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+  * taskswitcher: Fix close all button being dark and not interactable
+  * taskswitcher: Gesture Navigation: Quality of Life Improvements
+  * kcms/cellularnetwork: Fix available networks list elements not being full-width
+  * statusbar: Fix clock not updating immediately when timezones are changed
+  * screenbrightnessplugin: Extract from initialstart and use in shell
+  * navigationpanel: Fix disabled buttons from having grey icons
+  * initialstart: Provide more scaling options
+  * update version for new release
+  * quicksettings/screenrotation: Don't call rotate in signal handler
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:
