@@ -28,6 +28,7 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.mindwerks.net/projects/wildmidi
 Source:         https://github.com/Mindwerks/wildmidi/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}.cfg
+Source98:       baselibs.conf
 BuildRequires:  cmake >= 3.1
 BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
