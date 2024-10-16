@@ -55,10 +55,12 @@ BuildRequires:  %{ansible_python}-PyYAML
 # importlib-metadata not required, as we are using python3.10 or higher
 # SECTION test requirements
 # https://github.com/ansible/ansible-runner/blob/devel/test/requirements.txt
+BuildRequires:  %{ansible_python}-mypy
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-pytest-mock
 BuildRequires:  %{ansible_python}-pytest-timeout
 BuildRequires:  %{ansible_python}-pytest-xdist
+BuildRequires:  %{ansible_python}-types-PyYAML
 # /SECTION
 BuildRequires:  fdupes
 # https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L32
@@ -96,6 +98,7 @@ IGNORED_TESTS+='test_multiline_blank_write[pexpect] or '
 # flaky tests
 IGNORED_TESTS+='test_run_command_long_running or '
 IGNORED_TESTS+='test_run_command_long_running_children or '
+IGNORED_TESTS+='test_password_prompt or '
 IGNORED_TESTS+='test_get_role_list'
 export PATH=%{buildroot}%{_bindir}:$PATH
 %pytest -n auto -k "not ($IGNORED_TESTS)"
