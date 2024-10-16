@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:52:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.6:
+  * run `make generate`
+  * rename exported GetTagFilterPrefix and GetTagFilterContains
+    functions to be normalized GetFilterPrefix and GetFilterPrefix
+  * update config: add version filter prefix and contains to
+    release monitor config block so implementations can perform the
+    same behaviour as git and github configs
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump google.golang.org/api from 0.199.0 to 0.200.0
+  * build(deps): bump the actions group with 2 updates
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.30.0 to
+    1.31.0
+  * build(deps): bump the gomod group with 4 updates
+  * pipelines: fix split/debug
+
+-------------------------------------------------------------------
 Sun Oct 13 18:08:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.5:
