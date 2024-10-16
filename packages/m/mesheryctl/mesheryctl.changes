@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:57:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.122:
+  * General
+    - Add trim param in meshmodels API @Yashsharma1911 (#12367)
+    - rego policies for relationships w/singoff @Jougan-0 (#12351)
+    - Allow getting entities by ids @Yashsharma1911 (#12361)
+    - Fix environment connections not getting fetched in local
+      provider @Yashsharma1911 (#12349)
+  * Meshery CLI
+    - fix: unit test / integration test issue due to console
+      special characters @lekaf974 (#12327)
+
+-------------------------------------------------------------------
 Fri Oct 11 10:56:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.121:
