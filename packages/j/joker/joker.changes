@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 30 10:14:54 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to verson 1.4.0
+  * Added joker.url/parse-query function.
+  * Added joker.io/read function.
+  * Fixes Close file in load-file
+
+- Added unit test run in the build
+
+-------------------------------------------------------------------
 Sat Mar 30 16:58:24 UTC 2024 - Jochen Breuer <brejoc@gmail.com> - 1.3.5
 
 - Update to version 1.3.5

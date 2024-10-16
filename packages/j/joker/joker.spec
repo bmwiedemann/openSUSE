@@ -17,7 +17,7 @@
 
 
 Name:           joker
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        Small Clojure interpreter, linter and formatter written in Go
 License:        EPL-1.0
@@ -45,6 +45,9 @@ GO111MODULE=on CGO_ENABLED=0 go build -mod=vendor -o %{name} -buildmode=pie \
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
+
+%check
+./all-tests.sh
 
 %files
 %license LICENSE
