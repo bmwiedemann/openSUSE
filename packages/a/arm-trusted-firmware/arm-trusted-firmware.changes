@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 16 12:55:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.10.7:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.7/docs/change-log.md
+- Skipped 2.10.6:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.6/docs/change-log.md
+- Skipped 2.10.5:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.5/docs/change-log.md
+- Skipped 2.10.4:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.4/docs/change-log.md
+- Skipped 2.10.3:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.3/docs/change-log.md
+- Skipped 2.10.2:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.2/docs/change-log.md
+- Skipped 2.10.1:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.10.1/docs/change-log.md
+
+-------------------------------------------------------------------
 Wed May 15 07:04:17 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Don't use TF-A on RPi3 by default, just keep it around for testing.
