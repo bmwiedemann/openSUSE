@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:36:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.1:
+  * fix: stop some log.Warn spam due parsing an empty string as a
+    CPE (#3330)
+  * chore(deps): update stereoscope to
+    1cc8a41d447d0d092699be2b700b8ba62e870434 (#3334)
+  * chore(deps): update stereoscope to
+    1cc8a41d447d0d092699be2b700b8ba62e870434 (#3332)
+  * chore(deps): update stereoscope to
+    93f8a11331e3d50f751e4d0ec5b63f3df309e9e5 (#3331)
+  * chore(deps): bump anchore/sbom-action from 0.17.2 to 0.17.3
+    (#3326)
+  * chore(deps): bump github/codeql-action from 3.26.12 to 3.26.13
+    (#3327)
+  * chore(deps): update CPE dictionary index (#3323)
+  * fix: improve go binary semver extraction for traefik (#3325)
+  * chore(deps): update stereoscope to
+    92e97a1cf36d162bad51ccc6aba0cce7a4dcfbf4 (#3322)
+  * chore(deps): update stereoscope to
+    c04af061af62ab3ba6ab6760613526eaa7fcb163 (#3319)
+  * chore(deps): bump github.com/bmatcuk/doublestar/v4 from 4.6.1
+    to 4.7.0 (#3321)
+  * chore(deps): bump actions/upload-artifact from 4.4.1 to 4.4.3
+    (#3314)
+  * shorten release docs (#3318)
+  * docs: clearer deprecation message for --file (#3310)
+  * [docs] Add mastodon link to README.md (#3306)
+  * chore(deps): update stereoscope to
+    5bc91bf166769e43d8d0f86c02e877c55eb04aed (#3313)
+  * chore(deps): bump actions/cache from 4.1.0 to 4.1.1 (#3312)
+  * chore(deps): bump github/codeql-action from 3.26.11 to 3.26.12
+    (#3307)
+  * chore(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#3308)
+  * chore(deps): bump actions/upload-artifact from 4.4.0 to 4.4.1
+    (#3309)
+
+-------------------------------------------------------------------
 Wed Oct 09 04:42:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.0:
