@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,7 +113,7 @@ Obsoletes:      e17
 Provides:       e17 > 0.17.4
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires(post): permissions
 %endif
 %{?systemd_requires}

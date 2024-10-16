@@ -10,10 +10,10 @@ Date:   Wed Jun 28 12:58:55 2017 +0930
     selected as there default just set the language without showing
     the wizard page.
 
-Index: enlightenment-0.25.3/src/modules/wizard/page_010.c
+Index: enlightenment-0.25.4/src/modules/wizard/page_010.c
 ===================================================================
---- enlightenment-0.25.3.orig/src/modules/wizard/page_010.c
-+++ enlightenment-0.25.3/src/modules/wizard/page_010.c
+--- enlightenment-0.25.4.orig/src/modules/wizard/page_010.c
++++ enlightenment-0.25.4/src/modules/wizard/page_010.c
 @@ -176,17 +176,11 @@ _lang_content_get(E_Intl_Pair *pair, Eva
  static char *
  _lang_text_get(E_Intl_Pair *pair, Evas_Object *obj EINA_UNUSED, const char *part)
@@ -48,7 +48,7 @@ Index: enlightenment-0.25.3/src/modules/wizard/page_010.c
 +                       lang = basic_language_predefined_pairs[i].locale_key;
 +                       eina_stringshare_replace(&e_config->language, lang);
 +                       e_intl_language_set(e_config->language);
-+                       e_wizard_labels_update();
++                       api->wizard_labels_update();
 +                       return 0;
 +                   }
 +                i++;
