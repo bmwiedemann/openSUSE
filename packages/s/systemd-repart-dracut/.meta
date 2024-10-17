@@ -1,0 +1,5 @@
+<package name="systemd-repart-dracut" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:microos" package="systemd-repart-dracut"/>
+</package>
