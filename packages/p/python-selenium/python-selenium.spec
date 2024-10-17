@@ -46,7 +46,7 @@ Requires:       python-trio-websocket >= 0.9
 Requires:       python-typing-extensions >= 4.9
 Requires:       python-urllib3
 Requires:       python-websocket-client >= 1.8
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64
+ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
 %python_subpackages
 
 %description
