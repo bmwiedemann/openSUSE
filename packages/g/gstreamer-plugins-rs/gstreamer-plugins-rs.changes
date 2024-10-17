@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 16 18:58:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.13.2:
+  + Fixed:
+    - cea608overlay: Avoid overflow when deciding which lines to
+      retain.
+    - cea708mux:
+      . Actually push gap events downstream.
+      . Stop with EOS once all pads are EOS.
+      . Fix off-by-one when deciding if a buffer belongs to this or
+        the next frame.
+    - mpegtslivesrc: Various timestamp tracking fixes.
+    - onvifmetadatapay: Set output caps earlier.
+    - transcriberbin: Fix passthrough state change.
+    - webrtcsink: Fix setting of RFC7273 attributes in the SDP.
+  + Added:
+    - dav1ddec: Add properties for film grain synthesis and in-loop
+      filters.
+    - mpegtslivesrc: Handle PCR discontinuities.
+    - rtpav1depay: Add wait-for-keyframe and request-keyframe
+      properties.
+    - webrtcsrc: Expose msid property on source pads.
+  + Changed: spotify: Reduce dependencies.
+
+-------------------------------------------------------------------
 Tue Sep 10 12:56:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.13.1:
