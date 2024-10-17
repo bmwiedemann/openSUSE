@@ -1,0 +1,5 @@
+<package name="flatten-maven-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="flatten-maven-plugin"/>
+</package>
