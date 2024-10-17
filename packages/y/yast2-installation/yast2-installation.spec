@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        5.0.12
+Version:        5.0.14
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -125,6 +125,9 @@ Conflicts:      yast2-registration < 3.2.3
 # Top bar with logo
 Conflicts:      yast2-ycp-ui-bindings < 3.1.7
 Obsoletes:      yast2-installation-devel-doc
+# we provide here only client that is used in microos from caasp package
+# and those clients conflicts on file level
+Conflicts:      yast2-caasp <= 5.0.0
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1210
 %{systemd_requires}

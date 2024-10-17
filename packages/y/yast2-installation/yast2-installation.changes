@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 16 19:29:19 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix for previous change which contain typo in class name causing
+  crash in microos installer (gh#yast/yast-installation#1126)
+- 5.0.14
+
+-------------------------------------------------------------------
+Tue Oct 15 09:00:15 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Move microos system role dialog from yast2-caasp here to be able
+  to drop yast2-caasp (gh#yast/yast-caasp#49)
+- 5.0.13
+
+-------------------------------------------------------------------
 Mon Sep  9 12:33:25 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't block in AutoYaST upgrade (bsc#1181625)
