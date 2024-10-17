@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 12:47:08 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20241016.ae941eb7:
+  * dbus-services: adjust gnome-remote-desktop to version 47 (bsc#1230406)
+  * Add new warning about the usage of %suse_update_desktop_file
+
+-------------------------------------------------------------------
 Fri Sep 20 15:22:43 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.6.1+git20240918.5cb5647:
