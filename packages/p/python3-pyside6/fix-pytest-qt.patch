@@ -26,11 +26,11 @@ without the first one being processed yet.
 
 Submitted to upstream in https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
 
-Index: pyside-setup-everywhere-src-6.7.1/sources/pyside6/libpyside/pysidesignal.cpp
-===================================================================
---- pyside-setup-everywhere-src-6.7.1.orig/sources/pyside6/libpyside/pysidesignal.cpp
-+++ pyside-setup-everywhere-src-6.7.1/sources/pyside6/libpyside/pysidesignal.cpp
-@@ -718,7 +718,7 @@ static PyObject *signalInstanceDisconnec
+diff --git a/sources/pyside6/libpyside/pysidesignal.cpp b/sources/pyside6/libpyside/pysidesignal.cpp
+index 13d95fa..228f1e3 100644
+--- a/sources/pyside6/libpyside/pysidesignal.cpp
++++ b/sources/pyside6/libpyside/pysidesignal.cpp
+@@ -715,7 +715,7 @@ static PyObject *signalInstanceDisconnect(PyObject *self, PyObject *args)
          Shiboken::AutoDecRef pyMethod(PyObject_GetAttr(source->d->source,
                                                         PySide::PySideName::qtDisconnect()));
          PyObject *result = PyObject_CallObject(pyMethod, tupleArgs);

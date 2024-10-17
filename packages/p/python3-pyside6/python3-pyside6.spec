@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define short_version 6.7
+%define short_version 6.8
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,16 +43,20 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
+Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{short_version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
 Patch1:         fix-pytest-qt.patch
+# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/PYSIDE-2888
+Patch2:         0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
@@ -164,7 +168,7 @@ Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{version}
+%autosetup -p1 -n %{tar_name}-%{short_version}
 
 # Restore 6.6.1 RPATH value. rpmlint will complain otherwise
 sed -i 's#${base}/../shiboken6/##' sources/pyside6/CMakeLists.txt

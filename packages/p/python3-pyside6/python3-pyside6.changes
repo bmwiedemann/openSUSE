@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 14 11:35:35 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix shiboken on 32bit platforms:
+  * 0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
+
+-------------------------------------------------------------------
+Mon Oct 14 06:45:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
+
+-------------------------------------------------------------------
+Thu Oct 10 20:20:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0. Check the installed changes-6.8.0 file for the
+  full list of changes
+
+-------------------------------------------------------------------
 Sat Sep 28 08:37:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.3. Check the installed changes-6.7.3 file for the
