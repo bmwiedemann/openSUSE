@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20241015" schemaversion="4.1">
+<image name="OBS__MicroOS___20241016" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241015</productvar>
+      <productvar name="VERSION">20241016</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241015,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241016,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241015/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241016/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -170,6 +170,7 @@
       <repopackage name="discover6-backend-flatpak"/>
       <repopackage name="discover6-backend-fwupd"/>
       <repopackage name="discover6-notifier"/>
+      <repopackage name="distribution-logos-openSUSE-Aeon"/>
       <repopackage name="distribution-logos-openSUSE-icons"/>
       <repopackage name="distribution-logos-openSUSE-MicroOS"/>
       <repopackage name="distrobox"/>
@@ -347,6 +348,7 @@
       <repopackage name="iso-codes"/>
       <repopackage name="iso_ent"/>
       <repopackage name="issue-generator"/>
+      <repopackage name="jeos-firstboot"/>
       <repopackage name="jq"/>
       <repopackage name="kaccounts-integration"/>
       <repopackage name="kaccounts-providers"/>
@@ -1078,6 +1080,7 @@
       <repopackage name="libneon27"/>
       <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnettle8"/>
+      <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs14"/>
       <repopackage name="libnftables1"/>
@@ -1098,6 +1101,7 @@
       <repopackage name="libnuma1"/>
       <repopackage name="libnvme-mi1"/>
       <repopackage name="libnvme1"/>
+      <repopackage name="liboath0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libonig5"/>
       <repopackage name="libopenal1"/>
@@ -1533,6 +1537,7 @@
       <repopackage name="libzvbi0"/>
       <repopackage name="libZXing3"/>
       <repopackage name="libzypp"/>
+      <repopackage name="live-langset-data"/>
       <repopackage name="localsearch"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
@@ -1579,12 +1584,15 @@
       <repopackage name="NetworkManager-branding-openSUSE"/>
       <repopackage name="NetworkManager-openconnect"/>
       <repopackage name="NetworkManager-openvpn"/>
+      <repopackage name="NetworkManager-tui"/>
       <repopackage name="NetworkManager-wwan"/>
       <repopackage name="nftables"/>
       <repopackage name="nss-mdns"/>
       <repopackage name="ntfs-3g"/>
       <repopackage name="ntfsprogs"/>
       <repopackage name="nvme-cli"/>
+      <repopackage name="oath-toolkit"/>
+      <repopackage name="oath-toolkit-xml"/>
       <repopackage name="open-iscsi"/>
       <repopackage name="open-isns"/>
       <repopackage name="open-lldp"/>
@@ -1611,6 +1619,7 @@
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
       <repopackage name="pam-extra"/>
+      <repopackage name="pam_oath"/>
       <repopackage name="pam_pwquality"/>
       <repopackage name="partitionmanager"/>
       <repopackage name="passt"/>
@@ -1767,6 +1776,7 @@
       <repopackage name="qca-qt6"/>
       <repopackage name="qemu-guest-agent"/>
       <repopackage name="qqc2-breeze-style6"/>
+      <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-multimedia"/>
       <repopackage name="qt6-multimedia-imports"/>
@@ -1840,6 +1850,7 @@
       <repopackage name="sound-theme-freedesktop"/>
       <repopackage name="spectacle"/>
       <repopackage name="spice-vdagent"/>
+      <repopackage name="ssh-pairing"/>
       <repopackage name="sssd"/>
       <repopackage name="sssd-krb5-common"/>
       <repopackage name="sssd-ldap"/>

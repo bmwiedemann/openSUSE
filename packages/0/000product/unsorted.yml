@@ -8666,7 +8666,6 @@ unsorted:
   - host-spawn 
   - hostap-utils 
   - hostapd 
-  - hostinfo 
   - hotspot 
   - hourglass 
   - hourglass-lang 
@@ -9339,13 +9338,6 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
-  - java-22-openjdk 
-  - java-22-openjdk-demo 
-  - java-22-openjdk-devel 
-  - java-22-openjdk-headless 
-  - java-22-openjdk-javadoc 
-  - java-22-openjdk-jmods 
-  - java-22-openjdk-src 
   - java-23-openjdk 
   - java-23-openjdk-demo 
   - java-23-openjdk-devel 
@@ -9467,7 +9459,6 @@ unsorted:
   - jemalloc-devel 
   - jemmy 
   - jemmy-javadoc 
-  - jeos-firstboot 
   - jeromq 
   - jeromq-javadoc 
   - jersey 
@@ -12649,7 +12640,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto53 
+  - libcrypto55 
   - libcryptopp-devel 
   - libcryptopp8_9_0 
   - libcryptsetup-devel 
@@ -14950,7 +14941,6 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0 
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
@@ -16378,7 +16368,7 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
-  - libssl56 
+  - libssl58 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -16614,7 +16604,7 @@ unsorted:
   - libtinyxml2-10 
   - libtirpc-devel 
   - libtirpc3-32bit 
-  - libtls29 
+  - libtls31 
   - libtmglib3 
   - libtntdb-devel 
   - libtntdb5 
@@ -17584,7 +17574,6 @@ unsorted:
   - live-fat-stick 
   - live-grub-stick 
   - live-kiwi-hook 
-  - live-langset-data 
   - live-net-installer 
   - live-usb-gui 
   - live555 
@@ -18450,17 +18439,9 @@ unsorted:
   - maven-deploy-plugin-javadoc 
   - maven-doxia-core 
   - maven-doxia-javadoc 
-  - maven-doxia-logging-api 
   - maven-doxia-module-apt 
-  - maven-doxia-module-confluence 
-  - maven-doxia-module-docbook-simple 
   - maven-doxia-module-fml 
-  - maven-doxia-module-fo 
-  - maven-doxia-module-latex 
-  - maven-doxia-module-rtf 
-  - maven-doxia-module-twiki 
   - maven-doxia-module-xdoc 
-  - maven-doxia-module-xhtml 
   - maven-doxia-module-xhtml5 
   - maven-doxia-sink-api 
   - maven-doxia-sitetools 
@@ -20016,8 +19997,6 @@ unsorted:
   - o2scl-devel 
   - o2scl-doc 
   - oaml-devel 
-  - oath-toolkit 
-  - oath-toolkit-xml 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -20947,7 +20926,6 @@ unsorted:
   - pam_csync 
   - pam_krb5 
   - pam_mktemp 
-  - pam_oath 
   - pam_p11 
   - pam_passwdqc 
   - pam_pkcs11-devel-doc 
@@ -35261,7 +35239,6 @@ unsorted:
   - qqc2-desktop-style-devel 
   - qqwing 
   - qqwing-devel 
-  - qrencode 
   - qrencode-devel 
   - qrtool 
   - qrupdate 
@@ -36751,10 +36728,6 @@ unsorted:
   - sc 
   - sc-controller 
   - sc-im 
-  - sca-appliance-agent 
-  - sca-appliance-broker 
-  - sca-appliance-common 
-  - sca-appliance-patdev 
   - sca-patterns-alp1 
   - sca-patterns-base 
   - sca-patterns-hae 
@@ -37388,7 +37361,6 @@ unsorted:
   - ssh-contact-client 
   - ssh-contact-service 
   - ssh-import-id 
-  - ssh-pairing 
   - ssh-tools 
   - sshamble 
   - sshguard 
