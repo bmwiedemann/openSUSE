@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 16 05:37:14 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.17.1 to match standalone docker-buildx package we
+  are replacing. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.17.1>
+
+-------------------------------------------------------------------
+Tue Oct 15 04:58:46 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Allow users to disable SUSE secrets support by setting
+  DOCKER_SUSE_SECRETS_ENABLE=0 in /etc/sysconfig/docker. bsc#1231348
+
+-------------------------------------------------------------------
 Wed Sep 18 13:47:45 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
-- Add %{_sysconfdir}/audit/rules.d to filelist 
+- Add %{_sysconfdir}/audit/rules.d to filelist.
+
+-------------------------------------------------------------------
+Sat Sep  7 06:07:50 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Mark docker-buildx as required since classic "docker build" has been
+  deprecated since Docker 23.0. bsc#1230331
+- Import docker-buildx v0.16.2 as a subpackage. Previously this was a separate
+  package, but with docker-stable it will be necessary to maintain the packages
+  together and it makes more sense to have them live in the same OBS package.
+  bsc#1230333
+- Make some minor name macro updates to help with the docker-stable package
+  fork.
 
 -------------------------------------------------------------------
 Wed Jul 31 05:28:09 UTC 2024 - Aleksa Sarai <asarai@suse.com>

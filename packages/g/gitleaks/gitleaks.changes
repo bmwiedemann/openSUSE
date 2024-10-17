@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:49:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.21.0:
+  * Define multiple allowlists per rule (#1496)
+  * build: upgrade gitleaks/go-gitdiff to v0.9.1 (#1559)
+  * Fix rule extension (#1556)
+  * Update base config allowlist (#1555)
+  * feat(azure): detect Azure AD client secrets (#1199)
+  * chore: match gitleaks.toml anywhere (#1553)
+
+-------------------------------------------------------------------
 Fri Oct 11 08:04:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.20.1:

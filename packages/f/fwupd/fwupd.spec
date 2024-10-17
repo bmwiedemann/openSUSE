@@ -106,6 +106,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
+BuildRequires:  pkgconfig(libdrm_amdgpu)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
 BuildRequires:  pkgconfig(libprotobuf-c)
@@ -227,7 +228,7 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
   -Dlaunchd=disabled \
-  -Dplugin_amdgpu=disabled \
+  -Dplugin_amdgpu=enabled \
   -Dpassim=disabled \
 %if %{with efi_fw_update}
   -Dplugin_uefi_capsule=enabled \
@@ -269,11 +270,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 
 %install
 %meson_install
-# Add SUSE specific rcfoo service symlink
-mkdir -p %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-offline-update
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-refresh
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/doc
 
@@ -326,9 +322,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_bindir}/fwupdate
 %endif
 %{_bindir}/dbxtool
-%{_sbindir}/rc%{name}
-%{_sbindir}/rcfwupd-offline-update
-%{_sbindir}/rcfwupd-refresh
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.fwupd.service

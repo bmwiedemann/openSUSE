@@ -23,4 +23,12 @@
     <comment>switch on reproducible also with SOURCE_DATE_EPOCH in the plugin</comment>
     <requestid>1202686</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0cc56e0764a9e2e4a4717970e010b0ce</srcmd5>
+    <version>5.1.9</version>
+    <time>1729115215</time>
+    <user>anag+factory</user>
+    <comment>Build against maven-doxia 2.0.0+</comment>
+    <requestid>1208218</requestid>
+  </revision>
 </revisionlist>

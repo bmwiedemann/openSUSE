@@ -42,4 +42,15 @@
   * Update all non-major dependencies (forwarded request 1194351 from rrahl0)</comment>
     <requestid>1194352</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f766b6b2f26e992850a597f217397df</srcmd5>
+    <version>3.1.3</version>
+    <time>1729115268</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.3:
+  * drop support for python 3.8
+  * add support for python 3.13
+  * prepare for python 3.14 (forwarded request 1208237 from rrahl0)</comment>
+    <requestid>1208238</requestid>
+  </revision>
 </revisionlist>

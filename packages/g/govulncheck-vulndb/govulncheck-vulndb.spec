@@ -19,16 +19,18 @@
 %define shortname vulndb
 
 Name:           govulncheck-vulndb
-Version:        0.0.20241014T192043
+Version:        0.0.20241015T183857
 Release:        0
 Summary:        Local copy of Go vulnerability database
-License:        Apache-2.0
+License:        CC-BY-4.0
 Group:          Development/Languages/Go
 URL:            https://pkg.go.dev/vuln/
 Source:         %{shortname}.zip
 Suggests:       govulncheck
 BuildArch:      noarch
 BuildRequires:  unzip
+# SLE-12 has s390 but the Go compiler is not supported on that arch
+ExcludeArch:    s390
 
 %description
 govulncheck-vulndb provides a local copy of the Go vulnerability database

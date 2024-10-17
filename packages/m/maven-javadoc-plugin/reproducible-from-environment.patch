@@ -1,6 +1,6 @@
---- maven-javadoc-plugin-3.6.0/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java	2024-09-24 16:49:08.084112591 +0200
-+++ maven-javadoc-plugin-3.6.0/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java	2024-09-24 16:52:42.392279532 +0200
-@@ -2665,6 +2665,14 @@
+--- a/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
+@@ -2692,6 +2692,14 @@ public abstract class AbstractJavadocMojo extends AbstractMojo {
      private String getBottomText() {
          final String inceptionYear = project.getInceptionYear();
  

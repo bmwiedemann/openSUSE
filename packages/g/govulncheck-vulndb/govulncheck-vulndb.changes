@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add ExcludeArch: s390. Go is supported on s390x but not
+    available on s390. Since the package will be submitted to
+    SLE-12, do not build on s390 consistent with other Go tools for
+    that arch.
+  * Fix License: CC-BY-4.0
+
+-------------------------------------------------------------------
+Tue Oct 15 18:38:57 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
+
+- Update to version 0.0.20241015T183857 date 2024-10-15T18:38:57Z.
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3189
+  * GO-2024-3196
+  * GO-2024-3199
+  * GO-2024-3200
+  * GO-2024-3201
+
+-------------------------------------------------------------------
 Mon Oct 14 19:20:43 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
 
-- Update to version 0.0.20241014T192043o date 2024-10-14T19:20:43Z.
+- Update to version 0.0.20241014T192043 date 2024-10-14T19:20:43Z.
   Go CVE Numbering Authority IDs added or updated:
   * GO-2024-3166
   * GO-2024-3171

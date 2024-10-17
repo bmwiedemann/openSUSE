@@ -178,10 +178,6 @@ ulimit -Sv 2000000
 
 %install
 %meson_install
-
-# Create colord rclink
-mkdir %{buildroot}/%{_sbindir}
-ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # Install Apparmor profile
@@ -245,7 +241,6 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %{_libdir}/libcolordcompat.so
 %{_libdir}/colord-plugins/libcolord_sensor_camera.so
 %{_libdir}/colord-plugins/libcolord_sensor_scanner.so
-%{_sbindir}/rc%{name}
 %{_userunitdir}/colord-session.service
 %{_tmpfilesdir}/colord.conf
 

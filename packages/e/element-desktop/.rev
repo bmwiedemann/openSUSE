@@ -1012,4 +1012,13 @@ Version 1.11.66
   * Crypto: fix display of device key (https://github.com/element-hq/matrix-react-sdk/pull/86). Contributed by @richvdh.</comment>
     <requestid>1206523</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>127083595cd77a7b1d377fca7fc44f99</srcmd5>
+    <version>1.11.81</version>
+    <time>1729115057</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.81
+  This release fixes High severity vulnerability CVE-2024-47771 / GHSA-963w-49j9-gxj6.</comment>
+    <requestid>1208128</requestid>
+  </revision>
 </revisionlist>

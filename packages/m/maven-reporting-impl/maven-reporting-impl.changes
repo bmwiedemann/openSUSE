@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Oct 12 20:38:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.0.0
+  * Bug
+    + MSHARED-1275: MavenReport#canGenerateReport() is invoked twice
+  * New Feature
+    + MSHARED-390: Add startSection method
+      AbstractMavenReportRenderer where anchor != name
+    + MSHARED-1168: Add support for markup output
+    + MSHARED-1185: Introduce
+      AbstractMavenReportRenderer#verbatimSource()
+  * Improvement
+    + MSHARED-480: Use maven-site-plugin's site.xml to use site's
+      skin instead of default when run as mojo
+    + MSHARED-1099: Render with a skin when report is run in
+      standalone mode
+    + MSHARED-1106: Improve and simplify section handling
+    + MSHARED-1174: Don't wrap elements in anchors
+    + MSHARED-1181: Populate SiteRenderingContext#getPublishDate()
+      with ${project.build.outputTimestamp}
+    + MSHARED-1182: Drop incorrect usage of
+      SinkEventAttributeSet#BOXED
+    + MSHARED-1183: Don't pass implied args to
+      AbstractMavenReportRenderer#startTable()
+    + MSHARED-1184: Drop unnecessary use of type attribute with
+      JavaScript
+    + MSHARED-1232: Properly populate
+      DocumentRenderingContext#generator when run in standalone mode
+    + MSHARED-1295: Have ${project.build.outputTimestamp} injected
+      as @Parameter
+    + MSHARED-1314: mark execute() final to avoid users extending
+      reporting-impl implementation
+    + MSHARED-1327: Change default value of output directory in
+      AbstractMavenReport
+    + MSHARED-1328: Consistently log when skipping report goal
+      execution
+    + MSHARED-1343: Make parameter outputDirectory read/write in
+      AbstractMavenReport
+    + MSHARED-1438: Provide protected methods for XRef location
+      construction
+  * Task
+    + MSHARED-1055: Upgrade to Java 8
+    + MSHARED-1326: Improve MavenReport interface /
+      AbstractMavenReport class API
+- Fetch sources using source service from Github
+- Removed patch:
+  * 0001-Remove-dependency-on-junit-addons.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Wed Feb 21 06:01:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

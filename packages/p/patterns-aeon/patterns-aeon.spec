@@ -256,7 +256,6 @@ Requires:       gnome-color-manager
 #Requires:       gnome-packagekit
 Requires:       gnome-software
 Requires:       gnome-system-monitor
-Requires:       gnome-terminal
 Requires:       gnome-tweak-tool
 Requires:       gnome-user-docs
 # bnc#879466
@@ -288,7 +287,6 @@ Requires:       gnome-control-center-user-faces
 Requires:       gnome-shell-search-provider-nautilus
 Requires:       libgnomesu
 Requires:       nautilus
-Requires:       nautilus-extension-terminal
 # Some extensions add context menus to nautilus using python scripts (example GSConnect)
 # For this to work we need nautilus-python bindings
 Requires:       python3-nautilus
@@ -413,6 +411,9 @@ Requires:       libinput-udev
 
 ### Add aeon-check
 Requires:       aeon-check
+
+### gnome-console as default terminal
+Requires:       gnome-console
 
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.

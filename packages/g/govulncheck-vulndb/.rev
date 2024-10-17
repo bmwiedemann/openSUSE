@@ -7,4 +7,17 @@
     <comment>New package govulncheck-vulndb version 0.0.20241014T192043 govulncheck-vulndb provides a local copy of the Go vulnerability database https://vuln.go.dev as files in the Open Source Vulnerability (OSV) schema. This allows tools such as govulncheck to be used in offline environments.</comment>
     <requestid>1208005</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>212093b2fd8e687095785f7d71e9d0b1</srcmd5>
+    <version>0.0.20241015T183857</version>
+    <time>1729115276</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Add ExcludeArch: s390. Go is supported on s390x but not
+    available on s390. Since the package will be submitted to
+    SLE-12, do not build on s390 consistent with other Go tools for
+    that arch.
+  * Fix License: CC-BY-4.0 (forwarded request 1208483 from jfkw)</comment>
+    <requestid>1208484</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 11 12:53:30 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update to version 7.1:
+  * cifs: update documentation for sloppy mount option
+  * docs: add closetimeo description
+  * docs: add compress description
+  * checkopts: update it to work with latest kernel version
+  * cifs-utils: add documentation for multichannel and max_channels
+  * cifs-utils: smbinfo: add gettconinfo command
+  * Implement CLDAP Ping to find the closest site
+  * mount.cifs.rst: update section about xattr/acl support
+  * mount.cifs.rst: add missing reference for sssd
+  * getcifsacl, setcifsacl: add missing <endian.h> include for le32toh
+  * getcifsacl, setcifsacl: add missing <linux/limits.h> include for XATTR_SIZE_MAX
+  * cifs-utils: Make automake treat /sbin as exec, not data
+  * pam_cifscreds: fix warning on NULL arg passed to %s in pam_syslog()
+  * cifs.upcall: fix UAF in get_cachename_from_process_env()
+  * cifs-utils: add documentation for acregmax and acdirmax
+  * setcifsacl: Fix uninitialized value.
+  * Use explicit "#!/usr/bin/python3"
+
+-------------------------------------------------------------------
 Thu Jun 13 11:17:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - remove dependency on /usr/bin/python3 (bsc#1212476)

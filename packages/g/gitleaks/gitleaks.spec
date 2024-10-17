@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitleaks
-Version:        8.20.1
+Version:        8.21.0
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT

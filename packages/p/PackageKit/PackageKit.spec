@@ -176,8 +176,6 @@ need it.
 Summary:        Install GStreamer codecs using PackageKit
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     %{name} = %{version}
 Supplements:    (%{name} and gstreamer-plugins-base)
 
@@ -318,15 +316,12 @@ This package provides the upstream default configuration for PackageKit.
 mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
 ln -sf ../packagekit-offline-update.service %{buildroot}%{_unitdir}/system-update.target.wants/packagekit-offline-update.service
 %endif
-# Prepare for update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/gst-install-plugins-helper %{buildroot}/%{_libexecdir}/gst-install-plugins-helper
-# Add rcFOO symlinks
-mkdir -p %{buildroot}%{_sbindir}
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcpackagekit
-%if  %{with offline_updates}
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcpackagekit-offline-update
-%endif
+
+# create a link that GStreamer will recognise
+pushd %{buildroot}%{_libexecdir} > /dev/null
+ln -s pk-gstreamer-install gst-install-plugins-helper
+popd > /dev/null
+
 # install transactions.db to another directory so that we can use tmpfiles.d to create a link to it under /var/lib/PackageKit
 install -m 0644 %{buildroot}%{_localstatedir}/lib/PackageKit/transactions.db %{buildroot}%{_datadir}/PackageKit/transactions.db
 rm %{buildroot}%{_localstatedir}/lib/PackageKit/transactions.db
@@ -376,15 +371,6 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %service_del_postun_without_restart packagekit-offline-update.service
 %endif
 
-%post gstreamer-plugin
-update-alternatives --install %{_libexecdir}/gst-install-plugins-helper gst-install-plugins-helper %{_libexecdir}/pk-gstreamer-install 10
-
-%postun gstreamer-plugin
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_libexecdir}/pk-gstreamer-install ]; then
-  update-alternatives --remove gst-install-plugins-helper %{_libexecdir}/pk-gstreamer-install
-fi
-
 %post -n libpackagekit-glib2-18 -p /sbin/ldconfig
 %postun -n libpackagekit-glib2-18 -p /sbin/ldconfig
 
@@ -416,7 +402,6 @@ fi
 %{_unitdir}/packagekit.service
 %{_unitdir}/packagekit-background.service
 %{_unitdir}/packagekit-background.timer
-%{_sbindir}/rcpackagekit
 %{_mandir}/man?/*%{ext_man}
 %{_tmpfilesdir}/PackageKit.conf
 %if %{with offline_updates}
@@ -424,7 +409,6 @@ fi
 %{_unitdir}/packagekit-offline-update.service
 %dir %{_unitdir}/system-update.target.wants
 %{_unitdir}/system-update.target.wants/packagekit-offline-update.service
-%{_sbindir}/rcpackagekit-offline-update
 %endif
 %ghost %dir %{_localstatedir}/lib/PackageKit
 %ghost %dir %{_localstatedir}/cache/PackageKit
@@ -448,7 +432,6 @@ fi
 %endif
 
 %files gstreamer-plugin
-%ghost %{_sysconfdir}/alternatives/gst-install-plugins-helper
 %{_libexecdir}/gst-install-plugins-helper
 %{_libexecdir}/pk-gstreamer-install
 

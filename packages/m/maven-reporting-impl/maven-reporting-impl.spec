@@ -17,30 +17,30 @@
 
 
 Name:           maven-reporting-impl
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Abstract classes to manage report generation
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/%{name}
-Source0:        http://archive.apache.org/dist/maven/reporting/%{name}-%{version}-source-release.zip
-Source1:        %{name}-build.xml
-Patch0:         0001-Remove-dependency-on-junit-addons.patch
+Source0:        %{name}-%{version}.tar.xz
+Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-archiver
 BuildRequires:  maven-doxia-core
-BuildRequires:  maven-doxia-logging-api
-BuildRequires:  maven-doxia-module-xhtml
 BuildRequires:  maven-doxia-module-xhtml5
 BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
-BuildRequires:  maven-reporting-api >= 3.1.1
+BuildRequires:  maven-reporting-api >= 4
+BuildRequires:  maven-resolver-api
 BuildRequires:  maven-shared-utils
 BuildRequires:  plexus-utils
-BuildRequires:  unzip
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 
 %description
@@ -60,8 +60,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-cp %{SOURCE1} build.xml
-%patch -P 0 -p1
+cp %{SOURCE1} LICENSE.txt
+cp %{SOURCE2} build.xml
 
 # integration tests try to download stuff from the internet
 # and therefore they don't work in Build Service
@@ -70,25 +70,25 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    maven-archiver/maven-archiver \
     maven-doxia/doxia-core \
-    maven-doxia/doxia-logging-api \
-    maven-doxia/doxia-module-xhtml \
     maven-doxia/doxia-module-xhtml5 \
     maven-doxia/doxia-sink-api \
-    maven-doxia-sitetools/doxia-decoration-model \
     maven-doxia-sitetools/doxia-integration-tools \
+    maven-doxia-sitetools/doxia-site-model \
     maven-doxia-sitetools/doxia-site-renderer \
     maven/maven-artifact \
-    maven/maven-compat \
     maven/maven-core \
+    maven/maven-model \
     maven/maven-plugin-api \
     maven-plugin-tools/maven-plugin-annotations \
     maven-reporting-api/maven-reporting-api \
+    maven-resolver/maven-resolver-api \
     maven-shared-utils/maven-shared-utils \
+    org.eclipse.sisu.plexus \
     plexus/utils
 
-%{ant} \
-    jar javadoc
+ant jar javadoc
 
 %install
 # jar
@@ -104,10 +104,11 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE NOTICE
+%license LICENSE.txt
+%doc README.md
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license LICENSE NOTICE
+%license LICENSE.txt
 
 %changelog

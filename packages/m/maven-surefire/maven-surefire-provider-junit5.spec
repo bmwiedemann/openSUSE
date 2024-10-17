@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-provider-junit5
-Version:        3.2.5
+Version:        3.5.1
 Release:        0
 Summary:        JUnit 5 provider for Maven Surefire
 License:        Apache-2.0 AND CPL-1.0
@@ -28,11 +28,13 @@ Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Patch0:         0001-Port-to-TestNG-7.4.0.patch
+Patch1:         0002-Unshade-surefire.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.surefire:common-java5)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
+BuildRequires:  mvn(org.junit.platform:junit-platform-engine)
 BuildRequires:  mvn(org.junit.platform:junit-platform-launcher)
 # PpidChecker relies on /usr/bin/ps to check process uptime
 Requires:       procps
@@ -53,31 +55,27 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-#patch -P 1 -p1
+%patch -P 1 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
-
-%pom_remove_dep org.junit:junit-bom
-
-%pom_disable_module surefire-shadefire
-%pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
-
-# Help plugin is needed only to evaluate effective Maven settings.
-# For building RPM package default settings will suffice.
-%pom_remove_plugin :maven-help-plugin surefire-its
 
 # QA plugin useful only for upstream
 %pom_remove_plugin -r :jacoco-maven-plugin
 # Not wanted
 %pom_remove_plugin -r :maven-shade-plugin
-
-find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.apache.maven.shared.utils/ -e s/org.apache.maven.surefire.shared.io/org.apache.commons.io/ -e s/org.apache.maven.surefire.shared.lang3/org.apache.commons.lang3/ -e s/org.apache.maven.surefire.shared.compress/org.apache.commons.compress/ {} \;
-
 # Not packaged
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
 # Complains
 %pom_remove_plugin -r :apache-rat-plugin
+
+%pom_disable_module surefire-shadefire
+%pom_remove_dep -r :surefire-shadefire
+
+# Help plugin is needed only to evaluate effective Maven settings.
+# For building RPM package default settings will suffice.
+%pom_remove_plugin :maven-help-plugin surefire-its
+
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 %pom_remove_dep -r ::::site-source

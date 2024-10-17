@@ -554,4 +554,12 @@
 For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
     <requestid>1194919</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>eb94e347ca5ebd30f0725a018d7a52e8</srcmd5>
+    <version>322</version>
+    <time>1729114592</time>
+    <user>anag+factory</user>
+    <comment>Resubmit same rev, kick legalbot</comment>
+    <requestid>1208034</requestid>
+  </revision>
 </revisionlist>

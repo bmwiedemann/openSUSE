@@ -114,4 +114,12 @@
     <comment>A runtime dependency needs to be resolved with %mvn_install</comment>
     <requestid>1204574</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e28c8301ca40515180ff9fb0890e8ea</srcmd5>
+    <version>2.0.0</version>
+    <time>1729115206</time>
+    <user>anag+factory</user>
+    <comment>2.0.0</comment>
+    <requestid>1208214</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,68 @@
+From fe456eed5ac0647250fa5249e663ddb236b2adfb Mon Sep 17 00:00:00 2001
+From: Danish Prakash <contact@danishpraka.sh>
+Date: Tue, 15 Oct 2024 22:14:55 +0530
+Subject: [PATCH] Properly validate cache IDs and sources
+
+The `--mount type=cache` argument to the `RUN` instruction in
+Dockerfiles was using `filepath.Join` on user input, allowing
+crafted paths to be used to gain access to paths on the host,
+when the command should normally be limited only to Buildah;s own
+cache and context directories. Switch to `filepath.SecureJoin` to
+resolve the issue.
+
+Fixes CVE-2024-9675
+
+Signed-off-by: Matt Heon <mheon@redhat.com>
+Signed-off-by: Danish Prakash <contact@danishpraka.sh>
+---
+ .../buildah/internal/volumes/volumes.go       | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/vendor/github.com/containers/buildah/internal/volumes/volumes.go b/vendor/github.com/containers/buildah/internal/volumes/volumes.go
+index da6b768fdc21..610e9fcf11b2 100644
+--- a/vendor/github.com/containers/buildah/internal/volumes/volumes.go
++++ b/vendor/github.com/containers/buildah/internal/volumes/volumes.go
+@@ -23,6 +23,7 @@ import (
+ 	"github.com/containers/storage/pkg/idtools"
+ 	"github.com/containers/storage/pkg/lockfile"
+ 	"github.com/containers/storage/pkg/unshare"
++	digest "github.com/opencontainers/go-digest"
+ 	specs "github.com/opencontainers/runtime-spec/specs-go"
+ 	selinux "github.com/opencontainers/selinux/go-selinux"
+ )
+@@ -374,7 +375,11 @@ func GetCacheMount(args []string, store storage.Store, imageMountLabel string, a
+ 			return newMount, nil, fmt.Errorf("no stage found with name %s", fromStage)
+ 		}
+ 		// path should be /contextDir/specified path
+-		newMount.Source = filepath.Join(mountPoint, filepath.Clean(string(filepath.Separator)+newMount.Source))
++		evaluated, err := copier.Eval(mountPoint, string(filepath.Separator)+newMount.Source, copier.EvalOptions{})
++		if err != nil {
++			return newMount, nil, err
++		}
++		newMount.Source = evaluated
+ 	} else {
+ 		// we need to create cache on host if no image is being used
+ 
+@@ -391,11 +396,15 @@ func GetCacheMount(args []string, store storage.Store, imageMountLabel string, a
+ 		}
+ 
+ 		if id != "" {
+-			newMount.Source = filepath.Join(cacheParent, filepath.Clean(id))
+-			buildahLockFilesDir = filepath.Join(BuildahCacheLockfileDir, filepath.Clean(id))
++			// Don't let the user control where we place the directory.
++			dirID := digest.FromString(id).Encoded()[:16]
++			newMount.Source = filepath.Join(cacheParent, dirID)
++			buildahLockFilesDir = filepath.Join(BuildahCacheLockfileDir, dirID)
+ 		} else {
+-			newMount.Source = filepath.Join(cacheParent, filepath.Clean(newMount.Destination))
+-			buildahLockFilesDir = filepath.Join(BuildahCacheLockfileDir, filepath.Clean(newMount.Destination))
++			// Don't let the user control where we place the directory.
++			dirID := digest.FromString(newMount.Destination).Encoded()[:16]
++			newMount.Source = filepath.Join(cacheParent, dirID)
++			buildahLockFilesDir = filepath.Join(BuildahCacheLockfileDir, dirID)
+ 		}
+ 		idPair := idtools.IDPair{
+ 			UID: uid,
+-- 
+2.46.0
+

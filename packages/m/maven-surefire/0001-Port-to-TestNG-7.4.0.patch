@@ -1,33 +1,249 @@
-From 2506b32ba90ef0e336f088e7aa8c12d3273ba242 Mon Sep 17 00:00:00 2001
+From 71bca819927dcd976ece1aab6cdb9ddd4aab8a09 Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Mon, 10 Jul 2017 10:37:50 +0200
-Subject: [PATCH 1/4] Port to TestNG 7.4.0
+Subject: [PATCH 1/2] Port to TestNG 7.4.0
 
 ---
- pom.xml                                                         | 2 +-
- surefire-providers/surefire-testng/pom.xml                      | 1 -
- .../maven/surefire/testng/conf/AbstractDirectConfigurator.java  | 2 +-
- .../maven/surefire/testng/conf/TestNGMapConfigurator.java       | 2 +-
- 4 files changed, 3 insertions(+), 4 deletions(-)
+ pom.xml                                       |   2 +-
+ .../surefire-testng-utils/pom.xml             |   1 -
+ .../java/testng/utils/MethodSelectorTest.java | 106 ++++++++++++++++--
+ surefire-providers/surefire-testng/pom.xml    |   1 -
+ .../maven/surefire/testng/TestNGReporter.java |   4 -
+ .../conf/AbstractDirectConfigurator.java      |   2 +-
+ .../testng/conf/TestNGMapConfigurator.java    |   9 +-
+ .../surefire/testng/TestNGReporterTest.java   |   4 +-
+ .../conf/TestNGMapConfiguratorTest.java       |   6 +-
+ 9 files changed, 104 insertions(+), 31 deletions(-)
 
 diff --git a/pom.xml b/pom.xml
-index cb15de8f7..2f9a061e7 100644
+index 432d7ebae..75a61b38e 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -97,7 +97,7 @@
+@@ -98,7 +98,7 @@
      <mavenSharedUtilsVersion>3.3.4</mavenSharedUtilsVersion>
      <powermockVersion>2.0.9</powermockVersion>
-     <jacocoVersion>0.8.11</jacocoVersion>
+     <jacocoVersion>0.8.12</jacocoVersion>
 -    <testngVersion>5.11</testngVersion>
 +    <testngVersion>7.4.0</testngVersion>
      <surefire-shared-utils.version>${project.version}</surefire-shared-utils.version>
      <maven.surefire.scm.devConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-surefire.git</maven.surefire.scm.devConnection>
      <maven.site.path>surefire-archives/surefire-LATEST</maven.site.path>
+diff --git a/surefire-providers/surefire-testng-utils/pom.xml b/surefire-providers/surefire-testng-utils/pom.xml
+index 2816d9329..fbb357d02 100644
+--- a/surefire-providers/surefire-testng-utils/pom.xml
++++ b/surefire-providers/surefire-testng-utils/pom.xml
+@@ -47,7 +47,6 @@
+       <groupId>org.testng</groupId>
+       <artifactId>testng</artifactId>
+       <version>${testngVersion}</version>
+-      <classifier>jdk15</classifier>
+       <scope>provided</scope>
+     </dependency>
+   </dependencies>
+diff --git a/surefire-providers/surefire-testng-utils/src/test/java/testng/utils/MethodSelectorTest.java b/surefire-providers/surefire-testng-utils/src/test/java/testng/utils/MethodSelectorTest.java
+index c0e7838bd..5f180624d 100644
+--- a/surefire-providers/surefire-testng-utils/src/test/java/testng/utils/MethodSelectorTest.java
++++ b/surefire-providers/surefire-testng-utils/src/test/java/testng/utils/MethodSelectorTest.java
+@@ -19,6 +19,10 @@
+ package testng.utils;
+ 
+ import java.lang.reflect.Method;
++import java.util.Collections;
++import java.util.List;
++import java.util.Map;
++import java.util.concurrent.Callable;
+ 
+ import junit.framework.TestCase;
+ import org.apache.maven.surefire.api.testset.TestListResolver;
+@@ -27,7 +31,11 @@
+ import org.testng.IRetryAnalyzer;
+ import org.testng.ITestClass;
+ import org.testng.ITestNGMethod;
++import org.testng.ITestResult;
++import org.testng.internal.ConstructorOrMethod;
+ import org.testng.internal.DefaultMethodSelectorContext;
++import org.testng.internal.reflect.ReflectionHelper;
++import org.testng.xml.XmlTest;
+ 
+ /**
+  *
+@@ -65,16 +73,26 @@ public void testInclusionOfMethodFromSubClass() {
+     }
+ 
+     private static class FakeTestNGMethod implements ITestNGMethod {
++        private final ConstructorOrMethod consMethod;
+         private final Class<?> clazz;
+         private final String methodName;
+ 
+         FakeTestNGMethod(Class<?> clazz, String methodName) {
++            ConstructorOrMethod temp = null;
++            Method[] methods = ReflectionHelper.getLocalMethods(clazz);
++            for (Method method : methods) {
++                if (method.getName().equalsIgnoreCase(methodName)) {
++                    temp = new ConstructorOrMethod(method);
++                    break;
++                }
++            }
+             this.clazz = clazz;
+             this.methodName = methodName;
++            this.consMethod = temp;
+         }
+ 
+         @Override
+-        public Class getRealClass() {
++        public Class<?> getRealClass() {
+             return clazz;
+         }
+ 
+@@ -86,19 +104,14 @@ public ITestClass getTestClass() {
+         @Override
+         public void setTestClass(ITestClass iTestClass) {}
+ 
+-        @Override
+-        public Method getMethod() {
+-            return null;
+-        }
+-
+         @Override
+         public String getMethodName() {
+             return methodName;
+         }
+ 
+         @Override
+-        public Object[] getInstances() {
+-            return new Object[0];
++        public Object getInstance() {
++            return null;
+         }
+ 
+         @Override
+@@ -202,6 +215,9 @@ public long getTimeOut() {
+             return 0;
+         }
+ 
++        @Override
++        public void setTimeOut(long timeOut) {}
++
+         @Override
+         public int getInvocationCount() {
+             return 0;
+@@ -249,11 +265,19 @@ public int getThreadPoolSize() {
+         @Override
+         public void setThreadPoolSize(int i) {}
+ 
++        @Override
++        public boolean getEnabled() {
++            return false;
++        }
++
+         @Override
+         public String getDescription() {
+             return null;
+         }
+ 
++        @Override
++        public void setDescription(String description) {}
++
+         @Override
+         public void incrementCurrentInvocationCount() {}
+ 
+@@ -270,6 +294,14 @@ public int getParameterInvocationCount() {
+             return 0;
+         }
+ 
++        @Override
++        public void setMoreInvocationChecker(Callable<Boolean> moreInvocationChecker) {}
++
++        @Override
++        public boolean hasMoreInvocation() {
++            return false;
++        }
++
+         @Override
+         public ITestNGMethod clone() {
+             try {
+@@ -280,12 +312,17 @@ public ITestNGMethod clone() {
+         }
+ 
+         @Override
+-        public IRetryAnalyzer getRetryAnalyzer() {
++        public IRetryAnalyzer getRetryAnalyzer(ITestResult result) {
++            return null;
++        }
++
++        @Override
++        public Class<? extends IRetryAnalyzer> getRetryAnalyzerClass() {
+             return null;
+         }
+ 
+         @Override
+-        public void setRetryAnalyzer(IRetryAnalyzer iRetryAnalyzer) {}
++        public void setRetryAnalyzerClass(Class<? extends IRetryAnalyzer> clazz) {}
+ 
+         @Override
+         public boolean skipFailedInvocations() {
+@@ -309,8 +346,55 @@ public boolean ignoreMissingDependencies() {
+         public void setIgnoreMissingDependencies(boolean b) {}
+ 
+         @Override
+-        public int compareTo(Object o) {
++        public List<Integer> getInvocationNumbers() {
++            return Collections.emptyList();
++        }
++
++        @Override
++        public void setInvocationNumbers(List<Integer> numbers) {}
++
++        @Override
++        public void addFailedInvocationNumber(int number) {}
++
++        @Override
++        public List<Integer> getFailedInvocationNumbers() {
++            return Collections.emptyList();
++        }
++
++        @Override
++        public int getPriority() {
++            return 0;
++        }
++
++        @Override
++        public void setPriority(int priority) {}
++
++        @Override
++        public int getInterceptedPriority() {
+             return 0;
+         }
++
++        @Override
++        public void setInterceptedPriority(int priority) {}
++
++        @Override
++        public XmlTest getXmlTest() {
++            return null;
++        }
++
++        @Override
++        public ConstructorOrMethod getConstructorOrMethod() {
++            return consMethod;
++        }
++
++        @Override
++        public Map<String, String> findMethodParameters(XmlTest test) {
++            return test.getLocalParameters();
++        }
++
++        @Override
++        public String getQualifiedName() {
++            return null;
++        }
+     }
+ }
 diff --git a/surefire-providers/surefire-testng/pom.xml b/surefire-providers/surefire-testng/pom.xml
-index c7633d60c..00f22400c 100644
+index aa23267c3..33b1ef76f 100644
 --- a/surefire-providers/surefire-testng/pom.xml
 +++ b/surefire-providers/surefire-testng/pom.xml
-@@ -56,7 +56,6 @@
+@@ -57,7 +57,6 @@
        <groupId>org.testng</groupId>
        <artifactId>testng</artifactId>
        <version>${testngVersion}</version>
@@ -35,8 +251,23 @@ index c7633d60c..00f22400c 100644
        <scope>provided</scope>
      </dependency>
      <dependency>
+diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
+index ec887b792..3021a4049 100644
+--- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
++++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
+@@ -59,10 +59,6 @@ public class TestNGReporter
+     /**
+      * Constructs a new instance that will listen to
+      * test updates from a {@link org.testng.TestNG} class instance.
+-     * <br>
+-     * <br>It is assumed that the requisite {@link org.testng.TestNG#addListener(ITestListener)}
+-     * method call has already associated with this instance <i>before</i> the test
+-     * suite is run.
+      *
+      * @param reportManager Instance to report suite status to
+      */
 diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
-index b73b9bacd..ab187b6d5 100644
+index b73b9bacd..6ab5a626d 100644
 --- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
 +++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
 @@ -57,7 +57,7 @@ public void configure(TestNG testng, Map<String, String> options) throws TestSet
@@ -44,15 +275,29 @@ index b73b9bacd..ab187b6d5 100644
          configureInstance(testng, options);
          // TODO: we should have the Profile so that we can decide if this is needed or not
 -        testng.setListenerClasses(loadListenerClasses(listeners));
-+        testng.setListenerClasses((List)loadListenerClasses(listeners));
++        testng.setListenerClasses((List) loadListenerClasses(listeners));
      }
  
      @Override
 diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
-index d91e76afc..06dbd2316 100755
+index d91e76afc..4bb4fe0b0 100755
 --- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
 +++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/TestNGMapConfigurator.java
-@@ -71,7 +71,7 @@ protected void configureThreadCount(XmlSuite suite, Map<String, String> options)
+@@ -33,12 +33,7 @@
+ 
+ /**
+  * TestNG configurator for 5.3+ versions. TestNG exposes a {@link org.testng.TestNG#configure(java.util.Map)} method.
+- * All supported TestNG options are passed in String format, except
+- * {@link org.testng.TestNGCommandLineArgs#LISTENER_COMMAND_OPT} which is {@link java.util.List List&gt;Class&lt;},
+- * {@link org.testng.TestNGCommandLineArgs#JUNIT_DEF_OPT} which is a {@link Boolean},
+- * {@link org.testng.TestNGCommandLineArgs#SKIP_FAILED_INVOCATION_COUNT_OPT} which is a {@link Boolean},
+- * {@link org.testng.TestNGCommandLineArgs#OBJECT_FACTORY_COMMAND_OPT} which is a {@link Class},
+- * {@link org.testng.TestNGCommandLineArgs#REPORTERS_LIST} which is a {@link java.util.List List&gt;ReporterConfig&lt;}.
++ * All supported TestNG options are passed in String format.
+  * <br>
+  * Test classes and/or suite files are not passed along as options parameters, but configured separately.
+  *
+@@ -71,7 +66,7 @@ protected void configureThreadCount(XmlSuite suite, Map<String, String> options)
      protected void configureParallel(XmlSuite suite, Map<String, String> options) throws TestSetFailedException {
          String parallel = options.get(PARALLEL_PROP);
          if (parallel != null) {
@@ -61,6 +306,52 @@ index d91e76afc..06dbd2316 100755
          }
      }
  
+diff --git a/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/TestNGReporterTest.java b/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/TestNGReporterTest.java
+index 514ecf9f8..5b201d765 100644
+--- a/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/TestNGReporterTest.java
++++ b/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/TestNGReporterTest.java
+@@ -129,7 +129,7 @@ public void testOnTestFailure() {
+ 
+         ITestResult testResult = mock(ITestResult.class);
+         when(testResult.getThrowable()).thenReturn(stackTrace);
+-        when(cls.getRealClass()).thenReturn(getClass());
++        when((Object) cls.getRealClass()).thenReturn(getClass());
+         when(testResult.getTestClass()).thenReturn(cls);
+         when(testResult.getMethod()).thenReturn(method);
+         when(testResult.getName()).thenReturn("myTest");
+@@ -200,7 +200,7 @@ public void testOnTestFailedButWithinSuccessPercentage() {
+ 
+         ITestResult testResult = mock(ITestResult.class);
+         when(testResult.getThrowable()).thenReturn(stackTrace);
+-        when(cls.getRealClass()).thenReturn(getClass());
++        when((Object) cls.getRealClass()).thenReturn(getClass());
+         when(testResult.getTestClass()).thenReturn(cls);
+         when(testResult.getMethod()).thenReturn(method);
+         when(testResult.getName()).thenReturn("myTest");
+diff --git a/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/conf/TestNGMapConfiguratorTest.java b/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/conf/TestNGMapConfiguratorTest.java
+index 097a74d1e..8b34db85d 100755
+--- a/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/conf/TestNGMapConfiguratorTest.java
++++ b/surefire-providers/surefire-testng/src/test/java/org/apache/maven/surefire/testng/conf/TestNGMapConfiguratorTest.java
+@@ -24,7 +24,7 @@
+ 
+ import junit.framework.TestCase;
+ import org.apache.maven.surefire.api.testset.TestSetFailedException;
+-import org.testng.ReporterConfig;
++import org.testng.internal.ReporterConfig;
+ 
+ /**
+  * @author Kristian Rosenvold
+@@ -62,8 +62,8 @@ public void testGroupByInstances() throws Exception {
+ 
+     public void testReporter() throws Exception {
+         Map<String, Object> convertedOptions = getConvertedOptions("reporter", "classname");
+-        List<ReporterConfig> reporter = (List) convertedOptions.get("-reporterslist");
+-        ReporterConfig reporterConfig = reporter.get(0);
++        String reporter = (String) convertedOptions.get("-reporterslist");
++        ReporterConfig reporterConfig = ReporterConfig.deserialize(reporter);
+         assertEquals("classname", reporterConfig.getClassName());
+     }
+ 
 -- 
-2.44.0
+2.46.1
 

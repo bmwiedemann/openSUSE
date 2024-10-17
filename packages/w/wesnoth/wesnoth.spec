@@ -28,6 +28,8 @@ URL:            https://www.wesnoth.org/
 Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
 Patch0:         wesnoth-cmake-fix-find-readline.patch
+# PATCH-FIX-UPSTREAM wesnoth-fix-building-with-boost-186.patch - fix building with boost 1.86 - https://github.com/wesnoth/wesnoth/issues/9284
+Patch1:         wesnoth-fix-building-with-boost-186.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
@@ -135,6 +137,8 @@ This package solely contains the basic file structure in order to have it owned 
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 %patch -P 0 -p1
 %endif
+# fix building with boost 1.86
+%patch -P 1 -p1
 
 # Fix rpmlint's "E: env-script-interpreter".
 sed -i "s:/usr/bin/env python:/usr/bin/python:g" $(find data/tools -type f)

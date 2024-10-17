@@ -18,7 +18,7 @@
 
 
 Name:           xca
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
@@ -26,7 +26,6 @@ Group:          Productivity/Networking/Security
 Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
 URL:            https://www.hohnstaedt.de/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
-Patch0:         %{name}-desktop.patch
 %if 0%{?suse_version} <= 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
@@ -81,7 +80,6 @@ Bash completion script for %{name}.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %if 0%{?suse_version} <= 1600
@@ -98,20 +96,18 @@ export CXX=g++-12
 
 %install
 %cmake_install
-%suse_update_desktop_file -i %{name} DesktopUtility
 %fdupes %{buildroot}
 
 %files
-%doc AUTHORS changelog VERSION.txt
 %license COPYRIGHT
+%doc AUTHORS changelog VERSION.txt
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/de.hohnstaedt.xca.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}.png
 %{_datadir}/icons/hicolor/*/mimetypes/x-xca-*.png
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/pixmaps/%{name}*
+%{_datadir}/metainfo/de.hohnstaedt.xca.metainfo.xml
 %{_datadir}/%{name}
-%{_datadir}/metainfo/*.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion

@@ -43,8 +43,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 %if %{with graphviz}
 BuildRequires:  pkgconfig(libgvc) >= 2.16
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # Vala is a compiler, so it's also a devel package
 Provides:       vala-devel = %{version}
 Obsoletes:      vala-devel < %{version}
@@ -141,35 +139,7 @@ This package contains the libvaladoc development files.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-# Setup update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/vala %{buildroot}%{_bindir}/vala
-ln -s -f %{_sysconfdir}/alternatives/valac %{buildroot}%{_bindir}/valac
-ln -s -f %{_sysconfdir}/alternatives/vala-gen-introspect %{buildroot}%{_bindir}/vala-gen-introspect
-ln -s -f %{_sysconfdir}/alternatives/vapigen %{buildroot}%{_bindir}/vapigen
-ln -s -f %{_sysconfdir}/alternatives/valac.1%{?ext_man} %{buildroot}%{_mandir}/man1/valac.1%{?ext_man}
-ln -s -f %{_sysconfdir}/alternatives/vala-gen-introspect.1%{?ext_man} %{buildroot}%{_mandir}/man1/vala-gen-introspect.1%{?ext_man}
-ln -s -f %{_sysconfdir}/alternatives/vapigen.1%{?ext_man}%{buildroot}%{_mandir}/man1/vapigen.1%{?ext_man}
-ln -s -f %{_sysconfdir}/alternatives/vapigen.pc %{buildroot}%{_libdir}/pkgconfig/vapigen.pc
 %fdupes %{buildroot}%{_datadir}
-
-%post
-update-alternatives \
-  --install %{_bindir}/vala                          vala                     %{_bindir}/vala-%{vala_version} \
-            %{vala_priority} \
-  --slave   %{_bindir}/valac                         valac                    %{_bindir}/valac-%{vala_version} \
-  --slave   %{_bindir}/vala-gen-introspect           vala-gen-introspect      %{_bindir}/vala-gen-introspect-%{vala_version} \
-  --slave   %{_bindir}/vapigen                       vapigen                  %{_bindir}/vapigen-%{vala_version} \
-  --slave   %{_mandir}/man1/valac.1%{?ext_man}               valac.1%{?ext_man}              %{_mandir}/man1/valac-%{vala_version}.1%{?ext_man} \
-  --slave   %{_mandir}/man1/vala-gen-introspect.1%{?ext_man} vala-gen-introspect.1%{?ext_man} %{_mandir}/man1/vala-gen-introspect-%{vala_version}.1%{?ext_man} \
-  --slave   %{_mandir}/man1/vapigen.1%{?ext_man}             vapigen.1%{?ext_man}             %{_mandir}/man1/vapigen-%{vala_version}.1%{?ext_man} \
-  --slave   %{_libdir}/pkgconfig/vapigen.pc          vapigen.pc               %{_libdir}/pkgconfig/vapigen-%{vala_version}.pc
-
-%postun
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{_bindir}/vala-%{vala_version} ]; then
-  update-alternatives --remove vala %{_bindir}/vala-%{vala_version}
-fi
 
 %ldconfig_scriptlets -n libvala-%{vala_libversion}-0
 %if %{with graphviz}
@@ -187,14 +157,6 @@ fi
 %{_mandir}/man1/vala-gen-introspect.1%{?ext_man}
 %{_mandir}/man1/vapigen.1%{?ext_man}
 %{_libdir}/pkgconfig/vapigen.pc
-%ghost %attr(755,root,root) %{_sysconfdir}/alternatives/vala
-%ghost %attr(755,root,root) %{_sysconfdir}/alternatives/valac
-%ghost %attr(755,root,root) %{_sysconfdir}/alternatives/vala-gen-introspect
-%ghost %attr(755,root,root) %{_sysconfdir}/alternatives/vapigen
-%ghost %attr(644,root,root) %{_sysconfdir}/alternatives/valac.1%{?ext_man}
-%ghost %attr(644,root,root) %{_sysconfdir}/alternatives/vala-gen-introspect.1%{?ext_man}
-%ghost %attr(644,root,root) %{_sysconfdir}/alternatives/vapigen.1%{?ext_man}
-%ghost %attr(644,root,root) %{_sysconfdir}/alternatives/vapigen.pc
 %{_bindir}/vala-%{vala_version}
 %{_bindir}/valac-%{vala_version}
 %{_bindir}/vala-gen-introspect-%{vala_version}

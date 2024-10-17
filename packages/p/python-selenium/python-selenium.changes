@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Oct 15 04:05:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.25.0:
+  * Add CDP for Chrome 129 and remove 126
+  * Allow overriding `GLOBAL_DEFAULT_TIMEOUT`
+  * Disable strict time stamps in Firefox profile
+  * Remove precompiled binaries from sdist
+  * Fix RelativeBy#near to take 2 parameters
+  * Fix EOFError when calling the Remote WebDriver download_file method
+  * Add low-level sync API to use DevTools
+  * Add preference to enable CDP in Firefox by default
+  * Allow using enable_bidi property on options class
+  * Implement script module for BiDi
+  * Remove desired capabilities argument for Webkitgtk
+  * Make webkitgtk.webdriver same as wpewebkit.webdriver
+  * Moving ignore_local_proxy_environment_variables to BaseOptions
+  * Making Selenium Manager a thin wrapper
+  * Add more network interfaces to detect lan ip
+  * Explicitly export Select and WebDriverWait from
+    selenium.webdriver.support.ui
+  * [py] Correct typing_extension dependency for wheel generation
+  * Add page load strategy enum
+  * Use correct file name when bumping versions
+  * Filter which bidi logs are recorded based on event type
+  * Sleep depending on the number of attempts to check if the service has
+    started
+  * Use subprocess.DEVNULL instead of open(os.devnull)
+  * Do not change profile preferences of an existing directory by default
+  * Fix inadvertent code change in mutation_event
+  * Fix bug in using SE_MANAGER_PATH
+  * Fix bug where downloaded file was not getting unzipped
+  * Fix WebDriverWait type hints for WebElement
+  * Allow bsd operating systems to use the linux binary
+  * Close trio memory channel sender after the driver is quit
+  * Remote webdriver cannot match Chromium browser name for remote connection
+  * Do not set browser binary in selenium manager if it is an empty string
+  * fix bug preventing using performance logging in chromium
+  * Allow users to set Selenium Manager path by environment variable
+  * allow setting http client certifications with REQUESTS_CA_BUNDLE env
+  * Drop support for `python3.7`
+  * Fixed a bug where `Popen.wait()` calls caught the wrong exceptions when
+    timing out
+- Switch to using pytest macro.
+
+-------------------------------------------------------------------
 Wed Jun 21 08:09:17 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix packaging for non-x86_64 architectures

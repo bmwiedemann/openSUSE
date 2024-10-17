@@ -1,7 +1,7 @@
 #
 # spec file for package maven-reporting-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,19 @@
 
 
 Name:           maven-reporting-api
-Version:        3.1.1
+Version:        4.0.0
 Release:        0
 Summary:        API to manage report generation
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-reporting-api
-Source0:        https://archive.apache.org/dist/maven/reporting/%{name}-%{version}-source-release.zip
+Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
-BuildRequires:  maven-doxia-sink-api
-BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-doxia-sink-api >= 2.0
 BuildArch:      noarch
 
 %description
@@ -54,27 +51,30 @@ API documentation for %{name}.
 cp %{SOURCE1} LICENSE.txt
 cp %{SOURCE2} build.xml
 
-%pom_remove_parent
-
-# Previous package provides groupIds org.apache.maven.shared and org.apache.maven.reporting
-%{mvn_alias} : org.apache.maven.shared:maven-reporting-api
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
     maven-doxia/doxia-sink-api
-%{ant} jar javadoc
-
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
+ant jar javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a  org.apache.maven.shared:maven-reporting-api
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog

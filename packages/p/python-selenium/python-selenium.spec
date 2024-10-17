@@ -1,7 +1,7 @@
 #
 # spec file for package python-selenium
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-selenium
-Version:        4.10.0
+Version:        4.25.0
 Release:        0
 Summary:        Python bindings for Selenium
 License:        Apache-2.0
@@ -25,22 +25,27 @@ URL:            https://github.com/SeleniumHQ/selenium
 Source:         https://files.pythonhosted.org/packages/source/s/selenium/selenium-%{version}.tar.gz
 # https://github.com/SeleniumHQ/selenium/issues/6246
 Source1:        selenium-pytest.tar.bz2
-# https://github.com/SeleniumHQ/selenium/issues/12166
-Source2:        https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/LICENSE
-BuildRequires:  %{python_module base >= 3.7}
+Source2:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module certifi >= 2021.10.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rdflib}
+BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.9}
 BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module websocket-client >= 1.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 2021.10.8
 Requires:       python-trio >= 0.17
 Requires:       python-trio-websocket >= 0.9
+Requires:       python-typing-extensions >= 4.9
 Requires:       python-urllib3
+Requires:       python-websocket-client >= 1.8
 ExclusiveArch:  %{ix86} x86_64 %arm aarch64
 %python_subpackages
 
@@ -52,24 +57,22 @@ Currently, the remote protocol, Firefox and Chrome for Selenium 2.0 are
 supported, as well as the Selenium 1.0 bindings.
 
 %prep
-%setup -q -n selenium-%{version} -a1
-cp %{SOURCE2} .
+%setup -q -n selenium-%{version} -a1 -a2
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version} test/unit
+%pytest_arch test/unit
 
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/selenium
-%{python_sitelib}/selenium-%{version}*info
+%{python_sitearch}/selenium
+%{python_sitearch}/selenium-%{version}.dist-info
 
 %changelog

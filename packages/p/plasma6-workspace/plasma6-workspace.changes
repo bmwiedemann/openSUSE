@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+  * kcms/wallpaper: fix crash when wallpaper config has invalid values
+  * Fix crash with incorrect iterator
+  * applets/devicenotifier: fix crash when parent device is not of StorageDrive type
+  * klipper: fix unable to remove clip after editing (kde#494145)
+  * applets/devicenotifier: Fix encrypted container not updating status (kde#494483)
+  * startkde: Avoid waiting when notifying ksplash is up (kde#357170,kde#492492)
+  * applets/sysmon: Don't override contentItem of ScrollablePage in config ui (kde#492654)
+  * kcms/wallpaper: add title (kde#494008)
+  * applets/devicenotifier: avoid duplicate entries in device list
+  * applets/devicenotifer: properly delete child devices
+  * devicecontrol: Adjust formatting of debug messages
+  * applets/systemtray: fix crash caused by model index mismatch
+  * applets/kicker: guard against null d-ptr when refreshing favorite model
+  * Bring back klipper desktop file (kde#492525)
+  * components/calendar: fix finding qtpaths' path
+  * update version for new release
+  * wallpapers/image: fix crash when rendering mode is changed after initialization
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:

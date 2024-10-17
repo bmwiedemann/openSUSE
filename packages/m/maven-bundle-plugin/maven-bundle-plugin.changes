@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  3 10:26:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build against maven-doxia >= 2.0.0
+- Modified patch:
+  * new-reporting-api.patch
+    + adapt to the maven-doxia 2.0.0 APIs
+
+-------------------------------------------------------------------
 Mon Sep 23 09:42:01 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds

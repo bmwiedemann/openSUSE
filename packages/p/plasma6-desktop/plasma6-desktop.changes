@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+  * kcms/tablet: Parent the action dialog to the overlay instead of the KCM
+  * kcms/tablet: Fix calibration window not appearing on the correct screen
+  * kcms/tablet: Add asserts to make sure width/height are above 0
+  * kcms/tablet: Cancel calibration when the device is removed
+  * libkwindevices: Add signal for device removal
+  * kcms/tablet: Add more safeguards against possible null derefs and OOB
+  * kcms/tablet: Improve calibration accuracy
+  * kcms/tablet: Hide the stylus cursor when calibrating
+  * kcms/touchpad: remove extra padding from QtWidgets wrapper layout (kde#493994)
+  * update version for new release
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:

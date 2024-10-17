@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:15:41 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Don't own /usr/etc/skel/.config (owned by filesystem pkg) 
+
+-------------------------------------------------------------------
+Tue Oct 15 12:14:47 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Configure gnome-console as default terminal, not ptyxis 
+
+-------------------------------------------------------------------
+Mon Oct 14 13:53:44 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Move skel and sudoers config for /usr/etc
+- Configure new default terminal 'ptyxis' by default
+
+-------------------------------------------------------------------
+Mon Oct 14 10:01:00 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Set Aeon's default accent-color to 'green' 
+
+-------------------------------------------------------------------
 Thu Jun 13 18:21:19 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove systemd hardening from distrobox-upgrade-all.service.

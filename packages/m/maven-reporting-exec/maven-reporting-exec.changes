@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 15 18:38:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.0
+  * Bug
+    + MSHARED-1298: Missing site report should be detected
+  * Improvement
+    + MSHARED-1236: Supply execution id of caller (Maven Site
+      Plugin) to MavenReportExecutorRequest
+    + MSHARED-1329: Add field to MavenReportExecution whether
+      it is user-defined or autodetected
+  * Task
+    + MSHARED-1060: Upgrade to Java 8
+    + MSHARED-1061: Replace Plexus Logger with SLF4J
+    + MSHARED-1064: Reintroduce org.codehaus.doxia.sink.Sink
+    + MSHARED-1105: Replace Plexus Annotations with JSR 330 and
+      upgrade relevant dependencies
+    + MSHARED-1193: Remove Maven 2 compat code
+    + MSHARED-1207: Deprecate
+      MavenReportExecutorRequest#localRepository
+    + MSHARED-1387: Clean up dependencies
+- Fetch sources using source service
+
+-------------------------------------------------------------------
 Tue Mar 22 13:40:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.6.0

@@ -63,4 +63,12 @@
     <comment>3.3.0 (security fix)</comment>
     <requestid>1204136</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b5216b711ccd2fe60e9bf3ca28d9368d</srcmd5>
+    <version>3.3.0</version>
+    <time>1729115210</time>
+    <user>anag+factory</user>
+    <comment>Build with velocity-engine-core</comment>
+    <requestid>1208217</requestid>
+  </revision>
 </revisionlist>

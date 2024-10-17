@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+  * Only constrain popups to parent windows when there's enough space to do so (kde#494338)
+  * Fix PlasmaWindow type registration (kde#494475)
+  * update version for new release
+  * containment: emit screen geometry change correctly
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:

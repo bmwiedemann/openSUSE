@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 18:48:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Generate sources with protobuf instead of using pre-generated ones
+
+-------------------------------------------------------------------
 Thu Jul  4 10:46:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:26:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.41:
+  * Fixed #7619: Improved tooltip on logo disappears after instant
+    navigation
+  * Fixed #7616: Race condition in built-in privacy plugin when
+    inlining assets
+  * Fixed #7615: Comments and "Was this page helpful?" visible when
+    printing
+
+-------------------------------------------------------------------
 Fri Oct 11 09:08:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.40:

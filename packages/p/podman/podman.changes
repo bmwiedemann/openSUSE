@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:00:30 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Load ip_tables kernel module (bsc#1214612)
+
+-------------------------------------------------------------------
+Tue Oct 15 16:48:36 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Add patch for CVE-2024-9675 (bsc#1231499):
+  * 0001-Properly-validate-cache-IDs-and-sources.patch
+
+-------------------------------------------------------------------
 Tue Oct 08 07:05:58 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 5.2.4:

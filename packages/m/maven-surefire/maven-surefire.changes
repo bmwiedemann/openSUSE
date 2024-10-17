@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Oct  3 14:33:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.5.1
+  * Bug
+    + SUREFIRE-1737: Disabling the JUnit5Xml30StatelessReporter has
+      no effect
+    + SUREFIRE-2257: [REGRESSION] NPEx: Cannot invoke
+      "Object.toString()" because "value" is null
+    + SUREFIRE-2267: Packages for commons-codec should be relocated
+      in surefire-shared-utils
+    + SUREFIRE-2268: Tests run under classpath if JDK 23 is used
+  * Improvement
+    + SUREFIRE-2264: Limit usage of commons-io from
+      surefire-shared-utils
+    + SUREFIRE-2266: Execute ITs in parallel
+    + SUREFIRE-2270: Use JUnit5 in surefire-shadefire
+- Upgrade to 3.5.0
+  * Improvement
+    + SUREFIRE-2227: Dynamically calculate xrefTestLocation
+  * Task
+    + SUREFIRE-2161: Align Mojo class names and output names
+- Upgrade to 3.4.0
+  * Bug
+    + SUREFIRE-2251: [REGRESSION] java.lang.NoSuchMethodException:
+      org.apache.maven.plugin.surefire.StartupReportConfiguration
+      .<init>
+    + SUREFIRE-2253: [REGRESSION] Bump
+      org.apache.commons:commons-compress from 1.26.0 to 1.26.1
+      causes hang
+  * Improvement
+    + SUREFIRE-1385: System properties defined in the Surefire and
+      Failsafe plugin configuration should override user properties
+- Upgrade to 3.3.1
+  * Bug
+    + SUREFIRE-2105: Failsafe report size increased with version
+      upgrade from 2.17 to 2.22.2
+    + SUREFIRE-2242: Plain test report does not include names of the
+      skipped tests
+    + SUREFIRE-2250: Surefire Test Report Schema properties element
+      is not consistent with the code
+  * Improvement
+    + SUREFIRE-1360: Ability to disable properties for successfully
+      passed tests
+    + SUREFIRE-1934: Ability to disable system-out/system-err for
+      successfully passed tests
+    + SUREFIRE-2124: Avoid creating unnecessary target files for pom
+      projects
+    + SUREFIRE-2249: Doc for 'properties' parameter does not mention
+      JUnit
+- Upgrade to 3.3.0
+  * Bug
+    + SUREFIRE-1939: Build fails if java.home has <=2 path
+      components
+    + SUREFIRE-2232: [REGRESSION] StatelessXmlReporter fails to
+      process failed result without a throwable
+    + SUREFIRE-2240: Using JUnit BOM prevents upgrading the engine
+      version via plugin dependency
+   * Improvement
+    + SUREFIRE-2248: Make "type" attribute on failures and errors in
+      (surefire|failsafe)-test-report schema optional
+  * Test
+    + SUREFIRE-2141: Surefire 3.0.0-M8 tests don't pass on Mac M1
+      (Surefire1295AttributeJvmCrashesToTestsIT)
+  * Task
+    + SUREFIRE-2244: Make IT for SUREFIRE-1295 reliable
+    + SUREFIRE-2246: Clean up dependencies reported by
+      dependencies:analyze
+- Modified patches:
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from non-bootstrap build
+  * 0001-Port-to-TestNG-7.4.0.patch
+    + rediff and augment to make the test pass in upstream
+      environment
+- Added patch:
+  * 0002-Unshade-surefire.patch
+    + remove the use of the shaded surefire-shared-utils artifact
+      in favour of direct use of the dependencies
+
+-------------------------------------------------------------------
 Mon Jun 10 19:00:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use plexus-metadata-generator executable directly to simplify

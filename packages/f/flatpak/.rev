@@ -1009,4 +1009,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment></comment>
     <requestid>1205277</requestid>
   </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>385f5834706d9ad3e2808736da122b75</srcmd5>
+    <version>1.15.10</version>
+    <time>1729114683</time>
+    <user>anag+factory</user>
+    <comment>Drop SUSE specific rcFOO symlinks (forwarded request 1208119 from dimstar)</comment>
+    <requestid>1208163</requestid>
+  </revision>
 </revisionlist>

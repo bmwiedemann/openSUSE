@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Oct  3 22:19:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.10.1
+- Version 3.10.1
+  * Bug
+    + MJAVADOC-810: [REGRESSION] MJAVADOC-791 causes forked Maven
+      execution fail if any toolchains or settings file isn't
+      present
+    + MJAVADOC-811: javadoc.bat fails to execute on Windows when
+      project is not on drive C and AutoRun is configured
+    + MJAVADOC-812: [REGRESSION] maven-javadoc-plugin 3.10.0 creates
+      empty JARs
+- Version 3.10.0
+  * Bug
+    + MJAVADOC-560: Clarify outputDirectory, reportOutputDirectory
+      in javadoc:javadoc documentation
+  * Task
+    + MJAVADOC-776: Plugin depends on plexus-container-default,
+      which is EOL
+    + MJAVADOC-785: Align plugin implementation with
+      AbstractMavenReport (maven-reporting-impl)
+    + MJAVADOC-807: Simplify IT for MJAVADOC-498
+    + MJAVADOC-809: Align Mojo class names
+- Version 3.8.0
+  * Bug
+    + MJAVADOC-603: javadoc:fix failure on JDK10:
+      java.lang.ClassNotFoundException: java.sql.Connection
+    + MJAVADOC-751: No warnings for localized output
+    + MJAVADOC-775: Option 'taglets/taglet/tagletpath' ignored when
+      pointing to a JAR
+    + MJAVADOC-783: Invalid path when using TagletArtifact and
+      TagletPath
+    + MJAVADOC-791: maven-javadoc-plugin not working correctly
+      together with maven-toolchains-plugin
+  * Improvement
+    + MJAVADOC-796: Do not follow links for Java 12+
+    + MJAVADOC-798: Consider passing user settings when using
+      invoker
+    + MJAVADOC-802: Set default value of defaultAuthor parameter
+      in fix goals to ${user.name}
+    + MJAVADOC-803: Add default parameter to force root locale
+  * Test
+    + MJAVADOC-804: Temporary files are left after test execution
+  * Task
+    + MJAVADOC-799: Remove inconsistent
+      'AbstractFixJavadocMojo#defaultVersion' default value
+- Version 3.7.0
+  * Bug
+    + MJAVADOC-793: java.lang.NullPointerException: Cannot invoke
+      "String.length()" because "text" is null
+- Version 3.6.3
+  * Bug
+    + MJAVADOC-682: Reactor builds fail when multiple modules with
+      same groupId:artifactId, but different versions
+    + MJAVADOC-780: Unit tests create null-null.jar in build root
+      directory
+  * Improvement
+    + MJAVADOC-779: Upgrade maven-plugin parent to 41
+  * Task
+    + MJAVADOC-782: Align read-only parameters naming with other
+      plugins
+- Version 3.6.2
+  * Bug
+    + MJAVADOC-713: Skipping Javadoc reportset leaves empty Javadoc
+      link in site
+    + MJAVADOC-716: The stale file detection does not work
+    + MJAVADOC-726: Maven Java Doc Plugin downloads Log4j-1.2.12
+      dependency transitively
+    + MJAVADOC-762: createTestRepo in JavaDocReportTest shares state
+    + MJAVADOC-774: 3.6.0 release is not reproducible
+  * Improvement
+    + MJAVADOC-730: Deprecate parameter "old"
+- Removed patches:
+  * no-override.patch
+    + not needed with this version
+- Modified patches:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + Regenerate using maven-plugin-plugin 3.15 from non-bootstrap
+      build
+  * reproducible-from-environment.patch
+  * stale-data-encoding.patch
+    + adapt to changed context
+- Fetch sources from Github using source service
+
+-------------------------------------------------------------------
 Tue Sep 24 15:00:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -123,7 +208,7 @@ Tue Oct 25 14:16:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
   * maven-javadoc-plugin-ioexception.patch
     + allow building with wider range of plexus-utils versions,
       including the 3.5.0 that does not declare IOException as
-      thrown in functions where it is actually not thrown. 
+      thrown in functions where it is actually not thrown.
 
 -------------------------------------------------------------------
 Fri May 13 09:41:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>

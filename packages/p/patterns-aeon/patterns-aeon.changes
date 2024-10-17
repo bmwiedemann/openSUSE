@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:29:13 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove pytxis, set gnome-console as new default terminal 
+
+-------------------------------------------------------------------
+Mon Oct 14 13:54:24 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Install pytxis as new default terminal, remove gnome-terminal
+
+-------------------------------------------------------------------
 Wed Oct  9 12:39:18 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Require systemd-boot, because sdbootutil doesn't (boo#1231324)

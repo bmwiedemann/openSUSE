@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Oct  7 07:37:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.0.0
+  * Bug
+    + DOXIASITETOOLS-251: Plexus to Sisu migration misses Singleton
+      annotation
+    + DOXIASITETOOLS-263: Don't inject a default decoration model
+      when inheritance is at play
+    + DOXIASITETOOLS-266: Don't create anchors behind the user's
+      back
+    + DOXIASITETOOLS-299: Site descriptor interpolation does not
+      properly escape reserved XML chars
+    + DOXIASITETOOLS-305: Removal of 0-byte site descriptors from
+      the local repo does not put remote repos into consideration
+  * New Feature
+    + DOXIASITETOOLS-238: Pass input file name as reference to
+      parser
+    + DOXIASITETOOLS-291: Add timezone field to site descriptor
+      PublishDate object and pass onto Velocity tools context
+    + DOXIASITETOOLS-324: Allow configuration of parser per markup
+  * Improvement
+    + DOXIASITETOOLS-253: Clarify "border", "width" and "height" for
+      Banner and LinkItem
+    + DOXIASITETOOLS-257: Require a skin if a site descriptor
+      (site.xml) has been provided
+    + DOXIASITETOOLS-268: Don't open version resource file on every
+      call to render
+    + DOXIASITETOOLS-271: Overhaul locale support (make Locale#ROOT
+      instead of Locale#ENGLISH default and use full locale)
+    + DOXIASITETOOLS-278: Remove menu items link in the sidebar to
+      submodule that do not generate any site in the same build
+    + DOXIASITETOOLS-293: Remove menu items link in the sidebar to
+      submodule that are not present in the same build (reactor)
+    + DOXIASITETOOLS-294: Replace legacy artifact resolution with
+      Maven Resolver
+    + DOXIASITETOOLS-300: Don't populate Velocity context with XML
+      entities
+    + DOXIASITETOOLS-301: Automatically remove the 0-byte site
+      descriptors from the local repo
+    + DOXIASITETOOLS-302: Harmonize path separator in
+      DocumentRenderingContext
+    + DOXIASITETOOLS-332: Create anchors for indexable entries
+      automatically
+    + DOXIASITETOOLS-334: Pass project relative source path to
+      Parser.parse(...) as reference argument
+    + DOXIASITETOOLS-336: Make SiteRenderingContext#siteDirectories
+      editable aware
+    + DOXIASITETOOLS-340: Rearrange title order in Velocity context
+    + DOXIASITETOOLS-344: Improve performance of case-sensitive file
+      key checking
+    + DOXIASITETOOLS-348: Extend site descriptor to enforce a parent
+    + DOXIASITETOOLS-349: Remove plexus-component-metadata plugin
+  * Wish
+    + DOXIASITETOOLS-174: rename site.xml root tag from "project" to
+      "site"
+  * Task
+    + DOXIASITETOOLS-156: Fail if deprecated ${reports},
+      ${parentProject} or ${modules} is found
+    + DOXIASITETOOLS-167: Replace deprecated Maven 2
+      MavenProjectBuilder with Maven 3 ProjectBuilder
+    + DOXIASITETOOLS-239: Remove Doxia Sitetools Doc Renderer
+    + DOXIASITETOOLS-241: Replace Plexus Container Default with Sisu
+      Plexus Shim
+    + DOXIASITETOOLS-242: Remove all deprecated code
+    + DOXIASITETOOLS-244: Clean up exceptions and log messages
+    + DOXIASITETOOLS-245: Upgrade to Java 8
+    + DOXIASITETOOLS-247: Replace Plexus Annotations with Java
+      Inject along with JUnit 5
+    + DOXIASITETOOLS-254: Clarify inconsistencies in Doxia site
+      model
+    + DOXIASITETOOLS-258: Don't inject bannerLeft is none is set
+    + DOXIASITETOOLS-259: Deprecate Google-related site descriptor
+      properties
+    + DOXIASITETOOLS-264: Remove usage of default skin during
+      testing
+    + DOXIASITETOOLS-265: Drop MiscVerifier
+    + DOXIASITETOOLS-270: Remove internal (pseudo) skin and use
+      Maven Fluido Skin by default
+    + DOXIASITETOOLS-272: Remove support for Maven 1.x style site
+      directory layout
+    + DOXIASITETOOLS-281: Deprecate SiteTool#getParentProject() in
+      favor of MavenProject#getParent()
+    + DOXIASITETOOLS-282: Deprecate support for Maven 1.x style site
+      directory layout
+    + DOXIASITETOOLS-285: Deprecate
+      SiteRenderingContext#defaultWindowTitle in favor of
+      SiteRenderingContext#defaultTitle
+    + DOXIASITETOOLS-287: Remove Google-related site descriptor
+      properties
+    + DOXIASITETOOLS-289: Remove SiteTool#getParentProject()
+    + DOXIASITETOOLS-290: Remove
+      SiteRenderingContext#defaultWindowTitle
+    + DOXIASITETOOLS-295: Rename o.a.m.doxia.siterenderer.Renderer
+      to o.a.m.doxia.siterenderer.SiteRenderer
+    + DOXIASITETOOLS-296: Rename
+      o.a.m.doxia.siterenderer.RenderingContext to
+      o.a.m.doxia.siterenderer.DocumentRenderingContext
+    + DOXIASITETOOLS-298: Rename doxia-decoration-model to
+      doxia-site-model
+    + DOXIASITETOOLS-303: Implement workaround for
+      MNG-7758/MRESOLVER-335
+    + DOXIASITETOOLS-306: Clean up and simplify thrown exceptions
+    + DOXIASITETOOLS-309: Add resource bundle property "External
+      Links" to site-renderer.properties
+    + DOXIASITETOOLS-310: Add resource bundle property "Edit" to
+      site-renderer.properties
+    + DOXIASITETOOLS-311: Rework and simplify the site model
+    + DOXIASITETOOLS-319: Improve DocumentRenderer
+      interface/DocumentRenderingContext class API
+- Modified patch:
+  * 0002-Remove-dependency-on-velocity-tools.patch ->
+    0001-Remove-dependency-on-velocity-tools.patch
+    + rediff
+
+-------------------------------------------------------------------
 Sun Sep 29 19:59:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Don't build/distribute unused doxia-doc-renderer

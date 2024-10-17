@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:58:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
 Wed Sep  4 02:48:35 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Remove script in %pre to change ownership of /var/lib/colord

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:22:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
 Mon Apr 29 12:41:45 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Drop feature-suse-auto-socket-target-wants.patch and use the

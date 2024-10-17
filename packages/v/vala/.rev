@@ -1313,4 +1313,15 @@
       . Inherit important attributes for Property backing field. (forwarded request 1169195 from dimstar)</comment>
     <requestid>1169231</requestid>
   </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>7eb5bbdb88c13310b52f2a602358d79f</srcmd5>
+    <version>0.56.17</version>
+    <time>1729114646</time>
+    <user>anag+factory</user>
+    <comment>- Eliminate usageof update-alternatives: the added complexity was
+  not used a single time in the 14 years we had it.
+
+I'm sure nobody is going to miss that :) (forwarded request 1208100 from dimstar)</comment>
+    <requestid>1208157</requestid>
+  </revision>
 </revisionlist>

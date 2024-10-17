@@ -1,15 +1,20 @@
---- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2010-11-16 16:59:34.000000000 +0100
-+++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2022-03-10 21:12:43.366027036 +0100
-@@ -128,6 +128,12 @@
-         arguments.add( "-html" );
+--- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2024-10-02 11:40:33.269689821 +0200
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2024-10-02 11:42:56.144065975 +0200
+@@ -34,7 +34,7 @@
+ import org.apache.maven.reporting.MavenReport;
+ import org.apache.maven.reporting.MavenReportException;
+ import org.apache.maven.wagon.PathUtils;
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.codehaus.plexus.i18n.I18N;
+ import org.codehaus.plexus.util.FileUtils;
+ import org.codehaus.plexus.util.StringUtils;
+@@ -129,7 +129,7 @@
      }
  
-+	public void generate(
-+			final org.apache.maven.doxia.sink.Sink sink,
-+			final Locale locale) throws MavenReportException {
-+		generate( (Sink) sink, locale);
-+	}
-+
      /**
-      * @see org.apache.maven.reporting.MavenReport#generate(org.codehaus.doxia.sink.Sink, java.util.Locale)
+-     * @see org.apache.maven.reporting.MavenReport#generate(org.codehaus.doxia.sink.Sink, java.util.Locale)
++     * @see org.apache.maven.reporting.MavenReport#generate(org.apache.maven.doxia.sink.Sink, java.util.Locale)
       */
+     public void generate( Sink sink, Locale locale )
+         throws MavenReportException

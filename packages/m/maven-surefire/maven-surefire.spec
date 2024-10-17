@@ -17,7 +17,7 @@
 
 
 Name:           maven-surefire
-Version:        3.2.5
+Version:        3.5.1
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -28,6 +28,7 @@ Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Source10:       %{name}-build.tar.xz
 Patch0:         0001-Port-to-TestNG-7.4.0.patch
+Patch1:         0002-Unshade-surefire.patch
 Patch10:        %{name}-bootstrap-resources.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
@@ -37,21 +38,22 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  javapackages-local
-BuildRequires:  jdom
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  junit
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-doxia-core
-BuildRequires:  maven-doxia-logging-api
 BuildRequires:  maven-doxia-sink-api
-BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-reporting-impl
-BuildRequires:  maven-resolver
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-impl
+BuildRequires:  maven-resolver-named-locks
+BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
+BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-languages
@@ -139,32 +141,28 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-#patch -P 1 -p1
+%patch -P 1 -p1
 %patch -P 10 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
 
-%pom_remove_dep org.junit:junit-bom
+# QA plugin useful only for upstream
+%pom_remove_plugin -r :jacoco-maven-plugin
+# Not wanted
+%pom_remove_plugin -r :maven-shade-plugin
+# Not packaged
+%pom_remove_plugin -r :animal-sniffer-maven-plugin
+# Complains
+%pom_remove_plugin -r :apache-rat-plugin
 
 %pom_disable_module surefire-shadefire
-%pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
+%pom_remove_dep -r :surefire-shadefire
 
 # Help plugin is needed only to evaluate effective Maven settings.
 # For building RPM package default settings will suffice.
 %pom_remove_plugin :maven-help-plugin surefire-its
 
-# QA plugin useful only for upstream
-%pom_remove_plugin -r :jacoco-maven-plugin
-# Not wanted
-%pom_remove_plugin -r :maven-shade-plugin
-
-find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.apache.maven.shared.utils/ -e s/org.apache.maven.surefire.shared.io/org.apache.commons.io/ -e s/org.apache.maven.surefire.shared.lang3/org.apache.commons.lang3/ -e s/org.apache.maven.surefire.shared.compress/org.apache.commons.compress/ {} \;
-
-# Not packaged
-%pom_remove_plugin -r :animal-sniffer-maven-plugin
-# Complains
-%pom_remove_plugin -r :apache-rat-plugin
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 %pom_remove_dep -r ::::site-source
@@ -178,20 +176,16 @@ find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.a
 
 mkdir -p lib
 build-jar-repository -s -p lib \
-    atinject \
     apache-commons-lang3 \
+    atinject \
     commons-compress \
     commons-io \
-    javacc \
     jsr-305 \
     junit \
     maven-common-artifact-filters/maven-common-artifact-filters \
     maven-doxia/doxia-core \
-    maven-doxia/doxia-logging-api \
     maven-doxia/doxia-sink-api \
-    maven-doxia-sitetools/doxia-site-renderer \
     maven/maven-artifact \
-    maven/maven-compat \
     maven/maven-core \
     maven/maven-model \
     maven/maven-plugin-api \
@@ -200,10 +194,12 @@ build-jar-repository -s -p lib \
     maven-reporting-api/maven-reporting-api \
     maven-reporting-impl/maven-reporting-impl \
     maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
-    org.eclipse.sisu.plexus \
     org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
     plexus-containers/plexus-component-annotations \
     plexus-i18n/plexus-i18n \
     plexus/interpolation \
@@ -228,7 +224,6 @@ for module in \
     surefire-grouper \
     surefire-extensions-api \
     surefire-extensions-spi \
-    surefire-shared-utils \
     maven-surefire-common \
     surefire-report-parser \
     maven-surefire-plugin \
@@ -240,8 +235,8 @@ for module in \
   fi
 done
 for module in \
-    common-junit3 \
     common-java5 \
+    common-junit3 \
     common-junit4 \
     common-junit48 \
     surefire-junit3 \

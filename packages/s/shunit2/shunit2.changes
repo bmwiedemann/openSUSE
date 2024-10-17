@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 13:28:54 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Remove BuildRequires: ksh, as ksh seems not to be universally available
+    and is only optionally used in tests 
+
+-------------------------------------------------------------------
 Fri Jul 12 13:03:50 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 2.1.7:

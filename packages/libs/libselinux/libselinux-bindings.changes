@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:42:31 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Add 1231587-build-libselinux-with-swig-4.3.0.patch to fix build
+  failure with swig 4.3.0 (bsc#1231587)
+
+-------------------------------------------------------------------
 Mon Jul  1 07:53:14 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.7

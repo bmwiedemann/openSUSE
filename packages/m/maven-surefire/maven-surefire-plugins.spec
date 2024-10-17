@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-plugins
-Version:        3.2.5
+Version:        3.5.1
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -28,6 +28,7 @@ Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Patch0:         0001-Port-to-TestNG-7.4.0.patch
+Patch1:         0002-Unshade-surefire.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -35,15 +36,25 @@ BuildRequires:  mvn(org.apache.maven.doxia:doxia-core)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common)
+BuildRequires:  mvn(org.apache.maven.surefire:surefire-api)
+BuildRequires:  mvn(org.apache.maven.surefire:surefire-booter)
+BuildRequires:  mvn(org.apache.maven.surefire:surefire-extensions-api)
+BuildRequires:  mvn(org.apache.maven.surefire:surefire-logger-api)
 BuildRequires:  mvn(org.apache.maven.surefire:surefire-report-parser)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
+BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -102,31 +113,27 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-#patch -P 1 -p1
+%patch -P 1 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
-
-%pom_remove_dep org.junit:junit-bom
-
-%pom_disable_module surefire-shadefire
-%pom_remove_dep -r org.apache.maven.surefire:surefire-shadefire
-
-# Help plugin is needed only to evaluate effective Maven settings.
-# For building RPM package default settings will suffice.
-%pom_remove_plugin :maven-help-plugin surefire-its
 
 # QA plugin useful only for upstream
 %pom_remove_plugin -r :jacoco-maven-plugin
 # Not wanted
 %pom_remove_plugin -r :maven-shade-plugin
-
-find -name *.java -exec sed -i -e s/org.apache.maven.surefire.shared.utils/org.apache.maven.shared.utils/ -e s/org.apache.maven.surefire.shared.io/org.apache.commons.io/ -e s/org.apache.maven.surefire.shared.lang3/org.apache.commons.lang3/ -e s/org.apache.maven.surefire.shared.compress/org.apache.commons.compress/ {} \;
-
 # Not packaged
 %pom_remove_plugin -r :animal-sniffer-maven-plugin
 # Complains
 %pom_remove_plugin -r :apache-rat-plugin
+
+%pom_disable_module surefire-shadefire
+%pom_remove_dep -r :surefire-shadefire
+
+# Help plugin is needed only to evaluate effective Maven settings.
+# For building RPM package default settings will suffice.
+%pom_remove_plugin :maven-help-plugin surefire-its
+
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 %pom_remove_dep -r ::::site-source
@@ -136,13 +143,12 @@ for module in \
     maven-surefire-common \
     surefire-api \
     surefire-booter \
+    surefire-grouper \
     surefire-extensions-api \
     surefire-extensions-spi \
-    surefire-grouper \
     surefire-its \
     surefire-logger-api \
     surefire-providers \
-    surefire-shared-utils \
     surefire-report-parser; do
   %pom_disable_module ${module}
 done

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 13:56:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.0
+  * Changes:
+    + Upgrade to Velocity Engine 2.0
+    + Upgrade Velocity Engine from 2.0 to 2.3
+    + Move to JUnit5
+
+-------------------------------------------------------------------
 Sun May 26 19:41:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use the org.eclipse.sisu:org.eclipse.sisu.plexus artifact to

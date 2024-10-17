@@ -425,6 +425,7 @@ DNS specifications for Zeroconf Computing.
 
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -628,9 +629,6 @@ ln -s avahi-compat-libdns_sd/dns_sd.h %{buildroot}/%{_includedir}/
 ln -s avahi-compat-howl.pc %{buildroot}/%{_libdir}/pkgconfig/howl.pc
 install -d %{buildroot}/%{_prefix}/lib/avahi
 install -d %{buildroot}/%{_localstatedir}/lib/avahi-autoipd
-mkdir -p %{buildroot}/%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcavahi-daemon
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcavahi-dnsconfd
 install -d %{buildroot}/%{_datadir}/pixmaps
 install -d %{buildroot}%{_fillupdir}
 install -m 644 sysconfig.avahi* %{buildroot}%{_fillupdir}/
@@ -768,8 +766,6 @@ fi
 %exclude %{_mandir}/man8/avahi-autoipd.8.*
 %{_sbindir}/avahi-*
 %exclude %{_sbindir}/avahi-autoipd
-%{_sbindir}/rcavahi-daemon
-%{_sbindir}/rcavahi-dnsconfd
 %dir %{_sysconfdir}/avahi
 %config %{_sysconfdir}/avahi/avahi-daemon.conf
 %{_sysconfdir}/avahi/avahi-dnsconfd.action

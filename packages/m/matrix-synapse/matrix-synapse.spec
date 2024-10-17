@@ -40,6 +40,7 @@
 %global msgpack_version               1.1.0
 # TODO 1.3.0
 %global netaddr_version               1.2.1
+# TODO 8.13.46
 %global phonenumbers_version          8.13.44
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
@@ -157,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.116.0
+Version:        1.117.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

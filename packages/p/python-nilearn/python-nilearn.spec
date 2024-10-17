@@ -19,13 +19,14 @@
 # Run tests in parallel with pytest-xdist. On by default.
 %bcond_without pytest_xdist
 Name:           python-nilearn
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#nilearn/nilearn#4394
+Patch0:         support-new-scipy.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -52,6 +53,7 @@ BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.1.5}
 %{?with_pytest_xdist:BuildRequires:  %{python_module pytest-xdist}}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module rich}
@@ -91,6 +93,8 @@ donttest+=" or test_load_uniform_ball_cloud"
 
 # unresolvable documentation package requirement docstring_parser
 ignorefiles="--ignore maint_tools/check_glossary_term.py"
+# ignore cache files too
+ignorefiles+=" --ignore nilearn_cache"
 
 if [[ $(getconf LONG_BIT) -eq 64 ]]; then
 # this is a noarch rpm package but the pure python code is only intended for 64-bit architectures

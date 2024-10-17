@@ -68,11 +68,14 @@ Patch5:         storage-btrfs.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
+Patch107:       0006-totp-motd.patch
 # For anything based on SLES 15 codebase (including Leap, SLE Micro)
 Patch103:       0004-leap-gnu18-removal.patch
 Patch104:       selinux_libdir.patch
 Patch105:       fix-libexecdir.patch
 Patch106:       0005-cockpit-ws-user-remove-default-deps.patch
+
+Patch201:       remove_rh_links.patch
 
 %define build_all 1
 %if 0%{?rhel} == 8 && 0%{?epel} == 0 && !0%{?build_all}
@@ -229,6 +232,7 @@ BuildRequires:  python3-tox-current-env
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 106 -p1
+%patch -P 107 -p1
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
@@ -244,6 +248,8 @@ BuildRequires:  python3-tox-current-env
 %patch -P 104 -p0
 %patch -P 105 -p1
 %endif
+
+%patch -P 201 -p1
 
 cp %SOURCE1 tools/cockpit.pam
 #
@@ -428,13 +434,13 @@ sed -i "s|%{buildroot}||" *.list
 # remove brandings with stale symlinks. Means they don't match
 # the distro.
 pushd %{buildroot}/%{_datadir}/cockpit/branding
-ls --hide={default,kubernetes,opensuse,registry,sle-micro,suse} | xargs rm -rv
+ls --hide={default,kubernetes,opensuse,registry,suse} | xargs rm -rv
 popd
 # need this in SUSE as post build checks dislike stale symlinks
 install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
 test -e %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg
-test -e %{buildroot}/usr/share/cockpit/branding/sle-micro/apple-touch-icon.png  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/sle-micro/apple-touch-icon.png
-test -e %{buildroot}/usr/share/cockpit/branding/sle-micro/default-1920x1200.png || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/sle-micro/default-1920x1200.png
+test -e %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png
+test -e %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png
 # remove files of not installable packages
 rm -r %{buildroot}%{_datadir}/cockpit/sosreport
 rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
@@ -526,6 +532,7 @@ Requires: cockpit-bridge >= %{version}-%{release}
 Requires: shadow-utils
 %endif
 Requires: grep
+Requires: jeos-firstboot
 Requires: /usr/bin/pwscore
 Requires: /usr/bin/date
 Provides: cockpit-shell = %{version}-%{release}
@@ -575,6 +582,7 @@ Suggests: sssd-dbus >= 2.6.2
 %if 0%{?suse_version}
 Requires(pre): permissions
 Requires: distribution-logos
+Requires: pam_oath >= 2.6.11.12
 Requires: wallpaper-branding
 %endif
 # for cockpit-desktop

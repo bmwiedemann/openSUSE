@@ -1,7 +1,7 @@
 #
 # spec file for package maven-reporting-exec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,33 @@
 
 
 Name:           maven-reporting-exec
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        Classes to manage report plugin executions with Maven 3
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://maven.apache.org/shared/maven-reporting-exec/
-Source0:        https://dlcdn.apache.org/maven/reporting/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-reporting-exec
+Source0:        %{name}-%{version}.tar.xz
+Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  unzip
+BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-settings)
-BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.eclipse.aether:aether-api)
-BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
-Requires:       java-headless
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
 %description
@@ -59,11 +58,7 @@ The API documentation of %{name}.
 
 %prep
 %setup -q
-
-# convert CR+LF to LF
-sed -i 's/\r//g' pom.xml src/main/java/org/apache/maven/reporting/exec/*
-
-%pom_remove_plugin org.apache.maven.plugins:maven-enforcer-plugin
+cp %{SOURCE1} LICENSE.txt
 
 %build
 %{mvn_build} -f -- \
@@ -77,11 +72,10 @@ sed -i 's/\r//g' pom.xml src/main/java/org/apache/maven/reporting/exec/*
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE
-%doc NOTICE DEPENDENCIES
+%license LICENSE.txt
+%doc README.md
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE
-%doc NOTICE
+%license LICENSE.txt
 
 %changelog

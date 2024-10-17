@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 14 16:09:14 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add wesnoth-fix-building-with-boost-186.patch, fixes building
+  with boost 1.86, https://github.com/wesnoth/wesnoth/issues/9284
+- Changes in 1.18.2:
+  Translations
+  * Updated translations: Chinese (Simplified), French, Ukrainian
+  WML Engine
+  * Fixed out of sync errors due to bad undo/redo handling.
+  Miscellaneous and Bug Fixes
+  * Server-side fix for the "Something is wrong with the addon
+    version check database supporting the multiplayer lobby." error
+
+-------------------------------------------------------------------
 Sun Jul 14 16:17:35 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.18.2:

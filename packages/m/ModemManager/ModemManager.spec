@@ -124,8 +124,6 @@ test -n "$pppddir" || exit 1
 
 %install
 %meson_install
-# create suse-specific rcFOO link
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %find_lang ModemManager %{name}.lang
 
 %check
@@ -151,7 +149,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %doc AUTHORS README
 %{_bindir}/mmcli
 %{_sbindir}/ModemManager
-%{_sbindir}/rcModemManager
 %{_datadir}/dbus-1/system.d/org.freedesktop.ModemManager1.conf
 %{_libdir}/ModemManager/
 %{_datadir}/dbus-1/interfaces/*.xml

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 15 14:16:44 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Attempt to use "standalone" as part of name
+
+-------------------------------------------------------------------
+Tue Oct 15 13:58:07 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove conflicts and name binary/alternatives as lua-digestif*
+
+-------------------------------------------------------------------
+Tue Oct 15 10:52:30 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Conflicts with texlive-digestif-bin and texlive-digestif
+
+-------------------------------------------------------------------
+Sun Oct 13 02:21:55 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.6:
+  * Don't rely on kpathsearch
+  * Organize completion code in sections
+  * Add file name completion
+  * Add help handler for packages
+  * Fix luacheck warnings
+  * Update LICENSE.md
+  * Produce more robust info hyperlinks
+  * Add setup instructions for Sublime Text
+  * Add support for the positionEncoding capability
+  * Update integration test dependencies
+  * Fix typo
+  * Remove relative directories from package path
+  * Improve natbib support
+
+-------------------------------------------------------------------
 Sun Feb  5 06:02:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use update-alternatives with some magic.

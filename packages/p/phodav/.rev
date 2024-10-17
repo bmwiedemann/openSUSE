@@ -55,4 +55,12 @@
     <comment>- Tag hardening patch as PATCH-FEATURE-OPENSUSE. (forwarded request 1165416 from dimstar)</comment>
     <requestid>1165420</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>d243a4744829069c416de4b9860e8713</srcmd5>
+    <version>3.0</version>
+    <time>1729114703</time>
+    <user>anag+factory</user>
+    <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208121 from dimstar)</comment>
+    <requestid>1208165</requestid>
+  </revision>
 </revisionlist>

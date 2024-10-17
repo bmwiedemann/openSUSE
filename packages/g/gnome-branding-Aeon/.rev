@@ -50,4 +50,19 @@
   Prevents automatic update of containers.</comment>
     <requestid>1180763</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>761570cd4483984cbf443e2ba5cfbb4e</srcmd5>
+    <version>20231005</version>
+    <time>1729115074</time>
+    <user>anag+factory</user>
+    <comment>- Don't own /usr/etc/skel/.config (owned by filesystem pkg) 
+
+- Configure gnome-console as default terminal, not ptyxis 
+
+- Move skel and sudoers config for /usr/etc
+- Configure new default terminal 'ptyxis' by default
+
+- Set Aeon's default accent-color to 'green'</comment>
+    <requestid>1208174</requestid>
+  </revision>
 </revisionlist>

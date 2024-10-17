@@ -8,11 +8,11 @@ to be available during build and installed on the target system to work
 properly.
 ---
  Makefile.am                            |  1 +
- src/branding/sle-micro/Makefile.am  | 11 ++++
- src/branding/sle-micro/branding.css | 87 ++++++++++++++++++++++++++
+ src/branding/suse/Makefile.am  | 11 ++++
+ src/branding/suse/branding.css | 87 ++++++++++++++++++++++++++
  3 files changed, 99 insertions(+)
- create mode 100644 src/branding/sle-micro/Makefile.am
- create mode 100644 src/branding/sle-micro/branding.css
+ create mode 100644 src/branding/suse/Makefile.am
+ create mode 100644 src/branding/suse/branding.css
 
 Index: cockpit-309/Makefile.am
 ===================================================================
@@ -22,19 +22,19 @@ Index: cockpit-309/Makefile.am
  include src/branding/fedora/Makefile.am
  include src/branding/kubernetes/Makefile.am
  include src/branding/opensuse/Makefile.am
-+include src/branding/sle-micro/Makefile.am
++include src/branding/suse/Makefile.am
  include src/branding/registry/Makefile.am
  include src/branding/rhel/Makefile.am
  include src/branding/scientific/Makefile.am
-Index: cockpit-309/src/branding/sle-micro/Makefile.am
+Index: cockpit-309/src/branding/suse/Makefile.am
 ===================================================================
 --- /dev/null
-+++ cockpit-309/src/branding/sle-micro/Makefile.am
++++ cockpit-309/src/branding/suse/Makefile.am
 @@ -0,0 +1,11 @@
-+slemicrobrandingdir = $(datadir)/cockpit/branding/sle-micro
++slemicrobrandingdir = $(datadir)/cockpit/branding/suse
 +
 +dist_slemicrobranding_DATA = \
-+	src/branding/sle-micro/branding.css \
++	src/branding/suse/branding.css \
 +	$(NULL)
 +
 +install-data-hook::
@@ -42,10 +42,10 @@ Index: cockpit-309/src/branding/sle-micro/Makefile.am
 +	ln -sf /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
 +	ln -sf /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
 +	ln -sf /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
-Index: cockpit-309/src/branding/sle-micro/branding.css
+Index: cockpit-309/src/branding/suse/branding.css
 ===================================================================
 --- /dev/null
-+++ cockpit-309/src/branding/sle-micro/branding.css
++++ cockpit-309/src/branding/suse/branding.css
 @@ -0,0 +1,87 @@
 +/* Extra overrides */
 +:root {

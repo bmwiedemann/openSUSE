@@ -24,8 +24,7 @@ License:        Apache-2.0
 URL:            https://maven.apache.org/archetype/
 Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
 Patch1:         0001-Avoid-reliance-on-groovy.patch
-Patch2:         0002-Revert-ARCHETYPE-667-Upgrade-Velocity-from-1.7-to-2..patch
-Patch3:         reproducible-from-environment.patch
+Patch2:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -46,12 +45,12 @@ BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.apache.maven:maven-settings-builder)
-BuildRequires:  mvn(org.apache.velocity:velocity)
+BuildRequires:  mvn(org.apache.velocity:velocity-engine-core)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interactivity-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity) >= 2
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.jdom:jdom2)
@@ -129,7 +128,6 @@ Summary:        Maven Plugin for using archetypes
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
 
 # Pointless for rpm build
 %pom_remove_plugin -r org.apache.rat:apache-rat-plugin

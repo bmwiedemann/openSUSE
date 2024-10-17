@@ -423,4 +423,12 @@
     <comment></comment>
     <requestid>1166802</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>33bb103765c9094d489008df250fb658</srcmd5>
+    <version>0.3.4</version>
+    <time>1729114536</time>
+    <user>anag+factory</user>
+    <comment>- Update lens database</comment>
+    <requestid>1207993</requestid>
+  </revision>
 </revisionlist>

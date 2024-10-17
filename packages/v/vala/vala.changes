@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:03:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate usageof update-alternatives: the added complexity was
+  not used a single time in the 14 years we had it.
+
+-------------------------------------------------------------------
 Fri Apr 19 13:04:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.56.17:

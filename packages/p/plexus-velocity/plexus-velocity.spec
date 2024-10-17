@@ -17,7 +17,7 @@
 
 
 Name:           plexus-velocity
-Version:        1.2
+Version:        2.1.0
 Release:        0
 Summary:        Plexus Velocity Component
 License:        Apache-2.0
@@ -28,11 +28,12 @@ Source1:        %{name}-build.xml
 Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-collections
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  sisu-plexus
-BuildRequires:  velocity
+BuildRequires:  sisu-inject
+BuildRequires:  velocity-engine-core
 BuildArch:      noarch
 
 %description
@@ -55,10 +56,8 @@ find -name '*.jar' -delete
 cp -p %{SOURCE1} build.xml
 cp -p %{SOURCE2} LICENSE
 
-%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
-
 mkdir -p lib
-build-jar-repository -s lib commons-collections org.eclipse.sisu.plexus velocity
+build-jar-repository -s lib atinject commons-collections org.eclipse.sisu.inject velocity-engine/velocity-engine-core
 
 %build
 ant jar javadoc

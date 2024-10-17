@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Oct  7 11:06:04 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
-- Update to 1.21.0:
+- Update to 1.21.1:
   Security Fixes:
   * Fix CVE-2024-8508, unbounded name compression could lead to
     denial of service.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 15 21:47:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1.3:
+  * drop support for python 3.8
+  * add support for python 3.13
+  * prepare for python 3.14
+
+-------------------------------------------------------------------
 Fri Aug 16 16:50:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.1.2:

@@ -85,8 +85,8 @@ install -d %{buildroot}%{_datadir}/glib-2.0/schemas
 install -m0644 30_Aeon.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
 install -d %{buildroot}%{_prefix}/share/aeon
 install -m0644 flathub.flatpakrepo %{buildroot}%{_prefix}/share/aeon
-install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
-install -m0644 aeon-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
+install -d %{buildroot}%{_prefix}%{_sysconfdir}/skel/.config/autostart
+install -m0644 aeon-firstboot.desktop %{buildroot}%{_prefix}%{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 aeon-firstboot %{buildroot}%{_bindir}/aeon-firstboot
 install -m0755 aeon-mig-firstboot %{buildroot}%{_bindir}/aeon-mig-firstboot
@@ -97,8 +97,8 @@ install -m0644 aeonwallpaper.png %{buildroot}%{_datadir}/wallpapers/aeonwallpape
 install -d %{buildroot}%{_userunitdir}
 install -m0644 distrobox-upgrade-all.service %{buildroot}%{_userunitdir}/distrobox-upgrade-all.service
 install -m0644 distrobox-upgrade-all.timer %{buildroot}%{_userunitdir}/distrobox-upgrade-all.timer
-install -d %{buildroot}%{_sysconfdir}/sudoers.d/
-install -m0640 50-aeon %{buildroot}%{_sysconfdir}/sudoers.d/50-aeon
+install -d %{buildroot}%{_prefix}%{_sysconfdir}/sudoers.d/
+install -m0640 50-aeon %{buildroot}%{_prefix}%{_sysconfdir}/sudoers.d/50-aeon
 install -d %{buildroot}%{_datadir}/gnome-background-properties
 install -m0644 wallpaper-branding-Aeon.xml %{buildroot}%{_datadir}/gnome-background-properties/wallpaper-branding-Aeon.xml
 install -d %{buildroot}%{_datadir}/polkit-1/rules.d/
@@ -125,9 +125,8 @@ install -m0644 vendor.conf %{buildroot}%{_datadir}/gnome-initial-setup/vendor.co
 %{_datadir}/glib-2.0/schemas/30_Aeon.gschema.override
 %dir %{_prefix}/share/aeon
 %{_prefix}/share/aeon/flathub.flatpakrepo
-%dir %{_sysconfdir}/skel/.config
-%dir %{_sysconfdir}/skel/.config/autostart
-%config(noreplace) %{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
+%dir %{_prefix}%{_sysconfdir}/skel/.config/autostart
+%{_prefix}%{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
 %{_bindir}/aeon-firstboot
 %{_bindir}/aeon-mig-firstboot
 %dir %{_prefix}%{_sysconfdir}/transactional-update.conf.d
@@ -136,7 +135,7 @@ install -m0644 vendor.conf %{buildroot}%{_datadir}/gnome-initial-setup/vendor.co
 %{_datadir}/wallpapers/aeonwallpaper.png
 %{_userunitdir}/distrobox-upgrade-all.service
 %{_userunitdir}/distrobox-upgrade-all.timer
-%{_sysconfdir}/sudoers.d/50-aeon
+%{_prefix}%{_sysconfdir}/sudoers.d/50-aeon
 %dir %{_datadir}/gnome-background-properties
 %{_datadir}/gnome-background-properties/wallpaper-branding-Aeon.xml
 %{_datadir}/polkit-1/rules.d/49-aeon.rules

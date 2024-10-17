@@ -255,7 +255,6 @@ Requires:       gnome-branding-Aeon
 #Requires:       gnome-packagekit
 Requires:       gnome-software
 Requires:       gnome-system-monitor
-Requires:       gnome-terminal
 #AEON:Requires:       gnome-tweak-tool
 #AEON:Requires:       gnome-user-docs
 # bnc#879466
@@ -286,7 +285,6 @@ Requires:       gnome-control-center-users
 #AEON:Requires:       gnome-shell-search-provider-nautilus
 Requires:       libgnomesu
 Requires:       nautilus
-Requires:       nautilus-extension-terminal
 # Some extensions add context menus to nautilus using python scripts (example GSConnect)
 # For this to work we need nautilus-python bindings
 #AEON:Requires:       python3-nautilus
@@ -395,6 +393,9 @@ Requires:       iio-sensor-proxy
 ### Support Vulkan boo#1223443
 Requires:       libvulkan_radeon
 Requires:       libvulkan_intel
+
+### gnome-console as default terminal
+Requires:       gnome-console
 
 ### This is tik, install tik
 Requires:       tik

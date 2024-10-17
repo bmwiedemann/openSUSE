@@ -17,8 +17,7 @@
 
 
 Name:           lychee
-#               This will be set by osc services, that will run after this.
-Version:        0.15.1~0
+Version:        0.16.1~0
 Release:        0
 Summary:        Fast, async, stream-based link checker written in Rust
 License:        Apache-2.0 OR MIT

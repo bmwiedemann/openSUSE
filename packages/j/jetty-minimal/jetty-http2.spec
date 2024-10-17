@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20240208
+%global addver  .v20240826
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-http2
-Version:        9.4.54
+Version:        9.4.56
 Release:        0
 Summary:        The http2 modules for Jetty
 License:        Apache-2.0 OR EPL-1.0

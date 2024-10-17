@@ -34,6 +34,7 @@ Patch4:         netty3-CVE-2024-29025.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  protobuf-devel
 BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 BuildRequires:  mvn(com.jcraft:jzlib)
@@ -142,6 +143,10 @@ rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java
 %{mvn_file}  : %{name}
 
 %build
+# regenearate to be usable with newer versions of protobuf-java
+protoc src/main/java/org/jboss/netty/example/localtime/LocalTimeProtocol.proto \
+    --java_out=src/main/java
+
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \

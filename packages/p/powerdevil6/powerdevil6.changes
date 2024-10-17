@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * update version for new release
+  * applets/brightness: More robustness for surviving plugin destruction
+  * daemon: Retry failed DDC/CI brightness write also on monitor wake-up
+  * daemon: Retry failed DDC/CI reads and writes repeatedly
+  * applets/brightness: Survive plugin destruction after async wait
+  * update version for new release
+  * applets/brightness: Avoid producing duplicate display sliders (kde#493844)
+  * daemon/actions/dimdisplay: Set brightness separately per display (kde#493111)
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:39 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:

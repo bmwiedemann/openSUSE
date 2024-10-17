@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:54:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
 Wed Oct  2 15:16:49 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Explicitly BuildRequire selinux-policy-targeted to allow

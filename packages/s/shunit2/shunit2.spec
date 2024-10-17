@@ -26,7 +26,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/kward/shunit2
 Source:         https://github.com/kward/shunit2/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash
-BuildRequires:  ksh
 BuildRequires:  zsh
 BuildArch:      noarch
 

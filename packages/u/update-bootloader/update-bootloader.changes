@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Mon Oct 14 16:29:19 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#180
+- enhanced test cases
+- update test result data
+- reordered tests
+- add optional dash support in test cases
+- 1.17
+
+--------------------------------------------------------------------
+Mon Oct 14 10:49:07 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#179
+- support both update-bootloader and perl-Bootloader as package
+  name
+
+--------------------------------------------------------------------
+Mon Oct 14 10:44:38 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#175
+- fix handling of missing grub_installdevice on powerpc (bsc#1230070)
+
+--------------------------------------------------------------------
 Fri Oct 4 14:53:58 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#173

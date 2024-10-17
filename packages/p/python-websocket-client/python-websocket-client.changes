@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 15 03:35:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Added `on_reconnect` parameter to WebSocketApp to handle callback
+    ambiguity
+  * Improve handling of SSLEOFError and use reconnect bool
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Dec 13 10:36:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

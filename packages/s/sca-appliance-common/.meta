@@ -1,5 +1,0 @@
-<package name="sca-appliance-common" project="openSUSE:Factory">
-  <title>Supportconfig Analysis Appliance Common Files</title>
-  <description>Provides the common files needed by both the SCA Broker and Agent.</description>
-  <devel project="isv:SUSE:SupportTools:Factory" package="sca-appliance-common"/>
-</package>

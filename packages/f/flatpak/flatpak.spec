@@ -169,8 +169,8 @@ more information.
 Summary:        Add Flathub repository to system flatpak
 Group:          System/Packages
 Requires:       flatpak
-Requires(postun):flatpak
-Requires(postun):sed
+Requires(postun): flatpak
+Requires(postun): sed
 %if 0%{?suse_version} > 1600
 Supplements:    flatpak
 %endif
@@ -232,8 +232,6 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %install
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
-mkdir -p %{buildroot}%{_sbindir}
-ln -s service %{buildroot}%{_sbindir}/rcflatpak-system-helper
 # add a 60- prefix to the rules file, otherwise it is not effective, because
 # /etc/polkit-1/rules.d/90-default-privs.rules is executed first and if no
 # polkit-default-privs rule grants access then an explicit reject is the
@@ -350,7 +348,6 @@ fi;
 %{_unitdir}/flatpak-system-helper.service
 %{_unitdir}/update-system-flatpaks.{service,timer}
 %{_userunitdir}/update-user-flatpaks.{service,timer}
-%{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
 %{_userunitdir}/flatpak-portal.service
 %ghost %dir %{_localstatedir}/lib/flatpak

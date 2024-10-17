@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 10 17:01:07 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 80
+  * cxl-list: add --media-errors option
+  * cxl-list: always emit memdev firmware revision
+  * daxctl: fail create-device with extra parameters
+  * daxctl: remove unused options from create-device usage message
+- cxl-json-Fix-tracefs-include.patch
+
+-------------------------------------------------------------------
 Thu May 30 09:46:50 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 79

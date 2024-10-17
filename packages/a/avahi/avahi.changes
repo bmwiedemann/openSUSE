@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:56:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
 Thu Jun 20 16:01:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add avahi-filter-bogus-services.patch: no longer supply bogus

@@ -115,9 +115,6 @@ system) are restricted using PolicyKit.
 
 %install
 %meson_install
-
-install -d %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %find_lang %{name}
 
 %pre
@@ -143,7 +140,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{_sysconfdir}/UPower
 %config(noreplace) %{_sysconfdir}/UPower/UPower.conf
 %{_bindir}/upower
-%{_sbindir}/rc%{name}
 %dir %{_libexecdir}/upower
 %{_libexecdir}/upower/upowerd
 %{_udevrulesdir}/*.rules

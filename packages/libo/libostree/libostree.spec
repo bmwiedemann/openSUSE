@@ -152,11 +152,6 @@ of both.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# openSUSE rcFOO links
-mkdir -p %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-prepare-root
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
-
 %ldconfig_scriptlets -n libostree-%{libversion}-%{soversion}
 
 %pre
@@ -217,8 +212,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %dir %{_sysconfdir}/dracut.conf.d
 %config %{_sysconfdir}/dracut.conf.d/ostree.conf
 %{_datadir}/ostree/
-%{_sbindir}/rcostree-prepare-root
-%{_sbindir}/rcostree-remount
 %{_systemdgeneratordir}/ostree-system-generator
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/ostree-tmpfiles.conf

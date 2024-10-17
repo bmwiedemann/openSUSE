@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 15 14:47:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
+Mon Oct 14 18:40:47 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable plugin_amdgpu: the plugin built succesfully
+
+-------------------------------------------------------------------
 Wed Sep 25 08:47:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.25:

@@ -648,4 +648,12 @@ Features
 </comment>
     <requestid>1206077</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>56c02166f0a0ed0b6870d8082190ef77</srcmd5>
+    <version>1.21.1</version>
+    <time>1729115043</time>
+    <user>anag+factory</user>
+    <comment>Fix version number in changelog</comment>
+    <requestid>1208444</requestid>
+  </revision>
 </revisionlist>

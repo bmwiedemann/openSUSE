@@ -1,0 +1,10 @@
+--- a/src/systemd/inactive.motd
++++ b/src/systemd/inactive.motd
+@@ -1,2 +1,7 @@
+ Activate the web console with: systemctl enable --now cockpit.socket
+ 
++Note: Cockpit disallows root login by default.
++To create a regular user and optionally enable 2FA run both:
++
++jeos-config user
++jeos-config otp

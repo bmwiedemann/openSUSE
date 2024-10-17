@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 15 15:36:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.82.1:
+  * chore(deps): update Syft to v1.14.1 (#2191)
+  * dependency: bump syft to main pre-release (#2189)
+  * chore(deps): bump github/codeql-action from 3.26.12 to 3.26.13
+    (#2183)
+  * Skip matching on packages with missing version info (#2182)
+  * chore(deps): bump anchore/sbom-action from 0.17.2 to 0.17.3
+    (#2184)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.5
+    to 1.4.6 (#2185)
+  * Account for implicit 0s in rpm release versions (#2188)
+  * chore: bump syft in quality gate to v1.14.0 (#2187)
+  * use epoch from metadata when missing from version string
+    (#2186)
+  * fix: exclude binary packages from CPE target software component
+    filter logic (#2179)
+  * add release docs (#2177)
+  * chore(deps): bump actions/upload-artifact from 4.4.2 to 4.4.3
+    (#2176)
+  * chore(deps): bump actions/upload-artifact from 4.4.1 to 4.4.2
+    (#2173)
+  * chore(deps): bump actions/cache from 4.0.2 to 4.1.1 (#2172)
+  * [chore] Add mastodon link to README.md (#2166)
+  * chore(deps): bump actions/upload-artifact from 4.4.0 to 4.4.1
+    (#2167)
+  * chore(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#2168)
+  * chore(deps): bump github/codeql-action from 3.26.11 to 3.26.12
+    (#2169)
+
+-------------------------------------------------------------------
 Wed Oct 09 04:39:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.82.0:

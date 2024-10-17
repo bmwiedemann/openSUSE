@@ -1,6 +1,6 @@
---- maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2023-09-14 14:20:14.049981880 +0200
-+++ maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2023-09-14 14:25:18.258705774 +0200
-@@ -41,6 +41,19 @@
+--- a/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java
+@@ -40,6 +40,19 @@ import org.codehaus.plexus.util.cli.Commandline;
   */
  public class StaleHelper {
  
@@ -20,7 +20,7 @@
      /**
       * Compute the data used to detect a stale javadoc
       *
-@@ -56,13 +69,7 @@
+@@ -55,13 +68,7 @@ public class StaleHelper {
              String[] args = cmd.getArguments();
              Collections.addAll(options, args);
  
@@ -35,18 +35,16 @@
  
              for (String arg : args) {
                  if (arg.startsWith("@")) {
-@@ -116,9 +123,11 @@
+@@ -115,9 +122,11 @@ public class StaleHelper {
       */
      public static void writeStaleData(Commandline cmd, Path path) throws MavenReportException {
          try {
 +            final Charset cs = getDataCharset();
 +
-             String curdata = getStaleData(cmd);
+             List<String> curdata = getStaleData(cmd);
              Files.createDirectories(path.getParent());
--            Files.write(path, Collections.singleton(curdata), Charset.defaultCharset());
-+            Files.write(path, Collections.singleton(curdata), cs);
+-            Files.write(path, curdata, StandardCharsets.UTF_8);
++            Files.write(path, curdata, cs);
          } catch (IOException e) {
              throw new MavenReportException("Error checking stale data", e);
          }
-Only in maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc: StaleHelper.java.orig
-Only in maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc: StaleHelper.java.rej

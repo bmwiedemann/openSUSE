@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Oct 14 18:00:58 UTC 2024 - alessio.biancalana@suse.com
+
+- Update to version 0.16.1:
+  * chore: release (#1514)
+  * markdown.rs: make first line a top-level heading (#1511)
+  * Listen to additional release triggers for binary builds
+  * listen to more release triggers for binary builds
+  * chore: release (#1512)
+  * Don't add changelog files
+  * Cleanup `.gitignore` file
+  * Add release-plz and clean up workflows (#1510)
+  * Bump the dependencies group across 1 directory with 8 updates (#1509)
+  * README: add tldr-pages as user (#1508)
+  * Disable pedantic clippy lint
+  * Test ignored files
+  * Test hidden files
+  * Update example
+  * Skip ignored and hidden files by default
+  * Remove is_symlink check, because it's mutually exclusive to is_file
+  * Handle path exclusions when walking directories
+  * Update README.md test to trim whitespaced lines & update README.md
+  * Update tests
+  * Make gitignored files configurable and disable by default
+  * Replace jwalk with ignore
+  * Bump the dependencies group across 1 directory with 13 updates (#1502)
+  * Extend compact format (#1497)
+  * Bump the dependencies group with 2 updates (#1494)
+  * chore(docs): mention MacPorts install in README.md (#1491)
+  * Bump the dependencies group with 4 updates (#1490)
+  * Mention Chocolatey
+  * Bump the dependencies group with 5 updates (#1488)
+  * Bump the dependencies group with 6 updates (#1486)
+  * Run cargo nextest in CI and enable all tests (#1483)
+  * test: fail when interpreting md footnote as link (#1479)
+  * ci: fix wrong cpu-arch tag on macos release assets (#1484)
+  * Properly wire in tokio-console (#1482)
+  * Harmonizes naming pattern of pre-built binaries and unlocks latest permalink (#1464)
+  * Fix: Windows drive paths misidentified as URLs (#1460)
+  * Bump docker/build-push-action from 5 to 6 in the dependencies group (#1449)
+  * Bump the dependencies group across 1 directory with 29 updates (#1478)
+  * Updated pulldown-cmark dependency and fixed maths parsing (#1473)
+  * README: add openSUSE Tumbleweed to the installation instructions (#1470)
+  * feat(clap): show help menu on no args as well (#1458)
+  * README: Add Nixpkgs to Installation (#1448)
+  * Screencast update (#1445)
+  * Add response formatter; refactor stats formatter (#1398)
+  * Extend documentation for `RequestChain` (#1442)
+  * Update TROUBLESHOOTING.md (#1440)
+  * Add a way to handle "pretty URLs", i.e. URIs without `.html` extension (#1422)
+  * Don't trim mailto: prefix when converting a Uri into a string (#1438)
+  * Add Execa to list of users (#1435)
+  * Exclude `tel` scheme from being checked (#1429)
+  * Fix typo in pre-commit config in README (#1424)
+  * Fix clippy errors (#1423)
+
+-------------------------------------------------------------------
 Sat Jul 20 13:59:59 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Update to version 0.15.1:

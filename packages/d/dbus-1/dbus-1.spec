@@ -174,8 +174,6 @@ rm %{buildroot}%{_userunitdir}/*.service
 
 # dbus-launch, too
 mv -f %{buildroot}/%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox11
-mkdir -p %{buildroot}%{_sbindir}
-ln -sf %{_sbindir}/service  %{buildroot}/%{_sbindir}/rcdbus
 install -d %{buildroot}/run/dbus
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 
@@ -261,7 +259,6 @@ fi
 %if %{with_service}
 %{_unitdir}/dbus.service
 %endif
-%{_sbindir}/rcdbus
 %if %{with_service}
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service

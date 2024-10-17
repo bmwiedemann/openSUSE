@@ -16,51 +16,40 @@
 #
 
 
-%global parent maven-doxia
-%global subproj sitetools
-Name:           %{parent}-%{subproj}
-Version:        1.11.1
+Name:           maven-doxia-sitetools
+Version:        2.0.0
 Release:        0
 Summary:        Doxia content generation framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-sitetools/%{version}/doxia-%{subproj}-%{version}-source-release.zip
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.tar.xz
-Patch1:         0002-Remove-dependency-on-velocity-tools.patch
+Patch1:         0001-Remove-dependency-on-velocity-tools.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-doxia-core
-BuildRequires:  maven-doxia-logging-api
-BuildRequires:  maven-doxia-module-fo
-BuildRequires:  maven-doxia-module-xhtml
+BuildRequires:  maven-doxia-module-xhtml5
 BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
-BuildRequires:  modello >= 2.0.0
-BuildRequires:  plexus-containers-component-annotations
+BuildRequires:  maven-resolver-api
+BuildRequires:  modello
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  plexus-xml
+BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
-BuildRequires:  unzip
-BuildRequires:  velocity
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  xz
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-apt)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-fml)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-xdoc)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-module-xhtml5)
-BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
+BuildRequires:  slf4j
+BuildRequires:  velocity-engine-core
 BuildArch:      noarch
 
 %description
@@ -78,79 +67,58 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q -n doxia-%{subproj}-%{version} -a1
+%setup -q -a1
 %patch -P 1 -p1
 
-# migrate to maven 3
-%pom_xpath_set //pom:mavenVersion 3.8.6 doxia-integration-tools
-%pom_change_dep :maven-artifact-manager :maven-core doxia-integration-tools
-%pom_change_dep :maven-project :maven-compat doxia-integration-tools
-
-# complains
-%pom_remove_plugin :apache-rat-plugin
-
-%pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin
-%pom_remove_dep net.sourceforge.htmlunit:htmlunit doxia-site-renderer/pom.xml
-%pom_remove_dep -r :velocity-tools
-
-rm -rf $(find -type d -name itext)
-%pom_remove_dep -r :doxia-module-itext
-
-%pom_remove_dep -r :doxia-module-markdown
-
-for i in doxia-decoration-model doxia-doc-renderer doxia-integration-tools doxia-site-renderer; do
-  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
-done
-
-%{mvn_alias} :doxia-integration-tools org.apache.maven.shared:maven-doxia-tools
+%pom_remove_dep -r :velocity-tools-generic
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    apache-commons-collections \
     apache-commons-lang3 \
+    atinject \
     commons-io \
     maven-doxia/doxia-core \
-    maven-doxia/doxia-logging-api \
-    maven-doxia/doxia-module-fo \
-    maven-doxia/doxia-module-xhtml \
     maven-doxia/doxia-module-xhtml5 \
     maven-doxia/doxia-sink-api \
     maven/maven-artifact \
     maven/maven-core \
-    maven/maven-plugin-api \
-    maven/maven-project \
+    maven/maven-model \
     maven-reporting-api/maven-reporting-api \
+    maven-resolver/maven-resolver-api \
+    org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus-containers/plexus-component-annotations \
     plexus-i18n/plexus-i18n \
     plexus/interpolation \
     plexus/utils \
-    plexus/xml \
     plexus-velocity/plexus-velocity \
-    velocity
-# tests can't run because of missing deps
-%{ant} -Dtest.skip=true package javadoc
+    plexus/xml \
+    slf4j/api \
+    velocity-engine/velocity-engine-core
 
-mkdir -p target/site/apidocs
-for i in \
-    doxia-decoration-model \
-    doxia-skin-model \
-    doxia-integration-tools \
-    doxia-site-renderer; do
-  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
-  if [ -d ${i}/target/site/apidocs ]; then
-    cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
-  fi
-done
+ant package javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+for i in \
+    doxia-site-model \
+    doxia-skin-model \
+    doxia-site-renderer \
+    doxia-integration-tools; do
+  install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
+  if [ -d ${i}/target/site/apidocs ]; then
+    cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+  fi
+done
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles
-%dir %{_javadir}/%{name}
+%files -f .mfiles-doxia-integration-tools -f .mfiles-doxia-site-model -f .mfiles-doxia-site-renderer -f .mfiles-doxia-skin-model
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 
 %changelog

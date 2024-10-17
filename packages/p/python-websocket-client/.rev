@@ -282,4 +282,16 @@
   * Applied black formatting style to code (da7f286)</comment>
     <requestid>1132851</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>49c17d990b53f3bb8efe26760a5c7a3b</srcmd5>
+    <version>1.8.0</version>
+    <time>1729114546</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Added `on_reconnect` parameter to WebSocketApp to handle callback
+    ambiguity
+  * Improve handling of SSLEOFError and use reconnect bool
+- Switch to pyproject macros.</comment>
+    <requestid>1208011</requestid>
+  </revision>
 </revisionlist>

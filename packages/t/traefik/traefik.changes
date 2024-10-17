@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 16 03:46:25 UTC 2024 - Eric Torres <eric.torres@its-et.me>
+
+- Update from 3.1.4 to 3.1.6
+
+- Version 3.1.6 changes
+  - middleware
+    * Reuse compression writers (#11168 by michelheusschen)
+    * Use correct default weight in Accept-Encoding (#11084 by michelheusschen)
+  - plugins
+    * Close wasm middleware to prevent memory leak (#11151 by ttys3)
+
+- Version 3.1.5 changes
+  - k8s, ingress
+    * Disable IngressClass lookup when disableClusterScopeResources is enabled (#11111 by jnoordsij)
+  - server
+    * Rework condition to not log on timeout (#11132 by rtribotte)
+  - Merge branch v2.11 into v3.1
+
+-------------------------------------------------------------------
 Tue Sep 24 00:25:39 UTC 2024 - Eric Torres <eric.torres@its-et.me>
 
 - Update to version 3.1.4

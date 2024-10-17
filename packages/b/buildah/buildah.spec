@@ -27,6 +27,7 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+Patch0:         0001-Properly-validate-cache-IDs-and-sources.patch
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes

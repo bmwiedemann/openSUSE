@@ -1,7 +1,56 @@
 -------------------------------------------------------------------
+Tue Oct 15 19:16:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.8.0
+  * Bug
+    + MDEP-875: Regression: list-repositories may produce NPE
+    + MDEP-835: dependency:tree no longer shows optional flag
+    + MDEP-838: "Artifact has not been packaged yet" error message
+      is not very helpful
+    + MDEP-938: 'mdep.overIfNewer' is misnamed from its usage of
+      'mdep.overWriteIfNewer'
+    + MDEP-943: [REGRESSION] appendOutput for tree goal broken for
+      multi-module project
+  * New Feature
+    + MDEP-317: Add goal dependency:analyze-exclusions - check for
+      invalid excludes
+    + MDEP-799: improve mvn dependency:tree - add optional JSON
+      output of the results
+    + MDEP-928: Allow to exclude classes from dependency:analyze
+  * Improvement
+    + MDEP-669: Optimize the documentation of <outputProperty> of
+      build-classpath-mojo
+    + MDEP-893: Get rid of commons-lang3
+    + MDEP-894: Use @Component instead of @Parameter for
+     session/project
+    + MDEP-896: Removing unused code
+    + MDEP-897: Remove old style JavaDoc Plexus docs
+    + MDEP-899: Upgrade maven-plugin parent to 42
+    + MDEP-917: dependency:analyze-exclusions - use Resolver API
+      instead of ProjectBuilder
+    + MDEP-924: Get rid of maven-artifact-transfer from list-classes
+      goal
+    + MDEP-925: Require Maven 3.6.3
+    + MDEP-939: Lock down classifier in dependency:sources goal
+    + MDEP-940: Use Resolver API instead of m-a-t for resolving
+      artifacts
+  * Test
+    + MDEP-710: reenable TestTreeMojo
+  * Task
+    + MDEP-912: Use version for plexus-utils/plexus-xml  from parent
+    + MDEP-914: collect goal description broken in documentation
+    + MDEP-918: Use standard updatePolicy for repositories in ITs
+    + MDEP-923: Code cleanups
+    + MDEP-935: Improvement ITs for dependency:tree
+    + MDEP-941: Deprecate dependency:sources in favor of
+      dependency:resolve-sources
+    + MDEP-945: Fix documentation about get goal
+    + MDEP-913: dependency:collect missing from index page
+
+-------------------------------------------------------------------
 Wed Sep 27 11:25:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
-- Update to verion 3.6.0
+- Update to version 3.6.0
   * Bug
     + MDEP-660: Obsolete example of -Dverbose on web page
     + MDEP-671: Unsupported verbose option still appears in docs

@@ -17,7 +17,7 @@
 
 
 Name:           apache-commons-csv
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        A library to read and write files in variations of the Comma Separated Value (CSV) format
 License:        Apache-2.0
@@ -52,6 +52,7 @@ This package contains the API documentation for %{name}.
 
 %install
 %mvn_install
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE.txt NOTICE.txt

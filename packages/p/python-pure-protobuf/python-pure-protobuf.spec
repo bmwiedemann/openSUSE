@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pure-protobuf
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Protocol Buffers using Python type annotations
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/eigenein/protobuf
 Source:         https://files.pythonhosted.org/packages/source/p/pure-protobuf/pure_protobuf-%{version}.tar.gz
 Source1:        %{name}-tests-%{version}.tar.gz
@@ -43,7 +42,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-cov}
 BuildArch:      noarch
-Requires:       python-get-annotations
 Requires:       python-typing-extensions
 %python_subpackages
 

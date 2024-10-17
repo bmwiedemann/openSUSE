@@ -1326,4 +1326,12 @@ Pushing GNOME 45.rc packages</comment>
   services to callbacks (bsc#1226586). (forwarded request 1181994 from mgorse)</comment>
     <requestid>1181998</requestid>
   </revision>
+  <revision rev="170" vrev="36">
+    <srcmd5>915d241addf354e4bcb9d50eb57939fd</srcmd5>
+    <version>0.8</version>
+    <time>1729114667</time>
+    <user>anag+factory</user>
+    <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208117 from dimstar)</comment>
+    <requestid>1208161</requestid>
+  </revision>
 </revisionlist>

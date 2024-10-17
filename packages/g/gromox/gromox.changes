@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:24:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.35
+  * alias_resolve: resolve nullptr deref crash
+  * ews: resolve nullptr deref crash
+  * mapi_lib: fix out-of-bounds access in PROBLEM_ARRAY::transform
+  * mapi_lib: rop_util_get_gc_value used the wrong mask, which
+    caused "Change commit failed because the object was changed
+    separately"
+  * exmdb: let PR_ACCESS include permissions from all group
+    memberships
+
+-------------------------------------------------------------------
 Tue Oct  8 15:20:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.34

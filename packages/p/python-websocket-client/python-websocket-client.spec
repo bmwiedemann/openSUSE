@@ -1,7 +1,7 @@
 #
 # spec file for package python-websocket-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-websocket-client
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only
 URL:            https://github.com/liris/websocket-client/releases
-Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket-client-%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 3.4}
+Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket_client-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx >= 6.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sphinx_rtd_theme >= 0.5}
+BuildRequires:  %{python_module sphinx_rtd_theme >= 1.1}
 BuildRequires:  %{python_module websockets}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with libalternatives}
@@ -41,7 +43,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       python-websocket-client-test = %{version}
 Obsoletes:      python-websocket-client-test < %{version}
@@ -55,13 +57,13 @@ low-level APIs for WebSocket. All APIs are synchronous functions.
 Websocket-client supports only hybi-13.
 
 %prep
-%setup -q -n websocket-client-%{version}
+%setup -q -n websocket_client-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/wsdump
 
@@ -83,6 +85,6 @@ Websocket-client supports only hybi-13.
 %doc README.md ChangeLog
 %python_alternative %{_bindir}/wsdump
 %{python_sitelib}/websocket/
-%{python_sitelib}/websocket_client-%{version}-py*.egg-info
+%{python_sitelib}/websocket_client-%{version}.dist-info
 
 %changelog

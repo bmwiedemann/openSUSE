@@ -39,6 +39,9 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
+%if %{pkg_vcmp swig > 4.2.1}
+Patch8:         1231587-build-libselinux-with-swig-4.3.0.patch
+%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

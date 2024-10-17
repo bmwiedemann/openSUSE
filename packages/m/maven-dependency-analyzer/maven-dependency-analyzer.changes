@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Oct 15 19:07:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.15.0
+  * Changes:
+    + MSHARED-1248: update commons-io to 2.13.0
+    + MSHARED-1248: maven-dependency-analyzer should log instead of
+      failing
+    + remove unused variable
+    + MSHARED-1347: Include invoke dynamic bootstrap types in
+      analysis
+    + MSHARED-1356: Upgrade Parent to 41
+    + Use new property for maven-plugin-tools version
+    + MSHARED-1372: Bump org.ow2.asm:asm from 9.6 to 9.7
+    + MSHARED-1272: Bump commons-io:commons-io from 2.16.0 to 2.16.1
+    + MSHARED-1356: Bump
+      org.apache.maven.shared:maven-shared-components from 41 to 42
+    + MSHARED-1395: Remove dependency on commons-io
+    + MSHARED-1393: Allow to exclude classes from verification
+    + MSHARED-1394: Upgrade Maven core dependencies to the latest
+      and mark as provided
+    + MSHARED-1398: Fix StringIndexOutOfBoundsException in dynamic
+      bootstrap types
+    + MSHARED-1407: Track dependency usage by referencing classes
+    + MSHARED-1410: Track used declared dependency usage by 
+      referencing classes
+    + MSHARED-1428: Bump
+      org.apache.maven.shared:maven-shared-components from 42 to 43
+    + MSHARED-1429: Bump mavenVersion from 3.9.6 to 3.9.9
+
+-------------------------------------------------------------------
 Wed Sep 27 10:34:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.13.2

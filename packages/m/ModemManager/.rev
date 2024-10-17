@@ -1038,4 +1038,12 @@
     <comment></comment>
     <requestid>1204683</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>988bd08fb8aafc22c6a38e49a1748f62</srcmd5>
+    <version>1.22.0</version>
+    <time>1729114661</time>
+    <user>anag+factory</user>
+    <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208115 from dimstar)</comment>
+    <requestid>1208160</requestid>
+  </revision>
 </revisionlist>

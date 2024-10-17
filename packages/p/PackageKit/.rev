@@ -2066,4 +2066,15 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1200658</requestid>
   </revision>
+  <revision rev="240" vrev="6">
+    <srcmd5>c5fd9407b684706ded6c22fb6b8c6dc1</srcmd5>
+    <version>1.2.8</version>
+    <time>1729114653</time>
+    <user>anag+factory</user>
+    <comment>- Drop rcFOO symlinks (PED-266)
+- Drop usage of update-alternatives, but simplify installation of
+  /usr/libexec/gst-install-plugins-helper as a direct symlink to
+  pk-gstreamer-install. (forwarded request 1208110 from dimstar)</comment>
+    <requestid>1208158</requestid>
+  </revision>
 </revisionlist>

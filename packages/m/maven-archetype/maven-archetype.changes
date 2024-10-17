@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:24:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0002-Revert-ARCHETYPE-667-Upgrade-Velocity-from-1.7-to-2..patch
+    + not needed since we can now build against velocity-engine-core
+      without introducing build cycles
+
+-------------------------------------------------------------------
 Fri Sep 27 10:28:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.3.0
@@ -11,7 +19,7 @@ Fri Sep 27 10:28:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
       issue on java 9+
     + ARCHETYPE-646: "WARNING: Parameter 'localRepository' is
       deprecated" with Maven 3.9.1
-    + ARCHETYPE-657, CVE-2024-47197, boo#1231000: create 
+    + ARCHETYPE-657, CVE-2024-47197, bsc#1231000: create 
       target/archetype-it instead of target/classes/archetype-it, 
   * Improvement
     + ARCHETYPE-632: Add logging conflict line in integration-test

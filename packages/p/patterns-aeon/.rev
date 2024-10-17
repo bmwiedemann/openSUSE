@@ -135,4 +135,14 @@
   (boo#1229268).</comment>
     <requestid>1206524</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>70644bd93c0b89924ccdfce2bb4849a7</srcmd5>
+    <version>5.0</version>
+    <time>1729115068</time>
+    <user>anag+factory</user>
+    <comment>- Remove pytxis, set gnome-console as new default terminal 
+
+- Install pytxis as new default terminal, remove gnome-terminal</comment>
+    <requestid>1208126</requestid>
+  </revision>
 </revisionlist>

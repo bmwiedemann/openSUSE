@@ -95,7 +95,6 @@ the Spice virtio channel.
 %meson_install
 
 %find_lang phodav-3.0 --with-gnome
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcspice-webdavd
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -130,7 +129,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcspice-webdavd
 %files -n spice-webdavd
 %license COPYING
 %{_sbindir}/spice-webdavd
-%{_sbindir}/rcspice-webdavd
 %{_udevrulesdir}/70-spice-webdavd.rules
 %{_unitdir}/spice-webdavd.service
 

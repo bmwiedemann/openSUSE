@@ -25,9 +25,10 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           update-bootloader
-Version:        1.16
+Version:        1.17
 Release:        0
 Requires:       coreutils
+Requires:       util-linux
 Obsoletes:      perl-Bootloader < %{version}-%{release}
 Obsoletes:      perl-Bootloader-YAML < %{version}
 Provides:       perl-Bootloader = %{version}-%{release}

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Oct 15 13:54:06 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.117.0
+  - Features
+    - Add config option redis.password_path. (#17717)
+  - Bugfixes
+    - Fix a rare bug introduced in v1.29.0 where invalidating a
+      user's access token from a worker could raise an error.
+      (#17779)
+    - In the response to GET /_matrix/client/versions, set the
+      unstable_features flag for MSC4140 to false when server
+      configuration disables support for delayed events. (#17780)
+    - Improve input validation and room membership checks in admin
+      redaction API. (#17792)
+  - Improved Documentation
+    - Clarify the docstring of test_forget_when_not_left. (#17628)
+    - Add documentation note about PYTHONMALLOC for accurate
+      jemalloc memory tracking. Contributed by @hensg. (#17709)
+    - Remove spurious "TODO UPDATE ALL THIS" note in the Debian
+      installation docs. (#17749)
+    - Explain how load balancing works for
+      federation_sender_instances. (#17776)
+  - Internal Changes
+    - Minor performance increase for large accounts using sliding
+      sync. (#17751)
+    - Increase performance of the notifier when there are many
+      syncing users. (#17765, #17766)
+    - Fix performance of streams that don't change often. (#17767)
+    - Improve performance of sliding sync connections that do not
+      ask for any rooms. (#17768)
+    - Reduce overhead of sliding sync E2EE loops. (#17771)
+    - Sliding sync minor performance speed up using new table.
+      (#17787)
+    - Sliding sync minor performance improvement by omitting
+      unchanged data from incremental responses. (#17788)
+    - Speed up sliding sync when there are many active
+      subscriptions. (#17789)
+    - Add missing license headers on new source files. (#17799)
+  - Updates to locked dependencies
+    - Bump phonenumbers from 8.13.45 to 8.13.46. (#17773)
+    - Bump python-multipart from 0.0.10 to 0.0.12. (#17772)
+    - Bump regex from 1.10.6 to 1.11.0. (#17770)
+    - Bump ruff from 0.6.7 to 0.6.8. (#17774)
+
+-------------------------------------------------------------------
 Tue Oct  1 17:19:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.116.0

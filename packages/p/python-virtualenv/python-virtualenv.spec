@@ -53,6 +53,7 @@ BuildRequires:  %{python_module pytest-env >= 0.8.2}
 BuildRequires:  %{python_module pytest-mock >= 3.11.1}
 BuildRequires:  %{python_module pytest-timeout >= 2.1}
 BuildRequires:  %{python_module setuptools >= 68}
+BuildRequires:  %{python_module setuptools-wheel >= 68}
 BuildRequires:  %{python_module time-machine >= 2.10}
 BuildRequires:  %{python_module virtualenv = %{version}}
 %endif
@@ -105,13 +106,14 @@ rm -r tests/unit/activation
 %check
 # online tests downloads from pypi
 donttest="test_seed_link_via_app_data"
-# fails on python312 because it cannot find setuptools and wheel https://virtualenv.pypa.io/en/latest/changelog.html#features-20-23-0
-python312_extratest=" or test_can_build_c_extensions"
-%pytest -k "not ($donttest ${$python_extratest})"
+# take the first wheels directory we can find, they all contain the same file
+export PIP_FIND_LINKS=$(ls -1d /usr/lib/python3.*/wheels | head -n 1)
+%pytest -k "not ($donttest)"
 # test the special case with the bundles (for all flavors)
 export VIRTUALENV_SETUPTOOLS=bundle
 export VIRTUALENV_WHEEL=bundle
-%pytest -k "${python312_extratest:4}"
+donttest+=" or test_embed_wheel_versions"
+%pytest -k "not ($donttest)"
 %endif
 
 %post
@@ -125,7 +127,7 @@ export VIRTUALENV_WHEEL=bundle
 %license LICENSE
 %doc README.md
 %{python_sitelib}/virtualenv
-%{python_sitelib}/virtualenv-%{version}*-info
+%{python_sitelib}/virtualenv-%{version}.dist-info
 %python_alternative %{_bindir}/virtualenv
 %endif
 

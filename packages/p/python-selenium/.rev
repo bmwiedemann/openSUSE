@@ -562,4 +562,41 @@
     <comment></comment>
     <requestid>1094864</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89c003333877a06894980cf3f108fdfd</srcmd5>
+    <version>4.25.0</version>
+    <time>1729115023</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.25.0:
+  * Add CDP for Chrome 129 and remove 126
+  * Allow overriding `GLOBAL_DEFAULT_TIMEOUT`
+  * Disable strict time stamps in Firefox profile
+  * Remove precompiled binaries from sdist
+  * Fix RelativeBy#near to take 2 parameters
+  * Fix EOFError when calling the Remote WebDriver download_file method
+  * Add low-level sync API to use DevTools
+  * Add preference to enable CDP in Firefox by default
+  * Allow using enable_bidi property on options class
+  * Implement script module for BiDi
+  * Remove desired capabilities argument for Webkitgtk
+  * Make webkitgtk.webdriver same as wpewebkit.webdriver
+  * Moving ignore_local_proxy_environment_variables to BaseOptions
+  * Making Selenium Manager a thin wrapper
+  * Add more network interfaces to detect lan ip
+  * Explicitly export Select and WebDriverWait from
+    selenium.webdriver.support.ui
+  * [py] Correct typing_extension dependency for wheel generation
+  * Add page load strategy enum
+  * Use correct file name when bumping versions
+  * Filter which bidi logs are recorded based on event type
+  * Sleep depending on the number of attempts to check if the service has
+    started
+  * Use subprocess.DEVNULL instead of open(os.devnull)
+  * Do not change profile preferences of an existing directory by default
+  * Fix inadvertent code change in mutation_event
+  * Fix bug in using SE_MANAGER_PATH
+  * Fix bug where downloaded file was not getting unzipped
+  * Fix WebDriverWait type hints for WebElement</comment>
+    <requestid>1208012</requestid>
+  </revision>
 </revisionlist>

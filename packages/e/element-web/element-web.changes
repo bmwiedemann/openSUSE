@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:14:20 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.81
+  This release fixes High severity vulnerability CVE-2024-47771 / GHSA-963w-49j9-gxj6
+
+-------------------------------------------------------------------
 Wed Oct  9 09:28:16 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.80

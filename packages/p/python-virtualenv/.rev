@@ -821,4 +821,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
   * Bump embeded wheels</comment>
     <requestid>1183986</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>0d3818c949f7c978418a68d1aacd70e3</srcmd5>
+    <version>20.26.3</version>
+    <time>1729114557</time>
+    <user>anag+factory</user>
+    <comment>- Inject setuptools-wheel and tell the testsuite where to find it.</comment>
+    <requestid>1208017</requestid>
+  </revision>
 </revisionlist>

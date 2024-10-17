@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  9 12:14:14 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
+
+- suse_docs.patch: update documentation to point at new links (bsc#1226050)
+- remove_rh_links.patch: remove additional hardcoded RH refs (bsc#1221336)
+- hide-pcp.patch: correct patch to properly disable pcp on micro
+  (bsc#1226049)
+- suse-microos-branding.patch: use suse ID as branding instead of sle-micro
+  (bsc#1227441)
+
+-------------------------------------------------------------------
+Mon Sep 30 07:08:12 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
+
+- add 0006-totp-motd.patch for guidance to enabling totp to the mtod
+
+-------------------------------------------------------------------
+Wed Sep 18 12:37:18 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- support optional TOTP for authentication, requires pam_oath
+
+-------------------------------------------------------------------
 Tue Aug 20 13:24:06 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - remove requires on pam_oath completely. It will be re-introduced

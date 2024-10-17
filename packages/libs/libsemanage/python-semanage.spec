@@ -35,6 +35,9 @@ Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libsemanage-%{version}.tar.gz.asc
 Source2:        libsemanage.keyring
 Source3:        baselibs.conf
+%if %{pkg_vcmp swig > 4.2.1}
+Patch0:         1231587-build-libsemanage-with-swig-4.3.0.patch
+%endif
 # PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
 # For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
 # Patch0:         libsemanage-update-map-file.patch
@@ -56,7 +59,7 @@ This package contains the Python bindings for developing
 SELinux policy management applications.
 
 %prep
-%setup -q -n libsemanage-%{version}
+%autosetup -p1 -n libsemanage-%{version}
 # Replace /usr/libexec with whatever the distro defines as libexecdir - across all files
 grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 

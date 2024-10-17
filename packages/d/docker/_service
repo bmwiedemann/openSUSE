@@ -15,6 +15,14 @@
     <param name="revision">v26.1.5</param>
     <param name="filename">docker-cli</param>
   </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/docker/buildx.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.17.1</param>
+    <param name="revision">v0.17.1</param>
+    <param name="filename">docker-buildx</param>
+  </service>
   <service name="recompress" mode="manual">
     <param name="file">docker-*.tar</param>
     <param name="compression">xz</param>

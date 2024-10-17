@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 15 16:53:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.1
+- Changes since 6.2.0:
+  * PipeWireSourceStream: work around crashes for pipewire < 0.3.49 (kde#492400)
+  * produce: Flush remaining frames when we are deactivating (kde#471159)
+  * update version for new release
+
+-------------------------------------------------------------------
 Sat Oct  5 10:44:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.0:

@@ -4,7 +4,7 @@
  
  import org.apache.maven.doxia.siterenderer.Renderer;
  import org.apache.maven.doxia.siterenderer.RendererException;
-+import org.apache.maven.doxia.siterenderer.RenderingContext;
++import org.apache.maven.doxia.siterenderer.DocumentRenderingContext;
  import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
  import org.apache.maven.plugin.MojoExecutionException;
  import org.apache.maven.plugin.MojoFailureException;
@@ -13,7 +13,7 @@
          try
          {
 -            SiteRendererSink sink = siteRenderer.createSink( getReportOutputDirectory(), getOutputName() + ".html" );
-+            RenderingContext context = new RenderingContext( getReportOutputDirectory(), getOutputName() + ".html" );
++            DocumentRenderingContext context = new DocumentRenderingContext( getReportOutputDirectory(), getOutputName() + ".html", null );
 +            SiteRendererSink sink = new SiteRendererSink( context );
  
              generate( sink, Locale.getDefault() );

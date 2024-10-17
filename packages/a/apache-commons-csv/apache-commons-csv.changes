@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 14 03:59:35 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 1.12.0
+  * New Features
+    + CSV-270: Add CSVException that extends IOException thrown on
+      invalid input instead of IOException.
+  * Fixed Bugs
+    + Fix PMD issues for port to PMD 7.1.0.
+    + Fix some Javadoc links #442.
+    + Extract duplicated code into a method #444.
+    + Migrate CSVFormat#print(File, Charset) to NIO #445.
+    + Fix documentation for CSVFormat private constructor #466.
+    + CSV-294: CSVFormat does not support explicit " as escape
+      char.
+    + CSV-150: Escaping is not disableable.
+    + Fix Javadoc warnings on Java 23.
+    + Improve parser performance by up to 20%, YMMV.
+  * Changes
+    + Bump commons-codec:commons-codec from 1.16.1 to 1.17.1 #422,
+      #449.
+    + Bump org.apache.commons:commons-parent from 69 to 75 #435,
+      #452, #465, #468, #475.
+    + Bump org.codehaus.mojo:taglist-maven-plugin from 3.0.0 to
+      3.1.0 #441.
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.17.0
+      #450, #459, #470.
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0 #455.
+    + Bump commons-io:commons-io from 2.16.1 to 2.17.0 #476.
+- Apply fdupes to javadoc directory
+
+-------------------------------------------------------------------
 Mon Aug 12 09:14:07 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to version 1.11.0:

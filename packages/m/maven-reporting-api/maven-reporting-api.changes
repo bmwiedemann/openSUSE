@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  3 22:04:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.0.0
+  * Improvement
+    + MSHARED-193: API change: let MavenReportRenderer#render()
+      throw an exception
+    + MSHARED-1032: API change: let MavenReport#canGenerateReport()
+      throw an exception
+  * Task
+    + MSHARED-1159: Require locale to be not null
+    + MSHARED-1231: Remove unused default-report.xml file
+    + MSHARED-1326: Improve MavenReport interface and
+      AbstractMavenReport class API
+- Fetch sources by source service from Github
+
+-------------------------------------------------------------------
 Sun Sep 24 01:57:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.1.1

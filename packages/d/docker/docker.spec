@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,27 +27,33 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+# MANUAL: This needs to be updated with every docker update.
+%define docker_real_version 26.1.5
+%define docker_git_version 411e817ddf71
+%define docker_version %{docker_real_version}_ce
+# This "nice version" is so that docker --version gives a result that can be
+# parsed by other people. boo#1182476
+%define docker_nice_version %{docker_real_version}-ce
+
+# MANUAL: This needs to be updated with every docker-buildx update.
+%define buildx_version 0.17.1
+
 # Used when generating the "build" information for Docker version. The value of
 # git_commit_epoch is unused here (we use SOURCE_DATE_EPOCH, which rpm
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 26.1.5
-%define git_version 411e817ddf71
 %define git_commit_epoch 1721763388
 
 Name:           docker
-Version:        %{real_version}_ce
-# This "nice version" is so that docker --version gives a result that can be
-# parsed by other people. boo#1182476
-%define nice_version %{real_version}-ce
+Version:        %{docker_version}
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://www.docker.io
-Source:         %{name}-%{version}_%{git_version}.tar.xz
-Source1:        %{name}-cli-%{version}.tar.xz
+Source:         docker-%{docker_version}_%{docker_git_version}.tar.xz
+Source1:        docker-cli-%{docker_version}.tar.xz
 Source3:        docker-rpmlintrc
 # TODO: Move these source files to somewhere nicer.
 Source100:      docker.service
@@ -58,6 +64,8 @@ Source130:      README_SUSE.md
 Source140:      docker-audit.rules
 Source150:      docker-daemon.json
 Source160:      docker.sysusers
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
 #       in the suse-v<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
@@ -119,7 +127,7 @@ Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
 # since now docker-proxy is maintained as part of this package.
 Obsoletes:      docker-libnetwork < 0.7.0.2
-Provides:       docker-libnetwork = 0.7.0.2.%{version}
+Provides:       docker-libnetwork = 0.7.0.2.%{docker_version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
 Requires:       runc >= 1.1.9
@@ -134,6 +142,9 @@ Requires:       iptables >= 1.4
 Requires:       procps
 Requires:       tar >= 1.26
 Requires:       xz >= 4.9
+# Standard docker-build is deprecated, so require docker-buildx to avoid users
+# hitting bugs that have long since been fixed by docker-buildx. bsc#1230331
+Requires:       %{name}-buildx
 %?sysusers_requires
 Requires(post): %fillup_prereq
 Requires(post): udev
@@ -143,8 +154,6 @@ Requires(post): shadow
 # different storage-driver than devicemapper
 Recommends:     lvm2 >= 2.2.89
 Recommends:     git-core >= 1.7
-# Required for "docker buildx" support.
-Recommends:     %{name}-buildx
 Recommends:     %{name}-rootless-extras
 ExcludeArch:    s390 ppc
 
@@ -157,14 +166,39 @@ Docker is a great building block for automating distributed systems: large-scale
 web deployments, database clusters, continuous deployment systems, private PaaS,
 service-oriented architectures, etc.
 
+%package buildx
+Version:        %{buildx_version}
+Summary:        Docker CLI plugin for extended build capabilities with BuildKit
+License:        Apache-2.0
+URL:            https://github.com/docker/buildx
+Source500:      docker-buildx-%{buildx_version}.tar.xz
+Group:          System/Management
+Requires:       %{name} >= 19.03.0_ce
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable-buildx
+
+%description buildx
+buildx is a Docker CLI plugin for extended build capabilities with BuildKit.
+
+Key features:
+- Familiar UI from docker build
+- Full BuildKit capabilities with container driver
+- Multiple builder instance support
+- Multi-node builds for cross-platform images
+- Compose build support
+- High-level build constructs (bake)
+- In-container driver support (both Docker and Kubernetes)
+
 %package rootless-extras
 Summary:        Rootless support for Docker
 Group:          System/Management
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{docker_version}
 Requires:       slirp4netns >= 0.4
 Requires:       fuse-overlayfs >= 0.7
 Requires:       rootlesskit
 BuildArch:      noarch
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable-rootless-extras
 
 %description rootless-extras
 Rootless support for Docker.
@@ -174,10 +208,12 @@ Use dockerd-rootless-setuptool.sh to setup systemd for dockerd-rootless.sh.
 %package bash-completion
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{docker_version}
 Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)
 BuildArch:      noarch
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable-bash-completion
 
 %description bash-completion
 Bash command line completion support for %{name}.
@@ -185,10 +221,12 @@ Bash command line completion support for %{name}.
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{docker_version}
 Requires:       zsh
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable-zsh-completion
 
 %description zsh-completion
 Zsh command line completion support for %{name}.
@@ -196,25 +234,32 @@ Zsh command line completion support for %{name}.
 %package fish-completion
 Summary:        Fish completion for %{name}
 Group:          System/Shells
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{docker_version}
 Requires:       fish
 Supplements:    packageand(%{name}:fish)
 BuildArch:      noarch
+# docker-stable cannot be used alongside docker.
+Conflicts:      docker-stable-fish-completion
 
 %description fish-completion
 Fish command line completion support for %{name}.
 
 %prep
 # docker-cli
-%define cli_builddir %{_builddir}/%{name}-cli-%{version}
-%setup -q -T -b 1 -n %{name}-cli-%{version}
+%define cli_builddir %{_builddir}/docker-cli-%{docker_version}
+%setup -q -T -b 1 -n docker-cli-%{docker_version}
 [ "%{cli_builddir}" = "$PWD" ]
 # offline manpages
 %patch -P900 -p1
 
+# docker-buildx
+%define buildx_builddir %{_builddir}/docker-buildx-%{buildx_version}
+%setup -q -T -b 500 -n docker-buildx-%{buildx_version}
+[ "%{buildx_builddir}" = "$PWD" ]
+
 # docker
-%define docker_builddir %{_builddir}/%{name}-%{version}_%{git_version}
-%setup -q -n %{name}-%{version}_%{git_version}
+%define docker_builddir %{_builddir}/docker-%{docker_version}_%{docker_git_version}
+%setup -q -n docker-%{docker_version}_%{docker_git_version}
 [ "%{docker_builddir}" = "$PWD" ]
 # README_SUSE.md for documentation.
 cp %{SOURCE130} .
@@ -238,7 +283,7 @@ cp %{SOURCE130} .
 %patch -P204 -p1
 
 %build
-%sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf
+%sysusers_generate_pre %{SOURCE160} %{name} docker.conf
 
 BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
 %if 0%{?sle_version} == 120000
@@ -255,9 +300,9 @@ export BUILDFLAGS="-buildmode=pie"
 # Specify all of the versioning information. We use SOURCE_DATE_EPOCH if it's
 # been injected by rpmbuild, otherwise we use the hardcoded git_commit_epoch
 # generated above. boo#1064781
-export VERSION="%{nice_version}"
-export DOCKER_GITCOMMIT="%{git_version}"
-export GITCOMMIT="%{git_version}"
+export VERSION="%{docker_nice_version}"
+export DOCKER_GITCOMMIT="%{docker_git_version}"
+export GITCOMMIT="%{docker_git_version}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-%{git_commit_epoch}}"
 export BUILDTIME="$(date -u -d "@$SOURCE_DATE_EPOCH" --rfc-3339 ns 2>/dev/null | sed -e 's/ /T/')"
 
@@ -283,6 +328,19 @@ ln -s {vendor,go}.sum
 make DISABLE_WARN_OUTSIDE_CONTAINER=1 dynbinary manpages
 popd
 
+###################
+## DOCKER BUILDX ##
+###################
+
+pushd "%{buildx_builddir}"
+make \
+	CGO_ENABLED=1 \
+	VERSION="%{buildx_version}" \
+	REVISION="v%{buildx_version}" \
+	GO_EXTRA_FLAGS="-buildmode=pie" \
+	build
+popd
+
 %install
 install -Dd -m0755 \
 	%{buildroot}%{_sysconfdir}/init.d \
@@ -296,6 +354,8 @@ install -D -m0755 %{docker_builddir}/bundles/dynbinary-daemon/docker-proxy %{bui
 
 # cli-plugins/
 install -d %{buildroot}/usr/lib/docker/cli-plugins
+# buildx plugin
+install -D -m0755 %{buildx_builddir}/bin/build/docker-buildx %{buildroot}/usr/lib/docker/cli-plugins/docker-buildx
 
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
@@ -304,21 +364,21 @@ install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
 
 # docker cli
 install -D -m0755 %{cli_builddir}/build/docker %{buildroot}/%{_bindir}/docker
-install -D -m0644 %{cli_builddir}/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/%{name}"
-install -D -m0644 %{cli_builddir}/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_%{name}"
-install -D -m0644 %{cli_builddir}/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
+install -D -m0644 %{cli_builddir}/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/docker"
+install -D -m0644 %{cli_builddir}/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_docker"
+install -D -m0644 %{cli_builddir}/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/docker.fish"
 
 # systemd service
-install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/%{name}.service
-install -D -m0644 %{SOURCE101} %{buildroot}%{_unitdir}/%{name}.socket
+install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/docker.service
+install -D -m0644 %{SOURCE101} %{buildroot}%{_unitdir}/docker.socket
 ln -sf service %{buildroot}%{_sbindir}/rcdocker
 
 # udev rules that prevents dolphin to show all docker devices and slows down
 # upstream report https://bugs.kde.org/show_bug.cgi?id=329930
-install -D -m0644 %{SOURCE110} %{buildroot}%{_udevrulesdir}/80-%{name}.rules
+install -D -m0644 %{SOURCE110} %{buildroot}%{_udevrulesdir}/80-docker.rules
 
 # audit rules
-install -D -m0640 %{SOURCE140} %{buildroot}%{_sysconfdir}/audit/rules.d/%{name}.rules
+install -D -m0640 %{SOURCE140} %{buildroot}%{_sysconfdir}/audit/rules.d/docker.rules
 
 # sysconfig file
 install -D -m0644 %{SOURCE120} %{buildroot}%{_fillupdir}/sysconfig.docker
@@ -332,7 +392,7 @@ install -d %{buildroot}%{_mandir}/man8
 install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 
 # sysusers.d
-install -D -m0644 %{SOURCE160} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m0644 %{SOURCE160} %{buildroot}%{_sysusersdir}/docker.conf
 
 # rootless extras
 install -D -p -m 0755 contrib/dockerd-rootless.sh %{buildroot}/%{_bindir}/dockerd-rootless.sh
@@ -356,17 +416,17 @@ grep -q '^dockremap:' /etc/subgid || \
 	usermod -w 100000000-200000000 dockremap &>/dev/null || \
 	echo "dockremap:100000000:100000001" >>/etc/subgid ||:
 
-%service_add_pre %{name}.service %{name}.socket
+%service_add_pre docker.service docker.socket
 
 %post
-%service_add_post %{name}.service %{name}.socket
+%service_add_post docker.service docker.socket
 %{fillup_only -n docker}
 
 %preun
-%service_del_preun %{name}.service %{name}.socket
+%service_del_preun docker.service docker.socket
 
 %postun
-%service_del_postun %{name}.service %{name}.socket
+%service_del_postun docker.service docker.socket
 
 %files
 %defattr(-,root,root)
@@ -381,22 +441,26 @@ grep -q '^dockremap:' /etc/subgid || \
 %dir /usr/lib/docker
 %dir /usr/lib/docker/cli-plugins
 
-%{_unitdir}/%{name}.service
-%{_unitdir}/%{name}.socket
-%{_sysusersdir}/%{name}.conf
+%{_unitdir}/docker.service
+%{_unitdir}/docker.socket
+%{_sysusersdir}/docker.conf
 
 %dir %{_sysconfdir}/docker
 %config(noreplace) %{_sysconfdir}/docker/daemon.json
 %{_fillupdir}/sysconfig.docker
 
 %dir %attr(750,root,root) %{_sysconfdir}/audit/rules.d
-%config %{_sysconfdir}/audit/rules.d/%{name}.rules
-%{_udevrulesdir}/80-%{name}.rules
+%config %{_sysconfdir}/audit/rules.d/docker.rules
+%{_udevrulesdir}/80-docker.rules
 
 %{_mandir}/man1/docker-*.1%{ext_man}
 %{_mandir}/man1/docker.1%{ext_man}
 %{_mandir}/man5/Dockerfile.5%{ext_man}
 %{_mandir}/man8/dockerd.8%{ext_man}
+
+%files buildx
+%defattr(-,root,root)
+/usr/lib/docker/cli-plugins/docker-buildx
 
 %files rootless-extras
 %defattr(-,root,root)
@@ -405,14 +469,14 @@ grep -q '^dockremap:' /etc/subgid || \
 
 %files bash-completion
 %defattr(-,root,root)
-%{_datarootdir}/bash-completion/completions/%{name}
+%{_datarootdir}/bash-completion/completions/docker
 
 %files zsh-completion
 %defattr(-,root,root)
-%{_sysconfdir}/zsh_completion.d/_%{name}
+%{_sysconfdir}/zsh_completion.d/_docker
 
 %files fish-completion
 %defattr(-,root,root)
-%{_datadir}/fish/vendor_completions.d/%{name}.fish
+%{_datadir}/fish/vendor_completions.d/docker.fish
 
 %changelog

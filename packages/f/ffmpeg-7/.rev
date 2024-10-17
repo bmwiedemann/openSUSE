@@ -73,4 +73,12 @@
     <comment>- Update to release 7.1</comment>
     <requestid>1205169</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f370d326ac367c0093596a204da8cfb4</srcmd5>
+    <version>7.1</version>
+    <time>1729114579</time>
+    <user>anag+factory</user>
+    <comment>- Adjust bconds to build the package in SLFO without xvidcore.</comment>
+    <requestid>1208093</requestid>
+  </revision>
 </revisionlist>

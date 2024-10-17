@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 15 21:27:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.56.v20240826
+  * Security fixes:
+    + CVE-2024-8184, bsc#1231651, ThreadLimitHandler.getRemote()
+      vulnerable to remote DoS attacks
+  * Changes:
+    + #12201 backport ThreadLimitHandler improvements from Jetty 12
+    + #11938 - Updating URL refs from eclipse.org/jetty and
+      eclipse.dev/jetty to jetty.org (including XML dtd references)
+    + #10805 - Jetty response with an invalid HTTP2 packet if the
+      client set the hpack table size as 0
+
+-------------------------------------------------------------------
 Fri Oct 11 17:30:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging

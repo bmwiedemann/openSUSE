@@ -764,4 +764,12 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment></comment>
     <requestid>1199436</requestid>
   </revision>
+  <revision rev="93" vrev="8">
+    <srcmd5>0a6768324c9dc3dcce06457f9aa3e15e</srcmd5>
+    <version>1.4.6</version>
+    <time>1729114674</time>
+    <user>anag+factory</user>
+    <comment>Drop SUSE specific rcFOO symlinks (forwarded request 1208118 from dimstar)</comment>
+    <requestid>1208162</requestid>
+  </revision>
 </revisionlist>

@@ -135,4 +135,12 @@
     <comment>bsc#1222045, CVE-2024-29025</comment>
     <requestid>1185373</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>4af00084b86be5de3b7337e135eafb29</srcmd5>
+    <version>3.10.6</version>
+    <time>1729115161</time>
+    <user>anag+factory</user>
+    <comment>Fix builds with newer protobuf</comment>
+    <requestid>1208203</requestid>
+  </revision>
 </revisionlist>

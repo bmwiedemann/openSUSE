@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  2 10:25:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * maven-antlr-plugin-2.1-sinkfix.patch
+  * new-reporting-api.patch
+    + port to changes in maven-doxia-sitetools 2.0.0 milestones
+
+-------------------------------------------------------------------
 Tue Feb 20 10:57:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

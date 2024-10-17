@@ -183,4 +183,12 @@
     <comment>add jetty-alpn and jetty-http2 spec files</comment>
     <requestid>1207481</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8a3c3a509c479e1fdc629d5cd6ea5a27</srcmd5>
+    <version>9.4.56</version>
+    <time>1729115254</time>
+    <user>anag+factory</user>
+    <comment>CVE-2024-8184, bsc#1231651</comment>
+    <requestid>1208241</requestid>
+  </revision>
 </revisionlist>

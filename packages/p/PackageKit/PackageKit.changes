@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:48:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266)
+- Drop usage of update-alternatives, but simplify installation of
+  /usr/libexec/gst-install-plugins-helper as a direct symlink to
+  pk-gstreamer-install.
+
+-------------------------------------------------------------------
 Thu Sep 12 07:53:31 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-dont-install-updateCandidateObj.patch:
