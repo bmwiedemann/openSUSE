@@ -53,13 +53,12 @@ Requires:       yast2-qt-branding-openSUSE
 Requires:       autoyast2
 Requires:       yast2-add-on
 Requires:       yast2-buildtools
-Requires:       yast2-caasp >= 4.2.1
 Requires:       yast2-devtools
 Requires:       yast2-fcoe-client
 # For creating the AutoYast profile at the end of installation (bnc#887406)
 Requires:       yast2-firewall
-# instsys_cleanup
-Requires:       yast2-installation >= 3.1.217.9
+# microos_role
+Requires:       yast2-installation >= 5.0.13
 Requires:       yast2-iscsi-client
 %ifnarch %{arm}
 Requires:       yast2-kdump
@@ -92,7 +91,7 @@ Provides:       product_control
 # we really do not need the YaST packages for building, ignore the dependencies
 # to have faster builds and less rebuilds triggered by dependencies
 # these are pulled in by the skelcd-control-openSUSE dependencies
-#!BuildIgnore: yast2-caasp yast2-branding-openSUSE yast2-qt-branding-openSUSE
+#!BuildIgnore: yast2-branding-openSUSE yast2-qt-branding-openSUSE
 #!BuildIgnore: autoyast2 yast2-add-on yast2-buildtools yast2-devtools
 #!BuildIgnore: yast2-fcoe-client yast2-firewall
 #!BuildIgnore: yast2-installation yast2-iscsi-client yast2-kdump yast2-multipath
@@ -122,7 +121,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20240527
+Version:        20241015
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT

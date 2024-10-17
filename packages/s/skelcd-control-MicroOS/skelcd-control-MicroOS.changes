@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 09:29:52 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Update dependencies as micro role dialog is moved to
+  yast2-installation (gh#yast/yast-caasp#49)
+- 20241015
+
+-------------------------------------------------------------------
 Mon May 27 17:03:13 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove MicroOS GNOME Desktop/Aeon, now installed via own media
