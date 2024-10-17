@@ -187,4 +187,21 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1199909</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7555e234b9c4dffcbd7c173e0b017db5</srcmd5>
+    <version>6.8.0~dev2410061818</version>
+    <time>1729183109</time>
+    <user>anag+factory</user>
+    <comment>- Change version to 6.8.0~dev2410061818
+  * Mark development version for correct order before release
+- Changes from 6.7.1
+  * SIP v6.8.6 and PyQt6-sip v13.8 are now required for Python
+    v3.13 support and for Linux on ARM.
+
+- Update to 6.8.0.dev2410061818:
+  * Added support for Qt v6.8 (excluding any technical previews).
+  * Implemented QtAudio as a synonym for QAudio.
+  * Bug fixes.</comment>
+    <requestid>1208477</requestid>
+  </revision>
 </revisionlist>

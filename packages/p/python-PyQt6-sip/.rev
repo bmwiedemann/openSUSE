@@ -106,4 +106,12 @@
     <comment></comment>
     <requestid>1141674</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>505617d00e092dfec7d8f1af5a442eba</srcmd5>
+    <version>13.8.0</version>
+    <time>1729183104</time>
+    <user>anag+factory</user>
+    <comment>PyQt6 for 6.8. Tested on 15.6 by using retext + webengine. Works! (forwarded request 1208396 from favogt)</comment>
+    <requestid>1208405</requestid>
+  </revision>
 </revisionlist>

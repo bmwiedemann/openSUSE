@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-languageserver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -38,44 +38,36 @@ BuildRequires:  cmake(Qt6Network) = %{real_version}
 Qt Language Server implements the Language Server Protocol specification and
 the JsonRpc 2.0 protocol.
 
-### Private only library ###
+### Static libraries ###
 
-%package -n libQt6LanguageServer6
+%package -n qt6-languageserver-devel-static
 Summary:        LSP implementation for Qt6
+Provides:       qt6-languageserver-private-devel = %{version}
+Obsoletes:      qt6-languageserver-private-devel < %{version}
+Requires:       cmake(Qt6JsonRpcPrivate) = %{real_version}
+Obsoletes:      libQt6LanguageServer6 < 6.8.0
 
-%description -n libQt6LanguageServer6
+%description -n qt6-languageserver-devel-static
 The Qt 6 LanguageServer library implements the Language Server Protocol (LSP)
 specification.
-
-%package private-devel
-Summary:        Qt 6 LanguageServer library - Development files
-Requires:       libQt6LanguageServer6 = %{version}
-Requires:       qt6-jsonrpc-private-devel = %{version}
-%requires_eq    qt6-core-private-devel
-
-%description private-devel
-Development files for the Qt 6 LanguageServer private library.
 This library does not have any ABI or API guarantees.
 
-%package -n libQt6JsonRpc6
+%package -n qt6-jsonrpc-devel-static
 Summary:        JsonRpc 2.0 protocol implementation
+Provides:       qt6-jsonrpc-private-devel = %{version}
+Obsoletes:      qt6-jsonrpc-private-devel < %{version}
+Obsoletes:      libQt6JsonRpc6 < 6.8.0
 
-%description -n libQt6JsonRpc6
+%description -n qt6-jsonrpc-devel-static
 JsonRpc 2.0 protocol implementation for Qt6.
-
-%package -n qt6-jsonrpc-private-devel
-Summary:        Qt 6 JsonRpc library - Development files
-Requires:       libQt6JsonRpc6 = %{version}
-Requires:       cmake(Qt6Core) = %{real_version}
-
-%description -n qt6-jsonrpc-private-devel
-Development files for the Qt 6 JsonRpc library.
 This library does not have any ABI or API guarantees.
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %cmake_qt6
 
 %{qt6_build}
@@ -83,32 +75,23 @@ This library does not have any ABI or API guarantees.
 %install
 %{qt6_install}
 
-%ldconfig_scriptlets -n libQt6JsonRpc6
-%ldconfig_scriptlets -n libQt6LanguageServer6
-
-%files -n libQt6LanguageServer6
-%{_qt6_libdir}/libQt6LanguageServer.so.*
-
-%files private-devel
+%files -n qt6-languageserver-devel-static
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtLanguageServerTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6LanguageServerPrivate/
 %{_qt6_descriptionsdir}/LanguageServerPrivate.json
 %{_qt6_includedir}/QtLanguageServer/
+%{_qt6_libdir}/libQt6LanguageServer.a
 %{_qt6_libdir}/libQt6LanguageServer.prl
-%{_qt6_libdir}/libQt6LanguageServer.so
 %{_qt6_metatypesdir}/qt6languageserverprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_languageserver_private.pri
 
-%files -n libQt6JsonRpc6
+%files -n qt6-jsonrpc-devel-static
 %license LICENSES/*
-%{_qt6_libdir}/libQt6JsonRpc.so.*
-
-%files -n qt6-jsonrpc-private-devel
 %{_qt6_cmakedir}/Qt6JsonRpcPrivate/
 %{_qt6_descriptionsdir}/JsonRpcPrivate.json
 %{_qt6_includedir}/QtJsonRpc/
+%{_qt6_libdir}/libQt6JsonRpc.a
 %{_qt6_libdir}/libQt6JsonRpc.prl
-%{_qt6_libdir}/libQt6JsonRpc.so
 %{_qt6_metatypesdir}/qt6jsonrpcprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_jsonrpc_private.pri
 

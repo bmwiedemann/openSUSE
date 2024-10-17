@@ -18,17 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.8.3
+Version:        6.8.6
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
-License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
+License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/Python-SIP/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+# Technically >= 8, but we make it compatible in prep.
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -72,23 +74,12 @@ to generate wxPython, the Python bindings for wxWidgets.
 This package contains all the developer tools you need to create your
 own sip bindings.
 
-%if 0%{?suse_version} > 1500
-%package -n python-sip6-doc
-Summary:        A Python bindings generator for C/C++ libraries -- common documentation
-Group:          Development/Libraries/Python
-Provides:       %{python_module sip6-doc = %{version}-%{release}}
-
-%description -n python-sip6-doc
-SIP is a tool that makes it very easy to create Python bindings for C
-and C++ libraries. It was originally developed to create PyQt, the
-Python bindings for the Qt toolkit, but can be used to create bindings
-for any C or C++ library.
-
-This package contains the documentation and example files.
-%endif
-
 %prep
 %autosetup -p1 -n sip-%{version}
+# Make it work with setuptools_scm < 8
+%if 0%{suse_version} < 1600
+sed -i s/version_file/write_to/ pyproject.toml
+%endif
 
 %build
 %pyproject_wheel
@@ -102,7 +93,6 @@ This package contains the documentation and example files.
 %python_clone -a %{buildroot}%{_bindir}/sip-sdist
 %python_clone -a %{buildroot}%{_bindir}/sip-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes -s doc
 
 %check
 # No upstream tests available. Appease rpmlint no-%%check-section
@@ -123,11 +113,5 @@ This package contains the documentation and example files.
 %python_alternative %{_bindir}/sip-wheel
 %{python_sitelib}/sipbuild
 %{python_sitelib}/sip-%{version}.dist-info
-
-%if 0%{?suse_version} > 1500
-%files -n python-sip6-doc
-%license LICENSE*
-%doc doc/
-%endif
 
 %changelog

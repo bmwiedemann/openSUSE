@@ -16,10 +16,10 @@ C standard, it could even be a double).
  unittests/test_wxdatetime.py | 8 +++++++-
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/etg/defs.py b/etg/defs.py
-index 4445cf93..ceb9e2ef 100644
---- a/etg/defs.py
-+++ b/etg/defs.py
+Index: wxPython-4.2.2/etg/defs.py
+===================================================================
+--- wxPython-4.2.2.orig/etg/defs.py
++++ wxPython-4.2.2/etg/defs.py
 @@ -73,7 +73,7 @@ def run():
      td = module.find('wxUIntPtr')
      module.insertItemAfter(td, etgtools.TypedefDef(type='wchar_t', name='wxUChar'))
@@ -27,13 +27,13 @@ index 4445cf93..ceb9e2ef 100644
 -    module.insertItemAfter(td, etgtools.TypedefDef(type='wxInt64', name='time_t'))
 +    module.insertItemAfter(td, etgtools.TypedefDef(type='long', name='time_t'))
      module.insertItemAfter(td, etgtools.TypedefDef(type='long long', name='wxFileOffset'))
-     module.insertItemAfter(td, etgtools.TypedefDef(type='SIP_SSIZE_T', name='ssize_t'))
+     module.insertItemAfter(td, etgtools.TypedefDef(type='Py_ssize_t', name='ssize_t'))
      module.insertItemAfter(td, etgtools.TypedefDef(type='unsigned char', name='byte', pyInt=True))
-diff --git a/unittests/test_wxdatetime.py b/unittests/test_wxdatetime.py
-index 62e7d141..2f620045 100644
---- a/unittests/test_wxdatetime.py
-+++ b/unittests/test_wxdatetime.py
-@@ -25,9 +25,15 @@ class datetime_Tests(wtc.WidgetTestCase):
+Index: wxPython-4.2.2/unittests/test_wxdatetime.py
+===================================================================
+--- wxPython-4.2.2.orig/unittests/test_wxdatetime.py
++++ wxPython-4.2.2/unittests/test_wxdatetime.py
+@@ -25,9 +25,15 @@ class datetime_Tests(wtc.WidgetTestCase)
      def test_datetime2(self):
          d1 = wx.DateTime.FromHMS(8, 15, 45, 123)
          d2 = wx.DateTime.FromJDN(12345.67)
@@ -50,6 +50,3 @@ index 62e7d141..2f620045 100644
      def test_datetime3(self):
          d1 = wx.DateTime.Today()
          d2 = wx.DateTime.Now()
--- 
-2.36.1
-

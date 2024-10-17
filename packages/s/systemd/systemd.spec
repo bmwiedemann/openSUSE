@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    256.6
+%define systemd_version    256.7
 %define systemd_release    0
-%define archive_version    +suse.8.g8a0ae4d90a
+%define archive_version    +suse.9.gc7671762b3
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -1340,22 +1340,18 @@ fi
 
 %if %{with experimental}
 %pre experimental
-%systemd_pre systemd-homed.service
 %systemd_pre systemd-oomd.service systemd-oomd.socket
 
 %post experimental
 %if %{without filetriggers}
 %sysusers_create systemd-oom.conf
 %endif
-%systemd_post systemd-homed.service
 %systemd_post systemd-oomd.service systemd-oomd.socket
 
 %preun experimental
-%systemd_preun systemd-homed.service
 %systemd_preun systemd-oomd.service systemd-oomd.socket
 
 %postun experimental
-%systemd_postun systemd-homed.service
 %systemd_postun systemd-oomd.service systemd-oomd.socket
 %endif
 

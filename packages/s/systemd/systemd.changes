@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  8 16:21:49 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit c7671762b39ead7f8f9e70064256f5efaccedeca (merge of v256.7)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8a0ae4d90aff1d067a125ff9366eafc7dd5d4701...c7671762b39ead7f8f9e70064256f5efaccedeca
+
+-------------------------------------------------------------------
+Wed Oct  2 12:03:48 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Clean up some remnants from when homed was in the experimental sub-package (bsc#1231048)
+
+-------------------------------------------------------------------
 Wed Sep 18 09:31:40 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 8a0ae4d90aff1d067a125ff9366eafc7dd5d4701 (merge of v256.6)

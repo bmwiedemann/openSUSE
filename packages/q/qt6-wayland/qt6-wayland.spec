@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -38,7 +38,7 @@ License:        GPL-3.0-or-later AND (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-o
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
-# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/QTBUG-126379
+# PATCH-FIX-UPSTREAM
 Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
@@ -52,6 +52,7 @@ BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
@@ -164,7 +165,6 @@ Summary:        Collection of build features used by qt6-wayland libraries
 %description -n qt6-waylandglobal-private-devel
 This package contains enabled features information shared by all the
 qt6-wayland libraries.
-
 
 ### Private only libraries ###
 
@@ -296,16 +296,52 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 
 %files -n libQt6WaylandCompositor6
 %{_qt6_libdir}/libQt6WaylandCompositor.so.*
+%{_qt6_libdir}/libQt6WaylandCompositorIviapplication.so.*
+%{_qt6_libdir}/libQt6WaylandCompositorPresentationTime.so.*
+%{_qt6_libdir}/libQt6WaylandCompositorWLShell.so.*
+%{_qt6_libdir}/libQt6WaylandCompositorXdgShell.so.*
 
 %files -n qt6-waylandcompositor-devel
 %{_qt6_cmakedir}/Qt6WaylandCompositor/
+%{_qt6_cmakedir}/Qt6WaylandCompositorIviapplication/
+%{_qt6_cmakedir}/Qt6WaylandCompositorPresentationTime/
+%{_qt6_cmakedir}/Qt6WaylandCompositorWLShell/
+%{_qt6_cmakedir}/Qt6WaylandCompositorXdgShell/
 %{_qt6_descriptionsdir}/WaylandCompositor.json
+%{_qt6_descriptionsdir}/WaylandCompositorIviapplication.json
+%{_qt6_descriptionsdir}/WaylandCompositorPresentationTime.json
+%{_qt6_descriptionsdir}/WaylandCompositorWLShell.json
+%{_qt6_descriptionsdir}/WaylandCompositorXdgShell.json
 %{_qt6_includedir}/QtWaylandCompositor/
+%{_qt6_includedir}/QtWaylandCompositorIviapplication/
+%{_qt6_includedir}/QtWaylandCompositorPresentationTime/
+%{_qt6_includedir}/QtWaylandCompositorWLShell/
+%{_qt6_includedir}/QtWaylandCompositorXdgShell/
 %{_qt6_libdir}/libQt6WaylandCompositor.prl
 %{_qt6_libdir}/libQt6WaylandCompositor.so
+%{_qt6_libdir}/libQt6WaylandCompositorIviapplication.prl
+%{_qt6_libdir}/libQt6WaylandCompositorIviapplication.so
+%{_qt6_libdir}/libQt6WaylandCompositorPresentationTime.prl
+%{_qt6_libdir}/libQt6WaylandCompositorPresentationTime.so
+%{_qt6_libdir}/libQt6WaylandCompositorWLShell.prl
+%{_qt6_libdir}/libQt6WaylandCompositorWLShell.so
+%{_qt6_libdir}/libQt6WaylandCompositorXdgShell.prl
+%{_qt6_libdir}/libQt6WaylandCompositorXdgShell.so
 %{_qt6_metatypesdir}/qt6waylandcompositor_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositoriviapplication_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorpresentationtime_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorwlshell_*_metatypes.json
+%{_qt6_metatypesdir}/qt6waylandcompositorxdgshell_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositoriviapplication*.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositorpresentationtime*.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositorwlshell*.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositorxdgshell*.pri
 %{_qt6_pkgconfigdir}/Qt6WaylandCompositor.pc
+%{_qt6_pkgconfigdir}/Qt6WaylandCompositorIviapplication.pc
+%{_qt6_pkgconfigdir}/Qt6WaylandCompositorPresentationTime.pc
+%{_qt6_pkgconfigdir}/Qt6WaylandCompositorWLShell.pc
+%{_qt6_pkgconfigdir}/Qt6WaylandCompositorXdgShell.pc
 %exclude %{_qt6_includedir}/QtWaylandCompositor/%{real_version}
 
 %files -n qt6-waylandcompositor-private-devel

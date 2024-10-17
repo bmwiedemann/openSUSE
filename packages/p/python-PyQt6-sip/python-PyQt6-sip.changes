@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:41:08 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to ABI version 13.8.0
+  * Match python3-sip6-devel 6.8.6+
+  * Is now BSD-2-Clause licensed
+
+-------------------------------------------------------------------
 Thu Jan 25 20:33:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Drop support-python3.6.patch

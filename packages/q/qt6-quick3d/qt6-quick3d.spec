@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3d
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -360,6 +360,20 @@ Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
 This package provides private headers of libQt6Quick3DUtils that do not have any
 ABI or API guarantees.
 
+%package -n libQt6Quick3DXr6
+Summary:        Qt 6 Quick3DXr library
+
+%description -n libQt6Quick3DXr6
+Adds OpenXR support for applications using QtQuick3D.
+
+%package -n qt6-quick3dxr-private-devel
+Summary:        Qt 6 Quick3DXr library - Development files
+Requires:       libQt6Quick3DXr6 = %{version}
+
+%description -n qt6-quick3dxr-private-devel
+Development files for the Qt 6 Quick3DXr library.
+This library does not have any ABI or API guarantees.
+
 
 ### Private only library ###
 
@@ -400,10 +414,16 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+# Package provides static libraries, -ffat-lto-objects is not enough for libQt6BundledEmbree.a
+%global _lto_cflags %{nil}
+
+%if %{qt6_docs_flavor}
+# Work around https://bugreports.qt.io/browse/QTBUG-129807
+%define extra_args -DFEATURE_quick3dxr_openxr:BOOL=OFF -DFEATURE_system_openxr:BOOL=OFF
+%endif
 
 %cmake_qt6 \
-  -DFEATURE_system_assimp=ON
+  -DFEATURE_system_assimp:BOOL=ON %{?extra_args}
 
 %{qt6_build}
 
@@ -422,6 +442,11 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin*.cmake
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.pri
 
+# Probably unneeded
+rm %{buildroot}%{_qt6_cmakedir}/Qt6/FindWrapBundledOpenXRConfigExtra.cmake
+rm %{buildroot}%{_qt6_libdir}/libQt6BundledOpenXR.a
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
+
 %fdupes %{buildroot}%{_qt6_qmldir}/QtQuick3D
 
 %ldconfig_scriptlets -n libQt6Quick3D6
@@ -436,6 +461,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %ldconfig_scriptlets -n libQt6Quick3DParticles6
 %ldconfig_scriptlets -n libQt6Quick3DRuntimeRender6
 %ldconfig_scriptlets -n libQt6Quick3DUtils6
+%ldconfig_scriptlets -n libQt6Quick3DXr6
 
 %files
 # No better place to install these quick3d plugins
@@ -465,6 +491,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 
 %files devel
 %{_qt6_cmakedir}/Qt6/FindWrapQuick3DAssimp.cmake
+%{_qt6_cmakedir}/Qt6/FindWrapOpenXR.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtQuick3DTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Quick3D/
 # Only required by Qt6Quick3DDependencies.cmake
@@ -649,6 +676,26 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %files -n qt6-quick3dutils-private-devel
 %{_qt6_includedir}/QtQuick3DUtils/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dutils_private.pri
+
+%files -n libQt6Quick3DXr6
+%{_qt6_libdir}/libQt6Quick3DXr.so.*
+
+%files -n qt6-quick3dxr-private-devel
+%{_qt6_cmakedir}/Qt6/FindWrapSystemOpenXR.cmake
+%{_qt6_cmakedir}/Qt6OpenXRPrivate/
+%{_qt6_cmakedir}/Qt6Quick3DXr/
+%{_qt6_descriptionsdir}/OpenXRPrivate.json
+%{_qt6_descriptionsdir}/Quick3DXr.json
+%{_qt6_includedir}/QtOpenXR/
+%{_qt6_includedir}/QtQuick3DXr/
+%{_qt6_libdir}/libQt6Quick3DXr.prl
+%{_qt6_libdir}/libQt6Quick3DXr.so
+%{_qt6_metatypesdir}/qt6quick3dxr_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_ext_openxr_loader.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_openxr_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr_private.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DXr.pc
 
 ### Private only library ###
 

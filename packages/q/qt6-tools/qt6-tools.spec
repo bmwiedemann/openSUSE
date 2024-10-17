@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -46,16 +46,11 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
-Patch1:         fix-llvm19-build.patch
 # clang-devel in Leap 15 points to clang7...
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150600
+%if 0%{?suse_version} == 1500
 BuildRequires:  clang17-devel
 %else
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150500
-BuildRequires:  clang15-devel
-%else
-BuildRequires:  clang-devel >= 8
-%endif
+BuildRequires:  clang-devel >= 17
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -66,6 +61,7 @@ BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6DBus) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
@@ -73,6 +69,7 @@ BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
+BuildRequires:  cmake(Qt6QmlLSPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Sql) = %{real_version}
@@ -295,6 +292,7 @@ This library does not have any ABI or API guarantees.
 
 # CMake files are not needed for plugins (except for Qt6UiPlugin)
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Designer/*Plugin{Config,Targets}*.cmake
+rm %{buildroot}%{_qt6_cmakedir}/Qt6Help/*Plugin{Config,Targets}*.cmake
 
 # This doesn't look useful
 rm -r %{buildroot}%{_qt6_includedir}/QtQDocCatch*
@@ -413,6 +411,8 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_datadir}/icons/hicolor/128x128/apps/assistant6.png
 %{_datadir}/icons/hicolor/32x32/apps/assistant6.png
 %{_qt6_bindir}/assistant
+%dir %{_qt6_pluginsdir}/help
+%{_qt6_pluginsdir}/help/libhelpplugin.so
 
 %files designer
 %dir %{_qt6_pluginsdir}/designer

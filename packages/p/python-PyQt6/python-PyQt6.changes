@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 16 15:48:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Change version to 6.8.0~dev2410061818
+  * Mark development version for correct order before release
+- Changes from 6.7.1
+  * SIP v6.8.6 and PyQt6-sip v13.8 are now required for Python
+    v3.13 support and for Linux on ARM.
+
+-------------------------------------------------------------------
+Wed Oct 16 08:11:34 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 6.8.0.dev2410061818:
+  * Added support for Qt v6.8 (excluding any technical previews).
+  * Implemented QtAudio as a synonym for QAudio.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Tue Sep 10 14:40:49 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use sources from pypi. They're what we were using and upstream

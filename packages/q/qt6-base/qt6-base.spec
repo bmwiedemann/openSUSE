@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,7 +42,7 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-Revert-xcb-handle-XI2-input-button-and-motion-events.patch
+Patch0:         0001-QAbstractItemModelPrivate-add-resetting-member.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -833,6 +833,13 @@ rm %{buildroot}%{_qt6_libexecdir}/sanitizer-testrunner.py
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 
+# Not useful for desktop installs
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6ExamplesAssetDownloaderPrivate
+rm -r %{buildroot}%{_qt6_includedir}/QtExamplesAssetDownloader
+rm %{buildroot}%{_qt6_descriptionsdir}/ExamplesAssetDownloaderPrivate.json
+rm %{buildroot}%{_qt6_libdir}/libQt6ExamplesAssetDownloader.*
+rm %{buildroot}%{_qt6_metatypesdir}/qt6examplesassetdownloaderprivate_*_metatypes.json
+
 %ldconfig_scriptlets -n libQt6Concurrent6
 %ldconfig_scriptlets -n libQt6Core6
 %ldconfig_scriptlets -n libQt6DBus6
@@ -1196,8 +1203,8 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6ExampleIcons.prl
 # There's no mistake, this folder needs to be installed
 # These are CMake objects files which are not part of any library
-%dir %{_qt6_archdatadir}/objects-RelWithDebInfo
-%{_qt6_archdatadir}/objects-RelWithDebInfo/ExampleIconsPrivate_resources_1/
+%dir %{_qt6_archdatadir}/objects-*
+%{_qt6_archdatadir}/objects-*/ExampleIconsPrivate_resources_1/
 %{_qt6_metatypesdir}/qt6exampleiconsprivate_*_metatypes.json
 
 %files -n qt6-kmssupport-devel-static

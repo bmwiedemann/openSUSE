@@ -1,0 +1,60 @@
+From f98aa561abc6d36edf0590f3397100180d842cab Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 9 Oct 2024 14:19:49 +0200
+Subject: [PATCH] =?UTF-8?q?Build=20with=20system=20eigen=C2=A03?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ src/3rdparty/resonance-audio/CMakeLists.txt | 2 +-
+ src/resonance-audio/CMakeLists.txt          | 3 +--
+ src/spatialaudio/CMakeLists.txt             | 2 +-
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/3rdparty/resonance-audio/CMakeLists.txt b/src/3rdparty/resonance-audio/CMakeLists.txt
+index 6af0b3f..fce0280 100644
+--- a/src/3rdparty/resonance-audio/CMakeLists.txt
++++ b/src/3rdparty/resonance-audio/CMakeLists.txt
+@@ -98,7 +98,7 @@ elseif (UNIX)
+ endif ()
+ 
+ # Add Eigen3.
+-set(EIGEN3_DIR "${PROJECT_SOURCE_DIR}/third_party/eigen/" CACHE PATH "Path to eigen3 library")
++set(EIGEN3_DIR "/usr/include/eigen3" CACHE PATH "Path to eigen3 library")
+ set(EIGEN3_INCLUDE_DIR ${EIGEN3_DIR})
+ add_definitions(-DEIGEN_MPL2_ONLY)
+ 
+diff --git a/src/resonance-audio/CMakeLists.txt b/src/resonance-audio/CMakeLists.txt
+index 0fa9dec..2d74be7 100644
+--- a/src/resonance-audio/CMakeLists.txt
++++ b/src/resonance-audio/CMakeLists.txt
+@@ -211,11 +211,10 @@ qt_internal_add_3rdparty_library(BundledResonanceAudio
+         ${RA_SOURCE_DIR}
+         ${PFFFT_DIR}
+         ${SADIE_HRTFS_DIR}
+-        ../3rdparty/eigen
++        /usr/include/eigen3
+     ATTRIBUTION_FILE_DIR_PATHS
+         ${RA_TOPLEVEL_DIR}
+         ${PFFFT_DIR}
+-        ../3rdparty/eigen
+ )
+ 
+ # Required by pffft on certain PowerPC archs
+diff --git a/src/spatialaudio/CMakeLists.txt b/src/spatialaudio/CMakeLists.txt
+index 46120c4..16547a0 100644
+--- a/src/spatialaudio/CMakeLists.txt
++++ b/src/spatialaudio/CMakeLists.txt
+@@ -14,7 +14,7 @@ qt_internal_add_module(SpatialAudio
+         "../3rdparty/resonance-audio/resonance_audio"
+         "../3rdparty/resonance-audio"
+         "../resonance-audio"
+-        "../3rdparty/eigen"
++        "/usr/include/eigen3"
+     LIBRARIES
+         Qt::MultimediaPrivate
+         Qt::BundledResonanceAudio
+-- 
+2.46.1
+

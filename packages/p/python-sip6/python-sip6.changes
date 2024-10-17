@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:43:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 6.8.6
+  * Handle single number macOS deployment targets
+  * Support for architectures where `char` is unsigned
+  * Support for building from git archives
+  * Run the tests using the current Python version
+  * Missing dependency in `pyproject.toml`
+  * Added support for Python v3.13
+  * Make all tools accessable using `python -m`
+  * Assume C99 support
+  * Object map incorrect size assumptions for Windows 64
+  * Snapshot regression
+  * `%MappedType` documentation error
+  * Missing import affecting XML generation
+  * Fixed the generation of module-level attributes
+  * Documentation updates
+  * Imported from Mercurial
+- Project is now BSD-2-Clause licensed
+- The tarball on PyPi does not include docs or examples anymore
+
+-------------------------------------------------------------------
 Tue Apr  9 08:20:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.8.3

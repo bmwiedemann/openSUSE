@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-multimedia
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -28,13 +28,17 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt6-multimedia-rpmlintrc
+# PATCH-FIX-OPENSUSE -- Disable SIMD on x86 again
+Patch0:         0001-Fix-build-on-x86-arch.patch
+# PATCH-FIX-OPENSUSE -- Use system eigen 3
+Patch1:         0001-Build-with-system-eigen-3.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
@@ -53,17 +57,19 @@ BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
 BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  pkgconfig(eigen3) >= 3.4.0
+# GStreamer may cause high latencies and is not the default anymore for desktops
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-# GStreamer may cause high latencies, enable the ffmpeg backend
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
@@ -216,6 +222,9 @@ This library does not have any ABI or API guarantees.
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
+# Use system eigen3
+rm -r ./src/3rdparty/eigen
+
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
@@ -271,6 +280,7 @@ rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPluginImpl/
 %{_qt6_cmakedir}/Qt6/FindGStreamer.cmake
 %{_qt6_cmakedir}/Qt6/FindMMRenderer.cmake
 %{_qt6_cmakedir}/Qt6/FindMMRendererCore.cmake
+%{_qt6_cmakedir}/Qt6/FindPipeWire.cmake
 %{_qt6_cmakedir}/Qt6/FindVAAPI.cmake
 %{_qt6_cmakedir}/Qt6/FindWMF.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapPulseAudio.cmake

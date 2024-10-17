@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6QmlTools) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}

@@ -133,6 +133,10 @@ Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini
 # To build ISO images
 Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
 
+# mkosi + its recommended dependencies
+Substitute: system-packages:mkosi:rpm mkosi createrepo kmod btrfsprogs cpio dosfstools squashfs tar xz zstd
+Substitute: build-packages:mkosi:rpm !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
+
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
 
@@ -3578,6 +3582,12 @@ Macros:
 %set_mtime_to_source_date_epoch Y
 %use_source_date_epoch_as_buildtime Y
 %_buildhost reproducible
+:Macros
+
+# Define, which firewall backend the distro uses by default
+%define default_firewall_backend nftables
+Macros:
+%default_firewall_backend nftables
 :Macros
 
 Macros:

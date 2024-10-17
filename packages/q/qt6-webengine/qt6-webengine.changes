@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 13 16:56:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to avoid a build failure on ARM (QTBUG-129985):
+  * QtWebEngine_6.8_skip_xnnpack.patch
+
+-------------------------------------------------------------------
+Tue Oct  8 09:29:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0:
+  * https://www.qt.io/blog/qt-6.8-released
+- Drop patch:
+  * qtwebengine-ffmpeg-7.patch
+
+-------------------------------------------------------------------
 Sat Sep 28 08:23:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.3

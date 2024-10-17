@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:29:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0:
+  * https://www.qt.io/blog/qt-6.8-released
+- Add patch to fix build on x86:
+  * 0001-Fix-build-on-x86-arch.patch
+- Add patch to use system Eigen headers
+  * 0001-Build-with-system-eigen-3.patch
+
+-------------------------------------------------------------------
 Sat Sep 28 08:23:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.3

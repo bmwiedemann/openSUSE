@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct  4 11:02:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.2:
+  + Fix some Python 3.12 compatibility issues (segfault on exit) by upgrading sip & waf
+  + Fix more float/int conversion issues in wx.lib classes
+  + Add initialValue argument to wx.lib.DirBrowseButton
+  + Fix wxImage.Clear()
+  + Fix blurry text in AuiNotebook tab
+  + Add support for frozen rows and columns to GridWithLabelRenderersMixin
+  + demo: ShortcutEditor: Fix broken call GetMenuBar()
+  + Add proper support for DataViewCheckIconTextRenderer
+  + Build: Use new tarfile.extractall() filter for safer tarfile extraction
+  + Fix typo in wx.lib.agw.persist_handlers
+  + Fix 'str' to 'wxString' converstation, when emoji is inside string
+  + Use unwrap before isbuiltin check
+  + Preserve pane icons when loading a perspective in agw.aui
+  + wx.agw.aui: don't uninitialize the AuiManager if the window close event is vetoed
+  + Pure python AUI: Make behavior in all platforms more equal
+  + wx.agw.aui. Do layout as the last step after all pane infos have recomputed their best sizes
+  + Fix additional SyntaxWarnings with Python 3.12
+  + Fix wx.lib.agw.ribbon.RibbonButtonBar DeleteButton function
+  + UltimateListCtrl: Add support for ULC_AUTO_CHECK_PARENT
+  + Remove dependency on distutils
+  + Improve wx.lib.agw.FlatMenu memory usage
+  + Support NumPy 2.0
+  + Fix EditLabel on CustomTreeCtrl doesn't automatically select the entire text
+  + Fix Widgets placed in the UltimateListControl are drawn in the wrong location
+  + Fix wx.lib.agw.aui sometimes shows "ghost" docking guide
+  + Fix Thumbnailctrl SetSelection raises exception if it tries to scroll
+- Add python-six BuildRequires: needed for the test suite.
+- Drop upstream merged patches:
+  + 0001-Update-wxTextCtrl-OSX-overrides-since-they-re-now-do.patch
+  + 0001-Handle-wxGLCanvas-CreateSurface-which-is-only-availa.patch
+  + 0001-Support-building-with-Doxygen-1.9.7.patch
+  + 0001-wxWidgets-Phoenix-integer-division.patch
+  + 0003-Make-pip-usage-in-wxget-optional.patch
+  + require-numpy.patch
+  + drop-py2.patch
+  + Phoenix-pr2580+2591+2592-numpy2.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 13:57:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add Phoenix-pr2580+2591+2592-numpy2.patch

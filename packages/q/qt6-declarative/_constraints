@@ -2,10 +2,20 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">20</size>
+      <size unit="G">25</size>
     </disk>
     <processors>4</processors>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>  
   <overwrite>
     <conditions>
       <arch>ppc64</arch>
@@ -35,7 +45,7 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">2</size>
+        <size unit="G">3</size>
       </disk>
       <memory>
         <size unit="G">2</size>

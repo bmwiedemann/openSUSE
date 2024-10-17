@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:29:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0:
+  * https://www.qt.io/blog/qt-6.8-released
+- Rebase 0001-update-wayland_xml-to-version-1_23_0.patch
+
+-------------------------------------------------------------------
 Sat Sep 28 08:23:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.3

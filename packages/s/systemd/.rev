@@ -7353,4 +7353,16 @@ handle manual pages that consist only of a .so directive such as
   Rev 428 mistakenly moved it to the container sub-package.</comment>
     <requestid>1202876</requestid>
   </revision>
+  <revision rev="432" vrev="1">
+    <srcmd5>090feb74914f7d670b8109232efb17d4</srcmd5>
+    <version>256.7</version>
+    <time>1729183114</time>
+    <user>anag+factory</user>
+    <comment>- Import commit c7671762b39ead7f8f9e70064256f5efaccedeca (merge of v256.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8a0ae4d90aff1d067a125ff9366eafc7dd5d4701...c7671762b39ead7f8f9e70064256f5efaccedeca
+
+- Clean up some remnants from when homed was in the experimental sub-package (bsc#1231048)</comment>
+    <requestid>1206519</requestid>
+  </revision>
 </revisionlist>

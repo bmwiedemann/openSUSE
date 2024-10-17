@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -35,9 +35,16 @@
 %bcond_without system_icu
 # and so is tiff...
 %bcond_without system_tiff
+# Leap 15's ffmpeg is too old since 6.8.0
+%bcond_without system_ffmpeg
+# and python 3.6 is also too old for this QtWE version
+%define pyver python3
+%else
+%{?sle15_python_module_pythons}
+%define pyver python311
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -47,7 +54,7 @@ Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
-Patch101:       qtwebengine-ffmpeg-7.patch
+Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
 #
 # Chromium/blink don't support PowerPC and zSystems and build fails on
 # 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
@@ -66,9 +73,10 @@ BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  python3-html5lib
-BuildRequires:  python3-importlib-metadata
+BuildRequires:  %{pyver}
+BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-html5lib
+BuildRequires:  %{pyver}-importlib-metadata
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
@@ -76,27 +84,33 @@ BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-quickwidgets-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  snappy-devel
-BuildRequires:  cmake(Qt6Core) = %{real_version}
-BuildRequires:  cmake(Qt6Designer) = %{real_version}
-BuildRequires:  cmake(Qt6Gui) = %{real_version}
-BuildRequires:  cmake(Qt6GuiTools) = %{real_version}
-BuildRequires:  cmake(Qt6Network) = %{real_version}
-BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
-BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
-BuildRequires:  cmake(Qt6Positioning) = %{real_version}
-BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
-BuildRequires:  cmake(Qt6Qml) = %{real_version}
-BuildRequires:  cmake(Qt6QmlModels) = %{real_version}
-BuildRequires:  cmake(Qt6QmlTools) = %{real_version}
-BuildRequires:  cmake(Qt6Quick) = %{real_version}
-BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
-BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
-BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
-BuildRequires:  cmake(Qt6WebChannel) = %{real_version}
-BuildRequires:  cmake(Qt6WebChannelQuick) = %{real_version}
-BuildRequires:  cmake(Qt6WebSockets) = %{real_version}
-BuildRequires:  cmake(Qt6Widgets) = %{real_version}
-BuildRequires:  cmake(Qt6WidgetsTools) = %{real_version}
+# Note about required versions:
+# qtwebengine supports building against the latest LTS release. This allows submitting
+# updates to Leap
+%global lts_version 6.5.0
+BuildRequires:  cmake(Qt6Core) >= %{lts_version}
+BuildRequires:  cmake(Qt6Designer) >= %{lts_version}
+BuildRequires:  cmake(Qt6Gui) >= %{lts_version}
+BuildRequires:  cmake(Qt6GuiTools) >= %{lts_version}
+# Only needed for tests, no need to have it
+# BuildRequires:  cmake(Qt6HttpServer)
+BuildRequires:  cmake(Qt6Network) >= %{lts_version}
+BuildRequires:  cmake(Qt6OpenGL) >= %{lts_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{lts_version}
+BuildRequires:  cmake(Qt6Positioning) >= %{lts_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{lts_version}
+BuildRequires:  cmake(Qt6Qml) >= %{lts_version}
+BuildRequires:  cmake(Qt6QmlModels) >= %{lts_version}
+BuildRequires:  cmake(Qt6QmlTools) >= %{lts_version}
+BuildRequires:  cmake(Qt6Quick) >= %{lts_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{lts_version}
+BuildRequires:  cmake(Qt6QuickTest) >= %{lts_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{lts_version}
+BuildRequires:  cmake(Qt6WebChannel) >= %{lts_version}
+BuildRequires:  cmake(Qt6WebChannelQuick) >= %{lts_version}
+BuildRequires:  cmake(Qt6WebSockets) >= %{lts_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{lts_version}
+BuildRequires:  cmake(Qt6WidgetsTools) >= %{lts_version}
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(epoxy)
@@ -114,9 +128,11 @@ BuildRequires:  pkgconfig(icu-i18n) >= 71
 BuildRequires:  pkgconfig(icu-uc) >= 71
 %endif
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+%if %{with system_ffmpeg}
+BuildRequires:  pkgconfig(libavcodec) >= 60.31.102
+BuildRequires:  pkgconfig(libavformat) >= 60.16.100
+BuildRequires:  pkgconfig(libavutil) >= 58.29.100
+%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
@@ -155,8 +171,6 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
-# Picked from chromium.spec
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -194,8 +208,8 @@ QML files and plugins from the Qt 6 Pdf module
 %package -n qt6-pdf-devel
 Summary:        Development files for the Qt 6 Pdf library
 Requires:       libQt6Pdf6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6Network) >= %{lts_version}
 
 %description -n qt6-pdf-devel
 Development files for the Qt 6 Pdf library.
@@ -218,9 +232,9 @@ The Qt6 PdfQuick library.
 Summary:        Development files for the Qt 6 PdfQuick library
 Requires:       libQt6PdfQuick6 = %{version}
 Requires:       qt6-pdf-private-devel = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Qml) = %{real_version}
-Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6Qml) >= %{lts_version}
+Requires:       cmake(Qt6Quick) >= %{lts_version}
 %requires_eq    qt6-quick-private-devel
 
 %description -n qt6-pdfquick-devel
@@ -243,9 +257,9 @@ The Qt6 PdfWidgets library.
 %package -n qt6-pdfwidgets-devel
 Summary:        Development files for the Qt 6 PdfWidgets library
 Requires:       libQt6PdfWidgets6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
 Requires:       cmake(Qt6Pdf) = %{real_version}
-Requires:       cmake(Qt6Widgets) = %{real_version}
+Requires:       cmake(Qt6Widgets) >= %{lts_version}
 
 %description -n qt6-pdfwidgets-devel
 Development files for the Qt 6 PdfWidgets library.
@@ -268,11 +282,11 @@ The Qt6 WebEngineCore library.
 %package -n qt6-webenginecore-devel
 Summary:        Development files for the Qt 6 WebEngineCore library
 Requires:       libQt6WebEngineCore6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Network) = %{real_version}
-Requires:       cmake(Qt6Positioning) = %{real_version}
-Requires:       cmake(Qt6Quick) = %{real_version}
-Requires:       cmake(Qt6WebChannel) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6Network) >= %{lts_version}
+Requires:       cmake(Qt6Positioning) >= %{lts_version}
+Requires:       cmake(Qt6Quick) >= %{lts_version}
+Requires:       cmake(Qt6WebChannel) >= %{lts_version}
 
 %description -n qt6-webenginecore-devel
 Development files for the Qt 6 WebEngineCore library.
@@ -295,10 +309,10 @@ The Qt6 WebEngineQuick library.
 %package -n qt6-webenginequick-devel
 Summary:        Development files for the Qt 6 WebEngineQuick library
 Requires:       libQt6WebEngineQuick6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Qml) = %{real_version}
-Requires:       cmake(Qt6Quick) = %{real_version}
-Requires:       cmake(Qt6WebChannelQuick) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6Qml) >= %{lts_version}
+Requires:       cmake(Qt6Quick) >= %{lts_version}
+Requires:       cmake(Qt6WebChannelQuick) >= %{lts_version}
 Requires:       cmake(Qt6WebEngineCore) = %{real_version}
 
 %description -n qt6-webenginequick-devel
@@ -321,12 +335,12 @@ The Qt6 WebEngineWidgets library.
 %package -n qt6-webenginewidgets-devel
 Summary:        Development files for the Qt 6 WebEngineWidgets library
 Requires:       libQt6WebEngineWidgets6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6PrintSupport) = %{real_version}
-Requires:       cmake(Qt6Quick) = %{real_version}
-Requires:       cmake(Qt6QuickWidgets) = %{real_version}
+Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6PrintSupport) >= %{lts_version}
+Requires:       cmake(Qt6Quick) >= %{lts_version}
+Requires:       cmake(Qt6QuickWidgets) >= %{lts_version}
 Requires:       cmake(Qt6WebEngineCore) = %{real_version}
-Requires:       cmake(Qt6Widgets) = %{real_version}
+Requires:       cmake(Qt6Widgets) >= %{lts_version}
 
 %description -n qt6-webenginewidgets-devel
 Development files for the Qt 6 WebEngineWidgets library.
@@ -346,11 +360,6 @@ ABI or API guarantees.
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
-%if %{pkg_vcmp pkgconfig(libavcodec) <= 5}
-# The ffmpeg 7 compatibility patch would break build with older ffmpeg
-%patch -P101 -p1 -R
-%endif
-
 %build
 %if %{no_flavor}
 # Determine the right number of parallel processes based on the available memory
@@ -364,6 +373,9 @@ export NINJAFLAGS="%{?_smp_mflags}"
 
 %cmake_qt6 \
   -DCMAKE_TOOLCHAIN_FILE:STRING="%{_qt6_cmakedir}/Qt6/qt.toolchain.cmake" \
+%if 0%{?suse_version} == 1500
+  -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
+%endif
   -DFEATURE_qtpdf_build:BOOL=ON \
   -DFEATURE_webengine_developer_build:BOOL=OFF \
   -DFEATURE_webengine_embedded_build:BOOL=OFF \
@@ -372,7 +384,11 @@ export NINJAFLAGS="%{?_smp_mflags}"
   -DFEATURE_webengine_native_spellchecker:BOOL=OFF \
   -DFEATURE_webengine_printing_and_pdf:BOOL=ON \
   -DFEATURE_webengine_proprietary_codecs:BOOL=ON \
+%if %{with system_ffmpeg}
   -DFEATURE_webengine_system_ffmpeg:BOOL=ON \
+%else
+  -DFEATURE_webengine_system_ffmpeg:BOOL=OFF \
+%endif
 %if %{without system_harfbuzz}
   -DFEATURE_webengine-system-harfbuzz:BOOL=OFF \
 %endif

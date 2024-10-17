@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-sip
-Version:        13.6.0
+Version:        13.8.0
 Release:        0
 Summary:        The sip module support for PyQt6
-License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
+License:        BSD-2-Clause AND SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/sip/
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -54,7 +54,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%license LICENSE LICENSE-GPL2 LICENSE-GPL3
+%license LICENSE
 %dir %{python_sitearch}/PyQt6
 %{python_sitearch}/PyQt6/sip*
 %{python_sitearch}/PyQt6_sip-%{version}.dist-info
