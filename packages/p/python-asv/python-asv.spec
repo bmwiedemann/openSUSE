@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-asv
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
@@ -32,10 +33,15 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
+Requires:       python-Pympler
+Requires:       python-asv-runner >= 0.2.1
 Requires:       python-build
 Requires:       python-json5
 Requires:       python-tabulate
+%if %{python_version_nodots} < 311
 Requires:       python-tomli
+%endif
 Requires:       python-virtualenv
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -69,7 +75,6 @@ export CFLAGS="%{optflags}"
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/asv
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%python_expand rm -r %{buildroot}%{$python_sitearch}/{benchmarks,test,docs}
 %python_expand rm %{buildroot}%{$python_sitearch}/asv/_rangemedian.cpp
 
 %check

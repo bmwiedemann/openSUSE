@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:55:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.4
+  * ASV supports using JSONC as a configuration file (#1420)
+  * Update deprecation for latest conda versions (#1403)
+  * Fix runs for profiles commit results (#1404)
+  * Internal pip parser now works for git URLs with branches and tags (#1431)
+  * ``asv`` defaults to ``--force-reinstall`` now to facilitate ``compare`` and
+    ``continuous`` for manually versioned projects (#1421)
+- Drop removal of benchmark, docs and test directories from %install section
+- Update Requires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sat Apr 27 12:57:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.3:

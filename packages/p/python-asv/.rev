@@ -129,4 +129,23 @@
   * asv now depends on virtualenv</comment>
     <requestid>1170473</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f4731237fb9d1b4df78c385afe3fdb08</srcmd5>
+    <version>0.6.4</version>
+    <time>1729183229</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1208134 from glaubitz
+
+- Update to 0.6.4
+    * ASV supports using JSONC as a configuration file (#1420)
+    * Update deprecation for latest conda versions (#1403)
+    * Fix runs for profiles commit results (#1404)
+    * Internal pip parser now works for git URLs with branches and tags (#1431)
+    * ``asv`` defaults to ``--force-reinstall`` now to facilitate ``compare`` and
+      ``continuous`` for manually versioned projects (#1421)
+  - Drop removal of benchmark, docs and test directories from %install section
+  - Update Requires from pyproject.toml
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1208561</requestid>
+  </revision>
 </revisionlist>
