@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipstream-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-Name:            python-zipstream-ng
-Version:         1.7.1
-Release:         0
-Summary:         Modern and easy to use streamable zip file generator
-License:         LGPL-3.0
-URL:             https://github.com/pR0Ps/zipstream-ng
-Source:          https://files.pythonhosted.org/packages/source/z/zipstream-ng/zipstream-ng-%{version}.tar.gz
-BuildRequires:   python-rpm-macros
-BuildRequires:   %{python_module setuptools}
-BuildRequires:   %{python_module pytest}
-BuildRequires:   fdupes
-Requires(post):  update-alternatives
+Name:           python-zipstream-ng
+Version:        1.8.0
+Release:        0
+Summary:        Modern and easy to use streamable zip file generator
+License:        LGPL-3.0-only
+URL:            https://github.com/pR0Ps/zipstream-ng
+Source:         https://files.pythonhosted.org/packages/source/z/zipstream-ng/zipstream_ng-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
 Requires(preun): update-alternatives
-BuildArch:       noarch
-Conflicts:       python-zipstream
+BuildArch:      noarch
+Conflicts:      python-zipstream
 %python_subpackages
 
 %description
@@ -54,7 +54,7 @@ Features:
  * No external dependencies.
 
 %prep
-%autosetup -n zipstream-ng-%{version}
+%autosetup -n zipstream_ng-%{version}
 
 # Remove shebangs for sitelib
 find . -type f -name "*.py" -exec sed -i '/^#!.*env python.*/d' {} ';'

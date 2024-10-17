@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:43:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.8.0:
+  * Support adding directory contents at the top level of the
+    ZipStream by specifying an arcname of /
+  * Fix issue where leading path separators could cause an
+    incorrect size to be calculated.
+
+-------------------------------------------------------------------
 Mon Apr 29 06:43:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Improved specfile to python standards:
