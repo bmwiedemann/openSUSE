@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 09:06:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.1
+  * Fix slow saving on Windows when language set to Chinese,
+    Greek, Hebrew, Japanese, Korean and possibly other
+  * Add Arabic translation
+  * Update Dutch translation
+
+-------------------------------------------------------------------
 Thu Aug  8 15:56:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.0
