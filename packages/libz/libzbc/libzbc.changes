@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:16:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.2
+  * Fixed problems with running test/zbc_test.sh against DH-SMR
+    (XMR) devices
+  * More XMR tests moved from the extended text case category to
+    the base set of test cases
+
+-------------------------------------------------------------------
 Mon Jul  1 08:34:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.1
