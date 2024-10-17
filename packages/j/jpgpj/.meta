@@ -1,0 +1,6 @@
+<package name="jpgpj" project="openSUSE:Factory">
+  <title>Java Pretty Good Privacy Jig</title>
+  <description>JPGPJ provides a simple API on top of the Bouncy Castle Java OpenPGP implementation (which is full and robust implementation of RFC 4880, and compatible with other popular PGP implementations such as GnuPG, GPGTools, and Gpg4win). The JPGPJ API is limited to file encryption, signing, decryption, and verification; it does not include the ability to generate, update, or sign keys, or to do clearsigning or detached signatures.</description>
+  <devel project="Java:packages" package="jpgpj"/>
+  <url>https://github.com/justinludwig/jpgpj</url>
+</package>

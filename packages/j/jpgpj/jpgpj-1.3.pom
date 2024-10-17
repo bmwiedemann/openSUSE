@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.c02e.jpgpj</groupId>
+  <artifactId>jpgpj</artifactId>
+  <version>1.3</version>
+  <name>Java Pretty Good Privacy Jig</name>
+  <description>JPGPJ is a simple API on top of the Bouncy Castle Java OpenPGP implementation.</description>
+  <url>https://github.com/justinludwig/jpgpj</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>justinludwig</id>
+      <name>Justin Ludwig</name>
+      <email>justin@ldwg.us</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:justinludwig/jpgpj.git</connection>
+    <developerConnection>scm:git:git@github.com:justinludwig/jpgpj.git</developerConnection>
+    <url>git@github.com:justinludwig/jpgpj.git</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpg-jdk15on</artifactId>
+      <version>1.70</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.32</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <version>2.5.8</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.32</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spockframework</groupId>
+      <artifactId>spock-core</artifactId>
+      <version>1.3-groovy-2.5</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
