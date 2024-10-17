@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-location
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtlocation-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-location%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        Qt 6 Location plugins and libraries
 License:        GPL-3.0-or-later
@@ -117,7 +117,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6Location/*Plugin*.cmake
 %{_qt6_qmldir}/QtLocation/
 
 %files -n libQt6Location6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Location.so.*
 
 %files -n qt6-location-devel
