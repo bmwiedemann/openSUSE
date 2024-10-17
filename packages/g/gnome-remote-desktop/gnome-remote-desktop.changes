@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 16 12:23:29 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 09:12:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.rc:
+  + Reduce resource usage of unauthenticated sessions
+  + Updated translations.
+- Changes from version 47.beta:
+  + Gracefully handle file descriptor limits
+  + Introduce standalone configuration D-Bus service
+  + Improve grdctl status reporting
+  + Gracefully handle invalid x224Crq data
+  + Fix file descriptor leak
+  + Updated translations.
+- Changes from version 47.alpha:
+  + Support persistent remote login sessions
+  + Support entering new credentials via standard input when using
+    grdctl
+  + Use access portal dialogs for warning about connection
+    insecurity
+  + Avoid crash when getting invalid PipeWire buffers
+  + Updated translations. 
+
+-------------------------------------------------------------------
 Sun Sep 15 13:44:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.5:

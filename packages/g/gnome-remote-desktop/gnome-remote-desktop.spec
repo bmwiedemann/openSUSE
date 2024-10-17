@@ -23,7 +23,7 @@
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        46.5
+Version:        47.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -127,7 +127,8 @@ export CC=gcc-13
 %{_bindir}/grdctl
 %{_datadir}/%{name}/
 %{_datadir}/applications/org.gnome.RemoteDesktop.Handover.desktop
-%{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.service
+%{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.Configuration.service
+%{_libexecdir}/gnome-remote-desktop-configuration-daemon
 %{_datadir}/dbus-1/system.d/org.gnome.RemoteDesktop.conf
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
@@ -143,6 +144,7 @@ export CC=gcc-13
 %ghost %attr(0755,gnome-remote-desktop,gnome-remote-desktop) %dir %{_sysconfdir}/gnome-remote-desktop
 %ghost %attr(0644,gnome-remote-desktop,gnome-remote-desktop) %{_sysconfdir}/gnome-remote-desktop/grd.conf
 %{_unitdir}/gnome-remote-desktop.service
+%{_unitdir}/gnome-remote-desktop-configuration.service
 %{_userunitdir}/gnome-remote-desktop-handover.service
 %{_userunitdir}/gnome-remote-desktop-headless.service
 %{_userunitdir}/gnome-remote-desktop.service
