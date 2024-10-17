@@ -332,4 +332,12 @@
   * Updated golibs dependency (forwarded request 1196363 from VaiTon)</comment>
     <requestid>1196364</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>85df700430e04a7fdc68dfe229e00c5c</srcmd5>
+    <version>0.73.2</version>
+    <time>1729183166</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.73.2: (forwarded request 1208517 from VaiTon)</comment>
+    <requestid>1208519</requestid>
+  </revision>
 </revisionlist>
