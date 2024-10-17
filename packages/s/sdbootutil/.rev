@@ -329,4 +329,15 @@
     <comment></comment>
     <requestid>1206390</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9351d5b634885f005e9c9bb3706e9cd5</srcmd5>
+    <version>1+git20241017.34ee974</version>
+    <time>1729183124</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20241017.34ee974:
+  * Keep SELinux label of /etc/crypttab intact when changing options
+    (boo#1231696)
+  * Fix typo in update-entry help, should be  /etc/kernel/cmdline</comment>
+    <requestid>1208617</requestid>
+  </revision>
 </revisionlist>

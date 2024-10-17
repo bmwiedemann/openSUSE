@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 17 10:56:11 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241017.34ee974:
+  * Keep SELinux label of /etc/crypttab intact when changing options
+    (boo#1231696)
+  * Fix typo in update-entry help, should be  /etc/kernel/cmdline
+
+-------------------------------------------------------------------
 Tue Oct 08 19:44:00 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241008.3df16d2:
