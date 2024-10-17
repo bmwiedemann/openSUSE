@@ -21,14 +21,16 @@ Version:        20240105
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later
-Group:          System/Emulators/PC
 URL:            https://github.com/Winetricks/winetricks
-Source0:        https://github.com/Winetricks/%{name}/archive/%{version}.tar.gz##/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 Requires:       cabextract
 Requires:       unzip
 Requires:       wine
-Recommends:     zenity
+Recommends:     (zenity or kdialog)
+BuildArch:      noarch
 
 %description
 Winetricks is a way to work around problems in Wine.
@@ -37,31 +39,33 @@ It has a menu of supported games/apps for which it can do all the
 workarounds automatically. It also allows the installation of missing
 DLLs and tweaking of various WINE settings.
 
+%package bash-completion
+Summary:        Bash Completions for %{name}
+BuildArch:      noarch
+
+%description bash-completion
+%{summary}.
+
 %prep
 %autosetup -p1
 
 %build
-%make_build
+#nothing to do
 
 %install
 %make_install
-
-%suse_update_desktop_file -G Winetricks -r %{name} System Emulator
+%suse_update_desktop_file %{name}
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/%{name}
-%{_datadir}/icons/hicolor
-%{_datadir}/icons/hicolor/scalable
-%{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

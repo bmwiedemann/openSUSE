@@ -156,4 +156,15 @@
 - icodecs.patch: is upstream</comment>
     <requestid>1137935</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6a814e41d03cb76af44de1ea2efbabc3</srcmd5>
+    <version>20240105</version>
+    <time>1729183266</time>
+    <user>anag+factory</user>
+    <comment>- add option for kdialog
+- seperate out bash-completion
+- switch over to noarch, as the software is only shell
+- don't try to build the software, as nothing is getting built</comment>
+    <requestid>1208672</requestid>
+  </revision>
 </revisionlist>

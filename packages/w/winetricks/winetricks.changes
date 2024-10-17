@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 15 21:40:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add option for kdialog
+- seperate out bash-completion
+- switch over to noarch, as the software is only shell
+- don't try to build the software, as nothing is getting built
+
+-------------------------------------------------------------------
 Wed Jan 10 12:39:46 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 20240105
