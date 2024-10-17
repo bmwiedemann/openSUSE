@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:14:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.3:
+  * Fix Git cliff docs issue
+  * Reuse filetype from DirEntry resulting in a
+    approximately ~24% speedup for most common operations.
+
+-------------------------------------------------------------------
 Wed Oct 16 09:53:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update eza-fix-test.patch to fix tests

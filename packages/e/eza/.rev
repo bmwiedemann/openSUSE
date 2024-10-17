@@ -806,4 +806,15 @@
   * Regenerate tests broken by line number changes</comment>
     <requestid>1208443</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7b5192b9c2bca952328f4794ba45543d</srcmd5>
+    <version>0.20.3</version>
+    <time>1729183218</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.3:
+  * Fix Git cliff docs issue
+  * Reuse filetype from DirEntry resulting in a
+    approximately ~24% speedup for most common operations.</comment>
+    <requestid>1208552</requestid>
+  </revision>
 </revisionlist>
