@@ -733,6 +733,7 @@
         <package name="growpart-generator"/>
         <package name="sdbootutil-snapper"/>
         <package name="disk-encryption-tool"/>
+        <package name="systemd-repart-dracut"/>
         <package name="dracut-pcr-signature"/>
         <package name="systemd-experimental"/>
         <package name="shim"/>

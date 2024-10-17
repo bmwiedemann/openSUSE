@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  9 09:15:28 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Added package systemd-repart-dracut to kvm-and-xen-sdboot and
+  kvm-and-xen-grub-bls
+
+-------------------------------------------------------------------
 Thu Oct  3 09:42:47 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Move /etc/sysconfig/bootloader creation to disk.sh, as KIWI can
