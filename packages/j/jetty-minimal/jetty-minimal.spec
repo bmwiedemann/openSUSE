@@ -209,8 +209,7 @@ Group:          Productivity/Networking/Web/Servers
 
 %package        -n %{base_name}-server
 Summary:        The server module for Jetty
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Productivity/Neorg.apache.maven.plugins:maven-dependency-plugintworking/Web/Servers
+Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-server
 %{extdesc} %{summary}.
@@ -333,7 +332,7 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 %pom_xpath_remove 'pom:artifactItem[pom:artifactId="libsetuid-osx"]' jetty-home/pom.xml
 
 # TODO remove when jetty-setuid is packaged
-%pom_xpath_remove "pom:execution[pom:id[text()='copy-setuid-deps']]" jetty-home/pom.xml
+%pom_xpath_remove "pom:execution[pom:id='copy-setuid-deps']" jetty-home/pom.xml
 
 # We don't have gcloud-java-datastore
 %pom_disable_module jetty-gcloud
