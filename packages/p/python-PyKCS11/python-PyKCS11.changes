@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 16 20:44:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.5.17:
+  * Add AES in counter mode support (CKM_AES_CTR)
+  * Add simple derivation mechanisms support (CMK_CONCATENATE_*)
+  * Fix reference counting in PyKCS11Lib.load()
+  * remove python 2 support from ckbytelist
+  * minor improvements
+
+-------------------------------------------------------------------
 Sun Jun  2 21:11:10 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the spec
