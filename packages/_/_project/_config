@@ -383,6 +383,7 @@ FileProvides: /usr/bin/node20 nodejs20
 FileProvides: /usr/bin/node22 nodejs22
 FileProvides: /usr/bin/nohup busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/nslookup bind-utils busybox-bind-utils
+FileProvides: /usr/bin/oathtool oath-toolkit
 FileProvides: /usr/bin/ocamlrun ocaml-runtime
 FileProvides: /usr/bin/octave octave-cli
 FileProvides: /usr/bin/od busybox-coreutils coreutils coreutils-single
@@ -417,6 +418,7 @@ FileProvides: /usr/bin/python3.9 python39-base
 FileProvides: /usr/bin/qemu-img qemu-img
 FileProvides: /usr/bin/qemu-nbd qemu-img
 FileProvides: /usr/bin/qemu-system-x86_64 qemu-x86
+FileProvides: /usr/bin/qrencode qrencode
 FileProvides: /usr/bin/readcd readcd
 FileProvides: /usr/bin/readlink busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/renice busybox-util-linux util-linux
