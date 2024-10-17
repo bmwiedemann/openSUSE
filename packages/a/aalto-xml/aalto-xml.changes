@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Sep  4 20:06:13 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.3.3
+  * Release notes:
+    + #86: Multi-byte characters are split in `writeCData()` if
+      first byte sits right at the end of the buffer (reported, fix
+      contributed by @tatsel)
+    + #90: Update stax2-api dep to 4.2.2 (from 4.2)
+    + #91: Multi-byte characters are split in `writeComment()` if
+      first byte sits right at the end of the buffer
+    + #93: Multi-byte characters are split in `writePI()` if first
+      byte sits right at the end of the buffer
+
+-------------------------------------------------------------------
+Tue Sep 12 12:14:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon Dec 12 16:19:32 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.3.2

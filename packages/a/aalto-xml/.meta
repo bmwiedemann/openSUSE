@@ -1,0 +1,8 @@
+<package name="aalto-xml" project="openSUSE:Factory">
+  <title>Ultra-high performance non-blocking XML processor (Stax API + extensions)</title>
+  <description>Aalto XML processor is an ultra-high performance next generation Stax XML processor implementation, implementing both basic Stax API (javax.xml.stream) and Stax2 API extension (org.codehaus.woodstox.stax2). In addition, it also implements SAX2 API.
+
+In additional to standard Java XML interfaces, one unique feature not implemented by any other Java XML parser that we are aware is so-called non-blocking (asynchronous) XML parsing: ability to parse XML without using blocking I/O, necessary for fully asynchronous processing such as those with Akka framework. Aalto non-blocking API is a minimalistic extension above Stax/Stax2 API to allow indication of &quot;not yet available&quot; token (EVENT_INCOMPLETE) as well as feeding of input (since InputStream can not be used as it blocks).</description>
+  <devel project="Java:packages" package="aalto-xml"/>
+  <url>https://github.com/FasterXML/aalto-xml</url>
+</package>
