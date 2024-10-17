@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-grpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
 %define tar_suffix %{nil}
@@ -26,9 +26,9 @@
 %if "%{qt6_flavor}" == "docs"
 %define pkg_suffix -docs
 %endif
-
+#
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
@@ -134,6 +134,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files imports
 %{_qt6_qmldir}/QtGrpc/
+%{_qt6_qmldir}/QtProtobuf/
 
 %files -n libQt6Grpc6
 %license LICENSES/*
@@ -176,6 +177,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Protobuf.so.*
 %{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so.*
 %{_qt6_libdir}/libQt6ProtobufQtGuiTypes.so.*
+%{_qt6_libdir}/libQt6ProtobufQuick.so.*
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so.*
 
 %files -n qt6-protobuf-devel
@@ -184,15 +186,18 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_cmakedir}/Qt6Protobuf/
 %{_qt6_cmakedir}/Qt6ProtobufQtCoreTypes/
 %{_qt6_cmakedir}/Qt6ProtobufQtGuiTypes/
+%{_qt6_cmakedir}/Qt6ProtobufQuick/
 %{_qt6_cmakedir}/Qt6ProtobufWellKnownTypes/
 %{_qt6_cmakedir}/Qt6ProtobufTools/
 %{_qt6_descriptionsdir}/Protobuf.json
 %{_qt6_descriptionsdir}/ProtobufQtCoreTypes.json
 %{_qt6_descriptionsdir}/ProtobufQtGuiTypes.json
+%{_qt6_descriptionsdir}/ProtobufQuick.json
 %{_qt6_descriptionsdir}/ProtobufWellKnownTypes.json
 %{_qt6_includedir}/QtProtobuf/
 %{_qt6_includedir}/QtProtobufQtCoreTypes/
 %{_qt6_includedir}/QtProtobufQtGuiTypes/
+%{_qt6_includedir}/QtProtobufQuick/
 %{_qt6_includedir}/QtProtobufWellKnownTypes/
 %{_qt6_libdir}/libQt6Protobuf.prl
 %{_qt6_libdir}/libQt6Protobuf.so
@@ -200,28 +205,36 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so
 %{_qt6_libdir}/libQt6ProtobufQtGuiTypes.prl
 %{_qt6_libdir}/libQt6ProtobufQtGuiTypes.so
+%{_qt6_libdir}/libQt6ProtobufQuick.prl
+%{_qt6_libdir}/libQt6ProtobufQuick.so
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.prl
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so
 %{_qt6_libexecdir}/qtprotobufgen
 %{_qt6_metatypesdir}/qt6protobuf_*_metatypes.json
 %{_qt6_metatypesdir}/qt6protobufqtcoretypes_*_metatypes.json
 %{_qt6_metatypesdir}/qt6protobufqtguitypes_*_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufquick_*_metatypes.json
 %{_qt6_metatypesdir}/qt6protobufwellknowntypes_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufquick.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes.pri
 %{_qt6_pkgconfigdir}/Qt6Protobuf.pc
 %{_qt6_pkgconfigdir}/Qt6ProtobufQtCoreTypes.pc
 %{_qt6_pkgconfigdir}/Qt6ProtobufQtGuiTypes.pc
+%{_qt6_pkgconfigdir}/Qt6ProtobufQuick.pc
 %{_qt6_pkgconfigdir}/Qt6ProtobufWellKnownTypes.pc
 %exclude %{_qt6_includedir}/QtProtobuf/%{real_version}
+%exclude %{_qt6_includedir}/QtProtobufQuick/%{real_version}
 
 %files -n qt6-protobuf-private-devel
 %{_qt6_includedir}/QtProtobuf/%{real_version}/
+%{_qt6_includedir}/QtProtobufQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufquick_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes_private.pri
 
 %endif
