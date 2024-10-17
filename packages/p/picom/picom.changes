@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Oct 15 07:42:35 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed picom-11.2-rtkit.patch now upstreamed
+- Update to version 12.3:
+  * Improvements
+    - Extend workaround for missing hardware accelerated convolution to more drivers (#1349)
+  * Bug fixes
+    - Fix memory corruption that can happen when handling window property changes (#1350)
+    - Fix force-win-blend having no effect (#1354)
+    - Fix shadow being rendered incorrectly in xrender backend (#1352)
+- Update to version 12.2:
+  * Improvements
+    - fly-out/slide-out animation presets no longer cause jumps in window opacity
+  * Bug fixes
+    - Random delays before screen is updated (#1345 #1330)
+    - Fix building on 32-bit systems (#1346)
+    - Fix blank screen on 32-bit systems
+    - Fix fly-in/fly-out animation presets so they work with directions
+      other than up and left
+- Update to version 12.1:
+  * Bug fixes
+    - picom stops rendering correctly after monitor configuration changes (#1338)
+- Update to version 12:
+  * New features
+    - Animations! Yes, now picom officially supports animations.
+      For examples, and information on how to configure it, please go to our documentation site
+      There are some video clips in #1253 as well. (#1220 #1253 #1303 #1305 #1308 #1310)
+    - Universal window rules (#1284). One option to rule them all!
+      Added new configuration option rules to replace all existing rule options,
+      and to provide more flexibility on top of that. See picom(1) for more details.
+      This can be used to configure per-window animations
+    - @include directives in config file now also search in $XDG_CONFIG_HOME/picom/include
+      and $XDG_CONFIG_DIRS/picom/include, in addition to relative to the config file's
+      parent directory
+    - Allow corner-radius-rules to override corner-radius = 0.
+      Previously setting corner radius to 0 globally disables rounded corners. (#1170)
+    - New picom-inspect tool, which lets you test out your picom rules.
+      man picom-inspect(1) for more details
+    - picom now has a rudimentary plugin system.
+      At the moment, the only thing you can do with it is loading custom backends
+   * Notable changes
+     - override_redirect in rules now only matches top-level windows that doesn't have
+       a client window. Some window managers (e.g. awesome) set override_redirect for
+       all window manager frame windows, causing this rule to match against everything (#625)
+     - Marginally improve performance when resizing/opening/closing windows. (#1190)
+     - Type and format specifiers are no longer used in rules. These specifiers are what
+       you put after the colon (':') in rules, e.g. the :32c in "_GTK_FRAME_EXTENTS@:32c".
+       Now this information is ignored and the property is matched regardless of format or type
+     - backend is now a required option. picom will not start if one is not specified explicitly
+     - New predefined target for conditions: group_focused. This target indicate whether the
+       focused window is in the same window group as the window being matched
+     - Meaning of window_type in conditions changed slightly, now it supports windows with
+       multiple types. (However the behavior of wintypes remains unchanged)
+   * Deprecated features
+     - Setting --shadow-exclude-reg is now a hard error. It was deprecated almost since
+       the start of picom. --clip-shadow-above is the better alternative. (#1254)
+     - Remove command line options -n, -a, and -s. They were removed more than 10 years ago,
+       it's time to finally get rid of them entirely. (#1254)
+     - Remove error message for --glx-swap-method, it was deprecated in v6
+     - Remove error message for passing argument to --vsync arguments, it was deprecated in v5
+     - Option --opengl is now deprecated, use --backend=glx instead
+   * Bug fixes
+     - Fix ghosting artifacts that sometimes occur when window manager is restarted (#1081)
+     - Fix a bug where rounded corner is disabled after making a window fullscreen and back (#1216)
+     - Fix ugly looking rounded corners (#1261)
+     - Setting corner-radius to 0 cause all windows to not render (#1311)
+     - Setting corner-radius causes windows to have a 1-pixel transparent border
+     - Window shaders no longer work (#1312)
+   * Build changes
+     - picom now uses some OpenGL 4.3 features
+     - picom now optionally depends on rtkit at runtime to give itself realtime scheduling priority
+     - libconfig is now a mandatory dependency, with a minimal supported version of 1.7
+     - xcb-dpms is not needed anymore
+     - libXext is not needed anymore
+     - man pages are now built with asciidoctor, instead of asciidoc
+
+-------------------------------------------------------------------
 Tue Apr 16 20:14:15 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add picom-11.2-rtkit.patch: Support setting realtime priority

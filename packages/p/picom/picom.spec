@@ -17,17 +17,19 @@
 
 
 Name:           picom
-Version:        11.2
+Version:        12.3
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source:         https://github.com/yshui/picom/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM picom-11.2-rtkit.patch yshuiv7@gmail.com -- Support setting realtime priority using rtkit.
-Patch0:         picom-11.2-rtkit.patch
-BuildRequires:  asciidoc
+%if 0%{?suse_version} > 1500
 BuildRequires:  c_compiler
+%else
+# on Leap 15.x, gcc7 is the default compiler and it results in many compiling errors, thus force use of gcc12
+BuildRequires:  gcc12
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -36,7 +38,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(libconfig)
+BuildRequires:  pkgconfig(libconfig) >= 1.7
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -56,6 +58,7 @@ BuildRequires:  pkgconfig(xcb-sync)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  rubygem(asciidoctor)
 Recommends:     rtkit
 Obsoletes:      compton <= 0.1.0
 Provides:       compton = %{version}
@@ -69,6 +72,9 @@ and fade animations.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-12
+%endif
 %meson -Dwith_docs=true -Dcompton=false -Dvsync_drm=true
 %meson_build
 
@@ -77,6 +83,8 @@ and fade animations.
 install -d %{buildroot}%{_datadir}/icons/hicolor/{48x48,scalable}/apps
 install -m644 media/icons/48x48/compton.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 install -m644 media/compton.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+# don't need this
+rm %{buildroot}%{_libdir}/pkgconfig/%{name}-api.pc
 # Fix boo#1222766
 rm %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
@@ -92,5 +100,6 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-trans.1%{?ext_man}
+%{_mandir}/man1/%{name}-inspect.1%{?ext_man}
 
 %changelog
