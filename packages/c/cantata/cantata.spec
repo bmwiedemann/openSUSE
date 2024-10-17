@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,34 @@
 
 
 Name:           cantata
-Version:        2.5.0
+Version:        3.2.1
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://github.com/CDrummond/cantata/
-Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- taglib 2.0 support https://github.com/fenuks/cantata/commit/45bac9e
-Patch0:         0001-Update-for-tablib-2.0-compatibility.patch
-# PATCH-FIX-UPSTREAM -- ffmpeg 7 support https://github.com/OpenMandrivaAssociation/cantata/blob/master/cantata-2.5.0-ffmpeg7.patch
-Patch1:         cantata-2.5.0-ffmpeg7.patch
+URL:            https://github.com/nullobsi/cantata/
+Source:         https://github.com/nullobsi/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  pkgconfig(avahi-core)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(libcdio_paranoia)
+BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libmusicbrainz5)
@@ -56,11 +54,8 @@ BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       media-player-info
 Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
-Recommends:     %{name}-lang = %{version}
-Recommends:     mpd
+Requires(postun): hicolor-icon-theme
+Requires:       mpd
 %lang_package
 
 %description
@@ -93,23 +88,16 @@ interface) is now very different to that of QtMPC. For more detailed
 information, please refer to the main README.
 
 %prep
-%setup -q
-%if %{pkg_vcmp pkgconfig(taglib) >= 2.0}
-%patch -P0 -p1
-%endif
-# Only build with ffmpeg >= 5.1
-%if %{pkg_vcmp pkgconfig(libavcodec) >= 5.1}
-%patch -P1 -p1
-%endif
+%autosetup -p1
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
-    -DENABLE_CATEGORIZED_VIEW=OFF
+    -DENABLE_CATEGORIZED_VIEW=OFF \
+    -DBUILD_PLUGIN_DEBUG=OFF
 %cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file %{name}
 
 %find_lang %{name} --without-kde --with-qt --all-name --without-mo
 
@@ -117,15 +105,23 @@ information, please refer to the main README.
 
 %files
 %license LICENSE
+%doc AUTHORS ChangeLog README TODO
 %{_bindir}/%{name}
-%{_prefix}/lib/%{name}/
-%{_datadir}/%{name}
-%exclude %{_datadir}/%{name}/translations/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/
-%doc AUTHORS ChangeLog README README.md TODO
+%{_libexecdir}/Cantata/*
+%{_datadir}/Cantata/icons/*
+%{_datadir}/Cantata/scripts/*
+%{_datadir}/applications/*
+%{_datadir}/metainfo/*
+%{_datadir}/icons/hicolor/scalable/apps/dog.unix.cantata.Cantata.svg
+%{_datadir}/icons/hicolor/symbolic/apps/dog.unix.cantata.Cantata-symbolic.svg
+%{_datadir}/icons/hicolor/*x*/apps/dog.unix.cantata.Cantata.png
+%dir %{_libexecdir}/Cantata
+%dir %{_datadir}/Cantata
+%dir %{_datadir}/Cantata/icons
+%dir %{_datadir}/Cantata/scripts
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/%{name}/translations
+%dir %{_datadir}/Cantata/translations
+%{_datadir}/Cantata/translations/*
 
 %changelog

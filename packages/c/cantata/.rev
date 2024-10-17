@@ -299,4 +299,12 @@
     <comment></comment>
     <requestid>1194887</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2db8fd4dc952dc5c93a6adabd24e79e1</srcmd5>
+    <version>3.2.1</version>
+    <time>1729183224</time>
+    <user>anag+factory</user>
+    <comment>Cantata has been abandoned by the original author, but this is a vialbe fork, It is the same as the one available on flathub</comment>
+    <requestid>1208569</requestid>
+  </revision>
 </revisionlist>

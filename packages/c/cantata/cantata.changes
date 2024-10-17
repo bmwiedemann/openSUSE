@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:35:43 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Better not to recommend lang package, so removed it
+
+-------------------------------------------------------------------
+Wed Oct 16 07:05:32 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Changed vendor due to deprecated project
+- Version 3.2.1:
+  Changed
+  * Fix now-playing notification being persistent.
+  * Respect environment settings for showing icons in app menus.
+  * Improve GUI responsiveness when changing tracks & now-playing 
+    notifications are enabled.
+  * Notifications when running in Flatpak now update properly.
+  * Fix in-app HTTP stream playback.
+  * fix: (gh#nullobsi/cantata#17) non-persistent notifications 
+    (gh#nullobsi/cantata#19)
+  * fix: relinquish control of DontShowIconsInMenus 
+    (gh#nullobsi/cantata#20)
+  * Update issue templates (gh#nullobsi/cantata#21)
+  * fix: GUI responsiveness when changing tracks (gh#nullobsi/cantata#23)
+  * fix: #24 flatpak notification updates (gh#nullobsi/cantata#25)
+  * fix: #15 update QMediaPlayer handling (gh#nullobsi/cantata#26)
+  * fix: #14 update QNetworkReply signals (gh#nullobsi/cantata#27)
+  * git: remove UCRT64 action (gh#nullobsi/cantata#28)
+  * git: Version 3.2.1 (gh#nullobsi/cantata#29)
+- Version 3.2.0:
+  Minor
+  * Fix menu options having incorrect keybindings.
+  * Fix radio stream favorites button not working on search.
+  * Enable menu icons on macOS.
+  * Update icons to FontAwesome 6.
+  * Improve palette change handling.
+  Changed
+  * git: linux flatpak action (gh#nullobsi/cantata#8)
+  * feat: FA6 icons & proper palette changes 
+    (gh#nullobsi/cantata#7)
+  * fix: use after free segfault (gh#nullobsi/cantata#10)
+  * fix: (gh#nullobsi/cantata#6) enable favorites action for 
+    stream search (gh#nullobsi/cantata#11)
+  * Release v3.2.0 by @nullobsi in (gh#nullobsi/cantata#12)
+  * fix: metainfo description tag by @nullobsi in fix: 
+    (gh#nullobsi/cantata#13)
+- Version 3.1.0:
+  Bugfix release
+  * Fix crash when enabling notifications.
+  * Fix Qt warnings.
+  * Fix notifications on Flatpak.
+  * Fix tray icon image not showing up
+- Version 3.0.1:
+  * Prebuilds for the 3 major OSes.
+  * Linux: use the flatpak YAML config to build, or install the 
+    flatpak. Needs KDE platform 6.7.
+  * Windows: use MSYS2's MINGW environments to build for the best 
+    results. This one is built with the CLANG64 environment. If you 
+    want the WiX installer, you need to install WiX v3.
+  * macOS: Universal builds are easy with Qt's binary distributions, 
+    as Homebrew doesn't distribute universal binaries. CPack 
+    generates a working DMG.
+  * Hopefully this will make Cantata a little easier to run on 
+    modern distros. There are probably bugs with the Qt6 upgrade or 
+    pre-existing bugs.
+- Ported to Qt6
+- Deleted `%suse_update_desktop_file` due it's deprecated 
+- Changed Recommended mpd to Required.
+- Dropped patches that are no longer needed:
+  * 0001-Update-for-tablib-2.0-compatibility.patch
+  * cantata-2.5.0-ffmpeg7.patch
+
+-------------------------------------------------------------------
 Tue Aug 20 07:27:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add ffmpeg 7 compatibility patch:
