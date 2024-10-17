@@ -290,4 +290,15 @@
     macro body, e.g. `%shrink`).</comment>
     <requestid>1206169</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>12ff40bdbc30e6c86ca2eaacae6eaa06</srcmd5>
+    <version>0.32.4</version>
+    <time>1729183233</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1208293 from smolsheep
+
+- Update to 0.32.4:
+    * NEVR and NEVRA classes are now hashable</comment>
+    <requestid>1208564</requestid>
+  </revision>
 </revisionlist>
