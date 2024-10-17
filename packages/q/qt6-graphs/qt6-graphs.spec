@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-graphs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.7.3
-%define short_version 6.7
+%define real_version 6.8.0
+%define short_version 6.8
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.7.3
+Version:        6.8.0
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only
@@ -129,22 +129,34 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %files -n libQt6Graphs6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6Graphs.so.*
+%{_qt6_libdir}/libQt6GraphsWidgets.so.*
 
 %files -n qt6-graphs-devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtGraphsTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Graphs/
+%{_qt6_cmakedir}/Qt6GraphsWidgets/
 %{_qt6_descriptionsdir}/Graphs.json
+%{_qt6_descriptionsdir}/GraphsWidgets.json
 %{_qt6_includedir}/QtGraphs/
+%{_qt6_includedir}/QtGraphsWidgets/
 %{_qt6_libdir}/libQt6Graphs.prl
 %{_qt6_libdir}/libQt6Graphs.so
+%{_qt6_libdir}/libQt6GraphsWidgets.prl
+%{_qt6_libdir}/libQt6GraphsWidgets.so
 %{_qt6_metatypesdir}/qt6graphs_*_metatypes.json
+%{_qt6_metatypesdir}/qt6graphswidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_graphs.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_graphswidgets.pri
 %{_qt6_pkgconfigdir}/Qt6Graphs.pc
+%{_qt6_pkgconfigdir}/Qt6GraphsWidgets.pc
 %exclude %{_qt6_includedir}/QtGraphs/%{real_version}
+%exclude %{_qt6_includedir}/QtGraphsWidgets/%{real_version}
 
 %files -n qt6-graphs-private-devel
 %{_qt6_includedir}/QtGraphs/%{real_version}/
+%{_qt6_includedir}/QtGraphsWidgets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_graphs_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_graphswidgets_private.pri
 
 %endif
 
