@@ -22,7 +22,7 @@
 %define default_fw iptables
 %endif
 Name:           tailscale
-Version:        1.76.0
+Version:        1.76.1
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 16 20:40:31 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.1:
+  * tailscale netcheck CLI command no longer crashes when performing diagnostics
+    on networks lacking UDP connectivity.
+  * Improperly formatted SERVFAIL responses no longer cause DNS timeouts when using an exit node.
+  * dbus login sessions no longer fail on systems where /bin/login is missing.
+
+-------------------------------------------------------------------
 Mon Oct 14 13:06:13 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Require a firewall backend (boo#1228829)

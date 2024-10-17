@@ -136,4 +136,16 @@
     <comment></comment>
     <requestid>1208074</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0a569e80a244a3d6e7db2282341764e3</srcmd5>
+    <version>1.76.1</version>
+    <time>1729183264</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.76.1:
+  * tailscale netcheck CLI command no longer crashes when performing diagnostics
+    on networks lacking UDP connectivity.
+  * Improperly formatted SERVFAIL responses no longer cause DNS timeouts when using an exit node.
+  * dbus login sessions no longer fail on systems where /bin/login is missing. (forwarded request 1208650 from rrahl0)</comment>
+    <requestid>1208651</requestid>
+  </revision>
 </revisionlist>
