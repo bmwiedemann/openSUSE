@@ -1174,4 +1174,12 @@
     <comment>Update libguestfs to version 1.54.0</comment>
     <requestid>1206709</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>6f3eb2a757c51d0b14f19bede2a78295</srcmd5>
+    <version>1.54.0</version>
+    <time>1729259982</time>
+    <user>anag+factory</user>
+    <comment>No code change. Add back a dropped bug number in a comment.</comment>
+    <requestid>1208864</requestid>
+  </revision>
 </revisionlist>
