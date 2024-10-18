@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 06:01:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.5:
+  * fix(cli): cherrypick Redis password fix #19599 into 2.12
+    (#20262)
+
+-------------------------------------------------------------------
 Fri Sep 27 20:30:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.4:
