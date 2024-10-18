@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 17 19:18:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.123:
+  * General
+    - bump meshkit w/signoff @Jougan-0 (#12422)
+    - update relationship def w/singoff @Jougan-0 (#12417)
+  * Meshery CLI
+    - Figure environment create command panic error#11314
+      @JianMinTang (#12384)
+
+-------------------------------------------------------------------
 Wed Oct 16 07:57:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.122:
