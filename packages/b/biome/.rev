@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1206386</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4394d54fe4e8d16ade0afef4c17f4f7</srcmd5>
+    <version>1.9.4</version>
+    <time>1729259848</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.9.4:
+  * see https://github.com/biomejs/biome/releases/tag/cli%2Fv1.9.4
+</comment>
+    <requestid>1208727</requestid>
+  </revision>
 </revisionlist>
