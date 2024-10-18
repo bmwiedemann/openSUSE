@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 05:11:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.1
+  * Fixed an issue where the exit event could be emitted twice from the utilityProcess. #44267
+  * v8: security fixes for CVE-2024-9602 and CVE-2024-9603 (bsc#1231420)
+
+-------------------------------------------------------------------
 Fri Oct 11 04:37:30 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.0

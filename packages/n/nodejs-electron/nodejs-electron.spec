@@ -229,7 +229,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        31.7.0
+Version:        31.7.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -1218,7 +1218,11 @@ myconf_gn+=' symbol_level=0'
 myconf_gn+=' blink_symbol_level=0'
 myconf_gn+=' v8_symbol_level=0'
 %else
+%if 0%{?fedora} == 39
+myconf_gn+=' symbol_level=1'
+%else
 myconf_gn+=' symbol_level=2'
+%endif
 myconf_gn+=' blink_symbol_level=1'
 myconf_gn+=' v8_symbol_level=1'
 %endif
