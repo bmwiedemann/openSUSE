@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 18 06:02:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.84:
+  * added timestamp>now() as a global filter
+  * set `disableTlsLog` to `true` by default.
+  * Hub default limit set to 5GB (an arbitrary number)
+  * show filter presets by default
+  * change CPU limit to no limit Change memory limit to 3Gi
+  * scripting-revamp-1 (#1630)
+  * Prevent `hub` host-not-found nginx upstream error in `front`
+    (#1628)
+  * fix lint issue
+  * Added log lines for verbosity
+  * Added the scripting `console` command functionality to the
+    `tap` command Added both the `scripting` and `console` commands
+    to the `proxy` command Added a `scripting.console`, a boolean
+    value indicating whether the `console` functionality should be
+    part of the `tap` and `proxy` commands
+  * Improved the `console` command made it resilient to Websocket
+    breaks and redeployment.
+
+-------------------------------------------------------------------
 Fri Oct 11 08:45:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.83:
