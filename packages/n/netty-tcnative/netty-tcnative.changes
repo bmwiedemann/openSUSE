@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Wed Mar 27 13:47:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.65 Final
+  * No formal changelog present. Required by netty 4.1.108
+
+-------------------------------------------------------------------
+Thu Oct 12 15:10:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.62 Final
+  * No formal changelog present. This artifact and netty are
+    closely bound
+  * Upgrade the netty-jni-util sources jar to version 0.0.9.Final
+
+-------------------------------------------------------------------
+Wed Sep 13 04:52:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Fri Jun 23 08:37:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.61 Final
+  * Implements the SSLContext.setMaxCertList method needed by
+    netty 4.1.94 which contains important security updates
+  * No formal changelog present. This artifact and netty are
+    closely bound
+
+-------------------------------------------------------------------
+Thu Mar 30 10:47:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.59 Final
+  * new artifact name netty-tcnative-classes, provided by this
+    version is required by netty 4.1.90 which contains important
+    security updates
+  * No formal changelog present. This artifact is closely bound
+    to the netty releases
+
+-------------------------------------------------------------------
+Mon Apr 25 04:42:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on separate package netty-jni-util-sources
+- Unpack the sources to their right place without passing through
+  maven mechanisms
+- This version fixes bsc#1198792
+
+-------------------------------------------------------------------
+Wed Mar 23 07:44:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 1.8
+
+-------------------------------------------------------------------
+Wed Mar 24 05:24:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to the 2.0.36 Final
+  * Includes many changes, from which the relevalt ones are:
+    + Upgrade to OpenSSL 1.1.1i
+    + Update to latest openssl version for static build
+    + Update to LibreSSL 3.1.4
+    + Update to latest stable libressl release
+    + Update to openssl 1.1.1g
+    + OpenSSL 1.1.1d
+    + Update to libressl 2.9.3
+    + Upgrade to openssl 1.1.1c
+    + Update OpenSSL to 1.1.1b and LibreSSL to 2.8.3
+    + Cleanup BoringSSL TLSv1.3 support and consistent handle empty ciphers.
+    + Support TLSv1.3 with compiling against boringssl
+    + Return 0 for SSL_OP_NO_TLSv1_3 when TLSv1.3 is not supported.
+    + Add support for TLSv1.3 when compiled against openssl 1.1.1
+    + Allow to load a private key from the OpenSSL engine.
+    + Support KeyManagerFactory if compiled against OpenSSL < 1.0.2 but using OpenSSL >= 1.0.2 at runtime.
+    + Update to libressl 2.6.4
+    + Update to openssl 1.0.2n
+    + Update to libressl 2.5.5
+    + Allow to compile with openssl 1.0.1
+    + Update deprecated methods and OpenSSL api changes to allow building with OpenSSL 1.1.0e
+    + Update to libressl 2.4.5
+    + Update openssl to 1.0.2k
+    + Ensure we can compile against openssl 1.1.x and libressl 2.5.x as well.
+    + Update libressl to 2.4.2
+    + Update openssl to 1.0.2j
+    + Update openssl to 1.0.2i
+  * fix build in factory
+
+-------------------------------------------------------------------
+Thu Jan  9 14:50:34 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to the 1.1.33 Final26, the last version of 1.1 series
+- Use directement libtcnative-1-0 package, since it is API
+  compatible and supports openssl 1.1.x
+- Removed patch:
+  * i388aprFix.patch
+    + Integrated upstream
+
+-------------------------------------------------------------------
+Thu Nov 14 12:21:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of netty-tcnative 1.1.30

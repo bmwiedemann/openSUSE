@@ -1,0 +1,15 @@
+<package name="netty-tcnative" project="openSUSE:Factory">
+  <title>Fork of Tomcat Native with improved OpenSSL and mavenized build</title>
+  <description>netty-tcnative is a fork of Tomcat Native. It includes a set of changes
+contributed by Twitter, Inc, such as:
+ *  Simplified distribution and linkage of native library
+ *  Complete mavenization of the project
+ *  Improved OpenSSL support
+To minimize the maintenance burden, we create a dedicated branch for each stable
+upstream release and apply our own changes on top of it, while keeping the
+number of maintained branches to minimum
+
+</description>
+  <devel project="Java:packages" package="netty-tcnative"/>
+  <url>https://github.com/netty/netty/wiki/Forked-Tomcat-Native</url>
+</package>
