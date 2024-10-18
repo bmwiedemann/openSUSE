@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 18 00:50:28 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20241017.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241017
+  * Use --enable-shared for dev builds too, not only for releases by @eregon in #2450
+  * Fix linking to vendored OpenSSL on 64-bit systems by @mislav in #2452
+  * Add TruffleRuby and TruffleRuby GraalVM 24.1.1 by @eregon in #2454
+
+-------------------------------------------------------------------
 Mon Oct  7 20:14:21 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20241007.
