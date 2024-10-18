@@ -17,28 +17,28 @@
 
 
 Name:           lowfi
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        An extremely simple lofi player
 License:        MIT
 URL:            https://github.com/talwat/lowfi
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  cargo-packaging
 BuildRequires:  alsa-devel
+BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-A tiny rust app that serves a single purpose: play lofi. 
+A tiny rust app that serves a single purpose: play lofi.
 It'll do this as simply as it can: no albums, no ads, just lofi.
-All of the audio files played in lowfi are from Lofi Girl's website, 
+All of the audio files played in lowfi are from Lofi Girl's website,
 https://lofigirl.com/
 under their licensing guidelines : https://form.lofigirl.com/CommercialLicense
 
 %prep
-%autosetup -a1 
+%autosetup -a1
 
 %build
 %{cargo_build}

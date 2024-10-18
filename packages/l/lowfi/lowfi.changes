@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 16 13:04:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.0:
+  * add description of available controls
+  * feat: add play and pause messages
+  * feat: add custom sources
+
+-------------------------------------------------------------------
 Tue Oct 15 09:57:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - removed .obscpio file
