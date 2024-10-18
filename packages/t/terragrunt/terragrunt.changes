@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 17 19:04:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.4:
+  * chore: Updating deps (#3480)
+  * CICD updates (#3467)
+  * feat: Upgrading `go-getter` to v2 in scaffold (#3455)
+
+-------------------------------------------------------------------
+Wed Oct 16 16:16:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.3:
+  * feat: Adding Strict Package (#3424)
+
+-------------------------------------------------------------------
 Wed Oct 16 08:01:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.2:
