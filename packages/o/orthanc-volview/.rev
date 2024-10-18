@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1160697</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d043f48e92eee3392d8fdf738f24646</srcmd5>
+    <version>1.1</version>
+    <time>1729259881</time>
+    <user>anag+factory</user>
+    <comment>- force python 3.11 to fix Leap build 
+</comment>
+    <requestid>1208834</requestid>
+  </revision>
 </revisionlist>

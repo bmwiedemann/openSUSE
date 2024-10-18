@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 16 10:36:26 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- force python 3.11 to fix Leap build 
+
+-------------------------------------------------------------------
 Thu Mar 21 14:28:55 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for reproducible builds of static assets

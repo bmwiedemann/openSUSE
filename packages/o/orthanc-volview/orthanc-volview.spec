@@ -51,6 +51,11 @@ BuildRequires:  pugixml-devel
 BuildRequires:  unzip
 BuildRequires:  uuid-devel
 
+##Force python 3.11 for Leap
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150400
+BuildRequires:  python311
+%endif
+
 Requires:       orthanc
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -69,6 +74,11 @@ https://github.com/Kitware/VolView
 #Putting them into this folder prevents download of sources from the web
 #static assets of the VolView viewer
 unzip %{S:1} -d VolView
+
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150400
+#shebag ersetzen
+find . -iname "*.py" -exec sed -i "s/python3/python311/" '{}' \;
+%endif
 
 %build
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
