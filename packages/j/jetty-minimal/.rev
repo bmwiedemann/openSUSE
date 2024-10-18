@@ -199,4 +199,12 @@
     <comment></comment>
     <requestid>1208602</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>679547146bfc383cf448186f686fdc7f</srcmd5>
+    <version>9.4.56</version>
+    <time>1729259863</time>
+    <user>anag+factory</user>
+    <comment>Package the infrastructure pom artifacts too</comment>
+    <requestid>1208738</requestid>
+  </revision>
 </revisionlist>

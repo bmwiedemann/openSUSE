@@ -263,6 +263,12 @@ Group:          Productivity/Networking/Web/Servers
 %description    -n %{base_name}-xml
 %{extdesc} %{summary}.
 
+%package        -n %{base_name}-project
+Summary:        POM files for Jetty
+
+%description    -n %{base_name}-project
+%{extdesc} %{summary}.
+
 %package        javadoc
 Summary:        Javadoc for %{name}
 Group:          Productivity/Networking/Web/Servers
@@ -403,9 +409,9 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %{mvn_package} :jetty-distribution __noinstall
 
 # Separate package for POMs
-%{mvn_package} ':*-project' __noinstall
-%{mvn_package} ':*-parent' __noinstall
-%{mvn_package} ':*-bom' __noinstall
+%{mvn_package} ':*-project' project
+%{mvn_package} ':*-parent' project
+%{mvn_package} ':*-bom' project
 
 # artifact used by demo
 %{mvn_package} :test-mock-resources
@@ -496,6 +502,8 @@ ln -s %{_javadir}/%{base_name}/%{base_name}-ant.jar %{buildroot}%{_datadir}/ant/
 %files -n %{base_name}-proxy -f .mfiles-jetty-proxy
 
 %files -n %{base_name}-plus -f .mfiles-jetty-plus
+
+%files -n %{base_name}-project -f .mfiles-project
 
 %files -n %{base_name}-quickstart -f .mfiles-jetty-quickstart
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:27:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Package the infrastructure pom artifacts too
+
+-------------------------------------------------------------------
 Thu Oct 17 09:47:04 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Fix the Group tag for jetty-server subpackage
