@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20241016" schemaversion="4.1">
+<image name="OBS__MicroOS___20241017" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241016</productvar>
+      <productvar name="VERSION">20241017</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241016,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241017,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241016/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241017/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -715,6 +715,7 @@
       <repopackage name="libFLAC12"/>
       <repopackage name="libflashrom1"/>
       <repopackage name="libflatpak0"/>
+      <repopackage name="libflite1"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontenc1"/>
       <repopackage name="libfreebl3"/>
@@ -1220,6 +1221,7 @@
       <repopackage name="libQt6HunspellInputMethod6"/>
       <repopackage name="libQt6LabsAnimation6"/>
       <repopackage name="libQt6LabsFolderListModel6"/>
+      <repopackage name="libQt6LabsPlatform6"/>
       <repopackage name="libQt6LabsQmlModels6"/>
       <repopackage name="libQt6LabsSettings6"/>
       <repopackage name="libQt6LabsSharedImage6"/>
@@ -1235,6 +1237,7 @@
       <repopackage name="libQt6Qml6"/>
       <repopackage name="libQt6QmlCore6"/>
       <repopackage name="libQt6QmlLocalStorage6"/>
+      <repopackage name="libQt6QmlMeta6"/>
       <repopackage name="libQt6QmlModels6"/>
       <repopackage name="libQt6QmlNetwork6"/>
       <repopackage name="libQt6QmlWorkerScript6"/>
@@ -1250,6 +1253,7 @@
       <repopackage name="libQt6Quick3DRuntimeRender6"/>
       <repopackage name="libQt6Quick3DSpatialAudio6"/>
       <repopackage name="libQt6Quick3DUtils6"/>
+      <repopackage name="libQt6Quick3DXr6"/>
       <repopackage name="libQt6Quick6"/>
       <repopackage name="libQt6QuickControls2-6"/>
       <repopackage name="libQt6QuickControls2Impl6"/>
@@ -1263,6 +1267,7 @@
       <repopackage name="libQt6QuickTemplates2-6"/>
       <repopackage name="libQt6QuickTest6"/>
       <repopackage name="libQt6QuickTimeline6"/>
+      <repopackage name="libQt6QuickVectorImage6"/>
       <repopackage name="libQt6QuickWidgets6"/>
       <repopackage name="libQt6Sensors6"/>
       <repopackage name="libQt6ShaderTools6"/>

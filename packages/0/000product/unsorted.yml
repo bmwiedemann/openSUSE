@@ -375,6 +375,8 @@ unsorted:
   - aaa_base-yama-enable-ptrace 
   - aalib 
   - aalib-devel 
+  - aalto-xml 
+  - aalto-xml-javadoc 
   - abcde 
   - abcm2ps 
   - abi-compliance-checker 
@@ -4402,6 +4404,8 @@ unsorted:
   - flatpak-devel 
   - flatpak-spawn 
   - flatpak-xdg-utils 
+  - flatten-maven-plugin 
+  - flatten-maven-plugin-javadoc 
   - flawfinder 
   - fldigi 
   - fldigi-lang 
@@ -9643,6 +9647,8 @@ unsorted:
   - jp2a-zsh-completion 
   - jpcre2-devel 
   - jpegoptim 
+  - jpgpj 
+  - jpgpj-javadoc 
   - jpm 
   - jpnevulator 
   - jrnl 
@@ -11546,8 +11552,6 @@ unsorted:
   - libQt6Graphs6 
   - libQt6Grpc6 
   - libQt6HttpServer6 
-  - libQt6JsonRpc6 
-  - libQt6LanguageServer6 
   - libQt6Location6 
   - libQt6Mqtt6 
   - libQt6Nfc6 
@@ -13153,7 +13157,6 @@ unsorted:
   - libflickcurl-devel 
   - libflickcurl0 
   - libflint19 
-  - libflite1 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
   - libflite_cmu_indic_lang1 
@@ -15100,14 +15103,14 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb10_1 
-  - libopenvino2430 
-  - libopenvino_c2430 
-  - libopenvino_ir_frontend2430 
-  - libopenvino_onnx_frontend2430 
-  - libopenvino_paddle_frontend2430 
-  - libopenvino_pytorch_frontend2430 
-  - libopenvino_tensorflow_frontend2430 
-  - libopenvino_tensorflow_lite_frontend2430 
+  - libopenvino2440 
+  - libopenvino_c2440 
+  - libopenvino_ir_frontend2440 
+  - libopenvino_onnx_frontend2440 
+  - libopenvino_paddle_frontend2440 
+  - libopenvino_pytorch_frontend2440 
+  - libopenvino_tensorflow_frontend2440 
+  - libopenvino_tensorflow_lite_frontend2440 
   - libopenvswitch-3_3-0 
   - liboping-devel 
   - liboping0 
@@ -23803,7 +23806,6 @@ unsorted:
   - python-sip-doc 
   - python-sip4-common 
   - python-sip4-doc 
-  - python-sip6-doc 
   - python-six-doc 
   - python-sqlalchemy-migrate-doc 
   - python-sushy-doc 
@@ -24503,6 +24505,7 @@ unsorted:
   - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
+  - python310-asv-runner 
   - python310-async-lru 
   - python310-async-wrapper 
   - python310-async_generator 
@@ -28168,6 +28171,7 @@ unsorted:
   - python311-asttokens 
   - python311-astunparse 
   - python311-asv 
+  - python311-asv-runner 
   - python311-async-lru 
   - python311-async-wrapper 
   - python311-async_generator 
@@ -31746,6 +31750,7 @@ unsorted:
   - python312-asttokens 
   - python312-astunparse 
   - python312-asv 
+  - python312-asv-runner 
   - python312-async-lru 
   - python312-async-wrapper 
   - python312-async_generator 
@@ -35365,22 +35370,17 @@ unsorted:
   - qt6-imageformats-devel 
   - qt6-imageformats-docs-html 
   - qt6-imageformats-docs-qch 
-  - qt6-jsonrpc-private-devel 
+  - qt6-jsonrpc-devel-static 
   - qt6-kmssupport-devel-static 
   - qt6-kmssupport-private-devel 
-  - qt6-labsanimation-devel 
   - qt6-labsanimation-private-devel 
-  - qt6-labsfolderlistmodel-devel 
   - qt6-labsfolderlistmodel-private-devel 
-  - qt6-labsqmlmodels-devel 
+  - qt6-labsplatform-private-devel 
   - qt6-labsqmlmodels-private-devel 
-  - qt6-labssettings-devel 
   - qt6-labssettings-private-devel 
-  - qt6-labssharedimage-devel 
   - qt6-labssharedimage-private-devel 
-  - qt6-labswavefrontmesh-devel 
   - qt6-labswavefrontmesh-private-devel 
-  - qt6-languageserver-private-devel 
+  - qt6-languageserver-devel-static 
   - qt6-linguist-devel 
   - qt6-location 
   - qt6-location-devel 
@@ -35447,24 +35447,19 @@ unsorted:
   - qt6-protobuf-private-devel 
   - qt6-qml-devel 
   - qt6-qml-private-devel 
-  - qt6-qmlbuiltins-devel-static 
   - qt6-qmlcompiler-devel 
   - qt6-qmlcompiler-private-devel 
-  - qt6-qmlcore-devel 
   - qt6-qmlcore-private-devel 
   - qt6-qmldebug-devel-static 
   - qt6-qmldom-devel-static 
-  - qt6-qmllocalstorage-devel 
   - qt6-qmllocalstorage-private-devel 
   - qt6-qmlls-devel-static 
-  - qt6-qmlmodels-devel 
+  - qt6-qmlmeta-private-devel 
   - qt6-qmlmodels-private-devel 
   - qt6-qmlnetwork-private-devel 
   - qt6-qmltoolingsettings-devel-static 
   - qt6-qmltyperegistrar-devel-static 
-  - qt6-qmlworkerscript-devel 
   - qt6-qmlworkerscript-private-devel 
-  - qt6-qmlxmllistmodel-devel 
   - qt6-qmlxmllistmodel-private-devel 
   - qt6-qt5compat-devel 
   - qt6-qt5compat-docs-html 
@@ -35507,6 +35502,7 @@ unsorted:
   - qt6-quick3dspatialaudio-private-devel 
   - qt6-quick3dutils-devel 
   - qt6-quick3dutils-private-devel 
+  - qt6-quick3dxr-private-devel 
   - qt6-quickcontrols2-devel 
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
@@ -35516,18 +35512,15 @@ unsorted:
   - qt6-quickdialogs2-private-devel 
   - qt6-quickdialogs2quickimpl-devel 
   - qt6-quickdialogs2quickimpl-private-devel 
-  - qt6-quickdialogs2utils-devel 
   - qt6-quickdialogs2utils-private-devel 
   - qt6-quickeffectmaker 
   - qt6-quickeffectmaker-docs-html 
   - qt6-quickeffectmaker-docs-qch 
   - qt6-quickeffectmaker-examples 
   - qt6-quickeffects-private-devel 
-  - qt6-quicklayouts-devel 
   - qt6-quicklayouts-private-devel 
   - qt6-quickparticles-private-devel 
   - qt6-quickshapes-private-devel 
-  - qt6-quicktemplates2-devel 
   - qt6-quicktemplates2-private-devel 
   - qt6-quicktest-devel 
   - qt6-quicktest-private-devel 
@@ -35537,6 +35530,7 @@ unsorted:
   - qt6-quicktimeline-docs-qch 
   - qt6-quicktimeline-imports 
   - qt6-quicktimeline-private-devel 
+  - qt6-quickvectorimage-private-devel 
   - qt6-quickwidgets-devel 
   - qt6-quickwidgets-private-devel 
   - qt6-remoteobjects-devel 
@@ -37697,6 +37691,7 @@ unsorted:
   - systemd-portable 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 
+  - systemd-repart-dracut 
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
@@ -48471,6 +48466,7 @@ unsorted:
   - wine-wow64 
   - wine-wow64-devel 
   - winetricks 
+  - winetricks-bash-completion 
   - winpr-devel 
   - winpr2-devel 
   - winrs 
@@ -49083,7 +49079,6 @@ unsorted:
   - yast2-audit-laf 
   - yast2-boot-server 
   - yast2-buildtools 
-  - yast2-caasp 
   - yast2-cluster 
   - yast2-core-devel 
   - yast2-devtools 

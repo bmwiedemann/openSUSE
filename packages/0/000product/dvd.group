@@ -1558,6 +1558,7 @@
     <package name="libQt6HunspellInputMethod6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6LabsAnimation6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsFolderListModel6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6LabsPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsQmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1575,6 +1576,7 @@
     <package name="libQt6Qml6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QmlCore6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QmlLocalStorage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6QmlMeta6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QmlNetwork6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QmlWorkerScript6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1590,6 +1592,7 @@
     <package name="libQt6Quick3DRuntimeRender6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Quick3DSpatialAudio6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Quick3DUtils6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt6Quick3DXr6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Quick6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QuickControls2-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QuickControls2Impl6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1603,12 +1606,13 @@
     <package name="libQt6QuickTemplates2-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QuickTest6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QuickTimeline6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt6QuickVectorImage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6QuickWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Sensors6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6ShaderTools6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6SpatialAudio6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Sql6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libQt6Svg6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt6Svg6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6SvgWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt6Test6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6TextToSpeech6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1990,6 +1994,7 @@
     <package name="libfind4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libflashrom1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libflite1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libfmt9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libfolks-eds26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
