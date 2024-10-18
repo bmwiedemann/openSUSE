@@ -95,4 +95,23 @@
   * Support environment variables PYTHON_GIL / PYTHON_CPU_COUNT.</comment>
     <requestid>1183033</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ffc093057d7f726274811c260a58abe</srcmd5>
+    <version>2.8.0</version>
+    <time>1729259917</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.0:
+  * Refactor operations to fully work on AArch64.
+  * Fix the max_mem_rss measurement
+  * Allow setting the amount of warmup values in Runner
+  * Add hooks for calling arbitrary code around each benchmark
+  * Use KiB and MiB as units instead of kB and MB.
+  * Fix Spelling Error
+  * Make hooks work in bench_command subprocesses
+  * Fix deprecated method in bench_time_func example
+  * Separate subprocess writing/parsing into their own functions
+  * Fix &quot;std dev&quot; link
+  * Implement --timeout when running benchmarks</comment>
+    <requestid>1208843</requestid>
+  </revision>
 </revisionlist>

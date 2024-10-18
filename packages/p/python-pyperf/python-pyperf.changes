@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:45:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Refactor operations to fully work on AArch64.
+  * Fix the max_mem_rss measurement
+  * Allow setting the amount of warmup values in Runner
+  * Add hooks for calling arbitrary code around each benchmark
+  * Use KiB and MiB as units instead of kB and MB.
+  * Fix Spelling Error
+  * Make hooks work in bench_command subprocesses
+  * Fix deprecated method in bench_time_func example
+  * Separate subprocess writing/parsing into their own functions
+  * Fix "std dev" link
+  * Implement --timeout when running benchmarks
+
+-------------------------------------------------------------------
 Mon Jun 24 15:29:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.0:
