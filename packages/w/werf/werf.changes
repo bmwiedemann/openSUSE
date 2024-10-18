@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 17 19:07:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.10:
+  * chore: release 2.10.10
+  * fix(build, docker, dockerfile): remove ONBUILD support in base
+    images to reduce overhead
+  * fix: revert go-git to v5.10.1 due to broken backward
+    compatibility
+  * fix(build, stapel, docker): /.werf/stapel/embedded/bin/bash:
+    warning: setlocale: LC_ALL: cannot change locale
+  * fix(locker): replace panic with error and add details for lost
+    lease case
+
+-------------------------------------------------------------------
 Wed Oct 02 06:22:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.9:
