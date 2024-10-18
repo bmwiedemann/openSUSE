@@ -1,7 +1,7 @@
 #
 # spec file for package jcodings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %global cluster jruby
 Name:           jcodings
-Version:        1.0.12
+Version:        1.0.58
 Release:        0
 Summary:        Java-based codings helper classes for Joni and JRuby
 License:        MIT
 Group:          Development/Libraries/Java
-URL:            https://github.com/jruby/jcodings
-Source0:        https://github.com/jruby/jcodings/archive/%{version}.tar.gz
-BuildRequires:  ant
+URL:            https://github.com/%{cluster}/%{name}
+Source0:        %{url}/archive/refs/tags/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-tools
+BuildRequires:  maven-local
+BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
@@ -35,27 +36,36 @@ BuildArch:      noarch
 %description
 %{name}: java-based codings helper classes for Joni and JRuby.
 
-%prep
-%setup -q
+%package javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
 
-find -name '*.class' -exec rm -f '{}' \;
-find -name '*.jar' -exec rm -f '{}' \;
+%description javadoc
+API documentation for %{name}.
+
+%prep
+%autosetup -n %{name}-%{name}-%{version}
+
+%pom_xpath_remove pom:extensions
+%pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+
+%{mvn_file} : %{name}
 
 %build
-echo "See %{url} for more info about the %{name} project." > README.txt
-
-ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+	-Dsource=8
 
 %install
-mkdir -p %{buildroot}%{_javadir}
+%mvn_install
+%fdupes %{buildroot}%{_javadocdir}/%{name}
 
-cp -p target/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-pushd %{buildroot}%{_javadir}/
-  ln -s %{name}-%{version}.jar %{name}.jar
-popd
+%files -f .mfiles
+%license LICENSE.txt
+%doc README.md
 
-%files
-%{_javadir}/*
-%doc README.txt
+%files javadoc -f .mfiles-javadoc
+%license LICENSE.txt
 
 %changelog
