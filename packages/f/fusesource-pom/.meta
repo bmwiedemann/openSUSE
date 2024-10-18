@@ -1,0 +1,8 @@
+<package name="fusesource-pom" project="openSUSE:Factory">
+  <title>Parent POM for FuseSource Maven projects</title>
+  <description>This is a shared POM parent for FuseSource Maven projects
+
+</description>
+  <devel project="Java:packages" package="fusesource-pom"/>
+  <url>http://fusesource.com/</url>
+</package>
