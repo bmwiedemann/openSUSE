@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:49:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14:
+  * Fix regex escape
+  * add project urls to setup files
+  * Fix invalid escape sequence in regex
+
+-------------------------------------------------------------------
 Wed Apr  3 06:35:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing tex style amsmath.sty to BuildRequires. 
+- Add missing tex style amsmath.sty to BuildRequires.
 
 -------------------------------------------------------------------
 Thu Mar 14 23:54:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
@@ -61,7 +69,7 @@ Thu Jul 23 07:28:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Wed Aug 16 08:11:22 UTC 2017 - daniel.molkentin@suse.com
 
-- Add fdupes 
+- Add fdupes
 
 -------------------------------------------------------------------
 Tue Aug 15 16:06:39 UTC 2017 - daniel.molkentin@suse.com

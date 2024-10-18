@@ -82,4 +82,18 @@
     <comment>- Add missing tex style amsmath.sty to BuildRequires.</comment>
     <requestid>1164268</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>665215fe560d960c2aecf4556838c69c</srcmd5>
+    <version>1.14</version>
+    <time>1729259921</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14:
+  * Fix regex escape
+  * add project urls to setup files
+  * Fix invalid escape sequence in regex
+
+- Add missing tex style amsmath.sty to BuildRequires.
+- Add fdupes</comment>
+    <requestid>1208849</requestid>
+  </revision>
 </revisionlist>

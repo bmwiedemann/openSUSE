@@ -18,7 +18,7 @@
 
 %define base_name pypandoc
 Name:           python-pypandoc
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
