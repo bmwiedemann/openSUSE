@@ -62,4 +62,27 @@
 - Drop python-311.patch as it is included upstream</comment>
     <requestid>1196099</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>325fdecd014da3af42cb783f6f543ad5</srcmd5>
+    <version>4.10.1</version>
+    <time>1729259924</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.10.1:
+  * Reject request with incorrect transport #367 (commit)
+  * Reject requests with incorrect transport #367 (commit)
+  * Fixed runtime error when disconnecting all clients #368
+    (commit)
+  * More flexible handling of the ASGI path #359 (commit)
+  * Remove unused parameter in log message #377 (commit)
+  * Minor updates to the server and client documentation (commit)
+  * Add Python 3.13 CI builds (commit)
+  * Run tests with mocked eventlet to avoid 3.13 failures
+    (commit)
+
+- Update to version 4.3.4
+ * Remove unused version constant #262 (commit 1 commit 2)
+ * Reuse the aiohttp client session on reconnects #226 (commit)
+ * Remove executable permissions from files that lack shebang lines #240 (commit) (thanks Ben Beasley!)</comment>
+    <requestid>1208853</requestid>
+  </revision>
 </revisionlist>

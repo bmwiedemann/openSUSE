@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-engineio
-Version:        4.8.0
+Version:        4.10.1
 Release:        0
 Summary:        EngineIO server
 License:        MIT

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:52:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.1:
+  * Reject request with incorrect transport #367 (commit)
+  * Reject requests with incorrect transport #367 (commit)
+  * Fixed runtime error when disconnecting all clients #368
+    (commit)
+  * More flexible handling of the ASGI path #359 (commit)
+  * Remove unused parameter in log message #377 (commit)
+  * Minor updates to the server and client documentation (commit)
+  * Add Python 3.13 CI builds (commit)
+  * Run tests with mocked eventlet to avoid 3.13 failures
+    (commit)
+
+-------------------------------------------------------------------
 Wed Aug 14 00:46:24 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Update to version 4.8.0
@@ -22,7 +37,7 @@ Tue Feb 21 10:05:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Thu Oct  6 22:22:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.3.4 
+- Update to version 4.3.4
   * Let companion ASGI app handle lifespan events #287 (commit)
   * Use configured request timeout when making a WebSocket connection #286 (commit) (thanks jpfarias!)
 
@@ -44,7 +59,7 @@ Wed Jan 19 12:31:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 - version 4.3.1
  * Fix support for Sanic v21.9.0 and up (commit) (thanks 13g10n!)
  * Include example code in flake8 pass (commit)
- * Remove unused version constant #262 (commit 1 commit 2) 
+ * Remove unused version constant #262 (commit 1 commit 2)
  * Backward incompatible change: Reject websocket messages larger than max_http_buffer_size #260 (commit)
  * Enable or disable specific transports #259 (commit) (thanks Maciej Szeptuch!)
  * Option to disable the SIGINT handler in the client (commit)
@@ -53,13 +68,13 @@ Wed Jan 19 12:31:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
  * Remove unsanitized client input from error messages #250 (commit) (thanks André Carvalho!)
  * Use plaintext Content-Type when using polling #248 (commit) (thanks Tobias!)
  * Return better error messages for client connection errors #243 (commit)
- * Reuse the aiohttp client session on reconnects #226 (commit) 
+ * Reuse the aiohttp client session on reconnects #226 (commit)
  * Support setting socketio_path to the root URL #242 (commit)
  * Use the gevent selector to avoid 1024 file handle limitation of select#228 (commit)
  * Pass reason when closing a WebSocket connection (commit)
  * Improved project structure (commit)
- * Remove executable permissions from files that lack shebang lines #240 (commit) (thanks Ben Beasley!)  
- 
+ * Remove executable permissions from files that lack shebang lines #240 (commit) (thanks Ben Beasley!)
+
 -------------------------------------------------------------------
 Tue May 25 17:35:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
