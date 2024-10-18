@@ -124,4 +124,18 @@
   * wsgi server: address family discovery is not quite right</comment>
     <requestid>1159228</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aac1d136b473d4f0ce4fae75c10a357c</srcmd5>
+    <version>0.21.0</version>
+    <time>1729259916</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.0:
+  * [CHANGE] Reject invalid (not GET or OPTION) HTTP methods.
+    #1019
+  * [ENHANCEMENT] Allow writing metrics when holding a lock for
+    the metric in the same thread. #1014
+  * [BUGFIX] Check for and error on None label values. #1012
+  * [BUGFIX] Fix timestamp comparison. #1038</comment>
+    <requestid>1208842</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prometheus-client
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0
