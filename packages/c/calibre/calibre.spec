@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.19.0
+Version:        7.20.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -78,12 +78,11 @@ BuildRequires:  hyphen-devel >= 2.8.8
 #upstream use:  iconv >= 1.17
 BuildRequires:  liberation-fonts
 BuildRequires:  libmtp-devel >= 1.1.21
-# Upstream use libopenssl-devel >= 3.1.3
-BuildRequires:  libopenssl-3-devel >= 3.0.8
+# Upstream use libopenssl-devel >= 3.1.5
+BuildRequires:  libopenssl-3-devel >= 3.1.4
 BuildRequires:  libpodofo-devel >= 0.10.3
 BuildRequires:  libpoppler-devel >= 21.11.0
-# upstream use: libstemmer-devel >= 2.2.0
-BuildRequires:  libstemmer-devel >= 2.1.0
+BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
 # upstream use: mozjpeg >= 4.0.3
 BuildRequires:  optipng >= 0.7.7
@@ -116,15 +115,17 @@ BuildRequires:  pkgconfig(gpg-error) >= 1.43
 BuildRequires:  pkgconfig(hunspell) >= 1.7.0
 BuildRequires:  pkgconfig(icu-i18n) < 76.0
 BuildRequires:  pkgconfig(icu-i18n) >= 73.2
+# Upstream use 6.1.2
+BuildRequires:  ffmpeg-7-libavutil-devel >= 6.1.2
+BuildRequires:  ffmpeg-7-libavcodec-devel >= 6.1.2
+BuildRequires:  ffmpeg-7-libavformat-devel >= 6.1.2
 BuildRequires:  pkgconfig(libffi) >= 3.4.4
 BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
 BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.5.0
 BuildRequires:  pkgconfig(libpng16) >= 1.6.40
-# Upstream use pkgconfig(libusb-1.0) >= 1.0.26
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
-# Upstream use pkgconfig(libtiff) >= 4.6.0
-BuildRequires:  pkgconfig(libtiff-4) >= 4.0.9
+BuildRequires:  pkgconfig(libtiff-4) >= 4.6.0
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.26
 # upstream use BuildRequires:  pkgconfig(ncurses) >= 6.4
 BuildRequires:  pkgconfig(ncurses) >= 6.1
 BuildRequires:  pkgconfig(readline) >= 8.2
@@ -135,8 +136,7 @@ BuildRequires:  pkgconfig(uchardet) >= 0.0.7
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
 BuildRequires:  jxrlib-devel >= 0.2.4
-# Upstream use libjpeg-turbo >= 3.0.0
-BuildRequires:  libjpeg-turbo >= 2.1.5.1
+BuildRequires:  libjpeg-turbo >= 3.0.0
 BuildRequires:  python-rpm-macros
 BuildRequires:  python311-Brotli >= 1.1.0
 BuildRequires:  python311-FontTools >= 4.39.3
@@ -185,11 +185,11 @@ BuildRequires:  python311-soupsieve >= 2.5
 BuildRequires:  python311-texttable >= 1.6.4
 BuildRequires:  python311-toml >= 0.10.2
 BuildRequires:  python311-xxhash >= 3.3.0
-BuildRequires:  pkgconfig(libjpeg) >= 2.1.2
+BuildRequires:  pkgconfig(libjpeg) >= 3.0.0
 BuildRequires:  pkgconfig(libwebp) >= 1.3.2
-# Upstream use pkgconfig(libxml-2.0) >= 2.11.5
+# Upstream use pkgconfig(libxml-2.0) >= 2.12.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
-BuildRequires:  pkgconfig(libxslt) >= 1.1.38
+BuildRequires:  pkgconfig(libxslt) >= 1.1.39
 #BuildRequires:  python-unrardll >= 0.1.5
 BuildRequires:  python311-py7zr >= 0.20.6
 %if 0%{?suse_version} > 1500
@@ -206,7 +206,7 @@ Requires:       liberation-fonts
 Requires:       libmtp9 >= 1.1.21
 Requires:       libpng16-16 >= 1.6.40
 Requires:       libwmf >= 0.2.8
-Requires:       optipng >= 0.7.5
+Requires:       optipng >= 0.7.7
 # Dont known if upstream need it. It say only podofo. But suse has removed it:  Requires: podofo >= 0.10.1
 Requires:       poppler-tools >= 21.11.0
 Requires:       python311 >= 3.10
@@ -267,9 +267,9 @@ Requires:       bzip2 >= 1.0.8
 # Upstream use expat >= 2.5.0
 Requires:       expat >= 2.4.4
 Requires:       libsqlite3-0 >= 3.43.0
-Requires:       unrar >= 6.2.5
+Requires:       unrar >= 6.2.11
 Requires:       xdg-utils >= 1.0.2
-Requires:       xz >= 5.2.3
+Requires:       xz >= 5.4.1
 Requires:       zlib >= 1.2.13
 
 Requires(pretrans):findutils

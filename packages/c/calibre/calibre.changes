@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 18 05:00:12 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.20.0
+  * New Features
+    - PDF Input: Automatic header/footer detection and removal
+    - Read Aloud: Allow configuring an extra pause at the end of
+      every sentence when using the Piper TTS engine
+    - PDF Output: Add _WIDTH_PIXELS_ and _HEIGHT_PIXELS_ variables
+      to know the width and height of the header/footer area in
+      templates
+    - Windows: Use calibre's bundled SSL certificates instead of
+      the system certificate store by default
+    - Trim image tool: Add a control to adjust aspect ratio
+    - Kobo driver: Add support for the new firmware used by the
+      Tolino Shine 5
+  * Bug Fixes
+    - Fix a regression in previous release that broke copying of
+      book to another library if the books author does not exist
+      in the destination database
+    - Read aloud: Piper backend: Fix not working with voices whose
+      names have non-ASCII characters on Windows.
+    - Content server: Fix book with non-ASCII filenames not
+      downloading in the Kindle browser when using the /mobile view
+    - Content server: Fix embedding the server HTML inside a third
+      party iframe causing an error
+
+-------------------------------------------------------------------
 Wed Oct  9 13:14:19 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error and remove podofo as buildrequire and require, 
