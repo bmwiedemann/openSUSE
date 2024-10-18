@@ -1,7 +1,7 @@
 #
 # spec file for package python-ligo-segments
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://git.ligo.org/lscsoft/ligo-segments
 Source:         https://files.pythonhosted.org/packages/source/l/ligo-segments/ligo-segments-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ligo-segments-python312-compat.patch badshah400@gmail.com -- Initialize PyTypeObjects with PyVarObject_HEAD_INIT for python 3.12 compatibility; upstream commit
+Patch0:         ligo-segments-python312-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

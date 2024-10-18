@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 23:12:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ligo-segments-python312-compat.patch -- Initialize
+  PyTypeObjects with PyVarObject_HEAD_INIT for python 3.12
+  compatibility; upstream commit be7c93b.
+
+-------------------------------------------------------------------
 Wed Aug 24 22:57:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Include additional .pth files installed for openSUSE >= 1550.
