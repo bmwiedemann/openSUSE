@@ -17,7 +17,7 @@
 
 
 Name:           longhornctl
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        CLI for the Longhorn cloud native distributed block storage
 License:        Apache-2.0

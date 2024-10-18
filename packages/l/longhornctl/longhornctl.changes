@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 18 06:03:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.2:
+  * release: update version file for v1.7.2
+  * fix(install/preflight): cos
+  * release: update version file for v1.7.2-rc2
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    4c71f1c
+  * release: update version file for v1.7.2-rc1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    a019530
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    3a320d8
+  * fix(check): check if module `dm_crypt` is enabled
+  * fix(install): enable module `dm_crypt`
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    797b589
+  * fix(deps): update k8s.io/utils digest to 49e7df5
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    928beb3
+  * fix(deps): update patch digest dependencies to v0.31.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    7060fef
+  * fix(deps): update module sigs.k8s.io/kustomize/kyaml to v0.17.2
+  * fix(deps): update patch digest dependencies
+
+-------------------------------------------------------------------
 Wed Sep 25 09:26:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package longhornctl: CLI for the Longhorn cloud native

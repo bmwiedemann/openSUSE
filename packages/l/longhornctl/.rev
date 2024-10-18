@@ -7,4 +7,12 @@
     <comment>new package longhornctl: CLI for the Longhorn cloud native distributed block storage</comment>
     <requestid>1204373</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a97f3dd1a86006d949970b9b60bc5215</srcmd5>
+    <version>1.7.2</version>
+    <time>1729259871</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208778</requestid>
+  </revision>
 </revisionlist>
