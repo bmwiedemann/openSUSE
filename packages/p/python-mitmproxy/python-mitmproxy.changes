@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Fri Oct 18 00:32:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 11.0.0:
+  * mitmproxy now supports transparent HTTP/3 proxying.
+  * Add HTTP3 support in HTTPS reverse-proxy mode.
+  * mitmproxy now officially supports Python 3.13.
+  * Tighten HTTP detection heuristic to better support custom
+    TCP-based protocols.
+  * Add show_ignored_hosts option to display ignored flows in the
+    UI. This option is implemented as a temporary workaround and
+    will be removed in the future.
+  * Fix slow tnetstring parsing in case of very large tnetstring.
+  * Add getaddrinfo-based fallback for DNS resolution if we are
+    unable to determine the operating system's name servers.
+  * Improve the error message when users specify the certs option
+    without a matching private key.
+  * Fix a bug where intermediate certificates would not be
+    transmitted when using QUIC.
+  * Fix a bug where fragmented QUIC client hellos were not handled
+    properly.
+  * Emit a warning when users configure a TLS version that is not
+    supported by the current OpenSSL build.
+  * Fix a bug where mitmproxy would crash when receiving
+    STOP_SENDING QUIC frames.
+  * Fix error when unmarking all flows.
+  * Add addon to update the alt-svc header in reverse mode.
+  * Do not send unnecessary empty data frames when streaming
+    HTTP/2.
+  * Fix of measurement unit in HAR import, duration is in
+    milliseconds.
+  * Connection.tls_version now is QUICv1 instead of QUIC for QUIC.
+  * Add support for full mTLS with client certs between client and
+    mitmproxy.
+  * Update documentation adding a list of all possibile
+    web_columns.
+- Updates from version 10.4.2:
+  * Fix a crash on startup when mitmproxy is unable to determine
+    the OS' DNS servers
+- Updates from version 10.4.1:
+  * Fix a bug where macOS local mode would not start up on macOS.
+  * Fix UDP error handling when we learn that the remote has
+    disconnected.
+- Updates from version 10.4.0:
+  * Add support for DNS over TCP.
+  * Add first MVP new Capture Tab in mitmweb
+  * Add HttpConnectedHook and HttpConnectErrorHook.
+  * Fix non-linear growth in processing time for large HTTP bodies.
+  * Fix a bug where connections would be incorrectly ignored with
+    allow_hosts.
+  * Fix zstd decompression to read across frames.
+  * Handle certificates we cannot parse more gracefully.
+  * Parse compressed domain names in ResourceRecord data.
+  * Fix a bug where mitmweb's flow list would not stay at the
+    bottom.
+  * Fix a bug where SSH connections would be incorrectly handled as
+    HTTP.
+  * Skip UTF-8 byte-order marks (BOM) when loading HAR files.
+  * Allow typing.Sequence[str] to be an editable option.
+  * Add Host header to CONNECT requests.
+  * Support all query types in DNS mode.
+  * Fix a bug where mitmproxy would crash for pipelined HTTP flows.
+  * Add an optional "index" column for mitmweb.
+- Updates from version 10.3.1:
+  * Release tags are now prefixed with v again.
+  * Fix a bug where mitmproxy would not exit when -n is passed.
+  * Set the unbuffered (stdout/stderr) flag for the mitmdump
+    PyInstaller build.
+  * Fix a bug where client replay would not work with proxyauth.
+  * Fix slowdown when sending large amounts of data over HTTP/2.
+  * Add an option to strip HTTPS records from DNS responses to
+    block encrypted ClientHellos.
+  * Add an API to parse HTTPS records from DNS RDATA.
+  * Releases now come with a Sigstore attestations file to
+    demonstrate build provenance.
+- Updates from version 10.3.0:
+  * Add support for editing non text files in a hex editor
+  * Add server_connect_error hook that is triggered when connection
+    establishment fails.
+  * Add section in mitmweb for rendering, adding and removing a
+    comment
+  * Fix multipart form content view being unusable.
+  * Documentation Improvements on CA Certificate Generation
+  * Make it possible to read flows from stdin with mitmweb.
+  * Update aioquic dependency to >= 1.0.0, < 2.0.0.
+  * Fix a bug where async client_connected handlers would crash
+    mitmproxy.
+  * Add button to close flow details panel
+  * Ignore SIGPIPE signals when there is lots of traffic. Socket
+    errors are handled directly and do not require extra signals
+    that generate noise.
+  * Add primitive websocket interception and modification
+  * Add support for exporting websocket messages when using "raw"
+    export.
+  * The "save body" feature now also includes WebSocket messages.
+  * Fix compatibility with older cryptography versions and silence
+    a DeprecationWarning on Python <3.11.
+  * Fix a bug when proxying unicode domains.
+- Updates from version 10.2.4:
+  * Fix a bug where errors during startup would not be displayed
+    when running mitmproxy.
+  * Use newer cryptography APIs to avoid
+    CryptographyDeprecationWarnings. This bumps the minimum
+    required version to cryptography 42.0.
+- Updates from version 10.2.3:
+  * Fix a regression where allow_hosts/ignore_hosts would break
+    with IPv6 connections.
+  * Fix bug where failed CONNECT request URLs are saved to HAR
+    files incorrectly.
+  * Add an arm64 variant for the precompiled macOS app.
+  * Fix duplicate answers being returned in DNS queries.
+  * Fix bug where wireguard config is generated with incorrect
+    endpoint when two or more NICs are active.
+  * Fix a regression when leaf cert creation would fail with
+    intermediate CAs in ca_file.
+  * Add content_view_lines_cutoff option to mitmdump
+  * Allow runtime modifications of HTTP flow filters for server
+    replays
+  * Fix bug view options menu in case of overflow
+  * Allow --allow-hosts and --ignore-hosts to work together
+
+-------------------------------------------------------------------
 Tue Feb 27 14:37:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 10.2.2:

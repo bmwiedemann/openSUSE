@@ -19,13 +19,13 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-mitmproxy
-Version:        10.2.2
+Version:        11.0.0
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
-Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
+Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module aioquic >= 0.9.4}
@@ -111,8 +111,6 @@ mitmweb is a web-based interface for mitmproxy.
 %autosetup -p1 -n mitmproxy-%{version}
 rm mitmproxy/contrib/kaitaistruct/make.sh
 
-sed -i 's/--color=yes//' setup.cfg
-
 echo "
 # increase test deadline for slow obs executions
 import hypothesis
@@ -136,7 +134,8 @@ hypothesis.settings.register_profile(
 %check
 # test_refresh fails on i586... wrong timestamp type, maybe?
 # test_rollback and test_output[None-expected_out0-expected_err0] just randomly fail on i586
-%pytest -k "not (test_refresh or test_rollback or test_output)" --hypothesis-profile="obs"
+# test_dns and test_name_servers require networking
+%pytest -k "not (test_refresh or test_rollback or test_output or test_name_servers or test_dns)" --hypothesis-profile="obs"
 
 %post
 %python_install_alternative mitmdump
