@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 18 00:59:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 3.3.3:
+  * Use versioned-dirs only for unfiltered vendoring, as cargo-vendor-filterer does not support this flag yet
+  * crates: get libroast dep from crates.io
+  * feat: support uncompressed tarballs or with `.tar` extension
+  * cli: improve description
+  * cargo: update lockfile and bump crate versions
+  * fix changelog
+  * fix: properly set which version to set in the manifest
+
+-------------------------------------------------------------------
 Sat Oct 12 06:56:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 2.0.0

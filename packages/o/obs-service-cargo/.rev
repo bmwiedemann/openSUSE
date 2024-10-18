@@ -246,4 +246,20 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1207400</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>14c09503b4e13ea07372dd41de15acd2</srcmd5>
+    <version>3.3.3</version>
+    <time>1729259869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.3:
+  * Use versioned-dirs only for unfiltered vendoring, as cargo-vendor-filterer does not support this flag yet
+  * crates: get libroast dep from crates.io
+  * feat: support uncompressed tarballs or with `.tar` extension
+  * cli: improve description
+  * cargo: update lockfile and bump crate versions
+  * fix changelog
+  * fix: properly set which version to set in the manifest
+</comment>
+    <requestid>1208754</requestid>
+  </revision>
 </revisionlist>
