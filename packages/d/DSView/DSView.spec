@@ -1,7 +1,7 @@
 #
 # spec file for package DSView
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,26 @@
 
 
 Name:           DSView
-Version:        1.2.2
+Version:        1.3.2
 Release:        0
 Summary:        GUI for DreamSourceLab USB-based instruments
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.dreamsourcelab.com
 Source0:        https://github.com/DreamSourceLab/DSView/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0000-added-missing-includes.patch
+
+BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  fftw3-threads-devel
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  fftw3-devel
+BuildRequires:  gcc-c++
+BuildRequires:  glib2-devel
+BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libusb-1_0-devel
+BuildRequires:  python3-devel
+BuildRequires:  zlib-devel
+
 Obsoletes:      libsigrok4DSL1
 Obsoletes:      libsigrokdecode4DSL4
 
@@ -55,18 +50,24 @@ GUI for DreamSourceLab USB-based instruments
 %cmake
 %cmake_build
 
+%check
+%ctest
+
 %install
 %cmake_install
-%fdupes %{buildroot}%{_datadir}/libsigrokdecode4DSL/
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/dsview.desktop
+%{_datadir}/icons/hicolor
+%{_datadir}/icons/hicolor/scalable
+%{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/dsview.svg
 %{_datadir}/pixmaps/dsview.svg
-%{_udevrulesdir}/*
 %{_datadir}/libsigrokdecode4DSL/
+%{_udevrulesdir}/*
 
 %changelog

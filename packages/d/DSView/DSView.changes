@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:21:36 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added 0000-added-missing-includes.patch to fix build
+- Remove various unnecessary BuildRequires
+- Update to v1.3.2
+  common
+  *Fix crashes when dragging windows between screens
+  *Add drag-and-drop and window arrangement support for native Windows windows
+  *Improve adaptive window and font display at different DPI settings
+  *Fix the issue of missing firmware on macOS
+  *Modify the color allocation of the cursor to improve clarity.
+  *Fix log file creation issue on Windows
+  *Fix display area coverage and font rendering problems
+  for logic analyzer
+  *Add region waveform save and export feature
+  *Fix crashes from cursor placement beyond waveform area during decoding
+  *Fix crashes with specific sampling parameters in loop mode
+  *Fix crashes from multi-byte search in decoding results
+  *Improve distance measurement edge selection
+  *Add reminder for channel settings when adding a decoder
+  *Implement auto-scroll to latest waveform in loop mode
+  *Fix protocol decoding issues (CAN/QSPI/DMX512/LIN/...)
+  for oscilloscope
+  *Improve pulse count measurement accuracy
+  *Fix file export issue with single channel enabled
+  *Resolve crashes from FFT parameter modification during data acquisition
+  *Fix waveform and vertical resolution calculation issues in math operations
+  *Fix waveform anomalies from channel offset exceeding boundaries
+  *Improve accuracy of mouse measurements
+- Update to v1.3.1
+  common
+  * Fix the erroneous bin files released for Linux/macOS systems
+  for logic analyzer
+  * Add support for new hardware (USB2.0 interface/1G sampling rate)
+  * Fix the external clock issue with the U3Pro series
+  * Fix the issue with trigger position display in repeat mode
+  * Fix the problem with the mouse measurements in repeat mode
+  * Improve the accuracy of threshold voltage
+  * Fix the issue with the Timing decoder
+  * Expand the number of bytes decoded per frame for the DMX512 decoder
+  for oscilloscope
+  * Fix the incorrect measurements on first trigger for U3P100
+  * Fix the error in measurements when the window size changes
+  * Fix the issue with saving measurements into DSL files
+  * Fix the loading error of duty cycle in DSL files
+  for data acquisiton
+  * Fix the issue with incorrect values when export CSV file
+  * Fix the problem with waveform display when the window size changes
+  * Fix the issues with waveform when different channel are enabled
+- Update to v1.3.0
+  common
+  * Improve device management, decouple it from wave acquisition and display
+  * Add support for dynamically switching font sizes
+  * Modify the multilingual framework to support language extensions
+  * Modify the format of session files
+  * Modify the loading and display of data files
+  * Optimize the switching between multiple devices
+  * Add a mandatory prompt to save data when switching
+  * Update demo device
+  * Added the ability to view and clear logs
+  for logic analyzer
+  * Add real-time display support for stream mode
+  * Add scrolling (loop) mode to continuously collect and display in real-time
+  * Update repeat mode to maintain previous waveform before switching
+  * Update the display and search of waveform edges
+  * Add and fix decoders (e.g., can-fd, mipi-rffe, UFCS, etc.)
+  * Support ordering of decoders and waveform channels, and remember the order
+  * Support exporting multiple column decoding results to the same CSV file
+  * Support mapping and saving of decoder names and decoding channel names
+  * Add Chinese translation for decoder options
+  for oscilloscope
+  * Update the data storage method for oscilloscope channels
+  * Fix an issue with file saving when using single channel
+
+-------------------------------------------------------------------
 Thu Mar 16 08:28:32 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 1.2.2:
