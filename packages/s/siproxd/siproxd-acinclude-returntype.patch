@@ -1,0 +1,11 @@
+--- siproxd-0.8.3/acinclude.m4	2024/10/17 16:37:01	1.1
++++ siproxd-0.8.3/acinclude.m4	2024/10/17 16:37:18
+@@ -340,7 +340,7 @@
+ AC_COMPILE_IFELSE(
+ [AC_LANG_SOURCE([
+   #include <osipparser2/osip_parser.h>
+-  main() {
++  int main() {
+   osip_message_t t;
+   int  e;
+   e=t.contacts.nb_elt;

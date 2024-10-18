@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 18:38:23 CEST 2024 - ro@suse.de
+
+- add siproxd-acinclude-returntype.patch to fix build with
+  recent gcc 
+
+-------------------------------------------------------------------
 Mon Feb 26 13:10:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

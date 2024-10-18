@@ -49,6 +49,7 @@ Patch0:         siproxd-libs.patch
 Patch1:         siproxd.plugin_fix_bogus_via.c.patch
 # PATCH-FIX-UPSTREAM https://sourceforge.net/p/siproxd/bugs/65/
 Patch2:         reproducible.patch
+Patch3:         siproxd-acinclude-returntype.patch
 BuildRequires:  docbook-utils
 BuildRequires:  libosip2-devel
 BuildRequires:  libtool

@@ -392,4 +392,13 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
     <comment></comment>
     <requestid>1162922</requestid>
   </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>1a20a1f0235bb25412a48f57c695bc30</srcmd5>
+    <version>0.8.3</version>
+    <time>1729259736</time>
+    <user>anag+factory</user>
+    <comment>- add siproxd-acinclude-returntype.patch to fix build with
+  recent gcc</comment>
+    <requestid>1208679</requestid>
+  </revision>
 </revisionlist>
