@@ -7,4 +7,14 @@
     <comment>This is patch-ng — a Python module for parsing and applying unified diffs. It is needed by Conan, a C/C++ package manager, that I have packaged and will submit to Factory once patch-ng has made its way there.</comment>
     <requestid>1120856</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a91d92e97895f0db325a258d8355e7c5</srcmd5>
+    <version>1.18.0</version>
+    <time>1729259924</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.18.0:
+  * Feature: Require python 3.6 as minimal version
+  * Fix: Fix DeprecationWarning/SyntaxWarning in regex</comment>
+    <requestid>1208852</requestid>
+  </revision>
 </revisionlist>
