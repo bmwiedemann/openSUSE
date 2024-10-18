@@ -32,6 +32,8 @@ Summary:        Python HTTP Library
 License:        Apache-2.0
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#psf/requests#6731
+Patch0:         inject-default-ca-bundles.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -117,8 +119,8 @@ touch Pipfile
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.md README.md
-%{python_sitelib}/requests/
-%{python_sitelib}/requests-*
+%{python_sitelib}/requests
+%{python_sitelib}/requests-%{version}*.egg-info
 %endif
 
 %changelog

@@ -44,7 +44,6 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen >= 1.9.8
 BuildRequires:  fdupes
 %endif
-BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel

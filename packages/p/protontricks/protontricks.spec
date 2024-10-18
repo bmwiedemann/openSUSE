@@ -17,29 +17,24 @@
 #
 
 
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 Name:           protontricks
 Version:        1.12.0
 Release:        0
 Summary:        Winetricks for Proton-enabled Games
 License:        GPL-3.0-only
-Group:          System/Emulators/PC
 URL:            https://github.com/Matoking/protontricks
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         0001-Fix-using-local-vdf-module.patch
 BuildRequires:  fdupes
-%if %suse_version >= 1699
-BuildRequires:  git
-%endif
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-setuptools_scm
-# needed for the desktop file icon
 BuildRequires:  update-desktop-files
 Requires:       python3-Pillow
 Requires:       python3-setuptools
 Requires:       winetricks
-Requires:       zenity
+Requires:       (yad or zenity)
 BuildArch:      noarch
 
 %description
@@ -47,7 +42,6 @@ A simple wrapper that does winetricks things for Proton enabled games.
 
 %prep
 %autosetup -p1
-chmod -x src/protontricks/cli/main.py
 
 # Fix non-executable-script check
 chmod +x src/protontricks/data/scripts/*.sh
@@ -57,7 +51,7 @@ chmod +x src/protontricks/data/scripts/*.sh
 
 %install
 %python3_install
-%suse_update_desktop_file -r protontricks Game Amusement
+%suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}
 
 %files
@@ -68,6 +62,7 @@ chmod +x src/protontricks/data/scripts/*.sh
 %{_bindir}/%{name}-launch
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}-launch.desktop
-%{python3_sitelib}/*
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-*.egg-info
 
 %changelog

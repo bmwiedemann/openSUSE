@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct 16 10:26:46 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
++ Update to version 0.99.0:
+  * Additions
+    - `ls --threads`
+    - Enhanced keybinding configuration
+    - `input listen`
+    - `random bytes` and `random chars`
+    - `str stats`
+    - `sort-by --custom`
+  * Breaking changes
+    - `sort-by` and `sort`
+    - Standard Library
+  * Deprecations
+    - Standard Library `std/dirs`
+  * Removals
+    - `decode new-base64` and `encode new-base64`
+  * Bug fixes and other changes
+    - Prompt to write default config files
+    - Mid-pipeline exit codes
+    - Last exit code
+    - `try`
+    - Parser bugs
+    - `hash`
+    - `view-source`
+    - `do -p`
+    - `format date`
+    - `save -p`
+    - Panic fixes
+
+  For a complete release notes, see https://www.nushell.sh/blog/2024-10-15-nushell_0_99_0.html
+-------------------------------------------------------------------
 Thu Sep 19 03:55:07 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.98.0:

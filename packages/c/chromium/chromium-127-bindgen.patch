@@ -35,10 +35,11 @@ fix should probably go upstream.
    ]
  }
  
-@@ -46,59 +37,6 @@ rust_bindgen("crabbyavif_libyuv_bindings
+@@ -39,61 +39,6 @@
    bindgen_flags = [
      "no-doc-comments",
      "generate=functions,types,vars,methods,constructors,destructors",
+-    "allowlist-item=AR30ToAB30",
 -    "allowlist-item=ARGBAttenuate",
 -    "allowlist-item=ARGBUnattenuate",
 -    "allowlist-item=Convert16To8Plane",
@@ -77,6 +78,7 @@ fix should probably go upstream.
 -    "allowlist-item=I444AlphaToARGBMatrix",
 -    "allowlist-item=I444ToARGBMatrix",
 -    "allowlist-item=I444ToRGB24Matrix",
+-    "allowlist-item=P010ToAR30Matrix",
 -    "allowlist-item=ScalePlane",
 -    "allowlist-item=ScalePlane_12",
 -    "allowlist-item=YuvConstants",

@@ -1,7 +1,7 @@
-diff -rub forgejo-src-8.0.3/Makefile forgejo-src-8.0.3-patched/Makefile
---- forgejo-src-8.0.3/Makefile	2024-09-06 14:33:46.000000000 +0200
-+++ forgejo-src-8.0.3-patched/Makefile	2024-10-09 15:01:55.191532699 +0200
-@@ -784,7 +784,7 @@
+diff -rub forgejo-src-9.0.0/Makefile forgejo-src-9.0.0-patched/Makefile
+--- forgejo-src-9.0.0/Makefile	2024-10-16 05:56:39.000000000 +0200
++++ forgejo-src-9.0.0-patched/Makefile	2024-10-17 16:41:54.550837598 +0200
+@@ -803,7 +803,7 @@
  
  .PHONY: install $(TAGS_PREREQ)
  install: $(wildcard *.go)
@@ -10,8 +10,8 @@ diff -rub forgejo-src-8.0.3/Makefile forgejo-src-8.0.3-patched/Makefile
  
  .PHONY: build
  build: frontend backend
-@@ -816,13 +816,13 @@
- 	go run $(GOVULNCHECK_PACKAGE) ./...
+@@ -831,13 +831,13 @@
+ 	@echo "NOT NEEDED: THIS IS A NOOP AS OF Forgejo 7.0 BUT KEPT FOR BACKWARD COMPATIBILITY"
  
  $(EXECUTABLE): $(GO_SOURCES) $(TAGS_PREREQ)
 -	CGO_CFLAGS="$(CGO_CFLAGS)" $(GO) build $(GOFLAGS) $(EXTRA_GOFLAGS) -tags '$(TAGS)' -ldflags '-s -w $(LDFLAGS)' -o $@

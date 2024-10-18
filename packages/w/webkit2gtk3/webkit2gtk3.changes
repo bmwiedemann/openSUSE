@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct 16 21:49:23 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add bug281492.patch: fix crash in
+  AccessibilityAtspi::textAttributes.
+- Add bug281495.patch: fix crash in ProcessLauncher socket
+  monitor callback.
+
+-------------------------------------------------------------------
+Fri Oct  4 11:19:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.46.1:
+  + Fix login QR code not shown in WhatsApp web.
+  + Disable PSON by default again in GTK 3 API versions.
+  + Disable DMABuf video sink by default to prevent file descriptor
+    leaks.
+  + Fix the build with GCC 13.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Sep 17 19:04:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.0 (boo#1231039):
+  + Use Skia instead of cairo for 2D rendering and enable GPU
+    rendering by default.
+  + Enable offscreen canvas by default.
+  + Add support for system tracing with Sysprof.
+  + Implement printing using the Print portal.
+  + Add new API to load settings from a config file.
+  + Add a new setting to enable or disable the 2D canvas
+    acceleration (enabled by default).
+  + Undeprecate console messages API and make it available in 6.0
+    API.
+  + Security fixes: CVE-2024-40866, CVE-2024-44187.
+
+-------------------------------------------------------------------
 Wed Sep 11 16:53:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.45.92:
@@ -74,7 +109,7 @@ Tue Aug 13 16:48:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2024-40776, CVE-2024-40779, CVE-2024-40780,
     CVE-2023-40782, CVE-2024-40785, CVE-2024-40789, CVE-2024-40794,
-    CVE-2024-4558.
+    CVE-2024-4558, CVE-2024-27838, CVE-2024-27851.
 - Drop patches now upstream:
   9d5844679af8f84036f1b800307e799bd7ab73ba.patch
   webkit2gtk3-CVE-2024-40776.patch
@@ -116,7 +151,8 @@ Fri May 17 20:40:00 UTC 2024 - Michael Gorse <mgorse@suse.com>
   + Consider keycode when activating application accelerators.
   + Fix the build with ENABLE_WEBAUDIO disabled.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2024-27834.
+  + Security fixes: CVE-2024-27834, CVE-2024-27808, CVE-2024-27820,
+    CVE-2024-27833.
 - Update keyring (taken from rawhide).
 
 -------------------------------------------------------------------
@@ -247,7 +283,8 @@ Mon Feb  5 16:58:41 UTC 2024 - Michael Gorse <mgorse@suse.com>
   + Fix gamepads detection by correctly handling focused window in
     GTK4.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2024-23222, CVE-2024-23206, CVE-2024-23213.
+  + Security fixes: CVE-2024-23222, CVE-2024-23206, CVE-2024-23213,
+    CVE-2024-23271.
 - Drop webkit2gtk3-CVE-2024-23222.patch: fixed upstream.
 - Add webkit2gtk3-llint-build-fix.patch: fix the build for non-x86
   architectures.

@@ -16,14 +16,12 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 # Selenium and memcached are not operational
 %bcond_with selenium
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause

@@ -283,8 +283,10 @@ mv fontembed/README __doc/fontembed.README
 # Install the cups-browsed.service systemd unit file from the upstream sources:
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m 644 utils/cups-browsed.service %{buildroot}%{_unitdir}
+%if 0%{?suse_version} < 1600
 # Provide SUSE policy symlink /usr/sbin/rcFOO -> /etc/init.d/FOO
 ln -s service %{buildroot}%{_sbindir}/rccups-browsed
+%endif
 # Don't ship libtool la files.
 rm -f %{buildroot}%{_libdir}/lib*.la
 # Not sure what is this good for
@@ -330,7 +332,9 @@ exit 0
 %config(noreplace) %{_sysconfdir}/cups/cups-browsed.conf
 %{_unitdir}/cups-browsed.service
 %{_sbindir}/cups-browsed
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rccups-browsed
+%endif
 %{_mandir}/man5/cups-browsed.conf.5.gz
 %{_mandir}/man8/cups-browsed.8.gz
 %{_bindir}/driverless

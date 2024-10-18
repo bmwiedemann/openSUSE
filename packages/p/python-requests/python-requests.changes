@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 06:30:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch inject-default-ca-bundles.patch:
+  * Inject the default CA bundles if they are not specified.
+    (bsc#1226321, bsc#1231500)
+
+-------------------------------------------------------------------
 Thu Aug 29 03:17:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove Requires on python-py, it should have been removed earlier. 

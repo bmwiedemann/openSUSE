@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:12:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add yad, set it as default (recommendation from upstream)
+- remove small adjustments, as they got fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct 10 06:35:01 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.12.0:

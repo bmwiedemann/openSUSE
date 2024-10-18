@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        8.0.3
+Version:        9.0.0
 Release:        0
 Summary:        Self-hostable forge
 License:        MIT
@@ -38,7 +38,7 @@ Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
 Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
-Source2:        http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
@@ -53,7 +53,7 @@ Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
 Patch1:         dont-strip.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 ## node >= 20
 %if 0%{?suse_version} == 1500
 BuildRequires:  nodejs-devel-default
@@ -136,8 +136,9 @@ local-npm-registry %{_sourcedir} install --also=dev
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
 export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
+export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 %make_build build
-go build -buildmode=pie -mod=vendor -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
+go build ${EXTRA_GOFLAGS} -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
 
 %install
 install -d %{buildroot}%{_bindir}

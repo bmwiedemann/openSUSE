@@ -100,4 +100,41 @@
     <comment></comment>
     <requestid>1149472</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>571a2034c125eef7005811d3fb1b2cb4</srcmd5>
+    <version>1.4.2</version>
+    <time>1729259559</time>
+    <user>anag+factory</user>
+    <comment>- UTF-8 should be allowed in changelog 
+
+- Update to version 1.4.2
+  + 2021-03-12  handa  &lt;handa@gnu.org&gt;
+    * Version 1.4.2 released.
+    * Chinese/cns[1-7]-16.bdf, Chinese/cns[1-7]-24.bdf: Delete them again.
+    * Chinese.BIG/cns[1-7]-40.bdf, Chinese.BIG/cc4[08].bdf: Delete them again.
+    * README.split: Delete it.
+  + 2021-02-06  handa  &lt;handa@gnu.org&gt;
+    * Version 1.4.1 released.
+  + 2018-06-22  K. Handa  &lt;handa@gnu.org&gt;
+    Thanks to Akira Urushibata &lt;afu@wta.att.ne.jp&gt; for reporting these bugs.
+    * Asian/xtis18.bdf: Sort glyphs by ENCODING.
+    * Asian/ind1c24-mule.bdf: Fix ENCODINGs 9082.
+  + 2012-12-14  Kenichi Handa  &lt;handa@gnu.org&gt;
+    * Version 1.4.0 released.
+  + 2012-12-14  Kenichi Handa  &lt;handa@gnu.org&gt;
+    * .cvsignore: New file.
+    * make-dist: Fix unpaired string quotation.
+    * Makefile.in (SUBDIRS_BIG): Delete Chienese.BIG.
+    * COPYING: New file (GPL).
+    * Chinese/fonts.alias: Delete entries correponding to deleted fonts.
+    * Chinese/cns[1-7]-16.bdf, Chinese/cns[1-7]-24.bdf: Delete them.
+    * Chinese.BIG/cns[1-7]-40.bdf, Chinese.BIG/cc4[08].bdf: Delete them.
+    * COPYRIGHT: Delete it.
+  + 2006-04-26  Kenichi Handa  &lt;handa@m17n.org&gt;
+    * make-dist (version): Extract release number.
+      (files): Include make-dist.
+      (release): New variable.
+    * Chinese.X/gb16fs.bdf, Chinese.X/gb16st.bdf,</comment>
+    <requestid>1208570</requestid>
+  </revision>
 </revisionlist>

@@ -2648,4 +2648,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
   recognize GL_EXT_spirv_intrinsics.</comment>
     <requestid>1205210</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>2cc5bcd9719e403d58ade8da212fd2ae</srcmd5>
+    <version>7.1.4</version>
+    <time>1729259533</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.1.4</comment>
+    <requestid>1208522</requestid>
+  </revision>
 </revisionlist>

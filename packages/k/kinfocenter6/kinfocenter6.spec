@@ -36,6 +36,10 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-kcms-pull-dmidecode-helper-into-a-separate-dir.patch
+Patch2:         0002-refactor-dmidecode-helper-support-multiple-methods.patch
+Patch3:         0003-kcms-memory-use-KAuth-dmidecode-helper.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}

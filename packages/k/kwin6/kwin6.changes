@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:22:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1.1:
+  * New bugfix release
+- Changes since 6.2.1:
+  * backends/drm: don't skip colorops when matching the pipeline (kde#494611)
+  * backends/drm: transform damage to match the framebuffer (kde#494837)
+  * Set WAYLAND_DISPLAY before starting wayland server
+  * scene/itemrenderer_opengl: use the color pipeline to check if color transformations are needed (kde#493295)
+  * temporarily revert version number for respin
+  * backends/drm: don't scale infiniteRegion()
+  * backends/drm: fix crash with multi gpu
+  * ci: Require tests to pass only on Linux
+  * Report correct input timestamps for popup keyboard events
+  * backends/drm: disable hdr if we removed the capabilities for it (kde#494706)
+  * wayland/color management: ignore obviously wrong HDR metadata (kde#494502)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Oct 15 16:51:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1:

@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0
+Version:        4.0+git1
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -69,19 +69,14 @@ This package contains tools to make developing of MicroOS easier.
 %pre
 %service_add_pre setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
-%post
-%{regenerate_initrd_post}
-%service_add_post setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
-
 %preun
 %service_del_preun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
-%postun
-%{regenerate_initrd_post}
-%service_del_postun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
+%post
+%service_add_post setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
-%posttrans
-%{regenerate_initrd_posttrans}
+%postun
+%service_del_postun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
 %pre -n microos-devel-tools
 %service_add_pre microos-ro.service
@@ -94,6 +89,15 @@ This package contains tools to make developing of MicroOS easier.
 
 %postun -n microos-devel-tools
 %service_del_postun microos-ro.service
+
+%post -n selinux-autorelabel
+%{regenerate_initrd_post}
+
+%postun -n selinux-autorelabel
+%{regenerate_initrd_post}
+
+%posttrans -n selinux-autorelabel
+%{regenerate_initrd_posttrans}
 
 %files
 %dir %{_sysconfdir}/selinux

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  4 12:43:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 8.0.1:
+  - Bug fixes
+    * Fix a build issue with RDMA when using additional make parameters. (#1074)
+    * Fix an issue where `CLUSTER SLOTS` might return the wrong tcp or tls port
+      when called from inside a script or from a module. (#1072)
+    * Fix a crash when `CLUSTER SLOTS` or `CLUSTER SHARDS` is called from inside
+      a script or from a module. (#1063)
+    * Fix a build issue on systems where `<threads.h>` is unavailable. (#1053)
+    * Fix an issue with the default `sentinel.conf` being invalid. (#1040)
+  - Security fixes
+    * (CVE-2024-31449, bsc#1231264) Lua library commands may lead to stack
+      overflow and potential RCE.
+    * (CVE-2024-31227, bsc#1231266) Potential Denial-of-service due to malformed
+      ACL selectors.
+    * (CVE-2024-31228, bsc#1231265) Potential Denial-of-service due to unbounded
+      pattern matching.
+- 8.0.0 changelog:
+  * See https://github.com/valkey-io/valkey/blob/8.0.0/00-RELEASENOTES
+- Drop ppc-atomic.patch
+- Refresh valkey-conf.patch
+
+-------------------------------------------------------------------
 Tue Aug 27 18:04:07 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 7.2.6:

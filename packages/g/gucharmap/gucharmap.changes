@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 14 06:59:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 16.0.1:
+  + unicode: Update strings in preparation for unicode 16.0.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:32:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to

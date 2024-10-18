@@ -24,6 +24,9 @@ Summary:        WSGI request and response object
 License:        MIT
 URL:            http://webob.org/
 Source:         https://files.pythonhosted.org/packages/source/w/webob/webob-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#Pylons/webob#469
+Patch0:         support-python-313.patch
+BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -32,6 +35,9 @@ BuildRequires:  python-rpm-macros
 # Documentation requirements:
 BuildRequires:  fdupes
 BuildRequires:  python3-Sphinx
+%if %{python_version_nodots} >= 313
+Requires:       python-legacy-cgi
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,7 +59,7 @@ This package contains documentation files for %{name}.
 %endif
 
 %prep
-%setup -q -n webob-%{version}
+%autosetup -p1 -n webob-%{version}
 
 %build
 %pyproject_wheel

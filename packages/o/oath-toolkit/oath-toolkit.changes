@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:24:27 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Update 0001-usersfile-fix-potential-security-issues-in-PAM-modul.patch
+  with bsc#1231699 improvements for security fix CVE-2024-47191 
+
+-------------------------------------------------------------------
 Fri Sep 13 15:10:22 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Fix security issue CVE-2024-47191 by adding

@@ -5151,4 +5151,12 @@ boo#1224178</comment>
   * CVE-2024-9370: Inappropriate implementation in V8</comment>
     <requestid>1205161</requestid>
   </revision>
+  <revision rev="434" vrev="1">
+    <srcmd5>5efa4fac68629ade94cda0a3fd350f87</srcmd5>
+    <version>130.0.6723.58</version>
+    <time>1729259583</time>
+    <user>anag+factory</user>
+    <comment>Chromium 130.0.6723.58 (boo#1231694) (forwarded request 1208596 from AndreasStieger)</comment>
+    <requestid>1208638</requestid>
+  </revision>
 </revisionlist>

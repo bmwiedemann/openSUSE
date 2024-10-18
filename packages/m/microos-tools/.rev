@@ -367,4 +367,13 @@
   * Fix OBS workflow for pushes to master</comment>
     <requestid>1206112</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>25da73a7c80ae31cd2408e9d38fcdca0</srcmd5>
+    <version>4.0+git1</version>
+    <time>1729259576</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0+git1:
+  * Regenerate initrd after selinux-autorelabel installation</comment>
+    <requestid>1208630</requestid>
+  </revision>
 </revisionlist>

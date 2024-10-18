@@ -2329,4 +2329,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205430</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>4ed6c65f1fa0897d115934ccd0babdfc</srcmd5>
+    <version>2.82.2</version>
+    <time>1729259577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208664</requestid>
+  </revision>
 </revisionlist>

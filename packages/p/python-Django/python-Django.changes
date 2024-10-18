@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 10:16:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.2
+  * Fixed a regression in Django 5.1 that caused a crash when using 
+    the PostgreSQL lookup trigram_similar on output fields from Concat
+  * Fixed a regression in Django 5.1 that caused a crash of JSONObject() 
+    when using server-side binding with PostgreSQL 16+
+  * Fixed a regression in Django 5.1 that made selected items in 
+    multi-select widgets indistinguishable from non-selected items in 
+    the admin dark theme
+
+-------------------------------------------------------------------
 Wed Sep  4 07:21:54 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 5.1.1 (bsc#1229823, bsc#1229824)

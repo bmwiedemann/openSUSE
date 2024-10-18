@@ -17,13 +17,15 @@
 
 
 Name:           waf
-Version:        2.0.26
+Version:        2.1.2
 Release:        0
 Summary:        The Waf build system
 License:        BSD-3-Clause
 Group:          Development/Tools/Building
 URL:            https://waf.io
-Source:         https://gitlab.com/ita1024/waf/-/archive/waf-%{version}/waf-waf-%{version}.tar.bz2
+Source0:        https://waf.io/%{name}-%{version}.tar.bz2
+Source1:        https://waf.io/%{name}-%{version}.tar.bz2.asc
+Source2:        waf.keyring
 BuildRequires:  python3-base
 BuildArch:      noarch
 
@@ -31,7 +33,7 @@ BuildArch:      noarch
 Waf is a Python-based framework for configuring, compiling and installing applications.
 
 %prep
-%setup -q -n waf-waf-%{version}
+%setup -q -n waf-%{version}
 find ./waflib -iname \*py -print -exec sed -i -e '1{ s/#!.*/#!foo/ }' '{}' \;
 
 %build

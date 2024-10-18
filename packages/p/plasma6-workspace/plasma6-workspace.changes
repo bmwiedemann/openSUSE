@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:22:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.1.1:
+  * New bugfix release
+- Changes since 6.2.1:
+  * temporarily revert version number for respin
+  * startkde: Specify --type=method_call to correctly notify ksplash
+  * applets/devicenotifier: reduce string allocation
+  * klipper: correct boolean in desktop file
+  * PanelView: Fix popups position when NoBackground hint is set (kde#494193)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Oct 15 16:53:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1:

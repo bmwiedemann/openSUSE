@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:39:46 UTC 2024 - dfaggioli@suse.com
+
+- Bug and CVE fixes:
+  * softmmu/physmem: fix memory leak in dirty_memory_extend()
+  * softmmu: Support concurrent bounce buffers (bsc#1230915, CVE-2024-8612)
+  * accel/kvm: check for KVM_CAP_READONLY_MEM on VM (bsc#1231519)
+
+-------------------------------------------------------------------
+Tue Oct 15 17:02:49 UTC 2024 - dfaggioli@suse.com
+
+- Fix bsc#1231519 and bsc#1230140:
+  * accel/kvm: check for KVM_CAP_READONLY_MEM on VM
+  * target/ppc: Fix lxvx/stxvx facility check
+
+-------------------------------------------------------------------
 Wed Sep 11 17:42:03 UTC 2024 - dfaggioli@suse.com
 
 - Re-enable vhdx support in qemu-img:
@@ -51,6 +66,11 @@ Thu Sep 05 15:16:09 UTC 2024 - dfaggioli@suse.com
    * x86: KVM support for running AMD SEV-SNP guests
    * x86: CPU emulation support for Icelake-Server-v7, SapphireRapids-v3,
      and SierraForest
+
+  The following bugs/CVEs were solved (in 9.0.x) with backports that are
+  now included in 9.1 upstream:
+   - CVE-2024-4467 (bsc#1227322)
+   - CVE-2024-7409 (bsc#1229007)
 
 -------------------------------------------------------------------
 Tue Aug 27 17:15:25 UTC 2024 - dfaggioli@suse.com

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Oct 12 10:45:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 130.0.6723.58 (boo#1231694)
+  * CVE-2024-9954: Use after free in AI
+  * CVE-2024-9955: Use after free in Web Authentication
+  * CVE-2024-9956: Inappropriate implementation in Web Authentication
+  * CVE-2024-9957: Use after free in UI
+  * CVE-2024-9958: Inappropriate implementation in PictureInPicture
+  * CVE-2024-9959: Use after free in DevTools
+  * CVE-2024-9960: Use after free in Dawn
+  * CVE-2024-9961: Use after free in Parcel Tracking
+  * CVE-2024-9962: Inappropriate implementation in Permissions
+  * CVE-2024-9963: Insufficient data validation in Downloads
+  * CVE-2024-9964: Inappropriate implementation in Payments
+  * CVE-2024-9965: Insufficient data validation in DevTools
+  * CVE-2024-9966: Inappropriate implementation in Navigations
+- modified patches:
+  * exclude_ymp.patch update context
+  * chromium-125-compiler.patch update context
+  * chromium-125-lp155-typename.patch drop hunks for rewritten
+    proto_fetcher.h
+  * chromium-127-bindgen.patch update context
+- added patches:
+  * chromium-130-missing-includes.patch include optional, stack
+  * chromium-130-no-hardware_destructive_interference_size.patch
+    workaround for older libcpp
+- drop from keeplibs:
+  courgette/third_party dropped upstream
+- add to keepllibs:
+  third_party/fast_float needed by v8/src/numbers/conversion.cc
+
+-------------------------------------------------------------------
+Sat Oct 12 10:07:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 129.0.6668.100 (boo#1231420)
+  * CVE-2024-9602: Type Confusion in V8
+  * CVE-2024-9603: Type Confusion in V8
+
+-------------------------------------------------------------------
 Wed Oct  2 10:54:17 CEST 2024 - ro@suse.de
 
 - Chromium 129.0.6668.89 (stable released 2024-09-24)

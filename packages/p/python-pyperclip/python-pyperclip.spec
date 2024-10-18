@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyperclip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyperclip
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        A clipboard module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/asweigart/pyperclip
 Source0:        https://files.pythonhosted.org/packages/source/p/pyperclip/pyperclip-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tests are broken with 1.9.0 release https://github.com/asweigart/pyperclip/issues/263
+Patch:          tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +42,7 @@ BuildRequires:  %{python_module pytest}
 A clipboard module for Python. It only handles plain text.
 
 %prep
-%setup -q -n pyperclip-%{version}
+%autosetup -p1 -n pyperclip-%{version}
 
 %build
 %python_build

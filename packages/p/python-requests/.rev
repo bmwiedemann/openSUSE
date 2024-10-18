@@ -916,4 +916,14 @@
     <comment>- Remove Requires on python-py, it should have been removed earlier.</comment>
     <requestid>1197228</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>3c1e84ada941affac10d998f218926ed</srcmd5>
+    <version>2.32.3</version>
+    <time>1729259572</time>
+    <user>anag+factory</user>
+    <comment>- Add patch inject-default-ca-bundles.patch:
+  * Inject the default CA bundles if they are not specified.
+    (bsc#1226321, bsc#1231500)</comment>
+    <requestid>1208547</requestid>
+  </revision>
 </revisionlist>

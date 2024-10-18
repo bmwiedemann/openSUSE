@@ -470,4 +470,12 @@
     <comment>cups-filters: Removed outdated and obsoleted 'Requires: cups &gt; 1.5.4' (boo#1216560) (forwarded request 1143640 from jsmeix)</comment>
     <requestid>1143641</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>eef6a7812fce9035d0f8af877b1feb84</srcmd5>
+    <version>1.28.17</version>
+    <time>1729259553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208549</requestid>
+  </revision>
 </revisionlist>

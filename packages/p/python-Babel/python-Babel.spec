@@ -32,15 +32,14 @@ Summary:        Internationalization utilities
 License:        BSD-3-Clause
 URL:            https://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/b/babel/babel-%{version}.tar.gz
-BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module freezegun >= 1.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module py >= 1.4.14}
-BuildRequires:  %{python_module pytest >= 2.3.5}
-BuildRequires:  %{python_module pytz >= 2015.7}
+BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-pytz >= 2015.7
+Requires:       python-tzdata
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

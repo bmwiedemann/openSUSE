@@ -25,7 +25,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        7.2.6
+Version:        8.0.1
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -42,9 +42,6 @@ Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
 Source10:       macros.%{name}
 Source11:       migrate_redis_to_valkey.bash
-# PATCH-FIX-UPSTREAM -- Fix for fallback for atomics on POWER
-## From: https://github.com/valkey-io/valkey/pull/607
-Patch0:         ppc-atomic.patch
 # PATCH-FIX-OPENSUSE -- Adjust configs for openSUSE
 Patch1001:      %{name}-conf.patch
 BuildRequires:  jemalloc-devel
@@ -184,7 +181,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %files
 %license COPYING
-%doc 00-RELEASENOTES BUGS README.md
+%doc 00-RELEASENOTES README.md
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/%{name}
 %else

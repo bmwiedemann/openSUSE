@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:09:23 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.22:
+  * Respect `[tool.uv.sources]` in build requirements
+  * Add a dedicated `uv publish` error message for missing usernames
+  * Support interactive input in `uv publish`
+  * Use raw filenames in `uv publish`
+  * Reuse the result of `which git`
+  * Avoid environment check optimization for `uv pip install --exact`
+  * Do not use free-threaded interpreters without a free-threaded request
+  * Don't recommend `--prerelease=allow` during build requirement resolution errors
+  * Prefer optimized builds for free-threaded Python downloads
+  * Retain old `python-build-standalone` releases
+  * Run `uv build` builds in the source distribution bucket
+
+- 0.4.21
+  * Add support for managed installations of free-threaded Python
+  * Add note about `uvx` to `uv tool run` short help
+  * Enable HTTP/2 requests
+  * Support `uv tree --no-dev`
+  * Support PEP 723 metadata with `uv run -`
+  * Support `pip install --exact`
+  * Support `uv export --no-header`
+  * Add Python 3.13 images to Docker publish
+  * Support remote (`https://`) scripts in `uv run`
+  * Allow comma value-delimited arguments in `uv run --with`
+  * Support wildcards in `UV_INSECURE_HOST`
+  * Use shared index when fetching metadata in lock satisfaction routine
+  * Add prerelease compatibility check to `uv python` CLI
+  * Avoid deleting a project environment directory if we cannot tell if a `pyvenv.cfg` file exists
+  * Avoid excluding valid wheels for exact `requires-python` bounds
+  * Bump `netrc` crate to latest commit
+  * Fix `uv python pin 3.13t` failure when parsing version for project requires check
+  * Fix handling of != intersections in `requires-python`
+  * Remove the newly created tool environment if sync failed
+  * Respect dynamic extras in `uv lock` and `uv sync`
+  * Treat resolver failures as fatal in lockfile validation
+  * Use `git config --get` for author information for improved backwards compatibility
+  * Use comma-separated values for `UV_FIND_LINKS`
+  * Use shared resolver state between add and lock to avoid double Git update
+  * Make `--relocatable` entrypoints robust to symlinking
+  * Improve compatibility with VSCode PS1 prompt
+  * Fix "Stream did not contain valid UTF-8" failures in Windows
+  * Use `--with-requirements` in `uvx` error hint
+  * Include `uvx` installation in Docker examples
+  * Make the instructions for the Windows standalone installer consistent across README and documentation
+  * Update pip compatibility guide to note transitive URL dependency support
+  * Document `--reinstall` with `--exclude-newer` to ensure downgrades
+
+-------------------------------------------------------------------
+Sat Oct 12 23:18:11 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.20:
+  * Add managed downloads for CPython 3.13.0 (final) 
+  * Python 3.13 is the default version for uv python install 
+  * Hint at wrong endpoint in uv publish failures 
+  * List available scripts when a command is not specified for uv run 
+  * Fill in authors field during uv init 
+
+-------------------------------------------------------------------
+Mon Oct  7 23:27:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.19
+  * Remove `PythonPreference` toggle based on `UV_TEST_PYTHON_PATH`
+  * Show verbose output during integration tests
+  * Show verbose logs during smoke test
+  * Show interpreter source during Python discovery query errors
+  * Bump patch Python versions for project
+  * Basic functional build backend wheels
+  * Add 3.13 support to the platform reference
+  * Fix parsing of `gnueabi` libc variants in Python version requests
+  * Add Python 3.13 classifier
+  * Implement build backend metadata
+  * Metadata transformation for the build backend
+  * Allow self-depedencies in the `dev` section
+  * Add failing `uv add --dev` self-reference test
+  * Clearly specify the minimum supported Windows Server version in the document
+  * fix uninstallation command for windows on documentation
+  * Clarify project environment creation a little
+  * Remove dead Sha256Reader
+  * Ignore `UV_CACHE_DIR` during tests
+  * Ignore `UV_CACHE_DIR` in `help` tests
+  * Use a higher timeout for publishing
+  * Coerce empty string values to `None` for `UV_PYTHON` env var
+  * Add `UV_FIND_LINKS` environment variable support for the `--find-links` command-line option
+  * Clear publish progress bar on retry
+  * Trim commits when reading from Git refs
+  * Preserve case-insensitive sorts in `uv add`
+  * Fix documentation (projects guide) regarding adding a git dependency
+  * Respect project upper bounds when filtering wheels on requires-python
+  * Always ignore `cp2` wheels in resolution
+  * Allow `py3x-none` tags in newer than Python 3.x
+  * Organize downloads by prioritizing the platform, then the architecture.
+  * Simplify supported environments when comparing to lockfile
+  * Improve legibility of build failure errors
+  * Check `python/uv/` folder with `mypy`
+  * Remove the first empty line for `uv tree --package foo`
+  * Fix Python prerelease sorting
+  * Add CPython 3.13.0rc3 and 3.12.7 downloads
+  * Use an enum for free-threaded Python requests
+  * Rename `project::FoundInterpreter` to `ProjectInterpreter`
+  * Support uv run --script
+  * Display the target virtual environment path if non-default
+  * Add missing bound on tomli tests
+  * Fix code block title in Gitlab integration docs
+  * Remove unnecessary `Deserialize` derives on settings
+  * Rename `install-wheel-rs` library
+  * Add `uv-` prefix to all internal crates
+  * Clarify locking and resolving without package name
+  * GitLab Integration documentation
+  * Respect `PAGER` env var when paging in `uv help` command
+  * Improve error message copy for failed builds
+  * Use build failure hints for `dotenv` errors, rather than in `uv add`
+  * Accept `git+` prefix in `tool.uv.sources`
+  * Add detailed errors for `tool.uv.sources` deserialization failures
+  * Remove pyo3 feature from pep440 and pep508 crates
+  * Use `uv publish` instead of twine in docs
+  * Reduce file reading boilerplace in tests
+  * Follow-up: Add gitignore to dist directory
+  * Add gitignore to dist directory
+  * expose `FlatDistributions` struct in public API
+  * Add gitignore to dist directory
+  * Remove unnecessary index location methods
+  * Respect `tool.uv.environments` for legacy virtual workspace roots
+  * Use `serde-untagged` to improve some untagged enum error messages
+  * packaged app: use executable named for the project and main function
+  * chore(renovate): enable `regex` manager
+  * Allow multiple source entries for each package in `tool.uv.sources`
+  * Add a custom suggestion for `uv add dotenv`
+  * Fix `uv tree --invert` for platform dependencies
+  * Allow spaces in path requirements
+  * `uv build` builds into a top-level `dist` dir in workspaces
+  * Remove lossy resolution-to-requirements conversion in install plan
+  * Update documentation to setup-uv@v3
+  * ✏️ Fix typo in `projects.md`
+  * Avoid reusing cached downloaded binaries with `--no-binary`
+  * Use file stem when parsing cached wheel names
+  * No jemalloc on freebsd
+  * Correctly trims values during wheel WHEEL file parsing
+  * Reject self-dependencies in `uv add`
+  * Retain empty extras on workspace members
+  * Add `UV_NO_SYNC` environment variable
+  * Support `uv run -m foo` to run a module
+  * Fix encoding mismatch between python child process and uv
+  * Fix table of contents sizing
+
+-------------------------------------------------------------------
+Tue Oct  1 06:30:40 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.17:
+  * Add uv build --all to build all packages in a workspace (#7724)
+  * Add support for uv init --script (#7565)
+  * Add support for upgrading build environment for installed tools (uv tool upgrade --python) (#7605)
+  * Initialize a Git repository in uv init (#5476)
+  * Respect --quiet flag in uv build (#7674)
+  * Add context message before listing available tools in uvx (#7641)
+  * Don't create Python bytecode files during interpreter discovery (#7707)
+  * Escape glob patterns in workspace member discovery (#7709)
+  * Avoid prefetching source distributions with unbounded lower-bound ranges (#7683)
+  * Add uv build and uv publish to features overview (#7716)
+  * Add documentation on cache versioning (#7693)
+  * Spell out the names of the Docker images for easier copy-paste (#7706)
+  * Document uv-with-Jupyter workflows (#7625)
+  * Note that uv lock --upgrade-package retains locked versions (#7694)
+
+-------------------------------------------------------------------
+Tue Sep 24 10:46:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Completion package requires main package
+
+-------------------------------------------------------------------
 Sat Sep 21 16:47:28 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update source tarball from upstream GitHub instead of Python hosted

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:32:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix the memory info page by switching from pkexec
+  to KAuth:
+  * 0001-kcms-pull-dmidecode-helper-into-a-separate-dir.patch
+  * 0002-refactor-dmidecode-helper-support-multiple-methods.patch
+  * 0003-kcms-memory-use-KAuth-dmidecode-helper.patch
+
+-------------------------------------------------------------------
 Tue Oct 15 16:53:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1:

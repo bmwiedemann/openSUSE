@@ -316,4 +316,20 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
   boo#1227208</comment>
     <requestid>1184377</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a2fec8394fbb495669041438ec3285c9</srcmd5>
+    <version>3.9.5</version>
+    <time>1729259528</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.5:
+  * sanlock: change log level for resource names
+  * sanlock: include worker thread info in status
+  * sanlock: reuse io buffer with hugepages
+  * sanlock: use hugepages to avoid splitting read io
+  * sanlock: don't reduce max_sectors_kb
+  * sanlock: fix is dead log message for unused host id
+  * sanlock: repeat helper_msg string termination
+  * sanlock: fix invalid strcpy in direct dump</comment>
+    <requestid>1208511</requestid>
+  </revision>
 </revisionlist>

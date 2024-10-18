@@ -861,4 +861,12 @@
     <comment></comment>
     <requestid>1206128</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>d69a6f30f5b9e35dd9555361c8808023</srcmd5>
+    <version>2.16.0</version>
+    <time>1729259571</time>
+    <user>anag+factory</user>
+    <comment>- Clean up {Build,}Requires to match reality.</comment>
+    <requestid>1208529</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:59:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Fri Feb  2 12:38:53 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Removed outdated and obsoleted "Requires: cups > 1.5.4"

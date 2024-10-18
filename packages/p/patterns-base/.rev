@@ -943,4 +943,14 @@
     <comment>- Move suggests for libz1 from patterns-base-base to
   patterns-base-minimal_base: be nicer with CI consumers.</comment>
   </revision>
+  <revision rev="109" vrev="55">
+    <srcmd5>8f1f77c44746a6655baa7360cbc56054</srcmd5>
+    <version>20200505</version>
+    <time>1729259568</time>
+    <user>anag+factory</user>
+    <comment>- Add &quot;Requires: selinux-policy-base&quot; to selinux pattern so that 
+  selinux-policy-targeted will be installed on systems that disable
+  &quot;Recommends&quot; (bsc#1231720)</comment>
+    <requestid>1208663</requestid>
+  </revision>
 </revisionlist>

@@ -253,8 +253,8 @@ Index: chromium-126.0.6478.8/build/config/compiler/BUILD.gn
 +config("symbols") { }
 +config("xsymbols") {
    rustflags = []
+   configs = []
    if (is_win) {
-     if (is_clang) {
 @@ -2835,7 +2707,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user

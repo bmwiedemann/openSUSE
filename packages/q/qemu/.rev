@@ -4050,4 +4050,18 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   * [openSUSE][RPM] explicitly enable qemu-img support for vhdx and vpc</comment>
     <requestid>1200648</requestid>
   </revision>
+  <revision rev="278" vrev="2">
+    <srcmd5>5855eef8ddf935f2535bc57e89e9358c</srcmd5>
+    <version>9.1.0</version>
+    <time>1729259400</time>
+    <user>anag+factory</user>
+    <comment>- Bug and CVE fixes:
+  * softmmu/physmem: fix memory leak in dirty_memory_extend()
+  * softmmu: Support concurrent bounce buffers (bsc#1230915, CVE-2024-8612)
+  * accel/kvm: check for KVM_CAP_READONLY_MEM on VM (bsc#1231519)
+- Fix bsc#1231519 and bsc#1230140:
+  * accel/kvm: check for KVM_CAP_READONLY_MEM on VM
+</comment>
+    <requestid>1208480</requestid>
+  </revision>
 </revisionlist>

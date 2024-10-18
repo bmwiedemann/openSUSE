@@ -1,7 +1,7 @@
 #
 # spec file for package intlfonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           intlfonts
-Version:        1.2.1
+Version:        1.4.2
 Release:        0
 Summary:        Documentation for the International Fonts
-License:        HPND and SUSE-Redistributable-Content and SUSE-Public-Domain
+License:        HPND AND SUSE-Redistributable-Content AND SUSE-Public-Domain
 Group:          System/X11/Fonts
-Url:            ftp://ftp.gnu.org/gnu/intlfonts/
-Source0:        intlfonts-1.2.1.tar.bz2
+URL:            ftp://ftp.gnu.org/gnu/intlfonts/
+Source0:        intlfonts-%{version}.tar.gz
 Source1:        gulim24.bdf.bz2
 Source2:        fonts.scale.intlfonts-ttf
 Source3:        efont-iso8859-15.tar.bz2
+Source4:        intlfonts-%{version}.tar.gz.sig
+Source5:        intlfonts.keyring
 BuildRequires:  fontpackages-devel
 Patch0:         intlfonts-1.2.dif
 %if 0%{?suse_version} >= 1220
@@ -53,8 +55,6 @@ intlfonts-arabic-bitmap-fonts: Arab fonts for X11
 intlfonts-asian-bitmap-fonts: Asian fonts for X11
 
 intlfonts-chinese-bitmap-fonts: Chinese fonts for X11
-
-intlfonts-chinese-big-bitmap-fonts: Big Chinese fonts for X11
 
 intlfonts-ethiopic-bitmap-fonts: Ethiopic fonts for X11
 
@@ -102,20 +102,10 @@ Group:          System/X11/Fonts
 Provides:       ifntchia = %{version}
 Provides:       locale(xorg-x11:zh)
 Obsoletes:      ifntchia <= 1.2.1
+Obsoletes:      intlfonts-chinese-big-bitmap-fonts <= 1.2.1
 
 %description -n intlfonts-chinese-bitmap-fonts
 Chinese fonts for the X Window System.
-
-%package     -n intlfonts-chinese-big-bitmap-fonts
-Summary:        Big Chinese Fonts for the X Window System
-Group:          System/X11/Fonts
-%reconfigure_fonts_prereq
-Provides:       ifntchib = %{version}
-Provides:       locale(xorg-x11:zh)
-Obsoletes:      ifntchib <= 1.2.1
-
-%description -n intlfonts-chinese-big-bitmap-fonts
-Big Chinese fonts for the X Window System.
 
 %package     -n intlfonts-ethiopic-bitmap-fonts
 Summary:        Ethiopic Fonts for the X Window System
@@ -204,7 +194,7 @@ Group:          System/X11/Fonts
 Type1 fonts from the GNU intlfonts package.
 
 %prep
-%autosetup -p0 -n intlfonts-1.2.1 -b 0 -a 3
+%autosetup -p0 -n intlfonts-%{version} -b 0 -a 3
 
 bunzip2 -c $RPM_SOURCE_DIR/gulim24.bdf.bz2 > gulim24.bdf
 
@@ -212,10 +202,13 @@ bunzip2 -c $RPM_SOURCE_DIR/gulim24.bdf.bz2 > gulim24.bdf
 # Legal issue
 #
 
-test ! -e Asian/tib16-mule.bdf   || exit 1
-test ! -e Asian/tib1c16-mule.bdf || exit 1
-test ! -e Asian/tib1c24-mule.bdf || exit 1
-test ! -e Asian/tib24-mule.bdf   || exit 1
+# test ! -e Asian/tib16-mule.bdf   || exit 1
+# test ! -e Asian/tib1c16-mule.bdf || exit 1
+# test ! -e Asian/tib1c24-mule.bdf || exit 1
+# test ! -e Asian/tib24-mule.bdf   || exit 1
+
+# REMARK: Those fonts had been receated with tib32p-mule.bdf
+# and tib32p-mule.bdf is puplic domain
 
 %build
   set +o posix
@@ -245,10 +238,10 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 	lt1-24-etl lt1-16b-etl lt1-16i-etl lt1-16bi-etl lt1-24-etl lt1-16b-etl \
 	lt1-16i-etl lt1-16bi-etl lt2-24-etl lt3-24-etl lt4-24-etl thai24 \
 	grk24-etl heb24-etl 12x24rk 12x24rk cyr24-etl lt5-24-etl jiskan24 \
-	gb24st jiskan24 gulim24 jksp40 cns1-40 cns2-40 taipei24 taipei24 \
+	gb24st jiskan24 gulim24 jksp40 taipei24 taipei24 \
 	sish24-etl ipa24-etl visc24-etl visc24-etl arab24-0-etl arab24-1-etl \
 	lao24-mule arab24-2-etl ind1c24-mule \
-	ethio24f-uni cns3-40 cns4-40 cns5-40 cns6-40 cns7-40 ind24-mule
+	ethio24f-uni ind24-mule
   do
       install -m 0444 `find . -name $f.bdf` %{buildroot}%{bdf_fontdir}
   done
@@ -267,8 +260,6 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 
 %reconfigure_fonts_scriptlets -n intlfonts-chinese-bitmap-fonts
 
-%reconfigure_fonts_scriptlets -n intlfonts-chinese-big-bitmap-fonts
-
 %reconfigure_fonts_scriptlets -n intlfonts-ethiopic-bitmap-fonts
 
 %reconfigure_fonts_scriptlets -n intlfonts-euro-bitmap-fonts
@@ -285,8 +276,10 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 
 %files
 %defattr(-,root,root)
-%dir %{_defaultdocdir}/intlfonts
+%dir %{_defaultdocdir}/intlfonts/
 %doc %{_defaultdocdir}/intlfonts/README*
+%dir %{_defaultdocdir}/intlfonts/Chinese.BIG
+%doc %{_defaultdocdir}/intlfonts/Chinese.BIG/README
 
 %files -n intlfonts-arabic-bitmap-fonts
 %defattr(-,root,root)
@@ -319,6 +312,7 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 %{_miscfontsdir}/lao18b-mule.pcf.gz
 %{_miscfontsdir}/lao18i-mule.pcf.gz
 %{_miscfontsdir}/lao24-mule.pcf.gz
+%{_miscfontsdir}/tib*-mule.pcf.gz
 %{_miscfontsdir}/thai14.pcf.gz
 %{_miscfontsdir}/thai16.pcf.gz
 %{_miscfontsdir}/thai18.pcf.gz
@@ -340,20 +334,6 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 %dir %{_defaultdocdir}/intlfonts
 %doc %{_defaultdocdir}/intlfonts/Chinese
 %dir %{_miscfontsdir}/
-%{_miscfontsdir}/cns1-16.pcf.gz
-%{_miscfontsdir}/cns1-24.pcf.gz
-%{_miscfontsdir}/cns2-16.pcf.gz
-%{_miscfontsdir}/cns2-24.pcf.gz
-%{_miscfontsdir}/cns3-16.pcf.gz
-%{_miscfontsdir}/cns3-24.pcf.gz
-%{_miscfontsdir}/cns4-16.pcf.gz
-%{_miscfontsdir}/cns4-24.pcf.gz
-%{_miscfontsdir}/cns5-16.pcf.gz
-%{_miscfontsdir}/cns5-24.pcf.gz
-%{_miscfontsdir}/cns6-16.pcf.gz
-%{_miscfontsdir}/cns6-24.pcf.gz
-%{_miscfontsdir}/cns7-16.pcf.gz
-%{_miscfontsdir}/cns7-24.pcf.gz
 %{_miscfontsdir}/guob16.pcf.gz
 %{_miscfontsdir}/sish14-etl.pcf.gz
 %{_miscfontsdir}/sish16-etl.pcf.gz
@@ -361,26 +341,12 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 %{_miscfontsdir}/taipei16.pcf.gz
 %{_miscfontsdir}/taipei24.pcf.gz
 
-%files -n intlfonts-chinese-big-bitmap-fonts
-%defattr(-,root,root)
-%dir %{_defaultdocdir}/intlfonts
-%doc %{_defaultdocdir}/intlfonts/Chinese.BIG
-%dir %{_miscfontsdir}/
-%{_miscfontsdir}/cc40s.pcf.gz
-%{_miscfontsdir}/cc48s.pcf.gz
-%{_miscfontsdir}/cns1-40.pcf.gz
-%{_miscfontsdir}/cns2-40.pcf.gz
-%{_miscfontsdir}/cns3-40.pcf.gz
-%{_miscfontsdir}/cns4-40.pcf.gz
-%{_miscfontsdir}/cns5-40.pcf.gz
-%{_miscfontsdir}/cns6-40.pcf.gz
-%{_miscfontsdir}/cns7-40.pcf.gz
-
 %files -n intlfonts-ethiopic-bitmap-fonts
 %defattr(-,root,root)
 %dir %{_defaultdocdir}/intlfonts
 %doc %{_defaultdocdir}/intlfonts/Ethiopic
 %dir %{_miscfontsdir}/
+%{_miscfontsdir}/ethio12-uni.pcf.gz
 %{_miscfontsdir}/ethio16f-uni.pcf.gz
 %{_miscfontsdir}/ethio24f-uni.pcf.gz
 
@@ -414,6 +380,9 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 %{_miscfontsdir}/lt1-24b-etl.pcf.gz
 %{_miscfontsdir}/lt1-24bi-etl.pcf.gz
 %{_miscfontsdir}/lt1-24i-etl.pcf.gz
+%{_miscfontsdir}/lt1-32-etl.pcf.gz
+%{_miscfontsdir}/lt1-48-etl.pcf.gz
+%{_miscfontsdir}/lt1-60-etl.pcf.gz
 %{_miscfontsdir}/lt2-14-etl.pcf.gz
 %{_miscfontsdir}/lt2-16-etl.pcf.gz
 %{_miscfontsdir}/lt2-24-etl.pcf.gz
@@ -448,10 +417,14 @@ test ! -e Asian/tib24-mule.bdf   || exit 1
 %{_miscfontsdir}/a18rk.pcf.gz
 %{_miscfontsdir}/a18rkb.pcf.gz
 %{_miscfontsdir}/a18rki.pcf.gz
+%{_miscfontsdir}/j00-1-16.pcf.gz
+%{_miscfontsdir}/j00-2-16.pcf.gz
 %{_miscfontsdir}/j78-16.pcf.gz
 %{_miscfontsdir}/j83-18.pcf.gz
 %{_miscfontsdir}/j83-18b.pcf.gz
 %{_miscfontsdir}/j83-18i.pcf.gz
+%{_miscfontsdir}/j83-32.pcf.gz
+%{_miscfontsdir}/j83-48.pcf.gz
 %{_miscfontsdir}/j90-16.pcf.gz
 %{_miscfontsdir}/jksp16.pcf.gz
 %{_miscfontsdir}/jksp24.pcf.gz

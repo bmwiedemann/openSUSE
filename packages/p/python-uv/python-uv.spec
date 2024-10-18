@@ -33,7 +33,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.4.15
+Version:        0.4.22
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -70,6 +70,7 @@ Requires:       python3
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name}
 Requires:       fish
 BuildArch:      noarch
 
@@ -80,6 +81,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name}
 Requires:       zsh
 BuildArch:      noarch
 
@@ -90,6 +92,7 @@ Zsh command-line completion support for %{name}.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name}
 Requires:       bash-completion
 BuildArch:      noarch
 

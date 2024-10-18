@@ -96,7 +96,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        129.0.6668.89
+Version:        130.0.6723.58
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -149,6 +149,8 @@ Patch361:       chromium-127-rust-clanglib.patch
 Patch362:       chromium-127-clang17-traitors.patch
 Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
+Patch365:       chromium-130-missing-includes.patch
+Patch366:       chromium-130-no-hardware_destructive_interference_size.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -484,7 +486,6 @@ keeplibs=(
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
     chrome/third_party/mozilla_security_manager
-    courgette/third_party
     net/third_party/mozilla_security_manager
     net/third_party/nss
     net/third_party/quic
@@ -566,6 +567,7 @@ keeplibs=(
     third_party/eigen3
     third_party/emoji-segmenter
     third_party/farmhash
+    third_party/fast_float
     third_party/fdlibm
     third_party/fft2d
     third_party/flatbuffers

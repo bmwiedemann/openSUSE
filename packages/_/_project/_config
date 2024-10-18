@@ -124,18 +124,21 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 # Substitute: kiwi-packagemanager:instsource product-builder-plugin-openSUSE
 Substitute: system-packages:kiwi-product product-builder
 
-# allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
+# Packages which aren't meant to be built into images.
+%global image_package_conflicts !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
 
-# Podman based image building
-Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
+# Containerfile/Dockerfile builds
+Substitute: build-packages:docker %image_package_conflicts patterns-base-fips
+
+# KIWI image builds
+Substitute: build-packages:kiwi %image_package_conflicts patterns-base-fips
 
 # To build ISO images
-Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
+Substitute: build-packages:iso %image_package_conflicts
 
 # mkosi + its recommended dependencies
 Substitute: system-packages:mkosi:rpm mkosi createrepo kmod btrfsprogs cpio dosfstools squashfs tar xz zstd
-Substitute: build-packages:mkosi:rpm !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql17-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
+Substitute: build-packages:mkosi:rpm %image_package_conflicts
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
@@ -2935,6 +2938,7 @@ BuildFlags: onlybuild:python-pytest-cov
 BuildFlags: onlybuild:python-pytest-expect
 BuildFlags: onlybuild:python-pytest-forked
 BuildFlags: onlybuild:python-pytest-mock
+BuildFlags: onlybuild:python-pytest-subtests
 BuildFlags: onlybuild:python-pytest-xdist
 BuildFlags: onlybuild:python-python-dateutil
 BuildFlags: onlybuild:python-python-dbusmock
@@ -2984,6 +2988,7 @@ BuildFlags: onlybuild:python-trustme
 BuildFlags: onlybuild:python-typing-inspect
 BuildFlags: onlybuild:python-typing_extensions
 BuildFlags: onlybuild:python-typogrify
+BuildFlags: onlybuild:python-tzdata
 BuildFlags: onlybuild:python-u-msgpack-python
 BuildFlags: onlybuild:python-urllib3
 BuildFlags: onlybuild:python-urllib3_1

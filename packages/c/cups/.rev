@@ -1345,4 +1345,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS version upgrade to 2.4.11</comment>
     <requestid>1204788</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>4073a8689ce4abee6c64401fc3d5fd59</srcmd5>
+    <version>2.4.11</version>
+    <time>1729259536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208545</requestid>
+  </revision>
 </revisionlist>

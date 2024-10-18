@@ -440,9 +440,11 @@ rm -rf %{buildroot}%{_datadir}/icons
 # because if upstream changed it 'sed' would silently no longer change the files:
 grep -q '^# Configuration ' %{buildroot}/%{_sysconfdir}/cups/cupsd.conf.default
 sed -i -e 's/^# Configuration /# Default configuration /' %{buildroot}/%{_sysconfdir}/cups/cupsd.conf.default
+%if 0%{?suse_version} < 1600
 # rcbla aliases:
 ln -s service %{buildroot}%{_sbindir}/rccups
 ln -s service %{buildroot}%{_sbindir}/rccups-lpd
+%endif
 # Install /usr/lib/tmpfiles.d/cups.conf
 # According to
 # https://developers.redhat.com/blog/2016/09/20/managing-temporary-files-with-systemd-tmpfiles-on-rhel7/
@@ -631,8 +633,10 @@ exit 0
 %{_sbindir}/cupsctl
 %{_sbindir}/cupsd
 %{_sbindir}/cupsfilter
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rccups
 %{_sbindir}/rccups-lpd
+%endif
 %dir /usr/lib/cups
 %dir /usr/lib/cups/backend
 /usr/lib/cups/backend/dnssd

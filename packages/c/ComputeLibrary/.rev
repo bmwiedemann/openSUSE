@@ -198,4 +198,17 @@
     <comment></comment>
     <requestid>1198456</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>51ac5821d817074c9d4a8979ca5153ed</srcmd5>
+    <version>24.09</version>
+    <time>1729259716</time>
+    <user>anag+factory</user>
+    <comment>-  Update to 24.09:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v24.09
+</comment>
+    <requestid>1208662</requestid>
+  </revision>
 </revisionlist>

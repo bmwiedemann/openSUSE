@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 22:59:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Add legacy-cgi to install_requires to support Python 3.13.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Mon Aug 19 03:28:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.8:

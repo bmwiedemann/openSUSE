@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 16 23:37:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.4
+  * NAT: Fixed DHCP problems with certain guests when domain is
+    empty
+  * VMSVGA: Improved flickering, black screen and other screen
+    update issues with recent Linux kernels
+  * Linux Guest Additions: Introduce initial support for kernel 6.12
+  * EFI: Added missing LsiLogic MPT SCSI driver again to fix
+    booting from devices attached to this device if the EFI
+    firmware is used (7.1.0 regression)
+  * EFI: Restored broken network boot support (7.1.0 regression)
+  * Adressed CVE-2024-21248 [boo#1231735],
+    CVE-2024-21273 [boo#1231736], CVE-2024-21259 [boo#1231737],
+    CVE-2024-21263 [boo#1231738]
+
+-------------------------------------------------------------------
 Tue Oct  1 23:30:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit cxx17.patch to make the Extension Pack work with our

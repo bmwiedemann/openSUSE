@@ -1,17 +1,18 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">sanlock</param>
-    <param name="revision">79b35bba8298f4444923c15e11bed38380cb18ee</param>
+    <param name="revision">651d101aab40bb75cf348ab667eba04d6d771c21</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://pagure.io/sanlock</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">^sanlock[-]?(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

@@ -677,6 +677,7 @@ Provides:       pattern-visible()
 Requires:       policycoreutils
 Requires:       selinux-autorelabel
 Requires:       selinux-policy
+Requires:       selinux-policy-base
 Requires:       selinux-tools
 Requires:       pattern() = minimal_base
 Recommends:     checkpolicy

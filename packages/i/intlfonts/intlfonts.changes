@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:40:57 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- UTF-8 should be allowed in changelog 
+
+-------------------------------------------------------------------
+Tue Oct 15 13:21:11 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.4.2
+  + 2021-03-12  handa  <handa@gnu.org>
+    * Version 1.4.2 released.
+    * Chinese/cns[1-7]-16.bdf, Chinese/cns[1-7]-24.bdf: Delete them again.
+    * Chinese.BIG/cns[1-7]-40.bdf, Chinese.BIG/cc4[08].bdf: Delete them again.
+    * README.split: Delete it.
+  + 2021-02-06  handa  <handa@gnu.org>
+    * Version 1.4.1 released.
+  + 2018-06-22  K. Handa  <handa@gnu.org>
+    Thanks to Akira Urushibata <afu@wta.att.ne.jp> for reporting these bugs.
+    * Asian/xtis18.bdf: Sort glyphs by ENCODING.
+    * Asian/ind1c24-mule.bdf: Fix ENCODINGs 9082.
+  + 2012-12-14  Kenichi Handa  <handa@gnu.org>
+    * Version 1.4.0 released.
+  + 2012-12-14  Kenichi Handa  <handa@gnu.org>
+    * .cvsignore: New file.
+    * make-dist: Fix unpaired string quotation.
+    * Makefile.in (SUBDIRS_BIG): Delete Chienese.BIG.
+    * COPYING: New file (GPL).
+    * Chinese/fonts.alias: Delete entries correponding to deleted fonts.
+    * Chinese/cns[1-7]-16.bdf, Chinese/cns[1-7]-24.bdf: Delete them.
+    * Chinese.BIG/cns[1-7]-40.bdf, Chinese.BIG/cc4[08].bdf: Delete them.
+    * COPYRIGHT: Delete it.
+  + 2006-04-26  Kenichi Handa  <handa@m17n.org>
+    * make-dist (version): Extract release number.
+      (files): Include make-dist.
+      (release): New variable.
+    * Chinese.X/gb16fs.bdf, Chinese.X/gb16st.bdf,
+      Chinese.X/gb24st.bdf: Fix 0x2736 and 0x2737 (exchanged).
+  + 2006-04-10  Claudio Fontana  <claudio@gnu.org>
+    * Makefile.in: Add DESTDIR variable to support staged installations.
+  + 2003-07-03  Kenichi Handa  <handa@m17n.org>
+    * Japanese.BIG/j83-32.bdf, Japanese.BIG/j83-48.bdf: Deleted.
+    * Japanese.BIG/jiskan32.bdf, Japanese.BIG/jiskan48.bdf: New fonts.
+  + 2001-05-14  Milan Zamazal  <pdm@debian.org>
+    * Chinese/fonts.alias: New aliases for Big5 and GB8565 fonts.
+  + 2001-04-20  Kenichi Handa  <handa@etl.go.jp>
+    * Misc/bmp16-etl.bdf: Fix BBX for ENCODING 8224.
+  + 2001-03-27  Kenichi Handa  <handa@etl.go.jp>
+    * Chinese/fonts.alias: Add aliases for CNS fonts.
+  + 2001-03-05  Pavel Janík ml.  <Pavel@Janik.cz>
+    * configure.in (fontdir): Fix help string.
+  + 2000-12-15  Kenichi Handa  <handa@etl.go.jp>
+    * Version 1.3 released.
+  + 2000-12-15  Kenichi Handa  <handa@etl.go.jp>
+    * */*-elt.bdf: Copyright notice udpated.
+    * European/koi*.bdf: Properties CHARSET_REGISTRY and CHARSET_ENCODING fixed.
+  + 2000-11-17  Kenichi Handa  <handa@etl.go.jp>
+    * COPYRIGHT: New file.
+  + 2000-08-18  Kenichi Handa  <handa@etl.go.jp>
+    * European/lt1-16i-etl.bdf, European/lt1-24b-etl.bdf,
+      European/lt1-24bi-etl: Glyphs improved.
+  + 2000-07-01  Kenichi Handa  <handa@etl.go.jp>
+    * Asian/thai18.bdf, Asian/thai18b.bdf, Asian/thai18i.bdf,
+      Asian/thai18bi, Asian/thai24.bdf, Asian/xtis18.bdf,
+      Asian/xtis24.bdf: Add property COPYRIGHT stating that they are
+      public domain.
+    * Asian/tib16-mule.bdf, Asian/tib1c16-mule.bdf, Asian/tib24-mule,
+      Asian/tib1c24-mule: Generated from tib32p-mule.bdf and tuned by hand.
+    * Ethiopic/ethio16f-uni.bdf, Ethiopic/ethio24f-uni: Updated from
+      original ftp site.
+    * Ethiopic/ethio12-uni.bdf: New font.
+    * Ethiopic.BIG/ethio300-uni.bdf: New font.
+    * Japanese/j90-16.bdf: Kana glyphs improved.
+    * Japanese/j00-1-16.bdf, Japanese/j00-2-16.bdf: New fonts.
+  + 2000-06-31  Toru Tomabechi <Toru.Tomabechi@orient.unil.ch>
+    * Asian/tib9p-mule.bdf, Asian/tib14p-mule.bdf,
+      Asian/tib16p-mule.bdf, Asian/tib18p-mule.bdf,
+      Asian/tib24p-mule.bdf, Asian/tib32p-mule.bdf: New fonts.
+  + 2000-06-23  Kenichi Handa  <handa@etl.go.jp>
+    * Chinese.BIG/cnsX-40.bdf: Rebuild form bitmap files in CJK LaTeX.
+    * Chinese/cns1-16.bdf, Chinese/cns2-16.bdf: Updated from the original ftp site.
+    * Chinese/cns[1-7]-24.bdf, Chinese/cns[3-7]-16.bdf: Rebuild from cnsX-40.bdf.
+    * Chinese/taipei16.bdf: Updated from the original ftp site.
+    * European/lt1-{32,48,60}-etl.bdf: New fonts.
+  + 1999-12-07  Kenichi Handa  <handa@etl.go.jp>
+    * Chinese/taipei16.bdf: Properties fixed.
+- Due to unknown license the Chinese BIG fonts are removed
+- The Asian/tib16-mule.bdf, Asian/tib1c16-mule.bdf, Asian/tib1c24-mule.bdf,
+  and Asian/tib24-mule.bdf are back as receated from free source
+
+-------------------------------------------------------------------
 Thu Feb 22 13:48:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

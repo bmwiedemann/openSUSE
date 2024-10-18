@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 16 20:14:45 UTC 2024 - jfehlig@suse.com
+
+- Update to version 3.9.5:
+  * sanlock: change log level for resource names
+  * sanlock: include worker thread info in status
+  * sanlock: reuse io buffer with hugepages
+  * sanlock: use hugepages to avoid splitting read io
+  * sanlock: don't reduce max_sectors_kb
+  * sanlock: fix is dead log message for unused host id
+  * sanlock: repeat helper_msg string termination
+  * sanlock: fix invalid strcpy in direct dump
+
+-------------------------------------------------------------------
 Mon Jul  1 20:41:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - suse-systemd.patch: Remove redundant 'ExecStart' from wdmd.service

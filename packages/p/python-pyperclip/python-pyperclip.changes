@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 14 15:27:29 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.0
+  * Automatically cast the copy() argument to a string for all data types.
+  * _py3_executable_exists and _py2_executable_exists had swapped names; fixed.
+  * Pyperclip now "stringifies" all data types by passing it to str() (or 
+    globals()['__builtins__'].unicode on Python 2), so passing [1, 2, 3] would 
+    put '[1, 2, 3]' on the clipboard.
+  * shutil.which() replaces the custom code (except in 2.7 and below which doesn't 
+    have shutil.which()).
+  * Remove waitForPaste() and waitForNewPaste() functions, these aren't something 
+    the core library should have.
+  * Reordered so that xclip is chosen before xsel since xclip is more popular.
+- Add tests.patch to fix tests
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
