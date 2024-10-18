@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 16 14:52:43 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.3.2
+  bugfix release:
+  https://www.thunderbird.net/en-US/thunderbird/128.3.2esr/releasenotes
+- bring back mozilla-bmo531915.patch to fix x86
+
+-------------------------------------------------------------------
 Thu Oct 10 17:11:15 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.3.1

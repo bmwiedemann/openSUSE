@@ -29,10 +29,10 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.3.1
-%define orig_version   128.3.1
+%define mainver        %major.3.2
+%define orig_version   128.3.2
 %define orig_suffix    esr
-%define update_channel release
+%define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
 
 # PGO builds do not work in TW currently (bmo#1680306)
@@ -206,6 +206,7 @@ Patch2:         mozilla-kde.patch
 %endif
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
+Patch5:         mozilla-bmo531915.patch
 Patch6:         mozilla-s390-context.patch
 Patch7:         mozilla-pgo.patch
 Patch8:         mozilla-reduce-rust-debuginfo.patch

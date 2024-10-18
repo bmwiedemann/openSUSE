@@ -5503,4 +5503,15 @@ I cannot test locally unfortunately.
     Potential memory corruption during JIT compilation</comment>
     <requestid>1207082</requestid>
   </revision>
+  <revision rev="343" vrev="1">
+    <srcmd5>2354c77e71b5e6295bfc17c27ed32379</srcmd5>
+    <version>128.3.2</version>
+    <time>1729259900</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.3.2
+  bugfix release:
+  https://www.thunderbird.net/en-US/thunderbird/128.3.2esr/releasenotes
+- bring back mozilla-bmo531915.patch to fix x86</comment>
+    <requestid>1208840</requestid>
+  </revision>
 </revisionlist>
