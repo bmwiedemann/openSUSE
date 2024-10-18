@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        29.0.8
+Version:        30.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -174,6 +174,7 @@ mkdir -p $idir
 mkdir -p $idir/data
 mkdir -p $idir/search
 cp -aRf * $idir
+cp -aRf .reuse $idir
 cp -aRf .htaccess $idir
 cp -aRf .user.ini $idir
 # $idir/l10n to disappear in future
@@ -185,8 +186,8 @@ fi
 
 # create the AllowOverride directive
 install -p -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.conf
-ocpath="%{apache_myserverroot}/%{name}"
-sed -i -e"s|@DATAPATH@|${ocpath}|g" $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.conf
+ncpath="%{apache_myserverroot}/%{name}"
+sed -i -e"s|@DATAPATH@|${ncpath}|g" $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.conf
 
 # not needed for distro packages
 rm -f ${idir}/indie.json
