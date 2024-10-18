@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 17 19:14:37 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1729175067.9ff0bc1e:
+  * Ensure recurring text streaming callback is invoked by tests
+  * Ensure finish handler for streaming is consistently covered by tests
+  * Ensure drain callback of text streaming is consistently covered by tests
+  * Simplify setup of `t/26-controllerrunning.t`
+  * Fix handling of job array in enqueue_git_clones
+  * t: Debug reponse in case of failure
+  * Reuse existing GruTasks for same git_clone task
+  * Extend worker tests to reach 100 % statement coverage
+  * Bump acorn from 8.12.1 to 8.13.0
+  * Bump tslib from 2.7.0 to 2.8.0
+  * Allow enabling worker online limit in scalability test
+  * Log limit of online worker slots when starting websocket server
+  * Improve small mistakes in scalability test
+  * Check bookkeeping of ws connections by worker in `t/27-websockets.t`
+  * Ensure `lib/openQA/Worker` is fully covered by extending CI check
+  * Simplify code in command handler, avoid nested if block
+  * Cover all special cases of the command handler
+  * Test validation errors on worker registration and fix missing return
+  * Cover all lines of worker engine code or mark as uncoverable
+  * etc: Clarify how to set max_online_workers best
+
+-------------------------------------------------------------------
 Tue Oct 15 11:15:06 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1728897629.cd422eac:
