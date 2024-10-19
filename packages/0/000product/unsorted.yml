@@ -4681,6 +4681,7 @@ unsorted:
   - fuse3-doc 
   - fuseiso 
   - fusesmb 
+  - fusesource-pom 
   - fusion-icon 
   - futuresql-qt5-devel 
   - futuresql-qt6-devel 
@@ -9043,7 +9044,6 @@ unsorted:
   - intlfonts-arabic-bitmap-fonts 
   - intlfonts-asian-bitmap-fonts 
   - intlfonts-bdf-fonts 
-  - intlfonts-chinese-big-bitmap-fonts 
   - intlfonts-chinese-bitmap-fonts 
   - intlfonts-ethiopic-bitmap-fonts 
   - intlfonts-japanese-big-bitmap-fonts 
@@ -9431,6 +9431,7 @@ unsorted:
   - jcip-annotations-javadoc 
   - jcl-over-slf4j 
   - jcodings 
+  - jcodings-javadoc 
   - jcommon 
   - jcommon-javadoc 
   - jconvolver 
@@ -9507,6 +9508,7 @@ unsorted:
   - jetty-openid 
   - jetty-parent 
   - jetty-plus 
+  - jetty-project 
   - jetty-proxy 
   - jetty-quickstart 
   - jetty-rewrite 
@@ -9542,8 +9544,6 @@ unsorted:
   - jflex 
   - jflex-bootstrap 
   - jflex-javadoc 
-  - jflex-maven-plugin 
-  - jflex-maven-plugin-javadoc 
   - jformatstring 
   - jformatstring-javadoc 
   - jfreechart 
@@ -11927,8 +11927,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute40 
-  - libarm_compute_graph40 
+  - libarm_compute42 
+  - libarm_compute_graph42 
   - libarmadillo14 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -19774,6 +19774,8 @@ unsorted:
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
+  - netty-tcnative 
+  - netty-tcnative-javadoc 
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
@@ -27430,7 +27432,6 @@ unsorted:
   - python310-svneverever 
   - python310-swagger-spec-validator 
   - python310-swapper 
-  - python310-swifter 
   - python310-sybil 
   - python310-sympy 
   - python310-synr 
@@ -30604,6 +30605,7 @@ unsorted:
   - python311-pytoolconfig-validation 
   - python311-pytools 
   - python311-pytricia 
+  - python311-pytz 
   - python311-pytz-deprecation-shim 
   - python311-pytzdata 
   - python311-pyu2f 
@@ -30998,7 +31000,6 @@ unsorted:
   - python311-svneverever 
   - python311-swagger-spec-validator 
   - python311-swapper 
-  - python311-swifter 
   - python311-sybil 
   - python311-sympy 
   - python311-synr 
@@ -31139,7 +31140,6 @@ unsorted:
   - python311-typing-inspect 
   - python311-typish 
   - python311-typogrify 
-  - python311-tzdata 
   - python311-tzlocal 
   - python311-u-msgpack-python 
   - python311-ua-parser 
@@ -34671,7 +34671,6 @@ unsorted:
   - python312-svneverever 
   - python312-swagger-spec-validator 
   - python312-swapper 
-  - python312-swifter 
   - python312-sybil 
   - python312-sympy 
   - python312-synr 
@@ -48004,13 +48003,6 @@ unsorted:
   - vagrant-bash-completion 
   - vagrant-doc 
   - vagrant-emacs 
-  - vagrant-libvirt 
-  - vagrant-libvirt-doc 
-  - vagrant-sshfs 
-  - vagrant-sshfs-doc 
-  - vagrant-sshfs-testsuite 
-  - vagrant-vbguest 
-  - vagrant-vbguest-doc 
   - vagrant-vim 
   - vala 
   - vala-cmake-modules 
