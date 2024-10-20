@@ -6770,4 +6770,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.11.3 &amp; other fixes; bugs: bsc#1012628 bsc#1229450 bsc#1230132 bsc#1230414 bsc#1231167 bsc#1231293 bsc#1231416</comment>
     <requestid>1207767</requestid>
   </revision>
+  <revision rev="752" vrev="1">
+    <srcmd5>68cc6b72fba9eb4066bfe8856d53ccdb</srcmd5>
+    <version>6.11.4</version>
+    <time>1729411712</time>
+    <user>anag+factory</user>
+    <comment>6.11.4; bugs: bsc#1012628</comment>
+    <requestid>1208814</requestid>
+  </revision>
 </revisionlist>
