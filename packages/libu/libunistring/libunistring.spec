@@ -19,7 +19,7 @@
 
 %define sover	5
 Name:           libunistring
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        GNU Unicode string library
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
