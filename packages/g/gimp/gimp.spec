@@ -67,6 +67,9 @@ BuildRequires:  pkgconfig
 %if %{with python_plugin}
 BuildRequires:  python-gtk-devel >= 2.10.4
 %endif
+%if 0%{?suse_version} >= 1600
+BuildRequires:  /usr/bin/gtk-update-icon-cache
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
 BuildRequires:  (pkgconfig(babl) or pkgconfig(babl-0.1))
