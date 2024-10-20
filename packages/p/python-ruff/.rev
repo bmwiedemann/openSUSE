@@ -1285,4 +1285,35 @@
    * [refurb] Fix handling of slices in tuples for FURB118, e.g., x[:, 1]</comment>
     <requestid>1206146</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>549c6c25e12a7939df97b8b94fb6685e</srcmd5>
+    <version>0.7.0</version>
+    <time>1729411739</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0
+ * Breaking changes
+   * The pytest rules PT001 and PT023 now default to omitting the decorator parentheses when there are no arguments. This was a change that we attempted to make in Ruff v0.6.0, but only partially made due to an error on our part. See the blog post for more details.
+   * The useless-try-except rule (in our tryceratops category) has been recoded from TRY302 to TRY203 . This ensures Ruff's code is consistent with the same rule in the tryceratops linter.
+   * The lint.allow-unused-imports setting has been removed . Use lint.pyflakes.allow-unused-imports instead.
+ * Formatter preview style
+   * Normalize implicit concatenated f-string quotes per part 
+ * Preview linter features
+   * [refurb] implement hardcoded-string-charset (FURB156) 
+   * [refurb] Count codepoints not bytes for slice-to-remove-prefix-or-suffix (FURB188) 
+ * Rule changes
+   * [pylint] Mark PLE1141 fix as unsafe 
+   * [flake8-async] Consider async generators to be &quot;checkpoints&quot; for cancel-scope-no-checkpoint (ASYNC100) 
+   * [flake8-bugbear] Do not suggest setting parameter strict= to False in B905 diagnostic message 
+   * [flake8-todos] Only flag the word &quot;TODO&quot;, not words starting with &quot;todo&quot; (TD006) 
+   * [pycodestyle] Fix whitespace-related false positives and false negatives inside type-parameter lists (E231, E251) 
+   * [flake8-simplify] Stabilize preview behavior for SIM115 so that the rule can detect files being opened from a wider range of standard-library functions .
+ * CLI
+   * Add explanation of fixable in --statistics command 
+ * Bug fixes
+   * [pyflakes] Allow ipytest cell magic (F401) 
+   * [flake8-use-pathlib] Fix PTH123 false positive when open is passed a file descriptor 
+   * [flake8-bandit] Detect patterns from multi line SQL statements (S608) 
+   * [flake8-pyi] - Fix dropped expressions in PYI030 autofix</comment>
+    <requestid>1208873</requestid>
+  </revision>
 </revisionlist>
