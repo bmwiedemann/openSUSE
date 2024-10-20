@@ -243,8 +243,6 @@ This package provides an input method based on the X Input Method.
 %package tools
 Summary:        Auxiliary utilities for the GTK+ toolkit library v2
 Group:          System/Libraries
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -364,12 +362,8 @@ touch %{buildroot}%{_libdir}/gtk-2.0/%{gtk_binary_version}/immodules.cache
 %if "%{_lib}" == "lib64"
   mv %{buildroot}%{_bindir}/gtk-query-immodules-2.0 %{buildroot}%{_bindir}/gtk-query-immodules-2.0-64
 %endif
-# Alternatives for gtk-update-icon-cache (binary and manpage)
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mv %{buildroot}%{_bindir}/gtk-update-icon-cache %{buildroot}%{_bindir}/gtk-update-icon-cache-2.0
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache %{buildroot}%{_bindir}/gtk-update-icon-cache
-mv %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1 %{buildroot}%{_mandir}/man1/gtk-update-icon-cache-2.0.1
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{ext_man} %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1%{ext_man}
+# drop gtk-update-icon-cache tool - GTK2 is old enough to be able to rely on GTK3 doing the caching
+rm %{buildroot}%{_bindir}/gtk-update-icon-cache %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1
 # Install rpm macros
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE5} %{buildroot}%{_rpmmacrodir}
@@ -434,30 +428,6 @@ if [ $1 = 1 ]; then
     %{_gtk_query_immodules_update_cache}
   fi
 fi
-%if 0
-# If the gtk-update-icon-cache group is in automatic mode, then this will also
-# switch all symlinks automatically
-%endif
-update-alternatives --install %{_bindir}/gtk-update-icon-cache gtk-update-icon-cache %{_bindir}/gtk-update-icon-cache-2.0 2 \
-                    --slave %{_mandir}/man1/gtk-update-icon-cache.1.gz gtk-update-icon-cache.1.gz %{_mandir}/man1/gtk-update-icon-cache-2.0.1.gz
-
-%filetriggerin tools -- %{_datadir}/icons
-if [ "$(realpath %{_bindir}/gtk-update-icon-cache)" = "%{_bindir}/gtk-update-icon-cache-2.0" ]; then
-  for ICON_THEME in $(cut -d / -f 5 | sort -u); do
-    if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
-      %{_bindir}/gtk-update-icon-cache --quiet --force "%{_datadir}/icons/${ICON_THEME}"
-    fi
-  done
-fi
-
-%filetriggerpostun tools -- %{_datadir}/icons
-if [ "$(realpath %{_bindir}/gtk-update-icon-cache)" = "%{_bindir}/gtk-update-icon-cache-2.0" ]; then
-  for ICON_THEME in $(cut -d / -f 5 | sort -u); do
-    if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
-      %{_bindir}/gtk-update-icon-cache --quiet --force "%{_datadir}/icons/${ICON_THEME}"
-    fi
-  done
-fi
 
 %if 0
 # No need to call gtk-query-immodules-2.0 in postun:
@@ -487,14 +457,6 @@ fi
 
 %postun immodule-xim
 %{_gtk_query_immodules_update_cache}
-
-%postun tools
-%if 0
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-%endif
-if [ ! -f %{_bindir}/gtk-update-icon-cache-2.0 ]; then
-  update-alternatives --remove gtk-update-icon-cache %{_bindir}/gtk-update-icon-cache-2.0
-fi
 
 %files -n libgtk-2_0-0
 %license COPYING
@@ -552,13 +514,7 @@ fi
 
 %files tools
 %{_bindir}/gtk-query-immodules-2.0*
-%{_bindir}/gtk-update-icon-cache-2.0
-%{_bindir}/gtk-update-icon-cache
-%ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache
-%ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{?ext_man}
 %{_mandir}/man1/gtk-query-immodules-2.0*.1%{?ext_man}
-%{_mandir}/man1/gtk-update-icon-cache-2.0.1%{?ext_man}
-%{_mandir}/man1/gtk-update-icon-cache.1%{?ext_man}
 
 %files data
 %{_datadir}/themes/Default/

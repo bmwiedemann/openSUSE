@@ -1391,4 +1391,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1189076</requestid>
   </revision>
+  <revision rev="189" vrev="13">
+    <srcmd5>9db4b087c87d04cc62238f8a71c11a51</srcmd5>
+    <version>2.24.33</version>
+    <time>1729411974</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208684</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 17 14:23:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate usage of update-alternatives:
+  + Drop gtk-update-icon-cache and relevant man page. We rely
+    solely on GTK3 to perform this caching task.
+
+-------------------------------------------------------------------
 Tue Jul 16 05:39:23 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Add automake-1.17.patch to support Automake 1.17 in autogen.sh
