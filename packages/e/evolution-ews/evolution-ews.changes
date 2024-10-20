@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 18 07:18:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.1:
+  + Bug Fixes:
+    - m365: Mails do not have set size in summary
+    - m365: Fails to save a message in the Drafts folder
+    - m365: Cannot delete instance of a recurring event
+  + Miscellaneous:
+    - m365: Camel: Correct message ID calculation for folder
+      summary
+    - m365: Read 'bodyPreview' for mail messages
+    - m365: Handle SyncStateNotFound error
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:38:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.54.0:

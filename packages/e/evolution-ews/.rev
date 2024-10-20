@@ -1284,4 +1284,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205424</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>169290f5522d18e933345526a4d3c941</srcmd5>
+    <version>3.54.1</version>
+    <time>1729412000</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1208806 from iznogood)</comment>
+    <requestid>1208830</requestid>
+  </revision>
 </revisionlist>
