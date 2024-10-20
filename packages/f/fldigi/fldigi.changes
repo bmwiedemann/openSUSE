@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Oct 18 22:06:40 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.06:
+  * MFSK for QRP Labs qmx/qmxp
+    + remove silence period after preamble
+      . qmx drops transmit signal after initial mfsk preamble
+      . RsID signal should not be used with qmx series xcvr
+  * ADIF correction
+    + correct various FeldHell ADIF reports:
+      . Feld Hell <MODE:4>HELL
+      . Slow Hell <MODE:4>HELL
+      . Feld Hell X5 <MODE:4>HELL
+      . Feld Hell X9 <MODE:4>HELL
+      . FSK Hell-245 <MODE:7>FSKH105
+      . FSK Hell-105 <MODE:7>FSKH245
+      . Hell 80 <MODE:6>HELL80
+      In the current ADIF specification
+      https://adif.org.uk/314/ADIF_314.htm#Mode_Enumeration
+      - FSKH105 and FSKH245 do not exist as MODE in the ADIF specification
+      - HELL80 is a SUBMODE rather than MODE, so should be exported =
+        as <MODE:4>HELL <SUBMODE:6>HELL80
+        . <MODE:4>HELL <SUBMODE:8>SLOWHELL
+        . <MODE:4>HELL <SUBMODE:6>HELLX5
+        . <MODE:4>HELL <SUBMODE:6>HELLX9
+  * FSQ rx/tx freq
+    + Remove variable frequency selection on configuration tab
+  * color prefs
+    + move color definitions from configuration to a separate
+      prefs file to allow independent color renderings.
+    + specify all colors as a triad: red, green, blue 0 to 255
+  * Main dialog position
+    + allow location on left-center-right monitors. n5
+  * Micro modems
+    + change name to avoid double word parsing issues with
+      frequencies2.txt
+  * colors and scheme
+    + allow user to select default background and foreground
+      colors
+      . supplements command line usage
+  * @QSY+ macro tag
+    + QSY after TX to RX transition
+  * autotools: update m4 macros
+  * fw / ww
+  * Wordsworth keying
+    + Correct spacing algorithm using smaller intervals
+      of silence to avoid audio stream buffer overflow
+    + simultaneous farnsworth / wordsworth keying.
+      if and only if: wordsworth < farnsworth < keying wpm
+  * UDP/CLOUD log record
+    + add write log record to UDP socket concurrent with other
+      internal and external logbook recording. UDP record in
+      ADIF format and contains the fields specified on the UDP
+      field selection dialog.
+    + Add field selection for cloud logbook export
+    + UDP and CLOUD export records are terminated by the <EOR>
+      tag.
+    + Make field selection paradigm identical for udp and cloud
+      exports.
+    + ADIF specification compliance
+     . change frequency field comma, ",", to period "."
+  * FMT thread
+    + insure that FMT thread is closed when modem is deleted
+      . windows gags on multiple threads writing to same object
+    + put a whole file lock on the csv file during entire time
+      it is being written to by the FMT modem. Excel is an
+      ultra greedy application that attempts to lock a file before
+      any reads or writes and does so even to a file opened for
+      write by another program. Bah Humbug!
+
+-------------------------------------------------------------------
 Wed May  1 22:36:54 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.05:
