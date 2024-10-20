@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2023 Dr. Axel Braun
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        2.0
+Version:        2.1
 Release:        0
 URL:            https://orthanc-server.com
-Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
+Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWSI-%{version}.tar.gz
 Source1:        openlayers-3.19.0-dist.zip
 Source11:       orthanc-wsi-readme.SUSE
 
@@ -32,7 +32,11 @@ BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
@@ -68,7 +72,7 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 - Another command-line tool that converts a DICOM series stored inside Orthanc, to a standard hierarchical TIFF image.
 
 %prep
-%setup -q -n OrthancWSI-%{version}
+%autosetup -n OrthancWSI-%{version}
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
@@ -77,6 +81,10 @@ mkdir ViewerPlugin/ThirdPartyDownloads
 cp %{S:1} ViewerPlugin/ThirdPartyDownloads/.
 
 %build
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 # build the applications
 cd Applications
 

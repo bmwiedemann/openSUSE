@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 19 06:53:37 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.1 
+  * Support of sparse encoding of tiles in OpenSlide (notably for MIRAX format)
+  * OrthancWSIDicomizer supports plain TIFF, besides hierarchical TIFF
+  * New option: "--force-openslide" to force the use of OpenSlide on TIFF-like files
+  * New option: "--padding" to control deep zoom of plain PNG/JPEG/TIFF images over IIIF
+  * Added support for DICOM tag "Recommended Absent Pixel CIELab" (0048,0015)
+  * Force version of Mirador to 3.3.0
+  * In the IIIF manifest, reverse the order of the "sizes" field, which
+    seems to fix compatibility with Mirador v4.0.0-alpha
+ 
+-------------------------------------------------------------------
 Sat Jul 15 07:23:46 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.0
