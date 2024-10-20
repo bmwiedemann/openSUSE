@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 02:12:45 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2.1.9
+  * fixed build with PipeWire version less than 0.3.33
+  * fixed displaying bitrate in the wavpack plugin
+  * disabled Qt 6.7 build warnings
+  * disabled waveform seekbar for CD tracks in the simple user
+    interface 
+
+-------------------------------------------------------------------
 Sun Jun 30 00:53:51 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 2.1.8 
