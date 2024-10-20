@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:45:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.1:
+  + udisks2: Increasing reference count when updating volume to fix
+    crashes
+  + onedrive:
+    - Use names instead of id for events to fix monitoring
+    - Add missing replace stream to fix crashes
+    - onedrive: Fix double free during cache rebuild to fix crashes
+  + dav: Recognize the 409 status to fix creation of parent
+    directories
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:26:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.56.0:
