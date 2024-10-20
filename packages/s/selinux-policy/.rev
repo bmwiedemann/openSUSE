@@ -984,4 +984,16 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1204680</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2871f3a222ebd04e6a044ff8a6affdd9</srcmd5>
+    <version>20241018</version>
+    <time>1729411737</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241018:
+  * Allow slpd to create TCPDIAG netlink socket (bsc#1231491)
+  * Allow slpd to use sys_chroot (bsc#1231491)
+  * Allow openvswitch-ipsec use strongswan (bsc#1231493)
+</comment>
+    <requestid>1208868</requestid>
+  </revision>
 </revisionlist>

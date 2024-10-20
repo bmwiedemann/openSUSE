@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:34:06 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241018:
+  * Allow slpd to create TCPDIAG netlink socket (bsc#1231491)
+  * Allow slpd to use sys_chroot (bsc#1231491)
+  * Allow openvswitch-ipsec use strongswan (bsc#1231493)
+
+-------------------------------------------------------------------
 Mon Sep 30 07:15:18 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240930:
