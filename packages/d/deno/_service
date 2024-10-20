@@ -3,26 +3,19 @@
 -->
 
 <services>
-  <!--
-   Build Deno and rusty_v8 as completely from
-   scratch as we can. We pull in all the sources
-   through git.
-   TODO: migrate to obs_scm as soon as "exclude"
-   works there.
-   -->
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/deno</param>
     <!-- param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param -->
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.0.0</param>
+    <param name="revision">v2.0.2</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
  </service>
  <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
-    <param name="file">deno-2.0.0*.tar</param>
+    <param name="file">deno-*.tar</param>
     <param name="compression">zst</param>
   </service>
   <service mode="manual" name="set_version"/>

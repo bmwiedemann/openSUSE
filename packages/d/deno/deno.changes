@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Oct 18 03:59:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 2.0.2:
+  * fix(ext/node): add null check for kStreamBaseField
+  * fix(jupyter): fix panics for overslow subtraction
+  * fix(install): don't attempt to cache specifiers that point to directories
+  * chore: fix flaky COPYFILE_EXCL test
+  * refactor(ext/napi): use concrete error types
+  * fix(node/fs): copyFile with `COPYFILE_EXCL` should not throw if the destination doesn't exist
+  * refactor(ext/web): use concrete error types
+  * feat(permissions): expose PromptResponse
+  * refactor(ext/kv): use concrete error type
+  * refactor(ext/net): use concrete error type
+  * feat(permissions): expose PermissionPrompter and set_prompter function
+  * fix(runtime): send ws ping frames from inspector server
+  * fix(jupyter): update to the new logo
+  * refactor: use macros for signal table
+  * fix(cli): set napi object property properly
+  * fix(net): don't try to set nodelay on upgrade streams
+  * fix: don't warn on ignored signals on windows
+  * fix(node/http): normalize header names in `ServerResponse`
+  * Reland feat(lsp): deno/didRefreshDenoConfigurationTree notifications
+  * fix: use syntect for deno doc html generation
+  * Revert "feat(lsp): "deno/didRefreshDenoConfigurationTree" notificatio…
+  * fix(child_process): map node `--no-warnings` flag to `--quiet`
+  * fix(cli): add prefix to install commands in help
+  * fix(add): exact version should not have range `^` specifier
+  * feat(lsp): "deno/didRefreshDenoConfigurationTree" notifications
+  * chore: add dhat feature
+  * fix(jupyter): copy kernels icons to the kernel directory
+  * fix(ext/node): fix dns.lookup result ordering
+  * fix: node-api function call should use preamble
+  * fix(cli): consolidate pkg parser for install & remove
+  * fix(ext/node): timingSafeEqual account for AB byteOffset
+  * perf(http): make heap allocation for path conditional
+  * fix(install): retry downloads of registry info / tarballs
+  * fix: improve suggestions and hints when using CommonJS modules
+  * refactor(ext/io): use concrete error types
+  * fix: add hint for missing `document` global in terminal error
+  * fix(ext/console): apply coloring for console.table
+  * fix(install): handle pkg with dep on self when pkg part of peer dep resolution
+  * fix(ext/node): use primordials in `ext/node/polyfills/internal/buffer.mjs`
+  * fix(ext/node): handle http2 server ending stream
+  * refactor: always apply hint when formatting JsError
+  * chore: ensure only one cargo publish can run
+  * fix(add): create deno.json when running `deno add jsr:<pkg>`
+  * chore: upgrade to rust 1.81.0
+  * fix: panic in `prepare_stack_trace_callback` when global interceptor throws
+  * fix(ext/node): implement TCP.setNoDelay
+  * fix(repl): remove check flags
+  * fix: do not panic running remote cjs module
+  * perf(http): avoid clone getting request method and url
+  * perf(http): cache webidl.converters lookups in ext/fetch/23_response.js
+  * fix(cli): named export takes precedence over default export in doc testing
+  * feat(unstable): `--unstable-detect-cjs` for respecting explicit `"type": "commonjs"`
+  * refactor(ext/ffi): use concrete error types
+  * fix(console/ext/repl): support using parseFloat()
+  * refactor(ext/url): use concrete error types
+  * refactor(ext/webstorage): use concrete error types
+  * fix(install): support installing npm package with alias
+  * chore: generate the checksums from the final archives
+  * perf: use fast calls for microtask ops
+  * feat(cli): improve deno info output for npm packages
+  * fix(ext/node): compute pem length (upper bound) for key exports
+  * fix(ext/node): allow writing to tty columns
+  * fix(ext/napi): pass user context to napi_threadsafe_fn finalizers
+  * fix(ext/webgpu): allow GL backend on Windows
+  * refactor(ext/tls): use concrete error types
+  * refactor(ext/cron): use concrete error type
+  * fix(node/util): export `styleText` from `node:util`
+  * feat(npm): support `--allow-scripts` on `deno run` (and `deno add`, `deno test`, etc)
+  * refactor(ext/canvas): use concrete error type
+  * refactor(ext/cache): use concrete error type
+  * refactor(ext/broadcastchannel): use concrete error type
+  * fix(node): make `process.stdout.isTTY` writable
+  * fix(lsp): relative completions for bare import-mapped specifiers
+  * fix(install): duplicate dependencies in `package.json`
+  * fix(unstable/worker): ensure import permissions are passed
+  * fix: do not panic when using methods on classes and interfaces in deno doc html output
+  * fix: do not panic on wsl share file paths on windows
+  * fix(repl): importing json files
+  * fix(jupyter): keep running event loop when waiting for messages
+
+-------------------------------------------------------------------
+Sat Oct 12 23:20:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Replace deprecated tar_scm with obs_scm in _service file.
+
+-------------------------------------------------------------------
 Sat Oct 12 04:07:25 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Disable LTO. This seems to cause clang to recognize formats incorrectly,
