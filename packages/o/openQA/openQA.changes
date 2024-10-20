@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 20 03:14:43 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1729244210.5cfb4dcc:
+  * Consistently handle settings with multiple values
+  * Remove unused import in t/10-jobs.t
+
+-------------------------------------------------------------------
 Thu Oct 17 19:14:37 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1729175067.9ff0bc1e:
