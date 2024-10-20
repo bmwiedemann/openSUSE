@@ -26,4 +26,12 @@
   * Drop go build -o arg, default binary name is package of main() (forwarded request 1204252 from jfkw)</comment>
     <requestid>1204253</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2f33a9d682b866118e9dd0236ec5f26</srcmd5>
+    <version>1.16.4</version>
+    <time>1729411486</time>
+    <user>anag+factory</user>
+    <comment>update to 1.16.4 (forwarded request 1208918 from ojkastl_buildservice)</comment>
+    <requestid>1208919</requestid>
+  </revision>
 </revisionlist>

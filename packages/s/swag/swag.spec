@@ -17,7 +17,7 @@
 
 
 Name:           swag
-Version:        1.16.3
+Version:        1.16.4
 Release:        0
 Summary:        Automatically generate RESTful API documentation with Swagger 2.0 for Go
 License:        MIT

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Oct 18 21:33:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.4:
+  * new release (#1901)
+  * chore: Update ci.yml (#1902)
+  * Feat: Add support for parenthesis in router patterns (#1859)
+  * fix: failing assert in enums test on 32bit (#1634)
+  * Flags to parse internal and dependency package (#1894)
+  * fix：parse all field names declared in a row (#1872)
+  * Update docs for request and response headers (#1825)
+  * update README (#1856)
+  * support markdown description for declaration (#1893)
+  * Fix param comment escaping issue (#1890)
+  * Fix generics used with function scoped types (#1883)
+  * fix parse nested structs and aliases (#1866)
+  * adds support for pointer function scoped fields (#1841)
+  * Fix global overrides for any/interface ref types (#1835)
+  * Fixes Issue 1829 (#1830)
+  * [Issue 1812] fix misalignment in expected.json and api.go
+    messing with parser_test (#1836)
+  * adds support for complex types with function scope (#1813)
+  * Added suport for parsing comments inside of function bodies
+    (#1824)
+  * feat: read from stdin, write to stdout (#1831) (#1832)
+  * fix issue: #1780: filter $GOROOT path (#1827)
+  * chore(deps): bump google.golang.org/protobuf in /example/celler
+    (#1775)
+  * chore(deps): bump google.golang.org/protobuf (#1774)
+  * chore(deps): bump google.golang.org/protobuf (#1773)
+  * Feat: multi-arch docker image (#1756)
+  * Added multiline support for @description attribute for
+    securityDefinitions (#1786)
+  * Handle case of empty GOROOT (#1798)
+  * chore(deps): bump golang.org/x/net in
+    /example/object-map-example (#1796)
+  * chore(deps): bump golang.org/x/net in
+    /example/go-module-support (#1795)
+  * chore(deps): bump golang.org/x/net in /example/celler (#1794)
+  * chore(deps): bump golang.org/x/net in /example/markdown (#1792)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.23.0
+    (#1793)
+  * bump go version (#1797)
+  * chore: fix some typos in comments (#1788)
+  * add support for "title" tag (#1762)
+  * Update docker go build version to 1.21 (#1758)
+  * fix: remove dropped tags from general infos (#1764)
+  * Update operation.go (#1753)
+
+-------------------------------------------------------------------
 Fri Sep 27 11:11:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
