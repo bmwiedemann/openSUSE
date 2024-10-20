@@ -492,4 +492,19 @@ In short, do not use this driver for tablets on production workstations yet.</co
     <comment></comment>
     <requestid>1105974</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b623c0882005451f56bfc5530de6e7a7</srcmd5>
+    <version>1.5.0</version>
+    <time>1729411982</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.0:
+  * the compose and kana LEDs are now supported
+  * tablet tools now have a property to indicate the tool serial and hw id
+    (if any)
+  * libinput's tablet tool pressure range config is now supported
+  * libinput's clickfinger button map config is now supported
+  * we remap some higher keycodes to FK20 and friends, paving the
+    way for systemd/udev to map those properly in their hwdb files</comment>
+    <requestid>1208735</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 23:29:57 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.0:
+  * the compose and kana LEDs are now supported
+  * tablet tools now have a property to indicate the tool serial and hw id
+    (if any)
+  * libinput's tablet tool pressure range config is now supported
+  * libinput's clickfinger button map config is now supported
+  * we remap some higher keycodes to FK20 and friends, paving the
+    way for systemd/udev to map those properly in their hwdb files
+
+-------------------------------------------------------------------
 Fri Aug 25 16:29:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.0:
