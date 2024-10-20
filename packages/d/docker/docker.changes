@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 16 22:24:52 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Further merge docker and docker-stable specfiles to minimise the differences.
+  The main thing is that we now include both halves of the
+  Conflicts/Provides/Obsoletes dance in both specfiles.
+
+-------------------------------------------------------------------
 Wed Oct 16 05:37:14 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx v0.17.1 to match standalone docker-buildx package we

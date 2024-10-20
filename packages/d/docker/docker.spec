@@ -16,6 +16,10 @@
 #
 # nodebuginfo
 
+# The flavour is defined with a macro to try to keep docker and docker-stable
+# as similar as possible, to make maintenance a little easier.
+%define flavour %{nil}
+
 %bcond_without  apparmor
 
 # Where important update information will be stored, such that an administrator
@@ -45,7 +49,7 @@
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
 %define git_commit_epoch 1721763388
 
-Name:           docker
+Name:           docker%{flavour}
 Version:        %{docker_version}
 Release:        0
 Summary:        The Moby-project Linux container runtime
@@ -64,8 +68,6 @@ Source130:      README_SUSE.md
 Source140:      docker-audit.rules
 Source150:      docker-daemon.json
 Source160:      docker.sysusers
-# docker-stable cannot be used alongside docker.
-Conflicts:      docker-stable
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
 #       in the suse-v<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
@@ -128,6 +130,14 @@ Requires:       ca-certificates-mozilla
 # since now docker-proxy is maintained as part of this package.
 Obsoletes:      docker-libnetwork < 0.7.0.2
 Provides:       docker-libnetwork = 0.7.0.2.%{docker_version}
+# docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker = %{docker_version}
+Obsoletes:      docker < %{docker_version}
+Conflicts:      docker
+%else
+Conflicts:      docker-stable
+%endif
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
 Requires:       runc >= 1.1.9
@@ -175,7 +185,13 @@ Source500:      docker-buildx-%{buildx_version}.tar.xz
 Group:          System/Management
 Requires:       %{name} >= 19.03.0_ce
 # docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker-buildx = %{buildx_version}
+Obsoletes:      docker-buildx < %{buildx_version}
+Conflicts:      docker-buildx
+%else
 Conflicts:      docker-stable-buildx
+%endif
 
 %description buildx
 buildx is a Docker CLI plugin for extended build capabilities with BuildKit.
@@ -198,7 +214,13 @@ Requires:       fuse-overlayfs >= 0.7
 Requires:       rootlesskit
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker-rootless-extras = %{docker_version}
+Obsoletes:      docker-rootless-extras < %{docker_version}
+Conflicts:      docker-rootless-extras
+%else
 Conflicts:      docker-stable-rootless-extras
+%endif
 
 %description rootless-extras
 Rootless support for Docker.
@@ -213,7 +235,13 @@ Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker-bash-completion = %{docker_version}
+Obsoletes:      docker-bash-completion < %{docker_version}
+Conflicts:      docker-bash-completion
+%else
 Conflicts:      docker-stable-bash-completion
+%endif
 
 %description bash-completion
 Bash command line completion support for %{name}.
@@ -226,7 +254,13 @@ Requires:       zsh
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker-zsh-completion = %{docker_version}
+Obsoletes:      docker-zsh-completion < %{docker_version}
+Conflicts:      docker-zsh-completion
+%else
 Conflicts:      docker-stable-zsh-completion
+%endif
 
 %description zsh-completion
 Zsh command line completion support for %{name}.
@@ -239,7 +273,13 @@ Requires:       fish
 Supplements:    packageand(%{name}:fish)
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
+%if "%{name}" == "docker-stable"
+Provides:       docker-fish-completion = %{docker_version}
+Obsoletes:      docker-fish-completion < %{docker_version}
+Conflicts:      docker-fish-completion
+%else
 Conflicts:      docker-stable-fish-completion
+%endif
 
 %description fish-completion
 Fish command line completion support for %{name}.
