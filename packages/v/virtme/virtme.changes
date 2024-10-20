@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 19 07:57:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.31:
+  * Fix a packaging issue, after an attempt to modernize the build
+    system we realized that we were not installing the bash
+    completion file anymore, so we have temporarily reverted the
+    change to cut this new release.
+    See gh/arighi/virtme-ng#181
+  * Initial support to run virtme-ng on macOS
+
+-------------------------------------------------------------------
+Tue Oct 15 09:06:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.30:
+  * Initial support for NVIDIA GPUs passthrough
+  * Possibility to use pre-compiled -rc kernels from Ubuntu mainline builds
+  * Possibility to use virtiofs natively on arm64
+  * Some improvements to run virtme-ng cross-architecture and cross-distro 
+  * Bug fixes
+
+-------------------------------------------------------------------
 Tue Sep 17 15:14:48 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Workaround python packaging deficiency
