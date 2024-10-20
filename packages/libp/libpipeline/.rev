@@ -153,4 +153,15 @@
     compatible with C23. (forwarded request 1036482 from dirkmueller)</comment>
     <requestid>1036562</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce87010449eb81fd434fd7a89ec08be4</srcmd5>
+    <version>1.5.8</version>
+    <time>1729411735</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.8 (27 August 2024):
+  * Upgrade to Gnulib `stable-202407`.  Building libpipeline now requires
+    Automake &gt;= 1.14.
+  * Use C23-style `nullptr`.</comment>
+    <requestid>1208863</requestid>
+  </revision>
 </revisionlist>

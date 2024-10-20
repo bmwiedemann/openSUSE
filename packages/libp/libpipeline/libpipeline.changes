@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 18 11:42:38 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 1.5.8 (27 August 2024):
+  * Upgrade to Gnulib `stable-202407`.  Building libpipeline now requires
+    Automake >= 1.14.
+  * Use C23-style `nullptr`.
+
+-------------------------------------------------------------------
 Thu Nov 17 16:24:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.7:
