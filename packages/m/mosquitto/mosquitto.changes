@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 19 08:56:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.20
+  Broker:
+  - Fix QoS 1 / QoS 2 publish incorrectly returning
+    "no subscribers".
+  - Don't allow invalid response topic values.
+  - Fix some strict protocol compliance issues.
+
+-------------------------------------------------------------------
 Thu Oct  3 12:22:10 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.19
