@@ -17,14 +17,14 @@
 
 
 Name:           xf86-input-evdev
-Version:        2.10.6
+Version:        2.11.0
 Release:        0
 Summary:        Generic Linux input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        11-evdev.conf
 Source4:        50-elotouch.conf
@@ -91,7 +91,7 @@ udevadm trigger --subsystem-match=input --action=change || :
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %dir %{_datadir}/X11/xorg.conf.d
 %{_datadir}/X11/xorg.conf.d/*.conf
 %dir %{_libdir}/xorg/modules/input

@@ -351,4 +351,16 @@
   * fixes build against gcc14 (boo#1221710)</comment>
     <requestid>1159569</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bc2e4739f49744b003bab0a3e685b193</srcmd5>
+    <version>2.11.0</version>
+    <time>1729411983</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.11.0
+  * FTBFS fixes on non-linux platforms and dropping some ancient quirks
+  * Fixes for the Compose and Kana LEDs
+  * we remap some higher keycodes to FK20 and friends, paving the
+    way for systemd/udev to map those properly in their hwdb files</comment>
+    <requestid>1208736</requestid>
+  </revision>
 </revisionlist>

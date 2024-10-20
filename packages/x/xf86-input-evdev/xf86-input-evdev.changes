@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 23:35:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 2.11.0
+  * FTBFS fixes on non-linux platforms and dropping some ancient quirks
+  * Fixes for the Compose and Kana LEDs
+  * we remap some higher keycodes to FK20 and friends, paving the
+    way for systemd/udev to map those properly in their hwdb files
+
+-------------------------------------------------------------------
 Tue Mar 19 13:55:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc14fix.patch
