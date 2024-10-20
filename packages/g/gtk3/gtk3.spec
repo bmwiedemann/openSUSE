@@ -294,8 +294,6 @@ This package provides an input method based on the X Input Method.
 %package tools
 Summary:        Auxiliary utilities for the GTK+ toolkit library v3
 Group:          System/Libraries
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -446,17 +444,6 @@ test ! -d %{buildroot}%{_libdir}/gtk-3.0/immodules \
 test ! -d %{buildroot}%{_libdir}/gtk-3.0/%{binary_version}/theming-engines \
   && mkdir -v %{buildroot}%{_libdir}/gtk-3.0/%{binary_version}/theming-engines
 
-# Alternatives for gtk-update-icon-cache (binary and manpage)
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mv %{buildroot}%{_bindir}/gtk-update-icon-cache \
-  %{buildroot}%{_bindir}/gtk-update-icon-cache-3.0
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache \
-  %{buildroot}%{_bindir}/gtk-update-icon-cache
-mv %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1 \
-  %{buildroot}%{_mandir}/man1/gtk-update-icon-cache-3.0.1
-ln -s -f %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{ext_man} \
-  %{buildroot}%{_mandir}/man1/gtk-update-icon-cache.1%{ext_man}
-
 # Install rpm macros
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
@@ -473,8 +460,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %endif
 %define __gtk_query_immodules %{_bindir}/gtk-query-immodules-3.0%{?ext_64}
 %define __update_iconcache %{_bindir}/gtk-update-icon-cache
-%define __update_iconcache3 %{_bindir}/gtk-update-icon-cache-3.0
-%define __update_alternatives %{_sbindir}/update-alternatives
 
 # Until RPM (trans)filetriggers gets implemented for ldconfig calls, use
 # whatever we got.
@@ -492,7 +477,7 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %filetriggerin tools -- %{_datadir}/icons
-if [ "$(realpath %__update_iconcache)" = "%__update_iconcache3" ]; then
+if [ -x "%__update_iconcache" ]; then
   for ICON_THEME in $(cut -d / -f 5 | sort -u); do
     if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
       %__update_iconcache --quiet --force "%{_datadir}/icons/${ICON_THEME}" \
@@ -504,24 +489,13 @@ fi
 %filetriggerpostun tools -- %{_datadir}/icons
 # We ignore upgrades (already handled by the newer package's filetriggerin).
 if [ "$1" -eq 0 ] &&
-   [ "$(realpath %__update_iconcache)" = "%__update_iconcache3" ]; then
+   [ -x "%__update_iconcache" ]; then
   for ICON_THEME in $(cut -d / -f 5 | sort -u); do
     if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
       %__update_iconcache --quiet --force "%{_datadir}/icons/${ICON_THEME}" \
         || echo "[GTK3] Update icons cache: failure to remove ${ICON_THEME} icons"
     fi
   done
-fi
-
-%post tools
-%__update_alternatives --install %__update_iconcache gtk-update-icon-cache \
-  %__update_iconcache3 3 --slave %{_mandir}/man1/gtk-update-icon-cache.1.gz \
-  gtk-update-icon-cache.1.gz %{_mandir}/man1/gtk-update-icon-cache-3.0.1.gz
-
-%postun tools
-# We don't use "$1 -eq 0", to avoid issues if the package gets renamed.
-if [ ! -f %__update_iconcache3 ]; then
-  %__update_alternatives --remove gtk-update-icon-cache %__update_iconcache3
 fi
 
 %files -n libgtk-3-0
@@ -588,9 +562,7 @@ fi
 %{_bindir}/gtk-launch
 %{_bindir}/gtk-query-immodules-3.0*
 %{_bindir}/gtk-query-settings
-%{_bindir}/gtk-update-icon-cache-3.0
 %{_bindir}/gtk-update-icon-cache
-%ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache
 %{_datadir}/applications/gtk3-icon-browser.desktop
 %{_mandir}/man1/broadwayd.1%{?ext_man}
 %{_mandir}/man1/gtk3-icon-browser.1%{?ext_man}
@@ -599,9 +571,7 @@ fi
 %{_mandir}/man1/gtk-launch.1%{?ext_man}
 %{_mandir}/man1/gtk-query-immodules-3.0*.1%{?ext_man}
 %{_mandir}/man1/gtk-query-settings.1%{?ext_man}
-%{_mandir}/man1/gtk-update-icon-cache-3.0.1%{?ext_man}
 %{_mandir}/man1/gtk-update-icon-cache.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache.1%{?ext_man}
 %dir %{_datadir}/gtk-3.0/
 %dir %{_datadir}/gtk-3.0/emoji
 %{_datadir}/gtk-3.0/emoji/*.gresource
