@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 18 07:15:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.1:
+  + Bug Fixes: Missing sender's S/MIME certificate import button
+  + Miscellaneous:
+    - libgnomecanvas: Add few checks for argument validity
+    - WebKitGTK 2.46.1: Middle mouse button inserts primary
+      clipboard twice
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:36:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.54.0:

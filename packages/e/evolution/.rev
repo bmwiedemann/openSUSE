@@ -2629,4 +2629,12 @@ New stable rel</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205422</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>2abc53782c43a20b436d68e698ee423a</srcmd5>
+    <version>3.54.1</version>
+    <time>1729411993</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1208802 from iznogood)</comment>
+    <requestid>1208829</requestid>
+  </revision>
 </revisionlist>
