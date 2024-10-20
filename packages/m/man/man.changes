@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 18 13:04:09 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.13.0 (29 August 2024)
+  * Drop support for versions of groff before 1.21 (released on 2010-12-31).
+  * Fix `man-suffixed-extension` test failure when not using the GNU
+    hierarchy organization.
+  * Fix `-Wmissing-variable-declarations` warnings with GCC 14.
+  * Fix `-Wflex-array-member-not-at-end` warning with GCC 14.
+  * Upgrade to Gnulib `stable-202407`.
+  * Support running the test suite against an installed package; this is
+    useful for systems such as Debian's autopkgtest framework.
+- Remove patch man-db-2.6.3-chinese.dif as not supported anymore
+  due to newer groff versions
+- Port patches
+  * man-db-2.6.3-listall.dif
+  * man-db-2.7.1-zio.dif
+  * man-db-2.9.4.patch
+  * man-propose-online.patch
+
+-------------------------------------------------------------------
 Tue Jun  4 08:10:47 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 2.12.1 (5 April 2024)

@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
@@ -43,7 +43,6 @@ Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
-Patch3:         man-db-2.6.3-chinese.dif
 # PATCH-FEATURE-OPENSUSE man-db-2.7.1-zio.dif -- Allow using libzio for decompression
 Patch4:         man-db-2.7.1-zio.dif
 # PATCH-FEATURE-OPENSUSE man-db-2.6.3-listall.dif -- If multiple matching pages are found show a list bnc#786679
@@ -96,7 +95,6 @@ printer (using groff).
 %prep
 %setup -q -n man-db-%{version}
 %patch -P 0 -b .groff
-%patch -P3 -b .chinese
 %patch -P4 -b .zio
 %patch -P5 -b .listall
 %patch -P6 -p1 -b .p6

@@ -1,29 +1,32 @@
-diff -ur man-db-2.10.2/src/man.c man-db-2.10.2.patch/src/man.c
---- man-db-2.10.2/src/man.c	2022-03-17 19:41:27.000000000 +0100
-+++ man-db-2.10.2.patch/src/man.c	2023-04-03 17:13:05.944119389 +0200
-@@ -774,11 +774,16 @@
+---
+ man-db-2.13.0/src/man.c                      |    9 +++++++--
+ man-db-2.13.0/src/tests/man-invalid-db-entry |    2 ++
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+--- man-db-2.13.0/src/man.c
++++ man-db-2.13.0/src/man.c	2024-10-18 12:56:52.431247186 +0000
+@@ -769,11 +769,16 @@ static void gripe_no_man (const char *na
  	}
  #endif
  
 -	if (sec)
 +	if (sec) {
- 		fprintf (stderr, _("No manual entry for %s in section %s\n"),
- 			 name, sec);
+ 		fprintf (stderr, _ ("No manual entry for %s in section %s\n"),
+ 		         name, sec);
 -	else
 +		fprintf (stderr, _("Possibly, man page is not installed, try online at: "));
 +		fprintf (stderr, _("https://manpages.opensuse.org/%s.%s\n"), name, sec);
-+	} else    {
- 		fprintf (stderr, _("No manual entry for %s\n"), name);
++        } else {
+ 		fprintf (stderr, _ ("No manual entry for %s\n"), name);
 +		fprintf (stderr, _("Possibly, man page is not installed, try online at: "));
 +		fprintf (stderr, _("https://manpages.opensuse.org/%s\n"), name);
 +	}
  
  #ifdef UNDOC_COMMAND
  	if (getenv ("MAN_TEST_DISABLE_UNDOCUMENTED") == NULL &&
-diff -ur man-db-2.10.2/src/tests/man-invalid-db-entry man-db-2.10.2.patch/src/tests/man-invalid-db-entry
---- man-db-2.10.2/src/tests/man-invalid-db-entry	2022-03-17 19:41:27.000000000 +0100
-+++ man-db-2.10.2.patch/src/tests/man-invalid-db-entry	2023-04-03 17:13:55.256508193 +0200
-@@ -25,6 +25,8 @@
+--- man-db-2.13.0/src/tests/man-invalid-db-entry
++++ man-db-2.13.0/src/tests/man-invalid-db-entry	2024-10-18 12:53:16.443176267 +0000
+@@ -25,6 +25,8 @@ run $MANDB -C "$tmpdir/manpath.config" -
  rm -f "$tmpdir/usr/share/man/man1/test.1"
  
  echo "No manual entry for test" > "$tmpdir/1.exp"
