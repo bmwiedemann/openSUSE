@@ -197,4 +197,13 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148910</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1779959582d22716797dbdb3fb056c4d</srcmd5>
+    <version>1.9.1</version>
+    <time>1729411728</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 1.9.1
+- Simplify multibuild</comment>
+    <requestid>1208837</requestid>
+  </revision>
 </revisionlist>

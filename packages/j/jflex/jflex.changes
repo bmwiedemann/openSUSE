@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 15 11:15:12 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 1.9.1
+  * JFlex 1.9.1 is a small bugfix release:
+  * fix negated char classes with overlapping content
+    (#1065, #1066): Expressions such as [^\s\n] were translated
+    incorrectly, because \s and \n overlap and the negation
+    operator ^ in version 1.9.0 did not handle this case correctly.
+- Includes changes from 1.9.0
+  * JFlex 1.9.0 is a feature release with slight performance
+    improvements in the scanning engine. It also fixes all known
+    bugs of version 1.8.2.
+  * New features
+    + add optional token limit size (#1045, #197)
+    + warn for unicode escapes that are too long (#1042)
+    + directives and command line switches for enabling/disabling
+      JFlex warnings (#1020)
+    + allow custom annotations such as @SuppressWarnings
+      (#1027, #762)
+    + increase maximum supported DFA size to about 2^32 states
+      (#1003, #952)
+    + better error reporting for character classes (#996, #888, #939)
+    + allow comments after %yylexthrow (#794)
+    + make maven build reproducible (#765)
+  * Fixed bugs
+    + make character classes more robust (#985, #974, #986)
+    + fix NullPointerException when generating dot files (#769)
+  * Other
+    + update dependencies
+    + more and better property-based tests (#953)
+    + use SPDX license identifiers
+    + avoid use of createTempDir() (was used in tests only)
+    + migrate CI to GitHub actions
+    + migrate most tests to bazel
+    + improve test suite to work on non-US locales
+    + fix example file name for minijava example
+    + improved simple.flex example
+- Remove jflex-1.8.2-no-auto-value.patch (not applicable to
+  versions newer than 1.8.2)
+- Add jflex-1.9.1-no-auto-value.patch
+- Merge multibuild logic into single .spec file
+  * remove jflex-bootstrap.spec
+  * remove jflex-bootstrap.changes
+  * remove pre-checkin.sh
+
+-------------------------------------------------------------------
 Wed Feb 21 22:06:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
