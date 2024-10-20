@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 18 17:14:37 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.40.4:
+  * Version 1.40.4.
+  * ci: Update CI files
+  * docs/nbdkit-service.pod: Add KeepAlive and User/Group settings
+  * tests/test-ondemand.sh: Refine qemu exportname skips
+  * tests/test-ondemand.sh: Work around bug in qemu 9.1 exportname handling
+  * ondemand: Serialize the .open method
+  * ondemand: Delete the disk if creation fails
+  * ondemand, tmpdisk: Don't allow parameters containing '-'
+  * ondemand: Be less strict about filenames
+  * tests: bzip2, curl, ext2, file, gzip, memory, offset, xz: Don't leak 'data' returned by guestfs_cat
+  * Fix documented default value for xz-max-depth
+  * bzip2: Fix version where this filter first appeared
+  * filters/qcow2dec/qcow2dec.c: Fix format specifier in error message
+  * tests: old-plugins: Fix srcdir != builddir
+  * tests: Rearrange some filter tests in alphabetical order
+  * server: Clear conn->magic when freeing a connection
+  * jsc#PED-8910
+
+-------------------------------------------------------------------
 Thu Sep 19 19:19:43 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.40.3:
@@ -711,6 +733,7 @@ Sun Jul 10 22:10:54 UTC 2022 - jfehlig@suse.com
   * ocaml: Add valgrind suppression for OCaml 4.14 bug
   * perl: Move GCC diagnostic ignored earlier
   * docs/nbdkit-protocol.pod: block size support was added in 1.30
+  * jsc#ECO-3633
 - Enable linuxdisk plugin
 
 -------------------------------------------------------------------

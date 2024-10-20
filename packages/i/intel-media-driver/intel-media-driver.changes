@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 18 11:55:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.4.0:
+  * [VP] Align L0 FC Common Kernel Source Code to Driver Bin Version and Fix Clamp Issue
+  * [VP] VP L0 FC Procamp Enabling
+  * [VP] Fix L0 FC 420PL3 ReadKernel Thread Height
+  * [Encode] Remove per frame SeqParams and only update for new ones
+  * [VP] Enable Vebox physical engine id report
+  * [Encode] Change new encode mode from 64 to 41
+  * [VP] fix 420/444 kernel multilayer issue
+  * [Encode] Replace legacy functions in media_softlet for encode
+  * [VP] BT2020 ColorFill L0 FC Enable
+  * [VP] remove item in tems packet when color fill and no support reuse feature
+  * [VP] fix coverity issue unchecked return value
+  * [VP] Change L0 FC Perg Tag
+  * [VP] Fix L0 FC Intermediate Surface Rect not Align
+  * [Encode] Add new perf tags
+  * [Media Common] [VP] Fix build error when mtl is excluded
+  * [VP] FC 420 PL3 READ KERNEL READ KERNEL
+  * [Encode] remove unused header
+  * [Decode] Fix ref only HLK cases failure
+  * [Decode] Update Cmd parser tool for decode ringinfo dump
+
+-------------------------------------------------------------------
 Tue Sep 24 16:01:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.4:

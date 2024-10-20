@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 17 12:32:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1231741, CVE-2024-9143]
+  * Low-level invalid GF(2^m) parameters lead to OOB memory access
+  * Add openssl-CVE-2024-9143.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 12:21:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1220262, CVE-2023-50782]
+  * Implicit rejection in PKCS#1 v1.5
+  * Add openssl-CVE-2023-50782.patch
+
+-------------------------------------------------------------------
 Thu Sep 19 08:05:52 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Security fix: [bsc#1230698, CVE-2024-41996] 
-  * Validating the order of the public keys in the Diffie-Hellman Key Agreement Protocol, when an approved safe prime is used
+  * Validating the order of the public keys in the Diffie-Hellman
+    Key Agreement Protocol, when an approved safe prime is used.
   * Added openssl-CVE-2024-41996.patch
 
 -------------------------------------------------------------------

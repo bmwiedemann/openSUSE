@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 18 19:20:37 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.21.1:
+  * perf(fish): Skip unnecessary indirection in starship init fish.
+  * Features:
+    - deno: add deno.lock file to default detect_files list.
+    - hostname: add option to replace hostnames with aliases.
+    - mojo: add module for Mojo language.
+    - package: support alternative gradle module version syntax.
+    - python: Add detect env vars option.
+    - python: detect pixi and ipynb files.
+  * Bug Fixes:
+    - bash: fix variable leak in Bash integration.
+    - docker_context: Ignore Docker Desktop "desktop-linux" context.
+    - docs: correct username options.
+    - fish: add missing arguments for fish transient prompt functions.
+    - fish: improve fish transient prompt.
+    - fish: use correct input function in transient execute.
+    - Fixed "Click to download TOML" links.
+    - git_status: read proper name for core.fsmonitor flag.
+    - package: support alternative gradle module version syntax.
+    - python: improve parsing of pyvenv.cfg files.
+    - use whoami for user/hostname queries again.
+  * Performance Improvements:
+    - fish: Skip unnecessary indirection in starship init fish.
+    - Skip unnecessary indirection in starship init fish. 
+
+-------------------------------------------------------------------
 Mon Jul 29 03:04:26 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.20.1:

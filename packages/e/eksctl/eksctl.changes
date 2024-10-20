@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:18:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.193.0:
+  * Add release notes for v0.193.0
+  * Correct version drift in cluster-upgrade.md
+  * Add support for M8g instance types
+  * Prepare for next development iteration (#7997)
+
+-------------------------------------------------------------------
 Sat Oct 12 14:48:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.192.0:

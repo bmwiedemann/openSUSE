@@ -80,6 +80,7 @@ Source10:       pci_ids-supported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
+Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
 %if "%{flavor}" == "cuda"
 Patch1:         kernel-6.10.patch
@@ -111,6 +112,12 @@ ExclusiveArch:  x86_64 aarch64
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage
 %endif
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
+%if "%{flavor}" == "cuda"
+%(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- kernel-firmware-nvidia-gspx-G06-cuda = %{version}" >> %_builddir/nvidia-kmp-template)
+%(cat %_sourcedir/kmp-trigger.sh                                                                        >> %_builddir/nvidia-kmp-template)
+%endif
+%(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- kernel-firmware-nvidia-gspx-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
+%(cat %_sourcedir/kmp-trigger.sh                                                                        >> %_builddir/nvidia-kmp-template)
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 %{expand:%(
       for f in %{flavors_to_build}; do \
@@ -124,9 +131,11 @@ ExclusiveArch:  x86_64 aarch64
 %package -n nv-prefer-signed-open-driver
 %define version_major %(i=%{version}; echo ${i%%%%.*})
 Summary:        Prefer the signed open driver when installing CUDA
-Requires:       nvidia-open-driver-G06-signed-cuda-kmp = %version
+Requires:       nvidia-open-driver-G06-signed-cuda-kmp
 # This avoids the package being uninstallable when the CUDA repo is unavaliable preventing problems in staging
-Requires:       ( nvidia-compute-G06 = %version if ( cuda-drivers or cuda-drivers-%version_major ) )
+# Hard code version 555.42.06 as this requires is only needed for this version
+# but since this meta package should apply to all versions.
+Requires:       ( nvidia-compute-G06 = 555.42.06 if ( cuda-drivers = 555.42.06 or cuda-drivers-%version_major = 555.42.06) )
 
 %description -n nv-prefer-signed-open-driver
 By installing this package, the signed NVIDIA open driver built by SUSE will be preferred during installation

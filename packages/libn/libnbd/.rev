@@ -150,4 +150,14 @@ near future.</comment>
   * CVE-2024-7383 (bsc#1228872)</comment>
     <requestid>1191749</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>60006b992e4867c5a274c129b2c2a602</srcmd5>
+    <version>1.20.3</version>
+    <time>1729411474</time>
+    <user>anag+factory</user>
+    <comment>Updated libnbd package for Factory. A missing 'jsc' number was added
+to an old changelog entry in order to submit the same package to
+Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
+    <requestid>1208903</requestid>
+  </revision>
 </revisionlist>

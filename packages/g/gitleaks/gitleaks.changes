@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:19:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.21.1:
+  * feat: add curl basic auth rule (#1575)
+  * Update spelling in README.md (#1574)
+  * refactor(allowlist): use iota for condition (#1569)
+  * refactor(config): temporarily switch to [rules.allowlist]
+    (#1573)
+
+-------------------------------------------------------------------
 Tue Oct 15 15:49:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.21.0:

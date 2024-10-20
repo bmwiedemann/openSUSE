@@ -473,4 +473,12 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1203905</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d0d703c1b426f49415085359b81db9ef</srcmd5>
+    <version>24.4.0</version>
+    <time>1729411484</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208917</requestid>
+  </revision>
 </revisionlist>

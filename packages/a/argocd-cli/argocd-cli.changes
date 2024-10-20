@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 18:59:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.6:
+  * Bump version to 2.12.6 (#20455)
+  * fix: don't disable buttons for multi-source apps (#20446)
+    (#20448)
+  * fix(diff): avoid cache miss in server-side diff (#20423)
+    (#20424) (#20450)
+
+-------------------------------------------------------------------
 Fri Oct 18 06:01:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.5:

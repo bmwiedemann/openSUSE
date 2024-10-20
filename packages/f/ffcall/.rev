@@ -217,4 +217,32 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1150675 from dimstar)</comment>
     <requestid>1153253</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>128861ebd5619e1b2ddbf8c270888074</srcmd5>
+    <version>2.5</version>
+    <time>1729411449</time>
+    <user>anag+factory</user>
+    <comment>- Update to (lib)fcall-2.5 release
+  * Added support for the following platforms:
+    (Previously, a build on these platforms failed.)
+    - loongarch64: Linux with lp64d ABI.
+    - riscv64: Linux with musl libc.
+    - hppa: Linux.
+    - powerpc: FreeBSD, NetBSD.
+    - powerpc64: FreeBSD.
+    - powerpc64le: FreeBSD.
+    - arm: Android.
+  * Fixed support for the following platforms:
+    (Previously, a build on these platforms appeared to succeed but was buggy.)
+    - ia64: Linux.
+    - arm64: OpenBSD.
+  * Simplified the environmental requirements (the library no longer allocates
+    a temporary file in /tmp) on the following platforms:
+    - Linux.
+    - macOS.
+    - FreeBSD 13 and newer.
+    - NetBSD 8 and newer.
+- Removed patch riscv-pic.patch as now upstream supported</comment>
+    <requestid>1208883</requestid>
+  </revision>
 </revisionlist>

@@ -167,8 +167,12 @@ Patch69:        openssl-3-FIPS-PCT_rsa_keygen.patch
 Patch70:        openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
 # PATCH-FIX-UPSTREAM bsc#1229465 CVE-2024-6119: possible denial of service in X.509 name checks
 Patch71:        openssl-CVE-2024-6119.patch
-# PATCH-FIX-UPSTREAM bsc#1230698 CVE-2024-41996:  Validating the order of the public keys in the Diffie-Hellman Key Agreement Protocol, when an approved safe prime is used, allows remote attackers to trigger expensive server-side DHE
+# PATCH-FIX-UPSTREAM bsc#1230698 CVE-2024-41996: Validation order of the DH public keys
 Patch72:        openssl-CVE-2024-41996.patch
+# PATCH-FIX-UPSTREAM bsc#1220262 CVE-2023-50782: Implicit rejection in PKCS#1 v1.5
+Patch73:        openssl-CVE-2023-50782.patch
+# PATCH-FIX-UPSTREAM bsc#1231741 CVE-2024-9143: low-level invalid GF(2^m) parameters lead to OOB memory access
+Patch74:        openssl-CVE-2024-9143.patch
 
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550

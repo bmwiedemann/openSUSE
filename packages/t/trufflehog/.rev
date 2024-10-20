@@ -1489,4 +1489,16 @@
   * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.6 (#3407) (forwarded request 1208271 from ph03nix)</comment>
     <requestid>1208442</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a11de16b1fecbc540a8a43f5886690ff</srcmd5>
+    <version>3.82.11</version>
+    <time>1729411445</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.82.11:
+  * fix timeout (#3460)
+  * Revert &quot;Compress release with UPX (#3445)&quot; (#3455)
+  * Compress release with UPX (#3445)
+  * ignore https as false postive for slackwebhook detector (#3425) (forwarded request 1208866 from ph03nix)</comment>
+    <requestid>1208876</requestid>
+  </revision>
 </revisionlist>

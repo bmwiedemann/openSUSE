@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Fri Oct 11 03:11:01 UTC 2024 - solomoncyj@gmail.com
+
+- Features:
+    * feat(task list): task names shortcuts 
+    * added communication apps to application setup + small fix in dev tools 
+    * added adb setup + uad setup 
+    * Add colors to d2r-loot-filters 
+    * Add waydroid 
+    * feat: implement syntax highlighting for preview text 
+    * Developer essentials 
+    * Use more colors in common-script 
+    * Refactor tips 
+    * Moved showing tips to a feature 
+    * added tips to help users learn new commands every time :) 
+    * added office suite setup script 
+    * Always use printf with %b\n unless a different var is needed 
+    * Restructure the crates 
+    * Refactor various components of Rust code 
+    * feat: Multi selection and installation 
+    * Adding Thorium and Librewolf to the browser script 
+    * Add aarch64 again 
+    * fix: Description and preview hints 
+    * added auto mount script 
+    * added grub themes script 
+    * added bottles install script 
+    * added ssh command automation 
+    * added browser setup script 
+    * Initial support for flathub management 
+    * enhancement: Rate mirrors heads up message 
+    * refactor: Tab key 
+    * Reduce the size of the linutil binary by removing unused features from core/Cargo.toml 
+    * feat(fedora/nvidia-*.sh): nvidia proprietary driver setup (continued from PR #319) 
+    * fix: Add wrapper around script 
+    * feat: Add User Manager 
+    * Added Virtualization Setup for Fedora 
+    * crypting files and directory script 
+    * Added DNF configuration and Multimedia Support for fedora and other Redhat Distros 
+    * Update preview 
+    * System Cleanup 
+    * enhancement: Update bashisms.yml 
+    * feat: Command Description 
+    * Packages metadata update [AUR] 
+- Bug Fixes:
+    * Fix: multi-selection 
+    * fix toml 
+    * add missing task lists 
+    * Move scripts around & refactor existing ones 
+    * replace subshell usage with alternative 
+    * use packager instead of dpkg 
+    * remove unnecessary packagers 
+    * Enable RPMFusion repos as well on rpmfusion script 
+    * refact: Hints title 
+    * fix: Min-term panic 
+    * fix: Respect shebangs in scripts 
+    * fix: Correctly enter up directories 
+    * feat: short disclaimer-like script descriptions 
+    * Fix issues with fedora 
+    * fix capped letter 
+    * Add nvim version check berfore installing 
+    * fix every issue related to printf 
+    * Fix archtitus issues 
+    * Fix general inconsistencies and unnecessary updating 
+    * fix problems with debian 12 
+    * Fixed some Rust code structure and modified the workflow to fail if clippy returns warnings 
+    * fix dwm titus 
+    * fix: Add missing nala 
+    * Fixed alphabetical command sorting 
+    * Browser setup fix few potential issues. 
+    * small refactor 
+    * Adding \valids user\ argument in share section 
+    * Fixed the bashisms CI to only check files that exist 
+    * Fix account manager 
+    * Fix local vars bashisms that are not defined in posix 
+    * Fix read problems 
+    * Rename system-setup scripts 
+    * Disable multi select for system setup 
+    * Folders on top(as they should be) 
+    * Added unzip installation to dwm-titus 
+    * Revert \Rust formatting stuff 2 - removed an unused variable\ 
+    * Rust formatting stuff 2 - removed an unused variable 
+    * refactor: Seperate style and title variables 
+    * Fixed apt-get in some scripts and added nala 
+    * Fixed up some Rust code formatting stuff 
+    * Sorted Entries Alphabetically 
+    * D2r posix update 
+    * Fixed browser Setup 
+    * Alacritty missing file 
+    * Remove redundant functionality 
+    * Flatpak description 
+    * Fix incorrectly placed quote 
+    * Fix bashisms 
+    * Modify the bashisms workflow to only check modified files 
+    * fix: Fixup preview rendering and logic of preview key binding being shown in shortcut list 
+    * refactor: command_exists 
+    * Replace echos with printf (gaming and security) 
+    * Replace echos with printf (system-setup) 
+    * Replace echos with printf (common-script) 
+    * Replace echos with printf (monitor-control) 
+    * Replace echos with printf (applications-setup) 
+    * Use sh shebang and source common-script 
+    * Replace echos with printf (utils) 
+    * Remove bashisms in create bootable usb 
+    * Quote the remaining variables 
+- Documentation:
+    * Doc: Update README.md 
+    * doc: Move sub folders to h3 
+    * Add package installation instructions to the docs and README 
+    * Docs update (forgot about fedora) 
+    * update docs 
+    * Added crates.io badge to the README 
+    * Move security.md to .github folder 

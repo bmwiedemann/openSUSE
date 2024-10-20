@@ -175,4 +175,14 @@ near future.</comment>
 - Move nbdkit-null-plugin to the nbdkit-server package</comment>
     <requestid>1202045</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7cb2c33130fb6415ccf23df4fc121dca</srcmd5>
+    <version>1.40.4</version>
+    <time>1729411475</time>
+    <user>anag+factory</user>
+    <comment>Updated nbdkit package for Factory. A missing 'jsc' number was added
+to an old changelog entry in order to submit the same package to
+Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
+    <requestid>1208904</requestid>
+  </revision>
 </revisionlist>

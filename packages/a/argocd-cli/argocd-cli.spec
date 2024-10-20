@@ -21,14 +21,16 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        2.12.5
+Version:        2.12.6
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
 URL:            https://github.com/argoproj/argo-cd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
 BuildRequires:  go >= 1.20
+BuildRequires:  zsh
 
 %description
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
@@ -86,8 +88,8 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
 %{buildroot}/%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %files
 %doc README.md
@@ -95,12 +97,9 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{executable_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{executable_name}
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:24:31 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.82.11:
+  * fix timeout (#3460)
+  * Revert "Compress release with UPX (#3445)" (#3455)
+  * Compress release with UPX (#3445)
+  * ignore https as false postive for slackwebhook detector (#3425)
+
+-------------------------------------------------------------------
 Wed Oct 16 06:24:21 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.82.9:

@@ -1,7 +1,7 @@
 #
 # spec file for package ffcall
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 # This package uses assembly to do its work.  This is the entire list of
 # supported architectures understood by RPM, even those not currently supported
 # by Fedora.  RPM hasn't heard about line continuations, hence the mess.
-%global ffcall_arches %ix86 x86_64 %alpha %arm aarch64 parisc hppa1.0 hppa1.1 hppa1.2 hppa2.0 ia64 m68k mips mipsel ppc ppc64 ppc64le ppc8260 ppc8560 ppc32dy4 ppciseries ppcpseries riscv64 s390 s390x %sparc sparc64
+%global ffcall_arches %ix86 x86_64 %alpha %arm aarch64 parisc hppa1.0 hppa1.1 hppa1.2 hppa2.0 ia64 m68k mips mipsel ppc ppc64 ppc64le ppc8260 ppc8560 ppc32dy4 ppciseries ppcpseries riscv64 s390 s390x %sparc sparc64 loongarch64
 
 Name:           ffcall
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Libraries for foreign function call interfaces
 # As this package only provides a static library together with the header files
@@ -34,7 +34,6 @@ URL:            https://www.gnu.org/software/libffcall/
 Source0:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libffcall&download=1#/%{name}.keyring
-Patch1:         riscv-pic.patch
 Provides:       ffcall-devel
 Requires:       libavcall1 = %{version}-%{release}
 Requires:       libcallback1 = %{version}-%{release}

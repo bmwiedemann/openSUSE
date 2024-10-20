@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 18 16:42:38 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.20.3:
+  * Version 1.20.3.
+  * interop: Skip nbd-server test on Alpine
+  * ci: Update CI files
+  * rust: Parse perlpod L<https://...> (external links) to rust markup
+  * podwrapper: Add some simple checks for cross-references within manual pages.
+  * docs/libnbd-release-notes-1.10.pod: Remove broken link to "nbd_connect(3)"
+  * docs/nbd_create.pod: Cross-reference nbd_shutdown(3)
+  * docs: Use "oldstyle servers" in preference to "older servers"
+  * docs: Mention newstyle and oldstyle servers in main docs
+  * README: Fix bold markdown
+  * README: Mention 'make install DESTDIR=...'
+  * README: Mention the ./run script
+  * build: Prefer "for developers" in ./configure --help output
+  * build: Fix ./configure --help output for --enable-python-code-style
+  * .gitignore: Remove unused line
+  * ci: Drop Alma Linux 8
+  * lib/crypto.c: Check <gnutls/socket.h> works before including it
+  * docs/libnbd-security.pod: Assign CVE-2024-7383
+  * jsc#PED-8910
+
+-------------------------------------------------------------------
 Mon Aug 05 16:08:37 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.20.2:
@@ -387,6 +411,7 @@ Fri Jul  8 17:59:24 UTC 2022 - James Fehlig <jfehlig@suse.com>
   * python: Plug uninit leak in nbd.Buffer.to_bytearray
   * python: Avoid memleak on (unlikely) module failure
   * python: Accept buffers in nbd.Buffer.from_bytearray()
+  * jsc#ECO-3633
 - Enable building python module and utilities
 
 -------------------------------------------------------------------

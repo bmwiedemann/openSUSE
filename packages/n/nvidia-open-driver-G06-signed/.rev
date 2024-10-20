@@ -460,4 +460,46 @@
   * fixes build on aarch64 with latest TW kernel</comment>
     <requestid>1202361</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>637277ed115ed3cb320c4708eb9dea1b</srcmd5>
+    <version>550.120</version>
+    <time>1729411469</time>
+    <user>anag+factory</user>
+    <comment>- cuda-flavor
+  * provide nvidia-open-driver-G06-kmp = %version to workaround
+    broken cuda-drivers
+- nv-prefer-signed-open-driver
+  * added comments for requirements
+
+- latest change hardcoded to 555.42.06; we no longer need this 
+  for 560 
+
+- nv-prefer-signed-open-driver:
+  * added specicic versions of cuda-drivers/cuda-drivers-xxx as
+    preconditions for requiring specific version of
+    nvidia-compute-G06 
+
+- nv-prefer-signed-open-driver:
+  * no longer require a specific version of
+    nvidia-open-driver-G06-signed-cuda-kmp, so it can select the
+    correct open driver KMP matching the cuda-runtime version
+- cuda-flavor:
+  * added nvidia-compute-G06 = %version to preconditions for
+    requiring kernel-firmware-nvidia-gspx-G06, since
+    nvidia-compute-utils-G06 does not have a version-specific
+    requires on nvidia-compute-G06
+
+- cuda-flavor: 
+  * require kernel-firmware-nvidia-gspx-G06 instead of 
+    kernel-firmware-nvidia-gspx-G06-cuda (which provides also
+    kernel-firmware-nvidia-gspx-G06)
+  * trigger removal of driver modules also on
+    kernel-firmware-nvidia-gspx-G06
+
+- no longer hard-require kernel firmware package, but install it
+  automatically once nvidia-compute-utils-G06 gets installed
+- trigger removal of driver modules with non-existing or wrong
+  firmware when (new) firmware gets installed</comment>
+    <requestid>1208897</requestid>
+  </revision>
 </revisionlist>
