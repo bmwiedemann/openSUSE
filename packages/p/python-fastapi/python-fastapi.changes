@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 18 03:23:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.115.2:
+  * Upgrade Starlette to >=0.37.2,<0.41.0.
+  * Fix openapi generation with responses kwarg.
+  * Remove Required shadowing from fastapi using Pydantic v2.
+  * Add support for Pydantic models for parameters using Query, Cookie, Header
+- Add patch allow-new-starlette.patch.
+
+-------------------------------------------------------------------
 Fri Sep 20 08:05:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.114.2:

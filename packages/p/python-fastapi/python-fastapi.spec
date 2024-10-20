@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.114.2
+Version:        0.115.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -28,16 +28,18 @@ URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Remove two unknown classifiers
 Patch0:         remove-classifiers.patch
+# PATCH-FIX-OPENSUSE Allow new starlette
+Patch1:         allow-new-starlette.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
-BuildRequires:  %{python_module starlette >= 0.37.2 with %python-starlette < 0.39}
+BuildRequires:  %{python_module starlette >= 0.37.2 with %python-starlette < 0.41.1}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.37.2 with python-starlette < 0.39)
+Requires:       (python-starlette >= 0.37.2 with python-starlette < 0.41.1)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -58,10 +60,12 @@ BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module databases >= 0.3.2}
 BuildRequires:  %{python_module email-validator >= 1.1.1}
+BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module orjson >= 3.2.1}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
 BuildRequires:  %{python_module python-jose >= 3.3}
+BuildRequires:  %{python_module sqlmodel}
 BuildRequires:  %{python_module ujson >= 5.6}
 %endif
 # /SECTION
@@ -93,6 +97,12 @@ donttest+=" or test_openapi"
 ignorefiles="$ignorefiles --ignore tests/test_default_response_class.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_async_sql_databases/test_tutorial001.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_custom_response/test_tutorial009c.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_cookie_param_models/test_tutorial001.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_cookie_param_models/test_tutorial002.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_header_param_models/test_tutorial001.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_header_param_models/test_tutorial002.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_query_param_models/test_tutorial001.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_query_param_models/test_tutorial002.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_py310.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005.py"
@@ -101,6 +111,8 @@ ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutori
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an_py39.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_an_py310.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases/test_tutorial001.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases/test_tutorial002.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases_peewee"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01_py310.py"

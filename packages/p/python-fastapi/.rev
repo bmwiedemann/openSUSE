@@ -424,4 +424,17 @@
 - Drop patch allow-starlette-0.38.patch, included upstream.</comment>
     <requestid>1202122</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e90dec64240da25364883cdd5fd2692e</srcmd5>
+    <version>0.115.2</version>
+    <time>1729411986</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.115.2:
+  * Upgrade Starlette to &gt;=0.37.2,&lt;0.41.0.
+  * Fix openapi generation with responses kwarg.
+  * Remove Required shadowing from fastapi using Pydantic v2.
+  * Add support for Pydantic models for parameters using Query, Cookie, Header
+- Add patch allow-new-starlette.patch.</comment>
+    <requestid>1208759</requestid>
+  </revision>
 </revisionlist>
