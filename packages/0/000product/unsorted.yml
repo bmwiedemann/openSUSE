@@ -2983,6 +2983,7 @@ unsorted:
   - culmus-fonts 
   - cunit-devel 
   - cunit-doc 
+  - cup-maven-plugin 
   - cups-airprint 
   - cups-ddk 
   - cups-devel 
@@ -9544,6 +9545,7 @@ unsorted:
   - jflex 
   - jflex-bootstrap 
   - jflex-javadoc 
+  - jflex-maven-plugin 
   - jformatstring 
   - jformatstring-javadoc 
   - jfreechart 
@@ -10021,6 +10023,7 @@ unsorted:
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
   - kernel-firmware-nvidia-gspx-G06 
+  - kernel-firmware-nvidia-gspx-G06-cuda 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -15450,7 +15453,7 @@ unsorted:
   - libppsview4_0-4 
   - libpq5-32bit 
   - libpqos-devel 
-  - libpqos5 
+  - libpqos6 
   - libpqxx-6_4 
   - libpqxx-devel 
   - libprelude-devel 
@@ -17546,6 +17549,7 @@ unsorted:
   - linphone-devel 
   - linssid 
   - linstor 
+  - linutil 
   - linux-ftools 
   - linux-libertine-fonts 
   - linux32 
@@ -36537,8 +36541,6 @@ unsorted:
   - ruby3.3-rubygem-unf_ext 
   - ruby3.3-rubygem-unicode-display_width 
   - ruby3.3-rubygem-unicode-display_width-1 
-  - ruby3.3-rubygem-vagrant-spec 
-  - ruby3.3-rubygem-vagrant_cloud 
   - ruby3.3-rubygem-validate_email 
   - ruby3.3-rubygem-validate_url 
   - ruby3.3-rubygem-version_gem 
@@ -47999,11 +48001,6 @@ unsorted:
   - vacuum-im-plugins-statistics 
   - vacuum-im-plugins-usermood 
   - vacuum-im-plugins-usertune 
-  - vagrant 
-  - vagrant-bash-completion 
-  - vagrant-doc 
-  - vagrant-emacs 
-  - vagrant-vim 
   - vala 
   - vala-cmake-modules 
   - vala-panel 
