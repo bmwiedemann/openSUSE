@@ -17,7 +17,7 @@
 
 
 Name:           hardinfo2
-Version:        2.1.14
+Version:        2.1.17
 Release:        0
 Summary:        A System Information and Benchmark for Linux
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
@@ -51,7 +51,9 @@ Recommends:     lsscsi
 Recommends:     sensors
 Recommends:     sysbench
 Recommends:     udisks2
+Recommends:     vulkan-tools
 Recommends:     xdg-utils
+Recommends:     xrandr
 
 %description
 Hardinfo2 is based on hardinfo.
@@ -104,7 +106,7 @@ desktop-file-install --vendor="" \
 %{_libdir}/%{name}/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/256x256/apps/hardinfo2.png
+%{_datadir}/icons/hicolor/scalable/apps/hardinfo2.svg
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/metainfo/org.hardinfo2.hardinfo2.metainfo.xml
 %{_unitdir}/hardinfo2.service
