@@ -24,70 +24,70 @@ Signed-off-by: Thomas Renninger <trenn@suse.de>
 
 
 Signed-off-by:  <trenn@suse.com>
-diff --git a/examples/c/CAT_MBA/Makefile b/examples/c/CAT_MBA/Makefile
-index 6b5ceb7..02adce8 100644
---- a/examples/c/CAT_MBA/Makefile
-+++ b/examples/c/CAT_MBA/Makefile
-@@ -63,8 +63,7 @@ IS_GCC = $(shell $(CC) -v 2>&1 | grep -c "^gcc version ")
- ifeq ($(IS_GCC),1)
+Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CAT_MBA/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
+@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
--    -fwrapv \
+     -fwrapv \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fwrapv
++    -fstack-clash-protection
  endif
  
  # Build targets and dependencies
-diff --git a/examples/c/CMT_MBM/Makefile b/examples/c/CMT_MBM/Makefile
-index 650f37e..4090be9 100644
---- a/examples/c/CMT_MBM/Makefile
-+++ b/examples/c/CMT_MBM/Makefile
-@@ -63,8 +63,7 @@ IS_GCC = $(shell $(CC) -v 2>&1 | grep -c "^gcc version ")
- ifeq ($(IS_GCC),1)
+Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CMT_MBM/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
+@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
--    -fwrapv \
+     -fwrapv \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fwrapv
++    -fstack-clash-protection
  endif
  
  # Build targets and dependencies
-diff --git a/examples/c/PSEUDO_LOCK/Makefile b/examples/c/PSEUDO_LOCK/Makefile
-index c0cdf66..37e7a60 100644
---- a/examples/c/PSEUDO_LOCK/Makefile
-+++ b/examples/c/PSEUDO_LOCK/Makefile
-@@ -63,8 +63,7 @@ IS_GCC = $(shell $(CC) -v 2>&1 | grep -c "^gcc version ")
- ifeq ($(IS_GCC),1)
+Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/PSEUDO_LOCK/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
+@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
--    -fwrapv \
+     -fwrapv \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fwrapv
++    -fstack-clash-protection
  endif
  
  # Build targets and dependencies
-diff --git a/lib/Makefile b/lib/Makefile
-index d171892..04eecc1 100644
---- a/lib/Makefile
-+++ b/lib/Makefile
+Index: intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/lib/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
 @@ -72,8 +72,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
--    -fstack-protector-strong \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fstack-protector-strong
++    -fstack-clash-protection
  endif
  
  # so or static build
-diff --git a/pqos/Makefile b/pqos/Makefile
-index c1f1c0b..868e81a 100644
---- a/pqos/Makefile
-+++ b/pqos/Makefile
+Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/pqos/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
 @@ -45,8 +45,7 @@ CFLAGS = -I$(LIBDIR) \
  	-Wmissing-declarations -Wold-style-definition -Wpointer-arith \
  	-Wcast-qual -Wundef -Wwrite-strings \
- 	-Wformat -Wformat-security -fstack-protector -fPIE \
+ 	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
 -	-Wunreachable-code -Wsign-compare -Wno-endif-labels \
 -	-fcf-protection=full
 +	-Wunreachable-code -Wsign-compare -Wno-endif-labels
@@ -98,19 +98,19 @@ index c1f1c0b..868e81a 100644
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
--    -fstack-protector-strong \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fstack-protector-strong
++    -fstack-clash-protection
  endif
  
  ifeq ($(shell uname), FreeBSD)
-diff --git a/rdtset/Makefile b/rdtset/Makefile
-index 7b34594..36f3343 100644
---- a/rdtset/Makefile
-+++ b/rdtset/Makefile
+Index: intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/rdtset/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
 @@ -45,8 +45,7 @@ CFLAGS = -I$(LIBDIR) \
  	-Wcast-qual -Wundef -Wwrite-strings \
- 	-Wformat -Wformat-security -fstack-protector -fPIE \
+ 	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
  	-Wunreachable-code -Wsign-compare -Wno-endif-labels \
 -	-D_GNU_SOURCE \
 -	-fcf-protection=full
@@ -122,19 +122,19 @@ index 7b34594..36f3343 100644
  CFLAGS += -fno-strict-overflow \
  	-fno-delete-null-pointer-checks \
  	-fwrapv \
--	-fstack-protector-strong \
+-	-fstack-clash-protection \
 -	-fcf-protection=full
-+	-fstack-protector-strong
++	-fstack-clash-protection
  endif
  
  # DEBUG build
-diff --git a/tools/membw/Makefile b/tools/membw/Makefile
-index fbe25ab..4246af9 100644
---- a/tools/membw/Makefile
-+++ b/tools/membw/Makefile
-@@ -49,8 +49,7 @@ CFLAGS=-W -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes \
+Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/tools/membw/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
+@@ -49,8 +49,7 @@ CFLAGS=-W -Wall -Wextra -Wstrict-prototy
  	-Wcast-qual -Wundef -Wwrite-strings \
- 	-Wformat -Wformat-security -fstack-protector -fPIE \
+ 	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
  	-Wunreachable-code -Wsign-compare -Wno-endif-labels \
 -	-Winline -msse4.2 \
 -	-fcf-protection=full
@@ -146,65 +146,71 @@ index fbe25ab..4246af9 100644
      -fno-delete-null-pointer-checks \
      -fwrapv \
      -fno-expensive-optimizations \
--    -fstack-protector-strong \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fstack-protector-strong
++    -fstack-clash-protection
  endif
  
  SRCS = $(sort $(wildcard *.c))
-diff --git a/unit-test/lib/Makefile b/unit-test/lib/Makefile
-index 3bf18a7..b472489 100644
---- a/unit-test/lib/Makefile
-+++ b/unit-test/lib/Makefile
+Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/lib/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
 @@ -34,8 +34,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
  	-fno-delete-null-pointer-checks \
  	-fwrapv \
--	-fstack-protector-strong \
+-	-fstack-clash-protection \
 -	-fcf-protection=full
-+	-fstack-protector-strong
++	-fstack-clash-protection
  endif
  
  # common function wrap
-diff --git a/unit-test/mock/Makefile b/unit-test/mock/Makefile
-index d2ee6e0..aad7603 100644
---- a/unit-test/mock/Makefile
-+++ b/unit-test/mock/Makefile
-@@ -68,8 +68,7 @@ IS_GCC = $(shell $(CC) -v 2>&1 | grep -c "^gcc version ")
- ifeq ($(IS_GCC),1)
- CFLAGS += -fno-strict-overflow \
-     -fno-delete-null-pointer-checks \
--    -fwrapv \
--    -fcf-protection=full
-+    -fwrapv
- endif
- 
- # so or static build
-diff --git a/unit-test/output/Makefile b/unit-test/output/Makefile
-index 72f7ed5..d4ae752 100644
---- a/unit-test/output/Makefile
-+++ b/unit-test/output/Makefile
-@@ -65,8 +65,7 @@ IS_GCC = $(shell $(CC) -v 2>&1 | grep -c "^gcc version ")
- ifeq ($(IS_GCC),1)
- CFLAGS += -fno-strict-overflow \
-     -fno-delete-null-pointer-checks \
--    -fwrapv \
--    -fcf-protection=full
-+    -fwrapv
- endif
- 
- # so or static build
-diff --git a/unit-test/pqos/Makefile b/unit-test/pqos/Makefile
-index a980c19..509ee31 100644
---- a/unit-test/pqos/Makefile
-+++ b/unit-test/pqos/Makefile
+Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/mock/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
 @@ -69,8 +69,7 @@ ifeq ($(IS_GCC),1)
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
--    -fstack-protector-strong \
+-    -fstack-clash-protection \
 -    -fcf-protection=full
-+    -fstack-protector-strong
++    -fstack-clash-protection
+ endif
+ 
+ # so or static build
+Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/output/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
+@@ -66,8 +66,7 @@ ifeq ($(IS_GCC),1)
+ CFLAGS += -fno-strict-overflow \
+     -fno-delete-null-pointer-checks \
+     -fwrapv \
+-    -fstack-clash-protection \
+-    -fcf-protection=full
++    -fstack-clash-protection
+ endif
+ 
+ # so or static build
+Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
+===================================================================
+--- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/pqos/Makefile
++++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
+@@ -1,4 +1,4 @@
+-###############################################################################
++[1;115;0c###############################################################################
+ # Makefile script for PQoS library and sample application
+ #
+ # @par
+@@ -69,8 +69,7 @@ ifeq ($(IS_GCC),1)
+ CFLAGS += -fno-strict-overflow \
+     -fno-delete-null-pointer-checks \
+     -fwrapv \
+-    -fstack-clash-protection \
+-    -fcf-protection=full
++    -fstack-clash-protection
  endif
  
  CFLAGS += -g -ggdb -O0

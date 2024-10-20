@@ -19,10 +19,10 @@
 
 # Since they ship libpqos and the binaries in one package but do not simultatious
 # updates libversion can differ from binaries version.
-%define libpqosMajor 5
+%define libpqosMajor 6
 %global make_flags EXTRA_CFLAGS="%{optflags}" SHARED=y PREFIX=%{buildroot}/%{_prefix} MAN_DIR=%{buildroot}/%{_mandir}/man8 LIB_INSTALL_DIR=%{buildroot}%{_libdir}/
 Name:           intel-cmt-cat
-Version:        5.0.0.10.git+b26b31b
+Version:        24.05.12.git+c5f4492
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause

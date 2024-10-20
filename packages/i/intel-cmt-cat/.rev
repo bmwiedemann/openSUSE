@@ -130,4 +130,12 @@ D    fixsymlink.patch</comment>
     <comment></comment>
     <requestid>1160785</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ffa6cf7a5b96d779f323ba52458d3592</srcmd5>
+    <version>24.05.12.git+c5f4492</version>
+    <time>1729411491</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1208930</requestid>
+  </revision>
 </revisionlist>

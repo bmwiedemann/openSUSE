@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Oct 14 08:54:57 UTC 2024 - trenn@suse.de
+
+- Move to the new tag/version model, by using yy/mm in the version
+  https://github.com/intel/intel-cmt-cat/issues/264
+- Update to version 24.05.12.git+c5f4492:
+  * lib: set errno when buf points to NULL in common.c:pqos_read()
+  * lib: fix variable types in common.c:pqos_read()
+  * llc capture time is increased in testcase test_pqos_cmt_llc_occupancy_cores
+  * appqos_client: update 3rd party dependencies
+  * appqos_client: update axios version
+  * lib: Fix MBR value for non-SNC machines
+  * tests: updated schema
+  * tests: test_pqos_cmt_llc_occupancy_cores testcase is updated
+  * After merging AMD SMBA feature, some unit tests are failed. They are fixed.
+  * appqos_client: override dns-packet and socks package versions
+  * appqos_client: update 'ws' and 'braces' depedency versions
+  * appqos: pipenv 2024.0.1 can fetch pwr-v0.2.2. The word astroid is excluded in codespell.
+  * Release 6.0.0
+  * appqos: spelling correction
+  * dependabot: exclude version updates
+  * appqos_client: update required node and npm versions
+  * dependabot: update config to ignore major version updates
+  * appqos_client: update core-js to v3.23.3
+  * appqos_client: update dev dependency versions
+  * Add imediate binding flag to SWIG's Makefile
+  * Add a GCC flag protecting againsh stack clash attacks
+  * Enable strong stack protection for all the compilers
+  * Add a stack protection flag to code examples
+  * lib/cpuinfo: Increase the file descriptors limit to handle more CPUs
+  * add dependabot config
+  * Add warning message in case of detection hybrid architecture
+  * lib: Fix parsing SMBA CLOS information
+  * lib: Fix parsing MBA CLOS information
+  * lib: Fix parsing L3 cache information
+  * pqos tool hangs with wrong cores list format. That error is fixed.
+  * appqos_client: update express dep version
+  * AMD's SMBA is included in python wrapper
+  * Skip some testcases in presence of SNC
+  * Add SNC presence detection function for tests
+  * appqos_client: update dependencies
+  * rdtset: Update rdtset manpage to support SMBA feature
+  * pqos: Update pqos manpage for SMBA feature
+  * lib: Update cfg_set_cores_msr to support SMBA feature
+  * rdtset: Update cfg_set_cores_os for SMBA feature
+  * rdtset: Update cfg_set_pids to support SMBA feature
+  * rdtset: Update cfg_configure_cos to support SMBA feature
+  * rdtset: Update alloc_init and alloc_fini for SMBA feature
+  * rdtset: Add the support for SMBA feature
+  * rdtset: Update the rdt data structure to support SMBA feature
+  * lib: Update the functions to reset the SMBA COS settings
+  * pqos: Introduce _pqos_cap_smba_change
+  * pqos: Update print_per_socket_config for SMBA
+  * pqos: Introduce cap_print_features_smba
+  * pqos: Update alloc_apply to support SMBA feature
+  * pqos: Introduce set_smba_cos for SMBA
+  * lib: Introduce os_smba_set_amd to update schemata for SMBA
+  * lib: Add resctrl_schemata functions to support SMBA
+  * lib: Introduce os_smba_get_amd to read the COS information
+  * lib: Update resctrl_schemata functions to support SMBA
+  * lib: Update the function resctrl_schemata_alloc to support SMBA feature
+  * lib: Introduce resctrl_schemata_smba_get
+  * lib: Introduce pqos_cpu_get_smba_ids
+  * lib: Introduce data structures to support SMBA feature
+  * lib: Implement the function hw_smba_set_amd
+  * lib: Implement the function hw_smba_get_amd
+  * lib: Introduce pqos_smba_get_cos_num
+  * lib: Introduce pqos_cpu_get_one_by_smba_id
+  * lib: Add Slow Memory Bandwidth Allocation MSR definition
+  * lib: Discover SMBA feature using resctrl sysfs interface
+  * lib: Discover SMBA feature using cpuid method
+  * lib: Introduce Slow Memory Bandwidth Allocation
+  * Add description of the memwb tool limitations
+M Remove-fcf-protection-full.patch
+Adopt patch to latest mainline changes
+-------------------------------------------------------------------
 Tue Mar 12 09:43:42 UTC 2024 - trenn@suse.de
 
 - Update to version 5.0.0.10.git+b26b31b:
