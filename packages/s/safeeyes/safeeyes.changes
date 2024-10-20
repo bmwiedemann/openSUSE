@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 19 10:18:41 UTC 2024 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Update SafeEyes-Python3.6-compatibility.patch according PEP 584 
+  recommendations.
+
+-------------------------------------------------------------------
 Sun Oct 13 06:23:13 UTC 2024 - <opensuse.lietuviu.kalba@gmail.com>
 
 - Add SafeEyes-Python3.6-compatibility.patch fix to use in Python 3.6
