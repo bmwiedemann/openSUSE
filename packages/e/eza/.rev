@@ -817,4 +817,13 @@
     approximately ~24% speedup for most common operations.</comment>
     <requestid>1208552</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>42abeccd55d50de450cde1ec2d1afafb</srcmd5>
+    <version>0.20.4</version>
+    <time>1729411497</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.4:
+  * Filetype, coloring for executables and folder</comment>
+    <requestid>1208956</requestid>
+  </revision>
 </revisionlist>
