@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          131
-%define mainver        %major.0.2
-%define orig_version   131.0.2
+%define mainver        %major.0.3
+%define orig_version   131.0.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -226,7 +226,6 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch23:        mozilla-rust-disable-future-incompat.patch
 Patch24:        mozilla-bmo1746799.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch

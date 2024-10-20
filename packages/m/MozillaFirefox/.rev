@@ -7081,4 +7081,24 @@
     Use-after-free in Animation timeline</comment>
     <requestid>1206551</requestid>
   </revision>
+  <revision rev="440" vrev="1">
+    <srcmd5>ff4875544a584de55b623d9343be0bee</srcmd5>
+    <version>131.0.3</version>
+    <time>1729412002</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 131.0.3
+  * some users could not access the Bill Pay portion of their
+    bank's site (bmo#1923500)
+  * some VR180 and 360 videos were not properly rendering on YouTube
+    (bmo#1922278)
+  * Fixed a crash that Windows users with Avast or AVG security
+    software were experiencing when visiting certain sites. (bmo#1919678)
+  * &quot;List all tabs&quot; button was not able to be moved from the toolbar
+    (bmo#1918681)
+  NFSA 2024-53
+  * CVE-2024-9936 (bmo#1920381)
+    Undefined behavior in selection node cache
+- remove obsolete mozilla-rust-disable-future-incompat.patch</comment>
+    <requestid>1208839</requestid>
+  </revision>
 </revisionlist>

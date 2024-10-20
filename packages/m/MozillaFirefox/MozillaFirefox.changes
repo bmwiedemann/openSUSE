@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 17 06:18:12 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 131.0.3
+  * some users could not access the Bill Pay portion of their
+    bank's site (bmo#1923500)
+  * some VR180 and 360 videos were not properly rendering on YouTube
+    (bmo#1922278)
+  * Fixed a crash that Windows users with Avast or AVG security
+    software were experiencing when visiting certain sites. (bmo#1919678)
+  * "List all tabs" button was not able to be moved from the toolbar
+    (bmo#1918681)
+  NFSA 2024-53
+  * CVE-2024-9936 (bmo#1920381)
+    Undefined behavior in selection node cache
+- remove obsolete mozilla-rust-disable-future-incompat.patch
+
+-------------------------------------------------------------------
 Wed Oct  9 07:57:32 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 131.0.2
