@@ -1,12 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 18 07:12:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.1:
+  + Bug Fixes:
+    - Pass GError instead of CamelException to
+      camel_movemail_solaris
+    - Fix argument types in ENABLE_BROKEN_SPOOL code
+    - Use GIConv instead of iconv_t with iconv wrappers
+    - ESoupSession: Sometimes accesses server without OAuth2 token
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:34:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.54.0:
   + Bug Fixes:
     - Camel: Prefer GLib API for gpg process spawning.
     - Camel: Correct typos in disabled code.
-  + Miscellaneous:
-    - docs: Correct developer documentation to install API indexes.
+  + Miscellaneous: docs: Correct developer documentation to install
+    API indexes.
   + Updated translations.
 
 -------------------------------------------------------------------
