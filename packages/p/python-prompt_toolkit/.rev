@@ -301,4 +301,21 @@
   * Compute padding parameters for `Box` widget lazily.</comment>
     <requestid>1194587</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>57cee3a64fd3ab09d9bdfad1732b45cc</srcmd5>
+    <version>3.0.48</version>
+    <time>1729412020</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.48:
+  * Typing improvements:
+  * Add `@overload` to
+    `contrib.regular_languages.compiler.Variables.get`.
+  * Use `Sequence` instead of `list` for `words` argument in
+    completers.
+  * Improve `ModalCursorShapeConfig`:
+  * Display an &quot;underscore&quot; cursor in Vi's &quot;replace single&quot; mode,
+    like &quot;replace&quot; mode.
+  * Display an &quot;beam&quot; cursor in Emacs (insert) mode.</comment>
+    <requestid>1208844</requestid>
+  </revision>
 </revisionlist>

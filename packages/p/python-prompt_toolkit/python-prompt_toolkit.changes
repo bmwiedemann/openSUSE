@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:46:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.48:
+  * Typing improvements:
+  * Add `@overload` to
+    `contrib.regular_languages.compiler.Variables.get`.
+  * Use `Sequence` instead of `list` for `words` argument in
+    completers.
+  * Improve `ModalCursorShapeConfig`:
+  * Display an "underscore" cursor in Vi's "replace single" mode,
+    like "replace" mode.
+  * Display an "beam" cursor in Emacs (insert) mode.
+
+-------------------------------------------------------------------
 Sun Aug 18 17:21:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.47:

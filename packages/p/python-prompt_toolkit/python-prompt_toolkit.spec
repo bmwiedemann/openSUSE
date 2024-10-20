@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prompt_toolkit
-Version:        3.0.47
+Version:        3.0.48
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
