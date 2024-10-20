@@ -350,4 +350,23 @@ https://build.opensuse.org/request/show/1126958
     `StreamingResponse` #2620.</comment>
     <requestid>1199466</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>edc265622bdd8e069233fb19747ba7bf</srcmd5>
+    <version>0.41.0</version>
+    <time>1729411973</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.41.0:
+  * Allow to raise HTTPException before websocket.accept().
+  * Add max_part_size to MultiPartParser to limit the size of parts in
+    multipart/form-data requests. (bsc#1231689, CVE-2024-47874)
+  * Allow use of request.url_for when only &quot;app&quot; scope is available.
+  * Avoid regex re-compilation in responses.py and schemas.py.
+  * Improve performance of get_route_path by removing regular expression
+    usage.
+  * Consider FileResponse.chunk_size when handling multiple ranges.
+  * Use token_hex for generating multipart boundary strings.
+  * Add support for HTTP Range to FileResponse.
+  * Close unclosed MemoryObjectReceiveStream in TestClient.</comment>
+    <requestid>1208248</requestid>
+  </revision>
 </revisionlist>

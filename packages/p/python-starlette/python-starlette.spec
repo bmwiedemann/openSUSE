@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        0.38.5
+Version:        0.41.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -99,7 +99,7 @@ ignored_tests="$ignored_tests or test_lifespan_with_on_events"
 %doc README.md
 %license LICENSE.md
 %{python_sitelib}/starlette
-%{python_sitelib}/starlette-%{version}*-info
+%{python_sitelib}/starlette-%{version}.dist-info
 %endif
 
 %changelog
