@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 19 08:14:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.0:
+  Major update, please see the release notes at
+  https://github.com/akuity/kargo/releases/tag/v1.0.0
+  CLI-related changes:
+  * fix(cli): fix auth via --kubeconfig option (#2731)
+  * fix(cli): fix flag in login command example (#2723)
+
+-------------------------------------------------------------------
 Fri Oct 11 08:36:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.1:
