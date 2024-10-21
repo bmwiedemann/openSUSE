@@ -17,7 +17,7 @@
 
 
 Name:           os-maven-plugin
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Maven plugin for generating platform-dependent properties
 License:        Apache-2.0

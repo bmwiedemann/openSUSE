@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 21 11:44:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.7.1
+  * Changes:
+    + Added detection of more RISC-V architectures. #61 #62 #66
+      - riscv32 is detected as riscv for backward compatibility
+        with 1.7.0.
+      - riscv64 is detected as riscv64.
+    + Added detection of Elbrus 2000 architecture. #57
+    + Added detection of LoongArch64 architecture. #63 #64
+    + Fixed the detection logic so that it detects more MacOS
+      variants
+
+-------------------------------------------------------------------
 Wed Feb 21 10:52:47 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
