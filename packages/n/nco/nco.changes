@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:24:52 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove BuildRequires: netcdf-cxx4 from spec file, not needed since 2001
+- Update to version 5.2.9:
+  * improves the unpacking of ELM/CLM/CTSM history and restart datasets
+  * ncclimo and ncremap benefit from a few updates and fixes
+  * fix long standing regression of vertical interpolation of ECMWF IFS hybrid coordinates
+      (use --ps_nm=lnsp)
+- Update to version 5.2.8:
+  * Climatologies now allow the choice between two statistics (sums and means)
+      to output as regional/global timeseries
+  * The regridder fixes corner case behavior when the sub-gridscale (SGS) fraction
+      is a missing value (as in ELM/CLM)
+  * Many improvements to the robustness and helpfulness of WARNINGs and ERRORs
+- Update to version 5.2.7:
+  * updates to quantization metadata
+  * enhanced grid area diagnostics for check_map
+  * bug-fixes for ncremap
+- Update to version 5.2.6:
+  * a one-line bugfix for ncremap
+- Update to version 5.2.5:
+  * outputs a maximum_relative_error statistic where possible
+  * ncclimo/ncremap: add support for MPAS-Atmosphere datasets
+  * ncclimo: support excluding variable lists in timeseries mode
+
+-------------------------------------------------------------------
 Fri May 31 14:16:41 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.2.4:

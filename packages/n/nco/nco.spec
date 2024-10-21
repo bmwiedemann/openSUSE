@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.2.4
-%define  soname 5_2_4
+Version:        5.2.9
+%define  soname 5_2_9
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -42,7 +42,6 @@ BuildRequires:  udunits2-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(netcdf) >= 4.1.3
-BuildRequires:  pkgconfig(netcdf-cxx4) >= 4.1.3
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?fedora_version}
 %define ext_man .gz
