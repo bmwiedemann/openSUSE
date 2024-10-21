@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 20 09:54:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.1:
+  * feat: report unused suppression #1346
+  * feat: make number of threads configurable #1498
+  * doc: add bug report yaml #1462
+  * refactor: rename tracing f83dbe9
+  * fix: fix bug report bug agains 61921f7
+  * fix(deps): update dependency @babel/core to v7.25.8 cf06185
+
+-------------------------------------------------------------------
 Mon Oct  7 08:35:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.28.0:
