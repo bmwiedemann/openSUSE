@@ -1,7 +1,7 @@
 #
 # spec file for package libsearpc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define sover   1
 Name:           libsearpc
-Version:        3.3.0.20230527
+Version:        3.3.0.20240726
 Release:        0
 Summary:        Simple C language RPC framework based on GObject system
 License:        Apache-2.0
 Group:          System/Libraries
 URL:            https://github.com/haiwen/libsearpc/
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         01-fix-includes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

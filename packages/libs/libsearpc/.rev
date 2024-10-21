@@ -96,4 +96,19 @@
 </comment>
     <requestid>1096511</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ed4f1f7e5390f06449d5a38262e7c733</srcmd5>
+    <version>3.3.0.20240726</version>
+    <time>1729520762</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.0.20240726:
+  * Use epoll to support multiple connections (#70)
+  * Delete DESTDIR in libsearpc.pc (#66)
+  * Print log when thread pool is full (#67)
+  * Fix -Werror=implicit-function-declaration
+  * Fix -Werror=strict-prototypes
+- Drop 01-fix-includes.patch
+</comment>
+    <requestid>1216660</requestid>
+  </revision>
 </revisionlist>
