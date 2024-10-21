@@ -126,4 +126,19 @@
     <comment>update</comment>
     <requestid>1165114</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3cc0d44dc5bbaefb0abb496b4b005fa1</srcmd5>
+    <version>4.5.0</version>
+    <time>1729520793</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1216669 from glaubitz)</comment>
+    <requestid>1216714</requestid>
+  </revision>
 </revisionlist>
