@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 15 09:11:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.9:
+  Bug Fixes:
+  * FIXED: Slow loading of themes
+  * FIXED: Font did not update in theme preview
+  * FIXED: Alert expander invisible with monochrome icon themes
+  * FIXED: Incorrect icons in monochrome icon themes
+  Translation Updates:
+  * Estonian
+  * Marathi
+
+-------------------------------------------------------------------
 Tue May 21 15:02:39 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.8:
