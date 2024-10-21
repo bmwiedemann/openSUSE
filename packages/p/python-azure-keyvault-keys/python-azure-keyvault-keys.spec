@@ -17,14 +17,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-keys
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-keys/azure-keyvault-keys-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_keyvault_keys/azure_keyvault_keys-%{version}.tar.gz
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -33,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-core >= 1.29.5 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.31.0 with python-azure-core < 2.0.0)
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
@@ -59,10 +58,9 @@ Azure Key Vault helps solve the following problems:
    manage, and deploy public and private SSL/TLS certificates
 
 %prep
-%setup -q -n azure-keyvault-keys-%{version}
+%setup -q -n azure_keyvault_keys-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-keys-%{version}
 %pyproject_wheel
 
 %install
@@ -77,7 +75,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/keyvault/keys
 %{python_sitelib}/azure_keyvault_keys-*.dist-info
 
