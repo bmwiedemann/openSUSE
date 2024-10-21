@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 17 09:38:18 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 3.6.2: [bsc#1231708, CVE-2024-49195]
+  * test_suite_pkwrite: extend coverage of wrong output buffer
+    sizes in pk_write_check_common()
+  * pkwrite: fix buffer overrun
+
+-------------------------------------------------------------------
 Sat Sep 07 12:00:00 UTC 2024 - cunix@mail.de
 
 - Update to version 3.6.1:
