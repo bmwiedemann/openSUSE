@@ -22,7 +22,9 @@ Release:        0
 Summary:        System user and group greeter
 License:        MIT
 Group:          System/Management
+Source:         system-user-greeter.rpmlintrc
 BuildRequires:  sysuser-tools
+Requires(pre):  group(video)
 BuildArch:      noarch
 %sysusers_requires
 

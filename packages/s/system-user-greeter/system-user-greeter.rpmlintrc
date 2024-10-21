@@ -1,0 +1,3 @@
+# Not applicable to a system user package
+addFilter("no-url-tag")
+addFilter("no-%check-section")

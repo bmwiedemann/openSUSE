@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:32:05 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Explicitly require video group
+- Add system-user-greeter.rpmlintrc to suppress non-applicable warnings
+
+-------------------------------------------------------------------
 Tue Feb  6 16:32:50 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add home directory and additional video group

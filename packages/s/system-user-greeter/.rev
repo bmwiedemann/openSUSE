@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1144675</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0c6b51e054f49a96b37e6e5e5b4a5792</srcmd5>
+    <version>1</version>
+    <time>1729520773</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly require video group
+- Add system-user-greeter.rpmlintrc to suppress non-applicable warnings
+</comment>
+    <requestid>1216673</requestid>
+  </revision>
 </revisionlist>
