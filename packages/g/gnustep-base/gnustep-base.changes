@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Jul  7 20:13:01 UTC 2024 - Fred kiefer <fredkiefer@gmx.de>
+
+- Update to version 1.30.0
+   * autogsdoc (and many source/header files) updated for ObjC-2 support
+   * gdnc gspath spelling error fixes
+   * GSFileHandle remove handle from run loop when -dealloc is called
+   * GSHTTPURLHandle close socket if we end loading with I/O in
+     progress.
+   * GSMimeDocimnet optimisations
+   * GSPrivateSymbolPath() portability improvements
+   * GSVersionMacros add GS_UNIMPLEMENTED to mark unimplemented methods
+   * HTMLLinker man page groff warning fixed
+   * Make GSTcpTune options available to streams as well as file handles
+     and improve debug logging for stream operations.
+   * NSBundle improvements in librarym bundle lookup
+   * NSCache thread safety fix
+   * NSData caching data of file URLs and OSX consistency tweak to
+     permissions when writing file atomically
+   * NSDate implements +now constructor.
+   * NSDecimalNumber fix possible coimparison bug for zero values
+   * NSError -description and -localizedDescription formats match OSX
+   * NSException portability improvments
+   * NSFileManager makeed safety fix and make enumerating a file URL
+     return URLs rather than paths.
+   * NSIndexSet implements enumerateRangesInRange convenience methods.
+   * NSISO8601DateFormatter.m: bugfix for date/time string generation
+   * NSJSONSerialization fix memory leak, fix issue with unicode
+     surrogate pairs.
+   * NSKeyValueObserving Add methods to remove observers
+   * NSLocale Fix -countryCode incorrectly returning language code, fix
+     for hyphen and underscore in locale identifier
+   * NSMessagePort remove restriction on Distributed Objects message
+     length
+   * NSNotificationCenter fix for memory leak, minor bugfixes (use
+     before initialise)
+   * NSNull fix for -valueForUndefinedKey: to return singleton
+   * NSNumberFormatter make minimum/maximum properties NSNumbers
+   * NSObject optimise allocation with new runtime library
+   * NSOperation fix occasional scheduling bug
+   * NSOrderedSet Fix keyed encoding to match Apple platforms.
+   * NSPathUtilities fix intialisation order deadlock.
+   * NSPredicate fix for array access keywords
+   * NSProcessInfo android support
+   * NSString correct class used when loading empty string from
+     file/URL, implements regular expression search methods.
+   * NSTask return an error if the path to launch in is bad, use _exit
+     to terminate forked process if needed, use closefrom() to close
+     descriptors in child process if possible
+   * NSTimer wrap call to block in exception handler (bug #289)
+   * NSTimeZone improvements
+   * NSURL Fix NSURL path on Windows for UNC paths.
+   * NSURLRequest: Support deleting using setValue:forHTTPHeaderField:
+     with nil value.
+   * NSURLSession many bugfixes and improvements
+   * NSUserDefaults fix potential deadlock
+   * NSXMLElement bugfix to remove previous attributes when setting
+     attributes.
+   * NSXMLNode returns NSError on failure to evaluate xpath expression.
+   * gnustep_global_lock and GSLazyLock deprecated for removal in next
+     release.
+- Remove 295.patch as this is no longer needed.
+
+-------------------------------------------------------------------
 Thu Jan  4 18:19:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 295.patch: Fix build with libxml2 2.11.0+.

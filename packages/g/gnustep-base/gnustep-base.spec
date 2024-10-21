@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libgnustep-base1_29
+%define lname   libgnustep-base1_30
 %define         gnustep_sh       GNUstep.sh
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
 %define         profile_dir      %{_sysconfdir}/profile.d
@@ -24,7 +24,7 @@
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 %define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        GNUstep Base library package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -33,8 +33,6 @@ URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM 295.patch -- Fix build with libxml2 2.11.0+
-Patch0:         https://patch-diff.githubusercontent.com/raw/gnustep/libs-base/pull/295.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel
@@ -226,5 +224,6 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %files devel
 %{_includedir}/*
 %{_libdir}/libgnustep-base.so
+%{_libdir}/pkgconfig/gnustep-base.pc
 
 %changelog
