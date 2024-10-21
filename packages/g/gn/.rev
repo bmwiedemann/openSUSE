@@ -166,4 +166,12 @@
     <comment></comment>
     <requestid>1191230</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>06a53d457ab035b9ffa3d8a5bd6ed120</srcmd5>
+    <version>0.20240730</version>
+    <time>1729520783</time>
+    <user>anag+factory</user>
+    <comment>- add &quot;-Wno-unused-value&quot; to fix build on armv6/armv7 (forwarded request 1202776 from oertel)</comment>
+    <requestid>1216678</requestid>
+  </revision>
 </revisionlist>

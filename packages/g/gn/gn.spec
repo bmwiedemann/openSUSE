@@ -48,6 +48,9 @@ fi
 
 %build
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
+%ifarch %arm
+ARCH_FLAGS="$ARCH_FLAGS -Wno-unused-value"
+%endif
 %if 0%{?suse_version} < 1550
 export CXX=g++-13
 %else
