@@ -91,4 +91,13 @@
   * set QTWEBENGINE_DICTIONARIES_PATH to fix spell checker (#199) (40da519)</comment>
     <requestid>1206532</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b18c7828d896609511455f6d2f06c22</srcmd5>
+    <version>4.16.1</version>
+    <time>1729520729</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.1:
+  * Notification issue on gnome shell + minor improvements (#202) (86f27b9)</comment>
+    <requestid>1209548</requestid>
+  </revision>
 </revisionlist>

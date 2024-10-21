@@ -17,7 +17,7 @@
 
 
 Name:           whatsie
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        Feature rich WhatsApp Client for Desktop Linux
 License:        MIT
