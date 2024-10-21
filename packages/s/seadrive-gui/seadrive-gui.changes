@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:54:10 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.11:
+  * https://github.com/haiwen/seadrive-gui/compare/v2.0.28...v3.0.11
+- Add fix-return.patch
+- Add pr404.patch
+
+-------------------------------------------------------------------
 Thu Nov 16 12:23:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.28:
