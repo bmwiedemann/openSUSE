@@ -2094,7 +2094,6 @@
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnustep-base1_29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnutls-dane0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgnutls30-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2485,7 +2484,6 @@
     <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
@@ -4160,11 +4158,9 @@
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="unison" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

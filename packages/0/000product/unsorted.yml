@@ -2020,7 +2020,6 @@ unsorted:
   - ccache 
   - ccd2cue 
   - ccd2cue-doc 
-  - ccgfs 
   - ccls 
   - ccrtp-devel 
   - ccrtp-doc 
@@ -2976,7 +2975,6 @@ unsorted:
   - ctre-devel 
   - ctris 
   - cttop 
-  - cuarzo-srm-devel 
   - cudd-devel 
   - cuishark 
   - culmus-ancient-semitic-fonts 
@@ -11628,7 +11626,6 @@ unsorted:
   - libSM-devel-32bit 
   - libSM6-32bit 
   - libSPIRV-Tools-2024_4_rc1-32bit 
-  - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -13577,6 +13574,7 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
+  - libgnustep-base1_30 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -14775,9 +14773,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
-  - libnco-5_2_4 
+  - libnco-5_2_9 
   - libnco-devel 
-  - libnco_c++-5_2_4 
+  - libnco_c++-5_2_9 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -14950,6 +14948,7 @@ unsorted:
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
+  - libobjc4 
   - libobjc4-32bit 
   - libobjc4-gcc12 
   - libobjc4-gcc12-32bit 
@@ -20045,6 +20044,7 @@ unsorted:
   - obs-service-obs_scm-common 
   - obs-service-product_converter 
   - obs-service-recompress 
+  - obs-service-recomprizz 
   - obs-service-refresh_patches 
   - obs-service-replace_using_env 
   - obs-service-replace_using_package_version 
@@ -36059,6 +36059,7 @@ unsorted:
   - rnnoise-devel 
   - rnp 
   - rnp-devel 
+  - roast 
   - robin-map-devel 
   - robinhood 
   - robinhood-tests 
@@ -47825,6 +47826,7 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
+  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
@@ -47861,6 +47863,7 @@ unsorted:
   - unoconv 
   - unpack-install-jammer 
   - unpaper 
+  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
@@ -48316,6 +48319,8 @@ unsorted:
   - warzone2100 
   - warzone2100-data 
   - wasi-libc 
+  - wasistlos 
+  - wasistlos-lang 
   - wasm-pack 
   - wasmedge 
   - wasmedge-devel 
