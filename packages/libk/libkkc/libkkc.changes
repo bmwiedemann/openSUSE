@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 19 15:04:20 UTC 2024 - wei@hardenedlinux.org
+
+- Update to version 0.3.6~git20240902.ce17a35:
+  * Fix invalid escape on json file
+  * Use get_monotonic_time instead of deprecated TimeVal
+  * Use get_real_time instead of deprecated TimeVal
+  * Use ".keys" for "in" operator with Gee.Map
+  * Return false rather than null in boolean function
+  * Add enum NONE case to switch
+  * Ignore files under the tests directory
+  * Use LIBKKC_CFLAGS and LIBKKC_LIBS in tests/lib/Makefile.am
+  * Handle Error(s) in server.vala
+  * Add dzu for づ in default rom-kana map.
+
+-------------------------------------------------------------------
 Thu Feb 29 17:04:53 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

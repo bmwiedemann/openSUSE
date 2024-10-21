@@ -18,7 +18,7 @@
 
 %define soname 2
 Name:           libkkc
-Version:        0.3.6~git20200818.e33e7fb
+Version:        0.3.6~git20240902.ce17a35
 Release:        0
 Summary:        Japanese Kana-string to Kana-Kanji-mixed-string converter
 License:        GPL-3.0-only
@@ -35,6 +35,9 @@ Patch1:         libkkc-gettext.patch
 Patch2:         libkkc-public.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} > 1600
+BuildRequires:  gcc13-c++
+%endif
 # for autogen.sh
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
@@ -100,6 +103,10 @@ This package contains its development headers and vala bindings.
 NOCONFIGURE=1 ./autogen.sh
 
 %build
+%if 0%{?suse_version} > 1600
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
+%endif
 %configure --enable-introspection=yes \
 	--enable-vala=yes \
 	--enable-vapigen=yes
