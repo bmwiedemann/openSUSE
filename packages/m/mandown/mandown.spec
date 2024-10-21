@@ -23,20 +23,18 @@ Summary:        A man page generator for markdown markup files
 License:        Apache-2.0
 Group:          Development/Tools/Doc Generators
 URL:            https://gitlab.com/kornelski/mandown
-Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-Source2:        cargo_config
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 BuildRequires:  c_compiler
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
+BuildRequires:  zstd
 
 %description
 Mandown is a tool that generates man pages from markdown markup files.
 
 %prep
 %autosetup -a1
-mkdir -p .cargo/
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
