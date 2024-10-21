@@ -1,7 +1,7 @@
 #
 # spec file for package seadrive-fuse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-fuse
-Version:        2.0.22
+Version:        2.0.28
 Release:        0
 Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ BuildRequires:  fuse-devel >= 2.7.3
 BuildRequires:  intltool
 BuildRequires:  libsearpc-devel
 BuildRequires:  libtool
+BuildRequires:  libwebsockets-devel >= 4.0.20
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
