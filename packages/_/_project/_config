@@ -133,9 +133,6 @@ Substitute: build-packages:docker %image_package_conflicts patterns-base-fips
 # KIWI image builds
 Substitute: build-packages:kiwi %image_package_conflicts patterns-base-fips
 
-# To build ISO images
-Substitute: build-packages:iso %image_package_conflicts
-
 # mkosi + its recommended dependencies
 Substitute: system-packages:mkosi:rpm mkosi createrepo kmod btrfsprogs cpio dosfstools squashfs tar xz zstd
 Substitute: build-packages:mkosi:rpm %image_package_conflicts
