@@ -19,7 +19,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.37.4
+Version:        1.37.5
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-Patch0:         0001-Properly-validate-cache-IDs-and-sources.patch
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:45:12 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.37.5:
+  * [release-1.37] Bump Buildah to v1.37.5
+  * Bump the containers/storage library to v1.55.1 (CVE-2024-9676, bsc#1231698)
+  * Properly validate cache IDs and sources
+  * Packit: constrain koji job to fedora package to avoid dupes
+- Removed patch:
+  * 0001-Properly-validate-cache-IDs-and-sources.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue Oct 15 06:48:18 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Add patch for CVE-2024-9675 (bsc#1231499):
