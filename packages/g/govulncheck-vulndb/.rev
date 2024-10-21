@@ -20,4 +20,16 @@
   * Fix License: CC-BY-4.0 (forwarded request 1208483 from jfkw)</comment>
     <requestid>1208484</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c843e68a650bd55427e64cc21aff81a</srcmd5>
+    <version>0.0.20241017T153730</version>
+    <time>1729520751</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241017T153730 date 2024-10-17T15:37:30Z.
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3189
+  * GO-2024-3203
+  * GO-2024-3204 (forwarded request 1215241 from jfkw)</comment>
+    <requestid>1215376</requestid>
+  </revision>
 </revisionlist>

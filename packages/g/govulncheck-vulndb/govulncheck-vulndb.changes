@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:37:30 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
+
+- Update to version 0.0.20241017T153730 date 2024-10-17T15:37:30Z.
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3189
+  * GO-2024-3203
+  * GO-2024-3204
+
+-------------------------------------------------------------------
 Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
