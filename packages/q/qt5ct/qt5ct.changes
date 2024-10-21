@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:22:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8
+  * added XDG desktop portal dialogs support
+  * added qt6ct compatibility
+  * improved warning about incorrect environment variable
+  * improved icon loader
+  * only prepend our stylesheet if it has changed
+  * fixed compatibility with applications that use own stylesheet
+  * fixed some clazy and clang-tidy warnings
+  * changed font configuration format
+  * added keywords entry to desktop file
+  * changed minimal Qt version to 5.15 for cmake build system
+  * fixed qmake build
+  * fixed localization support
+  * improved cmake build
+  * fixed parallel build using qmake
+  * updated translations
+
+-------------------------------------------------------------------
 Mon Mar 14 11:40:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.5
