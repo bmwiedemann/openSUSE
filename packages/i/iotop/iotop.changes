@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 13:37:39 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Use git hash for download URL, not branch name. 
+
+-------------------------------------------------------------------
 Fri Sep  8 14:05:49 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to head checkout 4b2e1aa:

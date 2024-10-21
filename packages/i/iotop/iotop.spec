@@ -1,7 +1,7 @@
 #
 # spec file for package iotop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define gitdate 20230403
-%define gitversion HEAD-4b2e1aa
+%define gitversion 4b2e1aa
 
 Name:           iotop
 Version:        0.6git.%{gitdate}
@@ -26,7 +26,7 @@ Summary:        Top Like UI to Show Per-Process I/O Going on
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            http://guichaz.free.fr/iotop/
-Source0:        https://repo.or.cz/iotop.git/snapshot/HEAD.tar.gz#/%{name}-%{gitversion}.tar.gz
+Source0:        https://repo.or.cz/iotop.git/snapshot/%{gitversion}.tar.gz#/%{name}-%{gitversion}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
@@ -49,6 +49,8 @@ which process is the I/O going on.
 %python3_install
 
 %fdupes -s %{buildroot}
+
+%check
 
 %files
 %license COPYING
