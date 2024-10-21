@@ -2060,12 +2060,13 @@ BuildFlags: onlybuild:javapackages-tools
 BuildFlags: onlybuild:javapackages-tools:extras
 BuildFlags: onlybuild:jbigkit
 BuildFlags: onlybuild:jemalloc
-BuildFlags: onlybuild:jflex:jflex-bootstrap
+BuildFlags: onlybuild:jflex:bootstrap
 BuildFlags: onlybuild:jitterentropy
 BuildFlags: onlybuild:jlex
 BuildFlags: onlybuild:jq
 BuildFlags: onlybuild:json-c
 BuildFlags: onlybuild:json-glib
+BuildFlags: onlybuild:jsr-305
 BuildFlags: onlybuild:junit
 BuildFlags: onlybuild:karchive
 BuildFlags: onlybuild:kauth
