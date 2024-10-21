@@ -70,7 +70,6 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext
 Requires:       python3-dnf-plugins-core = %{version}-%{release}
-Recommends:     %{name}-lang >= %{version}
 
 Provides:       dnf-command(builddep)
 Provides:       dnf-command(config-manager)

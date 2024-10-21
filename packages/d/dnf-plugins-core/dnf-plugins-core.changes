@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 11 13:46:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend -lang package: the lang package has already the
+  relevant supplements in place.
+
+-------------------------------------------------------------------
 Tue Feb  6 10:54:17 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 4.4.4
