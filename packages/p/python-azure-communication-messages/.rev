@@ -7,4 +7,16 @@
     <comment>yet another azure SDK package</comment>
     <requestid>1190667</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2245ae9bcc92c19491f0ae0388789ddf</srcmd5>
+    <version>1.1.0</version>
+    <time>1729520790</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1216692 from glaubitz)</comment>
+    <requestid>1216694</requestid>
+  </revision>
 </revisionlist>

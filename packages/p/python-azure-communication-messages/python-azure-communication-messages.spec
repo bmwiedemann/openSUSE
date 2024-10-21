@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-messages
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Communication Messages Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-messages/azure-communication-messages-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_communication_messages/azure_communication_messages-%{version}.tar.gz
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -45,7 +45,7 @@ his package contains a Python SDK for Azure Communication Services
 for Messages (Advanced Messaging).
 
 %prep
-%setup -q -n azure-communication-messages-%{version}
+%setup -q -n azure_communication_messages-%{version}
 
 %build
 %pyproject_wheel
