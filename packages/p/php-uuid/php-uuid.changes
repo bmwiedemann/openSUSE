@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 19 15:28:10 UTC 2024 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Upgraded  version 1.2.1 
+ * fix for util-linux/libuuid 2.40 and uuid_time64
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)

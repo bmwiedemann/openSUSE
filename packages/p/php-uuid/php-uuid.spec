@@ -1,7 +1,7 @@
 #
 # spec file for package php-uuid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        PHP UUID support functions
 License:        LGPL-2.1-only
@@ -39,8 +39,8 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/%{pkg_name}
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
-BuildRequires:  libuuid-devel
 BuildRequires:  %{php_name}-devel
+BuildRequires:  libuuid-devel
 Provides:       php-%{pkg_name} = %{version}
 Obsoletes:      php-%{pkg_name} < %{version}
 Requires:       php(api) = %{php_core_api}
