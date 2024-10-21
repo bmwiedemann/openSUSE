@@ -55,4 +55,16 @@
     <comment>Update to version 0.99.0</comment>
     <requestid>1208666</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5536cee95389abe6a35075eebd1c6fb6</srcmd5>
+    <version>0.99.1</version>
+    <time>1729520776</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.99.1
+  + Bug fixes and other changes
+    * A bug was introduced in 0.99.0 where `return`, `break`, and `continue` 
+      could cause `$env.LAST_EXIT_CODE` to be set to 1. This has been 
+      fixed in #14120. (forwarded request 1216675 from develop7)</comment>
+    <requestid>1216676</requestid>
+  </revision>
 </revisionlist>

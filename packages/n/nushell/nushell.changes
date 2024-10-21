@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 20 22:34:00 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.99.1
+  + Bug fixes and other changes
+    * A bug was introduced in 0.99.0 where `return`, `break`, and `continue` 
+      could cause `$env.LAST_EXIT_CODE` to be set to 1. This has been 
+      fixed in #14120.
+
+-------------------------------------------------------------------
 Wed Oct 16 10:26:46 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 + Update to version 0.99.0:
