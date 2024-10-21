@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_jk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define connectors_root    tomcat-connectors-%{version}-src
 Name:           apache2-mod_jk
-Version:        1.2.49
+Version:        1.2.50
 Release:        0
 Summary:        Connectors between Apache and Tomcat Servlet Container
 License:        Apache-2.0
@@ -28,10 +28,6 @@ Source0:        https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-c
 Source1:        jk.conf
 Source2:        README.SUSE
 Source3:        https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-%{version}-src.tar.gz.asc
-
-# UPSTREAM-PATCH:
-# https://bz.apache.org/bugzilla/show_bug.cgi?id=66005#c33
-Patch0:         apache2-fix-symbol-export-typo.patch
 
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
@@ -54,7 +50,6 @@ To load the module into Apache, run the command "a2enmod jk" as root.
 
 %prep
 %setup -q -n %{connectors_root}
-%autopatch -p1
 
 %build
 # prepare apr

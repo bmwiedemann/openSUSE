@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 21 10:05:43 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to version 1.2.50:
+    * Apache
+      + Fix: 68117: Fix typo in new libtool flag introduced in
+        1.2.49 to reduce symbol visibility. Also improve escaping
+        of it in the Makefile.
+      +  Fix: Improve shared memory handling on non-Windows.
+    * IIS
+      + Update: Update PCRE bundled with the ISAPI redirector to
+        8.45.
+    * Common
+      + Fix: #8: Fix compilation on musl.
+      + Update: Update config.guess and config.sub
+- Remove apache2-fix-symbol-export-typo.patch - this upstream fix
+  is included in 1.2.50
+
+-------------------------------------------------------------------
 Thu Dec 21 13:51:41 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Add apache2-fix-symbol-export-typo.patch to fix a typo to restrict
