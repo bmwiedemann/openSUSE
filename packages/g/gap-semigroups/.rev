@@ -56,4 +56,12 @@
 - Add no-avx.patch.</comment>
     <requestid>1174580</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a10dd6b978feccd12bf4119426688540</srcmd5>
+    <version>5.4.0</version>
+    <time>1729520735</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.4.0</comment>
+    <requestid>1211089</requestid>
+  </revision>
 </revisionlist>
