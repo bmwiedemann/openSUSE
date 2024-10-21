@@ -16,45 +16,36 @@
 #
 
 
-%define skip_python2 1
 Name:           python-django-silk
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
 URL:            https://github.com/jazzband/django-silk
-Source:         https://files.pythonhosted.org/packages/source/d/django-silk/django-silk-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-silk/django_silk-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 3.2
-Requires:       python-Jinja2 >= 2.8
-Requires:       python-Pillow >= 3.2
-Requires:       python-Pygments >= 2.16.1
+Requires:       python-Django >= 4.2
 Requires:       python-autopep8 >= 1.2.1
 Requires:       python-gprof2dot >= 2017.09.19
-Requires:       python-python-dateutil >= 2.4
-Requires:       python-pytz > 2014.2
-Requires:       python-requests >= 2.10
 Requires:       python-sqlparse >= 0.1.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2}
-BuildRequires:  %{python_module Jinja2 >= 2.8}
-BuildRequires:  %{python_module Pillow >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module autopep8 >= 1.2.1}
-BuildRequires:  %{python_module factory_boy >= 2.8.1}
+BuildRequires:  %{python_module factory_boy >= 3.3}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gprof2dot >= 2017.09.19}
-BuildRequires:  %{python_module networkx >= 1.11}
-BuildRequires:  %{python_module pydotplus >= 2.0.2}
-BuildRequires:  %{python_module pydot}
-BuildRequires:  %{python_module python-dateutil >= 2.4}
-BuildRequires:  %{python_module pytz > 2014.2}
-BuildRequires:  %{python_module requests >= 2.10}
-BuildRequires:  %{python_module simplejson >= 3.13.2}
+BuildRequires:  %{python_module networkx >= 2.6}
+BuildRequires:  %{python_module pydot >= 1.4}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sqlparse >= 0.1.19}
 # /SECTION
 %python_subpackages
@@ -63,30 +54,26 @@ BuildRequires:  %{python_module sqlparse >= 0.1.19}
 Profiling for the Django Framework.
 
 %prep
-%setup -n django-silk-%{version}
-# see https://github.com/jazzband/django-silk/pull/532
-sed -i '/Pygments/d' setup.py
+%setup -n django_silk-%{version}
 chmod a-x silk/static/silk/lib/*.css
 chmod a-x silk/static/silk/lib/*.js
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 cd project
-export DB_ENGINE=sqlite3 DB_NAME=":memory:DB=sqlite3"
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python manage.py migrate --noinput
-$python manage.py test --noinput -v2
-}
+export DB_ENGINE=sqlite3 DB_NAME=":memory:"
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*silk*/
+%{python_sitelib}/silk
+%{python_sitelib}/django_silk-%{version}.dist-info
 
 %changelog

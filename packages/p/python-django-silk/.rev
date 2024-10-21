@@ -165,4 +165,23 @@
   * Derive version from importlib</comment>
     <requestid>1142775</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35fffc1ebd01f36e3f5baebf82c89877</srcmd5>
+    <version>5.2.0</version>
+    <time>1729520754</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.0:
+  * Features/Enhancements:
+    + Support Django 5.1
+  * Fixes:
+    + Fix when Session, Authentication or Message middleware are not present
+    + Update 'tables_involved' property to include tables from UPDATE
+      operation
+    + Correct units in profiling and requests pages
+  * Maintenance and Cleanup:
+    + Update python dependencies
+    + Refactor SQL query time calculation to use Django aggregation
+- Switch to pyproject and pytest macros.</comment>
+    <requestid>1215499</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 21 04:01:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.2.0:
+  * Features/Enhancements:
+    + Support Django 5.1
+  * Fixes:
+    + Fix when Session, Authentication or Message middleware are not present
+    + Update 'tables_involved' property to include tables from UPDATE
+      operation
+    + Correct units in profiling and requests pages
+  * Maintenance and Cleanup:
+    + Update python dependencies
+    + Refactor SQL query time calculation to use Django aggregation
+- Switch to pyproject and pytest macros.
+
+-------------------------------------------------------------------
 Tue Jan 30 12:18:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
