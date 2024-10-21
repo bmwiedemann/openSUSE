@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 21 09:38:57 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 1.1.0
+  * fix DPLL pin ID assignment with invalid input
+  * fix new_tlv.value NULL dereference
+  * fix uninitialized use of tlv_arr
+  * fix uninitialized use of tlv_num
+  * fix error handling on command recv
+  * fix error handling on socket creation
+  * add SECURITY.md
+  * simplify rebuild of priorities
+  * add internal device priority configuration
+  * fix duplicated pin data
+  * add dpll_mon serialized data updates
+  * fix priority rebuild
+  * fix pin parent handling
+  * configurable synce_clock_poll delay
+  * add list of dependencies to README.md
+  * fix sync on missing extended tlv
+  * clear pin priorities on exit
+  * avoid disconnecting input when rebuilding priority
+  * add functions for clearing priority of individual pins
+  * update port TX QL when external source locks
+  * change function to static in synce_manager
+  * change d_state updating implementation
+  * fix flows moving from best port to SMA
+  * add external API for managing QL
+  * avoid -Wmaybe-uninitialized warning
+  * fix printf formats for 32-bit archs
+- Remove patches included in release
+  [- synce4l-32bit.patch]
+
+-------------------------------------------------------------------
 Tue Mar 26 07:56:19 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Fix build on 32bit platforms (synce4l-32bit.patch).

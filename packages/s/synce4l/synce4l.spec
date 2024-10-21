@@ -17,14 +17,13 @@
 
 
 Name:           synce4l
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Synchronous Ethernet (SyncE)
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            https://github.com/intel/synce4l
 Source0:        https://github.com/intel/synce4l/archive/%version/synce4l-%version.tar.gz
 Source1:        synce4l.service
-Patch0:         synce4l-32bit.patch
 BuildRequires:  libnl3-devel
 %{?systemd_requires}
 
@@ -39,7 +38,7 @@ The best source selection is done according to ITU-T Recommendations G.781 and G
 %autosetup
 
 %build
-%make_build EXTRA_CFLAGS="$RPM_OPT_FLAGS -Wno-error" EXTRA_LDFLAGS="$RPM_LD_FLAGS" 
+%make_build EXTRA_CFLAGS="$RPM_OPT_FLAGS -Wno-error" EXTRA_LDFLAGS="$RPM_LD_FLAGS"
 
 %install
 %make_install prefix=%_prefix mandir=%_mandir
@@ -65,4 +64,3 @@ install -m 644 -p -D -t %buildroot%_unitdir %SOURCE1
 %_unitdir/synce4l.service
 
 %changelog
-
