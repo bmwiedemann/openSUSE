@@ -17,7 +17,7 @@
 
 
 Name:           art-ctlscripts
-Version:        1.0.1
+Version:        1.1
 Release:        0
 Summary:        Custom CTL scripts for the ART raw processor.
 License:        GPL-3.0-only

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:47:04 UTC 2024 - info@paolostivanin.com
+
+- Update to version 1.1:
+  * artlib: added helper function luteval
+  * added graphical equalizer by saturation
+  * improved tone curve
+  * added graphic luminance equalizer
+  * added tone curve and graphical hue equalizer
+
+-------------------------------------------------------------------
 Tue May 28 14:25:15 UTC 2024 - info@paolostivanin.com
 
 - Update to version 1.0.1:
