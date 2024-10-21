@@ -64,4 +64,12 @@
   + dnf5-disable-Werror.patch</comment>
     <requestid>1179516</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>be197cc7a09e0761582f73ee0f7ab3c0</srcmd5>
+    <version>5.2.3.0</version>
+    <time>1729520734</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1210014</requestid>
+  </revision>
 </revisionlist>

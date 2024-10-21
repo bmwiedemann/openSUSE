@@ -424,7 +424,8 @@ Summary:        Development files for libdnf
 License:        LGPL-2.1-or-later
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       libsolv-devel%{?_isa} >= %{libsolv_version}
-Conflicts:      libdnf-devel < 5
+# Do not conflict with libdnf-devel yet, packagekit needs both devel packages for now.
+#Conflicts:      libdnf-devel < 5
 
 %description -n %{devname}
 Development files for libdnf.
