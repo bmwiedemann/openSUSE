@@ -254,6 +254,8 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.css
 %config(noreplace) %{_sysconfdir}/%{name}/hosts.conf
 %config(noreplace) %{_sysconfdir}/%{name}/multimon.conf
+%dir %{apache_serverroot}
+%dir %{apache_serverroot}/cgi-bin
 %{apache_serverroot}/cgi-bin/multimon.cgi
 %{apache_serverroot}/cgi-bin/upsfstats.cgi
 %{apache_serverroot}/cgi-bin/upsstats.cgi

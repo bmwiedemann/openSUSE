@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 27 13:29:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Thu Jul 11 09:14:41 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Revert SuSEfirewall2 removal (commit on Wed Jul  3 13:45:08 UTC 2019),
