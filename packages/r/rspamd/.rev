@@ -381,4 +381,14 @@
   - Some more fixes by @vstakhov in #5190</comment>
     <requestid>1208437</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ab46872e7ed02e4b317cd385133a8fea</srcmd5>
+    <version>3.10.2</version>
+    <time>1729520771</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.10.2
+  - [CritFix] Fix ARC-Seal signing
+  - [Fix] add EOF to openmetrics response in proxy and server</comment>
+    <requestid>1216667</requestid>
+  </revision>
 </revisionlist>
