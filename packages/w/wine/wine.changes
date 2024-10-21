@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 19 09:50:06 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.20 release
+  - Bundled Capstone library for disassembly in WineDbg.
+  - More formats supported in D3DX9.
+  - Static analysis and JUnit test reports in Gitlab CI.
+  - More support for network sessions in DirectPlay.
+  - Various bug fixes.
+- update staging to 9.20 release
+
+-------------------------------------------------------------------
 Sun Oct  6 13:43:41 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.19 release
