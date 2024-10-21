@@ -1,7 +1,7 @@
 #
 # spec file for package stressapptest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ autoreconf -fvi
 export CXXFLAGS="%{optflags}"
 %configure \
   --disable-silent-rules \
-  --disable-default-optimizations \
+  --enable-default-optimizations \
   --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 
