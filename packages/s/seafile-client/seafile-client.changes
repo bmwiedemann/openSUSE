@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:47:32 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.9:
+  * Retry list repos request when failed (#1564)
+  * Support password hash (#1543)
+  * Set default timeout for api requests (#1563)
+  * Add SSO button to the login dialog (#1565)
+  * Fix the migration error in data cache (#1559)
+  * openUrl add return value (#1556)
+
+-------------------------------------------------------------------
 Mon Feb 26 14:25:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire libseafile0: requring seafile-devel is

@@ -178,4 +178,19 @@
     <comment></comment>
     <requestid>1152014</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>524bb160e48ae3a1aec31c9a01c58eef</srcmd5>
+    <version>9.0.9</version>
+    <time>1729520764</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.0.9:
+  * Retry list repos request when failed (#1564)
+  * Support password hash (#1543)
+  * Set default timeout for api requests (#1563)
+  * Add SSO button to the login dialog (#1565)
+  * Fix the migration error in data cache (#1559)
+  * openUrl add return value (#1556)
+</comment>
+    <requestid>1216663</requestid>
+  </revision>
 </revisionlist>
