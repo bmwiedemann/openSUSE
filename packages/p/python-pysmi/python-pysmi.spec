@@ -31,14 +31,12 @@
 %bcond_with test
 %endif
 Name:           python-pysmi%{psuffix}
-Version:        1.5.0
+Version:        1.5.4
 Release:        0
 Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause
 URL:            https://github.com/lextudio/pysmi
 Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#lextudio/pysmi#5
-Patch0:         support-new-pyasn1.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

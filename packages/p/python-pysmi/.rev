@@ -99,4 +99,23 @@
   * Support new pyasn1 changes.</comment>
     <requestid>1206438</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f236d338b52074b759250767c2f9da11</srcmd5>
+    <version>1.5.4</version>
+    <time>1729520747</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.4:
+  * Fixed a runtime error in pysnmp.
+  * Fixed a runtime error in pysnmp.
+  * Fixed a few runtime errors.
+  * Removed Python 3.8 support.
+  * Added Python 3.13 support.
+  * Renamed many items to meet PEP 8 requirements.
+    Compatibility layer is added, but will be removed in the
+    next release.
+  * Fixed a bug that Windows version and user name were not
+    correctly detected.
+- drop support-new-pyasn1.patch (upstream)</comment>
+    <requestid>1212248</requestid>
+  </revision>
 </revisionlist>

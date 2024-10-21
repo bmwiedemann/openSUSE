@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 20 18:57:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.4:
+  * Fixed a runtime error in pysnmp.
+  * Fixed a runtime error in pysnmp.
+  * Fixed a few runtime errors.
+  * Removed Python 3.8 support.
+  * Added Python 3.13 support.
+  * Renamed many items to meet PEP 8 requirements.
+    Compatibility layer is added, but will be removed in the
+    next release.
+  * Fixed a bug that Windows version and user name were not
+    correctly detected.
+- drop support-new-pyasn1.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Oct  9 06:31:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.0:
