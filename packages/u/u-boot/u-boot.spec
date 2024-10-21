@@ -256,6 +256,7 @@ Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0017:      0017-riscv-dts-jh7110-Update-qspi-node-w.patch
+Patch0018:      0018-Revert-riscv-dts-jh7110-Update-qspi.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

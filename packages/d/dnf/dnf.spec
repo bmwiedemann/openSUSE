@@ -75,7 +75,6 @@ BuildRequires:  python3-bugzilla
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(bash-completion)
 Requires:       python3-dnf = %{version}-%{release}
-Recommends:     %{name}-lang >= %{version}
 Recommends:     %{yum_subpackage_name}
 Recommends:     dnf-plugins-core
 Conflicts:      dnf-plugins-core < %{min_plugins_core}

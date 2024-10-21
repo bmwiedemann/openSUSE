@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sun Oct 20 09:56:40 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.5.0:
+  * docs: update README and include instructions regarding renaming
+  * minor: update tests and update paths code
+  * feat: add glob support
+  * fix: actually implement the fix for ef1e6f857e48821198d720d092bc7087af762f2a
+  * feat: add glob support to all
+
+-------------------------------------------------------------------
+Sun Oct 20 06:40:16 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.2.0:
+  * fix: filename should leave out version part alone
+
+-------------------------------------------------------------------
+Sun Oct 20 03:16:24 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.1.0:
+  * lib: move over copy_dir_all as a common utility
+  * cli: move logic as cli stubs
+  * tests: use copy_dir_all as part of lib now instead
+  * roast and raw: improve description of cli options then format
+  * move raw and roast modules to standalone files
+  * cli: add recomprizz args
+  * recomprizz: initial implementation
+  * import termcap
+  * fix: apply clippy lints
+  * tracing: set logic where and when to start properly
+  * apply clippy lints + format
+  * set output path correctly
+  * refactor: canonicalize filter
+  * refactor: canonicalize paths
+  * update deps
+  * reproducibility: set to false by default
+  * fix: additional paths variable should only be a collection of files and not directories
+  * doc: add a warning regarding reproducibility
+  * doc: fix warning msg
+  * doc: fix warning msg
+  * refactor: move mostly to libroast
+  * refactor: improve field naming and description
+  * refactor: remove tracing crate unused imports
+  * minor: raaaaaaaaaaaaawwwwwwww
+  * make names consistent
+  * remove: cliff.toml and git-cliff is an overengineered changelog generator
+  * prepare justfile for publishing
+  * change it to a text file
+  * cli: allow to explicitly tell "true" or "false" using ArgAction::Set and add our service file
+- Add new subpackage `obs-service-recomprizz`
+  * This is a possible drop-in replacement for obs-service-recompress
+
+-------------------------------------------------------------------
+Sat Oct 19 08:30:24 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 3.3.1:
+  * tests: add library tests + ci tests
+  * test: this should be two separate files
+
+-------------------------------------------------------------------
+Tue Oct 15 10:02:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 3.3.0:
+  * Properly set preserve root
+  * Cleanup raw binary log output
+  * Support uncompressed tarballs with tar extension
+
+-------------------------------------------------------------------
+Sat Oct 12 05:37:05 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Initial spec for roast 3.2.2

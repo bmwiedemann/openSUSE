@@ -1,0 +1,9 @@
+<services>
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">roast*.tar.gz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+</services>
+

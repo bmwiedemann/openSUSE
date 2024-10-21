@@ -2007,4 +2007,16 @@ Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.
     <comment></comment>
     <requestid>1206254</requestid>
   </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>fda2b9497374c29b7740c9ab59c163fc</srcmd5>
+    <version>2024.10</version>
+    <time>1729520717</time>
+    <user>anag+factory</user>
+    <comment>Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.10
+* Patches added:
+  0018-Revert-riscv-dts-jh7110-Update-qspi.patch
+  boo#1231674
+</comment>
+    <requestid>1208895</requestid>
+  </revision>
 </revisionlist>

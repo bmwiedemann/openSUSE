@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 11 13:47:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend -lang package: the lang package has already the
+  relevant supplements in place.
+
+-------------------------------------------------------------------
 Wed Mar 13 10:30:39 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

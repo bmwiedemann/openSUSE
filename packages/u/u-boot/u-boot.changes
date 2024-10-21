@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 18 14:14:26 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.10
+* Patches added:
+  0018-Revert-riscv-dts-jh7110-Update-qspi.patch
+  boo#1231674
+
+-------------------------------------------------------------------
 Tue Oct  8 07:10:55 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add support for sige7-rk3588 (based on SR from Jianfeng Liu - amazingfate)

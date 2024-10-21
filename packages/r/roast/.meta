@@ -1,0 +1,6 @@
+<package name="roast" project="openSUSE:Factory">
+  <title>Roast Raw Recomprizz</title>
+  <description>Make tarballs easy to roas-- archive and compress. A tar alternative</description>
+  <devel project="Archiving" package="roast"/>
+  <url>https://github.com/openSUSE-Rust/roast/</url>
+</package>
