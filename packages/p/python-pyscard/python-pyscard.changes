@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 20 20:20:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+   * PCSCCardRequest: 
+    - handle KeyboardInterrupt in waitforcard() & waitforcardevent()
+        - use a local PC/SC context to avoid locks
+   * smartcard.util.padd(): do NOT modify the input parameter
+   * CardMonitoring: a timeout exception IS expected
+   * Fix pydoctor documentation
+   * wx: fix module and examples
+   * Remove Python 2 conditional code
+   * Test and improve the synchronization code
+   * Test and update the `Observer.py` code
+   * Remove `ClassLoader.py`
+   * Migrate a `src/` layout
+   * Migrate test/* from unittest to pytest
+   * Add missing GSM 03.38 symbols for decoding
+   * Support only Python 3.9 and higher
+   * Remove the Python 2.x-only Pyro dependency
+   * Migrate CI to use the official Coveralls action
+   * Standardize local and CI testing to use tox
+   * Build wheels in CI for all supported Python versions
+   * Build the docs as a part of the test suite
+   * Begin to add type annotations to the package
+   * Deprecate the `HexListToBinString`, `BinStringToHexList`,
+     `hl2bs`, and `bs2hl` utility functions
+   * Support "64" as an ATR baud rate adjustment integer
+     (ISO 7816-3 2006)
+
+-------------------------------------------------------------------
 Mon Sep  9 20:40:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1
