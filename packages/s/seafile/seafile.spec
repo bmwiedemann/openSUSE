@@ -17,12 +17,13 @@
 
 
 Name:           seafile
-Version:        9.0.4
+Version:        9.0.9
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seafile/
 Source0:        https://github.com/haiwen/seafile/archive/v%{version}.tar.gz
+BuildRequires:  argon2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake

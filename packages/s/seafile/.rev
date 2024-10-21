@@ -180,4 +180,21 @@
   symlink.</comment>
     <requestid>1152115</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da999cc7c9c0f9d867c24bee55041e9a</srcmd5>
+    <version>9.0.9</version>
+    <time>1729520763</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.0.9:
+  * Support password hash (#2783)
+  * Save block file directly (#2834)
+  * Add auth header (#2821)
+  * Upgrade to Qt 6.5
+  * Fix GCC 14.1 build issues
+  * Fix unlock file error and only record sync error (#2772)
+  * Socks5 support username and password (#2768)
+  * Check path is case conflict when checkout files (#2748)
+</comment>
+    <requestid>1216661</requestid>
+  </revision>
 </revisionlist>

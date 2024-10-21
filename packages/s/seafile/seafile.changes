@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:44:07 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.9:
+  * Support password hash (#2783)
+  * Save block file directly (#2834)
+  * Add auth header (#2821)
+  * Upgrade to Qt 6.5
+  * Fix GCC 14.1 build issues
+  * Fix unlock file error and only record sync error (#2772)
+  * Socks5 support username and password (#2768)
+  * Check path is case conflict when checkout files (#2748)
+
+-------------------------------------------------------------------
 Tue Feb 27 08:30:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - The -devel package must require the library package (Requires:
