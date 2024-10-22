@@ -114,4 +114,14 @@
   * [Added] aarch64-apple-darwin build release</comment>
     <requestid>1190367</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99f22247cfd0bf167523b03e95af2775</srcmd5>
+    <version>0.14.7</version>
+    <time>1729601589</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.7:
+  * [Changed] Header line wrapping #695
+  * [Fixed] First key press is ignored #443</comment>
+    <requestid>1216899</requestid>
+  </revision>
 </revisionlist>

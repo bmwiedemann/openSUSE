@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:25:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.7:
+  * [Changed] Header line wrapping #695
+  * [Fixed] First key press is ignored #443
+
+-------------------------------------------------------------------
 Tue Jul 30 03:50:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.6:
