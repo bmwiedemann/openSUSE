@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM epiphany-fix-parsing-encoded-session-urls.patch bsc#1231823, glgo#GNOME/epiphany!1655 alynx.zhou@suse.com -- Fix crash when parsing session URLs which are encoded
+Patch0:         epiphany-fix-parsing-encoded-session-urls.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

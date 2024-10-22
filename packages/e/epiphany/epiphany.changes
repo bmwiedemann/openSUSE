@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 03:37:09 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add epiphany-fix-parsing-encoded-session-urls.patch: Fix crash
+  when parsing already encoded session URLs. (bsc#1231823,
+  glgo#GNOME/epiphany!1655)
+
+-------------------------------------------------------------------
 Mon Oct 14 18:13:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

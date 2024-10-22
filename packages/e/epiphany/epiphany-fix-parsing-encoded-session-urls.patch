@@ -1,0 +1,32 @@
+From 292581fba4847db476eeb04dbc869fefe50ec973 Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Mon, 21 Oct 2024 10:46:05 +0800
+Subject: [PATCH] ephy-session: Correctly parse %-encoded URIs
+
+Because we already have %-encoded URIs for sessions, tell GUri don't
+encode our URIs anymore by setting `G_URI_FLAGS_ENCODED` flag. Otherwise
+GUri will fail to parse them.
+
+Fixes #2500.
+---
+ src/ephy-session.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/ephy-session.c b/src/ephy-session.c
+index b2ebb42b2f..343577d528 100644
+--- a/src/ephy-session.c
++++ b/src/ephy-session.c
+@@ -895,7 +895,9 @@ session_seems_reasonable (GList *windows)
+       if (g_str_has_prefix (url, "about:"))
+         continue;
+ 
+-      uri = g_uri_parse (url, G_URI_FLAGS_PARSE_RELAXED, NULL);
++      uri = g_uri_parse (url,
++                         G_URI_FLAGS_ENCODED | G_URI_FLAGS_PARSE_RELAXED,
++                         NULL);
+       if (uri) {
+         if (g_uri_get_host (uri) != NULL ||
+             strcmp (g_uri_get_scheme (uri), "file") == 0 ||
+-- 
+GitLab
+
