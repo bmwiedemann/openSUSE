@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 21 12:55:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20241021
+  * Fix search on the Load Module page
+  * Wii U support
+  * Fix portamento in both volume and effect column at the same
+    time
+  * Allow importing of IEEE floating point WAV and AU files
+  * POSIX: Use ~/.config/schism by default; ~/.schism is used if
+    it is available as a fallback
+  * MIDI/JACK: Both midi in and out should work flawlessly now
+  * S3M: Fix sample import under big endian architectures
+  * IT: Fix V81-VFF commands in old Schism Tracker ITs
+  * XM: Import ModPlug Tracker Command X extensions
+- Add 0001-build-resolve-Wreturn-type-warnings.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 09:32:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240909
