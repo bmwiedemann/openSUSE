@@ -25,4 +25,15 @@
     <comment></comment>
     <requestid>761661</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>70b85040c4f9ff929cb1cdd4d2b6dbb0</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601576</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.</comment>
+    <requestid>1216908</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-git
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-pytest-git
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Git repository fixture for pytest
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-git/pytest-git-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-GitPython
@@ -48,10 +47,10 @@ Git repository fixture for py.test
 %setup -q -n pytest-git-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +59,8 @@ Git repository fixture for py.test
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_git.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_git.*.pyc
+%{python_sitelib}/pytest_git-%{version}.dist-info
 
 %changelog
