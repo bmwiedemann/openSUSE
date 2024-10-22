@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           vhs
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        CLI video recorder
 URL:            https://github.com/charmbracelet/vhs
@@ -38,6 +38,7 @@ VHS records your terminal as videos or gifs for demos.
 Summary:        Documentation for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -48,6 +49,7 @@ Documentation files and examples for %{name}.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -58,6 +60,7 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 Requires:       fish
 BuildArch:      noarch
 
@@ -68,6 +71,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
 Requires:       zsh
 BuildArch:      noarch
 
@@ -75,7 +79,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -a1
 # Delete outputs from examples.
 find examples -name '*.mp4' -delete \
   -or -name '*.webm' -delete \
@@ -103,6 +107,9 @@ done
 install -Dm644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%check
+go test -v ./...
 
 %files
 %{_bindir}/%{name}

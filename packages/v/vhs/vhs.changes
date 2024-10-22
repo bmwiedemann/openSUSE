@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 22 04:44:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+- Update to version 0.8.0:
+  New
+  * cmd: add support for ENV command
+  * set VHS_RECORD="true"while running
+  Fixed
+  * fix duplicate if statement
+  * hide vhs publish info when exiting with tape errors
+  * fix ShiftLeft when using Shift+Tab
+  * data rase + better error reporting
+  Docs
+  * correct typo in ffmepg.go
+  Other stuff
+  * feat: update deps, fix lint issues
+
+-------------------------------------------------------------------
 Tue Apr 16 05:18:49 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update _service to use manual instead of deprecated disabled
