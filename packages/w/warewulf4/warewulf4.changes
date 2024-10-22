@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:53:46 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- removing build rules for sle12 and fixing logrotate name
+
+-------------------------------------------------------------------
 Mon Oct 14 13:41:00 UTC 2024 - cgoll@suse.com
 
 - Update to version 4.5.8:

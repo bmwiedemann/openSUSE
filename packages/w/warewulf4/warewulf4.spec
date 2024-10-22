@@ -36,15 +36,14 @@ Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 
-# no firewalld in sle12
-%if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
-BuildRequires:  firewalld
-%endif
 BuildRequires:  distribution-release
 BuildRequires:  dracut
+BuildRequires:  firewalld
 BuildRequires:  go >= 1.20
 BuildRequires:  golang-packaging
+BuildRequires:  iproute2
 BuildRequires:  libgpg-error-devel
+BuildRequires:  logrotate
 BuildRequires:  make
 BuildRequires:  munge
 BuildRequires:  sysuser-tools
@@ -54,7 +53,10 @@ BuildRequires:  pkgconfig(gpgme)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %sysusers_requires
 Requires:       %{name}-overlay = %{version}
+Requires:       firewalld
+Requires:       iproute2
 Requires:       ipxe-bootimgs
+Requires:       logrotate
 Requires:       pigz
 Requires:       tftp
 Requires:       ( dhcp-server or dnsmasq )
@@ -183,11 +185,6 @@ yq e '
   .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
-# disable suse net-naming
-#yq -e '
-#  .defaultnode.kernel.args="quiet crashkernel=no net.ifnames=1" |
-#  del(.defaultnode.["boot method"] )' \
-#  -i %{buildroot}%{_datadir}/warewulf/defaults.conf
 # SUSE starts user UIDs at 1000
 sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
 # fix dhcp for SUSE
@@ -217,6 +214,8 @@ EOF
 # move the other example templates for client overlays to package documentation
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
 mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%{name}/example-templates
+# fix logrotate name
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_sysconfdir}/logrotate.d/warewulf4
 
 %pre -f %{name}.pre
 %service_add_pre warewulfd.service
@@ -246,7 +245,7 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %config(noreplace) %{_sysconfdir}/warewulf/warewulf.conf
 %config(noreplace) %{_sysconfdir}/warewulf/grub
 %config(noreplace) %{_sysconfdir}/warewulf/ipxe
-%{_sysconfdir}/logrotate.d/warewulfd.conf
+%config %{_sysconfdir}/logrotate.d/warewulf4
 %{_defaultdocdir}/%{name}/example-templates
 %{_prefix}/lib/firewalld/services/warewulf.xml
 %exclude %{_datadir}/warewulf/overlays

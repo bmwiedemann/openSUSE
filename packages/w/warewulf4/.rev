@@ -321,4 +321,12 @@
     <comment>without patch (forwarded request 1207971 from mslacken)</comment>
     <requestid>1207972</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>8268923f1d9bd48e704b9ecd87207f3c</srcmd5>
+    <version>4.5.8</version>
+    <time>1729601606</time>
+    <user>anag+factory</user>
+    <comment>- removing build rules for sle12 and fixing logrotate name</comment>
+    <requestid>1216921</requestid>
+  </revision>
 </revisionlist>
