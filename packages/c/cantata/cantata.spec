@@ -53,9 +53,10 @@ BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       media-player-info
+Requires:       mpd
+Requires:       qt6-sql-sqlite
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
-Requires:       mpd
 %lang_package
 
 %description

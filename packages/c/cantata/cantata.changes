@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 01:05:46 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Added qt6-sql-sqlite dependency.
+
+-------------------------------------------------------------------
 Thu Oct 17 08:35:43 UTC 2024 - Cor Blom <cornelis@solcon.nl>
 
 - Better not to recommend lang package, so removed it
