@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:35:59 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241018 (git commit 2f0464118f40):
+  * check_whence.py: skip some validation if git ls-files fails
+  * qcom: Add Audio firmware for X1E80100 CRD/QCPs
+  * amdgpu: DMCUB updates forvarious AMDGPU ASICs
+  * brcm: replace NVRAM for Jetson TX1
+  * rtlwifi: Update firmware for RTL8192FU to v7.3
+  * make: separate installation and de-duplication targets
+  * check_whence.py: check the permissions
+  * Remove execute bit from firmware files
+  * configure: remove unused file
+  * rtl_nic: add firmware rtl8125d-1
+
+-------------------------------------------------------------------
+Tue Oct 15 08:40:10 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241014 (git commit 99f9c7ed1f4a):
+  * iwlwifi: add gl/Bz FW for core91-69 release
+  * iwlwifi: update ty/So/Ma firmwares for core91-69 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core91-69 release
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 for a Lenovo Laptop
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 for some ASUS laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some HP laptops
+  * linux-firmware: update firmware for en8811h 2.5G ethernet phy
+  * QCA: Add Bluetooth firmwares for WCN785x with UART transport
+
+-------------------------------------------------------------------
+Mon Oct 14 13:24:31 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241011 (git commit 808cba847c70):
+  * mtk_wed: add firmware for mt7988 Wireless Ethernet Dispatcher
+  * ath12k: WCN7850 hw2.0: update board-2.bin (bsc#1230596)
+  * ath12k: QCN9274 hw2.0: add to WLAN.WBE.1.3.1-00162-QCAHKSWPL_SILICONZ-1
+  * ath12k: QCN9274 hw2.0: add board-2.bin
+  * copy-firmware.sh: rename variables in symlink hanlding
+  * copy-firmware.sh: remove no longer reachable test -L
+  * copy-firmware.sh: remove no longer reachable test -f
+  * copy-firmware.sh: call ./check_whence.py before parsing the file
+  * copy-firmware.sh: warn if the destination folder is not empty
+  * copy-firmware.sh: add err() helper
+  * copy-firmware.sh: fix indentation
+  * copy-firmware.sh: reset and consistently handle destdir
+  * Revert "copy-firmware: Support additional compressor options"
+  * copy-firmware.sh: flesh out and fix dedup-firmware.sh
+  * Style update yaml files
+  * editorconfig: add initial config file
+  * check_whence.py: annotate replacement strings as raw
+  * check_whence.py: LC_ALL=C sort -u the filelist
+  * check_whence.py: ban link-to-a-link
+  * check_whence.py: use consistent naming
+  * Add a link from TAS2XXX1EB3.bin -> ti/tas2781/TAS2XXX1EB30.bin
+  * tas2781: Upload dsp firmware for ASUS laptop 1EB30 & 1EB31
+- Skip invocation of check_whence.py at copying:
+  copy-file-skip-check.patch
+- Refresh copy-file-ignore-README.patch
+- Drop obsoleted --ignore-duplicates option to copy-firmware.sh
+- Drop the ath12k workaround again
+
+-------------------------------------------------------------------
+Thu Oct 10 08:12:54 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241010 (git commit d4e688aa74a0):
+  * rtlwifi: Add firmware v39.0 for RTL8192DU
+  * Revert "ath12k: WCN7850 hw2.0: update board-2.bin"
+    (replaced with a newer firmware in this package instead)
+- update aliases
+
+-------------------------------------------------------------------
+Tue Oct 08 13:41:43 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241004 (git commit bbb77872a8a7):
+  * amdgpu: DMCUB DCN35 update
+  * brcm: Add BCM4354 NVRAM for Jetson TX1
+  * brcm: Link FriendlyElec NanoPi M4 to AP6356S nvram
+
+-------------------------------------------------------------------
 Tue Oct 01 14:06:36 UTC 2024 - tiwai@suse.com
 
 - Update to version 20241001 (git commit 51e5af813eaf):

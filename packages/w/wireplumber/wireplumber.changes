@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 21 15:52:33 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix switching automatically the
+  profile of non-bluetooth devices (boo#1231815):
+  * 0001-autoswitch-bluetooth-profile-switch-only-Bluetooth-devices.patch
+- Add patch from upstream to fix switching automatically the
+  profile when starting some apps and then switching to the
+  previous profile:
+  * 0002-autoswitch-bluetooth-profile-Switch-to-HSP_HFP-on-timeout.patch
+- Add patches from upstream to fix a couple of memory leaks:
+  * 0003-m-mixer-api-Fix-memory-in-leak-wp_mixer_api_set_volume.patch
+  * 0004-module-dbus-connection-fix-GCancellable-leak.patch
+
+-------------------------------------------------------------------
 Mon Sep  9 12:12:28 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 0.5.6:

@@ -72,6 +72,7 @@ Source1100:     qcom-post
 Source1101:     uncompressed-post
 # workarounds
 Patch1:         copy-file-ignore-README.patch
+Patch2:         copy-file-skip-check.patch
 # for compatibility with SLE15-SP4 kernel (bsc#1209681)
 Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
@@ -139,6 +140,7 @@ all files that have been provided by kernel-firmware package.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch -P 1 -p1
+%patch -P 2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -166,9 +168,9 @@ cp %{SOURCE211} .
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
-sh ./copy-firmware.sh --ignore-duplicates %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
 %else
-sh ./copy-firmware.sh -v --ignore-duplicates --xz %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif

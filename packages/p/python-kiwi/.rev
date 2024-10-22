@@ -2650,4 +2650,41 @@
 - Update container integration test</comment>
     <requestid>1200859</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>c1b7bf2e24e77526136e5ed7d8f0e746</srcmd5>
+    <version>10.1.15</version>
+    <time>1729601477</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.1.14 → 10.1.15
+
+- Fixed sphinx_rtd_theme setup
+  Delete obsolete display_version attribute
+
+- Evaluate eficsm everywhere
+  Fixed _supports_bios_modules() to take an eventually
+  provided eficsm setup into account. The grub config still
+  searches for i386 grub modules even if eficsm=&quot;false&quot;
+  is set.
+
+- Fixed debian bootstrap script calls
+  Run scripts as commands with their native shebang and not
+  through bash. Not all debian package scripts uses bash, some
+  of them uses sh which can be a link to dash or other
+  interpreters. This Fixes #2660
+
+- Update TW integration tests
+  The package x86info was dropped from TW
+
+- Turn DiskFormat into an ordinary class
+  - it does not need to be an abstract base class
+  - use f-strings where applicable instead of format()
+  - change return type of _custom_args_for_format from list to tuple
+
+- Add new containers section
+  Allow to specify references to OCI containers in the
+  image description like in the following example:
+  &lt;containers source=&quot;registry.suse.com&quot; backend=&quot;podman&quot;&gt;
+  &lt;container name=&quot;some&quot; tag=&quot;some&quot; path=&quot;/some/path&quot;/&gt;</comment>
+    <requestid>1216728</requestid>
+  </revision>
 </revisionlist>

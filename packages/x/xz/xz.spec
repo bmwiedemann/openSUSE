@@ -24,7 +24,7 @@
 %endif
 
 Name:           xz
-Version:        5.6.2
+Version:        5.6.3
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later

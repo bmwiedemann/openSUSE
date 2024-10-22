@@ -1,0 +1,239 @@
+From 006e1387eaf2791d7b9c730b135de9648003c7db Mon Sep 17 00:00:00 2001
+From: Danish Prakash <contact@danishpraka.sh>
+Date: Mon, 21 Oct 2024 11:33:43 +0530
+Subject: [PATCH 2/2] Use securejoin.SecureJoin when forming userns paths
+
+We need to read /etc/passwd and /etc/group in the container to
+get an idea of how many UIDs and GIDs we need to allocate for a
+user namespace when `--userns=auto` is specified. We were forming
+paths for these using filepath.Join, which is not safe for paths
+within a container, resulting in this CVE allowing crafted
+symlinks in the container to access paths on the host instead.
+
+Addresses CVE-2024-9676
+
+Signed-off-by: Matt Heon <mheon@redhat.com>
+Signed-off-by: Danish Prakash <contact@danishpraka.sh>
+---
+ go.mod                                        |  2 +-
+ go.sum                                        |  4 +-
+ .../github.com/containers/storage/.cirrus.yml |  2 +-
+ vendor/github.com/containers/storage/VERSION  |  2 +-
+ .../github.com/containers/storage/userns.go   | 87 +++++++++++++------
+ .../containers/storage/userns_unsupported.go  | 14 +++
+ vendor/modules.txt                            |  2 +-
+ 7 files changed, 80 insertions(+), 33 deletions(-)
+ create mode 100644 vendor/github.com/containers/storage/userns_unsupported.go
+
+diff --git a/go.mod b/go.mod
+index 02d1876148a4..8f049568e0b8 100644
+--- a/go.mod
++++ b/go.mod
+@@ -20,7 +20,7 @@ require (
+ 	github.com/containers/libhvee v0.7.1
+ 	github.com/containers/ocicrypt v1.2.0
+ 	github.com/containers/psgo v1.9.0
+-	github.com/containers/storage v1.55.0
++	github.com/containers/storage v1.55.1
+ 	github.com/containers/winquit v1.1.0
+ 	github.com/coreos/go-systemd/v22 v22.5.1-0.20231103132048-7d375ecc2b09
+ 	github.com/coreos/stream-metadata-go v0.4.4
+diff --git a/go.sum b/go.sum
+index 60da92454ca2..66795b5b82ad 100644
+--- a/go.sum
++++ b/go.sum
+@@ -97,8 +97,8 @@ github.com/containers/ocicrypt v1.2.0 h1:X14EgRK3xNFvJEfI5O4Qn4T3E25ANudSOZz/sir
+ github.com/containers/ocicrypt v1.2.0/go.mod h1:ZNviigQajtdlxIZGibvblVuIFBKIuUI2M0QM12SD31U=
+ github.com/containers/psgo v1.9.0 h1:eJ74jzSaCHnWt26OlKZROSyUyRcGDf+gYBdXnxrMW4g=
+ github.com/containers/psgo v1.9.0/go.mod h1:0YoluUm43Mz2UnBIh1P+6V6NWcbpTL5uRtXyOcH0B5A=
+-github.com/containers/storage v1.55.0 h1:wTWZ3YpcQf1F+dSP4KxG9iqDfpQY1otaUXjPpffuhgg=
+-github.com/containers/storage v1.55.0/go.mod h1:28cB81IDk+y7ok60Of6u52RbCeBRucbFOeLunhER1RQ=
++github.com/containers/storage v1.55.1 h1:ius7angdTqxO56hmTJnAznyEcUnYeLOV3ybwLozA/h8=
++github.com/containers/storage v1.55.1/go.mod h1:28cB81IDk+y7ok60Of6u52RbCeBRucbFOeLunhER1RQ=
+ github.com/containers/winquit v1.1.0 h1:jArun04BNDQvt2W0Y78kh9TazN2EIEMG5Im6/JY7+pE=
+ github.com/containers/winquit v1.1.0/go.mod h1:PsPeZlnbkmGGIToMPHF1zhWjBUkd8aHjMOr/vFcPxw8=
+ github.com/coreos/go-oidc/v3 v3.10.0 h1:tDnXHnLyiTVyT/2zLDGj09pFPkhND8Gl8lnTRhoEaJU=
+diff --git a/vendor/github.com/containers/storage/.cirrus.yml b/vendor/github.com/containers/storage/.cirrus.yml
+index 50b98761694a..49a6e33b7014 100644
+--- a/vendor/github.com/containers/storage/.cirrus.yml
++++ b/vendor/github.com/containers/storage/.cirrus.yml
+@@ -120,7 +120,7 @@ lint_task:
+     env:
+         CIRRUS_WORKING_DIR: "/go/src/github.com/containers/storage"
+     container:
+-        image: golang
++        image: golang:1.21
+     modules_cache:
+         fingerprint_script: cat go.sum
+         folder: $GOPATH/pkg/mod
+diff --git a/vendor/github.com/containers/storage/VERSION b/vendor/github.com/containers/storage/VERSION
+index 094d6ad00ce7..6570a6d0dd76 100644
+--- a/vendor/github.com/containers/storage/VERSION
++++ b/vendor/github.com/containers/storage/VERSION
+@@ -1 +1 @@
+-1.55.0
++1.55.1
+diff --git a/vendor/github.com/containers/storage/userns.go b/vendor/github.com/containers/storage/userns.go
+index 57120731be57..09919394c026 100644
+--- a/vendor/github.com/containers/storage/userns.go
++++ b/vendor/github.com/containers/storage/userns.go
+@@ -1,18 +1,21 @@
++//go:build linux
++
+ package storage
+ 
+ import (
+ 	"fmt"
+ 	"os"
+ 	"os/user"
+-	"path/filepath"
+ 	"strconv"
+ 
+ 	drivers "github.com/containers/storage/drivers"
+ 	"github.com/containers/storage/pkg/idtools"
+ 	"github.com/containers/storage/pkg/unshare"
+ 	"github.com/containers/storage/types"
++	securejoin "github.com/cyphar/filepath-securejoin"
+ 	libcontainerUser "github.com/moby/sys/user"
+ 	"github.com/sirupsen/logrus"
++	"golang.org/x/sys/unix"
+ )
+ 
+ // getAdditionalSubIDs looks up the additional IDs configured for
+@@ -85,40 +88,59 @@ const nobodyUser = 65534
+ // parseMountedFiles returns the maximum UID and GID found in the /etc/passwd and
+ // /etc/group files.
+ func parseMountedFiles(containerMount, passwdFile, groupFile string) uint32 {
++	var (
++		passwd *os.File
++		group  *os.File
++		size   int
++		err    error
++	)
+ 	if passwdFile == "" {
+-		passwdFile = filepath.Join(containerMount, "etc/passwd")
+-	}
+-	if groupFile == "" {
+-		groupFile = filepath.Join(groupFile, "etc/group")
++		passwd, err = secureOpen(containerMount, "/etc/passwd")
++	} else {
++		// User-specified override from a volume. Will not be in
++		// container root.
++		passwd, err = os.Open(passwdFile)
+ 	}
+-
+-	size := 0
+-
+-	users, err := libcontainerUser.ParsePasswdFile(passwdFile)
+ 	if err == nil {
+-		for _, u := range users {
+-			// Skip the "nobody" user otherwise we end up with 65536
+-			// ids with most images
+-			if u.Name == "nobody" {
+-				continue
+-			}
+-			if u.Uid > size && u.Uid != nobodyUser {
+-				size = u.Uid
+-			}
+-			if u.Gid > size && u.Gid != nobodyUser {
+-				size = u.Gid
++		defer passwd.Close()
++
++		users, err := libcontainerUser.ParsePasswd(passwd)
++		if err == nil {
++			for _, u := range users {
++				// Skip the "nobody" user otherwise we end up with 65536
++				// ids with most images
++				if u.Name == "nobody" || u.Name == "nogroup" {
++					continue
++				}
++				if u.Uid > size && u.Uid != nobodyUser {
++					size = u.Uid + 1
++				}
++				if u.Gid > size && u.Gid != nobodyUser {
++					size = u.Gid + 1
++				}
+ 			}
+ 		}
+ 	}
+ 
+-	groups, err := libcontainerUser.ParseGroupFile(groupFile)
++	if groupFile == "" {
++		group, err = secureOpen(containerMount, "/etc/group")
++	} else {
++		// User-specified override from a volume. Will not be in
++		// container root.
++		group, err = os.Open(groupFile)
++	}
+ 	if err == nil {
+-		for _, g := range groups {
+-			if g.Name == "nobody" {
+-				continue
+-			}
+-			if g.Gid > size && g.Gid != nobodyUser {
+-				size = g.Gid
++		defer group.Close()
++
++		groups, err := libcontainerUser.ParseGroup(group)
++		if err == nil {
++			for _, g := range groups {
++				if g.Name == "nobody" || g.Name == "nogroup" {
++					continue
++				}
++				if g.Gid > size && g.Gid != nobodyUser {
++					size = g.Gid + 1
++				}
+ 			}
+ 		}
+ 	}
+@@ -309,3 +331,14 @@ func getAutoUserNSIDMappings(
+ 	gidMap := append(availableGIDs.zip(requestedContainerGIDs), additionalGIDMappings...)
+ 	return uidMap, gidMap, nil
+ }
++
++// Securely open (read-only) a file in a container mount.
++func secureOpen(containerMount, file string) (*os.File, error) {
++	tmpFile, err := securejoin.OpenInRoot(containerMount, file)
++	if err != nil {
++		return nil, err
++	}
++	defer tmpFile.Close()
++
++	return securejoin.Reopen(tmpFile, unix.O_RDONLY)
++}
+diff --git a/vendor/github.com/containers/storage/userns_unsupported.go b/vendor/github.com/containers/storage/userns_unsupported.go
+new file mode 100644
+index 000000000000..e37c18fe4381
+--- /dev/null
++++ b/vendor/github.com/containers/storage/userns_unsupported.go
+@@ -0,0 +1,14 @@
++//go:build !linux
++
++package storage
++
++import (
++	"errors"
++
++	"github.com/containers/storage/pkg/idtools"
++	"github.com/containers/storage/types"
++)
++
++func (s *store) getAutoUserNS(_ *types.AutoUserNsOptions, _ *Image, _ rwLayerStore, _ []roLayerStore) ([]idtools.IDMap, []idtools.IDMap, error) {
++	return nil, nil, errors.New("user namespaces are not supported on this platform")
++}
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 3d35b8be92d7..c0801a56b979 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -354,7 +354,7 @@ github.com/containers/psgo/internal/dev
+ github.com/containers/psgo/internal/host
+ github.com/containers/psgo/internal/proc
+ github.com/containers/psgo/internal/process
+-# github.com/containers/storage v1.55.0
++# github.com/containers/storage v1.55.1
+ ## explicit; go 1.21
+ github.com/containers/storage
+ github.com/containers/storage/drivers
+-- 
+2.46.0
+

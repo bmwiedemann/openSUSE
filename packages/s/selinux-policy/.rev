@@ -996,4 +996,15 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1208868</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e3f4adc8de4e25bf9f93554893714bcb</srcmd5>
+    <version>20241021</version>
+    <time>1729601475</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241021:
+  * rsync: add rsync_exec_commands boolean and enable it by default (bsc#1231494)
+  * Allow snapperd to execute systemctl (bsc#1231489)
+</comment>
+    <requestid>1216718</requestid>
+  </revision>
 </revisionlist>

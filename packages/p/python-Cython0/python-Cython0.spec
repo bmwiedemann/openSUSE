@@ -26,6 +26,8 @@ License:        Apache-2.0
 URL:            https://cython.org/
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
 Source1:        python-Cython0-rpmlintrc
+# PATCH-FIX-UPSTREAM backported https://github.com/cython/cython/pull/5767 Adapt to C-API changes in CPython 3.13
+Patch0:         py313.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +55,7 @@ functions and declaring C types on variables and class attributes. This
 allows the compiler to generate very efficient C code from Cython code.
 
 %prep
-%setup -q -n Cython-%{version}
+%autosetup -p1 -n Cython-%{version}
 # Fix non-executable scripts
 sed -i "s|^#!.*||" Cython/Debugger/{libpython,Cygdb}.py cython.py
 

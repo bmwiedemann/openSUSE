@@ -1177,4 +1177,13 @@
 - Remove former work around</comment>
     <requestid>1194293</requestid>
   </revision>
+  <revision rev="98" vrev="101">
+    <srcmd5>4f9d4acc8a75c8c2bad33830a3eea6ea</srcmd5>
+    <version>unknown</version>
+    <time>1729601437</time>
+    <user>anag+factory</user>
+    <comment>- Use zlib-ng-compat-devel
+- Let texlive-pdfjam-bin depend on /usr/bin/pdflatex (boo#1231783)</comment>
+    <requestid>1216763</requestid>
+  </revision>
 </revisionlist>

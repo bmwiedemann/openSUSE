@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 21 13:14:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch numpy21.patch to enable support for NumPy 2.1
+
+-------------------------------------------------------------------
 Mon Jul  1 05:10:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.60.0:

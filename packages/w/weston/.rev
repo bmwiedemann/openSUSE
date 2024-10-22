@@ -295,4 +295,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to release 14</comment>
     <requestid>1206381</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>71c5f42e769e5d5bcc03d8a8d336d4bf</srcmd5>
+    <version>14.0.1</version>
+    <time>1729601535</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 14.0.1</comment>
+    <requestid>1216787</requestid>
+  </revision>
 </revisionlist>

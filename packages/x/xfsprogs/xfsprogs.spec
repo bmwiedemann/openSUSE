@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.10.1
+Version:        6.11.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -39,7 +39,6 @@ Source4:        dracut-fsck-help.txt
 Patch0:         xfsprogs-docdir.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libinih-devel

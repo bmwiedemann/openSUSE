@@ -31,6 +31,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       ruff-%version}
 Requires:       alts
 BuildRequires:  alts
 %python_subpackages

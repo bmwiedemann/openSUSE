@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 21 17:41:07 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a crash with broadcasting sinks:
+  * 0001-bluez5-fix-crash-with-broadcast-sinks.patch
+- Add patch from upstream to actually clear the mix io areas when
+  being asked to clear it. Otherwise crashes might happen:
+  * 0002-jack-actually-clear-the-mix-io.patch
+
+-------------------------------------------------------------------
 Sun Sep 29 18:31:08 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.2.5:

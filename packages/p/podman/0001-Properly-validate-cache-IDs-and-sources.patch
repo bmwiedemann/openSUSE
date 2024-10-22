@@ -1,7 +1,7 @@
 From fe456eed5ac0647250fa5249e663ddb236b2adfb Mon Sep 17 00:00:00 2001
 From: Danish Prakash <contact@danishpraka.sh>
 Date: Tue, 15 Oct 2024 22:14:55 +0530
-Subject: [PATCH] Properly validate cache IDs and sources
+Subject: [PATCH 1/2] Properly validate cache IDs and sources
 
 The `--mount type=cache` argument to the `RUN` instruction in
 Dockerfiles was using `filepath.Join` on user input, allowing

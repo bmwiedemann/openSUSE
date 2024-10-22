@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20241001
+%define version_unconverted 20241018
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20241001
+Version:        20241018
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -70,10 +70,9 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
-# temporary revert for ath12k firmware (bsc#1230596)
-Source1200:     board-2.bin
 # workarounds
 Patch1:         copy-file-ignore-README.patch
+Patch2:         copy-file-skip-check.patch
 # for compatibility with SLE15-SP4 kernel (bsc#1209681)
 Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
@@ -5596,6 +5595,8 @@ Supplements:    modalias(usb:v04BBp0950d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v04DAp1800d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04DAp1801d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04DAp23F6d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v04DDp954Fd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v04DDp96A6d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04E8p2018d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04E8pA101d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04E8pA101d*dc*dsc*dp*ic02isc06ip00in*)
@@ -5621,8 +5622,11 @@ Supplements:    modalias(usb:v050Dp1004d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp1102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp1103d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp1105d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp110Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F2d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp120Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp2103d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5690,6 +5694,7 @@ Supplements:    modalias(usb:v07B8p8179d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8188d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v07B8p8193d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07D1p3300d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07D1p3302d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07D1p3303d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5736,6 +5741,7 @@ Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v08B9p1197d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0930p0A07d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0930p0A0Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0955p09FFd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0955p09FFd*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0955p09FFd*dc*dsc*dp*icFFisc*ip*in*)
@@ -5766,6 +5772,7 @@ Supplements:    modalias(usb:v0BDAp0179d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp0179d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp018Ad*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v0BDAp0193d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp0724d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp1724d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp1E1Ed*dc*dsc*dp*icFFiscFFipFFin*)
@@ -5783,6 +5790,7 @@ Supplements:    modalias(usb:v0BDAp8050d*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8053d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8053d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0BDAp8053d*dc*dsc*dp*icFFisc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8111d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8152d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8152d*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v0BDAp8152d*dc*dsc*dp*icFFisc*ip*in*)
@@ -5829,6 +5837,8 @@ Supplements:    modalias(usb:v0BDAp818Cd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8192d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8193d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8194d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp819Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp819Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8712d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5839,6 +5849,7 @@ Supplements:    modalias(usb:v0BDAp8754d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApB711d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApC512d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDApE194d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDApF179d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDApF192d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -6018,6 +6029,7 @@ Supplements:    modalias(usb:v15A9p0006d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v15A9p0010d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v15A9p0012d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v15C5p0008d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1668p8102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v167Bp4001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1690p0740d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1690p0744d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6113,6 +6125,7 @@ Supplements:    modalias(usb:v2001p3309d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p330Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Fd*dc*dsc*dp*icFFiscFFipFFin*)
@@ -6145,6 +6158,8 @@ Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p4901d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019p4902d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019p4902d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2019p4903d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019p4904d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019p5201d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB24d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB25d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6154,6 +6169,8 @@ Supplements:    modalias(usb:v2019pAB2Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB2Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB2Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB2Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2019pAB2Cd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2019pAB2Dd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB2Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019pAB2Ed*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019pAB33d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -6173,6 +6190,7 @@ Supplements:    modalias(usb:v20F4p624Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v20F4p646Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v20F4p648Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v20F4p648Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v20F4p664Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v20F4p724Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2357p0100d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2357p0100d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -6734,6 +6752,7 @@ various USB WiFi / Ethernet drivers.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch -P 1 -p1
+%patch -P 2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
@@ -6754,8 +6773,6 @@ cp %{SOURCE209} .
 cp %{SOURCE210} .
 cp %{SOURCE211} .
 %endif
-# temporary revert for ath12k firmware (bsc#1230596)
-cp %{SOURCE1200} ath12k/WCN7850/hw2.0/board-2.bin
 
 %build
 # nothing to do
@@ -6763,9 +6780,9 @@ cp %{SOURCE1200} ath12k/WCN7850/hw2.0/board-2.bin
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
-sh ./copy-firmware.sh --ignore-duplicates %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
 %else
-sh ./copy-firmware.sh -v --ignore-duplicates --xz %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif

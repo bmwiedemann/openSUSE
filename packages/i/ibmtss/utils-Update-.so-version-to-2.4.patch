@@ -1,0 +1,104 @@
+From 7cd742915823c0e18439c207018292c46deef513 Mon Sep 17 00:00:00 2001
+From: Ken Goldman <kgold@linux.ibm.com>
+Date: Thu, 17 Oct 2024 16:41:36 -0400
+Subject: [PATCH] utils: Update .so version to 2.4
+
+Signed-off-by: Ken Goldman <kgold@linux.ibm.com>
+---
+ utils/makefile.nofile | 4 ++--
+ utils/makefiletpm12   | 4 ++--
+ utils/makefiletpm20   | 4 ++--
+ utils/makefiletpmc    | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/utils/makefile.nofile b/utils/makefile.nofile
+index 860ab6f019db..f67581cd9f8b 100644
+--- a/utils/makefile.nofile
++++ b/utils/makefile.nofile
+@@ -90,7 +90,7 @@ LNAFLAGS += -pie -Wl,-z,now -Wl,-rpath,.
+ LNALIBS +=  -libmtssutils -libmtssmin
+ 
+ # versioned shared library
+-LIBTSSVERSIONED=libibmtssmin.so.2.1
++LIBTSSVERSIONED=libibmtssmin.so.2.4
+ 
+ # soname field of the shared library
+ # which will be made symbolic link to the versioned shared library
+@@ -109,7 +109,7 @@ endif
+ 
+ # TSS utilities shared library
+ 
+-LIBTSSUTILSVERSIONED=libibmtssutils.so.2.1
++LIBTSSUTILSVERSIONED=libibmtssutils.so.2.4
+ LIBTSSUTILSSONAME=libibmtssutils.so.2
+ LIBTSSUTILS=libibmtssutils.so
+ 
+diff --git a/utils/makefiletpm12 b/utils/makefiletpm12
+index 9a115cbd3003..cae10cbec301 100644
+--- a/utils/makefiletpm12
++++ b/utils/makefiletpm12
+@@ -103,7 +103,7 @@ LNALIBS +=  -libmtss
+ # shared library
+ 
+ # versioned shared library
+-LIBTSSVERSIONED=libibmtss.so.2.1
++LIBTSSVERSIONED=libibmtss.so.2.4
+ 
+ # soname field of the shared library
+ # which will be made symbolic link to the versioned shared library
+@@ -122,7 +122,7 @@ endif
+ 
+ # TSS utilities shared library
+ 
+-LIBTSSUTILSVERSIONED=libibmtssutils.so.2.1
++LIBTSSUTILSVERSIONED=libibmtssutils.so.2.4
+ LIBTSSUTILSSONAME=libibmtssutils.so.2
+ LIBTSSUTILS=libibmtssutils.so
+ 
+diff --git a/utils/makefiletpm20 b/utils/makefiletpm20
+index f6e55a9e822f..88e9343b76e8 100644
+--- a/utils/makefiletpm20
++++ b/utils/makefiletpm20
+@@ -140,7 +140,7 @@ LNALIBS +=  -libmtssutils -libmtss
+ # shared library
+ 
+ # versioned shared library
+-LIBTSSVERSIONED=libibmtss.so.2.3
++LIBTSSVERSIONED=libibmtss.so.2.4
+ 
+ # soname field of the shared library
+ # which will be made symbolic link to the versioned shared library
+@@ -159,7 +159,7 @@ endif
+ 
+ # TSS utilities shared library
+ 
+-LIBTSSUTILSVERSIONED=libibmtssutils.so.2.3
++LIBTSSUTILSVERSIONED=libibmtssutils.so.2.4
+ LIBTSSUTILSSONAME=libibmtssutils.so.2
+ LIBTSSUTILS=libibmtssutils.so
+ 
+diff --git a/utils/makefiletpmc b/utils/makefiletpmc
+index d2558f33b16b..00748b174bd4 100644
+--- a/utils/makefiletpmc
++++ b/utils/makefiletpmc
+@@ -108,7 +108,7 @@ LNALIBS +=  -libmtssutils -libmtss
+ # shared library
+ 
+ # versioned shared library
+-LIBTSSVERSIONED=libibmtss.so.2.3
++LIBTSSVERSIONED=libibmtss.so.2.4
+ 
+ # soname field of the shared library
+ # which will be made symbolic link to the versioned shared library
+@@ -127,7 +127,7 @@ endif
+ 
+ # TSS utilities shared library
+ 
+-LIBTSSUTILSVERSIONED=libibmtssutils.so.2.3
++LIBTSSUTILSVERSIONED=libibmtssutils.so.2.4
+ LIBTSSUTILSSONAME=libibmtssutils.so.2
+ LIBTSSUTILS=libibmtssutils.so
+ 
+-- 
+2.46.1
+

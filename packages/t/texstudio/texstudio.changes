@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 13:19:57 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.4
+  * Fix Double-click selection of words with special character gh#texstudio-org/texstudio#3812 
+
+-------------------------------------------------------------------
 Fri Sep 27 13:59:57 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.3

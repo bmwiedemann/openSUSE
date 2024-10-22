@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 16:36:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.0.1
+  * libweston: Send seat name before announcing devices
+- Drop wsp-deps.patch (merged)
+
+-------------------------------------------------------------------
 Wed Sep  4 09:23:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14

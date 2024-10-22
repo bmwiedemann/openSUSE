@@ -20,7 +20,7 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20240827
+Version:        20240927
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
@@ -60,8 +60,6 @@ firmware. It also can disassemble AML, for debugging purposes.
 
 %prep
 %setup -q -n %{src_dir} -a 2 -a 4
-# Workaround for https://github.com/acpica/acpica/issues/971
-mv source/include/ACPIXF.H source/include/acpixf.h
 %autopatch -p1
 mkdir acpidump-%{dmp_ver}
 cd acpidump-%{dmp_ver}

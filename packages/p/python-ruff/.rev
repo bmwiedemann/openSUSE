@@ -1316,4 +1316,12 @@
    * [flake8-pyi] - Fix dropped expressions in PYI030 autofix</comment>
     <requestid>1208873</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>3e7c15ebe4d670141c2213f0c07246a5</srcmd5>
+    <version>0.7.0</version>
+    <time>1729601461</time>
+    <user>anag+factory</user>
+    <comment>- add Provides: ruff-%{version}</comment>
+    <requestid>1216817</requestid>
+  </revision>
 </revisionlist>

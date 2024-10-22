@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,17 @@
 %define libpkgname %{libname}%{libversion}
 
 Name:           ibmtss
-Version:        2.1.1
+Version:        2.4.0
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
 License:        BSD-3-Clause
 Group:          Productivity/Security
-URL:            https://sourceforge.net/projects/ibmtpm20tss
-Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
+URL:            https://github.com/kgoldman/ibmtss
+Source:         https://github.com/kgoldman/ibmtss/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
+Patch2:         tss-Commit-changelog-and-autotools-version-update.patch
+Patch3:         utils-Update-.so-version-to-2.4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2
@@ -71,8 +73,7 @@ Requires:       %{name} = %{version}
 Includes IBM's TPM 2.0 TSS C header files
 
 %prep
-%setup -q -c
-%autopatch -p1
+%autosetup -p1
 
 %build
 autoreconf -ifv
@@ -107,7 +108,7 @@ find %{buildroot} -name .cvsignore | xargs rm -v
 
 %files
 %license LICENSE
-%doc ibmtss.docx
+%doc ibmtss.html ibmtss.docx README
 %{_bindir}/tss*
 %{_mandir}/man1/tss*.1%{?ext_man}
 

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 19 08:39:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + gwakeup: Reduce wake-ups to only first item in queue
+  + x11: Reduce chances XPending does recvmsg() syscall
+  + Fix grabbing tablet devices
+  + Fix misplaced windows and random resizes on scaled monitors
+  + Fix explicit sync with virtual monitors w/o pipewire streams
+  + Improve detecting preferred primary devices
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 17 17:07:10 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 47.0+24:
+  * stage-impl: Ensure that a sync object is created in headless mode
+  * backends/x11: Avoid potential crash in pad_switch_mode
+  * display: Do not crash attempting to display OSD for unknown
+    Wacom device
+  * wayland/drm-lease: Do not add connector twice on lease
+    disappeared
+  * wayland/drm-lease: Hold device fd when listing leases
+
+-------------------------------------------------------------------
 Thu Sep 26 18:20:54 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 47.0+19:

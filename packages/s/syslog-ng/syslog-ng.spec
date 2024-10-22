@@ -28,7 +28,7 @@
 %endif
 
 # mqtt only in Tumbleweed
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 %bcond_without	mqtt
 %else
 %bcond_with	mqtt
@@ -87,6 +87,14 @@ BuildRequires:  protobuf-devel
 # leaving here for future usage
 %bcond_with	mongodb
 %bcond_with	amqp
+# prepaing for Leap 16.0
+%if 0%{?suse_version} == 1600
+%bcond_with	pythondeps
+%bcond_with	snmp
+%else
+%bcond_without	pythondeps
+%bcond_without	snmp
+%endif
 Name:           syslog-ng
 Version:        4.8.1
 Release:        0
@@ -109,10 +117,14 @@ BuildRequires:  libjson-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
+%if %{with snmp}
 BuildRequires:  net-snmp-devel
+%endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
 #!BuildIgnore:  rsyslog
@@ -150,12 +162,11 @@ BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
 %endif
-%if %{with python}
+%if %{with pythondeps}
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-cachetools
 BuildRequires:  python3-certifi
 BuildRequires:  python3-charset-normalizer
-BuildRequires:  python3-devel
 BuildRequires:  python3-google-auth
 BuildRequires:  python3-idna
 BuildRequires:  python3-kubernetes
@@ -167,7 +178,6 @@ BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-requests
 BuildRequires:  python3-requests-oauthlib
 BuildRequires:  python3-rsa
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  python3-urllib3
 BuildRequires:  python3-websocket-client
@@ -175,7 +185,7 @@ BuildRequires:  python3-websocket-client
 
 %if %{with bpf}
 BuildRequires:  bpftool
-BuildRequires:  clang13
+BuildRequires:  clang
 BuildRequires:  libbpf-devel
 %endif
 
@@ -284,6 +294,7 @@ Summary:        Python modules for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 Requires:       %{name}-python
+%if %{with pythondeps}
 Requires:       python3-PyYAML
 Requires:       python3-cachetools
 Requires:       python3-certifi
@@ -299,6 +310,7 @@ Requires:       python3-requests
 Requires:       python3-rsa
 Requires:       python3-six
 Requires:       python3-websocket-client
+%endif
 
 %description python-modules
 This package provides python modules for syslog-ng, for
@@ -445,7 +457,11 @@ export BPFTOOL=/usr/sbin/bpftool
 %else
         --disable-cloud-auth                    \
 %endif
+%if %{with snmp}
         --enable-afsnmp                         \
+%else
+        --disable-afsnmp                         \
+%endif
 %if %{with bpf}
         --enable-ebpf                           \
 %endif
@@ -830,8 +846,10 @@ chmod 640 "${additional_sockets#/}"
 %files -n libevtlog-4_8-0
 %{_libdir}/libevtlog-*.so.*
 
+%if %{with snmp}
 %files snmp
 %attr(755,root,root) %{_libdir}/syslog-ng/libafsnmp.so
+%endif
 
 %if %{with curl}
 %files curl

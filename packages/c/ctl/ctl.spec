@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define so_ver 1_5_3
 
 Name:           ctl
@@ -29,8 +30,8 @@ Source2:        ctl-rpmlintrc
 Patch0:         fix-IlmCtl-sover.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  openexr-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  openexr-devel >= 3
 
 %description
 The Color Transformation Language (CTL) is a programming language for digital
@@ -52,10 +53,11 @@ This package contains various CTL files.
 %package devel
 Summary:        Development package for CTL
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 Requires:       libIlmCtl%{so_ver} = %{version}
 Requires:       libIlmCtlMath%{so_ver} = %{version}
 Requires:       libIlmCtlSimd%{so_ver} = %{version}
-Requires:       %{name} = %{version}
+Requires:       openexr-devel >= 3
 
 %description devel
 This package contain the devel files for CTL.
@@ -112,12 +114,12 @@ CTL interpreter.
 %cmake_install
 
 %ldconfig_scriptlets -n libIlmCtl%{so_ver}
-%ldconfig_scriptlets -n libIlmCtlMath%{so_ver} 
+%ldconfig_scriptlets -n libIlmCtlMath%{so_ver}
 %ldconfig_scriptlets -n libIlmCtlSimd%{so_ver}
 %ldconfig_scriptlets -n libIlmImfCtl%{so_ver}
 
 %files
-%license LICENSE 
+%license LICENSE
 %doc CHANGELOG README.md
 %{_bindir}/ctlrender
 %{_bindir}/exr_ctl_exr

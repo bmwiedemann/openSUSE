@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 18 08:06:19 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add py313.patch to adapt Cython0 to Python 3.13
+
+-------------------------------------------------------------------
 Sun Feb  4 15:27:06 UTC 2024 - Frank Schreiner <FSchreiner@suse.com>
 
 - update to version 0.29.37

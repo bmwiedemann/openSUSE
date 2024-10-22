@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:40:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241019
+  + fixes for compiler warnings/cppcheck.
+  + build-fixes for DJGPP configuration (patches by Stas Sergeev)
+
+-------------------------------------------------------------------
+Mon Oct  7 07:07:40 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241006
+  + fixes for compiler warnings/cppcheck.
+  + use xterm+alt+title in wezterm -TD
+
+-------------------------------------------------------------------
 Mon Sep 30 06:48:02 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240928

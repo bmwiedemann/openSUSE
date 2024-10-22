@@ -36,7 +36,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -102,6 +102,8 @@ BuildRequires:  libboost_python3-devel
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  libboost_python3-devel
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 15 08:05:35 UTC 2024 - kskarthik@disroot.org
+
+- Update to version 0.2.68:
+  * chore: bump VERSION to 0.2.68
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.1 to 1.7.3 (#2477)
+  * build(deps): bump github.com/creack/pty from 1.1.21 to 1.1.23 (#2468)
+  * run_context: add GITHUB_RUN_ATTEMPT (#2458)
+  * Fix install sh usage (#2454)
+  * bug/issue #2448 - manage special bash options when no shell is defined (#2449)
+  * feat: generate a manual page automatically with cobra/doc (#2352)
+  * chore: bump VERSION to 0.2.67
+  * fix: schema validation for job if functions (#2446)
+  * build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0 (#2442)
+  * fix: artifact v4 upload above 8MB (#2402)
+  * chore: bump VERSION to 0.2.66
+  * build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0 (#2421)
+  * build(deps): bump megalinter/megalinter from 7.13.0 to 8.0.0 (#2436)
+  * build(deps): bump dario.cat/mergo from 1.0.0 to 1.0.1 (#2430)
+  * fix GOOS parsing to match expected GHA RUNNER_OS values (#2422)
+  * feat: Validate GitHub Actions schema (#2416)
+  * chore: bump VERSION to 0.2.65
+  * remove double negation in --help (#2405)
+  * Bump mergo to v1.0.0 with new module URL (#2403)
+  * build(deps): bump github.com/timshannon/bolthold to v0.0.0-20240314194003-30aac6950928 (#2248)
+  * Fix #2363. Add /pre- and /post-entrypoint handling (#2394)
+  * build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0 (#2387)
+  * build(deps): bump github.com/adrg/xdg from 0.4.0 to 0.5.0 (#2398)
+  * fix: docker stub and add a test for this (#2355)
+  * fix: changed location of actrc in info message (#2373)
+  * fix: make node tool non volatile (#2372)
+  * fix: add missing service container health check (#2354)
+  * build(deps): bump megalinter/megalinter from 7.11.1 to 7.13.0 (#2389)
+
+-------------------------------------------------------------------
 Tue Jul 02 11:23:19 UTC 2024 - kskarthik@disroot.org
 
 - Update to version 0.2.64:

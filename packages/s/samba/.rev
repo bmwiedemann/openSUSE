@@ -3796,4 +3796,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1206308</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>42278b698edfce55454646c53d3d27a0</srcmd5>
+    <version>4.21.1+git.367.e1da597d86e</version>
+    <time>1729601475</time>
+    <user>anag+factory</user>
+    <comment>update to samba-4.21.1</comment>
+    <requestid>1216699</requestid>
+  </revision>
 </revisionlist>

@@ -98,6 +98,7 @@ rtl8192ce:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8192cu:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8192se:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8192de:	realtek		LICENCE.rtlwifi_firmware.txt
+rtl8192du:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8723e:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8723be:	realtek		LICENCE.rtlwifi_firmware.txt
 rtl8723de:	realtek		LICENCE.rtlwifi_firmware.txt
@@ -175,6 +176,7 @@ mt7922:		mediatek	LICENCE.mediatek
 mt7925:		mediatek	LICENCE.mediatek
 mt7988:		mediatek	LICENCE.mediatek
 mt7996e:	mediatek	LICENCE.mediatek
+mtk_wed:	mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
 venus:		media		LICENSE.qcom qcom/NOTICE.txt

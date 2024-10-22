@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-connector-python
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mysql-connector-python
-Version:        8.2.0
+Version:        9.1.0
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -27,10 +27,12 @@ URL:            http://dev.mysql.com/doc/connector-python/en/index.html
 Source:         https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-%{version}-src.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  mariadb
 BuildRequires:  python-rpm-macros
 Requires:       python-dnspython
 Requires:       python-protobuf
@@ -40,15 +42,23 @@ Requires:       python-protobuf
 MySQL driver written in Python which does not depend on MySQL C client libraries and implements the DB API v2.0 specification (PEP-249).
 
 %prep
-%setup -q -n mysql-connector-python-%{version}-src
+%autosetup -p1 -n mysql-connector-python-%{version}-src
 
 %build
+pushd mysql-connector-python
 %python_build
+popd
+pushd mysqlx-connector-python
+%python_build
+popd
 
 %install
-# bug in setuptools prevents proper c lib installation
-# when using python_install so use custom python_exec instead
+pushd mysql-connector-python
 %python_install
+popd
+pushd mysqlx-connector-python
+%python_install
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 #FIXME(toabctl): Reenable testuite

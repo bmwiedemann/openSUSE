@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 12:10:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ship rcFOO symlinks for CODE 16 (PED-266).
+- No longer use update alternatives on CODE 16: there are no
+  alternatives for vncviewer present.
+
+-------------------------------------------------------------------
 Thu Sep 26 20:58:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

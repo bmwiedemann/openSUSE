@@ -25,6 +25,8 @@
 %else
 %define use_firewalld 0
 %endif
+%define use_update_alternative 0%{?suse_version} >= 1315 && 0%{?suse_version} < 1600
+%define with_rc_service_symlink 0%{?suse_version} && 0%{?suse_version} < 1600
 %if 0%{?suse_version} < 1550
 %define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
@@ -134,7 +136,7 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.14
 BuildRequires:  pkgconfig(xproto)  >= 7.0.17
 BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1315
+%if %use_update_alternative
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
@@ -293,8 +295,10 @@ popd
 
 %make_install
 
+%if %use_update_alternative
 mv %{buildroot}%{_bindir}/vncviewer %{buildroot}%{_bindir}/vncviewer-tigervnc
 mv %{buildroot}%{_datadir}/man/man1/vncviewer.1 %{buildroot}%{_datadir}/man/man1/vncviewer-tigervnc.1
+%endif
 
 pushd unix/xserver
 %make_install
@@ -325,14 +329,16 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/vnc
 mv %{buildroot}%{_sysconfdir}/pam.d/tigervnc %{buildroot}%{_pam_vendordir}
 %endif
 install -D -m 644 %{SOURCE8} %{buildroot}%{_datadir}/vnc/classes
-%if 0%{?suse_version} >= 1315
+%if %use_update_alternative
 ln -s -f %{_sysconfdir}/alternatives/vncviewer %{buildroot}%{_bindir}/vncviewer
 ln -s -f %{_sysconfdir}/alternatives/vncviewer.1.gz %{buildroot}%{_mandir}/man1/vncviewer.1.gz
 %endif
 
+%if %with_rc_service_symlink
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxvnc
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxvnc-novnc
+%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/vnc
 
@@ -354,15 +360,15 @@ rm -rf %{buildroot}%{_datadir}/doc/tigervnc*
 %find_lang '%{name}'
 %python3_fix_shebang
 
+%if %use_update_alternative
 %post
-%if 0%{?suse_version} >= 1315
 %_sbindir/update-alternatives \
     --install %{_bindir}/vncviewer vncviewer %{_bindir}/vncviewer-tigervnc 20 \
     --slave %{_mandir}/man1/vncviewer.1.gz  vncviewer.1.gz  %{_mandir}/man1/vncviewer-tigervnc.1.gz
 %endif
 
+%if %use_update_alternative
 %postun
-%if 0%{?suse_version} >= 1315
 if [ "$1" = 0 ] ; then
    "%{_sbindir}/update-alternatives" --remove vncviewer %{_bindir}/vncviewer-tigervnc
 fi
@@ -426,17 +432,19 @@ fi
 %postun -n libXvnc1 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%ghost %{_bindir}/vncviewer
-%{_bindir}/vncviewer-tigervnc
 %license LICENCE.TXT
 %doc README.rst
+%if %use_update_alternative
+%ghost %{_bindir}/vncviewer
+%{_bindir}/vncviewer-tigervnc
 %ghost %{_mandir}/man1/vncviewer.1.gz
 %{_mandir}/man1/vncviewer-tigervnc.1%{?ext_man}
-%if 0%{?suse_version} >= 1315
 %ghost %{_sysconfdir}/alternatives/vncviewer
 %ghost %{_sysconfdir}/alternatives/vncviewer.1.gz
+%else
+%{_bindir}/vncviewer
+%{_mandir}/man1/vncviewer.1%{?ext_man}
 %endif
-
 %dir %{_datadir}/icons/hicolor/16x16
 %dir %{_datadir}/icons/hicolor/16x16/apps
 %dir %{_datadir}/icons/hicolor/22x22
@@ -488,7 +496,9 @@ fi
 %{_unitdir}/xvnc.socket
 %{_unitdir}/xvnc.target
 %{_sysusersdir}/vnc.conf
+%if %with_rc_service_symlink
 %{_sbindir}/rcxvnc
+%endif
 
 %dir %{_sysconfdir}/tigervnc
 %config(noreplace) %{_sysconfdir}/tigervnc/vncserver*
@@ -537,7 +547,9 @@ fi
 %files -n xorg-x11-Xvnc-novnc
 %{_unitdir}/xvnc-novnc.service
 %{_unitdir}/xvnc-novnc.socket
+%if %with_rc_service_symlink
 %{_sbindir}/rcxvnc-novnc
+%endif
 
 %files -n xorg-x11-Xvnc-java
 %doc java/com/tigervnc/vncviewer/README

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:42:47 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.3
+  New Features:
+  * Log query response status to the query log.
+  * Log a query response summary using the new responses category.
+    Logging can be controlled via the responselog option and via
+    rndc responselog.
+  * Added WALLET type.
+  * Add the new record type WALLET (262). This provides a mapping
+    from a domain name to a cryptographic currency wallet. Multiple
+    mappings can exist if multiple records exist.
+
+  Feature Changes:
+  * Set logging category for notify/xfer-in-related messages.
+  * Some notify and xfer-in-related log messages were logged at the
+    “general” category level instead of their own category. This
+    has been fixed.
+  * Allow IXFR-to-AXFR fallback on DNS_R_TOOMANYRECORDS.
+  * This change allows fallback from an IXFR failure to AXFR when
+    the reason is DNS_R_TOOMANYRECORDS.
+
+  Bug Fixes:
+  * Fix a statistics channel counter bug when “forward only” zones
+    are used.
+  * When resolving a zone with a “forward only” policy, and finding
+    out that all the forwarders were marked as “bad”, the
+    “ServerQuota” counter of the statistics channel was incorrectly
+    increased. This has been fixed.
+  * Fix a bug in the static-stub implementation.
+  * Static-stub addresses and addresses from other sources were
+    being mixed together, resulting in static-stub queries going to
+    addresses not specified in the configuration, or alternatively,
+    static-stub addresses being used instead of the correct server
+    addresses.
+  * Don’t allow statistics-channels if libxml2 and libjson-c are
+    not configured.
+  * When BIND 9 is not configured with the libxml2 and libjson-c
+    libraries, the use of the statistics-channels option is a fatal
+    error.
+  * Separate DNSSEC validation from long-running tasks.
+  * Split CPU-intensive and long-running tasks into separate
+    threadpools in a way that the long-running tasks - like RPZ,
+    catalog zone processing, or zone file operations - don’t block
+    CPU-intensive operations like DNSSEC validations.
+  * Fix an assertion failure when processing access control lists.
+  * The named process could terminate unexpectedly when processing
+    ACLs. This has been fixed.
+  * Fix a bug in Offline KSK using a ZSK with an unlimited
+    lifetime.
+  * If the ZSK had an unlimited lifetime, the timing metadata
+    Inactive and Delete could not be found and were treated as an
+    error, preventing the zone from being signed. This has been
+    fixed.
+  * Limit the outgoing UDP send queue size.
+  * If the operating system UDP queue got full and the outgoing UDP
+    sending started to be delayed, BIND 9 could exhibit memory
+    spikes as it tried to enqueue all the outgoing UDP messages. It
+    now tries to deliver the outgoing UDP messages synchronously;
+    if that fails, it drops the outgoing DNS message that would get
+    queued up and then timeout on the client side.
+  * Do not set SO_INCOMING_CPU.
+  * Remove the SO_INCOMING_CPU setting as kernel scheduling
+    performs better without constraints.
+  * Fix the rndc dumpdb command’s error reporting.
+  * The rndc dumpdb command was not reporting errors that occurred
+    when named started up the database dump process. This has been
+    fixed.
+  * Fix long-running incoming transfers.
+  * Incoming transfers that took longer than 30 seconds would stop
+    reading from the TCP stream and the incoming transfer would be
+    indefinitely stuck, causing BIND 9 to hang during shutdown.
+  * This has been fixed, and the max-transfer-time-in and
+    max-transfer-idle-in timeouts are now honored.
+  * Fix an assertion failure when receiving DNS responses over TCP.
+  * When matching the received Query ID in the TCP connection, an
+    invalid Query ID could cause an assertion failure. This has
+    been fixed.
+
+-------------------------------------------------------------------
 Thu Sep 19 08:57:57 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.20.2

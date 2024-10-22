@@ -169,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.21.0+git.363.84c94ca948f
+Version:        4.21.1+git.367.e1da597d86e
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -187,6 +187,7 @@ Requires:       coreutils
 Requires:       system-user-nobody
 Requires:       %{fillup_prereq}
 Requires:       samba-client >= %{version}
+Requires:       samba-dcerpc = %{version}
 Requires:       sysuser-shadow
 Provides:       group(ntadmin)
 
@@ -463,6 +464,7 @@ Recommends:     logrotate
 Requires:       coreutils
 Requires:       samba-client = %{version}
 Requires:       samba-winbind-libs = %{version}
+Requires:       samba-dcerpc = %{version}
 Recommends:     samba-gpupdate = %{version}
 Requires:       sysuser-shadow
 
@@ -483,6 +485,14 @@ Requires(postun):/sbin/ldconfig
 
 %description winbind-libs
 This package contains the libraries required by the Winbind daemon.
+
+%package dcerpc
+Summary:	Samba dcerpc service binaries
+License:        GPL-3.0-or-later
+Group:          System/Daemons
+
+%description dcerpc
+This packages contains the binaries for the DCE/RPC endpoint servers.
 
 %package -n ctdb
 Summary:        Clustered TDB
@@ -1190,16 +1200,8 @@ exit 0
 %{_sbindir}/rcnmb
 %{_sbindir}/rcsmb
 %{_sbindir}/smbd
-%{_libdir}/samba/rpcd_classic
-%{_libdir}/samba/rpcd_epmapper
-%{_libdir}/samba/rpcd_fsrvp
-%{_libdir}/samba/rpcd_lsad
-%{_libdir}/samba/rpcd_mdssvc
-%{_libdir}/samba/rpcd_spoolss
-%{_libdir}/samba/rpcd_winreg
-%{_libdir}/samba/rpcd_witness
+
 %{_libdir}/samba/samba-bgqd
-%{_libdir}/samba/samba-dcerpcd
 %attr(0644,root,root) %{_datadir}/omc/svcinfo.d/nmb.xml
 %attr(0644,root,root) %{_datadir}/omc/svcinfo.d/smb.xml
 %dir %{_datadir}/samba
@@ -1210,7 +1212,6 @@ exit 0
 %{_mandir}/man8/nmbd.8.*
 %{_mandir}/man8/smbd.8.*
 %{_mandir}/man8/samba-bgqd.8.*
-%{_mandir}/man8/samba-dcerpcd.8.*
 %{_fillupdir}/sysconfig.samba
 %{_sysusersdir}/samba.conf
 
@@ -1661,6 +1662,19 @@ exit 0
 %{_libdir}/samba/krb5/winbind_krb5_localauth.so
 %{_mandir}/man8/winbind_krb5_localauth.8.*
 %endif
+
+%files dcerpc
+%defattr(-,root,root)
+%{_libdir}/samba/rpcd_classic
+%{_libdir}/samba/rpcd_epmapper
+%{_libdir}/samba/rpcd_fsrvp
+%{_libdir}/samba/rpcd_lsad
+%{_libdir}/samba/rpcd_mdssvc
+%{_libdir}/samba/rpcd_spoolss
+%{_libdir}/samba/rpcd_winreg
+%{_libdir}/samba/rpcd_witness
+%{_libdir}/samba/samba-dcerpcd
+%{_mandir}/man8/samba-dcerpcd.8.*
 
 %files winbind -f filelist-samba-winbind
 %defattr(-,root,root)

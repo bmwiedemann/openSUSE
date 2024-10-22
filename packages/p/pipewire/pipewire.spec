@@ -78,6 +78,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+Patch1:         0001-bluez5-fix-crash-with-broadcast-sinks.patch
+Patch2:         0002-jack-actually-clear-the-mix-io.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -432,6 +434,7 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch -P 0 -p1
 %endif
+%autopatch -m 1 -p1
 
 %build
 %if 0%{?suse_version} <= 1500

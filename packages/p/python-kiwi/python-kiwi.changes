@@ -1,4 +1,204 @@
 -------------------------------------------------------------------
+Mon Oct 21 15:01:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.14 → 10.1.15
+
+-------------------------------------------------------------------
+Thu Oct 17 21:01:46 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed sphinx_rtd_theme setup
+
+  Delete obsolete display_version attribute
+
+-------------------------------------------------------------------
+Thu Oct 17 20:58:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Evaluate eficsm everywhere
+
+  Fixed _supports_bios_modules() to take an eventually
+  provided eficsm setup into account. The grub config still
+  searches for i386 grub modules even if eficsm="false"
+  is set.
+
+-------------------------------------------------------------------
+Thu Oct 17 20:53:40 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed debian bootstrap script calls
+
+  Run scripts as commands with their native shebang and not
+  through bash. Not all debian package scripts uses bash, some
+  of them uses sh which can be a link to dash or other
+  interpreters. This Fixes #2660
+
+-------------------------------------------------------------------
+Thu Oct 17 18:30:36 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW integration tests
+
+  The package x86info was dropped from TW
+
+-------------------------------------------------------------------
+Wed Oct 16 16:50:19 CEST 2024 - Dan Čermák <dcermak@suse.com>
+
+- Turn DiskFormat into an ordinary class
+
+  - it does not need to be an abstract base class
+  - use f-strings where applicable instead of format()
+  - change return type of _custom_args_for_format from list to tuple
+
+-------------------------------------------------------------------
+Tue Oct 15 00:28:58 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new containers section
+
+  Allow to specify references to OCI containers in the
+  image description like in the following example:
+
+  <containers source="registry.suse.com" backend="podman">
+  <container name="some" tag="some" path="/some/path"/>
+  </containers>
+
+  During the kiwi process the containers are fetched into a
+  temporary location and a systemd service is configured to
+  one time load the containers into the local registry at
+  first boot of the system. This Fixes #2663
+
+-------------------------------------------------------------------
+Fri Oct 04 16:21:36 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.13 → 10.1.14
+
+-------------------------------------------------------------------
+Fri Oct 04 11:14:38 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Install usrmerge for Debian integration test"
+
+  This reverts commit 95ac861741f14c4f35611c16328384c18e53dcfb.
+  Solution needs to be provided in code
+
+-------------------------------------------------------------------
+Fri Oct 04 10:10:10 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Install usrmerge for Debian integration test
+
+-------------------------------------------------------------------
+Mon Sep 30 12:10:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support older apt versions for bootstrap
+
+  This Fixes #2660
+
+-------------------------------------------------------------------
+Fri Sep 27 14:38:04 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Run package scripts in apt bootstrap phase
+
+  The bootstrap procedure based on apt only runs a manual
+  collection of package scripts. This commit refactors the
+  code that unpacks the bootstrap packages to a python
+  implementation and adds a method to run the bootstrap
+  scripts from all packages resolved by apt.
+
+-------------------------------------------------------------------
+Thu Sep 26 14:12:25 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.12 → 10.1.13
+
+-------------------------------------------------------------------
+Thu Sep 26 13:30:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bundle extension for vagrant type
+
+  When bundling result files that uses a vagrant type,
+  kiwi creates them with the extension .vagrant.virtualbox.box
+  or .vagrant.libvirt.box. The bundler code renames them using
+  only the .box suffix which is too short as it is missing
+  the subformat information. This commit fixes it and keeps
+  this information in the result bundle file name.
+  This Fixes #2656
+
+-------------------------------------------------------------------
+Thu Sep 26 13:28:12 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use simple quotas (squota) for volumes
+
+-------------------------------------------------------------------
+Wed Sep 25 10:31:51 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add quota attribute to volume section
+
+  Allow to set quota per volume for the btrfs filesystem
+  This Fixes #2651
+
+-------------------------------------------------------------------
+Tue Sep 24 22:01:37 CEST 2024 - Alyssa Rosenzweig <alyssa@rosenzweig.io>
+
+- Fix globbing with exclude with regex
+
+  This fixes a collection of bugs when producing erofs images.
+
+  On one hand, this ensures that an exclude of `/sys` doesn't accidentally
+  match `/lib/libsystemd.so`, only `/sys/whatever`.
+
+  On the other hand, this ensures that `/dev/*` does match `/dev/vda` and
+  not just `/dev///////////`.
+
+  This fixes libsystemd.so getting dropped in Kiwi-built FEX images.
+
+  Signed-off-by: Alyssa Rosenzweig <alyssa@rosenzweig.io>
+
+-------------------------------------------------------------------
+Tue Sep 24 20:28:47 CEST 2024 - Alyssa Rosenzweig <alyssa@rosenzweig.io>
+
+- Honour custom exclude for filesystem builds
+
+  All other call sites honour the custom exclude file, it's just this one
+  that needs to be fixed. This unblocks use of Kiwi for generating FEX
+  rootfs.
+
+  Closes: #2652
+  Signed-off-by: Alyssa Rosenzweig <alyssa@rosenzweig.io>
+
+-------------------------------------------------------------------
+Mon Sep 23 10:05:12 CEST 2024 - Isaac True <isaac@is.having.coffee>
+
+- test: storage: update clone_device tests with new block size
+
+  Signed-off-by: Isaac True <isaac@is.having.coffee>
+
+-------------------------------------------------------------------
+Fri Sep 20 16:08:01 CEST 2024 - Isaac True <isaac@is.having.coffee>
+
+- storage: clone_device: increase dd block size
+
+  Increasing the block size used for dd reduces the time needed to clone a
+  device.
+
+  Signed-off-by: Isaac True <isaac@is.having.coffee>
+
+-------------------------------------------------------------------
+Tue Sep 17 15:58:27 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.11 → 10.1.12
+
+-------------------------------------------------------------------
+Tue Sep 17 15:07:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing erofscompression validation
+
+  In the filesystem builder I forgot to evaluate the
+  erofscompression attribute. This Fixes #2647
+
+-------------------------------------------------------------------
+Mon Sep 16 11:11:14 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Include PI and comments in XSL stylesheets
+
+  So far comments and processing instructions (PI) were
+  ignored when applying the XSL stylesheets. This commit
+  updates all stylesheets to take them into account
+
+-------------------------------------------------------------------
 Fri Sep 13 16:33:19 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.10 → 10.1.11

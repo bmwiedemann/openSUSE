@@ -1,7 +1,7 @@
 #
 # spec file for package udunits2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ Summary:        A library for manipulating units of physical quantities
 License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            https://www.unidata.ucar.edu/software/udunits/
-Source0:        ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-%{version}.tar.gz
+Source0:        https://downloads.unidata.ucar.edu/udunits/%{version}/udunits-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  info
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
+BuildRequires:  texlive-latex
+BuildRequires:  texinfo-tex
 BuildRequires:  CUnit-devel
 BuildRequires:  expat-devel
 %define ext_info .gz
@@ -64,22 +66,22 @@ Group:          Development/Libraries/C and C++
 Summary:        Headers and development libraries for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
-Conflicts:      udunits < %{version}
+Conflicts:      udunits < %{version}-%{release}
 
 %package -n udunits-compat
 Summary:        Udunits2 compatibility layer for udunits v1 API
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
-Obsoletes:      udunits < %{version}
-Provides:       udunits = %{version}
+Obsoletes:      udunits < %{version}-%{release}
+Provides:       udunits = %{version}-%{release}
 
 %package -n udunits-compat-devel
 Summary:        Udunits2 compatibility layer for udunits v1 API
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}-%{release}
 Requires:       udunits-compat = %{version}-%{release}
-Obsoletes:      udunits-devel < %{version}
-Provides:       udunits-devel = %{version}
+Obsoletes:      udunits-devel < %{version}-%{release}
+Provides:       udunits-devel = %{version}-%{release}
 
 %description -n lib%{name}-%{soname}
 This package contains the runtime libraries for %{name}.
@@ -97,7 +99,7 @@ This package contains the files needed for compiling programs using
 the udunits2 compatibility library.
 
 %prep
-%setup -q -n udunits-%{version}
+%autosetup -n udunits-%{version}
 
 %build
 %configure --docdir=%{_docdir}/%{name} --disable-static

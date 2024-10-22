@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 21 08:23:33 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.2:
+  * fix: only import mpris_server with the feature
+  * docs: fix grammar mistake
+  * fix(mpris): fix initial playback status when there's a new track
+  * fix(mpris): handle edge case when paused
+
+-------------------------------------------------------------------
 Wed Oct 16 13:04:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.5.0:

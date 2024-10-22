@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Oct 16 13:31:13 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.5.1.
+  * Added calculations in the search box.
+- Changes from version 0.5.0:
+  * updated gotk3 version; #127 by @mattkae;
+  * updated other dependencies;
+  * added support for riverctl spawn (-wm flag);
+  * fixed obsolete code in the hyprctl function;
+  * fixed mapping output->monitor (a workaround to a GTK3 bug).
+- Changes from version 0.5.0:
+  * Added the -pbuseicontheme flag; closes #122.
+- Changes from version 0.4.8:
+  * Added -open and -close flags and signals; @121 by @rrrrrm;
+  * dependencies updated, except for gotk3 0.6.4, that refuses to build.
+
+-------------------------------------------------------------------
+Fri Apr 19 15:41:42 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.4.7.
+  Changelog:
+  * The /usr/share/nwg-drawer path un-hardcoded, will be searched in XDG_DATA_DIRS from now on; closes #115;
+  * if power bar present, pressing the Tab key will move focus to its first button;
+  * go 1.21 -> 1.22;
+  * golang.org/x/sys v0.16.0 -> v0.17.0.
+
+-------------------------------------------------------------------
+Wed Nov  8 16:36:39 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.4.0.
+  * added -wm sway | hyprland argument; if set, programs will be launched via either swaymsg exec <command> or hyprctl dispatch exec <command>; #101, #102 by @gouvinb
+  * golang and libraries versions updated
+- Update to version 0.3.8.
+  * added -k argument to set GTK layer shell Keyboard interactivity to 'on-demand' mode #95 by @trinitronx
+  * added -ft argument to Force Theme for libadwaita/GTK4 apps, by adding 'GTK_THEME=' environment variable #96
+
+-------------------------------------------------------------------
+Mon May 15 23:56:14 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Create initial package with version 0.3.8.

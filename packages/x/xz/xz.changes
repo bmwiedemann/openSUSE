@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct  7 11:48:07 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.6.3:
+  * liblzma:
+    - Fix x86-64 inline assembly compatibility with GNU Binutils
+      older than 2.27.
+    - Fix the build with GCC 4.2 on OpenBSD/sparc64.
+  * xzdec: Display an error instead of failing silently if the
+    unsupported option -M is specified.
+  * lzmainfo: Fix integer overflows when rounding the dictionary and
+    uncompressed sizes to the nearest mebibyte.
+  * Autotools-based build:
+    - Fix feature checks with link-time optimization (-flto).
+    - Solaris: Fix a compatibility issue in version.sh. It matters
+      if one wants to regenerate configure by running autoconf.
+  * CMake:
+    - Use paths relative to ${prefix} in liblzma.pc when possible.
+      This is done only with CMake >= 3.20.
+    - Prefer a C11 compiler over a C99 compiler but accept both.
+    - Link Threads::Threads against liblzma using PRIVATE so that
+      -pthread and such flags won't unnecessarily get included in
+      the usage requirements of shared liblzma. That is,
+      target_link_libraries(foo PRIVATE liblzma::liblzma) no
+      longer adds -pthread if using POSIX threads and linking
+      against shared liblzma. The threading flags are still added
+      if linking against static liblzma.
+  * Updated translations: Catalan, Chinese (simplified), and
+    Brazilian Portuguese.
+
+-------------------------------------------------------------------
 Thu May 30 06:08:18 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.6.2:

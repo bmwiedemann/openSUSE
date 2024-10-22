@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 19 16:44:58 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024.10.16:
+  * Improvements to Python, Boost, and other macros
+  * Fixes to handling of compiler flags
+  * Add C++23 support
+
+-------------------------------------------------------------------
 Tue Feb 21 07:02:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2023.02.20:

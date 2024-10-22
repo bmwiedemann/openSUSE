@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 19 15:40:54 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.9.0:
+  * Ensure reported Time is walltime by removing spurious scaling by threads (#1836)
+  * Update clang-format-lint-action (#1829)
+  * Cache upd (#1830)
+  * Move ProfilerManager Start/Stop routines closer to actual benchmark #1807 (#1818)
+  * Bump nanobind-bazel to v2.1.0, add stubgen target (#1824)
+  * Update nanobind into benchmark_deps.bzl (#1826)
+  * Update libs into  .pre-commit-config.yaml (#1825)
+  * Use log2 now that NDK requires at least API 21 which includes it. (#1822)
+  * Suppress invalid-offsetof warning for clang (#1821)
+  * Update benchmark Python bindings for nanobind 2.0, and update to nanobind 2.0. (#1817)
+
+-------------------------------------------------------------------
 Tue Jul 30 09:23:50 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.8.5:

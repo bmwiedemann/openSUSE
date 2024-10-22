@@ -31,6 +31,7 @@ URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
 Patch0:         0001-Properly-validate-cache-IDs-and-sources.patch
+Patch1:         0002-Use-securejoin.SecureJoin-when-forming-userns-paths.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel

@@ -79,7 +79,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.46.1
+Version:        2.46.2
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -94,8 +94,6 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM bug281492.patch mgorse@suse.com -- fix crash in AccessibilityObjectAtspi::textAttributes.
 Patch1:         bug281492.patch
-# PATCH-FIX-UPSTREAM bug281495.patch mgorse@suse.com -- Fix crash in ProcessLauncher socket monitor callback.
-Patch2:         bug281495.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

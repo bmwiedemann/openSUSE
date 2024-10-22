@@ -2399,4 +2399,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205457</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>69f9b010ee12bfd0fbe782bd629a72a6</srcmd5>
+    <version>47.1</version>
+    <time>1729601455</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216802</requestid>
+  </revision>
 </revisionlist>

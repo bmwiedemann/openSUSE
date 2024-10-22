@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- Replace tests-fail-after-epochalypse.patch (code introduced in original patch
+  not fully tested)
+
+-------------------------------------------------------------------
 Tue Mar 26 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 
 - fix for tests failing after Epochalypse - add tests-fail-after-epochalypse.patch

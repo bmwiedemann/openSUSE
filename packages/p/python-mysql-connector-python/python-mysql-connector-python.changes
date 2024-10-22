@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Oct 21 12:28:45 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 9.1.0 (bsc#1231740, CVE-2024-21272)
+  - WL#16452: Bundle all installable authentication plugins when building the C-extension
+  - WL#16444: Drop build support for DEB packages
+  - WL#16442: Upgrade gssapi version to 1.8.3
+  - WL#16411: Improve wheel metadata information for Classic and XDevAPI connectors
+  - WL#16341: OpenID Connect (Oauth2 - JWT) Authentication Support
+  - WL#16307: Remove Python 3.8 support
+  - WL#16306: Add support for Python 3.13
+  - BUG#37055435: Connection fails during the TLS negotiation when specifying TLSv1.3 ciphers
+  - BUG#37013057: mysql-connector-python Parameterized query SQL injection
+  - BUG#36765200: python mysql connector 8.3.0 raise %-.100s:%u when input a wrong host
+  - BUG#36577957: Update charset/collation description indicate this is 16 bits
+- 9.0.0:
+  - WL#16350: Update dnspython version
+  - WL#16318: Deprecate Cursors Prepared Raw and Named Tuple
+  - WL#16284: Update the Python Protobuf version
+  - WL#16283: Remove OpenTelemetry Bundled Installation
+  - BUG#36664998: Packets out of order error is raised while changing user in aio
+  - BUG#36611371: Update dnspython required versions to allow latest 2.6.1
+  - BUG#36570707: Collation set on connect using C-Extension is ignored
+  - BUG#36476195: Incorrect escaping in pure Python mode if sql_mode includes NO_BACKSLASH_ESCAPES
+  - BUG#36289767: MySQLCursorBufferedRaw does not skip conversion
+- 8.4.0
+  - WL#16203: GPL License Exception Update
+  - WL#16173: Update allowed cipher and cipher-suite lists
+  - WL#16164: Implement support for new vector data type
+  - WL#16127: Remove the FIDO authentication mechanism
+  - WL#16053: Support GSSAPI/Kerberos authentication on Windows using authentication_ldap_sasl_client plug-in for C-extension
+  - BUG#36227964: Improve OpenTelemetry span coverage
+  - BUG#36167880: Massive memory leak mysqlx native Protobuf adding to collection
+- 8.3.0
+  - WL#16015: Remove use of removed COM_ commands
+  - WL#15985: Support GSSAPI/Kerberos authentication on Windows using authentication_ldap_sasl_client plug-in for Pure Python
+  - WL#15983: Stop using mysql_ssl_set api
+  - WL#15982: Remove use of mysql_shutdown
+  - WL#15950: Support query parameters for prepared statements
+  - WL#15942: Improve type hints and standardize byte type handling
+  - WL#15836: Split mysql and mysqlx into different packages
+  - WL#15523: Support Python DB API asynchronous execution
+  - BUG#35912790: Binary strings are converted when using prepared statements
+  - BUG#35832148: Fix Django timezone.utc deprecation warning
+  - BUG#35710145: Bad MySQLCursor.statement and result when query text contains code comments
+  - BUG#21390859: STATEMENTS GET OUT OF SYNCH WITH RESULT SETS
+
+-------------------------------------------------------------------
 Wed Nov  1 12:01:18 UTC 2023 - Enno Gotthold <egotthold@suse.com>
 
 - Update to version 8.2.0

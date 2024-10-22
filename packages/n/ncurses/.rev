@@ -4766,4 +4766,18 @@
     Bierma).</comment>
     <requestid>1204742</requestid>
   </revision>
+  <revision rev="274" vrev="47">
+    <srcmd5>35b1f790d0084d04d4a9b0a8929dea5e</srcmd5>
+    <version>unknown</version>
+    <time>1729601498</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20241019
+  + fixes for compiler warnings/cppcheck.
+  + build-fixes for DJGPP configuration (patches by Stas Sergeev)
+
+- Add ncurses patch 20241006
+  + fixes for compiler warnings/cppcheck.
+  + use xterm+alt+title in wezterm -TD</comment>
+    <requestid>1216639</requestid>
+  </revision>
 </revisionlist>

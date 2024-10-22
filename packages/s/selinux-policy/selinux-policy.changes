@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 07:23:25 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241021:
+  * rsync: add rsync_exec_commands boolean and enable it by default (bsc#1231494)
+  * Allow snapperd to execute systemctl (bsc#1231489)
+
+-------------------------------------------------------------------
 Fri Oct 18 12:34:06 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241018:

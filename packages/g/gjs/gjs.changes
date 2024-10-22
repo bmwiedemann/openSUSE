@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 05:27:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.82.1:
+  + Fixed gnome-shell crash when switching user after upgrade from
+    Fedora 40 to Fedora 41 
+
+-------------------------------------------------------------------
 Tue Sep 17 06:17:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.82.0:

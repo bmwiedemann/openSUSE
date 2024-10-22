@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 19 11:09:09 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.11.0
+  - mkfs: break up the rest of the rtinit() function
+  - mkfs: clean up the rtinit() function
+  - xfs_repair: use library functions for orphanage creation
+  - xfs_repair: use library functions to reset root/rbm/rsum inodes
+  - xfs_repair: don't crash in get_inode_parent
+  - xfs_repair: fix exchrange upgrade
+  - xfs_db: port the iunlink command to use the libxfs iunlink function
+  - xfs_db/mdrestore/repair: don't use the incore struct xfs_sb for offsets into struct xfs_dsb
+  - xfs_db/mkfs/xfs_repair: port to use XFS_ICREATE_UNLINKABLE
+  - xfs_db: port the unlink command to use libxfs_droplink
+  - libxfs: implement get_random_u32
+  - libxfs: remove libxfs_dir_ialloc
+  - libxfs: backport inode init code from the kernel
+  - libxfs: pack icreate initialization parameters into a separate structure
+  - xfs_io: add RWF_ATOMIC support to pwrite
+  - libfrog: emulate deprecated attrlist functionality in libattr
+  - misc: clean up code around attr_list_by_handle calls
+  - fsck.xfs: fix fsck.xfs run by different shells when fsck.mode=force is set
+  - libxfs: provide a memfd_create() wrapper if not present in libc
+  - xfs_io: Fix fscrypt macros ordering
+  - man: Update unit for fsx_extsize and fsx_cowextsize
+  - xfs_db: release ip resource before returning from get_next_unlinked()
+  - libxfs: kernel sync
+
+ -------------------------------------------------------------------
 Wed Sep  4 11:33:31 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.10.1

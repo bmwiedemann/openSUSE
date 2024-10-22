@@ -286,4 +286,14 @@
 </comment>
     <requestid>1156572</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>889b1d789ab62b981b3429e604a4410f</srcmd5>
+    <version>2.470.0</version>
+    <time>1729601466</time>
+    <user>anag+factory</user>
+    <comment>- Get package to show provides perl(XML::Parser::Expat) and other submodules
+
+- Newer revision with my .spec comments cleaned up. (forwarded request 1208232 from joelgb)</comment>
+    <requestid>1216645</requestid>
+  </revision>
 </revisionlist>

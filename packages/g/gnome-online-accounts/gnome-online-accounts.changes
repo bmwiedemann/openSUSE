@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 20 11:49:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.52.1:
+  + Bugs fixed:
+    - goakerberosprovider: don't assume all errors are auth errors
+    - goaoauthprovider: fix expected NULL GError
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 16 20:02:40 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.0:

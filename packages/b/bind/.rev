@@ -2421,4 +2421,12 @@ New Features
     <comment>Update to release 9.20.2</comment>
     <requestid>1201972</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>eb07042c402e055efee691bdab7bd1ae</srcmd5>
+    <version>9.20.3</version>
+    <time>1729601468</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 9.20.3</comment>
+    <requestid>1216662</requestid>
+  </revision>
 </revisionlist>

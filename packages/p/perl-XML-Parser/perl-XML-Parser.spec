@@ -32,6 +32,12 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(LWP::UserAgent)
 Requires:       perl(LWP::UserAgent)
 Provides:       perl(XML::Parser) = %{version}
+Provides:       perl(XML::Parser::Expat)
+Provides:       perl(XML::Parser::Style::Debug)
+Provides:       perl(XML::Parser::Style::Objects)
+Provides:       perl(XML::Parser::Style::Stream)
+Provides:       perl(XML::Parser::Style::Subs)
+Provides:       perl(XML::Parser::Style::Tree)
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN

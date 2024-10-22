@@ -7,4 +7,15 @@
     <comment>new pac</comment>
     <requestid>1177680</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e92b2490bc0daedc75bd2322d60437e4</srcmd5>
+    <version>1.5.3</version>
+    <time>1729601510</time>
+    <user>anag+factory</user>
+    <comment>- ensure openexr is at least version 3 and the devel package also
+  needs to pull openexr-devel as its headers reference the openexr
+  headers
+</comment>
+    <requestid>1216733</requestid>
+  </revision>
 </revisionlist>

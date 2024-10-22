@@ -17,7 +17,7 @@
 
 
 Name:           gap-anupq
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        GAP: Support for p-quotients and p-groups
 License:        Artistic-2.0
@@ -28,6 +28,7 @@ Source:         https://github.com/gap-packages/anupq/releases/download/v%versio
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
+BuildRequires:  gmp-devel
 Requires:       gap-autpgrp >= 1.5
 Requires:       gap-core >= 4.9
 

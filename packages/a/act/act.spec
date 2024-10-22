@@ -24,7 +24,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}
 %global import_path     %{provider_prefix}/%{repo}
 Name:           act
-Version:        0.2.64
+Version:        0.2.68
 Release:        0
 Summary:        Run your GitHub Actions locally
 License:        MIT

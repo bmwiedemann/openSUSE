@@ -1662,4 +1662,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205484</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>01763a5eb657744890f7c538a8e67a67</srcmd5>
+    <version>47.0+14</version>
+    <time>1729601444</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216796</requestid>
+  </revision>
 </revisionlist>

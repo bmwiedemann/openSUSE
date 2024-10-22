@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 18 23:05:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.12.0 
+  https://typst.app/blog/2024/typst-0.12/
+  https://typst.app/docs/changelog/0.12.0/
+- hayagriva directory is now versioned:
+  - handle it properly during the build
+
+-------------------------------------------------------------------
 Sat Jul 13 18:55:18 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add constraints for s390x and ppc64le based on "Out of memory"

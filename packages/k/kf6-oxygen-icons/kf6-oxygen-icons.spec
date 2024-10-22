@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-oxygen-icons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with autotests
 %bcond_without released
 Name:           kf6-oxygen-icons
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only

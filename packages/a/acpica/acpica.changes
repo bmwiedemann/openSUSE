@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 14 08:41:22 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Update to 20240927
+  * Fix the acpixf.h file which caused issues for the last release
+    (before this) 20240827
+  * Fix the pointer offset for the SLIC table
+
+-------------------------------------------------------------------
 Fri Sep 20 12:03:58 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix acpica-no-compiletime.patch to omit build date from xen .h files

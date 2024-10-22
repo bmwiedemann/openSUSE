@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:52:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update ro version 1.6.0:
+  + Support for OpenXL compiler in AIX.
+  + Default to printing deprecations when no minimum version is
+    specified.
+  + Cargo subprojects is experimental.
+  + Dependencies from CMake subprojects now use only PUBLIC link
+    flags.
+  + New built-in option for default both_libraries.
+  + New as_static and as_shared methods on internal dependencies.
+  + Support for DIA SDK.
+  + Support for LLVM-based flang compiler.
+  + nvc and nvc++ now support setting std.
+  + Tools can be selected when calling has_tools() on the Qt
+    modules.
+  + Simple tool to test build reproducibility.
+  + Support for variable in system dependencies.
+  + test() and benchmark() functions accept new types.
+  + Zig 0.11 can be used as a C/C++ compiler frontend.
+
+-------------------------------------------------------------------
 Mon Sep 23 06:03:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.5.2:

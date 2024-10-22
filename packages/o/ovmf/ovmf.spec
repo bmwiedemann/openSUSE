@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202405
+Version:        202408
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -55,6 +55,8 @@ Source10:       mbedtls-3.3.0.tar.gz
 Source11:       brotli-f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz
 # libspdm: https://github.com/DMTF/libspdm.git
 Source12:       libspdm-50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz
+# pylibfdt: https://github.com/devicetree-org/pylibfdt
+Source13:       pylibfdt-cfff805481bdea27f900c32698171286542b8d3c.tar.gz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
@@ -67,15 +69,11 @@ Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
-# Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
-Patch10:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
-# Bug 1230587 - OVMF 202405 hangs due to missing fix
-Patch11:        %{name}-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch
 # Bug 1230425 - Using shorter name of build root folder can build out a smaller ovmf image
-Patch12:        %{name}-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch
+Patch10:        %{name}-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch
 %ifarch x86_64
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
-Patch13:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
+Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
 BuildRequires:  bc
@@ -106,7 +104,11 @@ BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 %ifnarch x86_64
 BuildRequires:  cross-x86_64-binutils
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
+BuildRequires:  cross-x86_64-gcc12
+%else
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
+%endif
 %endif
 %ifnarch riscv64
 %if %{with build_riscv64}
@@ -249,6 +251,11 @@ popd
 # add libspdm
 pushd SecurityPkg/DeviceSecurity/SpdmLib/libspdm
 tar -xf %{SOURCE12} --strip 1
+popd
+
+# add libfdt
+pushd MdePkg/Library/BaseFdtLib/libfdt
+tar -xf %{SOURCE13} --strip 1
 popd
 
 %build

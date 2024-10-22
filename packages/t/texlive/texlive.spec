@@ -164,7 +164,11 @@ BuildRequires:  unzip
 BuildRequires:  xaw3d-devel
 BuildRequires:  xz
 BuildRequires:  zip
+%if 0%{?suse_version} > 1550
+BuildRequires:  zlib-ng-compat-devel
+%else
 BuildRequires:  zlib-devel
+%endif
 BuildRequires:  zziplib-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -2550,6 +2554,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
 Provides:       pdfjam = %{texlive_version}
 Obsoletes:      pdfjam < %{texlive_version}
+Requires:       /usr/bin/pdflatex
 Requires(pre):  texlive-pdfjam >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfjam
 Prefix:         %{_bindir}

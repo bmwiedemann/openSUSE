@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:20:05 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Add patch for CVE-2024-9676 (bsc#1231698):
+  * 0002-Use-securejoin.SecureJoin-when-forming-userns-paths.patch
+- Rebase patch:
+  * 0001-Properly-validate-cache-IDs-and-sources.patch
+
+-------------------------------------------------------------------
 Wed Oct 16 07:00:30 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Load ip_tables kernel module (bsc#1214612)

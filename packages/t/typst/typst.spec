@@ -23,8 +23,11 @@
 %define force_gcc_version 13
 %endif
 
+%global hayagriva_version 0.8.0
+%global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
+
 Name:           typst
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -70,6 +73,10 @@ Standalone CLI of the built-in bibliography management library used in typst.
 %autosetup -p1 -a1 -n typst-%{version}
 
 %build
+if [ ! -d %{hayagriva_vendor_dir} ] ; then
+  echo "seems hayagriva is no longer at %{hayagriva_version}. please run `ls -ld vendor/hayagriva-*` and update %%global hayagriva_version on the top of the spec file"
+  exit 1
+fi
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
@@ -84,16 +91,16 @@ RUSTFLAGS=%{rustflags} %{cargo_build} --workspace
 # Tiny hack to be able to build it from inside the vendor-dir,
 # otherwise it would complain about not being a member of the
 # top-level typst-workspace
-echo "[workspace]" >> vendor/hayagriva/Cargo.toml
+echo "[workspace]" >> %{hayagriva_vendor_dir}/Cargo.toml
 # hayagriva is older, so typst might use newer dot-dependencies.
 # We tell hayagriva to use the newer ones, if available.
-cargo update --offline --manifest-path=vendor/hayagriva/Cargo.toml
+cargo update --offline --manifest-path=%{hayagriva_vendor_dir}/Cargo.toml
 # We may have updated hayagriva's Cargo.lock-file.
 # So we have to tell typst, not to worry about hash-mismatches.
 # (Matters in the check-section below)
 echo "[patch.crates-io.hayagriva]" >> Cargo.toml
-echo "path = \"vendor/hayagriva\"" >> Cargo.toml
-RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=vendor/hayagriva/Cargo.toml --features cli
+echo "path = \"%{hayagriva_vendor_dir}\"" >> Cargo.toml
+RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=%{hayagriva_vendor_dir}/Cargo.toml --features cli
 
 %check
 %if 0%{?force_gcc_version}
@@ -105,7 +112,7 @@ export CXX="g++-%{?force_gcc_version}"
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/typst %{buildroot}%{_bindir}/%{name}
-install -m 0755 vendor/hayagriva/target/release/hayagriva %{buildroot}%{_bindir}/hayagriva
+install -m 0755 %{hayagriva_vendor_dir}/target/release/hayagriva %{buildroot}%{_bindir}/hayagriva
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
@@ -129,8 +136,8 @@ cp -L  %{_builddir}/%{name}-%{version}/artifacts/*.1 %{buildroot}%{_mandir}/man1
 %{_datadir}/fish/*
 
 %files -n hayagriva
-%license vendor/hayagriva/LICENSE*
-%doc vendor/hayagriva/README.md vendor/hayagriva/docs/*
+%license %{hayagriva_vendor_dir}/LICENSE*
+%doc %{hayagriva_vendor_dir}/README.md %{hayagriva_vendor_dir}/docs/*
 %{_bindir}/hayagriva
 
 %changelog

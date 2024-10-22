@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Oct 21 10:50:15 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#148
+- avoid reporting of spurious usb storage devices (bsc#1223330)
+- 23.3
+
+--------------------------------------------------------------------
 Thu Jul 20 11:51:26 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#128

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 12:06:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure openexr is at least version 3 and the devel package also
+  needs to pull openexr-devel as its headers reference the openexr
+  headers
+
+-------------------------------------------------------------------
 Thu May 30 06:30:17 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-IlmCtl-sover.patch.

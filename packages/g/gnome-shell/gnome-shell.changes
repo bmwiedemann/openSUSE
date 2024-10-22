@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 19 08:44:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Improve quick settings accessibility
+  + Use accent color in tablet configuration UI
+  + Improve accuracy of inset box shadows
+  + Fix `PopupSwitchMenuItem::toggled` passing wrong state
+  + Consider text direction when handling arrow keys in sliders
+  + Fix layout issues with new dialog style
+  + Fix uneven padding in notification headers
+  + Fixed crash
+  + Misc. cleanups and bug
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 16 20:55:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

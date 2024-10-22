@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 20:21:33 UTC 2024 - Joel Baltazor <obs@mtlfab.com>
+
+- Get package to show provides perl(XML::Parser::Expat) and other submodules
+
+-------------------------------------------------------------------
 Fri Mar  8 23:11:44 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

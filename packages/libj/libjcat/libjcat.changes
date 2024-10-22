@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 14 13:09:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.2:
+  + New Features:
+    - Add bt-logindex blob kind.
+  + Bugfixes:
+    - Increase test coverage for ED25519 support.
+    - Save the auto-generated private key with 0600 file
+      permissions.
+    - Switch ED25519 support to not directly using Nettle.
+
+-------------------------------------------------------------------
 Mon Jan 22 07:46:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.1:

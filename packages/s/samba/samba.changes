@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  16 13:52:25 UTC 2024 - Noel Power <nopower@suse.com>
+
+-  Adjust spec to split out rpcd_* binaries into a separate
+   sub package; (bsc#1231414).
+
+-------------------------------------------------------------------
+Tue Oct 15 13:23:26 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 4.21.1
+  * DH reconnect error handling can lead to stale sharemode
+    entries; (bso#15624).
+  * "inherit permissions = yes" triggers assert() in vfs_default
+    when creating a stream; (bso#15695).
+  * Samba 4.21.0 broke FreeIPA domain member integration;
+    (bso#15715).
+  * Missing conversion for msDS-UserTGTLifetime, msDS-
+    ComputerTGTLifetime and msDS-ServiceTGTLifetime on "samba-
+    tool domain auth policy modify"; (bso#15692).
+  * irpc_destructor may crash during shutdown; (bso#15280).
+  * Durable handle is not granted when a previous OPEN exists
+    with NoOplock; (bso#15649).
+  * Durable handle is granted but reconnect fails; (bso#15651).
+  * Disconnected durable handles with RH lease should not be
+    purged by a new non conflicting open; (bso#15708).
+  * net ads testjoin and other commands use the wrong secrets.tdb
+    in a cluster; (bso#15714).
+  * 4.21 using --with-system-mitkrb5 requires MIT krb5 1.16 as
+    rfc 8009 etypes are used; (bso#15726).
+  * VFS_OPEN_HOW_WITH_BACKUP_INTENT breaks shadow_copy2;
+    (bso#15730).
+  * Samba 4.20.0 DLZ module crashes BIND on startup; (bso#15643).
+  * Cannot build libldb lmdb backend on a build without AD DC;
+    (bso#15721).
+  * Consistent log level for sighup handler; (bso#15706).
+
+-------------------------------------------------------------------
 Wed Sep 25 14:52:10 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Support needed packaging changes required update to samba-4.21.0

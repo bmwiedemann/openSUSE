@@ -17,7 +17,7 @@
 
 
 Name:           babelstone-han-fonts
-Version:        15.1.4
+Version:        16.0.2
 Release:        0
 Summary:        BabelStone font for Han Script
 License:        Arphic-1999
