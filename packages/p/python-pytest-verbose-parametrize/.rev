@@ -59,4 +59,19 @@
     <comment></comment>
     <requestid>1041846</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b84246a4408df78d1344f9730145d76e</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601583</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+- Removed patches, included upstream:
+  * Iterable-collections.patch
+  * pytest-fixtures-pr171-remove-mock.patch
+- Refreshed python-pytest-verbose-parametrize-no-six.patch</comment>
+    <requestid>1216914</requestid>
+  </revision>
 </revisionlist>

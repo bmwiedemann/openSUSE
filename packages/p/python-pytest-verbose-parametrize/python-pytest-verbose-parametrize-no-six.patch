@@ -1,11 +1,9 @@
-Index: pytest-verbose-parametrize-1.7.0/pytest_verbose_parametrize.py
+Index: pytest-verbose-parametrize-1.8.0/pytest_verbose_parametrize.py
 ===================================================================
---- pytest-verbose-parametrize-1.7.0.orig/pytest_verbose_parametrize.py
-+++ pytest-verbose-parametrize-1.7.0/pytest_verbose_parametrize.py
-@@ -4,14 +4,13 @@ except ImportError:
-     from collections import Iterable
- except ModuleNotFoundError:
-     from collections import Iterable
+--- pytest-verbose-parametrize-1.8.0.orig/pytest_verbose_parametrize.py
++++ pytest-verbose-parametrize-1.8.0/pytest_verbose_parametrize.py
+@@ -1,12 +1,11 @@
+ from collections.abc import Iterable
 -from six import string_types, text_type
  
  
@@ -18,7 +16,7 @@ Index: pytest-verbose-parametrize-1.7.0/pytest_verbose_parametrize.py
      if len(s) > 32:
          s = s[:29] + '...'
      return s
-@@ -34,7 +33,7 @@ def pytest_generate_tests(metafunc):
+@@ -29,7 +28,7 @@ def pytest_generate_tests(metafunc):
      if 'ids' not in markers.kwargs:
          list_names = []
          for i, argvalue in enumerate(markers.args[1]):
@@ -27,3 +25,15 @@ Index: pytest-verbose-parametrize-1.7.0/pytest_verbose_parametrize.py
                  argvalue = (argvalue,)
              name = '-'.join(_strize_arg(arg) for arg in argvalue)
              if len(name) > 64:
+Index: pytest-verbose-parametrize-1.8.0/setup.py
+===================================================================
+--- pytest-verbose-parametrize-1.8.0.orig/setup.py
++++ pytest-verbose-parametrize-1.8.0/setup.py
+@@ -18,7 +18,6 @@ classifiers = [
+ ]
+ 
+ install_requires = ['pytest',
+-                    'six',
+                     ]
+ 
+ tests_require = ['mock; python_version<"3.3"',
