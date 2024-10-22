@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sqlite3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,38 +24,48 @@
 #
 
 Name:           rubygem-sqlite3
-Version:        1.4.4
+Version:        2.1.0
 Release:        0
 %define mod_name sqlite3
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  %{rubygem mini_portile2 >= 2.8.0}
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 1.8.7}
+BuildRequires:  ruby-macros >= 5
+BuildRequires:  %{rubydevel >= 3.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/sparklemotion/sqlite3-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        This module allows Ruby programs to interface with the SQLite3
+Summary:        Ruby library to interface with the SQLite3 database engine
 License:        BSD-3-Clause
-Group:          Development/Languages/Ruby
 
 %description
-This module allows Ruby programs to interface with the SQLite3
-database engine (http://www.sqlite.org).  You must have the
-SQLite engine installed in order to build this module.
-Note that this module is only compatible with SQLite 3.6.16 or newer.
+Ruby library to interface with the SQLite3 database engine
+(http://www.sqlite.org). Precompiled
+binaries are available for common platforms for recent versions of Ruby.
 
 %prep
 
 %build
 
 %install
+# MANUAL
+# patch out the runtime dep on mini_portile2
+%gem_unpack
+perl -p -i.back -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+diff -urN %{mod_full_name}.gemspec{.back,} ||:
+rm -f %{mod_full_name}.gemspec.back
+
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
+cd ..
+# /MANUAL
 %gem_install \
-  --doc-files="CHANGELOG.rdoc LICENSE README.rdoc" \
+  --extconf-opts="--enable-system-libraries" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 %gem_cleanup
 # MANUAL

@@ -1,5 +1,18 @@
 :preamble: |-
-  BuildRequires:  sqlite3-devel
+  BuildRequires:  pkgconfig(sqlite3)
+  BuildRequires:  %{rubygem mini_portile2 >= 2.8.0}
 
+:pre_install: |-
+  # patch out the runtime dep on mini_portile2
+  %gem_unpack
+  perl -p -i.back -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
+  diff -urN %{mod_full_name}.gemspec{.back,} ||:
+  rm -f %{mod_full_name}.gemspec.back
+
+  find -type f -print0 | xargs -0 touch -r %{S:0}
+  %gem_build
+  cd ..
+
+:gem_install_args: '  --extconf-opts="--enable-system-libraries"'
 :post_install: |-
   find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -name "*.[h|c|o]" -exec rm {} \;

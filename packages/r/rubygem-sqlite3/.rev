@@ -232,4 +232,16 @@ See LICENSE in data/ (forwarded request 221676 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993523</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>77e917d1af9e2143107304dc02185735</srcmd5>
+    <version>2.1.0</version>
+    <time>1729601565</time>
+    <user>anag+factory</user>
+    <comment>- updated to version 2.1.0
+   see installed CHANGELOG.rdoc
+
+- updated to version 1.4.4
+  see installed CHANGELOG.rdoc</comment>
+    <requestid>1216842</requestid>
+  </revision>
 </revisionlist>
