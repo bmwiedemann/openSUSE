@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:42:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.45.0:
+  * chore: Update version.go for v0.45.0
+  * govc: rename 'object.collect' -> 'collect'
+  * govc: display default provider in kms.ls output
+  * fix: Add missing privileges in simulator role
+  * fix: Cross-platform path handling
+  * bug: Do not panic on fault.In for valid errs
+  * govc: Add an unreleased folder.place command for
+    PlaceVMsXCluster
+  * fix: check controller type in simulator configureDevice
+  * fix: update controller's device list in AssignController
+  * govc: support use of service version via GOVC_VIM_VERSION env
+    var
+  * fix: ensure proper vSAN URI format in ResolveLibraryItemStorage
+  * api: tags error handling
+  * fix: Use absolute path for reading manifest
+  * fix: Abort lease on upload failure
+
+-------------------------------------------------------------------
 Fri Oct 11 08:28:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.44.1:
