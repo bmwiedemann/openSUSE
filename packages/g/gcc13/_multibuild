@@ -23,8 +23,6 @@
 <flavor>cross-hppa-gcc13</flavor>
 <flavor>cross-arm-none-gcc13-bootstrap</flavor>
 <flavor>cross-arm-none-gcc13</flavor>
-<flavor>cross-epiphany-gcc13-bootstrap</flavor>
-<flavor>cross-epiphany-gcc13</flavor>
 <flavor>cross-riscv64-elf-gcc13-bootstrap</flavor>
 <flavor>cross-riscv64-elf-gcc13</flavor>
 <flavor>cross-rx-gcc13-bootstrap</flavor>

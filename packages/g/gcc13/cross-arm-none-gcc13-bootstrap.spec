@@ -139,6 +139,7 @@ Patch23:        gcc13-bsc1216664.patch
 Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
+Patch28:        gcc13-pr116657.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -369,6 +370,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 24 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
+%patch -P 28 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:06:21 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Remove epiphany build, newlib no longer builds for it. 
+
+-------------------------------------------------------------------
+Wed Oct 16 13:32:36 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-pr116657.patch to fix for parsing tzdata 2024b [gcc#116657]
+
+-------------------------------------------------------------------
 Wed Aug  7 09:32:00 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, 9d368828bd4d04ce507e02a581, git8964 

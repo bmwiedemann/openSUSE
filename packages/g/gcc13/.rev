@@ -361,4 +361,14 @@
   in ppc64le.</comment>
     <requestid>1192633</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2225fe5a9d541c5f81795e360c8200b2</srcmd5>
+    <version>13.3.1+git8964</version>
+    <time>1729601610</time>
+    <user>anag+factory</user>
+    <comment>- Remove epiphany build, newlib no longer builds for it. 
+
+- Add gcc13-pr116657.patch to fix for parsing tzdata 2024b [gcc#116657]</comment>
+    <requestid>1216955</requestid>
+  </revision>
 </revisionlist>
