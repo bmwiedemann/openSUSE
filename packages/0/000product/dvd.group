@@ -3015,8 +3015,8 @@
     <package name="libyui16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libz-ng-compat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
