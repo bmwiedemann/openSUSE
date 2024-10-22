@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:52:05 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.38.0:
+  * Release 0.38.0.
+  * Require exact --name and --email matches.
+  * Drop dependency itertools.
+  * Link to the new user documentation.
+  * Fix cleartext, message signing with --signer-cert.
+  * Improve wording.
+  * Update sequoia-keystore.
+  * Update sequoia-openpgp.
+  * Add a RSA2k cipher suite.
+  * Drop serde_json dependency.
+
+-------------------------------------------------------------------
 Thu Feb 29 13:32:20 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Disable cargo_audit for now
