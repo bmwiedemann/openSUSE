@@ -17,19 +17,18 @@
 
 
 Name:           python-pytest-profiling
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Profiling plugin for pytest
 License:        MIT
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-profiling/pytest-profiling-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
-Patch0:         pytest-fixtures-pr171-remove-mock.patch
 # https://github.com/man-group/pytest-plugins/issues/209
-Patch1:         python-pytest-profiling-no-six.patch
-# PATCH-FIX-UPSTREAM Based on gh#man-group/pytest-plugins#223
-Patch2:         fix-mock-call.patch
+Patch0:         python-pytest-profiling-no-six.patch
+# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#247
+Patch1:         fix-type-arguments.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module q}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,12 +46,10 @@ BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
-Profiling plugin for py.test
+Profiling plugin for pytest
 
 %prep
 %autosetup -p1 -n pytest-profiling-%{version}
-# Unpin
-sed -i 's/more-itertools==5.0.0/more-itertools/' tests/integration/test_profile_integration.py
 
 %build
 %pyproject_wheel

@@ -1,10 +1,10 @@
-Index: pytest-profiling-1.7.0/pytest_profiling.py
+Index: pytest-profiling-1.8.0/pytest_profiling.py
 ===================================================================
---- pytest-profiling-1.7.0.orig/pytest_profiling.py
-+++ pytest-profiling-1.7.0/pytest_profiling.py
-@@ -10,7 +10,6 @@ import pipes
- import errno
+--- pytest-profiling-1.8.0.orig/pytest_profiling.py
++++ pytest-profiling-1.8.0/pytest_profiling.py
+@@ -10,7 +10,6 @@ import errno
  from hashlib import md5
+ import subprocess
  
 -import six
  import pytest
@@ -13,34 +13,35 @@ Index: pytest-profiling-1.7.0/pytest_profiling.py
 @@ -18,7 +17,7 @@ LARGE_FILENAME_HASH_LEN = 8
  
  def clean_filename(s):
-     forbidden_chars = set('/?<>\:*|"')
+     forbidden_chars = set(r'/?<>\:*|"')
 -    return six.text_type("".join(c if c not in forbidden_chars and ord(c) < 127 else '_'
 +    return str("".join(c if c not in forbidden_chars and ord(c) < 127 else '_'
                                   for c in s))
  
  
-Index: pytest-profiling-1.7.0/tests/unit/test_profile.py
+Index: pytest-profiling-1.8.0/tests/unit/test_profile.py
 ===================================================================
---- pytest-profiling-1.7.0.orig/tests/unit/test_profile.py
-+++ pytest-profiling-1.7.0/tests/unit/test_profile.py
-@@ -2,10 +2,10 @@
- # the top-level code in pytest_profiling will be omitted from
+--- pytest-profiling-1.8.0.orig/tests/unit/test_profile.py
++++ pytest-profiling-1.8.0/tests/unit/test_profile.py
+@@ -3,11 +3,11 @@
  # coverage, so force it to be reloaded within this test unit under coverage
  
+ import os.path
 -from six.moves import reload_module  # @UnresolvedImport
-+from importlib import reload  # @UnresolvedImport
++from importlib import reload
  
  import pytest_profiling
+ 
 -reload_module(pytest_profiling)
 +reload(pytest_profiling)
  
- from pytest_profiling import Profiling, pytest_addoption, pytest_configure
- 
-Index: pytest-profiling-1.7.0/setup.py
+ import os
+ import subprocess
+Index: pytest-profiling-1.8.0/setup.py
 ===================================================================
---- pytest-profiling-1.7.0.orig/setup.py
-+++ pytest-profiling-1.7.0/setup.py
-@@ -22,8 +22,7 @@ classifiers = [
+--- pytest-profiling-1.8.0.orig/setup.py
++++ pytest-profiling-1.8.0/setup.py
+@@ -17,8 +17,7 @@ classifiers = [
      'Programming Language :: Python :: 3.7',
  ]
  

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 2 and <3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * Added support to hide/show the full path of file.
+  * Remove pinning of more-itertools.
+  * Add support to define element number for print_stats()
+  * Fix mock in test_writes_summary
+- Dropped patches, included upstream:
+  * pytest-fixtures-pr171-remove-mock.patch
+  * fix-mock-call.patch
+- Add patch fix-type-arguments.patch:
+  * Use correct type argument for argparse.
+- Refreshed python-pytest-profiling-no-six.patch
+
+-------------------------------------------------------------------
 Tue Mar 12 04:30:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
