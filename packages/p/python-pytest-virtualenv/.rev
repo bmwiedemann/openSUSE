@@ -41,4 +41,24 @@
     <comment></comment>
     <requestid>1092222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa7e4c0b1ad47cedf6035c782543d4bc</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601584</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * Modernised package.
+  * Added delete_workspace parameter to VirtualEnv.
+  * Removed extras_require.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Removed patches, included upstream:
+  * remove_mock.patch
+- Refreshed remove_virtualenv.patch
+- Do not test with Python 3.12 and above due to an upstream bug.</comment>
+    <requestid>1216915</requestid>
+  </revision>
 </revisionlist>

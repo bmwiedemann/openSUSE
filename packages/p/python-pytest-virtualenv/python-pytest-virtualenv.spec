@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pytest-virtualenv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
+# https://github.com/man-group/pytest-plugins/issues/220
+%define skip_python312 1
+%define skip_python313 1
 %define psuffix -test
 %bcond_without test
 %else
@@ -27,35 +29,25 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-virtualenv%{psuffix}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Virtualenv fixture for pytest
 License:        MIT
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-virtualenv/pytest-virtualenv-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_mock.patch gh#man-group/pytest-plugins#168 mcepl@suse.com
-# remove dependency on the external module mock
-Patch0:         remove_mock.patch
-# PATCH-FIX-UPSTREAM remove_mock.patch gh#man-group/pytest-plugins#168 mcepl@suse.com
-# and while at it, we can remove dependency on the external module
-# virtualenv as well
-Patch1:         remove_virtualenv.patch
+# PATCH-FIX-OPENSUSE remove dependency on the external module virtualenv
+Patch0:         remove_virtualenv.patch
 %if %{with test}
-BuildRequires:  %{python_module path.py}
-BuildRequires:  %{python_module pytest-fixture-config}
-BuildRequires:  %{python_module pytest-shutil}
-BuildRequires:  %{python_module pytest-virtualenv}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-virtualenv = %{version}}
 %endif
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module virtualenv}
-%endif
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-path.py
+Requires:       python-importlib-metadata
+Requires:       python-pytest
 Requires:       python-pytest-fixture-config
 Requires:       python-pytest-shutil
 Requires:       python-setuptools
@@ -71,25 +63,27 @@ what's installed.
 %autosetup -p1 -n pytest-virtualenv-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
 # Requires network access
-%pytest -k 'not test_installed_packages'
+%pytest -k 'not (test_installed_packages or test_install_)'
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_virtualenv.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_virtualenv*.pyc
+%{python_sitelib}/pytest_virtualenv-%{version}.dist-info
 %endif
 
 %changelog
