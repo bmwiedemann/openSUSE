@@ -37,6 +37,8 @@ Patch2:         31-version_info-v-version.patch
 # PATCH-FIX-UPSTREAM detect-lib-with-py3.patch gh#nima/python-dmidecode#36 mcepl@suse.com
 #  Make the code future-proof against removal of distutils module.
 Patch3:         detect-lib-with-py3.patch
+# PATCH-FIX-UPSTREAM gcc14.patch gh#nima/python-dmidecode#59 -- daniel.garcia@suse.com
+Patch4:         gcc14.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

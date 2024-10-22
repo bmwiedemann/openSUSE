@@ -148,4 +148,13 @@
 </comment>
     <requestid>1146398</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>6895d99dd291bc09ce576db51d3128ff</srcmd5>
+    <version>3.12.3</version>
+    <time>1729601620</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch to make it compatible with gcc14
+  gh#nima/python-dmidecode#59</comment>
+    <requestid>1216962</requestid>
+  </revision>
 </revisionlist>

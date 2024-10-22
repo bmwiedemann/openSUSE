@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:56:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gcc14.patch to make it compatible with gcc14
+  gh#nima/python-dmidecode#59
+
+-------------------------------------------------------------------
 Tue Feb 13 12:46:21 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add setuptools buildrequires, distutils is not part of python-base
