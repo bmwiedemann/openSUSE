@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-pyramid-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-pyramid-server
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Pyramid server fixture for py.test
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-pyramid-server/pytest-pyramid-server-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-pyramid-server-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyramid
+Requires:       python-pytest
 Requires:       python-pytest-server-fixtures
-Requires:       python-six
 Requires:       python-waitress
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyramid-debugtoolbar}
 BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pytest-server-fixtures}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module waitress}
 # /SECTION
 %python_subpackages
@@ -52,10 +51,10 @@ Pyramid server fixture for py.test.
 %autosetup -p1 -n pytest-pyramid-server-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +63,10 @@ Pyramid server fixture for py.test.
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_pyramid_server.py
+%{python_sitelib}/pyramid_server_test.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_pyramid_server*.pyc
+%pycache_only %{python_sitelib}/__pycache__/pyramid_server_test*.pyc
+%{python_sitelib}/pytest_pyramid_server-%{version}.dist-info
 
 %changelog

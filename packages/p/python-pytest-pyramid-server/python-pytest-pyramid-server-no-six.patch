@@ -1,7 +1,7 @@
-Index: pytest-pyramid-server-1.7.0/pytest_pyramid_server.py
+Index: pytest-pyramid-server-1.8.0/pytest_pyramid_server.py
 ===================================================================
---- pytest-pyramid-server-1.7.0.orig/pytest_pyramid_server.py
-+++ pytest-pyramid-server-1.7.0/pytest_pyramid_server.py
+--- pytest-pyramid-server-1.8.0.orig/pytest_pyramid_server.py
++++ pytest-pyramid-server-1.8.0/pytest_pyramid_server.py
 @@ -4,7 +4,7 @@ Created on 25 Apr 2012
  @author: eeaston
  '''
@@ -11,3 +11,15 @@ Index: pytest-pyramid-server-1.7.0/pytest_pyramid_server.py
  import sys
  import socket
  import glob
+Index: pytest-pyramid-server-1.8.0/setup.py
+===================================================================
+--- pytest-pyramid-server-1.8.0.orig/setup.py
++++ pytest-pyramid-server-1.8.0/setup.py
+@@ -23,7 +23,6 @@ install_requires = ['pytest-server-fixtu
+                     'pytest',
+                     'pyramid',
+                     'waitress',
+-                    'six',
+                     ]
+ 
+ tests_require = [

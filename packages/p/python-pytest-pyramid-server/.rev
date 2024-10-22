@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>1041843</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b61cc1abd3753e184ed0c6bc0da7575</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601579</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+- Modify python-pytest-pyramid-server-no-six.patch to remove the
+  requirement completly.
+- No more greedy globs in %files.</comment>
+    <requestid>1216911</requestid>
+  </revision>
 </revisionlist>
