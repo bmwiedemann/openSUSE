@@ -86,4 +86,30 @@
 - Switch to pyproject macros.</comment>
     <requestid>1108019</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>842d575193da76118d78a0fb9a626605</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601580</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * BREAKING CHANGE: Removed RethinkDB support, as the mirror was no longer
+    available.
+  * Allowed passing through HTTP headers to the server.
+  * Fixed threading log debug messages.
+  * Removed usage of deprecated Thread.setDaemon.
+  * Explicitly close initial Mongo client.
+  * Don't use context manager for CREATE DATABASE
+- Drop patches, included upstream:
+  * pytest-plugins-pr186-fix-psycopg29.patch
+  * remove-mock.patch
+- Refreshed remove-six-and-future.patch
+- Add patch fix-httpd-fixture-path.patch:
+  * Attempt to run httpd with the correct config file
+- Add patch support-64-bit-pids-xvfb.patch:
+  * Support 64 bit PIDs when running Xvfb</comment>
+    <requestid>1216912</requestid>
+  </revision>
 </revisionlist>

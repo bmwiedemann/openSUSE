@@ -14,10 +14,10 @@ crutches like six and future.
  pytest-server-fixtures/setup.py                           | 2 --
  6 files changed, 10 insertions(+), 19 deletions(-)
 
-Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
+Index: pytest-server-fixtures-1.8.0/pytest_server_fixtures/base.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/base.py
-+++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
+--- pytest-server-fixtures-1.8.0.orig/pytest_server_fixtures/base.py
++++ pytest-server-fixtures-1.8.0/pytest_server_fixtures/base.py
 @@ -14,8 +14,6 @@ import logging
  import random
  import errno
@@ -27,26 +27,19 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
  from pytest_server_fixtures import CONFIG
  from pytest_shutil.workspace import Workspace
  
-@@ -103,13 +101,13 @@ class ProcessReader(threading.Thread):
-         self.stderr = stderr
-         self.process = process
-         self.stream = stream
--        super(ProcessReader, self).__init__()
-+        super().__init__()
-         self.setDaemon(True)
- 
+@@ -112,7 +110,7 @@ class ProcessReader(threading.Thread):
      def run(self):
          while self.process.poll() is None:
              l = self.stream.readline()
 -            if not isinstance(l, string_types):
-+            if not isinstance(l, six):
++            if not isinstance(l, str):
                  l = l.decode('utf-8')
  
              if l.strip():
-Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
+Index: pytest-server-fixtures-1.8.0/pytest_server_fixtures/http.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/http.py
-+++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
+--- pytest-server-fixtures-1.8.0.orig/pytest_server_fixtures/http.py
++++ pytest-server-fixtures-1.8.0/pytest_server_fixtures/http.py
 @@ -1,5 +1,4 @@
 -from __future__ import print_function
 -
@@ -71,19 +64,19 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
                  time.sleep(int(i) / 10)
                  pass
          raise e
-@@ -107,7 +105,7 @@ class HTTPTestServer(TestServer):
+@@ -109,7 +107,7 @@ class HTTPTestServer(TestServer):
                  with self.handle_proxy():
-                     returned = requests.post('http://%s:%d/%s' % (self.hostname, self.port, path), data=data)
+                     returned = requests.post('http://%s:%d/%s' % (self.hostname, self.port, path), data=data, headers=headers)
                  return returned.json() if as_json else returned
 -            except (http_client.BadStatusLine, requests.ConnectionError) as e:
 +            except (http.client.BadStatusLine, requests.ConnectionError) as e:
                  time.sleep(int(i) / 10)
                  pass
          raise e
-Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/jenkins.py
+Index: pytest-server-fixtures-1.8.0/pytest_server_fixtures/jenkins.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/jenkins.py
-+++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/jenkins.py
+--- pytest-server-fixtures-1.8.0.orig/pytest_server_fixtures/jenkins.py
++++ pytest-server-fixtures-1.8.0/pytest_server_fixtures/jenkins.py
 @@ -9,7 +9,6 @@ import os.path
  import shutil
  
@@ -101,10 +94,10 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/jenkins.py
                  plugins = [plugins]
  
              errors = []
-Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
+Index: pytest-server-fixtures-1.8.0/pytest_server_fixtures/postgres.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/postgres.py
-+++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
+--- pytest-server-fixtures-1.8.0.orig/pytest_server_fixtures/postgres.py
++++ pytest-server-fixtures-1.8.0/pytest_server_fixtures/postgres.py
 @@ -8,7 +8,6 @@ import subprocess
  
  import errno
@@ -131,10 +124,10 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
              print(msg)
              self._fail(msg)
  
-Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/s3.py
+Index: pytest-server-fixtures-1.8.0/pytest_server_fixtures/s3.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/s3.py
-+++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/s3.py
+--- pytest-server-fixtures-1.8.0.orig/pytest_server_fixtures/s3.py
++++ pytest-server-fixtures-1.8.0/pytest_server_fixtures/s3.py
 @@ -11,7 +11,6 @@ import logging
  import os
  
@@ -160,11 +153,11 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/s3.py
 +            str(self.datadir),
          ]
          return cmdargs
-Index: pytest-server-fixtures-1.7.0/setup.py
+Index: pytest-server-fixtures-1.8.0/setup.py
 ===================================================================
---- pytest-server-fixtures-1.7.0.orig/setup.py
-+++ pytest-server-fixtures-1.7.0/setup.py
-@@ -25,8 +25,6 @@ classifiers = [
+--- pytest-server-fixtures-1.8.0.orig/setup.py
++++ pytest-server-fixtures-1.8.0/setup.py
+@@ -20,8 +20,6 @@ classifiers = [
  install_requires = ['pytest',
                      'pytest-shutil',
                      'pytest-fixture-config',

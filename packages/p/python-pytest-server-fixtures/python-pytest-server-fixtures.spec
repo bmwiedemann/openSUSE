@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-pytest-server-fixtures
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Extensible server fixtures for pytest
 License:        MIT
 URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest-plugins-pr186-fix-psycopg29.patch -- gh#man-group/pytest-plugins#186
-Patch0:         pytest-plugins-pr186-fix-psycopg29.patch
-# PATCH-FIX-UPSTREAM remove-mock.patch -- gh#man-group#pytest-plugins#171
-Patch1:         remove-mock.patch
 # PATCH-FIX-UPSTREAM gh#github.com/man-group/pytest-plugins#221
-Patch2:         remove-six-and-future.patch
+Patch0:         remove-six-and-future.patch
+# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#249
+Patch1:         fix-httpd-fixture-path.patch
+# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#250
+Patch2:         support-64-bit-pids-xvfb.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +54,6 @@ Suggests:       python-psycopg2
 Suggests:       python-pymongo >= 3.6.0
 Suggests:       python-python-jenkins
 Suggests:       python-redis
-Suggests:       python-rethinkdb
 Suggests:       redis
 Suggests:       xauth
 Suggests:       xdpyinfo
@@ -73,7 +72,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jenkins}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module rethinkdb}
 BuildRequires:  %{python_module retry}
 BuildRequires:  apache2
 BuildRequires:  lsof
@@ -95,7 +93,6 @@ Extensible server fixtures for pytest
 # Tests requiring a server
 rm tests/integration/test_mongo_server.py
 rm tests/integration/test_jenkins_server.py
-rm tests/integration/test_rethink_server.py
 rm tests/integration/test_s3_server.py
 rm tests/unit/serverclass/test_kubernetes_unit.py
 

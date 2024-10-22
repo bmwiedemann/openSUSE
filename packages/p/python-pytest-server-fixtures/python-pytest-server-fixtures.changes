@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 2 and <3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * BREAKING CHANGE: Removed RethinkDB support, as the mirror was no longer
+    available.
+  * Allowed passing through HTTP headers to the server.
+  * Fixed threading log debug messages.
+  * Removed usage of deprecated Thread.setDaemon.
+  * Explicitly close initial Mongo client.
+  * Don't use context manager for CREATE DATABASE
+- Drop patches, included upstream:
+  * pytest-plugins-pr186-fix-psycopg29.patch
+  * remove-mock.patch
+- Refreshed remove-six-and-future.patch
+- Add patch fix-httpd-fixture-path.patch:
+  * Attempt to run httpd with the correct config file
+- Add patch support-64-bit-pids-xvfb.patch:
+  * Support 64 bit PIDs when running Xvfb
+
+-------------------------------------------------------------------
 Wed Aug 30 05:26:54 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-six-and-future.patch:
