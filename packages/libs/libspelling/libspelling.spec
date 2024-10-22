@@ -20,7 +20,7 @@
 %define api_ver 1
 
 Name:           libspelling
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later
@@ -49,6 +49,7 @@ LGPL-2.1-or-later
 
 %package -n libspelling%{so_ver}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}
 
 %description -n libspelling%{so_ver}
 Shared libraries for %{name}.
@@ -68,6 +69,8 @@ Requires:       typelib-1_0-Spelling-%{api_ver} = %{version}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -79,6 +82,7 @@ developing applications that use %{name}.
 
 %install
 %meson_install
+%find_lang %{name} %{?no_lang_C}
 
 %check
 %meson_test
@@ -103,5 +107,7 @@ developing applications that use %{name}.
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libspelling-%{api_ver}.deps
 %{_datadir}/vala/vapi/libspelling-%{api_ver}.vapi
+
+%files lang -f %{name}.lang
 
 %changelog
