@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.67
+Version:        0.68.0
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
@@ -58,7 +58,7 @@ improvements to the original game can be made.
 %setup -q
 
 %build
-%cmake
+%cmake -DWITH_UPDATE_CHECK=OFF
 %cmake_build
 
 %install
