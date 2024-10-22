@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Thu Oct 17 09:13:31 UTC 2024 - avinesh.kumar@suse.com
+
+- Update to version 1.1.1+git.20240908:
+  * btrfs/319: make the test work when compression is used
+  * generic/756: test name_to_handle_at(AT_HANDLE_MNT_ID_UNIQUE) explicitly
+  * open_by_handle: verify u32 and u64 mount IDs
+  * generic/362: skip test on NFS mount
+  * generic: test concurrent direct IO writes and fsync using same fd
+  * xfs: functional testing for filesystem properties
+  * common/xfs: FITRIM now supports realtime volumes
+  * xfs: refactor statfs field extraction
+  * xfs/004: fix column extraction code
+  * xfs: test xfs_scrub services
+  * generic/453: check xfs_scrub detection of confusing job offers
+  * generic/453: test confusable name detection with 32-bit unicode codepoints
+  * btrfs/319: add git commit ID
+  * fstests: btrfs: test reading data with a corrupted checksum tree leaf
+  * fstests: btrfs/125: do not use raid5 for metadata
+  * generic: test to run fsx eof pollution
+  * fsx: support eof page pollution for eof zeroing test coverage
+  * fsx: factor out a file size update helper
+  * fsx: don't skip file size and buf updates on simulated ops
+  * f2fs/003: add missing _fixed_by_kernel_commit line
+  * overlay: deprecate test t_truncate_self
+  * generic/615: add to the quick group
+  * xfs: add a test for v1 inodes with nonzero nlink and onlink fields
+  * common/config: Correctly ignore {TEST|SCRATCH}_DEV for tmpfs
+  * generic/755: test that inode's ctime is updated on unlink
+  * replace _min_dio_alignment with calls to src/min_dio_alignment
+  * generic: don't use _min_dio_alignment without a device argument
+  * xfs/424: don't use _min_dio_alignment
+  * add a new min_dio_alignment helper
+  * statx.h: update to latest kernel UAPI
+  * btrfs: test send clones extents with unaligned end offset ending at i_size
+  * xfs/348: add helper tags
+  * xfs/516: use _scratch_mkfs_xfs
+  * xfs/432: use _scratch_mkfs_xfs
+  * common: _notrun if _scratch_mkfs_xfs failed
+  * common: _notrun if _scratch_mkfs_sized failed
+  * xfs: test online repair when xfiles consists of THPs
+  * xfs: remove all traces of xfs_check
+  * btrfs: add test for btrfstune squota enable/disable
+  * generic/732: don't run it on tmpfs
+  * generic/732: remove unused code
+  * xfs/233: don't require rmap
+  * add more tests to the growfs group
+  * btrfs/287: wait for subvolume deletion to complete
+  * btrfs/312: add git commit ID
+  * fstests: remove unnecessary stdout/stderr redirection for run_check calls
+  * generic/019: redirect fsstress output to log file instead
+  * generic: test page fault during direct IO write with O_APPEND
+  * generic/754: fix _fixed_by tags
+  * xfs: add a few more tests to the repair group
+  * xfs/011: support byte-based grant heads are stored in bytes now
+  * f2fs: test for race condition in between atomic_write and dio
+  * f2fs: test for race condition in between atomic_write and gc
+  * btrfs: properly shutdown subvolume stress worker to avoid umount failures
+  * fstests: btrfs/012: fix a false alert due to socket/pipe files
+  * btrfs: test a compressed send stream scenario that triggered a read corruption
+  * btrfs/220: remove integrity checker bits
+  * btrfs/081: wait for reader process to exit before cycle mounting
+  * fstests: btrfs/029: add fixes for the kernel behavior change
+  * btrfs: fix _require_btrfs_send_version to detect btrfs-progs support
+  * btrfs: add test for subvolid reuse with squota
+  * btrfs: update golden output of RST test cases
+  * remove spurious _supported_fs calls
+  * generic/746: clean up fs support
+  * generic/745: rework support fs checking
+  * generic/740: enable by default
+  * generic/740: skip jffs2 as foreign fs earlier
+  * generic/740: pass the --quick option to mkfs.ntfs
+  * generic/740: clean up handling of mkfs options
+  * remove support for ext4dev
+  * xfs/242: fix test failure due to incorrect filtering in _filter_bmap
+  * xfs/016: fix test fail when head equal to near_end_min
+  * fiexchange.h: update XFS_IOC_EXCHANGE_RANGE again
+  * xfs/444: fix agfl reset warning detection for small log buffers
+  * generic: test creating and removing symlink xattrs
+  * xfs/348: partially revert dbcc549317 ("xfs/348: golden output is not correct")
+  * xfs/122: update for vectored scrub
+  * scrub: test correction of directory tree corruptions
+  * common/fuzzy: stress directory tree modifications with the dirtree tester
+  * xfs: add parent pointer inject test
+  * xfs: add multi link parent pointer test
+  * xfs: add parent pointer test
+  * common: add helpers for parent pointer tests
+  * xfs/306: fix formatting failures with parent pointers
+  * xfs/{018,191,288}: disable parent pointers for these tests
+  * xfs/021: adapt golden output files for parent pointers
+  * populate: create hardlinks for parent pointers
+  * xfs/122: update for parent pointers
+  * xfs/206: filter out the parent= status from mkfs
+  * generic: test recovery of extended attribute updates
+  * exchangerange: make sure that we don't swap unwritten extents unless they're part of a rt extent
+  * xfs/206: screen out exchange-range from golden output
+  * xfs/122: fix for exchrange conversion
+  * src/fiexchange.h: update XFS_IOC_EXCHANGE_RANGE definitions
+  * misc: flip HAVE_XFS_IOC_EXCHANGE_RANGE logic
+  * ltp/{fsstress,fsx}: make the exchangerange naming consistent
+  * generic/717: remove obsolete check
+  * generic/711,xfs/537: actually fork these tests for exchange-range
+  * generic/709,710: rework these for exchangerange vs. quota testing
+  * misc: change xfs_io -c swapext to exchangerange
+  * misc: split swapext and exchangerange
+  * xfs: test scaling of the mkfs concurrency options
+  * generic/574: test corruption at more offsets
+  * xfs/073: avoid large recursive diff
+  * fstests: add stress truncation + writeback test
+  * _require_debugfs(): simplify and fix for debian
+  * fstests: add fsstress + compaction test
+  * fstests: add mmap page boundary tests
+  * common: move mread() to generic helper _mread()
+  * generic/455: skip the test if the file system doesn't support journaling
+  * ext4/045: use the large_dir feature to fix test failures with a 1k block size
+  * ext4/059: disable block_validity checks when mounting a corrupted file system
+  * generic/74[3,8]: add git commit ID for the fixes
+  * generic: test Btrfs fsync vs. size-extending prealloc write crash
+  * generic/077: ignore errors occurred while accessing the filler files
+  * fuzzy: test other dquot ids
+  * fuzzy: allow FUZZ_REWRITE_DURATION to control fsstress runtime when fuzzing
+  * fuzzy: mask off a few more inode fields from the fuzz tests
+  * btrfs/280: run defrag after creating file to get expected extent layout
+  * btrfs: fix raid-stripe-tree tests with non-experimental btrfs-progs build
+  * generic/747: redirect mkfs stderr to seqres.full
+  * xfs/008: use block size instead of the pagesize
+  * generic/436: round up bufsz to nearest filesystem blksz
+  * xfs/161: adapt the test case for 64k FS blocksize
+  * Remove richacl support
+  * btrfs/741: add commit ID in _fixed_by_kernel_commit
+  * _test_mkfs: Include external log device (if any) when creating fs on TEST_DEV
+  * check: log kernel version in check.log
+  * generic/733: add commit ID for btrfs
+  * generic/742: require FIEMAP support
+  * fstests: mkfs the scratch device if we have missing profiles
+  * fstests: btrfs/301: handle auto-removed qgroups
+  * btrfs/{140,141}: verify read-repair test data by md5sum
+  * generic/269: require no compression
+  * generic/027: require no compression
+  * generic/352: require no compression
+  * generic: add gc stress test
+  * common/tracing: use /sys/kernel/tracing at first
+  * fstests: fix _require_debugfs and call it properly
+  * fstests: remove the rest of shared
+  * fstests: move shared/298 to generic directory
+  * fstests: move shared/002 to generic directory
+  * fstests: move shared/032 to generic directory
+  * generic/095: add to the quick group
+  * xfs/077: remove _require_meta_uuid
+  * tests: _fail on _scratch_mkfs_sized failure
+  * common/config: export TEST_DEV for mkfs.xfs
+  * fstests: solve no-return-in-nonvoid-function issue
+  * generic: move btrfs clone device testcase to the generic group
+  * common/verity: fix btrfs-corrupt-block -v option
+  * btrfs/290: fix btrfs_corrupt_block options
+  * common/btrfs: refactor _require_btrfs_corrupt_block to check option
+  * fstests: btrfs: use _btrfs for 'subvolume snapshot' command
+  * fstests: btrfs: rename _run_btrfs_util_prog to _btrfs
+  * btrfs: remove useless comments
+  * btrfs/125 197 198: cleanup using SCRATCH_DEV_NAME
+  * fstests: update tests to skip unsupported raid profile types
+  * fstests: change how we test for supported raid configs
+  * fstests: change btrfs/197 and btrfs/198 golden output
+  * btrfs: new test for devt change between mounts
+  * xfs: don't run tests that require v4 file systems when not supported
+  * xfs/{158,160}: split out v4 tests
+  * xfs/512: split out v4 specific tests
+  * xfs/263: split out the v4 test
+  * xfs/045: don't force v4 file systems
+  * common/quota: update keywords of quota feature in _require_prjquota() for f2fs
+  * generic/645: Add hint for expected failure with old kernel
+  * generic/732: don't run it on overlayfs
+
+-------------------------------------------------------------------
+Thu May  9 00:00:00 CEST 2024 - dsterba@suse.com
+
+- Update to version 1.1.1+git.20240411:
+
+-------------------------------------------------------------------
+Thu Feb 15 16:13:38 UTC 2024 - dsterba@suse.com
+
+- Update to version 1.1.1+git.20240114:
+
+-------------------------------------------------------------------
 Tue Oct 24 00:00:00 CEST 2023 - dsterba@suse.cz
 
 - Update to version 1.1.1+git.20230923:

@@ -39,4 +39,12 @@
     <comment>- Update to version 1.1.1+git.20230923: (forwarded request 1119965 from dsterba)</comment>
     <requestid>1119966</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d330cc659d6ab4dc37756c7ddde83d2</srcmd5>
+    <version>1.1.1+git.20240908</version>
+    <time>1729601557</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216809</requestid>
+  </revision>
 </revisionlist>
