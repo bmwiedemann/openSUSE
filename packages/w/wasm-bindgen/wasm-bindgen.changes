@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Oct 17 11:53:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package wasm-bindgen: CLI for wasm-bindgen, facilitating
+  high-level interactions between Wasm modules and JavaScript

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/rustwasm/wasm-bindgen.git</param>
+              <param name="changesrevision">3a8da7cb8842d4cb9918871179b6b7d3c77df5a0</param></service></servicedata>
