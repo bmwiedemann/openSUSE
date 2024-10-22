@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:01:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.169.1:
+  * feat: update sops version to 3.9.1 by @zhaque44 in #1742
+  * chore: improve test assertions and descriptions for file
+    download test by @zhaque44 in #1745
+  * feat: add 'hide-notes' flag to helm in sync and apply commands
+    by @yxxhero in #1746
+
+-------------------------------------------------------------------
 Wed Oct 16 08:38:57 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.169.0:
