@@ -2794,10 +2794,6 @@ unsorted:
   - cross-epiphany-binutils 
   - cross-epiphany-gcc12 
   - cross-epiphany-gcc12-bootstrap 
-  - cross-epiphany-gcc13 
-  - cross-epiphany-gcc13-bootstrap 
-  - cross-epiphany-gcc7 
-  - cross-epiphany-gcc7-bootstrap 
   - cross-hppa-binutils 
   - cross-hppa-gcc12 
   - cross-hppa-gcc12-bootstrap 
@@ -8337,6 +8333,7 @@ unsorted:
   - gtkhtml-devel 
   - gtkimageview-devel 
   - gtklock 
+  - gtklock-lang 
   - gtkmm2-devel 
   - gtkmm2-tutorial 
   - gtkmm2-tutorial-lang 
@@ -12992,8 +12989,6 @@ unsorted:
   - libevt-tools 
   - libevt1 
   - libevtlog-4_8-0 
-  - libevtlog-devel 
-  - libevtlog0 
   - libevtx-devel 
   - libevtx-tools 
   - libevtx1 
@@ -19996,6 +19991,7 @@ unsorted:
   - nwg-bar 
   - nwg-displays 
   - nwg-dock-hyprland 
+  - nwg-drawer 
   - nwg-launchers 
   - nwg-look 
   - nxtvepg 
@@ -27098,6 +27094,8 @@ unsorted:
   - python310-random2 
   - python310-rank-bm25 
   - python310-rapidfuzz 
+  - python310-rarfile 
+  - python310-rarfile-doc 
   - python310-rcssmin 
   - python310-rdflib 
   - python310-re-assert 
@@ -30675,6 +30673,8 @@ unsorted:
   - python311-random2 
   - python311-rank-bm25 
   - python311-rapidfuzz 
+  - python311-rarfile 
+  - python311-rarfile-doc 
   - python311-rcssmin 
   - python311-rdflib 
   - python311-re-assert 
@@ -34335,6 +34335,8 @@ unsorted:
   - python312-random2 
   - python312-rank-bm25 
   - python312-rapidfuzz 
+  - python312-rarfile 
+  - python312-rarfile-doc 
   - python312-rcssmin 
   - python312-rdflib 
   - python312-re-assert 
@@ -35822,7 +35824,6 @@ unsorted:
   - re-flex 
   - re-flex-devel 
   - re2-devel 
-  - read-edid 
   - read-only-root-fs-volatile 
   - readcd 
   - readline-devel 
@@ -48314,6 +48315,7 @@ unsorted:
   - wasi-libc 
   - wasistlos 
   - wasistlos-lang 
+  - wasm-bindgen 
   - wasm-pack 
   - wasmedge 
   - wasmedge-devel 
