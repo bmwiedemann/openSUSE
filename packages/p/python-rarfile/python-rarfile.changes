@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:44:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire unar: this seems unused during the build/test
+  phase.
+
+-------------------------------------------------------------------
 Sat Jun 29 17:30:32 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2

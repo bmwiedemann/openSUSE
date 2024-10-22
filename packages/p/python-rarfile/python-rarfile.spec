@@ -31,7 +31,6 @@ BuildRequires:  bsdtar
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx >= 1.3
-BuildRequires:  unar
 Requires:       bsdtar
 Recommends:     unar
 BuildArch:      noarch
