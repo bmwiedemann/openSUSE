@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:09:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.82.2:
+  * Update to Syft v1.14.2 (#2203)
+  * Updated README.md with correct spellings & phrase. (#2201)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.0 to 0.5.1
+    (#2198)
+  * chore(deps): update tools to latest versions (#2196)
+  * fix: azurelinux considered as comprehensive distro (#2197)
+  * chore(deps): bump anchore/sbom-action from 0.17.3 to 0.17.4
+    (#2193)
+
+-------------------------------------------------------------------
 Tue Oct 15 15:36:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.82.1:
