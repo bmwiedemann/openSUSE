@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 2 and <3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+
+-------------------------------------------------------------------
 Thu Feb 22 04:08:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

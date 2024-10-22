@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-fixture-config
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Fixture configuration utils for pytest
 License:        MIT
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-fixture-config/pytest-fixture-config-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-fixture-config-no-six.patch
