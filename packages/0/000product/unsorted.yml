@@ -27098,8 +27098,6 @@ unsorted:
   - python310-random2 
   - python310-rank-bm25 
   - python310-rapidfuzz 
-  - python310-rarfile 
-  - python310-rarfile-doc 
   - python310-rcssmin 
   - python310-rdflib 
   - python310-re-assert 
@@ -30677,8 +30675,6 @@ unsorted:
   - python311-random2 
   - python311-rank-bm25 
   - python311-rapidfuzz 
-  - python311-rarfile 
-  - python311-rarfile-doc 
   - python311-rcssmin 
   - python311-rdflib 
   - python311-re-assert 
@@ -34339,8 +34335,6 @@ unsorted:
   - python312-random2 
   - python312-rank-bm25 
   - python312-rapidfuzz 
-  - python312-rarfile 
-  - python312-rarfile-doc 
   - python312-rcssmin 
   - python312-rdflib 
   - python312-re-assert 
@@ -47826,7 +47820,6 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
-  - unar 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
