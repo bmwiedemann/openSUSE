@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:12:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.1:
+  * chore(backport release-1.0): docs: fix cli download links in
+    quickstart (#2798)
+
+-------------------------------------------------------------------
 Sat Oct 19 08:14:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.0.0:
