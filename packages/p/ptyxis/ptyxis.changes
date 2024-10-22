@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 19 09:20:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Fix race condition in connecting to exited/signaled D-Bus
+    signals from PtyxisIpcProcess. This fixes situations where
+    quick running scripts exit before attaching to said signals,
+    generally during application startup.
+  + Fix --preserve-fds=0 error on distrobox.
+  + Check tiled state in new-window action to start in windowed
+    mode.
+  + Fix detach-tab shortcut.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct  4 19:07:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:
