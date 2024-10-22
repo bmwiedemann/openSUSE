@@ -17,25 +17,28 @@
 
 
 Name:           gtklock
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        GTK-based lockscreen for Wayland
 License:        GPL-3.0-only
 URL:            https://github.com/jovanlanik/gtklock
-Source:         https://github.com/jovanlanik/gtklock/archive/refs/tags/v%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  meson
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-session-lock-0)
 BuildRequires:  pkgconfig(wayland-client)
 
+%lang_package
+
 %description
-gtklock is a lockscreen based on gtkgreet. It uses the wlr-layer-shell and wlr-input-inhibitor Wayland protocols. Works on sway and other wlroots-based compositors.
+gtklock is a lockscreen based on gtkgreet.
+It uses the wlr-layer-shell and wlr-input-inhibitor Wayland protocols.
+Works on sway and other wlroots-based compositors.
 
 %prep
 %autosetup
@@ -49,6 +52,7 @@ gtklock is a lockscreen based on gtkgreet. It uses the wlr-layer-shell and wlr-i
 # distro provided pam files should be in _pam_vendordir
 mkdir -p %{buildroot}%{_pam_vendordir}
 mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
+%find_lang %{name} %{?no_lang_C}
 
 %check
 %meson_test
@@ -59,5 +63,7 @@ mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
 %{_pam_vendordir}/gtklock
 %{_bindir}/gtklock
 %{_mandir}/man1/gtklock.1%{?ext_man}
+
+%files lang -f %{name}.lang
 
 %changelog

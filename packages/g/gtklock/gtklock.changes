@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 22 01:39:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Package cleanup
+- Add language subpackage
+- Update to 4.0.0:
+  Features
+  * Added date under clock
+  * --follow-focus option
+  * Support for translation. Added Czech, Serbian and German
+    translations
+  Fixes
+  * modules: handle multiarch systems' libdir
+  * auth: guard against race condition with messages
+
+-------------------------------------------------------------------
 Fri Apr 19 14:03:32 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 3.0.0:
