@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 19 08:58:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1.1:
+  + Fix metainfo screenshots
+
+-------------------------------------------------------------------
+Fri Oct 18 18:01:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Fix tooltip font color in light mode
+  + Fix a case when the highlighter doesn't get cleared with undo
+  + Fix view not grabbing the focus on start blocking keyboard
+    shortcuts
+  + Fix reset zoom shortcut not working
+  + Fix pause button having no tooltip
+  + Fix meson build requirements
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 13 16:10:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

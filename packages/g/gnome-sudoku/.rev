@@ -448,4 +448,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205460</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>419e24defa880919598dde476f896c70</srcmd5>
+    <version>47.1.1</version>
+    <time>1729601553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216804</requestid>
+  </revision>
 </revisionlist>
