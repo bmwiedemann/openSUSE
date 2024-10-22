@@ -16,8 +16,6 @@
 <flavor>cross-hppa-gcc7</flavor>
 <flavor>cross-arm-none-gcc7-bootstrap</flavor>
 <flavor>cross-arm-none-gcc7</flavor>
-<flavor>cross-epiphany-gcc7-bootstrap</flavor>
-<flavor>cross-epiphany-gcc7</flavor>
 <flavor>cross-rx-gcc7-bootstrap</flavor>
 <flavor>cross-rx-gcc7</flavor>
 <flavor>cross-nvptx-gcc7</flavor>

@@ -656,4 +656,12 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   -fmin-function-alignment.  [bsc#1214934]</comment>
     <requestid>1171357</requestid>
   </revision>
+  <revision rev="43" vrev="18">
+    <srcmd5>54a905ef49933ccbdb1d28ac7b9256f8</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1729601608</time>
+    <user>anag+factory</user>
+    <comment>- Remove epiphany build, newlib no longer builds for it.</comment>
+    <requestid>1216949</requestid>
+  </revision>
 </revisionlist>

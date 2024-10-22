@@ -108,7 +108,7 @@ add_cross cross-m68k-gcc$base_ver m68k m68k-suse-linux %define gcc_icecream 1
 add_cross cross-mips-gcc$base_ver mips mips-suse-linux %define gcc_icecream 1
 add_cross cross-hppa-gcc$base_ver hppa hppa-suse-linux %define gcc_icecream 1
 add_newlib_cross cross-arm-none-gcc$base_ver arm-none arm-none-eabi
-add_newlib_cross cross-epiphany-gcc$base_ver epiphany epiphany-elf
+#add_newlib_cross cross-epiphany-gcc$base_ver epiphany epiphany-elf
 add_newlib_cross cross-rx-gcc$base_ver rx rx-elf
 #add_newlib_cross cross-rl78-gcc$base_ver rl78 rl78-elf
 #add_newlib_cross cross-nds32le-gcc$base_ver nds32le nds32le-elf
