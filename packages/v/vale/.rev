@@ -710,4 +710,29 @@
   * fix: check for `token.Skip` before re-order (forwarded request 1188919 from jfkw)</comment>
     <requestid>1188920</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b0a03db86a194f32af64a81b07dce490</srcmd5>
+    <version>3.8.0</version>
+    <time>1729601567</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.8.0:
+  * Update action version
+  * chore: Update workflow to match README example
+  * chore: update Go and golangci
+  * refactor: fix golangci
+  * chore: run golangci on PRs
+  * feat: Allow users to override comment delimiters (#900)
+  * refactor: improve action-related error messages
+  * chore: update github checkout to v3 (#896)
+  * fix: Add support for multi platform image builds in docker (#897)
+  * fix: ensure `skip` dimensions are valid
+
+- Update to version 3.7.1:
+  * feat: add queries for Julia
+  * feat: add tree-sitter for Julia
+  * fix: wrong message in cases with no index
+  * fix: don't apply `ignorecase` to `matchToken`
+  * chore: disable cross compile for now (forwarded request 1216854 from jfkw)</comment>
+    <requestid>1216855</requestid>
+  </revision>
 </revisionlist>
