@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 19 09:18:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Fix document to default to implicit trailing newlines
+  + Improve text wrapping for banners on small form factors
+
+-------------------------------------------------------------------
 Sat Sep 14 08:53:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
