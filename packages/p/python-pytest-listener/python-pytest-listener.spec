@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-listener
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-listener
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
-Summary:        A simple network listener for py.test
+Summary:        A simple network listener for pytest
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-listener/pytest-listener-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-listener-no-six.patch
+# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#248
+Patch1:         specify-modules-correctly.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pytest
 Requires:       python-pytest-server-fixtures
 BuildArch:      noarch
 # SECTION test requirements
@@ -43,14 +46,12 @@ Simple JSON listener using TCP that listens for data and stores it in a queue fo
 
 %prep
 %autosetup -p1 -n pytest-listener-%{version}
-# required to find the one file in the topdir
-sed -i "/packages=find_packages/ a \        py_modules=['pytest_listener']," setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,8 +60,8 @@ sed -i "/packages=find_packages/ a \        py_modules=['pytest_listener']," set
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/pytest_listener.py*
-%{python_sitelib}/pytest_listener-%{version}*-info
+%{python_sitelib}/pytest_listener.py
 %pycache_only %{python_sitelib}/__pycache__/pytest_listener*.pyc
+%{python_sitelib}/pytest_listener-%{version}.dist-info
 
 %changelog

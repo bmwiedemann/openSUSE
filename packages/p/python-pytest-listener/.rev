@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1041841</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f18ca624f2497d72b9e79cddabae862f</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601585</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+- Add patch specify-modules-correctly.patch:
+  * Fix how setuptools finds the module.</comment>
+    <requestid>1216925</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 2 and <3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+- Add patch specify-modules-correctly.patch:
+  * Fix how setuptools finds the module.
+
+-------------------------------------------------------------------
 Thu Dec  8 11:30:00 UTC 2022 - pgajdos@suse.com
 
 - do not require six
