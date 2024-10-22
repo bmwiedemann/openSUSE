@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 11:30:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Ditch requirement on terminus-ttf-fonts; this package exercises
+  the XLFDs for the bitmap variant and does nothing with TTF.
+- Specfile modernization
+
+-------------------------------------------------------------------
 Tue Dec 27 14:59:36 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.1

@@ -1,6 +1,7 @@
 #
 # spec file for package qodem
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,11 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           qodem
 Version:        1.0.1
 Release:        0
 Summary:        Terminal emulator and communications package
-License:        SUSE-Public-Domain or CC0-1.0
+License:        CC0-1.0 OR SUSE-Public-Domain
 Group:          Hardware/Modem
 URL:            https://qodem.sourceforge.io/index.html
 #Git-Clone:     https://gitlab.com/AutumnMeowMeow/qodem.git
@@ -30,11 +32,14 @@ BuildRequires:  gpm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sdl)
-Requires:       terminus-ttf-fonts
+# * qodem runs in any terminal (and visually, linedrawing characters are fine
+#   with most fonts)
+# * xqodem however (just) spawns an xterm with terminus and 8-bit mode or so
+Requires:       terminus-bitmap-fonts
 Requires:       xterm
 
 %description
-Qodem is an open-source re-implementation of the Qmodem(tm)
+Qodem is a re-implementation of the Qmodem
 shareware communications package, updated for more modern uses.
 Major features include:
  * Unicode display: translation of CP437 (PC VGA), VT100 DEC
@@ -50,7 +55,7 @@ Major features include:
  * Transfer protocols: Xmodem, Ymodem, Zmodem, and Kermit
 
 %prep
-%setup -q
+%autosetup -p1
 # Remove bundled stuff
 rm -f intl/gettext.c
 rm -rf lib/{c,cryptlib,upnp}
@@ -60,7 +65,7 @@ autoreconf -fiv
 %configure \
   --disable-x11 \
   --disable-upnp
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
