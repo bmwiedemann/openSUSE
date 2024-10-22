@@ -16,52 +16,28 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-pytest-shutil
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A goodie-bag of unix shell and environment tools for pytest
 License:        MIT
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/pytest-shutil-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
-Patch0:         pytest-fixtures-pr171-remove-mock.patch
-# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#219
-Patch1:         stop-using-imp.patch
 BuildRequires:  %{python_module execnet}
-BuildRequires:  %{python_module path}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module termcolor}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-%if %{with python2}
-BuildRequires:  python-contextlib2
-BuildRequires:  python-mock
-BuildRequires:  python-path.py
-%endif
-%if 0%{?suse_version} < 1550
-BuildRequires:  python3-path.py
-%else
-BuildRequires:  %{python_module path}
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
-%if 0%{suse_version} < 1550
-Requires:       python-path.py
-%else
-Requires:       python-path
-%endif
 Requires:       python-pytest
 Requires:       python-six
 Requires:       python-termcolor
-%ifpython2
-Requires:       python-contextlib2
-Requires:       python-mock
-Requires:       python-path.py
-%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -74,10 +50,10 @@ tools for automated tests.
 %autosetup -p2 -n pytest-shutil-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -89,6 +65,6 @@ tools for automated tests.
 %doc README.md CHANGES.md
 %license LICENSE
 %{python_sitelib}/pytest_shutil
-%{python_sitelib}/pytest_shutil-%{version}*-info
+%{python_sitelib}/pytest_shutil-%{version}.dist-info
 
 %changelog

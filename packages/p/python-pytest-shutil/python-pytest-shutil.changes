@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 2 and <3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * Removed contextlib2 requirement.
+  * Fixed forcing color through termcolor.
+- Drop patches, included upstream:
+  * pytest-fixtures-pr171-remove-mock.patch
+  * stop-using-imp.patch
+
+-------------------------------------------------------------------
 Wed Jan 24 04:48:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch stop-using-imp.patch:

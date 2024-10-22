@@ -84,4 +84,20 @@
   * Use importlib and not imp.</comment>
     <requestid>1141103</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ed84f08ea68ed0697ab154daa1e8bef6</srcmd5>
+    <version>1.8.0</version>
+    <time>1729601574</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Drop support for Python 2 and &lt;3.6, removing compatibility code.
+  * Use stdlib unittest.mock instead of mock package.
+  * Removed usage of path.py and path in favour of pathlib.
+  * Removed contextlib2 requirement.
+  * Fixed forcing color through termcolor.
+- Drop patches, included upstream:
+  * pytest-fixtures-pr171-remove-mock.patch
+  * stop-using-imp.patch</comment>
+    <requestid>1216906</requestid>
+  </revision>
 </revisionlist>
