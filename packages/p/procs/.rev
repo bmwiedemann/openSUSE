@@ -124,4 +124,13 @@
   * [Fixed] First key press is ignored #443</comment>
     <requestid>1216899</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dda94fa67b9301bf4c39b977f3520d3e</srcmd5>
+    <version>0.14.8</version>
+    <time>1729710852</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.8:
+  * [Fixed] Build breaks on FreeBSD #703</comment>
+    <requestid>1217332</requestid>
+  </revision>
 </revisionlist>

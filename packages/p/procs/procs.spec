@@ -17,7 +17,7 @@
 
 
 Name:           procs
-Version:        0.14.7
+Version:        0.14.8
 Release:        0
 Summary:        A modern replacement for ps written in Rust
 License:        MIT

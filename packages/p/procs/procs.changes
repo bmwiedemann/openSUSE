@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:03:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.8:
+  * [Fixed] Build breaks on FreeBSD #703
+
+-------------------------------------------------------------------
 Tue Oct 22 06:25:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.7:
