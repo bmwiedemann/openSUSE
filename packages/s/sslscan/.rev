@@ -166,4 +166,13 @@
     <comment></comment>
     <requestid>1189590</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>505ce9978a9065996aa7459b1e64999e</srcmd5>
+    <version>2.1.5</version>
+    <time>1729710676</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.5:
+  * Various build improvements</comment>
+    <requestid>1217250</requestid>
+  </revision>
 </revisionlist>
