@@ -16,19 +16,20 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name glasskube
 
 Name:           glasskube-cli
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        The next generation Package Manager for Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/glasskube/glasskube
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.20
+BuildRequires:  zsh
 Provides:       glasskube = %{version}
 
 %description
@@ -101,8 +102,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %files
 %doc README.md
@@ -110,16 +111,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{executable_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 %files -n %{name}-zsh-completion
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{executable_name}
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %changelog

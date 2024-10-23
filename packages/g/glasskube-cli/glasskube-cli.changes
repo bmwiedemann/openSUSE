@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:22:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.25.0:
+  * chore(main): release 0.25.0 (#1310)
+  * docs(website): added initial kustomize guide to website (#1303)
+  * feat(website): add testimonials (#1300)
+  * chore(deps): update dependency typescript-eslint to v8.11.0
+    (#1351)
+  * chore(deps): update dependency @eslint/js to v9.13.0 (#1350)
+  * feat(website): logo slider (#1299)
+  * chore(deps): update dependency typescript-eslint to v8.10.0
+    (#1348)
+  * docs(website): fix typo's in helm guide (#1340)
+  * feat(package-operator): restart dependent workloads when
+    package spec changes (#1331)
+  * fix(deps): update dependency @getcanary/web to v1.0.10 (#1343)
+  * chore(deps): update dependency typescript-eslint to v8.9.0
+    (#1342)
+  * fix(deps): update module sigs.k8s.io/kustomize/api to v0.18.0
+    (#1327)
+  * fix(ui): package detail header breaks when rendering (#1332)
+  * fix(deps): update module github.com/yuin/goldmark to v1.7.6
+    (#1337)
+  * fix(deps): update dependency @getcanary/web to v1.0.9 (#1339)
+  * fix(deps): update dependency
+    @getcanary/docusaurus-theme-search-pagefind to v1.0.2 (#1336)
+  * fix(deps): update dependency @getcanary/web to v1.0.8 (#1335)
+  * fix(deps): update dependency
+    @getcanary/docusaurus-theme-search-pagefind to v1.0.1 (#1334)
+  * docs(website): initial helm guide article (#1302)
+  * fix(deps): update dependency @getcanary/web to v1.0.7 (#1333)
+  * fix(deps): update dependency @getcanary/web to v1.0.6 (#1330)
+  * fix(deps): update dependency @getcanary/web to v1.0.4 (#1329)
+  * chore(deps): update actions/upload-artifact action to v4.4.3
+    (#1328)
+  * feat: add suspending package reconciliation and fix shell
+    completion (#1315)
+  * chore(deps): update dependency globals to v15.11.0 (#1326)
+  * fix(deps): update dependency @getcanary/web to v1.0.3 (#1325)
+  * fix(deps): update dependency @getcanary/web to v1.0.2 (#1324)
+  * chore(deps): update dependency typescript to v5.6.3 (#1323)
+  * chore(deps): update actions/upload-artifact action to v4.4.2
+    (#1322)
+  * chore(deps): update actions/cache action to v4.1.1 (#1321)
+  * feat(ui): combine package update and configuration (#1294)
+  * chore(deps): update actions/checkout digest to eef6144 (#1319)
+  * chore(deps): update dependency typescript-eslint to v8.8.1
+    (#1320)
+  * chore(deps): update actions/upload-artifact action to v4.4.1
+    (#1318)
+  * fix(deps): update dependency @getcanary/web to v1 (#1314)
+  * fix(deps): update dependency
+    @getcanary/docusaurus-theme-search-pagefind to v1 (#1313)
+  * chore(deps): update actions/cache action to v4.1.0 (#1311)
+  * fix(deps): update module golang.org/x/term to v0.25.0 (#1309)
+  * chore(deps): update dependency @eslint/js to v9.12.0 (#1312)
+  * fix(deps): update dependency htmx.org to v2.0.3 (#1308)
+
+-------------------------------------------------------------------
 Fri Oct 04 19:38:33 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.24.0:
