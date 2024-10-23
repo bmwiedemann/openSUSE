@@ -17,14 +17,16 @@
 
 
 Name:           VirtualGL
-Version:        3.1
+Version:        3.1.1
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1
 Group:          Productivity/Networking/Other
-URL:            http://www.virtualgl.org
-Source0:        https://sourceforge.net/projects/virtualgl/files/%{version}/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
+URL:            https://www.virtualgl.org
+Source0:        https://github.com/VirtualGL/virtualgl/releases/download/%{version}/VirtualGL-%{version}.tar.gz
+Source1:        https://github.com/VirtualGL/virtualgl/releases/download/%{version}/VirtualGL-%{version}.tar.gz.sig
+Source2:        baselibs.conf
+Source9:        VirtualGL.keyring
 Patch1:         VirtualGL-link-libs.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLU-devel
@@ -114,7 +116,7 @@ sed -e "s#%{_sysconfdir}/opt#%{_localstatedir}/lib#g" \
     -DVGL_LIBDIR=%{_libdir} \
     -DTJPEG_LIBRARY=%{_libdir}/libturbojpeg.so \
     -DCMAKE_LIBRARY_PATH=%{_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -140,7 +142,8 @@ rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 %postun -p /sbin/ldconfig
 
 %files
-%doc LGPL.txt LICENSE.txt ChangeLog.md doc/index.html doc/legalinfo.txt doc/*.png doc/*.gif doc/*.css
+%license LICENSE.txt
+%doc LGPL.txt ChangeLog.md doc/index.html doc/legalinfo.txt doc/*.png doc/*.gif doc/*.css
 %dir %{_libdir}/fakelib
 %{_bindir}/tcbench
 %{_bindir}/nettest

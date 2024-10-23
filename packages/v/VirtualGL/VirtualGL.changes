@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:15:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * The EGL back end now supports OpenGL applications, including
+    ANSYS Fluent, that use multiple X11 Display handles to render to
+    the same GLX drawable.
+  * The VirtualGL Faker now works around an issue whereby
+    applications using the GtkGLArea widget with GTK v3.15.2 through
+    v4.3.1 failed with "No available configurations for the given
+    [RGBA] pixel format" if GTK v3.15.2 through v4.3.1 had previously
+    been initialized on the 2D X server without VirtualGL.
+  * As required by the EGL spec, the interposed `eglSwapBuffers()`
+    function now flushes the current OpenGL context if the surface
+    being swapped is bound to that context.  This fixes a flickering
+    issue that occurred with recent versions of Firefox.
+  * It is no longer necessary to enable the EGL back end in order to
+    use VirtualGL with 3D applications that use the EGL/X11 API.  If
+    the GLX back end is enabled, then the EGL/X11 interposer will now
+    use the 3D X server.
+  * Fixed an issue in the VirtualGL Faker that caused random characters
+    and other elements of the Firefox browser window to disappear when
+    the window was resized.
+  * Fixed an issue in VirtualGL's `dlopen()` interposer
+    (**libdlfaker.so**) that interfered with the correct operation of
+    ANGLE (Almost Native Graphics Layer Engine.)
+- add keyring for signature validation
+
+-------------------------------------------------------------------
 Wed May 15 07:52:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
@@ -124,7 +152,7 @@ Wed Dec 21 16:50:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sun Dec 11 11:08:12 UTC 2022 - Anonymous Checkouts <anoncvs@mailinator.com>
 
 - update to 3.0.2
-  * Now supports use of EGL as well as GLX 
+  * Now supports use of EGL as well as GLX
 
 -------------------------------------------------------------------
 Sat Dec 19 11:08:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -264,7 +292,7 @@ Fri Aug 29 09:28:04 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu Aug 21 13:56:01 UTC 2014 - dvaleev@suse.com
 
-- Extend 64bit conditions to s390x ppc64 ppc64le aarch64 
+- Extend 64bit conditions to s390x ppc64 ppc64le aarch64
 
 -------------------------------------------------------------------
 Tue Jul  1 07:50:50 UTC 2014 - tchvatal@suse.com
