@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        10.1
+Version:        10.2
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only
@@ -44,7 +44,6 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-python-yubico
 BuildRequires:  python3-validators
 BuildRequires:  python3-zxcvbn-rs-py
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.73.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66
@@ -99,7 +98,6 @@ sed -i -e '1{s,^#!@PYTHON@,,}' gsecrets/const.py.in
 # generation done by meson. Should make the package reproducible.
 %py3_compile %{buildroot}%{python3_sitelib}/gsecrets
 %find_lang secrets %{?no_lang_C}
-%suse_update_desktop_file org.gnome.World.Secrets
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 glib-compile-schemas --strict --dry-run %{buildroot}%{_datadir}/glib-2.0/schemas/
 %endif
