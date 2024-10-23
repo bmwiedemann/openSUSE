@@ -1632,7 +1632,6 @@ unsorted:
   - brp-trim-translations 
   - bs 
   - bs-update 
-  - bs1770gain 
   - bs2b-tools 
   - bscalc 
   - bsd-games 
@@ -1987,6 +1986,7 @@ unsorted:
   - cargo1.79 
   - cargo1.80 
   - cargo1.81 
+  - cargo1.82 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2939,7 +2939,6 @@ unsorted:
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
-  - crystalhd-firmware 
   - cscope 
   - cscreen 
   - csi-external-attacher 
@@ -11264,6 +11263,7 @@ unsorted:
   - libLLVM15 
   - libLLVM15-32bit 
   - libLLVM16 
+  - libLLVM17 
   - libLLVM17-32bit 
   - libLLVM18-32bit 
   - libLLVMSPIRVLib-devel 
@@ -12647,8 +12647,6 @@ unsorted:
   - libcryptsetup-devel 
   - libcryptsetup12-32bit 
   - libcryptui-devel 
-  - libcrystalhd-devel 
-  - libcrystalhd3 
   - libcscreensaver-0_0_0 
   - libcsirocsa0 
   - libcsironn0 
@@ -13569,7 +13567,6 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
-  - libgnustep-base1_30 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -14907,6 +14904,7 @@ unsorted:
   - libnss_gns2 
   - libnss_gns4-2 
   - libnss_gns6-2 
+  - libnss_himmelblau2 
   - libnss_nis2 
   - libnss_slurm2 
   - libnss_usrfiles2-32bit 
@@ -14943,7 +14941,6 @@ unsorted:
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
-  - libobjc4 
   - libobjc4-32bit 
   - libobjc4-gcc12 
   - libobjc4-gcc12-32bit 
@@ -16648,14 +16645,6 @@ unsorted:
   - libtranscript1 
   - libtre5 
   - libtree 
-  - libtrilinos-gnu-mpich-hpc 
-  - libtrilinos-gnu-mvapich2-hpc 
-  - libtrilinos-gnu-openmpi4-hpc 
-  - libtrilinos14 
-  - libtrilinos14-openmpi4 
-  - libtrilinos_14_0_0-gnu-mpich-hpc 
-  - libtrilinos_14_0_0-gnu-mvapich2-hpc 
-  - libtrilinos_14_0_0-gnu-openmpi4-hpc 
   - libtrng4-27 
   - libts0-32bit 
   - libtsan0 
@@ -17414,8 +17403,8 @@ unsorted:
   - libyuv-devel 
   - libyuv-tools 
   - libyuv0-32bit 
+  - libz-ng-compat1-32bit 
   - libz-ng2 
-  - libz1-32bit 
   - libz3-4_13 
   - libzapojit-0_0-0 
   - libzapojit-devel 
@@ -19808,8 +19797,6 @@ unsorted:
   - nfpm-bash-completion 
   - nfpm-fish-completion 
   - nfpm-zsh-completion 
-  - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml 
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
@@ -19923,7 +19910,6 @@ unsorted:
   - nsd 
   - nsjail 
   - nsnake 
-  - nss-himmelblau 
   - nss-pam-ldapd 
   - nss-shared-helper-devel 
   - nss_synth 
@@ -23156,6 +23142,9 @@ unsorted:
   - poke-dwarf 
   - poke-elf 
   - polaris 
+  - polaris-bash-completion 
+  - polaris-fish-completion 
+  - polaris-zsh-completion 
   - policycoreutils-dbus 
   - policycoreutils-devel 
   - policycoreutils-gui 
@@ -23322,6 +23311,7 @@ unsorted:
   - postgresql17-devel-mini 
   - postgresql17-docs 
   - postgresql17-llvmjit-devel 
+  - postgresql17-orafce 
   - postgresql17-plperl 
   - postgresql17-plpython 
   - postgresql17-pltcl 
@@ -23563,7 +23553,6 @@ unsorted:
   - pthread-stubs-devel 
   - ptl-devel 
   - ptlib-devel 
-  - ptokax 
   - ptpd 
   - ptscotch-gnu-mpich-hpc 
   - ptscotch-gnu-mpich-hpc-devel 
@@ -25530,6 +25519,7 @@ unsorted:
   - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
+  - python310-flux-local 
   - python310-flynt 
   - python310-folium 
   - python310-fontMath 
@@ -26297,8 +26287,8 @@ unsorted:
   - python310-numpy1-devel 
   - python310-numpy_1_26_4-gnu-hpc 
   - python310-numpy_1_26_4-gnu-hpc-devel 
-  - python310-numpy_2_1_1-gnu-hpc 
-  - python310-numpy_2_1_1-gnu-hpc-devel 
+  - python310-numpy_2_1_2-gnu-hpc 
+  - python310-numpy_2_1_2-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nvim-remote 
   - python310-nwdiag 
@@ -27340,6 +27330,7 @@ unsorted:
   - python310-sphinx-inline-tabs 
   - python310-sphinx-issues 
   - python310-sphinx-jsonschema 
+  - python310-sphinx-notfound-page 
   - python310-sphinx-qt-documentation 
   - python310-sphinx-removed-in 
   - python310-sphinx-tabs 
@@ -29173,6 +29164,7 @@ unsorted:
   - python311-flufl.lock 
   - python311-flufl.testing 
   - python311-fluidity-sm 
+  - python311-flux-local 
   - python311-flynt 
   - python311-folium 
   - python311-fontMath 
@@ -29902,8 +29894,8 @@ unsorted:
   - python311-numpy1-devel 
   - python311-numpy_1_26_4-gnu-hpc 
   - python311-numpy_1_26_4-gnu-hpc-devel 
-  - python311-numpy_2_1_1-gnu-hpc 
-  - python311-numpy_2_1_1-gnu-hpc-devel 
+  - python311-numpy_2_1_2-gnu-hpc 
+  - python311-numpy_2_1_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nvim-remote 
   - python311-nwdiag 
@@ -30907,6 +30899,7 @@ unsorted:
   - python311-sphinx-inline-tabs 
   - python311-sphinx-issues 
   - python311-sphinx-jsonschema 
+  - python311-sphinx-notfound-page 
   - python311-sphinx-qt-documentation 
   - python311-sphinx-removed-in 
   - python311-sphinx-tabs 
@@ -32772,6 +32765,7 @@ unsorted:
   - python312-flufl.lock 
   - python312-flufl.testing 
   - python312-fluidity-sm 
+  - python312-flux-local 
   - python312-flynt 
   - python312-folium 
   - python312-fontMath 
@@ -33538,8 +33532,8 @@ unsorted:
   - python312-numpy1-devel 
   - python312-numpy_1_26_4-gnu-hpc 
   - python312-numpy_1_26_4-gnu-hpc-devel 
-  - python312-numpy_2_1_1-gnu-hpc 
-  - python312-numpy_2_1_1-gnu-hpc-devel 
+  - python312-numpy_2_1_2-gnu-hpc 
+  - python312-numpy_2_1_2-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nvim-remote 
   - python312-nwdiag 
@@ -34579,6 +34573,7 @@ unsorted:
   - python312-sphinx-inline-tabs 
   - python312-sphinx-issues 
   - python312-sphinx-jsonschema 
+  - python312-sphinx-notfound-page 
   - python312-sphinx-qt-documentation 
   - python312-sphinx-removed-in 
   - python312-sphinx-tabs 
@@ -36591,6 +36586,8 @@ unsorted:
   - rust1.80-src 
   - rust1.81 
   - rust1.81-src 
+  - rust1.82 
+  - rust1.82-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -47349,17 +47346,6 @@ unsorted:
   - triggerhappy 
   - trilead-ssh2 
   - trilead-ssh2-javadoc 
-  - trilinos-devel 
-  - trilinos-doc 
-  - trilinos-gnu-mpich-hpc-devel 
-  - trilinos-gnu-mvapich2-hpc-devel 
-  - trilinos-gnu-openmpi4-hpc-devel 
-  - trilinos-hpc-doc 
-  - trilinos-openmpi4-devel 
-  - trilinos_14_0_0-gnu-mpich-hpc-devel 
-  - trilinos_14_0_0-gnu-mvapich2-hpc-devel 
-  - trilinos_14_0_0-gnu-openmpi4-hpc-devel 
-  - trilinos_14_0_0-hpc-doc 
   - trinity 
   - trippy 
   - tripwire 
@@ -47858,7 +47844,6 @@ unsorted:
   - unoconv 
   - unpack-install-jammer 
   - unpaper 
-  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
@@ -48361,9 +48346,6 @@ unsorted:
   - weave-gitops-bash-completion 
   - weave-gitops-fish-completion 
   - weave-gitops-zsh-completion 
-  - weave-k8s-yaml 
-  - weave-kube 
-  - weave-npc 
   - webalizer 
   - webalizer-flags 
   - webcamoid 
