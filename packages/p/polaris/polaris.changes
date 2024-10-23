@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:06:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- add subpackages for shell completions
+- Update to version 9.5.0:
+  * Add --merge-config flag to support merging with default
+    configuration (#1075)
+  * Fix: rolebindingRolePodExecAttach check (#1070)
+
+-------------------------------------------------------------------
 Fri Sep 27 20:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.4.1:
