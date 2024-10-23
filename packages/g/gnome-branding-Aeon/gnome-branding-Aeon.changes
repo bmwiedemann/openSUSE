@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:56:36 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Change default recommended flatpaks, install Ptyxis, offer a PDF
+  viewer
+
+-------------------------------------------------------------------
 Tue Oct 15 15:15:41 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Don't own /usr/etc/skel/.config (owned by filesystem pkg) 

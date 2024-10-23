@@ -65,4 +65,13 @@
 - Set Aeon's default accent-color to 'green'</comment>
     <requestid>1208174</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>99ee3a70b90405398155fa4d9c6bbb34</srcmd5>
+    <version>20231005</version>
+    <time>1729710677</time>
+    <user>anag+factory</user>
+    <comment>- Change default recommended flatpaks, install Ptyxis, offer a PDF
+  viewer</comment>
+    <requestid>1217260</requestid>
+  </revision>
 </revisionlist>
