@@ -595,7 +595,7 @@ Prefer: -ansible-core-2.16
 Prefer: -gdm-systemd
 
 # have choice for uv needed by python310-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python312-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python311-hatch: python310-uv python311-uv python312-uv uv
-Prefer: -uv -python310-uv -python312-uv
+Prefer: -python310-uv -python312-uv
 
 # have choice for python3-numpy-devel: python311-numpy-devel python311-numpy1-devel
 Prefer: -python310-numpy1-devel -python311-numpy1-devel -python312-numpy1-devel -python311-numpy1 -python310-numpy1 -python312-numpy1
@@ -663,11 +663,11 @@ Prefer: -libcurl-mini4
 #have choice for pkgconfig(libsystemd): systemd-devel systemd-devel-32bit
 Prefer: -systemd-devel-32bit
 
-#have choice for libXNVCtrl.so.0()(64bit): libXNVCtrl0 nvidia-libXNVCtrl
-Prefer: -libXNVCtrl0
-
 # have choice for pkgconfig(liboqs): liboqs-devel liboqs-devel-32bit
 Prefer: -liboqs-devel-32bit
+
+# have choice for libz.so.1: libz-ng-compat1-32bit libz1-32bit
+Prefer: -libz-ng-compat1-32bit
 
 #---
 
@@ -2098,13 +2098,11 @@ BuildFlags: onlybuild:lame
 BuildFlags: onlybuild:lapack
 BuildFlags: onlybuild:lcms2
 BuildFlags: onlybuild:ldacBT
-BuildFlags: onlybuild:ldb
 BuildFlags: onlybuild:ldns
 BuildFlags: onlybuild:less
 BuildFlags: onlybuild:libICE
 BuildFlags: onlybuild:libSM
 BuildFlags: onlybuild:libX11
-BuildFlags: onlybuild:libXNVCtrl
 BuildFlags: onlybuild:libXScrnSaver
 BuildFlags: onlybuild:libXau
 BuildFlags: onlybuild:libXaw
@@ -3478,7 +3476,6 @@ Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
 Prefer: java-23-openjdk-devel java-23-openjdk java-23-openjdk-headless java-23-openjdk-javadoc
-Prefer: java-22-openjdk-devel java-22-openjdk java-22-openjdk-headless java-22-openjdk-javadoc
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
