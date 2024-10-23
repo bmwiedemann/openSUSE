@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 22 22:16:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.38.0:
+  New Features
+  * support for listing worktrees with gix worktree list
+  * add first 'debug' version of gix diff tree.
+  * add new gix cat command.
+  * add gix merge-file with similar features as git merge-file
+  * gix merge-base for the CLI
+  Bug Fixes
+  * Adjust gix clean warning and help for worktree fix
+  * Clarify -r/--repositories and --skip-hidden-repositories  
+  Other
+  * switch from time to jiff
+  * Unify style in config support info
+
+-------------------------------------------------------------------
 Thu Jul 25 03:36:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.37.0:
@@ -41,7 +58,7 @@ Tue Apr 16 07:45:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 Thu Mar 07 21:52:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Specfile to modern rust, add copyright and cleanup
-- Update to version 0.34.0:
+- Update to version 0.34.0 (bsc#1223249, CVE-2024-32650):
   * add gix clean --patterns-for-entries|-m to help with wildcards.
   * basic gix clean
   * Allow the -n argument as no-op to make them more compatible.
