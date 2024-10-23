@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:05:28 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1231999)
+  * Replaced Recommends libica-tools with Requires
+
+-------------------------------------------------------------------
 Wed Jul  3 10:51:28 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches
