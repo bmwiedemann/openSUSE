@@ -174,4 +174,12 @@
   * Add sanity check for chosen security type</comment>
     <requestid>1191110</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3430eb95760335bea279693ebdfde066</srcmd5>
+    <version>0.8.1+git20241008.b539421</version>
+    <time>1729710843</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217333</requestid>
+  </revision>
 </revisionlist>

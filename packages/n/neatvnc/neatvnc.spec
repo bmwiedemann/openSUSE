@@ -19,13 +19,14 @@
 %define libsoname libneatvnc0
 
 Name:           neatvnc
-Version:        0.8.1
+Version:        0.8.1+git20241008.b539421
 Release:        0
 Summary:        A VNC server library
 License:        ISC
 Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
-Source0:        %url/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         fix-build-in-15.6.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

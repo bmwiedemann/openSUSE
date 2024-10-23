@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 07:57:14 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.8.1+git20241008.b539421 adding a _service file to
+  get the sources from git. This fixes a FTBFS with ffmpeg-7 in
+  Factory. Note that we can't use @PARENT_TAG@ in the _service
+  file because 0.8.1 was branched from the v0.8 branch so using it
+  would look like going back to 0.8.0.
+- Add a patch to keep building with older ffmpeg versions too
+  as well as find the gmp dependency, which can't be found using
+  pkgconfig in 15.6:
+  * fix-build-in-15.6.patch
+
+-------------------------------------------------------------------
 Fri Aug  2 06:25:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1228777 (CVE-2024-42458)
