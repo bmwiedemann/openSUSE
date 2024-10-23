@@ -802,4 +802,12 @@
   * --memfree kills do not count as --retries. (forwarded request 1184156 from dirkmueller)</comment>
     <requestid>1184169</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>ea08f658068593da993ca0d7d6294477</srcmd5>
+    <version>20241022</version>
+    <time>1729710721</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20241022</comment>
+    <requestid>1217270</requestid>
+  </revision>
 </revisionlist>

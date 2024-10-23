@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20240622
+Version:        20241022
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source:         https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2
 Source2:        https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        %name-rpmlintrc
-Patch0:         parallel-remove-nag-screen.patch
 BuildArch:      noarch
 
 %description
@@ -81,6 +80,7 @@ This subpackage contains the zsh completion for Parallel.
 
 %install
 %make_install
+echo 'sub citation_notice(){}' >>"%buildroot/%_bindir/parallel"
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20241022.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmcWqEIACgkQ0atFFoiI
+iIiiviadHxudIp173wIRa8umD7NQCfQmM+z3wM8oL8/UM26tGRnM3AGGrEfrRTDB
+JyqKAfwcgA05OqEylQonhS7lSnPV5j2GC36VQjAVaBd/yX+vySCNanbrnppCdwHE
+OQ93cHwvij196XbVyW3lZRbVGzCxmHZHqIhjmoyhmpbZUmOXD1WOrrgtAN3WsS0U
+vPf+L8gl2dEZxYv/flfC3DpCeGNf0nDP19UeIhua4VPod15eC901km3AI9HV14qH
+sXT1wtrrhoMRI8vlBV1SHTDctRfWsfZhS4m1Wcn/HAfa5zkVD3riXU1TtvvjPi0Q
+IOoDUdxNyIynwmxXk+qTyxbh7HKrjtWBaqji+LjrA8MTS+h57ZObdNb5mnZLGAp7
+rVYOfs3tALQgJJLmTO7oyk5i9pMB11euxMaonU2MhCkm21DX4ishNf4xc1F9fgW/
+nhzWsdlQa6N8PAugpFBVQBBVPeMAYmAvoOIZJABsS7yXIT194iqT1yodNYZbNNUq
+c4aOd4x/zltVD84u3hwN7PewSMa4UWA2Lk+Jp4PXXhUh8BiI6EoXSflEnfdrF4Xv
+FI/OgHqZDtaSxbCVQ4Np8vboHLG7Y1ZGpVyWv3zWgD1H4ayAdhtYx8If/+JfBG29
+PJXUgMh9DBl9B0/PzXhgE7q41Ng86GEbFpfle2le4owWPPV+cGLWesg7kwRfZhTV
+8++nfmxa0mm18tbEKvhBoWdsGG1Fao/cpIJfG6Ah8mHQfkokM04GhsjA+h9TRFPa
+9H2m+jUaBaa8GZyG3qKciIR/8DmRTO83MgF2D9m7m2kjdS/eOjYDnZiRTCBkx+w0
+0rM8HWUa1uwF/14H/R2PBI8qpGSO9BSMQiBJa5+MPLMN23I+FepCZ5N8XyvvPpPN
+qBjuqzLVttnnrStmDyJq0jLUaZ7+U2RhIgVe3txIIWkYVhdXJZCmdY31Rf9OvsMd
+MddEtAX/5p6xIA+Q/KWMIHLvsX9qVbdLGhSetDtbc5bj8r53sI4AX7CVoAaWPBoL
+F7GYUW0LgvU6Cgl/9bM1LpepC4lP8boQ6OAKpKPGgs9HbNCvm7YW+pOM9t7iIruf
+3KPcZnMCc+4Bz9nqtpOnmaKfzyMvBIYmj+Ux5BcSaovZmwsPpccfLmCVU+yWuvOo
+ZqBY8vFKt1FI+nXErd+oe6WtWljoBweD546joqt+i+FXZCk3FarcOzhd1ObS2bmA
+VGENCoN0IbQiCcwMCrQy9JyHINzAk8FhxhMt2T3W0XLVsz1+WBE5MeBFgda9fE6D
+uDozlaODVw6c2D5LVBQFJ/xk9lHhoB4QnzByiZwkKXx/1XgP8UCkNNHobwGKAh2h
+HjIou6RhX9JM7HPwCSNq/9ya10Zx8D4ieRX4yCfh7T2eAn2MjYqsGFegFpk+DbIW
+qR/LXKTJuTG7V/Ie1NiQCJ/Xx7BY0isFSJZ0Z03Nd5Ity1KSFH06Hr+IOPytoDsp
+XzpmPdDmmB7IvkVpWBqI3HWMTSpB6MRWkicfi5Yll5HkPM64UHh74iF5zA+O5tQT
+RLnSMNZDXuvtkpwDo47s4uya0Nwgo+fkKQJ1KnIQMdSn2XbhK6oG+iSne95AhLiK
+eOHX233e7CRzbQQU6VDB2uljCuhW54D0Ws1K78I12EKDZMvy9VxaEPBc
+=loqh
+-----END PGP SIGNATURE-----
