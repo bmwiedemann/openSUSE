@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:08:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- switch to using tar_scm to make maintenance easier for William (large obscpio
+  uploads)
+
+-------------------------------------------------------------------
 Thu Oct 17 11:53:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package wasm-bindgen: CLI for wasm-bindgen, facilitating

@@ -7,4 +7,12 @@
     <comment>new package wasm-bindgen, will be required by LLDAP: CLI for wasm-bindgen, facilitating high-level interactions between Wasm modules and JavaScript</comment>
     <requestid>1216920</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e47a08971fdb9be1dfa1eba1053178f4</srcmd5>
+    <version>0.2.95~0</version>
+    <time>1729710632</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217133</requestid>
+  </revision>
 </revisionlist>
