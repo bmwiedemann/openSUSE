@@ -15,18 +15,17 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk22-%RELEASE%
-#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk22
-#!BuildTag: opensuse/apache-tomcat:10.1-openjdk22-%RELEASE%
-#!BuildTag: opensuse/apache-tomcat:10.1-openjdk22
-#!BuildTag: opensuse/apache-tomcat:latest
+#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk23-%RELEASE%
+#!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk23
+#!BuildTag: opensuse/apache-tomcat:10.1-openjdk23-%RELEASE%
+#!BuildTag: opensuse/apache-tomcat:10.1-openjdk23
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 which curl sed java-22-openjdk java-22-openjdk-headless; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 curl sed java-23-openjdk java-23-openjdk-headless; \
     zypper -n --installroot /target remove util-linux; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
@@ -42,13 +41,13 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="%%tomcat_version%%-openjdk22-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/apache-tomcat:%%tomcat_version%%-openjdk22-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%tomcat_version%%-openjdk23-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/apache-tomcat:%%tomcat_version%%-openjdk23-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/apache-tomcat-10-image/README.openjdk22.md"
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/apache-tomcat-10-image/README.openjdk23.md"
 LABEL io.artifacthub.package.logo-url="https://tomcat.apache.org/res/images/tomcat.png"
 ENV TOMCAT_MAJOR="10"
 ENV TOMCAT_VERSION="%%tomcat_version%%"
