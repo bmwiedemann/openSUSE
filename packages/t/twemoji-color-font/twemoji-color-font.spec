@@ -1,6 +1,8 @@
 #
 # spec file for package twemoji-color-font
 #
+# Copyright (c) 2016 Yunhe Guo <guoyunhebrave@gmail.com>
+# Copyright (c) 2018–2024 Markus S. <kamikazow@opensuse.org>
 # Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +19,7 @@
 
 
 Name:           twemoji-color-font
-Version:        14.0.2
+Version:        15.1.0
 Release:        0
 Summary:        Font using Twitter’s color emoji
 License:        CC-BY-4.0
