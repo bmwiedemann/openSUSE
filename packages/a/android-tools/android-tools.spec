@@ -16,20 +16,19 @@
 #
 
 
-%define _pyver 3
-%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
-%define _pyver 311
-%endif
-%if 0%{?sle_version} == 150400
-%define _pyver 310
-%endif
-
 %if 0%{?suse_version} < 1600
-%define use_bundled_libfmt 1
+%define _pyver  311
+%else
+%define _pyver  3
 %endif
-# currently libusb with support for SuperSpeed+ is required,
+%if 0%{?suse_version} <= 1600
+%bcond_without  bundled_libfmt
+%else
+%bcond_with     bundled_libfmt
+%endif
+# currently libusb with support for SuperSpeedPlus is required,
 # which is not yet released, so the one bundled is used.
-%define use_bundled_libusb 1
+%bcond_without  bundled_libusb
 
 Name:           android-tools
 Version:        35.0.2
@@ -52,13 +51,14 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) >= 21
 BuildRequires:  pkgconfig(zlib)
 Requires:       android-udev-rules
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
+Provides:       bundled(boringssl)
 ExcludeArch:    s390x
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang15
@@ -66,13 +66,16 @@ BuildRequires:  gcc11-c++
 %else
 BuildRequires:  clang
 %endif
-%if %{undefined use_bundled_libfmt}
+%if %{with bundled_libfmt}
+Provides:       bundled(fmt) = 10.2.0
+%else
 BuildRequires:  pkgconfig(fmt) >= 10.2.0
 %endif
-%if %{undefined use_bundled_libusb}
-BuildRequires:  pkgconfig(libusb-1.0)
-%else
+%if %{with bundled_libusb}
 BuildRequires:  pkgconfig(libudev)
+Provides:       bundled(libusb-1_0)
+%else
+BuildRequires:  pkgconfig(libusb-1.0)
 %endif
 
 %description
@@ -111,26 +114,23 @@ Bash command line completion support for android-tools.
 %define __builder ninja
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
-%if 0%{?suse_version} < 1600
-CMAKE_C_COMPILER=clang-15
-CMAKE_CXX_COMPILER=clang++-15
-%else
-CMAKE_C_COMPILER=clang
-CMAKE_CXX_COMPILER=clang++
-%endif
-
 %cmake \
-	-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} \
-	-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} \
-%if %{defined use_bundled_libfmt}
-	-DANDROID_TOOLS_USE_BUNDLED_FMT=ON \
-%endif
-%if %{defined use_bundled_libusb}
-	-DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
-	-DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
+%if 0%{?suse_version} < 1600
+	-DCMAKE_C_COMPILER=clang-15 \
+	-DCMAKE_CXX_COMPILER=clang++-15 \
+%else
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++ \
 %endif
 %ifarch %{ix86}
 	-DOPENSSL_NO_ASM=ON \
+%endif
+%if %{with bundled_libfmt}
+	-DANDROID_TOOLS_USE_BUNDLED_FMT=ON \
+%endif
+%if %{with bundled_libusb}
+	-DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
+	-DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
 %endif
 	-DBUILD_SHARED_LIBS=OFF
 
@@ -195,7 +195,11 @@ mkbootimg --help
 %{_bindir}/lp{add,dump,flash,make,unpack}
 
 %files bash-completion
+%if 0%{?suse_version} < 1600
+%exclude %{_datadir}/bash-completion/completions/adb
+%else
 %{_datadir}/bash-completion/completions/adb
+%endif
 %{_datadir}/bash-completion/completions/fastboot
 
 %changelog

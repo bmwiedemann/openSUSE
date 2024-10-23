@@ -164,4 +164,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199071</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>edab3329588f46471d2615a18bd395bb</srcmd5>
+    <version>35.0.2</version>
+    <time>1729710634</time>
+    <user>anag+factory</user>
+    <comment>- Fix build for Leap 16.0
+- Add 'Provides: bundled(...)' where appropriate
+- Clean up spec file
+- remove adb from bash-completion package for SLE15 because it is
+  still part of bash-completion itself
+- Use specific python versions for all SLE15 variants
+- Require protobuf &gt;= 21 until earlier variants are supported again
+</comment>
+    <requestid>1217137</requestid>
+  </revision>
 </revisionlist>

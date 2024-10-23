@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 20 11:48:59 UTC 2024 - munix9@googlemail.com
+
+- Fix build for Leap 16.0
+- Add 'Provides: bundled(...)' where appropriate
+- Clean up spec file
+
+-------------------------------------------------------------------
+Sun Sep 22 22:22:22 UTC 2024 - olaf@aepfle.de
+
+- remove adb from bash-completion package for SLE15 because it is
+  still part of bash-completion itself
+- Use specific python versions for all SLE15 variants
+- Require protobuf >= 21 until earlier variants are supported again
+
+-------------------------------------------------------------------
 Thu Aug 29 19:00:08 UTC 2024 - munix9@googlemail.com
 
 - Fix build on i586.
