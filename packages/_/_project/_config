@@ -1873,6 +1873,7 @@ BuildFlags: onlybuild:dosfstools
 BuildFlags: onlybuild:dotconf
 BuildFlags: onlybuild:double-conversion
 BuildFlags: onlybuild:doxygen
+BuildFlags: onlybuild:dpkg
 BuildFlags: onlybuild:dpkg:update-alternatives
 BuildFlags: onlybuild:dracut
 BuildFlags: onlybuild:dtc
@@ -2128,6 +2129,7 @@ BuildFlags: onlybuild:libXtst
 BuildFlags: onlybuild:libXv
 BuildFlags: onlybuild:libXvMC
 BuildFlags: onlybuild:libXxf86vm
+BuildFlags: onlybuild:libabigail
 BuildFlags: onlybuild:libaio
 BuildFlags: onlybuild:libalternatives
 BuildFlags: onlybuild:libao
@@ -2695,6 +2697,7 @@ BuildFlags: onlybuild:perl-Test-Pod
 BuildFlags: onlybuild:perl-Test-Pod-Coverage
 BuildFlags: onlybuild:perl-Test-Requires
 BuildFlags: onlybuild:perl-Test-RequiresInternet
+BuildFlags: onlybuild:perl-Test-Strict
 BuildFlags: onlybuild:perl-Test-Taint
 BuildFlags: onlybuild:perl-Test-Warn
 BuildFlags: onlybuild:perl-Test-Warnings
@@ -3311,6 +3314,7 @@ BuildFlags: onlybuild:zeromq
 BuildFlags: onlybuild:zimg
 BuildFlags: onlybuild:zip
 BuildFlags: onlybuild:zlib
+BuildFlags: onlybuild:zlib-ng:compat
 BuildFlags: onlybuild:zsh
 BuildFlags: onlybuild:zstd
 BuildFlags: onlybuild:zvbi
