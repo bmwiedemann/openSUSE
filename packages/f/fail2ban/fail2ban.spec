@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later
@@ -42,8 +42,6 @@ Source200:      fail2ban.keyring
 Patch100:       %{name}-opensuse-locations.patch
 # PATCH-FIX-OPENSUSE fail2ban-opensuse-service.patch jweberhofer@weberhofer.at -- openSUSE modifications to the service file
 Patch101:       %{name}-opensuse-service.patch
-# PATCH-FIX-OPENSUSE fail2ban-disable-iptables-w-option.patch jweberhofer@weberhofer.at -- disable iptables "-w" option for older releases
-Patch200:       %{name}-disable-iptables-w-option.patch
 # PATCH-FIX-OPENSUSE fail2ban-0.10.4-env-script-interpreter.patch jweberhofer@weberhofer.at -- use exact path to define interpretor
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 # PATCH-FEATURE-OPENSUSE fail2ban-opensuse-service-sfw.patch jweberhofer@weberhofer.at -- start after SuSEfirewall2 only for older distributions
@@ -62,11 +60,9 @@ Requires:       cron
 Requires:       ed
 Requires:       iptables
 Requires:       logrotate
-Requires:       python3 >= 3.2
+Requires:       python3 >= 3.5
 Requires:       whois
-%if 0%{?suse_version} != 1110
 BuildArch:      noarch
-%endif
 %if 0%{?suse_version} >= 1230
 # systemd
 BuildRequires:  python3-systemd
@@ -79,7 +75,7 @@ Requires:       systemd > 204
 Requires:       lsof
 Requires:       syslog
 %endif
-%if 0%{?suse_version} >= 1140 && 0%{?suse_version} != 1010  && 0%{?suse_version} != 1110 && 0%{?suse_version} != 1315
+%if 0%{?suse_version} >= 1500
 BuildRequires:  python3-pyinotify >= 0.8.3
 Requires:       python3-pyinotify >= 0.8.3
 %endif
@@ -134,9 +130,6 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
 %patch -P 100 -p1
 %patch -P 101 -p1
-%if 0%{?suse_version} < 1310
-%patch -P 200 -p1
-%endif
 %patch -P 201 -p1
 %if !0%{?suse_version} > 1500
 %patch -P 300 -p1
@@ -160,7 +153,6 @@ sed -i -e 's|^\([^_]*_backend = systemd\)|#\1|' config/paths-opensuse.conf
 
 %build
 export CFLAGS="%{optflags}"
-./fail2ban-2to3
 python3 setup.py build
 gzip man/*.{1,5}
 
@@ -229,10 +221,8 @@ rm -r %{buildroot}%{_docdir}/%{name}
 %fdupes -s %{buildroot}%{python3_sitelib}
 
 %check
-#stat /dev/log
-#python -c "import platform; print(platform.system())"
 # tests require python-pyinotify to be installed, so don't run them on older versions
-%if 0%{?suse_version} >= 1140 && 0%{?suse_version} != 1010  && 0%{?suse_version} != 1110 && 0%{?suse_version} != 1315
+%if 0%{?suse_version} >= 1500
 # Need a UTF-8 locale to work
 export LANG=en_US.UTF-8
 ./fail2ban-testcases-all --no-network || true
