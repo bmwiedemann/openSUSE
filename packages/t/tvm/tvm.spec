@@ -18,6 +18,10 @@
 
 %define _lto_cflags %{nil}
 
+# System dmlc is too old - https://github.com/apache/tvm/issues/17459#issuecomment-2429144716
+%bcond_with system_dmlc
+%define dmlc_version 3031e4a
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %ifarch aarch64 x86_64 ppc64le
@@ -35,12 +39,14 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
+# License2: MIT
+Source2:        https://github.com/dmlc/dmlc-core/archive/%{dmlc_version}.tar.gz#/dmlc-core.tar.gz
 # PATCH-FIX-OPENSUSE lib-finder-python-cmake.patch -- custom cmake path
 Patch1:         lib-finder-python-cmake.patch
 # PATCH-FIX-OPENSUSE tvm-fix-openblas.patch -- We use openblas headers instead of netlib cblas
@@ -68,7 +74,9 @@ BuildRequires:  ComputeLibrary-devel
 BuildRequires:  antlr4-java
 BuildRequires:  cmake
 BuildRequires:  dlpack-devel >= 0.7
+%if %{with system_dmlc}
 BuildRequires:  dmlc-core-devel
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -142,6 +150,11 @@ Libraries generated for TVM without any provided soname.
 %prep
 %setup -q
 %autopatch -p1
+pushd 3rdparty
+%if %{without system_dmlc}
+tar xf %{SOURCE2} && rmdir dmlc-core && mv dmlc-core-* dmlc-core
+%endif
+popd
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
 ln -s %{_includedir}/endian.h include/endian.h
@@ -166,7 +179,11 @@ popd
   -DUSE_ARM_COMPUTE_LIB_GRAPH_RUNTIME=ON \
   -DUSE_ARM_COMPUTE_LIB=ON \
 %endif
+%if %{with system_dmlc}
   -DDMLC_PATH="%{_includedir}/dmlc" \
+%else
+  -DDMLC_PATH="$(pwd)/../3rdparty/dmlc-core/include" \
+%endif
   -DDLPACK_PATH="%{_includedir}/dlpack" \
   -DRANG_PATH="%{_includedir}/rang" \
   -DUSE_GRAPH_RUNTIME=ON \
@@ -211,6 +228,9 @@ popd
 rm -rf %{buildroot}%{_prefix}/tvm
 # Remove src,include,3rdparty dirs
 %python_expand rm -rf %{buildroot}/%{$python_sitearch}/tvm/{src,include,3rdparty}/
+%if %{without system_dmlc}
+rm -rf %{buildroot}%{_includedir}/dmlc
+%endif
 # Remove .cpp file
 %python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
 # tvmc shebang should be default python, not highest available version
