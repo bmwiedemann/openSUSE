@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:00:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.125:
+  * Meshery CLI
+    - error handling for Panic in mesheryctl env create
+      @pranjalg1331 (#12332)
+
+-------------------------------------------------------------------
 Sat Oct 19 11:09:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.124:
