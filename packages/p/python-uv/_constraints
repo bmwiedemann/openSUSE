@@ -5,5 +5,25 @@
       <size unit="G">16</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+	<size unit="G">19</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+	<size unit="G">21</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
 
