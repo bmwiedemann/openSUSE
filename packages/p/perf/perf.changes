@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 05:43:22 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- use %{version_pure} for patch in/exclusion (and apply 6.12 patch only
+  on < 6.12)
+
+-------------------------------------------------------------------
 Thu Oct 10 08:27:35 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add perf-fix-non-listed-archs.patch to fix armv7l build

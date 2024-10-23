@@ -681,4 +681,13 @@
 </comment>
     <requestid>1206671</requestid>
   </revision>
+  <revision rev="79" vrev="88">
+    <srcmd5>04da138b92393e65461c59b5d38d9233</srcmd5>
+    <version>MACRO</version>
+    <time>1729710657</time>
+    <user>anag+factory</user>
+    <comment>- use %{version_pure} for patch in/exclusion (and apply 6.12 patch only
+  on &lt; 6.12)</comment>
+    <requestid>1217159</requestid>
+  </revision>
 </revisionlist>
