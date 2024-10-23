@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:20:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.194.0:
+  * Add release notes for v0.194.0
+  * Fix tests
+  * Support EKS zonal shift config
+  * Fix missing ELB listener attribute actions required for AWS
+    Load Balancer Controller v2.9.0
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Oct 18 12:18:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.193.0:
