@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:33:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove unnecessary lock group
+
+-------------------------------------------------------------------
 Mon Nov 27 21:17:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.3 (bsc#1216491):

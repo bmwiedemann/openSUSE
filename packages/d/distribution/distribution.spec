@@ -1,7 +1,7 @@
 #
 # spec file for package distribution
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,6 +107,8 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 %service_del_postun registry.service
 
 %files registry
+%license LICENSE
+%doc README.md README-registry.SUSE
 %{_bindir}/digest
 %{_bindir}/registry
 %{_bindir}/registry-api-descriptor-template
@@ -115,8 +117,6 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 %{_sysusersdir}/system-user-registry.conf
 %config %{_sysconfdir}/registry
 %config(noreplace) %{_sysconfdir}/registry/config.yml
-%doc README.md README-registry.SUSE
-%license LICENSE
 %attr(-,registry,registry) %{_localstatedir}/lib/docker-registry
 
 %changelog
