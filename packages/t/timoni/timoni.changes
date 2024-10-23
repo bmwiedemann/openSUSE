@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:45:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.1:
+  * Build with Go 1.23
+  * Update dependencies to Kubernetes v1.31
+  * build(deps): bump the ci group across 1 directory with 4
+    updates
+  * Pass argument flags when initializing logger
+  * fix: fix slice init length
+  * Fix runtime builder
+  * Rename "workspaceFiles" field to "workspacesFiles"
+  * Add test making sure file:// works
+  * Fix #364
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump the ci group across 1 directory with 4
+    updates
+  * build(deps): bump the ci group across 1 directory with 3
+    updates
+
+-------------------------------------------------------------------
 Wed Jul 03 15:39:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.0:
