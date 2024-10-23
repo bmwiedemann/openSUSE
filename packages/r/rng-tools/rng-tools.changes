@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:56:10 CEST 2024 - ro@suse.de
+
+- add patch rng-tools-missing-includes.patch
+  add missing include statements to fix compilation with recent gcc 
+
+-------------------------------------------------------------------
 Wed Jul 31 16:42:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Do not specify a fill-watermark in the service file to fix non-

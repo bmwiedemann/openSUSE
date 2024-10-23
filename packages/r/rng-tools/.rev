@@ -528,4 +528,13 @@
     <comment>boo#1228245 (forwarded request 1190786 from AndreasStieger)</comment>
     <requestid>1190829</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>ac4056cd5fee8c4fd13b6b87ad418f9d</srcmd5>
+    <version>6.17</version>
+    <time>1729710841</time>
+    <user>anag+factory</user>
+    <comment>- add patch rng-tools-missing-includes.patch
+  add missing include statements to fix compilation with recent gcc (forwarded request 1217310 from oertel)</comment>
+    <requestid>1217311</requestid>
+  </revision>
 </revisionlist>

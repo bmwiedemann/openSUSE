@@ -27,6 +27,7 @@ URL:            https://github.com/nhorman/rng-tools
 Source:         https://github.com/nhorman/rng-tools/archive/v%{version}.tar.gz
 Source2:        %{name}.service
 Source3:        90-hwrng.rules
+Patch1:         rng-tools-missing-includes.patch
 BuildRequires:  automake
 BuildRequires:  libp11-devel
 BuildRequires:  pkgconfig
@@ -78,7 +79,7 @@ random  number  entropy  pool,  after	first checking the data to
 ensure that it is properly random.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh

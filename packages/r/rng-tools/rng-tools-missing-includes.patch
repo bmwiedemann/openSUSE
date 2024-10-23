@@ -1,0 +1,23 @@
+--- ./ossl_helpers.h	2024/10/23 09:49:55	1.1
++++ ./ossl_helpers.h	2024/10/23 09:50:06
+@@ -19,6 +19,8 @@
+ #ifndef OSSL_HELPERS__H
+ #define OSSL_HELPERS__H
+ 
++#include <string.h>
++
+ #define AES_BLOCK		16
+ 
+ struct ossl_aes_ctx;
+--- ./rngd_jitter.c	2024/10/23 09:54:49	1.1
++++ ./rngd_jitter.c	2024/10/23 09:54:58
+@@ -27,6 +27,9 @@
+ #include <unistd.h>
+ #include <signal.h>
+ #include <setjmp.h>
++#include <string.h>
++#include <stdlib.h>
++#include <fcntl.h>
+ 
+ #include "rng-tools-config.h"
+ 
