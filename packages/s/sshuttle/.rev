@@ -204,4 +204,20 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment></comment>
     <requestid>1151828</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9abae743461a54920ac651b383f03944</srcmd5>
+    <version>1.1.2</version>
+    <time>1729710674</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.2:
+  * Removed a little bit of legacy code
+  * logging priority to turn off noise
+  * Add support for SSHUTTLE_ARGS environment variable
+  * tproxy: Apply DNS rules first
+  * Workaround when sudo prints text to standard out
+  * Keep terminal in a sane state when sudo use_pty is used.
+  * Allow flake8 to determine the version of pyflakes
+- drop fix-pytest.patch: obsolete (added pytest-cov instead)</comment>
+    <requestid>1217249</requestid>
+  </revision>
 </revisionlist>

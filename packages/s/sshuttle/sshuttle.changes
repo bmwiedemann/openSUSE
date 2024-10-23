@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:41:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Removed a little bit of legacy code
+  * logging priority to turn off noise
+  * Add support for SSHUTTLE_ARGS environment variable
+  * tproxy: Apply DNS rules first
+  * Workaround when sudo prints text to standard out
+  * Keep terminal in a sane state when sudo use_pty is used.
+  * Allow flake8 to determine the version of pyflakes
+- drop fix-pytest.patch: obsolete (added pytest-cov instead)
+
+-------------------------------------------------------------------
 Mon Feb 26 13:46:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

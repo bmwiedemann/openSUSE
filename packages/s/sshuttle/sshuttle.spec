@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,26 +22,26 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           sshuttle
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/sshuttle/sshuttle
-Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshuttle-%{version}.tar.gz
+Source0:        https://github.com/sshuttle/sshuttle/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        sysconfig.%{name}
-Patch0:         fix-pytest.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pip
+BuildRequires:  python3-poetry-core
 BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-wheel
 BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 BuildArch:      noarch
-BuildRequires:  python3-Sphinx
 %sysusers_requires
 
 %description
