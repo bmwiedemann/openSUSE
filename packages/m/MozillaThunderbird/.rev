@@ -5514,4 +5514,12 @@ I cannot test locally unfortunately.
 - bring back mozilla-bmo531915.patch to fix x86</comment>
     <requestid>1208840</requestid>
   </revision>
+  <revision rev="344" vrev="1">
+    <srcmd5>a1424ca35ec8333d01e8294933956745</srcmd5>
+    <version>128.3.3</version>
+    <time>1729710636</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217157</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 23 06:45:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 128.3.3
+  * Files left over from failed folder compactions could use up
+    disk space (bmo#1878541)
+  * Message list returned to selected message after action on
+    another message (bmo#1917485)
+  * Some faulty messages were downloaded and never stored
+    (bmo#1923765)
+  * Messages could become corrupted during folder compaction
+    (bmo#1923747,bmo#1923541,bmo#1720047)
+  * Searching events by Location, Description, or URL failed
+    (bmo#1912710)
+  * "Remove All Shown" saved passwords deleted all logins if
+    filtered without results (bmo#601447)
+  * Calendar event updates were not always sent to attendees
+    (bmo#1877640)
+
+-------------------------------------------------------------------
 Wed Oct 16 14:52:43 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.3.2
