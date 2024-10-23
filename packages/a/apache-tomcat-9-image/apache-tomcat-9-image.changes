@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 10:21:39 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- revert temporary explicit install of which
+
+-------------------------------------------------------------------
 Mon Oct 14 11:26:26 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - make the version-%release tag the first one listed; remove duplicates where they existed; update image.ref/reference to point to the version-%release(-) tag
