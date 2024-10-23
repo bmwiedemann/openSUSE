@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:40:07 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 8.0.6:
+  See https://www.kicad.org/blog/2024/10/KiCad-8.0.6-Release/ for details
+- Drop upstream patches:
+  * fix_boost_1_86_compat.patch
+  * fix_bad_cast_boost_1_86.patch
+  * fix_boost_1_86_sha1_detail.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 10:28:24 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 8.0.5:

@@ -20,20 +20,14 @@
 # symbol libraries from version 8.0.0
 %define compatversion 8.0.0
 Name:           kicad
-Version:        8.0.5
-%define file_version 8.0.5
+Version:        8.0.6
+%define file_version 8.0.6
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.com/kicad/code/kicad/-/commit/f4f9513f808fae515acf8253269a4eec9a667cd5.patch#/fix_boost_1_86_compat.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.com/kicad/code/kicad/-/commit/9fdd825681fb5c639470f8a68f1bf4cf73cc5cd1.patch#/fix_bad_cast_boost_1_86.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         fix_boost_1_86_sha1_detail.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
