@@ -1,7 +1,7 @@
 #
 # spec file for package mcpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            https://mcpp.sourceforge.net/
 Source0:        https://github.com/museoa/mcpp/archive/refs/tags/%{version}.tar.gz
 Patch0:         %{name}-2.7.2.1.diff
+Patch1:         mcpp-c99.patch
 
 %description
 mcpp is a small and portable C/C++ preprocessor implementing all of
@@ -67,8 +68,7 @@ export CFLAGS="%{optflags} -D_BSD_SOURCE"
 rm -rf %{buildroot}%{_datadir}/doc/mcpp
 rm -rf %{buildroot}%{_libdir}/libmcpp.*a
 
-%post   -n %{_libname} -p /sbin/ldconfig
-%postun -n %{_libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{_libname}
 
 %files
 %license LICENSE

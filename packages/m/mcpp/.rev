@@ -126,4 +126,13 @@
 - drop CVE-2019-14274.patch (included already)</comment>
     <requestid>1174214</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8cf3e62b0a607d0a965fa79eb7432b45</srcmd5>
+    <version>2.7.2.1</version>
+    <time>1729710673</time>
+    <user>anag+factory</user>
+    <comment>- refresh mcpp-2.7.2.1.diff, add mcpp-c99.patch: Gcc 14+ build
+  fixes</comment>
+    <requestid>1217243</requestid>
+  </revision>
 </revisionlist>
