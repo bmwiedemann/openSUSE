@@ -606,6 +606,7 @@ Requires:       distribution-release
 Requires:       filesystem
 # We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
 Suggests:       libz1
+Suggests:       libz1-32bit
 # Tell the solver to default to the main product
 Suggests:       openSUSE-release
 %{obsolete_legacy_pattern minimal_base}

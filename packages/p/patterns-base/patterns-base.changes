@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 23 07:16:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- In case of doubt, also favor libz1-32bit over libz-ng1-compat for
+  the time being.
+
+-------------------------------------------------------------------
 Wed Oct 16 14:17:27 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
-- Add "Requires: selinux-policy-base" to selinux pattern so that 
+- Add "Requires: selinux-policy-base" to selinux pattern so that
   selinux-policy-targeted will be installed on systems that disable
   "Recommends" (bsc#1231720)
 

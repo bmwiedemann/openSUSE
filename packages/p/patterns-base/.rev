@@ -953,4 +953,15 @@
   &quot;Recommends&quot; (bsc#1231720)</comment>
     <requestid>1208663</requestid>
   </revision>
+  <revision rev="110" vrev="56">
+    <srcmd5>085f489f082ece9d3974cf24db78cb30</srcmd5>
+    <version>20200505</version>
+    <time>1729710898</time>
+    <user>anag+factory</user>
+    <comment>- In case of doubt, also favor libz1-32bit over libz-ng1-compat for
+  the time being.
+
+- Add &quot;Requires: selinux-policy-base&quot; to selinux pattern so that</comment>
+    <requestid>1217160</requestid>
+  </revision>
 </revisionlist>
