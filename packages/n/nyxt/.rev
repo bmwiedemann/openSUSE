@@ -195,4 +195,12 @@ Update to version 3.11.2</comment>
     <comment>Update to version 3.11.8</comment>
     <requestid>1191020</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8f0bcbe5d17d68ff0fd82b43bd38cf95</srcmd5>
+    <version>3.12.0</version>
+    <time>1729710626</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.12.0</comment>
+    <requestid>1217117</requestid>
+  </revision>
 </revisionlist>
