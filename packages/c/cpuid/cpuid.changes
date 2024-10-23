@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 09:10:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20241021
+  * Recognition for some Intel Arrow Lake-U, Nova Lake, Core
+    200S, Core 200V, Xeon 6 Sierra Forest models.
+  * Removed KaiXian KX-7000.
+
+-------------------------------------------------------------------
 Mon Aug  5 16:05:55 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to release 20240716
