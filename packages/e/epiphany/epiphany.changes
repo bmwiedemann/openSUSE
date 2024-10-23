@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 22 19:57:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix crash loading Global Protect URL
+  + Fix Privacy Report dialog when no trackers are blocked
+  + Fix crash loading taobao.com
+  + Disallow duplicate tag widgets on bookmark edit dialog
+  + Add workaround for DuckDuckGo redirect service failure
+- Drop epiphany-fix-parsing-encoded-session-urls.patch: Fixed
+  upstream
+
+-------------------------------------------------------------------
 Mon Oct 21 03:37:09 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add epiphany-fix-parsing-encoded-session-urls.patch: Fix crash
