@@ -26,4 +26,17 @@
   * python 3.13.0b3 support added (forwarded request 1189935 from rrahl0)</comment>
     <requestid>1189936</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>545c3c2b14001e1d01fd1bb711fb2931</srcmd5>
+    <version>0.20.0</version>
+    <time>1729777407</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.0:
+  * Initial support for parsing auxiliary images.
+  * Dropped Python 3.8 support
+  * More accurate error handling in the C module
+  * Support for Pillow 11.0.0
+- remove building option for x265, as I can't verify it for now (forwarded request 1217446 from rrahl0)</comment>
+    <requestid>1217447</requestid>
+  </revision>
 </revisionlist>

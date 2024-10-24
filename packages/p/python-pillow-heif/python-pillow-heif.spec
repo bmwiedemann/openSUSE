@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with     x265
 Name:           python-pillow-heif
-Version:        0.18.0
+Version:        0.20.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
@@ -33,11 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(aom) >= 3.3.0
 BuildRequires:  pkgconfig(libavif)
-BuildRequires:  pkgconfig(libheif) >= 1.18.1
-%if %{with x265}
-BuildRequires:  pkgconfig(libde265)
-BuildRequires:  pkgconfig(x265)
-%endif
+BuildRequires:  pkgconfig(libheif) >= 1.18.2
 Requires:       python-Pillow >= 9.5.0
 %python_subpackages
 

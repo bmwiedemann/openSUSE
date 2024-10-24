@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 19 18:52:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.20.0:
+  * Initial support for parsing auxiliary images.
+  * Dropped Python 3.8 support
+  * More accurate error handling in the C module
+  * Support for Pillow 11.0.0
+- remove building option for x265, as I can't verify it for now
+
+-------------------------------------------------------------------
 Sat Jul 27 19:39:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.18.0:
