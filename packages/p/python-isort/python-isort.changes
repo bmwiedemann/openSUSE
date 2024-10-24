@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:20:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed build dependencies
+
+-------------------------------------------------------------------
 Fri Aug 30 02:57:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.patch:

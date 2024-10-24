@@ -642,4 +642,12 @@ Let's see which package is missing in ringX for test flavor</comment>
   * Do not use the anti-pattern of pytest.warns(None).</comment>
     <requestid>1197676</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>1741c23ede285880bb7eb692641d4b3b</srcmd5>
+    <version>5.13.2</version>
+    <time>1729777502</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed build dependencies</comment>
+    <requestid>1218037</requestid>
+  </revision>
 </revisionlist>

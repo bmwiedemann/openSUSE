@@ -63,10 +63,8 @@ BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module isort == %{version}}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
-BuildRequires:  %{python_module poetry}
 %if %{with pylama}
 BuildRequires:  %{python_module pylama}
 %endif
