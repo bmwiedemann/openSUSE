@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:16:17 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.43
+- Remove razercfg-rpmlintrc as it is no longer required.
+
+-------------------------------------------------------------------
 Fri Feb 23 11:46:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

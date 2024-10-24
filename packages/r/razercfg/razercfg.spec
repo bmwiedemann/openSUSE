@@ -17,7 +17,7 @@
 
 
 Name:           razercfg
-Version:        0.42
+Version:        0.43
 Release:        0
 Summary:        A Razer device configuration tool
 # Icons are http://creativecommons.org/licenses/by/4.0/
@@ -26,17 +26,17 @@ Group:          Hardware/Other
 URL:            https://bues.ch/cms/hacking/razercfg.html
 Source0:        https://bues.ch/razercfg/%{name}-%{version}.tar.xz
 Source1:        https://bues.ch/razercfg/%{name}-%{version}.tar.xz.asc
-Source98:       %{name}.keyring
-Source99:       %{name}-rpmlintrc
+Source99:       %{name}.keyring
 # PATCH-FIX-OPENSUSE razercfg-fix-install-in-libdir -- Install libraries in matching directories (e.g. lib64 for 64bit).
 # Reported upstream 21. July 2015
 Patch0:         razercfg-fix-install-in-libdir.patch
 Patch1:	harden_razerd.service.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(udev)
@@ -58,8 +58,8 @@ make %{?_smp_mflags}
 %install
 %cmake_install
 rm %{buildroot}%{_libdir}/librazer.so
-# Systemd service and udev rule
-install -D -m 444 build/razerd.service %{buildroot}%{_unitdir}/razerd.service
+# Fix udev rule location
+rm -r %{buildroot}/etc/udev
 install -D -m 444 build/udev.rules %{buildroot}%{_udevrulesdir}/80-razer.rules
 # backwards compatibility with rcNAME
 mkdir -p %{buildroot}%{_sbindir}
