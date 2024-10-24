@@ -7,4 +7,12 @@
     <comment>With v0.155.2, Zed finally no longer downloads npm on its own and we can merge with Factory (see SR#1188336, SR#1186710)</comment>
     <requestid>1205310</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b834fed66d3b168e5f00ac364b6a495</srcmd5>
+    <version>0.158.1</version>
+    <time>1729777445</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.158.1</comment>
+    <requestid>1217930</requestid>
+  </revision>
 </revisionlist>

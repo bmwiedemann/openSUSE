@@ -1,6 +1,7 @@
 #
 # spec file for package zed
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Marvin Friedrich
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 13
@@ -31,7 +33,7 @@
 %endif
 
 Name:           zed
-Version:        0.155.2
+Version:        0.158.1
 Release:        0
 Summary:        A high-performance, multiplayer code editor
 License:        AGPL-3.0-or-later AND Apache-2.0 AND GPL-3.0-only
@@ -39,16 +41,16 @@ Group:          Development/Tools/IDE
 URL:            https://github.com/zed-industries/zed
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  git
-BuildRequires:  gcc%{?force_gcc_version}-c++
-BuildRequires:  cargo-packaging
 BuildRequires:  cargo >= 1.80
+BuildRequires:  cargo-packaging
 BuildRequires:  cmake
+BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
 
 %if %{with mold}
-BuildRequires:  mold
 BuildRequires:  clang
+BuildRequires:  mold
 %endif
 
 # all pkgconfig BR are based on the the build.rs files in the vendor tree
