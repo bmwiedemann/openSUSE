@@ -40,4 +40,13 @@
   * **NEW** Add Python 3.13 support.</comment>
     <requestid>1192789</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>913b818eb55f91151a4dc34dffadb9bc</srcmd5>
+    <version>2.5.post1</version>
+    <time>1729710600</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.post1:
+  *   **FIX**: Fix PyPI landing page.</comment>
+    <requestid>1217074</requestid>
+  </revision>
 </revisionlist>

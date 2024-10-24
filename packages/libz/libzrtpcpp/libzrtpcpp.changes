@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 12:54:43 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Adapt libzrtpcpp to build with OpenSSL 3 [bsc#1219884]
+  * Add libzrtpcpp-openssl3.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 13:52:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7.0

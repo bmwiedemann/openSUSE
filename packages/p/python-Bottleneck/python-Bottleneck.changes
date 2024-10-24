@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:13:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Add python_requires to setup.py to limit build to 3.9+
+  * Update the classifiers
+  * Deprecate Python 3.7 and 3.8
+  * Add python 3.13 build
+
+-------------------------------------------------------------------
 Mon Jul  1 04:19:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.0:

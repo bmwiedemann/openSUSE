@@ -33,4 +33,15 @@
   * convert to poetry</comment>
     <requestid>1135261</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>320c56e2d92f4f47f8261090156fed50</srcmd5>
+    <version>1.0.5</version>
+    <time>1729710587</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * typing hints
+  * fix cmd.name to name
+  * dependency bumps</comment>
+    <requestid>1217047</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  9 06:43:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.8.30:
+  added certs:
+  * TWCA CYBER Root CA O=TAIWAN-CA OU=Root CA
+  * SecureSign Root CA12 O=Cybertrust Japan Co., Ltd.
+  * SecureSign Root CA14 O=Cybertrust Japan Co., Ltd.
+  * SecureSign Root CA15 O=Cybertrust Japan Co., Ltd.
+
+-------------------------------------------------------------------
 Tue Jul  9 06:36:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh patches python-certifi-shipped-requests-cabundle.patch and

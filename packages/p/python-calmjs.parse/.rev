@@ -79,4 +79,15 @@
     reflect which of the required dependencies are missing.</comment>
     <requestid>1124864</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72771703d40fd3cf6ec96b78f439a8bc</srcmd5>
+    <version>1.3.2</version>
+    <time>1729710589</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.2:
+  * Ensure building from source tree under Python 3.13 works.
+  * Dropped support for building under Python 2 in source tree. [
+    #44 ]</comment>
+    <requestid>1217048</requestid>
+  </revision>
 </revisionlist>

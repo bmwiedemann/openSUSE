@@ -604,4 +604,19 @@
     <comment>Security fixes for CVE-2024-33869 bsc#1226946 and CVE-2023-52722 bsc#1223852 and CVE-2024-33870 bsc#1226944 and CVE-2024-33871 bsc#1225491 and CVE-2024-29510 bsc#1226945 for ghostscript and ghostscript-mini (forwarded request 1184312 from jsmeix)</comment>
     <requestid>1184313</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ef2145a6f3e5941d1d08edc06e802124</srcmd5>
+    <version>10.04.0</version>
+    <time>1729710491</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.04.0 (bsc#1232173):
+  * Amongst other general bugs fixes, this release addresses:
+    + CVE-2024-46951
+    + CVE-2024-46952
+    + CVE-2024-46953
+    + CVE-2024-46954
+    + CVE-2024-46955
+    + CVE-2024-46956</comment>
+    <requestid>1217373</requestid>
+  </revision>
 </revisionlist>

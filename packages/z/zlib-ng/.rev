@@ -154,4 +154,17 @@
     <comment></comment>
     <requestid>1198476</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0f48369779ff252fe9204ef46aa8b8a0</srcmd5>
+    <version>2.2.2</version>
+    <time>1729710480</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.2:
+  * Changelog at https://github.com/zlib-ng/zlib-ng/releases/tag/2.2.2
+- Install the ld.so configuration file also with the -32bit
+  package, as otherwise biarch installs won't find that library
+  (boo#1232065).
+</comment>
+    <requestid>1217258</requestid>
+  </revision>
 </revisionlist>

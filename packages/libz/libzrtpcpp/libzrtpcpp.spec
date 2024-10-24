@@ -1,7 +1,7 @@
 #
 # spec file for package libzrtpcpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@ Summary:        A ccrtp extension for ZRTP support
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gnutelephony.org/index.php/GNU_ZRTP
-
 #Git-Clone:	git://github.com/wernerd/ZRTPCPP
 #Git-Web:	https://github.com/wernerd/ZRTPCPP
 Source:         https://github.com/wernerd/ZRTPCPP/archive/%version.tar.gz
+Patch0:         libzrtpcpp-openssl3.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 4.7
-BuildRequires:  libopenssl-1_0_0-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libccrtp) >= 2
 BuildRequires:  pkgconfig(sqlite3) >= 3.7

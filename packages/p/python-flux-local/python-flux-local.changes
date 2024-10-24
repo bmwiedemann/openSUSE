@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Oct 11 09:32:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.0:
+  * Breaking Changes
+    - This is a breaking change that updates the format of the flux
+      build command to have parity with get and diff commands.
+      Example to build a single kustomziation:
+        $ flux-local build ks apps --path tests/testdata/cluster/
+      Example to inflate a single helm release:
+        $ flux-local build hr podinfo -n podinfo --path tests/testdata/cluster
+      The old behavior flux-local build tests/testdata/cluster/ can
+      still be achieved with build all:
+        $ flux-local build all tests/testdata/cluster/
+  * What's Changed
+    - chore(deps): update dependency types-pyyaml to
+      v6.0.12.20240808 by @renovate in #774
+    - chore(deps): update dependency ruff to v0.5.7 by @renovate in
+      #775
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.5.7 by @renovate in #776
+    - chore(deps): update docker.io/bitnami/kubectl docker tag to
+      v1.31.0 by @renovate in #777
+    - chore(deps): update dependency ruff to v0.6.0 by @renovate in
+      #778
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.6.0 by @renovate in #779
+    - chore(deps): update dependency ruff to v0.6.1 by @renovate in
+      #780
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.6.1 by @renovate in #781
+    - chore(deps): update ubuntu docker tag to jammy-20240808 by
+      @renovate in #782
+    - chore(deps): update docker.io/alpine/helm docker tag to
+      v3.15.4 by @renovate in #783
+    - chore(deps): update codespell-project/actions-codespell
+      action to v2.1 by @renovate in #784
+    - chore(deps): update dependency syrupy to v4.6.4 by @renovate
+      in #785
+    - chore(deps): update dependency pytest-asyncio to v0.24.0 by
+      @renovate in #786
+    - chore(deps): update dependency ruff to v0.6.2 by @renovate in
+      #787
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.6.2 by @renovate in #788
+    - chore(deps): update dependency syrupy to v4.7.1 by @renovate
+      in #789
+    - chore(deps): update dependency mypy to v1.11.2 by @renovate
+      in #790
+    - chore(deps): update peter-evans/create-pull-request action to
+      v7 by @renovate in #791
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.6.4 by @renovate in #793
+    - chore(deps): update dependency ruff to v0.6.4 by @renovate in
+      #792
+    - chore(deps): update dependency pdoc to v14.7.0 by @renovate
+      in #794
+    - chore(deps): update dependency pre-commit to v4 by @renovate
+      in #796
+    - chore(deps): update pre-commit hook
+      pre-commit/pre-commit-hooks to v5 by @renovate in #797
+    - Update flux build to have parity with other flux commands by
+      @allenporter in #798
+
+-------------------------------------------------------------------
+Tue Sep 24 12:52:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-flux-local: set of tools and libraries for
+  managing a local flux gitops repository

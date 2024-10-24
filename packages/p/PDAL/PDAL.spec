@@ -22,7 +22,7 @@
 %define lname   pdal
 Name:           PDAL
 Version:        2.8.0
-Release:        0
+Release:        1
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
 # - filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
@@ -49,8 +49,6 @@ BuildRequires:  gdal
 BuildRequires:  geotiff-devel
 BuildRequires:  gtest
 BuildRequires:  jsoncpp-devel
-# We need 3.1.1+ for 1.6
-BuildRequires:  laszip-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
@@ -141,7 +139,6 @@ This package contain the bash completion command for PDAL.
 Summary:        Development files and tools for PDAL applications
 Group:          Development/Libraries/C and C++
 Requires:       cmake
-Requires:       laszip-devel
 Requires:       lib%{name}%{soname} = %{version}
 Requires:       libboost_filesystem-devel
 Requires:       libboost_headers-devel
@@ -197,9 +194,7 @@ export CXX=g++-12
     -Dgtest_build_tests=OFF \
     -DWITH_TESTS=ON \
     -DWITH_COMPLETION=ON \
-    -DWITH_LASZIP=ON \
     -DWITH_LZMA=ON \
-    -DLASZIP_INCLUDE_DIR=%{_includedir} \
     -DPOSTGRESQL_INCLUDE_DIR=%{_includedir}/pgsql \
     -DGEOTIFF_INCLUDE_DIR=%{_includedir}/libgeotiff \
     -DBUILD_SHARED_LIBS=ON \

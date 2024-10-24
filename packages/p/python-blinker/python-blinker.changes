@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct 22 11:58:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Simplify type for _async_wrapper and _sync_wrapper arguments.
+    :pr:`156`
+  * Restore identity handling for str and int senders. :pr:`148`
+  * Fix deprecated blinker.base.WeakNamespace import. :pr:`149`
+  * Fix deprecated blinker.base.receiver_connected import.
+    :pr:`153`
+  * Use types from collections.abc instead of typing. :pr:`150`
+  * Fully specify exported types as reported by pyright.
+    :pr:`152`
+  * Deprecate the __version__ attribute. Use feature detection,
+    or importlib.metadata.version("blinker"), instead.
+    :issue:`128`
+  * Specify that the deprecated temporarily_connected_to will be
+    removed in the next version.
+  * Show a deprecation warning for the deprecated global
+    receiver_connected signal and specify that it will be removed
+    in the next version.
+  * Show a deprecation warning for the deprecated WeakNamespace
+    and specify that it will be removed in the next version.
+  * Greatly simplify how the library uses weakrefs. This is a
+    significant change internally but should not affect any
+    public API. :pr:`144`
+  * Expose the namespace used by signal() as default_namespace.
+    :pr:`145`
+- add remove-sphinxextensions.patch to remove an optional
+  sphinxextension
+
+-------------------------------------------------------------------
 Tue Nov 14 21:30:44 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.7.0:
@@ -125,12 +156,12 @@ Thu Sep 15 13:51:06 UTC 2016 - rjschwei@suse.com
 -------------------------------------------------------------------
 Fri Mar 11 08:27:10 UTC 2016 - freitag@opensuse.org
 
-- use setup.py option to record file list for rpm package 
+- use setup.py option to record file list for rpm package
 
 -------------------------------------------------------------------
 Sun Jan  3 20:55:02 UTC 2016 - freitag@opensuse.org
 
-- Fixed doc section in file list 
+- Fixed doc section in file list
 
 -------------------------------------------------------------------
 Sun Jan  3 20:35:36 UTC 2016 - freitag@opensuse.org
@@ -156,7 +187,7 @@ Sun Feb 22 17:44:07 UTC 2015 - benoit.monin@gmx.fr
 Wed Aug 15 02:59:55 UTC 2012 - highwaystar.ru@gmail.com
 
 - python3 package added
-- spec improved (files section) 
+- spec improved (files section)
 
 -------------------------------------------------------------------
 Fri Jun 22 13:16:29 UTC 2012 - saschpe@suse.de

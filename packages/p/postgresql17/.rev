@@ -38,4 +38,12 @@
   * https://www.postgresql.org/docs/17/release-17.html</comment>
     <requestid>1203910</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>287ace9717a1aaf2ecee64df58bacc4e</srcmd5>
+    <version>17.0</version>
+    <time>1729710525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216991</requestid>
+  </revision>
 </revisionlist>

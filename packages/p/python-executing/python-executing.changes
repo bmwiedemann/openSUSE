@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:02:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove ipython dependency for Leap
+
+-------------------------------------------------------------------
 Thu Sep 26 09:27:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Split test run into separate build using _multibuild.

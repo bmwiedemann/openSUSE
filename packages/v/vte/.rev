@@ -1313,4 +1313,12 @@ New upstream release</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205492</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>809f35d9c998f4bff2e2d908effd2891</srcmd5>
+    <version>0.78.1</version>
+    <time>1729710519</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216979</requestid>
+  </revision>
 </revisionlist>

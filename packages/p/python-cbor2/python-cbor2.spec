@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cbor2
-Version:        5.6.4
+Version:        5.6.5
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT

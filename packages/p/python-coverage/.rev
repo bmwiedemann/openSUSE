@@ -799,4 +799,41 @@ update to latest version</comment>
     coverage data&quot; and &quot;statement coverage data.&quot;</comment>
     <requestid>1198085</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5371c037361ad9466abe4d1576c92e9a</srcmd5>
+    <version>7.6.4</version>
+    <time>1729710497</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.6.4:
+  * fix: multi-line with statements could cause contained
+    branches to be incorrectly marked as missing (issue 1880).
+    This is now fixed.
+  * Fix: nested context managers could incorrectly be analyzed to
+    flag a missing branch on the last context manager, as
+    described in issue 1876.  This is now fixed.
+  * Fix: the missing branch message about not exiting a module
+    had an extra &quot;didn't,&quot; as described in issue 1873.  This is
+    now fixed.
+  * Dropped support for Python 3.8 and PyPy 3.8.
+  * Fix: a final wildcard match/case clause assigning to a name
+    (case _ as value) was incorrectly marked as a missing branch.
+    This is now fixed, closing issue 1860.
+  * Fewer things are considered branches now. Lambdas,
+    comprehensions, and generator expressions are no longer
+    marked as missing branches if they don't complete execution.
+    Closes issue 1852.
+  * Fix: the HTML report didn't properly show multi-line
+    f-strings that end with a backslash continuation.  This is
+    now fixed, closing issue 1836, thanks to LiuYinCarl and Marco
+    Ricci.
+  * Fix: the LCOV report now has correct line numbers (fixing
+    issue 1846) and better branch descriptions for BRDA records
+    (fixing issue 1850).  There are other changes to lcov also,
+    including a new configuration option :ref:`line_checksums
+    &lt;config_lcov_line_checksums&gt;` to control whether line
+    checksums are included in the lcov report.  The default is
+    false. To keep checksums set it to true.  All this work is
+    thanks to Zack Weinberg (pull 1849 and pull 1851).</comment>
+    <requestid>1217070</requestid>
+  </revision>
 </revisionlist>

@@ -142,4 +142,13 @@
     <comment></comment>
     <requestid>1179021</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c812e7593ad0cc6160e429a4adbe7417</srcmd5>
+    <version>5.6.5</version>
+    <time>1729710586</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.6.5:
+  * Published binary wheels for Python 3.13</comment>
+    <requestid>1217046</requestid>
+  </revision>
 </revisionlist>

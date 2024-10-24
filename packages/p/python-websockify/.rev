@@ -253,4 +253,21 @@
     <comment></comment>
     <requestid>981178</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>55b798cffd71600d31d2e42c8ebba9c1</srcmd5>
+    <version>0.12.0</version>
+    <time>1729710512</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * The simplejson module is no longer needed for redis token
+    support
+  * redis tokens can now be either JSON or plain text
+  * websockify can now listen to a Unix socket for incoming
+    connections
+  * Command line now supports disabling directory listings
+  * Basic Dockerfile included
+
+- update to 0.5.1:</comment>
+    <requestid>1216939</requestid>
+  </revision>
 </revisionlist>

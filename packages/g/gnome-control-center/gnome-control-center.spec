@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        47.0.1+8
+Version:        47.1.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -81,7 +81,7 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.51.0
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.alpha
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.0
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.15.2

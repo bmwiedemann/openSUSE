@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dill
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause

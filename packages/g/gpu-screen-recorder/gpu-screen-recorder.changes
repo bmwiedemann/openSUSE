@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:58:39 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241022:
+  * Fix capture not working if one of the audio inputs is a virtual
+    audio device with forward slash in its name, for example if
+    NoiseTorch is used
+  * Enable AMD low latency mode
+  * Better frame timing when hardware is too slow to record at the
+    desired framerate
+
+-------------------------------------------------------------------
 Sat Oct 12 00:15:35 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241012:

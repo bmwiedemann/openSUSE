@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:26:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 43.0.3:
+  * Fixed release metadata for cryptography-vectors
+  * Fixed compilation when using LibreSSL 4.0.0.
+
+-------------------------------------------------------------------
 Sat Sep 28 19:45:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 43.0.1:

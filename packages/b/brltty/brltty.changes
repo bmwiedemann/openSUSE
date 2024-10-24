@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 17 18:22:43 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.7:
+  + Too many changes; please read ChangeLog
+- Drop e6707d5e.patch: fixed upstream.
+- API version is now 0.8.6.
+
+-------------------------------------------------------------------
+Thu Sep 26 15:29:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * brltty-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+    + Applied if building with Java >= 17
+
+-------------------------------------------------------------------
 Wed Sep 25 10:26:16 UTC 2024 - Reinhard Max <max@suse.com>
 
 - For the correct generation of pkgIndex.tcl it is required that

@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
@@ -89,7 +89,6 @@ export EXTRA_CFLAGS="%{optflags}"
 %postun -n libfdt%{sover} -p /sbin/ldconfig
 
 %files -n libfdt%{sover}
-%{_libdir}/libfdt-%{version}.so
 %{_libdir}/libfdt.so.*
 
 %files -n libfdt-devel

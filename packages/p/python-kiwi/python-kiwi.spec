@@ -52,7 +52,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.1.15
+Version:        10.1.16
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -291,7 +291,7 @@ Provides:       kiwi-filesystem:ext3
 Provides:       kiwi-filesystem:ext4
 Provides:       kiwi-filesystem:squashfs
 Provides:       kiwi-filesystem:xfs
-%if ! (0%{?suse_version} && 0%{?suse_version} < 1600)
+%if ! (0%{?suse_version} && 0%{?suse_version} <= 1600)
 Provides:       kiwi-filesystem:erofs
 Provides:       kiwi-image:erofs
 %endif
@@ -299,7 +299,7 @@ Provides:       kiwi-image:erofs
 Requires:       dosfstools
 Requires:       e2fsprogs
 Requires:       xfsprogs
-%if ! (0%{?suse_version} && 0%{?suse_version} < 1600)
+%if ! (0%{?suse_version} && 0%{?suse_version} <= 1600)
 Requires:       erofs-utils
 %endif
 %if 0%{?suse_version}

@@ -59,4 +59,21 @@
 - Drop patch datetime.patch, now included.</comment>
     <requestid>1155774</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17578e747aff0582fe3549a0a967b850</srcmd5>
+    <version>0.8.0</version>
+    <time>1729710499</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * set requires-python to 3.8
+  * use zoneinfo instead of pytz where possible
+  * No need to call datetime.replace for utc_now
+  * Patch pprint to make pytest diffs nicer for big objects
+  * uprev test, lint and docs dependencies
+  * Support Python 3.13
+  * Uprev version
+- update to 0.7.1-post0:
+  * Fix publication of docs.</comment>
+    <requestid>1217076</requestid>
+  </revision>
 </revisionlist>

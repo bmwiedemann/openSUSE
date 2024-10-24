@@ -21,4 +21,16 @@
 </comment>
     <requestid>1205227</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f98b38695bae1a8999d4dc008e5a77da</srcmd5>
+    <version>0.11.1</version>
+    <time>1729710599</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.1:
+  * fix python 3.13 uvloop
+  * support python 3.13
+
+- Initial release of python-async-wrapper 0.10.0</comment>
+    <requestid>1217073</requestid>
+  </revision>
 </revisionlist>

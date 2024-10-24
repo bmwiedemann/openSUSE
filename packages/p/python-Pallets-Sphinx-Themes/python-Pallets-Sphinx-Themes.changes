@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 18 10:50:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Get canonical URL from environment variable when building on
+    Read the Docs. :pr:`117`
+  * New version warning banner. Use JavaScript to query PyPI when
+    viewing a page, rather than baking the warning into the
+    build. New builds of old versions are no longer required for
+    the banner to be correct. :pr:`117`
+  * Generate 404 page using the sphinx-notfound-page extension.
+    This fixes the URLs when the page is hosted so that it loads
+    the CSS. :issue:`34`
+  * Remove handling for singlehtml_sidebars config which predated
+    Sphinx's support. :pr:`119`
+  * Remove "babel" and "platter" theme variants which were
+    undocumented and did not appear to be used by the relevant
+    projects. :pr:`120`
+
+-------------------------------------------------------------------
 Sun Jun 30 07:31:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:

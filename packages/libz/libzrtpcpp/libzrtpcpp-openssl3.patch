@@ -1,0 +1,210 @@
+From: Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+Date: 2024-10-22 12:59:25+0000
+Subject: Adapt libzrtpcpp to build with OpenSSL 3
+References: https://bugzilla.opensuse.org/1219884
+
+---
+ zrtp/crypto/openssl/InitializeOpenSSL.cpp |   12 +++++++++
+ zrtp/crypto/openssl/hmac256.cpp           |   18 +++++++++++++
+ zrtp/crypto/openssl/hmac384.cpp           |   18 +++++++++++++
+ zrtp/crypto/openssl/zrtpDH.cpp            |   39 ++++++++++++++++++++++++++++++
+ 4 files changed, 87 insertions(+)
+
+Index: ZRTPCPP-4.7.0/zrtp/crypto/openssl/InitializeOpenSSL.cpp
+===================================================================
+--- ZRTPCPP-4.7.0.orig/zrtp/crypto/openssl/InitializeOpenSSL.cpp
++++ ZRTPCPP-4.7.0/zrtp/crypto/openssl/InitializeOpenSSL.cpp
+@@ -18,6 +18,10 @@
+ #include <openssl/evp.h>
+ #include <config.h>
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#  define CRYPTO_get_lock_name(type)     (NULL)
++#endif
++
+ #ifdef _MSWINDOWS_
+ #include <windows.h>
+ #endif
+@@ -134,7 +138,11 @@ static void threadLockCleanup(void) {
+     for (i = 0; i < CRYPTO_num_locks(); i++) {
+     /* rwlock_destroy(&(lock_cs[i])); */
+     mutex_destroy(&(lock_cs[i]));
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     fprintf(stderr,"%8ld:%s\n",lock_count[i],CRYPTO_get_lock_name(i));
++#else
++      fprintf(stderr,"%8ld\n",lock_count[i]);
++#endif
+     }
+     OPENSSL_free(lock_cs);
+     OPENSSL_free(lock_count);
+@@ -199,8 +207,12 @@ static void threadLockCleanup(void)
+     fprintf(stderr,"cleanup\n");
+     for (i = 0; i < CRYPTO_num_locks(); i++) {
+     pthread_mutex_destroy(&(lock_cs[i]));
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     fprintf(stderr,"%8ld:%s\n",lock_count[i],
+         CRYPTO_get_lock_name(i));
++#else
++      fprintf(stderr,"%8ld\n",lock_count[i]);
++#endif
+     }
+     OPENSSL_free(lock_cs);
+     OPENSSL_free(lock_count);
+Index: ZRTPCPP-4.7.0/zrtp/crypto/openssl/hmac256.cpp
+===================================================================
+--- ZRTPCPP-4.7.0.orig/zrtp/crypto/openssl/hmac256.cpp
++++ ZRTPCPP-4.7.0/zrtp/crypto/openssl/hmac256.cpp
+@@ -32,13 +32,31 @@ void hmacSha256(const uint8_t* key, uint
+                 uint8_t* mac, uint32_t* mac_length)
+ {
+     unsigned int tmp;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_CTX ctx = {};
+     HMAC_CTX_init(&ctx);
+     HMAC_Init_ex( &ctx, key, static_cast<int>(key_length), EVP_sha256(), nullptr );
++#else
++    HMAC_CTX * ctx;
++    ctx = HMAC_CTX_new();
++    HMAC_Init_ex(ctx, key, key_length, EVP_sha256(), NULL);
++#endif
+     for (size_t i = 0, size = data.size(); i < size; i++) {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         HMAC_Update(&ctx, data[i], dataLength[i]);
++#else
++	HMAC_Update(ctx, data[i], dataLength[i]);
++#endif
+     }
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_Final( &ctx, mac, &tmp);
++#else
++	HMAC_Final( ctx, mac, &tmp);
++#endif
+     *mac_length = tmp;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_CTX_cleanup( &ctx );
++#else
++	HMAC_CTX_free( ctx );
++#endif
+ }
+Index: ZRTPCPP-4.7.0/zrtp/crypto/openssl/hmac384.cpp
+===================================================================
+--- ZRTPCPP-4.7.0.orig/zrtp/crypto/openssl/hmac384.cpp
++++ ZRTPCPP-4.7.0/zrtp/crypto/openssl/hmac384.cpp
+@@ -32,14 +32,32 @@ void hmacSha384(const uint8_t* key, uint
+                 uint8_t* mac, uint32_t* mac_length)
+ {
+     unsigned int tmp;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_CTX ctx = {};
+     HMAC_CTX_init( &ctx );
+     HMAC_Init_ex( &ctx, key, static_cast<int>(key_length), EVP_sha384(), nullptr );
++#else
++    HMAC_CTX * ctx;
++    ctx = HMAC_CTX_new();
++    HMAC_Init_ex(ctx, key, key_length, EVP_sha384(), NULL);
++#endif
+ 
+     for (size_t i = 0, size = data.size(); i < size; i++) {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         HMAC_Update(&ctx, data[i], dataLength[i]);
++#else
++	HMAC_Update(ctx, data[i], dataLength[i]);
++#endif
+     }
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_Final( &ctx, mac, &tmp);
++#else
++    HMAC_Final(ctx, mac, &tmp);
++#endif
+     *mac_length = tmp;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     HMAC_CTX_cleanup( &ctx );
++#else
++    HMAC_CTX_free(ctx);
++#endif
+ }
+Index: ZRTPCPP-4.7.0/zrtp/crypto/openssl/zrtpDH.cpp
+===================================================================
+--- ZRTPCPP-4.7.0.orig/zrtp/crypto/openssl/zrtpDH.cpp
++++ ZRTPCPP-4.7.0/zrtp/crypto/openssl/zrtpDH.cpp
+@@ -201,6 +201,7 @@ ZrtpDH::ZrtpDH(const char* type) {
+     case DH3K:
+         ctx = static_cast<void*>(DH_new());
+         tmpCtx = static_cast<DH*>(ctx);
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         tmpCtx->g = BN_new();
+         BN_set_word(tmpCtx->g, DH_GENERATOR_2);
+ 
+@@ -216,6 +217,23 @@ ZrtpDH::ZrtpDH(const char* type) {
+         }
+         break;
+ 
++#else
++	{
++	    BIGNUM* g = BN_new();
++	    BN_set_word(g, DH_GENERATOR_2);
++	    if (pkType == DH2K) {
++		DH_set0_pqg(tmpCtx, BN_dup(bnP2048), NULL, g);
++		RAND_bytes(random, 32);
++		DH_set0_key(tmpCtx, NULL, BN_bin2bn(random, 32, NULL));
++	    }
++	    else if (pkType == DH3K) {
++		DH_set0_pqg(tmpCtx, BN_dup(bnP3072), NULL, g);
++		RAND_bytes(random, 64);
++		DH_set0_key(tmpCtx, NULL, BN_bin2bn(random, 32, NULL));
++	    }
++        }
++        break;
++#endif
+     case EC25:
+         ctx = static_cast<void*>(EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+         break;
+@@ -252,11 +270,18 @@ int32_t ZrtpDH::computeSecretKey(uint8_t
+     if (pkType == DH2K || pkType == DH3K) {
+         auto* tmpCtx = static_cast<DH*>(ctx);
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         if (tmpCtx->pub_key != nullptr) {
+             BN_free(tmpCtx->pub_key);
+         }
+         tmpCtx->pub_key = BN_bin2bn(pubKeyBytes, getDhSize(), nullptr);
+         return DH_compute_key(secret, tmpCtx->pub_key, tmpCtx);
++#else
++	DH_set0_key(tmpCtx, BN_bin2bn(pubKeyBytes, getDhSize(), NULL), NULL);
++	BIGNUM* pub_key;
++	DH_get0_key(tmpCtx, const_cast<const BIGNUM**>(&pub_key), NULL);
++	return DH_compute_key(secret, pub_key, tmpCtx);
++#endif
+     }
+     if (pkType == EC25 || pkType == EC38) {
+         uint8_t buffer[200];
+@@ -305,7 +330,15 @@ uint32_t ZrtpDH::getDhSize() const
+ int32_t ZrtpDH::getPubKeySize() const
+ {
+     if (pkType == DH2K || pkType == DH3K)
++    {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         return BN_num_bytes(static_cast<DH*>(ctx)->pub_key);
++#else
++	BIGNUM* pub_key;
++	DH_get0_key(static_cast<DH*>(ctx), const_cast<const BIGNUM**>(&pub_key), NULL);
++	return BN_num_bytes(pub_key);
++#endif
++    }
+ 
+     if (pkType == EC25 || pkType == EC38)
+         return EC_POINT_point2oct(EC_KEY_get0_group(static_cast<EC_KEY*>(ctx)),
+@@ -324,7 +357,13 @@ int32_t ZrtpDH::getPubKeyBytes(uint8_t *
+         if (prepend > 0) {
+             memset(buf, 0, prepend);
+         }
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+         return BN_bn2bin(static_cast<DH*>(ctx)->pub_key, buf + prepend);
++#else
++	BIGNUM* pub_key;
++	DH_get0_key(static_cast<DH*>(ctx), const_cast<const BIGNUM**>(&pub_key), NULL);
++	return BN_bn2bin(pub_key, buf + prepend);
++#endif
+     }
+     if (pkType == EC25 || pkType == EC38) {
+         uint8_t buffer[200];

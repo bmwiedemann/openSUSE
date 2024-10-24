@@ -16,16 +16,20 @@
 #
 
 
+%bcond_without system_openssl
+%if %{with system_openssl}
+%define build_args --no-default-features --features=native-tls
+%endif
+
 Name:           tealdeer
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Other
-URL:            https://github.com/dbrgn/tealdeer
+URL:            https://github.com/tealdeer-rs/tealdeer
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 BuildRequires:  zstd
@@ -39,6 +43,7 @@ An implementation of tldr in Rust. It has example based and community-driven man
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -49,6 +54,7 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 Requires:       fish
 BuildArch:      noarch
 
@@ -59,6 +65,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
 Requires:       zsh
 BuildArch:      noarch
 
@@ -66,13 +73,13 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -a1
 
 %build
-%{cargo_build}
+%{cargo_build} %{?build_args}
 
 %install
-%{cargo_install}
+%{cargo_install} %{?build_args}
 install -Dm644 -T ./completion/bash_tealdeer %{buildroot}%{_datadir}/bash-completion/completions/tealdeer
 install -Dm644 -T ./completion/fish_tealdeer %{buildroot}%{_datadir}/fish/vendor_completions.d/tealdeer.fish
 install -Dm644 -T ./completion/zsh_tealdeer  %{buildroot}%{_datadir}/zsh/site-functions/_tealdeer

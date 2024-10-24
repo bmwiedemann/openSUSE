@@ -4670,4 +4670,14 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-8-0-2024-10-01</comment>
     <requestid>1205278</requestid>
   </revision>
+  <revision rev="404" vrev="2">
+    <srcmd5>e563bdc410eeef4b6a67721b0f9fc0c5</srcmd5>
+    <version>10.8.0</version>
+    <time>1729710502</time>
+    <user>anag+factory</user>
+    <comment>- spec: Use default_firewall_backend prjconf setting
+- spec: Loosen nwfilter dependency
+  boo#1231798</comment>
+    <requestid>1217084</requestid>
+  </revision>
 </revisionlist>

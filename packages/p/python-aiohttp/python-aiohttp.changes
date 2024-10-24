@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:14:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.10:
+  * Fixed error messages from
+    :py:class:`~aiohttp.resolver.AsyncResolver` being swallowed
+    -- by :user:`bdraco`. Related issues and pull requests on
+    GitHub: :issue:`9451`, :issue:`9455`.
+  * Added :exc:`aiohttp.ClientConnectorDNSError` for
+    differentiating DNS resolution errors from other connector
+    errors -- by :user:`mstojcevich`. Related issues and pull
+    requests on GitHub: :issue:`8455`.
+  * Simplified DNS resolution throttling code to reduce chance of
+    race conditions -- by :user:`bdraco`. Related issues and pull
+    requests on GitHub: :issue:`9454`.
+
+-------------------------------------------------------------------
 Wed Oct  9 08:04:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.10.9

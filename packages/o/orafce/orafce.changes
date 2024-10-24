@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:01:46 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.13.5+git0.ab95f82:
+  * prepare for 4.13.5
+  * export orafce_sys_extract_utc and orafce_sys_extract_utc_oracle_date for win build
+  * With Oracle passing en empty string to the to_date(txt, fmt) function returns NULL whereas PostgreSQL returns '0001-01-01 BC'. This true whatever is the format passed as second argument. Change the behavior of function to_date(txt, fmt) to mimic Oracle.
+
+-------------------------------------------------------------------
+Tue Oct 15 12:13:46 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.13.4+git0.8f3f211:
+  * prepare for 4.13.4
+  * fix update script from 4.12 to 4.13
+  * prepare for 4.13.3
+  * umask is usually entered as octec number, then read it as octec number
+
+-------------------------------------------------------------------
+Tue Oct 15 12:06:21 UTC 2024 - mrueckert@suse.de
+
+- Update to version 4.13.4+git0.8f3f211:
+  * prepare for 4.13.4
+  * fix update script from 4.12 to 4.13
+
+-------------------------------------------------------------------
+Tue Oct 15 11:55:06 UTC 2024 - mrueckert@suse.de
+
+- Update to version 4.13.3+git0.0bf0f15:
+  * prepare for 4.13.3
+  * umask is usually entered as octec number, then read it as octec number
+
+-------------------------------------------------------------------
+Sat Sep 28 00:31:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg17
+
+-------------------------------------------------------------------
+Sat Sep 28 00:31:10 UTC 2024 - mrueckert@suse.de
+
+- Update to version 4.13.2+git0.f8f8700:
+  * prepare for 4.13.2
+  * fix missing update of control file and regress tests
+
+-------------------------------------------------------------------
 Wed Sep 25 12:25:11 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.13.0+git3.25d74aa:

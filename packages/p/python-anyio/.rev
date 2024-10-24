@@ -327,4 +327,18 @@ SR for python stack proposal</comment>
     <comment></comment>
     <requestid>1205309</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>da025a07231e8f8a5093fcef03c93fa6</srcmd5>
+    <version>4.6.2.post1</version>
+    <time>1729710501</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.2:
+  * Fixed regression caused by (\#807) that prevented the use
+    of parametrized async fixtures
+- update to 4.6.1:
+  * Fixed TaskGroup and CancelScope producing cyclic references
+    in tracebacks when raising exceptions (\#806) (PR by
+    @graingert)</comment>
+    <requestid>1217080</requestid>
+  </revision>
 </revisionlist>

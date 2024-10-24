@@ -5008,4 +5008,12 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1208449</requestid>
   </revision>
+  <revision rev="487" vrev="1">
+    <srcmd5>c3402ccb69a4a46fbe63ae9d7d841f58</srcmd5>
+    <version>2.6.1+git20241017.b725184</version>
+    <time>1729710504</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216644</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  1 08:40:28 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove patch rcs-glibc-2.34.patch, all current repos seem to build
+    fine without it, and use %autosetup
+- make build more reproducible: patch reproducible-build.diff, taken from debian
+- make configure.ac C99 compliant: patch rcs-configure-c99.patch, taken from fedora,
+    and add code to rebuild configure.
+- drop configure option --with-diff-utils (always defunct as it should have been
+    --with-diffutils). --with-diffutils has been removed in rcs 5.8.
+
+-------------------------------------------------------------------
 Fri Feb 23 11:51:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

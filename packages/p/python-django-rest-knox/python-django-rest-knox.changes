@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:47:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Implement AUTO_REFRESH_MAX_TTL to limit total token lifetime
+    when AUTO_REFRESH = True
+
+-------------------------------------------------------------------
 Sat Aug 31 14:50:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

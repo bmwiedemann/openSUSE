@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 10:03:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37
+  * No longer failing to load CHMs silently.
+  * Updated Romanian and Swedish translations.
+
+-------------------------------------------------------------------
 Tue Sep 19 02:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.36

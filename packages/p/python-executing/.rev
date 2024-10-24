@@ -117,4 +117,12 @@
 </comment>
     <requestid>1203862</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>830f7d8aa6c1f909b73574e4cfbd307b</srcmd5>
+    <version>2.1.0</version>
+    <time>1729710488</time>
+    <user>anag+factory</user>
+    <comment>- Remove ipython dependency for Leap</comment>
+    <requestid>1217356</requestid>
+  </revision>
 </revisionlist>

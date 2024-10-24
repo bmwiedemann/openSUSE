@@ -469,4 +469,16 @@
     <comment></comment>
     <requestid>1206069</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b7f3730c3e254f665cab094a0e4a4255</srcmd5>
+    <version>20241017.00</version>
+    <time>1729710582</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241017.00 (bsc#1231775, bsc#1231776)
+  * Add a new CloudBuild trigger config-file for auto updating the
+    presubmit test container image on every new commit (#704)
+- from version 20241004.00
+  * Add new packagebuild presubmit that will use cloud-build (#694) (forwarded request 1217005 from glaubitz)</comment>
+    <requestid>1217038</requestid>
+  </revision>
 </revisionlist>

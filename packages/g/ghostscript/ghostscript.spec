@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ghostscript
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -24,19 +24,14 @@
 %bcond_without  apparmor
 %endif
 Name:           ghostscript%{psuffix}
-Version:        10.03.1
+Version:        10.04.0
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
-# How to manually get Source0:
-# Go to https://www.ghostscript.com
-# -> "The current Ghostscript release 10.03.1 can be downloaded here" https://www.ghostscript.com/releases/index.html
-# -> "Ghostscript" https://www.ghostscript.com/releases/gsdnld.html
-# -> "Ghostscript 10.03.1 Source for all platforms / GNU Affero General Public License" = "Ghostscript AGPL Release"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
-Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
+# use "osc service manualrun" to fetch
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostscript-%{version}.tar.gz
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
@@ -57,7 +52,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 # Provide the additional RPM Provides of the ghostscript-library package
 # (ghostscript_x11 is provided by the ghostscript-x11 sub-package, see below).
 # The "Provides: ghostscript_any" is there to support "BuildRequires: ghostscript_any"

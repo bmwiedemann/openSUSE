@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockify
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-websockify
-Version:        0.10.0
+Version:        0.12.0
 Release:        0
 Summary:        WebSocket to TCP proxy/bridge
 License:        BSD-2-Clause AND LGPL-3.0-only AND MPL-2.0 AND BSD-3-Clause
@@ -27,22 +27,20 @@ Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
 Patch1:         optional-websockify.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jwcrypto}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module simplejson}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
+Requires:       python-jwcrypto
 %if 0%{?suse_version}
-Recommends:     python-jwcrypto
-Recommends:     python-numpy
 Recommends:     python-redis
-Recommends:     python-simplejson
+Recommends:     python-requests
 %endif
 %python_subpackages
 
@@ -76,10 +74,10 @@ This package contains common files.
 sed -i '1 { /^#!/ d }' websockify/websock*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/websockify
 
@@ -96,6 +94,7 @@ sed -i '1 { /^#!/ d }' websockify/websock*.py
 %license COPYING
 %doc CHANGES.txt README.md
 %python_alternative %{_bindir}/websockify
-%{python_sitelib}/*
+%{python_sitelib}/websockify
+%{python_sitelib}/websockify-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:26:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.78.1:
+  + build:
+    - Prepend python to minifont coverage cmd
+    - Add missing includes
+  + widget:
+    - Improve the robustness of ringview updating
+    - Make sure to update the ringview after a widget resize
+    - termprops: Fix for double termprops
+  + draw:
+    - gsk:
+      . Use fill_n to fill background
+      . Draw cell background using scaled texture
+    - Fix background drawing offset
+  + tests: Remove excessive constrexpr
+
+-------------------------------------------------------------------
 Fri Sep 20 17:08:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.78.0:

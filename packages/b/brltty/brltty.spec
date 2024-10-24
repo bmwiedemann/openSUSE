@@ -17,11 +17,11 @@
 
 
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-%define api_version 0.8.5
+%define api_version 0.8.6
 %define sover 0_8
 %define soname libbrlapi%{sover}
 Name:           brltty
-Version:        6.6
+Version:        6.7
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -33,7 +33,7 @@ Source0:        https://brltty.app/archive/%name-%version.tar.xz
 Source1:        README.SUSE
 Source2:        %name.rpmlintrc
 Patch0:         brltty-udev-dir.patch
-Patch1:         https://github.com/brltty/brltty/commit/e6707d5e.patch
+Patch2:         brltty-reproducible-jar-mtime.patch
 
 Requires(pre):  system-user-brltty = %version-%release
 
@@ -319,7 +319,12 @@ System user for the Braille display driver for Linux/Unix
 %lang_package
 
 %prep
-%autosetup -p1
+%setup
+%patch -P 0 -p1
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 2 -p1
+%endif
 
 %build
 %sysusers_generate_pre Autostart/Systemd/sysusers system-user-brltty %name.conf

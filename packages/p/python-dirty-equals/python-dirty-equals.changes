@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:55:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * set requires-python to 3.8
+  * use zoneinfo instead of pytz where possible
+  * No need to call datetime.replace for utc_now
+  * Patch pprint to make pytest diffs nicer for big objects
+  * uprev test, lint and docs dependencies
+  * Support Python 3.13
+  * Uprev version
+- update to 0.7.1-post0:
+  * Fix publication of docs.
+
+-------------------------------------------------------------------
 Thu Mar  7 03:28:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.1:

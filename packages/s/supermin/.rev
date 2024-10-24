@@ -207,4 +207,12 @@
     <comment>Update supermin to version 5.3.5</comment>
     <requestid>1198828</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ec59c31745475027a711500850c95540</srcmd5>
+    <version>5.3.5</version>
+    <time>1729710610</time>
+    <user>anag+factory</user>
+    <comment>Detect the correct kernel on aarch64 (jsc#PED-10545)</comment>
+    <requestid>1217087</requestid>
+  </revision>
 </revisionlist>

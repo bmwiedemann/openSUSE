@@ -38,13 +38,13 @@
 %define with_X 1
 
 Name:           open-vm-tools
-Version:        12.4.5
+Version:        12.5.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Emulators/PC
 URL:            https://github.com/vmware/open-vm-tools
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vmtoolsd
 Source2:        vmtoolsd.service
 Source3:        vmware-user-autostart.desktop

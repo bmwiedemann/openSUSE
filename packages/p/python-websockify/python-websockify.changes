@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 19 11:51:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * The simplejson module is no longer needed for redis token
+    support
+  * redis tokens can now be either JSON or plain text
+  * websockify can now listen to a Unix socket for incoming
+    connections
+  * Command line now supports disabling directory listings
+  * Basic Dockerfile included
+
+-------------------------------------------------------------------
 Tue Jun  7 11:54:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add optional-websockify.patch to make dependency on numpy optional
@@ -182,7 +194,7 @@ Thu Oct 24 11:17:04 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Wed Jul  3 11:53:13 UTC 2013 - dmueller@suse.com
 
-- update to 0.5.1: 
+- update to 0.5.1:
   * use upstream einaros/ws (>=0.4.27) with websockify.js
   * file_only and no_parent security options for WSRequestHandler
   * Update build of web-socket-js (c0855c6cae)

@@ -1,0 +1,12 @@
+--- brltty-6.6/Bindings/Java/Makefile.in	2024-09-26 17:16:12.903477065 +0200
++++ brltty-6.6/Bindings/Java/Makefile.in	2024-09-26 17:17:37.427440398 +0200
+@@ -52,7 +52,8 @@
+ jar: $(JAVA_JAR_FILE)
+ 
+ $(JAVA_JAR_FILE): classes.made
+-	$(JAR) cfm $@ $(SRC_DIR)/manifest -C classes .
++	$(JAR) --date="$$(date -u -d @$${SOURCE_DATE_EPOCH:-$$(date +%s)} +%Y-%m-%dT%H:%M:%SZ)" \
++        --create --file=$@ --manifest=$(SRC_DIR)/manifest -C classes .
+ 
+ JAVAC_LINT_OPTIONS = cast,deprecation,fallthrough,finally,overrides,rawtypes,unchecked
+ 

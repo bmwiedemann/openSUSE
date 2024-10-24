@@ -1,7 +1,7 @@
 #
 # spec file for package python-blinker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blinker
-Version:        1.7.0
+Version:        1.8.2
 Release:        0
 Summary:        Object-to-object and broadcast signaling in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
-BuildRequires:  %{python_module Pallets-Sphinx-Themes}
-BuildRequires:  %{python_module Sphinx}
+Patch1:         remove-sphinxextensions.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -49,6 +48,11 @@ sent by any sender.
 %package -n python-blinker-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
+BuildRequires:  %{python_module Pallets-Sphinx-Themes}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module sphinxcontrib-htmlhelp}
+BuildRequires:  %{python_module sphinxcontrib-jsmath}
+BuildRequires:  %{python_module sphinxcontrib-serializinghtml}
 Provides:       %{python_module blinker-doc = %{version}}
 
 %description -n python-blinker-doc
@@ -85,8 +89,8 @@ popd
 %pytest
 
 %files %{python_files}
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%license LICENSE.txt
+%doc CHANGES.rst README.md
 %{python_sitelib}/blinker-%{version}*-info
 %{python_sitelib}/blinker
 

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:09:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.2:
+  * Create single license scanner for all catalogers (#3348)
+  * chore(deps): update stereoscope to
+    a38c93517fc7d67ca1af826ac529a06c05b571d2 (#3357)
+  * chore(deps): update CPE dictionary index (#3358)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.0 to
+    6.6.1 (#3361)
+  * update to latest packageurl-go (#3347)
+  * chore(deps): update tools to latest versions (#3342)
+  * chore(deps): update stereoscope to
+    9e57bce5efeb0ffe27770dd0b8eb2eef8b38512f (#3338)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.0 to 0.5.1
+    (#3344)
+  * fix: use official CPE for linux kernel (#3343)
+  * chore(deps): bump anchore/sbom-action from 0.17.3 to 0.17.4
+    (#3340)
+  * fix: improve mariadb binary classifer to detect older versions
+    (#3339)
+
+-------------------------------------------------------------------
 Tue Oct 15 15:36:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.1:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 21 06:52:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.1.2
+  * #27333: MAINT: prepare 2.1.x for further development
+  * #27400: BUG: apply critical sections around populating the dispatch cache
+  * #27406: BUG: Stub out get_build_msvc_version if distutils.msvccompiler...
+  * #27416: BUILD: fix missing include for std::ptrdiff_t for C++23 language...
+  * #27433: BLD: pin setuptools to avoid breaking numpy.distutils
+  * #27437: BUG: Allow unsigned shift argument for np.roll
+  * #27439: BUG: Disable SVE VQSort
+  * #27471: BUG: rfftn axis bug
+  * #27479: BUG: Fix extra decref of PyArray_UInt8DType.
+  * #27480: CI: use PyPI not scientific-python-nightly-wheels for CI doc...
+  * #27481: MAINT: Check for SVE support on demand
+  * #27484: BUG: initialize the promotion state to be weak
+  * #27501: MAINT: Bump pypa/cibuildwheel from 2.20.0 to 2.21.2
+  * #27506: BUG: avoid segfault on bad arguments in ndarray.__array_function__
+
+-------------------------------------------------------------------
 Fri Sep  6 18:35:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.1

@@ -1,0 +1,12 @@
+Index: blinker-1.8.2/docs/conf.py
+===================================================================
+--- blinker-1.8.2.orig/docs/conf.py
++++ blinker-1.8.2/docs/conf.py
+@@ -9,7 +9,6 @@ default_role = "code"
+ extensions = [
+     "sphinx.ext.autodoc",
+     "sphinx.ext.extlinks",
+-    "sphinxcontrib.log_cabinet",
+     "pallets_sphinx_themes",
+ ]
+ autodoc_member_order = "groupwise"

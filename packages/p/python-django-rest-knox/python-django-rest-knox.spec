@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-rest-knox
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Authentication for Django REST framework
 License:        MIT

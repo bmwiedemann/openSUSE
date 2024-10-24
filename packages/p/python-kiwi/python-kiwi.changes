@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 23 12:21:32 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.15 → 10.1.16
+
+-------------------------------------------------------------------
+Wed Oct 23 10:23:36 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix erofs requires in spec
+
+  erofs-utils for SUSE only exists in Tumbleweed. The
+  former conditon would also add the requirement for ALP
+  and SLFO which is wrong. This commit fixes it
+
+-------------------------------------------------------------------
+Tue Oct 22 10:53:25 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add vagrantconfig rule for vagrant format
+
+  If the format="vagrant" attribute is set, a vagrantconfig
+  section becomes mandatory. This commit enforces this rule
+  on the schema. This Fixes #2666
+
+-------------------------------------------------------------------
 Mon Oct 21 15:01:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.14 → 10.1.15

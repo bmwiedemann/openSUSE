@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pallets-Sphinx-Themes
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 Summary:        Themes for the Pallets projects
 License:        BSD-3-Clause
@@ -29,11 +29,13 @@ BuildRequires:  %{python_module Sphinx >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module sphinx-notfound-page}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 3
+Requires:       python-Sphinx >= 5
 Requires:       python-packaging
+Requires:       python-sphinx-notfound-page
 BuildArch:      noarch
 %python_subpackages
 

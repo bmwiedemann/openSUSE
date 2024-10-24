@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:35:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Fix scroll-by-page GTK setting breaking slider
+  + Fix a number of MPRIS playback controls not working correctly
+  + Fix a number of opensubtitles dialogue problems
+  + Fix hyphens appearing in filenames
+  + Force using newer GStreamer va-api plugins, fixing scrambled
+    videos in some cases
+  + Fix error showing the keyboard shortcuts
+  + Fix assertion when backends send out audio or image files even
+    though we asked them to be filtered out
+  + Updated translations.
+- Drop patch fixed upstream:
+  + ac2d02530d3b555e44907162be05536a5927b2a0.patch
+
+-------------------------------------------------------------------
 Fri Dec  1 18:38:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:

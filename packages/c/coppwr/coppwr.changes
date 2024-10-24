@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:54:41 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.1
+  * Added explanations to the profiler graphs when hovering their
+    titles
+  * Added Update Rate setting to change the rate at which the UI
+    refreshes with new PipeWire data
+  * Fixed Gloal Tracker list not refreshing when "Group Subobjects"
+    is changed
+  * Slightly changed icon for better contrast
+  * Fixed crashing when PipeWire sends unknown profiler data
+
+-------------------------------------------------------------------
 Mon May  6 13:23:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.6.0

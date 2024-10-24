@@ -141,4 +141,16 @@ This is a dependency of python-pandas.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186069</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2d3e3a3337678bf5b01ae159dd162549</srcmd5>
+    <version>1.4.2</version>
+    <time>1729710592</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.2:
+  * Add python_requires to setup.py to limit build to 3.9+
+  * Update the classifiers
+  * Deprecate Python 3.7 and 3.8
+  * Add python 3.13 build</comment>
+    <requestid>1217028</requestid>
+  </revision>
 </revisionlist>

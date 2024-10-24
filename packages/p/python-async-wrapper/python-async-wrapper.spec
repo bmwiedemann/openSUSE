@@ -17,7 +17,7 @@
 
 
 Name:           python-async-wrapper
-Version:        0.10.0
+Version:        0.11.1
 Release:        0
 Summary:        Library for improving async programming
 License:        MIT

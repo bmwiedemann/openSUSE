@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 10 10:32:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.3:
+  * build: fix incorrect variable checks
+  * fix(lib): correct unexpected side effect in get_column when the
+    lexer is at EOF
+  * build(deps): bump wasmtime to v25.0.2
+
+-------------------------------------------------------------------
 Sun Oct  6 03:45:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.24.2:

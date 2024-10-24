@@ -112,4 +112,14 @@
   * Use pytest-django to run the tests, rather than django-nose.</comment>
     <requestid>1198089</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9363df1a9077bfb0c1920c978940a1b0</srcmd5>
+    <version>5.0.2</version>
+    <time>1729710591</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.2:
+  * Implement AUTO_REFRESH_MAX_TTL to limit total token lifetime
+    when AUTO_REFRESH = True</comment>
+    <requestid>1217045</requestid>
+  </revision>
 </revisionlist>

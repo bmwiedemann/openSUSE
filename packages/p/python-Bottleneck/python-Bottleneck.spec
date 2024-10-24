@@ -17,7 +17,7 @@
 
 
 Name:           python-Bottleneck
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause

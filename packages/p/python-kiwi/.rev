@@ -2687,4 +2687,22 @@
   &lt;container name=&quot;some&quot; tag=&quot;some&quot; path=&quot;/some/path&quot;/&gt;</comment>
     <requestid>1216728</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>6a47ae580540ef8b3ed9f062534dbc8d</srcmd5>
+    <version>10.1.16</version>
+    <time>1729710483</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.1.15 → 10.1.16
+
+- Fix erofs requires in spec
+  erofs-utils for SUSE only exists in Tumbleweed. The
+  former conditon would also add the requirement for ALP
+  and SLFO which is wrong. This commit fixes it
+
+- Add vagrantconfig rule for vagrant format
+  If the format=&quot;vagrant&quot; attribute is set, a vagrantconfig
+  section becomes mandatory. This commit enforces this rule
+  on the schema. This Fixes #2666</comment>
+    <requestid>1217317</requestid>
+  </revision>
 </revisionlist>

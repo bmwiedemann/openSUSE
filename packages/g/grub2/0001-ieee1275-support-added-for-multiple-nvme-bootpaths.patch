@@ -1,0 +1,170 @@
+From 219b06c69d38a10349183002efb82bfec3b7ff5b Mon Sep 17 00:00:00 2001
+From: Avnish Chouhan <avnish@linux.ibm.com>
+Date: Wed, 21 Aug 2024 14:13:05 +0530
+Subject: [PATCH] ieee1275: support added for multiple nvme bootpaths
+
+This patch sets mupltiple NVMe boot-devices for more robust boot.
+Scenario where NVMe multipaths are available, all the available bootpaths (Max 5)
+will be added as the boot-device.
+
+Signed-off-by: Avnish Chouhan <avnish@linux.ibm.com>
+---
+ grub-core/osdep/linux/ofpath.c  |  6 +--
+ grub-core/osdep/unix/platform.c | 65 ++++++++++++++++++++++++++++++++-
+ include/grub/util/install.h     |  3 ++
+ include/grub/util/ofpath.h      |  4 ++
+ 4 files changed, 74 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 51d331f06..55ed7ddf2 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -209,7 +209,7 @@ find_obppath (const char *sysfs_path_orig)
+     }
+ }
+ 
+-static char *
++char *
+ xrealpath (const char *in)
+ {
+   char *out;
+@@ -224,7 +224,7 @@ xrealpath (const char *in)
+   return out;
+ }
+ 
+-static char *
++char *
+ block_device_get_sysfs_path_and_link(const char *devicenode)
+ {
+   char *rpath;
+@@ -535,7 +535,7 @@ of_path_get_nvme_nsid(const char* devname)
+ 
+ }
+ 
+-static char *
++char *
+ nvme_get_syspath(const char *nvmedev)
+ {
+   char *sysfs_path, *controller_node;
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index 1e2961e00..bafcc84d7 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -28,6 +28,8 @@
+ #include <dirent.h>
+ #include <string.h>
+ #include <errno.h>
++#include <grub/util/ofpath.h>
++#define BOOTDEV_BUFFER  1000
+ 
+ static char *
+ get_ofpathname (const char *dev)
+@@ -203,6 +205,56 @@ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+   return 0;
+ }
+ 
++char *
++add_multiple_nvme_bootdevices (const char *install_device)
++{
++  char *sysfs_path, *nvme_ns, *ptr;
++  unsigned int nsid;
++  char *multipath_boot;
++  struct dirent *ep;
++  DIR *dp;
++
++  /*
++   * Extracting the namespace from install_device.
++   * ex. install_device : /dev/nvme1n1
++   */
++  nvme_ns = grub_strstr (install_device, "nvme");
++  nsid = of_path_get_nvme_nsid (nvme_ns);
++  if (nsid == 0)
++    return NULL;
++
++  sysfs_path = nvme_get_syspath (nvme_ns);
++  strcat (sysfs_path, "/subsystem");
++  sysfs_path = xrealpath (sysfs_path);
++  dp = opendir (sysfs_path);
++  if (!dp)
++    return NULL;
++
++  ptr = multipath_boot = xmalloc (BOOTDEV_BUFFER);
++  while ((ep = readdir (dp)) != NULL)
++    {
++      char *path;
++      if (grub_strstr (ep->d_name, "nvme"))
++        {
++          path = xasprintf ("%s%s%x ", get_ofpathname (ep->d_name), "/namespace@", nsid);
++          if ((strlen (multipath_boot) + strlen (path)) > BOOTDEV_BUFFER)
++            {
++              grub_util_warn (_("Maximum five entries are allowed in the bootlist"));
++              free (path);
++              break;
++            }
++          strncpy (ptr, path, strlen (path));
++          ptr += strlen (path);
++          free (path);
++        }
++    }
++
++  *--ptr = '\0';
++  closedir (dp);
++
++  return multipath_boot;
++}
++
+ void
+ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 				int partno, const char *relpath)
+@@ -242,8 +294,19 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 	}
+       *ptr = '\0';
+     }
++  else if (grub_strstr (install_device, "nvme"))
++    {
++      boot_device = add_multiple_nvme_bootdevices (install_device);
++    }
+   else
+-    boot_device = get_ofpathname (install_device);
++    {
++      boot_device = get_ofpathname (install_device);
++      if (grub_strstr (boot_device, "nvme-of"))
++        {
++          free (boot_device);
++          boot_device = add_multiple_nvme_bootdevices (install_device);
++        }
++    }
+ 
+   if (grub_util_exec ((const char * []){ "nvsetenv", "boot-device",
+ 	  boot_device, NULL }))
+diff --git a/include/grub/util/install.h b/include/grub/util/install.h
+index 563cf68e9..2fd102649 100644
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -241,6 +241,9 @@ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+ 			   const char *efi_distributor,
+ 			   const char *force_disk);
+ 
++char *
++add_multiple_nvme_bootdevices (const char *install_device);
++
+ void
+ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 				int partno, const char *relpath);
+diff --git a/include/grub/util/ofpath.h b/include/grub/util/ofpath.h
+index a0ec30620..cc3c4bfbd 100644
+--- a/include/grub/util/ofpath.h
++++ b/include/grub/util/ofpath.h
+@@ -31,5 +31,9 @@ void add_filename_to_pile(char *filename, struct ofpath_files_list_root* root);
+ void find_file(char* filename, char* directory, struct ofpath_files_list_root* root, int max_depth, int depth);
+ 
+ char* of_find_fc_host(char* host_wwpn);
++char* nvme_get_syspath (const char *nvmedev);
++char* block_device_get_sysfs_path_and_link (const char *devicenode);
++char* xrealpath (const char *in);
++unsigned int of_path_get_nvme_nsid (const char* devname);
+ 
+ #endif /* ! GRUB_OFPATH_MACHINE_UTIL_HEADER */
+-- 
+2.47.0
+

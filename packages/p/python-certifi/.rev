@@ -350,4 +350,17 @@
   * Fix leaking certificate issue</comment>
     <requestid>1186314</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>929ee1e72e64f2d638130760c2692c50</srcmd5>
+    <version>2024.8.30</version>
+    <time>1729710499</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.8.30:
+  added certs:
+  * TWCA CYBER Root CA O=TAIWAN-CA OU=Root CA
+  * SecureSign Root CA12 O=Cybertrust Japan Co., Ltd.
+  * SecureSign Root CA14 O=Cybertrust Japan Co., Ltd.
+  * SecureSign Root CA15 O=Cybertrust Japan Co., Ltd.</comment>
+    <requestid>1217075</requestid>
+  </revision>
 </revisionlist>

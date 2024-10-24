@@ -30,7 +30,7 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
@@ -96,7 +96,7 @@ export CC=gcc
 %if %{with zlib_compat}
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 mkdir -p %{buildroot}%{_libdir}/zlib-ng-compat
-(cat > %{buildroot}%{_sysconfdir}/ld.so.conf.d/zlib-ng-compat.conf) <<-EOF
+(cat > %{buildroot}%{_sysconfdir}/ld.so.conf.d/zlib-ng-compat-%{_arch}.conf) <<-EOF
 	%{_libdir}/zlib-ng-compat
 	EOF
 pushd %{buildroot}%{_libdir}/
@@ -142,7 +142,7 @@ CHOST=%{target_cpu}-%{cpu_vendor}-linux-gnu sh test/abicheck.sh
 
 %files -n libz-ng%{?compat_suffix}%{soversion}
 %if %{with zlib_compat}
-%config %{_sysconfdir}/ld.so.conf.d/zlib-ng-compat.conf
+%config %{_sysconfdir}/ld.so.conf.d/zlib-ng-compat-%{_arch}.conf
 %dir %{_libdir}/zlib-ng-compat/
 %{_libdir}/zlib-ng-compat/libz.so.%{soversion}*
 %else

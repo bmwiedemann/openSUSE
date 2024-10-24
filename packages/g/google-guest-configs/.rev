@@ -234,4 +234,22 @@
     <comment></comment>
     <requestid>1206067</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9ace537f2fa1ee3f9fee87caedda85b2</srcmd5>
+    <version>20241021.00</version>
+    <time>1729710564</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241021.00 (bsc#1231775, bsc#1231776)
+  * Add GCE-specific config for systemd-resolved (#82)
+- from version 20241015.00
+  * Update google_set_multiqueue to enable on A3Ultra family (#79)
+- from version 20241013.00
+  * Update OWNERS (#81)
+- from version 20241010.00
+  * Depend on jq in enterprise linux (#80)
+- from version 20241008.00
+  * Always use IP from primary NIC in the
+    networkd-dispatcher routable hook (#78) (forwarded request 1217003 from glaubitz)</comment>
+    <requestid>1217008</requestid>
+  </revision>
 </revisionlist>

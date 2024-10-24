@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:37:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fix build against GCC14
+
+-------------------------------------------------------------------
 Wed Nov 29 11:31:46 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.10.8

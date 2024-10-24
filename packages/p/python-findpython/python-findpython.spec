@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT

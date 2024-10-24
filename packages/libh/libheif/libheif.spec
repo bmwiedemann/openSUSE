@@ -16,6 +16,15 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
 %bcond_with kvazaar
@@ -58,6 +67,9 @@ BuildRequires:  pkgconfig(SvtAv1Enc)
 %if %{with x265}
 BuildRequires:  pkgconfig(libde265)
 BuildRequires:  pkgconfig(x265)
+%endif
+%if %{with test}
+BuildArch:      noarch
 %endif
 
 %description
@@ -222,7 +234,12 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 %autosetup -p1
 
 %build
+# https://github.com/strukturag/libheif/issues/1281
+sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %cmake \
+%if %{with test}
+        --preset=testing \
+%else
 	-DWITH_AOM_DECODER=ON \
 	-DWITH_AOM_DECODER_PLUGIN=ON \
 	-DWITH_AOM_ENCODER=ON \
@@ -275,8 +292,18 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 	-DCMAKE_CXX_FLAGS="-pthread" \
 %endif
 	-DPLUGIN_DIRECTORY=%{_libexecdir}/libheif \
+%endif
 	%nil
 %cmake_build
+
+%if %{with test}
+%check
+cd build
+export LD_LIBRARY_PATH=$(pwd)/libheif
+make test
+%endif
+
+%if !%{with test}
 
 %install
 %cmake_install
@@ -375,6 +402,8 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/heif.thumbnailer
 %{_mandir}/man1/heif-thumbnailer.1%{?ext_man}
+%endif
+
 %endif
 
 %changelog

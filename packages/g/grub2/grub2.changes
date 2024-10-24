@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct 23 06:17:54 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix error: /boot/grub2/x86_64-efi/bli.mod not found (bsc#1231591) 
+
+-------------------------------------------------------------------
+Tue Oct 22 07:34:04 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Keep grub packaging and dependencies in the SLE-12 and SLE-15 builds
+
+-------------------------------------------------------------------
+Fri Oct 18 07:42:27 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Power guest secure boot with key management (jsc#PED-3520) (jsc#PED-9892)
+  * 0001-ieee1275-Platform-Keystore-PKS-Support.patch
+  * 0002-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+  * 0003-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+  * 0004-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+  * 0005-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+  * 0006-appendedsig-documentation.patch
+  * 0007-mkimage-create-new-ELF-Note-for-SBAT.patch
+  * 0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
+  * grub2.spec : Building signed grub.elf with SBAT metadata
+- Support for NVMe multipath splitter (jsc#PED-10538)
+  * 0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+- Deleted path (jsc#PED-10538)
+  * 0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
+  * 0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
+
+-------------------------------------------------------------------
+Wed Oct 16 13:50:00 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix not a directory error from the minix filesystem, as leftover data on disk
+  may contain its magic header so it gets misdetected (bsc#1231604)
+  * grub2-install-fix-not-a-directory-error.patch
+
+-------------------------------------------------------------------
 Fri Oct  4 06:58:06 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix missng menu entry "Start bootloader from a read-only snapshot" by

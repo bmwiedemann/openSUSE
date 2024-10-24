@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 22 05:50:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Packaging cleanup:
+  * _service should not use generated changelog, instead use
+    upstream changelogs
+  * Add requires to completions
+  * setup to autosetup
+  * Fix URL to new upstream
+- Update to version 1.7.0:
+  Added
+  * Allow querying multiple platforms
+  * Add BSD platform support
+  * Allow building with native-tls in addition to rustls
+  Changed
+  * Change custom page files to use a .md file extension
+  * Update to clap v4 for doing command line parsing
+  * Performance optimization in LineIterator
+  * Performance optimizations by tweaking Cargo flags
+  * Include completions in published crate
+  * Minimal supported Rust version is now 1.75
+  Fixed
+  * Fix bash/zsh/fish completions when cache is empty
+  Docs
+  * Publish docs only when tagging a release
+  * Add "Tips and Tricks" chapter to user manual
+  * Various docs improvements
+
+-------------------------------------------------------------------
 Thu Feb 15 02:39:04 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Switch to cargo instead of rust+cargo.

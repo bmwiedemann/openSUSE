@@ -55,4 +55,26 @@
   * Compatibility with changes in Sphinx 7.3. :pr:`100`</comment>
     <requestid>1184073</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f2808de02f02f72e3207600c9a07465</srcmd5>
+    <version>2.2.0</version>
+    <time>1729710497</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Get canonical URL from environment variable when building on
+    Read the Docs. :pr:`117`
+  * New version warning banner. Use JavaScript to query PyPI when
+    viewing a page, rather than baking the warning into the
+    build. New builds of old versions are no longer required for
+    the banner to be correct. :pr:`117`
+  * Generate 404 page using the sphinx-notfound-page extension.
+    This fixes the URLs when the page is hosted so that it loads
+    the CSS. :issue:`34`
+  * Remove handling for singlehtml_sidebars config which predated
+    Sphinx's support. :pr:`119`
+  * Remove &quot;babel&quot; and &quot;platter&quot; theme variants which were
+    undocumented and did not appear to be used by the relevant
+    projects. :pr:`120`</comment>
+    <requestid>1217037</requestid>
+  </revision>
 </revisionlist>

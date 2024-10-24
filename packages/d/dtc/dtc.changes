@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:24:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.7.1:
+  * dtc
+    * Fix check for 10-bit I2C addresses
+    * Improve documentation of -@ option
+    * Update to libyaml >= 0.2.3
+    * Improvements & fixes for device graph checks
+    * Add -L / --local-fixups option
+    * Add check for length of interrupt-map properties
+  * libfdt
+    * Add fdt_path_getprop_namelen()
+    * Add fdt_get_symbol() and fdt_get_symbol_namelen()
+    * Correct documentation of fdt_path_offset()
+    * Correct documentation of fdt_appendprop_addrrange()
+    * Validate aliases is fdt_get_alias_namelen()
+    * Don't overwrite phandles when applying overlays
+    * Require Python 3
+  * pylibfdt
+    * Support boolean properties
+    * Fixes for current Python versions
+  * General
+    * Assorted bugfixes
+    * Assorted build improvements
+    * Assorted typo fixes in docs
+    * Some additional testcases
+    * Move to GitHub Actions based CI
+
+-------------------------------------------------------------------
 Tue Apr 25 08:42:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - update to 1.7.0:

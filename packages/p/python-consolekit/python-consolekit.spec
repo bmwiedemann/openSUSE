@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-consolekit%{psuffix}
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Additional utilities for click
 License:        MIT

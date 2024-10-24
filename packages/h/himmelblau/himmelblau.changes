@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:22:21 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.6.14+git.0.bbda0b6:
+  * Version 0.6.14
+  * postinst should not fail on patch or apparmor update
+  * Version 0.6.13
+  * Don't use sudo in postinst/postrm scripts for deb
+  * Version 0.6.12
+  * PAM should be placed first in the stack
+  * Match the object ID of the fake user and group
+  * Version 0.6.11
+  * Move sshd config into it's own debian package
+  * Version 0.6.10
+  * Allow the graph to start w/out network
+  * Add hello_pin_min_length conf option
+  * Version 0.6.9
+  * Don't attempt SFA fallback if AADSTSError
+  * Have libhimmelblau handle the DAG fallback
+  * Add a warning to user that SSH needs restarted
+  * Version 0.6.8
+  * Ensure local users are ignored when CN mapping
+  * Ensure DAG is rejected if lifetime expires
+  * Version 0.6.7
+  * Rework the poll logic to resolve timeout issues
+  * Version 0.6.6
+  * Add a sshd soft depends for the deb package
+  * CN name mapping in PAM and NSS
+  * Version 0.6.5
+  * Make CN an optional home directory attribute
+  * Version 0.6.4
+  * Add Ubuntu pam-config for pam_himmelblau
+  * Configuration patches for himmelblau on Debian
+  * Version 0.6.3
+  * Bug in pam which needs defended against
+  * Version 0.6.2
+  * Never return the Pam result from get_user()
+  * Correct installation directory of the deb pam module
+  * Makefile typo fixes
+  * Add libdbus-1-dev dep
+  * Version 0.6.1
+  * Debian build requires libdbus-1-dev
+
+-------------------------------------------------------------------
 Wed Oct 02 20:29:43 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.6.0+git.0.b8dae18:

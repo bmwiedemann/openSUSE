@@ -3,13 +3,12 @@
     <param name="url">https://github.com/dbrgn/tealdeer.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">7c371a6</param>
+    <param name="revision">v1.7.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
   </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

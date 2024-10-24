@@ -122,4 +122,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   + Updated translations. (forwarded request 1175725 from dimstar)</comment>
     <requestid>1175726</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>45be659a36cfc767df500d1267080a0f</srcmd5>
+    <version>1.2.24</version>
+    <time>1729710476</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217232</requestid>
+  </revision>
 </revisionlist>

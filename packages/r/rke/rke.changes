@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:32:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.3:
+  * What's Changed
+    - Bump github.com/opencontainers/runc from 1.1.12 to 1.1.14
+    - Add ACI-CNI 6.1.1.1 variable
+  * RKE Kubernetes versions
+    - v1.27.16-rancher1-1
+    - v1.28.14-rancher1-1
+    - v1.29.9-rancher1-1
+    - v1.30.5-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Sat Sep 21 13:27:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.2:

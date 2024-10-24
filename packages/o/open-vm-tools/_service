@@ -1,14 +1,18 @@
 <services>
-  <service name="tar_scm" mode="manual">
-    <param name="scm">git</param>
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/vmware/open-vm-tools.git</param>
-    <param name="revision">stable-12.4.5</param>
-    <param name="filename">open-vm-tools</param>
-    <param name="versionformat">12.4.5</param>
+    <param name="scm">git</param>
+    <param name="revision">stable-12.5.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">stable-(.*)</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="set_version" mode="manual">
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="manual"/>
 </services>

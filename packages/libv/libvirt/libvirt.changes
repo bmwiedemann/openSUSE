@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:59:15 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- spec: Use default_firewall_backend prjconf setting
+- spec: Loosen nwfilter dependency
+  boo#1231798
+
+-------------------------------------------------------------------
 Tue Oct  1 19:57:06 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.8.0

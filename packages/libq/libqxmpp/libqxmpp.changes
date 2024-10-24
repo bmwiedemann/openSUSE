@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 22 12:14:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.2
+  * StreamError: Fix parsing of stream error conditions and
+    missing "invalid-id" condition
+  * Uri: Fix parsing login URI
+
+-------------------------------------------------------------------
 Fri Aug 23 05:48:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:

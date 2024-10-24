@@ -25,16 +25,17 @@ License:        GPL-3.0-only
 URL:            https://github.com/Foldex/AdwSteamGtk
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  appstream-glib
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  patch
-BuildRequires:  update-desktop-files
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-packaging
-BuildRequires:  appstream-glib
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libportal)
+Requires:       typelib(XdpGtk4)
 
 %description
 A GTK wrapper that installs and updates the Adwaita for Steam skin.

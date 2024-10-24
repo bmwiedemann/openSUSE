@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:31:01 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Exclude tests when building for ix86
+
+-------------------------------------------------------------------
 Fri Oct 18 17:14:37 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.40.4:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:04:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Don't skip symlinks for rye provider
+  * **ci**: Macos for old python versions
+
+-------------------------------------------------------------------
 Sat Apr 20 14:05:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.1:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:51:08 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.2.2:
+  * Changelog at https://github.com/zlib-ng/zlib-ng/releases/tag/2.2.2
+
+-------------------------------------------------------------------
+Wed Oct 23 07:49:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install the ld.so configuration file also with the -32bit
+  package, as otherwise biarch installs won't find that library
+  (boo#1232065).
+
+-------------------------------------------------------------------
 Tue Sep  3 12:04:19 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.2.1:

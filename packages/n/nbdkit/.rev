@@ -185,4 +185,12 @@ to an old changelog entry in order to submit the same package to
 Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <requestid>1208904</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0d5f1f98ae7313732a7cc8cac810883b</srcmd5>
+    <version>1.40.4</version>
+    <time>1729710605</time>
+    <user>anag+factory</user>
+    <comment>- Exclude tests when building for ix86</comment>
+    <requestid>1217085</requestid>
+  </revision>
 </revisionlist>

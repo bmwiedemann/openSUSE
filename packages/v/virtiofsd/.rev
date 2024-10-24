@@ -90,4 +90,12 @@ Use macros to exclude 32-bit archs</comment>
     <comment></comment>
     <requestid>1205585</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd1b96f8d15be807d383992ca43a1ffe</srcmd5>
+    <version>1.12.0</version>
+    <time>1729710490</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217370</requestid>
+  </revision>
 </revisionlist>

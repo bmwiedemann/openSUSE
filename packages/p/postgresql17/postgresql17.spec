@@ -21,7 +21,8 @@
 %define buildlibs 1
 %define tarversion %{pgversion}
 %define oldest_supported_llvm_ver 10
-%define latest_supported_llvm_ver 18
+# To be able to use cmake(LLVM) < ...
+%define latest_supported_llvm_ver_plus_one 19
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -146,8 +147,8 @@ BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
 BuildRequires:  gcc-c++
-BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) <= %{latest_supported_llvm_ver})
-BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  <= %{latest_supported_llvm_ver})
+BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) < %{latest_supported_llvm_ver_plus_one})
+BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  < %{latest_supported_llvm_ver_plus_one})
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel

@@ -280,4 +280,12 @@ Qt5 alternative.</comment>
   * Fix clang build (forwarded request 1195635 from jubalh)</comment>
     <requestid>1195650</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c447d653d4952b51d24f08da8b1d1af0</srcmd5>
+    <version>1.8.2</version>
+    <time>1729710577</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.8.2. Depends on SR#1216969</comment>
+    <requestid>1217017</requestid>
+  </revision>
 </revisionlist>

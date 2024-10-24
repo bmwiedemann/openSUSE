@@ -618,4 +618,23 @@
 </comment>
     <requestid>1206528</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d6493d61b6fc0b1d07806d4d555b9459</srcmd5>
+    <version>3.10.10</version>
+    <time>1729710530</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.10.10:
+  * Fixed error messages from
+    :py:class:`~aiohttp.resolver.AsyncResolver` being swallowed
+    -- by :user:`bdraco`. Related issues and pull requests on
+    GitHub: :issue:`9451`, :issue:`9455`.
+  * Added :exc:`aiohttp.ClientConnectorDNSError` for
+    differentiating DNS resolution errors from other connector
+    errors -- by :user:`mstojcevich`. Related issues and pull
+    requests on GitHub: :issue:`8455`.
+  * Simplified DNS resolution throttling code to reduce chance of
+    race conditions -- by :user:`bdraco`. Related issues and pull
+    requests on GitHub: :issue:`9454`.</comment>
+    <requestid>1217029</requestid>
+  </revision>
 </revisionlist>

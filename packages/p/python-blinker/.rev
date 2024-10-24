@@ -207,4 +207,41 @@
     <comment></comment>
     <requestid>1126823</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8f921c5b715067b37b8b02793a8f0b89</srcmd5>
+    <version>1.8.2</version>
+    <time>1729710536</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.2:
+  * Simplify type for _async_wrapper and _sync_wrapper arguments.
+    :pr:`156`
+  * Restore identity handling for str and int senders. :pr:`148`
+  * Fix deprecated blinker.base.WeakNamespace import. :pr:`149`
+  * Fix deprecated blinker.base.receiver_connected import.
+    :pr:`153`
+  * Use types from collections.abc instead of typing. :pr:`150`
+  * Fully specify exported types as reported by pyright.
+    :pr:`152`
+  * Deprecate the __version__ attribute. Use feature detection,
+    or importlib.metadata.version(&quot;blinker&quot;), instead.
+    :issue:`128`
+  * Specify that the deprecated temporarily_connected_to will be
+    removed in the next version.
+  * Show a deprecation warning for the deprecated global
+    receiver_connected signal and specify that it will be removed
+    in the next version.
+  * Show a deprecation warning for the deprecated WeakNamespace
+    and specify that it will be removed in the next version.
+  * Greatly simplify how the library uses weakrefs. This is a
+    significant change internally but should not affect any
+    public API. :pr:`144`
+  * Expose the namespace used by signal() as default_namespace.
+    :pr:`145`
+- add remove-sphinxextensions.patch to remove an optional
+  sphinxextension
+
+- use setup.py option to record file list for rpm package
+- Fixed doc section in file list</comment>
+    <requestid>1217042</requestid>
+  </revision>
 </revisionlist>

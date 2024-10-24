@@ -341,20 +341,31 @@ skip_tests+=" or test_compressed1"
 # image comparison failures due to precisions dicrepancies to the x86 produced references
 skip_tests+=" or png or svg or pdf"
 %endif
+
+# Fails in SLFO:Main
+%if 0%{?suse_version} <= %SLE_VERSION
+# Timeout, this test freeze forever
+skip_tests+=" or test_determinism"
+skip_tests+=" or test_pcolormesh[png] or test_pcolormesh_alpha[png]"
+%endif
+
 # backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
 no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %{python_expand # see https://matplotlib.org/devdocs/devel/testing.html#testing
 # if one of the pyargs modules is not present, the xargs collection looks empty
+# Ignore ImportWarning that happens with gtk3
 $python -m pytest --pyargs matplotlib.tests \
                            mpl_toolkits.axes_grid1.tests \
                            mpl_toolkits.axisartist.tests \
                            mpl_toolkits.mplot3d.tests \
                   -n auto \
+                  -W "ignore::ImportWarning" \
                   -m "not network" \
                   -vv -rsfE \
                   -k "not (${no_xdist} ${skip_tests})"
 $python -m pytest --pyargs matplotlib.tests \
                   -vv -rsfE \
+                  -W "ignore::ImportWarning" \
                   -k "(${no_xdist}) and not (${skip_tests:4})"
 }
 %endif

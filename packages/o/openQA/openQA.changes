@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 22 11:15:29 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1729587891.7145424b:
+  * Bump eslint from 9.12.0 to 9.13.0
+  * Improve worker load threshold detection
+  * Bump @eslint/plugin-kit from 0.2.0 to 0.2.1
+  * Bump ace-builds from 1.36.2 to 1.36.3
+  * Return timestamps with offset to client for needle info
+  * Use local timezone in t/ui/21-admin-needles.t
+
+-------------------------------------------------------------------
 Sun Oct 20 03:14:43 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1729244210.5cfb4dcc:

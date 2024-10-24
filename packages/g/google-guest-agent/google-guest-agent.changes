@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:30:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20241018.01 (bsc#1231775, bsc#1231776)
+  * Add support for including agent manager in guest-agent package (#456)
+  * plugin manager: Introduce the systemd service file (#455)
+  * documentation: Update metadata script runner details (#453)
+- from version 20241013.00
+  * Update OWNERS (#452)
+- from version 20241011.01
+  * SUSE no overwrite bug fix, Ubuntu 18.04 exception (#451)
+- from version 20241011.00
+  * Skip MDS setup by default for this release (#450)
+- from version 20241010.01
+  * Revert "network/netplan: Adjust link-local accordingly (#443)" (#448)
+  * Set enable regardless of previous check failed or not (#447)
+- from version 20241009.03
+  * Avoid unnecessary reloads, check before overwriting configs (#446)
+- from version 20241009.02
+  * network/netplan: Do generate instead of apply (#445)
+- from version 20241009.01
+  * Skip SetupInterfaces if configs are already applied (#444)
+  * network/netplan: Adjust link-local accordingly (#443)
+  * Repeated logging could be mistaken for a recurring issue,
+    log mds mtls endpoint error only once (#439)
+  * Retry MDS PUT operation, reload netplan/networkctl
+    only if configs are changed (#438)
+  * Log interface state after setting up network (#437)
+  * network: Debian 12 rollback only if default netplan is ok (#436)
+- from version 20240930.01
+  * Change mtls mds defaults, update log message to assure error is harmless (#434)
+- from version 20240930.00
+  * network: Restore Debian 12 netplan configuration. (#433)
+  * network: Remove primary NIC left over configs. (#432)
+  * Update VLAN interfaces format to match with MDS (#431)
+  * Fix panics in agent when setting up VLAN with netplan (#430)
+  * Add VLAN NIC support for NetworkManager (#429)
+  * Fix debian12 netplan config issue, use ptr receiver (#428)
+  * Update README to reflect new network manager changes (#427)
+  * Introduce a configuration toggle for enabling/disabling cloud logging (#413)
+  * Adapt and update config key to be consistent with MDS (#426)
+  * Allow users to enable/disable the mds mtls via metadata key (#423)
+  * Make primary nic management config consistent across all network managers (#422)
+  * Document disabling account manager on AD (#421)
+  * Update README with MDS MTLS docs (#418)
+  * Avoid writing configuration files when they already exist on wicked and (#410)
+  * Update golang.org/x/net dependencies to catch up on CVEs (#412)
+  * Get rid of deperecated dependencies in snapshot service generate code (#411)
+  * Fix where agent panics on nil event (#409)
+  * Configure primary nic if only set in cfg file (#408)
+  * Update NIC management strategy (#402)
+  * Only release dhclient leases for an interface if the
+    respective dhclient is still running (#407)
+  * Disable OS Login without pruning off any extra suffix. (#400)
+  * Skip root cert rotation if installed once (#405)
+  * Add ipv6 support to guest agent (#404)
+  * Update Accounts documentation (#403)
+  * Update google-startup-scripts.service to enable logging (#399)
+  * Network subsystem remove os rules (#396)
+  * oslogin: Don't remove sshca watcher when oslogin is disabled (#398)
+  * Update dependencies to catch up on CVE fixes (#397)
+  * Network manager netplan implementation (#386)
+  * Update dependencies to catch up on CVE fixes (#391)
+  * Log current available routes on error (#388)
+  * Fix command monitor bugs (#389)
+  * windows account: Ignore "user already belogs to group" error (#387)
+  * Add more error logging in snapshot handling requests, use common retry util (#384)
+  * All non-200 status code from MDS should raise error (#383)
+  * Change metadata key to enable-oslogin-certificates (#382)
+  * Update dhclient pid/lease file directory to abide apparmor rules (#381)
+  * Add COS homedir-gid patch to upstream. (#365)
+  * Add require-oslogin-certificates logic to disable keys (#368)
+  * systemd-networkd: Support Debian 12's version (#372)
+  * Minor update typo in comment (#380)
+  * NetworkManager: Only set secondary interfaces as up (#378)
+  * address manager: Make sure we check for oldMetadata (#375)
+  * network: Early setup network (#374)
+  * NetworkManager: Fix ipv6 and ipv4 mode attribute (#373)
+  * Network Manager: Make sure we clean up ifcfg files (#371)
+  * metadata script runner: Fix script download (#370)
+  * oslogin: Avoid adding extra empty line at the end of /etc/security/group.conf (#369)
+  * Dynamic vlan (#361)
+  * Check for nil response (#366)
+  * Create NetworkManager implementation (#362)
+  * Skip interface manager on Windows (#363)
+  * network: Remove ignore setup (#360)
+  * Create wicked network service implementation and its respective unit (#356)
+  * Update metadata script runner, add tests (#357)
+  * Refactor guest-agent to use common retry util (#355)
+  * Flush logs before exiting #358 (#359)
+  * Create systemd-networkd unit tests. (#354)
+  * Update network manager unit tests (#351)
+  * Implement retry util (#350)
+  * Refactor utils package to not dump everything unrelated into one file (#352)
+  * Set version on metadata script runner (#353)
+  * Implement cleanup of deprecated configuration directives (#348)
+  * Ignore DHCP offered routes only for secondary nics (#347)
+  * Deprecate DHClient in favor of systemd-networkd (#342)
+  * Generate windows and linux licenses (#346)
+  * Remove quintonamore from OWNERS (#345)
+  * Delete integration tests (#343)
+
+-------------------------------------------------------------------
 Wed Aug 28 11:02:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240816.00

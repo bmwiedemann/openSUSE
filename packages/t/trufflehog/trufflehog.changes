@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:46:20 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.82.12:
+  * [fix] - Inadvertent s3 body close (#3491)
+  * Remove proto (#3489)
+  * fix(deps): update testcontainers-go monorepo to v0.34.0 (#3488)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.1 (#3487)
+  * Extract FP logic correctly at other call site #3476
+  * fix(deps): update module go.uber.org/mock to v0.5.0 (#3468)
+  * fix(deps): update module cloud.google.com/go/storage to v1.45.0 (#3467)
+  * increase timeout to 30s (#3422)
+  * Update yousign detector endpoints to check againt prod and staging urls (#3426)
+  * fix: fixed autoklose verification endpoint (#3447)
+  * fix: fixed verification logic & endpoint for AyrShare (#3452)
+
+-------------------------------------------------------------------
 Fri Oct 18 12:24:31 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.82.11:

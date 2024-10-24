@@ -7,12 +7,12 @@
 # The only argument to this script is the configuration file that is to
 # be used to configure the interface.
 #
-# Here is the format of the ip configuration file:
+# Here is the ifcfg format of the ip configuration file:
 #
 # HWADDR=macaddr
 # DEVICE=interface name
 # BOOTPROTO=<protocol> (where <protocol> is "dhcp" if DHCP is configured
-#                       or "none" if no boot-time protocol should be used)
+# 			or "none" if no boot-time protocol should be used)
 #
 # IPADDR0=ipaddr1
 # IPADDR1=ipaddr2
@@ -30,14 +30,41 @@
 # tagged as IPV6_DEFAULTGW and IPV6 NETMASK will be tagged as
 # IPV6NETMASK.
 #
+# Here is the keyfile format of the ip configuration file:
+#
+# [ethernet]
+# mac-address=macaddr
+# [connection]
+# interface-name=interface name
+#
+# [ipv4]
+# method=<protocol> (where <protocol> is "auto" if DHCP is configured
+#                       or "manual" if no boot-time protocol should be used)
+#
+# address1=ipaddr1/plen
+# address2=ipaddr2/plen
+#
+# gateway=gateway1;gateway2
+#
+# dns=dns1;
+#
+# [ipv6]
+# address1=ipaddr1/plen
+# address2=ipaddr2/plen
+#
+# gateway=gateway1;gateway2
+#
+# dns=dns1;dns2
+#
 # The host can specify multiple ipv4 and ipv6 addresses to be
 # configured for the interface. Furthermore, the configuration
 # needs to be persistent. A subsequent GET call on the interface
 # is expected to return the configuration that is set via the SET
 # call.
 #
-cfg=$1
-if ! test -f "${cfg}"
+if_cfg=$1
+nm_cfg=$2
+if ! test -f "${if_cfg}"
 then
 	: expect configuration datafile as first argument
 	exit 1
@@ -86,11 +113,11 @@ unset ${!IPV6ADDR*}
 unset ${!IPV6NETMASK*}
 unset ${!IPV6_DEFAULTGW*}
 unset ${!DNS*}
-. "$1"
+. "${if_cfg}"
 #
 if test -z "${DEVICE}"
 then
-	echo "Missing DEVICE= in ${cfg}"
+	echo "Missing DEVICE= in ${if_cfg}"
 	exit 1
 fi
 #
@@ -200,6 +227,7 @@ do
 done
 #
 echo "$0: working on network interface ifcfg-${DEVICE}"
+mkdir -vp "/etc/sysconfig/network"
 cp -fb ${t_ifcfg} "/etc/sysconfig/network/ifcfg-${DEVICE}"
 cp -fb ${t_ifroute} "/etc/sysconfig/network/ifroute-${DEVICE}"
 if test -w /etc/sysconfig/network/config
@@ -207,6 +235,13 @@ then
 	sed -i "s@^NETCONFIG_DNS_STATIC_SERVERS=.*@NETCONFIG_DNS_STATIC_SERVERS='$_DNS_'@"  /etc/sysconfig/network/config
 	netconfig update -m dns
 fi
+
+echo "$0: working on network interface ifcfg-${DEVICE}"
+nm_filename="${nm_cfg##*/}"
+mkdir -vp "/etc/NetworkManager/system-connections"
+umask 0177
+sed '/\[connection\]/a autoconnect=true' "${nm_cfg}" > "/etc/NetworkManager/system-connections/${nm_filename}"
+
 ifdown "${DEVICE}"
 ifup "${DEVICE}"
 ) 2>&1 | logger -t "${0##*/}[$PPID / $$]"

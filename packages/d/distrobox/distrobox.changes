@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Oct 16 10:14:35 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to 1.8.0
+ * Improvements
+   + Improvements on Nvidia integration
+   + Improvements on XDG_* env variables management
+   + Remote distrobox assemble files! Keep them remote with distrobox assemble create --file https://foo.com/file.ini!
+   + A lot of new container distros, from @ublue-os and @toolbx-images, New Fedora, Ubuntu, Alpine and @wolfi-dev wolfi-toolbox!
+ * all: ensure env variables are set and have values
+ * all: use registry.fedoraproject.org/fedora-toolbox:latest image by default, Fix #1402
+ * assemble: add support for remote manifest files
+ * assemble: ensure variables are reset correctly
+ * assemble: fix name detection with hyphens, Fix #1507
+ * assemble: fix possible empty lines, Fix #1514
+ * assemble: improve handling of hooks, pass around b64 encoded string to avoid unwanted evaluations
+ * compatibility: add missing url for ubuntu:23.04 by @sheevy in #1439
+ * create: better explain init/pre-init hooks
+ * create: ignore trailing slashes on custom homes, Fix #1575
+ * docs: Add kali icon by @andyspectre in #1451
+ * docs: Document support for alpine 3.20 containers by @Ferenc- in #1504
+ * docs: Fix issue with user not having permissions to write containers.conf by @nhermosilla14 in #1456
+ * docs: Seperate curl and wget commands by @axtloss in #1434
+ * docs: Update microos -> aeon/kalpa in docs by @TheRsKing in #1427
+ * docs: Update openSUSE and SLES compatibility guide by @alexandrevicenzi in #1489
+ * docs: add BlackaArch Linux compatibility, Fix #1358
+ * docs: add compatibility with ghcr.io/ublue-os/bluefin-cli, Fix #1453
+ * docs: document an official way to detect when you're in a distrobox
+ * docs: document pipewire/alsa packages for ubuntu initful containers. Fix #1374
+ * docs: fix subuids spelling mistake by @yocoldle in #1431
+ * docs: fix link for Crystal linux. Fix #1418
+ * docs: fix linting
+ * docs: fix obsolete Chainguard Wolfi notes
+ * docs: point to new nixos wiki by @Mic92 in #1384
+ * docs: remove rhel-toolbox image from compatibility, it's now behind paywall
+ * docs: support for 3d acceleration in: run_libvirt_in_distrobox.md by @TheRsKing in #1426
+ * docs: update compatibility, add ublue toolboxes, update Alpine and Fedora versions, Fix #1501
+ * docs: update vscode integration docs
+ * enter: Fix distrobox-enter and distrobox-rm to handle containers that have environment variables shorter than 5 symbols by @senioroman4uk in #1545
+ * enter: Fix support for Active Directory usernames including backslashes pt. 2 by @phoppermann in #1458
+ * enter: fix additional flags evaluation, Fix #1541
+ * enter: fix docker timestamp incompatibility, Fix #1382, Fix #1424, Fix #1392
+ * enter: fix regression in login for initful container, Fix #1428
+ * enter: get rid of eval and pass arguments using set. This will avoid maniupulating args, and simplify our life. Fix #749, Fix #1461
+ * enter: improve positional args handling, treat enter command accordingly, improve comments explaining the black magic
+ * export: Actually fix XDG_DATA_DIRS and XDG_DATA_HOME handling by @TigerGorilla2 in #1582
+ * export: Fix XDG_DATA_DIRS and XDG_DATA_HOME handling by @e-luks in #1496
+ * export: ensure destpath exists, Fix #1405
+ * export: fix CONTAINER_ID fallback
+ * export: fix grep errors on list-apps
+ * export: improve documentation of the spec. Fix #1444
+ * export: simplify and cleanup code
+ * export: support exporting app launchers by full-path.
+ * extras: vscode- improve podman wrapper, add docker wrapper, fix reconnections
+ * fix for 1440 by @dtg01100 in #1441
+ * fix: init package in Gentoo Stage3 image by @xz-dev in #1455
+ * fix:[#1525] handle container creation failure by @jardon in #1526
+ * generate-entry: add 'Remove' action to entry, Fix #1433
+ * generate-entry: add timeout to downloads, Fix #1459
+ * generate-entry: fix generic icon download and setup
+ * generate-entry: fix linting
+ * generate-entry: use XDG_DATA_HOME by @Samueru-sama in #1468
+ * host-exec: fix arm naming, Fix #1442
+ * host-exec: fix host-spawn version
+ * host-exec: update host-spawn version
+ * init: fix arch locale-gen by @Boria138 in #1520
+ * init: Exclude repos from bind-mounting by @lunacd in #1503
+ * init: Fix SHELL using absolute path and disable duplicate profile inclusion by @eugenesan in #1397
+ * init: Generate host locales in container (fixed issue #1399) by @Boria138 in #1404
+ * init: add fallback values for host locale variables
+ * init: add iputils
+ * init: add iputils in setup_pacman by @intzaaa in #1576
+ * init: apt-get upgrade, force keeping old configs when non interactive
+ * init: arrange package manager to avoid conflicts when using more than one (eg: packaging containers)
+ * init: auto-link /usr/bin/flatpak, to better support opening links on host's browser, if those are flatpaks
+ * init: do not fail in "Setting up read-only mounts" if findmnt does not exist by @phoppermann in #1454
+ * init: ensure we have DBUS variables set for host-spawn to work in login scripts, Fix #1383
+ * init: fallback case where mounting /etc/localtime fails, Fix #1435
+ * init: fix detection of 32bit nvidia libs on suse family
+ * init: fix failing chpasswd on systemd-homed managed users, Fix #1423
+ * init: fix locale generation for minimal images
+ * init: fix locale generation on musl and older systems
+ * init: fix missing allowerasing flag for dnf
+ * init: fix nvidia integration mounting files from boost libs, Fix #1500
+ * init: fix nvidia integration, improve search of nvidia files, Fix #1500
+ * init: fix typo in fallback locale values
+ * init: fix udev clash on rootful initful systems
+ * init: fix void-linux failing due to runit, Fix #1380
+ * init: perform upgrade before setting up archlinux packages
+ * init: proper fix for void extraction paths. Fix #1457
+ * init: remove su-exec workaround for Wolfi, now that it supports proper sudo
+ * init: rework package managment code
+ * init: separate 'mount --rbind -o rslave ...' into 'mount --rbind ...'… by @timwa0669 in #1583
+ * rm: Fix distrobox-enter and distrobox-rm to handle containers that have environment variables shoter than 5 symbols by @senioroman4uk in #1545
+ * rm: add fallback value to response_force
+ * rm: ask to force-delete if running and in interactive mode
+ * rm: fix IFS overwriting, Fix #1400
+ * rm: remove dead code, remove container volumes.
+
+-------------------------------------------------------------------
 Sat May 11 03:38:58 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.7.2.1

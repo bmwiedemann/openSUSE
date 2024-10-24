@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 16:00:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Argument `--no-preemptive` in the CLI to prevent the detector
+    to search for hints.
+  * Support for Python 3.13
+  * Relax the TypeError exception thrown when trying to compare a
+    CharsetMatch with anything else than a CharsetMatch.
+  * Improved the general reliability of the detector based on
+    user feedbacks. (#520) (#509) (#498) (#407)
+  * Declared charset in content (preemptive detection) not
+    changed when converting to utf-8 bytes.
+
+-------------------------------------------------------------------
 Sat Nov 25 14:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.2:

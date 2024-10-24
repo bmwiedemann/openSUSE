@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 15:28:41 MDT 2024 - carnold@suse.com
+
+- Detect the correct kernel on aarch64 (jsc#PED-10545)
+  detect-aarch64-kernel.patch
+
+-------------------------------------------------------------------
 Wed Sep  4 15:06:41 MDT 2024 - carnold@suse.com
 
 - Update to version 5.3.5 (jsc#PED-8910)

@@ -74,4 +74,18 @@
 - Add test multibuild and use astropy testsuite (forwarded request 1197896 from bnavigator)</comment>
     <requestid>1197899</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1f7ec8d5e6f1e794c2ceb307b8a384e8</srcmd5>
+    <version>0.2024.10.21.0.33.21</version>
+    <time>1729710602</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2024.10.21.0.33.21:
+  * Bump actions/checkout from 4.2.0 to 4.2.1
+  * MNT: Use hash for Action workflow versions and update if
+    needed
+  * Remove leading zeros in tag to make tag consistent with PyPI
+    release
+  * Fix continuous integration</comment>
+    <requestid>1217072</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rcs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,12 @@ URL:            https://www.gnu.org/software/rcs/
 Source:         https://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz
 Source1:        https://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz.sig
 Source2:        rcs.keyring
-Patch0:         rcs-glibc-2.34.patch
+Patch0:         reproducible-build.diff
+Patch1:         rcs-configure-c99.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  ed
+BuildRequires:  groff
 BuildRequires:  lzip
 Requires:       diffutils
 
@@ -38,14 +42,12 @@ useful for files that are frequently revised, for example: programs,
 documentation, graphics, and papers.
 
 %prep
-%setup -q
-%if 0%{?suse_version} >= 1550
-%patch -P 0 -p1
-%endif
+%autosetup -p1
 
 %build
+autoreconf -f
 ac_cv_path_SENDMAIL=%{_sbindir}/sendmail \
-%configure --with-diff-utils
+%configure
 %make_build
 
 %check

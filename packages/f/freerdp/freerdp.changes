@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 23 05:10:01 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.9.0
+  So, what is new:
+  * Support for RDPEAR (remote credential guard) /remoteGuard option for non windows clients
+  * Global configuration file support, allowing to configure certificate
+    accept/ignore/... default settings for all users
+  * Simplified manpage generation, eliminates docbook and xmlto dependencies
+    speeding up builds
+  * New API for client channels to run tasks on RDP thread
+  * New extended transport layer API
+  * RDPECAM MJPEG support	
+  * the first updates of timezone definitions from our automated ci
+  Noteworthy changes:
+  * Fix bugs in SSE4.1/AVX2 image copy (#10720)
+  * Add warnings for invalid monitor settings during connect (#10672)
+  * Fix ALSA microphone support (#10664)
+  * Fix modal windows in RAILS mode (#10629)
+  * Update experimental SDL3 client (SDL3 API should now have been stabilized,
+    various pull requests)
+  * Fix keyboard layouts, the external JSON did miss a few (#10639)
+
+-------------------------------------------------------------------
 Sun Sep  1 09:58:36 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.8.0

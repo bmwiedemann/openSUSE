@@ -311,4 +311,13 @@
     <comment>- Update to release 4.7.0</comment>
     <requestid>832615</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>3eecd65a1680eb0ee186173708515697</srcmd5>
+    <version>4.7.0</version>
+    <time>1729710595</time>
+    <user>anag+factory</user>
+    <comment>- Adapt libzrtpcpp to build with OpenSSL 3 [bsc#1219884]
+  * Add libzrtpcpp-openssl3.patch</comment>
+    <requestid>1217039</requestid>
+  </revision>
 </revisionlist>

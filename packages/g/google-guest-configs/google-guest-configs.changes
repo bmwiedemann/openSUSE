@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:46:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20241021.00 (bsc#1231775, bsc#1231776)
+  * Add GCE-specific config for systemd-resolved (#82)
+- from version 20241015.00
+  * Update google_set_multiqueue to enable on A3Ultra family (#79)
+- from version 20241013.00
+  * Update OWNERS (#81)
+- from version 20241010.00
+  * Depend on jq in enterprise linux (#80)
+- from version 20241008.00
+  * Always use IP from primary NIC in the
+    networkd-dispatcher routable hook (#78)
+
+-------------------------------------------------------------------
 Mon Sep 30 11:14:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240925.00

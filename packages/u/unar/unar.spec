@@ -1,7 +1,7 @@
 #
 # spec file for package unar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ tar -xf %{SOURCE2}
 mv universal-detector-%{_dver} UniversalDetector
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-int-conversion"
 export CXXFLAGS="%{optflags}"
 export OBJCFLAGS="$(gnustep-config --objc-flags)"
 %make_build -C %{name} -f Makefile.linux

@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 22:42:50 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.2.0. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.2.0>.
+
+-------------------------------------------------------------------
 Tue Sep  3 02:01:16 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.2.0~rc3. Upstream changelog is available from
   <https://github.com/opencontainers/runc/releases/tag/v1.2.0-rc.3>.
-  Includes the patch for CVE-2024-45310.
+  Includes the patch for CVE-2024-45310. bsc#1230092
 
 -------------------------------------------------------------------
 Tue Sep  3 01:57:20 UTC 2024 - Aleksa Sarai <asarai@suse.com>
@@ -12,7 +18,7 @@ Tue Sep  3 01:57:20 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.14. Upstream changelog is available from
   <https://github.com/opencontainers/runc/releases/tag/v1.1.14>.
-  Includes the patch for CVE-2024-45310.
+  Includes the patch for CVE-2024-45310. bsc#1230092
 
 - Rebase patches:
   * 0001-bsc1221050-libct-seccomp-patchbpf-rm-duplicated-code.patch

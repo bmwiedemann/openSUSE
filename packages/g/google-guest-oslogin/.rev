@@ -292,4 +292,13 @@
     <comment></comment>
     <requestid>1206068</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>eabf2b1202241ed7c9728cd2bfc4859f</srcmd5>
+    <version>20241021.00</version>
+    <time>1729710565</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241021.00 (bsc#1231775, bsc#1231776)
+  * Update OWNERS (#142) (forwarded request 1217004 from glaubitz)</comment>
+    <requestid>1217009</requestid>
+  </revision>
 </revisionlist>

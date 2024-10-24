@@ -514,4 +514,15 @@
     <comment>Qt 6.8.0 (forwarded request 1206590 from krop)</comment>
     <requestid>1207603</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>a484e70d99cd320d6c64144e0c5246fe</srcmd5>
+    <version>6.8.0</version>
+    <time>1729710514</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix qxmpp test failures (gh#qxmpp-project/qxmpp#659):
+  * 0001-QUuid-restore-sorting-order-of-Qt-6.8.patch
+- Add patch to fix potential crash with QDirIterator (QTBUG-130142):
+  * 0001-QDirIterator-don-t-crash-with-next-after-hasNext-ret.patch</comment>
+    <requestid>1216969</requestid>
+  </revision>
 </revisionlist>

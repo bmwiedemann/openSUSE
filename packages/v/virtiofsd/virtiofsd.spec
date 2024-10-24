@@ -23,7 +23,7 @@
 %endif
 
 Name:           virtiofsd
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        A vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust

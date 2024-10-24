@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        4.6.0
+Version:        4.6.2.post1
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT

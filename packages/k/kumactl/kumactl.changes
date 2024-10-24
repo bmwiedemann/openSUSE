@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:44:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.0:
+  CLI-related changes mentioned in changelog
+  * feat(kumactl): update embedded demo resources (#11745)
+  * fix(kumactl): declare meshes before secrets when exporting
+    (#11511)
+  * test(e2e/debug): add kumactl inspect result when universal e2e
+    test fail (#11223)
+  * feat(kumactl): export add no-dataplanes profile and skip
+    secrets (#10964)
+  * fix(kumactl): remove service in prometheus config (#10969)
+  * fix(kumactl): in apply support empty docs (#10951)
+  * feat(kumactl): add server info when doing export (#10914)
+
+-------------------------------------------------------------------
 Fri Oct 11 08:46:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.4:

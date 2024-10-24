@@ -17,11 +17,12 @@
 
 
 Name:           himmelblau
-Version:        0.6.0+git.0.b8dae18
+Version:        0.6.14+git.0.bbda0b6
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        GPL-3.0-or-later
 URL:            https://github.com/openSUSE/himmelblau
+Group:          Productivity/Networking/Security
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
@@ -43,7 +44,7 @@ BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel
 ExclusiveArch:  %{rust_tier1_arches}
-Recommends:     nss-himmelblau
+Recommends:     libnss_himmelblau2
 Recommends:     pam-himmelblau
 Provides:       aad-cli
 Provides:       aad-common
@@ -65,21 +66,22 @@ Intune, which allows users to sign into a Linux machine using Azure
 Active Directory credentials. It relies on the Microsoft
 Authentication Library to communicate with the Microsoft service.
 
-%package -n nss-himmelblau
+%package -n libnss_himmelblau2
 Summary:        Azure AD authentication NSS module
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
-Requires:       %{name} = %{version}
+Requires:       %{name}
 Provides:       libnss-aad
+Provides:       nss-himmelblau
 
-%description -n nss-himmelblau
+%description -n libnss_himmelblau2
 Himmelblau is an interoperability suite for Microsoft Azure AD and
 Intune, which allows users to sign into a Linux machine using Azure
 Active Directory credentials. It relies on the Microsoft
 Authentication Library to communicate with the Microsoft service.
 
-%post   -n nss-himmelblau -p /sbin/ldconfig
-%postun -n nss-himmelblau -p /sbin/ldconfig
+%post   -n libnss_himmelblau2 -p /sbin/ldconfig
+%postun -n libnss_himmelblau2 -p /sbin/ldconfig
 
 %prep
 %autosetup -a1
@@ -97,8 +99,8 @@ install -D -d -m 0755 %{buildroot}/%{_sysconfdir}/himmelblau
 cp src/config/himmelblau.conf.example %{buildroot}/%{_sysconfdir}/himmelblau/himmelblau.conf
 cp target/release/libnss_%{name}.so target/release/libnss_%{name}.so.2
 install -D -d -m 0755 %{buildroot}/%{_libdir}
-patchelf --set-soname libnss_himmelblau.so.2 target/release/libnss_himmelblau.so.2
 strip --strip-unneeded target/release/libnss_himmelblau.so.2
+patchelf --set-soname libnss_himmelblau.so.2 target/release/libnss_himmelblau.so.2
 install -m 0755 target/release/libnss_%{name}.so.2 %{buildroot}/%{_libdir}
 install -D -d -m 0755 %{buildroot}/%{_pam_moduledir}
 strip --strip-unneeded target/release/libpam_himmelblau.so
@@ -108,6 +110,10 @@ strip --strip-unneeded target/release/himmelblaud
 strip --strip-unneeded target/release/himmelblaud_tasks
 install -m 0755 target/release/himmelblaud %{buildroot}/%{_sbindir}
 install -m 0755 target/release/himmelblaud_tasks %{buildroot}/%{_sbindir}
+pushd %{buildroot}%{_sbindir}
+ln -s himmelblaud rchimmelblaud
+ln -s himmelblaud_tasks rchimmelblaud_tasks
+popd
 install -D -d -m 0755 %{buildroot}%{_bindir}
 strip --strip-unneeded target/release/aad-tool
 install -m 0755 target/release/aad-tool %{buildroot}/%{_bindir}
@@ -131,12 +137,14 @@ install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud-ta
 %dir %{_sysconfdir}/himmelblau
 %config %{_sysconfdir}/himmelblau/himmelblau.conf
 %{_sbindir}/himmelblaud
+%{_sbindir}/rchimmelblaud
 %{_sbindir}/himmelblaud_tasks
+%{_sbindir}/rchimmelblaud_tasks
 %{_bindir}/aad-tool
 %{_unitdir}/himmelblaud.service
 %{_unitdir}/himmelblaud-tasks.service
 
-%files -n nss-himmelblau
+%files -n libnss_himmelblau2
 %{_libdir}/libnss_%{name}.so.*
 
 %files -n pam-himmelblau

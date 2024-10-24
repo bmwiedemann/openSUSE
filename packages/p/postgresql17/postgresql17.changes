@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  7 08:50:46 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Use cmake(LLVM) < instead of <= to also allow building against
+  LLVM 18.1 and newer 18.x versions
+
+-------------------------------------------------------------------
 Thu Sep 26 13:20:36 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 17.0.0:

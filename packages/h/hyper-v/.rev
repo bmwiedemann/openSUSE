@@ -476,4 +476,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170959</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>920028c3cd1dd098469a5e5be0869e26</srcmd5>
+    <version>9</version>
+    <time>1729710470</time>
+    <user>anag+factory</user>
+    <comment>- Add memory allocation check in hv_fcopy_start (94e86b17)
+- suppress the invalid warning for packed member alignment (207e03b0)
+- Add new fcopy application based on uio driver (82b0945c)
+- Add vmbus_bufring (45bab4d7)
+- kvp: Handle IPv4 and Ipv6 combination for keyfile format (f971f6dd)
+- kvp: Some small fixes for handling NM keyfiles (c3803203)
+- kvp: Support for keyfile based connection profile (42999c90)
+- kvp: remove unnecessary (void*) conversions (22589542)
+- Remove an extraneous &quot;the&quot; (f15f39fa)
+- change http to https in hv_kvp_daemon.c (fa52a4b2)
+- replace the copy of include/linux/hyperv.h with include/uapi/linux/hyperv.h (6de74d10)
+- merge individual udev rules files into a single rules file
+- package only files, not directories already owned by filesystem.rpm
+- remove braces from rpm spec macros
+- remove obsolete Group tag
+- replace RPM_BUILD_ROOT with buildroot
+- use a meaningful name for the UAPI include file
+- use a meaningful variable name for ifcfg in hv_set_ifconfig.sh</comment>
+    <requestid>1217113</requestid>
+  </revision>
 </revisionlist>

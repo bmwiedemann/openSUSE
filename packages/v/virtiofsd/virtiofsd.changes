@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 16 17:24:41 UTC 2024 - caleb.crane@suse.com
+
+- Update to version 1.12.0:
+  * Bump version to v1.12.0
+  * Add file-handles migration mode
+  * Serialize mount FD map
+  * Deserialize file handles
+  * Build mount FD map on deserialization
+  * Add MigrationMode::FileHandles
+  * PassthroughFsV2
+  * Allow deserializing serializable file handles
+  * Extract serialized::Inode.deserialize_root_node()
+
+-------------------------------------------------------------------
 Thu Oct  3 18:55:20 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Add direct dependency on cargo in addition to cargo-packaging.

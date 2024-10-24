@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 21 13:25:54 UTC 2024 - pgajdos@suse.com
+
+- build *-test subpackage with multibuild for running the test suite
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Mon Aug 19 14:20:33 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add heif-convert to the files list of the heif-examples sub-package

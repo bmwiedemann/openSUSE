@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1174711</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9814c78222dc37ecfdb8d95a59075a62</srcmd5>
+    <version>0.6.11</version>
+    <time>1729710594</time>
+    <user>anag+factory</user>
+    <comment>- add missing requirement for XdpGtk4
+
+fix #bsc1231577</comment>
+    <requestid>1217036</requestid>
+  </revision>
 </revisionlist>

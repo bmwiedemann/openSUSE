@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:06:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20241017.00 (bsc#1231775, bsc#1231776)
+  * Add a new CloudBuild trigger config-file for auto updating the
+    presubmit test container image on every new commit (#704)
+- from version 20241004.00
+  * Add new packagebuild presubmit that will use cloud-build (#694)
+
+-------------------------------------------------------------------
 Mon Sep 30 11:22:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240927.00

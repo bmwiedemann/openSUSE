@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 22 06:59:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix qxmpp test failures (gh#qxmpp-project/qxmpp#659):
+  * 0001-QUuid-restore-sorting-order-of-Qt-6.8.patch
+- Add patch to fix potential crash with QDirIterator (QTBUG-130142):
+  * 0001-QDirIterator-don-t-crash-with-next-after-hasNext-ret.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 09:29:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0:

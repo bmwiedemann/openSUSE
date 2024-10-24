@@ -18,16 +18,14 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 45471bc945571d57acef05e0795008d7f1d9baf5
-%define git_short   45471bc94557
+%define git_version 0b9fa21be2bcba45f6d9d748b4bcf70cfbffbc19
+%define git_short   0b9fa21be2bc
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-# RPM doesn't handle semver rc releases nicely, so for rc releases we need to
-# do something different.
-%define upstream_version 1.2.0-rc.3
-Version:        1.2.0~rc3
+Version:        1.2.0
+%define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0

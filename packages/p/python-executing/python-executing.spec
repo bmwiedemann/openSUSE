@@ -44,7 +44,9 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module asttokens}
+%if 0%{?suse_version} > 1600
 BuildRequires:  %{python_module ipython}
+%endif
 BuildRequires:  %{python_module littleutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
@@ -70,7 +72,14 @@ Get the currently executing AST node of a frame, and other information
 
 %check
 %if %{with test}
+
+# Don't have ipython build requirement in Leap
+%if 0%{?suse_version} <= 1600
+%pytest -k "not test_ipython"
+%else
 %pytest
+%endif
+
 %endif
 
 %if %{without test}

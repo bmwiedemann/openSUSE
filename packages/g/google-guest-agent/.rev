@@ -513,4 +513,41 @@
 - Drop dont_overwrite_ifcfg.patch, fixed upstream</comment>
     <requestid>1197809</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d4d45c7251bccba320842cb9e98fbf9c</srcmd5>
+    <version>20241018.01</version>
+    <time>1729710562</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241018.01 (bsc#1231775, bsc#1231776)
+  * Add support for including agent manager in guest-agent package (#456)
+  * plugin manager: Introduce the systemd service file (#455)
+  * documentation: Update metadata script runner details (#453)
+- from version 20241013.00
+  * Update OWNERS (#452)
+- from version 20241011.01
+  * SUSE no overwrite bug fix, Ubuntu 18.04 exception (#451)
+- from version 20241011.00
+  * Skip MDS setup by default for this release (#450)
+- from version 20241010.01
+  * Revert &quot;network/netplan: Adjust link-local accordingly (#443)&quot; (#448)
+  * Set enable regardless of previous check failed or not (#447)
+- from version 20241009.03
+  * Avoid unnecessary reloads, check before overwriting configs (#446)
+- from version 20241009.02
+  * network/netplan: Do generate instead of apply (#445)
+- from version 20241009.01
+  * Skip SetupInterfaces if configs are already applied (#444)
+  * network/netplan: Adjust link-local accordingly (#443)
+  * Repeated logging could be mistaken for a recurring issue,
+    log mds mtls endpoint error only once (#439)
+  * Retry MDS PUT operation, reload netplan/networkctl
+    only if configs are changed (#438)
+  * Log interface state after setting up network (#437)
+  * network: Debian 12 rollback only if default netplan is ok (#436)
+- from version 20240930.01
+  * Change mtls mds defaults, update log message to assure error is harmless (#434)
+- from version 20240930.00
+  * network: Restore Debian 12 netplan configuration. (#433) (forwarded request 1217002 from glaubitz)</comment>
+    <requestid>1217007</requestid>
+  </revision>
 </revisionlist>

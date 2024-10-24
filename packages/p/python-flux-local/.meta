@@ -1,0 +1,6 @@
+<package name="python-flux-local" project="openSUSE:Factory">
+  <title>Set of tools for managing a flux gitops repository</title>
+  <description>flux-local is a python library and set of tools for managing a flux gitops repository, with validation steps to help improve quality of commits, PRs, and general local testing.</description>
+  <devel project="devel:kubic" package="python-flux-local"/>
+  <url>https://github.com/allenporter/flux-local</url>
+</package>

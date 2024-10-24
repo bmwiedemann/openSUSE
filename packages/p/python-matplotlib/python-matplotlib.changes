@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:30:59 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests for Leap 16.0
+
+-------------------------------------------------------------------
 Thu Oct  3 08:52:39 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable nbagg and wx plugin also on Leap16

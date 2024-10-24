@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:36:23 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Remove laszip as a build requirement, since PDAL uses a bundled version of
+  the lazperf library for this functionality since 2022-02-03 (see commit
+  6bdd2e2c281fe0313f8acd8b8b9e4ccf9b2a13c3 upstream)
+
+-------------------------------------------------------------------
 Tue Sep 10 12:14:57 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 2.8.0 and use sha256 instead of md5

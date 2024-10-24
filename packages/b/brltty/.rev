@@ -632,4 +632,12 @@
   Set LD_LIBRARY_PATH to allow that. (forwarded request 1203523 from rmax)</comment>
     <requestid>1203552</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>4f4a71d93c1970bde229ffff4f11634a</srcmd5>
+    <version>6.7</version>
+    <time>1729710473</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217115</requestid>
+  </revision>
 </revisionlist>

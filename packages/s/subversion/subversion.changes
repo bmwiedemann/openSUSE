@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 18 16:35:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.14.4:
+  * Fix unbounded memory usage in propget and proplist --xml
+  * Fix cmdline parsing bugs in --change (-c) argument
+  * Improve help message for svnmucc PUT
+  * mailer.py: Fix inconsistency in Config.which_group() arguments 
+  * Convert path to local style in error message from diff API
+  * Fix `invalid escape sequence` in .py scripts for Python 3.12
+  * swig-py: Fix `none_dealloc` error caused by refcount issue
+  * Fix a msgid in svnadmin.c which was not a valid C string
+- drop patches included upstream:
+  * subversion-1.14.3-gcc14-2.patch
+  * subversion-1.14.3-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 09:32:29 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use strip-nondeterminism to normalize jar mtimes

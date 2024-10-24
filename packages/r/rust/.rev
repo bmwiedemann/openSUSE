@@ -849,4 +849,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.81.0 - for details see the rust1.81 package</comment>
     <requestid>1199790</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>9f12f101f070d5447c4fec860cb865b3</srcmd5>
+    <version>1.82.0</version>
+    <time>1729710508</time>
+    <user>anag+factory</user>
+    <comment>Submit new package rust1.82</comment>
+    <requestid>1216852</requestid>
+  </revision>
 </revisionlist>

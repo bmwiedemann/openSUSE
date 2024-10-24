@@ -123,9 +123,8 @@
     %define with_storage_gluster 0
 %endif
 
-# Prefer nftables for Tumbleweed, but keep using iptables for distros based
-# on SLE15 codestream
-%if 0%{?suse_version} > 1500
+# Prefer nftables if available
+%if "%{?default_firewall_backend}" == "nftables"
     %define prefer_nftables 1
     %define firewall_backend_priority nftables,iptables
 %else
@@ -690,7 +689,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
+Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
@@ -712,7 +711,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 Requires:       %{name}-daemon-driver-lxc = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
+Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 
@@ -734,7 +733,6 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       xen
@@ -753,7 +751,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
+Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       %{name}-daemon-driver-vbox = %{version}-%{release}

@@ -1,20 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:27:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.9:
+  * further skip BufferedRandomType if does not exist
+  * remove stray import of dbm in objects
+  * Add `UnpicklingError` import for `dill.load_session()` to fix
+    #648
+  * fix fencepost error when getting source inside decorator in
+    interpreter (fixes #603)
+  * type check for Integral, bool by value
+  * diff USE_NUMPY imports numpy.ma
+  * adjust testing to account for frame.f_locals as a proxy in
+    3.13
+  * better handle import strings of numpy scalars
+  * handle a ThreadHandleType
+  * more extensive testing for dill.source
+  * add formal support for python 3.13
+
+-------------------------------------------------------------------
 Thu Aug 29 14:56:31 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 0.3.8:
-  * test for qualname in get_typedef_type 
-  * drop formal support for python 3.7 
-  * define html_theme as rtd workaround 
-  * update install doc in tests by 
-  * formal support for 3.12, initial support for 3.13 
-  * add build to rtfd config by 
-  * add guard for math.log in Logger record size calculation by 
-  * updated copyright for 2024 by 
-  * Bump jinja2 from 3.1.1 to 3.1.3 in /docs by 
-  * Import submodule properly when there is an attribute of the module with the same name 
-  * update sphinx to 6.2.1 
-  * Bump readthedocs-sphinx-search from 0.3.1 to 0.3.2 in /docs by 
-  * skip BufferedRandomType on pyodide 
+  * test for qualname in get_typedef_type
+  * drop formal support for python 3.7
+  * define html_theme as rtd workaround
+  * update install doc in tests by
+  * formal support for 3.12, initial support for 3.13
+  * add build to rtfd config by
+  * add guard for math.log in Logger record size calculation by
+  * updated copyright for 2024 by
+  * Bump jinja2 from 3.1.1 to 3.1.3 in /docs by
+  * Import submodule properly when there is an attribute of the module with the same name
+  * update sphinx to 6.2.1
+  * Bump readthedocs-sphinx-search from 0.3.1 to 0.3.2 in /docs by
+  * skip BufferedRandomType on pyodide
 
 
 -------------------------------------------------------------------

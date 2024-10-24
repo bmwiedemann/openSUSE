@@ -356,8 +356,6 @@ Patch164:       0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
 Patch165:       0004-ofpath-controller-name-update.patch
 Patch166:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch167:       grub2-increase-crypttab-path-buffer.patch
-Patch168:       0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
-Patch169:       0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
 Patch170:       0001-tpm2-Support-authorized-policy.patch
 Patch171:       0001-tpm2-Add-extra-RSA-SRK-types.patch
 Patch174:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
@@ -411,9 +409,24 @@ Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
 Patch221:       0001-fix-grub-screen-filled-with-post-screen-artifects.patch
 Patch222:       0001-efinet-Skip-virtual-VLAN-devices-during-card-enumera.patch
 Patch223:       0001-tpm-Skip-loopback-image-measurement.patch
+Patch224:       0001-ieee1275-Platform-Keystore-PKS-Support.patch
+Patch225:       0002-ieee1275-Read-the-DB-and-DBX-secure-boot-variables.patch
+Patch226:       0003-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
+Patch227:       0004-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
+Patch228:       0005-appendedsig-The-grub-command-s-trusted-and-distruste.patch
+Patch229:       0006-appendedsig-documentation.patch
+Patch230:       0007-mkimage-create-new-ELF-Note-for-SBAT.patch
+Patch231:       0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
+Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 
+%if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
 Requires:       grub2-%{grubarch} = %{version}-%{release}
+%else
+%if ! 0%{?only_efi:1}
+Requires:       grub2-%{grubarch} = %{version}-%{release}
+%endif
+%endif
 
 %if 0%{?only_x86_64:1}
 ExclusiveArch:  x86_64
@@ -427,9 +440,11 @@ highly configurable and customizable bootloader with modular
 architecture.  It support rich scale of kernel formats, file systems,
 computer architectures and hardware devices.
 
+%if 0%{?suse_version} > 1600
 %package common
 Summary:        Utilies to manage grub
 Group:          System/Boot
+%endif
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
 %ifnarch s390x
@@ -456,15 +471,21 @@ Requires:       powerpc-utils
 Recommends:     memtest86+
 %endif
 
+%if 0%{?suse_version} > 1600
 %description common
 This package includes user space utlities to manage GRUB on your system.
+%endif
 
 %package branding-upstream
 
 Summary:        Upstream branding for GRUB2's graphical console
 Group:          System/Fhs
 BuildArch:      noarch
+%if 0%{?suse_version} > 1600
 Requires:       %{name}-common = %{version}
+%else
+Requires:       %{name} = %{version}
+%endif
 
 %description branding-upstream
 Upstream branding for GRUB2's graphical console
@@ -477,8 +498,13 @@ Group:          System/Boot
 %if "%{platform}" != "emu"
 BuildArch:      noarch
 %endif
+%if 0%{?suse_version} > 1600
 Requires:       %{name}-common = %{version}
 Requires(post): %{name}-common = %{version}
+%else
+Requires:       %{name} = %{version}
+Requires(post): %{name} = %{version}
+%endif
 %{?update_bootloader_requires}
 
 %description %{grubarch}
@@ -526,8 +552,13 @@ BuildArch:      noarch
 # Without it grub-install is broken so break the package as well if unavailable
 Requires:       efibootmgr
 Requires(post): efibootmgr
+%if 0%{?suse_version} > 1600
 Requires:       %{name}-common = %{version}
 Requires(post): %{name}-common = %{version}
+%else
+Requires:       %{name} = %{version}
+Requires(post): %{name} = %{version}
+%endif
 %{?update_bootloader_requires}
 %{?fde_tpm_update_requires}
 Provides:       %{name}-efi = %{version}-%{release}
@@ -539,6 +570,7 @@ bootloader with modular architecture.  It supports rich variety of kernel format
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
 
+%if 0%{?suse_version} > 1600
 %package %{grubefiarch}-bls
 Summary:        Image for Boot Loader Specification (BLS) support on %{grubefiarch}
 Group:          System/Boot
@@ -546,6 +578,7 @@ BuildArch:      noarch
 
 %description %{grubefiarch}-bls
 Custom EFI build tailored for Boot Loader Specification (BLS) support.
+%endif
 
 %package %{grubefiarch}-extras
 
@@ -611,8 +644,13 @@ Unsupported modules for %{name}-%{grubxenarch}
 Summary:        Grub2's snapper plugin
 Group:          System/Fhs
 Requires:       libxml2-tools
+%if 0%{?suse_version} > 1600
 Requires:       (grub2 or grub2-common)
 Supplements:    ((grub2 or grub2-common) and snapper)
+%else
+Requires:       %{name} = %{version}
+Supplements:    packageand(snapper:grub2)
+%endif
 BuildArch:      noarch
 
 %description snapper-plugin
@@ -624,8 +662,13 @@ Grub2's snapper plugin for advanced btrfs snapshot boot menu management
 Summary:        Grub2's systemd-sleep plugin
 Group:          System/Fhs
 Requires:       util-linux
+%if 0%{?suse_version} > 1600
 Requires:       (grub2 or grub2-common)
 Supplements:    ((grub2 or grub2-common) and systemd)
+%else
+Requires:       grub2
+Supplements:    packageand(systemd:grub2)
+%endif
 BuildArch:      noarch
 
 %description systemd-sleep-plugin
@@ -774,6 +817,7 @@ mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
 
+%if 0%{?suse_version} > 1600
 rm memdisk.sqsh
 
 # Building grubbls.efi
@@ -824,6 +868,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
     fat tpm tpm2 memdisk tar squash4 xzio blscfg linux bli regexp loadenv test echo true sleep
+%endif
 
 %ifarch x86_64 aarch64
 if test -e %{_sourcedir}/_projectcert.crt ; then
@@ -854,6 +899,14 @@ cd ..
 
 %if ! 0%{?only_efi:1}
 cd build
+
+%ifarch ppc ppc64 ppc64le
+%if 0%{?sbat_generation}
+echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md" > sbat.csv
+echo "grub,%{sbat_generation_grub},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
+echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" >> sbat.csv
+%endif
+%endif
 
 %if "%{platform}" != "emu"
 %define arch_specific --enable-device-mapper
@@ -984,7 +1037,7 @@ fi
 EOF
         %{__tar} cvf memdisk.tar ./grub.cfg
         ./grub-mkimage -O %{grubarch} -o grub.elf -d grub-core -x grub.der -m memdisk.tar \
-            -c %{platform}-config --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
+            -c %{platform}-config -s sbat.csv --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
         ls -l "grub.elf"
         truncate -s -%brp_pesign_reservation "grub.elf"
 fi
@@ -1016,7 +1069,9 @@ install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %ifarch x86_64
 ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
 %endif
+%if 0%{?suse_version} > 1600
 install -m 644 grubbls.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
+%endif
 
 # Create grub.efi link to system efi directory
 # This is for tools like kiwi not fiddling with the path
@@ -1038,7 +1093,11 @@ EoM
 %endif
 
 %ifarch x86_64 aarch64
+%if 0%{?suse_version} > 1600
 export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{_datadir}/%{name}/%{grubefiarch}/grubbls.efi"
+%else
+export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
+%endif
 install -m 444 grub.der %{buildroot}/%{sysefidir}/
 %endif
 
@@ -1171,10 +1230,20 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %fdupes %buildroot%{_libdir}
 %fdupes %buildroot%{_datadir}
 
+%if 0%{?suse_version} > 1600
 %pre common
+%else
+
+%pre
+%endif
 %service_add_pre grub2-once.service
 
+%if 0%{?suse_version} > 1600
 %post common
+%else
+
+%post
+%endif
 %service_add_post grub2-once.service
 
 %if ! 0%{?only_efi:1}
@@ -1202,13 +1271,28 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 
 %endif
 
+%if 0%{?suse_version} > 1600
 %preun common
+%else
+
+%preun
+%endif
 %service_del_preun grub2-once.service
 
+%if 0%{?suse_version} > 1600
 %postun common
+%else
+
+%postun
+%endif
 %service_del_postun grub2-once.service
 
+%if 0%{?suse_version} > 1600
 %files
+%else
+
+%files -f %{name}.lang
+%endif
 %defattr(-,root,root,-)
 %doc AUTHORS
 %doc NEWS README
@@ -1218,13 +1302,15 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %doc README.ibm3215
 %endif
 
+%if 0%{?suse_version} > 1600
 %files common -f %{name}.lang
+%defattr(-,root,root,-)
+%endif
 %if 0%{?suse_version} < 1500
 %doc COPYING
 %else
 %license COPYING
 %endif
-%defattr(-,root,root,-)
 %dir /boot/%{name}
 %ghost %attr(600, root, root) /boot/%{name}/grub.cfg
 %{_datadir}/bash-completion/completions/grub*
@@ -1235,7 +1321,14 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %config(noreplace) %{_sysconfdir}/grub.d/05_crypttab
 %config(noreplace) %{_sysconfdir}/grub.d/10_linux
 %config(noreplace) %{_sysconfdir}/grub.d/20_linux_xen
-%config(noreplace) %{_sysconfdir}/grub.d/25_bli
+# The bli.mod is enabled in grubbls.efi, which will mostly adhere to systemd
+# standards. But it is not the case for grub.efi, as it serves no purpose
+# there, among other considerations. Therefore, the 25_bli script that loads
+# bli.mod as an external module should be disabled (by stripping off its
+# executable bit) to prevent showing 'file not found' error. This is because
+# grub.efi may intentionally lack access to external modules, as it is designed
+# to be a drop-in file, requires no external dependency (boo#1231591)
+%attr(0644, root, root) %config(noreplace) %{_sysconfdir}/grub.d/25_bli
 %config(noreplace) %{_sysconfdir}/grub.d/30_uefi-firmware
 %config(noreplace) %{_sysconfdir}/grub.d/40_custom
 %config(noreplace) %{_sysconfdir}/grub.d/41_custom
@@ -1406,9 +1499,11 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{sysefidir}/grub.der
 %endif
 
+%if 0%{?suse_version} > 1600
 %files %{grubefiarch}-bls
 %defattr(-,root,root,-)
 %{_datadir}/%{name}/%{grubefiarch}/grubbls.efi
+%endif
 
 %files %{grubefiarch}-extras -f %{grubefiarch}-mod-extras.lst
 %defattr(-,root,root,-)
