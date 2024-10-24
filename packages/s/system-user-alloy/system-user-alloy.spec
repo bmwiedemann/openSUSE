@@ -1,7 +1,7 @@
 #
 # spec file for package system-user-alloy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           system-user-alloy
 Version:        1.0.0
 Release:        0
 Summary:        System user and group 'alloy'
 License:        Apache-2.0
 Source0:        system-user-alloy.conf
+BuildRequires:  systemd
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
 %sysusers_requires

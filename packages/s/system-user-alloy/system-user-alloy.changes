@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:38:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add BuildRequire for systemd to have the systemd-journal group
+  present
+
+-------------------------------------------------------------------
 Tue Feb  6 09:45:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package system-user-alloy: user for Grafana Alloy
