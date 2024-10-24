@@ -23,6 +23,7 @@ LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%"
+LABEL com.suse.supportlevel="%%SUPPORT_LEVEL%%"
 # endlabelprefix
 
 # Note: the trick with install/remove kubevirt-manifests is needed to ensure
