@@ -18,7 +18,7 @@
 
 %if 0%{?sle_version} && !0%{?is_opensuse}
 # SLE
-%define _exclusive_arch x86_64
+%define _exclusive_arch x86_64 aarch64
 %else
 %if 0%{?suse_version} == 1600
 # ALP

@@ -22,3 +22,15 @@ if [ -n "${pkg}" ]; then
         PKG_RELEASE=$(rpm -qp --queryformat=%{release} ${_pkg})
     fi
 fi
+
+case "${DISTRO}" in
+*:0)
+    SUPPORT_LEVEL=l3
+    if [[ "$(uname -m)" != x86_64 ]]; then
+        SUPPORT_LEVEL=techpreview
+    fi
+    ;;
+*:1)
+    SUPPORT_LEVEL=unsupported
+    ;;
+esac
