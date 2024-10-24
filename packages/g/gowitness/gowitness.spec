@@ -18,7 +18,7 @@
 
 
 Name:           gowitness
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A commandline web screenshot and information gathering tool
 License:        GPL-3.0-or-later

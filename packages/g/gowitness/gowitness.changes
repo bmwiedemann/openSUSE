@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:55:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.5
+  New
+  * Add a none writer. Useful for testing scenarios when you want
+    to silence warnings etc.
+  * (build) Add makefile target to ensure API documentation is up
+    to dateA.
+  Fixed
+  * Show an error when Chrome is not available and you're using the
+    default chromedp driver.
+  * Don't create empty SQLite3 databases when not required.
+  * Show screenshots in the report server when they are stored in
+    the database (using the --write-screenshot flag).
+  * Fix a UI error in the job submission view.
+  * Ensure startup flags are used when using the gorod driver.
+  * Make cleanup routines using the gorod driver more reliable.
+  * Update nmap.go to use HTTPS as well instead of HTTP only.
+
+-------------------------------------------------------------------
 Wed Oct  2 18:32:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.4
