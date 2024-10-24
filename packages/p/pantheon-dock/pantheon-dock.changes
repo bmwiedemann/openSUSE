@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:14:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Updated translations
+  * Fixes a crash when dragging a file that's not a launcher to the dock
+  * Hide badges, progressbars, and running indicators while dragging a launcher
+
+-------------------------------------------------------------------
 Wed Aug 21 06:58:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

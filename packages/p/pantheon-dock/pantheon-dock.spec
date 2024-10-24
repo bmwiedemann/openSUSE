@@ -17,22 +17,22 @@
 
 
 %define         appid io.elementary.dock
-Name:           pantheon-dock 
-Version:        8.0.0
+Name:           pantheon-dock
+Version:        8.0.1
 Release:        0
 Summary:        Quick app launcher and window switcher for Pantheon
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/dock
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(granite-7)
-BuildRequires:  meson
-BuildRequires:  vala
-BuildRequires:  fdupes
 BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  vala
+BuildRequires:  pkgconfig(gee-0.8)
+BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
 A quick app launcher and window switcher for the Pantheon Desktop Environment.
@@ -42,8 +42,8 @@ A quick app launcher and window switcher for the Pantheon Desktop Environment.
 %autosetup -n dock-%{version}
 
 %build
-export CFLAGS="${optflags} -Wno-error"
-export CXXFLAGS="${optflags} -Wno-error"
+export CFLAGS="%{optflags} -Wno-error=return-type"
+export CXXFLAGS="%{optflags} -Wnoerror=return-type"
 %meson
 %meson_build
 
