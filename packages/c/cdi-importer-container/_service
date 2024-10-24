@@ -8,6 +8,7 @@
         <param name="var">REGISTRY</param>
         <param name="var">TAGPREFIX</param>
         <param name="var">LABELPREFIX</param>
+        <param name="var">SUPPORT_LEVEL</param>
         <param name="eval">pkg=containerized-data-importer-importer source /usr/lib/obs/service/cdi_containers_meta</param>
         <param name="verbose">1</param>
     </service>

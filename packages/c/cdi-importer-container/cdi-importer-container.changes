@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 05:50:28 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add LABEL with support level
+
+-------------------------------------------------------------------
 Tue Sep 17 06:25:57 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install nbdkit-server to avoid pulling unneeded dependencies
