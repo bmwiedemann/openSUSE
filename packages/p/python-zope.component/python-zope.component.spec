@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-zope.component
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
@@ -34,7 +34,9 @@ License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.component
 Source:         https://files.pythonhosted.org/packages/source/z/zope.component/zope.component-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.event
@@ -72,11 +74,11 @@ documentation.
 rm -rf src/zope.component.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -90,7 +92,10 @@ rm -rf src/zope.component.egg-info
 %defattr(-,root,root)
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/component
+%{python_sitelib}/zope.component-%{version}-py*-nspkg.pth
+%{python_sitelib}/zope.component-%{version}.dist-info
 %endif
 
 %changelog

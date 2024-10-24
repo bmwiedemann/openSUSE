@@ -110,4 +110,15 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1139378</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>84b3a7ec97276ad936a820d2bf2200b3</srcmd5>
+    <version>6.0</version>
+    <time>1729777491</time>
+    <user>anag+factory</user>
+    <comment>- switch to PEP517 build
+
+- use python3 module python for sle15
+  * Make accessing names that have been moved to zope.interface</comment>
+    <requestid>1217992</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:08:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Tue Jan 16 10:02:43 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Rearrange requirements, run only basic testsuite in SLE-based projects
@@ -6,7 +11,7 @@ Tue Jan 16 10:02:43 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Jun  1 20:36:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- use python3 module python for sle15 
+- use python3 module python for sle15
 
 -------------------------------------------------------------------
 Fri May  5 14:22:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -55,7 +60,7 @@ Mon Apr  8 15:05:42 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Drop support for Python 3.3.
   * Drop support for “setup.py test”.
   * Always install zope.hookable as a dependency.
-  * Make accessing names that have been moved to zope.interface 
+  * Make accessing names that have been moved to zope.interface
     produce a DeprecationWarning.
 - Drop the *-doc subpackage, use multibuild instead.
   * Drop pre-checkin.sh as it is no longer needed.
