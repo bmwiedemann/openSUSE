@@ -1,0 +1,12 @@
+diff -rub distrobuilder-distrobuilder-3.1/Makefile distrobuilder-distrobuilder-3.1-patched/Makefile
+--- distrobuilder-distrobuilder-3.1/Makefile	2024-10-23 22:07:08.000000000 +0200
++++ distrobuilder-distrobuilder-3.1-patched/Makefile	2024-10-24 00:18:17.584743125 +0200
+@@ -9,7 +9,7 @@
+ 	go env -w GOCACHE=$(shell go env GOCACHE)
+ 	$(shell go env | grep -v GOENV | sed "s/'//g" > $(shell go env GOENV))
+ 	gofmt -s -w .
+-	go install -v ./...
++	go install -buildmode=pie -v ./...
+ 	@echo "distrobuilder built successfully"
+ 
+ .PHONY: update-gomod

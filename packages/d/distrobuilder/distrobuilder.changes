@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Oct 23 22:04:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1:
+  * gomod: Bump to Go 1.20 minimum
+  * Fix small logging issues
+  * README: Add note about minimum Go version
+  * main: Fix VM builds when using build-lxd command
+  * sources: Fix openeuler tests
+  * nixos-http: support versioned releases
+  * managers: Rebranding Macaroni OS Package Manager
+  * Bump golang.org/x/crypto and github.com/containerd/containerd
+  * main: Add missing --sources-dir to build-incus command
+  * Update README.md Install Instructions
+  * Update README.md
+  * incus-agent: Refresh files
+  * build(deps): bump github.com/opencontainers/runc from 1.1.10 to 1.1.12
+  * incus-agent: Fix systemd unit name under LXD
+  * Bump to Go 1.21
+  * Tidy up lxc.generator a bit
+  * incus-agent: Fix SELinux
+  * Bump pongo2 to v4
+  * Remove race in tests
+  * debootstrap: Pass --no-merged-usr on noble
+  * Debian sid use --no-merged-usr
+  * Replace util.ValueInSlice with slices.Contains
+  * Fixed hardcoded root partition device name sda2
+  * Updated ubuntu example to use ROOTFS_DEVICE_UUID
+  * Switch to Incus 6.0
+  * Make run-parts running compatible with different versions
+  * Set repack-windows drivers default value
+  * Clean up iso mount gen warnings
+  * Refactor find boot.wim and install.wim logic
+  * Refactor WIM info parsing
+  * Support x86 architecture and refactor the detecting logic
+  * gomod: Update dependencies by
+  * sources/funtoo: Use symlinks
+  * archlinux: Move to zst
+  * Repack windows bios boot support
+  * Refactor copy driver files
+  * Refactor parse inf driver class guid
+  * Update actions.md by
+  * lxc.generator: Handle pre-release systemd
+  * systemd v256 seems to require overriding ImportCredential= for all containers
+  * Fixed duplicated umount action
+  * Support http-proxy keyserver options for gpg recv-keys
+  * Refactor import gpg public keys
+  * distrobuilder: Remove LXD support
+  * Gomod update/cleanup
+  * Fixed multiple sys files not copied issue
+  * Update README.md
+  * Fixed device major minor parse failure
+  * Run unit tests via sudo
+  * debootstrap: Remove no-merged-usr/merged-usr logic
+  * debootstrap: Add workaround for devuan
+  * sources: Fix openEuler version in tests
+  * workflows/tests: drop 1.21, add 1.23
+  * nixos-http: use incus-specific image for unstable
+  * Add handling of ESD files for Windows repacking
+  * Update gomod
+  * Add mkisofs support
+- remove mkisofs.patch as upstream added support
+- add pie.patch to enable PIE
+
+-------------------------------------------------------------------
 Wed Jul 26 23:34:52 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - Initial packaging of upstream for openSUSE Tumbleweed.
