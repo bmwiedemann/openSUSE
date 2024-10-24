@@ -64,4 +64,17 @@
     a large directory tree unnecessarily (see #110)</comment>
     <requestid>1165755</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7d242d04ee4e39f5e6804b64f3bb995</srcmd5>
+    <version>1.3.0</version>
+    <time>1729777485</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Allows to fail tests that cannot be ordered.
+  * added option `--error-on-failed-ordering` to make tests that
+    cannot be ordered fail
+  * added missing documentation examples, structured examples
+    according to documentation structure</comment>
+    <requestid>1217985</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-order
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Pytest plugin to run your tests in a specific order
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-order
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-order/pytest-order-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-order/pytest_order-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 5.0}
@@ -44,13 +46,13 @@ relative to the other tests. pytest-order is a fork of pytest-ordering that
 provides some additional features.
 
 %prep
-%setup -q -n pytest-order-%{version}
+%setup -q -n pytest_order-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +62,6 @@ provides some additional features.
 %doc AUTHORS CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/pytest_order
-%{python_sitelib}/pytest_order-%{version}*-info
+%{python_sitelib}/pytest_order-%{version}.dist-info
 
 %changelog

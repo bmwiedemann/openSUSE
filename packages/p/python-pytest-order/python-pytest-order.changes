@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:57:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Allows to fail tests that cannot be ordered.
+  * added option `--error-on-failed-ordering` to make tests that
+    cannot be ordered fail
+  * added missing documentation examples, structured examples
+    according to documentation structure
+
+-------------------------------------------------------------------
 Sat Apr  6 07:44:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
