@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 05:49:47 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable aarch64 build for SLE and mark it as techpreview (jsc#PED-10545)
+
+-------------------------------------------------------------------
 Tue Aug 27 06:36:20 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Build sidecar-shim package
