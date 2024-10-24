@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:18:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.45.1:
+  * chore: Update version.go for v0.45.1
+  * Fix error assertion in IsCertificateUntrusted
+
+-------------------------------------------------------------------
 Tue Oct 22 07:42:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.45.0:
