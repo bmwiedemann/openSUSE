@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 05:50:28 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add LABEL with support level
+
+-------------------------------------------------------------------
 Tue Aug 27 07:45:38 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Initial container for sidecar-shim
