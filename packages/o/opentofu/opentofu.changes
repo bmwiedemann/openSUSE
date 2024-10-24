@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:28:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.4:
+  * Bumped versionfile for 1.8 (#2097)
+  * Backport recent changes to v1.8 (#2093)
+  * CHANGELOG entry for #2055 and #2060
+  * command/init: Support static eval for backend config migration
+    check
+
+-------------------------------------------------------------------
 Fri Oct 04 19:47:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.3:
