@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-twisted
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause
@@ -63,8 +63,7 @@ objects and pytest will wait for their completion with this plugin.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/pytest_twisted.py
-%pycache_only %{python_sitelib}/__pycache__/pytest_twisted*pyc
+%{python_sitelib}/pytest_twisted
 %{python_sitelib}/pytest_twisted-%{version}.dist-info
 
 %changelog

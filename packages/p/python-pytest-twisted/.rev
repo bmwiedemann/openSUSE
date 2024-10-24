@@ -77,4 +77,14 @@
   * Correct a bug exposed by pytest 8.2.0+.</comment>
     <requestid>1194579</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b12ab6c095302a78c1f76e18c0050b9d</srcmd5>
+    <version>1.14.3</version>
+    <time>1729777494</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.3:
+  * update for deprecation of `twisted.internet.defer.returnValue
+  * refactor project layout</comment>
+    <requestid>1217995</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:31:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.3:
+  * update for deprecation of `twisted.internet.defer.returnValue
+  * refactor project layout
+
+-------------------------------------------------------------------
 Sun Aug 18 17:12:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.2:
