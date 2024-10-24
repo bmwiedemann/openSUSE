@@ -211,4 +211,17 @@
     is your friend!</comment>
     <requestid>1207061</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7b2e2ff37ee14b5e5007d147893c8ee9</srcmd5>
+    <version>3.3.5</version>
+    <time>1729777461</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.5:
+  * With this release, many more conflicts are recognized, and changes vs
+    non-changed line parts are marked much more clearly.
+  * This release introduces a --unchanged-style=experimental
+    command line option. Try export RIFF=--unchanged-style=experimental
+    and report back!</comment>
+    <requestid>1217963</requestid>
+  </revision>
 </revisionlist>

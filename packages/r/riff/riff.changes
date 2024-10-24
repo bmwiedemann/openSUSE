@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:56:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.5:
+  * With this release, many more conflicts are recognized, and changes vs
+    non-changed line parts are marked much more clearly.
+  * This release introduces a --unchanged-style=experimental
+    command line option. Try export RIFF=--unchanged-style=experimental
+    and report back!
+
+-------------------------------------------------------------------
 Fri Oct 11 06:59:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.4:
