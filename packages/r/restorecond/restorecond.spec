@@ -28,6 +28,8 @@ Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        restorecond.keyring
 Patch0:         harden_restorecond.service.patch
+Patch1:         1231512-Set-GLib-IO-channels-to-binary-mode.patch
+Patch2:         1231512-Set-GLib-IO-channels-to-nonblocking.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 Requires:       libselinux1 >= %{libselinux_ver}
@@ -39,6 +41,8 @@ Daemon that watches for file creation and then sets the default SELinux file con
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p2
+%patch -P2 -p2
 
 %build
 export CFLAGS="%optflags"

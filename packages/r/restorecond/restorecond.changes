@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:58:41 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix issue where inotify events are not being handled properly
+  * added: 1231512-Set-GLib-IO-channels-to-binary-mode.patch
+- Fix issue where restorecond -u is not terminating with SIGTERM (bsc#1231512)
+  * added: 1231512-Set-GLib-IO-channels-to-nonblocking.patch
+
+-------------------------------------------------------------------
 Mon Jul  1 08:12:59 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.7

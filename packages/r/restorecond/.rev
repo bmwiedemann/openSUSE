@@ -122,4 +122,16 @@
 </comment>
     <requestid>1185751</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>40050f7d943cb8b22fb10fe1c87f41c3</srcmd5>
+    <version>3.7</version>
+    <time>1729777495</time>
+    <user>anag+factory</user>
+    <comment>- Fix issue where inotify events are not being handled properly
+  * added: 1231512-Set-GLib-IO-channels-to-binary-mode.patch
+- Fix issue where restorecond -u is not terminating with SIGTERM (bsc#1231512)
+  * added: 1231512-Set-GLib-IO-channels-to-nonblocking.patch
+</comment>
+    <requestid>1218003</requestid>
+  </revision>
 </revisionlist>
