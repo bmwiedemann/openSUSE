@@ -19,4 +19,21 @@
   * Session forking</comment>
     <requestid>1191756</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2fb91223ac946375ac54719d1d5922c7</srcmd5>
+    <version>0.3.3</version>
+    <time>1729777406</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.3:
+  * Amend type hinting
+  * ProtonSSO : allow selecting the keyring backend (unspecified:
+    load default keyring)
+  * External contribution from 'wesinator' : fix hostname segment
+    regex
+  * Minor changes following feedback/review
+  * Allow clients to support 'If-Modified-Since'
+  * Make logs less verbose
+</comment>
+    <requestid>1217440</requestid>
+  </revision>
 </revisionlist>

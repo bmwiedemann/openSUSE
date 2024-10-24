@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 30 13:04:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.3:
+  * Amend type hinting
+  * ProtonSSO : allow selecting the keyring backend (unspecified:
+    load default keyring)
+  * External contribution from 'wesinator' : fix hostname segment
+    regex
+  * Minor changes following feedback/review
+  * Allow clients to support 'If-Modified-Since'
+  * Make logs less verbose
+
+-------------------------------------------------------------------
 Mon Aug  5 19:00:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.0:
