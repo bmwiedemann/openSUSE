@@ -1,0 +1,6 @@
+<package name="python-striprtf" project="openSUSE:Factory">
+  <title>A simple library to convert rtf to text</title>
+  <description>A simple library to convert rtf to text.</description>
+  <devel project="devel:languages:python" package="python-striprtf"/>
+  <url>https://github.com/joshy/striprtf</url>
+</package>
