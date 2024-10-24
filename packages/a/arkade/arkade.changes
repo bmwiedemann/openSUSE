@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:15:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.28:
+  * Fix for docker-compose on arm64 Darwin
+
+-------------------------------------------------------------------
 Mon Sep 30 05:35:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.27:
