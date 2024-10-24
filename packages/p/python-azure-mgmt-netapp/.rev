@@ -301,4 +301,16 @@
     <comment></comment>
     <requestid>1196183</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>03eae89dff6f2748e9507201e03aaf7b</srcmd5>
+    <version>13.3.0</version>
+    <time>1729777497</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 13.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1217993 from glaubitz)</comment>
+    <requestid>1218015</requestid>
+  </revision>
 </revisionlist>
