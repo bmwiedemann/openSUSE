@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:27:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.8:
+  * fix(bubblewrap_runner): run as build 1000 by default (#1572)
+  * use --target-dir to target with cargo build
+  * pass --release as default opts
+  * allow passing more than one opts to cargo build
+
+-------------------------------------------------------------------
+Wed Oct 23 16:42:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.7:
+  * fix breakage
+  * go mod tidy
+  * bump apko dep to fix modtime issue
+
+-------------------------------------------------------------------
+Wed Oct 23 16:28:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.6:
+  * fix(build): require build config repo URL
+  * add build base to cargo-build pipeline
+
+-------------------------------------------------------------------
+Wed Oct 23 09:27:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.5 (0.14.4 was not properly released):
+  * fix(sbom): unique package IDs for upstream source
+  * test: (tdd) add failing test for dup spdx IDs
+
+-------------------------------------------------------------------
+Wed Oct 23 09:17:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.3:
+  * fix(build): use fallback values at entrypoint for git info
+  * fix(build): use the config file dir path for git detection
+
+-------------------------------------------------------------------
+Wed Oct 23 09:13:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.2:
+  * ci: add workflow to tag releases daily
+
+-------------------------------------------------------------------
+Wed Oct 23 09:08:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.1:
+  * Do not specify versions during 'melange test' (Revert #1579 and
+    #1518)
+
+-------------------------------------------------------------------
+Wed Oct 23 08:56:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.0:
+  * fix(build): make git autodetection best effort
+  * test: use x86_64 for build int tests
+  * move sbom test inside build test
+  * test(build): favor bwrap, fallback to docker
+  * chore: dedup test targets in makefile
+  * docs: run make docs-repo
+  * try qemu runner
+  * test: remove e2e tests for SBOM external refs
+  * unique SPDX IDs for multiple git repo checkouts
+  * chore: add make target for integration tests
+  * test: add integration test for build and SBOMs
+  * chore: bump Go version
+  * feat(sbom): overhaul SBOM generation logic
+
+-------------------------------------------------------------------
+Wed Oct 23 08:47:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.7:
+  * Pin the package version with ~ rather than =.
+  * build(deps): bump google.golang.org/api from 0.200.0 to 0.201.0
+  * build(deps): bump cloud.google.com/go/storage from 1.44.0 to
+    1.45.0
+  * bublewrap_runner: add /sys mount
+  * fix lint finding
+  * pipe it through cli
+  * cleanup glow up
+  * fix(qemu): fix missing pty allocation for debug shell in qemu
+    runners
+  * Do not add a cmd:awk dependency as nothing will ever provide
+    cmd:awk
+  * fix formatting lint
+  * fix(test): update tests to reflect new struct
+  * fix(qemu): fix failing test pipeline when using qemu runner
+  * fix test
+  * Pin the package version used during tests
+
+-------------------------------------------------------------------
 Wed Oct 16 07:52:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.6:

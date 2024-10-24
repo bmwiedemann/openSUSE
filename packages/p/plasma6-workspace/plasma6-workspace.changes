@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:06:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.2
+- Changes since 6.2.1.1:
+  * update version for new release
+  * shell: disable incremental gc until QTBUG-129241 is resolved
+  * applets/devicenotifier: ensure udi is not dangling to fix crash
+  * applets/devicemonitor: document when formating a device is removed and added back immediately
+  *  Revert "temporarily revert version number for respin"
+  * klipper: Avoid creating lots of native windows in settings dialog (kde#494169)
+
+-------------------------------------------------------------------
 Thu Oct 17 08:22:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1.1:

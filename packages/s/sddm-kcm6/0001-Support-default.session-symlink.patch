@@ -1,4 +1,4 @@
-From 015348caa1e8dd7f9c3b1490c6457017ec1b134e Mon Sep 17 00:00:00 2001
+From 2c4bf2d4c0be461fb9125de867543a1d89468fdd Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Tue, 11 Jul 2017 13:13:13 +0200
 Subject: [PATCH] Support default.session symlink
@@ -10,11 +10,11 @@ a normal session. Use it as default when the combobox is disabled.
  src/ui/Advanced.qml  | 2 +-
  2 files changed, 7 insertions(+), 1 deletion(-)
 
-Index: sddm-kcm-6.1.5/src/sessionmodel.cpp
-===================================================================
---- sddm-kcm-6.1.5.orig/src/sessionmodel.cpp
-+++ sddm-kcm-6.1.5/src/sessionmodel.cpp
-@@ -95,6 +95,12 @@ void SessionModel::loadDir(const QString
+diff --git a/src/sessionmodel.cpp b/src/sessionmodel.cpp
+index 249340b..586002d 100644
+--- a/src/sessionmodel.cpp
++++ b/src/sessionmodel.cpp
+@@ -96,6 +96,12 @@ void SessionModel::loadDir(const QString &path, SessionType type)
                  isHidden = line.mid(7).toLower() == QLatin1String("true");
              }
          }
@@ -27,12 +27,12 @@ Index: sddm-kcm-6.1.5/src/sessionmodel.cpp
          if (!isHidden) {
              // add to sessions list
              d->sessions.push_back(si);
-Index: sddm-kcm-6.1.5/src/ui/Advanced.qml
-===================================================================
---- sddm-kcm-6.1.5.orig/src/ui/Advanced.qml
-+++ sddm-kcm-6.1.5/src/ui/Advanced.qml
+diff --git a/src/ui/Advanced.qml b/src/ui/Advanced.qml
+index 5f78ca6..635a099 100644
+--- a/src/ui/Advanced.qml
++++ b/src/ui/Advanced.qml
 @@ -38,7 +38,7 @@ Kirigami.Page {
-                         kcm.sddmSettings.session = autologinSession.currentText
+                         kcm.sddmSettings.session = autologinSession.currentValue
                      } else {
                          kcm.sddmSettings.user = ""
 -                        kcm.sddmSettings.session = ""
@@ -40,3 +40,6 @@ Index: sddm-kcm-6.1.5/src/ui/Advanced.qml
                      }
  
                      // Deliberately imperative because we only want the message
+-- 
+2.47.0
+

@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 550.120
-%define cuda_version 555.42.06
+%define gfx_version 550.127.05
+%define cuda_version 560.35.03
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -82,9 +82,6 @@ Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
-%if "%{flavor}" == "cuda"
-Patch1:         kernel-6.10.patch
-%endif
 %if "%{flavor}" != "cuda"
 %ifarch aarch64
 %if 0%{?suse_version} >= 1600

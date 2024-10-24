@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-aioftp
-Version:        0.22.3
+Version:        0.23.1
 Release:        0
 Summary:        FTP client/server for asyncio
 License:        Apache-2.0
@@ -32,8 +33,8 @@ Requires:       python-siosocks >= 0.2.0
 BuildArch:      noarch
 BuildRequires:  %{python_module async_timeout >= 4.0.0}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module siosocks >= 0.2.0}
 BuildRequires:  %{python_module trustme}
 %python_subpackages

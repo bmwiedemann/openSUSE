@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:11:09 UTC 2024 - ming li <mli@suse.com>
+
+- Update to release 4.0.5
+  * Add empty directories to zip file.
+  * Use hexadecimal prefix for MZ_VERSION_BUILD.
+  * Fix bz2 library name
+  * Use correct version needed to extract for BZIP2.
+  * Remove left over signing code from v3.
+
+-------------------------------------------------------------------
 Fri Jan 19 12:22:57 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Remove TODO.multibuild, Factory build chokes on it

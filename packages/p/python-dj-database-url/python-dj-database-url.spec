@@ -16,23 +16,24 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-dj-database-url
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Utility to use database URLs in Django applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/dj-database-url
-Source:         https://files.pythonhosted.org/packages/source/d/dj-database-url/dj-database-url-%{version}.tar.gz
-BuildRequires:  %{python_module Django > 3.2}
-BuildRequires:  %{python_module devel >= 3.6}
+Source:         https://files.pythonhosted.org/packages/source/d/dj-database-url/dj_database_url-%{version}.tar.gz
+BuildRequires:  %{python_module Django > 4.2}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django > 3.2
+Requires:       python-Django > 4.2
 Requires:       python-typing_extensions >= 3.10
 BuildArch:      noarch
 %python_subpackages
@@ -55,7 +56,7 @@ Support currently exists for PostgreSQL, PostGIS, MySQL, MySQL (GIS),
 Oracle, Oracle (GIS), and SQLite.
 
 %prep
-%setup -q -n dj-database-url-%{version}
+%setup -q -n dj_database_url-%{version}
 
 %build
 %pyproject_wheel

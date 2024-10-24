@@ -17,7 +17,7 @@
 
 
 Name:           python-nocasedict
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        A case-insensitive ordered dictionary for Python
 License:        LGPL-2.1-or-later

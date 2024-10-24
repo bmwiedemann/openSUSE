@@ -18,13 +18,16 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://codeberg.org/dnkl/fcft
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
+Source2:        %{name}.keyring
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11
 BuildRequires:  python3-dataclasses
@@ -33,6 +36,7 @@ BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
+BuildRequires:  cmake(NanoSVG)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 2.12
 BuildRequires:  pkgconfig(harfbuzz) >= 5.2
@@ -62,7 +66,7 @@ fcft is a font loading and glyph rasterization library built on-top
 of FontConfig, FreeType2 and pixman.
 
 %prep
-%autosetup -n %{name}
+%autosetup
 
 %build
 %if 0%{?sle_version} >= 150400
@@ -74,6 +78,7 @@ export CC=gcc-11
 	-Dgrapheme-shaping=enabled \
 	-Drun-shaping=enabled \
 	-Dsvg-backend=nanosvg \
+	-Dsystem-nanosvg=enabled \
 	-Dtest-text-shaping=false
 %meson_build
 

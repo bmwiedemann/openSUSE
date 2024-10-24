@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libseccomp)
+Requires:       glycin-loaders
 
 %description
 A program for comparing multiple versions of an image or video.

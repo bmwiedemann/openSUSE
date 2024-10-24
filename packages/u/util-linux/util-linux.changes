@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 21 23:25:19 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Disable mountfd API again.
+  (https://github.com/util-linux/util-linux/issues/3158)
+
+-------------------------------------------------------------------
+Mon Aug  5 22:14:13 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.40.2:
+  * cfdisk: fix possible integer overflow
+  * libmount: improving robustness in reading kernel messages,
+    add pidfs to pseudo fs list
+  * lscpu: New Arm Cortex part numbers
+  * lsfd: Refactor the pidfd logic, support pidfs
+    (obsoletes
+    0001-include-Include-unistd.h-in-pidfd-utils.h-for-syscal.patch,
+    0002-lsfd-Refactor-the-pidfd-logic-into-lsfd-pidfd.c.patch,
+    0003-lsfd-Support-pidfs.patch,
+    0004-lsfd-test-Adapt-test-cases-for-pidfs.patch)
+  * mkswap.8.adoc: update note regarding swapfile creation
+  * setpgid: make -f work
+  * Many other fixes, improvements and code cleanup. For the
+    complete list see
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/v2.40.2-ReleaseNotes
+- Enable kernel mountfd API, as it should be already stable
+  (PED-9752).
+- Move autoreconf back to %build.
+- Add devel dependencies.
+- Remove util-linux-rpmlintrc. It is no more needed with multibuild.
+
+-------------------------------------------------------------------
 Tue Jul 16 13:25:03 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - uncomment "autoreconf --install" to use the new version of automake

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:08:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.2
+- Changes since 6.2.1:
+  * update version for new release
+  * reintroduce maximizing task on activating it in switcher (kde#492077)
+  * lockscreen: Forward keyboard key immediately to password bar
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Oct 15 16:53:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1:

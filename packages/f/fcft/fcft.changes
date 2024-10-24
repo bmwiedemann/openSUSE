@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:21:53 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.9:
+  * Unicode data files updated to 15.1
+  * FCFT_LOG_COLORIZE_AUTO now respects the NO_COLOR environment variable.
+  * SVG glyphs are now centered on the line.
+  * Fixed logs to respect specified log level.
+  * Fcft now automatically ensures the LC_NUMERIC locale is
+    correctly configured for FcNameParse().
+  * Failure to look up font name is now logged.
+  * Now built against distribution nanosvg.
+
+-------------------------------------------------------------------
 Mon Feb 26 17:40:58 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.8:

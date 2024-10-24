@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Oct 23 19:37:07 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.3.0
+  * Fix fortinet get sys status capture group names.
+  * Add error directive to exos_show_ports_information_detail.
+  * New template: Aruba Procurve show version.
+  * Fix Fortinet get system interface template and combine rules.
+  * New template for NGFW FortiGate.
+  * Add initial extreme slxos show clock template.
+  * Add: Mikrotik interface vlan print detail.
+  * Add: Mikrotik interface bonding print detail.
+  * fix: Mikrotik interface print detail.
+  * fix: Mikrotik interface ethernet monitor name.
+  * fix: Mikrotik ip arp print without-paging.
+  * New template: cisco_ios_show_power_inline.textfsm.
+  * Feat cisco ios hqos.
+- Update to version 7.2.0
+  * Fix time capture and handle 'under a minute' times in Aruba
+    show system (issue#1837).
+  * New template: Huawei vrp display http server.
+  * Huawei smartax display ont snmp profile 0 all.
+  * Add template: Huawei vrp display telnet server status.
+  * Resolve Fortinet HA Status parsing issues.
+  * fix: IOS 'show bfd neighbors details' failures.
+  * fix: Mikrotik system resource print.
+  * fix: Mikrotik ip address print.
+  * Fix: inner vlan parsing cisco ios show interfaces.
+- Update to version 7.1.0
+  * Fix template to properly handle hyphens in 'show lldp
+    neighbors' for arista eos.
+  * Fix a few minor issues with Arista 'show_processes_top_once'.
+  * Huawei smartax display ont port state 0 1 eth state.
+  * Add parsing for Cisco IOS Inner VLANs through show vlans.
+  * Updated template: Huawei VRP display interface added extra
+    parameters.
+  * Updated: Huawei smartax display mac address ont 0 1 2 0.
+  * Unswapped ipv4 and ipv6.
+  * Updated templated with one more use case.
+  * cisco_xr_show_interfaces_description.textfsm - new template.
+  * Fix IOS interface link template uptime issue.
+- Update to version 7.0.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v7.0.0
+- Update to version 6.0.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v6.0.0
+- Update to version 5.1.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v5.1.0
+- Update to version 5.0.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v5.0.0
+- Update to version 4.4.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.4.0
+- Update to version 4.3.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.3.0
+- Update to version 4.2.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.2.0
+- Update to version 4.1.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.1.0
+- Update to version 4.0.1
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.0.1
+- Update to version 4.0.0
+  * https://github.com/networktocode/ntc-templates/releases/tag/v4.0.0
+
+-------------------------------------------------------------------
 Mon Sep  4 08:03:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.5.0

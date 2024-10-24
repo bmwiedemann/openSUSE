@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           flatpak-kcm6
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later

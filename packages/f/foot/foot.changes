@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:35:04 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.19.0:
+  * foot.ini options:
+    * Added main.resize-keep-grid option to control whether the window is
+      resized (and the grid reflowed) or not when zooming in/out.
+    * Added main.strikeout-thickness option.
+    * Added colors.sixelNN options to control the default sixel color palette.
+    * Changed cursor.unfocused-style option to be effective when
+      cursor.style is not "block".
+  * Activating a notification that was triggered by OSC-777 or BEL now focuses
+    the foot window, if XDG activation tokens are supported by
+    the Wayland compositor, the notification daemon and the notification helper
+    set in foot's desktop-notifications.command config.
+  * The .desktop files have been renamed to remove
+    the "org.codeberg.dnkl." prefix.
+  * Fixed crash when setting the window title to invalid UTF-8.
+  * Fixed misbehavior when the scrollback.lines config was set to a value
+    that caused integer overflow.
+  * Fixed some visual glitches when running under compositors that forced foot
+    to double-buffer (KWin, those based on Smithay, etc).
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.19.0 for more details.
+
+-------------------------------------------------------------------
 Wed Aug 14 16:27:10 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.18.1:

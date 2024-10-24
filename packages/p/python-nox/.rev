@@ -118,4 +118,22 @@
 - drop support-tox-4.patch (upstream)</comment>
     <requestid>1169417</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55d5c9fd5d763a5b265452d53992a8cb</srcmd5>
+    <version>2024.10.9</version>
+    <time>1729777398</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.10.09:
+  * This release adds explicit support for Python 3.13 and drops
+    support for running Nox itself under Python 3.7. Note that
+    you can still use 3.7 in your Nox sessions, we just dropped
+    support for installing &amp; running `nox` itself in 3.7.
+  * Allow setting tags on parametrized sessions
+  * Added support for `uv`-installed pythons
+  * Added `session.install_and_run_script`
+  * Updated type annotation of `stderr` parameter to make it
+    optional
+  * Removed `add_timestamp` from `noxfile.options`</comment>
+    <requestid>1217424</requestid>
+  </revision>
 </revisionlist>

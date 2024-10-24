@@ -18,18 +18,16 @@
 
 %define _lto_cflags %{nil}
 Name:           warp
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        App to securely send files via the internet or local network
 License:        GPL-3.0-or-later
 URL:            https://apps.gnome.org/en-GB/app/app.drey.Warp/
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -71,6 +69,8 @@ which includes local network transfer if possible.
 %{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/*.metainfo.xml
+%dir %{_datadir}/warp
+%{_datadir}/warp/licenses.json
 
 %files lang -f %{name}.lang
 

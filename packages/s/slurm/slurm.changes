@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:54:29 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Add %(?%sysusers_requires} to slurm-config.
+  This fixes issues when building against Slurm.
+
+-------------------------------------------------------------------
 Mon Oct 14 10:40:10 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 24.05.3

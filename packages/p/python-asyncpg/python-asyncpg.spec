@@ -18,24 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncpg
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/MagicStack/asyncpg/pull/1185 notice also the MERGE command
-Patch0:         0001-notice-also-the-MERGE-command.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module async_timeout}
+BuildRequires:  %{python_module async_timeout if %python-base < 3.11}
 BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3 if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libpq5 >= 9.4
-%if 0%{?python_version_nodots} < 312
+%if 0%{?python_version_nodots} < 311
 Requires:       python-async_timeout
 %endif
 %if 0%{?python_version_nodots} < 38

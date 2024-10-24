@@ -58,6 +58,11 @@ BuildArch:      noarch
 %if 0%{?suse_version} > 1320
 BuildRequires:  update-bootloader-rpm-macros
 %endif
+# These complete the distribution wallpaper selection
+# Taken from last Leap release starting by 16.0
+%if 0%{?suse_version} >= 1600
+Suggests:       wallpapers-openSUSE-extra
+%endif
 
 %description
 This package contains the file %{_sysconfdir}/SUSE-brand, and its name is used as
@@ -207,9 +212,6 @@ for i in %{buildroot}%{_datadir}/wallpapers/*.desktop; do
     %suse_update_desktop_file "$i"
 done
 
-# no longer uses alternative
-ln -s -f %{theme_name}-default-static.xml %{buildroot}%{_datadir}/wallpapers/%{theme_name}-default.xml
-
 %fdupes -s %{buildroot}%{_datadir}/wallpapers/
 %fdupes -s %{buildroot}%{_datadir}/YaST2/theme/current/wizard/
 
@@ -220,11 +222,6 @@ ln -s -f openSUSEdefault %{buildroot}%{_datadir}/wallpapers/SLEdefault
 rm -rf %{buildroot}%{_datadir}/grub2
 %endif
 
-%post -n wallpaper-branding-%{theme_name}
-# remove alternative leftover
-if [ $1 -gt 1 ]; then
-	[ -r /etc/alternatives/%{theme_name}-default.xml ] && rm -f /etc/alternatives/%{theme_name}-default.xml || true
-fi
 %if 0%{?grub2} > 0
 %post -n grub2-branding-%{theme_name}
 %{_datadir}/grub2/themes/%{theme_name}/activate-theme
@@ -260,7 +257,6 @@ gfxboot --update-theme %{theme_name}
 
 %files -n wallpaper-branding-%{theme_name}
 %license LICENSE
-%{_datadir}/wallpapers/openSUSE-default.xml
 %dir %{_datadir}/gnome-background-properties/
 %{_datadir}/gnome-background-properties/wallpaper-branding-openSUSE.xml
 %{_datadir}/wallpapers/

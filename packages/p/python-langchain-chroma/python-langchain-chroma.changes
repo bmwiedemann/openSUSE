@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:18:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.4:
+  * chroma[patch]: Release 0.1.4 (#26470)
+  * multiple: pydantic 2 compatibility, v0.3 (#26443)
+  * standard-tests[patch]: add Ser/Des test
+  * all: Improve make lint command (#25344)
+  * chroma: add back fastapi optional dep (#25641)
+  * partners/chroma: release 0.1.3 (#25599)
+  * chroma: ban chromadb sdk versions 0.5.4 and 0.5.5 due to
+    pydantic bug (#25586)
+  * [docs]: vector store integration pages (#24858)
+  * patch[Partners] Unified fix of incorrect variable declarations
+    in all check_imports (#25014)
+  * docs: fix kwargs docstring (#25010)
+  * all: add release notes to pypi (#24519)
+  * partners: add similarity search by image functionality to
+    langchain_chroma partner package (#22982)
+
+-------------------------------------------------------------------
 Thu Sep  5 09:14:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v0.1.2), needed by AI stack

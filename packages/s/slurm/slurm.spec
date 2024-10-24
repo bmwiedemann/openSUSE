@@ -517,6 +517,7 @@ This package contains just the minmal code to run a compute node.
 %package config
 Summary:        Config files and directories for slurm services
 Group:          Productivity/Clustering/Computing
+%{?sysusers_requires}
 Requires:       logrotate
 BuildArch:      noarch
 %if 0%{?suse_version} <= 1140

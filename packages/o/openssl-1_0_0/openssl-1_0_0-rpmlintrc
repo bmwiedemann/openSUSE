@@ -1,2 +1,0 @@
-# shlib policy does not cover the multibuild case
-addFilter("libopenssl1_0_0-steam.\w+: E: shlib-policy-name-error SONAME.*")

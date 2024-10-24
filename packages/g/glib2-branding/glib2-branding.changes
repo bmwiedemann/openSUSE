@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  1 19:32:14 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Align default wallpaper and screensaver urls with new light and dark
+  theme wallpaper for Tumbleweed gh#openSUSE/branding#154
+  and gh#openSUSE/branding#160
+- openSUSE no longer uses static/dynamic xml.
+  See issue gh#openSUSE/branding#161
+- Use zoom instead of streched with 4096x4096 unified wallpaper
+
+-------------------------------------------------------------------
 Thu Mar 14 10:38:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure flavor has a value, at least %nil.

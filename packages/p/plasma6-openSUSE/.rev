@@ -116,4 +116,16 @@
     <comment>Plasma 6.2.1 (forwarded request 1208221 from Vogtinator)</comment>
     <requestid>1208343</requestid>
   </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>28df2a2e1ca0d5e1c0abeb80d0531a4c</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1729777317</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.2.2
+
+- Remove sddmtheme.diff patch and replace it with sed so it can
+  find out an available wallpaper from a list and use it since
+  Leap 16.0 doesn't have a 1920x1080.png wallpaper.</comment>
+    <requestid>1217956</requestid>
+  </revision>
 </revisionlist>

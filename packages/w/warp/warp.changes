@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 02:33:04 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Current build requires manual intervention for vendoring.
+  See gh/openSUSE-Rust/obs-service-cargo#106
+- Remove redundant BuildRequires
+- Update to version 0.8.0:
+  * Better mobile support with bottom sheets and adaptive dialogs
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 24 11:05:42 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Added gstreamer/plugins & zbar to BuildRequires

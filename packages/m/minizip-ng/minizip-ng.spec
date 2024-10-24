@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define build_flavor @BUILD_FLAVOR@%{nil}
 %define pkg_name minizip-ng
 
 # TODO
-%if "%{build_flavor}" == "compat" 
+%if "%{build_flavor}" == "compat"
 Name:           minizip
 %global         soname libminizip1
 %global         compat_mode ON
@@ -29,7 +30,7 @@ Name:           minizip-ng
 %global         compat_mode OFF
 %endif
 
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Companion library to zlib-ng for reading and writing ZIP files
 License:        Zlib

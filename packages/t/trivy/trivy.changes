@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 12:47:45 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.56.2:
+  * release: v0.56.2 [release/v0.56] (#7694)
+  * fix(redhat): include arch in PURL qualifiers [backport: release/v0.56] (#7702)
+  * fix(sbom): add options for DBs in private registries [backport: release/v0.56] (#7691)
+
+-------------------------------------------------------------------
 Tue Oct 08 16:43:27 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.56.1:

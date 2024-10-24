@@ -183,4 +183,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199039</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1caa89c2a707300a952bed93dd0cf6e9</srcmd5>
+    <version>20241019</version>
+    <time>1729777376</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241019
+  Features
+  * Add Lenovo Tab K10 (#329)
+  * Add OnePlus 7T. (#330)
+  * Add Archos 79 Xenon (#331)
+  * Add support for Android Open Accessory device 2d04 (#332)
+</comment>
+    <requestid>1217380</requestid>
+  </revision>
 </revisionlist>

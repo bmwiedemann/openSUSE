@@ -34,4 +34,13 @@
     <comment>- reduce rpmlint warnings</comment>
     <requestid>1144946</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>01b20bbcc9666c692b10aa4b0794cef9</srcmd5>
+    <version>0.6.9</version>
+    <time>1729777391</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.9:
+  * drop python 3.7-3.8 support</comment>
+    <requestid>1217415</requestid>
+  </revision>
 </revisionlist>

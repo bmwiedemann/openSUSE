@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:08:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.2
+
+-------------------------------------------------------------------
+Thu Oct 17 11:07:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove sddmtheme.diff patch and replace it with sed so it can
+  find out an available wallpaper from a list and use it since
+  Leap 16.0 doesn't have a 1920x1080.png wallpaper.
+
+-------------------------------------------------------------------
 Tue Oct 15 16:53:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1

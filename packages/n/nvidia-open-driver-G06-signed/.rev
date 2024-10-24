@@ -502,4 +502,21 @@
   firmware when (new) firmware gets installed</comment>
     <requestid>1208897</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7b2ffc382c90d85ca831e5e64a8c82c5</srcmd5>
+    <version>550.127.05</version>
+    <time>1729777365</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.127.05 (boo#1232057)
+  * Fixed a bug which could cause applications using GBM to crash
+    when running with nvidia-drm.modeset=0.
+
+- cuda-flavor
+  provide also nvidia-open-driver-G06-kmp-$flavor = %version to
+  workaround broken cuda-drivers
+
+- For CUDA update version to 560.35.03 
+- supersedes kernel-6.10.patch</comment>
+    <requestid>1217357</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:58:33 UTC 2024 - lubos.kocman@suse.com
+
+- Update to version 20241022:
+  * TW: rename highcolor back to hicolor
+
+-------------------------------------------------------------------
+Thu Oct 17 12:56:06 UTC 2024 - lubos.kocman@suse.com
+
+- Update to version 20241017:
+  * Add new Tumbleweed logos
+  * Increade horizontal padding for light-inline
+  * Make square-symbolic edge to edge
+  * Optimize PNGs
+  * Make favicon multisize
+  * Optimize SVGs
+  * Narrow down light-inline
+  * Resize square-symbolix to 16x16
+  * Resize symbolic icon to 16x16
+
+-------------------------------------------------------------------
 Wed May 08 13:31:35 UTC 2024 - bwiedemann@suse.com
 
 - Update to version 20240429:

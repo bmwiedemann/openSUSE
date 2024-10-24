@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_7_3
+%define libver  4_7_4
 Name:           rssguard
-Version:        4.7.3
+Version:        4.7.4
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients

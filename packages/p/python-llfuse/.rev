@@ -36,4 +36,15 @@
 - drop fix-test-for-fusermount.patch (upstream)</comment>
     <requestid>1103750</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7b57c38eeaf14390680e9fb8c13dc5cd</srcmd5>
+    <version>1.5.1</version>
+    <time>1729777391</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Support and test on Python 3.13 also.
+  * Cythonized using Cython 3.0.11 to get Python 3.13 support.
+  * Misc. CI and readthedocs related changes.</comment>
+    <requestid>1217414</requestid>
+  </revision>
 </revisionlist>

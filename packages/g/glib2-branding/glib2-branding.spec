@@ -90,8 +90,18 @@ cp -a %{SOURCE1} COPYING
 cp -a %{SOURCE2} glib2-branding.gschema.override.in
 
 %build
+# Legacy XML compatability with SLES15 branding.
+# We no longer use xml and have dark/light bg variants.
+# Can be removed if SLES adopts gh#openSUSE/branding#161
+%if 0%{?build_SLE}
 test -f %{_datadir}/wallpapers/%{branding_name}-default.xml
 sed "s,@@WALLPAPER_URI@@,file://%{_datadir}/wallpapers/%{branding_name}-default.xml,;s,@@LOCKSCREEN_URI@@,file://%{_datadir}/wallpapers/%{branding_name}-default-static-lockscreen.xml,"  glib2-branding.gschema.override.in > glib2-branding.gschema.override
+%else
+sed -e "s,@@WALLPAPER_URI@@,file://%{_datadir}/wallpapers/%{branding_name}default/contents/images/default.png," \
+    -e "s,@@WALLPAPER_URI_DARK@@,file://%{_datadir}/wallpapers/%{branding_name}default/contents/images/default-dark.png," \
+    glib2-branding.gschema.override.in > glib2-branding.gschema.override
+%endif
+
 #for sound theme
 %if 0%{?build_openSUSE}
 sed "s:@@IF_openSUSE@@::g" < glib2-branding.gschema.override | \

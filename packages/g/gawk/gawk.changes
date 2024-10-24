@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 23 08:39:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * More subtle issues related to uninitialized array elements
+    have been fixed.
+  * A number of bugs in the debugger related to handling of
+    arrays have been fixed.
+  * Some subtle bugs in the API have been fixed.
+  * Use of MPFR is now possible again on 32-bit Power PC Mac
+    systems.
+  * Race conditions around broken pipes for system() and read
+    and write pipes should now be closed off.
+  * Support for OSF/1 has been removed.
+  * The never-documented --nostalgia option has been removed.
+    It was causing bug reports.
+  * The implementation of printf/sprintf has been thoroughly
+    reworked in order to make the code more maintainable and to
+    fix a goodly number of corner cases.
+
+-------------------------------------------------------------------
 Sat Nov  4 17:46:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 5.3.0:
@@ -30,7 +50,7 @@ Tue May  9 20:38:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     want to decide whether or not to take control of a file.
   * The various PNG files are now installed for Info and HTML
   * Bug fixes and developer visible fixes
-  
+
 -------------------------------------------------------------------
 Tue Dec 27 10:37:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
@@ -154,7 +174,7 @@ Mon Dec 14 16:06:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 -------------------------------------------------------------------
 Wed Apr 15 08:48:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 5.1.0: 
+- Update to 5.1.0:
   * The major version of the API is bumped to 3, something that should
      have happened at the 5.0.0 release but didn't.
   * A number of memory leak issues have been fixed.
@@ -369,7 +389,7 @@ Tue Apr 29 20:28:42 UTC 2014 - andreas.stieger@gmx.de
   * remove added German po file and scanning of translations
   * remove profiling, fixing warning make-check-outside-check-section
   * remove autoreconf call
-  * drop gawk-3.1.8.diff 
+  * drop gawk-3.1.8.diff
   * drop older-automake.diff, not required for factory
   * build with libsigsegv
   * no not regenerate info pages
@@ -464,7 +484,7 @@ Thu Dec  1 15:47:50 UTC 2011 - coolo@suse.com
 Tue Sep 27 11:31:28 UTC 2011 - idonmez@suse.com
 
 - Revert sub/gsub behavior to that of gawk 3.x. Upstream commit
-  16de770359370224129f23df745178efe518c02c  
+  16de770359370224129f23df745178efe518c02c
 
 -------------------------------------------------------------------
 Wed Aug 10 03:58:24 UTC 2011 - crrodriguez@opensuse.org
@@ -756,7 +776,7 @@ Mon Nov 18 12:04:42 CET 2002 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 18:39:14 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Mon Aug  5 17:25:58 CEST 2002 - schwab@suse.de
@@ -886,7 +906,7 @@ Sun May 13 21:23:29 CEST 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Wed May  9 19:37:33 CEST 2001 - cstein@suse.de
 
-- repacked sources with bzip2. 
+- repacked sources with bzip2.
 
 -------------------------------------------------------------------
 Thu Apr 12 19:14:40 CEST 2001 - schwab@suse.de

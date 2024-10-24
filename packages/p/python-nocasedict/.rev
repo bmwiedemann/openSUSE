@@ -72,4 +72,18 @@
 - Switch to pyproject macros.</comment>
     <requestid>1172613</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b79761ab8f779787095ddc6af1c091b4</srcmd5>
+    <version>2.0.4</version>
+    <time>1729777394</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.4:
+  * Fixed safety issues up to 2024-08-18.
+  * Test: Increased versions of GitHub Actions plugins used, to
+    eliminate warnings about node v16.
+
+  * Add python 3.7 support
+- initial specfile for version 1.0.1</comment>
+    <requestid>1217422</requestid>
+  </revision>
 </revisionlist>

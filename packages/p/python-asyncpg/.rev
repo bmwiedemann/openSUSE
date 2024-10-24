@@ -162,4 +162,32 @@
     <comment></comment>
     <requestid>1205216</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e7429e83b613cc90d35f3d202e1093e2</srcmd5>
+    <version>0.30.0</version>
+    <time>1729777361</time>
+    <user>anag+factory</user>
+    <comment>- Remove 0001-notice-also-the-MERGE-command.patch not needed anymore.
+- update to 0.30.0:
+  * Implement GSSAPI authentication
+  * Implement SSPI authentication
+  * Add initial typings
+  * Allow building with Cython 3
+  * docs: fix connection pool close call (#1125)
+  * Add support for the sslnegotiation parameter
+  * Test and build on Python 3.13
+  * Support PostgreSQL 17
+  * Add fetchmany to execute many and return rows
+  * Add connect kwarg to Pool to better support GCP's CloudSQL
+  * Allow customizing connection state reset (#1191)
+  * s/quote/quote_plus/ in the note about DSN part quoting
+  * Use asyncio.run() instead of run_until_complete()
+  * Require async_timeout for python &lt; 3.11 (#1177)
+  * Allow testing with uvloop on Python 3.12 (#1182)
+  * Mark pool-wrapped connection coroutine methods as coroutines
+  * handle None parameters in copy_from_query, returning NULL
+  * fix: return the pool from async_init_ if it's already initialized (#1104)
+  * Replace obsolete, unsafe Py_TRASHCAN_SAFE_BEGIN/END (#1150)</comment>
+    <requestid>1217351</requestid>
+  </revision>
 </revisionlist>

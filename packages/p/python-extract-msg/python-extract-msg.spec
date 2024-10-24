@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extract-msg
-Version:        0.49.0
+Version:        0.52.0
 Release:        0
 Summary:        Extracts emails and attachments saved in Microsoft Outlook's msg files
 License:        GPL-3.0-only
@@ -67,7 +67,7 @@ sed -i '/\#\!\/usr\/bin\/env python3/d' extract_msg/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest tests.py
+%pyunittest -v tests.py
 
 %post
 %python_install_alternative extract_msg

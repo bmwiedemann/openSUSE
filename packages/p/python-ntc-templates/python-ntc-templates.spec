@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntc-templates
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%define skip_python2 1
 Name:           python-ntc-templates
-Version:        3.5.0
+Version:        7.3.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/networktocode/ntc-templates
-Source:         https://github.com/networktocode/ntc-templates/archive/v%{version}.tar.gz
+Source:         https://github.com/networktocode/ntc-templates/archive/v%{version}.tar.gz#/ntc-templates-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -38,9 +37,11 @@ Suggests:       python-yamllint
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyaml}
+BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module textfsm >= 1.1.0}
+BuildRequires:  %{python_module toml}
 # /SECTION
 %python_subpackages
 

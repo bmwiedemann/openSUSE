@@ -18,7 +18,7 @@
 
 
 Name:           distribution-logos-openSUSE
-Version:        20240429
+Version:        20241022
 Release:        0
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  3 09:42:05 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- The wallpapers-openSUSE-extra complete the distribution wallpaper
+  collection starting by Leap 16.0. We want the latest on TW too.
+
+* Suggest wallpapers-openSUSE-extra on Leap 16+ and TW
+* Expectation is to have 5/6 wallpapers alltogether.
+* Might be skipped from LIVE
+-------------------------------------------------------------------
+Tue Oct  1 09:15:00 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Unified 4096x4096 TW wallpaper for Tumbleweed
+ 
+* Graphics from @hellcp. Many thanks for all the work!
+* Resolves TW part of gh#openSUSE/branding#135
+* Covers both dark and light variant.
+* Use single 4096x4096 file as mentioned in gh#openSUSE/branding#161
+* Use the dark 800x600 also for the back.png.
+* Use default.png instead of default-light.png to maximize compatability.
+* Stop using static/dynamic xml files.
+* Drop resolution-specific .desktop files.
+  they're useless now when we have single default.png
+  and default-dark.png. Entry in
+  /usr/share/gnome-background-properties is enough.
+* Generate a compat symlink 1920x1200.png used by SLES/cockpit,
+  XFce, and KDE.
+-------------------------------------------------------------------
 Wed Sep 18 14:12:24 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Install the grub2 branding if grub2-common is present

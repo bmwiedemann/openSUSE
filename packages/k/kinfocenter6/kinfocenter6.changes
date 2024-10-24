@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:07:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.2
+- Changes since 6.2.1:
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Oct 17 08:32:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix the memory info page by switching from pkexec

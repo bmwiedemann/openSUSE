@@ -85,13 +85,12 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.40.1
+Version:        2.40.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
-Source3:        util-linux-rpmlintrc
 Source7:        baselibs.conf
 Source8:        login.pamd
 Source9:        remote.pamd
@@ -111,10 +110,6 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
-Patch6:         0001-include-Include-unistd.h-in-pidfd-utils.h-for-syscal.patch
-Patch7:         0002-lsfd-Refactor-the-pidfd-logic-into-lsfd-pidfd.c.patch
-Patch8:         0003-lsfd-Support-pidfs.patch
-Patch9:         0004-lsfd-test-Adapt-test-cases-for-pidfs.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -280,7 +275,10 @@ Library for filesystem detection.
 Summary:        Development files for the filesystem detection library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       glibc-devel
+Requires:       libblkid-devel
 Requires:       libfdisk1 = %{version}
+Requires:       libuuid-devel
 
 %description -n libfdisk-devel
 Files needed to develop applications using the library for filesystem
@@ -290,7 +288,10 @@ detection.
 Summary:        Development files for the filesystem detection library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       libblkid-devel-static
+Requires:       libeconf-devel
 Requires:       libfdisk-devel = %{version}
+Requires:       libuuid-devel-static
 
 %description -n libfdisk-devel-static
 Files needed to develop applications using the library for filesystem
@@ -309,7 +310,10 @@ mount(8) and /usr/sbin/mount.<type> helpers.
 Summary:        Development files for libmount
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       libblkid-devel
+Requires:       libeconf-devel
 Requires:       libmount1 = %{version}
+Requires:       libselinux-devel
 
 %description -n libmount-devel
 Files to develop applications using the libmount library.
@@ -318,6 +322,7 @@ Files to develop applications using the libmount library.
 Summary:        Development files for libmount
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires:       libblkid-devel-static
 Requires:       libmount-devel = %{version}
 
 %description -n libmount-devel-static
@@ -364,6 +369,7 @@ A library to generate universally unique IDs (UUIDs).
 Summary:        Development files for libuuid
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
+Requires:       glibc-devel
 Requires:       libuuid1 = %{version}
 
 %description -n libuuid-devel
@@ -467,9 +473,9 @@ cp -a %{S:2} .
 %autopatch -p1
 # This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
-AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 
 %build
+AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export SUID_CFLAGS="-fpie"
 export SUID_LDFLAGS="-pie"
@@ -553,8 +559,8 @@ configure_options+="--with-systemd "
 	--disable-pg\
 	--enable-fs-paths-default="/sbin:/usr/sbin"\
 	--enable-static\
-	--with-vendordir=%{_distconfdir} \
-	--disable-libmount-mountfd-support \
+	--with-vendordir=%{_distconfdir}\
+	--disable-libmount-mountfd-support\
 	$configure_options
 make %{?_smp_mflags}
 }

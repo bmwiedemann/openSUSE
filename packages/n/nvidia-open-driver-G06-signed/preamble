@@ -10,6 +10,7 @@ Conflicts: nvidia-open-driver-G06-signed-kmp
 Conflicts: nvidia-open-driver-G06-signed-kmp-%1
 # workaround for broken cuda-drivers
 Provides: nvidia-open-driver-G06-kmp = %{-v*}
+Provides: nvidia-open-driver-G06-kmp-%1 = %{-v*}
 Requires: (kernel-firmware-nvidia-gspx-G06 = %{-v*} if (nvidia-compute-utils-G06 = %{-v*} or nvidia-compute-G06 = %{-v*} or sle-module-NVIDIA-compute-release))
 %else
 Requires: (kernel-firmware-nvidia-gspx-G06 = %{-v*} if nvidia-compute-utils-G06 = %{-v*})

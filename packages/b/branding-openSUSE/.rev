@@ -1099,4 +1099,32 @@ update go git:
     <comment></comment>
     <requestid>1203275</requestid>
   </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>fca3793bfecaf186d9a6cb4ca54cbf27</srcmd5>
+    <version>84.87.20240405</version>
+    <time>1729777233</time>
+    <user>anag+factory</user>
+    <comment>- The wallpapers-openSUSE-extra complete the distribution wallpaper
+  collection starting by Leap 16.0. We want the latest on TW too.
+* Suggest wallpapers-openSUSE-extra on Leap 16+ and TW
+* Expectation is to have 5/6 wallpapers alltogether.
+* Might be skipped from LIVE
+
+- Unified 4096x4096 TW wallpaper for Tumbleweed
+ 
+* Graphics from @hellcp. Many thanks for all the work!
+* Resolves TW part of gh#openSUSE/branding#135
+* Covers both dark and light variant.
+* Use single 4096x4096 file as mentioned in gh#openSUSE/branding#161
+* Use the dark 800x600 also for the back.png.
+* Use default.png instead of default-light.png to maximize compatability.
+* Stop using static/dynamic xml files.
+* Drop resolution-specific .desktop files.
+  they're useless now when we have single default.png
+  and default-dark.png. Entry in
+  /usr/share/gnome-background-properties is enough.
+* Generate a compat symlink 1920x1200.png used by SLES/cockpit,
+  XFce, and KDE.</comment>
+    <requestid>1205525</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aliyun-python-sdk-core
-Version:        2.15.1
+Version:        2.16.0
 Release:        0
 Summary:        The core module of Aliyun Python SDK
 License:        Apache-2.0

@@ -169,4 +169,12 @@
     <comment>Update to version 1.5.1</comment>
     <requestid>1182498</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cfaac2cad9b65f80f165c30c92cc0325</srcmd5>
+    <version>1.6.0</version>
+    <time>1729777363</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.6.0 (forwarded request 1216883 from mchellamuthu)</comment>
+    <requestid>1217352</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 23 02:50:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.127.05 (boo#1232057)
+  * Fixed a bug which could cause applications using GBM to crash
+    when running with nvidia-drm.modeset=0.
+
+-------------------------------------------------------------------
+Mon Oct 21 11:32:45 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- cuda-flavor
+  provide also nvidia-open-driver-G06-kmp-$flavor = %version to
+  workaround broken cuda-drivers
+
+-------------------------------------------------------------------
+Fri Oct 18 19:35:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- For CUDA update version to 560.35.03 
+- supersedes kernel-6.10.patch
+
+-------------------------------------------------------------------
 Fri Oct 18 13:31:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - cuda-flavor

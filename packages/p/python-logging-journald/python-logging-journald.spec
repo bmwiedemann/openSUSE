@@ -18,7 +18,7 @@
 
 %{?sle15allpythons}
 Name:           python-logging-journald
-Version:        0.6.7
+Version:        0.6.9
 Release:        0
 Summary:        Logging Handler For Sending Logs to journald
 License:        MIT

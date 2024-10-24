@@ -20,7 +20,7 @@
 
 # Plasma 6 pulls in Qt 5 as well, tell qml-autoreqprov what to use
 %global __qml_requires_opts --qtver 6
-%global plasma_version 6.2.1
+%global plasma_version 6.2.2
 Name:           plasma6-openSUSE
 Version:        84.87~git20240313T170730~9c664b7
 Release:        0
@@ -32,9 +32,6 @@ URL:            https://github.com/openSUSE/plasma-openSUSE
 # fixes directly. For files that diverge too much from upstream,
 # the .tar is the right place.
 Source:         plasma-opensuse-%{version}.tar.xz
-# Diff between /usr/share/sddm/themes/breeze-openSUSE
-# and /usr/share/sddm/themes/breeze
-Source3:        sddmtheme.diff
 # Diff between /usr/share/plasma/layout-templates/org.kde.plasma.desktop.defaultPanel/contents/layout.js
 # and /usr/share/plasma/layout-templates/org.opensuse.desktop.defaultPanel/contents/layout.js
 Source4:        panel.diff
@@ -106,7 +103,19 @@ rsync -av --ignore-existing %{_kf6_plasmadir}/look-and-feel/org.kde.breeze.deskt
 # Same for the SDDM theme
 rsync -av --ignore-existing %{_datadir}/sddm/themes/breeze/ %{buildroot}%{_datadir}/sddm/themes/breeze-openSUSE/
 pushd %{buildroot}%{_datadir}/sddm/themes/breeze-openSUSE
-patch -p2 -i %{SOURCE3}
+wpset=0
+for wp in 1920x1080.{png,jpg} 1920x1200.{png,jpg} default.{png,jpg} ; do
+  if [ -f "/usr/share/wallpapers/openSUSEdefault/contents/images/$wp" ]; then
+    sed -i -e "s,^background=.*$,background=/usr/share/wallpapers/openSUSEdefault/contents/images/$wp," theme.conf
+    wpset=1
+    break;
+  fi
+done
+
+if [ "$wpset" != 1  ]; then
+  echo "Error setting sddm wallpaper"
+  exit 1
+fi
 popd
 
 # Same for the default panel

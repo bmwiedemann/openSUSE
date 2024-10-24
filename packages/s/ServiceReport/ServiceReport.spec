@@ -21,7 +21,7 @@
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.4+git0.f1a5383
+Version:        2.2.4+git2.f1e4503
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only

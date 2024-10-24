@@ -1537,4 +1537,13 @@
   * Fix slurmd vsize memory leak when using job submission/allocation</comment>
     <requestid>1208086</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>c1739e273adf3a90021e6de7c8bea358</srcmd5>
+    <version>24.05.3</version>
+    <time>1729777348</time>
+    <user>anag+factory</user>
+    <comment>- Add %(?%sysusers_requires} to slurm-config.
+  This fixes issues when building against Slurm. (forwarded request 1217300 from eeich)</comment>
+    <requestid>1217321</requestid>
+  </revision>
 </revisionlist>

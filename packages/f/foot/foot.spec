@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -102,9 +102,9 @@ rm -r %{buildroot}/%{_datadir}/doc/%{name}/
 %doc README.md CHANGELOG.md
 %{_bindir}/foot
 %{_bindir}/footclient
-%{_datadir}/applications/org.codeberg.dnkl.foot.desktop
-%{_datadir}/applications/org.codeberg.dnkl.footclient.desktop
-%{_datadir}/applications/org.codeberg.dnkl.foot-server.desktop
+%{_datadir}/applications/foot.desktop
+%{_datadir}/applications/footclient.desktop
+%{_datadir}/applications/foot-server.desktop
 %{_datadir}/bash-completion/
 %{_datadir}/fish/
 %{_datadir}/zsh/

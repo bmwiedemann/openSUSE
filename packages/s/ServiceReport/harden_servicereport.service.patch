@@ -1,9 +1,18 @@
-Index: ServiceReport-2.2.3/service/servicereport.service
-===================================================================
---- ServiceReport-2.2.3.orig/service/servicereport.service
-+++ ServiceReport-2.2.3/service/servicereport.service
-@@ -3,6 +3,17 @@ Description=ServiceReport
- Wants=kdump.service
+From 708f52c23b47f2bfa7f178d80d9b36f2f9c07b04 Mon Sep 17 00:00:00 2001
+From: Johannes Segitz <jsegitz@suse.com>
+Date: Tue, 27 Jul 2021 09:15:52 +0000
+Subject: [PATCH] Added hardening to systemd service
+
+---
+ service/servicereport.service | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/service/servicereport.service b/service/servicereport.service
+index ff5c71e..a6a75db 100644
+--- a/service/servicereport.service
++++ b/service/servicereport.service
+@@ -4,6 +4,17 @@ After=kdump.service
+ DefaultDependencies=no
  
  [Service]
 +# added automatically, for details please see
@@ -19,4 +28,7 @@ Index: ServiceReport-2.2.3/service/servicereport.service
 +ProtectControlGroups=true
  Type=oneshot
  ExecStart=/usr/bin/servicereport -v
- 
+ RemainAfterExit=yes
+-- 
+2.47.0
+

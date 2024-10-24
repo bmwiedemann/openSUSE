@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 23 14:53:56 UTC 2024 - caleb.crane@suse.com
+
+- Update to version 0.6.0:
+  * Update to 0.6.0
+  * session: Use anyhow macro for error return
+  * Update sev crate to 4.0.0
+  * secret: Use From::from conversion
+  * Add Cargo.lock
+  * show: Patching bug from clap migration
+  * build(deps): update reqwest requirement from 0.11.18 to 0.12.4
+  * build(deps): update bitfield requirement from 0.14.0 to 0.15.0
+
+-------------------------------------------------------------------
 Thu Oct  3 18:17:16 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Add direct dependency on cargo in addition to cargo-packaging.

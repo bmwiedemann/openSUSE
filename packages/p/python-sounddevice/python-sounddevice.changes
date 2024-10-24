@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:30:14 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.1
+  * Windows wheel: bundle both non-ASIO and ASIO DLLs, the latter can
+    be chosen by defining the ``SD_ENABLE_ASIO`` environment variable
+
+-------------------------------------------------------------------
 Sun Sep  8 13:21:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:

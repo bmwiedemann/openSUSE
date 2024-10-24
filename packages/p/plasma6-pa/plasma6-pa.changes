@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:08:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.2
+- Changes since 6.2.1:
+  * update version for new release
+  * fix text display for auto_null device (kde#494324)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Oct 15 16:53:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.1:

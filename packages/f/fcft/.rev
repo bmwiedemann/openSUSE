@@ -226,4 +226,20 @@
     it works with fractional pixel sizes.</comment>
     <requestid>1151907</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6bfb452e05f470152583e7358fcb1fc1</srcmd5>
+    <version>3.1.9</version>
+    <time>1729777377</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.9:
+  * Unicode data files updated to 15.1
+  * FCFT_LOG_COLORIZE_AUTO now respects the NO_COLOR environment variable.
+  * SVG glyphs are now centered on the line.
+  * Fixed logs to respect specified log level.
+  * Fcft now automatically ensures the LC_NUMERIC locale is
+    correctly configured for FcNameParse().
+  * Failure to look up font name is now logged.
+  * Now built against distribution nanosvg.</comment>
+    <requestid>1217386</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langchain-chroma
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 Summary:        An integration package connecting Chroma and LangChain
 License:        MIT
