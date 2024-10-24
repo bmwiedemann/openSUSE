@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 18 17:48:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.60.0:
+  * Added Tracking support (AniList, MyAnimeList)
+  * [Servers] Anteiku Scans (FR): Update
+  * [Servers] Asura Scans (EN): Update
+  * [Servers] Cerise Scan (pt_BR): Update
+  * [Servers] ED Scanlation (FR): Update
+  * [Servers] EZmanga (EN): Update
+  * [Servers] M440.in (ES): Update
+  * [Servers] Manga Demon (EN): Update
+  * [Servers] MangaFreak (EN): Update
+  * [Servers] Mangago (EN): Update
+  * [Servers] Manga-Tube (DE): Update
+  * [Servers] Scanvf (FR): Fixed search
+  * [Servers] Sinensistoon (pt_BR): Update
+  * [Servers] Starbound Scans (FR): Update
+  * [Servers] Tecno Scans (ES): Update
+  * [Servers] Colored Manga (EN): Disabled
+  * [Servers] Read Comics Free (EN): Disabled
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Sep 18 23:17:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.59.0:
