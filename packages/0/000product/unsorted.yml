@@ -2086,7 +2086,6 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certgen 
-  - certstrap 
   - cervisia 
   - cervisia-lang 
   - cf-cli 
@@ -2537,7 +2536,6 @@ unsorted:
   - container-build-checks-vendor-openSUSE 
   - container-build-helpers 
   - container-diff 
-  - container-registry-systemd 
   - container-support-utils 
   - container-suseconnect 
   - containerd-ctr 
@@ -15076,7 +15074,6 @@ unsorted:
   - libopenslide0 
   - libopensm9 
   - libopenspecfun2 
-  - libopenssl-1_0_0-devel 
   - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit 
   - libopenssl-3-devel 
@@ -15086,9 +15083,6 @@ unsorted:
   - libopenssl-3-fips-provider-x86-64-v3 
   - libopenssl-devel 
   - libopenssl-fips-provider 
-  - libopenssl10 
-  - libopenssl1_0_0 
-  - libopenssl1_0_0-steam 
   - libopenssl1_1 
   - libopenssl1_1-32bit 
   - libopentracing-cpp1 
@@ -16054,7 +16048,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_7_3 
+  - librssguard-4_7_4 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -20637,9 +20631,6 @@ unsorted:
   - openssh-fips 
   - openssh-helpers 
   - openssh-server-config-rootlogin 
-  - openssl-1_0_0 
-  - openssl-1_0_0-cavs 
-  - openssl-1_0_0-doc 
   - openssl-1_1 
   - openssl-1_1-doc 
   - openssl-3-doc 
@@ -27405,6 +27396,7 @@ unsorted:
   - python310-strict-rfc3339 
   - python310-strictyaml 
   - python310-stripe 
+  - python310-striprtf 
   - python310-structlog 
   - python310-subgrab 
   - python310-subliminal 
@@ -30974,6 +30966,7 @@ unsorted:
   - python311-strict-rfc3339 
   - python311-strictyaml 
   - python311-stripe 
+  - python311-striprtf 
   - python311-structlog 
   - python311-subgrab 
   - python311-subliminal 
@@ -34648,6 +34641,7 @@ unsorted:
   - python312-strict-rfc3339 
   - python312-strictyaml 
   - python312-stripe 
+  - python312-striprtf 
   - python312-structlog 
   - python312-subgrab 
   - python312-subliminal 
@@ -35754,7 +35748,6 @@ unsorted:
   - rainbow 
   - rainbow-bash-completion 
   - rainbow-zsh-completion 
-  - rakkess 
   - rakudo 
   - rancher-cli 
   - rancher-kim 
