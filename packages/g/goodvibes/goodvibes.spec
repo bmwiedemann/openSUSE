@@ -17,7 +17,7 @@
 
 
 Name:           goodvibes
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A lightweight radio player
 License:        GPL-3.0-only
