@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 25 03:23:53 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.2
+  * Fixed calling setAlwaysOnTop on a hidden window which is then shown with showInactive on Linux under X11.
+  * v8: security fixes for CVE-2024-9121 CVE-2024-9122 CVE-2024-7970
+  * security fixes for CVE-2024-7025 CVE-2024-9369 (bsc#1231232)
+  * security fixes for CVE-2024-7965 CVE-2024-7966 CVE-2024-7967 (bsc#1229591)
+  * security fixes for CVE-2024-8198 CVE-2024-8193 CVE-2024-7969 (bsc#1229897)
+  * fix use after free in WebAudio (CVE-2024-8362 bsc#1230108)
+  * fix heap buffer overflow in Skia (CVE-2024-8636 bsc#1230391)
+  * fix integer overflow in Skia (CVE-2024-9123)
+
+-------------------------------------------------------------------
 Fri Oct 18 05:11:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.1

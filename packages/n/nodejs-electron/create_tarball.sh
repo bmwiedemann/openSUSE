@@ -295,8 +295,8 @@ keeplibs=(
     third_party/webrtc/common_audio/third_party/ooura #derived code, not vendored dep
     third_party/webrtc/common_audio/third_party/spl_sqrt_floor #derived code, not vendored dep
     third_party/webrtc/modules/third_party/fft #derived code, not vendored dep
-    third_party/webrtc/modules/third_party/g711 #derived code, not vendored dep
-    third_party/webrtc/modules/third_party/g722 #derived code, not vendored dep
+    third_party/webrtc/modules/third_party/g711 #Fork. Original is from spandsp. Might be debundled if upstream ever accepts WebRTC's patches.
+    third_party/webrtc/modules/third_party/g722 #Fork. Original is from spandsp.
     third_party/webrtc/rtc_base/third_party/base64 #derived code, not vendored dep
     third_party/webrtc/rtc_base/third_party/sigslot #derived code, not vendored dep
     third_party/webrtc_overrides #Integral part of chrome
