@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_without python2
 Name:           python-parse_type
 Version:        0.6.3
