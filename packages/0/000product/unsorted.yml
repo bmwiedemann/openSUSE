@@ -2548,6 +2548,7 @@ unsorted:
   - containerized-data-importer-operator 
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
+  - containers-systemd 
   - containment-rpm 
   - containment-tik-img-to-rpm 
   - contractor 
@@ -3005,6 +3006,7 @@ unsorted:
   - cxref 
   - cxxopts-devel 
   - cxxtools-devel 
+  - cyanrip 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
@@ -9124,7 +9126,6 @@ unsorted:
   - isa-l-devel 
   - isatapd 
   - iscsi-formula 
-  - isight-firmware-tools 
   - isl-devel 
   - isl-devel-32bit 
   - iso-codes-devel 
@@ -9876,6 +9877,7 @@ unsorted:
   - kawaii-player 
   - kbackup 
   - kbackup-lang 
+  - kbd-devel 
   - kbd-legacy 
   - kbdsniffd 
   - kbfs 
@@ -14445,6 +14447,7 @@ unsorted:
   - liblxqt-globalkeys-ui2 
   - liblxqt-globalkeys2 
   - liblxqt-lang 
+  - liblxqt-wallet6_0_0 
   - liblxqt2 
   - liblz1 
   - liblz4-1-32bit 
@@ -18112,6 +18115,9 @@ unsorted:
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
   - lxqt-themes 
+  - lxqt-wallet 
+  - lxqt-wallet-devel 
+  - lxqt-wallet-lang 
   - lxqt2-build-tools-devel 
   - lxrandr 
   - lxrandr-lang 
@@ -26568,6 +26574,7 @@ unsorted:
   - python310-pure-eval 
   - python310-pure-protobuf 
   - python310-pure-sasl 
+  - python310-puremagic 
   - python310-purl 
   - python310-py 
   - python310-py-build-cmake 
@@ -30165,6 +30172,7 @@ unsorted:
   - python311-pure-eval 
   - python311-pure-protobuf 
   - python311-pure-sasl 
+  - python311-puremagic 
   - python311-purl 
   - python311-py 
   - python311-py-build-cmake 
@@ -33812,6 +33820,7 @@ unsorted:
   - python312-pure-eval 
   - python312-pure-protobuf 
   - python312-pure-sasl 
+  - python312-puremagic 
   - python312-purl 
   - python312-py 
   - python312-py-build-cmake 
@@ -47071,6 +47080,7 @@ unsorted:
   - texworks-plugin-lua 
   - texworks-plugin-python 
   - tftpboot-installation-common 
+  - tftpboot-installation-openSUSE-MicroOS-x86_64 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
   - the_silver_searcher 
@@ -47916,7 +47926,6 @@ unsorted:
   - usbredir-devel 
   - usbsdmux-udev 
   - usbtop 
-  - usbutils-devel 
   - usbview 
   - usnic_tools 
   - usrp-firmware 
