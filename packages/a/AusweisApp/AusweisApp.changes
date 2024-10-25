@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:41:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.2.2
+    - Visual adjustments and optimization of the graphical user interface.
+    - Optimization of accessibility and keyboard operability.
+    - Addition of the Android ABIs armeabi-v7a and x86_64 in addition to
+      arm64-v8a in the SDK.
+
+-------------------------------------------------------------------
 Wed Sep 11 10:20:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
