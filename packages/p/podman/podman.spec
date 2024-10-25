@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.2.4
+Version:        5.2.5
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -30,8 +30,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
-Patch0:         0001-Properly-validate-cache-IDs-and-sources.patch
-Patch1:         0002-Use-securejoin.SecureJoin-when-forming-userns-paths.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:48:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+
+-------------------------------------------------------------------
 Thu Oct 17 06:30:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch inject-default-ca-bundles.patch:

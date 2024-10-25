@@ -464,4 +464,41 @@
     <comment></comment>
     <requestid>1202519</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8964c728f9b7ce377a56cf1b0858bd1b</srcmd5>
+    <version>018</version>
+    <time>1729876728</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 018:
+  * Add a manpage for lsusb.py
+  * Add a manpage for usbreset
+  * Add lsusb.py.1 to DISTCLEANFILES
+  * usb-devices: fix bashism
+  * man: remove version from the manual pages
+  * README: add Contributing section
+  * lsusb.py: mention both usb.ids paths
+  * README: fix link, add DCO and SPDX details
+  * lsusb: make internal API const-aware
+  * lsusb: const annotate most data,
+    re-enable -Wdiscarded-qualifiers
+  * man: move manual pages in designated sub-folder
+  * lsusb: drop the audioterminal hash table
+  * lsusb: drop the videoterminal hash table
+  * lsusb: drop the genericstrtable hash tables
+  * editorconfig: add initial config file
+  * lsusb: reformat and add trailing commas for multi-line arrays
+  * usb-spec: move the opening curly brackets to end of line
+  * Include &quot;negotiated speed&quot; in device dump
+  * lsusb: remove autotools checks for iconv
+  * lsusb: remove byteswap.h check
+  * lsusb: always include config.h
+  * usbutils: remove usbutils.pc
+  * usbutils: convert build system to use meson
+  * usbutils.spdx: update file based on recent file movements
+  * lsusb: fix memory leak in libusb
+  * lsusb: billboard alternate mode is in little endian format
+  * README: update based on build tool changes
+  * lsusb: add support to show superspeed++ (forwarded request 1217378 from mnhauke)</comment>
+    <requestid>1217960</requestid>
+  </revision>
 </revisionlist>

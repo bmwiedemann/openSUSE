@@ -413,4 +413,24 @@ Update to 5.3.4</comment>
 </comment>
     <requestid>1203614</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8989665fb4079acaf69084da7bc33f3e</srcmd5>
+    <version>8.6.3</version>
+    <time>1729876723</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.6.3:
+  * Support psutil for finding network addresses #1033
+  * use simpler isoparse from dateutil to parse ISO-8601
+    timestamps #1032 (@minrk)
+  * Avoid a DeprecationWarning on Python 3.13+ #1027 (@hroncok)
+  * Fix docs check #1038 (@minrk)
+  * fix invocation of pip for nbconvert downstream #1037 (@minrk)
+  * test on python 3.13-dev #1036 (@andife)
+  * Support ipykernel's use of anyio in
+    test_signal_kernel_subprocesses #1034 (@ianthomas23)
+
+- Add py3109-compat.patch to make it work with python 3.10.9.
+  * gh#jupyter/jupyter_client#787</comment>
+    <requestid>1217927</requestid>
+  </revision>
 </revisionlist>

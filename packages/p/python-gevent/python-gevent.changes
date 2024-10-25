@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:07:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 24.10.3
+  * Fix clearing stack frames on Python 3.13. This is invoked when you
+    fork after having used the thread pool.
+  * Distribute manylinux2014 wheels for x86_64.
+  * Stop switching to the hub in the after fork hook in a child process.
+    This could lead to strange behaviour, and is different than what all
+    other versions of Python do.
+- from version 24.10.2
+  * Workaround a Cython bug compiling on GCC14.
+- Drop gh-2031-cython-workaround.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Oct 10 09:39:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 24.10.1

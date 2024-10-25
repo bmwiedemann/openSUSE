@@ -964,4 +964,13 @@
 - Add &quot;Requires: selinux-policy-base&quot; to selinux pattern so that</comment>
     <requestid>1217160</requestid>
   </revision>
+  <revision rev="111" vrev="57">
+    <srcmd5>d953f0144dc3848bb0b08a16dc960366</srcmd5>
+    <version>20200505</version>
+    <time>1729876723</time>
+    <user>anag+factory</user>
+    <comment>- Remove openssl 1.0 related fips dependencies: openssl 1.0 is EOL
+  and removed from Factory.</comment>
+    <requestid>1217925</requestid>
+  </revision>
 </revisionlist>

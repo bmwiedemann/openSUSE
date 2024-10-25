@@ -1226,4 +1226,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Add patch for CVE-2024-9676 (bsc#1231698) (forwarded request 1216334 from danishprakash)</comment>
     <requestid>1216681</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>103e5fe1770fee7aec51659f98ecf5bc</srcmd5>
+    <version>5.2.5</version>
+    <time>1729876729</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217991</requestid>
+  </revision>
 </revisionlist>

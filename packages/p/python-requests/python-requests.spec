@@ -35,7 +35,9 @@ Source:         https://files.pythonhosted.org/packages/source/r/requests/reques
 # PATCH-FIX-UPSTREAM gh#psf/requests#6731
 Patch0:         inject-default-ca-bundles.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
@@ -95,11 +97,11 @@ Features of Requests:
 sed -i "s#\(httpbin.*\), 'never'#\1#" tests/test_requests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 # check that urllib3 is not installed
 test ! -e %{buildroot}%{python3_sitelib}/requests/packages/urllib3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -120,7 +122,7 @@ touch Pipfile
 %license LICENSE
 %doc HISTORY.md README.md
 %{python_sitelib}/requests
-%{python_sitelib}/requests-%{version}*.egg-info
+%{python_sitelib}/requests-%{version}.dist-info
 %endif
 
 %changelog

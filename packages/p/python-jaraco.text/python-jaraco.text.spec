@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.text
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.text
-Version:        3.12.0
+Version:        3.14.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.text
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco_text-%{version}.tar.gz
 BuildRequires:  %{python_module autocommand}
 BuildRequires:  %{python_module importlib_resources if %python-base < 3.9}
 BuildRequires:  %{python_module inflect}
@@ -55,7 +55,7 @@ line continuation, indentation, comment processing, identifier processing,
 values parsing, case insensitive comparison, and more.
 
 %prep
-%setup -q -n jaraco.text-%{version}
+%setup -q -n jaraco_text-%{version}
 
 %build
 %pyproject_wheel

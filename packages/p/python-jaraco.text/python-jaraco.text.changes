@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:22:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * Add new 'clean' function, extracted from 'yield_lines'.
+  * Fix EncodingWarning.
+  * Add 'lines_from' function.
+
+-------------------------------------------------------------------
 Sun Dec 17 01:44:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:

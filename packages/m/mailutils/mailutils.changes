@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 24 12:41:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch MALLOC_PERTURB_.patch
+  * Fix memory pool handling which otherwise cause failing
+    mimeview due missing mime types due set MALLOC_PERTURB_ 
+    environment variable
+
+-------------------------------------------------------------------
+Thu Oct 24 09:38:14 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mailutils 3.17:
+  * Use of TLS in pop3d and imap4d
+    If not explicitly specified, the TLS mode to use (ondemand, connect,
+    etc.) is derived from the configured port.  E.g., for imap4d, port 143
+    implies ondemand mode, and port 993 implies connection mode.
+    The global tls-mode setting is used only when the mode cannot be
+    detemined otherwise, i.e. neither per-server tls-mode is given nor
+    the port gives any clues as to the TLS mode to use.
+ * Bugfixes
+   + movemail: fix handling of -P option.
+   + pop3d, imap4d: fix global timeout and transcript configuration statements
+   + pop3d, imap4d: global tls-mode is used only when the mode to use cannot
+     be determined otherwise.
+   + pop3d, imap4d: if not set explicitly, derive tls mode from the port used.
+   + Improve file safety checking routine.
+   + Fix compilation with new gcc versions.
+- There is no mu-mailx ... only a mailx from package mailx
+
+-------------------------------------------------------------------
 Fri Feb 23 11:31:43 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

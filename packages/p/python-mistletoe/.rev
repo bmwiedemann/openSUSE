@@ -36,4 +36,16 @@
     `indentation` (number of spaces before the item marker):</comment>
     <requestid>1144996</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9050e768d08a335e779e59ca46a63043</srcmd5>
+    <version>1.4.0</version>
+    <time>1729876719</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.0:
+  * Add `parent` attribute/property (#71 via #206).
+  * `MarkdownRenderer`: Keep the original content spacing before
+    the list marker (#213 via #215).
+  * Bump build/CI scripts.</comment>
+    <requestid>1217429</requestid>
+  </revision>
 </revisionlist>

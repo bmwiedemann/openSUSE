@@ -461,4 +461,36 @@
   * Add unique()</comment>
     <requestid>1184124</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>362091bc38da60860106a522af572f81</srcmd5>
+    <version>10.5.0</version>
+    <time>1729876721</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.5.0:
+  * Optimize all_equal recipe
+  * Reduce groupby.__next__ calls in all_equal
+  * Fix types.UnionType
+- update to 10.4.0:
+  * Issue 854: sample improvements
+  * Issue 858: Use chain and starmap in run_length.decode
+  * Issue 859: Update totient recipe
+  * Distinct permutations of incomparable items
+  * Clarify seekable.relative_seek behavior
+  * Issue 864: Improve _sample_unweighted
+  * Use log1p for _sample_unweighted
+  * Issue 862: change relative_seek() behaviour
+  * Issue 876: is_sorted clarifications
+  * Issue 870: counts parameter for sample
+  * Issue 869: Add a steps argument to circular_shifts
+  * Issue 871: Add a fast path for sliding_window
+  * type annotation of `windowed_complete` corrected
+  * [Docs] Fix strictly_n missing the n parameter
+  * Standardize type hints for isinstance's second argument
+  * Issue 883: change type hint
+  * Add type overloads for `zip_broadcast`
+  * Issue 889: Optimize triplewise
+  * Add option `strict` to `sort_together`
+  * Updates for version 10.4.0</comment>
+    <requestid>1217431</requestid>
+  </revision>
 </revisionlist>

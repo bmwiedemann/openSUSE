@@ -68,7 +68,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -78,8 +78,6 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-Patch1:         0001-bluez5-fix-crash-with-broadcast-sinks.patch
-Patch2:         0002-jack-actually-clear-the-mix-io.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -661,7 +659,7 @@ fi
 %{_mandir}/man5/pipewire-filter-chain.conf.5%{?ext_man}
 %{_mandir}/man5/pipewire.conf.5%{?ext_man}
 %{_mandir}/man5/pipewire-jack.conf.5%{?ext_man}
-%{_mandir}/man7/pipewire-devices.7%{?ext_man}
+%{_mandir}/man7/pipewire-props.7%{?ext_man}
 
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf

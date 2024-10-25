@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.3.2
+Version:        8.3.3
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT

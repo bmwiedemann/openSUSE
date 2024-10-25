@@ -44,4 +44,15 @@
 - Allow testsuite to fail due to upstream pytest bug with 8.1+.</comment>
     <requestid>1179935</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9b0766291a75087a34e7e6a75d32a28d</srcmd5>
+    <version>5.5.1</version>
+    <time>1729876718</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5.1:
+  * Added __future__.annotations.
+  * Complete annotations and add py.typed marker -- by
+    :user:`Avasam`</comment>
+    <requestid>1217427</requestid>
+  </revision>
 </revisionlist>

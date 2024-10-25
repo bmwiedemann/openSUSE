@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 29 20:03:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.2.3:
+  * Adapt to latest versions of importlib.metadata that don't
+    allow for implicit None values.
+
+-------------------------------------------------------------------
 Mon Jul 29 06:40:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 10.2.2:

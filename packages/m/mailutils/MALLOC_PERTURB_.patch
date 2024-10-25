@@ -1,0 +1,33 @@
+---
+ libmailutils/base/opool.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- libmailutils/base/opool.c
++++ libmailutils/base/opool.c	2024-10-24 12:31:48.591157738 +0000
+@@ -61,7 +61,7 @@ struct _mu_opool
+ static union mu_opool_bucket *
+ alloc_bucket (struct _mu_opool *opool, size_t size)
+ {
+-  union mu_opool_bucket *p = malloc (sizeof (*p) + size);
++  union mu_opool_bucket *p = calloc (1, sizeof (*p) + size);
+   if (!p)
+     {
+       if (opool->flags & MU_OPOOL_ENOMEMABRT)
+@@ -114,7 +114,7 @@ copy_chars (mu_opool_t opool, const char
+ int
+ mu_opool_create (mu_opool_t *pret, int flags)
+ {
+-  struct _mu_opool *x = malloc (sizeof (x[0]));
++  struct _mu_opool *x = calloc (1, sizeof (x[0]));
+   if (!x)
+     {
+       if (flags & MU_OPOOL_ENOMEMABRT)
+@@ -534,7 +534,7 @@ opitr_data_dup (void **ptr, void *owner)
+ {
+   struct opool_iterator *itr = owner;
+ 
+-  *ptr = malloc (sizeof (struct opool_iterator));
++  *ptr = calloc (1, sizeof (struct opool_iterator));
+   if (*ptr == NULL)
+     return ENOMEM;
+   memcpy (*ptr, owner, sizeof (struct opool_iterator));

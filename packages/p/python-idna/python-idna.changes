@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 23 13:14:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10
+  * Reverted to Unicode 15.1.0 data. Unicode 16 has some significant changes
+    to UTS46 processing that will require more work to properly implement.
+- from version 3.9
+  * Update to Unicode 16.0.0
+  * Deprecate setup.cfg in favour of pyproject.toml
+  * Use ruff for code formatting
+
+-------------------------------------------------------------------
 Sun Sep  8 12:47:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8:

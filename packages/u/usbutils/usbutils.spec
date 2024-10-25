@@ -17,17 +17,17 @@
 
 
 Name:           usbutils
-Version:        017
+Version:        018
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://sourceforge.net/projects/linux-usb/
 Source0:        https://github.com/gregkh/usbutils/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch0:         usbutils-enable-usbreset.patch
 BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel >= 1.0.14
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libudev) >= 196
@@ -37,30 +37,16 @@ Requires:       hwdata
 This package contains a utility for inspecting devices connected to USB
 ports.
 
-%package devel
-Summary:        Developer tools and libraries for USB devices
-Requires:       %{name} = %{version}
-
-%description devel
-This package contains a utility for inspecting devices connected to USB
-ports.
-
-This package is needed when programatically locating the usbutils database
-
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-autoreconf -fiv
-%configure \
-  --datadir=%{_datadir}/hwdata \
-  --disable-usbids
-%make_build
-make usbreset
+%meson
+%meson_build
 
 %install
-%make_install
-install -c usbreset %{buildroot}/%_bindir
+%meson_install
 %python3_fix_shebang
 
 %files
@@ -71,11 +57,9 @@ install -c usbreset %{buildroot}/%_bindir
 %{_bindir}/usb-devices
 %{_bindir}/usbhid-dump
 %{_bindir}/usbreset
+%{_mandir}/man1/lsusb.py.1%{?ext_man}
 %{_mandir}/man1/usb-devices.1%{?ext_man}
 %{_mandir}/man8/lsusb.8%{?ext_man}
 %{_mandir}/man8/usbhid-dump.8%{?ext_man}
-
-%files devel
-%{_libdir}/pkgconfig/usbutils.pc
 
 %changelog

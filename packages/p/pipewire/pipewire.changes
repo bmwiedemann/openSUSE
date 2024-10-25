@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:54:34 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.2.6:
+  + Highlights
+    - The filter-chain param changes were not aggregated correctly,
+      causing some param changes to be ignored. (#4331)
+    - Clear the JACK io ports correctly when stopping to avoid
+      crashes. (#4337)
+    - Some more small fixes and improvements.
+  + PipeWire
+    - Stream states are now updated based on the underlying node
+      state.
+    - Exported nodes now have their state change done synchronously
+      so that the server can immediately start the driver and avoid
+      some initial xruns.
+    - Improve stream flush handling and improve the docs.
+    - Don't send mix_info to destroyed ports to avoid some errors
+      in the JACK clients.
+  + Modules
+    - The filter-chain param changes were not aggregated correctly,
+      causing some param changes to be ignored. (#4331)
+    - The filter-chain now correctly optimizes unlinked nodes in
+      all cases.
+  + SPA
+    - ALSA PCM node properties are now no longer overwritten with
+      card properties. (#4135)
+    - Increase the adapter retry count to avoid xruns in some
+      cases. (#4334)
+    - Fix potential crash in cleanup of ALSA nodes.
+  + Bluetooth
+    - Fix a crash with broadcast sinks.
+    - Improve compatibility with Phonak hearing aids.
+    - Don't exit when DBus goes down.
+  + JACK
+    - Clear the io ports correctly when stopping to avoid crashes.
+      (#4337)
+  + Docs
+    - Backport docs from master. 
+- Drop patches already included in upstream:
+  * 0001-bluez5-fix-crash-with-broadcast-sinks.patch
+  * 0002-jack-actually-clear-the-mix-io.patch
+
+-------------------------------------------------------------------
 Mon Oct 21 17:41:07 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix a crash with broadcasting sinks:

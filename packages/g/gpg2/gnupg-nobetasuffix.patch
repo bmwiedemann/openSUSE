@@ -1,17 +1,17 @@
-Index: gnupg-2.4.3/autogen.sh
+Index: gnupg-2.5.1/autogen.sh
 ===================================================================
---- gnupg-2.4.3.orig/autogen.sh
-+++ gnupg-2.4.3/autogen.sh
-@@ -221,7 +221,7 @@ if [ "$myhost" = "find-version" ]; then
-     esac
+--- gnupg-2.5.1.orig/autogen.sh
++++ gnupg-2.5.1/autogen.sh
+@@ -244,7 +244,7 @@ if [ "$myhost" = "find-version" ]; then
+     fi
  
      beta=no
 -    if [ -e .git ]; then
 +    if false; then
        ingit=yes
        tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
-       tmp=$(echo "$tmp" | sed s/^"$package"//)
-@@ -237,8 +237,8 @@ if [ "$myhost" = "find-version" ]; then
+       if [ -n "$tmp" ]; then
+@@ -270,8 +270,8 @@ if [ "$myhost" = "find-version" ]; then
        rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
      else
        ingit=no
@@ -19,6 +19,6 @@ Index: gnupg-2.4.3/autogen.sh
 -      tmp="-unknown"
 +      beta=no
 +      tmp=""
+       cid="0000000"
        rev="0000000"
        rvd="0"
-     fi

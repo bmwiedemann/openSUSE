@@ -110,4 +110,15 @@
   - revert use of nullpointer introduced in #142</comment>
     <requestid>1129229</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6da4dbe7856015655bdd5d9a17b29ff6</srcmd5>
+    <version>1.4.7</version>
+    <time>1729876716</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.7:
+  * no library changes only fixes to the build infrastructure
+  * drop support for Python 3.7
+  * add support for Python 3.13</comment>
+    <requestid>1217423</requestid>
+  </revision>
 </revisionlist>

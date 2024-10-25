@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 16:28:24 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove outdated tftpboot-installation package
+- Remove wrong hint about cockpit-ws container
+
+-------------------------------------------------------------------
 Wed Oct  2 12:09:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enahnce supplements that were so far triggering on grub2 to also

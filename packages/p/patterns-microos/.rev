@@ -871,4 +871,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   trigger on grub2-common. (forwarded request 1205197 from dimstar)</comment>
     <requestid>1205198</requestid>
   </revision>
+  <revision rev="93" vrev="93">
+    <srcmd5>76acd3a290dc0a7db5dd31463b911d3b</srcmd5>
+    <version>5.0</version>
+    <time>1729876730</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218000</requestid>
+  </revision>
 </revisionlist>

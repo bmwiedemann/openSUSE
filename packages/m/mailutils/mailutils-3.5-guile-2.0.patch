@@ -8,7 +8,7 @@
 
 --- configure.ac
 +++ configure.ac	2021-10-20 07:42:21.724689930 +0000
-@@ -1191,7 +1191,7 @@ AC_SUBST([GUILE_BINDIR])
+@@ -1175,7 +1175,7 @@ AC_SUBST([GUILE_BINDIR])
  AC_SUBST([LIBMU_SCM])
  AC_SUBST([LIBMU_SCM_DEPS])
  AC_SUBST([MU_GUILE_SIEVE_MOD_DIR])
@@ -17,7 +17,7 @@
  	  [useguile=yes
   	   AC_DEFINE([WITH_GUILE],1,[Enable Guile support])
             GUILE_BINDIR=`guile-config info bindir`
-@@ -1404,7 +1404,6 @@ MU_CONFIG_TESTSUITE(mh)
+@@ -1389,7 +1389,6 @@ MU_CONFIG_TESTSUITE(mh)
  MU_CONFIG_TESTSUITE(comsat)
  MU_CONFIG_TESTSUITE(imap4d)
  MU_CONFIG_TESTSUITE(mimeview)

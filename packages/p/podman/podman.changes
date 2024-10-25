@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:57:00 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 5.2.5:
+  * Bump to v5.2.5
+  * Update release notes for 5.2.5
+  * Bump c/storage to v1.55.1 CVE-2024-9675 (bsc#1231499) and Buildah to v1.37.5 CVE-2024-9676 (bsc#1231698)
+  * RPM: remove dup Provides
+  * Packit: constrain koji and bodhi jobs to fedora package to avoid dupes
+  * Bump to v5.2.5-dev
+- Removed patches:
+  * 0001-Properly-validate-cache-IDs-and-sources.patch (merged upstream)
+  * 0002-Use-securejoin.SecureJoin-when-forming-userns-paths.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Oct 21 06:20:05 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Add patch for CVE-2024-9676 (bsc#1231698):

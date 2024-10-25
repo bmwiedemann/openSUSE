@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:25:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21:
+  * Drop typing_extensions dependency
+  * Replace `_PyLong_Format` with `PyNumber_ToBase`
+
+-------------------------------------------------------------------
 Fri Dec  1 16:59:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20:

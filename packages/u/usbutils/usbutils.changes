@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Oct 23 15:02:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 018:
+  * Add a manpage for lsusb.py
+  * Add a manpage for usbreset
+  * Add lsusb.py.1 to DISTCLEANFILES
+  * usb-devices: fix bashism
+  * man: remove version from the manual pages
+  * README: add Contributing section
+  * lsusb.py: mention both usb.ids paths
+  * README: fix link, add DCO and SPDX details
+  * lsusb: make internal API const-aware
+  * lsusb: const annotate most data,
+    re-enable -Wdiscarded-qualifiers
+  * man: move manual pages in designated sub-folder
+  * lsusb: drop the audioterminal hash table
+  * lsusb: drop the videoterminal hash table
+  * lsusb: drop the genericstrtable hash tables
+  * editorconfig: add initial config file
+  * lsusb: reformat and add trailing commas for multi-line arrays
+  * usb-spec: move the opening curly brackets to end of line
+  * Include "negotiated speed" in device dump
+  * lsusb: remove autotools checks for iconv
+  * lsusb: remove byteswap.h check
+  * lsusb: always include config.h
+  * usbutils: remove usbutils.pc
+  * usbutils: convert build system to use meson
+  * usbutils.spdx: update file based on recent file movements
+  * lsusb: fix memory leak in libusb
+  * lsusb: billboard alternate mode is in little endian format
+  * README: update based on build tool changes
+  * lsusb: add support to show superspeed++
+  * usbhid-dump: clean up meson.build a bit
+  * usbutils.spdx: update the SPDX file
+  * LICENSE: add LGPL-2.1 license text
+  * usbutils.spdx: update the data
+  * update usbutils.spdx file
+  * lsusb-t: get rid of custom list.h logic
+  * LICENSES: add CC0 and MIT licenses
+  * lsusb-t: fix memory leak
+  * justfile: add some more targets
+  * usbutils.spdx: update based on file additions
+  * usbutils.spdx: update due to new file and checksums
+  * usbreset: replace some unbounded strcpy() calls
+  * sysfs.c: fix an theoretical issue with snprintf()
+  * usbutils.spdx: update checksums
+  * usbmisc: fix possible stack-buffer-overflow Running lsusb
+    with -D argument and path, which len is more than PATH_MAX + 1,
+    cause stack-buffer-overflow because of copy to the buf a string
+    without null-terminator Force setting 0 byte to the end of the
+    buf fixes this error Fix #190
+  * update ccid descriptor dumping to V1.1 spec
+  * usb-devices: Fix usb-devices with busybox
+  * Do not warn about missing LPM bit when not required
+  * lsusb: add VideoControl Endpoint Descriptor
+- Switch to meson build system
+- Drop usbutils-devel package
+  * the only file in there was usbutils.pc
+    usbutils.pc was removed by upstream with v018
+    https://github.com/gregkh/usbutils/commit/bdadae186382daa8b517b960f154432787f8877b
+- Add patch:
+  * usbutils-enable-usbreset.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 07:55:42 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - enable usbreset

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:27:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.7:
+  * no library changes only fixes to the build infrastructure
+  * drop support for Python 3.7
+  * add support for Python 3.13
+
+-------------------------------------------------------------------
 Mon Nov 27 19:31:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,9 @@
 # Currently disabled suid/sgid program dotlock and maidag
 %bcond_with     set_user_identity
 %bcond_with     guile_22
+%bcond_with     check
 Name:           mailutils
-Version:        3.16
+Version:        3.17
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -42,11 +43,15 @@ Source4:        %{name}.keyring
 Patch0:         lisp-load-silent.patch
 Patch2:         silent-rpmlint-with_initgroups.patch
 Patch3:         mailutils-3.5-guile-2.0.patch
-BuildRequires:  autoconf
+Patch4:         MALLOC_PERTURB_.patch
+BuildRequires:  autoconf > 2.71
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  cpio
 BuildRequires:  cyrus-sasl-gssapi
+%if %{with check}
+BuildRequires:  emacs-nox
+%endif
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -67,7 +72,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(kyotocabinet)
-BuildRequires:  pkgconfig(libgsasl)
+BuildRequires:  pkgconfig(libgsasl) > 2
 BuildRequires:  pkgconfig(python3)
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -186,6 +191,7 @@ implementations: UNIX mailbox, Maildir, MH, POP3, IMAP4, even SMTP.
 %setup -q
 %patch -P 0
 %patch -P 2
+%patch -P 4
 set -- %(rpm -q --queryformat '%%{VERSION}' guile-devel | sed -r 's@\.@ @g')
 (cat > guile.list)<<-EOF
 	%dir %{_datadir}/guile/site/$1.$2/
@@ -359,8 +365,8 @@ ln -sf %{_bindir}/alts %{buildroot}/bin/Mail
 %endif
 mkdir -p %{buildroot}%{_datadir}/libalternatives/Mail
 cat > %{buildroot}%{_datadir}/libalternatives/Mail/10.conf <<EOF
-binary=%{_bindir}/mu-mailx
-man=mu-mail.1
+binary=%{_bindir}/mailx
+man=mailx.1
 group=mail, Mail
 EOF
 ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mail
@@ -379,7 +385,14 @@ EOF
 
 %find_lang %{name}
 
+%if %{with check}
+%check
+make check
+%endif
+
+%if ! %{with libalternatives} || %{with set_user_identity}
 %post
+%endif
 %if ! %{with libalternatives}
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mu-mail 10 \

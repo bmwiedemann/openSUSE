@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index c522283..55c3d15 100644
+--- a/meson.build
++++ b/meson.build
+@@ -137,7 +137,7 @@ usbreset_sources = [
+ 
+ # By default, usbreset does not get installed as it could cause problems, it's
+ # in the repo for those that wish to try it out.
+-executable('usbreset', usbreset_sources, install: false)
++executable('usbreset', usbreset_sources, install: true)
+ 
+ 
+ ################################

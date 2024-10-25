@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 23 20:11:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.2:
+  * Test the plugin for `pook` separately
+  * Refactoring FakeSSLContext
+  * Increasing readability of Mocket core
+  * `aiohttp` reuses SSLContext instances created at import-time
+- update to 3.13.1:
+  * No need to keep multiple dirs for tests
+  * Back to testing `doctest`
+  * Pinning the version of `aiohttp`
+  * Test with the official stable Python 3.13
+  * Switching to using `puremagic` for identifying MIME types
+
+-------------------------------------------------------------------
 Tue Oct  1 09:18:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with new aiohttp

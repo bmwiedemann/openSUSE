@@ -154,4 +154,14 @@
 - skip tests that fail on 32bit</comment>
     <requestid>1130333</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a55093d7ab5f9fe07100bfd555796836</srcmd5>
+    <version>0.21</version>
+    <time>1729876715</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21:
+  * Drop typing_extensions dependency
+  * Replace `_PyLong_Format` with `PyNumber_ToBase`</comment>
+    <requestid>1217421</requestid>
+  </revision>
 </revisionlist>

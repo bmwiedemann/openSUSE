@@ -204,4 +204,12 @@
     <comment>- Add GnuPG 2.4.x to the list of supported GnuPG versions. (forwarded request 1057063 from dimstar)</comment>
     <requestid>1057644</requestid>
   </revision>
+  <revision rev="27" vrev="11">
+    <srcmd5>1769fc4a7b61467d22c3039d2446f999</srcmd5>
+    <version>3.12.2</version>
+    <time>1729876727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217958</requestid>
+  </revision>
 </revisionlist>

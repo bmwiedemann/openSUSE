@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.test
-Version:        5.4.0
+Version:        5.5.1
 Release:        0
 Summary:        Testing support by jaraco
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.test
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.test/jaraco.test-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.test/jaraco_test-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +53,7 @@ BuildArch:      noarch
 Testing support by jaraco
 
 %prep
-%autosetup -p1 -n jaraco.test-%{version}
+%autosetup -p1 -n jaraco_test-%{version}
 
 %build
 %pyproject_wheel

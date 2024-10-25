@@ -785,4 +785,23 @@
     <comment></comment>
     <requestid>1206713</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>388e6c250cea4c321de108eff98eb0a1</srcmd5>
+    <version>24.10.3</version>
+    <time>1729876710</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1217326 from glaubitz
+
+- Update to 24.10.3
+    * Fix clearing stack frames on Python 3.13. This is invoked when you
+      fork after having used the thread pool.
+    * Distribute manylinux2014 wheels for x86_64.
+    * Stop switching to the hub in the after fork hook in a child process.
+      This could lead to strange behaviour, and is different than what all
+      other versions of Python do.
+  - from version 24.10.2
+    * Workaround a Cython bug compiling on GCC14.
+  - Drop gh-2031-cython-workaround.patch, merged upstream</comment>
+    <requestid>1217397</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:29:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.6.3:
+  * Support psutil for finding network addresses #1033
+  * use simpler isoparse from dateutil to parse ISO-8601
+    timestamps #1032 (@minrk)
+  * Avoid a DeprecationWarning on Python 3.13+ #1027 (@hroncok)
+  * Fix docs check #1038 (@minrk)
+  * fix invocation of pip for nbconvert downstream #1037 (@minrk)
+  * test on python 3.13-dev #1036 (@andife)
+  * Support ipykernel's use of anyio in
+    test_signal_kernel_subprocesses #1034 (@ianthomas23)
+
+-------------------------------------------------------------------
 Wed Sep 25 08:31:03 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -157,7 +171,7 @@ Mon Dec 12 16:30:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Mon Dec 12 12:34:49 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Add py3109-compat.patch to make it work with python 3.10.9. 
+- Add py3109-compat.patch to make it work with python 3.10.9.
 
 -------------------------------------------------------------------
 Tue Jun 28 18:51:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -176,7 +190,7 @@ Tue Jun 28 18:51:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Wed May 25 23:15:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter-client-fix787-kernelwarningsfilter.patch
-  * gh#jupyter/jupyter_client#787 
+  * gh#jupyter/jupyter_client#787
 
 -------------------------------------------------------------------
 Wed May 25 15:01:01 UTC 2022 - andy great <andythe_great@pm.me>
@@ -675,7 +689,7 @@ Mon Oct 12 13:44:23 UTC 2015 - toddrme2178@gmail.com
   * add :meth:`KernelManager.blocking_client`
   * provisional implementation of comm_info requests from upcoming 5.1
     release of the protocol
-    
+
 -------------------------------------------------------------------
 Thu Oct  1 12:04:25 UTC 2015 - toddrme2178@gmail.com
 

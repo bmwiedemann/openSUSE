@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.packaging
-Version:        10.2.2
+Version:        10.2.3
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.13.0
+Version:        3.13.2
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -41,9 +41,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
 Requires:       python-h11
-Requires:       python-python-magic >= 0.4.5
+Requires:       python-puremagic
 Requires:       python-urllib3 >= 1.25.3
-Suggests:       python-pook >= 0.2.1
 Suggests:       python-xxhash
 BuildArch:      noarch
 %if %{with test}
@@ -53,7 +52,6 @@ BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module httptools}
 BuildRequires:  %{python_module mocket = %{version}}
-BuildRequires:  %{python_module pook >= 0.2.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}

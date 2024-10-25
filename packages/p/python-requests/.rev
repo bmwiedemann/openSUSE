@@ -926,4 +926,12 @@
     (bsc#1226321, bsc#1231500)</comment>
     <requestid>1208547</requestid>
   </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>d5723f093571715396f02ff3a85daca5</srcmd5>
+    <version>2.32.3</version>
+    <time>1729876726</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1217932</requestid>
+  </revision>
 </revisionlist>

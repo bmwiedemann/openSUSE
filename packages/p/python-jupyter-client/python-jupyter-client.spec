@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-client%{psuffix}
-Version:        8.6.2
+Version:        8.6.3
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause

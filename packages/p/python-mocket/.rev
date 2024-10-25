@@ -573,4 +573,22 @@
     <comment></comment>
     <requestid>1204917</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4c680cd0acaa667112fb1128bc0bc60b</srcmd5>
+    <version>3.13.2</version>
+    <time>1729876717</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.2:
+  * Test the plugin for `pook` separately
+  * Refactoring FakeSSLContext
+  * Increasing readability of Mocket core
+  * `aiohttp` reuses SSLContext instances created at import-time
+- update to 3.13.1:
+  * No need to keep multiple dirs for tests
+  * Back to testing `doctest`
+  * Pinning the version of `aiohttp`
+  * Test with the official stable Python 3.13
+  * Switching to using `puremagic` for identifying MIME types</comment>
+    <requestid>1217426</requestid>
+  </revision>
 </revisionlist>

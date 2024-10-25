@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:10:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove openssl 1.0 related fips dependencies: openssl 1.0 is EOL
+  and removed from Factory.
+
+-------------------------------------------------------------------
 Wed Oct 23 07:16:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - In case of doubt, also favor libz1-32bit over libz-ng1-compat for

@@ -217,4 +217,12 @@ update to version v2.5
   * Updates to package testing using Github actions</comment>
     <requestid>1199444</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>98ae2dfc0b3ea2df5064336d5de9c5c7</srcmd5>
+    <version>3.10</version>
+    <time>1729876711</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217412</requestid>
+  </revision>
 </revisionlist>

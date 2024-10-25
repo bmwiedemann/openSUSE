@@ -280,7 +280,6 @@ Requires:       (cockpit-packagekit if patterns-microos-base-packagekit)
 
 %description cockpit
 Packages required to run the Cockpit system management service.
-For the web service the cockpit-ws container is required.
 
 %package sssd_ldap
 Summary:        LDAP client
@@ -744,7 +743,6 @@ Requires:       systemd-boot
 # Needed for zRam swap support
 Requires:       systemd-zram-service
 Requires:       spice-vdagent
-Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 Requires:       wpa_supplicant
 Requires:       xfsprogs
 # Needed for TPM2.0 support (boo#1211835)

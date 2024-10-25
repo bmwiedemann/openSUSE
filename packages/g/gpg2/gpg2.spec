@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.4.5
+Version:        2.5.1
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -118,8 +118,7 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
     --enable-large-secmem \
     --with-gnu-ld \
     --with-default-trust-store-file=%{_sysconfdir}/ssl/ca-bundle.pem \
-    --enable-build-timestamp=$date \
-    --enable-gpg-is-gpg2
+    --enable-build-timestamp=$date
 
 %make_build
 
@@ -136,10 +135,11 @@ rm -rf %{buildroot}%{_docdir}/gpg2/examples/gpgconf.conf
 rm %{buildroot}%{_infodir}/dir
 
 # compat symlinks
-ln -sf gpg2 %{buildroot}%{_bindir}/gpg
-ln -sf gpgv2 %{buildroot}%{_bindir}/gpgv
-ln -sf gpg2.1 %{buildroot}%{_mandir}/man1/gpg.1
-ln -sf gpgv2.1 %{buildroot}%{_mandir}/man1/gpgv.1
+ln -sf gpg %{buildroot}%{_bindir}/gpg2
+ln -sf gpgv %{buildroot}%{_bindir}/gpgv2
+ln -sf gpg.1 %{buildroot}%{_mandir}/man1/gpg2.1
+ln -sf gpgv.1 %{buildroot}%{_mandir}/man1/gpgv2.1
+ln -sf gnupg.7 %{buildroot}%{_mandir}/man7/gnupg2.7
 
 # install udev rules for scdaemon
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
@@ -165,7 +165,8 @@ cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 %license COPYING*
 %doc AUTHORS NEWS THANKS TODO ChangeLog
 %{_infodir}/gnupg*
-%{_mandir}/*/[agsw]*%{ext_man}
+%dir %{_mandir}/manh/
+%{_mandir}/*/[aghsw]*%{ext_man}
 %doc %{_docdir}/%{name}
 %{_bindir}/[gkw]*
 %{_libexecdir}/[gks]*

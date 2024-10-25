@@ -80,7 +80,7 @@
 %define rockchip_idb 1
 %define binext .itb
 %endif
-%if "%target" == "quartz64-a-rk3566" || "%target" == "quartz64-b-rk3566" || "%target" == "soquartz-blade-rk3566" || "%target" == "soquartz-cm4-rk3566"
+%if "%target" == "orangepi-3b-rk3566" || "%target" == "quartz64-a-rk3566" || "%target" == "quartz64-b-rk3566" || "%target" == "soquartz-blade-rk3566" || "%target" == "soquartz-cm4-rk3566"
 %define is_rk3566 1
 %define is_armv8 1
 %define rockchip_idb 1

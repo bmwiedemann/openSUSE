@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:24:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.3:
+  * #12446: Avoid calling @property (and other instance
+    descriptors) during fixture discovery -- by :user:`asottile`
+  * #12659: Fixed the issue of not displaying assertion failure
+    differences when using the parameter --import-mode=importlib
+    in pytest>=8.1.
+  * #12667: Fixed a regression where type change in
+    ExceptionInfo.errisinstance caused mypy to fail.
+  * #12744: Fixed typing compatibility with Python 3.9 or less --
+    replaced typing.Self with typing_extensions.Self -- by
+    :user:`Avasam`
+  * #12745: Fixed an issue with backslashes being incorrectly
+    converted in nodeid paths on Windows, ensuring consistent
+    path handling across environments.
+  * #6682: Fixed bug where the verbosity levels where not being
+    respected when printing the "msg" part of failed assertion
+    (as in assert condition, msg).
+  * #9422: Fix bug where disabling the terminal plugin via -p
+    no:terminal would cause crashes related to missing the
+    verbose option. -- by :user:`GTowers1`
+  * #12663: Clarify that the pytest_deselected hook should be
+    called from pytest_collection_modifyitems hook
+    implementations when items are deselected.
+  * #12678: Remove erroneous quotes from
+    tmp_path_retention_policy example in docs.
+  * #12769: Fix typos discovered by codespell and add codespell
+    to pre-commit hooks.
+
+-------------------------------------------------------------------
 Mon Aug 12 17:34:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3.2:
