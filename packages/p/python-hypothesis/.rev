@@ -835,4 +835,43 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1206400</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8932f68fcb9a792aaf5ab14da3c547ef</srcmd5>
+    <version>6.115.2</version>
+    <time>1729876756</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1217328 from glaubitz
+
+- Update to 6.115.3
+    * This patch fixes a regression from :ref:`version 6.115.2 &lt;v6.115.2&gt;` where
+      generating values from :func:`~hypothesis.strategies.integers` with certain
+      values for ``min_value`` and ``max_value`` would error.
+  - from version 6.115.2
+    * This release improves integer shrinking by folding the endpoint upweighting
+      for :func:`~hypothesis.strategies.integers` into the ``weights`` parameter
+      of our IR.
+      If you maintain an alternative backend as part of our (for now explicitly
+      unstable) :ref:`alternative-backends`, this release changes the type of the
+      ``weights`` parameter to ``draw_integer`` and may be a breaking change for you.
+  - from version 6.115.1
+    * This patch improves the performance of :func:`~hypothesis.strategies.from_type`
+      with `pydantic.types.condate
+  - from version 6.115.0
+    * This improves the formatting of dataclasses and attrs classes when printing
+      falsifying examples.
+  - from version 6.114.1
+    * This patch upgrades remaining type annotations to Python 3.9 syntax.
+  - from version 6.114.0
+    * This release drops support for Python 3.8, which reached end of life on
+      2024-10-07.
+  - from version 6.113.0
+    * This release adds ``hypothesis.errors.BackendCannotProceed``, an unstable API
+      for use by :ref:`alternative-backends`.
+  - from version 6.112.5
+    * This release fixes a regression where :class:`hypothesis.stateful.Bundle` did
+      not work properly with :ref:`flatmap &lt;flatmap&gt;` functionality.
+  - from version 6.112.4
+    * This patch tweaks the paths in ``@example(...)`` patches, so that</comment>
+    <requestid>1217398</requestid>
+  </revision>
 </revisionlist>

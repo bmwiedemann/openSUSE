@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.112.2
+Version:        6.115.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -63,13 +63,13 @@ BuildArch:      noarch
 # SECTION requires_extra
 Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # consuming packages need to declare these optional dependencies explicitly
-Recommends:     python-Django >= 3.2
+Recommends:     python-Django >= 4.2
 Recommends:     python-black >= 19.10
 Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark >= 0.10.1
 Recommends:     python-libcst >= 0.3.16
-Recommends:     python-numpy >= 1.16.0
+Recommends:     python-numpy >= 1.19.3
 Recommends:     python-pandas >= 1.1
 Recommends:     python-pytest >= 4.6
 Recommends:     python-python-dateutil >= 1.4
@@ -87,7 +87,7 @@ BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.3.16}
-BuildRequires:  %{python_module numpy >= 1.16.0}
+BuildRequires:  %{python_module numpy >= 1.19.3}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
