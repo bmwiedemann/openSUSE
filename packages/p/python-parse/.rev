@@ -122,4 +122,12 @@
 - Switch to pytest, like upstream has.</comment>
     <requestid>1181925</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>132c10fa35ef6397b06587e95f2ac650</srcmd5>
+    <version>1.20.2</version>
+    <time>1729876808</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218157</requestid>
+  </revision>
 </revisionlist>
