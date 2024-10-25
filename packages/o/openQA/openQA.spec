@@ -90,7 +90,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1729587891.7145424b
+Version:        4.6.1729634304.9a22ad59
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -102,7 +102,8 @@ BuildRequires:  fdupes
 # for install-opensuse in Makefile
 %if 0%{?is_opensuse}
 BuildRequires:  openSUSE-release
-%else
+%endif
+%if 0%{?sle_version} && !0%{?is_opensuse}
 BuildRequires:  sles-release
 %endif
 BuildRequires:  %{build_requires}
