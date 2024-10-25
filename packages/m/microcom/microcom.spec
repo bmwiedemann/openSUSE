@@ -17,7 +17,7 @@
 
 
 Name:           microcom
-Version:        2019.01.0.11
+Version:        2023.09.0.0
 Release:        0
 Summary:        Minimalistic terminal program
 License:        GPL-2.0-only

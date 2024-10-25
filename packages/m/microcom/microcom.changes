@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 13:54:08 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Updat to version 2023.09.0.0
+  * use flock(2) instead of POSIX locking
+  * A new command sendescape to send a Ctrl-\. This makes it possible to drive a nested microcom instance.
+  * Several fixes, e.g. consistently use LFS and improve on rfc2217 subnegotiation handling
+
+-------------------------------------------------------------------
 Thu Sep 15 11:26:49 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to version 2019.01.0.11 

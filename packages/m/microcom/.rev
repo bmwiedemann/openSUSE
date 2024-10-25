@@ -20,4 +20,12 @@ well as in &quot;Telnet mode&quot; as specified in [RFC 2217].
     <comment></comment>
     <requestid>1004053</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1e69b3e3a9e62384c10f5717643a69c</srcmd5>
+    <version>2023.09.0.0</version>
+    <time>1729876815</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218364</requestid>
+  </revision>
 </revisionlist>
