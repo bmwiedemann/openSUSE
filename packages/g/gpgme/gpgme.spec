@@ -58,6 +58,7 @@ Source99:       gpgme.changes
 Patch1:         gpgme-D545-obsolete-distutils.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
+Patch3:         python313.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -257,12 +258,12 @@ This package contains the bindings to use the library in Qt 6 C++ applications.
 %prep
 %autosetup -N -n gpgme-%{version}
 %if %{with replace_distutils}
-%patch -p1 -P1 -P2
+%patch -p1 -P1 -P2 -P3
 %endif
 %if 0%{suse_version} > 1500
 # Note: rpm in 15.x does not know about the autopatch -m flag.
 # Need to apply every additional patch explicitly, if any.
-%autopatch -p1 -m3
+%autopatch -p1 -m4
 %endif
 
 %build

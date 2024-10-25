@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  1 18:26:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add python313.patch to enable python 3.13 building
+
+-------------------------------------------------------------------
 Sat Feb 17 11:20:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update gpgme-D545-obsolete-distutils.patch with upstream's
@@ -221,7 +226,7 @@ Mon Mar 20 15:46:55 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 Fri Mar 10 12:18:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop python2 subpackage handling. we do not support python 2.x
-  anymore, and if we would it would happen via singlespec 
+  anymore, and if we would it would happen via singlespec
 
 -------------------------------------------------------------------
 Mon Jan 23 11:49:07 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
@@ -231,7 +236,7 @@ Mon Jan 23 11:49:07 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Sat Jan 21 14:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add python311.patch to build language bindings for python 3.11 
+- add python311.patch to build language bindings for python 3.11
 
 -------------------------------------------------------------------
 Tue Nov  8 18:35:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -337,7 +342,7 @@ Tue Jan 12 22:35:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Sat Dec  5 19:09:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Use python-rpm-macros to provide python3X-gpg for all present 
+- Use python-rpm-macros to provide python3X-gpg for all present
   python3 flavors -- gh#openSUSE/python-rpm-macros#66
 
 -------------------------------------------------------------------
@@ -346,7 +351,7 @@ Tue Nov 17 21:44:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - gpgme 1.15.0:
   * New function gpgme_op_setexpire to make changing the expiration
     easier
-  * New function gpgme_op_revsig to revoke key signatures 
+  * New function gpgme_op_revsig to revoke key signatures
   * Support exporting secret keys
   * cpp: Support for set expire operations in the C++ bindings
   * cpp: Support for revoking key signatures in the C++ bindings
@@ -408,7 +413,7 @@ Wed Apr 29 11:09:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
 Wed Oct 16 20:34:54 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Build qt bindings separately to avoid build cycle with
-  samba/libsoup. 
+  samba/libsoup.
 
 -------------------------------------------------------------------
 Fri Jun 14 13:18:36 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
@@ -513,7 +518,7 @@ Thu Apr 19 11:47:13 UTC 2018 - kbabioch@suse.com
    creation.
  * Various minor fixes.
 - Dropped patch 0001-core-Tweak-STATUS_FAILURE-handling.patch, since
-  it is included upstream now. 
+  it is included upstream now.
 - add gpgme-1.11-fix-gpgme-json-rpath.patch to remove rpath
 - add gpgme-1.11-fix-tests.patch to fix tests
 
@@ -649,8 +654,8 @@ Tue Mar 28 18:01:47 UTC 2017 - astieger@suse.com
 -------------------------------------------------------------------
 Thu Mar 23 21:54:04 UTC 2017 - lbeltrame@kde.org
 
-- Re-conditionalize python builds, to allow gpgme to build on 
-  Leap 42.3 (python tests fail with an older gpg, see 
+- Re-conditionalize python builds, to allow gpgme to build on
+  Leap 42.3 (python tests fail with an older gpg, see
   gpg issue 3008)
 - Enable Qt build also on Leap 42.3 (needed for KDE PIM)
 
@@ -674,13 +679,13 @@ Mon Feb 13 15:47:19 UTC 2017 - tchvatal@suse.com
 Tue Feb  7 02:48:46 UTC 2017 - crrodriguez@opensuse.org
 
 - gpgme-include_functional.patch: include <functional> where
-  needed, fix GCC7 build 
+  needed, fix GCC7 build
 
 -------------------------------------------------------------------
 Tue Nov 22 23:19:10 UTC 2016 - lbeltrame@kde.org
 
-- Add remove-a-forgotten-instance-of-libsuffix.diff: fix CMake 
-  files for gpgmepp (or they won't work with KDE software) 
+- Add remove-a-forgotten-instance-of-libsuffix.diff: fix CMake
+  files for gpgmepp (or they won't work with KDE software)
 
 -------------------------------------------------------------------
 Sat Nov 19 21:51:22 UTC 2016 - astieger@suse.com
@@ -904,7 +909,7 @@ Tue Apr 14 19:47:29 UTC 2015 - astieger@suse.com
 -------------------------------------------------------------------
 Tue Feb  3 16:40:23 UTC 2015 - coolo@suse.com
 
-- making the build reproducible - see 
+- making the build reproducible - see
   http://lists.gnupg.org/pipermail/gnupg-commits/2014-September/010683.html
   for a very similiar problem
 
@@ -998,7 +1003,7 @@ Thu May 23 14:06:31 UTC 2013 - cfarrell@suse.com
 -------------------------------------------------------------------
 Tue Mar 12 18:44:53 UTC 2013 - andreas.stieger@gmx.de
 
-- gpgme-config --libs lists -lassuan, but libgpgme-devel did not 
+- gpgme-config --libs lists -lassuan, but libgpgme-devel did not
   require libassuan-devel [bnc#808882]
 
 -------------------------------------------------------------------
@@ -1055,7 +1060,7 @@ Thu Dec  1 15:56:05 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Sun Oct  2 15:20:21 UTC 2011 - crrodriguez@opensuse.org
 
-- Workaround qemu-arm bugs 
+- Workaround qemu-arm bugs
 - remove support for the "pth" library, which has not seen
   mainteniance for around 5 years, native pthread support
   should be just fine in linux too.
@@ -1072,7 +1077,7 @@ Mon Sep  5 12:22:51 UTC 2011 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Fri Jul 29 15:31:36 UTC 2011 - puzel@novell.com
 
-- update to gpgme-1.3.1 
+- update to gpgme-1.3.1
   - Detect GPG versions not supporting ---passwd.
   - Interface changes relative to the 1.3.0 release:
    GPGME_EXPORT_MODE_MINIMAL     NEW
@@ -1086,7 +1091,7 @@ Fri Jul 29 15:31:36 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Thu Apr 28 06:24:11 UTC 2011 - idoenmez@novell.com
 
-- Add gnupg-2.0.17-test-failure.patch: fix test failure with gnupg 2.0.17 
+- Add gnupg-2.0.17-test-failure.patch: fix test failure with gnupg 2.0.17
 
 -------------------------------------------------------------------
 Fri Feb  4 15:44:26 CET 2011 - sbrabec@suse.cz
@@ -1103,7 +1108,7 @@ Mon Jan 31 14:47:20 UTC 2011 - gber@opensuse.org
 Tue Dec 14 13:05:39 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - run spec cleaner
-- fix -devel package dependencies 
+- fix -devel package dependencies
 
 -------------------------------------------------------------------
 Wed Apr 14 20:32:14 UTC 2010 - chris@computersalat.de
@@ -1162,12 +1167,12 @@ Tue Jun 23 14:00:38 CEST 2009 - puzel@novell.com
    instead of patterns.
  * New mode of operation gpgme_export_mode_t that allows exporting
    external keys.
-- drop unneeded BRs: libgcrypt-devel, libksba-devel 
+- drop unneeded BRs: libgcrypt-devel, libksba-devel
 
 -------------------------------------------------------------------
 Thu Jun 11 11:19:57 CEST 2009 - puzel@suse.cz
 
-- change BuildRequires: (pth-devel -> libpth-devel) 
+- change BuildRequires: (pth-devel -> libpth-devel)
 
 -------------------------------------------------------------------
 Tue Jun  2 23:54:53 CEST 2009 - dmueller@suse.de
@@ -1177,7 +1182,7 @@ Tue Jun  2 23:54:53 CEST 2009 - dmueller@suse.de
 -------------------------------------------------------------------
 Mon Jun  1 11:25:07 CEST 2009 - puzel@suse.cz
 
-- BuildRequires: pth-devel 
+- BuildRequires: pth-devel
 
 -------------------------------------------------------------------
 Wed Feb 18 11:54:55 CET 2009 - puzel@suse.cz
@@ -1213,18 +1218,18 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 Wed Feb  6 18:46:13 CET 2008 - bk@suse.de
 
 - update to version 1.1.6: API extensions, eg for gpgconf thru gpgme
-- add upstream patches to run the testsuite non-interactively 
+- add upstream patches to run the testsuite non-interactively
 
 -------------------------------------------------------------------
 Thu Dec 27 06:59:00 CET 2007 - crrodriguez@suse.de
 
-- fix library-without-ldconfig-post* errors 
+- fix library-without-ldconfig-post* errors
 - remove "la" files
 
 -------------------------------------------------------------------
 Wed Aug  8 00:24:11 CEST 2007 - ro@suse.de
 
-- remove devel requires from library package 
+- remove devel requires from library package
 
 -------------------------------------------------------------------
 Tue Aug  7 00:30:48 CEST 2007 - mrueckert@suse.de
@@ -1266,7 +1271,7 @@ Fri Mar  9 14:44:53 CET 2007 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Mon Feb  5 00:47:08 CET 2007 - ro@suse.de
 
-- updated filelist 
+- updated filelist
 
 -------------------------------------------------------------------
 Wed Sep 20 17:40:24 CEST 2006 - anosek@suse.cz
@@ -1314,7 +1319,7 @@ Mon Nov 28 16:56:09 CET 2005 - zpetrova@suse.cz
 Thu Feb 17 12:49:56 CET 2005 - didge@suse.de
 
 - update to stable version 1.0.2
-- update of url 
+- update of url
 
 -------------------------------------------------------------------
 Mon Jul 12 21:23:40 CEST 2004 - adrian@suse.de
@@ -1325,7 +1330,7 @@ Mon Jul 12 21:23:40 CEST 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Mar 18 16:04:58 CET 2004 - didge@suse.de
 
-- fixed bug #36194 
+- fixed bug #36194
 
 -------------------------------------------------------------------
 Fri Feb 27 15:42:17 CET 2004 - ro@suse.de
@@ -1347,7 +1352,7 @@ Tue Sep  2 13:09:08 CEST 2003 - mc@suse.de
 
 - add newpg, libgcrypt and libksba to neededforbuild again
   it is needed to support kmail with cryptplug
-  fixed #29620, #29641 and #29642 
+  fixed #29620, #29641 and #29642
 
 -------------------------------------------------------------------
 Mon Aug 11 14:48:50 CEST 2003 - adrian@suse.de
@@ -1372,37 +1377,37 @@ Wed Apr 16 17:01:55 CEST 2003 - coolo@suse.de
 -------------------------------------------------------------------
 Fri Feb 21 17:37:55 CET 2003 - mc@suse.de
 
-- fixed -fPIC and lib64 Problems 
+- fixed -fPIC and lib64 Problems
 
 -------------------------------------------------------------------
 Thu Feb 20 18:47:34 CET 2003 - mc@suse.de
 
-- update to version 0.3.15 
+- update to version 0.3.15
 
 -------------------------------------------------------------------
 Thu Jan 30 16:03:29 CET 2003 - didge@suse.de
 
-- Version 0.3.14 
+- Version 0.3.14
 
 -------------------------------------------------------------------
 Mon Oct 21 14:14:35 MEST 2002 - didge@suse.de
 
-- Version 0.3.12 
+- Version 0.3.12
 
 -------------------------------------------------------------------
 Wed Sep 25 18:34:40 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides again 
+- removed bogus self-provides again
 
 -------------------------------------------------------------------
 Wed Sep 25 17:18:02 MEST 2002 - didge@suse.de
 
-- Version 0.3.11 
+- Version 0.3.11
 
 -------------------------------------------------------------------
 Tue Sep 10 11:35:16 MEST 2002 - didge@suse.de
 
-- Version 0.3.10 
+- Version 0.3.10
 
 -------------------------------------------------------------------
 Wed Jul 31 16:48:44 MEST 2002 - didge@suse.de
@@ -1412,7 +1417,7 @@ Wed Jul 31 16:48:44 MEST 2002 - didge@suse.de
 -------------------------------------------------------------------
 Fri Jun 21 11:41:56 MEST 2002 - didge@suse.de
 
-- New Version 0.3.7 
+- New Version 0.3.7
 
 -------------------------------------------------------------------
 Fri May 10 11:29:30 CEST 2002 - didge@suse.de
@@ -1432,17 +1437,17 @@ Fri Mar  8 15:53:45 CET 2002 - didge@suse.de
 -------------------------------------------------------------------
 Thu Feb 14 13:15:49 CET 2002 - didge@suse.de
 
-- New Version 0.3.3 
+- New Version 0.3.3
 
 -------------------------------------------------------------------
 Fri Jan  4 12:42:26 CET 2002 - didge@suse.de
 
-- New Version 0.3.0 
+- New Version 0.3.0
 
 -------------------------------------------------------------------
 Wed Oct 31 14:51:31 CET 2001 - didge@suse.de
 
-- Fixed patch 
+- Fixed patch
 
 -------------------------------------------------------------------
 Mon Oct 29 15:42:49 CET 2001 - didge@suse.de
@@ -1458,10 +1463,10 @@ Tue Oct  9 14:07:12 CEST 2001 - didge@suse.de
 -------------------------------------------------------------------
 Thu Sep 13 11:34:28 MEST 2001 - didge@suse.de
 
-- Fix a bug to build under AXP 
+- Fix a bug to build under AXP
 
 -------------------------------------------------------------------
 Wed Aug 22 14:10:15 MEST 2001 - didge@suse.de
 
-- First build, Verison 0.2.2 
+- First build, Verison 0.2.2
 

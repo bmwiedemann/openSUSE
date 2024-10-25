@@ -841,4 +841,41 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>1148548</requestid>
   </revision>
+  <revision rev="107" vrev="5">
+    <srcmd5>1a334263d313eb9351b3bf592082b779</srcmd5>
+    <version>1.23.2</version>
+    <time>1729876743</time>
+    <user>anag+factory</user>
+    <comment>- add python313.patch to enable python 3.13 building
+
+  anymore, and if we would it would happen via singlespec
+- add python311.patch to build language bindings for python 3.11
+- Use python-rpm-macros to provide python3X-gpg for all present
+  * New function gpgme_op_revsig to revoke key signatures
+  samba/libsoup.
+  it is included upstream now.
+- Re-conditionalize python builds, to allow gpgme to build on
+  Leap 42.3 (python tests fail with an older gpg, see
+  needed, fix GCC7 build
+- Add remove-a-forgotten-instance-of-libsuffix.diff: fix CMake
+  files for gpgmepp (or they won't work with KDE software)
+- making the build reproducible - see
+- gpgme-config --libs lists -lassuan, but libgpgme-devel did not
+- Workaround qemu-arm bugs
+- update to gpgme-1.3.1
+- Add gnupg-2.0.17-test-failure.patch: fix test failure with gnupg 2.0.17
+- fix -devel package dependencies
+- drop unneeded BRs: libgcrypt-devel, libksba-devel
+- change BuildRequires: (pth-devel -&gt; libpth-devel)
+- BuildRequires: pth-devel
+- add upstream patches to run the testsuite non-interactively
+- fix library-without-ldconfig-post* errors
+- remove devel requires from library package
+- updated filelist
+- update of url
+- fixed bug #36194
+  fixed #29620, #29641 and #29642
+- fixed -fPIC and lib64 Problems</comment>
+    <requestid>1218117</requestid>
+  </revision>
 </revisionlist>
