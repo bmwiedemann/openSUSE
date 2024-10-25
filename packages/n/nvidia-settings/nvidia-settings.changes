@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 13:48:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- corrected license tag (GPL-2.0-or-later -> GPL-2.0-only)
+
+-------------------------------------------------------------------
 Thu Sep 26 17:19:14 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Remove ExclusiveArch. The program may be non-functional without nvidia drivers,

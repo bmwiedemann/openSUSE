@@ -34,4 +34,12 @@ make use of %ldconfig_scriptlets</comment>
     <comment></comment>
     <requestid>1203958</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b613a4a45cd21e24cd0ea8e511151a8a</srcmd5>
+    <version>560.35.03</version>
+    <time>1729876758</time>
+    <user>anag+factory</user>
+    <comment>- corrected license tag (GPL-2.0-or-later -&gt; GPL-2.0-only)</comment>
+    <requestid>1218072</requestid>
+  </revision>
 </revisionlist>

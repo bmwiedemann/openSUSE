@@ -20,7 +20,7 @@ Name:           nvidia-settings
 Version:        560.35.03
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 URL:            http://www.nvidia.com/object/unix.html
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2
