@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 24 16:09:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+
+-------------------------------------------------------------------
+Wed Oct  2 16:18:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Drop .pyc files from docdir for reproducible builds
+  (bsc#1230906).
+
+-------------------------------------------------------------------
 Mon Sep  9 13:41:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.10.15:

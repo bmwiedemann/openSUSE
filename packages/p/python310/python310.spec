@@ -204,6 +204,9 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch28:        sphinx-802.patch
+# PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
+# venv should properly quote path names provided when creating a venv
+Patch29:        CVE-2024-9287-venv_path_unquoted.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -483,6 +486,7 @@ other applications.
 %patch -p1 -P 24
 %patch -p1 -P 27
 %patch -p1 -P 28
+%patch -p1 -P 29
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -818,6 +822,11 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
 )
 echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-import-failed-hooks.pth
 %endif
+
+# For the purposes of reproducibility, it is necessary to eliminate any *.pyc files inside documentation dirs
+if [ -d %{buildroot}%{_defaultdocdir} ] ; then
+find %{buildroot}%{_defaultdocdir} -type f -name \*.pyc -ls -exec rm -vf '{}' \;
+fi
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk

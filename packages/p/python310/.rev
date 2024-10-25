@@ -898,4 +898,17 @@
     - gh-123693: Use platform-agnostic behavior when computing</comment>
     <requestid>1199711</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>cbcfdfb751c88e7a4368ba0b63ed137d</srcmd5>
+    <version>3.10.15</version>
+    <time>1729876744</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+- Drop .pyc files from docdir for reproducible builds
+  (bsc#1230906).
+</comment>
+    <requestid>1218122</requestid>
+  </revision>
 </revisionlist>
