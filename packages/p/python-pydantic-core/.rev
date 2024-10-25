@@ -91,4 +91,12 @@
   * Add ser_json_inf_nan='strings' mode to produce valid JSON</comment>
     <requestid>1184352</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a134ffd9377b7c60e44716f491829db</srcmd5>
+    <version>2.23.4</version>
+    <time>1729876752</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218161</requestid>
+  </revision>
 </revisionlist>

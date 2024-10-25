@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Oct  2 21:42:30 UTC 2024 - Meera Belur <mbelur@suse.com>
+
+- update 2.23.4
+Clean up serialization warnings for invalid data in unions 
+Fix variance issue in `_IncEx` type alias, only allow `True` 
+Bump version to v2.23.3 
+Fix `_IncEx` type annotation 
+Fix tagged union serialization warning when using aliases 
+Bump serde_json from 1.0.127 to 1.0.128 
+Improve test_valid_complex_string_with_space
+Negative integers with leading zeros raise ValueError 
+Bump serde_json from 1.0.121 to 1.0.127 
+Bump regex from 1.10.5 to 1.10.6 
+Bump uuid from 1.9.1 to 1.10.0 
+Bump idna from 1.0.1 to 1.0.2 
+Bump serde from 1.0.204 to 1.0.209 
+Bump the python-packages group with 8 updates 
+Try removing flaky xfail test 
+Version bump for docs update 
+Adding missing API docs to `pydantic_core` 
+Prep for `v2.23.1` patch release 
+Refactor `BigInt` boilerplate 
+Support `BigInt` serialization for `int` subclasses 
+Use more explicit warning regarding serialization warning for missing fields 
+Prep for v2.23.0 
+Breaking change: Change `metadata` type hint from `Any` -> `Dict[str, Any] | None` 
+Adding `cls` reference to `TypedDictSchema` 
+Disable automatic assignees with `hooky` 
+Version bump to prep for new release 
+Introduce `exactness` into `Decimal` validation logic 
+Adding tagged union serializer 🚀  
+Support complex numbers 
+Use `typing_extensions.TypedDict` on Python < 3.12 
+For missing fields, we don't warn on `exclude_`, so don't warn on `exclude` 
+Fix float serialization behavior in strict mode 
+stop clone-ing serializers 
+Try each option in union serializer before inference 
+Show value of wrongly typed in serialization warning 
+Validate base64 standard encoding 
+dont embed `RUSTFLAGS` in final binary 
+Expose AnySerializer via core schema 
+Revert "use little endian int 
+Uprev to v2.21.0 
+Support `allow_partial='trailing-strings'` 
+Bump base64 from 0.21.7 to 0.22.1 
+clean up some string handling cases 
+Bump serde from 1.0.203 to 1.0.204 
+Bump serde_json from 1.0.118 to 1.0.121 
+Bump pyo3 from 0.22.0 to 0.22.2 
+Bump version_check from 0.9.4 to 0.9.5 
+Bump the python-packages group with 7 updates 
+Bump CodSpeedHQ/action from 2 to 3 
+Validate bytes based on ser_json_bytes 
+Fix lints firing since rust 1.80 
+Bump idna from 0.5.0 to 1.0.1 
+use little endian int 
+Fix model field serializer with computed field 
+use Uuid:::from_u128 for uuid_to_string 
+string: Use 're.Pattern.search' instead of 're.Pattern.match' 
+Fixes discriminated union bug regression when using enums 
+Bump `speedate` to v0.14.1 and prep for v0.20.1 
+Bump the python-packages group across 1 directory with 7 updates 
+Bump num-bigint from 0.4.5 to 0.4.6 
+Bump uuid from 1.9.0 to 1.9.1 
+Bump `pytest-examples` to get tests passing with ruff `v0.5.0` 
+try restore 3.13 PGO builds  
+
+-------------------------------------------------------------------
 Mon Jul  1 17:05:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.0:
