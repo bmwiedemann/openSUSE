@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 00:26:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.1.9:
+  * CMake: Check for third party libraries using pkgconfig
+  * Fix minor pointer/value error in lxw_name_to_row() and
+    lxw_name_to_col() utility functions.
+
+-------------------------------------------------------------------
 Thu Aug  1 00:33:19 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.1.8:

@@ -19,7 +19,7 @@
 %define libname libxlsxwriter7
 
 Name:           libxlsxwriter
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        A C library for creating Excel XLSX files
 License:        BSD-2-Clause
