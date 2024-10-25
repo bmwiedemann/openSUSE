@@ -1,7 +1,3 @@
-:license: LGPL-2.1+
-:patches:
-  'COPYING.patch': -p1
-  gcc14.patch: -p1
 :preamble: |-
   BuildRequires: pkgconfig
   BuildRequires: augeas-devel

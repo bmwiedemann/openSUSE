@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:40:07 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Update to version 0.6.0 which includes mostly distribution patches
+- remove arity-fix.patch as it is included in new release
+- remove COPYING.patch as it is included in new release
+
+-------------------------------------------------------------------
+Fri Jul 26 14:00:47 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- remove gcc14.patch and apply proper fix that fix arity of method
+  (gh#hercules-team/ruby-augeas#17)
+
+-------------------------------------------------------------------
 Fri Jul 26 13:26:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Modify patch to also apply with -p1 COPYING.patch
-- Add gcc14.patch dont enforce the check until upstream can fix the
+- Add gcc14.patch don't enforce the check until upstream can fix the
   code
 
 -------------------------------------------------------------------

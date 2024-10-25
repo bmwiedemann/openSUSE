@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ruby-augeas
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 %define mod_name ruby-augeas
 %define mod_full_name %{mod_name}-%{version}
@@ -45,26 +45,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  libxml2-devel
 %endif
 # /MANUAL
-# MANUAL
-Patch0:         COPYING.patch
-Patch1:         gcc14.patch
-# /MANUAL
 
 %description
 Provides bindings for augeas.
 
 %prep
-%gem_unpack
-%patch -P 0 -p1
-%patch -P 1 -p1
-find -type f -print0 | xargs -0 touch -r %{SOURCE0}
-%gem_build
 
 %build
 
 %install
 %gem_install \
-  --doc-files="COPYING NEWS README.rdoc" \
+  --doc-files="COPYING NEWS README.md" \
   -f
 %gem_cleanup
 
