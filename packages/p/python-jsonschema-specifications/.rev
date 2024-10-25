@@ -74,4 +74,13 @@ update to 2023.6.1</comment>
   * Ignore dotfiles when collectimg schemas</comment>
     <requestid>1135282</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ed224b351bc510d197d261d623bc993</srcmd5>
+    <version>2024.10.1</version>
+    <time>1729876742</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.10.1:
+  * Declare support for Python 3.13</comment>
+    <requestid>1218112</requestid>
+  </revision>
 </revisionlist>
