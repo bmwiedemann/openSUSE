@@ -8,4 +8,17 @@
   --&gt; https://github.com/openSUSE/nvidia-driver-G06/issues/14</comment>
     <requestid>1204275</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>187db1f1c70d0ee77fe2ab3942bfdc78</srcmd5>
+    <version>1.0</version>
+    <time>1729876772</time>
+    <user>anag+factory</user>
+    <comment>- added '#src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0
+  WITH Linux-syscall-note */' as comment to license tag in the hope
+  that it gets accepted now and guys no longer tell me that you
+  can't mix GPL-2.0-only with incompatible Apache-2.0 ...; this
+  should explain it:
+  https://github.com/torvalds/linux/blob/master/LICENSES/exceptions/Linux-syscall-note</comment>
+    <requestid>1218074</requestid>
+  </revision>
 </revisionlist>

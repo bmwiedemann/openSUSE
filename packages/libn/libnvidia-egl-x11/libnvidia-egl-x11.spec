@@ -23,6 +23,7 @@ Name:           libnvidia-egl-x11
 Version:        1.0
 Release:        0
 Summary:        NVIDIA XLib and XCB EGL Platform Library
+# src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sndirsch/egl-x11
@@ -32,15 +33,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(xcb) >= 1.17.0
-BuildRequires:  pkgconfig(xcb-present) >= 1.17.0
-BuildRequires:  pkgconfig(xcb-dri3) >= 1.17.0
-BuildRequires:  pkgconfig(gbm) >= 21.3.0
-BuildRequires:  pkgconfig(libdrm) >= 2.4.99
-BuildRequires:  pkgconfig(x11) 
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(eglexternalplatform) >= 1.2
+BuildRequires:  pkgconfig(gbm) >= 21.3.0
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libdrm) >= 2.4.99
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb) >= 1.17.0
+BuildRequires:  pkgconfig(xcb-dri3) >= 1.17.0
+BuildRequires:  pkgconfig(xcb-present) >= 1.17.0
 
 %description
 This is an EGL platform library for the NVIDIA driver to support XWayland via
@@ -103,7 +104,6 @@ export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
-
 
 %files -n %{lname}
 %license LICENSE

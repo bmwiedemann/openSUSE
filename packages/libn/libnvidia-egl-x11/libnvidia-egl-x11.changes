@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 24 14:07:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added '#src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0
+  WITH Linux-syscall-note */' as comment to license tag in the hope
+  that it gets accepted now and guys no longer tell me that you
+  can't mix GPL-2.0-only with incompatible Apache-2.0 ...; this
+  should explain it:
+  https://github.com/torvalds/linux/blob/master/LICENSES/exceptions/Linux-syscall-note
+
+-------------------------------------------------------------------
 Fri Sep 27 13:43:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - created package 
