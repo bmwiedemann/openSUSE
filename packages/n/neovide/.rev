@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1200771</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ff5ae853159ec4a6bebd670a70b95759</srcmd5>
+    <version>0.13.3</version>
+    <time>1729876765</time>
+    <user>anag+factory</user>
+    <comment>- fix build on Leap 16.0
+- update spec file
+</comment>
+    <requestid>1218059</requestid>
+  </revision>
 </revisionlist>

@@ -22,15 +22,16 @@
 Name:           neovide
 Version:        0.13.3
 Release:        0
-Summary:        Neovim gui
+Summary:        Simple Neovim GUI
 License:        MIT
+Group:          Productivity/Text/Editors
 URL:            https://github.com/neovide/neovide
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        https://github.com/rust-skia/skia/archive/m126-0.74.2/skia-%{skia_version}.tar.gz
+Source2:        https://github.com/rust-skia/skia/archive/%{skia_version}/skia-%{skia_version}.tar.gz
 Source3:        https://github.com/google/wuffs-mirror-release-c/archive/%{wuffs_commit}/wuffs-%{wuffs_commit}.tar.gz
+BuildRequires:  cargo >= 1.79
 BuildRequires:  cargo-packaging
-BuildRequires:  cargo >= 1.80
 BuildRequires:  clang
 BuildRequires:  gcc-c++
 BuildRequires:  gn
@@ -46,7 +47,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 # clang++ needs gcc13 c++ headers to compile skia on Leap 15.6
-BuildRequires:  libstdc++6-devel-gcc13
+BuildRequires:  gcc13-c++
 %endif
 Requires:       neovim >= 0.10.0
 
@@ -61,16 +62,16 @@ mkdir -p skia-%{skia_version}/third_party/externals/
 mv wuffs-mirror-release-c-%{wuffs_commit} skia-%{skia_version}/third_party/externals/wuffs
 
 %build
-export SKIA_SOURCE_DIR=${PWD}/skia-%{skia_version}
+export SKIA_SOURCE_DIR=%{_builddir}/%{name}-%{version}/skia-%{skia_version}
 export SKIA_USE_SYSTEM_LIBRARIES=true
 export SKIA_NINJA_COMMAND=ninja
 export SKIA_GN_COMMAND=gn
 %{cargo_build}
 
 %install
-install -Dm755 target/release/neovide %{buildroot}%{_bindir}/neovide
-install -Dm644 assets/neovide.desktop %{buildroot}%{_datadir}/applications/neovide.desktop
-install -Dm644 assets/neovide.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/neovide.svg
+install -Dm755 %{_builddir}/%{name}-%{version}/target/release/neovide %{buildroot}%{_bindir}/neovide
+install -Dm644 %{_builddir}/%{name}-%{version}/assets/neovide.desktop %{buildroot}%{_datadir}/applications/neovide.desktop
+install -Dm644 %{_builddir}/%{name}-%{version}/assets/neovide.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/neovide.svg
 
 %files
 %doc README.md
