@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Oct 24 18:44:22 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.3.13
+    Calendar:
+        Fixed GH-16240: jdtounix overflow on argument value.
+        Fixed GH-16241: easter_days/easter_date overflow on year argument.
+        Fixed GH-16263: jddayofweek overflow.
+        Fixed GH-16234: jewishtojd overflow.
+    CLI:
+        Fixed bug GH-16137: duplicate http headers when set several times by the client.
+    Core:
+        Fixed bug GH-16054 (Segmentation fault when resizing hash table iterator list while adding).
+        Fixed bug GH-15905 (Assertion failure for TRACK_VARS_SERVER).
+        Fixed bug GH-15907 (Failed assertion when promoting Serialize deprecation to exception).
+        Fixed bug GH-15851 (Segfault when printing backtrace during cleanup of nested generator frame).
+        Fixed bug GH-15866 (Core dumped in Zend/zend_generators.c).
+        Fixed bug GH-16188 (Assertion failure in Zend/zend_exceptions.c).
+        Fixed bug GH-16233 (Observer segfault when calling user function in internal function via trampoline).
+    DOM:
+        Fixed bug GH-16039 (Segmentation fault (access null pointer) in ext/dom/parentnode/tree.c).
+        Fixed bug GH-16149 (Null pointer dereference in DOMElement->getAttributeNames()).
+        Fixed bug GH-16151 (Assertion failure in ext/dom/parentnode/tree.c).
+        Fixed bug GH-16150 (Use after free in php_dom.c).
+        Fixed bug GH-16152 (Memory leak in DOMProcessingInstruction/DOMDocument).
+    JSON:
+        Fixed bug GH-15168 (stack overflow in json_encode()).
+    GD:
+        Fixed bug GH-16232 (bitshift overflow on wbmp file content reading / fix backport from upstream).
+        Fixed bug GH-12264 (overflow/underflow on imagerotate degrees value) (David Carlier)
+        Fixed bug GH-16274 (imagescale underflow on RBG channels / fix backport from upstream).
+    LDAP:
+        Fixed bug GH-16032 (Various NULL pointer dereferencements in ldap_modify_batch()).
+        Fixed bug GH-16101 (Segfault in ldap_list(), ldap_read(), and ldap_search() when LDAPs array is not a list).
+        Fix GH-16132 (php_ldap_do_modify() attempts to free pointer not allocated by ZMM.).
+        Fix GH-16136 (Memory leak in php_ldap_do_modify() when entry is not a proper dictionary).
+    MBString:
+        Fixed bug GH-16261 (Reference invariant broken in mb_convert_variables()).
+    OpenSSL:
+        Fixed stub for openssl_csr_new.
+    PCRE:
+        Fixed bug GH-16189 (underflow on offset argument).
+        Fixed bug GH-16184 (UBSan address overflowed in ext/pcre/php_pcre.c).
+    PHPDBG:
+        Fixed bug GH-15901 (phpdbg: Assertion failure on i funcs).
+        Fixed bug GH-16181 (phpdbg: exit in exception handler reports fatal error).
+    Reflection:
+        Fixed bug GH-16187 (Assertion failure in ext/reflection/php_reflection.c).
+    SAPI:
+        Fixed bug GH-15395 (php-fpm: zend_mm_heap corrupted with cgi-fcgi request).
+    SimpleXML:
+        Fixed bug GH-15837 (Segmentation fault in ext/simplexml/simplexml.c).
+    Sockets:
+        Fixed bug GH-16267 (socket_strerror overflow on errno argument).
+    SOAP:
+        Fixed bug #73182 (PHP SOAPClient does not support stream context HTTP headers in array form).
+        Fixed bug #62900 (Wrong namespace on xsd import error message).
+        Fixed bug GH-15711 (SoapClient can't convert BackedEnum to scalar value).
+        Fixed bug GH-16237 (Segmentation fault when cloning SoapServer).
+        Fix Soap leaking http_msg on error.
+        Fixed bug GH-16256 (Assertion failure in ext/soap/php_encoding.c:460).
+        Fixed bug GH-16259 (Soap segfault when classmap instantiation fails).
+    SPL:
+        Fixed bug GH-15918 (Assertion failure in ext/spl/spl_fixedarray.c).
+    Standard:
+        Fixed bug GH-16053 (Assertion failure in Zend/zend_hash.c).
+        Fixed bug GH-15169 (stack overflow when var serialization in ext/standard/var).
+    Streams:
+        Fixed bugs GH-15908 and GH-15026 (leak / assertion failure in streams.c).
+        Fixed bug GH-15980 (Signed integer overflow in main/streams/streams.c).
+    TSRM:
+        Prevent closing of unrelated handles.
+
+-------------------------------------------------------------------
 Sat Sep 28 07:07:17 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www directories to filelist [bsc#1231027] 

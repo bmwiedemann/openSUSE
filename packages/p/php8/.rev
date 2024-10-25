@@ -918,4 +918,41 @@
     <comment></comment>
     <requestid>1204317</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>951d952fc0978593eafe5defe11c2639</srcmd5>
+    <version>8.3.13</version>
+    <time>1729876755</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.3.13
+    Calendar:
+        Fixed GH-16240: jdtounix overflow on argument value.
+        Fixed GH-16241: easter_days/easter_date overflow on year argument.
+        Fixed GH-16263: jddayofweek overflow.
+        Fixed GH-16234: jewishtojd overflow.
+    CLI:
+        Fixed bug GH-16137: duplicate http headers when set several times by the client.
+    Core:
+        Fixed bug GH-16054 (Segmentation fault when resizing hash table iterator list while adding).
+        Fixed bug GH-15905 (Assertion failure for TRACK_VARS_SERVER).
+        Fixed bug GH-15907 (Failed assertion when promoting Serialize deprecation to exception).
+        Fixed bug GH-15851 (Segfault when printing backtrace during cleanup of nested generator frame).
+        Fixed bug GH-15866 (Core dumped in Zend/zend_generators.c).
+        Fixed bug GH-16188 (Assertion failure in Zend/zend_exceptions.c).
+        Fixed bug GH-16233 (Observer segfault when calling user function in internal function via trampoline).
+    DOM:
+        Fixed bug GH-16039 (Segmentation fault (access null pointer) in ext/dom/parentnode/tree.c).
+        Fixed bug GH-16149 (Null pointer dereference in DOMElement-&gt;getAttributeNames()).
+        Fixed bug GH-16151 (Assertion failure in ext/dom/parentnode/tree.c).
+        Fixed bug GH-16150 (Use after free in php_dom.c).
+        Fixed bug GH-16152 (Memory leak in DOMProcessingInstruction/DOMDocument).
+    JSON:
+        Fixed bug GH-15168 (stack overflow in json_encode()).
+    GD:
+        Fixed bug GH-16232 (bitshift overflow on wbmp file content reading / fix backport from upstream).
+        Fixed bug GH-12264 (overflow/underflow on imagerotate degrees value) (David Carlier)
+        Fixed bug GH-16274 (imagescale underflow on RBG channels / fix backport from upstream).
+    LDAP:
+        Fixed bug GH-16032 (Various NULL pointer dereferencements in ldap_modify_batch()).</comment>
+    <requestid>1218225</requestid>
+  </revision>
 </revisionlist>
