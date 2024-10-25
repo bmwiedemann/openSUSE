@@ -16,21 +16,21 @@
 #
 
 
-%define modname irc
 %{?sle15_python_module_pythons}
 Name:           python-irc
-Version:        20.4.0
+Version:        20.5.0
 Release:        0
 Summary:        A set of Python modules for IRC support
 License:        LGPL-2.1-or-later
 URL:            https://github.com/jaraco/irc
-Source:         https://files.pythonhosted.org/packages/source/i/irc/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/i/irc/irc-%{version}.tar.gz
 BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module jaraco.logging}
 BuildRequires:  %{python_module jaraco.stream}
-BuildRequires:  %{python_module jaraco.text}
+BuildRequires:  %{python_module jaraco.text >= 3.14}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -41,11 +41,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
+Requires:       python-importlib-resources
 Requires:       python-jaraco.collections
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-jaraco.logging
 Requires:       python-jaraco.stream
-Requires:       python-jaraco.text
+Requires:       python-jaraco.text >= 3.14
 Requires:       python-more-itertools
 Requires:       python-pytz
 Requires:       python-tempora >= 1.6
@@ -62,7 +63,7 @@ a fairly thorough support for the basic IRC protocol, CTCP and DCC
 connections.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n irc-%{version}
 sed -i -e '1s!/env python!/python!' scripts/testbot.py
 rm pytest.ini
 

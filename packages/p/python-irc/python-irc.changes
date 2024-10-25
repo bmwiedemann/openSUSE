@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:01:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.5.0:
+  * Refactored commands processing so now every command has a
+    numeric and a name. Programs reliant on numeric values not
+    yet defined can do so without breaking once they are defined.
+  * Unconditionally close the socket, even if shutdown fails.
+  * Stop excluding scripts. Prevents docs and scripts from being
+    installed.
+  * Fix SSL wrapper usage example in Factory docstring.
+
+-------------------------------------------------------------------
 Sat Apr  6 19:32:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.4.0:

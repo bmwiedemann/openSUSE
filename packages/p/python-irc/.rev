@@ -318,4 +318,19 @@ Dependencies:
     docs.</comment>
     <requestid>1165874</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45e2ee448d5d0fed5ad72b56e2042f24</srcmd5>
+    <version>20.5.0</version>
+    <time>1729876783</time>
+    <user>anag+factory</user>
+    <comment>- update to 20.5.0:
+  * Refactored commands processing so now every command has a
+    numeric and a name. Programs reliant on numeric values not
+    yet defined can do so without breaking once they are defined.
+  * Unconditionally close the socket, even if shutdown fails.
+  * Stop excluding scripts. Prevents docs and scripts from being
+    installed.
+  * Fix SSL wrapper usage example in Factory docstring.</comment>
+    <requestid>1218110</requestid>
+  </revision>
 </revisionlist>
