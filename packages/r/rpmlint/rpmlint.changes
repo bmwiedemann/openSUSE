@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:33:51 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20241024.1f09e50:
+  * whitelistings: add libcgroup PAM module and setgid binary (bsc#1231381)
+
+-------------------------------------------------------------------
 Mon Oct 21 07:38:46 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.6.1+git20241017.b725184:

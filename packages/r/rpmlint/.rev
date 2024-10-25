@@ -5016,4 +5016,14 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1216644</requestid>
   </revision>
+  <revision rev="488" vrev="1">
+    <srcmd5>0dbf1240d6b8b90ab5850f480d89f7f6</srcmd5>
+    <version>2.6.1+git20241024.1f09e50</version>
+    <time>1729876762</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20241024.1f09e50:
+  * whitelistings: add libcgroup PAM module and setgid binary (bsc#1231381)
+</comment>
+    <requestid>1218023</requestid>
+  </revision>
 </revisionlist>
