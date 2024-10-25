@@ -22,8 +22,8 @@
 %else
 %bcond_with html_docs
 %endif
-# On TW and ALP, build with geany by default
-%if 0%{?suse_version} >= 1600
+# On TW, build with geany by default
+%if 0%{?suse_version} > 1600
 %bcond_without geany
 %else
 %bcond_with geany
