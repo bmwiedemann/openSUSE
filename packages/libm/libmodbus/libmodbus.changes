@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:58:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.11
+  * RTU - Check CRC before filtering on slave ID.
+  * HAVE_NETINET_IN_H as guard around header.
+  * Use default port 502 in documentation.
+  * Fix float endianness issue introduced in v3.1.8
+  * Proper display of used CFLAGS.
+  * Don't build with debug flag by default anymore.
+  * Check request length in modbus_reply when used in memcpy.
+  * Fix insecure data handling. CID 416366: INTEGER_OVERFLOW found
+    with Coverity Scan.
+  * Remove useless cast in setsockopt call.
+  * Documentation improvements.
+  * Revert TCP checks for recovery.
+  * Don't use loop initial declaration.
+  * Don't use gai_strerror if not available.
+  * Add checks for netinet/ip.h and gai_strerror.
+  * Log error in read input registers if debug.
+  * Fix errno value on timeout with TCP connect.
+  * Free addrinfo struct on getaddrinfo() gerrors.
+  * Fix doc of modbus_mapping_new_start_address.
+
+-------------------------------------------------------------------
 Sat Jan 21 11:46:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.10:
