@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 07:56:50 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove containers-systemd, deprecated upstream technology, quadlets
+  should be used today
+
+-------------------------------------------------------------------
 Tue Jun 27 13:19:44 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Remove unused podman-cni-config package

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-containers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,14 +39,10 @@ Provides:       pattern-category() = Containers
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
-Requires:       containers-systemd
 Requires:       podman
 Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
 Suggests:       toolbox
 Requires:       pattern() = basesystem
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-container-runtime
-Obsoletes:      patterns-caasp-container-runtime <= 4.0
 
 %description container_runtime
 This pattern installs the default container runtime packages for non-clustered systems.

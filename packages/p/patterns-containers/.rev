@@ -266,4 +266,13 @@
     <comment></comment>
     <requestid>1095824</requestid>
   </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>2b8af98318a9ed149754e23e88ff00b8</srcmd5>
+    <version>5.1</version>
+    <time>1729876752</time>
+    <user>anag+factory</user>
+    <comment>- Remove containers-systemd, deprecated upstream technology, quadlets
+  should be used today (forwarded request 1218200 from kukuk)</comment>
+    <requestid>1218204</requestid>
+  </revision>
 </revisionlist>
