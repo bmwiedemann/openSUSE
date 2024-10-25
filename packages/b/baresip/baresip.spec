@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
 #BuildRequires:  openssl-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
 BuildRequires:  pkgconfig(alsa)
@@ -176,7 +176,7 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/httpd.so
 %{_libdir}/baresip/modules/httpreq.so
 %{_libdir}/baresip/modules/ice.so
-/usr/lib64/baresip/modules/in_band_dtmf.so
+%{_libdir}/baresip/modules/in_band_dtmf.so
 %{_libdir}/baresip/modules/jack.so
 %{_libdir}/baresip/modules/l16.so
 %{_libdir}/baresip/modules/menu.so

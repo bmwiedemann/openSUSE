@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:49:51 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not hardcode the openssl version [bsc#1210879]
+  * Replace libopenssl-1_1-devel with libopenssl-devel
+  * Fix in_band_dtmf.so lib directory for x86
+
+-------------------------------------------------------------------
 Thu Oct  3 12:58:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.16.0
