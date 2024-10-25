@@ -112,9 +112,7 @@ BuildRequires:  pkgconfig(libmpg123) >= 1.13
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libraw1394) >= 2.0.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.40.0
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.9
 BuildRequires:  pkgconfig(opencore-amrwb) >= 0.1.3
