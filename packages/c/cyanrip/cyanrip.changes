@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Oct 23 06:39:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Wed Jun  5 15:40:46 UTC 2024 - zero mind <zeromind@gmx.com>
+
+- update to release version 0.9.3.1
+  * fix compilation on certain platforms
+
+-------------------------------------------------------------------
+Tue Jun  4 10:29:28 UTC 2024 - zero mind <zeromind@gmx.com>
+
+- update to release version 0.9.3
+  * FFmpeg 7.0 compatibility
+  * Added an option to specify the image size for cover lookup
+  * When only printing info, do not require an offset to be specified with -I
+  * Fix default pregap action setting for tracks after the first
+  * Better error handling
+
+-------------------------------------------------------------------
+Wed Nov 22 21:18:14 UTC 2023 - zero mind <zeromind@gmx.com>
+
+- update to release version 0.9.2
+  * ReplayGain 2.0 scanning and tagging
+  * Preemphasis detection via both TOC and subchannel
+  * Automatic deemphasis
+  * CUE file writing
+  * Repeat ripping mode for affirmation or badly damaged discs
+  * Tagging improvements (setting the media_type tag)
+  * Logfile reorganization and checksumming
+  * Windows compatibility improvements
+  * Migration to new FFmpeg 6.0 APIs
+
+-------------------------------------------------------------------
+Thu Mar 16 13:02:07 UTC 2023 - zero mind <zeromind@gmx.com>
+
+- initial version

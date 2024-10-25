@@ -1,0 +1,6 @@
+<package name="cyanrip" project="openSUSE:Factory">
+  <title>cyanrip</title>
+  <description>Fully featured CD ripping program able to take out most of the tedium. Fully accurate, has advanced features most rippers don't, yet has no bloat and is cross-platform.</description>
+  <devel project="multimedia:apps" package="cyanrip"/>
+  <url>https://github.com/cyanreg/cyanrip</url>
+</package>
