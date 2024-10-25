@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-itemloaders
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Base library for scrapy's ItemLoader
 License:        BSD-3-Clause
@@ -33,14 +33,12 @@ BuildRequires:  python-rpm-macros
 Requires:       python-itemadapter >= 0.1.0
 Requires:       python-jmespath >= 0.9.5
 Requires:       python-parsel >= 1.8.1
-Requires:       python-w3lib >= 1.17.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module jmespath >= 0.9.5}
 BuildRequires:  %{python_module parsel >= 1.8.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module w3lib >= 1.17.0}
 # /SECTION
 %python_subpackages
 

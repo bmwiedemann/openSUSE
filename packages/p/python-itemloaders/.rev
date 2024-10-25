@@ -73,4 +73,15 @@
     that was introduced in 1.3.0</comment>
     <requestid>1181688</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97eb21caf0bbdd6d39b6ad76c1781d31</srcmd5>
+    <version>1.3.2</version>
+    <time>1729876785</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.2:
+  * Added official support for the upcoming Python 3.13
+  * Removed ``w3lib`` from direct dependencies (it's not used
+    directly but is an indirect dependency via ``parsel``)</comment>
+    <requestid>1218111</requestid>
+  </revision>
 </revisionlist>
