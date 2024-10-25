@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 15:20:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with Swig 4.3.0 (boo#1231590)
+  * subversion-1.14.4-swig-4.3.0-swig-py.patch
+  * subversion-1.14.4-swig-4.3.0-swig-rb.patch
+
+-------------------------------------------------------------------
 Fri Oct 18 16:35:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.14.4:
