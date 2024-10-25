@@ -7,4 +7,14 @@
     <comment>- Initial release of 0.5.0</comment>
     <requestid>1190071</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f8429a2da78dc71ea16538db3cd12e51</srcmd5>
+    <version>0.5.0</version>
+    <time>1729876748</time>
+    <user>anag+factory</user>
+    <comment>- Skip failing test test_unexpected_data
+  (gh#domdfcoding/singledispatch-json#55).
+</comment>
+    <requestid>1218156</requestid>
+  </revision>
 </revisionlist>

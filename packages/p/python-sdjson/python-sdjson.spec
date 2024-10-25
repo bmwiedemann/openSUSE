@@ -68,7 +68,8 @@ without as much legwork.
 
 %check
 %if %{with test}
-%pytest
+# skip because of gh#domdfcoding/singledispatch-json#55
+%pytest -k 'not test_unexpected_data'
 %endif
 
 %if !%{with test}

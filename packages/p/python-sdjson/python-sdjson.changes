@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 05:20:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip failing test test_unexpected_data
+  (gh#domdfcoding/singledispatch-json#55).
+
+-------------------------------------------------------------------
 Fri Jul 26 07:14:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.5.0
