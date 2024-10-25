@@ -146,4 +146,12 @@
 - Drop upstreamed dino-0.4.3-vala.patch</comment>
     <requestid>1184196</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>60fa5293f65aee3302d74d04a9b0bed7</srcmd5>
+    <version>0.4.4</version>
+    <time>1729876769</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218068</requestid>
+  </revision>
 </revisionlist>

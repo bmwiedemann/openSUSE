@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libqrencode)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(nice) >= 0.1.15
 BuildRequires:  pkgconfig(sqlite3)

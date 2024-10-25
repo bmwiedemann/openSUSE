@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 12:13:54 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires: Use the preferred newer version of libsoup.
+
+-------------------------------------------------------------------
 Mon Jul  1 06:22:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.4:
