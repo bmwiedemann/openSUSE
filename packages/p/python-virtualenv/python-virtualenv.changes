@@ -1,13 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:15:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.26.6:
+  * Properly quote string placeholders in activation script
+    templates to mitigate potential command injection - by
+    @y5c4l3. (#2768, in the Python stdlib known as bsc#1232241,
+    CVE-2024-9287)
+  * Upgrade embedded wheels: setuptools to 75.1.0 from 74.1.2
+  * no longer create () output in console during activation of a
+    virtualenv by .bat file. (#2728)
+
+-------------------------------------------------------------------
 Tue Oct 15 05:34:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject setuptools-wheel and tell the testsuite where to find it. 
+- Inject setuptools-wheel and tell the testsuite where to find it.
 
 -------------------------------------------------------------------
 Sat Jun 29 12:43:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.26.3:
-  * Bump embeded wheels 
+  * Bump embeded wheels
 
 -------------------------------------------------------------------
 Mon Jun 10 08:58:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
