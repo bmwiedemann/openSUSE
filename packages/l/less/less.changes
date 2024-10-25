@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:48:40 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Change preprocessor dependencies from Requires to Recommends. It's disabled by
+  default and they are not necessary for less. 
+
+-------------------------------------------------------------------
 Fri Jul 12 19:50:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 661:

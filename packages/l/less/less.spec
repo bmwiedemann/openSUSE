@@ -41,9 +41,9 @@ Patch2:         less-429-more.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-Requires:       file
-# lessopen.sh uses which
-Requires:       /usr/bin/which
+# weak dependencies required only by preprocessor, which is disabled by default
+Recommends:     file
+Recommends:     /usr/bin/which
 
 %description
 less is a text file browser and pager similar to more. It allows
