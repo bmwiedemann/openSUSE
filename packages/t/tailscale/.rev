@@ -148,4 +148,17 @@
   * dbus login sessions no longer fail on systems where /bin/login is missing. (forwarded request 1208650 from rrahl0)</comment>
     <requestid>1208651</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81c99eea09b103813df2ba90d5362321</srcmd5>
+    <version>1.76.3</version>
+    <time>1729876772</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.76.3:
+  * no relevant changelog
+- update to 1.76.2:
+  * no relevant changelog
+- switch over to the new %{default_fw_backend} macro
+- create old init file only for &lt; leap 16</comment>
+    <requestid>1218078</requestid>
+  </revision>
 </revisionlist>

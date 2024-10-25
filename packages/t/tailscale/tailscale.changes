@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 18:34:42 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.3:
+  * no relevant changelog
+- update to 1.76.2:
+  * no relevant changelog
+- switch over to the new %{default_fw_backend} macro
+- create old init file only for < leap 16
+
+-------------------------------------------------------------------
 Wed Oct 16 20:40:31 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.76.1:

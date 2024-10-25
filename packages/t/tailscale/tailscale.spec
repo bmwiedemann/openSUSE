@@ -16,32 +16,25 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
-%define default_fw nftables
-%else
-%define default_fw iptables
-%endif
 Name:           tailscale
-Version:        1.76.1
+Version:        1.76.3
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause
-Group:          Productivity/Networking/Security
 URL:            https://github.com/tailscale/tailscale
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        tailscaled.service
-Source3:        tailscaled.defaults
+Source2:        %{name}d.service
+Source3:        %{name}d.defaults
 Patch1:         build-verbose.patch
 Patch2:         disable-auto-update.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
 BuildRequires:  golang(API) = 1.23
-Requires:       (nftables or iptables)
-Recommends:     %{default_fw}
+Requires:       %{default_firewall_backend}
 ExcludeArch:    i586
 %{?systemd_requires}
 
@@ -83,8 +76,8 @@ export GOFLAGS="-buildmode=pie"
 export VERSION_SHORT=%{version}
 export VERSION_LONG=%{version}
 export VERSION_GIT_HASH='$(git rev-parse v%{version})'
-./build_dist.sh ./cmd/tailscale
-./build_dist.sh ./cmd/tailscaled
+./build_dist.sh ./cmd/%{name}
+./build_dist.sh ./cmd/%{name}d
 
 #generate completions
 ./%{name} completion bash > ./%{name}.bash
@@ -92,8 +85,8 @@ export VERSION_GIT_HASH='$(git rev-parse v%{version})'
 ./%{name} completion fish > ./%{name}.fish
 
 %check
-./tailscale version
-./tailscaled -version
+./%{name} version
+./%{name}d -version
 
 %install
 mkdir -p %{buildroot}%{_sharedstatedir}/%{name}
@@ -103,7 +96,9 @@ install -D -p -m 0755 %{name}d %{buildroot}%{_sbindir}/%{name}d
 
 # service
 install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}d.service
+%if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
+%endif
 
 # defaults
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/default/%{name}d
@@ -132,7 +127,9 @@ install -D -p -m 0644 ./%{name}.fish %{buildroot}%{_datadir}/fish/vendor_complet
 %{_bindir}/%{name}
 %{_sbindir}/%{name}d
 %{_unitdir}/%{name}d.service
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rc%{name}d
+%endif
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
