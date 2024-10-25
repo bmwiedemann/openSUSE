@@ -601,4 +601,28 @@
     <comment></comment>
     <requestid>1201735</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6cf83d7846f9986f7fc9621d56589341</srcmd5>
+    <version>0.37.0+git.1726056572.8637820</version>
+    <time>1729876759</time>
+    <user>anag+factory</user>
+    <comment>- Temporarily switch to direct download from GitHub, and update
+  to version 0.37.0+git.1726056572.8637820:
+  * Update changelog for version 0.37.0 (#980)
+  * Describes Eventlet's Alternatives Into the Migration Guide (#971)
+  * fix migration guide url (#978)
+  * os.read/write waits until file descriptor is ready. (#975)
+  * Upgrade RLocks as last thing we do (#970)
+  * warns about using multiple readers (#960)
+  * drop header keys with underscores (#959)
+  * doc: Repair changelog link (#958)
+  * Make the docs more user friendly (#950)
+  * Update changelog for version 0.36.1 (#952)
+- Add patches making it build with 3.13:
+  - 313-new-thread-attributes.patch (gh#eventlet/eventlet#964)
+  - no-dynamic-version.patch (we cannot use dynamic version
+    number on a git checkout)
+- Fix setting of the version number &quot;manually&quot; (with sed)</comment>
+    <requestid>1218077</requestid>
+  </revision>
 </revisionlist>
