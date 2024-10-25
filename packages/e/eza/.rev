@@ -826,4 +826,19 @@
   * Filetype, coloring for executables and folder</comment>
     <requestid>1208956</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8cb80db00488d40a862d338d2e9fe70b</srcmd5>
+    <version>0.20.5</version>
+    <time>1729876811</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.5:
+  Bug Fixes:
+  * Ensure nested tree parts align under item name
+  * Remove depricated chrono from_timestamp_opt
+  Build:
+  * Bump libc from 0.2.159 to 0.2.161
+  * Chrono v0.4.34 -&gt; v0.4.38
+- Update eza-fix-test.patch</comment>
+    <requestid>1218206</requestid>
+  </revision>
 </revisionlist>

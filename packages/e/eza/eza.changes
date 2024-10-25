@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 25 07:22:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.5:
+  Bug Fixes:
+  * Ensure nested tree parts align under item name
+  * Remove depricated chrono from_timestamp_opt
+  Build:
+  * Bump libc from 0.2.159 to 0.2.161
+  * Chrono v0.4.34 -> v0.4.38
+- Update eza-fix-test.patch
+
+-------------------------------------------------------------------
 Sat Oct 19 08:00:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.4:
