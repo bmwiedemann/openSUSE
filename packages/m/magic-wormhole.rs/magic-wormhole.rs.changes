@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 25 00:36:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add system openSSL option
+- Update to 0.7.3
+  * Added: cli clipboard auto completion support
+
+-------------------------------------------------------------------
 Sat Oct 12 12:59:41 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.7.2

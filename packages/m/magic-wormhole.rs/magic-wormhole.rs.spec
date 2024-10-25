@@ -16,10 +16,15 @@
 #
 
 
+%bcond_without system_openssl
+%if %{with system_openssl}
+%define build_args --features=native-tls
+%endif
+
 %define bin wormhole-rs
 
 Name:           magic-wormhole.rs
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Rust implementation of Magic Wormhole
 License:        EUPL-1.2
@@ -27,6 +32,9 @@ URL:            https://github.com/magic-wormhole/magic-wormhole.rs
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+%if %{with system_openssl}
+BuildRequires:  libopenssl-devel
+%endif
 
 %description
 Rust implementation of Magic Wormhole, with new features and enhancements such as
@@ -72,7 +80,7 @@ Zsh command-line completion support for %{name}.
 %autosetup -a 1
 
 %build
-%{cargo_build}
+%{cargo_build} %{?build_args}
 
 %install
 install -Dm 755 -t "%{buildroot}%{_bindir}" target/release/%{bin}
@@ -86,7 +94,7 @@ install -Dm644 %{bin}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{bin}
 install -Dm644 %{bin}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{bin}.fish
 
 %check
-%{cargo_test}
+%{cargo_test} %{?build_args}
 
 %files
 %doc README.md
