@@ -140,8 +140,8 @@ tar -xvf %{SOURCE5}
 
 %build
 # MATE session manager branding part.
-[ -f %{_datadir}/wallpapers/openSUSE-default.xml ]
-sed -e 's|@@WALLPAPER_URI@@|%{_datadir}/wallpapers/openSUSE-default.xml|' mate-session-branding.gschema.override.in > mate-session-branding.gschema.override
+[ -f %{_datadir}/wallpapers/openSUSEdefault/contents/images/1920x1200.png ]
+sed -e 's|@@WALLPAPER_URI@@|%{_datadir}/wallpapers/openSUSEdefault/contents/images/1920x1200.png |' mate-session-branding.gschema.override.in > mate-session-branding.gschema.override
 # For sound theme.
 cat mate-session-branding.gschema.override | sed -e 's|@@IF_openSUSE@@||g;/^@@IF_/d' > zz-mate-session-openSUSE-branding.gschema.override
 
