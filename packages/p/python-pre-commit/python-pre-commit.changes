@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:23:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Fix `pre-commit migrate-config` for unquoted deprecated
+    stages names with purelib `pyyaml`.
+  * Improve `pre-commit migrate-config` to handle more yaml
+    formats.
+  * Handle `stages` deprecation in `pre-commit migrate-config`.
+  * Upgrade `ruby-build`.
+  * Add "sensible regex" warnings to `repo: meta`.
+  * Add warnings for deprecated `stages` (`commit` -> `pre-
+    commit`, `push` -> `pre-push`, `merge-commit` -> `pre-merge-commit`).
+  * `language: python_venv` has been removed -- use `language:
+    python` instead.
+
+-------------------------------------------------------------------
 Mon Aug  5 18:58:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.0:

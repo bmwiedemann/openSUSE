@@ -252,4 +252,23 @@
     recreated if the system version of R changes.</comment>
     <requestid>1191754</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a88623301a07a3c42adb7844b9640c86</srcmd5>
+    <version>4.0.1</version>
+    <time>1729876787</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * Fix `pre-commit migrate-config` for unquoted deprecated
+    stages names with purelib `pyyaml`.
+  * Improve `pre-commit migrate-config` to handle more yaml
+    formats.
+  * Handle `stages` deprecation in `pre-commit migrate-config`.
+  * Upgrade `ruby-build`.
+  * Add &quot;sensible regex&quot; warnings to `repo: meta`.
+  * Add warnings for deprecated `stages` (`commit` -&gt; `pre-
+    commit`, `push` -&gt; `pre-push`, `merge-commit` -&gt; `pre-merge-commit`).
+  * `language: python_venv` has been removed -- use `language:
+    python` instead.</comment>
+    <requestid>1218114</requestid>
+  </revision>
 </revisionlist>
