@@ -11,4 +11,12 @@
   --&gt; https://github.com/openSUSE/nvidia-driver-G06/issues/16</comment>
     <requestid>1202562</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c45a7d6ad784727fa10d06a1ed3fdb8c</srcmd5>
+    <version>560.35.03</version>
+    <time>1729876770</time>
+    <user>anag+factory</user>
+    <comment>- corrected license tag (GPL-2.0-or-later -&gt; MIT)</comment>
+    <requestid>1218073</requestid>
+  </revision>
 </revisionlist>

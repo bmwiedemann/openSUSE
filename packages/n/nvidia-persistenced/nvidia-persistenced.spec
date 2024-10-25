@@ -20,7 +20,7 @@ Name:           nvidia-persistenced
 Version:        560.35.03
 Release:        0
 Summary:        A daemon to maintain persistent software state in the NVIDIA driver
-License:        GPL-2.0-or-later
+License:        MIT
 URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  x86_64 aarch64
 
