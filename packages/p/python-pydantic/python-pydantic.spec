@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.8.0
+Version:        2.9.2
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -45,6 +45,7 @@ BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module email-validator >= 2.0}
+BuildRequires:  %{python_module jsonschema >= 4.23.0 }
 BuildRequires:  %{python_module pydantic = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-examples}
@@ -57,7 +58,7 @@ Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
-Requires:       python-pydantic-core = 2.20.0
+Requires:       python-pydantic-core = 2.23.4
 Requires:       python-typing-extensions >= 4.6.1
 BuildArch:      noarch
 %python_subpackages
