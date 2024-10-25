@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 24 18:52:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.8.1:
+  * env.Dump() now accepts any number of optional "key" arguments,
+    and returns a dictionary string
+  * Fix SCons.Variables import
+  * Fix a problem with AppendUnique and PrependUnique where a value
+    could be erroneously removed due to a substring match.
+  * Fix handling of ListVariable when supplying a quoted choice
+    containing a space character
+    
+-------------------------------------------------------------------
 Mon Jul  8 21:25:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.8.0:

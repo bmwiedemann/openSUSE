@@ -20,7 +20,7 @@
 %define pythons python3
 %{?sle15_python_module_pythons}
 Name:           scons
-Version:        4.8.0
+Version:        4.8.1
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
