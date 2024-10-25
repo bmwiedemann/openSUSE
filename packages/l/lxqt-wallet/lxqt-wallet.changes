@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Oct 24 13:11:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Enable building with libsecret as backend additionally to kde
+  support
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Oct 24 10:25:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.0:
+  * Port to Qt6
+  * Fix a password issue with kwallet
+  * Translation updates
+
+-------------------------------------------------------------------
+Wed Apr  7 07:06:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.2:
+  * Use kwallet through dbus if the functionality was not compiled in.
+  * Make library version the same as package version again.
+
+-------------------------------------------------------------------
+Mon Aug  3 06:37:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.1:
+  * Fix a build issue
+
+-------------------------------------------------------------------
+Mon Aug  3 06:37:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.0:
+  * Add a backend for Windows based on Window' Data Protection API
+
+-------------------------------------------------------------------
+Sun Apr  9 11:26:33 UTC 2017 - mvetter@suse.com
+
+- Update to 3.1.0:
+  * Minor improvements (Window flag and fonts used)
+  * Add OSX keychain support
+  * Add QtLinguist dependency
+
+-------------------------------------------------------------------
+Tue Aug  2 11:23:27 UTC 2016 - mvetter@suse.com
+
+- Update to 3.0.0:
+  * Major backwards incompatible changes to the API to make it more aligned to official LXQt project name
+  * Biggest change is the namespace change from "LxQt" to "LXQt"
+- Create new subpackage liblxqt-wallet for library
+- Update Summary
+- Add information about storage backends that can be used
+
+-------------------------------------------------------------------
+Sat Mar  17 12:17:51 UTC 2016 - avvissu@yandex.ru
+
+- Initial release
+
