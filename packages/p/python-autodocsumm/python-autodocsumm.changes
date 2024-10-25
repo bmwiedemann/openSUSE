@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:58:10 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.2.14
+  * Fix ObjectMember related deprecation/removal by @theOehrly
+  * Type hint mixin base class, fix some more minor style and typing issues by @theOehrly
+  * Don't document class attributes that are an alias to another object by @theOehrly
+  * Autoexception support by @Chilipp
+
+-------------------------------------------------------------------
 Mon Aug 26 13:21:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.2.13

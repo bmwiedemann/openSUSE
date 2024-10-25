@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
-Version:        0.2.13
+Version:        0.2.14
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        Apache-2.0
