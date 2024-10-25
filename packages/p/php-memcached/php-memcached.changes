@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 17 18:46:49 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.3.0
+  * Add #515 option to locally enforce payload size limit
+  * Add #539 zstd support
+  * Add #540 compression_level option
+  * Mark password as a sensitive param for PHP 8.2
+  * Upgrade Windows libmemcached to v1.1.4
+  * Fix Windows PHP 8 compatibility
+  * Fix #518 Windows msgpack support
+  * Fix #522 signed integer overflow
+  * Fix #523 incorrect PHP reflection type for Memcached::cas $cas_token
+  * Fix #546 don't check key automatically, unless client-side verify_key is enabled
+  * Fix #555 incompatible pointer types (32-bit)
+- Remove patch (upstreamed)
+  - fc388e65e7ceab9e6d52bc77b6306f71db981873.patch
+
+-------------------------------------------------------------------
 Wed Apr 12 19:30:24 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix ${var} deprecation
