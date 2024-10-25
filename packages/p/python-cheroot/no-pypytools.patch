@@ -2,11 +2,11 @@
  cheroot/test/test_server.py |   13 -------------
  1 file changed, 13 deletions(-)
 
-Index: cheroot-9.0.0/cheroot/test/test_server.py
+Index: cheroot-10.0.1/cheroot/test/test_server.py
 ===================================================================
---- cheroot-9.0.0.orig/cheroot/test/test_server.py
-+++ cheroot-9.0.0/cheroot/test/test_server.py
-@@ -12,8 +12,6 @@ import pytest
+--- cheroot-10.0.1.orig/cheroot/test/test_server.py
++++ cheroot-10.0.1/cheroot/test/test_server.py
+@@ -13,8 +13,6 @@ import pytest
  import requests
  import requests_unixsocket
  
@@ -15,7 +15,7 @@ Index: cheroot-9.0.0/cheroot/test/test_server.py
  from .._compat import bton, ntob
  from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
  from ..server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
-@@ -380,13 +378,6 @@ if not IS_WINDOWS and not ISSUE511:
+@@ -410,13 +408,6 @@ if not IS_WINDOWS and not ISSUE511:
  
  
  @pytest.fixture
@@ -29,7 +29,7 @@ Index: cheroot-9.0.0/cheroot/test/test_server.py
  def resource_limit(request):
      """Set the resource limit two times bigger then requested."""
      resource = pytest.importorskip(
-@@ -415,11 +406,6 @@ def resource_limit(request):
+@@ -445,11 +436,6 @@ def resource_limit(request):
  @pytest.fixture
  def many_open_sockets(request, resource_limit):
      """Allocate a lot of file descriptors by opening dummy sockets."""

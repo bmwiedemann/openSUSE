@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:24:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add handle-openssl3-error-in-ssl-tests.patch:
+  support openssl 3.2+
+- avoid deprecation warnings for 3.13
+
+-------------------------------------------------------------------
 Wed May 22 13:36:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 10.0.1

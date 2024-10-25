@@ -40,6 +40,8 @@ Patch0:         no-pypytools.patch
 Patch1:         no-relative-imports.patch
 # PATCH-FIX-SUSE increase-tests-timeouts.patch alarrosa@suse.com Tests take longer to run in s390x
 Patch2:         increase-tests-timeouts.patch
+# handle openssl3 error in ssl tests
+Patch3:         handle-openssl3-error-in-ssl-tests.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jaraco.functools}
@@ -115,7 +117,7 @@ donttest="(test_tls_client_auth and False-localhost-builtin)"
 donttest+=" or test_high_number_of_file_descriptor"
 # Openssl 3.2 test failures gh#cherrypy/cheroot#645
 donttest+=" or test_https_over_http_error"
-%pytest --pyargs cheroot $pytest_opts -k "not ($donttest)"
+%pytest --pyargs cheroot $pytest_opts -k "not ($donttest)" -W ignore::DeprecationWarning -p no:unraisableexception
 popd
 
 %pre

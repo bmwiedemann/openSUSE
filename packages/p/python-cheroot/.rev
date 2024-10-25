@@ -248,4 +248,14 @@ It was a bug in requests-unixsocket
       relies on :pypython:ssl.</comment>
     <requestid>1177150</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e887f53b79bfd5ffeaa5ac042dff44dd</srcmd5>
+    <version>10.0.1</version>
+    <time>1729876742</time>
+    <user>anag+factory</user>
+    <comment>- add handle-openssl3-error-in-ssl-tests.patch:
+  support openssl 3.2+
+- avoid deprecation warnings for 3.13</comment>
+    <requestid>1218115</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,72 @@
+From 6d0a7403a6cdf4041d1a3f388dc60b2b95e5e857 Mon Sep 17 00:00:00 2001
+From: Dan Radez <dradez@redhat.com>
+Date: Tue, 2 Apr 2024 10:33:42 -0400
+Subject: [PATCH] handle openssl3 error in ssl tests
+
+Using OpenSSL 3, the expected error string caught in ssl tests has changed.
+E       AssertionError: assert 'wrong version number' in
+                                 '[SSL] record layer failure (_ssl.c:1000)'
+
+This is already handled for OpenSSL pre-1.1 and gte-1.1, adding handling
+for OpenSSL 3+
+
+Fixes: #645
+---
+ cheroot/_compat.py       | 2 ++
+ cheroot/_compat.pyi      | 1 +
+ cheroot/test/test_ssl.py | 7 ++++---
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+Index: cheroot-10.0.1/cheroot/_compat.py
+===================================================================
+--- cheroot-10.0.1.orig/cheroot/_compat.py
++++ cheroot-10.0.1/cheroot/_compat.py
+@@ -8,9 +8,11 @@ import platform
+ try:
+     import ssl
+     IS_ABOVE_OPENSSL10 = ssl.OPENSSL_VERSION_INFO >= (1, 1)
++    IS_ABOVE_OPENSSL31 = ssl.OPENSSL_VERSION_INFO >= (3, 2)
+     del ssl
+ except ImportError:
+     IS_ABOVE_OPENSSL10 = None
++    IS_ABOVE_OPENSSL31 = None
+ 
+ 
+ IS_CI = bool(os.getenv('CI'))
+Index: cheroot-10.0.1/cheroot/_compat.pyi
+===================================================================
+--- cheroot-10.0.1.orig/cheroot/_compat.pyi
++++ cheroot-10.0.1/cheroot/_compat.pyi
+@@ -3,6 +3,7 @@ from typing import Any, ContextManager,
+ def suppress(*exceptions: Type[BaseException]) -> ContextManager[None]: ...
+ 
+ IS_ABOVE_OPENSSL10: Optional[bool]
++IS_ABOVE_OPENSSL31: Optional[bool]
+ IS_CI: bool
+ IS_GITHUB_ACTIONS_WORKFLOW: bool
+ IS_PYPY: bool
+Index: cheroot-10.0.1/cheroot/test/test_ssl.py
+===================================================================
+--- cheroot-10.0.1.orig/cheroot/test/test_ssl.py
++++ cheroot-10.0.1/cheroot/test/test_ssl.py
+@@ -17,7 +17,7 @@ import requests
+ import trustme
+ 
+ from cheroot._compat import bton, ntob, ntou
+-from cheroot._compat import IS_ABOVE_OPENSSL10, IS_CI, IS_PYPY
++from cheroot._compat import IS_ABOVE_OPENSSL10, IS_ABOVE_OPENSSL31, IS_CI, IS_PYPY
+ from cheroot._compat import IS_LINUX, IS_MACOS, IS_WINDOWS
+ from cheroot.server import HTTPServer, get_ssl_adapter_class
+ from cheroot.testing import (
+@@ -597,8 +597,9 @@ def test_https_over_http_error(http_serv
+             ),
+         ).request('GET', '/')
+     expected_substring = (
+-        'wrong version number' if IS_ABOVE_OPENSSL10
+-        else 'unknown protocol'
++      'record layer failure' if IS_ABOVE_OPENSSL31
++      else 'wrong version number' if IS_ABOVE_OPENSSL10
++      else 'unknown protocol'
+     )
+     assert expected_substring in ssl_err.value.args[-1]
+ 
