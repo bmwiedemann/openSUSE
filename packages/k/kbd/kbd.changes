@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:34:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable libkfont
+- Rename libkeymap-devel to just kbd-devel (the recommendation is
+  to reuse the SRPM base name)
+
+-------------------------------------------------------------------
+Thu Oct 17 10:06:59 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix subpackage names and their dependencies.
+- Add missing ldconfig scriptlets.
+
+-------------------------------------------------------------------
+Thu Sep  3 09:46:00 UTC 2024 - Tobias Görgens <tobi.goergens@gmail.com>
+
+- Build libkeymap and create additional subpackages.
+
+-------------------------------------------------------------------
 Mon Apr  8 18:22:42 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Move legacy keymaps that have no acceptable xkb counterpart and

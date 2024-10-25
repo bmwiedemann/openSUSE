@@ -106,6 +106,41 @@ BuildArch:      noarch
 The %{name}-legacy package contains original keymaps for kbd package.
 Please note that %{name}-legacy is not helpful without kbd.
 
+%package -n libkbdfile1
+Summary:        File I/O library for kbd utilities
+Group:          System/Libraries
+
+%description -n libkbdfile1
+libkbdfile contains file access routines for kbd.
+
+%package -n libkeymap1
+Summary:        Keymap library for kbd utilities
+Group:          System/Libraries
+
+%description -n libkeymap1
+libkeymap contains routines for exchanging keyboard mappings
+with the Linux kernel for the Linux virtual console (vtcon).
+
+%package -n libkfont0
+Summary:        Font I/O library for kbd utilities
+Group:          System/Libraries
+
+%description -n libkfont0
+libkfont contains routines for reading/writing PSF fonts, screen maps
+and Unicode maps/tables for kbd.
+
+%package devel
+Summary:        Header files for kbd libraries
+Group:          Development/Libraries/C and C++
+Requires:       libkbdfile1 = %{version}
+Requires:       libkeymap1 = %{version}
+Requires:       libkfont0 = %{version}
+
+%description devel
+This subpackage contains header files and toolchain metadata for
+building programs utilizing the kbd component libraries libkbdfile,
+libkfont and libkeymap.
+
 %define kbd %{_datadir}/kbd
 
 %prep
@@ -148,8 +183,9 @@ chmod 755 autogen.sh
 	--enable-nls \
 	--localedir=%{_datadir}/locale \
 	--enable-optional-progs \
-	--disable-static
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-libkeymap --enable-libkfont
+%make_build
 gcc %{optflags} -o fbtest      $RPM_SOURCE_DIR/fbtest.c
 %ifarch %{ix86} x86_64
 gcc %{optflags} -o numlockbios $RPM_SOURCE_DIR/numlockbios.c
@@ -159,7 +195,7 @@ font=data/consolefonts/lat2a-16.psfu
 ./src/psfxtable -i $font -it  data/unimaps/lat2u.uni \
 	-o t.psfu
 mv t.psfu $font
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_sbindir}
@@ -170,6 +206,7 @@ mkdir -p $DOC/fonts
 # Now call kbd install
 echo "# Now call kbd install DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir}"
 make DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir} install
+rm %{buildroot}%{_libdir}/*.la
 # ln -s iso01-12x22.psfu $K/consolefonts/suse12x22.psfu
 install -m 644 data/consolefonts/README* $DOC/fonts/
 mkdir -p $DOC/doc/
@@ -393,6 +430,10 @@ sed -i 's/^KBD_NUMLOCK="bios"/KBD_NUMLOCK="no"/' /etc/sysconfig/keyboard
 # Migration to /usr/etc.
 test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vlock ||:
 
+%ldconfig_scriptlets -n libkbdfile1
+%ldconfig_scriptlets -n libkeymap1
+%ldconfig_scriptlets -n libkfont0
+
 %files -f %{name}.lang
 #config(noreplace) /etc/sysconfig/console
 %license COPYING
@@ -551,5 +592,21 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %exclude %{kbd}/keymaps/i386/include/linux-with-alt-and-altgr.inc
 %exclude %{kbd}/keymaps/i386/include/compose.inc
 %exclude %{kbd}/keymaps/i386/include/qwerty-layout.inc
+
+%files -n libkbdfile1
+%{_libdir}/libkbdfile.so.*
+
+%files -n libkeymap1
+%{_libdir}/libkeymap.so.*
+
+%files -n libkfont0
+%{_libdir}/libkfont.so.*
+
+%files devel
+%{_includedir}/kbdfile*
+%{_includedir}/keymap*
+%{_includedir}/kfont*
+%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libk*.so
 
 %changelog
