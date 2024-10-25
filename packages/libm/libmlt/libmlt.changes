@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct  9 15:14:06 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix conditional buildreq for Leap 15.x & co
+
+-------------------------------------------------------------------
+Fri Oct  4 12:27:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.28
+  This fixes a couple of major regressions in the previous version:
+  * Fixed seeking and frozen video due by reverting “Improved
+    performance with intra-only video and reducing the frame
+    rate.”
+  * Fixed using melt to render MLT XML with OpenGL effects from
+    movit.
+  Other fixes and changes:
+  * Deprecated the composite transition and the sdl and ndi
+    modules.
+  * Fixed Android camera video has the wrong frame rate (broken
+    in v7.26.0).
+  * Fixed audio not playing for audio-only DTS WMA.
+  * Fixed using “https:” URLs in the xml producer.
+  * Fixed crash on exit when running melt -query or melt -query
+    links.
+  * Added a transition property to the watermark filter. Now, it
+    defaults to using affine.
+  * Changed affine transition argument to set rect property if
+    supplied.
+
+-------------------------------------------------------------------
 Wed Aug 28 14:47:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.26

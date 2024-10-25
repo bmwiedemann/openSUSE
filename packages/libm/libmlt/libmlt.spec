@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.26.0
+%define lversion 7.28.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.26.0
+%define lversion_pp 7.28.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.26.0
+Version:        7.28.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ Source0:        https://github.com/mltframework/mlt/releases/download/v%{version
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if %{with Qt6} && 0%{?sle_version}
+%if %{with Qt6} && 0%{?suse_version} < 1600
 # Qt 6 requires a compiler that fully supports c++-17
 BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
@@ -70,22 +70,22 @@ BuildRequires:  cmake(Qt5Xml)
 %endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(frei0r)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(frei0r)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libavcodec) >= 58
-BuildRequires:  pkgconfig(libavfilter) >= 7
 BuildRequires:  pkgconfig(libavdevice) >= 58
+BuildRequires:  pkgconfig(libavfilter) >= 7
 BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil) >= 56
-BuildRequires:  pkgconfig(libswresample) >= 3
 BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(libswresample) >= 3
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lilv-0)
