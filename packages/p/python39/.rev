@@ -1263,4 +1263,17 @@
 </comment>
     <requestid>1204230</requestid>
   </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>36f26eed543fac06da6151d0cc4b17da</srcmd5>
+    <version>3.9.20</version>
+    <time>1729876777</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+- Drop .pyc files from docdir for reproducible builds
+  (bsc#1230906).
+</comment>
+    <requestid>1218097</requestid>
+  </revision>
 </revisionlist>
