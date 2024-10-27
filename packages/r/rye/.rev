@@ -7,4 +7,22 @@
     <comment>Updated completion packages for this SR</comment>
     <requestid>1202904</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8da343a6287516db544a7099feb884df</srcmd5>
+    <version>0.42.0</version>
+    <time>1730024779</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.42.0:
+  * Bump bundled Ruff version to v0.7.0
+  * Bump bundled uv version to v0.4.25
+  * Add a uv banner to the Rye README
+- Update vendored dependencies.
+- Update vendored dependencies.
+- Update license data to version 3.25.0
+  * ./licenses.tar.gz
+- Update to version 0.41.0:
+  * Restore hash annotations in lockfile
+</comment>
+    <requestid>1218526</requestid>
+  </revision>
 </revisionlist>

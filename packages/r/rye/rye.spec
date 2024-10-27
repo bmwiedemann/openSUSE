@@ -17,14 +17,14 @@
 
 
 Name:           rye
-Version:        0.40.0
+Version:        0.42.0
 Release:        0
 Summary:        Hassle-free Python project manager in Rust
 License:        MIT
 URL:            https://github.com/astral-sh/rye
 Source0:        https://github.com/astral-sh/rye/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v3.24.0.tar.gz#/licenses.tar.gz
+Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v3.25.0.tar.gz#/licenses.tar.gz
 BuildRequires:  cargo >= 1.77
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
@@ -76,7 +76,7 @@ Bash command-line completion support for %{name}.
 %prep
 %autosetup -p1 -a1
 # license crate feature 'offline' is bogus and not implemented
-pushd vendor/license
+pushd vendor/license-3.5.1+3.25.0
 mkdir -p license-list-data
 tar xf %{SOURCE2} -C license-list-data --strip-components=1
 popd
