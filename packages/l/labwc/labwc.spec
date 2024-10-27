@@ -18,17 +18,20 @@
 
 %bcond_with     warp
 %bcond_without  xwayland
-%define sname   wlroots
-%define sver    0.17.4
+%define swname  wlroots
+%define swver   0.17.4
+%define slname  libsfdo
+%define slver   0.1.3
 Name:           labwc
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only
 URL:            https://github.com/labwc/labwc
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://gitlab.freedesktop.org/vyivel/libsfdo/-/archive/v%{slver}/%{slname}-v%{slver}.tar.bz2
 %if %{with warp}
-Source1:        https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/%{sver}/%{sname}-%{sver}.tar.bz2
+Source2:        https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/%{swver}/%{swname}-%{swver}.tar.bz2
 Provides:       bundled(wlroots)
 BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig(egl)
@@ -87,11 +90,13 @@ by openbox.
 
 %prep
 %autosetup
-
 %if %{with warp}
-mkdir subprojects/%{sname}
-tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
+mkdir subprojects/%{swname}
+tar -xf %{SOURCE2} --strip-components 1 -C subprojects/%{swname}
 %endif
+
+mkdir subprojects/%{slname}
+tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{slname}
 
 %build
 %meson \
@@ -118,6 +123,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/menu.xml
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/rc.xml
 %dir %{_datadir}/wayland-sessions
+%{_datadir}/xdg-desktop-portal
 %{_datadir}/wayland-sessions/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/labwc*.svg
 %{_mandir}/man?/%{name}*.?%{?ext_man}

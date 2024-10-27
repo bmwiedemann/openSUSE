@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 25 20:07:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.1
+  * Add titlebar window icons and layout configuration
+  * Support for the cosmic-workspace protocol and the openbox
+    inspired client-list-combined-menu for a better user experience
+    with workspaces.
+- add libsfdo submodule: to enable titlebar window icons and layout
+
+-------------------------------------------------------------------
 Sun Aug 18 08:29:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - switch to GPL2-only, as thats what the src files say
