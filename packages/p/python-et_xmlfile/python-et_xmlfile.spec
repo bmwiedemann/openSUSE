@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-et_xmlfile
 Version:        1.0.1
 Release:        0
