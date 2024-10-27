@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:31:17 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.3
+  * Qt 6.8.0 has a regression that randomly creates artifacts in
+    translucent windows under Wayland. A workaround has been added for
+    it, such that the windows/menus/tooltips which are made translucent
+    by Kvantum are not affected by it.
+
+  * Dragged tabs of Qt ≥ 6.6 are drawn as single tabs (like they were
+    drawn with Qt < 6.6).
+  * Bumped the minimum required version of Qt6 to 6.6.
+  * Said goodbye to KF5. Since the current version, the Qt5 plugin 
+    is compiled without it (which means no blurring for Qt5 apps under
+    Wayland).
+  * Updated and cleaned up the code.
+
+-------------------------------------------------------------------
 Mon Jun 10 01:12:34 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.2
