@@ -33,4 +33,98 @@
     <comment></comment>
     <requestid>1217239</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bdb7ba960551e2fadcbf1dcbc232db3e</srcmd5>
+    <version>0.4.27</version>
+    <time>1730024781</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.27:
+  * Support for PEP 735
+  * Add support for --dry-run mode in uv lock
+  * Don't allow non-string email in authors
+  * Enforce lockfile schema versions
+  * Always attach URL to network errors
+  * Fix dangling non-platform dependencies in uv tree
+  * Prefer lto over debug free-threaded managed Python builds
+  * Add tool.uv.sources to the &quot;Settings&quot; reference
+  * Add reference to uv build and uv publish in the landing pages
+  * Avoid duplicate [tool.uv] header in TOML examples
+  * Document .netrc environment variable and path
+  * Fix .netrc typo in authentication docs
+  * Fix heading level of &quot;Script support&quot; on docs landing page
+  * Move the installation configuration docs to a separate page
+  * Update docs for --publish-url to avoid duplication.
+- Changes since 0.4.23 to 0.4.26:
+  * Allow static dependency metadata entries for direct URL requirements
+  * Use reinstall report formatting for uv python install --reinstall
+  * Add support for system-level uv.toml configuration
+  * Apply requires-python narrowing with upper bounds
+  * Avoid rewriting [[tool.uv.index]] entries when credentials are provided
+  * Fix uv add comment handling for empty arrays
+  * Replace dashes with underscores in index credential variables
+  * Respect --allow-insecure-host in uv publish
+  * Allow arbitrary --package includes in uv tree
+  * Remove existing Python install after successful download in uv python install
+  * Add docs example for URLs with [tool.uv.dependency-metadata]
+  * Add help page for build failures
+  * Fix cache-keys typo in tags = true
+  * Add documentation examples for manual branch, rev, and tag Git dependencies
+  * Improve error message for cache info serialization
+  * Suggest --from command when executable is available for uvx
+  * Support --with-editable in uv tool install
+  * Add support for uv pip show --files
+  * Don't prefetch unreachable packages
+  * Remove tool.uv.sources table if it is empty
+  * Modify cache versioning to support backwards compatibility
+  * Add support for UV_FROZEN and UV_LOCKED
+  * Allow dashes and underscores in custom index names
+  * Avoid panic when Git dependencies are included in fork markers
+  * Check existing source by normalized name before uv add and uv remove
+  * Fix bug where username from authentication cache could be ignored
+  * Fix to respect comments positioning in pyproject.toml on change
+  * Redact index sources in uv.lock
+  * Use correct indentation when project table contains open bracket comment
+  * Only remove a source from [tool.uv.sources] if it is no long being referenced
+  * Modify uv pip list and uv tree to print to stdout regardless of --quiet flag
+  * Improve help message for missing self update invocations
+  * Log .netrc parsing errors
+  * Remove trailing newlines in error messages
+  * Use a dedicated message for incompatible Python versions in wheel ABI tags
+  * Remove commands available in the top-level from the suggested subcommand error
+  * Fix Python executable name in Windows free-threaded Python distributions
+  * Redact index credentials from lockfile sources
+  * Respect UV_INDEX_ rather than UV_HTTP_BASIC_ as documented
+  * Improve sources deserialization errors
+  * Correct pytorch-to-torch reference in docs
+  * Add index URLs when provided via uv add --index or --default-index
+  * Add support for named and explicit indexes
+  * Add templates for popular build backends
+  * Allow multiple pinned indexes in tool.uv.sources
+  * Allow users to incorporate Git tags into dynamic cache keys
+  * Pin named indexes in uv add
+  * Respect named --index and --default-index values in tool.uv.sources
+  * Update to latest PubGrub version
+  * Enable environment variable authentication for named indexes
+  * Avoid showing lower-bound warning outside of explicit lock and sync
+  * Improve logging during lock errors
+  * Improve styling of requires-python warnings
+  * Show hint in resolution failure on Forbidden (403) or Unauthorized (401)
+  * Update to latest cargo-dist version (includes new installer features)
+  * Warn when patch version in requires-python is implicitly 0
+  * Add more context on client errors during range requests
+  * Avoid writing duplicate index URLs with --emit-index-url
+  * Fix error leading to out-of-bound panic in uv-pep508
+  * Fix managed distributions of free-threaded Python on Windows
+  * Fix selection of free-threaded interpreters during default Python discovery
+  * Ignore sources in build requirements for non-source trees
+  * Invalid cache when adding lower bound to lockfile
+  * Respect index priority when storing credentials
+  * Respect relative paths in uv build sources
+  * Narrow what the pip3. logic drops from entry points.
+  * Add some additional notes to --index-url docs
+  * Add upgrade note to README
+  * Remove note that &quot;only a single source may be defined for each dependency&quot;
+</comment>
+    <requestid>1218527</requestid>
+  </revision>
 </revisionlist>
