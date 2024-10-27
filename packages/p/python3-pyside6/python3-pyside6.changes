@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 26 21:29:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patches to fix issue found by the KDE CI (PYSIDE-2893)
+  * 0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
+  * 0001-build-Install-module-doc-snippet-files.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 11:35:35 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix shiboken on 32bit platforms:

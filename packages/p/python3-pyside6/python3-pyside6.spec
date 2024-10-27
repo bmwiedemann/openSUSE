@@ -57,6 +57,9 @@ Patch1:         fix-pytest-qt.patch
 Patch2:         0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
+Patch5:         0001-build-Install-module-doc-snippet-files.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx

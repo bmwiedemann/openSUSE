@@ -288,4 +288,14 @@
     <comment>Update to 6.8.0</comment>
     <requestid>1207947</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>5e88fb917a25931b6c2655399a3170f6</srcmd5>
+    <version>6.8.0</version>
+    <time>1730024795</time>
+    <user>anag+factory</user>
+    <comment>- Add patches to fix issue found by the KDE CI (PYSIDE-2893)
+  * 0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
+  * 0001-build-Install-module-doc-snippet-files.patch</comment>
+    <requestid>1218616</requestid>
+  </revision>
 </revisionlist>
