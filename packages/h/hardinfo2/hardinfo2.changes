@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 24 15:17:55 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.1:
+  * Security Fix for Multi User Systems #93 IMPORTANT
+    (boo#1231839)
+  * PACKAGING: Please remove 2.1.14 & 2.1.17 containing security
+    bug IMPORTANT
+  * PACKAGING: Changed services (systemV/D+runit) to use common
+    script hwinfo2_fetch_sysdata IMPORTANT
+  * PACKAGING: CPack changed to depends instead of recommends.
+  * Users must be added to hardinfo2 group to keep data safe.
+  * Improved UI - New SVG versions of ALL icons!
+  * Manual High DPI scaling support - GDK_DPI_SCALE=1.5 hardinfo2
+  * Improved HTML report - new theme, fixed html gen, images incl.
+    in print version.
+  * Improved SVG for distro logos, hardinfo2 logo - fixed for
+    old distro.
+  * Support for Alpine Linux, postmarketOS, OpenMandriva,
+    Parrot sec, MX Linux
+  * Minor fixes: PO comments, ru+da translations, html dialog
+    modal fix, flicker fix,
+  * Minor fixes: musl support, arm cpus, battery health info,
+    kernel boots, arm/risc meta cpu info added.
+
+-------------------------------------------------------------------
 Thu Oct 17 04:50:19 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.1.17:
