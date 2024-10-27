@@ -1,7 +1,7 @@
 #
 # spec file for package nwg-drawer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           nwg-drawer
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Wlroots application drawer
 License:        MIT
@@ -24,12 +25,12 @@ URL:            https://github.com/nwg-piotr/nwg-drawer
 Source:         https://github.com/nwg-piotr/nwg-drawer/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.23
 BuildRequires:  make
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  golang(API) >= 1.23
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
 
 %description

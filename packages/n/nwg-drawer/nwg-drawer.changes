@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 26 01:25:13 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.5.2.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.5.2
+  - gtk-layer-shell namespace set to nwg-drawer;
+  - #math-label CSS ID added to the math result label, closes #134;
+  - README.md updated by @msmafra and myself;
+  - dependencies updated.
+
+-------------------------------------------------------------------
 Wed Oct 16 13:31:13 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.5.1.
