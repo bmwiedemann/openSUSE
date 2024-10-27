@@ -16,22 +16,28 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           marvin
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        Scans a k8s cluster for misconfigurations and vulnerabilities
 License:        Apache-2.0
 URL:            https://github.com/undistro/marvin
 Source:         marvin-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
-Marvin is a CLI tool designed to help Kubernetes cluster administrators ensure the security and reliability of their environments.
+Marvin is a CLI tool designed to help Kubernetes cluster administrators ensure
+the security and reliability of their environments.
 
-Using a comprehensive set of CEL (Common Expression Language) expressions, Marvin performs extensive checks on cluster resources, identifying potential issues, misconfigurations, and vulnerabilities that could pose a risk to the system. It helps ensure that your Kubernetes clusters are always in compliance with best practices and industry standards.
+Using a comprehensive set of CEL (Common Expression Language) expressions,
+Marvin performs extensive checks on cluster resources, identifying potential
+issues, misconfigurations, and vulnerabilities that could pose a risk to the
+system. It helps ensure that your Kubernetes clusters are always in compliance
+with best practices and industry standards.
 
 Marvin is also used as a plugin in Zora.
 
@@ -83,7 +89,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
@@ -94,8 +100,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
@@ -103,17 +109,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

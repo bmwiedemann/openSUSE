@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 16:53:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.7:
+  * bump alpine base image version from 3.19.1 to 3.20.3 (#66)
+
+-------------------------------------------------------------------
 Fri Sep 27 20:40:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.6:
