@@ -1,7 +1,7 @@
 #
 # spec file for package pplite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define lname   libpplite4
+%define lname   libpplite5
 %define _lto_cflags %nil
 Name:           pplite
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Computations with polyhedra
 License:        GPL-3.0-or-later
@@ -74,8 +74,7 @@ if ! %make_build check; then
 	:
 fi
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
