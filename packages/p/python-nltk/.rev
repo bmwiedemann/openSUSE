@@ -212,4 +212,28 @@
 </comment>
     <requestid>1189727</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6fcebbbe23bfa91ba887ef3347e0a573</srcmd5>
+    <version>3.9.1</version>
+    <time>1730024756</time>
+    <user>anag+factory</user>
+    <comment>- Update to to 3.9.1 (changes since 3.8.1):
+  * Fixed bug that prevented wordnet from loading
+  * Fix security vulnerability CVE-2024-39705 (breaking change)
+  * Replace pickled models (punkt, chunker, taggers) by new
+    pickle-free &quot;_tab&quot; packages
+  * No longer sort Wordnet synsets and relations (sort in calling
+    function when required)
+  * Only strip the last suffix in Wordnet Morphy, thus
+    restricting synsets() results
+  * Add Python 3.12 support
+  * Many other minor fixes
+- Refresh nltk_data
+- Remome upstreamed patches:
+  - CVE-2024-39705.patch
+  - nltk-pr3207-py312.patch
+
+- Update to 3.8</comment>
+    <requestid>1218494</requestid>
+  </revision>
 </revisionlist>

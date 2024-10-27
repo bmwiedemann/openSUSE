@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 30 21:17:21 UTC 2024 - Thiago Bertoldi <thiago.bertoldi@suse.com>
+
+- Update to to 3.9.1 (changes since 3.8.1):
+  * Fixed bug that prevented wordnet from loading
+  * Fix security vulnerability CVE-2024-39705 (breaking change)
+  * Replace pickled models (punkt, chunker, taggers) by new
+    pickle-free "_tab" packages
+  * No longer sort Wordnet synsets and relations (sort in calling
+    function when required)
+  * Only strip the last suffix in Wordnet Morphy, thus
+    restricting synsets() results
+  * Add Python 3.12 support
+  * Many other minor fixes
+- Refresh nltk_data
+- Remome upstreamed patches:
+  - CVE-2024-39705.patch
+  - nltk-pr3207-py312.patch
+
+-------------------------------------------------------------------
 Fri Jul 26 07:14:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2024-39705.patch upstream patch to fix unsafe pickle usage.
@@ -36,8 +55,7 @@ Tue Mar 28 08:36:04 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Jan  6 15:32:43 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.8 
-
+- Update to 3.8
 * Refactor dispersion plot (#3082)
 * Provide type hints for LazyCorpusLoader variables (#3081)
 * Throw warning when LanguageModel is initialized with incorrect vocabulary (#3080)
@@ -72,7 +90,7 @@ Fri Jan  6 15:32:43 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 * Fix LC cutoff policy of text tiling (#2936)
 * Optimize ConditionalFreqDist.__add__ performance (#2939)
 * Add Markdown corpus reader (#2902)
- 
+
 -------------------------------------------------------------------
 Mon Dec 26 10:41:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
@@ -390,7 +408,7 @@ Fri Sep 23 12:29:05 UTC 2011 - saschpe@suse.de
 
 -------------------------------------------------------------------
 Sun Feb  7 18:51:07 CST 2010 - oddrationale@gmail.com
- 
+
 - fixed copyright and license statements
 - removed PyYAML, and added dependency to installers and download
   instructions
@@ -412,6 +430,6 @@ Thu Dec 10 17:23:51 CST 2009 - oddrationale@gmail.com
 - added Requires: python-yaml
 
 -------------------------------------------------------------------
-Wed Dec  9 15:39:35 CST 2009 - oddrationale@gmail.com  
-  
+Wed Dec  9 15:39:35 CST 2009 - oddrationale@gmail.com
+
 - Initial Release (Version 2.0b7): Sun Feb  7 18:50:18 CST 2010

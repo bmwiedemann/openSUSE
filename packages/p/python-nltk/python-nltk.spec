@@ -17,8 +17,9 @@
 
 
 %define modname nltk
+%{?sle15_python_module_pythons}
 Name:           python-nltk
-Version:        3.8.1
+Version:        3.9.1
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
@@ -61,10 +62,6 @@ Source99:       python-nltk.rpmlintrc
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#nltk/nltk#2969 mcepl@suse.com
 # skip tests requiring network connection
 Patch0:         skip-networked-test.patch
-# PATCH-FIX-UPSTREAM nltk-pr3207-py312.patch gh#nltk/nltk#3207
-Patch1:         nltk-pr3207-py312.patch
-# PATCH-FIX-UPSTREAM CVE-2024-39705.patch bsc#1227174 gh#nltk/nltk#3290
-Patch2:         CVE-2024-39705.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -150,7 +147,6 @@ sed -E -i "/#![[:space:]]*\/usr\/bin\/env python/d" \
 sed -E -i "s|#![[:space:]]*%{_bindir}/env python|#!%{_bindir}/python3|" \
     setup.py \
     tools/global_replace.py \
-    nltk_data/corpora/pl196x/splitter.py \
     tools/find_deprecated.py
 
 %autopatch -p1
