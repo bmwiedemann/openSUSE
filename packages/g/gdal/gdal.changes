@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 26 14:59:07 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to release 3.9.3
+  https://github.com/OSGeo/gdal/blob/v3.9.3/NEWS.md
+
+-------------------------------------------------------------------
 Sat Sep 28 12:17:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix SLE/Leap 15.6 build

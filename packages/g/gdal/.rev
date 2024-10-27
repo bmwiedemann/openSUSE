@@ -757,4 +757,13 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1204678</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>204dfd16cbc5df769c7f05a171759827</srcmd5>
+    <version>3.9.3</version>
+    <time>1730024792</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.9.3
+  https://github.com/OSGeo/gdal/blob/v3.9.3/NEWS.md (forwarded request 1218595 from tenno)</comment>
+    <requestid>1218609</requestid>
+  </revision>
 </revisionlist>
