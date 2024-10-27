@@ -17,10 +17,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           k0sctl
-Version:        0.19.0
+Version:        0.19.2
 Release:        0
 Summary:        A bootstrapping and management tool for k0s clusters
 License:        Apache-2.0
@@ -28,7 +26,10 @@ Group:          System/Management
 URL:            https://github.com/k0sproject/k0sctl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.23.2
+BuildRequires:  zsh
 
 %description
 k0sctl is a bootstrapping and management tool for k0s clusters.
@@ -95,9 +96,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 sed -i '1d' %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
-sed -i '1d' %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+sed -i '1d' %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
 
@@ -107,17 +108,12 @@ sed -i '1d' %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
