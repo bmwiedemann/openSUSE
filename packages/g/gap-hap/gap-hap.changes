@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 26 16:14:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.66
+  * Don't read files that are not shipped any longer
+
+-------------------------------------------------------------------
 Wed Jul 31 04:26:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.65
