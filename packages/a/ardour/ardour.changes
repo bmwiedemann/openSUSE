@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:02:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.10. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  * Fix performance issues caused by scheduling of disk I/O
+    threads
+  * Importing SMF (MIDI) via drag-n-drop now uses the file name
+    once again
+  * Small updates to the non-default color themes
+  * New MIDI binding map for the M-Audio Axiom 49 MkII
+  * New Lua script to duplicate regions on the grid
+
+-------------------------------------------------------------------
 Sat Oct 12 21:26:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.9.0. Hotfix release. Check
