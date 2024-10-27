@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 26 08:22:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- fix version output and zsh completion subpackage
+- Update to version 0.11.29:
+  * feat: add crossplane CLI (crank) to tools
+  * Bump golang.org/x/crypto from 0.27.0 to 0.28.0
+  * feat: add duplik8s to tools
+  * refactor: consolidate version finding across version strategies
+
+-------------------------------------------------------------------
 Thu Oct 24 08:15:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.28:

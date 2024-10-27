@@ -16,38 +16,81 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           arkade
-Version:        0.11.28
+Version:        0.11.29
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
 URL:            https://github.com/alexellis/arkade
 Source:         arkade-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
-arkade provides a portable marketplace for downloading your favourite devops CLIs and installing helm charts, with a single command.
-You can also download CLIs like kubectl, kind, kubectx and helm faster than you can type "apt-get/brew update".
+arkade provides a portable marketplace for downloading your favourite devops
+CLIs and installing helm charts, with a single command.  You can also download
+CLIs like kubectl, kind, kubectx and helm faster than you can type
+"apt-get/brew update".
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a 1
+%autosetup -p 1 -a 1
 
 %build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 go build \
    -mod=vendor \
-   -ldflags="-X main.Version=%{version}"
+   -buildmode=pie \
+   -ldflags=" \
+   -X github.com/alexellis/arkade/pkg.Version=v%{version} \
+   -X github.com/alexellis/arkade/pkg.GitCommit=${COMMIT_HASH:0:8}" \
+   -o bin/%{name}
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
