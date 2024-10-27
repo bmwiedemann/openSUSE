@@ -25,7 +25,7 @@
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.14.1
+Version:        3.14.2
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -42,10 +42,9 @@ BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf6-extra-cmake-modules
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Archive)

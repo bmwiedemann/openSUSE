@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Oct 22 15:08:57 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Some qt5 libraries replaced to qt6
+- Removed unneeded qt5 library
+
+-------------------------------------------------------------------
+Tue Oct 22 11:20:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.2:
+  * Bugfix/fix log issues (gh#nextcloud/desktop#7267).
+  * Remove too verbose logs during discovery
+    (gh#nextcloud/desktop#7272).
+  * Add support for the new craft blueprint options relating to
+    override server urls (gh#nextcloud/desktop#7276).
+  * Properly catch std::filesystem exceptions
+    (gh#nextcloud/desktop#7283).
+  * remove extra argument from QString::arg: string has only 1
+    placeholder (gh#nextcloud/desktop#7292).
+  * Cleaning logs (gh#nextcloud/desktop#7295).
+  * Properly check for webdav or dav path in provided host url for
+    cmd.cpp (gh#nextcloud/desktop#7301).
+  * Count the files deletion and warn if threshold is exceeded
+    (gh#nextcloud/desktop#7304).
+  * Message should say many not all: would be triggered by 200
+    files (gh#nextcloud/desktop#7306).
+  * Cleaning logs (gh#nextcloud/desktop#7308).
+  * Improve wordings of confirmation dialog when many files are
+    deleted (gh#nextcloud/desktop#7329).
+  * Fix crash caused due to null accountstate in
+    FileProviderSocketController (gh#nextcloud/desktop#7332).
+  * Bugfix/signature (gh#nextcloud/desktop#7335).
+  * Better logs to understand when a folder is locally discovered
+    (gh#nextcloud/desktop#7342).
+  * Bugfix/use file id to track renamed items
+    (gh#nextcloud/desktop#7343).
+  * Fix: On receiving reply of a remote MOVE: always record it
+    (gh#nextcloud/desktop#7352).
+  * remove ownCloud wording in logging
+    (gh#nextcloud/desktop#7358).
+  * Fix opening of locally available groupfolders in web browser
+    from tray drop-down (gh#nextcloud/desktop#7363).
+  * Make shares distinguishable if there are sharees with the same
+    display name (gh#nextcloud/desktop#7364).
+
+-------------------------------------------------------------------
 Sat Sep 28 18:32:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.1:
