@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Sat Oct 26 13:19:40 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove wlroots as dependency
+
+-------------------------------------------------------------------
+Sat Oct 26 12:24:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Temporarily change sources to https://git.sr.ht/~uncomfy/stacktile until
+  my patches are merged.
+- Update to version 1.0.0+git26:
+  * chore: update codebase to zig 0.13.0
+  * misc: add ./.zig-cache/ to ./.gitignore
+  * remove git submodules
+  * allow cycling through integers in layout commands
+  * add {linear, orthogonal}-center metalayouts
+  * add 'display-name' option
+  * Remove "per-tags" option, add "runtime-changes"
+  * improve code for getting layout config override
+  * Refactor columns and rows into an iterator
+  * Remove outdated note from manpage
+- Add vendored deps as ./vendor.tar.zst
+- Remove zig-wayland.tar.gz
+- Remove following patches
+  * 0001-update-transition-to-be-compatible-with-zig-0.11.0.patch
+  * 0002-build-add-strip-and-pie-options.patch
+
+-------------------------------------------------------------------
+Sat Jan 27 14:40:56 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add 0002-build-add-strip-and-pie-options.patch
+
+-------------------------------------------------------------------
+Sat Jan 27 10:39:52 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add zig-wayland.tar.gz
+- Fix build by adding 0001-update-transition-to-be-compatible-with-zig-0.11.0.patch.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:59 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Mon Aug 07 14:37:41 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.0.0+git22:
+  * add {linear, orthogonal}-center metalayouts
+  * add 'display-name' option
+  * Remove "per-tags" option, add "runtime-changes"
+  * improve code for getting layout config override
+  * Refactor columns and rows into an iterator
+
+-------------------------------------------------------------------
+Fri Mar 17 08:03:59 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.0.0+git17:
+  * Remove outdated note from manpage
+  * Add tag rule for layouts
+  * Revert "add jitter; update to zig 0.10.0"
+
+-------------------------------------------------------------------
+Sat Jan 21 12:32:14 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.0.0+git14:
+  * add jitter; update to zig 0.10.0
+- Remove set_version_manually.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 14:03:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.0.0+git13:
+  * manpage: fix minor mistakes
+  * Add man page
+  * set initial capacity for ArrayLists
+  * document some things
+- Update specfile to use zig 0.9
+
+-------------------------------------------------------------------
+Thu Aug 25 11:50:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add set_version_manually.patch 
+
+-------------------------------------------------------------------
+Thu Aug 25 11:17:47 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Changed package to build using Zig 😄
+- remove Makefile.patch
+- Update to version 1.0.0+git9:
+  * fix bug causing no padding to apply when only a single view is visible
+  * per-tag layout config overrides
+  * layout config refactor
+  * update .gitignore
+  * Update river-layout protocol
+  * add resize-main command
+  * remove outdated info from README
+  * [WIP] 2.0
+  * Makefile: Run $CC properly
+  * Explicitly bind wl_output version
+
+-------------------------------------------------------------------
+Sat Feb 19 05:13:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec template
+

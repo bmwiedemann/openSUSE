@@ -1,0 +1,6 @@
+<package name="stacktile" project="openSUSE:Factory">
+  <title>stacktile </title>
+  <description>Layout generator for the river Wayland compositor</description>
+  <devel project="X11:Wayland" package="stacktile"/>
+  <url>https://git.sr.ht/~leon_plickat/stacktile</url>
+</package>
