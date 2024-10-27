@@ -873,6 +873,8 @@ unsorted:
   - arianna 
   - arianna-lang 
   - arkade 
+  - arkade-bash-completion 
+  - arkade-zsh-completion 
   - arlon-cli 
   - arlon-cli-bash-completion 
   - arlon-cli-fish-completion 
@@ -1019,7 +1021,6 @@ unsorted:
   - assertj-core-javadoc 
   - assimp-devel 
   - ast-grep 
-  - asterisk-sounds-devel 
   - asteroid 
   - asteroids3D 
   - astyle 
@@ -9590,7 +9591,6 @@ unsorted:
   - jmock 
   - jmock-demo 
   - jmock-javadoc 
-  - jmol 
   - jna 
   - jna-contrib 
   - jna-javadoc 
@@ -11839,7 +11839,7 @@ unsorted:
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
-  - libags6 
+  - libags7 
   - libaio-devel 
   - libaio-devel-32bit 
   - libaio1-32bit 
@@ -12323,7 +12323,7 @@ unsorted:
   - libboost_wave1_86_0-devel 
   - libboost_wave1_86_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-5 
+  - libbotan-3-6 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -15435,7 +15435,7 @@ unsorted:
   - libpowerman0 
   - libppl14 
   - libppl_c4 
-  - libpplite4 
+  - libpplite5 
   - libppsdocument4_0-5 
   - libppsshell4_0-4 
   - libppsview4_0-4 
@@ -20491,9 +20491,6 @@ unsorted:
   - openbox-kde 
   - openbox-theme-adapta 
   - openbox-theme-matcha 
-  - openbsc 
-  - openbsc-bs11-utils 
-  - openbsc-bsc-sccplite 
   - opencc 
   - opencc-devel 
   - opencensus-cpp-source 
@@ -37371,6 +37368,7 @@ unsorted:
   - sssd-tools 
   - sssd-winbind-idmap 
   - st 
+  - stacktile 
   - staging-build-key 
   - stalld 
   - stalonetray 
@@ -47637,7 +47635,7 @@ unsorted:
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Lfb-0_0 
-  - typelib-1_0-Libags-6_0 
+  - typelib-1_0-Libags-7_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-Libproxy-1_0 
@@ -49249,6 +49247,7 @@ unsorted:
   - zsh-htmldoc 
   - zsh-sh 
   - zstd-gzip 
+  - zswap-cli 
   - zsync 
   - zug-devel 
   - zutils 
