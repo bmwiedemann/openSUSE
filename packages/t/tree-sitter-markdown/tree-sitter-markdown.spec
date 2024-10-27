@@ -57,7 +57,7 @@ rm %{buildroot}%{_libdir}/libtree-sitter-{markdown-inline.a,markdown.a}
 #neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
 ln -s %{_libdir}/lib%{name}.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-ln -s %{_libdir}/lib%{name}-inline.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}-inline.so
+ln -s %{_libdir}/lib%{name}-inline.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}_inline.so
 
 %ldconfig_scriptlets
 
@@ -67,7 +67,7 @@ ln -s %{_libdir}/lib%{name}-inline.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{
 %{_libdir}/lib%{name}.so.*
 %{_libdir}/lib%{name}-inline.so.*
 %{_libdir}/tree_sitter/%{_name}.so
-%{_libdir}/tree_sitter/%{_name}-inline.so
+%{_libdir}/tree_sitter/%{_name}_inline.so
 %if 0%{?suse_version} < 1600
 %dir %{_libdir}/tree_sitter
 %endif

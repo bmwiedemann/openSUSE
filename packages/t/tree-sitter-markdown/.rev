@@ -15,4 +15,12 @@
     <comment> (forwarded request 1202716 from rrahl0)</comment>
     <requestid>1202717</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0e18060611efdae76eccb52cc03e6eee</srcmd5>
+    <version>0.3.2</version>
+    <time>1730024797</time>
+    <user>anag+factory</user>
+    <comment>as neovim disallows dashes in names (fixes boo#1232021) (forwarded request 1218625 from rrahl0)</comment>
+    <requestid>1218626</requestid>
+  </revision>
 </revisionlist>
