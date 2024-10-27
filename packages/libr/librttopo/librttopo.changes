@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 22 10:12:09 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- tar file and 41.patch were not binary identical with upstream version: fix
+- remove utf8 quotes in spec file 
+- use %make_build and %autosetup in spec file
+
+-------------------------------------------------------------------
 Tue Jul  5 13:25:15 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Fix boo#1201215 VUL-0: CVE-2017-18359: librttopo: 

@@ -1,7 +1,7 @@
 #
 # spec file for package librttopo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ The code is derived from PostGIS liblwgeom library enhanced to provide
 thread-safety, have less dependencies and be independent from PostGIS
 release cycles.
 
-The RT Topology Library was funded by “Regione Toscana - SITA”
+The RT Topology Library was funded by "Regione Toscana - SITA"
 (CIG: 6445512CC1), which also funded many improvements in the
 originating liblwgeom.
 
@@ -72,17 +72,16 @@ This package contains all necessary include files and libraries needed
 to compile and develop applications that use librttopo.
 
 %prep
-%setup -q -n %{name}
-%autopatch -p1
+%autosetup -p1 -n %{name}
 ./autogen.sh
 
 %build
 %configure--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
 # Don't fail build - two failures (reported to upstream)
-make check %{?_smp_mflags} || :
+%make_build check || :
 
 %install
 %make_install
