@@ -9,5 +9,6 @@
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/dracut.conf.d
 /usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-%1.conf
-%dir /usr/lib/modules-load.d
-/usr/lib/modules-load.d/nvidia-load-%1.conf
+%{_unitdir}/load-nvidia-drm-%1.service
+%dir %{_systemd_util_dir}/system-preset
+%{_systemd_util_dir}/system-preset/70-nvidia-jetson-kmp-%1.preset 

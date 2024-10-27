@@ -10,4 +10,218 @@ afterwards. See boo#1222604, comment#77
 Supersedes SR #1190973</comment>
     <requestid>1198157</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36def4ab440f4ac273e929f1436ee5c0</srcmd5>
+    <version>36.4.0_20240912212859</version>
+    <time>1730024725</time>
+    <user>anag+factory</user>
+    <comment>- removed obsolete nv_repackager-no-sudo-use-bzip2.patch 
+
+- splitted off packaging firmware to a separate source package 
+  kernel-firmware-nvidia-jetson in order to separate license files
+- minor cleanup in specfile
+
+- 'nvethernet' considered stable now; instead blacklist upstream 
+  'dwmac_tegra'; use a separate modprobe.d snippet for this and
+  move it to -extra KMP, since 'nvethernet' is part of -extra
+  package
+
+- modprobe.d snippet
+  * on SLE Micro 6.0 remove 'tegra_drm' before loading 'nvidia'
+    module, then load it again (using systemd service file for
+    loading &quot;nvidia-drm&quot; doesn't work on SLE Micro 6.0 for some
+    reason)
+- use SUSE-Firmware as license tag for firmware package
+
+- dracut-crash-fix.patch
+  * fix for tegra-se module, which triggered dracut to crash
+
+- fixed sed command syntax in %post 
+
+- fixed preset file 
+
+- exclude systemd service and preset files for loading
+  &quot;nvidia-drm&quot; from firmware package file section to avoid a 
+  conflict between firmware package and KMPs
+
+- removed modules-load.d snippet, which loaded &quot;nvidia&quot; already
+
+  in initrd
+- use systemd service file for loading &quot;nvidia-drm&quot; and all 
+  depending modules before desktop starts
+- enable above systemd service by a systemd preset file
+- nvidia-drm options:
+  * switch from &quot;modeset=0&quot; to &quot;modeset=1 fbdev=1&quot;
+  * stay with &quot;modeset=0&quot; for IGX (patched during installation
+    using dmidecode to detect IGX hardware)
+- dracut.d snippet: keep nvidia modules out of initrd
+- removed obsolete micro6-kernel.patch 
+
+- 36.3.0/Jetpack 6.1 release (36.4.0-20240912212859)
+- updated source tarballs to git tag l4t-l4t-r36.4_eng_2024-09-12
+  * nvidia-oot
+    + drivers: spi: update misc register programming.
+    + rtl8822ce: Disable debug prints
+    + crypto: fix crypto_engine_ctx build error
+    + crypto: tegra: Fix size of buffer allocated
+    + rtl8822ce: Add Nvidia changes on v5.14.0.4-250
+    + rtl8822ce: Add driver version v5.14.0.4-250
+    + driver: platform: tegra: remove pfn_valid usage
+    + crypto: tegra: Align with upstream
+    + driver: platform: tegra: handle error path
+    + camera: Fix v4l2-compliance test fails
+    + vi5: camera: move allow_signal to dequeue
+    + scripts: conftest: Fix of_property_for_each_u32 test
+    + host1x-fence: Remove callback and cancel fence
+    + misc: mods: Disable MODS for Linux v6.11
+    + drivers: Fix bus-&gt;match for Linux v6.11
+    + drivers: pva: Fix build for Linux v6.11
+    + hwmon: f75308: Fix build for Linux v6.11
+    + block: virtual-storage: Disable for Linux v6.11
+    + ASoC: tegra: Fix redefinition error for Linux v6.11
+    + ASoC: tegra: Fix build for Linux v6.11
+    + nvmap: Implement nvmap_page_mapcount()
+    + gpu: host1x: Increase pushbuffer slots to 1023
+    + media: i2c: fix IMX390 SDR mode corruption
+    + host1x-fence:Free the kzalloc mem
+    + net: nvethernet: Fix build for Linux v6.11
+    + media: camera: Use of_pwm_xlate_with_flags()
+    + camera: add SBGGR12 color format
+    + vi5: camera: add ovrride capture timeout control
+    + nvethernet:Fix cbb error when ifconfig down
+    + media: camera: Fix crash in sensor drivers
+    + pci: Port pci-epf-tegra-vnet to support 5.14.0
+    + net: realtek: Add option to disable drivers
+    + trace: Fix build for Linux v6.10
+    + bt: realtek: Fix potential buffer overflow in cfg_list_item struct
+    + rtcpu: Port IVC bus driver to use iosys-map utils
+    + r8126: Enable support for RSS
+    + ethernet: Add dummy driver for r8126
+    + r8126: Add r8126 driver version 10.013.00-NAPI-PTP
+    + ethernet: Add dummy driver for r8126
+    + r8126: Change file permissions of source files
+    + r8126: Add r8126 driver version 10.013.00
+    + ethernet: Add dummy driver for r8168
+    + PCI: EPF: tvnet: disable the edma interrupt
+    + nvethernet: macsec: Add module param for macsec.
+    + gpu: host1x: Handle CDMA wraparound when debug printing
+    + r8168: Replace kernel version checks with conftest
+    + r8168: Disable 10M EEE
+    + r8168: Fix -20C 10mbps failure in Mods test
+    + r8168: Change file permissions of source files
+    + r8168: update driver to 8.053.00
+    + media: camera: Add missing conftest.h
+    + media: i2c: Fix build for Linux v6.1+
+    + media: i2c: enable IMX390 WDR mode
+    + tegra: tsec: port init_comms property to oot tree
+    + video: tsec: Set tsec state before power_on/off
+    + video: tsec: add support to reboot tsec fw with context
+    + net: nvethernet: Fix support for Linux v6.9
+    + cam_cdi_tsc: Fix Fsync IOCTL fail sometimes
+    + media: virtual-i2c-mux: Fix build for Linux v6.10
+    + media: camera: Fix build for Linux v6.10
+    + pwm: tachometer: Fix build for Linux v6.10
+    + block: virtual-storage: Allow build for Linux v6.10
+    + conftest: Fix tests for Linux v6.10
+    + nv-virtio-poc: Add missing header
+    + media: camera: Fix v4l2-subdev for Linux v6.10
+    + drivers: Fix missing vmalloc.h for Linux v6.10
+    + drivers: mttcan: fix bus-off restart txfer
+    + thermal: Fix build for Linux v6.10
+    + camera:driver: Fix the race condition of setting bypass mode.
+    + t23x:tpg:[WAR] Disable gain control to avoid insmod fail.
+    + net: nvethernet: Drop adjfreq support
+    + pci: endpoint: use conftest for pci-epf-tegra-vnet.c
+    + PCI: Fix endpoint DMA test for Linux v6.9
+    + pci: Use conftest to find if pci_epc_event_ops struct has core_deinit
+    + pcie: Enable core_deinit only when core has implemented it
+    + drivers: misc: fix implicit function
+    + drivers: misc: fix implicit conversion
+    + drivers: misc: Fix the argument of iommu_map() for Linux v6.3
+    + misc: nvscic2c-pcie: Drop usage of enum pci_epc_irq_type from Linux 6.8
+    + net: ethernet: build realtek ethernet driver only for k5.15
+    + tsec: Fix build with -Werror=old-style-declaration
+    + rtl8822ce: Initialize spinlock before usage
+    + rtl8822ce: Remove pr_debug redefinition
+    + net: nvethernet: Fix build for Linux v6.9
+    + nvmap: Fix build for Linux v6.9
+    + drivers: spi: remove spi_master_put() in probe
+    + spi: Fix build for Linux v6.9
+    + conftest: Fix test for SLAB_MEM_SPREAD
+    + net: nvethernet: Fix build for Linux v6.9
+    + media: camera: Ensure gpio_device_get_chip is present
+    + media: camera: Fix build for Linux v6.9
+    + media: camera: Update conftest for gpio_device_find
+    + video: tegra: virt: Fix build for Linux v6.9
+    + soc/tegra: bpmp: Fix build for Linux v6.9
+    + block: virtual-storage: Fix build for Linux v6.9
+    + rtl8822ce: Add Nvidia changes on v5.14.0.4-217
+    + rtl8822ce: Fix TLP/EAPOL/TXFIFO issues
+    + csi5:add error config
+    + drm/tegra: nvdec: Enable SLCG/PG
+  * nvgpu
+    + gpu: nvgpu: Fix build for Linux v6.11
+    + gpu: nvgpu: Use conftest for VM flags
+    + gpu: nvgpu: Fix missing vmalloc.h
+  * hwpm
+    + tegra: hwpm: Fix build for Linux v6.11
+  * nvdisplay
+    + Updating prebuilts and/or headers
+  * hardware/nvidia/t23x/nv-public
+    +  nv-platform: Add PEX WAKE GPIO interrupt for C1 controller
+    +  t23x: overlay: add no-map to vpr carveout
+    +  dts: optee: Update fTPM v2.0 nodes
+    +  nv-platform: Add edge safety services
+    +  p3768: dts: disable PCIe C8 in p3767 0000 PX1
+    +  nv-platform: Rename se nodes to crypto
+    +  nv-platform: Remove duplicate PCIe nodes
+    +  t23x: p3701-0000-as-p3767-000*: Update CPU Fmax
+    +  t23x:P3783: Fix failed to read 2nd Hawk EEPROM serial number.
+    +  t23x: nv-public: tegra: fix typo in dce fabric compatible
+    +  t23x: nv-public: Disable hot surface alert for IGX
+    +  overlay: t23x: fix IMX390 SDR mode corruption
+    +  t23x: nv-public: tegra: disable sce fabric node
+    +  tegra234: Add smmu_test node
+    +  Revert &quot;nv-public: arm64: tegra: disable sce fabric node&quot;
+    +  Revert &quot;tegra234: Add smmu_test node&quot;
+    +  tegra234: Add smmu_test node
+    +  nv-public: qspi: update prod entries for qspi.
+    +  nv-soc: Remove redundant properties of eth node
+    +  t23x: Remove override of clock speed for SBSA UART
+    +  arm64: tegra: Add missing current-speed for SBSA UART
+    +  nv-soc: Rename security engine nodes
+    +  UPSTREAM: arm64: tegra: Add Tegra Security Engine DT nodes
+    +  arm64: tegra: Add dmas and dma-names for Tegra234 UARTE
+    +  arm64: tegra: Mark Tegra234 SPI as compatible with Tegra114
+    +  arm64: tegra: Use correct format for clocks property
+    +  nv-public:P3783: Fix probe fail of Hawks during boot.
+    +  tegra234-camera: Update DT property for VI HW.
+    +  t23x: nv-soc: Disable nvidia,macsec-enable
+    +  t23x: Add Hawk &amp; Owl overlays for P3762
+    +  nv-public: arm64: tegra: disable sce fabric node
+    +  nv-platform: unregister tmp451 from thermal zone
+    +  Revert &quot;Revert &quot;concord: add display hdcp property
+    +  tegra234: Correct the PCIE prefetch memory range
+    +  [UPSTREAM] arm64: tegra: Remove Jetson Orin NX and Jetson Orin Nano DTSI
+    +  [UPSTREAM] arm64: tegra: Add audio support for Jetson Orin NX and Jetson Orin Nano
+    +  [UPSTREAM] arm64: tegra: Define missing IO ports
+    +  [UPSTREAM] arm64: tegra: Move AHUB ports to SoC DTSI
+    +  nv-public: p3767: Remove change from mainline DT
+    +  Revert &quot;concord: add display hdcp property&quot;
+    +  overlay: t23x: enable IMX390 WDR mode
+    +  nv-public: p3740: fix cvb eeprom bus id
+    +  t23x: overlay: Remove legacy Sidecar overlay
+    +  t234:[P3762/P3783]:Increase i2cbus-8 freq to 400khz.
+    +  dt: soc: t234: add iommu mappings for vi&amp;isp units
+    +  tegra234: overlay: Add fTPM node
+    +  t23x: optee-dts: Fix the TPM event log addr DT
+    +  nv-platform: add support for p3767 0000 PX1
+    +  soc: tegra234: Enable USB remote wakeup support
+    +  nv-public:P3762: Fix probe fail of Hawks during boot.
+- supersedes df9e50c.diff, micro6-kernel.patch
+- updated firmware tarball (release 36.4.0-20240912212859)
+
+- use better URL in specfile (boo#1222604, comment#87)</comment>
+    <requestid>1218417</requestid>
+  </revision>
 </revisionlist>

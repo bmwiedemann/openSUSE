@@ -1,0 +1,13 @@
+[Unit]
+Description=Load nvidia-drm
+Before=xdm.service
+After=systemd-user-sessions.service systemd-logind.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/modprobe nvidia-drm
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target
+

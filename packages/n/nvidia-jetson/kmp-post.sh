@@ -16,3 +16,8 @@ EOF
 GID=$(getent group video | cut -d: -f3)
 sed -i "s/REALGID/$GID/" /lib/modprobe.d/50-nvidia-$flavor.conf
 
+# IGX needs 0 for modeset
+if dmidecode |grep "Product Name"|grep -q IGX; then
+  sed -i "s/modeset=1/modeset=0/" /lib/modprobe.d/50-nvidia-$flavor.conf
+fi
+

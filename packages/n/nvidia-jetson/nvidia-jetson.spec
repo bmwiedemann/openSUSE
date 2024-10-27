@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-jetson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}
 %define kernel_module_directory /usr/lib/modules
@@ -25,13 +26,13 @@
 
 %define compress_modules zstd
 Name:           nvidia-jetson
-Version:        36.3.1_20240516220919
+Version:        36.4.0_20240912212859
 Release:        0
 Summary:        Open-Source NVIDIA Jetson Orin graphics drivers
 License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
-URL:            https://partners.nvidia.com/
-Source0:        nvidia-oot-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
+URL:            https://developer.nvidia.com/embedded/jetson-linux-r363
+Source0:        nvidia-oot-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
 Source1:        kmp-post-extra.sh
 Source2:        kmp-postun-extra.sh
 Source3:        kmp-filelist
@@ -40,26 +41,23 @@ Source5:        kmp-postun.sh
 Source7:        preamble
 Source8:        kmp-filelist-extra
 Source9:        preamble-extra
+Source10:       load-nvidia-drm.service
 Source14:       _constraints
-Source22:       nvgpu-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
-Source23:       hwpm-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
-Source24:       nvdisplay-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
-Source25:       nvethernetrm-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
-Source26:       hardware_nvidia_t23x_nv-public-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
-Source27:       hardware_nvidia_tegra_nv-public-l4t-l4t-r36.3.1_eng_2024-05-29.tar.bz2
+Source22:       nvgpu-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
+Source23:       hwpm-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
+Source24:       nvdisplay-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
+Source25:       nvethernetrm-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
+Source26:       hardware_nvidia_t23x_nv-public-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
+Source27:       hardware_nvidia_tegra_nv-public-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
 Source28:       Makefile-NVIDIA-BUG-4460318
-#Source30:       https://developer.nvidia.com/downloads/igx/v1.0.0/jetson_linux_r36.3.1_aarch64.tbz2
-Source30:       nvidia-l4t-firmware_36.3.1-20240516220919_arm64.tbz2
 # Create on SolidDriver Program build service with ...
 # osc buildlog SLE_15_SP6 aarch64 | grep "missing supported flag" | sed -E 's|.*/([^/]+\.ko).*|\1 external|' | sort | uniq > Module.supported
 # Unfortunately this is currently not working when building on build.suse.de
 # But dracut file below could be used for information as well ...
 Source29:       Module.supported
-Patch0:         micro6-kernel.patch
 Patch1:         reimplement-v4l2_match_dv_timings.patch
 Patch2:         persistent-nvidia-id-string.patch
-Patch3:         nv_repackager-no-sudo-use-bzip2.patch
-Patch4:         df9e50c.diff
+Patch4:         dracut-crash-fix.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -68,6 +66,7 @@ BuildRequires:  kernel-syms
 BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(systemd)
 ExclusiveArch:  aarch64
 
 %if 0%{!?kmp_template_name:1}
@@ -88,6 +87,7 @@ nvidia-open-driver-G06-signed-kmp) due to kernel module name conflicts.
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
+
 %description -n nvidia-jetson-extra-kmp-default
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
@@ -95,18 +95,11 @@ which are also required by the NVIDIA Jetson Orin graphics drivers
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
+
 %description -n nvidia-jetson-extra-kmp-64kb
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
 (nvidia-jetson KMP).
-
-%package -n kernel-firmware-nvidia-jetson
-Summary:        Firmware files for NVIDIA Jetson Orin (graphics) drivers
-Group:          System/Kernel
-
-%description -n kernel-firmware-nvidia-jetson
-This package includes the needed firmware files for NVIDIA Jetson
-Orin (graphics) drivers.
 
 %prep
 echo suse_version: %suse_version
@@ -114,14 +107,9 @@ echo sle_version: %sle_version
 echo "kver: %kver"
 %setup -q -n src -c src -a 22 -a 23 -a 24 -a 26 -a 27
 pushd nvidia-oot/drivers/net/ethernet/nvidia/nvethernet
-tar xf %{SOURCE25} 
+tar xf %{SOURCE25}
 popd
 cp $RPM_SOURCE_DIR/Makefile-NVIDIA-BUG-4460318 Makefile
-# needed for SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0) Kernel, but not for
-# sle15-sp6 Kernel !!!
-%if 0%{?suse_version} == 1600
-%patch0 -p0
-%endif
 %patch1 -p1
 %patch2 -p1
 pushd nvidia-oot
@@ -140,11 +128,6 @@ done
 mkdir obj
 
 pushd ..
-#tar xf %{SOURCE30} 
-#cd Linux_for_Tegra
-#%patch3 -p1
-#./nv_tools/scripts/nv_repackager.sh -o ./nv_tegra/l4t_tar_packages --convert-all
-#popd
 
 %build
 # -Wall is upstream default
@@ -181,67 +164,48 @@ MODPROBE_DIR=%{buildroot}/lib/modprobe.d
 mkdir -p $MODPROBE_DIR
 for flavor in %flavors_to_build; do
     cat > $MODPROBE_DIR/50-nvidia-$flavor.conf << EOF
-options nvidia-drm modeset=0
-blacklist nvethernet
+# IGX needs 0 for modeset; patched during installation
+options nvidia-drm modeset=1 fbdev=1
 options nvidia NVreg_DeviceFileUID=0 NVreg_DeviceFileGID=REALGID NVreg_DeviceFileMode=0660 rm_firmware_active="all" NVreg_RegistryDwords="RMHdcpKeyglobZero=1"
-install nvidia /sbin/modprobe tegra_drm; /sbin/modprobe --ignore-install nvidia; /sbin/modprobe nvidia-modeset
+EOF
+    ### Using systemd service file for loading "nvidia-drm" doesn't
+    ### work on SLE Micro 6.0 for some reason, but apparently this
+    ### line helps
+%if 0%{?suse_version} == 1600
+    cat >> $MODPROBE_DIR/50-nvidia-$flavor.conf << EOF
+install nvidia /sbin/rmmod tegra_drm; /sbin/modprobe --ignore-install nvidia; /sbin/modprobe tegra_drm
+EOF
+%endif
+    cat > $MODPROBE_DIR/50-nvidia-extra-$flavor.conf << EOF
+blacklist dwmac_tegra
 EOF
     mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d
     dracutfile=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-$flavor.conf
     dracutfile_extra=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-extra-$flavor.conf
     cat > ${dracutfile} << EOF
-add_drivers+=" nvidia-drm nvidia-modeset nvidia "
+omit_drivers+=" nvidia-drm nvidia-modeset nvidia "
 EOF
-    cat > ${dracutfile_extra} 
-# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0) 
+    cat > ${dracutfile_extra}
+# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0)
 %if 0%{?suse_version} == 1600
     drivers=$(find %{buildroot}/usr/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %else
     drivers=$(find %{buildroot}/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %endif
-    for driver in ${drivers}; do 
+    for driver in ${drivers}; do
         dname=$(basename $driver|sed 's/.ko.*//g')
         if [ "$dname" == "tegra-drm" ]; then
             echo "add_drivers+=${dname}" >> ${dracutfile_extra}
         else
             echo "omit_drivers+=${dname}" >> ${dracutfile_extra}
-        fi 
+        fi
     done
-    mkdir -p %{buildroot}/usr/lib/modules-load.d/
-    cat > %{buildroot}/usr/lib/modules-load.d/nvidia-load-${flavor}.conf << EOF
-nvidia
+    mkdir -p %{buildroot}/usr/lib/systemd/system
+    install -m 644 %{SOURCE10} %{buildroot}/usr/lib/systemd/system/load-nvidia-drm-$flavor.service
+    mkdir -p %{buildroot}%{_systemd_util_dir}/system-preset
+    cat >    %{buildroot}%{_systemd_util_dir}/system-preset/70-nvidia-jetson-kmp-${flavor}.preset << EOF
+enable load-nvidia-drm-${flavor}.service
 EOF
 done
-
-#pushd ../Linux_for_Tegra/nv_tegra/l4t_tar_packages
-#  tar xjf nvidia-l4t-firmware_*_arm64.tbz2 -C $RPM_BUILD_ROOT/
-#popd
-tar xjf $RPM_SOURCE_DIR/nvidia-l4t-firmware_*_arm64.tbz2 -C $RPM_BUILD_ROOT/
-
-pushd $RPM_BUILD_ROOT/
-# etc/systemd/
-mkdir -p usr/lib/systemd
-mv  etc/systemd/*  usr/lib/systemd
-sed -i 's+/etc+/usr/lib+g' usr/lib/systemd/system/nvwifibt.service
-rmdir etc/systemd
-rmdir etc
-# lib/systemd/system/bluetooth.service/
-mv lib/systemd/system/bluetooth.service.d usr/lib/systemd/system
-rmdir lib/systemd/system
-rmdir lib/systemd
-# usr/share/doc
-mkdir -p usr/share/doc/packages/kernel-firmware-nvidia-jetson
-mv usr/share/doc/{bluez,nvidia-l4t-firmware,nvidia-tegra} usr/share/doc/packages/kernel-firmware-nvidia-jetson
-ln -snf service usr/sbin/rcnvwifibt
-popd
-
-%fdupes -s %{buildroot}/lib/firmware
-
-%files -n kernel-firmware-nvidia-jetson
-%doc /usr/share/doc/packages/kernel-firmware-nvidia-jetson/ 
-/lib/firmware/
-/usr/lib/systemd/
-/usr/sbin/brcm_patchram_plus
-/usr/sbin/rcnvwifibt
 
 %changelog
