@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 25 16:53:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.41.0:
+  * docs: fix bad documentation
+  * fix: improve init
+  * chore(deps): bump anchore/sbom-action from 0.17.2 to 0.17.3
+    (#867)
+  * feat(deps): bump github.com/klauspost/compress from 1.17.10 to
+    1.17.11 (#868)
+  * chore(deps): bump actions/cache from 4.1.0 to 4.1.1 (#866)
+  * chore(deps): bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#865)
+  * chore(deps): bump actions/cache from 4.0.2 to 4.1.0 (#864)
+  * chore(deps): bump cachix/install-nix-action from 29 to 30
+    (#863)
+  * docs: fix arch and platform env var examples (#862)
+  * chore(deps): bump cachix/install-nix-action from V28 to 29
+    (#861)
+  * feat(deps): bump github.com/klauspost/compress from 1.17.9 to
+    1.17.10 (#860)
+  * feat(rpm): support %config(missingok) (#854)
+  * fix: undefined variable 'staging-pkgs' (#858)
+  * chore(deps): bump cachix/install-nix-action from V27 to 28
+    (#855)
+  * docs: update cmd docs
+
+-------------------------------------------------------------------
 Sat Sep 14 16:25:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.40.0:
