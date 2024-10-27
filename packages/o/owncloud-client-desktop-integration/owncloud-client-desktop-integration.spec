@@ -17,7 +17,7 @@
 
 
 Name:           owncloud-client-desktop-integration
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        Integration for the ownCloud desktop client with various file managers
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ file manager.
 %autosetup -p1 -n client-desktop-shell-integration-nautilus-%{version}
 
 %build
-%cmake
+%cmake -DREQUIRE_OWNCLOUD_RESOURCES=OFF
 %cmake_build
 
 %install
@@ -88,17 +88,17 @@ file manager.
 
 %files -n nautilus-extension-owncloud
 %license COPYING
-%doc README
+%doc README.md
 %{_datadir}/nautilus-python/extensions/*.py
 
 %files -n caja-extension-owncloud
 %license COPYING
-%doc README
+%doc README.md
 %{_datadir}/caja-python/extensions/*.py
 
 %files -n nemo-extension-owncloud
 %license COPYING
-%doc README
+%doc README.md
 %{_datadir}/nemo-python/extensions/*.py
 
 %changelog

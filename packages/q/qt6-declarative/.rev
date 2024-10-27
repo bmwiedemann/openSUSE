@@ -331,4 +331,16 @@
     <comment></comment>
     <requestid>1208423</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>e0cf44c578396824c6d83c16a832f926</srcmd5>
+    <version>6.8.0</version>
+    <time>1730024645</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream changes:
+  * 0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
+    (QTBUG-129622, kde#493854)
+  * 0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
+    (QTBUG-130360)</comment>
+    <requestid>1218254</requestid>
+  </revision>
 </revisionlist>

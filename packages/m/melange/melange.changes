@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 26 08:39:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.10:
+  * build(deps): bump the gomod group across 1 directory with 2
+    updates
+
+-------------------------------------------------------------------
+Fri Oct 25 12:22:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.9:
+  * chore: unexport build pkg methods
+  * bump apko to get http key support
+  * go mod tidy
+  * bump apko to pick up chainguard key fix
+
+-------------------------------------------------------------------
 Thu Oct 24 08:27:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.8:

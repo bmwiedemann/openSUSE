@@ -32,7 +32,7 @@
 %define rname pulseaudio-qt
 %bcond_without released
 Name:           pulseaudio-qt%{?pkg_suffix}
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later

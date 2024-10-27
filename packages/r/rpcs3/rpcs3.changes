@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon Oct 21 16:07:33 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.33~git20241017:
+  * SPU: Reimplement SPURS limiter
+  * Use system SDL by default since we don't properly support building with just builtin SDL
+  * Switch to focal for aarch64, update Qt
+  * Fix checkrt bundling and remove legacy deploy script
+  * Fixed compilation with cmake on Windows (#16184)
+  * 3rd Party: Bump MoltenVK to 1.2.11 (Vulkan SDK 1.3.296) (#16190)
+  * Qt: Make sure that table columns and their actions have the same state after restoring the layout
+  * Update build-mac.sh
+  * sys_spu: Fix order of some checks
+  * Fix sys_spu_thread_group_disconnect_event
+  * Improve sys_spu_thread_initialize
+  * Fix sys_vm_memory_map
+  * input: use std::array for sticks, sensors and motors
+  * input: fix segfault caused by lockless std::move of stick vector
+  * macOS arm64 CI: Fix packages requiring curl, and fix Ventura (#16193)
+  * Improve log file creation error message
+  * Fix some narrowing warnings
+  * Initialize some spu_thread members
+  * sys_vm: Argument checking fixes
+  * sys_memory: Fix argument size type
+  * sys_spu: Fix SPU queue index type
+  * sys_spu: Minor fixes
+  * SPU: More SPURS limiter fixes
+  * SPU: SPURS pause based average task order duration
+  * SPU: Remove illegal SPURS setting value
+  * SPU: Fix "Max SPURS Threads" performance
+
+-------------------------------------------------------------------
+Mon Oct 07 17:12:04 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.33~git20241007:
+  * SPURS limiter tweaks
+  * Improve AMD cpu detection
+  * overlays: add friends list to home menu
+  * RPCN: add overlay messages on friend requests
+  * Update FAudio to 24.10
+  * Update SDL to 2.30.8
+  * VS: Fix zstd debug lib
+  * SPU LLVM: Compute frest exponent at runtime rather than using the lookup table
+  * SPU LLVM: Add optimized path for spu_re_acc special cases
+  * Fixes audio buffering on non-windows platforms
+  * VS: Add new build scripts to filters
+  * Remove unused SPIRV submodules
+  * VS: fix debug builds
+  * VS: Add buildfiles to filter
+  * rsx: Verify that channel remap is initialized before applying swizzles
+  * rsx: Clarify OGL and VK difference when handling border texels
+  * rsx: Make use of remapped border colors
+  * rsx: Implement texture border color decode to remapped rgba
+  * rsx: Use a proper struct to wrap around channel remap operations
+  * rsx/vs: Restructure filters into functional units
+  * vk: Add support for explicit border colors
+
+-------------------------------------------------------------------
+Mon Oct 02 13:31:40 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+  
+- Update to version 0.0.33~git20241002:
+  * Bump linux x64 docker to 1.7.1, Qt 6.7.3
+  * Do not link intel JIT events when compiling LLVM for ARM64
+  * Move x64 appimage builder to its own legacy script
+  * Qt/Overlays: Add home menu shortcut to game window
+  * linux/aarch64: Fix CI release upload
+  * Typo fix
+  * linux: Fix steam deck issues
+  * Include compositor module in appimage for shell integrations
+  * Enable artifact upload
+  * Update building instructions for linux arm64
+  * Fix shellcheck
+  * Add different suffix per architecture
+  * Deploy aarch64 linux appimages
+  * Fix deploy script
+  * Fix aarch64 build script
+  * aarch64: linux CI
+  * Do not attempt to link in intel JIT events
+  * overlays: Ignore 14 in anisotropic settings
+  * Fix 120 fps frame limit
+  * Use native theme on macOS, hide Dark Mode toggle
+  * Fix scenp_score_record_score param check
+  * Fix crash on VFS Tool (#16146)
+  * Update azure-pipelines.yml
+  * Qt: Try to fix classic stylesheet after Qt 6.7.3 update
+  * SPURS Task limit hotfix (#16140)
+  * Add some extra param handling for cellNetCtlGetInfo
+  * Fix for clang 19
+  * Qt/shortcuts: add handler id to log messages
+  * Qt: Try to improve default stylesheet after Qt 6.7.3 update
+  * Qt: Enable game window shortcuts
+  * Qt 6.7.3
+
+-------------------------------------------------------------------
 Mon Sep 27 13:33:35 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.33~git20240927:

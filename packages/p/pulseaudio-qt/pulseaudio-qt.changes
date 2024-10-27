@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 25 20:18:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.6.1:
+  * context: put event role string into a constexpr
+  * context: fix the event streamrestore index
+  * context: always synthesize an event streamrestore
+  * debug volume setting
+  * add extreme verbosity category for object management
+  * context: correctly initialize try count
+  * context: init all pointers
+  * Disconnect items' signals on context destructor
+  * Bump version to 1.6.1
+
+-------------------------------------------------------------------
 Thu Sep 12 17:49:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.6.0:

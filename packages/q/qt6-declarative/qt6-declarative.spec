@@ -41,6 +41,10 @@ Patch1:         0001-Revert-QQmlDelegateModel-fix-delegates-not-being-cre.patch
 Patch2:         0002-QQmlDelegateModel-fix-delegates-not-being-created-in.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Compiler-Wrap-raw-string-literals-in-QStringLiteral-.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

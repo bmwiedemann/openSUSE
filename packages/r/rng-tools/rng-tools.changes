@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 24 15:49:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on risc64
+
+-------------------------------------------------------------------
 Wed Oct 23 11:56:10 CEST 2024 - ro@suse.de
 
 - add patch rng-tools-missing-includes.patch

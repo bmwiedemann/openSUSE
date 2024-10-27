@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 16:09:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+
+-------------------------------------------------------------------
 Wed Oct 16 07:26:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - With python311-Sphinx we don't need no-skipif-doctests.patch

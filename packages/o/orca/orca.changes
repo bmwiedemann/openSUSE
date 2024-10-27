@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:01:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + LibreOffice: Fix bug causing navigation in Calc sheets to not
+    be presented.
+  + Web:
+    - Fix presentation of heading role in Google docs.
+    - Fix bug in presenting link ancestors
+    - Fix several chattiness issues.
+  + General:
+    - Fix bug causing Orca's help window to not be displayed.
+    - Make string-redundancy check slightly more conservative so
+      that descriptions are not incorrectly filtered out.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 17 13:59:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to source service.

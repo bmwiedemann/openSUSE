@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 25 06:35:53 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.0:
+  * Don't depend on ecm and Qt
+    (gh#owncloud/client-desktop-shell-integration-nautilus#2).
+  * Depend on resoruces
+    (gh#owncloud/client-desktop-shell-integration-nautilus#3).
+
+-------------------------------------------------------------------
 Wed May  8 18:32:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add Requires: owncloud-client to all installable packages.

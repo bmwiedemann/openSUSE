@@ -16,19 +16,19 @@
 #
 
 
-%define libagssonumber 6
+%define libagssonumber 7
 %define libgsequencersonumber 0
 # The condition is run functional tests; defaulted off and needs to be
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        6.16.22
+Version:        7.0.8
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/6.16.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/7.0.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++
@@ -155,11 +155,11 @@ Group:          System/Libraries
 Advanced Gtk+ Sequencer is an audio sequencer application.
 This subpackage contains part of its library set.
 
-%package -n typelib-1_0-Libags-6_0
+%package -n typelib-1_0-Libags-7_0
 Summary:        Introspection bindings for GSequencer's core libraries
 Group:          System/Libraries
 
-%description -n typelib-1_0-Libags-6_0
+%description -n typelib-1_0-Libags-7_0
 Advanced Gtk+ Sequencer is an audio sequencer application.
 This package provides the GObject Introspection bindings for Libags.
 
@@ -216,10 +216,10 @@ Advanced Gtk+ Sequencer library development documentation.
 #%{_libdir}/libags_vst.so.%{libagssonumber}*
 %{_libdir}/libags_audio.so.%{libagssonumber}*
 
-%files -n typelib-1_0-Libags-6_0
-%{_libdir}/girepository-1.0/Ags-6.0.typelib
-%{_libdir}/girepository-1.0/AgsGui-6.0.typelib
-%{_libdir}/girepository-1.0/AgsAudio-6.0.typelib
+%files -n typelib-1_0-Libags-7_0
+%{_libdir}/girepository-1.0/Ags-7.0.typelib
+%{_libdir}/girepository-1.0/AgsGui-7.0.typelib
+%{_libdir}/girepository-1.0/AgsAudio-7.0.typelib
 
 %files -n libgsequencer%{libgsequencersonumber}
 %{_libdir}/libgsequencer.so.%{libgsequencersonumber}*

@@ -132,4 +132,12 @@ Add missing BuildRequires</comment>
 - Initial release of python-pyee 3.0.3</comment>
     <requestid>1198063</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b6ccfd5d5769fcdf01d70dc95bf97ca4</srcmd5>
+    <version>12.0.0</version>
+    <time>1730024686</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218357</requestid>
+  </revision>
 </revisionlist>

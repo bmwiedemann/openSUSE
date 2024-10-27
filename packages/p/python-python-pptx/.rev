@@ -50,4 +50,24 @@
     <comment></comment>
     <requestid>1158252</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c46eca430731ceb1fd6e7c1e1e696ff</srcmd5>
+    <version>1.0.2</version>
+    <time>1730024686</time>
+    <user>anag+factory</user>
+    <comment>- Remove utc.patch (not necessary since 1.0.0)
+- Update to 1.0.2 (2024-08-07)
+  * fix: #1003 restore read-only enum members
+- Update to 1.0.1 (2024-08-05)
+  * fix: #1000 add py.typed
+- Update to 1.0.0 (2024-08-03)
+  * fix: #929 raises on JPEG with image/jpg MIME-type
+  * fix: #943 remove mention of a Px Length subtype
+  * fix: #972 next-slide-id fails in rare cases
+  * fix: #990 do not require strict timestamps for Zip
+  * Add type annotations
+- fixed %{?sle15_python_module_pythons} 
+</comment>
+    <requestid>1218358</requestid>
+  </revision>
 </revisionlist>

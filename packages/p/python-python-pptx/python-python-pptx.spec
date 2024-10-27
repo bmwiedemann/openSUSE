@@ -17,16 +17,16 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-pptx
-Version:        0.6.23
+Version:        1.0.2
 Release:        0
 Summary:        Generate and manipulate Open XML PowerPoint (pptx) files
 License:        MIT
 URL:            http://github.com/scanny/python-pptx
-Source:         https://files.pythonhosted.org/packages/source/p/python-pptx/python-pptx-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/scanny/python-pptx/pull/957 Use UTC-aware datetime objects
-Patch:          utc.patch
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/p/python-pptx/python_pptx-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module lxml >= 3.1.0}
@@ -35,25 +35,27 @@ BuildRequires:  %{python_module XlsxWriter >= 0.5.7}
 BuildRequires:  %{python_module behave}
 BuildRequires:  %{python_module pyparsing >= 2.0.1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions >= 4.9.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Pillow >= 3.3.2
 Requires:       python-XlsxWriter >= 0.5.7
 Requires:       python-lxml >= 3.1.0
+Requires:       python-typing_extensions >= 4.9.0
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Generate and manipulate Open XML PowerPoint (.pptx) files.
+Create, read, and update PowerPoint 2007+ (.pptx) files.
 
 %prep
-%autosetup -p1 -n python-pptx-%{version}
+%autosetup -p1 -n python_pptx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

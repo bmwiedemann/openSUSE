@@ -16,28 +16,33 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           apko
-Version:        0.19.2
+Version:        0.19.4
 Release:        0
 Summary:        Build OCI images from APK packages directly without Dockerfile
 License:        Apache-2.0
 URL:            https://github.com/chainguard-dev/apko
 Source:         apko-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.23
+BuildRequires:  zsh
 
 %description
 Build and publish OCI container images built from apk packages.
 
 apko has the following key features:
 
-* Fully reproducible by default. Run apko twice and you will get exactly the same binary.
-* Fast. apko aims to build images in ms.
-* Small. apko generated images only contain what's needed by the application, in the style of distroless.
-* SBOM Support. apko produces a Software Bill of Materials (SBOM) for images, detailing all the packages inside.
-* Services. apko supports using the s6 supervision suite to run multiple processes in a container without reaping or signalling issues.
+- Fully reproducible by default. Run apko twice and you will get exactly the
+  same binary.
+- Fast. apko aims to build images in ms.
+- Small. apko generated images only contain what's needed by the application,
+  in the style of distroless.
+- SBOM Support. apko produces a Software Bill of Materials (SBOM) for images,
+  detailing all the packages inside.
+- Services. apko supports using the s6 supervision suite to run multiple
+  processes in a container without reaping or signalling issues.
 
 Please note that apko is a work in progress and details are subject to change!
 
@@ -88,7 +93,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
@@ -99,8 +104,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
@@ -108,17 +113,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

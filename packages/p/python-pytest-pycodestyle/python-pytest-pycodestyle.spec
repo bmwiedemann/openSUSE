@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-pytest-pycodestyle
 Version:        2.3.1

@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-SoundFile
 Version:        0.12.1
 Release:        0
@@ -24,6 +25,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/bastibe/python-soundfile
 Source:         https://files.pythonhosted.org/packages/source/s/soundfile/soundfile-%{version}.tar.gz
 Source99:       python-SoundFile.rpmlintrc
+Patch0:		0001-Fix-libsndfile-versioning.patch
 BuildRequires:  %{python_module cffi >= 1.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
@@ -53,6 +55,7 @@ represents audio data as NumPy arrays.
 
 %prep
 %setup -q -n soundfile-%{version}
+%autopatch -p1
 
 %build
 # force a pure wheel through unknown platform

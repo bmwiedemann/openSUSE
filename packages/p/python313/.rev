@@ -463,4 +463,15 @@
 </comment>
     <requestid>1208371</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8e47fdd964e0cf538aa6655838a42add</srcmd5>
+    <version>3.13.0</version>
+    <time>1730024694</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+</comment>
+    <requestid>1218353</requestid>
+  </revision>
 </revisionlist>

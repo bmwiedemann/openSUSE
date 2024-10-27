@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 24 12:41:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.0
+  * Tweak error message for AWS_ERROR_HTTP_RESPONSE_FIRST_BYTE_TIMEOUT
+    by @graebm in (#488)
+  * Update CMake to 3.9 by @waahm7 in (#489)
+
+-------------------------------------------------------------------
 Tue Sep 17 10:38:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.10

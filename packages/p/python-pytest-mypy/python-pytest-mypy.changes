@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 20:45:09 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Fixed %{?sle15_python_module_pythons} 
+
+-------------------------------------------------------------------
 Wed Feb  8 03:53:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.10.3:

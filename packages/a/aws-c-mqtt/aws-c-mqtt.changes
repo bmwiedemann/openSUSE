@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 12:50:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.0
+  * Update CMake to 3.9 by @waahm7 in (#376)
+
+-------------------------------------------------------------------
 Mon Sep 23 09:54:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.6

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:47:42 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Botan 3.6.0, the latest stable release of the Botan 3 series
+
+* Fully integrate and further optimize the new ECC library first introduced in 3.5.0. For common curves, operations are 2 to 3 times faster. This also introduces a new API for low level EC operations, such a point multiplication, using EC_Scalar and EC_AffinePoint types
+* Add support for AVX2-VAES instructions
+* Add support for new ECC curves
+* Fix: CVE-2024-50382
+
+For full changelog, see: https://botan.randombit.net/news.html#version-3-6-0-2024-10-21
+
+-------------------------------------------------------------------
 Tue Jul 30 19:37:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Botan 3.5.0, the latest stable release of the Botan 3 series

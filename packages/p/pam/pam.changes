@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:57:20 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.7.0
+  - build: changed build system from autotools to meson.
+  - libpam_misc: use ECHOCTL in the terminal input
+  - pam_access: support UID and GID in access.conf
+  - pam_env: install environment file in vendordir if vendordir is enabled
+  - pam_issue: only count class user if logind support is enabled
+  - pam_limits: use systemd-logind instead of utmp if logind support is enabled
+  - pam_unix: compare password hashes in constant time
+  - Multiple minor bug fixes, build fixes, portability fixes,
+    documentation improvements, and translation updates.
+- Drop upstream patches:
+  - pam-bsc1194818-cursor-escape.patch
+  - pam_limits-systemd.patch
+  - pam_issue-systemd.patch
+
+-------------------------------------------------------------------
 Thu Sep 12 07:50:55 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - baselibs.conf: add pam-userdb

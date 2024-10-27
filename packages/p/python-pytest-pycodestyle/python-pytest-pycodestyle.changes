@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 22:38:15 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable python-pytest-pycodestyle. 
+
+-------------------------------------------------------------------
 Wed Nov 30 11:33:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition 

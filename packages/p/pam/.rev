@@ -1300,4 +1300,12 @@
 - pam_issue-systemd.patch: only count class user sessions</comment>
     <requestid>1200265</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>c30bf434b5f4bbbb90649d92c346dbac</srcmd5>
+    <version>1.7.0</version>
+    <time>1730024643</time>
+    <user>anag+factory</user>
+    <comment>Update</comment>
+    <requestid>1218188</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:57:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.0
+  * Update CMake to 3.9 by @waahm7 in (#666)
+- from version 0.28.5
+  * Latest submodules by @waahm7 in (#668)
+- from version 0.28.4
+  * Prebuild aws-lc by @sfod in (#648)
+  * Prebuild s2n by @TingDaoK in (#665)
+
+-------------------------------------------------------------------
 Tue Sep 17 09:45:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.28.3

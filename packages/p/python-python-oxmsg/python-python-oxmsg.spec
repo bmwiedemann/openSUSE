@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-oxmsg
 Version:        0.0.1
 Release:        0

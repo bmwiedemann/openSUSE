@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 29 03:20:29 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Add 0001-Fix-libsndfile-versioning.patch
+  * Fix the libsndfile version by stripping the "-exp" postfix. 
+
+-------------------------------------------------------------------
+Sat Sep 28 18:17:04 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons. 
+
+-------------------------------------------------------------------
 Sat Apr  1 11:53:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.1

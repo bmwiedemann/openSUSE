@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 26 08:07:45 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v7.0.8 fixed missing keyboard input of AgsSyncsynth,
+  AgsFMSyncsynth, AgsFFPlayer and AgsPitchSampler.
+- fixed broken unit test
+- minor improvements
+
+-------------------------------------------------------------------
+Fri Oct 25 14:33:23 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new major release version 7.0.6 fixed MIDI version 2 support,
+  prior had wrong byte order.
+- implemented ags_midi_ci_util_is_*() functions to test for
+  specific MIDI-CI message.
+- implemented ags-fx-notation MIDI version 2 support.
+- implemented MIDI 1 and 2 control change parsing functions as
+  ags_recall_midi[1-2]_control_change().
+
+-------------------------------------------------------------------
 Sun Oct 13 06:34:46 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v6.16.22 minor improvements and fixed potential

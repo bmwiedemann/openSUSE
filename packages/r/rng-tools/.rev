@@ -537,4 +537,12 @@
   add missing include statements to fix compilation with recent gcc (forwarded request 1217310 from oertel)</comment>
     <requestid>1217311</requestid>
   </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>daae9dc719ff0f88111d567d96b16207</srcmd5>
+    <version>6.17</version>
+    <time>1730024700</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218372</requestid>
+  </revision>
 </revisionlist>

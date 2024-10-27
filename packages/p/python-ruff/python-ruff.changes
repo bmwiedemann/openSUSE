@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 25 19:55:52 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.1
+ * Preview features
+   * Fix E221 and E222 to flag missing or extra whitespace around == operator 
+   * Formatter: Alternate quotes for strings inside f-strings in preview 
+   * Formatter: Join implicit concatenated strings when they fit on a line 
+   * [pylint] Restrict iteration-over-set to only work on sets of literals (PLC0208) 
+ * Rule changes
+   * [flake8-type-checking] Support auto-quoting when annotations contain quotes 
+ * Server
+   * Avoid indexing the workspace for single-file mode 
+ * Bug fixes
+   * Make ARG002 compatible with EM101 when raising NotImplementedError 
+
+-------------------------------------------------------------------
 Mon Oct 21 19:19:25 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add Provides: ruff-%{version} 

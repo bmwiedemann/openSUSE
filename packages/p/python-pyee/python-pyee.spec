@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pyee
 Version:        12.0.0
 Release:        0

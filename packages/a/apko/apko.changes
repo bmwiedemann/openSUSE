@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Oct 26 08:22:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.4:
+  * Make MergeInto threadsafe (#1374)
+  * set downloadLocation to NOASSERTION when apk.URL is unset
+    (#1372)
+  * fix concurrent annotation map update (#1370)
+  * fix data race in index cache (#1369)
+
+-------------------------------------------------------------------
+Fri Oct 25 12:12:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.3:
+  * build(deps): bump k8s.io/apimachinery from 0.31.1 to 0.31.2
+    (#1363)
+  * build(deps): bump github/codeql-action from 3.26.13 to 3.27.0
+    (#1356)
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#1355)
+  * build(deps): bump google.golang.org/api from 0.201.0 to 0.203.0
+    (#1362)
+  * Avoid race when mutating annotations (#1368)
+  * Stop using real headers for side channels (#1367)
+  * fix(sbom): deduplicate SBOM packages by ID (#1366)
+  * allow key lookups for http (#1365)
+  * SBOM test cleanup (#1361)
+  * don't attempt to discover chainguard keys for local file paths
+    (#1360)
+  * Work around sendfile bug (#1359)
+  * Preserve APK timestamps when using dirfs (#1352)
+  * build(deps): bump chainguard.dev/sdk from 0.1.27 to 0.1.28
+    (#1351)
+  * build(deps): bump github.com/klauspost/compress from 1.17.10 to
+    1.17.11 (#1343)
+  * build(deps): bump go.opentelemetry.io/otel from 1.30.0 to
+    1.31.0 (#1346)
+  * build(deps): bump github/codeql-action from 3.26.12 to 3.26.13
+    (#1344)
+  * build(deps): bump chainguard.dev/sdk from 0.1.26 to 0.1.27
+    (#1347)
+  * build(deps): bump google.golang.org/api from 0.199.0 to 0.201.0
+    (#1348)
+  * build(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#1340)
+  * build(deps): bump github/codeql-action from 3.26.11 to 3.26.12
+    (#1339)
+  * build(deps): bump go.step.sm/crypto from 0.53.0 to 0.54.0
+    (#1338)
+  * build(deps): bump golang.org/x/sys from 0.25.0 to 0.26.0
+    (#1335)
+  * build(deps): bump golang.org/x/time from 0.6.0 to 0.7.0 (#1336)
+  * Update go to 1.23.2 and golangci-lint (#1334)
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.4.0 to
+    2.4.1 (#1331)
+  * build(deps): bump chainguard.dev/sdk from 0.1.25 to 0.1.26
+    (#1328)
+  * build(deps): bump golangci/golangci-lint-action from 6.1.0 to
+    6.1.1 (#1329)
+  * build(deps): bump github/codeql-action from 3.26.10 to 3.26.11
+    (#1332)
+  * build(deps): bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#1333)
+  * Make etag checks optional (#1327)
+  * don't attempt to discover keys for file path repos (#1326)
+  * cleanup: remove Lima documentation (#1325)
+  * use slog default logger for CG auth exchange (#1324)
+  * Drop a period from a command's help (#1312)
+  * build(deps): bump go.step.sm/crypto from 0.52.0 to 0.53.0
+    (#1322)
+  * build(deps): bump google.golang.org/api from 0.198.0 to 0.199.0
+    (#1320)
+  * build(deps): bump github/codeql-action from 3.26.9 to 3.26.10
+    (#1323)
+  * fix(ci): mark GitHub releases as latest from prerelease (#1277)
+  * Fail if APKINDEX has single-character lines (#1321)
+  * build(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#1319)
+  * build(deps): bump github.com/klauspost/compress from 1.17.9 to
+    1.17.10 (#1315)
+  * build(deps): bump github/codeql-action from 3.26.8 to 3.26.9
+    (#1318)
+  * Cache some more expensive operations (#1317)
+  * set OCI created annotation (#1316)
+  * cg auth: fix sometimes (#1314)
+
+-------------------------------------------------------------------
 Sat Sep 21 17:09:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.2:

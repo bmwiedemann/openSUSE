@@ -677,4 +677,16 @@ hits.
 (🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/6 by ayankov)</comment>
     <requestid>1190919</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>80687544dc274d7fad78b06e6b3d8890</srcmd5>
+    <version>3.6.0</version>
+    <time>1730024682</time>
+    <user>anag+factory</user>
+    <comment>Update to Botan 3.6.0 - the latest stable release
+
+
+
+(🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/7 by ayankov)</comment>
+    <requestid>1218259</requestid>
+  </revision>
 </revisionlist>

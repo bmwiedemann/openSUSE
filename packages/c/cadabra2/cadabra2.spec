@@ -27,7 +27,7 @@
 %global pythons python3
 %endif
 Name:           cadabra2
-Version:        2.5.6
+Version:        2.5.8
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later

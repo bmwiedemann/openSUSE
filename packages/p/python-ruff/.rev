@@ -1324,4 +1324,23 @@
     <comment>- add Provides: ruff-%{version}</comment>
     <requestid>1216817</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cb2e213e02ec8103a082e417438f6b30</srcmd5>
+    <version>0.7.1</version>
+    <time>1730024657</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.1
+ * Preview features
+   * Fix E221 and E222 to flag missing or extra whitespace around == operator 
+   * Formatter: Alternate quotes for strings inside f-strings in preview 
+   * Formatter: Join implicit concatenated strings when they fit on a line 
+   * [pylint] Restrict iteration-over-set to only work on sets of literals (PLC0208) 
+ * Rule changes
+   * [flake8-type-checking] Support auto-quoting when annotations contain quotes 
+ * Server
+   * Avoid indexing the workspace for single-file mode 
+ * Bug fixes
+   * Make ARG002 compatible with EM101 when raising NotImplementedError</comment>
+    <requestid>1218438</requestid>
+  </revision>
 </revisionlist>

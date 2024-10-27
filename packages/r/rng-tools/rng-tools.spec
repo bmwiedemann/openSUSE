@@ -70,7 +70,7 @@ Supplements:    modalias(pci:v00008086d000027B8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000027B9sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000027BDsv*sd*bc*sc*i*)
 Supplements:    modalias(virtio:d00000004v*)
-ExclusiveArch:  aarch64 %{ix86} ia64 x86_64 %{arm} ppc64 ppc64le
+ExclusiveArch:  aarch64 %{ix86} ia64 x86_64 %{arm} ppc64 ppc64le riscv64
 %{?systemd_requires}
 
 %description

@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/protobuf-c/protobuf-c
 Source:         https://github.com/protobuf-c/protobuf-c/releases/download/v%version/%name-%version.tar.gz
+Patch0:         711.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler

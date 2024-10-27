@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:13:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.17.2:
+  * build: bump golang to 1.22.8
+  * Add contexts to RuntimeFunctionRunner
+  * Use a mix of v1 and v1beta functions in E2E tests
+  * Support installing Functions with v1 package metadata
+
+-------------------------------------------------------------------
 Sat Sep 21 17:27:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package crossplane-cli: CLI for the crossplane infrastructure

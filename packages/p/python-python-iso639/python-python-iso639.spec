@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-iso639
 Version:        2024.4.27
 Release:        0

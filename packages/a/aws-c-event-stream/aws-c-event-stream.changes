@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 24 12:13:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.0
+  * Update CMake to 3.9 by @waahm7 in (#117)
+
+-------------------------------------------------------------------
 Tue May 21 11:22:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

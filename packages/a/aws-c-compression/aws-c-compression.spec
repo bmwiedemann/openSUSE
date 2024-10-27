@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-compression
-Version:        0.2.18
+Version:        0.3.0
 Release:        0
 Summary:        C99 implementation of Huffman encoding/decoding
 License:        Apache-2.0

@@ -36,10 +36,10 @@
 %endif
 
 %bcond_without selinux
-%bcond_with debug
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
+# List of config files for migration to /usr/etc
 %define config_files pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session \\\
 	security/faillock.conf security/group.conf security/limits.conf security/pam_env.conf security/access.conf \\\
 	security/namespace.conf security/namespace.init security/sepermit.conf
@@ -64,14 +64,13 @@
 %define libpamc_so_version 0.82.1
 %if ! %{defined _distconfdir}
   %define _distconfdir %{_sysconfdir}
-  %define config_noreplace 1
 %endif
 #
 %{load:%{_sourcedir}/macros.pam}
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -96,16 +95,10 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-# https://github.com/linux-pam/linux-pam/pull/816
-Patch2:         pam-bsc1194818-cursor-escape.patch
-# https://github.com/linux-pam/linux-pam/pull/826
-Patch3:         pam_limits-systemd.patch
-# https://github.com/linux-pam/linux-pam/pull/825
-Patch4:         pam_issue-systemd.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  libtool
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  xz
 Requires(post): permissions
 # All login.defs variables require support from shadow side.
@@ -149,9 +142,7 @@ username/password pair against values stored in a Berkeley DB database.
 %package -n pam-extra
 Summary:        PAM module with extended dependencies
 Group:          System/Libraries
-#BuildRequires:  pkgconfig(systemd) 
-# The systemd-mini package does not pass configure checks
-BuildRequires:  systemd-devel >= 254
+BuildRequires:  pkgconfig(libsystemd) >= 254
 BuildRequires:  pam-devel
 Provides:	pam:%{_sbindir}/pam_timestamp_check
 Provides:       pam:%{_pam_moduledir}/pam_limits.so
@@ -217,32 +208,23 @@ cp -a %{SOURCE12} .
 
 %build
 bash ./pam-login_defs-check.sh
-export CFLAGS="%{optflags}"
-%if !%{with debug}
-CFLAGS="$CFLAGS -DNDEBUG"
-%endif
 %if %{livepatchable}
 CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 %endif
-autoreconf
-%configure \
-	--includedir=%{_includedir}/security \
-	--docdir=%{_docdir}/pam \
-	--htmldir=%{_docdir}/pam/html \
-	--pdfdir=%{_docdir}/pam/pdf \
-	--enable-isadir=../..%{_pam_moduledir} \
-	--enable-securedir=%{_pam_moduledir} \
-	--enable-vendordir=%{_prefix}/etc \
-%if "%{flavor}" == "full"
-	--enable-logind \
-%endif
-        --disable-examples \
-	--disable-nis \
-%if %{with debug}
-	--enable-debug
-%endif
 
-%make_build
+%meson -Dvendordir=%{_distconfdir} \
+       -Ddocdir=%{_docdir}/pam \
+       -Dhtmldir=%{_docdir}/pam/html \
+       -Dpdfdir=%{_docdir}/pam/pdf \
+       -Dsecuredir=%{_pam_moduledir} \
+%if "%{flavor}" != "full"
+       -Dlogind=disabled \
+       -Dpam_userdb=disabled \
+       -Ddocs=disabled \
+%endif
+       -Dexamples=false \
+       -Dnis=disabled
+%meson_build
 
 %if %{livepatchable}
 
@@ -270,29 +252,19 @@ cp %{tar_package_name} %{_other}
 
 %endif # livepatchable
 
-gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/libpam/.libs -lpam
+gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/%{_target_platform}/libpam -lpam
 
 %if %{build_main}
 %check
-%make_build check
+%meson_test
 %endif
 
 %install
+%meson_install
+
 mkdir -p %{buildroot}%{_pam_confdir}
 mkdir -p %{buildroot}%{_pam_vendordir}
-mkdir -p %{buildroot}%{_includedir}/security
-mkdir -p %{buildroot}%{_pam_moduledir}
-mkdir -p %{buildroot}/sbin
-mkdir -p -m 755 %{buildroot}%{_libdir}
-# For compat reasons
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
 
-%make_install
-/sbin/ldconfig -n %{buildroot}%{_libdir}
-# Install documentation
-%make_install -C doc
-# install /etc/security/namespace.d used by pam_namespace.so for namespace.conf iscript
-install -d %{buildroot}%{_pam_secconfdir}/namespace.d
 # install other.pamd and common-*.pamd
 install -m 644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/other
 install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/common-auth
@@ -304,21 +276,14 @@ install -m 644 %{SOURCE21} %{buildroot}%{_pam_vendordir}/postlogin-auth
 install -m 644 %{SOURCE22} %{buildroot}%{_pam_vendordir}/postlogin-account
 install -m 644 %{SOURCE23} %{buildroot}%{_pam_vendordir}/postlogin-password
 install -m 644 %{SOURCE24} %{buildroot}%{_pam_vendordir}/postlogin-session
-mkdir -p %{buildroot}%{_prefix}/lib/motd.d
-#
-# Remove crap
-#
-find %{buildroot} -type f -name "*.la" -delete -print
 #
 # Install READMEs of PAM modules
 #
 DOC=%{buildroot}%{_defaultdocdir}/pam
+%if "%{flavor}" == "full"
 mkdir -p $DOC/modules
-pushd modules
-for i in pam_*/README; do
-	cp -fpv "$i" "$DOC/modules/README.${i%/*}"
-done
-popd
+cp -fpv %{_vpath_builddir}/modules/pam_*/pam_*.txt "$DOC/modules/"
+%endif
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{_sbindir}
 
@@ -328,7 +293,6 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
 mkdir -p %{buildroot}%{_pam_secdistconfdir}/{limits.d,namespace.d}
-mv %{buildroot}%{_sysconfdir}/environment %{buildroot}%{_distconfdir}/environment
 
 # Remove manual pages for main package
 %if !%{build_doc}
@@ -380,23 +344,13 @@ done
 %files -f Linux-PAM.lang
 %doc NEWS
 %license COPYING
-%exclude %{_defaultdocdir}/pam/html
-%exclude %{_defaultdocdir}/pam/modules
-%exclude %{_defaultdocdir}/pam/pdf
-%exclude %{_defaultdocdir}/pam/*.txt
 %dir %{_pam_confdir}
 %dir %{_pam_vendordir}
 %dir %{_pam_secconfdir}
 %dir %{_pam_secdistconfdir}
-%dir %{_prefix}/lib/motd.d
-%if %{defined config_noreplace}
-%config(noreplace) %{_pam_confdir}/other
-%config(noreplace) %{_pam_confdir}/common-*
-%else
 %{_pam_vendordir}/other
 %{_pam_vendordir}/common-*
 %{_pam_vendordir}/postlogin-*
-%endif
 %{_distconfdir}/environment
 %{_pam_secdistconfdir}/access.conf
 %{_pam_secdistconfdir}/group.conf

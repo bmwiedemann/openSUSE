@@ -1,0 +1,34 @@
+From 177f1fa06472f0b384e876a545060da6d4985d9a Mon Sep 17 00:00:00 2001
+From: yeey <gyee@suse.com>
+Date: Sat, 28 Sep 2024 20:14:02 -0700
+Subject: [PATCH] Fix libsndfile versioning
+
+Strip the "-exp" from the libsndfile version since _sound_file data
+binary build is optional.
+---
+ soundfile.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/soundfile.py b/soundfile.py
+index cc13192..9012d78 100644
+--- a/soundfile.py
++++ b/soundfile.py
+@@ -10,6 +10,7 @@ For further information, see https://python-soundfile.readthedocs.io/.
+ """
+ __version__ = "0.12.1"
+ 
++import re as _re
+ import os as _os
+ import sys as _sys
+ from os import SEEK_SET, SEEK_CUR, SEEK_END
+@@ -194,6 +195,7 @@ except (OSError, ImportError, TypeError):
+ __libsndfile_version__ = _ffi.string(_snd.sf_version_string()).decode('utf-8', 'replace')
+ if __libsndfile_version__.startswith('libsndfile-'):
+     __libsndfile_version__ = __libsndfile_version__[len('libsndfile-'):]
++__libsndfile_version__ = _re.sub('-.*$', '', __libsndfile_version__)
+ 
+ 
+ def read(file, frames=-1, start=0, stop=None, dtype='float64', always_2d=False,
+-- 
+2.45.2
+

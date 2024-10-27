@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Provides:       ruff-%version}
+Provides:       ruff = %{version}-%{release}
 Requires:       alts
 BuildRequires:  alts
 %python_subpackages

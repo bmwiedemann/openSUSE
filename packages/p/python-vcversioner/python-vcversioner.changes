@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 26 21:09:17 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons. 
+
+-------------------------------------------------------------------
 Thu Aug 26 09:20:07 UTC 2021 - pgajdos@suse.com
 
 - %check: test the package, use %pytest rpm macro

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 22 08:48:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 711.patch
+    + Drop a hunk that was creating problems when the protoc-c
+      was called directly and not just as a plugin to protoc
+
+-------------------------------------------------------------------
+Mon Oct 21 18:20:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 711.patch
+    + Backport the changes from the pull request #711
+      https://github.com/protobuf-c/protobuf-c/pull/711 fixing
+      build with protobuf 26.0+
+
+-------------------------------------------------------------------
 Mon Aug 12 21:14:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - BuildRequire a C++ compiler, previously pulled in via protobuf

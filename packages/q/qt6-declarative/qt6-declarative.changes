@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:42:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
+    (QTBUG-129622, kde#493854)
+  * 0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
+    (QTBUG-130360)
+
+-------------------------------------------------------------------
 Tue Oct 15 09:37:16 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update memory constraints for s390x and use %limit_build

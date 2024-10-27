@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 25 09:46:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.8:
+  * Fix a bug with sympy bridge.
+  * Fix various issues with the notebook interface.
+
+-------------------------------------------------------------------
 Mon Oct  7 19:25:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.6:

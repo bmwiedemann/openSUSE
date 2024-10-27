@@ -231,4 +231,12 @@
     <comment>BuildRequire a C++ compiler, previously pulled in via protobuf (forwarded request 1193529 from AndreasStieger)</comment>
     <requestid>1193754</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>ff3a57dc336ab8faaf36b3e9b0086eb0</srcmd5>
+    <version>1.5.0</version>
+    <time>1730024644</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1216992</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:15:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.0:
+  * feat: tag api to latest version
+  * fix: retry (#2311)
+  * fix: k3d
+  * feat: update doc links to kubefirst.konstruct.io/docs (#2306)
+  * fix: launch deployed message (#2305)
+  * upgrade Kubefirst API to latest (#2303)
+  * upgrade Kubefirst API to latest (#2302)
+  * Reference tagged version of the SDK.
+  * feat: update vault-handler manifest source to konstructio
+    (#2289)
+  * fix typo
+  * add dependencies
+  * fix: bypass if directory already exists
+  * set next macro chart for kubefirst - 2.6.2-rc2
+  * Fix linter issues.
+  * Bump Kubefirst API SDK version.
+  * set next macro chart for kubefirst - 2.6.2-rc1
+  * Fixes to error handling.
+  * Fix typo in function name.
+  * fix(google): fix typo (#2285)
+  * use progress success function
+  * handle nil in switch
+  * fix reset cmd
+  * Fix incorrect printing statement.
+  * Update using final standard linters
+  * Fix compilation
+  * Cleanup internal folder
+  * Fix version printing.
+  * Enable golangci-lint
+  * Clean up code using GolangCI-Lint
+
+-------------------------------------------------------------------
 Sat Sep 14 16:44:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.6.1:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:48:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.0
+  * Update CMake to 3.9 by @waahm7 in (#1159)
+- from version 0.9.31
+  * Support Swift CXX Interop by @waahm7 in (#1160)
+- from version 0.9.30
+  * Improve condition_variable documentation by @jmklix in (#1157)
+  * Fix Cmake Prebuild Remove -S Option by @waahm7 in (#1158)
+- from version 0.9.29
+  * Add comment about tuning for "neoverse-v1" by @graebm in (#1153)
+  * [fix] prebuild set CMAKE_PREFIX_PATH properly by @TingDaoK in (#1154)
+
+-------------------------------------------------------------------
 Tue Sep 17 10:26:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.28
