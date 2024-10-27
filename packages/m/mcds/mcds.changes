@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 20 20:29:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  * Updating po file.
+  * Fixing a printf() argument types.
+  * Fail query on HTTP error
+  * Ability to run `-V` and `-h` before `decrypt()`.
+  * Bugfix in rc.c
+  * Fixing unveil.
+  * Remove generated files
+  * Update mcds.1 copyright
+  * fix lintian-found typos
+  * Remove obsolete autoconf macros
+  * Add example URL for Baikal
+
+-------------------------------------------------------------------
 Thu Jan 16 07:12:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6

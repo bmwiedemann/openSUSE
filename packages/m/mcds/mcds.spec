@@ -1,7 +1,8 @@
 #
 # spec file for package mcds
 #
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           mcds
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Mutt Carddav search program
 License:        GPL-3.0-or-later
@@ -26,11 +27,11 @@ URL:            https://github.com/t-brown/mcds
 Source:         https://github.com/t-brown/mcds/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  libgpgme-devel
 
 %description
 mcds is a command line tool primarily used as a search query plugin
