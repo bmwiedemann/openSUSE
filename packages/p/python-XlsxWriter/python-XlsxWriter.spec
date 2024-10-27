@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define         oldpython python
 Name:           python-XlsxWriter
 Version:        3.2.0
