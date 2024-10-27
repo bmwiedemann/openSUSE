@@ -256,4 +256,14 @@
     <comment>- Switch to %patch macro.</comment>
     <requestid>1152821</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>667e6a631bafe4f10c5b467e26a197a6</srcmd5>
+    <version>0.6.15</version>
+    <time>1730024753</time>
+    <user>anag+factory</user>
+    <comment>- Add intersphinx-mapping.patch to allow working with Sphinx &gt;=
+  8.* (gh#ncclient/ncclient#604).
+</comment>
+    <requestid>1218489</requestid>
+  </revision>
 </revisionlist>

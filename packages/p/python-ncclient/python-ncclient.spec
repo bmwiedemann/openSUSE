@@ -26,6 +26,9 @@ Source:         https://github.com/ncclient/ncclient/archive/v%{version}.tar.gz#
 # PATCH-FIX-OPENSUSE allow_old_sphinx.patch mcepl@suse.com
 # Allow build with old Sphinx (< 2.0) on Leap
 Patch0:         allow_old_sphinx.patch
+# PATCH-FIX-UPSTREAM intersphinx-mapping.patch gh#ncclient/ncclient#604 mcepl@suse.com
+# use conditionally new form of intersphinx_mapping
+Patch1:         intersphinx-mapping.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,8 +61,9 @@ This package contains documentation files for %{name}.
 %prep
 %setup -q -n ncclient-%{version}
 %if 0%{?suse_version} < 1550
-%patch -P 0 -p 1
+%patch -p 1 -P 0
 %endif
+%patch -p 1 -P 1
 
 find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;
 # drop shebang

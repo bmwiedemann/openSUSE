@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 22:17:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add intersphinx-mapping.patch to allow working with Sphinx >=
+  8.* (gh#ncclient/ncclient#604).
+
+-------------------------------------------------------------------
 Wed Feb 28 04:55:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to %patch macro. 
