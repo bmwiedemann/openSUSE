@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Oct 27 03:44:59 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.0.3:
+  * fix(install): don't cache json exports of JSR packages (for now)
+  * chore: remove print debugging from test server
+  * fix(ext/node): refactor http.ServerResponse into function class
+  * bench: remove http benchmarks
+  * fix: add 'fmt-component' to unstable features in schema file
+  * perf(compile): pass module source data from binary directly to v8
+  * fix(fmt): --ext flag requires to pass files
+  * fix: `.npmrc` settings not being passed to install/add command
+  * refactor(ext/node): use concrete error types
+  * Revert "fix(runtime): send ws ping frames from inspector server (#263…
+  * fix(config): schemas for lint rule and tag autocompletion
+  * fix(node/util): support array formats in `styleText`
+  * feat: support node-api in denort
+  * fix(ext/node): cancel pending ipc writes on channel close
+  * fix(ext/node): only set our end of child process pipe to nonblocking mode
+  * fix(ext/ffi): return u64/i64 as bigints from nonblocking ffi calls
+  * fix(install): cache all exports of JSR packages listed in `deno.json`
+  * fix(install): cache type only module deps in `deno install`
+  * fix(node:tls): set TLSSocket.alpnProtocol for client connections
+  * fix: share inotify fd across watchers
+  * fix(ext/node): map `ERROR_INVALID_NAME` to `ENOENT` on windows
+  * fix(check): support `--frozen` on deno check
+  * refactor: add 'docs' suggestion
+  * fix(cli): increase size of blocking task threadpool on windows
+  * fix: unpin tokio version
+  * fix(fmt): upgrade formatters
+  * fix(ext/console): ignore casing for named colors in css parsing
+  * refactor(runtime/ops): use concrete error types
+  * fix(install): update lockfile when using package.json
+  * fix(lsp): import-map-remap quickfix for type imports
+  * fix(npm): support version ranges with && or comma
+  * fix(install): better json editing
+  * feat(lsp): interactive inlay hints
+  * fix(ext/node): use primordials in `ext/node/polyfills/https.ts`
+  * chore: update nix crate
+  * chore: update release doc template
+  * perf: avoid multiple calls to runMicrotask
+  * refactor(ext/webgpu): use concrete error type
+  * refactor(ext/fetch): use concrete error types
+  * Revert "ci: use self-hosted mac arm runner"
+  * refactor(ext/http): use concrete error types
+  * refactor(ext/crypto): use concrete error types
+  * fix(ext/node): stub HTTPParser internal binding
+  * fix(info): resolve workspace member mappings
+  * refactor(ext/websocket): use concrete error type
+  * fix(npm): ensure scoped package name is encoded in URLs
+  * fix(ext/node): properly map reparse point error in readlink
+  * refactor(ext/fs): use concrete error types
+  * fix(help): missing package specifier
+
+-------------------------------------------------------------------
+Mon Oct 21 14:02:42 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Experiment on obs-service-roast to generate tarball from cloned
+  repository. Note that obs-service-roast is not yet in openSUSE.
+  I still plan to add it once other things are finalised such as
+  managing version names.
+
+-------------------------------------------------------------------
+Sun Oct 20 07:35:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update _service file to use recomprizz instead of recompress
+
+-------------------------------------------------------------------
 Fri Oct 18 03:59:38 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 2.0.2:

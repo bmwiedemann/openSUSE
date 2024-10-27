@@ -20,7 +20,7 @@
 
 %global _lto_cflags %nil
 Name:           deno
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -97,7 +97,7 @@ Remote code is fetched and cached on first execution, and only
 updated with the --reload flag.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1 -p1 -n %{name}
 
 # From archlinux. We are using a patched v8 from our build
 unlink $PWD/rusty_v8 || true
