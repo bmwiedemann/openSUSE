@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 13 06:24:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3c1:
+  * mklibcat.scm, require.scm (catalog:expand-path): Patch from
+  * Radey Shouman accepts vicinity symbols 'library,
+    'implementation, 'home, and 'user, which expand to the value
+    of the corresponding "*-vicinity" procedure.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:25:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -45,17 +54,17 @@ Wed Mar 25 11:27:10 UTC 2015 - p.drouand@gmail.com
   * usercat: Use local copy of "schmooz.scm".
 - Remove unzip build require; now use a regular tar.gz tarball
 - Remove obsolete AUTHORS and %clean section
-  
+
 -------------------------------------------------------------------
 Mon Sep  9 11:44:18 UTC 2013 - pgajdos@suse.com
 
 - updated to 3b4:
-  * wttree.scm: Fixed bug where tree balance was lost by deletions 
+  * wttree.scm: Fixed bug where tree balance was lost by deletions
     http://hagi.is.s.u-tokyo.ac.jp/~yh/bst.pdf
   * slib.sh, gosh.init: Added support for (gosh) Gauche-0.9.
-  * mitscheme.init: Removed support for defmacro when 
+  * mitscheme.init: Removed support for defmacro when
     (mit-scheme-release >= 9 0).
-  * trsrch.scm (substring?, substring-ci?): Replaced the skip-vector 
+  * trsrch.scm (substring?, substring-ci?): Replaced the skip-vector
     with an alist (to work with wide characters).
   * etc. see http://people.csail.mit.edu/jaffer/SLIB.html
 
@@ -120,7 +129,7 @@ Tue Nov 24 17:51:06 CET 2009 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Thu Nov 13 14:43:59 CET 2008 - ro@suse.de
 
-- make sure trigger scripts do not fail 
+- make sure trigger scripts do not fail
 
 -------------------------------------------------------------------
 Tue Nov  4 16:29:12 CET 2008 - pgajdos@suse.cz
@@ -136,7 +145,7 @@ Thu Jul 31 16:27:46 CEST 2008 - pgajdos@suse.cz
     (defmacro:eval, defmacro:load): Fixed.
   o guile.init (implementation-vicinity): Just (%site-dir).
     (file-position, gentemp): module-replace!
-    (library-vicinity): Try (%search-load-path "slib/guile.init"). 
+    (library-vicinity): Try (%search-load-path "slib/guile.init").
 
 -------------------------------------------------------------------
 Mon Feb  4 11:40:47 CET 2008 - pgajdos@suse.cz
@@ -148,7 +157,7 @@ Mon Feb  4 11:40:47 CET 2008 - pgajdos@suse.cz
 Wed Dec 19 11:25:54 CET 2007 - pgajdos@suse.cz
 
 - updated to 3a5:
-    * Draft SRFI-96 "SRFI Prerequisites" specifies the interface 
+    * Draft SRFI-96 "SRFI Prerequisites" specifies the interface
       between implementations and the SLIB library system.
     * Added support for Kawa and SISC.
     * SSAX (xml-parse) module ported from SSAX 5.1.
@@ -157,7 +166,7 @@ Wed Dec 19 11:25:54 CET 2007 - pgajdos@suse.cz
     * Updated "guile.init" for Guile 1.8.
     * Updated "mitscheme.init" for versions after 7.7.1.
     * Rewrote scheme48(.init) delete-file using Posix unlink.
-    * Fixed problem with macros-that-work.  
+    * Fixed problem with macros-that-work.
 
 -------------------------------------------------------------------
 Mon Apr  2 18:03:53 CEST 2007 - sbrabec@suse.cz
@@ -177,7 +186,7 @@ Mon Mar  5 18:18:14 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Sep  8 11:56:12 CEST 2006 - anicka@suse.cz
 
-- remove manually generated slibcat, fixed in guile 
+- remove manually generated slibcat, fixed in guile
 
 -------------------------------------------------------------------
 Thu May  4 17:58:32 CEST 2006 - sbrabec@suse.cz
@@ -188,7 +197,7 @@ Thu May  4 17:58:32 CEST 2006 - sbrabec@suse.cz
 Fri Feb 10 16:53:48 CET 2006 - anicka@suse.cz
 
 - install slibcat (fixes #147520), has to be regenerated with every
-  update 
+  update
 
 -------------------------------------------------------------------
 Wed Jan 25 21:41:40 CET 2006 - mls@suse.de
@@ -198,13 +207,13 @@ Wed Jan 25 21:41:40 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Fri Sep  9 10:40:38 CEST 2005 - anicka@suse.cz
 
-- switch back to 3a1 (#112942) 
+- switch back to 3a1 (#112942)
 
 -------------------------------------------------------------------
 Thu Jun 30 15:58:53 CEST 2005 - anicka@suse.cz
 
-- update to 3a2 
- 
+- update to 3a2
+
 -------------------------------------------------------------------
 Tue Dec 16 15:57:28 CET 2003 - mcihar@suse.cz
 
