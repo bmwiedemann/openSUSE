@@ -7,4 +7,13 @@
     <comment>I want this to be published in openSUSE:Factory.</comment>
     <requestid>1187930</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8876518750f350309b2d08a315e09df6</srcmd5>
+    <version>0.2.3</version>
+    <time>1730024771</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies.
+</comment>
+    <requestid>1218518</requestid>
+  </revision>
 </revisionlist>
