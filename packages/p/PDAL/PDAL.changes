@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 25 21:51:44 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 2.8.1
+  * See PDAL changelog at https://github.com/PDAL/PDAL/releases/tag/2.8.1
+  * For detailed changes between 2.8.0 and 2.8.1 see
+    https://github.com/PDAL/PDAL/compare/2.8.0...2.8.1
+  * Refresh PDAL_unbundle.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 18:36:23 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Remove laszip as a build requirement, since PDAL uses a bundled version of

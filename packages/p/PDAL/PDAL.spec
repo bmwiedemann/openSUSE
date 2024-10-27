@@ -21,8 +21,8 @@
 %define sovers 18.0.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.8.0
-Release:        1
+Version:        2.8.1
+Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
 # - filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
@@ -36,6 +36,7 @@ Source0:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2.sha256sum
 # Unbundle some bundled libraries inspired by Fedora work at
 # https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
+# Upstream is not interested in this patch/change, so we'll have to keep it around
 Patch0:         PDAL_unbundle.patch
 BuildRequires:  bash-completion
 BuildRequires:  cairo-devel
