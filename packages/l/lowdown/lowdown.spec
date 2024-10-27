@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global soname liblowdown1
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        1.1.0+git20231119.1200b9f
+Version:        1.2.0
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC
@@ -28,6 +29,7 @@ URL:            https://github.com/kristapsdz/lowdown
 #Source:         %%{name}-%%{version_string}.tar.gz
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+
 %description
 lowdown is a Markdown translator producing HTML5, roff documents in the ms and
 man formats, LaTeX, gemini, OpenDocument, and terminal output.
@@ -87,4 +89,3 @@ chmod a+rx %{buildroot}%{_libdir}/liblowdown.so*
 %{_includedir}/*.h
 
 %changelog
-

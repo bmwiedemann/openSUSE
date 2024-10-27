@@ -2,12 +2,16 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/kristapsdz/lowdown</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="revision">VERSION_1_2_0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <!-- If we ever have to package a snapshot, use this format pattern:
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    -->
     <!-- Default rewrite-pattern
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
-    <param name="versionrewrite-pattern">VERSION_1_1_0</param>
-    <param name="versionrewrite-replacement">1.1.0</param>
+    <param name="versionrewrite-pattern">VERSION_(\d+)_(\d+)_(\d+)</param>
+    <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

@@ -7,4 +7,12 @@
     <comment>Needed to generate manpage for btop, see: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/III355F5W2ZWB563Z6RJPF75ZV7LQYTK/</comment>
     <requestid>1189836</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccff2196265fdf7f431457024d8cf0b4</srcmd5>
+    <version>1.2.0</version>
+    <time>1730024719</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218397</requestid>
+  </revision>
 </revisionlist>

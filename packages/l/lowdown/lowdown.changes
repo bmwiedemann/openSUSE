@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:22:02 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.2.0:
+  * Restructure.
+  * Update images.
+  * Simplify language.
+  * Update coverage.
+  * Get ready for version.
+  * Add --nroff-endnotes for -tms.
+  * Linked footnotes now enabled.
+  * Ignore footnotes in headers.
+  * Proper printing of -tms footnotes.
+  * Ongoing version notes.
+  * Use lowdown_get_meta() for -tfodt.
+  * Use lowdown_get_meta().
+  * Use lowdown_add_meta() instead of repeating.
+  * Move shared metadata node->buffer into utility.
+  * Document newly-recognised metadata.
+  * Add msheader and manheader metadata and fix.
+  * Initialise value.
+  * Fix -thtml special characters in metadata.
+  * Add regression test.
+  * Version notes.
+  * Add "latex header" and clean up.
+  * Initialise no-escape statement.
+  * Allow arbitrary HTML header content from metadata.
+  * Update coverage.
+  * Keep running version notes.
+  * --nroff-no-groff -> nroff-traditional
+  * Use UR/UE and MT/ME for -man links.
+  * Remove unused.
+  * Support OSC8 hyperlinking in -tterm.
+  * More regression tests.
+  * Be explicit about disallowing nested links.
+  * Tweak style.
+
+-------------------------------------------------------------------
+Wed Oct 02 18:15:56 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.1.2:
+  * Bump version.
+  * Exercise entities, remove dead function.
+  * Exercise RCS convention conversions.
+  * Add html regressions to bundle.
+  * More regressions (coverage).
+  * Document --html-titleblock and tweak.
+  * Github link in coverage table.
+  * Fix regress/standalone invocation and add HTML.
+  * DOS regressions.
+  * More pandoc metadata testing (coverage).
+  * More rigorous metadata testing (coverage).
+  * More regressions (test coverage).
+  * Introduce test coverage.
+  * Tweak.
+
+-------------------------------------------------------------------
+Wed Sep 25 08:51:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.1.1:
+  * Tweak website, bump version.
+  * Silence compiler warning.
+  * Document code fences.
+  * Improve Mac OS X buggy SH handling.
+  * Synchronise source/man for --term-all-metadata.
+  * Add regressions for tighter utf8 handling.
+  * Tweak previous.
+  * Don't output a newline after `.SH`
+  * Ignore `test-*.dSYM` directories for macOS configure
+  * Fix `iscntrl` on macOS
+
+- cleanup the _service file:
+  - Given we only package taged releases change the version to use
+    the PARENT_TAG only and provide a better pattern as a comment
+    in case we ever need a snapshot
+  - instead of hardcoding the match and rewrite string actually use
+    a regexp
+
+-------------------------------------------------------------------
 Fri Jul 26 15:31:55 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating %{version} as requested in
