@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 26 07:15:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.5
+- Improve thread load balancing for large number of CPU cores
+
+-------------------------------------------------------------------
 Thu Aug 01 15:50:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.4
