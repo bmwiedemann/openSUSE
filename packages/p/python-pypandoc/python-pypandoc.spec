@@ -17,6 +17,7 @@
 
 
 %define base_name pypandoc
+%{?sle15_python_module_pythons}
 Name:           python-pypandoc
 Version:        1.14
 Release:        0
