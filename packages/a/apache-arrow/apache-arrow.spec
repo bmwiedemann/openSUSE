@@ -22,6 +22,11 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
+%if %{suse_version} <= 1500
+# requires __has_builtin with keywords
+%define gccver 13
+%endif
+
 %define sonum   1700
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit 735ae7128d571398dd798d7ff004adebeb342883
@@ -44,7 +49,7 @@ BuildRequires:  bison
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_process-devel
 BuildRequires:  libboost_system-devel >= 1.64.0
@@ -332,6 +337,8 @@ This package provides utilities for working with the Parquet format.
 sed -i 's/find_package(Protobuf/find_package(Protobuf CONFIG/' cpp/cmake_modules/FindProtobufAlt.cmake
 
 %build
+%{?gccver:export CXX=g++-%{gccver}}
+%{?gccver:export CC=gcc-%{gccver}}
 export CFLAGS="%{optflags} -ffat-lto-objects"
 export CXXFLAGS="%{optflags} -ffat-lto-objects"
 

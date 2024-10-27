@@ -16,10 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit 735ae7128d571398dd798d7ff004adebeb342883
+%if %{suse_version} <= 1500
+# requires __has_builtin with keywords
+%define gccver 13
+%endif
 Name:           python-pyarrow
 Version:        17.0.0
 Release:        0
@@ -41,7 +46,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -98,6 +103,8 @@ sed -i 's/should_have_jemalloc = sys.platform == "linux"/should_have_jemalloc = 
 
 %build
 pushd python
+%{?gccver:export CXX=g++-%{gccver}}
+%{?gccver:export CC=gcc-%{gccver}}
 export CFLAGS="%{optflags}"
 export PYARROW_BUILD_TYPE=relwithdebinfo
 export PYARROW_BUILD_VERBOSE=1
@@ -126,6 +133,8 @@ pushd python
 popd
 
 %check
+%{?gccver:export CXX=g++-%{gccver}}
+%{?gccver:export CC=gcc-%{gccver}}
 export ARROW_TEST_DATA="${PWD}/arrow-testing-%{arrow_testing_commit}/data"
 # flaky tests
 donttest="test_total_bytes_allocated"

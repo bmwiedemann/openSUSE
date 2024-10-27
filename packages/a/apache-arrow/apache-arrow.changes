@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 27 05:31:41 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Set the appropriate C++ complier for the given platform so
+  it will compile on Leap 15.x. 
+
+-------------------------------------------------------------------
 Wed Sep 18 06:59:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add apache-arrow-pr43766-boost1_86.patch for Boost 1.86
