@@ -19,14 +19,17 @@
 %define executable_name hcloud
 
 Name:           hcloud-cli
-Version:        1.47.0
+Version:        1.48.0
 Release:        0
 Summary:        A command-line interface for Hetzner Cloud
 License:        MIT
 URL:            https://github.com/hetznercloud/cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 Provides:       hcloud = %{version}
 
 %description
@@ -89,12 +92,12 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %check
 %{buildroot}/%{_bindir}/%{executable_name} version
-%{buildroot}/%{_bindir}/%{executable_name} version | grep "%{version}"
+%{buildroot}/%{_bindir}/%{executable_name} version | grep %{version}
 
 %files
 %doc README.md
@@ -102,16 +105,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{executable_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 %files -n %{name}-zsh-completion
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{executable_name}
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %changelog

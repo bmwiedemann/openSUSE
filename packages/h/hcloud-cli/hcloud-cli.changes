@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 25 16:55:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.48.0:
+  * chore(main): release 1.48.0 (#867)
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.14.0 (#882)
+  * deps: update module github.com/fatih/color to v1.18.0 (#884)
+  * fix(primary-ip): labels ignored in create command (#885)
+  * deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.1
+    (#876)
+  * deps: update module github.com/boumenot/gocover-cobertura to
+    v1.3.0 (#881)
+  * test(e2e): add back check for uniqueness_error in network test
+    (#879)
+  * deps: update module golang.org/x/crypto to v0.28.0 (#878)
+  * deps: update dependency go to v1.23.2
+  * test(e2e): use builder for regexes (#872)
+  * chore: delete unused workflow file (#873)
+  * test(e2e): add end to end testing (#785)
+  * ci: build and test with Go 1.23 (#871)
+  * refactor: prepare for e2e tests (#870)
+  * feat: allow auto-completing context flag (#861)
+  * refactor: re-enable linters, use presets (#866)
+  * feat(primary-ip): allow setting auto-delete on create (#860)
+  * deps: update dependency golangci/golangci-lint
+  * fix(image): only use numerical IDs for label auto-completion
+    (#865)
+  * add comment
+  * disable bugged gosec rule
+  * deps: update dependency golangci/golangci-lint to v1.60.3
+  * deps: update module golang.org/x/crypto to v0.27.0 (#858)
+
+-------------------------------------------------------------------
 Sat Sep 21 13:13:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package hcloud-cli: CLI to interact with the Hetzner Cloud
