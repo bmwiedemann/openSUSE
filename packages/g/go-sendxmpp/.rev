@@ -263,4 +263,18 @@
   * Improve selection between StartTLS and DirectTLS.</comment>
     <requestid>1201691</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7f2dd28f8e75af375d637b7dfe00ef64</srcmd5>
+    <version>0.11.4</version>
+    <time>1730024787</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.4:
+  * Fix bug in SCRAM-SHA-256-PLUS (via go-xmpp &gt;= 0.2.4).
+
+- Update to 0.11.3:
+  * Add go-xmpp library version to --version output (requires go-xmpp &gt;= 0.2.2).
+  * Fix XEP-0474: SASL SCRAM Downgrade Protection hash calculation bug (via go-xmpp &gt;= v0.2.3).
+  * [gocritic]: Improve code quality.</comment>
+    <requestid>1218605</requestid>
+  </revision>
 </revisionlist>

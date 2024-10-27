@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 26 17:42:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.4:
+  * Fix bug in SCRAM-SHA-256-PLUS (via go-xmpp >= 0.2.4).
+
+-------------------------------------------------------------------
+Sat Oct 26 17:41:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.3:
+  * Add go-xmpp library version to --version output (requires go-xmpp >= 0.2.2).
+  * Fix XEP-0474: SASL SCRAM Downgrade Protection hash calculation bug (via go-xmpp >= v0.2.3).
+  * [gocritic]: Improve code quality.
+
+-------------------------------------------------------------------
 Wed Sep 18 05:38:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.2:
