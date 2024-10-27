@@ -22,7 +22,7 @@
 
 
 Name:       bitwarden
-Version:    2024.9.0
+Version:    2024.10.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -61,7 +61,10 @@ Patch5:    remove-argon2-browser.patch
 Patch7:    bug-reporting-url.patch
 Patch8:    no-sourcemaps.patch
 Patch9:    main-getPath-exe.patch
+Patch10:   native-messaging.main-fix-path.patch
 
+#patches to remove stuff we do not want
+Patch500:  remove-sdk-internal.patch
 
 #patches to use system libs
 Patch1000: system-libargon2.patch
@@ -127,6 +130,9 @@ Bitwarden is a free and open-source password management service that stores sens
 %prep
 %autosetup -p1 -a1
 
+#fix exe path
+sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' apps/desktop/src/main/native-messaging.main.ts
+
 
 # Remove unused postinstall script (electron-rebuild)
 sed -i '/"postinstall":/d' apps/desktop/package.json
@@ -187,6 +193,7 @@ auditable='auditable -vv'
 cd apps/desktop
 pushd desktop_native
 cargo -vv $auditable rustc --offline --release --package desktop_napi --lib --crate-type cdylib
+RUSTFLAGS="$RUSTFLAGS -Crelocation-model=pie" cargo -vv $auditable rustc --offline --release --package desktop_proxy --bin desktop_proxy
 popd
 
 npm run build
@@ -197,6 +204,7 @@ cd build
 mkdir -pv node_modules/@bitwarden/desktop-napi
 cp -plv ../desktop_native/napi/{package.json,index.js} -t node_modules/@bitwarden/desktop-napi
 cp -plvT ../desktop_native/target/release/*.so node_modules/@bitwarden/desktop-napi/desktop_napi.node
+cp -plv -t . ../desktop_native/target/release/desktop_proxy
 rm -fv ../../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
 cp -plvr ../../../node_modules/argon2 -t node_modules/
 cp -plvr ../../../node_modules/node-gyp-build -t node_modules/
@@ -258,6 +266,7 @@ find -name '.gitignore' -type f -print -delete
 #Fix file mode
 find . -type f -exec chmod 644 {} \;
 find . -name '*.node' -exec chmod 755 {} \;
+chmod 755 desktop_proxy
 
 # Remove empty directories
 find . -type d -empty -print -delete

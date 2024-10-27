@@ -1,11 +1,11 @@
---- bitwarden-2024.8.2/apps/desktop/src/main.ts.orig	2024-09-05 19:34:54.000000000 +0200
-+++ bitwarden-2024.8.2/apps/desktop/src/main.ts	2024-09-12 16:26:40.135229235 +0200
-@@ -218,7 +218,7 @@ export class Main {
+--- clients/apps/desktop/src/main.ts.orig	2024-10-17 19:47:51.775405137 +0200
++++ clients/apps/desktop/src/main.ts	2024-10-17 21:04:06.768260922 +0200
+@@ -231,7 +231,7 @@ export class Main {
        this.logService,
        this.windowMain,
        app.getPath("userData"),
 -      app.getPath("exe"),
 +      '/usr/bin/bitwarden-desktop',
+       app.getAppPath(),
      );
  
-     this.desktopAutofillSettingsService = new DesktopAutofillSettingsService(stateProvider);

@@ -2,32 +2,32 @@ Remove dependency on argon-browser2 which should be dead code after https://gith
 We used to path this to use node_modules/argon2 but cannot anymore due to sandbox now being enabled; fortunately, upstream at the same time moved the crypto to main process.
 Therefore the WASM implementation in web-crypto-function should be dead code now and can be removed because we do not want to compile WASM.
 
---- bitwarden/apps/desktop/webpack.renderer.js.old	2023-02-15 19:02:44.000000000 +0100
-+++ bitwarden/apps/desktop/webpack.renderer.js	2023-02-18 18:41:53.074156675 +0100
-@@ -40,11 +40,6 @@
+--- clients/apps/desktop/webpack.renderer.js.orig	2024-10-17 19:47:51.805420136 +0200
++++ clients/apps/desktop/webpack.renderer.js	2024-10-17 21:00:08.105664818 +0200
+@@ -41,11 +41,6 @@ const common = {
          },
          type: "asset/resource",
        },
 -      {
--        test: /\.wasm$/,
+-        test: /argon2(-simd)?\.wasm$/,
 -        loader: "base64-loader",
 -        type: "javascript/auto",
 -      },
      ],
    },
    plugins: [],
-@@ -127,11 +122,6 @@
+@@ -142,11 +137,6 @@ const renderer = {
          test: /[\/\\]@angular[\/\\].+\.js$/,
          parser: { system: true },
        },
 -      {
--        test: /\.wasm$/,
+-        test: /argon2(-simd)?\.wasm$/,
 -        loader: "base64-loader",
 -        type: "javascript/auto",
 -      },
      ],
+     noParse: /argon2(-simd)?\.wasm$/,
    },
-   plugins: [
 --- a/libs/common/src/platform/services/web-crypto-function.service.ts
 +++ b/libs/common/src/platform/services/web-crypto-function.service.ts
 @@ -1,4 +1,3 @@

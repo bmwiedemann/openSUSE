@@ -1,0 +1,106 @@
+https://github.com/bitwarden/sdk-internal might be now free software
+but we currently don't want to build it as it's a huge WASM blob that is not currently used for anything.
+This patch will be removed once some _actual_ JS functionality gets migrated to wasm
+
+--- bitwarden-2024.10.0/apps/desktop/config/base.json.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/apps/desktop/config/base.json	2024-10-25 21:36:08.368540114 +0200
+@@ -1,6 +1,6 @@
+ {
+   "flags": {
+-    "sdk": true
++    "sdk": false
+   },
+   "devFlags": {}
+ }
+--- bitwarden-2024.10.0/apps/desktop/src/app/services/services.module.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/apps/desktop/src/app/services/services.module.ts	2024-10-25 18:50:26.084318326 +0200
+@@ -61,7 +61,6 @@ import { Message, MessageListener, Messa
+ import { SubjectMessageSender } from "@bitwarden/common/platform/messaging/internal";
+ import { TaskSchedulerService } from "@bitwarden/common/platform/scheduling";
+ import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
+-import { DefaultSdkClientFactory } from "@bitwarden/common/platform/services/sdk/default-sdk-client-factory";
+ import { NoopSdkClientFactory } from "@bitwarden/common/platform/services/sdk/noop-sdk-client-factory";
+ import { SystemService } from "@bitwarden/common/platform/services/system.service";
+ import { GlobalStateProvider, StateProvider } from "@bitwarden/common/platform/state";
+@@ -308,7 +307,7 @@ const safeProviders: SafeProvider[] = [
+   }),
+   safeProvider({
+     provide: SdkClientFactory,
+-    useClass: flagEnabled("sdk") ? DefaultSdkClientFactory : NoopSdkClientFactory,
++    useClass: NoopSdkClientFactory,
+     deps: [],
+   }),
+ ];
+--- bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts	2024-10-25 21:29:50.614089204 +0200
+@@ -1,9 +1,8 @@
+ import { Observable } from "rxjs";
+ 
+-import { BitwardenClient } from "@bitwarden/sdk-internal";
+ 
+ export abstract class SdkService {
+-  client$: Observable<BitwardenClient>;
++  client$: Observable<any>;
+   supported$: Observable<boolean>;
+ 
+   abstract failedToInitialize(): Promise<void>;
+--- bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk-client-factory.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk-client-factory.ts	2024-10-25 21:32:14.591461794 +0200
+@@ -1,10 +1,9 @@
+-import type { BitwardenClient } from "@bitwarden/sdk-internal";
+ 
+ /**
+  * Factory for creating SDK clients.
+  */
+ export abstract class SdkClientFactory {
+   abstract createSdkClient(
+-    ...args: ConstructorParameters<typeof BitwardenClient>
+-  ): Promise<BitwardenClient>;
++    ...args: ConstructorParameters<any>
++  ): Promise<any>;
+ }
+--- bitwarden-2024.10.0/libs/common/src/platform/services/sdk/noop-sdk-client-factory.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/libs/common/src/platform/services/sdk/noop-sdk-client-factory.ts	2024-10-25 21:41:45.940577943 +0200
+@@ -1,4 +1,3 @@
+-import type { BitwardenClient } from "@bitwarden/sdk-internal";
+ 
+ import { SdkClientFactory } from "../../abstractions/sdk/sdk-client-factory";
+ 
+@@ -9,8 +8,8 @@ import { SdkClientFactory } from "../../
+  */
+ export class NoopSdkClientFactory implements SdkClientFactory {
+   createSdkClient(
+-    ...args: ConstructorParameters<typeof BitwardenClient>
+-  ): Promise<BitwardenClient> {
++    ...args: ConstructorParameters<any>
++  ): Promise<any> {
+     return Promise.reject(new Error("SDK not available"));
+   }
+ }
+--- bitwarden-2024.10.0/libs/common/src/platform/services/sdk/default-sdk.service.ts.orig	2024-10-17 21:45:41.000000000 +0200
++++ bitwarden-2024.10.0/libs/common/src/platform/services/sdk/default-sdk.service.ts	2024-10-25 22:08:02.781934761 +0200
+@@ -1,6 +1,5 @@
+ import { concatMap, firstValueFrom, shareReplay } from "rxjs";
+ 
+-import { LogLevel, DeviceType as SdkDeviceType } from "@bitwarden/sdk-internal";
+ 
+ import { ApiService } from "../../../abstractions/api.service";
+ import { DeviceType } from "../../../enums/device-type.enum";
+@@ -19,7 +18,7 @@ export class DefaultSdkService implement
+         userAgent: this.userAgent ?? navigator.userAgent,
+       };
+ 
+-      return await this.sdkClientFactory.createSdkClient(settings, LogLevel.Info);
++      return await this.sdkClientFactory.createSdkClient(settings, 'unused');
+     }),
+     shareReplay({ refCount: true, bufferSize: 1 }),
+   );
+@@ -52,7 +51,7 @@ export class DefaultSdkService implement
+     });
+   }
+ 
+-  private toDevice(device: DeviceType): SdkDeviceType {
++  private toDevice(device: DeviceType): any {
+     switch (device) {
+       case DeviceType.Android:
+         return "Android";
