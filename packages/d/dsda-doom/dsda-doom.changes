@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 26 15:29:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.28.2
+  * Added ANIMATED support to Heretic
+  * Fixed mbf21 add / remove NOBLOCKMAP or NOSECTOR dehacked
+    crashes
+
+-------------------------------------------------------------------
 Sun Aug 18 22:12:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.28.1
@@ -13,6 +21,7 @@ Thu Aug 15 16:10:13 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
   * Added MAPINFO flags to support freelook
   * improvement on Tools, Console, and many Bug Fixes
     see https://github.com/kraflab/dsda-doom/blob/master/patch_notes/v0.28.md
+- Delete cmake-path-suffix.diff
 
 -------------------------------------------------------------------
 Sun Dec  3 16:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>

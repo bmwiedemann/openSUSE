@@ -17,7 +17,7 @@
 
 
 Name:           dsda-doom
-Version:        0.28.1
+Version:        0.28.2
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
@@ -72,9 +72,7 @@ popd
 %install
 pushd prboom2/
 %cmake_install
-b="%buildroot"
-install -Dm0644 ICONS/dsda-doom.png "$b/%_datadir/icons/hicolor/apps/dsda-doom.png"
-install -Dm0644 ICONS/dsda-doom.desktop "$b/%_datadir/applications/dsda-doom.desktop"
+rm -f "%buildroot/usr/share/doc/dsda-doom/COPYING" # via %%license instead
 popd
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
@@ -91,7 +89,8 @@ popd
 %_bindir/*
 %_datadir/doom/
 %_datadir/applications/*.desktop
-%_datadir/icons/hicolor/apps/
+%_datadir/icons/hicolor/
 %doc docs/*.md
+%license prboom2/COPYING
 
 %changelog
