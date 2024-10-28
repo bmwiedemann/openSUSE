@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Sat Oct 5 11:00:00 UTC 2024 - Martin Koller <kollix@aon.at>
+
+- Update to 1.10, which is the first version based on Qt6/KF6
+
+-------------------------------------------------------------------
+Fri Dec 15 22:03:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Sat Jul 29 13:23:39 UTC 2023 - Martin Koller <kollix@aon.at>
+
+- Update to 1.9
+  * Added install options (sleep/shutdown after install)
+  * Improved EULA handling on package installation
+  * Added long format of time and date display to calendar popup
+  * Create default folder for storing quicklaunch apps
+  * SysLoad widget width depends on CPU count
+  * Bugfixes and adjustments to newer KDE components
+  * removed no longer needed include.patch
+
+-------------------------------------------------------------------
+Sun Jul 31 14:44:39 UTC 2022 - Martin Koller <kollix@aon.at>
+
+- Update to 1.8.1
+  * Fix DBus menu labels/access key and icon search
+  * Changes needed due to KCM renaming in KF5
+  * allow focus on Desktop to fix issue with global shortcuts
+  * close "please charge" notification immediately when plugged in
+  * Send NotificationClosed dbus message on notification close
+  * removed patch FindQt5ThemeSupport.patch now directly included
+  * added include.patch which adds some missing includes and changes
+    to make it compile on older openSuse versions
+
+-------------------------------------------------------------------
+Sun Dec 12 09:44:39 UTC 2021 - Martin Koller <kollix@aon.at>
+
+- Update to 1.8
+  * Notifications show how long they remain open (small animation)
+  * Weather Applet shows moon phase
+  * Disk Usage Applet watches for mount/unmount to react quicker for update
+  * Display improvements in software updates component
+  * Added DBUS-Menu support (some apps don't provide own menu but only via DBUS, e.g. MS teams)
+
+-------------------------------------------------------------------
+Sun Nov  1 14:07:21 UTC 2020 - Martin Koller <kollix@aon.at>
+
+- Update to 1.7.2
+  * port away from deprecated APIs
+  * adapt to recent KDE changed name of bluetooth KCM
+
+-------------------------------------------------------------------
+Wed May 13 17:05:02 UTC 2020 - Martin Koller <kollix@aon.at>
+
+- Update to 1.7.1
+  * correctly handle WPA2 and show secure before insecure APs
+  * Avoid 100% CPU when a window changes icon very often
+  * OnScreenBrightness, MouseWheel on Pager to change desktops
+
+-------------------------------------------------------------------
+Wed May  6 13:20:00 UTC 2020 - Martin Koller <kollix@aon.at>
+
+- Update to 1.7
+  * Also show non-primary batteries & charge-state in Device List
+  * fix showing only removable devices in Device List
+  * Allow to configure DiskUsageApplet bar text and background color
+  * Arrange SysTray icons in an always compact way
+  * also show battery in SysTray when charging
+  * fix use of available screen geometry for multi-monitor setup
+
+-------------------------------------------------------------------
+Thu Feb 27 17:27:27 UTC 2020 - Martin Koller <kollix@aon.at>
+
+- Update to 1.6
+  * provide a session desktop file to let the user chose liquidshell on login
+  * auto-create network connection when selecting a new wifi network
+  * avoid having to click twice when a new device needs to be mounted
+  * use newer virtual desktop configuration module if available
+  * show remaining packages during install
+
+-------------------------------------------------------------------
+Sat Jun  8 18:50:00 UTC 2019 - kollix@aon.at
+
+- Update to 1.5
+  * Initial package

@@ -1,0 +1,6 @@
+<package name="liquidshell" project="openSUSE:Factory">
+  <title>Basic Desktop Shell leveraging KDE Frameworks6 libraries</title>
+  <description>liquidshell is a basic Desktop Shell leveraging KDE Frameworks6 libraries.</description>
+  <devel project="KDE:Extra" package="liquidshell"/>
+  <url>https://apps.kde.org/liquidshell</url>
+</package>
