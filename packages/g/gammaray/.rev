@@ -216,4 +216,12 @@
     <comment>Update to 3.1.0</comment>
     <requestid>1197007</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>030f62be4ccb215037f9f9e3359fc80d</srcmd5>
+    <version>3.1.0</version>
+    <time>1730125337</time>
+    <user>anag+factory</user>
+    <comment>- Add a _constraints file to fix oom issues when building gammaray</comment>
+    <requestid>1218736</requestid>
+  </revision>
 </revisionlist>

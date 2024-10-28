@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 08:43:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add a _constraints file to fix oom issues when building gammaray
+
+-------------------------------------------------------------------
 Wed Aug 28 13:21:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.1.0
