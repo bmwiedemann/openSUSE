@@ -27,7 +27,7 @@ tar:
 	# End patches section \
 	go mod download && \
 	go mod verify && \
-	go mod vendor && \
+	go work vendor && \
 	tar --format=posix -cf ../../vendor.tar vendor && \
 	# avoid ".git can't be found" \
 	git init && \

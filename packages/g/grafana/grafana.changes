@@ -1,4 +1,689 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:19:15 UTC 2024 - marius.kittler@suse.com
+
+- Update to version 11.3.0:
+  Features and enhancements:
+  * Alerting: Add manage permissions UI logic for Contact Points
+  * Alerting: Allow linking to silence form with __alert_rule_uid__
+    value preset
+  * Alerting: Hide query name when using simplified mode in the
+    alert rule
+  * Alerting: Limit and clean up old alert rules versions
+  * Alerting: Style nits for the simple query mode
+  * Alerting: Update texts in annotations step
+  * Alerting: Use useProduceNewAlertmanagerConfiguration for contact
+    points
+  * Auth: Attach external session info to Grafana session
+  * Auth: Replace jmespath/go-jmespath with
+    jmespath-community/go-jmespath
+  * CloudMigrations: Add support for migration of Library Elements
+    (Panels) resources
+  * Cloudwatch: Update grafana-aws-sdk
+  * Explore Logs: Preinstall for onprem Grafana instances
+  * ExploreMetrics: Ensure compatibility with Incremental Querying
+  * FieldConfig: Add support for Actions
+  * Plugin Extensions: Require meta-data to be defined in
+    plugin.json during development mode
+  * Tempo: Add deprecation notice for Aggregate By
+  Bug fixes:
+  * Alerting/Chore: Fix TimeRangeInput not working across multiple
+    months
+  * Alerting: Fix default value for input in simple condition
+  * Alerting: Fix eval interval not being saved when creating a new
+    group
+  * Alerting: Fix incorrect permission on POST external rule groups
+    endpoint [CVE-2024-8118]
+  * Alerting: Fix panics when attempting to create an Alertmanager
+    after failing
+  * DashboardScene: Fixes url issue with subpath when exiting edit
+    mode
+  * Dashboards: Enable scenes by default
+  * Dashboards: Fixes view & edit keyboard shortcuts when grafana is
+    behind a subpath
+  * ElasticSearch: Fix errorsource in newInstanceSettings
+  * SubMenu: Fix expanding sub menu items on touch devices
+
+-------------------------------------------------------------------
+Mon Oct 21 10:46:51 UTC 2024 - marius.kittler@suse.com
+
+- Packaging improvements:
+  * Use `go work vendor` as the previous command runs into an error
+    with the updated version of Grafana
+
+- Update to version 11.2.2+security-01:
+  Bug fixes
+  * SQL Expressions: Fixes CVE-2024-9264
+
+- Update to version 11.2.0:
+  Features and enhancements:
+  * @grafana/data: Introduce new getTagKeys/getTagValues response
+    interface
+  * AWS: Update deprecated aws-sdk functions from env variable
+    versions
+  * Alerting: Add ha_reconnect_timeout configuration option
+  * Alerting: Add setting for maximum allowed rule evaluation
+    results-akhmetov
+  * Alerting: Add warning in telegram contact point
+  * Alerting: Central alert history part4
+  * Alerting: Don't crash the page when trying to filter rules by
+    regex
+  * Alerting: Enable remote primary mode using feature toggles
+  * Alerting: Hide edit/view rule buttons according to
+    deleting/creating state
+  * Alerting: Implement UI for grafana-managed recording rules
+  * Alerting: Improve performance of /api/prometheus for large
+    numbers of alerts.
+  * Alerting: Include a list of ref_Id and aggregated datasource
+    UIDs to alerts when state reason is NoData-nihal
+  * Alerting: Instrument outbound requests for Loki Historian and
+    Remote Alertmanager with tracing
+  * Alerting: Limit instances on alert detail view unless in
+    instances tab
+  * Alerting: Make alert group editing safer
+  * Alerting: Make whitespace more visible on labels
+  * Alerting: Remove option to return settings from api/v1/receivers
+    and restrict provisioning action access
+  * Alerting: Resend resolved notifications for ResolvedRetention
+    duration
+  * Alerting: Show Insights page only on cloud (when required ds's
+    are available)
+  * Alerting: Show repeat interval in timing options meta
+  * Alerting: Support median in reduce expressions-akhmetov
+  * Alerting: Track central ash interactions
+  * Alerting: Update alerting state history API to authorize access
+    using RBAC-tceretian
+  * Alerting: Update warning message for Telegram parse_mode and
+    default to empty value
+  * Alerting: Use Runbook URL label everywhere and add validation in
+    the alert rule…
+  * Alerting: Use cloud notifier types for metadata on Cloud AMs
+  * Alerting: Use stable identifier of a group when export to HCL
+  * Alerting: Use stable identifier of a group,contact point,mute
+    timing when export to HCL
+  * Alertmanager: Support limits for silences
+  * Angular deprecation: Disable dynamic angular inspector if
+    CheckForPluginUpdates is false
+  * App events: Add "info" variant-89
+  * Auth: Add org to role mappings support to AzureAD/Entra
+    integration
+  * Auth: Add organization mapping configuration to the UI
+  * Auth: Add support for escaping colon characters in org_mapping
+  * Azure: Add new Azure infrastructure dashboards-chan
+  * BrowseDashboards: Update results when starred param changes-89
+  * Caching: Handle memcached reconnects
+  * Calendar: Add labels for next/previous month
+  * Canvas: Element level data links-almasan
+  * Canvas: Improved tooltip-almasan
+  * Canvas: Support template variables in base URL of actions
+  * Chore: Add missing build elements to Dockerfile-de
+  * Chore: Add unit test for cloudmigration package-deveikis
+  * Chore: Commit results of bingo get
+  * CloudMigrations: Change onPremToCloudMigrations feature toggle
+    to public preview
+  * CloudWatch: Add errorsource for QueryData
+  * CloudWatch: Update grafana-aws-sdk for updated metrics
+  * Cloudwatch: Clear cached PDC transport when PDC is disabled
+  * Cloudwatch: Metrics Query Builder should clear old query
+  * Cloudwatch: Remove awsDatasourcesNewFormStyling feature toggle
+  * Cloudwatch: Rename Metric Query to Metric Insights
+  * Cloudwatch: Round up endTime in GetMetricData to next minute
+  * Dashboard: Use preferred timezone on create-89
+  * Datalinks: UX improvements-almasan
+  * DateTimePicker: Add "timeZone" prop-89
+  * Dynatrace: Add to list of DS with custom label logic-grafana
+  * Elasticsearch: Decouple backend from infra/http
+  * Elasticsearch: Decouple backend from infra/log
+  * Elasticsearch: Decouple backend from infra/tracing
+  * Explore: Add setting for default time offset
+  * Feat: Extending report interaction with static context that can
+    be appended to all interaction events
+  * Feature management: Add openSearchBackendFlowEnabled feature
+    toggle
+  * Features: Add cloudwatchMetricInsightsCrossAccount feature
+    toggle
+  * Features: Release Cloudwatch Metric Insights cross-account
+    querying to public preview
+  * FlameGraph: Remove flameGraphItemCollapsing feature
+    toggle-grafana
+  * GCP: Update GKE monitoring dashboard
+  * GOps: Add Grafana SLO steps to IRM configuration tracker
+  * Grafana: Enables use of encrypted certificates with password for
+    https-deveikis
+  * IDToken: Add current user's DisplayName to the ID token-stuart
+  * IDToken: Add current user's Username and UID to the ID token
+  * Keybinds: Allow move time range shortcuts (t left / t right) to
+    be chained
+  * LibraryPanels: Use new folder picker when creating a library
+    panel
+  * Log: Added panel support for filtering callbacks
+  * Logs: Add log line to content outline when clicking on
+    datalinks-grafana
+  * Loki: Add option to issue forward queries
+  * Loki: Added support for negative numbers in LogQL
+  * Loki: Also replace step with vars
+  * Loki: Remove instant query type from Log queries
+  * Loki: Respect pre-selected filters in adhoc filter queries
+  * MSSQL: Password auth for Azure AD
+  * Metrics: Add ability to disable classic histogram for HTTP
+    metric
+  * Nav: Add items to saved-89
+  * OpenAPI: Document the /api/health endpoint
+  * PanelChrome: Use labelledby for accessible title
+  * Plugins: Add filters by update available
+  * Plugins: Add logs to for plugin management actions
+  * Plugins: Disable install controls for provisioned plugin in
+    cloud
+  * Plugins: Expose functions to plugins for checking RBAC
+    permissions
+  * Plugins: Improve levitate / breaking changes report in
+    grafana/grafana
+  * Plugins: Support > 1 levels of plugin dependencies
+  * Plugins: Update CLI check if plugin is already installed
+  * Prometheus: Deprecation message for SigV4 in core Prom
+  * Prometheus: Reintroduce Azure audience override feature flag
+  * RBAC: Allow plugins to use scoped actions
+  * RBAC: Default to plugins.app:access for plugin includes
+  * Restore dashboards: Add RBAC-89
+  * Revert: Calcs: Update diff percent to be a percent
+  * SearchV2: Support soft deletion
+  * Select: Add orange indicator to selected item
+  * Snapshots: Remove deprecated option snapshot_remove_expired
+  * Table panel: Add alt and title text options to image cell type
+  * Tempo: Add toggle for streaming-grafana
+  * Tempo: Remove kind=server from metrics summary-grafana
+  * Tempo: Run go get-grafana
+  * Tempo: TraceQL metrics step option
+  * Tempo: Virtualize tags select to improve performance
+  * Tempo: Virtualized search dropdowns for attribute values
+  * TimePicker: Improve screen reader support
+  * TimeRangePicker: Add weekStart prop-89
+  * TimeRangePicker: Use week start-89
+  * Tooltip: Add tooltip support to Histogram-almasan
+  * Trace View: Add Session for this span button
+  * Tracing: Add regex support for span filters
+  * Transformations: Add variable support to select groupingToMatrix
+  * Transformations: Move transformation variables to general
+    availability
+  * Transformations: Promote add field from calc stat function
+    cumulative and window calcs as generally available
+  * Transformations: Promote format string as generally available
+  * Transformations: Promote group to nested table as generally
+    available
+  * Users: Add config option to control how often last_seen is
+    updated
+  * XYChart: Promote to generally available fixes
+  * Admin: Fixes logic for enabled a user
+  * Alerting: Add validation for path separators in the rule group
+    edit modal
+  * Alerting: Allow future relative time
+  * Alerting: Disable simplified routing when internal alert manager
+    is disabled
+  * Alerting: Do not check evaluation interval for external rulers
+  * Alerting: Do not count rule health for totals
+  * Alerting: Fix Recording Rules creation issues
+  * Alerting: Fix contact point export 500 error and
+    notifications/receivers missing settings
+  * Alerting: Fix permissions for prometheus rule
+    endpoints-tceretian
+  * Alerting: Fix persisting result fingerprint that is used by
+    recovery threshold-tceretian
+  * Alerting: Fix rule storage to filter by group names using
+    case-sensitive comparison-tceretian
+  * Alerting: Fix saving telegram contact point to Cloud AM config
+  * Alerting: Fix setting of existing Telegram Chat ID value
+  * Alerting: Fix silencing from policy instances
+  * Alerting: Fix some status codes returned from provisioning API.
+  * Alerting: Fix stale values associated with states that have gone
+    to NoData, unify values calculation
+  * Alerting: Refactor PromQL-style matcher parsing
+  * Alerting: Skip fetching alerts for unsaved dashboards
+  * Alerting: Skip loading alert rules for dashboards when disabled
+  * Alerting: Support utf8_strict_mode: false in Mimir
+  * Alerting: Time interval Delete API to check for usages in alert
+    rules-tceretian
+  * Analytics: Fix ApplicationInsights integration
+  * Azure Monitor: Add validation for namespace field in
+    AdvancedResourcePicker when entering a forward slash
+  * AzureMonitor: Fix out of bounds error when accessing
+    metricNamespaceArray and resourceNameArray in buildResourceURI
+  * BrowseDashboards: Prepend subpath to New Browse Dashboard
+    actions
+  * CloudWatch: Fix labels for raw metric search queries
+  * CloudWatch: Fix raw queries with dimensions set
+  * Correlations: Fix wrong target data source name in the form
+  * DashboardScene: Fixes issue removing override rule
+  * DashboardScene: Fixes lack of re-render when updating field
+    override properties
+  * DataSourcePicker: Create new data source does not work for
+    subpath
+  * Docs: Add fixed role UUIDs to docs for terraform provisioning
+  * Echo: Suppress errors from frontend-metrics API call failing
+  * Explore Metrics: Implement grouping with metric prefixes
+  * Fix: Portuguese Brazilian wasn't loading translations
+  * Folders: Fix folder pagination for cloud instances with many
+    folders
+  * Folders: Improve folder move permission checks
+  * InfluxDB: Fix query builder produces invalid SQL query when
+    using wildcard column name-nihal
+  * Inspect: Include only BOM char for excel files
+  * Jaeger: Fix calling of search query with the correct time range
+  * Metrics: Fix internal metrics endpoint not accessible from
+    browser if basic auth is enabled-nihal
+  * Notifications: Redact URL from errors
+  * Panel: Fix text aliasing bug when panel is loading
+  * Plugin extensions: Return react components from
+    usePluginComponents()
+  * Plugins: Ensure grafana cli can install multiple plugin
+    dependencies
+  * Prometheus: Fix interpolating adhoc filters with template
+    variables
+  * Prometheus: Fix query builder visualization when a query has
+    by() clause for quantile-rs
+  * QueryEditor: Break with Scenes because the default query is not
+    empty string
+  * RBAC: List only the folders that the user has access to
+  * Scenes/Dashboards: Fix issue where changes in panel height
+    weren't saved
+  * Scenes: Fixes issue with panel repeat height calculation
+  * Scenes: Implement 't a' shortcut
+  * Table Panel: Fix Image hover without datalinks
+  * Table component: Fix sub-table rows not displaying correctly
+  * Tempo: Fix grpc streaming support over pdc-agent-s-dean
+  * Tempo: Fix query history-grafana
+  Breaking changes:
+  * Folders: Allow folder editors and admins to create subfolders
+    without any additional permissions
+  Plugin development fixes & changes:
+  * Runtime: Add provider and access hook for location service
+
+- Update to version 11.1.0:
+  Features and enhancements:
+  * Tracing: Enable traces to profiles.
+  * Auth: Add org to role mappings support to Google integration.
+  * Alerting: Support AWS SNS integration in Grafana.-tceretian
+  * Auth: Add org to role mappings support to Okta integration.
+  * Auth: Add org to role mappings support to Gitlab integration.
+  * Cloudwatch: Use the metric map from grafana-aws-sdk.
+  * Alerting: Add option to use Redis in cluster mode for Alerting
+    HA.-g
+  * VizTooltip: Allow setting the maxWidth option.-almasan
+  * Auth: Add org to role mappings support to GitHub integration .
+  * CloudWatch: Handle permissions error and update docs.
+  * ** Alerting:** Correctly handle duplicating notification
+    templates.
+  * Alerting: Mute Timing service to prevent changing provenance
+    status to none.-tceretian
+  * Alerting: Ensure we fetch AM config before saving new
+    configuration.
+  * Alerting: Remove regex reference in silences filter tooltip.
+  * Cloudwatch: Update AWS DynamoDB Metrics.
+  * Alerting: Make regex notification routing preview consistent
+    with notification policies implementation.
+  * DateTimePicker: Return cleared value in onChange.-89
+  * NodeGraph: Add msagl and the layered layout code.
+  * API: Add in theme support to /render/* endpoint.
+  * Alerting: Add filters for RouteGetRuleStatuses.-g
+  * Plugins: Update the plugin.json schema with UI extensions
+    meta-data.
+  * Auth: Update SAML lib to improve HTTP-Post binding.
+  * Tempo: Send current filters when retrieving tags for
+    AdHocFilters.-grafana
+  * Tempo: Support standard span convention.-grafana
+  * ValueFormats: Add Uruguay peso currency.
+  * DateTimePicker: Add clearable prop.-89
+  * Correlations: Enable feature toggle by default (on-prem).
+  * Stat: Add percent change color modes.
+  * Logs: Added multi-line display control to the "wrap lines"
+    option.
+  * Tempo: Update lezer autocomplete (histogram, quantile) and add
+    missing functions.-grafana
+  * AnnotationsPlugin2: Implement support for rectangular
+    annotations in Heatmap.
+  * CodeEditor: Improved styles when the code editor is loading.
+  * CloudWatch: Add additional AWS/KinesisAnalytics metrics .
+  * Cloudwatch: Add AWS/Events Metrics.
+  * Azure: Basic Logs support.
+  * Dashboard: Make dashboard search faster.
+  * Alerting: Support custom API URL for PagerDuty integration.
+  * Alerting: Add optional metadata via query param to silence GET
+    requests.
+  * Store: Enable adding extra middleware.-89
+  * Tempo: Don't modify the passed time range when using
+    timeShiftEnabled.
+  * InfluxDB: Introduce maxDataPoints setting for flux variable
+    query editor.
+  * Alerting: New list view UI – Part 1.
+  * NodeGraph: Remove msagl lib and layered layout option.
+  * InfluxDB: Introduce custom variable support.
+  * Gops: Add tracking for data source check.
+  * AzureMonitor: Prometheus exemplars support .
+  * Feature Management: Move awsDatasourcesNewFormStyling to GA.
+  * TimeRangePicker: Announce to screen reader when time range is
+    updated.
+  * Alerting: Template selector in contact points form.
+  * Azure: Load custom clouds from ini file.
+  * Loki: Kick start your query now applies templates to the current
+    query.
+  * Elasticsearch: Queries no longer executed while typing.
+  * Alerting: Add options to configure TLS for HA using Redis.-g
+  * VizLegend: Represent line style in series legend and tooltip.
+  * FeatureBadge: Update FeatureBadge to support current release
+    stages.
+  * Logs: Infinite scrolling in Explore enabled by default.
+  * Plugins: Improve frontend loader cache.
+  * Chore: Upgrade go from 1.21.0 to 1.21.10.
+  * Chore: Upgrade go to 1.22.3.
+  * Team: Add an endpoint for bulk team membership updates.
+  * Flamegraph: Add collapse and expand group buttons to toolbar.
+  * OIDC: Support Generic OAuth org to role mappings.
+  * Search: Announce to screen reader when query returns no result.
+  * Logs: Added support for numeric log levels.
+  * Prometheus: Place custom inputs first when using regex filter
+    values in the query builder.
+  * Alerting: Remove requirement for datasource query on rule read.
+  * Alerting: Add RBAC logic for silences creation.
+  * Alerting: Update silences creation to support __alert_rule_uid__
+    and move into drawer.
+  * Flamegraph: Add diff mode color legend.
+  * Dashboard: Keyboard and mouse panel shortcuts improvement.
+  * PanelHeaderCorner: Remove font-awesome icons.-89
+  * Alerting: Add OAuth2 to HTTP settings for vanilla Alertmanager /
+    Mimir.
+  * Plugins: Allow apps to expose components. Update the extensions
+    API.
+  * Plugins: Catalog to show all plugins by default.
+  * Prometheus: Ensure values in metric selector are visible.
+  * Select: Add data-testid to Input.-89
+  * Prometheus: Add native histogram types metric explorer to allow
+    filter by type.
+  * Prometheus: Add hints for native histograms.
+  * Alerting: Reduce number of request fetching rules in the
+    dashboard view using rtkq.
+  * Plugins: Make grafana-com API URL usage consistent.
+  * Stack: Add size props.-89
+  * Table Panel: Enable Text Wrapping.
+  * Alerting: Get grafana-managed alert rule by UID.-g
+  * Cloudwatch: Add Kendra metrics.
+  * Auth: Added support to filter for parent teams in GitHub
+    connector's team membership filter.-nihal
+  * Alerting: Hook up GMA silence APIs to new authentication
+    handler.
+  * GeoMap: Pan and zoom keyboard support.
+  * Alerting: Optimize rule status gathering APIs when a limit is
+    applied.
+  * Plugins: Add an auto-generated part to the plugin.json schema.
+  * Loki/Prometheus Query Editor: Disabled cmd/ctrl+f keybinding
+    within the editor.
+  * Grafana packages: Remove E2E workspace.
+  * RefreshPicker: Change running state to be less distracting .
+  * Prometheus: Cancellable label values requests.
+  * SQLStore: Improve recursive CTE support detection.
+  * CloudMonitoring: Ensure variables can be used in all variable
+    queries.
+  * Common labels/displayed fields: Show label names with values.
+  * AuthZ: Further protect admin endpoints.
+  * Explore: Deprecate local storage singular datasource key.
+  * Loki: Add label filters after label_format if present.
+  * Alerting: Immutable plugin rules and alerting plugins
+    extensions.
+  * Tempo: Group by template vars.-grafana
+  * Short Links: Add setting for changing expiration time.
+  * Prometheus: Add native histogram functions.
+  * Plugins: Removed feature toggle
+    pluginsDynamicAngularDetectionPatterns.
+  * Plugins: Removed feature toggle enablePluginsTracingByDefault.
+  * Tracing: Allow otel service name and attributes to be overridden
+    from env.
+  * PanelChrome: Improve accessibility landmark markup.
+  * Gops: Add configuration tracker on the existing IRM page.
+  * CloudWatch: Add additional Glue metrics.
+  * CloudWatch: Add labels for Metric Query type queries.
+  * Util: Support parsing and splitting strings enclosed in quotes
+    in util.SplitString.
+  * Loki: Handle X-Scope-OrgID and tenant IDs.-grafana
+  * CloudWatch: Add a Performance Insights and other missing metrics
+    to aws/rds.
+  * Prometheus: Respect dashboard queries when querying ad hoc
+    filter labels.
+  * Pyroscope: Add adhoc filters support.
+  * Table Panel: Update background colors to respect transparency.
+  * Canvas: Add support for line animation.-almasan
+  * Reducers: Add in basic Percentile Support.
+  * Storage: Watch tests.
+  * Plugins: Show update buttons when instance version is different.
+  * Tempo: Always use time range even if timeShiftEnabled is false.
+  * Alerting: Gops labels integration.
+  * Explore: Set X-Cache-Skip to true for query requests.
+  * Explore: Make Explore breadcrumb clickable.
+  * Prometheus: Fuzzy search for metric names in Code Mode.
+  * Storage Api: Adds traces.
+  * Storage Api: Add metrics.
+  * Alerting: Improve paused alert visibility and allow
+    pausing/resuming from alert list view.
+  * CloudWatch: Clarify match exact tooltip and docs.
+  * Alerting: Evaluation quick buttons.
+  * Alerting: Add state history polling interval.
+  * CloudWatch: Improve metric label parsing.
+  * Alerting: Improve template preview.
+  * Alerting: New settings page.
+  * Explore: Move Query History to be screen wide.
+  * MixedDataSource: Support multi value data source variable that
+    issues a query to each data source.
+  * PluginExtensions: Make the extensions registry reactive.
+  * Loki: Use label/<name>/values API instead of series API for
+    label values discovery.-rs
+  * Tempo: Escape backslash in span name for promsql query.
+  * Alerting: Export and provisioning rules into subfolders.
+  Bug fixes:
+  * Alerting: Fix go-swagger extraction and several embedded types
+    from Alertmanager in Swagger docs.
+  * DashboardScene: Fixes inspect with transforms issue.
+  * Elasticsearch: Fix stripping of trailing slashes in datasource
+    URLs.
+  * Loki: Fix editor history in wrong order.
+  * Cli: Fix bug where password is hashed twice.
+  * AzureMonitor: Fix bug detecting app insights queries.
+  * SSE: Fix threshold unmarshal to avoid panic.-tceretian
+  * Dashboard: Fix Variables query hides fields with non-supported
+    datasources.
+  * Explore: Align time filters properly to day boundaries in query
+    history.
+  * Access Control: Clean up permissions for deprovisioned data
+    sources.
+  * Dashboards: Correctly display Admin access to dashboards in the
+    UI.
+  * LibraryPanels/RBAC: Ignore old folder permission check when
+    deleting/patching lib panel.
+  * LogsTable: Fix default sort by time.
+  * Dashboards: Fix regression when deleting folder.
+  * Docker: Fix renderer plugin in custom Dockerfile.
+  * Alerting: Fix rules deleting when reordering whilst filtered.
+  * Alerting: Fix "copy link" not including full URL.
+  * Alerting: Fix typo in JSON response for rule export.-tceretian
+  * Alerting: Fix scheduler to sort rules before
+    evaluation.-tceretian
+  * CloudMonitoring: Fix query type selection issue.
+  * Alerting: Assume built-in AM is receiving alerts in case of not
+    having admin config.
+  * DashboardScene: Skip panel repeats when values are the same.
+  * Alerting: Fix deleting rules when silencing/resuming rule from a
+    panel alert tab.
+  * Dashboards: Don't set dashboard creator/updater if the action is
+    done by an API key.
+  * Elasticsearch: Fix setting of default
+    maxConcurrentShardRequests.
+  * Graphite: Fix alignment of elements in the query editor.
+  * DashboardScene: Fixing major row repeat issues.
+  * Alerting: Do not store series values from past evaluations in
+    state manager for no reason.
+  * RBAC: Update role picker in team page, fix a bug with roles
+    being removed upon team setting update.
+  * Transformations: Fix true inner join in joinByField
+    transformation.
+  * Alerting: Do not retry rule evaluations with "input data must be
+    a wide series but got type long" style errors.
+  * Tempo: Fix sorting for nested tables.-grafana
+  * Cloudwatch Logs: Fix bug where we did not return errors to user.
+  * CloudWatch: Fix apostrophes in dimension values not being
+    escaped.
+  * AnnotationList: Fix link for annotation with no panel or
+    dashboard.
+  * Graphite: Fix splitting expressions in tag_value with template
+    variables.
+  * SQL Query Editor: Fix label-for IDs, associate "Table" label.
+  * SSO: Add SSO settings to secrets migrator.
+  * Plugins: Preserve trailing slash in plugin proxy.
+  * TimeSeries: Improve keyboard focus and fix spacebar override.
+  * NodeGraph: Use values from fixedX/fixedY column for layout.
+  * Alerting: Prevent simplified routing zero duration GroupInterval
+    and RepeatInterval.
+  * Loki: Fix setting of tenant ID.-grafana
+  * DashboardScene: Fixes checkbox orienation in save forms.
+  * CloudMonitoring: Correctly interpolate multi-valued template
+    variables in PromQL queries.
+  * Expressions: Fix erroneous sorting of metrics and expressions.
+  * CloudMonitoring: Allow a custom group by value.
+  * DataLinks: Fixes datalinks with onClick and variables in url not
+    being interpolated .
+  * I18N: Fix untranslated descriptions in data source picker.
+  * RBAC: Fix global role deletion in hosted Grafana.
+  * Expression: Fix a bug of the display name of the threshold
+    expression result.
+  * Alerting: Fix incorrect display of pending period in alert rule
+    form.
+  * Alerting: Fix redirect after saving a notification template.
+  * Alerting: Get oncall metada only when we have alert manager
+    configuration data.
+  * Alerting: Return better error for invalid time range on alert
+    queries.
+  * CloudWatch: Fix SageMaker MBP namespace typo.
+  * Alerting: Only append /alertmanager when sending alerts to mimir
+    targets if not already present.
+  * Alerting: Set mimir implementation in jsonData by default when
+    creating a new a….
+  * Alerting: Persist silence state immediately on Create/Delete .
+  * NodeGraph: Fix configuring arc colors with mixed case field
+    names.
+  Breaking changes:
+  * Users that provision alert rules into folders whose titles
+    contain slashes from now on they should escape them: eg. if an
+    alert group contains `folder: folder_with_/_in_title` it
+    should become `folder: folder_with_\/_in_title Issue`.
+  Deprecations:
+  * The grafana.explore.richHistory.activeDatasourceOnly local
+    storage key is deprecated, and will be removed in Grafana 12.
+    You may experience loss of your Explore query history or
+    autocomplete data if you upgrade to Grafana 12 under 2 weeks of
+    Grafana 11.1. Actual risk of data loss depends on your query
+    history retention policy. Issue
+  Plugin development fixes & changes:
+  * Select: Change Select group headers to always be visible.
+  * Select: Ensure virtualised menu scrolls active option into view
+    when using arrow keys.
+  * Switch: Improve disabled active state.
+  * Button: Allow disabled button to still be focused.
+  * GrafanaUI: Add tabular prop to Text component for tabular
+    numbers.
+
+- Update to version 11.0.0
+  Features and enhancements:
+  * Alerting: Add two sets of provisioning actions for rules and
+    notifications .
+  * Chore: Upgrade go to 1.21.10.
+  * Auth: Force lowercase login/email for users.
+  * Navigation: Add a return to previous button when navigating to
+    different sections.
+  * DashboardScene: Move add library panel view from grid item to
+    drawer.
+  * CloudWatch : Add missing AWS/ES metrics.
+  * Alerting: Reduce set of fields that could trigger alert state
+    change.
+  * OAuth: Make sub claim required for generic oauth behind feature
+    toggle.
+  * Grafana E2E: Add deprecation notice and update docs.
+  * Loki: Remove API restrictions on resource calls.
+  Bug fixes:
+  * AuthN: Fix signout redirect url.
+  * CloudMonitoring: Improve legacy query migrations.
+  * Azure data sources: Set selected config type before save.
+  * Loki: Fix log context when no label types are present.
+  * DashboardScene: Fixes editing transformations after toggling
+    table view.
+  * DashboardDataSource: Fixes issue where sometimes untransformed
+    data could be returned .
+  * Provisioning: Look up provisioned folders by UID when possible.
+  * Cloudwatch: Update grafana-aws-sdk to fix sts endpoints.
+  * Select: Fixes issue preserving search term (input) when
+    selecting a value.
+  * Alerting: Prevent search from locking the browser.
+  * DashboardScene: Fixes issue referring to library panel in
+    dashboard data source .
+  * Data source: Maintain the default data source permissions when
+    switching from unlicensed to licensed Grafana.
+  * Alerting: Allow deleting contact points referenced only by
+    auto-generated policies.
+  * Auth: Sign sigV4 request after adding headers.
+  * DashboardScene: Fixes issues with relative time range in panel
+    edit.
+  * DashboardScene: Fixes issue with dashboard links and variables.
+  * SQLStore: Disable redundant create and drop unique index
+    migrations on dashboard table.
+  * LogContext: Fix structured metadata labels being added as stream
+    selectors.
+  * DashboardScene: Fixes issue with editing panels that uses
+    instanceState.
+  * DashboardScene: Fixes deleting dirty dashboard.
+  * Alerting: Take receivers into account when custom grouping
+    Alertmanager groups.
+  * LDAP: Fix listing all non-matching groups.
+  * Alerting: Fix simplified routing group by override.
+  * NodeGraph: Fix invisible arrow tips in Editor.
+  * Dashboard: DashboardPageProxy - Use chaining operators to
+    prevent runtime error.
+  * Cli: Check missing plugin parameter of plugin update command.
+  * DashboardScene: Fixes issue saving new dashboard from panel
+    edit.
+  * DashboardScene: Fixes minor issue transitioning between
+    dashboards.
+  * MSSQL: Add SQL_VARIANT converter and update test.
+  * DashboardScene: Fixes react panels with old angular options.
+  * Alerting: Fix simplified routes '...' groupBy creating invalid
+    routes.
+  * AWS DataSource: Fix namespaces in sagemaker metrics.
+  * DashboardScene: Fixes saving dashboard with angular panels .
+  * DashboardScene: Fix empty row repeat issue.
+  * Nodegraph: Fix issue with rendering single node.
+  * Datasources: Add fixed width to name field in config editor.
+  * Alerting: Return a 400 and errutil error when trying to delete a
+    contact point that is referenced by a policy.
+  * Table Panel: Fix image disappearing when datalinks applied.
+  * LibraryPanelRBAC: Fix issue with importing dashboards containing
+    library panels.
+  * DashboardScene: Fixes issue moving between dashboards.
+  * Alerting: Fix evaluation metrics to not count retries.
+  * Google Cloud Monitor: Fix interface conversion for incorrect
+    type in cloudMonitoringProm.run.
+  * Dashboard: Allow auto refresh option when saving a dashboard.
+  * Time Zones: Fix relative time when using UTC timezone.
+  * PostgreSQL: Fix the verify-ca mode.
+  * DashboardScene: Fixes issue with mobile responsive layout due to
+    repeated grid item class.
+  * DashboardScene: Fixes panel edit issue with clearing title not
+    resulting in hover header mode .
+  * Angular deprecation: Prefer local "angularDetected" value to the
+    remote one.
+  * Chore: Fix trailing spaces in prometheus min step.
+  * Breaking changes:
+  * The @grafana/e2e package is deprecated in Grafana 11.0.0. If
+    your Grafana plugin has end-to-end tests that use @grafana/e2e,
+    it's recommended to replace them with @grafana/plugin-e2e and
+    Playwright. For information on how to migrate, please refer to
+    the plugin-e2e docs. Issue
+  Plugin development fixes & changes:
+  * DateTimePicker: Alternate timezones now behave correctly.
+  * TimeOfDayPicker: Fix text colours in light mode.
+
+-------------------------------------------------------------------
 Wed Apr 03 09:07:16 UTC 2024 - witold.bedyk@suse.com
 
 - Packaging improvements:
