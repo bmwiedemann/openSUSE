@@ -100,4 +100,13 @@
   * Notification issue on gnome shell + minor improvements (#202) (86f27b9)</comment>
     <requestid>1209548</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>93dc28740742280ff621ee863b0d8b06</srcmd5>
+    <version>4.16.2</version>
+    <time>1730125231</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.2:
+  * Improve notification handling (971820f)</comment>
+    <requestid>1218606</requestid>
+  </revision>
 </revisionlist>
