@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 27 17:39:25 UTC 2024 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.95
+  * Add ipresolve option to select IPv4 or IPv6-only
+  * Retry request on HTTP 429 error
+  * Fix deadlock in FdManager::ChangeEntityToTempPath
+  * Enable static lock checking and fix locking errors
+  * Fix use-after-free in FdManager::ChangeEntityToTempPath
+
+-------------------------------------------------------------------
 Thu Feb 29 20:53:07 UTC 2024 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.94
