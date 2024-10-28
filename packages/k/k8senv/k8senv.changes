@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 27 10:19:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.3:
+  * bump go 1.23
+  * doc: Improve documentation
+  * doc: Update latest version
+  * doc: Add demo video
+
+-------------------------------------------------------------------
 Mon Sep 23 11:07:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package k8senv: manage multiple versions of kubectl, helm and
