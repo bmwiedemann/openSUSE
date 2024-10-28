@@ -160,4 +160,12 @@
 - BuildRequire python36-aiocontextvars if building under python 3.6</comment>
     <requestid>1115765</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e9fb7b92c765b9b463e58b6c8803d751</srcmd5>
+    <version>0.7.2</version>
+    <time>1730125454</time>
+    <user>anag+factory</user>
+    <comment>- add py313.patch, py314.patch: fixes for python 3.13 and 3.14</comment>
+    <requestid>1218804</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,105 @@
+From 3a901de465b0dbb398f455dc3393d976fd0affbe Mon Sep 17 00:00:00 2001
+From: Delgan <delgan.py@gmail.com>
+Date: Sat, 19 Oct 2024 21:45:17 +0200
+Subject: [PATCH] Fix tests for Python 3.14 dev (#1218)
+
+Tests were failing for two reasons:
+- "asyncio.iscoroutinefunction()" is deprecated and must be replaced
+with "inspect.iscoroutinefunction()"
+- it seems the "PicklingError" now displays additional context at the
+end of the exception message. I changed the implemntation of the tests
+so that we check the presence of the expected string regardless of the
+line it appears. It wasn't strictly required for the other non-failing
+tests, but I generalized the implementation for consistency and
+simplification.
+---
+ loguru/_simple_sinks.py          |  4 ++--
+ tests/test_add_option_enqueue.py | 14 +++++++-------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/loguru/_simple_sinks.py b/loguru/_simple_sinks.py
+index 068f1e13..658f1ad6 100644
+--- a/loguru/_simple_sinks.py
++++ b/loguru/_simple_sinks.py
+@@ -1,4 +1,4 @@
+-import asyncio
++import inspect
+ import logging
+ import weakref
+ 
+@@ -10,7 +10,7 @@ def __init__(self, stream):
+         self._stream = stream
+         self._flushable = callable(getattr(stream, "flush", None))
+         self._stoppable = callable(getattr(stream, "stop", None))
+-        self._completable = asyncio.iscoroutinefunction(getattr(stream, "complete", None))
++        self._completable = inspect.iscoroutinefunction(getattr(stream, "complete", None))
+ 
+     def write(self, message):
+         self._stream.write(message)
+diff --git a/tests/test_add_option_enqueue.py b/tests/test_add_option_enqueue.py
+index c367e1d7..b393f3dc 100644
+--- a/tests/test_add_option_enqueue.py
++++ b/tests/test_add_option_enqueue.py
+@@ -101,7 +101,7 @@ def test_caught_exception_queue_put(writer, capsys):
+     assert out == ""
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert re.match(r"Record was: \{.*Bye bye.*\}", lines[1])
+-    assert lines[-2].endswith("PicklingError: You shall not serialize me!")
++    assert "PicklingError: You shall not serialize me!" in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -119,7 +119,7 @@ def test_caught_exception_queue_get(writer, capsys):
+     assert out == ""
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert lines[1] == "Record was: None"
+-    assert lines[-2].endswith("UnpicklingError: You shall not de-serialize me!")
++    assert "UnpicklingError: You shall not de-serialize me!" in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -136,7 +136,7 @@ def test_caught_exception_sink_write(capsys):
+     assert out == "It's fine\nIt's fine again\n"
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert re.match(r"Record was: \{.*Bye bye.*\}", lines[1])
+-    assert lines[-2] == "RuntimeError: You asked me to fail..."
++    assert "RuntimeError: You asked me to fail..." in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -171,7 +171,7 @@ def test_not_caught_exception_queue_get(writer, capsys):
+     assert out == ""
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert lines[1] == "Record was: None"
+-    assert lines[-2].endswith("UnpicklingError: You shall not de-serialize me!")
++    assert "UnpicklingError: You shall not de-serialize me!" in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -189,7 +189,7 @@ def test_not_caught_exception_sink_write(capsys):
+     assert out == "It's fine\nIt's fine again\n"
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert re.match(r"Record was: \{.*Bye bye.*\}", lines[1])
+-    assert lines[-2] == "RuntimeError: You asked me to fail..."
++    assert "RuntimeError: You asked me to fail..." in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -207,7 +207,7 @@ def test_not_caught_exception_sink_write_then_complete(capsys):
+     assert out == ""
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert re.match(r"Record was: \{.*Bye bye.*\}", lines[1])
+-    assert lines[-2] == "RuntimeError: You asked me to fail..."
++    assert "RuntimeError: You asked me to fail..." in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 
+@@ -226,7 +226,7 @@ def test_not_caught_exception_queue_get_then_complete(writer, capsys):
+     assert out == ""
+     assert lines[0] == "--- Logging error in Loguru Handler #0 ---"
+     assert lines[1] == "Record was: None"
+-    assert lines[-2].endswith("UnpicklingError: You shall not de-serialize me!")
++    assert "UnpicklingError: You shall not de-serialize me!" in err
+     assert lines[-1] == "--- End of logging error ---"
+ 
+ 

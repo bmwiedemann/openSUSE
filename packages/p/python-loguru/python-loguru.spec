@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: taken from https://github.com/Delgan/loguru/pull/1079.patch
+Patch1:         py313.patch
+Patch2:         https://github.com/Delgan/loguru/commit/3a901de465b0dbb398f455dc3393d976fd0affbe.patch#/py314.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
