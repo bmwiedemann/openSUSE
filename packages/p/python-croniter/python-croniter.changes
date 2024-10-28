@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:35:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Fix overflow on 32bits systems (#87) [kiorky]
+  * Fix python2 testing (related to #93) [kiorky]
+  * Modernize packaging. Special thanks to Aarni Koskela (akx)
+    for all the inputs. [kiorky, akx]
+
+-------------------------------------------------------------------
 Wed Oct  9 06:35:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.3:
