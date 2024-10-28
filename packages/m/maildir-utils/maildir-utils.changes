@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 28 07:51:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.7:
+  * many documentation fixes
+  * mu4e: fix some mu4e-compose-captured-message corner case (#2745)
+  * mu4e: fix 'user-agent' field (#2750)
+  * few tiny tweaks
+  * However biggest change is regarding mu's "threadiness" with respect to
+    Xapian. For a while, some people, ran into Xapian database
+    corruptions (I've seen it very occasionally, some people more often);
+    issue #2706.
+    I don't know the precise cause, but it seems to be related to using
+    threads with Xapian; the mu code in this area hasn't changed much, so
+    perhaps newer Xapian versions are less forgiving? Anyway, this is all
+    speculation. Database corruption with mu is not catastrophic, since you
+    can always rebuild it without data-loss; however, it's still annoying
+    and we'd obviously want to avoid that.
+    1.12.7 includes a change to make the database access single-threaded
+    again, which seems to help for this problem. We're really returning to
+    the behavior some older versions of mu, with the difference that now
+    you'll get a message in mu4e
+    Cannot handle command while indexing, please retry later.
+    Hope that doesn't inconvenience people too much. Might have a deeper
+    look into when I have some more time and not in the 1.12.x series.
+
+-------------------------------------------------------------------
 Sun Jul 28 06:44:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.6:

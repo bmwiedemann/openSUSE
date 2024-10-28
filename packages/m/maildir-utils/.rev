@@ -807,4 +807,33 @@
   * fix bookmark support (bookmark-make-record-function)</comment>
     <requestid>1189969</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ae4171f4bd86a1a1ce32e54981cb5d9a</srcmd5>
+    <version>1.12.7</version>
+    <time>1730125331</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.7:
+  * many documentation fixes
+  * mu4e: fix some mu4e-compose-captured-message corner case (#2745)
+  * mu4e: fix 'user-agent' field (#2750)
+  * few tiny tweaks
+  * However biggest change is regarding mu's &quot;threadiness&quot; with respect to
+    Xapian. For a while, some people, ran into Xapian database
+    corruptions (I've seen it very occasionally, some people more often);
+    issue #2706.
+    I don't know the precise cause, but it seems to be related to using
+    threads with Xapian; the mu code in this area hasn't changed much, so
+    perhaps newer Xapian versions are less forgiving? Anyway, this is all
+    speculation. Database corruption with mu is not catastrophic, since you
+    can always rebuild it without data-loss; however, it's still annoying
+    and we'd obviously want to avoid that.
+    1.12.7 includes a change to make the database access single-threaded
+    again, which seems to help for this problem. We're really returning to
+    the behavior some older versions of mu, with the difference that now
+    you'll get a message in mu4e
+    Cannot handle command while indexing, please retry later.
+    Hope that doesn't inconvenience people too much. Might have a deeper
+    look into when I have some more time and not in the 1.12.x series.</comment>
+    <requestid>1218735</requestid>
+  </revision>
 </revisionlist>
