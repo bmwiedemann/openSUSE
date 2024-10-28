@@ -23,7 +23,7 @@ Name:           jackson-databind
 Version:        2.17.2
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
-License:        Apache-2.0 AND LGPL-2.1-or-later
+License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-databind/
 Source0:        https://github.com/FasterXML/jackson-databind/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
