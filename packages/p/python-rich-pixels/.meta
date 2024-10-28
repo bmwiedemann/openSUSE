@@ -1,0 +1,7 @@
+<package name="python-rich-pixels" project="openSUSE:Factory">
+  <title>A python library for writing pixel images and ASCII art to the terminal</title>
+  <description>A Rich-compatible library for writing pixel images and other colourful
+grids to the terminal.</description>
+  <devel project="devel:languages:python" package="python-rich-pixels"/>
+  <url>https://github.com/darrenburns/rich-pixels</url>
+</package>
