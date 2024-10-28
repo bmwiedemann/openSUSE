@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:36:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * see Bitarray 3 transition
+  * remove Python 2.7 support
+  * .decode() now returns iterator (equivalent to past
+    .iterdecode())
+  * .search() now returns iterator (equivalent to past
+    .itersearch())
+  * remove .iterdecode() and .itersearch()
+  * remove util.rindex(), use .index(..., right=1) instead,
+    deprecated since 2.9
+  * remove util.make_endian(), use bitarray(..., endian=...)
+    instead, deprecated since 2.9
+  * remove hackish support for bitarray() handling unpickling,
+    see detailed explaination in #207 - closes #206
+  * add official Python 3.13 support
+  * update cibuildwheel to 2.21.3
+  * minor simplifications
+  * fix some typos
+
+-------------------------------------------------------------------
 Mon Sep 30 19:41:46 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons. 
