@@ -1305,4 +1305,17 @@
     <comment></comment>
     <requestid>1203953</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>086a6d9392499ab9be6a7a15d22b0780</srcmd5>
+    <version>5.6.3</version>
+    <time>1730125353</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.6.3
+  * Gifts for Telegram Stars.
+  * Mention / hashtag autocomplete in media caption field.
+  * Resizing the window used for web apps and games.
+  * &quot;Include muted chats in folder counters&quot; notifications setting.
+  * Emoji from Unicode 15.1. (forwarded request 1208908 from Dmitry_R)</comment>
+    <requestid>1218755</requestid>
+  </revision>
 </revisionlist>

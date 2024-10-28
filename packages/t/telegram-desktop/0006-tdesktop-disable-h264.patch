@@ -1,13 +1,12 @@
-diff --git a/cmake/external/webrtc/CMakeLists.txt b/cmake/external/webrtc/CMakeLists.txt
-index 67159d6..0caf765 100644
---- a/cmake/external/webrtc/CMakeLists.txt
-+++ b/cmake/external/webrtc/CMakeLists.txt
-@@ -134,7 +134,7 @@ else()
-         Xrandr
-         Xrender
-         Xtst
--        openh264
-+	#        openh264
-     )
-     target_link_libraries(external_webrtc
-     INTERFACE
+Index: tdesktop-5.6.3-full/cmake/external/webrtc/CMakeLists.txt
+===================================================================
+--- tdesktop-5.6.3-full.orig/cmake/external/webrtc/CMakeLists.txt
++++ tdesktop-5.6.3-full/cmake/external/webrtc/CMakeLists.txt
+@@ -98,7 +98,6 @@ INTERFACE
+     $<LINK_ONLY:desktop-app::external_openssl>
+     $<LINK_ONLY:desktop-app::external_jpeg>
+     $<LINK_ONLY:desktop-app::external_openh264>
+-    $<TARGET_FILE:desktop-app::external_openh264>
+     $<LINK_ONLY:desktop-app::external_opus>
+     $<LINK_ONLY:desktop-app::external_vpx>
+ )
