@@ -1,0 +1,46 @@
+diff -urEbwB boringssl-20200921.orig/CMakeLists.txt boringssl-20200921/CMakeLists.txt
+--- boringssl-20200921.orig/CMakeLists.txt	2024-10-27 21:00:08.071155909 +0100
++++ boringssl-20200921/CMakeLists.txt	2024-10-27 21:10:35.549252602 +0100
+@@ -342,7 +342,7 @@
+ endif()
+ 
+ add_library(
+-  crypto
++  boringssl_crypto
+ 
+   ${CRYPTO_ARCH_SOURCES}
+   err_data.c
+@@ -577,8 +577,10 @@
+   src/crypto/x509v3/v3_utl.c
+ )
+ 
++set_target_properties(boringssl_crypto PROPERTIES SOVERSION 1)
++
+ add_library(
+-  ssl
++  boringssl_ssl
+ 
+   src/ssl/bio_ssl.cc
+   src/ssl/d1_both.cc
+@@ -618,6 +620,8 @@
+   src/ssl/tls_record.cc
+ )
+ 
++set_target_properties(boringssl_ssl PROPERTIES SOVERSION 1)
++
+ add_executable(
+   bssl
+ 
+@@ -639,10 +643,10 @@
+   src/tool/transport_common.cc
+ )
+ 
+-target_link_libraries(bssl ssl crypto)
++target_link_libraries(bssl boringssl_ssl boringssl_crypto)
+ 
+ if(NOT WIN32 AND NOT ANDROID)
+-  target_link_libraries(crypto pthread)
++  target_link_libraries(boringssl_crypto pthread)
+ endif()
+ 
+ if(WIN32)

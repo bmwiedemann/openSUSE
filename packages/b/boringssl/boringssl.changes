@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 27 20:24:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Change version of the sources to 0.%%cd to avoid problems when
+  upgrading if the versioning changes.
+- Added patch:
+  * soname-sover.patch
+    + Replace patchelf run with patch that makes cmake produce the
+      shared libraries with the right SONAME and SOVER.
+- Remove unnecessary dependencies on go, patchelf, ninja and
+  libunwind, since they are only needed for tests we are not
+  running
+
+-------------------------------------------------------------------
 Fri Feb  9 08:08:42 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Replace python with python3 (bsc#1219308)

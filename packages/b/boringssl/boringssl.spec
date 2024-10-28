@@ -20,7 +20,7 @@
 %define libname libboringssl%{sover}
 %define src_install_dir /usr/src/%{name}
 Name:           boringssl
-Version:        20200921
+Version:        0.20200921
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -32,13 +32,10 @@ Patch1:         0003-enable-s390x-builds.patch
 Patch2:         0004-fix-alignment-for-ppc64le.patch
 Patch3:         0005-fix-alignment-for-arm.patch
 Patch4:         0001-Compile-for-RISC-V.patch
+Patch5:         soname-sover.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  go
-BuildRequires:  libunwind-devel
-BuildRequires:  ninja
-BuildRequires:  patchelf
 ExclusiveArch:  %{ix86} x86_64 aarch64 s390x ppc64le %arm riscv64
 
 %description
@@ -85,11 +82,8 @@ Source files for BoringSSL implementation
 
 %install
 # Install libraries
-install -D -m0755 build/libcrypto.so %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}
-install -D -m0755 build/libssl.so %{buildroot}%{_libdir}/libboringssl_ssl.so.%{sover}
-# Add SOVER to SONAME fields in libraries
-patchelf --set-soname libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}
-patchelf --set-soname libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so.%{sover}
+install -D -m0755 build/libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}
+install -D -m0755 build/libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so.%{sover}
 # Create links from *.so to *.so.SOVER
 ln -sf libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so
 ln -sf libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so
