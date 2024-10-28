@@ -153,4 +153,13 @@ Please relay on oS13.2</comment>
     <comment></comment>
     <requestid>1218362</requestid>
   </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>1638769e9c78217a267d3e57bee07fef</srcmd5>
+    <version>42.1</version>
+    <time>1730125359</time>
+    <user>anag+factory</user>
+    <comment>- Fix previos change: remove a dangling space inside the sed
+  command, which made the path to the wallpaper invalid (forwarded request 1218748 from dimstar)</comment>
+    <requestid>1218758</requestid>
+  </revision>
 </revisionlist>

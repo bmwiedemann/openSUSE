@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:13:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previos change: remove a dangling space inside the sed
+  command, which made the path to the wallpaper invalid
+
+-------------------------------------------------------------------
 Fri Oct 25 08:47:28 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Temporarily use the openSUSEdefault/*/1920x1200.png boo#1232327
