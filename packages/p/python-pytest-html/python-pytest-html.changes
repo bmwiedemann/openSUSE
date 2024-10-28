@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 08:14:38 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update packages-lock.json to fix CVE-2024-48948, update elliptic js
+  dependency to 6.6.0. bsc#1231688
+
+-------------------------------------------------------------------
 Mon Oct 14 10:53:41 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update packages-lock.json to fix CVE-2024-48949, update elliptic js

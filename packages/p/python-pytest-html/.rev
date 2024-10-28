@@ -274,4 +274,13 @@
   dependency. bsc#1231562</comment>
     <requestid>1207876</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a9935205473769ec05670d2d10279cc4</srcmd5>
+    <version>4.1.1</version>
+    <time>1730125321</time>
+    <user>anag+factory</user>
+    <comment>- Update packages-lock.json to fix CVE-2024-48948, update elliptic js
+  dependency to 6.6.0. bsc#1231688</comment>
+    <requestid>1218732</requestid>
+  </revision>
 </revisionlist>
