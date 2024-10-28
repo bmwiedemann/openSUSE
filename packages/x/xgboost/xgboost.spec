@@ -32,18 +32,15 @@ Patch0:         xgboost-fix-big-endian.patch
 Patch1:         no-hadoop.patch
 Patch2:         xgboost-2.0.0-python34.patch
 Patch3:         xgboost-2.0.0-cmake.patch
-BuildRequires:  akka
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  kryo
-BuildRequires:  objenesis
 BuildRequires:  python3
 BuildRequires:  scala
 BuildRequires:  scala-ant
-BuildRequires:  typesafe-config
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc8-c++ >= 8.1
 %else
@@ -87,7 +84,7 @@ python3 create_jni.py
 popd
 pushd jvm-packages/%{artifactId}
 mkdir -p lib
-build-jar-repository -s lib akka kryo commons-logging scala typesafe-config objenesis/objenesis
+build-jar-repository -s lib kryo commons-logging scala
 %{ant} jar javadoc
 popd
 

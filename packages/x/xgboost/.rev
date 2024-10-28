@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148922</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>19762cde13669b94245ece18c9f90c61</srcmd5>
+    <version>2.0.0</version>
+    <time>1730135362</time>
+    <user>dimstar_suse</user>
+    <comment>Remove bogus dependencies</comment>
+    <requestid>1218822</requestid>
+  </revision>
 </revisionlist>
