@@ -139,4 +139,14 @@
     Decombe in PR #793.</comment>
     <requestid>1184019</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b27ab5c671269f87b16b1806fd8b33f0</srcmd5>
+    <version>4.5.0</version>
+    <time>1730125382</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.</comment>
+    <requestid>1218790</requestid>
+  </revision>
 </revisionlist>
