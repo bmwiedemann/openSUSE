@@ -1,0 +1,201 @@
+Index: nvidia-oot/drivers/misc/nvscic2c-pcie/pci-client.c
+===================================================================
+--- nvidia-oot/drivers/misc/nvscic2c-pcie/pci-client.c.orig
++++ nvidia-oot/drivers/misc/nvscic2c-pcie/pci-client.c
+@@ -246,7 +246,11 @@ allocate_edma_rx_desc_iova(struct pci_cl
+ 		goto err;
+ 	}
+ 	prot = (IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE);
++#if 1
++	ret = iommu_map(ctx->domain, ctx->edma_ch_desc_iova, phys_addr, EDMA_CH_DESC_SZ, prot, GFP_KERNEL);
++#else
+ 	ret = iommu_map(ctx->domain, ctx->edma_ch_desc_iova, phys_addr, EDMA_CH_DESC_SZ, prot);
++#endif
+ 	if (ret) {
+ 		pr_err("pci client failed to map iova to 60K physical backing\n");
+ 		goto err;
+@@ -408,7 +412,11 @@ pci_client_map_addr(void *pci_client_h,
+ 	if (WARN_ON(!ctx || !to_iova || !paddr || !size))
+ 		return -EINVAL;
+ 
++#if 1
++	return iommu_map(ctx->domain, to_iova, paddr, size, prot, GFP_KERNEL);
++#else
+ 	return iommu_map(ctx->domain, to_iova, paddr, size, prot);
++#endif
+ }
+ 
+ size_t
+Index: nvidia-oot/drivers/misc/nvscic2c-pcie/epf/module.c
+===================================================================
+--- nvidia-oot/drivers/misc/nvscic2c-pcie/epf/module.c.orig
++++ nvidia-oot/drivers/misc/nvscic2c-pcie/epf/module.c
+@@ -169,16 +169,6 @@ allocate_outbound_area(struct pci_epf *e
+ 	return ret;
+ }
+ 
+-static void
+-clear_inbound_translation(struct pci_epf *epf)
+-{
+-	struct pci_epf_bar *epf_bar = &epf->bar[BAR_0];
+-
+-	pci_epc_clear_bar(epf->epc, epf->func_no, PCIE_VFNO, epf_bar);
+-
+-	/* no api to clear epf header.*/
+-}
+-
+ static int
+ set_inbound_translation(struct pci_epf *epf)
+ {
+@@ -482,42 +472,6 @@ deinit_work(struct work_struct *work)
+ 	atomic_set(&drv_ctx->epf_ctx->epf_initialized, 0);
+ }
+ 
+-/*
+- * Graceful shutdown: PCIe subsystem calls struct pci_epc_event_ops.core_deinit
+- * when @DRV_MODE_EPC .remove() or .shutdown() handlers are completed/exited.
+- * Abnormal shutdown (when PCIe RP SoC - gets halted, or it's kernel oops):
+- * PCIe subsystem also struct pci_epc_event_ops.core_deinit but
+- * @DRV_MODE_EPC would have already gone then by the time
+- * struct pci_epc_event_ops.core_deinit is called.
+- */
+-static int
+-nvscic2c_pcie_epf_core_deinit(struct pci_epf *epf)
+-{
+-	struct driver_ctx_t *drv_ctx = NULL;
+-
+-	drv_ctx = epf_get_drvdata(epf);
+-	if (!drv_ctx)
+-		return -EINVAL;
+-
+-	if (atomic_read(&drv_ctx->epf_ctx->core_initialized)) {
+-		/*
+-		 * in case of PCIe RP SoC abnormal shutdown, comm-channel
+-		 * shutdown message from @DRV_MODE_EPC won't come and
+-		 * therefore scheduling the deinit work here is required
+-		 * If its already scheduled, it won't be scheduled again.
+-		 * Wait for deinit work to complete in either case.
+-		 */
+-		schedule_work(&drv_ctx->epf_ctx->deinitialization_work);
+-		flush_work(&drv_ctx->epf_ctx->deinitialization_work);
+-
+-		clear_inbound_translation(epf);
+-		atomic_set(&drv_ctx->epf_ctx->core_initialized, 0);
+-	}
+-	wake_up_interruptible_all(&drv_ctx->epf_ctx->core_initialized_waitq);
+-
+-	return 0;
+-}
+-
+ /* Handle link message from @DRV_MODE_EPC. */
+ static void
+ link_msg_cb(void *data, void *ctx)
+@@ -729,7 +683,6 @@ get_driverdata(const struct pci_epf_devi
+ 
+ static const struct pci_epc_event_ops nvscic2c_event_ops = {
+ 	.core_init = nvscic2c_pcie_epf_core_init,
+-	.core_deinit = nvscic2c_pcie_epf_core_deinit,
+ };
+ 
+ static int
+Index: nvidia-oot/drivers/pci/endpoint/functions/pci-epf-dma-test.c
+===================================================================
+--- nvidia-oot/drivers/pci/endpoint/functions/pci-epf-dma-test.c.orig
++++ nvidia-oot/drivers/pci/endpoint/functions/pci-epf-dma-test.c
+@@ -164,22 +164,6 @@ static int pcie_dma_epf_core_init(struct
+ 	return 0;
+ }
+ 
+-static int pcie_dma_epf_core_deinit(struct pci_epf *epf)
+-{
+-	struct pcie_epf_dma *epfnv = epf_get_drvdata(epf);
+-	void *cookie = epfnv->edma.cookie;
+-	struct pcie_epf_bar0 *epf_bar0 = (struct pcie_epf_bar0 *) epfnv->bar0_virt;
+-	struct pci_epc *epc = epf->epc;
+-	struct pci_epf_bar *epf_bar = &epf->bar[BAR_0];
+-
+-	epfnv->edma.cookie = NULL;
+-	epf_bar0->rp_phy_addr = 0;
+-	tegra_pcie_edma_deinit(cookie);
+-	lpci_epc_clear_bar(epc, epf->func_no, epf_bar);
+-
+-	return 0;
+-}
+-
+ static void pcie_dma_epf_unbind(struct pci_epf *epf)
+ {
+ 	struct pcie_epf_dma *epfnv = epf_get_drvdata(epf);
+@@ -263,7 +247,6 @@ static const struct pci_epf_device_id pc
+ 
+ static const struct pci_epc_event_ops pci_epf_dma_test_event_ops = {
+ 	.core_init = pcie_dma_epf_core_init,
+-	.core_deinit = pcie_dma_epf_core_deinit,
+ };
+ 
+ #if defined(NV_PCI_EPF_DRIVER_STRUCT_PROBE_HAS_ID_ARG) /* Linux 6.4 */
+Index: nvidia-oot/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c
+===================================================================
+--- nvidia-oot/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c.orig
++++ nvidia-oot/drivers/pci/endpoint/functions/pci-epf-tegra-vnet.c
+@@ -1237,7 +1237,7 @@ static int tvnet_ep_pci_epf_setup_irqsp(
+ 	syncpt_addr = nvhost_interrupt_syncpt_get_syncpt_addr(ctrl_irqsp->is);
+ #endif
+ 	ret = iommu_map(domain, amap->iova, syncpt_addr, PAGE_SIZE,
+-			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE);
++			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE, GFP_KERNEL);
+ 	if (ret < 0) {
+ 		dev_err(fdev, "%s: iommu_map of ctrlsp mem failed: %d\n",
+ 			__func__, ret);
+@@ -1256,7 +1256,7 @@ static int tvnet_ep_pci_epf_setup_irqsp(
+ 	syncpt_addr = nvhost_interrupt_syncpt_get_syncpt_addr(data_irqsp->is);
+ #endif
+ 	ret = iommu_map(domain, amap->iova + PAGE_SIZE, syncpt_addr, PAGE_SIZE,
+-			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE);
++			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE, GFP_KERNEL);
+ 	if (ret < 0) {
+ 		dev_err(fdev, "%s: iommu_map of datasp mem failed: %d\n",
+ 			__func__, ret);
+@@ -1323,7 +1323,7 @@ static int tvnet_ep_alloc_single_page_ba
+ 	}
+ 
+ 	ret = iommu_map(domain, amap->iova, page_to_phys(amap->page), PAGE_SIZE,
+-			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE);
++			IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE, GFP_KERNEL);
+ 	if (ret < 0) {
+ 		dev_err(tvnet->fdev, "%s: type: %d iommu_map(RAM) failed: %d\n",
+ 			__func__, type, ret);
+@@ -1404,7 +1404,7 @@ static int tvnet_ep_alloc_multi_page_bar
+ 	}
+ 
+ 	ret = iommu_map(domain, amap->iova, page_to_phys(amap->page),
+-			amap->size, IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE);
++			amap->size, IOMMU_CACHE | IOMMU_READ | IOMMU_WRITE, GFP_KERNEL);
+ 	if (ret < 0) {
+ 		dev_err(tvnet->fdev, "%s: iommu_map(RAM) failed: %d\n",
+ 			__func__, ret);
+@@ -1585,25 +1585,8 @@ static void tvnet_ep_pci_epf_linkup(stru
+ #endif
+ 
+ #if (LINUX_VERSION_CODE > KERNEL_VERSION(5, 14, 0))
+-static int tvnet_ep_pci_epf_core_deinit(struct pci_epf *epf)
+-{
+-	struct pci_epf_bar *epf_bar = &epf->bar[BAR_0];
+-	struct pci_epf_tvnet *tvnet = epf_get_drvdata(epf);
+-	if (!tvnet)
+-		return -EINVAL;
+-
+-	if (atomic_read(&tvnet->core_initialized)) {
+-		lpci_epc_clear_bar(epf->epc, epf->func_no, epf_bar);
+-		/* no api to clear epf header.*/
+-		atomic_set(&tvnet->core_initialized, 0);
+-	}
+-
+-	return 0;
+-}
+-
+ static const struct pci_epc_event_ops tvnet_event_ops = {
+ 	.core_init = tvnet_ep_pci_epf_core_init,
+-	.core_deinit = tvnet_ep_pci_epf_core_deinit,
+ 	.link_up = tvnet_ep_pci_epf_linkup,
+ };
+ 

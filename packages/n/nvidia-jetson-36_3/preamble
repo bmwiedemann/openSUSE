@@ -1,0 +1,15 @@
+Requires: perl-Bootloader
+Requires: group(video)
+Requires: nvidia-jetson-36_3-extra-kmp = %{-v*}
+Requires: kernel-firmware-nvidia-jetson-36_3 = %{-v*}
+Requires: kernel-%1
+Conflicts: nvidia-driver-G06-kmp
+Conflicts: nvidia-open-driver-G06-kmp-default
+Conflicts: nvidia-open-driver-G06-kmp-64kb
+Conflicts: nvidia-open-driver-G06-signed-kmp
+Provides:  nvidia-open-driver-G06-signed-sidecar-kmp
+Obsoletes: nvidia-open-driver-G06-signed-sidecar-kmp
+Provides:  nvidia-open-driver-jetson-kmp
+Obsoletes: nvidia-open-driver-jetson-kmp
+Provides:  nvidia-jetson-kmp = %{-v*}
+Obsoletes: nvidia-jetson-kmp < %{-v*}

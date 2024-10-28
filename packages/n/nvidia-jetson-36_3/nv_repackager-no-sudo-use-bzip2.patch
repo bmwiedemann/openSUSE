@@ -1,0 +1,51 @@
+--- Linux_for_Tegra/nv_tools/scripts/nv_repackager.sh.orig	2024-04-08 15:09:32.061192694 +0200
++++ Linux_for_Tegra/nv_tools/scripts/nv_repackager.sh	2024-04-08 15:19:56.957949632 +0200
+@@ -364,18 +364,18 @@
+ 
+ 			# ex: [foo.deb]=/path/to/foo.deb
+ 			convert_filename_to_path_map["${file##*/}"]="${file}"
+-		done < <(sudo find "${bsp_directory}" -type f -name "*.deb")
++		done < <(find "${bsp_directory}" -type f -name "*.deb")
+ 	else
+ 		while read -r file
+ 		do
+ 			# do a "find" to check if this deb is included
+ 			if [[ "${file}" != /* ]]; then
+ 				# use grep's return code to check if we really found the file
+-				if sudo find "${bsp_directory}" -type f -name "${file}" | grep -q "."; then
++				if find "${bsp_directory}" -type f -name "${file}" | grep -q "."; then
+ 					while read -r filepath_abs
+ 					do
+ 						file="${filepath_abs}"
+-					done < <(sudo find "${bsp_directory}" -type f -name "${file}")
++					done < <(find "${bsp_directory}" -type f -name "${file}")
+ 				else
+ 					EchoAndExit "ERROR: Could not find ${file}"
+ 				fi
+@@ -485,7 +485,7 @@
+ 		deb_filename=$(basename "${deb_file}" .deb)
+ 
+ 		# Found an existing tar
+-		if sudo find "${final_directory}" -type f -name "${deb_filename}.tbz2" | grep -q "." ; then
++		if find "${final_directory}" -type f -name "${deb_filename}.tbz2" | grep -q "." ; then
+ 			EchoAndExit "ERROR: The file to be converted into, ${deb_filename}.tbz2, is already in ${final_directory}"
+ 		fi
+ 	done
+@@ -774,7 +774,7 @@
+ 			fi
+ 
+ 			lib_files+=("${pull_file}")
+-		done < <(sudo find . \( -type f -o -type l \))
++		done < <(find . \( -type f -o -type l \))
+ 	fi
+ 
+ 	# Store the original form
+@@ -856,7 +856,7 @@
+ 		--owner 0 \
+ 		--group 0 \
+ 		--mode "${TARGET_MODE}" \
+-		-I lbzip2 \
++		-I bzip2 \
+ 		--format=posix \
+ 		${verbose_option} "${tar_option}" "${final_directory}/${filename_without_extension}.tbz2" \
+ 		-C "${final_tar_dir}/" -T -

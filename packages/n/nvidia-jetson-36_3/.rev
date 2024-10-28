@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f17e6a125af102501350b97d52c12db1</srcmd5>
+    <version>36.3.1_20240516220919</version>
+    <time>1730125269</time>
+    <user>anag+factory</user>
+    <comment>- use &quot;-36_3&quot; suffix for package names (only to be used with 
+  Jetpack 6.0/36.3 firmware)
+- provides/obsoletes old packages without &quot;-36_3&quot; suffix</comment>
+    <requestid>1218693</requestid>
+  </revision>
+</revisionlist>

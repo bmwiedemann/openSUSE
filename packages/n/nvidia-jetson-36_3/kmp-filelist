@@ -1,0 +1,13 @@
+%defattr (-,root,root)
+%dir %{kernel_module_directory}/%2-%1
+%dir %{kernel_module_directory}/%2-%1/updates
+%{kernel_module_directory}/%2-%1/updates/nvidia-drm.ko*
+%{kernel_module_directory}/%2-%1/updates/nvidia-modeset.ko*
+%{kernel_module_directory}/%2-%1/updates/nvidia.ko*
+%dir /lib/modprobe.d
+/lib/modprobe.d/50-nvidia-%1.conf
+%dir /usr/lib/dracut
+%dir /usr/lib/dracut/dracut.conf.d
+/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-36_3-%1.conf
+%dir /usr/lib/modules-load.d
+/usr/lib/modules-load.d/nvidia-load-%1.conf

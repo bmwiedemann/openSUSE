@@ -1,0 +1,52 @@
+From 8f4ee697f9451975171d3bfb8422e3b872f90a22 Mon Sep 17 00:00:00 2001
+From: Jon Hunter <jonathanh@nvidia.com>
+Date: Tue, 30 Jul 2024 17:48:15 +0100
+Subject: [PATCH] ASoC: tegra: Fix redefinition error for Linux v6.11
+
+In Linux v6.11, commit 1a251f52cfdc ("minmax: make generic MIN() and
+MAX() macros available everywhere") causes the Tegra ASoC Utils driver
+build to fail with the following error:
+
+ sound/soc/tegra/tegra_asoc_utils.c:18: error: "MAX" redefined [-Werror]
+  18 | #define MAX(X, Y) ((X > Y) ? (X) : (Y))
+
+Fix this by add guards around the definition of 'MAX' in the
+Tegra ASoC Utils file.
+
+Bug 4749580
+
+Change-Id: I63df434627e6ee7ab16d865c296b07b91405fdfd
+Signed-off-by: Jon Hunter <jonathanh@nvidia.com>
+Reviewed-on: https://git-master.nvidia.com/r/c/linux-nv-oot/+/3185143
+Reviewed-by: Sameer Pujar <spujar@nvidia.com>
+GVS: buildbot_gerritrpt <buildbot_gerritrpt@nvidia.com>
+---
+ sound/soc/tegra/tegra_asoc_utils.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/tegra/tegra_asoc_utils.c b/sound/soc/tegra/tegra_asoc_utils.c
+index ad5bea28..a1186b10 100644
+--- a/sound/soc/tegra/tegra_asoc_utils.c
++++ b/sound/soc/tegra/tegra_asoc_utils.c
+@@ -3,7 +3,7 @@
+  * tegra_asoc_utils.c - Harmony machine ASoC driver
+  *
+  * Author: Stephen Warren <swarren@nvidia.com>
+- * Copyright (c) 2010-2023 NVIDIA CORPORATION. All rights reserved.
++ * Copyright (c) 2010-2024 NVIDIA CORPORATION. All rights reserved.
+  */
+ 
+ #include <linux/clk.h>
+@@ -15,7 +15,9 @@
+ 
+ #include "tegra_asoc_utils.h"
+ 
++#ifndef MAX
+ #define MAX(X, Y) ((X > Y) ? (X) : (Y))
++#endif
+ /*
+  * this will be used for platforms from Tegra210 onwards.
+  * odd rates: sample rates multiple of 11.025kHz
+-- 
+2.43.0
+
