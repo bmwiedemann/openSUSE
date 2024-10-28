@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -33,10 +33,10 @@ BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.4.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.5.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
 
 %description
 SCCP is a network layer protocol that provides extended routing, flow
@@ -96,19 +96,19 @@ in SS7 telecommunications networks.
 This subpackage contains the development files for the Osmocom SCCP
 library.
 
-%package -n libosmo-sigtran9
+%package -n libosmo-sigtran10
 Summary:        Osmocom SIGTRAN library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-sigtran9
+%description -n libosmo-sigtran10
 Osmocom implementation of (parts of) SIGTRAN.
 
 %package -n libosmo-sigtran-devel
 Summary:        Development files for the Osmocom sigtran library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sigtran9 = %version
+Requires:       libosmo-sigtran10 = %version
 
 %description -n libosmo-sigtran-devel
 Osmocom implementation of (parts of) SIGTRAN.
@@ -182,7 +182,7 @@ fi
 
 %ldconfig_scriptlets -n libosmo-mtp-%libversion
 %ldconfig_scriptlets -n libosmo-sccp-%libversion
-%ldconfig_scriptlets -n libosmo-sigtran9
+%ldconfig_scriptlets -n libosmo-sigtran10
 %ldconfig_scriptlets -n libosmo-xua-%libversion
 
 %preun -n osmo-stp
@@ -217,7 +217,7 @@ fi
 %_libdir/libosmo-sccp.so
 %_libdir/pkgconfig/libosmo-sccp.pc
 
-%files -n libosmo-sigtran9
+%files -n libosmo-sigtran10
 %_libdir/libosmo-sigtran.so.*
 
 %files -n libosmo-sigtran-devel

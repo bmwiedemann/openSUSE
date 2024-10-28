@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 26 14:11:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.0
+  * sccp: Introduce initial support for SCCP LUDT + LUDTS messages
+  * asp: Apply SCTP local and peer primary address changes after
+    the ASP was started
+  * asp: Support removing local & remote addresses
+  * Implement M3UA-over-TCP (in addition to SCTP)
+
+-------------------------------------------------------------------
 Tue Jun 18 08:38:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.2
