@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 27 20:26:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- use "-36_4" suffix for package names (only to be used with 
+  Jetpack 6.1/36.4 firmware)
+
+-------------------------------------------------------------------
 Fri Oct 25 17:33:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed obsolete nv_repackager-no-sudo-use-bzip2.patch 

@@ -224,4 +224,13 @@ Supersedes SR #1190973</comment>
 - use better URL in specfile (boo#1222604, comment#87)</comment>
     <requestid>1218417</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>99fdd25a07b4cdfdf7a7935795e81abf</srcmd5>
+    <version>36.4.0_20240912212859</version>
+    <time>1730125263</time>
+    <user>anag+factory</user>
+    <comment>- use &quot;-36_4&quot; suffix for package names (only to be used with 
+  Jetpack 6.1/36.4 firmware)</comment>
+    <requestid>1218688</requestid>
+  </revision>
 </revisionlist>

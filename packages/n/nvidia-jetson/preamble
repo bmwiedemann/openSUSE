@@ -1,7 +1,7 @@
 Requires: perl-Bootloader
 Requires: group(video)
-Requires: nvidia-jetson-extra-kmp = %{-v*}
-Requires: kernel-firmware-nvidia-jetson = %{-v*}
+Requires: nvidia-jetson-36_4-extra-kmp = %{-v*}
+Requires: kernel-firmware-nvidia-jetson-36_4 = %{-v*}
 Requires: kernel-%1
 Conflicts: nvidia-driver-G06-kmp
 Conflicts: nvidia-open-driver-G06-kmp-default

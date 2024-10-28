@@ -9,4 +9,4 @@
 /lib/modprobe.d/50-nvidia-extra-%1.conf
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/dracut.conf.d
-/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-extra-%1.conf
+/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-36_4-extra-%1.conf

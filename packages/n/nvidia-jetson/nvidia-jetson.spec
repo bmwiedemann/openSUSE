@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-jetson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}
@@ -65,8 +64,8 @@ BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  zstd
 ExclusiveArch:  aarch64
 
 %if 0%{!?kmp_template_name:1}
@@ -74,32 +73,30 @@ ExclusiveArch:  aarch64
 %endif
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post-extra.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun-extra.sh' %kmp_template_name >%_builddir/nvidia-kmp-extra-template)
-%kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
-%kernel_module_package -n %{name}-extra -t %_builddir/nvidia-kmp-extra-template -f %_sourcedir/kmp-filelist-extra -p %_sourcedir/preamble-extra
+%kernel_module_package -n %{name}-36_4 -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
+%kernel_module_package -n %{name}-36_4-extra -t %_builddir/nvidia-kmp-extra-template -f %_sourcedir/kmp-filelist-extra -p %_sourcedir/preamble-extra
 %define kver %(for dir in /usr/src/linux-obj/*/*/; do make %{?jobs:-j%jobs} -s -C "$dir" kernelversion 2>/dev/null; break; done |perl -ne '/(\\d+)\\.(\\d+)\\.(\\d+)?/&&printf "%%d%%02d%%03d\\n",$1,$2,$3')
 
 %description
 This package provides the Open-Source NVIDIA Jetson Orin graphics drivers.
 This requires the additional Open-Source NVIDIA Jetson Orin drivers
-(nvidia-jetson-extra KMP) but conflicts with the traditional graphics
+(nvidia-jetson-36_4-extra KMP) but conflicts with the traditional graphics
 drivers for dedicated GPUs (nvidia-driver-G06-kmp,
 nvidia-open-driver-G06-signed-kmp) due to kernel module name conflicts.
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
-
-%description -n nvidia-jetson-extra-kmp-default
+%description -n nvidia-jetson-36_4-extra-kmp-default
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
-(nvidia-jetson KMP).
+(nvidia-jetson-36_4 KMP).
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
-
-%description -n nvidia-jetson-extra-kmp-64kb
+%description -n nvidia-jetson-36_4-extra-kmp-64kb
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
-(nvidia-jetson KMP).
+(nvidia-jetson-36_4 KMP).
 
 %prep
 echo suse_version: %suse_version
@@ -107,7 +104,7 @@ echo sle_version: %sle_version
 echo "kver: %kver"
 %setup -q -n src -c src -a 22 -a 23 -a 24 -a 26 -a 27
 pushd nvidia-oot/drivers/net/ethernet/nvidia/nvethernet
-tar xf %{SOURCE25}
+tar xf %{SOURCE25} 
 popd
 cp $RPM_SOURCE_DIR/Makefile-NVIDIA-BUG-4460318 Makefile
 %patch1 -p1
@@ -180,30 +177,30 @@ EOF
 blacklist dwmac_tegra
 EOF
     mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d
-    dracutfile=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-$flavor.conf
-    dracutfile_extra=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-extra-$flavor.conf
+    dracutfile=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-36_4-$flavor.conf
+    dracutfile_extra=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-36_4-extra-$flavor.conf
     cat > ${dracutfile} << EOF
 omit_drivers+=" nvidia-drm nvidia-modeset nvidia "
 EOF
-    cat > ${dracutfile_extra}
-# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0)
+    cat > ${dracutfile_extra} 
+# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0) 
 %if 0%{?suse_version} == 1600
     drivers=$(find %{buildroot}/usr/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %else
     drivers=$(find %{buildroot}/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %endif
-    for driver in ${drivers}; do
+    for driver in ${drivers}; do 
         dname=$(basename $driver|sed 's/.ko.*//g')
         if [ "$dname" == "tegra-drm" ]; then
             echo "add_drivers+=${dname}" >> ${dracutfile_extra}
         else
             echo "omit_drivers+=${dname}" >> ${dracutfile_extra}
-        fi
+        fi 
     done
     mkdir -p %{buildroot}/usr/lib/systemd/system
     install -m 644 %{SOURCE10} %{buildroot}/usr/lib/systemd/system/load-nvidia-drm-$flavor.service
     mkdir -p %{buildroot}%{_systemd_util_dir}/system-preset
-    cat >    %{buildroot}%{_systemd_util_dir}/system-preset/70-nvidia-jetson-kmp-${flavor}.preset << EOF
+    cat >    %{buildroot}%{_systemd_util_dir}/system-preset/70-nvidia-jetson-36_4-kmp-${flavor}.preset << EOF
 enable load-nvidia-drm-${flavor}.service
 EOF
 done
