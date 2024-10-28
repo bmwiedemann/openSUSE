@@ -508,8 +508,6 @@ unsorted:
   - aisleriot 
   - aisleriot-lang 
   - aisleriot-themes 
-  - akka 
-  - akka-javadoc 
   - akonadi-apparmor 
   - akonadi-calendar-devel 
   - akonadi-contacts-devel 
@@ -6430,6 +6428,10 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-psqueues-doc 
   - ghc-psqueues-prof 
+  - ghc-puresat 
+  - ghc-puresat-devel 
+  - ghc-puresat-doc 
+  - ghc-puresat-prof 
   - ghc-quickcheck-instances 
   - ghc-quickcheck-instances-devel 
   - ghc-quickcheck-instances-doc 
@@ -6529,6 +6531,14 @@ unsorted:
   - ghc-serialise-doc 
   - ghc-serialise-prof 
   - ghc-servant 
+  - ghc-servant-client 
+  - ghc-servant-client-core 
+  - ghc-servant-client-core-devel 
+  - ghc-servant-client-core-doc 
+  - ghc-servant-client-core-prof 
+  - ghc-servant-client-devel 
+  - ghc-servant-client-doc 
+  - ghc-servant-client-prof 
   - ghc-servant-devel 
   - ghc-servant-doc 
   - ghc-servant-prof 
@@ -11583,10 +11593,8 @@ unsorted:
   - libQtAVWidgets1 
   - libQtOlm3_0 
   - libQtQuick5-32bit 
-  - libQuotient-devel 
   - libQuotient-qt6-devel 
-  - libQuotient0_8 
-  - libQuotientQt6-0_8 
+  - libQuotientQt6-0_9 
   - libRaTools0 
   - libRecast1 
   - libRivet-3_1_10 
@@ -13725,7 +13733,7 @@ unsorted:
   - libgtop-devel 
   - libgtop-doc 
   - libgtp-devel 
-  - libgtp6 
+  - libgtp10 
   - libgtpnl-devel 
   - libgtpnl-tools 
   - libgtpnl0 
@@ -15139,7 +15147,7 @@ unsorted:
   - libosmgpsmap-devel 
   - libosmo-dsp-devel 
   - libosmo-dsp-doc 
-  - libosmo-e1d1 
+  - libosmo-e1d3 
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
@@ -15150,9 +15158,9 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_8_2 
+  - libosmo-mtp-1_9_0 
   - libosmo-mtp-devel 
-  - libosmo-octoi2 
+  - libosmo-octoi3 
   - libosmo-ranap-devel 
   - libosmo-ranap7 
   - libosmo-rspro-devel 
@@ -15161,13 +15169,13 @@ unsorted:
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_8_2 
+  - libosmo-sccp-1_9_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran9 
+  - libosmo-sigtran10 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_8_2 
+  - libosmo-xua-1_9_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis13 
@@ -15177,7 +15185,7 @@ unsorted:
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore21 
+  - libosmocore22 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
@@ -15193,7 +15201,7 @@ unsorted:
   - libosmosim-devel 
   - libosmosim2 
   - libosmotrau-devel 
-  - libosmotrau2 
+  - libosmotrau10 
   - libosmousb-devel 
   - libosmousb0 
   - libosmovty-devel 
@@ -15561,6 +15569,9 @@ unsorted:
   - libpython3_13-1_0 
   - libpython3_13-1_0-x86-64-v3 
   - libpython3_13t-1_0 
+  - libpython3_14-1_0 
+  - libpython3_14-1_0-x86-64-v3 
+  - libpython3_14t-1_0 
   - libpython3_9-1_0 
   - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
@@ -16462,9 +16473,9 @@ unsorted:
   - libsundials_sunnonlin4-mvapich2 
   - libsundials_sunnonlin4-openmpi4 
   - libsuperlu-gnu-hpc 
-  - libsuperlu6 
-  - libsuperlu6-32bit 
-  - libsuperlu_6_0_1-gnu-hpc 
+  - libsuperlu7 
+  - libsuperlu7-32bit 
+  - libsuperlu_7_0_0-gnu-hpc 
   - libsurgescript0_6_1 
   - libsuseconnect 
   - libsvm-devel 
@@ -17543,6 +17554,8 @@ unsorted:
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
+  - liquidshell 
+  - liquidshell-lang 
   - lirc-config 
   - lirc-core 
   - lirc-devel 
@@ -25871,9 +25884,6 @@ unsorted:
   - python310-jsonschema-path 
   - python310-jsonschema-spec 
   - python310-jsonschema-specifications 
-  - python310-jsonschema417 
-  - python310-jsonschema417-format 
-  - python310-jsonschema417-format-nongpl 
   - python310-jsonslicer 
   - python310-jsonxs 
   - python310-junit-xml 
@@ -27147,6 +27157,7 @@ unsorted:
   - python310-rfc3987 
   - python310-rich 
   - python310-rich-click 
+  - python310-rich-pixels 
   - python310-rjsmin 
   - python310-rnc2rng 
   - python310-rnginline 
@@ -27554,6 +27565,7 @@ unsorted:
   - python310-typepy 
   - python310-typer 
   - python310-typer-slim 
+  - python310-types-Pillow 
   - python310-types-PyYAML 
   - python310-types-humanfriendly 
   - python310-types-python-dateutil 
@@ -29497,9 +29509,6 @@ unsorted:
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-path 
   - python311-jsonschema-spec 
-  - python311-jsonschema417 
-  - python311-jsonschema417-format 
-  - python311-jsonschema417-format-nongpl 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -30726,6 +30735,7 @@ unsorted:
   - python311-rfc3986-validator 
   - python311-rfc3987 
   - python311-rich-click 
+  - python311-rich-pixels 
   - python311-rjsmin 
   - python311-rnc2rng 
   - python311-rnginline 
@@ -31123,6 +31133,7 @@ unsorted:
   - python311-typepy 
   - python311-typer 
   - python311-typer-slim 
+  - python311-types-Pillow 
   - python311-types-PyYAML 
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
@@ -33120,9 +33131,6 @@ unsorted:
   - python312-jsonschema-format-nongpl 
   - python312-jsonschema-path 
   - python312-jsonschema-specifications 
-  - python312-jsonschema417 
-  - python312-jsonschema417-format 
-  - python312-jsonschema417-format-nongpl 
   - python312-jsonslicer 
   - python312-jsonxs 
   - python312-junit-xml 
@@ -34396,6 +34404,7 @@ unsorted:
   - python312-rfc3987 
   - python312-rich 
   - python312-rich-click 
+  - python312-rich-pixels 
   - python312-rjsmin 
   - python312-rnc2rng 
   - python312-rnginline 
@@ -34801,6 +34810,7 @@ unsorted:
   - python312-typepy 
   - python312-typer 
   - python312-typer-slim 
+  - python312-types-Pillow 
   - python312-types-PyYAML 
   - python312-types-humanfriendly 
   - python312-types-python-dateutil 
@@ -35069,6 +35079,28 @@ unsorted:
   - python313-tk 
   - python313-tools 
   - python313-x86-64-v3 
+  - python314 
+  - python314-base 
+  - python314-base-x86-64-v3 
+  - python314-curses 
+  - python314-dbm 
+  - python314-devel 
+  - python314-doc 
+  - python314-doc-devhelp 
+  - python314-idle 
+  - python314-nogil 
+  - python314-nogil-base 
+  - python314-nogil-curses 
+  - python314-nogil-dbm 
+  - python314-nogil-devel 
+  - python314-nogil-idle 
+  - python314-nogil-testsuite 
+  - python314-nogil-tk 
+  - python314-nogil-tools 
+  - python314-testsuite 
+  - python314-tk 
+  - python314-tools 
+  - python314-x86-64-v3 
   - python39 
   - python39-base 
   - python39-curses 
@@ -37509,9 +37541,9 @@ unsorted:
   - superlu-gnu-hpc-devel 
   - superlu-gnu-hpc-doc 
   - superlu-gnu-hpc-examples 
-  - superlu_6_0_1-gnu-hpc-devel 
-  - superlu_6_0_1-gnu-hpc-doc 
-  - superlu_6_0_1-gnu-hpc-examples 
+  - superlu_7_0_0-gnu-hpc-devel 
+  - superlu_7_0_0-gnu-hpc-doc 
+  - superlu_7_0_0-gnu-hpc-examples 
   - superpaper 
   - supertux2 
   - supertuxkart 
