@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct 28 06:56:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 10.0.0:
+  BACKEND
+    * Pea 1.20, can now search hash values of files on Google and Virustotal for detecting known malware,
+      new command line switches to show text preview of files, and to directly save checksum/hash results
+      in GNU Coreutils -compatible formats
+    * 7z 24.08
+  CODE
+    * Legacy code cleanup
+    * Sorted tab order of UI items
+    * Various fixes
+  FILE MANAGER
+    * (Linux) Added MTP devices folder (Media Transfer Protocol) in Filesystem section of navigation sidebar,
+      to make easier to access to mounted devices, i.e. Android phones / tablets
+    * Expanded File tools section in file browser context menu, archive/extract context menu, and in Test menu in tool bar; it is now possible to
+      + Save hash values in GNU Coreutils compatible format
+      + Search SHA256 hash values on Google and VirusTotal
+      + Display Text preview of file (attempts to parse file as utf8 text, displays linle numbers, text strings and line mumbers can be sorted alphabetically)
+    * Revamped GUI
+      + Hints and tooltips can now be turned on/off from Options > Settings, General tab
+      + Icons used more sparingly to avoid information repetition and overload
+      + Updated progress screen
+      + Updated GUI rendering engine to be more flexible and memory efficient (up to 30% depending on the icon mode)
+      + Updated Style menu
+      + Updated Themes and embedded icons
+      + Updated context menu
+  EXTRACTION and ARCHIVING
+    * From Options > Settings, Advanced tab it is possible to set "7z / p7zip syntax level" back to 17.05 and 16.02 releases,
+      to improve compatibility with the syntaxt of legacy 7z / p7zip versions
+    * Improved quick "Extract here" link in the toolbar is now also shown when one or more archives are selected in the file browser
+    * Updated compression presets
+    * Added tar.gz, tar.xz, and tar.zst presets
+
+-------------------------------------------------------------------
 Mon Aug 19 09:37:16 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Update to 9.9.1:

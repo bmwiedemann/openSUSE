@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        9.9.1
+Version:        10.0.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -28,7 +28,7 @@ URL:            https://peazip.github.io/
 Source0:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip-%{version}.src.zip
 Source1:        altconf.txt
 # The help file did not change between 9.9.0 and 9.9.1. When it does, replace version number with the version macro again.
-Source2:        https://github.com/peazip/PeaZip/releases/download/9.9.0/peazip_help.pdf
+Source2:        https://github.com/peazip/PeaZip/releases/download/10.0.0/peazip_help.pdf
 Patch0:         peazip-desktop.patch
 # PATCH-FIX-OPENSUSE peazip-build_PIE.patch -- aloisio@gmx.com
 Patch1:         peazip-build_PIE.patch
@@ -159,6 +159,7 @@ cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peaz
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
 # Remove hard linked png
 rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_app.png
+rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_alt.png
 
 chmod +x %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/*
 pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
