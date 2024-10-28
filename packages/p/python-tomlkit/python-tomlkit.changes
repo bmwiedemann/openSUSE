@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:49:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.2:
+  * Fix deleting keys from an out-of-order table does not remove
+    all table parts.
+  * Fix the `Table.is_super_table()` check for tables with dotted
+    key as the only child.
+  * Count table as a super table if it has children and all
+    children are either tables or arrays of tables.
+  * Expect a tomlkit-specific error instead of `TypeError` from a
+    custom encoder.
+  * Drop support for Python older than 3.8. Remove 3.7 from the
+    CI matrix.
+  * Fix the incompatiblity with 3.13 because of the
+    `datetime.replace()` change.
+  * Revert the change of parsing out-of-order tables.
+  * Keep the nested out-of-order table.
+
+-------------------------------------------------------------------
 Mon Jun 10 08:51:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.5:
