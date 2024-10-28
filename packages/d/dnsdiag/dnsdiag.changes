@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 26 19:31:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * Add support for DNS over QUIC (DoQ) protocol.
+  * Lower dependency version requirement to improve compatibility.
+  * Other various bug fixes.
+
+-------------------------------------------------------------------
 Thu Jun 20 12:16:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0

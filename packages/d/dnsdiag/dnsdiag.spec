@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           dnsdiag
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ Source3:        dnstraceroute.1
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-cryptography >= 42.0.7
+Requires:       python3-cryptography >= 42.0.5
 Requires:       python3-cymruwhois >= 1.6
 Requires:       python3-dnspython >= 2.6.1
 Requires:       python3-h2 >= 4.1.0
