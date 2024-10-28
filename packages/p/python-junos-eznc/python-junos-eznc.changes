@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 28 05:41:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.7.2:
+  * Enhancements done
+    + Introduced bind_addr parameter in Device() API #1279
+    + Introduced vmhost paramater in dev.facts #1333
+    + Introduced hostkey_verify paramater in Device() API #1321
+  * Bugs Fixed
+    + Fixed the missing key to EthernetSwitchingTable #1228
+    + Fixed error handling on HelloHandler #1339
+    + Fixed the version check #1338
+    + Removed Google and Stackflow link from the ReadME #1337
+    + Fixed SystemStorageTable tables and views to handles multiple
+      routing-engine file system storage information.#1244
+    + Fixed Console' object has no attribute '_use_filter' error when
+      executed Table/View script #1335
+    + Fixed cli function to get full RPC response #1315
+    + Fixed sw.install to set no_validate option when validate=False for
+      NSSU and ISSU upgrade #1323
+    + Fixed UT framework mock to use built-in unittest.mock #1311
+    + Fixed specific VC member reboot handling #1308 #1310
+    + Supported latest paramiko version which supports aes128-gcm and
+      aes256-gcm cipher
+- Dropped patches:
+  * python-311.patch
+  * python-junos-eznc-no-mock.patch
+- Refreshed all other patches.
+- Switch to pyproject macros.
+- Use nose2 to run the testsuite, like upstream.
+
+-------------------------------------------------------------------
 Wed Apr 17 12:37:53 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.7.1

@@ -1,7 +1,7 @@
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/jxml.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/jxml.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/jxml.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/jxml.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/jxml.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/jxml.py
 @@ -1,7 +1,6 @@
  from ncclient import manager
  from ncclient.xml_ import NCElement
@@ -25,10 +25,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/jxml.py
      </xsl:template>
  </xsl:stylesheet>"""
 -)
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_netconf.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_netconf.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/transport/tty_netconf.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_netconf.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/transport/tty_netconf.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_netconf.py
 @@ -11,23 +11,22 @@ from lxml.etree import XMLSyntaxError
  from datetime import datetime, timedelta
  from ncclient.operations.rpc import RPCReply, RPCError
@@ -60,7 +60,7 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_netconf.py
  _junosns_strip = lambda text: _junosns.sub(PY6.EMPTY_STR, text)
  
  logger = logging.getLogger("jnpr.junos.tty_netconf")
-@@ -116,7 +115,7 @@ class tty_netconf(object):
+@@ -118,7 +117,7 @@ class tty_netconf(object):
          """
          if not cmd.startswith("<"):
              cmd = "<{}/>".format(cmd)
@@ -69,10 +69,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_netconf.py
          logger.info("Calling rpc: %s" % rpc)
          self._tty.rawwrite(rpc)
  
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_ssh.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_ssh.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/transport/tty_ssh.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_ssh.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/transport/tty_ssh.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_ssh.py
 @@ -6,7 +6,6 @@ import sys
  from time import sleep, time
  
@@ -144,10 +144,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_ssh.py
          timeout = time() + self.READ_PROMPT_DELAY
  
          while time() < timeout:
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_telnet.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_telnet.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/transport/tty_telnet.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_telnet.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/transport/tty_telnet.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_telnet.py
 @@ -2,7 +2,6 @@ from time import sleep
  import telnetlib
  import logging
@@ -198,10 +198,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_telnet.py
          got = self._tn.expect(_RE_PAT, self.EXPECT_TIMEOUT)
          if PY6.IN_USE in got[2]:
              raise RuntimeError("open_fail: port already in use")
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_serial.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_serial.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/transport/tty_serial.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_serial.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/transport/tty_serial.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/transport/tty_serial.py
 @@ -1,6 +1,5 @@
  import serial
  import re
@@ -236,10 +236,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/transport/tty_serial.py
          mark_start = datetime.now()
          mark_end = mark_start + timedelta(seconds=self.EXPECT_TIMEOUT)
  
-Index: py-junos-eznc-2.7.1/tests/unit/test_console.py
+Index: py-junos-eznc-2.7.2/tests/unit/test_console.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/test_console.py
-+++ py-junos-eznc-2.7.1/tests/unit/test_console.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/test_console.py
++++ py-junos-eznc-2.7.2/tests/unit/test_console.py
 @@ -9,7 +9,6 @@ import re
  import sys
  import os
@@ -252,17 +252,17 @@ Index: py-junos-eznc-2.7.1/tests/unit/test_console.py
      def setUp(self, mock_write, mock_expect, mock_open):
          tty_netconf.open = MagicMock()
          mock_expect.side_effect = [
--            (1, re.search("(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
-+            (1, re.search("(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
+-            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
++            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
              (
                  2,
-                 re.search("(?P<passwd>assword:\s*$)", "password: "),
+                 re.search(r"(?P<passwd>assword:\s*$)", "password: "),
 -                six.b("\r\r\n password:"),
 +                b"\r\r\n password:",
              ),
              (
                  3,
-                 re.search("(?P<shell>%|#\s*$)", "junos % "),
+                 re.search(r"(?P<shell>%|#\s*$)", "junos % "),
 -                six.b("\r\r\nroot@device:~ # "),
 +                b"\r\r\nroot@device:~ # ",
              ),
@@ -272,11 +272,11 @@ Index: py-junos-eznc-2.7.1/tests/unit/test_console.py
      def test_login_bad_password(self, mock_write, mock_expect, mock_open):
          tty_netconf.open = MagicMock()
          mock_expect.side_effect = [
--            (1, re.search("(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
-+            (1, re.search("(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
+-            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
++            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
              (
                  2,
-                 re.search("(?P<passwd>assword:\s*$)", "password: "),
+                 re.search(r"(?P<passwd>assword:\s*$)", "password: "),
 -                six.b("\r\r\n password:"),
 +                b"\r\r\n password:",
              ),
@@ -292,17 +292,17 @@ Index: py-junos-eznc-2.7.1/tests/unit/test_console.py
          tty_netconf.open = MagicMock()
  
          mock_expect.side_effect = [
--            (1, re.search("(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
-+            (1, re.search("(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
+-            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), six.b("\r\r\n ogin:")),
++            (1, re.search(r"(?P<login>ogin:\s*$)", "login: "), b"\r\r\n ogin:"),
              (
                  2,
-                 re.search("(?P<passwd>assword:\s*$)", "password: "),
+                 re.search(r"(?P<passwd>assword:\s*$)", "password: "),
 -                six.b("\r\r\n password:"),
 +                b"\r\r\n password:",
              ),
              (
                  3,
-                 re.search("(?P<shell>%|#\s*$)", "junos % "),
+                 re.search(r"(?P<shell>%|#\s*$)", "junos % "),
 -                six.b("\r\r\nroot@device:~ # "),
 +                b"\r\r\nroot@device:~ # ",
              ),
@@ -338,10 +338,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/test_console.py
          cu = Config(self.dev)
          op = cu.load(xml, format="xml")
          cu.commit()
-Index: py-junos-eznc-2.7.1/tests/unit/transport/test_serial.py
+Index: py-junos-eznc-2.7.2/tests/unit/transport/test_serial.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/transport/test_serial.py
-+++ py-junos-eznc-2.7.1/tests/unit/transport/test_serial.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/transport/test_serial.py
++++ py-junos-eznc-2.7.2/tests/unit/transport/test_serial.py
 @@ -5,7 +5,6 @@ except ImportError:
  import nose2
  from unittest.mock import MagicMock, patch
@@ -397,10 +397,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/transport/test_serial.py
              )
          ]
          res = self.dev.rpc.get_route_engine_information()
-Index: py-junos-eznc-2.7.1/tests/unit/transport/test_tty_netconf.py
+Index: py-junos-eznc-2.7.2/tests/unit/transport/test_tty_netconf.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/transport/test_tty_netconf.py
-+++ py-junos-eznc-2.7.1/tests/unit/transport/test_tty_netconf.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/transport/test_tty_netconf.py
++++ py-junos-eznc-2.7.2/tests/unit/transport/test_tty_netconf.py
 @@ -7,7 +7,6 @@ from unittest.mock import MagicMock, pat
  
  from jnpr.junos.transport.tty_netconf import tty_netconf
@@ -483,10 +483,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/transport/test_tty_netconf.py
              ]
          )
          mock_select.return_value = ([rx], [], [])
-Index: py-junos-eznc-2.7.1/tests/unit/transport/test_tty_telnet.py
+Index: py-junos-eznc-2.7.2/tests/unit/transport/test_tty_telnet.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/transport/test_tty_telnet.py
-+++ py-junos-eznc-2.7.1/tests/unit/transport/test_tty_telnet.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/transport/test_tty_telnet.py
++++ py-junos-eznc-2.7.2/tests/unit/transport/test_tty_telnet.py
 @@ -7,7 +7,6 @@ except ImportError:
  import nose2
  from unittest.mock import MagicMock, patch
@@ -504,10 +504,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/transport/test_tty_telnet.py
          )
          self.assertRaises(RuntimeError, self.tel_conn._login_state_machine)
  
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/device.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/device.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/device.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/device.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/device.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/device.py
 @@ -1,6 +1,5 @@
  # stdlib
  import os
@@ -515,7 +515,7 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/device.py
  import types
  import platform
  import warnings
-@@ -665,7 +664,7 @@ class _Connection(object):
+@@ -659,7 +658,7 @@ class _Connection(object):
          command = command.strip()
          # Get the equivalent RPC
          rpc = self.display_xml_rpc(command)
@@ -524,10 +524,10 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/device.py
              # No RPC is available.
              return None
          rpc_string = "rpc.%s(" % (rpc.tag.replace("-", "_"))
-Index: py-junos-eznc-2.7.1/lib/jnpr/junos/utils/start_shell.py
+Index: py-junos-eznc-2.7.2/lib/jnpr/junos/utils/start_shell.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/lib/jnpr/junos/utils/start_shell.py
-+++ py-junos-eznc-2.7.1/lib/jnpr/junos/utils/start_shell.py
+--- py-junos-eznc-2.7.2.orig/lib/jnpr/junos/utils/start_shell.py
++++ py-junos-eznc-2.7.2/lib/jnpr/junos/utils/start_shell.py
 @@ -3,7 +3,6 @@ import re
  import datetime
  from jnpr.junos.utils.ssh_client import open_ssh_client
@@ -536,22 +536,22 @@ Index: py-junos-eznc-2.7.1/lib/jnpr/junos/utils/start_shell.py
  from threading import Thread
  import time
  
-Index: py-junos-eznc-2.7.1/requirements.txt
+Index: py-junos-eznc-2.7.2/requirements.txt
 ===================================================================
---- py-junos-eznc-2.7.1.orig/requirements.txt
-+++ py-junos-eznc-2.7.1/requirements.txt
-@@ -4,7 +4,6 @@ ncclient>=0.6.15
- scp>=0.7.0
+--- py-junos-eznc-2.7.2.orig/requirements.txt
++++ py-junos-eznc-2.7.2/requirements.txt
+@@ -5,7 +5,6 @@ scp>=0.7.0
  jinja2>=2.7.1
  PyYAML>=5.1
+ paramiko>=3.5.0
 -six
  pyserial
- yamlordereddictloader
  pyparsing
-Index: py-junos-eznc-2.7.1/tests/unit/facts/test_swver.py
+ transitions
+Index: py-junos-eznc-2.7.2/tests/unit/facts/test_swver.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/facts/test_swver.py
-+++ py-junos-eznc-2.7.1/tests/unit/facts/test_swver.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/facts/test_swver.py
++++ py-junos-eznc-2.7.2/tests/unit/facts/test_swver.py
 @@ -1,8 +1,6 @@
  __author__ = "Stacy Smith"
  __credits__ = "Jeremy Schulman, Nitin Kumar"
@@ -571,10 +571,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/facts/test_swver.py
      def test_version_info_after_type_len_else(self):
          self.assertEqual(version_info("12.1X46-D10").build, None)
  
-Index: py-junos-eznc-2.7.1/tests/unit/utils/test_scp.py
+Index: py-junos-eznc-2.7.2/tests/unit/utils/test_scp.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/utils/test_scp.py
-+++ py-junos-eznc-2.7.1/tests/unit/utils/test_scp.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/utils/test_scp.py
++++ py-junos-eznc-2.7.2/tests/unit/utils/test_scp.py
 @@ -1,5 +1,5 @@
  import sys
 -from six import StringIO
@@ -582,10 +582,10 @@ Index: py-junos-eznc-2.7.1/tests/unit/utils/test_scp.py
  from contextlib import contextmanager
  
  import unittest
-Index: py-junos-eznc-2.7.1/tests/unit/utils/test_sw.py
+Index: py-junos-eznc-2.7.2/tests/unit/utils/test_sw.py
 ===================================================================
---- py-junos-eznc-2.7.1.orig/tests/unit/utils/test_sw.py
-+++ py-junos-eznc-2.7.1/tests/unit/utils/test_sw.py
+--- py-junos-eznc-2.7.2.orig/tests/unit/utils/test_sw.py
++++ py-junos-eznc-2.7.2/tests/unit/utils/test_sw.py
 @@ -1,7 +1,7 @@
  from __future__ import print_function
  import os

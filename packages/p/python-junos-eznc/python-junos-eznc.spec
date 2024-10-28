@@ -17,9 +17,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
@@ -27,13 +26,9 @@ URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # replace deprecated yamlordereddictloader by yamlloader
 # https://github.com/Juniper/py-junos-eznc/pull/1078
-Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
-# https://github.com/Juniper/py-junos-eznc/issues/1176
-Patch3:         python-junos-eznc-no-mock.patch
-# PATCH-FIX-OPENSUSE python-311.patch gh#Juniper/py-junos-eznc#1236
-Patch4:         python-311.patch
+Patch0:         python-junos-eznc-remove-yamlordereddictloader.patch
 # PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1307 Don't require six
-Patch5:         no-six.patch
+Patch1:         no-six.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
@@ -41,13 +36,13 @@ BuildRequires:  %{python_module ncclient >= 0.6.15}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pyserial}
-BuildRequires:  %{python_module pytest-forked}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scp >= 0.7.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module transitions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yamlloader}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -80,26 +75,21 @@ These capabilities include, but are not limited to:
 %autosetup -p1 -n py-junos-eznc-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-donttest="nonemptydonttestprefix"
-# https://github.com/Juniper/py-junos-eznc/issues/1109
-python39_donttest=" or test_sw_put_ftp"
-python310_donttest=" or test_sw_put_ftp"
-donttest+=" or test_sw_install_multi_vc"
-%pytest -m "not functional" --forked -k "not ($donttest ${$python_donttest})" tests/unit
+%python_exec -B -m nose2 -vv tests.unit
 
 %files %{python_files}
 %license COPYRIGHT LICENSE
 %doc README.txt README.md
 %dir %{python_sitelib}/jnpr
 %{python_sitelib}/jnpr/junos
-%{python_sitelib}/junos_eznc-%{version}*-info
+%{python_sitelib}/junos_eznc-%{version}.dist-info
 %{python_sitelib}/junos_eznc-%{version}*-nspkg.pth
 
 %changelog
