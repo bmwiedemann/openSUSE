@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:07:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.29:
+  Added:
+  * New enabled option for all jobs. Set to false to disable a job without needing to remove it or comment it out (Requested in #625, contributed in #785)
+  * Command line options to enable and disbale jobs (Requested in #813, contributed in #820)
+  * New option ignore_incomplete_reads (Requested in #725, contributed in #787)
+  * New option wait_for in browser jobs (Requested in #763, contributed in #810)
+  * Added tags to jobs and the ability to select them at the command line (#789)
+  * New filter re.findall (Requested in #804, contributed in #805)
+  * Added tags to jobs and the ability to select them at the command line (#789, #824)
+  * New reporter: gotify (#823)
+  Changed:
+  * Remove EOL'd Python 3.7 (new minimum requirement is Python 3.8), add Python 3.12 testing
+  * Adds optional reply_to option for email reporters (#794)
+  * Replace the dead dependency appdirs with platformdirs (#811, #819)
+  * New concurrency test (#806)
+  * jobs.yaml sanity checks now allows the file to be owned by root (#828)
+  Fixed:
+  * email reporter: Allow multiple recipients for sendmail method (#797)
+  * Fix documentation for watching Github tags and releases, again (#723)
+  * Fix --test-reporter command-line option so separate configuration option is no longer ignored when sending test notifications (#772)
+  * Fix line height and dark mode regression (#774, PRs #777 and #778)
+  * Fix compatibility with lxml >= 5 which caused the CSS Selector filter to fail (#783 reported, PR #786)
+  * Fix pep8 test to ignore files in the site-packages directory for cases where the venv is in the project directory (#788)
+  * Fix HTML diff table rendering for long line lengths (#793)
+  * Fix IndexError after failed edit (#801)
+  * Fix concurrency issue in Python 3.12 by upgrading to minidb 2.0.8 (fixes #779)
+
+-------------------------------------------------------------------
 Fri Sep 29 08:24:47 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - add python3-minidb minimal requirement
