@@ -103,4 +103,12 @@
     <comment>- Remove old rc* symlinks</comment>
     <requestid>1181430</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2dd96ac5955b7f615f08526c456cc22e</srcmd5>
+    <version>1.12.0</version>
+    <time>1730125222</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.12.0</comment>
+    <requestid>1218592</requestid>
+  </revision>
 </revisionlist>

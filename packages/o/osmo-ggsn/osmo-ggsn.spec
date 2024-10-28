@@ -18,8 +18,8 @@
 
 %define _lto_cflags %nil
 Name:           osmo-ggsn
-%define lname   libgtp6
-Version:        1.11.0
+%define lname   libgtp10
+Version:        1.12.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,10 +32,10 @@ BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libgtpnl) >= 1.2.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.9.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
+BuildRequires:  pkgconfig(libgtpnl) >= 1.3.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.10.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
 Obsoletes:      openggsn
 
 %description
@@ -126,7 +126,7 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %config(noreplace) %_sysconfdir/osmocom/sgsnemu.conf
 
 %files -n %lname
-%_libdir/libgtp.so.6*
+%_libdir/libgtp.so.*
 
 %files -n libgtp-devel
 %_includedir/%name/
