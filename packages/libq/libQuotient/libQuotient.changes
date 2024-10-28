@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:02:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon Oct 28 07:11:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.0
+  * Qt 6 only
+  * cross-signing support (requires UI to match on the client
+    side; NeoChat already has it)
+  * Matrix 1.12 API
+  * completed separation of room member functionality previously
+    delivered by the User class, to a dedicated RoomMember class
+  * introduction of futures to replace signals for one-off
+    asynchronous calls, especially relevant for calls returning
+    job pointers
+  * refactoring of the event content API to make transition to
+    extensible events easier in the future
+- Remove the default build flavor but keep the _multibuild setup
+- Remove obsolete build options
+
+-------------------------------------------------------------------
 Wed Apr 24 08:40:39 UTC 2024 - Christopher Hock <christopher.hock@suse.com>
 
 - Add qt6-sql-sqlite to BuildRequires to allow Qt6 build to pass

@@ -21,54 +21,38 @@
 %define qt6 1
 %define pkg_suffix -qt6
 %define lib_suffix Qt6
+%define qt6_version 6.4
+%else
+ExclusiveArch: do_not_build
 %endif
-%define soversion 0_8
-%define sonum 0.8
+%define soversion 0_9
+%define sonum 0.9
 %define rname libQuotient
-%bcond_without e2ee
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/quotient-im/libQuotient
 Source0:        https://github.com/quotient-im/%{rname}/archive/%{version}/%{rname}-%{version}.tar.gz
-BuildRequires:  cmake
-# c++-20 required
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-PIE
-BuildRequires:  gcc12-c++
-%endif
+BuildRequires:  cmake >= 3.26
 BuildRequires:  pkgconfig
 %if 0%{?qt6}
-BuildRequires:  qt6-sql-sqlite
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  qt6-sql-sqlite >= %{qt6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Test)
-%else
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.5
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 %endif
-%if %{with e2ee}
 BuildRequires:  cmake(Olm) >= 3.2.5
 BuildRequires:  pkgconfig(openssl)
 %if 0%{?qt6}
-BuildRequires:  cmake(Qt6Sql)
-Requires:       qt6-sql-sqlite
-%else
-BuildRequires:  cmake(Qt5Sql)
-Requires:       libQt5Sql5-sqlite
-%endif
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 %endif
 
 %description
@@ -88,20 +72,10 @@ Summary:        Development files for libQuotient
 Group:          Development/Libraries/C and C++
 Requires:       libQuotient%{?qt6:%{lib_suffix}-}%{soversion} = %{version}
 %if 0%{?qt6}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
-%if %{with e2ee}
-Requires:       cmake(Qt6Sql)
-%endif
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Network) >= %{qt6_version}
+Requires:       cmake(Qt6Sql) >= %{qt6_version}
 Requires:       cmake(Qt6Keychain)
-%else
-Requires:       cmake(Qt5Gui)
-Requires:       cmake(Qt5Multimedia)
-Requires:       cmake(Qt5Network)
-%if %{with e2ee}
-Requires:       cmake(Qt5Sql)
-%endif
-Requires:       cmake(Qt5Keychain)
 %endif
 Requires:       cmake(Olm)
 Requires:       pkgconfig(openssl)
@@ -118,39 +92,19 @@ developing applications that use libQuotient.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%if 0%{?suse_version} < 1550
-    export CXX=g++-12
-%endif
-
 %if 0%{?qt6}
 %cmake_qt6 \
-    -DBUILD_WITH_QT6=ON \
     -DBUILD_SHARED_LIBS=ON \
-%if 0%{?suse_version} < 1550
-    -DCMAKE_C_COMPILER:STRING=gcc-12 \
-    -DCMAKE_CXX_COMPILER:STRING=g++-12 \
 %endif
-%else
-%cmake \
-%endif
-    -DQuotient_INSTALL_TESTS=OFF \
-%if %{with e2ee}
-    -DQuotient_ENABLE_E2EE=ON
-%else
-    -DQuotient_ENABLE_E2EE=OFF
-%endif
+    -DQuotient_INSTALL_TESTS=OFF
 
 %if 0%{?qt6}
 %qt6_build
-%else
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %qt6_install
-%else
-%cmake_install
 %endif
 
 # Not useful
