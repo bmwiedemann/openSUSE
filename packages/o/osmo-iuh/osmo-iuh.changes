@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 26 14:17:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Add ranap_decode_rab_releaseditemies_fromlist()
+  * hnbap_common: more verbose error messages
+
+-------------------------------------------------------------------
 Thu Apr 11 23:00:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.1
