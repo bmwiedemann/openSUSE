@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Sun Oct 27 16:48:34 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.60.1:
+  * Update testscript to use hard fork
+  * Note token redaction in Acceptance test README
+  * Refactor gpg-key delete to align with ssh-key delete
+  * Add acceptance tests for org command
+  * Adjust environment help for host and tokens (#9809)
+  * Add SSH Key Acceptance test
+  * Add Acceptance test for label command
+  * Add acceptance test for gpg-key
+  * Update go-internal to redact more token types in Acceptance tests
+  * Address PR feedback
+  * Clarify `gh` is available for GitHub Enterprise Cloud
+  * Remove comment from gh auth logout
+  * Add acceptance tests for auth-setup-git and formattedStringToEnv helper func
+  * Use forked testscript for token redaction
+  * Use new GitHub preview terms in working-with-us.md
+  * Use new GitHub previews terminology in attestation
+  * Test json flags for repo view and list
+  * Clean up auth-login-logout acceptance test with native functionality
+  * Add --token flag to `gh auth login` to accept a PAT as a flag
+  * Setup acceptance testing for auth and tests for auth-token and auth-status
+  * Update variable testscripts based on secret
+  * Check extOwner for no value instead
+  * Fix tests for invalid extension name
+  * Refactor to remove code duplication
+  * Linting: now that mockDataGenerator has an embedded mock, we ought to have pointer receivers in its funcs.
+  * Minor tweaks, added backoff to getTrustDomain
+  * added test for verifying we do 3 retries when fetching attestations.
+  * Fix single quote not expanding vars
+  * Added constant backoff retry to getAttestations.
+  * Address @williammartin PR feedback
+  * wip: added test that fails in the absence of a backoff.
+  * add validation for local ext install
+  * feat: add ArchivedAt field to Repository struct
+  * Refactor `gh secret` testscript
+  * Wrap true in '' in repo-fork-sync
+  * Rename acceptance test directory from repos to repo
+  * Remove unnecessary flags from repo-delete testscript
+  * Replace LICENSE Makefile README.md acceptance api bin build cmd context docs git go.mod go.sum internal pkg script share test utils commands with
+  * Wrap boolean strings in '' so it is clear they are strings
+  * Remove unnecessary gh auth setup-git steps
+  * Cleanup some inconsistencies and improve collapse some functionality
+  * Add acceptance tests for repo deploy-key add/list/delete
+  * Add acceptance tests for repo-fork and repo-sync
+  * Add acceptance test for repo-set-default
+  * Add acceptance test for repo-edit
+  * Add acceptance tests for repo-list and repo-rename
+  * Acceptance testing for repo-archive and repo-unarchive
+  * Add acceptance test for repo-clone
+  * Added acceptance test for repo-delete
+  * Added test function for repos and repo-create test
+  * Implement acceptance tests for search commands
+  * Remove . from test case for TestTitleSurvey
+  * Clean up Title Survey empty title message code
+  * Add missing test to trigger acceptance tests
+  * Add acceptance tests for `gh variable`
+  * Minor polish / consistency
+  * Fix typo in custom command doc
+  * Refactor env2upper, env2lower; add docs
+  * Update secret note about potential failure
+  * Add testscripts for `gh secret`, helper cmds
+  * Remove stdout assertion from release
+  * Rename test files
+  * Add acceptance tests for `release` commands
+  * Implement basic API acceptance test
+  * Remove unnecesary mkdir from download Acceptance test
+  * Remove empty stdout checks
+  * Adjust sleeps to echos in Acceptance workflows
+  * Use regex assert for enable disable workflow Acceptance test
+  * Watch for run to end for cancel Acceptance test
+  * Include startedAt, completedAt in run steps data
+  * Rewrite a sentence in CONTRIBUTING.md
+  * Add filtered content output to docs
+  * sleep 10s before checking for workflow run
+  * Update run-rerun.txtar
+  * Create cache-list-delete.txtar
+  * Create run-view.txtar
+  * Create run-rerun.txtar
+  * Create run-download.txtar
+  * Create run-delete.txtar
+  * Remove IsTenancy and relevant tests from gists as they are unsupported
+  * Remove unnecessary code branches
+  * Add ghe.com to tests describing ghec data residency
+  * Remove comment
+  * auth: Removed redundant ghauth.IsTenancy(host) check
+  * Use go-gh/auth package for IsEnterprise, IsTenancy, and NormalizeHostname
+  * Upgrade go-gh version to 2.11.0
+  * Add test coverage to places where IsEnterprise incorrectly covers Tenancy
+  * Fix issue creation with metadata regex
+  * Create run-cancel.txtar
+  * Create workflow-run.txtar
+  * Create workflow-view.txtar
+  * implement workflow enable/disable acceptance test
+  * implement base workflow list acceptance test
+  * Add comment to acceptance make target
+  * Resolve PR feedback
+  * Acceptance test issue command
+  * Support GH_ACCEPTANCE_SCRIPT
+  * Ensure Acceptance defer failures are debuggable
+  * Add acceptance task to makefile
+  * build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.5 to 1.4.6
+  * Ensure pr create with metadata has assignment
+  * Document sharedCmds func in acceptance tests
+  * Correct testscript description in Acceptance readme
+  * Add link to testscript pkg documentation
+  * Add VSCode extension links to Acceptance README
+  * Fix GH_HOST / GH_ACCEPTANCE_HOST misuse
+  * Acceptance test PR list
+  * Support skipping Acceptance test cleanup
+  * Acceptance test PR creation with metadata
+  * Suggest using legacy PAT for acceptance tests
+  * Add host recommendation to Acceptance test docs
+  * Don't append remaining text if more matches
+  * Highlight matches in table and content
+  * Split all newlines, and output no-color to non-TTY
+  * Print filtered gists similar to code search
+  * Show progress when filtering
+  * Simplify description
+  * Disallow use of --include-content without --filter
+  * Improve help docs
+  * Refactor filtering into existing `gist list`
+  * Improve performance
+  * Add `gist search` command
+  * Fix api tests after function signature changes
+  * Return nil instead of empty objects when err
+  * Fix license list and view tests
+  * Validate required env vars not-empty for Acceptance tests
+  * Add go to test instructions in Acceptance README
+  * Apply suggestions from code review
+  * Error if acceptance tests are targeting github or cli orgs
+  * Add codecoverage to Acceptance README
+  * Isolate acceptance env vars
+  * Add Writing Tests section to Acceptance README
+  * Add Debug and Authoring sections to Acceptance README
+  * Acceptance test PR comment
+  * Acceptance test PR merge and rebase
+  * Note syntax highlighting support for txtar files
+  * Refactor acceptance test environment handling
+  * Add initial acceptance test README
+  * Use txtar extension for testscripts
+  * Support targeting other hosts in acceptance tests
+  * Use stdout2env in PR acceptance tests
+  * Acceptance test PR checkout
+  * Add pr view test script
+  * Initial testscript introduction
+  * While we're at it, let's ensure VerifyCertExtensions can't be tricked the same way.
+  * Add examples for creating `.gitignore` files
+  * Update help for license view
+  * Refactor http error handling
+  * implement `--web` flag for license view
+  * Fix license view help doc, add LICENSE.md example
+  * Update help and fix heredoc indentation
+  * Add SPDX ID to license list output
+  * Fix ExactArgs invocation
+  * Add `Long` for license list indicating limitations
+  * Update function names
+  * Reverse repo/shared package name change
+  * If provided with zero attestations to verify, the LiveSigstoreVerifier.Verify func should return an error.
+  * Bump cli/oauth to 1.1.1
+  * Add test coverage for TitleSurvey change
+  * Fix failing test for pr and issue create
+  * Make the X in the error message red and print with io writer
+  * Handle errors from parsing hostname in auth flow
+  * Apply suggestions from code review
+  * Refactor tests and add new tests
+  * Move API calls to queries_repo.go
+  * Allow user to override markdown wrap width via $GH_MDWIDTH from environment
+  * Add handling of empty titles for Issues and PRs
+  * Print the login URL even when opening a browser
+  * Apply suggestions from code review
+  * Update SECURITY.md
+  * Fix typo and wordsmithing
+  * fix typo
+  * Remove trailing space from heading
+  * Revise wording
+  * Update docs to allow community submitted designs
+  * Implement license view
+  * Implement gitignore view
+  * implement gitignore list
+  * Update license table headings and tests
+  * Fix ListLicenseTemplates doc
+  * fix output capitalization
+  * Cleanup rendering and tests
+  * Remove json output option
+  * Divide shared repo package and add queries tests
+  * First pass at implementing `gh repo license list`
+  * Emit a log message when extension installation falls back to a darwin-amd64 binary on an Apple Silicon macOS machine
+
+-------------------------------------------------------------------
 Wed Oct 02 11:28:34 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.58.0:
