@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-randomly
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Faker >= 13.11.0}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
+# Django package not available on SLFO:Main
+%if 0%{suse_version} > 1600
 BuildRequires:  %{python_module model-bakery >= 1.13.0}
+%endif
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -76,7 +79,14 @@ Features:
 
 %check
 # test_entrypoint_injection needs installed module for pytest to use
-%pytest -k "not (test_entrypoint_injection or test_it_runs_before_stepwise)"
+skiptest="test_entrypoint_injection or test_it_runs_before_stepwise"
+
+# Django package not available on SLFO:Main
+%if 0%{suse_version} <= 1600
+skiptest+=" or test_model_bakery"
+%endif
+
+%pytest -k "not ($skiptest)"
 
 %files %{python_files}
 %doc README.rst

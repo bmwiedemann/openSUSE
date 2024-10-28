@@ -134,4 +134,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1126456</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>1088bc4f22bf2ac734ae1624a81e3865</srcmd5>
+    <version>3.15.0</version>
+    <time>1730125362</time>
+    <user>anag+factory</user>
+    <comment>- Make model-bakery BuildRequires optional, in SLFO:Main we don't have
+  python311-django.</comment>
+    <requestid>1218761</requestid>
+  </revision>
 </revisionlist>

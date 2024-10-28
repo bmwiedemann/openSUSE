@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:41:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make model-bakery BuildRequires optional, in SLFO:Main we don't have
+  python311-django.
+
+-------------------------------------------------------------------
 Tue Nov  7 20:04:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15.0:
