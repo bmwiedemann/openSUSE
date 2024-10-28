@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 27 10:43:41 UTC 2024 - gerald_chen@foxmail.com
+
+- Update _service file
+- Update to version 18.0.2:
+  * v18.0.2
+  * README: link to troubleshooting section
+  * Fix stale comment in test
+  * Update changelog
+  * Show panics in an info box
+  * Generate a core dump when crashing via a Rust panic
+  * lsp-definition: explain fallback in error message
+  * Fix crash in lsp-highlight-references
+  * Log kak-lsp daemon PID on startup
+  * Removed redundant error check
+
+-------------------------------------------------------------------
 Mon Aug 19 03:18:26 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 17.1.2:
