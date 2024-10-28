@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-e1d
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
@@ -29,10 +29,10 @@ BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
-BuildRequires:  pkgconfig(libosmousb) >= 1.9.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
+BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
+BuildRequires:  pkgconfig(libosmousb) >= 1.10.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.20
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 
 %description
@@ -45,28 +45,28 @@ osmo-e1d acts as an interface between the hardware/firmware of the E1
 interface on the bottom side, and applications wanting to use E1
 timeslots on the top side.
 
-%package -n libosmo-e1d1
+%package -n libosmo-e1d3
 Summary:        Osmocom E1 daemon protocol library
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-e1d1
+%description -n libosmo-e1d3
 Osmocom E1 Daemon Protocol Library.
 
-%package -n libosmo-octoi2
+%package -n libosmo-octoi3
 Summary:        Library for the Osmocom Community TDMoIP network
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-octoi2
+%description -n libosmo-octoi3
 Library for the Osmocom Community TDMoIP network.
 
 %package devel
 Summary:        Header files for the Osmocom E1 daemon protocol library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-e1d1 = %version-%release
-Requires:       libosmo-octoi2 = %version-%release
+Requires:       libosmo-e1d3 = %version-%release
+Requires:       libosmo-octoi3 = %version-%release
 Provides:       libosmo-e1d-devel = %version-%release
 Obsoletes:      libosmo-e1d-devel < %version-%release
 
@@ -95,10 +95,8 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 %check
 %make_build check || find . -name testsuite.log -exec cat {} +
 
-%post   -n libosmo-e1d1 -p /sbin/ldconfig
-%postun -n libosmo-e1d1 -p /sbin/ldconfig
-%post   -n libosmo-octoi2 -p /sbin/ldconfig
-%postun -n libosmo-octoi2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmo-e1d3
+%ldconfig_scriptlets -n libosmo-octoi3
 
 %preun
 %service_del_preun %name.service
@@ -122,10 +120,10 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 %_docdir/%name/examples/
 %_unitdir/osmo-e1d.service
 
-%files -n libosmo-e1d1
+%files -n libosmo-e1d3
 %_libdir/libosmo-e1d.so.*
 
-%files -n libosmo-octoi2
+%files -n libosmo-octoi3
 %_libdir/libosmo-octoi.so.*
 
 %files devel

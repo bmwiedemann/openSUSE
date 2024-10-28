@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 26 13:50:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * Use uniform log format for default config files
+  * Add option to automatically reset RIFO on underrun/overflow
+  * Add new protocol command and events for Sa bits and line states
+  * Add functions for events from server to client
+  * Indicate framing alignment error as loss of framing signal
+  * Indicate remote alarm bit as remote alarm inidication
+  * Indicate change in received Sa bits
+  * Add command and client function to change transmitted Sa bits
+  * iCE1usb: Transmit LOS and AIS events to clients
+
+-------------------------------------------------------------------
 Wed Nov  1 20:21:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.6.0
