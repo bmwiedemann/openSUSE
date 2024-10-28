@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-latex-bin
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)

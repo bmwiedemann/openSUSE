@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 25 06:40:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.4:
+  * Fixed various dark/light theme inconsistencies.
+  * Improved edge panning for large selections.
+  * Fixed various crashes, freezes and memory leaks.
+- Drop BuildRequires: update-desktop-files since
+  %suse_update_desktop_file macro is no longer used.
+
+-------------------------------------------------------------------
 Sat Mar  2 10:01:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.3:
