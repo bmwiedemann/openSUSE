@@ -24,4 +24,41 @@
 </comment>
     <requestid>1130852</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a5a6a0cc593aa84b9c1175c16e5a010</srcmd5>
+    <version>1.99.0</version>
+    <time>1730125300</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.99.0
+  * Add plural, genderflux, girlflux, Fraysexual, Xenogender, Caninekin,
+  Kenochoric, veldian, solian, lunian, Polyamorous, sapphic, androgyne,
+  interprogress, progress, intersex, equal-rights, drag, neofluid, genderqueer,
+  pronoun, queer subculture, and Gilbert Backer's origin rainbow flgs
+  * Add random flag option
+  * Fix distro logo triple-quotation mark escaping
+  * Fix termux compatibility
+  * Fix term background detection not resetting properly
+  * Remove typing-extensions and setuptools dependencies
+  * Allow lightness value without a '%' sign in config prompt
+  * Support host info on PowerPC Macs
+  * Show Kinfo for Plasma 6
+  * List all intel GPU as detected
+  * Add eweOS, Fedora Immutable distros, Macaroni OS, Ironclad OS,
+  Chimera Linux, Tatra, Furreto Linux, BlackMesa, Magix, Mauna, Arkane Linux,
+  Linux From Scratch distro flags
+  * Update PikaOS logo
+  * Add Fedora unicode logo
+  * Fix colors not reverting properly
+  * Fix terminal emulator selection
+  * Fix terminal font info for yakuake
+  * Display neovim version
+  * Add an option to hide some package managers
+  * Fix npm list count mismatch
+  * Add &quot;AM&quot; application manager, pnpm, pkgx.sh, pip, bonsai, rad, radula,
+  birb, MacPorts for Linux package managers
+  * Use XDG path for Nix package counting
+  * Fix short package count
+  * Add Cider player</comment>
+    <requestid>1218722</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package hyfetch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           hyfetch
-Version:        1.4.11
+Version:        1.99.0
 Release:        0
 Summary:        Customizable Linux System Information Script
 License:        MIT
@@ -30,15 +30,10 @@ Patch0:         fix-shebang.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module typing_extensions}
-# /SECTION
 BuildRequires:  fdupes
-Requires:       python-setuptools
-Requires:       python-typing_extensions
+BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     maim
 Recommends:     w3m-inline-image
 BuildArch:      noarch
@@ -54,6 +49,7 @@ It is a fork of neofetch, and adds pride flag coloration to the OS logo.
 %autosetup -p1 -n HyFetch-%{version}
 
 %build
+sed -i 's/packages=find_namespace_packages(exclude=("tools", "tools.*")),/packages=find_namespace_packages(exclude=("tools", "tools.*", "docs")),/' setup.py
 %pyproject_wheel
 
 %install
