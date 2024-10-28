@@ -20,8 +20,9 @@ Name:           nvidia-xconfig
 Version:        560.35.03
 Release:        0
 Summary:        NVIDIA X configuration file editor
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 URL:            http://www.nvidia.com/object/unix.html
+#Git-Clone:     https://github.com/NVIDIA/nvidia-xconfig/
 ExclusiveArch:  x86_64 aarch64
 
 Source0:        https://download.nvidia.com/XFree86/%{name}/%{name}-%{version}.tar.bz2

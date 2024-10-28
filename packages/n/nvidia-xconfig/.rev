@@ -16,4 +16,14 @@
     <comment></comment>
     <requestid>1203886</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>668b26927df50bfa50eec16fa0245c4a</srcmd5>
+    <version>560.35.03</version>
+    <time>1730125280</time>
+    <user>anag+factory</user>
+    <comment>-  corrected license tag (GPL-2.0-or-later -&gt; GPL-2.0-only)
+
+- added git-clone URL to specfile</comment>
+    <requestid>1218733</requestid>
+  </revision>
 </revisionlist>
