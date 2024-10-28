@@ -117,4 +117,14 @@
     has been introduced (see README.md).</comment>
     <requestid>1158955</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2356818057ea08985478f5202e30dfdf</srcmd5>
+    <version>1.5.1</version>
+    <time>1730125369</time>
+    <user>anag+factory</user>
+    <comment>- Enable sle15_python_module_pythons.
+- Disable test_utils_load_pkg_resource_fallback test case because
+  of pkg_resource and setuptools incompatibility.</comment>
+    <requestid>1218773</requestid>
+  </revision>
 </revisionlist>

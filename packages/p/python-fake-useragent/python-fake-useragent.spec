@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-fake-useragent
 Version:        1.5.1
 Release:        0
@@ -54,11 +53,16 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# NOTE: disable "test_utils_load_pkg_resource_fallback" test case as it is
+# testing using pkg_resource, which conflicts with setuptools.
+# See https://github.com/pypa/setuptools/issues/4487
+%pytest -k "(not test_utils_load_pkg_resource_fallback)"
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/fake[-_]useragent*/
+#{python_sitelib}/fake[-_]useragent*/
+%{python_sitelib}/fake_useragent
+%{python_sitelib}/fake_useragent-%{version}.dist-info
 
 %changelog
