@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 24 15:51:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 0.21.2.
+  + Add lazy_symbolication config option.
+  + Add ability to list all probes in a program.
+  + Add ability to call print() with indexed maps to print single map values.
+  + Add LLVM 18 support.
+  + Add ability to call delete() with multiple arguments.
+  + Add for-each loops for iterating over map elements.
+  + Add optional systemd support.
+  + Add ability to attach uprobes to inlined functions.
+  + Enable count, sum, min, and max map reads in kernel space.
+  + Add config option for handling missing probes.
+  * Better error message for args in mixed probes.
+  * Improve DWARF support, using liblldb instead of libdw.
+  * Use new hash function to reduce collisions when aggregating on stack
+    traces.
+  * Disable func builtin for kretprobes and uretprobes when get_func_ip feature
+    is not available.
+  * Move error printing from debug to verbose mode.
+  * Allow attaching to spin_lock functions with mitigations to prevent
+    deadlocks.
+  * Remove length limitations for strings coming out of str() and path().
+  - Deprecate sarg builtin.
+
+-------------------------------------------------------------------
 Wed May 22 07:17:45 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.20.4
@@ -20,8 +46,8 @@ Tue Mar 19 05:31:53 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 -------------------------------------------------------------------
 Fri Mar  8 06:42:00 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
-- Update to 0.20.2 
-  * Fix security hole checking unpacked kernel headers (CVE-2024-2313) 
+- Update to 0.20.2
+  * Fix security hole checking unpacked kernel headers (CVE-2024-2313)
 - Add fix-build-issue-when-using-UAPI-of-older-kernel.patch to
   fix build issue on pre-v6.0 kernel
 
@@ -171,7 +197,7 @@ Thu Sep  1 04:58:08 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
   + Fix using wildcards in kfunc
   + Improve handling of format strings
   + Fix codegen for buf
-  + Update biosnoop.bt for kernel >=5.17 
+  + Update biosnoop.bt for kernel >=5.17
 
 -------------------------------------------------------------------
 Tue Jun 21 08:36:57 UTC 2022 - pgajdos@suse.com

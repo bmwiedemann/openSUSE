@@ -18,8 +18,8 @@
 
 # Use default LLVM on openSUSE unless it is not yet supported
 %if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
- %if 0%{?product_libs_llvm_ver} > 17
- %define llvm_major_version 17
+ %if 0%{?product_libs_llvm_ver} > 18
+ %define llvm_major_version 18
  %else
  %define llvm_major_version %{nil}
  %endif
@@ -39,7 +39,7 @@
 %endif
 
 Name:           bpftrace
-Version:        0.20.4
+Version:        0.21.2
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -54,8 +54,8 @@ BuildRequires:  clang%{llvm_major_version}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
-BuildRequires:  libdw-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  lldb%{llvm_major_version}-devel
 BuildRequires:  llvm%{llvm_major_version}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
