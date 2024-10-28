@@ -17,13 +17,14 @@
 
 
 Name:           toolbox
-Version:        2.3+git20240704.84ec25e
+Version:        2.4+git20241025.00f69f5
 Release:        0
 Summary:        Script to start a toolbox container for system debugging
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/openSUSE/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
+BuildRequires:  go-md2man
 Requires:       (podman or docker)
 Suggests:       podman
 BuildArch:      noarch
@@ -38,25 +39,19 @@ such a system. The root filesystem can be found at /media/root.
 
 %prep
 %setup -q -n microos-toolbox-%{version}
-%if 0%{?sle_version}
-%if !0%{?is_opensuse}
-sed -i -e 's,registry.opensuse.org,registry.suse.com,' toolbox
-sed -i -e 's,opensuse/toolbox,suse/sle-micro/5.5/toolbox,' toolbox
-%else
-sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/5.5/toolbox,' toolbox
-%endif
-%endif
 
 %build
+go-md2man -in toolbox.1.md -out toolbox.1
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m 755 toolbox %{buildroot}%{_bindir}/toolbox
+install -D -m 755 toolbox %{buildroot}%{_bindir}/toolbox
+install -D -m 644 toolbox.1 %{buildroot}%{_mandir}/man1/toolbox.1
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/toolbox
+%{_mandir}/man1/toolbox.1%{?ext_man}
 %ghost %config %{_sysconfdir}/toolboxrc
 
 %changelog

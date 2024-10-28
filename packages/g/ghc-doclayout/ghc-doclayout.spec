@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-doclayout
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.0.1
+Version:        0.5
 Release:        0
 Summary:        A prettyprinting library for laying out text documents
 License:        BSD-3-Clause
@@ -105,9 +105,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 %dir %{_datadir}/%{pkg_name}-%{version}
 %{_datadir}/%{pkg_name}-%{version}/README.md
-%{_datadir}/%{pkg_name}-%{version}/changelog.md
 
 %files devel -f %{name}-devel.files
+%doc changelog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

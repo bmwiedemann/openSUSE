@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  5 02:07:07 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.2.2.
+  ## 0.1.2.2 -- 2024-10-04
+
+  * Allow list items with blank lines between divs (#10).
+
+  * Fix parsing of indented tables (#8).
+
+-------------------------------------------------------------------
 Mon Jun 24 18:30:00 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.2.1.

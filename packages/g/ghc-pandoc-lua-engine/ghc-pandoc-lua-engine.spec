@@ -20,15 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.3.3
 Release:        0
 Summary:        Lua engine to power custom pandoc conversions
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-SHA-devel
-BuildRequires:  ghc-SHA-prof
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
@@ -39,6 +37,8 @@ BuildRequires:  ghc-citeproc-devel
 BuildRequires:  ghc-citeproc-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-doclayout-devel

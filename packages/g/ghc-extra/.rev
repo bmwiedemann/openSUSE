@@ -317,4 +317,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1175068</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>5b7f1a943e4fa6eeecff2fc29ddbbd4c</srcmd5>
+    <version>1.7.16</version>
+    <time>1730125111</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1218553</requestid>
+  </revision>
 </revisionlist>

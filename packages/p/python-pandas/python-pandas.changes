@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 25 05:19:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two tests that fail with Numpy 2.1. 
+
+-------------------------------------------------------------------
+Fri Oct 11 04:40:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.13, by skipping it if we aren't building for it. 
+
+-------------------------------------------------------------------
+Tue Oct  1 12:35:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.3
+  * Bug in eval() on complex including division /
+    discards imaginary part. (GH 21374)
+  * Minor fixes for numpy 2.1 compatibility. (GH 59444)
+  * Missing licenses for 3rd party dependencies were
+    added back into the wheels. (GH 58632)
+- Drop pandas-pr58269-pyarrow16xpass.patch, merged upstream
+- Drop pandas-pr58484-matplotlib.patch, merged upstream
+- Drop pandas-pr59175-matplotlib.patch, merged upstream
+- Drop pandas-pr59353-np2eval.patch, merged upstream
+- Drop tests-npdev.patch, merged upstream
+- Drop tests-timedelta.patch, merged upstream
+- Refresh tests-nomkl.patch
+- Renumber remaining patches
+
+-------------------------------------------------------------------
 Mon Sep 16 19:39:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add bunch of patches to fix the testsuite with NumPy 2.1

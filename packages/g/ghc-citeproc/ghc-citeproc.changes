@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 15 06:38:18 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.8.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jun 24 18:28:18 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.8.1.1.

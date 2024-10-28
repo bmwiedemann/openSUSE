@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 19:18:54 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update data-default-instances-dlist to version 0.0.1.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:31 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

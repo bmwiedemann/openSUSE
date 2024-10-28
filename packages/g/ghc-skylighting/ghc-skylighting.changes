@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 10 03:17:49 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.14.3.
+  ## 0.14.3
+
+    * Add crystal, racket, zip syntax (#194).
+
+-------------------------------------------------------------------
 Mon Jun 24 06:08:20 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.14.2.

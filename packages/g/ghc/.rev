@@ -1103,4 +1103,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1180701</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>52a35bb345b847a686c5d747ce896e71</srcmd5>
+    <version>9.8.3</version>
+    <time>1730125080</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1218536</requestid>
+  </revision>
 </revisionlist>

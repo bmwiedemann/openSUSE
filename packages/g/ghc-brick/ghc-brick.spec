@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2
+Version:        2.4
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -67,8 +66,6 @@ BuildRequires:  ghc-text-zipper-devel
 BuildRequires:  ghc-text-zipper-prof
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-compat-prof
-BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-vty-crossplatform-devel
@@ -135,7 +132,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %check
 %cabal_test
@@ -148,7 +144,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
-%{_bindir}/brick-unix-suspend-demo
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md README.md docs

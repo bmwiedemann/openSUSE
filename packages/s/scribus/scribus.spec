@@ -34,7 +34,7 @@ Source2:        scribus.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 # PATCH-FIX-UPSTREAM poppler...
-
+Patch1:         0001-Fix-build-with-poppler-24.10.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

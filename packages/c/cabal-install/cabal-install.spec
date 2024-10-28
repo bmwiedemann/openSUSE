@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        3.10.2.1
+Version:        3.10.3.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
@@ -42,8 +42,6 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base16-bytestring-prof
-BuildRequires:  ghc-base64-bytestring-devel
-BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-bytestring-devel

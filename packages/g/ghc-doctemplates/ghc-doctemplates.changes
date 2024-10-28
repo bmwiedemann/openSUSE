@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  9 06:25:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update doctemplates to version 0.11.0.1.
+  # 0.11.0.1
+
+    * Bump version bounds for doclayout.
+
+    * Fix typos.
+
+  # 0.11
+
+    * Remove HsYAML depenedency.
+
+    * Remove upper bound for criterion.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 25 02:47:49 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.7.
+  ## 3.4.7
+
+  * Expose `attachConn` to use post-handshake TLS connection.
+    [#1007](https://github.com/yesodweb/wai/pull/1007)
+
+-------------------------------------------------------------------
 Tue Jun 25 05:02:09 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.4.6.

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-data-default
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global pkg_name data-default
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1.1
+Version:        0.7.1.3
 Release:        0
 Summary:        A class for types with a default value
 License:        BSD-3-Clause
@@ -38,9 +39,19 @@ BuildRequires:  ghc-data-default-instances-old-locale-devel
 BuildRequires:  ghc-data-default-instances-old-locale-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-old-locale-devel
+BuildRequires:  ghc-old-locale-prof
+%endif
 
 %description
-A class for types with a default value.
+This module defines a class for types with a default value. Instances are
+provided for '()', 'Data.Set.Set', 'Data.Map.Map', 'Int', 'Integer', 'Float',
+'Double', and many others.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -76,6 +87,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

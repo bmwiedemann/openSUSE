@@ -1,7 +1,7 @@
 #
 # spec file for package libasn1c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           libasn1c
-Version:        0.9.36
+Version:        0.9.37
 Release:        0
 Summary:        Osmocon ASN.1 decoder and encoder library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://git.osmocom.org/libasn1c
-
+URL:            https://gitea.osmocom.org/cellular-infrastructure/libasn1c
 Source:         https://github.com/osmocom/libasn1c/archive/%version.tar.gz
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
@@ -49,13 +48,13 @@ Compiles ASN.1 data structures into C source structures that can be
 simply (un)marshalled from and to: BER, DER, CER, BASIC-XER, CXER,
 EXTENDED-XER, PER.
 
-%package -n libasn1c-devel
+%package devel
 Summary:        Development files for libasn1c, Osmocom's ASN.1 decoder and encoder library
 Group:          Development/Libraries/C and C++
 Requires:       libasn1c1 = %version
 Requires:       pkgconfig(talloc)
 
-%description -n libasn1c-devel
+%description devel
 Compiles ASN.1 data structures into C source structures that can be
 simply (un)marshalled from and to: BER, DER, CER, BASIC-XER, CXER,
 EXTENDED-XER, PER.
@@ -82,13 +81,13 @@ if ! %make_build check; then
 	find . -name testsuite.log -exec cat "{}" "+"
 fi
 
-%post   -n libasn1c1 -p /sbin/ldconfig
-%postun -n libasn1c1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libasn1c1
 
 %files -n libasn1c1
 %_libdir/libasn1c.so.*
 
-%files -n libasn1c-devel
+%files devel
+%doc README.md
 %license COPYING
 %_includedir/%name/
 %_libdir/pkgconfig/*.pc

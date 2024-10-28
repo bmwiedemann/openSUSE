@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  5 05:48:20 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.2.6.1.
+  ## 0.2.6.1
+
+    * Fix parsing of link destinations that look like `code` or
+      HTML (#136, Michael Howell).  This affects parsing of things
+      like `` [link](`)`x` ``.
+
+-------------------------------------------------------------------
 Mon Mar 11 18:04:00 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update commonmark to version 0.2.6.

@@ -1,38 +1,7 @@
-From 1044cf442109953987c1a47f476dc90d286b9f0f Mon Sep 17 00:00:00 2001
-From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
-Date: Tue, 20 Aug 2024 10:32:23 -1000
-Subject: [PATCH] CI: Uninstall nomkl & 32 bit Interval tests (#59553)
-
-* undo numpy 2 changes?
-
-* some interval 32 bit tests working
-
-* Revert "undo numpy 2 changes?"
-
-This reverts commit 39ce2229a96406edac107fc897e807251d364e2b.
-
-* nomkl?
-
-* nomkl?
-
-* Update .github/actions/build_pandas/action.yml
-
-* grep for nomkl
-
-* xfail WASM
-
-* Reverse condition
----
- .github/actions/build_pandas/action.yml             | 7 +++++++
- pandas/tests/indexes/interval/test_interval_tree.py | 7 +++++--
- pandas/tests/indexing/interval/test_interval.py     | 4 ++--
- pandas/tests/indexing/interval/test_interval_new.py | 4 ++--
- 4 files changed, 16 insertions(+), 6 deletions(-)
-
-diff --git a/pandas/tests/indexes/interval/test_interval_tree.py b/pandas/tests/indexes/interval/test_interval_tree.py
-index 49b17f8b3d40e..df9c3b390f660 100644
---- a/pandas/tests/indexes/interval/test_interval_tree.py
-+++ b/pandas/tests/indexes/interval/test_interval_tree.py
+Binary files pandas-2.2.3.orig/.git/index and pandas-2.2.3/.git/index differ
+diff -Nru pandas-2.2.3.orig/pandas/tests/indexes/interval/test_interval_tree.py pandas-2.2.3/pandas/tests/indexes/interval/test_interval_tree.py
+--- pandas-2.2.3.orig/pandas/tests/indexes/interval/test_interval_tree.py	2024-09-20 12:21:50.000000000 +0000
++++ pandas-2.2.3/pandas/tests/indexes/interval/test_interval_tree.py	2024-10-01 12:32:47.570061987 +0000
 @@ -4,7 +4,10 @@
  import pytest
  
@@ -45,56 +14,51 @@ index 49b17f8b3d40e..df9c3b390f660 100644
  
  import pandas._testing as tm
  
-@@ -186,7 +189,7 @@ def test_construction_overflow(self):
+@@ -190,6 +193,7 @@
          expected = (50 + np.iinfo(np.int64).max) / 2
          assert result == expected
  
--    @pytest.mark.xfail(not IS64, reason="GH 23440")
 +    @pytest.mark.xfail(WASM, reason="GH 23440")
      @pytest.mark.parametrize(
          "left, right, expected",
          [
-diff --git a/pandas/tests/indexing/interval/test_interval.py b/pandas/tests/indexing/interval/test_interval.py
-index b72ef57475305..6bcebefa6c696 100644
---- a/pandas/tests/indexing/interval/test_interval.py
-+++ b/pandas/tests/indexing/interval/test_interval.py
-@@ -2,7 +2,7 @@
- import pytest
- 
- from pandas._libs import index as libindex
--from pandas.compat import IS64
-+from pandas.compat import WASM
- 
- import pandas as pd
- from pandas import (
-@@ -210,7 +210,7 @@ def test_mi_intervalindex_slicing_with_scalar(self):
-         expected = Series([1, 6, 2, 8, 7], index=expected_index, name="value")
-         tm.assert_series_equal(result, expected)
- 
--    @pytest.mark.xfail(not IS64, reason="GH 23440")
-+    @pytest.mark.xfail(WASM, reason="GH 23440")
-     @pytest.mark.parametrize(
-         "base",
-         [101, 1010],
-diff --git a/pandas/tests/indexing/interval/test_interval_new.py b/pandas/tests/indexing/interval/test_interval_new.py
-index 4c1efe9e4f81d..051dc7b98f2aa 100644
---- a/pandas/tests/indexing/interval/test_interval_new.py
-+++ b/pandas/tests/indexing/interval/test_interval_new.py
-@@ -3,7 +3,7 @@
+diff -Nru pandas-2.2.3.orig/pandas/tests/indexing/interval/test_interval_new.py pandas-2.2.3/pandas/tests/indexing/interval/test_interval_new.py
+--- pandas-2.2.3.orig/pandas/tests/indexing/interval/test_interval_new.py	2024-09-20 12:21:50.000000000 +0000
++++ pandas-2.2.3/pandas/tests/indexing/interval/test_interval_new.py	2024-10-01 12:34:25.510718974 +0000
+@@ -3,6 +3,8 @@
  import numpy as np
  import pytest
  
--from pandas.compat import IS64
 +from pandas.compat import WASM
- 
++
  from pandas import (
      Index,
-@@ -214,7 +214,7 @@ def test_loc_getitem_missing_key_error_message(
+     Interval,
+@@ -208,7 +210,7 @@
+         with pytest.raises(KeyError, match=r"\[6\]"):
              obj.loc[[4, 5, 6]]
  
- 
--@pytest.mark.xfail(not IS64, reason="GH 23440")
+-
 +@pytest.mark.xfail(WASM, reason="GH 23440")
  @pytest.mark.parametrize(
      "intervals",
      [
+diff -Nru pandas-2.2.3.orig/pandas/tests/indexing/interval/test_interval.py pandas-2.2.3/pandas/tests/indexing/interval/test_interval.py
+--- pandas-2.2.3.orig/pandas/tests/indexing/interval/test_interval.py	2024-09-20 12:21:50.000000000 +0000
++++ pandas-2.2.3/pandas/tests/indexing/interval/test_interval.py	2024-10-01 12:33:50.518484555 +0000
+@@ -2,6 +2,7 @@
+ import pytest
+ 
+ from pandas._libs import index as libindex
++from pandas.compat import WASM
+ 
+ import pandas as pd
+ from pandas import (
+@@ -35,6 +36,7 @@
+         expected = ser.iloc[2:5]
+         tm.assert_series_equal(expected, indexer_sl(ser)[ser >= 2])
+ 
++    @pytest.mark.xfail(WASM, reason="GH 23440")
+     @pytest.mark.parametrize("direction", ["increasing", "decreasing"])
+     def test_getitem_nonoverlapping_monotonic(self, direction, closed, indexer_sl):
+         tpls = [(0, 1), (2, 3), (4, 5)]

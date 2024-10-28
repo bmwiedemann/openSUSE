@@ -19,12 +19,13 @@
 %global pkg_name ghc-lib-parser
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        9.8.2.20240223
+Version:        9.8.3.20241022
 Release:        0
 Summary:        The GHC API, decoupled from GHC versions
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  alex
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
@@ -93,6 +94,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

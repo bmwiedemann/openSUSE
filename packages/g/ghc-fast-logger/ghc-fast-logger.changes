@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 15 03:53:07 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.4.
+  ## 3.2.4
+
+  * Avoid unnecessary copy for Text values with text-2.0
+    [#219](https://github.com/kazu-yamamoto/logger/pull/219)
+
+-------------------------------------------------------------------
 Thu May 16 07:11:46 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update fast-logger to version 3.2.3.

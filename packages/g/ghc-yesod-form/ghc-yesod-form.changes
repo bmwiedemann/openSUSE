@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 23 03:15:17 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update yesod-form to version 1.7.9.
+  ## 1.7.9
+
+  * Added `checkboxesField'` for creating checkbox in more correct way than original `checkboxesField`
+    Function `checkboxesField` marked as deprecated. [#1843](https://github.com/yesodweb/yesod/pull/1843)
+
+  ## 1.7.8
+
+  * Added `radioField'` for creating radio button in more correct way than original `radioField`.
+    Function `radioField` marked as deprecated. [#1842](https://github.com/yesodweb/yesod/pull/1842)
+
+  ## 1.7.7
+
+  * Added `optionsFromList'` to create an OptionList from a List, using the PathPiece instance for the external value and
+  a custom function for the user-facing value. Also added `optionsEnum'` to create an OptionList from an enumeration
+  [#1828](https://github.com/yesodweb/yesod/pull/1828)
+
+-------------------------------------------------------------------
 Tue Sep  5 05:53:38 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update yesod-form to version 1.7.6.

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep  9 05:57:29 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update doclayout to version 0.5.
+  ## 0.5
+
+    * Extract existing HasChars definition into a module
+      Text.DocLayout.HasChars (Evan Silberman).
+
+    * Add a `build` method to the signature of HasChars [API change]
+      (Evan Silberman). This has a default definition, and is only needed with
+      the ANSI renderer, so existing users should not need to add anything to
+      their HasChars instances.
+
+    * Introduce support for ANSI-styled output (Evan Silberman) [API change].
+      `renderPlain` and `renderANSI` are now exported; the old `render`
+      is a synonym of `renderPlain`.  In addition, various functions are
+      exported to add ANSI formatting (including bold, italics,
+      underline, strikeout, links, and colors) to a Doc. The Attributed
+      type is also now exported.
+
+    * Change type of Block constructor, replacing `[a]` with `[Attributed a]`,
+      which carries a Font along with an inner string type [API change]
+      (Evan Silberman).
+
+    * Introduce FlatDocs and use them for rendering (Evan Silberman).
+      This is an internal concept, not part of the public API.
+      FlatDoc is an "intermediate representation" for the Doc "interpreter".
+      The general design is that any Doc can be turned into a list of FlatDocs
+      that carry equivalent information. The main point of doing this
+      is to replace the nested Styled and Linked Docs, which form a more
+      complicated tree structure than previously existed in DocLayout.
+
+    * Deprecate `unfoldD`.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:38 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

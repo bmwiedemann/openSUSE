@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2.20
+Version:        2.3.2.21
 Release:        0
 Summary:        Email address validation
 License:        BSD-3-Clause

@@ -16,8 +16,8 @@
 #
 
 
-%define full_version 9.8.2
-%define short_version 9.8.2
+%define full_version 9.8.3
+%define short_version 9.8.3
 
 %ifnarch s390x
 %define with_libnuma 1
@@ -73,7 +73,7 @@
 %global ghc_llvm_archs s390x riscv64
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.19.1.0
+%global base_ver 4.19.2.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.7.0.0
 %global hsc2hs_ver 0.68.8
@@ -175,7 +175,7 @@ License:        BSD-3-Clause
 Requires:       %{name}-filesystem = %{version}-%{release}
 Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
-Provides:       hsc2hs-%{hsc2hs_ver}-%{release}
+Provides:       hsc2hs = %{hsc2hs_ver}-%{release}
 %ifarch riscv64 s390x
 Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
@@ -236,16 +236,16 @@ This package provides the User Guide and Haddock manual.
 %define libnuma_dep %{nil}
 %endif
 #!ForceMultiversion
-%ghc_lib_subpackage -d Cabal-3.10.2.0
-%ghc_lib_subpackage -d Cabal-syntax-3.10.2.0
-%ghc_lib_subpackage -d array-0.5.6.0
+%ghc_lib_subpackage -d Cabal-3.10.3.0
+%ghc_lib_subpackage -d Cabal-syntax-3.10.3.0
+%ghc_lib_subpackage -d array-0.5.8.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.1
 %ghc_lib_subpackage -d -x ghc-bignum-%{ghc_bignum_ver}
 %ghc_lib_subpackage -d bytestring-0.12.1.0
 %ghc_lib_subpackage -d containers-0.6.8
-%ghc_lib_subpackage -d deepseq-1.5.0.0
-%ghc_lib_subpackage -d directory-1.3.8.1
+%ghc_lib_subpackage -d deepseq-1.5.1.0
+%ghc_lib_subpackage -d directory-1.3.8.5
 %ghc_lib_subpackage -d exceptions-0.10.7
 %ghc_lib_subpackage -d filepath-1.4.200.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
@@ -259,9 +259,9 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d mtl-2.3.1
 %ghc_lib_subpackage -d parsec-3.1.17.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.18.0
+%ghc_lib_subpackage -d process-1.6.25.0
 %ghc_lib_subpackage -d semaphore-compat-1.0.0
-%ghc_lib_subpackage -d stm-2.5.2.1
+%ghc_lib_subpackage -d stm-2.5.3.1
 %ghc_lib_subpackage -d template-haskell-2.21.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.6
 %ghc_lib_subpackage -d text-2.1.1
@@ -345,12 +345,8 @@ python3 boot.source --hadrian
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
 
 %if 0%{?suse_version} >= 1500
-%ifarch %{unregisterised_archs} riscv64
-%if 0%{?qemu_user_space_build}
-%limit_build -m 15000
-%else
+%ifarch %{unregisterised_archs}
 %limit_build -m 8000
-%endif
 %else
 %limit_build -m 2000
 %endif

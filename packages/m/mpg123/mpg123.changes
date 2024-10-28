@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 26 15:53:29 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.8
+  libmpg123:
+  * Add sections to assembly to support PAC/BTI code for aarch64
+    (-mbranch-protection variants)
+  * Prevent premature application of header info into decoding
+    structure, at worst having triggered out-of-bounds writes of
+    decoded PCM data
+  out123:
+  * Show --quiet in --longhelp.
+
+-------------------------------------------------------------------
 Wed Aug  7 16:56:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.7

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Sep 30 23:17:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240927.
+  git-annex (10.20240927) upstream; urgency=medium
+
+    * Detect when a preferred content expression contains "not present",
+      which would lead to repeatedly getting and then dropping files,
+      and make it never match. This also applies to
+      "not balanced" and "not sizebalanced".
+    * Fix --explain display of onlyingroup preferred content expression.
+    * Allow maxsize to be set to 0 to stop checking maxsize for a repository.
+    * Fix bug that prevented anything being stored in an empty
+      repository whose preferred content expression uses sizebalanced.
+    * sim: New command, can be used to simulate networks of repositories
+      and see how preferred content and other configuration makes file
+      content flow through it.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 30 Sep 2024 19:15:35 -0400
+
+-------------------------------------------------------------------
+Sat Aug 31 23:51:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240831.
+  git-annex (10.20240831) upstream; urgency=medium
+
+    * Special remotes configured with exporttree=yes annexobjects=yes
+      can store objects in .git/annex/objects, as well as an exported tree.
+    * Support proxying to special remotes configured with
+      exporttree=yes annexobjects=yes, and allow such remotes to be used as
+      cluster nodes.
+    * post-retrieve: When proxying is enabled for an exporttree=yes
+      special remote (or it is a cluster node) and the configured
+      remote.name.annex-tracking-branch is received, the tree is
+      exported to the special remote.
+    * Support "balanced=", "fullybalanced=", "sizebalanced=" and
+      "fullysizebalanced=" in preferred content expressions.
+    * Added --rebalance option.
+    * Added the annex.fullybalancedthreshhold git config.
+    * maxsize: New command to tell git-annex how large the expected maximum
+      size of a repository is, and to display repository sizes.
+    * vicfg: Include maxsize configuration.
+    * info: Improved speed by using new repository size tracking.
+    * lookupkey: Allow using --ref in a bare repository.
+    * export: Added --from option.
+    * git-remote-annex: Store objects in exportree=yes special remotes
+      in the same paths used by annexobjects=yes. This is a backwards
+      compatible change.
+    * updateproxy, updatecluster: Prevent using an exporttree=yes special
+      remote that does not have annexobjects=yes, since it will not work.
+    * The config versioning=true is now reserved for use by versioned special
+      remotes. External special remotes should not use that config for their
+      own purposes.
+
+   -- Joey Hess <id@joeyh.name>  Sat, 31 Aug 2024 19:48:17 -0400
+
+-------------------------------------------------------------------
 Thu Aug  8 19:27:29 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20240808.

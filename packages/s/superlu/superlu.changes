@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 23 12:11:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix %check for gnu-hpc flavor by loading openblas module before
+  running ctest.
+
+-------------------------------------------------------------------
+Sat Oct 12 21:07:32 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to version 7.0.0
+  * To avoid name clashes, use type "singlecomplex" instead of
+    "complex".
+  * Rank Deficient Matrices
+
+-------------------------------------------------------------------
 Sun Aug  6 08:39:35 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to version 6.0.1

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct  1 12:28:55 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.9.
+  ## 0.2.9
+
+  Released 2024-10-01.
+
+  -   Update list module, thereby introducing a new method `iter`;
+      the function returns an iterator that steps through list
+      values on each call.
+
+  -   Added support for `__toinline` and `__toblock` metamethods. If
+      the metamethods are available on a Lua object and return an
+      appropriate value, then that returned value will be used
+      during unmarshalling.
+
+  ## 0.2.8
+
+  Released 2024-09-21.
+
+  -   Update list module, thereby introducing a new method `at` and
+      an extended constructor for List types.
+
+-------------------------------------------------------------------
 Tue Jul  2 07:59:53 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.2.7.1.

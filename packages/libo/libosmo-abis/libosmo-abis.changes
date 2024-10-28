@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 26 13:58:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Add support for sending and receiving Sa bits, as well as
+    some line signals
+  * rtp2trau_hr16: accept both TS 101 318 and RFC 5993 payload
+    formats
+  * TRAU->RTP: add support for TW-TS-001 & TW-TS-002
+  * trau_rtp_conv: add support for HRv1 in 8k format
+
+-------------------------------------------------------------------
 Fri May  3 05:02:52 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.2

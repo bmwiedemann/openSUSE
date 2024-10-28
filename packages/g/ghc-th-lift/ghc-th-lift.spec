@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Derive Template Haskell's Lift class for datatypes
 License:        (BSD-3-Clause OR GPL-2.0-only)
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -41,8 +40,8 @@ ExcludeArch:    %{ix86}
 Derive Template Haskell's 'Lift' class for datatypes using 'TemplateHaskell'.
 The functionality in this package has largely been subsumed by the 'DeriveLift'
 language extension, which is available in GHC 8.0 and later versions.
-This package can still be useful as a uniform way to derive 'Lift' instances
-that is backwards-compatible with older GHCs.
+As such, this package is only useful as a way to backport bugfixes to
+'DeriveLift' in later GHC versions back to older GHCs.
 
 The following libraries are related:
 
@@ -83,7 +82,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.14
+Version:        1.7.15
 Release:        0
 Summary:        IP Routing Table
 License:        BSD-3-Clause

@@ -733,4 +733,29 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1201618</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>38f34a0bfc4a794fa888c579d64db7b2</srcmd5>
+    <version>2.2.3</version>
+    <time>1730125064</time>
+    <user>anag+factory</user>
+    <comment>- Skip two tests that fail with Numpy 2.1. 
+
+- Prepare for Python 3.13, by skipping it if we aren't building for it. 
+
+- Update to 2.2.3
+  * Bug in eval() on complex including division /
+    discards imaginary part. (GH 21374)
+  * Minor fixes for numpy 2.1 compatibility. (GH 59444)
+  * Missing licenses for 3rd party dependencies were
+    added back into the wheels. (GH 58632)
+- Drop pandas-pr58269-pyarrow16xpass.patch, merged upstream
+- Drop pandas-pr58484-matplotlib.patch, merged upstream
+- Drop pandas-pr59175-matplotlib.patch, merged upstream
+- Drop pandas-pr59353-np2eval.patch, merged upstream
+- Drop tests-npdev.patch, merged upstream
+- Drop tests-timedelta.patch, merged upstream
+- Refresh tests-nomkl.patch
+- Renumber remaining patches</comment>
+    <requestid>1218705</requestid>
+  </revision>
 </revisionlist>

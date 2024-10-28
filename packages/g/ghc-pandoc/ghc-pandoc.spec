@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3
+Version:        3.5
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-Glob-prof
 BuildRequires:  ghc-JuicyPixels-devel
 BuildRequires:  ghc-JuicyPixels-prof
-BuildRequires:  ghc-SHA-devel
-BuildRequires:  ghc-SHA-prof
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-aeson-pretty-prof
@@ -67,6 +65,8 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-crypton-connection-devel
 BuildRequires:  ghc-crypton-connection-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-crypton-x509-system-devel
 BuildRequires:  ghc-crypton-x509-system-prof
 BuildRequires:  ghc-data-default-devel
@@ -370,8 +370,12 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/pptx/ppt/theme/theme2.xml
 %{_datadir}/%{pkg_name}-%{version}/data/pptx/ppt/viewProps.xml
 %{_datadir}/%{pkg_name}-%{version}/data/templates/affiliations.jats
+%{_datadir}/%{pkg_name}-%{version}/data/templates/after-header-includes.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/article.jats_publishing
+%{_datadir}/%{pkg_name}-%{version}/data/templates/common.latex
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.ansi
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.asciidoc
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.beamer
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.biblatex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.bibtex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.chunkedhtml
@@ -417,6 +421,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.xwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.zimwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/definitions.typst
+%{_datadir}/%{pkg_name}-%{version}/data/templates/fonts.latex
+%{_datadir}/%{pkg_name}-%{version}/data/templates/hypersetup.latex
+%{_datadir}/%{pkg_name}-%{version}/data/templates/passoptions.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/styles.citations.html
 %{_datadir}/%{pkg_name}-%{version}/data/templates/styles.html
 %{_datadir}/%{pkg_name}-%{version}/data/templates/template.typst

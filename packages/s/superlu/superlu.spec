@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 # Base package name
 %define pname superlu
-%define ver 6.0.1
+%define ver 7.0.0
 %define _ver %(echo %{ver} | tr . _)
 
 %if "%flavor" == ""
@@ -40,7 +40,7 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "gnu7-hpc"
 %bcond_without hpc
 %global compiler_family gnu
-%undefine c_f_ver 7
+%define c_f_ver 7
 %endif
 
 %if "%{flavor}" == "gnu8-hpc"
@@ -72,7 +72,7 @@ ExclusiveArch:  do_not_build
 %define p_prefix %_prefix
 %define p_includedir %_includedir
 %define p_libdir %_libdir
-%define _sover 6
+%define _sover 7
 %define libname lib%{name}%{?_sover}
 %else
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
@@ -203,6 +203,13 @@ make %{?_smp_mflags}
 #fix permissions
 chmod 644 MATLAB/* EXAMPLE/*
 
+%check
+%if %{with hpc}
+%{?hpc_setup}
+module load openblas
+%endif
+%ctest
+
 # remove all build examples
 cd EXAMPLE
 make clean
@@ -214,9 +221,6 @@ sed -i -e 's&@superlu_home@&%p_prefix&' -e 's&@superlu_lib@&%p_libdir&' examples
 rm -f examples/.gitignore
 cp FORTRAN/README README.fortran
 %fdupes -s examples
-
-%check
-%ctest
 
 %if %{with hpc}
 %{hpc_write_pkgconfig}

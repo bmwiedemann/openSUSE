@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 18 02:53:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton to version 1.0.1.
+  ## 1.0.1
+
+  * Update decaf library.
+    [#38](https://github.com/kazu-yamamoto/crypton/pull/38)
+  * Add TypeOperators language extension to EdDSA.hs.
+    [#36](https://github.com/kazu-yamamoto/crypton/pull/36)
+
+-------------------------------------------------------------------
 Thu Apr 25 23:14:26 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton to version 1.0.0.

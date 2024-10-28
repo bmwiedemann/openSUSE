@@ -271,4 +271,12 @@
     <comment>- Update to release 1.9.3</comment>
     <requestid>1181429</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c49fc28996c75dbd766fcca8390af115</srcmd5>
+    <version>1.10.0</version>
+    <time>1730125213</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.10.0</comment>
+    <requestid>1218587</requestid>
+  </revision>
 </revisionlist>

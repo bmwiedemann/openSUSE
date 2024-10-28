@@ -14,10 +14,10 @@ persistent-template has been deprecated.
  git-annex.cabal               | 3 +--
  6 files changed, 1 insertion(+), 16 deletions(-)
 
-diff --git a/Database/ContentIdentifier.hs b/Database/ContentIdentifier.hs
-index bbf67dcfb1..3a399f7765 100644
---- a/Database/ContentIdentifier.hs
-+++ b/Database/ContentIdentifier.hs
+Index: git-annex-10.20240927/Database/ContentIdentifier.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/ContentIdentifier.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/ContentIdentifier.hs	2024-10-26 13:36:42.452641193 +0000
 @@ -12,10 +12,8 @@
  {-# LANGUAGE RankNTypes #-}
  {-# LANGUAGE DataKinds, FlexibleInstances #-}
@@ -29,10 +29,10 @@ index bbf67dcfb1..3a399f7765 100644
  
  module Database.ContentIdentifier (
  	ContentIdentifierHandle,
-diff --git a/Database/Export.hs b/Database/Export.hs
-index 2f0da8b231..6de86c7925 100644
---- a/Database/Export.hs
-+++ b/Database/Export.hs
+Index: git-annex-10.20240927/Database/Export.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/Export.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/Export.hs	2024-10-26 13:36:42.452641193 +0000
 @@ -5,17 +5,14 @@
   - Licensed under the GNU AGPL version 3 or higher.
   -}
@@ -51,10 +51,10 @@ index 2f0da8b231..6de86c7925 100644
  
  module Database.Export (
  	ExportHandle,
-diff --git a/Database/Fsck.hs b/Database/Fsck.hs
-index cce5528100..2ff4eb6bb5 100644
---- a/Database/Fsck.hs
-+++ b/Database/Fsck.hs
+Index: git-annex-10.20240927/Database/Fsck.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/Fsck.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/Fsck.hs	2024-10-26 13:36:42.452641193 +0000
 @@ -5,7 +5,6 @@
   - Licensed under the GNU AGPL version 3 or higher.
   -}
@@ -74,10 +74,10 @@ index cce5528100..2ff4eb6bb5 100644
  
  module Database.Fsck (
  	FsckHandle,
-diff --git a/Database/ImportFeed.hs b/Database/ImportFeed.hs
-index 2d44b0b9ea..84cd24bdab 100644
---- a/Database/ImportFeed.hs
-+++ b/Database/ImportFeed.hs
+Index: git-annex-10.20240927/Database/ImportFeed.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/ImportFeed.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/ImportFeed.hs	2024-10-26 13:36:42.452641193 +0000
 @@ -6,17 +6,14 @@
   - Licensed under the GNU AGPL version 3 or higher.
   -}
@@ -96,10 +96,10 @@ index 2d44b0b9ea..84cd24bdab 100644
  
  module Database.ImportFeed (
  	ImportFeedDbHandle,
-diff --git a/Database/Keys/SQL.hs b/Database/Keys/SQL.hs
-index 2e40e39db3..6b36cd09d5 100644
---- a/Database/Keys/SQL.hs
-+++ b/Database/Keys/SQL.hs
+Index: git-annex-10.20240927/Database/Keys/SQL.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/Keys/SQL.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/Keys/SQL.hs	2024-10-26 13:36:42.453641181 +0000
 @@ -5,17 +5,14 @@
   - Licensed under the GNU AGPL version 3 or higher.
   -}
@@ -118,11 +118,11 @@ index 2e40e39db3..6b36cd09d5 100644
  
  module Database.Keys.SQL where
  
-diff --git a/git-annex.cabal b/git-annex.cabal
-index 31e66f9f27..7bf1a8ae0c 100644
---- a/git-annex.cabal
-+++ b/git-annex.cabal
-@@ -247,8 +247,7 @@ Executable git-annex
+Index: git-annex-10.20240927/git-annex.cabal
+===================================================================
+--- git-annex-10.20240927.orig/git-annex.cabal	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/git-annex.cabal	2024-10-26 13:36:42.453641181 +0000
+@@ -249,8 +249,7 @@ Executable git-annex
     time (>= 1.5.0),
     old-locale,
     persistent-sqlite (>= 2.8.1),
@@ -132,6 +132,26 @@ index 31e66f9f27..7bf1a8ae0c 100644
     unliftio-core,
     microlens,
     aeson,
--- 
-2.42.0
-
+Index: git-annex-10.20240927/Database/RepoSize.hs
+===================================================================
+--- git-annex-10.20240927.orig/Database/RepoSize.hs	2024-09-30 23:15:57.000000000 +0000
++++ git-annex-10.20240927/Database/RepoSize.hs	2024-10-26 13:37:26.311088729 +0000
+@@ -5,7 +5,6 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+@@ -13,10 +12,8 @@
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE UndecidableInstances #-}
+ {-# LANGUAGE TypeOperators #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.RepoSize (
+ 	RepoSizeHandle,

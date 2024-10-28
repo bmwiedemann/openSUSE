@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20240808
+Version:        10.20240927
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -69,8 +69,6 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-criterion-devel
-BuildRequires:  ghc-criterion-prof
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-crypto-api-prof
 BuildRequires:  ghc-crypton-devel
@@ -162,6 +160,14 @@ BuildRequires:  ghc-sandi-devel
 BuildRequires:  ghc-sandi-prof
 BuildRequires:  ghc-securemem-devel
 BuildRequires:  ghc-securemem-prof
+BuildRequires:  ghc-servant-client-core-devel
+BuildRequires:  ghc-servant-client-core-prof
+BuildRequires:  ghc-servant-client-devel
+BuildRequires:  ghc-servant-client-prof
+BuildRequires:  ghc-servant-devel
+BuildRequires:  ghc-servant-prof
+BuildRequires:  ghc-servant-server-devel
+BuildRequires:  ghc-servant-server-prof
 BuildRequires:  ghc-shakespeare-devel
 BuildRequires:  ghc-shakespeare-prof
 BuildRequires:  ghc-socks-devel
@@ -271,7 +277,7 @@ Optional dependency offering bash completion for git-annex
 %autosetup -p1
 
 %build
-%define cabal_configure_options -ftestsuite
+%define cabal_configure_options -f+assistant -f+crypton -f+dbus -f+magicmime -f+pairing -f+production -f+servant -f+torrentparser -f-benchmark
 %ghc_bin_build
 
 %check

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 27 15:48:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.3:
+   * revert a const-correctness change introduced in v1.8.0 for
+     the git_commit_create functions. Retain the const-behavior for
+     the commits arguments from prior to v1.8.0.
+   * Fix a bug introduced in v1.8.1 for users of the legacy
+     Node.js http-parser dependency.
+
+-------------------------------------------------------------------
 Fri May 17 10:30:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:

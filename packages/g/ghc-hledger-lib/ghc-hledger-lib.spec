@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.34
+Version:        1.40
 Release:        0
 Summary:        A library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -75,6 +75,8 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hashtables-devel
 BuildRequires:  ghc-hashtables-prof
+BuildRequires:  ghc-lucid-devel
+BuildRequires:  ghc-lucid-prof
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-microlens-devel

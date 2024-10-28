@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.9.3
+Version:        1.10.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -113,13 +113,13 @@ transcoding routines.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmocoding.
 
-%package -n libosmocore21
+%package -n libosmocore22
 Summary:        Osmocom core library
 # crc16.c has GPL2-only clauses, the rest (*.c) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmocore21
+%description -n libosmocore22
 libosmocore is a library with various utility functions shared
 between OpenBSC and OsmocomBB.
 
@@ -128,7 +128,7 @@ Summary:        Development files for the Osmocom core library
 # crc16.h has GPL2-only clauses, the rest (*.h) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmocore21 = %version
+Requires:       libosmocore22 = %version
 Requires:       libtalloc-devel
 
 %description -n libosmocore-devel
@@ -344,10 +344,11 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %ldconfig_scriptlets -n libosmocodec4
 %ldconfig_scriptlets -n libosmocoding0
-%ldconfig_scriptlets -n libosmocore21
+%ldconfig_scriptlets -n libosmocore22
 %ldconfig_scriptlets -n libosmoctrl0
 %ldconfig_scriptlets -n libosmogb14
 %ldconfig_scriptlets -n libosmogsm20
+%ldconfig_scriptlets -n libosmoisdn0
 %ldconfig_scriptlets -n libosmosim2
 %ldconfig_scriptlets -n libosmousb0
 %ldconfig_scriptlets -n libosmovty13
@@ -375,7 +376,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmocoding.so
 %_libdir/pkgconfig/libosmocoding.pc
 
-%files -n libosmocore21
+%files -n libosmocore22
 %_libdir/libosmocore.so.*
 
 %files -n libosmocore-devel

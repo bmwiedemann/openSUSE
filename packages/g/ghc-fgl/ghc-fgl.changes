@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:53:01 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.3.0.
+  5.8.3.0
+  -------
+
+  * Data.Graph.Inductive.NodeMap now has functions mkLookupNode,
+    insMapLookupNode, memberNode, and lookupNode for detecting whether a
+    graph already contains a node (issue #72, PR #77).
+
+-------------------------------------------------------------------
 Wed Oct 18 08:42:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update fgl to version 5.8.2.0.

@@ -1,5 +1,4 @@
 diff --git a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
-index 34c4aa4..7996af0 100644
 --- a/SRC/CMakeLists.txt
 +++ b/SRC/CMakeLists.txt
 @@ -23,7 +23,6 @@ set(sources
@@ -9,8 +8,8 @@ index 34c4aa4..7996af0 100644
 -  mc64ad.c
    qselect.c
    input_error.c
-   dmach.c
-@@ -68,9 +67,7 @@ if(enable_single)
+ )
+@@ -66,9 +65,7 @@ if(enable_single)
      smemory.c
      sutil.c
      smyblas2.c
@@ -20,7 +19,7 @@ index 34c4aa4..7996af0 100644
      ilu_sdrop_row.c
      ilu_ssnode_dfs.c
      ilu_scolumn_dfs.c
-@@ -118,9 +115,7 @@ if(enable_double)
+@@ -116,9 +113,7 @@ if(enable_double)
      dmemory.c
      dutil.c
      dmyblas2.c
@@ -30,7 +29,7 @@ index 34c4aa4..7996af0 100644
      ilu_ddrop_row.c
      ilu_dsnode_dfs.c
      ilu_dcolumn_dfs.c
-@@ -171,9 +166,7 @@ if(enable_complex)
+@@ -169,9 +164,7 @@ if(enable_complex)
      cmemory.c
      cutil.c
      cmyblas2.c
@@ -40,7 +39,7 @@ index 34c4aa4..7996af0 100644
      ilu_cdrop_row.c
      ilu_csnode_dfs.c
      ilu_ccolumn_dfs.c
-@@ -222,9 +215,7 @@ if(enable_complex16)
+@@ -220,9 +213,7 @@ if(enable_complex16)
      zmemory.c
      zutil.c
      zmyblas2.c

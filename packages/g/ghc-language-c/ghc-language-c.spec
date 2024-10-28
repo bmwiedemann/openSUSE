@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Analysis and generation of C code
 License:        BSD-3-Clause

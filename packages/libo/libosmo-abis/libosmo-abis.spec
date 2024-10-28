@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -29,11 +29,11 @@ BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-e1d) >= 0.5.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.9.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
+BuildRequires:  pkgconfig(libosmo-e1d) >= 0.7.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.10.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -73,12 +73,12 @@ cards, as well as some A-bis/IP dialects.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmoabis.
 
-%package -n libosmotrau2
+%package -n libosmotrau10
 Summary:        Osmocom GSM TRAU (E1/RTP) library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmotrau2
+%description -n libosmotrau10
 This library implements the Transcoder and Rate Adaptation Unit (TRAU) for
 GSM systems.
 The TRAU enables the use of lower rates (32, 16 or 8 kbps) over the
@@ -89,7 +89,7 @@ Switching Center (MSC) is designed.
 Summary:        Development files for the Osmocom TRAU (E1/RTP) library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmotrau2 = %version
+Requires:       libosmotrau10 = %version-%release
 
 %description -n libosmotrau-devel
 This library implements the Transcoder and Rate Adaptation Unit
@@ -121,10 +121,8 @@ if ! %make_build check; then
 %endif
 fi
 
-%post   -n libosmoabis13 -p /sbin/ldconfig
-%postun -n libosmoabis13 -p /sbin/ldconfig
-%post   -n libosmotrau2 -p /sbin/ldconfig
-%postun -n libosmotrau2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmoabis13
+%ldconfig_scriptlets -n libosmotrau10
 
 %files -n libosmoabis13
 %_libdir/libosmoabis.so.*
@@ -137,7 +135,7 @@ fi
 %_libdir/libosmoabis.so
 %_libdir/pkgconfig/libosmoabis.pc
 
-%files -n libosmotrau2
+%files -n libosmotrau10
 %_libdir/libosmotrau.so.*
 
 %files -n libosmotrau-devel

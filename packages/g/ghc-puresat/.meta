@@ -1,0 +1,5 @@
+<package name="ghc-puresat" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-puresat"/>
+</package>

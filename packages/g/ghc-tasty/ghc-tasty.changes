@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 19 19:57:20 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- extend riscv64-unbounded-delays.patch to not depend on
+  unbounded-delays on ppc64 and s390x
+
+-------------------------------------------------------------------
 Thu Jul 18 10:57:07 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update tasty to version 1.5 revision 2.

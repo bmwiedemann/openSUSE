@@ -1,7 +1,7 @@
 #
 # spec file for package libgtpnl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           libgtpnl
-Version:        1.2.5
+Version:        1.3.1
 Release:        0
 Summary:        GPRS tunnel configuration library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://osmocom.org/projects/linux-kernel-gtp-u/wiki
-
 Source:         https://github.com/osmocom/libgtpnl/archive/%version.tar.gz
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
@@ -80,8 +79,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 %make_build check
 
-%post   -n libgtpnl0 -p /sbin/ldconfig
-%postun -n libgtpnl0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtpnl0
 
 %files -n libgtpnl0
 %_libdir/libgtpnl.so.0*

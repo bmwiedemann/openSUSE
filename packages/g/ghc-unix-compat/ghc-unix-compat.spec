@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Portable POSIX-compatibility layer
 License:        BSD-3-Clause

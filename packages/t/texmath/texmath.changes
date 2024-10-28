@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct  5 02:15:36 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.11.
+  texmath (0.12.8.11)
+
+    * TeX reader: Ignore `@{..}` and `!{..}` in array alignment specifiers (#241).
+
+    * TeX reader: ignore `\color` instead of crashing (#225).
+
+-------------------------------------------------------------------
+Tue Sep 10 01:22:40 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.10.
+  texmath (0.12.8.10)
+
+    * TeX reader: allow `\lVert .. \vVert` to create an EDelimited (#238).
+
+    * Typst writer: improved handling of primes (#239).
+      Use `'` instead of e.g. `prime`. Don't put a space before primes.
+
+    * Typst writer: improve rendering of EDelimited (#238).
+
+    * Typst writer: use `mid()` for middle delimiters (#238).
+
+-------------------------------------------------------------------
 Sat May 11 06:48:59 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.8.9.

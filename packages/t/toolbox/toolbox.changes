@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:26:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use go-md2man instead of pandoc to convert a markdown file to
+  nroff. The dep chain is just much, much smaller.
+
+-------------------------------------------------------------------
+Fri Oct 25 09:49:28 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove Leap and SLE Micro hacks from spec file, this products
+  have to provide correct branding packages.
+
+-------------------------------------------------------------------
+Fri Oct 25 08:42:47 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.3+git20241025.00f69f5:
+  * Add manual page
+
+-------------------------------------------------------------------
 Fri Sep 27 09:30:16 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Revert last change and update SLE/Leap Micro images to 5.5 (bsc#1227328)

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cabal-install-solver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.10.2.1
+Version:        3.10.3.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-Cabal-syntax-devel
@@ -47,6 +48,8 @@ BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
@@ -91,6 +94,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

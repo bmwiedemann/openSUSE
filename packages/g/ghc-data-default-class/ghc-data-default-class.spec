@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-data-default-class
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name data-default-class
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.2.0
+Version:        0.1.2.2
 Release:        0
 Summary:        A class for types with a default value
 License:        BSD-3-Clause
@@ -32,7 +32,14 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-A class for types with a default value.
+This module defines a class for types with a default value. It also defines
+'Default' instances for the types 'Int', 'Int8', 'Int16', 'Int32', 'Int64',
+'Word', 'Word8', 'Word16', 'Word32', 'Word64', 'Integer', 'Float', 'Double',
+'Ratio', 'Complex', 'CShort', 'CUShort', 'CInt', 'CUInt', 'CLong', 'CULong',
+'CLLong', 'CULLong', 'CPtrdiff', 'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr',
+'CIntMax', 'CUIntMax', 'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat',
+'CDouble', '(->)', 'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last',
+'First', 'Sum', 'Product', 'Endo', 'Dual', and tuples.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

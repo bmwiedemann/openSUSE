@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  9 21:16:33 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.40.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.40/src/CHANGES.md
+
+-------------------------------------------------------------------
 Sun Jun  2 00:46:12 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hledger to version 1.34.

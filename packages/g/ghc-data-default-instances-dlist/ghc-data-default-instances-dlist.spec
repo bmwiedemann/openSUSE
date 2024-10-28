@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-data-default-instances-dlist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name data-default-instances-dlist
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.0.1
+Version:        0.0.1.2
 Release:        0
 Summary:        Default instances for types in dlist
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-Default instances for types in dlist.
+This module defines a 'Default' instance for the type 'DList'.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

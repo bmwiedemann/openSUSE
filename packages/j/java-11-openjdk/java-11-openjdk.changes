@@ -1,4 +1,315 @@
 -------------------------------------------------------------------
+Mon Oct 28 07:22:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.25+9 (October 2024 CPU)
+  * Security fixes
+    + JDK-8290367, JDK-8332643: Update default value and extend the
+      scope of com.sun.jndi.ldap.object.trustSerialData system
+      property
+    + JDK-8307383: Enhance DTLS connections
+    + JDK-8328286, CVE-2024-21208, bsc#1231702: Enhance HTTP client
+    + JDK-8328544, CVE-2024-21210, bsc#1231711: Improve handling of
+      vectorization
+    + JDK-8328726: Better Kerberos support
+    + JDK-8331446, CVE-2024-21217, bsc#1231716: Improve
+      deserialization support
+    + JDK-8332644, CVE-2024-21235, bsc#1231719: Improve graph
+      optimizations
+    + JDK-8335713: Enhance vectorization analysis
+  * Other changes
+    + JDK-7124313: [macosx] Swing Popups should overlap taskbar
+    + JDK-7156347: javax/swing/JList/6462008/bug6462008.java fails
+    + JDK-8078725: method adjustments can be done just once for all
+      classes involved into redefinition
+    + JDK-8205076: [17u] Inet6AddressImpl.c: 'lookupIfLocalHost'
+      accesses 'int InetAddress.preferIPv6Address' as a boolean
+    + JDK-8206440: Remove javac -source/-target 6 from jdk
+      regression tests
+    + JDK-8210338: Better output for GenerationTests.java
+    + JDK-8211920: Close server socket and cleanups in
+      test/jdk/javax/naming/module/RunBasic.java
+    + JDK-8222005: ClassRedefinition crashes with: guarantee(false)
+      failed: OLD and/or OBSOLETE method(s) found
+    + JDK-8222884: ConcurrentClassDescLookup.java times out
+      intermittently
+    + JDK-8224081: SOCKS v4 tests require IPv4
+    + JDK-8227122: [TESTBUG] Create Docker sidecar test cases
+    + JDK-8229822: ThrowingPushPromises tests sometimes fail due to
+      EOF
+    + JDK-8231427: Warning cleanup in tests of java.io.Serializable
+    + JDK-8236917: TestInstanceKlassSize.java fails with "The size
+      computed by SA for java.lang.Object does not match"
+    + JDK-8238169: BasicDirectoryModel getDirectories and
+      DoChangeContents.run can deadlock
+    + JDK-8240226: DeflateIn_InflateOut.java test incorrectly
+      assumes size of compressed file
+    + JDK-8242999: HTTP/2 client may not handle CONTINUATION frames
+      correctly
+    + JDK-8244966: Add .vscode to .hgignore and .gitignore
+    + JDK-8249097: test/lib/jdk/test/lib/util/JarBuilder.java has a
+      bad copyright
+    + JDK-8249772: (ch) Improve
+      sun/nio/ch/TestMaxCachedBufferSize.java
+    + JDK-8249826: 5 javax/net/ssl/SSLEngine tests use @ignore w/o
+      bug-id
+    + JDK-8251188: Update LDAP tests not to use wildcard addresses
+    + JDK-8253207: enable problemlists jcheck's check
+    + JDK-8255898: Test java/awt/FileDialog/FilenameFilterTest/
+      /FilenameFilterTest.java fails on Mac OS
+    + JDK-8255913: Decrease number of iterations in
+      TestMaxCachedBufferSize
+    + JDK-8255969: Improve java/io/BufferedInputStream/
+      /LargeCopyWithMark.java using jtreg tags
+    + JDK-8259274: Increase timeout duration in
+      sun/nio/ch/TestMaxCachedBufferSize.java
+    + JDK-8260633: [macos] java/awt/dnd/MouseEventAfterStartDragTest/
+      /MouseEventAfterStartDragTest.html test failed
+    + JDK-8261433: Better pkcs11 performance for
+      libpkcs11:C_EncryptInit/libpkcs11:C_DecryptInit
+    + JDK-8263031: HttpClient throws Exception if it receives a
+      Push Promise that is too large
+    + JDK-8266149: mark hotspot compiler/startup tests which ignore
+      VM flags
+    + JDK-8266150: mark hotspot compiler/arguments tests which
+      ignore VM flags
+    + JDK-8266153: mark hotspot compiler/onSpinWait tests which
+      ignore VM flags
+    + JDK-8266154: mark hotspot compiler/oracle tests which ignore
+      VM flags
+    + JDK-8268906: gc/g1/mixedgc/TestOldGenCollectionUsage.java
+      assumes that GCs take 1ms minimum
+    + JDK-8269428: java/util/concurrent/ConcurrentHashMap/
+      /ToArray.java timed out
+    + JDK-8269616: serviceability/dcmd/framework/VMVersionTest.java
+      fails with Address already in use error
+    + JDK-8273135: java/awt/color/ICC_ColorSpace/
+      /MTTransformReplacedProfile.java crashes in liblcms.dylib with
+      NULLSeek+0x7
+    + JDK-8275851: Deproblemlist open/test/jdk/javax/swing/
+      /JComponent/6683775/bug6683775.java
+    + JDK-8276036: The value of full_count in the message of
+      insufficient codecache is wrong
+    + JDK-8276306: jdk/jshell/CustomInputToolBuilder.java fails
+      intermittently on storage acquisition
+    + JDK-8276819: javax/print/PrintServiceLookup/
+      /FlushCustomClassLoader.java fails to free
+    + JDK-8279164: Disable TLS_ECDH_* cipher suites
+    + JDK-8279337: The MToolkit is still referenced in a few places
+    + JDK-8280392: java/awt/Focus/NonFocusableWindowTest/
+      /NonfocusableOwnerTest.java failed with "RuntimeException:
+      Test failed."
+    + JDK-8284585: PushPromiseContinuation test fails
+      intermittently in timeout
+    + JDK-8286601: Mac Aarch: Excessive warnings to be ignored for
+      build jdk
+    + JDK-8286781: Replace the deprecated/obsolete gethostbyname
+      and inet_addr calls
+    + JDK-8292044: HttpClient doesn't handle 102 or 103 properly
+    + JDK-8294148: Support JSplitPane for instructions and test UI
+    + JDK-8294310: compare.sh fails on macos after JDK-8293550
+    + JDK-8296410: HttpClient throws java.io.IOException: no
+      statuscode in response for HTTP2
+    + JDK-8298873: Update IllegalRecordVersion.java for changes to
+      TLS implementation
+    + JDK-8299058: AssertionError in sun.net.httpserver.ServerImpl
+      when connection is idle
+    + JDK-8299487: Test
+      java/net/httpclient/whitebox/SSLTubeTestDriver.java timed out
+    + JDK-8301189: validate-source fails after JDK-8298873
+    + JDK-8303216: Prefer ArrayList to LinkedList in
+      sun.net.httpserver.ServerImpl
+    + JDK-8303965: java.net.http.HttpClient should reset the stream
+      if response headers contain malformed header fields
+    + JDK-8305072: Win32ShellFolder2.compareTo is inconsistent
+    + JDK-8305079: Remove finalize() from compiler/c2/Test719030
+    + JDK-8305081: Remove finalize() from
+      test/hotspot/jtreg/compiler/runtime/Test8168712
+    + JDK-8305825: getBounds API returns wrong value resulting in
+      multiple Regression Test Failures on Ubuntu 23.04
+    + JDK-8305906: HttpClient may use incorrect key when finding
+      pooled HTTP/2 connection for IPv6 address
+    + JDK-8306060: Open source few AWT Insets related tests
+    + JDK-8306432: Open source several AWT Text Component related
+      tests
+    + JDK-8306466: Open source more AWT Drag & Drop related tests
+    + JDK-8306489: Open source AWT List related tests
+    + JDK-8306566: Open source several clipboard AWT tests
+    + JDK-8306850: Open source AWT Modal related tests
+    + JDK-8307091: A few client tests intermittently throw
+      ConcurrentModificationException
+    + JDK-8307779: Relax the java.awt.Robot specification
+    + JDK-8308184: Launching java with large number of jars in
+      classpath with java.protocol.handler.pkgs system property set
+      can lead to StackOverflowError
+    + JDK-8309934: Update GitHub Actions to use JDK 17 for building
+      jtreg
+    + JDK-8310201: Reduce verbose locale output in -XshowSettings
+      launcher option
+    + JDK-8311666: Disabled tests in test/jdk/sun/java2d/marlin
+    + JDK-8312140: jdk/jshell tests failed with JDI socket timeouts
+    + JDK-8314614: jdk/jshell/ImportTest.java failed with
+      "InternalError: Failed remote listen"
+    + JDK-8315422: getSoTimeout() would be in try block in
+      SSLSocketImpl
+    + JDK-8315437: Enable parallelism in
+      vmTestbase/nsk/monitoring/stress/classload tests
+    + JDK-8315442: Enable parallelism in
+      vmTestbase/nsk/monitoring/stress/thread tests
+    + JDK-8315804: Open source several Swing JTabbedPane JTextArea
+      JTextField tests
+    + JDK-8315898: Open source swing JMenu tests
+    + JDK-8315965: Open source various AWT applet tests
+    + JDK-8316104: Open source several Swing SplitPane and
+      RadioButton related tests
+    + JDK-8316211: Open source several manual applet tests
+    + JDK-8316240: Open source several add/remove MenuBar manual
+      tests
+    + JDK-8316285: Opensource JButton manual tests
+    + JDK-8316306: Open source and convert manual Swing test
+    + JDK-8316328: Test jdk/jfr/event/oldobject/
+      /TestSanityDefault.java times out for some heap sizes
+    + JDK-8316462: sun/jvmstat/monitor/MonitoredVm/
+      /MonitorVmStartTerminate.java ignores VM flags
+    + JDK-8316973: GC: Make TestDisableDefaultGC use createTestJvm
+    + JDK-8317039: Enable specifying the JDK used to run jtreg
+    + JDK-8317228: GC: Make TestXXXHeapSizeFlags use createTestJvm
+    + JDK-8317288: [macos] java/awt/Window/Grab/GrabTest.java:
+      Press on the outside area didn't cause ungrab
+    + JDK-8317316: G1: Make TestG1PercentageOptions use
+      createTestJvm
+    + JDK-8317343: GC: Make TestHeapFreeRatio use createTestJvm
+    + JDK-8317358: G1: Make TestMaxNewSize use createTestJvm
+    + JDK-8317807: JAVA_FLAGS removed from jtreg running in
+      JDK-8317039
+    + JDK-8318039: GHA: Bump macOS and Xcode versions
+    + JDK-8320079: The ArabicBox.java test has no control buttons
+    + JDK-8320570: NegativeArraySizeException decoding >1G UTF8
+      bytes with non-ascii characters
+    + JDK-8320602: Lock contention in SchemaDVFactory.getInstance()
+    + JDK-8320945: problemlist tests failing on latest Windows 11
+      update
+    + JDK-8322330: JavadocHelperTest.java OOMEs with Parallel GC
+      and ZGC
+    + JDK-8323670: A few client tests intermittently throw
+      ConcurrentModificationException
+    + JDK-8324755: Enable parallelism in
+      vmTestbase/gc/gctests/LargeObjects tests
+    + JDK-8325022: Incorrect error message on client authentication
+    + JDK-8325179: Race in BasicDirectoryModel.validateFileCache
+    + JDK-8325862: set -XX:+ErrorFileToStderr when executing java
+      in containers for some container related jtreg tests
+    + JDK-8325876: crashes in docker container tests on
+      Linuxppc64le Power8 machines
+    + JDK-8326140: src/jdk.accessibility/windows/native/
+      /libjavaaccessbridge/AccessBridgeJavaEntryPoints.cpp
+      ReleaseStringChars might be missing in early returns
+    + JDK-8327007: javax/swing/JSpinner/8008657/bug8008657.java
+      fails
+    + JDK-8327137: Add test for ConcurrentModificationException in
+      BasicDirectoryModel
+    + JDK-8327631: Update IANA Language Subtag Registry to Version
+      2024-03-07
+    + JDK-8327787: Convert javax/swing/border/Test4129681.java
+      applet test to main
+    + JDK-8327840: Automate javax/swing/border/Test4129681.java
+    + JDK-8328011: Convert java/awt/Frame/GetBoundsResizeTest/
+      /GetBoundsResizeTest.java applet test to main
+    + JDK-8328110: Allow simultaneous use of PassFailJFrame with
+      split UI and additional windows
+    + JDK-8328115: Convert java/awt/font/TextLayout/
+      /TestJustification.html applet test to main
+    + JDK-8328158: Convert java/awt/Choice/NonFocusablePopupMenuTest
+      to automatic main test
+    + JDK-8328218: Delete test
+      java/awt/Window/FindOwner/FindOwner.html
+    + JDK-8328234: Remove unused nativeUtils files
+    + JDK-8328238: Convert few closed manual applet tests to main
+    + JDK-8328269: NonFocusablePopupMenuTest.java should be marked
+      as headful
+    + JDK-8328273: sun/management/jmxremote/bootstrap/
+      /RmiRegistrySslTest.java failed with
+      java.rmi.server.ExportException: Port already in use
+    + JDK-8328560: java/awt/event/MouseEvent/ClickDuringKeypress/
+      /ClickDuringKeypress.java imports Applet
+    + JDK-8328561: test java/awt/Robot/ManualInstructions/
+      /ManualInstructions.java isn't used
+    + JDK-8328953: JEditorPane.read throws ChangedCharSetException
+    + JDK-8328999: Update GIFlib to 5.2.2
+    + JDK-8329004: Update Libpng to 1.6.43
+    + JDK-8329013: StackOverflowError when starting Apache Tomcat
+      with signed jar
+    + JDK-8329103: assert(!thread->in_asgct()) failed during
+      multi-mode profiling
+    + JDK-8329510: Update ProblemList for
+      JFileChooser/8194044/FileSystemRootTest.java
+    + JDK-8329559: Test javax/swing/JFrame/bug4419914.java failed
+      because The End and Start buttons are not placed correctly and
+      Tab focus does not move as expected
+    + JDK-8329995: Restricted access to '/proc' can cause JFR
+      initialization to crash
+    + JDK-8330063: Upgrade jQuery to 3.7.1
+    + JDK-8330416: Update system property for Java SE specification
+      maintenance version
+    + JDK-8330523: Reduce runtime and improve efficiency of
+      KeepAliveTest
+    + JDK-8331063: Some HttpClient tests don't report leaks
+    + JDK-8331263: Bump update version for OpenJDK: jdk-11.0.25
+    + JDK-8331466: Problemlist serviceability/dcmd/gc/
+      /RunFinalizationTest.java on generic-all
+    + JDK-8331746: Create a test to verify that the cmm id is not
+      ignored
+    + JDK-8331798: Remove unused arg of checkErgonomics() in
+      TestMaxHeapSizeTools.java
+    + JDK-8332008: Enable issuestitle check
+    + JDK-8332113: Update nsk.share.Log to be always verbose
+    + JDK-8332424: Update IANA Language Subtag Registry to Version
+      2024-05-16
+    + JDK-8332524: Instead of printing "TLSv1.3," it is showing
+      "TLS13"
+    + JDK-8332898: failure_handler: log directory of commands
+    + JDK-8332936: Test vmTestbase/metaspace/gc/watermark_70_80/
+      /TestDescription.java fails with no GC's recorded
+    + JDK-8333724: Problem list security/infra/java/security/cert/
+      /CertPathValidator/certification/CAInterop.java
+      #teliasonerarootcav1
+    + JDK-8333804: java/net/httpclient/ForbiddenHeadTest.java threw
+      an exception with 0 failures
+    + JDK-8333837: [11u] HexPrinterTest.java javac compile fails
+      illegal start of expression
+    + JDK-8333839: [11u] LingeredAppTest.java fails Can't find
+      source file: LingeredApp.java
+    + JDK-8334166: Enable binary check
+    + JDK-8334335: [TESTBUG] Backport of 8279164 to 11u & 17u
+      includes elements of JDK-8163327
+    + JDK-8334418: Update IANA Language Subtag Registry to Version
+      2024-06-14
+    + JDK-8334653: ISO 4217 Amendment 177 Update
+    + JDK-8334711: [TEST_BUG] Compilation failed of
+      MimeFormatsTest/MimeFormatsTest.java
+    + JDK-8335803: SunJCE cipher throws NPE for un-extractable RSA
+      keys
+    + JDK-8336301: test/jdk/java/nio/channels/
+      /AsyncCloseAndInterrupt.java leaves around a FIFO file upon
+      test completion
+    + JDK-8336928: GHA: Bundle artifacts removal broken
+    + JDK-8337664: Distrust TLS server certificates issued after
+      Oct 2024 and anchored by Entrust Root CAs
+    + JDK-8338139: {ClassLoading,Memory}MXBean::isVerbose methods
+      are inconsistent with their setVerbose methods
+    + JDK-8341057: Add 2 SSL.com TLS roots
+    + JDK-8341059: Change Entrust TLS distrust date to November 12,
+      2024
+    + JDK-8341675: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.25
+- Added patches:
+  * reproducible-directory-mtime.patch
+    + if present, use SOURCE_DATE_EPOCH as timestamp for newly
+      created directories
+  * reproducible-search-index-files.patch
+    + if present, use SOURCE_DATE_EPOCH as timestamp for the search
+      index zip files created by javadoc
+
+-------------------------------------------------------------------
 Thu Jul 18 06:07:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.24+8 (July 2024 CPU)

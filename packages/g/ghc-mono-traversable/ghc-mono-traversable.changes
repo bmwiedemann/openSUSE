@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:56:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update mono-traversable to version 1.0.20.0.
+  ## 1.0.20.0
+
+  * Added instances for [`Reverse`](https://hackage.haskell.org/package/transformers-0.6.1.1/docs/Data-Functor-Reverse.html#t:Reverse) data structure.
+
+  ## 1.0.19.1
+
+  * Removed 'highly experimental' warning haddock comment from Data.Containers.
+
+  ## 1.0.19.0
+
+  * Added `filterWithKey` to `IsMap`.
+    [#232](https://github.com/snoyberg/mono-traversable/pull/232)
+
+  ## 1.0.18.0
+
+  * Added MonoPointed instance for text Builder
+    [#225](https://github.com/snoyberg/mono-traversable/pull/225)
+
+-------------------------------------------------------------------
 Wed Feb 28 10:35:25 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update mono-traversable to version 1.0.17.0.

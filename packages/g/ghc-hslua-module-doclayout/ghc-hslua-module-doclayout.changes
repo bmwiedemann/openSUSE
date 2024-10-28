@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 21 13:26:16 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.2.0.
+  ## 1.2.0
+
+  Released 2024-09-21.
+
+  -   Require doclayout-0.5.
+
+  -   Add new styling functions `bold`, `italic`, `underlined`,
+      `strikeout`, `fg`, and `bg`.
+
+  -   The `render` function now takes `style` as a third parameter.
+      It must be either 'plain' or 'ansi' when given.
+
+-------------------------------------------------------------------
+Mon Sep  9 15:24:45 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.1.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jun 10 05:22:06 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.1.1.2.
