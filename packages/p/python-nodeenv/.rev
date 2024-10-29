@@ -99,4 +99,19 @@
   * M1 support</comment>
     <requestid>1134138</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d65ee80dc9f120f687001111263cff3a</srcmd5>
+    <version>1.9.1</version>
+    <time>1730208991</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.1:
+  * #358
+  * #338
+  * #347
+  * #348
+  * #345
+  * #342
+  * #346</comment>
+    <requestid>1218879</requestid>
+  </revision>
 </revisionlist>
