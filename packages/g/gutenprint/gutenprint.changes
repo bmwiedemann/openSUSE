@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 22 14:11:16 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Spec file cleanup (removal of all SLE10/11/12 special cases).
+- No longer build the GIMP plugin as a test to find out
+  if it is really still needed because I (jsmeix@suse.com)
+  cannot maintain GUI software with reasonable effort.
+  If the GIMP plugin is still needed, a co-maintainer
+  is needed who will actually maintain it.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:20:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

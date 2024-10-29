@@ -302,4 +302,12 @@
     <comment></comment>
     <requestid>1152282</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>e47f4b6d17586e1b3c5d044477507aab</srcmd5>
+    <version>5.3.4</version>
+    <time>1730209011</time>
+    <user>anag+factory</user>
+    <comment>Gutenprint spec file cleanup and build simplification</comment>
+    <requestid>1218980</requestid>
+  </revision>
 </revisionlist>
