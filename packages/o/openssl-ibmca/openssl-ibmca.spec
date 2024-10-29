@@ -79,6 +79,13 @@ ExclusiveArch:  s390x
 Patch001:       openssl1-rename-libica-files.patch
 %endif
 
+###
+Patch10:        openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-is-in-FIPS-mode.patch
+Patch11:        openssl-ibmca-02-test-provider-Do-not-link-against-libica-use-dlopen-instead.patch
+Patch12:        openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-after-setting-env-vars.patch
+Patch13:        openssl-ibmca-04-engine-Fix-compile-error.patch
+###
+
 %description
 This package contains a shared object OpenSSL dynamic engine which interfaces
 to libica, a library enabling the IBM s390/x CPACF crypto instructions.

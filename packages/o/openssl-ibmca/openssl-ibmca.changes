@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:08:46 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches(jsc#PED-10292)
+  * openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-is-in-FIPS-mode.patch
+  * openssl-ibmca-02-test-provider-Do-not-link-against-libica-use-dlopen-instead.patch
+  * openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-after-setting-env-vars.patch
+  * openssl-ibmca-04-engine-Fix-compile-error.patch 
+
+-------------------------------------------------------------------
 Tue Jul 16 06:11:44 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file

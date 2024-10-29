@@ -1,0 +1,61 @@
+From d2254c6641b1cf34d5f735f335edf9a05ddfd67e Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Thu, 18 Jan 2024 16:35:14 +0100
+Subject: [PATCH] test/provider: Explicitly initialize OpenSSL after setting
+ env vars.
+
+When running with a libica version without commit
+https://github.com/opencryptoki/libica/commit/42e197f61b298c6e6992b080c1923e7e85edea5a
+it is necessary to explicitly initialize OpenSSL before loading libica. Because
+otherwise libica's library constructor will initialize OpenSSL the first time,
+which in turn will load the IBMCA provider, and it will fall into the same
+problem as fixed by above libica commit, i.e. the provider won't be able to
+get the supported algorithms from libica an thus will not register any
+algorithms.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ test/provider/dhkey.c  | 2 ++
+ test/provider/eckey.c  | 2 ++
+ test/provider/rsakey.c | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/test/provider/dhkey.c b/test/provider/dhkey.c
+index 0ec2c03..b1270f5 100644
+--- a/test/provider/dhkey.c
++++ b/test/provider/dhkey.c
+@@ -461,6 +461,8 @@ int main(int argc, char **argv)
+         return 77;
+     }
+ 
++    OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CONFIG, NULL);
++
+     ret = check_libica();
+     if (ret != 0)
+         return ret;
+diff --git a/test/provider/eckey.c b/test/provider/eckey.c
+index b8f47b7..a65bea5 100644
+--- a/test/provider/eckey.c
++++ b/test/provider/eckey.c
+@@ -895,6 +895,8 @@ int main(int argc, char **argv)
+         return 77;
+     }
+ 
++    OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CONFIG, NULL);
++
+     ret = check_libica();
+     if (ret != 0)
+         return ret;
+diff --git a/test/provider/rsakey.c b/test/provider/rsakey.c
+index 9d6a618..874de6d 100644
+--- a/test/provider/rsakey.c
++++ b/test/provider/rsakey.c
+@@ -839,6 +839,8 @@ int main(int argc, char **argv)
+         return 77;
+     }
+ 
++    OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CONFIG, NULL);
++
+     ret = check_libica();
+     if (ret != 0)
+         return ret;
