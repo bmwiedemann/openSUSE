@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:15:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.0:
+  * Fix missing requested attributes from the ACS
+  * Add support for errorURL to be exposed in metadata for IdP
+  * Update logged message when the signature validation on the
+    assertion fails
+  * Replace imp with importlib
+  * deps: restrict xmlschema version
+  * deps: remove utility from packaging
+  * examples: update code and README to align with latest code
+  * docs: update readme with info about xmlsec1 compatibility
+
+-------------------------------------------------------------------
 Mon Jan 29 13:54:33 UTC 2024 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 7.4.2:
@@ -72,7 +86,7 @@ Thu Oct  6 21:56:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
  * examples: Allow multiple attributes to be returned by the idp
  * tests: Minor cleanups
  * docs: Reference python2 compatible fork
- * misc: add pepy badges on the README file 
+ * misc: add pepy badges on the README file
 
 -------------------------------------------------------------------
 Thu Jul 28 06:04:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
@@ -167,7 +181,7 @@ Mon Apr 26 12:55:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jan 25 15:06:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update requires 
+- update requires
 
 -------------------------------------------------------------------
 Wed Jan 20 23:41:54 UTC 2021 - Michael Ströder <michael@stroeder.com>
@@ -320,7 +334,7 @@ Sat Mar 14 15:57:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - docs: Fix list formatting on IdP example page
   - docs: Update pysaml2 options doc with `name_id_format_allow_create`
   - misc: fix various typos
-  
+
 -------------------------------------------------------------------
 Tue Jan  7 11:37:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -413,7 +427,7 @@ Fri Feb 26 13:14:29 UTC 2016 - tbechtold@suse.com
 -------------------------------------------------------------------
 Tue Oct 13 21:31:03 UTC 2015 - dmueller@suse.com
 
-- add pycrypto/pyOpenSSL dependency 
+- add pycrypto/pyOpenSSL dependency
 
 -------------------------------------------------------------------
 Tue Sep  1 07:17:52 UTC 2015 - tbechtold@suse.com

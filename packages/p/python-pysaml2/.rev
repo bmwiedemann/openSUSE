@@ -344,4 +344,25 @@
     <comment></comment>
     <requestid>1145178</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c0c0b8c7d7ded1d1f399fe396306795a</srcmd5>
+    <version>7.5.0</version>
+    <time>1730208997</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.5.0:
+  * Fix missing requested attributes from the ACS
+  * Add support for errorURL to be exposed in metadata for IdP
+  * Update logged message when the signature validation on the
+    assertion fails
+  * Replace imp with importlib
+  * deps: restrict xmlschema version
+  * deps: remove utility from packaging
+  * examples: update code and README to align with latest code
+  * docs: update readme with info about xmlsec1 compatibility
+
+ * misc: add pepy badges on the README file
+- update requires
+- add pycrypto/pyOpenSSL dependency</comment>
+    <requestid>1218964</requestid>
+  </revision>
 </revisionlist>

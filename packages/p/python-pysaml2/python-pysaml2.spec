@@ -19,7 +19,7 @@
 %global modname pysaml2
 %{?sle15_python_module_pythons}
 Name:           python-pysaml2
-Version:        7.4.2
+Version:        7.5.0
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module pymongo >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module repoze.who}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
@@ -58,7 +57,6 @@ Requires:       python-pyOpenSSL
 Requires:       python-pymongo >= 3.5
 Requires:       python-python-dateutil
 Requires:       python-pytz
-Requires:       python-repoze.who
 Requires:       python-requests >= 1.0.0
 Requires:       python-xmlschema >= 1.2.1
 Requires:       python-zope.interface
@@ -89,7 +87,7 @@ rm -f tests/test_30_mdstore*.py
 for exec in make_metadata parse_xsd2 mdexport merge_metadata ; do
 %python_clone -a %{buildroot}%{_bindir}/$exec
 done
-%python_expand rm -r %{buildroot}%{$python_sitelib}/{saml2test,utility}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/saml2test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
