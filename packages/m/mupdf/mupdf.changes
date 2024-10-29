@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 16:51:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.24.10:
+  * Several fixes to python scripts for bindings.
+  * Fix bug relating to redactions on pages with shared content
+    streams.
+  * Fix bug when both color keying and softmasking is used.
+
+-------------------------------------------------------------------
 Fri Sep 20 09:31:30 UTC 2024 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.24.9:
