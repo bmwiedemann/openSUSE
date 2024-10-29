@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 28 19:31:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.6.0
+  + Added
+    - Arrow keys as secondary navigation keybinds alongside hjkl
+    - Support for basic control with mouse.
+    - Scrolloff option to keep some context the various
+      lists/tables
+    - Update/rescan CLI commands to refresh MPD's database
+    - Support MPD password via config, env vars and CLI
+    - ShowInfo action to queue pane. Displays metadata of the song
+      under cursor in a modal popup.
+    - ShowCurrentSongInfo global action. Displays metadata of the
+      song currently playing song in a modal popup.
+  + Changed
+    - Removed left/right arrows as default keybinds for
+      next/previous tab.
+    - Filtering is now incremental
+    - Up/Down actions do not wrap around anymore.
+    - Allow seeking while paused
+  + Fixed
+    - Rmpc now logs warnings and errors in CLI mode to stderr
+    - try to clean up after yt-dlp in case it fails
+    - Album art not clearing properly after direct tab switch
+    - Events being duplicated when panes were present in multiple
+      tabs
+    - Ueberzugpp redrawing album art while in an inactive TMUX
+      window/session
+    - Fix improper scrollbar rendering with some symbols being empty
+    - Removed duplicated tags in metadata view of a song
+
+-------------------------------------------------------------------
 Fri Sep 27 19:35:33 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.5.0

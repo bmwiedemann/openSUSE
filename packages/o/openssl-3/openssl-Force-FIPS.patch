@@ -11,10 +11,10 @@ Patch-status: |
  crypto/provider_conf.c | 28 +++++++++++++++++++++++++++-
  1 file changed, 27 insertions(+), 1 deletion(-)
 
-Index: openssl-3.1.4/crypto/provider_conf.c
+Index: openssl-3.1.7/crypto/provider_conf.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/provider_conf.c
-+++ openssl-3.1.4/crypto/provider_conf.c
+--- openssl-3.1.7.orig/crypto/provider_conf.c
++++ openssl-3.1.7/crypto/provider_conf.c
 @@ -10,6 +10,8 @@
  #include <string.h>
  #include <openssl/trace.h>
@@ -24,25 +24,25 @@ Index: openssl-3.1.4/crypto/provider_conf.c
  #include <openssl/conf.h>
  #include <openssl/safestack.h>
  #include <openssl/provider.h>
-@@ -169,7 +171,7 @@ static int provider_conf_activate(OSSL_L
+@@ -237,7 +239,7 @@ static int provider_conf_activate(OSSL_L
          if (path != NULL)
              ossl_provider_set_module_path(prov, path);
  
 -        ok = provider_conf_params(prov, NULL, NULL, value, cnf);
 +        ok = cnf ? provider_conf_params(prov, NULL, NULL, value, cnf) : 1;
  
-         if (ok) {
+         if (ok == 1) {
              if (!ossl_provider_activate(prov, 1, 0)) {
-@@ -197,6 +199,8 @@ static int provider_conf_activate(OSSL_L
-         }
-         if (!ok)
+@@ -266,6 +268,8 @@ static int provider_conf_activate(OSSL_L
+ 
+         if (ok <= 0)
              ossl_provider_free(prov);
 +    } else {
 +        ok = 1;
      }
      CRYPTO_THREAD_unlock(pcgbl->lock);
  
-@@ -309,6 +313,33 @@ static int provider_conf_init(CONF_IMODU
+@@ -383,6 +387,33 @@ static int provider_conf_init(CONF_IMODU
              return 0;
      }
  

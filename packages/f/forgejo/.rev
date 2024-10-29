@@ -267,4 +267,38 @@
   * Add bin to Composer Metadata. (forwarded request 1208670 from rrahl0)</comment>
     <requestid>1208671</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>072a27618b80867d528470ea3fa3aabd</srcmd5>
+    <version>9.0.1</version>
+    <time>1730208958</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.1:
+  * Forgejo generates a token which is used to authenticate web endpoints that
+    are only meant to be used internally, for instance when the SSH daemon is
+    used to push a commit with Git. The verification of this token was not done
+    in constant time and was susceptible to timing attacks.
+  * Because of a missing permission check, the branch used to propose a pull
+    request to a repository can always be deleted by the user performing the merge.
+  * Fix boolean inputs in workflow_dispatch
+  * package arch database not updating when uploading &quot;any&quot; architecture
+  * correct SQL query for active issues
+  * specify default value for EXPLORE_DEFAULT_SORT.
+  * fix: Add recentupdated as recognized sort option
+  * Update dependency mermaid to v11.3.0 (v9.0/forgejo)
+  * Always update expiration time when creating an artifact
+  * Update scheduled tasks even if changes are pushed by &quot;ActionsUser&quot;
+  * Fix disable 2fa bug
+  * i18n: update of translations from Codeberg Translate
+  * fix: make branch protection work for new branches
+  * link to security policy in security.txt
+  * fix: don't show truncated comments in RSS/Atom feeds
+  * fix: typo on releases for source code downloads
+  * Revert &quot;add gap between branch dropdown and PR button&quot;
+  * fix: Don't double escape delete branch text
+  * fix: Add server logging for OAuth server errors
+  * forgejo-cli is now a symlink and cannot be used for sanity checks
+  * fix: correct documentation for non 200 responses in swagger
+- forgejo is since 9.0.0 GPL-3.0-or-later (forwarded request 1218912 from rrahl0)</comment>
+    <requestid>1218913</requestid>
+  </revision>
 </revisionlist>

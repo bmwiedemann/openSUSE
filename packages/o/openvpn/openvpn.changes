@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 10 08:13:54 UTC 2024 - Rahul Jain <rahul.jain@suse.com>
+
+- Fix multiple exit notifications from authenticated clients will
+  extend the validity of a closing session (bsc#1227546 CVE-2024-28882)
+  Patchname:openvpn-CVE-2024-28882.patch
+
+-------------------------------------------------------------------
+Thu May 16 06:42:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Enable Data-Channel-Offloading (DCO) for better performance (jsc#PED-8305)
+  if libnl >= 3.4 is available
+
+-------------------------------------------------------------------
 Thu Mar 21 08:33:45 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.6.10:

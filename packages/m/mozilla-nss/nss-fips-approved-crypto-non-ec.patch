@@ -405,7 +405,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      /* RSA */
      int public_modulus_bits = 0;
-@@ -6036,11 +6041,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -6038,11 +6043,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
       * created and linked.
       */
      crv = sftk_handleObject(publicKey, session);
@@ -418,7 +418,7 @@ Index: nss/lib/softoken/pkcs11c.c
          return crv;
      }
      if (sftk_isTrue(privateKey, CKA_SENSITIVE)) {
-@@ -6084,13 +6089,19 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -6086,13 +6091,19 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
          sftk_FreeObject(publicKey);
          NSC_DestroyObject(hSession, privateKey->handle);
          sftk_FreeObject(privateKey);
@@ -438,7 +438,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      return CKR_OK;
  }
-@@ -7282,6 +7293,14 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
+@@ -7284,6 +7295,14 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
          return CKR_TEMPLATE_INCONSISTENT;
      }
  
@@ -453,7 +453,7 @@ Index: nss/lib/softoken/pkcs11c.c
      /* sourceKey is NULL if we are called from the POST, skip the
       * sensitiveCheck */
      if (sourceKey != NULL) {
-@@ -7330,7 +7349,8 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
+@@ -7332,7 +7351,8 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
                      mech.pParameter = params;
                      mech.ulParameterLen = sizeof(*params);
                      key->isFIPS = sftk_operationIsFIPS(saltKey->slot, &mech,
@@ -463,7 +463,7 @@ Index: nss/lib/softoken/pkcs11c.c
                  }
                  saltKey_att = sftk_FindAttribute(saltKey, CKA_VALUE);
                  if (saltKey_att == NULL) {
-@@ -7372,7 +7392,7 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
+@@ -7374,7 +7394,7 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
      /* HKDF-Expand */
      if (!params->bExpand) {
          okm = prk;
@@ -472,7 +472,7 @@ Index: nss/lib/softoken/pkcs11c.c
      } else {
          /* T(1) = HMAC-Hash(prk, "" | info | 0x01)
           * T(n) = HMAC-Hash(prk, T(n-1) | info | n
-@@ -7595,7 +7615,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7597,7 +7617,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              return CKR_KEY_HANDLE_INVALID;
          }
      }
@@ -482,7 +482,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      switch (mechanism) {
          /* get a public key from a private key. nsslowkey_ConvertToPublickey()
-@@ -7796,7 +7817,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -7798,7 +7819,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();
@@ -491,7 +491,7 @@ Index: nss/lib/softoken/pkcs11c.c
                      PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
-@@ -8185,6 +8206,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -8187,6 +8208,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
                  PORT_Assert(i <= sizeof key_block);
              }
  
@@ -931,8 +931,7 @@ Index: nss/lib/softoken/pkcs11u.c
 +            }
 +
              /* we've already handled the curve selection in the 'getlength'
--          * function */
-+             * function */
+              * function */
              return PR_TRUE;
 +        }
          case SFTKFIPSAEAD: {
@@ -1070,7 +1069,7 @@ Index: nss/lib/softoken/pkcs11.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11.c
 +++ nss/lib/softoken/pkcs11.c
-@@ -574,17 +574,17 @@ static const struct mechanismList mechan
+@@ -575,17 +575,17 @@ static const struct mechanismList mechan
      { CKM_TLS_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_TLS12_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_NSS_TLS_MASTER_KEY_DERIVE_SHA256,

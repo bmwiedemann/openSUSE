@@ -20,9 +20,9 @@ Index: nss/cmd/fipstest/fipstest.c
  {
 -    char buf[800]; /* holds one line from the input REQUEST file
 +    char buf[2048]; /* holds one line from the input REQUEST file
-                          * or to the output RESPONSE file.
-                          * 800 to hold seed = (384 public key (x2 for HEX)
-                          */
+                     * or to the output RESPONSE file.
+                     * 800 to hold seed = (384 public key (x2 for HEX)
+                     */
 @@ -5591,6 +5591,13 @@ dsa_pqggen_test(char *reqfn)
      PQGVerify *vfy = NULL;
      unsigned int keySizeIndex = 0;

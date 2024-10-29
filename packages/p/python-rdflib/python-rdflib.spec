@@ -28,12 +28,14 @@
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
 Name:           python-rdflib%{psuffix}
-Version:        7.0.0
+Version:        7.1.1
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
 URL:            http://rdflib.net/
 Source:         https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sphinx8.patch gh#RDFLib/rdflib#2956 -- daniel.garcia@suse.com
+Patch0:         sphinx8.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -52,6 +54,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinxcontrib-apidoc
+BuildRequires:  python3-typing_extensions
 Provides:       %{python_module rdflib-doc = %{version}}
 %else
 BuildRequires:  %{python_module base >= 3.8}

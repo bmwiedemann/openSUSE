@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:13:15 CET 2024 - ro@suse.de
+
+- change BR for rust to require version 1.81
+  (1.82 uses a newer llvm) 
+
+-------------------------------------------------------------------
+Sat Oct 26 08:16:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 130.0.6723.69 (boo#1232060)
+  * CVE-2024-10229: Inappropriate implementation in Extensions
+  * CVE-2024-10230: Type Confusion in V8
+  * CVE-2024-10231: Type Confusion in V8
+
+-------------------------------------------------------------------
 Sat Oct 12 10:45:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 130.0.6723.58 (boo#1231694)

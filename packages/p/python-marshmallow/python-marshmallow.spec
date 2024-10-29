@@ -34,6 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging >= 17.0
 Suggests:       %{name}-doc
 Suggests:       python-python-dateutil
 Suggests:       python-simplejson

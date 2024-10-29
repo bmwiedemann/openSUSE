@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Oct 28 19:23:53 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241028.fb72d902:
+  * #4396 only use client keycode with x11 clients
+  * convert methods to more reusable functions
+  * #4405 guess DEB distro type based on known variant names
+  * we use negative value for 'no-match', not zero
+  * keycode is always an int
+  * #4403 use visual with transparency for the tray
+  * better pam error logging
+  * typo
+  * silence deprecation warning
+  * #4402 forgot to bump the version here
+  * oops: wrongly added
+  * #4050 ensure the updated build info is bundled
+  * light builds don't need 'service_identity'
+  * #4050 more packages are available upstream now
+  * #4050 record SBOM with old build script
+  * #4401 mmap encoding is acceptable for tray icons
+  * derp + stop if installer or msi are cancelled
+  * add 'sbom' subcommand for showing the data
+  * record against the actual path used
+  * use 'env' to locate 'python3'
+  * also record msys DLLs and msys2 packages
+  * #4050 record cuda, pyqt
+  * constify
+  * fix absolute paths in pixbuf loader cache file
+  * #4050 record python modules, size and checksum for files
+  * #4050 add pacman package data with new --sbom flag
+  * simplify
+  * #4396 only use exact match with keycode translation
+  * simplify + type hints
+  * cosmetic
+  * #4398 quality and speed can be used with all generic encodings
+  * simplify: use the alias
+  * light builds still need 'asyncio' for 'gi'
+  * we don't need python-lz4 any more
+  * #4050 record everything
+  * preserve the interpreter version
+  * remove setup support for xenial and bionic
+  * add oracular
+  * Ubuntu Mantic has been EOLed
+  * avoid warnings
+  * #4394 minor fixes
+  * #4314 help the users, show backend options
+  * derp: don't delete key modules
+  * #4394 point to the new script
+  * bump year
+  * #4394 minor fixes: paths, unused modules, etc
+  * #4394 build service, fix cleanups
+  * all working (except service)
+  * simplify
+  * use a namedtuple for all the version data
+  * cosmetic
+  * #4396 patching fails if there is a tray window
+  * #4394 (mostly) working replacement script
+  * setup.py: Fix typo in 'os.path.exits' -> 'os.path.exists'
+  * #4394 WIP replacement build script
+  * #4393 need a logger to record the error
+  * pillow 11.0.0
+  * #4391 make it clearer what is needed
+  * #4389 ensure we have a non-None default value
+  * version bump
+
+-------------------------------------------------------------------
+Sun Oct 13 15:59:13 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20241012.892f1174:
+  * all supported distros should now have 'ayatanaappindicator'
+  * perhaps this will help to make the system tray work
+  * minor linter fixes
+  * clear gstreamer timer when removing it
+  * type hints
+  * call go_idle / no_idle to limit screen updates (#4382)
+  * send a server event message to clients (#4382)
+  * log power events (#4382)
+  * raise low ram value to 1GB
+  * cosmetic: remove unused logger, move definition, add type hints
+  * #4378 don't quote strings if we don't have to
+  * simplify
+  * #4386 version check for current branch
+  * #4386 cosmetic preparations
+  * avoid unnecessary method calls
+  * fix typo in manpage
+  * #4382 make macos system events re-usable
+  * cosmetic
+  * #4382 make posix dbus events re-usable
+  * stronger type hints
+  * remove leftover from gtk menu support
+  * typo: event callbacks not removed
+  * update freebsd dependency packages
+  * more type hints
+  * stronger type hints
+  * avoid audio packet warnings when closing connections
+
+-------------------------------------------------------------------
 Thu Oct 10 14:41:21 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.2.0+git20241010.57777eda:

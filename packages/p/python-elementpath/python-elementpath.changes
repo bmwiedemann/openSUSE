@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:35:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Fix XsdAttributeGroupProtocol
+  * Improve Unicode support with installable UnicodeData.txt
+    versions
+  * Extend names disambiguation with a fix for issue #78
+  * Refactor tree builders to fix document position of tails
+    (issue #79)
+  * Fix and clean node trees iteration methods (issue #72)
+  * Fix missing raw string for '[^rn]' (pull request #76)
+  * Full and more specific type annotations
+
+-------------------------------------------------------------------
 Tue Apr  2 09:45:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

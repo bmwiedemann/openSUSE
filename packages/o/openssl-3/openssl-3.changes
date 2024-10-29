@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Oct 21 11:01:59 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.1.7:
+  * Major changes between OpenSSL 3.1.6 and OpenSSL 3.1.7 [3 Sep 2024]
+    - Fixed possible denial of service in X.509 name checks (CVE-2024-6119)
+    - Fixed possible buffer overread in SSL_select_next_proto()
+      (CVE-2024-5535)
+  * Major changes between OpenSSL 3.1.5 and OpenSSL 3.1.6 [4 Jun 2024]
+    - Fixed potential use after free after SSL_free_buffers() is
+      called (CVE-2024-4741)
+    - Fixed an issue where checking excessively long DSA keys or
+      parameters may be very slow (CVE-2024-4603)
+    - Fixed unbounded memory growth with session handling in TLSv1.3
+      (CVE-2024-2511)
+  * Major changes between OpenSSL 3.1.4 and OpenSSL 3.1.5 [30 Jan 2024]
+    - Fixed PKCS12 Decoding crashes (CVE-2024-0727)
+    - Fixed Excessive time spent checking invalid RSA public keys
+      [CVE-2023-6237)
+    - Fixed POLY1305 MAC implementation corrupting vector registers
+      on PowerPC CPUs which support PowerISA 2.07 (CVE-2023-6129)
+    - Fix excessive time spent in DH check / generation with large
+      Q parameter value (CVE-2023-5678)
+  * Update openssl.keyring with BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
+  * Rebase patches:
+    - openssl-Force-FIPS.patch
+    - openssl-FIPS-embed-hmac.patch
+    - openssl-FIPS-services-minimize.patch
+    - openssl-FIPS-RSA-disable-shake.patch
+    - openssl-CVE-2023-50782.patch
+  * Remove patches fixed in the update:
+    - openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
+    - openssl-CVE-2024-6119.patch openssl-CVE-2024-5535.patch
+    - openssl-CVE-2024-4741.patch openssl-CVE-2024-4603.patch
+    - openssl-CVE-2024-2511.patch openssl-CVE-2024-0727.patch
+    - openssl-CVE-2023-6237.patch openssl-CVE-2023-6129.patch
+    - openssl-CVE-2023-5678.patch
+    - openssl-Enable-BTI-feature-for-md5-on-aarch64.patch
+    - openssl-Fix-EVP_PKEY_CTX_add1_hkdf_info-behavior.patch
+    - openssl-Handle-empty-param-in-EVP_PKEY_CTX_add1_hkdf_info.patch
+    - reproducible.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 12:32:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1231741, CVE-2024-9143]

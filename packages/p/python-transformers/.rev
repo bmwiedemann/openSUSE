@@ -7,4 +7,12 @@
     <comment>Added python-transformers.rpmlintrc in spec</comment>
     <requestid>1203230</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9fef76bd49170e69f45b4d201edd1e00</srcmd5>
+    <version>4.44.2</version>
+    <time>1730208895</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218832</requestid>
+  </revision>
 </revisionlist>

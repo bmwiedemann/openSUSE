@@ -1,7 +1,7 @@
 #
 # spec file for package python-transaction
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-transaction
-Version:        3.0.1
+Version:        5.0
 Release:        0
 Summary:        Transaction management for Python
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/transaction
 Source:         https://files.pythonhosted.org/packages/source/t/transaction/transaction-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.interface
@@ -46,24 +48,23 @@ presented in detail through examples of a sample data manager in
 transaction.tests.test_SampleDataManager.
 
 %prep
-%setup -q -n transaction-%{version}
+%autosetup -p1 -n transaction-%{version}
 rm -rf transaction.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/zopefoundation/zdaemon/issues/28#issuecomment-1102754818
-sed -i 's:import mock:from unittest import mock:' src/transaction/tests/test__manager.py
 %pytest
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/transaction
+%{python_sitelib}/transaction-%{version}.dist-info
 
 %changelog

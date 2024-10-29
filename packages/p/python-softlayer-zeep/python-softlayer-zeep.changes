@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 05:34:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add {Build,}Requires on legacy-cgi to support Python 3.13. 
+- Update VCS URL.
+
+-------------------------------------------------------------------
 Tue Dec 19 13:34:00 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Add skip-networked-test.patch to fix

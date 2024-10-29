@@ -8,11 +8,11 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v22.1.0/Makefile
+Index: node-v22.10.0/Makefile
 ===================================================================
---- node-v22.1.0.orig/Makefile
-+++ node-v22.1.0/Makefile
-@@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+--- node-v22.10.0.orig/Makefile
++++ node-v22.10.0/Makefile
+@@ -79,7 +79,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
  
@@ -21,10 +21,10 @@ Index: node-v22.1.0/Makefile
  # Use $(PWD) so we can cd to anywhere before calling this
  NODE ?= "$(PWD)/$(NODE_EXE)"
  NODE_G_EXE = node_g$(EXEEXT)
-Index: node-v22.1.0/tools/install.py
+Index: node-v22.10.0/tools/install.py
 ===================================================================
---- node-v22.1.0.orig/tools/install.py
-+++ node-v22.1.0/tools/install.py
+--- node-v22.10.0.orig/tools/install.py
++++ node-v22.10.0/tools/install.py
 @@ -87,7 +87,7 @@ def uninstall(options, paths, dest):
      try_remove(options, path, dest)
  
@@ -113,11 +113,11 @@ Index: node-v22.1.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v22.1.0/doc/node.1
+Index: node-v22.10.0/doc/node.1
 ===================================================================
---- node-v22.1.0.orig/doc/node.1
-+++ node-v22.1.0/doc/node.1
-@@ -31,24 +31,24 @@
+--- node-v22.10.0.orig/doc/node.1
++++ node-v22.10.0/doc/node.1
+@@ -28,24 +28,24 @@
  .Dt NODE 1
  .
  .Sh NAME
@@ -146,10 +146,10 @@ Index: node-v22.1.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v22.1.0/src/node_main.cc
+Index: node-v22.10.0/src/node_main.cc
 ===================================================================
---- node-v22.1.0.orig/src/node_main.cc
-+++ node-v22.1.0/src/node_main.cc
+--- node-v22.10.0.orig/src/node_main.cc
++++ node-v22.10.0/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -158,11 +158,11 @@ Index: node-v22.1.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v22.1.0/tools/test.py
+Index: node-v22.10.0/tools/test.py
 ===================================================================
---- node-v22.1.0.orig/tools/test.py
-+++ node-v22.1.0/tools/test.py
-@@ -954,7 +954,7 @@ class Context(object):
+--- node-v22.10.0.orig/tools/test.py
++++ node-v22.10.0/tools/test.py
+@@ -972,7 +972,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -171,11 +171,11 @@ Index: node-v22.1.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v22.1.0/node.gyp
+Index: node-v22.10.0/node.gyp
 ===================================================================
---- node-v22.1.0.orig/node.gyp
-+++ node-v22.1.0/node.gyp
-@@ -24,8 +24,8 @@
+--- node-v22.10.0.orig/node.gyp
++++ node-v22.10.0/node.gyp
+@@ -27,8 +27,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
      'node_enable_v8_vtunejit%': 'false',
@@ -186,21 +186,10 @@ Index: node-v22.1.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      'linked_module_files': [
-Index: node-v22.1.0/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
+Index: node-v22.10.0/test/parallel/test-snapshot-warning.js
 ===================================================================
---- node-v22.1.0.orig/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
-+++ node-v22.1.0/test/fixtures/errors/promise_unhandled_warn_with_error.snapshot
-@@ -6,5 +6,5 @@
-     at *
-     at *
-     at *
--(Use `node --trace-warnings ...` to show where the warning was created)
-+(Use `node22 --trace-warnings ...` to show where the warning was created)
- (node:*) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https:*nodejs.org*api*cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
-Index: node-v22.1.0/test/parallel/test-snapshot-warning.js
-===================================================================
---- node-v22.1.0.orig/test/parallel/test-snapshot-warning.js
-+++ node-v22.1.0/test/parallel/test-snapshot-warning.js
+--- node-v22.10.0.orig/test/parallel/test-snapshot-warning.js
++++ node-v22.10.0/test/parallel/test-snapshot-warning.js
 @@ -60,7 +60,7 @@ tmpdir.refresh();
      stderr(output) {
        let match = output.match(/Warning: test warning/g);
@@ -236,39 +225,3 @@ Index: node-v22.1.0/test/parallel/test-snapshot-warning.js
 +  match = warnings2.match(/Use `node22 --trace-warnings/g);
    assert.strictEqual(match.length, 1);
  }
-Index: node-v22.1.0/test/fixtures/errors/throw_error_with_getter_throw.snapshot
-===================================================================
---- node-v22.1.0.orig/test/fixtures/errors/throw_error_with_getter_throw.snapshot
-+++ node-v22.1.0/test/fixtures/errors/throw_error_with_getter_throw.snapshot
-@@ -3,6 +3,6 @@
- throw {  * eslint-disable-line no-throw-literal
- ^
- [object Object]
--(Use `node --trace-uncaught ...` to show where the exception was thrown)
-+(Use `node22 --trace-uncaught ...` to show where the exception was thrown)
- 
- Node.js *
-Index: node-v22.1.0/test/fixtures/errors/throw_undefined.snapshot
-===================================================================
---- node-v22.1.0.orig/test/fixtures/errors/throw_undefined.snapshot
-+++ node-v22.1.0/test/fixtures/errors/throw_undefined.snapshot
-@@ -3,6 +3,6 @@
- throw undefined;
- ^
- undefined
--(Use `node --trace-uncaught ...` to show where the exception was thrown)
-+(Use `node22 --trace-uncaught ...` to show where the exception was thrown)
- 
- Node.js *
-Index: node-v22.1.0/test/fixtures/errors/throw_null.snapshot
-===================================================================
---- node-v22.1.0.orig/test/fixtures/errors/throw_null.snapshot
-+++ node-v22.1.0/test/fixtures/errors/throw_null.snapshot
-@@ -3,6 +3,6 @@
- throw null;
- ^
- null
--(Use `node --trace-uncaught ...` to show where the exception was thrown)
-+(Use `node22 --trace-uncaught ...` to show where the exception was thrown)
- 
- Node.js *

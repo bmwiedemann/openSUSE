@@ -1,0 +1,6 @@
+<package name="noggit" project="openSUSE:Factory">
+  <title>JSON streaming parser</title>
+  <description>Noggit is the world’s fastest streaming JSON parser for Java.</description>
+  <devel project="Java:packages" package="noggit"/>
+  <url>https://github.com/yonik/noggit</url>
+</package>

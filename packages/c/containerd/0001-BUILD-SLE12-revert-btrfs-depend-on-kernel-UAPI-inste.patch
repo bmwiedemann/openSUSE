@@ -1,4 +1,4 @@
-From 0d0424334da85c9192a29a4e108094f7c28bbab5 Mon Sep 17 00:00:00 2001
+From 449c95558de43373c3628ff58b2c368cad269444 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 22 May 2024 12:58:32 -0700
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
@@ -143,7 +143,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 
 diff --git a/go.mod b/go.mod
-index a12092d07279..d9468814b976 100644
+index 5a4aa880122d..558b93bae554 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -9,7 +9,7 @@ require (
@@ -156,7 +156,7 @@ index a12092d07279..d9468814b976 100644
  	github.com/containerd/console v1.0.3
  	github.com/containerd/containerd/api v1.7.19
 diff --git a/go.sum b/go.sum
-index 044d37b41889..d488196d9c00 100644
+index 3b1338998808..321006fb19c5 100644
 --- a/go.sum
 +++ b/go.sum
 @@ -133,8 +133,8 @@ github.com/containerd/aufs v0.0.0-20201003224125-76a6863f2989/go.mod h1:AkGGQs9N
@@ -3086,7 +3086,7 @@ index e8b6cdbe9a7c..000000000000
 -	return
 -}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 959f6dafa3f5..0cdfde1f1d5c 100644
+index 16ef26e49527..6137357d9831 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -85,9 +85,9 @@ github.com/cilium/ebpf/link
@@ -3111,5 +3111,5 @@ index 959f6dafa3f5..0cdfde1f1d5c 100644
  golang.org/x/sys/unix
  golang.org/x/sys/windows
 -- 
-2.46.0
+2.47.0
 

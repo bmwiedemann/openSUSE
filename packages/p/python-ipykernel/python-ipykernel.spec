@@ -24,6 +24,7 @@ Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
+Patch1:         https://github.com/ipython/ipykernel/commit/b47db6f082ea61e9688b4eca4e92529c1e0e6c45.patch#/py313-warning.patch
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}

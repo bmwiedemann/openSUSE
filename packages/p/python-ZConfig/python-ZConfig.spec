@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ZConfig
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Structured Configuration Library
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZConfig
-Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/ZConfig-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#zopefoundation/ZConfig#91
-Patch0:         support-python-312.patch
+Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/zconfig-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: gh#zopefoundation/ZConfig#97
+Patch1:         py313.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module manuel}
@@ -64,7 +64,7 @@ Requires:       %{name} = %{version}
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n ZConfig-%{version}
+%autosetup -p1 -n zconfig-%{version}
 rm -rf ZConfig.egg-info
 rm docs/make.bat
 # test works only in git repo

@@ -1,0 +1,19 @@
+<package name="json-simple" project="openSUSE:Factory">
+  <title>Simple Java toolkit for JSON</title>
+  <description>JSON.simple is a simple Java toolkit for JSON. You can use JSON.simple
+to encode or decode JSON text.
+  * Full compliance with JSON specification (RFC4627) and reliable
+  * Provides multiple functionalities such as encode, decode/parse
+    and escape JSON text while keeping the library lightweight
+  * Flexible, simple and easy to use by reusing Map and List interfaces
+  * Supports streaming output of JSON text
+  * Stoppable SAX-like interface for streaming input of JSON text
+  * Heap based parser
+  * High performance (see performance testing)
+  * No dependency on external libraries
+  * Both of the source code and the binary are JDK1.2 compatible
+
+</description>
+  <devel project="Java:packages" package="json-simple"/>
+  <url>https://code.google.com/p/json-simple/</url>
+</package>

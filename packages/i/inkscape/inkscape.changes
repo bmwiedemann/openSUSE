@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 14 19:26:24 UTC 2024 - thod_@gmx.de
+
+- Update to version 1.4:
+  + Filter Gallery
+  + Modular grids & improved axonometric grids
+  + Swatches dialog and palette file handling improved
+  + Unified font browser preview
+  + Customizable handles
+  + Fast image clipping with the Shape Builder
+  + Affinity Designer File Import
+  + Support for internal links in exported PDF files
+  + A whole new icon set
+  + See the full release notes
+    https://inkscape.org/release/inkscape-1.4
+- Drop inkscape-poppler-24.03.0.patch, inkscape-libxml2.12.patch,
+  inkscape-poppler-c++20.patch, inkscape-poppler-24.05.0.patch,
+  inkscape-poppler-c++20-2.patch, inkscape_1.3.2_fix_tiff.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Sep 12 11:01:00 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix tiff output error ignored by upstream: inkscape_1.3.2_fix_tiff.patch

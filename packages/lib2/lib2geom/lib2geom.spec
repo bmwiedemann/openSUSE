@@ -17,13 +17,13 @@
 
 
 %define __builder ninja
-%define sonum 1_3_0
-%define sover 1.3.0
+%define sonum 1_4_0
+%define sover 1.4.0
 %define libname lib2geom%{sonum}
 %define develname 2geom
-%define short_version 1.3
+%define short_version 1.4
 Name:           lib2geom
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Easy to use 2D geometry library in C++
 License:        LGPL-2.1-only AND MPL-1.1
@@ -32,11 +32,12 @@ Group:          System/Libraries
 Source0:        %{url}/-/archive/%{short_version}/%{name}-%{short_version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch1:         fix-pkgconfig-libdir-path.patch
-# PATCH-FIX-UPSTREAM fix instable tests, https://gitlab.com/inkscape/lib2geom/-/issues/67
-Patch2:         skip_failing_tests.diff
-Patch3:         skip_failing_tests_gcc14.diff
 BuildRequires:  cmake >= 2.6
+%if 0%{suse_version} < 1550
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glib2
 BuildRequires:  gsl-devel
 BuildRequires:  gtest
@@ -71,6 +72,10 @@ needed to develop applications that require %{name}.
 %autosetup -n %{name}-%{short_version} -p1
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+export CC=gcc-13
+export CXX=g++-13
+%endif
 export CFLAGS="%optflags -fexcess-precision=fast -DNDEBUG"
 export CXXFLAGS="$CFLAGS"
 %cmake -Wno-dev \
@@ -90,7 +95,47 @@ export CXXFLAGS="$CFLAGS"
 %postun -n %{libname} -p /sbin/ldconfig
 
 %check
-%ctest
+# deactivate failling test, also see
+# PATCH-FIX-UPSTREAM fix instable tests, https://gitlab.com/inkscape/lib2geom/-/issues/67
+%if 0%{?suse_version} > 1500
+# TW x86_64 => passes
+# TW i586
+%ifarch i586
+%define excluded_tests 1
+ctest_exclude_regex="ellipse-test|elliptical-arc-test|line-test|polynomial-test|self-intersections-test"
+%endif
+# TW armv7l => passes
+# TW aarch64
+%ifarch aarch64
+%define excluded_tests 1
+ctest_exclude_regex="elliptical-arc-test|polynomial-test"
+%endif
+%endif
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+# 15.6 x86_64 => passes
+# 15.6 i586
+%ifarch i586
+%define excluded_tests 1
+ctest_exclude_regex="bezier-test|ellipse-test|line-test|polynomial-test|self-intersections-test"
+%endif
+%endif
+%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+# 15.5 x86_64
+%ifarch x86_64
+%define excluded_tests 1
+ctest_exclude_regex="line-test"
+%endif
+# 15.5 i586
+%ifarch i586
+%define excluded_tests 1
+ctest_exclude_regex="bezier-test|ellipse-test|line-test|polynomial-test|self-intersections-test"
+%endif
+%endif
+# END deactivate failling test
+pushd build
+ctest --output-on-failure --force-new-ctest-process --parallel %{_smp_build_ncpus} \
+      %{?excluded_tests:--exclude-regex "($ctest_exclude_regex)"}
+popd
 
 %files -n %{libname}
 %license COPYING-LGPL-2.1 COPYING-MPL-1.1

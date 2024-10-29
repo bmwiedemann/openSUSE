@@ -238,6 +238,24 @@ if [ -n "$FILE_DOCPATH" ] ; then
   fi
 fi
 
+#BEGIN Upstreaming help
+DESKTOP_NAME=${APPLICATION##*/}
+DESKTOP_PATH=${APPLICATION%$DESKTOP_NAME}
+DESKTOP_NAME=${DESKTOP_NAME%.desktop}
+if test -z "$DESKTOP_PATH" ; then
+  DESKTOP_PATH=$RPM_BUILD_ROOT/usr/share/applications/
+fi
+# Get rid ugly but common slash duplication
+DESKTOP_PATH=${DESKTOP_PATH//\/\//\/}
+
+# Set working directory always to $RPM_BUILD_DIR. It prevents placing
+# the files inside BUILDROOT. And some packages are confused by new
+# desktop files placed to its build directory.
+SUDF_DIR=$RPM_BUILD_DIR
+
+mkdir -p $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME
+cp -v "$FILE" $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-upstream.desktop
+#END Upstreaming help
 #
 # update Categories
 #
@@ -354,6 +372,123 @@ if [ "$COMMENT" != "no" ]; then
       sed -i -e '/^Comment=/d' $FILE
     fi
 fi
+
+#BEGIN Upstreaming help
+GENERIC_CHANGES=false
+TRANSLATION_CHANGES=false
+shopt -s nullglob
+cp -v "$FILE" $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop
+# Insert translations from the downstream
+ORIG_DIR=$PWD
+cd $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME
+if [ "$I18N" != "no" ]; then
+    sed "s@^Name=@_&Name($DESKTOP_NAME.desktop): @;s@^GenericName=@_&GenericName($DESKTOP_NAME.desktop): @;s@^Comment=@_&Comment($DESKTOP_NAME.desktop): @;s@^Keywords=@_&Keywords($DESKTOP_NAME.desktop): @" $FILE >$DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop
+    intltool-merge /usr/share/desktop-translations/desktop_translations $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop $DESKTOP_NAME-downstream-translated-raw.desktop -d -u
+    sed -i "s@^Name=Name($DESKTOP_NAME.desktop): @Name=@;s@^GenericName=GenericName($DESKTOP_NAME.desktop): @GenericName=@;s@^Comment=Comment($DESKTOP_NAME.desktop): @Comment=@;s@^Keywords=Keywords($DESKTOP_NAME.desktop): @Keywords=@" $DESKTOP_NAME-downstream-translated-raw.desktop
+    ${0%.sh}_process_translations.py $DESKTOP_NAME
+    cp -a -v $DESKTOP_NAME-downstream-translated.desktop $FILE
+    if ! diff -u $DESKTOP_NAME-upstream.desktop $DESKTOP_NAME-downstream-translated.desktop >$DESKTOP_NAME-downstream-directly-translated.diff ; then
+        TRANSLATION_CHANGES=true
+    fi
+    sed -i "1,2s/$DESKTOP_NAME-\(upstream\|downstream-translated\).desktop/$DESKTOP_NAME.desktop/" $DESKTOP_NAME-downstream-directly-translated.diff
+    for DESKTOP in $DESKTOP_NAME-upstream $DESKTOP_NAME-downstream-no-translation ; do
+        sed "/\(Name\|GenericName\|Comment\|Keywords\)\[/d;s@^Name=@_Name=@;s@^GenericName=@_GenericName=@;s@^Comment=@_Comment=@;s@^Keywords=@_Keywords=@" $DESKTOP.desktop >$DESKTOP.desktop.in
+    done
+    if ! diff -u $DESKTOP_NAME-upstream.desktop.in $DESKTOP_NAME-downstream-no-translation.desktop.in >$DESKTOP_NAME-downstream-in-translated.diff ; then
+        GENERIC_CHANGES=true
+    fi
+    sed -i "1,2s/$DESKTOP_NAME-\(upstream\|downstream-no-translation\).desktop.in/$DESKTOP_NAME.desktop.in/" $DESKTOP_NAME-downstream-in-translated.diff
+    mkdir po
+    intltool-extract --type=gettext/ini $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop
+    xgettext --default-domain=$DESKTOP_NAME --add-comments --keyword=_ --keyword=N_ --keyword=U_ $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop.h -o po/$DESKTOP_NAME.pot
+    for PO in /usr/share/desktop-translations/desktop_translations/*.po ; do
+        LNG=${PO##*/}
+        LNG=${LNG%.po}
+        msgmerge $PO po/$DESKTOP_NAME.pot -o po/$LNG-pre.po
+        if test -f po/$LNG-pre.po ; then
+            msgattrib --no-obsolete po/$LNG-pre.po -o po/$LNG.po
+        fi
+        sed -i "s@\"\(Name\|GenericName\|Comment\|Keywords\)($DESKTOP_NAME.desktop): @\"@" po/$LNG.po
+        rm po/$LNG-pre.po
+    done
+    sed -i "s@\"\(Name\|GenericName\|Comment\|Keywords\)($DESKTOP_NAME.desktop): @\"@" po/$DESKTOP_NAME.pot
+    rm $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop.h $DESKTOP_NAME-downstream-translated-raw.desktop
+fi
+
+# Generate output in the OTHER directory
+cd ..
+RPM_OTHER_DIR=${RPM_BUILD_DIR%/BUILD*}/OTHER
+if test -f $RPM_OTHER_DIR/update-desktop-files.tar.gz ; then
+    X=r
+else
+    X=c
+fi
+cd ..
+tar ${X}f $RPM_OTHER_DIR/update-desktop-files.tar.gz update-desktop-files
+
+EOF=EOF
+cat <<EOF
+========================= Deprecation notice ==============================
+
+%suse_update_desktop_file is deprecated and will be removed in the future.
+It provides SUSE specific changes that were never sent to the upstream.
+there is a time to change this now.
+
+Please follow
+https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+
+Are there any generic changes to upstream: $GENERIC_CHANGES
+Are there any translation changes to upstream: $TRANSLATION_CHANGES
+
+Location of the upstreaming files during the build:
+$SUDF_DIR/suse_update_desktop_file/$DESKTOP_NAME
+- $DESKTOP_NAME-downstream-directly-translated.diff
+- $DESKTOP_NAME-downstream-in-translated.diff
+- $DESKTOP_NAME-downstream-no-translation.desktop
+- $DESKTOP_NAME-downstream-no-translation.desktop.in
+- $DESKTOP_NAME-downstream-translated.desktop
+- $DESKTOP_NAME-upstream.desktop
+- $DESKTOP_NAME-upstream.desktop.in
+
+Customized helpers for you:
+cd update-desktop-files/$DESKTOP_NAME/po
+for PO in *.po ; do
+	if test -f ../../../po/\$PO ; then
+		msgcat --use-first \$PO ../../../po/\$PO -o ../../../po/\$PO.new
+		mv ../../../po/\$PO.new ../../../po/\$PO
+	else
+		cp -a \$PO ../../../po/\$PO
+	fi
+done
+
+Or swap arguments of msgcat according to the documentation:
+		msgcat --use-first ../../../po/\$PO \$PO -o ../../../po/\$PO.new
+
+sed "/\(Name\|GenericName\|Comment\|Keywords\)\[/d;s@^Name=@_Name=@;s@^GenericName=@_GenericName=@;s@^Comment=@_Comment=@;s@^Keywords=@_Keywords=@" <$DESKTOP_NAME.desktop >$DESKTOP_NAME.desktop.in
+patch <$DESKTOP_NAME-downstream-in-translated.diff
+
+Source{number}: $DESKTOP_NAME.desktop.in
+or
+Source{number}: $DESKTOP_NAME.desktop
+
+cp %{SOURCE{NUMBER}} .
+
+%translate_suse_desktop $DESKTOP_NAME.desktop
+
+install -D -m 0644 $DESKTOP_NAME.desktop %{buildroot}${DESKTOP_PATH#$RPM_BUILD_ROOT}$DESKTOP_NAME.desktop
+
+osc add $DESKTOP_NAME.desktop.in
+osc rm $DESKTOP_NAME.desktop
+
+if ! diff $DESKTOP_NAME.desktop %{SOURCE{number}} ; then
+cat <<EOF
+A new version of desktop file exists. Please update $DESKTOP_NAME.desktop
+rpm source from $PWD to get translations to older products.
+$EOF
+-===========================================================================
+EOF
+cd $ORIG_DIR
+#END Upstreaming help
 
 if [ "$I18N" = "no" ]; then
   #

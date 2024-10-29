@@ -25,6 +25,7 @@ Summary:        A library for deferring decorator actions
 License:        SUSE-Repoze AND ZPL-2.1
 URL:            https://github.com/Pylons/venusian
 Source:         https://files.pythonhosted.org/packages/source/v/venusian/venusian-%{version}.tar.gz
+Patch1:         https://github.com/Pylons/venusian/pull/92/commits/000b36d6968502683615da618afc3677ec8f05fc.patch#/py313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

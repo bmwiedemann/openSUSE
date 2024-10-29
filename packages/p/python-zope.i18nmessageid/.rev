@@ -161,4 +161,25 @@ New dependecy of python-Pyramid</comment>
 - Switch to autosetup macro.</comment>
     <requestid>1199944</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>57e7ada33d5f64e2dcf38a5c1b97ec4d</srcmd5>
+    <version>7.0</version>
+    <time>1730208925</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0:
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.
+  * Add support for Python 3.13.
+  * Enable multi-phase module initialization (PEP 489) for all
+    supported Python versions.  See this &quot;how-to&quot; doc for
+    rationale and steps:
+    https://docs.python.org/3.13/howto/isolating-extensions.html
+  * Make the hookable extension type heap-allocated for Python &gt;=
+    3.9. Likewise, see the doc above for rationale and steps.
+    For Python &lt; 3.9, the hookable extension type continues to be
+    allocated statically, even though the module itself is
+    allocated dynamically.
+- drop fix-intersphinx-mapping.patch (obsolete)</comment>
+    <requestid>1218874</requestid>
+  </revision>
 </revisionlist>

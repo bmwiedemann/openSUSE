@@ -49,10 +49,15 @@ BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module Sphinx >= 7.3.5}
 BuildRequires:  %{python_module doc}
-BuildRequires:  %{python_module nptyping >= 2.5}
 BuildRequires:  %{python_module pytest >= 8.1.1}
 BuildRequires:  %{python_module sphobjinv >= 2.3.1}
 BuildRequires:  %{python_module typing_extensions >= 4.11}
+
+# Do not depend on nptyping for SLFO:Main
+%if 0%{suse_version} > 1600
+BuildRequires:  %{python_module nptyping >= 2.5}
+%endif
+
 %endif
 # /SECTION
 %python_subpackages

@@ -5159,4 +5159,18 @@ boo#1224178</comment>
     <comment>Chromium 130.0.6723.58 (boo#1231694) (forwarded request 1208596 from AndreasStieger)</comment>
     <requestid>1208638</requestid>
   </revision>
+  <revision rev="435" vrev="1">
+    <srcmd5>05d069f21fef7ae745b737de007e5906</srcmd5>
+    <version>130.0.6723.69</version>
+    <time>1730208758</time>
+    <user>anag+factory</user>
+    <comment>- change BR for rust to require version 1.81
+  (1.82 uses a newer llvm) 
+
+- Chromium 130.0.6723.69 (boo#1232060)
+  * CVE-2024-10229: Inappropriate implementation in Extensions
+  * CVE-2024-10230: Type Confusion in V8
+  * CVE-2024-10231: Type Confusion in V8</comment>
+    <requestid>1218809</requestid>
+  </revision>
 </revisionlist>

@@ -39,4 +39,12 @@
 - Add in multibuild.</comment>
     <requestid>1200237</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>39cf60410253303b4be4dd509c05153a</srcmd5>
+    <version>2.4.0</version>
+    <time>1730208711</time>
+    <user>anag+factory</user>
+    <comment>- Remove azure BuildRequires</comment>
+    <requestid>1218762</requestid>
+  </revision>
 </revisionlist>

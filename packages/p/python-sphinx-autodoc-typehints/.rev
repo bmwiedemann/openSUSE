@@ -251,4 +251,12 @@
   * README and CI fixes</comment>
     <requestid>1202593</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0306d09d385bbb9934851d0fb2b03aa3</srcmd5>
+    <version>2.4.4</version>
+    <time>1730208892</time>
+    <user>anag+factory</user>
+    <comment>- Remove python-nptyping BuildRequirement for SLFO:Main</comment>
+    <requestid>1218927</requestid>
+  </revision>
 </revisionlist>

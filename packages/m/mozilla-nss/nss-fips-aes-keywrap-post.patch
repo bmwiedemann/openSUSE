@@ -57,11 +57,11 @@ Index: nss/lib/freebl/fipsfreebl.c
 +    };
 +
      const PRUint8 *aes_ecb_known_ciphertext =
-         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_ecb128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_ecb192_known_ciphertext : aes_ecb256_known_ciphertext;
- 
-@@ -374,11 +399,15 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
-     const PRUint8 *aes_cmac_known_ciphertext =
-         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_cmac128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_cmac192_known_ciphertext : aes_cmac256_known_ciphertext;
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_ecb128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_ecb192_known_ciphertext
+                                                                                                                         : aes_ecb256_known_ciphertext;
+@@ -378,11 +403,15 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_cmac128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_cmac192_known_ciphertext
+                                                                                                                          : aes_cmac256_known_ciphertext;
  
 +    const PRUint8 *aes_keywrap_known_ciphertext =
 +        (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_kw128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_kw192_known_ciphertext : aes_kw256_known_ciphertext;
@@ -75,7 +75,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      unsigned int aes_bytes_encrypted;
      unsigned int aes_bytes_decrypted;
      CK_NSS_GCM_PARAMS gcmParams;
-@@ -604,6 +633,52 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
+@@ -608,6 +637,52 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
          PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
          return (SECFailure);
      }

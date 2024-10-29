@@ -59,4 +59,15 @@
 - Clean up {Build,}Requires as a result.</comment>
     <requestid>994424</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1c78982575f186625d16cd70f1a2588</srcmd5>
+    <version>0.7.7</version>
+    <time>1730208941</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.7:
+  * type hints
+  * fix: Fix setuptools not finding the schema package
+- drop remove-old-python-support.patch (upstream)</comment>
+    <requestid>1218889</requestid>
+  </revision>
 </revisionlist>

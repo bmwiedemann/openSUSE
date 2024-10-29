@@ -34,4 +34,16 @@
     latter name.</comment>
     <requestid>1184122</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e2773c6d587f7d957df380311b49c616</srcmd5>
+    <version>1.2.0</version>
+    <time>1730208741</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Improve interoperability with ``importlib.metadata``, fixing a
+    regression in setuptools compatibility in 1.1 (#199).
+  * Clean up the ``_in_process`` directory inside the package
+    from ``sys.path`` before imporing the backend (#193).</comment>
+    <requestid>1218846</requestid>
+  </revision>
 </revisionlist>

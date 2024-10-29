@@ -854,4 +854,24 @@
     <comment></comment>
     <requestid>1196238</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>38e40c9ef765ffc0317eff17f489b0f7</srcmd5>
+    <version>3.0.6</version>
+    <time>1730208737</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.6 (bsc#1232449, CVE-2024-49767):
+  * Fix how max_form_memory_size is applied when parsing large
+    non-file fields. GHSA-q34m-jh98-gwm2
+  * safe_join catches certain paths on Windows that were not caught by
+    ntpath.isabs on Python &lt; 3.11. GHSA-f9vj-2wh5-fj8j
+- 3.0.5:
+  * The Watchdog reloader ignores file closed no write events. #2945
+  * Logging works with client addresses containing an IPv6 scope.
+    #2952
+  * Ignore invalid authorization parameters. #2955
+  * Improve type annotation fore SharedDataMiddleware. #2958
+  * Compatibility with Python 3.13 when generating debugger pin and
+    the current UID does not have an associated name. #2957</comment>
+    <requestid>1218824</requestid>
+  </revision>
 </revisionlist>

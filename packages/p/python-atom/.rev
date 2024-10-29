@@ -169,4 +169,17 @@
     <comment></comment>
     <requestid>1197801</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6f2447739bdea733aedec0bc3ed5041d</srcmd5>
+    <version>0.11.0</version>
+    <time>1730208953</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0:
+  * Fix ruff config by @MatthieuDartiailh in #209
+  * Add FixedTuple member enforcing a given number of items by
+    @MatthieuDartiailh in #211
+  * Fix memory leak in pickle creation by @MatthieuDartiailh in #213
+  * 3.13 support by @MatthieuDartiailh in #214</comment>
+    <requestid>1218909</requestid>
+  </revision>
 </revisionlist>

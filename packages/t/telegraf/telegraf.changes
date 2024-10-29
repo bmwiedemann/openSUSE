@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:15:23 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.32.2:
+  * Telegraf v1.32.2
+  * Update changelog for v1.32.2
+  * Update build_version.txt for v1.32.2
+  * docs(outputs): Add plugin metadata and update description (#16061)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/j*` (#16078)
+  * chore: Fix linter findings for `revive:enforce-slice-style` in `plugins/inputs/[k-o]*` (#16071)
+  * chore: Enable `revive:enforce-map-style` rule (#16077)
+  * chore(linters): Fix findings found by `testifylint`: `go-require` for handlers for `plugins/inputs/[a-m]` (#16076)
+  * chore(outputs): Fix line-length in READMEs (#16079)
+  * chore: Fix linter findings for `revive:enforce-map-style` in `plugins/inputs/[n-z]*` (#16072)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/i*` (#16075)
+  * docs(processors.starlark): Correct typo  (#16069)
+  * fix(inputs.kafka_consumer): Fix deadlock (#16074)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/dynamodb from 1.34.9 to 1.36.2 (#16057)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/g*` (#16049)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/e*` (#16044)
+  * chore: Fix linter findings for `revive:enforce-slice-style` in `plugins/inputs/[p-z]*` (#16043)
+  * fix(inputs.procstat): Correctly use systemd-unit setting for finding them (#16060)
+  * chore(deps): Bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.14.0 to 1.16.0 (#16056)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatch from 1.42.1 to 1.42.2 (#16055)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2 from 1.32.1 to 1.32.2 (#16054)
+  * chore(deps): Bump github.com/lxc/incus/v6 from 6.2.0 to 6.6.0 (#16053)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/h*` (#16050)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/f*` (#16048)
+  * chore(inputs): Add removal version for old plugins (#16062)
+  * chore: Fix linter findings for `revive:enforce-map-style` in `plugins/inputs/[a-m]*` (#16042)
+  * fix(agent): Use a unique WAL file for plugin instances of the same type (#15966)
+  * chore: Fix linter findings for `revive:enforce-map-style` in `plugins/aggregators`, `plugins/common`, `plugins/parsers`, `plugins/processors`, `plugins/secretstores` and `plugins/serializers` (#16039)
+  * chore: Fix linter findings for `revive:enforce-slice-style` in `plugins/outputs` (#16032)
+  * fix(inputs.win_eventlog): Handle XML data fields' filtering the same way as event fields (#16008)
+  * fix(inputs.opcua): Allow to retry reads on invalid sessions (#16026)
+  * docs(outputs): Clarify buffer limits behavior and fix spec wording (#15999)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/d*` (#16016)
+  * chore: Fix linter findings for `revive:enforce-map-style` in `plugins/outputs` (#15981)
+  * fix(outputs.syslog): Trim field-names belonging to explicit SDIDs correctly (#16014)
+  * chore(deps): Bump github.com/docker/docker from 27.1.1+incompatible to 27.3.1+incompatible (#16022)
+  * chore(deps): Bump github.com/IBM/sarama from 1.43.2 to 1.43.3 (#16021)
+  * chore(deps): Bump upgrade github.com/shirou/gopsutil from v3.24.4 to v4.24.9 (#16023)
+  * chore(deps): Bump go.step.sm/crypto from 0.51.1 to 0.54.0 (#16020)
+  * chore(deps): Bump github.com/alitto/pond from 1.9.0 to 1.9.2 (#16019)
+  * chore(deps): Bump github.com/apache/thrift from 0.20.0 to 0.21.0 (#16018)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/c*` (#16006)
+  * chore: Fix linter findings for `revive:enforce-slice-style` in `plugins/parsers`, `plugins/processors`, `plugins/secretstores` and `plugins/serializers` (#15980)
+  * fix(outputs.remotefile): Create a new serializer instance per output file (#15968)
+  * fix(inputs.netflow): Cast complex types to field compatible ones (#16009)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/[a-b]*` (#15913)
+  * chore(linters): Fix findings found by `testifylint`: `go-require` for `plugins/outputs` (#15985)
+  * chore: Update go to v1.23.2 (#15979)
+  * chore(linters): Enable `string-format` rule for revive (#15983)
+  * chore(linters): Fix findings found by `testifylint`: `go-require` for `plugins/common` and `plugins/inputs` (#15991)
+  * chore(deps): Bump github.com/gwos/tcg/sdk from v8.7.2 to v8.8.0 (#15947)
+  * chore(deps): Bump cloud.google.com/go/bigquery from 1.62.0 to 1.63.1 (#15992)
+  * chore(deps): Bump github.com/gosnmp/gosnmp from 1.37.0 to 1.38.0 (#15993)
+  * chore(deps): Bump github.com/signalfx/golib/v3 from 3.3.53 to 3.3.54 (#15994)
+  * chore(deps): Bump github.com/snowflakedb/gosnowflake from 1.11.1 to 1.11.2 (#15995)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatch from 1.40.4 to 1.42.1 (#15996)
+  * chore(linters): Enable `datarace` rule for revive (#15984)
+
+-------------------------------------------------------------------
 Tue Oct 08 13:59:39 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.32.1:

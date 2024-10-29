@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 02:01:18 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Add patch 0001-Remove-upper-bound-for-tokenizers.patch
+  * Remove upper bound for tokenizers 
+
+-------------------------------------------------------------------
 Wed Sep 11 04:39:06 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Updated to Version 4.44.2 

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 28 21:49:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0:
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.
+  * Add support for Python 3.13.
+  * Enable multi-phase module initialization (PEP 489) for all
+    supported Python versions.  See this "how-to" doc for
+    rationale and steps:
+    https://docs.python.org/3.13/howto/isolating-extensions.html
+  * Make the hookable extension type heap-allocated for Python >=
+    3.9. Likewise, see the doc above for rationale and steps.
+    For Python < 3.9, the hookable extension type continues to be
+    allocated statically, even though the module itself is
+    allocated dynamically.
+- drop fix-intersphinx-mapping.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Sep 11 05:10:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-intersphinx-mapping.patch:

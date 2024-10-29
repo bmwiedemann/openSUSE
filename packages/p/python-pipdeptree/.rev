@@ -195,4 +195,17 @@
   * Allow pre-releases when detecting version conflicts</comment>
     <requestid>1191716</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>159b7aa5c1e1599c243eb082828562ed</srcmd5>
+    <version>2.23.4</version>
+    <time>1730208898</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.23.4:
+  * Improve the CI
+  * Fix CI shield
+- update to 2.23.2:
+  * Move pip's frozen requirement API into a single module
+  * Declare 3.13 support</comment>
+    <requestid>1218841</requestid>
+  </revision>
 </revisionlist>

@@ -44,6 +44,7 @@ Patch1:         libxslt-random-seed.patch
 Patch2:         gcc14-runtest-no-const.patch
 # PATCH-FIX-UPSTREAM -- 0001-tests-Fix-build-with-older-libxml2.patch
 Patch3:         0001-tests-Fix-build-with-older-libxml2.patch
+Patch4:         libxslt-reproducible.patch
 #
 ### SUSE patches starts on 1000
 # PATCH-FIX-SUSE

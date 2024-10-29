@@ -192,4 +192,12 @@
     <comment></comment>
     <requestid>1159814</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>547b9a4de7af5d7c9bcb25cf7e89cc37</srcmd5>
+    <version>5.2.0</version>
+    <time>1730208750</time>
+    <user>anag+factory</user>
+    <comment>- build for modern python on sle15</comment>
+    <requestid>1218805</requestid>
+  </revision>
 </revisionlist>

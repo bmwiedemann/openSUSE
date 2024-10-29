@@ -37,6 +37,7 @@ Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
+Patch2:		openvpn-CVE-2024-28882.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel
@@ -49,10 +50,12 @@ BuildRequires:  pam-devel
 BuildRequires:  pkcs11-helper-devel >= 1.11
 BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
+Recommends:     ovpn-dco-kmp
 %systemd_ordering
 
 %description
@@ -117,6 +120,7 @@ This package provides the header file to build external plugins.
 
 %prep
 %autosetup -p0
+ 
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
@@ -135,8 +139,14 @@ export LDFLAGS
 # usrmerge
 export IPROUTE="%{_sbindir}/ip"
 %endif
+libnlversion=$(rpm -q --qf "%%{version}" libnl3-devel)
+if [[ $libnlversion == 3.[0-3].* ]] ; then
+  confopt=--enable-iproute2
+else
+  confopt=--enable-dco
+fi
 %configure \
-	--enable-iproute2		\
+	$confopt			\
 	--enable-x509-alt-username	\
 	--enable-pkcs11			\
 	--enable-systemd		\

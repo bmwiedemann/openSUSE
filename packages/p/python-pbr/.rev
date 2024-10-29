@@ -794,4 +794,12 @@
 - Use stestr rather than pytest to run the testsuite.</comment>
     <requestid>1198044</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>fc4530c20b0a60b2f5dff377f72d7737</srcmd5>
+    <version>6.1.0</version>
+    <time>1730208732</time>
+    <user>anag+factory</user>
+    <comment>- Use pytest to run tests to do not depend on python-stestr</comment>
+    <requestid>1218811</requestid>
+  </revision>
 </revisionlist>

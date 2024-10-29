@@ -30,10 +30,10 @@
 %endif
 %endif
 Name:           forgejo
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Self-hostable forge
-License:        MIT
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz

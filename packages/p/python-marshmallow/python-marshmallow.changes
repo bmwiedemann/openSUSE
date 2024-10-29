@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 27 22:54:09 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add python-packaging to Requires, as stated in pyproject.toml.
+
+-------------------------------------------------------------------
 Tue Mar 26 12:35:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch build system from setuptools to pyproject.toml

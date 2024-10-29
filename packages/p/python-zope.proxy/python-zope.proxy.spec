@@ -28,13 +28,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.proxy%{psuffix}
-Version:        5.2
+Version:        6.1
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.proxy
-Source:         https://files.pythonhosted.org/packages/source/z/zope.proxy/zope.proxy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.proxy/zope_proxy-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -66,7 +66,7 @@ Obsoletes:      python-zope-proxy < %{version}
 This package contains the files needed for binding the %{name} C module.
 
 %prep
-%setup -q -n zope.proxy-%{version}
+%autosetup -p1 -n zope_proxy-%{version}
 rm -rf zope.proxy.egg-info
 
 %build

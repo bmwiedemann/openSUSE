@@ -24,10 +24,15 @@ Summary:        Log formatting with colors
 License:        MIT
 URL:            https://github.com/borntyping/python-colorlog
 Source:         https://files.pythonhosted.org/packages/source/c/colorlog/colorlog-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Partial patch from gh#borntyping/python-colorlog#607485def2d60b60c40c0d682574324b47fc30ba
+Patch0:         support-python-313.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -38,13 +43,13 @@ This is accomplished by added a set of terminal color codes to the record
 before it is used to format the string.
 
 %prep
-%setup -q -n colorlog-%{version}
+%autosetup -p1 -n colorlog-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +59,6 @@ before it is used to format the string.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/colorlog
-%{python_sitelib}/colorlog-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/colorlog-%{version}.dist-info
 
 %changelog

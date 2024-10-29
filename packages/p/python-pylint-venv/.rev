@@ -26,4 +26,13 @@
   * Documentation for configuration within `pyproject.toml`</comment>
     <requestid>1133533</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ddf9cac2e2f9cf58d7f6ab12a16ecfb</srcmd5>
+    <version>3.0.4</version>
+    <time>1730208904</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Official support for Python 3.13.</comment>
+    <requestid>1218845</requestid>
+  </revision>
 </revisionlist>

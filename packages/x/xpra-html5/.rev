@@ -182,4 +182,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1192334</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>80fa4fb98ef6c91059b04a250a3f2552</srcmd5>
+    <version>17.0+git20240925.0aa7703</version>
+    <time>1730208919</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0+git20240925.0aa7703:
+  * #321 missing start menu: newer versions use a distinct flag
+
+- Update to version 17.0+git20240924.b0457c1:
+  * update the release notes
+  * #322 use a new array for 'bytes'
+  * #322 turn off zerocopy if we get decoding errors
+  * fallback to client decoding
+  * offscreen toggle had no effect
+  * video max size is overriden later
+  * update offscreen checkbox when ssl is toggled
+
+- Update to version 17.0+git20240909.4fe30fc:
+  * bump version
+  * update the release notes
+  * allow more characters in session title
+  * fix range error in regex string
+  * sanitization functions must be re-usable
+
+- Update to version 16.0+git20240827.a320939:
+  * update the release notes
+  * #319 honour preferred clipboard format
+  * update the release notes
+  * merge changelog entries from v15.x branch
+  * #317 fix pings not being sent from client
+  * #317 also re-try to open the websocket connection
+  * simplify
+  * #317 check for timeouts when re-connecting
+  * #317 properly close current protocol instance before re-connecting
+  * derp: fix syntax</comment>
+    <requestid>1218867</requestid>
+  </revision>
 </revisionlist>

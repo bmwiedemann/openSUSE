@@ -27,14 +27,14 @@
 %endif
 
 Name:           crun
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 URL:            https://github.com/containers/crun
 Source0:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
-Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xac404c1c0bf735c63ff4d562263d6df2e163e1ea#/%{name}.keyring
+Source2:        %{name}.keyring
 # We always run autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake

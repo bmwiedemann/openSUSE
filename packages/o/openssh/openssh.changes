@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:18:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't force using gcc11 on SLFO/ALP which have a newer version.
+
+-------------------------------------------------------------------
+Mon Oct 28 10:29:33 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream:
+  - To fix a copy&paste oversight in an ifdef :
+  * 0001-fix-utmpx-ifdef.patch
+  - To fix a regression introduced when the "Match" criteria
+    tokenizer was modified since it stopped supporting the
+    "Match criteria=argument" format:
+  * 0002-upstream-fix-regression-introduced-when-I-switched-the-Match.patch
+  - To fix the previous patch which broke on negated Matches:
+  * 0003-upstream-fix-previous-change-to-ssh_config-Match_-which-broken-on.patch
+  - To fix the ML-KEM768x25519 kex algorithm on big-endian systems:
+  * 0004-upstream-fix-ML-KEM768x25519-KEX-on-big-endian-systems-spotted-by.patch
+
+-------------------------------------------------------------------
 Mon Oct 14 15:06:19 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %{with ...} instead of 0%{with ...}

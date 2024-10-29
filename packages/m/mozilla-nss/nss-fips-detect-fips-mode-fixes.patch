@@ -62,15 +62,7 @@ Index: nss/lib/sysinit/nsssysinit.c
 ===================================================================
 --- nss.orig/lib/sysinit/nsssysinit.c
 +++ nss/lib/sysinit/nsssysinit.c
-@@ -178,16 +178,16 @@ getFIPSMode(void)
-     f = fopen("/proc/sys/crypto/fips_enabled", "r");
-     if (!f) {
-         /* if we don't have a proc flag, fall back to the
--     * environment variable */
-+         * environment variable */
-         return getFIPSEnv();
-     }
- 
+@@ -185,9 +185,9 @@ getFIPSMode(void)
      size = fread(&d, 1, 1, f);
      fclose(f);
      if (size != 1)

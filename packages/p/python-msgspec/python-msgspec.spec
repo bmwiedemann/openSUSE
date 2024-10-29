@@ -23,6 +23,8 @@ Summary:        A fast serialization and validation library
 License:        BSD-3-Clause
 URL:            https://jcristharif.com/msgspec/
 Source:         https://github.com/jcrist/msgspec/archive/refs/tags/%{version}.tar.gz#/msgspec-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: gh#jcrist/msgspec#711
+Patch1:         python313.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

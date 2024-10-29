@@ -28,7 +28,7 @@
 
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.1.4
+Version:        3.1.7
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -65,14 +65,6 @@ Patch13:        openssl-ec-56-bit-Limb-Solinas-Strategy-for-secp384r1.patch
 Patch14:        openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.patch
 Patch15:        openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
 Patch16:        openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
-Patch17:        openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
-# PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
-# checking excessively long X9.42 DH keys or parameters may be very slow
-Patch18:        openssl-CVE-2023-5678.patch
-# PATCH-FIX-UPSTREAM https://github.com/openssl/openssl/pull/22971
-Patch19:        openssl-Enable-BTI-feature-for-md5-on-aarch64.patch
-# PATCH-FIX-UPSTREAM: bsc#1218690 CVE-2023-6129 - POLY1305 MAC implementation corrupts vector registers on PowerPC
-Patch20:        openssl-CVE-2023-6129.patch
 # PATCH-FIX-FEDORA Load FIPS the provider and set FIPS properties implicitly
 Patch21:        openssl-Force-FIPS.patch
 # PATCH-FIX-FEDORA Disable the fipsinstall command-line utility
@@ -81,25 +73,8 @@ Patch22:        openssl-disable-fipsinstall.patch
 Patch23:        openssl-load-legacy-provider.patch
 # PATCH-FIX-FEDORA Embed the FIPS hmac
 Patch24:        openssl-FIPS-embed-hmac.patch
-# PATCH-FIX-UPSTREAM: bsc#1218810 CVE-2023-6237: Excessive time spent checking invalid RSA public keys
-Patch25:        openssl-CVE-2023-6237.patch
 # PATCH-FIX-SUSE bsc#1194187, bsc#1207472, bsc#1218933 - Add engines section in openssl.cnf
 Patch26:        openssl-3-use-include-directive.patch
-# PATCH-FIX-UPSTREAM: bsc#1219243 CVE-2024-0727: denial of service via null dereference
-Patch27:        openssl-CVE-2024-0727.patch
-# PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
-Patch28:        openssl-CVE-2024-2511.patch
-# PATCH-FIX-UPSTREAM: bsc#1224388 CVE-2024-4603: excessive time spent checking DSA keys and parameters
-Patch29:        openssl-CVE-2024-4603.patch
-# PATCH-FIX-UPSTREAM: bsc#1225291 NVMe/TCP TLS connection fails due to handshake failure
-Patch30:        openssl-Fix-EVP_PKEY_CTX_add1_hkdf_info-behavior.patch
-Patch31:        openssl-Handle-empty-param-in-EVP_PKEY_CTX_add1_hkdf_info.patch
-# PATCH-FIX-UPSTREAM bsc#1225551 CVE-2024-4741: use After Free with SSL_free_buffers
-Patch32:        openssl-CVE-2024-4741.patch
-# PATCH-FIX-UPSTREAM: bsc#1223336 aes-gcm-avx512.pl: fix non-reproducibility issue
-Patch33:        reproducible.patch
-# PATCH-FIX-UPSTREAM: bsc#1227138 CVE-2024-5535: SSL_select_next_proto buffer overread
-Patch34:        openssl-CVE-2024-5535.patch
 # PATCH-FIX-FEDORA bsc#1221786 FIPS: Use of non-Approved Elliptic Curves
 Patch35:        openssl-Add-changes-to-ectest-and-eccurve.patch
 Patch36:        openssl-Remove-EC-curves.patch
@@ -165,8 +140,6 @@ Patch68:        openssl-FIPS-enforce-security-checks-during-initialization.patch
 Patch69:        openssl-3-FIPS-PCT_rsa_keygen.patch
 # PATCH-FIX-FEDORA bsc#1221365 FIPS: Deny SHA-1 signature verification in FIPS provider
 Patch70:        openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
-# PATCH-FIX-UPSTREAM bsc#1229465 CVE-2024-6119: possible denial of service in X.509 name checks
-Patch71:        openssl-CVE-2024-6119.patch
 # PATCH-FIX-UPSTREAM bsc#1230698 CVE-2024-41996: Validation order of the DH public keys
 Patch72:        openssl-CVE-2024-41996.patch
 # PATCH-FIX-UPSTREAM bsc#1220262 CVE-2023-50782: Implicit rejection in PKCS#1 v1.5
@@ -474,7 +447,7 @@ fi
 
 %files
 %license LICENSE.txt
-%doc CHANGES.md NEWS.md FAQ.md README.md
+%doc CHANGES.md NEWS.md README.md
 %dir %{ssletcdir}
 %config %{ssletcdir}/openssl-orig.cnf
 %config (noreplace) %{ssletcdir}/openssl.cnf

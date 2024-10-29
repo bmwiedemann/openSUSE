@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 28 21:47:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0:
+  * C extension now enables multi-phase module initialization
+    (PEP 489). For CPython >= 3.11, the hookable type is now a
+    heap-allocated type.  See:
+    https://docs.python.org/3.13/howto/isolating-extensions.html
+  * Drop support for Python 3.7.
+  * Add support for Python 3.13.
+  * Build windows wheels on GHA.
+
+-------------------------------------------------------------------
 Fri Dec 29 12:02:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0:

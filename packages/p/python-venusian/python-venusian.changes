@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:15:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313.patch to fix tests with python 3.13
+
+-------------------------------------------------------------------
 Wed Jan 24 11:36:23 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.

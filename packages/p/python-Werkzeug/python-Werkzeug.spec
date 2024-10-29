@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        3.0.4
+Version:        3.0.6
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
@@ -109,6 +109,7 @@ donttest+=" or test_wrong_protocol"
 donttest+=" or test_content_type_and_length"
 donttest+=" or test_multiple_headers_concatenated"
 donttest+=" or test_multiline_header_folding"
+donttest+=" or test_host_with_ipv6_scope"
 %pytest -k "not ($donttest)"
 %endif
 

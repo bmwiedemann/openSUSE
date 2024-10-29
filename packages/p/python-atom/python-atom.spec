@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-atom
-Version:        0.10.5
+Version:        0.11.0
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/nucleic/atom
 Source:         https://files.pythonhosted.org/packages/source/a/atom/atom-%{version}.tar.gz
 BuildRequires:  %{python_module cppy >= 1.2.0}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -34,7 +34,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
+%if 0%{?python_version_nodots} < 311
+Requires:       python-typing-extensions
+%endif
 %python_subpackages
 
 %description
@@ -61,6 +63,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/atom
-%{python_sitearch}/atom-%{version}*-info
+%{python_sitearch}/atom-%{version}.dist-info
 
 %changelog

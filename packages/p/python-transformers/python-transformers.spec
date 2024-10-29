@@ -24,7 +24,8 @@ Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlo
 License:        Apache-2.0
 URL:            https://github.com/huggingface/transformers
 Source:         https://github.com/huggingface/transformers/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       python-transformers.rpmlintrc 
+Source99:       python-transformers.rpmlintrc
+Patch0:		0001-Remove-upper-bound-for-tokenizers.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module filelock}
@@ -435,6 +436,7 @@ These models can be applied on:
 
 %prep
 %setup -q -n transformers-%{version}
+%autopatch -p1
 # fix shebang
 find . -name \*.py -type f -exec \
   sed -i "s|^#!\s*%{_bindir}/env python|#!%{_bindir}/python3|" {} \;

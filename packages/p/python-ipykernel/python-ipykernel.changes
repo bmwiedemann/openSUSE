@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:39:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-warning.patch
+
+-------------------------------------------------------------------
 Wed Sep 25 12:42:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - The command replacement for kernelspec python3 was inactive since

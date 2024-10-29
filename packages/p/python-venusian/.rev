@@ -187,4 +187,12 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1141246</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a963b8c5b2ae5424e4dbe29a2d2c7e75</srcmd5>
+    <version>3.1.0</version>
+    <time>1730208932</time>
+    <user>anag+factory</user>
+    <comment>- add py313.patch to fix tests with python 3.13</comment>
+    <requestid>1218882</requestid>
+  </revision>
 </revisionlist>

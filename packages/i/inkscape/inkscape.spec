@@ -16,10 +16,10 @@
 #
 
 
-%define _version 1.3.2_2023-11-25_091e20ef0f
+%define _version 1.4_2024-10-09_e7c3feb100
 
 Name:           inkscape
-Version:        1.3.2
+Version:        1.4
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -32,19 +32,6 @@ Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
 
-# PATCH-FIX-UPSTREAM https://gitlab.com/inkscape/inkscape/-/merge_requests/6209
-Patch0:         inkscape-poppler-24.03.0.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch#/inkscape-libxml2.12.patch
-# https://gitlab.com/inkscape/inkscape/-/commit/1798e9c13b786f3d077ba0132592c4d5c1d1fb9b
-Patch2:         inkscape-poppler-c++20.patch
-# https://gitlab.com/inkscape/inkscape/-/commit/96ca7a6c215aa14336b52753f56244dc8796ec43
-Patch3:         inkscape-poppler-24.05.0.patch
-# https://gitlab.com/inkscape/inkscape/-/commit/877fc26483f74f951eab516f1b57b136780a8c78
-Patch4:         inkscape-poppler-c++20-2.patch
-# https://gitlab.com/inkscape/extensions/-/issues/553
-Patch5:         inkscape_1.3.2_fix_tiff.patch
-
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -55,9 +42,10 @@ BuildRequires:  gcc10-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  intltool
-BuildRequires:  libboost_filesystem-devel >= 1.75
-BuildRequires:  libboost_headers-devel >= 1.75
-BuildRequires:  libboost_stacktrace-devel >= 1.75
+# boost/container_hash/hash.hpp >= 1.67
+BuildRequires:  libboost_filesystem-devel >= 1.67
+BuildRequires:  libboost_headers-devel >= 1.67
+BuildRequires:  libboost_stacktrace-devel >= 1.67
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpoppler-glib-devel > 22.01.0
 BuildRequires:  libxslt-devel
@@ -71,7 +59,7 @@ BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(2geom) >= 1.3.0
+BuildRequires:  pkgconfig(2geom) >= 1.4.0
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -186,15 +174,11 @@ export CXX=g++-10
 %ninja_install -C build
 
 # Packaging/distribution info.
-rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,TESTING.md,CONTRIBUTING.md}
+rm %{buildroot}%{_datadir}/inkscape/extensions/LICENSE.txt
 # Test framework.
-rm %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
-   %{buildroot}%{_datadir}/inkscape/extensions/.pylintrc      \
-   %{buildroot}%{_datadir}/inkscape/extensions/doxygen-main.dox
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
 # extensions/doc
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/docs
-rm %{buildroot}%{_datadir}/inkscape/extensions/{.darglint,.pre-commit-config.yaml,package-readme.md,poetry.lock,pyproject.toml}
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 
@@ -239,9 +223,7 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_datadir}/inkscape/extensions/seamless_pattern.svg
 %{_datadir}/inkscape/extensions/raster_output_jpg.svg
 %dir %{_datadir}/inkscape/extensions/icons
-%{_datadir}/inkscape/extensions/icons/businesscard_landscape.svg
-%{_datadir}/inkscape/extensions/icons/dvd_box.svg
-%{_datadir}/inkscape/extensions/icons/seamless_pattern.svg
+%{_datadir}/inkscape/extensions/icons/*.svg
 %{_datadir}/inkscape/attributes/
 %{_datadir}/inkscape/branding/
 %dir %{_datadir}/bash-completion/

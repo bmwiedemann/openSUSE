@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylink-square
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python interface for SEGGER J-Link
 License:        Apache-2.0

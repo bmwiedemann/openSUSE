@@ -60,4 +60,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1172892</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0de4a479425eaa3c326c819855c4e29</srcmd5>
+    <version>0.16.2</version>
+    <time>1730208938</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.2:
+  * Build wheels for Python 3.13
+  * Deprecate support for Python version before 3.9 and stop
+    building wheels for them
+  * Compatibility with Python 3.13
+  * Upgrade zstd source code from v1.5.5 to v1.5.6
+  * Fix pyzstd_pep517 parameter name in
+    `get_requires_for_build_wheel`
+  * Deprecate support for Python version before 3.8 and stop
+    building wheels for them
+  * Minor fixes in type hints
+  * Refactor README &amp; CHANGELOG files</comment>
+    <requestid>1218886</requestid>
+  </revision>
 </revisionlist>

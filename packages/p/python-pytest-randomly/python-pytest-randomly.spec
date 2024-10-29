@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-randomly
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        MIT

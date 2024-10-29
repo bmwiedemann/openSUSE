@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 28 16:51:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.4:
+  * Improve the CI
+  * Fix CI shield
+- update to 2.23.2:
+  * Move pip's frozen requirement API into a single module
+  * Declare 3.13 support
+
+-------------------------------------------------------------------
 Mon Aug  5 13:18:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.1:

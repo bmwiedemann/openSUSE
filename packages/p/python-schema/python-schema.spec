@@ -1,7 +1,7 @@
 #
 # spec file for package python-schema
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-schema
-Version:        0.7.5
+Version:        0.7.7
 Release:        0
 Summary:        Data validation library
 License:        MIT
 URL:            https://github.com/keleshev/schema
 Source:         https://files.pythonhosted.org/packages/source/s/schema/schema-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#keleshev/schema#273
-Patch0:         remove-old-python-support.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -45,19 +45,20 @@ parsing, converted from JSON/YAML (or something else) to Python data-types.
 %autosetup -p1 -n schema-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest test_schema.py
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE-MIT
-%{python_sitelib}/*
+%{python_sitelib}/schema.py
+%pycache_only %{python_sitelib}/__pycache__/schema*
+%{python_sitelib}/schema-%{version}.dist-info
 
 %changelog

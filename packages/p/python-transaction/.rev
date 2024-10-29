@@ -215,4 +215,19 @@
     <comment></comment>
     <requestid>1092205</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6b257eb4318180d7d8893b41970fb379</srcmd5>
+    <version>5.0</version>
+    <time>1730208931</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * Add final support for Python 3.13.
+  * Drop support for Python 3.7.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop support for deprecated python setup.py test..
+  * Add support for Python 3.12.
+  * Add preliminary support for Python 3.13a2.
+  * Add support for Python 3.9, 3.10, 3.11.</comment>
+    <requestid>1218881</requestid>
+  </revision>
 </revisionlist>

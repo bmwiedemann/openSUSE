@@ -27,14 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.i18nmessageid%{psuffix}
-Version:        6.1.0
+Version:        7.0
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.i18nmessageid
-Source:         https://files.pythonhosted.org/packages/source/z/zope.i18nmessageid/zope.i18nmessageid-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#zopefoundation/zope.i18nmessageid#59ef476780398c83eaa4516d2fd3aaaecfb0f9a1
-Patch0:         fix-intersphinx-mapping.patch
+Source:         https://files.pythonhosted.org/packages/source/z/zope.i18nmessageid/zope_i18nmessageid-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -63,7 +61,7 @@ BuildArch:      noarch
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n zope.i18nmessageid-%{version}
+%autosetup -p1 -n zope_i18nmessageid-%{version}
 rm -rf zope.i18nmessageid.egg-info
 
 %build

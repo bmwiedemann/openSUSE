@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-patchy
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Patch the inner source of python functions at runtime

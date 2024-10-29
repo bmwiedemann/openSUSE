@@ -265,4 +265,12 @@
   * Code for inspect.getargspec() when using Python 2.6 was missing</comment>
     <requestid>1129246</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>cdb7be722112d3e4ccb22282bc8330a5</srcmd5>
+    <version>1.16.0</version>
+    <time>1730208723</time>
+    <user>anag+factory</user>
+    <comment>- add py313-classmethods.patch to fix test failures with py313</comment>
+    <requestid>1218799</requestid>
+  </revision>
 </revisionlist>

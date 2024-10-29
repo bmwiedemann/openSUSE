@@ -55,6 +55,8 @@
 %bcond_with system_zstd
 # LLVM version
 %define llvm_version 17
+# RUST version
+%define rust_version 1.81
 # GCC version
 %define gcc_version 13
 %if 0%{?suse_version} <= 1699
@@ -96,7 +98,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        130.0.6723.58
+Version:        130.0.6723.69
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -185,7 +187,6 @@ BuildRequires:  python311
 BuildRequires:  python311-setuptools
 BuildRequires:  python311-six
 %endif
-BuildRequires:  rust
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -271,8 +272,8 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 # BEG add rust BR
-BuildRequires:  cargo
-BuildRequires:  rust >= 1.47
+BuildRequires:  cargo%{rust_version}
+BuildRequires:  rust%{rust_version}
 # END add rust BR
 BuildRequires:  rust-bindgen
 Requires:       xdg-utils

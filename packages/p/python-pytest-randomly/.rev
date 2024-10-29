@@ -143,4 +143,14 @@
   python311-django.</comment>
     <requestid>1218761</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8a07e1e9d6535bef2cf0526520720cea</srcmd5>
+    <version>3.16.0</version>
+    <time>1730208905</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.16.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.</comment>
+    <requestid>1218839</requestid>
+  </revision>
 </revisionlist>

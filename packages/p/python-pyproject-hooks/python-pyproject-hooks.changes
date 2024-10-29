@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 16:58:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Improve interoperability with ``importlib.metadata``, fixing a
+    regression in setuptools compatibility in 1.1 (#199).
+  * Clean up the ``_in_process`` directory inside the package
+    from ``sys.path`` before imporing the backend (#193).
+
+-------------------------------------------------------------------
 Sun Jun 30 18:58:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip test that fails with setuptools 70.1

@@ -987,4 +987,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1160011</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>f4f0072b5f597e74499c80640f7e9f65</srcmd5>
+    <version>2.6.10</version>
+    <time>1730208739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1218829</requestid>
+  </revision>
 </revisionlist>

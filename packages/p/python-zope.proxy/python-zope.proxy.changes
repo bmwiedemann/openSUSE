@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 28 21:51:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * Respect PURE_PYTHON environment variable set to 0.
+  * Declare full support for Python 3.13.
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.
+  * Correct return type for wrap_hash (fixes build on i386).
+
+-------------------------------------------------------------------
 Wed Mar 13 10:15:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2:

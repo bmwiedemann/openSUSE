@@ -23,7 +23,7 @@
 # -----
 ### Comes from git tarball setup.py:
 ###   setup.py build --verbose ...
-%define xpra_ver %(echo %{version} | awk -F+ '{print $1}')
+%define xpra_ver %(echo %{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
 #####
 %define python_ver python311
 %define python_short_ver 3.11
@@ -32,7 +32,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.2.0+git20241010.57777eda
+Version:        6.3.0+git20241028.fb72d902
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -70,7 +70,7 @@ BuildRequires:  %{python_ver}-gobject-devel
 BuildRequires:  %{python_ver}-pyxdg
 BuildRequires:  %{python_ver}-setuptools
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+#BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
@@ -199,7 +199,11 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 ### Not sure how to incorporate this from: Open H.264 Codec
 #  --with-openh264 \
 #####
-%{python_bin} setup.py build \
+###
+# 20241028, something w/ pam-devel >= v1.7.0 causes the need of LIBRARY_PATH
+#   and/or INCLUDE_DIRS to be required
+#####
+LIBRARY_PATH=/usr/lib:/usr/lib64 INCLUDE_DIRS=/usr/include:/usr/include/security %{python_bin} setup.py build \
   --verbose \
   --with-vpx \
   --with-webp \
@@ -231,9 +235,9 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 
 rm -rf %{buildroot}%{_datadir}/xpra/cuda
 
-%suse_update_desktop_file -r xpra Network RemoteAccess
-%suse_update_desktop_file -r xpra-gui Network RemoteAccess
-%suse_update_desktop_file -r xpra-launcher Network RemoteAccess
+#%%suse_update_desktop_file -r xpra Network RemoteAccess
+#%%suse_update_desktop_file -r xpra-gui Network RemoteAccess
+#%%suse_update_desktop_file -r xpra-launcher Network RemoteAccess
 
 mkdir -pv %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}

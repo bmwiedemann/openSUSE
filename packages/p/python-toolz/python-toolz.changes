@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:06:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Test fixes for changes in recent upstream Python
+  * Drop Python 3.7
+  * Test against Python 3.13
+  * Update docs
+
+-------------------------------------------------------------------
 Wed Jun 12 07:27:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to PEP517 build

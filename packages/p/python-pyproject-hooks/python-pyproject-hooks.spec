@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-hooks
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Wrappers to call pyproject.toml-based build backend hooks
 License:        MIT

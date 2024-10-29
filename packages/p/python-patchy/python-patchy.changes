@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 16:50:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+
+-------------------------------------------------------------------
 Sat Jan 13 20:28:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:

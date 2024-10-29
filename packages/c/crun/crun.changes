@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:39:05 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to crun v1.18. Upstream changelog is available from
+  <https://github.com/containers/crun/releases/tag/1.18>
+- Remove URL from crun.keyring source declaration. If the Ubuntu keyservers
+  update their server software or some other minor change causes the output of
+  the key to change (such as the maintainer updating their key expiry), we will
+  end up with build failures despite the key still being a totally valid key to
+  do verifications with. This also matches how keyring files are managed for
+  most packages.
+
+-------------------------------------------------------------------
 Wed Sep 11 20:12:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.17:
@@ -46,7 +58,7 @@ Thu May 30 12:30:26 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
   * features: add support for potentiallyUnsafeConfigAnnotations.
   * handlers: add option to load wasi-nn plugin for wasmedge.
   * linux: fix "harden chdir()" security measure. The previous check was not correct.
-  * crun: add option --keep to the run command. When specified the container is not automatically deleted when it exits. 
+  * crun: add option --keep to the run command. When specified the container is not automatically deleted when it exits.
 
 -------------------------------------------------------------------
 Wed Mar  6 10:06:50 UTC 2024 - Dan Čermák <dcermak@suse.com>
@@ -88,7 +100,7 @@ Sat Jan 27 16:21:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 - update to 1.14:
   * build: drop dependency on libgcrypt. Use blake3 to compute the cache key.
   * cpuset: don't clobber parent cgroup value when writing the cpuset value.
-  * linux: force umask(0). It ensures that the mknodat syscall is not affected by the umask of the calling process, 
+  * linux: force umask(0). It ensures that the mknodat syscall is not affected by the umask of the calling process,
     allowing file permissions to be set as specified in the OCI configuration.
   * ebpf: do not require MEMLOCK for eBPF programs. This requirement was relaxed in Linux 5.11.
 

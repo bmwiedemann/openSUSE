@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:56:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-classmethods.patch to fix test failures with py313
+
+-------------------------------------------------------------------
 Mon Nov 27 20:31:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.0:

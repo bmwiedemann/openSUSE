@@ -4,3 +4,5 @@ reproducible.patch
 Add_missing_system_error_handler.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 cmake_manpage_fix.patch
+# PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads
+ffmpeg-7-1.patch

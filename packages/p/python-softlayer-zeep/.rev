@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1135186</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7ca92ad4377cff4fb075ec6dce452c33</srcmd5>
+    <version>5.0.0</version>
+    <time>1730208955</time>
+    <user>anag+factory</user>
+    <comment>- Add {Build,}Requires on legacy-cgi to support Python 3.13. 
+- Update VCS URL.</comment>
+    <requestid>1218911</requestid>
+  </revision>
 </revisionlist>

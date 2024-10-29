@@ -156,4 +156,24 @@
     are duplicate ModelAdmin classes in the file. Issue #471.</comment>
     <requestid>1198091</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ff7c895f0e6131a765db538a77b129f</srcmd5>
+    <version>1.22.1</version>
+    <time>1730208753</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.22.1:
+  * Fix circular import error when running django-upgrade. Thanks
+    to Michal Čihař for the report in Issue #503.
+  * Avoid accidental removal of comments a removed if block in
+    the versioned block fixer. Thanks to Tobias Funke for the
+    report in Issue #495.
+  * Add all-version fixer to remove outdated test skip
+    decorators. Issue #364.
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+  * Add Django 5.0+ fixer to rewrite format_html() calls without
+    args or kwargs probably using str.format() incorrectly. Issue
+    #477.</comment>
+    <requestid>1218806</requestid>
+  </revision>
 </revisionlist>

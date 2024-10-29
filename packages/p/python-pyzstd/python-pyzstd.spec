@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyzstd
-Version:        0.15.10
+Version:        0.16.2
 Release:        0
 Summary:        Python bindings to Zstandard (zstd) compression library
 License:        BSD-3-Clause
@@ -58,7 +58,7 @@ export CFLAGS="%{optflags}"
 %pyunittest_arch discover -v tests
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitearch}/pyzstd
 %{python_sitearch}/pyzstd-%{version}.dist-info

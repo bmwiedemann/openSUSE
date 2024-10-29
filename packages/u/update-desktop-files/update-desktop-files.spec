@@ -1,7 +1,7 @@
 #
 # spec file for package update-desktop-files
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,14 @@ Source:         suse_update_desktop_file.sh
 Source1:        map-desktop-category.sh
 Source2:        macro
 Source4:        brp-trim-translations.sh
+Source5:        suse_update_desktop_file_process_translations.py
 # This is not true technically, but we do that to make the rpm macros from
 # desktop-file-utils available to most packages that ship a .desktop file
 # (since they already have a update-desktop-files BuildRequires).
 Requires:       desktop-file-utils
+Requires:       desktop-translations-devel
+Requires:       gettext-tools
+Requires:       intltool
 BuildArch:      noarch
 
 %description
@@ -72,7 +76,7 @@ sed -e '/awk/d' < %SOURCE4 > brp-extract-translations
 
 %install
 mkdir -p $RPM_BUILD_ROOT%_rpmconfigdir
-install -m0755 %SOURCE0 %SOURCE1 $RPM_BUILD_ROOT%_rpmconfigdir
+install -m0755 %SOURCE0 %SOURCE1 %SOURCE5 $RPM_BUILD_ROOT%_rpmconfigdir
 install -m0644 -D %SOURCE2 $RPM_BUILD_ROOT%_rpmmacrodir/macros.%name
 install -m0755 -D %SOURCE4 $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d/brp-70-trim-translations
 install -m0755 -D brp-extract-translations $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d/brp-70-extract-translations

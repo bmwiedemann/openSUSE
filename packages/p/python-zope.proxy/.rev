@@ -150,4 +150,17 @@
   * Add preliminary support for Python 3.13 as of 3.13a3.</comment>
     <requestid>1157516</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f7ea5ac510da993f7c1e750d12fc7069</srcmd5>
+    <version>6.1</version>
+    <time>1730208926</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1:
+  * Respect PURE_PYTHON environment variable set to 0.
+  * Declare full support for Python 3.13.
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.
+  * Correct return type for wrap_hash (fixes build on i386).</comment>
+    <requestid>1218875</requestid>
+  </revision>
 </revisionlist>

@@ -56,7 +56,6 @@ BuildRequires:  %{python_module pbr = %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.12.0}
-BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testresources >= 2.0.0}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools >= 2.2.0}
@@ -87,8 +86,12 @@ sed -i '/coverage/d;/hacking/d' test-requirements.txt
 export OS_TEST_TIMEOUT=60
 exclude="parse_requirements|requirement_parsing|pep_517_support|"
 exclude+="write_git_changelog|build_doc|cmd_builder_override|"
-exclude+="extras_parsing|project_url_parsing|keywords_parsing"
-stestr run -E "($exclude)"
+exclude+="extras_parsing|project_url_parsing|keywords_parsing|"
+exclude+="test_handling_of_whitespace_in_data_files"
+# Run tests with pytest to do not depend on python-stestr, that's no
+# available on SLFO:Main
+# stestr run -E "($exclude)"
+%pytest -k "not (${exclude//|/ or })"
 %endif
 
 %if !%{with test}

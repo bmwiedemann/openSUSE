@@ -36,10 +36,10 @@ Fixes #377
  tests/unit/test_timeout.py                                  | 3 +--
  25 files changed, 32 insertions(+), 30 deletions(-)
 
-diff --git a/tests/asyncio/future/test_async_future.py b/tests/asyncio/future/test_async_future.py
-index 0cfe6773..659f41cf 100644
---- a/tests/asyncio/future/test_async_future.py
-+++ b/tests/asyncio/future/test_async_future.py
+Index: google_api_core-2.21.0/tests/asyncio/future/test_async_future.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/future/test_async_future.py
++++ google_api_core-2.21.0/tests/asyncio/future/test_async_future.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -50,10 +50,10 @@ index 0cfe6773..659f41cf 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/asyncio/gapic/test_method_async.py b/tests/asyncio/gapic/test_method_async.py
-index f64157b4..026993e2 100644
---- a/tests/asyncio/gapic/test_method_async.py
-+++ b/tests/asyncio/gapic/test_method_async.py
+Index: google_api_core-2.21.0/tests/asyncio/gapic/test_method_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/gapic/test_method_async.py
++++ google_api_core-2.21.0/tests/asyncio/gapic/test_method_async.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -64,10 +64,10 @@ index f64157b4..026993e2 100644
  import pytest
  
  try:
-diff --git a/tests/asyncio/operations_v1/test_operations_async_client.py b/tests/asyncio/operations_v1/test_operations_async_client.py
-index 19ac9b56..e5b20dcd 100644
---- a/tests/asyncio/operations_v1/test_operations_async_client.py
-+++ b/tests/asyncio/operations_v1/test_operations_async_client.py
+Index: google_api_core-2.21.0/tests/asyncio/operations_v1/test_operations_async_client.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py
++++ google_api_core-2.21.0/tests/asyncio/operations_v1/test_operations_async_client.py
 @@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -78,10 +78,10 @@ index 19ac9b56..e5b20dcd 100644
  import pytest
  
  try:
-diff --git a/tests/asyncio/retry/test_retry_streaming_async.py b/tests/asyncio/retry/test_retry_streaming_async.py
-index 28ae6ff1..a54fc125 100644
---- a/tests/asyncio/retry/test_retry_streaming_async.py
-+++ b/tests/asyncio/retry/test_retry_streaming_async.py
+Index: google_api_core-2.21.0/tests/asyncio/retry/test_retry_streaming_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/retry/test_retry_streaming_async.py
++++ google_api_core-2.21.0/tests/asyncio/retry/test_retry_streaming_async.py
 @@ -12,11 +12,11 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -96,10 +96,10 @@ index 28ae6ff1..a54fc125 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/asyncio/retry/test_retry_unary_async.py b/tests/asyncio/retry/test_retry_unary_async.py
-index fc2f572b..032bab75 100644
---- a/tests/asyncio/retry/test_retry_unary_async.py
-+++ b/tests/asyncio/retry/test_retry_unary_async.py
+Index: google_api_core-2.21.0/tests/asyncio/retry/test_retry_unary_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/retry/test_retry_unary_async.py
++++ google_api_core-2.21.0/tests/asyncio/retry/test_retry_unary_async.py
 @@ -14,8 +14,8 @@
  
  import datetime
@@ -110,10 +110,10 @@ index fc2f572b..032bab75 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/asyncio/test_grpc_helpers_async.py b/tests/asyncio/test_grpc_helpers_async.py
-index 1a408ccd..a53de083 100644
---- a/tests/asyncio/test_grpc_helpers_async.py
-+++ b/tests/asyncio/test_grpc_helpers_async.py
+Index: google_api_core-2.21.0/tests/asyncio/test_grpc_helpers_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/test_grpc_helpers_async.py
++++ google_api_core-2.21.0/tests/asyncio/test_grpc_helpers_async.py
 @@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -124,10 +124,10 @@ index 1a408ccd..a53de083 100644
  import pytest  # noqa: I202
  
  try:
-diff --git a/tests/asyncio/test_operation_async.py b/tests/asyncio/test_operation_async.py
-index 127ba634..f7ebad8a 100644
---- a/tests/asyncio/test_operation_async.py
-+++ b/tests/asyncio/test_operation_async.py
+Index: google_api_core-2.21.0/tests/asyncio/test_operation_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/test_operation_async.py
++++ google_api_core-2.21.0/tests/asyncio/test_operation_async.py
 @@ -13,7 +13,8 @@
  # limitations under the License.
  
@@ -138,10 +138,10 @@ index 127ba634..f7ebad8a 100644
  import pytest
  
  try:
-diff --git a/tests/asyncio/test_page_iterator_async.py b/tests/asyncio/test_page_iterator_async.py
-index 75f9e1cf..e661bd26 100644
---- a/tests/asyncio/test_page_iterator_async.py
-+++ b/tests/asyncio/test_page_iterator_async.py
+Index: google_api_core-2.21.0/tests/asyncio/test_page_iterator_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/test_page_iterator_async.py
++++ google_api_core-2.21.0/tests/asyncio/test_page_iterator_async.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -152,10 +152,10 @@ index 75f9e1cf..e661bd26 100644
  import pytest
  
  from google.api_core import page_iterator_async
-diff --git a/tests/asyncio/test_rest_streaming_async.py b/tests/asyncio/test_rest_streaming_async.py
-index da5b1c8d..f726cbee 100644
---- a/tests/asyncio/test_rest_streaming_async.py
-+++ b/tests/asyncio/test_rest_streaming_async.py
+Index: google_api_core-2.21.0/tests/asyncio/test_rest_streaming_async.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/asyncio/test_rest_streaming_async.py
++++ google_api_core-2.21.0/tests/asyncio/test_rest_streaming_async.py
 @@ -15,14 +15,14 @@
  # TODO: set random.seed explicitly in each test function.
  # See related issue: https://github.com/googleapis/python-api-core/issues/689.
@@ -174,10 +174,10 @@ index da5b1c8d..f726cbee 100644
  
  import proto
  
-diff --git a/tests/unit/future/test__helpers.py b/tests/unit/future/test__helpers.py
-index 98afc599..a37efdd4 100644
---- a/tests/unit/future/test__helpers.py
-+++ b/tests/unit/future/test__helpers.py
+Index: google_api_core-2.21.0/tests/unit/future/test__helpers.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/future/test__helpers.py
++++ google_api_core-2.21.0/tests/unit/future/test__helpers.py
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -187,10 +187,10 @@ index 98afc599..a37efdd4 100644
  
  from google.api_core.future import _helpers
  
-diff --git a/tests/unit/future/test_polling.py b/tests/unit/future/test_polling.py
-index f5d9b4f1..2f66f230 100644
---- a/tests/unit/future/test_polling.py
-+++ b/tests/unit/future/test_polling.py
+Index: google_api_core-2.21.0/tests/unit/future/test_polling.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/future/test_polling.py
++++ google_api_core-2.21.0/tests/unit/future/test_polling.py
 @@ -15,8 +15,8 @@
  import concurrent.futures
  import threading
@@ -201,10 +201,10 @@ index f5d9b4f1..2f66f230 100644
  import pytest
  
  from google.api_core import exceptions, retry
-diff --git a/tests/unit/gapic/test_method.py b/tests/unit/gapic/test_method.py
-index d966f478..87aa6390 100644
---- a/tests/unit/gapic/test_method.py
-+++ b/tests/unit/gapic/test_method.py
+Index: google_api_core-2.21.0/tests/unit/gapic/test_method.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/gapic/test_method.py
++++ google_api_core-2.21.0/tests/unit/gapic/test_method.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -215,10 +215,10 @@ index d966f478..87aa6390 100644
  import pytest
  
  try:
-diff --git a/tests/unit/operations_v1/test_operations_rest_client.py b/tests/unit/operations_v1/test_operations_rest_client.py
-index 4ab4f1f7..26f34c40 100644
---- a/tests/unit/operations_v1/test_operations_rest_client.py
-+++ b/tests/unit/operations_v1/test_operations_rest_client.py
+Index: google_api_core-2.21.0/tests/unit/operations_v1/test_operations_rest_client.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/operations_v1/test_operations_rest_client.py
++++ google_api_core-2.21.0/tests/unit/operations_v1/test_operations_rest_client.py
 @@ -14,8 +14,8 @@
  # limitations under the License.
  #
@@ -227,12 +227,12 @@ index 4ab4f1f7..26f34c40 100644
  
 -import mock
  import pytest
+ from typing import Any, List
  
- try:
-diff --git a/tests/unit/retry/test_retry_base.py b/tests/unit/retry/test_retry_base.py
-index a0c6776b..212c4293 100644
---- a/tests/unit/retry/test_retry_base.py
-+++ b/tests/unit/retry/test_retry_base.py
+Index: google_api_core-2.21.0/tests/unit/retry/test_retry_base.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/retry/test_retry_base.py
++++ google_api_core-2.21.0/tests/unit/retry/test_retry_base.py
 @@ -14,8 +14,8 @@
  
  import itertools
@@ -243,10 +243,10 @@ index a0c6776b..212c4293 100644
  import pytest
  import requests.exceptions
  
-diff --git a/tests/unit/retry/test_retry_streaming.py b/tests/unit/retry/test_retry_streaming.py
-index 01f35327..82b60b05 100644
---- a/tests/unit/retry/test_retry_streaming.py
-+++ b/tests/unit/retry/test_retry_streaming.py
+Index: google_api_core-2.21.0/tests/unit/retry/test_retry_streaming.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/retry/test_retry_streaming.py
++++ google_api_core-2.21.0/tests/unit/retry/test_retry_streaming.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -257,10 +257,10 @@ index 01f35327..82b60b05 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/unit/retry/test_retry_unary.py b/tests/unit/retry/test_retry_unary.py
-index 7dcd8dd6..b018fa96 100644
---- a/tests/unit/retry/test_retry_unary.py
-+++ b/tests/unit/retry/test_retry_unary.py
+Index: google_api_core-2.21.0/tests/unit/retry/test_retry_unary.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/retry/test_retry_unary.py
++++ google_api_core-2.21.0/tests/unit/retry/test_retry_unary.py
 @@ -14,8 +14,8 @@
  
  import datetime
@@ -271,11 +271,11 @@ index 7dcd8dd6..b018fa96 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/unit/test_bidi.py b/tests/unit/test_bidi.py
-index 84ac9dc5..08e80afd 100644
---- a/tests/unit/test_bidi.py
-+++ b/tests/unit/test_bidi.py
-@@ -16,8 +16,8 @@
+Index: google_api_core-2.21.0/tests/unit/test_bidi.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_bidi.py
++++ google_api_core-2.21.0/tests/unit/test_bidi.py
+@@ -16,8 +16,8 @@ import datetime
  import logging
  import queue
  import threading
@@ -285,10 +285,10 @@ index 84ac9dc5..08e80afd 100644
  import pytest
  
  try:
-diff --git a/tests/unit/test_exceptions.py b/tests/unit/test_exceptions.py
-index 07a36817..e3f8f909 100644
---- a/tests/unit/test_exceptions.py
-+++ b/tests/unit/test_exceptions.py
+Index: google_api_core-2.21.0/tests/unit/test_exceptions.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_exceptions.py
++++ google_api_core-2.21.0/tests/unit/test_exceptions.py
 @@ -14,8 +14,8 @@
  
  import http.client
@@ -299,10 +299,10 @@ index 07a36817..e3f8f909 100644
  import pytest
  import requests
  
-diff --git a/tests/unit/test_extended_operation.py b/tests/unit/test_extended_operation.py
-index 53af5204..ab550662 100644
---- a/tests/unit/test_extended_operation.py
-+++ b/tests/unit/test_extended_operation.py
+Index: google_api_core-2.21.0/tests/unit/test_extended_operation.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_extended_operation.py
++++ google_api_core-2.21.0/tests/unit/test_extended_operation.py
 @@ -15,8 +15,8 @@
  import dataclasses
  import enum
@@ -313,10 +313,10 @@ index 53af5204..ab550662 100644
  import pytest
  
  from google.api_core import exceptions
-diff --git a/tests/unit/test_grpc_helpers.py b/tests/unit/test_grpc_helpers.py
-index 59442d43..8de9d8c0 100644
---- a/tests/unit/test_grpc_helpers.py
-+++ b/tests/unit/test_grpc_helpers.py
+Index: google_api_core-2.21.0/tests/unit/test_grpc_helpers.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_grpc_helpers.py
++++ google_api_core-2.21.0/tests/unit/test_grpc_helpers.py
 @@ -12,7 +12,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -327,10 +327,10 @@ index 59442d43..8de9d8c0 100644
  import pytest
  
  try:
-diff --git a/tests/unit/test_operation.py b/tests/unit/test_operation.py
-index f029866c..80680720 100644
---- a/tests/unit/test_operation.py
-+++ b/tests/unit/test_operation.py
+Index: google_api_core-2.21.0/tests/unit/test_operation.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_operation.py
++++ google_api_core-2.21.0/tests/unit/test_operation.py
 @@ -13,7 +13,8 @@
  # limitations under the License.
  
@@ -341,10 +341,10 @@ index f029866c..80680720 100644
  import pytest
  
  try:
-diff --git a/tests/unit/test_page_iterator.py b/tests/unit/test_page_iterator.py
-index cf43aedf..560722c5 100644
---- a/tests/unit/test_page_iterator.py
-+++ b/tests/unit/test_page_iterator.py
+Index: google_api_core-2.21.0/tests/unit/test_page_iterator.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_page_iterator.py
++++ google_api_core-2.21.0/tests/unit/test_page_iterator.py
 @@ -14,8 +14,8 @@
  
  import math
@@ -355,10 +355,10 @@ index cf43aedf..560722c5 100644
  import pytest
  
  from google.api_core import page_iterator
-diff --git a/tests/unit/test_path_template.py b/tests/unit/test_path_template.py
-index 808b36f3..c34dd0f3 100644
---- a/tests/unit/test_path_template.py
-+++ b/tests/unit/test_path_template.py
+Index: google_api_core-2.21.0/tests/unit/test_path_template.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_path_template.py
++++ google_api_core-2.21.0/tests/unit/test_path_template.py
 @@ -13,8 +13,8 @@
  # limitations under the License.
  
@@ -369,10 +369,10 @@ index 808b36f3..c34dd0f3 100644
  import pytest
  
  from google.api import auth_pb2
-diff --git a/tests/unit/test_timeout.py b/tests/unit/test_timeout.py
-index 0bcf07f0..60a2e65d 100644
---- a/tests/unit/test_timeout.py
-+++ b/tests/unit/test_timeout.py
+Index: google_api_core-2.21.0/tests/unit/test_timeout.py
+===================================================================
+--- google_api_core-2.21.0.orig/tests/unit/test_timeout.py
++++ google_api_core-2.21.0/tests/unit/test_timeout.py
 @@ -14,8 +14,7 @@
  
  import datetime

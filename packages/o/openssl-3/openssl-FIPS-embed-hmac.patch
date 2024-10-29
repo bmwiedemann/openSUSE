@@ -20,10 +20,10 @@ From-dist-git-commit: 5c67b5adc311af297f425c09e3e1ac7ca8483911
  8 files changed, 71 insertions(+), 13 deletions(-)
  create mode 100644 test/fipsmodule.cnf
 
-diff --git a/providers/fips/self_test.c b/providers/fips/self_test.c
-index b8dc9817b2..e3a629018a 100644
---- a/providers/fips/self_test.c
-+++ b/providers/fips/self_test.c
+Index: openssl-3.1.7/providers/fips/self_test.c
+===================================================================
+--- openssl-3.1.7.orig/providers/fips/self_test.c
++++ openssl-3.1.7/providers/fips/self_test.c
 @@ -230,11 +230,27 @@ err:
      return ok;
  }
@@ -52,7 +52,7 @@ index b8dc9817b2..e3a629018a 100644
  static int verify_integrity(OSSL_CORE_BIO *bio, OSSL_FUNC_BIO_read_ex_fn read_ex_cb,
                              unsigned char *expected, size_t expected_len,
                              OSSL_LIB_CTX *libctx, OSSL_SELF_TEST *ev,
-@@ -247,12 +263,23 @@ static int verify_integrity(OSSL_CORE_BIO *bio, OSSL_FUNC_BIO_read_ex_fn read_ex
+@@ -247,12 +263,23 @@ static int verify_integrity(OSSL_CORE_BI
      EVP_MAC *mac = NULL;
      EVP_MAC_CTX *ctx = NULL;
      OSSL_PARAM params[2], *p = params;
@@ -76,7 +76,7 @@ index b8dc9817b2..e3a629018a 100644
      mac = EVP_MAC_fetch(libctx, MAC_NAME, NULL);
      if (mac == NULL)
          goto err;
-@@ -266,13 +293,42 @@ static int verify_integrity(OSSL_CORE_BIO *bio, OSSL_FUNC_BIO_read_ex_fn read_ex
+@@ -266,13 +293,42 @@ static int verify_integrity(OSSL_CORE_BI
      if (!EVP_MAC_init(ctx, fixed_key, sizeof(fixed_key), params))
          goto err;
  
@@ -121,7 +121,7 @@ index b8dc9817b2..e3a629018a 100644
      if (!EVP_MAC_final(ctx, out, &out_len, sizeof(out)))
          goto err;
  
-@@ -282,6 +338,7 @@ static int verify_integrity(OSSL_CORE_BIO *bio, OSSL_FUNC_BIO_read_ex_fn read_ex
+@@ -282,6 +338,7 @@ static int verify_integrity(OSSL_CORE_BI
          goto err;
      ret = 1;
  err:
@@ -129,7 +129,7 @@ index b8dc9817b2..e3a629018a 100644
      OSSL_SELF_TEST_onend(ev, ret);
      EVP_MAC_CTX_free(ctx);
      EVP_MAC_free(mac);
-@@ -335,8 +392,7 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS *st, int on_demand_test)
+@@ -335,8 +392,7 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
          return 0;
      }
  
@@ -139,7 +139,7 @@ index b8dc9817b2..e3a629018a 100644
          ERR_raise(ERR_LIB_PROV, PROV_R_MISSING_CONFIG_DATA);
          goto end;
      }
-@@ -345,8 +401,9 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS *st, int on_demand_test)
+@@ -345,8 +401,9 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
      if (ev == NULL)
          goto end;
  
@@ -151,7 +151,7 @@ index b8dc9817b2..e3a629018a 100644
      if (module_checksum == NULL) {
          ERR_raise(ERR_LIB_PROV, PROV_R_INVALID_CONFIG_DATA);
          goto end;
-@@ -420,7 +477,6 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS *st, int on_demand_test)
+@@ -420,7 +477,6 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
  end:
      EVP_RAND_free(testrand);
      OSSL_SELF_TEST_free(ev);
@@ -159,18 +159,17 @@ index b8dc9817b2..e3a629018a 100644
      OPENSSL_free(indicator_checksum);
  
      if (st != NULL) {
-diff --git a/test/fipsmodule.cnf b/test/fipsmodule.cnf
-new file mode 100644
-index 0000000000..f05d0dedbe
+Index: openssl-3.1.7/test/fipsmodule.cnf
+===================================================================
 --- /dev/null
-+++ b/test/fipsmodule.cnf
++++ openssl-3.1.7/test/fipsmodule.cnf
 @@ -0,0 +1,2 @@
 +[fips_sect]
 +activate = 1
-diff --git a/test/recipes/00-prep_fipsmodule_cnf.t b/test/recipes/00-prep_fipsmodule_cnf.t
-index 4e3a6d85e8..e8255ba974 100644
---- a/test/recipes/00-prep_fipsmodule_cnf.t
-+++ b/test/recipes/00-prep_fipsmodule_cnf.t
+Index: openssl-3.1.7/test/recipes/00-prep_fipsmodule_cnf.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/00-prep_fipsmodule_cnf.t
++++ openssl-3.1.7/test/recipes/00-prep_fipsmodule_cnf.t
 @@ -20,7 +20,7 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
@@ -180,10 +179,10 @@ index 4e3a6d85e8..e8255ba974 100644
  plan skip_all => "FIPS module config file only supported in a fips build"
      if $no_check;
  
-diff --git a/test/recipes/01-test_fipsmodule_cnf.t b/test/recipes/01-test_fipsmodule_cnf.t
-index ce594817d5..00cebacff8 100644
---- a/test/recipes/01-test_fipsmodule_cnf.t
-+++ b/test/recipes/01-test_fipsmodule_cnf.t
+Index: openssl-3.1.7/test/recipes/01-test_fipsmodule_cnf.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/01-test_fipsmodule_cnf.t
++++ openssl-3.1.7/test/recipes/01-test_fipsmodule_cnf.t
 @@ -23,7 +23,7 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
@@ -193,10 +192,10 @@ index ce594817d5..00cebacff8 100644
  plan skip_all => "Test only supported in a fips build"
      if $no_check;
  plan tests => 1;
-diff --git a/test/recipes/03-test_fipsinstall.t b/test/recipes/03-test_fipsinstall.t
-index b8b136d110..8242f4ebc3 100644
---- a/test/recipes/03-test_fipsinstall.t
-+++ b/test/recipes/03-test_fipsinstall.t
+Index: openssl-3.1.7/test/recipes/03-test_fipsinstall.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/03-test_fipsinstall.t
++++ openssl-3.1.7/test/recipes/03-test_fipsinstall.t
 @@ -22,7 +22,7 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
@@ -206,10 +205,10 @@ index b8b136d110..8242f4ebc3 100644
  
  # Compatible options for pedantic FIPS compliance
  my @pedantic_okay =
-diff --git a/test/recipes/30-test_defltfips.t b/test/recipes/30-test_defltfips.t
-index c8f145405b..56a2ec5dc4 100644
---- a/test/recipes/30-test_defltfips.t
-+++ b/test/recipes/30-test_defltfips.t
+Index: openssl-3.1.7/test/recipes/30-test_defltfips.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/30-test_defltfips.t
++++ openssl-3.1.7/test/recipes/30-test_defltfips.t
 @@ -24,7 +24,7 @@ use lib bldtop_dir('.');
  plan skip_all => "Configuration loading is turned off"
      if disabled("autoload-config");
@@ -219,10 +218,10 @@ index c8f145405b..56a2ec5dc4 100644
  
  plan tests =>
      ($no_fips ? 1 : 5);
-diff --git a/test/recipes/80-test_ssl_new.t b/test/recipes/80-test_ssl_new.t
-index 0c6d6402d9..e45f9cb560 100644
---- a/test/recipes/80-test_ssl_new.t
-+++ b/test/recipes/80-test_ssl_new.t
+Index: openssl-3.1.7/test/recipes/80-test_ssl_new.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/80-test_ssl_new.t
++++ openssl-3.1.7/test/recipes/80-test_ssl_new.t
 @@ -27,7 +27,7 @@ setup("test_ssl_new");
  use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
@@ -232,19 +231,16 @@ index 0c6d6402d9..e45f9cb560 100644
  
  $ENV{TEST_CERTS_DIR} = srctop_dir("test", "certs");
  
-diff --git a/test/recipes/90-test_sslapi.t b/test/recipes/90-test_sslapi.t
-index 9e9e32b51e..1a1a7159b5 100644
---- a/test/recipes/90-test_sslapi.t
-+++ b/test/recipes/90-test_sslapi.t
-@@ -17,7 +17,7 @@ setup("test_sslapi");
- use lib srctop_dir('Configurations');
- use lib bldtop_dir('.');
+Index: openssl-3.1.7/test/recipes/90-test_sslapi.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/90-test_sslapi.t
++++ openssl-3.1.7/test/recipes/90-test_sslapi.t
+@@ -14,7 +14,7 @@ BEGIN {
+ setup("test_sslapi");
+ }
  
 -my $no_fips = disabled('fips') || ($ENV{NO_FIPS} // 0);
 +my $no_fips = 1; #disabled('fips') || ($ENV{NO_FIPS} // 0);
  my $fipsmodcfg_filename = "fipsmodule.cnf";
  my $fipsmodcfg = bldtop_file("test", $fipsmodcfg_filename);
  
--- 
-2.41.0
-

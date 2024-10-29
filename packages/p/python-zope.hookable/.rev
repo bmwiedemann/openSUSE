@@ -153,4 +153,19 @@ New dependency of python-Pyramid</comment>
   * Add support for Python 3.12.</comment>
     <requestid>1136278</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0a0057d08cc25dbfbe6ff747ce284c56</srcmd5>
+    <version>7.0</version>
+    <time>1730208923</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0:
+  * C extension now enables multi-phase module initialization
+    (PEP 489). For CPython &gt;= 3.11, the hookable type is now a
+    heap-allocated type.  See:
+    https://docs.python.org/3.13/howto/isolating-extensions.html
+  * Drop support for Python 3.7.
+  * Add support for Python 3.13.
+  * Build windows wheels on GHA.</comment>
+    <requestid>1218873</requestid>
+  </revision>
 </revisionlist>

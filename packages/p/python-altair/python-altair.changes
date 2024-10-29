@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:22:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- build for modern python on sle15
+
+-------------------------------------------------------------------
 Fri Mar 15 19:47:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable jupyter testing for python39: dropped support in

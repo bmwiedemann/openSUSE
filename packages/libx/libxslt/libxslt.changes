@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 20 14:27:35 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add libxslt-reproducible.patch to make xml output deterministic (boo#1062303)
+
+-------------------------------------------------------------------
 Fri May 24 16:14:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream build fix:

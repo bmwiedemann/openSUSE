@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-toolz
-Version:        0.12.1
+Version:        1.0.0
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause

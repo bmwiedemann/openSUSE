@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Oct 28 11:43:07 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.10.0:
+  * crypto: add KeyObject.prototype.toCryptoKey
+  * crypto: add Date fields for validTo and validFrom
+  * http2: expose nghttp2_option_set_stream_reset_rate_limit as an option
+  * lib: propagate aborted state to dependent signals before firing events
+  * module: support loading entrypoint as url
+  * module: implement flushCompileCache()
+  * module: throw when invalid argument is passed to enableCompileCache()
+  * module: write compile cache to temporary file and then rename it
+  * process: add process.features.require_module
+  * process: add process.features.typescript
+  * test_runner: support custom arguments in run()
+  * test_runner: add 'test:summary' event
+  * test_runner: add support for coverage via run()
+  * worker: add markAsUncloneable api
+
+- Changes since 22.9.0:
+  * util: getCallSite has been introduced. It allows users to retrieve the stacktrace of the current execution.
+  * tls: Exposes X509_V_FLAG_PARTIAL_CHAIN to tls.createSecureContext
+  * src: create handle scope in FastInternalModuleStat
+  * stream: relocate the status checking code in the onwritecomplete
+  * repl: doc-deprecate instantiating node:repl classes without new
+  * zlib: deprecate instantiating classes without new
+
+- Changes since 22.8.0:
+  * vm: New option for vm.createContext() to create a context with a freezable globalThis
+  * src,lib: add performance.uvMetricsInfo
+  * net: exclude ipv6 loopback addresses from server.listen
+  * test_runner: support running tests in process
+  * test_runner: defer inheriting hooks until run()
+
+- Changes since 22.7.0:
+  * Experimental transform types support
+  * Module syntax detection (the --experimental-detect-module flag) is now enabled by default.
+  * Performance Improvements to Buffer
+
+- Changes since 22.6.0:
+  * lib,src: drop --experimental-network-imports
+  * http: add diagnostics channel http.client.request.error
+  * deps: V8: backport 7857eb34db42
+  * stream: expose DuplexPair API
+  * test_runner: fix support watch with run(), add globPatterns option
+  * meta: add jake to collaborators
+  * test_runner: refactor snapshots to get file from context
+  * test_runner: add context.filePath
+
+- Changes since 22.5.0:
+  * http: expose websockets
+  * lib: add node:sqlite module
+  * module: add __esModule to require()'d ESM
+  * path: add matchesGlob method
+  * process: port on-exit-leak-free to core
+  * stream: pipeline wait for close before calling the callback
+  * test_runner: support glob matching coverage files
+  * worker: add postMessageToThread
+
+- Changes since 22.4.1:
+  * (CVE-2024-36138, bsc#1227560) - Bypass incomplete fix of CVE-2024-27980 (High)
+  * (CVE-2024-22020, bsc#1227554) - Bypass network import restriction via data URL (Medium)
+  * (CVE-2024-22018, bsc#1227562) - fs.lstat bypasses permission model (Low)
+  * (CVE-2024-36137, bsc#1227561) - fs.fchown/fchmod bypasses permission model (Low)
+  * (CVE-2024-37372, bsc#1227563) - Permission model improperly processes UNC paths (Low)
+
+- Changes since 22.4.0:
+  * deps,lib,src: add experimental web storage
+  * doc: doc-only deprecate OpenSSL engine-based APIs
+  * inspector: fix disable async hooks on Debugger.setAsyncCallStackDepth
+  * lib: add diagnostics_channel events to module loading
+  * util: support --no- for argument with boolean type for parseArgs
+
+
+- fix_ci_tests.patch: refreshed, add compat for c-ares 1.30
+- linker_lto_jobs.patch, versioned.patch, qemu_timeouts_arches.patch: refreshed
+- nodejs.keyring: add C0D6248439F1D5604AAFFB4021D900FFDB233756
+
+-------------------------------------------------------------------
 Fri Jun 14 10:58:52 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.3.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:21:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1:
+  * Add support for Python 3.12.
+- drop support-python-312.patch (upstream)
+- add py313.patch: fix test failures with 3.13
+
+-------------------------------------------------------------------
 Mon Mar 25 01:42:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't use rm -f in %prep, it hides failures.
@@ -62,31 +70,31 @@ Mon Mar  4 12:24:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Jun 23 13:35:29 UTC 2017 - aloisio@gmx.com
 
 - Update to 3.2.0
-  * Drop support for Python 2.6 and 3.2 and add support for 
+  * Drop support for Python 2.6 and 3.2 and add support for
     Python 3.6.
   * Run tests with pypy and pypy3 as well.
   * Host docs at https://zconfig.readthedocs.io
-  * BaseLoader is now an abstract class that cannot be 
+  * BaseLoader is now an abstract class that cannot be
     instantiated.
-  * Allow nan, inf and -inf values for floats in configurations. 
+  * Allow nan, inf and -inf values for floats in configurations.
     See https://github.com/zopefoundation/ZConfig/issues/16.
-  * Scripts zconfig (for schema validation) and 
+  * Scripts zconfig (for schema validation) and
     zconfig_schema2html are ported to Python 3.
-  * A new ZConfig.sphinx Sphinx extension facilitates 
-    automatically documenting ZConfig components using their 
-    description and examples in Sphinx documentation. See 
+  * A new ZConfig.sphinx Sphinx extension facilitates
+    automatically documenting ZConfig components using their
+    description and examples in Sphinx documentation. See
     https://github.com/zopefoundation/ZConfig/pull/25.
-  * Simplify internal schema processing of max and min 
+  * Simplify internal schema processing of max and min
     occurrence values. See
     https://github.com/zopefoundation/ZConfig/issues/15.
-  * Almost all uses of type as a parameter name have been 
-    replaced with type_ to avoid shadowing a builtin. These were 
+  * Almost all uses of type as a parameter name have been
+    replaced with type_ to avoid shadowing a builtin. These were
     typically not public APIs and weren’t expected to be called
     with  keyword arguments so there should not be any
     user-visible  changes.
     See https://github.com/zopefoundation/ZConfig/issues/17
   3.1.0:
-  * Add ability to do variable substitution from environment 
+  * Add ability to do variable substitution from environment
     variables using $() syntax.
 
 - Converted to single-spec

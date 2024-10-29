@@ -32,4 +32,30 @@
   * GO-2024-3204 (forwarded request 1215241 from jfkw)</comment>
     <requestid>1215376</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e7914e0e3c56f0cf1b5fb8be221c08a</srcmd5>
+    <version>0.0.20241028T152002</version>
+    <time>1730208907</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241028T152002 2024-10-28T15:20:02Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated:
+  * GO-2024-3207
+  * GO-2024-3208
+  * GO-2024-3210
+  * GO-2024-3211
+  * GO-2024-3212
+  * GO-2024-3213
+  * GO-2024-3214
+  * GO-2024-3215
+  * GO-2024-3216
+  * GO-2024-3217
+  * GO-2024-3219
+  * GO-2024-3220
+  * GO-2024-3221
+  * GO-2024-3222
+  * GO-2024-3223
+  * GO-2024-3224 (forwarded request 1218850 from jfkw)</comment>
+    <requestid>1218851</requestid>
+  </revision>
 </revisionlist>

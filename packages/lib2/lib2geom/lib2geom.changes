@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 25 12:31:51 UTC 2024 - thod_@gmx.de
+
+- Drop skip_failing_tests.diff and skip_failing_tests_gcc14.diff patches,
+  manually deactivate test for each target
+
+-------------------------------------------------------------------
+Wed Oct 16 13:07:29 UTC 2024 - thod_@gmx.de
+
+- Revert dropping skip_failing_tests.diff and skip_failing_tests_gcc14.diff
+
+-------------------------------------------------------------------
+Mon Oct 14 17:51:25 UTC 2024 - thod_@gmx.de
+
+- Update to version 1.4
+  * The classes Point, Interval and their integer variants have been enhanced
+  * New member functions have been added to the Point, IntPoint and OptRect classes
+  * Several bug fixes, build system improvements
+  * See the full release notes
+    https://gitlab.com/inkscape/lib2geom/-/releases/1.4
+- Drop skip_failing_tests.diff and skip_failing_tests_gcc14.diff patches, fixed upstream
+
+-------------------------------------------------------------------
 Fri Aug  9 11:24:22 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add skip_failing_tests_gcc14.diff to fix more instable

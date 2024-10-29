@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        7.0.1
+Version:        8.0.1
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
@@ -27,11 +27,13 @@ Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module jsonpickle}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module ordered-set >= 4.1.0 with %python-ordered-set < 4.2}
+#BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module orderly-set >= 5.2.2}
 BuildRequires:  %{python_module orjson}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +42,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-ordered-set >= 4.1.0 with python-ordered-set < 4.2)
+Requires:       python-orderly-set >= 5.2.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-PyYAML
@@ -72,7 +74,7 @@ sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.
 
 %check
 # we don't have the (optional) requirement CleverCSV for csv diffing
-donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and csv)"
+donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and csv) or (test_polars)"
 %pytest -k "not ($donttest)"
 
 %post

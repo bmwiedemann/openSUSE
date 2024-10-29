@@ -26,10 +26,10 @@ Patch-status: |
  test/recipes/80-test_ssl_old.t                |  2 +-
  16 files changed, 128 insertions(+), 47 deletions(-)
 
-diff --git a/apps/ecparam.c b/apps/ecparam.c
-index 9e9ad13683..9c66cf2434 100644
---- a/apps/ecparam.c
-+++ b/apps/ecparam.c
+Index: openssl-3.1.7/apps/ecparam.c
+===================================================================
+--- openssl-3.1.7.orig/apps/ecparam.c
++++ openssl-3.1.7/apps/ecparam.c
 @@ -79,6 +79,13 @@ static int list_builtin_curves(BIO *out)
          const char *comment = curves[n].comment;
          const char *sname = OBJ_nid2sn(curves[n].nid);
@@ -44,10 +44,10 @@ index 9e9ad13683..9c66cf2434 100644
          if (comment == NULL)
              comment = "CURVE DESCRIPTION NOT AVAILABLE";
          if (sname == NULL)
-diff --git a/apps/req.c b/apps/req.c
-index 23757044ab..5916914978 100644
---- a/apps/req.c
-+++ b/apps/req.c
+Index: openssl-3.1.7/apps/req.c
+===================================================================
+--- openssl-3.1.7.orig/apps/req.c
++++ openssl-3.1.7/apps/req.c
 @@ -266,7 +266,7 @@ int req_main(int argc, char **argv)
      unsigned long chtype = MBSTRING_ASC, reqflag = 0;
  
@@ -57,11 +57,11 @@ index 23757044ab..5916914978 100644
  #endif
  
      prog = opt_init(argc, argv, req_options);
-diff --git a/providers/common/capabilities.c b/providers/common/capabilities.c
-index ed37e76969..eb836dfa6a 100644
---- a/providers/common/capabilities.c
-+++ b/providers/common/capabilities.c
-@@ -186,9 +186,9 @@ static const OSSL_PARAM param_group_list[][10] = {
+Index: openssl-3.1.7/providers/common/capabilities.c
+===================================================================
+--- openssl-3.1.7.orig/providers/common/capabilities.c
++++ openssl-3.1.7/providers/common/capabilities.c
+@@ -186,9 +186,9 @@ static const OSSL_PARAM param_group_list
      TLS_GROUP_ENTRY("brainpoolP256r1", "brainpoolP256r1", "EC", 25),
      TLS_GROUP_ENTRY("brainpoolP384r1", "brainpoolP384r1", "EC", 26),
      TLS_GROUP_ENTRY("brainpoolP512r1", "brainpoolP512r1", "EC", 27),
@@ -72,11 +72,11 @@ index ed37e76969..eb836dfa6a 100644
  # endif /* OPENSSL_NO_EC */
  # ifndef OPENSSL_NO_DH
      /* Security bit values for FFDHE groups are as per RFC 7919 */
-diff --git a/providers/fips/fipsprov.c b/providers/fips/fipsprov.c
-index 518226dfc6..29438faea8 100644
---- a/providers/fips/fipsprov.c
-+++ b/providers/fips/fipsprov.c
-@@ -298,10 +298,11 @@ static const OSSL_ALGORITHM fips_digests[] = {
+Index: openssl-3.1.7/providers/fips/fipsprov.c
+===================================================================
+--- openssl-3.1.7.orig/providers/fips/fipsprov.c
++++ openssl-3.1.7/providers/fips/fipsprov.c
+@@ -298,10 +298,11 @@ static const OSSL_ALGORITHM fips_digests
       * KECCAK-KMAC-128 and KECCAK-KMAC-256 as hashes are mostly useful for
       * KMAC128 and KMAC256.
       */
@@ -90,7 +90,7 @@ index 518226dfc6..29438faea8 100644
      { NULL, NULL, NULL }
  };
  
-@@ -360,8 +361,9 @@ static const OSSL_ALGORITHM_CAPABLE fips_ciphers[] = {
+@@ -360,8 +361,9 @@ static const OSSL_ALGORITHM_CAPABLE fips
      ALGC(PROV_NAMES_AES_256_CBC_HMAC_SHA256, ossl_aes256cbc_hmac_sha256_functions,
           ossl_cipher_capable_aes_cbc_hmac_sha256),
  #ifndef OPENSSL_NO_DES
@@ -102,7 +102,7 @@ index 518226dfc6..29438faea8 100644
  #endif  /* OPENSSL_NO_DES */
      { { NULL, NULL, NULL }, NULL }
  };
-@@ -373,8 +375,9 @@ static const OSSL_ALGORITHM fips_macs[] = {
+@@ -373,8 +375,9 @@ static const OSSL_ALGORITHM fips_macs[]
  #endif
      { PROV_NAMES_GMAC, FIPS_DEFAULT_PROPERTIES, ossl_gmac_functions },
      { PROV_NAMES_HMAC, FIPS_DEFAULT_PROPERTIES, ossl_hmac_functions },
@@ -114,7 +114,7 @@ index 518226dfc6..29438faea8 100644
      { NULL, NULL, NULL }
  };
  
-@@ -409,8 +412,9 @@ static const OSSL_ALGORITHM fips_keyexch[] = {
+@@ -409,8 +412,9 @@ static const OSSL_ALGORITHM fips_keyexch
  #endif
  #ifndef OPENSSL_NO_EC
      { PROV_NAMES_ECDH, FIPS_DEFAULT_PROPERTIES, ossl_ecdh_keyexch_functions },
@@ -126,7 +126,7 @@ index 518226dfc6..29438faea8 100644
  #endif
      { PROV_NAMES_TLS1_PRF, FIPS_DEFAULT_PROPERTIES,
        ossl_kdf_tls1_prf_keyexch_functions },
-@@ -420,13 +424,15 @@ static const OSSL_ALGORITHM fips_keyexch[] = {
+@@ -420,13 +424,15 @@ static const OSSL_ALGORITHM fips_keyexch
  
  static const OSSL_ALGORITHM fips_signature[] = {
  #ifndef OPENSSL_NO_DSA
@@ -145,7 +145,7 @@ index 518226dfc6..29438faea8 100644
      { PROV_NAMES_ECDSA, FIPS_DEFAULT_PROPERTIES, ossl_ecdsa_signature_functions },
  #endif
      { PROV_NAMES_HMAC, FIPS_DEFAULT_PROPERTIES,
-@@ -456,8 +462,9 @@ static const OSSL_ALGORITHM fips_keymgmt[] = {
+@@ -456,8 +462,9 @@ static const OSSL_ALGORITHM fips_keymgmt
        PROV_DESCS_DHX },
  #endif
  #ifndef OPENSSL_NO_DSA
@@ -157,7 +157,7 @@ index 518226dfc6..29438faea8 100644
  #endif
      { PROV_NAMES_RSA, FIPS_DEFAULT_PROPERTIES, ossl_rsa_keymgmt_functions,
        PROV_DESCS_RSA },
-@@ -466,14 +473,15 @@ static const OSSL_ALGORITHM fips_keymgmt[] = {
+@@ -466,14 +473,15 @@ static const OSSL_ALGORITHM fips_keymgmt
  #ifndef OPENSSL_NO_EC
      { PROV_NAMES_EC, FIPS_DEFAULT_PROPERTIES, ossl_ec_keymgmt_functions,
        PROV_DESCS_EC },
@@ -175,11 +175,11 @@ index 518226dfc6..29438faea8 100644
  #endif
      { PROV_NAMES_TLS1_PRF, FIPS_DEFAULT_PROPERTIES, ossl_kdf_keymgmt_functions,
        PROV_DESCS_TLS1_PRF_SIGN },
-diff --git a/providers/fips/self_test_data.inc b/providers/fips/self_test_data.inc
-index 2057378d3d..4b80bb70b9 100644
---- a/providers/fips/self_test_data.inc
-+++ b/providers/fips/self_test_data.inc
-@@ -177,6 +177,7 @@ static const ST_KAT_DIGEST st_kat_digest_tests[] =
+Index: openssl-3.1.7/providers/fips/self_test_data.inc
+===================================================================
+--- openssl-3.1.7.orig/providers/fips/self_test_data.inc
++++ openssl-3.1.7/providers/fips/self_test_data.inc
+@@ -177,6 +177,7 @@ static const ST_KAT_DIGEST st_kat_digest
  /*- CIPHER TEST DATA */
  
  /* DES3 test data */
@@ -187,7 +187,7 @@ index 2057378d3d..4b80bb70b9 100644
  static const unsigned char des_ede3_cbc_pt[] = {
      0x6B, 0xC1, 0xBE, 0xE2, 0x2E, 0x40, 0x9F, 0x96,
      0xE9, 0x3D, 0x7E, 0x11, 0x73, 0x93, 0x17, 0x2A,
-@@ -197,7 +198,7 @@ static const unsigned char des_ede3_cbc_ct[] = {
+@@ -197,7 +198,7 @@ static const unsigned char des_ede3_cbc_
      0x51, 0x65, 0x70, 0x48, 0x1F, 0x25, 0xB5, 0x0F,
      0x73, 0xC0, 0xBD, 0xA8, 0x5C, 0x8E, 0x0D, 0xA7
  };
@@ -196,7 +196,7 @@ index 2057378d3d..4b80bb70b9 100644
  /* AES-256 GCM test data */
  static const unsigned char aes_256_gcm_key[] = {
      0x92, 0xe1, 0x1d, 0xcd, 0xaa, 0x86, 0x6f, 0x5c,
-@@ -1454,8 +1455,9 @@ static const ST_KAT_PARAM ecdsa_bin_key[] = {
+@@ -1454,8 +1455,9 @@ static const ST_KAT_PARAM ecdsa_bin_key[
  # endif /* OPENSSL_NO_EC2M */
  #endif /* OPENSSL_NO_EC */
  
@@ -215,7 +215,7 @@ index 2057378d3d..4b80bb70b9 100644
  
  /* Hash DRBG inputs for signature KATs */
  static const unsigned char sig_kat_entropyin[] = {
-@@ -1642,6 +1645,7 @@ static const ST_KAT_SIGN st_kat_sign_tests[] = {
+@@ -1642,6 +1645,7 @@ static const ST_KAT_SIGN st_kat_sign_tes
      },
  # endif
  #endif /* OPENSSL_NO_EC */
@@ -223,7 +223,7 @@ index 2057378d3d..4b80bb70b9 100644
  #ifndef OPENSSL_NO_DSA
      {
          OSSL_SELF_TEST_DESC_SIGN_DSA,
-@@ -1654,6 +1658,7 @@ static const ST_KAT_SIGN st_kat_sign_tests[] = {
+@@ -1654,6 +1658,7 @@ static const ST_KAT_SIGN st_kat_sign_tes
          ITM(dsa_expected_sig)
      },
  #endif /* OPENSSL_NO_DSA */
@@ -231,11 +231,11 @@ index 2057378d3d..4b80bb70b9 100644
  };
  
  static const ST_KAT_ASYM_CIPHER st_kat_asym_cipher_tests[] = {
-diff --git a/providers/implementations/signature/rsa_sig.c b/providers/implementations/signature/rsa_sig.c
-index d4261e8f7d..2a5504d104 100644
---- a/providers/implementations/signature/rsa_sig.c
-+++ b/providers/implementations/signature/rsa_sig.c
-@@ -689,6 +689,14 @@ static int rsa_verify_recover(void *vprsactx,
+Index: openssl-3.1.7/providers/implementations/signature/rsa_sig.c
+===================================================================
+--- openssl-3.1.7.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.1.7/providers/implementations/signature/rsa_sig.c
+@@ -705,6 +705,14 @@ static int rsa_verify_recover(void *vprs
  {
      PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
      int ret;
@@ -250,7 +250,7 @@ index d4261e8f7d..2a5504d104 100644
  
      if (!ossl_prov_is_running())
          return 0;
-@@ -777,6 +790,14 @@ static int rsa_verify(void *vprsactx, const unsigned char *sig, size_t siglen,
+@@ -793,6 +801,14 @@ static int rsa_verify(void *vprsactx, co
  {
      PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
      size_t rslen;
@@ -265,10 +265,10 @@ index d4261e8f7d..2a5504d104 100644
  
      if (!ossl_prov_is_running())
          return 0;
-diff --git a/ssl/ssl_ciph.c b/ssl/ssl_ciph.c
-index a5e60e8839..f9af07d12b 100644
---- a/ssl/ssl_ciph.c
-+++ b/ssl/ssl_ciph.c
+Index: openssl-3.1.7/ssl/ssl_ciph.c
+===================================================================
+--- openssl-3.1.7.orig/ssl/ssl_ciph.c
++++ openssl-3.1.7/ssl/ssl_ciph.c
 @@ -356,6 +356,9 @@ int ssl_load_ciphers(SSL_CTX *ctx)
      ctx->disabled_mkey_mask = 0;
      ctx->disabled_auth_mask = 0;
@@ -279,10 +279,10 @@ index a5e60e8839..f9af07d12b 100644
      /*
       * We ignore any errors from the fetches below. They are expected to fail
       * if theose algorithms are not available.
-diff --git a/test/acvp_test.c b/test/acvp_test.c
-index fee880d441..13d7a0ea8b 100644
---- a/test/acvp_test.c
-+++ b/test/acvp_test.c
+Index: openssl-3.1.7/test/acvp_test.c
+===================================================================
+--- openssl-3.1.7.orig/test/acvp_test.c
++++ openssl-3.1.7/test/acvp_test.c
 @@ -1476,6 +1476,7 @@ int setup_tests(void)
                    OSSL_NELEM(dh_safe_prime_keyver_data));
  #endif /* OPENSSL_NO_DH */
@@ -299,11 +299,11 @@ index fee880d441..13d7a0ea8b 100644
  
  #ifndef OPENSSL_NO_EC
      ADD_ALL_TESTS(ecdsa_keygen_test, OSSL_NELEM(ecdsa_keygen_data));
-diff --git a/test/endecode_test.c b/test/endecode_test.c
-index 9a437d8c64..53385028fc 100644
---- a/test/endecode_test.c
-+++ b/test/endecode_test.c
-@@ -1407,6 +1407,7 @@ int setup_tests(void)
+Index: openssl-3.1.7/test/endecode_test.c
+===================================================================
+--- openssl-3.1.7.orig/test/endecode_test.c
++++ openssl-3.1.7/test/endecode_test.c
+@@ -1424,6 +1424,7 @@ int setup_tests(void)
           * so no legacy tests.
           */
  #endif
@@ -311,7 +311,7 @@ index 9a437d8c64..53385028fc 100644
  #ifndef OPENSSL_NO_DSA
          ADD_TEST_SUITE(DSA);
          ADD_TEST_SUITE_PARAMS(DSA);
-@@ -1417,6 +1418,7 @@ int setup_tests(void)
+@@ -1434,6 +1435,7 @@ int setup_tests(void)
          ADD_TEST_SUITE_PROTECTED_PVK(DSA);
  # endif
  #endif
@@ -319,9 +319,9 @@ index 9a437d8c64..53385028fc 100644
  #ifndef OPENSSL_NO_EC
          ADD_TEST_SUITE(EC);
          ADD_TEST_SUITE_PARAMS(EC);
-@@ -1431,10 +1433,12 @@ int setup_tests(void)
-         ADD_TEST_SUITE(ECExplicitTri2G);
-         ADD_TEST_SUITE_LEGACY(ECExplicitTri2G);
+@@ -1454,10 +1456,12 @@ int setup_tests(void)
+             ADD_TEST_SUITE(SM2);
+         }
  # endif
 +    if (is_fips == 0) {
          ADD_TEST_SUITE(ED25519);
@@ -332,10 +332,10 @@ index 9a437d8c64..53385028fc 100644
          /*
           * ED25519, ED448, X25519 and X448 have no support for
           * PEM_write_bio_PrivateKey_traditional(), so no legacy tests.
-diff --git a/test/evp_libctx_test.c b/test/evp_libctx_test.c
-index 2448c35a14..a7913cda4c 100644
---- a/test/evp_libctx_test.c
-+++ b/test/evp_libctx_test.c
+Index: openssl-3.1.7/test/evp_libctx_test.c
+===================================================================
+--- openssl-3.1.7.orig/test/evp_libctx_test.c
++++ openssl-3.1.7/test/evp_libctx_test.c
 @@ -21,6 +21,7 @@
   */
  #include "internal/deprecated.h"
@@ -366,10 +366,10 @@ index 2448c35a14..a7913cda4c 100644
  #endif
      return 1;
  }
-diff --git a/test/recipes/15-test_gendsa.t b/test/recipes/15-test_gendsa.t
-index b495b08bda..69bd299521 100644
---- a/test/recipes/15-test_gendsa.t
-+++ b/test/recipes/15-test_gendsa.t
+Index: openssl-3.1.7/test/recipes/15-test_gendsa.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/15-test_gendsa.t
++++ openssl-3.1.7/test/recipes/15-test_gendsa.t
 @@ -24,7 +24,7 @@ use lib bldtop_dir('.');
  plan skip_all => "This test is unsupported in a no-dsa build"
      if disabled("dsa");
@@ -379,11 +379,11 @@ index b495b08bda..69bd299521 100644
  
  plan tests =>
      ($no_fips ? 0 : 2)          # FIPS related tests
-diff --git a/test/recipes/20-test_cli_fips.t b/test/recipes/20-test_cli_fips.t
-index 6d3c5ba1bb..2ba47b5fca 100644
---- a/test/recipes/20-test_cli_fips.t
-+++ b/test/recipes/20-test_cli_fips.t
-@@ -273,8 +273,7 @@ SKIP: {
+Index: openssl-3.1.7/test/recipes/20-test_cli_fips.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/20-test_cli_fips.t
++++ openssl-3.1.7/test/recipes/20-test_cli_fips.t
+@@ -278,8 +278,7 @@ SKIP: {
  }
  
  SKIP : {
@@ -393,10 +393,10 @@ index 6d3c5ba1bb..2ba47b5fca 100644
  
      subtest DSA => sub {
          my $testtext_prefix = 'DSA';
-diff --git a/test/recipes/30-test_evp.t b/test/recipes/30-test_evp.t
-index 9d7040ced2..f8beb538d4 100644
---- a/test/recipes/30-test_evp.t
-+++ b/test/recipes/30-test_evp.t
+Index: openssl-3.1.7/test/recipes/30-test_evp.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/30-test_evp.t
++++ openssl-3.1.7/test/recipes/30-test_evp.t
 @@ -42,10 +42,8 @@ my @files = qw(
                  evpciph_aes_cts.txt
                  evpciph_aes_wrap.txt
@@ -408,19 +408,19 @@ index 9d7040ced2..f8beb538d4 100644
                  evpkdf_pbkdf1.txt
                  evpkdf_pbkdf2.txt
                  evpkdf_ss.txt
-@@ -65,12 +63,6 @@ push @files, qw(
-                 evppkey_ffdhe.txt
+@@ -66,12 +64,6 @@ push @files, qw(
                  evppkey_dh.txt
                 ) unless $no_dh;
--push @files, qw(
+ push @files, qw(
 -                evpkdf_x942_des.txt
 -                evpmac_cmac_des.txt
 -               ) unless $no_des;
 -push @files, qw(evppkey_dsa.txt) unless $no_dsa;
 -push @files, qw(evppkey_ecx.txt) unless $no_ec;
- push @files, qw(
+-push @files, qw(
                  evppkey_ecc.txt
                  evppkey_ecdh.txt
+                 evppkey_ecdsa.txt
 @@ -91,6 +83,7 @@ my @defltfiles = qw(
                       evpciph_cast5.txt
                       evpciph_chacha.txt
@@ -447,10 +447,10 @@ index 9d7040ced2..f8beb538d4 100644
  push @defltfiles, qw(evppkey_brainpool.txt) unless $no_ec;
  push @defltfiles, qw(evppkey_sm2.txt) unless $no_sm2;
  
-diff --git a/test/recipes/30-test_evp_data/evpmac_common.txt b/test/recipes/30-test_evp_data/evpmac_common.txt
-index 93195df97c..315413cd9b 100644
---- a/test/recipes/30-test_evp_data/evpmac_common.txt
-+++ b/test/recipes/30-test_evp_data/evpmac_common.txt
+Index: openssl-3.1.7/test/recipes/30-test_evp_data/evpmac_common.txt
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/30-test_evp_data/evpmac_common.txt
++++ openssl-3.1.7/test/recipes/30-test_evp_data/evpmac_common.txt
 @@ -340,6 +340,7 @@ IV = 7AE8E2CA4EC500012E58495C
  Input = 68F2E77696CE7AE8E2CA4EC588E541002E58495C08000F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D0007
  Result = MAC_INIT_ERROR
@@ -482,7 +482,7 @@ index 93195df97c..315413cd9b 100644
  MAC = KMAC256
  Key = 404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F
  Input = 00010203
-@@ -371,12 +375,14 @@ Output = 20C570C31346F703C9AC36C61C03CB64C3970D0CFC787E9B79599D273A68D2F7F69D4CC
+@@ -371,12 +375,14 @@ Output = 20C570C31346F703C9AC36C61C03CB6
  OutputSize = 64
  BlockSize = 136
  
@@ -520,7 +520,7 @@ index 93195df97c..315413cd9b 100644
  MAC = KMAC128
  Key = 404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F
  Input = 000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7
-@@ -407,6 +416,7 @@ Output = 47026C7CD793084AA0283C253EF658490C0DB61438B8326FE9BDDF281B83AE0F
+@@ -407,6 +416,7 @@ Output = 47026C7CD793084AA0283C253EF6584
  XOF = 1
  Ctrl = size:32
  
@@ -575,7 +575,7 @@ index 93195df97c..315413cd9b 100644
  MAC = KMAC128
  Key = 404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F
  Input = 000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7
-@@ -462,6 +478,7 @@ Output = 47026C7CD793084AA0283C253EF658490C0DB61438B8326FE9BDDF281B83AE0F
+@@ -462,6 +478,7 @@ Output = 47026C7CD793084AA0283C253EF6584
  Ctrl = xof:1
  Ctrl = size:32
  
@@ -623,10 +623,10 @@ index 93195df97c..315413cd9b 100644
  MAC = KMAC256
  Key = 404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F
  Input = 000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7
-diff --git a/test/recipes/80-test_cms.t b/test/recipes/80-test_cms.t
-index 40dd585c18..cbec426137 100644
---- a/test/recipes/80-test_cms.t
-+++ b/test/recipes/80-test_cms.t
+Index: openssl-3.1.7/test/recipes/80-test_cms.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/80-test_cms.t
++++ openssl-3.1.7/test/recipes/80-test_cms.t
 @@ -96,7 +96,7 @@ my @smime_pkcs7_tests = (
        \&final_compare
      ],
@@ -699,7 +699,7 @@ index 40dd585c18..cbec426137 100644
        [ "{cmd1}", @prov, "-sign", "-in", $smcont,
          "-signer", $smrsa1,
          "-signer", catfile($smdir, "smrsa2.pem"),
-@@ -248,7 +248,7 @@ my @smime_pkcs7_tests = (
+@@ -250,7 +250,7 @@ my @smime_pkcs7_tests = (
  
  my @smime_cms_tests = (
  
@@ -708,7 +708,7 @@ index 40dd585c18..cbec426137 100644
        [ "{cmd1}", @prov, "-sign", "-in", $smcont, "-outform", "DER",
          "-nodetach", "-keyid",
          "-signer", $smrsa1,
-@@ -261,7 +261,7 @@ my @smime_cms_tests = (
+@@ -263,7 +263,7 @@ my @smime_cms_tests = (
        \&final_compare
      ],
  
@@ -717,7 +717,7 @@ index 40dd585c18..cbec426137 100644
        [ "{cmd1}", @prov, "-sign", "-in", $smcont, "-outform", "PEM", "-nodetach",
          "-signer", $smrsa1,
          "-signer", catfile($smdir, "smrsa2.pem"),
-@@ -371,7 +371,7 @@ my @smime_cms_tests = (
+@@ -373,7 +373,7 @@ my @smime_cms_tests = (
        \&final_compare
      ],
  
@@ -726,10 +726,10 @@ index 40dd585c18..cbec426137 100644
        [ "{cmd1}", @prov, "-EncryptedData_encrypt", "-in", $smcont, "-outform", "PEM",
          "-des3", "-secretkey", "000102030405060708090A0B0C0D0E0F1011121314151617",
          "-stream", "-out", "{output}.cms" ],
-diff --git a/test/recipes/80-test_ssl_old.t b/test/recipes/80-test_ssl_old.t
-index 50b74a1e29..e2dcb68fb5 100644
---- a/test/recipes/80-test_ssl_old.t
-+++ b/test/recipes/80-test_ssl_old.t
+Index: openssl-3.1.7/test/recipes/80-test_ssl_old.t
+===================================================================
+--- openssl-3.1.7.orig/test/recipes/80-test_ssl_old.t
++++ openssl-3.1.7/test/recipes/80-test_ssl_old.t
 @@ -436,7 +436,7 @@ sub testssl {
          my @exkeys = ();
          my $ciphers = '-PSK:-SRP:@SECLEVEL=0';
@@ -739,6 +739,3 @@ index 50b74a1e29..e2dcb68fb5 100644
              push @exkeys, "-s_cert", "certD.ss", "-s_key", $Dkey;
          }
  
--- 
-2.41.0
-

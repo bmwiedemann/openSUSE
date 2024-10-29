@@ -43,4 +43,14 @@
     the new version on macOS.</comment>
     <requestid>1138496</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37d9d3e5d72077e289e36b552c0f3abf</srcmd5>
+    <version>2.9.0</version>
+    <time>1730208897</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.</comment>
+    <requestid>1218840</requestid>
+  </revision>
 </revisionlist>

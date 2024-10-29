@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:38:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.2:
+  * Fix {meth}`BaseConverter.register_structure_hook` and
+    {meth}`BaseConverter.register_unstructure_hook` type hints.
+  * Fix {meth}`BaseConverter.register_structure_hook_factory` and
+    {meth}`BaseConverter.register_unstructure_hook_factory` type
+    hints.
+  * **Potentially breaking**: Unstructuring hooks for
+    `typing.Any` are consistent now: values are unstructured
+    using their runtime type.
+  * Introduce {meth}`BaseConverter.get_structure_hook` and
+    {meth}`BaseConverter.get_unstructure_hook` methods.
+  * Enhance the {func}`cattrs.cols.is_mapping` predicate function
+    to also cover virtual subclasses of `abc.Mapping`.
+  * Introduce the _msgspec_ {mod}`preconf converter
+    <cattrs.preconf.msgspec>`.
+  * Add support for PEP 695 type aliases.
+  * Add support for PEP 696 `TypeVar`s with defaults.
+  * Add support for named tuples with type metadata
+    (`typing.NamedTuple`).
+  * Add support for optionally un/unstructuring named tuples
+    using dictionaries.
+  * PEP 695 generics are now tested.
+  * Imports are now sorted using Ruff.
+  * Tests are run with the pytest-xdist plugin by default.
+  * Rework the introductory parts of the documentation,
+    introducing the Basics section.
+  * The documentation has been significantly reworked.
+  * The docs now use the Inter font.
+  * Make type annotations for `include_subclasses` and
+    `tagged_union` strategies more lenient.
+
+-------------------------------------------------------------------
 Mon Apr  8 10:41:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons

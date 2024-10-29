@@ -15,4 +15,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182470</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cacbf1d4d20e57f8a03a3c1775dc777c</srcmd5>
+    <version>22.10.0</version>
+    <time>1730208746</time>
+    <user>anag+factory</user>
+    <comment>- Update to 22.10.0:
+  * crypto: add KeyObject.prototype.toCryptoKey
+  * crypto: add Date fields for validTo and validFrom
+  * http2: expose nghttp2_option_set_stream_reset_rate_limit as an option
+  * lib: propagate aborted state to dependent signals before firing events
+  * module: support loading entrypoint as url
+  * module: implement flushCompileCache()
+  * module: throw when invalid argument is passed to enableCompileCache()
+  * module: write compile cache to temporary file and then rename it
+  * process: add process.features.require_module
+  * process: add process.features.typescript
+  * test_runner: support custom arguments in run()
+  * test_runner: add 'test:summary' event
+  * test_runner: add support for coverage via run()
+  * worker: add markAsUncloneable api
+- Changes since 22.9.0:
+  * util: getCallSite has been introduced. It allows users to retrieve the stacktrace of the current execution.
+  * tls: Exposes X509_V_FLAG_PARTIAL_CHAIN to tls.createSecureContext
+  * src: create handle scope in FastInternalModuleStat
+  * stream: relocate the status checking code in the onwritecomplete
+  * repl: doc-deprecate instantiating node:repl classes without new
+  * zlib: deprecate instantiating classes without new
+- Changes since 22.8.0:
+  * vm: New option for vm.createContext() to create a context with a freezable globalThis
+  * src,lib: add performance.uvMetricsInfo
+  * net: exclude ipv6 loopback addresses from server.listen
+  * test_runner: support running tests in process
+  * test_runner: defer inheriting hooks until run()
+- Changes since 22.7.0:
+  * Experimental transform types support</comment>
+    <requestid>1218838</requestid>
+  </revision>
 </revisionlist>

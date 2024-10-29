@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-zope.hookable
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
@@ -27,12 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.hookable%{psuffix}
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.hookable
-Source:         https://files.pythonhosted.org/packages/source/z/zope.hookable/zope.hookable-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.hookable/zope_hookable-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -70,7 +70,7 @@ BuildArch:      noarch
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n zope.hookable-%{version}
+%autosetup -p1 -n zope_hookable-%{version}
 rm -rf zope.hookable.egg-info
 
 %build

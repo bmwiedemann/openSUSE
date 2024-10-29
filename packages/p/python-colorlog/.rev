@@ -108,4 +108,15 @@
   * Documented &quot;bright&quot; colours in the README.</comment>
     <requestid>1142776</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>842df7a557814b703df97ae128b7adee</srcmd5>
+    <version>6.8.2</version>
+    <time>1730208952</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Set this package to noarch, since it doesn't ship any arch-dep files.
+- Add patch support-python-313.patch:
+  * Support Python 3.13's logging changes.</comment>
+    <requestid>1218906</requestid>
+  </revision>
 </revisionlist>

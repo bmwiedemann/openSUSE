@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 08:49:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/dbus-launch insted of dbus-1-x11: Do not rely on
+  legacy dbus-1-x11 package, which is going away after moving to
+  dbus-broker.
+
+-------------------------------------------------------------------
 Fri Oct 18 12:10:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not ship rcFOO symlinks for CODE 16 (PED-266).

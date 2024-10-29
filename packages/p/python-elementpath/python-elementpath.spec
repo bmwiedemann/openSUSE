@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elementpath
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        XPath 1.0/20 parsers and selectors for ElementTree and lxml
 License:        MIT

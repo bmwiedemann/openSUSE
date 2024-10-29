@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 28 21:53:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6:
+  * Make tests compatible with Python 3.13 + add support for that
+    version.
+  * Drop support for Python 3.7.
+
+-------------------------------------------------------------------
 Fri Oct  4 04:40:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing psuffix to name for multibuild. 

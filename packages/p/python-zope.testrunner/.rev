@@ -229,4 +229,15 @@
     <comment>- Add missing psuffix to name for multibuild.</comment>
     <requestid>1205614</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>10a19aebd739142d3bbb930bbc556586</srcmd5>
+    <version>6.6</version>
+    <time>1730208928</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.6:
+  * Make tests compatible with Python 3.13 + add support for that
+    version.
+  * Drop support for Python 3.7.</comment>
+    <requestid>1218876</requestid>
+  </revision>
 </revisionlist>

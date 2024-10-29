@@ -304,4 +304,24 @@
 </comment>
     <requestid>1185182</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>932443611dcd823a06c8150242742a89</srcmd5>
+    <version>7.1.1</version>
+    <time>1730208735</time>
+    <user>anag+factory</user>
+    <comment>- Add sphinx8.patch to build doc with latest sphinx, gh#RDFLib/rdflib#2956
+- Update to 7.1.1:
+  * This minor release removes the dependency on some only Python
+    packages, in particular six which is a problem for some Linux
+    distributions that ship RDFLib.
+  * Replace html5lib with html5rdf, make it an optional dependency PR #2951
+  * Prevent crash when comparing ill-typed numeric types. PR #2949
+  * Fix parser bug and add test PR #2943
+  * Fix import ordering in get_merged_prs. PR #2947
+- 7.1.0:
+  * There are no major changes in this release over 7.0.0 and this
+    release can be used in place of 7.0.0 without much worry about
+    altered behaviour.</comment>
+    <requestid>1218819</requestid>
+  </revision>
 </revisionlist>

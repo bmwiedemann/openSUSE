@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-altair
 Version:        5.2.0
 Release:        0

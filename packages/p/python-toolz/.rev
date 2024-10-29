@@ -142,4 +142,16 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1180115</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94b2cc749f75218e5164ab7a84fa7f61</srcmd5>
+    <version>1.0.0</version>
+    <time>1730208930</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Test fixes for changes in recent upstream Python
+  * Drop Python 3.7
+  * Test against Python 3.13
+  * Update docs</comment>
+    <requestid>1218880</requestid>
+  </revision>
 </revisionlist>

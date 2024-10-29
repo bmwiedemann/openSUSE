@@ -114,4 +114,27 @@ source URL fixed</comment>
   * Do not a monkey patch for assertRaisesRegexp, it is not required.</comment>
     <requestid>1161215</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a498822f31630b9c37f1be7a52367748</srcmd5>
+    <version>4.1</version>
+    <time>1730208934</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1:
+  * Add support for Python 3.12.
+- drop support-python-312.patch (upstream)
+- add py313.patch: fix test failures with 3.13
+
+  * Drop support for Python 2.6 and 3.2 and add support for
+  * BaseLoader is now an abstract class that cannot be
+  * Allow nan, inf and -inf values for floats in configurations.
+  * Scripts zconfig (for schema validation) and
+  * A new ZConfig.sphinx Sphinx extension facilitates
+    automatically documenting ZConfig components using their
+    description and examples in Sphinx documentation. See
+  * Simplify internal schema processing of max and min
+  * Almost all uses of type as a parameter name have been
+    replaced with type_ to avoid shadowing a builtin. These were
+  * Add ability to do variable substitution from environment</comment>
+    <requestid>1218884</requestid>
+  </revision>
 </revisionlist>

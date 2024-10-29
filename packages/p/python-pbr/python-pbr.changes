@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 12:13:48 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use pytest to run tests to do not depend on python-stestr
+
+-------------------------------------------------------------------
 Sat Aug 31 11:49:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

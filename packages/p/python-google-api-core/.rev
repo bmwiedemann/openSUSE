@@ -371,4 +371,17 @@
     <comment></comment>
     <requestid>1206129</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d88fc2e7dfbd03e4f0ebfeac322f3375</srcmd5>
+    <version>2.21.0</version>
+    <time>1730208893</time>
+    <user>anag+factory</user>
+    <comment>- Resurrect python-google-api-core-no-mock.patch and refresh it, it is
+  still required until 2.22.0.
+
+- Update to 2.21.0
+  * Add support for asynchronous long running operations (#724)
+- Drop python-google-api-core-no-mock.patch, merged upstream</comment>
+    <requestid>1218907</requestid>
+  </revision>
 </revisionlist>

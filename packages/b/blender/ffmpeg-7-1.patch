@@ -13,12 +13,12 @@ we check directly the return of av_seek_frame.
  source/blender/imbuf/intern/anim_movie.cc | 11 +++++------
  2 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/intern/ffmpeg/ffmpeg_compat.h b/intern/ffmpeg/ffmpeg_compat.h
-index 91ea1701db6..78778482e8d 100644
---- a/intern/ffmpeg/ffmpeg_compat.h
-+++ b/intern/ffmpeg/ffmpeg_compat.h
-@@ -141,6 +141,15 @@ int64_t av_get_frame_duration_in_pts_units(const AVFrame *picture)
- #endif
+Index: blender-4.2.3/intern/ffmpeg/ffmpeg_compat.h
+===================================================================
+--- blender-4.2.3.orig/intern/ffmpeg/ffmpeg_compat.h
++++ blender-4.2.3/intern/ffmpeg/ffmpeg_compat.h
+@@ -161,6 +161,15 @@ FFMPEG_INLINE size_t ffmpeg_get_buffer_a
+   return align;
  }
  
 +FFMPEG_INLINE
@@ -33,11 +33,11 @@ index 91ea1701db6..78778482e8d 100644
  /* -------------------------------------------------------------------- */
  /** \name Deinterlace code block
   *
-diff --git a/source/blender/imbuf/intern/anim_movie.cc b/source/blender/imbuf/intern/anim_movie.cc
-index 3d51969dd46..bb07a8bb14c 100644
---- a/source/blender/imbuf/intern/anim_movie.cc
-+++ b/source/blender/imbuf/intern/anim_movie.cc
-@@ -653,7 +653,7 @@ static void ffmpeg_decode_store_frame_pts(ImBufAnim *anim)
+Index: blender-4.2.3/source/blender/imbuf/intern/anim_movie.cc
+===================================================================
+--- blender-4.2.3.orig/source/blender/imbuf/intern/anim_movie.cc
++++ blender-4.2.3/source/blender/imbuf/intern/anim_movie.cc
+@@ -657,7 +657,7 @@ static void ffmpeg_decode_store_frame_pt
  {
    anim->cur_pts = av_get_pts_from_frame(anim->pFrame);
  
@@ -46,7 +46,7 @@ index 3d51969dd46..bb07a8bb14c 100644
      anim->cur_key_frame_pts = anim->cur_pts;
    }
  
-@@ -1032,11 +1032,10 @@ static int ffmpeg_seek_to_key_frame(ImBufAnim *anim,
+@@ -1036,11 +1036,10 @@ static int ffmpeg_seek_to_key_frame(ImBu
  
      AVFormatContext *format_ctx = anim->pFormatCtx;
  
@@ -62,6 +62,3 @@ index 3d51969dd46..bb07a8bb14c 100644
        av_log(anim->pFormatCtx,
               AV_LOG_DEBUG,
               "Adjusted final seek seek_pos = %" PRId64 "\n",
--- 
-2.30.2
-

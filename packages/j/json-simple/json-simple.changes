@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Feb 21 10:48:04 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Wed Sep 13 05:24:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Mar 28 08:51:41 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add json-simple.changes for spec currently at v1.1.1
+

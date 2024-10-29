@@ -10,11 +10,11 @@ Patch-id: 85
  crypto/rsa/rsa_pss.c  | 16 ++++++++++++++++
  2 files changed, 44 insertions(+)
 
-diff --git a/crypto/rsa/rsa_oaep.c b/crypto/rsa/rsa_oaep.c
-index b2f7f7dc4b..af2b0b026c 100644
---- a/crypto/rsa/rsa_oaep.c
-+++ b/crypto/rsa/rsa_oaep.c
-@@ -78,9 +78,23 @@ int ossl_rsa_padding_add_PKCS1_OAEP_mgf1_ex2(OSSL_LIB_CTX *libctx,
+Index: openssl-3.1.7/crypto/rsa/rsa_oaep.c
+===================================================================
+--- openssl-3.1.7.orig/crypto/rsa/rsa_oaep.c
++++ openssl-3.1.7/crypto/rsa/rsa_oaep.c
+@@ -78,9 +78,23 @@ int ossl_rsa_padding_add_PKCS1_OAEP_mgf1
          return 0;
  #endif
      }
@@ -38,7 +38,7 @@ index b2f7f7dc4b..af2b0b026c 100644
      mdlen = EVP_MD_get_size(md);
      if (mdlen <= 0) {
          ERR_raise(ERR_LIB_RSA, RSA_R_INVALID_LENGTH);
-@@ -203,9 +217,23 @@ int RSA_padding_check_PKCS1_OAEP_mgf1(unsigned char *to, int tlen,
+@@ -203,9 +217,23 @@ int RSA_padding_check_PKCS1_OAEP_mgf1(un
  #endif
      }
  
@@ -61,12 +61,12 @@ index b2f7f7dc4b..af2b0b026c 100644
 +
      mdlen = EVP_MD_get_size(md);
  
-     if (tlen <= 0 || flen <= 0)
-diff --git a/crypto/rsa/rsa_pss.c b/crypto/rsa/rsa_pss.c
-index bb46ec64c7..c0fdf232da 100644
---- a/crypto/rsa/rsa_pss.c
-+++ b/crypto/rsa/rsa_pss.c
-@@ -53,6 +53,14 @@ int RSA_verify_PKCS1_PSS_mgf1(RSA *rsa, const unsigned char *mHash,
+     if (tlen <= 0 || flen <= 0 || mdlen <= 0)
+Index: openssl-3.1.7/crypto/rsa/rsa_pss.c
+===================================================================
+--- openssl-3.1.7.orig/crypto/rsa/rsa_pss.c
++++ openssl-3.1.7/crypto/rsa/rsa_pss.c
+@@ -53,6 +53,14 @@ int RSA_verify_PKCS1_PSS_mgf1(RSA *rsa,
      if (mgf1Hash == NULL)
          mgf1Hash = Hash;
  
@@ -81,7 +81,7 @@ index bb46ec64c7..c0fdf232da 100644
      hLen = EVP_MD_get_size(Hash);
      if (hLen < 0)
          goto err;
-@@ -168,6 +176,14 @@ int RSA_padding_add_PKCS1_PSS_mgf1(RSA *rsa, unsigned char *EM,
+@@ -168,6 +176,14 @@ int RSA_padding_add_PKCS1_PSS_mgf1(RSA *
      if (mgf1Hash == NULL)
          mgf1Hash = Hash;
  
@@ -96,6 +96,3 @@ index bb46ec64c7..c0fdf232da 100644
      hLen = EVP_MD_get_size(Hash);
      if (hLen < 0)
          goto err;
--- 
-2.41.0
-

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 29 04:42:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Resurrect python-google-api-core-no-mock.patch and refresh it, it is
+  still required until 2.22.0.
+
+-------------------------------------------------------------------
+Mon Oct 28 12:59:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.21.0
+  * Add support for asynchronous long running operations (#724)
+- Drop python-google-api-core-no-mock.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Oct  7 11:43:06 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - fix requirements
