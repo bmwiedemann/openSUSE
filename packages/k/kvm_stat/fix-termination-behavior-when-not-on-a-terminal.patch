@@ -1,0 +1,158 @@
+[PATCH] tools/kvm_stat: fix termination behavior when not on a terminal
+
+For the -l and -L options (logging mode), replace the use of the
+KeyboardInterrupt exception to gracefully terminate in favor
+of handling the SIGINT and SIGTERM signals.
+
+This allows the program to be run from scripts and still be
+signaled to gracefully terminate without an interactive terminal.
+
+Before this change, something like this script:
+
+kvm_stat -p 85896 -d -t -s 1 -c -L kvm_stat_85896.csv &
+sleep 10
+pkill -TERM -P $$
+
+would yield an empty log:
+-rw-r--r-- 1 root root     0 Aug  7 16:17 kvm_stat_85896.csv
+
+after this commit:
+-rw-r--r-- 1 root root 13466 Aug  7 16:57 kvm_stat_85896.csv
+
+Signed-off-by: Claudio Fontana <cfontana@suse.de>
+Cc: Dario Faggioli <dfaggioli@suse.com>
+Cc: Fabiano Rosas <farosas@suse.de>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ tools/kvm/kvm_stat/kvm_stat     | 64 ++++++++++++++++-----------------
+ tools/kvm/kvm_stat/kvm_stat.txt | 12 +++++++
+ 2 files changed, 44 insertions(+), 32 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 15bf00e79e3f..2cf2da3ed002 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -297,8 +297,6 @@ IOCTL_NUMBERS = {
+     'RESET':       0x00002403,
+ }
+ 
+-signal_received = False
+-
+ ENCODING = locale.getpreferredencoding(False)
+ TRACE_FILTER = re.compile(r'^[^\(]*$')
+ 
+@@ -1598,7 +1596,19 @@ class CSVFormat(object):
+ 
+ def log(stats, opts, frmt, keys):
+     """Prints statistics as reiterating key block, multiple value blocks."""
+-    global signal_received
++    signal_received = defaultdict(bool)
++
++    def handle_signal(sig, frame):
++        nonlocal signal_received
++        signal_received[sig] = True
++        return
++
++
++    signal.signal(signal.SIGINT, handle_signal)
++    signal.signal(signal.SIGTERM, handle_signal)
++    if opts.log_to_file:
++        signal.signal(signal.SIGHUP, handle_signal)
++
+     line = 0
+     banner_repeat = 20
+     f = None
+@@ -1624,39 +1634,31 @@ def log(stats, opts, frmt, keys):
+     do_banner(opts)
+     banner_printed = True
+     while True:
+-        try:
+-            time.sleep(opts.set_delay)
+-            if signal_received:
+-                banner_printed = True
+-                line = 0
+-                f.close()
+-                do_banner(opts)
+-                signal_received = False
+-            if (line % banner_repeat == 0 and not banner_printed and
+-                not (opts.log_to_file and isinstance(frmt, CSVFormat))):
+-                do_banner(opts)
+-                banner_printed = True
+-            values = stats.get()
+-            if (not opts.skip_zero_records or
+-                any(values[k].delta != 0 for k in keys)):
+-                do_statline(opts, values)
+-                line += 1
+-                banner_printed = False
+-        except KeyboardInterrupt:
++        time.sleep(opts.set_delay)
++        # Do not use the KeyboardInterrupt exception, because we may be running without a terminal
++        if (signal_received[signal.SIGINT] or signal_received[signal.SIGTERM]):
+             break
++        if signal_received[signal.SIGHUP]:
++            banner_printed = True
++            line = 0
++            f.close()
++            do_banner(opts)
++            signal_received[signal.SIGHUP] = False
++        if (line % banner_repeat == 0 and not banner_printed and
++            not (opts.log_to_file and isinstance(frmt, CSVFormat))):
++            do_banner(opts)
++            banner_printed = True
++        values = stats.get()
++        if (not opts.skip_zero_records or
++            any(values[k].delta != 0 for k in keys)):
++            do_statline(opts, values)
++            line += 1
++            banner_printed = False
+ 
+     if opts.log_to_file:
+         f.close()
+ 
+ 
+-def handle_signal(sig, frame):
+-    global signal_received
+-
+-    signal_received = True
+-
+-    return
+-
+-
+ def is_delay_valid(delay):
+     """Verify delay is in valid value range."""
+     msg = None
+@@ -1869,8 +1871,6 @@ def main():
+         sys.exit(0)
+ 
+     if options.log or options.log_to_file:
+-        if options.log_to_file:
+-            signal.signal(signal.SIGHUP, handle_signal)
+         keys = sorted(stats.get().keys())
+         if options.csv:
+             frmt = CSVFormat(keys)
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index 3a9f2037bd23..4a99a111a93c 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -115,6 +115,18 @@ OPTIONS
+ --skip-zero-records::
+         omit records with all zeros in logging mode
+ 
++
++SIGNALS
++-------
++when kvm_stat is running in logging mode (either with -l or with -L),
++it handles the following signals:
++
++SIGHUP - closes and reopens the log file (-L only), then continues.
++
++SIGINT - closes the log file and terminates.
++SIGTERM - closes the log file and terminates.
++
++
+ SEE ALSO
+ --------
+ 'perf'(1), 'trace-cmd'(1)
+-- 
+2.26.2
+

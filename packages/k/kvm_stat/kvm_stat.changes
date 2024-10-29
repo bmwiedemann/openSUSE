@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 10:17:19 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add a patch that makes it possible to use kvm_stat from scripts
+  (it has been submitted upstream already):
+  * Added patches:
+    fix-termination-behavior-when-not-on-a-terminal.patch 
+
+-------------------------------------------------------------------
 Thu Feb 22 12:42:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

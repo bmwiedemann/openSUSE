@@ -188,4 +188,16 @@
     <comment></comment>
     <requestid>1149596</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>e1f688d3dbe2bb27cfd7b3e878725174</srcmd5>
+    <version>MACRO</version>
+    <time>1730209014</time>
+    <user>anag+factory</user>
+    <comment>- Add a patch that makes it possible to use kvm_stat from scripts
+  (it has been submitted upstream already):
+  * Added patches:
+    fix-termination-behavior-when-not-on-a-terminal.patch 
+</comment>
+    <requestid>1219009</requestid>
+  </revision>
 </revisionlist>

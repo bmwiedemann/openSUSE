@@ -1,7 +1,7 @@
 #
 # spec file for package kvm_stat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Patch07:        add-sample-systemd-unit.patch
 Patch08:        add-restart-delay.patch
 # PAtch 09 is for bsc#1202924
 Patch09:        tools-kvm_stat-fix-attack-vector-with-user-controlle.patch
+Patch10:        fix-termination-behavior-when-not-on-a-terminal.patch
 
 %define XXX This package provides a userspace tool "kvm_stat", which displays KVM vm exit \
 information as a means of monitoring vm behavior. The data is taken from the\
@@ -90,6 +91,7 @@ There is no reason to install this package.
 %if %{pkg_vcmp kernel-source < 6.1}
 %patch -P 09 -p1
 %endif
+%patch -P 10 -p1
 
 %build
 make -C tools/kvm/kvm_stat %{?_smp_mflags}
