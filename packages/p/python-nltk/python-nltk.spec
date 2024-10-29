@@ -25,7 +25,9 @@ Summary:        Natural Language Toolkit
 License:        Apache-2.0
 URL:            http://nltk.org/
 # SourceRepository: https://github.com/nltk/nltk
-Source0:        https://github.com/nltk/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# The _service download the source and repack without some doc files
+# that has non-commercial license. boo#1232448
+Source0:        nltk-%{version}.tar.xz
 # Download/Update NLTK data:
 #     quilt setup python-nltk.spec
 #     pushd nltk-?.?.?
@@ -57,11 +59,12 @@ Source0:        https://github.com/nltk/%{modname}/archive/refs/tags/%{version}.
 #     tar -cJf ../nltk_data.tar.xz nltk_data
 #     popd
 # see https://www.nltk.org/data.html for more details
-Source1:        nltk_data.tar.xz
+########### NOTICE #########
+# Do not distribute nltk_data.tar.xz because it's licensed under
+# non-commercial, boo#1232448
+############################
+# Source1:        nltk_data.tar.xz
 Source99:       python-nltk.rpmlintrc
-# PATCH-FIX-UPSTREAM skip-networked-test.patch gh#nltk/nltk#2969 mcepl@suse.com
-# skip tests requiring network connection
-Patch0:         skip-networked-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -118,7 +121,7 @@ Python modules, data sets and tutorials supporting research and
 development in Natural Language Processing.
 
 %prep
-%setup -q -a1 -n %{modname}-%{version}
+%setup -q -n %{modname}-%{version}
 
 # Fix EOL
 sed -i 's/\r/\n/g; s/\n$//' \
@@ -162,15 +165,16 @@ sed -E -i "s|#![[:space:]]*%{_bindir}/env python|#!%{_bindir}/python3|" \
 chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 }
 
-%check
-export NLTK_DATA=$(readlink -f ./nltk_data/)
-# export PYTEST_ADDOPTS="--doctest-modules"
-# Skip tests requiring pickle.load gh#nltk/nltk#3266 (CVE-2024-39705)
-skip_tests=" or test_basic or test_increment or test_pad_asterisk or test_pad_dotdot"
-skip_tests+=" or test_pos_tag_eng or test_pos_tag_eng_universal or test_pos_tag_rus"
-skip_tests+=" or test_pos_tag_rus_universal or test_pos_tag_unknown_lang"
-skip_tests+=" or test_sent_tokenize or test_unspecified_lang or test_word_tokenize"
-%pytest -k "not (network ${skip_tests})"
+# Do not test, there's no ntlk_data, boo#1232448
+# %%check
+# export NLTK_DATA=$(readlink -f ./nltk_data/)
+# # export PYTEST_ADDOPTS="--doctest-modules"
+# # Skip tests requiring pickle.load gh#nltk/nltk#3266 (CVE-2024-39705)
+# skip_tests=" or test_basic or test_increment or test_pad_asterisk or test_pad_dotdot"
+# skip_tests+=" or test_pos_tag_eng or test_pos_tag_eng_universal or test_pos_tag_rus"
+# skip_tests+=" or test_pos_tag_rus_universal or test_pos_tag_unknown_lang"
+# skip_tests+=" or test_sent_tokenize or test_unspecified_lang or test_word_tokenize"
+# %%pytest -k "not (network ${skip_tests})"
 
 %post
 %python_install_alternative nltk

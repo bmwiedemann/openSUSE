@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:37:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use _service to download source and exclude documentation that has
+  non-commercial license (boo#1232448)
+- Remove nltk_data to avoid redistribution of files with
+  non-commercial (boo#1232448):
+  > NLTK corpora are provided under the terms given in the README file
+  > for each corpus; all are redistributable and available for
+  > non-commercial use.
+- Remove not needed skip-networked-test.patch
+
+-------------------------------------------------------------------
 Mon Sep 30 21:17:21 UTC 2024 - Thiago Bertoldi <thiago.bertoldi@suse.com>
 
 - Update to to 3.9.1 (changes since 3.8.1):
