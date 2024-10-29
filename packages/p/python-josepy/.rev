@@ -127,4 +127,17 @@
     <comment></comment>
     <requestid>1129754</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>586651bed06dd63b325576a97f5b0c9b</srcmd5>
+    <version>1.14.0</version>
+    <time>1730208990</time>
+    <user>anag+factory</user>
+    <comment>- add ignore-pyopenssl-warnings.patch
+
+  * Support for Python 3.6 has been deprecated and will be removed
+    Fields in classes. If the field function is used to define a
+  - Use the sign and verify methods when they are available in
+    cryptography instead of the deprecated methods signer and</comment>
+    <requestid>1218878</requestid>
+  </revision>
 </revisionlist>

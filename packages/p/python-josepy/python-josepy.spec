@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-josepy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
 URL:            https://github.com/certbot/josepy
 Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz
-#Source1:        https://files.pythonhosted.org/packages/source/j/%%{libname}/%%{libname}-%%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch1:         https://github.com/certbot/josepy/commit/350410fc1d38c4ac8422816b6865ac8cd9c60fc7.patch#/ignore-pyopenssl-warnings.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 1.5}
@@ -50,7 +50,7 @@ JOSE protocol implementation in Python using cryptography.
 It is used by the certbot project. Formerly Let's Encrypt project.
 
 %prep
-%setup -q -n %{libname}-%{version}
+%autosetup -p1 -n %{libname}-%{version}
 
 %build
 %pyproject_wheel

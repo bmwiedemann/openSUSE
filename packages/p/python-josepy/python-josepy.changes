@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:01:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add ignore-pyopenssl-warnings.patch
+
+-------------------------------------------------------------------
 Wed Nov 29 09:34:59 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.14.0
@@ -23,7 +28,7 @@ Thu Apr  7 07:20:14 UTC 2022 - Markéta Machová <mmachova@suse.com>
   * PGP keys used to sign the packages we upload to PyPI changed.
     (python-josepy.keyring refreshed)
   * Dropped support for cryptography<1.5.
-  * Support for Python 3.6 has been deprecated and will be removed 
+  * Support for Python 3.6 has been deprecated and will be removed
     in the next scheduled release.
 
 -------------------------------------------------------------------
@@ -34,7 +39,7 @@ Tue Oct  5 19:12:28 UTC 2021 - ecsos <ecsos@opensuse.org>
     types from the inline types annotations when josepy is
     installed as a dependency in a Python project.
   * Added a field function to assist in adding type annotations for
-    Fields in classes. If the field function is used to define a 
+    Fields in classes. If the field function is used to define a
     Field in a JSONObjectWithFields based class without a type
     annotation, an error will be raised.
   * josepy's tests can no longer be imported under the name josepy,
@@ -104,8 +109,8 @@ Thu May  3 09:57:33 UTC 2018 - ecsos@opensuse.org
 
 - update to 1.1.0
   - Deprecated support for Python 2.6 and 3.3.
-  - Use the sign and verify methods when they are available in 
-    cryptography instead of the deprecated methods signer and 
+  - Use the sign and verify methods when they are available in
+    cryptography instead of the deprecated methods signer and
     verifier.
 
 -------------------------------------------------------------------
