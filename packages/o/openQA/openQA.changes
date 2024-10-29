@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:03:36 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1730199808.7e0d08db:
+  * Handle foreign key violation with savepoint
+  * Slightly improve error handling
+  * Fix pattern for needle tag
+  * Bump @eslint-community/eslint-utils from 4.4.0 to 4.4.1
+  * Bump acorn from 8.13.0 to 8.14.0
+
+-------------------------------------------------------------------
 Thu Oct 24 19:14:42 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1729634304.9a22ad59:
