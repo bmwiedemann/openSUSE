@@ -449,4 +449,16 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment>- require setuptools</comment>
     <requestid>1136458</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>2660508958e298a30eda146f66a2025e</srcmd5>
+    <version>2.9.9</version>
+    <time>1730208992</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch py313-tests.patch, included in:
+- Add patch support-python-313.patch:
+  * Support Python 3.13.
+
+- add py313-tests.patch</comment>
+    <requestid>1218908</requestid>
+  </revision>
 </revisionlist>

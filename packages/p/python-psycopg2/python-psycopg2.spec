@@ -24,6 +24,8 @@ Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception
 URL:            https://www.psycopg.org/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#psycopg/psycopg2#1695
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -52,7 +54,7 @@ UPDATEs. psycopg2 also provide asychronous operations and support
 for coroutine libraries.
 
 %prep
-%setup -q -n psycopg2-%{version}
+%autosetup -p1 -n psycopg2-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -72,6 +74,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc AUTHORS NEWS README.rst
 %{python_sitearch}/psycopg2/
-%{python_sitearch}/psycopg2-%{version}*-info
+%{python_sitearch}/psycopg2-%{version}.dist-info
 
 %changelog

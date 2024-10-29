@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 29 05:08:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch py313-tests.patch, included in:
+- Add patch support-python-313.patch:
+  * Support Python 3.13.
+
+-------------------------------------------------------------------
+Mon Oct 28 21:56:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-tests.patch
+
+-------------------------------------------------------------------
 Wed Jan  3 10:10:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
