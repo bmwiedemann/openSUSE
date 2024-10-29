@@ -1,0 +1,26 @@
+From c8736d910c2b7c443e2704fdbc796e05cb7eaf58 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 28 Oct 2024 14:43:11 +0100
+Subject: [PATCH] metadata.json.in: mark GNOME 47 supported
+
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 0fcf71d..c05498a 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -11,7 +11,8 @@
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+       "45",
+-      "46"
++      "46",
++      "47"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.47.0
+

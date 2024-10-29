@@ -21,7 +21,7 @@
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} >= 1550
-%global ext_gnome_version 46
+%global ext_gnome_version 47
 %global min_gnome_version 45
 %else
 %if 0%{?sle_version} >= 150400
@@ -144,6 +144,8 @@ Patch176:       0176-metadata.json.in-change-compatible-gnome-shell-versi.patch
 Patch177:       0177-metadata.json-re-add-GNOME-45-support.patch
 Patch178:       0178-todaysFactsWidget-Fix-broken-layout-in-GNOME-45.patch
 Patch179:       0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch
+# GNOME 47
+Patch180:       0180-metadata.json.in-mark-GNOME-47-supported.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -296,6 +298,8 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 177 -p1
 %patch -P 178 -p1
 %patch -P 179 -p1
+# GNOME 47 support
+%patch -P 180 -p1
 
 %endif # suse_version >= 1600
 %endif # sle_version >= 150400

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 13:54:47 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Mark GNOME 47 supported
+  * add 0180-metadata.json.in-mark-GNOME-47-supported.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 13:22:49 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Re-add GNOME 45 compatibility (gh#projecthamster/hamster-shell-extension#368)

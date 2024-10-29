@@ -244,4 +244,13 @@
   * add 0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch</comment>
     <requestid>1166456</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>516753beec90d07a4ed2c3d430da1799</srcmd5>
+    <version>unknown</version>
+    <time>1730209002</time>
+    <user>anag+factory</user>
+    <comment>- Mark GNOME 47 supported
+  * add 0180-metadata.json.in-mark-GNOME-47-supported.patch</comment>
+    <requestid>1218972</requestid>
+  </revision>
 </revisionlist>
