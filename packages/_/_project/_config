@@ -418,6 +418,7 @@ FileProvides: /usr/bin/python3 python311-base
 FileProvides: /usr/bin/python3.10 python310-base
 FileProvides: /usr/bin/python3.11 python311-base
 FileProvides: /usr/bin/python3.12 python312-base
+FileProvides: /usr/bin/python3.13 python312-base
 FileProvides: /usr/bin/python3.8 python38-base
 FileProvides: /usr/bin/python3.9 python39-base
 FileProvides: /usr/bin/qemu-img qemu-img
