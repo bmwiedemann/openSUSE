@@ -25,4 +25,14 @@
   * Add exit codes in the manpage</comment>
     <requestid>1162580</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a2d62d9449657eb480b97a2f751f0e7</srcmd5>
+    <version>1.0.1</version>
+    <time>1730208988</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.1:
+  * Fix formatting in the manpage (#22)
+  * Fix a missing space in the --help text</comment>
+    <requestid>1218933</requestid>
+  </revision>
 </revisionlist>

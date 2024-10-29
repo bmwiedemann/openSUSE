@@ -17,7 +17,7 @@
 
 
 Name:           rfc-read
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Read RFCs from the command-line
 License:        MIT
