@@ -1,0 +1,14 @@
+<package name="jts" project="openSUSE:Factory">
+  <title>Java Topology Suite</title>
+  <description>The LocationTech JTS Topology Suite (JTS) is an open source Java software
+library that provides an object model for planar geometry together with a
+set of fundamental geometric functions. JTS conforms to the Simple Features
+Specification for SQL published by the Open GIS Consortium.  JTS is designed
+to be used as a core component of vector-based geomatics software such as
+geographical information systems. It can also be used as a general-purpose
+library providing algorithms in computational geometry.
+
+</description>
+  <devel project="Java:packages" package="jts"/>
+  <url>https://projects.eclipse.org/projects/locationtech.jts</url>
+</package>
