@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Oct 29 09:16:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.1
+  Added features:
+  * Add "Simple pread/pwrite" disk IO type
+  Bug fixes:
+  * Don't ignore SSL errors
+  * Don't try to apply Mark-of-the-Web to nonexistent files
+  * Disable "Move to trash" option by default
+  * Disable the ability to create torrents with a piece size of
+    256MiB
+  * Allow to choose Qt style
+  * Always notify user about duplicate torrent
+  * Correctly handle "torrent finished after move" event
+  * Correctly apply filename filter when `!qB` extension is
+    enabled
+  * Improve color scheme change detection
+  * Fix button state for SSL certificate check
+  Web UI:
+  * Fix CSS that results in hidden torrent list in some browsers
+  * Use proper text color to highlight items in all filter lists
+  * Fix 'rename files' dialog cannot be opened more than once
+  * Fix UI of Advanced Settings to show all settings
+  * Free resources allocated by web session once it is destructed
+  Search:
+  * Import correct libraries
+  Other changes:
+  * Sync flag icons with upstream
+
+-------------------------------------------------------------------
 Mon Sep 30 06:38:35 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.0
