@@ -23,16 +23,16 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
+    <version>8.11.4</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-analyzers-common</artifactId>
+  <artifactId>lucene-analyzers-smartcn</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Common Analyzers</name>
-  <description>Additional Analyzers</description>
+  <name>Lucene Smart Chinese Analyzer</name>
+  <description>Smart Chinese Analyzer</description>
   <properties>
-    <module-directory>lucene/analysis/common</module-directory>
+    <module-directory>lucene/analysis/smartcn</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -40,6 +40,10 @@
     <url>${vc-browse-base-url};f=${module-directory}</url>
   </scm>
   <dependencies>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-common</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>

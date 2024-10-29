@@ -23,23 +23,30 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
+    <version>8.11.4</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-spatial3d</artifactId>
+  <artifactId>lucene-grouping</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Spatial 3D</name>
-  <description>
-    Lucene Spatial shapes implemented using 3D planar geometry
-  </description>
+  <name>Lucene Grouping</name>
+  <description>Lucene Grouping Module</description>
   <properties>
-    <module-directory>lucene/spatial3d</module-directory>
+    <module-directory>lucene/grouping</module-directory>
   </properties>
+  <scm>
+    <connection>scm:git:${vc-anonymous-base-url}</connection>
+    <developerConnection>scm:git:${vc-dev-base-url}</developerConnection>
+    <url>${vc-browse-base-url};f=${module-directory}</url>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queries</artifactId>
     </dependency>
 
   </dependencies>

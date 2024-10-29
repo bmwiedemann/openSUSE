@@ -275,4 +275,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148599</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>09272db7092c2e9bbabcf7fa84b3bab7</srcmd5>
+    <version>8.11.4</version>
+    <time>1730208981</time>
+    <user>anag+factory</user>
+    <comment>facet and expressions enabled</comment>
+    <requestid>1219022</requestid>
+  </revision>
 </revisionlist>

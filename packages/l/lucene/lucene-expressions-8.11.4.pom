@@ -23,31 +23,35 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
-    <relativePath>../../pom.xml</relativePath>
+    <version>8.11.4</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-analyzers-smartcn</artifactId>
+  <artifactId>lucene-expressions</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Smart Chinese Analyzer</name>
-  <description>Smart Chinese Analyzer</description>
+  <name>Lucene Expressions</name>
+  <description>    
+     Dynamically computed values to sort/facet/search on based on a pluggable grammar.
+  </description>
   <properties>
-    <module-directory>lucene/analysis/smartcn</module-directory>
+    <module-directory>lucene/expressions</module-directory>
   </properties>
-  <scm>
-    <connection>scm:git:${vc-anonymous-base-url}</connection>
-    <developerConnection>scm:git:${vc-dev-base-url}</developerConnection>
-    <url>${vc-browse-base-url};f=${module-directory}</url>
-  </scm>
   <dependencies>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers-common</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-commons</artifactId>
+    </dependency>
   </dependencies>
 </project>

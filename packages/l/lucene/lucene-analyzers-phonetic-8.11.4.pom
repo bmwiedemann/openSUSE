@@ -23,18 +23,18 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>8.11.4</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-codecs</artifactId>
+  <artifactId>lucene-analyzers-phonetic</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene codecs</name>
+  <name>Lucene Phonetic Filters</name>
   <description>
-    Codecs and postings formats for Apache Lucene.
+    Provides phonetic encoding via Commons Codec.
   </description>
   <properties>
-    <module-directory>lucene/codecs</module-directory>
+    <module-directory>lucene/analysis/phonetic</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -44,8 +44,15 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+    </dependency>
   </dependencies>
 </project>

@@ -1,0 +1,53 @@
+diff -urEbwB lucene-8.11.2.orig/ivy-versions.properties lucene-8.11.2/ivy-versions.properties
+--- lucene-8.11.2.orig/ivy-versions.properties	2024-10-28 01:02:56.289069028 +0100
++++ lucene-8.11.2/ivy-versions.properties	2024-10-28 01:49:33.841844665 +0100
+@@ -56,6 +56,7 @@
+ /com.google.cloud/google-cloud-storage = 1.113.14
+ /com.google.code.gson/gson = 2.9.1
+ /com.google.errorprone/error_prone_annotations = 2.9.0
++/com.google.geometry/s2-geometry = 2.0.0
+ /com.google.guava/failureaccess = 1.0.1
+ /com.google.guava/guava = 32.1.3-jre
+ /com.google.guava/listenablefuture = 9999.0-empty-to-avoid-conflict-with-guava
+@@ -139,8 +140,6 @@
+ /io.prometheus/simpleclient_common = ${io.prometheus.version}
+ /io.prometheus/simpleclient_httpserver = ${io.prometheus.version}
+ 
+-/io.sgr/s2-geometry-library-java = 1.0.0
+-
+ /jakarta.annotation/jakarta.annotation-api = 1.3.5
+ /jakarta.servlet/jakarta.servlet-api = 4.0.4
+ /jakarta.websocket/jakarta.websocket-api = 1.1.2
+diff -urEbwB lucene-8.11.2.orig/spatial-extras/ivy.xml lucene-8.11.2/spatial-extras/ivy.xml
+--- lucene-8.11.2.orig/spatial-extras/ivy.xml	2024-10-28 01:02:56.405736508 +0100
++++ lucene-8.11.2/spatial-extras/ivy.xml	2024-10-28 01:47:27.594303341 +0100
+@@ -25,7 +25,7 @@
+   <dependencies>
+     <dependency org="org.locationtech.spatial4j" name="spatial4j" rev="${/org.locationtech.spatial4j/spatial4j}" conf="compile"/>
+ 
+-    <dependency org="io.sgr" name="s2-geometry-library-java" rev="${/io.sgr/s2-geometry-library-java}" conf="compile"/>
++    <dependency org="com.google.geometry" name="s2-geometry" rev="${/com.google.geometry/s2-geometry}" conf="compile"/>
+ 
+     <exclude org="*" ext="*" matcher="regexp" type="${ivy.exclude.types}"/>
+   </dependencies>
+diff -urEbwB lucene-8.11.2.orig/spatial-extras/src/java/org/apache/lucene/spatial/prefix/tree/S2PrefixTree.java lucene-8.11.2/spatial-extras/src/java/org/apache/lucene/spatial/prefix/tree/S2PrefixTree.java
+--- lucene-8.11.2.orig/spatial-extras/src/java/org/apache/lucene/spatial/prefix/tree/S2PrefixTree.java	2024-10-28 01:02:56.399069795 +0100
++++ lucene-8.11.2/spatial-extras/src/java/org/apache/lucene/spatial/prefix/tree/S2PrefixTree.java	2024-10-28 01:41:10.165021366 +0100
+@@ -111,7 +111,7 @@
+         if (dist == 0){
+             return maxLevels;
+         }
+-        int level =  S2Projections.MAX_WIDTH.getMinLevel(dist * DistanceUtils.DEGREES_TO_RADIANS);
++        int level =  S2Projections.PROJ.maxWidth.getMinLevel(dist * DistanceUtils.DEGREES_TO_RADIANS);
+         int roundLevel = level % arity != 0 ? 1 : 0;
+         level = level/arity + roundLevel;
+         return Math.min(maxLevels, level + 1);
+@@ -122,7 +122,7 @@
+         if (level == 0) {
+             return 180;
+         }
+-        return S2Projections.MAX_WIDTH.getValue(arity * (level - 1)) * DistanceUtils.RADIANS_TO_DEGREES;
++        return S2Projections.PROJ.maxWidth.getValue(arity * (level - 1)) * DistanceUtils.RADIANS_TO_DEGREES;
+     }
+ 
+     @Override

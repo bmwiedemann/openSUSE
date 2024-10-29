@@ -690,7 +690,7 @@
  </project>
 --- lucene-8.5.0/suggest/build.xml	2020-03-13 10:35:56.000000000 +0100
 +++ lucene-8.5.0/suggest/build.xml	2020-04-06 15:16:13.382558294 +0200
-@@ -44,4 +44,23 @@
+@@ -44,4 +44,22 @@
  
    <target name="compile-core" depends="jar-expressions, jar-analyzers-common, common.compile-core" />
  
@@ -706,7 +706,6 @@
 +		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
 +		<attribute name="Bundle-Version" value="${version}"/>
 +		<attribute name="Export-Package" value="org.apache.lucene.search.spell;version=&quot;${version}&quot;,org.apache.lucene.search.suggest;version=&quot;${version}&quot;,org.apache.lucene.search.suggest.analyzing;version=&quot;${version}&quot;,org.apache.lucene.search.suggest.document;version=&quot;${version}&quot;,org.apache.lucene.search.suggest.fst;version=&quot;${version}&quot;,org.apache.lucene.search.suggest.jaspell;version=&quot;${version}&quot;,org.apache.lucene.search.suggest.tst;version=&quot;${version}&quot;"/>
-+		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.core,org.apache.lucene.analysis.ngram,org.apache.lucene.analysis.shingle,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.analysis.util,org.apache.lucene.codecs,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.search.spell,org.apache.lucene.search.suggest,org.apache.lucene.search.suggest.analyzing,org.apache.lucene.search.suggest.fst,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.automaton,org.apache.lucene.util.fst"/>
 +		<attribute name="Import-Package" value="org.apache.lucene.analysis,org.apache.lucene.analysis.en,org.apache.lucene.analysis.miscellaneous,org.apache.lucene.analysis.ngram,org.apache.lucene.analysis.shingle,org.apache.lucene.analysis.tokenattributes,org.apache.lucene.analysis.util,org.apache.lucene.codecs,org.apache.lucene.document,org.apache.lucene.index,org.apache.lucene.search,org.apache.lucene.search.spell,org.apache.lucene.search.suggest,org.apache.lucene.search.suggest.analyzing,org.apache.lucene.search.suggest.fst,org.apache.lucene.store,org.apache.lucene.util,org.apache.lucene.util.automaton,org.apache.lucene.util.fst"/>
 +		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${javac.target.version}))&quot;"/>
 +	  </jarify-additional-manifest-attributes>

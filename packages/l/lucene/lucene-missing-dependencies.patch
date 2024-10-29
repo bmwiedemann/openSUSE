@@ -1,5 +1,6 @@
---- lucene-8.5.0/analysis/common/build.xml	2020-04-06 12:09:05.493250593 +0200
-+++ lucene-8.5.0/analysis/common/build.xml	2020-04-06 12:22:01.033446015 +0200
+diff -urEbwB lucene-8.11.2.orig/analysis/common/build.xml lucene-8.11.2/analysis/common/build.xml
+--- lucene-8.11.2.orig/analysis/common/build.xml	2024-10-28 00:12:09.624346447 +0100
++++ lucene-8.11.2/analysis/common/build.xml	2024-10-28 00:55:30.105955823 +0100
 @@ -88,7 +88,7 @@
      <property name="icu4j.resolved" value="true"/>
    </target>
@@ -9,8 +10,9 @@
      <groovy classpathref="icu4j.classpath" src="src/tools/groovy/generate-unicode-data.groovy"/>
      <fixcrlf file="${unicode-props-file}" encoding="UTF-8"/>
    </target>
---- lucene-8.5.0/build.xml	2020-04-06 11:43:38.337014365 +0200
-+++ lucene-8.5.0/build.xml	2020-04-06 12:21:53.785406802 +0200
+diff -urEbwB lucene-8.11.2.orig/build.xml lucene-8.11.2/build.xml
+--- lucene-8.11.2.orig/build.xml	2024-10-28 00:12:09.674346796 +0100
++++ lucene-8.11.2/build.xml	2024-10-28 00:55:30.105955823 +0100
 @@ -538,7 +538,7 @@
    </target>
  
@@ -20,9 +22,23 @@
      <ant dir="${common.dir}/core" target="jar-core" inheritAll="false">
        <propertyset refid="uptodate.and.compiled.properties"/>
      </ant>
---- lucene-8.5.0/common-build.xml	2020-04-06 12:09:05.497250615 +0200
-+++ lucene-8.5.0/common-build.xml	2020-04-06 12:20:32.720968275 +0200
-@@ -625,12 +625,10 @@
+diff -urEbwB lucene-8.11.2.orig/common-build.xml lucene-8.11.2/common-build.xml
+--- lucene-8.11.2.orig/common-build.xml	2024-10-28 00:12:09.674346796 +0100
++++ lucene-8.11.2/common-build.xml	2024-10-28 00:55:30.109289178 +0100
+@@ -67,12 +67,6 @@
+     </condition>
+   </fail>
+   
+-  <fail message="Your ~/.ant/lib folder or the main classpath of Ant contains some version of ASM. Please remove it, otherwise this build can't run correctly.">
+-    <condition>
+-      <available classname="org.objectweb.asm.ClassReader"/>
+-    </condition>
+-  </fail>
+-
+   <property name="year" value="2000-${current.year}"/>
+   
+   <!-- Lucene modules unfortunately don't have the "lucene-" prefix, so we add it if no prefix is given in $name: -->
+@@ -627,12 +621,10 @@
      </jarify>
    </target>
    
@@ -36,7 +52,7 @@
    <!-- Packaging targets: -->
    
    <property name="lucene.tgz.file" location="${common.dir}/dist/lucene-${version}.tgz"/>
-@@ -1534,8 +1498,8 @@
+@@ -1555,8 +1547,8 @@
      </taskdef>
    </target>
  
@@ -47,7 +63,7 @@
  
    <target name="test-nocompile" depends="-clover.disable,install-junit4-taskdef,-init-totals,-test,-check-totals"
            description="Only runs unit tests.  Jars are not downloaded; compilation is not updated; and Clover is not enabled."/>
-@@ -1595,7 +1559,7 @@
+@@ -1616,7 +1608,7 @@
    </target>
  
    <!-- Beast the actual tests (must be wrapped with -init-totals, -check-totals) -->
@@ -56,7 +72,7 @@
      <fail message="The Beast only works inside of individual modules (where 'junit.classpath' is defined)">
        <condition>
          <not><isreference refid="junit.classpath"/></not>
-@@ -1606,7 +1570,7 @@
+@@ -1627,7 +1619,7 @@
      <fail message="Fail baby fail" if="groovy.error"/>
    </target>
  
@@ -65,7 +81,7 @@
      <!-- We are concluding a test pass at the outermost level. Sum up all executed tests. -->
      <groovy><![CDATA[
        import org.apache.tools.ant.BuildException;
-@@ -1630,7 +1594,7 @@
+@@ -1651,7 +1643,7 @@
    </target>
  
    <!-- The groovy dependency is wanted: this is done early before any test or any other submodule is ran, to prevent permgen errors! -->
@@ -74,7 +90,7 @@
      <mkdir dir="${build.dir}" />
      <tempfile property="tests.totals.tmpfile"
                destdir="${build.dir}"
-@@ -2505,7 +2459,7 @@
+@@ -2475,7 +2467,7 @@
      </forbidden-apis>
    </target>
  
@@ -83,8 +99,9 @@
      <property name="flexmark.version" value="0.42.6"/>
      <ivy:cachepath transitive="true" resolveId="flexmark" pathid="markdown.classpath">
        <ivy:dependency org="com.vladsch.flexmark" name="flexmark" rev="${flexmark.version}" conf="default" />
---- lucene-8.5.0/demo/build.xml	2020-04-06 12:09:05.497250615 +0200
-+++ lucene-8.5.0/demo/build.xml	2020-04-06 12:36:38.322189334 +0200
+diff -urEbwB lucene-8.11.2.orig/demo/build.xml lucene-8.11.2/demo/build.xml
+--- lucene-8.11.2.orig/demo/build.xml	2024-10-28 00:12:09.731013858 +0100
++++ lucene-8.11.2/demo/build.xml	2024-10-28 00:55:30.109289178 +0100
 @@ -56,7 +56,7 @@
    <!-- we don't check for sysout in demo, because the demo is there to use sysout :-) -->
    <target name="-check-forbidden-sysout"/>
@@ -94,9 +111,10 @@
  
    <target name="jar-core" depends="compile-core">
      <jarify>
---- lucene-8.5.0/module-build.xml	2020-03-13 10:35:56.000000000 +0100
-+++ lucene-8.5.0/module-build.xml	2020-04-06 12:45:38.953110299 +0200
-@@ -604,6 +582,28 @@
+diff -urEbwB lucene-8.11.2.orig/module-build.xml lucene-8.11.2/module-build.xml
+--- lucene-8.11.2.orig/module-build.xml	2024-10-28 00:12:09.674346796 +0100
++++ lucene-8.11.2/module-build.xml	2024-10-28 00:55:30.109289178 +0100
+@@ -604,6 +604,28 @@
      <property name="misc-javadocs.uptodate" value="true"/>
    </target>
  
@@ -125,8 +143,9 @@
    <property name="sandbox.jar" value="${common.dir}/build/sandbox/lucene-sandbox-${version}.jar"/>
    <target name="check-sandbox-uptodate" unless="sandbox.uptodate">
      <module-uptodate name="sandbox" jarfile="${sandbox.jar}" property="sandbox.uptodate"/>
---- lucene-8.5.0/queries/build.xml	2020-04-06 12:09:05.501250635 +0200
-+++ lucene-8.5.0/queries/build.xml	2020-04-06 12:37:44.478546763 +0200
+diff -urEbwB lucene-8.11.2.orig/queries/build.xml lucene-8.11.2/queries/build.xml
+--- lucene-8.11.2.orig/queries/build.xml	2024-10-28 00:12:09.761014068 +0100
++++ lucene-8.11.2/queries/build.xml	2024-10-28 00:55:30.109289178 +0100
 @@ -47,5 +47,5 @@
  	</jarify>
    </target>
@@ -134,8 +153,65 @@
 -  <target name="compile-core" depends="jar-expressions,common.compile-core" />
 +  <target name="compile-core" depends="common.compile-core" />
  </project>
---- lucene-8.5.0/suggest/build.xml	2020-04-06 12:09:05.501250635 +0200
-+++ lucene-8.5.0/suggest/build.xml	2020-04-06 12:36:24.810116329 +0200
+diff -urEbwB lucene-8.11.2.orig/spatial-extras/build.xml lucene-8.11.2/spatial-extras/build.xml
+--- lucene-8.11.2.orig/spatial-extras/build.xml	2024-10-28 00:12:09.784347564 +0100
++++ lucene-8.11.2/spatial-extras/build.xml	2024-10-28 00:57:22.030070278 +0100
+@@ -34,23 +34,8 @@
+     <pathelement path="${spatial3d.jar}" />
+   </path>
+ 
+-  <path id="test.classpath">
+-    <path refid="test.base.classpath" />
+-    <path refid="spatialjar"/>
+-    <pathelement path="src/test-files" />
+-    <pathelement path="${common.dir}/build/spatial3d/classes/test" />
+-  </path>
+-
+   <target name="compile-core" depends="jar-spatial3d,common.compile-core" />
+ 
+-  <target name="compile-test" depends="compile-spatial3d-tests,common.compile-test" />
+-
+-  <target name="compile-spatial3d-tests">
+-    <ant dir="${common.dir}/spatial3d" target="compile-test" inheritAll="false">
+-      <propertyset refid="uptodate.and.compiled.properties"/>
+-    </ant>
+-  </target>
+-
+   <target name="javadocs" depends="javadocs-spatial3d,compile-core,check-javadocs-uptodate"
+           unless="javadocs-uptodate-${name}">
+     <invoke-module-javadoc>
+diff -urEbwB lucene-8.11.2.orig/spatial-extras/ivy.xml lucene-8.11.2/spatial-extras/ivy.xml
+--- lucene-8.11.2.orig/spatial-extras/ivy.xml	2024-10-28 00:12:09.784347564 +0100
++++ lucene-8.11.2/spatial-extras/ivy.xml	2024-10-28 00:55:30.109289178 +0100
+@@ -18,23 +18,14 @@
+ -->
+ <ivy-module version="2.0"  xmlns:maven="http://ant.apache.org/ivy/maven">
+   <info organisation="org.apache.lucene" module="spatial-extras"/>
+-  <configurations defaultconfmapping="compile->master;test->master">
++  <configurations defaultconfmapping="compile->master">
+     <conf name="compile" transitive="false"/>
+-    <conf name="test" transitive="false"/>
+   </configurations>
+   <dependencies>
+     <dependency org="org.locationtech.spatial4j" name="spatial4j" rev="${/org.locationtech.spatial4j/spatial4j}" conf="compile"/>
+ 
+     <dependency org="io.sgr" name="s2-geometry-library-java" rev="${/io.sgr/s2-geometry-library-java}" conf="compile"/>
+ 
+-    <dependency org="org.locationtech.spatial4j" name="spatial4j" rev="${/org.locationtech.spatial4j/spatial4j}" conf="test">
+-      <artifact name="spatial4j" type="test" ext="jar" maven:classifier="tests" />
+-    </dependency>
+-
+-    <dependency org="org.locationtech.jts" name="jts-core" rev="${/org.locationtech.jts/jts-core}" conf="test" />
+-
+-    <dependency org="org.slf4j" name="slf4j-api" rev="${/org.slf4j/slf4j-api}" conf="test"/>
+-
+     <exclude org="*" ext="*" matcher="regexp" type="${ivy.exclude.types}"/>
+   </dependencies>
+ </ivy-module>
+\ No newline at end of file
+diff -urEbwB lucene-8.11.2.orig/suggest/build.xml lucene-8.11.2/suggest/build.xml
+--- lucene-8.11.2.orig/suggest/build.xml	2024-10-28 00:12:09.791014277 +0100
++++ lucene-8.11.2/suggest/build.xml	2024-10-28 00:55:30.109289178 +0100
 @@ -42,7 +42,7 @@
      </invoke-module-javadoc>
    </target>

@@ -23,16 +23,19 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>8.11.4</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-classification</artifactId>
+  <artifactId>lucene-analyzers-icu</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Classification</name>
-  <description>Lucene Classification</description>
+  <name>Lucene ICU Analysis Components</name>
+  <description>    
+    Provides integration with ICU (International Components for Unicode) for
+    stronger Unicode and internationalization support.
+  </description>
   <properties>
-    <module-directory>lucene/classification</module-directory>
+    <module-directory>lucene/analysis/icu</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -49,13 +52,8 @@
       <artifactId>lucene-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-grouping</artifactId>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queries</artifactId>
-    </dependency>
-
   </dependencies>
 </project>

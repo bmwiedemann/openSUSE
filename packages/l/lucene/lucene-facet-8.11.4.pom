@@ -23,16 +23,18 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
+    <version>8.11.4</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-join</artifactId>
+  <artifactId>lucene-facet</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Join</name>
-  <description>Lucene Join Module</description>
+  <name>Lucene Facets</name>
+  <description>
+    Package for Faceted Indexing and Search
+  </description>
   <properties>
-    <module-directory>lucene/join</module-directory>
+    <module-directory>lucene/facet</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -44,6 +46,9 @@
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.carrotsearch</groupId>
+      <artifactId>hppc</artifactId>
+    </dependency>
   </dependencies>
 </project>

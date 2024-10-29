@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:04:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Enable build and packaging of modules facet and expressions
+
+-------------------------------------------------------------------
+Tue Oct 29 07:19:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 8.11.4
+  * Bug Fixes
+    + LUCENE-9580: Fix bug in the polygon tessellator when
+      introducing collinear edges during polygon splitting.
+    + LUCENE-10470: Check if polygon has been successfully
+      tessellated before we fail (we are failing some valid
+      tessellations) and allow filtering edges that fold on top of
+      the previous one.
+    + LUCENE-10563: Fix failure to tessellate complex polygon.
+    + LUCENE-10678: Fix potential overflow when building a BKD tree
+      with more than 4 billion points. The overflow occurs when
+      computing the partition point.
+    + GITHUB#11986: Fix algorithm that chooses the bridge between a
+      polygon and a hole when there is common vertex.
+    + GITHUB#12020: Fixes bug whereby very flat polygons can
+      incorrectly contain intersecting geometries.
+    + GITHUB#12352: [Tessellator] Improve the checks that validate
+      the diagonal between two polygon nodes so the resulting
+      polygons are valid counter clockwise polygons.
+  * Optimizations
+    + GITHUB#12604: Estimate the block size of FST BytesStore in
+      BlockTreeTermsWriter to reduce GC load during indexing.
+- Modified patch:
+  * s2-geometry-library-java-2.0.0.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Tue Oct 29 06:42:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Buld and distribute additional modules:
+  * analyzers-icu,
+  * analyzers-phonetic,
+  * spatial-extras and
+  * suggest
+- Added patch:
+  * s2-geometry-library-java-2.0.0.patch
+    + build against the com.google.geometry:s2-geometry instead of
+      the io.sgr:s2-geometry-library-java fork
+
+-------------------------------------------------------------------
 Wed Feb 21 10:49:02 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

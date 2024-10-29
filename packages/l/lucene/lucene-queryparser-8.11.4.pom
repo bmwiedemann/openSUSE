@@ -23,18 +23,16 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
+    <version>8.11.4</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-monitor</artifactId>
+  <artifactId>lucene-queryparser</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Monitor</name>
-  <description>
-    High-performance single-document index to compare against Query
-  </description>
+  <name>Lucene QueryParsers</name>
+  <description>Lucene QueryParsers module</description>
   <properties>
-    <module-directory>lucene/monitor</module-directory>
+    <module-directory>lucene/queryparser</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -44,19 +42,15 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-memory</artifactId>
+      <artifactId>lucene-queries</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queryparser</artifactId>
+      <artifactId>lucene-sandbox</artifactId>
     </dependency>
 
   </dependencies>

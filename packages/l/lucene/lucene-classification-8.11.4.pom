@@ -23,18 +23,16 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.11.2</version>
+    <version>8.11.4</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-highlighter</artifactId>
+  <artifactId>lucene-classification</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Highlighter</name>
-  <description>
-    This is the highlighter for apache lucene java
-  </description>
+  <name>Lucene Classification</name>
+  <description>Lucene Classification</description>
   <properties>
-    <module-directory>lucene/highlighter</module-directory>
+    <module-directory>lucene/classification</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -44,11 +42,15 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-memory</artifactId>
+      <artifactId>lucene-grouping</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
