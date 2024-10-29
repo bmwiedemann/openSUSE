@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyodbc
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Python ODBC API
 License:        MIT

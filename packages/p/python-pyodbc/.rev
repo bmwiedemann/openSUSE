@@ -139,4 +139,34 @@
     <comment></comment>
     <requestid>1172418</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>630f54549ab0cc569e304504874420aa</srcmd5>
+    <version>5.2.0</version>
+    <time>1730208999</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Thanks to @keitherskine there are now wheels for 3.13.  There
+    are aiso a few bug fixes that were ready to go.
+
+- Changes from version 4.0.34
+- Updated spec file for compatibility with different python3
+- Update to version 4.0.27:
+  * Use int instead of bigint when possible (based on size of data)
+  * Support SQL Server datetime2 precision. Previously more data
+  * Correct encoding error on big-endian machines for connection
+  * Issue #506 uncovered a potentially serious error where
+- Use python single spec.
+-Update to version 4.0.13
+- updated to version 3.0.10
+ * Row objects can now be pickled.
+ * Fixed building on Python 2.5. Other versions are not affected.
+ * Fixed &quot;function sequence&quot; errors caused by prepared SQL not being cleared (&quot;unprepared&quot;)
+ * Added Cursor.commit() and Cursor.rollback(). It is now possible to use only a cursor in
+ * Added readonly keyword to connect. If set to True, SQLSetConnectAttr
+   SQL_ATTR_ACCESS_MODE is set to SQL_MODE_READ_ONLY.
+*  Fixed an error reading SQL Server XML data types longer than 4K.
+- removed unneded requires
+- initial version</comment>
+    <requestid>1218966</requestid>
+  </revision>
 </revisionlist>

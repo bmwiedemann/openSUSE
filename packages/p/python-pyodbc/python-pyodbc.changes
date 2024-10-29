@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:38:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Thanks to @keitherskine there are now wheels for 3.13.  There
+    are aiso a few bug fixes that were ready to go.
+
+-------------------------------------------------------------------
 Tue May  7 11:16:53 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add %{?sle15_python_module_pythons}
@@ -42,7 +49,7 @@ Tue Feb  7 20:20:18 UTC 2023 - Dirk Hartmann <2monex@gmx.net>
   * This release provides Python 3.11 wheels, plus some other wheel fixes.
   * There is also an import memory fix when using fast_execute_many.
 
-- Changes from version 4.0.34 
+- Changes from version 4.0.34
   * Mac wheels are finally here. Thanks to all that worked on the code for that. Please let us
     know if there are any problems with the wheels on PyPI
   * Python 3.10 wheels are also available
@@ -56,7 +63,7 @@ Tue Feb  7 20:20:18 UTC 2023 - Dirk Hartmann <2monex@gmx.net>
 -------------------------------------------------------------------
 Wed Jan 20 20:12:59 UTC 2021 - Dirk Hartmann <2monex@gmx.net>
 
-- Updated spec file for compatibility with different python3 
+- Updated spec file for compatibility with different python3
   flavours.
 
 -------------------------------------------------------------------
@@ -83,13 +90,13 @@ Sat Sep 14 15:34:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Mon Aug  5 18:35:48 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
 
-- Update to version 4.0.27: 
-  * Use int instead of bigint when possible (based on size of data) 
+- Update to version 4.0.27:
+  * Use int instead of bigint when possible (based on size of data)
     to work with drivers that don't support bigint at all.
-  * Support SQL Server datetime2 precision. Previously more data 
+  * Support SQL Server datetime2 precision. Previously more data
     was passed than the column precision causing an error.
   * Make Informix unit tests work again.
-  * Correct encoding error on big-endian machines for connection 
+  * Correct encoding error on big-endian machines for connection
     errors. Default to native UTF16 instead of UTF16-LE.
   * Fix MySQL unit tests.
 
@@ -97,10 +104,10 @@ Mon Aug  5 18:35:48 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
 Sun Mar 10 16:04:24 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
 
 - Update to version 4.0.26:
-  * Issue #506 uncovered a potentially serious error where 
+  * Issue #506 uncovered a potentially serious error where
     Unicode strings may not get a NULL terminator when being converted.
   * Issue #504 was a double decref in the error return path of executemany.
-  
+
 
 -------------------------------------------------------------------
 Wed Jan 30 19:32:36 UTC 2019 - Dirk Hartmann <monex@liquid-co.de>
@@ -170,12 +177,12 @@ Fri Aug  3 09:52:50 UTC 2018 - nrochard@gmail.com
 -------------------------------------------------------------------
 Thu Jun 28 18:18:40 UTC 2018 - monex@liquid-co.de
 
-- Use python single spec. 
+- Use python single spec.
 
 -------------------------------------------------------------------
 Mon Feb 27 19:45:51 UTC 2017 - monex@liquid-co.de
 
--Update to version 4.0.13 
+-Update to version 4.0.13
 
 -------------------------------------------------------------------
 Sat May  2 18:50:07 UTC 2015 - monex@liquid-co.de
@@ -185,7 +192,7 @@ Sat May  2 18:50:07 UTC 2015 - monex@liquid-co.de
 -------------------------------------------------------------------
 Sat May  2 18:46:44 UTC 2015 - monex@liquid-co.de
 
-- updated to version 3.0.10 
+- updated to version 3.0.10
 
 -------------------------------------------------------------------
 Sun Aug  4 19:28:00 UTC 2013 - monex@liquid-co.de
@@ -196,7 +203,7 @@ Sun Aug  4 19:28:00 UTC 2013 - monex@liquid-co.de
  * Cursor.executemany now accepts an iterator or generator.
  * Compilation improvements for FreeBSD, Cygwin, and OS/X
  * Use SQL_DATA_AT_EXEC instead of SQL_DATA_LEN_AT_EXEC when possible for driver compatibility.
- * Row objects can now be pickled. 
+ * Row objects can now be pickled.
 
 -------------------------------------------------------------------
 Fri Nov 16 21:07:43 UTC 2012 - 2monex@gmx.net
@@ -207,23 +214,23 @@ Fri Nov 16 21:07:43 UTC 2012 - 2monex@gmx.net
 Fri Nov 16 20:58:42 UTC 2012 - 2monex@gmx.net
 
 - updated to version 3.0.6
- * Fixed building on Python 2.5. Other versions are not affected. 
- * Fixed "function sequence" errors caused by prepared SQL not being cleared ("unprepared") 
+ * Fixed building on Python 2.5. Other versions are not affected.
+ * Fixed "function sequence" errors caused by prepared SQL not being cleared ("unprepared")
    when a catalog function is executed.
- * Added Cursor.commit() and Cursor.rollback(). It is now possible to use only a cursor in 
+ * Added Cursor.commit() and Cursor.rollback(). It is now possible to use only a cursor in
    your code instead of keeping track of a connection and a cursor.
- * Added readonly keyword to connect. If set to True, SQLSetConnectAttr 
-   SQL_ATTR_ACCESS_MODE is set to SQL_MODE_READ_ONLY. 
+ * Added readonly keyword to connect. If set to True, SQLSetConnectAttr
+   SQL_ATTR_ACCESS_MODE is set to SQL_MODE_READ_ONLY.
    This may provide better locking semantics or speed for some drivers.
-*  Fixed an error reading SQL Server XML data types longer than 4K. 
+*  Fixed an error reading SQL Server XML data types longer than 4K.
 
 -------------------------------------------------------------------
 Mon Jun  4 20:10:47 UTC 2012 - monex@liquid-co.de
 
-- removed unneded requires 
+- removed unneded requires
 
 -------------------------------------------------------------------
 Mon Jun  4 20:04:40 UTC 2012 - monex@liquid-co.de
 
-- initial version 
+- initial version
 
