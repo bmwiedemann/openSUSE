@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -37,10 +37,6 @@ Source5:        %{name}-rpmlintrc
 ###
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
-###
-Patch110:       libica-4.3.0-01-disable-CEX-usage-in-OpenSSL-for-all-tests.patch
-Patch111:       libica-4.3.0-02-correct-rc-handling-with-s390_pcc-function.patch
-Patch112:       libica-4.3.0-03-Use-__asm__-instead-of-asm.patch
 ###
 
 BuildRequires:  autoconf

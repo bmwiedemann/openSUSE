@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 06:22:04 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libica to version 4.3.1 (jsc#PED-9560, jsc#PED-10289, jsc#PED-3276)
+  *  Various bug fixes and housekeeping
+- Removed obsolete patches
+  * libica-4.3.0-01-disable-CEX-usage-in-OpenSSL-for-all-tests.patch
+  * libica-4.3.0-02-correct-rc-handling-with-s390_pcc-function.patch
+  * libica-4.3.0-03-Use-__asm__-instead-of-asm.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 09:05:28 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1231999)
