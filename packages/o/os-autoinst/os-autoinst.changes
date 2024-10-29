@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 28 14:45:15 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1730126707.79e7c91:
+  * Add dependencies of `tools/check-shellcheck` explicitly, fix CI checks
+  * Fully cover console in testapi.pm
+  * Fully cover select_console in testapi.pm
+  * Fully cover upload_asset in autotest.pm
+  * Fully cover mouse_drag in testapi.pm
+  * Fully cover get_test_data in testapi.pm
+  * Cover parse_extra_log in testapi.pm
+  * testapi: Slightly simplify upload_logs
+
+-------------------------------------------------------------------
 Thu Oct 10 15:05:18 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1728572709.326d308:
