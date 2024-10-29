@@ -1,0 +1,79 @@
+diff --git a/pom.xml b/pom.xml
+index 1d4ea838..c3764d04 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -120,7 +120,7 @@
+     <dependency>
+       <groupId>org.locationtech.jts</groupId>
+       <artifactId>jts-core</artifactId>
+-      <version>1.17.0</version>
++      <version>1.18.1</version>
+       <optional>true</optional>
+     </dependency>
+     
+diff --git a/src/main/java/org/locationtech/spatial4j/io/jts/JtsBinaryCodec.java b/src/main/java/org/locationtech/spatial4j/io/jts/JtsBinaryCodec.java
+index b355b936..3ea18de2 100644
+--- a/src/main/java/org/locationtech/spatial4j/io/jts/JtsBinaryCodec.java
++++ b/src/main/java/org/locationtech/spatial4j/io/jts/JtsBinaryCodec.java
+@@ -85,15 +85,17 @@ public class JtsBinaryCodec extends BinaryCodec {
+       InStream inStream = new InStream() {//a strange JTS abstraction
+         boolean first = true;
+         @Override
+-        public void read(byte[] buf) throws IOException {
++        public int read(byte[] buf) throws IOException {
+           if (first) {//we don't write JTS's leading BOM so synthesize reading it
+             if (buf.length != 1)
+               throw new IllegalStateException("Expected initial read of one byte, not: " + buf.length);
+             buf[0] = WKBConstants.wkbXDR;//0
+             first = false;
++            return 1;
+           } else {
+             //TODO for performance, specialize for common array lengths: 1, 4, 8
+             dataInput.readFully(buf);
++            return buf.length;
+           }
+         }
+       };
+diff --git a/src/test/java/org/locationtech/spatial4j/io/JtsBinaryCodecTest.java b/src/test/java/org/locationtech/spatial4j/io/JtsBinaryCodecTest.java
+index 0d16b45b..ccc1ad0f 100644
+--- a/src/test/java/org/locationtech/spatial4j/io/JtsBinaryCodecTest.java
++++ b/src/test/java/org/locationtech/spatial4j/io/JtsBinaryCodecTest.java
+@@ -8,19 +8,16 @@
+ 
+ package org.locationtech.spatial4j.io;
+ 
+-import com.carrotsearch.randomizedtesting.annotations.ParametersFactory;
+-import org.locationtech.spatial4j.context.SpatialContext;
+-import org.locationtech.spatial4j.context.jts.JtsSpatialContext;
+-import org.locationtech.spatial4j.context.jts.JtsSpatialContextFactory;
+-import org.locationtech.spatial4j.shape.Shape;
++import org.junit.Test;
+ import org.locationtech.jts.geom.Coordinate;
+ import org.locationtech.jts.geom.Geometry;
+ import org.locationtech.jts.geom.PrecisionModel;
+ import org.locationtech.jts.util.GeometricShapeFactory;
+-
+-import org.junit.Test;
+-
+-import java.util.Arrays;
++import org.locationtech.spatial4j.context.SpatialContext;
++import org.locationtech.spatial4j.context.jts.JtsSpatialContext;
++import org.locationtech.spatial4j.context.jts.JtsSpatialContextFactory;
++import org.locationtech.spatial4j.shape.Shape;
++import org.locationtech.spatial4j.shape.jts.JtsGeometry;
+ 
+ public class JtsBinaryCodecTest extends BinaryCodecTest {
+ 
+@@ -32,9 +29,10 @@ public class JtsBinaryCodecTest extends BinaryCodecTest {
+   }
+ 
+   @Test
+-  public void testPoly() {
++  public void testPoly() throws Exception {
+     JtsSpatialContext ctx = (JtsSpatialContext)super.ctx;
+-    ctx.makeShape(randomGeometry(randomIntBetween(3, 20)), false, false);
++    final JtsGeometry shape = ctx.makeShape(randomGeometry(randomIntBetween(3, 20)), false, false);
++    assertRoundTrip(shape);
+   }
+ 
+   @Override

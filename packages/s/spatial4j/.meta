@@ -1,0 +1,6 @@
+<package name="spatial4j" project="openSUSE:Factory">
+  <title>A Geospatial Library for Java</title>
+  <description>Spatial4j is a general purpose spatial / geospatial ASL licensed open-source Java library. It’s core capabilities are 3-fold: to provide common shapes that can work in Euclidean and geodesic (surface of sphere) world models, to provide distance calculations and other math, and to read &amp; write shapes from formats like WKT and GeoJSON. Spatial4j is a project of the LocationTech Industry Working Group of the Eclipse Foundation.</description>
+  <devel project="Java:packages" package="spatial4j"/>
+  <url>https://projects.eclipse.org/projects/locationtech.spatial4j</url>
+</package>

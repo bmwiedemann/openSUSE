@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Feb 21 10:53:51 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:36:35 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v0.8
+- Add patch:
+  * 00-jts-1.18.1.patch
+    + Update JTS to 1.18.1
