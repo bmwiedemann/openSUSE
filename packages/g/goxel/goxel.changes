@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 12 13:08:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.15.1:
+  * Improved extrude tool, with manual delta input.
+  * Improved help messages.
+  * Added support to emulate middle mouse button with Alt.
+  * Allow to configure the navigation mouse buttons.
+
+-------------------------------------------------------------------
 Sun Jul 28 00:25:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.15.0:
