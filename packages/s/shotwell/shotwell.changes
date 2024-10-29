@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 07:53:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.32.10:
+  + Add information to log and about about running environment.
+  + Fix video description upload for YouTube.
+  + Fix a regression causing a crash in crop again.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:33:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.9:
