@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.3:
+  * removed non-optional dirty-equals dependency
+  * star-expressions in list or dicts where never valid and cause
+    a warning now.
+  * A snapshot which contains an dirty-equals expression can now
+    be compared multiple times.
+  * Use tomllib instead of PyPI toml on Python 3.11 and later
+  * added extra.prints
+  * 3.13 support
+  * strings with one line-break at the end become no multiline
+    strings
+
+-------------------------------------------------------------------
 Thu Sep  5 16:19:43 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Fri Aug 16 23:25:30 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - version 0.12.1
-  * add license to project metadata and some other fixes in pyproject.toml (#104) 
+  * add license to project metadata and some other fixes in pyproject.toml (#104)

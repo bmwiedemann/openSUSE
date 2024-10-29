@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inline-snapshot
-Version:        0.12.1
+Version:        0.13.3
 Release:        0
 Summary:        Create and update inline snapshots in your Python code
 License:        MIT
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich >= 13.7.1}
 BuildRequires:  %{python_module time-machine >= 2.10.0}
-BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module toml >= 0.10.2 if %python-base < 3.11}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 BuildRequires:  fdupes
@@ -51,8 +51,10 @@ Requires:       python-black >= 23.3.0
 Requires:       python-click >= 8.1.4
 Requires:       python-executing >= 2.0.0
 Requires:       python-rich >= 13.7.1
+%if 0%{?python_version_nodots} < 311
 Requires:       python-toml >= 0.10.2
 Requires:       python-types-toml >= 0.10.8.7
+%endif
 Requires:       python-typing-extensions
 BuildArch:      noarch
 %python_subpackages

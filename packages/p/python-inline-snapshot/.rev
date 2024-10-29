@@ -7,4 +7,25 @@
     <comment></comment>
     <requestid>1199478</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>392e7aa3b118e4da99b57b4757edf67c</srcmd5>
+    <version>0.13.3</version>
+    <time>1730208995</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.3:
+  * removed non-optional dirty-equals dependency
+  * star-expressions in list or dicts where never valid and cause
+    a warning now.
+  * A snapshot which contains an dirty-equals expression can now
+    be compared multiple times.
+  * Use tomllib instead of PyPI toml on Python 3.11 and later
+  * added extra.prints
+  * 3.13 support
+  * strings with one line-break at the end become no multiline
+    strings
+
+- Enable sle15_python_module_pythons.
+  * add license to project metadata and some other fixes in pyproject.toml (#104)</comment>
+    <requestid>1218960</requestid>
+  </revision>
 </revisionlist>
