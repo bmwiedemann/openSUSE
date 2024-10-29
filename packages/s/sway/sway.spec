@@ -16,8 +16,10 @@
 #
 
 
+%define contribver 1.9
+
 Name:           sway
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -27,11 +29,12 @@ Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{na
 Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 Source3:        sway-portals.conf
-Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{version}-contrib.0.tar.gz#/sway-contrib-%{version}.tar.gz
+Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{contribver}-contrib.0.tar.gz#/sway-contrib-%{contribver}.tar.gz
 Source5:        sway.rpmlintrc
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
+BuildRequires:  fdupes
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pam-devel
@@ -52,9 +55,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.21.0
-BuildConflicts: pkgconfig(wlroots) <= 0.16.0
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig(wlroots) >= 0.17.0
+BuildRequires:  pkgconfig(wlroots-0.18)
 BuildRequires:  pkgconfig(xkbcommon)
 # WARNING: do not set this to versioned, as it breaks other branding providers
 # such as openSUSEway (bsc#1222579)
@@ -90,6 +91,7 @@ This package provides the upstream look and feel for sway.
 
 %package contrib
 Summary:        Contributed scripts for %{name}
+Version:        %{contribver}
 Group:          System/GUI/Other
 # autoname-workspaces & inactive-windows-transparency
 Requires:       python3-i3ipc

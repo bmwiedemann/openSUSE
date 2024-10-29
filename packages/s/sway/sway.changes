@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Oct 29 00:55:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.10:
+  Features
+  * All of the enhancements from wlroots 0.18.
+  * Rewrite the renderer to leverage the wlroots scene-graph API,
+    resulting in improved performance.
+  * Add GPU reset recovery for improved robustness.
+  * Add a command to use an ICC profile for an output.
+  * Improved output configuration algorithm to light up more
+    outputs when the GPU bandwidth is constrained.
+    WLR_DRM_NO_MODIFIERS shouldn't be necessary anymore to
+    workaround black screens on Intel.
+  * Add support for IME popups used for CJK.
+  * Add support for tearing-control-v1, to opt-in for tearing
+    page-flips for gaming use-cases.
+  * Add support for ext-transient-seat-v1, allowing remoting apps
+    such as wayvnc to create separate temporary seats for input
+    events.
+  * Add support for ext-foreign-toplevel-list-v1, the new standard
+    protocol to obtain information about other toplevels. This will
+    eventually be used by taskbars, window switchers and
+    per-toplevel screen capture.
+  * Add support for xdg-shell v5 with popup repositioning and
+    hiding maximize/minimize buttons in CSD.
+  Changes
+  * dmenu_run is no longer a dependency of the default config file.
+  * The default config file now contains keybindings with pactl for
+    volume adjustment, brightnessctl for brightness adjustment and
+    grim for screenshots.
+  * The legacy wl_drm protocol is now disabled by default
+    (superseded by the standard linux-dmabuf-v1 protocol). This
+    causes breakage in xorg-xwayland < 24.1.0, libva < 2.22.0 and
+    amdvlk < 2024.Q4.1, and can be re-enabled manually via
+    -Dlegacy-wl-drm.
+  * The xwayland built-time option has been removed: Xwayland
+    support is now enabled at build-time if it was enabled for
+    wlroots.
+
+-------------------------------------------------------------------
 Wed Apr 10 05:38:53 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Remove versioned branding and explain why it must not be added again (bsc#1222579)
