@@ -1,4 +1,4 @@
 #!/bin/bash
 
 zypper -n clean
-rm -rf /var/log/*
+rm -rf /var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}

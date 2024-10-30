@@ -7,4 +7,12 @@
     <comment>New Package</comment>
     <requestid>966838</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>19a575a66c5b6c1da56d475597b62b9e</srcmd5>
+    <version>0.0.1</version>
+    <time>1730307927</time>
+    <user>dimstar_suse</user>
+    <comment>Don't remove all logfiles, only those that are safe to delete</comment>
+    <requestid>1219587</requestid>
+  </revision>
 </revisionlist>

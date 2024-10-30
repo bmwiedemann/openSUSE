@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 14:21:39 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Don't remove all logfiles, only those that are safe to delete
+
+-------------------------------------------------------------------
 Tue Mar 22 12:52:44 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - First version of the container-build-helper package
