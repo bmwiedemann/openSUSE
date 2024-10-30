@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 26 15:07:17 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Build Shell EFI application
+
+-------------------------------------------------------------------
 Thu Aug 29 09:49:54 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build of edk2:Armada80x0McBin with gcc14:

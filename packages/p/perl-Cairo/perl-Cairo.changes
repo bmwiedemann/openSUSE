@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  4 15:14:47 CEST 2024 - mls@suse.de
+
+- Fix type of length in cairo_surface_set_mime_data
+  * new patch: set_mime_data_length.diff
+
+-------------------------------------------------------------------
 Thu Jan 21 03:06:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.109

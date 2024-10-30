@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:20:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Fix a build issue
+
+-------------------------------------------------------------------
 Thu Oct 24 13:11:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Enable building with libsecret as backend additionally to kde

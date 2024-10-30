@@ -191,4 +191,38 @@ of Markdown.</comment>
   * [pull #566] Fix crash in `markdown-in-html` extra</comment>
     <requestid>1158398</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6880b6fdc19db461c90b07f2ee2e3352</srcmd5>
+    <version>2.5.1</version>
+    <time>1730306193</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+  * [pull #590] Fix underscores within bold text getting
+    emphasized
+  * [pull #591] Add Alerts extra
+  * [pull #595] Fix img alt text being processed as markdown
+  * [pull #598] Add `link-shortrefs` extra
+  * [pull #600] Use urandom for SECRET_SALT
+  * [pull #602] Fix XSS issue in safe mode
+  * [pull #604] Fix XSS injection in image URLs
+  * [pull #519] Add support for custom extras
+  * [pull #519] Drop Python 3.5 support
+  * [pull #568] Add `prepend` arg to toc extra
+  * [pull #569] Process HTML comments as markdown in 'escape'
+    safe mode
+  * [pull #570] Fix syntax warnings in test suite
+  * [pull #572] Process inline tags as HTML blocks when they span
+    multiple lines
+  * [pull #573] Add new LaTeX Extra
+  * [pull #576] Fix `html`, `head` and `body` tags being wrapped
+    in `&lt;p&gt;` tags
+  * [pull #578] Graceful handling of broken lists when cuddled-
+    lists extra is enabled
+  * [pull #581] Add type hints
+  * [pull #581] Drop Python 3.6 and 3.7 support
+  * [pull #582] Fix fenced code blocks breaking lists
+  * [pull #586] Fix #583 by tweaking incomplete tag regex
+  * [pull #587] Fix AssertionError on malformed HTML</comment>
+    <requestid>1219195</requestid>
+  </revision>
 </revisionlist>

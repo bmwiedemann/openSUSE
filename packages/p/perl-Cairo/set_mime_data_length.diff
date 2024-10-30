@@ -1,0 +1,16 @@
+--- CairoSurface.xs.orig	2024-10-04 13:12:20.636290906 +0000
++++ CairoSurface.xs	2024-10-04 13:12:53.600240731 +0000
+@@ -389,11 +389,11 @@ cairo_status_t
+ cairo_surface_set_mime_data (cairo_surface_t *surface, const char *mime_type, SV *data);
+     PREINIT:
+ 	const unsigned char *mime_data;
+-	unsigned long length;
++	STRLEN length;
+     CODE:
+ 	SvREFCNT_inc (data);
+ 	mime_data = (const unsigned char *) SvPV(data, length);
+-	RETVAL = cairo_surface_set_mime_data (surface, mime_type, mime_data, length, data_destroy, data);
++	RETVAL = cairo_surface_set_mime_data (surface, mime_type, mime_data, (unsigned long)length, data_destroy, data);
+     OUTPUT:
+ 	RETVAL
+ 

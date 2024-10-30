@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:20:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.8:
+  * docs: update CLI reference documentation (#675)
+  * chore(deps): update dependency siderolabs/talos to v1.8.2
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.8.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#674)
+  * feat(readme): Thank you @eocx for the sponsor!
+  * chore(github-action): update actions/setup-go action to v5.1.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#670)
+  * chore(container): update bitnami/kubectl docker tag to v1.31.2
+  * chore(github-action): update actions/checkout action to v4.2.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#668)
+  * chore(github-action): update actions/checkout digest to 11bd719
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/fatih/color to v1.18.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#662)
+  * fix(flake): Update package to be talhelper not default
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.9.0-alpha.0
+  * feat: add talhelper package and docs
+  * feat: add easy overlay for flake parts
+  * chore(schema): update talos-extensions.yaml JSON schema (#659)
+  * docs(refs): re add the `machineDisks` that was accidentally
+    deleted
+  * chore(schema): update talos-extensions.yaml JSON schema (#657)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.23-bookworm docker digest
+    to 2e00578
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.4
+  * fix(genconfig): skip applying patch that contains empty file
+  * Set meta.mainProgram
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.3
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.7
+  * feat: update Scoop for talhelper version v3.0.7
+  * feat: update flake (#646)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:21:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.7:

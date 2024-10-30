@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:44:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.29.0:
+  * feat: support override severity of unused-suppression #1556
+  * feat: unify configuration reading #1557
+  * feat: unify configuration #1557
+  * refactor: improve file config handling #1553
+  * refactor: revamp configuration file discovering and custom language registration #1553
+  * feat(scan): support context, before/after flags #1549
+  * feat: add RuleOverwrite to override rule severity from CLI #1061
+  * Breaking change: feat: support --config in sg new cfe472f
+  * feat: add rule overwrite impl fb4ac07
+  * fix(deps): update dependency @swc/core to v1.7.36 c11fd89
+
+-------------------------------------------------------------------
 Sun Oct 20 09:54:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.28.1:

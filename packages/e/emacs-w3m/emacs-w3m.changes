@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:35:49 UTC 2024 - schwab@linux-m68k.org
+
+- Update to version 1.4.632+569+g5c965214:
+  * shimbun/sb-sankei.el: Somewhat improve article readability
+  * shimbun/sb-sankei.el: Make login suite work again
+  * * w3m-filter.el (w3m-filter-regard-srcset=-as-src=): New filter
+  * * shimbun.el (shimbun-mime-replace-image-tags): Allow srcset in img
+  * * sb-sankei.el (shimbun-sankei-get-headers): Update regexp
+  * * sb-sankei.el (shimbun-sankei-get-headers): Fix regexp
+
+-------------------------------------------------------------------
 Wed Feb 21 19:59:11 UTC 2024 - schwab@linux-m68k.org
 
 - Update to version 1.4.632+563+gdc5136d2:

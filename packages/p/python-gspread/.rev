@@ -282,4 +282,23 @@
   * Remove StrEnum dependency and added custom class[issue #1462]</comment>
     <requestid>1178157</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aeffe9f7622a482ab148160d3e922187</srcmd5>
+    <version>6.1.4</version>
+    <time>1730306200</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.4:
+  * remove dependency on requests-2.27.0
+  * ignore jinja CVE by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1481
+  * Remove passing exception as args to super in APIError by
+    @mike-flowers-airbnb in
+    https://github.com/burnash/gspread/pull/1477
+  * better handler API error parsing. by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1510
+  * Add test on receiving an invalid JSON in the APIError
+    exception handler. by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1512</comment>
+    <requestid>1219198</requestid>
+  </revision>
 </revisionlist>

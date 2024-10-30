@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-pyi
-Version:        24.6.0
+Version:        24.9.0
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/f/flake8-pyi/flak
 # PATCH-FIX-OPENSUSE set-tests-python-path.patch, patch to fix
 # PYTHONPATH resolution for tests running inside osc
 Patch0:         set-tests-python-path.patch
-BuildRequires:  %{python_module ast-decompiler}
 BuildRequires:  %{python_module base >= 3.8.0}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}

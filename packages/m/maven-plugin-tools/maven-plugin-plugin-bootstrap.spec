@@ -19,7 +19,7 @@
 %global base_name maven-plugin-tools
 %global artifactId maven-plugin-plugin
 Name:           %{artifactId}-bootstrap
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -101,7 +101,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
 install -pm 0644 %{artifactId}/target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}/%{artifactId}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
-%mvn_install_pom %{artifactId}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/%{artifactId}.pom
+%{mvn_install_pom} %{artifactId}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/%{artifactId}.pom
 %add_maven_depmap %{base_name}/%{artifactId}.pom %{base_name}/%{artifactId}.jar
 
 %files -f .mfiles

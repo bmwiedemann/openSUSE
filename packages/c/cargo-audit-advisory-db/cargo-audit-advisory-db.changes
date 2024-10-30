@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 30 01:03:16 UTC 2024 - william.brown@suse.com
+
+- Update to version 20241030:
+  * Fix incorrect fixed version for may_queue (#2106)
+  * Add missing information about fixed versions (#2105)
+  * Assigned RUSTSEC-2024-0378 to pyo3 (#2102)
+  * risk of use-after-free in PyO3 borrowing from weak refrences (#2101)
+  * Assigned RUSTSEC-2024-0377 to dbn (#2099)
+  * Dbn heap buffer overflow (#2097)
+  * Update RUSTSEC-2024-0376 affected versions (#2094)
+  * Assigned RUSTSEC-2024-0376 to tonic (#2092)
+  * Add advisory for CVE-2024-47609 in tonic (#2091)
+  * Assigned RUSTSEC-2024-0375 to atty (#2090)
+
+-------------------------------------------------------------------
 Wed Sep 04 00:24:50 UTC 2024 - william.brown@suse.com
 
 - Update to version 20240904:

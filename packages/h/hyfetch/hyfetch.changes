@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Tue Oct 29 13:58:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split out neowofetch into an own subpackage, called neowofetch
+  (replacing the original neofetch package, which is archived).
+- Do not clone nfeowofetch and don't use update-alternatives on it:
+  it's a bash script without any relevance to python vesions.
+- Provide symlink to allow calling neowofetch as neofetch directly.
+
+-------------------------------------------------------------------
 Sat Oct 26 08:06:50 UTC 2024 - Cat Kasin <cat@aulucya.gay>
 
 - Update to version 1.99.0

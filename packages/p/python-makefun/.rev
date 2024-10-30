@@ -61,4 +61,20 @@
   * Fixes #96.</comment>
     <requestid>1131765</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>208e740ba97aa792a5f9c95cd1a39286</srcmd5>
+    <version>1.15.6</version>
+    <time>1730306183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.6:
+  * Fixed issue with legacy python 2.7 and 3.5.
+  * Python 3.13 is now supported.
+  * Fixed `SyntaxError: invalid syntax` happening when the
+    default value of one argument of the created function is a
+  * subclass of a basic primitive.
+
+    `_` or contains a double `__`
+- Update to Version 1.13.0</comment>
+    <requestid>1219185</requestid>
+  </revision>
 </revisionlist>

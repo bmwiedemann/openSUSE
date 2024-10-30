@@ -1,7 +1,7 @@
 #
 # spec file for package python-coloredlogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,25 +23,26 @@ Version:        15.0.1
 Release:        0
 Summary:        Colored terminal output for Python's logging module
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/xolox/python-coloredlogs
 Source:         https://files.pythonhosted.org/packages/source/c/coloredlogs/coloredlogs-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE test_cli_conversion_test.patch mcepl@suse.com
 # With using alternatives, we don't have versionless command in time of %%check
 Patch0:         test_cli_conversion_test.patch
+# PATCH-FIX-UPSTREAM gh#xolox/python-coloredlogs#120
+Patch1:         support-python-313.patch
 BuildRequires:  %{python_module capturer >= 2.4}
 BuildRequires:  %{python_module humanfriendly >= 9.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov >= 2.3.1}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module verboselogs >= 1.7}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-capturer >= 2.4
 Requires:       python-humanfriendly >= 9.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-verboselogs >= 1.7
 BuildArch:      noarch
 %python_subpackages
@@ -83,6 +84,6 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %python_alternative %{_bindir}/coloredlogs
 %{python_sitelib}/coloredlogs/
 %{python_sitelib}/coloredlogs.pth
-%{python_sitelib}/coloredlogs-%{version}*-info
+%{python_sitelib}/coloredlogs-%{version}.dist-info
 
 %changelog

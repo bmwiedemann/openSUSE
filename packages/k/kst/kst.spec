@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,33 +18,31 @@
 
 
 Name:           kst
-Version:        2.0.8
+Version:        2.1.0
 Release:        0
 Summary:        Real-Time Data Viewing and Plotting Tool with Basic Data Analysis Functionality
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://kst-plot.kde.org/
-Source:         Kst-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gsl2-support.patch -- fixes build with GSL-2.0
-Patch0:         gsl2-support.patch
-# PATCH-FIX-UPSTREAM -- Fix-build-with-Qt-511.patch -- Fixes build with Qt 5.11
-Patch1:         Fix-build-with-Qt-511.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-with-CMake-3.20.patch
+Source:         kst-plot-%{version}.tar.zst
+# PATCH-FIX-OPENSUSE
+Patch0:         fix-hdf5-include-path.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gsl-devel
+BuildRequires:  hdf5-devel
 BuildRequires:  libmatio-devel
 BuildRequires:  libnetcdf_c++-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  netcdf-devel
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(cfitsio)
@@ -65,9 +63,8 @@ Kst is a data plotting and viewing program. Some of the features include:
 - Powerful graphical user interface
 
 %package devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/KDE
-Requires:       %{name} = %{version}
+Summary:        Development files for kst
+Requires:       kst = %{version}
 Requires:       cmake(Qt5Concurrent)
 Requires:       cmake(Qt5Core)
 Requires:       cmake(Qt5Network)
@@ -77,10 +74,10 @@ Requires:       cmake(Qt5Xml)
 
 %description devel
 Development libraries and headers needed to build software
-making use of %{name}
+making use of kst
 
 %prep
-%autosetup -p1 -n Kst-2.0.8
+%autosetup -p1 -n kst-plot-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -97,11 +94,10 @@ EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
 
 %install
 %cmake_install
-%suse_update_desktop_file -r %{name}2 Qt KDE Science Math
+%suse_update_desktop_file -r kst2 Qt KDE Science Math
 %fdupes %{buildroot}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING*
@@ -109,21 +105,18 @@ EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
-%dir %{_datadir}/kst
-%dir %{_datadir}/kst/locale
-%{_bindir}/%{name}2
-%{_datadir}/applications/%{name}2.desktop
-%{_datadir}/applnk/
-%{_datadir}/icons/hicolor/*/apps/*%{name}.*
-%{_datadir}/kst/locale/kst_common_*.qm
-%{_datadir}/mimelink/
-%{_libdir}/%{name}2/
-%{_libdir}/lib%{name}*.so.*
-%{_mandir}/man1/%{name}2.1%{?ext_man}
+%dir %{_datadir}/icons/hicolor/*/mimetypes
+%{_bindir}/kst2
+%{_datadir}/applications/kst2.desktop
+%{_datadir}/icons/hicolor/*/*/*kst.*
+%{_libdir}/kst2/
+%{_libdir}/libkst*.so.*
+%{_mandir}/man1/kst2.1%{?ext_man}
+%{_datadir}/mime/packages/x-kst.xml
 
 %files devel
 %license COPYING*
 %{_libdir}/*.so
-%{_libdir}/lib%{name}2app.a
+%{_libdir}/libkst2app.a
 
 %changelog

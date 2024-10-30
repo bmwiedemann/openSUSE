@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 19:05:21 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2024.14:
+  + Fixed:
+    - CPU spiking due to memory leak in upstream crate.
+
+-------------------------------------------------------------------
 Wed Sep 18 21:59:47 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2024.12:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 29 18:24:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to maven-archiver 3.6.3
+  * Bug
+    + MSHARED-1445: Unix timestamps since the epoch are not subject
+      to the boundary checks
+  * Task
+    + MSHARED-1367: Improvement in unit tests
+    + MSHARED-1446: Add docs about repro build output timestamp
+      boundaries
+
+-------------------------------------------------------------------
 Wed Sep  6 14:03:52 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to maven-archiver 3.6.1

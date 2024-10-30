@@ -939,4 +939,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1216468</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>5196ebd56cde82a3535de2020c81fff4</srcmd5>
+    <version>13.00</version>
+    <time>1730306357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219413</requestid>
+  </revision>
 </revisionlist>

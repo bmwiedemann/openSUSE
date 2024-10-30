@@ -277,4 +277,28 @@
   build root.</comment>
     <requestid>1165411</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2c3f5819a8b18309f83ee9ff55806f96</srcmd5>
+    <version>4.1.0</version>
+    <time>1730306179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * `nchar` attribute to `TextXError` class, which represents the
+    substring length for the model object where the error was found.
+  * `linetype` parameter to PlantUML generator which controls
+    line style. See the tip in the visualization docs
+  * Rendering of multiplicities of association in PlantUML
+    generator.
+  * Meta-model diagram export now raises attributes/references to
+    abstract
+  * meta-classes along the inheritance chain. See [423].
+  * The Python version limit &quot;&lt;3.13&quot; has been removed from the
+    pyproject.toml file. The library should run on all Python
+    versions starting from 3.8
+
+  * Removed vendored `six` library. We don't need 2.x support anymore. Thanks
+  - Added RREL-'fixed name'-extension, allowing to follow model elements
+      [#273]). Also, using base classes for rules from imported grammars in</comment>
+    <requestid>1219183</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 07:53:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build more modules since we have the dependencies
+- Added patch:
+  * java-util-concurrent-ThreadFactory-newThread.patch
+    + overriding method cannot be protected if the interface
+      method is public
+
+-------------------------------------------------------------------
 Wed Oct  2 23:59:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Disable wadl-doclet unconditionally, since it is broken with

@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk23-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk23
-#!BuildTag: opensuse/apache-tomcat:10.1-openjdk23-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:10.1-openjdk23
 
 FROM opensuse/bci/bci-micro:latest AS target

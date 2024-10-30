@@ -1629,4 +1629,41 @@
     <comment></comment>
     <requestid>1203276</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>bdf37c07fa93f26f61a8cd5c9954b219</srcmd5>
+    <version>24.10.0</version>
+    <time>1730305998</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.10.0:
+  * Python 3.13 is now supported.
+  * twisted.internet.defer.succeed() is significantly faster, and
+    awaiting Deferred has also been sped up.
+  * twisted.python.failure.Failure creation no longer records the
+    place where it was created. This reduces creation time by 60%
+    at least, thereby speeding up Deferred error handling.
+  * twisted.internet.defer.Deferred no longer removes the
+    traceback object from Failures. This may result in more
+    objects staying in memory if you don't clean up failed
+    Deferreds, but it speeds up error handling and enables
+    improvements to traceback reporting.
+  * twisted.internet.defer APIs are 2%-4% faster in many cases.
+  * twisted.internet.defer.Deferred runs callbacks with chained
+    Deferreds a little faster.
+  * The reactor now will use a little less CPU when events have
+    been scheduled with callLater().
+  * Creation of twisted.python.failure.Failure is now faster.
+  * Fixed unreleased regression caused by PR 12109.
+  * twisted.logger.eventAsText can now format the output having
+    types/classes as input. This was a regression introduced in
+    Twisted 24.3.0.
+  * twisted.internet.endpoints.clientFromString for TLS endpoints
+    with &quot;bindAddress=&quot;  no longer crashes during connect.
+    twisted.internet.endpoints.HostnameEndpoint() no longer
+    crashes when given a bindAddress= argument that is just a
+    string, and that argument now accepts either address strings
+    or (address, port) tuples.
+  * The URLs from README and pyproject.toml were updated.
+  * #11236, #12060, #12062, #12099, #12219, #12290, #12296,</comment>
+    <requestid>1219215</requestid>
+  </revision>
 </revisionlist>

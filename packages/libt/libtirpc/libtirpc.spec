@@ -18,7 +18,7 @@
 
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 Name:           libtirpc
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause

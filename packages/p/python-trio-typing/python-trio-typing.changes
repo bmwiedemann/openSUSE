@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:19:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch support-mypy-1.11.patch so we can support this package
+  until all software moved to the newer trio
+
+-------------------------------------------------------------------
 Mon Mar 25 07:51:35 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

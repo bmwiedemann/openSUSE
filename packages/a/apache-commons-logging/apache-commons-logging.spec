@@ -20,15 +20,14 @@
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Apache Commons Logging
 License:        Apache-2.0
 URL:            https://commons.apache.org/%{base_name}
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
-Source2:        apache-commons-logging.keyring
-Source4:        http://central.maven.org/maven2/%{short_name}/%{short_name}-api/1.1/%{short_name}-api-1.1.pom
+Source2:        %{name}.keyring
 Source5:        build.xml
 Source6:        build.properties
 Patch0:         commons-logging-1.3.3-dependencies.patch
@@ -92,14 +91,10 @@ popd
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}/%{_mavenpomdir}/%{short_name}-%{version}.pom
-sed 's#<version>1.1</version>#<version>1.2</version>#g' < %{SOURCE4} > tmp.pom
-%mvn_install_pom tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-api-%{version}.pom
-sed -e 's#<version>1.1</version>#<version>1.2</version>#g' -e "s#%{short_name}-api#%{short_name}-adapters#g" < %{SOURCE4} > tmp.pom
-%mvn_install_pom tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-adapters-%{version}.pom
-%add_maven_depmap %{short_name}-%{version}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}","apache:%{short_name}"
-%add_maven_depmap %{short_name}-api-%{version}.pom %{short_name}-api.jar -a "org.apache.commons:%{short_name}-api","apache:%{short_name}-api"
-%add_maven_depmap %{short_name}-adapters-%{version}.pom %{short_name}-adapters.jar -a "org.apache.commons:%{short_name}-adapters","apache:%{short_name}-adapters"
+%{mvn_install_pom} pom.xml %{buildroot}/%{_mavenpomdir}/%{short_name}.pom
+%add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}","apache:%{short_name}"
+%add_maven_depmap %{short_name}:%{short_name}::api:%{version} %{short_name}-api.jar -a "%{short_name}:%{short_name}-api","org.apache.commons:%{short_name}-api","apache:%{short_name}-api"
+%add_maven_depmap %{short_name}:%{short_name}::adapters:%{version} %{short_name}-adapters.jar -a "%{short_name}:%{short_name}-adapters","org.apache.commons:%{short_name}-adapters","apache:%{short_name}-adapters"
 
 %files -f .mfiles
 %{_javadir}/%{name}*.jar

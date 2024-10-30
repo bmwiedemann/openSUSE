@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-websockets
-Version:        12.0
+Version:        13.1
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause
@@ -51,6 +51,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand rm -f %{buildroot}%{$python_sitearch}/websockets/speedups.c
 
 %check
 # Test execution speed depends on BS load and architecture, relax

@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/bci/python:%%py311_ver%%-%RELEASE%
 #!BuildTag: opensuse/bci/python:%%py311_ver%%
-#!BuildTag: opensuse/bci/python:3.11-%RELEASE%
 #!BuildTag: opensuse/bci/python:3.11
 #!BuildTag: opensuse/bci/python:3
 #!BuildTag: opensuse/bci/python:latest

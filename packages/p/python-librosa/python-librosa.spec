@@ -18,7 +18,7 @@
 
 %define static_test_data_commit 72bd79e448829187f6336818b3f6bdc2c2ae8f5a
 Name:           python-librosa
-Version:        0.10.1
+Version:        0.10.2.post1
 Release:        0
 Summary:        Python module for audio and music processing
 License:        CC-BY-3.0 AND ISC
@@ -30,6 +30,14 @@ Source1:        librosa-create-pooch-cache.py
 Source2:        librosa-pooch-cache.tar.gz
 # Static test data
 Source3:        https://github.com/librosa/librosa-test-data/archive/%{static_test_data_commit}.tar.gz#/librosa-static-test-data-%{version}.tar.gz
+# Provide information required by upstream
+Source20:       sysinfo.py
+# PATCH-FIX-UPSTREAM csr_matrix-attr-H.patch gh#librosa/librosa#1849 mcepl@suse.com
+# csr_matrix.H in scipy has been removed
+Patch0:         csr_matrix-attr-H.patch
+# PATCH-FIX-UPSTREAM mark-network-tests.patch mcepl@suse.com
+# to skip test which require network access
+Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module SoundFile >= 0.12.1}
 BuildRequires:  %{python_module audioread >= 2.1.9}
 BuildRequires:  %{python_module base >= 3.7}
@@ -38,7 +46,7 @@ BuildRequires:  %{python_module joblib >= 0.14}
 BuildRequires:  %{python_module lazy_loader >= 0.1}
 BuildRequires:  %{python_module msgpack >= 1.0}
 BuildRequires:  %{python_module numba >= 0.51.0}
-BuildRequires:  %{python_module numpy >= 1.22.3}
+BuildRequires:  %{python_module numpy >= 1.22.3 with %python-numpy < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pooch >= 1.0}
 BuildRequires:  %{python_module scikit-learn >= 0.20.0}
@@ -98,6 +106,8 @@ sed -i '/addopts/ s/--cov-report.*--cov-report=xml//' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python %{SOURCE20}
+
 export LIBROSA_DATA_DIR=$PWD/librosa-pooch-cache
 # image files do not match without exact mpl version
 donttest="test_display"
@@ -142,8 +152,14 @@ notparallel+=" or test_remix"
 notparallel+=" or test_chroma"
 notparallel+=" or test_estimate_tuning"
 notparallel+=" or test_zero_crossings"
-%pytest -k "not (${donttest} or ${notparallel})" -n auto
-%pytest -k "not (${donttest}) and (${notparallel})"
+# gh#librosa/librosa#1879
+donttest+=" or test_beat"
+# gh#librosa/librosa#1880
+donttest+=" or test_nnls_multiblock"
+#
+donttest+=" or test_subsegment_badn"
+%pytest -k "not (${donttest} or ${notparallel} or network)" -n auto
+%pytest -k "not (${donttest} or network) and (${notparallel})"
 
 %files %{python_files}
 %doc AUTHORS.md README.md

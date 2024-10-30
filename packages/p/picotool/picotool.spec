@@ -1,7 +1,7 @@
 #
 # spec file for package picotool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define sdk_version 1.5.1
+%define sdk_version 2.0.0
 Name:           picotool
-URL:            https://github.com/raspberrypi/picotool
-Version:        1.1.2
+Version:        2.0.0
 Release:        0
 Summary:        Tool to inspect RP2040 binaries
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
+URL:            https://github.com/raspberrypi/picotool
+Source0:        https://github.com/raspberrypi/picotool/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/raspberrypi/pico-sdk/archive/%{sdk_version}.tar.gz#/pico-sdk-%{sdk_version}.tar.gz
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  libusb-1_0-devel
-Source0:        https://github.com/raspberrypi/picotool/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/raspberrypi/pico-sdk/archive/%{sdk_version}.tar.gz#/pico-sdk-%{sdk_version}.tar.gz
 
 %description
 Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 devices when they are in BOOTSEL mode.
@@ -44,9 +44,10 @@ Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 d
 %cmake_install
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE.TXT
 %{_bindir}/picotool
+%{_libdir}/cmake/picotool
+%{_datadir}/picotool
 
 %changelog

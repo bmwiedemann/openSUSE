@@ -1,7 +1,7 @@
 #
 # spec file for package python-treq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-treq
-Version:        23.11.0
+Version:        24.9.1
 Release:        0
 Summary:        HTTP library inspired by python-requests
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://github.com/twisted/treq
 Source:         https://files.pythonhosted.org/packages/source/t/treq/treq-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted-tls >= 22.10.0}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module incremental}
@@ -34,6 +35,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 3.10.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +44,7 @@ Requires:       python-attrs
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-incremental
 Requires:       python-requests >= 2.1.0
+Requires:       python-typing-extensions >= 3.10.0
 BuildArch:      noarch
 %python_subpackages
 

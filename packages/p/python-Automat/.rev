@@ -78,4 +78,16 @@
     <comment></comment>
     <requestid>1112270</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3f9b7c1dc577bec83ecf97a9624d0172</srcmd5>
+    <version>24.8.1</version>
+    <time>1730306008</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.8.1:
+  * major new api
+  * python 3.12/3.13
+
+- remove unneded six from setup.py</comment>
+    <requestid>1219405</requestid>
+  </revision>
 </revisionlist>

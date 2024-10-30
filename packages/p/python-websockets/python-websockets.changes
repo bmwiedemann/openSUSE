@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Oct 29 16:04:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 13.1
+  * Added support for reconnecting automatically by using connect()
+    as an asynchronous iterator to the new asyncio implementation.
+  * connect() now follows redirects in the new asyncio implementation.
+  * Added HTTP Basic Auth to the new asyncio and threading implementations
+    of servers.
+  * Made the set of active connections available in the Server.connections
+    property.
+  * Improved reporting of errors during the opening handshake.
+  * Raised ConcurrencyError on unsupported concurrent calls. Previously,
+    RuntimeError was raised. For backwards compatibility, ConcurrencyError
+    is a subclass of RuntimeError.
+  * The new asyncio and threading implementations of servers don’t start the
+    connection handler anymore when process_request or process_response returns
+    an HTTP response.
+  * Fixed a bug in the threading implementation that could lead to incorrect
+    error reporting when closing a connection while recv() is running.
+- from version 13.0.1
+  * Restored the C extension in the source distribution.
+- from version 13.0
+  * Validated compatibility with Python 3.12 and 3.13.
+  * Added environment variables to configure debug logs, the Server and
+    User-Agent headers, as well as security limits.
+  * If you were monkey-patching constants, be aware that they were renamed,
+    which will break your configuration. You must switch to the environment
+    variables.
+  * The error message in server logs when a header is too long is more explicit.
+  * Fixed a bug in the threading implementation that could prevent the program
+    from exiting when a connection wasn’t closed properly.
+  * Redirecting from a ws:// URI to a wss:// URI now works.
+  * broadcast(raise_exceptions=True) no longer crashes when there isn’t
+    any exception.
+- Remove stray speedups.c from websockets Python directory
+
+-------------------------------------------------------------------
 Wed Jan 24 16:29:29 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests with openssl 3.2 and python < 3.11 bsc#1217782

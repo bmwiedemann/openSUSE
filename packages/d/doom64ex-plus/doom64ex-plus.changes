@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  7 18:49:17 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for Leap >= 15.6, add number to patch
+
+-------------------------------------------------------------------
 Sun Oct  6 08:59:29 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-user-dir.patch

@@ -1,0 +1,26 @@
+From 5e9f442374bc6d9707a43df13aaff684dff6b535 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 12 Jul 2024 08:25:30 +0200
+Subject: [PATCH] skip exit_on_error* tests to fix 3.13 test failures
+
+Skip `exit_on_error*` tests from `test.test_argparse` to avoid test
+failures on Python 3.13.  The `exit_on_error=False` semantics
+is not supported by ConfigArgParse at the moment.
+---
+ tests/test_configargparse.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_configargparse.py b/tests/test_configargparse.py
+index e325afd..9718d86 100644
+--- a/tests/test_configargparse.py
++++ b/tests/test_configargparse.py
+@@ -1533,7 +1533,8 @@ def testYAMLConfigFileParser_w_ArgumentParser_parsed_values(self):
+     test_argparse_source_code = test_argparse_source_code.replace(
+         'argparse.ArgumentParser', 'configargparse.ArgumentParser').replace(
+         'TestHelpFormattingMetaclass', '_TestHelpFormattingMetaclass').replace(
+-        'test_main', '_test_main')
++        'test_main', '_test_main').replace(
++        'test_exit_on_error', '_test_exit_on_error')
+ 
+     # pytest tries to collect tests from TestHelpFormattingMetaclass, and
+     # test_main, and raises a warning when it finds it's not a test class

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:09:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.27.1:
+  * Drop 3.7 support as the CI environments no longer allow it running
+  * pip to 24.3.1 from 24.2
+
+-------------------------------------------------------------------
 Thu Oct 17 15:15:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.26.6:

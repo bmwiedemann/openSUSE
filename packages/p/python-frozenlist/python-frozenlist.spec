@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-frozenlist
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0
@@ -27,8 +27,6 @@ Source:         https://files.pythonhosted.org/packages/source/f/frozenlist/froz
 Patch1:         no-pytest-cov.patch
 # PATCH-FIX-OPENSUSE - avoid embedding random tmp dir in .so
 Patch2:         reproducible.patch
-# PATCH-FIX-UPSTREAM gh#aio-libs/frozenlist#588 - Skip some attributes when testing
-Patch3:         skip-some-attributes.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module expandvars}

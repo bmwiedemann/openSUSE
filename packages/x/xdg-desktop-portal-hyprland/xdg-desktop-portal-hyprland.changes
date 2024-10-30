@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 28 23:44:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.3.6:
+  * screencopy: fix handles not being restored
+  * screencopy: cleanup sanitization
+
+-------------------------------------------------------------------
 Thu Sep 26 13:39:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 1.3.5

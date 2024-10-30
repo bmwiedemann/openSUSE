@@ -29,7 +29,7 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Version:        7.5.1
+Version:        7.8.3
 Release:        0
 Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
@@ -90,7 +90,6 @@ BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  gcc-fortran
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  m4
 BuildRequires:  make
 BuildRequires:  memory-constraints
 BuildRequires:  metis-devel
@@ -116,12 +115,12 @@ BuildRequires:  blas-devel
 %define ldl_sover                  3
 %define lagraph_sover              1
 %define lagraphx_sover             1
-%define paru_sover                 0
+%define paru_sover                 1
 %define mongoose_sover             3
 %define suitesparse_mongoose_sover 3
 %define rbio_sover                 4
 %define sliplu_sover               1
-%define spex_sover                 2
+%define spex_sover                 3
 %define spqr_sover                 4
 %define umfpack_sover              6
 %define klu_cholmod_sover          2
@@ -832,9 +831,10 @@ export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
 
 %files -n %{spexlib}
 %license SPEX/LICENSE.txt
-%license SPEX/SPEX_Util/License/license.txt  SPEX/SPEX_Util/License/GPLv2.txt
-%license SPEX/SPEX_Util/License/lesserv3.txt SPEX/SPEX_Util/License/CONTRIBUTOR-LICENSE.txt
+%license SPEX/SPEX_Utilities/License/license.txt  SPEX/SPEX_Utilities/License/GPLv2.txt
+%license SPEX/SPEX_Utilities/License/lesserv3.txt SPEX/SPEX_Utilities/License/CONTRIBUTOR-LICENSE.txt
 %{_libdir}/libspex.so.*
+%{_libdir}/libspexpython.so.*
 
 %files -n libspex-doc
 %doc SPEX/README.md
@@ -866,7 +866,7 @@ export JOBS="%(echo %{?_smp_mflags} | cut -c 3-)"
 
 %files -n %{parulib}
 %doc ParU/README.md
-%license ParU/LICENSE
+%license ParU/LICENSE.txt
 %{_libdir}/libparu.so.*
 
 %files -n %{klu_cholmodlib}

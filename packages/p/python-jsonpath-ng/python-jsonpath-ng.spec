@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpath-ng
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-ply
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ply}

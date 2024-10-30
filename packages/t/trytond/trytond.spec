@@ -30,7 +30,7 @@
 %endif
 
 Name:           trytond
-Version:        %{majorver}.52
+Version:        %{majorver}.53
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later

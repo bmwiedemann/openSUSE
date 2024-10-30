@@ -18,7 +18,7 @@
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2024.12
+Version:        2024.14
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later

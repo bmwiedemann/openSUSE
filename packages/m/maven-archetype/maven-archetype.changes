@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 29 17:29:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.1
+  * Bug
+    + ARCHETYPE-574: Integration testing ignores default values
+    + ARCHETYPE-679: groovy.text.SimpleTemplateEngine Not Found
+    + ARCHETYPE-681: [REGRESSION] Output from archetype verification
+      is no longer logged
+    + ARCHETYPE-683: [REGRESSION] groovy.json.JsonOutput not found
+    + ARCHETYPE-684: Not providing a directory element in the
+      fileset results in a null directory instead
+    + ARCHETYPE-685: Fix namespace in modello models
+    + ARCHETYPE-688: Incompatibities with Velocity in Archetypes
+    + ARCHETYPE-689: Archetype Plugin 3.3.0 introduced
+      incompatibilities
+    + ARCHETYPE-690: Install archetype-packaging for ITs
+  * Improvement
+    + ARCHETYPE-676: A non-parsable archetype-catalog.xml does not
+      result in an warning or error
+    + ARCHETYPE-680: Integration test should report ERROR instead
+      of WARNING when failing
+- Modified patches:
+  * 0001-Avoid-reliance-on-groovy.patch
+  * reproducible-from-environment.patch ->
+    0002-reproducible-from-environment.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Oct  2 20:24:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

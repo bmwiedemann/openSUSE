@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/bci/php-fpm:%%php_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/php-fpm:%%php_version%%
-#!BuildTag: opensuse/bci/php-fpm:8-%RELEASE%
 #!BuildTag: opensuse/bci/php-fpm:8
 #!BuildTag: opensuse/bci/php-fpm:latest
 

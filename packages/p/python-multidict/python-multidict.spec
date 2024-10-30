@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-multidict
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
@@ -27,10 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/m/multidict/multi
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-typing-extensions
 %python_subpackages
 
 %description

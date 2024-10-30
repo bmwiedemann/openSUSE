@@ -1,5 +1,5 @@
 #
-# spec file for package edk2
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# needssslcertforbuild
 
 
 %define platform @BUILD_FLAVOR@%{nil}
@@ -47,7 +48,11 @@ Name:           edk2
 %endif
 Version:        202311
 Release:        0
+%if "%{platform}" == "Shell"
+Summary:        Shell EFI application
+%else
 Summary:        Firmware required to run the %{platform}
+%endif
 License:        SUSE-Firmware
 Group:          System/Boot
 URL:            https://github.com/tianocore/edk2
@@ -76,21 +81,41 @@ BuildRequires:  dtc
 %endif
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%if "%{platform}" == "Shell"
+BuildRequires:  nasm
+BuildRequires:  pesign-obs-integration
+%endif
 BuildRequires:  libuuid-devel
 BuildRequires:  python3
 BuildRequires:  unzip
 %if "%{platform}" == ""
 ExclusiveArch:  do_not_build
+%elif "%{platform}" == "Shell"
+ExcludeArch:    ppc %power64
 %elif "%{platform}" == "SG2042"
-%define ARCH RISCV64
 ExclusiveArch:  riscv64
 %else
-%define ARCH AARCH64
 ExclusiveArch:  aarch64
 %endif
 
+%ifarch %ix86
+%define ARCH IA32
+%elifarch x86_64
+%define ARCH X64
+%elifarch %arm
+%define ARCH ARM
+%elifarch aarch64
+%define ARCH AARCH64
+%elifarch riscv64
+%define ARCH RISCV64
+%endif
+
 %description
+%if "%{platform}" == "Shell"
+The UEFI 2.0 shell provides a standard pre-boot command line processor.
+%else
 Firmware required to run the %{platform}
+%endif
 
 %prep
 %setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7
@@ -153,6 +178,9 @@ DSC_PATH="edk2-platforms/Platform/Qemu/SbsaQemu/SbsaQemu.dsc"
 %if "%{platform}" == "SG2042"
 DSC_PATH="edk2-platforms/Platform/Sophgo/SG2042_EVB_Board/SG2042.dsc"
 %endif
+%if "%{platform}" == "Shell"
+DSC_PATH="ShellPkg/ShellPkg.dsc"
+%endif
 BUILD_OPTIONS="-a %{ARCH} -p $DSC_PATH -b %{build_mode} -t GCC5 %{?jobs:-n %jobs}"
 # BaseTools does not support parallel builds, so no -jN here
 ARCH=%{ARCH} make -C BaseTools BUILD_CC=gcc BUILD_CXX=g++ BUILD_AS=gcc
@@ -204,6 +232,12 @@ truncate -s 256M %{outdir}/FV/%{fd_file}
 %define fd_file SG2042.fd
 %endif
 
+%if "%{platform}" == "Shell"
+install -D -m 0644 %{outdir}/%{ARCH}/ShellPkg/Application/Shell/Shell/OUTPUT/Shell.efi %{buildroot}/usr/lib/edk2/Shell.efi
+
+export BRP_PESIGN_FILES="*.efi"
+
+%else
 find %{outdir} -name *.fd
 
 pushd %{outdir}/FV
@@ -211,8 +245,13 @@ for file in %{fd_file}; do
   install -D -m 0644 $file %{buildroot}/boot/$file
 done
 popd
+%endif
 
 %files
+%if "%{platform}" == "Shell"
+%dir %{_prefix}/lib/edk2
+%{_prefix}/lib/edk2/Shell.efi
+%else
 %if %{with edk2_non_osi}
 %if "%{platform}" == "hikey"
 /boot/mcuimage.bin
@@ -222,5 +261,6 @@ popd
 %endif
 %endif
 /boot/*.fd
+%endif
 
 %changelog

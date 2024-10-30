@@ -1653,4 +1653,14 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
 </comment>
     <requestid>1218086</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0b6b20003859d743eeaf19d9bfd9f313</srcmd5>
+    <version>20.27.1</version>
+    <time>1730306005</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.27.1:
+  * Drop 3.7 support as the CI environments no longer allow it running
+  * pip to 24.3.1 from 24.2</comment>
+    <requestid>1219344</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 29 19:57:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.5.26:
+  * unpin aiohttp
+- drop optional croniter dependency
+
+-------------------------------------------------------------------
+Tue Aug  6 06:36:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.5:
+  * rework thread pool
+  * use discard instead of remove
+  * add python 3.12 marker
+  * remove dataclasses
+
+-------------------------------------------------------------------
 Wed Nov 29 12:38:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 16.3:
+- update to 17.3:
   * Migrate to poetry #154
   * Use `poem-plugins` for creating `aiomisc/version.py` file and
     bump version when publishing.

@@ -176,4 +176,18 @@
   * Now enums are not modified by deepfreeze (see #98)</comment>
     <requestid>1173180</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d45975e46a1b5a952c194a3a97185f9c</srcmd5>
+    <version>2.4.6</version>
+    <time>1730306195</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.6:
+  * Added pure py wheel for Python 3.13
+  * Now `set`, `setdefault` and `delete` does always a shallow
+    copy, as the C extension, `tuple` and the rest of the world.
+- update to 2.4.5:
+  * Improved speed of `set`, `setdefault` and `delete` for pure
+    py impl, if `frozendict` is hashable</comment>
+    <requestid>1219196</requestid>
+  </revision>
 </revisionlist>

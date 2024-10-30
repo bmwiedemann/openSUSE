@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:38:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.00:
+  * Added support for reading GPS from Autel Evo II drone videos
+  * Added a new PhaseOne RawFormat value
+  * Updated XMP-exifEX tags, exif2xmp.args and xmp2exif.args
+    according to the 2024 EXIF for XMP specification
+  * Updated Geolocation databases from current geonames.org files
+  * Updated the MIME types for a couple of font formats
+  * Enhanced -diff option to work with -ec (C-style escape of special chars)
+  * Changed name of EXIF Title tag to ImageTitle to correspond with specifiation
+  * Reverted a geotag warning message to remove debugging information
+    that was added in version 12.67 and moved this information into
+    a -v3 verbose message
+  * Patched Perl bug which gave "Can't spawn" warning in Windows if
+    control-C was pressed while displaying the exiftool application help
+  * Fixed API StructFormat JSONQ setting to properly quote values in structures
+  * Fixed incorrect AudioStreamType for M2TS videos containing a PGS stream
+  * Fixed -diff option so "same tags" messages are only shown
+    when -v is added (as per the documentation)
+
+-------------------------------------------------------------------
 Sat Oct 19 08:03:22 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.99:

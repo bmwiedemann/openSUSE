@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 12 05:40:05 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 1.29. Tools and scripts changes:
+  * New Xe perf/OA tools. (Ashutosh Dixit)
+  * New intel_tiling_detect tool. (Zbigniew Kempczyński)
+  * New option in lsgpu for printing GPU on PCI bus, working also
+    in case when no gpu driver is loaded. (Zbigniew Kempczyński)
+  * Added sysfs profiling knob to gputop. (Adrián Larumbe)
+  * Support for Xe in gputop. (Lucas De Marchi)
+  * Improved generating test lists at compilation time.(Mauro Carvalho Chehab)
+  * Improved code coverage. (Mauro Carvalho Chehab)
+  * Improved intel_vbt_decode and other intel tools. (Ville Syrjälä,
+    Lucas De Marchi, Jani Nikula, Tvrtko Ursulin, Gustavo Sousa et al)
+
+-------------------------------------------------------------------
 Sun Dec  3 01:40:26 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Don't install code coverage scripts

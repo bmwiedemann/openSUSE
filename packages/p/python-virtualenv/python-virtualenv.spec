@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.26.6
+Version:        20.27.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT

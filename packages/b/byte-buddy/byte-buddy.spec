@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.15.4
+Version:        1.15.7
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -77,6 +77,9 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch -P 0 -p1
+
+# Remove Windows-specific resources
+rm -rf byte-buddy-agent/src/main/resources/win32-x86{,-64}
 
 # Don't ship android or benchmark modules
 %pom_disable_module byte-buddy-android

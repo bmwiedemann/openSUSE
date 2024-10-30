@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-markdown2
-Version:        2.4.13
+Version:        2.5.1
 Release:        0
 Summary:        A Python implementation of Markdown
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trentm/python-markdown2
 Source:         https://files.pythonhosted.org/packages/source/m/markdown2/markdown2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -43,13 +45,13 @@ extensions (called "extras") for things like syntax coloring, tables,
 header-ids.
 
 %prep
-%setup -q -n markdown2-%{version}
+%autosetup -p1 -n markdown2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/markdown2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,6 +71,8 @@ popd
 %license LICENSE.txt
 %doc CHANGES.md CONTRIBUTORS.txt TODO.txt
 %python_alternative %{_bindir}/markdown2
-%{python_sitelib}/*
+%{python_sitelib}/markdown2.py
+%pycache_only %{python_sitelib}/__pycache__/markdown2*
+%{python_sitelib}/markdown2-%{version}.dist-info
 
 %changelog

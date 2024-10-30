@@ -42,4 +42,21 @@
   * improved apidocs, improved README</comment>
     <requestid>1100892</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dde4e6eed5789c816224473408ffc941</srcmd5>
+    <version>1.7</version>
+    <time>1730306177</time>
+    <user>dimstar_suse</user>
+    <comment>- add py313-skip-exit.patch, py313-tests.patch
+- skip one more test
+
+  * no upstream changelog available
+  * no changes file available
+  * Python 3.9 support
+- Use full link to source.
+- Some minor cleanups.
+- Update to upstream version 0.9.3 to make mitmproxy work.
+- Initial package release</comment>
+    <requestid>1219174</requestid>
+  </revision>
 </revisionlist>

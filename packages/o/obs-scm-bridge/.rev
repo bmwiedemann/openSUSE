@@ -80,4 +80,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173944</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>117090280e02cecf2203e14a4f894053</srcmd5>
+    <version>0.5.1</version>
+    <time>1730306323</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.5.1
+  * Don't generate _scmsync.obsinfo outside of OBS source server 
+    import use case (eg. no more for osc co)
+  * Enforce python 3.11 requirement
+  * Fix export of _scmsync.obsinfo in project mode
+  * Fix submodule detection
+  * EXPERIMENTAL: support multiple package subdirs via _subdirs
+                  file. This syntax will change!
+                  (not documented on purpose therefore atm)
+  * Using git credential manager
+  * Report some errors as transient, so that OBS can re-try</comment>
+    <requestid>1219368</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.collections
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.collections
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.collections/jaraco.collections-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.collections/jaraco_collections-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module jaraco.text}
@@ -45,7 +45,7 @@ jaraco.collections Tools for working with collections.
 Models and classes to supplement the stdlib ‘collections’ module.
 
 %prep
-%setup -q -n jaraco.collections-%{version}
+%setup -q -n jaraco_collections-%{version}
 
 %build
 %pyproject_wheel
@@ -61,6 +61,6 @@ Models and classes to supplement the stdlib ‘collections’ module.
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
 %{python_sitelib}/jaraco/collections
-%{python_sitelib}/jaraco.collections-%{version}*-info
+%{python_sitelib}/jaraco.collections-%{version}.dist-info
 
 %changelog

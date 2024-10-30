@@ -1,0 +1,879 @@
+From: Christian Kastner <ckk@debian.org>
+Date: Sat, 26 Jul 2014 14:31:39 +0200
+Subject: Syntax fixes for man pages
+
+Hyphens used as minus signs must be escaped.
+
+Last-Update: 2015-10-02
+---
+ doc/man/cgclassify.1     |  8 +++---
+ doc/man/cgclear.1        | 16 ++++++------
+ doc/man/cgconfig.conf.5  | 66 ++++++++++++++++++++++++------------------------
+ doc/man/cgconfigparser.8 | 30 +++++++++++-----------
+ doc/man/cgcreate.1       | 24 +++++++++---------
+ doc/man/cgdelete.1       | 10 ++++----
+ doc/man/cgexec.1         | 18 ++++++-------
+ doc/man/cgget.1          | 30 +++++++++++-----------
+ doc/man/cgred.conf.5     |  6 ++---
+ doc/man/cgrulesengd.8    | 32 +++++++++++------------
+ doc/man/cgset.1          |  8 +++---
+ doc/man/cgsnapshot.1     | 20 +++++++--------
+ doc/man/lscgroup.1       |  4 +--
+ doc/man/lssubsys.1       | 28 ++++++++++----------
+ 14 files changed, 150 insertions(+), 150 deletions(-)
+
+Index: libcgroup/doc/man/cgclassify.1
+===================================================================
+--- libcgroup.orig/doc/man/cgclassify.1
++++ libcgroup/doc/man/cgclassify.1
+@@ -6,7 +6,7 @@
+ cgclassify \- move running task(s) to given cgroups
+ 
+ .SH SYNOPSIS
+-\fBcgclassify\fR [\fB-b\fR] [\fB-g\fR <\fIcontrollers>:<path\fR>] [--sticky | --cancel-sticky] <\fIpidlist\fR>
++\fBcgclassify\fR [\fB-b\fR] [\fB\-g\fR <\fIcontrollers>:<path\fR>] [\-\-sticky | \-\-cancel-sticky] <\fIpidlist\fR>
+ 
+ .SH DESCRIPTION
+ this command moves processes defined by the list
+@@ -23,7 +23,7 @@ constructs the path of the control group
+ cgroup root hierarchy.
+ 
+ .TP
+-.B -g <controllers>:<path>
++.B \-g <controllers>:<path>
+ defines the control groups where the task will be moved.
+ \fBcontrollers\fR is a list of controllers and
+ \fBpath\fR is the relative path to control groups
+@@ -45,7 +45,7 @@ Replaces systemd scope's idle process wi
+ \fBfirst process\fR of the list of process (\fBpidlist\fR).
+ 
+ .TP
+-.B --sticky
++.B \-\-sticky
+ If this option is used, the daemon of service cgred (cgrulesengd process)
+ does not change both the specified \fBpidlist\fR and their children tasks.
+ Without this option, the daemon does not change the specified \fBpidlist\fR
+@@ -53,7 +53,7 @@ but it automatically changes their child
+ \fB/etc/cgrules.conf\fR.
+ 
+ .TP
+-.B --cancel-sticky
++.B \-\-cancel-sticky
+ If this option is used, the daemon of service cgred (cgrulesengd process)
+ can automatically change both the specified \fBpidlist\fR and their child
+ tasks to the right cgroup based on \fB/etc/cgrules.conf\fR.
+Index: libcgroup/doc/man/cgconfig.conf.5
+===================================================================
+--- libcgroup.orig/doc/man/cgconfig.conf.5
++++ libcgroup/doc/man/cgconfig.conf.5
+@@ -280,7 +280,7 @@ inside. It corresponds to the following
+ .RS
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ .fi
+ .RE
+ 
+@@ -323,8 +323,8 @@ following operations:
+ .RS
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpu,name=scheduler cpu /sys/fs/cgroup/cpu
+-mount -t cgroup -o none,name=noctrl none /sys/fs/cgroup/noctrl
++mount \-t cgroup \-o cpu,name=scheduler cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o none,name=noctrl none /sys/fs/cgroup/noctrl
+ 
+ mkdir /sys/fs/cgroup/cpu/daemons
+ echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
+@@ -432,7 +432,7 @@ which are little bit trickier to emulate
+ .RS
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ 
+ mkdir /sys/fs/cgroup/cpu/daemons
+ 
+@@ -442,23 +442,23 @@ chown root:webmaster /sys/fs/cgroup/cpu/
+ echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
+ 
+  # + chmod the files so the result looks like:
+- # ls -la /sys/fs/cgroup/cpu/daemons/www/
++ # ls \-la /sys/fs/cgroup/cpu/daemons/www/
+  # admin.dperm = 755:
+- # drwxr-xr-x. 2 root webmaster 0 Jun 16 11:51 .
++ # drwxr\-xr\-x. 2 root webmaster 0 Jun 16 11:51 .
+  #
+  # admin.fperm = 744:
+- # --w-------. 1 root webmaster 0 Jun 16 11:51 cgroup.event_control
+- # -r--r--r--. 1 root webmaster 0 Jun 16 11:51 cgroup.procs
+- # -r--r--r--. 1 root webmaster 0 Jun 16 11:51 cpuacct.stat
+- # -rw-r--r--. 1 root webmaster 0 Jun 16 11:51 cpuacct.usage
+- # -r--r--r--. 1 root webmaster 0 Jun 16 11:51 cpuacct.usage_percpu
+- # -rw-r--r--. 1 root webmaster 0 Jun 16 11:51 cpu.rt_period_us
+- # -rw-r--r--. 1 root webmaster 0 Jun 16 11:51 cpu.rt_runtime_us
+- # -rw-r--r--. 1 root webmaster 0 Jun 16 11:51 cpu.shares
+- # -rw-r--r--. 1 root webmaster 0 Jun 16 11:51 notify_on_release
++ # \-\-w\-\-\-\-\-\-\-. 1 root webmaster 0 Jun 16 11:51 cgroup.event_control
++ # \-r\-\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cgroup.procs
++ # \-r\-\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpuacct.stat
++ # \-rw\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpuacct.usage
++ # \-r\-\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpuacct.usage_percpu
++ # \-rw\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpu.rt_period_us
++ # \-rw\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpu.rt_runtime_us
++ # \-rw\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 cpu.shares
++ # \-rw\-r\-\-r\-\-. 1 root webmaster 0 Jun 16 11:51 notify_on_release
+  #
+  # tasks.fperm = 770
+- # -rw-rw----. 1 root webmaster 0 Jun 16 11:51 tasks
++ # \-rw\-rw\-\-\-\-. 1 root webmaster 0 Jun 16 11:51 tasks
+ 
+ 
+ mkdir /sys/fs/cgroup/cpu/daemons/ftp
+@@ -467,23 +467,23 @@ chown root:ftpmaster /sys/fs/cgroup/cpu/
+ echo 500 > /sys/fs/cgroup/cpu/daemons/ftp/cpu.shares
+ 
+  # + chmod the files so the result looks like:
+- # ls -la /sys/fs/cgroup/cpu/daemons/ftp/
++ # ls \-la /sys/fs/cgroup/cpu/daemons/ftp/
+  # admin.dperm = 755:
+- # drwxr-xr-x. 2 root ftpmaster 0 Jun 16 11:51 .
++ # drwxr\-xr\-x. 2 root ftpmaster 0 Jun 16 11:51 .
+  #
+  # admin.fperm = 700:
+- # --w-------. 1 root ftpmaster 0 Jun 16 11:51 cgroup.event_control
+- # -r--------. 1 root ftpmaster 0 Jun 16 11:51 cgroup.procs
+- # -r--------. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.stat
+- # -rw-------. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.usage
+- # -r--------. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.usage_percpu
+- # -rw-------. 1 root ftpmaster 0 Jun 16 11:51 cpu.rt_period_us
+- # -rw-------. 1 root ftpmaster 0 Jun 16 11:51 cpu.rt_runtime_us
+- # -rw-------. 1 root ftpmaster 0 Jun 16 11:51 cpu.shares
+- # -rw-------. 1 root ftpmaster 0 Jun 16 11:51 notify_on_release
++ # \-\-w\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cgroup.event_control
++ # \-r\-\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cgroup.procs
++ # \-r\-\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.stat
++ # \-rw\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.usage
++ # \-r\-\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpuacct.usage_percpu
++ # \-rw\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpu.rt_period_us
++ # \-rw\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpu.rt_runtime_us
++ # \-rw\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 cpu.shares
++ # \-rw\-\-\-\-\-\-\-. 1 root ftpmaster 0 Jun 16 11:51 notify_on_release
+  #
+  # tasks.fperm = 774:
+- # -rw-rw-r--. 1 root ftpmaster 0 Jun 16 11:51 tasks
++ # \-rw\-rw\-r\-\-. 1 root ftpmaster 0 Jun 16 11:51 tasks
+ 
+ .fi
+ .RE
+@@ -537,8 +537,8 @@ It corresponds to the following operatio
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+ mkdir /sys/fs/cgroup/cpuacct
+-mount -t cgroup -o cpu cpu /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpuacct cpuacct /sys/fs/cgroup/cpuacct
++mount \-t cgroup \-o cpu cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o cpuacct cpuacct /sys/fs/cgroup/cpuacct
+ 
+ mkdir /sys/fs/cgroup/cpu/daemons
+ mkdir /sys/fs/cgroup/cpuacct/daemons
+@@ -604,8 +604,8 @@ It corresponds to the following operatio
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+ mkdir /sys/fs/cgroup/cpuacct
+-mount -t cgroup -o cpu cpu /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpuacct cpuacct /sys/fs/cgroup/cpuacct
++mount \-t cgroup \-o cpu cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o cpuacct cpuacct /sys/fs/cgroup/cpuacct
+ 
+ mkdir /sys/fs/cgroup/cpuacct/daemons
+ mkdir /sys/fs/cgroup/cpu/daemons
+@@ -702,7 +702,7 @@ It corresponds to the following operatio
+ .RS
+ .nf
+ mkdir /sys/fs/cgroup/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
++mount \-t cgroup \-o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ 
+ chown root:operator /sys/fs/cgroup/cpu/*
+ chown root:operator /sys/fs/cgroup/cpu/tasks
+Index: libcgroup/doc/man/cgconfigparser.8
+===================================================================
+--- libcgroup.orig/doc/man/cgconfigparser.8
++++ libcgroup/doc/man/cgconfigparser.8
+@@ -7,61 +7,61 @@
+ cgconfigparser \- setup control group file system
+ 
+ .SH SYNOPSIS
+-\fBcgconfigparser\fR [\fB-h\fR] [\fB-l\fR \fI<filename>\fR] [\fB-L\fR \fI<directory>\fR] [...]
++\fBcgconfigparser\fR [\fB\-h\fR] [\fB\-l\fR \fI<filename>\fR] [\fB\-L\fR \fI<directory>\fR] [...]
+ 
+ .SH OPTIONS
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ Displays help.
+ .TP
+-.B -l, --load=FILE
++.B \-l, \-\-load=FILE
+ Parses the control groups configuration file
+ Sets up the control group file system
+ defined by the configuration file and mounts
+ mount points defined by the configuration file.
+ The format of the file is described in
+ \fBcgconfig.conf\fR. This option can be used multiple times and can be mixed
+-with \fB-L\fR option.
++with \fB\-L\fR option.
+ 
+ .TP
+-.B -L, --load-directory=DIR
++.B \-L, \-\-load-directory=DIR
+ Finds all files in given directory and parses them in alphabetical order
+-like they were specified by \fB-l\fR option. This option can be used
+-multiple times and can be mixed with \fB-l\fR option.
++like they were specified by \fB\-l\fR option. This option can be used
++multiple times and can be mixed with \fB\-l\fR option.
+ 
+ .TP
+-.B -a <agid>:<auid>
++.B \-a <agid>:<auid>
+ defines the default owner of the
+ rest of the defined control group’s files. These users are
+ allowed to set subsystem parameters and create subgroups.
+ The default value is the same as has the parent cgroup.
+ 
+ .TP
+-.B -d, --dperm=mode
++.B \-d, \-\-dperm=mode
+ sets the default permissions of a control groups directory.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-d 775\fR.
++\fB\-d 775\fR.
+ 
+ .TP
+-.B -f, --fperm=mode
++.B \-f, \-\-fperm=mode
+ sets the default permissions of the control group files.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-f 775\fR.
++\fB\-f 775\fR.
+ The value is not used as given because the current owner's
+ permissions are used as an umask (so 777 will set group and
+ others permissions to the owners permissions).
+ 
+ .TP
+-.B -s, --tperm=mode
++.B \-s, \-\-tperm=mode
+ sets the default permissions of the control group tasks files.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-f 775\fR.
++\fB\-f 775\fR.
+ The value is not used as given because the current owner's
+ permissions are used as an umask (so 777 will set group and
+ others permissions to the owners permissions).
+ 
+ .TP
+-.B -t <tuid>:<tgid>
++.B \-t <tuid>:<tgid>
+ defines the default owner of tasks file of the defined control
+ group. I.e. this user and members
+ of this group have write access to the file.
+Index: libcgroup/doc/man/cgcreate.1
+===================================================================
+--- libcgroup.orig/doc/man/cgcreate.1
++++ libcgroup/doc/man/cgcreate.1
+@@ -5,54 +5,54 @@
+ cgcreate \- create new cgroup(s)
+ 
+ .SH SYNOPSIS
+-\fBcgcreate\fR [\fB-h\fR] [\fB-b\fR] [\fB-c\fR]
+-[\fB-t\fR <\fItuid>:<tgid\fR>] [\fB-a\fR <\fIagid>:<auid\fR>]
+-[\fB-f\fR mode] [\fB-d\fR mode]
+-[\fB-s\fR mode] \fB-g\fR <\fIcontrollers>:<path\fR> [\fB-g\fR ...]
++\fBcgcreate\fR [\fB\-h\fR] [\fB\-b\fR] [\fB\-c\fR]
++[\fB\-t\fR <\fItuid>:<tgid\fR>] [\fB\-a\fR <\fIagid>:<auid\fR>]
++[\fB\-f\fR mode] [\fB\-d\fR mode]
++[\fB\-s\fR mode] \fB\-g\fR <\fIcontrollers>:<path\fR> [\fB\-g\fR ...]
+ 
+ .SH DESCRIPTION
+ The command creates new cgroup(s) defined by the options
+ \fB-g\fR.
+ 
+ .TP
+-.B -a <agid>:<auid>
++.B \-a <agid>:<auid>
+ defines the name of the user and the group which own the
+ rest of the defined control group’s files. These users are
+ allowed to set subsystem parameters and create subgroups.
+ The default value is the same as has the parent cgroup.
+ 
+ .TP
+-.B -b
++.B \-b
+ ignores the default systemd delegated hierarchy path and
+ constructs the path of the control groups relative to the
+ cgroup root hierarchy.
+ 
+ .TP
+-.B -c, --scope
++.B \-c, \-\-scope
+ creates a new systemd scope. The cgroup name provided after the
+-\fB-g\fR flag must be of the form
++\fB\-g\fR flag must be of the form
+ \fB<slice-name>.slice/<scope-name>.scope\fR. If the slice
+ does not exist, systemd will create it. Libcgroup will place an
+-idle process in the scope's cgroup.procs file unless the \fB-p\fR
++idle process in the scope's cgroup.procs file unless the \fB\-p\fR
+ flag is provided.
+ 
+ .TP
+-.B -d, --dperm=mode
++.B \-d, \-\-dperm=mode
+ sets the permissions of a control groups directory.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-d 775\fR.
++\fB\-d 775\fR.
+ 
+ .TP
+-.B -f, --fperm=mode
++.B \-f, \-\-fperm=mode
+ sets the permissions of the control groups parameters.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-f 775\fR.
++\fB\-f 775\fR.
+ The value is not used as given because the current owner's
+ permissions are used as an umask (so 777 will set group and
+ others permissions to the owners permissions).
+ 
+ .TP
+-.B -g <controllers>:<path>
++.B \-g <controllers>:<path>
+ defines control groups to be added.
+ \fBcontrollers\fR is a list of controllers. Character "*" can be used
+ as a shortcut for "all mounted controllers".
+@@ -61,32 +61,32 @@ in the given controllers list. This opti
+ multiple times.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ display this help and exit
+ 
+ .TP
+-.B -p, --pid=pid
++.B \-p, \-\-pid=pid
+ moves the provided \fBpid\fR into the
+ \fB<slice-name>.slice/<scope-name>.scope\fR.  Must be used in
+-conjunction with \fB-c\fR.
++conjunction with \fB\-c\fR.
+ 
+ .TP
+-.B -s, --tperm=mode
++.B \-s, \-\-tperm=mode
+ sets the permissions of the control group tasks file.
+ The permissions needs to be specified as octal numbers e.g.
+-\fB-s 775\fR.
++\fB\-s 775\fR.
+ The value is not used as given because the current owner's
+ permissions are used as an umask (so 777 will set group and
+ others permissions to the owners permissions).
+ 
+ .TP
+-.B -S, --setdefault
+-sets the scope specified via the \fB-c\fR option as the default
++.B \-S, \-\-setdefault
++sets the scope specified via the \fB\-c\fR option as the default
+ libcgroup scope.  This default scope is used by libcgroup tools
+-to build up the cgroup path.  See the \fB-b\fR option.
++to build up the cgroup path.  See the \fB\-b\fR option.
+ 
+ .TP
+-.B -t <tuid>:<tgid>
++.B \-t <tuid>:<tgid>
+ defines the name of the user and the group, which owns tasks
+ file of the defined control group. I.e. this user and members
+ of this group have write access to the file.
+Index: libcgroup/doc/man/cgdelete.1
+===================================================================
+--- libcgroup.orig/doc/man/cgdelete.1
++++ libcgroup/doc/man/cgdelete.1
+@@ -7,7 +7,7 @@
+ cgdelete \- remove control group(s)
+ 
+ .SH SYNOPSIS
+-\fBcgdelete\fR [\fB-h\fR] [\fB-r\fR] [\fB-b\fR] [[\fB-g\fR]
++\fBcgdelete\fR [\fB\-h\fR] [\fB\-r\fR] [\fB\-b\fR] [[\fB\-g\fR]
+ <\fIcontrollers\fR>:\fI<path\fR>] ...
+ 
+ .SH DESCRIPTION
+@@ -21,18 +21,18 @@ constructs the path of the control group
+ cgroup root hierarchy.
+ 
+ .TP
+-.B [-g] <controllers>:<path>
++.B [\-g] <controllers>:<path>
+ Defines the control group to delete. Multiple control groups may be
+ specified.
+-.B -g
++.B \-g
+ is optional.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ Display this help and exit.
+ 
+ .TP
+-.B -r, --recursive
++.B \-r, \-\-recursive
+ Recursively remove all subgroups.
+ 
+ .SH ENVIRONMENT VARIABLES
+Index: libcgroup/doc/man/cgexec.1
+===================================================================
+--- libcgroup.orig/doc/man/cgexec.1
++++ libcgroup/doc/man/cgexec.1
+@@ -7,7 +7,7 @@
+ cgexec \- run the task in given control groups
+ 
+ .SH SYNOPSIS
+-\fBcgexec\fR [\fB-h\fR] [\fB-b\fR] [\fB-g\fR <\fIcontrollers>:<path\fR>] [--sticky] \fBcommand\fR [\fIarguments\fR]
++\fBcgexec\fR [\fB\-h\fR] [\fB\-b\fR] [\fB\-g\fR <\fIcontrollers>:<path\fR>] [\-\-sticky] \fBcommand\fR [\fIarguments\fR]
+ 
+ .SH DESCRIPTION
+ The \fBcgexec\fR
+@@ -21,7 +21,7 @@ constructs the path of the control group
+ cgroup root hierarchy.
+ 
+ .TP
+-.B -g <controllers>:<path>
++.B \-g <controllers>:<path>
+ defines the control groups in which the task will be run.
+ \fBcontrollers\fR is a list of controllers and
+ \fBpath\fR is the relative path to control groups
+@@ -46,15 +46,15 @@ If the specifications are not present th
+ kernel values.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ Display this help and exit.
+ 
+ .TP
+-.B -r
++.B \-r
+ Replaces systemd scope's idle process with the task \fBcommand\fR.
+ 
+ .TP
+-.B --sticky
++.B \-\-sticky
+ If running the task \fBcommand\fR with this option, the daemon of
+ service cgred (cgrulesengd process) does not change both the task
+ of the \fBcommand\fR and the child tasks. Without this option,
+@@ -68,7 +68,7 @@ changes the child tasks to the right cgr
+ 
+ .nf
+ .ft B
+-cgexec -g *:test1 ls
++cgexec \-g *:test1 ls
+ .ft R
+ .fi
+ runs command \fBls\fR in control group test1
+@@ -76,15 +76,15 @@ in all mounted controllers.
+ 
+ .nf
+ .ft B
+-cgexec -g cpu,memory:test1 ls -l
++cgexec \-g cpu,memory:test1 ls \-l
+ .ft R
+ .fi
+-runs command \fBls -l\fR in control group test1
++runs command \fBls \-l\fR in control group test1
+ in controllers cpu and memory.
+ 
+ .nf
+ .ft B
+-cgexec -g cpu,memory:test1 -g swap:test2 ls -l
++cgexec \-g cpu,memory:test1 \-g swap:test2 ls \-l
+ .ft R
+ .fi
+ runs command \fBls -l\fR in control group test1
+Index: libcgroup/doc/man/cgget.1
+===================================================================
+--- libcgroup.orig/doc/man/cgget.1
++++ libcgroup/doc/man/cgget.1
+@@ -7,11 +7,11 @@
+ cgget \- print parameter(s) of given group(s)
+ 
+ .SH SYNOPSIS
+-\fBcgget\fR [\fB-n\fR] [\fB-v\fR] [\fB-m\fR] [\fB-b\fR] [\fB-r\fR <\fIname\fR>]
+-[\fB-g\fR <\fIcontroller\fR>] [\fB-a\fR] <\fBpath\fR> ...
++\fBcgget\fR [\fB\-n\fR] [\fB\-v\fR] [\fB\-m\fR] [\fB\-b\fR] [\fB\-r\fR <\fIname\fR>]
++[\fB\-g\fR <\fIcontroller\fR>] [\fB\-a\fR] <\fBpath\fR> ...
+ .br
+-\fBcgget\fR [\fB-n\fR] [\fB-v\fR] [\fB-m\fR] [\fB-b\fR] [\fB-r\fR <\fIname\fR>]
+-\fB-g\fR <\fIcontroller\fR>:<\fBpath\fR> ...
++\fBcgget\fR [\fB\-n\fR] [\fB\-v\fR] [\fB\-m\fR] [\fB\-b\fR] [\fB\-r\fR <\fIname\fR>]
++\fB\-g\fR <\fIcontroller\fR>:<\fBpath\fR> ...
+ 
+ .SH DESCRIPTION
+ Prints the parameter(s) of input cgroup(s).
+@@ -24,7 +24,7 @@ is the name of the cgroup which should b
+ This parameter can be used multiple times.
+ 
+ .TP
+-.B -a, --all
++.B -a, \-\-all
+ print the variables for all controllers which consist in the  given cgroup
+ 
+ .TP
+@@ -49,31 +49,31 @@ defines control groups whose values shou
+ This option can be used multiple times.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ display help and exit
+ 
+ .TP
+-.B -m
++.B \-m
+ displays the current control groups setup mode. The control groups can be set up in one of three modes,
+ legacy (cgroup v1 only), unified (cgroup v2 only) or hybrid (cgroup v1/v2).
+ 
+ .TP
+-.B -n
++.B \-n
+ do not print headers, i.e. names of groups.
+ 
+ .TP
+-.B -r, --variable <name>
++.B \-r, \-\-variable <name>
+ defines parameter to display.
+ This option can be used multiple times.
+ 
+ 
+ .TP
+-.B -v, --values-only
++.B \-v, \-\-values-only
+ print only values, not parameter names.
+ 
+ .SH EXAMPLES
+ .nf
+-$ cgget -r cpuset.cpus -r cpuset.mems first second
++$ cgget \-r cpuset.cpus \-r cpuset.mems first second
+ first:
+ cpuset.cpus=0-1
+ cpuset.mems=0
+@@ -82,24 +82,24 @@ second:
+ cpuset.cpus=0
+ cpuset.mems=0
+ 
+-$ cgget -n -r cpuset.cpus -r cpuset.mems first second
++$ cgget \-n \-r cpuset.cpus \-r cpuset.mems first second
+ cpuset.cpus=0-1
+ cpuset.mems=0
+ cpuset.cpus=0
+ cpuset.mems=0
+ 
+-$ cgget -nv -r cpuset.cpus -r cpuset.mems first second
++$ cgget \-nv \-r cpuset.cpus \-r cpuset.mems first second
+ 0-1
+ 0
+ 0
+ 0
+ 
+-$ cgget -n -g cpu /
++$ cgget \-n \-g cpu /
+ cpu.rt_period_us=1000000
+ cpu.rt_runtime_us=950000
+ cpu.shares=1024
+ 
+-$ cgget -m
++$ cgget \-m
+ Unified Mode (Cgroup v2 only).
+ 
+ .fi
+Index: libcgroup/doc/man/cgred.conf.5
+===================================================================
+--- libcgroup.orig/doc/man/cgred.conf.5
++++ libcgroup/doc/man/cgred.conf.5
+@@ -21,13 +21,13 @@ variable specifies the file to which log
+ 
+ .TP
+ \fBNODAEMON\fR
+-if it is equal to "--nodaemon" then
++if it is equal to "\-\-nodaemon" then
+ run cgred in non-daemon mode
+ 
+ .TP
+ \fBLOG\fR
+-define the verbosity of logging. Accepted values are '-v', '-vv', '-q'
+-and '--nolog'.
++define the verbosity of logging. Accepted values are '\-v', '\-vv', '\-q'
++and '\-\-nolog'.
+ .LP
+ 
+ 
+Index: libcgroup/doc/man/cgrulesengd.8
+===================================================================
+--- libcgroup.orig/doc/man/cgrulesengd.8
++++ libcgroup/doc/man/cgrulesengd.8
+@@ -22,40 +22,40 @@ The daemon opens a standard unix socket
+ 
+ .SH OPTIONS
+ .TP
+-.B -h|--help
++.B \-h|\-\-help
+ Display help.
+ .TP
+-.B -f <path>|--logfile=<path>
+-Write log messages to the given log file. When '-' is used as <path>, log messages
+-are written to the standard output. If '\fB-f\fR' and '\fB-s\fR' are used together,
++.B \-f <path>|\-\-logfile=<path>
++Write log messages to the given log file. When '\-' is used as <path>, log messages
++are written to the standard output. If '\fB\-f\fR' and '\fB\-s\fR' are used together,
+ the logs are sent to both destinations.
+ 
+ .TP
+-.B -s[facility]|--syslog=[facility]
+-Write log messages to syslog. The default facility is DAEMON. If '\fB-f\fR'
+-and '\fB-s\fR' are used together, the logs are sent to both destinations.
++.B \-s[facility]|\-\-syslog=[facility]
++Write log messages to syslog. The default facility is DAEMON. If '\fB\-f\fR'
++and '\fB\-s\fR' are used together, the logs are sent to both destinations.
+ .TP
+-.B -n|--nodaemon
++.B \-n|\-\-nodaemon
+ Don't fork the daemon, stay in the foreground.
+ .TP
+-.B -v|--verbose
++.B \-v|\-\-verbose
+ Display more log messages. This option can be used three times to enable more
+ verbose log messages.
+ .TP
+-.B -q|--quiet
++.B \-q|\-\-quiet
+ Display less log messages.
+ .TP
+-.B -Q|--nolog
++.B \-Q|\-\-nolog
+ Disable logging.
+ .TP
+-.B -d|--debug
+-Equivalent to '-nvvvf -', i.e. don't fork the daemon, display all log messages and
++.B \-d|\-\-debug
++Equivalent to '\-nvvvf \-', i.e. don't fork the daemon, display all log messages and
+ write them to the standard output.
+ .TP
+-.B -u <user>|--socket-user=<user>
+-.B -g <group>|--socket-group=<group>
++.B \-u <user>|\-\-socket-user=<user>
++.B \-g <group>|\-\-socket-group=<group>
+ Set the owner of cgrulesengd socket. Assumes that \fBcgexec\fR runs with proper
+-suid permissions so it can write to the socket when \fBcgexec\fR --sticky is used.
++suid permissions so it can write to the socket when \fBcgexec\fR \-\-sticky is used.
+ 
+ .SH ENVIRONMENT VARIABLES
+ .TP
+Index: libcgroup/doc/man/cgset.1
+===================================================================
+--- libcgroup.orig/doc/man/cgset.1
++++ libcgroup/doc/man/cgset.1
+@@ -7,9 +7,9 @@
+ cgset \- set the parameters of given cgroup(s)
+ 
+ .SH SYNOPSIS
+-\fBcgset\fR [\fB-b\fR] [\fB-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
++\fBcgset\fR [\fB\-b\fR] [\fB\-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
+ .br
+-\fBcgset\fR [\fB-b\fR] \fB--copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
++\fBcgset\fR [\fB\-b\fR] \fB\-\-copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
+ 
+ .SH DESCRIPTION
+ Set the parameters of input cgroups.
+@@ -26,13 +26,13 @@ constructs the path of the control group
+ cgroup root hierarchy.
+ 
+ .TP
+-.B -r <name=value>
++.B \-r <name=value>
+ defines the name of the file to set and
+ the value which should be written to that file.
+ This parameter can be used multiple times.
+ 
+ .TP
+-.B --copy-from <source_cgroup_path>
++.B \-\-copy-from <source_cgroup_path>
+ defines the name of the cgroup whose parameters will be
+ copied to the input cgroup.
+ 
+Index: libcgroup/doc/man/cgsnapshot.1
+===================================================================
+--- libcgroup.orig/doc/man/cgsnapshot.1
++++ libcgroup/doc/man/cgsnapshot.1
+@@ -7,8 +7,8 @@
+ cgsnapshot \- generate the configuration file for given controllers
+ 
+ .SH SYNOPSIS
+-\fBcgsnapshot\fR [\fB-h\fR] [\fB-s\fR] [\fB-t\fR] [\fB-b\fR \fIfile\fR]
+-[\fB-w\fR \fIfile\fR] [\fB-f\fR \fIoutput_file\fR] [\fBcontroller\fR] [...]
++\fBcgsnapshot\fR [\fB\-h\fR] [\fB\-s\fR] [\fB\-t\fR] [\fB\-b\fR \fIfile\fR]
++[\fB\-w\fR \fIfile\fR] [\fB\-f\fR \fIoutput_file\fR] [\fBcontroller\fR] [...]
+ 
+ .SH DESCRIPTION
+ \fBcgsnapshot\fR
+@@ -21,7 +21,7 @@ The output is in the same format as the
+ configuration file.
+ 
+ .TP
+-.B -b file
++.B \-b file
+ Display only variables from the denylist.
+ The default location of the denylist is
+ .B /etc/cgsnapshot_denylist.conf.
+@@ -33,25 +33,25 @@ If it is not present on the denylist, th
+ is checked.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ display this help and exit
+ 
+ .TP
+-.B -f, --file
++.B \-f, \-\-file
+ Redirect the output to output_file
+ 
+ 
+ .TP
+-.B -s, --silent
++.B \-s, \-\-silent
+ Ignore all warnings
+ 
+ .TP
+-.B -t, --strict
++.B \-t, \-\-strict
+ Do not display the variables which are not on the allowlist
+ 
+ 
+ .TP
+-.B -w file
++.B \-w file
+ Set the denylist configuration file.
+ This list contains all variables which should be displayed by
+ .B cgsnapshot
+@@ -65,10 +65,10 @@ the variable is displayed and a warning
+ By default the allowlist is not used.
+ 
+ The warning message can be omitted using the
+-.B -s, --silent
++.B \-s, \-\-silent
+ flag.
+ If the
+-.B -t, --strict
++.B \-t, \-\-strict
+ flag is used, the variable which is not on the allowlist is
+ not displayed.
+ 
+Index: libcgroup/doc/man/lscgroup.1
+===================================================================
+--- libcgroup.orig/doc/man/lscgroup.1
++++ libcgroup/doc/man/lscgroup.1
+@@ -7,9 +7,9 @@
+ lscgroup \- list all cgroups
+ 
+ .SH SYNOPSIS
+-\fBlscgroup\fR [[\fB-g\fR] <\fIcontrollers>:<path\fR>] [...]
++\fBlscgroup\fR [[\fB\-g\fR] <\fIcontrollers>:<path\fR>] [...]
+ .br
+-\fBlscgroup\fR [\fB-h|--help\fR]
++\fBlscgroup\fR [\fB\-h|\-\-help\fR]
+ 
+ .SH DESCRIPTION
+ List all/chosen cgroups.
+Index: libcgroup/doc/man/lssubsys.1
+===================================================================
+--- libcgroup.orig/doc/man/lssubsys.1
++++ libcgroup/doc/man/lssubsys.1
+@@ -7,13 +7,13 @@
+ lssubsys \- list hierarchies containing given subsystem
+ 
+ .SH SYNOPSIS
+-\fBlssubsys\fR  [\fB-m|--mount-points\fR] [\fB-M|--all-mount-points\fR]
++\fBlssubsys\fR  [\fB\-m|\-\-mount-points\fR] [\fB\-M|\-\-all-mount-points\fR]
+ [\fIcontroller\fR] [...]
+ .br
+-\fBlssubsys\fR  [\fB-m|--mount-points\fR] [\fB-M|--all-mount-points\fR]
+-[\fB-i|--hierarchies\fR] [\fB-a|--all\fR]
++\fBlssubsys\fR  [\fB\-m|\-\-mount-points\fR] [\fB\-M|\-\-all-mount-points\fR]
++[\fB\-i|\-\-hierarchies\fR] [\fB\-a|\-\-all\fR]
+ .br
+-\fBlssubsys\fR  [\fB-h|--help\fR]
++\fBlssubsys\fR  [\fB\-h|\-\-help\fR]
+ 
+ .SH DESCRIPTION
+ \fBlssubsys\fR list the hierarchies containing
+@@ -27,37 +27,37 @@ If this parameter is not used, the comma
+ list all mounted subsystems.
+ 
+ .TP
+-.B -m, --mount-points
++.B \-m, \-\-mount-points
+ Display mount points. Only the first mount points of shown hierarchies are displayed.
+ 
+ .TP
+-.B -M, --all-mount-points
++.B \-M, \-\-all-mount-points
+ Display mount points. All mount points of shown hierarchies are displayed, each on
+ separate line.
+ 
+ .TP
+-.B -a, --all
++.B \-a, \-\-all
+ Display all subsystems (including unmounted ones).
+ 
+ .TP
+-.B -i, --hierarchies
++.B \-i, \-\-hierarchies
+ Display the attached hierarchy number if the subsystem is in a hierarchy.
+ If the option
+-.B -m
++.B \-m
+ is also used, the hierarchy number is shown only for unmounted hierarchies.
+ 
+ .TP
+-.B -h, --help
++.B \-h, \-\-help
+ Display help and exit.
+ 
+ .SH EXAMPLE
+ The command
+-.B lssubsys -am
++.B lssubsys \-am
+ lists all subsystems which are present in the system,
+ mounted ones will be shown with their mount point:
+ .RS
+ .nf
+-$ lssubsys -am
++$ lssubsys \-am
+ ns
+ cpuset
+ cpu,devices
+@@ -69,13 +69,13 @@ net_cls /cgroup/net_cls
+ .RE
+ .LP
+ The command
+-.B lssubsys -ami
++.B lssubsys \-ami
+ lists all subsystems which are present in the system,
+ mounted subsystems are listed with their mount points,
+ unmounted ones which are in a hierarchy are listed with their hierarchy number:
+ .RS
+ .nf
+-$ lssubsys -ami
++$ lssubsys \-ami
+ ns
+ cpuset 5
+ cpu,devices 6

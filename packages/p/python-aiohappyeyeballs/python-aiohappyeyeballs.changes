@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 28 15:43:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.3
+  * fix: rewrite staggered_race to be race safe.
+  * fix: re-raise RuntimeError when uvloop raises RuntimeError
+    during connect (#105).
+- Update to version 2.4.2
+  * fix: copy staggered from standard lib for python 3.12+ (#95).
+- Update to version 2.4.1
+  * fix: avoid passing loop to staggered.staggered_race (#94).
+- Update to version 2.4.0
+  * docs: fix a trivial typo in README.md (#84).
+  * feat: add support for python 3.13 (#86).
+
+-------------------------------------------------------------------
 Sat Aug 31 00:49:09 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons. 

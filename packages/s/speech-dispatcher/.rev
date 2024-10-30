@@ -399,4 +399,23 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
   samples with pulseaudio. (forwarded request 1185817 from mgorse)</comment>
     <requestid>1185818</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>744906f0c853ed567d30e7669d6428a1</srcmd5>
+    <version>0.12.0~rc4</version>
+    <time>1730306023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0~rc4:
+  * audio: Fix logging from audio modules in server-side audio.
+  * Sort Baratinoo engine higher.
+  * espeak-ng-mbrola: Fix mbrola voices with rate different from
+    22KHz
+  * Add a run-spd-say script and make run-speechd and run-spd-say
+    able to talk directly.
+  * Add initial pipewire support.
+- Drop speech-dispatcher-missing-return-vals.patch and
+  speech-dispatcher-pulseaudio-samples.patch: fixed upstream.
+- Add libpipewire-0.3 to BuildRequires to build Pipewire support.
+- Package speechd_module library. (forwarded request 1219166 from mgorse)</comment>
+    <requestid>1219167</requestid>
+  </revision>
 </revisionlist>

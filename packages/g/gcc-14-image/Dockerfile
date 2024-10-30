@@ -17,14 +17,13 @@
 
 #!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/gcc:%%gcc_minor_version%%
-#!BuildTag: opensuse/bci/gcc:14-%RELEASE%
 #!BuildTag: opensuse/bci/gcc:14
 #!BuildTag: opensuse/bci/gcc:latest
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends gcc14 gcc14-c++ make gcc gcc-c++ curl findutils gawk git-core procps util-linux; \
+    zypper -n install --no-recommends gcc14 gcc14-c++ gcc14-fortran make gcc gcc-c++ gcc-fortran curl findutils gawk git-core procps util-linux; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:58:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * `nchar` attribute to `TextXError` class, which represents the
+    substring length for the model object where the error was found.
+  * `linetype` parameter to PlantUML generator which controls
+    line style. See the tip in the visualization docs
+  * Rendering of multiplicities of association in PlantUML
+    generator.
+  * Meta-model diagram export now raises attributes/references to
+    abstract
+  * meta-classes along the inheritance chain. See [423].
+  * The Python version limit "<3.13" has been removed from the
+    pyproject.toml file. The library should run on all Python
+    versions starting from 3.8
+
+-------------------------------------------------------------------
 Fri Apr  5 06:06:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.1:
@@ -33,7 +50,7 @@ Mon Sep 11 05:42:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Changed separator in obj. rule refs from `|` to `:`. Old separator
     will still be allowed until version 4.0. ([#385], [#384])
   * Removed the dependency on `future` package ([#388]). Thanks mgorny@GitHub.
-  * Removed vendored `six` library. We don't need 2.x support anymore. Thanks 
+  * Removed vendored `six` library. We don't need 2.x support anymore. Thanks
     davidchall@GitHub for reporting the issue ([#390]).
 - Switch to pyproject macros.
 - Stop using greedy globs in %files.
@@ -44,7 +61,7 @@ Tue Mar 22 20:51:24 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.0.0:
  - Added:
-  - Added RREL-'fixed name'-extension, allowing to follow model elements 
+  - Added RREL-'fixed name'-extension, allowing to follow model elements
     given a fixed name (e.g. an object defined in a builtin model).
     Details described in rrel.md ([#364]).
   - Added ability to access the full path of named objects traversed while
@@ -109,7 +126,7 @@ Sun Nov  1 17:56:21 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     - Fixed bug, where user classes not used in the grammar caused exceptions
       ([#270]): now, when passing a list of user classes, you need to use them in
       your grammar. You can alternatively also pass a callable (see metamodel.md;
-      [#273]). Also, using base classes for rules from imported grammars in 
+      [#273]). Also, using base classes for rules from imported grammars in
       conjunction with user classes is not allowed and results in an exception.
     - Fixed bug in `export.py` concerning html escaping in the dot export of a
       textx meta-model ([#276]).

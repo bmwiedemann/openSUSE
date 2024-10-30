@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1147902</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5696e12d2af9d90212c31934ee9c5a7e</srcmd5>
+    <version>2.14.0</version>
+    <time>1730306217</time>
+    <user>dimstar_suse</user>
+    <comment>2.14.0 + additional flavour to build all we can</comment>
+    <requestid>1219175</requestid>
+  </revision>
 </revisionlist>

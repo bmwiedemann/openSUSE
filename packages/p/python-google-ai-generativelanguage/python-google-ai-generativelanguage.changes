@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  1 21:50:35 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Run the tests inside the tests dir only.
+
+
+-------------------------------------------------------------------
 Wed Sep 25 06:46:38 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.6.10

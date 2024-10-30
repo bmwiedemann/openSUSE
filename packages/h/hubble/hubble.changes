@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:04:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.3:
+  * Prepare for v1.16.3 release
+  * Remove the vendor team from CODEOWNERS
+  * chore(deps): update actions/checkout action to v4.2.2
+  * chore(deps): update actions/setup-go action to v5.1.0
+  * chore(deps): update dependency cilium/cilium to v1.16.3
+  * chore(deps): update all github action dependencies
+  * Makefile: Use hubble target to build release binaries
+  * Drop building 32-bit release binaries
+  * Update the release issue template
+  * Update stable release to 1.16.2
+
+-------------------------------------------------------------------
 Fri Oct 04 19:39:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.16.2:

@@ -25,7 +25,11 @@ License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
+%if 0%{suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  c++_compiler
+%endif
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -75,6 +79,9 @@ Python bindings for the Z3 library.
 
 %build
 %define __builder ninja
+%if 0%{suse_version} < 1600
+export CXX=g++-13
+%endif
 %cmake \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DZ3_BUILD_LIBZ3_SHARED=true \

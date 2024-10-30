@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 07:05:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0
+  Features
+  * Add codepage 1047 for EBCDIC.
+  Other
+  * Rewrite CLI using the derive API.
+
+-------------------------------------------------------------------
 Tue Dec 12 21:45:13 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.0

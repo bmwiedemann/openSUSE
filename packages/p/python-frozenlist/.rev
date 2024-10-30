@@ -102,4 +102,31 @@
     <comment></comment>
     <requestid>1190524</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ca1d6b38f6dc5fdc07dcdf46e36a504a</srcmd5>
+    <version>1.5.0</version>
+    <time>1730305993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * An incorrect signature of the __class_getitem__ class method
+    has been fixed, adding a missing class_item argument under
+    Python 3.8 and older. This change also improves the code
+    coverage of this method that was previously missing -- by
+    :user:`webknjaz`. Related issues and pull requests on GitHub:
+    :issue:`567`, :issue:`571`.
+  * Rendered issue, PR, and commit links now lead to frozenlist's
+    repo instead of yarl's repo. Related issues and pull requests
+    on GitHub: :issue:`573`.
+  * On the :doc:`Contributing docs &lt;contributing/guidelines&gt;`
+    page, a link to the Towncrier philosophy has been fixed.
+    Related issues and pull requests on GitHub: :issue:`574`.
+  * A name of a temporary building directory now reflects that
+    it's related to frozenlist, not yarl. Related issues and pull
+    requests on GitHub: :issue:`573`.
+  * Declared Python 3.13 supported officially in the distribution
+    package metadata. Related issues and pull requests on GitHub:
+    :issue:`595`.
+- drop skip-some-attributes.patch (upstream)</comment>
+    <requestid>1219202</requestid>
+  </revision>
 </revisionlist>

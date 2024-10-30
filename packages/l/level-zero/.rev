@@ -286,4 +286,12 @@
   * Installation path fixes</comment>
     <requestid>1194549</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7910233b77b9943bc5ab9c473aee0ec8</srcmd5>
+    <version>1.17.45</version>
+    <time>1730306382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219478</requestid>
+  </revision>
 </revisionlist>

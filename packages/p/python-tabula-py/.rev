@@ -7,4 +7,19 @@
     <comment>some AI thing</comment>
     <requestid>1201754</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36f3d9639920d8869b95ecfcce742fe0</srcmd5>
+    <version>2.10.0</version>
+    <time>1730306210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.0:
+  * Support Python 3.13 for now
+  * Note that jpype doesn't support 3.13 yet.
+  * Support Python 3.13; Drop 3.8
+
+  failure for Tumbleweed.
+- Remove optional dependencies.
+- Update to v2.9.3.</comment>
+    <requestid>1219211</requestid>
+  </revision>
 </revisionlist>

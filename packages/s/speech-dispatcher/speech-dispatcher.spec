@@ -47,7 +47,7 @@ Name:           speech-dispatcher
 %else
 Name:           speech-dispatcher-%{_python}
 %endif
-Version:        0.12.0~rc3
+Version:        0.12.0~rc4
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are
@@ -56,12 +56,8 @@ Summary:        Device independent layer for speech synthesis
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
-Source0:        https://github.com/brailcom/speechd/releases/download/0.12.0-rc3/speech-dispatcher-0.12.0-rc3.tar.gz
+Source0:        https://github.com/brailcom/speechd/releases/download/0.12.0-rc4/speech-dispatcher-0.12.0-rc4.tar.gz
 Patch0:         harden_speech-dispatcherd.service.patch
-# PATCH-FIX-UPSTREAM speech-dispatcher-missing-return-vals.patch
-Patch1:         speech-dispatcher-missing-return-vals.patch
-# PATCH-FIX-OPENSUSE speech-dispatcher-pulseaudio-samples.patch
-Patch2:         speech-dispatcher-pulseaudio-samples.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
 Source99:       baselibs.conf
@@ -78,6 +74,7 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 # FIXME: use proper Requires(pre/post/preun/...)
@@ -159,6 +156,22 @@ to speech synthesis. The application neither needs to talk to the
 devices directly nor to handle concurrent access, sound output and other
 tricky aspects of the speech subsystem.
 
+%package -n libspeechd_module0
+Summary:        Library for creating speech-dispatcher modules
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Recommends:     %{name}
+
+%description -n libspeechd_module0
+The goal of Speech Dispatcher project is to provide a high-level device
+independent layer for speech synthesis through a simple, stable and
+well documented interface.
+
+What is a very high level GUI library to graphics, Speech Dispatcher is
+to speech synthesis. The application neither needs to talk to the
+devices directly nor to handle concurrent access, sound output and other
+tricky aspects of the speech subsystem.
+
 %package -n libspeechd-devel
 Summary:        Device independent layer for speech synthesis - Development files
 License:        LGPL-2.1-or-later
@@ -199,7 +212,7 @@ devices directly nor to handle concurrent access, sound output and other
 tricky aspects of the speech subsystem.
 
 %prep
-%autosetup -p1 -n speech-dispatcher-0.12.0-rc3
+%autosetup -p1 -n speech-dispatcher-0.12.0-rc4
 # dummy module must almost never be disabled
 sed -i "s/#AddModule \"dummy\"/AddModule \"dummy\"/" -i config/speechd.conf
 # you must enable at least one module (except dummy), otherwise it will load
@@ -234,8 +247,6 @@ cd src/api/python/speechd
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %if "%{flavor}" == ""
-mkdir -p %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspeech-dispatcherd
 # Create log dir. 0700 since the logs can contain user information.
 install -d -m 0700 %{buildroot}%{_localstatedir}/log/speech-dispatcher/
 # Install logrotate script
@@ -338,7 +349,6 @@ done
 %{_unitdir}/speech-dispatcherd.service
 %{_userunitdir}/speech-dispatcher.service
 %{_userunitdir}/speech-dispatcher.socket
-%{_sbindir}/rcspeech-dispatcherd
 %{_datadir}/speech-dispatcher/
 
 %files configure
@@ -352,6 +362,9 @@ done
 
 %files -n libspeechd2
 %{_libdir}/libspeechd.so.*
+
+%files -n libspeechd_module0
+%{_libdir}/libspeechd_module.so.*
 
 %files -n libspeechd-devel
 %{_includedir}/%{name}/

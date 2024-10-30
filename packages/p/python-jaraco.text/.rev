@@ -154,4 +154,15 @@
   * Add 'lines_from' function.</comment>
     <requestid>1217420</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9336831545fa1ff8d75bb9c244bf6f70</srcmd5>
+    <version>4.0.0</version>
+    <time>1730305988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.0:
+  * Made 'inflect' an optional dependency. The show-newlines
+    script now will crash unless jaraco.text[inflect] is
+    installed.</comment>
+    <requestid>1219186</requestid>
+  </revision>
 </revisionlist>

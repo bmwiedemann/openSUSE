@@ -26,7 +26,11 @@ Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/DescentDevelopers/Descent3
 Source:         https://github.com/DescentDevelopers/Descent3/archive/%commit.tar.gz
 Patch1:         system-libacm.patch
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  c++_compiler
+%endif
 BuildRequires:  cmake
 BuildRequires:  libacm-devel
 BuildRequires:  plog-devel
@@ -54,8 +58,12 @@ different game types.
 %autosetup -p1 -n Descent3-%commit
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CXX=g++-11
+%endif
 %cmake -DCMAKE_INSTALL_BINDIR="%_libexecdir/%name" \
 	-DCMAKE_INSTALL_DATADIR="%_datadir/%name" \
+	-DCMAKE_INSTALL_DOCDIR:PATH="share/doc/packages/%name" \
 	-DFORCE_PORTABLE_INSTALL=OFF -DUSE_EXTERNAL_PLOG=ON \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO="%optflags" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="%optflags"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 17 17:39:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.24
+  * io: resolve use-after-free and out-of-bounds writes in
+    conjunction with ``HX_realpath``
+  * io: add ``HX_getcwd`` function
+
+-------------------------------------------------------------------
 Thu Feb 15 16:11:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.23

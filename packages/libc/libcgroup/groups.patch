@@ -1,0 +1,19 @@
+---
+ src/tools/cgexec.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+--- src/tools/cgexec.c
++++ src/tools/cgexec.c	2024-10-02 13:10:56.264649618 +0000
+@@ -164,6 +164,12 @@ int main(int argc, char *argv[])
+ 		return -1;
+ 	}
+ 
++	if (uid == 0)
++		if (setgroups(0, NULL)) {
++			err("%s", strerror(errno));
++			return -1;
++		}
++
+ 	if (cg_specified) {
+ 		/*
+ 		 * User has specified the list of control group

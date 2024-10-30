@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 02:33:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Ignore ResourceWarning during pytest to avoid a Python 3.13 failure. 
+
+-------------------------------------------------------------------
 Thu Feb  1 05:13:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch stop-using-utcnow.patch:

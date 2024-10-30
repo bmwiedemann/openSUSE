@@ -170,4 +170,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1201740</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6dd969cece0c236afc6ff803e3e0ed58</srcmd5>
+    <version>9.7.3</version>
+    <time>1730306265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219317</requestid>
+  </revision>
 </revisionlist>

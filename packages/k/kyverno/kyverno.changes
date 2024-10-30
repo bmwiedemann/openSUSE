@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:03:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.0 (boo#1232559):
+  Large update, please see the changelog and the release blog post
+  for new features
+  https://github.com/kyverno/kyverno/releases/tag/v1.13.0
+  https://nirmata.com/2024/10/30/announcing-kyverno-release-1-13/
+  Please check the upgrade documentation here:
+  https://main.kyverno.io/docs/installation/upgrading/#upgrading-to-kyverno-v113
+
+-------------------------------------------------------------------
 Fri Sep 27 20:43:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.6:

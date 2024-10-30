@@ -182,4 +182,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1110954</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>df59240f6c98753026a0be9db4a2502d</srcmd5>
+    <version>0.7.2</version>
+    <time>1730305991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.2:
+  * drop end of life python versions
+  * Don't match garbage characters at the end of parsed strings
+  * Fractional seconds are cut off to microseconds (always round
+    down)
+  * Allow control over return type of parse_duration #64 (Felix
+    Claessen)
+  * Python &gt;= 3.7 required
+- drop python-isodate-no-six.patch (upstream)
+
+- add six dependency
+- Remove BuildRequires: python-2to3, useless since included in main</comment>
+    <requestid>1219194</requestid>
+  </revision>
 </revisionlist>

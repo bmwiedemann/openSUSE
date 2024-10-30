@@ -51,4 +51,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164761 from glaubitz)</comment>
     <requestid>1165159</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>934c8d8ba514ad043e8e349a2119cbb1</srcmd5>
+    <version>3.0.0</version>
+    <time>1730306371</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1219369 from glaubitz)</comment>
+    <requestid>1219524</requestid>
+  </revision>
 </revisionlist>

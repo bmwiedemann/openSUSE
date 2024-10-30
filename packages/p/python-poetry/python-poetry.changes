@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:57:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.4:
+  * **Add official support for Python 3.13** (#9523).
+  * Require `virtualenv>=20.26.6` to mitigate potential command
+    injection when running `poetry shell` in untrusted projects
+    (#9757).
+
+-------------------------------------------------------------------
 Sun Jun 30 21:49:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:

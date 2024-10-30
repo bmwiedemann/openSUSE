@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>1081739</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c97b6563220fad35ee1fea0a6730fd01</srcmd5>
+    <version>1.1.0</version>
+    <time>1730305999</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Removed Support for Python 3.7 and 3.8
+  * Accept generic `collections.abc.Mapping`, not just `dict`, as
+    input.
+  * `indent` keyword argument for customizing indent width of
+    arrays.
+  * Type annotations
+  * Type annotate `dump` function's output stream object as
+    `typing.IO[bytes]` (previously `typing.BinaryIO`)</comment>
+    <requestid>1219216</requestid>
+  </revision>
 </revisionlist>

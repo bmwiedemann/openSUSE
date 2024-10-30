@@ -19,7 +19,7 @@
 %global __builder ninja
 
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT

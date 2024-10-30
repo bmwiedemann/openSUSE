@@ -15,21 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-huey
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        huey, a little task queue
 License:        MIT
 URL:            http://github.com/coleifer/huey/
 Source:         https://files.pythonhosted.org/packages/source/h/huey/huey-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-redis >= 3.0.0

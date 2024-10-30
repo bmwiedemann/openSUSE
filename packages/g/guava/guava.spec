@@ -72,10 +72,6 @@ find . -name '*.jar' -delete
 %pom_remove_dep -r :listenablefuture
 %pom_remove_dep -r :failureaccess
 
-%pom_change_dep -r :error_prone_annotations :::provided
-%pom_change_dep -r :j2objc-annotations :::provided
-%pom_change_dep -r org.checkerframework: :::provided
-
 %build
 mkdir -p lib
 build-jar-repository -s lib junit jsr-305 google-errorprone/annotations checker-qual j2objc-annotations
@@ -90,10 +86,7 @@ install -pm 0644 %{name}-testlib/target/%{name}-testlib-%{version}*.jar %{buildr
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
-# We integrated this artifact in our main package
-%{mvn_install_pom} futures/failureaccess/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/failureaccess.pom
-%add_maven_depmap %{name}/failureaccess.pom %{name}/%{name}.jar
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a "com.google.guava:failureaccess","com.google.guava:listenablefuture"
 %{mvn_install_pom} %{name}-testlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-testlib.pom
 %add_maven_depmap %{name}/%{name}-testlib.pom %{name}/%{name}-testlib.jar -f %{name}-testlib
 

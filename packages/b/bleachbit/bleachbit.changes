@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 17:05:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.6.2:
+  * Clean more cookies, cache, and sessions in Google Chrome.
+  * Fix ValueError: Unexpected UTF-8 BOM (decode using utf-8-sig)
+    when cleaning JSON files in Google Chrome
+  * Fix detection of Wayland.
+  * Fix error SyntaxWarning: invalid escape sequence with Python 3.12.
+  * Fix missing developer name in metainfo.xml file.
+
+-------------------------------------------------------------------
 Tue Nov 14 16:47:15 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 4.6.0

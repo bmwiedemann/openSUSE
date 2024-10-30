@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:15:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.9.0:
+  * Don't emit Y053 for long strings inside `Literal` slices or
+  * metadata strings inside `Annotated` slices.
+  * `flake8-pyi` no longer supports being run using Python 3.8.
+    As a result, it not longer depends on the third-party
+   `ast_decompiler` package.
+
+-------------------------------------------------------------------
 Sat Jun 15 15:36:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.6.0:

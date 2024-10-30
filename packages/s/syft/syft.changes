@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:02:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.15.0:
+  * chore(deps): update stereoscope to
+    bcc40c6817524718277256d6b774ce643f98640a (#3388)
+  * chore(deps): bump actions/setup-go from 5.0.2 to 5.1.0 (#3384)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.1
+    to 1.1.2 (#3385)
+  * chore(deps): update tools to latest versions (#3383)
+  * chore(deps): update CPE dictionary index (#3387)
+  * chore(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#3380)
+  * feat: multi-level configuration and profiles (#3337)
+  * feat: Java dependency graph information (#3363)
+  * Expanded dpkg cataloger globs (#3373)
+  * Enable cargo-auditable-binary-cataloger for files/directories
+    (#3376)
+  * chore(deps): bump github/codeql-action from 3.26.13 to 3.27.0
+    (#3374)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#3375)
+  * chore(deps): update stereoscope to
+    6db3c175f1f836e552b01ee70e5d5528cc04bce4 (#3362)
+  * chore(deps): bump actions/cache from 4.1.1 to 4.1.2 (#3364)
+  * chore(deps): bump anchore/sbom-action from 0.17.4 to 0.17.5
+    (#3365)
+  * chore(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to
+    5.6.0 (#3367)
+
+-------------------------------------------------------------------
 Tue Oct 22 07:09:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.2:

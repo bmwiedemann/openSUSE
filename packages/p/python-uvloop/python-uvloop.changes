@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:20:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21.0
+  * Add cleanup_socket param on create_unix_server()
+  * Use cythonized SO_REUSEPORT rather than the unwrapped native one (#609)
+  * UDP errors should result in protocol.error_received (#601)
+  * Updates for Cython3 (#587)
+  * Test with Python 3.13 (#610)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Oct  7 20:54:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.0:

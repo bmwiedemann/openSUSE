@@ -364,4 +364,14 @@
     <comment>Update to upstream version 4.4.</comment>
     <requestid>1207149</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>132ab2b63d24b28a6b1aba55177caec9</srcmd5>
+    <version>4.4</version>
+    <time>1730306019</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace the tarball by the exact upstream tarball to make the build service happy. The contents are unchanged.
+- Add a keyring so that the signature of the source tarball can be
+  checked automatically.</comment>
+    <requestid>1219052</requestid>
+  </revision>
 </revisionlist>

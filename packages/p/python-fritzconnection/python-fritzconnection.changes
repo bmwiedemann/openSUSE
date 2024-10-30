@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:19:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * support added for Python 3.13
+  * New FritzTopology module: represents the mesh-topology graph.
+
+-------------------------------------------------------------------
 Sun Jan 14 17:38:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.2:

@@ -23,7 +23,7 @@
 %endif
 
 Name:           backintime
-Version:        1.4.3
+Version:        1.5.2
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 Group:          Productivity/Archiving/Backup
@@ -77,10 +77,10 @@ You only need to specify 3 things:
     * backup frequency (manual, every hour, every day, every month).
 
 %package qt
-Summary:        Back In Time Qt5 GUI
+Summary:        Back In Time Qt6 GUI
 Requires:       %{name} = %{version}
+Requires:       %{python_flavor}-PyQt6
 Requires:       %{python_flavor}-dbus-python
-Requires:       %{python_flavor}-qt5
 Requires:       libqt5-qttranslations
 Requires:       polkit
 # used as a fallback in case of missing icons
@@ -89,7 +89,7 @@ Obsoletes:      backintime-qt4 < %{version}
 Provides:       backintime-qt4 = %{version}-%{release}
 
 %description qt
-This package has a Qt5 GUI for %{name}.
+This package has a Qt6 GUI for %{name}.
 
 %lang_package
 
@@ -182,5 +182,6 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %{_mandir}/man1/%{name}-qt.1%{ext_man}
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf
+%{_datadir}/metainfo/io.github.bit_team.back_in_time.gui.metainfo.xml
 
 %changelog

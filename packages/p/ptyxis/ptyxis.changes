@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:39:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.4:
+  + Work around Podman in `--additional-flags` parsing to fix
+    execution of distrobox containers.
+  + Prioritize "manager":"distrobox" over
+    "com.github.containers.toolbox" label because F41 images
+    created by distrobox are, for some reason, setting the toolbox
+    label id.
+  + Fix raising of window when activating shell notification.
+  + Override distro-theming for `vte-terminal` CSS element. This
+    fixes styling on Ubuntu-based systems, but possibly others.
+
+-------------------------------------------------------------------
 Sat Oct 19 09:20:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

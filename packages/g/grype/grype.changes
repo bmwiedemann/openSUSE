@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:02:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.83.0:
+  * bump syft to v1.15.0, sterescope to v0.0.5 (#2219)
+  * Add `grype db providers` command (#2174)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.1
+    to 1.1.2 (#2214)
+  * chore(deps): update tools to latest versions (#2213)
+  * docs: update config section to be valid, reference config
+    subcommand (#2218)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#2207)
+  * chore(deps): bump github/codeql-action from 3.26.13 to 3.27.0
+    (#2208)
+  * chore(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#2209)
+  * chore(deps): bump actions/setup-go from 5.0.2 to 5.1.0 (#2211)
+  * feat: multi-level configuration and profiles (#2194)
+  * chore(deps): bump actions/cache from 4.1.1 to 4.1.2 (#2204)
+  * chore(deps): bump anchore/sbom-action from 0.17.4 to 0.17.5
+    (#2205)
+
+-------------------------------------------------------------------
 Tue Oct 22 07:09:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.82.2:

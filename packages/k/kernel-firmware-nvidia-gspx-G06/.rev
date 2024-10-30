@@ -182,4 +182,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
   --&gt; https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.nvidia</comment>
     <requestid>1203914</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>69d9c7a879346c4f43a2984c493a9560</srcmd5>
+    <version>550.127.05</version>
+    <time>1730306359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219533</requestid>
+  </revision>
 </revisionlist>

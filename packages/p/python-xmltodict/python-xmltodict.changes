@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 29 16:11:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.2
+  * Revert "Ensure significant whitespace is not trimmed"
+    This changed was backwards incompatible and caused downstream
+    issues.
+- Update to version 0.14.1
+  * Drop support for Python older than 3.6
+  * Additional ruff/Pyflakes/codespell fixes.
+- Update to version 0.14.0
+  * Drop old Python 2 support leftover code and apply several RUFF
+    code health fixes.
+  * Add Python 3.11, 3.12 and 3.13 support and tests.
+  * Remove defusedexpat import.
+  * Replace deprecated BadZipfile with BadZipFile.
+  * Support indent using integer format,
+    enable python -m unittest tests/*.py.
+  * Ensure significant whitespace is not trimmed
+  * added conda installation command
+  * fix attributes not appearing in streaming mode
+
+-------------------------------------------------------------------
 Mon Feb 12 15:02:30 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.

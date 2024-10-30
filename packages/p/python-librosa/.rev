@@ -160,4 +160,12 @@
 - Drop back to ffmpeg 5.</comment>
     <requestid>1168449</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91a672ba9fb92c023530bf2a96de32d9</srcmd5>
+    <version>0.10.2.post1</version>
+    <time>1730306373</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219470</requestid>
+  </revision>
 </revisionlist>

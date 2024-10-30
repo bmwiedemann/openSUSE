@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigArgParse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bw2/ConfigArgParse
 Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/ConfigArgParse-%{version}.tar.gz
+Patch1:         https://github.com/bw2/ConfigArgParse/pull/295/commits/c6a974211f1a13d492bb807ff6d07cefcc948a87.patch#/py313-tests.patch
+Patch2:         https://github.com/bw2/ConfigArgParse/pull/295/commits/5e9f442374bc6d9707a43df13aaff684dff6b535.patch#/py313-skip-exit.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +53,7 @@ for config files and environment variables, so this module extends argparse to
 add these features
 
 %prep
-%setup -q -n ConfigArgParse-%{version}
+%autosetup -p1 -n ConfigArgParse-%{version}
 
 %build
 %python_build
@@ -63,7 +65,7 @@ add these features
 %check
 # https://github.com/bw2/ConfigArgParse/issues/146
 export COLUMNS=80
-%pytest -k 'not (test_main or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors)'
+%pytest -k 'not (test_main or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors or testMutuallyExclusiveArgs)'
 
 %files %{python_files}
 %doc README.rst

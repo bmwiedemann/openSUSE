@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:03:24 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.9.6:
+  * Building infrastrucutre updates, Cmake and meson
+  * Major bugfixes
+  * Parse large floats as infinity
+  * Fix parser tokens bug and out-of-bound read
+
+-------------------------------------------------------------------
 Wed Mar  8 12:03:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

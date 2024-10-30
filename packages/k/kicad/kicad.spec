@@ -28,6 +28,8 @@ License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.com/kicad/code/kicad/-/commit/75c2f17b42fd203f2f255adf16ca6b723631d2f1.patch#/fix_libgit2_API_breakage.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes

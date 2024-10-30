@@ -993,4 +993,30 @@
     <comment></comment>
     <requestid>1202624</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1bce82f72b30e6a2242205dfce158a3e</srcmd5>
+    <version>24.3.1</version>
+    <time>1730306002</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.3.1:
+  * Allow multiple nested inclusions of the same requirements
+    file again.
+  * Deprecate wheel filenames that are not compliant with PEP
+    440.
+  * Detect recursively referencing requirements files and help
+    users identify the source.
+  * Support for PEP 730 iOS wheels.
+  * Display a better error message when an already installed
+    package has an invalid requirement.
+  * Ignore PIP_TARGET and pip.conf global.target when preparing a
+    build environment.
+  * Restore support for macOS 10.12 and older (via truststore).
+  * Allow installing pip in editable mode in a virtual
+    environment on Windows.
+  * Upgrade certifi to 2024.8.30
+  * Upgrade distlib to 0.3.9
+  * Upgrade truststore to 0.10.0
+  * Upgrade urllib3 to 1.26.20</comment>
+    <requestid>1219342</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:54:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Covered the unreachable code path in
+    multidict._multidict_base._abc_itemsview_register() with
+    typing -- by :user:`skinnyBat`. Related issues and pull
+    requests on GitHub: :issue:`928`.
+  * Added support for Python 3.13 -- by :user:`bdraco`. Related
+    issues and pull requests on GitHub: :issue:`1002`.
+  * Removed Python 3.7 support -- by :user:`bdraco`. Related
+    issues and pull requests on GitHub: :issue:`997`.
+  * Added tests to have full code coverage of the
+    multidict._multidict_base._viewbaseset_richcmp() function --
+    by :user:`skinnyBat`. Related issues and pull requests on
+    GitHub: :issue:`928`.
+  * The deprecated ::set-output workflow command has been
+    replaced by the $GITHUB_OUTPUT environment variable in the
+    GitHub Actions CI/CD workflow definition. Related issues and
+    pull requests on GitHub: :issue:`940`.
+  * codecov-action has been temporarily downgraded to v3 in the
+    GitHub Actions CI/CD workflow definitions in order to fix
+    uploading coverage to Codecov. See this issue for more
+    details. Related issues and pull requests on GitHub:
+    :issue:`941`.
+  * In the GitHub Actions CI/CD workflow definition, the Get pip
+    cache dir step has been fixed for Windows runners by adding
+    shell: bash. See actions/runner#2224 for more details.
+    Related issues and pull requests on GitHub: :issue:`942`.
+  * Interpolation of the pip cache keys has been fixed by adding
+    missing $ syntax in the GitHub Actions CI/CD workflow
+    definition. Related issues and pull requests on GitHub:
+    :issue:`943`.
+
+-------------------------------------------------------------------
 Thu Mar  7 10:03:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.0.5 (bsc#1221014):

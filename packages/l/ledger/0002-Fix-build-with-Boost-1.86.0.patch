@@ -1,0 +1,68 @@
+From f6750ed89b46926d1f0859f3b25d18ed62ac219e Mon Sep 17 00:00:00 2001
+From: dbear496 <70439542+dbear496@users.noreply.github.com>
+Date: Mon, 9 Sep 2024 23:42:52 -0400
+Subject: [PATCH] update to Boost 1.86.0
+
+fixes #2378
+---
+ src/filters.cc |  4 ++--
+ src/utils.h    | 12 ++++++------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/filters.cc b/src/filters.cc
+index b5b7fb19f..eb397232d 100644
+--- a/src/filters.cc
++++ b/src/filters.cc
+@@ -238,7 +238,7 @@ void anonymize_posts::render_commodity(amount_t& amt)
+ void anonymize_posts::operator()(post_t& post)
+ {
+ 	boost::uuids::detail::sha1  sha;
+-  unsigned int message_digest[5];
++  unsigned char message_digest[20];
+   bool         copy_xact_details = false;
+ 
+   if (last_xact != post.xact) {
+@@ -1269,7 +1269,7 @@ void budget_posts::report_budget_items(const date_t& date)
+     foreach (pending_posts_list::iterator& i, posts_to_erase)
+       pending_posts.erase(i);
+   }
+-  
++
+   if (pending_posts.size() == 0)
+     return;
+ 
+diff --git a/src/utils.h b/src/utils.h
+index bc05ff4f9..09dd09939 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -578,14 +578,14 @@ inline int peek_next_nonws(std::istream& in) {
+     *_p = '\0';                                         \
+   }
+ 
+-inline string to_hex(unsigned int * message_digest, const int len = 1)
++inline string to_hex(unsigned char * message_digest, const int len = 4)
+ {
+   std::ostringstream buf;
+ 
+-  for(int i = 0; i < 5 ; i++) {
+-    buf.width(8);
++  for(int i = 0; i < 20 ; i++) {
++    buf.width(2);
+     buf.fill('0');
+-    buf << std::hex << message_digest[i];
++    buf << std::hex << (int)message_digest[i];
+     if (i + 1 >= len)
+       break;                    // only output the first LEN dwords
+   }
+@@ -598,9 +598,9 @@ inline string sha1sum(const string& str)
+ 
+   sha.process_bytes(str.c_str(), str.length());
+ 
+-  unsigned int message_digest[5];
++  unsigned char message_digest[20];
+   sha.get_digest(message_digest);
+-  return to_hex(message_digest, 5);
++  return to_hex(message_digest, 20);
+ }
+ 
+ extern const string version;

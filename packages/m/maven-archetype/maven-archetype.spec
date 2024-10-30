@@ -17,14 +17,14 @@
 
 
 Name:           maven-archetype
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Maven project templating toolkit
 License:        Apache-2.0
 URL:            https://maven.apache.org/archetype/
 Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
 Patch1:         0001-Avoid-reliance-on-groovy.patch
-Patch2:         reproducible-from-environment.patch
+Patch2:         0002-reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip

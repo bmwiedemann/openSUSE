@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 30 19:19:00 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- do not build docs, not compatible with Sphinx in Factory
+- remove shebangs from non-executable files
+
+-------------------------------------------------------------------
 Sun Apr  9 12:27:04 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - initial package for version 0.8.1.

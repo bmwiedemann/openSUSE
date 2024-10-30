@@ -224,4 +224,14 @@
     and report back!</comment>
     <requestid>1217963</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>be5d8dfaef34e43e1869d87bcaff43a9</srcmd5>
+    <version>3.3.6</version>
+    <time>1730306311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.6:
+  * Prevent timeouts on large differences by not doing any
+    refinement on the large sections.</comment>
+    <requestid>1219357</requestid>
+  </revision>
 </revisionlist>

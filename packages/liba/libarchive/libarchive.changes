@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 17 08:41:56 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.7.7:
+  * gzip: prevent a hang when processing a malformed gzip inside a gzip
+  * tar: don't crash on truncated tar archives
+  * tar: fix two leaks in tar header parsing
+  * 7-zip: read/write symlink paths as UTF-8
+  * cpio: exit with an error code if an entry could not be extracted
+  * rar5: report encrypted entries
+  * tar: fix truncation of entry pathnames in specific archives
+
+-------------------------------------------------------------------
 Fri Sep 27 19:15:54 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.7.6:

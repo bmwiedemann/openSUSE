@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 17:34:53 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add upstream change to fix build failure with boost 1.86:
+  * 0002-Fix-build-with-Boost-1.86.0.patch
+
+-------------------------------------------------------------------
 Thu May 23 16:33:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix build failure with boost 1.85:

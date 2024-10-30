@@ -19,7 +19,6 @@
 #!BuildTag: opensuse/bci/golang:oldstable
 #!BuildTag: opensuse/bci/golang:%%golang_version%%-2.%RELEASE%
 #!BuildTag: opensuse/bci/golang:%%golang_version%%
-#!BuildTag: opensuse/bci/golang:1.22-2.%RELEASE%
 #!BuildTag: opensuse/bci/golang:1.22
 
 FROM opensuse/tumbleweed:latest

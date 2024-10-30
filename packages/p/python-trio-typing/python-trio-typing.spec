@@ -21,19 +21,21 @@ Name:           python-trio-typing
 Version:        0.10.0
 Release:        0
 Summary:        Static type checking support for Trio and related projects
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trio-typing
 Source:         https://files.pythonhosted.org/packages/source/t/trio-typing/trio-typing-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+## https://github.com/python-trio/trio-typing/pull/97
+Patch0:         support-mypy-1.11.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.2}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module trio >= 0.16.0}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}

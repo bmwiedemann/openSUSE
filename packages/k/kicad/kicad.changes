@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 13:50:00 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with libgit2 >= 1.8.3, a previous API break was
+  reverted, add:
+  * fix_libgit2_API_breakage.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 15:40:07 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 8.0.6:

@@ -27,7 +27,7 @@
 
 %define         pkgname matrix-synapse
 Name:           %{pkgname}-test
-Version:        1.117.0
+Version:        1.118.0
 Release:        0
 Summary:        Test package for %{pkgname}
 License:        AGPL-3.0-or-later

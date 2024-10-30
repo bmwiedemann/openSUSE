@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 17 17:56:09 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add Requires: plasma6-workspace-wallpapers to better follow
+  upstream
+
+-------------------------------------------------------------------
+Wed Oct  2 12:33:23 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Enahnce supplements that were so far triggering on grub2 to also
+  trigger on grub2-common.
+- grub2-common is a replacement for grub2
+
+-------------------------------------------------------------------
+Mon Jul  8 14:37:41 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Change Requires: purpose to kf6-purpose
+- Change Requires: qqc2-desktop-style to kf6-qqc2-desktop-style
+  * purpose and qqc2-desktop-style are provided by packages based
+    on KF5
+
+-------------------------------------------------------------------
 Wed Jun 19 22:43:46 UTC 2024 - Martin Hansen <mh306602@gmail.com>
 
 - Added Requires: ocean-sound-theme6

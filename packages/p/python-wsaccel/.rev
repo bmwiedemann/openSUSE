@@ -38,4 +38,13 @@
 - drop fix-encoding.patch: obsolete</comment>
     <requestid>1132844</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eebe500f141a0c06b3b99a0e17c1e434</srcmd5>
+    <version>0.6.7</version>
+    <time>1730306216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.7:
+  * Support Python 3.13</comment>
+    <requestid>1219219</requestid>
+  </revision>
 </revisionlist>

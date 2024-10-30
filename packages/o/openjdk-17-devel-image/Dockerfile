@@ -17,7 +17,6 @@
 #!ExclusiveArch: aarch64 x86_64 ppc64le s390x
 #!BuildTag: opensuse/bci/openjdk-devel:%%java_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/openjdk-devel:%%java_version%%
-#!BuildTag: opensuse/bci/openjdk-devel:17-%RELEASE%
 #!BuildTag: opensuse/bci/openjdk-devel:17
 
 FROM opensuse/bci/openjdk:17

@@ -72,4 +72,12 @@
     <comment>fix build on sle15 and sle12</comment>
     <requestid>1205333</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>289a244e5d2ecafee187a031d84a871f</srcmd5>
+    <version>2.28</version>
+    <time>1730306225</time>
+    <user>dimstar_suse</user>
+    <comment>try to satisfy legaldb</comment>
+    <requestid>1219567</requestid>
+  </revision>
 </revisionlist>

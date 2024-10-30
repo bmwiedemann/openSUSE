@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:40:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.9.1:
+  * treq has vendored its dependency on the multipart library to
+    avoid import conflicts with python-multipart; it should now
+    be installable alongside that library.
+  * treq now ships type annotations.
+  * The new :mod:`treq.cookies` module provides helper functions
+    for working with http.cookiejar.Cookie and CookieJar objects.
+  * Python 3.13 is now supported.
+  * :mod:`treq.content.text_content()` no longer generates
+    deprecation warnings due to use of the cgi module.
+  * Mixing the json argument with files or data now raises
+    TypeError.
+  * Passing non-string (str or bytes) values as part of a dict to
+    the headers argument now results in a TypeError, as does
+    passing any collection other than a dict or Headers instance.
+  * Support for Python 3.7 and PyPy 3.8, which have reached end
+    of support, has been dropped.
+
+-------------------------------------------------------------------
 Mon Nov 27 18:41:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.11.0:

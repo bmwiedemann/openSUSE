@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:19:25 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.8.2
+
+  This is the last version that supports Python 3.6 and 3.7.
+
+  * Compatibility for Python 3.12 and 3.13
+  * evolution: stop wrongly flagging unrelated part of a split as divergent
+  * histedit: create state and acquire locks earlier
+  * copytracing: fix a bug in an edge 
+    case in metadata.compute_all_files_changes
+  * rhg: ignore readonly FS error when saving dirstate
+  * merge: sort filemap only if requested by the caller
+  * windows: implement `util.cachestat` to fix numerous dirstate problems
+  * subrepo: propagate non-default path on outgoing
+  * import: fix erroneous comparison of str with bytes
+  * largefiles: fix check that ensures that --all-largefiles is only 
+    used locally
+  * profiling: improve 3.12 error message for calling lsprof twice
+  * profiling: use "stat" profiler to profile individual request
+  * module-policy: ignore empty module policy
+  * relnotes: skip the test if the source repository is not readable
+  * wireprototypes: fix exception handling code with a bad pytype suppression
+  * Many more type fixes and improvements
+  * Improvements to the test suite
+-------------------------------------------------------------------
 Thu Sep 12 18:42:18 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Use existing python RPM macros instead of custom ones.

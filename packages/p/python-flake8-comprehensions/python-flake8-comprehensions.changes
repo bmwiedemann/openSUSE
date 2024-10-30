@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:40:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+
+-------------------------------------------------------------------
 Wed Aug 14 15:15:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python on sle15

@@ -345,4 +345,14 @@
 - Switch to autosetup macro.</comment>
     <requestid>1201909</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f9d9a354844f4f3119a1a7d80a3af0f4</srcmd5>
+    <version>1.9.1</version>
+    <time>1730305789</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  * Add `3.13` to the list of available Python versions (#747).
+- drop support-newer-pythons.patch (upstream)</comment>
+    <requestid>1218891</requestid>
+  </revision>
 </revisionlist>

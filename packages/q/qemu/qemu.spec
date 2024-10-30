@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -262,7 +262,6 @@ Suggests:       qemu-block-iscsi
 Suggests:       qemu-block-ssh
 Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
-Suggests:       qemu-lang
 Suggests:       qemu-microvm
 Suggests:       qemu-skiboot
 Suggests:       qemu-vhost-user-gpu
@@ -313,6 +312,8 @@ Suggests:       qemu-extra
 %{generic_qemu_description}
 
 This package acts as an umbrella package to the other QEMU sub-packages.
+
+%lang_package
 
 %files
 %if %{kvm_available}
@@ -888,17 +889,17 @@ done
 
 # Upstream provides services for qemu-pr-helper. So far, we've not needed
 # them, so let's continue not to ship them for now. If that changes, just
-# uncomment these lines (and the ones in the %file pr-helper section)
-#install -m 0644 contrib/systemd/qemu-pr-helper.service %{buildroot}%{_unitdir}
-#install -m 0644 contrib/systemd/qemu-pr-helper.socket %{buildroot}%{_unitdir}
+# uncomment these lines (and the ones in the %%file pr-helper section)
+#install -m 0644 contrib/systemd/qemu-pr-helper.service %%{buildroot}%%{_unitdir}
+#install -m 0644 contrib/systemd/qemu-pr-helper.socket %%{buildroot}%%{_unitdir}
 
 %if 0%{with vmsr_helper}
 echo ""
 # Upstream provides services for qemu-vmsr-helper. So far, we've not needed
 # them, so let's continue not to ship them for now. If that changes, just
-# uncomment these lines (and the ones in the %file vmsr-helper section)
-#install -m 0644 contrib/systemd/qemu-vmsr-helper.service %{buildroot}%{_unitdir}
-#install -m 0644 contrib/systemd/qemu-vmsr-helper.socket %{buildroot}%{_unitdir}
+# uncomment these lines (and the ones in the %%file vmsr-helper section)
+#install -m 0644 contrib/systemd/qemu-vmsr-helper.service %%{buildroot}%%{_unitdir}
+#install -m 0644 contrib/systemd/qemu-vmsr-helper.socket %%{buildroot}%%{_unitdir}
 %endif
 
 %suse_update_desktop_file qemu
@@ -1209,15 +1210,6 @@ popular QEMU packages which are dedicated to a single architecture.)
 %_datadir/%name/petalogix-s3adsp1800.dtb
 %_datadir/%name/QEMU,cgthree.bin
 %_datadir/%name/QEMU,tcx.bin
-
-%package lang
-Summary:        Translations for QEMU
-Group:          System/Emulators/PC
-
-%description lang
-This package contains a few language translations, particularly for the
-graphical user interface components that come with QEMU. The bulk of strings
-in QEMU are not localized.
 
 %files lang -f %blddir/%name.lang
 
@@ -1579,8 +1571,8 @@ This package provides a helper utility for SCSI persistent reservations.
 
 %files pr-helper
 %_bindir/qemu-pr-helper
-#%{_unitdir}/qemu-pr-helper.service
-#%{_unitdir}/qemu-pr-helper.socket
+#%%{_unitdir}/qemu-pr-helper.service
+#%%{_unitdir}/qemu-pr-helper.socket
 %_mandir/man8/qemu-pr-helper.8.gz
 
 %if 0%{with vmsr_helper}
@@ -1593,8 +1585,8 @@ This package provides a helper utility for letting VMs access the RAPL (Running 
 
 %files vmsr-helper
 %_bindir/qemu-vmsr-helper
-#%{_unitdir}/qemu-vmsr-helper.service
-#%{_unitdir}/qemu-vmsr-helper.socket
+#%%{_unitdir}/qemu-vmsr-helper.service
+#%%{_unitdir}/qemu-vmsr-helper.socket
 %endif
 
 %package tools
@@ -1862,7 +1854,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.1.0%{sbver}
+Version:        9.1.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1883,7 +1875,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.1.0%{sbver}
+Version:        9.1.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1909,7 +1901,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

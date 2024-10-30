@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-redhatopenshift
-Version:        1.5.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Red Hat Openshift Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-redhatopenshift/azure-mgmt-redhatopenshift-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_redhatopenshift/azure_mgmt_redhatopenshift-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -52,10 +51,9 @@ This is the Microsoft Azure Red Hat Openshift Management Client Library.
 This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8.
 
 %prep
-%setup -q -n azure-mgmt-redhatopenshift-%{version}
+%setup -q -n azure_mgmt_redhatopenshift-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-redhatopenshift-%{version}
 %pyproject_wheel
 
 %install
@@ -70,7 +68,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/mgmt/redhatopenshift
 %{python_sitelib}/azure_mgmt_redhatopenshift-*.dist-info
 

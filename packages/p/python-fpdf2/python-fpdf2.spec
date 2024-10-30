@@ -23,32 +23,34 @@ Release:        0
 Summary:        Simple & fast PDF generation for Python
 License:        LGPL-3.0-or-later
 URL:            https://py-pdf.github.io/fpdf2/
-Source:         https://github.com/py-pdf/fpdf2/archive/refs/tags/%{version}.tar.gz#/fpdf2-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# The _service download the source and repack without some ttf files
+# that has non-commercial license. boo#1232452
+Source:         fpdf2-%{version}.tar.xz
+BuildRequires:  %{python_module Pillow >= 6.2.2}
+BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module fonttools >= 4.34.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module Pillow >= 6.2.2}
-BuildRequires:  %{python_module fonttools >= 4.34.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module camelot-py} 
-BuildRequires:  %{python_module tabula-py} 
-BuildRequires:  %{python_module opencv} 
-BuildRequires:  %{python_module qrcode}
-BuildRequires:  %{python_module ghostscript}
+BuildRequires:  %{python_module camelot-py}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module uharfbuzz}
 BuildRequires:  %{python_module endesive}
+BuildRequires:  %{python_module ghostscript}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module opencv}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module qrcode}
+BuildRequires:  %{python_module tabula-py}
+BuildRequires:  %{python_module uharfbuzz}
 BuildRequires:  java
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-defusedxml
 Requires:       python-Pillow >= 6.2.2
+Requires:       python-defusedxml
 Requires:       python-fonttools >= 4.34.0
 BuildArch:      noarch
 %python_subpackages
@@ -67,7 +69,10 @@ Simple & fast PDF generation for Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -s -k 'not (test_png_url or test_bidi_conformance or test_bidi_character or test_page_background or test_insert_jpg_jpxdecode)'
+donttest="test_png_url or test_bidi_conformance or test_bidi_character or test_page_background or test_insert_jpg_jpxdecode"
+# Requires non-commercial licensed file SBL_Hbrw.ttf
+donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_text_with_parentheses"
+%pytest -s -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 06:47:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Using obs_scm service to download from repository
+  without some files to do not distribute CC-noncomercial licensed
+  ttf. boo#1232452
+
+-------------------------------------------------------------------
 Fri Sep  6 14:26:52 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
 - Add missing requirements. 

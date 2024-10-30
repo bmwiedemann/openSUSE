@@ -24,7 +24,7 @@ Group:          Amusements/Games/3D/Shoot
 License:        GPL-2.0-or-later
 URL:            https://github.com/atsb/Doom64EX-Plus
 Source0:        %{name}-%{version}.tar.gz
-Patch:          fix-user-dir.patch
+Patch0:         fix-user-dir.patch
 BuildRequires:  gcc
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fluidsynth)
@@ -46,7 +46,7 @@ additional modding features.
 Doom64EX is a reverse-engineering project aimed to recreate
 Doom64 as close as possible with additional modding features.
 
-You must place file DOOM.WAD (case-sensitive) from the Steam or GOG version
+You must place file DOOM64.WAD (case-sensitive) from the Steam or GOG version
 of Doom 64 into either folder %datafilesdir or ~/.local/share/doom64ex-plus
 
 %prep

@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        1.28
+Version:        1.29
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -114,6 +114,7 @@ rm -v %{buildroot}%{_bindir}/code_cov_*
 %{_datadir}/igt-gpu-tools/
 %{_libdir}/libigt.so.0
 %{_libdir}/libi915_perf.so.1.5
+%{_libdir}/libxe_oa.so.1.5
 %{_mandir}/man1/intel_*
 %doc %{_datadir}/gtk-doc/html/igt-gpu-tools/
 
@@ -123,5 +124,8 @@ rm -v %{buildroot}%{_bindir}/code_cov_*
 %{_libdir}/pkgconfig/i915-perf.pc
 %{_libdir}/pkgconfig/intel-gen4asm.pc
 %{_includedir}/i915-perf/
+%{_includedir}/xe-oa/
+%{_libdir}/libxe_oa.so
+%{_libdir}/pkgconfig/xe-oa.pc
 
 %changelog

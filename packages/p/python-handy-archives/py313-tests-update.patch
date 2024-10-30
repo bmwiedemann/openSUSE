@@ -1,0 +1,117 @@
+From 18b4319972210d7b4512bb3431c2746708ff8be5 Mon Sep 17 00:00:00 2001
+From: Dominic Davis-Foster <dominic@davis-foster.co.uk>
+Date: Tue, 26 Mar 2024 15:41:01 +0000
+Subject: [PATCH] Update tests for Python 3.13
+
+---
+ tests/test_tarfile.py | 47 ++++++++++++++++++++++++++++++++++---------
+ tests/test_zipfile.py |  6 ++++--
+ 2 files changed, 41 insertions(+), 12 deletions(-)
+
+diff --git a/tests/test_tarfile.py b/tests/test_tarfile.py
+index e4d3214..910d3a7 100644
+--- a/tests/test_tarfile.py
++++ b/tests/test_tarfile.py
+@@ -55,7 +55,8 @@ def sha256sum(data):
+ 	return sha256(data).hexdigest()
+ 
+ 
+-tarname = findfile("testtar.tar")
++findfile_subdir = "archivetestdata" if sys.version_info >= (3, 13) else None
++tarname = findfile("testtar.tar", subdir=findfile_subdir)
+ sha256_regtype = ("e09e4bc8b3c9d9177e77256353b36c159f5f040531bbd4b024a8f9b9196c71ce")
+ sha256_sparse = ("4f05a776071146756345ceee937b33fc5644f5a96b9780d1c7d6a32cdf164d7b")
+ 
+@@ -319,18 +320,44 @@ def test_list_verbose(self):
+ 		# accessories if verbose flag is being used
+ 		# ...
+ 		# ?rw-r--r-- tarfile/tarfile     7011 2003-01-06 07:19:43 ustar/conttype
+-		# ?rw-r--r-- tarfile/tarfile     7011 2003-01-06 07:19:43 ustar/regtype
++		# -rw-r--r-- tarfile/tarfile     7011 2003-01-06 07:19:43 ustar/regtype
++		# drwxr-xr-x tarfile/tarfile        0 2003-01-05 15:19:43 ustar/dirtype/
+ 		# ...
+-		assert re.search((
+-				br'\?rw-r--r-- tarfile/tarfile\s+7011 '
+-				br'\d{4}-\d\d-\d\d\s+\d\d:\d\d:\d\d '
+-				br'ustar/\w+type ?\r?\n'
+-				) * 2,
+-							out)
++
++		if sys.version_info >= (3, 13):
++			# Array of values to modify the regex below:
++			#  ((file_type, file_permissions, file_length), ...)
++			type_perm_lengths = (
++					(br'\?', b'rw-r--r--', b'7011'),
++					(b'-', b'rw-r--r--', b'7011'),
++					(b'd', b'rwxr-xr-x', b'0'),
++					(b'd', b'rwxr-xr-x', b'255'),
++					(br'\?', b'rw-r--r--', b'0'),
++					(b'l', b'rwxrwxrwx', b'0'),
++					(b'b', b'rw-rw----', b'3,0'),
++					(b'c', b'rw-rw-rw-', b'1,3'),
++					(b'p', b'rw-r--r--', b'0'),
++					)
++			search_pattern_elems = []
++			for tp, perm, ln in type_perm_lengths:
++				search_pattern_elems.append(tp)
++				search_pattern_elems.append(br'%s tarfile/tarfile\s+%s ' % (perm, ln))
++				search_pattern_elems.append(br'\d{4}-\d\d-\d\d\s+\d\d:\d\d:\d\d ustar/\w+type[/>\sa-z-]*\n')
++			re_search_pattern = b''.join(search_pattern_elems)
++
++		else:
++			re_search_pattern = (
++					br'\?rw-r--r-- tarfile/tarfile\s+7011 '
++					br'\d{4}-\d\d-\d\d\s+\d\d:\d\d:\d\d '
++					br'ustar/\w+type ?\r?\n'
++					) * 2
++
++		assert re.search(re_search_pattern, out)
++
+ 		# Make sure it prints the source of link with verbose flag
+ 		assert b'ustar/symtype -> regtype' in out
+ 		assert b'./ustar/linktest2/symtype -> ../linktest1/regtype' in out
+-		assert b'./ustar/linktest2/lnktype link to ' b'./ustar/linktest1/regtype' in out
++		assert b'./ustar/linktest2/lnktype link to ./ustar/linktest1/regtype' in out
+ 		assert b'gnu' + (b'/123' * 125) + b'/longlink link to gnu' + (b'/123' * 125) + b'/longname' in out
+ 		assert b'pax' + (b'/123' * 125) + b'/longlink link to pax' + (b'/123' * 125) + b'/longname' in out
+ 
+@@ -494,7 +521,7 @@ def test_premature_end_of_archive(self, tmp_pathplus: PathPlus):
+ 	def test_length_zero_header(self):
+ 		# bpo-39017 (CVE-2019-20907): reading a zero-length header should fail with an exception
+ 		with pytest.raises(tarfile.ReadError, match="file could not be opened successfully"):
+-			with TarFile.open(findfile("recursion.tar")):
++			with TarFile.open(findfile("recursion.tar", subdir=findfile_subdir)):
+ 				pass
+ 
+ 
+diff --git a/tests/test_zipfile.py b/tests/test_zipfile.py
+index b245453..f2e528f 100644
+--- a/tests/test_zipfile.py
++++ b/tests/test_zipfile.py
+@@ -51,6 +51,8 @@
+ 		("ziptest2dir/ziptest3dir/ziptest4dir/_ziptest3", "6y7u8i9o0p"),
+ 		]
+ 
++findfile_subdir = "archivetestdata" if sys.version_info >= (3, 13) else None
++
+ 
+ @pytest.fixture()
+ def testfn(tmp_pathplus: PathPlus):
+@@ -1509,7 +1511,7 @@ def test_unsupported_version(self):
+ 	@requires_zlib()
+ 	def test_read_unicode_filenames(self):
+ 		# bug #10801
+-		fname = findfile("zip_cp437_header.zip")
++		fname = findfile("zip_cp437_header.zip", subdir=findfile_subdir)
+ 		with ZipFile(fname) as zipfp:
+ 			for name in zipfp.namelist():
+ 				zipfp.open(name).close()
+@@ -2413,7 +2415,7 @@ def test_write_while_reading(self, tmp_pathplus: PathPlus):
+ class TestWithDirectory:
+ 
+ 	def test_extract_dir(self, tmp_pathplus: PathPlus):
+-		with ZipFile(findfile("zipdir.zip")) as zipf:
++		with ZipFile(findfile("zipdir.zip", subdir=findfile_subdir)) as zipf:
+ 			zipf.extractall(tmp_pathplus / TESTFN2)
+ 		assert os.path.isdir(tmp_pathplus / TESTFN2 / 'a')
+ 		assert os.path.isdir(tmp_pathplus / TESTFN2 / 'a' / 'b')

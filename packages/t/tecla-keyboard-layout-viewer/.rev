@@ -43,4 +43,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205490</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>05c40530792b08071c15f553cbfbd1d6</srcmd5>
+    <version>47.0</version>
+    <time>1730305784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1218862</requestid>
+  </revision>
 </revisionlist>

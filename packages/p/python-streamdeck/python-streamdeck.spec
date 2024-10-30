@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamdeck
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-streamdeck
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Library to control Elgato StreamDeck devices
 License:        MIT

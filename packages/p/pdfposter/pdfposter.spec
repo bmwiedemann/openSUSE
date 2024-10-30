@@ -1,7 +1,7 @@
 #
 # spec file for package pdfposter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,13 +56,10 @@ HTML Documentation and examples for %{name}.
 
 %prep
 %setup -q -n pdfposter-v%{version}
+sed -i '1{/\/usr\/bin/d;}' pdftools/pdfposter/__init__.py pdftools/pdfposter/cmd.py
 
 %build
 %python3_build
-pushd docs
-PYTHONPATH=.. make html
-rm _build/html/.buildinfo
-popd
 
 %install
 %python3_install
@@ -79,6 +76,6 @@ PYTHONPATH=. pytest -vv test/unit test/functional
 %{_bindir}/pdfposter
 
 %files doc
-%doc examples docs/_build/html/
+%doc examples docs
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 10 10:10:10 UTC 2024 - olaf@aepfle.de
+
+- Remove unused x264 conditional
+- Use GCC13 in Leap15, to follow compiler used for Qt6
+
+-------------------------------------------------------------------
 Mon Sep 16 10:53:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 24.09.13:

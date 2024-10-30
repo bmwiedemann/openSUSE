@@ -18,7 +18,7 @@
 
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0

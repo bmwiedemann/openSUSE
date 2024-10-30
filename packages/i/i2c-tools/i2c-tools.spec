@@ -33,6 +33,7 @@ Requires:       udev
 URL:            https://i2c.wiki.kernel.org/index.php/I2C_Tools
 Source0:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{version}.tar.sign
+Source2:        i2c-tools.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools

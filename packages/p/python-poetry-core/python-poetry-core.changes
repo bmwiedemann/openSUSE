@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 22:59:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Add `3.13` to the list of available Python versions (#747).
+- drop support-newer-pythons.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Sep 19 04:14:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-newer-pythons.patch:

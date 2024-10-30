@@ -158,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.117.0
+Version:        1.118.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -180,7 +180,7 @@ Patch1:         bump-dependencies.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
-BuildRequires:  %{use_python}-base >= 3.8
+BuildRequires:  %{use_python}-base >= 3.11
 BuildRequires:  %{use_python}-pip
 BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools

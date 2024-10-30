@@ -35,6 +35,8 @@ Source:         https://github.com/domdfcoding/handy-archives/archive/refs/tags/
 Patch0:         ignore-tarfile-deprecation-warning.patch
 # PATCH-FIX-UPSTREAM: 0001-Use-reason-instead-of-msg-for-pytest.skip.patch gh#domdfcoding/handy-archives#35
 Patch1:         0001-Use-reason-instead-of-msg-for-pytest.skip.patch
+Patch2:         https://github.com/domdfcoding/handy-archives/commit/18b4319972210d7b4512bb3431c2746708ff8be5.patch#/py313-tests-update.patch
+Patch3:         https://github.com/domdfcoding/handy-archives/commit/85526bff5b6b46aa77dd361ba031291fcb21b195.patch#/py313-mode-repr.patch
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
 %if %{with test}

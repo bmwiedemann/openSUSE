@@ -30,7 +30,7 @@ Source2:        %{name}-rpmlintrc
 Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}

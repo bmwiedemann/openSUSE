@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 18:57:28 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Add support for SIMCom A7672E-FASE modem.
+  * Add support for Quectel EG916Q-GL modem.
+
+-------------------------------------------------------------------
 Sat Aug 24 20:03:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10

@@ -36,12 +36,6 @@ Name:           openssl-ibmca-engine
 Name:           openssl-ibmca-provider
 %endif
 
-%if "%{flavor}" == "openssl1_1"
-%global sslengcnf %{_sysconfdir}/ssl/engines1.1.d
-%global sslengdef %{_sysconfdir}/ssl/engdef1.1.d
-Name:           openssl1_1-ibmca
-%endif
-
 Version:        2.4.1
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
@@ -56,28 +50,14 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 ###
-%if "%{flavor}" != "openssl1_1"
 BuildRequires:  libica-devel >= 4.0.0
 BuildRequires:  libica-tools >= 4.0.0
 BuildRequires:  libopenssl-3-devel
 BuildRequires:  libopenssl3
 Requires:       libica4 >= 4.0.0
 Requires:       libopenssl3
-%else
-BuildRequires:  libica-openssl1_1-devel
-BuildRequires:  libica-openssl1_1-tools
-BuildRequires:  libopenssl-1_1-devel
-BuildRequires:  libopenssl1_1
-BuildRequires:  openssl
-Requires:       libica4-openssl1_1
-Requires:       libopenssl1_1
-%endif
 ###
 ExclusiveArch:  s390x
-
-%if "%{flavor}" == "openssl1_1"
-Patch001:       openssl1-rename-libica-files.patch
-%endif
 
 ###
 Patch10:        openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-is-in-FIPS-mode.patch
@@ -116,11 +96,6 @@ export CPPFLAGS="%{optflags}"
   --libdir=%{modulesdir}
 %endif
 
-%if "%{flavor}" == "openssl1_1"
-%configure \
-  --libdir=%{enginesdir}
-%endif
-
 %make_build
 
 %install
@@ -131,10 +106,6 @@ sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/engine/openssl.cnf.sa
 %endif
 
 %make_install
-
-%if "%{flavor}" == "openssl1_1"
-rm -f %{buildroot}/%{enginesdir}/ibmca-provider.*
-%endif
 
 %if "%{flavor}" == ""
 mkdir -p %{buildroot}/%{enginesdir}
@@ -205,11 +176,6 @@ fi
 %endif
 %if "%{flavor}" == "engine"
     %doc src/engine/ibmca-engine-opensslconfig
-    %doc src/engine/openssl.cnf.sample
-    %{enginesdir}/ibmca.*
-    %{_mandir}/man5/ibmca.5%{?ext_man}
-%endif
-%if "%{flavor}" == "openssl1_1"
     %doc src/engine/openssl.cnf.sample
     %{enginesdir}/ibmca.*
     %{_mandir}/man5/ibmca.5%{?ext_man}

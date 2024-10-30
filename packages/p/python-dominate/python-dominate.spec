@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dominate
 Version:        2.9.1
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Python library for creating and manipulating HTML documents
 License:        GPL-3.0-only
 URL:            https://github.com/Knio/dominate/
 Source:         https://files.pythonhosted.org/packages/source/d/dominate/dominate-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#Knio/dominate#202
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.7.3}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +43,7 @@ which eliminates the need to learn another template language, and
 lets you take advantage of the more powerful features of Python.
 
 %prep
-%setup -q -n dominate-%{version}
+%autosetup -p1 -n dominate-%{version}
 
 %build
 %pyproject_wheel

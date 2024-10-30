@@ -1,7 +1,7 @@
 #
 # spec file for package neofetch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,12 +23,8 @@ Release:        0
 Summary:        CLI system information tool written in BASH
 License:        MIT
 Group:          Productivity/Text/Utilities
-URL:            https://github.com/dylanaraps/neofetch
-Source0:        https://github.com/dylanaraps/%{name}/archive/%{version}.tar.gz
-# PATCH-FIX-SUSE Fix E: env-script-interpreter
-Patch0:         fix-shebang.patch
-# PATCH-FIX-UPSTREAM -- bmwiedemann - Smoothen Tumbleweed Logo
-Patch1:         https://github.com/dylanaraps/neofetch/pull/2342.patch
+URL:            https://github.com/openSUSE/neofetch
+Source0:        https://github.com/openSUSE/%{name}/archive/%{version}.tar.gz
 Recommends:     maim
 Recommends:     w3m-inline-image
 BuildArch:      noarch

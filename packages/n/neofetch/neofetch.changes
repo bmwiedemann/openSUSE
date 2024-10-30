@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:39:54 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update release to 7.1.0-1
+  * Start using gh#openSUSE/neofetch fork
+  * Refresh Leap and TW distro logos
+  * Drop 2342.patch and fix-shebang.patch as they're already
+    included in our fork.
+
+-------------------------------------------------------------------
 Wed May  8 01:11:58 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update 2342.patch to add Slowroll logo

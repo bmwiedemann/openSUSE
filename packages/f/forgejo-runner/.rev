@@ -17,4 +17,12 @@
   * update vendored dependencies (forwarded request 1195864 from rrahl0)</comment>
     <requestid>1195865</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a21e5870fb780b18f76d3940852fc4c2</srcmd5>
+    <version>4.0.0</version>
+    <time>1730306034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219028</requestid>
+  </revision>
 </revisionlist>

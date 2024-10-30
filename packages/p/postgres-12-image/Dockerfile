@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%-%RELEASE%
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%
-#!BuildTag: opensuse/postgres:12-%RELEASE%
 #!BuildTag: opensuse/postgres:12
 #!BuildTag: opensuse/postgres:%%pg_minor_version%%
 

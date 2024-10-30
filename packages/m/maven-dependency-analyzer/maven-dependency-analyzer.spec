@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-analyzer
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        Maven dependency analyzer
 License:        Apache-2.0

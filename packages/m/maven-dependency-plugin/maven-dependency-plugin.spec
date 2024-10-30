@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-plugin
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Plugin to manipulate, copy and unpack local and remote artifacts
 License:        Apache-2.0

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gTTS
-Version:        2.5.1
+Version:        2.5.3
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT

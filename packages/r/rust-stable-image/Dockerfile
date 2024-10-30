@@ -19,7 +19,6 @@
 #!BuildTag: opensuse/bci/rust:stable
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
-#!BuildTag: opensuse/bci/rust:1.81-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:1.81
 #!BuildTag: opensuse/bci/rust:latest
 

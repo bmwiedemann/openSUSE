@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:10:41 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 0.5.1
+  * Don't generate _scmsync.obsinfo outside of OBS source server 
+    import use case (eg. no more for osc co)
+  * Enforce python 3.11 requirement
+  * Fix export of _scmsync.obsinfo in project mode
+  * Fix submodule detection
+  * EXPERIMENTAL: support multiple package subdirs via _subdirs
+                  file. This syntax will change!
+                  (not documented on purpose therefore atm)
+  * Using git credential manager
+  * Report some errors as transient, so that OBS can re-try
+
+-------------------------------------------------------------------
 Tue May  7 09:39:21 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 0.5.0

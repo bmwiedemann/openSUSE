@@ -1,0 +1,18 @@
+Subject: Fix a header path
+From: Antonio Larrosa <alarrosa@suse.com>
+
+We install H5Cpp.h in /usr/include so we need to fix the include line.
+
+Index: kst-plot/src/datasources/hdf5/hdf5.h
+===================================================================
+--- kst-plot.orig/src/datasources/hdf5/hdf5.h
++++ kst-plot/src/datasources/hdf5/hdf5.h
+@@ -18,7 +18,7 @@
+ #include <dataplugin.h>
+ 
+ #include <QFileInfo>
+-#include <hdf5/serial/H5Cpp.h>
++#include <H5Cpp.h>
+ #include <exception>
+ 
+ #include "debug.h"

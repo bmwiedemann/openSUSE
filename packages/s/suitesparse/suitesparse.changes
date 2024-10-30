@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 26 06:34:09 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to version 7.8.3
+  * ParU 1.0.0: first stable release. No change since last version
+- update to version 7.8.2
+  * LAGraph 1.1.4: bug fix for LAGraph_MMWrite when matrix is dense
+- update to version 7.8.1
+  * GraphBLAS 9.3.1: bug fix in creation of JIT package
+- update to version 7.8.0
+  * ParU 0.2.0: many changes; nearing a stable release.
+  * CHOLMOD 5.3.0: added cholmod_query, and #define's in cholmod.h,
+    to query which Modules and features have been configured.
+- update to version 7.7.0
+  * SPEX 3.1.0: major revision to API, new methods.
+    Added SPEX_Cholesky, SPEX_Backslash, and python interface.
+  * Example 1.7.0: revised for change in SPEX API
+  * GraphBLAS 9.1.0: revised defn of C11 complex type, bug fix
+  * CXSparse 4.4.0: revise malloc/calloc/realloc/free wrappers
+- update to version 7.6.1
+  * GraphBLAS 9.0.3: performance bug fix (JIT kernels were not
+    compiled with OpenMP, since v8.3.1), and fix to Makefile
+    ("make static")
+- update to version 7.6.0
+  * CHOLMOD 5.2.0: bug fix (restore ABI compatibility with 5.0.x,
+    i.e., 5.2.0 is ABI incompatible to 5.1.x)
+  * SPQR 4.3.2: remove unused parameters
+
+-------------------------------------------------------------------
 Fri Feb  9 10:10:31 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup specfile

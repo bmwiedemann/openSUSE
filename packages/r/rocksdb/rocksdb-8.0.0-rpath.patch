@@ -1,7 +1,7 @@
-Index: rocksdb-9.6.1/tools/CMakeLists.txt
+Index: rocksdb-9.7.3/tools/CMakeLists.txt
 ===================================================================
---- rocksdb-9.6.1.orig/tools/CMakeLists.txt
-+++ rocksdb-9.6.1/tools/CMakeLists.txt
+--- rocksdb-9.7.3.orig/tools/CMakeLists.txt
++++ rocksdb-9.7.3/tools/CMakeLists.txt
 @@ -1,3 +1,5 @@
 +set(CMAKE_SKIP_BUILD_RPATH TRUE)
 +

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:00:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.21.2:
+  * feat(rules): create Octopus Deploy api key (#1602)
+  * fix(aws-access-token): only match if correct length (#1584)
+  * fix(config): ignore jquery/swagger w/o version (#1607)
+  * feat: add new GitLab tokens (#1560)
+  * feat(generic-api-key): tune false positives (#1606)
+  * Create .gitleaks.toml (#1605)
+  * feat(curl): tweak tps and fps (#1603)
+  * feat(config): ignore swagger-ui assets (#1604)
+  * feat(generic-api-key): exclude keywords (#1587)
+  * feat(okta): bump entropy to 4 (#1599)
+  * feat: update global allowlist (#1597)
+  * refactor(allowlist): deduplicate commits & keywords (#1596)
+  * feat(config): ignore jquery static assets (#1595)
+  * More rule fixes (#1586)
+  * chore: log skipped symlinks (#1591)
+  * feat: match left side of identifier (#1585)
+  * what secrets?
+  * fix(rules): add entropy (#1580)
+  * feat(aws): add entropy & allowlist (#1582)
+  * feat(rules): add 1password token (#1583)
+  * feat(config): add curl header rule (#1576)
+
+-------------------------------------------------------------------
 Fri Oct 18 12:19:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.21.1:

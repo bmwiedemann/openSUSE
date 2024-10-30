@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:38:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.4:
+  * remove dependency on requests-2.27.0
+  * ignore jinja CVE by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1481
+  * Remove passing exception as args to super in APIError by
+    @mike-flowers-airbnb in
+    https://github.com/burnash/gspread/pull/1477
+  * better handler API error parsing. by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1510
+  * Add test on receiving an invalid JSON in the APIError
+    exception handler. by @lavigne958 in
+    https://github.com/burnash/gspread/pull/1512
+
+-------------------------------------------------------------------
 Sun Jun  2 10:36:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.2:

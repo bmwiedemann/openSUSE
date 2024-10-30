@@ -57,12 +57,12 @@ Adds SQLAlchemy support to your Flask application.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -W "ignore::ResourceWarning"
 
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/flask_sqlalchemy
-%{python_sitelib}/flask_sqlalchemy-%{version}*-info
+%{python_sitelib}/flask_sqlalchemy-%{version}.dist-info
 
 %changelog

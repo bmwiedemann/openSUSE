@@ -483,4 +483,12 @@
   * Fix issue with handling ConnectedAccessPoint signal. (forwarded request 1205729 from alois)</comment>
     <requestid>1205761</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>014f0b936b5f8bc3ab3cfa49f4de2ed2</srcmd5>
+    <version>3.0</version>
+    <time>1730306091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219094</requestid>
+  </revision>
 </revisionlist>

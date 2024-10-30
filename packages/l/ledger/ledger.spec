@@ -1,7 +1,7 @@
 #
 # spec file for package ledger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/ledger/ledger
 Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-Boost-1.85.0.patch
+# PATCH-FIX-UPSTREAM - 0002-Fix-build-with-Boost-1.86.0.patch - https://github.com/ledger/ledger/issues/2378
+Patch1:         0002-Fix-build-with-Boost-1.86.0.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel >= 1.72.0

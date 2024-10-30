@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:35:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.86:
+  * removed debug comments
+  * :bookmark: Bump the Helm chart version to 52.3.86
+  * Revert "Set resource guard to true by default."
+
+-------------------------------------------------------------------
+Wed Oct 30 08:10:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.85:
+  * :bookmark: Bump the Helm chart version to 52.3.85
+  * fixed an issue that was added for debugging purposes
+  * Set resource guard to true by default.
+  * When compiling helm values from golang config structs, ignore
+    local ~/.kubeshark/config.yaml file if one exists
+  * Fixed the double action for commands: console and scripts, when
+    running the proxyRunner
+  * Revert "🐛 Prevent `hub` host-not-found nginx upstream error in
+    `front` (#1628)" (#1633)
+  * Removed the `timestamp>now()` fro the `globalFilter` flag.
+  * remove `tcp` and `udp` dissectors by default
+  * changed `tap.stopped` to `false` by default
+  * scripting improvements
+  * Add networkpolicies permissions (#1631)
+
+-------------------------------------------------------------------
 Fri Oct 18 06:02:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.84:

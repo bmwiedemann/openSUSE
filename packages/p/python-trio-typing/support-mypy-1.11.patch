@@ -1,0 +1,52 @@
+From 5e00c376a93fa5a1b0213ae1f9d7cc3f717bb922 Mon Sep 17 00:00:00 2001
+From: Redoubts <Redoubts@users.noreply.github.com>
+Date: Wed, 25 Sep 2024 21:21:33 -0400
+Subject: [PATCH] Update plugin.py
+
+Use TypeVarId for mypy 1.11
+Don't use is_noreturn
+---
+ trio_typing/plugin.py | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/trio_typing/plugin.py b/trio_typing/plugin.py
+index 31f4887..76ccbbf 100644
+--- a/trio_typing/plugin.py
++++ b/trio_typing/plugin.py
+@@ -22,6 +22,7 @@
+     Overloaded,
+     TypeVarLikeType,
+     TypeVarType,
++    TypeVarId,
+     Instance,
+     UnionType,
+     UninhabitedType,
+@@ -134,9 +135,7 @@ def decode_agen_types_from_return_type(
+         return (
+             yield_type,
+             send_type,
+-            UninhabitedType(
+-                is_noreturn=True, line=ctx.context.line, column=ctx.context.column
+-            ),
++            UninhabitedType(line=ctx.context.line, column=ctx.context.column),
+         )
+     else:
+         return (
+@@ -464,7 +463,7 @@ def start_soon(
+                     TypeVarType(
+                         "__T{}".format(arg_idx),
+                         "__T{}".format(arg_idx),
+-                        -len(fn_type.variables) - arg_idx - 1,
++                        TypeVarId(-len(fn_type.variables) - arg_idx - 1),
+                         [],
+                         ctx.api.named_generic_type("builtins.object", []),
+                         line=ctx.context.line,
+@@ -477,7 +476,7 @@ def start_soon(
+                     TypeVarType(
+                         "__T{}".format(arg_idx),
+                         "__T{}".format(arg_idx),
+-                        -len(fn_type.variables) - arg_idx - 1,
++                        TypeVarId(-len(fn_type.variables) - arg_idx - 1),
+                         [],
+                         ctx.api.named_generic_type("builtins.object", []),
+                         line=ctx.context.line,

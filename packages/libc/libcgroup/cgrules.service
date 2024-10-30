@@ -1,0 +1,18 @@
+[Unit]
+Description=Control Group rules service
+ 
+# The service should be able to start as soon as possible,
+# before any 'normal' services:
+DefaultDependencies=no
+Conflicts=shutdown.target
+Before=basic.target shutdown.target
+After=cgconfig.service
+ConditionPathExists=/etc/cgconfig.conf
+ConditionPathExists=/etc/cgrules.conf
+ 
+[Service]
+Type=simple
+ExecStart=/usr/sbin/cgrulesengd -n -g cgred -f -
+ 
+[Install]
+WantedBy=sysinit.target

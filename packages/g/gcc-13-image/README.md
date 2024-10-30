@@ -59,10 +59,9 @@ using `zypper`. This includes the following:
 ### Available compiler frontends
 
 The GNU Compiler Collections supports a wide range of frontends. The container
-image ships the C and C++ frontends available as `gcc` and `g++`
+image ships the C,  C++  and fortran frontends available as `gcc`, `g++` and `gfortran`
 respectively. The following additional frontends can be installed from the
 repository:
-- `gcc13-fortran` for Fortran support
 - `gcc13-ada` for the Ada frontend (GNAT)
 - `gcc13-go` for the Go frontend
 - `gcc13-objc` and `gcc13-obj-c++` for the Objective C and Objective C++

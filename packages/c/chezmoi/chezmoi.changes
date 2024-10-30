@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Oct 29 19:07:18 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.53.1:
+  - Fixes
+    * fix: Fix panic in commands that do not use persistent state
+  - Documentation updates
+    * docs: Add note that .chezmoiexternal files can be ignored
+
+-------------------------------------------------------------------
+Tue Oct 29 19:04:46 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.53.0:
+  - Features
+    * feat: Extend squote template func to handle more types
+    * feat: Extend quote and quoteList template funcs to handle more types
+    * feat: Add common --parent-dirs/-P flag
+  - Fixes
+    * fix: Persist results of calls to GitHub API
+    * fix: Fix completion for 'archive --format'
+    * fix: Fix includeTemplate template func search path in init
+    * fix: Accept only supported values to 'unmanaged --path-style'
+    * fix: Fix incorrect config template change warnings
+    * fix: Fix panic when --keep-going is set
+    * fix: Fix panic when running chattr on externals
+    * fix: Use builtin age when encryption is unset
+  - Documentation updates
+    * docs: Replace common flags descriptions with snippets
+    * docs: Fill reference title page
+    * docs: Update "how scripts work" section
+    * docs: Update shell completions section
+    * docs: Improvements for command flags description
+    * docs: Automatically check that all flags are documented
+    * docs: Split "Special file and directories"
+    * docs: Split docs for commands into sections
+    * docs: Split docs into sections for age, secret and state
+    * docs: Improve description for command arguments
+    * docs: Add notes where to place 'encryption' setting
+
+-------------------------------------------------------------------
 Mon Sep 30 17:07:24 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.52.3:

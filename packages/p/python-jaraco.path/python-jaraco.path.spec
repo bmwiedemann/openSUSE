@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.path
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.path
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Miscellaneous path functions for jaraco packages
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.path
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.path/jaraco.path-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.path/jaraco_path-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -40,7 +40,7 @@ jaraco.path provides cross platform hidden file detection
 and other miscellaneous path helper functions.
 
 %prep
-%setup -q -n jaraco.path-%{version}
+%setup -q -n jaraco_path-%{version}
 
 %build
 %pyproject_wheel

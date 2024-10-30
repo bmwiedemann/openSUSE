@@ -402,4 +402,17 @@ Other changes:
   * Declare support for Python 3.13</comment>
     <requestid>1181038</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>433b4b8ad3ec9024ddb50f908a3b1120</srcmd5>
+    <version>24.9.0</version>
+    <time>1730306186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.9.0:
+  * Don't emit Y053 for long strings inside `Literal` slices or
+  * metadata strings inside `Annotated` slices.
+  * `flake8-pyi` no longer supports being run using Python 3.8.
+    As a result, it not longer depends on the third-party
+   `ast_decompiler` package.</comment>
+    <requestid>1219188</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gp-libs
-Version:        0.0.7
+Version:        0.0.8
 Release:        0
 Summary:        Internal utilities for projects following git-pull python package spec
 License:        MIT

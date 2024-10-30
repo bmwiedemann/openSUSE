@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:27:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.5.0
+  * Bug
+    + MENFORCER-503: requireOS cause NPE with Maven 3.9.7
+  * New Feature
+    + MENFORCER-500: New rule: Maven coordinates must match pattern
+  * Improvement
+    + MENFORCER-490: Properly declare dependencies
+    + MENFORCER-494: Allow banning dynamic versions before computing
+      the final dependency tree
+
+-------------------------------------------------------------------
 Wed Sep 27 11:39:13 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.4.1

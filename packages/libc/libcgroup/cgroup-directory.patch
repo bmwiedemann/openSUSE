@@ -1,0 +1,281 @@
+From: Daniel Baumann <mail@daniel-baumann.ch>
+Date: Thu, 19 Sep 2013 08:33:12 +0200
+Subject: Updating cgroup directory
+
+Last-Update: 2014-07-26
+---
+ README                  |   2 +-
+ doc/man/cgconfig.conf.5 | 124 ++++++++++++++++++++++++------------------------
+ samples/cgconfig.conf   |   4 +-
+ 3 files changed, 65 insertions(+), 65 deletions(-)
+
+diff --git a/README b/README
+index 54e0f7b..d7b7bc0 100644
+--- a/README
++++ b/README
+@@ -16,7 +16,7 @@ this file will be managed by root.
+ Basic idea is that to begin with provide facility to implement rules
+ based on uid and gid. So a hierarchy might look like as follows.
+ 
+-                        /mnt/cgroup
++                        /sys/fs/cgroup
+                         |       |
+                       gid1      gid2
+                      |   |
+diff --git a/doc/man/cgconfig.conf.5 b/doc/man/cgconfig.conf.5
+index be80e4e..5ebd879 100644
+--- a/doc/man/cgconfig.conf.5
++++ b/doc/man/cgconfig.conf.5
+@@ -267,8 +267,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpu;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpu;
+ .RE
+ }
+ .fi
+@@ -279,8 +279,8 @@ inside. It corresponds to the following
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /mnt/cgroups/cpu
++mkdir /sys/fs/cgroup/cpu
++mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ .fi
+ .RE
+ 
+@@ -292,9 +292,9 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-"name=scheduler" = /mnt/cgroups/cpu;
+-"name=noctrl" = /mnt/cgroups/noctrl;
++cpu = /sys/fs/cgroup/cpu;
++"name=scheduler" = /sys/fs/cgroup/cpu;
++"name=noctrl" = /sys/fs/cgroup/noctrl;
+ .RE
+ }
+ 
+@@ -322,14 +322,14 @@ following operations:
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mount -t cgroup -o cpu,name=scheduler cpu /mnt/cgroups/cpu
+-mount -t cgroup -o none,name=noctrl none /mnt/cgroups/noctrl
++mkdir /sys/fs/cgroup/cpu
++mount -t cgroup -o cpu,name=scheduler cpu /sys/fs/cgroup/cpu
++mount -t cgroup -o none,name=noctrl none /sys/fs/cgroup/noctrl
+ 
+-mkdir /mnt/cgroups/cpu/daemons
+-echo 1000 > /mnt/cgroups/cpu/daemons/www/cpu.shares
++mkdir /sys/fs/cgroup/cpu/daemons
++echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
+ 
+-mkdir /mnt/cgroups/noctrl/tests
++mkdir /sys/fs/cgroup/noctrl/tests
+ .fi
+ .RE
+ 
+@@ -359,8 +359,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpu;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpu;
+ .RE
+ }
+ 
+@@ -431,18 +431,18 @@ which are little bit trickier to emulate
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /mnt/cgroups/cpu
++mkdir /sys/fs/cgroup/cpu
++mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ 
+-mkdir /mnt/cgroups/cpu/daemons
++mkdir /sys/fs/cgroup/cpu/daemons
+ 
+-mkdir /mnt/cgroups/cpu/daemons/www
+-chown root:root /mnt/cgroups/cpu/daemons/www/*
+-chown root:webmaster /mnt/cgroups/cpu/daemons/www/tasks
+-echo 1000 > /mnt/cgroups/cpu/daemons/www/cpu.shares
++mkdir /sys/fs/cgroup/cpu/daemons/www
++chown root:root /sys/fs/cgroup/cpu/daemons/www/*
++chown root:webmaster /sys/fs/cgroup/cpu/daemons/www/tasks
++echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
+ 
+  # + chmod the files so the result looks like:
+- # ls -la /mnt/cgroups/cpu/daemons/www/
++ # ls -la /sys/fs/cgroup/cpu/daemons/www/
+  # admin.dperm = 755:
+  # drwxr-xr-x. 2 root webmaster 0 Jun 16 11:51 .
+  #
+@@ -461,13 +461,13 @@ echo 1000 > /mnt/cgroups/cpu/daemons/www
+  # -rw-rw----. 1 root webmaster 0 Jun 16 11:51 tasks
+ 
+ 
+-mkdir /mnt/cgroups/cpu/daemons/ftp
+-chown root:root /mnt/cgroups/cpu/daemons/ftp/*
+-chown root:ftpmaster /mnt/cgroups/cpu/daemons/ftp/tasks
+-echo 500 > /mnt/cgroups/cpu/daemons/ftp/cpu.shares
++mkdir /sys/fs/cgroup/cpu/daemons/ftp
++chown root:root /sys/fs/cgroup/cpu/daemons/ftp/*
++chown root:ftpmaster /sys/fs/cgroup/cpu/daemons/ftp/tasks
++echo 500 > /sys/fs/cgroup/cpu/daemons/ftp/cpu.shares
+ 
+  # + chmod the files so the result looks like:
+- # ls -la /mnt/cgroups/cpu/daemons/ftp/
++ # ls -la /sys/fs/cgroup/cpu/daemons/ftp/
+  # admin.dperm = 755:
+  # drwxr-xr-x. 2 root ftpmaster 0 Jun 16 11:51 .
+  #
+@@ -515,8 +515,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpuacct;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpuacct;
+ .RE
+ }
+ 
+@@ -535,13 +535,13 @@ It corresponds to the following operatio
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mkdir /mnt/cgroups/cpuacct
+-mount -t cgroup -o cpu cpu /mnt/cgroups/cpu
+-mount -t cgroup -o cpuacct cpuacct /mnt/cgroups/cpuacct
++mkdir /sys/fs/cgroup/cpu
++mkdir /sys/fs/cgroup/cpuacct
++mount -t cgroup -o cpu cpu /sys/fs/cgroup/cpu
++mount -t cgroup -o cpuacct cpuacct /sys/fs/cgroup/cpuacct
+ 
+-mkdir /mnt/cgroups/cpu/daemons
+-mkdir /mnt/cgroups/cpuacct/daemons
++mkdir /sys/fs/cgroup/cpu/daemons
++mkdir /sys/fs/cgroup/cpuacct/daemons
+ .fi
+ .RE
+ 
+@@ -562,8 +562,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpuacct;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpuacct;
+ .RE
+ }
+ 
+@@ -602,17 +602,17 @@ It corresponds to the following operatio
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mkdir /mnt/cgroups/cpuacct
+-mount -t cgroup -o cpu cpu /mnt/cgroups/cpu
+-mount -t cgroup -o cpuacct cpuacct /mnt/cgroups/cpuacct
+-
+-mkdir /mnt/cgroups/cpuacct/daemons
+-mkdir /mnt/cgroups/cpu/daemons
+-mkdir /mnt/cgroups/cpu/daemons/www
+-echo 1000 > /mnt/cgroups/cpu/daemons/www/cpu.shares
+-mkdir /mnt/cgroups/cpu/daemons/ftp
+-echo 500 > /mnt/cgroups/cpu/daemons/ftp/cpu.shares
++mkdir /sys/fs/cgroup/cpu
++mkdir /sys/fs/cgroup/cpuacct
++mount -t cgroup -o cpu cpu /sys/fs/cgroup/cpu
++mount -t cgroup -o cpuacct cpuacct /sys/fs/cgroup/cpuacct
++
++mkdir /sys/fs/cgroup/cpuacct/daemons
++mkdir /sys/fs/cgroup/cpu/daemons
++mkdir /sys/fs/cgroup/cpu/daemons/www
++echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
++mkdir /sys/fs/cgroup/cpu/daemons/ftp
++echo 500 > /sys/fs/cgroup/cpu/daemons/ftp/cpu.shares
+ .fi
+ .RE
+ Group
+@@ -643,8 +643,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpu;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpu;
+ .RE
+ }
+ 
+@@ -701,15 +701,15 @@ It corresponds to the following operatio
+ .LP
+ .RS
+ .nf
+-mkdir /mnt/cgroups/cpu
+-mount -t cgroup -o cpu,cpuacct cpu /mnt/cgroups/cpu
++mkdir /sys/fs/cgroup/cpu
++mount -t cgroup -o cpu,cpuacct cpu /sys/fs/cgroup/cpu
+ 
+-chown root:operator /mnt/cgroups/cpu/*
+-chown root:operator /mnt/cgroups/cpu/tasks
++chown root:operator /sys/fs/cgroup/cpu/*
++chown root:operator /sys/fs/cgroup/cpu/tasks
+ 
+-mkdir /mnt/cgroups/cpu/daemons
+-chown root:operator /mnt/cgroups/cpu/daemons/*
+-chown root:daemonmaster /mnt/cgroups/cpu/daemons/tasks
++mkdir /sys/fs/cgroup/cpu/daemons
++chown root:operator /sys/fs/cgroup/cpu/daemons/*
++chown root:daemonmaster /sys/fs/cgroup/cpu/daemons/tasks
+ .fi
+ .RE
+ 
+@@ -736,8 +736,8 @@ The configuration file:
+ .nf
+ mount {
+ .RS
+-cpu = /mnt/cgroups/cpu;
+-cpuacct = /mnt/cgroups/cpuacct;
++cpu = /sys/fs/cgroup/cpu;
++cpuacct = /sys/fs/cgroup/cpuacct;
+ .RE
+ }
+ 
+@@ -759,8 +759,8 @@ cpu {
+ .RE
+ }
+ 
+-mkdir /mnt/cgroups/cpu/daemons
+-mkdir /mnt/cgroups/cpuacct/daemons
++mkdir /sys/fs/cgroup/cpu/daemons
++mkdir /sys/fs/cgroup/cpuacct/daemons
+ .fi
+ .RE
+ 
+diff --git a/samples/config/cgconfig.conf b/samples/config/cgconfig.conf
+index de77e4b..5e668a8 100644
+--- a/samples/config/cgconfig.conf
++++ b/samples/config/cgconfig.conf
+@@ -37,6 +37,6 @@
+ #}
+ #
+ #mount {
+-#	cpu = /mnt/cgroups/cpu;
+-#	cpuacct = /mnt/cgroups/cpuacct;
++#	cpu = /sys/fs/cgroup/cpu;
++#	cpuacct = /sys/fs/cgroup/cpuacct;
+ #}

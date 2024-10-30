@@ -194,4 +194,12 @@
   * Allow trio `0.25.*` series in package dependancies.</comment>
     <requestid>1164272</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7c6912e72f8237a1b3ee62cf544c89eb</srcmd5>
+    <version>1.0.6</version>
+    <time>1730305981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219100</requestid>
+  </revision>
 </revisionlist>

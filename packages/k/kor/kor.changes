@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 29 14:37:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.6:
+  * chore: Pre release helm bump 0.5.6 (#374)
+  * chore: upgrade golang version to 1.23 (#373)
+  * refactor: PDB label selection (#366)
+  * chore(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0
+    (#369)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.31.1 to
+    0.31.2 (#368)
+  * docs: Reference exceptions in CONTRIBUTING.md (#367)
+  * chore(deps): bump github.com/prometheus/client_golang (#365)
+  * Feat: Discover unused RoleBindings (#362)
+  * chore(deps): bump github.com/prometheus/client_golang (#361)
+  * When user can't list return empty (#360)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.31.0 to
+    0.31.1 (#358)
+  * chore(deps): bump github.com/prometheus/client_golang (#355)
+  * chore(deps): bump github.com/prometheus/client_golang (#353)
+
+-------------------------------------------------------------------
 Wed Aug 21 06:33:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.5:

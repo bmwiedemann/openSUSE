@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Oct 24 00:35:05 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Conflicts python-proton-vpn-connection
+- Conflicts python-proton-vpn-killswitch
+- Conflicts python-proton-vpn-logger
+- Update to 0.35.5
+  * Fix regression sending errors to sentry.
+  * Fix to rpm package.spec, added accidentally removed Obsoletes statement.
+  * Send all errors to sentry, but swallow api errors.
+  * Merge logger package into this one.
+  * Fix refregresion (logout user on 401 API error).
+  * Catch and send LA errors to sentry.
+  * Import refreshers from app.
+  * Ensure there is a way to disable IPv6.
+  * Change IPv6 default value and move out of the features dict.
+  * Properly configure OpenVPN with IPv6 value.
+  * Pass IPv6 value.
+  * Put changes to fetching with timestamp (If-Modified-Since), behind a feature flag.
+  * Fixes support for 'If-Modified-Since', expiration times.
+  * Fixes support for 'If-Modified-Since' header in server list requests.
+  * This adds support for 'If-Modified-Since' header in server list requests.
+  * Make sure features cant be request after connection as well.
+  * Expose property in VPNConnection to know if features can be applied on active connections.
+  * Tier 0 level users can't control the features they have. So don't send any feature requests for them.
+  * Fix crash after logout
+  * Get rid of VPNConnectorWrapper.
+  * Enable wireguard feature flag by default.
+  * Handle UnicodeDecodeError when loading persisted VPN connection.
+  * Update connection features via local agent if available.
+  * Disconnect and notify the user when the maximum number of sessions is reached.
+  * Handle ExpiredCertificate events.
+  * Update default feature flags and update feature flags interface.
+  * Update credentials in the background
+  * Fix crash initializing VPN connector.
+  * Update VPN credentials when an active VPN connection is found at startup.
+  * Merge connection and kill switch packages into this one.
+  * Improve testing to capture when default value is being passed.
+  * Implement and expose feature flags.
+  * Move local agent management into wireguard backend.
+  * Send CPU architecture following semver's specs.
+  * Switched over to async local agent api.
+  * Attempt to use external local agent package, otherwise fallback to existent one.
+  * Add the architecture in the appversion field for ProtonSSO.
+  * Switch over to automatically generated changelogs for debian and rpm.
+  * Fix sentry error sanitization crash.
+  * Fix certificate duration regression.
+  * Send wireguard certificate to server via local agent.
+  * Increase certificate duration.
+  * Refactor of Settings to ensure settings are only saved when they are changed.
+  * Stop raising exceptions when getting wireguard certificate and it is expired.
+
+-------------------------------------------------------------------
 Wed May 22 11:28:37 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 0.24.4

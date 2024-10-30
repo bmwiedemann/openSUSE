@@ -17,4 +17,12 @@
   gh#domdfcoding/handy-archives#35</comment>
     <requestid>1193378</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a32040492d790310ba50125a74a1b3ca</srcmd5>
+    <version>0.2.0</version>
+    <time>1730306006</time>
+    <user>dimstar_suse</user>
+    <comment>- add py313-tests-update.patch, py313-mode-repr.patch</comment>
+    <requestid>1219347</requestid>
+  </revision>
 </revisionlist>

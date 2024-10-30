@@ -57,6 +57,7 @@ A Wayland-native application launcher, similar to rofi's drun mode.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name}
 Requires:       zsh
 
 %description    zsh-completion
@@ -66,8 +67,8 @@ Zsh command-line completion support for %{name}
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name}
 Requires:       fish
-BuildArch:      noarch
 
 %description    fish-completion
 Fish command-line completion support for %{name}.

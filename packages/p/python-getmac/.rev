@@ -89,4 +89,19 @@
 - Add patch cope-with-no-ip6.patch</comment>
     <requestid>1156190</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4bff3f4ca339d50e8340c803b1e4b3b</srcmd5>
+    <version>0.9.5</version>
+    <time>1730306207</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.5:
+  * Fixed macOS arp when MAC has one character sections in
+    specific cases (Fixes issue #92)
+
+- Update to 0.9.4:
+  * `arping` (POSIX) or `SendARP` (Windows) will now *always* be used instead
+  * Added ability to override the detected platform via `--override-platform`
+  Issue deprecation message as a warning in addition to a log message</comment>
+    <requestid>1219203</requestid>
+  </revision>
 </revisionlist>

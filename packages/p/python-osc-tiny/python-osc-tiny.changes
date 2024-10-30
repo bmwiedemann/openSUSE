@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:25:06 UTC 2024 - maintenance-obs-robot <maintenance-automation-team@suse.de>
+
+- Release 0.10.5
+  * Fix: request review - always default to state="new", because OBS considers it a mandatory attribute (fixes #194)
+  * Docs: fix logger name in `quickstart.rst`
+  
+-------------------------------------------------------------------
+Wed Sep 25 07:26:24 UTC 2024 - maintenance-obs-robot <maintenance-automation-team@suse.de>
+
+- Release 0.10.4
+  * osctiny.models.request.Target model: add an optional 'repository' attribute (fixes #183) (#184)
+  * osctiny.models.request.Target model: make the 'package' attribute optional (fixes #185) (#186)
+  * Chore: Updated versions of GH actions (#189)
+
+-------------------------------------------------------------------
 Tue Aug 13 21:44:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Release 0.10.3

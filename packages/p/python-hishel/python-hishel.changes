@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:41:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.33:
+  * Added a Logging section to the documentation.
+  * Don't raise an exception if the `Date` header is not present.
+  * Ignore file not found error when cleaning up a file storage.
+  * Fix `AssertionError` on `client.close()` when use
+    SQLiteStorage.
+  * Fix ignored flags when use `force_cache`.
+
+-------------------------------------------------------------------
 Sun Sep  8 12:59:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.30:

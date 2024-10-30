@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:08:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.11:
+  * build(deps): bump github.com/chainguard-dev/yam in the gomod
+    group
+  * build(deps): bump the actions group with 2 updates
+
+-------------------------------------------------------------------
 Sat Oct 26 08:39:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.10:

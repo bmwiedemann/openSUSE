@@ -106,4 +106,13 @@
     <comment></comment>
     <requestid>1081966</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>dc9499fa4e95a3b90e74b356e1f77b5a</srcmd5>
+    <version>15.0.1</version>
+    <time>1730306231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-313.patch:
+  * No longer use now-removed pipes module.</comment>
+    <requestid>1219237</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Oct 27 14:35:46 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 9.7.3
+  * OPTIONS file to be loaded by remote worker is now preserved so that it does
+    not get purged by the primary host. 
+
+- update to 9.7.2
+  * Fixed a bug for surfacing write unix time: 
+    Iterator::GetProperty("rocksdb.iterator.write-time") for non-L0 files.
+
+- update to 9.7.1
+  * Fix for Several DB option settings could be lost through 
+    GetOptionsFromString(), possibly elsewhere as well.
+  * Fix under counting of allocated memory in the compressed secondary cache 
+  * Skip insertion of compressed blocks in the secondary cache if the 
+    lowest_used_cache_tier DB option is kVolatileTier.
+
+- update to 9.7.0
+  * New Features:
+    + Make Cache a customizable class that can be instantiated by the object 
+      registry.
+   + Add new option prefix_seek_opt_in_only that makes iterators generally safer
+   + Add a new table property "rocksdb.key.largest.seqno" which records the 
+     largest sequence number of all keys in file.
+  * Behavior Changes
+   + Changed the semantics of the BlobDB configuration option 
+     blob_garbage_collection_force_threshold 
+   + Set write_dbid_to_manifest=true by default. This means DB ID will now be 
+     preserved through backups, checkpoints, etc. by default. Also add 
+     write_identity_file option 
+   + In FIFO compaction, compactions for changing file temperature (configured 
+     by option file_temperature_age_thresholds) will compact one file at a time
+   + Support ingesting db generated files using hard link
+   + Add a new file ingestion option IngestExternalFileOptions::link_files 
+     to hard link input files and preserve original files links after ingestion.
+   + DB::Close now untracks files in SstFileManager, making avaialble any space 
+     used by them
+  * Bug Fixes
+   + Fix a bug in CompactRange() where result files may not be compacted in any
+     future compaction.
+   + Fix handling of dynamic change of prefix_extractor with memtable prefix 
+     filter. 
+   + Fix a bug with manual_wal_flush and auto error recovery from WAL failure 
+     that may cause CFs to be inconsistent
+
+-------------------------------------------------------------------
 Thu Sep 12 13:22:35 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 9.6.1:

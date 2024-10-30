@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:35:12 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Adapted the openssl-ibmca package for the openssl-1_1 removal(bsc#1232570)
+- Removed obsolete patch
+  * openssl1-rename-libica-files.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 11:08:46 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches(jsc#PED-10292)

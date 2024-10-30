@@ -18,4 +18,12 @@ This Doom 64 port is well maintained and uses bleeding edge SDL3.</comment>
     <comment>New version 4.0.0.3</comment>
     <requestid>1205953</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>24d6ff75e207745376d134101cb5df29</srcmd5>
+    <version>4.0.0.3</version>
+    <time>1730306394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219488</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,31 @@
+## Path:	System/Management
+## Description:	CGroup Rules Engine configuration
+
+## Type:	string
+## Default:	"/var/log/cgred"
+#
+# The pathname to the log file for CGroup Rules Engine
+#
+LOG_FILE="/var/log/cgred"
+
+## Type:	string
+## Default:	""
+#
+# Use --nodaemon to disable daemon mode.
+# Use --nolog to disable logging.
+#
+CGRED_OPTIONS=""
+
+## Type:	string
+## Default:	""
+#
+# Set owner (user) of cgrulesengd socket.
+#
+SOCKET_USER=""
+
+## Type:	string
+## Default:	""
+#
+# Set owner (group) of cgrulesengd socket.
+#
+SOCKET_GROUP=""

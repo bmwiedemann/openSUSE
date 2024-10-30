@@ -389,4 +389,19 @@
 </comment>
     <requestid>1206005</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d11666954a0e2a8022990e059811483d</srcmd5>
+    <version>3.5.1</version>
+    <time>1730305985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the version 3.5.1:
+  - Restore compatibility with argparse in Python 3.12.7+
+  - Use project.scripts instead of setuptools scripts
+  - Test infrastructure improvements
+- Remove upstreamed patches:
+  - argparse-3_12_7.patch
+- Add _multibuild (to make testing against fully installed package)
+</comment>
+    <requestid>1219176</requestid>
+  </revision>
 </revisionlist>

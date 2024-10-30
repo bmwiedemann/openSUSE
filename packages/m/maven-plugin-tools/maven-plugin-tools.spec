@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-tools
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0

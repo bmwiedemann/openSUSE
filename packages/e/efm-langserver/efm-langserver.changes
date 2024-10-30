@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 25 01:58:12 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.0.53:
+  * update deps
+  * add add lint-after-open
+  * fix-escape-brackets
+  * fix: unescaped brackets in path
+  * docs: add config for VSCode
+
+-------------------------------------------------------------------
 Mon Dec 25 01:40:29 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial spec for efm-langserver 0.0.49

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 18:36:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.8.1
+  * Dependency upgrade
+    + MINVOKER-371: Upgrade to Doxia 2.0.0 GA Stack
+
+-------------------------------------------------------------------
 Wed Oct  2 21:50:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade tu upstream version 3.8.0

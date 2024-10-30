@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 14 09:42:25 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- build with g++-13 on < 1600 (z3 needs c++20)
+
+-------------------------------------------------------------------
 Sat Oct 12 15:35:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 4.13.3:

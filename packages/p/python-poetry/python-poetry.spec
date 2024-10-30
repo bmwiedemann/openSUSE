@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -37,11 +37,11 @@ URL:            https://python-poetry.org/
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.7.0 with %python-poetry-core < 2.0.0}
+BuildRequires:  %{python_module poetry-core >= 1.9.0 with %python-poetry-core < 2.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build >= 1.0.3
-Requires:       python-poetry-core = 1.9.0
+Requires:       python-poetry-core = 1.9.1
 Requires:       python-poetry-plugin-export >= 1.6.0
 # SECTION cachecontrol[filecache]
 Requires:       python-CacheControl >= 0.13
@@ -68,7 +68,7 @@ Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt
 Requires:       python-tomli >= 2.0.1
 %endif
 Requires:       python-trove-classifiers >= 2022.5.19
-Requires:       python-virtualenv >= 20.22
+Requires:       python-virtualenv >= 20.26.6
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

@@ -19,7 +19,7 @@
 %define c_lib   lib%{name}6_0_0
 %define srcname lxqt_wallet
 Name:           lxqt-wallet
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Secure storage of information for LXQt
 License:        BSD-2-Clause

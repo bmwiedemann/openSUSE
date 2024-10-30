@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:25:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.8.0:
+  * Log task id on failure to get last report in time period.
+  * Fix linting with ruff
+  * Fix scan config creation from CERT-Bunds. Replace the
+    deprecated method modify_scan_config
+  * Replace validate_xml_string with parse_xml function 71583c5
+
+-------------------------------------------------------------------
 Mon Apr 15 06:07:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.0:

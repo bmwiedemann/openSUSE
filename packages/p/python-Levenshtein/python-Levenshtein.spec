@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Levenshtein
-Version:        0.26.0
+Version:        0.26.1
 Release:        0
 Summary:        Python extension computing string distances and similarities
 License:        GPL-2.0-or-later

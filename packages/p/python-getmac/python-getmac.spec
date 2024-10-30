@@ -17,7 +17,7 @@
 
 
 Name:           python-getmac
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Module to get MAC addresses of remote hosts and local interfaces
 License:        MIT

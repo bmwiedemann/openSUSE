@@ -17,7 +17,7 @@
 
 
 Name:           python-netCDF4
-Version:        1.7.1.post1
+Version:        1.7.1.post2
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT

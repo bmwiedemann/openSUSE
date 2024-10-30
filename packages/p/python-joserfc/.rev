@@ -37,4 +37,13 @@
   * Deprecate use of string and bytes as key.</comment>
     <requestid>1181243</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db4be29ecf604663c6df05032a2a910c</srcmd5>
+    <version>1.0.0</version>
+    <time>1730306202</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Fix type hints for strict mode.</comment>
+    <requestid>1219199</requestid>
+  </revision>
 </revisionlist>

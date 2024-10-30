@@ -142,4 +142,14 @@
   * Delinting and package refresh.</comment>
     <requestid>1169419</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e1fb66327bb26d3eff539535fbf48de</srcmd5>
+    <version>5.1.0</version>
+    <time>1730305791</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Fully typed RangeMap and avoid complete iterations to find
+    matches</comment>
+    <requestid>1218896</requestid>
+  </revision>
 </revisionlist>

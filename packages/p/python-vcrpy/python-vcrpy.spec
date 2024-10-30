@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vcrpy
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT

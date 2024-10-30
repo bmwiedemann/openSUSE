@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct 30 10:37:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.0:
+  * Officially support Python 3.13
+  * Warn when `max_request_limit` is exceeded
+  * Support WebSockets 0.13.1
+  * Restore support for `[*]` in trusted hosts
+  * Add `PathLike[str]` type hint for `ssl_keyfile`
+  * Improve `ProxyHeadersMiddleware` (#2468) and (#2231):
+  * Fix the host for requests from clients running on the proxy
+    server itself.
+  * Fallback to host that was already set for empty x-forwarded-
+    for headers.
+  * Also allow to specify IP Networks as trusted hosts. This
+    greatly simplifies deployments
+  * on docker swarm/kubernetes, where the reverse proxy might
+    have a dynamic IP.
+  * This includes support for IPv6 Address/Networks.
+  * Don't warn when upgrade is not WebSocket and depedencies are
+    installed
+  * Don't close connection before receiving body on H11
+  * Close connection when `h11` sets client state to `MUST_CLOSE`
+  * Suppress `KeyboardInterrupt` from CLI and programmatic usage
+  * `ClientDisconnect` inherits from `OSError` instead of
+    `IOError`
+  * Add `reason` support to `websocket.disconnect` event
+  * Iterate subprocesses in-place on the process manager
+  * Allow horizontal tabs `	` in response header values
+  * New multiprocess manager
+  * Allow `ConfigParser` or a `io.IO[Any]` on `log_config`
+  * Suppress side-effects of signal propagation
+  * Send `content-length` header on 5xx
+  * Deprecate the `uvicorn.workers` module
+- drop fix-websocket-tests.patch,
+  0001-Stop-using-deprecated-app-shortcut-in-httpx.AsyncCli.patch:
+  upstream
+
+-------------------------------------------------------------------
 Mon Mar 25 20:19:46 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.29.0

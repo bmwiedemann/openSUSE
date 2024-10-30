@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.81
+Version:        1.11.83
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only or GPL-3.0-only
@@ -225,8 +225,7 @@ ln -vs de_DE.json "%{buildroot}%{_datadir}/element/app/lib/i18n/strings/de.json"
 %{_datadir}/element/app/node_modules
 %{_datadir}/element/app/package.json
 %dir %{_datadir}/element/img
-%{_datadir}/element/img/element.ico
-%{_datadir}/element/img/element.png
+%{_datadir}/element/img/*
 
 %{_prefix}/lib/element/
 %config(noreplace) %{_sysconfdir}/element/config.json

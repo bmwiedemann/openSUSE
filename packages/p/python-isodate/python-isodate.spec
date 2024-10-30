@@ -1,7 +1,7 @@
 #
 # spec file for package python-isodate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-isodate
-Version:        0.6.1
+Version:        0.7.2
 Release:        0
 Summary:        An ISO 8601 Date/Time/Duration Parser and Formatter
 License:        BSD-3-Clause
 URL:            https://pypi.org/project/isodate/
 Source:         https://files.pythonhosted.org/packages/source/i/isodate/isodate-%{version}.tar.gz
-# https://github.com/gweis/isodate/commit/07d1602048083415bc22dc72cff152c9c2e0e021
-Patch0:         python-isodate-no-six.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,21 +42,21 @@ mentioned there, then it is treated as non existent, and not as an allowed
 option.
 
 %prep
-%setup -q -n isodate-%{version}
-%autopatch -p1
+%autosetup -p1 -n isodate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v src/
+%pytest
 
 %files %{python_files}
 %doc CHANGES.txt README.rst TODO.txt
-%{python_sitelib}/*
+%{python_sitelib}/isodate
+%{python_sitelib}/isodate-%{version}.dist-info
 
 %changelog

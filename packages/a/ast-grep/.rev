@@ -613,4 +613,22 @@
   * fix(deps): update dependency @babel/core to v7.25.8 cf06185</comment>
     <requestid>1209590</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>591b8d6c95d85f95a2d6926edffc5a8f</srcmd5>
+    <version>0.29.0</version>
+    <time>1730306313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.29.0:
+  * feat: support override severity of unused-suppression #1556
+  * feat: unify configuration reading #1557
+  * feat: unify configuration #1557
+  * refactor: improve file config handling #1553
+  * refactor: revamp configuration file discovering and custom language registration #1553
+  * feat(scan): support context, before/after flags #1549
+  * feat: add RuleOverwrite to override rule severity from CLI #1061
+  * Breaking change: feat: support --config in sg new cfe472f
+  * feat: add rule overwrite impl fb4ac07
+  * fix(deps): update dependency @swc/core to v1.7.36 c11fd89</comment>
+    <requestid>1219358</requestid>
+  </revision>
 </revisionlist>

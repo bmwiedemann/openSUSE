@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:02:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.1:
+  * bump compose-go to version v2.4.2
+
+-------------------------------------------------------------------
+Tue Oct 29 13:59:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.0:
+  * Improvements
+    - Introduce service hooks by @ndeloof (12166)
+    - Introduce generate command as alpha command by @glours
+      (12209)
+    - Add export command by @jarqvi (12120)
+    - Add support for CDI device request using devices by @ndeloof
+      (12184)
+    - Add support for bind recursive by @ndeloof (12210)
+    - Allow usage of -f flag with OCI Compose artifacts by @glours
+      (12220)
+  * Fixes
+    - Append unix-style relative path when computing container
+      target path by @ndeloof (12145)
+    - Wait for dependent service up to delay set by --wait-timeout
+      by @ndeloof (12156)
+    - Check secret source exists, as bind mount would create target
+      by @ndeloof (12151)
+    - After container restart register printer consumer by @jhrotko
+      (12158)
+    - Fix(down): Fix down command if specified services are not
+      running by @idsulik (12164)
+    - Show watch error message and open DD only when w is pressed
+      by @jhrotko (12165)
+    - Fix(push): Fix unexpected EOF on alpha publish by @idsulik
+      (12169)
+    - Fix(convergence): Serialize access to observed state by
+      @anantadwi13 (12150)
+    - Remove feature flag integration with Docker Desktop for
+      ComposeUI and ComposeNav by @jhrotko (12192)
+    - Support Dockerfile-specific ignore-file with watch by
+      @ndeloof (12193)
+    - Add support for raw env_file format by @ndeloof (12179)
+    - Convert GPUs to DeviceRequests with implicit "gpu" capability
+      by @ndeloof (12197)
+    - Improve error message to include expected network label by
+      @divinity76 (12213)
+    - Don't use progress to render restart, which hides logs by
+      @ndeloof (12226)
+    - One-off containers are not indexed, and must be ignored by
+      exec --index command by @ndeloof (12224)
+    - Don't warn about uid/gid not being supported while ... they
+      are by @ndeloof (12232)
+    - Connect to external networks by name by @ndeloof (12234)
+    - Fix push error message typo by @chris-crone (12237)
+    - Fix(dockerignore): Add wildcard support to dockerignore.go by
+      @idsulik (12239)
+  * Internal
+    - Remove bind options when creating a volume type by @jhrotko
+      (12177)
+    - pass device.options to engine by @ndeloof (12183)
+    - Add security policy by @thaJeztah (12194)
+    - Gha: set default permissions to "contents: read" by
+      @thaJeztah (12195)
+    - Desktop: allow this client to be identified via user-agent by
+      @djs55 (12212)
+    - Compose-go clean volume target to avoid ambiguous comparisons
+      by @ndeloof (12208)
+  * Dependencies
+    - Bump docker v27.3.1 by @ndeloof (12178)
+    - Build(deps): bump golang.org/x/sys from 0.25.0 to 0.26.0 by
+      @dependabot (12189)
+    - Bump compose-go to v2.3.0 by @glours (12198)
+    - Bump compose-go to v2.4.0 by @glours (12231)
+    - Bump compose-go to v2.4.1 by @glours (12243)
+    - Build(deps): bump github.com/containerd/containerd from
+      1.7.22 to 1.7.23 by @dependabot (12211)
+    - Bump golang minimal version to 1.22 in go.mod by @glours
+      (12246)
+    - Bump go.uber.org/mock to v0.5.0 and google.golang.org/grpc to
+      v1.67.1 by @glours (12245)
+
+-------------------------------------------------------------------
 Sat Sep 21 17:07:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.7:

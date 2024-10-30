@@ -103,4 +103,12 @@
     <comment>33.2.1</comment>
     <requestid>1180163</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>aabce17a8b2d367d500a0e784156c1ed</srcmd5>
+    <version>33.2.1</version>
+    <time>1730306301</time>
+    <user>dimstar_suse</user>
+    <comment>Add aliases for the failureaccess and listenablefuture</comment>
+    <requestid>1219355</requestid>
+  </revision>
 </revisionlist>

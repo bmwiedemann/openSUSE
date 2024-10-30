@@ -22,8 +22,6 @@ Release:        0
 Summary:        Multi-purpose prompt tool for Wayland
 License:        GPL-3.0-only
 URL:            https://git.sr.ht/~leon_plickat/wayprompt/
-# We use OBS Tar SCM to also pull the git submodules
-# Original source tarball does not have that and is done manually
 Source0:        https://git.sr.ht/~leon_plickat/wayprompt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  fdupes

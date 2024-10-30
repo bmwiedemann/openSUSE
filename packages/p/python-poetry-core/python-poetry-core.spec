@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM gh#python-poetry/poetry-core#758
-Patch0:         support-newer-pythons.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

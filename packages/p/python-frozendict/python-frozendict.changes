@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:35:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.6:
+  * Added pure py wheel for Python 3.13
+  * Now `set`, `setdefault` and `delete` does always a shallow
+    copy, as the C extension, `tuple` and the rest of the world.
+- update to 2.4.5:
+  * Improved speed of `set`, `setdefault` and `delete` for pure
+    py impl, if `frozendict` is hashable
+
+-------------------------------------------------------------------
 Fri May 10 13:28:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.4:

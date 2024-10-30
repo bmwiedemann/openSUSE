@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:17:54 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+ver 3.0:
+  * Fix issue with handling alpha2 code for United Kingdom.
+  * Fix issue with handling empty TX/RX bitrate attributes.
+  * Fix issue with handling RSSI polling fallback workaround.
+  * Fix issue with handling harmless cloned information elements.
+  * Add experimental support for External Authentication feature.
+
+-------------------------------------------------------------------
 Tue Oct  1 07:27:52 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.22

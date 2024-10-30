@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:10:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.1:
+  * Allow multiple nested inclusions of the same requirements
+    file again.
+  * Deprecate wheel filenames that are not compliant with PEP
+    440.
+  * Detect recursively referencing requirements files and help
+    users identify the source.
+  * Support for PEP 730 iOS wheels.
+  * Display a better error message when an already installed
+    package has an invalid requirement.
+  * Ignore PIP_TARGET and pip.conf global.target when preparing a
+    build environment.
+  * Restore support for macOS 10.12 and older (via truststore).
+  * Allow installing pip in editable mode in a virtual
+    environment on Windows.
+  * Upgrade certifi to 2024.8.30
+  * Upgrade distlib to 0.3.9
+  * Upgrade truststore to 0.10.0
+  * Upgrade urllib3 to 1.26.20
+
+-------------------------------------------------------------------
 Mon Sep 23 11:21:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Adapt disable-ssl-context-in-buildenv.patch to make it compatible

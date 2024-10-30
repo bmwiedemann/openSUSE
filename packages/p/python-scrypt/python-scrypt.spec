@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scrypt
-Version:        0.8.24
+Version:        0.8.27
 Release:        0
 Summary:        Bindings for scrypt
 License:        BSD-2-Clause

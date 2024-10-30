@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/bci/kiwi:10.1.16-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:10.1.16
-#!BuildTag: opensuse/bci/kiwi:10.1-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:10.1
 #!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:latest

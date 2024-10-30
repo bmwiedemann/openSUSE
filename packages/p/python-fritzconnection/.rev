@@ -133,4 +133,14 @@
     representing the host-attributes. (#190)</comment>
     <requestid>1138698</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a4dcb3eba5b944f51f744059fac7711c</srcmd5>
+    <version>1.14.0</version>
+    <time>1730306188</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.0:
+  * support added for Python 3.13
+  * New FritzTopology module: represents the mesh-topology graph.</comment>
+    <requestid>1219189</requestid>
+  </revision>
 </revisionlist>

@@ -32,4 +32,20 @@
   * Added support for the StreamDeck Plus.</comment>
     <requestid>1135638</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>657eb2addb46a75184b32d5ed7c2e3c7</srcmd5>
+    <version>0.9.6</version>
+    <time>1730306214</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * Fixed StreamDeck+ returning 10 key states instead of the
+    expected 8.
+  * Fixed StreamDeck+ dial push event not being detected
+    correctly.
+  * Fixed old key states and dial states returned if requested
+    from inside a key or dial callback function.
+  * Added support for FreeBSD platforms.
+  * Added support for the StreamDeck Neo.</comment>
+    <requestid>1219217</requestid>
+  </revision>
 </revisionlist>

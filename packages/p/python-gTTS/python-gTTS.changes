@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:13:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * **langs:** Languages added: `pt-PT` (Portuguese (Portugal)),
+    `yue` (Cantonese); languages modified: `pa` (Punjabi
+    (Gurmukhi)), `pt` (Portuguese (Brazil))
+  * **langs:** Languages added: `am` (Amharic), `cy` (Welsh),
+    `eu` (Basque), `gl` (Galician), `ha` (Hausa), `lt`
+    (Lithuanian), `pa` (Punjabi)
+
+-------------------------------------------------------------------
 Thu Mar 21 07:54:57 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

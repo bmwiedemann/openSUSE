@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 17:25:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.15.1
+  * Dependency upgrade
+    + MSHARED-1432: Bump org.ow2.asm:asm from 9.7 to 9.7.1
+
+-------------------------------------------------------------------
 Tue Oct 15 19:07:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.15.0

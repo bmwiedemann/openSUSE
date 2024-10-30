@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:21:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.1:
+  * add missing mac os wheels
+
+-------------------------------------------------------------------
 Mon Sep 23 12:56:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.0
@@ -138,7 +144,7 @@ Tue May 28 15:13:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Sun Feb  4 21:46:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
-- enable %{?sle15_python_module_pythons} 
+- enable %{?sle15_python_module_pythons}
 
 -------------------------------------------------------------------
 Thu Nov  7 14:53:50 UTC 2019 - Matej Cepl <mcepl@suse.com>
@@ -206,5 +212,5 @@ Thu Jan 26 17:16:00 UTC 2012 - elchevive@opensuse.org
 -------------------------------------------------------------------
 Fri Nov 26 09:39:51 UTC 2010 - cfarrell@novell.com
 
-- initial build. this package is needed to build and use the python wurfl package 
+- initial build. this package is needed to build and use the python wurfl package
 

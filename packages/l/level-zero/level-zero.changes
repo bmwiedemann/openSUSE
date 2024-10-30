@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct  1 03:05:38 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- update to 1.17.45:
+  * Add missing guard around debug message
+  * Switch to monotonically increasing patch numbers
+  * Fix warning by updating min cmake version to 3.5
+  * Add missing guards around debug messages
+  * Fix SysMan driver pointers given no sysman env and no
+    zesInit (#193)
+  * Prevent reinit when zes/ze handles have already been
+    retrieved (#192)
+  * Proper installation rules
+  * Enable testing with ctest
+  * Fix reading updated state of the driver_t for checking 
+    initStatus (#188)
+  * Avoid DDI table reinit if 
+    ZE_ENABLE_LOADER_INTERCEPT=1 (#187)
+  * Update spdlog headers (#186)
+  * Fix handle translation when ddi table fallback (#185)
+  * Split Ze and Zes Drivers and only release 
+    drivers at close (#184)
+  * Fix issues with intercept layer and zesInit/zeInit 
+    given fallback to passthrough (#183)
+  * Fix global teardown of loader handles and check driver
+    status in init_driver (#182)
+  * Add GPU-legacy1 driver to list of known names on Linux
+  * Fix first zeinit to allow for layer checks
+
+-------------------------------------------------------------------
 Sun Aug 18 12:59:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.25:

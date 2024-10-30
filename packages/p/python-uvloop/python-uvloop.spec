@@ -19,7 +19,7 @@
 %define modname uvloop
 %{?sle15_python_module_pythons}
 Name:           python-uvloop
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        An asyncio event loop on top of libuv
 License:        Apache-2.0 AND MIT
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            http://github.com/MagicStack/uvloop
 Source:         https://files.pythonhosted.org/packages/source/u/uvloop/uvloop-%{version}.tar.gz
 Source1:        python-uvloop.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.28 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

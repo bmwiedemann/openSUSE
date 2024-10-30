@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:12:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.6:
+  * Updated --terragrunt-out-dir / --terragrunt-json-out-dir to
+    handle relative paths.
+- Update to version 0.68.5:
+  * Added strict flag for improved performance in dependency
+    processing
+  * You can now enhance performance by setting the environment
+    variable:
+    TERRAGRUNT_STRICT_CONTROL="skip-dependencies-inputs"
+    This will skip input processing for dependencies, leading to
+    faster execution times when running Terragrunt.
+  * Improved CI/CD pipeline to build without Go proxy and detect
+    checksum changes.
+  * Enhanced error messages for invalid strict control flags.
+  * Updated dependencies for better performance and stability.
+  * Refined scaffold documentation.
+  * Fixed panic issue in Sops decryption.
+  * Corrected handling of pseudo-tty commands.
+
+-------------------------------------------------------------------
 Thu Oct 17 19:04:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.4:

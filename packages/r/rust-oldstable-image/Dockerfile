@@ -19,7 +19,6 @@
 #!BuildTag: opensuse/bci/rust:oldstable
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-2.%RELEASE%
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
-#!BuildTag: opensuse/bci/rust:1.80-2.%RELEASE%
 #!BuildTag: opensuse/bci/rust:1.80
 
 FROM opensuse/tumbleweed:latest

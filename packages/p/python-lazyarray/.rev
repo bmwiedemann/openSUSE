@@ -52,4 +52,19 @@
 </comment>
     <requestid>952049</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f88809cf7b34d99c8b03d59a3ab1274</srcmd5>
+    <version>0.6.0</version>
+    <time>1730306213</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Switch from setup.py to pyproject.toml
+  * Add testing for Python 3.11, 3.12, remove testing for
+    3.5-3.7.
+  * Tested with NumPy 2.0, minimum NumPy version tested is now
+    1.20.
+
+- skip python 3.6 (skip scipy)</comment>
+    <requestid>1219209</requestid>
+  </revision>
 </revisionlist>

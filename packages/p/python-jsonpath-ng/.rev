@@ -68,4 +68,28 @@
     <comment></comment>
     <requestid>1145940</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46f822aa37dc398b375e6476ae2be4a4</srcmd5>
+    <version>1.7.0</version>
+    <time>1730306198</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Allow raw numeric values to be used as keys
+  * Add `wherenot`
+  * Added EZRegex pattern for the split extension regex
+  * Added negative and * indecies and quotes to `Split`
+    parameters
+  * Typo: duplicate line removed.
+  * Added `path` extension that exposes datum's path from the
+    jsonpath expression itself.
+  * Remove Python 3.7 support
+  *  Only construct the parse table once
+  * updated test for `jsonpath.py` changes
+  * fix for Updating a json object fails if the value of a key is
+    boolean #73
+  * Add Codespaces configuration
+  * Add `.editorconfig`
+  * Fix a GitHub workflow schema issue</comment>
+    <requestid>1219197</requestid>
+  </revision>
 </revisionlist>

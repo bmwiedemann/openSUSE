@@ -327,4 +327,20 @@
 </comment>
     <requestid>1193953</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cd737cef414e09d2295a657403a77017</srcmd5>
+    <version>0.10.5</version>
+    <time>1730306048</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 0.10.5
+  * Fix: request review - always default to state=&quot;new&quot;, because OBS considers it a mandatory attribute (fixes #194)
+  * Docs: fix logger name in `quickstart.rst`
+  
+- Release 0.10.4
+  * osctiny.models.request.Target model: add an optional 'repository' attribute (fixes #183) (#184)
+  * osctiny.models.request.Target model: make the 'package' attribute optional (fixes #185) (#186)
+  * Chore: Updated versions of GH actions (#189)
+</comment>
+    <requestid>1219042</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:44:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.5:
+  * Fixed macOS arp when MAC has one character sections in
+    specific cases (Fixes issue #92)
+
+-------------------------------------------------------------------
 Fri Mar  8 00:58:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 0.9.4: 
+- Update to 0.9.4:
   * Support BusyBox's ``arping``
   * Improve how ARP is handled. If ``ArpFile`` method succeeds, use it
     instead of ``ArpingHost``
@@ -13,11 +20,11 @@ Fri Mar  8 00:58:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
     public API of `getmac` is **unchanged** as part of this rewrite.
   * Fully support Python 3.9
   * Tentatively support Python 3.10 and 3.11
-  * `arping` (POSIX) or `SendARP` (Windows) will now *always* be used instead 
+  * `arping` (POSIX) or `SendARP` (Windows) will now *always* be used instead
     of sending a UDP packet when looking for the MAC of a IPv4 host, if
     they're available and operable (otherwise, UDP + ARP table check will be
     used like before).
-  * Added ability to override the detected platform via `--override-platform` 
+  * Added ability to override the detected platform via `--override-platform`
     argument (CLI) or `getmac.getmac.OVERRIDE_PLATFORM` variable (Python).
     This will force methods for that platform to be used, regardless of the
     actual platform.
@@ -45,7 +52,7 @@ Wed Sep 28 21:01:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Add Code of Conduct for project contributors
   Add SECURITY.md for reporting security issues (e.g. vulnerabilities)
   Deprecate Python 3.4 and 3.5
-  Issue deprecation message as a warning in addition to a log message 
+  Issue deprecation message as a warning in addition to a log message
 
 -------------------------------------------------------------------
 Fri Apr 16 17:16:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>

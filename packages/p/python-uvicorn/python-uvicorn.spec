@@ -18,27 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.29.0
+Version:        0.32.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-websocket-tests.patch -- gh#encode/uvicorn#1929
-Patch0:         fix-websocket-tests.patch
-# https://github.com/encode/uvicorn/pull/2288
-Patch1:         0001-Stop-using-deprecated-app-shortcut-in-httpx.AsyncCli.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions >= 4 if %python-base < 3.11}
+BuildRequires:  %{python_module typing-extensions >= 4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
-Requires:       (python-typing-extensions >= 4 if python-base < 3.11)
+Requires:       python-typing-extensions >= 4
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0

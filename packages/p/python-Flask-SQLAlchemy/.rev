@@ -214,4 +214,12 @@
   * Use a callable wrapping datetime.now(utc) rather than utcnow().</comment>
     <requestid>1143168</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>4cb5730cffb9a8e7430423dce25de026</srcmd5>
+    <version>3.1.1</version>
+    <time>1730306240</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore ResourceWarning during pytest to avoid a Python 3.13 failure.</comment>
+    <requestid>1219235</requestid>
+  </revision>
 </revisionlist>

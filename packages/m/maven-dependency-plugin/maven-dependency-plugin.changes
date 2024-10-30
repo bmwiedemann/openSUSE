@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 29 18:33:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to verion 3.8.1
+  * Bug
+    + MDEP-956: silent parameter is not taken into account
+  * New Feature
+    + MDEP-957: Special case slf4j-simple et al to not report used
+      but undeclared
+  * Improvement
+    + MDEP-932: Don't log successful file copies
+  * Test
+    + MDEP-930: runTreeMojo in TestTreeMojo ignores encoding
+  * Dependency upgrade
+    + MDEP-958: maven-dependency-analyzer to 1.15.0
+    + MDEP-961: Upgrade to Doxia 2.0.0 GA Stack
+
+-------------------------------------------------------------------
 Tue Oct 15 19:16:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.8.0

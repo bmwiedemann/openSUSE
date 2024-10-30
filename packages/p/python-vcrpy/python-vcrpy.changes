@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 12:01:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.0.2
+  * Ensure body is consumed only once (#846) - thanks @sathieu
+  * Permit urllib3 2.x for non-PyPy Python >=3.10
+  * Fix typos in test commands - thanks @chuckwondo
+  * Several test and workflow improvements - thanks @hartwork and @graingert
+
+-------------------------------------------------------------------
 Tue Feb  6 09:30:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.1

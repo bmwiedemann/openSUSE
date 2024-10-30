@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:43:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.6:
+  * Prevent timeouts on large differences by not doing any
+    refinement on the large sections.
+
+-------------------------------------------------------------------
 Thu Oct 24 07:56:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.5:

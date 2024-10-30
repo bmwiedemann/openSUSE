@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 29 18:29:19 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.0~rc4:
+  * audio: Fix logging from audio modules in server-side audio.
+  * Sort Baratinoo engine higher.
+  * espeak-ng-mbrola: Fix mbrola voices with rate different from
+    22KHz
+  * Add a run-spd-say script and make run-speechd and run-spd-say
+    able to talk directly.
+  * Add initial pipewire support.
+- Drop speech-dispatcher-missing-return-vals.patch and
+  speech-dispatcher-pulseaudio-samples.patch: fixed upstream.
+- Add libpipewire-0.3 to BuildRequires to build Pipewire support.
+- Package speechd_module library.
+
+-------------------------------------------------------------------
+Wed Oct 16 07:25:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
 Fri Jul  5 17:34:04 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add speech-dispatcher-pulseaudio-samples.patch: fix for losing

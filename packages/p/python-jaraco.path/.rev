@@ -47,4 +47,13 @@
 - Initial package (3.3.1)</comment>
     <requestid>1131719</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c488818cd1ba5d0aaf1ff1424432713c</srcmd5>
+    <version>3.7.1</version>
+    <time>1730305792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.1:
+  * no significant changes</comment>
+    <requestid>1218897</requestid>
+  </revision>
 </revisionlist>

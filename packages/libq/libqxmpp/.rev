@@ -288,4 +288,14 @@ Qt5 alternative.</comment>
     <comment>Update to 1.8.2. Depends on SR#1216969</comment>
     <requestid>1217017</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0cd76de70b9b8b2f13a9ced1b0f61d1e</srcmd5>
+    <version>1.8.3</version>
+    <time>1730306154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.3:
+  * MamManager: Fix some unencrypted are not parsed when
+    end-to-end-encryption is enabled (#662)</comment>
+    <requestid>1219151</requestid>
+  </revision>
 </revisionlist>

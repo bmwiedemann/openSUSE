@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:12:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Made 'inflect' an optional dependency. The show-newlines
+    script now will crash unless jaraco.text[inflect] is
+    installed.
+
+-------------------------------------------------------------------
 Wed Oct 23 20:22:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.0:

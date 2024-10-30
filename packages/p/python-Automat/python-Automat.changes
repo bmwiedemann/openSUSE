@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:04:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.8.1:
+  * major new api
+  * python 3.12/3.13
+
+-------------------------------------------------------------------
 Tue Sep 19 11:48:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- remove unneded six from setup.py 
+- remove unneded six from setup.py
 
 -------------------------------------------------------------------
 Fri Apr 21 12:19:11 UTC 2023 - Dirk Müller <dmueller@suse.com>

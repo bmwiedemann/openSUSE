@@ -211,4 +211,18 @@ Features
     <comment></comment>
     <requestid>1160030</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1b73f0b9ddd35041c9bc4b286362b860</srcmd5>
+    <version>2.5.3</version>
+    <time>1730306189</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * **langs:** Languages added: `pt-PT` (Portuguese (Portugal)),
+    `yue` (Cantonese); languages modified: `pa` (Punjabi
+    (Gurmukhi)), `pt` (Portuguese (Brazil))
+  * **langs:** Languages added: `am` (Amharic), `cy` (Welsh),
+    `eu` (Basque), `gl` (Galician), `ha` (Hausa), `lt`
+    (Lithuanian), `pa` (Punjabi)</comment>
+    <requestid>1219190</requestid>
+  </revision>
 </revisionlist>

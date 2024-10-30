@@ -18,7 +18,7 @@
 
 %bcond_with  groovy
 Name:           maven-invoker-plugin
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Maven Invoker Plugin
 License:        Apache-2.0

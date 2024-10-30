@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:27:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-tests-update.patch, py313-mode-repr.patch
+
+-------------------------------------------------------------------
 Mon Aug 12 09:12:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch to fix tests with pytest >= 8.1:

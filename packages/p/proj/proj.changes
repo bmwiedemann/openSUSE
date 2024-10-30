@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 21 14:38:33 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Leap 16.0 (suse_version==1600) has GCC 13 as default compiler 
+
+-------------------------------------------------------------------
 Wed Jul  3 19:55:43 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
 
 - * add gcc11 to build with Leap

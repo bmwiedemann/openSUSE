@@ -1,0 +1,6 @@
+<package name="libcgroup" project="openSUSE:Factory">
+  <title>Tools and libraries to control and monitor control groups</title>
+  <description>Control groups infrastructure. The tools and library help manipulate, control, administrate and monitor control groups and the associated controllers.</description>
+  <devel project="Virtualization" package="libcgroup"/>
+  <url>https://github.com/libcgroup/libcgroup</url>
+</package>

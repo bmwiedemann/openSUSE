@@ -188,4 +188,13 @@
   * Misc modernizations</comment>
     <requestid>1179661</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>42e3d10b0bb940ff3927c2dade7854cb</srcmd5>
+    <version>2.1.0</version>
+    <time>1730305787</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Add contrib command `sh.contrib.bash` #736</comment>
+    <requestid>1218888</requestid>
+  </revision>
 </revisionlist>

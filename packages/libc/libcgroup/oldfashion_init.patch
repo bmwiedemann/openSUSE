@@ -1,0 +1,247 @@
+---
+ scripts/init.d/cgconfig.in |   28 +++++++++++++--------
+ scripts/init.d/cgred.in    |   58 +++++++++++++++++++++++++++------------------
+ 2 files changed, 53 insertions(+), 33 deletions(-)
+
+--- scripts/init.d/cgconfig.in
++++ scripts/init.d/cgconfig.in	2024-10-01 11:56:25.344965550 +0000
+@@ -5,6 +5,8 @@
+ #
+ # Copyright IBM Corporation. 2008
+ #
++# Copyright (c) 2008,2010 Jiri Slaby <jslaby@suse.cz>
++#
+ # Authors:     Balbir Singh <balbir@linux.vnet.ibm.com>
+ #
+ # cgconfig Control Groups Configuration Startup
+@@ -15,10 +17,12 @@
+ 
+ ### BEGIN INIT INFO
+ # Provides:             cgconfig
+-# Required-Start:
+-# Required-Stop:
++# Required-Start:       $local_fs $remote_fs $syslog $time
++# Required-Stop:        $local_fs $remote_fs $syslog $time
+ # Should-Start:         ypbind
+ # Should-Stop:          ypbind
++# Default-Start:        2 3 5
++# Default-Stop:         0 1 6
+ # Short-Description:    Create and setup control group filesystem(s)
+ # Description:          Create and setup control group filesystem(s)
+ ### END INIT INFO
+@@ -29,9 +33,8 @@ CGCONFIGPARSER_BIN=$sbindir/cgconfigpars
+ CONFIG_FILE=/etc/cgconfig.conf
+ CONFIG_DIR=/etc/cgconfig.d
+ servicename=cgconfig
++lockfile=/run/$servicename
+ 
+-
+-lockfile=/run/lock/subsys/$servicename
+ #
+ # Source LSB routines
+ #
+@@ -111,10 +114,9 @@ create_default_groups() {
+ }
+ 
+ start() {
+-        printf "Starting %s service: " "$servicename"
+ 	if [[ -f "$lockfile" ]]; then
+             log_warning_msg "lock file already exists"
+-            return 0
++            return 1
+         fi
+ 
+         if [[ ! -s "$CONFIG_FILE" ]]; then
+@@ -143,7 +145,6 @@ start() {
+             log_failure_msg "Failed to touch $lockfile"
+             return 1
+         fi
+-        log_success_msg "Started $servicename"
+         return 0
+ }
+ 
+@@ -188,30 +189,35 @@ case $1 in
+         common
+         stop
+         RETVAL=$?
++        rc_status -v
+         ;;
+     'start')
+         common
+         start
+         RETVAL=$?
++        rc_status -v
+         ;;
+     'restart'|'reload')
+ 	restart
+         RETVAL=$?
++        rc_status -v
+         ;;
+     'condrestart')
+         if [[ -f "$lockfile" ]]; then
+             restart
+             RETVAL=$?
+         fi
++        rc_status
+         ;;
+     'status')
++        echo -n "Checking for service $servicename"
+         if [ -f "$lockfile" ]; then
+-            echo "Running"
+-            exit 0
++            rc_failed 0
+         else
+-            echo "Stopped"
+-            exit 3
++            rc_failed 3
++            RETVAL=3
+         fi
++        rc_status -v
+ 	;;
+     *)
+         usage
+--- scripts/init.d/cgred.in
++++ scripts/init.d/cgred.in	2024-10-01 12:05:26.435168696 +0000
+@@ -5,6 +5,8 @@
+ #
+ # Copyright Red Hat Inc. 2008
+ #
++# Copyright (C) 2008,2010 Jiri Slaby <jslaby@suse.cz>
++#
+ # Authors:	Steve Olivieri <sjo@redhat.com>
+ #
+ # cgred		CGroups Rules Engine Daemon
+@@ -17,10 +19,12 @@
+ #
+ ### BEGIN INIT INFO
+ # Provides:		cgrulesengd
+-# Required-Start:	$local_fs $syslog $cgconfig
+-# Required-Stop:	$local_fs $syslog
++# Required-Start:	$local_fs $remote_fs $syslog $cgconfig
++# Required-Stop:	$local_fs $remote_fs $syslog $cgconfig
+ # Should-Start:
+ # Should-Stop:
++# Default-Start:	2 3 5
++# Default-Stop:		0 1 6
+ # Short-Description:	start and stop the cgroups rules engine daemon
+ # Description:		CGroup Rules Engine is a tool for automatically using \
+ #			cgroups to classify processes
+@@ -73,15 +77,20 @@ fi
+ # For convenience
+ processname=cgrulesengd
+ servicename=cgred
+-lockfile="/var/lock/subsys/$servicename"
+-pidfile=/var/run/cgred.pid
++lockfile="/run/$servicename"
++pidfile=/run/cgred.pid
+ 
+ start()
+ {
+-	echo -n $"Starting CGroup Rules Engine Daemon: "
+ 	if [[ -f "$lockfile" ]]; then
+-		log_failure_msg "$servicename is already running with PID $(cat ${pidfile})"
+-		return 0
++                pidofproc -k -p $pidfile $CGRED_BIN
++                if [ $? -eq 7 ]; then
++                        log_warning_msg "Removing stale lock file $lockfile"
++                        rm -f "$lockfile" "$pidfile"
++                else
++                        log_failure_msg "$servicename is already running with PID `cat ${pidfile}`"
++                        return 1
++                fi
+ 	fi
+ 	num=$(grep "cgroup" /proc/mounts | awk '$3=="cgroup"' | wc -l)
+ 	if [[ "$num" -eq 0 ]]; then
+@@ -89,29 +98,26 @@ start()
+ 		log_failure_msg $"Cannot find cgroups, is cgconfig service running?"
+ 		return 1
+ 	fi
+-	daemon --check $servicename --pidfile $pidfile $CGRED_BIN $OPTIONS
++        start_daemon -p $pidfile $CGRED_BIN $OPTIONS
+ 	retval=$?
+-	echo
+ 	if [[ $retval -ne 0 ]]; then
+ 		return 7
+ 	fi
+ 	if ! touch "$lockfile"; then
+ 		return 1
+ 	fi
+-	pidof "$processname" > $pidfile
++	pidofproc $CGRED_BIN > $pidfile
+ 	return 0
+ }
+ 
+ stop()
+ {
+-	echo -n $"Stopping CGroup Rules Engine Daemon..."
+ 	if [[ ! -f $pidfile ]]; then
+ 		log_success_msg
+ 		return 0
+ 	fi
+ 	killproc -p $pidfile -TERM "$processname"
+ 	retval=$?
+-	echo
+ 	if [[ $retval -ne 0 ]]; then
+ 		return 1
+ 	fi
+@@ -124,21 +130,32 @@ RETVAL=0
+ # See how we are called
+ case "$1" in
+ 	start)
++		echo -n "Starting CGroup Rules Engine Daemon"
+ 		start
+ 		RETVAL=$?
++		rc_status -v
+ 		;;
+ 	stop)
++		echo -n "Stopping CGroup Rules Engine Daemon"
+ 		stop
+ 		RETVAL=$?
++		rc_status -v
+ 		;;
+ 	status)
+-		status -p $pidfile $servicename
++		echo -n "Checking for CGroup Rules Engine Daemon"
++		checkproc -k -p $pidfile $CGRED_BIN
+ 		RETVAL=$?
++		if [ $RETVAL -eq 7 ] ; then
++			rc_failed 3
++			RETVAL=3
++		fi
++		rc_status -v
+ 		;;
+ 	restart)
+ 		stop
+ 		start
+ 		RETVAL=$?
++		rc_status
+ 		;;
+ 	condrestart)
+ 		if [[ -f "$lockfile" ]]; then
+@@ -146,20 +163,17 @@ case "$1" in
+ 			start
+ 			RETVAL=$?
+ 		fi
++                rc_status
+ 		;;
+ 	reload|flash)
+ 		if [[ -f "$lockfile" ]]; then
+-			echo $"Reloading rules configuration..."
+-			kill -s 12 "$(cat ${pidfile})"
+-			RETVAL=$?
+-			if [[ $RETVAL -eq 0 ]] ; then
+-				log_success_msg ""
+-			else
+-				log_failure_msg ""
+-			fi
++			echo -n "Reloading rules configuration..."
++                        killproc -SIGUSR2 -p $pidfile $CGRED_BIN
+ 		else
+-			log_failure_msg "$servicename is not running."
++                        echo "$servicename is not running."
++                        rc_failed 7
+ 		fi
++                rc_status -v
+ 		;;
+ 	*)
+ 		echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"

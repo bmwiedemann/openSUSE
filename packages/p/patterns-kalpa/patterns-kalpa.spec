@@ -53,8 +53,8 @@ Requires:       distribution-release
 Requires:       filesystem
 
 ### Packages formerly provided by bootloader
-Requires:       (grub2-snapper-plugin if grub2)
-Requires:       grub2
+Requires:       (grub2-snapper-plugin if (grub2 or grub2-common))
+Requires:       grub2-common
 %ifarch x86_64
 # XXX: not sure this really belongs here. More like a kernel
 # rather than bootloader related thing?
@@ -285,6 +285,7 @@ Requires:       kgamma6
 Requires:       kwrited6
 Requires:       phonon-vlc-qt6
 Requires:       plasma6-nm
+Requires:       plasma6-workspace-wallpapers
 
 # Manually pull in baloo5-file to better support desktip search functions/desktop integration
 Requires:       kf6-baloo-file
@@ -314,8 +315,8 @@ Requires:       kde-gtk-config6
 Requires:       kde-gtk-config6-gtk3
 Requires:       plasma-browser-integration
 # Requires:       plasma5-defaults-openSUSE
-Requires:       purpose
-Requires:       qqc2-desktop-style
+Requires:       kf6-purpose
+Requires:       kf6-qqc2-desktop-style
 Requires:       xdg-desktop-portal-kde6
 
 # Recommended by powerdevil5, but allow tlp as alternative

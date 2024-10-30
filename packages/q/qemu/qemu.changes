@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 29 11:03:28 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 9.1.1:
+  Full changelog here:
+   https://lore.kernel.org/qemu-devel/7f0561ec-3564-4860-bacf-a98071a5ce52@tls.msk.ru/
+  Some of the most notable features:
+   * ui/dbus: fix filtering all update messages
+   * ui/win32: fix potential use-after-free with dbus shared memory
+   * ui/dbus: fix leak on message filtering
+   * hw/audio/hda: fix memory leak on audio setup
+   * hw/audio/hda: free timer on exit
+   * hw/char/pl011: Use correct masks for IBRD and FBRD
+   * hw/intc/arm_gicv3_cpuif: Add cast to match the documentation
+   * hw/intc/arm_gicv3: Add cast to match the documentation
+   * hw/intc/arm_gicv3: Add cast to match the documentation
+   * meson: ensure -mcx16 is passed when detecting ATOMIC128
+   * meson: define qemu_isa_flags
+   * meson: fix machine option for x86_version
+   * target/m68k: Always return a temporary from gen_lea_mode
+   * tcg/ppc: Use TCG_REG_TMP2 for scratch index in prepare_host_addr
+   * tcg/ppc: Use TCG_REG_TMP2 for scratch tcg_out_qemu_st
+   * linux-user: Fix parse_elf_properties GNU0_MAGIC check
+   * linux-user/flatload: Take mmap_lock in load_flt_binary()
+   * vnc: fix crash when no console attached
+   * testing: bump mips64el cross to bookworm and fix package list
+   * hw/sd/sdcard: Fix handling of disabled boot partitions
+   * target/arm: Avoid target_ulong for physical address lookups
+   * block/reqlist: allow adding overlapping requests
+   * util/timer: avoid deadlock when shutting down
+   * hw/mips/jazz: fix typo in in-built NIC alias
+   * tcg: Fix iteration step in 32-bit gvec operation
+   * hw/loongarch/virt: Add description for virt machine type
+   * migration/multifd: Fix p->iov leak in multifd-uadk.c
+   * target/ppc: Fix migration of CPUs with TLB_EMB TLB type
+   * target/hppa: Fix random 32-bit linux-user crashes
+   * target/arm: Correct ID_AA64ISAR1_EL1 value for neoverse-v1
+   * hw/char/stm32l4x5_usart.c: Enable USART ACK bit response
+   * migration/multifd: Fix rb->receivedmap cleanup race
+   * mac_dbdma: Remove leftover `dma_memory_unmap` calls
+
+-------------------------------------------------------------------
+Tue Oct 29 10:43:50 UTC 2024 - dfaggioli@suse.com
+
+- Fix boo#1231166:
+  * [openSUSE][RPM] The qemu translation is not being installed (boo#1231166)
+
+-------------------------------------------------------------------
 Wed Oct 16 14:39:46 UTC 2024 - dfaggioli@suse.com
 
 - Bug and CVE fixes:

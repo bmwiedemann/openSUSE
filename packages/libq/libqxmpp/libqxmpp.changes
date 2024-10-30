@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 16:57:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.3:
+  * MamManager: Fix some unencrypted are not parsed when
+    end-to-end-encryption is enabled (#662)
+
+-------------------------------------------------------------------
 Tue Oct 22 12:14:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.8.2

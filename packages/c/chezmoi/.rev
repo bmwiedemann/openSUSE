@@ -569,4 +569,43 @@
 </comment>
     <requestid>1204814</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ff523fa00b3bdf581afc8935d046e044</srcmd5>
+    <version>2.53.1</version>
+    <time>1730306172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.53.1:
+  - Fixes
+    * fix: Fix panic in commands that do not use persistent state
+  - Documentation updates
+    * docs: Add note that .chezmoiexternal files can be ignored
+- Update to version 2.53.0:
+  - Features
+    * feat: Extend squote template func to handle more types
+    * feat: Extend quote and quoteList template funcs to handle more types
+    * feat: Add common --parent-dirs/-P flag
+  - Fixes
+    * fix: Persist results of calls to GitHub API
+    * fix: Fix completion for 'archive --format'
+    * fix: Fix includeTemplate template func search path in init
+    * fix: Accept only supported values to 'unmanaged --path-style'
+    * fix: Fix incorrect config template change warnings
+    * fix: Fix panic when --keep-going is set
+    * fix: Fix panic when running chattr on externals
+    * fix: Use builtin age when encryption is unset
+  - Documentation updates
+    * docs: Replace common flags descriptions with snippets
+    * docs: Fill reference title page
+    * docs: Update &quot;how scripts work&quot; section
+    * docs: Update shell completions section
+    * docs: Improvements for command flags description
+    * docs: Automatically check that all flags are documented
+    * docs: Split &quot;Special file and directories&quot;
+    * docs: Split docs for commands into sections
+    * docs: Split docs into sections for age, secret and state
+    * docs: Improve description for command arguments
+    * docs: Add notes where to place 'encryption' setting
+</comment>
+    <requestid>1219164</requestid>
+  </revision>
 </revisionlist>

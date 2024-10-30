@@ -1,0 +1,31 @@
+From 819f1b5eb4d25ed1043b730ce53c4c668310bb5c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 27 Sep 2024 08:59:58 +0200
+Subject: [PATCH 2/2] reproducible-from-environment
+
+---
+ .../java/org/apache/maven/archetype/mojos/JarMojo.java    | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java b/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java
+index 599c6609..8e760a6d 100644
+--- a/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java
++++ b/maven-archetype-plugin/src/main/java/org/apache/maven/archetype/mojos/JarMojo.java
+@@ -133,6 +133,14 @@ public class JarMojo extends AbstractMojo {
+ 
+         archiver.setArchiver((JarArchiver) archivers.get("jar"));
+ 
++        if ( outputTimestamp == null ||
++            outputTimestamp.length() < 1 ||
++            ( ( outputTimestamp.length() == 1 )
++                && !Character.isDigit( outputTimestamp.charAt(0) ) ) )
++        {
++            outputTimestamp = System.getenv("SOURCE_DATE_EPOCH");
++        }
++
+         // configure for Reproducible Builds based on outputTimestamp value
+         archiver.configureReproducibleBuild(outputTimestamp);
+ 
+-- 
+2.47.0
+

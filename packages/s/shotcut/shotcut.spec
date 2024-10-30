@@ -25,7 +25,6 @@
 %define _vstring %(echo %{version} |tr -d ".")
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
-%bcond_with    x264
 Name:           shotcut
 Version:        24.09.13
 Release:        0
@@ -74,13 +73,9 @@ Requires:       qt6-sql-sqlite = %{qt6version}
 Recommends:     lame
 ExclusiveArch:  ppc64 ppc64le %{ix86} x86_64
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
-%endif
-%if %{with x264}
-BuildRequires:  pkgconfig(x264)
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libx264.so) --qf '%%{NAME} >= %%{VERSION}')
 %endif
 # NOTE: Can't find a matching package suspect it's merged into another package
 #Requires:       libqt6-qtgraphicaleffects >= %%{qt6version}
@@ -109,12 +104,11 @@ find . \
        -DCMAKE_BUILD_TYPE=Release \
        -DSHOTCUT_VERSION=%{version} \
 %if 0%{?suse_version} == 1500
-       -DCMAKE_CXX_COMPILER:FILEPATH=%{_bindir}/g++-12 \
+       -DCMAKE_CXX_COMPILER:FILEPATH=%{_bindir}/g++-13 \
 %endif
        -DDEFINES+=SHOTCUT_NOUPGRADE
 %cmake_build
 
-# CC=gcc-8 CPP=cpp-8 CXX=g++-8
 %install
 %cmake_install
 

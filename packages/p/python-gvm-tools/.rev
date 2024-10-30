@@ -130,4 +130,17 @@
   * Update copyright to 2024</comment>
     <requestid>1167717</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dfbcf31ff25e609dddf5003d83076327</srcmd5>
+    <version>24.8.0</version>
+    <time>1730306191</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.8.0:
+  * Log task id on failure to get last report in time period.
+  * Fix linting with ruff
+  * Fix scan config creation from CERT-Bunds. Replace the
+    deprecated method modify_scan_config
+  * Replace validate_xml_string with parse_xml function 71583c5</comment>
+    <requestid>1219193</requestid>
+  </revision>
 </revisionlist>

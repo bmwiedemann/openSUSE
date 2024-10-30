@@ -1,7 +1,7 @@
 #
 # spec file for package maven-enforcer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-enforcer
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        A build rule execution framework
 License:        Apache-2.0
@@ -32,17 +32,24 @@ BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(commons-codec:commons-codec)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
+BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(org.apache-extras.beanshell:bsh)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
+BuildRequires:  mvn(org.apache.maven:maven-model-builder)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.beanshell:bsh)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.eclipse.aether:aether-api)
-BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
+BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
@@ -94,12 +101,6 @@ pom.xml, but you can enforce a set of rules.
 %setup -q -n enforcer-%{version}
 
 find -name '*.java' -exec sed -i 's/\r//' {} +
-
-%pom_remove_dep org.junit:junit-bom
-
-%pom_add_dep javax.annotation:javax.annotation-api maven-enforcer-plugin
-
-%pom_add_plugin org.eclipse.sisu:sisu-maven-plugin maven-enforcer-plugin
 
 %build
 %{mvn_build} -s -f -- \

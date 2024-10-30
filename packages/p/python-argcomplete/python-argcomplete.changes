@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 29 17:07:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 3.5.1:
+  - Restore compatibility with argparse in Python 3.12.7+
+  - Use project.scripts instead of setuptools scripts
+  - Test infrastructure improvements
+- Remove upstreamed patches:
+  - argparse-3_12_7.patch
+- Add _multibuild (to make testing against fully installed package)
+
+-------------------------------------------------------------------
 Sun Oct  6 21:27:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add argparse-3_12_7.patch which should actually fix

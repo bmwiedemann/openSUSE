@@ -1823,4 +1823,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment></comment>
     <requestid>1200801</requestid>
   </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>1a6ab40204af6b2296584961d2bc783e</srcmd5>
+    <version>6.8.2</version>
+    <time>1730305798</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial 6.8.2 (forwarded request 1219010 from develop7)</comment>
+    <requestid>1219011</requestid>
+  </revision>
 </revisionlist>

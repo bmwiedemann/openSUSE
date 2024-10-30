@@ -18,7 +18,7 @@
 
 %global pythons python3
 Name:           python-fritzconnection
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        A Python module to talk to a AVM fritzbox
 License:        MIT

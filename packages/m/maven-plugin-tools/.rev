@@ -120,4 +120,12 @@
     <comment>3.15.0</comment>
     <requestid>1205306</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>48e5475cc85c588846ef9d45df44b59c</srcmd5>
+    <version>3.15.1</version>
+    <time>1730306107</time>
+    <user>dimstar_suse</user>
+    <comment>3.15.1</comment>
+    <requestid>1219150</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -20,7 +20,7 @@
 
 %define         _desktopname       org.bleachbit.BleachBit
 Name:           bleachbit
-Version:        4.6.0
+Version:        4.6.2
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
@@ -78,9 +78,10 @@ sed -Ei 's/(test_download_url_to_fn|test_Chaff)/_\1/g' tests/TestChaff.py
 sed -Ei 's/(test_update_url|test_update_winapp2|test_get_ip_for_url)/_\1/g' tests/TestUpdate.py
 # Test fails
 sed -Ei 's/(test_notify)/_\1/g' tests/TestGUI.py
-
 # Test is very slow
 sed -Ei 's/(test_wipe_path)/_\1/g' tests/TestFileUtilities.py
+# Wants to mount
+sed -Ei 's/(test_same_partition)/_\1/g' tests/TestFileUtilities.py
 
 %build
 %make_build -C po local

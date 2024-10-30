@@ -45,8 +45,27 @@ Linux system, such as amount of installed packages, OS and kernel
 version, active GTK theme, CPU info, and used/available memory.
 It is a fork of neofetch, and adds pride flag coloration to the OS logo.
 
+%package -n neowofetch
+# version as reported by neowofetch --version
+Version:        7.98.0
+Summary:        CLI system information tool written in BASH
+Provides:       neofetch = %{version}
+Obsoletes:      neofetch < %{version}
+
+%description -n neowofetch
+Displays information about the system next to an image, the OS logo, or any
+ASCII file of choice. The main purpose of Neofetch is to be used in
+screenshots to show other users what OS/Distro is running, what Theme/Icons
+are being used, etc.
+
+Customizable through the use of command line flags or the user config file.
+There are over 50 config options to mess around with and there's the `print_info()
+function and friends which let you add your own custom info.
+
+This is the forked version that is maintained together with hyfetch
+
 %prep
-%autosetup -p1 -n HyFetch-%{version}
+%autosetup -p1 -n HyFetch-%{VERSION}
 
 %build
 sed -i 's/packages=find_namespace_packages(exclude=("tools", "tools.*")),/packages=find_namespace_packages(exclude=("tools", "tools.*", "docs")),/' setup.py
@@ -55,21 +74,30 @@ sed -i 's/packages=find_namespace_packages(exclude=("tools", "tools.*")),/packag
 %install
 %pyproject_install
 %python_clone -a %{buildroot}/%{_bindir}/hyfetch
-%python_clone -a %{buildroot}/%{_bindir}/neowofetch
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+ln -s %{_bindir}/neowofetch %{buildroot}%{_bindir}/neofetch
 
 %post
-%{python_install_alternative hyfetch neowofetch}
+%{python_install_alternative hyfetch}
 
 %postun
 %python_uninstall_alternative hyfetch
 
+%check
+[ "$(%{buildroot}%{_bindir}/neofetch --version)" == "Neofetch %{version}" ] || (
+    echo "Neofetch version does not match the RPM version - please update"
+    exit 1
+)
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%python_alternative %{_bindir}/neowofetch
 %python_alternative %{_bindir}/hyfetch
 %{python_sitelib}/hyfetch
-%{python_sitelib}/HyFetch-%{version}.dist-info
+%{python_sitelib}/HyFetch-%{VERSION}.dist-info
+
+%files -n neowofetch
+%{_bindir}/neofetch
+%{_bindir}/neowofetch
 
 %changelog

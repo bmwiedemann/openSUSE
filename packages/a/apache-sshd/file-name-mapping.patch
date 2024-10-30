@@ -1,0 +1,27 @@
+--- apache-sshd-2.12.0/assembly/src/main/components/modules.xml	2024-10-17 09:52:06.438341043 +0200
++++ apache-sshd-2.12.0/assembly/src/main/components/modules.xml	2024-10-17 10:04:38.853297583 +0200
+@@ -39,6 +39,7 @@
+             </excludes>
+             <outputDirectory>lib</outputDirectory>
+             <useProjectArtifact>false</useProjectArtifact>
++            <outputFileNameMapping>${artifact.groupId}-${artifact.artifactId}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+         </dependencySet>
+         <dependencySet>
+             <includes>
+@@ -52,6 +53,7 @@
+             </includes>
+             <outputDirectory>extras</outputDirectory>
+             <useProjectArtifact>false</useProjectArtifact>
++            <outputFileNameMapping>${artifact.groupId}-${artifact.artifactId}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+         </dependencySet>
+         <dependencySet>
+             <includes>
+@@ -68,6 +70,7 @@
+             </includes>
+             <outputDirectory>dependencies</outputDirectory>
+             <useProjectArtifact>false</useProjectArtifact>
++            <outputFileNameMapping>${artifact.groupId}-${artifact.artifactId}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+         </dependencySet>
+     </dependencySets>
+ </component>
+\ No newline at end of file

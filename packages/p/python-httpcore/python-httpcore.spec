@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpcore%{psuffix}
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
@@ -58,7 +58,7 @@ BuildRequires:  %{python_module pytest >= 7.0.1}
 BuildRequires:  %{python_module pytest-asyncio >= 0.16.0}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-trio >= 0.7.0}
-BuildRequires:  %{python_module trio >= 0.21.0}
+BuildRequires:  %{python_module trio >= 0.22.0}
 %endif
 # /SECTION
 %python_subpackages

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 08:08:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.6:
+  * MergeInto should include Volumes (#1376)
+
+-------------------------------------------------------------------
+Tue Oct 29 13:58:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.5:
+  * rsa: remove backwards compat APIs (#1307)
+  * fix bug with triggers encoded in triggers file (#1358)
+
+-------------------------------------------------------------------
 Sat Oct 26 08:22:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.4:

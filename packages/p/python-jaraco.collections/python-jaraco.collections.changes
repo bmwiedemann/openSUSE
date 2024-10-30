@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 28 23:15:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Fully typed RangeMap and avoid complete iterations to find
+    matches
+
+-------------------------------------------------------------------
 Sat Apr 20 21:00:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 10:01:13 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.3
+  * Fixed crash when network process terminates while a net log is running.
+
+-------------------------------------------------------------------
 Fri Oct 25 03:23:53 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.2

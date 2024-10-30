@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 28 15:20:57 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to kst 2.1.0 
+  This release includes all updates since 2.0.8 released in 2014:
+  * Too many bug fixes to list
+  * Many feature improvements
+  Some of the changes can be seen at:
+  https://invent.kde.org/graphics/kst-plot/-/compare/v2.0.8...v2.1-2024-10-20
+- Remove patches that are already included in 2.1.0:
+  * gsl2-support.patch
+  * Fix-build-with-Qt-511.patch
+  * 0001-Fix-build-with-CMake-3.20.patch
+- Add patch to fix a hdf5 include path that we install in
+  another directory:
+  * fix-hdf5-include-path.patch
+
+-------------------------------------------------------------------
 Fri Jan  6 16:35:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update build constraints

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct  2 20:59:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add csr_matrix-attr-H.patch making the package compatible with
+  the most recent version of SciPy (gh#librosa/librosa#1849).
+- Add sysinfo.py to provide upstream with the required debugging
+  information.
+- Add mark-network-tests.patch marking tests which require
+  network connection to run.
+
+-------------------------------------------------------------------
+Fri Sep 20 22:12:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.10.2.post1:
+  - Bump minimum matplotlib to 3.5.0
+- Update to 0.10.2.post1:
+  - Multiple accidentals by @erabinov in #1739
+  - Avoid deprecated matplotlib functions by @bmcfee in #1755
+  - Mode support by @erabinov in #1756
+  - Mode support by @erabinov in #1762
+  - Switch from pkg_resources to importlib.resources by @mattpitkin in #1765
+  - Add python 3.11 to build matrix by @bmcfee in #1769
+  - Natural accidentals for out-of-key notes by @erabinov in #1770
+  - Fix docstring for the writeable argument of util.frame function by @alvingao in #1780
+  - Update test_util.py to remove problematic "dummy". by @dpwe in #1783
+  - Updates matplotlib colormap usage to remove deprecation warnings. by @psmskelton in #1782
+  - Better handling of warnings in test suite by @bmcfee in #1784
+  - Fix sample rate type annotations by @bmcfee in #1789
+  - Explicitly allow scalars in decibel conversion by @bmcfee in #1790
+  - Adding python 3.12 to build matrix, update tests for recent scipy / numpy by @bmcfee in #1808
+  - Resolve the performance issue of autocorrelate by @alumkal in #1813
+  - Correct phase advance for odd frame lengths in phase_vocoder by @bmcfee in #1814
+  - Multichannel peak, onset, and beat detection by @bmcfee in #1766
+  - Update actions for 2024 by @bmcfee in #1820
+  - doc copybutton, CI updates by @bmcfee in #1821
+  - exposed tempo min and max parameters in specshow by @bmcfee in #1822
+  - remove kwargs from effects.hpss and friends, passthru stft by @bmcfee in #1826
+  - Docstring and comment improvements by @bmcfee in #1827
+  - librosa.cite() by @bmcfee in #1829
+  - 0.10.2 release prep by @bmcfee in #1832
+
+-------------------------------------------------------------------
 Wed Apr 17 03:42:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a misbehaving test that can cause segfaults.

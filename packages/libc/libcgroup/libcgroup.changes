@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Wed Oct  2 13:43:06 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Clean up package
+  * Make systemd unit files work
+  * Set socket path and socket group
+  * Create group cgred 
+  * Use permission build/install api
+
+-------------------------------------------------------------------
+Tue Oct  1 12:22:35 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to libcgroup-3.1.0
+  NOTE - this release is not guaranteed to be backward compatible
+  with previous releases!  There has been many changes!
+  * Libcgroup v3.1.0 adds systemd support to the libcgroup library.
+- Add cgrules.service and cgconfig.service below examples in
+  package documentation of libcgroup-tools
+- Adopt baselibs.conf to libcgroup3
+- Split off a separate libcgroup-pam package
+- Drop obsolete patches
+  * cgconfig-Do-not-overwrite-defaultcgroup-configuratio.patch
+  * do-not-version-pam-module.patch
+  * initd_cgconfig.patch
+  * initd_cgred.patch
+- Add patches
+  * Syntax-fixes-for-man-pages.patch
+  * cgroup-directory.patch
+  * oldfashion_init.patch
+  * pam_cgroup-Revert-broken-cache-usage.patch
+  * template-doc.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:50 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Jan 14 10:58:55 CET 2015 - tcech@suse.cz
+
+- add Require for post install scriptlets (bnc#912531)
+
+-------------------------------------------------------------------
+Wed Jan 14 09:49:35 CET 2015 - mhocko@suse.de
+
+- cgconfig-Do-not-overwrite-defaultcgroup-configuratio.patch - cgconfig:
+  Do not overwrite defaultcgroup configuration (bnc#912487)
+
+-------------------------------------------------------------------
+Tue Jan 13 11:46:00 UTC 2015 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Version bump to 0.41 - no changelog
+- Add fillup/insserv prereqs bnc#912531
+
+-------------------------------------------------------------------
+Fri Jan 10 13:34:04 UTC 2014 - mhocko@suse.com
+
+- package upgraded from 0.37 to 0.41.rc1
+- libcgroup-man_pages.patch: removed because obsoleted by 41b1e43155831
+- initd_cgconfig-read-correctly-defaultcgroup.patch: removed because 
+  obsoleted by 9659403b713f9
+
+-------------------------------------------------------------------
+Thu May  2 18:17:46 CEST 2013 - mhocko@suse.cz
+
+- do-not-version-pam-module.patch: fix an invalid link to pam_cgroup.so.0.0.0
+  and do not build cgroup pam module as a versioned shared object (bnc#817533)
+
+-------------------------------------------------------------------
+Tue Nov 27 11:47:30 UTC 2012 - jengelh@inai.de
+
+- Remove redundant/obsolete sections from specfile
+- Follow shlib packaging guidelines; libcgroup1 ought to only have
+  the library, move the rest into libcgroup-tools.
+
+-------------------------------------------------------------------
+Thu Nov 22 17:44:55 CET 2012 - mhocko@suse.cz
+
+- initd_cgconfig-read-correctly-defaultcgroup.patch: fix defaultcgroup
+  detection (bnc#790934)
+
+-------------------------------------------------------------------
+Mon Feb 13 10:48:31 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Oct 31 20:39:27 CET 2011 - jslaby@suse.de
+
+- fix rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Aug 31 10:36:24 CEST 2011 - jslaby@suse.de
+
+- don't use /var/lock/subsys/ (bnc#714631)
+
+-------------------------------------------------------------------
+Fri Jun 24 21:40:52 CEST 2011 - jslaby@suse.de
+
+- kill _service
+
+-------------------------------------------------------------------
+Wed May 11 14:42:40 CEST 2011 - pth@suse.de
+
+- Enhance the man pages.
+
+-------------------------------------------------------------------
+Thu Mar  3 10:38:12 CET 2011 - jslaby@suse.de
+
+- update to 0.37.1
+  - get rid of the local patches
+  - fix buffer overflow (bnc#675506, CVE-2011-1006)
+  - verify the sender of netlink messages (bnc#675048, CVE-2011-1022)
+  - check length of netlink addresses (CVE-2011-1022)
+  - improve handling of out-of-memory.
+  - --sticky option works for setuid/setgid
+
+-------------------------------------------------------------------
+Wed Jan 12 16:15:05 CET 2011 - jslaby@suse.de
+
+- sync cgconfig and cgred init.d scripts with upstream
+- man pages fixes
+
+-------------------------------------------------------------------
+Tue Jan  4 11:45:34 CET 2011 - jslaby@suse.de
+
+- update cgconfig and cgred init.d scripts
+- fix segfault in cgconfigparser
+
+-------------------------------------------------------------------
+Mon Dec 20 09:47:28 CEST 2010 - jslaby@suse.de
+
+- update to 0.37
+  - init scripts fixes
+  - add new tools (scripts need not to do much work)
+  - fixes in what tools and scripts return
+  - many memory leaks fixed
+  - other small fixes
+
+-------------------------------------------------------------------
+Mon Jul  5 22:17:28 CEST 2010 - jslaby@suse.de
+
+- update to 0.36.2 final
+
+-------------------------------------------------------------------
+Fri Jun 4 15:37:17 CEST 2010 - kay.sievers@novell.com
+
+- update to 0.36.2.rc
+  - install pkg-config file
+  - do not call exit() on error
+- drop all patches which are upstream now or no longer needed
+- install library in the rootfs, not in /usr
+- enable verbose build
+
+-------------------------------------------------------------------
+Fri Feb  5 23:44:25 CET 2010 - jslaby@suse.de
+
+- really fail to start (forgotten %patch3)
+
+-------------------------------------------------------------------
+Thu Feb  4 14:58:10 CET 2010 - jslaby@suse.de
+
+- fail to start when a parsing error occurs (bnc#576932)
+
+-------------------------------------------------------------------
+Mon Feb  1 11:21:54 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Aug 18 13:39:28 CEST 2009 - jslaby@suse.de
+
+- update init scripts. cgred moved to /usr/sbin/
+
+-------------------------------------------------------------------
+Wed Jun 24 19:37:22 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon May  4 14:51:53 CEST 2009 - jslaby@suse.de
+
+- update to 0.33
+- refresh patches and make them -p1
+- add pam module and manpages
+
+-------------------------------------------------------------------
+Fri Jan  2 09:50:34 CET 2009 - jslaby@suse.de
+
+- Update to 0.32.2
+- Fix devel package group (to Development/Libraries)
+- Fix cgred init script
+- Update cgconfig init script to create a default cgroup (bnc#458611)
+
+-------------------------------------------------------------------
+Thu Nov  6 00:41:19 CET 2008 - jslaby@suse.cz
+
+- Update to 0.32.1
+- Add init.d scripts configuration samples.
+
+-------------------------------------------------------------------
+Mon Oct 20 16:52:55 CEST 2008 - schwab@suse.de
+
+- Fix invalid use of sigaction.
+
+-------------------------------------------------------------------
+Wed Oct 15 15:08:31 CEST 2008 - kukuk@suse.de
+
+- Fix typo
+
+-------------------------------------------------------------------
+Tue Oct 14 23:34:53 CEST 2008 - kukuk@suse.de
+
+- Fix name of devel package
+
+-------------------------------------------------------------------
+Wed Oct 01 14:52:15 CEST 2008 - jslaby@suse.cz
+
+- initial package

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:20:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.2
+  Changelog for Talos 1.8.2 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.8.2
+  * e105a3d74 fix: talosctl process null character
+
+-------------------------------------------------------------------
+Tue Oct 29 15:14:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.1:
+  Changelog for Talos 1.8.1 is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.8.1
+  * ffcdc0bb7 fix: build talosctl without tcell_minimal
+
+-------------------------------------------------------------------
 Wed Sep 25 05:10:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.0:

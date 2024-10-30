@@ -1,0 +1,14 @@
+[Unit]
+Description=Garage Data Store
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment='RUST_LOG=garage=info' 'RUST_BACKTRACE=1'
+ExecStart=/usr/bin/garage -c /etc/garage/garage.toml server
+NoNewPrivileges=true
+User=garage
+Group=garage
+
+[Install]
+WantedBy=multi-user.target

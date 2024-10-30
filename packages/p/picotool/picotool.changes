@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:40:16 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to 2.0.0
+  * Offset now valid for ELF and UF2 files on RP2350
+  * Displays info on the embedded block for RP2350
+  * Displays information for binaries in partitions too
+  * Added -cpu option on RP2350 to switch archtectures
+  * Added diagnostic partition option on RP2350
+
+-------------------------------------------------------------------
 Tue Jul 25 13:20:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.1.2:

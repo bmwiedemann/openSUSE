@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 23 11:05:29 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.47.0.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.47.0 (d174b8d)
+  * Fixes
+    ~ use lambda loggers and fix message format for JUL (fd21058),
+      closes #1195
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-help-plugin (46cc36d)
+      + bump org.graalvm.sdk:nativeimage from 24.1.0 to 24.1.1
+        (2c86dcf)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (a88f62a)
+      + bump surefire.version from 3.5.0 to 3.5.1 (9fadf17)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (132ab17)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.14.1 to 5.14.2
+        (c0b9f99)
+      + bump org.junit.jupiter:junit-jupiter (82a5f2a)
+      + bump org.junit.jupiter:junit-jupiter (761eb2e)
+      + bump org.junit-pioneer:junit-pioneer (7586ce9)
+      + bump org.junit.jupiter:junit-jupiter (69ea4db)
+      + bump org.mockito:mockito-core from 5.13.0 to 5.14.1
+        (dd79b6d)
+
+-------------------------------------------------------------------
 Wed Sep 25 14:26:34 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.46.1.2

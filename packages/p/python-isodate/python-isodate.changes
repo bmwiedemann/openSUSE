@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:31:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * drop end of life python versions
+  * Don't match garbage characters at the end of parsed strings
+  * Fractional seconds are cut off to microseconds (always round
+    down)
+  * Allow control over return type of parse_duration #64 (Felix
+    Claessen)
+  * Python >= 3.7 required
+- drop python-isodate-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -32,7 +45,7 @@ Mon Dec 13 01:44:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon Nov  8 10:20:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add six dependency 
+- add six dependency
 
 -------------------------------------------------------------------
 Wed May 26 07:18:51 UTC 2021 - pgajdos@suse.com
@@ -102,7 +115,7 @@ Wed Apr 17 14:08:25 UTC 2013 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Tue Apr 16 19:21:24 UTC 2013 - p.drouand@gmail.com
 
-- Remove BuildRequires: python-2to3, useless since included in main 
+- Remove BuildRequires: python-2to3, useless since included in main
   python devel package
 - Add Requires: python3; fix build for OpenSUSE <= 12.2
 

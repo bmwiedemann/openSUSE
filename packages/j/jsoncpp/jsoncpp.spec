@@ -16,9 +16,9 @@
 #
 
 
-%define sover   25
+%define sover   26
 Name:           jsoncpp
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        C++ library that allows manipulating with JSON
 License:        MIT
@@ -99,7 +99,11 @@ popd
 %files devel
 %license LICENSE
 %doc AUTHORS README.md
+%dir %{_libdir}/cmake/%{name}/
+%dir %{_libdir}/cmake
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/%{name}/%{name}Config.cmake
+%{_libdir}/cmake/%{name}/%{name}-namespaced-targets.cmake
 %{_libdir}/lib%{name}.so
 %{_includedir}/json/
 

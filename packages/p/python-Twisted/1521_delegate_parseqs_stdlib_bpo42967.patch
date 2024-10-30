@@ -9,10 +9,10 @@ Subject: [PATCH] delegate to stdlib parse qs
  2 files changed, 2 insertions(+), 28 deletions(-)
  create mode 100644 src/twisted/web/newsfragments/10096.bugfix
 
-diff --git a/src/twisted/web/http.py b/src/twisted/web/http.py
-index 18710f51dc..f0fea06b5d 100644
---- a/src/twisted/web/http.py
-+++ b/src/twisted/web/http.py
+Index: twisted-24.10.0/src/twisted/web/http.py
+===================================================================
+--- twisted-24.10.0.orig/src/twisted/web/http.py
++++ twisted-24.10.0/src/twisted/web/http.py
 @@ -125,6 +125,7 @@ from urllib.parse import (
      ParseResultBytes,
      unquote_to_bytes as unquote,
@@ -21,7 +21,7 @@ index 18710f51dc..f0fea06b5d 100644
  )
  
  from zope.interface import Attribute, Interface, implementer, provider
-@@ -363,34 +364,6 @@ def urlparse(url):
+@@ -371,34 +372,6 @@ def urlparse(url):
      return ParseResultBytes(scheme, netloc, path, params, query, fragment)
  
  
@@ -56,13 +56,9 @@ index 18710f51dc..f0fea06b5d 100644
  def datetimeToString(msSinceEpoch=None):
      """
      Convert seconds since epoch to HTTP datetime string.
-diff --git a/src/twisted/web/newsfragments/10096.bugfix b/src/twisted/web/newsfragments/10096.bugfix
-new file mode 100644
-index 0000000000..8f5b4759cb
+Index: twisted-24.10.0/src/twisted/web/newsfragments/10096.bugfix
+===================================================================
 --- /dev/null
-+++ b/src/twisted/web/newsfragments/10096.bugfix
++++ twisted-24.10.0/src/twisted/web/newsfragments/10096.bugfix
 @@ -0,0 +1 @@
 +delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
--- 
-2.46.0
-

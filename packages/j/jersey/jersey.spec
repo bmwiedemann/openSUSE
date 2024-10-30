@@ -22,7 +22,7 @@ Version:        2.28
 Release:        0
 Summary:        JAX-RS (JSR 311) production quality Reference Implementation
 # Some files in core-server are under ASL 2.0 license
-License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
+License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND BSD-2-Clause
 URL:            https://github.com/eclipse-ee4j/jersey
 Source0:        https://github.com/eclipse-ee4j/jersey/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
@@ -32,6 +32,7 @@ Patch0:         jersey-2.17-mvc-jsp-servlet31.patch
 Patch2:         0002-Port-to-glassfish-jsonp-1.0.patch
 Patch3:         0003-Port-to-hibernate-validation-5.x.patch
 Patch4:         jersey-2.28-contended.patch
+Patch5:         java-util-concurrent-ThreadFactory-newThread.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
@@ -39,22 +40,32 @@ BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.sun.istack:istack-commons-maven-plugin)
-BuildRequires:  mvn(jakarta.ws.rs:jakarta.ws.rs-api)
 BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(javax.persistence:persistence-api)
+BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(javax.validation:validation-api)
+BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-client)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-continuation)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-webapp)
 BuildRequires:  mvn(org.glassfish.hk2:hk2-bom:pom:)
 BuildRequires:  mvn(org.glassfish.hk2:hk2-locator)
 BuildRequires:  mvn(org.glassfish.hk2:osgi-resource-locator)
+BuildRequires:  mvn(org.jvnet.mimepull:mimepull)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.ow2.asm:asm)
+BuildRequires:  mvn(org.simpleframework:simple-common)
+BuildRequires:  mvn(org.simpleframework:simple-http)
+BuildRequires:  mvn(org.simpleframework:simple-transport)
 BuildRequires:  mvn(xerces:xercesImpl)
 BuildArch:      noarch
 %if %{without jp_minimal}
@@ -63,16 +74,11 @@ BuildRequires:  mvn(io.reactivex:rxjava)
 BuildRequires:  mvn(javax.el:javax.el-api)
 BuildRequires:  mvn(javax.enterprise:cdi-api)
 BuildRequires:  mvn(javax.json:javax.json-api)
-BuildRequires:  mvn(javax.persistence:persistence-api)
 BuildRequires:  mvn(javax.servlet.jsp:jsp-api)
-BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(javax.servlet:servlet-api)
+BuildRequires:  mvn(javax.transaction:javax.transaction-api)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.codehaus.jettison:jettison)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-continuation)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-webapp)
 BuildRequires:  mvn(org.freemarker:freemarker)
 BuildRequires:  mvn(org.glassfish.grizzly:grizzly-http-server)
 BuildRequires:  mvn(org.glassfish.grizzly:grizzly-http-servlet)
@@ -83,14 +89,9 @@ BuildRequires:  mvn(org.hamcrest:hamcrest-library)
 BuildRequires:  mvn(org.hibernate:hibernate-validator)
 BuildRequires:  mvn(org.hibernate:hibernate-validator-cdi)
 BuildRequires:  mvn(org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec)
-BuildRequires:  mvn(org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec)
 BuildRequires:  mvn(org.jboss.weld.se:weld-se-core)
 BuildRequires:  mvn(org.jboss:jboss-vfs)
-BuildRequires:  mvn(org.jvnet.mimepull:mimepull)
 BuildRequires:  mvn(org.mockito:mockito-all)
-BuildRequires:  mvn(org.simpleframework:simple-common)
-BuildRequires:  mvn(org.simpleframework:simple-http)
-BuildRequires:  mvn(org.simpleframework:simple-transport)
 BuildRequires:  mvn(org.testng:testng)
 %endif
 
@@ -114,11 +115,7 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
+%autosetup -p1
 
 find . -name "*.jar" -print -delete
 find . -name "*.class" -print -delete
@@ -162,14 +159,15 @@ find core-* containers/{grizzly2,jdk,jetty}-http media/sse ext/{entity-filtering
 %pom_change_dep -r org.glassfish:jakarta.json org.glassfish:javax.json
 %pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
 %pom_change_dep -r org.osgi:org.osgi.compendium org.osgi:osgi.cmpn
+%pom_change_dep -r jakarta.ws.rs:jakarta.ws.rs-api javax.ws.rs:javax.ws.rs-api
 
 # Fix NoClassDefFound in tests
 %pom_add_dep javax.json:javax.json-api:1.0 media/json-processing
 
 # Fix misc EE API references
 %pom_change_dep javax:javaee-api javax.enterprise:cdi-api:'${cdi.api.version}':provided ext/cdi/jersey-cdi1x-transaction
-%pom_add_dep org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-transaction
-%pom_add_dep org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-validation
+%pom_add_dep javax.transaction:javax.transaction-api:1.3:provided ext/cdi/jersey-cdi1x-transaction
+#pom_add_dep org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-validation
 
 # uses com.sun.javadoc apis removed in JDK 13
 %pom_disable_module wadl-doclet ext
@@ -254,21 +252,18 @@ rm media/multipart/src/test/java/org/glassfish/jersey/media/multipart/internal/M
 
 # Additional modules to disable when jp_minimal is activated
 %if %{with jp_minimal}
-%pom_disable_module containers
-%pom_disable_module security
+%pom_disable_module grizzly2-http containers
+%pom_disable_module grizzly2-servlet containers
 %pom_disable_module json-jettison media
 %pom_disable_module json-processing media
-%pom_disable_module multipart media
 %pom_disable_module sse media
 %pom_disable_module bean-validation ext
 %pom_disable_module cdi ext
-%pom_disable_module metainf-services ext
 %pom_disable_module mvc ext
 %pom_disable_module mvc-bean-validation ext
 %pom_disable_module mvc-freemarker ext
 %pom_disable_module mvc-jsp ext
 %pom_disable_module mvc-mustache ext
-%pom_disable_module proxy-client ext
 %pom_disable_module rx ext
 %endif
 
@@ -286,16 +281,7 @@ sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' c
 %pom_add_dep javax.xml.bind:jaxb-api::provided core-server ext/entity-filtering
 
 # All aggregation poms conflict because they have the same aId
-%{mvn_file} "org.glassfish.jersey.connectors:project" %{name}/connectors-project
-%{mvn_file} "org.glassfish.jersey.containers:project" %{name}/containers-project
-%{mvn_file} "org.glassfish.jersey.ext:project" %{name}/ext-project
-%{mvn_file} "org.glassfish.jersey.ext.cdi:project" %{name}/ext-cdi-project
-%{mvn_file} "org.glassfish.jersey.ext.rx:project" %{name}/ext-rx-project
-%{mvn_file} "org.glassfish.jersey.inject:project" %{name}/inject-project
-%{mvn_file} "org.glassfish.jersey.media:project" %{name}/media-project
-%{mvn_file} "org.glassfish.jersey.security:project" %{name}/security-project
-%{mvn_file} "org.glassfish.jersey.test-framework:project" %{name}/test-framework-project
-%{mvn_file} "org.glassfish.jersey.test-framework.providers:project" %{name}/test-framework-providers-project
+%mvn_package :project __noinstall
 
 # Package test framework separately
 %{mvn_package} "org.glassfish.jersey.test-framework*:" test-framework

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Sep 27 21:10:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.1:
+  * Features:
+    - Add rpc_public_addr_subnet configuration option (#817)
+    - Improve LMDB performance (#855)
+    - Improve metadata performance (#873, #877)
+  * Bug fixes:
+    - Discard old layout info when it is completely out-of-date,
+      fixes introducing new nodes in an old cluster (#841, #861)
+    - PostObject: don't modify request before validating policy
+      (#850)
+    - Fix logic in garage layout skip-dead-nodes (#879, #880)
+    - Kill opened connections after SIGINT after 10s deadline
+      (#806, #864)
+  * Other:
+    - Update the time dependency to fix builds using Rust 1.80
+      (#849, #865)
+    - Fix build when lmdb feature is disabled (#800, #863)
+    - Improvements to Nix tooling (#816)
+    - Improvements to Helm chart (#823, #843)
+    - Toolchain updates (#866)
+    - Documentation fixes (#799, #802, #831, #875, #803, #862)
+    - CLI help and error message improvements (#813, #846)
+
+-------------------------------------------------------------------
+Mon Jun 24 07:39:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package garage: S3-compatible object store for small
+  self-hosted geo-distributed deployments

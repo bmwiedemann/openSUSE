@@ -17,7 +17,6 @@
 
 #!BuildTag: opensuse/mariadb-client:%%mariadb_version%%-%RELEASE%
 #!BuildTag: opensuse/mariadb-client:%%mariadb_version%%
-#!BuildTag: opensuse/mariadb-client:11.5-%RELEASE%
 #!BuildTag: opensuse/mariadb-client:11.5
 #!BuildTag: opensuse/mariadb-client:latest
 

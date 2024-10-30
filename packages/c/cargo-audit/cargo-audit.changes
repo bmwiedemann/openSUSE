@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Oct 30 01:07:51 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.21.0~git0.78f9859:
+  * cargo-audit v0.21.0 (#1277)
+  * README.md(s): fix crate badges (#1276)
+  * rustsec v0.30.0 (#1275)
+  * Cargo.lock: bump dependencies (#1274)
+  * Cargo.toml: bump `cargo-lock` to v10.0.1 (#1272)
+  * cargo-lock v10.0.1 (#1271)
+  * cargo-lock: fix issue with v4 lockfiles (#1270)
+  * cargo-audit v0.21.0-rc.0 (#1267)
+  * rustsec v0.30.0-rc.1 (#1266)
+  * Cargo.toml(s): fix `repository` links (#1265)
+  * cargo-lock v10.0.0 (#1264)
+  * cargo-lock: use `doc_auto_cfg` (#1263)
+  * cargo-audit: bump `abscissa` to v0.8 (#1262)
+  * Bump auditable-extract in Cargo.lock for the WASM bugfix
+  * build(deps): bump actions/cache from 4.1.0 to 4.1.1 (#1259)
+  * V4 is supported now (#1260)
+  * rustsec v0.30.0-rc.0 (#1258)
+  * cargo-lock v10.0.0-rc.0 (#1257)
+  * cargo-lock: add support for V4 lockfiles (#1206)
+  * Cargo.lock: bump dependencies (#1256)
+  * build(deps): bump actions/cache from 4.0.2 to 4.1.0 (#1252)
+  * bump gix to 0.66 and fwe others (#1251)
+  * .github: install target in release workflow
+  * build(deps): bump regex from 1.10.5 to 1.10.6 (#1234)
+  * build(deps): bump xml-rs from 0.8.20 to 0.8.21 (#1236)
+  * cargo-audit: make `cargo-lock` a hard dependency (#1239)
+  * build(deps): bump tame-index from 0.13.0 to 0.13.1
+  * cargo-audit v0.21.0-pre.0 (#1233)
+  * rustsec v0.30.0-pre.0 (#1232)
+  * Bump `gix` => v0.64; `tame-index` => v0.13 (#1230)
+  * rustsec: fix test name (#1231)
+  * Bump `auditable-info` => 0.8; `auditable-serde` => v0.7 (#1229)
+  * Use cargo-lock v10.0.0-pre.0 branch for `auditable-serde` (#1228)
+  * cargo-lock v10.0.0-pre.0 (#1227)
+  * cargo-lock: remove `toml` from the public API (#1226)
+  * Bump `toml` to v0.8 (#1225)
+  * Bump versions to prepare for breaking changes (#1224)
+  * CI: re-enable self-audit (#1223)
+  * Cargo.lock: bump dependencies (#1222)
+  * build(deps): bump actions/cache from 4.0.1 to 4.0.2 (#1154)
+  * build(deps): bump xml-rs from 0.8.19 to 0.8.20 (#1163)
+  * build(deps): bump rust-embed from 8.4.0 to 8.5.0 (#1210)
+  * build(deps): bump tame-index from 0.12.0 to 0.12.2 (#1215)
+  * rustsec: re-enable happy path test (#1221)
+  * build(deps): bump regex from 1.10.4 to 1.10.5 (#1199)
+  * build(deps): bump gix-attributes from 0.22.2 to 0.22.3 (#1220)
+  * build(deps): bump mio from 0.8.10 to 0.8.11 (#1219)
+  * rustsec: Rust 1.80 fixes (#1218)
+  * deps: bump libc from 0.2.153 to 0.2.155 (#1197)
+  * build(deps): bump url from 2.5.0 to 2.5.2 (#1201)
+  * build(deps): bump softprops/action-gh-release from 2.0.5 to 2.0.8 (#1214)
+  * chore: leverage workspace inheritance (#1209)
+  * chore: cargo fmt
+  * tweak help to still show default
+  * feat(cli): Honor CARGO_TERM_COLOR if found for cargo-audit
+  * chore: regenerate platform support and bump to platforms@3.4.1
+
+-------------------------------------------------------------------
 Tue Sep 24 00:54:04 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update vendor.tar.zst: gix-path improper path resolution

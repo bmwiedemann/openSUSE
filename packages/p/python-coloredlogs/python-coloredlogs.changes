@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 02:59:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * No longer use now-removed pipes module. 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

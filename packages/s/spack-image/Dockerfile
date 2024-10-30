@@ -17,7 +17,6 @@
 #!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/bci/spack:0.22.1-%RELEASE%
 #!BuildTag: opensuse/bci/spack:0.22.1
-#!BuildTag: opensuse/bci/spack:0.22-%RELEASE%
 #!BuildTag: opensuse/bci/spack:0.22
 #!BuildTag: opensuse/bci/spack:latest
 

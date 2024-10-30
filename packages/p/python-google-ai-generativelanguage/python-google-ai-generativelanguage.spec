@@ -58,7 +58,8 @@ Google Ai Generativelanguage API client library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v
+cd tests
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/google

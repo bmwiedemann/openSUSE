@@ -111,4 +111,16 @@
     <comment></comment>
     <requestid>1202814</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b94db4b79a848ee43c88562c8b86601</srcmd5>
+    <version>0.26.1</version>
+    <time>1730305990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.1:
+  * add missing mac os wheels
+
+- enable %{?sle15_python_module_pythons}
+- initial build. this package is needed to build and use the python wurfl package</comment>
+    <requestid>1219191</requestid>
+  </revision>
 </revisionlist>
