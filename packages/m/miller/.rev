@@ -330,4 +330,12 @@
   * Bump github/codeql-action from 3.25.10 to 3.25.11 (#1593)</comment>
     <requestid>1194737</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0feacde914a663b8b819ab6b4d481d2f</srcmd5>
+    <version>6.13.0+git20241006.7a0320fc2</version>
+    <time>1730306423</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219509</requestid>
+  </revision>
 </revisionlist>
