@@ -471,4 +471,13 @@
 - Specfile Cleanup</comment>
     <requestid>1178543</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b36c613d27a13d410235e4d1b6325e49</srcmd5>
+    <version>3.12.0</version>
+    <time>1730326565</time>
+    <user>dimstar_suse</user>
+    <comment>- Change BuildRequires from lxqt-build-tools-devel to
+  cmake(lxqt-build-tools)</comment>
+    <requestid>1219739</requestid>
+  </revision>
 </revisionlist>

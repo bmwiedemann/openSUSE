@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 18:37:01 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Change BuildRequires from lxqt-build-tools-devel to
+  cmake(lxqt-build-tools)
+
+-------------------------------------------------------------------
 Tue Jun  4 15:05:05 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Removed %{buildroot}%{_sysconfdir}/xdg/*.conf
