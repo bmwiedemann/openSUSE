@@ -81,4 +81,13 @@
     <comment>make builds reproducible</comment>
     <requestid>1102653</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4c3b7211bc32731f49dba846a92ff977</srcmd5>
+    <version>4.1.0</version>
+    <time>1730306623</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch (CVE-2024-50602, boo#1232580)
+  * CVE-2024-50602.patch</comment>
+    <requestid>1219581</requestid>
+  </revision>
 </revisionlist>

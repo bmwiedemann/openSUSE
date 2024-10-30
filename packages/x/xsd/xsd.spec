@@ -30,6 +30,8 @@ Source3:        cxx-tree-manual.pdf
 Source99:       xsd-rpmlintrc
 # Rename xsd to xsdcxx
 Patch0:         xsdcxx-rename.patch
+# PATCH-FIX-UPSTREAM -- CVE-2024-50602
+Patch1:         CVE-2024-50602.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
