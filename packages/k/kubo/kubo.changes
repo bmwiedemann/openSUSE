@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 25 18:17:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.31.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.31.0
+  * Experimental Pebble Datastore
+  * New metrics
+  * lowpower profile no longer breaks DHT announcements
+  * go 1.23, boxo 0.24 and go-libp2p 0.36.5
+- Update to 0.30.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.30.0
+  * Improved P2P connectivity
+  * Refactored Bitswap and dag-pb chunker
+  * WebRTC-Direct Transport enabled by default
+  * UnixFS 1.5: Mode and Modification Time Support
+  * AutoNAT V2 Service Introduced Alongside V1
+  * Automated ipfs version check
+  * Version Suffix Configuration
+  * /unix/ socket support in Addresses.API
+  * Cleaned Up ipfs daemon Startup Log
+  * Commands Preserve Specified Hostname 
+
+-------------------------------------------------------------------
 Tue Jun 11 07:30:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.29.0 - for details see

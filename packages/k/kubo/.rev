@@ -117,4 +117,12 @@ now with fixed build</comment>
 - drop upstream kubo-0.27.0-CVE-2024-22189.patch</comment>
     <requestid>1179970</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>97249fe97f6ad98281527ab8e722b47a</srcmd5>
+    <version>0.31.0</version>
+    <time>1730307929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219601</requestid>
+  </revision>
 </revisionlist>
