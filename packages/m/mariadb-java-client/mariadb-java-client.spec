@@ -17,7 +17,7 @@
 
 
 Name:           mariadb-java-client
-Version:        2.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Connects applications developed in Java to MariaDB and MySQL databases
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -31,6 +31,8 @@ BuildRequires:  mvn(net.java.dev.jna:jna)
 BuildRequires:  mvn(net.java.dev.jna:jna-platform)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 Requires:       mariadb
 
@@ -48,74 +50,48 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n mariadb-connector-j-%{version}
-
-# convert files from dos to unix line encoding
-for file in README.md documentation/*.creole; do
- sed -i.orig 's|\r||g' $file
- touch -r $file.orig $file
- rm $file.orig
-done
-
-# remove missing optional dependency waffle-jna
-%pom_remove_dep com.github.waffle:waffle-jna
-# also remove the file using the removed plugin
-rm -f src/main/java/org/mariadb/jdbc/internal/com/send/authentication/gssapi/WindowsNativeSspiAuthentication.java
-# patch the sources so that the missing file is not making trouble
 %patch -P 0 -p1
+
+%pom_remove_dep com.github.waffle:waffle-jna
+%pom_remove_dep ch.qos.logback:logback-classic
+%pom_remove_dep software.amazon.awssdk:bom
+%pom_remove_dep software.amazon.awssdk:rds
+%pom_remove_dep org.junit:junit-bom
+%pom_remove_dep org.junit.jupiter:junit-jupiter-engine
+
+# used in buildtime for generating OSGI metadata
+%pom_remove_plugin biz.aQute.bnd:bnd-maven-plugin
+
+%pom_add_dep net.java.dev.jna:jna
+%pom_add_dep net.java.dev.jna:jna-platform
+
+# make the slf4j dependency version-independent
+%pom_remove_dep org.slf4j:slf4j-api
+%pom_add_dep org.slf4j:slf4j-api
+
+# use the latest OSGi implementation
+%pom_change_dep -r :org.osgi.core org.osgi:osgi.core
+%pom_change_dep -r :org.osgi.compendium org.osgi:osgi.cmpn
+
+rm -r src/main/java/org/mariadb/jdbc/plugin/credential/aws
+
+# removing dependencies and 'provides', which mariadb-java-client cannot process from module-info.java
+sed -i '/aws/d' src/main/java9/module-info.java
+sed -i '/waffle/d' src/main/java9/module-info.java
+
+# removing missing dependencies form META-INF, so that the mariadb-java-client module would be valid
+sed -i '/aws/d' src/main/resources/META-INF/services/org.mariadb.jdbc.plugin.CredentialPlugin
+sed -i '/aws/d' src/test/resources/META-INF/services/org.mariadb.jdbc.plugin.CredentialPlugin
+rm -f src/main/java/org/mariadb/jdbc/plugin/authentication/addon/gssapi/WindowsNativeSspiAuthentication.java
 
 %{mvn_file} org.mariadb.jdbc:%{name} %{name}
 %{mvn_alias} org.mariadb.jdbc:%{name} mariadb:mariadb-connector-java
 
 %pom_remove_plugin org.jacoco:jacoco-maven-plugin
-%pom_remove_plugin org.apache.maven.plugins:maven-checkstyle-plugin
-%pom_remove_plugin org.apache.maven.plugins:maven-javadoc-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-source-plugin
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
-%pom_remove_plugin pl.project13.maven:git-commit-id-plugin
 %pom_remove_plugin -r :maven-gpg-plugin
-
-# remove preconfigured OSGi manifest file and generate OSGi manifest file
-# with maven-bundle-plugin instead of using maven-jar-plugin
-rm src/main/resources/META-INF/MANIFEST.MF
-%pom_xpath_set "pom:packaging" bundle
-%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-jar-plugin']/pom:configuration/pom:archive/pom:manifestFile" '${project.build.outputDirectory}/META-INF/MANIFEST.MF'
-%pom_xpath_remove "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-jar-plugin']/pom:configuration/pom:archive/pom:manifestEntries"
-
-%pom_xpath_inject "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-jar-plugin']" '
-<executions>
-  <execution>
-    <goals>
-      <goal>test-jar</goal>
-    </goals>
-  </execution>
-</executions>'
-
-%pom_add_plugin org.apache.felix:maven-bundle-plugin:2.5.4 . '
-<extensions>true</extensions>
-<configuration>
-  <instructions>
-    <Bundle-SymbolicName>${project.groupId}</Bundle-SymbolicName>
-    <Bundle-Name>MariaDB JDBC Client</Bundle-Name>
-    <Bundle-Version>${project.version}.0</Bundle-Version>
-    <Export-Package>org.mariadb.jdbc.*</Export-Package>
-    <Import-Package>
-      !com.sun.jna.*,
-      javax.net;resolution:=optional,
-      javax.net.ssl;resolution:=optional,
-      javax.sql;resolution:=optional,
-      javax.transaction.xa;resolution:=optional
-    </Import-Package>
-  </instructions>
-</configuration>
-<executions>
-  <execution>
-    <id>bundle-manifest</id>
-    <phase>process-classes</phase>
-    <goals>
-      <goal>manifest</goal>
-    </goals>
-  </execution>
-</executions>'
+%pom_remove_plugin -r :maven-javadoc-plugin
 
 %build
 # tests are skipped, while they require running application server
@@ -127,7 +103,7 @@ rm src/main/resources/META-INF/MANIFEST.MF
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc documentation/* README.md
+%doc README.md
 %license LICENSE
 
 %files javadoc -f .mfiles-javadoc

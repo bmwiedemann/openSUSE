@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Oct 30 13:31:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.5.0
+  * Notable changes
+    + CONJ-1193 Parsec authentication implementation
+    + CONJ-1183 permit setting specific truststore
+  * Bugs Fixed
+    + CONJ-1202 Session variable setting must be executed last
+    + CONJ-1201 incorrect default behavior for
+      forceConnectionTimeZoneToSession
+    + CONJ-1200 Batch import fails with exception "Unknown command"
+    + CONJ-1199 option connectionCollation addition in order to
+      force collation
+    + CONJ-1187 Use different exception type for connection timeouts
+- General comments on 3.x
+  * This version is a total rewrite of java driver.
+    + complete rewrite, code clarification, reduced size (15%),
+      more than 90% coverage tested.
+    + Encoding/decoding implementation are now registred by Codec,
+      permitting codec registry implementation
+      ° example support of Geometry Object
+    + Permit authentication plugin restriction by option
+      restrictedAuth
+    + Performance improvement:
+      ° Prepare and execution are now using pipelining when using
+        option useServerPrepStmts
+      ° performance enhancement with MariaDB 10.6 server when using
+        option useServerPrepStmts, skipping metadata (MDEV-19237)
+  * correction:
+    + CONJ-864 includeThreadDumpInDeadlockExceptions always includes
+      the thread dump, even when it is not a deadlock exception
+    + CONJ-858 Properties parameter that differ from string not
+      taken in account
+  * Easy logging:
+    If using log4j, just enabled package "org.mariadb.jdbc" log.
+    + level ERROR will log connection error
+    + level WARNING will log query errors
+    + level DEBUG will log queries
+    + evel TRACE will log all exchanges with server.
+    If not using log4j, console will be used.
+    If really wanting to use JDK logger, System property
+    "mariadb.logging.fallback" set to JDK will indicate to use
+    common logging.
+  * Failover
+    Failover implementation now permit to redo transaction: when
+    creating a transaction, all command will be cached, and can be
+    replayed in case of failover.
+    This functionality can be enabled using option
+    transactionReplay.
+    This is not enabled by default, because this required that
+    application avoids using non-idempotent commands.
+    example:
+      START TRANSACTION;
+      select next_val(hibernate_sequence);
+      INSERT INTO myCar(id, name) VALUE (?, ?)
+        //with parameters: 1, 'car1'
+      INSERT INTO myCarDetail(id, carId, name) VALUE (?, ?, ?)
+        //with parameters: 2, 1, 'detail1'
+      INSERT INTO myCarDetail(id, carId, name) VALUE (?, ?, ?)
+        //with parameters: 3, 2, 'detail2'
+      COMMIT;
+  * Allow setup of TCP_KEEPIDLE, TCP_KEEPCOUNT, TCP_KEEPINTERVAL
+    + Equivalent options are tcpKeepIdle, tcpKeepCount,
+      tcpKeepInterval
+    + Since available only with java 11, setting this option with
+      java < 11 will have no effect.
+- Modified patch:
+  * remove_waffle-jna.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Feb 21 10:49:28 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
