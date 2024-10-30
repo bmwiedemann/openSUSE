@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 14 13:14:53 UTC 2024 - varkoly@suse.com
+
+- Update to version 2.3.1+git86.59c39afe:
+  * vrrp: allow specifing interval amd timeout to milli-second resolution
+  * vrrp: on reload only configured track_script name was checked
+  * lib: fix corruption of master-child_pid red black tree
+  * lib: add micro-second timers to memory allocation debugging
+  * core: update addattr_l to match current iproute2 code - almost
+  * lib: add file missing from previous commit
+  * all: suppress an increases alignment warning
+  * core: use /* FALLTHROUGH */ rather than __fallthrough;
+  * ipvs: resolve a "cast increases required alignment" warning
+  * build: don't redefine FORTIFY_SOURCE if host environment defines it
+  * vrrp ipvs: remove unused definition of XENFS_SUPER_MAGIC
+  * vrrp ipvs: fix warnings related to signedness of statfs() f_flags
+  * all: use correct format specifier for time fields
+  * bfd: make alloc_bfd() return NULL rather than false on error
+  * all: make min_auto_priority delay variable an unsigned
+  * configure: explicitly set language to C for configure
+  * itest: Warn if close after send not set in tcp_server for http
+  * test: Make tcp_server use of SO_LINGER optional
+  * core: remove diagnostic message accidently added in commit 7cb09b2
+  * vrrp ipvs: Stop setting SO_LINGER on TCP sockets
+  * test: update tcp_server and tcp_client
+  * bfd: use time_t to avoid implicit ptr type casting
+  * VRRP: add thread_timer_expired keyword as a synonym of timer_expired_backup
+
+-------------------------------------------------------------------
 Wed Sep 11 07:57:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update service file to use manual mode as disabled is deprecated
