@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-headers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-headers
-Version:        11.0.1
+Version:        12.0.0
 Release:        0
 Summary:        MinGW-w64 headers for Win32 and Win64
 License:        SUSE-Public-Domain
@@ -54,9 +54,7 @@ an actual pthread implementation (like winpthreads) is installed.
 %autosetup -n mingw-w64-v%version/mingw-w64-headers -p2
 
 %build
-%_mingw32_configure \
-	--enable-sdk=all \
-	--enable-secure-api
+%_mingw32_configure --enable-sdk=all --with-default-msvcrt=msvcrt
 %make_build
 
 %install
