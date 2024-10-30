@@ -1107,6 +1107,9 @@ Prefer: -python312-pytest-asyncio0.21
 # have choice for libsymspg.so.2()(64bit) needed by libAvogadro1: libsymspg2 python3-spglib
 Prefer: -python3-spglib
 
+# have choice for ovpn-dco-kmp needed by openvpn: ovpn-dco-kmp-64kb ovpn-dco-kmp-default
+Prefer: -ovpn-dco-kmp-64kb
+
 # have choice for pkgconfig(fmt): fmt-9-devel fmt-devel
 Prefer: -fmt-9-devel
 
