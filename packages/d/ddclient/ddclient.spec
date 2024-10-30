@@ -30,6 +30,7 @@ Source3:        %{name}-tmpfiles.conf
 Patch0:         %{name}-config.patch
 Patch1:         %{name}-delay-main-process-for-systemd.patch
 Patch2:         disable-ip-test.patch
+Patch3:         %{name}-disable-automake-treating-warnings-as-error.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl

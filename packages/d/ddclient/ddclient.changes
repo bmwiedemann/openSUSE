@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:31:48 UTC 2024 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Add ddclient-disable-automake-treating-warnings-as-error.patch:
+  Disable automake treating warnings as error, see
+  https://github.com/ddclient/ddclient/pull/746/
+  This makes building in OBS working again.
+
+-------------------------------------------------------------------
 Mon Feb  5 10:10:56 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Use sysuser-tools to create user.
