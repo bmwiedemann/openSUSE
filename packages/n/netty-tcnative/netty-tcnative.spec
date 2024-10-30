@@ -19,7 +19,7 @@
 %global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
 Name:           netty-tcnative
-Version:        2.0.66
+Version:        2.0.67
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0

@@ -7,4 +7,12 @@
     <comment>Bring back netty-tcnative to factory</comment>
     <requestid>1208739</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>87dfd2fb44989426c46608275b5b6bc9</srcmd5>
+    <version>2.0.67</version>
+    <time>1730306616</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.67</comment>
+    <requestid>1219593</requestid>
+  </revision>
 </revisionlist>
