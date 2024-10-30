@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 # Copyright (c) 2021/22 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
@@ -31,7 +31,7 @@
 %endif
 
 Name:           libfprint
-Version:        1.94.7+%{todapiver}
+Version:        1.94.8+%{todapiver}
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
@@ -39,13 +39,16 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/fprint
 Source0:        https://gitlab.freedesktop.org/3v1n0/libfprint/-/archive/v%{version}/libfprint-v%{version}.tar.bz2
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE - fix compilation problem on < GCC 14
+Patch0:         label-can-only-be-part-of-a-statement.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.46.1
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(libusb-1.0)
