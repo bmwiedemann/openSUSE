@@ -31,7 +31,6 @@ RUN set -euo pipefail; \
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
-LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.81"
 LABEL org.opencontainers.image.description="Rust 1.81 container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%RUST_VERSION%%"
