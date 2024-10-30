@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 10:45:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * C++ overloads for _strdate_s and _strtime_s, _makepath_s,
+    wcsncat_s.
+  * Updated wine header imports.
+  * Many other new win32 APIs.
+  * UCRT configurations now primarily use (faster) math functions
+    from UCRT, rather than libmingwex.
+
+-------------------------------------------------------------------
 Fri Nov  3 12:33:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.0.1
