@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 12 07:46:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.14
+  * Switch to libxmp for most tracker formats
+  * Switch to float output
+- Add system-libxmp.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 00:51:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add system-zlib.patch

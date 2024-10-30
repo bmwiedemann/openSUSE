@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.13
+Version:        1.1.14
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ Patch1:         system-fluidsynth.patch
 Patch2:         system-gme.patch
 Patch3:         system-zlib.patch
 Patch4:         dumb-dumb.patch
+Patch5:         system-libxmp.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -37,6 +38,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       fluid-soundfont-gm
@@ -44,6 +46,7 @@ Suggests:       fluid-soundfont-gs
 Suggests:       timidity
 Suggests:       timidity-eawpats
 # DUMB is modified to read OggVorbis samples
+# Though everything else has been moved to libxmp, DSIK format still uses foo_DUMB
 Provides:       bundled(dumb) = 0.9.3
 
 %description
