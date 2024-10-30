@@ -246,4 +246,13 @@
     <comment></comment>
     <requestid>1123553</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>878702c7bafd957f68bfbbcb682d323b</srcmd5>
+    <version>1.4.0</version>
+    <time>1730325525</time>
+    <user>dimstar_suse</user>
+    <comment>- Change BuildRequires from lxqt-build-tools-devel to
+  cmake(lxqt-build-tools)</comment>
+    <requestid>1219701</requestid>
+  </revision>
 </revisionlist>

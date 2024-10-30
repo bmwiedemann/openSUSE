@@ -37,9 +37,9 @@ Source:         https://github.com/lxqt/qtermwidget/releases/download/%{version}
 Source1:        https://github.com/lxqt/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.9
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  utf8proc-devel
+BuildRequires:  cmake(lxqt-build-tools) >= 0.13.0
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
 
