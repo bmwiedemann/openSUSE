@@ -31,7 +31,7 @@
 %bcond_without slp
 %endif
 Name:           linphone
-Version:        5.3.26
+Version:        5.3.37
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
@@ -100,6 +100,7 @@ BuildRequires:  pkgconfig(zxing)
 BuildRequires:  openslp-devel
 %endif
 BuildRequires:  chrpath
+BuildRequires:  libtool
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -204,6 +205,7 @@ with high speed connections as well as 28k modems.
 mkdir aux
 tar fx %{SOURCE3} -C aux
 cd aux/openldap-bc
+autoreconf -vif
 LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
   --enable-static=yes \
   --enable-shared=no \
