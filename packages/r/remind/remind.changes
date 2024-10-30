@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 17 07:13:24 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.0 Patch 7 - 2024-10-16
+
+- NEW FEATURE: tkremind: Add option to create a desktop notification when
+  a queued reminder is triggered.  For Tcl/Tk 9.0 or later, uses the native
+  "tk sysnotify" facility.  For earlier versions of Tcl/Tk, executes the
+  "notify-send" program if possible.
+
+- NEW FEATURE: remind: Add --print-config-cmd option which prints the
+  exact ./configure command used to build Remind.  This will let you
+  configure future Remind releases exactly the same way an installed
+  version was configured.
+
+- UPDATE: include/holidays/ca.rem: Add National Day for Truth and
+  Reconciliation to Canadian holiday list.
+
+- MINOR IMPROVEMENTS: Update examples/ansitext and examples/astro
+
+- MINOR IMPROVEMENT: remind: Use HashPJW to hash variable and function
+  names; make the hash table size a prime rather than a power of two.
+  This seems to improve hash performance ever so slightly in most cases.
+
+- UPDATE: Update contrib/ical2rem to upstream version 0.7.1
+
+- FIX: tkremind: Make tkremind work with Tcl/Tk 8.5 or higher, including
+  Tcl/Tk 9.0
+
+- MINOR CHANGE: remind: Add hash table statistics to "-ds" debugging
+  output.  This is probably of no use to anyone except the author of
+  Remind.
+
+-------------------------------------------------------------------
 Mon Sep 16 14:44:54 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.0 Patch 6 - 2024-09-16
