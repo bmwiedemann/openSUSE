@@ -24,7 +24,7 @@
 %endif
 
 %ifarch aarch64
-# Disable ACL until fixed upstream - https://github.com/oneapi-src/oneDNN/issues/2109
+# Disable ACL until fixed upstream - https://github.com/oneapi-src/oneDNN/issues/2137
 %bcond_with acl
 %else
 %bcond_with acl
@@ -32,7 +32,7 @@
 
 %define libname libdnnl3
 Name:           onednn
-Version:        3.5.3
+Version:        3.6
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
@@ -46,7 +46,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  texlive-dvips-bin
 %if %{with acl}
-BuildRequires:  ComputeLibrary-devel >= 24.04
+BuildRequires:  ComputeLibrary-devel >= 24.08.1
 %endif
 %if %{with opencl}
 BuildRequires:  opencl-headers

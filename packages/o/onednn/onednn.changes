@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 17 11:42:58 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.6:
+  * https://github.com/oneapi-src/oneDNN/releases/tag/v3.6
+
+-------------------------------------------------------------------
 Wed Oct  2 12:06:54 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add openCL deps for devel package
