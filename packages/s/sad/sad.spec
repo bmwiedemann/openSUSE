@@ -17,7 +17,7 @@
 
 
 Name:           sad
-Version:        0.4.28
+Version:        0.4.31
 Release:        0
 Summary:        CLI search and replace batch file editing tool
 URL:            https://github.com/ms-jpq/sad

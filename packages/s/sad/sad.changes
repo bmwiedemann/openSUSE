@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 25 01:50:25 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.4.31:
+  * Fix display issue with new fzf ( no longer use \n as delimiter )
+  * Revert multi-select preview, since it conflicts with incremental preview :(
+  * Add PowerShell flag '\r' flag under windows
+  * Give up on trying to solve windows edge cases, instead of not working at all, it now works for utf-8 only
+  * Reduce allocations
+  * Preview multi-selects
+  * Fewer dependencies
+  * More robust signal handling
+
+-------------------------------------------------------------------
 Wed May 22 03:12:05 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.4.28:
