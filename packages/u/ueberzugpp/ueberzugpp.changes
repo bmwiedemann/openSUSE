@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 17 15:05:13 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.6+git20241007.eea57da:
+  * add ability to overridde default temporary directory
+  * [README.md] add twitchez to the list of apps that support ueberzugpp
+  * handle SIGHUP with signal handler
+  * Mixed up variables
+  * Fix when image scaling, would not check for max_width and max_height
+  * Fix image not hiding when switching between tmux sessions
+
+-------------------------------------------------------------------
 Mon Aug  5 15:25:48 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Swapping in pkgconfig(libcrypto) for pkgconfig(botan-3) per suggestion of
