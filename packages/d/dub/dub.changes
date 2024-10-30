@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jul 21 16:15:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.38.1
+  * Remove support for OMF, make MsCOFF default 
+  * Drop support for LDC v1.26.0 
+
+- Update to 1.38.0
+  * Implement filesystem attributes and use PackageManager.store 
+  * Speed up Package.getPackageConfigs 
+  * Improve the output when the subcommand is not found 
+  * Speed up module parsing with hand-written parser 
+  * Respect skipRegistry value from configuration files 
+  * Fix glitches in testcases 
+  * Fix regression in module-declarations parser 
+
+- Update to 1.37.0
+  * Deprecate Package.load, use PackageManager.load instead 
+  * platform: add support for LoongArch 
+  * Dub.loadPackage: Error out if no recipe is found 
+  * CommandLine: Type the user-provided string into its name / path component 
+  * Only check if the Package is managed by the Location in lookup 
+  * Deprecate Package JSON constructor 
+  * Fix #2706: Dub run ignores locally registered packages 
+  * fetch: Support multiple arguments, projects, recursive fetch 
+  * Add betterC probing for performance and for applications without drun… 
+  * Deprecate system flag for registration, use cache instead 
+  * Allow building deprecated modules without deprecation warnings
+  * Fix gdc build and test failures 
+  * Deprecate unused getSubPackagePath
+  * Introduce PackageName, to fully type a package name 
+  * Expand selections file handling to handle new versions 
+  * Let user $DFLAGS override build settings as much as possible
+  * Improve Dub.fetch API
+  * Deprecate Package.getInternalSubPackage, simplify DepedencyResolver
+  * Properly fix issue #2691 by reverting to the original scanning behavior 
+  * Load dub.selections.json in unittest
+  * Remove FileInfo.timeCreated 
+
+-------------------------------------------------------------------
 Tue Mar 26 15:27:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.36.0
