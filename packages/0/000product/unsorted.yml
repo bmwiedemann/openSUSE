@@ -770,7 +770,10 @@ unsorted:
   - apache-rpm-macros 
   - apache-rpm-macros-control 
   - apache-sshd 
+  - apache-sshd-extras 
+  - apache-sshd-extras-javadoc 
   - apache-sshd-javadoc 
+  - apache-sshd-standalone 
   - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
@@ -1422,6 +1425,7 @@ unsorted:
   - bind-modules-sqlite3 
   - bindfs 
   - bing 
+  - binsider 
   - binutils-devel 
   - binutils-devel-32bit 
   - binutils-gold 
@@ -3678,6 +3682,7 @@ unsorted:
   - edid-decode 
   - editorconfig 
   - editres 
+  - edk2-Shell 
   - ee4j 
   - eekboard-devel 
   - eeyek-fonts 
@@ -4622,10 +4627,8 @@ unsorted:
   - fs_mark 
   - fsarchiver 
   - fscrypt 
-  - fslsfonts 
   - fstail 
   - fstl 
-  - fstobdf 
   - fstrcmp 
   - fstrcmp-devel 
   - fstrm 
@@ -4884,6 +4887,7 @@ unsorted:
   - gap-xmodalg 
   - gap-yangbaxter 
   - gap-zeromqinterface 
+  - garage 
   - garlic 
   - garlic-doc 
   - gasket-driver 
@@ -8501,6 +8505,11 @@ unsorted:
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
+  - hawtjni 
+  - hawtjni-javadoc 
+  - hawtjni-maven-plugin 
+  - hawtjni-maven-plugin-javadoc 
+  - hawtjni-runtime 
   - haxe 
   - hayagriva 
   - hbci4java 
@@ -11755,8 +11764,6 @@ unsorted:
   - libXpm-tools 
   - libXpm4-32bit 
   - libXpresent-devel 
-  - libXprintAppUtil-devel 
-  - libXprintAppUtil1 
   - libXprintUtil-devel 
   - libXprintUtil1 
   - libXrandr-devel 
@@ -12497,6 +12504,10 @@ unsorted:
   - libcg3-1 
   - libcglm0 
   - libcgns4_4 
+  - libcgroup-devel 
+  - libcgroup-pam 
+  - libcgroup-tools 
+  - libcgroup3 
   - libchafa0 
   - libchamplain-0_12-0 
   - libchamplain-devel 
@@ -14148,8 +14159,8 @@ unsorted:
   - libjson-c-doc 
   - libjson-c5-32bit 
   - libjson-glib-1_0-0-32bit 
-  - libjsoncpp25 
-  - libjsoncpp25-x86-64-v3 
+  - libjsoncpp26 
+  - libjsoncpp26-x86-64-v3 
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
@@ -15274,7 +15285,7 @@ unsorted:
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
-  - libparu0 
+  - libparu1 
   - libpasswdqc0 
   - libpath_utils-devel 
   - libpcap-devel 
@@ -15486,13 +15497,13 @@ unsorted:
   - libproj25 
   - libprometheus-cpp0_13 
   - libprotobuf-c-devel 
-  - libprotobuf-lite25_4_0-32bit 
+  - libprotobuf-lite28_3_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf25_4_0-32bit 
+  - libprotobuf28_3_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc25_4_0 
-  - libprotoc25_4_0-32bit 
+  - libprotoc28_3_0 
+  - libprotoc28_3_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -15866,7 +15877,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_54 
+  - librealsense2_56 
   - librec1 
   - librecad 
   - librecad-parts 
@@ -16341,7 +16352,7 @@ unsorted:
   - libspeexdsp1-32bit 
   - libspelling-devel 
   - libspex-doc 
-  - libspex2 
+  - libspex3 
   - libspf2-2 
   - libspf2-apidocs 
   - libspf2-devel 
@@ -16813,6 +16824,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit 
+  - libutf8_range-28_3_0-32bit 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -17382,6 +17394,7 @@ unsorted:
   - libyajl-devel 
   - libyajl-devel-static 
   - libyaml-0-2-32bit 
+  - libyaml-cpp0_8-32bit 
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
@@ -18743,6 +18756,8 @@ unsorted:
   - miller 
   - miltertest 
   - mimalloc-devel 
+  - mimepull 
+  - mimepull-javadoc 
   - mimetreeparser-devel 
   - mimetreeparser-imports 
   - mimic 
@@ -19720,6 +19735,7 @@ unsorted:
   - neovim 
   - neovim-gtk 
   - neovim-lang 
+  - neowofetch 
   - nerdctl 
   - nestopia 
   - net-snmp-devel 
@@ -19791,6 +19807,9 @@ unsorted:
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
+  - netty 
+  - netty-javadoc 
+  - netty-poms 
   - netty-tcnative 
   - netty-tcnative-javadoc 
   - netty3 
@@ -19995,10 +20014,8 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-default-devel 
   - nvidia-open-driver-G06-signed-default-devel 
   - nvidia-open-driver-G06-signed-kmp-default 
-  - nvidia-persistenced 
   - nvidia-settings 
   - nvidia-texture-tools 
-  - nvidia-xconfig 
   - nvimpager 
   - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
@@ -22978,7 +22995,6 @@ unsorted:
   - plasma6-welcome 
   - plasma6-welcome-lang 
   - plasma6-workspace-devel 
-  - plasma6-workspace-wallpapers 
   - plasmatube 
   - plasmatube-lang 
   - plater 
@@ -23517,6 +23533,9 @@ unsorted:
   - proteus 
   - protobuf-devel 
   - protobuf-java 
+  - protobuf-java-bom 
+  - protobuf-java-javadoc 
+  - protobuf-java-parent 
   - protobuf21-devel 
   - protoc-gen-go 
   - proton-vpn 
@@ -26949,7 +26968,6 @@ unsorted:
   - python310-python-bidi 
   - python310-python-binary-memcached 
   - python310-python-box 
-  - python310-python-coveralls 
   - python310-python-crfsuite 
   - python310-python-crontab 
   - python310-python-daemon 
@@ -30531,7 +30549,6 @@ unsorted:
   - python311-python-bidi 
   - python311-python-binary-memcached 
   - python311-python-box 
-  - python311-python-coveralls 
   - python311-python-crfsuite 
   - python311-python-crontab 
   - python311-python-daemon 
@@ -34189,7 +34206,6 @@ unsorted:
   - python312-python-bidi 
   - python312-python-binary-memcached 
   - python312-python-box 
-  - python312-python-coveralls 
   - python312-python-crfsuite 
   - python312-python-crontab 
   - python312-python-daemon 
@@ -35711,7 +35727,6 @@ unsorted:
   - qtermwidget-devel 
   - qtermwidget-qt5-data 
   - qtermwidget-qt5-devel 
-  - qtfm 
   - qtile 
   - qtilitools 
   - qtkeychain-qt5-devel 
@@ -36163,7 +36178,6 @@ unsorted:
   - rss-glx 
   - rssguard 
   - rsstail 
-  - rstart 
   - rstudio 
   - rstudio-desktop 
   - rstudio-server 
@@ -37056,6 +37070,8 @@ unsorted:
   - simple-multicast 
   - simple-obfs 
   - simple-obfs-doc 
+  - simpleframework 
+  - simpleframework-javadoc 
   - simplescreenrecorder 
   - simtrace2 
   - simutrans 
@@ -37071,7 +37087,6 @@ unsorted:
   - siril 
   - sirilic 
   - sirocco-devel 
-  - sisctrl 
   - sispmctl 
   - sispmctl-devel 
   - sisu-inject 
@@ -48758,9 +48773,7 @@ unsorted:
   - xfmpc 
   - xfmpc-lang 
   - xfontsel 
-  - xfs 
   - xfs_undelete 
-  - xfsinfo 
   - xfsprogs-devel 
   - xfsprogs-scrub 
   - xfstests 

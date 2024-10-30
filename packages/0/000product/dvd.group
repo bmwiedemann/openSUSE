@@ -2595,8 +2595,8 @@
     <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite25_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libprotobuf25_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf-lite28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libprotobuf28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpskc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2746,6 +2746,7 @@
     <package name="libspandsp3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libspeech-provider-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libspeechd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libspeechd_module0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libspeex1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libspeexdsp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libspelling-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2860,6 +2861,7 @@
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libutf8_range-28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libutf8proc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libuv1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
