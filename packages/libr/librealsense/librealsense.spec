@@ -1,7 +1,7 @@
 #
 # spec file for package librealsense
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.54.2
+Version:        2.56.1
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -28,18 +28,19 @@ URL:            https://github.com/IntelRealSense/librealsense
 Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
 Patch0:         presets_path.patch
 Patch1:         disable-pedantic.patch
-Patch2:         gcc-13-include-cstdint-for-int-_t.patch
+Patch2:         0001-third-party-use-nlohmann_json-from-system.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libglvnd-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(FreeGLUT)
 BuildRequires:  cmake(glfw3) >= 3.3
+BuildRequires:  cmake(nlohmann_json) >= 3.11.3
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libglvnd)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(x11)
 
 %description
 The SDK allows depth and color streaming, and provides intrinsic and extrinsic
@@ -80,7 +81,8 @@ export CXXFLAGS='%optflags -Wno-reorder -Wno-unused-variable -Wno-sign-compare -
 sed -i "s/‘\|\’/\'/g" %{_builddir}/%{name}-%{version}/src/libusb/libusb.h
 %cmake \
 	-DOpenGL_GL_PREFERENCE=GLVND \
-	-DCHECK_FOR_UPDATES=OFF
+	-DCHECK_FOR_UPDATES=OFF \
+	-DIMPORT_DEPTH_CAM_FW=OFF
 %cmake_build
 
 %install
@@ -97,7 +99,7 @@ install -m 644 -t %{buildroot}/%{_udevrulesdir} config/99-realsense-libusb.rules
 %postun -n %{name}%{libver} -p /sbin/ldconfig
 
 %files
-%doc readme.md CONTRIBUTING.md code-of-conduct.md NOTICE
+%doc readme.md CONTRIBUTING.md code-of-conduct.md NOTICE.md Security.md
 %{_bindir}/realsense-viewer
 %dir %{_datadir}/librealsense2/
 %dir %{_datadir}/librealsense2/presets/

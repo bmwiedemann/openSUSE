@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 30 06:31:11 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.56.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.56.1
+- drop gcc-13-include-cstdint-for-int-_t.patch (in upstream)
+- add 0001-third-party-use-nlohmann_json-from-system.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 02:58:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2.54.2

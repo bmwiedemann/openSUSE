@@ -1,4 +1,4 @@
-From: Alessandro de Oliveira Faria <cabelo@opensuse.org>
+From: Jiri Slaby <jslaby@suse.cz>
 Subject: disable -pedantic
 Patch-mainline: no
 
@@ -8,10 +8,10 @@ that we can see more important warnings.
  CMake/unix_config.cmake |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- a/CMake/unix_config.cmake	2023-09-07 11:05:08.000000000 -0300
-+++ b/CMake/unix_config.cmake	2023-10-10 16:42:30.551153632 -0300
-@@ -13,8 +13,8 @@
-     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+--- a/CMake/unix_config.cmake
++++ b/CMake/unix_config.cmake
+@@ -14,8 +14,8 @@ macro(os_set_flags)
+     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
  
      set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 -    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -pedantic -D_DEFAULT_SOURCE")

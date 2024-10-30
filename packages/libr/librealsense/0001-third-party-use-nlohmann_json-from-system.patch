@@ -1,0 +1,26 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 30 Sep 2024 08:42:26 +0200
+Subject: third-party: use nlohmann_json from system
+References: nlohmann_json-from-system
+Patch-mainline: never
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ third-party/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
+index c70314062e59..a5d579d94c8d 100644
+--- a/third-party/CMakeLists.txt
++++ b/third-party/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ string(REPLACE ${PROJECT_SOURCE_DIR}/ "" _rel_path ${CMAKE_CURRENT_LIST_DIR})
+ 
+-include(CMake/external_json.cmake)
++find_package(nlohmann_json REQUIRED)
+ 
+ add_subdirectory( "${CMAKE_CURRENT_LIST_DIR}/rsutils" )
+ 
+-- 
+2.46.1
+
