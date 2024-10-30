@@ -29,9 +29,9 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(lxqt-build-tools) >= 0.8.0
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5X11Extras)

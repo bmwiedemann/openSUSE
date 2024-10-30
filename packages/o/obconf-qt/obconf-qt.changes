@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 18:40:44 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Change BuildRequires from lxqt-build-tools-devel to
+  cmake(lxqt-build-tools)
+
+-------------------------------------------------------------------
 Sun Jan 14 17:01:54 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 0.16.4:
