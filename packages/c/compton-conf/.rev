@@ -169,4 +169,12 @@
     <comment></comment>
     <requestid>1132153</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>92ac2b7a1dc8f791ca8f4e7e9f460cc1</srcmd5>
+    <version>0.16.0</version>
+    <time>1730325521</time>
+    <user>dimstar_suse</user>
+    <comment>- Change BuildRequires for lxqt-build-tools</comment>
+    <requestid>1219695</requestid>
+  </revision>
 </revisionlist>

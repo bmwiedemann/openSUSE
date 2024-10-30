@@ -31,9 +31,9 @@ BuildRequires:  cmake >= 3.1.0
 # Adding it as BR so that checks detect the file
 BuildRequires:  compton
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(lxqt-build-tools) >= 0.8.0
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
