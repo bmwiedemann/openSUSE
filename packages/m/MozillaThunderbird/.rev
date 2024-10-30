@@ -5522,4 +5522,40 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1217157</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>010b25b6db7aa6a583df5ae0c766ad4e</srcmd5>
+    <version>128.4.0</version>
+    <time>1730307909</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 128.4.0
+  * Export Thunderbird account settings to Thunderbird Mobile via QRCode
+  Bugfixes:
+  * Unable to send an unencrypted response to an OpenPGP encrypted message
+  MFSA 2024-58 (bsc#1231879)
+  * CVE-2024-10458 (bmo#1921733)
+    Permission leak via embed or object elements
+  * CVE-2024-10459 (bmo#1919087)
+    Use-after-free in layout with accessibility
+  * CVE-2024-10460 (bmo#1912537)
+    Confusing display of origin for external protocol handler prompt
+  * CVE-2024-10461 (bmo#1914521)
+    XSS due to Content-Disposition being ignored in
+    multipart/x-mixed-replace response
+  * CVE-2024-10462 (bmo#1920423)
+    Origin of permission prompt could be spoofed by long URL
+  * CVE-2024-10463 (bmo#1920800)
+    Cross origin video frame leak
+  * CVE-2024-10464 (bmo#1913000)
+    History interface could have been used to cause a Denial of
+    Service condition in the browser
+  * CVE-2024-10465 (bmo#1918853)
+    Clipboard &quot;paste&quot; button persisted across tabs
+  * CVE-2024-10466 (bmo#1924154)
+    DOM push subscription message could hang Firefox
+  * CVE-2024-10467 (bmo#1829029, bmo#1888538, bmo#1900394, bmo#1904059,
+    bmo#1917742, bmo#1919809, bmo#1923706)
+    Memory safety bugs fixed in Firefox 132, Thunderbird 132,
+    Firefox ESR 128.4, and Thunderbird 128.4</comment>
+    <requestid>1219576</requestid>
+  </revision>
 </revisionlist>
