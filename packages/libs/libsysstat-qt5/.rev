@@ -186,4 +186,13 @@
   * Bumped minimum required Qt version to 5.15 and dropped dead code.</comment>
     <requestid>930098</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9043ac1fde008af4a92bb7e7fcedd32f</srcmd5>
+    <version>0.4.6</version>
+    <time>1730326563</time>
+    <user>dimstar_suse</user>
+    <comment>- Change BuildRequires from lxqt-build-tools-devel to
+  cmake(lxqt-build-tools)</comment>
+    <requestid>1219698</requestid>
+  </revision>
 </revisionlist>
