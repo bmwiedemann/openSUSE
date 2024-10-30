@@ -1856,6 +1856,7 @@ BuildFlags: onlybuild:dejagnu
 BuildFlags: onlybuild:dejavu-fonts
 BuildFlags: onlybuild:deltarpm
 BuildFlags: onlybuild:desktop-file-utils
+BuildFlags: onlybuild:desktop-translations
 BuildFlags: onlybuild:devscripts:checkbashisms
 BuildFlags: onlybuild:dhcp
 BuildFlags: onlybuild:dialog
