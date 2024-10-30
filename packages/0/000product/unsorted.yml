@@ -8436,7 +8436,6 @@ unsorted:
   - gupnp-tools-lang 
   - gutenprint 
   - gutenprint-devel 
-  - gutenprint-gimpplugin 
   - guvcview 
   - guvcview-devel 
   - guvcview-lang 
@@ -9675,6 +9674,8 @@ unsorted:
   - json-glib-devel 
   - json-java 
   - json-java-javadoc 
+  - json-simple 
+  - json-simple-javadoc 
   - json-table 
   - jsoncpp-devel 
   - jsonp 
@@ -9693,6 +9694,15 @@ unsorted:
   - jtidy 
   - jtidy-javadoc 
   - jtidy-scripts 
+  - jts 
+  - jts-app 
+  - jts-build-tools 
+  - jts-doc 
+  - jts-example 
+  - jts-io 
+  - jts-javadoc 
+  - jts-lab 
+  - jts-parent 
   - judy-devel 
   - judy-doc 
   - jujutsu 
@@ -18023,12 +18033,16 @@ unsorted:
   - luaposix-doc 
   - lucene++-devel 
   - lucene-analyzers-common 
+  - lucene-analyzers-icu 
+  - lucene-analyzers-phonetic 
   - lucene-analyzers-smartcn 
   - lucene-analyzers-stempel 
   - lucene-backward-codecs 
   - lucene-classification 
   - lucene-codecs 
   - lucene-core 
+  - lucene-expressions 
+  - lucene-facet 
   - lucene-grouping 
   - lucene-highlighter 
   - lucene-join 
@@ -18038,7 +18052,9 @@ unsorted:
   - lucene-queries 
   - lucene-queryparser 
   - lucene-sandbox 
+  - lucene-spatial-extras 
   - lucene-spatial3d 
+  - lucene-suggest 
   - luckybackup 
   - lugaru 
   - lugaru-data 
@@ -19874,6 +19890,8 @@ unsorted:
   - nodejs22 
   - nodejs22-devel 
   - nodejs22-docs 
+  - noggit 
+  - noggit-javadoc 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -20836,7 +20854,6 @@ unsorted:
   - ovn-docker 
   - ovn-host 
   - ovn-vtep 
-  - ovpn-dco-kmp-default 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
@@ -25264,7 +25281,6 @@ unsorted:
   - python310-django-countries 
   - python310-django-coverage-plugin 
   - python310-django-crispy-forms 
-  - python310-django-debreach 
   - python310-django-debug-toolbar 
   - python310-django-dj-inmemorystorage 
   - python310-django-environ 
@@ -26188,8 +26204,6 @@ unsorted:
   - python310-msgpack 
   - python310-msgpack-numpy 
   - python310-msgspec 
-  - python310-msk 
-  - python310-msm 
   - python310-msoffcrypto-tool 
   - python310-msrest 
   - python310-msrestazure 
@@ -26353,6 +26367,7 @@ unsorted:
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
+  - python310-orderly-set 
   - python310-orjson 
   - python310-osc-tiny 
   - python310-oscrypto 
@@ -26947,7 +26962,6 @@ unsorted:
   - python310-python-dotenv 
   - python310-python-editor 
   - python310-python-engineio 
-  - python310-python-fedora 
   - python310-python-for-android 
   - python310-python-gammu 
   - python310-python-gflags 
@@ -28912,7 +28926,6 @@ unsorted:
   - python311-django-countries 
   - python311-django-coverage-plugin 
   - python311-django-crispy-forms 
-  - python311-django-debreach 
   - python311-django-debug-toolbar 
   - python311-django-dj-inmemorystorage 
   - python311-django-environ 
@@ -29802,8 +29815,6 @@ unsorted:
   - python311-msal-extensions 
   - python311-msgpack-numpy 
   - python311-msgspec 
-  - python311-msk 
-  - python311-msm 
   - python311-msoffcrypto-tool 
   - python311-msrest 
   - python311-msrestazure 
@@ -29959,6 +29970,7 @@ unsorted:
   - python311-ordered-namespace 
   - python311-ordered-set 
   - python311-orderedmultidict 
+  - python311-orderly-set 
   - python311-orjson 
   - python311-osc-tiny 
   - python311-oscrypto 
@@ -30531,7 +30543,6 @@ unsorted:
   - python311-python-dotenv 
   - python311-python-editor 
   - python311-python-engineio 
-  - python311-python-fedora 
   - python311-python-for-android 
   - python311-python-gammu 
   - python311-python-gflags 
@@ -32512,7 +32523,6 @@ unsorted:
   - python312-django-countries 
   - python312-django-coverage-plugin 
   - python312-django-crispy-forms 
-  - python312-django-debreach 
   - python312-django-debug-toolbar 
   - python312-django-dj-inmemorystorage 
   - python312-django-environ 
@@ -33435,8 +33445,6 @@ unsorted:
   - python312-msgpack 
   - python312-msgpack-numpy 
   - python312-msgspec 
-  - python312-msk 
-  - python312-msm 
   - python312-msoffcrypto-tool 
   - python312-msrest 
   - python312-msrestazure 
@@ -33600,6 +33608,7 @@ unsorted:
   - python312-ordered-namespace 
   - python312-ordered-set 
   - python312-orderedmultidict 
+  - python312-orderly-set 
   - python312-orjson 
   - python312-osc-tiny 
   - python312-oscrypto 
@@ -34193,7 +34202,6 @@ unsorted:
   - python312-python-dotenv 
   - python312-python-editor 
   - python312-python-engineio 
-  - python312-python-fedora 
   - python312-python-for-android 
   - python312-python-gammu 
   - python312-python-gflags 
@@ -36645,6 +36653,8 @@ unsorted:
   - rzip 
   - rzsz 
   - s-tui 
+  - s2-geometry-library-java 
+  - s2-geometry-library-java-javadoc 
   - s2n-devel 
   - s390-tools 
   - s3backer 
@@ -37278,6 +37288,8 @@ unsorted:
   - sparse 
   - sparse-inspect 
   - sparsehash-devel 
+  - spatial4j 
+  - spatial4j-javadoc 
   - spatialindex-devel 
   - spawn-fcgi 
   - spdlog-devel 
@@ -37874,7 +37886,6 @@ unsorted:
   - terminology-theme-upstream 
   - terminus 
   - terminus-lang 
-  - terminus-ttf-fonts 
   - termit 
   - termotp 
   - termrec 
