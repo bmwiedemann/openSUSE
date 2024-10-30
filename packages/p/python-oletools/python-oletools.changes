@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 25 14:03:35 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Enable sle15_python_module_pythons. 
+
+-------------------------------------------------------------------
+Fri Sep 20 07:00:20 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 0.60.2:
+ - fixed a bug in open_slk (issue #797, PR #769)
+ - fixed a bug due to new PROJECTCOMPATVERSION record in dir stream (PR #723, issues #700, #701, #725, #791, #808, #811, #833)
+ - oleobj: fixed SyntaxError with Python 3.12 (PR #855), SyntaxWarning (PR #774)
+ - rtfobj: fixed SyntaxError with Python 3.12 (PR #854)
+ - clsid: added CLSIDs for MSI, Zed
+ - ftguess: added MSI, PNG and OneNote formats
+ - pyxswf: fixed python 3.12 compatibility (PR #841, issue #813)
+
+-------------------------------------------------------------------
 Fri Feb  2 13:58:18 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.60.1:

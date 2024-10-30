@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1145461</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d0c1e104b0a6433a65ba4c52bb0c492</srcmd5>
+    <version>0.60.2</version>
+    <time>1730306418</time>
+    <user>dimstar_suse</user>
+    <comment>removed unknown file, should be sane now</comment>
+    <requestid>1219521</requestid>
+  </revision>
 </revisionlist>

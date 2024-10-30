@@ -16,12 +16,13 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-oletools
-Version:        0.60.1
+Version:        0.60.2
 Release:        0
 Summary:        Tools to analyze security characteristics of MS Office and OLE files
 License:        BSD-2-Clause AND MIT
-URL:            http://www.decalage.info/python/oletools
+URL:            https://github.com/decalage2/oletools
 Source:         https://files.pythonhosted.org/packages/source/o/oletools/oletools-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
