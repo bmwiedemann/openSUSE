@@ -28,7 +28,6 @@ RUN set -euo pipefail; \
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.openjdk
-LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI OpenJDK 11 runtime"
 LABEL org.opencontainers.image.description="OpenJDK 11 runtime container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%java_version%%"
