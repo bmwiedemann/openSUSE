@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:34:45 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove nonsensical org.opencontainers.image.authors - duplication of .vendor
+
+-------------------------------------------------------------------
 Wed Oct 30 12:48:04 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - Add missing space to rmt.conf, fixes bsc#1230404
