@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
