@@ -295,4 +295,12 @@ and that one is GPL3.</comment>
     <comment>- Resolve improper __DATE__ replacement [boo#1226829]</comment>
     <requestid>1184209</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dff444866370759d66b1bec83d5cb398</srcmd5>
+    <version>4.13.0</version>
+    <time>1730306397</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219489</requestid>
+  </revision>
 </revisionlist>

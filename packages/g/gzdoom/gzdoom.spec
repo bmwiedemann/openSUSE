@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.12.2
+Version:        4.13.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
-BuildRequires:  zmusic-devel
+BuildRequires:  zmusic-devel >= 1.1.14
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
@@ -58,6 +58,7 @@ Provides:       bundled(gdtoa)
 Provides:       bundled(glslang) = 11.10.0
 Provides:       bundled(re2c) = 0.16.0
 Provides:       bundled(vulkan) = 1.2.189.1
+Provides:       bundled(vulkan-volk)
 Provides:       bundled(xbrz) = 1.8
 Suggests:       freedoom
 
