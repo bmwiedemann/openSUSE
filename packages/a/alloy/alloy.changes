@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:52:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.4.3:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.4.3/CHANGELOG.md
+  * Bugfixes
+    - Fix an issue where some faro.receiver would drop multiple
+      fields defined in payload.meta.browser, as fields were
+      defined in the struct.
+    - pyroscope.scrape no longer tries to scrape endpoints which
+      are not active targets anymore. (@wildum @mattdurham
+      @dehaansa @ptodev)
+    - Fixed a bug with loki.source.podlogs not starting in large
+      clusters due to short informer sync timeout.
+      (@elburnetto-intapp)
+    - prometheus.exporter.windows: Fixed bug with exclude regular
+      expression config arguments which caused missing metrics.
+      (@ptodev)
+
+-------------------------------------------------------------------
+Wed Oct 30 13:32:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.4.2:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.4.2/CHANGELOG.md
+  * Bugfixes
+    - Update windows_exporter from v0.27.2 vo v0.27.3: (@jkroepke)
+      - Fixes a bug where scraping Windows service crashes alloy
+    - Update yet-another-cloudwatch-exporter from v0.60.0 vo
+      v0.61.0: (@morremeyer)
+      - Fixes a bug where cloudwatch S3 metrics are reported as 0
+    - Issue 1687 - otelcol.exporter.awss3 fails to configure
+      (@cydergoth)
+      - Fix parsing of the Level configuration attribute in
+        debug_metrics config block
+      - Ensure "optional" debug_metrics config block really is
+        optional
+    - Fixed an issue with loki.process where stage.luhn and
+      stage.timestamp would not apply default configuration
+      settings correctly (@thampiotr)
+    - Fixed an issue with loki.process where configuration could be
+      reloaded even if there were no changes. (@ptodev, @thampiotr)
+    - Fix issue where loki.source.kubernetes took into account all
+      labels, instead of specific logs labels. Resulting in
+      duplication. (@mattdurham)
+
+-------------------------------------------------------------------
+Wed Oct 30 13:23:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.4.1:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.4.1/CHANGELOG.md
+  * Bugfixes
+    - Windows installer: Don't quote Alloy's binary path in the
+      Windows Registry. (@jkroepke)
+
+-------------------------------------------------------------------
+Wed Oct 30 13:06:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.4.0:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.4.0/CHANGELOG.md
+  * Security fixes
+    - Add quotes to windows service path to prevent path
+      interception attack. CVE-2024-8975 (@mattdurham)
+  * Breaking changes
+    - Some debug metrics for otelcol components have changed.
+      (@thampiotr) For example, otelcol.exporter.otlp's
+      exporter_sent_spans_ratio_total metric is now
+      otelcol_exporter_sent_spans_total.
+    - [otelcol.processor.transform] The functions
+      convert_sum_to_gauge and convert_gauge_to_sum must now be
+      used in the metric context rather than in the datapoint
+      context.
+      open-telemetry/opentelemetry-collector-contrib#34567
+      (@wildum)
+    - Upgrade Beyla from 1.7.0 to 1.8.2. A complete list of changes
+      can be found on the Beyla releases page:
+      https://github.com/grafana/beyla/releases. (@wildum) It
+      contains a few breaking changes for the component beyla.ebpf:
+      - renamed metric process.cpu.state to cpu.mode
+      - renamed metric beyla_build_info to
+        beyla_internal_build_info
+  * Features
+    - Added Datadog Exporter community component, enabling
+      exporting of otel-formatted Metrics and traces to Datadog.
+      (@polyrain) (Experimental) Add an otelcol.processor.interval
+      component to aggregate metrics and periodically forward the
+      latest values to the next component in the pipeline.
+  * Enhancements
+    - Clustering peer resolution through --cluster.join-addresses
+      flag has been improved with more consistent behaviour, better
+      error handling and added support for A/AAAA DNS records. If
+      necessary, users can temporarily opt out of this new
+      behaviour with the --cluster.use-discovery-v1, but this can
+      only be used as a temporary measure, since this flag will be
+      disabled in future releases. (@thampiotr)
+    - Added a new panel to Cluster Overview dashboard to show the
+      number of peers seen by each instance in the cluster. This
+      can help diagnose cluster split brain issues. (@thampiotr)
+    - Updated Snowflake exporter with performance improvements for
+      larger environments.  Also added a new panel to track deleted
+      tables to the Snowflake mixin. (@Caleb-Hurshman)
+    - Add a otelcol.processor.groupbyattrs component to reassociate
+      collected metrics that match specified attributes from
+      opentelemetry. (@kehindesalaam)
+    - Update windows_exporter to v0.27.2. (@jkroepke) The
+      smb.enabled_list and smb_client.enabled_list doesn't have any
+      effect anymore. All sub-collectors are enabled by default.
+  * Bugfixes
+    - Fix a bug where the scrape timeout for a Probe resource was
+      not applied, overwriting the scrape interval instead.
+      (@morremeyer, @stefanandres)
+    - Fix a bug where custom components don't always get updated
+      when the config is modified in an imported directory.
+      (@ante012)
+    - Fixed an issue where providing <hostname>:<port> in
+      --cluster.join-addresses would only resolve with DNS to a
+      single address, instead of using all the available records.
+      (@thampiotr)
+  * Other
+    - Update OTel from v0.105.0 vo v0.108.0: (@wildum)
+
+-------------------------------------------------------------------
+Wed Oct 30 12:57:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.3.4:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.3.4/CHANGELOG.md
+  * Bugfixes
+    - Windows installer: Don't quote Alloy's binary path in the
+      Windows Registry. (@jkroepke)
+
+-------------------------------------------------------------------
+Wed Oct 30 12:45:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.3.3 (1.3.2 was not released):
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.3.3/CHANGELOG.md
+  * Security fixes
+    - Add quotes to windows service path to prevent path
+      interception attack. CVE-2024-8975 (@mattdurham)
+
+-------------------------------------------------------------------
+Wed Oct 30 11:54:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.3.1:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.3.1/CHANGELOG.md
+  * Notable changes:
+    - Changed the cluster startup behaviour, reverting to the
+      previous logic where a failure to resolve cluster join peers
+      results in the node creating its own cluster. This is to
+      facilitate the process of bootstrapping a new cluster
+      following user feedback (@thampiotr)
+    - Fix a memory leak which would occur any time loki.process had
+      its configuration reloaded. (@ptodev)
+
+-------------------------------------------------------------------
+Wed Oct 30 11:36:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.3.0:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.3.0/CHANGELOG.md
+  * Breaking changes
+    - [otelcol.exporter.otlp,otelcol.exporter.loadbalancing]:
+      Change the default gRPC load balancing strategy.  The default
+      value for the balancer_name attribute has changed to
+      round_robin open-telemetry/opentelemetry-collector#10319
+  * Breaking changes to non-GA functionality
+    - Update Public preview remotecfg argument from metadata to
+      attributes. (@erikbaranowski)
+    - The default value of the argument unmatched in the block
+      routes of the component beyla.ebpf was changed from unset to
+      heuristic (@marctc)
+  * Features
+    - Added community components support, enabling community
+      members to implement and maintain components. (@wildum)
+    - A new otelcol.exporter.debug component for printing OTel
+      telemetry from other otelcol components to the console.
+      (@BarunKGP)
+
+-------------------------------------------------------------------
+Wed Oct 30 11:20:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.2.1:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.2.1/CHANGELOG.md
+  * Bugfixes
+    - Fixed an issue with loki.source.kubernetes_events not
+      starting in large clusters due to short informer sync
+      timeout. (@nrwiersma)
+    - Updated ckit to fix an issue with armv7 panic on startup when
+      forming a cluster. (@imavroukakis)
+    - Fixed a clustering mode issue where a failure to perform
+      static peers discovery did not result in a fatal failure at
+      startup and could lead to potential split-brain issues.
+      (@thampiotr)
+  * Other
+    - Use Go 1.22.5 for builds. (@mattdurham)
+
+-------------------------------------------------------------------
+Wed Oct 30 10:11:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.0:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.2.0/CHANGELOG.md#v120
+  * Breaking changes
+    - Updated OpenTelemetry to v0.102.1. (@mattdurham)
+      - Components
+        otelcol.receiver.otlp,otelcol.receiver.zipkin,otelcol.extension.jaeger_remote_sampling,
+        and otelcol.receiver.jaeger setting max_request_body_size
+        default changed from unlimited size to 20MiB. This is due
+        to CVE-2024-36129.
+  * Breaking changes to non-GA functionality
+    - Component otelcol.receiver.vcenter removed
+      vcenter.host.network.packet.errors,
+      vcenter.host.network.packet.count, and
+      vcenter.vm.network.packet.count.
+      - vcenter.host.network.packet.errors replaced by
+        vcenter.host.network.packet.error.rate.
+      - vcenter.host.network.packet.count replaced by
+        vcenter.host.network.packet.rate.
+      - vcenter.vm.network.packet.count replaced by
+        vcenter.vm.network.packet.rate.
+  * Features
+    - Add an otelcol.exporter.kafka component to send OTLP metrics,
+      logs, and traces to Kafka.
+    - Added live debugging to the UI. Live debugging streams data
+      as they flow through components for debugging telemetry data.
+      Individual components must be updated to support live
+      debugging. (@wildum)
+    - Added live debugging support for prometheus.relabel.
+      (@wildum)
+    - (Experimental) Add a otelcol.processor.deltatocumulative
+      component to convert metrics from delta temporality to
+      cumulative by accumulating samples in memory. (@rfratto)
+    - (Experimental) Add an otelcol.receiver.datadog component to
+      receive metrics and traces from Datadog. (@carrieedwards,
+      @jesusvazquez, @alexgreenbank, @fedetorres93)
+  * Enhancements
+    - (Public preview) Add native histogram support to
+      otelcol.receiver.prometheus. (@wildum)
+    - Added scrape_protocols option to prometheus.scrape, which
+      allows to control the preferred order of scrape protocols.
+      (@thampiotr)
+    - Improved filesystem error handling when working with
+      loki.source.file and local.file_match, which removes some
+      false-positive error log messages on Windows (@thampiotr)
+    - Updates receiver/vcenter to use new features and bugfixes
+      introduced in OTEL releases v0.100.0 and v0.101.0.  Refer to
+      the v0.100.0 and v0.101.0 release notes for more detailed
+      information.
+    - Add yaml_decode to standard library. (@mattdurham, @djcode)
+    - Add base64_decode to standard library. (@hainenber)
+    - Updated OpenTelemetry Contrib to v0.102.0. (@mattdurham)
+    - otelcol.processor.resourcedetection: Added a tags config
+      argument to the azure detection mechanism. It exposes
+      regex-matched Azure resource tags as OpenTelemetry resource
+      attributes.
+  * Bugfixes
+    - Fixed an issue with prometheus.scrape in which targets that
+      move from one cluster instance to another could have a
+      staleness marker inserted and result in a gap in metrics
+      (@thampiotr)
+    - Fix panic when import.git is given a revision that does not
+      exist on the remote repo. (@hainenber)
+    - Fixed an issue with loki.source.docker where collecting logs
+      from targets configured with multiple networks would result
+      in errors. (@wildum)
+
+-------------------------------------------------------------------
+Wed Oct 30 10:05:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.1:
+  * Notable changes:
+    - Fix panic when component ID contains / in
+      otelcomponent.MustNewType(ID).(@qclaogui)
+    - Exit Alloy immediately if the port it runs on is not
+      available.
+      This port can be configured with --server.http.listen-addr or
+      using the default listen address127.0.0.1:12345.
+      (@mattdurham)
+    - Fix a panic in loki.source.docker when trying to stop a
+      target that was never started. (@wildum)
+    - Fix error on boot when using IPv6 advertise addresses without
+      explicitly specifying a port. (@matthewpi)
+    - Fix an issue where having long component labels (>63 chars)
+      on otelcol.auth components lead to a panic. (@tpaschalis)
+    - Update prometheus.exporter.snowflake with the latest version
+      of the exporter as of May 28, 2024 (@StefanKurek)
+      - Fixes issue where returned NULL values from database could
+        cause unexpected errors.
+    - Bubble up SSH key conversion error to facilitate failed
+      import.git. (@hainenber)
+
+-------------------------------------------------------------------
+Wed Oct 30 09:55:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.0:
+  * Features
+    - (Public preview) Add support for setting GOMEMLIMIT based on
+      cgroup setting. (@mattdurham)
+    - (Public preview) Introduce BoringCrypto Docker images. The
+      BoringCrypto image is tagged with the -boringcrypto suffix
+      and is only available on AMD64 and ARM64 Linux containers.
+      (@rfratto, @mattdurham)
+    - (Public preview) Introduce boringcrypto release assets.
+      BoringCrypto builds are publshed for Linux on AMD64 and ARM64
+      platforms. (@rfratto, @mattdurham)
+    - otelcol.exporter.loadbalancing: Add a new aws_cloud_map
+      resolver. (@ptodev)
+    - Introduce a otelcol.receiver.file_stats component from the
+      upstream OpenTelemetry filestatsreceiver component.
+      (@rfratto)
+  * Enhancements
+    - Update prometheus.exporter.kafka with the following
+      functionalities (@wildum):
+      - GSSAPI config
+      - enable/disable PA_FX_FAST
+      - set a TLS server name
+      - show the offset/lag for all consumer group or only the
+        connected ones
+      - set the minimum number of topics to monitor
+      - enable/disable auto-creation of requested topics if they
+        don't already exist
+      - regex to exclude topics / groups
+      - added metric kafka_broker_info
+    - In prometheus.exporter.kafka, the interpolation table used to
+      compute estimated lag metrics is now pruned on
+      metadata_refresh_interval instead of prune_interval_seconds.
+      (@wildum)
+    - Don't restart tailers in loki.source.kubernetes component by
+      above-average time deltas if K8s version is >= 1.29.1
+      (@hainenber)
+    - In mimir.rules.kubernetes, add support for running in a
+      cluster of Alloy instances by electing a single instance as
+      the leader for the mimir.rules.kubernetes component to avoid
+      conflicts when making calls to the Mimir API. (@56quarters)
+
+-------------------------------------------------------------------
 Tue May 21 09:01:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - use pkconfig(systemd) instead of systemd-devel

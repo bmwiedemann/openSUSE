@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           alloy
-Version:        1.0.0
+Version:        1.4.3
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
@@ -29,7 +27,7 @@ Source1:        vendor.tar.gz
 Source2:        ui-%{version}.tar.gz
 Source3:        PACKAGING_README.md
 Source4:        Makefile
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.22.5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  user(alloy)
 # Require the system user and group
@@ -37,6 +35,9 @@ Requires(pre):  user(alloy)
 Requires(pre):  group(alloy)
 # for the sysconfig file
 Requires(post): %fillup_prereq
+
+# /usr/lib/go/1.23/pkg/tool/linux_386/link: mapping output file failed: cannot allocate memory
+ExcludeArch:    %{ix86}
 
 %description
 Grafana Alloy is an open source OpenTelemetry Collector distribution with

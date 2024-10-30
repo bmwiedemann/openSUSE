@@ -7,4 +7,12 @@
     <comment>new package alloy: OpenTelemetry Collector distribution with programmable pipelines</comment>
     <requestid>1175486</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78a245f98966776cb43b98be6f475908</srcmd5>
+    <version>1.4.3</version>
+    <time>1730325508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219636</requestid>
+  </revision>
 </revisionlist>
