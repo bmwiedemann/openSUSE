@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:10:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.129:
+  * General
+    - remove generic node from the shapes @amitamrutiya (#12517)
+    - add missing components w/signoff @Jougan-0 (#12505)
+    - Bump http-proxy-middleware from 2.0.4 to 2.0.7 in
+      /install/docker-extension/ui @dependabot (#12479)
+  * Meshery CLI
+    - fix: update parsinggithub test to prevent failing issue
+      @lekaf974 (#12371)
+    - Minify and flatten Kubeconfig on Meshery UI @Alero-Awani
+      (#11987)
+
+-------------------------------------------------------------------
+Tue Oct 29 15:09:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.128:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Oct 25 16:54:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.127:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Oct 25 12:23:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.126:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Wed Oct 23 09:00:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.125:
