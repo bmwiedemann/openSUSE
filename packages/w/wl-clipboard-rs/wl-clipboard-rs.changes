@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:23:32 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.9.1:
+  * fix(wl-paste): make conflicts_with work properly
+  * refactor: move clap structs into separate files
+  * feat: add man pages and shell completions 
+  * Fix ! fallback warning
+  * Upgrade dependencies
+
+-------------------------------------------------------------------
 Wed Jul 10 22:42:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.9.0:
