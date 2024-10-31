@@ -149,4 +149,13 @@
   * unquote basic auth header for authorization server.</comment>
     <requestid>1204401</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>24e6c4d767da65dd661daab97fc38a12</srcmd5>
+    <version>1.3.2</version>
+    <time>1730387405</time>
+    <user>dimstar_suse</user>
+    <comment>- add py313-tests.patch
+- modernize spec file</comment>
+    <requestid>1219795</requestid>
+  </revision>
 </revisionlist>

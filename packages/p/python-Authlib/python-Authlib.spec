@@ -25,7 +25,10 @@ Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Patch1:         https://github.com/lepture/authlib/commit/d282c1afad676cf8ed3670e60fd43516fc9615de.patch#/py313-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module anyio}
@@ -53,16 +56,16 @@ BuildArch:      noarch
 A Python library for building OAuth and OpenID Connect servers.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 # Remove the file containing the commercial license so licensedigger
 # doesn't complain about the dual license
 rm COMMERCIAL-LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -81,6 +84,6 @@ $python -mpytest tests/clients
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/%{modname}
-%{python_sitelib}/Authlib-%{version}*-info
+%{python_sitelib}/Authlib-%{version}.dist-info
 
 %changelog
