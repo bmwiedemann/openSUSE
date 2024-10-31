@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 24 07:31:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.20.0:
+  * Add texlab.inlayHints.maxLength setting to allow limiting inlay hint text length
+  * Allow suppressing diagnostics using % texlab: ignore magic comments
+  * Fix enabling texlab.build.useFileList setting
+  * Make "Goto Definition" work correctly with starred commands
+  * Add texlab.build.useFileList setting to allow controlling whether to use the .fls files
+  * Disable using .fls files for project detection by default
+  * Parse .fls files to make the project detection more reliable
+  * Fix parsing commands with unicode characters inside BibTeX entries
+  * Improve detection of included files when non-ASCII characters are used
+  * Fix resolving includes starting from files included using \subimport
+
+-------------------------------------------------------------------
 Mon Jun 24 00:09:28 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 5.17.0:
