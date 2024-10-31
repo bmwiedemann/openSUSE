@@ -18,7 +18,7 @@
 
 
 Name:           gama
-Version:        2.30
+Version:        2.31
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(yaml-cpp)
 # for xmllint
 Requires:       libxml2-tools
 
@@ -54,9 +55,13 @@ program.
 
 %prep
 %autosetup -p1
+# boo#1232611
+rm -rf lib/expat
 
 %build
-%configure
+%configure \
+	--enable-expat_1_1=no \
+	%{nil}
 %make_build
 
 %install
