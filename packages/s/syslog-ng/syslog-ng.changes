@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 31 11:51:02 UTC 2024 - peter czanik <peter@czanik.hu>
+
+- fix the merge-grammar fix 
+
+-------------------------------------------------------------------
+Thu Oct 31 09:21:47 UTC 2024 - peter czanik <peter@czanik.hu>
+
+- rename syslog-ng-curl to syslog-ng-http
+- fix rpmlint reports 
+
+-------------------------------------------------------------------
 Mon Oct 21 12:05:59 UTC 2024 - peter czanik <peter@czanik.hu>
 
 - fixes to make sure that syslog-ng builds on Leap 16.0

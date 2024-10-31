@@ -80,7 +80,7 @@ BuildRequires:  protobuf-devel
 %endif
 # turn features on and off
 %bcond_without	python
-%bcond_without	curl
+%bcond_without	http
 %bcond_without	smtp
 # mongodb & amqp C clients are no more bundled with syslog-ng sources
 # and not yet available in openSUSE
@@ -139,7 +139,7 @@ BuildRequires:  libpaho-mqtt-devel
 %if %{with smtp}
 BuildRequires:  libesmtp-devel
 %endif
-%if %{with curl}
+%if %{with http}
 BuildRequires:  libcurl-devel
 %endif
 %if %{with geoip}
@@ -220,12 +220,14 @@ administrator via a configuration file.
 
 This package is now merged into syslog-ng.
 
-%package curl
+%package http
 Summary:        HTTP destination support for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
+Obsoletes:      syslog-ng-curl <= 4.8.1
+Provides:       syslog-ng-curl = %{version}
 
-%description curl
+%description http
 This package provides HTTP destination support for syslog-ng by means
 of libcurl.
 
@@ -320,7 +322,7 @@ Kubernetes log enrichment, Hypr support, etc.
 Summary:        Development files for syslog-ng
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Provides:       libevtlog-devel = 0.2.13
+Provides:       libevtlog-devel = %{version}
 Obsoletes:      libevtlog-devel <= 0.2.13
 Requires:       glib2-devel
 Requires:       glibc-devel
@@ -418,8 +420,8 @@ done
 %endif
 
 # fix python
-# sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python3|' lib/merge-grammar.py
-# touch -r lib/cfg-grammar.y lib/merge-grammar.py
+sed -i 's|^#\s*!%{_bindir}/env python3|#!%{_bindir}/python3|' lib/merge-grammar.py
+touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
 %if %{with java}
@@ -641,6 +643,9 @@ chmod 640 "${additional_sockets#/}"
 %post -n libevtlog-4_8-0 -p /sbin/ldconfig
 %postun -n libevtlog-4_8-0 -p /sbin/ldconfig
 
+%post -n syslog-ng-grpc -p /sbin/ldconfig
+%postun -n syslog-ng-grpc -p /sbin/ldconfig
+
 %files
 ##
 ## file list ################################################
@@ -806,7 +811,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/osquery/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/windowseventlog/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/windowseventlog/windowseventlog.xml
-%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/loadbalancer/gen-loadbalancer.sh
+%attr(755,root,root) %{_datadir}/syslog-ng/include/scl/loadbalancer/gen-loadbalancer.sh
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/loadbalancer/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/cim/adapter.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/default-network-drivers/plugin.conf
@@ -851,8 +856,8 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libafsnmp.so
 %endif
 
-%if %{with curl}
-%files curl
+%if %{with http}
+%files http
 %attr(755,root,root) %{_libdir}/syslog-ng/libhttp.so
 %dir %{_datadir}/syslog-ng/include/scl/telegram/
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/telegram/telegram.conf
@@ -874,7 +879,7 @@ chmod 640 "${additional_sockets#/}"
 %if %{with grpc}
 
 %files grpc
-%attr(755,root,root) %{_libdir}/libgrpc-protos.*
+%attr(755,root,root) %{_libdir}/libgrpc-protos.so.*
 
 %files opentelemetry
 %attr(755,root,root) %{_libdir}/syslog-ng/libotel.so
@@ -902,6 +907,10 @@ chmod 640 "${additional_sockets#/}"
 %endif
 
 %files devel
+%if %{with grpc}
+%attr(644,root,root) %{_libdir}/libgrpc-protos.la
+%{_libdir}/libgrpc-protos.so
+%endif
 %attr(644,root,root) %{_libdir}/libsyslog-ng.la
 %attr(644,root,root) %{_libdir}/libevtlog.la
 %attr(644,root,root) %{_libdir}/libsecret-storage.la
@@ -919,10 +928,10 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_includedir}/syslog-ng
 %attr(-,root,root) %{_includedir}/syslog-ng/*
 %dir %{_datadir}/syslog-ng/tools
-%attr(644,root,root) %{_datadir}/syslog-ng/tools/merge-grammar.py
+%attr(755,root,root) %{_datadir}/syslog-ng/tools/merge-grammar.py
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/cfg-grammar.y
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/lex-rules.am
-%attr(644,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
+%attr(755,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
 
 %if %{with python}
 %files python
