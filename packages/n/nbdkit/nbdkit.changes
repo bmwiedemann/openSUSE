@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 20:43:40 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- spec: Cleanup 'Provides' list for the nbdkit-basic-plugins and
+  nbdkit-basic-filters subpackages
+
+-------------------------------------------------------------------
 Tue Oct 22 16:31:01 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Exclude tests when building for ix86

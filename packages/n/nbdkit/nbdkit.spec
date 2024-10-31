@@ -124,7 +124,6 @@ Provides:       %{name}-random-plugin = %{version}-%{release}
 Provides:       %{name}-sh-plugin = %{version}-%{release}
 Provides:       %{name}-sparse-random-plugin = %{version}-%{release}
 Provides:       %{name}-split-plugin = %{version}-%{release}
-Provides:       %{name}-streaming-plugin = %{version}-%{release}
 Provides:       %{name}-zero-plugin = %{version}-%{release}
 
 %description basic-plugins
@@ -177,6 +176,7 @@ This package contains example plugins for %{name}.
 
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
+
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 Requires:       %{name}-server = %{version}-%{release}
@@ -198,6 +198,7 @@ This package contains cURL (HTTP/FTP) support for %{name}.
 
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
+
 %package gcs-plugin
 Summary:        Gooogle Cloud Storage plugin %{name}
 Requires:       %{name}-python-plugin = %{version}-%{release}
@@ -285,10 +286,12 @@ Provides:       %{name}-exitwhen-filter = %{version}-%{release}
 Provides:       %{name}-exportname-filter = %{version}-%{release}
 Provides:       %{name}-extentlist-filter = %{version}-%{release}
 Provides:       %{name}-fua-filter = %{version}-%{release}
+Provides:       %{name}-gzip-filter = %{version}-%{release}
 Provides:       %{name}-ip-filter = %{version}-%{release}
 Provides:       %{name}-limit-filter = %{version}-%{release}
 Provides:       %{name}-log-filter = %{version}-%{release}
 Provides:       %{name}-luks-filter = %{version}-%{release}
+Provides:       %{name}-multi-conn-filter = %{version}-%{release}
 Provides:       %{name}-nocache-filter = %{version}-%{release}
 Provides:       %{name}-noextents-filter = %{version}-%{release}
 Provides:       %{name}-nofilter-filter = %{version}-%{release}
@@ -300,10 +303,12 @@ Provides:       %{name}-pause-filter = %{version}-%{release}
 Provides:       %{name}-protect-filter = %{version}-%{release}
 Provides:       %{name}-rate-filter = %{version}-%{release}
 Provides:       %{name}-readahead-filter = %{version}-%{release}
+Provides:       %{name}-readonly-filter = %{version}-%{release}
 Provides:       %{name}-retry-filter = %{version}-%{release}
 Provides:       %{name}-retry-request-filter = %{version}-%{release}
+Provides:       %{name}-rotational-filter = %{version}-%{release}
 Provides:       %{name}-scan-filter = %{version}-%{release}
-Provides:       %{name}-stats-filter = %{version}-%{release}
+Provides:       %{name}-spinning-filter = %{version}-%{release}
 Provides:       %{name}-swab-filter = %{version}-%{release}
 Provides:       %{name}-tls-fallback-filter = %{version}-%{release}
 Provides:       %{name}-truncate-filter = %{version}-%{release}

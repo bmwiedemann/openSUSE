@@ -193,4 +193,13 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>- Exclude tests when building for ix86</comment>
     <requestid>1217085</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3d7832d600521b23143564b3c1db8f9e</srcmd5>
+    <version>1.40.4</version>
+    <time>1730387382</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Cleanup 'Provides' list for the nbdkit-basic-plugins and
+  nbdkit-basic-filters subpackages</comment>
+    <requestid>1219736</requestid>
+  </revision>
 </revisionlist>
