@@ -55,4 +55,12 @@
     <comment>Fix standalone tests</comment>
     <requestid>1174353</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3c3a39e961411eae1709440cff86934d</srcmd5>
+    <version>4.8</version>
+    <time>1730387402</time>
+    <user>dimstar_suse</user>
+    <comment>bogus dependency on akka</comment>
+    <requestid>1219786</requestid>
+  </revision>
 </revisionlist>

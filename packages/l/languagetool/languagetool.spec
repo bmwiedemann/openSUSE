@@ -62,7 +62,6 @@ BuildRequires:  mvn(org.mybatis:mybatis)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.softcatala:catalan-pos-dict)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
-Requires:       akka
 Requires:       apache-commons-cli
 Requires:       apache-commons-codec
 Requires:       apache-commons-collections4

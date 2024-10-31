@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 08:12:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Remove bogus dependency on akka
+
+-------------------------------------------------------------------
 Sat May  4 14:01:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - languagetool-test-resource.patch
