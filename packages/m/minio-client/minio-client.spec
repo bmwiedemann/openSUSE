@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           minio-client
-Version:        20241008T093726Z
+Version:        20241029T153459Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only

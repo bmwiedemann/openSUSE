@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:46:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20241029T153459Z:
+  * Make the profiler easier to use (#5068)
+  * Mark batch job status properly (#5066)
+  * Add string/json output string mc pipe (#5065)
+  * Add support rpc JSON replay. (#5064)
+  * Report errors and better file names for mc support inspect
+    (#5062)
+  * Add basic RPC metrics via `mc support top rpc` (#5060)
+  * remove s390x support
+
+-------------------------------------------------------------------
 Wed Oct 16 15:36:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20241008T093726Z:
