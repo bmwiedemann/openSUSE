@@ -9675,6 +9675,7 @@ unsorted:
   - jsch-agent-proxy-jsch 
   - jsch-agent-proxy-pageant 
   - jsch-agent-proxy-sshagent 
+  - jsch-agent-proxy-svnkit-trilead-ssh2 
   - jsch-agent-proxy-usocket-jna 
   - jsch-agent-proxy-usocket-nc 
   - jsch-demo 
@@ -20908,6 +20909,7 @@ unsorted:
   - packagekitqt6-devel 
   - packetdrill 
   - packetdrill-tests 
+  - packetry 
   - packit 
   - paexec 
   - paexec-examples 
@@ -22862,8 +22864,10 @@ unsorted:
   - pico 
   - picocli 
   - picocli-codegen 
+  - picocli-extras-javadoc 
   - picocli-javadoc 
   - picocli-shell-jline2 
+  - picocli-shell-jline3 
   - picocom 
   - picocom-bash-completion 
   - picojson-devel 
@@ -28175,8 +28179,6 @@ unsorted:
   - python311-archmage 
   - python311-arf 
   - python311-argh 
-  - python311-argon2-cffi 
-  - python311-argon2-cffi-bindings 
   - python311-argparse_addons 
   - python311-arrow 
   - python311-arviz 
@@ -30828,7 +30830,6 @@ unsorted:
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
-  - python311-scrypt 
   - python311-scspell3k 
   - python311-sdjson 
   - python311-sdnotify 
@@ -37674,10 +37675,10 @@ unsorted:
   - syslog-ng-bigquery 
   - syslog-ng-bpf 
   - syslog-ng-cloudauth 
-  - syslog-ng-curl 
   - syslog-ng-devel 
   - syslog-ng-geoip 
   - syslog-ng-grpc 
+  - syslog-ng-http 
   - syslog-ng-java 
   - syslog-ng-loki 
   - syslog-ng-mqtt 
@@ -49060,6 +49061,7 @@ unsorted:
   - xwallpaper-zsh-completion 
   - xwayland-devel 
   - xwayland-run 
+  - xwayland-satellite 
   - xwd 
   - xwininfo 
   - xwmfs 
