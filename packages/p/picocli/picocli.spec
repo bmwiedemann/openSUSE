@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           picocli
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 Summary:        Tiny Command Line Interface
 License:        Apache-2.0

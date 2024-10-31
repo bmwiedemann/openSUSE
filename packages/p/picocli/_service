@@ -1,8 +1,8 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
-		<param name="url">https://github.com/remkop/picocli.git</param>
-		<param name="revision">v4.7.5</param>
+		<param name="url">https://github.com/fridrich/picocli.git</param>
+		<param name="revision">b3a163247a5237690d6ad1b4de28070bdf1e6001</param>
 		<param name="match-tag">v*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v(.*)</param>

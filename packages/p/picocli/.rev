@@ -79,4 +79,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205280</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc98fed3d51e688dc1cb615d05919b03</srcmd5>
+    <version>4.7.6</version>
+    <time>1730387383</time>
+    <user>dimstar_suse</user>
+    <comment>4.7.6</comment>
+    <requestid>1219749</requestid>
+  </revision>
 </revisionlist>
