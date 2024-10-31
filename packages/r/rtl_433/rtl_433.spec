@@ -1,8 +1,8 @@
 #
 # spec file for package rtl_433
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           rtl_433
-Version:        23.11
+Version:        24.10
 Release:        0
 Summary:        Application turning the RTL2832 dongle into a 433.92MHz generic data receiver
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libusb)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 An application using librtlsdr to decode the temperature from
@@ -56,9 +57,6 @@ to make use of rtl_433.
 
 %install
 %cmake_install
-# FIXME: Should be fixed in the makefile
-install -d %{buildroot}/%{_sysconfdir}/rtl_433
-mv %{buildroot}%{_prefix}%{_sysconfdir}/rtl_433/ %{buildroot}/%{_sysconfdir}/
 
 %files
 %license COPYING
