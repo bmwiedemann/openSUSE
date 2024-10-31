@@ -208,4 +208,12 @@ Prefer: -waybar-branding-openSUSE
     <comment></comment>
     <requestid>1201801</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>66024b51c159dc794ec5aa50adf2d660</srcmd5>
+    <version>0.16.5</version>
+    <time>1730312777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219623</requestid>
+  </revision>
 </revisionlist>

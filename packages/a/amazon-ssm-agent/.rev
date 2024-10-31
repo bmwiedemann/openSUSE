@@ -341,4 +341,41 @@
     <comment></comment>
     <requestid>1186399</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8f023c3a686eeb30c9e27543257d2540</srcmd5>
+    <version>3.3.1142.0</version>
+    <time>1730312763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.1142.0
+  * Fail windows update when installed version does not match
+  * Reduced length of IMDS errors to shorter format
+  * Increase the RunCommand timeout during the registration process for the on-prem instances
+  * Add nil check when calling GetRepository content in aws:downloadContent
+  * Worker process to exit if they are not successfully started and became idle
+  * Fix bug where unforeseen failures cause time to be incorrectly displayed in RunCommand
+  * Update GreenGrass component minor version to 1.3.0
+  * Ensure agent thread always exit after the corresponding worker process exits
+  * Fix IPC file filtering bug where usernames or session names containing
+    tmp causes agent worker to not correctly receive IPC
+  * Load directly from appconfig file when calling UpdateInstanceInformation
+    during credential refresher
+  * Use a single syscall for route table for health check IP
+- from version 3.3.987.0
+  * Update default session logging destination to none
+  * Specify a minimum of TLS v1.2 in http client calls
+  * Add web-socket heartbeat to detect connection drops in the web-socket
+    for control and data channels sooner
+  * Use exponential retry for document worker, increase retry interval
+    and attempt count when reading IPC files
+  * Add wait for cloud-init in the agent updater
+  * Fix timeouts for update without yum endpoint connectivity
+  * Change in orchestration directory removal process to reduce disk space usage
+  * Fix Inventory detailed information invalid value check
+  * Fix parsing issue with DomainJoin Plugin
+  * Modify DomainJoin Plugin to use Kerberos REALM in username for RHEL and variants
+  * Change the SUSE linux zypper commands to quiet mode for the DomainJoin Plugin
+  * Move high volume info logs to debug level
+  * Remove deprecated go coverage library (golang.org/x/tools/cmd/cover) (forwarded request 1219606 from glaubitz)</comment>
+    <requestid>1219607</requestid>
+  </revision>
 </revisionlist>

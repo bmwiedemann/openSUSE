@@ -1,0 +1,6 @@
+<package name="binsider" project="openSUSE:Factory">
+  <title>Analyze ELF binaries</title>
+  <description>Binsider can perform static and dynamic analysis, inspect strings, examine linked libraries, and perform hexdumps, within a terminal user interface.</description>
+  <devel project="X11:Utilities" package="binsider"/>
+  <url>https://github.com/orhun/binsider</url>
+</package>

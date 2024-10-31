@@ -1,5 +1,0 @@
-<package name="nvidia-xconfig" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:XOrg" package="nvidia-xconfig"/>
-</package>

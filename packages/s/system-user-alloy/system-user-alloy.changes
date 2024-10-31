@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:56:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- make BuildRequire for systemd-journal use group dependency
+
+-------------------------------------------------------------------
 Thu Oct 24 08:38:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add BuildRequire for systemd to have the systemd-journal group

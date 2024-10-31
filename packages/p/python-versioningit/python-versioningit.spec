@@ -23,13 +23,13 @@
 %endif
 
 Name:           python-versioningit
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Versioning It with your Version In Git
 License:        MIT
 URL:            https://github.com/jwodder/versioningit
 Source:         https://files.pythonhosted.org/packages/source/v/versioningit/versioningit-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

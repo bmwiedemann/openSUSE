@@ -31,7 +31,6 @@ RUN set -euo pipefail; \
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
-LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.23 development"
 LABEL org.opencontainers.image.description="Go 1.23 development container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%golang_version%%"

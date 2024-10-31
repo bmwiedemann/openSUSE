@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:55:12 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v31.9.1
+  * Changes of version 31.9.1
+    = Optimize glyphs for round-top-serifless and
+      round-top-base-serifed variants for A part (cv11) of Capital
+      AE (U+00C6) under Quasi-Proportional.
+    = Fix metrics of U+27D9 and U+2A05 under Fixed (#2548).
+
+-------------------------------------------------------------------
+Sun Oct 13 06:43:25 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v31.9.0
+  * Changes of version 31.9.0
+    = Add IJ-acute ligatures (#2483).
+    = Allowed customizing menu WWS value to name map (#2488).
+    = Optimize glyphs for rounded-serifless and rounded-serifed
+      variants for Capital Eszett (ẞ).
+    = Optimize glyph for Capital OE (U+0152) under
+      Quasi-Proportional.
+    = Optimize glyphs for closed epsilon shapes (U+025E, U+029A).
+    = Optimize glyphs for cursive variants for Greek Lower Beta (β)
+      and Cyrillic Lower Ve (в).
+    = Optimize glyphs for Cyrillic Capital/Lower Broad On (U+047A,
+      U+047B).
+    = Optimize glyphs for Roman Numeral CD shapes (U+2180, U+2182,
+      U+2188).
+    = Optimize glyph for Cyrillic Lower Dzze (U+A689) under
+      italics.
+    = Optimize glyphs for Volapük Ae/Oe/Ue (U+A79A..U+A79F).
+    = Optimize glyph for Latin Lower Dezh Digraph with Palatal Hook
+      (U+1DF12).
+    = Fix misalignments of square brackets under certain size
+      caused by rounding errors (#2545).
+    = Add characters:
+      ~ WAVY LINE (U+2307).
+      ~ SYMMETRY (U+232F).
+      ~ CONICAL TAPER (U+2332).
+      ~ SLOPE (U+2333).
+      ~ LARGE UP TACK (U+27D8).
+      ~ LARGE DOWN TACK (U+27D9).
+      ~ LOZENGE DIVIDED BY HORIZONTAL RULE (U+27E0).
+      ~ VERTICAL ZIGZAG LINE (U+299A).
+      ~ LEFT WIGGLY FENCE (U+29D8) ... RIGHT DOUBLE WIGGLY FENCE
+        (U+29DB).
+      ~ N-ARY SQUARE INTERSECTION OPERATOR (U+2A05).
+      ~ N-ARY SQUARE UNION OPERATOR (U+2A06).
+      ~ VERTICAL SIX DOTS (U+2E3D).
+      ~ WIGGLY VERTICAL LINE (U+2E3E).
+
+-------------------------------------------------------------------
+Sat Oct  5 14:12:41 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v31.8.0
+  * Changes of version 31.8.0
+    = Add characters:
+      ~ LATIN EPIGRAPHIC LETTER ARCHAIC M (U+A7FF) (#2517).
+      ~ MUSICAL SYMBOL RINFORZANDO (U+1D18C) ... MUSICAL SYMBOL
+        FORTE (U+1D191) (#2522).
+    = Improve glyph for Cyrillic I (И/и) under slab (#2489).
+      ~ Bulgarian locale ('BGR ') uses original style for capital.
+    = Optimize glyph for Tonos Above (U+0384) in accented Greek
+      letters.
+    = Optimize stroke width of bar for split bowl variants of
+      Cyrillic Lower Ef (ф).
+    = Optimize glyph for Cyrillic Capital Ef (Ф) under Bulgarian
+      locale ('BGR ') under slab.
+    = Fix seam in glyphs of Cyrillic Capital/Small Letter Zhwe
+      (U+A684..U+A685).
+    = Fix broken shape of certain power and playback symbols under
+      quasi-proportional (#2528).
+    = Fix alignment of the suit part of Playing Cards glyphs under
+      quasi-Proportional (#2529).
+
+-------------------------------------------------------------------
 Sun Sep 22 13:41:57 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v31.7.1

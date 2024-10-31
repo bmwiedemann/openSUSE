@@ -64,4 +64,12 @@
   * Correctly mark a certain test as requiring Mercurial</comment>
     <requestid>1171463</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c233715c4c442674b7817446c104f5cc</srcmd5>
+    <version>3.1.2</version>
+    <time>1730312761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219468</requestid>
+  </revision>
 </revisionlist>

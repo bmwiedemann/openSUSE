@@ -22,8 +22,14 @@ Release:        0
 Summary:        System user and group 'alloy'
 License:        Apache-2.0
 Source0:        system-user-alloy.conf
-BuildRequires:  systemd
 BuildRequires:  sysuser-tools
+%if %{?suse_version} >= 1600
+BuildRequires:  group(systemd-journal)
+Requires:       group(systemd-journal)
+%else
+BuildRequires:  systemd
+Requires:       systemd
+%endif
 BuildArch:      noarch
 %sysusers_requires
 

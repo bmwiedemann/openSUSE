@@ -29,7 +29,6 @@ RUN set -euo pipefail; \
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.mariadb-client
-LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Client"
 LABEL org.opencontainers.image.description="MariaDB Client container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%mariadb_version%%"

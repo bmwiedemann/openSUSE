@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 28 19:50:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Simple CLI with all Options implemented
+  * GitHub Actions: Add Python 3.13 pre-release to the testing
+  * README.md: Supports Python 3.8 - 3.12
+  * Correct typo forth to fourth
+
+-------------------------------------------------------------------
 Tue Jan 30 12:05:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

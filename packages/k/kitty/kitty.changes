@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:41:14 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.37.0:
+  * A new optional `text cursor movement animation` that shows a "trail"
+    following the movement of the cursor making it easy to follow large cursor
+    jumps (#7970)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.cursor_trail
+  * Custom kittens: Add `a framework` for easily and securely using remote
+    control from within a kitten's `main()` function
+    - https://sw.kovidgoyal.net/kitty/kittens/custom/#kitten-main-rc
+  * kitten icat: Fix the `kitty +kitten icat --no-trailing-newline` not
+    working when using unicode placeholders (#7948)
+    - https://sw.kovidgoyal.net/kitty/kittens/icat/#cmdoption-kitty-kitten-icat-no-trailing-newline
+  * `tab_title_template` allow using the 256 terminal colors for
+    formatting (#7976)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_title_template
+  * Fix resizing window when alternate screen is active does not preserve
+    trailing blank output line in the main screen (#7978)
+  * Wayland: Fix `background_opacity` less than one causing flicker on startup
+    when the Wayland compositor supports single pixel buffers (#7987)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
+  * Fix background image flashing when closing a tab (#7999)
+  * When running a kitten that modifies the kitty config file if no config
+    file exists create a commented out default config file and then modify
+    it (#7991)
+
+-------------------------------------------------------------------
 Fri Sep 27 13:07:44 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.36.4:

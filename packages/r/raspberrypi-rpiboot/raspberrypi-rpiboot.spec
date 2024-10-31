@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-rpiboot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-rpiboot
-Version:        0~git0.e5e4994
+Version:        20240926.102326.3
 Release:        0
 Summary:        Raspberry Pi rpiboot tool
 License:        Apache-2.0

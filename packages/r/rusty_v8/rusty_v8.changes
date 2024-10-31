@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 12 23:19:35 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- tar_scm is deprecated. Replace with obs_scm in _service file.
+
+-------------------------------------------------------------------
 Fri Oct 11 15:33:49 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Match gn build config for v8 from chromium

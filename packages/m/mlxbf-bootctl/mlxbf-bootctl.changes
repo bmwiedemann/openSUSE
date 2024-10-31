@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 14:01:55 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 1.1.6.25
+  * Fix ACPI table read for SSDT table bigger 4KB
+
+-------------------------------------------------------------------
 Thu Sep 15 11:18:42 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 1.1.6.14

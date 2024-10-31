@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 25 15:12:03 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 4.12
+  * mention /etc/sispmctl/password in manpage
+  * add favicon.ico
+  * on USB retry always use the original control data
+
+-------------------------------------------------------------------
 Sun Jul  9 19:08:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.11

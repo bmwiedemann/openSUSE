@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 17:16:25 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.39:
+  * Handle package git repositories for tracking (fixes #143)
+  * helpers/check_patches_applied: Also check whether patch 0 is applied
+  * helpers/check_patches_applied: Match #%%patch* as well (#136)
+  * helpers/check_patches_applied: Recognize " # %patch" as comment
+
+-------------------------------------------------------------------
 Wed Sep 11 08:29:17 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - require bzip2,xz and zstd which are used in gpg verification

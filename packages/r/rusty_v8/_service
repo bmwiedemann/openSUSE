@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/denoland/rusty_v8</param>
     <param name="scm">git</param>
     <param name="revision">v0.106.0</param>

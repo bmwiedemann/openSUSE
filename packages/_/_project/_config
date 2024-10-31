@@ -607,6 +607,9 @@ Prefer: -python310-pypdf -python311-pypdf -python312-pypdf
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 
+# unresolvable: have choice for cmake(lxqt-build-tools) >= 0.8.0: lxqt-build-tools-devel lxqt-build-tools-qt5-devel
+Prefer: -lxqt-build-tools-devel
+
 # have choice for mvn
 Prefer: -tomcat10 -tomcat10-lib tomcat tomcat-lib
 Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api

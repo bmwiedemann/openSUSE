@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 25 11:26:27 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.1.5.0
+  * Avoid polling blocked status during reset
+  * Adjust default reset delay to 3 seconds on PCIe
+  * Remove workaround support for BF2 A0 chip
+  * Only poll/check locked mode for PCIe backend
+  * support register read/write via /dev/rshim0/rshim for pcie_lf on BF3
+  * add 'CLEAR_ON_READ' command to delete rshim log after read
+  * Add ownership transfer feature
+  * Allow /dev/rshim<N> devfs creation only with --force option enabled
+  * Make sending the initial force command a one-time event
+  * Add VFIO support for Bluefield-3 on PCIe
+  * Add support for command mode
+  * Adjust default boot timeout to 300s
+  * Make rshim run in single instance
+
+-------------------------------------------------------------------
 Fri May 10 14:17:18 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.29.1 (jsc#PED-6843 jsc#PED-6979)

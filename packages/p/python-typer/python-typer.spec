@@ -28,7 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typer-slim}
 BuildRequires:  fdupes
