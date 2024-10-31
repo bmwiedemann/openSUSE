@@ -213,4 +213,67 @@
     <comment></comment>
     <requestid>1208279</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>13a2ed6a2be6aecf3074d305dfc310bc</srcmd5>
+    <version>3.2.0</version>
+    <time>1730387408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update from 3.1.6 to 3.2.0
+- Important: please read the migration guide when migrating to version 3.2.0
+- Version 3.2.0 changes
+  - acme
+      * Remove same email requirement for certresolvers (#11019 by Emrio)
+      * Add support for custom CA certificates by certificate resolver (#10816 by ldez)
+      * Add 30 day certificatesDuration step (#10970 by luker983)
+  - docker
+      * Support HTTP BasicAuth for docker and swarm endpoint (#10776 by 985492783)
+  - k8s, k8s/gatewayapi
+      * Add supported features to the Gateway API GatewayClass status (#11056 by rtribotte)
+      * Update sigs.k8s.io/gateway-api to v1.2.0-rc1 (#11124 by rtribotte)
+      * Add support for backend protocol selection in HTTP and GRPC routes (#11051 by rtribotte)
+      * Improve Kubernetes GatewayAPI TCPRoute and TLSRoute support (#11042 by rtribotte)
+      * Support HTTPRoute destination port matching (#11134 by kevinpollet)
+      * Bump sigs.k8s.io/gateway-api to v1.2.0-rc2 (#11131 by kevinpollet)
+      * Add support for Gateway API BackendTLSPolicies (#11009 by rtribotte)
+      * Support NativeLB option in GatewayAPI provider (#11147 by rtribotte)
+      * Support ResponseHeaderModifier filter (#10987 by kevinpollet)
+      * Support GRPC routes (#10975 by kevinpollet)
+      * Bump sigs.k8s.io/gateway-api to v1.2.0 (#11167 by rtribotte)
+      * Ensuring Gateway API reflected Traefik resource name unicity (#11222 by rtribotte)
+      * Preserve GRPCRoute filters order (#11199 by kevinpollet)
+      * Support http and https appProtocol for Kubernetes Service (#11176 by WillDaSilva)
+      * Avoid updating Accepted status for routes matching no Gateways (#11170 by rtribotte)
+      * Do not update gateway status when not selected by a gateway class (#11169 by kevinpollet)
+      * Document nativeLBByDefault annotation on Kubernetes Gateway provider (#11209 by mloiseleur)
+  - k8s/crd, k8s
+      * Detail CRD update with v3.2 in the migration guide (#11164 by mloiseleur)
+  - k8s/gatewayapi
+      * Add missing RBAC in the migration guide (#11189 by mloiseleur)
+  - k8s
+      * Fix instructions for downloading CRDs of Gateway API v1.2 (#11191 by mloiseleur)
+  - metrics, otel
+      * Allow setting service.name for OTLP metrics (#10917 by cmartell-at-ocp)
+  - middleware
+      * Record trace id and EntryPoint span id into access log (#10921 by weijiany)
+      * Support LogUserHeader with forwardAuth middleware (#10833 by GaleHuang)
+      * Add encodings option to the compression middleware (#10943 by wollomatic)
+      * Add support for ipv6 subnet in ipStrategy (#9747 by michal-kralik)
+  - nomad
+      * Support for watching instead of polling Nomad (#10997 by deverton-godaddy)
+  - server
+      * Introduce a fast proxy mode to improve HTTP/1.1 performances with backends (#11122 by kevinpollet)
+      * Configurable max request header size (#10995 by lucasrod16)
+  - service
+      * Add mirrorBody option to HTTP mirroring (#11032 by MatteoPaier)
+      * Add an option to preserve server path (#11192 by mmatur)
+      * Detect and drop broken conns in the fastproxy pool (#11212 by kevinpollet)
+  - Merge branch v3.1 into v3.2 (#11219 by kevinpollet)
+  - Merge branch v3.1 into master (#11153 by kevinpollet)
+- Version 3.1.7 changes
+  - k8s
+    * Preserve HTTPRoute filters order (#11198 by kevinpollet)
+  - Merge branch v2.11 into v3.1
+</comment>
+    <requestid>1219806</requestid>
+  </revision>
 </revisionlist>
