@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:47:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.1:
+  * chore: v1.9.1 Changelog (#1358)
+  * docs: update usage references (#1351)
+  * chore(deps-dev): bump rexml from 3.3.8 to 3.3.9 in /docs in the
+    bundler group (#1349)
+  * chore: remove unused fixture file (#1353)
+  * test: update snapshot (#1354)
+  * chore: Also trigger workflow when merging into v2 (#1343)
+  * feat: add `--experimental-offline-vulnerabilities` and
+    `--experimental-no-resolve` flags (#1342)
+  * docs: update documentation about Maven registry support (#1340)
+  * ci: ensure that generated files have been regenerated as part
+    of prerelease checks (#1312)
+  * test: update snapshot (#1335)
+  * feat: fetch Maven metadata from specified repositories (#1286)
+  * chore(deps): lock file maintenance (#1334)
+  * chore(deps): update workflows (#1333)
+  * feat: deprecate axillary public packages in favor of private
+    versions (#1309)
+  * fix: use correct path separator in SARIF output when on Windows
+    (#1294)
+  * chore: Update snapshots (#1328)
+  * fix: warn about and ignore duplicate entries in SBOMs (#1289)
+  * feat(guided remediation): support offline database in fix
+    subcommand (#1306)
+  * fix: set CharsetReader and Entity when reading pom.xml (#1325)
+  * fix(deps): update osv-scanner minor (#1323)
+  * chore(deps): update workflows (#1322)
+  * fix(guided remediation): update deps.dev Maven resolver (#1320)
+  * chore: update golangci-lint to 1.61.0 (#1318)
+  * fix: address a number of typos (#1307)
+  * fix: update spdx license ids (#1310)
+  * feat(output): add HTML output format (#1258)
+  * test: update snapshots (#1314)
+  * chore: ignore `node_modules` in git (#1308)
+  * fix(deps): update osv-scanner minor (#1302)
+  * chore(deps): update workflows (#1301)
+  * chore(deps): update golang docker tag to v1.23.2 (#1300)
+  * test: update snapshot (#1304)
+  * refactor: Update test names (#1297)
+  * test: update snapshots for guided remediation  (#1296)
+  * fix: sort sbom packages by PURL (#1288)
+  * fix: improve handling if `docker` exits with a non-zero code
+    when trying to scan images (#1285)
+  * feat: support `vulnerabilities.ignore` in package overrides
+    (#1268)
+
+-------------------------------------------------------------------
 Wed Oct 02 06:30:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:
