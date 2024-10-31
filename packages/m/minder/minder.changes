@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:39:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.17.0:
+  * Added support for removing Markdown syntax highlighting in the note field.
+  * Added support for moving a node to be a sibling of its parent
+  * Added support for displaying child nodes as a sequence, including auto-numbering.
+  * Added support for Shift-I keyboard shortcut to add an image to a node.
+  * Adjusted blue color used in note field to improve readability in dark themes.
+  * Regrouped node commands in shortcuts cheatsheet to reduce required window height.
+  * Changed keyboard shortcut for moving child nodes of a node to be siblings
+    with that node from Alt+direction-of-parent to Alt+direction-of-children.
+  * Added tooltip to new info icon to Default Theme within preferences to
+    improve user documentation on what this setting does.
+  * Fixed memory leak issue when saving the document.
+  * Fixed issue with inserting root nodes using the quick entry feature.
+  * Fixed potential issue when creating a new tab.
+  * Fixed issue with centering a node with the keyboard shortcut.
+  * Fixed issue with pasting by replacement using the keyboard shortcut.
+  * Fixed issues using up, down, left, right to navigate nodes when selected
+    node is a root node.
+  * Fixed issue with deleting the previous word when editing node text.
+  * Fixed issue where application would crash when hovering over node note
+    icon on systems that installed Discount version >= 3.0.
+  * Fixed issue where Minder process could remain running.
+  * Fixed issue related to invoking Minder while application is running.
+  * Fixed issue with installation of application icon in the wrong directory.
+  * Fixed potential issue with tab handling on startup.
+- remove CFLAGS, as the workaround for gcc14 is not needed anymore.
+- set license to GPL2+ as the src file states
+- remove %suse_update_desktop_file, as it's deprecated
+- set minimum versions required by the software
+
+-------------------------------------------------------------------
 Sun Aug 25 21:50:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix gcc14 by using -std=gnu89

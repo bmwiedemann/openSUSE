@@ -264,4 +264,12 @@
     <comment>- fix gcc14 by using -std=gnu89 (forwarded request 1195960 from rrahl0)</comment>
     <requestid>1195961</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>31b5974e45dbcfde0292f15638334ab7</srcmd5>
+    <version>1.17.0</version>
+    <time>1730387413</time>
+    <user>dimstar_suse</user>
+    <comment>- set minimum versions required by the software (forwarded request 1219828 from rrahl0)</comment>
+    <requestid>1219829</requestid>
+  </revision>
 </revisionlist>

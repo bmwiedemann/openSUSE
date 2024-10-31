@@ -17,30 +17,32 @@
 
 
 %define         appid com.github.phase1geo.minder
+%define         __builder ninja
 Name:           minder
-Version:        1.16.4
+Version:        1.17.0
 Release:        0
 Summary:        Mind-mapping app
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 URL:            https://github.com/phase1geo/Minder
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  vala
+BuildRequires:  python3-setuptools
+BuildRequires:  vala >= 0.48.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(granite) >= 6.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libmarkdown)
+BuildRequires:  pkgconfig(libmarkdown) >= 3.0
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
@@ -52,13 +54,11 @@ A program to create, develop, visualize, organize and manage ideas.
 %autosetup -n Minder-%{version}
 
 %build
-export CFLAGS="${optflags} -std=gnu89"
 %meson
 %meson_build
 
 %install
 %meson_install
-%suse_update_desktop_file %{appid}
 %find_lang %{appid}
 %fdupes %{buildroot}%{_datadir}
 
