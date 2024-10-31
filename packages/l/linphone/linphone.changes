@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 14:09:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove the unneeded xsd build dependency
+
+-------------------------------------------------------------------
 Sun Oct  6 00:40:30 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix openldap build

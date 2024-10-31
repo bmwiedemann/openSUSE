@@ -74,7 +74,6 @@ BuildRequires:  postquantumcryptoengine-devel >= 5.3.0~git.20230802
 BuildRequires:  db-devel
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
-BuildRequires:  xsd
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >=  %{version}
 BuildRequires:  pkgconfig(belcard) >= %{version}
