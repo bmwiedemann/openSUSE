@@ -314,4 +314,17 @@ Should fix problem with non-downloadable source file.</comment>
   * Fix `ListBox.rows_max` calculation for empty container</comment>
     <requestid>1202571</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>561f677b94d439abb88fc098c972e1dd</srcmd5>
+    <version>2.6.16</version>
+    <time>1730387379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.16:
+  * Feature: Add focus reporting support
+  * Add 16-color support
+  * Disable mouse tracking and discard input when exiting the
+    main loop
+  * Type annotations: fix typing issues</comment>
+    <requestid>1219730</requestid>
+  </revision>
 </revisionlist>
