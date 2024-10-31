@@ -154,9 +154,9 @@
 <%= requires_for_feature('yjit') %>
 <% end -%>
 Summary:        <%= config[:summary] or spec.summary %>
-Group:          Development/Languages/Ruby
 <% unless spec.executables.empty? -%>
-PreReq:         update-alternatives
+Requires(preun): update-alternatives
+Requires(post): update-alternatives
 <% end -%>
 <% if has_plugins -%>
 Conflicts:      rubygem(<%= rb_pkg_abi %>)
@@ -169,7 +169,6 @@ Enhances:       <%= rb_pkgname %>
 <% if spec.has_rdoc? && !(config[:disable_docs]) -%>
 %package -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
 Summary:        RDoc documentation for <%= spec.name %>
-Group:          Development/Languages/Ruby
 Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
 
 %description -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
@@ -214,7 +213,6 @@ Usually in RDoc and RI formats.
 <% unless test_frameworks.empty? -%>
 %package -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
 Summary:        Test suite for <%= spec.name %>
-Group:          Development/Languages/Ruby
 Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
 
 %description -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
@@ -245,13 +243,13 @@ fi
 
 %files -n <%= pkg_basename %><%= config[:version_suffix] %>
 %defattr(-,root,root,-)
-# MANUAL
 <% if config[:main] && config[:main][:filelist] -%>
+# MANUAL
 <%= config[:main][:filelist] %>
-<% end -%>
 # /MANUAL
+<% end -%>
 <% unless docdirfiles.empty? -%>
-<%= docdir %>/<%= pkg_basename %><%= config[:version_suffix] %>
+%doc <%= docdir %>/<%= pkg_basename %><%= config[:version_suffix] %>
 <% end -%>
 <% spec.executables.each do |executable| -%>
 <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}-#{spec.version}" %>
@@ -302,7 +300,6 @@ fi
 <%= data[:preamble] %>
 <% else %>
 Summary:        <%= custom_pkg_name %> sub package for <%= spec.name %>
-Group:          Development/Languages/Ruby
 <% end %>
 Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
 %description -n <%= pkg_basename %>-<%= custom_pkg_name %><%= config[:version_suffix] %>

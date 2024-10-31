@@ -17,7 +17,7 @@
 
 
 Name:           SVT-AV1
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
@@ -64,7 +64,7 @@ This package contains the header files for svt-av1.
 %autosetup -p1 -n %name-v%version
 
 %build
-%cmake
+%cmake -DNATIVE=OFF
 %cmake_build
 
 %install

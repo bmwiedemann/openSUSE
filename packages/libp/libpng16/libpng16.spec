@@ -20,7 +20,7 @@
 %define asan_build  0
 %define major   1
 %define minor   6
-%define micro   43
+%define micro   44
 %define branch  %{major}%{minor}
 %define libname libpng%{branch}-%{branch}
 %define debug_package_requires %{libname} = %{version}-%{release}
@@ -34,8 +34,6 @@ Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar
 Source2:        libpng16.keyring
 Source3:        rpm-macros.libpng-tools
 Source4:        baselibs.conf
-# PATCH-FIX-UPSTREAM - https://github.com/pnggroup/libpng/pull/563
-Patch1:         563.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -98,6 +96,9 @@ PNG files.
 %build
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1
 export CFLAGS="%{optflags} -O3 -DPNG_SAFE_LIMITS_SUPPORTED -DPNG_SKIP_SETJMP_CHECK $(getconf LFS_CFLAGS)"
+%ifarch armv7l armv7hl
+export CFLAGS="$CFLAGS -mfpu=neon"
+%endif
 export LDFLAGS="-Wl,-z,relro,-z,now"
 %if %{debug_build}
 export CFLAGS="$CFLAGS -Og"

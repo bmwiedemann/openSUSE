@@ -284,4 +284,12 @@
     entities, so there is no difference in behavior.</comment>
     <requestid>724357</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>56fb23bf1b0543c614e6f182ffd580fe</srcmd5>
+    <version>0.1.7</version>
+    <time>1730387361</time>
+    <user>dimstar_suse</user>
+    <comment>Require UTF8 locale for tests</comment>
+    <requestid>1219527</requestid>
+  </revision>
 </revisionlist>

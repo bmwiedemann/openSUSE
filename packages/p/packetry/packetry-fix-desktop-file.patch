@@ -1,0 +1,13 @@
+diff --git a/appimage/dist/packetry.desktop b/appimage/dist/packetry.desktop
+index c390fb2..a9b0ce3 100644
+--- a/appimage/dist/packetry.desktop
++++ b/appimage/dist/packetry.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=packetry
+ Exec=packetry
+-Icon=icon
++Icon=packetry
+ Type=Application
+ Categories=Utility;
+ X-AppImage-Version=0.1.0

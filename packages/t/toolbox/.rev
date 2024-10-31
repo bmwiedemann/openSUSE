@@ -295,4 +295,16 @@
     <comment></comment>
     <requestid>1218412</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>39d4ffa8970ecdde9be275db0f98e34f</srcmd5>
+    <version>2.4+git20241030.2ae8421</version>
+    <time>1730387336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4+git20241030.2ae8421:
+  * Adjust md syntax for go-md2man
+  * Fix header
+  * Sync README with manual page
+  * Ignore generated toolbox.1 manual page</comment>
+    <requestid>1219327</requestid>
+  </revision>
 </revisionlist>

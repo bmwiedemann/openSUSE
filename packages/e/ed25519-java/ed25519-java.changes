@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:18:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build using ant
+
+-------------------------------------------------------------------
 Wed Feb 21 10:42:44 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 13:48:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix build for SLE12+
+
+-------------------------------------------------------------------
 Wed Oct 16 22:24:52 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Further merge docker and docker-stable specfiles to minimise the differences.

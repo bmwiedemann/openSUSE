@@ -97,4 +97,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1198864</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>07af66527a09271024ee63fa27fbecec</srcmd5>
+    <version>1.13.0</version>
+    <time>1730387315</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.13.0 (forwarded request 1219230 from danishprakash)</comment>
+    <requestid>1219549</requestid>
+  </revision>
 </revisionlist>

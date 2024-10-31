@@ -17,7 +17,7 @@
 
 
 Name:           python-smart-open
-Version:        7.0.4
+Version:        7.0.5
 Release:        0
 Summary:        Python utils for streaming large files
 License:        MIT

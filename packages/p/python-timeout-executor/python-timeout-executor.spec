@@ -17,28 +17,28 @@
 
 
 Name:           python-timeout-executor
-Version:        0.7.1
+Version:        0.9.1
 Release:        0
 Summary:        Library to execute python functions with timeout
 License:        MIT
 URL:            https://github.com/phi-friday/timeout-executor
 Source:         https://files.pythonhosted.org/packages/source/t/timeout-executor/timeout_executor-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 4.0.0}
 BuildRequires:  %{python_module async-wrapper >= 0.9.0}
 BuildRequires:  %{python_module cloudpickle >= 3.0.0}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module tblib >= 3.0.0}
-BuildRequires:  %{python_module typing-extensions >= 4.4.0}
 BuildRequires:  %{python_module httpx >= 0.27.2}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 8.0.2}
 BuildRequires:  %{python_module pytest-cov >= 5.0.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
+BuildRequires:  %{python_module tblib >= 3.0.0}
 BuildRequires:  %{python_module trio >= 0.24.0}
+BuildRequires:  %{python_module typing-extensions >= 4.4.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-anyio >= 4.0.0

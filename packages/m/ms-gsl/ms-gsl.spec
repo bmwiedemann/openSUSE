@@ -17,7 +17,7 @@
 
 
 Name:           ms-gsl
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Guidelines Support Library
 License:        MIT
@@ -51,12 +51,15 @@ Summary:        Development files for %{name}
 
 %build
 %cmake \
-  -DGSL_TEST=OFF \
+  -DGSL_TEST=ON \
   -DCMAKE_BUILD_TYPE=Release
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files devel
 %license LICENSE

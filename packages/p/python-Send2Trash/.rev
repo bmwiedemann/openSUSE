@@ -61,4 +61,16 @@
     <comment></comment>
     <requestid>1106284</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4189df6ecc5ad34601d395c5a181a9b9</srcmd5>
+    <version>1.8.3</version>
+    <time>1730387376</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * Add support for any iterable type as input
+  * fix: Use os.fsdecode() for arguments to shutil.move()
+
+- created package using py2pack</comment>
+    <requestid>1219724</requestid>
+  </revision>
 </revisionlist>

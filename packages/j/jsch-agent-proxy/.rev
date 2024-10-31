@@ -39,4 +39,12 @@
     <comment>0.0.9 + mitigate bsc#1218198, CVE-2023-48795</comment>
     <requestid>1157430</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5d11cf1532fdae41465da3d9fcee8bdf</srcmd5>
+    <version>0.0.9</version>
+    <time>1730387332</time>
+    <user>dimstar_suse</user>
+    <comment>Build again the svnkit-trilead-ssh2 module</comment>
+    <requestid>1219256</requestid>
+  </revision>
 </revisionlist>

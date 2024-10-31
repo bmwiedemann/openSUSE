@@ -14,11 +14,7 @@ installkernel() {
 
 # called by dracut
 install() {
-    inst_multiple -o \
-        /usr/sbin/haveged \
-        $systemdsystemunitdir/haveged.service
-    mkdir -p "$initdir/$systemdsystemunitdir/sysinit.target.wants"
-    mkdir -p "$initdir/$systemdsystemunitdir/initrd-switch-root.target.wants"
+    inst_multiple -o /usr/sbin/haveged $systemdsystemunitdir/haveged-once.service
     mkdir -p "$initdir/$systemdsystemunitdir/systemd-journald.service.wants"
-    ln_r "$systemdsystemunitdir/haveged.service" "$systemdsystemunitdir/systemd-journald.service.wants/haveged.service"
+    ln_r "$systemdsystemunitdir/haveged-once.service" "$systemdsystemunitdir/systemd-journald.service.wants/haveged-once.service"
 }

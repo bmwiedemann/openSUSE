@@ -40,6 +40,7 @@ Source1:        README-FIRST
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
 Patch1:         iconv-name.diff
 Patch2:         schily-2018-05-25_star_configuration.patch
+Patch3:         81.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

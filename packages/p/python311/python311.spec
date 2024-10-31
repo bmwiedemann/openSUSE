@@ -792,6 +792,11 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
 echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-import-failed-hooks.pth
 %endif
 
+# For the purposes of reproducibility, it is necessary to eliminate any *.pyc files inside documentation dirs
+if [ -d %{buildroot}%{_defaultdocdir} ] ; then
+find %{buildroot}%{_defaultdocdir} -type f -name \*.pyc -ls -exec rm -vf '{}' \;
+fi
+
 %if %{with general}
 %files -n %{python_pkg_name}-tk
 %{sitedir}/tkinter

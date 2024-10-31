@@ -178,4 +178,28 @@
     enabling debug-level logging</comment>
     <requestid>1191782</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a0403e784705227a65688bdd90e3b808</srcmd5>
+    <version>3.33.2</version>
+    <time>1730387377</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.33.2:
+  * Fix #1571 initial_value for RichTextInputElement should
+    also accept type RichTextBlock
+  * Switch canvases.* APIs to application/json format for
+- update to 3.33.1:
+  * Enable WebClient#assistant_threads_setSuggestedPrompts to
+    skip title param - Thanks @seratch
+- update to 3.33.0:
+  * #1563 Add assistant.threads.* APIs
+  * #1560 Fix RichTextElementParts.Date.timestamp to be an int -
+- update to 3.32.0:
+  * feat: add support for `conversations.requestShared`
+    `approve`, `deny` &amp; `list`
+  * feat: add interactivity_pointer as trigger_id alias to
+    views.* APIs
+  * feat: support all possible fields for
+    RichTextElementParts.Date</comment>
+    <requestid>1219725</requestid>
+  </revision>
 </revisionlist>

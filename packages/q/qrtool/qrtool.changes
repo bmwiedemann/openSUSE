@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 22:19:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.6
+  * Add Supports decoding from XBM
+  * Fixed fall-back to decoding an inverted image
+
+------------------------------------------------------------------
 Sun Sep 22 19:12:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.5

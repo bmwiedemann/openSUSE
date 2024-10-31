@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 19 06:27:27 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to limit the scope of the 'removable'
+  SL-Micro to the image booting with TPM2 unsealing (bsc#1210382)
+  * 769e41d Limit the removable option to encrypted SL-Micro
+
+-------------------------------------------------------------------
 Mon Sep 16 06:56:21 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to apply the missing fix for openSUSE Leap

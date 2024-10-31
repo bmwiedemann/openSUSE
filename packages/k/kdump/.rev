@@ -1359,4 +1359,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
 Please note that the boo#1226676 fix does not completely fix the issue on its own -- another fix is is needed in the Perl-bootloader package. </comment>
     <requestid>1189428</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>ad8a89b1f83e96bb66600e6446ca9e0c</srcmd5>
+    <version>2.0.10+git0.g62142dd</version>
+    <time>1730387321</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219626</requestid>
+  </revision>
 </revisionlist>

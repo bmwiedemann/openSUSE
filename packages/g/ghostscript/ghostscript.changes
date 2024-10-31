@@ -1,14 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:27:04 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Enhanced entry below dated "Wed Oct 23 08:54:59 UTC 2024"
+  by adding the individual "bsc" numbers for each CVE, see
+  https://bugzilla.suse.com/show_bug.cgi?id=1232173#c4
+  and by adding the "IMPORTANT" change in Ghostscript 10.04.0
+- spec file cleanup: removed the special cases for SLE12
+  i.e. rely on "suse_version >= 1500" as given precondition
+  (recent Ghostscript versions fail to build in SLE12 anyway)
+
+-------------------------------------------------------------------
 Wed Oct 23 08:54:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 10.04.0 (bsc#1232173):
-  * Amongst other general bugs fixes, this release addresses:
-    + CVE-2024-46951
-    + CVE-2024-46952
-    + CVE-2024-46953
-    + CVE-2024-46954
-    + CVE-2024-46955
-    + CVE-2024-46956
+- Version upgrade to 10.04.0 (bsc#1232173):
+  Highlights in this release include:
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.04.0/News.html
+  * This release addresses:
+    + CVE-2024-46951 (bsc#1232265)
+    + CVE-2024-46952 (bsc#1232266)
+    + CVE-2024-46953 (bsc#1232267)
+    + CVE-2024-46954 (bsc#1232268)
+    + CVE-2024-46955 (bsc#1232269)
+    + CVE-2024-46956 (bsc#1232270)
+  * IMPORTANT: In this release (10.04.0)
+    we (i.e. Ghostscript upstream) have be added
+    protection for device selection from PostScript input.
+    This will mean that, by default, only the device specified
+    on the command line will be permitted. Similar to the file
+    permissions, there will be a "--permit-devices=" allowing
+    a comma separation list of allowed devices. This will also
+    take a single wildcard "*" allowing any device.
+    Any application which relies on allowing PostScript
+    to change devices during a job will have to be aware,
+    and take action to deal with this change.
+    The exception is "nulldevice", switching to that requires
+    no special action. 
 
 -------------------------------------------------------------------
 Mon Jul  1 11:56:34 UTC 2024 - Johannes Meixner <jsmeix@suse.com>

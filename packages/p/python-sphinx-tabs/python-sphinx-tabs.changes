@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:51:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.7:
+  * As previous release, but with working deployment to PyPI
+- update to 3.4.6:
+  * Unpin Python version and dont reread README.md in setup.py
+  * Drop usage of internal API when conditionally including
+    assets
+
+-------------------------------------------------------------------
 Thu Feb  1 21:22:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.5:

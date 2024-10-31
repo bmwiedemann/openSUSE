@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gem2rpm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,50 +57,13 @@ BuildRequires:  ruby-common >= 3.2
 BuildRequires:  update-alternatives
 URL:            https://github.com/lutter/gem2rpm/
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml.documentation
+Source1:        update-suse-patch.sh
 Source2:        gem2rpm-opensuse
 Source3:        series
-Patch01:        0001-use-the-ID-from-os-release-to-use-the-proper-templat.patch
-Patch02:        0002-added-basic-config-file-support-to-gem2rpm-in-yaml-f.patch
-Patch03:        0003-new-opensuse-templates.-they-require-the-config-file.patch
-Patch04:        0004-added-example-gem2rpm.yml.patch
-Patch05:        0005-properly-shorten-description-and-summary.patch
-Patch06:        0006-Preserve-the-license-header-found-in-the-output-file.patch
-Patch07:        0007-fixes-for-the-opensuse-template.patch
-Patch08:        0008-do-not-use-not-.-not-supported-on-1.8-e.g.patch
-Patch09:        0009-No-longer-require-the-ruby-version-inside-the-subpac.patch
-Patch10:        0010-Try-to-load-rbconfigpackagingsupport-and-fail-gracef.patch
-Patch11:        0011-Add-support-for-scripts-pre-post-for-subpackages.patch
-Patch12:        0012-typo-in-gem2rpm.yml.documentation-custom_pkgs-instea.patch
-Patch13:        0013-Also-tag-LICENSE-MIT-as-docfile.patch
-Patch14:        0014-Refactor-into-multiple-lines.patch
-Patch15:        0015-Add-licence-to-the-list-of-license-files-as-well.patch
-Patch16:        0016-add-two-more-ways-to-express-changes.patch
-Patch17:        0017-.markdown-is-also-seen-in-the-wild.patch
-Patch18:        0018-Only-use-the-extensions-doc-dir-on-MRI-2.1.x.patch
-Patch19:        0019-Cleaner-solution-for-the-extensions-doc-dir.patch
-Patch20:        0020-Ruby-1.8-insists-on-the-for-the-parameter.patch
-Patch21:        0021-Fix-company-name-in-copyright-header.patch
-Patch22:        0022-add-the-touch-for-build-compare-to-the-template.patch
-Patch23:        0023-Also-tag-APACHE-LICENSE-2.0-as-docfile.patch
-Patch24:        0024-add-ability-to-provide-alternative-main-Source.patch
-Patch25:        0025-allow-running-commands-after-patching.patch
-Patch26:        0026-use-https-instead-of-http-for-rubygems.org.patch
-Patch27:        0027-quote-version_suffix-in-gem2rpm.yml.documentation-to.patch
-Patch28:        0028-add-binary_map-support.patch
-Patch29:        0029-Use-or-for-the-conditions-instead-of-and.patch
-Patch30:        0030-gem_package.spec.erb-sync-with-ruby-common.patch
-Patch31:        0031-use-template-opensuse-on-openSUSE-Tumbleweed-where-e.patch
-Patch32:        0032-Replace-no-rdoc-no-ri-with-no-document.patch
-Patch33:        0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
-Patch34:        0034-plugin-dir.patch
-Patch35:        0035-fix-patch-syntax.patch
-Patch128:       template_loader.patch
+Patch01:        suse.patch
 Summary:        Generate rpm specfiles from gems
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Ruby
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
 
 %description
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -117,7 +80,7 @@ perl -p -i -e 's|("templates/opensuse.spec.erb".freeze)|$1, "templates/gem_packa
 %install
 %gem_install -f -N --symlink-binaries --doc-files="AUTHORS LICENSE README"
 for i in %{buildroot}%{_docdir}/*rubygem-gem2rpm*/ ; do
-  install -m 0644 %{S:1} $i/gem2rpm.yml
+  install -m 0644 gem2rpm-%{version}/gem2rpm.yml.documentation $i/gem2rpm.yml
 done
 
 %if %{with gem2rpm_bootstrap}
@@ -126,7 +89,7 @@ done
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.1-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -184,7 +147,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby1.8-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -242,7 +205,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby1.9-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -300,7 +263,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.0-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -358,7 +321,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.2-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -416,7 +379,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.3-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -474,7 +437,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.4-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -532,7 +495,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -590,7 +553,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.6-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -648,7 +611,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby2.7-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -706,7 +669,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby3.0-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -764,7 +727,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby3.1-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -822,7 +785,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby3.2-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -880,7 +843,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n ruby3.3-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -940,7 +903,7 @@ fi
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description -n rbx2.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.

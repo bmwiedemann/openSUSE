@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:39:54 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove haveged-once.service.
+  Service is no longer required exactly as of version 1.9.19, because
+  the fix for it was merged upstream (synchronize haveged instances
+  during switch root).
+- Revert a change in haveged-dracut.module, as haveged should be
+  required by systemd-journald.service, not sysinit.target.
+
+-------------------------------------------------------------------
+Tue Oct 29 18:28:04 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.9.19:
+  * Added --time_interval N to add entropy unconditionally every N
+    seconds.
+  * Synchronize haveged instances during switch root.
+  * 90-haveged.rules: fix warnings reported by udevadm verify.
+- Introduce haveged-once.service.
+  * This new service is meant to be called from initrd, and it uses
+    the '--once' flag.
+  * Haveged is executed, and then exits, raising the entropy levels
+    during very early boot.
+    Once / is mounted and 'systemd switch-root' is called, then the
+    regular haveged.service is invoked.
+  * Fix for bsc#1165294 and bsc#1222296.
+- Improve haveged-dracut.module, so that haveged is called only once
+  from initrd.
+
+-------------------------------------------------------------------
 Fri Oct 27 13:04:10 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Remove haveged-switch-root.service because it's implemented incorrectly and

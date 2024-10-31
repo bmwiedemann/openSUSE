@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  8 00:27:46 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update gem_packages.spec.erb by syncing with gem2rpm
+  - drop group tag
+  - only emit manual comments if we actually put out content
+  - mark docs explicitely with the %doc tag
+  - stop using deprecated PreReq for update-alternatives
+
+-------------------------------------------------------------------
 Sat Sep 28 00:00:32 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update gem_packages.spec.erb:

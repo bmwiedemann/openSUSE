@@ -84,8 +84,19 @@ case "$OS_ID" in
         ca_string='SUSE Linux Enterprise Secure Boot CA1';;
 esac
 
-# bsc#1230316 For SL-Micro, always install shim/grub2 with the "removable" way
-if test "$GRUB_DISTRIBUTOR" = "SL Micro"; then
+# bsc#1230316 Check if the system is encrypted SL-Micro
+is_encrypted_slm () {
+   if test "$GRUB_DISTRIBUTOR" = "SL Micro" && test -n "$GRUB_TPM2_SEALED_KEY" ; then
+       # return true
+       return 0
+   fi
+
+   # return false
+   return 1
+}
+
+# bsc#1230316 For encrypted SL-Micro, always install shim/grub2 with the "removable" way
+if is_encrypted_slm; then
     removable=yes
 fi
 
@@ -476,9 +487,9 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
         $efibootmgr -b "$bootnum" -B
     done
 
-    # bsc#1230316 Skip the creation of the boot option for SL-Micro to make
-    # the system always boot from HDD
-    if test "$GRUB_DISTRIBUTOR" != "SL Micro"; then
+    # bsc#1230316 Skip the creation of the boot option for encrypted SL-Micro to make
+    # the system always boot from the default boot path (\EFI\BOOT\boot<arch>.efi)
+    if ! is_encrypted_slm; then
         efidir_drive="$("$grub_probe" --target=drive --device-map= "$efidir")"
         efidir_disk="$("$grub_probe" --target=disk --device-map= "$efidir")"
         if test -z "$efidir_drive" || test -z "$efidir_disk"; then

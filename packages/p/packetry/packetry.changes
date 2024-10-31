@@ -1,0 +1,295 @@
+-------------------------------------------------------------------
+Tue Oct 29 15:45:53 UTC 2024 - mardnh@gmx.de
+
+- Update to version 0.4.0:
+  Added
+  * Add context menu system and options to save data.
+  * Add initial support for HID descriptors.
+- Add patch:
+  * packetry-fix-desktop-file.patch
+
+-------------------------------------------------------------------
+Sat Jul 20 06:22:58 UTC 2024 - mardnh@gmx.de
+
+- Update to version 0.1.0:
+  * Update changelog for release 0.1.0
+  * Replace XVFB action with direct use of xvfb-run.
+  * Replace Rust actions with direct use of rustup and cargo.
+  * Use bash as shell for multi-command action.
+  * Add About dialog to UI.
+  * Add a --version option.
+  * Add initial user documentation
+  * Remove unneeded bufreaderwriter dependency.
+  * Support ---test-cynthion --save-captures option.
+  * Move pcap write code out of UI.
+  * Add note to README about optional features.
+  * Document the available features, all of which are for debug only.
+  * Display timestamps in a smaller, fixed width font.
+  * Bump analyzer protocol version to 0x01.
+  * Add test verifying SOF packets have the expected timestamp intervals.
+  * Unify pcap loading, make times relative to first packet.
+  * Initial implementation of timestamps in UI.
+  * Handle timestamps in capture database and pcap files.
+  * Keep a total of clock cycles and convert to nanosecond timestamps.
+  * Read and ignore non-packet events.
+  * Read timestamp data from analyzer stream.
+  * Update HITL test to require all bytes of transfer be captured.
+  * Skip padding bytes after odd-length packets.
+  * Report clearer messages for protocol mismatches.
+  * Add an InfoBar that indicates why a selected device is not usable.
+  * Remove extern_crate_alloc feature from bytemuck dependency.
+  * Update dependencies to latest versions.
+  * Remove library target and special test features.
+  * Move hardware-in-the-loop test into main binary.
+  * Remove unused method.
+  * Fix building with record-ui-test feature.
+  * Suppress warning about unused Descriptor variant fields.
+  * Disable rust-cache action.
+  * Configure cargo include field for crate.
+  * Add change log.
+  * Update crate metadata.
+  * Capture and verify enumeration as part of test.
+  * Repeat hardware-in-the-loop test for each speed.
+  * Disconnect and reconnect test device during test.
+  * Add hardware-in-the-loop test using Cynthion analyzer.
+  * Add helper methods to start and stop capture.
+  * Keep processing transfer queue until shortly after stopping capture.
+  * Add a helper function to handle thread panics.
+  * Move queue handling into a separate type.
+  * Clone handle so that start() need not consume self.
+  * Move run_capture closure to a method.
+
+-------------------------------------------------------------------
+Sat May 18 09:43:20 UTC 2024 - mardnh@gmx.de
+
+- Update to version 0~git20240516:
+  * Update to new analyzer USB API.
+  * Show devices that are not usable in the list, and keep track of why.
+  * List devices as "Cynthion", disambiguating if necessary.
+  * Update available speeds when device selection changes.
+  * DeviceSelector::scan() no longer needs to return a boolean.
+  * Remove superfluous closure.
+  * Update documentation.
+  * Rename LUNA backend to Cynthion.
+  * Use Queue API to pipeline data transfers.
+  * Initial port from rusb to nusb, using synchronous operations only.
+  * Implement Iterator for LunaStream.
+  * Allocate a new buffer for each bulk transfer.
+  * Move work splitting capture data into packets to decoder thread.
+  * Pass error handler to capture thread, instead of errors through channel.
+
+-------------------------------------------------------------------
+Mon Mar 25 20:44:42 UTC 2024 - mardnh@gmx.de
+
+- Update to version 0~git20240325:
+  * clippy: use `cloned()` instead of `map(Arc::clone)`
+  * Switch from ListView to ColumnView.
+  * Update all remaining dependencies to current versions.
+  * Update humansize dependency to current v2.1.3 release.
+  * Update gtk4 dependency to current 0.8.0 release.
+  * Fix handling of worker thread results.
+  * Display causes of errors.
+  * Bump readthedocs-sphinx-search from 0.3.1 to 0.3.2 in /docs
+  * Re-add unused prelude imports & squelch Clippy warnings about them
+  * Display backtraces with errors.
+  * Use anyhow library for error handling.
+  * Add readthedocs config file.
+  * Clippy fixes
+
+-------------------------------------------------------------------
+Tue Nov 21 20:46:37 UTC 2023 - mardnh@gmx.de
+
+- Update to version 0~git20231102:
+  * Add initial Packetry documentation kit
+  * clippy: fix non-canonical implementation of PartialOrd
+  * clippy: fix redundant guards
+  * Clippy fix
+  * Mark application as non-unique, to allow multiple instances.
+  * Replace item_node method with an item_node_rc on NodeRcOps.
+  * Add an is_complete helper to CompletionStatus.
+  * Use u64 indices in TreeListModel.
+  * Use a ModelUpdate struct to represent updates to be applied.
+  * Use region map to fetch items.
+  * Add self-check of region map against expected row count.
+  * Add feature to output region map debug messages.
+  * Add row_count method.
+  * Maintain a region map in parallel with the tree model.
+  * Extend data transfer indexing to control transfers.
+  * Replace transfer data indexing scheme.
+  * Add bisect_left method to CompactReader.
+  * Implement SubAssign for Id<T>.
+  * Use compressed indexes for capture storage.
+  * Add compressed index implementation, building on existing stream types.
+  * Use a 2MB block size for packet data.
+  * Use new lock-free data structures for capture storage.
+  * Implement Display for DataWriter and IndexWriter.
+  * Move fmt_count and fmt_size to a new util module.
+  * Add an index stream implementation, for monotonic u64 values.
+  * Add a data stream implementation, for Pod types rather than bytes.
+  * Implement additional traits and methods on Id<T>.
+  * Defer initial device scan to after UI startup.
+  * Query device for supported speeds
+  * Add "Auto" speed option
+  * Report supported speeds from backend
+  * Move device description generation to backend
+  * Return a struct with device information from luna::scan
+  * If unable to open a libusb context, detect nothing.
+  * Add device selector to UI.
+  * Retain USB context in the UI structure.
+  * Separate USB device scanning from opening.
+  * Add status bar.
+  * Use an ActionBar rather than a HeaderBar for the toolbar.
+  * Be more explicit about safety requirements.
+  * Verify at runtime that the block size is a multiple of the page size.
+  * Define minimum supported rust version as 1.57.
+  * Don't create a backing file until a stream has a full block to write.
+  * Define a default block size for streams.
+  * Make stream block size configurable as a const generic.
+  * Add lock-free stream implementation.
+  * Open our own libusb context rather than using the global one.
+  * Include summary of node being expanded/collapsed in UI test output.
+  * Summarise output of decoder tests.
+  * Summarise output of UI replay tests.
+  * Separate main.rs into lib.rs, ui.rs, and test_replay.rs.
+  * Add test of stepping through split polling.
+  * Add test case single-stepping through mouse enumeration.
+  * Handle updates to summaries of existing items in replay test.
+  * Avoid logging repeated updates with the same packet count.
+  * Add UI replay infrastructure and initial test case.
+  * Run tests with an Xvfb server available.
+  * Add feature to record UI test.
+  * Read list of tests from a file rather than a directory.
+  * Add test case for NYET on split transactions.
+  * Don't display index field twice for requests with unspecified recipient.
+  * Don't name the endpoint for ends of control transfers.
+  * Fix handling of NYET on completing SPLIT transactions.
+  * Include in summary if control transfers were incomplete or stalled.
+  * Add helper method to get setup fields from a transaction.
+  * Remove CompletedTransactions iterator and related methods.
+  * Include endpoint in transaction descriptions.
+  * Simplify transaction descriptions with a helper method.
+  * Move transaction description to a method on Transaction.
+  * Only display handshakes as the outcome of a transaction.
+  * Display partial transactions without errors.
+  * Display partial control transfers without errors.
+  * Allow some packets to start a transaction and transfer immediately.
+  * Add an add_transfer helper method.
+  * Display transactions as soon as possible.
+  * Revise the TransactionState structure and its usage.
+  * Move optional fields of EndpointData into one TransferState struct.
+  * Move transfer_status method from Decoder to EndpointData.
+  * Remove decoder methods for accessing current EP/device data.
+  * Move descriptor decoding methods from Decoder to DeviceData.
+  * Handle any trailing transaction when capture ends.
+  * Exclude lower 8 bits of index for endpoint and interface requests.
+  * Interpret only the lower 8 bits of wIndex as interface number.
+  * Add test case of polling using split transactions.
+  * Add test case of device enumeration using split transactions.
+  * Fall back from transfer_append to transfer_start.
+  * Handle SPLIT transactions.
+  * Show data bytes in SETUP transaction summary.
+  * Clippy fixes
+  * Add required dependencies for Fedora
+
+-------------------------------------------------------------------
+Mon Feb 27 07:59:59 UTC 2023 - mardnh@gmx.de
+
+- Update to version 0~git20230222:
+  * Support manual speed selection, requiring gateware version 0.0.1.
+  * Refactor control with a State bitfield we can add additional fields to.
+  * Add check for supported gateware version, currently 0.0.0.
+  * CI: Add pkg-config to brew dependencies.
+  * Fix logic for when to run UI update.
+  * Implement saving capture to a pcap file.
+  * Update pcap-file dependency to v2.0.0.
+  * Rename atomic variables with more generic names for reuse.
+  * Update descriptor fields in hierarchy when device data changes.
+  * Fix device descriptor not being shown before configurations read.
+  * Don't raise an error if expander handler is not set.
+  * Check for new item versions when updating tree model.
+  * Add an item_update() method to the ItemSource API.
+  * Maintain a version field in DeviceData.
+  * When an item's summary must change, update its widget directly.
+  * Stop periodic updates when capture completes.
+  * Extend update code to handle updates to all items.
+  * Keep track of incomplete items that may gain children.
+  * Move update of total rows to a helper method.
+  * Pass list position from view into TreeListModel set_expanded call.
+  * Move items_changed call into TreeListModel update method.
+  * Make the update method not require a &mut reference.
+  * Revise the ItemSource API, adding completion status.
+  * Remove unused complete() methods.
+  * Use some clearer variable names in update method.
+  * When collapsing a node, first recursively collapse its children.
+  * Revise types used for nodes in TreeListModel.
+  * Push transactions to the index on their first packet, not last.
+  * Redraw rows as needed when the endpoint count changes.
+  * Schedule each UI update 10ms after the last one.
+  * Add debug feature to step through decoding packet-by-packet.
+  * Allow using the stop button to cancel loading a file.
+  * Connect open button to file chooser and pcap loader.
+  * Reset the capture, models and views to support repeated capture.
+  * Connect capture and stop buttons to control capture.
+  * Add buttons to UI.
+  * Put capture in UserInterface struct.
+  * Remove superfluous clone.
+  * Move code into start_pcap and start_luna helper functions.
+  * Clean up constants used for special invalid/framing endpoints.
+  * Remove capture argument from Decoder::new().
+  * Set up special endpoints in Capture::new().
+  * Set up default device in Capture::new().
+  * Add a new() method to EndpointData.
+  * Add a new() method to EndpointTraffic.
+  * Implement Default for DeviceData.
+  * Add a header bar to main window.
+  * Hide progress bar when loading completes.
+  * Display progress bar while loading file.
+  * Clean up and refactor to use a UserInterface struct.
+  * Run read/decode loop in its own thread.
+  * Make display_error use idle_add_once to post to main thread.
+  * Display product string in device view if available.
+  * Use variable names in format strings where possible.
+  * Add a test case including PING transactions.
+  * Handle PING transactions in decoder.
+  * Avoid fully qualifying DecodeStatus variants everywhere.
+  * CI: Work around bug in cache-apt-pkgs-action.
+  * Update device tree during live update as well as traffic tree.
+
+-------------------------------------------------------------------
+Sat Jan 14 21:33:40 UTC 2023 - mardnh@gmx.de
+
+- Update to version 0~git20221216:
+  * CI: cache Debian packages and Rust dependencies.
+  * Fixes for new Clippy errors introduced by Rust 1.66.
+  * Use a BufReader for pcap file.
+  * If reading or decoding fails, stop reading but proceed to display.
+  * Don't exit after displaying dialog box.
+  * Update README with screenshot and further instructions.
+  * Simplify by making display_error take a Result.
+  * Revise error variants and messages.
+  * Show main window before loading/starting capture.
+  * Don't try to remove timeout source on exit.
+  * Replace 'expect' call in expander closure.
+  * Replace 'expect' calls in bind/unbind closures.
+  * Add OrBug helper trait.
+  * Make display_error take a reference.
+  * Bring errors in tree model update out to top level.
+  * Send errors as well as data through channel from USB thread.
+  * Display a dialog if an error occurs.
+  * Handle errors in timeout handler by wrapping in another closure.
+  * Replace some more unwraps with error results.
+
+-------------------------------------------------------------------
+Sun Nov 13 07:55:50 UTC 2022 - mardnh@gmx.de
+
+- Update to version 0~git20221113:
+  * If retrieving a tree node fails, display error message in view.
+  * Add messages to all IndexErrors.
+  * Remove libpcap dependency from CI workflows.
+  * Switch from pcap to pcap-file to avoid libpcap/wpcap dependency.
+  * Clippy fix
+
+-------------------------------------------------------------------
+Sun Nov  6 21:01:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0~git20221102

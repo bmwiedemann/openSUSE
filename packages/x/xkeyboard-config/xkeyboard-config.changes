@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 28 10:38:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_fi-kotoistus-metainfo.patch
+  * add meta information for default variant of "fi" keyboard layout
+    "kotoistus" needed for GNOME or other users of xkeyboard meta XML
+    files (boo#1227420)
+
+-------------------------------------------------------------------
 Sat Jun  8 22:11:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.42:

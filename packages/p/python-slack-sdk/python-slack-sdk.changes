@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:53:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.33.2:
+  * Fix #1571 initial_value for RichTextInputElement should
+    also accept type RichTextBlock
+  * Switch canvases.* APIs to application/json format for
+- update to 3.33.1:
+  * Enable WebClient#assistant_threads_setSuggestedPrompts to
+    skip title param - Thanks @seratch
+- update to 3.33.0:
+  * #1563 Add assistant.threads.* APIs
+  * #1560 Fix RichTextElementParts.Date.timestamp to be an int -
+- update to 3.32.0:
+  * feat: add support for `conversations.requestShared`
+    `approve`, `deny` & `list`
+  * feat: add interactivity_pointer as trigger_id alias to
+    views.* APIs
+  * feat: support all possible fields for
+    RichTextElementParts.Date
+
+-------------------------------------------------------------------
 Tue Aug  6 04:12:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.31.0:

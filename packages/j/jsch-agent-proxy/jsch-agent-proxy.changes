@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 04:56:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Re-add trilead-ssh2 dependency, since the bsc#1218198,
+  CVE-2023-48795 has been fixed
+
+-------------------------------------------------------------------
 Wed Mar 13 07:30:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 0.0.9

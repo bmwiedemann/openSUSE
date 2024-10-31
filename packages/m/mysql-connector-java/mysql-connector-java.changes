@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Oct 21 12:20:07 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to Version 9.1.0
+  * Fix for Bug#116114 (Bug#37067812), Connector/J is writing
+    incorrect values when passed negative dates.
+  * Fix for Bug#96623 (Bug#30221117), batch update with
+    rewriteBatchedStatements&useServerPrepStmts send fail request.
+  * Fix for Bug#114705 (Bug#36539680), Contribution: make
+    trustStorePassword be null if
+    this.trustStoreSettings.keyStorePassword is null.
+  * Fix for Bug#84117 (Bug#25247468),
+    includeThreadNamesAsStatementComment ignored when using
+    prepared statement.
+  * Fix for Bug#101054 (Bug#32544786), Batched Query >
+    maxAllowedPacket size causes an ArrayIndexOutOfBoundsException.
+  * Fix for Bug#108415 (Bug#34579258), NullPointerException in
+    AbstractQuery::stopQueryTimer.
+  * Fix for Bug#115265 (Bug#36843227), Second stored procedure call
+    with cacheCallableStmts might fail.
+  * Fix for Bug#36936407, PrepareCall method doesn't work as
+    expected when DB name is involved.
+  * WL#16490, OpenID Connect authentication support.
+  * Fix for Bug#112790 (Bug#35936477), Statement.getGeneratedKeys()
+    returns unexpected value.
+  * Fix for Bug#113509 (Bug#36154975), closeOnCompletion cause no
+    statement reuse and server memory leak.
+  * Fix for Bug#109418 (Bug#36043556), batch insert threw an
+    unexpected exception.
+  * Fix for Bug#114410 (Bug#36434816), Code performance issue.
+  * Fix for Bug#110586 (Bug#35254470), got unexpected result when
+    the data type was set to ZEROFILL.
+- Includes changes from version 9.0.0
+  * WL#16391, Upgrade 3rd party libraries and tools.
+  * Fix for Bug#114846 (Bug#36574322), Auto-closeable X dev session.
+  * Fix for Bug#114989 (Bug#36612566), Setting null value in
+    setClientInfo throws an NPE.
+  * WL#16376, Set 'caching_sha2_password' as default fallback
+    authentication plugin.
+  * WL#16342, Update MySQL error codes mapping.
+  * WL#16353, Refresh the list of acceptable TLS ciphers.
+  * Fix for Bug#114687 (Bug#36529541), Tests fail after
+    mysql_native_password has been made optional in server.
+  * WL#16319, Remove deprecated insensitive terminology based
+    methods.
+  * WL#16324, Update static MySQL keywords list.
+  * Fix for Bug#110512 (Bug#35223851), Contribution: Replace
+    synchronized with ReentrantLock.
+  * Fix for Bug#108830 (Bug#34721173), LIMIT clause, setMaxRows and
+    cursor combined returns wrong number or rows.
+- Refactored mysql-connector-java-remove-oci-support.patch for
+  v9.1.0
+- Refactored
+  mysql-connector-java-remove-opentelemetry-support.patch for
+  v9.1.0
+- Refactored reproducible-build.patch for v9.1.0
+
+-------------------------------------------------------------------
 Sun Sep 29 19:50:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

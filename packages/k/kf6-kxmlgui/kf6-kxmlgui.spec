@@ -39,7 +39,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel >= %{_kf6_bugfix_version}
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}

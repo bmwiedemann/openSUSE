@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 15 12:46:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducibledate.patch (boo#1231667)
+
+-------------------------------------------------------------------
 Mon Jul 22 16:42:52 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Build with no-afalgeng [bsc#1226463]

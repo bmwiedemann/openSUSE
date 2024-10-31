@@ -18,20 +18,13 @@
 
 %define new_name mysql-connector-j
 Name:           mysql-connector-java
-Version:        8.4.0
+Version:        9.1.0
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Java
 URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
-# NOTE:
-#   the following file contains the generated protobuf files with
-#   previous versions of protoc (protobuf) that are needed to build
-#   in previous SUSE distros.
-#   Source from:
-#   https://github.com/mysql/mysql-connector-j/commit/6976d9d779b498c254fc5cab5e69cfc74fc3e4f0
-Source1:        mysql-connector-java-generated-for-protobuf-3.9.2.tar.xz
 Patch0:         javac-check.patch
 # NOTE: Oracle OCI is not packaged yet
 #   The patch doesn't remove the file AuthenticationOciClient.java
@@ -48,7 +41,8 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  javassist >= 3.28.0
 BuildRequires:  junit
-BuildRequires:  protobuf-java >= 3.9.2
+BuildRequires:  protobuf-devel >= 26
+BuildRequires:  protobuf-java >= 26
 BuildRequires:  slf4j
 BuildRequires:  xz
 Requires:       jta >= 1.0
@@ -85,15 +79,6 @@ set that supports the capabilities of MySQL.
 %patch -P 2 -p1
 %patch -P 3 -p1
 
-%if 0%{?suse_version} <= 1500
-# ship protobuf generated files compatible with protobuf 3.9.2
-# which is the version we have in SLE15 SP2, the files were taken
-# from commit 6976d9d779b498c254fc5cab5e69cfc74fc3e4f0, which is
-# the last version compatible with that version of protobuf and
-# are equivalent in functionality
-tar -xvf %{SOURCE1} -C .
-%endif
-
 # remove OCI support
 rm -rf src/main/protocol-impl/java/com/mysql/cj/protocol/a/authentication/AuthenticationOciClient.java
 
@@ -121,7 +106,7 @@ export CLASSPATH=$(build-classpath \
     junit \
     reload4j \
     protobuf)
-%{ant} \
+ant \
     -Dsnapshot.version= \
     -Dcom.mysql.jdbc.extra.libs=lib \
     -Dant.java.version=1.8 \
@@ -144,7 +129,7 @@ install -d -m 755 %{buildroot}%{_mavenpomdir}
 # Install the Maven build information as new name
 %{mvn_install_pom} build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
 sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
-%add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar -a com.mysql:%{name}
+%add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar -a "com.mysql:%{name}","mysql:%{name}"
 
 %files -f .mfiles
 %{_javadir}/%{name}.jar

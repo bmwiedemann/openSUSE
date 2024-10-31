@@ -126,4 +126,12 @@
   * Fix JSON handling in SQLite &gt;= 3.45</comment>
     <requestid>1198040</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4034a374a22761a3a54401928a73d021</srcmd5>
+    <version>0.7.19</version>
+    <time>1730387366</time>
+    <user>dimstar_suse</user>
+    <comment>- skip for python313</comment>
+    <requestid>1219561</requestid>
+  </revision>
 </revisionlist>

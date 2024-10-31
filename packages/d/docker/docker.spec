@@ -103,8 +103,10 @@ BuildRequires:  linux-glibc-devel
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
+%if 0%{?suse_version} >= 1500
 BuildRequires:  fish
 BuildRequires:  go-go-md2man
+%endif
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) = 1.21
@@ -265,6 +267,7 @@ Conflicts:      docker-stable-zsh-completion
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
+%if 0%{?suse_version} >= 1500
 %package fish-completion
 Summary:        Fish completion for %{name}
 Group:          System/Shells
@@ -283,6 +286,7 @@ Conflicts:      docker-stable-fish-completion
 
 %description fish-completion
 Fish command line completion support for %{name}.
+%endif
 
 %prep
 # docker-cli
@@ -406,7 +410,9 @@ install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
 install -D -m0755 %{cli_builddir}/build/docker %{buildroot}/%{_bindir}/docker
 install -D -m0644 %{cli_builddir}/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/docker"
 install -D -m0644 %{cli_builddir}/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_docker"
+%if 0%{?suse_version} >= 1500
 install -D -m0644 %{cli_builddir}/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/docker.fish"
+%endif
 
 # systemd service
 install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/docker.service
@@ -515,8 +521,10 @@ grep -q '^dockremap:' /etc/subgid || \
 %defattr(-,root,root)
 %{_sysconfdir}/zsh_completion.d/_docker
 
+%if 0%{?suse_version} >= 1500
 %files fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/docker.fish
+%endif
 
 %changelog

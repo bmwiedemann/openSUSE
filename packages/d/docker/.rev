@@ -1462,4 +1462,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>1208742</requestid>
   </revision>
+  <revision rev="153" vrev="7">
+    <srcmd5>86e7973d10d593c63a1bf9435440afae</srcmd5>
+    <version>unknown</version>
+    <time>1730387351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219449</requestid>
+  </revision>
 </revisionlist>

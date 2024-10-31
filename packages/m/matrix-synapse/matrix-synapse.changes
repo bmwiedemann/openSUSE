@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:12:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Allow Twisted 24.10.0 again with backport of proposed upstream
+  fix
+  https://patch-diff.githubusercontent.com/raw/element-hq/synapse/pull/17886.patch
+
+-------------------------------------------------------------------
+Wed Oct 30 18:19:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- downgrade Twisted to 24.7.0 until https://github.com/element-hq/synapse/pull/17886
+  is merged
+
+-------------------------------------------------------------------
 Tue Oct 29 19:07:58 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.118.0

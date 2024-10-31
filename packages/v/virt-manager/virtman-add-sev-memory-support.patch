@@ -1,5 +1,27 @@
-References: bsc#1196806, jsc#SLE-18834
+References: bsc#1196806, jsc#SLE-18834, jsc#PED-8910
+bsc#1231400 - Virt-manager is missing support for AMD sev-snp
 
+Add AMD SEV support to virt-manager
+There are three types: sev, sev-es, sev-snp
+
+Index: virt-manager-4.1.0/virtinst/cli.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/cli.py
++++ virt-manager-4.1.0/virtinst/cli.py
+@@ -4814,7 +4814,13 @@ class ParserLaunchSecurity(VirtCLIParser
+         cls.add_arg("policy", "policy")
+         cls.add_arg("session", "session")
+         cls.add_arg("dhCert", "dhCert")
++        cls.add_arg("guestVisibleWorkarounds", "guestVisibleWorkarounds")
++        cls.add_arg("idBlock", "idBlock")
++        cls.add_arg("idAuth", "idAuth")
++        cls.add_arg("hostData", "hostData")
+         cls.add_arg("kernelHashes", "kernelHashes", is_onoff=True)
++        cls.add_arg("authorKey", "authorKey", is_onoff=True)
++        cls.add_arg("vcek", "vcek", is_onoff=True)
+ 
+ 
+ ###########################
 Index: virt-manager-4.1.0/ui/details.ui
 ===================================================================
 --- virt-manager-4.1.0.orig/ui/details.ui
@@ -147,7 +169,7 @@ Index: virt-manager-4.1.0/virtinst/domcapabilities.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/domcapabilities.py
 +++ virt-manager-4.1.0/virtinst/domcapabilities.py
-@@ -93,6 +93,9 @@ def _make_capsblock(xml_root_name):
+@@ -93,9 +93,20 @@ def _make_capsblock(xml_root_name):
  class _SEV(XMLBuilder):
      XML_NAME = "sev"
      supported = XMLProperty("./@supported", is_yesno=True)
@@ -157,7 +179,26 @@ Index: virt-manager-4.1.0/virtinst/domcapabilities.py
      maxESGuests = XMLProperty("./maxESGuests")
  
  
-@@ -406,6 +409,9 @@ class DomainCapabilities(XMLBuilder):
++class _LAUNCHSECURITY(XMLBuilder):
++    XML_NAME = "launchSecurity"
++    supported = XMLProperty("./@supported", is_yesno=True)
++    sectype = XMLProperty("./@sectype")
++    sev = XMLProperty("./launchSecurity/sev/@state", is_onoff=True)
++    sev_snp = XMLProperty("./launchSecurity/sev-snp/@state", is_onoff=True)
++
++
+ #############################
+ # Misc toplevel XML classes #
+ #############################
+@@ -121,6 +132,7 @@ class _Features(_CapsBlock):
+     XML_NAME = "features"
+     gic = XMLChildProperty(_make_capsblock("gic"), is_single=True)
+     sev = XMLChildProperty(_SEV, is_single=True)
++    launchSecurity = XMLChildProperty(_LAUNCHSECURITY, is_single=True)
+ 
+ 
+ class _MemoryBacking(_CapsBlock):
+@@ -406,6 +418,9 @@ class DomainCapabilities(XMLBuilder):
                          self.features.sev.maxESGuests)
          return bool(self.features.sev.supported)
  
@@ -171,8 +212,17 @@ Index: virt-manager-4.1.0/virtinst/domain/launch_security.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/domain/launch_security.py
 +++ virt-manager-4.1.0/virtinst/domain/launch_security.py
-@@ -19,8 +19,12 @@ class DomainLaunchSecurity(XMLBuilder):
+@@ -16,11 +16,21 @@ class DomainLaunchSecurity(XMLBuilder):
+     policy = XMLProperty("./policy")
+     session = XMLProperty("./session")
+     dhCert = XMLProperty("./dhCert")
++    guestVisibleWorkarounds = XMLProperty("./guestVisibleWorkarounds")
++    idBlock = XMLProperty("./idBlock")
++    idAuth = XMLProperty("./idAuth")
++    hostData = XMLProperty("./hostData")
      kernelHashes = XMLProperty("./@kernelHashes", is_yesno=True)
++    authorKey = XMLProperty("./@authorKey", is_yesno=True)
++    vcek = XMLProperty("./@vcek", is_yesno=True)
  
      def _set_defaults_sev(self, guest):
 -        if not guest.os.is_q35() or not guest.is_uefi():
@@ -186,6 +236,19 @@ Index: virt-manager-4.1.0/virtinst/domain/launch_security.py
  
          # The 'policy' is a mandatory 4-byte argument for the SEV firmware.
          # If missing, we use 0x03 for the original SEV implementation and
+@@ -30,7 +40,11 @@ class DomainLaunchSecurity(XMLBuilder):
+             domcaps = guest.lookup_domcaps()
+             self.policy = "0x03"
+             if domcaps.supports_sev_launch_security(check_es=True):
+-                self.policy = "0x07"
++                if "sev-snp" in domcaps.features.launchSecurity.get_xml():
++                    self.type = "sev-snp"
++                    self.policy = "0x00030000"
++                else:
++                    self.policy = "0x07"
+ 
+     def set_defaults(self, guest):
+         if self.type == "sev":
 Index: virt-manager-4.1.0/virtinst/devices/interface.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/devices/interface.py
@@ -214,3 +277,17 @@ Index: virt-manager-4.1.0/virtManager/addhardware.py
          return dev
  
      def _build_input(self):
+Index: virt-manager-4.1.0/virtinst/guest.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/guest.py
++++ virt-manager-4.1.0/virtinst/guest.py
+@@ -559,6 +559,9 @@ class Guest(XMLBuilder):
+         self.os.loader_ro = True
+         self.os.loader_type = "pflash"
+         self.os.loader = path
++        domcaps = self.lookup_domcaps()
++        if domcaps.supports_sev_launch_security() == "sev-snp":
++            self.os.loader_type = "rom"
+ 
+         # If the firmware name contains "secboot" it is probably build
+         # with SMM feature required so we need to enable that feature,

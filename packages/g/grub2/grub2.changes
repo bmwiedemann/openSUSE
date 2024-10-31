@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 00:44:41 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Enable support of Radix, Xive and Radix_gtse on Power (jsc#PED-9881)
+  * 0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 06:17:54 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix error: /boot/grub2/x86_64-efi/bli.mod not found (bsc#1231591) 

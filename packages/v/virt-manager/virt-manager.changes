@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:29:00 MDT 2024 - carnold@suse.com
+
+- bsc#1231400 - Virt-manager is missing support for AMD sev-snp
+  virtman-add-sev-memory-support.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 14:30:56 MDT 2024 - carnold@suse.com
 
 - Fix SUSE SL Micro detection

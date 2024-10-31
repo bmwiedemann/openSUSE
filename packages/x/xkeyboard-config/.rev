@@ -989,4 +989,15 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     <comment></comment>
     <requestid>1180218</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>ee57403d9f63fa4f4eda399c300aa639</srcmd5>
+    <version>2.42</version>
+    <time>1730387327</time>
+    <user>dimstar_suse</user>
+    <comment>- n_fi-kotoistus-metainfo.patch
+  * add meta information for default variant of &quot;fi&quot; keyboard layout
+    &quot;kotoistus&quot; needed for GNOME or other users of xkeyboard meta XML
+    files (boo#1227420)</comment>
+    <requestid>1219707</requestid>
+  </revision>
 </revisionlist>

@@ -104,4 +104,12 @@
     <comment></comment>
     <requestid>1200754</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6047b611872259df1da243156ac0af50</srcmd5>
+    <version>1.13.0</version>
+    <time>1730387314</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.13.0 (forwarded request 1219231 from danishprakash)</comment>
+    <requestid>1219548</requestid>
+  </revision>
 </revisionlist>

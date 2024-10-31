@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Oct 30 02:02:33 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.13.0:
+  * Release v1.13.0
+  * Update release notes for 1.13.0
+  * test: use dnsmasq over slirp4netns
+  * coredns: forward names with no ndots as well
+  * run cargo update
+  * fix(deps): update rust crate tokio to 1.41.0
+  * fix(deps): update rust crate flume to 0.11.1
+  * fix(deps): update rust crate libc to 0.2.161
+  * fix(deps): update rust crate libc to 0.2.160
+  * fix(deps): update rust crate clap to ~4.5.20
+  * cirrus: check for msrv build
+  * define a MSRV policy
+  * chore(deps): update dependency containers/automation_images to v20241010
+  * [skip-ci] Packit: constrain koji job to the fedora package
+  * dns: limit to 3 resolvers and use better timeout for them
+  * OWNERS file audit and update
+  * fix new lint error with rust 1.81
+  * test: make them pass on RHEL/Centos Stream 9
+  * Packit: disable F39 and separate out ELN
+  * serve: parse resolv.conf ourselves
+  * fix(deps): update rust crate libc to 0.2.159
+  * coredns: allow host lookup of names
+  * backend: return simple Vector in lookup()
+  * coredns: use a TTL of 0 for our names
+  * coredns: do not clonse the Record
+  * netavark_cache_groom.sh: fix wrong branch
+  * Packit: add sidetag to release with netavark
+  * coredns: work on tcp requests concurrently
+  * tcp: add timeout to connection
+  * fix(deps): update rust crate tokio to 1.40.0
+  * fix(deps): update rust crate libc to 0.2.158
+  * chore(deps): update dependency containers/automation_images to v20240821
+  * fix(deps): update rust crate tokio to 1.39.3
+  * fix(deps): update rust crate libc to 0.2.156
+  * Bump main version back to v1.13.0-dev
+
+-------------------------------------------------------------------
 Wed Sep 04 15:52:38 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.12.2:

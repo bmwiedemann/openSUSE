@@ -2078,4 +2078,12 @@
     <comment>Fix SL Micro detection. Fix --dry-run usage. Fix a couple tests.</comment>
     <requestid>1201813</requestid>
   </revision>
+  <revision rev="263" vrev="29">
+    <srcmd5>0043f5452156ab1ff58682b3ab7b86a5</srcmd5>
+    <version>4.1.0</version>
+    <time>1730387349</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219447</requestid>
+  </revision>
 </revisionlist>

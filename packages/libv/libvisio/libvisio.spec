@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libvisio-0_1-1
 Name:           libvisio
 Version:        0.1.7
@@ -93,7 +94,7 @@ export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 	--disable-static \
 	--disable-silent-rules \
 	--docdir=%{_docdir}/%{name}-devel/html
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -111,7 +112,8 @@ cp -p AUTHORS COPYING.* ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
 %fdupes -s %{buildroot}
 
 %check
-make check %{?_smp_mflags}
+export LANG=C.UTF-8
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

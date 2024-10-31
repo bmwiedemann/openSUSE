@@ -21,7 +21,7 @@ Name:           python-peewee
 Version:        3.17.6
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
-License:        BSD-3-Clause
+License:        MIT
 URL:            https://github.com/coleifer/peewee
 Source:         https://github.com/coleifer/peewee/archive/refs/tags/%{version}.tar.gz#/peewee-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}

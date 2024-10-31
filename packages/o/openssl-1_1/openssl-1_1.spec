@@ -200,6 +200,7 @@ Patch118:       openssl-CVE-2024-2511.patch
 Patch119:       openssl-CVE-2024-4741.patch
 # PATCH-FIX-UPSTREAM: bsc#1227138 CVE-2024-5535: SSL_select_next_proto buffer overread
 Patch120:       openssl-CVE-2024-5535.patch
+Patch121:       reproducibledate.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)

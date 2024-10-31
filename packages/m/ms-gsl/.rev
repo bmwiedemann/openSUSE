@@ -7,4 +7,12 @@
     <comment>Superseding after 1088742</comment>
     <requestid>1088744</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9dcead99ac325ffc19347f427eb7db4</srcmd5>
+    <version>4.1.0</version>
+    <time>1730387353</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219479</requestid>
+  </revision>
 </revisionlist>

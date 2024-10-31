@@ -5,22 +5,22 @@
  import com.mysql.cj.protocol.a.authentication.AuthenticationKerberosClient;
  import com.mysql.cj.protocol.a.authentication.AuthenticationLdapSaslClientPlugin;
 -import com.mysql.cj.protocol.a.authentication.AuthenticationOciClient;
+ import com.mysql.cj.protocol.a.authentication.AuthenticationOpenidConnectClient;
  import com.mysql.cj.protocol.a.authentication.AuthenticationWebAuthnClient;
  import com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin;
- import com.mysql.cj.protocol.a.authentication.MysqlClearPasswordPlugin;
 @@ -249,7 +248,6 @@ public class NativeAuthenticationProvide
          pluginsToInit.add(new MysqlOldPasswordPlugin());
          pluginsToInit.add(new AuthenticationLdapSaslClientPlugin());
          pluginsToInit.add(new AuthenticationKerberosClient());
 -        pluginsToInit.add(new AuthenticationOciClient());
          pluginsToInit.add(new AuthenticationWebAuthnClient());
+         pluginsToInit.add(new AuthenticationOpenidConnectClient());
  
-         // plugins from authenticationPluginClasses connection parameter
 --- a/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
 +++ b/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
-@@ -35,18 +35,6 @@ AuthenticationLdapSaslClientPlugin.Missi
- AuthenticationLdapSaslClientPlugin.FailCreateSaslClient=Failed creating a SASL client for the authentication mechanism ''{0}''.
- AuthenticationLdapSaslClientPlugin.ErrProcessingAuthIter=Error while processing an authentication iteration for the authentication mechanism ''{0}''.
+@@ -40,18 +40,6 @@ AuthenticationOpenidConnect.MissingIdTok
+ AuthenticationOpenidConnect.FailReadIdTokenFile=Failed reading the OpenID Identity Token file specified in the connection property ''idTokenFile''.
+ AuthenticationOpenidConnect.InvalidIdTokenFile=The file specified in the connection property ''idTokenFile'' contains an invalid OpenID Identity Token.
  
 -AuthenticationOciClientPlugin.ConfigFileNotFound=OCI configuration file not found.
 -AuthenticationOciClientPlugin.OciSdkNotFound=The OCI SDK cannot be found or it is not installed.
@@ -34,6 +34,6 @@
 -AuthenticationOciClientPlugin.SecurityTokenTooBig=Invalid security token file. File size above 10 KB.
 -AuthenticationOciClientPlugin.FailedReadingSecurityTokenFile=Failed reading the security token file referenced in the OCI configuration entry ''security_token_file''.
 -
+ AuthenticationProvider.BadAuthenticationPlugin=Unable to load authentication plugin ''{0}''.
  AuthenticationProvider.BadDefaultAuthenticationPlugin=Improper value "{0}" for property ''defaultAuthenticationPlugin''.
  AuthenticationProvider.DefaultAuthenticationPluginIsNotListed=Default authentication plugin "{0}" is neither one of the built-in plugins nor one of the plugins listed in ''authenticationPlugins''.
- AuthenticationProvider.BadDisabledAuthenticationPlugin=Can''t disable the default authentication plugin. Either remove "{0}" from the disabled authentication plugins list, or choose a different default authentication plugin.

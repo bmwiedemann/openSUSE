@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-cpuguy83-go-md2man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ Tool to converts markdown into man pages.
 %goinstall
 %gosrc
 %gofilelist
+mkdir -p %{buildroot}%{_mandir}/man1
+../go/bin/go-md2man -in go-md2man.1.md -out %{buildroot}%{_mandir}/man1/go-md2man.1
 
 %check
 %gotest --mod=vendor "" ...
@@ -77,5 +79,6 @@ Tool to converts markdown into man pages.
 %files -n go-md2man
 %defattr(-,root,root)
 %{_bindir}/go-md2man
+%{_mandir}/man1/go-md2man.1%{?ext_man}
 
 %changelog

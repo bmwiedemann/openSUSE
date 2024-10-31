@@ -19,7 +19,7 @@
 %define         sover 0.18
 %define         libver 0_18
 Name:           cpp-httplib
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
@@ -58,7 +58,7 @@ post-routing handlers, and support for binding sockets to multiple
 interfaces and any available port.
 
 %prep
-%autosetup
+%autosetup -p1
 chmod -x example/uploader.sh
 
 # fix dynamically the version in the pkgconfig file

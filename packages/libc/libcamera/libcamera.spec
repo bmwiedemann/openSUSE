@@ -24,10 +24,10 @@
 %define extname %nil
 %endif
 Name:           libcamera%extname
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        A complex camera support library in C++
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-4.0
 Group:          Development/Libraries/C and C++
 URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/

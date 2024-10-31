@@ -1,7 +1,7 @@
 #
 # spec file for package haveged
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           haveged
-Version:        1.9.18
+Version:        1.9.19
 Release:        0
 Summary:        Daemon for feeding entropy into the random pool
 License:        GPL-3.0-only
 Group:          System/Daemons
 URL:            https://github.com/jirka-h/haveged
 Source0:        https://github.com/jirka-h/haveged/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        %{name}.service
-Source3:        90-haveged.rules
-Source4:        haveged-dracut.module
+Source1:        %{name}.service
+Source2:        90-haveged.rules
+Source3:        haveged-dracut.module
 Patch0:         ppc64le.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Enhances:       apache2
 Enhances:       gpg2
 Enhances:       openssl
@@ -103,12 +103,9 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
-install -Dpm 0644 %{SOURCE2} \
-  %{buildroot}%{_unitdir}/%{name}.service
-install -Dpm 0644 %{SOURCE3} \
-  %{buildroot}%{_udevrulesdir}/90-%{name}.rules
-install -Dpm 0755 %{SOURCE4} \
-  %{buildroot}%{_prefix}/lib/dracut/modules.d/98%{name}/module-setup.sh
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
+install -Dpm 0644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/90-%{name}.rules
+install -Dpm 0755 %{SOURCE3} %{buildroot}%{_prefix}/lib/dracut/modules.d/98%{name}/module-setup.sh
 rm -f %{buildroot}%{_libdir}/libhavege.*a
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 

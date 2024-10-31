@@ -9,7 +9,7 @@
  import java.util.Map;
  
  import com.mysql.cj.Messages;
-@@ -894,7 +894,7 @@ public class PropertyDefinitions {
+@@ -899,7 +899,7 @@ public class PropertyDefinitions {
                  //
          };
  

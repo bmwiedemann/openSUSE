@@ -418,6 +418,7 @@ Patch229:       0006-appendedsig-documentation.patch
 Patch230:       0007-mkimage-create-new-ELF-Note-for-SBAT.patch
 Patch231:       0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package

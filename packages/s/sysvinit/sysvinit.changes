@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 22 12:08:16 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 3.11
+  * Some escape characters were included in the inittab manual page,
+    but not displayed by the "man" command because they were not
+    (ironically) properly escaped. This has been fixed.
+  * Enabled chaining commands together in the inittab file. This
+    allows the admin to run commands like
+    "task1 && task2" or "task2 || task2" from the inittab file.
+  * Fix typoes in halt manual page. Fixes provided by Bjarni Ingi Gislason.
+  * Fix typos/markdown in fstab-decode manual page.
+    Patch provided by Bjarni Ingi Gislason.
+
+-------------------------------------------------------------------
 Tue Aug 13 07:21:04 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch killproc-2.23.dif

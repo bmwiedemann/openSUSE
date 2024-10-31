@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 07:46:30 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.4+git20241030.2ae8421:
+  * Adjust md syntax for go-md2man
+  * Fix header
+  * Sync README with manual page
+  * Ignore generated toolbox.1 manual page
+
+-------------------------------------------------------------------
 Fri Oct 25 14:26:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use go-md2man instead of pandoc to convert a markdown file to

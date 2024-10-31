@@ -32,6 +32,7 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jna
 BuildRequires:  jna-contrib
 BuildRequires:  jsch
+BuildRequires:  trilead-ssh2
 BuildArch:      noarch
 
 %description
@@ -76,6 +77,13 @@ Group:          Development/Libraries/Java
 %description sshagent
 %{summary}.
 
+%package svnkit-trilead-ssh2
+Summary:        trilead-ssh2 connector for jsch-agent-proxy
+Group:          Development/Libraries/Java
+
+%description svnkit-trilead-ssh2
+%{summary}.
+
 %package usocket-jna
 Summary:        USocketFactory implementation using JNA
 Group:          Development/Libraries/Java
@@ -108,7 +116,7 @@ This package provides %{summary}.
 
 %build
 mkdir lib
-build-jar-repository -s lib jna jna-platform jsch
+build-jar-repository -s lib jna jna-platform jsch trilead-ssh2
 
 %{ant} \
     -Dtest.skip=true \
@@ -119,7 +127,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 
 for package in connector-factory core jsch pageant sshagent \
-               usocket-jna usocket-nc; do
+               svnkit-trilead-ssh2 usocket-jna usocket-nc; do
     install -pm 0644 %{name}-${package}/target/jsch.agentproxy.${package}-%{version}.jar %{buildroot}%{_javadir}/jsch.agentproxy.${package}.jar
     %{mvn_install_pom} %{name}-${package}/pom.xml %{buildroot}%{_mavenpomdir}/jsch.agentproxy.${package}.pom
     %add_maven_depmap jsch.agentproxy.${package}.pom jsch.agentproxy.${package}.jar -f ${package}
@@ -142,6 +150,8 @@ done
 %files pageant -f .mfiles-pageant
 
 %files sshagent -f .mfiles-sshagent
+
+%files svnkit-trilead-ssh2 -f .mfiles-svnkit-trilead-ssh2
 
 %files usocket-jna -f .mfiles-usocket-jna
 

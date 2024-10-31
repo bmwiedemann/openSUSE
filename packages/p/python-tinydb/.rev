@@ -114,4 +114,17 @@
     <comment></comment>
     <requestid>1114561</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b1f1ee7affa7ba98af11a0e7573f8ed</srcmd5>
+    <version>4.8.2</version>
+    <time>1730387375</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.2:
+  * Fix: Correctly update query cache when search results have
+    changed (see #560).
+- update to 4.8.1:
+  * Feature: Allow persisting empty tables (see #518).
+  * Fix: Make replacing `doc_id` type work properly (see #545).</comment>
+    <requestid>1219720</requestid>
+  </revision>
 </revisionlist>

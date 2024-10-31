@@ -199,4 +199,12 @@
 - Update to release 0.3.1</comment>
     <requestid>1194915</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>75c9f0331a818b6fd321d3f44e167341</srcmd5>
+    <version>0.3.2</version>
+    <time>1730387357</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219491</requestid>
+  </revision>
 </revisionlist>

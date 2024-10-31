@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 24 11:36:12 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update to release 3.46.1:
+  * Improved robustness while parsing the tokenize= arguments in
+    FTS5.
+  * Enhancements to covering index prediction in the query planner.
+  * Do not let the number of terms on a VALUES clause be limited by
+    SQLITE_LIMIT_COMPOUND_SELECT, even if the VALUES clause
+    contains elements that appear to be variables due to
+    double-quoted string literals.
+  * Fix the window function version of group_concat() so that it
+    returns an empty string if it has one or more empty string
+    inputs.
+  * In FTS5 secure-delete mode, fix false-positive integrity-check
+    reports about corrupt indexes.
+  * Syntax errors in ALTER TABLE should always return SQLITE_ERROR.
+    In some cases, they were formerly returning SQLITE_INTERNAL.
+  * Other minor fixes.
+
+-------------------------------------------------------------------
 Thu May 23 19:21:24 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Update to release 3.46.0:

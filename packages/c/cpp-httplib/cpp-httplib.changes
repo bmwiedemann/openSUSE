@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:21:07 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.18.1:
+  * SSLClientServerTest.* tests fail with OpenSSL 3.2.1 (#1798)
+  * Feat: add CPack support (#1950)
+  * Keep alive is slowing down shutdown (#1959)
+  * Allow empty header values (#1965)
+
+-------------------------------------------------------------------
 Fri Sep 27 13:05:37 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
 
 - Small specfile refactoring

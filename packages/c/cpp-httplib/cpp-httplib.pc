@@ -5,7 +5,7 @@ libdir=${prefix}/lib64
 Name: cpp-httplib
 Description: A C++ HTTP/HTTPS server and client library
 URL: https://github.com/yhirose/cpp-httplib
-Version: 0.0.0
+Version: 0.18.1
 Requires.private: openssl >= 3.0.0, zlib, libbrotlicommon, libbrotlidec, libbrotlienc
 Libs: -L${libdir} -lcpp-httplib
 Libs.private: -pthread

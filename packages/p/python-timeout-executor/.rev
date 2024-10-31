@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1204064</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec1e31101d84a20cf87429111c662145</srcmd5>
+    <version>0.9.1</version>
+    <time>1730387374</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1:
+  * support 3.13</comment>
+    <requestid>1219718</requestid>
+  </revision>
 </revisionlist>

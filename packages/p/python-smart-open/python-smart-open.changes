@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:30:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.5:
+  * Fix zstd compression in ab mode
+  * Fix close function not neing able to upload a compressed S3
+  * Fix test_http.request_callback
+  * Update readline logic for azure to match s3
+  * Make http handler take an optional requests.Session
+  * Ensure no side effects on SinglepartWriter exception
+  * Add support for `get_blob_kwargs` to GCS blob read operations
+
+-------------------------------------------------------------------
 Thu May  2 22:17:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.4:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 17 14:02:57 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Handle logger exception when flushing already closed file
+- Include passlib as a recommended dependency
+
+- Added:
+  * handle-logger-flushing-already-closed-file-686.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 11:19:52 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Make Salt Bundle more tolerant to long running jobs (bsc#1228690)

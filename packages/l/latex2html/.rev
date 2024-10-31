@@ -502,4 +502,12 @@ for reproducible packages even with --nocheck (forwarded request 1150775 from bm
     <comment>cleanup after test to not modify the install result (boo#1227364) (forwarded request 1188512 from bmwiedemann)</comment>
     <requestid>1189530</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d6738c83be93b6ccb14c76bac29fa3a1</srcmd5>
+    <version>2024.2</version>
+    <time>1730387334</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2024.2 (forwarded request 1218704 from simonlm)</comment>
+    <requestid>1219321</requestid>
+  </revision>
 </revisionlist>

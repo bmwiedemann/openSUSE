@@ -1,5 +1,5 @@
 #
-# spec file for package ghostscript
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,8 +30,15 @@ Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
-# use "osc service manualrun" to fetch
+# Use "osc service manualrun" to fetch Source0:
 Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostscript-%{version}.tar.gz
+# How to manually (i.e. without "osc service") find the Source0 URL at Ghostscript upstream
+# (example for the Ghostscript 10.03.1 release):
+# Go to https://www.ghostscript.com
+# -> "The current Ghostscript release 10.03.1 can be downloaded here" https://www.ghostscript.com/releases/index.html
+# -> "Ghostscript" https://www.ghostscript.com/releases/gsdnld.html
+# -> "Ghostscript 10.03.1 Source for all platforms / GNU Affero General Public License" = "Ghostscript AGPL Release"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
@@ -52,7 +59,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 # Provide the additional RPM Provides of the ghostscript-library package
 # (ghostscript_x11 is provided by the ghostscript-x11 sub-package, see below).
 # The "Provides: ghostscript_any" is there to support "BuildRequires: ghostscript_any"
@@ -66,6 +73,7 @@ Requires(preun): update-alternatives
 # in openSUSE products, cf. https://build.opensuse.org/request/show/877083
 Provides:       ghostscript_any = %{version}
 %if "%{flavor}" != "mini"
+BuildRequires:  cups-devel
 BuildRequires:  dbus-1-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  xorg-x11-fonts
@@ -75,16 +83,9 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xt)
-%if 0%{?suse_version} == 1315
-BuildRequires:  cups154-devel
-%else
-BuildRequires:  cups-devel
-%endif
 %if %{with apparmor}
-%if 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
-%endif
 %endif
 %endif
 # Always check if latest version of openjpeg becomes compatible with ghostscript
@@ -108,9 +109,7 @@ Obsoletes:      ghostscript-library < %{version}
 # The "Obsoletes: ghostscript-mini" is intentionally unversioned because
 # this package ghostscript should replace any version of ghostscript-mini.
 Obsoletes:      ghostscript-mini
-%if 0%{?suse_version} > 1210
 Recommends:     (cups-filters-ghostscript if cups)
-%endif
 %endif
 
 %description
@@ -325,9 +324,7 @@ ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
 /sbin/ldconfig
 %if %{with apparmor}
 %if "%{flavor}" != "mini"
-%if 0%{?suse_version} >= 1500
 %apparmor_reload %{_sysconfdir}/apparmor.d/ghostscript
-%endif
 %endif
 %endif
 %{_sbindir}/update-alternatives \
@@ -408,9 +405,6 @@ fi
 %if "%{flavor}" != "mini"
 %exclude %{_libdir}/ghostscript/%{version}/X11.so
 %if %{with apparmor}
-%if 0%{?suse_version} < 1500
-%dir %{_sysconfdir}/apparmor.d
-%endif
 %{_sysconfdir}/apparmor.d/ghostscript
 %endif
 

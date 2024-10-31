@@ -1,0 +1,58 @@
+From e23dce108588a9c52d3f7542636892750d6efcbd Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 17 Oct 2024 15:52:00 +0200
+Subject: [PATCH] Handle logger flushing already closed file (#686)
+
+This is a partial cherry-pick of
+https://github.com/saltstack/salt/commit/9683260d61668da8559ecde6caf63a52fedd8790
+---
+ salt/_logging/handlers.py |  4 ++++
+ salt/_logging/impl.py     | 10 +++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/salt/_logging/handlers.py b/salt/_logging/handlers.py
+index 5a1a1613137..d8bc68a49db 100644
+--- a/salt/_logging/handlers.py
++++ b/salt/_logging/handlers.py
+@@ -95,6 +95,9 @@ class DeferredStreamHandler(StreamHandler):
+         super().__init__(stream)
+         self.__messages = deque(maxlen=max_queue_size)
+         self.__emitting = False
++        import traceback
++
++        self.stack = "".join(traceback.format_stack())
+ 
+     def handle(self, record):
+         self.acquire()
+@@ -116,6 +119,7 @@ class DeferredStreamHandler(StreamHandler):
+                 super().handle(record)
+             finally:
+                 self.__emitting = False
++        # This will raise a ValueError if the file handle has been closed.
+         super().flush()
+ 
+     def sync_with_handlers(self, handlers=()):
+diff --git a/salt/_logging/impl.py b/salt/_logging/impl.py
+index 4d1ebd2495f..9d76c3174e2 100644
+--- a/salt/_logging/impl.py
++++ b/salt/_logging/impl.py
+@@ -488,7 +488,15 @@ def setup_temp_handler(log_level=None):
+             break
+     else:
+         handler = DeferredStreamHandler(sys.stderr)
+-        atexit.register(handler.flush)
++
++        def tryflush():
++            try:
++                handler.flush()
++            except ValueError:
++                # File handle has already been closed.
++                pass
++
++        atexit.register(tryflush)
+     handler.setLevel(log_level)
+ 
+     # Set the default temporary console formatter config
+-- 
+2.47.0
+

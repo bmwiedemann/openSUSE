@@ -452,6 +452,8 @@ Patch143:       fix-x509-test-fails-on-old-openssl-systems-682.patch
 Patch144:       fix-x509-private-key-tests-and-test_suse-on-sle12-68.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/685
 Patch145:       enhance-cleanup-mechanism-after-salt-bundle-upgrade-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/9683260d61668da8559ecde6caf63a52fedd8790
+Patch146:       handle-logger-flushing-already-closed-file-686.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -649,6 +651,7 @@ Requires:       iputils
 Requires:       sudo
 Requires:       file
 Recommends:     man
+Recommends:     python3-passlib
 
 Provides:       bundled(python3-tornado) = 4.5.3
 

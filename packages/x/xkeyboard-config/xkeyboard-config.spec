@@ -26,6 +26,7 @@ URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
+Patch110:       n_fi-kotoistus-metainfo.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson

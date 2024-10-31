@@ -133,4 +133,29 @@
   * Support Django 5.1.</comment>
     <requestid>1183921</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cafdbd4b3c24d649ef11e346655e141d</srcmd5>
+    <version>6.8.1</version>
+    <time>1730387378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.8.1:
+  * Raise any errors from threads in the whitenoise.compress
+    command. Regression in 6.8.0. Thanks to Tom Grainger for the
+    spotting this with a comment on PR #484.
+  * Drop Django 3.2 to 4.1 support.
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+  * Fix a bug introduced in version 6.0.0 where Range requests
+    could lead to database connection errors in other requests.
+    Thanks to Per Myren for the detailed investigation and fix in
+    PR #612.
+  * Use Django’s FORCE_SCRIPT_NAME setting correctly. This
+    reverts a change from version 5.3.0 that added a call to
+    Django’s get_script_prefix() method outside of the request-
+    response cycle. Thanks to Sarah Boyce in PR #486.
+  * Compress files using a thread pool. This speeds up the
+    compression step up to four times in benchmarks. Thanks to
+    Anthony Ricaud in PR #484.</comment>
+    <requestid>1219727</requestid>
+  </revision>
 </revisionlist>

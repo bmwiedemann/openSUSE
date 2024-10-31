@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  2 16:18:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Drop .pyc files from docdir for reproducible builds
+  (bsc#1230906).
+
+-------------------------------------------------------------------
 Mon Sep  9 16:53:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.10:

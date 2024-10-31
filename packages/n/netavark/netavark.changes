@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Oct 30 02:02:34 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.13.0:
+  * Release v1.13.0
+  * Updates release notes for v1.13.0
+  * run cargo update
+  * fix(deps): update rust crate hyper-util to 0.1.10
+  * [skip-ci] Packit: Remove epel targets
+  * fix(deps): update rust crate nftables to 0.5.0
+  * fix(deps): update rust crate anyhow to 1.0.91
+  * fix(deps): update rust crate tokio to 1.41.0
+  * fix(deps): update rust crate anyhow to 1.0.90
+  * Updated to zbus4
+  * chore(deps): update dependency containers/automation_images to v20241010
+  * test-dhcp: fix NOP test
+  * fix new lint errors with rust 1.81
+  * fix(deps): update rust crate clap to ~4.5.20
+  * contrib/container_images: remove no longer used images
+  * cirrus: check for msrv build
+  * add new rust image to check for MSRV
+  * define a MSRV policy
+  * [skip-ci] Packit: constrain koji and bodhi to the fedora package
+  * chore(deps): update rust crate once_cell to 1.20.2
+  * fix(deps): update rust-futures monorepo to 0.3.31
+  * OWNERS file audit and update
+  * update tonic and prost dependencies
+  * update tower to v0.5.1
+  * fix(deps): update rust crate sysctl to 0.6.0
+  * fix(deps): update rust crate netlink-packet-route to 0.21.0
+  * chore(deps): update rust crate tempfile to 3.13.0
+  * chore(deps): update rust crate once_cell to 1.20.1
+  * fix(deps): update rust crate nispor to 1.2.21
+  * fix(deps): update rust crate anyhow to 1.0.89
+  * nftables: add dns dnat rule first
+  * iptables: add dns dnat rule first
+  * fix(deps): update rust crate anyhow to 1.0.88
+  * nft: remove port forwarding rules correctly
+  * fix(deps): update rust crate tokio-stream to 0.1.16
+  * nft: do not parse localhost string ip
+  * nft: use append() over push() where possible
+  * Packit: add sidetag to release with aardvark-dns
+  * fix(deps): update rust crate tokio to 1.40.0
+  * fix(deps): update rust crate libc to 0.2.157
+  * fix(deps): update rust crate tokio to 1.39.3
+  * fix(deps): update rust crate libc to 0.2.156
+  * aardvark: on start failure delete entries again
+  * iptables: make dns rules cover tcp as well
+  * nftables: make dns rules cover tcp as well
+  * fix(deps): update rust crate serde_json to 1.0.123
+  * remove superfluous formatters from debug stmt
+  * chore(deps): update rust crate tempfile to 3.12.0
+  * fix new rust 1.80 lint issues
+  * silence new rust 1.80 warnings
+  * chore(deps): update rust crate tempfile to 3.11.0
+  * fix(deps): update rust crate serde_json to 1.0.122
+  * Bumping main back to v1.13.0-dev for development
+
+-------------------------------------------------------------------
 Tue Sep 10 15:51:16 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.12.2:

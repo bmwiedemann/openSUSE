@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 24 09:11:53 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 2024.2
+  * fix pstoimg operator precedence bug
+  * allow "-dir ." and "-rootdir ."
+  * remove extra "showpage" from pstoimg
+  * remove svg from config for pstoimg
+  * new option -use_hilite
+  * support minted package
+  * new option -unicase_titles
+
+-------------------------------------------------------------------
 Fri Jul 19 03:30:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - cleanup after test to not modify the install result (boo#1227364)

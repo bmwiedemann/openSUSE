@@ -17,7 +17,7 @@
 
 
 Name:           toolbox
-Version:        2.4+git20241025.00f69f5
+Version:        2.4+git20241030.2ae8421
 Release:        0
 Summary:        Script to start a toolbox container for system debugging
 License:        Apache-2.0

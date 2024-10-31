@@ -20,8 +20,7 @@
 
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
-# TODO: 24.7.0
-%global Twisted_version               24.3.0
+%global Twisted_version               24.7.0
 %global Jinja2_version                3.1.4
 %global Pillow_version                10.4.0
 # TODO: 6.0.2
@@ -177,6 +176,8 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch0:         matrix-synapse-1.4.1-paths.patch
 Patch1:         bump-dependencies.patch
+# from https://patch-diff.githubusercontent.com/raw/element-hq/synapse/pull/17886.patch
+Patch2:         17886.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch

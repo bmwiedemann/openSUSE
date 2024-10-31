@@ -1437,4 +1437,12 @@ C API
 </comment>
     <requestid>1199725</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4881d0aa7033851e86fd07a0fb8d8a8a</srcmd5>
+    <version>3.11.10</version>
+    <time>1730387312</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219469</requestid>
+  </revision>
 </revisionlist>

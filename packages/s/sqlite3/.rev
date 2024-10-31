@@ -1697,4 +1697,12 @@ CVE-2020-13871 boo#1172646</comment>
   * Obsoletes sqlite3-float-i586.patch.</comment>
     <requestid>1176758</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>7d6ea04912177251570f1dd9ad70e040</srcmd5>
+    <version>3.46.1</version>
+    <time>1730387358</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219501</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,7 @@
 #
 
 
+%global artifactId eddsa
 Name:           ed25519-java
 Version:        0.3.0
 Release:        0
@@ -23,12 +24,13 @@ Summary:        Implementation of EdDSA (Ed25519) in Java
 License:        CC0-1.0
 URL:            https://github.com/str4d/ed25519-java
 Source0:        https://github.com/str4d/ed25519-java/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
 Patch0:         0001-EdDSAEngine.initVerify-Handle-any-non-EdDSAPublicKey.patch
 Patch1:         0002-Disable-test-that-relies-on-internal-sun-JDK-classes.patch
+BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -52,38 +54,37 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q
+cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %patch -P 1 -p1
 
-# Unwanted tasks
-%pom_remove_plugin :maven-gpg-plugin
-%pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :maven-source-plugin
-# Unavailable plugin
-%pom_remove_plugin :nexus-staging-maven-plugin
-# Make dep on sun.security.x509 optional, inject an Import-Package directive
-%pom_xpath_inject "pom:configuration/pom:instructions" \
-  "<Import-Package>sun.security.x509;resolution:=optional,*</Import-Package>"
-
-%{mvn_file} net.i2p.crypto:eddsa %{name} eddsa
-
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+ant jar javadoc
 
 %install
-%mvn_install
+
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{artifactId}.jar
+ln -sf %{_javadir}/%{artifactId}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{artifactId}.pom
+%add_maven_depmap %{artifactId}.pom %{artifactId}.jar
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
+%{_javadir}/%{name}.jar
 %doc README.md
 %license LICENSE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog

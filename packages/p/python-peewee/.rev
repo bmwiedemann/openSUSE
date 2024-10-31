@@ -380,4 +380,13 @@
     code for double-quoted string literals used as column defaults.</comment>
     <requestid>1198059</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8f8e08c31d200d969501dff46f7f252a</srcmd5>
+    <version>3.17.6</version>
+    <time>1730387364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license to MIT, that's what the project defines in the
+  setup.py</comment>
+    <requestid>1219559</requestid>
+  </revision>
 </revisionlist>

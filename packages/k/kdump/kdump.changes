@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 23 16:19:31 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.10
+  * calibrate: don't add percentage margin on top of LUKS memory (bsc#1229207)
+
+-------------------------------------------------------------------
 Wed Jul 24 12:29:38 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.9

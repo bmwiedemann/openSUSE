@@ -817,4 +817,34 @@
     <comment>- Fix missing backslash (forwarded request 1193249 from Andreas_Schwab)</comment>
     <requestid>1194654</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b6111dce26506f19aa998eae9d89af0e</srcmd5>
+    <version>1.6.44</version>
+    <time>1730387360</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6.44:
+  * Hardened calculations in chroma handling to prevent overflows, and
+    relaxed a constraint in cHRM validation to accomodate the standard
+    ACES AP1 set of color primaries.
+    (Contributed by John Bowler)
+  * Removed the ASM implementation of ARM Neon optimizations and updated
+    the build accordingly. Only the remaining C implementation shall be
+    used from now on, thus ensuring the support of the PAC/BTI security
+    features on ARM64.
+    (Contributed by Ross Burton and John Bowler)
+  * Fixed the pickup of the PNG_HARDWARE_OPTIMIZATIONS option in the
+    CMake build on FreeBSD/amd64. This is an important performance fix
+    on this platform.
+  * Applied various fixes and improvements to the CMake build.
+    (Contributed by Eric Riff, Benjamin Buch and Erik Scholz)
+  * Added fuzzing targets for the simplified read API.
+    (Contributed by Mikhail Khachayants)
+  * Fixed a build error involving pngtest.c under a custom config.
+    This was a regression introduced in a code cleanup in libpng-1.6.43.
+    (Contributed by Ben Wagner)
+  * Fixed and improved the config files for AppVeyor CI and Travis CI.
+- Drop upstream patch:
+  * 563.patch (forwarded request 1219518 from Guillaume_G)</comment>
+    <requestid>1219523</requestid>
+  </revision>
 </revisionlist>

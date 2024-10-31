@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:48:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.2:
+  * Fix: Correctly update query cache when search results have
+    changed (see #560).
+- update to 4.8.1:
+  * Feature: Allow persisting empty tables (see #518).
+  * Fix: Make replacing `doc_id` type work properly (see #545).
+
+-------------------------------------------------------------------
 Sat Sep 30 17:01:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile and add sle15_python_module_pythons

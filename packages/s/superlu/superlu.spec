@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package superlu
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -203,23 +203,12 @@ make %{?_smp_mflags}
 #fix permissions
 chmod 644 MATLAB/* EXAMPLE/*
 
-%check
-%if %{with hpc}
-%{?hpc_setup}
-module load openblas
-%endif
-%ctest
-
-# remove all build examples
-cd EXAMPLE
-make clean
-rm -rf *itersol* .gitignore
-cd ..
-mv EXAMPLE examples
+cp FORTRAN/README README.fortran
+cp -r EXAMPLE examples
 cp MAKE_INC/make.linux examples/make.inc
 sed -i -e 's&@superlu_home@&%p_prefix&' -e 's&@superlu_lib@&%p_libdir&' examples/make.inc
 rm -f examples/.gitignore
-cp FORTRAN/README README.fortran
+
 %fdupes -s examples
 
 %if %{with hpc}
@@ -264,6 +253,15 @@ setenv          %{hpc_PNAME %pname}_LIB        %{hpc_libdir}
 
 EOF
 %endif
+
+%check
+%if %{with hpc}
+%{?hpc_setup}
+module load openblas
+%endif
+%ctest
+# remove all build examples
+rm -fr EXAMPLE
 
 %if %{without hpc}
 %post -n %libname -p /sbin/ldconfig

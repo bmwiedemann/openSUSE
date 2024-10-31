@@ -85,4 +85,12 @@ This goes with sr#443064 and sr#443160</comment>
   * dep ensure -upgrade to get v1.5 of blackfriday (forwarded request 770234 from glaubitz)</comment>
     <requestid>770395</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2e33662972b61c64eb4ea3b3f2c46766</srcmd5>
+    <version>2.0.0+git20190314.f79a8a8</version>
+    <time>1730387321</time>
+    <user>dimstar_suse</user>
+    <comment>- Generete and package go-md2man man page. (forwarded request 1219324 from dimstar)</comment>
+    <requestid>1219584</requestid>
+  </revision>
 </revisionlist>

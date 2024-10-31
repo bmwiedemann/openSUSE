@@ -306,4 +306,12 @@ For staging:n</comment>
   dont strip the newline at the end of main:filelist output</comment>
     <requestid>1204269</requestid>
   </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>87ef1962a81c135e23c6ab3d93a8d1c1</srcmd5>
+    <version>3.2.1</version>
+    <time>1730387351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219472</requestid>
+  </revision>
 </revisionlist>

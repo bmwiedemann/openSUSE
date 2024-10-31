@@ -19,7 +19,7 @@
 %define share_dir %{_datadir}/latex2html
 %define _texmfmaindir   %{_datadir}/texmf
 Name:           latex2html
-Version:        2024
+Version:        2024.2
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later

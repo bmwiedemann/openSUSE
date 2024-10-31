@@ -1,0 +1,8 @@
+<package name="packetry" project="openSUSE:Factory">
+  <title>USB analysis frontend for LUNA</title>
+  <description>USB analysis frontend for LUNA
+
+</description>
+  <devel project="hardware" package="packetry"/>
+  <url>https://github.com/greatscottgadgets/packetry</url>
+</package>

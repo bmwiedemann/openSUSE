@@ -1,0 +1,30 @@
+From 275c6bb242a12e9cfbc1a3b76ca447406b04858e Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 28 Oct 2024 12:06:27 +0100
+Subject: [PATCH] Stop storing build host kernel version
+References: https://codeberg.org/schilytools/schilytools/pulls/81
+References: https://bugzilla.opensuse.org/show_bug.cgi?id=1232434
+
+to make reproducible builds easier.
+See https://reproducible-builds.org/ for why this is good.
+
+This patch was done while working on reproducible builds for openSUSE, sponsored by the NLnet NGI0 fund.
+
+---
+ cdda2wav/local.cnf.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cdda2wav/local.cnf.in b/cdda2wav/local.cnf.in
+index 0874731c..d325cfa3 100644
+--- a/cdda2wav/local.cnf.in
++++ b/cdda2wav/local.cnf.in
+@@ -151,5 +151,5 @@ $(WANT_INFOFILES) $(WANT_MD5) -DAUX_DEVICE=$(AUX_DEVICE)
+ LIBS +=	@LIBS@
+ 
+ #VERSION_OS=@CDRTOOLS_VERSION@_$(O_ARCH)_$(OSREL)_$(K_ARCH)_$(P_ARCH)
+-VERSION_OS=_$(O_ARCH)_$(OSREL)_$(K_ARCH)_$(P_ARCH)
++VERSION_OS=_$(O_ARCH)_$(K_ARCH)_$(P_ARCH)
+ CUR_VERSION='"$(VERSION_OS)"'
+-- 
+2.45.2
+

@@ -955,4 +955,12 @@
         Fixed bug GH-16032 (Various NULL pointer dereferencements in ldap_modify_batch()).</comment>
     <requestid>1218225</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>a822dea92dc6199e436c0451bf473481</srcmd5>
+    <version>8.3.13</version>
+    <time>1730387337</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.3.12 [bsc#1231358], [bsc#1231382], [bsc#1231360]</comment>
+    <requestid>1219869</requestid>
+  </revision>
 </revisionlist>
