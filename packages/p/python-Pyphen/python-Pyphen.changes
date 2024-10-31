@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 11:09:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Support Python 3.13, drop Python 3.8 support.
+  * Update Hungarian dictionary.
+
+-------------------------------------------------------------------
 Sun Aug 18 16:59:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.0:
