@@ -23,7 +23,7 @@ Name:           librsvg
 Version:        2.59.2
 Release:        0
 Summary:        A Library for Rendering SVG Data
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
+License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source0:        %{name}-%{version}.tar.zst
