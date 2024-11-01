@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 16 07:25:24 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 3.3.1:
+  * Fixed: Updated the workaround for Google sign-in issues.
+- Updates from version 3.3.0:
+  Added
+  * Added the qt.workarounds.disable_hangouts_extension setting,
+    for disabling the Google Hangouts extension built into
+    Chromium/QtWebEngine.
+  Removed
+  * Failed end2end tests will now save screenshots of the browser
+    window when run under xvfb (the default on linux). Screenshots
+    will be under $TEMP/pytest-current/pytest-screenshots/ or
+    attached to the GitHub actions run as an artifact.
+  Changed
+  * The qute-pass userscript now has better support for
+    internationalized domain names when using the pass backend -
+    both domain names and secret paths are normalized before
+    comparing
+  * Ignored URL query parameters (via url.yank_ignored_parameters)
+    are now respected when yanking any URL (for example, through
+    hints with hint links yank). The {url:yank} substitution has
+    also been added as a version of {url} that respects ignored URL
+    query parameters.
+  Fixed
+  * A minor memory leak of QItemSelectionModels triggered by
+    closing the completion dialog has been resolved.
+  * The link to the chrome URL match pattern documentation in our
+    settings docs now loads a live page again.
+  * A rare crash when on Qt 6, a renderer process terminates with
+    an unknown termination reason.
+
+-------------------------------------------------------------------
 Wed Jun 26 01:25:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 3.2.1:
