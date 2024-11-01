@@ -31,7 +31,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.9.0
+Version:        3.9.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
