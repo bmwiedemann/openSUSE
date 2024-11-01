@@ -73,4 +73,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173319</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a97777a4ee50a14a4aeb5b4cfb4c3f07</srcmd5>
+    <version>2.0.1</version>
+    <time>1730491665</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Override upstream version with 9.1.0~b1
+- Remove unzip package from BuildRequires
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename LICENSE.txt to LICENSE in %files section
+- Rename README.rst to README.md in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1220047 from glaubitz)</comment>
+    <requestid>1220064</requestid>
+  </revision>
 </revisionlist>
