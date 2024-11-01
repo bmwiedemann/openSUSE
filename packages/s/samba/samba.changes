@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:20:25 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Add placeholder changelog for sle15-sp7; (jsc#PED-11210).
+
+-------------------------------------------------------------------
 Wed Oct  16 13:52:25 UTC 2024 - Noel Power <nopower@suse.com>
 
 -  Adjust spec to split out rpcd_* binaries into a separate
