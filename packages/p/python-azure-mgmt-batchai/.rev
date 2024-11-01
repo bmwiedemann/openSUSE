@@ -87,4 +87,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173284</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>772dfd0a5a3a38bde7c10a4e09148f10</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1730491661</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Override upstream version with 7.0.0.0 to ensure
+  proper upgrade from previous version 7.0.0b1
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1220054 from glaubitz)</comment>
+    <requestid>1220061</requestid>
+  </revision>
 </revisionlist>
