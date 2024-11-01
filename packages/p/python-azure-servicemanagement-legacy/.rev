@@ -72,4 +72,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173341</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67ea2053bd6a3543bc416964cdafe663</srcmd5>
+    <version>0.20.8</version>
+    <time>1730491673</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.20.8
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1220067 from glaubitz)</comment>
+    <requestid>1220077</requestid>
+  </revision>
 </revisionlist>

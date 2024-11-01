@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-servicemanagement-legacy
-Version:        0.20.7
+Version:        0.20.8
 Release:        0
 Summary:        Microsoft Azure Service Management Legacy Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-servicemanagement-legacy/azure-servicemanagement-legacy-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure_servicemanagement_legacy/azure_servicemanagement_legacy-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests
@@ -50,10 +49,10 @@ This is the Microsoft Azure Service Management Legacy Client Library.
 All packages in this bundle have been tested with Python 2.7, 3.3, 3.4 and 3.5.
 
 %prep
-%setup -q -n azure-servicemanagement-legacy-%{version}
+%setup -q -n azure_servicemanagement_legacy-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-servicemanagement-legacy-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure_servicemanagement_legacy-%{version}
 %pyproject_wheel
 
 %install
