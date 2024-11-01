@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1200216</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65b2e11f11808463eccb7f0be019df36</srcmd5>
+    <version>0.5.16</version>
+    <time>1730491680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.16:
+  * Fix wrongly filtered out packages when using --versioned-dirs
+  * feat: add optional dep-kind parameter
+</comment>
+    <requestid>1220079</requestid>
+  </revision>
 </revisionlist>

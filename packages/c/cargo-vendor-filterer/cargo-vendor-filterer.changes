@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 13:53:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.16:
+  * Fix wrongly filtered out packages when using --versioned-dirs
+  * feat: add optional dep-kind parameter
+
+-------------------------------------------------------------------
 Tue Sep 10 23:58:35 UTC 2024 - William Brown <william.brown@suse.com>
 
 - explicitly depend on cargo to pull in latest compiler revision
