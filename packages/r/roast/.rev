@@ -8,4 +8,35 @@
 package called `obs-service-recomprizz`.</comment>
     <requestid>1209539</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e18404798b14e3e4ae2451dac87fa0d</srcmd5>
+    <version>5.1.2</version>
+    <time>1730491682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.2:
+  * minor: improvements on how we sort files and directories
+  * use rayon while you can
+  * performance: add rayon to parallelise copying operations
+  * docs: add important difference between ADDED and INCLUDED [ci skip]
+  * docs: improve wording [ci skip]
+  * docs: fix grammar [ci skip]
+  * docs: explain how the path behaviour works
+  * refactor: improve the logic handling for adding, excluding and including
+  * improve message logs
+  * fix: resolved some edge-cases with additional paths and included paths
+  * fix: reimplement adding of archive files
+  * doc: update README on CLI help
+  * feat and fix: properly implement exclude and include
+  * cli: finalise flags. begin cycle
+  * major: begin refactor cycle [ci skip]
+  * logging: set to trace level for filter_paths
+  * fix: avoid duplicating entries
+  * fix: do not consider temporary directory as hidden
+  * fix: just use ends_with to check if it's a valid file extension
+  * improvement: also filter_paths for each element in additional_paths
+  * feat: hidden file and gitignore finally correctly implemented
+- New subpackage: obs-service-roast
+</comment>
+    <requestid>1220088</requestid>
+  </revision>
 </revisionlist>

@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           roast
-Version:        4.5.0
+Version:        5.1.2
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
@@ -34,6 +35,14 @@ License:        MPL-2.0
 
 %description -n obs-service-recomprizz
 Utility to recompress to other compression formats.
+
+%package -n obs-service-roast
+Version:        %{version}
+Summary:        OBS Source Service for roast
+License:        MPL-2.0
+
+%description -n obs-service-roast
+Utility to roast source directories into highly compressed tape archives.
 
 %description
 Roast is a simple tar archiver and extractor with very high
@@ -53,7 +62,9 @@ pushd roast-cli
 %{cargo_install} --bins
 popd
 cp -v %{buildroot}%{_bindir}/recomprizz %{buildroot}%{_prefix}/lib/obs/service/recomprizz
+cp -v %{buildroot}%{_bindir}/roast %{buildroot}%{_prefix}/lib/obs/service/roast
 install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
+# TODO add roast .service file in the next release
 
 %check
 %{cargo_test}
@@ -70,6 +81,13 @@ install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
 %dir %{_prefix}/lib/obs/service
 %{_prefix}/lib/obs/service/recomprizz
 %{_prefix}/lib/obs/service/recomprizz.service
+%license LICENCE
+%doc     CHANGELOG README.md
+
+%files -n obs-service-roast
+%dir %{_prefix}/lib/obs
+%dir %{_prefix}/lib/obs/service
+%{_prefix}/lib/obs/service/roast
 %license LICENCE
 %doc     CHANGELOG README.md
 
