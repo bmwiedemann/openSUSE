@@ -1546,4 +1546,41 @@
   This fixes issues when building against Slurm. (forwarded request 1217300 from eeich)</comment>
     <requestid>1217321</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>a973580b04d18421c6846c29569fb119</srcmd5>
+    <version>24.05.4</version>
+    <time>1730491670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 24.05.4 &amp; fix for CVE-2024-48936.
+  * Fix generic int sort functions.
+  * Fix user look up using possible unrealized uid in the dbd.
+  * `slurmrestd` - Fix regressions that allowed `slurmrestd` to
+    be run as SlurmUser when `SlurmUser` was not root.
+  * mpi/pmix fix race conditions with het jobs at step start/end
+    which could make srun to hang.
+  * Fix not showing some `SelectTypeParameters` in `scontrol show
+    config`.
+  * Avoid assert when dumping removed certain fields in JSON/YAML.
+  * Improve how shards are scheduled with affinity in mind.
+  * Fix `MaxJobsAccruePU` not being respected when `MaxJobsAccruePA`
+    is set in the same QOS.
+  * Prevent backfill from planning jobs that use overlapping
+    resources for the same time slot if the job's time limit is
+    less than `bf_resolution`.
+  * Fix memory leak when requesting typed gres and
+    `--[cpus|mem]-per-gpu`.
+  * Prevent backfill from breaking out due to &quot;system state
+    changed&quot; every 30 seconds if reservations use `REPLACE` or
+   `REPLACE_DOWN` flags.
+  * `slurmrestd` - Make sure that scheduler_unset parameter defaults
+    to true even when the following flags are also set:
+    `show_duplicates`, `skip_steps`, `disable_truncate_usage_time`,
+    `run_away_jobs`, `whole_hetjob`, `disable_whole_hetjob`,
+    `disable_wait_for_result`, `usage_time_as_submit_time`,
+    `show_batch_script`, and or `show_job_environment`. Additionaly,
+    always make sure show_duplicates and
+    `disable_truncate_usage_time` default to true when the following
+    flags are also set: `scheduler_unset`, `scheduled_on_submit`, (forwarded request 1220075 from eeich)</comment>
+    <requestid>1220076</requestid>
+  </revision>
 </revisionlist>

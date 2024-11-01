@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:50:27 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 24.05.4 & fix for CVE-2024-48936.
+  * Fix generic int sort functions.
+  * Fix user look up using possible unrealized uid in the dbd.
+  * `slurmrestd` - Fix regressions that allowed `slurmrestd` to
+    be run as SlurmUser when `SlurmUser` was not root.
+  * mpi/pmix fix race conditions with het jobs at step start/end
+    which could make srun to hang.
+  * Fix not showing some `SelectTypeParameters` in `scontrol show
+    config`.
+  * Avoid assert when dumping removed certain fields in JSON/YAML.
+  * Improve how shards are scheduled with affinity in mind.
+  * Fix `MaxJobsAccruePU` not being respected when `MaxJobsAccruePA`
+    is set in the same QOS.
+  * Prevent backfill from planning jobs that use overlapping
+    resources for the same time slot if the job's time limit is
+    less than `bf_resolution`.
+  * Fix memory leak when requesting typed gres and
+    `--[cpus|mem]-per-gpu`.
+  * Prevent backfill from breaking out due to "system state
+    changed" every 30 seconds if reservations use `REPLACE` or
+   `REPLACE_DOWN` flags.
+  * `slurmrestd` - Make sure that scheduler_unset parameter defaults
+    to true even when the following flags are also set:
+    `show_duplicates`, `skip_steps`, `disable_truncate_usage_time`,
+    `run_away_jobs`, `whole_hetjob`, `disable_whole_hetjob`,
+    `disable_wait_for_result`, `usage_time_as_submit_time`,
+    `show_batch_script`, and or `show_job_environment`. Additionaly,
+    always make sure show_duplicates and
+    `disable_truncate_usage_time` default to true when the following
+    flags are also set: `scheduler_unset`, `scheduled_on_submit`,
+    `scheduled_by_main`, `scheduled_by_backfill`, and or `job_started`.
+    This effects the following endpoints:
+      `GET /slurmdb/v0.0.40/jobs`
+      `GET /slurmdb/v0.0.41/jobs`
+  * Ignore `--json` and `--yaml` options for `scontrol` show config
+    to prevent mixing output types.
+  * Fix not considering nodes in reservations with Maintenance or
+    Overlap flags when creating new reservations with `nodecnt` or
+    when they replace down nodes.
+  * Fix suspending/resuming steps running under a 23.02 `slurmstepd`
+    process.
+  * Fix options like `sprio --me` and `squeue --me` for users with
+    a uid greater than 2147483647.
+  * `fatal()` if `BlockSizes=0`. This value is invalid and would
+    otherwise cause the `slurmctld` to crash.
+  * `sacctmgr` - Fix issue where clearing out a preemption list using
+    `preempt=''` would cause the given qos to no longer be preempt-able
+    until set again.
+  * Fix `stepmgr` creating job steps concurrently.
+  * `data_parser/v0.0.40` - Avoid dumping "Infinity" for `NO_VAL` tagged
+    "number" fields.
+  * `data_parser/v0.0.41` - Avoid dumping "Infinity" for `NO_VAL` tagged
+    "number" fields.
+  * `slurmctld` - Fix a potential leak while updating a reservation.
+  * `slurmctld` - Fix state save with reservation flags when a update
+    fails.
+  * Fix reservation update issues with parameters Accounts and Users, when
+    using +/- signs.
+  * `slurmrestd` - Don't dump warning on empty wckeys in:
+      `GET /slurmdb/v0.0.40/config`
+      `GET /slurmdb/v0.0.41/config`
+  * Fix slurmd possibly leaving zombie processes on start up in configless
+    when the initial attempt to fetch the config fails.
+  * Fix crash when trying to drain a non-existing node (possibly deleted
+    before).
+  * `slurmctld` - fix segfault when calculating limit decay for jobs with
+    an invalid association.
+  * Fix IPMI energy gathering with multiple sensors.
+  * `data_parser/v0.0.39` - Remove xassert requiring errors and warnings
+    to have a source string.
+  * `slurmrestd` - Prevent potential segfault when there is an error
+    parsing an array field which could lead to a double xfree. This
+    applies to several endpoints in `data_parser` v0.0.39, v0.0.40 and
+    v0.0.41.
+  * `scancel` - Fix a regression from 23.11.6 where using both the
+    `--ctld` and `--sibling` options would cancel the federated job on
+    all clusters instead of only the cluster(s) specified by `--sibling`.
+  * `accounting_storage/mysql` - Fix bug when removing an association
+    specified with an empty partition.
+  * Fix setting multiple partition state restore on a job correctly.
+  * Fix difference in behavior when swapping partition order in job
+    submission.
+  * Fix security issue in stepmgr that could permit an attacker to
+    execute processes under other users' jobs. CVE-2024-48936.
+
+-------------------------------------------------------------------
 Wed Oct 23 08:54:29 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Add %(?%sysusers_requires} to slurm-config.

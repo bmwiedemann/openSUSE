@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 41
 # Make sure to update `upgrades` as well!
-%define ver 24.05.3
+%define ver 24.05.4
 %define _ver _24_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
