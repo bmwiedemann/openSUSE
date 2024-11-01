@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define         libname lib%{name}%{apuver}-0
 %define         dso_libdir %{_libdir}/apr-util-%{apuver}
 %define         includedir %{_includedir}/apr-%{apuver}
+%global         libapr %(rpm -qf $(realpath %{_libdir}/libapr-1.so))
 Name:           apr-util
 Version:        1.6.3
 Release:        0
@@ -48,7 +49,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 9.1.0
 BuildRequires:  sqlite-devel
 BuildRequires:  zlib-devel
-%requires_ge    libapr1
+%requires_ge    %libapr
 
 %description
 A companion library to APR, the Apache Portable Runtime.
@@ -57,7 +58,7 @@ A companion library to APR, the Apache Portable Runtime.
 Summary:        Apache Portable Runtime (APR) Utility Library
 License:        Apache-2.0
 Group:          System/Libraries
-%requires_ge    libapr1
+%requires_ge    %libapr
 
 %description -n %{libname}
 A companion library to APR, the Apache Portable Runtime.

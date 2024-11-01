@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 15:56:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency on libapr: in 2021, libapr1 was renamed to
+  libapr1-0, conforming to the shared library packaging policy.
+  requires_eq silently dropped the dependency, as the packahe name,
+  libapr1, does not exist.
+
+-------------------------------------------------------------------
 Thu Feb  2 19:38:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.6.3
