@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-core
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Microsoft Azure Management Core Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-core/azure-mgmt-core-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_core/azure_mgmt_core-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -32,10 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.26.2 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.31.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-core < 1.4.0
@@ -54,15 +53,12 @@ As an end user, you don't need to manually install azure-mgmt-core because it wi
 be installed automatically when you install other SDKs.
 
 %prep
-%setup -q -n azure-mgmt-core-%{version}
+%setup -q -n azure_mgmt_core-%{version}
 
 %build
-# Required for Python2 builds
-export LANG=en_US.UTF-8
 %pyproject_wheel
 
 %install
-export LANG=en_US.UTF-8
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %{python_expand # delete common files
