@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-env
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-env
-Version:        1.1.3
+Version:        1.1.5
 Release:        0
 Summary:        Pytest plugin to add environment variables
 License:        MIT
