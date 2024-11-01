@@ -189,7 +189,6 @@ Requires:       gnome-user-share
 #
 # #544192
 Recommends:     baobab
-Recommends:     file-roller
 Recommends:     gcr-viewer
 Recommends:     gnome-characters
 Recommends:     gnome-contacts
@@ -291,7 +290,7 @@ Recommends:     gnome-keyring-pam
 Requires:       at-spi2-core
 # boo#1090117
 Recommends:     gnome-shell-classic
-Recommends:     console
+Recommends:     gnome-console
 Recommends:     gnome-extensions
 Recommends:     gnome-terminal
 # bnc#879466
@@ -367,8 +366,6 @@ Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
 Recommends:     evince
-# bsc#1069699
-Recommends:     file-roller
 # bsc#1065146
 %if 0%{?sle_version}
 Recommends:     gedit
@@ -383,7 +380,6 @@ Recommends:     gnome-software
 Recommends:     gnome-system-monitor
 # bnc#859494 bsc#1065790
 Recommends:     gnome-tweaks
-Recommends:     nautilus-extension-terminal
 Recommends:     nautilus-share
 Recommends:     pinentry-gnome3
 # bsc#1164858 bsc#1081584
@@ -680,7 +676,6 @@ Requires:       pattern() = gnome_basis
 #Recommends:     bijiben
 Recommends:     baobab
 Recommends:     cheese
-Recommends:     file-roller
 Recommends:     gdk-pixbuf-thumbnailer
 Recommends:     gnome-calculator
 Recommends:     gnome-characters
