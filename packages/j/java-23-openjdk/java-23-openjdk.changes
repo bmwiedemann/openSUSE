@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Nov  1 16:45:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam tag jdk-23.0.1+11 (October 2024 CPU)
+  * Security fixes
+    + JDK-8307383: Enhance DTLS connections
+    + JDK-8311208: Improve CDS Support
+    + JDK-8328286, CVE-2024-21208, bsc#1231702: Enhance HTTP client
+    + JDK-8328544, CVE-2024-21210, bsc#1231711: Improve handling of
+      vectorization
+    + JDK-8328726: Better Kerberos support
+    + JDK-8331446, CVE-2024-21217, bsc#1231716: Improve
+      deserialization support
+    + JDK-8332644, CVE-2024-21235, bsc#1231719: Improve graph
+      optimizations
+    + JDK-8335713: Enhance vectorization analysis
+  * Other changes
+    + JDK-6967482: TAB-key does not work in JTables after selecting
+      details-view in JFileChooser
+    + JDK-8166352: FilePane.createDetailsView() removes JTable TAB,
+      SHIFT-TAB functionality
+    + JDK-8299813: java/nio/channels/DatagramChannel/Disconnect.java
+      fails with jtreg test timeout due to lost datagram
+    + JDK-8325525: Create jtreg test case for JDK-8325203
+    + JDK-8331411: Shenandoah: Reconsider spinning duration in
+      ShenandoahLock
+    + JDK-8332524: Instead of printing "TLSv1.3," it is showing
+      "TLS13"
+    + JDK-8332818: ubsan: archiveHeapLoader.cpp:70:27: runtime
+      error: applying non-zero offset 18446744073707454464 to null
+      pointer
+    + JDK-8333652: RISC-V: compiler/vectorapi/
+      /VectorGatherMaskFoldingTest.java fails when using RVV
+    + JDK-8333716: Shenandoah: Check for disarmed method before
+      taking the nmethod lock
+    + JDK-8333887: ubsan: unsafe.cpp:247:13: runtime error: store
+      to null pointer of type 'volatile int'
+    + JDK-8334041: Bump version numbers for 23.0.1
+    + JDK-8334123: log the opening of Type 1 fonts
+    + JDK-8334239: Introduce macro for ubsan method/function
+      exclusions
+    + JDK-8334653: ISO 4217 Amendment 177 Update
+    + JDK-8335536: Fix assertion failure in IdealGraphPrinter when
+      append is true
+    + JDK-8335775: Remove extraneous 's' in comment of
+      rawmonitor.cpp test file
+    + JDK-8336301: test/jdk/java/nio/channels/
+      /AsyncCloseAndInterrupt.java leaves around a FIFO file upon
+      test completion
+    + JDK-8336366: Change milestone to fcs for all releases
+    + JDK-8337103: The change for RDP2 CPU24_10 has corrupted line
+      endings in the file version-numbers.conf.
+    + JDK-8337664: Distrust TLS server certificates issued after
+      Oct 2024 and anchored by Entrust Root CAs
+    + JDK-8338696: (fs) BasicFileAttributes.creationTime() falls
+      back to epoch if birth time is unavailable (Linux)
+    + JDK-8341057: Add 2 SSL.com TLS roots
+    + JDK-8341059: Change Entrust TLS distrust date to November 12,
+      2024
+
+-------------------------------------------------------------------
 Wed Sep 18 04:35:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Intial packaging of OpenJDK 23 release
