@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 01 13:30:01 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 4.0.1:
+  * Do not panic when the number of arguments of a function evaluated
+    in an expression is incorect.
+
+-------------------------------------------------------------------
 Tue Oct 29 13:01:31 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 4.0.0:

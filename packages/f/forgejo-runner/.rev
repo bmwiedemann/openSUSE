@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>1219028</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>085241702f5ce3e8d5cfaf80f2c80b0c</srcmd5>
+    <version>4.0.1</version>
+    <time>1730498555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.1:
+  * Do not panic when the number of arguments of a function evaluated
+    in an expression is incorect. (forwarded request 1220103 from rrahl0)</comment>
+    <requestid>1220104</requestid>
+  </revision>
 </revisionlist>
