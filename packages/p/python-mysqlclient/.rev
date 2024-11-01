@@ -254,4 +254,12 @@
   * Support ssl=True in connect().</comment>
     <requestid>1145385</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>70efb03028d160fc3c6ec4283577ef34</srcmd5>
+    <version>2.2.5</version>
+    <time>1730494137</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1219952</requestid>
+  </revision>
 </revisionlist>

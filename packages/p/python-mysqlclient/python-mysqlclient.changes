@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 19:02:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.5:
+  * (Windows wheel) Update MariaDB Connector/C to 3.4.1. #726
+  * (Windows wheel) Build wheels for Python 3.13. #726
+
+-------------------------------------------------------------------
 Fri Feb  9 10:37:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.4:
