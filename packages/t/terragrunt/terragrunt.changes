@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 01 16:15:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.7:
+  * Add provider cache offline errors handling  (#3527)
+
+-------------------------------------------------------------------
 Tue Oct 29 15:12:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.6:
