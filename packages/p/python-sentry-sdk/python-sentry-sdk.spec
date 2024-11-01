@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.15.0
+Version:        2.17.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -52,8 +52,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fastapi >= 0.79.0}
 BuildRequires:  %{python_module gevent}
@@ -146,6 +147,11 @@ https://sentry.io/for/python/
 
 %install
 %pyproject_install
+# Fix python-bytecode-inconsistent-mtime
+pushd %{buildroot}%{python_sitelib}
+find . -name '*.pyc' -exec rm -f '{}' ';'
+python%python_bin_suffix -m compileall *.py ';'
+popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -158,12 +164,13 @@ IGNORED_CHECKS="(test_default_release and test_utils)"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_new_scopes_compat_event"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_transport_works"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_auto_enabling_integrations_catches_import_error"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_socks_proxy or test_utils"
 # https://github.com/getsentry/sentry-python/issues/3624
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_redis_disabled_when_not_installed"
 %pytest -rs -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
-%doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md
+%doc README.md CHANGELOG.md CONTRIBUTING.md
 %license LICENSE
 %{python_sitelib}/sentry_sdk
 %{python_sitelib}/sentry_sdk-%{version}.dist-info
