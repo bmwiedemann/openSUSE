@@ -1,0 +1,5 @@
+<package name="netty-incubator-transport-io_uring" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="netty-incubator-transport-io_uring"/>
+</package>

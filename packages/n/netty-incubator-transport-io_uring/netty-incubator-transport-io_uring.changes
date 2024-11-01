@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Nov  1 16:23:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-werror.patch
+    + Do not fail build because of warnings about casts on 32-bit
+      architectures
+
+-------------------------------------------------------------------
+Fri Nov  1 13:43:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 0.0.25

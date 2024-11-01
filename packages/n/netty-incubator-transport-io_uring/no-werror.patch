@@ -1,0 +1,13 @@
+diff --git a/transport-native-io_uring/pom.xml b/transport-native-io_uring/pom.xml
+index afa3fde..0772328 100644
+--- a/transport-native-io_uring/pom.xml
++++ b/transport-native-io_uring/pom.xml
+@@ -37,7 +37,7 @@
+     <unix.common.lib.dir>${project.build.directory}/unix-common-lib</unix.common.lib.dir>
+     <unix.common.lib.unpacked.dir>${unix.common.lib.dir}/META-INF/native/lib</unix.common.lib.unpacked.dir>
+     <unix.common.include.unpacked.dir>${unix.common.lib.dir}/META-INF/native/include</unix.common.include.unpacked.dir>
+-    <jni.compiler.args.cflags>CFLAGS=-O3 -Werror -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden -I${unix.common.include.unpacked.dir}</jni.compiler.args.cflags>
++    <jni.compiler.args.cflags>CFLAGS=-O3 -fno-omit-frame-pointer -Wunused-variable -fvisibility=hidden -I${unix.common.include.unpacked.dir}</jni.compiler.args.cflags>
+     <jni.compiler.args.ldflags>LDFLAGS=-L${unix.common.lib.unpacked.dir} -Wl,--no-as-needed -lrt -ldl -Wl,--whole-archive -l${unix.common.lib.name} -Wl,--no-whole-archive</jni.compiler.args.ldflags>
+     <nativeSourceDirectory>${project.basedir}/src/main/c</nativeSourceDirectory>
+     <skipTests>true</skipTests>
