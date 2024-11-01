@@ -398,4 +398,15 @@
 - Adjust upstream source name in spec file (forwarded request 1203867 from glaubitz)</comment>
     <requestid>1203889</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>618b2f5ae95d9c1311de0a6619981a1d</srcmd5>
+    <version>28.0.0</version>
+    <time>1730491663</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 28.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1220050 from glaubitz)</comment>
+    <requestid>1220063</requestid>
+  </revision>
 </revisionlist>
