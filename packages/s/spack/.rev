@@ -548,4 +548,38 @@
     <comment></comment>
     <requestid>1186551</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4d9fa18be72ec81154d1a0a7c37e7313</srcmd5>
+    <version>0.22.2</version>
+    <time>1730491668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22.2
+  * Bugfixes
+    - Forward compatibility with Spack 0.23 packages with language
+      dependencies.
+    - Forward compatibility with `urllib` from Python 3.12.6+.
+    - Bump vendored `archspec` for better aarch64 support.
+    - Fix regression in `{variants.X}` and `{variants.X.value}`
+      format strings.
+    - Ensure shell escaping of environment variable values in load
+      and activate commands.
+    - Fix an issue where `spec[pkg]` considers specs outside the
+      current DAG.
+    - Do not halt concretization on unknown variants in externals.
+    - Improve validation of `develop` config section/
+    - Explicitly disable `ccache` if turned off in config, to
+      avoid cache pollution.
+    - Improve backwards compatibility in `include_concrete`.
+    - Fix issue where package tags were sometimes repeated.
+    - Make `setup-env.sh` &quot;sourced only&quot; by dropping execution bits.
+    - Make certain source/binary fetch errors recoverable instead
+      of a hard error.
+    - Remove debug statements in package hash computation.
+    - Remove redundant clingo warnings.
+    - Remove hard-coded layout version.
+    - Do not initialize previous store state in `use_store`.
+  * Package updates
+    - `chapel` major update/ (forwarded request 1220058 from eeich)</comment>
+    <requestid>1220059</requestid>
+  </revision>
 </revisionlist>

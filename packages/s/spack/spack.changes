@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov  1 06:32:35 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.22.2
+  * Bugfixes
+    - Forward compatibility with Spack 0.23 packages with language
+      dependencies.
+    - Forward compatibility with `urllib` from Python 3.12.6+.
+    - Bump vendored `archspec` for better aarch64 support.
+    - Fix regression in `{variants.X}` and `{variants.X.value}`
+      format strings.
+    - Ensure shell escaping of environment variable values in load
+      and activate commands.
+    - Fix an issue where `spec[pkg]` considers specs outside the
+      current DAG.
+    - Do not halt concretization on unknown variants in externals.
+    - Improve validation of `develop` config section/
+    - Explicitly disable `ccache` if turned off in config, to
+      avoid cache pollution.
+    - Improve backwards compatibility in `include_concrete`.
+    - Fix issue where package tags were sometimes repeated.
+    - Make `setup-env.sh` "sourced only" by dropping execution bits.
+    - Make certain source/binary fetch errors recoverable instead
+      of a hard error.
+    - Remove debug statements in package hash computation.
+    - Remove redundant clingo warnings.
+    - Remove hard-coded layout version.
+    - Do not initialize previous store state in `use_store`.
+  * Package updates
+    - `chapel` major update/
+
+-------------------------------------------------------------------
 Wed Jul 10 06:54:31 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to 0.22.1.
