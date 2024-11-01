@@ -1470,4 +1470,14 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219449</requestid>
   </revision>
+  <revision rev="154" vrev="8">
+    <srcmd5>66f91347926cbad23a25e21835a535cb</srcmd5>
+    <version>unknown</version>
+    <time>1730494028</time>
+    <user>dimstar_suse</user>
+    <comment>Revert https://build.opensuse.org/requests/1219449. This code was not meant to
+be committed to Virtualization:containers, it was committed to the devel
+project by accident.</comment>
+    <requestid>1219984</requestid>
+  </revision>
 </revisionlist>
