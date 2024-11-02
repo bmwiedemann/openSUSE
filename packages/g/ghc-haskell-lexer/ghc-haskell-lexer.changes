@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 18:54:35 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update haskell-lexer to version 1.1.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:56 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
