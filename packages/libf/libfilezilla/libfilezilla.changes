@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:24:28 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.49.0
+  * New features:
+    - Added fz::to_integral_o that returns an optional
+    - If mutex-debugging is enabled, attempts to destroy a still
+      locked mutex are now detected
+    - fz::file can now also be oppened in append mode
+    - MSW: Added users, authenticated_users and system entities to
+      security_descriptor_builder
+  * Bugfixes and minor changes:
+    - fz::to_integral now verifies that the value fits into the
+      return type instead of silently truncating
+
+-------------------------------------------------------------------
 Fri Jul 12 09:28:18 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.48.1
