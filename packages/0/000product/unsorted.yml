@@ -1875,8 +1875,6 @@ unsorted:
   - cadvisor 
   - cage 
   - cagebreak 
-  - cairo-clock 
-  - cairo-clock-lang 
   - cairo-devel 
   - cairo-devel-32bit 
   - cairo-tools 
@@ -13160,7 +13158,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla45 
+  - libfilezilla46 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -14875,7 +14873,8 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
-  - libnfdumplibnfdump-1_7_4 
+  - libnfdump-1_7_5 
+  - libnffile-1_7_5 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -17290,7 +17289,7 @@ unsorted:
   - libxdg-basedir1 
   - libxdot4 
   - libxdp-devel 
-  - libxerces-c-3_2 
+  - libxerces-c-3_3 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
@@ -20083,6 +20082,7 @@ unsorted:
   - obs-service-obs_scm 
   - obs-service-obs_scm-common 
   - obs-service-product_converter 
+  - obs-service-raw 
   - obs-service-recompress 
   - obs-service-recomprizz 
   - obs-service-refresh_patches 
@@ -24456,7 +24456,6 @@ unsorted:
   - python310-aioftp 
   - python310-aiohappyeyeballs 
   - python310-aiohttp 
-  - python310-aiohttp-asgi 
   - python310-aiohttp-jinja2 
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
@@ -27371,6 +27370,7 @@ unsorted:
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-click 
+  - python310-sphinx-design 
   - python310-sphinx-feature-classification 
   - python310-sphinx-gallery 
   - python310-sphinx-inline-tabs 
@@ -28120,7 +28120,6 @@ unsorted:
   - python311-aioftp 
   - python311-aiohappyeyeballs 
   - python311-aiohttp 
-  - python311-aiohttp-asgi 
   - python311-aiohttp-jinja2 
   - python311-aiohttp-socks 
   - python311-aiohttp-theme 
@@ -30929,6 +30928,7 @@ unsorted:
   - python311-sphinx-book-theme 
   - python311-sphinx-bootstrap-theme 
   - python311-sphinx-click 
+  - python311-sphinx-design 
   - python311-sphinx-feature-classification 
   - python311-sphinx-gallery 
   - python311-sphinx-inline-tabs 
@@ -31684,7 +31684,6 @@ unsorted:
   - python312-aioftp 
   - python312-aiohappyeyeballs 
   - python312-aiohttp 
-  - python312-aiohttp-asgi 
   - python312-aiohttp-jinja2 
   - python312-aiohttp-socks 
   - python312-aiohttp-theme 
@@ -34595,6 +34594,7 @@ unsorted:
   - python312-sphinx-book-theme 
   - python312-sphinx-bootstrap-theme 
   - python312-sphinx-click 
+  - python312-sphinx-design 
   - python312-sphinx-feature-classification 
   - python312-sphinx-gallery 
   - python312-sphinx-inline-tabs 
