@@ -1,7 +1,7 @@
 #
 # spec file for package gtypist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,10 @@ Summary:        Universal typing tutor
 License:        GPL-3.0-only
 Group:          Amusements/Teaching/Other
 URL:            http://gnu.org/software/gtypist/
-
 Source:         http://ftp.gnu.org/gnu/gtypist/%name-%version.tar.xz
 Source2:        http://ftp.gnu.org/gnu/gtypist/%name-%version.tar.xz.sig
 Source3:        %name.keyring
-Patch1:         escdelay.diff
+Patch1:         gcc14.patch
 BuildRequires:  bison
 BuildRequires:  ncurses-devel
 BuildRequires:  xz
@@ -67,7 +66,7 @@ This subpackage contain the translations for the package gtypist.
 
 %build 
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -77,4 +77,12 @@
     <comment>- Remove old rpm recipe constructs.</comment>
     <requestid>829637</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e063294b8b3c238d36acbceb890ea20d</srcmd5>
+    <version>2.9.5</version>
+    <time>1730560344</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace escdelay.diff by new gcc14.patch to resolve more FTBFS</comment>
+    <requestid>1220269</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,64 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-11-02 12:54:12.376370921 +0100
+
+cursmenu.c:272:33: error: implicit declaration of function ‘utf8len’ [-Wimplicit-function-declaration]
+gtypist.c:2208:12: error: lvalue required as left operand of assignment
+ 2208 |   ESCDELAY = 1;
+
+---
+ src/cursmenu.c |    1 +
+ src/gtypist.c  |    2 +-
+ src/script.h   |    2 +-
+ src/utf8.c     |    1 +
+ 4 files changed, 4 insertions(+), 2 deletions(-)
+
+Index: gtypist-2.9.5/src/cursmenu.c
+===================================================================
+--- gtypist-2.9.5.orig/src/cursmenu.c
++++ gtypist-2.9.5/src/cursmenu.c
+@@ -20,6 +20,7 @@
+ #include "config.h"
+ #include "cursmenu.h"
+ #include "script.h"
++#include "utf8.h"
+ 
+ #ifdef HAVE_PDCURSES
+ #include <curses.h>
+Index: gtypist-2.9.5/src/gtypist.c
+===================================================================
+--- gtypist-2.9.5.orig/src/gtypist.c
++++ gtypist-2.9.5/src/gtypist.c
+@@ -2205,7 +2205,7 @@ int main( int argc, char **argv )
+ 
+   // Quick hack to get rid of the escape delays
+ #ifdef __NCURSES_H
+-  ESCDELAY = 1;
++  set_escdelay(1);
+ #endif
+ 
+   /* set up colour pairs if possible */
+Index: gtypist-2.9.5/src/script.h
+===================================================================
+--- gtypist-2.9.5.orig/src/script.h
++++ gtypist-2.9.5/src/script.h
+@@ -89,7 +89,7 @@ extern char *buffer_command( FILE *scrip
+ extern void seek_label( FILE *script, char *label, char *ref_line );
+ extern int hash_label( char *label );
+ extern void do_exit( FILE *script );
+-
++extern void check_script_file_with_current_encoding(FILE *script);
+ 
+ extern void bind_F12 (const char *);	// Defined in gtypist.c
+ 
+Index: gtypist-2.9.5/src/utf8.c
+===================================================================
+--- gtypist-2.9.5.orig/src/utf8.c
++++ gtypist-2.9.5/src/utf8.c
+@@ -19,6 +19,7 @@
+ 
+ #include "config.h"
+ #include "utf8.h"
++#include "error.h"
+ 
+ #ifdef HAVE_PDCURSES
+ #include <curses.h>

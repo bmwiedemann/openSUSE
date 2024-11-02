@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:55:19 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace escdelay.diff by new gcc14.patch to resolve more FTBFS
+
+-------------------------------------------------------------------
 Tue Aug 25 20:58:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old rpm recipe constructs.
