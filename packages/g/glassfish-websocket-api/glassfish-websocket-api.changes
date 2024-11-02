@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 08:25:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Conflict with the other provider of
+  javax.websocket:javax.websocket-api to avoid duplicate artifact
+
+-------------------------------------------------------------------
 Sat Sep  9 13:37:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

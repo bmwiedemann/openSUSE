@@ -1,0 +1,97 @@
+From e2d96fa802abebf888dcc2cc938cfd06abca8eb0 Mon Sep 17 00:00:00 2001
+From: "Yury V. Zaytsev" <yury@shurup.com>
+Date: Sun, 1 Sep 2024 12:01:37 +0200
+Subject: [PATCH] Ticket #4575: adjust mc-wrapper to fit changes in #4535.
+
+Signed-off-by: Yury V. Zaytsev <yury@shurup.com>
+---
+ contrib/mc-wrapper.csh.in | 13 ++++++-------
+ contrib/mc-wrapper.sh.in  | 13 +++++++++----
+ 2 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/contrib/mc-wrapper.csh.in b/contrib/mc-wrapper.csh.in
+index 1eca8e7b71..1b00491bc4 100644
+--- a/contrib/mc-wrapper.csh.in
++++ b/contrib/mc-wrapper.csh.in
+@@ -1,9 +1,9 @@
+-set MC_USER=`whoami`
+-
+-if ($?TMPDIR) then
+-	setenv MC_PWD_FILE $TMPDIR/mc-$MC_USER/mc.pwd.$$
++if ($?MC_TMPDIR) then
++	setenv MC_PWD_FILE "`mktemp '$MC_TMPDIR/mc.pwd.XXXXXX'`"
++else if ($?TMPDIR) then
++	setenv MC_PWD_FILE "`mktemp '$TMPDIR/mc.pwd.XXXXXX'`"
+ else
+-	setenv MC_PWD_FILE /tmp/mc-$MC_USER/mc.pwd.$$
++	setenv MC_PWD_FILE "`mktemp '/tmp/mc.pwd.XXXXXX'`"
+ endif
+ 
+ @bindir@/mc -P "$MC_PWD_FILE" $*
+@@ -11,11 +11,10 @@ endif
+ if (-r "$MC_PWD_FILE") then
+ 	setenv MC_PWD "`cat '$MC_PWD_FILE'`"
+ 	if ("$MC_PWD" != "$cwd" && -d "$MC_PWD") then
+-		cd "$MC_PWD"
++		cd "$MC_PWD" || true
+ 	endif
+ 	unsetenv MC_PWD
+ endif
+ 
+ rm -f "$MC_PWD_FILE"
+ unsetenv MC_PWD_FILE
+-unsetenv MC_USER
+diff --git a/contrib/mc-wrapper.sh.in b/contrib/mc-wrapper.sh.in
+index 3905be4800..3d929b3485 100644
+--- a/contrib/mc-wrapper.sh.in
++++ b/contrib/mc-wrapper.sh.in
+@@ -1,15 +1,20 @@
+-MC_USER=`whoami`
+-MC_PWD_FILE="${TMPDIR-/tmp}/mc-$MC_USER/mc.pwd.$$"
++if test -n "$MC_TMPDIR"; then
++	MC_PWD_FILE="`mktemp "${MC_TMPDIR}/mc.pwd.XXXXXX"`"
++elif test -n "$TMPDIR"; then
++	MC_PWD_FILE="`mktemp "${TMPDIR}/mc.pwd.XXXXXX"`"
++else
++	MC_PWD_FILE="`mktemp "/tmp/mc.pwd.XXXXXX"`"
++fi
++
+ @bindir@/mc -P "$MC_PWD_FILE" "$@"
+ 
+ if test -r "$MC_PWD_FILE"; then
+ 	MC_PWD="`cat "$MC_PWD_FILE"`"
+ 	if test -n "$MC_PWD" && test "$MC_PWD" != "$PWD" && test -d "$MC_PWD"; then
+-		cd "$MC_PWD"
++		cd "$MC_PWD" || true
+ 	fi
+ 	unset MC_PWD
+ fi
+ 
+ rm -f "$MC_PWD_FILE"
+ unset MC_PWD_FILE
+-unset MC_USER
+From d081bc68aa6ad3ded515ea490118b0a38a1ec204 Mon Sep 17 00:00:00 2001
+From: "Yury V. Zaytsev" <yury@shurup.com>
+Date: Mon, 2 Sep 2024 16:51:17 +0200
+Subject: [PATCH] main: remove `O_EXCL` for wd-file since creation is now
+ managed by wrapper
+
+Signed-off-by: Yury V. Zaytsev <yury@shurup.com>
+---
+ src/main.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 803cec146e..02a49ba20e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -509,8 +509,7 @@ main (int argc, char *argv[])
+     {
+         int last_wd_fd;
+ 
+-        last_wd_fd = open (mc_args__last_wd_file, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL,
+-                           S_IRUSR | S_IWUSR);
++        last_wd_fd = open (mc_args__last_wd_file, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+         if (last_wd_fd != -1)
+         {
+             ssize_t ret1;

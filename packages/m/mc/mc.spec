@@ -32,6 +32,9 @@ Source6:        http://ftp.midnight-commander.org/%{name}-%{version}.sha256
 Source7:        mc.fish
 Patch0:         mc-fix_lib_search_path.patch
 Patch12:        mc-wrapper.patch
+# PATCH-FIX-UPSTREAM 4575-fix-wrapper.patch https://midnight-commander.org/ticket/4575 -- fix mc-wrapper (already merged for next release)
+# + https://github.com/MidnightCommander/mc/commit/d081bc68aa6ad3ded515ea490118b0a38a1ec204
+Patch13:        4575-fix-wrapper.patch
 Patch16:        mc-esc-seq.patch
 Patch20:        mc-f-keys.patch
 Patch21:        mc-extfs-helpers-deb.patch

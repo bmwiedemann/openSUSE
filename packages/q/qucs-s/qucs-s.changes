@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov  2 00:16:36 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added QtCharts dependency
+- Update to 24.4.0:
+  What's Changed
+  + S-parameter viewer by @andresmmera in #936
+  + Update XyceDigital library and examples by @ra3xdh in #947
+  + Release/24.3.2 by @ra3xdh in #955
+  + Fix build issues by @ThomasZecha in #957
+  + Fix memory leak while simulator switch by @zergud in #960
+  + Fix Ngspice run in CLI mode by @ra3xdh in #963
+  + Fix disable simulation for XYCE by @ra3xdh in #965
+  + Fix simulation properties edition by @ra3xdh in #969
+  + Fix of BJTsub and Diode device by @ra3xdh in #983
+  + fix wrong selected bounding box for elliptic arc by @zergud in #989
+  + Fixed crash when no simulators found on first start by @ra3xdh in #992
+  + Spar viewer: Fixes and New Features by @andresmmera in #991
+  + Fix unnecessary setPen before draw_resize_handle by @zergud in #990
+  + Fix #997 by @ivandi69 in #1005
+  + Fix diode symbol setting by @ra3xdh in #1006
+  + Fix missing text in schematic after upgrading to Qt-6.8.0 by @ivandi69 in #995
+  + refactor: use QString() as empty QString constructor by @Integral-Tech in #1003
+  + Apply normalize_value to POT value by @ra3xdh in #1014
+  + Add SPICE entry for VCresitor by @ra3xdh in #1016
+  + S-parameter Viewer: More fixes by @andresmmera in #1009
+  + Apply path conversion only for saved schematic or schematic in projects by @ra3xdh in #1018
+  + Upload SPICE_TLine library by @ra3xdh in #1019
+  + Allow variables for diode parameters by @ra3xdh in #1021
+  + Schottly diode symbol fix and update library tree after creating new library by @ra3xdh in #1027
+  + Save the position / size of ExternSimDialog on exit. by @iwbnwif in #1028
+  + Update NEWS.md and VERSION before release by @ra3xdh in #1032
+  + Fixed context menu for tab diagram and ASCO execution error by @ra3xdh in #1035
+
+-------------------------------------------------------------------
 Sat Oct 12 21:24:57 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 24.3.2:

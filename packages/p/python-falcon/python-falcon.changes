@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Nov  2 06:33:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.1:
+  * Overview
+    + CPython 3.11 - 3.13 is now fully supported.
+    + End-of-life Python 3.5, 3.6 & 3.7 are no longer supported.
+    + End-of-life Python 3.8 is no longer actively supported.
+    + Type checking support was introduced.
+    + Falcon is no longer vendoring the python-mimeparse library.
+    + A number of undocumented internal helpers were renamed to start with an
+      underscore.
+    + A number of previously deprecated methods, attributes and classes have
+      now been removed.
+    + We decided, on the other hand, to keep the deprecated falcon.API alias
+      until Falcon 5.0.
+    + The deprecated api_helpers was removed in favor of the app_helpers
+      module.
+    + The function falcon.http_date_to_dt now validates HTTP dates to have
+      the correct timezone set. It now also returns timezone-aware
+      datetime.datetime objects.
+    + setup.cfg was dropped in favor of consolidating all static project
+      configuration in pyproject.toml
+  * New & Improved
+    + A new path converter falcon.routing.PathConverter
+      capable of matching segments that include / was added.
+    + Similar to the existing falcon.routing.IntConverter, a new
+      falcon.routing.FloatConverter has been added, allowing to convert
+      path segments to float.
+    + A new method falcon.Request.get_header_as_int was implemented.
+    + A new property, falcon.Request.headers_lower, was added to provide a
+      unified, self-documenting way to get a copy of all request headers with
+      lowercase names to facilitate case-insensitive matching.
+    + In Python 3.13, the cgi module is removed entirely from the stdlib,
+      including its parse_header() method. Falcon addresses the issue by
+      shipping an own implementation.
+    + The falcon.CORSMiddleware now properly handles the missing Allow
+      header case, by denying the preflight CORS request.
+    + Added falcon.testing.Result.content_type and
+      falcon.testing.StreamedResult.content_type as a utility accessor
+      for the Content-Type header.
+    + A new flag, falcon.ResponseOptions.xml_error_serialization, has been
+      added to falcon.ResponseOptions that can be used to disable automatic
+      XML serialization of falcon.HTTPError when using the default error
+      serializer (and the client prefers it).
+  * Fixed
+    + The web servers used for tests are now run through sys.executable.
+* Dropped patches, no longer required:
+  - python-falcon-sphinx-pygments-style.patch
+  - support-new-uvicorn.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 01:45:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove skipping asgi for Python 3.9.

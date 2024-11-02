@@ -18,23 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-falcon
-Version:        3.1.3
+Version:        4.0.1
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
 URL:            http://falconframework.org
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
-# github pygments style is not available
-Patch0:         python-falcon-sphinx-pygments-style.patch
-# PATCH-FIX-UPSTREAM Based on gh#falconry/falcon#2216
-Patch1:         support-new-uvicorn.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module myst-parser >= 2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx-design}
 BuildRequires:  %{python_module sphinx-tabs}
+BuildRequires:  %{python_module sphinxcontrib-copybutton}
 BuildRequires:  %{python_module websockets}
 BuildRequires:  %{python_module wheel}
 # TODO: Cython support
@@ -103,7 +104,7 @@ cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
 
 %check
 export LANG=en_US.UTF8
-%pytest tests
+%pytest
 
 %post
 %{python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes}

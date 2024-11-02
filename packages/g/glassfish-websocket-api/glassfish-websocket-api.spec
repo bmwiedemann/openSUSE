@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package glassfish-websocket-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  xz
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.glassfish.build:spec-version-maven-plugin)
+Conflicts:      jboss-websocket-1.0-api
 BuildArch:      noarch
 
 %description

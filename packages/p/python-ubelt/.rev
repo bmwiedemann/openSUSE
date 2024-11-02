@@ -49,4 +49,13 @@
     `Path.chmod`.</comment>
     <requestid>1194646</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>145c1357fd28d342ae60fa5766090767</srcmd5>
+    <version>1.3.6</version>
+    <time>1730560315</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-lib2to3.patch:
+  * Do not attempt to use lib2to3 in a doctest.</comment>
+    <requestid>1220153</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:01:55 UTC 2024 - pgajdos@suse.com
+
+- version update to 3.3.0
+  * no upstream changelog found, from git log:
+  * Add functions/properties for disallowing DOCTYPE (DTD) in SAX parsers
+  * XERCESC-2188 - Use-after-free on external DTD scan (CVE-2018-1311)
+  * Omit unnecessary getenv() call if DTD is disabled programmatically
+  * Fix NetAccessorTest to exit with non-zero status in case of error
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
 Wed Sep 11 19:08:46 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Enable gnuiconv transcoder, permanent fix for bsc#1223088. 

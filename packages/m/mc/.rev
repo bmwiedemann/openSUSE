@@ -860,4 +860,12 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     <comment></comment>
     <requestid>1201658</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>64b31f55e5c6521021a602f1f6255d74</srcmd5>
+    <version>4.8.32</version>
+    <time>1730560297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220049</requestid>
+  </revision>
 </revisionlist>

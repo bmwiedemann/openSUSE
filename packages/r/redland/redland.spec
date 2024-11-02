@@ -62,7 +62,6 @@ Files needed to develop with the Redland RDF library.
 %package -n %lname
 Summary:        Libraries that provide support for the Resource Description Framework (RDF)
 Group:          System/Libraries
-%requires_ge    librasqal1
 # Added for 13.1 time
 Obsoletes:      libredland0 < %version-%release
 Provides:       libredland0 = %version-%release

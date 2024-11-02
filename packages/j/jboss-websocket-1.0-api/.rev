@@ -23,4 +23,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109968</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ed2af739c9a8f4aca3e3e1affc511284</srcmd5>
+    <version>1.0.0</version>
+    <time>1730560319</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid conflict of providers</comment>
+    <requestid>1220159</requestid>
+  </revision>
 </revisionlist>

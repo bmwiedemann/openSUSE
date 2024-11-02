@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 19:25:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.4:
+  * Actually includes the pre-1.8.0 commit constness behavior fix
+
+-------------------------------------------------------------------
 Sun Oct 27 15:48:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.8.3:

@@ -230,4 +230,41 @@
   * Support new uvicorn, which now propagates its exit code.</comment>
     <requestid>1163999</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a71d4f91ee7c5c3bf5733f000adce49e</srcmd5>
+    <version>4.0.1</version>
+    <time>1730560314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * Overview
+    + CPython 3.11 - 3.13 is now fully supported.
+    + End-of-life Python 3.5, 3.6 &amp; 3.7 are no longer supported.
+    + End-of-life Python 3.8 is no longer actively supported.
+    + Type checking support was introduced.
+    + Falcon is no longer vendoring the python-mimeparse library.
+    + A number of undocumented internal helpers were renamed to start with an
+      underscore.
+    + A number of previously deprecated methods, attributes and classes have
+      now been removed.
+    + We decided, on the other hand, to keep the deprecated falcon.API alias
+      until Falcon 5.0.
+    + The deprecated api_helpers was removed in favor of the app_helpers
+      module.
+    + The function falcon.http_date_to_dt now validates HTTP dates to have
+      the correct timezone set. It now also returns timezone-aware
+      datetime.datetime objects.
+    + setup.cfg was dropped in favor of consolidating all static project
+      configuration in pyproject.toml
+  * New &amp; Improved
+    + A new path converter falcon.routing.PathConverter
+      capable of matching segments that include / was added.
+    + Similar to the existing falcon.routing.IntConverter, a new
+      falcon.routing.FloatConverter has been added, allowing to convert
+      path segments to float.
+    + A new method falcon.Request.get_header_as_int was implemented.
+    + A new property, falcon.Request.headers_lower, was added to provide a
+      unified, self-documenting way to get a copy of all request headers with
+      lowercase names to facilitate case-insensitive matching.</comment>
+    <requestid>1220150</requestid>
+  </revision>
 </revisionlist>

@@ -2,6 +2,7 @@
 # spec file for package bubblewrap
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +18,24 @@
 
 
 Name:           bubblewrap
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/containers/bubblewrap
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+# https://www.pseudorandom.co.uk/2003/contact/
+# 0x4DE8FF2A63C7CC90, fingerprint: DA98 F25C 0871 C49A 59EA FF2C 4DE8 FF2A 63C7 CC90
+Source2:        %{name}.keyring
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
 
@@ -51,7 +56,7 @@ This package provides zsh tab-completion for bubblewrap.
 %autosetup -p1 -n %{name}-%{version}
 sed -i '1d' completions/bash/bwrap
 %if 0%{?suse_version} < 1500
-sed -i '1s,/usr/bin/env bash,/bin/bash,' demos/bubblewrap-shell.sh
+sed -i '1s,%{_bindir}/env bash,/bin/bash,' demos/bubblewrap-shell.sh
 sed -i '1s/env //' demos/userns-block-fd.py
 %else
 sed -i '1s/env //' demos/bubblewrap-shell.sh demos/userns-block-fd.py
@@ -75,6 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 
 %files zsh-completion
+%license COPYING
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_bwrap

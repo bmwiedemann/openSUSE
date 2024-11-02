@@ -79,4 +79,17 @@
   * Backfill CVE aliases in recent changelog entries (forwarded request 1219997 from jfkw)</comment>
     <requestid>1219998</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af29fd10af1ddef0f8202be6c0da174b</srcmd5>
+    <version>0.0.20241101T215616</version>
+    <time>1730560311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20241101T215616 2024-11-01T21:56:16Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3244 CVE-2024-50354 GHSA-cph5-3pgr-c82g
+  * GO-2024-3245 CVE-2024-39720
+  * GO-2024-3246 CVE-2024-8185 GHSA-g233-2p4r-3q7v (forwarded request 1220127 from jfkw)</comment>
+    <requestid>1220128</requestid>
+  </revision>
 </revisionlist>

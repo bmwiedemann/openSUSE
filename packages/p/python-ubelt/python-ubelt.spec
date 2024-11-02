@@ -23,6 +23,8 @@ Summary:        Python utility belt containing simple tools
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/ubelt
 Source:         https://github.com/Erotemic/ubelt/archive/refs/tags/v%{version}.tar.gz#/ubelt-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE Do not mention lib2to3 in a doctest
+Patch0:         no-lib2to3.patch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

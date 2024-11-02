@@ -1,7 +1,7 @@
 #
 # spec file for package rasqal
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Version:        0.9.33
 Release:        0
 %define sonum   3
 Summary:        RDF Parser Toolkit for Redland
-License:        LGPL-2.1+ or GPL-2.0+ or Apache-2.0+
+License:        Apache-2.0+ OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Productivity/Other
-Url:            http://librdf.org/%{name}/
+URL:            http://librdf.org/%{name}/
 Source0:        http://download.librdf.org/source/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -48,7 +48,6 @@ Query language.
 %package -n lib%{name}%{sonum}
 Summary:        RDF Parser Toolkit for Redland
 Group:          System/Libraries
-%requires_ge    libraptor1
 
 %description -n lib%{name}%{sonum}
 Rasqal is a library providing full support for querying Resource
@@ -98,8 +97,9 @@ rm -f %{buildroot}%{_libdir}/*.la
 
 %files -n lib%{name}%{sonum}
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING COPYING.LIB ChangeLog 
-%doc LICENSE-2.0.txt LICENSE.html LICENSE.txt 
+%doc AUTHORS ChangeLog
+%license COPYING COPYING.LIB
+%doc LICENSE-2.0.txt LICENSE.html LICENSE.txt
 %doc NEWS NEWS.html NOTICE README README.html RELEASE.html
 %{_libdir}/lib%{name}.so.%{sonum}*
 %{_mandir}/man1/%{name}-config.1%{ext_man}

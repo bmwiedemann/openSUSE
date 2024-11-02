@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 31 16:07:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove the requires_ge against librasqal1: it's been 15 years
+  that librasqal1 changed to librasqal2. Due to requires_ge simply
+  ignoring the dep if the package cannot be found, this was
+  effectively a NOP for the last 15 years - and as nobody seemed to
+  miss it, the autodep of RPM seems good enough.
+
+-------------------------------------------------------------------
 Fri Jul 12 13:50:43 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -D_GNU_SOURCE to %optflags so that mkstemp is properly declared

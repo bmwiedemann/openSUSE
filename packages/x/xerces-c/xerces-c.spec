@@ -16,9 +16,9 @@
 #
 
 
-%define libname libxerces-c-3_2
+%define libname libxerces-c-3_3
 Name:           xerces-c
-Version:        3.2.5
+Version:        3.3.0
 Release:        0
 Summary:        A Validating XML Parser
 License:        Apache-2.0
@@ -89,7 +89,6 @@ This package includes files needed for development with Xerces-c
 %setup -q -n xerces-c-%{version}
 
 %build
-find . -type d -name .svn -exec rm -Rf "{}" "+"
 %configure \
     --enable-transcoder-gnuiconv \
     --enable-netaccessor-curl \

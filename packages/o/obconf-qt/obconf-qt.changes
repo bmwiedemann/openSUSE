@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  1 17:52:33 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Ported to Qt6 and updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 30 18:40:44 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change BuildRequires from lxqt-build-tools-devel to

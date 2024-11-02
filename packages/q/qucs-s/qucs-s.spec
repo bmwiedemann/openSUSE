@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?sle_version} >= 1506000
 %define gcc_ver 13
 %else
@@ -22,7 +23,7 @@
 %endif
 
 Name:           qucs-s
-Version:        24.3.2
+Version:        24.4.0
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
@@ -37,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gperf
 %if 0%{?suse_version} >= 1600
+BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6PrintSupport)
@@ -44,6 +46,7 @@ BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Xml)
 %else
 BuildRequires:  gcc%{gcc_ver}-c++
+BuildRequires:  cmake(Qt5Charts)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5PrintSupport)

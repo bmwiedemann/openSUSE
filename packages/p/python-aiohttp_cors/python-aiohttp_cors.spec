@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp_cors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp_cors
 Version:        0.7.0
@@ -34,13 +33,11 @@ Patch3:         412.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.4.2
+Requires:       python-aiohttp >= 1.1
 Requires:       python-async_timeout >= 2.0.0
 Requires:       python-chardet
 Requires:       python-multidict >= 3.3.0
 Requires:       python-yarl >= 0.13.0
-Recommends:     python-aiodns
-Recommends:     python-cChardet
 Suggests:       %{name}-doc
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 1.1}
@@ -52,12 +49,6 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module yarl >= 0.13.0}
-# /SECTION
-# SECTION docs
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinxcontrib-asyncio
-BuildRequires:  python3-sphinxcontrib-newsfeed
-# /SECTION
 BuildArch:      noarch
 %python_subpackages
 

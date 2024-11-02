@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 23 20:12:03 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- Added patch 4575-fix-wrapper.patch - fixes boo#1203617
+
+-------------------------------------------------------------------
 Tue Sep 17 15:04:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.8.32:

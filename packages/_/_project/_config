@@ -576,7 +576,7 @@ Prefer: -podman-docker
 Prefer: -dbus-1-x11
 
 # have choice for (podman or docker) needed by ansible-builder: docker podman
-Prefer: -docker -docker-stable-buildx
+Prefer: -docker-stable -docker-stable-buildx -docker
 
 # have choice for libglib-2.0.so.0()(64bit) needed by ...: glib2-stage1-devel libglib-2_0-0
 Ignore: glib2-stage1-devel:this-is-only-for-build-envs

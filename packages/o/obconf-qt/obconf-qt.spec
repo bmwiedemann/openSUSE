@@ -17,32 +17,26 @@
 
 
 Name:           obconf-qt
-Version:        0.16.4
+Version:        0.16.5
 Release:        0
 Summary:        OpenBox window manager configuration tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/obconf-qt
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(lxqt-build-tools) >= 0.8.0
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(lxqt)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(obrender-3.5)
 BuildRequires:  pkgconfig(obt-3.5)
-Requires(post): desktop-file-utils
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires(pre):  desktop-file-utils
 Recommends:     %{name}-lang
 Conflicts:      obconf
 
@@ -54,15 +48,14 @@ used as the default WindowManager in LXQt.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake \
-      -DPULL_TRANSLATIONS=OFF
-%make_jobs
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 install -dm 755 %{buildroot}%{_sysconfdir}/alternatives/
 touch %{buildroot}%{_sysconfdir}/alternatives/obconf
 ln -s %{_sysconfdir}/alternatives/obconf \
@@ -85,7 +78,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS README.md
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/obconf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
@@ -95,6 +88,8 @@ fi
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/*
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
