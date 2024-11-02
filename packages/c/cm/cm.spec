@@ -27,6 +27,7 @@ URL:            https://www.multiprecision.org/cm/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.asc
 Source3:        %name.keyring
+Patch1:         0001-Include-standard-header-file.patch
 BuildRequires:  flint-devel >= 3
 BuildRequires:  gmp-devel >= 4.3.2
 BuildRequires:  libtool
@@ -86,8 +87,7 @@ if ! %make_build check; then
 	exit 1
 fi
 
-%post   -n libcm1 -p /sbin/ldconfig
-%postun -n libcm1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcm1
 
 %post
 %install_info --info-dir="%_infodir" "%_infodir/cm.info.gz"

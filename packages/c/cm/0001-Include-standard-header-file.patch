@@ -1,0 +1,58 @@
+From cf3e9ceaaaacd9f2a92c8087a23dc8fd8efd5519 Mon Sep 17 00:00:00 2001
+From: Andreas Enge <andreas.enge@inria.fr>
+Date: Wed, 21 Aug 2024 16:23:04 +0200
+Subject: [PATCH] Include standard header file.
+
+* tests/tecpp.c, tests/ttwist.c: Include stdio.h.
+---
+ tests/tecpp.c  | 3 ++-
+ tests/ttwist.c | 5 +++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/tests/tecpp.c b/tests/tecpp.c
+index 6cb4802..c20c582 100644
+--- a/tests/tecpp.c
++++ b/tests/tecpp.c
+@@ -2,7 +2,7 @@
+ 
+ tecpp.c - test of ECPP
+ 
+-Copyright (C) 2021, 2022 Andreas Enge
++Copyright (C) 2021, 2022, 2024 Andreas Enge
+ 
+ This file is part of CM.
+ 
+@@ -21,6 +21,7 @@ with CM; see the file COPYING. If not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+ 
++#include <stdio.h>
+ #include "cm.h"
+ 
+ /*****************************************************************************/
+diff --git a/tests/ttwist.c b/tests/ttwist.c
+index 5f1fcdf..9cbea8c 100644
+--- a/tests/ttwist.c
++++ b/tests/ttwist.c
+@@ -1,8 +1,8 @@
+ /*
+ 
+-tcm.c - tests with twisted curves
++ttwist.c - tests with twisted curves
+ 
+-Copyright (C) 2021 Andreas Enge
++Copyright (C) 2021, 2024 Andreas Enge
+ 
+ This file is part of CM.
+ 
+@@ -21,6 +21,7 @@ with CM; see the file COPYING. If not, write to the Free Software
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+ 
++#include <stdio.h>
+ #include "cm.h"
+ 
+ /*****************************************************************************/
+-- 
+2.47.0
+

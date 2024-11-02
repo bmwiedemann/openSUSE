@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:06:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Include-standard-header-file.patch to resolve
+  gcc>=14 FTBFS (preprocessor result of gmp.h changes depending
+  on stdio.h being included before or not)
+
+-------------------------------------------------------------------
 Thu Apr 11 17:59:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.3
