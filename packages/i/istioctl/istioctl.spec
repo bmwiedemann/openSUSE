@@ -16,18 +16,18 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           istioctl
-Version:        1.23.2
+Version:        1.23.3
 Release:        0
 Summary:        CLI for the istio servic mesh in Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/istio/istio
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 The istioctl tool is a configuration command line utility that allows service
@@ -64,7 +64,10 @@ zsh command line completion support for %{name}.
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X istio.io/pkg/version.buildVersion=%{version} -X istio.io/pkg/version.buildArch=${GOARCH} -X istio.io/pkg/version.buildOS=linux" \
+   -ldflags=" \
+   -X istio.io/pkg/version.buildVersion=%{version} \
+   -X istio.io/pkg/version.buildArch=${GOARCH} \
+   -X istio.io/pkg/version.buildOS=linux" \
    -o bin/%{name} ./istioctl/cmd/istioctl
 
 %install
@@ -84,8 +87,8 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
@@ -94,12 +97,9 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %{_docdir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
