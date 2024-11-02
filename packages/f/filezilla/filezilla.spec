@@ -16,11 +16,11 @@
 #
 
 
-%define libversion 3.67.1
-%define libfilezillaversion 0.48.1
+%define libversion 3.68.0
+%define libfilezillaversion 0.49.0
 
 Name:           filezilla
-Version:        3.67.1
+Version:        3.68.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -46,11 +46,13 @@ BuildRequires:  pkgconfig
 # needs long long support in pugixml
 BuildRequires:  pugixml-devel >= 1.7
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_2-devel >= 3.2.1
+#BuildRequires:  wxWidgets-3_2-devel >= 3.2.1
+BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gtk+-2.0)
+#BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libfilezilla) >= %{libfilezillaversion}
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1

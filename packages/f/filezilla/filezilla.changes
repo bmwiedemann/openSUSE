@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:28:32 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.68.0
+  * New features:
+    - Added option to always refresh remote directory listings when
+      starting a recursive operation
+  * Bugfixes and minor changes:
+    - Changing logfile settings no longer requires a restart of
+      FileZilla
+    - Fixed a display issue with special characters in usernames
+    - MSW: Fixed local file list not updating after renaming or
+      deleting items
+    - SFTP: Update interval of transfer progress during uploads
+      should now be more consistent on very slow connections
+    - Updated to libfilezilla 0.49.0
+
+-------------------------------------------------------------------
+Mon Oct 28 07:09:49 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Switch from BuildRequires wxWidgets-3_2-devel and gtk+-2.0 to
+  wxGTK3-3_2-devel and gtk+-3.0 to fix   the boo#1231757 bug.
+
+-------------------------------------------------------------------
 Fri Jul 12 09:37:57 UTC 2024 - ecsos <ecsos@opensuse.org>
 
-- Update to 3.57.1
+- Update to 3.67.1
   * Bugfixes and minor changes:
     - MSW: Fixed an issue with confirmation dialogs for file
       deletion not being modal
