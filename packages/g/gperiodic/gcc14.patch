@@ -1,0 +1,21 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-11-02 12:25:17.618681179 +0100
+Upstream: is-dead
+
+---
+ gperiodic.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gperiodic-3.0.3/gperiodic.c
+===================================================================
+--- gperiodic-3.0.3.orig/gperiodic.c
++++ gperiodic-3.0.3/gperiodic.c
+@@ -137,7 +137,7 @@ void display_element_dialog( GtkWidget *
+ 	    if (col == 0) gtk_label_set_markup (GTK_LABEL (label), _(header.info[row]));
+             else {
+ 	      gtk_label_set_markup (GTK_LABEL (label), _(entry->info[row]));
+-	      gtk_label_set_selectable (label, TRUE);
++	      gtk_label_set_selectable (GTK_LABEL (label), TRUE);
+ 	    }
+ 
+ 	    gtk_misc_set_alignment(GTK_MISC(label), 0, 0);

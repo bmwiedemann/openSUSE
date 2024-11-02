@@ -23,8 +23,8 @@ Summary:        A program for looking up data of elements from the periodic tabl
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://gperiodic.sf.net/
-
 Source:         http://download.sf.net/gperiodic/%name-%version.tar.gz
+Patch1:         gcc14.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(gtk+-2.0)
