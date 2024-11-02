@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  2 12:20:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0.0
+  * Floating point values with zero as fractional part were encoded
+    as integers since 4.1.2; this is reverted because the conversion
+    incurs speed penaltiess (#1144).
+
+-------------------------------------------------------------------
 Tue Apr  2 06:59:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to release 6.1.1:
