@@ -2,7 +2,7 @@
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ImageMagick" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ImageMagick-config-7-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -222,7 +222,7 @@
     <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cabextract" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -243,8 +243,8 @@
     <package name="cheese-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="chewing-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="chewing-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="chrony" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="chrony" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -443,8 +443,8 @@
     <package name="ffmpegthumbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="file-roller" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="file-roller-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="file-roller" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="file-roller-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="filesystem" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fillup" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -760,7 +760,7 @@
     <package name="gwenview" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gwenview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gxditview" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="heaptrack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2093,7 +2093,7 @@
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnustep-base1_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgnustep-base1_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgnutls-dane0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgnutls30-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2487,7 +2487,7 @@
     <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
@@ -4171,13 +4171,13 @@
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="unison" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="update-bootloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="upower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4575,7 +4575,7 @@
     <package name="zenity-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zerofree" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="zeromq-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

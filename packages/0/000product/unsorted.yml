@@ -1153,7 +1153,6 @@ unsorted:
   - avr-libc 
   - avrdude 
   - avrdude-devel 
-  - avs-topology-firmware 
   - awesome 
   - awesome-branding-openSUSE 
   - awesome-branding-upstream 
@@ -2741,6 +2740,7 @@ unsorted:
   - criu 
   - criu-devel 
   - criu-plugin-amdgpu 
+  - criu-plugin-cuda 
   - crmsh 
   - crmsh-scripts 
   - crmsh-test 
@@ -3432,6 +3432,12 @@ unsorted:
   - docker-fish-completion 
   - docker-lock 
   - docker-machine-driver-kvm2 
+  - docker-stable 
+  - docker-stable-bash-completion 
+  - docker-stable-buildx 
+  - docker-stable-fish-completion 
+  - docker-stable-rootless-extras 
+  - docker-stable-zsh-completion 
   - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
@@ -19809,6 +19815,8 @@ unsorted:
   - netsurf-buildsystem 
   - nettle 
   - netty 
+  - netty-incubator-transport-io_uring 
+  - netty-incubator-transport-io_uring-javadoc 
   - netty-javadoc 
   - netty-poms 
   - netty-tcnative 
@@ -20080,6 +20088,7 @@ unsorted:
   - obs-service-refresh_patches 
   - obs-service-replace_using_env 
   - obs-service-replace_using_package_version 
+  - obs-service-roast 
   - obs-service-set_version 
   - obs-service-snapcraft 
   - obs-service-source_validator 
@@ -24439,7 +24448,6 @@ unsorted:
   - python310-agate-sql 
   - python310-agate-stats 
   - python310-ahocorasick-rs 
-  - python310-aina 
   - python310-aiocsv 
   - python310-aiodataloader 
   - python310-aiodns 
@@ -24454,8 +24462,6 @@ unsorted:
   - python310-aiohttp-theme 
   - python310-aiohttp_cors 
   - python310-aioitertools 
-  - python310-aiomisc 
-  - python310-aiomisc-pytest 
   - python310-aioquic 
   - python310-aioresponses 
   - python310-aiorpcX 
@@ -24995,7 +25001,6 @@ unsorted:
   - python310-blue 
   - python310-blurb 
   - python310-bmap-tools 
-  - python310-bobo 
   - python310-bokcolmaps 
   - python310-bokeh 
   - python310-bokeh_sampledata 
@@ -26646,7 +26651,6 @@ unsorted:
   - python310-pyPEG2 
   - python310-pyRFC3339 
   - python310-pyRXP 
-  - python310-pyScss 
   - python310-pyUSID 
   - python310-pyVows 
   - python310-pyacoustid 
@@ -28108,7 +28112,6 @@ unsorted:
   - python311-agate-sql 
   - python311-agate-stats 
   - python311-ahocorasick-rs 
-  - python311-aina 
   - python311-aiocsv 
   - python311-aiodataloader 
   - python311-aiodns 
@@ -28123,8 +28126,6 @@ unsorted:
   - python311-aiohttp-theme 
   - python311-aiohttp_cors 
   - python311-aioitertools 
-  - python311-aiomisc 
-  - python311-aiomisc-pytest 
   - python311-aioresponses 
   - python311-aiorpcX 
   - python311-aiosignal 
@@ -28653,7 +28654,6 @@ unsorted:
   - python311-blue 
   - python311-blurb 
   - python311-bmap-tools 
-  - python311-bobo 
   - python311-bokcolmaps 
   - python311-bokeh 
   - python311-bokeh_sampledata 
@@ -30237,7 +30237,6 @@ unsorted:
   - python311-pyPEG2 
   - python311-pyRFC3339 
   - python311-pyRXP 
-  - python311-pyScss 
   - python311-pyUSID 
   - python311-pyVows 
   - python311-pyacoustid 
@@ -31677,7 +31676,6 @@ unsorted:
   - python312-agate-sql 
   - python312-agate-stats 
   - python312-ahocorasick-rs 
-  - python312-aina 
   - python312-aiocsv 
   - python312-aiodataloader 
   - python312-aiodns 
@@ -31692,8 +31690,6 @@ unsorted:
   - python312-aiohttp-theme 
   - python312-aiohttp_cors 
   - python312-aioitertools 
-  - python312-aiomisc 
-  - python312-aiomisc-pytest 
   - python312-aioquic 
   - python312-aioresponses 
   - python312-aiorpcX 
@@ -32234,7 +32230,6 @@ unsorted:
   - python312-blue 
   - python312-blurb 
   - python312-bmap-tools 
-  - python312-bobo 
   - python312-bokcolmaps 
   - python312-bokeh 
   - python312-bokeh_sampledata 
@@ -33880,7 +33875,6 @@ unsorted:
   - python312-pyPEG2 
   - python312-pyRFC3339 
   - python312-pyRXP 
-  - python312-pyScss 
   - python312-pyUSID 
   - python312-pyVows 
   - python312-pyacoustid 
@@ -48235,8 +48229,10 @@ unsorted:
   - viu 
   - vkbasalt 
   - vkbasalt-cli 
+  - vkd3d-demos 
   - vkd3d-devel 
   - vkd3d-devel-32bit 
+  - vkd3d-docs 
   - vkeybd 
   - vkmark 
   - vkquake 
