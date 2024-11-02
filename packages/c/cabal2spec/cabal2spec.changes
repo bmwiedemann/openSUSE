@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 27 09:33:30 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cabal2spec to version 2.7.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Mar 26 09:57:55 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cabal2spec to version 2.7.1.
