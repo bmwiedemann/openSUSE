@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-client-tls
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6.3
+Version:        0.3.6.4
 Release:        0
 Summary:        Http-client backend using the connection package and tls library
 License:        MIT
@@ -39,8 +39,8 @@ BuildRequires:  ghc-crypton-connection-devel
 BuildRequires:  ghc-crypton-connection-prof
 BuildRequires:  ghc-crypton-devel
 BuildRequires:  ghc-crypton-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-http-client-devel
