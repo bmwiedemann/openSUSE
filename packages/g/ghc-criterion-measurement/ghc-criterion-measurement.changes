@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 27 00:12:23 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update criterion-measurement to version 0.2.3.0.
+  0.2.3.0
+
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
 Sun May 12 11:57:43 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update criterion-measurement to version 0.2.2.0.

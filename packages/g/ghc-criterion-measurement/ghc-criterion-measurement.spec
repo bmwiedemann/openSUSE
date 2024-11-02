@@ -19,7 +19,7 @@
 %global pkg_name criterion-measurement
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.2.0
+Version:        0.2.3.0
 Release:        0
 Summary:        Criterion measurement functionality and associated types
 License:        BSD-3-Clause
