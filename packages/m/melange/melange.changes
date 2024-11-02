@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 02 08:22:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * feat(qemu): fix qemu command on cross-compilation cases
+  * update docs
+  * feat(qemu): add flag to specify cpu model to use, useful for
+    cases where /dev/kvm is not available
+  * fix(qemu): remove ssh ignoreHostKey, set an host-key retrieval
+    step, then use host key verification for all successive
+    commands
+  * fix linting
+  * fix(qemu): improve error when not finding a suitable kernel
+    image
+  * fix(qemu): use net.Listen to find open port, simplify random
+    port logic
+  * fix(qemu): use package go-shellquote and simplify cmd handling
+  * fix(qemu): use package go-shellquote and simplify cmd handling
+  * fix(qemu): specify KVM accelleration on linux, use only if
+    /dev/kvm is present
+  * fix(qemu): fix typos
+
+-------------------------------------------------------------------
 Tue Oct 29 15:08:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.11:
