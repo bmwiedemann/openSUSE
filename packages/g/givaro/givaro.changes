@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 19 21:14:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc14.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 08:47:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Add-missing-include-cstdint-for-u-int64_t.patch
