@@ -1,0 +1,117 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           fsnotify
+version:        0.4.1.0
+x-revision: 1
+synopsis:       Cross platform library for file change notification.
+description:    Cross platform library for file creation, modification, and deletion notification. This library builds upon existing libraries for platform-specific Windows, Mac, and Linux filesystem event notification.
+category:       Filesystem
+homepage:       https://github.com/haskell-fswatch/hfsnotify
+author:         Mark Dittmer <mark.s.dittmer@gmail.com>, Niklas Broberg
+maintainer:     Tom McLaughlin <tom@codedown.io>
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+    test/Main.hs
+
+library
+  exposed-modules:
+      System.FSNotify
+      System.FSNotify.Devel
+  other-modules:
+      System.FSNotify.Find
+      System.FSNotify.Listener
+      System.FSNotify.Path
+      System.FSNotify.Polling
+      System.FSNotify.Types
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      async >=2.0.0.0
+    , base >=4.8 && <5
+    , bytestring >=0.10.2
+    , containers >=0.4
+    , directory >=1.3.0.0
+    , filepath >=1.3.0.0
+    , monad-control >=1.0.0.0
+    , safe-exceptions >=0.1.0.0
+    , text >=0.11.0 && <2.1.2
+    , time >=1.1
+    , unix-compat >=0.2
+  default-language: Haskell2010
+  if os(linux)
+    cpp-options: -DOS_Linux
+  if os(windows)
+    cpp-options: -DOS_Win32
+  if os(darwin)
+    cpp-options: -DOS_Mac
+  if os(freebsd) || os(netbsd) || os(openbsd)
+    cpp-options: -DOS_BSD
+  if os(linux)
+    other-modules:
+        System.FSNotify.Linux
+    build-depends:
+        hinotify >=0.3.7
+      , unix >=2.7.1.0
+  if os(windows)
+    other-modules:
+        System.FSNotify.Win32
+        System.Win32.FileNotify
+        System.Win32.Notify
+    hs-source-dirs:
+        win-src
+    build-depends:
+        Win32
+  if os(darwin)
+    other-modules:
+        System.FSNotify.OSX
+    build-depends:
+        hfsevents >=0.1.3
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      FSNotify.Test.EventTests
+      FSNotify.Test.Util
+      Paths_fsnotify
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -Wall
+  build-depends:
+      async >=2
+    , base >=4.3.1.0
+    , directory
+    , exceptions
+    , filepath
+    , fsnotify
+    , random
+    , retry
+    , safe-exceptions
+    , temporary
+    , unix-compat
+    , unliftio >=0.2.20
+  default-language: Haskell2010
+  if os(linux)
+    cpp-options: -DOS_Linux
+  if os(windows)
+    cpp-options: -DOS_Win32
+  if os(darwin)
+    cpp-options: -DOS_Mac
+  if os(freebsd) || os(netbsd) || os(openbsd)
+    cpp-options: -DOS_BSD
+  if os(windows)
+    build-depends:
+        Win32
+      , sandwich >=0.1.1.1
+  else
+    build-depends:
+        sandwich
