@@ -1,7 +1,7 @@
 #
 # spec file for package commandergenius
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        A clone of the Commander Keen engines
 License:        GPL-2.0-only

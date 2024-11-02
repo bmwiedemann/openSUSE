@@ -306,4 +306,12 @@
     <comment>- Update to release 3.5.0</comment>
     <requestid>1127472</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9570079aa202c05c5eadcb8cd82d5687</srcmd5>
+    <version>3.5.1</version>
+    <time>1730560336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5.1</comment>
+    <requestid>1220177</requestid>
+  </revision>
 </revisionlist>
