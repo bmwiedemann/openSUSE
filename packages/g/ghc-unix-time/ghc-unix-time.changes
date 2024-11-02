@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 01:03:19 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update unix-time to version 0.4.16.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Fri Jun 14 00:48:15 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update unix-time to version 0.4.15.
