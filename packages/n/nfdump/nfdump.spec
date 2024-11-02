@@ -19,9 +19,9 @@
 %define nfcapddatadir   %{_localstatedir}/lib/nfcapd
 %define sfcapddatadir   %{_localstatedir}/lib/sfcapd
 %define nfhomedir       %{_var}/lib/%{name}
-%define sover           libnfdump-1_7_4
+%define sover           1_7_5
 Name:           nfdump
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
@@ -47,17 +47,25 @@ The nfdump tools collect and process netflow data on the command line.
 They are part of the NFSEN project which is explained more detailed at
 http://www.terena.nl/tech/task-forces/tf-csirt/meeting12/nfsen-Haag.pdf
 
-%package -n libnfdump%{sover}
+%package -n libnfdump-%{sover}
 Summary:        Shared Library part of libnfdump
 Group:          System/Libraries
 
-%description -n libnfdump%{sover}
+%description -n libnfdump-%{sover}
 Shared Library part of libnfdump.
+
+%package -n libnffile-%{sover}
+Summary:        Shared Library part of libnffile
+Group:          System/Libraries
+
+%description -n libnffile-%{sover}
+Shared Library part of libnffile.
 
 %package devel
 Summary:        Development files for libnfdump
 Group:          Development/Libraries/C and C++
-Requires:       libnfdump%{sover} = %{version}
+Requires:       libnfdump-%{sover} = %{version}
+Requires:       libnffile-%{sover} = %{version}
 
 %description devel
 This package contains libraries and header files for developing
@@ -84,6 +92,7 @@ install -D -d -m 0750 \
         %{buildroot}%{nfcapddatadir} \
         %{buildroot}%{sfcapddatadir}
 rm -v "%{buildroot}/%{_libdir}"/libnfdump.{a,la}
+rm -v "%{buildroot}/%{_libdir}"/libnffile.{a,la}
 
 %check
 #%%make_build check
@@ -92,8 +101,8 @@ rm -v "%{buildroot}/%{_libdir}"/libnfdump.{a,la}
 %{_sbindir}/groupadd -r %{name} &>/dev/null || :
 %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "User for Netflow Dumper" -d %{nfhomedir} %{name} &>/dev/null || :
 
-%post   -n libnfdump%{sover} -p /sbin/ldconfig
-%postun -n libnfdump%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnfdump-%{sover}
+%ldconfig_scriptlets -n libnffile-%{sover}
 
 %files
 %license COPYING LICENSE
@@ -120,10 +129,14 @@ rm -v "%{buildroot}/%{_libdir}"/libnfdump.{a,la}
 %dir %attr(-,%{name},%{name}) %{sfcapddatadir}
 %dir %attr(-,%{name},%{name}) %{nfhomedir}
 
-%files -n libnfdump%{sover}
+%files -n libnfdump-%{sover}
 %{_libdir}/libnfdump-*.so
+
+%files -n libnffile-%{sover}
+%{_libdir}/libnffile-*.so
 
 %files devel
 %{_libdir}/libnfdump.so
+%{_libdir}/libnffile.so
 
 %changelog

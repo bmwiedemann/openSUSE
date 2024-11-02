@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 23 19:29:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.5
+  * Improved parallel filtering to improve performance of nfdump.
+  * Parallel processing of reading, filtering and processing data.
+  * Add ndjson output format.
+  * Speedup output.
+  * Add ja4 processing.
+  * Officially integrate torlookup into nfdump.
+  * Add support for NOKIA enterprise.
+  * Lot of code cleanup.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Sun Mar 31 09:30:22 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.7.4
